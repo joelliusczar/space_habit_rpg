@@ -1,0 +1,521 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		68F3F9AE1D70E82E00840DD2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9AD1D70E82E00840DD2 /* main.m */; };
+		68F3F9B11D70E82E00840DD2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9B01D70E82E00840DD2 /* AppDelegate.m */; };
+		68F3F9B41D70E82E00840DD2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9B31D70E82E00840DD2 /* ViewController.m */; };
+		68F3F9B71D70E82E00840DD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68F3F9B51D70E82E00840DD2 /* Main.storyboard */; };
+		68F3F9B91D70E82E00840DD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68F3F9B81D70E82E00840DD2 /* Assets.xcassets */; };
+		68F3F9BC1D70E82E00840DD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68F3F9BA1D70E82E00840DD2 /* LaunchScreen.storyboard */; };
+		68F3F9C71D70E82E00840DD2 /* HabitRPG2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9C61D70E82E00840DD2 /* HabitRPG2Tests.m */; };
+		68F3F9D21D70E82E00840DD2 /* HabitRPG2UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9D11D70E82E00840DD2 /* HabitRPG2UITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		68F3F9C31D70E82E00840DD2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 68F3F9A11D70E82E00840DD2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 68F3F9A81D70E82E00840DD2;
+			remoteInfo = HabitRPG2;
+		};
+		68F3F9CE1D70E82E00840DD2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 68F3F9A11D70E82E00840DD2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 68F3F9A81D70E82E00840DD2;
+			remoteInfo = HabitRPG2;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		68F3F9A91D70E82E00840DD2 /* HabitRPG2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitRPG2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		68F3F9AD1D70E82E00840DD2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		68F3F9AF1D70E82E00840DD2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		68F3F9B01D70E82E00840DD2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		68F3F9B21D70E82E00840DD2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		68F3F9B31D70E82E00840DD2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		68F3F9B61D70E82E00840DD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		68F3F9B81D70E82E00840DD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		68F3F9BB1D70E82E00840DD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		68F3F9BD1D70E82E00840DD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68F3F9C21D70E82E00840DD2 /* HabitRPG2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitRPG2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		68F3F9C61D70E82E00840DD2 /* HabitRPG2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HabitRPG2Tests.m; sourceTree = "<group>"; };
+		68F3F9C81D70E82E00840DD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68F3F9CD1D70E82E00840DD2 /* HabitRPG2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitRPG2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		68F3F9D11D70E82E00840DD2 /* HabitRPG2UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HabitRPG2UITests.m; sourceTree = "<group>"; };
+		68F3F9D31D70E82E00840DD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		68F3F9A61D70E82E00840DD2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68F3F9BF1D70E82E00840DD2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68F3F9CA1D70E82E00840DD2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		68F3F9A01D70E82E00840DD2 = {
+			isa = PBXGroup;
+			children = (
+				68F3F9AB1D70E82E00840DD2 /* HabitRPG2 */,
+				68F3F9C51D70E82E00840DD2 /* HabitRPG2Tests */,
+				68F3F9D01D70E82E00840DD2 /* HabitRPG2UITests */,
+				68F3F9AA1D70E82E00840DD2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		68F3F9AA1D70E82E00840DD2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				68F3F9A91D70E82E00840DD2 /* HabitRPG2.app */,
+				68F3F9C21D70E82E00840DD2 /* HabitRPG2Tests.xctest */,
+				68F3F9CD1D70E82E00840DD2 /* HabitRPG2UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		68F3F9AB1D70E82E00840DD2 /* HabitRPG2 */ = {
+			isa = PBXGroup;
+			children = (
+				68F3F9AF1D70E82E00840DD2 /* AppDelegate.h */,
+				68F3F9B01D70E82E00840DD2 /* AppDelegate.m */,
+				68F3F9B21D70E82E00840DD2 /* ViewController.h */,
+				68F3F9B31D70E82E00840DD2 /* ViewController.m */,
+				68F3F9B51D70E82E00840DD2 /* Main.storyboard */,
+				68F3F9B81D70E82E00840DD2 /* Assets.xcassets */,
+				68F3F9BA1D70E82E00840DD2 /* LaunchScreen.storyboard */,
+				68F3F9BD1D70E82E00840DD2 /* Info.plist */,
+				68F3F9AC1D70E82E00840DD2 /* Supporting Files */,
+			);
+			path = HabitRPG2;
+			sourceTree = "<group>";
+		};
+		68F3F9AC1D70E82E00840DD2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				68F3F9AD1D70E82E00840DD2 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		68F3F9C51D70E82E00840DD2 /* HabitRPG2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				68F3F9C61D70E82E00840DD2 /* HabitRPG2Tests.m */,
+				68F3F9C81D70E82E00840DD2 /* Info.plist */,
+			);
+			path = HabitRPG2Tests;
+			sourceTree = "<group>";
+		};
+		68F3F9D01D70E82E00840DD2 /* HabitRPG2UITests */ = {
+			isa = PBXGroup;
+			children = (
+				68F3F9D11D70E82E00840DD2 /* HabitRPG2UITests.m */,
+				68F3F9D31D70E82E00840DD2 /* Info.plist */,
+			);
+			path = HabitRPG2UITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		68F3F9A81D70E82E00840DD2 /* HabitRPG2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68F3F9D61D70E82E00840DD2 /* Build configuration list for PBXNativeTarget "HabitRPG2" */;
+			buildPhases = (
+				68F3F9A51D70E82E00840DD2 /* Sources */,
+				68F3F9A61D70E82E00840DD2 /* Frameworks */,
+				68F3F9A71D70E82E00840DD2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HabitRPG2;
+			productName = HabitRPG2;
+			productReference = 68F3F9A91D70E82E00840DD2 /* HabitRPG2.app */;
+			productType = "com.apple.product-type.application";
+		};
+		68F3F9C11D70E82E00840DD2 /* HabitRPG2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68F3F9D91D70E82E00840DD2 /* Build configuration list for PBXNativeTarget "HabitRPG2Tests" */;
+			buildPhases = (
+				68F3F9BE1D70E82E00840DD2 /* Sources */,
+				68F3F9BF1D70E82E00840DD2 /* Frameworks */,
+				68F3F9C01D70E82E00840DD2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				68F3F9C41D70E82E00840DD2 /* PBXTargetDependency */,
+			);
+			name = HabitRPG2Tests;
+			productName = HabitRPG2Tests;
+			productReference = 68F3F9C21D70E82E00840DD2 /* HabitRPG2Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		68F3F9CC1D70E82E00840DD2 /* HabitRPG2UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68F3F9DC1D70E82E00840DD2 /* Build configuration list for PBXNativeTarget "HabitRPG2UITests" */;
+			buildPhases = (
+				68F3F9C91D70E82E00840DD2 /* Sources */,
+				68F3F9CA1D70E82E00840DD2 /* Frameworks */,
+				68F3F9CB1D70E82E00840DD2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				68F3F9CF1D70E82E00840DD2 /* PBXTargetDependency */,
+			);
+			name = HabitRPG2UITests;
+			productName = HabitRPG2UITests;
+			productReference = 68F3F9CD1D70E82E00840DD2 /* HabitRPG2UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		68F3F9A11D70E82E00840DD2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Joel Pridgen";
+				TargetAttributes = {
+					68F3F9A81D70E82E00840DD2 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					68F3F9C11D70E82E00840DD2 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 68F3F9A81D70E82E00840DD2;
+					};
+					68F3F9CC1D70E82E00840DD2 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 68F3F9A81D70E82E00840DD2;
+					};
+				};
+			};
+			buildConfigurationList = 68F3F9A41D70E82E00840DD2 /* Build configuration list for PBXProject "HabitRPG2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 68F3F9A01D70E82E00840DD2;
+			productRefGroup = 68F3F9AA1D70E82E00840DD2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				68F3F9A81D70E82E00840DD2 /* HabitRPG2 */,
+				68F3F9C11D70E82E00840DD2 /* HabitRPG2Tests */,
+				68F3F9CC1D70E82E00840DD2 /* HabitRPG2UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		68F3F9A71D70E82E00840DD2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68F3F9BC1D70E82E00840DD2 /* LaunchScreen.storyboard in Resources */,
+				68F3F9B91D70E82E00840DD2 /* Assets.xcassets in Resources */,
+				68F3F9B71D70E82E00840DD2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68F3F9C01D70E82E00840DD2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68F3F9CB1D70E82E00840DD2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		68F3F9A51D70E82E00840DD2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68F3F9B41D70E82E00840DD2 /* ViewController.m in Sources */,
+				68F3F9B11D70E82E00840DD2 /* AppDelegate.m in Sources */,
+				68F3F9AE1D70E82E00840DD2 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68F3F9BE1D70E82E00840DD2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68F3F9C71D70E82E00840DD2 /* HabitRPG2Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68F3F9C91D70E82E00840DD2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68F3F9D21D70E82E00840DD2 /* HabitRPG2UITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		68F3F9C41D70E82E00840DD2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 68F3F9A81D70E82E00840DD2 /* HabitRPG2 */;
+			targetProxy = 68F3F9C31D70E82E00840DD2 /* PBXContainerItemProxy */;
+		};
+		68F3F9CF1D70E82E00840DD2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 68F3F9A81D70E82E00840DD2 /* HabitRPG2 */;
+			targetProxy = 68F3F9CE1D70E82E00840DD2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		68F3F9B51D70E82E00840DD2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68F3F9B61D70E82E00840DD2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		68F3F9BA1D70E82E00840DD2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68F3F9BB1D70E82E00840DD2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		68F3F9D41D70E82E00840DD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		68F3F9D51D70E82E00840DD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		68F3F9D71D70E82E00840DD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = HabitRPG2/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.HabitRPG2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		68F3F9D81D70E82E00840DD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = HabitRPG2/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.HabitRPG2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		68F3F9DA1D70E82E00840DD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = HabitRPG2Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.HabitRPG2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HabitRPG2.app/HabitRPG2";
+			};
+			name = Debug;
+		};
+		68F3F9DB1D70E82E00840DD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = HabitRPG2Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.HabitRPG2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HabitRPG2.app/HabitRPG2";
+			};
+			name = Release;
+		};
+		68F3F9DD1D70E82E00840DD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = HabitRPG2UITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.HabitRPG2UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = HabitRPG2;
+			};
+			name = Debug;
+		};
+		68F3F9DE1D70E82E00840DD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = HabitRPG2UITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.HabitRPG2UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = HabitRPG2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		68F3F9A41D70E82E00840DD2 /* Build configuration list for PBXProject "HabitRPG2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68F3F9D41D70E82E00840DD2 /* Debug */,
+				68F3F9D51D70E82E00840DD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		68F3F9D61D70E82E00840DD2 /* Build configuration list for PBXNativeTarget "HabitRPG2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68F3F9D71D70E82E00840DD2 /* Debug */,
+				68F3F9D81D70E82E00840DD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		68F3F9D91D70E82E00840DD2 /* Build configuration list for PBXNativeTarget "HabitRPG2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68F3F9DA1D70E82E00840DD2 /* Debug */,
+				68F3F9DB1D70E82E00840DD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		68F3F9DC1D70E82E00840DD2 /* Build configuration list for PBXNativeTarget "HabitRPG2UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68F3F9DD1D70E82E00840DD2 /* Debug */,
+				68F3F9DE1D70E82E00840DD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 68F3F9A11D70E82E00840DD2 /* Project object */;
+}
