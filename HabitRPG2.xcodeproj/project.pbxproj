@@ -9,12 +9,22 @@
 /* Begin PBXBuildFile section */
 		68F3F9AE1D70E82E00840DD2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9AD1D70E82E00840DD2 /* main.m */; };
 		68F3F9B11D70E82E00840DD2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9B01D70E82E00840DD2 /* AppDelegate.m */; };
-		68F3F9B41D70E82E00840DD2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9B31D70E82E00840DD2 /* ViewController.m */; };
-		68F3F9B71D70E82E00840DD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68F3F9B51D70E82E00840DD2 /* Main.storyboard */; };
 		68F3F9B91D70E82E00840DD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68F3F9B81D70E82E00840DD2 /* Assets.xcassets */; };
-		68F3F9BC1D70E82E00840DD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68F3F9BA1D70E82E00840DD2 /* LaunchScreen.storyboard */; };
 		68F3F9C71D70E82E00840DD2 /* HabitRPG2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9C61D70E82E00840DD2 /* HabitRPG2Tests.m */; };
 		68F3F9D21D70E82E00840DD2 /* HabitRPG2UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9D11D70E82E00840DD2 /* HabitRPG2UITests.m */; };
+		68F3F9E41D70E8DB00840DD2 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9E21D70E8DB00840DD2 /* BaseViewController.m */; };
+		68F3F9E51D70E8DB00840DD2 /* BaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68F3F9E31D70E8DB00840DD2 /* BaseViewController.xib */; };
+		68F3F9E91D70EC9700840DD2 /* DailyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9E71D70EC9700840DD2 /* DailyViewController.m */; };
+		68F3F9EA1D70EC9700840DD2 /* DailyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68F3F9E81D70EC9700840DD2 /* DailyViewController.xib */; };
+		68F3F9EE1D70FC0D00840DD2 /* HabitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9EC1D70FC0D00840DD2 /* HabitController.m */; };
+		68F3F9EF1D70FC0D00840DD2 /* HabitController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68F3F9ED1D70FC0D00840DD2 /* HabitController.xib */; };
+		68F3F9F31D70FC5E00840DD2 /* TodoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9F11D70FC5E00840DD2 /* TodoViewController.m */; };
+		68F3F9F41D70FC5E00840DD2 /* TodoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68F3F9F21D70FC5E00840DD2 /* TodoViewController.xib */; };
+		68F3F9F81D70FD3F00840DD2 /* GoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9F61D70FD3F00840DD2 /* GoodsViewController.m */; };
+		68F3F9F91D70FD3F00840DD2 /* GoodsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68F3F9F71D70FD3F00840DD2 /* GoodsViewController.xib */; };
+		68F3F9FE1D71CCF100840DD2 /* UIUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9FD1D71CCF100840DD2 /* UIUtilities.m */; };
+		68F3FA021D74897A00840DD2 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3FA001D74897A00840DD2 /* MenuViewController.m */; };
+		68F3FA031D74897A00840DD2 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68F3FA011D74897A00840DD2 /* MenuViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,11 +49,7 @@
 		68F3F9AD1D70E82E00840DD2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		68F3F9AF1D70E82E00840DD2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		68F3F9B01D70E82E00840DD2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		68F3F9B21D70E82E00840DD2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		68F3F9B31D70E82E00840DD2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		68F3F9B61D70E82E00840DD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		68F3F9B81D70E82E00840DD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		68F3F9BB1D70E82E00840DD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		68F3F9BD1D70E82E00840DD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68F3F9C21D70E82E00840DD2 /* HabitRPG2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitRPG2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		68F3F9C61D70E82E00840DD2 /* HabitRPG2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HabitRPG2Tests.m; sourceTree = "<group>"; };
@@ -51,6 +57,26 @@
 		68F3F9CD1D70E82E00840DD2 /* HabitRPG2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitRPG2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		68F3F9D11D70E82E00840DD2 /* HabitRPG2UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HabitRPG2UITests.m; sourceTree = "<group>"; };
 		68F3F9D31D70E82E00840DD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68F3F9E11D70E8DB00840DD2 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		68F3F9E21D70E8DB00840DD2 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		68F3F9E31D70E8DB00840DD2 /* BaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseViewController.xib; sourceTree = "<group>"; };
+		68F3F9E61D70EC9700840DD2 /* DailyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyViewController.h; sourceTree = "<group>"; };
+		68F3F9E71D70EC9700840DD2 /* DailyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyViewController.m; sourceTree = "<group>"; };
+		68F3F9E81D70EC9700840DD2 /* DailyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyViewController.xib; sourceTree = "<group>"; };
+		68F3F9EB1D70FC0D00840DD2 /* HabitController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HabitController.h; sourceTree = "<group>"; };
+		68F3F9EC1D70FC0D00840DD2 /* HabitController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HabitController.m; sourceTree = "<group>"; };
+		68F3F9ED1D70FC0D00840DD2 /* HabitController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HabitController.xib; sourceTree = "<group>"; };
+		68F3F9F01D70FC5E00840DD2 /* TodoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoViewController.h; sourceTree = "<group>"; };
+		68F3F9F11D70FC5E00840DD2 /* TodoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoViewController.m; sourceTree = "<group>"; };
+		68F3F9F21D70FC5E00840DD2 /* TodoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodoViewController.xib; sourceTree = "<group>"; };
+		68F3F9F51D70FD3F00840DD2 /* GoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsViewController.h; sourceTree = "<group>"; };
+		68F3F9F61D70FD3F00840DD2 /* GoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsViewController.m; sourceTree = "<group>"; };
+		68F3F9F71D70FD3F00840DD2 /* GoodsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsViewController.xib; sourceTree = "<group>"; };
+		68F3F9FC1D71CCF100840DD2 /* UIUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIUtilities.h; sourceTree = "<group>"; };
+		68F3F9FD1D71CCF100840DD2 /* UIUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIUtilities.m; sourceTree = "<group>"; };
+		68F3F9FF1D74897A00840DD2 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		68F3FA001D74897A00840DD2 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		68F3FA011D74897A00840DD2 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,13 +127,12 @@
 		68F3F9AB1D70E82E00840DD2 /* HabitRPG2 */ = {
 			isa = PBXGroup;
 			children = (
+				68F3F9FA1D71C9A500840DD2 /* Helpers */,
+				68F3F9E01D70E88F00840DD2 /* views */,
+				68F3F9DF1D70E88700840DD2 /* controllers */,
+				68F3F9B81D70E82E00840DD2 /* Assets.xcassets */,
 				68F3F9AF1D70E82E00840DD2 /* AppDelegate.h */,
 				68F3F9B01D70E82E00840DD2 /* AppDelegate.m */,
-				68F3F9B21D70E82E00840DD2 /* ViewController.h */,
-				68F3F9B31D70E82E00840DD2 /* ViewController.m */,
-				68F3F9B51D70E82E00840DD2 /* Main.storyboard */,
-				68F3F9B81D70E82E00840DD2 /* Assets.xcassets */,
-				68F3F9BA1D70E82E00840DD2 /* LaunchScreen.storyboard */,
 				68F3F9BD1D70E82E00840DD2 /* Info.plist */,
 				68F3F9AC1D70E82E00840DD2 /* Supporting Files */,
 			);
@@ -138,6 +163,47 @@
 				68F3F9D31D70E82E00840DD2 /* Info.plist */,
 			);
 			path = HabitRPG2UITests;
+			sourceTree = "<group>";
+		};
+		68F3F9DF1D70E88700840DD2 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				68F3F9FF1D74897A00840DD2 /* MenuViewController.h */,
+				68F3FA001D74897A00840DD2 /* MenuViewController.m */,
+				68F3F9F51D70FD3F00840DD2 /* GoodsViewController.h */,
+				68F3F9F61D70FD3F00840DD2 /* GoodsViewController.m */,
+				68F3F9F01D70FC5E00840DD2 /* TodoViewController.h */,
+				68F3F9F11D70FC5E00840DD2 /* TodoViewController.m */,
+				68F3F9EB1D70FC0D00840DD2 /* HabitController.h */,
+				68F3F9EC1D70FC0D00840DD2 /* HabitController.m */,
+				68F3F9E61D70EC9700840DD2 /* DailyViewController.h */,
+				68F3F9E71D70EC9700840DD2 /* DailyViewController.m */,
+				68F3F9E11D70E8DB00840DD2 /* BaseViewController.h */,
+				68F3F9E21D70E8DB00840DD2 /* BaseViewController.m */,
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
+		68F3F9E01D70E88F00840DD2 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				68F3FA011D74897A00840DD2 /* MenuViewController.xib */,
+				68F3F9E31D70E8DB00840DD2 /* BaseViewController.xib */,
+				68F3F9E81D70EC9700840DD2 /* DailyViewController.xib */,
+				68F3F9ED1D70FC0D00840DD2 /* HabitController.xib */,
+				68F3F9F21D70FC5E00840DD2 /* TodoViewController.xib */,
+				68F3F9F71D70FD3F00840DD2 /* GoodsViewController.xib */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
+		68F3F9FA1D71C9A500840DD2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				68F3F9FC1D71CCF100840DD2 /* UIUtilities.h */,
+				68F3F9FD1D71CCF100840DD2 /* UIUtilities.m */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +273,7 @@
 				TargetAttributes = {
 					68F3F9A81D70E82E00840DD2 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = XK3RJ8E2L2;
 					};
 					68F3F9C11D70E82E00840DD2 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -243,9 +310,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68F3F9BC1D70E82E00840DD2 /* LaunchScreen.storyboard in Resources */,
+				68F3F9F41D70FC5E00840DD2 /* TodoViewController.xib in Resources */,
+				68F3F9EF1D70FC0D00840DD2 /* HabitController.xib in Resources */,
 				68F3F9B91D70E82E00840DD2 /* Assets.xcassets in Resources */,
-				68F3F9B71D70E82E00840DD2 /* Main.storyboard in Resources */,
+				68F3F9E51D70E8DB00840DD2 /* BaseViewController.xib in Resources */,
+				68F3F9EA1D70EC9700840DD2 /* DailyViewController.xib in Resources */,
+				68F3FA031D74897A00840DD2 /* MenuViewController.xib in Resources */,
+				68F3F9F91D70FD3F00840DD2 /* GoodsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,8 +341,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68F3F9B41D70E82E00840DD2 /* ViewController.m in Sources */,
+				68F3F9F31D70FC5E00840DD2 /* TodoViewController.m in Sources */,
+				68F3FA021D74897A00840DD2 /* MenuViewController.m in Sources */,
+				68F3F9EE1D70FC0D00840DD2 /* HabitController.m in Sources */,
+				68F3F9FE1D71CCF100840DD2 /* UIUtilities.m in Sources */,
 				68F3F9B11D70E82E00840DD2 /* AppDelegate.m in Sources */,
+				68F3F9E41D70E8DB00840DD2 /* BaseViewController.m in Sources */,
+				68F3F9F81D70FD3F00840DD2 /* GoodsViewController.m in Sources */,
+				68F3F9E91D70EC9700840DD2 /* DailyViewController.m in Sources */,
 				68F3F9AE1D70E82E00840DD2 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,25 +383,6 @@
 			targetProxy = 68F3F9CE1D70E82E00840DD2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		68F3F9B51D70E82E00840DD2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				68F3F9B61D70E82E00840DD2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		68F3F9BA1D70E82E00840DD2 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				68F3F9BB1D70E82E00840DD2 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		68F3F9D41D70E82E00840DD2 /* Debug */ = {
@@ -415,6 +473,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = HabitRPG2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.HabitRPG2;
@@ -426,6 +485,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = HabitRPG2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.HabitRPG2;

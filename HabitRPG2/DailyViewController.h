@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  DailyViewController.h
 //  HabitRPG2
 //
 //  Created by Joel Pridgen on 8/26/16.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface DailyViewController : UIViewController
 
 @end
-
