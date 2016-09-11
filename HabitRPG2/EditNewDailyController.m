@@ -1,18 +1,18 @@
 //
-//  MenuViewController.m
+//  EditNewDailyController.m
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 8/29/16.
+//  Created by Joel Pridgen on 9/11/16.
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
-#import "MenuViewController.h"
+#import "EditNewDailyController.h"
 
-@interface MenuViewController ()
+@interface EditNewDailyController ()
 
 @end
 
-@implementation MenuViewController
+@implementation EditNewDailyController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,12 +24,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
--(void)setuptab{
-    UITabBarItem *tbi = [self tabBarItem];
-    
-    [tbi setTitle:@"Menu"];
-}
 /*
 #pragma mark - Navigation
 

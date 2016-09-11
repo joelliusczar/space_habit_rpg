@@ -13,4 +13,6 @@
 
 +(CGFloat)GetYStart: (CGFloat)height;
 
++(CGFloat)GetYStartUnderLabel: (CGFloat)height;
+
 @end

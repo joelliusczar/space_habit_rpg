@@ -7,6 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		686686EB1D79032200BB2D09 /* DailyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 686686EA1D79032200BB2D09 /* DailyCell.xib */; };
+		686686EE1D79060300BB2D09 /* DailyCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686686ED1D79060300BB2D09 /* DailyCellController.m */; };
+		687F01221D77CA6500C7B08B /* DailyTablesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 687F01201D77CA6500C7B08B /* DailyTablesViewController.m */; };
+		687F01231D77CA6500C7B08B /* DailyTablesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 687F01211D77CA6500C7B08B /* DailyTablesViewController.xib */; };
+		68E260621D7BC3EA00425D46 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 68E260601D7BC3EA00425D46 /* Model.xcdatamodeld */; };
+		68E260651D7FC3F200425D46 /* CoreDataStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260641D7FC3F200425D46 /* CoreDataStackController.m */; };
+		68E260991D84923C00425D46 /* DailyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260981D84923C00425D46 /* DailyHelper.m */; };
+		68E260BA1D84A3A800425D46 /* Daily+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E2609B1D84A3A800425D46 /* Daily+CoreDataProperties.m */; };
+		68E260BB1D84A3A800425D46 /* Daily.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E2609D1D84A3A800425D46 /* Daily.m */; };
+		68E260BC1D84A3A800425D46 /* Good+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E2609F1D84A3A800425D46 /* Good+CoreDataProperties.m */; };
+		68E260BD1D84A3A800425D46 /* Good.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260A11D84A3A800425D46 /* Good.m */; };
+		68E260BE1D84A3A800425D46 /* Hero+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260A31D84A3A800425D46 /* Hero+CoreDataProperties.m */; };
+		68E260BF1D84A3A800425D46 /* Hero.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260A51D84A3A800425D46 /* Hero.m */; };
+		68E260C01D84A3A800425D46 /* Settings+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260A71D84A3A800425D46 /* Settings+CoreDataProperties.m */; };
+		68E260C11D84A3A800425D46 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260A91D84A3A800425D46 /* Settings.m */; };
+		68E260C21D84A3A800425D46 /* Habit+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260AB1D84A3A800425D46 /* Habit+CoreDataProperties.m */; };
+		68E260C31D84A3A800425D46 /* Habit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260AD1D84A3A800425D46 /* Habit.m */; };
+		68E260C41D84A3A800425D46 /* Monster+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260AF1D84A3A800425D46 /* Monster+CoreDataProperties.m */; };
+		68E260C51D84A3A800425D46 /* Monster.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260B11D84A3A800425D46 /* Monster.m */; };
+		68E260C61D84A3A800425D46 /* Todo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260B31D84A3A800425D46 /* Todo+CoreDataProperties.m */; };
+		68E260C71D84A3A800425D46 /* Todo.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260B51D84A3A800425D46 /* Todo.m */; };
+		68E260C81D84A3A800425D46 /* Zone+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260B71D84A3A800425D46 /* Zone+CoreDataProperties.m */; };
+		68E260C91D84A3A800425D46 /* Zone.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260B91D84A3A800425D46 /* Zone.m */; };
+		68E260CF1D851DA500425D46 /* EditNewDailyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260CD1D851DA500425D46 /* EditNewDailyController.m */; };
+		68E260D01D851DA500425D46 /* EditNewDailyController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68E260CE1D851DA500425D46 /* EditNewDailyController.xib */; };
 		68F3F9AE1D70E82E00840DD2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9AD1D70E82E00840DD2 /* main.m */; };
 		68F3F9B11D70E82E00840DD2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9B01D70E82E00840DD2 /* AppDelegate.m */; };
 		68F3F9B91D70E82E00840DD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68F3F9B81D70E82E00840DD2 /* Assets.xcassets */; };
@@ -45,6 +70,52 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		686686EA1D79032200BB2D09 /* DailyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyCell.xib; sourceTree = "<group>"; };
+		686686EC1D79060300BB2D09 /* DailyCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyCellController.h; sourceTree = "<group>"; };
+		686686ED1D79060300BB2D09 /* DailyCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyCellController.m; sourceTree = "<group>"; };
+		687F011F1D77CA6500C7B08B /* DailyTablesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyTablesViewController.h; sourceTree = "<group>"; };
+		687F01201D77CA6500C7B08B /* DailyTablesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyTablesViewController.m; sourceTree = "<group>"; };
+		687F01211D77CA6500C7B08B /* DailyTablesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyTablesViewController.xib; sourceTree = "<group>"; };
+		68E260611D7BC3EA00425D46 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		68E260631D7FC3F200425D46 /* CoreDataStackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataStackController.h; sourceTree = "<group>"; };
+		68E260641D7FC3F200425D46 /* CoreDataStackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataStackController.m; sourceTree = "<group>"; };
+		68E260971D84923C00425D46 /* DailyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyHelper.h; sourceTree = "<group>"; };
+		68E260981D84923C00425D46 /* DailyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyHelper.m; sourceTree = "<group>"; };
+		68E2609A1D84A3A800425D46 /* Daily+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Daily+CoreDataProperties.h"; path = "../Daily+CoreDataProperties.h"; sourceTree = "<group>"; };
+		68E2609B1D84A3A800425D46 /* Daily+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Daily+CoreDataProperties.m"; path = "../Daily+CoreDataProperties.m"; sourceTree = "<group>"; };
+		68E2609C1D84A3A800425D46 /* Daily.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Daily.h; path = ../Daily.h; sourceTree = "<group>"; };
+		68E2609D1D84A3A800425D46 /* Daily.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Daily.m; path = ../Daily.m; sourceTree = "<group>"; };
+		68E2609E1D84A3A800425D46 /* Good+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Good+CoreDataProperties.h"; path = "../Good+CoreDataProperties.h"; sourceTree = "<group>"; };
+		68E2609F1D84A3A800425D46 /* Good+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Good+CoreDataProperties.m"; path = "../Good+CoreDataProperties.m"; sourceTree = "<group>"; };
+		68E260A01D84A3A800425D46 /* Good.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Good.h; path = ../Good.h; sourceTree = "<group>"; };
+		68E260A11D84A3A800425D46 /* Good.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Good.m; path = ../Good.m; sourceTree = "<group>"; };
+		68E260A21D84A3A800425D46 /* Hero+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Hero+CoreDataProperties.h"; path = "../Hero+CoreDataProperties.h"; sourceTree = "<group>"; };
+		68E260A31D84A3A800425D46 /* Hero+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Hero+CoreDataProperties.m"; path = "../Hero+CoreDataProperties.m"; sourceTree = "<group>"; };
+		68E260A41D84A3A800425D46 /* Hero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hero.h; path = ../Hero.h; sourceTree = "<group>"; };
+		68E260A51D84A3A800425D46 /* Hero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Hero.m; path = ../Hero.m; sourceTree = "<group>"; };
+		68E260A61D84A3A800425D46 /* Settings+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Settings+CoreDataProperties.h"; path = "../Settings+CoreDataProperties.h"; sourceTree = "<group>"; };
+		68E260A71D84A3A800425D46 /* Settings+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Settings+CoreDataProperties.m"; path = "../Settings+CoreDataProperties.m"; sourceTree = "<group>"; };
+		68E260A81D84A3A800425D46 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = ../Settings.h; sourceTree = "<group>"; };
+		68E260A91D84A3A800425D46 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = ../Settings.m; sourceTree = "<group>"; };
+		68E260AA1D84A3A800425D46 /* Habit+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Habit+CoreDataProperties.h"; path = "../Habit+CoreDataProperties.h"; sourceTree = "<group>"; };
+		68E260AB1D84A3A800425D46 /* Habit+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Habit+CoreDataProperties.m"; path = "../Habit+CoreDataProperties.m"; sourceTree = "<group>"; };
+		68E260AC1D84A3A800425D46 /* Habit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Habit.h; path = ../Habit.h; sourceTree = "<group>"; };
+		68E260AD1D84A3A800425D46 /* Habit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Habit.m; path = ../Habit.m; sourceTree = "<group>"; };
+		68E260AE1D84A3A800425D46 /* Monster+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Monster+CoreDataProperties.h"; path = "../Monster+CoreDataProperties.h"; sourceTree = "<group>"; };
+		68E260AF1D84A3A800425D46 /* Monster+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Monster+CoreDataProperties.m"; path = "../Monster+CoreDataProperties.m"; sourceTree = "<group>"; };
+		68E260B01D84A3A800425D46 /* Monster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Monster.h; path = ../Monster.h; sourceTree = "<group>"; };
+		68E260B11D84A3A800425D46 /* Monster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Monster.m; path = ../Monster.m; sourceTree = "<group>"; };
+		68E260B21D84A3A800425D46 /* Todo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Todo+CoreDataProperties.h"; path = "../Todo+CoreDataProperties.h"; sourceTree = "<group>"; };
+		68E260B31D84A3A800425D46 /* Todo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Todo+CoreDataProperties.m"; path = "../Todo+CoreDataProperties.m"; sourceTree = "<group>"; };
+		68E260B41D84A3A800425D46 /* Todo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Todo.h; path = ../Todo.h; sourceTree = "<group>"; };
+		68E260B51D84A3A800425D46 /* Todo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Todo.m; path = ../Todo.m; sourceTree = "<group>"; };
+		68E260B61D84A3A800425D46 /* Zone+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Zone+CoreDataProperties.h"; path = "../Zone+CoreDataProperties.h"; sourceTree = "<group>"; };
+		68E260B71D84A3A800425D46 /* Zone+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Zone+CoreDataProperties.m"; path = "../Zone+CoreDataProperties.m"; sourceTree = "<group>"; };
+		68E260B81D84A3A800425D46 /* Zone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Zone.h; path = ../Zone.h; sourceTree = "<group>"; };
+		68E260B91D84A3A800425D46 /* Zone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Zone.m; path = ../Zone.m; sourceTree = "<group>"; };
+		68E260CC1D851DA500425D46 /* EditNewDailyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNewDailyController.h; sourceTree = "<group>"; };
+		68E260CD1D851DA500425D46 /* EditNewDailyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNewDailyController.m; sourceTree = "<group>"; };
+		68E260CE1D851DA500425D46 /* EditNewDailyController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditNewDailyController.xib; sourceTree = "<group>"; };
 		68F3F9A91D70E82E00840DD2 /* HabitRPG2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitRPG2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68F3F9AD1D70E82E00840DD2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		68F3F9AF1D70E82E00840DD2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -104,6 +175,115 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		686686EF1D79060D00BB2D09 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				68F3F9FF1D74897A00840DD2 /* MenuViewController.h */,
+				68F3FA001D74897A00840DD2 /* MenuViewController.m */,
+				68F3F9F51D70FD3F00840DD2 /* GoodsViewController.h */,
+				68F3F9F61D70FD3F00840DD2 /* GoodsViewController.m */,
+				68F3F9F01D70FC5E00840DD2 /* TodoViewController.h */,
+				68F3F9F11D70FC5E00840DD2 /* TodoViewController.m */,
+				68F3F9EB1D70FC0D00840DD2 /* HabitController.h */,
+				68F3F9EC1D70FC0D00840DD2 /* HabitController.m */,
+				68F3F9E61D70EC9700840DD2 /* DailyViewController.h */,
+				68F3F9E71D70EC9700840DD2 /* DailyViewController.m */,
+			);
+			name = Tabs;
+			sourceTree = "<group>";
+		};
+		686686F01D79063600BB2D09 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				686686EC1D79060300BB2D09 /* DailyCellController.h */,
+				686686ED1D79060300BB2D09 /* DailyCellController.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		686686F11D7906DF00BB2D09 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				68F3F9E81D70EC9700840DD2 /* DailyViewController.xib */,
+				68F3F9ED1D70FC0D00840DD2 /* HabitController.xib */,
+				68F3F9F21D70FC5E00840DD2 /* TodoViewController.xib */,
+				68F3F9F71D70FD3F00840DD2 /* GoodsViewController.xib */,
+				68F3FA011D74897A00840DD2 /* MenuViewController.xib */,
+			);
+			name = Tabs;
+			sourceTree = "<group>";
+		};
+		686686F21D7906F900BB2D09 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				686686EA1D79032200BB2D09 /* DailyCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		68E2605C1D7B36FB00425D46 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				68E2609A1D84A3A800425D46 /* Daily+CoreDataProperties.h */,
+				68E2609B1D84A3A800425D46 /* Daily+CoreDataProperties.m */,
+				68E2609C1D84A3A800425D46 /* Daily.h */,
+				68E2609D1D84A3A800425D46 /* Daily.m */,
+				68E2609E1D84A3A800425D46 /* Good+CoreDataProperties.h */,
+				68E2609F1D84A3A800425D46 /* Good+CoreDataProperties.m */,
+				68E260A01D84A3A800425D46 /* Good.h */,
+				68E260A11D84A3A800425D46 /* Good.m */,
+				68E260A21D84A3A800425D46 /* Hero+CoreDataProperties.h */,
+				68E260A31D84A3A800425D46 /* Hero+CoreDataProperties.m */,
+				68E260A41D84A3A800425D46 /* Hero.h */,
+				68E260A51D84A3A800425D46 /* Hero.m */,
+				68E260A61D84A3A800425D46 /* Settings+CoreDataProperties.h */,
+				68E260A71D84A3A800425D46 /* Settings+CoreDataProperties.m */,
+				68E260A81D84A3A800425D46 /* Settings.h */,
+				68E260A91D84A3A800425D46 /* Settings.m */,
+				68E260AA1D84A3A800425D46 /* Habit+CoreDataProperties.h */,
+				68E260AB1D84A3A800425D46 /* Habit+CoreDataProperties.m */,
+				68E260AC1D84A3A800425D46 /* Habit.h */,
+				68E260AD1D84A3A800425D46 /* Habit.m */,
+				68E260AE1D84A3A800425D46 /* Monster+CoreDataProperties.h */,
+				68E260AF1D84A3A800425D46 /* Monster+CoreDataProperties.m */,
+				68E260B01D84A3A800425D46 /* Monster.h */,
+				68E260B11D84A3A800425D46 /* Monster.m */,
+				68E260B21D84A3A800425D46 /* Todo+CoreDataProperties.h */,
+				68E260B31D84A3A800425D46 /* Todo+CoreDataProperties.m */,
+				68E260B41D84A3A800425D46 /* Todo.h */,
+				68E260B51D84A3A800425D46 /* Todo.m */,
+				68E260B61D84A3A800425D46 /* Zone+CoreDataProperties.h */,
+				68E260B71D84A3A800425D46 /* Zone+CoreDataProperties.m */,
+				68E260B81D84A3A800425D46 /* Zone.h */,
+				68E260B91D84A3A800425D46 /* Zone.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		68E260CB1D84FB5900425D46 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		68E260D11D851E0800425D46 /* EditingControllers */ = {
+			isa = PBXGroup;
+			children = (
+				68E260CC1D851DA500425D46 /* EditNewDailyController.h */,
+				68E260CD1D851DA500425D46 /* EditNewDailyController.m */,
+			);
+			name = EditingControllers;
+			sourceTree = "<group>";
+		};
+		68E260D21D851E2400425D46 /* Editing */ = {
+			isa = PBXGroup;
+			children = (
+				68E260CE1D851DA500425D46 /* EditNewDailyController.xib */,
+			);
+			name = Editing;
+			sourceTree = "<group>";
+		};
 		68F3F9A01D70E82E00840DD2 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +307,8 @@
 		68F3F9AB1D70E82E00840DD2 /* HabitRPG2 */ = {
 			isa = PBXGroup;
 			children = (
+				68E260CB1D84FB5900425D46 /* Constants */,
+				68E2605C1D7B36FB00425D46 /* Models */,
 				68F3F9FA1D71C9A500840DD2 /* Helpers */,
 				68F3F9E01D70E88F00840DD2 /* views */,
 				68F3F9DF1D70E88700840DD2 /* controllers */,
@@ -135,6 +317,7 @@
 				68F3F9B01D70E82E00840DD2 /* AppDelegate.m */,
 				68F3F9BD1D70E82E00840DD2 /* Info.plist */,
 				68F3F9AC1D70E82E00840DD2 /* Supporting Files */,
+				68E260601D7BC3EA00425D46 /* Model.xcdatamodeld */,
 			);
 			path = HabitRPG2;
 			sourceTree = "<group>";
@@ -168,18 +351,15 @@
 		68F3F9DF1D70E88700840DD2 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				68F3F9FF1D74897A00840DD2 /* MenuViewController.h */,
-				68F3FA001D74897A00840DD2 /* MenuViewController.m */,
-				68F3F9F51D70FD3F00840DD2 /* GoodsViewController.h */,
-				68F3F9F61D70FD3F00840DD2 /* GoodsViewController.m */,
-				68F3F9F01D70FC5E00840DD2 /* TodoViewController.h */,
-				68F3F9F11D70FC5E00840DD2 /* TodoViewController.m */,
-				68F3F9EB1D70FC0D00840DD2 /* HabitController.h */,
-				68F3F9EC1D70FC0D00840DD2 /* HabitController.m */,
-				68F3F9E61D70EC9700840DD2 /* DailyViewController.h */,
-				68F3F9E71D70EC9700840DD2 /* DailyViewController.m */,
+				68E260D11D851E0800425D46 /* EditingControllers */,
+				686686F01D79063600BB2D09 /* Cells */,
+				686686EF1D79060D00BB2D09 /* Tabs */,
 				68F3F9E11D70E8DB00840DD2 /* BaseViewController.h */,
 				68F3F9E21D70E8DB00840DD2 /* BaseViewController.m */,
+				687F011F1D77CA6500C7B08B /* DailyTablesViewController.h */,
+				687F01201D77CA6500C7B08B /* DailyTablesViewController.m */,
+				68E260631D7FC3F200425D46 /* CoreDataStackController.h */,
+				68E260641D7FC3F200425D46 /* CoreDataStackController.m */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -187,12 +367,11 @@
 		68F3F9E01D70E88F00840DD2 /* views */ = {
 			isa = PBXGroup;
 			children = (
-				68F3FA011D74897A00840DD2 /* MenuViewController.xib */,
+				68E260D21D851E2400425D46 /* Editing */,
+				686686F21D7906F900BB2D09 /* Cells */,
+				686686F11D7906DF00BB2D09 /* Tabs */,
+				687F01211D77CA6500C7B08B /* DailyTablesViewController.xib */,
 				68F3F9E31D70E8DB00840DD2 /* BaseViewController.xib */,
-				68F3F9E81D70EC9700840DD2 /* DailyViewController.xib */,
-				68F3F9ED1D70FC0D00840DD2 /* HabitController.xib */,
-				68F3F9F21D70FC5E00840DD2 /* TodoViewController.xib */,
-				68F3F9F71D70FD3F00840DD2 /* GoodsViewController.xib */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -202,6 +381,8 @@
 			children = (
 				68F3F9FC1D71CCF100840DD2 /* UIUtilities.h */,
 				68F3F9FD1D71CCF100840DD2 /* UIUtilities.m */,
+				68E260971D84923C00425D46 /* DailyHelper.h */,
+				68E260981D84923C00425D46 /* DailyHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -310,10 +491,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				686686EB1D79032200BB2D09 /* DailyCell.xib in Resources */,
 				68F3F9F41D70FC5E00840DD2 /* TodoViewController.xib in Resources */,
 				68F3F9EF1D70FC0D00840DD2 /* HabitController.xib in Resources */,
 				68F3F9B91D70E82E00840DD2 /* Assets.xcassets in Resources */,
+				687F01231D77CA6500C7B08B /* DailyTablesViewController.xib in Resources */,
 				68F3F9E51D70E8DB00840DD2 /* BaseViewController.xib in Resources */,
+				68E260D01D851DA500425D46 /* EditNewDailyController.xib in Resources */,
 				68F3F9EA1D70EC9700840DD2 /* DailyViewController.xib in Resources */,
 				68F3FA031D74897A00840DD2 /* MenuViewController.xib in Resources */,
 				68F3F9F91D70FD3F00840DD2 /* GoodsViewController.xib in Resources */,
@@ -341,15 +525,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68E260BE1D84A3A800425D46 /* Hero+CoreDataProperties.m in Sources */,
+				68E260C01D84A3A800425D46 /* Settings+CoreDataProperties.m in Sources */,
+				68E260C51D84A3A800425D46 /* Monster.m in Sources */,
+				686686EE1D79060300BB2D09 /* DailyCellController.m in Sources */,
 				68F3F9F31D70FC5E00840DD2 /* TodoViewController.m in Sources */,
 				68F3FA021D74897A00840DD2 /* MenuViewController.m in Sources */,
+				68E260BC1D84A3A800425D46 /* Good+CoreDataProperties.m in Sources */,
+				68E260C61D84A3A800425D46 /* Todo+CoreDataProperties.m in Sources */,
+				68E260C41D84A3A800425D46 /* Monster+CoreDataProperties.m in Sources */,
+				68E260BD1D84A3A800425D46 /* Good.m in Sources */,
 				68F3F9EE1D70FC0D00840DD2 /* HabitController.m in Sources */,
+				68E260C21D84A3A800425D46 /* Habit+CoreDataProperties.m in Sources */,
 				68F3F9FE1D71CCF100840DD2 /* UIUtilities.m in Sources */,
+				68E260BB1D84A3A800425D46 /* Daily.m in Sources */,
 				68F3F9B11D70E82E00840DD2 /* AppDelegate.m in Sources */,
+				68E260C91D84A3A800425D46 /* Zone.m in Sources */,
+				68E260651D7FC3F200425D46 /* CoreDataStackController.m in Sources */,
 				68F3F9E41D70E8DB00840DD2 /* BaseViewController.m in Sources */,
+				68E260991D84923C00425D46 /* DailyHelper.m in Sources */,
+				68E260C11D84A3A800425D46 /* Settings.m in Sources */,
+				68E260BA1D84A3A800425D46 /* Daily+CoreDataProperties.m in Sources */,
+				68E260CF1D851DA500425D46 /* EditNewDailyController.m in Sources */,
+				68E260C81D84A3A800425D46 /* Zone+CoreDataProperties.m in Sources */,
 				68F3F9F81D70FD3F00840DD2 /* GoodsViewController.m in Sources */,
+				68E260C31D84A3A800425D46 /* Habit.m in Sources */,
+				68E260BF1D84A3A800425D46 /* Hero.m in Sources */,
+				687F01221D77CA6500C7B08B /* DailyTablesViewController.m in Sources */,
 				68F3F9E91D70EC9700840DD2 /* DailyViewController.m in Sources */,
+				68E260621D7BC3EA00425D46 /* Model.xcdatamodeld in Sources */,
 				68F3F9AE1D70E82E00840DD2 /* main.m in Sources */,
+				68E260C71D84A3A800425D46 /* Todo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,6 +764,7 @@
 				68F3F9D81D70E82E00840DD2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		68F3F9D91D70E82E00840DD2 /* Build configuration list for PBXNativeTarget "HabitRPG2Tests" */ = {
 			isa = XCConfigurationList;
@@ -566,6 +773,7 @@
 				68F3F9DB1D70E82E00840DD2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		68F3F9DC1D70E82E00840DD2 /* Build configuration list for PBXNativeTarget "HabitRPG2UITests" */ = {
 			isa = XCConfigurationList;
@@ -574,8 +782,22 @@
 				68F3F9DE1D70E82E00840DD2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		68E260601D7BC3EA00425D46 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				68E260611D7BC3EA00425D46 /* Model.xcdatamodel */,
+			);
+			currentVersion = 68E260611D7BC3EA00425D46 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 68F3F9A11D70E82E00840DD2 /* Project object */;
 }

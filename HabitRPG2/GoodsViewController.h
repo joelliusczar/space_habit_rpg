@@ -10,4 +10,6 @@
 
 @interface GoodsViewController : UIViewController
 
+-(void)setuptab;
+
 @end

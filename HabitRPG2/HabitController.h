@@ -10,4 +10,6 @@
 
 @interface HabitController : UIViewController
 
+-(void)setuptab;
+
 @end

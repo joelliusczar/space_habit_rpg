@@ -10,4 +10,6 @@
 
 @interface TodoViewController : UIViewController
 
+-(void)setuptab;
+
 @end

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreDataStackController.h"
 
 @interface DailyViewController : UIViewController
+
+-(void)setuptab:(CoreDataStackController *)dataController;
 
 @end

@@ -15,4 +15,8 @@
     return height *.25;
 }
 
++(CGFloat)GetYStartUnderLabel: (CGFloat)height{
+    return height *.10;
+}
+
 @end

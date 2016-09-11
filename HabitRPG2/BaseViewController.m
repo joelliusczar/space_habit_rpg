@@ -13,6 +13,7 @@
 #import "GoodsViewController.h"
 #import "MenuViewController.h"
 #import "UIUtilities.h"
+#import "CoreDataStackController.h"
 
 @import CoreGraphics;
 
@@ -20,6 +21,7 @@
 @interface BaseViewController ()
 
 @property (strong,nonatomic) UITabBarController *tabsController;
+@property (strong,nonatomic) CoreDataStackController *dataController;
 
 @end
 
@@ -29,30 +31,31 @@
     [super viewDidLoad];
     
     self.tabsController = [[UITabBarController alloc] init];
+    self.dataController = [[CoreDataStackController alloc] init];
     
     DailyViewController* dc = [[DailyViewController alloc]
                                initWithNibName:@"DailyViewController"
                                bundle:nil];
-    [self setUpDailyTab:dc];
+    [dc setuptab:self.dataController];
     
     HabitController* hc = [[HabitController alloc]
                            initWithNibName:@"HabitController"
                            bundle:nil];
-    [self setUpHabitsTab:hc];
+    [hc setuptab];
     
     TodoViewController* tc = [[TodoViewController alloc]
                               initWithNibName:@"TodoViewController"
                               bundle:nil];
-    [self setUpTodoTab:tc];
+    [tc setuptab];
     
     GoodsViewController* gc = [[GoodsViewController alloc]
                                initWithNibName:@"GoodsViewController"
                                bundle:nil];
-    [self setUpGoodsTab:gc];
+    [gc setuptab];
     MenuViewController* mc = [[MenuViewController alloc]
                               initWithNibName:@"MenuViewController"
                               bundle:nil];
-    [self setUpMenuTab:mc];
+    [mc setuptab];
     NSArray* controllers = [NSArray arrayWithObjects:dc,hc,tc,gc,mc,nil];
     
     self.tabsController.viewControllers = controllers;
@@ -74,35 +77,7 @@
     
 }
 
--(void)setUpDailyTab:(DailyViewController *)controller{
-    UITabBarItem *tbi = [controller tabBarItem];
-    
-    [tbi setTitle:@"Dailies"];
-}
 
--(void)setUpHabitsTab:(HabitController *)controller{
-    UITabBarItem *tbi = [controller tabBarItem];
-    
-    [tbi setTitle:@"Habits"];
-}
-
--(void)setUpTodoTab:(TodoViewController *)controller{
-    UITabBarItem *tbi = [controller tabBarItem];
-    
-    [tbi setTitle:@"To-dos"];
-}
-
--(void)setUpGoodsTab:(GoodsViewController *)controller{
-    UITabBarItem *tbi = [controller tabBarItem];
-    
-    [tbi setTitle:@"Goods"];
-}
-
--(void)setUpMenuTab:(MenuViewController *)controller{
-    UITabBarItem *tbi = [controller tabBarItem];
-    
-    [tbi setTitle:@"Menu"];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

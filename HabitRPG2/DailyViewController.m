@@ -7,21 +7,73 @@
 //
 
 #import "DailyViewController.h"
+#import "DailyTablesViewController.h"
+#import "UIUtilities.h"
+#import "CoreDataStackController.h"
+#import "Daily.h"
+#import "EditNewDailyController.h"
 
 @interface DailyViewController ()
+
+@property (nonatomic,strong) DailyTablesViewController *dailyTablesController;
+@property (nonatomic,strong) CoreDataStackController *dataController;
+@property (nonatomic,strong) EditNewDailyController *editController;
+@property (nonatomic,weak) UIButton *addButton;
 
 @end
 
 @implementation DailyViewController
 
+static NSString *const EntityName = @"Daily";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    self.dailyTablesController = [[DailyTablesViewController alloc]
+                                  initWithNibName:@"DailyTablesViewController"
+                                  bundle:nil];
+    [self.dailyTablesController setupData:self.dataController];
+    [self.view addSubview:self.dailyTablesController.view];
+    [self addChildViewController:self.dailyTablesController];
+    [self.dailyTablesController didMoveToParentViewController:self];
+    
+    CGFloat width = self.view.frame.size.width;
+    CGFloat height = self.view.frame.size.height;
+    CGFloat minY = self.view.frame.origin.y;
+    CGFloat viewHeight = self.view.frame.size.height - [UIUtilities GetYStartUnderLabel:height];
+    self.dailyTablesController.view.frame = CGRectMake(0, minY + [UIUtilities GetYStartUnderLabel:height],
+                                                       width,
+                                                       viewHeight);
+    [self.dailyTablesController setupData:self.dataController];
+    
+    self.addButton = [self.view viewWithTag:1];
+    [self.addButton addTarget:self action:@selector(pressedAddBtn:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)setuptab:(CoreDataStackController *)dataController{
+    self.dataController = dataController;
+    UITabBarItem *tbi = [self tabBarItem];
+    
+    [tbi setTitle:@"Dailies"];
+}
+
+-(void)pressedAddBtn:(id)sender{
+//    Daily *d = (Daily *)[self.dataController constructEmptyEntity:EntityName];
+//    d.dailyName = @"it's a daily";
+//    d.difficulty = @2;
+//    d.urgency = @2;
+//    
+//    [self.dataController Save];
+//    [self.dailyTablesController addNewDailyToView:d];
+    self.editController = [[EditNewDailyController alloc]initWithNibName:@"EditNewDailyController" bundle:nil];
+    [self showViewController:self.editController sender:self];
+    
 }
 
 /*

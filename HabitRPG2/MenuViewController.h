@@ -10,4 +10,6 @@
 
 @interface MenuViewController : UIViewController
 
+-(void)setuptab;
+
 @end
