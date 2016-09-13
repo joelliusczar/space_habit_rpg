@@ -2,7 +2,7 @@
 //  Habit+CoreDataProperties.m
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 9/10/16.
+//  Created by Joel Pridgen on 9/12/16.
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -13,13 +13,13 @@
 
 @implementation Habit (CoreDataProperties)
 
+@dynamic difficulty;
+@dynamic freeViolations;
+@dynamic frequencyCounts;
 @dynamic habitName;
+@dynamic neglectPunishReward;
 @dynamic note;
 @dynamic polarity;
 @dynamic urgency;
-@dynamic difficulty;
-@dynamic freeViolations;
-@dynamic neglectPunishReward;
-@dynamic frequencyCounts;
 
 @end

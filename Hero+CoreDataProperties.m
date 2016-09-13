@@ -2,7 +2,7 @@
 //  Hero+CoreDataProperties.m
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 9/10/16.
+//  Created by Joel Pridgen on 9/12/16.
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -13,13 +13,13 @@
 
 @implementation Hero (CoreDataProperties)
 
-@dynamic shipName;
-@dynamic lvl;
 @dynamic gold;
+@dynamic lvl;
 @dynamic maxHp;
-@dynamic nowHp;
 @dynamic maxXp;
+@dynamic nowHp;
 @dynamic nowXp;
+@dynamic shipName;
 @dynamic vistedZonesDict;
 
 @end

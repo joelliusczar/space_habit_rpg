@@ -5,6 +5,7 @@
         <attribute name="dailyName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="difficulty" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="lastActivationTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="nextDueTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rate" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="streakLength" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -73,13 +74,13 @@
         <attribute name="zoneName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Hero" positionX="-90" positionY="-58" width="128" height="163"/>
-        <element name="Daily" positionX="-254" positionY="-84" width="128" height="28"/>
-        <element name="Habit" positionX="108" positionY="18" width="128" height="163"/>
-        <element name="Todo" positionX="27" positionY="198" width="128" height="133"/>
+        <element name="Daily" positionX="-254" positionY="-84" width="128" height="180"/>
         <element name="Good" positionX="-308" positionY="128" width="128" height="103"/>
+        <element name="Habit" positionX="108" positionY="18" width="128" height="163"/>
+        <element name="Hero" positionX="-90" positionY="-58" width="128" height="163"/>
         <element name="Monster" positionX="-234" positionY="344" width="128" height="133"/>
-        <element name="Zone" positionX="-596" positionY="30" width="128" height="150"/>
         <element name="Settings" positionX="-441" positionY="36" width="128" height="180"/>
+        <element name="Todo" positionX="27" positionY="198" width="128" height="133"/>
+        <element name="Zone" positionX="-596" positionY="30" width="128" height="150"/>
     </elements>
 </model>

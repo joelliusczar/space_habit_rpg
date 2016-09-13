@@ -2,7 +2,7 @@
 //  Settings+CoreDataProperties.m
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 9/10/16.
+//  Created by Joel Pridgen on 9/12/16.
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -13,14 +13,14 @@
 
 @implementation Settings (CoreDataProperties)
 
-@dynamic reminderHour;
+@dynamic createDate;
 @dynamic dayStart;
 @dynamic deathGoldPenalty;
 @dynamic heroLvlPenalty;
-@dynamic zoneLvlPenalty;
-@dynamic permaDeath;
-@dynamic storyModeisOn;
 @dynamic lastCheckinTime;
-@dynamic createDate;
+@dynamic permaDeath;
+@dynamic reminderHour;
+@dynamic storyModeisOn;
+@dynamic zoneLvlPenalty;
 
 @end

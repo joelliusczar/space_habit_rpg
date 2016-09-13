@@ -14,24 +14,24 @@
 		68E260621D7BC3EA00425D46 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 68E260601D7BC3EA00425D46 /* Model.xcdatamodeld */; };
 		68E260651D7FC3F200425D46 /* CoreDataStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260641D7FC3F200425D46 /* CoreDataStackController.m */; };
 		68E260991D84923C00425D46 /* DailyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260981D84923C00425D46 /* DailyHelper.m */; };
-		68E260BA1D84A3A800425D46 /* Daily+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E2609B1D84A3A800425D46 /* Daily+CoreDataProperties.m */; };
-		68E260BB1D84A3A800425D46 /* Daily.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E2609D1D84A3A800425D46 /* Daily.m */; };
-		68E260BC1D84A3A800425D46 /* Good+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E2609F1D84A3A800425D46 /* Good+CoreDataProperties.m */; };
-		68E260BD1D84A3A800425D46 /* Good.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260A11D84A3A800425D46 /* Good.m */; };
-		68E260BE1D84A3A800425D46 /* Hero+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260A31D84A3A800425D46 /* Hero+CoreDataProperties.m */; };
-		68E260BF1D84A3A800425D46 /* Hero.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260A51D84A3A800425D46 /* Hero.m */; };
-		68E260C01D84A3A800425D46 /* Settings+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260A71D84A3A800425D46 /* Settings+CoreDataProperties.m */; };
-		68E260C11D84A3A800425D46 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260A91D84A3A800425D46 /* Settings.m */; };
-		68E260C21D84A3A800425D46 /* Habit+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260AB1D84A3A800425D46 /* Habit+CoreDataProperties.m */; };
-		68E260C31D84A3A800425D46 /* Habit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260AD1D84A3A800425D46 /* Habit.m */; };
-		68E260C41D84A3A800425D46 /* Monster+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260AF1D84A3A800425D46 /* Monster+CoreDataProperties.m */; };
-		68E260C51D84A3A800425D46 /* Monster.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260B11D84A3A800425D46 /* Monster.m */; };
-		68E260C61D84A3A800425D46 /* Todo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260B31D84A3A800425D46 /* Todo+CoreDataProperties.m */; };
-		68E260C71D84A3A800425D46 /* Todo.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260B51D84A3A800425D46 /* Todo.m */; };
-		68E260C81D84A3A800425D46 /* Zone+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260B71D84A3A800425D46 /* Zone+CoreDataProperties.m */; };
-		68E260C91D84A3A800425D46 /* Zone.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260B91D84A3A800425D46 /* Zone.m */; };
 		68E260CF1D851DA500425D46 /* EditNewDailyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260CD1D851DA500425D46 /* EditNewDailyController.m */; };
 		68E260D01D851DA500425D46 /* EditNewDailyController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68E260CE1D851DA500425D46 /* EditNewDailyController.xib */; };
+		68E261321D87673900425D46 /* Settings+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E261131D87673900425D46 /* Settings+CoreDataProperties.m */; };
+		68E261331D87673900425D46 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E261151D87673900425D46 /* Settings.m */; };
+		68E261341D87673900425D46 /* Daily+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E261171D87673900425D46 /* Daily+CoreDataProperties.m */; };
+		68E261351D87673900425D46 /* Daily.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E261191D87673900425D46 /* Daily.m */; };
+		68E261361D87673900425D46 /* Todo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E2611B1D87673900425D46 /* Todo+CoreDataProperties.m */; };
+		68E261371D87673900425D46 /* Todo.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E2611D1D87673900425D46 /* Todo.m */; };
+		68E261381D87673900425D46 /* Zone+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E2611F1D87673900425D46 /* Zone+CoreDataProperties.m */; };
+		68E261391D87673900425D46 /* Zone.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E261211D87673900425D46 /* Zone.m */; };
+		68E2613A1D87673900425D46 /* Hero+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E261231D87673900425D46 /* Hero+CoreDataProperties.m */; };
+		68E2613B1D87673900425D46 /* Hero.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E261251D87673900425D46 /* Hero.m */; };
+		68E2613C1D87673900425D46 /* Habit+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E261271D87673900425D46 /* Habit+CoreDataProperties.m */; };
+		68E2613D1D87673900425D46 /* Habit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E261291D87673900425D46 /* Habit.m */; };
+		68E2613E1D87673900425D46 /* Good+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E2612B1D87673900425D46 /* Good+CoreDataProperties.m */; };
+		68E2613F1D87673900425D46 /* Good.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E2612D1D87673900425D46 /* Good.m */; };
+		68E261401D87673900425D46 /* Monster+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E2612F1D87673900425D46 /* Monster+CoreDataProperties.m */; };
+		68E261411D87673900425D46 /* Monster.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E261311D87673900425D46 /* Monster.m */; };
 		68F3F9AE1D70E82E00840DD2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9AD1D70E82E00840DD2 /* main.m */; };
 		68F3F9B11D70E82E00840DD2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9B01D70E82E00840DD2 /* AppDelegate.m */; };
 		68F3F9B91D70E82E00840DD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68F3F9B81D70E82E00840DD2 /* Assets.xcassets */; };
@@ -81,41 +81,41 @@
 		68E260641D7FC3F200425D46 /* CoreDataStackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataStackController.m; sourceTree = "<group>"; };
 		68E260971D84923C00425D46 /* DailyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyHelper.h; sourceTree = "<group>"; };
 		68E260981D84923C00425D46 /* DailyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyHelper.m; sourceTree = "<group>"; };
-		68E2609A1D84A3A800425D46 /* Daily+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Daily+CoreDataProperties.h"; path = "../Daily+CoreDataProperties.h"; sourceTree = "<group>"; };
-		68E2609B1D84A3A800425D46 /* Daily+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Daily+CoreDataProperties.m"; path = "../Daily+CoreDataProperties.m"; sourceTree = "<group>"; };
-		68E2609C1D84A3A800425D46 /* Daily.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Daily.h; path = ../Daily.h; sourceTree = "<group>"; };
-		68E2609D1D84A3A800425D46 /* Daily.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Daily.m; path = ../Daily.m; sourceTree = "<group>"; };
-		68E2609E1D84A3A800425D46 /* Good+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Good+CoreDataProperties.h"; path = "../Good+CoreDataProperties.h"; sourceTree = "<group>"; };
-		68E2609F1D84A3A800425D46 /* Good+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Good+CoreDataProperties.m"; path = "../Good+CoreDataProperties.m"; sourceTree = "<group>"; };
-		68E260A01D84A3A800425D46 /* Good.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Good.h; path = ../Good.h; sourceTree = "<group>"; };
-		68E260A11D84A3A800425D46 /* Good.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Good.m; path = ../Good.m; sourceTree = "<group>"; };
-		68E260A21D84A3A800425D46 /* Hero+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Hero+CoreDataProperties.h"; path = "../Hero+CoreDataProperties.h"; sourceTree = "<group>"; };
-		68E260A31D84A3A800425D46 /* Hero+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Hero+CoreDataProperties.m"; path = "../Hero+CoreDataProperties.m"; sourceTree = "<group>"; };
-		68E260A41D84A3A800425D46 /* Hero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hero.h; path = ../Hero.h; sourceTree = "<group>"; };
-		68E260A51D84A3A800425D46 /* Hero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Hero.m; path = ../Hero.m; sourceTree = "<group>"; };
-		68E260A61D84A3A800425D46 /* Settings+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Settings+CoreDataProperties.h"; path = "../Settings+CoreDataProperties.h"; sourceTree = "<group>"; };
-		68E260A71D84A3A800425D46 /* Settings+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Settings+CoreDataProperties.m"; path = "../Settings+CoreDataProperties.m"; sourceTree = "<group>"; };
-		68E260A81D84A3A800425D46 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = ../Settings.h; sourceTree = "<group>"; };
-		68E260A91D84A3A800425D46 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = ../Settings.m; sourceTree = "<group>"; };
-		68E260AA1D84A3A800425D46 /* Habit+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Habit+CoreDataProperties.h"; path = "../Habit+CoreDataProperties.h"; sourceTree = "<group>"; };
-		68E260AB1D84A3A800425D46 /* Habit+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Habit+CoreDataProperties.m"; path = "../Habit+CoreDataProperties.m"; sourceTree = "<group>"; };
-		68E260AC1D84A3A800425D46 /* Habit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Habit.h; path = ../Habit.h; sourceTree = "<group>"; };
-		68E260AD1D84A3A800425D46 /* Habit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Habit.m; path = ../Habit.m; sourceTree = "<group>"; };
-		68E260AE1D84A3A800425D46 /* Monster+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Monster+CoreDataProperties.h"; path = "../Monster+CoreDataProperties.h"; sourceTree = "<group>"; };
-		68E260AF1D84A3A800425D46 /* Monster+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Monster+CoreDataProperties.m"; path = "../Monster+CoreDataProperties.m"; sourceTree = "<group>"; };
-		68E260B01D84A3A800425D46 /* Monster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Monster.h; path = ../Monster.h; sourceTree = "<group>"; };
-		68E260B11D84A3A800425D46 /* Monster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Monster.m; path = ../Monster.m; sourceTree = "<group>"; };
-		68E260B21D84A3A800425D46 /* Todo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Todo+CoreDataProperties.h"; path = "../Todo+CoreDataProperties.h"; sourceTree = "<group>"; };
-		68E260B31D84A3A800425D46 /* Todo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Todo+CoreDataProperties.m"; path = "../Todo+CoreDataProperties.m"; sourceTree = "<group>"; };
-		68E260B41D84A3A800425D46 /* Todo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Todo.h; path = ../Todo.h; sourceTree = "<group>"; };
-		68E260B51D84A3A800425D46 /* Todo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Todo.m; path = ../Todo.m; sourceTree = "<group>"; };
-		68E260B61D84A3A800425D46 /* Zone+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Zone+CoreDataProperties.h"; path = "../Zone+CoreDataProperties.h"; sourceTree = "<group>"; };
-		68E260B71D84A3A800425D46 /* Zone+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Zone+CoreDataProperties.m"; path = "../Zone+CoreDataProperties.m"; sourceTree = "<group>"; };
-		68E260B81D84A3A800425D46 /* Zone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Zone.h; path = ../Zone.h; sourceTree = "<group>"; };
-		68E260B91D84A3A800425D46 /* Zone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Zone.m; path = ../Zone.m; sourceTree = "<group>"; };
 		68E260CC1D851DA500425D46 /* EditNewDailyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNewDailyController.h; sourceTree = "<group>"; };
 		68E260CD1D851DA500425D46 /* EditNewDailyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNewDailyController.m; sourceTree = "<group>"; };
 		68E260CE1D851DA500425D46 /* EditNewDailyController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditNewDailyController.xib; sourceTree = "<group>"; };
+		68E261121D87673900425D46 /* Settings+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Settings+CoreDataProperties.h"; path = "../Settings+CoreDataProperties.h"; sourceTree = "<group>"; };
+		68E261131D87673900425D46 /* Settings+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Settings+CoreDataProperties.m"; path = "../Settings+CoreDataProperties.m"; sourceTree = "<group>"; };
+		68E261141D87673900425D46 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = ../Settings.h; sourceTree = "<group>"; };
+		68E261151D87673900425D46 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = ../Settings.m; sourceTree = "<group>"; };
+		68E261161D87673900425D46 /* Daily+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Daily+CoreDataProperties.h"; path = "../Daily+CoreDataProperties.h"; sourceTree = "<group>"; };
+		68E261171D87673900425D46 /* Daily+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Daily+CoreDataProperties.m"; path = "../Daily+CoreDataProperties.m"; sourceTree = "<group>"; };
+		68E261181D87673900425D46 /* Daily.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Daily.h; path = ../Daily.h; sourceTree = "<group>"; };
+		68E261191D87673900425D46 /* Daily.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Daily.m; path = ../Daily.m; sourceTree = "<group>"; };
+		68E2611A1D87673900425D46 /* Todo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Todo+CoreDataProperties.h"; path = "../Todo+CoreDataProperties.h"; sourceTree = "<group>"; };
+		68E2611B1D87673900425D46 /* Todo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Todo+CoreDataProperties.m"; path = "../Todo+CoreDataProperties.m"; sourceTree = "<group>"; };
+		68E2611C1D87673900425D46 /* Todo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Todo.h; path = ../Todo.h; sourceTree = "<group>"; };
+		68E2611D1D87673900425D46 /* Todo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Todo.m; path = ../Todo.m; sourceTree = "<group>"; };
+		68E2611E1D87673900425D46 /* Zone+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Zone+CoreDataProperties.h"; path = "../Zone+CoreDataProperties.h"; sourceTree = "<group>"; };
+		68E2611F1D87673900425D46 /* Zone+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Zone+CoreDataProperties.m"; path = "../Zone+CoreDataProperties.m"; sourceTree = "<group>"; };
+		68E261201D87673900425D46 /* Zone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Zone.h; path = ../Zone.h; sourceTree = "<group>"; };
+		68E261211D87673900425D46 /* Zone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Zone.m; path = ../Zone.m; sourceTree = "<group>"; };
+		68E261221D87673900425D46 /* Hero+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Hero+CoreDataProperties.h"; path = "../Hero+CoreDataProperties.h"; sourceTree = "<group>"; };
+		68E261231D87673900425D46 /* Hero+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Hero+CoreDataProperties.m"; path = "../Hero+CoreDataProperties.m"; sourceTree = "<group>"; };
+		68E261241D87673900425D46 /* Hero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hero.h; path = ../Hero.h; sourceTree = "<group>"; };
+		68E261251D87673900425D46 /* Hero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Hero.m; path = ../Hero.m; sourceTree = "<group>"; };
+		68E261261D87673900425D46 /* Habit+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Habit+CoreDataProperties.h"; path = "../Habit+CoreDataProperties.h"; sourceTree = "<group>"; };
+		68E261271D87673900425D46 /* Habit+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Habit+CoreDataProperties.m"; path = "../Habit+CoreDataProperties.m"; sourceTree = "<group>"; };
+		68E261281D87673900425D46 /* Habit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Habit.h; path = ../Habit.h; sourceTree = "<group>"; };
+		68E261291D87673900425D46 /* Habit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Habit.m; path = ../Habit.m; sourceTree = "<group>"; };
+		68E2612A1D87673900425D46 /* Good+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Good+CoreDataProperties.h"; path = "../Good+CoreDataProperties.h"; sourceTree = "<group>"; };
+		68E2612B1D87673900425D46 /* Good+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Good+CoreDataProperties.m"; path = "../Good+CoreDataProperties.m"; sourceTree = "<group>"; };
+		68E2612C1D87673900425D46 /* Good.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Good.h; path = ../Good.h; sourceTree = "<group>"; };
+		68E2612D1D87673900425D46 /* Good.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Good.m; path = ../Good.m; sourceTree = "<group>"; };
+		68E2612E1D87673900425D46 /* Monster+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Monster+CoreDataProperties.h"; path = "../Monster+CoreDataProperties.h"; sourceTree = "<group>"; };
+		68E2612F1D87673900425D46 /* Monster+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Monster+CoreDataProperties.m"; path = "../Monster+CoreDataProperties.m"; sourceTree = "<group>"; };
+		68E261301D87673900425D46 /* Monster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Monster.h; path = ../Monster.h; sourceTree = "<group>"; };
+		68E261311D87673900425D46 /* Monster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Monster.m; path = ../Monster.m; sourceTree = "<group>"; };
 		68F3F9A91D70E82E00840DD2 /* HabitRPG2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitRPG2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68F3F9AD1D70E82E00840DD2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		68F3F9AF1D70E82E00840DD2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -224,38 +224,38 @@
 		68E2605C1D7B36FB00425D46 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				68E2609A1D84A3A800425D46 /* Daily+CoreDataProperties.h */,
-				68E2609B1D84A3A800425D46 /* Daily+CoreDataProperties.m */,
-				68E2609C1D84A3A800425D46 /* Daily.h */,
-				68E2609D1D84A3A800425D46 /* Daily.m */,
-				68E2609E1D84A3A800425D46 /* Good+CoreDataProperties.h */,
-				68E2609F1D84A3A800425D46 /* Good+CoreDataProperties.m */,
-				68E260A01D84A3A800425D46 /* Good.h */,
-				68E260A11D84A3A800425D46 /* Good.m */,
-				68E260A21D84A3A800425D46 /* Hero+CoreDataProperties.h */,
-				68E260A31D84A3A800425D46 /* Hero+CoreDataProperties.m */,
-				68E260A41D84A3A800425D46 /* Hero.h */,
-				68E260A51D84A3A800425D46 /* Hero.m */,
-				68E260A61D84A3A800425D46 /* Settings+CoreDataProperties.h */,
-				68E260A71D84A3A800425D46 /* Settings+CoreDataProperties.m */,
-				68E260A81D84A3A800425D46 /* Settings.h */,
-				68E260A91D84A3A800425D46 /* Settings.m */,
-				68E260AA1D84A3A800425D46 /* Habit+CoreDataProperties.h */,
-				68E260AB1D84A3A800425D46 /* Habit+CoreDataProperties.m */,
-				68E260AC1D84A3A800425D46 /* Habit.h */,
-				68E260AD1D84A3A800425D46 /* Habit.m */,
-				68E260AE1D84A3A800425D46 /* Monster+CoreDataProperties.h */,
-				68E260AF1D84A3A800425D46 /* Monster+CoreDataProperties.m */,
-				68E260B01D84A3A800425D46 /* Monster.h */,
-				68E260B11D84A3A800425D46 /* Monster.m */,
-				68E260B21D84A3A800425D46 /* Todo+CoreDataProperties.h */,
-				68E260B31D84A3A800425D46 /* Todo+CoreDataProperties.m */,
-				68E260B41D84A3A800425D46 /* Todo.h */,
-				68E260B51D84A3A800425D46 /* Todo.m */,
-				68E260B61D84A3A800425D46 /* Zone+CoreDataProperties.h */,
-				68E260B71D84A3A800425D46 /* Zone+CoreDataProperties.m */,
-				68E260B81D84A3A800425D46 /* Zone.h */,
-				68E260B91D84A3A800425D46 /* Zone.m */,
+				68E261121D87673900425D46 /* Settings+CoreDataProperties.h */,
+				68E261131D87673900425D46 /* Settings+CoreDataProperties.m */,
+				68E261141D87673900425D46 /* Settings.h */,
+				68E261151D87673900425D46 /* Settings.m */,
+				68E261161D87673900425D46 /* Daily+CoreDataProperties.h */,
+				68E261171D87673900425D46 /* Daily+CoreDataProperties.m */,
+				68E261181D87673900425D46 /* Daily.h */,
+				68E261191D87673900425D46 /* Daily.m */,
+				68E2611A1D87673900425D46 /* Todo+CoreDataProperties.h */,
+				68E2611B1D87673900425D46 /* Todo+CoreDataProperties.m */,
+				68E2611C1D87673900425D46 /* Todo.h */,
+				68E2611D1D87673900425D46 /* Todo.m */,
+				68E2611E1D87673900425D46 /* Zone+CoreDataProperties.h */,
+				68E2611F1D87673900425D46 /* Zone+CoreDataProperties.m */,
+				68E261201D87673900425D46 /* Zone.h */,
+				68E261211D87673900425D46 /* Zone.m */,
+				68E261221D87673900425D46 /* Hero+CoreDataProperties.h */,
+				68E261231D87673900425D46 /* Hero+CoreDataProperties.m */,
+				68E261241D87673900425D46 /* Hero.h */,
+				68E261251D87673900425D46 /* Hero.m */,
+				68E261261D87673900425D46 /* Habit+CoreDataProperties.h */,
+				68E261271D87673900425D46 /* Habit+CoreDataProperties.m */,
+				68E261281D87673900425D46 /* Habit.h */,
+				68E261291D87673900425D46 /* Habit.m */,
+				68E2612A1D87673900425D46 /* Good+CoreDataProperties.h */,
+				68E2612B1D87673900425D46 /* Good+CoreDataProperties.m */,
+				68E2612C1D87673900425D46 /* Good.h */,
+				68E2612D1D87673900425D46 /* Good.m */,
+				68E2612E1D87673900425D46 /* Monster+CoreDataProperties.h */,
+				68E2612F1D87673900425D46 /* Monster+CoreDataProperties.m */,
+				68E261301D87673900425D46 /* Monster.h */,
+				68E261311D87673900425D46 /* Monster.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -525,37 +525,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68E260BE1D84A3A800425D46 /* Hero+CoreDataProperties.m in Sources */,
-				68E260C01D84A3A800425D46 /* Settings+CoreDataProperties.m in Sources */,
-				68E260C51D84A3A800425D46 /* Monster.m in Sources */,
 				686686EE1D79060300BB2D09 /* DailyCellController.m in Sources */,
 				68F3F9F31D70FC5E00840DD2 /* TodoViewController.m in Sources */,
 				68F3FA021D74897A00840DD2 /* MenuViewController.m in Sources */,
-				68E260BC1D84A3A800425D46 /* Good+CoreDataProperties.m in Sources */,
-				68E260C61D84A3A800425D46 /* Todo+CoreDataProperties.m in Sources */,
-				68E260C41D84A3A800425D46 /* Monster+CoreDataProperties.m in Sources */,
-				68E260BD1D84A3A800425D46 /* Good.m in Sources */,
+				68E261341D87673900425D46 /* Daily+CoreDataProperties.m in Sources */,
+				68E261391D87673900425D46 /* Zone.m in Sources */,
+				68E2613B1D87673900425D46 /* Hero.m in Sources */,
+				68E261401D87673900425D46 /* Monster+CoreDataProperties.m in Sources */,
 				68F3F9EE1D70FC0D00840DD2 /* HabitController.m in Sources */,
-				68E260C21D84A3A800425D46 /* Habit+CoreDataProperties.m in Sources */,
+				68E261321D87673900425D46 /* Settings+CoreDataProperties.m in Sources */,
+				68E2613E1D87673900425D46 /* Good+CoreDataProperties.m in Sources */,
 				68F3F9FE1D71CCF100840DD2 /* UIUtilities.m in Sources */,
-				68E260BB1D84A3A800425D46 /* Daily.m in Sources */,
+				68E2613D1D87673900425D46 /* Habit.m in Sources */,
 				68F3F9B11D70E82E00840DD2 /* AppDelegate.m in Sources */,
-				68E260C91D84A3A800425D46 /* Zone.m in Sources */,
 				68E260651D7FC3F200425D46 /* CoreDataStackController.m in Sources */,
 				68F3F9E41D70E8DB00840DD2 /* BaseViewController.m in Sources */,
+				68E2613C1D87673900425D46 /* Habit+CoreDataProperties.m in Sources */,
+				68E2613F1D87673900425D46 /* Good.m in Sources */,
+				68E261411D87673900425D46 /* Monster.m in Sources */,
 				68E260991D84923C00425D46 /* DailyHelper.m in Sources */,
-				68E260C11D84A3A800425D46 /* Settings.m in Sources */,
-				68E260BA1D84A3A800425D46 /* Daily+CoreDataProperties.m in Sources */,
+				68E261331D87673900425D46 /* Settings.m in Sources */,
+				68E261351D87673900425D46 /* Daily.m in Sources */,
+				68E261371D87673900425D46 /* Todo.m in Sources */,
 				68E260CF1D851DA500425D46 /* EditNewDailyController.m in Sources */,
-				68E260C81D84A3A800425D46 /* Zone+CoreDataProperties.m in Sources */,
 				68F3F9F81D70FD3F00840DD2 /* GoodsViewController.m in Sources */,
-				68E260C31D84A3A800425D46 /* Habit.m in Sources */,
-				68E260BF1D84A3A800425D46 /* Hero.m in Sources */,
 				687F01221D77CA6500C7B08B /* DailyTablesViewController.m in Sources */,
 				68F3F9E91D70EC9700840DD2 /* DailyViewController.m in Sources */,
+				68E261361D87673900425D46 /* Todo+CoreDataProperties.m in Sources */,
 				68E260621D7BC3EA00425D46 /* Model.xcdatamodeld in Sources */,
+				68E2613A1D87673900425D46 /* Hero+CoreDataProperties.m in Sources */,
 				68F3F9AE1D70E82E00840DD2 /* main.m in Sources */,
-				68E260C71D84A3A800425D46 /* Todo.m in Sources */,
+				68E261381D87673900425D46 /* Zone+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
