@@ -11,14 +11,15 @@
 #import "UIUtilities.h"
 #import "CoreDataStackController.h"
 #import "Daily.h"
-#import "EditNewDailyController.h"
+#import "EditNavigationController.h"
 
 @interface DailyViewController ()
 
 @property (nonatomic,strong) DailyTablesViewController *dailyTablesController;
 @property (nonatomic,strong) CoreDataStackController *dataController;
-@property (nonatomic,strong) EditNewDailyController *editController;
+@property (nonatomic,strong) EditNavigationController *editController;
 @property (nonatomic,weak) UIButton *addButton;
+@property (nonatomic,strong) UIView *dailyEditView;
 
 @end
 
@@ -49,6 +50,9 @@ static NSString *const EntityName = @"Daily";
     
     self.addButton = [self.view viewWithTag:1];
     [self.addButton addTarget:self action:@selector(pressedAddBtn:) forControlEvents:UIControlEventTouchUpInside];
+    
+    NSArray *subviewArray = [[NSBundle mainBundle] loadNibNamed:@"DailyEditView" owner:self options:nil];
+    self.dailyEditView = [subviewArray objectAtIndex:0];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,6 +63,8 @@ static NSString *const EntityName = @"Daily";
 -(void)setuptab:(CoreDataStackController *)dataController{
     self.dataController = dataController;
     UITabBarItem *tbi = [self tabBarItem];
+    
+    
     
     [tbi setTitle:@"Dailies"];
 }
@@ -71,7 +77,8 @@ static NSString *const EntityName = @"Daily";
 //    
 //    [self.dataController Save];
 //    [self.dailyTablesController addNewDailyToView:d];
-    self.editController = [[EditNewDailyController alloc]initWithNibName:@"EditNewDailyController" bundle:nil];
+    self.editController = [[EditNavigationController alloc]initWithNibName:@"EditNavigationController" bundle:nil];
+    [self.editController setupView:self.dailyEditView];
     [self showViewController:self.editController sender:self];
     
 }

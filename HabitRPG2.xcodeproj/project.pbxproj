@@ -11,11 +11,12 @@
 		686686EE1D79060300BB2D09 /* DailyCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686686ED1D79060300BB2D09 /* DailyCellController.m */; };
 		687F01221D77CA6500C7B08B /* DailyTablesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 687F01201D77CA6500C7B08B /* DailyTablesViewController.m */; };
 		687F01231D77CA6500C7B08B /* DailyTablesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 687F01211D77CA6500C7B08B /* DailyTablesViewController.xib */; };
+		6889C65E1D88F82700598435 /* DailyEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6889C65D1D88F82700598435 /* DailyEditView.xib */; };
 		68E260621D7BC3EA00425D46 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 68E260601D7BC3EA00425D46 /* Model.xcdatamodeld */; };
 		68E260651D7FC3F200425D46 /* CoreDataStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260641D7FC3F200425D46 /* CoreDataStackController.m */; };
 		68E260991D84923C00425D46 /* DailyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260981D84923C00425D46 /* DailyHelper.m */; };
-		68E260CF1D851DA500425D46 /* EditNewDailyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260CD1D851DA500425D46 /* EditNewDailyController.m */; };
-		68E260D01D851DA500425D46 /* EditNewDailyController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68E260CE1D851DA500425D46 /* EditNewDailyController.xib */; };
+		68E260CF1D851DA500425D46 /* EditNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260CD1D851DA500425D46 /* EditNavigationController.m */; };
+		68E260D01D851DA500425D46 /* EditNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68E260CE1D851DA500425D46 /* EditNavigationController.xib */; };
 		68E261321D87673900425D46 /* Settings+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E261131D87673900425D46 /* Settings+CoreDataProperties.m */; };
 		68E261331D87673900425D46 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E261151D87673900425D46 /* Settings.m */; };
 		68E261341D87673900425D46 /* Daily+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E261171D87673900425D46 /* Daily+CoreDataProperties.m */; };
@@ -76,14 +77,15 @@
 		687F011F1D77CA6500C7B08B /* DailyTablesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyTablesViewController.h; sourceTree = "<group>"; };
 		687F01201D77CA6500C7B08B /* DailyTablesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyTablesViewController.m; sourceTree = "<group>"; };
 		687F01211D77CA6500C7B08B /* DailyTablesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyTablesViewController.xib; sourceTree = "<group>"; };
+		6889C65D1D88F82700598435 /* DailyEditView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyEditView.xib; sourceTree = "<group>"; };
 		68E260611D7BC3EA00425D46 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		68E260631D7FC3F200425D46 /* CoreDataStackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataStackController.h; sourceTree = "<group>"; };
 		68E260641D7FC3F200425D46 /* CoreDataStackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataStackController.m; sourceTree = "<group>"; };
 		68E260971D84923C00425D46 /* DailyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyHelper.h; sourceTree = "<group>"; };
 		68E260981D84923C00425D46 /* DailyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyHelper.m; sourceTree = "<group>"; };
-		68E260CC1D851DA500425D46 /* EditNewDailyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNewDailyController.h; sourceTree = "<group>"; };
-		68E260CD1D851DA500425D46 /* EditNewDailyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNewDailyController.m; sourceTree = "<group>"; };
-		68E260CE1D851DA500425D46 /* EditNewDailyController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditNewDailyController.xib; sourceTree = "<group>"; };
+		68E260CC1D851DA500425D46 /* EditNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNavigationController.h; sourceTree = "<group>"; };
+		68E260CD1D851DA500425D46 /* EditNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNavigationController.m; sourceTree = "<group>"; };
+		68E260CE1D851DA500425D46 /* EditNavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditNavigationController.xib; sourceTree = "<group>"; };
 		68E261121D87673900425D46 /* Settings+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Settings+CoreDataProperties.h"; path = "../Settings+CoreDataProperties.h"; sourceTree = "<group>"; };
 		68E261131D87673900425D46 /* Settings+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Settings+CoreDataProperties.m"; path = "../Settings+CoreDataProperties.m"; sourceTree = "<group>"; };
 		68E261141D87673900425D46 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = ../Settings.h; sourceTree = "<group>"; };
@@ -270,8 +272,8 @@
 		68E260D11D851E0800425D46 /* EditingControllers */ = {
 			isa = PBXGroup;
 			children = (
-				68E260CC1D851DA500425D46 /* EditNewDailyController.h */,
-				68E260CD1D851DA500425D46 /* EditNewDailyController.m */,
+				68E260CC1D851DA500425D46 /* EditNavigationController.h */,
+				68E260CD1D851DA500425D46 /* EditNavigationController.m */,
 			);
 			name = EditingControllers;
 			sourceTree = "<group>";
@@ -279,7 +281,8 @@
 		68E260D21D851E2400425D46 /* Editing */ = {
 			isa = PBXGroup;
 			children = (
-				68E260CE1D851DA500425D46 /* EditNewDailyController.xib */,
+				68E260CE1D851DA500425D46 /* EditNavigationController.xib */,
+				6889C65D1D88F82700598435 /* DailyEditView.xib */,
 			);
 			name = Editing;
 			sourceTree = "<group>";
@@ -494,10 +497,11 @@
 				686686EB1D79032200BB2D09 /* DailyCell.xib in Resources */,
 				68F3F9F41D70FC5E00840DD2 /* TodoViewController.xib in Resources */,
 				68F3F9EF1D70FC0D00840DD2 /* HabitController.xib in Resources */,
+				6889C65E1D88F82700598435 /* DailyEditView.xib in Resources */,
 				68F3F9B91D70E82E00840DD2 /* Assets.xcassets in Resources */,
 				687F01231D77CA6500C7B08B /* DailyTablesViewController.xib in Resources */,
 				68F3F9E51D70E8DB00840DD2 /* BaseViewController.xib in Resources */,
-				68E260D01D851DA500425D46 /* EditNewDailyController.xib in Resources */,
+				68E260D01D851DA500425D46 /* EditNavigationController.xib in Resources */,
 				68F3F9EA1D70EC9700840DD2 /* DailyViewController.xib in Resources */,
 				68F3FA031D74897A00840DD2 /* MenuViewController.xib in Resources */,
 				68F3F9F91D70FD3F00840DD2 /* GoodsViewController.xib in Resources */,
@@ -547,7 +551,7 @@
 				68E261331D87673900425D46 /* Settings.m in Sources */,
 				68E261351D87673900425D46 /* Daily.m in Sources */,
 				68E261371D87673900425D46 /* Todo.m in Sources */,
-				68E260CF1D851DA500425D46 /* EditNewDailyController.m in Sources */,
+				68E260CF1D851DA500425D46 /* EditNavigationController.m in Sources */,
 				68F3F9F81D70FD3F00840DD2 /* GoodsViewController.m in Sources */,
 				687F01221D77CA6500C7B08B /* DailyTablesViewController.m in Sources */,
 				68F3F9E91D70EC9700840DD2 /* DailyViewController.m in Sources */,

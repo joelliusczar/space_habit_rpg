@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EditNewDailyController : UIViewController
-
+@interface EditNavigationController : UIViewController
+-(void)setupView:(UIView *)editView;
 @end
