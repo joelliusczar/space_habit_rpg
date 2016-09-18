@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "Daily.h"
 
+
 @interface DailyHelper : NSObject
 
 +(BOOL)isDailyCompleteForTheDay:(Daily *)daily;
++(NSDate *)calculateNextDueTime:(NSDate *)checkinDate WithRate:(int)rate;
 
 @end

@@ -27,7 +27,6 @@
 
 -(void)setuptab{
     UITabBarItem *tbi = [self tabBarItem];
-    
     [tbi setTitle:@"Menu"];
 }
 /*

@@ -15,4 +15,11 @@
     return NO;
 }
 
++(NSDate *)calculateNextDueTime:(NSDate *)checkinDate WithRate:(int)rate{
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
+    [offsetComponents setDay:rate];
+    return [cal dateByAddingComponents:offsetComponents toDate:checkinDate options:0];
+}
+
 @end

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EditingSaver.h"
 
 @interface EditNavigationController : UIViewController
--(void)setupView:(UIView *)editView;
+-(void)setupTaskEditor:(id<EditingSaver>)editView;
+-(id)initCustom;
 @end

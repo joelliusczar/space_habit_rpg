@@ -15,6 +15,7 @@
 #import "UIUtilities.h"
 #import "CoreDataStackController.h"
 
+
 @import CoreGraphics;
 
 
@@ -27,16 +28,34 @@
 
 @implementation BaseViewController
 
+@synthesize editController = _editController;
+-(EditNavigationController *)editController{
+    if(_editController == nil){
+        _editController = [[EditNavigationController alloc]initCustom];
+    }
+    return _editController;
+}
+
+@synthesize dataController = _dataController;
+-(CoreDataStackController *)dataController{
+    if(_dataController == nil){
+        _dataController = [[CoreDataStackController alloc] init];
+    }
+    return _dataController;
+}
+
+@synthesize tabsController = _tabsController;
+-(UITabBarController *)tabsController{
+    if(_tabsController == nil){
+        _tabsController = [[UITabBarController alloc] init];
+    }
+    return _tabsController;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tabsController = [[UITabBarController alloc] init];
-    self.dataController = [[CoreDataStackController alloc] init];
-    
-    DailyViewController* dc = [[DailyViewController alloc]
-                               initWithNibName:@"DailyViewController"
-                               bundle:nil];
-    [dc setuptab:self.dataController];
+    DailyViewController* dc = [[DailyViewController alloc]initWithDataController:self.dataController AndWithParent:self];
     
     HabitController* hc = [[HabitController alloc]
                            initWithNibName:@"HabitController"

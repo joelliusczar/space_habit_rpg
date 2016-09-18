@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "CoreDataStackController.h"
+#import "BaseViewController.h"
+#import "Daily.h"
+
 
 @interface DailyViewController : UIViewController
-
+-(id)initWithDataController:(CoreDataStackController *)dataController AndWithParent:(BaseViewController *)parent;
 -(void)setuptab:(CoreDataStackController *)dataController;
-
+-(void)showNewDaily:(Daily *)daily;
 @end

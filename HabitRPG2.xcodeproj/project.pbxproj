@@ -11,7 +11,9 @@
 		686686EE1D79060300BB2D09 /* DailyCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686686ED1D79060300BB2D09 /* DailyCellController.m */; };
 		687F01221D77CA6500C7B08B /* DailyTablesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 687F01201D77CA6500C7B08B /* DailyTablesViewController.m */; };
 		687F01231D77CA6500C7B08B /* DailyTablesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 687F01211D77CA6500C7B08B /* DailyTablesViewController.xib */; };
+		6886A4801D8E5FD0005E12B3 /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 6886A47F1D8E5FD0005E12B3 /* constants.m */; };
 		6889C65E1D88F82700598435 /* DailyEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6889C65D1D88F82700598435 /* DailyEditView.xib */; };
+		68D25C221D8B951B00FF1BE0 /* DailyEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D25C211D8B951B00FF1BE0 /* DailyEditController.m */; };
 		68E260621D7BC3EA00425D46 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 68E260601D7BC3EA00425D46 /* Model.xcdatamodeld */; };
 		68E260651D7FC3F200425D46 /* CoreDataStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260641D7FC3F200425D46 /* CoreDataStackController.m */; };
 		68E260991D84923C00425D46 /* DailyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260981D84923C00425D46 /* DailyHelper.m */; };
@@ -77,7 +79,11 @@
 		687F011F1D77CA6500C7B08B /* DailyTablesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyTablesViewController.h; sourceTree = "<group>"; };
 		687F01201D77CA6500C7B08B /* DailyTablesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyTablesViewController.m; sourceTree = "<group>"; };
 		687F01211D77CA6500C7B08B /* DailyTablesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyTablesViewController.xib; sourceTree = "<group>"; };
+		6886A47E1D8E5FD0005E12B3 /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
+		6886A47F1D8E5FD0005E12B3 /* constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = constants.m; sourceTree = "<group>"; };
 		6889C65D1D88F82700598435 /* DailyEditView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyEditView.xib; sourceTree = "<group>"; };
+		68D25C201D8B951B00FF1BE0 /* DailyEditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyEditController.h; sourceTree = "<group>"; };
+		68D25C211D8B951B00FF1BE0 /* DailyEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyEditController.m; sourceTree = "<group>"; };
 		68E260611D7BC3EA00425D46 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		68E260631D7FC3F200425D46 /* CoreDataStackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataStackController.h; sourceTree = "<group>"; };
 		68E260641D7FC3F200425D46 /* CoreDataStackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataStackController.m; sourceTree = "<group>"; };
@@ -150,6 +156,7 @@
 		68F3F9FF1D74897A00840DD2 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		68F3FA001D74897A00840DD2 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		68F3FA011D74897A00840DD2 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
+		68F736B01D8B810200AE10A8 /* EditingSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditingSaver.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,8 +195,6 @@
 				68F3F9F11D70FC5E00840DD2 /* TodoViewController.m */,
 				68F3F9EB1D70FC0D00840DD2 /* HabitController.h */,
 				68F3F9EC1D70FC0D00840DD2 /* HabitController.m */,
-				68F3F9E61D70EC9700840DD2 /* DailyViewController.h */,
-				68F3F9E71D70EC9700840DD2 /* DailyViewController.m */,
 			);
 			name = Tabs;
 			sourceTree = "<group>";
@@ -206,7 +211,6 @@
 		686686F11D7906DF00BB2D09 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
-				68F3F9E81D70EC9700840DD2 /* DailyViewController.xib */,
 				68F3F9ED1D70FC0D00840DD2 /* HabitController.xib */,
 				68F3F9F21D70FC5E00840DD2 /* TodoViewController.xib */,
 				68F3F9F71D70FD3F00840DD2 /* GoodsViewController.xib */,
@@ -218,9 +222,39 @@
 		686686F21D7906F900BB2D09 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				686686EA1D79032200BB2D09 /* DailyCell.xib */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		68D25C231D8E2ACA00FF1BE0 /* Dailies */ = {
+			isa = PBXGroup;
+			children = (
+				68D25C271D8E2E0500FF1BE0 /* Views */,
+				68E261161D87673900425D46 /* Daily+CoreDataProperties.h */,
+				68E261171D87673900425D46 /* Daily+CoreDataProperties.m */,
+				68E261181D87673900425D46 /* Daily.h */,
+				68E261191D87673900425D46 /* Daily.m */,
+				68D25C201D8B951B00FF1BE0 /* DailyEditController.h */,
+				68D25C211D8B951B00FF1BE0 /* DailyEditController.m */,
+				68F3F9E61D70EC9700840DD2 /* DailyViewController.h */,
+				68F3F9E71D70EC9700840DD2 /* DailyViewController.m */,
+				687F011F1D77CA6500C7B08B /* DailyTablesViewController.h */,
+				687F01201D77CA6500C7B08B /* DailyTablesViewController.m */,
+				68E260971D84923C00425D46 /* DailyHelper.h */,
+				68E260981D84923C00425D46 /* DailyHelper.m */,
+			);
+			name = Dailies;
+			sourceTree = "<group>";
+		};
+		68D25C271D8E2E0500FF1BE0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6889C65D1D88F82700598435 /* DailyEditView.xib */,
+				68F3F9E81D70EC9700840DD2 /* DailyViewController.xib */,
+				687F01211D77CA6500C7B08B /* DailyTablesViewController.xib */,
+				686686EA1D79032200BB2D09 /* DailyCell.xib */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		68E2605C1D7B36FB00425D46 /* Models */ = {
@@ -230,10 +264,6 @@
 				68E261131D87673900425D46 /* Settings+CoreDataProperties.m */,
 				68E261141D87673900425D46 /* Settings.h */,
 				68E261151D87673900425D46 /* Settings.m */,
-				68E261161D87673900425D46 /* Daily+CoreDataProperties.h */,
-				68E261171D87673900425D46 /* Daily+CoreDataProperties.m */,
-				68E261181D87673900425D46 /* Daily.h */,
-				68E261191D87673900425D46 /* Daily.m */,
 				68E2611A1D87673900425D46 /* Todo+CoreDataProperties.h */,
 				68E2611B1D87673900425D46 /* Todo+CoreDataProperties.m */,
 				68E2611C1D87673900425D46 /* Todo.h */,
@@ -262,18 +292,12 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		68E260CB1D84FB5900425D46 /* Constants */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Constants;
-			sourceTree = "<group>";
-		};
 		68E260D11D851E0800425D46 /* EditingControllers */ = {
 			isa = PBXGroup;
 			children = (
 				68E260CC1D851DA500425D46 /* EditNavigationController.h */,
 				68E260CD1D851DA500425D46 /* EditNavigationController.m */,
+				68F736B01D8B810200AE10A8 /* EditingSaver.h */,
 			);
 			name = EditingControllers;
 			sourceTree = "<group>";
@@ -282,7 +306,6 @@
 			isa = PBXGroup;
 			children = (
 				68E260CE1D851DA500425D46 /* EditNavigationController.xib */,
-				6889C65D1D88F82700598435 /* DailyEditView.xib */,
 			);
 			name = Editing;
 			sourceTree = "<group>";
@@ -310,7 +333,7 @@
 		68F3F9AB1D70E82E00840DD2 /* HabitRPG2 */ = {
 			isa = PBXGroup;
 			children = (
-				68E260CB1D84FB5900425D46 /* Constants */,
+				68D25C231D8E2ACA00FF1BE0 /* Dailies */,
 				68E2605C1D7B36FB00425D46 /* Models */,
 				68F3F9FA1D71C9A500840DD2 /* Helpers */,
 				68F3F9E01D70E88F00840DD2 /* views */,
@@ -359,8 +382,6 @@
 				686686EF1D79060D00BB2D09 /* Tabs */,
 				68F3F9E11D70E8DB00840DD2 /* BaseViewController.h */,
 				68F3F9E21D70E8DB00840DD2 /* BaseViewController.m */,
-				687F011F1D77CA6500C7B08B /* DailyTablesViewController.h */,
-				687F01201D77CA6500C7B08B /* DailyTablesViewController.m */,
 				68E260631D7FC3F200425D46 /* CoreDataStackController.h */,
 				68E260641D7FC3F200425D46 /* CoreDataStackController.m */,
 			);
@@ -373,7 +394,6 @@
 				68E260D21D851E2400425D46 /* Editing */,
 				686686F21D7906F900BB2D09 /* Cells */,
 				686686F11D7906DF00BB2D09 /* Tabs */,
-				687F01211D77CA6500C7B08B /* DailyTablesViewController.xib */,
 				68F3F9E31D70E8DB00840DD2 /* BaseViewController.xib */,
 			);
 			name = views;
@@ -384,8 +404,8 @@
 			children = (
 				68F3F9FC1D71CCF100840DD2 /* UIUtilities.h */,
 				68F3F9FD1D71CCF100840DD2 /* UIUtilities.m */,
-				68E260971D84923C00425D46 /* DailyHelper.h */,
-				68E260981D84923C00425D46 /* DailyHelper.m */,
+				6886A47E1D8E5FD0005E12B3 /* constants.h */,
+				6886A47F1D8E5FD0005E12B3 /* constants.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -542,6 +562,7 @@
 				68F3F9FE1D71CCF100840DD2 /* UIUtilities.m in Sources */,
 				68E2613D1D87673900425D46 /* Habit.m in Sources */,
 				68F3F9B11D70E82E00840DD2 /* AppDelegate.m in Sources */,
+				68D25C221D8B951B00FF1BE0 /* DailyEditController.m in Sources */,
 				68E260651D7FC3F200425D46 /* CoreDataStackController.m in Sources */,
 				68F3F9E41D70E8DB00840DD2 /* BaseViewController.m in Sources */,
 				68E2613C1D87673900425D46 /* Habit+CoreDataProperties.m in Sources */,
@@ -555,6 +576,7 @@
 				68F3F9F81D70FD3F00840DD2 /* GoodsViewController.m in Sources */,
 				687F01221D77CA6500C7B08B /* DailyTablesViewController.m in Sources */,
 				68F3F9E91D70EC9700840DD2 /* DailyViewController.m in Sources */,
+				6886A4801D8E5FD0005E12B3 /* constants.m in Sources */,
 				68E261361D87673900425D46 /* Todo+CoreDataProperties.m in Sources */,
 				68E260621D7BC3EA00425D46 /* Model.xcdatamodeld in Sources */,
 				68E2613A1D87673900425D46 /* Hero+CoreDataProperties.m in Sources */,

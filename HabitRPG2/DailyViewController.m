@@ -12,20 +12,56 @@
 #import "CoreDataStackController.h"
 #import "Daily.h"
 #import "EditNavigationController.h"
+#import "DailyEditController.h"
 
 @interface DailyViewController ()
 
 @property (nonatomic,strong) DailyTablesViewController *dailyTablesController;
-@property (nonatomic,strong) CoreDataStackController *dataController;
-@property (nonatomic,strong) EditNavigationController *editController;
+@property (nonatomic,weak) CoreDataStackController *dataController;
+@property (nonatomic,weak) EditNavigationController *editController;
 @property (nonatomic,weak) UIButton *addButton;
-@property (nonatomic,strong) UIView *dailyEditView;
+@property (nonatomic,strong) DailyEditController *dailyEditor;
+@property (nonatomic,weak)  BaseViewController *parentController;
 
 @end
 
 @implementation DailyViewController
 
 static NSString *const EntityName = @"Daily";
+
+@synthesize editController = _editController;
+-(EditNavigationController *)editController{
+    if(_editController == nil){
+        _editController = self.parentController.editController;
+    }
+    return _editController;
+}
+
+@synthesize dailyEditor = _dailyEditor;
+-(DailyEditController *)dailyEditor{
+    if(_dailyEditor == nil){
+        _dailyEditor = [[DailyEditController alloc]initWithDataController:self.dataController AndWithParentDailyController:self];
+    }
+    return _dailyEditor;
+}
+
+@synthesize addButton = _addButton;
+-(UIButton *)addButton{
+    if(_addButton == nil){
+        _addButton = [self.view viewWithTag:1];
+        [_addButton addTarget:self action:@selector(pressedAddBtn:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _addButton;
+}
+
+-(id)initWithDataController:(CoreDataStackController *)dataController AndWithParent:(BaseViewController *)parent{
+    if(self = [self initWithNibName:@"DailyViewController" bundle:nil]){
+        self.parentController = parent;
+        [self setuptab:dataController];
+    }
+    return self;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,11 +84,10 @@ static NSString *const EntityName = @"Daily";
                                                        viewHeight);
     [self.dailyTablesController setupData:self.dataController];
     
-    self.addButton = [self.view viewWithTag:1];
-    [self.addButton addTarget:self action:@selector(pressedAddBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self addButton];
     
-    NSArray *subviewArray = [[NSBundle mainBundle] loadNibNamed:@"DailyEditView" owner:self options:nil];
-    self.dailyEditView = [subviewArray objectAtIndex:0];
+
+    [self.editController setupTaskEditor:self.dailyEditor];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,6 +104,10 @@ static NSString *const EntityName = @"Daily";
     [tbi setTitle:@"Dailies"];
 }
 
+-(void)showNewDaily:(Daily *)daily{
+    [self.dailyTablesController addNewDailyToView:daily];
+}
+
 -(void)pressedAddBtn:(id)sender{
 //    Daily *d = (Daily *)[self.dataController constructEmptyEntity:EntityName];
 //    d.dailyName = @"it's a daily";
@@ -77,11 +116,11 @@ static NSString *const EntityName = @"Daily";
 //    
 //    [self.dataController Save];
 //    [self.dailyTablesController addNewDailyToView:d];
-    self.editController = [[EditNavigationController alloc]initWithNibName:@"EditNavigationController" bundle:nil];
-    [self.editController setupView:self.dailyEditView];
     [self showViewController:self.editController sender:self];
     
 }
+
+
 
 /*
 #pragma mark - Navigation

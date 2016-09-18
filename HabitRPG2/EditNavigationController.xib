@@ -19,9 +19,9 @@
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rw2-KC-xvD">
                     <rect key="frame" x="0.0" y="548" width="600" height="44"/>
                     <items>
-                        <barButtonItem title="Cancel" id="9Th-5p-ZWi"/>
+                        <barButtonItem tag="2" title="Cancel" id="9Th-5p-ZWi"/>
                         <barButtonItem tag="1" style="plain" systemItem="flexibleSpace" id="4QZ-dB-YHd"/>
-                        <barButtonItem title="Save" id="ArO-5g-fVd"/>
+                        <barButtonItem tag="3" title="Save" id="ArO-5g-fVd"/>
                     </items>
                 </toolbar>
             </subviews>

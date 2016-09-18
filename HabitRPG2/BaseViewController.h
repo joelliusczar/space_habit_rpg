@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EditNavigationController.h"
 
 @interface BaseViewController : UIViewController
-
+@property (nonatomic,strong) EditNavigationController *editController;
 @end
