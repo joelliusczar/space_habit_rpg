@@ -8,11 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "Daily.h"
+#import "CommonUtilities.h"
+
 
 
 @interface DailyHelper : NSObject
-
-+(BOOL)isDailyCompleteForTheDay:(Daily *)daily;
-+(NSDate *)calculateNextDueTime:(NSDate *)checkinDate WithRate:(int)rate;
-
+@property (nonatomic,strong) CommonUtilities *commonHelper;
+-(BOOL)isDailyCompleteForTheDay:(Daily *)daily;
+-(NSDate *)calculateNextDueTime:(NSDate *)checkinDate WithRate:(int)rate;
+-(int)calculateActiveDaysHash:(NSMutableArray *)activeDays;
+-(void)setActiveDaySwitches:(NSMutableArray *)activeDays fromHash:(NSInteger)hash;
 @end

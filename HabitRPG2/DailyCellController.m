@@ -8,17 +8,50 @@
 
 #import "DailyCellController.h"
 #import "Daily.h"
+@import CoreGraphics;
+
+
 
 @interface DailyCellController()
-
+@property (nonatomic,weak) Daily *model;
 @end
 
 @implementation DailyCellController
 
 
+
+@synthesize nameLbl = _nameLbl;
+-(UILabel *)nameLbl{
+    if(_nameLbl == nil){
+        _nameLbl = [self.contentView viewWithTag:1];
+    }
+    return _nameLbl;
+}
+
++(id)getDailyCell:(UITableView *)tableView WithParent:(id)parent{
+    DailyCellController * cell = [DailyCellController getCell:tableView WithNibName:@"DailyCell" AndParent:parent];
+    
+    return cell;
+}
+
+
+
+
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.nameLbl = (UILabel *)[self.contentView viewWithTag:1];
+    NSLog(@"awake");
+    
+    
+}
+
+-(void)a{
+    NSLog(@"%f",(self.streakLbl.frame.origin.x + self.streakLbl.frame.size.width));
+}
+
+-(void)setupModel:(Daily *)model{
+    self.model = model;
+    self.nameLbl.text = self.model.dailyName;
+    self.streakLbl.text = @"Streak: 3";
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

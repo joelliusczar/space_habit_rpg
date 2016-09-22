@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Daily.h"
+#import "TaskCell.h"
 
-@interface DailyCellController : UITableViewCell
+@interface DailyCellController : TaskCell
 
 @property (nonatomic,weak)  UILabel *nameLbl;
 @property (nonatomic,weak)  UILabel *streakLbl;
@@ -17,4 +18,6 @@
 @property (nonatomic,weak)  UIButton *checkbutton;
 
 
++(id)getDailyCell:(UITableView *)tableView WithParent:(id)parent;
+-(void)setupModel:(Daily *)model;
 @end

@@ -7,22 +7,27 @@
 //
 
 #import "DailyViewController.h"
-#import "DailyTablesViewController.h"
 #import "UIUtilities.h"
 #import "CoreDataStackController.h"
 #import "Daily.h"
 #import "EditNavigationController.h"
 #import "DailyEditController.h"
+#import "DailyHelper.h"
+#import "constants.h"
+#import "DailyCellController.h"
+
 
 @interface DailyViewController ()
 
-@property (nonatomic,strong) DailyTablesViewController *dailyTablesController;
 @property (nonatomic,weak) CoreDataStackController *dataController;
 @property (nonatomic,weak) EditNavigationController *editController;
 @property (nonatomic,weak) UIButton *addButton;
 @property (nonatomic,strong) DailyEditController *dailyEditor;
 @property (nonatomic,weak)  BaseViewController *parentController;
-
+@property (nonatomic,strong) UITableView *dailiesTable;
+@property (nonatomic,strong) NSMutableArray *incompleteItems;
+@property (nonatomic,strong) NSMutableArray *completeItems;
+@property (nonatomic,strong) DailyHelper *helper;
 @end
 
 @implementation DailyViewController
@@ -54,10 +59,20 @@ static NSString *const EntityName = @"Daily";
     return _addButton;
 }
 
+@synthesize helper = _helper;
+-(DailyHelper *)helper{
+    if(_helper == nil){
+        _helper = [[DailyHelper alloc]init];
+    }
+    
+    return _helper;
+}
+
 -(id)initWithDataController:(CoreDataStackController *)dataController AndWithParent:(BaseViewController *)parent{
     if(self = [self initWithNibName:@"DailyViewController" bundle:nil]){
         self.parentController = parent;
         [self setuptab:dataController];
+        
     }
     return self;
 }
@@ -66,23 +81,20 @@ static NSString *const EntityName = @"Daily";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.dailiesTable = [[UITableView alloc]init];
+
+    [self.view addSubview:self.dailiesTable];
     
-    self.dailyTablesController = [[DailyTablesViewController alloc]
-                                  initWithNibName:@"DailyTablesViewController"
-                                  bundle:nil];
-    [self.dailyTablesController setupData:self.dataController];
-    [self.view addSubview:self.dailyTablesController.view];
-    [self addChildViewController:self.dailyTablesController];
-    [self.dailyTablesController didMoveToParentViewController:self];
-    
-    CGFloat width = self.view.frame.size.width;
-    CGFloat height = self.view.frame.size.height;
+    CGFloat width = [UIScreen mainScreen].bounds.size.width;
+    CGFloat height = [UIScreen mainScreen].bounds.size.height;
     CGFloat minY = self.view.frame.origin.y;
     CGFloat viewHeight = self.view.frame.size.height - [UIUtilities GetYStartUnderLabel:height];
-    self.dailyTablesController.view.frame = CGRectMake(0, minY + [UIUtilities GetYStartUnderLabel:height],
+    self.dailiesTable.frame = CGRectMake(0, minY + [UIUtilities GetYStartUnderLabel:height],
                                                        width,
                                                        viewHeight);
-    [self.dailyTablesController setupData:self.dataController];
+    self.dailiesTable.delegate = self;
+    self.dailiesTable.dataSource = self;
+    
     
     [self addButton];
     
@@ -96,28 +108,85 @@ static NSString *const EntityName = @"Daily";
 }
 
 -(void)setuptab:(CoreDataStackController *)dataController{
-    self.dataController = dataController;
     UITabBarItem *tbi = [self tabBarItem];
-    
+    [self setupData:dataController];
     
     
     [tbi setTitle:@"Dailies"];
 }
 
 -(void)showNewDaily:(Daily *)daily{
-    [self.dailyTablesController addNewDailyToView:daily];
+    [self.incompleteItems addObject:daily];
+    [self.dailiesTable reloadData];
+}
+
+-(void)setupData:(CoreDataStackController *)data{
+    self.dataController = data;
+    
+    NSFetchedResultsController *resultsController = [self.dataController getItemFetcher:DAILY_ENTITY_NAME predicate:nil sortBy:[self getFetchDescriptors]];
+    NSError *error;
+    if(![resultsController performFetch:&error]){
+        NSLog(@"Error fetching data: %@", error.localizedFailureReason);
+        return;
+    }
+    self.completeItems = [NSMutableArray array];
+    self.incompleteItems = [NSMutableArray array];
+    
+    for(Daily *d in resultsController.fetchedObjects){
+        if([self.helper isDailyCompleteForTheDay:d]){
+            [self.completeItems addObject:d];
+        }
+        else{
+            [self.incompleteItems addObject:d];
+        }
+    }
+    
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.incompleteItems.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    Daily *d = [self.incompleteItems objectAtIndex:indexPath.row];
+    DailyCellController *cell = [DailyCellController getDailyCell:tableView WithParent:self];
+    [cell setupModel:d];
+    //cell.nameLbl.text = d.dailyName;
+
+    return cell;
+}
+
+
+
+
+-(NSArray *)getFetchDescriptors{
+    NSSortDescriptor *sortByUrgency = [[NSSortDescriptor alloc]
+                                       initWithKey:@"urgency" ascending:NO];
+    NSSortDescriptor *sortByDifficulty = [[NSSortDescriptor alloc]
+                                          initWithKey:@"difficulty" ascending:YES];
+    return [NSArray arrayWithObjects:sortByUrgency,sortByDifficulty, nil];
 }
 
 -(void)pressedAddBtn:(id)sender{
-//    Daily *d = (Daily *)[self.dataController constructEmptyEntity:EntityName];
-//    d.dailyName = @"it's a daily";
-//    d.difficulty = @2;
-//    d.urgency = @2;
-//    
-//    [self.dataController Save];
-//    [self.dailyTablesController addNewDailyToView:d];
     [self showViewController:self.editController sender:self];
     
+}
+
+-(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    void (^pressedEdit)(UITableViewRowAction *,NSIndexPath *) = ^(UITableViewRowAction *action,NSIndexPath *path){
+        [self.dailyEditor loadExistingDailyForEditing:[self.incompleteItems objectAtIndex:indexPath.row]];
+        [self showViewController:self.editController sender:self];
+    };
+    
+    UITableViewRowAction *openEditBox = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Edit" handler:pressedEdit];
+    
+    return @[openEditBox];
+}
+
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
 }
 
 

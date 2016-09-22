@@ -12,7 +12,7 @@
 #import "Daily.h"
 
 
-@interface DailyViewController : UIViewController
+@interface DailyViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 -(id)initWithDataController:(CoreDataStackController *)dataController AndWithParent:(BaseViewController *)parent;
 -(void)setuptab:(CoreDataStackController *)dataController;
 -(void)showNewDaily:(Daily *)daily;
