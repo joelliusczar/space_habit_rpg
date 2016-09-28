@@ -10,9 +10,9 @@
 #import "EditingSaver.h"
 #import "CoreDataStackController.h"
 #import "DailyViewController.h"
-
+#import "constants.h"
 
 @interface DailyEditController : UIViewController <EditingSaver>
 -(id)initWithDataController:(CoreDataStackController *)dataController AndWithParentDailyController:(DailyViewController *)parentDailyController;
--(void)loadExistingDailyForEditing:(Daily *)daily;
+-(void)loadExistingDailyForEditing:(Daily *)daily WithIndexPath:(NSIndexPath *)rowInfo;
 @end

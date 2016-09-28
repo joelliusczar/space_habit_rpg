@@ -10,6 +10,7 @@
 
 @implementation Daily
 
-// Insert code here to add functionality to your managed object subclass
+@synthesize rowNum = _rowNum;
+@synthesize sectionNum = _sectionNum;
 
 @end

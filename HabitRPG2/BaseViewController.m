@@ -31,7 +31,7 @@
 @synthesize editController = _editController;
 -(EditNavigationController *)editController{
     if(_editController == nil){
-        _editController = [[EditNavigationController alloc]initCustom];
+        _editController = [[EditNavigationController alloc]initWithTitle:@""];
     }
     return _editController;
 }

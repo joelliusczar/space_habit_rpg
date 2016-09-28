@@ -23,6 +23,7 @@
 		68BA38911D9361D900CB5A76 /* TestHelperWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BA38901D9361D900CB5A76 /* TestHelperWrapper.m */; };
 		68BA38931D93723600CB5A76 /* TestDailyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BA38921D93723600CB5A76 /* TestDailyHelper.m */; };
 		68D25C221D8B951B00FF1BE0 /* DailyEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D25C211D8B951B00FF1BE0 /* DailyEditController.m */; };
+		68DD159A1D9A1FC00073E7D8 /* checked_task.png in Resources */ = {isa = PBXBuildFile; fileRef = 68DD15991D9A1FC00073E7D8 /* checked_task.png */; };
 		68E260621D7BC3EA00425D46 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 68E260601D7BC3EA00425D46 /* Model.xcdatamodeld */; };
 		68E260651D7FC3F200425D46 /* CoreDataStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260641D7FC3F200425D46 /* CoreDataStackController.m */; };
 		68E260991D84923C00425D46 /* DailyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260981D84923C00425D46 /* DailyHelper.m */; };
@@ -106,6 +107,7 @@
 		68BA38921D93723600CB5A76 /* TestDailyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDailyHelper.m; sourceTree = "<group>"; };
 		68D25C201D8B951B00FF1BE0 /* DailyEditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyEditController.h; sourceTree = "<group>"; };
 		68D25C211D8B951B00FF1BE0 /* DailyEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyEditController.m; sourceTree = "<group>"; };
+		68DD15991D9A1FC00073E7D8 /* checked_task.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked_task.png; sourceTree = "<group>"; };
 		68E260611D7BC3EA00425D46 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		68E260631D7FC3F200425D46 /* CoreDataStackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataStackController.h; sourceTree = "<group>"; };
 		68E260641D7FC3F200425D46 /* CoreDataStackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataStackController.m; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 		68F3F9AC1D70E82E00840DD2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				68DD15991D9A1FC00073E7D8 /* checked_task.png */,
 				6886A48E1D8F6F9A005E12B3 /* edit_button.png */,
 				6886A48C1D8F6EB3005E12B3 /* switch_checked.png */,
 				6886A48A1D8F6EA6005E12B3 /* switch_unchecked.png */,
@@ -570,6 +573,7 @@
 				6886A48B1D8F6EA6005E12B3 /* switch_unchecked.png in Resources */,
 				68F3F9EA1D70EC9700840DD2 /* DailyViewController.xib in Resources */,
 				6886A4861D8F1C49005E12B3 /* unchecked_task.png in Resources */,
+				68DD159A1D9A1FC00073E7D8 /* checked_task.png in Resources */,
 				6886A48D1D8F6EB3005E12B3 /* switch_checked.png in Resources */,
 				68F3FA031D74897A00840DD2 /* MenuViewController.xib in Resources */,
 				68F3F9F91D70FD3F00840DD2 /* GoodsViewController.xib in Resources */,

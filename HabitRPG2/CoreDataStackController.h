@@ -16,5 +16,6 @@
                                     predicate: (NSPredicate *) filter
                                        sortBy:(NSArray *) sortAttrs;
 
--(BOOL)Save;
+-(BOOL)save;
+-(BOOL)deleteModel:(NSManagedObject *)model;
 @end

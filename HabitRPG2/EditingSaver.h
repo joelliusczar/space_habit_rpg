@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+@import CoreData;
 
 @protocol EditingSaver <NSObject>
 @required
 @property UIView *view;
 -(void)cancelEdit;
 -(void)saveEdit;
+-(BOOL)deleteModel;
 @end

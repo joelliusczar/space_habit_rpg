@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -19,17 +19,33 @@
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rw2-KC-xvD">
                     <rect key="frame" x="0.0" y="548" width="600" height="44"/>
                     <items>
-                        <barButtonItem tag="2" title="Cancel" id="9Th-5p-ZWi"/>
+                        <barButtonItem tag="2" title="Delete" id="9Th-5p-ZWi"/>
                         <barButtonItem tag="1" style="plain" systemItem="flexibleSpace" id="4QZ-dB-YHd"/>
                         <barButtonItem tag="3" title="Save" id="ArO-5g-fVd"/>
                     </items>
                 </toolbar>
+                <navigationBar tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9s9-Kx-0gj">
+                    <rect key="frame" x="0.0" y="19" width="600" height="44"/>
+                    <color key="barTintColor" white="0.94546979865771807" alpha="1" colorSpace="calibratedWhite"/>
+                    <textAttributes key="titleTextAttributes">
+                        <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
+                    </textAttributes>
+                    <items>
+                        <navigationItem title="Title" id="aZG-9k-8Wp">
+                            <barButtonItem key="backBarButtonItem" title="Cancel" id="aEz-go-bw0"/>
+                            <barButtonItem key="leftBarButtonItem" title="Cancel" id="qII-lQ-JvB"/>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="9s9-Kx-0gj" firstAttribute="trailing" secondItem="Rw2-KC-xvD" secondAttribute="trailing" id="2vn-Go-kYS"/>
                 <constraint firstItem="Rw2-KC-xvD" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottomMargin" id="4yI-vo-ExA"/>
                 <constraint firstAttribute="trailing" secondItem="Rw2-KC-xvD" secondAttribute="trailing" id="AJG-hX-UDk"/>
                 <constraint firstItem="Rw2-KC-xvD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Mm4-X5-T1j"/>
+                <constraint firstItem="9s9-Kx-0gj" firstAttribute="leading" secondItem="Rw2-KC-xvD" secondAttribute="leading" id="Vav-Sy-Fbo"/>
+                <constraint firstItem="9s9-Kx-0gj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="19" id="lUc-HX-Pay"/>
             </constraints>
         </view>
     </objects>

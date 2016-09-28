@@ -12,8 +12,10 @@
 #import "constants.h"
 #import "DailyHelper.h"
 #import "CommonUtilities.h"
+#import "constants.h"
 
 static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
+
 
 @interface DailyEditController ()
 @property (nonatomic,strong) UITextField *nameBox;
@@ -29,7 +31,9 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 @property (nonatomic,weak) DailyViewController *parentDailyController;
 @property (nonatomic,weak) Daily *modelForEditing;
 @property (nonatomic,strong) DailyHelper *helper;
-@property (nonatomic,strong) CommonUtilities *commonHelper;
+@property (nonatomic,strong) CommonUtilities *util;
+@property (nonatomic,strong) NSIndexPath *rowInfo;
+@property (nonatomic,assign) dailyStatus section;
 @end
 
 @implementation DailyEditController
@@ -116,6 +120,14 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
     return _rewardCustomLbl;
 }
 
+@synthesize modelForEditing = _modelForEditing;
+-(Daily *)modelForEditing{
+    if(_modelForEditing == nil){
+        _modelForEditing = (Daily *)[self.dataController constructEmptyEntity:DAILY_ENTITY_NAME];
+    }
+    return _modelForEditing;
+}
+
 @synthesize helper = _helper;
 -(DailyHelper *)helper{
     if(_helper == nil){
@@ -124,13 +136,13 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
     return _helper;
 }
 
-@synthesize commonHelper = _commonHelper;
--(CommonUtilities *)commonHelper{
-    if(_commonHelper == nil){
-        _commonHelper = [[CommonUtilities alloc]init];
+@synthesize util = _util;
+-(CommonUtilities *)util{
+    if(_util == nil){
+        _util = [[CommonUtilities alloc]init];
     }
     
-    return _commonHelper;
+    return _util;
 }
 
 
@@ -138,6 +150,7 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
     if(self = [self initWithNibName:@"DailyEditView" bundle:nil]){
         self.dataController = dataController;
         self.parentDailyController = parentDailyController;
+        
         [self view];
     }
     return self;
@@ -147,35 +160,55 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupControlsAndEvents];
-    // Do any additional setup after loading the view.
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+
+
 -(void)cancelEdit{
-    [self defaultControls];
+    [self cleanUp];
 }
 
 -(void)saveEdit{
-    //todo streak should be reset on edit
     //todo check for loophole with nextDueTime
-    Daily *d = (Daily *)[self.dataController constructEmptyEntity:DAILY_ENTITY_NAME];
-    d.dailyName = self.nameBox.text;
-    d.note = self.descriptionBox.text;
-    d.urgency = [NSNumber numberWithFloat:self.urgencySld.value];
-    d.difficulty = [NSNumber numberWithFloat:self.difficultySld.value];
+    self.modelForEditing.dailyName = self.nameBox.text;
+    self.modelForEditing.note = self.descriptionBox.text;
+    self.modelForEditing.urgency = [NSNumber numberWithFloat:self.urgencySld.value];
+    self.modelForEditing.difficulty = [NSNumber numberWithFloat:self.difficultySld.value];
     int rate =   lround(self.rateStep.value);
-    d.rate = [NSNumber numberWithInt:rate];
-    d.nextDueTime = [self.helper calculateNextDueTime:[[NSDate alloc]init] WithRate:rate];
-    d.streakLength = 0;
-    d.activeDaysHash = [NSNumber numberWithInt:[self.helper calculateActiveDaysHash:self.activeDaySwitches]];
+    self.modelForEditing.rate = [NSNumber numberWithInt:rate];
+    self.modelForEditing.nextDueTime = [self.helper calculateNextDueTime:[[NSDate alloc]init] WithRate:rate];
+    self.modelForEditing.streakLength = 0;
+    self.modelForEditing.activeDaysHash = [NSNumber numberWithInt:[self.helper calculateActiveDaysHash:self.activeDaySwitches]];
     //todo add something for custom reward
-    [self.dataController Save];
-    [self.parentDailyController showNewDaily:d];
+    [self.dataController save];
+    if(self.rowInfo == nil){
+        [self.parentDailyController showNewDaily:self.modelForEditing];
+    }
+    else{
+        [self.parentDailyController refreshTableAtRow:self.rowInfo];
+    }
+    [self cleanUp];
+}
+
+-(BOOL)deleteModel{
+    
+    BOOL success = [self.dataController deleteModel:self.modelForEditing];
+    [self.parentDailyController removeItemFromViewAtRow:self.rowInfo];
+    [self cleanUp];
+    return success;
+}
+
+-(void)cleanUp{
     [self defaultControls];
+    self.modelForEditing = nil;
+    self.rowInfo = nil;
 }
 
 -(void)defaultControls{
@@ -186,7 +219,7 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
     self.rateLbl.text = [NSString stringWithFormat:TRIGGER_LABEL_FORMAT,1];
     self.rateStep.value = 1;
     for(int i = 0;i<DAYS_IN_WEEK;i++){
-        [self.commonHelper setSwitch:[self.activeDaySwitches objectAtIndex:i] withValue:YES];
+        [self.util setSwitch:[self.activeDaySwitches objectAtIndex:i] withValue:YES];
     }
     self.modelForEditing = nil;
 
@@ -203,11 +236,12 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
     
 }
 
--(void)loadExistingDailyForEditing:(Daily *)daily{
+-(void)loadExistingDailyForEditing:(Daily *)daily WithIndexPath:(NSIndexPath *)rowInfo{
     [self defaultControls];
     self.modelForEditing = daily;
+    self.rowInfo = rowInfo;
     self.nameBox.text = self.modelForEditing.dailyName ? self.modelForEditing.dailyName  : @"";
-    self.descriptionBox.text = self.modelForEditing.description ? self.modelForEditing.description : @"";
+    self.descriptionBox.text = self.modelForEditing.note ? self.modelForEditing.note : @"";
     self.urgencySld.value = [self.modelForEditing.urgency floatValue];
     self.difficultySld.value = [self.modelForEditing.difficulty floatValue];
     NSInteger hash = [self.modelForEditing.activeDaysHash integerValue];
@@ -225,8 +259,8 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
     if(rate > 366){
         rate = 366;
     }
-    if(rate < 0){
-        rate = 0;
+    if(rate < 1){
+        rate = 1;
     }
     sender.value = rate;
     self.rateLbl.text = [NSString stringWithFormat: TRIGGER_LABEL_FORMAT,rate];

@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "constants.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Daily : NSManagedObject
-
-// Insert code here to declare functionality of your managed object subclass
+@property (nonatomic,assign) NSInteger rowNum;
+@property (nonatomic,assign) NSInteger sectionNum;
 
 @end
 

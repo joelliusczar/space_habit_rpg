@@ -19,5 +19,6 @@
 
 
 +(id)getDailyCell:(UITableView *)tableView WithParent:(id)parent;
--(void)setupModel:(Daily *)model;
+-(void)setupCell:(Daily *)model AndRow:(NSIndexPath *)rowInfo;
+
 @end

@@ -10,6 +10,7 @@
 #import "EditingSaver.h"
 
 @interface EditNavigationController : UIViewController
+@property (nonatomic,strong) NSString *viewTitle;
 -(void)setupTaskEditor:(id<EditingSaver>)editView;
--(id)initCustom;
+-(id)initWithTitle:(NSString *)viewTitle;
 @end

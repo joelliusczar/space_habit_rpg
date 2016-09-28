@@ -6,7 +6,13 @@
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
+
+
 #import <Foundation/Foundation.h>
+
+typedef NS_ENUM(NSUInteger,dailyStatus) {
+    INCOMPLETE = 0
+    ,COMPLETE = 1};
 
 extern NSString* const DAILY_ENTITY_NAME;
 
