@@ -97,12 +97,11 @@
     [super viewDidLoad];
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     self.scrollView.backgroundColor = [UIColor clearColor];
-    
+    self.navbar.delegate = self;
     self.navItem.title = self.viewTitle;
     [self.scrollView addSubview:self.editingScreen.view];
     [self.view addSubview:self.scrollView];
     self.scrollView.scrollEnabled = YES;
-    
     [self.view bringSubviewToFront:self.toolbar];
     [self.view bringSubviewToFront:self.navbar];
     [self leaveBtn];
@@ -117,6 +116,10 @@
 
 -(void)setupTaskEditor:(id<EditingSaver>)editView{
     self.editingScreen = editView;
+}
+
+-(UIBarPosition)positionForBar:(id<UIBarPositioning>)bar{
+    return UIBarPositionTopAttached;
 }
 
 - (void)didReceiveMemoryWarning {

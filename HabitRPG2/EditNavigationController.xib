@@ -38,7 +38,7 @@
                     </items>
                 </navigationBar>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="9s9-Kx-0gj" firstAttribute="trailing" secondItem="Rw2-KC-xvD" secondAttribute="trailing" id="2vn-Go-kYS"/>
                 <constraint firstItem="Rw2-KC-xvD" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottomMargin" id="4yI-vo-ExA"/>
