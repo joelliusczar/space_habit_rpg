@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "EditNavigationController.h"
+#import "Daily.h"
 
 @interface BaseViewController : UIViewController
 @property (nonatomic,strong) EditNavigationController *editController;
+-(void)doActionForCompletedDaily:(Daily *)daily;
+-(void)undoActionForCompletedDaily:(Daily *)daily;
 @end

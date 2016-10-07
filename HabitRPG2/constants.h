@@ -15,5 +15,8 @@ typedef NS_ENUM(NSUInteger,dailyStatus) {
     ,COMPLETE = 1};
 
 extern NSString* const DAILY_ENTITY_NAME;
-
+extern NSString* const HERO_ENTITY_NAME;
+extern NSString* const SETTINGS_ENTITY_NAME;
+extern NSString* const ZONE_ENTITY_NAME;
+extern NSString* const MONSTER_ENTITY_NAME;
 extern NSInteger const DAYS_IN_WEEK;

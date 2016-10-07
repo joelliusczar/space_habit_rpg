@@ -16,6 +16,7 @@
 #import "constants.h"
 #import "DailyCellController.h"
 #import "constants.h"
+#import "IntroViewController.h"
 
 
 @interface DailyViewController ()
@@ -29,6 +30,7 @@
 @property (nonatomic,strong) NSMutableArray *incompleteItems;
 @property (nonatomic,strong) NSMutableArray *completeItems;
 @property (nonatomic,strong) DailyHelper *helper;
+
 @end
 
 @implementation DailyViewController
@@ -101,9 +103,9 @@ static NSString *const EntityName = @"Daily";
     
     
     [self addButton];
-    
 
     [self.editController setupTaskEditor:self.dailyEditor];
+    
 }
 
 
@@ -254,6 +256,7 @@ static NSString *const EntityName = @"Daily";
     self.editController.viewTitle = @"Dailies";
     [self showViewController:self.editController sender:self];
     
+    
 }
 
 
@@ -271,17 +274,5 @@ static NSString *const EntityName = @"Daily";
 }
 
 
-
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

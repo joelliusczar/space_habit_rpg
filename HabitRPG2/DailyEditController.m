@@ -14,7 +14,7 @@
 #import "CommonUtilities.h"
 #import "constants.h"
 
-static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
+static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %ld days";
 
 
 @interface DailyEditController ()
@@ -181,8 +181,8 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
     self.modelForEditing.note = self.descriptionBox.text;
     self.modelForEditing.urgency = [NSNumber numberWithFloat:self.urgencySld.value];
     self.modelForEditing.difficulty = [NSNumber numberWithFloat:self.difficultySld.value];
-    int rate =   lround(self.rateStep.value);
-    self.modelForEditing.rate = [NSNumber numberWithInt:rate];
+    long rate = lround(self.rateStep.value);
+    self.modelForEditing.rate = [NSNumber numberWithLong:rate];
     self.modelForEditing.nextDueTime = [self.helper calculateNextDueTime:[[NSDate alloc]init] WithRate:rate];
     self.modelForEditing.streakLength = 0;
     self.modelForEditing.activeDaysHash = [NSNumber numberWithInt:[self.helper calculateActiveDaysHash:self.activeDaySwitches]];
@@ -216,7 +216,7 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
     self.descriptionBox.text = @"";
     self.urgencySld.value = 3;
     self.difficultySld.value = 3;
-    self.rateLbl.text = [NSString stringWithFormat:TRIGGER_LABEL_FORMAT,1];
+    self.rateLbl.text = [NSString stringWithFormat:TRIGGER_LABEL_FORMAT,1l];
     self.rateStep.value = 1;
     for(int i = 0;i<DAYS_IN_WEEK;i++){
         [self.util setSwitch:[self.activeDaySwitches objectAtIndex:i] withValue:YES];
@@ -248,7 +248,7 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
     [self.helper setActiveDaySwitches:self.activeDaySwitches fromHash:hash];
     NSInteger rate = [self.modelForEditing.rate doubleValue];
     self.rateStep.value = rate;
-    self.rateLbl.text = [NSString stringWithFormat:TRIGGER_LABEL_FORMAT,rate];
+    self.rateLbl.text = [NSString stringWithFormat:TRIGGER_LABEL_FORMAT,(long)rate];
     
     
 }
@@ -263,16 +263,16 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
         rate = 1;
     }
     sender.value = rate;
-    self.rateLbl.text = [NSString stringWithFormat: TRIGGER_LABEL_FORMAT,rate];
+    self.rateLbl.text = [NSString stringWithFormat: TRIGGER_LABEL_FORMAT,(long)rate];
 }
 
 -(void)urgencySlider_move:(UISlider *)sender{
-    int sliderValue = lroundf(sender.value);
+    long sliderValue = lroundf(sender.value);
     sender.value = sliderValue;
     NSLog(@"%f",sender.value);
 }
 -(void)difficultySlider_move:(UISlider *)sender{
-    int sliderValue = lroundf(sender.value);
+    long sliderValue = lroundf(sender.value);
     sender.value = sliderValue;
     NSLog(@"%f",sender.value);
 }

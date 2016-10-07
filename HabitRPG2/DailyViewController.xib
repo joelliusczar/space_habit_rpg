@@ -29,7 +29,7 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dailies" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKG-vp-d8s">
                     <rect key="frame" x="54" y="0.0" width="525" height="48"/>
                     <color key="backgroundColor" red="0.14117647058823529" green="0.49803921568627452" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" name="Helvetica-Oblique" family="Helvetica" pointSize="19"/>
+                    <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="15"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                     <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">

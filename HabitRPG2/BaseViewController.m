@@ -14,7 +14,11 @@
 #import "MenuViewController.h"
 #import "UIUtilities.h"
 #import "CoreDataStackController.h"
-
+#import "Settings.h"
+#import "Zone.h"
+#import "Hero.h"
+#import "Monster.h"
+#import "IntroViewController.h"
 
 @import CoreGraphics;
 
@@ -23,7 +27,10 @@
 
 @property (strong,nonatomic) UITabBarController *tabsController;
 @property (strong,nonatomic) CoreDataStackController *dataController;
-
+@property (nonatomic,strong) Settings *userSettings;
+@property (nonatomic,strong) Hero *userHero;
+@property (nonatomic,strong) Zone *nowZone;
+@property (nonatomic,strong) Monster *nowMonsters;
 @end
 
 @implementation BaseViewController
@@ -52,9 +59,27 @@
     return _tabsController;
 }
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self determineIfFirstTimeAndSetupSettings];
+
     
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+}
+
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)setupTabs {
     DailyViewController* dc = [[DailyViewController alloc]initWithDataController:self.dataController AndWithParent:self];
     
     HabitController* hc = [[HabitController alloc]
@@ -92,25 +117,83 @@
                                                 ,width,
                                                 height -
                                                 [UIUtilities GetYStart:height]);
+}
+
+-(void)determineIfFirstTimeAndSetupSettings{
+    NSSortDescriptor *sortByAnything = [[NSSortDescriptor alloc]
+                                        initWithKey:@"createDate" ascending:NO];
     
+    NSFetchedResultsController *settingsFetchController = [self.dataController getItemFetcher:SETTINGS_ENTITY_NAME predicate:nil sortBy:@[sortByAnything]];
+    NSError *err;
+    if(![settingsFetchController performFetch:&err]){
+        [NSException raise:@"Error fetching data" format:@"%@",err.localizedFailureReason];
+        
+    }
+    if([settingsFetchController.fetchedObjects count] == 0){
+        self.userSettings = (Settings *)[self.dataController constructEmptyEntity:SETTINGS_ENTITY_NAME];
+        IntroViewController *introView = [[IntroViewController alloc] initWithDataController:self.dataController AndSettings:self.userSettings];
+        
+        [self.view addSubview:introView.view];
+        
+        [self addChildViewController:introView];
+        [introView didMoveToParentViewController:self];
+        
+    }
+    else{
+        self.userSettings = [settingsFetchController.fetchedObjects objectAtIndex:0];
+    }
     
 }
 
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)setupSettingsAndLoadIntroView{
+    NSSortDescriptor *sortByAnything = [[NSSortDescriptor alloc]
+                                        initWithKey:@"createDate" ascending:NO];
+    
+    NSFetchedResultsController *settingsFetchController = [self.dataController getItemFetcher:SETTINGS_ENTITY_NAME predicate:nil sortBy:@[sortByAnything]];
+    NSError *err;
+    if(![settingsFetchController performFetch:&err]){
+        NSLog(@"Error fetching data: %@", err.localizedFailureReason);
+        return;
+    }
+    if([settingsFetchController.fetchedObjects count] == 0){
+        self.userSettings = (Settings *)[self.dataController constructEmptyEntity:SETTINGS_ENTITY_NAME];
+        IntroViewController *introView = [[IntroViewController alloc] initWithDataController:self.dataController AndSettings:self.userSettings];
+        
+        
+        [self showViewController:introView sender:self];
+        
+        
+    }
+    else{
+        self.userSettings = [settingsFetchController.fetchedObjects objectAtIndex:0];
+    }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)setupHero {
+    NSFetchedResultsController *heroFetchController = [self.dataController getItemFetcher:HERO_ENTITY_NAME predicate:nil sortBy:nil];
+    NSError *err;
+    if(![heroFetchController performFetch:&err]){
+        NSLog(@"Error fetching data: %@", err.localizedFailureReason);
+        return;
+    }
+    if([heroFetchController.fetchedObjects count] == 0){
+        //do new user action
+    }
+    else{
+        self.userHero = [heroFetchController.fetchedObjects objectAtIndex:0];
+    }
 }
-*/
+
+-(void)setupData{
+    [self setupHero];
+}
+
+-(void)doActionForCompletedDaily:(Daily *)daily{
+    
+}
+
+-(void)undoActionForCompletedDaily:(Daily *)daily{
+
+}
 
 @end

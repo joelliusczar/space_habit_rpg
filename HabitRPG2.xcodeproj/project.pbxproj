@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		686686EB1D79032200BB2D09 /* DailyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 686686EA1D79032200BB2D09 /* DailyCell.xib */; };
 		686686EE1D79060300BB2D09 /* DailyCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686686ED1D79060300BB2D09 /* DailyCellController.m */; };
+		686ED38B1DA463F6004EDD36 /* PressStart2P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 686ED38A1DA46200004EDD36 /* PressStart2P.ttf */; };
+		686ED3911DA5DD66004EDD36 /* title_Screen_HD_55.png in Resources */ = {isa = PBXBuildFile; fileRef = 686ED3901DA5DD66004EDD36 /* title_Screen_HD_55.png */; };
+		686ED3931DA5DEB5004EDD36 /* title_Screen_HD_47.png in Resources */ = {isa = PBXBuildFile; fileRef = 686ED3921DA5DEB5004EDD36 /* title_Screen_HD_47.png */; };
+		686ED3951DA5DEC0004EDD36 /* title_Screen_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 686ED3941DA5DEC0004EDD36 /* title_Screen_2x.png */; };
+		686ED3981DA5E0F9004EDD36 /* title_Screen_1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 686ED3961DA5E0F9004EDD36 /* title_Screen_1x.png */; };
+		686ED3991DA5E0F9004EDD36 /* title_Screen_R_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 686ED3971DA5E0F9004EDD36 /* title_Screen_R_4.png */; };
+		686ED3A71DA751AC004EDD36 /* StoryConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ED3A61DA751AC004EDD36 /* StoryConstants.m */; };
 		687F01231D77CA6500C7B08B /* DailyTablesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 687F01211D77CA6500C7B08B /* DailyTablesViewController.xib */; };
 		6886A4801D8E5FD0005E12B3 /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 6886A47F1D8E5FD0005E12B3 /* constants.m */; };
 		6886A4861D8F1C49005E12B3 /* unchecked_task.png in Resources */ = {isa = PBXBuildFile; fileRef = 6886A4851D8F1C49005E12B3 /* unchecked_task.png */; };
@@ -22,6 +29,8 @@
 		68BA388E1D93617400CB5A76 /* DailyHelperMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BA388D1D93617400CB5A76 /* DailyHelperMock.m */; };
 		68BA38911D9361D900CB5A76 /* TestHelperWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BA38901D9361D900CB5A76 /* TestHelperWrapper.m */; };
 		68BA38931D93723600CB5A76 /* TestDailyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BA38921D93723600CB5A76 /* TestDailyHelper.m */; };
+		68BE45911D9DEA0B003F3400 /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BE458F1D9DEA0B003F3400 /* IntroViewController.m */; };
+		68BE45921D9DEA0B003F3400 /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68BE45901D9DEA0B003F3400 /* IntroViewController.xib */; };
 		68D25C221D8B951B00FF1BE0 /* DailyEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D25C211D8B951B00FF1BE0 /* DailyEditController.m */; };
 		68DD159A1D9A1FC00073E7D8 /* checked_task.png in Resources */ = {isa = PBXBuildFile; fileRef = 68DD15991D9A1FC00073E7D8 /* checked_task.png */; };
 		68E260621D7BC3EA00425D46 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 68E260601D7BC3EA00425D46 /* Model.xcdatamodeld */; };
@@ -86,6 +95,14 @@
 		686686EA1D79032200BB2D09 /* DailyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyCell.xib; sourceTree = "<group>"; };
 		686686EC1D79060300BB2D09 /* DailyCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyCellController.h; sourceTree = "<group>"; };
 		686686ED1D79060300BB2D09 /* DailyCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyCellController.m; sourceTree = "<group>"; };
+		686ED38A1DA46200004EDD36 /* PressStart2P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PressStart2P.ttf; sourceTree = "<group>"; };
+		686ED3901DA5DD66004EDD36 /* title_Screen_HD_55.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title_Screen_HD_55.png; sourceTree = "<group>"; };
+		686ED3921DA5DEB5004EDD36 /* title_Screen_HD_47.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title_Screen_HD_47.png; sourceTree = "<group>"; };
+		686ED3941DA5DEC0004EDD36 /* title_Screen_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title_Screen_2x.png; sourceTree = "<group>"; };
+		686ED3961DA5E0F9004EDD36 /* title_Screen_1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title_Screen_1x.png; sourceTree = "<group>"; };
+		686ED3971DA5E0F9004EDD36 /* title_Screen_R_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title_Screen_R_4.png; sourceTree = "<group>"; };
+		686ED3A51DA751AC004EDD36 /* StoryConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryConstants.h; sourceTree = "<group>"; };
+		686ED3A61DA751AC004EDD36 /* StoryConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryConstants.m; sourceTree = "<group>"; };
 		687F01211D77CA6500C7B08B /* DailyTablesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyTablesViewController.xib; sourceTree = "<group>"; };
 		6886A47E1D8E5FD0005E12B3 /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 		6886A47F1D8E5FD0005E12B3 /* constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = constants.m; sourceTree = "<group>"; };
@@ -105,6 +122,10 @@
 		68BA388F1D9361D900CB5A76 /* TestHelperWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHelperWrapper.h; sourceTree = "<group>"; };
 		68BA38901D9361D900CB5A76 /* TestHelperWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHelperWrapper.m; sourceTree = "<group>"; };
 		68BA38921D93723600CB5A76 /* TestDailyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDailyHelper.m; sourceTree = "<group>"; };
+		68BE458C1D9CCF4C003F3400 /* Model 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 2.xcdatamodel"; sourceTree = "<group>"; };
+		68BE458E1D9DEA0B003F3400 /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroViewController.h; sourceTree = "<group>"; };
+		68BE458F1D9DEA0B003F3400 /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroViewController.m; sourceTree = "<group>"; };
+		68BE45901D9DEA0B003F3400 /* IntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroViewController.xib; sourceTree = "<group>"; };
 		68D25C201D8B951B00FF1BE0 /* DailyEditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyEditController.h; sourceTree = "<group>"; };
 		68D25C211D8B951B00FF1BE0 /* DailyEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyEditController.m; sourceTree = "<group>"; };
 		68DD15991D9A1FC00073E7D8 /* checked_task.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked_task.png; sourceTree = "<group>"; };
@@ -208,44 +229,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		686686EF1D79060D00BB2D09 /* Tabs */ = {
+		686ED39C1DA5FF28004EDD36 /* Todos */ = {
+			isa = PBXGroup;
+			children = (
+				68F3F9F21D70FC5E00840DD2 /* TodoViewController.xib */,
+				68E2611A1D87673900425D46 /* Todo+CoreDataProperties.h */,
+				68E2611B1D87673900425D46 /* Todo+CoreDataProperties.m */,
+				68F3F9F01D70FC5E00840DD2 /* TodoViewController.h */,
+				68F3F9F11D70FC5E00840DD2 /* TodoViewController.m */,
+				68E2611C1D87673900425D46 /* Todo.h */,
+				68E2611D1D87673900425D46 /* Todo.m */,
+			);
+			name = Todos;
+			sourceTree = "<group>";
+		};
+		686ED39D1DA6007E004EDD36 /* Habits */ = {
+			isa = PBXGroup;
+			children = (
+				68E261261D87673900425D46 /* Habit+CoreDataProperties.h */,
+				68E261271D87673900425D46 /* Habit+CoreDataProperties.m */,
+				68E261281D87673900425D46 /* Habit.h */,
+				68F3F9EB1D70FC0D00840DD2 /* HabitController.h */,
+				68F3F9ED1D70FC0D00840DD2 /* HabitController.xib */,
+				68F3F9EC1D70FC0D00840DD2 /* HabitController.m */,
+				68E261291D87673900425D46 /* Habit.m */,
+			);
+			name = Habits;
+			sourceTree = "<group>";
+		};
+		686ED39E1DA600A7004EDD36 /* Goods */ = {
+			isa = PBXGroup;
+			children = (
+				68F3F9F51D70FD3F00840DD2 /* GoodsViewController.h */,
+				68F3F9F71D70FD3F00840DD2 /* GoodsViewController.xib */,
+				68E2612A1D87673900425D46 /* Good+CoreDataProperties.h */,
+				68E2612B1D87673900425D46 /* Good+CoreDataProperties.m */,
+				68E2612C1D87673900425D46 /* Good.h */,
+				68E2612D1D87673900425D46 /* Good.m */,
+				68F3F9F61D70FD3F00840DD2 /* GoodsViewController.m */,
+			);
+			name = Goods;
+			sourceTree = "<group>";
+		};
+		686ED39F1DA60142004EDD36 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
 				68F3F9FF1D74897A00840DD2 /* MenuViewController.h */,
 				68F3FA001D74897A00840DD2 /* MenuViewController.m */,
-				68F3F9F51D70FD3F00840DD2 /* GoodsViewController.h */,
-				68F3F9F61D70FD3F00840DD2 /* GoodsViewController.m */,
-				68F3F9F01D70FC5E00840DD2 /* TodoViewController.h */,
-				68F3F9F11D70FC5E00840DD2 /* TodoViewController.m */,
-				68F3F9EB1D70FC0D00840DD2 /* HabitController.h */,
-				68F3F9EC1D70FC0D00840DD2 /* HabitController.m */,
-			);
-			name = Tabs;
-			sourceTree = "<group>";
-		};
-		686686F01D79063600BB2D09 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Cells;
-			sourceTree = "<group>";
-		};
-		686686F11D7906DF00BB2D09 /* Tabs */ = {
-			isa = PBXGroup;
-			children = (
-				68F3F9ED1D70FC0D00840DD2 /* HabitController.xib */,
-				68F3F9F21D70FC5E00840DD2 /* TodoViewController.xib */,
-				68F3F9F71D70FD3F00840DD2 /* GoodsViewController.xib */,
 				68F3FA011D74897A00840DD2 /* MenuViewController.xib */,
 			);
-			name = Tabs;
-			sourceTree = "<group>";
-		};
-		686686F21D7906F900BB2D09 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Cells;
+			name = Menu;
 			sourceTree = "<group>";
 		};
 		68BA38881D93611300CB5A76 /* TestHelpers */ = {
@@ -260,6 +293,18 @@
 			);
 			name = TestHelpers;
 			path = HabitRPG2;
+			sourceTree = "<group>";
+		};
+		68BE458D1D9DE889003F3400 /* Story */ = {
+			isa = PBXGroup;
+			children = (
+				68BE458E1D9DEA0B003F3400 /* IntroViewController.h */,
+				68BE458F1D9DEA0B003F3400 /* IntroViewController.m */,
+				68BE45901D9DEA0B003F3400 /* IntroViewController.xib */,
+				686ED3A51DA751AC004EDD36 /* StoryConstants.h */,
+				686ED3A61DA751AC004EDD36 /* StoryConstants.m */,
+			);
+			name = Story;
 			sourceTree = "<group>";
 		};
 		68D25C231D8E2ACA00FF1BE0 /* Dailies */ = {
@@ -293,17 +338,22 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		68E2605C1D7B36FB00425D46 /* Models */ = {
+		68DD159E1D9CAA010073E7D8 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				68E260631D7FC3F200425D46 /* CoreDataStackController.h */,
+				68E260641D7FC3F200425D46 /* CoreDataStackController.m */,
+				68E260CC1D851DA500425D46 /* EditNavigationController.h */,
+				68E260CD1D851DA500425D46 /* EditNavigationController.m */,
+				68F736B01D8B810200AE10A8 /* EditingSaver.h */,
+				68F3F9E31D70E8DB00840DD2 /* BaseViewController.xib */,
+				68E260CE1D851DA500425D46 /* EditNavigationController.xib */,
+				68F3F9E11D70E8DB00840DD2 /* BaseViewController.h */,
+				68F3F9E21D70E8DB00840DD2 /* BaseViewController.m */,
 				68E261121D87673900425D46 /* Settings+CoreDataProperties.h */,
 				68E261131D87673900425D46 /* Settings+CoreDataProperties.m */,
 				68E261141D87673900425D46 /* Settings.h */,
 				68E261151D87673900425D46 /* Settings.m */,
-				68E2611A1D87673900425D46 /* Todo+CoreDataProperties.h */,
-				68E2611B1D87673900425D46 /* Todo+CoreDataProperties.m */,
-				68E2611C1D87673900425D46 /* Todo.h */,
-				68E2611D1D87673900425D46 /* Todo.m */,
 				68E2611E1D87673900425D46 /* Zone+CoreDataProperties.h */,
 				68E2611F1D87673900425D46 /* Zone+CoreDataProperties.m */,
 				68E261201D87673900425D46 /* Zone.h */,
@@ -312,38 +362,12 @@
 				68E261231D87673900425D46 /* Hero+CoreDataProperties.m */,
 				68E261241D87673900425D46 /* Hero.h */,
 				68E261251D87673900425D46 /* Hero.m */,
-				68E261261D87673900425D46 /* Habit+CoreDataProperties.h */,
-				68E261271D87673900425D46 /* Habit+CoreDataProperties.m */,
-				68E261281D87673900425D46 /* Habit.h */,
-				68E261291D87673900425D46 /* Habit.m */,
-				68E2612A1D87673900425D46 /* Good+CoreDataProperties.h */,
-				68E2612B1D87673900425D46 /* Good+CoreDataProperties.m */,
-				68E2612C1D87673900425D46 /* Good.h */,
-				68E2612D1D87673900425D46 /* Good.m */,
 				68E2612E1D87673900425D46 /* Monster+CoreDataProperties.h */,
 				68E2612F1D87673900425D46 /* Monster+CoreDataProperties.m */,
 				68E261301D87673900425D46 /* Monster.h */,
 				68E261311D87673900425D46 /* Monster.m */,
 			);
-			name = Models;
-			sourceTree = "<group>";
-		};
-		68E260D11D851E0800425D46 /* EditingControllers */ = {
-			isa = PBXGroup;
-			children = (
-				68E260CC1D851DA500425D46 /* EditNavigationController.h */,
-				68E260CD1D851DA500425D46 /* EditNavigationController.m */,
-				68F736B01D8B810200AE10A8 /* EditingSaver.h */,
-			);
-			name = EditingControllers;
-			sourceTree = "<group>";
-		};
-		68E260D21D851E2400425D46 /* Editing */ = {
-			isa = PBXGroup;
-			children = (
-				68E260CE1D851DA500425D46 /* EditNavigationController.xib */,
-			);
-			name = Editing;
+			name = Base;
 			sourceTree = "<group>";
 		};
 		68F3F9A01D70E82E00840DD2 = {
@@ -370,11 +394,14 @@
 		68F3F9AB1D70E82E00840DD2 /* HabitRPG2 */ = {
 			isa = PBXGroup;
 			children = (
+				686ED39F1DA60142004EDD36 /* Menu */,
+				686ED39E1DA600A7004EDD36 /* Goods */,
+				686ED39D1DA6007E004EDD36 /* Habits */,
+				686ED39C1DA5FF28004EDD36 /* Todos */,
+				68BE458D1D9DE889003F3400 /* Story */,
+				68DD159E1D9CAA010073E7D8 /* Base */,
 				68D25C231D8E2ACA00FF1BE0 /* Dailies */,
-				68E2605C1D7B36FB00425D46 /* Models */,
 				68F3F9FA1D71C9A500840DD2 /* Helpers */,
-				68F3F9E01D70E88F00840DD2 /* views */,
-				68F3F9DF1D70E88700840DD2 /* controllers */,
 				68F3F9B81D70E82E00840DD2 /* Assets.xcassets */,
 				68F3F9AF1D70E82E00840DD2 /* AppDelegate.h */,
 				68F3F9B01D70E82E00840DD2 /* AppDelegate.m */,
@@ -390,6 +417,12 @@
 		68F3F9AC1D70E82E00840DD2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				686ED3961DA5E0F9004EDD36 /* title_Screen_1x.png */,
+				686ED3971DA5E0F9004EDD36 /* title_Screen_R_4.png */,
+				686ED3901DA5DD66004EDD36 /* title_Screen_HD_55.png */,
+				686ED3921DA5DEB5004EDD36 /* title_Screen_HD_47.png */,
+				686ED3941DA5DEC0004EDD36 /* title_Screen_2x.png */,
+				686ED38A1DA46200004EDD36 /* PressStart2P.ttf */,
 				68DD15991D9A1FC00073E7D8 /* checked_task.png */,
 				6886A48E1D8F6F9A005E12B3 /* edit_button.png */,
 				6886A48C1D8F6EB3005E12B3 /* switch_checked.png */,
@@ -417,31 +450,6 @@
 				68F3F9D31D70E82E00840DD2 /* Info.plist */,
 			);
 			path = HabitRPG2UITests;
-			sourceTree = "<group>";
-		};
-		68F3F9DF1D70E88700840DD2 /* controllers */ = {
-			isa = PBXGroup;
-			children = (
-				68E260D11D851E0800425D46 /* EditingControllers */,
-				686686F01D79063600BB2D09 /* Cells */,
-				686686EF1D79060D00BB2D09 /* Tabs */,
-				68F3F9E11D70E8DB00840DD2 /* BaseViewController.h */,
-				68F3F9E21D70E8DB00840DD2 /* BaseViewController.m */,
-				68E260631D7FC3F200425D46 /* CoreDataStackController.h */,
-				68E260641D7FC3F200425D46 /* CoreDataStackController.m */,
-			);
-			name = controllers;
-			sourceTree = "<group>";
-		};
-		68F3F9E01D70E88F00840DD2 /* views */ = {
-			isa = PBXGroup;
-			children = (
-				68E260D21D851E2400425D46 /* Editing */,
-				686686F21D7906F900BB2D09 /* Cells */,
-				686686F11D7906DF00BB2D09 /* Tabs */,
-				68F3F9E31D70E8DB00840DD2 /* BaseViewController.xib */,
-			);
-			name = views;
 			sourceTree = "<group>";
 		};
 		68F3F9FA1D71C9A500840DD2 /* Helpers */ = {
@@ -561,7 +569,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				686ED38B1DA463F6004EDD36 /* PressStart2P.ttf in Resources */,
+				686ED3951DA5DEC0004EDD36 /* title_Screen_2x.png in Resources */,
 				686686EB1D79032200BB2D09 /* DailyCell.xib in Resources */,
+				686ED3991DA5E0F9004EDD36 /* title_Screen_R_4.png in Resources */,
 				68F3F9F41D70FC5E00840DD2 /* TodoViewController.xib in Resources */,
 				68F3F9EF1D70FC0D00840DD2 /* HabitController.xib in Resources */,
 				6889C65E1D88F82700598435 /* DailyEditView.xib in Resources */,
@@ -571,10 +582,14 @@
 				68F3F9E51D70E8DB00840DD2 /* BaseViewController.xib in Resources */,
 				68E260D01D851DA500425D46 /* EditNavigationController.xib in Resources */,
 				6886A48B1D8F6EA6005E12B3 /* switch_unchecked.png in Resources */,
+				686ED3931DA5DEB5004EDD36 /* title_Screen_HD_47.png in Resources */,
 				68F3F9EA1D70EC9700840DD2 /* DailyViewController.xib in Resources */,
+				68BE45921D9DEA0B003F3400 /* IntroViewController.xib in Resources */,
 				6886A4861D8F1C49005E12B3 /* unchecked_task.png in Resources */,
 				68DD159A1D9A1FC00073E7D8 /* checked_task.png in Resources */,
+				686ED3981DA5E0F9004EDD36 /* title_Screen_1x.png in Resources */,
 				6886A48D1D8F6EB3005E12B3 /* switch_checked.png in Resources */,
+				686ED3911DA5DD66004EDD36 /* title_Screen_HD_55.png in Resources */,
 				68F3FA031D74897A00840DD2 /* MenuViewController.xib in Resources */,
 				68F3F9F91D70FD3F00840DD2 /* GoodsViewController.xib in Resources */,
 			);
@@ -618,6 +633,7 @@
 				68BA38861D93576600CB5A76 /* CommonUtilities.m in Sources */,
 				68D25C221D8B951B00FF1BE0 /* DailyEditController.m in Sources */,
 				68E260651D7FC3F200425D46 /* CoreDataStackController.m in Sources */,
+				68BE45911D9DEA0B003F3400 /* IntroViewController.m in Sources */,
 				68F3F9E41D70E8DB00840DD2 /* BaseViewController.m in Sources */,
 				68E2613C1D87673900425D46 /* Habit+CoreDataProperties.m in Sources */,
 				68E2613F1D87673900425D46 /* Good.m in Sources */,
@@ -631,6 +647,7 @@
 				68E260CF1D851DA500425D46 /* EditNavigationController.m in Sources */,
 				68F3F9F81D70FD3F00840DD2 /* GoodsViewController.m in Sources */,
 				68F3F9E91D70EC9700840DD2 /* DailyViewController.m in Sources */,
+				686ED3A71DA751AC004EDD36 /* StoryConstants.m in Sources */,
 				68BA388E1D93617400CB5A76 /* DailyHelperMock.m in Sources */,
 				6886A4801D8E5FD0005E12B3 /* constants.m in Sources */,
 				68E261361D87673900425D46 /* Todo+CoreDataProperties.m in Sources */,
@@ -762,11 +779,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = HabitRPG2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.HabitRPG2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -774,11 +793,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = HabitRPG2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.HabitRPG2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -873,9 +894,10 @@
 		68E260601D7BC3EA00425D46 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				68BE458C1D9CCF4C003F3400 /* Model 2.xcdatamodel */,
 				68E260611D7BC3EA00425D46 /* Model.xcdatamodel */,
 			);
-			currentVersion = 68E260611D7BC3EA00425D46 /* Model.xcdatamodel */;
+			currentVersion = 68BE458C1D9CCF4C003F3400 /* Model 2.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -9,4 +9,8 @@
 #import "constants.h"
 
 NSString* const DAILY_ENTITY_NAME = @"Daily";
+NSString* const HERO_ENTITY_NAME = @"Hero";
+NSString* const SETTINGS_ENTITY_NAME = @"Settings";
+NSString* const ZONE_ENTITY_NAME = @"Zone";
+NSString* const MONSTER_ENTITY_NAME = @"Monster";
 NSInteger const DAYS_IN_WEEK = 7;

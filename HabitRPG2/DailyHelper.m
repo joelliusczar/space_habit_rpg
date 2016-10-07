@@ -29,7 +29,7 @@
     return NO;
 }
 
--(NSDate *)calculateNextDueTime:(NSDate *)checkinDate WithRate:(int)rate{
+-(NSDate *)calculateNextDueTime:(NSDate *)checkinDate WithRate:(long)rate{
     NSCalendar *cal = [NSCalendar currentCalendar];
     NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
     [offsetComponents setDay:rate];

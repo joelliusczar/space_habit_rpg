@@ -10,6 +10,6 @@
 
 @implementation Hero
 
-// Insert code here to add functionality to your managed object subclass
+@synthesize base = _base;
 
 @end
