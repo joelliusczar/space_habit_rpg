@@ -16,6 +16,12 @@
 		686ED3981DA5E0F9004EDD36 /* title_Screen_1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 686ED3961DA5E0F9004EDD36 /* title_Screen_1x.png */; };
 		686ED3991DA5E0F9004EDD36 /* title_Screen_R_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 686ED3971DA5E0F9004EDD36 /* title_Screen_R_4.png */; };
 		686ED3A71DA751AC004EDD36 /* StoryConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ED3A61DA751AC004EDD36 /* StoryConstants.m */; };
+		686ED3B01DAEF512004EDD36 /* ZoneDescriptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ED3AF1DAEF512004EDD36 /* ZoneDescriptions.m */; };
+		686ED3B71DAF3DBD004EDD36 /* CustomSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ED3B61DAF3DBD004EDD36 /* CustomSwitch.m */; };
+		686ED3BA1DB4660F004EDD36 /* white_checked_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 686ED3B81DB4660F004EDD36 /* white_checked_empty.png */; };
+		686ED3BB1DB4660F004EDD36 /* white_checked_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 686ED3B91DB4660F004EDD36 /* white_checked_full.png */; };
+		686ED3BF1DB47954004EDD36 /* ZoneChoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ED3BD1DB47954004EDD36 /* ZoneChoice.m */; };
+		686ED3C01DB47954004EDD36 /* ZoneChoice.xib in Resources */ = {isa = PBXBuildFile; fileRef = 686ED3BE1DB47954004EDD36 /* ZoneChoice.xib */; };
 		687F01231D77CA6500C7B08B /* DailyTablesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 687F01211D77CA6500C7B08B /* DailyTablesViewController.xib */; };
 		6886A4801D8E5FD0005E12B3 /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 6886A47F1D8E5FD0005E12B3 /* constants.m */; };
 		6886A4861D8F1C49005E12B3 /* unchecked_task.png in Resources */ = {isa = PBXBuildFile; fileRef = 6886A4851D8F1C49005E12B3 /* unchecked_task.png */; };
@@ -103,6 +109,15 @@
 		686ED3971DA5E0F9004EDD36 /* title_Screen_R_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title_Screen_R_4.png; sourceTree = "<group>"; };
 		686ED3A51DA751AC004EDD36 /* StoryConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryConstants.h; sourceTree = "<group>"; };
 		686ED3A61DA751AC004EDD36 /* StoryConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryConstants.m; sourceTree = "<group>"; };
+		686ED3AE1DAEF512004EDD36 /* ZoneDescriptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneDescriptions.h; sourceTree = "<group>"; };
+		686ED3AF1DAEF512004EDD36 /* ZoneDescriptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneDescriptions.m; sourceTree = "<group>"; };
+		686ED3B51DAF3DBD004EDD36 /* CustomSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSwitch.h; sourceTree = "<group>"; };
+		686ED3B61DAF3DBD004EDD36 /* CustomSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSwitch.m; sourceTree = "<group>"; };
+		686ED3B81DB4660F004EDD36 /* white_checked_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_checked_empty.png; sourceTree = "<group>"; };
+		686ED3B91DB4660F004EDD36 /* white_checked_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_checked_full.png; sourceTree = "<group>"; };
+		686ED3BC1DB47954004EDD36 /* ZoneChoice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneChoice.h; sourceTree = "<group>"; };
+		686ED3BD1DB47954004EDD36 /* ZoneChoice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneChoice.m; sourceTree = "<group>"; };
+		686ED3BE1DB47954004EDD36 /* ZoneChoice.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZoneChoice.xib; sourceTree = "<group>"; };
 		687F01211D77CA6500C7B08B /* DailyTablesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyTablesViewController.xib; sourceTree = "<group>"; };
 		6886A47E1D8E5FD0005E12B3 /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 		6886A47F1D8E5FD0005E12B3 /* constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = constants.m; sourceTree = "<group>"; };
@@ -281,6 +296,73 @@
 			name = Menu;
 			sourceTree = "<group>";
 		};
+		686ED3A81DADDF69004EDD36 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				68F736B01D8B810200AE10A8 /* EditingSaver.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		686ED3A91DADE47C004EDD36 /* EditingScreen */ = {
+			isa = PBXGroup;
+			children = (
+				68E260CC1D851DA500425D46 /* EditNavigationController.h */,
+				68E260CD1D851DA500425D46 /* EditNavigationController.m */,
+				68E260CE1D851DA500425D46 /* EditNavigationController.xib */,
+			);
+			name = EditingScreen;
+			sourceTree = "<group>";
+		};
+		686ED3AA1DADE4A4004EDD36 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				68E261121D87673900425D46 /* Settings+CoreDataProperties.h */,
+				68E261131D87673900425D46 /* Settings+CoreDataProperties.m */,
+				68E261141D87673900425D46 /* Settings.h */,
+				68E261151D87673900425D46 /* Settings.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		686ED3AB1DADE4B3004EDD36 /* Zone */ = {
+			isa = PBXGroup;
+			children = (
+				68E2611E1D87673900425D46 /* Zone+CoreDataProperties.h */,
+				68E2611F1D87673900425D46 /* Zone+CoreDataProperties.m */,
+				68E261201D87673900425D46 /* Zone.h */,
+				68E261211D87673900425D46 /* Zone.m */,
+				686ED3AE1DAEF512004EDD36 /* ZoneDescriptions.h */,
+				686ED3AF1DAEF512004EDD36 /* ZoneDescriptions.m */,
+				686ED3BC1DB47954004EDD36 /* ZoneChoice.h */,
+				686ED3BD1DB47954004EDD36 /* ZoneChoice.m */,
+				686ED3BE1DB47954004EDD36 /* ZoneChoice.xib */,
+			);
+			name = Zone;
+			sourceTree = "<group>";
+		};
+		686ED3AC1DADE4C5004EDD36 /* Hero */ = {
+			isa = PBXGroup;
+			children = (
+				68E261221D87673900425D46 /* Hero+CoreDataProperties.h */,
+				68E261231D87673900425D46 /* Hero+CoreDataProperties.m */,
+				68E261241D87673900425D46 /* Hero.h */,
+				68E261251D87673900425D46 /* Hero.m */,
+			);
+			name = Hero;
+			sourceTree = "<group>";
+		};
+		686ED3AD1DADE4DB004EDD36 /* Monster */ = {
+			isa = PBXGroup;
+			children = (
+				68E2612E1D87673900425D46 /* Monster+CoreDataProperties.h */,
+				68E2612F1D87673900425D46 /* Monster+CoreDataProperties.m */,
+				68E261301D87673900425D46 /* Monster.h */,
+				68E261311D87673900425D46 /* Monster.m */,
+			);
+			name = Monster;
+			sourceTree = "<group>";
+		};
 		68BA38881D93611300CB5A76 /* TestHelpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,36 +420,22 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		68DD159E1D9CAA010073E7D8 /* Base */ = {
+		68DD159E1D9CAA010073E7D8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				686ED3AD1DADE4DB004EDD36 /* Monster */,
+				686ED3AC1DADE4C5004EDD36 /* Hero */,
+				686ED3AB1DADE4B3004EDD36 /* Zone */,
+				686ED3AA1DADE4A4004EDD36 /* Settings */,
+				686ED3A91DADE47C004EDD36 /* EditingScreen */,
+				686ED3A81DADDF69004EDD36 /* Protocols */,
 				68E260631D7FC3F200425D46 /* CoreDataStackController.h */,
 				68E260641D7FC3F200425D46 /* CoreDataStackController.m */,
-				68E260CC1D851DA500425D46 /* EditNavigationController.h */,
-				68E260CD1D851DA500425D46 /* EditNavigationController.m */,
-				68F736B01D8B810200AE10A8 /* EditingSaver.h */,
 				68F3F9E31D70E8DB00840DD2 /* BaseViewController.xib */,
-				68E260CE1D851DA500425D46 /* EditNavigationController.xib */,
 				68F3F9E11D70E8DB00840DD2 /* BaseViewController.h */,
 				68F3F9E21D70E8DB00840DD2 /* BaseViewController.m */,
-				68E261121D87673900425D46 /* Settings+CoreDataProperties.h */,
-				68E261131D87673900425D46 /* Settings+CoreDataProperties.m */,
-				68E261141D87673900425D46 /* Settings.h */,
-				68E261151D87673900425D46 /* Settings.m */,
-				68E2611E1D87673900425D46 /* Zone+CoreDataProperties.h */,
-				68E2611F1D87673900425D46 /* Zone+CoreDataProperties.m */,
-				68E261201D87673900425D46 /* Zone.h */,
-				68E261211D87673900425D46 /* Zone.m */,
-				68E261221D87673900425D46 /* Hero+CoreDataProperties.h */,
-				68E261231D87673900425D46 /* Hero+CoreDataProperties.m */,
-				68E261241D87673900425D46 /* Hero.h */,
-				68E261251D87673900425D46 /* Hero.m */,
-				68E2612E1D87673900425D46 /* Monster+CoreDataProperties.h */,
-				68E2612F1D87673900425D46 /* Monster+CoreDataProperties.m */,
-				68E261301D87673900425D46 /* Monster.h */,
-				68E261311D87673900425D46 /* Monster.m */,
 			);
-			name = Base;
+			name = Common;
 			sourceTree = "<group>";
 		};
 		68F3F9A01D70E82E00840DD2 = {
@@ -399,7 +467,7 @@
 				686ED39D1DA6007E004EDD36 /* Habits */,
 				686ED39C1DA5FF28004EDD36 /* Todos */,
 				68BE458D1D9DE889003F3400 /* Story */,
-				68DD159E1D9CAA010073E7D8 /* Base */,
+				68DD159E1D9CAA010073E7D8 /* Common */,
 				68D25C231D8E2ACA00FF1BE0 /* Dailies */,
 				68F3F9FA1D71C9A500840DD2 /* Helpers */,
 				68F3F9B81D70E82E00840DD2 /* Assets.xcassets */,
@@ -420,6 +488,8 @@
 				686ED3961DA5E0F9004EDD36 /* title_Screen_1x.png */,
 				686ED3971DA5E0F9004EDD36 /* title_Screen_R_4.png */,
 				686ED3901DA5DD66004EDD36 /* title_Screen_HD_55.png */,
+				686ED3B81DB4660F004EDD36 /* white_checked_empty.png */,
+				686ED3B91DB4660F004EDD36 /* white_checked_full.png */,
 				686ED3921DA5DEB5004EDD36 /* title_Screen_HD_47.png */,
 				686ED3941DA5DEC0004EDD36 /* title_Screen_2x.png */,
 				686ED38A1DA46200004EDD36 /* PressStart2P.ttf */,
@@ -461,6 +531,8 @@
 				6886A47F1D8E5FD0005E12B3 /* constants.m */,
 				68BA38841D93576600CB5A76 /* CommonUtilities.h */,
 				68BA38851D93576600CB5A76 /* CommonUtilities.m */,
+				686ED3B51DAF3DBD004EDD36 /* CustomSwitch.h */,
+				686ED3B61DAF3DBD004EDD36 /* CustomSwitch.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -573,9 +645,11 @@
 				686ED3951DA5DEC0004EDD36 /* title_Screen_2x.png in Resources */,
 				686686EB1D79032200BB2D09 /* DailyCell.xib in Resources */,
 				686ED3991DA5E0F9004EDD36 /* title_Screen_R_4.png in Resources */,
+				686ED3BB1DB4660F004EDD36 /* white_checked_full.png in Resources */,
 				68F3F9F41D70FC5E00840DD2 /* TodoViewController.xib in Resources */,
 				68F3F9EF1D70FC0D00840DD2 /* HabitController.xib in Resources */,
 				6889C65E1D88F82700598435 /* DailyEditView.xib in Resources */,
+				686ED3C01DB47954004EDD36 /* ZoneChoice.xib in Resources */,
 				6886A48F1D8F6F9B005E12B3 /* edit_button.png in Resources */,
 				68F3F9B91D70E82E00840DD2 /* Assets.xcassets in Resources */,
 				687F01231D77CA6500C7B08B /* DailyTablesViewController.xib in Resources */,
@@ -592,6 +666,7 @@
 				686ED3911DA5DD66004EDD36 /* title_Screen_HD_55.png in Resources */,
 				68F3FA031D74897A00840DD2 /* MenuViewController.xib in Resources */,
 				68F3F9F91D70FD3F00840DD2 /* GoodsViewController.xib in Resources */,
+				686ED3BA1DB4660F004EDD36 /* white_checked_empty.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,6 +699,7 @@
 				68E261391D87673900425D46 /* Zone.m in Sources */,
 				68E2613B1D87673900425D46 /* Hero.m in Sources */,
 				68E261401D87673900425D46 /* Monster+CoreDataProperties.m in Sources */,
+				686ED3B01DAEF512004EDD36 /* ZoneDescriptions.m in Sources */,
 				68F3F9EE1D70FC0D00840DD2 /* HabitController.m in Sources */,
 				68E261321D87673900425D46 /* Settings+CoreDataProperties.m in Sources */,
 				68E2613E1D87673900425D46 /* Good+CoreDataProperties.m in Sources */,
@@ -645,11 +721,13 @@
 				68BA38911D9361D900CB5A76 /* TestHelperWrapper.m in Sources */,
 				68E261371D87673900425D46 /* Todo.m in Sources */,
 				68E260CF1D851DA500425D46 /* EditNavigationController.m in Sources */,
+				686ED3BF1DB47954004EDD36 /* ZoneChoice.m in Sources */,
 				68F3F9F81D70FD3F00840DD2 /* GoodsViewController.m in Sources */,
 				68F3F9E91D70EC9700840DD2 /* DailyViewController.m in Sources */,
 				686ED3A71DA751AC004EDD36 /* StoryConstants.m in Sources */,
 				68BA388E1D93617400CB5A76 /* DailyHelperMock.m in Sources */,
 				6886A4801D8E5FD0005E12B3 /* constants.m in Sources */,
+				686ED3B71DAF3DBD004EDD36 /* CustomSwitch.m in Sources */,
 				68E261361D87673900425D46 /* Todo+CoreDataProperties.m in Sources */,
 				68E260621D7BC3EA00425D46 /* Model.xcdatamodeld in Sources */,
 				68E2613A1D87673900425D46 /* Hero+CoreDataProperties.m in Sources */,

@@ -14,4 +14,6 @@
 @property (nonatomic,strong) EditNavigationController *editController;
 -(void)doActionForCompletedDaily:(Daily *)daily;
 -(void)undoActionForCompletedDaily:(Daily *)daily;
+-(void)setToSkipStory:(BOOL)skipStory;
+-(void)dismissIntro;
 @end

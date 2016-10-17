@@ -131,7 +131,7 @@
     }
     if([settingsFetchController.fetchedObjects count] == 0){
         self.userSettings = (Settings *)[self.dataController constructEmptyEntity:SETTINGS_ENTITY_NAME];
-        IntroViewController *introView = [[IntroViewController alloc] initWithDataController:self.dataController AndSettings:self.userSettings];
+        IntroViewController *introView = [[IntroViewController alloc] initWithBaseViewController:self];
         
         [self.view addSubview:introView.view];
         
@@ -157,7 +157,7 @@
     }
     if([settingsFetchController.fetchedObjects count] == 0){
         self.userSettings = (Settings *)[self.dataController constructEmptyEntity:SETTINGS_ENTITY_NAME];
-        IntroViewController *introView = [[IntroViewController alloc] initWithDataController:self.dataController AndSettings:self.userSettings];
+        IntroViewController *introView = [[IntroViewController alloc] initWithBaseViewController:self];
         
         
         [self showViewController:introView sender:self];
@@ -195,5 +195,12 @@
 -(void)undoActionForCompletedDaily:(Daily *)daily{
 
 }
+
+-(void)setToSkipStory:(BOOL)skipStory{
+    self.userSettings.storyModeisOn = [NSNumber numberWithBool:skipStory];
+    [self.dataController save];
+    
+}
+-(void)dismissIntro{}
 
 @end

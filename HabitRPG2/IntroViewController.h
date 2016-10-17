@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "CoreDataStackController.h"
 #import "Settings.h"
+#import "BaseViewController.h"
 
 @interface IntroViewController : UIViewController
--(id)initWithDataController:(CoreDataStackController *)dataController AndSettings:(Settings *)userSettings;
+-(id)initWithBaseViewController:(BaseViewController *)base;
 @end
