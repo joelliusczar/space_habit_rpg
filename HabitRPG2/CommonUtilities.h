@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 
 @interface CommonUtilities : NSObject
--(BOOL)isSwitchOn:(id)switchItem;
--(void)setSwitch:(id)switchItem withValue:(BOOL)value;
++(BOOL)isSwitchOn:(id)switchItem;
++(void)setSwitch:(id)switchItem withValue:(BOOL)value;
++(NSInteger)calculateLvl:(NSUInteger)lvl OffsetBy:(NSUInteger)offset;
 @end

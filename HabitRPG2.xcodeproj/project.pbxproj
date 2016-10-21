@@ -22,6 +22,9 @@
 		686ED3BB1DB4660F004EDD36 /* white_checked_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 686ED3B91DB4660F004EDD36 /* white_checked_full.png */; };
 		686ED3BF1DB47954004EDD36 /* ZoneChoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ED3BD1DB47954004EDD36 /* ZoneChoice.m */; };
 		686ED3C01DB47954004EDD36 /* ZoneChoice.xib in Resources */ = {isa = PBXBuildFile; fileRef = 686ED3BE1DB47954004EDD36 /* ZoneChoice.xib */; };
+		686ED3C21DB47FA5004EDD36 /* black_checked_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 686ED3C11DB47FA5004EDD36 /* black_checked_empty.png */; };
+		686ED3C41DB47FAF004EDD36 /* black_checked_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 686ED3C31DB47FAF004EDD36 /* black_checked_full.png */; };
+		686ED3C71DB481C4004EDD36 /* ZoneHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ED3C61DB481C4004EDD36 /* ZoneHelper.m */; };
 		687F01231D77CA6500C7B08B /* DailyTablesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 687F01211D77CA6500C7B08B /* DailyTablesViewController.xib */; };
 		6886A4801D8E5FD0005E12B3 /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 6886A47F1D8E5FD0005E12B3 /* constants.m */; };
 		6886A4861D8F1C49005E12B3 /* unchecked_task.png in Resources */ = {isa = PBXBuildFile; fileRef = 6886A4851D8F1C49005E12B3 /* unchecked_task.png */; };
@@ -118,6 +121,10 @@
 		686ED3BC1DB47954004EDD36 /* ZoneChoice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneChoice.h; sourceTree = "<group>"; };
 		686ED3BD1DB47954004EDD36 /* ZoneChoice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneChoice.m; sourceTree = "<group>"; };
 		686ED3BE1DB47954004EDD36 /* ZoneChoice.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZoneChoice.xib; sourceTree = "<group>"; };
+		686ED3C11DB47FA5004EDD36 /* black_checked_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black_checked_empty.png; sourceTree = "<group>"; };
+		686ED3C31DB47FAF004EDD36 /* black_checked_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black_checked_full.png; sourceTree = "<group>"; };
+		686ED3C51DB481C4004EDD36 /* ZoneHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneHelper.h; sourceTree = "<group>"; };
+		686ED3C61DB481C4004EDD36 /* ZoneHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneHelper.m; sourceTree = "<group>"; };
 		687F01211D77CA6500C7B08B /* DailyTablesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyTablesViewController.xib; sourceTree = "<group>"; };
 		6886A47E1D8E5FD0005E12B3 /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 		6886A47F1D8E5FD0005E12B3 /* constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = constants.m; sourceTree = "<group>"; };
@@ -337,6 +344,8 @@
 				686ED3BC1DB47954004EDD36 /* ZoneChoice.h */,
 				686ED3BD1DB47954004EDD36 /* ZoneChoice.m */,
 				686ED3BE1DB47954004EDD36 /* ZoneChoice.xib */,
+				686ED3C51DB481C4004EDD36 /* ZoneHelper.h */,
+				686ED3C61DB481C4004EDD36 /* ZoneHelper.m */,
 			);
 			name = Zone;
 			sourceTree = "<group>";
@@ -490,6 +499,8 @@
 				686ED3901DA5DD66004EDD36 /* title_Screen_HD_55.png */,
 				686ED3B81DB4660F004EDD36 /* white_checked_empty.png */,
 				686ED3B91DB4660F004EDD36 /* white_checked_full.png */,
+				686ED3C11DB47FA5004EDD36 /* black_checked_empty.png */,
+				686ED3C31DB47FAF004EDD36 /* black_checked_full.png */,
 				686ED3921DA5DEB5004EDD36 /* title_Screen_HD_47.png */,
 				686ED3941DA5DEC0004EDD36 /* title_Screen_2x.png */,
 				686ED38A1DA46200004EDD36 /* PressStart2P.ttf */,
@@ -647,12 +658,14 @@
 				686ED3991DA5E0F9004EDD36 /* title_Screen_R_4.png in Resources */,
 				686ED3BB1DB4660F004EDD36 /* white_checked_full.png in Resources */,
 				68F3F9F41D70FC5E00840DD2 /* TodoViewController.xib in Resources */,
+				686ED3C41DB47FAF004EDD36 /* black_checked_full.png in Resources */,
 				68F3F9EF1D70FC0D00840DD2 /* HabitController.xib in Resources */,
 				6889C65E1D88F82700598435 /* DailyEditView.xib in Resources */,
 				686ED3C01DB47954004EDD36 /* ZoneChoice.xib in Resources */,
 				6886A48F1D8F6F9B005E12B3 /* edit_button.png in Resources */,
 				68F3F9B91D70E82E00840DD2 /* Assets.xcassets in Resources */,
 				687F01231D77CA6500C7B08B /* DailyTablesViewController.xib in Resources */,
+				686ED3C21DB47FA5004EDD36 /* black_checked_empty.png in Resources */,
 				68F3F9E51D70E8DB00840DD2 /* BaseViewController.xib in Resources */,
 				68E260D01D851DA500425D46 /* EditNavigationController.xib in Resources */,
 				6886A48B1D8F6EA6005E12B3 /* switch_unchecked.png in Resources */,
@@ -713,6 +726,7 @@
 				68F3F9E41D70E8DB00840DD2 /* BaseViewController.m in Sources */,
 				68E2613C1D87673900425D46 /* Habit+CoreDataProperties.m in Sources */,
 				68E2613F1D87673900425D46 /* Good.m in Sources */,
+				686ED3C71DB481C4004EDD36 /* ZoneHelper.m in Sources */,
 				68E261411D87673900425D46 /* Monster.m in Sources */,
 				68E260991D84923C00425D46 /* DailyHelper.m in Sources */,
 				68E261331D87673900425D46 /* Settings.m in Sources */,

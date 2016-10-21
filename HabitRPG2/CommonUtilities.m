@@ -7,15 +7,30 @@
 //
 
 #import "CommonUtilities.h"
+#import "CustomSwitch.h"
+#import "stdlib.h"
 
 @implementation CommonUtilities
--(BOOL)isSwitchOn:(id)switchItem{
-    UISwitch *switchBtn = (UISwitch *)switchItem;
+
++(NSInteger)calculateLvl:(NSUInteger)lvl OffsetBy:(NSUInteger)offset{
+    NSUInteger minLvl = lvl;
+    if(lvl <= offset){
+        minLvl = offset;
+    }
+    else{
+        minLvl = lvl - offset;
+    }
+    
+    return arc4random_uniform(offset) +minLvl;
+}
+
++(BOOL)isSwitchOn:(id)switchItem{
+    CustomSwitch *switchBtn = (CustomSwitch *)switchItem;
     return switchBtn.isOn;
 }
 
--(void)setSwitch:(id)switchItem withValue:(BOOL)value{
-    UISwitch *switchBtn = (UISwitch *)switchItem;
-    switchBtn.on = value;
++(void)setSwitch:(id)switchItem withValue:(BOOL)value{
+    CustomSwitch *switchBtn = (CustomSwitch *)switchItem;
+    switchBtn.isOn = value;
 }
 @end

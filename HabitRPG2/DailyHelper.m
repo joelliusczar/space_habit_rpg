@@ -17,14 +17,6 @@
 @implementation DailyHelper
 
 
-@synthesize commonHelper = _commonHelper;
--(CommonUtilities *)commonHelper{
-    if(_commonHelper == nil){
-        _commonHelper = [[CommonUtilities alloc]init];
-    }
-    return _commonHelper;
-}
-
 -(BOOL)isDailyCompleteForTheDay:(Daily *)daily{
     return NO;
 }
@@ -40,7 +32,7 @@
     int daysHash = 0;
     int currentDayBit = 1;
     for(int i = 0;i<DAYS_IN_WEEK;i++){
-        if([self.commonHelper isSwitchOn:[activeDays objectAtIndex:i]]){
+        if([CommonUtilities isSwitchOn:[activeDays objectAtIndex:i]]){
             daysHash |= currentDayBit;
             
         }
@@ -54,7 +46,7 @@
 -(void)setActiveDaySwitches:(NSMutableArray *)activeDays fromHash:(NSInteger)hash{
     int currentDayBit = 1;
     for(int i = 0;i<DAYS_IN_WEEK;i++){
-        [self.commonHelper setSwitch:[activeDays objectAtIndex:i] withValue:hash & currentDayBit];
+        [CommonUtilities setSwitch:[activeDays objectAtIndex:i] withValue:hash & currentDayBit];
         currentDayBit = currentDayBit << 1;
     }
 }
