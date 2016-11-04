@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface ZoneHelper : NSObject
 +(NSString*)getRandomZoneDefinitionKey:(NSUInteger)heroLvl;
 +(NSString*)generateFullZoneNameSuffix:(NSUInteger)visitCount;
 +(NSArray*)getSymbols;
 +(NSString*)getSymbolSuffix:(NSUInteger)visitCount;
 +(NSArray*)getUnlockedZoneGroupKeys:(NSUInteger)heroLvl;
+
 @end

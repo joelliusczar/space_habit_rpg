@@ -8,6 +8,7 @@
 
 #import "ZoneDescriptions.h"
 
+NSString* const HOME_KEY = @"HOME";
 NSString* const HOME_NAME = @"Home Zone";
 NSString* const HOME_DESCRIPTION = @"Everyone's gotta start somewhere. For you it's the "
 "earth first space port. You may not be so good at the whole space "

@@ -2,7 +2,7 @@
 //  Habit+CoreDataProperties.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 9/12/16.
+//  Created by Joel Pridgen on 11/1/16.
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,14 +15,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Habit (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSNumber *difficulty;
-@property (nullable, nonatomic, retain) NSNumber *freeViolations;
+@property (nonatomic) int16_t difficulty;
+@property (nonatomic) int32_t freeViolations;
 @property (nullable, nonatomic, retain) NSString *frequencyCounts;
 @property (nullable, nonatomic, retain) NSString *habitName;
-@property (nullable, nonatomic, retain) NSNumber *neglectPunishReward;
+@property (nonatomic) BOOL neglectPunishReward;
 @property (nullable, nonatomic, retain) NSString *note;
-@property (nullable, nonatomic, retain) NSNumber *polarity;
-@property (nullable, nonatomic, retain) NSNumber *urgency;
+@property (nonatomic) BOOL polarity;
+@property (nonatomic) int16_t urgency;
 
 @end
 

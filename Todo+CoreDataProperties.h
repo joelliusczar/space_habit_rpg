@@ -2,7 +2,7 @@
 //  Todo+CoreDataProperties.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 9/12/16.
+//  Created by Joel Pridgen on 11/1/16.
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,12 +15,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Todo (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSNumber *difficulty;
-@property (nullable, nonatomic, retain) NSDate *dueDate;
-@property (nullable, nonatomic, retain) NSDate *effectiveDate;
+@property (nonatomic) int16_t difficulty;
+@property (nonatomic) NSTimeInterval dueDate;
+@property (nonatomic) NSTimeInterval effectiveDate;
 @property (nullable, nonatomic, retain) NSString *note;
 @property (nullable, nonatomic, retain) NSString *todoName;
-@property (nullable, nonatomic, retain) NSNumber *urgency;
+@property (nonatomic) int16_t urgency;
 
 @end
 

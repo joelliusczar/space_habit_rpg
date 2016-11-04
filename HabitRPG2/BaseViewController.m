@@ -26,7 +26,6 @@
 @interface BaseViewController ()
 
 @property (strong,nonatomic) UITabBarController *tabsController;
-@property (strong,nonatomic) CoreDataStackController *dataController;
 @property (nonatomic,strong) Settings *userSettings;
 @property (nonatomic,strong) Hero *userHero;
 @property (nonatomic,strong) Zone *nowZone;
@@ -197,7 +196,7 @@
 }
 
 -(void)setToSkipStory:(BOOL)skipStory{
-    self.userSettings.storyModeisOn = [NSNumber numberWithBool:skipStory];
+    self.userSettings.storyModeisOn = skipStory;
     [self.dataController save];
     
 }

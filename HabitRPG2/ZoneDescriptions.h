@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger,zoneGroupKeys) {
     LVL_30_ZONES = 30
 };
 
-
+extern NSString* const HOME_KEY;
 extern NSString* const HOME_NAME;
 extern NSString* const HOME_DESCRIPTION;
 

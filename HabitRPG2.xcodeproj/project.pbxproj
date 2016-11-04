@@ -33,6 +33,16 @@
 		6886A48D1D8F6EB3005E12B3 /* switch_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 6886A48C1D8F6EB3005E12B3 /* switch_checked.png */; };
 		6886A48F1D8F6F9B005E12B3 /* edit_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 6886A48E1D8F6F9A005E12B3 /* edit_button.png */; };
 		6889C65E1D88F82700598435 /* DailyEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6889C65D1D88F82700598435 /* DailyEditView.xib */; };
+		68A921F41DBC7FF2007C946C /* Hero+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921E51DBC7FF1007C946C /* Hero+CoreDataProperties.m */; };
+		68A921F51DBC7FF2007C946C /* Daily+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921E71DBC7FF1007C946C /* Daily+CoreDataProperties.m */; };
+		68A921F61DBC7FF2007C946C /* Good+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921E91DBC7FF1007C946C /* Good+CoreDataProperties.m */; };
+		68A921F71DBC7FF2007C946C /* Zone+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921EB1DBC7FF2007C946C /* Zone+CoreDataProperties.m */; };
+		68A921F81DBC7FF2007C946C /* Todo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921ED1DBC7FF2007C946C /* Todo+CoreDataProperties.m */; };
+		68A921F91DBC7FF2007C946C /* Habit+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921EF1DBC7FF2007C946C /* Habit+CoreDataProperties.m */; };
+		68A921FA1DBC7FF2007C946C /* Monster+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921F11DBC7FF2007C946C /* Monster+CoreDataProperties.m */; };
+		68A921FB1DBC7FF2007C946C /* Settings+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921F31DBC7FF2007C946C /* Settings+CoreDataProperties.m */; };
+		68A921FE1DBC81EA007C946C /* ZoneMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921FD1DBC81EA007C946C /* ZoneMaker.m */; };
+		68A922071DBD44C3007C946C /* Experiments.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A922061DBD44C3007C946C /* Experiments.m */; };
 		68BA38861D93576600CB5A76 /* CommonUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BA38851D93576600CB5A76 /* CommonUtilities.m */; };
 		68BA388B1D93615600CB5A76 /* CommonUtilitiesMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BA388A1D93615600CB5A76 /* CommonUtilitiesMock.m */; };
 		68BA388E1D93617400CB5A76 /* DailyHelperMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BA388D1D93617400CB5A76 /* DailyHelperMock.m */; };
@@ -47,21 +57,13 @@
 		68E260991D84923C00425D46 /* DailyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260981D84923C00425D46 /* DailyHelper.m */; };
 		68E260CF1D851DA500425D46 /* EditNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260CD1D851DA500425D46 /* EditNavigationController.m */; };
 		68E260D01D851DA500425D46 /* EditNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68E260CE1D851DA500425D46 /* EditNavigationController.xib */; };
-		68E261321D87673900425D46 /* Settings+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E261131D87673900425D46 /* Settings+CoreDataProperties.m */; };
 		68E261331D87673900425D46 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E261151D87673900425D46 /* Settings.m */; };
-		68E261341D87673900425D46 /* Daily+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E261171D87673900425D46 /* Daily+CoreDataProperties.m */; };
 		68E261351D87673900425D46 /* Daily.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E261191D87673900425D46 /* Daily.m */; };
-		68E261361D87673900425D46 /* Todo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E2611B1D87673900425D46 /* Todo+CoreDataProperties.m */; };
 		68E261371D87673900425D46 /* Todo.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E2611D1D87673900425D46 /* Todo.m */; };
-		68E261381D87673900425D46 /* Zone+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E2611F1D87673900425D46 /* Zone+CoreDataProperties.m */; };
 		68E261391D87673900425D46 /* Zone.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E261211D87673900425D46 /* Zone.m */; };
-		68E2613A1D87673900425D46 /* Hero+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E261231D87673900425D46 /* Hero+CoreDataProperties.m */; };
 		68E2613B1D87673900425D46 /* Hero.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E261251D87673900425D46 /* Hero.m */; };
-		68E2613C1D87673900425D46 /* Habit+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E261271D87673900425D46 /* Habit+CoreDataProperties.m */; };
 		68E2613D1D87673900425D46 /* Habit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E261291D87673900425D46 /* Habit.m */; };
-		68E2613E1D87673900425D46 /* Good+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E2612B1D87673900425D46 /* Good+CoreDataProperties.m */; };
 		68E2613F1D87673900425D46 /* Good.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E2612D1D87673900425D46 /* Good.m */; };
-		68E261401D87673900425D46 /* Monster+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E2612F1D87673900425D46 /* Monster+CoreDataProperties.m */; };
 		68E261411D87673900425D46 /* Monster.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E261311D87673900425D46 /* Monster.m */; };
 		68F3F9AE1D70E82E00840DD2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9AD1D70E82E00840DD2 /* main.m */; };
 		68F3F9B11D70E82E00840DD2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9B01D70E82E00840DD2 /* AppDelegate.m */; };
@@ -135,6 +137,29 @@
 		6886A48C1D8F6EB3005E12B3 /* switch_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_checked.png; sourceTree = "<group>"; };
 		6886A48E1D8F6F9A005E12B3 /* edit_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit_button.png; sourceTree = "<group>"; };
 		6889C65D1D88F82700598435 /* DailyEditView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyEditView.xib; sourceTree = "<group>"; };
+		68A921CB1DBC6FB6007C946C /* Model 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 3.xcdatamodel"; sourceTree = "<group>"; };
+		68A921E41DBC7FF1007C946C /* Hero+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Hero+CoreDataProperties.h"; path = "../Hero+CoreDataProperties.h"; sourceTree = "<group>"; };
+		68A921E51DBC7FF1007C946C /* Hero+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Hero+CoreDataProperties.m"; path = "../Hero+CoreDataProperties.m"; sourceTree = "<group>"; };
+		68A921E61DBC7FF1007C946C /* Daily+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Daily+CoreDataProperties.h"; path = "../Daily+CoreDataProperties.h"; sourceTree = "<group>"; };
+		68A921E71DBC7FF1007C946C /* Daily+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Daily+CoreDataProperties.m"; path = "../Daily+CoreDataProperties.m"; sourceTree = "<group>"; };
+		68A921E81DBC7FF1007C946C /* Good+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Good+CoreDataProperties.h"; path = "../Good+CoreDataProperties.h"; sourceTree = "<group>"; };
+		68A921E91DBC7FF1007C946C /* Good+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Good+CoreDataProperties.m"; path = "../Good+CoreDataProperties.m"; sourceTree = "<group>"; };
+		68A921EA1DBC7FF2007C946C /* Zone+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Zone+CoreDataProperties.h"; path = "../Zone+CoreDataProperties.h"; sourceTree = "<group>"; };
+		68A921EB1DBC7FF2007C946C /* Zone+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Zone+CoreDataProperties.m"; path = "../Zone+CoreDataProperties.m"; sourceTree = "<group>"; };
+		68A921EC1DBC7FF2007C946C /* Todo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Todo+CoreDataProperties.h"; path = "../Todo+CoreDataProperties.h"; sourceTree = "<group>"; };
+		68A921ED1DBC7FF2007C946C /* Todo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Todo+CoreDataProperties.m"; path = "../Todo+CoreDataProperties.m"; sourceTree = "<group>"; };
+		68A921EE1DBC7FF2007C946C /* Habit+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Habit+CoreDataProperties.h"; path = "../Habit+CoreDataProperties.h"; sourceTree = "<group>"; };
+		68A921EF1DBC7FF2007C946C /* Habit+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Habit+CoreDataProperties.m"; path = "../Habit+CoreDataProperties.m"; sourceTree = "<group>"; };
+		68A921F01DBC7FF2007C946C /* Monster+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Monster+CoreDataProperties.h"; path = "../Monster+CoreDataProperties.h"; sourceTree = "<group>"; };
+		68A921F11DBC7FF2007C946C /* Monster+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Monster+CoreDataProperties.m"; path = "../Monster+CoreDataProperties.m"; sourceTree = "<group>"; };
+		68A921F21DBC7FF2007C946C /* Settings+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Settings+CoreDataProperties.h"; path = "../Settings+CoreDataProperties.h"; sourceTree = "<group>"; };
+		68A921F31DBC7FF2007C946C /* Settings+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Settings+CoreDataProperties.m"; path = "../Settings+CoreDataProperties.m"; sourceTree = "<group>"; };
+		68A921FC1DBC81EA007C946C /* ZoneMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneMaker.h; sourceTree = "<group>"; };
+		68A921FD1DBC81EA007C946C /* ZoneMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneMaker.m; sourceTree = "<group>"; };
+		68A922021DBC88F5007C946C /* Model 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 4.xcdatamodel"; sourceTree = "<group>"; };
+		68A922061DBD44C3007C946C /* Experiments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Experiments.m; sourceTree = "<group>"; };
+		68A9220E1DBF2EC0007C946C /* Model 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 5.xcdatamodel"; sourceTree = "<group>"; };
+		68A922151DC98ACD007C946C /* Model 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 6.xcdatamodel"; sourceTree = "<group>"; };
 		68BA38841D93576600CB5A76 /* CommonUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtilities.h; sourceTree = "<group>"; };
 		68BA38851D93576600CB5A76 /* CommonUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtilities.m; sourceTree = "<group>"; };
 		68BA38891D93615600CB5A76 /* CommonUtilitiesMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtilitiesMock.h; sourceTree = "<group>"; };
@@ -159,36 +184,20 @@
 		68E260CC1D851DA500425D46 /* EditNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNavigationController.h; sourceTree = "<group>"; };
 		68E260CD1D851DA500425D46 /* EditNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNavigationController.m; sourceTree = "<group>"; };
 		68E260CE1D851DA500425D46 /* EditNavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditNavigationController.xib; sourceTree = "<group>"; };
-		68E261121D87673900425D46 /* Settings+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Settings+CoreDataProperties.h"; path = "../Settings+CoreDataProperties.h"; sourceTree = "<group>"; };
-		68E261131D87673900425D46 /* Settings+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Settings+CoreDataProperties.m"; path = "../Settings+CoreDataProperties.m"; sourceTree = "<group>"; };
 		68E261141D87673900425D46 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = ../Settings.h; sourceTree = "<group>"; };
 		68E261151D87673900425D46 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = ../Settings.m; sourceTree = "<group>"; };
-		68E261161D87673900425D46 /* Daily+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Daily+CoreDataProperties.h"; path = "../Daily+CoreDataProperties.h"; sourceTree = "<group>"; };
-		68E261171D87673900425D46 /* Daily+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Daily+CoreDataProperties.m"; path = "../Daily+CoreDataProperties.m"; sourceTree = "<group>"; };
 		68E261181D87673900425D46 /* Daily.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Daily.h; path = ../Daily.h; sourceTree = "<group>"; };
 		68E261191D87673900425D46 /* Daily.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Daily.m; path = ../Daily.m; sourceTree = "<group>"; };
-		68E2611A1D87673900425D46 /* Todo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Todo+CoreDataProperties.h"; path = "../Todo+CoreDataProperties.h"; sourceTree = "<group>"; };
-		68E2611B1D87673900425D46 /* Todo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Todo+CoreDataProperties.m"; path = "../Todo+CoreDataProperties.m"; sourceTree = "<group>"; };
 		68E2611C1D87673900425D46 /* Todo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Todo.h; path = ../Todo.h; sourceTree = "<group>"; };
 		68E2611D1D87673900425D46 /* Todo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Todo.m; path = ../Todo.m; sourceTree = "<group>"; };
-		68E2611E1D87673900425D46 /* Zone+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Zone+CoreDataProperties.h"; path = "../Zone+CoreDataProperties.h"; sourceTree = "<group>"; };
-		68E2611F1D87673900425D46 /* Zone+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Zone+CoreDataProperties.m"; path = "../Zone+CoreDataProperties.m"; sourceTree = "<group>"; };
 		68E261201D87673900425D46 /* Zone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Zone.h; path = ../Zone.h; sourceTree = "<group>"; };
 		68E261211D87673900425D46 /* Zone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Zone.m; path = ../Zone.m; sourceTree = "<group>"; };
-		68E261221D87673900425D46 /* Hero+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Hero+CoreDataProperties.h"; path = "../Hero+CoreDataProperties.h"; sourceTree = "<group>"; };
-		68E261231D87673900425D46 /* Hero+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Hero+CoreDataProperties.m"; path = "../Hero+CoreDataProperties.m"; sourceTree = "<group>"; };
 		68E261241D87673900425D46 /* Hero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hero.h; path = ../Hero.h; sourceTree = "<group>"; };
 		68E261251D87673900425D46 /* Hero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Hero.m; path = ../Hero.m; sourceTree = "<group>"; };
-		68E261261D87673900425D46 /* Habit+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Habit+CoreDataProperties.h"; path = "../Habit+CoreDataProperties.h"; sourceTree = "<group>"; };
-		68E261271D87673900425D46 /* Habit+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Habit+CoreDataProperties.m"; path = "../Habit+CoreDataProperties.m"; sourceTree = "<group>"; };
 		68E261281D87673900425D46 /* Habit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Habit.h; path = ../Habit.h; sourceTree = "<group>"; };
 		68E261291D87673900425D46 /* Habit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Habit.m; path = ../Habit.m; sourceTree = "<group>"; };
-		68E2612A1D87673900425D46 /* Good+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Good+CoreDataProperties.h"; path = "../Good+CoreDataProperties.h"; sourceTree = "<group>"; };
-		68E2612B1D87673900425D46 /* Good+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Good+CoreDataProperties.m"; path = "../Good+CoreDataProperties.m"; sourceTree = "<group>"; };
 		68E2612C1D87673900425D46 /* Good.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Good.h; path = ../Good.h; sourceTree = "<group>"; };
 		68E2612D1D87673900425D46 /* Good.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Good.m; path = ../Good.m; sourceTree = "<group>"; };
-		68E2612E1D87673900425D46 /* Monster+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Monster+CoreDataProperties.h"; path = "../Monster+CoreDataProperties.h"; sourceTree = "<group>"; };
-		68E2612F1D87673900425D46 /* Monster+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Monster+CoreDataProperties.m"; path = "../Monster+CoreDataProperties.m"; sourceTree = "<group>"; };
 		68E261301D87673900425D46 /* Monster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Monster.h; path = ../Monster.h; sourceTree = "<group>"; };
 		68E261311D87673900425D46 /* Monster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Monster.m; path = ../Monster.m; sourceTree = "<group>"; };
 		68F3F9A91D70E82E00840DD2 /* HabitRPG2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitRPG2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -254,9 +263,9 @@
 		686ED39C1DA5FF28004EDD36 /* Todos */ = {
 			isa = PBXGroup;
 			children = (
+				68A921EC1DBC7FF2007C946C /* Todo+CoreDataProperties.h */,
+				68A921ED1DBC7FF2007C946C /* Todo+CoreDataProperties.m */,
 				68F3F9F21D70FC5E00840DD2 /* TodoViewController.xib */,
-				68E2611A1D87673900425D46 /* Todo+CoreDataProperties.h */,
-				68E2611B1D87673900425D46 /* Todo+CoreDataProperties.m */,
 				68F3F9F01D70FC5E00840DD2 /* TodoViewController.h */,
 				68F3F9F11D70FC5E00840DD2 /* TodoViewController.m */,
 				68E2611C1D87673900425D46 /* Todo.h */,
@@ -268,8 +277,8 @@
 		686ED39D1DA6007E004EDD36 /* Habits */ = {
 			isa = PBXGroup;
 			children = (
-				68E261261D87673900425D46 /* Habit+CoreDataProperties.h */,
-				68E261271D87673900425D46 /* Habit+CoreDataProperties.m */,
+				68A921EE1DBC7FF2007C946C /* Habit+CoreDataProperties.h */,
+				68A921EF1DBC7FF2007C946C /* Habit+CoreDataProperties.m */,
 				68E261281D87673900425D46 /* Habit.h */,
 				68F3F9EB1D70FC0D00840DD2 /* HabitController.h */,
 				68F3F9ED1D70FC0D00840DD2 /* HabitController.xib */,
@@ -282,10 +291,10 @@
 		686ED39E1DA600A7004EDD36 /* Goods */ = {
 			isa = PBXGroup;
 			children = (
+				68A921E81DBC7FF1007C946C /* Good+CoreDataProperties.h */,
+				68A921E91DBC7FF1007C946C /* Good+CoreDataProperties.m */,
 				68F3F9F51D70FD3F00840DD2 /* GoodsViewController.h */,
 				68F3F9F71D70FD3F00840DD2 /* GoodsViewController.xib */,
-				68E2612A1D87673900425D46 /* Good+CoreDataProperties.h */,
-				68E2612B1D87673900425D46 /* Good+CoreDataProperties.m */,
 				68E2612C1D87673900425D46 /* Good.h */,
 				68E2612D1D87673900425D46 /* Good.m */,
 				68F3F9F61D70FD3F00840DD2 /* GoodsViewController.m */,
@@ -324,8 +333,8 @@
 		686ED3AA1DADE4A4004EDD36 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				68E261121D87673900425D46 /* Settings+CoreDataProperties.h */,
-				68E261131D87673900425D46 /* Settings+CoreDataProperties.m */,
+				68A921F21DBC7FF2007C946C /* Settings+CoreDataProperties.h */,
+				68A921F31DBC7FF2007C946C /* Settings+CoreDataProperties.m */,
 				68E261141D87673900425D46 /* Settings.h */,
 				68E261151D87673900425D46 /* Settings.m */,
 			);
@@ -335,8 +344,8 @@
 		686ED3AB1DADE4B3004EDD36 /* Zone */ = {
 			isa = PBXGroup;
 			children = (
-				68E2611E1D87673900425D46 /* Zone+CoreDataProperties.h */,
-				68E2611F1D87673900425D46 /* Zone+CoreDataProperties.m */,
+				68A921EA1DBC7FF2007C946C /* Zone+CoreDataProperties.h */,
+				68A921EB1DBC7FF2007C946C /* Zone+CoreDataProperties.m */,
 				68E261201D87673900425D46 /* Zone.h */,
 				68E261211D87673900425D46 /* Zone.m */,
 				686ED3AE1DAEF512004EDD36 /* ZoneDescriptions.h */,
@@ -346,6 +355,8 @@
 				686ED3BE1DB47954004EDD36 /* ZoneChoice.xib */,
 				686ED3C51DB481C4004EDD36 /* ZoneHelper.h */,
 				686ED3C61DB481C4004EDD36 /* ZoneHelper.m */,
+				68A921FC1DBC81EA007C946C /* ZoneMaker.h */,
+				68A921FD1DBC81EA007C946C /* ZoneMaker.m */,
 			);
 			name = Zone;
 			sourceTree = "<group>";
@@ -353,8 +364,8 @@
 		686ED3AC1DADE4C5004EDD36 /* Hero */ = {
 			isa = PBXGroup;
 			children = (
-				68E261221D87673900425D46 /* Hero+CoreDataProperties.h */,
-				68E261231D87673900425D46 /* Hero+CoreDataProperties.m */,
+				68A921E41DBC7FF1007C946C /* Hero+CoreDataProperties.h */,
+				68A921E51DBC7FF1007C946C /* Hero+CoreDataProperties.m */,
 				68E261241D87673900425D46 /* Hero.h */,
 				68E261251D87673900425D46 /* Hero.m */,
 			);
@@ -364,12 +375,19 @@
 		686ED3AD1DADE4DB004EDD36 /* Monster */ = {
 			isa = PBXGroup;
 			children = (
-				68E2612E1D87673900425D46 /* Monster+CoreDataProperties.h */,
-				68E2612F1D87673900425D46 /* Monster+CoreDataProperties.m */,
+				68A921F01DBC7FF2007C946C /* Monster+CoreDataProperties.h */,
+				68A921F11DBC7FF2007C946C /* Monster+CoreDataProperties.m */,
 				68E261301D87673900425D46 /* Monster.h */,
 				68E261311D87673900425D46 /* Monster.m */,
 			);
 			name = Monster;
+			sourceTree = "<group>";
+		};
+		68A9220A1DBDB0FA007C946C /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Subclasses;
 			sourceTree = "<group>";
 		};
 		68BA38881D93611300CB5A76 /* TestHelpers */ = {
@@ -402,9 +420,9 @@
 			isa = PBXGroup;
 			children = (
 				68D25C271D8E2E0500FF1BE0 /* Views */,
-				68E261161D87673900425D46 /* Daily+CoreDataProperties.h */,
-				68E261171D87673900425D46 /* Daily+CoreDataProperties.m */,
 				68E261181D87673900425D46 /* Daily.h */,
+				68A921E61DBC7FF1007C946C /* Daily+CoreDataProperties.h */,
+				68A921E71DBC7FF1007C946C /* Daily+CoreDataProperties.m */,
 				68E261191D87673900425D46 /* Daily.m */,
 				686686EC1D79060300BB2D09 /* DailyCellController.h */,
 				686686ED1D79060300BB2D09 /* DailyCellController.m */,
@@ -517,9 +535,11 @@
 		68F3F9C51D70E82E00840DD2 /* HabitRPG2Tests */ = {
 			isa = PBXGroup;
 			children = (
+				68A9220A1DBDB0FA007C946C /* Subclasses */,
 				68F3F9C61D70E82E00840DD2 /* HabitRPG2Tests.m */,
 				68F3F9C81D70E82E00840DD2 /* Info.plist */,
 				68BA38921D93723600CB5A76 /* TestDailyHelper.m */,
+				68A922061DBD44C3007C946C /* Experiments.m */,
 			);
 			path = HabitRPG2Tests;
 			sourceTree = "<group>";
@@ -705,18 +725,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				686686EE1D79060300BB2D09 /* DailyCellController.m in Sources */,
+				68A921F91DBC7FF2007C946C /* Habit+CoreDataProperties.m in Sources */,
 				68F3F9F31D70FC5E00840DD2 /* TodoViewController.m in Sources */,
 				68F3FA021D74897A00840DD2 /* MenuViewController.m in Sources */,
-				68E261341D87673900425D46 /* Daily+CoreDataProperties.m in Sources */,
 				68BA388B1D93615600CB5A76 /* CommonUtilitiesMock.m in Sources */,
+				68A921FA1DBC7FF2007C946C /* Monster+CoreDataProperties.m in Sources */,
 				68E261391D87673900425D46 /* Zone.m in Sources */,
 				68E2613B1D87673900425D46 /* Hero.m in Sources */,
-				68E261401D87673900425D46 /* Monster+CoreDataProperties.m in Sources */,
 				686ED3B01DAEF512004EDD36 /* ZoneDescriptions.m in Sources */,
 				68F3F9EE1D70FC0D00840DD2 /* HabitController.m in Sources */,
-				68E261321D87673900425D46 /* Settings+CoreDataProperties.m in Sources */,
-				68E2613E1D87673900425D46 /* Good+CoreDataProperties.m in Sources */,
 				68F3F9FE1D71CCF100840DD2 /* UIUtilities.m in Sources */,
+				68A921F71DBC7FF2007C946C /* Zone+CoreDataProperties.m in Sources */,
 				68E2613D1D87673900425D46 /* Habit.m in Sources */,
 				68F3F9B11D70E82E00840DD2 /* AppDelegate.m in Sources */,
 				68BA38861D93576600CB5A76 /* CommonUtilities.m in Sources */,
@@ -724,7 +743,7 @@
 				68E260651D7FC3F200425D46 /* CoreDataStackController.m in Sources */,
 				68BE45911D9DEA0B003F3400 /* IntroViewController.m in Sources */,
 				68F3F9E41D70E8DB00840DD2 /* BaseViewController.m in Sources */,
-				68E2613C1D87673900425D46 /* Habit+CoreDataProperties.m in Sources */,
+				68A921F61DBC7FF2007C946C /* Good+CoreDataProperties.m in Sources */,
 				68E2613F1D87673900425D46 /* Good.m in Sources */,
 				686ED3C71DB481C4004EDD36 /* ZoneHelper.m in Sources */,
 				68E261411D87673900425D46 /* Monster.m in Sources */,
@@ -737,16 +756,18 @@
 				68E260CF1D851DA500425D46 /* EditNavigationController.m in Sources */,
 				686ED3BF1DB47954004EDD36 /* ZoneChoice.m in Sources */,
 				68F3F9F81D70FD3F00840DD2 /* GoodsViewController.m in Sources */,
+				68A921FB1DBC7FF2007C946C /* Settings+CoreDataProperties.m in Sources */,
 				68F3F9E91D70EC9700840DD2 /* DailyViewController.m in Sources */,
 				686ED3A71DA751AC004EDD36 /* StoryConstants.m in Sources */,
+				68A921F81DBC7FF2007C946C /* Todo+CoreDataProperties.m in Sources */,
 				68BA388E1D93617400CB5A76 /* DailyHelperMock.m in Sources */,
 				6886A4801D8E5FD0005E12B3 /* constants.m in Sources */,
+				68A921F41DBC7FF2007C946C /* Hero+CoreDataProperties.m in Sources */,
 				686ED3B71DAF3DBD004EDD36 /* CustomSwitch.m in Sources */,
-				68E261361D87673900425D46 /* Todo+CoreDataProperties.m in Sources */,
+				68A921F51DBC7FF2007C946C /* Daily+CoreDataProperties.m in Sources */,
 				68E260621D7BC3EA00425D46 /* Model.xcdatamodeld in Sources */,
-				68E2613A1D87673900425D46 /* Hero+CoreDataProperties.m in Sources */,
+				68A921FE1DBC81EA007C946C /* ZoneMaker.m in Sources */,
 				68F3F9AE1D70E82E00840DD2 /* main.m in Sources */,
-				68E261381D87673900425D46 /* Zone+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -754,6 +775,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68A922071DBD44C3007C946C /* Experiments.m in Sources */,
 				68F3F9C71D70E82E00840DD2 /* HabitRPG2Tests.m in Sources */,
 				68BA38931D93723600CB5A76 /* TestDailyHelper.m in Sources */,
 			);
@@ -986,10 +1008,14 @@
 		68E260601D7BC3EA00425D46 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				68A922151DC98ACD007C946C /* Model 6.xcdatamodel */,
+				68A9220E1DBF2EC0007C946C /* Model 5.xcdatamodel */,
+				68A922021DBC88F5007C946C /* Model 4.xcdatamodel */,
+				68A921CB1DBC6FB6007C946C /* Model 3.xcdatamodel */,
 				68BE458C1D9CCF4C003F3400 /* Model 2.xcdatamodel */,
 				68E260611D7BC3EA00425D46 /* Model.xcdatamodel */,
 			);
-			currentVersion = 68BE458C1D9CCF4C003F3400 /* Model 2.xcdatamodel */;
+			currentVersion = 68A922151DC98ACD007C946C /* Model 6.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

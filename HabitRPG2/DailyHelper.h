@@ -13,9 +13,8 @@
 
 
 @interface DailyHelper : NSObject
-@property (nonatomic,strong) CommonUtilities *commonHelper;
--(BOOL)isDailyCompleteForTheDay:(Daily *)daily;
--(NSDate *)calculateNextDueTime:(NSDate *)checkinDate WithRate:(long)rate;
--(int)calculateActiveDaysHash:(NSMutableArray *)activeDays;
--(void)setActiveDaySwitches:(NSMutableArray *)activeDays fromHash:(NSInteger)hash;
++(BOOL)isDailyCompleteForTheDay:(Daily *)daily;
++(NSTimeInterval)calculateNextDueTime:(NSDate *)checkinDate WithRate:(long)rate;
++(int)calculateActiveDaysHash:(NSMutableArray *)activeDays;
++(void)setActiveDaySwitches:(NSMutableArray *)activeDays fromHash:(NSInteger)hash;
 @end

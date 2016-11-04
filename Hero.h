@@ -14,7 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Hero : NSManagedObject
 
-@property (nonatomic,weak) BaseViewController *base;
 
 @end
 

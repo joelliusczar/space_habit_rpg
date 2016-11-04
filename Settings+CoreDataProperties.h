@@ -2,7 +2,7 @@
 //  Settings+CoreDataProperties.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 9/12/16.
+//  Created by Joel Pridgen on 11/1/16.
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,15 +15,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Settings (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSDate *createDate;
-@property (nullable, nonatomic, retain) NSNumber *dayStart;
-@property (nullable, nonatomic, retain) NSNumber *deathGoldPenalty;
-@property (nullable, nonatomic, retain) NSNumber *heroLvlPenalty;
-@property (nullable, nonatomic, retain) NSDate *lastCheckinTime;
-@property (nullable, nonatomic, retain) NSNumber *permaDeath;
-@property (nullable, nonatomic, retain) NSNumber *reminderHour;
-@property (nullable, nonatomic, retain) NSNumber *storyModeisOn;
-@property (nullable, nonatomic, retain) NSNumber *zoneLvlPenalty;
+@property (nonatomic) NSTimeInterval createDate;
+@property (nonatomic) int16_t dayStart;
+@property (nonatomic) float deathGoldPenalty;
+@property (nonatomic) int16_t heroLvlPenalty;
+@property (nonatomic) NSTimeInterval lastCheckinTime;
+@property (nonatomic) BOOL permaDeath;
+@property (nonatomic) int16_t reminderHour;
+@property (nonatomic) BOOL storyModeisOn;
+@property (nonatomic) int16_t zoneLvlPenalty;
 
 @end
 

@@ -2,7 +2,7 @@
 //  Zone+CoreDataProperties.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 9/12/16.
+//  Created by Joel Pridgen on 11/1/16.
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,13 +15,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Zone (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *about;
-@property (nullable, nonatomic, retain) NSNumber *lvl;
-@property (nullable, nonatomic, retain) NSNumber *maxMonsters;
-@property (nullable, nonatomic, retain) NSNumber *monstersKilled;
-@property (nullable, nonatomic, retain) NSNumber *previousZonePK;
-@property (nullable, nonatomic, retain) NSString *suffix;
-@property (nullable, nonatomic, retain) NSString *zoneName;
+@property (nonatomic) BOOL isCurrentZone;
+@property (nonatomic) int32_t lvl;
+@property (nonatomic) int32_t maxMonsters;
+@property (nonatomic) int32_t monstersKilled;
+@property (nonatomic) int32_t previousZonePK;
+@property (nonatomic) int32_t suffixNumber;
+@property (nullable, nonatomic, retain) NSString *zoneKey;
+@property (nullable, nonatomic, retain) NSString *uniqueId;
 
 @end
 

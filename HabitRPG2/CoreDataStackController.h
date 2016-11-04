@@ -10,6 +10,8 @@
 @import CoreData;
 
 @interface CoreDataStackController : NSObject
+@property (nonatomic,assign) BOOL disableSave;
+@property (nonatomic,assign) BOOL disabledSaveResult;
 -(NSManagedObject *)constructEmptyEntity:(NSString *) entityType;
 
 -(NSFetchedResultsController *)getItemFetcher:(NSString *) entityName

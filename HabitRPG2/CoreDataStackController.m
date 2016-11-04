@@ -13,7 +13,7 @@
 
 @interface CoreDataStackController()
 
-@property (strong) NSManagedObjectContext *context;
+@property (nonatomic,strong) NSManagedObjectContext *context;
 
 -(void)initializeCoreData;
 
@@ -47,6 +47,7 @@
     NSURL *documentsURL = [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
     NSURL *storeURL = [documentsURL URLByAppendingPathComponent:@"Model.sqlite"];
     
+
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
         NSError *error = nil;
         NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
@@ -84,6 +85,11 @@
 
 
 -(BOOL)save{
+    
+    if(self.disableSave){
+        return self.disabledSaveResult;
+    }
+    
     NSError *error;
     BOOL success;
     if(!(success = [self.context save:&error])){

@@ -29,7 +29,6 @@
 @property (nonatomic,strong) UITableView *dailiesTable;
 @property (nonatomic,strong) NSMutableArray *incompleteItems;
 @property (nonatomic,strong) NSMutableArray *completeItems;
-@property (nonatomic,strong) DailyHelper *helper;
 
 @end
 
@@ -62,14 +61,6 @@ static NSString *const EntityName = @"Daily";
     return _addButton;
 }
 
-@synthesize helper = _helper;
--(DailyHelper *)helper{
-    if(_helper == nil){
-        _helper = [[DailyHelper alloc]init];
-    }
-    
-    return _helper;
-}
 
 
 
@@ -190,7 +181,7 @@ static NSString *const EntityName = @"Daily";
     self.incompleteItems = [NSMutableArray array];
     
     for(Daily *d in resultsController.fetchedObjects){
-        if([self.helper isDailyCompleteForTheDay:d]){
+        if([DailyHelper isDailyCompleteForTheDay:d]){
             [self.completeItems addObject:d];
         }
         else{

@@ -2,7 +2,7 @@
 //  Monster+CoreDataProperties.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 9/12/16.
+//  Created by Joel Pridgen on 11/1/16.
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -16,11 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Monster (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSString *about;
-@property (nullable, nonatomic, retain) NSNumber *baseXpReward;
-@property (nullable, nonatomic, retain) NSNumber *lvl;
-@property (nullable, nonatomic, retain) NSNumber *maxHp;
+@property (nonatomic) int32_t baseXpReward;
+@property (nonatomic) int32_t lvl;
+@property (nonatomic) int32_t maxHp;
 @property (nullable, nonatomic, retain) NSString *monsterName;
-@property (nullable, nonatomic, retain) NSNumber *nowHp;
+@property (nonatomic) int32_t nowHp;
 
 @end
 

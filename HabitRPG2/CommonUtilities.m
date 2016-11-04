@@ -12,6 +12,19 @@
 
 @implementation CommonUtilities
 
++(NSDate *)getReferenceDate{
+    NSCalendar *cal = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+    dateComponents.year = 2016;
+    dateComponents.month = 1;
+    dateComponents.day = 1;
+    dateComponents.hour = 0;
+    dateComponents.minute = 0;
+    dateComponents.second = 0;
+    
+    return [cal dateFromComponents:dateComponents];
+}
+
 +(NSInteger)calculateLvl:(NSUInteger)lvl OffsetBy:(NSUInteger)offset{
     NSUInteger minLvl = lvl;
     if(lvl <= offset){

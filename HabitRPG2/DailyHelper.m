@@ -17,18 +17,21 @@
 @implementation DailyHelper
 
 
--(BOOL)isDailyCompleteForTheDay:(Daily *)daily{
++(BOOL)isDailyCompleteForTheDay:(Daily *)daily{
+    //todo
     return NO;
 }
-
--(NSDate *)calculateNextDueTime:(NSDate *)checkinDate WithRate:(long)rate{
-    NSCalendar *cal = [NSCalendar currentCalendar];
-    NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
-    [offsetComponents setDay:rate];
-    return [cal dateByAddingComponents:offsetComponents toDate:checkinDate options:0];
+//todo fix this long to int
++(NSTimeInterval)calculateNextDueTime:(NSDate *)checkinDate WithRate:(long)rate{
+    long timeLength = 60*60*24*rate;
+    NSDate *end = [NSDate dateWithTimeIntervalSinceNow:timeLength];
+    
+    NSTimeInterval timeInt = [end timeIntervalSinceReferenceDate];
+    return timeInt;
+    
 }
 
--(int)calculateActiveDaysHash:(NSMutableArray *)activeDays{
++(int)calculateActiveDaysHash:(NSMutableArray *)activeDays{
     int daysHash = 0;
     int currentDayBit = 1;
     for(int i = 0;i<DAYS_IN_WEEK;i++){
@@ -43,7 +46,7 @@
 
 
 
--(void)setActiveDaySwitches:(NSMutableArray *)activeDays fromHash:(NSInteger)hash{
++(void)setActiveDaySwitches:(NSMutableArray *)activeDays fromHash:(NSInteger)hash{
     int currentDayBit = 1;
     for(int i = 0;i<DAYS_IN_WEEK;i++){
         [CommonUtilities setSwitch:[activeDays objectAtIndex:i] withValue:hash & currentDayBit];
