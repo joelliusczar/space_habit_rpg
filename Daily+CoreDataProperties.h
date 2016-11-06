@@ -2,29 +2,29 @@
 //  Daily+CoreDataProperties.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 11/1/16.
+//  Created by Joel Pridgen on 11/5/16.
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
-//  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
-//  to delete and recreate this implementation file for your updated model.
-//
 
-#import "Daily.h"
+#import "Daily+CoreDataClass.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Daily (CoreDataProperties)
 
-@property (nonatomic) int32_t activeDaysHash;
-@property (nullable, nonatomic, retain) NSString *dailyName;
-@property (nonatomic) int16_t difficulty;
-@property (nonatomic) NSTimeInterval lastActivationTime;
-@property (nonatomic) NSTimeInterval nextDueTime;
-@property (nullable, nonatomic, retain) NSString *note;
-@property (nonatomic) int32_t rate;
-@property (nonatomic) NSTimeInterval rollbackActivationTime;
-@property (nonatomic) int32_t streakLength;
-@property (nonatomic) int16_t urgency;
++ (NSFetchRequest<Daily *> *)fetchRequest;
+
+@property (nullable, nonatomic, copy) NSNumber *activeDaysHash;
+@property (nullable, nonatomic, copy) NSString *dailyName;
+@property (nullable, nonatomic, copy) NSNumber *difficulty;
+@property (nullable, nonatomic, copy) NSDate *lastActivationTime;
+@property (nullable, nonatomic, copy) NSDate *nextDueTime;
+@property (nullable, nonatomic, copy) NSString *note;
+@property (nullable, nonatomic, copy) NSNumber *rate;
+@property (nullable, nonatomic, copy) NSDate *rollbackActivationTime;
+@property (nullable, nonatomic, copy) NSNumber *streakLength;
+@property (nullable, nonatomic, copy) NSNumber *urgency;
 
 @end
 

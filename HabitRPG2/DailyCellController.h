@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Daily.h"
+#import "Daily+CoreDataClass.h"
 #import "TaskCell.h"
 
 @interface DailyCellController : TaskCell

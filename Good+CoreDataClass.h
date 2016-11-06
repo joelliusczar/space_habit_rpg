@@ -1,8 +1,8 @@
 //
-//  Todo.h
+//  Good+CoreDataClass.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 9/12/16.
+//  Created by Joel Pridgen on 11/5/16.
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
@@ -11,12 +11,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Todo : NSManagedObject
-
-// Insert code here to declare functionality of your managed object subclass
+@interface Good : NSManagedObject
 
 @end
 
 NS_ASSUME_NONNULL_END
 
-#import "Todo+CoreDataProperties.h"
+#import "Good+CoreDataProperties.h"

@@ -8,13 +8,13 @@
 
 #import "DailyEditController.h"
 #import "CoreDataStackController.h"
-#import "Daily.h"
+#import "Daily+CoreDataClass.h"
 #import "constants.h"
 #import "DailyHelper.h"
 #import "CommonUtilities.h"
 #import "constants.h"
 
-static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %ld days";
+static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 
 
 @interface DailyEditController ()
@@ -160,13 +160,13 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %ld days";
     //todo check for loophole with nextDueTime
     self.modelForEditing.dailyName = self.nameBox.text;
     self.modelForEditing.note = self.descriptionBox.text;
-    self.modelForEditing.urgency = self.urgencySld.value;
-    self.modelForEditing.difficulty = self.difficultySld.value;
-    long rate = lround(self.rateStep.value);
-    self.modelForEditing.rate = rate;
-    self.modelForEditing.nextDueTime = [DailyHelper calculateNextDueTime:[[NSDate alloc]init] WithRate:rate];
+    self.modelForEditing.urgency_H = self.urgencySld.value;
+    self.modelForEditing.difficulty_H = self.difficultySld.value;
+    int32_t rate = (int32_t)self.rateStep.value;
+    self.modelForEditing.rate_H = rate;
+    self.modelForEditing.nextDueTime = [DailyHelper calculateNextDueTime:[NSDate date] WithRate:rate];
     self.modelForEditing.streakLength = 0;
-    self.modelForEditing.activeDaysHash = [DailyHelper calculateActiveDaysHash:self.activeDaySwitches];
+    self.modelForEditing.activeDaysHash_H = [DailyHelper calculateActiveDaysHash:self.activeDaySwitches];
     //todo add something for custom reward
     [self.dataController save];
     if(self.rowInfo == nil){
@@ -197,7 +197,7 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %ld days";
     self.descriptionBox.text = @"";
     self.urgencySld.value = 3;
     self.difficultySld.value = 3;
-    self.rateLbl.text = [NSString stringWithFormat:TRIGGER_LABEL_FORMAT,1l];
+    self.rateLbl.text = [NSString stringWithFormat:TRIGGER_LABEL_FORMAT,1];
     self.rateStep.value = 1;
     for(int i = 0;i<DAYS_IN_WEEK;i++){
         [CommonUtilities setSwitch:[self.activeDaySwitches objectAtIndex:i] withValue:YES];
@@ -223,20 +223,20 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %ld days";
     self.rowInfo = rowInfo;
     self.nameBox.text = self.modelForEditing.dailyName ? self.modelForEditing.dailyName  : @"";
     self.descriptionBox.text = self.modelForEditing.note ? self.modelForEditing.note : @"";
-    self.urgencySld.value = self.modelForEditing.urgency;
-    self.difficultySld.value = self.modelForEditing.difficulty;
-    NSInteger hash = self.modelForEditing.activeDaysHash;
+    self.urgencySld.value = self.modelForEditing.urgency_H;
+    self.difficultySld.value = self.modelForEditing.difficulty_H;
+    int32_t hash = self.modelForEditing.activeDaysHash_H;
     [DailyHelper setActiveDaySwitches:self.activeDaySwitches fromHash:hash];
-    NSInteger rate = self.modelForEditing.rate ;
+    NSInteger rate = self.modelForEditing.rate_H ;
     self.rateStep.value = rate;
-    self.rateLbl.text = [NSString stringWithFormat:TRIGGER_LABEL_FORMAT,(long)rate];
+    self.rateLbl.text = [NSString stringWithFormat:TRIGGER_LABEL_FORMAT,(int32_t)rate];
     
     
 }
 
 -(void)rateStep_pressed:(UIStepper *)sender{
     double stepperValue = [sender value];
-    NSInteger rate = lround(stepperValue);
+    int32_t rate = (int32_t)stepperValue;
     if(rate > 366){
         rate = 366;
     }
@@ -244,16 +244,16 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %ld days";
         rate = 1;
     }
     sender.value = rate;
-    self.rateLbl.text = [NSString stringWithFormat: TRIGGER_LABEL_FORMAT,(long)rate];
+    self.rateLbl.text = [NSString stringWithFormat: TRIGGER_LABEL_FORMAT,(int32_t)rate];
 }
 
 -(void)urgencySlider_move:(UISlider *)sender{
-    long sliderValue = lroundf(sender.value);
+    int32_t sliderValue = (int32_t)sender.value;
     sender.value = sliderValue;
     NSLog(@"%f",sender.value);
 }
 -(void)difficultySlider_move:(UISlider *)sender{
-    long sliderValue = lroundf(sender.value);
+    int32_t sliderValue = (int32_t)sender.value;
     sender.value = sliderValue;
     NSLog(@"%f",sender.value);
 }

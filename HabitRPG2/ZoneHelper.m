@@ -42,10 +42,10 @@
 
 +(NSString*)getRandomZoneDefinitionKey:(NSUInteger)heroLvl{
     NSArray *groupKeys = [ZoneHelper getUnlockedZoneGroupKeys: heroLvl];
-    int r = arc4random_uniform(groupKeys.count);
+    uint32_t r = arc4random_uniform((uint32_t)groupKeys.count);
     NSInteger groupKey = [((NSNumber*)[groupKeys objectAtIndex:r]) integerValue];
     NSArray *zoneList = [ZoneHelper getZoneGroup:groupKey];
-    r = arc4random_uniform(zoneList.count);
+    r = arc4random_uniform((uint32_t)zoneList.count);
     return [zoneList objectAtIndex:r];
 }
 
@@ -65,7 +65,7 @@
     NSUInteger adjustedVisitCount = [ZoneHelper skipPowersOfBaseInNumber:visitCount Base:symbols.count];
     NSMutableString *suffix = [NSMutableString stringWithString:[ZoneHelper getSymbolSuffix:adjustedVisitCount]];
     if(numericSuffix > 0){
-        [suffix appendString:[NSString stringWithFormat:@"%d",numericSuffix]];
+        [suffix appendString:[NSString stringWithFormat:@"%lu",numericSuffix]];
     }
     return [suffix stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 }

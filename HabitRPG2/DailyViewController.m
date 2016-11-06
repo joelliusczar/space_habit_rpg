@@ -9,7 +9,7 @@
 #import "DailyViewController.h"
 #import "UIUtilities.h"
 #import "CoreDataStackController.h"
-#import "Daily.h"
+#import "Daily+CoreDataClass.h"
 #import "EditNavigationController.h"
 #import "DailyEditController.h"
 #import "DailyHelper.h"

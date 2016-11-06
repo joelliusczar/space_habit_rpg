@@ -2,16 +2,17 @@
 //  Daily+CoreDataProperties.m
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 11/1/16.
+//  Created by Joel Pridgen on 11/5/16.
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
-//
-//  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
-//  to delete and recreate this implementation file for your updated model.
 //
 
 #import "Daily+CoreDataProperties.h"
 
 @implementation Daily (CoreDataProperties)
+
++ (NSFetchRequest<Daily *> *)fetchRequest {
+	return [[NSFetchRequest alloc] initWithEntityName:@"Daily"];
+}
 
 @dynamic activeDaysHash;
 @dynamic dailyName;

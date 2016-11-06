@@ -2,26 +2,26 @@
 //  Hero+CoreDataProperties.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 11/1/16.
+//  Created by Joel Pridgen on 11/5/16.
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
-//  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
-//  to delete and recreate this implementation file for your updated model.
-//
 
-#import "Hero.h"
+#import "Hero+CoreDataClass.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Hero (CoreDataProperties)
 
-@property (nonatomic) double gold;
-@property (nonatomic) int32_t lvl;
-@property (nonatomic) int32_t maxHp;
-@property (nonatomic) int32_t maxXp;
-@property (nonatomic) int32_t nowHp;
-@property (nonatomic) int32_t nowXp;
-@property (nullable, nonatomic, retain) NSString *shipName;
++ (NSFetchRequest<Hero *> *)fetchRequest;
+
+@property (nullable, nonatomic, copy) NSNumber *gold;
+@property (nullable, nonatomic, copy) NSNumber *lvl;
+@property (nullable, nonatomic, copy) NSNumber *maxHp;
+@property (nullable, nonatomic, copy) NSNumber *maxXp;
+@property (nullable, nonatomic, copy) NSNumber *nowHp;
+@property (nullable, nonatomic, copy) NSNumber *nowXp;
+@property (nullable, nonatomic, copy) NSString *shipName;
 
 @end
 

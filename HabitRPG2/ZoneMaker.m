@@ -30,30 +30,30 @@
 
 -(Zone *)constructHomeZone{
     Zone *z = (Zone *)[self.dataController constructEmptyEntity:ZONE_ENTITY_NAME];
-    z.isCurrentZone = YES;
-    z.previousZonePK = -1;
+    z.isCurrentZone_H = YES;
+    z.previousZonePK_H = -1;
     z.zoneKey = HOME_KEY;
     z.lvl = 0;
     z.maxMonsters = 0;
     z.monstersKilled = 0;
     z.suffixNumber = 0;
-    
+    //z.uniqueId = [NSUuid];
     [self.dataController save];
     return z;
 }
 
 -(Zone *)constructZoneChoice:(Hero *)hero AndMatchHeroLvl:(BOOL)matchLvl{
     Zone *z = (Zone *)[self.dataController constructEmptyEntity:ZONE_ENTITY_NAME];
-    NSString *zoneKey = [ZoneHelper getRandomZoneDefinitionKey:hero.lvl];
+    NSString *zoneKey = [ZoneHelper getRandomZoneDefinitionKey:hero.lvl_H];
     z.zoneKey = zoneKey;
-    z.suffixNumber = [self getVisitCountForZone:zoneKey];
-    z.maxMonsters = arc4random_uniform(10) + 5;
+    z.suffixNumber_H = [self getVisitCountForZone:zoneKey];
+    z.maxMonsters_H = arc4random_uniform(10) + 5;
     z.monstersKilled = 0;
-    z.lvl = matchLvl?hero.lvl:[CommonUtilities calculateLvl:hero.lvl OffsetBy:10];
+    z.lvl_H = matchLvl?hero.lvl_H:[CommonUtilities calculateLvl:hero.lvl_H OffsetBy:10];
     return z;
 }
 
--(NSUInteger)getVisitCountForZone:(NSString *)zoneKey{
+-(int32_t)getVisitCountForZone:(NSString *)zoneKey{
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"zoneKey = %@",zoneKey];
     NSSortDescriptor *sortByAnything = [[NSSortDescriptor alloc] initWithKey:@"zoneKey" ascending:NO];
     NSFetchedResultsController *fetchResults = [self.dataController getItemFetcher:ZONE_ENTITY_NAME predicate:predicate sortBy:@[sortByAnything]];
@@ -63,7 +63,7 @@
         return -1;
     }
     
-    return fetchResults.fetchedObjects.count;
+    return (int32_t)fetchResults.fetchedObjects.count;
 }
 
 @end

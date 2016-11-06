@@ -7,7 +7,7 @@
 //
 
 #import "DailyHelper.h"
-#import "Daily.h"
+#import "Daily+CoreDataClass.h"
 #import "constants.h"
 
 @interface DailyHelper()
@@ -22,18 +22,17 @@
     return NO;
 }
 //todo fix this long to int
-+(NSTimeInterval)calculateNextDueTime:(NSDate *)checkinDate WithRate:(long)rate{
-    long timeLength = 60*60*24*rate;
-    NSDate *end = [NSDate dateWithTimeIntervalSinceNow:timeLength];
-    
-    NSTimeInterval timeInt = [end timeIntervalSinceReferenceDate];
-    return timeInt;
++(NSDate *)calculateNextDueTime:(NSDate *)checkinDate WithRate:(int32_t)rate{
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
+    [offsetComponents setDay:rate];
+    return [cal dateByAddingComponents:offsetComponents toDate:checkinDate options:0];
     
 }
 
-+(int)calculateActiveDaysHash:(NSMutableArray *)activeDays{
-    int daysHash = 0;
-    int currentDayBit = 1;
++(int32_t)calculateActiveDaysHash:(NSMutableArray *)activeDays{
+    int32_t daysHash = 0;
+    int32_t currentDayBit = 1;
     for(int i = 0;i<DAYS_IN_WEEK;i++){
         if([CommonUtilities isSwitchOn:[activeDays objectAtIndex:i]]){
             daysHash |= currentDayBit;

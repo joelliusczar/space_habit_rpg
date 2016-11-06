@@ -2,28 +2,28 @@
 //  Settings+CoreDataProperties.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 11/1/16.
+//  Created by Joel Pridgen on 11/5/16.
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
-//  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
-//  to delete and recreate this implementation file for your updated model.
-//
 
-#import "Settings.h"
+#import "Settings+CoreDataClass.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Settings (CoreDataProperties)
 
-@property (nonatomic) NSTimeInterval createDate;
-@property (nonatomic) int16_t dayStart;
-@property (nonatomic) float deathGoldPenalty;
-@property (nonatomic) int16_t heroLvlPenalty;
-@property (nonatomic) NSTimeInterval lastCheckinTime;
-@property (nonatomic) BOOL permaDeath;
-@property (nonatomic) int16_t reminderHour;
-@property (nonatomic) BOOL storyModeisOn;
-@property (nonatomic) int16_t zoneLvlPenalty;
++ (NSFetchRequest<Settings *> *)fetchRequest;
+
+@property (nullable, nonatomic, copy) NSDate *createDate;
+@property (nullable, nonatomic, copy) NSNumber *dayStart;
+@property (nullable, nonatomic, copy) NSNumber *deathGoldPenalty;
+@property (nullable, nonatomic, copy) NSNumber *heroLvlPenalty;
+@property (nullable, nonatomic, copy) NSDate *lastCheckinTime;
+@property (nullable, nonatomic, copy) NSNumber *permaDeath;
+@property (nullable, nonatomic, copy) NSNumber *reminderHour;
+@property (nullable, nonatomic, copy) NSNumber *storyModeisOn;
+@property (nullable, nonatomic, copy) NSNumber *zoneLvlPenalty;
 
 @end
 

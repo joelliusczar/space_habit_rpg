@@ -25,8 +25,8 @@
     return [cal dateFromComponents:dateComponents];
 }
 
-+(NSInteger)calculateLvl:(NSUInteger)lvl OffsetBy:(NSUInteger)offset{
-    NSUInteger minLvl = lvl;
++(uint32_t)calculateLvl:(uint32_t)lvl OffsetBy:(uint32_t)offset{
+    uint32_t minLvl = lvl;
     if(lvl <= offset){
         minLvl = offset;
     }

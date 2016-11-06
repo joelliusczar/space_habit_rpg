@@ -8,7 +8,7 @@
 
 #import "IntroViewController.h"
 #import "CoreDataStackController.h"
-#import "Settings.h"
+#import "Settings+CoreDataClass.h"
 #import "StoryConstants.h"
 #import "ZoneDescriptions.h"
 

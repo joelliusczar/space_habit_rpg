@@ -11,7 +11,7 @@
 #import <UIKit/UIKit.h>
 #import "CoreDataStackController.h"
 #import "BaseViewController.h"
-#import "Daily.h"
+#import "Daily+CoreDataClass.h"
 #import "constants.h"
 
 

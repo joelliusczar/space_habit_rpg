@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CoreDataStackController.h"
-#import "Settings.h"
+#import "Settings+CoreDataClass.h"
 #import "BaseViewController.h"
 
 @interface IntroViewController : UIViewController

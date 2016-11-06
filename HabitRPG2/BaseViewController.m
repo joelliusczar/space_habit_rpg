@@ -14,10 +14,10 @@
 #import "MenuViewController.h"
 #import "UIUtilities.h"
 #import "CoreDataStackController.h"
-#import "Settings.h"
-#import "Zone.h"
-#import "Hero.h"
-#import "Monster.h"
+#import "Settings+CoreDataClass.h"
+#import "Zone+CoreDataClass.h"
+#import "Hero+CoreDataClass.h"
+#import "Monster+CoreDataClass.h"
 #import "IntroViewController.h"
 
 @import CoreGraphics;
@@ -196,7 +196,7 @@
 }
 
 -(void)setToSkipStory:(BOOL)skipStory{
-    self.userSettings.storyModeisOn = skipStory;
+    self.userSettings.storyModeisOn_H = skipStory;
     [self.dataController save];
     
 }

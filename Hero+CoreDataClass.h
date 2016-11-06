@@ -1,8 +1,8 @@
 //
-//  Zone.h
+//  Hero+CoreDataClass.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 9/12/16.
+//  Created by Joel Pridgen on 11/5/16.
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
@@ -11,10 +11,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Zone : NSManagedObject
-
+@interface Hero : NSManagedObject
+@property (nonatomic) int32_t lvl_H;
 @end
 
 NS_ASSUME_NONNULL_END
 
-#import "Zone+CoreDataProperties.h"
+#import "Hero+CoreDataProperties.h"

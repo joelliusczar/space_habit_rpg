@@ -1,22 +1,20 @@
 //
-//  Hero.h
+//  Settings+CoreDataClass.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 9/12/16.
+//  Created by Joel Pridgen on 11/5/16.
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "BaseViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Hero : NSManagedObject
-
-
+@interface Settings : NSManagedObject
+@property (nonatomic) BOOL storyModeisOn_H;
 @end
 
 NS_ASSUME_NONNULL_END
 
-#import "Hero+CoreDataProperties.h"
+#import "Settings+CoreDataProperties.h"

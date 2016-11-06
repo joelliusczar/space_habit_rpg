@@ -13,5 +13,5 @@
 +(NSDate *)getReferenceDate;
 +(BOOL)isSwitchOn:(id)switchItem;
 +(void)setSwitch:(id)switchItem withValue:(BOOL)value;
-+(NSInteger)calculateLvl:(NSUInteger)lvl OffsetBy:(NSUInteger)offset;
++(uint32_t)calculateLvl:(uint32_t)lvl OffsetBy:(uint32_t)offset;
 @end

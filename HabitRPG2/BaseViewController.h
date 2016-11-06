@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EditNavigationController.h"
 #import "CoreDataStackController.h"
-#import "Daily.h"
+#import "Daily+CoreDataClass.h"
 
 @interface BaseViewController : UIViewController
 @property (strong,nonatomic) CoreDataStackController *dataController;

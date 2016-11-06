@@ -2,27 +2,27 @@
 //  Habit+CoreDataProperties.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 11/1/16.
+//  Created by Joel Pridgen on 11/5/16.
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
-//  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
-//  to delete and recreate this implementation file for your updated model.
-//
 
-#import "Habit.h"
+#import "Habit+CoreDataClass.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Habit (CoreDataProperties)
 
-@property (nonatomic) int16_t difficulty;
-@property (nonatomic) int32_t freeViolations;
-@property (nullable, nonatomic, retain) NSString *frequencyCounts;
-@property (nullable, nonatomic, retain) NSString *habitName;
-@property (nonatomic) BOOL neglectPunishReward;
-@property (nullable, nonatomic, retain) NSString *note;
-@property (nonatomic) BOOL polarity;
-@property (nonatomic) int16_t urgency;
++ (NSFetchRequest<Habit *> *)fetchRequest;
+
+@property (nullable, nonatomic, copy) NSNumber *difficulty;
+@property (nullable, nonatomic, copy) NSNumber *freeViolations;
+@property (nullable, nonatomic, copy) NSString *frequencyCounts;
+@property (nullable, nonatomic, copy) NSString *habitName;
+@property (nullable, nonatomic, copy) NSNumber *neglectPunishReward;
+@property (nullable, nonatomic, copy) NSString *note;
+@property (nullable, nonatomic, copy) NSNumber *polarity;
+@property (nullable, nonatomic, copy) NSNumber *urgency;
 
 @end
 

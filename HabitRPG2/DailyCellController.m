@@ -8,7 +8,7 @@
 
 #import "DailyCellController.h"
 #import "DailyViewController.h"
-#import "Daily.h"
+#import "Daily+CoreDataClass.h"
 #import "constants.h"
 @import CoreGraphics;
 

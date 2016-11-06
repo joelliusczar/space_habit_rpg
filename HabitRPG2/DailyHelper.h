@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Daily.h"
+#import "Daily+CoreDataClass.h"
 #import "CommonUtilities.h"
 
 
 
 @interface DailyHelper : NSObject
 +(BOOL)isDailyCompleteForTheDay:(Daily *)daily;
-+(NSTimeInterval)calculateNextDueTime:(NSDate *)checkinDate WithRate:(long)rate;
++(NSDate *)calculateNextDueTime:(NSDate *)checkinDate WithRate:(int32_t)rate;
 +(int)calculateActiveDaysHash:(NSMutableArray *)activeDays;
 +(void)setActiveDaySwitches:(NSMutableArray *)activeDays fromHash:(NSInteger)hash;
 @end
