@@ -20,3 +20,6 @@ extern NSString* const SETTINGS_ENTITY_NAME;
 extern NSString* const ZONE_ENTITY_NAME;
 extern NSString* const MONSTER_ENTITY_NAME;
 extern NSInteger const DAYS_IN_WEEK;
+extern u_int8_t const MAX_MONSTER_RAND_UP_BOUND;
+extern u_int8_t const MAX_MONSTER_LOW_BOUND;
+extern u_int8_t const ZONE_LVL_RANGE;
