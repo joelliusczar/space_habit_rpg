@@ -16,9 +16,18 @@
 
 @interface ZoneMaker()
 @property (nonatomic,weak) CoreDataStackController *dataController;
+@property (nonatomic,strong) CommonUtilities *util;
 @end
 
 @implementation ZoneMaker
+
+@synthesize util = _util;
+-(CommonUtilities *)util{
+    if(_util == nil){
+        _util = [[CommonUtilities alloc] init];
+    }
+    return _util;
+}
 
 -(id)initWithDataController:(CoreDataStackController*)dataController{
     if(self = [self init]){
@@ -49,7 +58,7 @@
     z.suffixNumber_H = [self getVisitCountForZone:zoneKey];
     z.maxMonsters_H = arc4random_uniform(10) + 5;
     z.monstersKilled = 0;
-    z.lvl_H = matchLvl?hero.lvl_H:[CommonUtilities calculateLvl:hero.lvl_H OffsetBy:10];
+    z.lvl_H = matchLvl?hero.lvl_H:[self.util calculateLvl:hero.lvl_H OffsetBy:10];
     return z;
 }
 

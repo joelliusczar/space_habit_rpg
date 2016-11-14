@@ -12,7 +12,7 @@
 
 @implementation CommonUtilities
 
-+(NSDate *)getReferenceDate{
+-(NSDate *)getReferenceDate{
     NSCalendar *cal = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
     dateComponents.year = 2016;
@@ -25,7 +25,7 @@
     return [cal dateFromComponents:dateComponents];
 }
 
-+(uint32_t)calculateLvl:(uint32_t)lvl OffsetBy:(uint32_t)offset{
+-(uint32_t)calculateLvl:(uint32_t)lvl OffsetBy:(uint32_t)offset{
     uint32_t minLvl = lvl;
     if(lvl <= offset){
         minLvl = offset;
@@ -37,12 +37,12 @@
     return arc4random_uniform(offset) +minLvl;
 }
 
-+(BOOL)isSwitchOn:(id)switchItem{
+-(BOOL)isSwitchOn:(id)switchItem{
     CustomSwitch *switchBtn = (CustomSwitch *)switchItem;
     return switchBtn.isOn;
 }
 
-+(void)setSwitch:(id)switchItem withValue:(BOOL)value{
+-(void)setSwitch:(id)switchItem withValue:(BOOL)value{
     CustomSwitch *switchBtn = (CustomSwitch *)switchItem;
     switchBtn.isOn = value;
 }

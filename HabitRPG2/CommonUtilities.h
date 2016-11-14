@@ -10,8 +10,8 @@
 #import <UIKit/UIKit.h>
 
 @interface CommonUtilities : NSObject
-+(NSDate *)getReferenceDate;
-+(BOOL)isSwitchOn:(id)switchItem;
-+(void)setSwitch:(id)switchItem withValue:(BOOL)value;
-+(uint32_t)calculateLvl:(uint32_t)lvl OffsetBy:(uint32_t)offset;
+-(NSDate *)getReferenceDate;
+-(BOOL)isSwitchOn:(id)switchItem;
+-(void)setSwitch:(id)switchItem withValue:(BOOL)value;
+-(uint32_t)calculateLvl:(uint32_t)lvl OffsetBy:(uint32_t)offset;
 @end

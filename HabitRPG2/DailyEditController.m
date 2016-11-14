@@ -30,6 +30,8 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 @property (nonatomic,weak)  CoreDataStackController *dataController;
 @property (nonatomic,weak) DailyViewController *parentDailyController;
 @property (nonatomic,weak) Daily *modelForEditing;
+@property (nonatomic,strong) DailyHelper *dailyHelper;
+@property (nonatomic,strong) CommonUtilities *util;
 @property (nonatomic,strong) NSIndexPath *rowInfo;
 @property (nonatomic,assign) dailyStatus section;
 @end
@@ -126,6 +128,23 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
     return _modelForEditing;
 }
 
+@synthesize util = _util;
+-(CommonUtilities *)util{
+    if(_util == nil){
+        _util = [[CommonUtilities alloc] init];
+    }
+    return _util;
+}
+
+@synthesize dailyHelper = _dailyHelper;
+-(DailyHelper *)dailyHelper{
+    
+    if(_dailyHelper){
+        _dailyHelper = [[DailyHelper alloc] init];
+    }
+    return _dailyHelper;
+}
+
 
 -(id)initWithDataController:(CoreDataStackController *)dataController AndWithParentDailyController:(DailyViewController *)parentDailyController{
     if(self = [self initWithNibName:@"DailyEditView" bundle:nil]){
@@ -164,9 +183,9 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
     self.modelForEditing.difficulty_H = self.difficultySld.value;
     int32_t rate = (int32_t)self.rateStep.value;
     self.modelForEditing.rate_H = rate;
-    self.modelForEditing.nextDueTime = [DailyHelper calculateNextDueTime:[NSDate date] WithRate:rate];
+    self.modelForEditing.nextDueTime = [self.dailyHelper calculateNextDueTime:[NSDate date] WithRate:rate];
     self.modelForEditing.streakLength = 0;
-    self.modelForEditing.activeDaysHash_H = [DailyHelper calculateActiveDaysHash:self.activeDaySwitches];
+    self.modelForEditing.activeDaysHash_H = [self.dailyHelper calculateActiveDaysHash:self.activeDaySwitches];
     //todo add something for custom reward
     [self.dataController save];
     if(self.rowInfo == nil){
@@ -200,7 +219,7 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
     self.rateLbl.text = [NSString stringWithFormat:TRIGGER_LABEL_FORMAT,1];
     self.rateStep.value = 1;
     for(int i = 0;i<DAYS_IN_WEEK;i++){
-        [CommonUtilities setSwitch:[self.activeDaySwitches objectAtIndex:i] withValue:YES];
+        [self.util setSwitch:[self.activeDaySwitches objectAtIndex:i] withValue:YES];
     }
     self.modelForEditing = nil;
 
@@ -226,7 +245,7 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
     self.urgencySld.value = self.modelForEditing.urgency_H;
     self.difficultySld.value = self.modelForEditing.difficulty_H;
     int32_t hash = self.modelForEditing.activeDaysHash_H;
-    [DailyHelper setActiveDaySwitches:self.activeDaySwitches fromHash:hash];
+    [self.dailyHelper setActiveDaySwitches:self.activeDaySwitches fromHash:hash];
     NSInteger rate = self.modelForEditing.rate_H ;
     self.rateStep.value = rate;
     self.rateLbl.text = [NSString stringWithFormat:TRIGGER_LABEL_FORMAT,(int32_t)rate];

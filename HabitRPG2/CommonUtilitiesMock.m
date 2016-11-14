@@ -10,14 +10,14 @@
 
 @implementation CommonUtilitiesMock
 
--(BOOL)isSwitchOn:(id)switchItem{
++(BOOL)isSwitchOn:(id)switchItem{
     NSMutableString *boolish = (NSMutableString *)switchItem;
     
     bool result = [boolish isEqual:@"YES"];
     return result;
 }
 
--(void)setSwitch:(id)switchItem withValue:(BOOL)value{
++(void)setSwitch:(id)switchItem withValue:(BOOL)value{
     NSMutableString *boolish = (NSMutableString *)switchItem;
     [boolish setString:[NSString stringWithFormat:@"%s",value?"YES":"NO"]];
 }
