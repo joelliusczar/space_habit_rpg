@@ -17,6 +17,12 @@
 		271217701DCE84310072ACC6 /* Zone+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 271217681DCE84310072ACC6 /* Zone+CoreDataClass.m */; };
 		27127E041DDACA5B0074A8F5 /* TestDailyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27127DEF1DD971650074A8F5 /* TestDailyHelper.m */; };
 		27127E051DDACA6A0074A8F5 /* Experiments.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A922061DBD44C3007C946C /* Experiments.m */; };
+		27127E061DDAD1E70074A8F5 /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 6886A47F1D8E5FD0005E12B3 /* constants.m */; };
+		27127E071DDAD2130074A8F5 /* CommonUtilitiesMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BA388A1D93615600CB5A76 /* CommonUtilitiesMock.m */; };
+		27127E081DDAD2280074A8F5 /* DailyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260981D84923C00425D46 /* DailyHelper.m */; };
+		27127E091DDAD2400074A8F5 /* CommonUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BA38851D93576600CB5A76 /* CommonUtilities.m */; };
+		27127E141DDAD5C30074A8F5 /* DataInfo+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27127E0E1DDAD5C30074A8F5 /* DataInfo+CoreDataClass.m */; };
+		27127E151DDAD5C30074A8F5 /* DataInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27127E101DDAD5C30074A8F5 /* DataInfo+CoreDataProperties.m */; };
 		686686EB1D79032200BB2D09 /* DailyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 686686EA1D79032200BB2D09 /* DailyCell.xib */; };
 		686686EE1D79060300BB2D09 /* DailyCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686686ED1D79060300BB2D09 /* DailyCellController.m */; };
 		686ED38B1DA463F6004EDD36 /* PressStart2P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 686ED38A1DA46200004EDD36 /* PressStart2P.ttf */; };
@@ -113,6 +119,11 @@
 		271217681DCE84310072ACC6 /* Zone+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Zone+CoreDataClass.m"; sourceTree = SOURCE_ROOT; };
 		27127DEF1DD971650074A8F5 /* TestDailyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDailyHelper.m; sourceTree = "<group>"; };
 		27127DFA1DDAC6F70074A8F5 /* HabitRPG2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitRPG2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		27127E0A1DDAD43D0074A8F5 /* Model 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 8.xcdatamodel"; sourceTree = "<group>"; };
+		27127E0D1DDAD5C30074A8F5 /* DataInfo+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DataInfo+CoreDataClass.h"; path = "../DataInfo+CoreDataClass.h"; sourceTree = "<group>"; };
+		27127E0E1DDAD5C30074A8F5 /* DataInfo+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DataInfo+CoreDataClass.m"; path = "../DataInfo+CoreDataClass.m"; sourceTree = "<group>"; };
+		27127E0F1DDAD5C30074A8F5 /* DataInfo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DataInfo+CoreDataProperties.h"; path = "../DataInfo+CoreDataProperties.h"; sourceTree = "<group>"; };
+		27127E101DDAD5C30074A8F5 /* DataInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DataInfo+CoreDataProperties.m"; path = "../DataInfo+CoreDataProperties.m"; sourceTree = "<group>"; };
 		686686EA1D79032200BB2D09 /* DailyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyCell.xib; sourceTree = "<group>"; };
 		686686EC1D79060300BB2D09 /* DailyCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyCellController.h; sourceTree = "<group>"; };
 		686686ED1D79060300BB2D09 /* DailyCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyCellController.m; sourceTree = "<group>"; };
@@ -244,6 +255,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27127E171DDAD6300074A8F5 /* DataInfo */ = {
+			isa = PBXGroup;
+			children = (
+				27127E0D1DDAD5C30074A8F5 /* DataInfo+CoreDataClass.h */,
+				27127E0E1DDAD5C30074A8F5 /* DataInfo+CoreDataClass.m */,
+				27127E0F1DDAD5C30074A8F5 /* DataInfo+CoreDataProperties.h */,
+				27127E101DDAD5C30074A8F5 /* DataInfo+CoreDataProperties.m */,
+			);
+			name = DataInfo;
+			sourceTree = "<group>";
+		};
 		686ED39C1DA5FF28004EDD36 /* Todos */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,6 +456,7 @@
 		68DD159E1D9CAA010073E7D8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				27127E171DDAD6300074A8F5 /* DataInfo */,
 				686ED3AD1DADE4DB004EDD36 /* Monster */,
 				686ED3AC1DADE4C5004EDD36 /* Hero */,
 				686ED3AB1DADE4B3004EDD36 /* Zone */,
@@ -601,7 +624,6 @@
 					27127DF91DDAC6F70074A8F5 = {
 						CreatedOnToolsVersion = 8.1;
 						ProvisioningStyle = Automatic;
-						TestTargetID = 68F3F9A81D70E82E00840DD2;
 					};
 					68F3F9A81D70E82E00840DD2 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -678,6 +700,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27127E091DDAD2400074A8F5 /* CommonUtilities.m in Sources */,
+				27127E081DDAD2280074A8F5 /* DailyHelper.m in Sources */,
+				27127E071DDAD2130074A8F5 /* CommonUtilitiesMock.m in Sources */,
+				27127E061DDAD1E70074A8F5 /* constants.m in Sources */,
 				27127E051DDACA6A0074A8F5 /* Experiments.m in Sources */,
 				27127E041DDACA5B0074A8F5 /* TestDailyHelper.m in Sources */,
 			);
@@ -691,6 +717,7 @@
 				68A921F91DBC7FF2007C946C /* Habit+CoreDataProperties.m in Sources */,
 				68F3F9F31D70FC5E00840DD2 /* TodoViewController.m in Sources */,
 				68F3FA021D74897A00840DD2 /* MenuViewController.m in Sources */,
+				27127E151DDAD5C30074A8F5 /* DataInfo+CoreDataProperties.m in Sources */,
 				68BA388B1D93615600CB5A76 /* CommonUtilitiesMock.m in Sources */,
 				68A921FA1DBC7FF2007C946C /* Monster+CoreDataProperties.m in Sources */,
 				686ED3B01DAEF512004EDD36 /* ZoneDescriptions.m in Sources */,
@@ -700,6 +727,7 @@
 				2712176B1DCE84310072ACC6 /* Habit+CoreDataClass.m in Sources */,
 				68F3F9B11D70E82E00840DD2 /* AppDelegate.m in Sources */,
 				68BA38861D93576600CB5A76 /* CommonUtilities.m in Sources */,
+				27127E141DDAD5C30074A8F5 /* DataInfo+CoreDataClass.m in Sources */,
 				68D25C221D8B951B00FF1BE0 /* DailyEditController.m in Sources */,
 				68E260651D7FC3F200425D46 /* CoreDataStackController.m in Sources */,
 				2712176E1DCE84310072ACC6 /* Settings+CoreDataClass.m in Sources */,
@@ -748,7 +776,6 @@
 		27127E021DDAC6F80074A8F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				DEVELOPMENT_TEAM = XK3RJ8E2L2;
@@ -757,14 +784,12 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.HabitRPG2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HabitRPG2.app/HabitRPG2";
 			};
 			name = Debug;
 		};
 		27127E031DDAC6F80074A8F5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				DEVELOPMENT_TEAM = XK3RJ8E2L2;
@@ -773,7 +798,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.HabitRPG2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HabitRPG2.app/HabitRPG2";
 			};
 			name = Release;
 		};
@@ -928,6 +952,7 @@
 		68E260601D7BC3EA00425D46 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				27127E0A1DDAD43D0074A8F5 /* Model 8.xcdatamodel */,
 				271217281DCE3B380072ACC6 /* Model 7.xcdatamodel */,
 				68A922151DC98ACD007C946C /* Model 6.xcdatamodel */,
 				68A9220E1DBF2EC0007C946C /* Model 5.xcdatamodel */,
