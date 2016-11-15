@@ -20,10 +20,9 @@
 
 - (void)setUp {
     [super setUp];
-    self.helper = [[DailyHelper alloc]init];
-    self.helper.commonHelper = [[CommonUtilitiesMock alloc]init];
+    self.helper = [[DailyHelper alloc]initWithCommonUtilities:[[CommonUtilitiesMock alloc] init]];
     self.switches =  [NSMutableArray arrayWithCapacity:DAYS_IN_WEEK];
-    for(int i = 0;i<DAYS_IN_WEEK;i++){
+    for(u_int8_t i = 0;i<DAYS_IN_WEEK;i++){
         [self.switches addObject:[NSMutableString stringWithFormat:@"NO"]];
     }
 }
