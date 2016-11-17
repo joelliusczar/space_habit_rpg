@@ -9,11 +9,11 @@
 #import "Hero+CoreDataClass.h"
 
 @implementation Hero
--(int32_t)lvl_H{
-    return self.lvl.intValue;
-}
-
--(void)setLvl_H:(int32_t)lvl_H{
-    self.lvl = [NSNumber numberWithInt:lvl_H];
-}
+//-(int32_t)lvl_H{
+//    return self.lvl.intValue;
+//}
+//
+//-(void)setLvl_H:(int32_t)lvl_H{
+//    self.lvl = [NSNumber numberWithInt:lvl_H];
+//}
 @end

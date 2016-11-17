@@ -2,7 +2,7 @@
 //  Todo+CoreDataProperties.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 11/5/16.
+//  Created by Joel Pridgen on 11/15/16.
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
@@ -15,12 +15,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<Todo *> *)fetchRequest;
 
-@property (nullable, nonatomic, copy) NSNumber *difficulty;
+@property (nonatomic) int16_t difficulty;
 @property (nullable, nonatomic, copy) NSDate *dueDate;
 @property (nullable, nonatomic, copy) NSDate *effectiveDate;
 @property (nullable, nonatomic, copy) NSString *note;
 @property (nullable, nonatomic, copy) NSString *todoName;
-@property (nullable, nonatomic, copy) NSNumber *urgency;
+@property (nonatomic) int16_t urgency;
 
 @end
 

@@ -12,7 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Settings : NSManagedObject
-@property (nonatomic) BOOL storyModeisOn_H;
+//@property (nonatomic) BOOL storyModeisOn_H;
 @end
 
 NS_ASSUME_NONNULL_END

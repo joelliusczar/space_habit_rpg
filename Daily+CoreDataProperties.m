@@ -17,6 +17,7 @@
 @dynamic activeDaysHash;
 @dynamic dailyName;
 @dynamic difficulty;
+@dynamic isActive;
 @dynamic lastActivationTime;
 @dynamic nextDueTime;
 @dynamic note;
@@ -24,6 +25,5 @@
 @dynamic rollbackActivationTime;
 @dynamic streakLength;
 @dynamic urgency;
-@dynamic isActive;
 
 @end

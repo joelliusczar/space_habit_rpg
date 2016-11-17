@@ -2,7 +2,7 @@
 //  Hero+CoreDataProperties.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 11/5/16.
+//  Created by Joel Pridgen on 11/15/16.
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
@@ -15,12 +15,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<Hero *> *)fetchRequest;
 
-@property (nullable, nonatomic, copy) NSNumber *gold;
-@property (nullable, nonatomic, copy) NSNumber *lvl;
-@property (nullable, nonatomic, copy) NSNumber *maxHp;
-@property (nullable, nonatomic, copy) NSNumber *maxXp;
-@property (nullable, nonatomic, copy) NSNumber *nowHp;
-@property (nullable, nonatomic, copy) NSNumber *nowXp;
+@property (nonatomic) double gold;
+@property (nonatomic) int32_t lvl;
+@property (nonatomic) int32_t maxHp;
+@property (nonatomic) int32_t maxXp;
+@property (nonatomic) int32_t nowHp;
+@property (nonatomic) int32_t nowXp;
 @property (nullable, nonatomic, copy) NSString *shipName;
 
 @end

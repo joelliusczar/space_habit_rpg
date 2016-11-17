@@ -15,15 +15,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<Habit *> *)fetchRequest;
 
-@property (nullable, nonatomic, copy) NSNumber *difficulty;
-@property (nullable, nonatomic, copy) NSNumber *freeViolations;
+@property (nonatomic) int16_t difficulty;
+@property (nonatomic) int32_t freeViolations;
 @property (nullable, nonatomic, copy) NSString *frequencyCounts;
 @property (nullable, nonatomic, copy) NSString *habitName;
-@property (nullable, nonatomic, copy) NSNumber *neglectPunishReward;
-@property (nullable, nonatomic, copy) NSString *note;
-@property (nullable, nonatomic, copy) NSNumber *polarity;
-@property (nullable, nonatomic, copy) NSNumber *urgency;
 @property (nonatomic) BOOL isActive;
+@property (nonatomic) BOOL neglectPunishReward;
+@property (nullable, nonatomic, copy) NSString *note;
+@property (nonatomic) BOOL polarity;
+@property (nonatomic) int16_t urgency;
 
 @end
 

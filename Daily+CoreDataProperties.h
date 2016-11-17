@@ -15,17 +15,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<Daily *> *)fetchRequest;
 
-@property (nullable, nonatomic, copy) NSNumber *activeDaysHash;
+@property (nonatomic) int32_t activeDaysHash;
 @property (nullable, nonatomic, copy) NSString *dailyName;
-@property (nullable, nonatomic, copy) NSNumber *difficulty;
+@property (nonatomic) int16_t difficulty;
+@property (nonatomic) BOOL isActive;
 @property (nullable, nonatomic, copy) NSDate *lastActivationTime;
 @property (nullable, nonatomic, copy) NSDate *nextDueTime;
 @property (nullable, nonatomic, copy) NSString *note;
-@property (nullable, nonatomic, copy) NSNumber *rate;
+@property (nonatomic) int32_t rate;
 @property (nullable, nonatomic, copy) NSDate *rollbackActivationTime;
-@property (nullable, nonatomic, copy) NSNumber *streakLength;
-@property (nullable, nonatomic, copy) NSNumber *urgency;
-@property (nonatomic) BOOL isActive;
+@property (nonatomic) int32_t streakLength;
+@property (nonatomic) int16_t urgency;
 
 @end
 

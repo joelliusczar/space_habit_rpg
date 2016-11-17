@@ -196,7 +196,7 @@
 }
 
 -(void)setToSkipStory:(BOOL)skipStory{
-    self.userSettings.storyModeisOn_H = skipStory;
+    self.userSettings.storyModeisOn = skipStory;
     [self.dataController save];
     
 }

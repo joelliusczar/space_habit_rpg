@@ -14,10 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Daily : NSManagedObject
 @property (nonatomic,assign) NSInteger rowNum;
 @property (nonatomic,assign) NSInteger sectionNum;
-@property (nonatomic) int16_t urgency_H;
-@property (nonatomic) int16_t difficulty_H;
-@property (nonatomic) int32_t rate_H;
-@property (nonatomic) int32_t activeDaysHash_H;
+//@property (nonatomic) int16_t urgency_H;
+//@property (nonatomic) int16_t difficulty_H;
+//@property (nonatomic) int32_t rate_H;
+//@property (nonatomic) int32_t activeDaysHash_H;
 @end
 
 NS_ASSUME_NONNULL_END

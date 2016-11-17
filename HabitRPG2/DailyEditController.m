@@ -179,13 +179,13 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
     //todo check for loophole with nextDueTime
     self.modelForEditing.dailyName = self.nameBox.text;
     self.modelForEditing.note = self.descriptionBox.text;
-    self.modelForEditing.urgency_H = self.urgencySld.value;
-    self.modelForEditing.difficulty_H = self.difficultySld.value;
+    self.modelForEditing.urgency = self.urgencySld.value;
+    self.modelForEditing.difficulty = self.difficultySld.value;
     int32_t rate = (int32_t)self.rateStep.value;
-    self.modelForEditing.rate_H = rate;
+    self.modelForEditing.rate = rate;
     self.modelForEditing.nextDueTime = [self.dailyHelper calculateNextDueTime:[NSDate date] WithRate:rate];
     self.modelForEditing.streakLength = 0;
-    self.modelForEditing.activeDaysHash_H = [self.dailyHelper calculateActiveDaysHash:self.activeDaySwitches];
+    self.modelForEditing.activeDaysHash = [self.dailyHelper calculateActiveDaysHash:self.activeDaySwitches];
     //todo add something for custom reward
     [self.dataController save];
     if(self.rowInfo == nil){
@@ -242,11 +242,11 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
     self.rowInfo = rowInfo;
     self.nameBox.text = self.modelForEditing.dailyName ? self.modelForEditing.dailyName  : @"";
     self.descriptionBox.text = self.modelForEditing.note ? self.modelForEditing.note : @"";
-    self.urgencySld.value = self.modelForEditing.urgency_H;
-    self.difficultySld.value = self.modelForEditing.difficulty_H;
-    int32_t hash = self.modelForEditing.activeDaysHash_H;
+    self.urgencySld.value = self.modelForEditing.urgency;
+    self.difficultySld.value = self.modelForEditing.difficulty;
+    int32_t hash = self.modelForEditing.activeDaysHash;
     [self.dailyHelper setActiveDaySwitches:self.activeDaySwitches fromHash:hash];
-    NSInteger rate = self.modelForEditing.rate_H ;
+    NSInteger rate = self.modelForEditing.rate;
     self.rateStep.value = rate;
     self.rateLbl.text = [NSString stringWithFormat:TRIGGER_LABEL_FORMAT,(int32_t)rate];
     

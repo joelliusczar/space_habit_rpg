@@ -18,10 +18,10 @@
 @dynamic freeViolations;
 @dynamic frequencyCounts;
 @dynamic habitName;
+@dynamic isActive;
 @dynamic neglectPunishReward;
 @dynamic note;
 @dynamic polarity;
 @dynamic urgency;
-@dynamic isActive;
 
 @end

@@ -39,8 +39,8 @@
 
 -(Zone *)constructHomeZone{
     Zone *z = (Zone *)[self.dataController constructEmptyEntity:ZONE_ENTITY_NAME];
-    z.isCurrentZone_H = YES;
-    z.previousZonePK_H = -1;
+    z.isCurrentZone = YES;
+    z.previousZonePK = -1;
     z.zoneKey = HOME_KEY;
     z.lvl = 0;
     z.maxMonsters = 0;
@@ -53,12 +53,12 @@
 
 -(Zone *)constructZoneChoice:(Hero *)hero AndMatchHeroLvl:(BOOL)matchLvl{
     Zone *z = (Zone *)[self.dataController constructEmptyEntity:ZONE_ENTITY_NAME];
-    NSString *zoneKey = [ZoneHelper getRandomZoneDefinitionKey:hero.lvl_H];
+    NSString *zoneKey = [ZoneHelper getRandomZoneDefinitionKey:hero.lvl];
     z.zoneKey = zoneKey;
-    z.suffixNumber_H = [self getVisitCountForZone:zoneKey];
-    z.maxMonsters_H = arc4random_uniform(10) + 5;
+    z.suffixNumber = [self getVisitCountForZone:zoneKey];
+    z.maxMonsters = arc4random_uniform(10) + 5;
     z.monstersKilled = 0;
-    z.lvl_H = matchLvl?hero.lvl_H:[self.util calculateLvl:hero.lvl_H OffsetBy:10];
+    z.lvl = matchLvl?hero.lvl:[self.util calculateLvl:hero.lvl OffsetBy:10];
     return z;
 }
 
