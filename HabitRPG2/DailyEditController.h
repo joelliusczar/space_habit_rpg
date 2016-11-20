@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DailyViewController.h"
 #import "EditingSaver.h"
 #import "CoreDataStackController.h"
-#import "DailyViewController.h"
 #import "constants.h"
+#import "Daily+CoreDataClass.h"
+#import "DailyHelper.h"
+#import "CommonUtilities.h"
+
 
 @interface DailyEditController : UIViewController <EditingSaver>
 -(id)initWithDataController:(CoreDataStackController *)dataController AndWithParentDailyController:(DailyViewController *)parentDailyController;

@@ -1,5 +1,5 @@
 //
-//  BaseViewController.h
+//  CentralViewController.h
 //  HabitRPG2
 //
 //  Created by Joel Pridgen on 8/26/16.
@@ -11,7 +11,7 @@
 #import "CoreDataStackController.h"
 #import "Daily+CoreDataClass.h"
 
-@interface BaseViewController : UIViewController
+@interface CentralViewController : UIViewController
 @property (strong,nonatomic) CoreDataStackController *dataController;
 @property (nonatomic,strong) EditNavigationController *editController;
 -(void)doActionForCompletedDaily:(Daily *)daily;

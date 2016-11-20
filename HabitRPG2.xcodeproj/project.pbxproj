@@ -75,8 +75,8 @@
 		68F3F9AE1D70E82E00840DD2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9AD1D70E82E00840DD2 /* main.m */; };
 		68F3F9B11D70E82E00840DD2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9B01D70E82E00840DD2 /* AppDelegate.m */; };
 		68F3F9B91D70E82E00840DD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68F3F9B81D70E82E00840DD2 /* Assets.xcassets */; };
-		68F3F9E41D70E8DB00840DD2 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9E21D70E8DB00840DD2 /* BaseViewController.m */; };
-		68F3F9E51D70E8DB00840DD2 /* BaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68F3F9E31D70E8DB00840DD2 /* BaseViewController.xib */; };
+		68F3F9E41D70E8DB00840DD2 /* CentralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9E21D70E8DB00840DD2 /* CentralViewController.m */; };
+		68F3F9E51D70E8DB00840DD2 /* CentralViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68F3F9E31D70E8DB00840DD2 /* CentralViewController.xib */; };
 		68F3F9E91D70EC9700840DD2 /* DailyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9E71D70EC9700840DD2 /* DailyViewController.m */; };
 		68F3F9EA1D70EC9700840DD2 /* DailyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68F3F9E81D70EC9700840DD2 /* DailyViewController.xib */; };
 		68F3F9EE1D70FC0D00840DD2 /* HabitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9EC1D70FC0D00840DD2 /* HabitController.m */; };
@@ -216,9 +216,9 @@
 		68F3F9C81D70E82E00840DD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68F3F9D11D70E82E00840DD2 /* HabitRPG2UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HabitRPG2UITests.m; sourceTree = "<group>"; };
 		68F3F9D31D70E82E00840DD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		68F3F9E11D70E8DB00840DD2 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
-		68F3F9E21D70E8DB00840DD2 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
-		68F3F9E31D70E8DB00840DD2 /* BaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseViewController.xib; sourceTree = "<group>"; };
+		68F3F9E11D70E8DB00840DD2 /* CentralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralViewController.h; sourceTree = "<group>"; };
+		68F3F9E21D70E8DB00840DD2 /* CentralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentralViewController.m; sourceTree = "<group>"; };
+		68F3F9E31D70E8DB00840DD2 /* CentralViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CentralViewController.xib; sourceTree = "<group>"; };
 		68F3F9E61D70EC9700840DD2 /* DailyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyViewController.h; sourceTree = "<group>"; };
 		68F3F9E71D70EC9700840DD2 /* DailyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyViewController.m; sourceTree = "<group>"; };
 		68F3F9E81D70EC9700840DD2 /* DailyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyViewController.xib; sourceTree = "<group>"; };
@@ -460,9 +460,9 @@
 				686ED3A81DADDF69004EDD36 /* Protocols */,
 				68E260631D7FC3F200425D46 /* CoreDataStackController.h */,
 				68E260641D7FC3F200425D46 /* CoreDataStackController.m */,
-				68F3F9E31D70E8DB00840DD2 /* BaseViewController.xib */,
-				68F3F9E11D70E8DB00840DD2 /* BaseViewController.h */,
-				68F3F9E21D70E8DB00840DD2 /* BaseViewController.m */,
+				68F3F9E31D70E8DB00840DD2 /* CentralViewController.xib */,
+				68F3F9E11D70E8DB00840DD2 /* CentralViewController.h */,
+				68F3F9E21D70E8DB00840DD2 /* CentralViewController.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -671,7 +671,7 @@
 				68F3F9B91D70E82E00840DD2 /* Assets.xcassets in Resources */,
 				687F01231D77CA6500C7B08B /* DailyTablesViewController.xib in Resources */,
 				686ED3C21DB47FA5004EDD36 /* black_checked_empty.png in Resources */,
-				68F3F9E51D70E8DB00840DD2 /* BaseViewController.xib in Resources */,
+				68F3F9E51D70E8DB00840DD2 /* CentralViewController.xib in Resources */,
 				68E260D01D851DA500425D46 /* EditNavigationController.xib in Resources */,
 				6886A48B1D8F6EA6005E12B3 /* switch_unchecked.png in Resources */,
 				686ED3931DA5DEB5004EDD36 /* title_Screen_HD_47.png in Resources */,
@@ -728,7 +728,7 @@
 				2712176E1DCE84310072ACC6 /* Settings+CoreDataClass.m in Sources */,
 				271217691DCE84310072ACC6 /* Daily+CoreDataClass.m in Sources */,
 				68BE45911D9DEA0B003F3400 /* IntroViewController.m in Sources */,
-				68F3F9E41D70E8DB00840DD2 /* BaseViewController.m in Sources */,
+				68F3F9E41D70E8DB00840DD2 /* CentralViewController.m in Sources */,
 				68A921F61DBC7FF2007C946C /* Good+CoreDataProperties.m in Sources */,
 				686ED3C71DB481C4004EDD36 /* ZoneHelper.m in Sources */,
 				68E260991D84923C00425D46 /* DailyHelper.m in Sources */,

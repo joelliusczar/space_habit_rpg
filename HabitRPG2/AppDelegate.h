@@ -7,16 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CentralViewController.h"
 
-
-
-@class BaseViewController;
+@class CentralViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) BaseViewController *baseController;
+@property (strong, nonatomic) CentralViewController *centralController;
 
 @end
 

@@ -10,13 +10,14 @@
 
 #import <UIKit/UIKit.h>
 #import "CoreDataStackController.h"
-#import "BaseViewController.h"
+#import "CentralViewController.h"
 #import "Daily+CoreDataClass.h"
-#import "constants.h"
+
+
 
 
 @interface DailyViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
--(id)initWithDataController:(CoreDataStackController *)dataController AndWithParent:(BaseViewController *)parent;
+-(id)initWithDataController:(CoreDataStackController *)dataController AndWithParent:(CentralViewController *)parent;
 -(void)setuptab:(CoreDataStackController *)dataController;
 -(void)showNewDaily:(Daily *)daily;
 -(void)refreshTableAtRow:(NSIndexPath *)row;

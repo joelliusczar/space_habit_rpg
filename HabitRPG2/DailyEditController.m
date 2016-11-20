@@ -7,12 +7,7 @@
 //
 
 #import "DailyEditController.h"
-#import "CoreDataStackController.h"
-#import "Daily+CoreDataClass.h"
-#import "constants.h"
-#import "DailyHelper.h"
-#import "CommonUtilities.h"
-#import "constants.h"
+
 
 static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 

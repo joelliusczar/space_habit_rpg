@@ -7,7 +7,12 @@
 //
 
 #import "ZoneMaker.h"
-
+#import "constants.h"
+#import "ZoneDescriptions.h"
+#import "ZoneHelper.h"
+#import "stdlib.h"
+#import "CommonUtilities.h"
+#import "DataInfo+CoreDataClass.h"
 
 
 @interface ZoneMaker()

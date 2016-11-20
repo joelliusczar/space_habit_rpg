@@ -7,15 +7,12 @@
 //
 
 #import "DailyViewController.h"
+#import "constants.h"
 #import "UIUtilities.h"
-#import "CoreDataStackController.h"
-#import "Daily+CoreDataClass.h"
 #import "EditNavigationController.h"
 #import "DailyEditController.h"
 #import "DailyHelper.h"
-#import "constants.h"
 #import "DailyCellController.h"
-#import "constants.h"
 #import "IntroViewController.h"
 
 
@@ -25,7 +22,7 @@
 @property (nonatomic,weak) EditNavigationController *editController;
 @property (nonatomic,weak) UIButton *addButton;
 @property (nonatomic,strong) DailyEditController *dailyEditor;
-@property (nonatomic,weak)  BaseViewController *parentController;
+@property (nonatomic,weak)  CentralViewController *parentController;
 @property (nonatomic,strong) UITableView *dailiesTable;
 @property (nonatomic,strong) NSMutableArray *incompleteItems;
 @property (nonatomic,strong) NSMutableArray *completeItems;
@@ -81,7 +78,7 @@ static NSString *const EntityName = @"Daily";
 }
 
 
--(id)initWithDataController:(CoreDataStackController *)dataController AndWithParent:(BaseViewController *)parent{
+-(id)initWithDataController:(CoreDataStackController *)dataController AndWithParent:(CentralViewController *)parent{
     if(self = [self initWithNibName:@"DailyViewController" bundle:nil]){
         self.parentController = parent;
         [self setuptab:dataController];

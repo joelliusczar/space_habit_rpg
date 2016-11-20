@@ -1,12 +1,12 @@
 //
-//  BaseViewController.m
+//  CentralViewController.m
 //  HabitRPG2
 //
 //  Created by Joel Pridgen on 8/26/16.
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "CentralViewController.h"
 #import "DailyViewController.h"
 #import "HabitController.h"
 #import "TodoViewController.h"
@@ -19,11 +19,12 @@
 #import "Hero+CoreDataClass.h"
 #import "Monster+CoreDataClass.h"
 #import "IntroViewController.h"
+#import "constants.h"
 
 @import CoreGraphics;
 
 
-@interface BaseViewController ()
+@interface CentralViewController ()
 
 @property (strong,nonatomic) UITabBarController *tabsController;
 @property (nonatomic,strong) Settings *userSettings;
@@ -32,7 +33,7 @@
 @property (nonatomic,strong) Monster *nowMonsters;
 @end
 
-@implementation BaseViewController
+@implementation CentralViewController
 
 @synthesize editController = _editController;
 -(EditNavigationController *)editController{
@@ -62,7 +63,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self determineIfFirstTimeAndSetupSettings];
+    [self setupTabs];
+    //[self determineIfFirstTimeAndSetupSettings];
 
     
 }
@@ -130,7 +132,7 @@
     }
     if([settingsFetchController.fetchedObjects count] == 0){
         self.userSettings = (Settings *)[self.dataController constructEmptyEntity:SETTINGS_ENTITY_NAME];
-        IntroViewController *introView = [[IntroViewController alloc] initWithBaseViewController:self];
+        IntroViewController *introView = [[IntroViewController alloc] initWithCentralViewController:self];
         
         [self.view addSubview:introView.view];
         
@@ -156,7 +158,7 @@
     }
     if([settingsFetchController.fetchedObjects count] == 0){
         self.userSettings = (Settings *)[self.dataController constructEmptyEntity:SETTINGS_ENTITY_NAME];
-        IntroViewController *introView = [[IntroViewController alloc] initWithBaseViewController:self];
+        IntroViewController *introView = [[IntroViewController alloc] initWithCentralViewController:self];
         
         
         [self showViewController:introView sender:self];

@@ -13,7 +13,7 @@
 #import "ZoneDescriptions.h"
 
 @interface IntroViewController ()
-@property (nonatomic,weak) BaseViewController *central;
+@property (nonatomic,weak) CentralViewController *central;
 @property (nonatomic,weak) UITextView *introMessage;
 @property (nonatomic,weak) UILabel *headline;
 @property (nonatomic,weak) UIButton *nextButton;
@@ -59,9 +59,9 @@
     return _skipSwitch;
 }
 
--(id)initWithBaseViewController:(BaseViewController *)base{
+-(id)initWithCentralViewController:(CentralViewController *)central{
     if(self = [self initWithNibName:@"IntroViewController" bundle:nil]){
-        self.central = base;
+        self.central = central;
         self.isThreadAllowed = YES;
         self.isStoryDone = NO;
     }
@@ -114,7 +114,7 @@
 
 -(void)pressedNext:(UIButton *)sender{
     BOOL show = self.skipSwitch.isOn;
-    //[self.base setToSkipStory:!show];
+    //[self.central setToSkipStory:!show];
     self.isThreadAllowed = NO;
     self.headline.text = [NSString stringWithFormat:@"Welcome to %@",HOME_NAME];
     if(show&&!self.isStoryDone){
