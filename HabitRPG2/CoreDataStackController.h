@@ -10,6 +10,7 @@
 @import CoreData;
 
 @interface CoreDataStackController : NSObject
+@property (nonatomic,strong) NSManagedObjectContext *context;
 @property (nonatomic,assign) BOOL disableSave;
 @property (nonatomic,assign) BOOL disabledSaveResult;
 -(NSManagedObject *)constructEmptyEntity:(NSString *) entityType;
@@ -20,4 +21,5 @@
 
 -(BOOL)save;
 -(BOOL)deleteModel:(NSManagedObject *)model;
+
 @end

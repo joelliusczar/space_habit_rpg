@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "ZoneDescriptions.h"
+#include "stdlib.h"
 
 @interface ZoneHelper : NSObject
 +(NSString*)getRandomZoneDefinitionKey:(NSUInteger)heroLvl;

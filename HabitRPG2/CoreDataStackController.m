@@ -13,7 +13,7 @@
 
 @interface CoreDataStackController()
 
-@property (nonatomic,strong) NSManagedObjectContext *context;
+
 
 -(void)initializeCoreData;
 

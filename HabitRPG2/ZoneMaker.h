@@ -8,8 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "CoreDataStackController.h"
+#import "constants.h"
+#import "ZoneDescriptions.h"
+#import "ZoneHelper.h"
+#import "stdlib.h"
+#import "CommonUtilities.h"
 #import "Zone+CoreDataClass.h"
 #import "Hero+CoreDataClass.h"
+#import "DataInfo+CoreDataClass.h"
 
 @interface ZoneMaker : NSObject
 -(id)initWithDataController:(CoreDataStackController*)dataController;

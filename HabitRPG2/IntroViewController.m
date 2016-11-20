@@ -13,7 +13,7 @@
 #import "ZoneDescriptions.h"
 
 @interface IntroViewController ()
-@property (nonatomic,weak) BaseViewController *base;
+@property (nonatomic,weak) BaseViewController *central;
 @property (nonatomic,weak) UITextView *introMessage;
 @property (nonatomic,weak) UILabel *headline;
 @property (nonatomic,weak) UIButton *nextButton;
@@ -61,7 +61,7 @@
 
 -(id)initWithBaseViewController:(BaseViewController *)base{
     if(self = [self initWithNibName:@"IntroViewController" bundle:nil]){
-        self.base = base;
+        self.central = base;
         self.isThreadAllowed = YES;
         self.isStoryDone = NO;
     }
@@ -131,7 +131,7 @@
         
     }
     else{
-        [self.base dismissIntro];
+        [self.central dismissIntro];
         
     }
     self.isStoryDone = YES;

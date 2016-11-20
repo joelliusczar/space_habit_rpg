@@ -23,6 +23,7 @@
 		27127E091DDAD2400074A8F5 /* CommonUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BA38851D93576600CB5A76 /* CommonUtilities.m */; };
 		27127E351DDD42B50074A8F5 /* DataInfo+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27127E321DDD42B50074A8F5 /* DataInfo+CoreDataClass.m */; };
 		27127E361DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27127E341DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m */; };
+		27127E381DE1ED980074A8F5 /* TestZoneMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 27127E371DE1ED980074A8F5 /* TestZoneMaker.m */; };
 		686686EB1D79032200BB2D09 /* DailyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 686686EA1D79032200BB2D09 /* DailyCell.xib */; };
 		686686EE1D79060300BB2D09 /* DailyCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686686ED1D79060300BB2D09 /* DailyCellController.m */; };
 		686ED38B1DA463F6004EDD36 /* PressStart2P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 686ED38A1DA46200004EDD36 /* PressStart2P.ttf */; };
@@ -124,6 +125,7 @@
 		27127E321DDD42B50074A8F5 /* DataInfo+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DataInfo+CoreDataClass.m"; sourceTree = SOURCE_ROOT; };
 		27127E331DDD42B50074A8F5 /* DataInfo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DataInfo+CoreDataProperties.h"; sourceTree = SOURCE_ROOT; };
 		27127E341DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DataInfo+CoreDataProperties.m"; sourceTree = SOURCE_ROOT; };
+		27127E371DE1ED980074A8F5 /* TestZoneMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestZoneMaker.m; sourceTree = "<group>"; };
 		686686EA1D79032200BB2D09 /* DailyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyCell.xib; sourceTree = "<group>"; };
 		686686EC1D79060300BB2D09 /* DailyCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyCellController.h; sourceTree = "<group>"; };
 		686686ED1D79060300BB2D09 /* DailyCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyCellController.m; sourceTree = "<group>"; };
@@ -389,13 +391,6 @@
 			name = Monster;
 			sourceTree = "<group>";
 		};
-		68A9220A1DBDB0FA007C946C /* Subclasses */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Subclasses;
-			sourceTree = "<group>";
-		};
 		68BA38881D93611300CB5A76 /* TestHelpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -542,10 +537,10 @@
 			isa = PBXGroup;
 			children = (
 				27127DEF1DD971650074A8F5 /* TestDailyHelper.m */,
-				68A9220A1DBDB0FA007C946C /* Subclasses */,
 				68F3F9C61D70E82E00840DD2 /* HabitRPG2Tests.m */,
 				68F3F9C81D70E82E00840DD2 /* Info.plist */,
 				68A922061DBD44C3007C946C /* Experiments.m */,
+				27127E371DE1ED980074A8F5 /* TestZoneMaker.m */,
 			);
 			path = HabitRPG2Tests;
 			sourceTree = "<group>";
@@ -700,6 +695,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27127E381DE1ED980074A8F5 /* TestZoneMaker.m in Sources */,
 				27127E091DDAD2400074A8F5 /* CommonUtilities.m in Sources */,
 				27127E081DDAD2280074A8F5 /* DailyHelper.m in Sources */,
 				27127E071DDAD2130074A8F5 /* CommonUtilitiesMock.m in Sources */,

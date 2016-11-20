@@ -7,12 +7,8 @@
 //
 
 #import "ZoneMaker.h"
-#include "CoreDataStackController.h"
-#import "constants.h"
-#import "ZoneDescriptions.h"
-#import "ZoneHelper.h"
-#import "stdlib.h"
-#import "CommonUtilities.h"
+
+
 
 @interface ZoneMaker()
 @property (nonatomic,weak) CoreDataStackController *dataController;
@@ -51,28 +47,53 @@
     return z;
 }
 
--(Zone *)constructZoneChoice:(Hero *)hero AndMatchHeroLvl:(BOOL)matchLvl{
-    Zone *z = (Zone *)[self.dataController constructEmptyEntity:ZONE_ENTITY_NAME];
-    NSString *zoneKey = [ZoneHelper getRandomZoneDefinitionKey:hero.lvl];
-    z.zoneKey = zoneKey;
-    z.suffixNumber = [self getVisitCountForZone:zoneKey];
-    z.maxMonsters = arc4random_uniform(10) + 5;
-    z.monstersKilled = 0;
-    z.lvl = matchLvl?hero.lvl:[self.util calculateLvl:hero.lvl OffsetBy:10];
-    return z;
-}
-
--(int32_t)getVisitCountForZone:(NSString *)zoneKey{
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"zoneKey = %@",zoneKey];
-    NSSortDescriptor *sortByAnything = [[NSSortDescriptor alloc] initWithKey:@"zoneKey" ascending:NO];
-    NSFetchedResultsController *fetchResults = [self.dataController getItemFetcher:ZONE_ENTITY_NAME predicate:predicate sortBy:@[sortByAnything]];
+-(int64_t)getNextUniqueId{
+    NSFetchRequest<DataInfo *> *request = [DataInfo fetchRequest];
+    request.fetchLimit = 1;
+    request.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"nextZoneId" ascending:NO]];
+    request.propertiesToFetch = @[@"nextZoneId"];
     NSError *err;
-    if(![fetchResults performFetch:&err]){
+    NSArray *results = [self.dataController.context executeFetchRequest:request error:&err];
+    if(!results){
         NSLog(@"Error fetching data: %@", err.localizedFailureReason);
         return -1;
     }
     
-    return (int32_t)fetchResults.fetchedObjects.count;
+    return (int64_t)((NSNumber *)[results objectAtIndex:0]).integerValue;
+}
+
+-(Zone *)constructZoneChoice:(nonnull Hero *)hero AndMatchHeroLvl:(BOOL)matchLvl{
+    Zone *z = (Zone *)[self.dataController constructEmptyEntity:ZONE_ENTITY_NAME];
+    NSString *zoneKey = [ZoneHelper getRandomZoneDefinitionKey:hero.lvl];
+    z.zoneKey = zoneKey;
+    z.suffixNumber = [self getVisitCountForZone:zoneKey];
+    z.maxMonsters = arc4random_uniform(MAX_MONSTER_RAND_UP_BOUND) + MAX_MONSTER_LOW_BOUND;
+    z.monstersKilled = 0;
+    z.lvl = matchLvl?hero.lvl:[self.util calculateLvl:hero.lvl OffsetBy:ZONE_LVL_RANGE];
+    return z;
+}
+
+-(int32_t)getVisitCountForZone:(NSString *)zoneKey{
+    NSFetchRequest<Zone *> *request = [Zone fetchRequest];
+    request.fetchLimit = 1;
+    NSSortDescriptor *sortBySuffixNumber= [[NSSortDescriptor alloc] initWithKey:@"suffixNumber" ascending:NO];
+    request.predicate = [NSPredicate predicateWithFormat:@"zoneKey = %@",zoneKey];
+    request.sortDescriptors = @[sortBySuffixNumber];
+    NSError *err;
+    
+    NSArray *results = [self.dataController.context executeFetchRequest:request error:&err];
+    if(!results&&err){
+        NSLog(@"Error fetching data: %@", err.localizedFailureReason);
+        return -1;
+    }
+    
+    if(!results){
+        return 0;
+    }
+    
+    Zone * z = (Zone *)[results objectAtIndex:0];
+    int32_t visitCount = z.suffixNumber;
+    return visitCount+1;
 }
 
 @end
