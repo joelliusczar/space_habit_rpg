@@ -37,7 +37,6 @@
     return self;
 }
 
-
 -(Zone *)constructHomeZone{
     Zone *z = (Zone *)[self.dataController constructEmptyEntity:ZONE_ENTITY_NAME];
     z.isCurrentZone = YES;
@@ -47,7 +46,7 @@
     z.maxMonsters = 0;
     z.monstersKilled = 0;
     z.suffixNumber = 0;
-    //z.uniqueId = [NSUuid];
+    z.uniqueId = 0;
     [self.dataController save];
     return z;
 }
@@ -63,7 +62,9 @@
         NSLog(@"Error fetching data: %@", err.localizedFailureReason);
         return -1;
     }
-    
+    if(results.count < 1){
+        return 0;
+    }
     return (int64_t)((NSNumber *)[results objectAtIndex:0]).integerValue;
 }
 

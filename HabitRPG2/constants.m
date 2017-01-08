@@ -9,10 +9,14 @@
 #import "constants.h"
 
 NSString* const DAILY_ENTITY_NAME = @"Daily";
+NSString* const HABIT_ENTITY_NAME = @"Habit";
+NSString* const TODO_ENTITY_NAME = @"Todo";
+NSString* const GOOD_ENTITY_NAME = @"Good";
 NSString* const HERO_ENTITY_NAME = @"Hero";
 NSString* const SETTINGS_ENTITY_NAME = @"Settings";
 NSString* const ZONE_ENTITY_NAME = @"Zone";
 NSString* const MONSTER_ENTITY_NAME = @"Monster";
+NSString* const DATA_INFO_ENTITY_NAME = @"DataInfo";
 u_int8_t const DAYS_IN_WEEK = 7;
 u_int8_t const MAX_MONSTER_RAND_UP_BOUND = 10;
 u_int8_t const MAX_MONSTER_LOW_BOUND = 5;

@@ -7,6 +7,7 @@
 //
 
 #import "CoreDataStackController.h"
+#import "constants.h"
 
 
 @import CoreData;
@@ -21,11 +22,11 @@
 
 @implementation CoreDataStackController
 
--(id)init{
+-(instancetype)init{
     return [self initWithDBFileName:@"Model.sqlite"];
 }
 
--(id)initWithDBFileName: (NSString *) dbFileName{
+-(instancetype)initWithDBFileName: (NSString *) dbFileName{
     self = [super init];
     if(!self){
         return nil;
@@ -72,19 +73,37 @@
                                     sortBy:(NSArray *) sortAttrs
 {
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:self.context];
-    
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    
     fetchRequest.entity = entity;
     [fetchRequest setFetchBatchSize:0];
-    
     fetchRequest.sortDescriptors = sortAttrs;
-    
     fetchRequest.predicate = filter;
-    
     return [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.context sectionNameKeyPath:nil cacheName:nil];
     
 }
+
+-(NSManagedObject *)getItem:(NSString *) entityName
+                        predicate: (NSPredicate *) filter
+                        sortBy:(NSArray *) sortAttrs
+{
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:self.context];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    fetchRequest.entity = entity;
+    fetchRequest.fetchLimit = 1;
+    fetchRequest.sortDescriptors = sortAttrs;
+    fetchRequest.predicate = filter;
+    NSError *err;
+    NSArray *results = [self.context executeFetchRequest:fetchRequest error:&err];
+    if(!results){
+        NSLog(@"Error fetching data: %@", err.localizedFailureReason);
+        return -1;
+    }
+    if(results.count < 1){
+        return nil;
+    }
+    return [results objectAtIndex:0];
+}
+
 
 
 -(BOOL)save{
@@ -115,15 +134,18 @@
 }
 
 -(void)deleteAllRecords{
-    [self deleteAllForEntity:@"Hero"];
-    [self deleteAllForEntity:@"DataInfo"];
-    [self deleteAllForEntity:@"Monster"];
-    [self deleteAllForEntity:@"Zone"];
-    [self deleteAllForEntity:@"Settings"];
-    [self deleteAllForEntity:@"Daily"];
-    [self deleteAllForEntity:@"Good"];
-    [self deleteAllForEntity:@"Todo"];
+    //this should only be called in testing situations.
+    [self deleteAllForEntity:HERO_ENTITY_NAME];
+    [self deleteAllForEntity:DATA_INFO_ENTITY_NAME];
+    [self deleteAllForEntity:MONSTER_ENTITY_NAME];
+    [self deleteAllForEntity:ZONE_ENTITY_NAME];
+    [self deleteAllForEntity:SETTINGS_ENTITY_NAME];
+    [self deleteAllForEntity:DAILY_ENTITY_NAME];
+    [self deleteAllForEntity:HABIT_ENTITY_NAME];
+    [self deleteAllForEntity:TODO_ENTITY_NAME];
+    [self deleteAllForEntity:GOOD_ENTITY_NAME];
 }
+
 
 
 

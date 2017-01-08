@@ -27,8 +27,8 @@
 @interface CentralViewController ()
 
 @property (strong,nonatomic) UITabBarController *tabsController;
-@property (nonatomic,strong) Settings *userSettings;
-@property (nonatomic,strong) Hero *userHero;
+@property (nonatomic,weak) Settings *userSettings;
+@property (nonatomic,weak) Hero *userHero;
 @property (nonatomic,strong) Zone *nowZone;
 @property (nonatomic,strong) Monster *nowMonsters;
 @end
@@ -121,72 +121,27 @@
 }
 
 -(void)determineIfFirstTimeAndSetupSettings{
-    NSSortDescriptor *sortByAnything = [[NSSortDescriptor alloc]
-                                        initWithKey:@"createDate" ascending:NO];
     
-    NSFetchedResultsController *settingsFetchController = [self.dataController getItemFetcher:SETTINGS_ENTITY_NAME predicate:nil sortBy:@[sortByAnything]];
-    NSError *err;
-    if(![settingsFetchController performFetch:&err]){
-        [NSException raise:@"Error fetching data" format:@"%@",err.localizedFailureReason];
-        
-    }
-    if([settingsFetchController.fetchedObjects count] == 0){
-        self.userSettings = (Settings *)[self.dataController constructEmptyEntity:SETTINGS_ENTITY_NAME];
+    if(self.dataController.userData.theDataInfo.isNew){
         IntroViewController *introView = [[IntroViewController alloc] initWithCentralViewController:self];
-        
         [self.view addSubview:introView.view];
-        
         [self addChildViewController:introView];
         [introView didMoveToParentViewController:self];
         
-    }
-    else{
-        self.userSettings = [settingsFetchController.fetchedObjects objectAtIndex:0];
     }
     
 }
 
 -(void)setupSettingsAndLoadIntroView{
-    NSSortDescriptor *sortByAnything = [[NSSortDescriptor alloc]
-                                        initWithKey:@"createDate" ascending:NO];
-    
-    NSFetchedResultsController *settingsFetchController = [self.dataController getItemFetcher:SETTINGS_ENTITY_NAME predicate:nil sortBy:@[sortByAnything]];
-    NSError *err;
-    if(![settingsFetchController performFetch:&err]){
-        NSLog(@"Error fetching data: %@", err.localizedFailureReason);
-        return;
-    }
-    if([settingsFetchController.fetchedObjects count] == 0){
-        self.userSettings = (Settings *)[self.dataController constructEmptyEntity:SETTINGS_ENTITY_NAME];
+    if(self.dataController.userData.theDataInfo.isNew){
         IntroViewController *introView = [[IntroViewController alloc] initWithCentralViewController:self];
-        
-        
         [self showViewController:introView sender:self];
-        
-        
-    }
-    else{
-        self.userSettings = [settingsFetchController.fetchedObjects objectAtIndex:0];
-    }
-}
-
-- (void)setupHero {
-    NSFetchedResultsController *heroFetchController = [self.dataController getItemFetcher:HERO_ENTITY_NAME predicate:nil sortBy:nil];
-    NSError *err;
-    if(![heroFetchController performFetch:&err]){
-        NSLog(@"Error fetching data: %@", err.localizedFailureReason);
-        return;
-    }
-    if([heroFetchController.fetchedObjects count] == 0){
-        //do new user action
-    }
-    else{
-        self.userHero = [heroFetchController.fetchedObjects objectAtIndex:0];
     }
 }
 
 -(void)setupData{
-    [self setupHero];
+    self.userSettings = self.dataController.userData.theSettings;
+    self.userHero = self.dataController.userData.theHero;
 }
 
 -(void)doActionForCompletedDaily:(Daily *)daily{

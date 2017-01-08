@@ -7,33 +7,29 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "CoreDataStackController.h"
+#import "ZoneMaker.h"
 
 @interface TestZoneMaker : XCTestCase
-
+@property (nonatomic,strong) CoreDataStackController *dataController;
+@property (nonatomic,strong) ZoneMaker *zm;
 @end
 
 @implementation TestZoneMaker
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    self.dataController = [[CoreDataStackController alloc] initWithDBFileName:@"testDB.sqlite"];
+    self.zm = [[ZoneMaker alloc] initWithDataController:self.dataController];
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    [self.dataController deleteAllRecords];
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-}
-
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+-(void)testGetNextUniqueId{
+    
 }
 
 @end

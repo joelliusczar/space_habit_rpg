@@ -15,10 +15,14 @@ typedef NS_ENUM(NSUInteger,dailyStatus) {
     ,COMPLETE = 1};
 
 extern NSString* const DAILY_ENTITY_NAME;
+extern NSString* const HABIT_ENTITY_NAME;
+extern NSString* const TODO_ENTITY_NAME;
+extern NSString* const GOOD_ENTITY_NAME;
 extern NSString* const HERO_ENTITY_NAME;
 extern NSString* const SETTINGS_ENTITY_NAME;
 extern NSString* const ZONE_ENTITY_NAME;
 extern NSString* const MONSTER_ENTITY_NAME;
+extern NSString* const DATA_INFO_ENTITY_NAME;
 extern u_int8_t const DAYS_IN_WEEK;
 extern u_int8_t const MAX_MONSTER_RAND_UP_BOUND;
 extern u_int8_t const MAX_MONSTER_LOW_BOUND;

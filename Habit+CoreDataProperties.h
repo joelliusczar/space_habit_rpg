@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic) int16_t difficulty;
 @property (nonatomic) int32_t freeViolations;
-@property (nullable, nonatomic, copy) NSString *frequencyCounts;
+@property (nullable, nonatomic, copy) NSString *frequencyCounts; //TODO: create a class for this and a get method
 @property (nullable, nonatomic, copy) NSString *habitName;
 @property (nonatomic) BOOL isActive;
 @property (nonatomic) BOOL neglectPunishReward;
