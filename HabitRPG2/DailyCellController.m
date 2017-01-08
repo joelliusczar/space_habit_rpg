@@ -71,7 +71,7 @@
 -(void)setupCell:(Daily *)model AndRow:(NSIndexPath *)rowInfo{
     self.model = model;
     self.nameLbl.text = self.model.dailyName;
-    self.streakLbl.text = @"Streak: 3";
+    self.streakLbl.text = @"Streak: 3"; //TODO: make this dynamic
     //todo fix labels
 }
 

@@ -39,13 +39,19 @@
 
 }
 
-
 -(void)testNilsAndNumbers{
     id a = nil;
     NSNumber *n = (NSNumber*)a;
     NSUInteger iu = n.unsignedIntegerValue;
     XCTAssertEqual(iu, 0);
     
+}
+
+-(void)testNilStringsAndTernaries{
+    NSString *s = nil;
+    NSString *r = nil;
+    r = s.length?s:@"Hello";
+    XCTAssertEqual(r, @"Hello");
 }
 
 - (void)testPerformanceExample {
