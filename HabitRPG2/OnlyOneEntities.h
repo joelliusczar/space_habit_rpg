@@ -11,7 +11,7 @@
 #import "Settings+CoreDataClass.h"
 #import "Hero+CoreDataClass.h"
 #import "CoreDataStackController.h"
-
+@class CoreDataStackController;
 
 @interface OnlyOneEntities : NSObject
 @property (nonatomic,strong) DataInfo *theDataInfo;

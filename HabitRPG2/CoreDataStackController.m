@@ -7,7 +7,7 @@
 //
 
 #import "CoreDataStackController.h"
-#import "constants.h"
+
 
 
 @import CoreData;
@@ -96,7 +96,7 @@
     NSArray *results = [self.context executeFetchRequest:fetchRequest error:&err];
     if(!results){
         NSLog(@"Error fetching data: %@", err.localizedFailureReason);
-        return -1;
+        return nil;
     }
     if(results.count < 1){
         return nil;

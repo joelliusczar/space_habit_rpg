@@ -13,10 +13,11 @@
 #import "stdlib.h"
 #import "CommonUtilities.h"
 #import "DataInfo+CoreDataClass.h"
+#import "ZoneDataController.h"
 
 
 @interface ZoneMaker()
-@property (nonatomic,weak) CoreDataStackController *dataController;
+@property (nonatomic,weak) ZoneDataController *dataController;
 @property (nonatomic,strong) CommonUtilities *util;
 @end
 
@@ -30,9 +31,9 @@
     return _util;
 }
 
--(id)initWithDataController:(CoreDataStackController*)dataController{
+-(instancetype)initWithDataController:(CoreDataStackController*)dataController{
     if(self = [self init]){
-        self.dataController = dataController;
+        self.dataController = (ZoneDataController *)dataController;
     }
     return self;
 }
@@ -46,26 +47,9 @@
     z.maxMonsters = 0;
     z.monstersKilled = 0;
     z.suffixNumber = 0;
-    z.uniqueId = 0;
+    z.uniqueId = [self.dataController getNextUniqueId];
     [self.dataController save];
     return z;
-}
-
--(int64_t)getNextUniqueId{
-    NSFetchRequest<DataInfo *> *request = [DataInfo fetchRequest];
-    request.fetchLimit = 1;
-    request.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"nextZoneId" ascending:NO]];
-    request.propertiesToFetch = @[@"nextZoneId"];
-    NSError *err;
-    NSArray *results = [self.dataController.context executeFetchRequest:request error:&err];
-    if(!results){
-        NSLog(@"Error fetching data: %@", err.localizedFailureReason);
-        return -1;
-    }
-    if(results.count < 1){
-        return 0;
-    }
-    return (int64_t)((NSNumber *)[results objectAtIndex:0]).integerValue;
 }
 
 -(Zone *)constructZoneChoice:(nonnull Hero *)hero AndMatchHeroLvl:(BOOL)matchLvl{
@@ -80,24 +64,7 @@
 }
 
 -(int32_t)getVisitCountForZone:(NSString *)zoneKey{
-    NSFetchRequest<Zone *> *request = [Zone fetchRequest];
-    request.fetchLimit = 1;
-    NSSortDescriptor *sortBySuffixNumber= [[NSSortDescriptor alloc] initWithKey:@"suffixNumber" ascending:NO];
-    request.predicate = [NSPredicate predicateWithFormat:@"zoneKey = %@",zoneKey];
-    request.sortDescriptors = @[sortBySuffixNumber];
-    NSError *err;
-    
-    NSArray *results = [self.dataController.context executeFetchRequest:request error:&err];
-    if(!results&&err){
-        NSLog(@"Error fetching data: %@", err.localizedFailureReason);
-        return -1;
-    }
-    
-    if(!results){
-        return 0;
-    }
-    
-    Zone * z = (Zone *)[results objectAtIndex:0];
+    Zone * z = [self.dataController getZoneByZoneKey:zoneKey];
     int32_t visitCount = z.suffixNumber;
     return visitCount+1;
 }

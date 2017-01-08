@@ -10,7 +10,9 @@
 #import "DataInfo+CoreDataClass.h"
 #import "Settings+CoreDataClass.h"
 #import "OnlyOneEntities.h"
+#import "constants.h"
 @import CoreData;
+@class OnlyOneEntities;
 
 @interface CoreDataStackController : NSObject
 @property (nonatomic,strong) NSManagedObjectContext *context;
