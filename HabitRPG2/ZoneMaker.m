@@ -39,7 +39,7 @@
 }
 
 -(Zone *)constructHomeZone{
-    Zone *z = (Zone *)[self.dataController constructEmptyEntity:ZONE_ENTITY_NAME];
+    Zone *z = (Zone *)[self.dataController constructEmptyZone];
     z.isCurrentZone = YES;
     z.previousZonePK = -1;
     z.zoneKey = HOME_KEY;
@@ -53,7 +53,7 @@
 }
 
 -(Zone *)constructZoneChoice:(nonnull Hero *)hero AndMatchHeroLvl:(BOOL)matchLvl{
-    Zone *z = (Zone *)[self.dataController constructEmptyEntity:ZONE_ENTITY_NAME];
+    Zone *z = (Zone *)[self.dataController constructEmptyZone];
     NSString *zoneKey = [ZoneHelper getRandomZoneDefinitionKey:hero.lvl];
     z.zoneKey = zoneKey;
     z.suffixNumber = [self getVisitCountForZone:zoneKey];
