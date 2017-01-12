@@ -2,8 +2,8 @@
 //  Zone+CoreDataProperties.m
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 11/15/16.
-//  Copyright © 2016 Joel Pridgen. All rights reserved.
+//  Created by Joel Pridgen on 1/12/17.
+//  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
 #import "Zone+CoreDataProperties.h"
@@ -14,13 +14,15 @@
 	return [[NSFetchRequest alloc] initWithEntityName:@"Zone"];
 }
 
-@dynamic isCurrentZone;
 @dynamic lvl;
 @dynamic maxMonsters;
 @dynamic monstersKilled;
-@dynamic previousZonePK;
 @dynamic suffixNumber;
 @dynamic uniqueId;
 @dynamic zoneKey;
+@dynamic hero_link;
+@dynamic nextZones;
+@dynamic previousZone;
+@dynamic previousZoneInverse;
 
 @end

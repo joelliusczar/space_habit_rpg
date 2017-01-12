@@ -2,8 +2,8 @@
 //  Hero+CoreDataProperties.m
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 11/15/16.
-//  Copyright © 2016 Joel Pridgen. All rights reserved.
+//  Created by Joel Pridgen on 1/8/17.
+//  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
 #import "Hero+CoreDataProperties.h"
@@ -21,5 +21,6 @@
 @dynamic nowHp;
 @dynamic nowXp;
 @dynamic shipName;
+@dynamic zone_link;
 
 @end
