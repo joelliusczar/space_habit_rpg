@@ -11,6 +11,7 @@
 #import "Settings+CoreDataClass.h"
 #import "StoryConstants.h"
 #import "ZoneDescriptions.h"
+#import "constants.h"
 
 @interface IntroViewController ()
 @property (nonatomic,weak) CentralViewController *central;
@@ -78,8 +79,8 @@
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         self.isThreadCurrentlyRunning = YES;
-        [self autoTypeoutTitle:headlineText characterDelay:.01];
-        [self autoTypeIntro:INTRO characterDelay:.01];
+        [self autoTypeoutTitle:headlineText characterDelay:CHARACTER_DELAY];
+        [self autoTypeIntro:INTRO characterDelay:CHARACTER_DELAY];
         self.isThreadCurrentlyRunning = NO;
     });
     
@@ -94,7 +95,8 @@
     
     for(int i = 0;i<title.length&&self.isThreadAllowed;i++){
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.headline setText:[NSString stringWithFormat:@"%@%C",self.headline.text,[title characterAtIndex:i]]];
+            [self.headline setText:[NSString stringWithFormat:@"%@%C",self.headline.text,
+                                    [title characterAtIndex:i]]];
         });
         
         [NSThread sleepForTimeInterval:delay];
@@ -105,7 +107,8 @@
 -(void)autoTypeIntro:(NSString *)text characterDelay:(NSTimeInterval)delay{
     for(int i = 0;i<text.length&&self.isThreadAllowed;i++){
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.introMessage setText:[NSString stringWithFormat:@"%@%C",self.introMessage.text,[text characterAtIndex:i]]];
+            [self.introMessage setText:[NSString stringWithFormat:@"%@%C",self.introMessage.text,
+                                        [text characterAtIndex:i]]];
         });
         [self.introMessage endEditing:YES];
         [NSThread sleepForTimeInterval:delay];
@@ -125,7 +128,7 @@
             });
             self.isThreadAllowed = YES;
             self.isThreadCurrentlyRunning = YES;
-            [self autoTypeIntro:HOME_DESCRIPTION characterDelay:.01];
+            [self autoTypeIntro:HOME_DESCRIPTION characterDelay:CHARACTER_DELAY];
             self.isThreadCurrentlyRunning = NO;
         });
         

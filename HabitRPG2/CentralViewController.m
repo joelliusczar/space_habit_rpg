@@ -59,12 +59,10 @@
     return _tabsController;
 }
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupTabs];
-    //[self determineIfFirstTimeAndSetupSettings];
+    [self determineIfFirstTimeAndSetupSettings];
 
     
 }
@@ -74,13 +72,12 @@
 }
 
 
-
-- (void)didReceiveMemoryWarning {
+-(void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setupTabs {
+-(void)setupTabs {
     DailyViewController* dc = [[DailyViewController alloc]initWithDataController:self.dataController AndWithParent:self];
     
     HabitController* hc = [[HabitController alloc]
@@ -121,9 +118,9 @@
 }
 
 -(void)determineIfFirstTimeAndSetupSettings{
-    
     if(self.dataController.userData.theDataInfo.isNew){
-        IntroViewController *introView = [[IntroViewController alloc] initWithCentralViewController:self];
+        IntroViewController *introView = [[IntroViewController alloc]
+                                          initWithCentralViewController:self];
         [self.view addSubview:introView.view];
         [self addChildViewController:introView];
         [introView didMoveToParentViewController:self];
@@ -134,7 +131,8 @@
 
 -(void)setupSettingsAndLoadIntroView{
     if(self.dataController.userData.theDataInfo.isNew){
-        IntroViewController *introView = [[IntroViewController alloc] initWithCentralViewController:self];
+        IntroViewController *introView = [[IntroViewController alloc]
+                                          initWithCentralViewController:self];
         [self showViewController:introView sender:self];
     }
 }

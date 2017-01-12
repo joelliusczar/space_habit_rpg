@@ -21,3 +21,4 @@ u_int8_t const DAYS_IN_WEEK = 7;
 u_int8_t const MAX_MONSTER_RAND_UP_BOUND = 10;
 u_int8_t const MAX_MONSTER_LOW_BOUND = 5;
 u_int8_t const ZONE_LVL_RANGE = 10;
+NSTimeInterval const CHARACTER_DELAY = .01;
