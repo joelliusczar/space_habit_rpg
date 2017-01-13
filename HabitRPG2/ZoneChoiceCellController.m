@@ -30,7 +30,7 @@
     return _lvlLbl;
 }
 
-+(instancetype)getZoneChoiceCell:(UITableView *)tableView WithOwner:(ZoneChoice *)owner
++(instancetype)getZoneChoiceCell:(UITableView *)tableView WithOwner:(ZoneChoiceViewController *)owner
     AndModel:(Zone *)model AndRow:(NSIndexPath *)rowInfo
 {
     ZoneChoiceCellController *cell = [ZoneChoiceCellController getCell:tableView WithNibName:@"ZoneChoiceCell" AndParent:owner];

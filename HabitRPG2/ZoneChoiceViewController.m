@@ -6,24 +6,24 @@
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
-#import "ZoneChoice.h"
+#import "ZoneChoiceViewController.h"
 
-@interface ZoneChoice ()
+@interface ZoneChoiceViewController ()
 -(instancetype)initWithBase:(UIViewController<ChoiceScreenBase> *)screenBase;
 @property (nonatomic,weak) UIViewController<ChoiceScreenBase> * screenBase;
 @end
 
-@implementation ZoneChoice
+@implementation ZoneChoiceViewController
 
 -(instancetype)initWithBase:(UIViewController<ChoiceScreenBase> *)screenBase{
-    if(self = [self initWithNibName:@"ZoneChoice" bundle:nil]){
+    if(self = [self initWithNibName:@"ZoneChoiceView" bundle:nil]){
         self.screenBase = screenBase;
     }
     return self;
 }
 
 +(instancetype)constructWithBase:(UIViewController<ChoiceScreenBase> *)screenBase{
-    return [[ZoneChoice alloc] initWithBase:screenBase];
+    return [[ZoneChoiceViewController alloc] initWithBase:screenBase];
 }
 
 - (void)viewDidLoad {

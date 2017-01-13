@@ -7,7 +7,7 @@
 //
 
 #import "TaskCell.h"
-#import "ZoneChoice.h"
+#import "ZoneChoiceViewController.h"
 #import "Zone+CoreDataClass.h"
 
 @interface ZoneChoiceCellController : TaskCell
@@ -15,7 +15,7 @@
 @property (nonatomic,strong) UILabel *nameLbl;
 @property (nonatomic,strong) UILabel *lvlLbl;
 
-+(instancetype)getZoneChoiceCell:(UITableView *)tableView WithOwner:(ZoneChoice *)owner
++(instancetype)getZoneChoiceCell:(UITableView *)tableView WithOwner:(ZoneChoiceViewController *)owner
                         AndModel:(Zone *)model AndRow:(NSIndexPath *)rowInfo;
 
 @end

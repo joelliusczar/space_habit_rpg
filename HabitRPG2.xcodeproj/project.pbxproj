@@ -53,8 +53,8 @@
 		686ED3B71DAF3DBD004EDD36 /* CustomSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ED3B61DAF3DBD004EDD36 /* CustomSwitch.m */; };
 		686ED3BA1DB4660F004EDD36 /* white_checked_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 686ED3B81DB4660F004EDD36 /* white_checked_empty.png */; };
 		686ED3BB1DB4660F004EDD36 /* white_checked_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 686ED3B91DB4660F004EDD36 /* white_checked_full.png */; };
-		686ED3BF1DB47954004EDD36 /* ZoneChoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ED3BD1DB47954004EDD36 /* ZoneChoice.m */; };
-		686ED3C01DB47954004EDD36 /* ZoneChoice.xib in Resources */ = {isa = PBXBuildFile; fileRef = 686ED3BE1DB47954004EDD36 /* ZoneChoice.xib */; };
+		686ED3BF1DB47954004EDD36 /* ZoneChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ED3BD1DB47954004EDD36 /* ZoneChoiceViewController.m */; };
+		686ED3C01DB47954004EDD36 /* ZoneChoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 686ED3BE1DB47954004EDD36 /* ZoneChoiceView.xib */; };
 		686ED3C21DB47FA5004EDD36 /* black_checked_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 686ED3C11DB47FA5004EDD36 /* black_checked_empty.png */; };
 		686ED3C41DB47FAF004EDD36 /* black_checked_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 686ED3C31DB47FAF004EDD36 /* black_checked_full.png */; };
 		686ED3C71DB481C4004EDD36 /* ZoneHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ED3C61DB481C4004EDD36 /* ZoneHelper.m */; };
@@ -189,9 +189,9 @@
 		686ED3B61DAF3DBD004EDD36 /* CustomSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSwitch.m; sourceTree = "<group>"; };
 		686ED3B81DB4660F004EDD36 /* white_checked_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_checked_empty.png; sourceTree = "<group>"; };
 		686ED3B91DB4660F004EDD36 /* white_checked_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_checked_full.png; sourceTree = "<group>"; };
-		686ED3BC1DB47954004EDD36 /* ZoneChoice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneChoice.h; sourceTree = "<group>"; };
-		686ED3BD1DB47954004EDD36 /* ZoneChoice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneChoice.m; sourceTree = "<group>"; };
-		686ED3BE1DB47954004EDD36 /* ZoneChoice.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZoneChoice.xib; sourceTree = "<group>"; };
+		686ED3BC1DB47954004EDD36 /* ZoneChoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneChoiceViewController.h; sourceTree = "<group>"; };
+		686ED3BD1DB47954004EDD36 /* ZoneChoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneChoiceViewController.m; sourceTree = "<group>"; };
+		686ED3BE1DB47954004EDD36 /* ZoneChoiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZoneChoiceView.xib; sourceTree = "<group>"; };
 		686ED3C11DB47FA5004EDD36 /* black_checked_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black_checked_empty.png; sourceTree = "<group>"; };
 		686ED3C31DB47FAF004EDD36 /* black_checked_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black_checked_full.png; sourceTree = "<group>"; };
 		686ED3C51DB481C4004EDD36 /* ZoneHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneHelper.h; sourceTree = "<group>"; };
@@ -437,9 +437,9 @@
 				68A921EB1DBC7FF2007C946C /* Zone+CoreDataProperties.m */,
 				686ED3AE1DAEF512004EDD36 /* ZoneDescriptions.h */,
 				686ED3AF1DAEF512004EDD36 /* ZoneDescriptions.m */,
-				686ED3BC1DB47954004EDD36 /* ZoneChoice.h */,
-				686ED3BD1DB47954004EDD36 /* ZoneChoice.m */,
-				686ED3BE1DB47954004EDD36 /* ZoneChoice.xib */,
+				686ED3BC1DB47954004EDD36 /* ZoneChoiceViewController.h */,
+				686ED3BD1DB47954004EDD36 /* ZoneChoiceViewController.m */,
+				686ED3BE1DB47954004EDD36 /* ZoneChoiceView.xib */,
 				686ED3C51DB481C4004EDD36 /* ZoneHelper.h */,
 				686ED3C61DB481C4004EDD36 /* ZoneHelper.m */,
 				68A921FC1DBC81EA007C946C /* ZoneMaker.h */,
@@ -818,7 +818,7 @@
 				686ED3C41DB47FAF004EDD36 /* black_checked_full.png in Resources */,
 				68F3F9EF1D70FC0D00840DD2 /* HabitController.xib in Resources */,
 				6889C65E1D88F82700598435 /* DailyEditView.xib in Resources */,
-				686ED3C01DB47954004EDD36 /* ZoneChoice.xib in Resources */,
+				686ED3C01DB47954004EDD36 /* ZoneChoiceView.xib in Resources */,
 				6886A48F1D8F6F9B005E12B3 /* edit_button.png in Resources */,
 				68F3F9B91D70E82E00840DD2 /* Assets.xcassets in Resources */,
 				687F01231D77CA6500C7B08B /* DailyTablesViewController.xib in Resources */,
@@ -916,7 +916,7 @@
 				6886A4891D8F3CB2005E12B3 /* TaskCell.m in Sources */,
 				68BA38911D9361D900CB5A76 /* TestHelperWrapper.m in Sources */,
 				68E260CF1D851DA500425D46 /* EditNavigationController.m in Sources */,
-				686ED3BF1DB47954004EDD36 /* ZoneChoice.m in Sources */,
+				686ED3BF1DB47954004EDD36 /* ZoneChoiceViewController.m in Sources */,
 				27C92C151E297F650025727E /* ZoneChoiceCellController.m in Sources */,
 				2712176C1DCE84310072ACC6 /* Hero+CoreDataClass.m in Sources */,
 				68F3F9F81D70FD3F00840DD2 /* GoodsViewController.m in Sources */,
