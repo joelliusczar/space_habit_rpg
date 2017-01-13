@@ -115,6 +115,12 @@
     }
 }
 
+-(void)setToSkipStory:(BOOL)skipStory{
+    if([self.central respondsToSelector:@selector(setToSkipStory:)]){
+        [self.central setToSkipStory:skipStory];
+    }
+}
+
 -(void)pressedNext:(UIButton *)sender{
     BOOL show = self.skipSwitch.isOn;
     //[self.central setToSkipStory:!show];
@@ -141,7 +147,9 @@
     
 }
 
-
+-(CoreDataStackController *)getTheDataController{
+    return [self.central getTheDataController];
+}
 
 
 

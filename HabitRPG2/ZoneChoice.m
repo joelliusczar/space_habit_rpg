@@ -9,10 +9,22 @@
 #import "ZoneChoice.h"
 
 @interface ZoneChoice ()
-
+-(instancetype)initWithBase:(UIViewController<ChoiceScreenBase> *)screenBase;
+@property (nonatomic,weak) UIViewController<ChoiceScreenBase> * screenBase;
 @end
 
 @implementation ZoneChoice
+
+-(instancetype)initWithBase:(UIViewController<ChoiceScreenBase> *)screenBase{
+    if(self = [self initWithNibName:@"ZoneChoice" bundle:nil]){
+        self.screenBase = screenBase;
+    }
+    return self;
+}
+
++(instancetype)constructWithBase:(UIViewController<ChoiceScreenBase> *)screenBase{
+    return [[ZoneChoice alloc] initWithBase:screenBase];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

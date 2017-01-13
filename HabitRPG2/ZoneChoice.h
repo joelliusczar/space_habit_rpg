@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChoiceScreenBase.h"
 
 @interface ZoneChoice : UIViewController
-
++(instancetype)constructWithBase:(UIViewController <ChoiceScreenBase> *)screenBase;
 @end

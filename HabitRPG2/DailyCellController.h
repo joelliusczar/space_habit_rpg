@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Daily+CoreDataClass.h"
 #import "TaskCell.h"
+#import "DailyViewController.h"
 
 @interface DailyCellController : TaskCell
 
@@ -17,8 +18,7 @@
 @property (nonatomic,weak)  UILabel *daysLeftLbl;
 @property (nonatomic,weak)  UIButton *checkbutton;
 
-
-+(id)getDailyCell:(UITableView *)tableView WithParent:(id)parent;
++(id)getDailyCell:(UITableView *)tableView WithParent:(DailyViewController *)parent;
 -(void)setupCell:(Daily *)model AndRow:(NSIndexPath *)rowInfo;
 
 @end

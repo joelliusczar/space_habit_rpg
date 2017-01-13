@@ -32,6 +32,8 @@
 		27C92C071E2757F80025727E /* ConvienceScripts.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C061E2757F80025727E /* ConvienceScripts.m */; };
 		27C92C0E1E2758220025727E /* CoreDataStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260641D7FC3F200425D46 /* CoreDataStackController.m */; };
 		27C92C0F1E287B960025727E /* OnlyOneEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */; };
+		27C92C121E28A1330025727E /* ZoneChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C111E28A1330025727E /* ZoneChoiceCell.xib */; };
+		27C92C151E297F650025727E /* ZoneChoiceCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C141E297F640025727E /* ZoneChoiceCellController.m */; };
 		27F4401C1E220097002BEDD4 /* OnlyOneEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */; };
 		27F440231E2223E4002BEDD4 /* ZoneDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F440221E2223E4002BEDD4 /* ZoneDataController.m */; };
 		27F440241E22C720002BEDD4 /* CoreDataStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260641D7FC3F200425D46 /* CoreDataStackController.m */; };
@@ -161,6 +163,10 @@
 		27C92C041E2757F80025727E /* ConvienceScripts.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConvienceScripts.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C92C061E2757F80025727E /* ConvienceScripts.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConvienceScripts.m; sourceTree = "<group>"; };
 		27C92C081E2757F80025727E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27C92C101E2894140025727E /* ChoiceScreenBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoiceScreenBase.h; sourceTree = "<group>"; };
+		27C92C111E28A1330025727E /* ZoneChoiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZoneChoiceCell.xib; sourceTree = "<group>"; };
+		27C92C131E297F640025727E /* ZoneChoiceCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneChoiceCellController.h; sourceTree = "<group>"; };
+		27C92C141E297F640025727E /* ZoneChoiceCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneChoiceCellController.m; sourceTree = "<group>"; };
 		27F4401A1E220097002BEDD4 /* OnlyOneEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyOneEntities.h; sourceTree = "<group>"; };
 		27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlyOneEntities.m; sourceTree = "<group>"; };
 		27F4401D1E221BB6002BEDD4 /* Model 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 9.xcdatamodel"; sourceTree = "<group>"; };
@@ -396,6 +402,7 @@
 			isa = PBXGroup;
 			children = (
 				68F736B01D8B810200AE10A8 /* EditingSaver.h */,
+				27C92C101E2894140025727E /* ChoiceScreenBase.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -439,6 +446,9 @@
 				68A921FD1DBC81EA007C946C /* ZoneMaker.m */,
 				27F440211E2223E4002BEDD4 /* ZoneDataController.h */,
 				27F440221E2223E4002BEDD4 /* ZoneDataController.m */,
+				27C92C111E28A1330025727E /* ZoneChoiceCell.xib */,
+				27C92C131E297F640025727E /* ZoneChoiceCellController.h */,
+				27C92C141E297F640025727E /* ZoneChoiceCellController.m */,
 			);
 			name = Zone;
 			sourceTree = "<group>";
@@ -813,6 +823,7 @@
 				68F3F9B91D70E82E00840DD2 /* Assets.xcassets in Resources */,
 				687F01231D77CA6500C7B08B /* DailyTablesViewController.xib in Resources */,
 				686ED3C21DB47FA5004EDD36 /* black_checked_empty.png in Resources */,
+				27C92C121E28A1330025727E /* ZoneChoiceCell.xib in Resources */,
 				68F3F9E51D70E8DB00840DD2 /* CentralViewController.xib in Resources */,
 				68E260D01D851DA500425D46 /* EditNavigationController.xib in Resources */,
 				6886A48B1D8F6EA6005E12B3 /* switch_unchecked.png in Resources */,
@@ -906,6 +917,7 @@
 				68BA38911D9361D900CB5A76 /* TestHelperWrapper.m in Sources */,
 				68E260CF1D851DA500425D46 /* EditNavigationController.m in Sources */,
 				686ED3BF1DB47954004EDD36 /* ZoneChoice.m in Sources */,
+				27C92C151E297F650025727E /* ZoneChoiceCellController.m in Sources */,
 				2712176C1DCE84310072ACC6 /* Hero+CoreDataClass.m in Sources */,
 				68F3F9F81D70FD3F00840DD2 /* GoodsViewController.m in Sources */,
 				2712176F1DCE84310072ACC6 /* Todo+CoreDataClass.m in Sources */,

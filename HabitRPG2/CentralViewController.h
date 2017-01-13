@@ -10,12 +10,13 @@
 #import "EditNavigationController.h"
 #import "CoreDataStackController.h"
 #import "Daily+CoreDataClass.h"
+#import "ChoiceScreenBase.h"
 
-@interface CentralViewController : UIViewController
-@property (strong,nonatomic) CoreDataStackController *dataController;
+@interface CentralViewController : UIViewController <ChoiceScreenBase>
 @property (nonatomic,strong) EditNavigationController *editController;
 -(void)doActionForCompletedDaily:(Daily *)daily;
 -(void)undoActionForCompletedDaily:(Daily *)daily;
 -(void)setToSkipStory:(BOOL)skipStory;
 -(void)dismissIntro;
+-(CoreDataStackController *)getTheDataController;
 @end

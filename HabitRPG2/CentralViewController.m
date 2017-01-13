@@ -25,7 +25,7 @@
 
 
 @interface CentralViewController ()
-
+@property (nonatomic,strong) CoreDataStackController *dataController;
 @property (strong,nonatomic) UITabBarController *tabsController;
 @property (nonatomic,weak) Settings *userSettings;
 @property (nonatomic,weak) Hero *userHero;
@@ -154,6 +154,11 @@
     [self.dataController save];
     
 }
+
 -(void)dismissIntro{}
+
+-(CoreDataStackController *)getTheDataController{
+    return self.dataController;
+}
 
 @end

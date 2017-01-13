@@ -7,7 +7,6 @@
 //
 
 #import "DailyCellController.h"
-#import "DailyViewController.h"
 #import "Daily+CoreDataClass.h"
 #import "constants.h"
 @import CoreGraphics;
@@ -51,8 +50,10 @@
     return _completeBtn;
 }
 
-+(id)getDailyCell:(UITableView *)tableView WithParent:(id)parent{
-    DailyCellController * cell = [DailyCellController getCell:tableView WithNibName:@"DailyCell" AndParent:parent];
++(id)getDailyCell:(UITableView *)tableView WithParent:(DailyViewController *)parent{
+    DailyCellController *cell = [DailyCellController getCell:tableView WithNibName:@"DailyCell" AndParent:parent];
+    //I'm setting this up here because I need methods that are specifically on
+    //the DailyViewController, and thus, I need the instance variable to be up here also.
     cell.parentDailyController = parent;
     return cell;
 }
@@ -93,12 +94,6 @@
         [self.parentDailyController undoCompletedDaily:self.model];
     }
 }
-
-
-
-
-
-
 
 
 @end
