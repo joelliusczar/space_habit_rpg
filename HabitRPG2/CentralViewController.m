@@ -61,7 +61,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupTabs];
     [self determineIfFirstTimeAndSetupSettings];
 
     

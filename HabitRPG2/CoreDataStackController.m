@@ -15,12 +15,41 @@
 @interface CoreDataStackController()
 
 @property (nonatomic,strong) NSString* dbFileName;
-
+@property (nonatomic,strong) NSPersistentStoreCoordinator *coordinator;
 -(void)initializeCoreData;
 
 @end
 
 @implementation CoreDataStackController
+
+@synthesize userData = _userData;
+-(OnlyOneEntities *)userData{
+    if(!_userData){
+        _userData = [[OnlyOneEntities alloc] initWithDataController:self];
+    }
+    return _userData;
+}
+
+@synthesize context = _context;
+-(NSManagedObjectContext *)context{
+    if(!_context){
+        _context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+        [_context setPersistentStoreCoordinator:self.coordinator];
+    }
+    return _context;
+}
+
+@synthesize coordinator = _coordinator;
+-(NSPersistentStoreCoordinator *)coordinator{
+    if(!_coordinator){
+        NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Model" withExtension:@"momd"];
+        NSManagedObjectModel *mom = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+        NSAssert(mom != nil, @"Error initializing Managaed Object Model");
+        
+        _coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
+    }
+    return _coordinator;
+}
 
 -(instancetype)init{
     return [self initWithDBFileName:@"Model.sqlite"];
@@ -38,28 +67,16 @@
 }
 
 -(void)initializeCoreData{
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Model" withExtension:@"momd"];
-    NSManagedObjectModel *mom = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-    NSAssert(mom != nil, @"Error initializing Managaed Object Model");
     
-    NSPersistentStoreCoordinator *psc = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
     
-    NSManagedObjectContext *moc = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-    [moc setPersistentStoreCoordinator:psc];
-    [self setContext:moc];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *documentsURL = [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
     NSURL *storeURL = [documentsURL URLByAppendingPathComponent:self.dbFileName];
     
-
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-        NSError *error = nil;
-        NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
-        NSPersistentStoreCoordinator *psc = [[self context] persistentStoreCoordinator];
-        NSPersistentStore *store = [psc addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error];
-        NSAssert(store != nil,@"Error initializing PSC: %@\n%@",[error localizedDescription],[error userInfo]);
-        
-    });
+    NSError *error = nil;
+    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+    NSPersistentStore *store = [self.coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error];
+    NSAssert(store != nil,@"Error initializing PSC: %@\n%@",[error localizedDescription],[error userInfo]);
 }
 
 -(NSManagedObject *)constructEmptyEntity:(NSString *) entityType{
