@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 //@property (nonatomic) int32_t previousZonePK_H;
 //@property (nonatomic) int32_t suffixNumber_H;
 //@property (nonatomic) int64_t uniqueId_H;
-
+@property (nonatomic,strong,readonly) NSString *fullName;
 @end
 
 NS_ASSUME_NONNULL_END

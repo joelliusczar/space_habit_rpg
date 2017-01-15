@@ -7,7 +7,7 @@
 //
 
 #import "CoreDataStackController.h"
-
+#import "BundleHelper.h"
 
 
 @import CoreData;
@@ -42,8 +42,10 @@
 @synthesize coordinator = _coordinator;
 -(NSPersistentStoreCoordinator *)coordinator{
     if(!_coordinator){
-        NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Model" withExtension:@"momd"];
-        NSManagedObjectModel *mom = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+        NSURL *modelURL = [[NSBundle bundleForClass:self.class] URLForResource:@"Model" withExtension:@"momd"];
+        NSManagedObjectModel *mom =
+        [[NSManagedObjectModel alloc]
+         initWithContentsOfURL:modelURL];
         NSAssert(mom != nil, @"Error initializing Managaed Object Model");
         
         _coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];

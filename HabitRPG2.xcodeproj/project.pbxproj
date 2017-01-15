@@ -34,6 +34,13 @@
 		27C92C0F1E287B960025727E /* OnlyOneEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */; };
 		27C92C121E28A1330025727E /* ZoneChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C111E28A1330025727E /* ZoneChoiceCell.xib */; };
 		27C92C151E297F650025727E /* ZoneChoiceCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C141E297F640025727E /* ZoneChoiceCellController.m */; };
+		27C92C1A1E29C9F10025727E /* ZoneInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C191E29C9F10025727E /* ZoneInfoDictionary.m */; };
+		27C92C1B1E29D33B0025727E /* ZoneInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C191E29C9F10025727E /* ZoneInfoDictionary.m */; };
+		27C92C1D1E29D3B80025727E /* ZoneInfoDictionaryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C1C1E29D3B80025727E /* ZoneInfoDictionaryTests.m */; };
+		27C92C1E1E29F8C90025727E /* ZoneInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C161E29AD770025727E /* ZoneInfo.plist */; };
+		27C92C1F1E29FE110025727E /* ZoneInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C161E29AD770025727E /* ZoneInfo.plist */; };
+		27C92C221E2ACE090025727E /* Model.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 68E260601D7BC3EA00425D46 /* Model.xcdatamodeld */; };
+		27C92C251E2AD6FC0025727E /* BundleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C241E2AD6FC0025727E /* BundleHelper.m */; };
 		27F4401C1E220097002BEDD4 /* OnlyOneEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */; };
 		27F440231E2223E4002BEDD4 /* ZoneDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F440221E2223E4002BEDD4 /* ZoneDataController.m */; };
 		27F440241E22C720002BEDD4 /* CoreDataStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260641D7FC3F200425D46 /* CoreDataStackController.m */; };
@@ -167,6 +174,12 @@
 		27C92C111E28A1330025727E /* ZoneChoiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZoneChoiceCell.xib; sourceTree = "<group>"; };
 		27C92C131E297F640025727E /* ZoneChoiceCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneChoiceCellController.h; sourceTree = "<group>"; };
 		27C92C141E297F640025727E /* ZoneChoiceCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneChoiceCellController.m; sourceTree = "<group>"; };
+		27C92C161E29AD770025727E /* ZoneInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ZoneInfo.plist; sourceTree = "<group>"; };
+		27C92C181E29C9F10025727E /* ZoneInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneInfoDictionary.h; sourceTree = "<group>"; };
+		27C92C191E29C9F10025727E /* ZoneInfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneInfoDictionary.m; sourceTree = "<group>"; };
+		27C92C1C1E29D3B80025727E /* ZoneInfoDictionaryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneInfoDictionaryTests.m; sourceTree = "<group>"; };
+		27C92C231E2AD6FC0025727E /* BundleHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundleHelper.h; sourceTree = "<group>"; };
+		27C92C241E2AD6FC0025727E /* BundleHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BundleHelper.m; sourceTree = "<group>"; };
 		27F4401A1E220097002BEDD4 /* OnlyOneEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyOneEntities.h; sourceTree = "<group>"; };
 		27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlyOneEntities.m; sourceTree = "<group>"; };
 		27F4401D1E221BB6002BEDD4 /* Model 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 9.xcdatamodel"; sourceTree = "<group>"; };
@@ -449,6 +462,9 @@
 				27C92C111E28A1330025727E /* ZoneChoiceCell.xib */,
 				27C92C131E297F640025727E /* ZoneChoiceCellController.h */,
 				27C92C141E297F640025727E /* ZoneChoiceCellController.m */,
+				27C92C161E29AD770025727E /* ZoneInfo.plist */,
+				27C92C181E29C9F10025727E /* ZoneInfoDictionary.h */,
+				27C92C191E29C9F10025727E /* ZoneInfoDictionary.m */,
 			);
 			name = Zone;
 			sourceTree = "<group>";
@@ -631,6 +647,7 @@
 				68F3F9C81D70E82E00840DD2 /* Info.plist */,
 				68A922061DBD44C3007C946C /* Experiments.m */,
 				27127E371DE1ED980074A8F5 /* TestZoneMaker.m */,
+				27C92C1C1E29D3B80025727E /* ZoneInfoDictionaryTests.m */,
 			);
 			path = HabitRPG2Tests;
 			sourceTree = "<group>";
@@ -655,6 +672,8 @@
 				68BA38851D93576600CB5A76 /* CommonUtilities.m */,
 				686ED3B51DAF3DBD004EDD36 /* CustomSwitch.h */,
 				686ED3B61DAF3DBD004EDD36 /* CustomSwitch.m */,
+				27C92C231E2AD6FC0025727E /* BundleHelper.h */,
+				27C92C241E2AD6FC0025727E /* BundleHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -739,6 +758,9 @@
 		68F3F9A11D70E82E00840DD2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Joel Pridgen";
 				TargetAttributes = {
@@ -788,6 +810,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27C92C221E2ACE090025727E /* Model.xcdatamodeld in Resources */,
+				27C92C1E1E29F8C90025727E /* ZoneInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -809,6 +833,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27C92C1F1E29FE110025727E /* ZoneInfo.plist in Resources */,
 				686ED38B1DA463F6004EDD36 /* PressStart2P.ttf in Resources */,
 				686ED3951DA5DEC0004EDD36 /* title_Screen_2x.png in Resources */,
 				686686EB1D79032200BB2D09 /* DailyCell.xib in Resources */,
@@ -848,6 +873,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27C92C1B1E29D33B0025727E /* ZoneInfoDictionary.m in Sources */,
 				27C92C0F1E287B960025727E /* OnlyOneEntities.m in Sources */,
 				27F440281E22C7CE002BEDD4 /* ZoneDescriptions.m in Sources */,
 				27F440261E22C78C002BEDD4 /* ZoneHelper.m in Sources */,
@@ -860,6 +886,7 @@
 				27127E061DDAD1E70074A8F5 /* constants.m in Sources */,
 				27127E051DDACA6A0074A8F5 /* Experiments.m in Sources */,
 				27127E041DDACA5B0074A8F5 /* TestDailyHelper.m in Sources */,
+				27C92C1D1E29D3B80025727E /* ZoneInfoDictionaryTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -919,9 +946,11 @@
 				686ED3BF1DB47954004EDD36 /* ZoneChoiceViewController.m in Sources */,
 				27C92C151E297F650025727E /* ZoneChoiceCellController.m in Sources */,
 				2712176C1DCE84310072ACC6 /* Hero+CoreDataClass.m in Sources */,
+				27C92C1A1E29C9F10025727E /* ZoneInfoDictionary.m in Sources */,
 				68F3F9F81D70FD3F00840DD2 /* GoodsViewController.m in Sources */,
 				2712176F1DCE84310072ACC6 /* Todo+CoreDataClass.m in Sources */,
 				68A921FB1DBC7FF2007C946C /* Settings+CoreDataProperties.m in Sources */,
+				27C92C251E2AD6FC0025727E /* BundleHelper.m in Sources */,
 				2712176D1DCE84310072ACC6 /* Monster+CoreDataClass.m in Sources */,
 				2712176A1DCE84310072ACC6 /* Good+CoreDataClass.m in Sources */,
 				68F3F9E91D70EC9700840DD2 /* DailyViewController.m in Sources */,

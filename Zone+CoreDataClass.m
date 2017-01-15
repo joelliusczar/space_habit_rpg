@@ -7,8 +7,28 @@
 //
 
 #import "Zone+CoreDataClass.h"
+#import "ZoneHelper.h"
+#import "ZoneInfoDictionary.h"
+
+@interface Zone()
+@property (nonatomic,strong) ZoneInfoDictionary *zoneInfoDict;
+@end
 
 @implementation Zone
+
+@synthesize zoneInfoDict = _zoneInfoDict;
+-(ZoneInfoDictionary *)zoneInfoDict{
+    if(!_zoneInfoDict){
+        _zoneInfoDict = [ZoneInfoDictionary construct];
+    }
+    return _zoneInfoDict;
+}
+
+-(NSString *)fullName{
+    NSString* name = [self.zoneInfoDict getZoneName:self.zoneKey];
+    NSString* suffix = [ZoneHelper getSymbolSuffix:self.suffixNumber];
+    return [NSString stringWithFormat:@"%@ %@",name,suffix];
+}
 
 //-(BOOL)isCurrentZone_H{
 //    return self.isCurrentZone.boolValue;

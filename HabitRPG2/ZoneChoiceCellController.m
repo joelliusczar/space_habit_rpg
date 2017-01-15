@@ -9,7 +9,10 @@
 #import "ZoneChoiceCellController.h"
 
 @interface ZoneChoiceCellController()
-//@property (nonatomic,weak)
+@property (nonatomic,weak) ZoneChoiceViewController *ownerZoneController;
+@property (nonatomic,weak) Zone *model;
+-(void)setupCell:(Zone *)model AndOnwer:(ZoneChoiceViewController *)owner
+          AndRow:(NSIndexPath *)rowInfo;
 @end
 
 @implementation ZoneChoiceCellController
@@ -34,8 +37,17 @@
     AndModel:(Zone *)model AndRow:(NSIndexPath *)rowInfo
 {
     ZoneChoiceCellController *cell = [ZoneChoiceCellController getCell:tableView WithNibName:@"ZoneChoiceCell" AndParent:owner];
-    
+    cell.ownerZoneController = owner;
     return cell;
+}
+
+-(void)setupCell:(Zone *)model AndOnwer:(ZoneChoiceViewController *)owner
+          AndRow:(NSIndexPath *)rowInfo
+{
+    self.ownerZoneController = owner;
+    self.model = model;
+    
+    
 }
 
 /*

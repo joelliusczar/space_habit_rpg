@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>LVL_0_ZONES</key>
+	<dict>
+		<key>HOME</key>
+		<dict>
+			<key>Description</key>
+			<string>Everyone&apos;s gotta start somewhere. For you it&apos;s the earth first space port. You may not be so good at the whole space frontiering yet but just remember, sucking at something is the first step to being sorta good at something.</string>
+			<key>Name</key>
+			<string>Home Port</string>
+		</dict>
+	</dict>
+	<key>LVL_30_ZONES</key>
+	<dict>
+		<key>WORLD_END</key>
+		<dict>
+			<key>Description</key>
+			<string></string>
+			<key>Name</key>
+			<string>End of the World</string>
+		</dict>
+		<key>HELL</key>
+		<dict>
+			<key>Description</key>
+			<string></string>
+			<key>Name</key>
+			<string>Hell Dimension</string>
+		</dict>
+		<key>BEGINNING</key>
+		<dict>
+			<key>Description</key>
+			<string></string>
+			<key>Name</key>
+			<string>Beginning of Time</string>
+		</dict>
+		<key>INFINITE</key>
+		<dict>
+			<key>Description</key>
+			<string></string>
+			<key>Name</key>
+			<string>Infinite Improbability Zone</string>
+		</dict>
+	</dict>
+	<key>LVL_25_ZONES</key>
+	<dict>
+		<key>WEB</key>
+		<dict>
+			<key>Description</key>
+			<string></string>
+			<key>Name</key>
+			<string>Digital Disruption Web</string>
+		</dict>
+		<key>NO_MOON</key>
+		<dict>
+			<key>Description</key>
+			<string></string>
+			<key>Name</key>
+			<string>No Moon&apos; Orbit</string>
+		</dict>
+		<key>WARP</key>
+		<dict>
+			<key>Description</key>
+			<string></string>
+			<key>Name</key>
+			<string>Warp Dimension</string>
+		</dict>
+		<key>EVENT_HORIZON</key>
+		<dict>
+			<key>Description</key>
+			<string></string>
+			<key>Name</key>
+			<string>Event Horizon</string>
+		</dict>
+	</dict>
+	<key>LVL_20_ZONES</key>
+	<dict>
+		<key>MALESTERIUM</key>
+		<dict>
+			<key>Description</key>
+			<string></string>
+			<key>Name</key>
+			<string>Malesterium Fortress World</string>
+		</dict>
+		<key>SKY</key>
+		<dict>
+			<key>Description</key>
+			<string></string>
+			<key>Name</key>
+			<string>Sky Planet Orbit</string>
+		</dict>
+		<key>PSYCHEDELIC</key>
+		<dict>
+			<key>Description</key>
+			<string></string>
+			<key>Name</key>
+			<string>Psychedelic Space</string>
+		</dict>
+		<key>OCEAN</key>
+		<dict>
+			<key>Description</key>
+			<string></string>
+			<key>Name</key>
+			<string>Space Ocean</string>
+		</dict>
+	</dict>
+	<key>LVL_15_ZONES</key>
+	<dict>
+		<key>METROPOLIS</key>
+		<dict>
+			<key>Description</key>
+			<string></string>
+			<key>Name</key>
+			<string>Space Metropolis</string>
+		</dict>
+		<key>TEMPLE</key>
+		<dict>
+			<key>Description</key>
+			<string></string>
+			<key>Name</key>
+			<string>Space Temple</string>
+		</dict>
+		<key>INFESTATION</key>
+		<dict>
+			<key>Description</key>
+			<string></string>
+			<key>Name</key>
+			<string>Infestation Space</string>
+		</dict>
+		<key>GREY</key>
+		<dict>
+			<key>Description</key>
+			<string></string>
+			<key>Name</key>
+			<string>Grey World Orbit</string>
+		</dict>
+	</dict>
+	<key>LVL_10_ZONES</key>
+	<dict>
+		<key>GARBAGE_BALL</key>
+		<dict>
+			<key>Description</key>
+			<string>The giant space garbage ball didn&apos;t start off as a giant garbage ball. It was once a tiny space garbage ball but through the bad habits of man, it kept growing and growing. Let this be a lesson to you: bad habits turn tiny space garbage balls into giant space garbage balls.</string>
+			<key>Name</key>
+			<string>Giant Space Garbage Ball Orbit</string>
+		</dict>
+		<key>CAVE</key>
+		<dict>
+			<key>Description</key>
+			<string></string>
+			<key>Name</key>
+			<string>Space Cave</string>
+		</dict>
+		<key>DEFENSE</key>
+		<dict>
+			<key>Description</key>
+			<string>Defense Territory</string>
+			<key>Name</key>
+			<string></string>
+		</dict>
+		<key>RESORT</key>
+		<dict>
+			<key>Description</key>
+			<string>Look at all those spacedamned kids not working, not being productive. That&apos;s what you&apos;re probably thinking. But you&apos;re wrong. Sometimes we need to take a break from our labors so that we don&apos;t burn ourselves out. Use some of those goods you&apos;ve been saving up for.</string>
+			<key>Name</key>
+			<string>Resort Planet Orbit</string>
+		</dict>
+	</dict>
+	<key>LVL_5_ZONES</key>
+	<dict>
+		<key>ASTEROID_FIELD</key>
+		<dict>
+			<key>Description</key>
+			<string>Here in safe space, they enforce even the small rules like spacejaywalking. Afterall, if you can&apos;t enforce the simple laws, how do you expect to enforce the more complicated laws. In the same way, if you aren&apos;t doing your small tasks, how do you expect to ever accomplish the more complicated tasks in your life.Supposedly, odds are 725 to 1 that the asteroid belt is going to spank you. Switch those odds around and you have the probability that your spouse is gonna spank you if you don&apos;t loose that extra fifteen pounds.</string>
+			<key>Name</key>
+			<string>Asteroid Field</string>
+		</dict>
+		<key>SOLAR</key>
+		<dict>
+			<key>Description</key>
+			<string></string>
+			<key>Name</key>
+			<string>Solar Orbit</string>
+		</dict>
+		<key>UNCHARTED</key>
+		<dict>
+			<key>Description</key>
+			<string></string>
+			<key>Name</key>
+			<string>Uncharted Planet Orbit</string>
+		</dict>
+		<key>BACKWATER</key>
+		<dict>
+			<key>Description</key>
+			<string></string>
+			<key>Name</key>
+			<string>Backwater Planet Orbit</string>
+		</dict>
+	</dict>
+	<key>LVL_1_ZONES</key>
+	<dict>
+		<key>GAS</key>
+		<dict>
+			<key>Description</key>
+			<string>This is a gas planet, that is, it&apos;s made of floating gas stuff. It&apos;s not liquid; otherwise, it would be a liquid planet. It&apos;s elements don&apos;t change state between liquid and gas like that whore of an element, water. It&apos;s all gas, 100% of the time. No compromising with liquids or solids! Compromise is how you fail at your good habits.</string>
+			<key>Name</key>
+			<string>Gas Planet Orbit</string>
+		</dict>
+		<key>EMPTY_SPACE</key>
+		<dict>
+			<key>Description</key>
+			<string>Out here there is nothing but the vacuum of space -- it kinda sucks. Speaking of vacuums, have you cleaned your room recently?</string>
+			<key>Name</key>
+			<string>Empty Space</string>
+		</dict>
+		<key>NEBULA</key>
+		<dict>
+			<key>Description</key>
+			<string>These are like giant space clouds. Scientists speculate that they were created by the angels and their nicotine addiction. This explains both the existence of nebulas and why we don&apos;t see angels anymore. They were killed off by lung cancer which is what&apos;s gonna happen to you if you don&apos;t put out that spacedamned cigarette!</string>
+			<key>Name</key>
+			<string>Nebula</string>
+		</dict>
+		<key>SAFE_SPACE</key>
+		<dict>
+			<key>Description</key>
+			<string>Here in safe space, they enforce even the small rules like spacejaywalking. Afterall, if you can&apos;t enforce the simple laws, how do you expect to enforce the more complicated laws. In the same way, if you aren&apos;t doing your small tasks, how do you expect to ever accomplish the more complicated tasks in your life.</string>
+			<key>Name</key>
+			<string>Safe Space</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

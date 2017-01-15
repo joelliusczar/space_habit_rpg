@@ -1,4 +1,4 @@
-//
+ //
 //  Experiments.m
 //  HabitRPG2
 //
@@ -54,11 +54,11 @@
     XCTAssertEqual(r, @"Hello");
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+- (void)testBundles{
+//    NSArray<NSBundle*> *bundles = [NSBundle allBundles];
+//    NSBundle *main = [NSBundle mainBundle];
+//    NSBundle *idk = [NSBundle bundleForClass:self.class];
+//    NSLog(@"test");
 }
 
 @end
