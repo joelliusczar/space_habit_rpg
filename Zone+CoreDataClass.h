@@ -12,14 +12,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Zone : NSManagedObject
-//@property (nonatomic) BOOL isCurrentZone_H;
-//@property (nonatomic) int32_t lvl_H;
-//@property (nonatomic) int32_t maxMonsters_H;
-//@property (nonatomic) int32_t monstersKilled_H;
-//@property (nonatomic) int32_t previousZonePK_H;
-//@property (nonatomic) int32_t suffixNumber_H;
-//@property (nonatomic) int64_t uniqueId_H;
+
 @property (nonatomic,strong,readonly) NSString *fullName;
+
 @end
 
 NS_ASSUME_NONNULL_END
