@@ -46,7 +46,8 @@
 {
     self.ownerZoneController = owner;
     self.model = model;
-    
+    self.nameLbl.text = self.model.fullName;
+    self.lvlLbl.text = [NSString stringWithFormat:@"Lvl: %d",self.model.lvl];
     
 }
 

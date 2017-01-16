@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "ChoiceScreenBase.h"
 
-@interface ZoneChoiceViewController : UIViewController
+@interface ZoneChoiceViewController : UIViewController <UITableViewDataSource>
 +(instancetype)constructWithBase:(UIViewController <ChoiceScreenBase> *)screenBase;
 @end
