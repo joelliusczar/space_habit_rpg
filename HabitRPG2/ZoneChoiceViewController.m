@@ -34,7 +34,7 @@
 @synthesize nextBtn = _nextBtn;
 -(UIButton *)nextBtn{
     if(!_nextBtn){
-        _snextBtn = [self.view viewWithTag:2];
+        _nextBtn = [self.view viewWithTag:2];
     }
     return _nextBtn;
 }

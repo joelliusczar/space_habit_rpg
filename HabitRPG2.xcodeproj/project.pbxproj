@@ -24,11 +24,6 @@
 		27127E351DDD42B50074A8F5 /* DataInfo+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27127E321DDD42B50074A8F5 /* DataInfo+CoreDataClass.m */; };
 		27127E361DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27127E341DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m */; };
 		27127E381DE1ED980074A8F5 /* TestZoneMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 27127E371DE1ED980074A8F5 /* TestZoneMaker.m */; };
-		27C92BAE1E234DE40025727E /* DataLayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92BAD1E234DE40025727E /* DataLayerTests.m */; };
-		27C92BB71E234E2D0025727E /* Zone+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 271217681DCE84310072ACC6 /* Zone+CoreDataClass.m */; };
-		27C92BB81E234E430025727E /* Zone+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921EB1DBC7FF2007C946C /* Zone+CoreDataProperties.m */; };
-		27C92BB91E234E5B0025727E /* CoreDataStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260641D7FC3F200425D46 /* CoreDataStackController.m */; };
-		27C92BBA1E234E650025727E /* ZoneDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F440221E2223E4002BEDD4 /* ZoneDataController.m */; };
 		27C92C071E2757F80025727E /* ConvienceScripts.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C061E2757F80025727E /* ConvienceScripts.m */; };
 		27C92C0E1E2758220025727E /* CoreDataStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260641D7FC3F200425D46 /* CoreDataStackController.m */; };
 		27C92C0F1E287B960025727E /* OnlyOneEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */; };
@@ -41,6 +36,7 @@
 		27C92C1F1E29FE110025727E /* ZoneInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C161E29AD770025727E /* ZoneInfo.plist */; };
 		27C92C221E2ACE090025727E /* Model.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 68E260601D7BC3EA00425D46 /* Model.xcdatamodeld */; };
 		27C92C251E2AD6FC0025727E /* BundleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C241E2AD6FC0025727E /* BundleHelper.m */; };
+		27C92C301E2D8A650025727E /* Model.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 68E260601D7BC3EA00425D46 /* Model.xcdatamodeld */; };
 		27F4401C1E220097002BEDD4 /* OnlyOneEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */; };
 		27F440231E2223E4002BEDD4 /* ZoneDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F440221E2223E4002BEDD4 /* ZoneDataController.m */; };
 		27F440241E22C720002BEDD4 /* CoreDataStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260641D7FC3F200425D46 /* CoreDataStackController.m */; };
@@ -121,13 +117,6 @@
 			remoteGlobalIDString = 68F3F9A81D70E82E00840DD2;
 			remoteInfo = HabitRPG2;
 		};
-		27C92BB01E234DE40025727E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 68F3F9A11D70E82E00840DD2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 68F3F9A81D70E82E00840DD2;
-			remoteInfo = HabitRPG2;
-		};
 		27C92C091E2757F90025727E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 68F3F9A11D70E82E00840DD2 /* Project object */;
@@ -164,9 +153,6 @@
 		27127E341DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DataInfo+CoreDataProperties.m"; sourceTree = SOURCE_ROOT; };
 		27127E371DE1ED980074A8F5 /* TestZoneMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestZoneMaker.m; sourceTree = "<group>"; };
 		27C92B991E233F730025727E /* Model 12.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 12.xcdatamodel"; sourceTree = "<group>"; };
-		27C92BAB1E234DE40025727E /* DataLayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataLayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		27C92BAD1E234DE40025727E /* DataLayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataLayerTests.m; sourceTree = "<group>"; };
-		27C92BAF1E234DE40025727E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27C92C041E2757F80025727E /* ConvienceScripts.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConvienceScripts.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C92C061E2757F80025727E /* ConvienceScripts.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConvienceScripts.m; sourceTree = "<group>"; };
 		27C92C081E2757F80025727E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -180,6 +166,7 @@
 		27C92C1C1E29D3B80025727E /* ZoneInfoDictionaryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneInfoDictionaryTests.m; sourceTree = "<group>"; };
 		27C92C231E2AD6FC0025727E /* BundleHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundleHelper.h; sourceTree = "<group>"; };
 		27C92C241E2AD6FC0025727E /* BundleHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BundleHelper.m; sourceTree = "<group>"; };
+		27C92C291E2D87800025727E /* Model 13.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 13.xcdatamodel"; sourceTree = "<group>"; };
 		27F4401A1E220097002BEDD4 /* OnlyOneEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyOneEntities.h; sourceTree = "<group>"; };
 		27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlyOneEntities.m; sourceTree = "<group>"; };
 		27F4401D1E221BB6002BEDD4 /* Model 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 9.xcdatamodel"; sourceTree = "<group>"; };
@@ -306,13 +293,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		27C92BA81E234DE40025727E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		27C92C011E2757F80025727E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -339,15 +319,6 @@
 				27127E341DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m */,
 			);
 			name = DataInfo;
-			sourceTree = "<group>";
-		};
-		27C92BAC1E234DE40025727E /* DataLayerTests */ = {
-			isa = PBXGroup;
-			children = (
-				27C92BAD1E234DE40025727E /* DataLayerTests.m */,
-				27C92BAF1E234DE40025727E /* Info.plist */,
-			);
-			path = DataLayerTests;
 			sourceTree = "<group>";
 		};
 		27C92C051E2757F80025727E /* ConvienceScripts */ = {
@@ -576,7 +547,6 @@
 				68BA38881D93611300CB5A76 /* TestHelpers */,
 				68F3F9C51D70E82E00840DD2 /* HabitRPG2Tests */,
 				68F3F9D01D70E82E00840DD2 /* HabitRPG2UITests */,
-				27C92BAC1E234DE40025727E /* DataLayerTests */,
 				27C92C051E2757F80025727E /* ConvienceScripts */,
 				68F3F9AA1D70E82E00840DD2 /* Products */,
 			);
@@ -587,7 +557,6 @@
 			children = (
 				68F3F9A91D70E82E00840DD2 /* HabitRPG2.app */,
 				27127DFA1DDAC6F70074A8F5 /* HabitRPG2Tests.xctest */,
-				27C92BAB1E234DE40025727E /* DataLayerTests.xctest */,
 				27C92C041E2757F80025727E /* ConvienceScripts.xctest */,
 			);
 			name = Products;
@@ -699,24 +668,6 @@
 			productReference = 27127DFA1DDAC6F70074A8F5 /* HabitRPG2Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		27C92BAA1E234DE40025727E /* DataLayerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 27C92BB21E234DE40025727E /* Build configuration list for PBXNativeTarget "DataLayerTests" */;
-			buildPhases = (
-				27C92BA71E234DE40025727E /* Sources */,
-				27C92BA81E234DE40025727E /* Frameworks */,
-				27C92BA91E234DE40025727E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				27C92BB11E234DE40025727E /* PBXTargetDependency */,
-			);
-			name = DataLayerTests;
-			productName = DataLayerTests;
-			productReference = 27C92BAB1E234DE40025727E /* DataLayerTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		27C92C031E2757F80025727E /* ConvienceScripts */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27C92C0B1E2757F90025727E /* Build configuration list for PBXNativeTarget "ConvienceScripts" */;
@@ -768,11 +719,6 @@
 						CreatedOnToolsVersion = 8.1;
 						ProvisioningStyle = Automatic;
 					};
-					27C92BAA1E234DE40025727E = {
-						CreatedOnToolsVersion = 8.2.1;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 68F3F9A81D70E82E00840DD2;
-					};
 					27C92C031E2757F80025727E = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
@@ -799,7 +745,6 @@
 			targets = (
 				68F3F9A81D70E82E00840DD2 /* HabitRPG2 */,
 				27127DF91DDAC6F70074A8F5 /* HabitRPG2Tests */,
-				27C92BAA1E234DE40025727E /* DataLayerTests */,
 				27C92C031E2757F80025727E /* ConvienceScripts */,
 			);
 		};
@@ -815,17 +760,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		27C92BA91E234DE40025727E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		27C92C021E2757F80025727E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27C92C301E2D8A650025727E /* Model.xcdatamodeld in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -887,18 +826,6 @@
 				27127E051DDACA6A0074A8F5 /* Experiments.m in Sources */,
 				27127E041DDACA5B0074A8F5 /* TestDailyHelper.m in Sources */,
 				27C92C1D1E29D3B80025727E /* ZoneInfoDictionaryTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		27C92BA71E234DE40025727E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				27C92BBA1E234E650025727E /* ZoneDataController.m in Sources */,
-				27C92BB91E234E5B0025727E /* CoreDataStackController.m in Sources */,
-				27C92BB81E234E430025727E /* Zone+CoreDataProperties.m in Sources */,
-				27C92BB71E234E2D0025727E /* Zone+CoreDataClass.m in Sources */,
-				27C92BAE1E234DE40025727E /* DataLayerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -977,11 +904,6 @@
 			target = 68F3F9A81D70E82E00840DD2 /* HabitRPG2 */;
 			targetProxy = 27127DFF1DDAC6F80074A8F5 /* PBXContainerItemProxy */;
 		};
-		27C92BB11E234DE40025727E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 68F3F9A81D70E82E00840DD2 /* HabitRPG2 */;
-			targetProxy = 27C92BB01E234DE40025727E /* PBXContainerItemProxy */;
-		};
 		27C92C0A1E2757F90025727E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 68F3F9A81D70E82E00840DD2 /* HabitRPG2 */;
@@ -1015,36 +937,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.HabitRPG2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		27C92BB31E234DE40025727E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				DEVELOPMENT_TEAM = XK3RJ8E2L2;
-				INFOPLIST_FILE = DataLayerTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.DataLayerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HabitRPG2.app/HabitRPG2";
-			};
-			name = Debug;
-		};
-		27C92BB41E234DE40025727E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				DEVELOPMENT_TEAM = XK3RJ8E2L2;
-				INFOPLIST_FILE = DataLayerTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.DataLayerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HabitRPG2.app/HabitRPG2";
 			};
 			name = Release;
 		};
@@ -1210,14 +1102,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		27C92BB21E234DE40025727E /* Build configuration list for PBXNativeTarget "DataLayerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				27C92BB31E234DE40025727E /* Debug */,
-				27C92BB41E234DE40025727E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
 		27C92C0B1E2757F90025727E /* Build configuration list for PBXNativeTarget "ConvienceScripts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1250,6 +1134,7 @@
 		68E260601D7BC3EA00425D46 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				27C92C291E2D87800025727E /* Model 13.xcdatamodel */,
 				27C92B991E233F730025727E /* Model 12.xcdatamodel */,
 				27F4401D1E221BB6002BEDD4 /* Model 9.xcdatamodel */,
 				27127E0A1DDAD43D0074A8F5 /* Model 8.xcdatamodel */,
@@ -1261,7 +1146,7 @@
 				68BE458C1D9CCF4C003F3400 /* Model 2.xcdatamodel */,
 				68E260611D7BC3EA00425D46 /* Model.xcdatamodel */,
 			);
-			currentVersion = 27C92B991E233F730025727E /* Model 12.xcdatamodel */;
+			currentVersion = 27C92C291E2D87800025727E /* Model 13.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

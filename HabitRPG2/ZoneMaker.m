@@ -40,7 +40,6 @@
 
 -(Zone *)constructHomeZone{
     Zone *z = (Zone *)[self.dataController constructEmptyZone];
-    z.previousZone = nil;
     z.zoneKey = HOME_KEY;
     z.lvl = 0;
     z.maxMonsters = 0;
