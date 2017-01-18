@@ -58,16 +58,12 @@
     return cell;
 }
 
-
-
-
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self completeBtn];
     
     
 }
-
 
 -(void)setupCell:(Daily *)model AndRow:(NSIndexPath *)rowInfo{
     self.model = model;

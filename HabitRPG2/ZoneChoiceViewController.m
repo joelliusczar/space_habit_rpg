@@ -14,10 +14,10 @@
 
 @property (nonatomic,weak) UIViewController<ChoiceScreenBase> * screenBase;
 @property (nonatomic,strong) NSArray<Zone *> *zones;
-@property (nonatomic,weak) UITableView *zoneChoiceTable; //TODO: determine weak vs strong
+@property (nonatomic,strong) UITableView *zoneChoiceTable; //TODO: determine weak vs strong
 @property (nonatomic,weak) UIButton *nextBtn;
 @property (nonatomic,weak) CustomSwitch *skipSwitch;
--(instancetype)initWithBase:(UIViewController<ChoiceScreenBase> *)screenBase;
+-(instancetype)initWithBase:(UIViewController<ChoiceScreenBase> *)screenBase AndZoneChoices:(NSArray<Zone *> *)zoneChoices;
 
 @end
 
@@ -47,20 +47,22 @@
     return _skipSwitch;
 }
 
--(instancetype)initWithBase:(UIViewController<ChoiceScreenBase> *)screenBase{
+-(instancetype)initWithBase:(UIViewController<ChoiceScreenBase> *)screenBase AndZoneChoices:(NSArray<Zone *> *)zoneChoices{
     if(self = [self initWithNibName:@"ZoneChoiceView" bundle:nil]){
         self.screenBase = screenBase;
+        self.zones = zoneChoices;
+        self.zoneChoiceTable.dataSource = self;
     }
     return self;
 }
 
-+(instancetype)constructWithBase:(UIViewController<ChoiceScreenBase> *)screenBase{
-    return [[ZoneChoiceViewController alloc] initWithBase:screenBase];
++(instancetype)constructWithBase:(UIViewController<ChoiceScreenBase> *)screenBase AndZoneChoices:(NSArray<Zone *> *)zoneChoices{
+    return [[ZoneChoiceViewController alloc] initWithBase:screenBase AndZoneChoices:zoneChoices];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    NSAssert(self.zones, @"ZoneChoiceViewController is in an invalid state. Zones hasn't been constructed");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,9 +70,6 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)setupData:(NSArray<Zone *> *)zones{
-    self.zones = zones;
-}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if(self.zones){

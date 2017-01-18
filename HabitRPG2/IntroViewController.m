@@ -12,6 +12,9 @@
 #import "StoryConstants.h"
 #import "ZoneDescriptions.h"
 #import "constants.h"
+#import "ZoneChoiceViewController.h"
+#import "ZoneMaker.h"
+#import "Hero+CoreDataClass.h"
 
 @interface IntroViewController ()
 @property (nonatomic,weak) CentralViewController *central;
@@ -121,6 +124,22 @@
     }
 }
 
+- (NSArray<Zone *> *)setupForAndGetZoneChoices {
+    ZoneMaker *zoneMaker = [ZoneMaker constructWithDataController:[self getTheDataController]];
+    Hero *hero = ([self getTheDataController]).userData.theHero;
+    NSArray<Zone *> *zoneChoices = [zoneMaker constructMultipleZoneChoices:hero AndMatchHeroLvl:YES];
+    return zoneChoices;
+}
+
+-(void)showZoneChoiceView{
+    NSArray<Zone *> *zoneChoices = [self setupForAndGetZoneChoices];
+    ZoneChoiceViewController *zoneChoiceView = [ZoneChoiceViewController constructWithBase:self AndZoneChoices:zoneChoices];
+    [self.view addSubview:zoneChoiceView.view];
+    [self addChildViewController:zoneChoiceView];
+    [zoneChoiceView didMoveToParentViewController:self];
+    
+}
+
 -(void)pressedNext:(UIButton *)sender{
     BOOL show = self.skipSwitch.isOn;
     //[self.central setToSkipStory:!show];
@@ -138,6 +157,8 @@
             self.isThreadCurrentlyRunning = NO;
         });
         
+    }else if(show){
+        [self showZoneChoiceView];
     }
     else{
         [self.central dismissIntro];

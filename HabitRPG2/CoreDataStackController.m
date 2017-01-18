@@ -123,7 +123,25 @@
     return [results objectAtIndex:0];
 }
 
-
+-(NSManagedObject *)getItemWithRequest:(NSFetchRequest *)request
+                                predicate:(NSPredicate *)filter
+                                sortBy:(NSArray<NSSortDescriptor *> *)sortArray
+{
+    request.fetchLimit = 1;
+    request.predicate = filter;
+    request.sortDescriptors = sortArray;
+    NSError *err;
+    
+    NSArray *results = [self.context executeFetchRequest:request error:&err];
+    if(!results&&err){
+        NSLog(@"Error fetching data: %@", err.localizedFailureReason);
+        return nil;
+    }
+    if(results.count < 1){
+        return nil;
+    }
+    return [results objectAtIndex:0];
+}
 
 -(BOOL)save{
     

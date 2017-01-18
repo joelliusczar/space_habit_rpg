@@ -27,7 +27,10 @@
                                        sortBy:(NSArray *) sortAttrs;
 -(NSManagedObject *)getItem:(NSString *) entityName
                   predicate: (NSPredicate *) filter
-                     sortBy:(NSArray *) sortAttrs;
+                     sortBy:(NSArray<NSSortDescriptor *> *) sortAttrs;
+-(NSManagedObject *)getItemWithRequest:(NSFetchRequest *) fetchRequest
+                            predicate: (NSPredicate *)filter
+                              sortBy: (NSArray<NSSortDescriptor *> *)sortArray;
 -(BOOL)save;
 -(BOOL)deleteModel:(NSManagedObject *)model;
 -(void)deleteAllRecords;

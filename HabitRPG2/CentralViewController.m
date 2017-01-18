@@ -116,14 +116,17 @@
                                                 [UIUtilities GetYStart:height]);
 }
 
+- (void)showIntroView {
+    IntroViewController *introView = [[IntroViewController alloc]
+                                          initWithCentralViewController:self];
+    [self.view addSubview:introView.view];
+    [self addChildViewController:introView];
+    [introView didMoveToParentViewController:self];
+}
+
 -(void)determineIfFirstTimeAndSetupSettings{
     if(self.dataController.userData.theDataInfo.isNew){
-        IntroViewController *introView = [[IntroViewController alloc]
-                                          initWithCentralViewController:self];
-        [self.view addSubview:introView.view];
-        [self addChildViewController:introView];
-        [introView didMoveToParentViewController:self];
-        
+        [self showIntroView];        
     }
     
 }

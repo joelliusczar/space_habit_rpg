@@ -11,7 +11,7 @@
 @interface ZoneChoiceCellController()
 @property (nonatomic,weak) ZoneChoiceViewController *ownerZoneController;
 @property (nonatomic,weak) Zone *model;
--(void)setupCell:(Zone *)model AndOnwer:(ZoneChoiceViewController *)owner
+-(void)setupCell:(Zone *)model AndOwner:(ZoneChoiceViewController *)owner
           AndRow:(NSIndexPath *)rowInfo;
 @end
 
@@ -37,11 +37,11 @@
     AndModel:(Zone *)model AndRow:(NSIndexPath *)rowInfo
 {
     ZoneChoiceCellController *cell = [ZoneChoiceCellController getCell:tableView WithNibName:@"ZoneChoiceCell" AndParent:owner];
-    cell.ownerZoneController = owner;
+    [cell setupCell:model AndOwner:owner AndRow:rowInfo];
     return cell;
 }
 
--(void)setupCell:(Zone *)model AndOnwer:(ZoneChoiceViewController *)owner
+-(void)setupCell:(Zone *)model AndOwner:(ZoneChoiceViewController *)owner
           AndRow:(NSIndexPath *)rowInfo
 {
     self.ownerZoneController = owner;
@@ -49,6 +49,10 @@
     self.nameLbl.text = self.model.fullName;
     self.lvlLbl.text = [NSString stringWithFormat:@"Lvl: %d",self.model.lvl];
     
+}
+
+-(void)awakeFromNib{
+    [super awakeFromNib];
 }
 
 /*

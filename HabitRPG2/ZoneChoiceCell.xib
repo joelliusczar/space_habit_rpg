@@ -11,11 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="68" id="VkY-td-4VM">
-            <rect key="frame" x="0.0" y="0.0" width="393" height="68"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ZoneChoice" rowHeight="84" id="VkY-td-4VM" customClass="ZoneChoiceCellController">
+            <rect key="frame" x="0.0" y="0.0" width="386" height="81"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VkY-td-4VM" id="mS2-9g-Ky3">
-                <rect key="frame" x="0.0" y="0.0" width="393" height="67"/>
+                <rect key="frame" x="0.0" y="0.0" width="386" height="80.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vm-TA-Cyr">
@@ -34,7 +34,7 @@
                     </label>
                 </subviews>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="-77.5" y="-169"/>
+            <point key="canvasLocation" x="-81" y="-162.5"/>
         </tableViewCell>
     </objects>
 </document>

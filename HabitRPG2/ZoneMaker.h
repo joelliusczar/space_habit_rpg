@@ -14,7 +14,12 @@
 
 
 @interface ZoneMaker : NSObject
--(instancetype)initWithDataController:(CoreDataStackController*)dataController;
++(instancetype)constructWithDataController:(CoreDataStackController *)dataController;
+-(instancetype)initWithDataController:(CoreDataStackController *)dataController;
 -(Zone *)constructHomeZone;
 -(Zone *)constructZoneChoice:(Hero *)hero AndMatchHeroLvl:(BOOL)matchLvl;
+-(NSArray<Zone *> *)constructMultipleZoneChoices:(Hero *)hero AndMatchHeroLvl:(BOOL)matchLvl;
+-(Zone *)getZoneByZoneKey:(NSString *)zoneKey;
+-(Zone * )constructEmptyZone;
+-(int64_t)getNextUniqueId;
 @end

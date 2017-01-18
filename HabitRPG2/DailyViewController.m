@@ -77,7 +77,6 @@ static NSString *const EntityName = @"Daily";
     return _dailyHelper;
 }
 
-
 -(id)initWithDataController:(CoreDataStackController *)dataController AndWithParent:(CentralViewController *)parent{
     if(self = [self initWithNibName:@"DailyViewController" bundle:nil]){
         self.parentController = parent;
@@ -86,8 +85,6 @@ static NSString *const EntityName = @"Daily";
     }
     return self;
 }
-
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -113,14 +110,10 @@ static NSString *const EntityName = @"Daily";
     
 }
 
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 -(void)setuptab:(CoreDataStackController *)dataController{
     UITabBarItem *tbi = [self tabBarItem];
@@ -130,20 +123,14 @@ static NSString *const EntityName = @"Daily";
     [tbi setTitle:@"Dailies"];
 }
 
-
-
 -(void)showNewDaily:(Daily *)daily{
     [self.incompleteItems addObject:daily];
     [self.dailiesTable reloadData];
 }
 
-
-
 -(void)refreshTableAtRow:(NSIndexPath *)row{
     [self.dailiesTable reloadRowsAtIndexPaths:@[row] withRowAnimation:UITableViewRowAnimationNone];
 }
-
-
 
 -(void)removeItemFromViewAtRow:(NSIndexPath *)rowInfo{
     if(rowInfo.section == INCOMPLETE){
@@ -180,8 +167,6 @@ static NSString *const EntityName = @"Daily";
         NSLog(@"Oh oh! Something illogical was about to happen. There was a mismatch in completeDaily.");
     }
 }
-
-
 
 -(void)setupData:(CoreDataStackController *)data{
     self.dataController = data;
@@ -227,7 +212,6 @@ static NSString *const EntityName = @"Daily";
     }
 }
 
-
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     DailyCellController *cell = [DailyCellController getDailyCell:tableView WithParent:self];
@@ -245,8 +229,6 @@ static NSString *const EntityName = @"Daily";
     return cell;
 }
 
-
-
 -(NSArray *)getFetchDescriptors{
     NSSortDescriptor *sortByUrgency = [[NSSortDescriptor alloc]
                                        initWithKey:@"urgency" ascending:NO];
@@ -255,16 +237,10 @@ static NSString *const EntityName = @"Daily";
     return [NSArray arrayWithObjects:sortByUrgency,sortByDifficulty, nil];
 }
 
-
-
 -(void)pressedAddBtn:(id)sender{
     self.editController.viewTitle = @"Dailies";
     [self showViewController:self.editController sender:self];
-    
-    
 }
-
-
 
 -(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
     

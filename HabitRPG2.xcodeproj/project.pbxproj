@@ -37,8 +37,8 @@
 		27C92C221E2ACE090025727E /* Model.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 68E260601D7BC3EA00425D46 /* Model.xcdatamodeld */; };
 		27C92C251E2AD6FC0025727E /* BundleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C241E2AD6FC0025727E /* BundleHelper.m */; };
 		27C92C301E2D8A650025727E /* Model.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 68E260601D7BC3EA00425D46 /* Model.xcdatamodeld */; };
+		27C92C361E2F01E60025727E /* Zone+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 271217681DCE84310072ACC6 /* Zone+CoreDataClass.m */; };
 		27F4401C1E220097002BEDD4 /* OnlyOneEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */; };
-		27F440231E2223E4002BEDD4 /* ZoneDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F440221E2223E4002BEDD4 /* ZoneDataController.m */; };
 		27F440241E22C720002BEDD4 /* CoreDataStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260641D7FC3F200425D46 /* CoreDataStackController.m */; };
 		27F440251E22C74E002BEDD4 /* ZoneMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921FD1DBC81EA007C946C /* ZoneMaker.m */; };
 		27F440261E22C78C002BEDD4 /* ZoneHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ED3C61DB481C4004EDD36 /* ZoneHelper.m */; };
@@ -170,8 +170,6 @@
 		27F4401A1E220097002BEDD4 /* OnlyOneEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyOneEntities.h; sourceTree = "<group>"; };
 		27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlyOneEntities.m; sourceTree = "<group>"; };
 		27F4401D1E221BB6002BEDD4 /* Model 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 9.xcdatamodel"; sourceTree = "<group>"; };
-		27F440211E2223E4002BEDD4 /* ZoneDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneDataController.h; sourceTree = "<group>"; };
-		27F440221E2223E4002BEDD4 /* ZoneDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneDataController.m; sourceTree = "<group>"; };
 		686686EA1D79032200BB2D09 /* DailyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyCell.xib; sourceTree = "<group>"; };
 		686686EC1D79060300BB2D09 /* DailyCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyCellController.h; sourceTree = "<group>"; };
 		686686ED1D79060300BB2D09 /* DailyCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyCellController.m; sourceTree = "<group>"; };
@@ -428,8 +426,6 @@
 				686ED3C61DB481C4004EDD36 /* ZoneHelper.m */,
 				68A921FC1DBC81EA007C946C /* ZoneMaker.h */,
 				68A921FD1DBC81EA007C946C /* ZoneMaker.m */,
-				27F440211E2223E4002BEDD4 /* ZoneDataController.h */,
-				27F440221E2223E4002BEDD4 /* ZoneDataController.m */,
 				27C92C111E28A1330025727E /* ZoneChoiceCell.xib */,
 				27C92C131E297F640025727E /* ZoneChoiceCellController.h */,
 				27C92C141E297F640025727E /* ZoneChoiceCellController.m */,
@@ -812,6 +808,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27C92C361E2F01E60025727E /* Zone+CoreDataClass.m in Sources */,
 				27C92C1B1E29D33B0025727E /* ZoneInfoDictionary.m in Sources */,
 				27C92C0F1E287B960025727E /* OnlyOneEntities.m in Sources */,
 				27F440281E22C7CE002BEDD4 /* ZoneDescriptions.m in Sources */,
@@ -851,7 +848,6 @@
 				686ED3B01DAEF512004EDD36 /* ZoneDescriptions.m in Sources */,
 				68F3F9EE1D70FC0D00840DD2 /* HabitController.m in Sources */,
 				68F3F9FE1D71CCF100840DD2 /* UIUtilities.m in Sources */,
-				27F440231E2223E4002BEDD4 /* ZoneDataController.m in Sources */,
 				68A921F71DBC7FF2007C946C /* Zone+CoreDataProperties.m in Sources */,
 				27F4401C1E220097002BEDD4 /* OnlyOneEntities.m in Sources */,
 				2712176B1DCE84310072ACC6 /* Habit+CoreDataClass.m in Sources */,
