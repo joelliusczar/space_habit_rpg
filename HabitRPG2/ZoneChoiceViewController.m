@@ -9,6 +9,7 @@
 #import "ZoneChoiceViewController.h"
 #import "ZoneChoiceCellController.h"
 #import "CustomSwitch.h"
+#import "constants.h"
 
 @interface ZoneChoiceViewController ()
 
@@ -52,6 +53,7 @@
         self.screenBase = screenBase;
         self.zones = zoneChoices;
         self.zoneChoiceTable.dataSource = self;
+        self.zoneChoiceTable.rowHeight = ZONE_CHOICE_ROW_HEIGHT;
     }
     return self;
 }

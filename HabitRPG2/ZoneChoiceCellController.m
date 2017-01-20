@@ -11,6 +11,8 @@
 @interface ZoneChoiceCellController()
 @property (nonatomic,weak) ZoneChoiceViewController *ownerZoneController;
 @property (nonatomic,weak) Zone *model;
+@property (nonatomic,weak) NSIndexPath *rowInfo;
+@property (nonatomic,strong) UISwipeGestureRecognizer *swiper;
 -(void)setupCell:(Zone *)model AndOwner:(ZoneChoiceViewController *)owner
           AndRow:(NSIndexPath *)rowInfo;
 @end
@@ -33,6 +35,15 @@
     return _lvlLbl;
 }
 
+@synthesize swiper = _swiper;
+-(UISwipeGestureRecognizer *)swiper{
+    if(!_swiper){
+        _swiper = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
+        _swiper.direction = UISwipeGestureRecognizerDirectionLeft;
+    }
+    return _swiper;
+}
+
 +(instancetype)getZoneChoiceCell:(UITableView *)tableView WithOwner:(ZoneChoiceViewController *)owner
     AndModel:(Zone *)model AndRow:(NSIndexPath *)rowInfo
 {
@@ -48,11 +59,26 @@
     self.model = model;
     self.nameLbl.text = self.model.fullName;
     self.lvlLbl.text = [NSString stringWithFormat:@"Lvl: %d",self.model.lvl];
-    
+    self.rowInfo = rowInfo;
+    [self addGestureRecognizer:self.swiper];
 }
 
 -(void)awakeFromNib{
     [super awakeFromNib];
+}
+
+-(void)handleSwipe:(UISwipeGestureRecognizer *)swipe{
+    if(swipe.direction == UISwipeGestureRecognizerDirectionLeft){
+        if(self.rowInfo){
+            NSLog(@"%ld",self.rowInfo.row);
+        }
+        else{
+            NSLog(@"%@",@"Damn");
+        }
+    }
+    else{
+        NSLog(@"%@",@"wrong");
+    }
 }
 
 /*
