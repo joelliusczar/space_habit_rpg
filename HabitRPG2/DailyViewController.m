@@ -77,7 +77,8 @@ static NSString *const EntityName = @"Daily";
     return _dailyHelper;
 }
 
--(id)initWithDataController:(CoreDataStackController *)dataController AndWithParent:(CentralViewController *)parent{
+-(id)initWithDataController:(CoreDataStackController *)dataController AndWithParent:(CentralViewController *)parent
+{
     if(self = [self initWithNibName:@"DailyViewController" bundle:nil]){
         self.parentController = parent;
         [self setuptab:dataController];

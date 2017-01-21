@@ -86,6 +86,10 @@
     return cell; 
 }
 
+-(CoreDataStackController *)getTheDataController{
+    return [self.screenBase getTheDataController];
+}
+
 /*
 #pragma mark - Navigation
 

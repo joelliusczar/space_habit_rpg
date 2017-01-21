@@ -30,4 +30,8 @@
     return [NSString stringWithFormat:@"%@ %@",name,suffix];
 }
 
+-(NSString *)synopsis{
+    return [self.zoneInfoDict getZoneDescription:self.zoneKey];
+}
+
 @end

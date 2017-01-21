@@ -7,6 +7,7 @@
 //
 
 #import "ZoneChoiceCellController.h"
+#import "ZoneDescriptionViewController.h"
 
 @interface ZoneChoiceCellController()
 @property (nonatomic,weak) ZoneChoiceViewController *ownerZoneController;
@@ -69,12 +70,10 @@
 
 -(void)handleSwipe:(UISwipeGestureRecognizer *)swipe{
     if(swipe.direction == UISwipeGestureRecognizerDirectionLeft){
-        if(self.rowInfo){
-            NSLog(@"%ld",self.rowInfo.row);
-        }
-        else{
-            NSLog(@"%@",@"Damn");
-        }
+        ZoneDescriptionViewController *descView = [[ZoneDescriptionViewController alloc]init:self.ownerZoneController WithZone:self.model];
+        [self.ownerZoneController.view addSubview:descView.view];
+        [self.ownerZoneController addChildViewController:descView];
+        [descView didMoveToParentViewController:self.ownerZoneController];
     }
     else{
         NSLog(@"%@",@"wrong");

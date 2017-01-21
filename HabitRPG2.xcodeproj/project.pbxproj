@@ -38,6 +38,8 @@
 		27C92C251E2AD6FC0025727E /* BundleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C241E2AD6FC0025727E /* BundleHelper.m */; };
 		27C92C301E2D8A650025727E /* Model.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 68E260601D7BC3EA00425D46 /* Model.xcdatamodeld */; };
 		27C92C361E2F01E60025727E /* Zone+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 271217681DCE84310072ACC6 /* Zone+CoreDataClass.m */; };
+		27C92C441E3314000025727E /* ZoneDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C421E3314000025727E /* ZoneDescriptionViewController.m */; };
+		27C92C451E3314000025727E /* ZoneDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C431E3314000025727E /* ZoneDescriptionViewController.xib */; };
 		27F4401C1E220097002BEDD4 /* OnlyOneEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */; };
 		27F440241E22C720002BEDD4 /* CoreDataStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260641D7FC3F200425D46 /* CoreDataStackController.m */; };
 		27F440251E22C74E002BEDD4 /* ZoneMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921FD1DBC81EA007C946C /* ZoneMaker.m */; };
@@ -167,6 +169,9 @@
 		27C92C231E2AD6FC0025727E /* BundleHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundleHelper.h; sourceTree = "<group>"; };
 		27C92C241E2AD6FC0025727E /* BundleHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BundleHelper.m; sourceTree = "<group>"; };
 		27C92C291E2D87800025727E /* Model 13.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 13.xcdatamodel"; sourceTree = "<group>"; };
+		27C92C411E3314000025727E /* ZoneDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneDescriptionViewController.h; sourceTree = "<group>"; };
+		27C92C421E3314000025727E /* ZoneDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneDescriptionViewController.m; sourceTree = "<group>"; };
+		27C92C431E3314000025727E /* ZoneDescriptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZoneDescriptionViewController.xib; sourceTree = "<group>"; };
 		27F4401A1E220097002BEDD4 /* OnlyOneEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyOneEntities.h; sourceTree = "<group>"; };
 		27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlyOneEntities.m; sourceTree = "<group>"; };
 		27F4401D1E221BB6002BEDD4 /* Model 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 9.xcdatamodel"; sourceTree = "<group>"; };
@@ -328,6 +333,50 @@
 			path = ConvienceScripts;
 			sourceTree = "<group>";
 		};
+		27C92C3C1E3313580025727E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				27C92C111E28A1330025727E /* ZoneChoiceCell.xib */,
+				27C92C131E297F640025727E /* ZoneChoiceCellController.h */,
+				27C92C141E297F640025727E /* ZoneChoiceCellController.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		27C92C3E1E3313770025727E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				271217671DCE84310072ACC6 /* Zone+CoreDataClass.h */,
+				271217681DCE84310072ACC6 /* Zone+CoreDataClass.m */,
+				68A921EA1DBC7FF2007C946C /* Zone+CoreDataProperties.h */,
+				68A921EB1DBC7FF2007C946C /* Zone+CoreDataProperties.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		27C92C3F1E3313860025727E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				686ED3C51DB481C4004EDD36 /* ZoneHelper.h */,
+				686ED3C61DB481C4004EDD36 /* ZoneHelper.m */,
+				68A921FC1DBC81EA007C946C /* ZoneMaker.h */,
+				68A921FD1DBC81EA007C946C /* ZoneMaker.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		27C92C401E3313AD0025727E /* Lookups */ = {
+			isa = PBXGroup;
+			children = (
+				27C92C161E29AD770025727E /* ZoneInfo.plist */,
+				27C92C181E29C9F10025727E /* ZoneInfoDictionary.h */,
+				27C92C191E29C9F10025727E /* ZoneInfoDictionary.m */,
+				686ED3AE1DAEF512004EDD36 /* ZoneDescriptions.h */,
+				686ED3AF1DAEF512004EDD36 /* ZoneDescriptions.m */,
+			);
+			name = Lookups;
+			sourceTree = "<group>";
+		};
 		686ED39C1DA5FF28004EDD36 /* Todos */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,25 +462,16 @@
 		686ED3AB1DADE4B3004EDD36 /* Zone */ = {
 			isa = PBXGroup;
 			children = (
-				271217671DCE84310072ACC6 /* Zone+CoreDataClass.h */,
-				271217681DCE84310072ACC6 /* Zone+CoreDataClass.m */,
-				68A921EA1DBC7FF2007C946C /* Zone+CoreDataProperties.h */,
-				68A921EB1DBC7FF2007C946C /* Zone+CoreDataProperties.m */,
-				686ED3AE1DAEF512004EDD36 /* ZoneDescriptions.h */,
-				686ED3AF1DAEF512004EDD36 /* ZoneDescriptions.m */,
+				27C92C401E3313AD0025727E /* Lookups */,
+				27C92C3F1E3313860025727E /* Helpers */,
+				27C92C3E1E3313770025727E /* Model */,
+				27C92C3C1E3313580025727E /* Cell */,
 				686ED3BC1DB47954004EDD36 /* ZoneChoiceViewController.h */,
 				686ED3BD1DB47954004EDD36 /* ZoneChoiceViewController.m */,
 				686ED3BE1DB47954004EDD36 /* ZoneChoiceView.xib */,
-				686ED3C51DB481C4004EDD36 /* ZoneHelper.h */,
-				686ED3C61DB481C4004EDD36 /* ZoneHelper.m */,
-				68A921FC1DBC81EA007C946C /* ZoneMaker.h */,
-				68A921FD1DBC81EA007C946C /* ZoneMaker.m */,
-				27C92C111E28A1330025727E /* ZoneChoiceCell.xib */,
-				27C92C131E297F640025727E /* ZoneChoiceCellController.h */,
-				27C92C141E297F640025727E /* ZoneChoiceCellController.m */,
-				27C92C161E29AD770025727E /* ZoneInfo.plist */,
-				27C92C181E29C9F10025727E /* ZoneInfoDictionary.h */,
-				27C92C191E29C9F10025727E /* ZoneInfoDictionary.m */,
+				27C92C411E3314000025727E /* ZoneDescriptionViewController.h */,
+				27C92C421E3314000025727E /* ZoneDescriptionViewController.m */,
+				27C92C431E3314000025727E /* ZoneDescriptionViewController.xib */,
 			);
 			name = Zone;
 			sourceTree = "<group>";
@@ -777,6 +817,7 @@
 				68F3F9F41D70FC5E00840DD2 /* TodoViewController.xib in Resources */,
 				686ED3C41DB47FAF004EDD36 /* black_checked_full.png in Resources */,
 				68F3F9EF1D70FC0D00840DD2 /* HabitController.xib in Resources */,
+				27C92C451E3314000025727E /* ZoneDescriptionViewController.xib in Resources */,
 				6889C65E1D88F82700598435 /* DailyEditView.xib in Resources */,
 				686ED3C01DB47954004EDD36 /* ZoneChoiceView.xib in Resources */,
 				6886A48F1D8F6F9B005E12B3 /* edit_button.png in Resources */,
@@ -844,6 +885,7 @@
 				68F3F9F31D70FC5E00840DD2 /* TodoViewController.m in Sources */,
 				68F3FA021D74897A00840DD2 /* MenuViewController.m in Sources */,
 				68BA388B1D93615600CB5A76 /* CommonUtilitiesMock.m in Sources */,
+				27C92C441E3314000025727E /* ZoneDescriptionViewController.m in Sources */,
 				68A921FA1DBC7FF2007C946C /* Monster+CoreDataProperties.m in Sources */,
 				686ED3B01DAEF512004EDD36 /* ZoneDescriptions.m in Sources */,
 				68F3F9EE1D70FC0D00840DD2 /* HabitController.m in Sources */,
@@ -1105,6 +1147,7 @@
 				27C92C0D1E2757F90025727E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		68F3F9A41D70E82E00840DD2 /* Build configuration list for PBXProject "HabitRPG2" */ = {
 			isa = XCConfigurationList;
