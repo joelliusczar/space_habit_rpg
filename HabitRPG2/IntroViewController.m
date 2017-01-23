@@ -15,6 +15,7 @@
 #import "ZoneChoiceViewController.h"
 #import "ZoneMaker.h"
 #import "Hero+CoreDataClass.h"
+#import "ViewHelper.h"
 
 @interface IntroViewController ()
 @property (nonatomic,weak) CentralViewController *central;
@@ -61,6 +62,10 @@
         _skipSwitch = [self.view viewWithTag:4];
     }
     return _skipSwitch;
+}
+
+-(UIViewController<ChoiceScreenBase> *)viewStackBottom{
+    return self.central;
 }
 
 -(id)initWithCentralViewController:(CentralViewController *)central{

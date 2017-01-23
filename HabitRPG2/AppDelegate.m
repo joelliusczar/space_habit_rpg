@@ -21,10 +21,6 @@
     self.centralController = [[CentralViewController alloc]
                            initWithNibName:@"CentralViewController"
                            bundle:nil];
-    
-    
-    
-    
     self.window.rootViewController = self.centralController;
     [self.window makeKeyAndVisible];
     // Override point for customization after application launch.

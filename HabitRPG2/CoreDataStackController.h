@@ -32,7 +32,8 @@
                             predicate: (NSPredicate *)filter
                               sortBy: (NSArray<NSSortDescriptor *> *)sortArray;
 -(BOOL)save;
--(BOOL)deleteModel:(NSManagedObject *)model;
+-(void)softDeleteModel:(NSManagedObject *)model;
+-(BOOL)deleteModelAndSave:(NSManagedObject *)model;
 -(void)deleteAllRecords;
 
 @end

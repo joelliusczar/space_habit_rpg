@@ -10,6 +10,7 @@
 #import "ZoneChoiceCellController.h"
 #import "CustomSwitch.h"
 #import "constants.h"
+#import "ViewHelper.h"
 
 @interface ZoneChoiceViewController ()
 
@@ -46,6 +47,18 @@
         _skipSwitch = [self.view viewWithTag:3];
     }
     return _skipSwitch;
+}
+
+@synthesize descViewController = _descViewController;
+-(ZoneDescriptionViewController *)descViewController{
+    if(!_descViewController){
+        _descViewController = [[ZoneDescriptionViewController alloc] init:self];
+    }
+    return _descViewController;
+}
+
+-(UIViewController<ChoiceScreenBase> *)viewStackBottom{
+    return self.screenBase.viewStackBottom;
 }
 
 -(instancetype)initWithBase:(UIViewController<ChoiceScreenBase> *)screenBase AndZoneChoices:(NSArray<Zone *> *)zoneChoices{
@@ -88,6 +101,20 @@
 
 -(CoreDataStackController *)getTheDataController{
     return [self.screenBase getTheDataController];
+}
+
+-(void)saveZoneChoice:(Zone *)zoneChoice{
+    CoreDataStackController *dataController = [self getTheDataController];
+    for(int32_t i = 0;i<self.zones.count;i++){
+        if(self.zones[i] != zoneChoice){
+            [dataController softDeleteModel:self.zones[i]];
+        }
+    }
+    [dataController save];
+}
+
+-(void)jumpToCentralView:(UIViewController *)currentView{
+    [ViewHelper popViewFromFront:currentView OfParent:self.screenBase.viewStackBottom];
 }
 
 /*

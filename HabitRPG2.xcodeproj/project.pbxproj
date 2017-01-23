@@ -40,6 +40,7 @@
 		27C92C361E2F01E60025727E /* Zone+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 271217681DCE84310072ACC6 /* Zone+CoreDataClass.m */; };
 		27C92C441E3314000025727E /* ZoneDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C421E3314000025727E /* ZoneDescriptionViewController.m */; };
 		27C92C451E3314000025727E /* ZoneDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C431E3314000025727E /* ZoneDescriptionViewController.xib */; };
+		27C92C481E341DA10025727E /* ViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C471E341DA10025727E /* ViewHelper.m */; };
 		27F4401C1E220097002BEDD4 /* OnlyOneEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */; };
 		27F440241E22C720002BEDD4 /* CoreDataStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260641D7FC3F200425D46 /* CoreDataStackController.m */; };
 		27F440251E22C74E002BEDD4 /* ZoneMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921FD1DBC81EA007C946C /* ZoneMaker.m */; };
@@ -172,6 +173,8 @@
 		27C92C411E3314000025727E /* ZoneDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneDescriptionViewController.h; sourceTree = "<group>"; };
 		27C92C421E3314000025727E /* ZoneDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneDescriptionViewController.m; sourceTree = "<group>"; };
 		27C92C431E3314000025727E /* ZoneDescriptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZoneDescriptionViewController.xib; sourceTree = "<group>"; };
+		27C92C461E341DA10025727E /* ViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewHelper.h; sourceTree = "<group>"; };
+		27C92C471E341DA10025727E /* ViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewHelper.m; sourceTree = "<group>"; };
 		27F4401A1E220097002BEDD4 /* OnlyOneEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyOneEntities.h; sourceTree = "<group>"; };
 		27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlyOneEntities.m; sourceTree = "<group>"; };
 		27F4401D1E221BB6002BEDD4 /* Model 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 9.xcdatamodel"; sourceTree = "<group>"; };
@@ -679,6 +682,8 @@
 				686ED3B61DAF3DBD004EDD36 /* CustomSwitch.m */,
 				27C92C231E2AD6FC0025727E /* BundleHelper.h */,
 				27C92C241E2AD6FC0025727E /* BundleHelper.m */,
+				27C92C461E341DA10025727E /* ViewHelper.h */,
+				27C92C471E341DA10025727E /* ViewHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -926,6 +931,7 @@
 				68A921F41DBC7FF2007C946C /* Hero+CoreDataProperties.m in Sources */,
 				686ED3B71DAF3DBD004EDD36 /* CustomSwitch.m in Sources */,
 				68A921F51DBC7FF2007C946C /* Daily+CoreDataProperties.m in Sources */,
+				27C92C481E341DA10025727E /* ViewHelper.m in Sources */,
 				27127E361DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m in Sources */,
 				68E260621D7BC3EA00425D46 /* Model.xcdatamodeld in Sources */,
 				68A921FE1DBC81EA007C946C /* ZoneMaker.m in Sources */,

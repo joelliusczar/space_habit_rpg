@@ -157,8 +157,12 @@
     return success;
 }
 
--(BOOL)deleteModel:(NSManagedObject *)model{
+-(void)softDeleteModel:(NSManagedObject *)model{
     [self.context deleteObject:model];
+}
+
+-(BOOL)deleteModelAndSave:(NSManagedObject *)model{
+    [self softDeleteModel:model];
     return [self save];
 }
 
@@ -182,11 +186,5 @@
     [self deleteAllForEntity:TODO_ENTITY_NAME];
     [self deleteAllForEntity:GOOD_ENTITY_NAME];
 }
-
-
-
-
-
-
 
 @end

@@ -194,7 +194,7 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 
 -(BOOL)deleteModel{
     
-    BOOL success = [self.dataController deleteModel:self.modelForEditing];
+    BOOL success = [self.dataController deleteModelAndSave:self.modelForEditing];
     [self.parentDailyController removeItemFromViewAtRow:self.rowInfo];
     [self cleanUp];
     return success;

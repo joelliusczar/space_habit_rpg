@@ -9,7 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "ChoiceScreenBase.h"
 #import "Zone+CoreDataClass.h"
+#import "ZoneDescriptionViewController.h"
+
+@class ZoneDescriptionViewController;
 
 @interface ZoneChoiceViewController : UIViewController <UITableViewDataSource, ChoiceScreenBase>
-+(instancetype)constructWithBase:(UIViewController <ChoiceScreenBase> *)screenBase AndZoneChoices:(NSArray<Zone *> *)zoneChoices;
+@property (nonatomic,strong) ZoneDescriptionViewController *descViewController;
++(instancetype)constructWithBase:(UIViewController<ChoiceScreenBase> *)screenBase AndZoneChoices:(NSArray<Zone *> *)zoneChoices;
+-(void)saveZoneChoice:(Zone *)zoneChoice;
 @end

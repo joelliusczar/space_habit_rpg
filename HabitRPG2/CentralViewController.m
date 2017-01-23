@@ -20,6 +20,7 @@
 #import "Monster+CoreDataClass.h"
 #import "IntroViewController.h"
 #import "constants.h"
+#import "ViewHelper.h"
 
 @import CoreGraphics;
 
@@ -57,6 +58,10 @@
         _tabsController = [[UITabBarController alloc] init];
     }
     return _tabsController;
+}
+
+-(UIViewController<ChoiceScreenBase> *)viewStackBottom{
+    return self;
 }
 
 - (void)viewDidLoad {
@@ -116,7 +121,7 @@
                                                 [UIUtilities GetYStart:height]);
 }
 
-- (void)showIntroView {
+-(void)showIntroView{
     IntroViewController *introView = [[IntroViewController alloc]
                                           initWithCentralViewController:self];
     [self.view addSubview:introView.view];
@@ -163,5 +168,6 @@
 -(CoreDataStackController *)getTheDataController{
     return self.dataController;
 }
+
 
 @end

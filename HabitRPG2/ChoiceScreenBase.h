@@ -12,6 +12,8 @@
 @protocol ChoiceScreenBase <NSObject>
 @optional
 -(void)setToSkipStory:(BOOL)skipStory;
+-(void)jumpToCentralView:(UIViewController *)currentView;
 @required
+@property (nonatomic,weak,readonly) UIViewController<ChoiceScreenBase> *viewStackBottom;
 -(CoreDataStackController *)getTheDataController;
 @end

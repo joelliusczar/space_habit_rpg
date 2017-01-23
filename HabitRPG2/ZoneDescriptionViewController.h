@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ZoneChoiceViewController.h"
 #import "Zone+CoreDataClass.h"
+#import "ZoneChoiceViewController.h"
+
+@class ZoneChoiceViewController;
 
 @interface ZoneDescriptionViewController : UIViewController
--(instancetype)init:(ZoneChoiceViewController *)prevScreen WithZone:(Zone *)zone;
+-(instancetype)init:(ZoneChoiceViewController *)prevScreen;
+-(void)setDisplayItems:(Zone *)model;
 @end
