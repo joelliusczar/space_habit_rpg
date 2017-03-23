@@ -13,8 +13,6 @@
 #import "ViewHelper.h"
 
 @interface ZoneChoiceViewController ()
-
-@property (nonatomic,weak) CentralViewController *central;
 @property (nonatomic,strong) NSArray<Zone *> *zones;
 @property (nonatomic,strong) UITableView *zoneChoiceTable; //TODO: determine weak vs strong
 @property (nonatomic,weak) UIButton *nextBtn;

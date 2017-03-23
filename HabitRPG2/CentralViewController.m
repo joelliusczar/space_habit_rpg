@@ -15,9 +15,7 @@
 #import "UIUtilities.h"
 #import "CoreDataStackController.h"
 #import "Settings+CoreDataClass.h"
-#import "Zone+CoreDataClass.h"
 #import "Hero+CoreDataClass.h"
-#import "Monster+CoreDataClass.h"
 #import "IntroViewController.h"
 #import "ZoneChoiceViewController.h"
 #import "constants.h"
@@ -29,10 +27,6 @@
 
 @interface CentralViewController ()
 @property (strong,nonatomic) UITabBarController *tabsController;
-@property (nonatomic,weak) Settings *userSettings;
-@property (nonatomic,weak) Hero *userHero;
-@property (nonatomic,strong) Zone *nowZone;
-@property (nonatomic,strong) Monster *nowMonsters;
 @end
 
 @implementation CentralViewController
@@ -133,14 +127,6 @@
     
 }
 
--(void)setupSettingsAndLoadIntroView{
-    if(self.dataController.userData.theDataInfo.isNew){
-        IntroViewController *introView = [[IntroViewController alloc]
-                                          initWithCentralViewController:self];
-        [self showViewController:introView sender:self];
-    }
-}
-
 -(void)setupData{
     self.userSettings = self.dataController.userData.theSettings;
     self.userHero = self.dataController.userData.theHero;
@@ -169,5 +155,8 @@
     [zoneChoiceView didMoveToParentViewController:self];
 }
 
+-(void)afterIntro:(Zone *)firstZone{
+    [self setupTabs];
+}
 
 @end
