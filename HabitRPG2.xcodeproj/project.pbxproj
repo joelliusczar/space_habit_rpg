@@ -159,7 +159,6 @@
 		27C92C041E2757F80025727E /* ConvienceScripts.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConvienceScripts.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C92C061E2757F80025727E /* ConvienceScripts.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConvienceScripts.m; sourceTree = "<group>"; };
 		27C92C081E2757F80025727E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		27C92C101E2894140025727E /* ChoiceScreenBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoiceScreenBase.h; sourceTree = "<group>"; };
 		27C92C111E28A1330025727E /* ZoneChoiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZoneChoiceCell.xib; sourceTree = "<group>"; };
 		27C92C131E297F640025727E /* ZoneChoiceCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneChoiceCellController.h; sourceTree = "<group>"; };
 		27C92C141E297F640025727E /* ZoneChoiceCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneChoiceCellController.m; sourceTree = "<group>"; };
@@ -436,7 +435,6 @@
 			isa = PBXGroup;
 			children = (
 				68F736B01D8B810200AE10A8 /* EditingSaver.h */,
-				27C92C101E2894140025727E /* ChoiceScreenBase.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";

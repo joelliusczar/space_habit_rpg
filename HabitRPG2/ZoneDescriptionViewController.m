@@ -70,12 +70,12 @@
 }
 
 -(void)backSwipe_rightSwipe_action:(UISwipeGestureRecognizer *)sender{
-    [ViewHelper popViewFromFront:self OfParent:self.prevScreen];
+    [ViewHelper popViewFromFront:self];
 }
 
 -(void)confirmBtn_click_action:(UIButton *)sender{
     [self.prevScreen saveZoneChoice:self.model];
-    [self.prevScreen jumpToCentralView:self];
+    [ViewHelper popViewFromFront:self.prevScreen];
 }
 
 /*

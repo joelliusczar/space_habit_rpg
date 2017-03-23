@@ -8,6 +8,7 @@
 
 #import "ZoneHelper.h"
 #import "ZoneDescriptions.h"
+#import "ZoneMaker.h"
 #include "stdlib.h"
 
 
@@ -150,7 +151,14 @@
         }
     }
     return [NSArray arrayWithArray:availableZoneGroups];
-    
+}
+
++(NSArray<Zone *> *)setupForAndGetZoneChoices:(CoreDataStackController *)
+dataController{
+    ZoneMaker *zoneMaker = [ZoneMaker constructWithDataController:dataController];
+    Hero *hero = dataController.userData.theHero;
+    NSArray<Zone *> *zoneChoices = [zoneMaker constructMultipleZoneChoices:hero AndMatchHeroLvl:YES];
+    return zoneChoices;
 }
 
 @end

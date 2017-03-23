@@ -10,11 +10,9 @@
 #import "CoreDataStackController.h"
 #import "Settings+CoreDataClass.h"
 #import "CentralViewController.h"
-#import "ChoiceScreenBase.h"
 
-@interface IntroViewController : UIViewController <ChoiceScreenBase>
+@interface IntroViewController : UIViewController
 -(id)initWithCentralViewController:(CentralViewController *)central;
 -(void)setToSkipStory:(BOOL)skipStory;
--(CoreDataStackController *)getTheDataController;
 @end
 

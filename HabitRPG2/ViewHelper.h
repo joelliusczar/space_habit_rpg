@@ -11,5 +11,5 @@
 
 @interface ViewHelper : NSObject
 +(void)pushViewToFront:(UIViewController *)child OfParent:(UIViewController *)parent;
-+(void)popViewFromFront:(UIViewController *)child OfParent:(UIViewController *)parent;
++(void)popViewFromFront:(UIViewController *)child;
 @end

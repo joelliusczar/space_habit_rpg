@@ -19,14 +19,15 @@
 #import "Hero+CoreDataClass.h"
 #import "Monster+CoreDataClass.h"
 #import "IntroViewController.h"
+#import "ZoneChoiceViewController.h"
 #import "constants.h"
 #import "ViewHelper.h"
+#import "ZoneHelper.h"
 
 @import CoreGraphics;
 
 
 @interface CentralViewController ()
-@property (nonatomic,strong) CoreDataStackController *dataController;
 @property (strong,nonatomic) UITabBarController *tabsController;
 @property (nonatomic,weak) Settings *userSettings;
 @property (nonatomic,weak) Hero *userHero;
@@ -58,10 +59,6 @@
         _tabsController = [[UITabBarController alloc] init];
     }
     return _tabsController;
-}
-
--(UIViewController<ChoiceScreenBase> *)viewStackBottom{
-    return self;
 }
 
 - (void)viewDidLoad {
@@ -163,10 +160,13 @@
     
 }
 
--(void)dismissIntro{}
-
--(CoreDataStackController *)getTheDataController{
-    return self.dataController;
+-(void)showZoneChoiceView{
+    NSArray<Zone *> *zoneChoices = [ZoneHelper setupForAndGetZoneChoices:
+                                    self.dataController];
+    ZoneChoiceViewController *zoneChoiceView = [ZoneChoiceViewController constructWithCentral:self AndZoneChoices:zoneChoices];
+    [self.view addSubview:zoneChoiceView.view];
+    [self addChildViewController:zoneChoiceView];
+    [zoneChoiceView didMoveToParentViewController:self];
 }
 
 

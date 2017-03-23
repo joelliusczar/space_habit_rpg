@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CoreDataStackController.h"
+#import "Zone+CoreDataClass.h"
 
 
 @interface ZoneHelper : NSObject
@@ -15,5 +17,6 @@
 +(NSArray*)getSymbols;
 +(NSString*)getSymbolSuffix:(NSUInteger)visitCount;
 +(NSArray*)getUnlockedZoneGroupKeys:(NSUInteger)heroLvl;
-
++ (NSArray<Zone *> *)setupForAndGetZoneChoices:(CoreDataStackController *)
+dataController;
 @end

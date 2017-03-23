@@ -16,7 +16,7 @@
     [child didMoveToParentViewController:parent];
 }
 
-+(void)popViewFromFront:(UIViewController *)child OfParent:(UIViewController *)parent{
++(void)popViewFromFront:(UIViewController *)child{
     [child willMoveToParentViewController:nil];
     [child.view removeFromSuperview];
     [child removeFromParentViewController];

@@ -64,10 +64,6 @@
     return _skipSwitch;
 }
 
--(UIViewController<ChoiceScreenBase> *)viewStackBottom{
-    return self.central;
-}
-
 -(id)initWithCentralViewController:(CentralViewController *)central{
     if(self = [self initWithNibName:@"IntroViewController" bundle:nil]){
         self.central = central;
@@ -124,25 +120,7 @@
 }
 
 -(void)setToSkipStory:(BOOL)skipStory{
-    if([self.central respondsToSelector:@selector(setToSkipStory:)]){
-        [self.central setToSkipStory:skipStory];
-    }
-}
-
-- (NSArray<Zone *> *)setupForAndGetZoneChoices {
-    ZoneMaker *zoneMaker = [ZoneMaker constructWithDataController:[self getTheDataController]];
-    Hero *hero = ([self getTheDataController]).userData.theHero;
-    NSArray<Zone *> *zoneChoices = [zoneMaker constructMultipleZoneChoices:hero AndMatchHeroLvl:YES];
-    return zoneChoices;
-}
-
--(void)showZoneChoiceView{
-    NSArray<Zone *> *zoneChoices = [self setupForAndGetZoneChoices];
-    ZoneChoiceViewController *zoneChoiceView = [ZoneChoiceViewController constructWithBase:self AndZoneChoices:zoneChoices];
-    [self.view addSubview:zoneChoiceView.view];
-    [self addChildViewController:zoneChoiceView];
-    [zoneChoiceView didMoveToParentViewController:self];
-    
+    [self.central setToSkipStory:skipStory];
 }
 
 -(void)pressedNext:(UIButton *)sender{
@@ -163,20 +141,15 @@
         });
         
     }else if(show){
-        [self showZoneChoiceView];
+        [ViewHelper popViewFromFront:self];
+        [self.central showZoneChoiceView];
     }
     else{
-        [self.central dismissIntro];
+        [ViewHelper popViewFromFront:self];
         
     }
     self.isStoryDone = YES;
     
 }
-
--(CoreDataStackController *)getTheDataController{
-    return [self.central getTheDataController];
-}
-
-
 
 @end

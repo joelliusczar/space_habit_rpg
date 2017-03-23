@@ -14,12 +14,13 @@
 
 @interface ZoneChoiceViewController ()
 
-@property (nonatomic,weak) UIViewController<ChoiceScreenBase> * screenBase;
+@property (nonatomic,weak) CentralViewController *central;
 @property (nonatomic,strong) NSArray<Zone *> *zones;
 @property (nonatomic,strong) UITableView *zoneChoiceTable; //TODO: determine weak vs strong
 @property (nonatomic,weak) UIButton *nextBtn;
 @property (nonatomic,weak) CustomSwitch *skipSwitch;
--(instancetype)initWithBase:(UIViewController<ChoiceScreenBase> *)screenBase AndZoneChoices:(NSArray<Zone *> *)zoneChoices;
+@property (nonatomic,weak) CoreDataStackController *dataController;
+-(instancetype)initWithCentral:(CentralViewController *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices;
 
 @end
 
@@ -57,13 +58,10 @@
     return _descViewController;
 }
 
--(UIViewController<ChoiceScreenBase> *)viewStackBottom{
-    return self.screenBase.viewStackBottom;
-}
-
--(instancetype)initWithBase:(UIViewController<ChoiceScreenBase> *)screenBase AndZoneChoices:(NSArray<Zone *> *)zoneChoices{
+-(instancetype)initWithCentral:(CentralViewController *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices{
     if(self = [self initWithNibName:@"ZoneChoiceView" bundle:nil]){
-        self.screenBase = screenBase;
+        self.central = central;
+        self.dataController = central.dataController;
         self.zones = zoneChoices;
         self.zoneChoiceTable.dataSource = self;
         self.zoneChoiceTable.rowHeight = ZONE_CHOICE_ROW_HEIGHT;
@@ -71,8 +69,8 @@
     return self;
 }
 
-+(instancetype)constructWithBase:(UIViewController<ChoiceScreenBase> *)screenBase AndZoneChoices:(NSArray<Zone *> *)zoneChoices{
-    return [[ZoneChoiceViewController alloc] initWithBase:screenBase AndZoneChoices:zoneChoices];
++(instancetype)constructWithCentral:(CentralViewController *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices{
+    return [[ZoneChoiceViewController alloc] initWithCentral:central AndZoneChoices:zoneChoices];
 }
 
 - (void)viewDidLoad {
@@ -99,12 +97,8 @@
     return cell; 
 }
 
--(CoreDataStackController *)getTheDataController{
-    return [self.screenBase getTheDataController];
-}
-
 -(void)saveZoneChoice:(Zone *)zoneChoice{
-    CoreDataStackController *dataController = [self getTheDataController];
+    CoreDataStackController *dataController = self.dataController;
     for(int32_t i = 0;i<self.zones.count;i++){
         if(self.zones[i] != zoneChoice){
             [dataController softDeleteModel:self.zones[i]];
@@ -113,9 +107,6 @@
     [dataController save];
 }
 
--(void)jumpToCentralView:(UIViewController *)currentView{
-    [ViewHelper popViewFromFront:currentView OfParent:self.screenBase.viewStackBottom];
-}
 
 /*
 #pragma mark - Navigation
