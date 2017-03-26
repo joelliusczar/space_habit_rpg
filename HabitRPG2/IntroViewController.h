@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "CoreDataStackController.h"
 #import "Settings+CoreDataClass.h"
-#import "CentralViewController.h"
+#import "CentralViewControllerP.h"
 
 @interface IntroViewController : UIViewController
--(id)initWithCentralViewController:(CentralViewController *)central;
+-(id)initWithCentralViewController:(UIViewController<CentralViewControllerP> *)central;
 -(void)setToSkipStory:(BOOL)skipStory;
 @end
 

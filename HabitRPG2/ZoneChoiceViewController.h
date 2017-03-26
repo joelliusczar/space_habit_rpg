@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "Zone+CoreDataClass.h"
 #import "ZoneDescriptionViewController.h"
-#import "CentralViewController.h"
+#import "CentralViewControllerP.h"
 
 @class ZoneDescriptionViewController;
 
 @interface ZoneChoiceViewController : UIViewController <UITableViewDataSource>
-@property (nonatomic,weak) CentralViewController *central;
+@property (nonatomic,weak) UIViewController <CentralViewControllerP> *central;
 @property (nonatomic,strong) ZoneDescriptionViewController *descViewController;
-+(instancetype)constructWithCentral:(CentralViewController *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices;
++(instancetype)constructWithCentral:(UIViewController <CentralViewControllerP> *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices;
 -(void)saveZoneChoice:(Zone *)zoneChoice;
 @end

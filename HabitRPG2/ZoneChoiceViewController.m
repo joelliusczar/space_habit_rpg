@@ -18,7 +18,7 @@
 @property (nonatomic,weak) UIButton *nextBtn;
 @property (nonatomic,weak) CustomSwitch *skipSwitch;
 @property (nonatomic,weak) CoreDataStackController *dataController;
--(instancetype)initWithCentral:(CentralViewController *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices;
+-(instancetype)initWithCentral:(UIViewController<CentralViewControllerP> *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices;
 
 @end
 
@@ -56,7 +56,7 @@
     return _descViewController;
 }
 
--(instancetype)initWithCentral:(CentralViewController *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices{
+-(instancetype)initWithCentral:(UIViewController<CentralViewControllerP> *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices{
     if(self = [self initWithNibName:@"ZoneChoiceView" bundle:nil]){
         self.central = central;
         self.dataController = central.dataController;
@@ -67,7 +67,7 @@
     return self;
 }
 
-+(instancetype)constructWithCentral:(CentralViewController *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices{
++(instancetype)constructWithCentral:(UIViewController<CentralViewControllerP> *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices{
     return [[ZoneChoiceViewController alloc] initWithCentral:central AndZoneChoices:zoneChoices];
 }
 

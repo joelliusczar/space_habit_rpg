@@ -31,6 +31,11 @@
 
 @implementation CentralViewController
 
+@synthesize userHero = _userHero;
+@synthesize userSettings = _userSettings;
+@synthesize nowMonster = _nowMonster;
+@synthesize nowZone = _nowZone;
+
 @synthesize editController = _editController;
 -(EditNavigationController *)editController{
     if(_editController == nil){
@@ -55,17 +60,15 @@
     return _tabsController;
 }
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self determineIfFirstTimeAndSetupSettings];
-
-    
+    [self determineIfFirstTimeAndSetupSettings]; 
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
 }
-
 
 -(void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -124,7 +127,9 @@
     if(self.dataController.userData.theDataInfo.isNew){
         [self showIntroView];        
     }
-    
+    else{
+        
+    }
 }
 
 -(void)setupData{
@@ -132,18 +137,9 @@
     self.userHero = self.dataController.userData.theHero;
 }
 
--(void)doActionForCompletedDaily:(Daily *)daily{
-    
-}
-
--(void)undoActionForCompletedDaily:(Daily *)daily{
-
-}
-
 -(void)setToSkipStory:(BOOL)skipStory{
     self.userSettings.storyModeisOn = skipStory;
     [self.dataController save];
-    
 }
 
 -(void)showZoneChoiceView{
@@ -155,8 +151,9 @@
     [zoneChoiceView didMoveToParentViewController:self];
 }
 
--(void)afterIntro:(Zone *)firstZone{
+-(void)setupNormal{
     [self setupTabs];
 }
+
 
 @end

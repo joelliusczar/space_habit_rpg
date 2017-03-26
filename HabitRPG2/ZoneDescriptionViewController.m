@@ -7,12 +7,12 @@
 //
 
 #import "ZoneDescriptionViewController.h"
-#import "CentralViewController.h"
+#import "CentralViewControllerP.h"
 #import "ViewHelper.h"
 
 @interface ZoneDescriptionViewController ()
 @property (nonatomic,weak) ZoneChoiceViewController *prevScreen;
-@property (nonatomic,weak) CentralViewController *central;
+@property (nonatomic,weak) UIViewController <CentralViewControllerP> *central;
 @property (nonatomic,weak) UITextView *zoneDescription;
 @property (nonatomic,weak) UIButton *confirmBtn;
 @property (nonatomic,strong) UISwipeGestureRecognizer *backSwipe;
@@ -79,7 +79,7 @@
 -(void)confirmBtn_click_action:(UIButton *)sender{
     [self.prevScreen saveZoneChoice:self.model];
     [ViewHelper popViewFromFront:self.prevScreen];
-    [self.central afterIntro:self.model];
+    [self.central setupNormal];
 }
 
 /*

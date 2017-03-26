@@ -18,7 +18,7 @@
 #import "ViewHelper.h"
 
 @interface IntroViewController ()
-@property (nonatomic,weak) CentralViewController *central;
+@property (nonatomic,weak) UIViewController<CentralViewControllerP> *central;
 @property (nonatomic,weak) UITextView *introMessage;
 @property (nonatomic,weak) UILabel *headline;
 @property (nonatomic,weak) UIButton *nextButton;
@@ -64,7 +64,7 @@
     return _skipSwitch;
 }
 
--(id)initWithCentralViewController:(CentralViewController *)central{
+-(id)initWithCentralViewController:(UIViewController<CentralViewControllerP> *)central{
     if(self = [self initWithNibName:@"IntroViewController" bundle:nil]){
         self.central = central;
         self.isThreadAllowed = YES;
