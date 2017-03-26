@@ -20,6 +20,7 @@
 -(Zone *)constructZoneChoice:(Hero *)hero AndMatchHeroLvl:(BOOL)matchLvl;
 -(NSArray<Zone *> *)constructMultipleZoneChoices:(Hero *)hero AndMatchHeroLvl:(BOOL)matchLvl;
 -(Zone *)getZoneByZoneKey:(NSString *)zoneKey;
+-(Zone *)getZone:(BOOL)isFront;
 -(Zone * )constructEmptyZone;
 -(int64_t)getNextUniqueId;
 @end

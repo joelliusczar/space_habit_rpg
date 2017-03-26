@@ -24,6 +24,8 @@
 		27127E351DDD42B50074A8F5 /* DataInfo+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27127E321DDD42B50074A8F5 /* DataInfo+CoreDataClass.m */; };
 		27127E361DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27127E341DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m */; };
 		27127E381DE1ED980074A8F5 /* TestZoneMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 27127E371DE1ED980074A8F5 /* TestZoneMaker.m */; };
+		27AE66721E875EFB000F31BD /* Suffix+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE666F1E875EFB000F31BD /* Suffix+CoreDataClass.m */; };
+		27AE66731E875EFB000F31BD /* Suffix+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE66711E875EFB000F31BD /* Suffix+CoreDataProperties.m */; };
 		27C92C071E2757F80025727E /* ConvienceScripts.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C061E2757F80025727E /* ConvienceScripts.m */; };
 		27C92C0E1E2758220025727E /* CoreDataStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260641D7FC3F200425D46 /* CoreDataStackController.m */; };
 		27C92C0F1E287B960025727E /* OnlyOneEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */; };
@@ -156,6 +158,11 @@
 		27127E341DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DataInfo+CoreDataProperties.m"; sourceTree = SOURCE_ROOT; };
 		27127E371DE1ED980074A8F5 /* TestZoneMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestZoneMaker.m; sourceTree = "<group>"; };
 		27AE66541E8720F9000F31BD /* CentralViewControllerP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralViewControllerP.h; sourceTree = "<group>"; };
+		27AE66551E87561B000F31BD /* Model 14.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 14.xcdatamodel"; sourceTree = "<group>"; };
+		27AE666E1E875EFB000F31BD /* Suffix+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Suffix+CoreDataClass.h"; sourceTree = "<group>"; };
+		27AE666F1E875EFB000F31BD /* Suffix+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Suffix+CoreDataClass.m"; sourceTree = "<group>"; };
+		27AE66701E875EFB000F31BD /* Suffix+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Suffix+CoreDataProperties.h"; sourceTree = "<group>"; };
+		27AE66711E875EFB000F31BD /* Suffix+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Suffix+CoreDataProperties.m"; sourceTree = "<group>"; };
 		27C92B991E233F730025727E /* Model 12.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 12.xcdatamodel"; sourceTree = "<group>"; };
 		27C92C041E2757F80025727E /* ConvienceScripts.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConvienceScripts.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C92C061E2757F80025727E /* ConvienceScripts.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConvienceScripts.m; sourceTree = "<group>"; };
@@ -325,6 +332,17 @@
 				27127E341DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m */,
 			);
 			name = DataInfo;
+			sourceTree = "<group>";
+		};
+		27AE66761E876007000F31BD /* Suffix */ = {
+			isa = PBXGroup;
+			children = (
+				27AE666E1E875EFB000F31BD /* Suffix+CoreDataClass.h */,
+				27AE666F1E875EFB000F31BD /* Suffix+CoreDataClass.m */,
+				27AE66701E875EFB000F31BD /* Suffix+CoreDataProperties.h */,
+				27AE66711E875EFB000F31BD /* Suffix+CoreDataProperties.m */,
+			);
+			name = Suffix;
 			sourceTree = "<group>";
 		};
 		27C92C051E2757F80025727E /* ConvienceScripts */ = {
@@ -560,10 +578,6 @@
 		68DD159E1D9CAA010073E7D8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				27127E171DDAD6300074A8F5 /* DataInfo */,
-				686ED3AD1DADE4DB004EDD36 /* Monster */,
-				686ED3AC1DADE4C5004EDD36 /* Hero */,
-				686ED3AB1DADE4B3004EDD36 /* Zone */,
 				686ED3AA1DADE4A4004EDD36 /* Settings */,
 				686ED3A91DADE47C004EDD36 /* EditingScreen */,
 				686ED3A81DADDF69004EDD36 /* Protocols */,
@@ -583,6 +597,7 @@
 			isa = PBXGroup;
 			children = (
 				68F3F9AB1D70E82E00840DD2 /* HabitRPG2 */,
+				27AE66761E876007000F31BD /* Suffix */,
 				68BA38881D93611300CB5A76 /* TestHelpers */,
 				68F3F9C51D70E82E00840DD2 /* HabitRPG2Tests */,
 				68F3F9D01D70E82E00840DD2 /* HabitRPG2UITests */,
@@ -604,10 +619,14 @@
 		68F3F9AB1D70E82E00840DD2 /* HabitRPG2 */ = {
 			isa = PBXGroup;
 			children = (
-				686ED39F1DA60142004EDD36 /* Menu */,
+				686ED3AC1DADE4C5004EDD36 /* Hero */,
+				686ED3AD1DADE4DB004EDD36 /* Monster */,
+				686ED3AB1DADE4B3004EDD36 /* Zone */,
 				686ED39E1DA600A7004EDD36 /* Goods */,
 				686ED39D1DA6007E004EDD36 /* Habits */,
 				686ED39C1DA5FF28004EDD36 /* Todos */,
+				27127E171DDAD6300074A8F5 /* DataInfo */,
+				686ED39F1DA60142004EDD36 /* Menu */,
 				68BE458D1D9DE889003F3400 /* Story */,
 				68DD159E1D9CAA010073E7D8 /* Common */,
 				68D25C231D8E2ACA00FF1BE0 /* Dailies */,
@@ -901,6 +920,7 @@
 				68F3F9B11D70E82E00840DD2 /* AppDelegate.m in Sources */,
 				27127E351DDD42B50074A8F5 /* DataInfo+CoreDataClass.m in Sources */,
 				68BA38861D93576600CB5A76 /* CommonUtilities.m in Sources */,
+				27AE66731E875EFB000F31BD /* Suffix+CoreDataProperties.m in Sources */,
 				68D25C221D8B951B00FF1BE0 /* DailyEditController.m in Sources */,
 				68E260651D7FC3F200425D46 /* CoreDataStackController.m in Sources */,
 				2712176E1DCE84310072ACC6 /* Settings+CoreDataClass.m in Sources */,
@@ -936,6 +956,7 @@
 				68E260621D7BC3EA00425D46 /* Model.xcdatamodeld in Sources */,
 				68A921FE1DBC81EA007C946C /* ZoneMaker.m in Sources */,
 				68F3F9AE1D70E82E00840DD2 /* main.m in Sources */,
+				27AE66721E875EFB000F31BD /* Suffix+CoreDataClass.m in Sources */,
 				271217701DCE84310072ACC6 /* Zone+CoreDataClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1179,6 +1200,7 @@
 		68E260601D7BC3EA00425D46 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				27AE66551E87561B000F31BD /* Model 14.xcdatamodel */,
 				27C92C291E2D87800025727E /* Model 13.xcdatamodel */,
 				27C92B991E233F730025727E /* Model 12.xcdatamodel */,
 				27F4401D1E221BB6002BEDD4 /* Model 9.xcdatamodel */,
@@ -1191,7 +1213,7 @@
 				68BE458C1D9CCF4C003F3400 /* Model 2.xcdatamodel */,
 				68E260611D7BC3EA00425D46 /* Model.xcdatamodel */,
 			);
-			currentVersion = 27C92C291E2D87800025727E /* Model 13.xcdatamodel */;
+			currentVersion = 27AE66551E87561B000F31BD /* Model 14.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

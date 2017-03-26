@@ -14,6 +14,7 @@
 #import "CommonUtilities.h"
 #import "DataInfo+CoreDataClass.h"
 #import "CoreDataStackController.h"
+#import "Suffix+CoreDataClass.h"
 
 
 @interface ZoneMaker()
@@ -50,6 +51,7 @@
     z.monstersKilled = 0;
     z.suffixNumber = 0;
     z.uniqueId = [self getNextUniqueId];
+    z.isFront = YES;
     [self.dataController save];
     return z;
 }
@@ -76,12 +78,20 @@
     return [NSArray arrayWithArray:choices];
 }
 
--(int32_t)getVisitCountForZone:(NSString *)zoneKey{
-    Zone * z = [self getZoneByZoneKey:zoneKey];
-    int32_t visitCount = z.suffixNumber;
-    return visitCount+1;
+-(int32_t)getVisitCountForZone:(NSString *)zoneKey{    
+    Suffix *s = [self getSuffix:zoneKey];
+    return s.visitCount+1;
 }
 
+-(Suffix *)getSuffix:(NSString *)zoneKey{
+    NSFetchRequest<Suffix *> *request = [Suffix fetchRequest];
+    NSSortDescriptor *sortByZoneKey = [[NSSortDescriptor alloc] initWithKey:@"zoneKey" ascending:NO];
+    NSPredicate *filter = [NSPredicate predicateWithFormat:@"zoneKey = %@",zoneKey];
+    return (Suffix *)[self.dataController getItemWithRequest:request predicate:filter sortBy:@[sortByZoneKey]];
+}
+
+//I think this may be unneeded. But I'll leave it alone for now.
+//I think it is a relic of the graph way of storing previous zones.
 -(Zone *)getZoneByZoneKey:(NSString *)zoneKey{
     NSFetchRequest<Zone *> *request = [Zone fetchRequest];
     NSSortDescriptor *sortBySuffixNumber= [[NSSortDescriptor alloc] initWithKey:@"suffixNumber" ascending:NO];
@@ -92,6 +102,13 @@
 
 -(Zone *)constructEmptyZone{
     return (Zone *)[self.dataController constructEmptyEntity:ZONE_ENTITY_NAME];
+}
+
+-(Zone *)getZone:(BOOL)isFront{
+    NSFetchRequest<Zone *> *request = [Zone fetchRequest];
+    NSSortDescriptor *sortByIsFront = [[NSSortDescriptor alloc] initWithKey:@"isFront" ascending:YES];
+    NSPredicate *filter = [NSPredicate predicateWithFormat:@"isFront =%@",isFront];
+    return (Zone *)[self.dataController getItemWithRequest:request predicate:filter sortBy:@[sortByIsFront]];
 }
 
 -(int64_t)getNextUniqueId{
