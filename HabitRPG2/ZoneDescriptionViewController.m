@@ -79,7 +79,7 @@
 -(void)confirmBtn_click_action:(UIButton *)sender{
     [self.prevScreen saveZoneChoice:self.model];
     [ViewHelper popViewFromFront:self.prevScreen];
-    [self.central setupNormal];
+    [self.central afterIntro:self.model];
 }
 
 /*

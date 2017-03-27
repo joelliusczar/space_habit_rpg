@@ -21,6 +21,7 @@
 #import "constants.h"
 #import "ViewHelper.h"
 #import "ZoneHelper.h"
+#import "ZoneMaker.h"
 
 @import CoreGraphics;
 
@@ -151,7 +152,8 @@
     [zoneChoiceView didMoveToParentViewController:self];
 }
 
--(void)setupNormal{
+-(void)afterIntro:(Zone *)zoneChoice{
+    self.nowZone = zoneChoice;
     [self setupTabs];
 }
 

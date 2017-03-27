@@ -22,6 +22,11 @@
 
 @implementation CoreDataStackController
 
+@synthesize disableSave = _disableSave;
+@synthesize isTesting = _isTesting;
+@synthesize disabledSaveResult = _disabledSaveResult;
+
+
 @synthesize userData = _userData;
 -(OnlyOneEntities *)userData{
     if(!_userData){
@@ -51,10 +56,6 @@
         _coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
     }
     return _coordinator;
-}
-
--(instancetype)init{
-    return [self initWithDBFileName:@"Model.sqlite"];
 }
 
 -(instancetype)initWithDBFileName: (NSString *) dbFileName{

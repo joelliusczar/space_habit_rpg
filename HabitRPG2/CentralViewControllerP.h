@@ -22,5 +22,5 @@
 @property (nonatomic,strong) Monster *nowMonster;
 -(void)setToSkipStory:(BOOL)skipStory;
 -(void)showZoneChoiceView;
--(void)setupNormal;
+-(void)afterIntro:(Zone *)zoneChoice;
 @end
