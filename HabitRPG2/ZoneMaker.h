@@ -7,15 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CoreDataStackController.h"
+#import "P_CoreData.h"
 #import "Hero+CoreDataClass.h"
 #import "Zone+CoreDataClass.h"
 
 
 
 @interface ZoneMaker : NSObject
-+(instancetype)constructWithDataController:(CoreDataStackController *)dataController;
--(instancetype)initWithDataController:(CoreDataStackController *)dataController;
++(instancetype)constructWithDataController:(NSObject<P_CoreData> *)dataController;
+-(instancetype)initWithDataController:(NSObject<P_CoreData> *)dataController;
 -(Zone *)constructHomeZone;
 -(Zone *)constructZoneChoice:(Hero *)hero AndMatchHeroLvl:(BOOL)matchLvl;
 -(NSArray<Zone *> *)constructMultipleZoneChoices:(Hero *)hero AndMatchHeroLvl:(BOOL)matchLvl;

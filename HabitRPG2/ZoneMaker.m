@@ -13,12 +13,11 @@
 #import "stdlib.h"
 #import "CommonUtilities.h"
 #import "DataInfo+CoreDataClass.h"
-#import "CoreDataStackController.h"
 #import "Suffix+CoreDataClass.h"
 
 
 @interface ZoneMaker()
-@property (nonatomic,weak) CoreDataStackController *dataController;
+@property (nonatomic,weak) NSObject<P_CoreData> *dataController;
 @property (nonatomic,strong) CommonUtilities *util;
 @end
 
@@ -32,14 +31,14 @@
     return _util;
 }
 
--(instancetype)initWithDataController:(CoreDataStackController*)dataController{
+-(instancetype)initWithDataController:(NSObject<P_CoreData>*)dataController{
     if(self = [self init]){
         self.dataController = dataController;
     }
     return self;
 }
 
-+(instancetype)constructWithDataController:(CoreDataStackController *)dataController{
++(instancetype)constructWithDataController:(NSObject<P_CoreData>*)dataController{
     return [[ZoneMaker alloc] initWithDataController:dataController];
 }
 

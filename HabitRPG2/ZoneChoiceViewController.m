@@ -17,7 +17,7 @@
 @property (nonatomic,strong) UITableView *zoneChoiceTable; //TODO: determine weak vs strong
 @property (nonatomic,weak) UIButton *nextBtn;
 @property (nonatomic,weak) CustomSwitch *skipSwitch;
-@property (nonatomic,weak) CoreDataStackController *dataController;
+@property (nonatomic,weak) NSObject<P_CoreData> *dataController;
 -(instancetype)initWithCentral:(UIViewController<CentralViewControllerP> *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices;
 
 @end
@@ -96,7 +96,7 @@
 }
 
 -(void)saveZoneChoice:(Zone *)zoneChoice{
-    CoreDataStackController *dataController = self.dataController;
+    NSObject<P_CoreData> *dataController = self.dataController;
     for(int32_t i = 0;i<self.zones.count;i++){
         if(self.zones[i] != zoneChoice){
             [dataController softDeleteModel:self.zones[i]];

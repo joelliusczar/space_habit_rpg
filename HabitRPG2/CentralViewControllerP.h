@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "EditNavigationController.h"
-#import "CoreDataStackController.h"
+#import "P_CoreData.h"
 #import "Daily+CoreDataClass.h"
 #import "Zone+CoreDataClass.h"
 #import "Monster+CoreDataClass.h"
 
 @protocol CentralViewControllerP <NSObject>
-@property (nonatomic,strong) CoreDataStackController *dataController;
+@property (nonatomic,strong) NSObject<P_CoreData> *dataController;
 @property (nonatomic,strong) EditNavigationController *editController;
 @property (nonatomic,weak) Settings *userSettings;
 @property (nonatomic,weak) Hero *userHero;

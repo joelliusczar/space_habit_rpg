@@ -14,6 +14,7 @@
 #import "MenuViewController.h"
 #import "UIUtilities.h"
 #import "CoreDataStackController.h"
+#import "P_CoreData.h"
 #import "Settings+CoreDataClass.h"
 #import "Hero+CoreDataClass.h"
 #import "IntroViewController.h"
@@ -46,9 +47,9 @@
 }
 
 @synthesize dataController = _dataController;
--(CoreDataStackController *)dataController{
+-(NSObject<P_CoreData> *)dataController{
     if(_dataController == nil){
-        _dataController = [[CoreDataStackController alloc] init];
+        _dataController = [[CoreDataStackController alloc] initWithDBFileName:nil];
     }
     return _dataController;
 }

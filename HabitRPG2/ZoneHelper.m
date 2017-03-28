@@ -153,7 +153,7 @@
     return [NSArray arrayWithArray:availableZoneGroups];
 }
 
-+(NSArray<Zone *> *)setupForAndGetZoneChoices:(CoreDataStackController *)
++(NSArray<Zone *> *)setupForAndGetZoneChoices:(NSObject<P_CoreData> *)
 dataController{
     ZoneMaker *zoneMaker = [ZoneMaker constructWithDataController:dataController];
     Hero *hero = dataController.userData.theHero;

@@ -22,7 +22,7 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 @property (nonatomic,strong) UIStepper *rateStep;
 @property (nonatomic,strong) UIButton *rewardCustomBtn;
 @property (nonatomic,strong) UILabel *rewardCustomLbl;
-@property (nonatomic,weak)  CoreDataStackController *dataController;
+@property (nonatomic,weak)  NSObject<P_CoreData> *dataController;
 @property (nonatomic,weak) DailyViewController *parentDailyController;
 @property (nonatomic,weak) Daily *modelForEditing;
 @property (nonatomic,strong) DailyHelper *dailyHelper;
@@ -141,7 +141,7 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 }
 
 
--(id)initWithDataController:(CoreDataStackController *)dataController AndWithParentDailyController:(DailyViewController *)parentDailyController{
+-(id)initWithDataController:(NSObject<P_CoreData> *)dataController AndWithParentDailyController:(DailyViewController *)parentDailyController{
     if(self = [self initWithNibName:@"DailyEditView" bundle:nil]){
         self.dataController = dataController;
         self.parentDailyController = parentDailyController;

@@ -18,7 +18,7 @@
 
 @interface DailyViewController ()
 
-@property (nonatomic,weak) CoreDataStackController *dataController;
+@property (nonatomic,weak) NSObject<P_CoreData> *dataController;
 @property (nonatomic,weak) EditNavigationController *editController;
 @property (nonatomic,weak) UIButton *addButton;
 @property (nonatomic,strong) DailyEditController *dailyEditor;
@@ -77,7 +77,7 @@ static NSString *const EntityName = @"Daily";
     return _dailyHelper;
 }
 
--(id)initWithDataController:(CoreDataStackController *)dataController AndWithParent:(CentralViewController *)parent
+-(id)initWithDataController:(NSObject<P_CoreData> *)dataController AndWithParent:(CentralViewController *)parent
 {
     if(self = [self initWithNibName:@"DailyViewController" bundle:nil]){
         self.parentController = parent;
@@ -116,7 +116,7 @@ static NSString *const EntityName = @"Daily";
     // Dispose of any resources that can be recreated.
 }
 
--(void)setuptab:(CoreDataStackController *)dataController{
+-(void)setuptab:(NSObject<P_CoreData> *)dataController{
     UITabBarItem *tbi = [self tabBarItem];
     [self setupData:dataController];
     
@@ -169,7 +169,7 @@ static NSString *const EntityName = @"Daily";
     }
 }
 
--(void)setupData:(CoreDataStackController *)data{
+-(void)setupData:(NSObject<P_CoreData> *)data{
     self.dataController = data;
     NSFetchedResultsController *resultsController = [self.dataController getItemFetcher:DAILY_ENTITY_NAME predicate:nil sortBy:[self getFetchDescriptors]];
     NSError *error;

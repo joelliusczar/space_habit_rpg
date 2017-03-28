@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CoreDataStackController.h"
 #import "Settings+CoreDataClass.h"
 #import "CentralViewControllerP.h"
 

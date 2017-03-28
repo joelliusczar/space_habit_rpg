@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CoreDataStackController.h"
+#import "P_CoreData.h"
 #import "Zone+CoreDataClass.h"
 
 
@@ -17,6 +17,6 @@
 +(NSArray*)getSymbols;
 +(NSString*)getSymbolSuffix:(NSUInteger)visitCount;
 +(NSArray*)getUnlockedZoneGroupKeys:(NSUInteger)heroLvl;
-+ (NSArray<Zone *> *)setupForAndGetZoneChoices:(CoreDataStackController *)
++ (NSArray<Zone *> *)setupForAndGetZoneChoices:(NSObject<P_CoreData> *)
 dataController;
 @end

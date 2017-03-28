@@ -11,7 +11,7 @@
 
 
 @interface OnlyOneEntities()
-@property (nonatomic,weak)  CoreDataStackController *dataController;
+@property (nonatomic,weak)  NSObject<P_CoreData> *dataController;
 @end
 
 @implementation OnlyOneEntities
@@ -49,7 +49,7 @@
     return _theHero;
 }
 
--(instancetype)initWithDataController:(CoreDataStackController *)dataController{
+-(instancetype)initWithDataController:(NSObject<P_CoreData> *)dataController{
     self = [super init];
     if(!self){
         return nil;

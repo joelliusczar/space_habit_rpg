@@ -10,12 +10,12 @@
 #import "DataInfo+CoreDataClass.h"
 #import "Settings+CoreDataClass.h"
 #import "Hero+CoreDataClass.h"
-#import "CoreDataStackController.h"
-@class CoreDataStackController;
+#import "P_CoreData.h"
+@protocol P_CoreData;
 
 @interface OnlyOneEntities : NSObject
 @property (nonatomic,strong) DataInfo *theDataInfo;
 @property (nonatomic,strong) Settings *theSettings;
 @property (nonatomic,strong) Hero *theHero;
--(instancetype)initWithDataController:(CoreDataStackController *)dataController;
+-(instancetype)initWithDataController:(NSObject<P_CoreData> *)dataController;
 @end

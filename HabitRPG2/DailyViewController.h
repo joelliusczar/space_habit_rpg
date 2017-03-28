@@ -9,7 +9,7 @@
 
 
 #import <UIKit/UIKit.h>
-#import "CoreDataStackController.h"
+#import "P_CoreData.h"
 #import "CentralViewController.h"
 #import "Daily+CoreDataClass.h"
 
@@ -17,8 +17,8 @@
 
 
 @interface DailyViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
--(id)initWithDataController:(CoreDataStackController *)dataController AndWithParent:(CentralViewController *)parent;
--(void)setuptab:(CoreDataStackController *)dataController;
+-(id)initWithDataController:(NSObject<P_CoreData> *)dataController AndWithParent:(CentralViewController *)parent;
+-(void)setuptab:(NSObject<P_CoreData> *)dataController;
 -(void)showNewDaily:(Daily *)daily;
 -(void)refreshTableAtRow:(NSIndexPath *)row;
 -(void)removeItemFromViewAtRow:(NSIndexPath *)rowInfo;
