@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ASTEROID_FIELD</key>
+	<dict>
+		<key>BIG_ASTEROID</key>
+		<dict>
+			<key>NAME</key>
+			<string>Big Ass Asteroid</string>
+			<key>DESCRIPTION</key>
+			<string></string>
+			<key>ATTACK_LVL</key>
+			<integer>1</integer>
+			<key>DEFENSE_LVL</key>
+			<integer>0</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>1</integer>
+			<key>TREASURE_DROP_RATE</key>
+			<real>0.1</real>
+		</dict>
+		<key>MINER</key>
+		<dict>
+			<key>NAME</key>
+			<string>Rogue Miner</string>
+			<key>DESCRIPTION</key>
+			<string></string>
+			<key>ATTACK_LVL</key>
+			<integer>1</integer>
+			<key>DEFENSE_LVL</key>
+			<integer>0</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>1</integer>
+			<key>TREASURE_DROP_RATE</key>
+			<real>0.1</real>
+		</dict>
+		<key>AMBUSH_PIRATES</key>
+		<dict>
+			<key>NAME</key>
+			<string>Sneaky Ambush Pirates</string>
+			<key>DESCRIPTION</key>
+			<string>These Sneaky Pirates hide behind asteroids and surprise you. They&apos;re sorta like deadlines.</string>
+			<key>ATTACK_LVL</key>
+			<integer>1</integer>
+			<key>DEFENSE_LVL</key>
+			<integer>0</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>1</integer>
+			<key>TREASURE_DROP_RATE</key>
+			<real>0.1</real>
+		</dict>
+		<key>SPACE_GOLEM</key>
+		<dict>
+			<key>NAME</key>
+			<string>Space Golem</string>
+			<key>DESCRIPTION</key>
+			<string></string>
+			<key>ATTACK_LVL</key>
+			<integer>1</integer>
+			<key>DEFENSE_LVL</key>
+			<integer>0</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>1</integer>
+			<key>TREASURE_DROP_RATE</key>
+			<real>0.1</real>
+		</dict>
+		<key>MOTHS</key>
+		<dict>
+			<key>NAME</key>
+			<string>Asteroid Moths</string>
+			<key>DESCRIPTION</key>
+			<string></string>
+			<key>ATTACK_LVL</key>
+			<integer>1</integer>
+			<key>DEFENSE_LVL</key>
+			<integer>0</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>1</integer>
+			<key>TREASURE_DROP_RATE</key>
+			<real>0.1</real>
+		</dict>
+	</dict>
+	<key>EMPTY_SPACE</key>
+	<dict>
+		<key>DREAD_PIRATES</key>
+		<dict>
+			<key>NAME</key>
+			<string>Dread Pirates</string>
+			<key>DESCRIPTION</key>
+			<string></string>
+			<key>ATTACK_LVL</key>
+			<integer>1</integer>
+			<key>DEFENSE_LVL</key>
+			<integer>0</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>1</integer>
+			<key>TREASURE_DROP_RATE</key>
+			<real>0.1</real>
+		</dict>
+		<key>GRAVITY_HOLE</key>
+		<dict>
+			<key>NAME</key>
+			<string>Gravity Hole</string>
+			<key>DESCRIPTION</key>
+			<string></string>
+			<key>ATTACK_LVL</key>
+			<integer>1</integer>
+			<key>DEFENSE_LVL</key>
+			<integer>0</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>1</integer>
+			<key>TREASURE_DROP_RATE</key>
+			<real>0.1</real>
+		</dict>
+		<key>SPACE_PARASITES</key>
+		<dict>
+			<key>NAME</key>
+			<string>Space Parasite</string>
+			<key>DESCRIPTION</key>
+			<string></string>
+			<key>ATTACK_LVL</key>
+			<integer>1</integer>
+			<key>DEFENSE_LVL</key>
+			<integer>0</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>1</integer>
+			<key>TREASURE_DROP_RATE</key>
+			<real>0.1</real>
+		</dict>
+		<key>ZOMBIE_FREIGHTER</key>
+		<dict>
+			<key>NAME</key>
+			<string>Zombie Infested Freighter</string>
+			<key>DESCRIPTION</key>
+			<string></string>
+			<key>ATTACK_LVL</key>
+			<integer>1</integer>
+			<key>DEFENSE_LVL</key>
+			<integer>0</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>1</integer>
+			<key>TREASURE_DROP_RATE</key>
+			<real>0.1</real>
+		</dict>
+	</dict>
+	<key>GAS</key>
+	<dict>
+		<key>CLOUD_FORTRESS</key>
+		<dict>
+			<key>NAME</key>
+			<string>Cloud Fortress</string>
+			<key>DESCRIPTION</key>
+			<string></string>
+			<key>ATTACK_LVL</key>
+			<integer>1</integer>
+			<key>DEFENSE_LVL</key>
+			<integer>0</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>1</integer>
+			<key>TREASURE_DROP_RATE</key>
+			<real>0.1</real>
+		</dict>
+		<key>POISON_CLOUD</key>
+		<dict>
+			<key>NAME</key>
+			<string>Poison Cloud</string>
+			<key>DESCRIPTION</key>
+			<string>Poison Clouds engulf star ships and suffocate its crew with its toxic atmosphere. A star ship must escape the cloud and attack from outside</string>
+			<key>ATTACK_LVL</key>
+			<integer>1</integer>
+			<key>DEFENSE_LVL</key>
+			<integer>0</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>1</integer>
+			<key>TREASURE_DROP_RATE</key>
+			<real>0.1</real>
+		</dict>
+	</dict>
+	<key>ALL</key>
+	<dict>
+		<key>MECH</key>
+		<dict>
+			<key>NAME</key>
+			<string>Mech</string>
+			<key>DESCRIPTION</key>
+			<string>These mechs started off as flotsam and jetsam, but they became sentient. This is what happens when you don&apos;t deal with your space mess!</string>
+			<key>ATTACK_LVL</key>
+			<integer>1</integer>
+			<key>DEFENSE_LVL</key>
+			<integer>0</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>1</integer>
+			<key>TREASURE_DROP_RATE</key>
+			<real>0.1</real>
+		</dict>
+		<key>PIRATES</key>
+		<dict>
+			<key>NAME</key>
+			<string>Petty Space Pirates</string>
+			<key>DESCRIPTION</key>
+			<string>These space pirates</string>
+			<key>ATTACK_LVL</key>
+			<integer>1</integer>
+			<key>DEFENSE_LVL</key>
+			<integer>0</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>1</integer>
+			<key>TREASURE_DROP_RATE</key>
+			<real>0.1</real>
+		</dict>
+		<key>M_SCOUT</key>
+		<dict>
+			<key>NAME</key>
+			<string>Malesterium Scouts</string>
+			<key>DESCRIPTION</key>
+			<string>These scouts scope the galaxy for vulnerable zones for the Malesterium to conquer. This empire has a weakness though -- their pride</string>
+			<key>ATTACK_LVL</key>
+			<integer>1</integer>
+			<key>DEFENSE_LVL</key>
+			<integer>0</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>1</integer>
+			<key>TREASURE_DROP_RATE</key>
+			<real>0.1</real>
+		</dict>
+		<key>SMALL_ASTEROID</key>
+		<dict>
+			<key>NAME</key>
+			<string>Small Asteroid</string>
+			<key>DESCRIPTION</key>
+			<string>Small asteroids are merely distractions to the brave explorer, but even small distractions can ruin a spaceship&apos;s momentum.</string>
+			<key>ATTACK_LVL</key>
+			<integer>1</integer>
+			<key>DEFENSE_LVL</key>
+			<integer>0</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>1</integer>
+			<key>TREASURE_DROP_RATE</key>
+			<real>0.1</real>
+		</dict>
+		<key>SPACE_SLIME</key>
+		<dict>
+			<key>NAME</key>
+			<string>Space Slime</string>
+			<key>DESCRIPTION</key>
+			<string>Space slimes when killed can be eaten and have a sweet taste but eating them tends to affect one&apos;s mood and motivations.</string>
+			<key>ATTACK_LVL</key>
+			<integer>1</integer>
+			<key>DEFENSE_LVL</key>
+			<integer>0</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>1</integer>
+			<key>TREASURE_DROP_RATE</key>
+			<real>0.1</real>
+		</dict>
+		<key>SPACEMAN</key>
+		<dict>
+			<key>NAME</key>
+			<string>Spaceman</string>
+			<key>DESCRIPTION</key>
+			<string>These disgruntled spacemen are explorers who lost their way years ago, and they only want to pull others down to their level.</string>
+			<key>ATTACK_LVL</key>
+			<integer>1</integer>
+			<key>DEFENSE_LVL</key>
+			<integer>0</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>1</integer>
+			<key>TREASURE_DROP_RATE</key>
+			<real>0.1</real>
+		</dict>
+	</dict>
+</dict>
+</plist>

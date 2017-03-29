@@ -25,6 +25,8 @@
 		27127E361DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27127E341DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m */; };
 		27127E381DE1ED980074A8F5 /* TestZoneMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 27127E371DE1ED980074A8F5 /* TestZoneMaker.m */; };
 		271C047A1E886B41002221E9 /* MonsterMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C04791E886B41002221E9 /* MonsterMaker.m */; };
+		271C04801E89ED4D002221E9 /* MonsterInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 271C047F1E89ED4D002221E9 /* MonsterInfo.plist */; };
+		271C04831E8A1152002221E9 /* MonsterInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C04821E8A1152002221E9 /* MonsterInfoDictionary.m */; };
 		27AE66721E875EFB000F31BD /* Suffix+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE666F1E875EFB000F31BD /* Suffix+CoreDataClass.m */; };
 		27AE66731E875EFB000F31BD /* Suffix+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE66711E875EFB000F31BD /* Suffix+CoreDataProperties.m */; };
 		27C92C071E2757F80025727E /* ConvienceScripts.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C061E2757F80025727E /* ConvienceScripts.m */; };
@@ -161,6 +163,9 @@
 		271C04781E886B41002221E9 /* MonsterMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterMaker.h; sourceTree = "<group>"; };
 		271C04791E886B41002221E9 /* MonsterMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterMaker.m; sourceTree = "<group>"; };
 		271C047D1E89BCBA002221E9 /* P_CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_CoreData.h; sourceTree = "<group>"; };
+		271C047F1E89ED4D002221E9 /* MonsterInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MonsterInfo.plist; sourceTree = "<group>"; };
+		271C04811E8A1152002221E9 /* MonsterInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterInfoDictionary.h; sourceTree = "<group>"; };
+		271C04821E8A1152002221E9 /* MonsterInfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterInfoDictionary.m; sourceTree = "<group>"; };
 		27AE66541E8720F9000F31BD /* CentralViewControllerP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralViewControllerP.h; sourceTree = "<group>"; };
 		27AE66551E87561B000F31BD /* Model 14.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 14.xcdatamodel"; sourceTree = "<group>"; };
 		27AE666E1E875EFB000F31BD /* Suffix+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Suffix+CoreDataClass.h"; sourceTree = "<group>"; };
@@ -347,6 +352,16 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		271C047E1E89ECF7002221E9 /* Lookups */ = {
+			isa = PBXGroup;
+			children = (
+				271C047F1E89ED4D002221E9 /* MonsterInfo.plist */,
+				271C04811E8A1152002221E9 /* MonsterInfoDictionary.h */,
+				271C04821E8A1152002221E9 /* MonsterInfoDictionary.m */,
+			);
+			name = Lookups;
+			sourceTree = "<group>";
+		};
 		27AE66761E876007000F31BD /* Suffix */ = {
 			isa = PBXGroup;
 			children = (
@@ -524,6 +539,7 @@
 		686ED3AD1DADE4DB004EDD36 /* Monster */ = {
 			isa = PBXGroup;
 			children = (
+				271C047E1E89ECF7002221E9 /* Lookups */,
 				271217611DCE84310072ACC6 /* Monster+CoreDataClass.h */,
 				271217621DCE84310072ACC6 /* Monster+CoreDataClass.m */,
 				68A921F01DBC7FF2007C946C /* Monster+CoreDataProperties.h */,
@@ -878,6 +894,7 @@
 				68F3FA031D74897A00840DD2 /* MenuViewController.xib in Resources */,
 				68F3F9F91D70FD3F00840DD2 /* GoodsViewController.xib in Resources */,
 				686ED3BA1DB4660F004EDD36 /* white_checked_empty.png in Resources */,
+				271C04801E89ED4D002221E9 /* MonsterInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -923,6 +940,7 @@
 				68A921F91DBC7FF2007C946C /* Habit+CoreDataProperties.m in Sources */,
 				68F3F9F31D70FC5E00840DD2 /* TodoViewController.m in Sources */,
 				68F3FA021D74897A00840DD2 /* MenuViewController.m in Sources */,
+				271C04831E8A1152002221E9 /* MonsterInfoDictionary.m in Sources */,
 				68BA388B1D93615600CB5A76 /* CommonUtilitiesMock.m in Sources */,
 				27C92C441E3314000025727E /* ZoneDescriptionViewController.m in Sources */,
 				68A921FA1DBC7FF2007C946C /* Monster+CoreDataProperties.m in Sources */,

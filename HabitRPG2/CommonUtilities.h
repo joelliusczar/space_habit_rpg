@@ -10,8 +10,9 @@
 #import <UIKit/UIKit.h>
 
 @interface CommonUtilities : NSObject
--(NSDate *)getReferenceDate;
--(BOOL)isSwitchOn:(id)switchItem;
--(void)setSwitch:(id)switchItem withValue:(BOOL)value;
+-(nonnull NSDate *)getReferenceDate;
+-(BOOL)isSwitchOn:(nonnull id)switchItem;
+-(void)setSwitch:(nonnull id)switchItem withValue:(BOOL)value;
 -(uint32_t)calculateLvl:(uint32_t)lvl OffsetBy:(uint32_t)offset;
+-(nonnull NSDictionary*)getPListDict:(nonnull NSString*)fileName withClassBundle:(nonnull Class)class;
 @end

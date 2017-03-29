@@ -46,4 +46,10 @@
     CustomSwitch *switchBtn = (CustomSwitch *)switchItem;
     switchBtn.isOn = value;
 }
+
+-(NSDictionary*)getPListDict:(NSString*)fileName withClassBundle:(nonnull Class)class{
+    NSString *filePath = [[NSBundle bundleForClass:class] pathForResource:fileName ofType:@"plist"];
+    NSAssert(filePath,@"file path for plist was null or empty");
+    return [NSDictionary dictionaryWithContentsOfFile:filePath];
+}
 @end

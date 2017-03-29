@@ -7,7 +7,7 @@
 //
 
 #import "ZoneInfoDictionary.h"
-#import "BundleHelper.h"
+#import "CommonUtilities.h"
 
 @interface ZoneInfoDictionary()
 @property (nonatomic,strong) NSDictionary *treeDict;
@@ -19,9 +19,8 @@
 @synthesize treeDict = _treeDict;
 -(NSDictionary *)treeDict{
     if(!_treeDict){
-        NSString *filePath = [[NSBundle bundleForClass:self.class] pathForResource:@"ZoneInfo" ofType:@"plist"];
-        NSAssert(filePath,@"file path for ZoneInfo was null or empty");
-        _treeDict = [NSDictionary dictionaryWithContentsOfFile:filePath];
+        CommonUtilities *util = [[CommonUtilities alloc] init];
+        _treeDict = [util getPListDict:@"zoneInfo" withClassBundle:self.class];
     }
     return _treeDict;
 }

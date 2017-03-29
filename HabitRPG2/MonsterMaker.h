@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "P_CoreData.h"
+#import "Monster+CoreDataClass.h"
 
 @interface MonsterMaker : NSObject
-
++(instancetype)constructWithDataController:(NSObject<P_CoreData> *)dataController;
+-(instancetype)initWithDataController:(NSObject<P_CoreData> *)dataController;
+-(Monster *)constructRandomMonster:(NSString *)zoneKey AroundLvl:(uint32_t)zoneLvl;
+-(Monster *)constructEmptyMonster;
 @end
