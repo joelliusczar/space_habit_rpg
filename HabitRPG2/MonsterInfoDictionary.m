@@ -8,6 +8,7 @@
 
 #import "MonsterInfoDictionary.h"
 #import "CommonUtilities.h"
+#import "SingletonCluster.h"
 
 @interface MonsterInfoDictionary()
 @property (nonatomic,strong) NSDictionary *treeDict;
@@ -19,8 +20,8 @@
 @synthesize treeDict = _treeDict;
 -(NSDictionary *)treeDict{
     if(!_treeDict){
-        CommonUtilities *util = [[CommonUtilities alloc] init];
-        _treeDict = [util getPListDict:@"zoneInfo" withClassBundle:self.class];
+        NSObject<P_ResourceUtility> *ru = [SingletonCluster getSharedInstance].resourceUtility;
+        _treeDict = [ru getPListDict:@"MonsterInfo" withClassBundle:self.class];
     }
     return _treeDict;
 }

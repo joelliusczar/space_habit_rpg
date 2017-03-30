@@ -23,6 +23,7 @@
 #import "ViewHelper.h"
 #import "ZoneHelper.h"
 #import "ZoneMaker.h"
+#import "SingletonCluster.h"
 
 @import CoreGraphics;
 
@@ -49,7 +50,7 @@
 @synthesize dataController = _dataController;
 -(NSObject<P_CoreData> *)dataController{
     if(_dataController == nil){
-        _dataController = [[CoreDataStackController alloc] initWithDBFileName:nil];
+        _dataController = [SingletonCluster getSharedInstance].dataController;
     }
     return _dataController;
 }
@@ -145,8 +146,7 @@
 }
 
 -(void)showZoneChoiceView{
-    NSArray<Zone *> *zoneChoices = [ZoneHelper setupForAndGetZoneChoices:
-                                    self.dataController];
+    NSArray<Zone *> *zoneChoices = [ZoneHelper setupForAndGetZoneChoices];
     ZoneChoiceViewController *zoneChoiceView = [ZoneChoiceViewController constructWithCentral:self AndZoneChoices:zoneChoices];
     [self.view addSubview:zoneChoiceView.view];
     [self addChildViewController:zoneChoiceView];

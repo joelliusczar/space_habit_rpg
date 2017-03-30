@@ -17,6 +17,12 @@
 +(NSArray*)getSymbols;
 +(NSString*)getSymbolSuffix:(NSUInteger)visitCount;
 +(NSArray*)getUnlockedZoneGroupKeys:(NSUInteger)heroLvl;
-+ (NSArray<Zone *> *)setupForAndGetZoneChoices:(NSObject<P_CoreData> *)
-dataController;
++ (NSArray<Zone *> *)setupForAndGetZoneChoices;
++(Zone *)constructHomeZone;
++(Zone *)constructZoneChoice:(Hero *)hero AndMatchHeroLvl:(BOOL)matchLvl;
++(NSArray<Zone *> *)constructMultipleZoneChoices:(Hero *)hero AndMatchHeroLvl:(BOOL)matchLvl;
++(Zone *)getZoneByZoneKey:(NSString *)zoneKey;
++(Zone *)getZone:(BOOL)isFront;
++(Zone * )constructEmptyZone;
++(int64_t)getNextUniqueId;
 @end
