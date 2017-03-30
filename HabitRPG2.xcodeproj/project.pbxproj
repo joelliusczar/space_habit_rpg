@@ -27,6 +27,7 @@
 		271C047A1E886B41002221E9 /* MonsterMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C04791E886B41002221E9 /* MonsterMaker.m */; };
 		271C04801E89ED4D002221E9 /* MonsterInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 271C047F1E89ED4D002221E9 /* MonsterInfo.plist */; };
 		271C04831E8A1152002221E9 /* MonsterInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C04821E8A1152002221E9 /* MonsterInfoDictionary.m */; };
+		271C04881E8B639D002221E9 /* ResourceUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C04871E8B639D002221E9 /* ResourceUtility.m */; };
 		27AE66721E875EFB000F31BD /* Suffix+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE666F1E875EFB000F31BD /* Suffix+CoreDataClass.m */; };
 		27AE66731E875EFB000F31BD /* Suffix+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE66711E875EFB000F31BD /* Suffix+CoreDataProperties.m */; };
 		27C92C071E2757F80025727E /* ConvienceScripts.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C061E2757F80025727E /* ConvienceScripts.m */; };
@@ -166,6 +167,10 @@
 		271C047F1E89ED4D002221E9 /* MonsterInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MonsterInfo.plist; sourceTree = "<group>"; };
 		271C04811E8A1152002221E9 /* MonsterInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterInfoDictionary.h; sourceTree = "<group>"; };
 		271C04821E8A1152002221E9 /* MonsterInfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterInfoDictionary.m; sourceTree = "<group>"; };
+		271C04841E8B622D002221E9 /* P_SingletonCluster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_SingletonCluster.h; sourceTree = "<group>"; };
+		271C04851E8B6323002221E9 /* P_ResourceUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ResourceUtility.h; sourceTree = "<group>"; };
+		271C04861E8B639D002221E9 /* ResourceUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceUtility.h; sourceTree = "<group>"; };
+		271C04871E8B639D002221E9 /* ResourceUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceUtility.m; sourceTree = "<group>"; };
 		27AE66541E8720F9000F31BD /* CentralViewControllerP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralViewControllerP.h; sourceTree = "<group>"; };
 		27AE66551E87561B000F31BD /* Model 14.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 14.xcdatamodel"; sourceTree = "<group>"; };
 		27AE666E1E875EFB000F31BD /* Suffix+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Suffix+CoreDataClass.h"; sourceTree = "<group>"; };
@@ -483,6 +488,8 @@
 			children = (
 				68F736B01D8B810200AE10A8 /* EditingSaver.h */,
 				271C047D1E89BCBA002221E9 /* P_CoreData.h */,
+				271C04841E8B622D002221E9 /* P_SingletonCluster.h */,
+				271C04851E8B6323002221E9 /* P_ResourceUtility.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -734,6 +741,8 @@
 				27C92C241E2AD6FC0025727E /* BundleHelper.m */,
 				27C92C461E341DA10025727E /* ViewHelper.h */,
 				27C92C471E341DA10025727E /* ViewHelper.m */,
+				271C04861E8B639D002221E9 /* ResourceUtility.h */,
+				271C04871E8B639D002221E9 /* ResourceUtility.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -981,6 +990,7 @@
 				68A921F81DBC7FF2007C946C /* Todo+CoreDataProperties.m in Sources */,
 				68BA388E1D93617400CB5A76 /* DailyHelperMock.m in Sources */,
 				6886A4801D8E5FD0005E12B3 /* constants.m in Sources */,
+				271C04881E8B639D002221E9 /* ResourceUtility.m in Sources */,
 				68A921F41DBC7FF2007C946C /* Hero+CoreDataProperties.m in Sources */,
 				686ED3B71DAF3DBD004EDD36 /* CustomSwitch.m in Sources */,
 				68A921F51DBC7FF2007C946C /* Daily+CoreDataProperties.m in Sources */,
