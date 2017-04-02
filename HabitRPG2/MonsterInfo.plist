@@ -2,6 +2,117 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>SAFE_SPACE</key>
+	<dict>
+		<key>SEC_DRONE</key>
+		<dict>
+			<key>NAME</key>
+			<string>Security Drone</string>
+			<key>DESCRIPTION</key>
+			<string>Security drones never take breaks. As a result, their judgement falters, and they get trigger happy, attacking peaceful space explorers</string>
+			<key>ATTACK_LVL</key>
+			<integer>1</integer>
+			<key>DEFENSE_LVL</key>
+			<integer>0</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>1</integer>
+			<key>TREASURE_DROP_RATE</key>
+			<real>0.1</real>
+		</dict>
+		<key>STOP_LIGHT</key>
+		<dict>
+			<key>NAME</key>
+			<string>Unending Stop Light</string>
+			<key>DESCRIPTION</key>
+			<string></string>
+			<key>ATTACK_LVL</key>
+			<integer>1</integer>
+			<key>DEFENSE_LVL</key>
+			<integer>0</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>1</integer>
+			<key>TREASURE_DROP_RATE</key>
+			<real>0.1</real>
+		</dict>
+		<key>METER_MAID</key>
+		<dict>
+			<key>NAME</key>
+			<string>Meter Maid</string>
+			<key>DESCRIPTION</key>
+			<string></string>
+			<key>ATTACK_LVL</key>
+			<integer>1</integer>
+			<key>DEFENSE_LVL</key>
+			<integer>0</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>1</integer>
+			<key>TREASURE_DROP_RATE</key>
+			<real>0.1</real>
+		</dict>
+	</dict>
+	<key>NEBULA</key>
+	<dict>
+		<key>LOST_SAT</key>
+		<dict>
+			<key>NAME</key>
+			<string>Lost Communication Satalite</string>
+			<key>DESCRIPTION</key>
+			<string></string>
+			<key>ATTACK_LVL</key>
+			<integer>1</integer>
+			<key>DEFENSE_LVL</key>
+			<integer>0</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>1</integer>
+			<key>TREASURE_DROP_RATE</key>
+			<real>0.1</real>
+		</dict>
+		<key>DUST_FAIRY</key>
+		<dict>
+			<key>NAME</key>
+			<string>Dust Fairy</string>
+			<key>DESCRIPTION</key>
+			<string></string>
+			<key>ATTACK_LVL</key>
+			<integer>1</integer>
+			<key>DEFENSE_LVL</key>
+			<integer>0</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>1</integer>
+			<key>TREASURE_DROP_RATE</key>
+			<real>0.1</real>
+		</dict>
+		<key>SENTIENT_CLOUD</key>
+		<dict>
+			<key>NAME</key>
+			<string>Sentient Space Cloud</string>
+			<key>DESCRIPTION</key>
+			<string></string>
+			<key>ATTACK_LVL</key>
+			<integer>1</integer>
+			<key>DEFENSE_LVL</key>
+			<integer>0</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>1</integer>
+			<key>TREASURE_DROP_RATE</key>
+			<real>0.1</real>
+		</dict>
+		<key>CLOUD_FORTRESS</key>
+		<dict>
+			<key>NAME</key>
+			<string>Cloud Fortress</string>
+			<key>DESCRIPTION</key>
+			<string>Many explorers underestimate the cloud fortress because its weaponry is obscured. Smart explorers know to ask as many questions as needed</string>
+			<key>ATTACK_LVL</key>
+			<integer>1</integer>
+			<key>DEFENSE_LVL</key>
+			<integer>0</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>1</integer>
+			<key>TREASURE_DROP_RATE</key>
+			<real>0.1</real>
+		</dict>
+	</dict>
 	<key>ASTEROID_FIELD</key>
 	<dict>
 		<key>BIG_ASTEROID</key>
@@ -39,7 +150,7 @@
 			<key>NAME</key>
 			<string>Sneaky Ambush Pirates</string>
 			<key>DESCRIPTION</key>
-			<string>These Sneaky Pirates hide behind asteroids and surprise you. They&apos;re sorta like deadlines.</string>
+			<string>These Sneaky Pirates hide behind asteroids and surprise the unsuspecting space explorer. They&apos;re sorta like deadlines.</string>
 			<key>ATTACK_LVL</key>
 			<integer>1</integer>
 			<key>DEFENSE_LVL</key>
@@ -54,7 +165,7 @@
 			<key>NAME</key>
 			<string>Space Golem</string>
 			<key>DESCRIPTION</key>
-			<string></string>
+			<string>Space Golems aim for a ship&apos;s weak spots with their boulders. It&apos;s a good idea to get advice about weaknesses before a golem appears</string>
 			<key>ATTACK_LVL</key>
 			<integer>1</integer>
 			<key>DEFENSE_LVL</key>
@@ -69,7 +180,7 @@
 			<key>NAME</key>
 			<string>Asteroid Moths</string>
 			<key>DESCRIPTION</key>
-			<string></string>
+			<string>Asteroid moths use camouflage to hide from predators, but they are easily spooked and often abandon their hiding spots to attack</string>
 			<key>ATTACK_LVL</key>
 			<integer>1</integer>
 			<key>DEFENSE_LVL</key>
@@ -87,7 +198,7 @@
 			<key>NAME</key>
 			<string>Dread Pirates</string>
 			<key>DESCRIPTION</key>
-			<string></string>
+			<string>Dread pirates have been pirating for many years. Many explorers get discouraged when comparing their novice years to a dread&apos;s many years</string>
 			<key>ATTACK_LVL</key>
 			<integer>1</integer>
 			<key>DEFENSE_LVL</key>
@@ -117,7 +228,7 @@
 			<key>NAME</key>
 			<string>Space Parasite</string>
 			<key>DESCRIPTION</key>
-			<string></string>
+			<string>Space parasites latch onto passing space ships. They drain away the resources of the space ships until it can&apos;t do anything.</string>
 			<key>ATTACK_LVL</key>
 			<integer>1</integer>
 			<key>DEFENSE_LVL</key>
@@ -132,7 +243,7 @@
 			<key>NAME</key>
 			<string>Zombie Infested Freighter</string>
 			<key>DESCRIPTION</key>
-			<string></string>
+			<string>The zombieism infecting these freighters starts small and is easily cured with discipline. But lax standards cause the infection to spread</string>
 			<key>ATTACK_LVL</key>
 			<integer>1</integer>
 			<key>DEFENSE_LVL</key>
@@ -198,7 +309,7 @@
 			<key>NAME</key>
 			<string>Petty Space Pirates</string>
 			<key>DESCRIPTION</key>
-			<string>Space Pirates are easily pissed off. They are also short-sighted as they make most of their potential talent walk the space plank.</string>
+			<string>Space Pirates are easily pissed off and rash. Most of their fresh talent walks the space plank before even having a chance to learn</string>
 			<key>ATTACK_LVL</key>
 			<integer>1</integer>
 			<key>DEFENSE_LVL</key>

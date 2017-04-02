@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @protocol P_ResourceUtility <NSObject>
--(nonnull NSDictionary*)getPListDict:(nonnull NSString*)fileName withClassBundle:(nonnull Class)class;
+-(nonnull NSDictionary *)getPListDict:(nonnull NSString*)fileName withClassBundle:(nonnull Class)class;
+-(nonnull NSArray *)getPListArray:(nonnull NSString*)fileName withClassBundle:(nonnull Class)class;
 @end

@@ -90,8 +90,8 @@ NSString* const HOME_KEY = @"HOME";
 }
 
 +(NSArray *)getSymbols{
-    NSArray *symbols = (NSArray *)[[SingletonCluster getSharedInstance]
-                .resourceUtility getPListDict:@"SuffixList" withClassBundle:NSClassFromString(@"ZoneHelper")][@"suffixes"];
+    NSArray *symbols = [[SingletonCluster getSharedInstance]
+                .resourceUtility getPListArray:@"SuffixList" withClassBundle:NSClassFromString(@"ZoneHelper")];
     
     return symbols;
 }
