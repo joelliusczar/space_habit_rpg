@@ -19,6 +19,8 @@
 
 @synthesize treeDict = _treeDict;
 -(NSDictionary *)treeDict{
+    
+    
     if(!_treeDict){
         NSObject<P_ResourceUtility> *ru = [SingletonCluster getSharedInstance].resourceUtility;
         _treeDict = [ru getPListDict:@"ZoneInfo" withClassBundle:self.class];

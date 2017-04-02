@@ -10,6 +10,7 @@
 #import "P_CoreData.h"
 #import "Zone+CoreDataClass.h"
 
+extern NSString* const HOME_KEY;
 
 @interface ZoneHelper : NSObject
 +(NSString*)getRandomZoneDefinitionKey:(NSUInteger)heroLvl;

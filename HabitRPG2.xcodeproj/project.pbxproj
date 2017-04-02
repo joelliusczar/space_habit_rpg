@@ -29,6 +29,7 @@
 		271C04881E8B639D002221E9 /* ResourceUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C04871E8B639D002221E9 /* ResourceUtility.m */; };
 		271C048B1E8C955A002221E9 /* SingletonCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C048A1E8C955A002221E9 /* SingletonCluster.m */; };
 		271C048E1E8C9C06002221E9 /* MonsterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C048D1E8C9C06002221E9 /* MonsterHelper.m */; };
+		271C04921E8F3784002221E9 /* SuffixList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 271C04911E8F3784002221E9 /* SuffixList.plist */; };
 		27AE66721E875EFB000F31BD /* Suffix+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE666F1E875EFB000F31BD /* Suffix+CoreDataClass.m */; };
 		27AE66731E875EFB000F31BD /* Suffix+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE66711E875EFB000F31BD /* Suffix+CoreDataProperties.m */; };
 		27C92C071E2757F80025727E /* ConvienceScripts.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C061E2757F80025727E /* ConvienceScripts.m */; };
@@ -50,9 +51,7 @@
 		27C92C481E341DA10025727E /* ViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C471E341DA10025727E /* ViewHelper.m */; };
 		27F4401C1E220097002BEDD4 /* OnlyOneEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */; };
 		27F440241E22C720002BEDD4 /* CoreDataStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260641D7FC3F200425D46 /* CoreDataStackController.m */; };
-		27F440251E22C74E002BEDD4 /* ZoneMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921FD1DBC81EA007C946C /* ZoneMaker.m */; };
 		27F440261E22C78C002BEDD4 /* ZoneHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ED3C61DB481C4004EDD36 /* ZoneHelper.m */; };
-		27F440281E22C7CE002BEDD4 /* ZoneDescriptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ED3AF1DAEF512004EDD36 /* ZoneDescriptions.m */; };
 		686686EB1D79032200BB2D09 /* DailyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 686686EA1D79032200BB2D09 /* DailyCell.xib */; };
 		686686EE1D79060300BB2D09 /* DailyCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686686ED1D79060300BB2D09 /* DailyCellController.m */; };
 		686ED38B1DA463F6004EDD36 /* PressStart2P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 686ED38A1DA46200004EDD36 /* PressStart2P.ttf */; };
@@ -62,7 +61,6 @@
 		686ED3981DA5E0F9004EDD36 /* title_Screen_1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 686ED3961DA5E0F9004EDD36 /* title_Screen_1x.png */; };
 		686ED3991DA5E0F9004EDD36 /* title_Screen_R_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 686ED3971DA5E0F9004EDD36 /* title_Screen_R_4.png */; };
 		686ED3A71DA751AC004EDD36 /* StoryConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ED3A61DA751AC004EDD36 /* StoryConstants.m */; };
-		686ED3B01DAEF512004EDD36 /* ZoneDescriptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ED3AF1DAEF512004EDD36 /* ZoneDescriptions.m */; };
 		686ED3B71DAF3DBD004EDD36 /* CustomSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ED3B61DAF3DBD004EDD36 /* CustomSwitch.m */; };
 		686ED3BA1DB4660F004EDD36 /* white_checked_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 686ED3B81DB4660F004EDD36 /* white_checked_empty.png */; };
 		686ED3BB1DB4660F004EDD36 /* white_checked_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 686ED3B91DB4660F004EDD36 /* white_checked_full.png */; };
@@ -87,7 +85,6 @@
 		68A921F91DBC7FF2007C946C /* Habit+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921EF1DBC7FF2007C946C /* Habit+CoreDataProperties.m */; };
 		68A921FA1DBC7FF2007C946C /* Monster+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921F11DBC7FF2007C946C /* Monster+CoreDataProperties.m */; };
 		68A921FB1DBC7FF2007C946C /* Settings+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921F31DBC7FF2007C946C /* Settings+CoreDataProperties.m */; };
-		68A921FE1DBC81EA007C946C /* ZoneMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921FD1DBC81EA007C946C /* ZoneMaker.m */; };
 		68BA38861D93576600CB5A76 /* CommonUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BA38851D93576600CB5A76 /* CommonUtilities.m */; };
 		68BA388B1D93615600CB5A76 /* CommonUtilitiesMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BA388A1D93615600CB5A76 /* CommonUtilitiesMock.m */; };
 		68BA388E1D93617400CB5A76 /* DailyHelperMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BA388D1D93617400CB5A76 /* DailyHelperMock.m */; };
@@ -173,6 +170,7 @@
 		271C048A1E8C955A002221E9 /* SingletonCluster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingletonCluster.m; sourceTree = "<group>"; };
 		271C048C1E8C9C06002221E9 /* MonsterHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterHelper.h; sourceTree = "<group>"; };
 		271C048D1E8C9C06002221E9 /* MonsterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterHelper.m; sourceTree = "<group>"; };
+		271C04911E8F3784002221E9 /* SuffixList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SuffixList.plist; sourceTree = "<group>"; };
 		27AE66541E8720F9000F31BD /* CentralViewControllerP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralViewControllerP.h; sourceTree = "<group>"; };
 		27AE66551E87561B000F31BD /* Model 14.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 14.xcdatamodel"; sourceTree = "<group>"; };
 		27AE666E1E875EFB000F31BD /* Suffix+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Suffix+CoreDataClass.h"; sourceTree = "<group>"; };
@@ -212,8 +210,6 @@
 		686ED3971DA5E0F9004EDD36 /* title_Screen_R_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title_Screen_R_4.png; sourceTree = "<group>"; };
 		686ED3A51DA751AC004EDD36 /* StoryConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryConstants.h; sourceTree = "<group>"; };
 		686ED3A61DA751AC004EDD36 /* StoryConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryConstants.m; sourceTree = "<group>"; };
-		686ED3AE1DAEF512004EDD36 /* ZoneDescriptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneDescriptions.h; sourceTree = "<group>"; };
-		686ED3AF1DAEF512004EDD36 /* ZoneDescriptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneDescriptions.m; sourceTree = "<group>"; };
 		686ED3B51DAF3DBD004EDD36 /* CustomSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSwitch.h; sourceTree = "<group>"; };
 		686ED3B61DAF3DBD004EDD36 /* CustomSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSwitch.m; sourceTree = "<group>"; };
 		686ED3B81DB4660F004EDD36 /* white_checked_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_checked_empty.png; sourceTree = "<group>"; };
@@ -252,8 +248,6 @@
 		68A921F11DBC7FF2007C946C /* Monster+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Monster+CoreDataProperties.m"; path = "../Monster+CoreDataProperties.m"; sourceTree = "<group>"; };
 		68A921F21DBC7FF2007C946C /* Settings+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Settings+CoreDataProperties.h"; path = "../Settings+CoreDataProperties.h"; sourceTree = "<group>"; };
 		68A921F31DBC7FF2007C946C /* Settings+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Settings+CoreDataProperties.m"; path = "../Settings+CoreDataProperties.m"; sourceTree = "<group>"; };
-		68A921FC1DBC81EA007C946C /* ZoneMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneMaker.h; sourceTree = "<group>"; };
-		68A921FD1DBC81EA007C946C /* ZoneMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneMaker.m; sourceTree = "<group>"; };
 		68A922021DBC88F5007C946C /* Model 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 4.xcdatamodel"; sourceTree = "<group>"; };
 		68A922061DBD44C3007C946C /* Experiments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Experiments.m; sourceTree = "<group>"; };
 		68A9220E1DBF2EC0007C946C /* Model 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 5.xcdatamodel"; sourceTree = "<group>"; };
@@ -376,6 +370,7 @@
 				27AE666F1E875EFB000F31BD /* Suffix+CoreDataClass.m */,
 				27AE66701E875EFB000F31BD /* Suffix+CoreDataProperties.h */,
 				27AE66711E875EFB000F31BD /* Suffix+CoreDataProperties.m */,
+				271C04911E8F3784002221E9 /* SuffixList.plist */,
 			);
 			name = Suffix;
 			sourceTree = "<group>";
@@ -415,8 +410,6 @@
 			children = (
 				686ED3C51DB481C4004EDD36 /* ZoneHelper.h */,
 				686ED3C61DB481C4004EDD36 /* ZoneHelper.m */,
-				68A921FC1DBC81EA007C946C /* ZoneMaker.h */,
-				68A921FD1DBC81EA007C946C /* ZoneMaker.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -427,8 +420,6 @@
 				27C92C161E29AD770025727E /* ZoneInfo.plist */,
 				27C92C181E29C9F10025727E /* ZoneInfoDictionary.h */,
 				27C92C191E29C9F10025727E /* ZoneInfoDictionary.m */,
-				686ED3AE1DAEF512004EDD36 /* ZoneDescriptions.h */,
-				686ED3AF1DAEF512004EDD36 /* ZoneDescriptions.m */,
 			);
 			name = Lookups;
 			sourceTree = "<group>";
@@ -893,6 +884,7 @@
 				686ED3C21DB47FA5004EDD36 /* black_checked_empty.png in Resources */,
 				27C92C121E28A1330025727E /* ZoneChoiceCell.xib in Resources */,
 				68F3F9E51D70E8DB00840DD2 /* CentralViewController.xib in Resources */,
+				271C04921E8F3784002221E9 /* SuffixList.plist in Resources */,
 				68E260D01D851DA500425D46 /* EditNavigationController.xib in Resources */,
 				6886A48B1D8F6EA6005E12B3 /* switch_unchecked.png in Resources */,
 				686ED3931DA5DEB5004EDD36 /* title_Screen_HD_47.png in Resources */,
@@ -920,9 +912,7 @@
 				27C92C361E2F01E60025727E /* Zone+CoreDataClass.m in Sources */,
 				27C92C1B1E29D33B0025727E /* ZoneInfoDictionary.m in Sources */,
 				27C92C0F1E287B960025727E /* OnlyOneEntities.m in Sources */,
-				27F440281E22C7CE002BEDD4 /* ZoneDescriptions.m in Sources */,
 				27F440261E22C78C002BEDD4 /* ZoneHelper.m in Sources */,
-				27F440251E22C74E002BEDD4 /* ZoneMaker.m in Sources */,
 				27F440241E22C720002BEDD4 /* CoreDataStackController.m in Sources */,
 				27127E381DE1ED980074A8F5 /* TestZoneMaker.m in Sources */,
 				27127E091DDAD2400074A8F5 /* CommonUtilities.m in Sources */,
@@ -956,7 +946,6 @@
 				68BA388B1D93615600CB5A76 /* CommonUtilitiesMock.m in Sources */,
 				27C92C441E3314000025727E /* ZoneDescriptionViewController.m in Sources */,
 				68A921FA1DBC7FF2007C946C /* Monster+CoreDataProperties.m in Sources */,
-				686ED3B01DAEF512004EDD36 /* ZoneDescriptions.m in Sources */,
 				68F3F9EE1D70FC0D00840DD2 /* HabitController.m in Sources */,
 				68F3F9FE1D71CCF100840DD2 /* UIUtilities.m in Sources */,
 				68A921F71DBC7FF2007C946C /* Zone+CoreDataProperties.m in Sources */,
@@ -1001,7 +990,6 @@
 				27C92C481E341DA10025727E /* ViewHelper.m in Sources */,
 				27127E361DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m in Sources */,
 				68E260621D7BC3EA00425D46 /* Model.xcdatamodeld in Sources */,
-				68A921FE1DBC81EA007C946C /* ZoneMaker.m in Sources */,
 				68F3F9AE1D70E82E00840DD2 /* main.m in Sources */,
 				27AE66721E875EFB000F31BD /* Suffix+CoreDataClass.m in Sources */,
 				271217701DCE84310072ACC6 /* Zone+CoreDataClass.m in Sources */,

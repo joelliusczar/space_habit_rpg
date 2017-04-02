@@ -10,12 +10,13 @@
 #import "P_CoreData.h"
 #import "Settings+CoreDataClass.h"
 #import "StoryConstants.h"
-#import "ZoneDescriptions.h"
 #import "constants.h"
 #import "ZoneChoiceViewController.h"
-#import "ZoneMaker.h"
 #import "Hero+CoreDataClass.h"
 #import "ViewHelper.h"
+#import "SingletonCluster.h"
+#import "ZoneInfoDictionary.h"
+#import "ZoneHelper.h"
 
 @interface IntroViewController ()
 @property (nonatomic,weak) UIViewController<CentralViewControllerP> *central;
@@ -127,7 +128,8 @@
     BOOL show = self.skipSwitch.isOn;
     //[self.central setToSkipStory:!show];
     self.isThreadAllowed = NO;
-    self.headline.text = [NSString stringWithFormat:@"Welcome to %@",HOME_NAME];
+    ZoneInfoDictionary *zd = [SingletonCluster getSharedInstance].zoneInfoDictionary;
+    self.headline.text = [NSString stringWithFormat:@"Welcome to %@",[zd getZoneName:HOME_KEY]];
     if(show&&!self.isStoryDone){
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
                 while(self.isThreadCurrentlyRunning);
@@ -136,7 +138,7 @@
             });
             self.isThreadAllowed = YES;
             self.isThreadCurrentlyRunning = YES;
-            [self autoTypeIntro:HOME_DESCRIPTION characterDelay:CHARACTER_DELAY];
+            [self autoTypeIntro:[zd getZoneDescription:HOME_KEY] characterDelay:CHARACTER_DELAY];
             self.isThreadCurrentlyRunning = NO;
         });
         

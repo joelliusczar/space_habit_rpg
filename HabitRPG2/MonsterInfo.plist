@@ -102,7 +102,7 @@
 			<key>NAME</key>
 			<string>Gravity Hole</string>
 			<key>DESCRIPTION</key>
-			<string></string>
+			<string>Gravity holes bend time for everyone stuck in them. It&apos;s not rare to leave one, thinking it&apos;s only been hours when it has instead been years</string>
 			<key>ATTACK_LVL</key>
 			<integer>1</integer>
 			<key>DEFENSE_LVL</key>
@@ -150,7 +150,7 @@
 			<key>NAME</key>
 			<string>Cloud Fortress</string>
 			<key>DESCRIPTION</key>
-			<string></string>
+			<string>Many explorers underestimate the cloud fortress because its weaponry is obscured. Smart explorers know to ask as many questions as needed</string>
 			<key>ATTACK_LVL</key>
 			<integer>1</integer>
 			<key>DEFENSE_LVL</key>
@@ -183,7 +183,7 @@
 			<key>NAME</key>
 			<string>Mech</string>
 			<key>DESCRIPTION</key>
-			<string>These mechs started off as flotsam and jetsam, but they became sentient. This is what happens when you don&apos;t deal with your space mess!</string>
+			<string>Mechs are prone to memory failures and most be constantly fighting lest they entirely lose the capacity to fight</string>
 			<key>ATTACK_LVL</key>
 			<integer>1</integer>
 			<key>DEFENSE_LVL</key>
@@ -198,7 +198,7 @@
 			<key>NAME</key>
 			<string>Petty Space Pirates</string>
 			<key>DESCRIPTION</key>
-			<string>These space pirates</string>
+			<string>Space Pirates are easily pissed off. They are also short-sighted as they make most of their potential talent walk the space plank.</string>
 			<key>ATTACK_LVL</key>
 			<integer>1</integer>
 			<key>DEFENSE_LVL</key>

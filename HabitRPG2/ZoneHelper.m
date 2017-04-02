@@ -7,39 +7,39 @@
 //
 
 #import "ZoneHelper.h"
-#import "ZoneDescriptions.h"
 #include "stdlib.h"
 #include "SingletonCluster.h"
 #import "CommonUtilities.h"
 #import "Suffix+CoreDataClass.h"
+#import "P_ResourceUtility.h"
 
-
+NSString* const HOME_KEY = @"HOME";
 
 @implementation ZoneHelper
 
-
-
 +(NSArray *)getZoneGroup:(NSInteger)key{
+    ZoneInfoDictionary *zd = [SingletonCluster getSharedInstance].zoneInfoDictionary;
+    
     if(key == LVL_5_ZONES){
-        return @[ASTEROID_FIELD_KEY,SOLAR_KEY,UNCHARTED_KEY,BACKWATER_KEY];
+        return [zd getGroupKeyList:@"LVL_5_ZONES"];
     }
     else if(key == LVL_10_ZONES){
-        return @[GARBAGE_BALL_KEY,CAVE_KEY,DEFENSE_KEY,RESORT_KEY];
+        return [zd getGroupKeyList:@"LVL_10_ZONES"];
     }
     else if(key == LVL_15_ZONES){
-        return @[METROPOLIS_KEY,TEMPLE_KEY,INFESTATION_KEY,GREY_KEY];
+        return [zd getGroupKeyList:@"LVL_15_ZONES"];
     }
     else if(key == LVL_20_ZONES){
-        return @[MALESTERIUM_KEY,SKY_KEY,PSYCHEDELIC_KEY,OCEAN_KEY];
+        return [zd getGroupKeyList:@"LVL_20_ZONES"];
     }
     else if(key == LVL_25_ZONES){
-        return @[WEB_KEY,NO_MOON_KEY,WARP_KEY,EVENT_HORIZON_KEY];
+        return [zd getGroupKeyList:@"LVL_25_ZONES"];
     }
     else if(key == LVL_30_ZONES){
-        return @[WORLD_END_KEY,HELL_KEY,BEGINNING_KEY,INFINITE_KEY];
+        return [zd getGroupKeyList:@"LVL_30_ZONES"];
     }
     else{
-        return @[GAS_KEY,EMPTY_SPACE_KEY,NEBULA_KEY,SAFE_SPACE_KEY];
+        return [zd getGroupKeyList:@"LVL_1_ZONES"];
     }
 }
 
@@ -90,24 +90,9 @@
 }
 
 +(NSArray *)getSymbols{
-    NSArray *symbols = @[@"",@"Alpha", @"Beta",@"Cain",@"Delta", //4
-                                 @"Epsilon",@"Foxtrot",@"September",@"October", //8
-                                 @"November",@"Kilo",@"Juliett",@"Romeo",@"Silver",@"Deckard", //14
-                                 @"Sierra",@"Tango",@"Zeta",@"Theta",@"July",@"Ludwig",@"Tyrell", //21
-                                 @"Lambda",@"Mu",@"London",@"Victor",@"Quintin",@"Gold", //27
-                                 @"Whiskey",@"Xray",@"Zulu",@"Pi",@"Rho",@"Antilles",@"Blanca", //34
-                                 @"Sigma",@"Tau",@"India",@"Hector",@"Quebec",@"Waltz",@"Sapphire", //41
-                                 @"Tokyo",@"Ramesses",@"Washington",@"Darius",@"Emerald",@"Midgard", //47
-                                 @"Futura",@"Charlotte",@"Flanders",@"Berlin",@"Onion",@"Ruby", //53
-                                 @"David",@"Pizza",@"Lazlo",@"Kong",@"Jerico",@"Diamond", //59
-                                 @"Black",@"White",@"Olaf",@"Biggs",@"Wedge",@"Tyrannus", //65
-                                 @"Richter",@"Medusa",@"Swan",@"Gemini",@"Noir",@"Xerxes",//71
-                                 @"TNT",@"Plutonia",@"Cerberus",@"Tiberius", //75
-                                 @"Arcturus",@"Prime",@"Tarsonis",@"Babylon",@"Sparta",//80
-                                 @"Atlanta",@"Yutani",@"Python",@"Ridley",@"Midway", //85
-                                 @"Bismark",@"Dextera",@"Dominus",@"Jejunum", //89
-                                 @"Superior",@"Distal",@"Eurebus",@"Indigo", //93
-                                 @"Xs",@"Rex",@"Titan",@"Zen",@"Apex",@"Omega",@"Zed"];
+    NSArray *symbols = (NSArray *)[[SingletonCluster getSharedInstance]
+                .resourceUtility getPListDict:@"SuffixList" withClassBundle:NSClassFromString(@"ZoneHelper")][@"suffixes"];
+    
     return symbols;
 }
 
@@ -130,7 +115,9 @@
     //#the -1 on the first array length is to account for the single symbol range of items
     return zoneVisitCount / ((symbolsLen-1) * symbolsLen) + 1; //#+1 because the 1 suffix would be redundant
 }
-
+/*
+    We're adding the zone groups to a list and one of them will be randomly selected
+ */
 +(NSArray*)getUnlockedZoneGroupKeys:(NSUInteger)heroLvl{
     NSMutableArray *availableZoneGroups  = [[NSMutableArray alloc]init];
     [availableZoneGroups addObject:[NSNumber numberWithInteger:LVL_1_ZONES] ];
