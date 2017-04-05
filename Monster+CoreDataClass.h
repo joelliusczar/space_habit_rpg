@@ -14,6 +14,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Monster : NSManagedObject
     @property (nonatomic,strong,readonly) NSString *fullName;
     @property (nonatomic,strong,readonly) NSString *synopsis;
+    @property (nonatomic,readonly) int32_t attack;
+    @property (nonatomic,readonly) int32_t defense;
+    @property (nonatomic,readonly) int32_t xp;
+    @property (nonatomic,readonly) float treasureDropRate;
+    @property (nonatomic,readonly) int32_t encounterWeight;
 @end
 
 NS_ASSUME_NONNULL_END

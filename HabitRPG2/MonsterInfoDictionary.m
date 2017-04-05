@@ -85,17 +85,17 @@
         return [self getMonsterInfo:monsterKey][@"DESCRIPTION"];
     }
     
-    -(u_int32_t)getBaseAttack:(NSString *)monsterKey{
+    -(int32_t)getBaseAttack:(NSString *)monsterKey{
        NSInteger atkLvl = (NSInteger)[self getMonsterInfo:monsterKey][@"ATTACK_LVL"];
         return (u_int32_t)atkLvl;
     }
     
-    -(u_int32_t)getBaseDefense:(NSString *)monsterKey{
+    -(int32_t)getBaseDefense:(NSString *)monsterKey{
         NSInteger defLvl = (NSInteger)[self getMonsterInfo:monsterKey][@"DEFENSE_LVL"];
         return (u_int32_t)defLvl;
     }
     
-    -(u_int32_t)getBaseXP:(NSString *)monsterKey{
+    -(int32_t)getBaseXP:(NSString *)monsterKey{
         NSInteger xp = (NSInteger)[self getMonsterInfo:monsterKey][@"BASE_XP_REWARD"];
         return (u_int32_t)xp;
     }
@@ -105,7 +105,7 @@
         return dropRate.floatValue;
     }
     
-    -(u_int32_t)getEncounterWeight:(NSString *)monsterKey{
+    -(int32_t)getEncounterWeight:(NSString *)monsterKey{
         NSInteger encounterWeight = (NSInteger)[self getMonsterInfo:monsterKey][@"ENCOUNTER_WEIGHT"];
         return (u_int32_t)encounterWeight;
     }

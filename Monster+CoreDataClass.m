@@ -31,5 +31,25 @@
     -(NSString *)synopsis{
         return [self.monInfoDict getDescription:self.monsterKey];
     }
+    
+    -(int32_t)attack{
+        return [self.monInfoDict getBaseAttack:self.monsterKey] + self.lvl;
+    }
+    
+    -(int32_t)defense{//todo: figure out a better way to handle this
+        return [self.monInfoDict getBaseDefense:self.monsterKey];
+    }
+    
+    -(int32_t)xp{
+        return [self.monInfoDict getBaseXP:self.monsterKey] + self.lvl;
+    }
+    
+    -(float)treasureDropRate{
+        return [self.monInfoDict getTreasureDropRate:self.monsterKey];
+    }
+    
+    -(int32_t)encounterWeight{
+        return [self.monInfoDict getEncounterWeight:self.monsterKey];
+    }
 
 @end
