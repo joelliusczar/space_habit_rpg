@@ -10,10 +10,10 @@
 
 @interface MonsterInfoDictionary : NSObject
 @property (nonatomic,assign) BOOL isTesting;
-+(instancetype)construct;
--(NSArray<NSString*> *)getGroupKeyList:(NSString *)key;
--(NSDictionary *)getMonsterInfo:(NSString *)monsterKey;
--(NSDictionary *)getMonsterInfo:(NSString *)monsterKey ForZone:(NSString *)zoneKey;
+    +(instancetype)construct;
+    -(NSArray<NSString*> *)getGroupKeyList:(NSString *)key;
+    -(NSDictionary *)getMonsterInfo:(NSString *)monsterKey;
+    -(NSDictionary *)getMonsterInfo:(NSString *)monsterKey ForZone:(NSString *)zoneKey;
     -(NSString *)getName:(NSString *)monsterKey;
     -(NSString *)getDescription:(NSString *)monsterKey;
 @end

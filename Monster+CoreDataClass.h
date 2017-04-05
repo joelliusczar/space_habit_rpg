@@ -12,8 +12,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Monster : NSManagedObject
-@property (nonatomic,strong,readonly) NSString *fullName;
-@property (nonatomic,strong,readonly) NSString *synopsis;
+    @property (nonatomic,strong,readonly) NSString *fullName;
+    @property (nonatomic,strong,readonly) NSString *synopsis;
 @end
 
 NS_ASSUME_NONNULL_END

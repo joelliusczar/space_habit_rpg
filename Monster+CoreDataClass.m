@@ -25,11 +25,11 @@
     }
     
     -(NSString *)fullName{
-        return [self.monInfoDict getName:@""];
+        return [self.monInfoDict getName:self.monsterKey];
     }
     
     -(NSString *)synopsis{
-        return [self.monInfoDict getDescription:@""];
+        return [self.monInfoDict getDescription:self.monsterKey];
     }
 
 @end
