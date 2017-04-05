@@ -7,8 +7,8 @@
 //
 
 #import "CommonUtilities.h"
-#import "CustomSwitch.h"
-#import "stdlib.h"
+#import "SingletonCluster.h"
+
 
 @implementation CommonUtilities
 
@@ -34,22 +34,15 @@
         minLvl = lvl - offset;
     }
     
-    return arc4random_uniform(offset) +minLvl;
+    return [[SingletonCluster getSharedInstance].stdLibWrapper randomUInt:offset] +minLvl;
 }
 
--(BOOL)isSwitchOn:(id)switchItem{
-    CustomSwitch *switchBtn = (CustomSwitch *)switchItem;
-    return switchBtn.isOn;
+-(BOOL)isSwitchOn:(id<P_CustomSwitch>)switchItem{
+    return switchItem.isOn;
 }
 
--(void)setSwitch:(id)switchItem withValue:(BOOL)value{
-    CustomSwitch *switchBtn = (CustomSwitch *)switchItem;
-    switchBtn.isOn = value;
+-(void)setSwitch:(id<P_CustomSwitch>)switchItem withValue:(BOOL)value{
+    switchItem.isOn = value;
 }
 
--(NSDictionary*)getPListDict:(NSString*)fileName withClassBundle:(nonnull Class)class{
-    NSString *filePath = [[NSBundle bundleForClass:class] pathForResource:fileName ofType:@"plist"];
-    NSAssert(filePath,@"file path for plist was null or empty");
-    return [NSDictionary dictionaryWithContentsOfFile:filePath];
-}
 @end

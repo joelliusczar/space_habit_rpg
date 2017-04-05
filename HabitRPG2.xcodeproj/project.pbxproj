@@ -30,6 +30,7 @@
 		271C048B1E8C955A002221E9 /* SingletonCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C048A1E8C955A002221E9 /* SingletonCluster.m */; };
 		271C048E1E8C9C06002221E9 /* MonsterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C048D1E8C9C06002221E9 /* MonsterHelper.m */; };
 		271C04921E8F3784002221E9 /* SuffixList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 271C04911E8F3784002221E9 /* SuffixList.plist */; };
+		277ABEC91E949B96008CC239 /* StdLibWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEC81E949B96008CC239 /* StdLibWrapper.m */; };
 		27AE66721E875EFB000F31BD /* Suffix+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE666F1E875EFB000F31BD /* Suffix+CoreDataClass.m */; };
 		27AE66731E875EFB000F31BD /* Suffix+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE66711E875EFB000F31BD /* Suffix+CoreDataProperties.m */; };
 		27C92C071E2757F80025727E /* ConvienceScripts.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C061E2757F80025727E /* ConvienceScripts.m */; };
@@ -172,6 +173,10 @@
 		271C048D1E8C9C06002221E9 /* MonsterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterHelper.m; sourceTree = "<group>"; };
 		271C04911E8F3784002221E9 /* SuffixList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SuffixList.plist; sourceTree = "<group>"; };
 		277ABEC21E947B66008CC239 /* Model 15.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 15.xcdatamodel"; sourceTree = "<group>"; };
+		277ABEC61E949B76008CC239 /* P_stdlibWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_stdlibWrapper.h; sourceTree = "<group>"; };
+		277ABEC71E949B96008CC239 /* StdLibWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StdLibWrapper.h; sourceTree = "<group>"; };
+		277ABEC81E949B96008CC239 /* StdLibWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StdLibWrapper.m; sourceTree = "<group>"; };
+		277ABECB1E94A0C0008CC239 /* P_CustomSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_CustomSwitch.h; sourceTree = "<group>"; };
 		27AE66541E8720F9000F31BD /* CentralViewControllerP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralViewControllerP.h; sourceTree = "<group>"; };
 		27AE66551E87561B000F31BD /* Model 14.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 14.xcdatamodel"; sourceTree = "<group>"; };
 		27AE666E1E875EFB000F31BD /* Suffix+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Suffix+CoreDataClass.h"; sourceTree = "<group>"; };
@@ -362,6 +367,15 @@
 				271C04821E8A1152002221E9 /* MonsterInfoDictionary.m */,
 			);
 			name = Lookups;
+			sourceTree = "<group>";
+		};
+		277ABECA1E94A08E008CC239 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				277ABEC61E949B76008CC239 /* P_stdlibWrapper.h */,
+				277ABECB1E94A0C0008CC239 /* P_CustomSwitch.h */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		27AE66761E876007000F31BD /* Suffix */ = {
@@ -724,6 +738,7 @@
 		68F3F9FA1D71C9A500840DD2 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				277ABECA1E94A08E008CC239 /* Protocols */,
 				68F3F9FC1D71CCF100840DD2 /* UIUtilities.h */,
 				68F3F9FD1D71CCF100840DD2 /* UIUtilities.m */,
 				6886A47E1D8E5FD0005E12B3 /* constants.h */,
@@ -738,6 +753,8 @@
 				27C92C471E341DA10025727E /* ViewHelper.m */,
 				271C04861E8B639D002221E9 /* ResourceUtility.h */,
 				271C04871E8B639D002221E9 /* ResourceUtility.m */,
+				277ABEC71E949B96008CC239 /* StdLibWrapper.h */,
+				277ABEC81E949B96008CC239 /* StdLibWrapper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -986,6 +1003,7 @@
 				6886A4801D8E5FD0005E12B3 /* constants.m in Sources */,
 				271C04881E8B639D002221E9 /* ResourceUtility.m in Sources */,
 				68A921F41DBC7FF2007C946C /* Hero+CoreDataProperties.m in Sources */,
+				277ABEC91E949B96008CC239 /* StdLibWrapper.m in Sources */,
 				686ED3B71DAF3DBD004EDD36 /* CustomSwitch.m in Sources */,
 				68A921F51DBC7FF2007C946C /* Daily+CoreDataProperties.m in Sources */,
 				27C92C481E341DA10025727E /* ViewHelper.m in Sources */,

@@ -9,19 +9,23 @@
 #import "MonsterHelper.h"
 #import "SingletonCluster.h"
 #import "P_CoreData.h"
+#import "CommonUtilities.h"
+#import "constants.h"
 
 @implementation MonsterHelper
 
-+(Monster *)constructRandomMonster:(NSString *)zoneKey AroundLvl:(uint32_t)zoneLvl{
-    Monster *m = [self constructEmptyMonster];
-    //todo
-    return m;
-}
+    +(Monster *)constructRandomMonster:(NSString *)zoneKey AroundLvl:(uint32_t)zoneLvl{
+        Monster *m = [self constructEmptyMonster];
+        CommonUtilities *util = [[CommonUtilities alloc] init];
+        m.lvl = [util calculateLvl:zoneLvl OffsetBy:MONSTER_LVL_RANGE];
+        //todo
+        return m;
+    }
 
-+(Monster *)constructEmptyMonster{
-    
-    NSObject<P_CoreData> *dataController = [SingletonCluster getSharedInstance].dataController;
-    return (Monster *)[dataController constructEmptyEntity:MONSTER_ENTITY_NAME];
-}
+    +(Monster *)constructEmptyMonster{
+        
+        NSObject<P_CoreData> *dataController = [SingletonCluster getSharedInstance].dataController;
+        return (Monster *)[dataController constructEmptyEntity:MONSTER_ENTITY_NAME];
+    }
 
 @end

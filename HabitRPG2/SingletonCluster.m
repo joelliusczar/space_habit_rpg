@@ -13,45 +13,53 @@
 
 @implementation SingletonCluster
 
-@synthesize dataController = _dataController;
--(NSObject<P_CoreData> *)dataController{
-    if(!_dataController){
-        _dataController = [[CoreDataStackController alloc] initWithDBFileName:nil];
+    @synthesize dataController = _dataController;
+    -(NSObject<P_CoreData> *)dataController{
+        if(!_dataController){
+            _dataController = [[CoreDataStackController alloc] initWithDBFileName:nil];
+        }
+        return _dataController;
     }
-    return _dataController;
-}
 
-@synthesize resourceUtility = _resourceUtility;
--(NSObject<P_ResourceUtility> *)resourceUtility{
-    if(!_resourceUtility){
-        _resourceUtility = [[ResourceUtility alloc] init];
+    @synthesize resourceUtility = _resourceUtility;
+    -(NSObject<P_ResourceUtility> *)resourceUtility{
+        if(!_resourceUtility){
+            _resourceUtility = [[ResourceUtility alloc] init];
+        }
+        return _resourceUtility;
     }
-    return _resourceUtility;
-}
 
-@synthesize zoneInfoDictionary = _zoneInfoDictionary;
--(ZoneInfoDictionary *)zoneInfoDictionary{
-    if(!_zoneInfoDictionary){
-        _zoneInfoDictionary = [ZoneInfoDictionary construct];
+    @synthesize zoneInfoDictionary = _zoneInfoDictionary;
+    -(ZoneInfoDictionary *)zoneInfoDictionary{
+        if(!_zoneInfoDictionary){
+            _zoneInfoDictionary = [ZoneInfoDictionary construct];
+        }
+        return _zoneInfoDictionary;
     }
-    return _zoneInfoDictionary;
-}
 
-@synthesize monsterInfoDictionary = _monsterInfoDictionary;
--(MonsterInfoDictionary *)monsterInfoDictionary{
-    if(!_monsterInfoDictionary){
-        _monsterInfoDictionary = [MonsterInfoDictionary construct];
+    @synthesize monsterInfoDictionary = _monsterInfoDictionary;
+    -(MonsterInfoDictionary *)monsterInfoDictionary{
+        if(!_monsterInfoDictionary){
+            _monsterInfoDictionary = [MonsterInfoDictionary construct];
+        }
+        return _monsterInfoDictionary;
     }
-    return _monsterInfoDictionary;
-}
+    
+    @synthesize stdLibWrapper = _stdLibWrapper;
+    -(NSObject<P_stdlibWrapper> *)stdLibWrapper{
+        if(!_stdLibWrapper){
+            ///_stdLibWrapper = [];
+        }
+        return _stdLibWrapper;
+    }
 
-+(instancetype)getSharedInstance{
-    static SingletonCluster *sharedInstance = nil;
-    if(!sharedInstance){
-        sharedInstance = [[SingletonCluster alloc]init];
+    +(instancetype)getSharedInstance{
+        static SingletonCluster *sharedInstance = nil;
+        if(!sharedInstance){
+            sharedInstance = [[SingletonCluster alloc]init];
+        }
+        return sharedInstance;
     }
-    return sharedInstance;
-}
 
 
 

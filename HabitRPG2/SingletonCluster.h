@@ -13,11 +13,13 @@
 #import "P_ResourceUtility.h"
 #import "ZoneInfoDictionary.h"
 #import "MonsterInfoDictionary.h"
+#import "P_stdlibWrapper.h"
 
 @interface SingletonCluster : NSObject
-+(instancetype)getSharedInstance;
-@property (nonatomic,strong) NSObject<P_CoreData> *dataController;
-@property (nonatomic,strong) NSObject<P_ResourceUtility> *resourceUtility;
-@property (nonatomic,strong) ZoneInfoDictionary *zoneInfoDictionary;
-@property (nonatomic,strong) MonsterInfoDictionary *monsterInfoDictionary;
+    +(instancetype)getSharedInstance;
+    @property (nonatomic,strong) NSObject<P_CoreData> *dataController;
+    @property (nonatomic,strong) NSObject<P_ResourceUtility> *resourceUtility;
+    @property (nonatomic,strong) ZoneInfoDictionary *zoneInfoDictionary;
+    @property (nonatomic,strong) MonsterInfoDictionary *monsterInfoDictionary;
+    @property (nonatomic,strong) NSObject<P_stdlibWrapper> *stdLibWrapper;
 @end
