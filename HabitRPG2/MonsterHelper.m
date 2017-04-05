@@ -16,8 +16,7 @@
 
     +(Monster *)constructRandomMonster:(NSString *)zoneKey AroundLvl:(uint32_t)zoneLvl{
         Monster *m = [self constructEmptyMonster];
-        CommonUtilities *util = [[CommonUtilities alloc] init];
-        m.lvl = [util calculateLvl:zoneLvl OffsetBy:MONSTER_LVL_RANGE];
+        m.lvl = [CommonUtilities calculateLvl:zoneLvl OffsetBy:MONSTER_LVL_RANGE];
         //todo
         return m;
     }

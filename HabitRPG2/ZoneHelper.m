@@ -169,8 +169,7 @@ NSString* const HOME_KEY = @"HOME";
     z.suffixNumber = [ZoneHelper getVisitCountForZone:zoneKey];
     z.maxMonsters = arc4random_uniform(MAX_MONSTER_RAND_UP_BOUND) + MAX_MONSTER_LOW_BOUND;
     z.monstersKilled = 0;
-    CommonUtilities *util = [[CommonUtilities alloc] init];
-    z.lvl = matchLvl?hero.lvl:[util calculateLvl:hero.lvl OffsetBy:ZONE_LVL_RANGE];
+    z.lvl = matchLvl?hero.lvl:[CommonUtilities calculateLvl:hero.lvl OffsetBy:ZONE_LVL_RANGE];
     return z;
 }
 

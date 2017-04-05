@@ -18,16 +18,15 @@
 
 @interface DailyViewController ()
 
-@property (nonatomic,weak) NSObject<P_CoreData> *dataController;
-@property (nonatomic,weak) EditNavigationController *editController;
-@property (nonatomic,weak) UIButton *addButton;
-@property (nonatomic,strong) DailyEditController *dailyEditor;
-@property (nonatomic,weak)  CentralViewController *parentController;
-@property (nonatomic,strong) UITableView *dailiesTable;
-@property (nonatomic,strong) NSMutableArray *incompleteItems;
-@property (nonatomic,strong) NSMutableArray *completeItems;
-@property (nonatomic,strong) DailyHelper *dailyHelper;
-@property (nonatomic,strong) CommonUtilities *util;
+    @property (nonatomic,weak) NSObject<P_CoreData> *dataController;
+    @property (nonatomic,weak) EditNavigationController *editController;
+    @property (nonatomic,weak) UIButton *addButton;
+    @property (nonatomic,strong) DailyEditController *dailyEditor;
+    @property (nonatomic,weak)  CentralViewController *parentController;
+    @property (nonatomic,strong) UITableView *dailiesTable;
+    @property (nonatomic,strong) NSMutableArray *incompleteItems;
+    @property (nonatomic,strong) NSMutableArray *completeItems;
+    @property (nonatomic,strong) DailyHelper *dailyHelper;
 
 @end
 
@@ -58,14 +57,6 @@ static NSString *const EntityName = @"Daily";
         [_addButton addTarget:self action:@selector(pressedAddBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _addButton;
-}
-
-@synthesize util = _util;
--(CommonUtilities *)util{
-    if(_util == nil){
-        _util = [[CommonUtilities alloc] init];
-    }
-    return _util;
 }
 
 @synthesize dailyHelper = _dailyHelper;

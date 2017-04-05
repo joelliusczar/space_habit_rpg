@@ -7,6 +7,8 @@
 //
 
 #import "DailyEditController.h"
+#import "UIUtilities.h"
+#import "CommonUtilities.h"
 
 
 static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
@@ -26,7 +28,6 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 @property (nonatomic,weak) DailyViewController *parentDailyController;
 @property (nonatomic,weak) Daily *modelForEditing;
 @property (nonatomic,strong) DailyHelper *dailyHelper;
-@property (nonatomic,strong) CommonUtilities *util;
 @property (nonatomic,strong) NSIndexPath *rowInfo;
 @property (nonatomic,assign) dailyStatus section;
 @end
@@ -123,14 +124,6 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
     return _modelForEditing;
 }
 
-@synthesize util = _util;
--(CommonUtilities *)util{
-    if(_util == nil){
-        _util = [[CommonUtilities alloc] init];
-    }
-    return _util;
-}
-
 @synthesize dailyHelper = _dailyHelper;
 -(DailyHelper *)dailyHelper{
     
@@ -214,7 +207,7 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
     self.rateLbl.text = [NSString stringWithFormat:TRIGGER_LABEL_FORMAT,1];
     self.rateStep.value = 1;
     for(int i = 0;i<DAYS_IN_WEEK;i++){
-        [self.util setSwitch:[self.activeDaySwitches objectAtIndex:i] withValue:YES];
+        [UIUtilities setSwitch:[self.activeDaySwitches objectAtIndex:i] withValue:YES];
     }
     self.modelForEditing = nil;
 

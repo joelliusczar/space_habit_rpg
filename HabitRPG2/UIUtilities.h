@@ -7,14 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "P_CustomSwitch.h"
 @import CoreGraphics;
 
 @interface UIUtilities : NSObject
-
-+(CGFloat)GetYStart: (CGFloat)height;
-+(CGFloat)GetYStartUnderLabel: (CGFloat)height;
-
-
-
-
+    +(CGFloat)GetYStart: (CGFloat)height;
+    +(CGFloat)GetYStartUnderLabel: (CGFloat)height;
+    +(BOOL)isSwitchOn:(nonnull id<P_CustomSwitch>)switchItem;
+    +(void)setSwitch:(nonnull id<P_CustomSwitch>)switchItem withValue:(BOOL)value;
 @end
