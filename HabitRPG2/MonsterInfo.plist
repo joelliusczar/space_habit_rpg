@@ -18,13 +18,15 @@
 			<integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
+			<key>ENCOUNTER_WEIGHT</key>
+			<integer>10</integer>
 		</dict>
 		<key>STOP_LIGHT</key>
 		<dict>
 			<key>NAME</key>
 			<string>Unending Stop Light</string>
 			<key>DESCRIPTION</key>
-			<string></string>
+			<string>Some space explorers wait too long for these signals to change. They forget they can go around. Sometimes the light just needs a good whack</string>
 			<key>ATTACK_LVL</key>
 			<integer>1</integer>
 			<key>DEFENSE_LVL</key>
@@ -33,13 +35,15 @@
 			<integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
+			<key>ENCOUNTER_WEIGHT</key>
+			<integer>10</integer>
 		</dict>
-		<key>METER_MAID</key>
+		<key>WHISTLE_WARDEN</key>
 		<dict>
 			<key>NAME</key>
-			<string>Meter Maid</string>
+			<string>Whistle Warden</string>
 			<key>DESCRIPTION</key>
-			<string></string>
+			<string>Whistle wardens are notoriously inefficient because they obsess over minute imperfections and fail to cover much ground</string>
 			<key>ATTACK_LVL</key>
 			<integer>1</integer>
 			<key>DEFENSE_LVL</key>
@@ -48,6 +52,8 @@
 			<integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
+			<key>ENCOUNTER_WEIGHT</key>
+			<integer>10</integer>
 		</dict>
 	</dict>
 	<key>NEBULA</key>
@@ -57,7 +63,7 @@
 			<key>NAME</key>
 			<string>Lost Communication Satalite</string>
 			<key>DESCRIPTION</key>
-			<string></string>
+			<string>The thick nebula dust disrupts these satellites&apos; link to home base. Not knowing how to think for themselves, the satellites attack anyone</string>
 			<key>ATTACK_LVL</key>
 			<integer>1</integer>
 			<key>DEFENSE_LVL</key>
@@ -66,13 +72,15 @@
 			<integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
+			<key>ENCOUNTER_WEIGHT</key>
+			<integer>10</integer>
 		</dict>
 		<key>DUST_FAIRY</key>
 		<dict>
 			<key>NAME</key>
 			<string>Dust Fairy</string>
 			<key>DESCRIPTION</key>
-			<string></string>
+			<string>Dust Fairies are fiercely territorial of their dust clouds. They often lose stuff and have to search all of their dust when they need a tool</string>
 			<key>ATTACK_LVL</key>
 			<integer>1</integer>
 			<key>DEFENSE_LVL</key>
@@ -81,13 +89,15 @@
 			<integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
+			<key>ENCOUNTER_WEIGHT</key>
+			<integer>10</integer>
 		</dict>
 		<key>SENTIENT_CLOUD</key>
 		<dict>
 			<key>NAME</key>
 			<string>Sentient Space Cloud</string>
 			<key>DESCRIPTION</key>
-			<string></string>
+			<string>Sentient space clouds enlarge themselves when they want to scare away enemies and shrink themselves to lull pray into false security</string>
 			<key>ATTACK_LVL</key>
 			<integer>1</integer>
 			<key>DEFENSE_LVL</key>
@@ -96,6 +106,8 @@
 			<integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
+			<key>ENCOUNTER_WEIGHT</key>
+			<integer>10</integer>
 		</dict>
 		<key>CLOUD_FORTRESS</key>
 		<dict>
@@ -111,6 +123,8 @@
 			<integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
+			<key>ENCOUNTER_WEIGHT</key>
+			<integer>10</integer>
 		</dict>
 	</dict>
 	<key>ASTEROID_FIELD</key>
@@ -120,7 +134,7 @@
 			<key>NAME</key>
 			<string>Big Ass Asteroid</string>
 			<key>DESCRIPTION</key>
-			<string></string>
+			<string>Big ass asteroids at first seem like too big of a problem to manage but they can be broken down into smaller more manageable asteroids</string>
 			<key>ATTACK_LVL</key>
 			<integer>1</integer>
 			<key>DEFENSE_LVL</key>
@@ -129,13 +143,15 @@
 			<integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
+			<key>ENCOUNTER_WEIGHT</key>
+			<integer>10</integer>
 		</dict>
 		<key>MINER</key>
 		<dict>
 			<key>NAME</key>
 			<string>Rogue Miner</string>
 			<key>DESCRIPTION</key>
-			<string></string>
+			<string>Rogue miners used to share their gems across the galaxy, but the mines have warped them, and now they only hoard their gems for themselves</string>
 			<key>ATTACK_LVL</key>
 			<integer>1</integer>
 			<key>DEFENSE_LVL</key>
@@ -144,6 +160,8 @@
 			<integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
+			<key>ENCOUNTER_WEIGHT</key>
+			<integer>10</integer>
 		</dict>
 		<key>AMBUSH_PIRATES</key>
 		<dict>
@@ -159,6 +177,8 @@
 			<integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
+			<key>ENCOUNTER_WEIGHT</key>
+			<integer>10</integer>
 		</dict>
 		<key>SPACE_GOLEM</key>
 		<dict>
@@ -174,6 +194,8 @@
 			<integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
+			<key>ENCOUNTER_WEIGHT</key>
+			<integer>10</integer>
 		</dict>
 		<key>MOTHS</key>
 		<dict>
@@ -189,6 +211,8 @@
 			<integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
+			<key>ENCOUNTER_WEIGHT</key>
+			<integer>10</integer>
 		</dict>
 	</dict>
 	<key>EMPTY_SPACE</key>
@@ -200,13 +224,15 @@
 			<key>DESCRIPTION</key>
 			<string>Dread pirates have been pirating for many years. Many explorers get discouraged when comparing their novice years to a dread&apos;s many years</string>
 			<key>ATTACK_LVL</key>
-			<integer>1</integer>
+			<integer>4</integer>
 			<key>DEFENSE_LVL</key>
-			<integer>0</integer>
+			<integer>2</integer>
 			<key>BASE_XP_REWARD</key>
-			<integer>1</integer>
+			<integer>4</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
+			<key>ENCOUNTER_WEIGHT</key>
+			<integer>10</integer>
 		</dict>
 		<key>GRAVITY_HOLE</key>
 		<dict>
@@ -222,6 +248,8 @@
 			<integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
+			<key>ENCOUNTER_WEIGHT</key>
+			<integer>10</integer>
 		</dict>
 		<key>SPACE_PARASITES</key>
 		<dict>
@@ -237,6 +265,8 @@
 			<integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
+			<key>ENCOUNTER_WEIGHT</key>
+			<integer>10</integer>
 		</dict>
 		<key>ZOMBIE_FREIGHTER</key>
 		<dict>
@@ -252,6 +282,8 @@
 			<integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
+			<key>ENCOUNTER_WEIGHT</key>
+			<integer>10</integer>
 		</dict>
 	</dict>
 	<key>GAS</key>
@@ -263,13 +295,15 @@
 			<key>DESCRIPTION</key>
 			<string>Many explorers underestimate the cloud fortress because its weaponry is obscured. Smart explorers know to ask as many questions as needed</string>
 			<key>ATTACK_LVL</key>
-			<integer>1</integer>
+			<integer>3</integer>
 			<key>DEFENSE_LVL</key>
-			<integer>0</integer>
-			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>3</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
+			<key>ENCOUNTER_WEIGHT</key>
+			<integer>10</integer>
 		</dict>
 		<key>POISON_CLOUD</key>
 		<dict>
@@ -278,13 +312,32 @@
 			<key>DESCRIPTION</key>
 			<string>Poison Clouds engulf star ships and suffocate its crew with its toxic atmosphere. A star ship must escape the cloud and attack from outside</string>
 			<key>ATTACK_LVL</key>
-			<integer>1</integer>
+			<integer>2</integer>
 			<key>DEFENSE_LVL</key>
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
-			<integer>1</integer>
+			<integer>2</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
+			<key>ENCOUNTER_WEIGHT</key>
+			<integer>10</integer>
+		</dict>
+		<key>POISON_FAIRY</key>
+		<dict>
+			<key>NAME</key>
+			<string>Poison Fairy</string>
+			<key>DESCRIPTION</key>
+			<string>Poison Fairies used to be space fairies but bad experiences knocked them into the toxic gas. They never got any help. Now they hate everyone</string>
+			<key>ATTACK_LVL</key>
+			<integer>2</integer>
+			<key>DEFENSE_LVL</key>
+			<integer>0</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>2</integer>
+			<key>TREASURE_DROP_RATE</key>
+			<real>0.1</real>
+			<key>ENCOUNTER_WEIGHT</key>
+			<integer>10</integer>
 		</dict>
 	</dict>
 	<key>ALL</key>
@@ -303,6 +356,8 @@
 			<integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
+			<key>ENCOUNTER_WEIGHT</key>
+			<integer>10</integer>
 		</dict>
 		<key>PIRATES</key>
 		<dict>
@@ -318,6 +373,8 @@
 			<integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
+			<key>ENCOUNTER_WEIGHT</key>
+			<integer>10</integer>
 		</dict>
 		<key>M_SCOUT</key>
 		<dict>
@@ -333,6 +390,8 @@
 			<integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
+			<key>ENCOUNTER_WEIGHT</key>
+			<integer>10</integer>
 		</dict>
 		<key>SMALL_ASTEROID</key>
 		<dict>
@@ -348,6 +407,8 @@
 			<integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
+			<key>ENCOUNTER_WEIGHT</key>
+			<integer>10</integer>
 		</dict>
 		<key>SPACE_SLIME</key>
 		<dict>
@@ -363,6 +424,8 @@
 			<integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
+			<key>ENCOUNTER_WEIGHT</key>
+			<integer>10</integer>
 		</dict>
 		<key>SPACEMAN</key>
 		<dict>
@@ -378,6 +441,25 @@
 			<integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
+			<key>ENCOUNTER_WEIGHT</key>
+			<integer>10</integer>
+		</dict>
+		<key>SPACE_FAIRY</key>
+		<dict>
+			<key>NAME</key>
+			<string>Space Fairy</string>
+			<key>DESCRIPTION</key>
+			<string>Space Fairies love their independence, but they have no one to share their joy with, nor their sorrow</string>
+			<key>ATTACK_LVL</key>
+			<integer>1</integer>
+			<key>DEFENSE_LVL</key>
+			<integer>0</integer>
+			<key>BASE_XP_REWARD</key>
+			<integer>1</integer>
+			<key>TREASURE_DROP_RATE</key>
+			<real>0.1</real>
+			<key>ENCOUNTER_WEIGHT</key>
+			<integer>10</integer>
 		</dict>
 	</dict>
 </dict>

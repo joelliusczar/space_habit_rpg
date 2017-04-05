@@ -9,9 +9,10 @@
 #import "Zone+CoreDataClass.h"
 #import "ZoneHelper.h"
 #import "ZoneInfoDictionary.h"
+#import "SingletonCluster.h"
 
 @interface Zone()
-@property (nonatomic,strong) ZoneInfoDictionary *zoneInfoDict;
+@property (nonatomic,weak) ZoneInfoDictionary *zoneInfoDict;
 @end
 
 @implementation Zone
@@ -19,7 +20,7 @@
 @synthesize zoneInfoDict = _zoneInfoDict;
 -(ZoneInfoDictionary *)zoneInfoDict{
     if(!_zoneInfoDict){
-        _zoneInfoDict = [ZoneInfoDictionary construct];
+        _zoneInfoDict = [SingletonCluster getSharedInstance].zoneInfoDictionary;
     }
     return _zoneInfoDict;
 }

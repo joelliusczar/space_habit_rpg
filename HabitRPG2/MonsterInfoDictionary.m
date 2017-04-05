@@ -76,5 +76,14 @@
     }
     return monsterInfo;
 }
+    
+    -(NSString *)getName:(NSString *)monsterKey{
+        return [self getMonsterInfo:monsterKey][@"NAME"];
+    }
+    
+    -(NSString *)getDescription:(NSString *)monsterKey{
+        return [self getMonsterInfo:monsterKey][@"DESCRIPTION"];
+    }
+    
 
 @end

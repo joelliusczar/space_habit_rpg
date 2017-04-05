@@ -12,10 +12,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Zone : NSManagedObject
-
 @property (nonatomic,strong,readonly) NSString *fullName;
 @property (nonatomic,strong,readonly) NSString *synopsis;
-
 @end
 
 NS_ASSUME_NONNULL_END
