@@ -9,6 +9,8 @@
 #import "SingletonCluster.h"
 #import "CoreDataStackController.h"
 #import "ResourceUtility.h"
+#import "UIUtilities.h"
+#import "StdLibWrapper.h"
 
 
 @implementation SingletonCluster
@@ -48,9 +50,17 @@
     @synthesize stdLibWrapper = _stdLibWrapper;
     -(NSObject<P_stdlibWrapper> *)stdLibWrapper{
         if(!_stdLibWrapper){
-            ///_stdLibWrapper = [];
+            _stdLibWrapper = [[StdLibWrapper alloc] init];
         }
         return _stdLibWrapper;
+    }
+    
+    @synthesize uiUtilities = _uiUtilities;
+    -(NSObject<P_UIUtilities> *)uiUtilities{
+        if(!_uiUtilities){
+            _uiUtilities = [[UIUtilities alloc]init];
+        }
+        return _uiUtilities;
     }
 
     +(instancetype)getSharedInstance{

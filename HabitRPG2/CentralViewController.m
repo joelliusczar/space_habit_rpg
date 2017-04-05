@@ -110,11 +110,12 @@
     
     CGFloat width = self.view.frame.size.width;
     CGFloat height = self.view.frame.size.height;
+    NSObject<P_UIUtilities> *uiUtil = [SingletonCluster getSharedInstance].uiUtilities;
     self.tabsController.view.frame = CGRectMake(0,
-                                                [UIUtilities GetYStart:height]
+                                                [uiUtil GetYStart:height]
                                                 ,width,
                                                 height -
-                                                [UIUtilities GetYStart:height]);
+                                                [uiUtil GetYStart:height]);
 }
 
 -(void)showIntroView{

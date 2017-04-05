@@ -15,15 +15,8 @@
 		2712176E1DCE84310072ACC6 /* Settings+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 271217641DCE84310072ACC6 /* Settings+CoreDataClass.m */; };
 		2712176F1DCE84310072ACC6 /* Todo+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 271217661DCE84310072ACC6 /* Todo+CoreDataClass.m */; };
 		271217701DCE84310072ACC6 /* Zone+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 271217681DCE84310072ACC6 /* Zone+CoreDataClass.m */; };
-		27127E041DDACA5B0074A8F5 /* TestDailyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27127DEF1DD971650074A8F5 /* TestDailyHelper.m */; };
-		27127E051DDACA6A0074A8F5 /* Experiments.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A922061DBD44C3007C946C /* Experiments.m */; };
-		27127E061DDAD1E70074A8F5 /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 6886A47F1D8E5FD0005E12B3 /* constants.m */; };
-		27127E071DDAD2130074A8F5 /* CommonUtilitiesMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BA388A1D93615600CB5A76 /* CommonUtilitiesMock.m */; };
-		27127E081DDAD2280074A8F5 /* DailyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260981D84923C00425D46 /* DailyHelper.m */; };
-		27127E091DDAD2400074A8F5 /* CommonUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BA38851D93576600CB5A76 /* CommonUtilities.m */; };
 		27127E351DDD42B50074A8F5 /* DataInfo+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27127E321DDD42B50074A8F5 /* DataInfo+CoreDataClass.m */; };
 		27127E361DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27127E341DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m */; };
-		27127E381DE1ED980074A8F5 /* TestZoneMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 27127E371DE1ED980074A8F5 /* TestZoneMaker.m */; };
 		271C04801E89ED4D002221E9 /* MonsterInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 271C047F1E89ED4D002221E9 /* MonsterInfo.plist */; };
 		271C04831E8A1152002221E9 /* MonsterInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C04821E8A1152002221E9 /* MonsterInfoDictionary.m */; };
 		271C04881E8B639D002221E9 /* ResourceUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C04871E8B639D002221E9 /* ResourceUtility.m */; };
@@ -33,26 +26,15 @@
 		277ABEC91E949B96008CC239 /* StdLibWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEC81E949B96008CC239 /* StdLibWrapper.m */; };
 		27AE66721E875EFB000F31BD /* Suffix+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE666F1E875EFB000F31BD /* Suffix+CoreDataClass.m */; };
 		27AE66731E875EFB000F31BD /* Suffix+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE66711E875EFB000F31BD /* Suffix+CoreDataProperties.m */; };
-		27C92C071E2757F80025727E /* ConvienceScripts.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C061E2757F80025727E /* ConvienceScripts.m */; };
-		27C92C0E1E2758220025727E /* CoreDataStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260641D7FC3F200425D46 /* CoreDataStackController.m */; };
-		27C92C0F1E287B960025727E /* OnlyOneEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */; };
 		27C92C121E28A1330025727E /* ZoneChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C111E28A1330025727E /* ZoneChoiceCell.xib */; };
 		27C92C151E297F650025727E /* ZoneChoiceCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C141E297F640025727E /* ZoneChoiceCellController.m */; };
 		27C92C1A1E29C9F10025727E /* ZoneInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C191E29C9F10025727E /* ZoneInfoDictionary.m */; };
-		27C92C1B1E29D33B0025727E /* ZoneInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C191E29C9F10025727E /* ZoneInfoDictionary.m */; };
-		27C92C1D1E29D3B80025727E /* ZoneInfoDictionaryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C1C1E29D3B80025727E /* ZoneInfoDictionaryTests.m */; };
-		27C92C1E1E29F8C90025727E /* ZoneInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C161E29AD770025727E /* ZoneInfo.plist */; };
 		27C92C1F1E29FE110025727E /* ZoneInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C161E29AD770025727E /* ZoneInfo.plist */; };
-		27C92C221E2ACE090025727E /* Model.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 68E260601D7BC3EA00425D46 /* Model.xcdatamodeld */; };
 		27C92C251E2AD6FC0025727E /* BundleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C241E2AD6FC0025727E /* BundleHelper.m */; };
-		27C92C301E2D8A650025727E /* Model.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 68E260601D7BC3EA00425D46 /* Model.xcdatamodeld */; };
-		27C92C361E2F01E60025727E /* Zone+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 271217681DCE84310072ACC6 /* Zone+CoreDataClass.m */; };
 		27C92C441E3314000025727E /* ZoneDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C421E3314000025727E /* ZoneDescriptionViewController.m */; };
 		27C92C451E3314000025727E /* ZoneDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C431E3314000025727E /* ZoneDescriptionViewController.xib */; };
 		27C92C481E341DA10025727E /* ViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C471E341DA10025727E /* ViewHelper.m */; };
 		27F4401C1E220097002BEDD4 /* OnlyOneEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */; };
-		27F440241E22C720002BEDD4 /* CoreDataStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260641D7FC3F200425D46 /* CoreDataStackController.m */; };
-		27F440261E22C78C002BEDD4 /* ZoneHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ED3C61DB481C4004EDD36 /* ZoneHelper.m */; };
 		686686EB1D79032200BB2D09 /* DailyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 686686EA1D79032200BB2D09 /* DailyCell.xib */; };
 		686686EE1D79060300BB2D09 /* DailyCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686686ED1D79060300BB2D09 /* DailyCellController.m */; };
 		686ED38B1DA463F6004EDD36 /* PressStart2P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 686ED38A1DA46200004EDD36 /* PressStart2P.ttf */; };
@@ -87,9 +69,6 @@
 		68A921FA1DBC7FF2007C946C /* Monster+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921F11DBC7FF2007C946C /* Monster+CoreDataProperties.m */; };
 		68A921FB1DBC7FF2007C946C /* Settings+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921F31DBC7FF2007C946C /* Settings+CoreDataProperties.m */; };
 		68BA38861D93576600CB5A76 /* CommonUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BA38851D93576600CB5A76 /* CommonUtilities.m */; };
-		68BA388B1D93615600CB5A76 /* CommonUtilitiesMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BA388A1D93615600CB5A76 /* CommonUtilitiesMock.m */; };
-		68BA388E1D93617400CB5A76 /* DailyHelperMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BA388D1D93617400CB5A76 /* DailyHelperMock.m */; };
-		68BA38911D9361D900CB5A76 /* TestHelperWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BA38901D9361D900CB5A76 /* TestHelperWrapper.m */; };
 		68BE45911D9DEA0B003F3400 /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BE458F1D9DEA0B003F3400 /* IntroViewController.m */; };
 		68BE45921D9DEA0B003F3400 /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68BE45901D9DEA0B003F3400 /* IntroViewController.xib */; };
 		68D25C221D8B951B00FF1BE0 /* DailyEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D25C211D8B951B00FF1BE0 /* DailyEditController.m */; };
@@ -117,23 +96,6 @@
 		68F3FA031D74897A00840DD2 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68F3FA011D74897A00840DD2 /* MenuViewController.xib */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		27127DFF1DDAC6F80074A8F5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 68F3F9A11D70E82E00840DD2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 68F3F9A81D70E82E00840DD2;
-			remoteInfo = HabitRPG2;
-		};
-		27C92C091E2757F90025727E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 68F3F9A11D70E82E00840DD2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 68F3F9A81D70E82E00840DD2;
-			remoteInfo = HabitRPG2;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		271217281DCE3B380072ACC6 /* Model 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 7.xcdatamodel"; sourceTree = "<group>"; };
 		271217591DCE84310072ACC6 /* Daily+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Daily+CoreDataClass.h"; sourceTree = SOURCE_ROOT; };
@@ -152,14 +114,11 @@
 		271217661DCE84310072ACC6 /* Todo+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Todo+CoreDataClass.m"; sourceTree = SOURCE_ROOT; };
 		271217671DCE84310072ACC6 /* Zone+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Zone+CoreDataClass.h"; sourceTree = SOURCE_ROOT; };
 		271217681DCE84310072ACC6 /* Zone+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Zone+CoreDataClass.m"; sourceTree = SOURCE_ROOT; };
-		27127DEF1DD971650074A8F5 /* TestDailyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDailyHelper.m; sourceTree = "<group>"; };
-		27127DFA1DDAC6F70074A8F5 /* HabitRPG2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitRPG2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27127E0A1DDAD43D0074A8F5 /* Model 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 8.xcdatamodel"; sourceTree = "<group>"; };
 		27127E311DDD42B50074A8F5 /* DataInfo+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DataInfo+CoreDataClass.h"; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		27127E321DDD42B50074A8F5 /* DataInfo+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DataInfo+CoreDataClass.m"; sourceTree = SOURCE_ROOT; };
 		27127E331DDD42B50074A8F5 /* DataInfo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DataInfo+CoreDataProperties.h"; sourceTree = SOURCE_ROOT; };
 		27127E341DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DataInfo+CoreDataProperties.m"; sourceTree = SOURCE_ROOT; };
-		27127E371DE1ED980074A8F5 /* TestZoneMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestZoneMaker.m; sourceTree = "<group>"; };
 		271C047D1E89BCBA002221E9 /* P_CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_CoreData.h; sourceTree = "<group>"; };
 		271C047F1E89ED4D002221E9 /* MonsterInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MonsterInfo.plist; sourceTree = "<group>"; };
 		271C04811E8A1152002221E9 /* MonsterInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterInfoDictionary.h; sourceTree = "<group>"; };
@@ -177,6 +136,7 @@
 		277ABEC71E949B96008CC239 /* StdLibWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StdLibWrapper.h; sourceTree = "<group>"; };
 		277ABEC81E949B96008CC239 /* StdLibWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StdLibWrapper.m; sourceTree = "<group>"; };
 		277ABECB1E94A0C0008CC239 /* P_CustomSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_CustomSwitch.h; sourceTree = "<group>"; };
+		277ABECC1E94A74F008CC239 /* P_UIUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_UIUtilities.h; sourceTree = "<group>"; };
 		27AE66541E8720F9000F31BD /* CentralViewControllerP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralViewControllerP.h; sourceTree = "<group>"; };
 		27AE66551E87561B000F31BD /* Model 14.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 14.xcdatamodel"; sourceTree = "<group>"; };
 		27AE666E1E875EFB000F31BD /* Suffix+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Suffix+CoreDataClass.h"; sourceTree = "<group>"; };
@@ -184,8 +144,6 @@
 		27AE66701E875EFB000F31BD /* Suffix+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Suffix+CoreDataProperties.h"; sourceTree = "<group>"; };
 		27AE66711E875EFB000F31BD /* Suffix+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Suffix+CoreDataProperties.m"; sourceTree = "<group>"; };
 		27C92B991E233F730025727E /* Model 12.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 12.xcdatamodel"; sourceTree = "<group>"; };
-		27C92C041E2757F80025727E /* ConvienceScripts.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConvienceScripts.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		27C92C061E2757F80025727E /* ConvienceScripts.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConvienceScripts.m; sourceTree = "<group>"; };
 		27C92C081E2757F80025727E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27C92C111E28A1330025727E /* ZoneChoiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZoneChoiceCell.xib; sourceTree = "<group>"; };
 		27C92C131E297F640025727E /* ZoneChoiceCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneChoiceCellController.h; sourceTree = "<group>"; };
@@ -193,7 +151,6 @@
 		27C92C161E29AD770025727E /* ZoneInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ZoneInfo.plist; sourceTree = "<group>"; };
 		27C92C181E29C9F10025727E /* ZoneInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneInfoDictionary.h; sourceTree = "<group>"; };
 		27C92C191E29C9F10025727E /* ZoneInfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneInfoDictionary.m; sourceTree = "<group>"; };
-		27C92C1C1E29D3B80025727E /* ZoneInfoDictionaryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneInfoDictionaryTests.m; sourceTree = "<group>"; };
 		27C92C231E2AD6FC0025727E /* BundleHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundleHelper.h; sourceTree = "<group>"; };
 		27C92C241E2AD6FC0025727E /* BundleHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BundleHelper.m; sourceTree = "<group>"; };
 		27C92C291E2D87800025727E /* Model 13.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 13.xcdatamodel"; sourceTree = "<group>"; };
@@ -255,17 +212,10 @@
 		68A921F21DBC7FF2007C946C /* Settings+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Settings+CoreDataProperties.h"; path = "../Settings+CoreDataProperties.h"; sourceTree = "<group>"; };
 		68A921F31DBC7FF2007C946C /* Settings+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Settings+CoreDataProperties.m"; path = "../Settings+CoreDataProperties.m"; sourceTree = "<group>"; };
 		68A922021DBC88F5007C946C /* Model 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 4.xcdatamodel"; sourceTree = "<group>"; };
-		68A922061DBD44C3007C946C /* Experiments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Experiments.m; sourceTree = "<group>"; };
 		68A9220E1DBF2EC0007C946C /* Model 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 5.xcdatamodel"; sourceTree = "<group>"; };
 		68A922151DC98ACD007C946C /* Model 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 6.xcdatamodel"; sourceTree = "<group>"; };
 		68BA38841D93576600CB5A76 /* CommonUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtilities.h; sourceTree = "<group>"; };
 		68BA38851D93576600CB5A76 /* CommonUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtilities.m; sourceTree = "<group>"; };
-		68BA38891D93615600CB5A76 /* CommonUtilitiesMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtilitiesMock.h; sourceTree = "<group>"; };
-		68BA388A1D93615600CB5A76 /* CommonUtilitiesMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtilitiesMock.m; sourceTree = "<group>"; };
-		68BA388C1D93617400CB5A76 /* DailyHelperMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyHelperMock.h; sourceTree = "<group>"; };
-		68BA388D1D93617400CB5A76 /* DailyHelperMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyHelperMock.m; sourceTree = "<group>"; };
-		68BA388F1D9361D900CB5A76 /* TestHelperWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHelperWrapper.h; sourceTree = "<group>"; };
-		68BA38901D9361D900CB5A76 /* TestHelperWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHelperWrapper.m; sourceTree = "<group>"; };
 		68BE458C1D9CCF4C003F3400 /* Model 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 2.xcdatamodel"; sourceTree = "<group>"; };
 		68BE458E1D9DEA0B003F3400 /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroViewController.h; sourceTree = "<group>"; };
 		68BE458F1D9DEA0B003F3400 /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroViewController.m; sourceTree = "<group>"; };
@@ -287,7 +237,6 @@
 		68F3F9B01D70E82E00840DD2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		68F3F9B81D70E82E00840DD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68F3F9BD1D70E82E00840DD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		68F3F9C61D70E82E00840DD2 /* HabitRPG2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HabitRPG2Tests.m; sourceTree = "<group>"; };
 		68F3F9C81D70E82E00840DD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68F3F9D11D70E82E00840DD2 /* HabitRPG2UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HabitRPG2UITests.m; sourceTree = "<group>"; };
 		68F3F9D31D70E82E00840DD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -315,20 +264,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		27127DF71DDAC6F70074A8F5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		27C92C011E2757F80025727E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		68F3F9A61D70E82E00840DD2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -374,6 +309,7 @@
 			children = (
 				277ABEC61E949B76008CC239 /* P_stdlibWrapper.h */,
 				277ABECB1E94A0C0008CC239 /* P_CustomSwitch.h */,
+				277ABECC1E94A74F008CC239 /* P_UIUtilities.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -393,7 +329,6 @@
 		27C92C051E2757F80025727E /* ConvienceScripts */ = {
 			isa = PBXGroup;
 			children = (
-				27C92C061E2757F80025727E /* ConvienceScripts.m */,
 				27C92C081E2757F80025727E /* Info.plist */,
 			);
 			path = ConvienceScripts;
@@ -566,12 +501,6 @@
 		68BA38881D93611300CB5A76 /* TestHelpers */ = {
 			isa = PBXGroup;
 			children = (
-				68BA38891D93615600CB5A76 /* CommonUtilitiesMock.h */,
-				68BA388A1D93615600CB5A76 /* CommonUtilitiesMock.m */,
-				68BA388C1D93617400CB5A76 /* DailyHelperMock.h */,
-				68BA388D1D93617400CB5A76 /* DailyHelperMock.m */,
-				68BA388F1D9361D900CB5A76 /* TestHelperWrapper.h */,
-				68BA38901D9361D900CB5A76 /* TestHelperWrapper.m */,
 			);
 			name = TestHelpers;
 			path = HabitRPG2;
@@ -657,8 +586,6 @@
 			isa = PBXGroup;
 			children = (
 				68F3F9A91D70E82E00840DD2 /* HabitRPG2.app */,
-				27127DFA1DDAC6F70074A8F5 /* HabitRPG2Tests.xctest */,
-				27C92C041E2757F80025727E /* ConvienceScripts.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -716,12 +643,7 @@
 		68F3F9C51D70E82E00840DD2 /* HabitRPG2Tests */ = {
 			isa = PBXGroup;
 			children = (
-				27127DEF1DD971650074A8F5 /* TestDailyHelper.m */,
-				68F3F9C61D70E82E00840DD2 /* HabitRPG2Tests.m */,
 				68F3F9C81D70E82E00840DD2 /* Info.plist */,
-				68A922061DBD44C3007C946C /* Experiments.m */,
-				27127E371DE1ED980074A8F5 /* TestZoneMaker.m */,
-				27C92C1C1E29D3B80025727E /* ZoneInfoDictionaryTests.m */,
 			);
 			path = HabitRPG2Tests;
 			sourceTree = "<group>";
@@ -762,42 +684,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		27127DF91DDAC6F70074A8F5 /* HabitRPG2Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 27127E011DDAC6F80074A8F5 /* Build configuration list for PBXNativeTarget "HabitRPG2Tests" */;
-			buildPhases = (
-				27127DF61DDAC6F70074A8F5 /* Sources */,
-				27127DF71DDAC6F70074A8F5 /* Frameworks */,
-				27127DF81DDAC6F70074A8F5 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				27127E001DDAC6F80074A8F5 /* PBXTargetDependency */,
-			);
-			name = HabitRPG2Tests;
-			productName = HabitRPG2Tests;
-			productReference = 27127DFA1DDAC6F70074A8F5 /* HabitRPG2Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		27C92C031E2757F80025727E /* ConvienceScripts */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 27C92C0B1E2757F90025727E /* Build configuration list for PBXNativeTarget "ConvienceScripts" */;
-			buildPhases = (
-				27C92C001E2757F80025727E /* Sources */,
-				27C92C011E2757F80025727E /* Frameworks */,
-				27C92C021E2757F80025727E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				27C92C0A1E2757F90025727E /* PBXTargetDependency */,
-			);
-			name = ConvienceScripts;
-			productName = ConvienceScripts;
-			productReference = 27C92C041E2757F80025727E /* ConvienceScripts.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		68F3F9A81D70E82E00840DD2 /* HabitRPG2 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 68F3F9D61D70E82E00840DD2 /* Build configuration list for PBXNativeTarget "HabitRPG2" */;
@@ -827,15 +713,6 @@
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Joel Pridgen";
 				TargetAttributes = {
-					27127DF91DDAC6F70074A8F5 = {
-						CreatedOnToolsVersion = 8.1;
-						ProvisioningStyle = Automatic;
-					};
-					27C92C031E2757F80025727E = {
-						CreatedOnToolsVersion = 8.2.1;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 68F3F9A81D70E82E00840DD2;
-					};
 					68F3F9A81D70E82E00840DD2 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = XK3RJ8E2L2;
@@ -856,30 +733,11 @@
 			projectRoot = "";
 			targets = (
 				68F3F9A81D70E82E00840DD2 /* HabitRPG2 */,
-				27127DF91DDAC6F70074A8F5 /* HabitRPG2Tests */,
-				27C92C031E2757F80025727E /* ConvienceScripts */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		27127DF81DDAC6F70074A8F5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				27C92C221E2ACE090025727E /* Model.xcdatamodeld in Resources */,
-				27C92C1E1E29F8C90025727E /* ZoneInfo.plist in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		27C92C021E2757F80025727E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				27C92C301E2D8A650025727E /* Model.xcdatamodeld in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		68F3F9A71D70E82E00840DD2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -923,35 +781,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		27127DF61DDAC6F70074A8F5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				27C92C361E2F01E60025727E /* Zone+CoreDataClass.m in Sources */,
-				27C92C1B1E29D33B0025727E /* ZoneInfoDictionary.m in Sources */,
-				27C92C0F1E287B960025727E /* OnlyOneEntities.m in Sources */,
-				27F440261E22C78C002BEDD4 /* ZoneHelper.m in Sources */,
-				27F440241E22C720002BEDD4 /* CoreDataStackController.m in Sources */,
-				27127E381DE1ED980074A8F5 /* TestZoneMaker.m in Sources */,
-				27127E091DDAD2400074A8F5 /* CommonUtilities.m in Sources */,
-				27127E081DDAD2280074A8F5 /* DailyHelper.m in Sources */,
-				27127E071DDAD2130074A8F5 /* CommonUtilitiesMock.m in Sources */,
-				27127E061DDAD1E70074A8F5 /* constants.m in Sources */,
-				27127E051DDACA6A0074A8F5 /* Experiments.m in Sources */,
-				27127E041DDACA5B0074A8F5 /* TestDailyHelper.m in Sources */,
-				27C92C1D1E29D3B80025727E /* ZoneInfoDictionaryTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		27C92C001E2757F80025727E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				27C92C0E1E2758220025727E /* CoreDataStackController.m in Sources */,
-				27C92C071E2757F80025727E /* ConvienceScripts.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		68F3F9A51D70E82E00840DD2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -961,7 +790,6 @@
 				68F3F9F31D70FC5E00840DD2 /* TodoViewController.m in Sources */,
 				68F3FA021D74897A00840DD2 /* MenuViewController.m in Sources */,
 				271C04831E8A1152002221E9 /* MonsterInfoDictionary.m in Sources */,
-				68BA388B1D93615600CB5A76 /* CommonUtilitiesMock.m in Sources */,
 				27C92C441E3314000025727E /* ZoneDescriptionViewController.m in Sources */,
 				68A921FA1DBC7FF2007C946C /* Monster+CoreDataProperties.m in Sources */,
 				68F3F9EE1D70FC0D00840DD2 /* HabitController.m in Sources */,
@@ -983,7 +811,6 @@
 				686ED3C71DB481C4004EDD36 /* ZoneHelper.m in Sources */,
 				68E260991D84923C00425D46 /* DailyHelper.m in Sources */,
 				6886A4891D8F3CB2005E12B3 /* TaskCell.m in Sources */,
-				68BA38911D9361D900CB5A76 /* TestHelperWrapper.m in Sources */,
 				68E260CF1D851DA500425D46 /* EditNavigationController.m in Sources */,
 				686ED3BF1DB47954004EDD36 /* ZoneChoiceViewController.m in Sources */,
 				27C92C151E297F650025727E /* ZoneChoiceCellController.m in Sources */,
@@ -999,7 +826,6 @@
 				68F3F9E91D70EC9700840DD2 /* DailyViewController.m in Sources */,
 				686ED3A71DA751AC004EDD36 /* StoryConstants.m in Sources */,
 				68A921F81DBC7FF2007C946C /* Todo+CoreDataProperties.m in Sources */,
-				68BA388E1D93617400CB5A76 /* DailyHelperMock.m in Sources */,
 				6886A4801D8E5FD0005E12B3 /* constants.m in Sources */,
 				271C04881E8B639D002221E9 /* ResourceUtility.m in Sources */,
 				68A921F41DBC7FF2007C946C /* Hero+CoreDataProperties.m in Sources */,
@@ -1018,78 +844,7 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		27127E001DDAC6F80074A8F5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 68F3F9A81D70E82E00840DD2 /* HabitRPG2 */;
-			targetProxy = 27127DFF1DDAC6F80074A8F5 /* PBXContainerItemProxy */;
-		};
-		27C92C0A1E2757F90025727E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 68F3F9A81D70E82E00840DD2 /* HabitRPG2 */;
-			targetProxy = 27C92C091E2757F90025727E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
-		27127E021DDAC6F80074A8F5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				DEVELOPMENT_TEAM = XK3RJ8E2L2;
-				INFOPLIST_FILE = HabitRPG2Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.HabitRPG2Tests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		27127E031DDAC6F80074A8F5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				DEVELOPMENT_TEAM = XK3RJ8E2L2;
-				INFOPLIST_FILE = HabitRPG2Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.HabitRPG2Tests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		27C92C0C1E2757F90025727E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				DEVELOPMENT_TEAM = XK3RJ8E2L2;
-				INFOPLIST_FILE = ConvienceScripts/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.ConvienceScripts;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HabitRPG2.app/HabitRPG2";
-			};
-			name = Debug;
-		};
-		27C92C0D1E2757F90025727E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				DEVELOPMENT_TEAM = XK3RJ8E2L2;
-				INFOPLIST_FILE = ConvienceScripts/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.ConvienceScripts;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HabitRPG2.app/HabitRPG2";
-			};
-			name = Release;
-		};
 		68F3F9D41D70E82E00840DD2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1213,24 +968,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		27127E011DDAC6F80074A8F5 /* Build configuration list for PBXNativeTarget "HabitRPG2Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				27127E021DDAC6F80074A8F5 /* Debug */,
-				27127E031DDAC6F80074A8F5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		27C92C0B1E2757F90025727E /* Build configuration list for PBXNativeTarget "ConvienceScripts" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				27C92C0C1E2757F90025727E /* Debug */,
-				27C92C0D1E2757F90025727E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		68F3F9A41D70E82E00840DD2 /* Build configuration list for PBXProject "HabitRPG2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

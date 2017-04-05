@@ -14,6 +14,7 @@
 #import "ZoneInfoDictionary.h"
 #import "MonsterInfoDictionary.h"
 #import "P_stdlibWrapper.h"
+#import "UIUtilities.h"
 
 @interface SingletonCluster : NSObject
     +(instancetype)getSharedInstance;
@@ -22,4 +23,5 @@
     @property (nonatomic,strong) ZoneInfoDictionary *zoneInfoDictionary;
     @property (nonatomic,strong) MonsterInfoDictionary *monsterInfoDictionary;
     @property (nonatomic,strong) NSObject<P_stdlibWrapper> *stdLibWrapper;
+    @property (nonatomic,strong) NSObject<P_UIUtilities> *uiUtilities;
 @end
