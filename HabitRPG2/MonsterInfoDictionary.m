@@ -100,6 +100,11 @@
         return (u_int32_t)xp;
     }
     
+    -(int32_t)getBaseHP:(NSString *)monsterKey{//todo figure out how I want to handle this
+        NSInteger hp = (NSInteger)[self getMonsterInfo:monsterKey][@"HP"];
+        return (u_int32_t)hp;
+    }
+    
     -(float)getTreasureDropRate:(NSString *)monsterKey{
       NSNumber *dropRate = (NSNumber *)[self getMonsterInfo:monsterKey][@"TREASURE_DROP_RATE"];
         return dropRate.floatValue;

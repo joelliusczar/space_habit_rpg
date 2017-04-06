@@ -19,6 +19,7 @@
     -(int32_t)getBaseAttack:(NSString *)monsterKey;
     -(int32_t)getBaseDefense:(NSString *)monsterKey;
     -(int32_t)getBaseXP:(NSString *)monsterKey;
+    -(int32_t)getBaseHP:(NSString *)monsterKey;
     -(float)getTreasureDropRate:(NSString *)monsterKey;
     -(int32_t)getEncounterWeight:(NSString *)monsterKey;
 @end

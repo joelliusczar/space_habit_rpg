@@ -16,6 +16,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
+            <key>HP</key>
+            <integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -33,6 +35,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
+            <key>HP</key>
+            <integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -50,6 +54,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
+            <key>HP</key>
+            <integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -70,6 +76,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
+            <key>HP</key>
+            <integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -87,6 +95,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
+            <key>HP</key>
+            <integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -104,6 +114,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
+            <key>HP</key>
+            <integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -121,6 +133,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
+            <key>HP</key>
+            <integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -141,6 +155,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
+            <key>HP</key>
+            <integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -158,6 +174,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
+            <key>HP</key>
+            <integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -175,6 +193,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
+            <key>HP</key>
+            <integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -192,6 +212,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
+            <key>HP</key>
+            <integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -209,6 +231,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
+            <key>HP</key>
+            <integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -229,6 +253,8 @@
 			<integer>2</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>4</integer>
+            <key>HP</key>
+            <integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -246,6 +272,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
+            <key>HP</key>
+            <integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -263,6 +291,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
+            <key>HP</key>
+            <integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -280,6 +310,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
+            <key>HP</key>
+            <integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -300,6 +332,8 @@
 			<integer>1</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>3</integer>
+            <key>HP</key>
+            <integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -317,6 +351,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>2</integer>
+            <key>HP</key>
+            <integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -334,6 +370,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>2</integer>
+            <key>HP</key>
+            <integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -354,6 +392,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
+            <key>HP</key>
+            <integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -371,6 +411,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
+            <key>HP</key>
+            <integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -388,6 +430,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
+            <key>HP</key>
+            <integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -405,6 +449,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
+            <key>HP</key>
+            <integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -422,6 +468,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
+            <key>HP</key>
+            <integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -439,6 +487,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
+            <key>HP</key>
+            <integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -456,6 +506,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
+            <key>HP</key>
+            <integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
