@@ -12,4 +12,5 @@
 @interface CommonUtilities : NSObject
     +(nonnull NSDate *)getReferenceDate;
     +(uint32_t)calculateLvl:(uint32_t)lvl OffsetBy:(uint32_t)offset;
+    +(uint32_t)randomUInt:(uint32_t)offset;
 @end

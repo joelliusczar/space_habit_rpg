@@ -39,9 +39,9 @@
         return instance;
     }
 
-    -(NSArray<NSString*>*)getGroupKeyList:(NSString *)key{
-        NSDictionary *group = self.treeDict[key];
-        return group.allKeys;
+    -(NSArray<NSString *> *)getMonsterKeyList:(NSString *)zoneKey{
+        NSDictionary *zone = self.treeDict[zoneKey];
+        return zone.allKeys;
     }
 
     -(NSDictionary *)searchZonesForMonster:(NSString *)monsterKey{

@@ -24,6 +24,7 @@
 		271C048E1E8C9C06002221E9 /* MonsterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C048D1E8C9C06002221E9 /* MonsterHelper.m */; };
 		271C04921E8F3784002221E9 /* SuffixList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 271C04911E8F3784002221E9 /* SuffixList.plist */; };
 		277ABEC91E949B96008CC239 /* StdLibWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEC81E949B96008CC239 /* StdLibWrapper.m */; };
+		277ABED11E95DEF6008CC239 /* ProbWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABED01E95DEF6008CC239 /* ProbWeight.m */; };
 		27AE66721E875EFB000F31BD /* Suffix+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE666F1E875EFB000F31BD /* Suffix+CoreDataClass.m */; };
 		27AE66731E875EFB000F31BD /* Suffix+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE66711E875EFB000F31BD /* Suffix+CoreDataProperties.m */; };
 		27C92C121E28A1330025727E /* ZoneChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C111E28A1330025727E /* ZoneChoiceCell.xib */; };
@@ -137,6 +138,8 @@
 		277ABEC81E949B96008CC239 /* StdLibWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StdLibWrapper.m; sourceTree = "<group>"; };
 		277ABECB1E94A0C0008CC239 /* P_CustomSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_CustomSwitch.h; sourceTree = "<group>"; };
 		277ABECC1E94A74F008CC239 /* P_UIUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_UIUtilities.h; sourceTree = "<group>"; };
+		277ABECF1E95DEF6008CC239 /* ProbWeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProbWeight.h; sourceTree = "<group>"; };
+		277ABED01E95DEF6008CC239 /* ProbWeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProbWeight.m; sourceTree = "<group>"; };
 		27AE66541E8720F9000F31BD /* CentralViewControllerP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralViewControllerP.h; sourceTree = "<group>"; };
 		27AE66551E87561B000F31BD /* Model 14.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 14.xcdatamodel"; sourceTree = "<group>"; };
 		27AE666E1E875EFB000F31BD /* Suffix+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Suffix+CoreDataClass.h"; sourceTree = "<group>"; };
@@ -677,6 +680,8 @@
 				271C04871E8B639D002221E9 /* ResourceUtility.m */,
 				277ABEC71E949B96008CC239 /* StdLibWrapper.h */,
 				277ABEC81E949B96008CC239 /* StdLibWrapper.m */,
+				277ABECF1E95DEF6008CC239 /* ProbWeight.h */,
+				277ABED01E95DEF6008CC239 /* ProbWeight.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -792,6 +797,7 @@
 				271C04831E8A1152002221E9 /* MonsterInfoDictionary.m in Sources */,
 				27C92C441E3314000025727E /* ZoneDescriptionViewController.m in Sources */,
 				68A921FA1DBC7FF2007C946C /* Monster+CoreDataProperties.m in Sources */,
+				277ABED11E95DEF6008CC239 /* ProbWeight.m in Sources */,
 				68F3F9EE1D70FC0D00840DD2 /* HabitController.m in Sources */,
 				68F3F9FE1D71CCF100840DD2 /* UIUtilities.m in Sources */,
 				68A921F71DBC7FF2007C946C /* Zone+CoreDataProperties.m in Sources */,

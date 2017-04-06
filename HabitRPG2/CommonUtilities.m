@@ -36,5 +36,9 @@
         
         return [[SingletonCluster getSharedInstance].stdLibWrapper randomUInt:offset] +minLvl;
     }
+    
+    +(uint32_t)randomUInt:(uint32_t)offset{
+        return [[SingletonCluster getSharedInstance].stdLibWrapper randomUInt:offset];
+    }
 
 @end

@@ -45,11 +45,11 @@ NSString* const HOME_KEY = @"HOME";
 
 +(NSString*)getRandomZoneDefinitionKey:(NSUInteger)heroLvl{
     NSArray *groupKeys = [ZoneHelper getUnlockedZoneGroupKeys: heroLvl];
-    uint32_t r = arc4random_uniform((uint32_t)groupKeys.count);
-    NSInteger groupKey = [((NSNumber*)[groupKeys objectAtIndex:r]) integerValue];
+    uint32_t r = [CommonUtilities randomUInt:(uint32_t)groupKeys.count];
+    NSInteger groupKey = [((NSNumber*)groupKeys[r]) integerValue];
     NSArray *zoneList = [ZoneHelper getZoneGroup:groupKey];
-    r = arc4random_uniform((uint32_t)zoneList.count);
-    return [zoneList objectAtIndex:r];
+    r = [CommonUtilities randomUInt:(uint32_t)zoneList.count];
+    return zoneList[r];
 }
 
 
@@ -167,14 +167,14 @@ NSString* const HOME_KEY = @"HOME";
     NSString *zoneKey = [ZoneHelper getRandomZoneDefinitionKey:hero.lvl];
     z.zoneKey = zoneKey;
     z.suffixNumber = [ZoneHelper getVisitCountForZone:zoneKey];
-    z.maxMonsters = arc4random_uniform(MAX_MONSTER_RAND_UP_BOUND) + MAX_MONSTER_LOW_BOUND;
+    z.maxMonsters = [CommonUtilities randomUInt:MAX_MONSTER_RAND_UP_BOUND]  + MAX_MONSTER_LOW_BOUND;
     z.monstersKilled = 0;
     z.lvl = matchLvl?hero.lvl:[CommonUtilities calculateLvl:hero.lvl OffsetBy:ZONE_LVL_RANGE];
     return z;
 }
 
 +(NSArray<Zone *> *)constructMultipleZoneChoices:(Hero *)hero AndMatchHeroLvl:(BOOL)matchLvl{
-    u_int32_t zoneCount = arc4random_uniform(MAX_ZONE_CHOICE_RAND_UP_BOUND) + MIN_ZONE_CHOICE_COUNT;
+    u_int32_t zoneCount = [CommonUtilities randomUInt:MAX_ZONE_CHOICE_RAND_UP_BOUND]  + MIN_ZONE_CHOICE_COUNT;
     NSMutableArray<Zone *> *choices = [NSMutableArray arrayWithCapacity:zoneCount];
     choices[0] = [self constructZoneChoice:hero AndMatchHeroLvl:matchLvl];
     for(u_int32_t i = 1;i<zoneCount;i++){
