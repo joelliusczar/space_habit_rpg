@@ -44,8 +44,8 @@
         return [self.monInfoDict getBaseXP:self.monsterKey] + self.lvl;
     }
     
-    -(int32_t)hp{
-        return [self.monInfoDict getBaseHP:self.monsterKey];
+    -(int32_t)maxHp{
+        return [self.monInfoDict getBaseHP:self.monsterKey]*self.lvl;
     }
     
     -(float)treasureDropRate{

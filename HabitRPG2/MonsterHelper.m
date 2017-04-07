@@ -20,7 +20,7 @@
         Monster *m = [MonsterHelper constructEmptyMonster];
         m.monsterKey = [MonsterHelper randomMonsterKey:zoneKey];
         m.lvl = [CommonUtilities calculateLvl:zoneLvl OffsetBy:MONSTER_LVL_RANGE];
-        //todo
+        m.nowHp = m.maxHp;
         return m;
     }
 

@@ -121,7 +121,7 @@
     if(results.count < 1){
         return nil;
     }
-    return [results objectAtIndex:0];
+    return results[0];
 }
 
 -(NSManagedObject *)getItemWithRequest:(NSFetchRequest *)request

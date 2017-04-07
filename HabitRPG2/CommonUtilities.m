@@ -40,5 +40,21 @@
     +(uint32_t)randomUInt:(uint32_t)offset{
         return [[SingletonCluster getSharedInstance].stdLibWrapper randomUInt:offset];
     }
+    
+    +(CGFloat)GetYStart: (CGFloat)height{
+        return height *.25;
+    }
+    
+    +(CGFloat)GetYStartUnderLabel: (CGFloat)height{
+        return height *.10;
+    }
+    
+    +(BOOL)isSwitchOn:(id<P_CustomSwitch>)switchItem{
+        return switchItem.isOn;
+    }
+    
+    +(void)setSwitch:(id<P_CustomSwitch>)switchItem withValue:(BOOL)value{
+        switchItem.isOn = value;
+    }
 
 @end

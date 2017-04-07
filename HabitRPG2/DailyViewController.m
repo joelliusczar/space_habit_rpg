@@ -8,13 +8,13 @@
 
 #import "DailyViewController.h"
 #import "constants.h"
-#import "UIUtilities.h"
 #import "EditNavigationController.h"
 #import "DailyEditController.h"
 #import "DailyHelper.h"
 #import "DailyCellController.h"
 #import "IntroViewController.h"
 #import "SingletonCluster.h"
+#import "CommonUtilities.h"
 
 
 @interface DailyViewController ()
@@ -89,9 +89,8 @@ static NSString *const EntityName = @"Daily";
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
     CGFloat height = [UIScreen mainScreen].bounds.size.height;
     CGFloat minY = self.view.frame.origin.y;
-    NSObject<P_UIUtilities> *uiUtil = [SingletonCluster getSharedInstance].uiUtilities;
-    CGFloat viewHeight = self.view.frame.size.height - [uiUtil GetYStartUnderLabel:height];
-    self.dailiesTable.frame = CGRectMake(0, minY + [uiUtil GetYStartUnderLabel:height],
+    CGFloat viewHeight = self.view.frame.size.height - [CommonUtilities GetYStartUnderLabel:height];
+    self.dailiesTable.frame = CGRectMake(0, minY + [CommonUtilities GetYStartUnderLabel:height],
                                                        width,
                                                        viewHeight);
     self.dailiesTable.delegate = self;

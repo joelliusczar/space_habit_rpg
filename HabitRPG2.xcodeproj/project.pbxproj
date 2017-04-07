@@ -25,6 +25,11 @@
 		271C04921E8F3784002221E9 /* SuffixList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 271C04911E8F3784002221E9 /* SuffixList.plist */; };
 		277ABEC91E949B96008CC239 /* StdLibWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEC81E949B96008CC239 /* StdLibWrapper.m */; };
 		277ABED11E95DEF6008CC239 /* ProbWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABED01E95DEF6008CC239 /* ProbWeight.m */; };
+		277ABEDD1E96F68E008CC239 /* HabitRPG2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEDC1E96F68E008CC239 /* HabitRPG2Tests.m */; };
+		277ABEE61E96FECC008CC239 /* MockSingletonCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEE51E96FECC008CC239 /* MockSingletonCluster.m */; };
+		277ABEE91E96FF50008CC239 /* MockDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEE81E96FF50008CC239 /* MockDataController.m */; };
+		277ABEEC1E970090008CC239 /* MockResourceUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEEB1E970090008CC239 /* MockResourceUtility.m */; };
+		277ABEEF1E970103008CC239 /* MockStdLibWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEEE1E970103008CC239 /* MockStdLibWrapper.m */; };
 		27AE66721E875EFB000F31BD /* Suffix+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE666F1E875EFB000F31BD /* Suffix+CoreDataClass.m */; };
 		27AE66731E875EFB000F31BD /* Suffix+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE66711E875EFB000F31BD /* Suffix+CoreDataProperties.m */; };
 		27C92C121E28A1330025727E /* ZoneChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C111E28A1330025727E /* ZoneChoiceCell.xib */; };
@@ -92,10 +97,19 @@
 		68F3F9F41D70FC5E00840DD2 /* TodoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68F3F9F21D70FC5E00840DD2 /* TodoViewController.xib */; };
 		68F3F9F81D70FD3F00840DD2 /* GoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9F61D70FD3F00840DD2 /* GoodsViewController.m */; };
 		68F3F9F91D70FD3F00840DD2 /* GoodsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68F3F9F71D70FD3F00840DD2 /* GoodsViewController.xib */; };
-		68F3F9FE1D71CCF100840DD2 /* UIUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9FD1D71CCF100840DD2 /* UIUtilities.m */; };
 		68F3FA021D74897A00840DD2 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3FA001D74897A00840DD2 /* MenuViewController.m */; };
 		68F3FA031D74897A00840DD2 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68F3FA011D74897A00840DD2 /* MenuViewController.xib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		277ABEDF1E96F68E008CC239 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 68F3F9A11D70E82E00840DD2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 68F3F9A81D70E82E00840DD2;
+			remoteInfo = HabitRPG2;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		271217281DCE3B380072ACC6 /* Model 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 7.xcdatamodel"; sourceTree = "<group>"; };
@@ -137,10 +151,19 @@
 		277ABEC71E949B96008CC239 /* StdLibWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StdLibWrapper.h; sourceTree = "<group>"; };
 		277ABEC81E949B96008CC239 /* StdLibWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StdLibWrapper.m; sourceTree = "<group>"; };
 		277ABECB1E94A0C0008CC239 /* P_CustomSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_CustomSwitch.h; sourceTree = "<group>"; };
-		277ABECC1E94A74F008CC239 /* P_UIUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_UIUtilities.h; sourceTree = "<group>"; };
 		277ABECF1E95DEF6008CC239 /* ProbWeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProbWeight.h; sourceTree = "<group>"; };
 		277ABED01E95DEF6008CC239 /* ProbWeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProbWeight.m; sourceTree = "<group>"; };
 		277ABED21E95FE3B008CC239 /* Model 16.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 16.xcdatamodel"; sourceTree = "<group>"; };
+		277ABEDA1E96F68E008CC239 /* HabitRPG2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitRPG2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		277ABEDC1E96F68E008CC239 /* HabitRPG2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HabitRPG2Tests.m; sourceTree = "<group>"; };
+		277ABEDE1E96F68E008CC239 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		277ABEE51E96FECC008CC239 /* MockSingletonCluster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockSingletonCluster.m; sourceTree = "<group>"; };
+		277ABEE71E96FF50008CC239 /* MockDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockDataController.h; sourceTree = "<group>"; };
+		277ABEE81E96FF50008CC239 /* MockDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockDataController.m; sourceTree = "<group>"; };
+		277ABEEA1E970090008CC239 /* MockResourceUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockResourceUtility.h; sourceTree = "<group>"; };
+		277ABEEB1E970090008CC239 /* MockResourceUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockResourceUtility.m; sourceTree = "<group>"; };
+		277ABEED1E970103008CC239 /* MockStdLibWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockStdLibWrapper.h; sourceTree = "<group>"; };
+		277ABEEE1E970103008CC239 /* MockStdLibWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockStdLibWrapper.m; sourceTree = "<group>"; };
 		27AE66541E8720F9000F31BD /* CentralViewControllerP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralViewControllerP.h; sourceTree = "<group>"; };
 		27AE66551E87561B000F31BD /* Model 14.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 14.xcdatamodel"; sourceTree = "<group>"; };
 		27AE666E1E875EFB000F31BD /* Suffix+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Suffix+CoreDataClass.h"; sourceTree = "<group>"; };
@@ -148,7 +171,6 @@
 		27AE66701E875EFB000F31BD /* Suffix+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Suffix+CoreDataProperties.h"; sourceTree = "<group>"; };
 		27AE66711E875EFB000F31BD /* Suffix+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Suffix+CoreDataProperties.m"; sourceTree = "<group>"; };
 		27C92B991E233F730025727E /* Model 12.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 12.xcdatamodel"; sourceTree = "<group>"; };
-		27C92C081E2757F80025727E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27C92C111E28A1330025727E /* ZoneChoiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZoneChoiceCell.xib; sourceTree = "<group>"; };
 		27C92C131E297F640025727E /* ZoneChoiceCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneChoiceCellController.h; sourceTree = "<group>"; };
 		27C92C141E297F640025727E /* ZoneChoiceCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneChoiceCellController.m; sourceTree = "<group>"; };
@@ -241,9 +263,6 @@
 		68F3F9B01D70E82E00840DD2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		68F3F9B81D70E82E00840DD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68F3F9BD1D70E82E00840DD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		68F3F9C81D70E82E00840DD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		68F3F9D11D70E82E00840DD2 /* HabitRPG2UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HabitRPG2UITests.m; sourceTree = "<group>"; };
-		68F3F9D31D70E82E00840DD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68F3F9E11D70E8DB00840DD2 /* CentralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralViewController.h; sourceTree = "<group>"; };
 		68F3F9E21D70E8DB00840DD2 /* CentralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentralViewController.m; sourceTree = "<group>"; };
 		68F3F9E31D70E8DB00840DD2 /* CentralViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CentralViewController.xib; sourceTree = "<group>"; };
@@ -259,8 +278,6 @@
 		68F3F9F51D70FD3F00840DD2 /* GoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsViewController.h; sourceTree = "<group>"; };
 		68F3F9F61D70FD3F00840DD2 /* GoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsViewController.m; sourceTree = "<group>"; };
 		68F3F9F71D70FD3F00840DD2 /* GoodsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsViewController.xib; sourceTree = "<group>"; };
-		68F3F9FC1D71CCF100840DD2 /* UIUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIUtilities.h; sourceTree = "<group>"; };
-		68F3F9FD1D71CCF100840DD2 /* UIUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIUtilities.m; sourceTree = "<group>"; };
 		68F3F9FF1D74897A00840DD2 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		68F3FA001D74897A00840DD2 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		68F3FA011D74897A00840DD2 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
@@ -268,6 +285,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		277ABED71E96F68E008CC239 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		68F3F9A61D70E82E00840DD2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -313,9 +337,32 @@
 			children = (
 				277ABEC61E949B76008CC239 /* P_stdlibWrapper.h */,
 				277ABECB1E94A0C0008CC239 /* P_CustomSwitch.h */,
-				277ABECC1E94A74F008CC239 /* P_UIUtilities.h */,
 			);
 			name = Protocols;
+			sourceTree = "<group>";
+		};
+		277ABEDB1E96F68E008CC239 /* HabitRPG2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				277ABEE41E96FE83008CC239 /* MockClasses */,
+				277ABEDC1E96F68E008CC239 /* HabitRPG2Tests.m */,
+				277ABEDE1E96F68E008CC239 /* Info.plist */,
+			);
+			path = HabitRPG2Tests;
+			sourceTree = "<group>";
+		};
+		277ABEE41E96FE83008CC239 /* MockClasses */ = {
+			isa = PBXGroup;
+			children = (
+				277ABEE51E96FECC008CC239 /* MockSingletonCluster.m */,
+				277ABEE71E96FF50008CC239 /* MockDataController.h */,
+				277ABEE81E96FF50008CC239 /* MockDataController.m */,
+				277ABEEA1E970090008CC239 /* MockResourceUtility.h */,
+				277ABEEB1E970090008CC239 /* MockResourceUtility.m */,
+				277ABEED1E970103008CC239 /* MockStdLibWrapper.h */,
+				277ABEEE1E970103008CC239 /* MockStdLibWrapper.m */,
+			);
+			name = MockClasses;
 			sourceTree = "<group>";
 		};
 		27AE66761E876007000F31BD /* Suffix */ = {
@@ -328,14 +375,6 @@
 				271C04911E8F3784002221E9 /* SuffixList.plist */,
 			);
 			name = Suffix;
-			sourceTree = "<group>";
-		};
-		27C92C051E2757F80025727E /* ConvienceScripts */ = {
-			isa = PBXGroup;
-			children = (
-				27C92C081E2757F80025727E /* Info.plist */,
-			);
-			path = ConvienceScripts;
 			sourceTree = "<group>";
 		};
 		27C92C3C1E3313580025727E /* Cell */ = {
@@ -502,14 +541,6 @@
 			name = Monster;
 			sourceTree = "<group>";
 		};
-		68BA38881D93611300CB5A76 /* TestHelpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = TestHelpers;
-			path = HabitRPG2;
-			sourceTree = "<group>";
-		};
 		68BE458D1D9DE889003F3400 /* Story */ = {
 			isa = PBXGroup;
 			children = (
@@ -578,10 +609,7 @@
 			children = (
 				68F3F9AB1D70E82E00840DD2 /* HabitRPG2 */,
 				27AE66761E876007000F31BD /* Suffix */,
-				68BA38881D93611300CB5A76 /* TestHelpers */,
-				68F3F9C51D70E82E00840DD2 /* HabitRPG2Tests */,
-				68F3F9D01D70E82E00840DD2 /* HabitRPG2UITests */,
-				27C92C051E2757F80025727E /* ConvienceScripts */,
+				277ABEDB1E96F68E008CC239 /* HabitRPG2Tests */,
 				68F3F9AA1D70E82E00840DD2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -590,6 +618,7 @@
 			isa = PBXGroup;
 			children = (
 				68F3F9A91D70E82E00840DD2 /* HabitRPG2.app */,
+				277ABEDA1E96F68E008CC239 /* HabitRPG2Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -644,29 +673,10 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		68F3F9C51D70E82E00840DD2 /* HabitRPG2Tests */ = {
-			isa = PBXGroup;
-			children = (
-				68F3F9C81D70E82E00840DD2 /* Info.plist */,
-			);
-			path = HabitRPG2Tests;
-			sourceTree = "<group>";
-		};
-		68F3F9D01D70E82E00840DD2 /* HabitRPG2UITests */ = {
-			isa = PBXGroup;
-			children = (
-				68F3F9D11D70E82E00840DD2 /* HabitRPG2UITests.m */,
-				68F3F9D31D70E82E00840DD2 /* Info.plist */,
-			);
-			path = HabitRPG2UITests;
-			sourceTree = "<group>";
-		};
 		68F3F9FA1D71C9A500840DD2 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				277ABECA1E94A08E008CC239 /* Protocols */,
-				68F3F9FC1D71CCF100840DD2 /* UIUtilities.h */,
-				68F3F9FD1D71CCF100840DD2 /* UIUtilities.m */,
 				6886A47E1D8E5FD0005E12B3 /* constants.h */,
 				6886A47F1D8E5FD0005E12B3 /* constants.m */,
 				68BA38841D93576600CB5A76 /* CommonUtilities.h */,
@@ -690,6 +700,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		277ABED91E96F68E008CC239 /* HabitRPG2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 277ABEE11E96F68E008CC239 /* Build configuration list for PBXNativeTarget "HabitRPG2Tests" */;
+			buildPhases = (
+				277ABED61E96F68E008CC239 /* Sources */,
+				277ABED71E96F68E008CC239 /* Frameworks */,
+				277ABED81E96F68E008CC239 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				277ABEE01E96F68E008CC239 /* PBXTargetDependency */,
+			);
+			name = HabitRPG2Tests;
+			productName = HabitRPG2Tests;
+			productReference = 277ABEDA1E96F68E008CC239 /* HabitRPG2Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		68F3F9A81D70E82E00840DD2 /* HabitRPG2 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 68F3F9D61D70E82E00840DD2 /* Build configuration list for PBXNativeTarget "HabitRPG2" */;
@@ -719,6 +747,11 @@
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Joel Pridgen";
 				TargetAttributes = {
+					277ABED91E96F68E008CC239 = {
+						CreatedOnToolsVersion = 8.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 68F3F9A81D70E82E00840DD2;
+					};
 					68F3F9A81D70E82E00840DD2 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = XK3RJ8E2L2;
@@ -739,11 +772,19 @@
 			projectRoot = "";
 			targets = (
 				68F3F9A81D70E82E00840DD2 /* HabitRPG2 */,
+				277ABED91E96F68E008CC239 /* HabitRPG2Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		277ABED81E96F68E008CC239 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		68F3F9A71D70E82E00840DD2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -787,6 +828,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		277ABED61E96F68E008CC239 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				277ABEE91E96FF50008CC239 /* MockDataController.m in Sources */,
+				277ABEE61E96FECC008CC239 /* MockSingletonCluster.m in Sources */,
+				277ABEEC1E970090008CC239 /* MockResourceUtility.m in Sources */,
+				277ABEDD1E96F68E008CC239 /* HabitRPG2Tests.m in Sources */,
+				277ABEEF1E970103008CC239 /* MockStdLibWrapper.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		68F3F9A51D70E82E00840DD2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -800,7 +853,6 @@
 				68A921FA1DBC7FF2007C946C /* Monster+CoreDataProperties.m in Sources */,
 				277ABED11E95DEF6008CC239 /* ProbWeight.m in Sources */,
 				68F3F9EE1D70FC0D00840DD2 /* HabitController.m in Sources */,
-				68F3F9FE1D71CCF100840DD2 /* UIUtilities.m in Sources */,
 				68A921F71DBC7FF2007C946C /* Zone+CoreDataProperties.m in Sources */,
 				27F4401C1E220097002BEDD4 /* OnlyOneEntities.m in Sources */,
 				2712176B1DCE84310072ACC6 /* Habit+CoreDataClass.m in Sources */,
@@ -851,7 +903,47 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		277ABEE01E96F68E008CC239 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 68F3F9A81D70E82E00840DD2 /* HabitRPG2 */;
+			targetProxy = 277ABEDF1E96F68E008CC239 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		277ABEE21E96F68E008CC239 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEVELOPMENT_TEAM = XK3RJ8E2L2;
+				INFOPLIST_FILE = HabitRPG2Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.HabitRPG2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HabitRPG2.app/HabitRPG2";
+			};
+			name = Debug;
+		};
+		277ABEE31E96F68E008CC239 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEVELOPMENT_TEAM = XK3RJ8E2L2;
+				INFOPLIST_FILE = HabitRPG2Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.HabitRPG2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HabitRPG2.app/HabitRPG2";
+			};
+			name = Release;
+		};
 		68F3F9D41D70E82E00840DD2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -975,6 +1067,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		277ABEE11E96F68E008CC239 /* Build configuration list for PBXNativeTarget "HabitRPG2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				277ABEE21E96F68E008CC239 /* Debug */,
+				277ABEE31E96F68E008CC239 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		68F3F9A41D70E82E00840DD2 /* Build configuration list for PBXProject "HabitRPG2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

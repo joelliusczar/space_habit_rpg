@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
     @property (nonatomic,readonly) int32_t attack;
     @property (nonatomic,readonly) int32_t defense;
     @property (nonatomic,readonly) int32_t xp;
+    @property (nonatomic,readonly) int32_t maxHp;
     @property (nonatomic,readonly) float treasureDropRate;
     @property (nonatomic,readonly) int32_t encounterWeight;
 @end
