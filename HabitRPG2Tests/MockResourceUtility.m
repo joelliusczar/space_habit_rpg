@@ -40,7 +40,11 @@
     
     -(NSArray *)getPListArray:(NSString *)fileName withClassBundle:(Class)class{
         if([fileName isEqualToString:@"SuffixList"]){
-            return [NSArray arrayWithObjects:@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"K",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z", nil];
+            NSMutableArray *suffixes = [NSMutableArray array];
+            for(int32_t i = 0;i<100;i++){
+                [suffixes addObject:[NSString stringWithFormat:@"sfx%d",i]];
+            }
+            return [NSArray arrayWithArray:suffixes];
         }
         [NSException raise:@"Invalid arg" format:@"argument is invalid"];
         return nil;

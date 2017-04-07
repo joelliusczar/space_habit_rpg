@@ -25,7 +25,6 @@
 		271C04921E8F3784002221E9 /* SuffixList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 271C04911E8F3784002221E9 /* SuffixList.plist */; };
 		277ABEC91E949B96008CC239 /* StdLibWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEC81E949B96008CC239 /* StdLibWrapper.m */; };
 		277ABED11E95DEF6008CC239 /* ProbWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABED01E95DEF6008CC239 /* ProbWeight.m */; };
-		277ABEDD1E96F68E008CC239 /* HabitRPG2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEDC1E96F68E008CC239 /* HabitRPG2Tests.m */; };
 		277ABEE61E96FECC008CC239 /* MockSingletonCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEE51E96FECC008CC239 /* MockSingletonCluster.m */; };
 		277ABEE91E96FF50008CC239 /* MockDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEE81E96FF50008CC239 /* MockDataController.m */; };
 		277ABEEC1E970090008CC239 /* MockResourceUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEEB1E970090008CC239 /* MockResourceUtility.m */; };
@@ -36,7 +35,6 @@
 		27C92C151E297F650025727E /* ZoneChoiceCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C141E297F640025727E /* ZoneChoiceCellController.m */; };
 		27C92C1A1E29C9F10025727E /* ZoneInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C191E29C9F10025727E /* ZoneInfoDictionary.m */; };
 		27C92C1F1E29FE110025727E /* ZoneInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C161E29AD770025727E /* ZoneInfo.plist */; };
-		27C92C251E2AD6FC0025727E /* BundleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C241E2AD6FC0025727E /* BundleHelper.m */; };
 		27C92C441E3314000025727E /* ZoneDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C421E3314000025727E /* ZoneDescriptionViewController.m */; };
 		27C92C451E3314000025727E /* ZoneDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C431E3314000025727E /* ZoneDescriptionViewController.xib */; };
 		27C92C481E341DA10025727E /* ViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C471E341DA10025727E /* ViewHelper.m */; };
@@ -155,7 +153,6 @@
 		277ABED01E95DEF6008CC239 /* ProbWeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProbWeight.m; sourceTree = "<group>"; };
 		277ABED21E95FE3B008CC239 /* Model 16.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 16.xcdatamodel"; sourceTree = "<group>"; };
 		277ABEDA1E96F68E008CC239 /* HabitRPG2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitRPG2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		277ABEDC1E96F68E008CC239 /* HabitRPG2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HabitRPG2Tests.m; sourceTree = "<group>"; };
 		277ABEDE1E96F68E008CC239 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		277ABEE51E96FECC008CC239 /* MockSingletonCluster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockSingletonCluster.m; sourceTree = "<group>"; };
 		277ABEE71E96FF50008CC239 /* MockDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockDataController.h; sourceTree = "<group>"; };
@@ -177,8 +174,6 @@
 		27C92C161E29AD770025727E /* ZoneInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ZoneInfo.plist; sourceTree = "<group>"; };
 		27C92C181E29C9F10025727E /* ZoneInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneInfoDictionary.h; sourceTree = "<group>"; };
 		27C92C191E29C9F10025727E /* ZoneInfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneInfoDictionary.m; sourceTree = "<group>"; };
-		27C92C231E2AD6FC0025727E /* BundleHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundleHelper.h; sourceTree = "<group>"; };
-		27C92C241E2AD6FC0025727E /* BundleHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BundleHelper.m; sourceTree = "<group>"; };
 		27C92C291E2D87800025727E /* Model 13.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 13.xcdatamodel"; sourceTree = "<group>"; };
 		27C92C411E3314000025727E /* ZoneDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneDescriptionViewController.h; sourceTree = "<group>"; };
 		27C92C421E3314000025727E /* ZoneDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneDescriptionViewController.m; sourceTree = "<group>"; };
@@ -345,7 +340,6 @@
 			isa = PBXGroup;
 			children = (
 				277ABEE41E96FE83008CC239 /* MockClasses */,
-				277ABEDC1E96F68E008CC239 /* HabitRPG2Tests.m */,
 				277ABEDE1E96F68E008CC239 /* Info.plist */,
 			);
 			path = HabitRPG2Tests;
@@ -683,8 +677,6 @@
 				68BA38851D93576600CB5A76 /* CommonUtilities.m */,
 				686ED3B51DAF3DBD004EDD36 /* CustomSwitch.h */,
 				686ED3B61DAF3DBD004EDD36 /* CustomSwitch.m */,
-				27C92C231E2AD6FC0025727E /* BundleHelper.h */,
-				27C92C241E2AD6FC0025727E /* BundleHelper.m */,
 				27C92C461E341DA10025727E /* ViewHelper.h */,
 				27C92C471E341DA10025727E /* ViewHelper.m */,
 				271C04861E8B639D002221E9 /* ResourceUtility.h */,
@@ -835,7 +827,6 @@
 				277ABEE91E96FF50008CC239 /* MockDataController.m in Sources */,
 				277ABEE61E96FECC008CC239 /* MockSingletonCluster.m in Sources */,
 				277ABEEC1E970090008CC239 /* MockResourceUtility.m in Sources */,
-				277ABEDD1E96F68E008CC239 /* HabitRPG2Tests.m in Sources */,
 				277ABEEF1E970103008CC239 /* MockStdLibWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -879,7 +870,6 @@
 				2712176F1DCE84310072ACC6 /* Todo+CoreDataClass.m in Sources */,
 				68A921FB1DBC7FF2007C946C /* Settings+CoreDataProperties.m in Sources */,
 				271C048E1E8C9C06002221E9 /* MonsterHelper.m in Sources */,
-				27C92C251E2AD6FC0025727E /* BundleHelper.m in Sources */,
 				2712176D1DCE84310072ACC6 /* Monster+CoreDataClass.m in Sources */,
 				2712176A1DCE84310072ACC6 /* Good+CoreDataClass.m in Sources */,
 				68F3F9E91D70EC9700840DD2 /* DailyViewController.m in Sources */,
