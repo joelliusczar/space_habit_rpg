@@ -25,10 +25,7 @@
 		271C04921E8F3784002221E9 /* SuffixList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 271C04911E8F3784002221E9 /* SuffixList.plist */; };
 		277ABEC91E949B96008CC239 /* StdLibWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEC81E949B96008CC239 /* StdLibWrapper.m */; };
 		277ABED11E95DEF6008CC239 /* ProbWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABED01E95DEF6008CC239 /* ProbWeight.m */; };
-		277ABEE61E96FECC008CC239 /* MockSingletonCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEE51E96FECC008CC239 /* MockSingletonCluster.m */; };
-		277ABEE91E96FF50008CC239 /* MockDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEE81E96FF50008CC239 /* MockDataController.m */; };
-		277ABEEC1E970090008CC239 /* MockResourceUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEEB1E970090008CC239 /* MockResourceUtility.m */; };
-		277ABEEF1E970103008CC239 /* MockStdLibWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEEE1E970103008CC239 /* MockStdLibWrapper.m */; };
+		277ABEF21E975959008CC239 /* ModelsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEF11E975959008CC239 /* ModelsTest.m */; };
 		27AE66721E875EFB000F31BD /* Suffix+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE666F1E875EFB000F31BD /* Suffix+CoreDataClass.m */; };
 		27AE66731E875EFB000F31BD /* Suffix+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE66711E875EFB000F31BD /* Suffix+CoreDataProperties.m */; };
 		27C92C121E28A1330025727E /* ZoneChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C111E28A1330025727E /* ZoneChoiceCell.xib */; };
@@ -154,13 +151,7 @@
 		277ABED21E95FE3B008CC239 /* Model 16.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 16.xcdatamodel"; sourceTree = "<group>"; };
 		277ABEDA1E96F68E008CC239 /* HabitRPG2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitRPG2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		277ABEDE1E96F68E008CC239 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		277ABEE51E96FECC008CC239 /* MockSingletonCluster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockSingletonCluster.m; sourceTree = "<group>"; };
-		277ABEE71E96FF50008CC239 /* MockDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockDataController.h; sourceTree = "<group>"; };
-		277ABEE81E96FF50008CC239 /* MockDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockDataController.m; sourceTree = "<group>"; };
-		277ABEEA1E970090008CC239 /* MockResourceUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockResourceUtility.h; sourceTree = "<group>"; };
-		277ABEEB1E970090008CC239 /* MockResourceUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockResourceUtility.m; sourceTree = "<group>"; };
-		277ABEED1E970103008CC239 /* MockStdLibWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockStdLibWrapper.h; sourceTree = "<group>"; };
-		277ABEEE1E970103008CC239 /* MockStdLibWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockStdLibWrapper.m; sourceTree = "<group>"; };
+		277ABEF11E975959008CC239 /* ModelsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelsTest.m; sourceTree = "<group>"; };
 		27AE66541E8720F9000F31BD /* CentralViewControllerP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralViewControllerP.h; sourceTree = "<group>"; };
 		27AE66551E87561B000F31BD /* Model 14.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 14.xcdatamodel"; sourceTree = "<group>"; };
 		27AE666E1E875EFB000F31BD /* Suffix+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Suffix+CoreDataClass.h"; sourceTree = "<group>"; };
@@ -339,6 +330,7 @@
 		277ABEDB1E96F68E008CC239 /* HabitRPG2Tests */ = {
 			isa = PBXGroup;
 			children = (
+				277ABEF01E97592A008CC239 /* Tests */,
 				277ABEE41E96FE83008CC239 /* MockClasses */,
 				277ABEDE1E96F68E008CC239 /* Info.plist */,
 			);
@@ -348,15 +340,16 @@
 		277ABEE41E96FE83008CC239 /* MockClasses */ = {
 			isa = PBXGroup;
 			children = (
-				277ABEE51E96FECC008CC239 /* MockSingletonCluster.m */,
-				277ABEE71E96FF50008CC239 /* MockDataController.h */,
-				277ABEE81E96FF50008CC239 /* MockDataController.m */,
-				277ABEEA1E970090008CC239 /* MockResourceUtility.h */,
-				277ABEEB1E970090008CC239 /* MockResourceUtility.m */,
-				277ABEED1E970103008CC239 /* MockStdLibWrapper.h */,
-				277ABEEE1E970103008CC239 /* MockStdLibWrapper.m */,
 			);
 			name = MockClasses;
+			sourceTree = "<group>";
+		};
+		277ABEF01E97592A008CC239 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				277ABEF11E975959008CC239 /* ModelsTest.m */,
+			);
+			name = Tests;
 			sourceTree = "<group>";
 		};
 		27AE66761E876007000F31BD /* Suffix */ = {
@@ -824,10 +817,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				277ABEE91E96FF50008CC239 /* MockDataController.m in Sources */,
-				277ABEE61E96FECC008CC239 /* MockSingletonCluster.m in Sources */,
-				277ABEEC1E970090008CC239 /* MockResourceUtility.m in Sources */,
-				277ABEEF1E970103008CC239 /* MockStdLibWrapper.m in Sources */,
+				277ABEF21E975959008CC239 /* ModelsTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1104,7 +1094,7 @@
 				68BE458C1D9CCF4C003F3400 /* Model 2.xcdatamodel */,
 				68E260611D7BC3EA00425D46 /* Model.xcdatamodel */,
 			);
-			currentVersion = 277ABEC21E947B66008CC239 /* Model 15.xcdatamodel */;
+			currentVersion = 277ABED21E95FE3B008CC239 /* Model 16.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

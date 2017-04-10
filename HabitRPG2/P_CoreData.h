@@ -15,9 +15,6 @@
 
 @protocol P_CoreData <NSObject>
 @property (nonatomic,strong) NSManagedObjectContext *context;
-@property (nonatomic,assign) BOOL disableSave;
-@property (nonatomic,assign) BOOL disabledSaveResult;
-@property (nonatomic,assign) BOOL isTesting;
 @property (nonatomic,strong) OnlyOneEntities *userData;
 -(instancetype)initWithDBFileName: (NSString *) dbFileName;
 -(NSManagedObject *)constructEmptyEntity:(NSString *) entityType;

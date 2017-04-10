@@ -15,6 +15,11 @@ typedef NS_ENUM(NSUInteger,dailyStatus) {
     INCOMPLETE = 0
     ,COMPLETE = 1};
 
+typedef NS_ENUM(NSInteger,enviromentCode) {
+    ENV_DEFAULT =0
+    ,ENV_UTEST = 1
+};
+
 extern NSString* const DAILY_ENTITY_NAME;
 extern NSString* const HABIT_ENTITY_NAME;
 extern NSString* const TODO_ENTITY_NAME;

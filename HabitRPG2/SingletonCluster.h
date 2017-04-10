@@ -22,4 +22,5 @@
     @property (nonatomic,strong) ZoneInfoDictionary *zoneInfoDictionary;
     @property (nonatomic,strong) MonsterInfoDictionary *monsterInfoDictionary;
     @property (nonatomic,strong) NSObject<P_stdlibWrapper> *stdLibWrapper;
+    @property (nonatomic,assign) int32_t EnviromentNum;
 @end
