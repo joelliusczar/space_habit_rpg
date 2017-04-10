@@ -14,8 +14,11 @@
 @property (nonatomic,weak) MonsterInfoDictionary *monInfoDict;
 @end
 
+float MAX_HP_MODIFIER = .1;
 @implementation Monster
-
+    
+    
+    
     @synthesize monInfoDict = _monInfoDict;
     -(MonsterInfoDictionary *)monInfoDict{
         if(!_monInfoDict){
@@ -41,11 +44,11 @@
     }
     
     -(int32_t)xp{
-        return [self.monInfoDict getBaseXP:self.monsterKey] + self.lvl;
+        return [self.monInfoDict getBaseXP:self.monsterKey];
     }
     
     -(int32_t)maxHp{
-        return [self.monInfoDict getBaseHP:self.monsterKey]*self.lvl;
+        return [self.monInfoDict getBaseHP:self.monsterKey] + (self.lvl*[self.monInfoDict getBaseHP:self.monsterKey]*MAX_HP_MODIFIER);
     }
     
     -(float)treasureDropRate{

@@ -86,23 +86,23 @@
     }
     
     -(int32_t)getBaseAttack:(NSString *)monsterKey{
-       NSInteger atkLvl = (NSInteger)[self getMonsterInfo:monsterKey][@"ATTACK_LVL"];
-        return (u_int32_t)atkLvl;
+       NSNumber *atkLvl = (NSNumber *)[self getMonsterInfo:monsterKey][@"ATTACK_LVL"];
+        return atkLvl.intValue;
     }
     
     -(int32_t)getBaseDefense:(NSString *)monsterKey{
-        NSInteger defLvl = (NSInteger)[self getMonsterInfo:monsterKey][@"DEFENSE_LVL"];
-        return (u_int32_t)defLvl;
+        NSNumber *defLvl = (NSNumber *)[self getMonsterInfo:monsterKey][@"DEFENSE_LVL"];
+        return defLvl.intValue;
     }
     
     -(int32_t)getBaseXP:(NSString *)monsterKey{
-        NSInteger xp = (NSInteger)[self getMonsterInfo:monsterKey][@"BASE_XP_REWARD"];
-        return (u_int32_t)xp;
+        NSNumber *xp = (NSNumber *)[self getMonsterInfo:monsterKey][@"BASE_XP_REWARD"];
+        return xp.intValue;
     }
     
     -(int32_t)getBaseHP:(NSString *)monsterKey{//todo figure out how I want to handle this
-        NSInteger hp = (NSInteger)[self getMonsterInfo:monsterKey][@"HP"];
-        return (u_int32_t)hp;
+        NSNumber *hp = (NSNumber *)[self getMonsterInfo:monsterKey][@"HP"];
+        return hp.intValue;
     }
     
     -(float)getTreasureDropRate:(NSString *)monsterKey{
@@ -111,8 +111,8 @@
     }
     
     -(int32_t)getEncounterWeight:(NSString *)monsterKey{
-        NSInteger encounterWeight = (NSInteger)[self getMonsterInfo:monsterKey][@"ENCOUNTER_WEIGHT"];
-        return (u_int32_t)encounterWeight;
+        NSNumber *encounterWeight = (NSNumber *)[self getMonsterInfo:monsterKey][@"ENCOUNTER_WEIGHT"];
+        return encounterWeight.intValue;
     }
     
 

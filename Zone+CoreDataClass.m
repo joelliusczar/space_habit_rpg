@@ -27,8 +27,7 @@
 
 -(NSString *)fullName{
     NSString* name = [self.zoneInfoDict getZoneName:self.zoneKey];
-    NSString* suffix = [ZoneHelper getSymbolSuffix:self.suffixNumber];
-    return [NSString stringWithFormat:@"%@ %@",name,suffix];
+    return [NSString stringWithFormat:@"%@ %@",name,self.suffix];
 }
 
 -(NSString *)synopsis{

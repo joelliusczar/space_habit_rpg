@@ -11,17 +11,17 @@
 			<key>DESCRIPTION</key>
 			<string>Security drones never take breaks. As a result, their judgement falters, and they get trigger happy, attacking peaceful space explorers</string>
 			<key>ATTACK_LVL</key>
-			<integer>1</integer>
+			<integer>2</integer>
 			<key>DEFENSE_LVL</key>
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
-            <key>HP</key>
-            <integer>1</integer>
+			<key>HP</key>
+			<integer>75</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
-			<integer>10</integer>
+			<integer>25</integer>
 		</dict>
 		<key>STOP_LIGHT</key>
 		<dict>
@@ -30,17 +30,17 @@
 			<key>DESCRIPTION</key>
 			<string>Some space explorers wait too long for these signals to change. They forget they can go around. Sometimes the light just needs a good whack</string>
 			<key>ATTACK_LVL</key>
-			<integer>1</integer>
+			<integer>2</integer>
 			<key>DEFENSE_LVL</key>
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
-            <key>HP</key>
-            <integer>1</integer>
+			<key>HP</key>
+			<integer>75</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
-			<integer>10</integer>
+			<integer>25</integer>
 		</dict>
 		<key>WHISTLE_WARDEN</key>
 		<dict>
@@ -49,17 +49,17 @@
 			<key>DESCRIPTION</key>
 			<string>Whistle wardens are notoriously inefficient because they obsess over minute imperfections and fail to cover much ground</string>
 			<key>ATTACK_LVL</key>
-			<integer>1</integer>
+			<integer>2</integer>
 			<key>DEFENSE_LVL</key>
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
-            <key>HP</key>
-            <integer>1</integer>
+			<key>HP</key>
+			<integer>75</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
-			<integer>10</integer>
+			<integer>25</integer>
 		</dict>
 	</dict>
 	<key>NEBULA</key>
@@ -71,17 +71,17 @@
 			<key>DESCRIPTION</key>
 			<string>The thick nebula dust disrupts these satellites&apos; link to home base. Not knowing how to think for themselves, the satellites attack anyone</string>
 			<key>ATTACK_LVL</key>
-			<integer>1</integer>
+			<integer>4</integer>
 			<key>DEFENSE_LVL</key>
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
-            <key>HP</key>
-            <integer>1</integer>
+			<key>HP</key>
+			<integer>125</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
-			<integer>10</integer>
+			<integer>25</integer>
 		</dict>
 		<key>DUST_FAIRY</key>
 		<dict>
@@ -90,17 +90,17 @@
 			<key>DESCRIPTION</key>
 			<string>Dust Fairies are fiercely territorial of their dust clouds. They often lose stuff and have to search all of their dust when they need a tool</string>
 			<key>ATTACK_LVL</key>
-			<integer>1</integer>
+			<integer>4</integer>
 			<key>DEFENSE_LVL</key>
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
-            <key>HP</key>
-            <integer>1</integer>
+			<key>HP</key>
+			<integer>125</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
-			<integer>10</integer>
+			<integer>25</integer>
 		</dict>
 		<key>SENTIENT_CLOUD</key>
 		<dict>
@@ -109,17 +109,17 @@
 			<key>DESCRIPTION</key>
 			<string>Sentient space clouds enlarge themselves when they want to scare away enemies and shrink themselves to lull pray into false security</string>
 			<key>ATTACK_LVL</key>
-			<integer>1</integer>
+			<integer>4</integer>
 			<key>DEFENSE_LVL</key>
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
-            <key>HP</key>
-            <integer>1</integer>
+			<key>HP</key>
+			<integer>125</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
-			<integer>10</integer>
+			<integer>25</integer>
 		</dict>
 		<key>CLOUD_FORTRESS</key>
 		<dict>
@@ -128,17 +128,17 @@
 			<key>DESCRIPTION</key>
 			<string>Many explorers underestimate the cloud fortress because its weaponry is obscured. Smart explorers know to ask as many questions as needed</string>
 			<key>ATTACK_LVL</key>
-			<integer>1</integer>
+			<integer>4</integer>
 			<key>DEFENSE_LVL</key>
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
-            <key>HP</key>
-            <integer>1</integer>
+			<key>HP</key>
+			<integer>125</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
-			<integer>10</integer>
+			<integer>25</integer>
 		</dict>
 	</dict>
 	<key>ASTEROID_FIELD</key>
@@ -155,8 +155,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
-            <key>HP</key>
-            <integer>1</integer>
+			<key>HP</key>
+			<integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -174,8 +174,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
-            <key>HP</key>
-            <integer>1</integer>
+			<key>HP</key>
+			<integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -193,8 +193,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
-            <key>HP</key>
-            <integer>1</integer>
+			<key>HP</key>
+			<integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -212,8 +212,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
-            <key>HP</key>
-            <integer>1</integer>
+			<key>HP</key>
+			<integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -231,8 +231,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
-            <key>HP</key>
-            <integer>1</integer>
+			<key>HP</key>
+			<integer>1</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -252,9 +252,9 @@
 			<key>DEFENSE_LVL</key>
 			<integer>2</integer>
 			<key>BASE_XP_REWARD</key>
-			<integer>4</integer>
-            <key>HP</key>
-            <integer>1</integer>
+			<integer>2</integer>
+			<key>HP</key>
+			<integer>125</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -267,17 +267,17 @@
 			<key>DESCRIPTION</key>
 			<string>Gravity holes bend time for everyone stuck in them. It&apos;s not rare to leave one, thinking it&apos;s only been hours when it has instead been years</string>
 			<key>ATTACK_LVL</key>
-			<integer>1</integer>
+			<integer>3</integer>
 			<key>DEFENSE_LVL</key>
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
-            <key>HP</key>
-            <integer>1</integer>
+			<key>HP</key>
+			<integer>100</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
-			<integer>10</integer>
+			<integer>25</integer>
 		</dict>
 		<key>SPACE_PARASITES</key>
 		<dict>
@@ -286,17 +286,17 @@
 			<key>DESCRIPTION</key>
 			<string>Space parasites latch onto passing space ships. They drain away the resources of the space ships until it can&apos;t do anything.</string>
 			<key>ATTACK_LVL</key>
-			<integer>1</integer>
+			<integer>3</integer>
 			<key>DEFENSE_LVL</key>
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
-            <key>HP</key>
-            <integer>1</integer>
+			<key>HP</key>
+			<integer>100</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
-			<integer>10</integer>
+			<integer>25</integer>
 		</dict>
 		<key>ZOMBIE_FREIGHTER</key>
 		<dict>
@@ -305,17 +305,17 @@
 			<key>DESCRIPTION</key>
 			<string>The zombieism infecting these freighters starts small and is easily cured with discipline. But lax standards cause the infection to spread</string>
 			<key>ATTACK_LVL</key>
-			<integer>1</integer>
+			<integer>3</integer>
 			<key>DEFENSE_LVL</key>
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
-            <key>HP</key>
-            <integer>1</integer>
+			<key>HP</key>
+			<integer>100</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
-			<integer>10</integer>
+			<integer>25</integer>
 		</dict>
 	</dict>
 	<key>GAS</key>
@@ -327,17 +327,17 @@
 			<key>DESCRIPTION</key>
 			<string>Many explorers underestimate the cloud fortress because its weaponry is obscured. Smart explorers know to ask as many questions as needed</string>
 			<key>ATTACK_LVL</key>
-			<integer>3</integer>
+			<integer>5</integer>
 			<key>DEFENSE_LVL</key>
 			<integer>1</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>3</integer>
-            <key>HP</key>
-            <integer>1</integer>
+			<key>HP</key>
+			<integer>150</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
-			<integer>10</integer>
+			<integer>25</integer>
 		</dict>
 		<key>POISON_CLOUD</key>
 		<dict>
@@ -346,17 +346,17 @@
 			<key>DESCRIPTION</key>
 			<string>Poison Clouds engulf star ships and suffocate its crew with its toxic atmosphere. A star ship must escape the cloud and attack from outside</string>
 			<key>ATTACK_LVL</key>
-			<integer>2</integer>
+			<integer>5</integer>
 			<key>DEFENSE_LVL</key>
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>2</integer>
-            <key>HP</key>
-            <integer>1</integer>
+			<key>HP</key>
+			<integer>150</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
-			<integer>10</integer>
+			<integer>25</integer>
 		</dict>
 		<key>POISON_FAIRY</key>
 		<dict>
@@ -365,17 +365,17 @@
 			<key>DESCRIPTION</key>
 			<string>Poison Fairies used to be space fairies but bad experiences knocked them into the toxic gas. They never got any help. Now they hate everyone</string>
 			<key>ATTACK_LVL</key>
-			<integer>2</integer>
+			<integer>5</integer>
 			<key>DEFENSE_LVL</key>
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>2</integer>
-            <key>HP</key>
-            <integer>1</integer>
+			<key>HP</key>
+			<integer>150</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
-			<integer>10</integer>
+			<integer>25</integer>
 		</dict>
 	</dict>
 	<key>ALL</key>
@@ -392,8 +392,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
-            <key>HP</key>
-            <integer>1</integer>
+			<key>HP</key>
+			<integer>50</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -411,8 +411,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
-            <key>HP</key>
-            <integer>1</integer>
+			<key>HP</key>
+			<integer>50</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -430,8 +430,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
-            <key>HP</key>
-            <integer>1</integer>
+			<key>HP</key>
+			<integer>50</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -449,8 +449,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
-            <key>HP</key>
-            <integer>1</integer>
+			<key>HP</key>
+			<integer>50</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -468,8 +468,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
-            <key>HP</key>
-            <integer>1</integer>
+			<key>HP</key>
+			<integer>50</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -487,8 +487,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
-            <key>HP</key>
-            <integer>1</integer>
+			<key>HP</key>
+			<integer>50</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
@@ -506,8 +506,8 @@
 			<integer>0</integer>
 			<key>BASE_XP_REWARD</key>
 			<integer>1</integer>
-            <key>HP</key>
-            <integer>1</integer>
+			<key>HP</key>
+			<integer>50</integer>
 			<key>TREASURE_DROP_RATE</key>
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>

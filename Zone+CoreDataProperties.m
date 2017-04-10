@@ -2,7 +2,7 @@
 //  Zone+CoreDataProperties.m
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 3/25/17.
+//  Created by Joel Pridgen on 4/10/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
@@ -18,7 +18,7 @@
 @dynamic lvl;
 @dynamic maxMonsters;
 @dynamic monstersKilled;
-@dynamic suffixNumber;
+@dynamic suffix;
 @dynamic uniqueId;
 @dynamic zoneKey;
 

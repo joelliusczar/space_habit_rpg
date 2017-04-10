@@ -2,7 +2,7 @@
 //  Zone+CoreDataProperties.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 3/25/17.
+//  Created by Joel Pridgen on 4/10/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) int32_t lvl;
 @property (nonatomic) int32_t maxMonsters;
 @property (nonatomic) int32_t monstersKilled;
-@property (nonatomic) int32_t suffixNumber;
+@property (nullable, nonatomic, copy) NSString *suffix;
 @property (nonatomic) int64_t uniqueId;
 @property (nullable, nonatomic, copy) NSString *zoneKey;
 

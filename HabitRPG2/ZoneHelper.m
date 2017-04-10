@@ -82,7 +82,7 @@ NSString* const HOME_KEY = @"HOME";
         visitCount /= symbols.count;
         [suffix appendFormat:@"%@ ",[symbols objectAtIndex:symbolIndex]];
     }
-    return [NSString stringWithString:suffix];
+    return [suffix stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" "]];
 }
 
 +(NSUInteger)adjustVisitCountForHugeNumbers:(NSUInteger)visitCount LengthOfSymbolsTable:(NSUInteger)symbolsLen{
@@ -155,7 +155,7 @@ NSString* const HOME_KEY = @"HOME";
     z.lvl = 0;
     z.maxMonsters = 0;
     z.monstersKilled = 0;
-    z.suffixNumber = 0;
+    z.suffix = @"";
     z.uniqueId = [self getNextUniqueId];
     z.isFront = YES;
     [[SingletonCluster getSharedInstance].dataController save];
@@ -166,7 +166,7 @@ NSString* const HOME_KEY = @"HOME";
     Zone *z = [ZoneHelper constructEmptyZone];
     NSString *zoneKey = [ZoneHelper getRandomZoneDefinitionKey:hero.lvl];
     z.zoneKey = zoneKey;
-    z.suffixNumber = [ZoneHelper getVisitCountForZone:zoneKey];
+    z.suffix = [ZoneHelper getSymbolSuffix:[ZoneHelper getVisitCountForZone:zoneKey]];
     z.maxMonsters = [CommonUtilities randomUInt:MAX_MONSTER_RAND_UP_BOUND]  + MAX_MONSTER_LOW_BOUND;
     z.monstersKilled = 0;
     z.lvl = matchLvl?hero.lvl:[CommonUtilities calculateLvl:hero.lvl OffsetBy:ZONE_LVL_RANGE];
