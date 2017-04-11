@@ -12,7 +12,7 @@
 static bool isRunningTests()
 {
     NSDictionary* environment = [[NSProcessInfo processInfo] environment];
-    NSString* testEnabled = environment[@"IS_TESTING"];
+    NSString* testEnabled = environment[@"IS_UNIT_TESTING"];
     return [testEnabled isEqualToString:@"YES"];
 }
 

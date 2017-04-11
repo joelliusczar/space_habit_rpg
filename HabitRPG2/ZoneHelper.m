@@ -17,56 +17,30 @@ NSString* const HOME_KEY = @"HOME";
 
 @implementation ZoneHelper
 
-+(NSArray *)getZoneGroup:(NSInteger)key{
-    ZoneInfoDictionary *zd = [SingletonCluster getSharedInstance].zoneInfoDictionary;
-    
-    if(key == LVL_5_ZONES){
-        return [zd getGroupKeyList:@"LVL_5_ZONES"];
-    }
-    else if(key == LVL_10_ZONES){
-        return [zd getGroupKeyList:@"LVL_10_ZONES"];
-    }
-    else if(key == LVL_15_ZONES){
-        return [zd getGroupKeyList:@"LVL_15_ZONES"];
-    }
-    else if(key == LVL_20_ZONES){
-        return [zd getGroupKeyList:@"LVL_20_ZONES"];
-    }
-    else if(key == LVL_25_ZONES){
-        return [zd getGroupKeyList:@"LVL_25_ZONES"];
-    }
-    else if(key == LVL_30_ZONES){
-        return [zd getGroupKeyList:@"LVL_30_ZONES"];
-    }
-    else{
-        return [zd getGroupKeyList:@"LVL_1_ZONES"];
-    }
-}
 
 +(NSString*)getRandomZoneDefinitionKey:(NSUInteger)heroLvl{
-    NSArray *groupKeys = [ZoneHelper getUnlockedZoneGroupKeys: heroLvl];
+    NSArray<NSString *> *groupKeys = [ZoneHelper getUnlockedZoneGroupKeys: heroLvl];
     uint32_t r = [CommonUtilities randomUInt:(uint32_t)groupKeys.count];
-    NSInteger groupKey = [((NSNumber*)groupKeys[r]) integerValue];
-    NSArray *zoneList = [ZoneHelper getZoneGroup:groupKey];
+    NSString *groupKey = groupKeys[r];
+    ZoneInfoDictionary *zd = [SingletonCluster getSharedInstance].zoneInfoDictionary;
+    NSArray *zoneList = [zd getGroupKeyList:groupKey];
     r = [CommonUtilities randomUInt:(uint32_t)zoneList.count];
     return zoneList[r];
 }
 
 
 
-+(NSString*)generateFullZoneNameSuffix:(NSUInteger)visitCount{
++(NSString*)generateSuffix:(NSUInteger)visitCount{
     if(visitCount < 1){
         return @"";
     }
-    
     NSArray *symbols = [ZoneHelper getSymbols];
     NSUInteger numericSuffix = 0;
     if(visitCount > ((symbols.count -1)*symbols.count)){
         numericSuffix = [ZoneHelper getNumericSuffixForZoneVisit:visitCount LengthOfSymbolsTable:symbols.count];
         visitCount = [ZoneHelper adjustVisitCountForHugeNumbers:visitCount LengthOfSymbolsTable:symbols.count];
     }
-    NSUInteger adjustedVisitCount = [ZoneHelper skipPowersOfBaseInNumber:visitCount Base:symbols.count];
-    NSMutableString *suffix = [NSMutableString stringWithString:[ZoneHelper getSymbolSuffix:adjustedVisitCount]];
+    NSMutableString *suffix = [NSMutableString stringWithString:[ZoneHelper getSymbolSuffix:visitCount]];
     if(numericSuffix > 0){
         [suffix appendString:[NSString stringWithFormat:@"%lu",numericSuffix]];
     }
@@ -75,14 +49,15 @@ NSString* const HOME_KEY = @"HOME";
 
 
 +(NSString*)getSymbolSuffix:(NSUInteger)visitCount{
-    NSMutableString *suffix = [NSMutableString string];
+    NSMutableArray<NSString *> *suffixList = [NSMutableArray array];
     NSArray *symbols = [ZoneHelper getSymbols];
     while(visitCount > 0){
-        NSUInteger symbolIndex = visitCount % symbols.count;
+        NSUInteger m = (visitCount-1) % symbols.count;
+        visitCount -= m;
         visitCount /= symbols.count;
-        [suffix appendFormat:@"%@ ",[symbols objectAtIndex:symbolIndex]];
+        [suffixList addObject:symbols[m]];
     }
-    return [suffix stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" "]];
+    return [suffixList componentsJoinedByString:@" "];
 }
 
 +(NSUInteger)adjustVisitCountForHugeNumbers:(NSUInteger)visitCount LengthOfSymbolsTable:(NSUInteger)symbolsLen{
@@ -96,21 +71,8 @@ NSString* const HOME_KEY = @"HOME";
     return symbols;
 }
 
-+(NSUInteger)skipPowersOfBaseInNumber:(NSUInteger)num Base:(NSUInteger)base{
-    /*
-     Numbers naturally want to follow this pattern:
-     0,A,B,C,...,Y,Z,A0,AA,AB,AC,...,AY,AZ,B0,BA,BB,BC
-     But I want zone suffix naming system to follow this pattern:
-     0,A,B,C,...,Y,Z,AA,AB,AC,...,AY,AZ,BA,BB,BC,...
-     This function adjust numbers to fit the wanted pattern,
-     i.e. without the proverbial mulitples of 10
-     The accuracy of this function becomes unreliable after base^2
 
-     */
-    NSUInteger adjusterNum = num + (num/base);
-    return num + (adjusterNum / base);
-}
-
+    //I think this is for really high visit counts
 +(NSUInteger)getNumericSuffixForZoneVisit:(NSUInteger)zoneVisitCount LengthOfSymbolsTable:(NSUInteger)symbolsLen{
     //#the -1 on the first array length is to account for the single symbol range of items
     return zoneVisitCount / ((symbolsLen-1) * symbolsLen) + 1; //#+1 because the 1 suffix would be redundant
@@ -118,21 +80,24 @@ NSString* const HOME_KEY = @"HOME";
 /*
     We're adding the zone groups to a list and one of them will be randomly selected
  */
-+(NSArray*)getUnlockedZoneGroupKeys:(NSUInteger)heroLvl{
-    NSMutableArray *availableZoneGroups  = [[NSMutableArray alloc]init];
-    [availableZoneGroups addObject:[NSNumber numberWithInteger:LVL_1_ZONES] ];
++(NSArray<NSString *>*)getUnlockedZoneGroupKeys:(NSUInteger)heroLvl{
+    if(heroLvl == 0){
+        return @[LVL_0_ZONES];
+    }
+    NSMutableArray<NSString *> *availableZoneGroups  = [[NSMutableArray alloc]init];
+    [availableZoneGroups addObject:LVL_1_ZONES];
     if(heroLvl >= 5){
-        [availableZoneGroups addObject:[NSNumber numberWithInteger:LVL_5_ZONES] ];
+        [availableZoneGroups addObject:LVL_5_ZONES];
         if(heroLvl >= 10){
-            [availableZoneGroups addObject:[NSNumber numberWithInteger:LVL_10_ZONES] ];
+            [availableZoneGroups addObject:LVL_10_ZONES];
             if(heroLvl >= 15){
-                [availableZoneGroups addObject:[NSNumber numberWithInteger:LVL_15_ZONES] ];
+                [availableZoneGroups addObject:LVL_15_ZONES];
                 if(heroLvl >= 20){
-                    [availableZoneGroups addObject:[NSNumber numberWithInteger:LVL_20_ZONES] ];
+                    [availableZoneGroups addObject:LVL_20_ZONES];
                     if(heroLvl >= 25){
-                        [availableZoneGroups addObject:[NSNumber numberWithInteger:LVL_25_ZONES] ];
+                        [availableZoneGroups addObject:LVL_25_ZONES];
                         if(heroLvl >= 30){
-                            [availableZoneGroups addObject:[NSNumber numberWithInteger:LVL_30_ZONES] ];
+                            [availableZoneGroups addObject:LVL_30_ZONES];
                         }
                     }
                 }

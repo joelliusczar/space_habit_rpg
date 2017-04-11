@@ -15,6 +15,16 @@
 
 @implementation SingletonCluster
 
+    @synthesize EnviromentNum = _EnviromentNum;
+    -(int32_t)EnviromentNum{
+        NSDictionary* environment = [[NSProcessInfo processInfo] environment];
+        NSString* testEnabled = environment[@"IS_UNIT_TESTING"];
+        if([testEnabled isEqualToString:@"YES"]){
+            return ENV_UTEST;
+        }
+        return ENV_DEFAULT;
+    }
+    
     @synthesize dataController = _dataController;
     -(NSObject<P_CoreData> *)dataController{
         if(!_dataController){

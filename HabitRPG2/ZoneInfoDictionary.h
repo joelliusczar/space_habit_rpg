@@ -8,15 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger,zoneGroupKeys) {
-    LVL_1_ZONES = 1,
-    LVL_5_ZONES = 5,
-    LVL_10_ZONES = 10,
-    LVL_15_ZONES = 15,
-    LVL_20_ZONES = 20,
-    LVL_25_ZONES = 25,
-    LVL_30_ZONES = 30
-};
 
 @interface ZoneInfoDictionary : NSObject
 @property (nonatomic,assign) BOOL isTesting;

@@ -26,3 +26,13 @@ NSTimeInterval const CHARACTER_DELAY = .01;
 u_int32_t const MIN_ZONE_CHOICE_COUNT = 3;
 u_int32_t const MAX_ZONE_CHOICE_RAND_UP_BOUND = 2;
 CGFloat const ZONE_CHOICE_ROW_HEIGHT = 75;
+
+//zone groups
+NSString* const LVL_0_ZONES = @"LVL_0_ZONES";
+NSString* const LVL_1_ZONES = @"LVL_1_ZONES";
+NSString* const LVL_5_ZONES = @"LVL_5_ZONES";
+NSString* const LVL_10_ZONES = @"LVL_10_ZONES";
+NSString* const LVL_15_ZONES = @"LVL_15_ZONES";
+NSString* const LVL_20_ZONES = @"LVL_20_ZONES";
+NSString* const LVL_25_ZONES = @"LVL_25_ZONES";
+NSString* const LVL_30_ZONES = @"LVL_30_ZONES";

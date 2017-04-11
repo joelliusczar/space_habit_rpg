@@ -38,3 +38,13 @@ extern NSTimeInterval const CHARACTER_DELAY;
 extern u_int32_t const MIN_ZONE_CHOICE_COUNT;
 extern u_int32_t const MAX_ZONE_CHOICE_RAND_UP_BOUND;
 extern CGFloat const ZONE_CHOICE_ROW_HEIGHT;
+
+//zone groups
+extern NSString* const LVL_0_ZONES;
+extern NSString* const LVL_1_ZONES;
+extern NSString* const LVL_5_ZONES;
+extern NSString* const LVL_10_ZONES;
+extern NSString* const LVL_15_ZONES;
+extern NSString* const LVL_20_ZONES;
+extern NSString* const LVL_25_ZONES;
+extern NSString* const LVL_30_ZONES;
