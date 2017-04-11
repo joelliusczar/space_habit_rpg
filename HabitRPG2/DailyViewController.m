@@ -138,7 +138,7 @@ static NSString *const EntityName = @"Daily";
 }
 
 -(void)completeDaily:(Daily *)daily{
-    if(daily == [self.incompleteItems objectAtIndex:daily.rowNum]){
+    if(daily == self.incompleteItems[daily.rowNum]){
         [self.incompleteItems removeObjectAtIndex:daily.rowNum];
         [self.completeItems addObject:daily];
         [self.dailiesTable reloadData];
@@ -150,7 +150,7 @@ static NSString *const EntityName = @"Daily";
 }
 
 -(void)undoCompletedDaily:(Daily *)daily{
-    if(daily == [self.completeItems objectAtIndex:daily.rowNum]){
+    if(daily == self.completeItems[daily.rowNum]){
         [self.completeItems removeObjectAtIndex:daily.rowNum];
         [self.incompleteItems addObject:daily];
         [self.dailiesTable reloadData];
@@ -210,10 +210,10 @@ static NSString *const EntityName = @"Daily";
     DailyCellController *cell = [DailyCellController getDailyCell:tableView WithParent:self];
     Daily *d = nil;
     if(indexPath.section == INCOMPLETE){
-        d = [self.incompleteItems objectAtIndex:indexPath.row];
+        d = self.incompleteItems[indexPath.row];
     }
     else{
-        d = [self.completeItems objectAtIndex:indexPath.row];
+        d = self.completeItems[indexPath.row];
     }
     d.rowNum = indexPath.row;
     d.sectionNum = indexPath.section;
@@ -238,7 +238,7 @@ static NSString *const EntityName = @"Daily";
 -(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     void (^pressedEdit)(UITableViewRowAction *,NSIndexPath *) = ^(UITableViewRowAction *action,NSIndexPath *path){
-        [self.dailyEditor loadExistingDailyForEditing:[self.incompleteItems objectAtIndex:indexPath.row] WithIndexPath:indexPath];
+        [self.dailyEditor loadExistingDailyForEditing:self.incompleteItems[indexPath.row] WithIndexPath:indexPath];
         [self showViewController:self.editController sender:self];
     };
     

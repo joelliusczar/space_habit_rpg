@@ -46,7 +46,7 @@
 @synthesize deleteBtn = _deleteBtn;
 -(UIBarButtonItem *)deleteBtn{
     if(_deleteBtn == nil){
-        _deleteBtn = [self.toolbar.items objectAtIndex:0];
+        _deleteBtn = self.toolbar.items[0];
         _deleteBtn.target = self;
         _deleteBtn.action = @selector(pressedDelete:);
     }
@@ -57,7 +57,7 @@
 -(UIBarButtonItem *)saveBtn{
     
     if(_saveBtn == nil){
-        _saveBtn = [self.toolbar.items objectAtIndex:2];
+        _saveBtn = self.toolbar.items[2];
         _saveBtn.target = self;
         _saveBtn.action = @selector(pressedSave:);
         
@@ -68,7 +68,7 @@
 @synthesize navItem = _navItem;
 -(UINavigationItem *)navItem{
     if(_navItem == nil){
-        _navItem = [self.navbar.items objectAtIndex:0];
+        _navItem = self.navbar.items[0];
         
     }
     return _navItem;

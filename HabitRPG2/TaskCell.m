@@ -21,7 +21,7 @@
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:nibName];
     if(cell == nil){
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:nibName owner:parent options:nil];
-        cell = [nib objectAtIndex:0];
+        cell = nib[0];
     }
 
     return cell;

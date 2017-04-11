@@ -207,7 +207,7 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
     self.rateLbl.text = [NSString stringWithFormat:TRIGGER_LABEL_FORMAT,1];
     self.rateStep.value = 1;
     for(int i = 0;i<DAYS_IN_WEEK;i++){
-        [CommonUtilities setSwitch:[self.activeDaySwitches objectAtIndex:i] withValue:YES];
+        [CommonUtilities setSwitch:self.activeDaySwitches[i] withValue:YES];
     }
     self.modelForEditing = nil;
 
