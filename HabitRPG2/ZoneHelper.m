@@ -57,7 +57,7 @@ NSString* const HOME_KEY = @"HOME";
         visitCount /= symbols.count;
         [suffixList addObject:symbols[m]];
     }
-    return [suffixList componentsJoinedByString:@" "];
+    return [[[suffixList reverseObjectEnumerator] allObjects] componentsJoinedByString:@" "];
 }
 
 +(NSUInteger)adjustVisitCountForHugeNumbers:(NSUInteger)visitCount LengthOfSymbolsTable:(NSUInteger)symbolsLen{
