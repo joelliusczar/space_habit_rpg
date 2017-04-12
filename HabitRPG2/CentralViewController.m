@@ -141,7 +141,7 @@
 
     -(void)setToSkipStory:(BOOL)skipStory{
         self.userSettings.storyModeisOn = skipStory;
-        [self.dataController save];
+        [self.dataController save:self.userSettings];
     }
 
     -(void)showZoneChoiceView{

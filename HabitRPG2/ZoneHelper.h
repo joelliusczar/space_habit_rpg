@@ -14,7 +14,6 @@ extern NSString* const HOME_KEY;
 
 @interface ZoneHelper : NSObject
 +(NSString*)getRandomZoneDefinitionKey:(NSUInteger)heroLvl;
-+(NSString*)generateSuffix:(NSUInteger)visitCount;
 +(NSArray*)getSymbols;
 +(NSString*)getSymbolSuffix:(NSUInteger)visitCount;
 +(NSArray*)getUnlockedZoneGroupKeys:(NSUInteger)heroLvl;

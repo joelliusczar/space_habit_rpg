@@ -175,7 +175,7 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
     self.modelForEditing.streakLength = 0;
     self.modelForEditing.activeDaysHash = [self.dailyHelper calculateActiveDaysHash:self.activeDaySwitches];
     //todo add something for custom reward
-    [self.dataController save];
+    [self.dataController save:self.modelForEditing];
     if(self.rowInfo == nil){
         [self.parentDailyController showNewDaily:self.modelForEditing];
     }

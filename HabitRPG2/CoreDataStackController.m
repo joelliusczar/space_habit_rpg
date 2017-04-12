@@ -19,6 +19,7 @@
     @property (nonatomic,assign) BOOL disabledSaveResult;
     @property (nonatomic,assign) BOOL isTesting;
     @property (nonatomic,readonly) NSString* storeType;
+    @property (nonatomic,strong) NSMutableDictionary<NSString *,NSManagedObjectContext *> *contexts;
     -(void)initializeCoreData;
 
 @end
@@ -41,15 +42,23 @@
         }
         return _userData;
     }
-
-    @synthesize context = _context;
-    -(NSManagedObjectContext *)context{
-        if(!_context){
-            _context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-            [_context setPersistentStoreCoordinator:self.coordinator];
+    
+    @synthesize contexts = _contexts;
+    -(NSMutableDictionary<NSString *,NSManagedObjectContext *> *)contexts{
+        if(!_contexts){
+            _contexts = [NSMutableDictionary dictionary];
         }
-        return _context;
+        return _contexts;
     }
+
+//    @synthesize context = _context;
+//    -(NSManagedObjectContext *)context{
+//        if(!_context){
+//            _context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+//            [_context setPersistentStoreCoordinator:self.coordinator];
+//        }
+//        return _context;
+//    }
 
     @synthesize coordinator = _coordinator;
     -(NSPersistentStoreCoordinator *)coordinator{
@@ -75,6 +84,19 @@
         
         return self;
     }
+    
+    -(NSManagedObjectContext *)getContext:(NSString *)entityName{
+        if(self.coordinator.managedObjectModel.entitiesByName[entityName]){
+            NSManagedObjectContext *c = nil;
+            if(!(c=self.contexts[entityName])){
+                c = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+                [c setPersistentStoreCoordinator:self.coordinator];
+                self.contexts[entityName] = c;
+            }
+            return c;
+        }
+        return nil;
+    }
 
     -(void)initializeCoreData{
         
@@ -90,7 +112,7 @@
     }
 
     -(NSManagedObject *)constructEmptyEntity:(NSString *) entityType{
-        NSManagedObject *obj = [NSEntityDescription insertNewObjectForEntityForName:entityType inManagedObjectContext:self.context];
+        NSManagedObject *obj = [NSEntityDescription insertNewObjectForEntityForName:entityType inManagedObjectContext:[self getContext:entityType]];
         return obj;
     }
 
@@ -99,13 +121,13 @@
                                         predicate: (NSPredicate *) filter
                                         sortBy:(NSArray *) sortAttrs
     {
-        NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:self.context];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:[self getContext:entityName]];
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         fetchRequest.entity = entity;
         [fetchRequest setFetchBatchSize:0];
         fetchRequest.sortDescriptors = sortAttrs;
         fetchRequest.predicate = filter;
-        return [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.context sectionNameKeyPath:nil cacheName:nil];
+        return [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[self getContext:entityName] sectionNameKeyPath:nil cacheName:nil];
         
     }
 
@@ -113,22 +135,12 @@
                             predicate: (NSPredicate *) filter
                             sortBy:(NSArray *) sortAttrs
     {
-        NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:self.context];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:[self getContext:entityName]];
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         fetchRequest.entity = entity;
-        fetchRequest.fetchLimit = 1;
-        fetchRequest.sortDescriptors = sortAttrs;
-        fetchRequest.predicate = filter;
-        NSError *err;
-        NSArray *results = [self.context executeFetchRequest:fetchRequest error:&err];
-        if(!results){
-            NSLog(@"Error fetching data: %@", err.localizedFailureReason);
-            return nil;
-        }
-        if(results.count < 1){
-            return nil;
-        }
-        return results[0];
+        return [self getItemWithRequest:fetchRequest
+                              predicate:filter
+                                 sortBy:sortAttrs];
     }
 
     -(NSManagedObject *)getItemWithRequest:(NSFetchRequest *)request
@@ -140,7 +152,7 @@
         request.sortDescriptors = sortArray;
         NSError *err;
         
-        NSArray *results = [self.context executeFetchRequest:request error:&err];
+        NSArray *results = [[self getContext:request.entityName] executeFetchRequest:request error:&err];
         if(!results&&err){
             NSLog(@"Error fetching data: %@", err.localizedFailureReason);
             return nil;
@@ -151,7 +163,7 @@
         return results[0];
     }
 
-    -(BOOL)save{
+    -(BOOL)save:(NSManagedObject *)entity{
         
         if(self.disableSave){
             return self.disabledSaveResult;
@@ -159,19 +171,19 @@
         
         NSError *error;
         BOOL success;
-        if(!(success = [self.context save:&error])){
+        if(!(success = [[self getContext:entity.entity.name] save:&error])){
             NSLog(@"Error saving context: %@",error.localizedFailureReason);
         }
         return success;
     }
 
     -(void)softDeleteModel:(NSManagedObject *)model{
-        [self.context deleteObject:model];
+        [[self getContext:model.entity.name] deleteObject:model];
     }
 
     -(BOOL)deleteModelAndSave:(NSManagedObject *)model{
         [self softDeleteModel:model];
-        return [self save];
+        return [self save: model];
     }
 
     -(void)deleteAllForEntity:(NSString *) entityName{
@@ -179,7 +191,7 @@
         NSBatchDeleteRequest *deleteRequest = [[NSBatchDeleteRequest alloc] initWithFetchRequest:request];
         
         NSError *err = nil;
-        [self.context.persistentStoreCoordinator executeRequest:deleteRequest withContext:self.context error:&err];
+        [[self getContext:entityName].persistentStoreCoordinator executeRequest:deleteRequest withContext:[self getContext:entityName] error:&err];
     }
 
     -(void)deleteAllRecords{

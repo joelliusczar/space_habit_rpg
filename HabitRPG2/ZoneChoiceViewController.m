@@ -102,7 +102,7 @@
             [dataController softDeleteModel:self.zones[i]];
         }
     }
-    [dataController save];
+    [dataController save:zoneChoice];
 }
 
 

@@ -28,26 +28,6 @@ NSString* const HOME_KEY = @"HOME";
     return zoneList[r];
 }
 
-
-
-+(NSString*)generateSuffix:(NSUInteger)visitCount{
-    if(visitCount < 1){
-        return @"";
-    }
-    NSArray *symbols = [ZoneHelper getSymbols];
-    NSUInteger numericSuffix = 0;
-    if(visitCount > ((symbols.count -1)*symbols.count)){
-        numericSuffix = [ZoneHelper getNumericSuffixForZoneVisit:visitCount LengthOfSymbolsTable:symbols.count];
-        visitCount = [ZoneHelper adjustVisitCountForHugeNumbers:visitCount LengthOfSymbolsTable:symbols.count];
-    }
-    NSMutableString *suffix = [NSMutableString stringWithString:[ZoneHelper getSymbolSuffix:visitCount]];
-    if(numericSuffix > 0){
-        [suffix appendString:[NSString stringWithFormat:@"%lu",numericSuffix]];
-    }
-    return [suffix stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-}
-
-
 +(NSString*)getSymbolSuffix:(NSUInteger)visitCount{
     NSMutableArray<NSString *> *suffixList = [NSMutableArray array];
     NSArray *symbols = [ZoneHelper getSymbols];
@@ -60,10 +40,6 @@ NSString* const HOME_KEY = @"HOME";
     return [[[suffixList reverseObjectEnumerator] allObjects] componentsJoinedByString:@" "];
 }
 
-+(NSUInteger)adjustVisitCountForHugeNumbers:(NSUInteger)visitCount LengthOfSymbolsTable:(NSUInteger)symbolsLen{
-    return visitCount % ((symbolsLen -1 )*symbolsLen);
-}
-
 +(NSArray *)getSymbols{
     NSArray *symbols = [[SingletonCluster getSharedInstance]
                 .resourceUtility getPListArray:@"SuffixList" withClassBundle:NSClassFromString(@"ZoneHelper")];
@@ -71,12 +47,6 @@ NSString* const HOME_KEY = @"HOME";
     return symbols;
 }
 
-
-    //I think this is for really high visit counts
-+(NSUInteger)getNumericSuffixForZoneVisit:(NSUInteger)zoneVisitCount LengthOfSymbolsTable:(NSUInteger)symbolsLen{
-    //#the -1 on the first array length is to account for the single symbol range of items
-    return zoneVisitCount / ((symbolsLen-1) * symbolsLen) + 1; //#+1 because the 1 suffix would be redundant
-}
 /*
     We're adding the zone groups to a list and one of them will be randomly selected
  */
@@ -123,7 +93,7 @@ NSString* const HOME_KEY = @"HOME";
     z.suffix = @"";
     z.uniqueId = [self getNextUniqueId];
     z.isFront = YES;
-    [[SingletonCluster getSharedInstance].dataController save];
+    [[SingletonCluster getSharedInstance].dataController save:z];
     return z;
 }
 
@@ -151,7 +121,10 @@ NSString* const HOME_KEY = @"HOME";
 
 +(int32_t)getVisitCountForZone:(NSString *)zoneKey{
     Suffix *s = [ZoneHelper getSuffix:zoneKey];
-    return s.visitCount+1;
+    s.visitCount++;
+    
+    
+    return s.visitCount;
 }
 
 +(Suffix *)getSuffix:(NSString *)zoneKey{
@@ -183,9 +156,10 @@ NSString* const HOME_KEY = @"HOME";
 }
 
 +(int64_t)getNextUniqueId{
-    int64_t nextId = [SingletonCluster getSharedInstance].dataController.userData.theDataInfo.nextZoneId;
-    [SingletonCluster getSharedInstance].dataController.userData.theDataInfo.nextZoneId++;
-    [[SingletonCluster getSharedInstance].dataController save];
+    DataInfo *di = [SingletonCluster getSharedInstance].dataController.userData.theDataInfo;
+    int64_t nextId = di.nextZoneId;
+    di.nextZoneId++;
+    [[SingletonCluster getSharedInstance].dataController save:di];
     return nextId;
 }
 
