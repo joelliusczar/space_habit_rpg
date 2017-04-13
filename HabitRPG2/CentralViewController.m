@@ -33,8 +33,8 @@
 
 @implementation CentralViewController
 
-    @synthesize userHero = _userHero;
-    @synthesize userSettings = _userSettings;
+    
+    
     @synthesize nowMonster = _nowMonster;
     @synthesize nowZone = _nowZone;
 
@@ -52,6 +52,16 @@
             _dataController = [SingletonCluster getSharedInstance].dataController;
         }
         return _dataController;
+    }
+    
+    @synthesize userHero = _userHero;
+    -(Hero *)userHero{
+        return [SingletonCluster getSharedInstance].dataController.userData.theHero;
+    }
+    
+    @synthesize userSettings = _userSettings;
+    -(Settings *)userSettings{
+        return [SingletonCluster getSharedInstance].dataController.userData.theSettings;
     }
 
     @synthesize tabsController = _tabsController;
@@ -134,18 +144,13 @@
         }
     }
 
-    -(void)setupData{
-        self.userSettings = self.dataController.userData.theSettings;
-        self.userHero = self.dataController.userData.theHero;
-    }
-
     -(void)setToSkipStory:(BOOL)skipStory{
         self.userSettings.storyModeisOn = skipStory;
         [self.dataController save:self.userSettings];
     }
 
     -(void)showZoneChoiceView{
-        NSArray<Zone *> *zoneChoices = [ZoneHelper setupForAndGetZoneChoices];
+        NSArray<Zone *> *zoneChoices = [ZoneHelper constructMultipleZoneChoices:self.userHero AndMatchHeroLvl:YES];
         ZoneChoiceViewController *zoneChoiceView = [ZoneChoiceViewController constructWithCentral:self AndZoneChoices:zoneChoices];
         [self.view addSubview:zoneChoiceView.view];
         [self addChildViewController:zoneChoiceView];

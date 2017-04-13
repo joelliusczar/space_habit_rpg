@@ -16,8 +16,8 @@
 @protocol CentralViewControllerP <NSObject>
 @property (nonatomic,strong) NSObject<P_CoreData> *dataController;
 @property (nonatomic,strong) EditNavigationController *editController;
-@property (nonatomic,weak) Settings *userSettings;
-@property (nonatomic,weak) Hero *userHero;
+@property (nonatomic,readonly) Settings *userSettings;
+@property (nonatomic,readonly) Hero *userHero;
 @property (nonatomic,strong) Zone *nowZone;
 @property (nonatomic,strong) Monster *nowMonster;
 -(void)setToSkipStory:(BOOL)skipStory;

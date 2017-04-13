@@ -51,15 +51,6 @@
         return _contexts;
     }
 
-//    @synthesize context = _context;
-//    -(NSManagedObjectContext *)context{
-//        if(!_context){
-//            _context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-//            [_context setPersistentStoreCoordinator:self.coordinator];
-//        }
-//        return _context;
-//    }
-
     @synthesize coordinator = _coordinator;
     -(NSPersistentStoreCoordinator *)coordinator{
         if(!_coordinator){

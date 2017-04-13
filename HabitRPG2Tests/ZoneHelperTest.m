@@ -147,7 +147,7 @@ MockStdLibWrapper *mw;
         XCTAssertTrue([s isEqualToString:@"UNCHARTED"]);
     }
     
-    -(void)testGetSuffix{
+    -(void)testGetSymbolSuffix{
         NSString *s = [ZoneHelper getSymbolSuffix:0];
         XCTAssertTrue([s isEqualToString:@""]);
         s = [ZoneHelper getSymbolSuffix:1];
@@ -204,6 +204,29 @@ MockStdLibWrapper *mw;
         XCTAssertTrue([s isEqualToString:@"Zed Alpha"]);
         s = [ZoneHelper getSymbolSuffix:10101];
         XCTAssertTrue([s isEqualToString:@"Alpha Alpha Alpha"]);
+    }
+    
+    -(void)testgetSymbolsList{
+        NSArray<NSString *> *a = [ZoneHelper getSymbolsList];
+        XCTAssertEqual(a.count, 100);
+        XCTAssertTrue([a[0] isEqualToString:@"Alpha"]);
+        XCTAssertTrue([a[50] isEqualToString:@"Berlin"]);
+        XCTAssertTrue([a[99] isEqualToString:@"Zed"]);
+    }
+    
+    -(void)testConstructEmptyZone{
+        Zone *z =[ZoneHelper constructEmptyZone];
+        XCTAssertNotNil(z);
+    }
+    
+    -(void)testConstructHomeZone{
+        Zone *z = [ZoneHelper constructHomeZone];
+        XCTAssertTrue([[z.synopsis substringToIndex:56] isEqualToString:@"Everyone's gotta start somewhere. For you it's the earth"]);
+        Zone *z2 = (Zone *)[[SingletonCluster getSharedInstance].dataController getItem:ZONE_ENTITY_NAME predicate:nil sortBy:@[[[NSSortDescriptor alloc] initWithKey:@"zoneKey" ascending:NO]]];
+        XCTAssertTrue(z2.isFront);
+        XCTAssertEqual(z2.uniqueId, 0);
+        XCTAssertTrue([[z2.synopsis substringToIndex:56] isEqualToString:@"Everyone's gotta start somewhere. For you it's the earth"]);
+        
     }
 
     - (void)tearDown {
