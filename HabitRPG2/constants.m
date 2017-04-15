@@ -17,6 +17,9 @@ NSString* const SETTINGS_ENTITY_NAME = @"Settings";
 NSString* const ZONE_ENTITY_NAME = @"Zone";
 NSString* const MONSTER_ENTITY_NAME = @"Monster";
 NSString* const DATA_INFO_ENTITY_NAME = @"DataInfo";
+NSString* const SUFFIX_ENTITY_NAME = @"Suffix";
+
+
 u_int32_t const DAYS_IN_WEEK = 7;
 u_int32_t const MAX_MONSTER_RAND_UP_BOUND = 10;
 u_int32_t const MAX_MONSTER_LOW_BOUND = 5;

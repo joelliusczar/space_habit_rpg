@@ -114,28 +114,27 @@ NSString* const HOME_KEY = @"HOME";
         
         return [NSArray arrayWithArray:choices];
     }
-
-    +(NSArray<Zone *> *)setupForAndGetZoneChoices{
-        NSObject<P_CoreData> *dataController = [SingletonCluster getSharedInstance].dataController;
-        Hero *hero = dataController.userData.theHero;
-        NSArray<Zone *> *zoneChoices = [ZoneHelper constructMultipleZoneChoices:hero AndMatchHeroLvl:YES];
-        return zoneChoices;
-    }
     
 
     +(int32_t)getVisitCountForZone:(NSString *)zoneKey{
-        Suffix *s = [ZoneHelper getSuffix:zoneKey];
+        Suffix *s = [ZoneHelper getSuffixEntity:zoneKey];
         s.visitCount++;
         [[SingletonCluster getSharedInstance].dataController save:s];
         return s.visitCount;
     }
 
-    +(Suffix *)getSuffix:(NSString *)zoneKey{
+    +(Suffix *)getSuffixEntity:(NSString *)zoneKey{
         NSFetchRequest<Suffix *> *request = [Suffix fetchRequest];
         NSSortDescriptor *sortByZoneKey = [[NSSortDescriptor alloc] initWithKey:@"zoneKey" ascending:NO];
         NSPredicate *filter = [NSPredicate predicateWithFormat:@"zoneKey = %@",zoneKey];
-        return (Suffix *)[[SingletonCluster getSharedInstance].dataController getItemWithRequest:request predicate:filter sortBy:@[sortByZoneKey]];
+        Suffix *s = (Suffix *)[[SingletonCluster getSharedInstance].dataController getItemWithRequest:request predicate:filter sortBy:@[sortByZoneKey]];
+        if(!s){
+            s = (Suffix *)[[SingletonCluster getSharedInstance].dataController constructEmptyEntity:SUFFIX_ENTITY_NAME];
+            s.zoneKey = zoneKey;
+        }
+        return s;
     }
+    
 
     //deprecated
     +(Zone *)getZoneByZoneKey:(NSString *)zoneKey{

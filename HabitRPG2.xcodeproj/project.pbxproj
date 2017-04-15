@@ -28,6 +28,8 @@
 		277ABEF21E975959008CC239 /* ModelsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEF11E975959008CC239 /* ModelsTest.m */; };
 		277ABF2E1E9C31C0008CC239 /* MockStdLibWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABF2D1E9C31C0008CC239 /* MockStdLibWrapper.m */; };
 		277ABF301E9C31F3008CC239 /* ZoneHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABF2F1E9C31F3008CC239 /* ZoneHelperTest.m */; };
+		277ABF321E9F1A30008CC239 /* ZoneChoicePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 277ABF311E9F1A30008CC239 /* ZoneChoicePicker.xib */; };
+		277ABF341E9F1AE8008CC239 /* behind_alert_view.png in Resources */ = {isa = PBXBuildFile; fileRef = 277ABF331E9F1AE8008CC239 /* behind_alert_view.png */; };
 		27AE66721E875EFB000F31BD /* Suffix+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE666F1E875EFB000F31BD /* Suffix+CoreDataClass.m */; };
 		27AE66731E875EFB000F31BD /* Suffix+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE66711E875EFB000F31BD /* Suffix+CoreDataProperties.m */; };
 		27C92C121E28A1330025727E /* ZoneChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C111E28A1330025727E /* ZoneChoiceCell.xib */; };
@@ -158,6 +160,8 @@
 		277ABF2C1E9C31C0008CC239 /* MockStdLibWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockStdLibWrapper.h; sourceTree = "<group>"; };
 		277ABF2D1E9C31C0008CC239 /* MockStdLibWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockStdLibWrapper.m; sourceTree = "<group>"; };
 		277ABF2F1E9C31F3008CC239 /* ZoneHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneHelperTest.m; sourceTree = "<group>"; };
+		277ABF311E9F1A30008CC239 /* ZoneChoicePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZoneChoicePicker.xib; sourceTree = "<group>"; };
+		277ABF331E9F1AE8008CC239 /* behind_alert_view.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = behind_alert_view.png; sourceTree = "<group>"; };
 		27AE66541E8720F9000F31BD /* CentralViewControllerP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralViewControllerP.h; sourceTree = "<group>"; };
 		27AE66551E87561B000F31BD /* Model 14.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 14.xcdatamodel"; sourceTree = "<group>"; };
 		27AE666E1E875EFB000F31BD /* Suffix+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Suffix+CoreDataClass.h"; sourceTree = "<group>"; };
@@ -517,6 +521,7 @@
 				27C92C411E3314000025727E /* ZoneDescriptionViewController.h */,
 				27C92C421E3314000025727E /* ZoneDescriptionViewController.m */,
 				27C92C431E3314000025727E /* ZoneDescriptionViewController.xib */,
+				277ABF311E9F1A30008CC239 /* ZoneChoicePicker.xib */,
 			);
 			name = Zone;
 			sourceTree = "<group>";
@@ -657,6 +662,7 @@
 		68F3F9AC1D70E82E00840DD2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				277ABF331E9F1AE8008CC239 /* behind_alert_view.png */,
 				686ED3961DA5E0F9004EDD36 /* title_Screen_1x.png */,
 				686ED3971DA5E0F9004EDD36 /* title_Screen_R_4.png */,
 				686ED3901DA5DD66004EDD36 /* title_Screen_HD_55.png */,
@@ -796,6 +802,7 @@
 				686ED3951DA5DEC0004EDD36 /* title_Screen_2x.png in Resources */,
 				686686EB1D79032200BB2D09 /* DailyCell.xib in Resources */,
 				686ED3991DA5E0F9004EDD36 /* title_Screen_R_4.png in Resources */,
+				277ABF341E9F1AE8008CC239 /* behind_alert_view.png in Resources */,
 				686ED3BB1DB4660F004EDD36 /* white_checked_full.png in Resources */,
 				68F3F9F41D70FC5E00840DD2 /* TodoViewController.xib in Resources */,
 				686ED3C41DB47FAF004EDD36 /* black_checked_full.png in Resources */,
@@ -809,6 +816,7 @@
 				686ED3C21DB47FA5004EDD36 /* black_checked_empty.png in Resources */,
 				27C92C121E28A1330025727E /* ZoneChoiceCell.xib in Resources */,
 				68F3F9E51D70E8DB00840DD2 /* CentralViewController.xib in Resources */,
+				277ABF321E9F1A30008CC239 /* ZoneChoicePicker.xib in Resources */,
 				271C04921E8F3784002221E9 /* SuffixList.plist in Resources */,
 				68E260D01D851DA500425D46 /* EditNavigationController.xib in Resources */,
 				6886A48B1D8F6EA6005E12B3 /* switch_unchecked.png in Resources */,
