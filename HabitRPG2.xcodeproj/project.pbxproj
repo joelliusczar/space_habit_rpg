@@ -31,6 +31,7 @@
 		277ABF321E9F1A30008CC239 /* ZoneChoicePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 277ABF311E9F1A30008CC239 /* ZoneChoicePicker.xib */; };
 		277ABF341E9F1AE8008CC239 /* behind_alert_view.png in Resources */ = {isa = PBXBuildFile; fileRef = 277ABF331E9F1AE8008CC239 /* behind_alert_view.png */; };
 		277ABF5D1EA27A91008CC239 /* CommonUtilitiesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABF5C1EA27A91008CC239 /* CommonUtilitiesTest.m */; };
+		277ABF5F1EA33320008CC239 /* MonsterHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABF5E1EA33320008CC239 /* MonsterHelperTest.m */; };
 		27AE66721E875EFB000F31BD /* Suffix+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE666F1E875EFB000F31BD /* Suffix+CoreDataClass.m */; };
 		27AE66731E875EFB000F31BD /* Suffix+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE66711E875EFB000F31BD /* Suffix+CoreDataProperties.m */; };
 		27C92C121E28A1330025727E /* ZoneChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C111E28A1330025727E /* ZoneChoiceCell.xib */; };
@@ -164,6 +165,8 @@
 		277ABF311E9F1A30008CC239 /* ZoneChoicePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZoneChoicePicker.xib; sourceTree = "<group>"; };
 		277ABF331E9F1AE8008CC239 /* behind_alert_view.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = behind_alert_view.png; sourceTree = "<group>"; };
 		277ABF5C1EA27A91008CC239 /* CommonUtilitiesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtilitiesTest.m; sourceTree = "<group>"; };
+		277ABF5E1EA33320008CC239 /* MonsterHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterHelperTest.m; sourceTree = "<group>"; };
+		277ABF611EA3BC97008CC239 /* TestGlobals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestGlobals.h; sourceTree = "<group>"; };
 		27AE66541E8720F9000F31BD /* CentralViewControllerP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralViewControllerP.h; sourceTree = "<group>"; };
 		27AE66551E87561B000F31BD /* Model 14.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 14.xcdatamodel"; sourceTree = "<group>"; };
 		27AE666E1E875EFB000F31BD /* Suffix+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Suffix+CoreDataClass.h"; sourceTree = "<group>"; };
@@ -345,6 +348,7 @@
 				277ABF2B1E9C3189008CC239 /* MockClasses */,
 				277ABEF01E97592A008CC239 /* Tests */,
 				277ABEDE1E96F68E008CC239 /* Info.plist */,
+				277ABF611EA3BC97008CC239 /* TestGlobals.h */,
 			);
 			path = HabitRPG2Tests;
 			sourceTree = "<group>";
@@ -355,6 +359,7 @@
 				277ABEF11E975959008CC239 /* ModelsTest.m */,
 				277ABF2F1E9C31F3008CC239 /* ZoneHelperTest.m */,
 				277ABF5C1EA27A91008CC239 /* CommonUtilitiesTest.m */,
+				277ABF5E1EA33320008CC239 /* MonsterHelperTest.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -839,6 +844,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				277ABF301E9C31F3008CC239 /* ZoneHelperTest.m in Sources */,
+				277ABF5F1EA33320008CC239 /* MonsterHelperTest.m in Sources */,
 				277ABF5D1EA27A91008CC239 /* CommonUtilitiesTest.m in Sources */,
 				277ABEF21E975959008CC239 /* ModelsTest.m in Sources */,
 				277ABF2E1E9C31C0008CC239 /* MockStdLibWrapper.m in Sources */,

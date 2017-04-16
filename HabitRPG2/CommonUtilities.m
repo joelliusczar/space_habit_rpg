@@ -9,6 +9,8 @@
 #import "CommonUtilities.h"
 #import "SingletonCluster.h"
 
+
+
 @implementation CommonUtilities
 
     +(NSDate *)getReferenceDate{
@@ -51,12 +53,5 @@
         return height *.10;
     }
     
-    +(BOOL)isSwitchOn:(id<P_CustomSwitch>)switchItem{
-        return switchItem.isOn;
-    }
-    
-    +(void)setSwitch:(id<P_CustomSwitch>)switchItem withValue:(BOOL)value{
-        switchItem.isOn = value;
-    }
 
 @end

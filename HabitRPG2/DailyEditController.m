@@ -9,6 +9,7 @@
 #import "DailyEditController.h"
 #import "CommonUtilities.h"
 #import "SingletonCluster.h"
+#import "P_CustomSwitch.h"
 
 
 static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
@@ -19,7 +20,7 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 @property (nonatomic,strong) UITextView *descriptionBox;
 @property (nonatomic,strong) UISlider *urgencySld;
 @property (nonatomic,strong) UISlider *difficultySld;
-@property (nonatomic,strong) NSMutableArray *activeDaySwitches;
+@property (nonatomic,strong) NSMutableArray<UIButton<P_CustomSwitch> *> *activeDaySwitches;
 @property (nonatomic,strong) UILabel *rateLbl;
 @property (nonatomic,strong) UIStepper *rateStep;
 @property (nonatomic,strong) UIButton *rewardCustomBtn;
@@ -71,7 +72,7 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 }
 
 @synthesize activeDaySwitches = _activeDaySwitches;
--(NSMutableArray *)activeDaySwitches{
+-(NSMutableArray<UIButton<P_CustomSwitch> *> *)activeDaySwitches{
     if(_activeDaySwitches == nil){
         _activeDaySwitches = [NSMutableArray arrayWithCapacity:DAYS_IN_WEEK];
         NSInteger dayTag = 4;
@@ -207,7 +208,7 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
     self.rateLbl.text = [NSString stringWithFormat:TRIGGER_LABEL_FORMAT,1];
     self.rateStep.value = 1;
     for(int i = 0;i<DAYS_IN_WEEK;i++){
-        [CommonUtilities setSwitch:self.activeDaySwitches[i] withValue:YES];
+        self.activeDaySwitches[i].isOn = YES;
     }
     self.modelForEditing = nil;
 

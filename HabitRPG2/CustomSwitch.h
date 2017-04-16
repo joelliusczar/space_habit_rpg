@@ -11,6 +11,7 @@
 
 IB_DESIGNABLE
 @interface CustomSwitch : UIButton<P_CustomSwitch>
-@property (nonatomic,strong) IBInspectable UIImage* onImage;
-@property (nonatomic,strong) IBInspectable UIImage* offImage;
+    @property (nonatomic,strong) IBInspectable UIImage* onImage;
+    @property (nonatomic,strong) IBInspectable UIImage* offImage;
+    @property (nonatomic,assign) BOOL isOn;
 @end

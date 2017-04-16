@@ -10,6 +10,7 @@
 #import "Daily+CoreDataClass.h"
 #import "constants.h"
 #import "CommonUtilities.h"
+#import "P_CustomSwitch.h"
 
 @interface DailyHelper()
 
@@ -31,11 +32,11 @@
     
 }
 
--(int32_t)calculateActiveDaysHash:(NSMutableArray *)activeDays{
+-(int32_t)calculateActiveDaysHash:(NSMutableArray<NSObject<P_CustomSwitch> *> *)activeDays{
     int32_t daysHash = 0;
     int32_t currentDayBit = 1;
     for(int i = 0;i<DAYS_IN_WEEK;i++){
-        if([CommonUtilities isSwitchOn:activeDays[i]]){
+        if(activeDays[i].isOn){
             daysHash |= currentDayBit;
             
         }
@@ -46,10 +47,10 @@
 
 
 
--(void)setActiveDaySwitches:(NSMutableArray *)activeDays fromHash:(NSInteger)hash{
+-(void)setActiveDaySwitches:(NSMutableArray<NSObject<P_CustomSwitch> *> *)activeDays fromHash:(NSInteger)hash{
     int currentDayBit = 1;
     for(int i = 0;i<DAYS_IN_WEEK;i++){
-        [CommonUtilities setSwitch:activeDays[i] withValue:hash & currentDayBit];
+        activeDays[i].isOn = hash & currentDayBit;
         currentDayBit = currentDayBit << 1;
     }
 }

@@ -8,33 +8,33 @@
 
 #import <XCTest/XCTest.h>
 #import "SingletonCluster.h"
-#import "MockStdLibWrapper.h"
 #import "constants.h"
 #import "ZoneHelper.h"
+#import "MockStdLibWrapper.h"
+#import "TestGlobals.h"
 
-#define SET_UP_BOUND() shouldUseLowerBoundChoices[i++] = NO
-#define SET_LOW_BOUND() shouldUseLowerBoundChoices[i++] = YES
+#define SET_UP_BOUND() shouldUseLowerBoundChoices_zh[i++] = NO
+#define SET_LOW_BOUND() shouldUseLowerBoundChoices_zh[i++] = YES
 
 @interface ZoneHelperTest : XCTestCase
 
 @end
 
-MockStdLibWrapper *mwzh;
-BOOL shouldUseLowerBoundChoices[25];
-int rIdx = 0;
-
+MockStdLibWrapper *mw_zh;
+BOOL shouldUseLowerBoundChoices_zh[25];
+int rIdx_zh;
 
 @implementation ZoneHelperTest
 
     - (void)setUp {
         [super setUp];
-        XCTAssertEqual([SingletonCluster getSharedInstance].EnviromentNum,ENV_UTEST);
-        mwzh = [[MockStdLibWrapper alloc] init];
-        [SingletonCluster getSharedInstance].stdLibWrapper =mwzh;
-        mwzh.mockRandom = ^uint(uint offset){
-            return shouldUseLowerBoundChoices[rIdx++]?0:(offset-1);
+        ASSERT_IS_TEST();
+        mw_zh = [[MockStdLibWrapper alloc] init];
+        [SingletonCluster getSharedInstance].stdLibWrapper =mw_zh;
+        mw_zh.mockRandom = ^uint(uint range){
+            return shouldUseLowerBoundChoices_zh[rIdx_zh++]?0:(range-1);
         };
-        [[SingletonCluster getSharedInstance].dataController deleteAllRecords];
+        DELETE_ALL();
     }
     
     -(void)testgetUnlockedZoneGroupKeys{
@@ -162,44 +162,44 @@ int rIdx = 0;
     
     -(void)testGetRandomZoneDefinitionKey{
         int i = 0;
-        rIdx = 0;
-        shouldUseLowerBoundChoices[i++] = YES;
-        shouldUseLowerBoundChoices[i++] = YES;
+        rIdx_zh = 0;
+        SET_LOW_BOUND();
+        SET_LOW_BOUND();
         NSString *s = [ZoneHelper getRandomZoneDefinitionKey:10];
         XCTAssertTrue([s isEqualToString:@"NEBULA"]);
         
         i = 0;
-        rIdx = 0;
-        shouldUseLowerBoundChoices[i++] = YES;
-        shouldUseLowerBoundChoices[i++] = NO;
+        rIdx_zh = 0;
+        SET_LOW_BOUND();
+        SET_UP_BOUND();
         s = [ZoneHelper getRandomZoneDefinitionKey:10];
         XCTAssertTrue([s isEqualToString:@"GAS"]);
         
         i = 0;
-        rIdx = 0;
-        shouldUseLowerBoundChoices[i++] = NO;
-        shouldUseLowerBoundChoices[i++] = NO;
+        rIdx_zh = 0;
+        SET_UP_BOUND();
+        SET_UP_BOUND();
         s = [ZoneHelper getRandomZoneDefinitionKey:10];
         XCTAssertTrue([s isEqualToString:@"RESORT"]);
         
         i = 0;
-        rIdx = 0;
-        shouldUseLowerBoundChoices[i++] = NO;
-        shouldUseLowerBoundChoices[i++] = YES;
+        rIdx_zh = 0;
+        SET_UP_BOUND();
+        SET_LOW_BOUND();
         s = [ZoneHelper getRandomZoneDefinitionKey:10];
         XCTAssertTrue([s isEqualToString:@"GARBAGE_BALL"]);
         
         i = 0;
-        rIdx = 0;
-        shouldUseLowerBoundChoices[i++] = NO;
-        shouldUseLowerBoundChoices[i++] = YES;
+        rIdx_zh = 0;
+        SET_UP_BOUND();
+        SET_LOW_BOUND();
         s = [ZoneHelper getRandomZoneDefinitionKey:30];
         XCTAssertTrue([s isEqualToString:@"INFINITE"]);
         
         i = 0;
-        rIdx = 0;
-        shouldUseLowerBoundChoices[i++] = NO;
-        shouldUseLowerBoundChoices[i++] = NO;
+        rIdx_zh = 0;
+        SET_UP_BOUND();
+        SET_UP_BOUND();
         s = [ZoneHelper getRandomZoneDefinitionKey:30];
         XCTAssertTrue([s isEqualToString:@"HELL"]);
     }
@@ -288,12 +288,12 @@ int rIdx = 0;
     
     -(void)testConstructZoneChoice{
         int i = 0;
-        rIdx = 0;
+        rIdx_zh = 0;
         Hero *h = (Hero *)[[SingletonCluster getSharedInstance].dataController constructEmptyEntity:HERO_ENTITY_NAME];
         h.lvl = 14;
-        shouldUseLowerBoundChoices[i++] = YES;
-        shouldUseLowerBoundChoices[i++] = YES;
-        shouldUseLowerBoundChoices[i++] = YES;
+        SET_LOW_BOUND();
+        SET_LOW_BOUND();
+        SET_LOW_BOUND();
         Zone *z = [ZoneHelper constructZoneChoice:h AndMatchHeroLvl:YES];
         XCTAssertTrue([z.zoneKey isEqualToString:@"NEBULA"]);
         XCTAssertEqual(z.lvl, 14);
@@ -303,10 +303,10 @@ int rIdx = 0;
         XCTAssertTrue(z.fullName,@"Nebula");
         
         i = 0;
-        rIdx = 0;
-        shouldUseLowerBoundChoices[i++] = YES;
-        shouldUseLowerBoundChoices[i++] = YES;
-        shouldUseLowerBoundChoices[i++] = NO;
+        rIdx_zh = 0;
+        SET_LOW_BOUND();
+        SET_LOW_BOUND();
+        SET_UP_BOUND();
         z = [ZoneHelper constructZoneChoice:h AndMatchHeroLvl:YES];
         XCTAssertTrue([z.zoneKey isEqualToString:@"NEBULA"]);
         XCTAssertEqual(z.lvl, 14);
@@ -316,11 +316,11 @@ int rIdx = 0;
         XCTAssertTrue(z.fullName,@"Nebula Alpha");
         
         i = 0;
-        rIdx = 0;
-        shouldUseLowerBoundChoices[i++] = YES;
-        shouldUseLowerBoundChoices[i++] = YES;
-        shouldUseLowerBoundChoices[i++] = NO;
-        shouldUseLowerBoundChoices[i++] = YES;
+        rIdx_zh = 0;
+        SET_LOW_BOUND();
+        SET_LOW_BOUND();
+        SET_UP_BOUND();
+        SET_LOW_BOUND();
         z = [ZoneHelper constructZoneChoice:h AndMatchHeroLvl:NO];
         XCTAssertTrue([z.zoneKey isEqualToString:@"NEBULA"]);
         XCTAssertEqual(z.lvl, 4);
@@ -330,11 +330,11 @@ int rIdx = 0;
         XCTAssertTrue(z.fullName,@"Nebula Beta");
         
         i = 0;
-        rIdx = 0;
-        shouldUseLowerBoundChoices[i++] = YES;//zoneGroup
-        shouldUseLowerBoundChoices[i++] = YES;//zone
-        shouldUseLowerBoundChoices[i++] = NO; //maxMonsters
-        shouldUseLowerBoundChoices[i++] = NO; //zone lvl
+        rIdx_zh = 0;
+        SET_LOW_BOUND();//zoneGroup
+        SET_LOW_BOUND();//zone
+        SET_UP_BOUND(); //maxMonsters
+        SET_UP_BOUND(); //zone lvl
         z = [ZoneHelper constructZoneChoice:h AndMatchHeroLvl:NO];
         XCTAssertTrue([z.zoneKey isEqualToString:@"NEBULA"]);
         XCTAssertEqual(z.lvl, 24);
@@ -350,7 +350,7 @@ int rIdx = 0;
         h.lvl = 52;
         
         int i = 0;
-        rIdx = 0;
+        rIdx_zh = 0;
         SET_LOW_BOUND();//choice count
         SET_LOW_BOUND();//zoneGroup
         SET_LOW_BOUND();//zone
@@ -373,7 +373,7 @@ int rIdx = 0;
         XCTAssertEqual(zl[2].lvl, 62);
         
         i = 0;
-        rIdx = 0;
+        rIdx_zh = 0;
         SET_UP_BOUND();//choice count
         SET_LOW_BOUND();//zoneGroup
         SET_LOW_BOUND();//zone
