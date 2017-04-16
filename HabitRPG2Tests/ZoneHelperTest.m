@@ -279,7 +279,7 @@ int rIdx = 0;
     -(void)testConstructHomeZone{
         Zone *z = [ZoneHelper constructHomeZone];
         XCTAssertTrue([[z.synopsis substringToIndex:56] isEqualToString:@"Everyone's gotta start somewhere. For you it's the earth"]);
-        Zone *z2 = (Zone *)[[SingletonCluster getSharedInstance].dataController getItem:ZONE_ENTITY_NAME predicate:nil sortBy:@[[[NSSortDescriptor alloc] initWithKey:@"zoneKey" ascending:NO]]];
+        Zone *z2 = (Zone *)[[SingletonCluster getSharedInstance].dataController getItem:ZONE_ENTITY_NAME predicate:nil sortBy:@[[[NSSortDescriptor alloc] initWithKey:@"zoneKey" ascending:NO]]][0];
         XCTAssertTrue(z2.isFront);
         XCTAssertEqual(z2.uniqueId, 0);
         XCTAssertTrue([[z2.synopsis substringToIndex:56] isEqualToString:@"Everyone's gotta start somewhere. For you it's the earth"]);
@@ -402,6 +402,27 @@ int rIdx = 0;
         
         zl = [ZoneHelper constructMultipleZoneChoices:h AndMatchHeroLvl:NO];
         XCTAssertEqual(zl.count, 5);
+    }
+    
+    -(void)testGetZone{
+        Zone *z = [ZoneHelper constructEmptyZone];
+        z.isFront = YES;
+        z.zoneKey = @"NEBULA";
+        Zone *z2 = [ZoneHelper constructEmptyZone];
+        z2.isFront = NO;
+        z2.zoneKey = @"GAS";
+        SAVE_DATA(z);
+        Zone *z3 = [ZoneHelper getZone:YES];
+        XCTAssertTrue(z3.isFront);
+        XCTAssertTrue([z3.zoneKey isEqualToString:@"NEBULA"]);
+        Zone *z4 = [ZoneHelper getZone:NO];
+        XCTAssertTrue(!z4.isFront);
+        XCTAssertTrue([z4.zoneKey isEqualToString:@"GAS"]);
+        Zone *z5 = [ZoneHelper constructEmptyZone];
+        z5.isFront = YES;
+        z5.zoneKey = @"TEMPLE";
+        SAVE_DATA(z5);
+        XCTAssertThrows([ZoneHelper getZone:YES]);
     }
 
     - (void)tearDown {

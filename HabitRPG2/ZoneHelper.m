@@ -127,8 +127,13 @@ NSString* const HOME_KEY = @"HOME";
         NSFetchRequest<Suffix *> *request = [Suffix fetchRequest];
         NSSortDescriptor *sortByZoneKey = [[NSSortDescriptor alloc] initWithKey:@"zoneKey" ascending:NO];
         NSPredicate *filter = [NSPredicate predicateWithFormat:@"zoneKey = %@",zoneKey];
-        Suffix *s = (Suffix *)[[SingletonCluster getSharedInstance].dataController getItemWithRequest:request predicate:filter sortBy:@[sortByZoneKey]];
-        if(!s){
+        NSArray<NSManagedObject *> *results = [[SingletonCluster getSharedInstance].dataController getItemWithRequest:request predicate:filter sortBy:@[sortByZoneKey]];
+        NSAssert(results.count<2, @"There are too many entities");
+        Suffix *s;
+        if(results.count){
+            s = (Suffix *)results[0];
+        }
+        else{
             s = (Suffix *)[[SingletonCluster getSharedInstance].dataController constructEmptyEntity:SUFFIX_ENTITY_NAME];
             s.zoneKey = zoneKey;
         }
@@ -142,14 +147,18 @@ NSString* const HOME_KEY = @"HOME";
         NSSortDescriptor *sortBySuffixNumber= [[NSSortDescriptor alloc] initWithKey:@"suffixNumber" ascending:NO];
         NSPredicate *filter = [NSPredicate predicateWithFormat:@"zoneKey = %@",zoneKey];
         
-        return (Zone *)[[SingletonCluster getSharedInstance].dataController getItemWithRequest:request predicate:filter sortBy:@[sortBySuffixNumber]];
+        NSArray<NSManagedObject *> *results = [[SingletonCluster getSharedInstance].dataController getItemWithRequest:request predicate:filter sortBy:@[sortBySuffixNumber]];
+        NSAssert(results.count<2, @"There are too many zones");
+        return (Zone *)results[0];
     }
 
     +(Zone *)getZone:(BOOL)isFront{
         NSFetchRequest<Zone *> *request = [Zone fetchRequest];
         NSSortDescriptor *sortByIsFront = [[NSSortDescriptor alloc] initWithKey:@"isFront" ascending:YES];
-        NSPredicate *filter = [NSPredicate predicateWithFormat:@"isFront =%@",isFront];
-        return (Zone *)[[SingletonCluster getSharedInstance].dataController getItemWithRequest:request predicate:filter sortBy:@[sortByIsFront]];
+        NSPredicate *filter = [NSPredicate predicateWithFormat:@"isFront =%d",isFront?1:0];
+        NSArray<NSManagedObject *> *results = [[SingletonCluster getSharedInstance].dataController getItemWithRequest:request predicate:filter sortBy:@[sortByIsFront]];
+        NSAssert(results.count<2, @"There are too many zones");
+        return (Zone *)results[0];
     }
 
     +(int64_t)getNextUniqueId{

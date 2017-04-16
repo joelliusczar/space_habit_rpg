@@ -122,7 +122,7 @@
         
     }
 
-    -(NSManagedObject *)getItem:(NSString *) entityName
+    -(NSArray<NSManagedObject *> *)getItem:(NSString *) entityName
                             predicate: (NSPredicate *) filter
                             sortBy:(NSArray *) sortAttrs
     {
@@ -134,11 +134,10 @@
                                  sortBy:sortAttrs];
     }
 
-    -(NSManagedObject *)getItemWithRequest:(NSFetchRequest *)request
+    -(NSArray<NSManagedObject *> *)getItemWithRequest:(NSFetchRequest *)request
                                     predicate:(NSPredicate *)filter
                                     sortBy:(NSArray<NSSortDescriptor *> *)sortArray
     {
-        request.fetchLimit = 1;
         request.predicate = filter;
         request.sortDescriptors = sortArray;
         NSError *err;
@@ -151,7 +150,7 @@
         if(results.count < 1){
             return nil;
         }
-        return results[0];
+        return results;
     }
 
     -(BOOL)save:(NSManagedObject *)entity{
@@ -190,22 +189,21 @@
         NSArray<NSPersistentStore *> *stores = self.coordinator.persistentStores;
         NSPersistentStore *ps = stores[0];
         if([ps.type isEqualToString:@"InMemory"]){
+            //delete all unsaved items
+            for(NSEntityDescription *entityDesc in self.coordinator.managedObjectModel.entities){
+                NSManagedObjectContext *c = [self getContext:entityDesc.name];
+                [c reset];
+            }
+            //delete all saved items
             NSError *err = nil;
             [self.coordinator removePersistentStore:ps error:&err];
+            NSAssert(!err, @"something went wrong with removing the persistent store");
             [self initializeCoreData];
         }
         else{
-            [self deleteAllForEntity:HERO_ENTITY_NAME];
-            [self deleteAllForEntity:DATA_INFO_ENTITY_NAME];
-            [self deleteAllForEntity:MONSTER_ENTITY_NAME];
-            [self deleteAllForEntity:ZONE_ENTITY_NAME];
-            [self deleteAllForEntity:SETTINGS_ENTITY_NAME];
-            [self deleteAllForEntity:DAILY_ENTITY_NAME];
-            [self deleteAllForEntity:HABIT_ENTITY_NAME];
-            [self deleteAllForEntity:TODO_ENTITY_NAME];
-            [self deleteAllForEntity:GOOD_ENTITY_NAME];
-            [self deleteAllForEntity:GOOD_ENTITY_NAME];
-            [self deleteAllForEntity:SUFFIX_ENTITY_NAME];
+            for(NSEntityDescription *entityDesc in self.coordinator.managedObjectModel.entities){
+                [self deleteAllForEntity:entityDesc.name];
+            }
         }
     }
 

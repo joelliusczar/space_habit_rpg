@@ -20,10 +20,10 @@
     -(NSFetchedResultsController *)getItemFetcher:(NSString *) entityName
                                         predicate: (NSPredicate *) filter
                                            sortBy:(NSArray *) sortAttrs;
-    -(NSManagedObject *)getItem:(NSString *) entityName
+    -(NSArray<NSManagedObject *> *)getItem:(NSString *) entityName
                       predicate: (NSPredicate *) filter
                          sortBy:(NSArray<NSSortDescriptor *> *) sortAttrs;
-    -(NSManagedObject *)getItemWithRequest:(NSFetchRequest *) fetchRequest
+    -(NSArray<NSManagedObject *> *)getItemWithRequest:(NSFetchRequest *) fetchRequest
                                  predicate: (NSPredicate *)filter
                                     sortBy: (NSArray<NSSortDescriptor *> *)sortArray;
     -(BOOL)save:(NSManagedObject *)entity;

@@ -15,6 +15,8 @@
 #import "MonsterInfoDictionary.h"
 #import "P_stdlibWrapper.h"
 
+#define SAVE_DATA(entity) [[SingletonCluster getSharedInstance].dataController save:entity]
+
 @interface SingletonCluster : NSObject
     +(instancetype)getSharedInstance;
     @property (nonatomic,strong) NSObject<P_CoreData> *dataController;

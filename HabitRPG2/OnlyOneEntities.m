@@ -19,7 +19,9 @@
 @synthesize theDataInfo = _theDataInfo;
 -(DataInfo *)theDataInfo{
     if(!_theDataInfo){
-        _theDataInfo = (DataInfo *)[self.dataController getItem:DATA_INFO_ENTITY_NAME predicate:nil sortBy:@[[[NSSortDescriptor alloc] initWithKey:@"nextZoneId" ascending:NO]]];
+        NSArray<NSManagedObject *> *results = [self.dataController getItem:DATA_INFO_ENTITY_NAME predicate:nil sortBy:@[[[NSSortDescriptor alloc] initWithKey:@"nextZoneId" ascending:NO]]];
+        NSAssert(results.count<2, @"There are too many entities");
+        _theDataInfo = (DataInfo *)results[0];
         if(!_theDataInfo){
             _theDataInfo = [self constructDataInfoInitialState];
         }
@@ -30,7 +32,9 @@
 @synthesize theSettings = _theSettings;
 -(Settings *)theSettings{
     if(!_theSettings){
-        _theSettings = (Settings *)[self.dataController getItem:SETTINGS_ENTITY_NAME predicate:nil sortBy:@[[[NSSortDescriptor alloc] initWithKey:@"createDate" ascending:NO]]];
+        NSArray<NSManagedObject *> *results = [self.dataController getItem:SETTINGS_ENTITY_NAME predicate:nil sortBy:@[[[NSSortDescriptor alloc] initWithKey:@"createDate" ascending:NO]]];
+        NSAssert(results.count<2, @"There are too many entities");
+        _theSettings = (Settings *)results[0];
         if(!_theSettings){
             _theSettings = [self constructSettingsInitialState];
         }
@@ -41,7 +45,9 @@
 @synthesize theHero = _theHero;
 -(Hero *)theHero{
     if(!_theHero){
-        _theHero = (Hero *)[self.dataController getItem:HERO_ENTITY_NAME predicate:nil sortBy:@[[[NSSortDescriptor alloc] initWithKey:@"lvl" ascending:NO]]];
+        NSArray<NSManagedObject *> *results = [self.dataController getItem:HERO_ENTITY_NAME predicate:nil sortBy:@[[[NSSortDescriptor alloc] initWithKey:@"lvl" ascending:NO]]];
+        NSAssert(results.count<2, @"There are too many entities");
+        _theHero = (Hero *)results[0];
         if(!_theHero){
             _theHero = [self constructHeroInitialState];
         }
