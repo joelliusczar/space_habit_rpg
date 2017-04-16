@@ -9,7 +9,6 @@
 #import "CommonUtilities.h"
 #import "SingletonCluster.h"
 
-
 @implementation CommonUtilities
 
     +(NSDate *)getReferenceDate{
@@ -25,16 +24,19 @@
         return [cal dateFromComponents:dateComponents];
     }
 
-    +(uint32_t)calculateLvl:(uint32_t)lvl OffsetBy:(uint32_t)offset{
-        uint32_t minLvl = lvl;
-        if(lvl <= offset){
-            minLvl = offset;
+    +(uint32_t)calculateLvl:(uint32_t)lvl OffsetBy:(uint32_t)range{
+        lvl = lvl?lvl:1;
+        uint32_t minLvl = 0;
+        if(lvl <= range){
+            minLvl = 1;
+            range += lvl;
         }
         else{
-            minLvl = lvl - offset;
+            minLvl = lvl - range;
+            range = (2*range)+1;
         }
         
-        return [[SingletonCluster getSharedInstance].stdLibWrapper randomUInt:offset] +minLvl;
+        return [CommonUtilities randomUInt:range] +minLvl;
     }
     
     +(uint32_t)randomUInt:(uint32_t)offset{

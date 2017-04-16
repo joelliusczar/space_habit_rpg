@@ -187,15 +187,26 @@
 
     -(void)deleteAllRecords{
         //this should only be called in testing situations.
-        [self deleteAllForEntity:HERO_ENTITY_NAME];
-        [self deleteAllForEntity:DATA_INFO_ENTITY_NAME];
-        [self deleteAllForEntity:MONSTER_ENTITY_NAME];
-        [self deleteAllForEntity:ZONE_ENTITY_NAME];
-        [self deleteAllForEntity:SETTINGS_ENTITY_NAME];
-        [self deleteAllForEntity:DAILY_ENTITY_NAME];
-        [self deleteAllForEntity:HABIT_ENTITY_NAME];
-        [self deleteAllForEntity:TODO_ENTITY_NAME];
-        [self deleteAllForEntity:GOOD_ENTITY_NAME];
+        NSArray<NSPersistentStore *> *stores = self.coordinator.persistentStores;
+        NSPersistentStore *ps = stores[0];
+        if([ps.type isEqualToString:@"InMemory"]){
+            NSError *err = nil;
+            [self.coordinator removePersistentStore:ps error:&err];
+            [self initializeCoreData];
+        }
+        else{
+            [self deleteAllForEntity:HERO_ENTITY_NAME];
+            [self deleteAllForEntity:DATA_INFO_ENTITY_NAME];
+            [self deleteAllForEntity:MONSTER_ENTITY_NAME];
+            [self deleteAllForEntity:ZONE_ENTITY_NAME];
+            [self deleteAllForEntity:SETTINGS_ENTITY_NAME];
+            [self deleteAllForEntity:DAILY_ENTITY_NAME];
+            [self deleteAllForEntity:HABIT_ENTITY_NAME];
+            [self deleteAllForEntity:TODO_ENTITY_NAME];
+            [self deleteAllForEntity:GOOD_ENTITY_NAME];
+            [self deleteAllForEntity:GOOD_ENTITY_NAME];
+            [self deleteAllForEntity:SUFFIX_ENTITY_NAME];
+        }
     }
 
 @end

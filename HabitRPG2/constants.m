@@ -21,13 +21,13 @@ NSString* const SUFFIX_ENTITY_NAME = @"Suffix";
 
 
 u_int32_t const DAYS_IN_WEEK = 7;
-u_int32_t const MAX_MONSTER_RAND_UP_BOUND = 10;
+u_int32_t const MAX_MONSTER_RAND_UP_BOUND = 11;
 u_int32_t const MAX_MONSTER_LOW_BOUND = 5;
 u_int32_t const ZONE_LVL_RANGE = 10;
 u_int32_t const MONSTER_LVL_RANGE = 10;
 NSTimeInterval const CHARACTER_DELAY = .01;
 u_int32_t const MIN_ZONE_CHOICE_COUNT = 3;
-u_int32_t const MAX_ZONE_CHOICE_RAND_UP_BOUND = 2;
+u_int32_t const MAX_ZONE_CHOICE_RAND_UP_BOUND = 3;
 CGFloat const ZONE_CHOICE_ROW_HEIGHT = 75;
 
 //zone groups

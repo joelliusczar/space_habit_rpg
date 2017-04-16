@@ -118,9 +118,9 @@ NSString* const HOME_KEY = @"HOME";
 
     +(int32_t)getVisitCountForZone:(NSString *)zoneKey{
         Suffix *s = [ZoneHelper getSuffixEntity:zoneKey];
-        s.visitCount++;
+        int currentVisitCount = s.visitCount++;
         [[SingletonCluster getSharedInstance].dataController save:s];
-        return s.visitCount;
+        return currentVisitCount;
     }
 
     +(Suffix *)getSuffixEntity:(NSString *)zoneKey{
