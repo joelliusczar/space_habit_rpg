@@ -9,7 +9,8 @@
 #ifndef TestGlobals_h
 #define TestGlobals_h
 
-#define ASSERT_IS_TEST() XCTAssertEqual([SingletonCluster getSharedInstance].EnviromentNum,ENV_UTEST)
+#define ASSERT_IS_TEST() if([SingletonCluster getSharedInstance].EnviromentNum!=ENV_UTEST) \
+[NSException raise:@"invalid environment" format:@"This is not test"]
 #define DELETE_ALL() [[SingletonCluster getSharedInstance].dataController deleteAllRecords]
 
 #endif /* TestGlobals_h */

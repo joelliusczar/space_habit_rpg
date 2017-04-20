@@ -41,11 +41,9 @@
     +(ProbWeight *)buildProbilityWeigher:(NSMutableArray<NSString *> *)keys{
         MonsterInfoDictionary *monInfoDict = [SingletonCluster getSharedInstance].monsterInfoDictionary;
         ProbWeight *pbw = [[ProbWeight alloc] init];
-        NSEnumerator<NSString *> *enumer = keys.objectEnumerator;
-        NSString *nextKey;
-        while(nextKey = [enumer nextObject]){
-            int32_t encounterWeight = [monInfoDict getEncounterWeight:nextKey];
-            [pbw add:nextKey With:encounterWeight];
+        for(NSString* zoneKey in keys){
+            int32_t encounterWeight = [monInfoDict getEncounterWeight:zoneKey];
+            [pbw add:zoneKey With:encounterWeight];
         }
         return pbw;
     }

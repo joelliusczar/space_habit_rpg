@@ -25,7 +25,7 @@ BOOL shouldUseLowerBoundChoices_zh[25];
 int rIdx_zh;
 
 @implementation ZoneHelperTest
-
+    
     - (void)setUp {
         [super setUp];
         ASSERT_IS_TEST();
