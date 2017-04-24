@@ -66,21 +66,19 @@ NSString *freqSumLow = @"cummFreqLow";
         int64_t end = self.weights.count;
         int64_t mid = ((end-start)/2) + start;
         double rPercent = ((double)r)/self.sum;
-        while(start < end){
-            mid = ((end-start)/2) + start;
-            double midPercent = ((NSNumber *)self.weights[mid][freqSumLow]).doubleValue/self.sum;
-            if(rPercent < midPercent){
+        while(start<end){
+            double lowPercent = ((NSNumber *)self.weights[mid][freqSumLow]).doubleValue/self.sum;
+            double upPercent = ((NSNumber *)self.weights[mid][freqSum]).doubleValue/self.sum;
+            if(rPercent<lowPercent){
                 end = mid-1;
-                continue;
             }
-            if(rPercent > midPercent){
+            if(rPercent>=upPercent){
                 start = mid+1;
-                continue;
             }
-            break;
-        }
-        if(start == end&&end<self.weights.count-1){
             mid = ((end-start)/2) + start;
+            if(rPercent<=upPercent&&rPercent>=lowPercent){
+                break;
+            }
         }
         
         return self.weights[mid][storedKey];

@@ -66,10 +66,6 @@ int rIdx_pw = 0;
         ProbWeight *pw = [[ProbWeight alloc] init];
         NSString *s =@"";
         
-        
-        
-        pw = [[ProbWeight alloc] init];
-        
         [pw add:@"A" With:1];
         [pw add:@"B" With:9];
         
@@ -310,6 +306,22 @@ int rIdx_pw = 0;
         s = [pw weightedRandomKey];
         XCTAssert([s isEqualToString: @"B"]);
 
+    }
+    
+    -(void)testExactlyThreeItems{
+        ProbWeight *pw = [[ProbWeight alloc] init];
+        NSString *s =@"";
+        
+        [pw add:@"A" With:1];
+        [pw add:@"B" With:1];
+        [pw add:@"C" With:1];
+        
+        s = [pw weightedRandomKey];
+        XCTAssert([s isEqualToString: @"A"]);
+        s = [pw weightedRandomKey];
+        XCTAssert([s isEqualToString: @"B"]);
+        s = [pw weightedRandomKey];
+        XCTAssert([s isEqualToString: @"C"]);
     }
 
     - (void)tearDown {

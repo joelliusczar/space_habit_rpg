@@ -14,8 +14,8 @@
 #import "MockStdLibWrapper.h"
 
 @interface TestProbWeightsThreeItems: XCTestCase
-    
-    @end
+
+@end
 
 MockStdLibWrapper *mw_pw3;
 int rIdx_pw3 = 0;
