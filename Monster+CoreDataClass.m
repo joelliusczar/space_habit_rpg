@@ -48,7 +48,8 @@ float MAX_HP_MODIFIER = .1;
     }
     
     -(int32_t)maxHp{
-        return [self.monInfoDict getBaseHP:self.monsterKey] + (self.lvl*[self.monInfoDict getBaseHP:self.monsterKey]*MAX_HP_MODIFIER);
+        int baseHp = [self.monInfoDict getBaseHP:self.monsterKey];
+        return baseHp + (self.lvl*baseHp*MAX_HP_MODIFIER);
     }
     
     -(float)treasureDropRate{

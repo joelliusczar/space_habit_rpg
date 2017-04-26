@@ -10,6 +10,7 @@
 #import "Monster+CoreDataClass.h"
 
 @interface MonsterHelper : NSObject
-+(Monster *)constructRandomMonster:(NSString *)zoneKey AroundLvl:(uint32_t)zoneLvl;
-+(Monster *)constructEmptyMonster;
+    +(Monster *)constructRandomMonster:(NSString *)zoneKey AroundLvl:(uint32_t)zoneLvl;
+    +(NSString *)randomMonsterKey:(NSString *)zoneKey;
+    +(Monster *)constructEmptyMonster;
 @end
