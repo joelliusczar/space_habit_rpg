@@ -31,6 +31,7 @@ int rIdx_mh;
         ASSERT_IS_TEST();
         mw_mh = [[MockStdLibWrapper alloc] init];
         [SingletonCluster getSharedInstance].stdLibWrapper =mw_mh;
+        rIdx_mh = 0;
         mw_mh.mockRandom = ^uint(uint range){
             return shouldUseLowerBoundChoices_mh[rIdx_mh++]?0:(range-1);
         };
