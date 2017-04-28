@@ -11,6 +11,7 @@
 #import "CustomSwitch.h"
 #import "constants.h"
 #import "ViewHelper.h"
+#import "SingletonCluster.h"
 
 @interface ZoneChoiceViewController ()
     @property (nonatomic,strong) NSArray<Zone *> *zones;
@@ -38,6 +39,7 @@
         if(!_nextBtn){
             UIView *v = [self getContentSubview];
             _nextBtn = [v viewWithTag:3];
+            [_nextBtn addTarget:self action:@selector(nextBtn_pressed_action:) forControlEvents:UIControlEventTouchUpInside];
         }
         return _nextBtn;
     }
@@ -68,6 +70,7 @@
         }
         return self;
     }
+    
 
     +(instancetype)constructWithCentral:(UIViewController<CentralViewControllerP> *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices{
         return [[ZoneChoiceViewController alloc] initWithCentral:central AndZoneChoices:zoneChoices];
@@ -116,16 +119,16 @@
         }
         [dataController save:zoneChoice];
     }
-
-
-    /*
-    #pragma mark - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    
+    -(Zone *)pickRandomChoice{
+        uint r = [[SingletonCluster getSharedInstance].stdLibWrapper randomUInt:(uint)self.zones.count];
+        return self.zones[r];
     }
-    */
 
+    -(void)nextBtn_pressed_action:(UIButton *)sender{
+        BOOL show = self.skipSwitch.isOn;
+        [self.central setToSkipStory:!show];
+        [ViewHelper popViewFromFront:self];
+        [self.central afterIntro:[self pickRandomChoice]];
+    }
 @end

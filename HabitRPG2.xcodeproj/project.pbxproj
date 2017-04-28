@@ -508,6 +508,7 @@
 		686ED3A81DADDF69004EDD36 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				27AE66541E8720F9000F31BD /* CentralViewControllerP.h */,
 				68F736B01D8B810200AE10A8 /* EditingSaver.h */,
 				271C047D1E89BCBA002221E9 /* P_CoreData.h */,
 				271C04851E8B6323002221E9 /* P_ResourceUtility.h */,
@@ -634,7 +635,6 @@
 				68F3F9E21D70E8DB00840DD2 /* CentralViewController.m */,
 				27F4401A1E220097002BEDD4 /* OnlyOneEntities.h */,
 				27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */,
-				27AE66541E8720F9000F31BD /* CentralViewControllerP.h */,
 				271C04891E8C955A002221E9 /* SingletonCluster.h */,
 				271C048A1E8C955A002221E9 /* SingletonCluster.m */,
 			);
