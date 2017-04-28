@@ -36,6 +36,16 @@
 
 @interface CentralViewController ()
 @property (strong,nonatomic) UITabBarController *tabsController;
+@property (weak,nonatomic) UIView *statsView;
+@property (weak,nonatomic) UILabel *shipNameLbl;
+@property (weak,nonatomic) UILabel *heroHPLbl;
+@property (weak,nonatomic) UIProgressView *heroHPBar;
+@property (weak,nonatomic) UILabel *monsterHPLbl;
+@property (weak,nonatomic) UIProgressView *monsterHPBar;
+@property (weak,nonatomic) UILabel *xpLbl;
+@property (weak,nonatomic) UIProgressView *xpBar;
+@property (weak,nonatomic) UILabel *lvlLbl;
+@property (weak,nonatomic) UILabel *goldLbl;
 @end
 
 @implementation CentralViewController
@@ -79,6 +89,91 @@
     return _tabsController;
 }
 
+@synthesize statsView = _statsView;
+-(UIView *)statsView{
+    if(!_statsView){
+        _statsView = [self.view viewWithTag:1];
+    }
+    return _statsView;
+}
+
+@synthesize shipNameLbl = _shipNameLbl;
+-(UILabel *)shipNameLbl{
+    if(!_shipNameLbl){
+        _shipNameLbl = [self.view viewWithTag:2];
+    }
+    return _shipNameLbl;
+}
+
+@synthesize heroHPLbl = _heroHPLbl;
+-(UILabel *)heroHPLbl{
+    if(!_heroHPLbl){
+        _heroHPLbl = [self.view viewWithTag:3];
+    }
+    return _heroHPLbl;
+}
+
+@synthesize heroHPBar = _heroHPBar;
+-(UIProgressView *)heroHPBar{
+    if(!_heroHPBar){
+        _heroHPBar = [self.view viewWithTag:4];
+    }
+    return _heroHPBar;
+}
+
+@synthesize monsterHPLbl = _monsterHPLbl;
+-(UILabel *)monsterHPLbl{
+    
+    if(!_monsterHPLbl){
+        _monsterHPLbl = [self.view viewWithTag:5];
+    }
+    return _monsterHPLbl;
+}
+
+@synthesize monsterHPBar = _monsterHPBar;
+-(UIProgressView *)monsterHPBar{
+    
+    if(!_monsterHPBar){
+        _monsterHPBar = [self.view viewWithTag:6];
+    }
+    return _monsterHPBar;
+}
+
+@synthesize xpLbl = _xpLbl;
+-(UILabel *)xpLbl{
+    
+    if(!_xpLbl){
+        _xpLbl = [self.view viewWithTag:7];
+    }
+    return _xpLbl;
+}
+
+@synthesize xpBar = _xpBar;
+-(UIProgressView *)xpBar{
+    
+    if(!_xpBar){
+        _xpBar = [self.view viewWithTag:8];
+    }
+    return _xpBar;
+}
+
+@synthesize lvlLbl = _lvlLbl;
+-(UILabel *)lvlLbl{
+    
+    if(!_lvlLbl){
+        _lvlLbl = [self.view viewWithTag:9];
+    }
+    return _lvlLbl;
+}
+
+@synthesize goldLbl = _goldLbl;
+-(UILabel *)goldLbl{
+    
+    if(!_goldLbl){
+        _goldLbl = [self.view viewWithTag:10];
+    }
+    return _goldLbl;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -164,11 +259,23 @@
     [zoneChoiceView didMoveToParentViewController:self];
 }
 
--(void)updateHeroHPBar:(int)part whole:(int)whole{}
+-(void)updateHeroHPUI:(int)part whole:(int)whole{
+    self.heroHPLbl.text = [NSString stringWithFormat:@"HP:%d/%d",part,whole];
+    float hpPercent = ((float)part)/whole;
+    self.heroHPBar.progress = hpPercent;
+}
 
--(void)updateHeroXPBar:(int)part whole:(int)whole{}
+-(void)updateHeroXPUI:(int)part whole:(int)whole{
+    self.xpLbl.text = [NSString stringWithFormat:@"XP:%d/%d",part,whole];
+    float xpPercent = ((float)part)/whole;
+    self.xpBar.progress = xpPercent;
+}
 
--(void)updateMonsterHPBar:(int)part whole:(int)whole{}
+-(void)updateMonsterHPUI:(int)part whole:(int)whole{
+    self.monsterHPLbl.text = [NSString stringWithFormat:@"HP:%d/%d",part,whole];
+    float hpPercent = ((float)part)/whole;
+    self.monsterHPBar.progress = hpPercent;
+}
 
 -(void)setupObservers{
 
