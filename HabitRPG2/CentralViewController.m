@@ -306,6 +306,10 @@
     [self showMonsterStory];
     [self setupObservers];
     [self setupTabs];
+    self.dataController.userData.theDataInfo.isNew = NO;
+    self.userSettings.createDate = [NSDate date];
+    [self.dataController save:self.dataController.userData.theDataInfo];
+    [self.dataController save:self.userSettings];
 }
 
 -(void)showMonsterStory{
