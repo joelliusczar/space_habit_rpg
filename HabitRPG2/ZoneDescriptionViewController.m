@@ -21,10 +21,13 @@
 
 @implementation ZoneDescriptionViewController
 
+@synthesize prevScreen = _prevScreen;
+@synthesize central = _central;
+
 @synthesize zoneDescription = _zoneDescription;
 -(UITextView *)zoneDescription{
     if(!_zoneDescription){
-        _zoneDescription = [self.view viewWithTag:1];
+        _zoneDescription = [self.view viewWithTag:2];
     }
     return _zoneDescription;
 }
@@ -32,7 +35,8 @@
 @synthesize confirmBtn = _confirmBtn;
 -(UIButton *)confirmBtn{
     if(!_confirmBtn){
-        _confirmBtn = [self.view viewWithTag:2];
+        UIView *v = [self getContentSubview];
+        _confirmBtn = [v viewWithTag:3];
         [_confirmBtn addTarget:self action:@selector(confirmBtn_click_action:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _confirmBtn;
@@ -48,15 +52,15 @@
 }
 
 -(instancetype)init:(ZoneChoiceViewController *)prevScreen{
-    if(self = [self initWithNibName:@"ZoneDescriptionViewController" bundle:nil]){
-        self.prevScreen = prevScreen;
-        self.central = prevScreen.central;
-        [self.view addGestureRecognizer:self.backSwipe];
+    if(self = [self initWithNibName:@"StoryDumpView" bundle:nil]){
+        _prevScreen = prevScreen;
+        _central = prevScreen.central;
     }
     return self;
 }
 
 -(void)setDisplayItems:(Zone *)model{
+    NSLog(@"%@",@"hi");
     self.model = model;
     self.zoneDescription.text = model.synopsis;
 }
@@ -64,7 +68,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self confirmBtn];
-    // Do any additional setup after loading the view from its nib.
+    [self.view addGestureRecognizer:self.backSwipe];
+}
+
+-(UIView *)getContentSubview{
+    return [self.view viewWithTag:1];;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -82,14 +90,5 @@
     [self.central afterIntro:self.model];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -23,6 +23,8 @@
 		271C048B1E8C955A002221E9 /* SingletonCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C048A1E8C955A002221E9 /* SingletonCluster.m */; };
 		271C048E1E8C9C06002221E9 /* MonsterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C048D1E8C9C06002221E9 /* MonsterHelper.m */; };
 		271C04921E8F3784002221E9 /* SuffixList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 271C04911E8F3784002221E9 /* SuffixList.plist */; };
+		273978851EB55F3700F217B4 /* StoryDumpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 273978831EB55F3700F217B4 /* StoryDumpView.m */; };
+		273978861EB55F3700F217B4 /* StoryDumpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273978841EB55F3700F217B4 /* StoryDumpView.xib */; };
 		277ABEC91E949B96008CC239 /* StdLibWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEC81E949B96008CC239 /* StdLibWrapper.m */; };
 		277ABED11E95DEF6008CC239 /* ProbWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABED01E95DEF6008CC239 /* ProbWeight.m */; };
 		277ABEF21E975959008CC239 /* ModelsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEF11E975959008CC239 /* ModelsTest.m */; };
@@ -151,6 +153,10 @@
 		271C048C1E8C9C06002221E9 /* MonsterHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterHelper.h; sourceTree = "<group>"; };
 		271C048D1E8C9C06002221E9 /* MonsterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterHelper.m; sourceTree = "<group>"; };
 		271C04911E8F3784002221E9 /* SuffixList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SuffixList.plist; sourceTree = "<group>"; };
+		273978821EB55F3700F217B4 /* StoryDumpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryDumpView.h; sourceTree = "<group>"; };
+		273978831EB55F3700F217B4 /* StoryDumpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryDumpView.m; sourceTree = "<group>"; };
+		273978841EB55F3700F217B4 /* StoryDumpView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoryDumpView.xib; sourceTree = "<group>"; };
+		273978881EB5618200F217B4 /* P_StoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_StoryItem.h; sourceTree = "<group>"; };
 		277ABEC21E947B66008CC239 /* Model 15.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 15.xcdatamodel"; sourceTree = "<group>"; };
 		277ABEC61E949B76008CC239 /* P_stdlibWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_stdlibWrapper.h; sourceTree = "<group>"; };
 		277ABEC71E949B96008CC239 /* StdLibWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StdLibWrapper.h; sourceTree = "<group>"; };
@@ -587,6 +593,10 @@
 				68BE45901D9DEA0B003F3400 /* IntroViewController.xib */,
 				686ED3A51DA751AC004EDD36 /* StoryConstants.h */,
 				686ED3A61DA751AC004EDD36 /* StoryConstants.m */,
+				273978821EB55F3700F217B4 /* StoryDumpView.h */,
+				273978831EB55F3700F217B4 /* StoryDumpView.m */,
+				273978841EB55F3700F217B4 /* StoryDumpView.xib */,
+				273978881EB5618200F217B4 /* P_StoryItem.h */,
 			);
 			name = Story;
 			sourceTree = "<group>";
@@ -839,6 +849,7 @@
 				68F3F9EF1D70FC0D00840DD2 /* HabitController.xib in Resources */,
 				27C92C451E3314000025727E /* ZoneDescriptionViewController.xib in Resources */,
 				6889C65E1D88F82700598435 /* DailyEditView.xib in Resources */,
+				273978861EB55F3700F217B4 /* StoryDumpView.xib in Resources */,
 				686ED3C01DB47954004EDD36 /* ZoneChoiceView.xib in Resources */,
 				6886A48F1D8F6F9B005E12B3 /* edit_button.png in Resources */,
 				68F3F9B91D70E82E00840DD2 /* Assets.xcassets in Resources */,
@@ -891,6 +902,7 @@
 				68A921F91DBC7FF2007C946C /* Habit+CoreDataProperties.m in Sources */,
 				68F3F9F31D70FC5E00840DD2 /* TodoViewController.m in Sources */,
 				68F3FA021D74897A00840DD2 /* MenuViewController.m in Sources */,
+				273978851EB55F3700F217B4 /* StoryDumpView.m in Sources */,
 				271C04831E8A1152002221E9 /* MonsterInfoDictionary.m in Sources */,
 				27C92C441E3314000025727E /* ZoneDescriptionViewController.m in Sources */,
 				68A921FA1DBC7FF2007C946C /* Monster+CoreDataProperties.m in Sources */,
@@ -1116,6 +1128,7 @@
 				277ABEE31E96F68E008CC239 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		68F3F9A41D70E82E00840DD2 /* Build configuration list for PBXProject "HabitRPG2" */ = {
 			isa = XCConfigurationList;

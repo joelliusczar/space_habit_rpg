@@ -302,14 +302,16 @@
 
 -(void)afterIntro:(Zone *)zoneChoice{
     self.nowZone = zoneChoice;
-    self.nowZone.isFront = YES;
-    self.nowMonster = [MonsterHelper constructRandomMonster:self.nowZone.zoneKey AroundLvl:self.nowZone.lvl];
+    self.nowMonster = [MonsterHelper constructRandomMonster:zoneChoice.zoneKey AroundLvl:zoneChoice.lvl];
+    [self showMonsterStory];
     [self setupObservers];
     [self setupTabs];
 }
 
 -(void)showMonsterStory{
-    
+    if(self.userSettings.storyModeisOn){
+        
+    }
 }
 
 

@@ -8,18 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "P_StoryItem.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Monster : NSManagedObject
-    @property (nonatomic,strong,readonly) NSString *fullName;
-    @property (nonatomic,strong,readonly) NSString *synopsis;
-    @property (nonatomic,readonly) int32_t attack;
-    @property (nonatomic,readonly) int32_t defense;
-    @property (nonatomic,readonly) int32_t xp;
-    @property (nonatomic,readonly) int32_t maxHp;
-    @property (nonatomic,readonly) float treasureDropRate;
-    @property (nonatomic,readonly) int32_t encounterWeight;
+@interface Monster : NSManagedObject <P_StoryItem>
+@property (nonatomic,readonly) int32_t attack;
+@property (nonatomic,readonly) int32_t defense;
+@property (nonatomic,readonly) int32_t xp;
+@property (nonatomic,readonly) int32_t maxHp;
+@property (nonatomic,readonly) float treasureDropRate;
+@property (nonatomic,readonly) int32_t encounterWeight;
 @end
 
 NS_ASSUME_NONNULL_END

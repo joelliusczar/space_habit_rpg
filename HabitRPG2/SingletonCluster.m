@@ -79,7 +79,7 @@
     static SingletonCluster *sharedInstance = nil;
     static dispatch_once_t _onceToken;
     dispatch_once(&_onceToken,^{
-        sharedInstance = [[SingletonCluster alloc]init];
+        sharedInstance = [[SingletonCluster alloc] initClass];
     });
     return sharedInstance;
 }
