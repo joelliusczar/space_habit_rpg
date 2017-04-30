@@ -60,14 +60,14 @@
 }
 
 -(void)setDisplayItems:(Zone *)model{
-    NSLog(@"%@",@"hi");
     self.model = model;
     self.zoneDescription.text = model.synopsis;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self confirmBtn];
+    [self.confirmBtn setTitle:@"Pick this Zone" forState:UIControlStateNormal];
+    [self.confirmBtn sizeToFit];
     [self.view addGestureRecognizer:self.backSwipe];
 }
 

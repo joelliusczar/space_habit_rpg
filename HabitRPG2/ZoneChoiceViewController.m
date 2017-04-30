@@ -15,7 +15,7 @@
 
 @interface ZoneChoiceViewController ()
 @property (nonatomic,strong) NSArray<Zone *> *zones;
-@property (nonatomic,weak) UITableView *zoneChoiceTable; //TODO: determine weak vs strong
+@property (nonatomic,weak) UITableView *zoneChoiceTable; 
 @property (nonatomic,weak) UIButton *nextBtn;
 @property (nonatomic,weak) CustomSwitch *skipSwitch;
 @property (nonatomic,weak) NSObject<P_CoreData> *dataController;
