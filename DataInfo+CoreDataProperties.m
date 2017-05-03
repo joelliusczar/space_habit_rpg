@@ -2,7 +2,7 @@
 //  DataInfo+CoreDataProperties.m
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 1/8/17.
+//  Created by Joel Pridgen on 5/2/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
@@ -14,7 +14,8 @@
 	return [[NSFetchRequest alloc] initWithEntityName:@"DataInfo"];
 }
 
+@dynamic gameState;
 @dynamic nextZoneId;
-@dynamic isNew;
+@dynamic migrationNumber;
 
 @end

@@ -21,13 +21,6 @@
 			<key>Name</key>
 			<string>End of the World</string>
 		</dict>
-		<key>HELL</key>
-		<dict>
-			<key>Description</key>
-			<string></string>
-			<key>Name</key>
-			<string>Hell Dimension</string>
-		</dict>
 		<key>BEGINNING</key>
 		<dict>
 			<key>Description</key>
@@ -51,13 +44,6 @@
 			<string></string>
 			<key>Name</key>
 			<string>Digital Disruption Web</string>
-		</dict>
-		<key>NO_MOON</key>
-		<dict>
-			<key>Description</key>
-			<string></string>
-			<key>Name</key>
-			<string>No Moon&apos; Orbit</string>
 		</dict>
 		<key>WARP</key>
 		<dict>
@@ -107,13 +93,6 @@
 	</dict>
 	<key>LVL_15_ZONES</key>
 	<dict>
-		<key>METROPOLIS</key>
-		<dict>
-			<key>Description</key>
-			<string></string>
-			<key>Name</key>
-			<string>Space Metropolis</string>
-		</dict>
 		<key>TEMPLE</key>
 		<dict>
 			<key>Description</key>
@@ -127,13 +106,6 @@
 			<string></string>
 			<key>Name</key>
 			<string>Infestation Space</string>
-		</dict>
-		<key>GREY</key>
-		<dict>
-			<key>Description</key>
-			<string></string>
-			<key>Name</key>
-			<string>Grey World Orbit</string>
 		</dict>
 	</dict>
 	<key>LVL_10_ZONES</key>
@@ -158,13 +130,6 @@
 			<string>Defense Territory</string>
 			<key>Name</key>
 			<string></string>
-		</dict>
-		<key>RESORT</key>
-		<dict>
-			<key>Description</key>
-			<string>Look at all those spacedamned kids not working, not being productive. That&apos;s what you&apos;re probably thinking. But you&apos;re wrong. Sometimes we need to take a break from our labors so that we don&apos;t burn ourselves out. Use some of those goods you&apos;ve been saving up for.</string>
-			<key>Name</key>
-			<string>Resort Planet Orbit</string>
 		</dict>
 	</dict>
 	<key>LVL_5_ZONES</key>

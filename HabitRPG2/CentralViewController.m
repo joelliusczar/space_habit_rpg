@@ -238,7 +238,7 @@
 }
 
 -(void)determineIfFirstTimeAndSetupSettings{
-    if(self.dataController.userData.theDataInfo.isNew){
+    if(self.dataController.userData.theDataInfo.gameState == GAME_STATE_UNINITIALIZED){
         [self showIntroView];        
     }
     else{
@@ -306,7 +306,7 @@
     [self showMonsterStory];
     [self setupObservers];
     [self setupTabs];
-    self.dataController.userData.theDataInfo.isNew = NO;
+    self.dataController.userData.theDataInfo.gameState = GAME_STATE_INITIALIZED;
     self.userSettings.createDate = [NSDate date];
     [self.dataController save:self.dataController.userData.theDataInfo];
     [self.dataController save:self.userSettings];

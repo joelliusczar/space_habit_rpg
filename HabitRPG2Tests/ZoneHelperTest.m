@@ -148,16 +148,14 @@ int rIdx_zh;
         XCTAssertTrue([zl[3] isEqualToString:@"GAS"]);
         
         zl = [[SingletonCluster getSharedInstance].zoneInfoDictionary getGroupKeyList:LVL_10_ZONES];
-        XCTAssertTrue([zl[0] isEqualToString:@"GARBAGE_BALL"]);
+        XCTAssertTrue([zl[0] isEqualToString:@"DEFENSE"]);
         XCTAssertTrue([zl[1] isEqualToString:@"CAVE"]);
-        XCTAssertTrue([zl[2] isEqualToString:@"DEFENSE"]);
-        XCTAssertTrue([zl[3] isEqualToString:@"RESORT"]);
+        XCTAssertTrue([zl[2] isEqualToString:@"GARBAGE_BALL"]);
         
         zl = [[SingletonCluster getSharedInstance].zoneInfoDictionary getGroupKeyList:LVL_30_ZONES];
-        XCTAssertTrue([zl[0] isEqualToString:@"INFINITE"]);
-        XCTAssertTrue([zl[1] isEqualToString:@"WORLD_END"]);
+        XCTAssertTrue([zl[0] isEqualToString:@"WORLD_END"]);
+        XCTAssertTrue([zl[1] isEqualToString:@"INFINITE"]);
         XCTAssertTrue([zl[2] isEqualToString:@"BEGINNING"]);
-        XCTAssertTrue([zl[3] isEqualToString:@"HELL"]);
     }
     
     -(void)testGetRandomZoneDefinitionKey{
@@ -180,28 +178,28 @@ int rIdx_zh;
         SET_UP_BOUND();
         SET_UP_BOUND();
         s = [ZoneHelper getRandomZoneDefinitionKey:10];
-        XCTAssertTrue([s isEqualToString:@"RESORT"]);
-        
-        i = 0;
-        rIdx_zh = 0;
-        SET_UP_BOUND();
-        SET_LOW_BOUND();
-        s = [ZoneHelper getRandomZoneDefinitionKey:10];
         XCTAssertTrue([s isEqualToString:@"GARBAGE_BALL"]);
         
         i = 0;
         rIdx_zh = 0;
         SET_UP_BOUND();
         SET_LOW_BOUND();
+        s = [ZoneHelper getRandomZoneDefinitionKey:10];
+        XCTAssertTrue([s isEqualToString:@"DEFENSE"]);
+        
+        i = 0;
+        rIdx_zh = 0;
+        SET_UP_BOUND();
+        SET_LOW_BOUND();
         s = [ZoneHelper getRandomZoneDefinitionKey:30];
-        XCTAssertTrue([s isEqualToString:@"INFINITE"]);
+        XCTAssertTrue([s isEqualToString:@"WORLD_END"]);
         
         i = 0;
         rIdx_zh = 0;
         SET_UP_BOUND();
         SET_UP_BOUND();
         s = [ZoneHelper getRandomZoneDefinitionKey:30];
-        XCTAssertTrue([s isEqualToString:@"HELL"]);
+        XCTAssertTrue([s isEqualToString:@"BEGINNING"]);
     }
     
     -(void)testGetSymbolSuffix{

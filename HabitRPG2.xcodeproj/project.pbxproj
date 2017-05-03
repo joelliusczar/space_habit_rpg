@@ -17,7 +17,6 @@
 		271217701DCE84310072ACC6 /* Zone+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 271217681DCE84310072ACC6 /* Zone+CoreDataClass.m */; };
 		27127E351DDD42B50074A8F5 /* DataInfo+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27127E321DDD42B50074A8F5 /* DataInfo+CoreDataClass.m */; };
 		27127E361DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27127E341DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m */; };
-		271C04801E89ED4D002221E9 /* MonsterInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 271C047F1E89ED4D002221E9 /* MonsterInfo.plist */; };
 		271C04831E8A1152002221E9 /* MonsterInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C04821E8A1152002221E9 /* MonsterInfoDictionary.m */; };
 		271C04881E8B639D002221E9 /* ResourceUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C04871E8B639D002221E9 /* ResourceUtility.m */; };
 		271C048B1E8C955A002221E9 /* SingletonCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C048A1E8C955A002221E9 /* SingletonCluster.m */; };
@@ -25,6 +24,17 @@
 		271C04921E8F3784002221E9 /* SuffixList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 271C04911E8F3784002221E9 /* SuffixList.plist */; };
 		273978851EB55F3700F217B4 /* StoryDumpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 273978831EB55F3700F217B4 /* StoryDumpView.m */; };
 		273978861EB55F3700F217B4 /* StoryDumpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273978841EB55F3700F217B4 /* StoryDumpView.xib */; };
+		2739788B1EB843F800F217B4 /* MonsterInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2739788A1EB843F800F217B4 /* MonsterInfo.plist */; };
+		273978A41EB8473100F217B4 /* ZoneTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2739788D1EB8473100F217B4 /* ZoneTransaction+CoreDataClass.m */; };
+		273978A51EB8473100F217B4 /* ZoneTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2739788F1EB8473100F217B4 /* ZoneTransaction+CoreDataProperties.m */; };
+		273978A61EB8473100F217B4 /* TodoTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 273978911EB8473100F217B4 /* TodoTransaction+CoreDataClass.m */; };
+		273978A71EB8473100F217B4 /* TodoTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 273978931EB8473100F217B4 /* TodoTransaction+CoreDataProperties.m */; };
+		273978A81EB8473100F217B4 /* HabitTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 273978951EB8473100F217B4 /* HabitTransaction+CoreDataClass.m */; };
+		273978A91EB8473100F217B4 /* HabitTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 273978971EB8473100F217B4 /* HabitTransaction+CoreDataProperties.m */; };
+		273978AC1EB8473100F217B4 /* DailyTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2739789D1EB8473100F217B4 /* DailyTransaction+CoreDataClass.m */; };
+		273978AD1EB8473100F217B4 /* DailyTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2739789F1EB8473100F217B4 /* DailyTransaction+CoreDataProperties.m */; };
+		273978AE1EB8473100F217B4 /* MonsterTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 273978A11EB8473100F217B4 /* MonsterTransaction+CoreDataClass.m */; };
+		273978AF1EB8473100F217B4 /* MonsterTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 273978A31EB8473100F217B4 /* MonsterTransaction+CoreDataProperties.m */; };
 		277ABEC91E949B96008CC239 /* StdLibWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEC81E949B96008CC239 /* StdLibWrapper.m */; };
 		277ABED11E95DEF6008CC239 /* ProbWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABED01E95DEF6008CC239 /* ProbWeight.m */; };
 		277ABEF21E975959008CC239 /* ModelsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEF11E975959008CC239 /* ModelsTest.m */; };
@@ -142,7 +152,6 @@
 		27127E331DDD42B50074A8F5 /* DataInfo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DataInfo+CoreDataProperties.h"; sourceTree = SOURCE_ROOT; };
 		27127E341DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DataInfo+CoreDataProperties.m"; sourceTree = SOURCE_ROOT; };
 		271C047D1E89BCBA002221E9 /* P_CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_CoreData.h; sourceTree = "<group>"; };
-		271C047F1E89ED4D002221E9 /* MonsterInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MonsterInfo.plist; sourceTree = "<group>"; };
 		271C04811E8A1152002221E9 /* MonsterInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterInfoDictionary.h; sourceTree = "<group>"; };
 		271C04821E8A1152002221E9 /* MonsterInfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterInfoDictionary.m; sourceTree = "<group>"; };
 		271C04851E8B6323002221E9 /* P_ResourceUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ResourceUtility.h; sourceTree = "<group>"; };
@@ -157,6 +166,28 @@
 		273978831EB55F3700F217B4 /* StoryDumpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryDumpView.m; sourceTree = "<group>"; };
 		273978841EB55F3700F217B4 /* StoryDumpView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoryDumpView.xib; sourceTree = "<group>"; };
 		273978881EB5618200F217B4 /* P_StoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_StoryItem.h; sourceTree = "<group>"; };
+		273978891EB598C300F217B4 /* Model 18.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 18.xcdatamodel"; sourceTree = "<group>"; };
+		2739788A1EB843F800F217B4 /* MonsterInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MonsterInfo.plist; sourceTree = "<group>"; };
+		2739788C1EB8473100F217B4 /* ZoneTransaction+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ZoneTransaction+CoreDataClass.h"; path = "../ZoneTransaction+CoreDataClass.h"; sourceTree = "<group>"; };
+		2739788D1EB8473100F217B4 /* ZoneTransaction+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ZoneTransaction+CoreDataClass.m"; path = "../ZoneTransaction+CoreDataClass.m"; sourceTree = "<group>"; };
+		2739788E1EB8473100F217B4 /* ZoneTransaction+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ZoneTransaction+CoreDataProperties.h"; path = "../ZoneTransaction+CoreDataProperties.h"; sourceTree = "<group>"; };
+		2739788F1EB8473100F217B4 /* ZoneTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ZoneTransaction+CoreDataProperties.m"; path = "../ZoneTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
+		273978901EB8473100F217B4 /* TodoTransaction+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TodoTransaction+CoreDataClass.h"; path = "../TodoTransaction+CoreDataClass.h"; sourceTree = "<group>"; };
+		273978911EB8473100F217B4 /* TodoTransaction+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TodoTransaction+CoreDataClass.m"; path = "../TodoTransaction+CoreDataClass.m"; sourceTree = "<group>"; };
+		273978921EB8473100F217B4 /* TodoTransaction+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TodoTransaction+CoreDataProperties.h"; path = "../TodoTransaction+CoreDataProperties.h"; sourceTree = "<group>"; };
+		273978931EB8473100F217B4 /* TodoTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TodoTransaction+CoreDataProperties.m"; path = "../TodoTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
+		273978941EB8473100F217B4 /* HabitTransaction+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HabitTransaction+CoreDataClass.h"; path = "../HabitTransaction+CoreDataClass.h"; sourceTree = "<group>"; };
+		273978951EB8473100F217B4 /* HabitTransaction+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "HabitTransaction+CoreDataClass.m"; path = "../HabitTransaction+CoreDataClass.m"; sourceTree = "<group>"; };
+		273978961EB8473100F217B4 /* HabitTransaction+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HabitTransaction+CoreDataProperties.h"; path = "../HabitTransaction+CoreDataProperties.h"; sourceTree = "<group>"; };
+		273978971EB8473100F217B4 /* HabitTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "HabitTransaction+CoreDataProperties.m"; path = "../HabitTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
+		2739789C1EB8473100F217B4 /* DailyTransaction+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DailyTransaction+CoreDataClass.h"; path = "../DailyTransaction+CoreDataClass.h"; sourceTree = "<group>"; };
+		2739789D1EB8473100F217B4 /* DailyTransaction+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DailyTransaction+CoreDataClass.m"; path = "../DailyTransaction+CoreDataClass.m"; sourceTree = "<group>"; };
+		2739789E1EB8473100F217B4 /* DailyTransaction+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DailyTransaction+CoreDataProperties.h"; path = "../DailyTransaction+CoreDataProperties.h"; sourceTree = "<group>"; };
+		2739789F1EB8473100F217B4 /* DailyTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DailyTransaction+CoreDataProperties.m"; path = "../DailyTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
+		273978A01EB8473100F217B4 /* MonsterTransaction+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MonsterTransaction+CoreDataClass.h"; path = "../MonsterTransaction+CoreDataClass.h"; sourceTree = "<group>"; };
+		273978A11EB8473100F217B4 /* MonsterTransaction+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MonsterTransaction+CoreDataClass.m"; path = "../MonsterTransaction+CoreDataClass.m"; sourceTree = "<group>"; };
+		273978A21EB8473100F217B4 /* MonsterTransaction+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MonsterTransaction+CoreDataProperties.h"; path = "../MonsterTransaction+CoreDataProperties.h"; sourceTree = "<group>"; };
+		273978A31EB8473100F217B4 /* MonsterTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MonsterTransaction+CoreDataProperties.m"; path = "../MonsterTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
 		277ABEC21E947B66008CC239 /* Model 15.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 15.xcdatamodel"; sourceTree = "<group>"; };
 		277ABEC61E949B76008CC239 /* P_stdlibWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_stdlibWrapper.h; sourceTree = "<group>"; };
 		277ABEC71E949B96008CC239 /* StdLibWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StdLibWrapper.h; sourceTree = "<group>"; };
@@ -340,7 +371,7 @@
 		271C047E1E89ECF7002221E9 /* Lookups */ = {
 			isa = PBXGroup;
 			children = (
-				271C047F1E89ED4D002221E9 /* MonsterInfo.plist */,
+				2739788A1EB843F800F217B4 /* MonsterInfo.plist */,
 				271C04811E8A1152002221E9 /* MonsterInfoDictionary.h */,
 				271C04821E8A1152002221E9 /* MonsterInfoDictionary.m */,
 			);
@@ -432,6 +463,10 @@
 		27C92C3E1E3313770025727E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2739788C1EB8473100F217B4 /* ZoneTransaction+CoreDataClass.h */,
+				2739788D1EB8473100F217B4 /* ZoneTransaction+CoreDataClass.m */,
+				2739788E1EB8473100F217B4 /* ZoneTransaction+CoreDataProperties.h */,
+				2739788F1EB8473100F217B4 /* ZoneTransaction+CoreDataProperties.m */,
 				271217671DCE84310072ACC6 /* Zone+CoreDataClass.h */,
 				271217681DCE84310072ACC6 /* Zone+CoreDataClass.m */,
 				68A921EA1DBC7FF2007C946C /* Zone+CoreDataProperties.h */,
@@ -462,6 +497,10 @@
 		686ED39C1DA5FF28004EDD36 /* Todos */ = {
 			isa = PBXGroup;
 			children = (
+				273978901EB8473100F217B4 /* TodoTransaction+CoreDataClass.h */,
+				273978911EB8473100F217B4 /* TodoTransaction+CoreDataClass.m */,
+				273978921EB8473100F217B4 /* TodoTransaction+CoreDataProperties.h */,
+				273978931EB8473100F217B4 /* TodoTransaction+CoreDataProperties.m */,
 				271217651DCE84310072ACC6 /* Todo+CoreDataClass.h */,
 				271217661DCE84310072ACC6 /* Todo+CoreDataClass.m */,
 				68A921EC1DBC7FF2007C946C /* Todo+CoreDataProperties.h */,
@@ -476,6 +515,10 @@
 		686ED39D1DA6007E004EDD36 /* Habits */ = {
 			isa = PBXGroup;
 			children = (
+				273978941EB8473100F217B4 /* HabitTransaction+CoreDataClass.h */,
+				273978951EB8473100F217B4 /* HabitTransaction+CoreDataClass.m */,
+				273978961EB8473100F217B4 /* HabitTransaction+CoreDataProperties.h */,
+				273978971EB8473100F217B4 /* HabitTransaction+CoreDataProperties.m */,
 				2712175D1DCE84310072ACC6 /* Habit+CoreDataClass.h */,
 				2712175E1DCE84310072ACC6 /* Habit+CoreDataClass.m */,
 				68A921EE1DBC7FF2007C946C /* Habit+CoreDataProperties.h */,
@@ -580,6 +623,10 @@
 				271217621DCE84310072ACC6 /* Monster+CoreDataClass.m */,
 				68A921F01DBC7FF2007C946C /* Monster+CoreDataProperties.h */,
 				68A921F11DBC7FF2007C946C /* Monster+CoreDataProperties.m */,
+				273978A01EB8473100F217B4 /* MonsterTransaction+CoreDataClass.h */,
+				273978A11EB8473100F217B4 /* MonsterTransaction+CoreDataClass.m */,
+				273978A21EB8473100F217B4 /* MonsterTransaction+CoreDataProperties.h */,
+				273978A31EB8473100F217B4 /* MonsterTransaction+CoreDataProperties.m */,
 				271C047B1E886B49002221E9 /* Helpers */,
 			);
 			name = Monster;
@@ -617,6 +664,10 @@
 				68F3F9E71D70EC9700840DD2 /* DailyViewController.m */,
 				68E260971D84923C00425D46 /* DailyHelper.h */,
 				68E260981D84923C00425D46 /* DailyHelper.m */,
+				2739789C1EB8473100F217B4 /* DailyTransaction+CoreDataClass.h */,
+				2739789D1EB8473100F217B4 /* DailyTransaction+CoreDataClass.m */,
+				2739789E1EB8473100F217B4 /* DailyTransaction+CoreDataProperties.h */,
+				2739789F1EB8473100F217B4 /* DailyTransaction+CoreDataProperties.m */,
 			);
 			name = Dailies;
 			sourceTree = "<group>";
@@ -840,6 +891,7 @@
 				27C92C1F1E29FE110025727E /* ZoneInfo.plist in Resources */,
 				686ED38B1DA463F6004EDD36 /* PressStart2P.ttf in Resources */,
 				686ED3951DA5DEC0004EDD36 /* title_Screen_2x.png in Resources */,
+				2739788B1EB843F800F217B4 /* MonsterInfo.plist in Resources */,
 				686686EB1D79032200BB2D09 /* DailyCell.xib in Resources */,
 				686ED3991DA5E0F9004EDD36 /* title_Screen_R_4.png in Resources */,
 				277ABF341E9F1AE8008CC239 /* behind_alert_view.png in Resources */,
@@ -872,7 +924,6 @@
 				68F3FA031D74897A00840DD2 /* MenuViewController.xib in Resources */,
 				68F3F9F91D70FD3F00840DD2 /* GoodsViewController.xib in Resources */,
 				686ED3BA1DB4660F004EDD36 /* white_checked_empty.png in Resources */,
-				271C04801E89ED4D002221E9 /* MonsterInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -918,15 +969,19 @@
 				68D25C221D8B951B00FF1BE0 /* DailyEditController.m in Sources */,
 				68E260651D7FC3F200425D46 /* CoreDataStackController.m in Sources */,
 				2712176E1DCE84310072ACC6 /* Settings+CoreDataClass.m in Sources */,
+				273978AD1EB8473100F217B4 /* DailyTransaction+CoreDataProperties.m in Sources */,
 				271217691DCE84310072ACC6 /* Daily+CoreDataClass.m in Sources */,
 				68BE45911D9DEA0B003F3400 /* IntroViewController.m in Sources */,
 				68F3F9E41D70E8DB00840DD2 /* CentralViewController.m in Sources */,
 				68A921F61DBC7FF2007C946C /* Good+CoreDataProperties.m in Sources */,
+				273978A71EB8473100F217B4 /* TodoTransaction+CoreDataProperties.m in Sources */,
+				273978A61EB8473100F217B4 /* TodoTransaction+CoreDataClass.m in Sources */,
 				686ED3C71DB481C4004EDD36 /* ZoneHelper.m in Sources */,
 				68E260991D84923C00425D46 /* DailyHelper.m in Sources */,
 				6886A4891D8F3CB2005E12B3 /* TaskCell.m in Sources */,
 				68E260CF1D851DA500425D46 /* EditNavigationController.m in Sources */,
 				686ED3BF1DB47954004EDD36 /* ZoneChoiceViewController.m in Sources */,
+				273978AE1EB8473100F217B4 /* MonsterTransaction+CoreDataClass.m in Sources */,
 				27C92C151E297F650025727E /* ZoneChoiceCellController.m in Sources */,
 				2712176C1DCE84310072ACC6 /* Hero+CoreDataClass.m in Sources */,
 				27C92C1A1E29C9F10025727E /* ZoneInfoDictionary.m in Sources */,
@@ -938,17 +993,23 @@
 				2712176A1DCE84310072ACC6 /* Good+CoreDataClass.m in Sources */,
 				68F3F9E91D70EC9700840DD2 /* DailyViewController.m in Sources */,
 				686ED3A71DA751AC004EDD36 /* StoryConstants.m in Sources */,
+				273978AC1EB8473100F217B4 /* DailyTransaction+CoreDataClass.m in Sources */,
 				68A921F81DBC7FF2007C946C /* Todo+CoreDataProperties.m in Sources */,
+				273978AF1EB8473100F217B4 /* MonsterTransaction+CoreDataProperties.m in Sources */,
 				6886A4801D8E5FD0005E12B3 /* constants.m in Sources */,
 				271C04881E8B639D002221E9 /* ResourceUtility.m in Sources */,
 				68A921F41DBC7FF2007C946C /* Hero+CoreDataProperties.m in Sources */,
 				277ABEC91E949B96008CC239 /* StdLibWrapper.m in Sources */,
+				273978A41EB8473100F217B4 /* ZoneTransaction+CoreDataClass.m in Sources */,
 				686ED3B71DAF3DBD004EDD36 /* CustomSwitch.m in Sources */,
 				68A921F51DBC7FF2007C946C /* Daily+CoreDataProperties.m in Sources */,
 				27C92C481E341DA10025727E /* ViewHelper.m in Sources */,
 				27127E361DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m in Sources */,
 				68E260621D7BC3EA00425D46 /* Model.xcdatamodeld in Sources */,
+				273978A91EB8473100F217B4 /* HabitTransaction+CoreDataProperties.m in Sources */,
 				68F3F9AE1D70E82E00840DD2 /* main.m in Sources */,
+				273978A81EB8473100F217B4 /* HabitTransaction+CoreDataClass.m in Sources */,
+				273978A51EB8473100F217B4 /* ZoneTransaction+CoreDataProperties.m in Sources */,
 				27AE66721E875EFB000F31BD /* Suffix+CoreDataClass.m in Sources */,
 				271217701DCE84310072ACC6 /* Zone+CoreDataClass.m in Sources */,
 				271C048B1E8C955A002221E9 /* SingletonCluster.m in Sources */,
@@ -1154,6 +1215,7 @@
 		68E260601D7BC3EA00425D46 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				273978891EB598C300F217B4 /* Model 18.xcdatamodel */,
 				277ABF271E9B3EB8008CC239 /* Model 17.xcdatamodel */,
 				277ABED21E95FE3B008CC239 /* Model 16.xcdatamodel */,
 				277ABEC21E947B66008CC239 /* Model 15.xcdatamodel */,
@@ -1170,7 +1232,7 @@
 				68BE458C1D9CCF4C003F3400 /* Model 2.xcdatamodel */,
 				68E260611D7BC3EA00425D46 /* Model.xcdatamodel */,
 			);
-			currentVersion = 277ABF271E9B3EB8008CC239 /* Model 17.xcdatamodel */;
+			currentVersion = 273978891EB598C300F217B4 /* Model 18.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

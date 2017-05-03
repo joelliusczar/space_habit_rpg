@@ -2,7 +2,7 @@
 //  DataInfo+CoreDataProperties.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 1/8/17.
+//  Created by Joel Pridgen on 5/2/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
@@ -15,8 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<DataInfo *> *)fetchRequest;
 
+@property (nonatomic) int32_t gameState;
 @property (nonatomic) int64_t nextZoneId;
-@property (nonatomic) BOOL isNew;
+@property (nonatomic) int32_t migrationNumber;
 
 @end
 

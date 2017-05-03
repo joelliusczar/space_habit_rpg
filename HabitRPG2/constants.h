@@ -20,6 +20,11 @@ typedef NS_ENUM(NSInteger,enviromentCode) {
     ,ENV_UTEST = 1
 };
 
+typedef NS_ENUM(NSInteger,gameState) {
+    GAME_STATE_UNINITIALIZED =0
+    ,GAME_STATE_INITIALIZED = 1
+};
+
 extern NSString* const DAILY_ENTITY_NAME;
 extern NSString* const HABIT_ENTITY_NAME;
 extern NSString* const TODO_ENTITY_NAME;
@@ -40,6 +45,7 @@ extern NSTimeInterval const CHARACTER_DELAY;
 extern u_int32_t const MIN_ZONE_CHOICE_COUNT;
 extern u_int32_t const MAX_ZONE_CHOICE_RAND_UP_BOUND;
 extern CGFloat const ZONE_CHOICE_ROW_HEIGHT;
+
 
 //zone groups
 extern NSString* const LVL_0_ZONES;

@@ -67,7 +67,7 @@
 -(DataInfo *)constructDataInfoInitialState{
     DataInfo *dataInfo = (DataInfo *)[self.dataController constructEmptyEntity: DATA_INFO_ENTITY_NAME];
     dataInfo.nextZoneId = 0;
-    dataInfo.isNew = YES;
+    dataInfo.gameState = GAME_STATE_UNINITIALIZED;
     [self.dataController save:dataInfo];
     return dataInfo;
 }
