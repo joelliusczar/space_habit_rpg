@@ -33,24 +33,27 @@
 
 @synthesize introMessage = _introMessage;
 -(UITextView *)introMessage{
-    if(_introMessage == nil){
-        _introMessage = [self.view viewWithTag:2];
+    if(!_introMessage){
+        UIView *v = [self getContentSubview];
+        _introMessage = [v viewWithTag:3];
     }
     return _introMessage;
 }
 
 @synthesize headline = _headline;
 -(UILabel *)headline{
-    if(_headline == nil){
-        _headline = [self.view viewWithTag:1];
+    if(!_headline){
+        UIView *v = [self getContentSubview];
+        _headline = [v viewWithTag:2];
     }
     return _headline;
 }
 
 @synthesize nextButton = _nextButton;
 -(UIButton *)nextButton{
-    if(_nextButton == nil){
-        _nextButton = [self.view viewWithTag:3];
+    if(!_nextButton){
+        UIView *v = [self getContentSubview];
+        _nextButton = [v viewWithTag:4];
         [_nextButton addTarget:self action:@selector(pressedNext:) forControlEvents:UIControlEventTouchUpInside];
         
     }
@@ -59,11 +62,17 @@
 
 @synthesize skipSwitch = _skipSwitch;
 -(UISwitch *)skipSwitch{
-    if(_skipSwitch == nil){
-        _skipSwitch = [self.view viewWithTag:4];
+    if(!_skipSwitch){
+        UIView *v = [self getContentSubview];
+        _skipSwitch = [v viewWithTag:5];
     }
     return _skipSwitch;
 }
+
+-(UIView *)getContentSubview{
+    return [self.view viewWithTag:1];;
+}
+
 
 -(id)initWithCentralViewController:(UIViewController<CentralViewControllerP> *)central{
     if(self = [self initWithNibName:@"IntroViewController" bundle:nil]){
