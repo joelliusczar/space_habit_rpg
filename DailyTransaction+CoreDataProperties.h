@@ -2,7 +2,7 @@
 //  DailyTransaction+CoreDataProperties.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 5/2/17.
+//  Created by Joel Pridgen on 5/3/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic) int32_t action;
 @property (nullable, nonatomic, copy) NSDate *activationTime;
+@property (nullable, nonatomic, copy) NSString *misc;
 @property (nullable, nonatomic, retain) Daily *transaction_daily;
 
 @end

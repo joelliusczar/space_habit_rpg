@@ -2,7 +2,7 @@
 //  ZoneTransaction+CoreDataProperties.m
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 5/2/17.
+//  Created by Joel Pridgen on 5/3/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
@@ -14,13 +14,14 @@
 	return [[NSFetchRequest alloc] initWithEntityName:@"ZoneTransaction"];
 }
 
-@dynamic zoneKey;
-@dynamic uniqueId;
-@dynamic lvl;
-@dynamic suffix;
-@dynamic startDate;
 @dynamic endDate;
+@dynamic lvl;
 @dynamic maxMonsters;
 @dynamic prevUniqueId;
+@dynamic startDate;
+@dynamic suffix;
+@dynamic uniqueId;
+@dynamic zoneKey;
+@dynamic misc;
 
 @end

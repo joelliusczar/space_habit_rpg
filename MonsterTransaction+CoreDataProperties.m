@@ -2,7 +2,7 @@
 //  MonsterTransaction+CoreDataProperties.m
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 5/2/17.
+//  Created by Joel Pridgen on 5/3/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
@@ -14,9 +14,10 @@
 	return [[NSFetchRequest alloc] initWithEntityName:@"MonsterTransaction"];
 }
 
-@dynamic monsterKey;
-@dynamic lvl;
-@dynamic startDate;
 @dynamic endDate;
+@dynamic lvl;
+@dynamic monsterKey;
+@dynamic startDate;
+@dynamic misc;
 
 @end
