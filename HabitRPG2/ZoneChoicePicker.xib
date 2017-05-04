@@ -64,7 +64,7 @@
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="image" keyPath="onImage" value="black_checked_full.png"/>
                                 <userDefinedRuntimeAttribute type="image" keyPath="offImage" value="black_checked_empty.png"/>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="isOn" value="NO"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isOn" value="YES"/>
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eb3-iT-cAT">

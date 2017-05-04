@@ -10,16 +10,17 @@
 
 @interface MonsterInfoDictionary : NSObject
 @property (nonatomic,assign) BOOL isTesting;
-    +(instancetype)construct;
-    -(NSArray<NSString*> *)getMonsterKeyList:(NSString *)zoneKey;
-    -(NSDictionary *)getMonsterInfo:(NSString *)monsterKey;
-    -(NSDictionary *)getMonsterInfo:(NSString *)monsterKey ForZone:(NSString *)zoneKey;
-    -(NSString *)getName:(NSString *)monsterKey;
-    -(NSString *)getDescription:(NSString *)monsterKey;
-    -(int32_t)getBaseAttack:(NSString *)monsterKey;
-    -(int32_t)getBaseDefense:(NSString *)monsterKey;
-    -(int32_t)getBaseXP:(NSString *)monsterKey;
-    -(int32_t)getBaseHP:(NSString *)monsterKey;
-    -(float)getTreasureDropRate:(NSString *)monsterKey;
-    -(int32_t)getEncounterWeight:(NSString *)monsterKey;
++(instancetype)construct;
+-(NSArray<NSString*> *)getMonsterKeyList:(NSString *)zoneKey;
+-(NSDictionary *)getMonsterInfo:(NSString *)monsterKey;
+-(NSDictionary *)getMonsterInfo:(NSString *)monsterKey ForZone:(NSString *)zoneKey;
+-(NSString *)getName:(NSString *)monsterKey;
+-(NSString *)getDescription:(NSString *)monsterKey;
+-(int32_t)getBaseAttack:(NSString *)monsterKey;
+-(int32_t)getBaseDefense:(NSString *)monsterKey;
+-(int32_t)getBaseXP:(NSString *)monsterKey;
+-(int32_t)getBaseHP:(NSString *)monsterKey;
+-(float)getTreasureDropRate:(NSString *)monsterKey;
+-(int32_t)getEncounterWeight:(NSString *)monsterKey;
+-(NSString *)getGrammaticalAgreement:(NSString *)monsterKey;
 @end

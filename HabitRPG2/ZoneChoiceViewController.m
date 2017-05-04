@@ -127,7 +127,7 @@
 
 -(void)nextBtn_pressed_action:(UIButton *)sender{
     BOOL show = self.skipSwitch.isOn;
-    [self.central setToSkipStory:!show];
+    [self.central setToShowStory:show];
     [ViewHelper popViewFromFront:self];
     [self.central afterIntro:[self pickRandomChoice]];
 }

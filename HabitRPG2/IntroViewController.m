@@ -120,13 +120,9 @@
     }
 }
 
--(void)setToSkipStory:(BOOL)skipStory{
-    [self.central setToSkipStory:skipStory];
-}
-
 -(void)pressedNext:(UIButton *)sender{
     BOOL show = self.skipSwitch.isOn;
-    [self.central setToSkipStory:!show];
+    [self.central setToShowStory:show];
     self.isThreadAllowed = NO;
     ZoneInfoDictionary *zd = [SingletonCluster getSharedInstance].zoneInfoDictionary;
     self.headline.text = [NSString stringWithFormat:@"Welcome to %@",[zd getZoneName:HOME_KEY]];

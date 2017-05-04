@@ -16,48 +16,60 @@
 
 float MAX_HP_MODIFIER = .1;
 @implementation Monster
-    
-    
-    
-    @synthesize monInfoDict = _monInfoDict;
-    -(MonsterInfoDictionary *)monInfoDict{
-        if(!_monInfoDict){
-            _monInfoDict = [SingletonCluster getSharedInstance].monsterInfoDictionary;
-        }
-        return _monInfoDict;
+
+@synthesize monInfoDict = _monInfoDict;
+-(MonsterInfoDictionary *)monInfoDict{
+    if(!_monInfoDict){
+        _monInfoDict = [SingletonCluster getSharedInstance].monsterInfoDictionary;
     }
-    
-    -(NSString *)fullName{
-        return [self.monInfoDict getName:self.monsterKey];
+    return _monInfoDict;
+}
+
+-(NSString *)fullName{
+    return [self.monInfoDict getName:self.monsterKey];
+}
+
+-(NSString *)synopsis{
+    return [self.monInfoDict getDescription:self.monsterKey];
+}
+
+-(NSString *)headline{
+    NSString *grammaticalAgreement = [self.monInfoDict getGrammaticalAgreement:self.monsterKey];
+    if([grammaticalAgreement isEqualToString:@"SC"]){
+        return [NSString stringWithFormat:@"Your ship encountered a \n%@!",self.fullName];
     }
-    
-    -(NSString *)synopsis{
-        return [self.monInfoDict getDescription:self.monsterKey];
+    if([grammaticalAgreement isEqualToString:@"SV"]){
+        return [NSString stringWithFormat:@"Your ship encountered an \n%@!",self.fullName];
     }
-    
-    -(int32_t)attack{
-        return [self.monInfoDict getBaseAttack:self.monsterKey] + self.lvl;
+    if([grammaticalAgreement isEqualToString:@"PL"]){
+        return [NSString stringWithFormat:@"Your ship encountered some \n%@!",self.fullName];
     }
-    
-    -(int32_t)defense{//todo: figure out a better way to handle this
-        return [self.monInfoDict getBaseDefense:self.monsterKey];
-    }
-    
-    -(int32_t)xp{
-        return [self.monInfoDict getBaseXP:self.monsterKey];
-    }
-    
-    -(int32_t)maxHp{
-        int baseHp = [self.monInfoDict getBaseHP:self.monsterKey];
-        return baseHp + (self.lvl*baseHp*MAX_HP_MODIFIER);
-    }
-    
-    -(float)treasureDropRate{
-        return [self.monInfoDict getTreasureDropRate:self.monsterKey];
-    }
-    
-    -(int32_t)encounterWeight{
-        return [self.monInfoDict getEncounterWeight:self.monsterKey];
-    }
+    @throw [NSException exceptionWithName:@"Invalid gramatical agreement" reason:[NSString stringWithFormat:@"The culprit was %@",self.fullName]userInfo:nil];
+}
+
+-(int32_t)attack{
+    return [self.monInfoDict getBaseAttack:self.monsterKey] + self.lvl;
+}
+
+-(int32_t)defense{//todo: figure out a better way to handle this
+    return [self.monInfoDict getBaseDefense:self.monsterKey];
+}
+
+-(int32_t)xp{
+    return [self.monInfoDict getBaseXP:self.monsterKey];
+}
+
+-(int32_t)maxHp{
+    int baseHp = [self.monInfoDict getBaseHP:self.monsterKey];
+    return baseHp + (self.lvl*baseHp*MAX_HP_MODIFIER);
+}
+
+-(float)treasureDropRate{
+    return [self.monInfoDict getTreasureDropRate:self.monsterKey];
+}
+
+-(int32_t)encounterWeight{
+    return [self.monInfoDict getEncounterWeight:self.monsterKey];
+}
 
 @end

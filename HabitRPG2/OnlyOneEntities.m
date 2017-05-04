@@ -80,6 +80,7 @@
     settings.heroLvlPenalty = 0;
     settings.lastCheckinTime = [NSDate date];
     settings.permaDeath = NO;
+    settings.isPasscodeProtected = NO;
     settings.reminderHour = 17; //5 o'clock?
     settings.storyModeisOn = YES;
     settings.zoneLvlPenalty = 1; //0 - no penalty? 1: restart lvl?

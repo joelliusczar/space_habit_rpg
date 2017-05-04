@@ -13,9 +13,10 @@
 @interface ZoneDescriptionViewController ()
 @property (nonatomic,weak) ZoneChoiceViewController *prevScreen;
 @property (nonatomic,weak) UIViewController <CentralViewControllerP> *central;
-@property (nonatomic,weak) UITextView *zoneDescription;
-@property (nonatomic,weak) UIButton *confirmBtn;
-@property (nonatomic,strong) UISwipeGestureRecognizer *backSwipe;
+@property (nonatomic,weak,readonly) UITextView *zoneDescription;
+@property (nonatomic,weak,readonly) UILabel *headlineLbl;
+@property (nonatomic,weak,readonly) UIButton *confirmBtn;
+@property (nonatomic,strong,readonly) UISwipeGestureRecognizer *backSwipe;
 @property (nonatomic,weak) Zone *model;
 @end
 
@@ -51,6 +52,15 @@
     return _backSwipe;
 }
 
+@synthesize headlineLbl = _headlineLbl;
+-(UILabel *)headlineLbl{
+    if(!_headlineLbl){
+        UIView *v = [self getContentSubview];
+        _headlineLbl = [v viewWithTag:4];
+    }
+    return _headlineLbl;
+}
+
 -(instancetype)init:(ZoneChoiceViewController *)prevScreen{
     if(self = [self initWithNibName:@"StoryDumpView" bundle:nil]){
         _prevScreen = prevScreen;
@@ -69,6 +79,7 @@
     [self.confirmBtn setTitle:@"Pick this Zone" forState:UIControlStateNormal];
     [self.confirmBtn sizeToFit];
     [self.view addGestureRecognizer:self.backSwipe];
+    self.headlineLbl.text = @"";
 }
 
 -(UIView *)getContentSubview{

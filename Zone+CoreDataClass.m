@@ -34,4 +34,8 @@
     return [self.zoneInfoDict getZoneDescription:self.zoneKey];
 }
 
+-(NSString *)headline{
+    return @"";
+}
+
 @end

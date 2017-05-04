@@ -22,6 +22,8 @@
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
 			<integer>25</integer>
+			<key>GRAMMATICAL_AGREEMENT</key>
+			<string>SC</string>
 		</dict>
 		<key>STOP_LIGHT</key>
 		<dict>
@@ -41,6 +43,8 @@
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
 			<integer>25</integer>
+			<key>GRAMMATICAL_AGREEMENT</key>
+			<string>SC</string>
 		</dict>
 		<key>WHISTLE_WARDEN</key>
 		<dict>
@@ -60,6 +64,8 @@
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
 			<integer>25</integer>
+			<key>GRAMMATICAL_AGREEMENT</key>
+			<string>SC</string>
 		</dict>
 	</dict>
 	<key>NEBULA</key>
@@ -82,6 +88,8 @@
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
 			<integer>25</integer>
+			<key>GRAMMATICAL_AGREEMENT</key>
+			<string>SC</string>
 		</dict>
 		<key>DUST_FAIRY</key>
 		<dict>
@@ -101,6 +109,8 @@
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
 			<integer>25</integer>
+			<key>GRAMMATICAL_AGREEMENT</key>
+			<string>SC</string>
 		</dict>
 		<key>SENTIENT_CLOUD</key>
 		<dict>
@@ -120,6 +130,8 @@
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
 			<integer>25</integer>
+			<key>GRAMMATICAL_AGREEMENT</key>
+			<string>SC</string>
 		</dict>
 		<key>CLOUD_FORTRESS</key>
 		<dict>
@@ -139,6 +151,8 @@
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
 			<integer>25</integer>
+			<key>GRAMMATICAL_AGREEMENT</key>
+			<string>SC</string>
 		</dict>
 	</dict>
 	<key>ASTEROID_FIELD</key>
@@ -161,6 +175,8 @@
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
 			<integer>10</integer>
+			<key>GRAMMATICAL_AGREEMENT</key>
+			<string>SC</string>
 		</dict>
 		<key>MINER</key>
 		<dict>
@@ -180,6 +196,8 @@
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
 			<integer>10</integer>
+			<key>GRAMMATICAL_AGREEMENT</key>
+			<string>SC</string>
 		</dict>
 		<key>AMBUSH_PIRATES</key>
 		<dict>
@@ -199,6 +217,8 @@
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
 			<integer>10</integer>
+			<key>GRAMMATICAL_AGREEMENT</key>
+			<string>PL</string>
 		</dict>
 		<key>SPACE_GOLEM</key>
 		<dict>
@@ -218,6 +238,8 @@
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
 			<integer>10</integer>
+			<key>GRAMMATICAL_AGREEMENT</key>
+			<string>SC</string>
 		</dict>
 		<key>MOTHS</key>
 		<dict>
@@ -237,6 +259,8 @@
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
 			<integer>10</integer>
+			<key>GRAMMATICAL_AGREEMENT</key>
+			<string>PL</string>
 		</dict>
 	</dict>
 	<key>EMPTY_SPACE</key>
@@ -259,6 +283,8 @@
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
 			<integer>10</integer>
+			<key>GRAMMATICAL_AGREEMENT</key>
+			<string>PL</string>
 		</dict>
 		<key>GRAVITY_HOLE</key>
 		<dict>
@@ -278,6 +304,8 @@
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
 			<integer>25</integer>
+			<key>GRAMMATICAL_AGREEMENT</key>
+			<string>SC</string>
 		</dict>
 		<key>SPACE_PARASITES</key>
 		<dict>
@@ -297,6 +325,8 @@
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
 			<integer>25</integer>
+			<key>GRAMMATICAL_AGREEMENT</key>
+			<string>PL</string>
 		</dict>
 		<key>ZOMBIE_FREIGHTER</key>
 		<dict>
@@ -316,6 +346,8 @@
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
 			<integer>25</integer>
+			<key>GRAMMATICAL_AGREEMENT</key>
+			<string>SC</string>
 		</dict>
 	</dict>
 	<key>GAS</key>
@@ -338,6 +370,8 @@
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
 			<integer>25</integer>
+			<key>GRAMMATICAL_AGREEMENT</key>
+			<string>SC</string>
 		</dict>
 		<key>POISON_CLOUD</key>
 		<dict>
@@ -357,6 +391,8 @@
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
 			<integer>25</integer>
+			<key>GRAMMATICAL_AGREEMENT</key>
+			<string>SC</string>
 		</dict>
 		<key>POISON_FAIRY</key>
 		<dict>
@@ -376,6 +412,8 @@
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
 			<integer>25</integer>
+			<key>GRAMMATICAL_AGREEMENT</key>
+			<string>SC</string>
 		</dict>
 	</dict>
 	<key>ALL</key>
@@ -398,6 +436,8 @@
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
 			<integer>10</integer>
+			<key>GRAMMATICAL_AGREEMENT</key>
+			<string>SC</string>
 		</dict>
 		<key>PIRATES</key>
 		<dict>
@@ -417,6 +457,8 @@
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
 			<integer>10</integer>
+			<key>GRAMMATICAL_AGREEMENT</key>
+			<string>PL</string>
 		</dict>
 		<key>M_SCOUT</key>
 		<dict>
@@ -436,6 +478,8 @@
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
 			<integer>10</integer>
+			<key>GRAMMATICAL_AGREEMENT</key>
+			<string>SC</string>
 		</dict>
 		<key>SMALL_ASTEROID</key>
 		<dict>
@@ -455,6 +499,8 @@
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
 			<integer>10</integer>
+			<key>GRAMMATICAL_AGREEMENT</key>
+			<string>SC</string>
 		</dict>
 		<key>SPACE_SLIME</key>
 		<dict>
@@ -474,6 +520,8 @@
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
 			<integer>10</integer>
+			<key>GRAMMATICAL_AGREEMENT</key>
+			<string>SC</string>
 		</dict>
 		<key>SPACEMAN</key>
 		<dict>
@@ -493,6 +541,8 @@
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
 			<integer>10</integer>
+			<key>GRAMMATICAL_AGREEMENT</key>
+			<string>SC</string>
 		</dict>
 		<key>SPACE_FAIRY</key>
 		<dict>
@@ -512,6 +562,8 @@
 			<real>0.1</real>
 			<key>ENCOUNTER_WEIGHT</key>
 			<integer>10</integer>
+			<key>GRAMMATICAL_AGREEMENT</key>
+			<string>SC</string>
 		</dict>
 	</dict>
 </dict>

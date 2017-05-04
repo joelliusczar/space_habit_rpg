@@ -12,6 +12,7 @@
 @interface StoryDumpView ()
 @property (readonly,weak,nonatomic) UITextView *synopsisView;
 @property (readonly,weak,nonatomic) UIButton *doneBtn;
+@property (readonly,weak,nonatomic) UILabel *headlineLbl;
 @property (strong,nonatomic) NSObject<P_StoryItem> *storyItem;
 @end
 
@@ -37,6 +38,15 @@
     return _doneBtn;
 }
 
+@synthesize headlineLbl = _headlineLbl;
+-(UILabel *)headlineLbl{
+    if(!_headlineLbl){
+        UIView *v = [self getContentSubview];
+        _headlineLbl = [v viewWithTag:4];
+    }
+    return _headlineLbl;
+}
+
 -(instancetype)initWithStoryItem:(NSObject<P_StoryItem> *)storyItem{
     if(self = [self initWithNibName:@"StoryDumpView" bundle:nil]){
         _storyItem = storyItem;
@@ -51,6 +61,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.synopsisView.text = self.storyItem.synopsis;
+    self.headlineLbl.text = self.storyItem.headline;
+    [self.headlineLbl sizeToFit];
     [self doneBtn];
 }
 

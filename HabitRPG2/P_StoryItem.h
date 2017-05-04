@@ -11,4 +11,5 @@
 @protocol P_StoryItem <NSObject>
 @property (nonatomic,strong,readonly) NSString *fullName;
 @property (nonatomic,strong,readonly) NSString *synopsis;
+@property (nonatomic,readonly) NSString *headline;
 @end

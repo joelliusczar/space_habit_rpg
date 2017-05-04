@@ -20,7 +20,7 @@
 @property (nonatomic,readonly) Hero *userHero;
 @property (nonatomic,strong) Zone *nowZone;
 @property (nonatomic,strong) Monster *nowMonster;
--(void)setToSkipStory:(BOOL)skipStory;
+-(void)setToShowStory:(BOOL)shouldShowStory;
 -(void)showZoneChoiceView;
 -(void)afterIntro:(Zone *)zoneChoice;
 @end

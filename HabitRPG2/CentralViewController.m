@@ -30,6 +30,7 @@
 #import "CommonUtilities.h"
 #import "SingletonCluster.h"
 #import "MonsterHelper.h"
+#import "StoryDumpView.h"
 
 @import CoreGraphics;
 
@@ -100,7 +101,7 @@
 @synthesize shipNameLbl = _shipNameLbl;
 -(UILabel *)shipNameLbl{
     if(!_shipNameLbl){
-        _shipNameLbl = [self.view viewWithTag:2];
+        _shipNameLbl = [self.statsView viewWithTag:2];
     }
     return _shipNameLbl;
 }
@@ -108,7 +109,7 @@
 @synthesize heroHPLbl = _heroHPLbl;
 -(UILabel *)heroHPLbl{
     if(!_heroHPLbl){
-        _heroHPLbl = [self.view viewWithTag:3];
+        _heroHPLbl = [self.statsView viewWithTag:3];
     }
     return _heroHPLbl;
 }
@@ -116,7 +117,7 @@
 @synthesize heroHPBar = _heroHPBar;
 -(UIProgressView *)heroHPBar{
     if(!_heroHPBar){
-        _heroHPBar = [self.view viewWithTag:4];
+        _heroHPBar = [self.statsView viewWithTag:4];
     }
     return _heroHPBar;
 }
@@ -125,7 +126,7 @@
 -(UILabel *)monsterHPLbl{
     
     if(!_monsterHPLbl){
-        _monsterHPLbl = [self.view viewWithTag:5];
+        _monsterHPLbl = [self.statsView viewWithTag:5];
     }
     return _monsterHPLbl;
 }
@@ -134,7 +135,7 @@
 -(UIProgressView *)monsterHPBar{
     
     if(!_monsterHPBar){
-        _monsterHPBar = [self.view viewWithTag:6];
+        _monsterHPBar = [self.statsView viewWithTag:6];
     }
     return _monsterHPBar;
 }
@@ -143,7 +144,7 @@
 -(UILabel *)xpLbl{
     
     if(!_xpLbl){
-        _xpLbl = [self.view viewWithTag:7];
+        _xpLbl = [self.statsView viewWithTag:7];
     }
     return _xpLbl;
 }
@@ -152,7 +153,7 @@
 -(UIProgressView *)xpBar{
     
     if(!_xpBar){
-        _xpBar = [self.view viewWithTag:8];
+        _xpBar = [self.statsView viewWithTag:8];
     }
     return _xpBar;
 }
@@ -161,7 +162,7 @@
 -(UILabel *)lvlLbl{
     
     if(!_lvlLbl){
-        _lvlLbl = [self.view viewWithTag:9];
+        _lvlLbl = [self.statsView viewWithTag:9];
     }
     return _lvlLbl;
 }
@@ -170,7 +171,7 @@
 -(UILabel *)goldLbl{
     
     if(!_goldLbl){
-        _goldLbl = [self.view viewWithTag:10];
+        _goldLbl = [self.statsView viewWithTag:10];
     }
     return _goldLbl;
 }
@@ -246,8 +247,8 @@
     }
 }
 
--(void)setToSkipStory:(BOOL)skipStory{
-    self.userSettings.storyModeisOn = skipStory;
+-(void)setToShowStory:(BOOL)shouldShowStory{
+    self.userSettings.storyModeisOn = shouldShowStory;
     [self.dataController save:self.userSettings];
 }
 
@@ -292,29 +293,48 @@
                        change:(NSDictionary *)change
                       context:(void *)context{
     if([keyPath isEqualToString:KVO_HERO_HP]){
-    
+        [self updateHeroHPUI:self.userHero.nowHp whole:self.userHero.maxHp];
     }
-    if([keyPath isEqualToString:KVO_GOLD]){}
-    if([keyPath isEqualToString:KVO_HERO_XP]){}
-    if([keyPath isEqualToString:KVO_LVL]){}
-    if([keyPath isEqualToString:KVO_MONSTER_HP]){}
+    if([keyPath isEqualToString:KVO_GOLD]){
+        self.goldLbl.text = [NSString stringWithFormat:@"$%.2f",self.userHero.gold];
+    }
+    if([keyPath isEqualToString:KVO_HERO_XP]){
+        [self updateHeroXPUI:self.userHero.nowXp whole:self.userHero.maxXp];
+    }
+    if([keyPath isEqualToString:KVO_LVL]){
+        self.lvlLbl.text = [NSString stringWithFormat:@"Lv:%d",self.userHero.lvl];
+    }
+    if([keyPath isEqualToString:KVO_MONSTER_HP]){
+        [self updateMonsterHPUI:self.nowMonster.nowHp whole:self.nowMonster.maxHp];
+    }
 }
 
 -(void)afterIntro:(Zone *)zoneChoice{
     self.nowZone = zoneChoice;
     self.nowMonster = [MonsterHelper constructRandomMonster:zoneChoice.zoneKey AroundLvl:zoneChoice.lvl];
-    [self showMonsterStory];
+    [self initializeStatesView];
+    self.statsView.hidden = NO;
     [self setupObservers];
     [self setupTabs];
     self.dataController.userData.theDataInfo.gameState = GAME_STATE_INITIALIZED;
     self.userSettings.createDate = [NSDate date];
     [self.dataController save:self.dataController.userData.theDataInfo];
     [self.dataController save:self.userSettings];
+    [self showMonsterStory];
+}
+
+-(void)initializeStatesView{
+    [self updateHeroHPUI:self.userHero.nowHp whole:self.userHero.maxHp];
+    self.goldLbl.text = [NSString stringWithFormat:@"$%.2f",self.userHero.gold];
+    [self updateHeroXPUI:self.userHero.nowXp whole:self.userHero.maxXp];
+    self.lvlLbl.text = [NSString stringWithFormat:@"Lv:%d",self.userHero.lvl];
+    [self updateMonsterHPUI:self.nowMonster.nowHp whole:self.nowMonster.maxHp];
 }
 
 -(void)showMonsterStory{
     if(self.userSettings.storyModeisOn){
-        
+        StoryDumpView *sdv = [[StoryDumpView alloc] initWithStoryItem:self.nowMonster];
+        [ViewHelper pushViewToFront:sdv OfParent:self];
     }
 }
 

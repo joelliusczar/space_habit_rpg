@@ -154,7 +154,6 @@
     }
 
     -(BOOL)save:(NSManagedObject *)entity{
-        
         if(self.disableSave){
             return self.disabledSaveResult;
         }

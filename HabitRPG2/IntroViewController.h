@@ -12,6 +12,5 @@
 
 @interface IntroViewController : UIViewController
 -(id)initWithCentralViewController:(UIViewController<CentralViewControllerP> *)central;
--(void)setToSkipStory:(BOOL)skipStory;
 @end
 

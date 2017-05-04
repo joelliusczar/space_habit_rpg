@@ -9,11 +9,4 @@
 #import "Settings+CoreDataClass.h"
 
 @implementation Settings
-//-(BOOL)storyModeisOn_H{
-//    return self.storyModeisOn.boolValue;
-//}
-//
-//-(void)setStoryModeisOn_H:(BOOL)storyModeisOn_H{
-//    self.storyModeisOn = [NSNumber numberWithBool:storyModeisOn_H];
-//}
 @end
