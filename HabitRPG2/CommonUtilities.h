@@ -12,15 +12,21 @@
 
 
 @interface CommonUtilities : NSObject
-    NSDate* _Nonnull getReferenceDate();
-    uint calculateLvl(uint lvl,uint range);
-    uint randomUInt(uint bound);
-    CGFloat GetYStart(CGFloat height);
-    CGFloat GetYStartUnderLabel(CGFloat height);
-    
-    +(nonnull NSDate *)getReferenceDate;
-    +(uint32_t)calculateLvl:(uint32_t)lvl OffsetBy:(uint32_t)offset;
-    +(uint32_t)randomUInt:(uint32_t)offset;
-    +(CGFloat)GetYStart: (CGFloat)height;
-    +(CGFloat)GetYStartUnderLabel: (CGFloat)height;
+NSDate* _Nonnull getReferenceDate();
+uint calculateLvl(uint lvl,uint range);
+uint randomUInt(uint bound);
+CGFloat GetYStart(CGFloat height);
+CGFloat GetYStartUnderLabel(CGFloat height);
++(nonnull NSDate *)getReferenceDate;
++(uint32_t)calculateLvl:(uint32_t)lvl OffsetBy:(uint32_t)offset;
++(uint32_t)randomUInt:(uint32_t)offset;
++(CGFloat)GetYStart: (CGFloat)height;
++(CGFloat)GetYStartUnderLabel: (CGFloat)height;
++(UIColor *_Nonnull)invertColor:(UIColor *_Nonnull)color;
++(void)invertViewColors:(UIView *_Nonnull)view;
++(void)applyVisualChangeToAllSubviews:(UIView *_Nonnull)view;
++(void)invertTitleColorForAllStates:(UIView *_Nonnull)view;
++(void)invertTitleShadowColorForAllStates:(UIView *_Nonnull)view;
++(UIImage *_Nonnull)invertImageColors:(UIImage *_Nonnull)img;
++(void)checkForAndApplyVisualChanges:(UIView *_Nonnull)view;
 @end

@@ -17,6 +17,7 @@
 #import "SingletonCluster.h"
 #import "ZoneInfoDictionary.h"
 #import "ZoneHelper.h"
+#import "CommonUtilities.h"
 
 @interface IntroViewController ()
 @property (nonatomic,weak) UIViewController<CentralViewControllerP> *central;
@@ -90,7 +91,7 @@
     self.introMessage.text = @"";
     NSString *headlineText = @"Welcome to Space Habit Frontier";
     [self nextButton];
-    
+    [CommonUtilities checkForAndApplyVisualChanges:self.view];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         self.isThreadCurrentlyRunning = YES;
         [self autoTypeoutTitle:headlineText characterDelay:CHARACTER_DELAY];

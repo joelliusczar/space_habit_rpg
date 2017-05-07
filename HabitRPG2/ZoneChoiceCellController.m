@@ -9,6 +9,7 @@
 #import "ZoneChoiceCellController.h"
 #import "ZoneDescriptionViewController.h"
 #import "ViewHelper.h"
+#import "CommonUtilities.h"
 
 @interface ZoneChoiceCellController()
 @property (nonatomic,weak) ZoneChoiceViewController *ownerZoneController;
@@ -63,6 +64,7 @@
     self.lvlLbl.text = [NSString stringWithFormat:@"Lvl: %d",self.model.lvl];
     self.rowInfo = rowInfo;
     [self addGestureRecognizer:self.swiper];
+    [CommonUtilities checkForAndApplyVisualChanges:self.contentView];
 }
 
 -(void)awakeFromNib{

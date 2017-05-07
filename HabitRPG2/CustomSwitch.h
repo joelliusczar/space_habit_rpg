@@ -11,7 +11,13 @@
 
 IB_DESIGNABLE
 @interface CustomSwitch : UIButton<P_CustomSwitch>
-    @property (nonatomic,strong) IBInspectable UIImage* onImage;
-    @property (nonatomic,strong) IBInspectable UIImage* offImage;
-    @property (nonatomic,assign) BOOL isOn;
+@property (nonatomic,strong) IBInspectable UIImage *onImage;
+@property (nonatomic,strong) IBInspectable UIImage *offImage;
+@property (nonatomic,strong) UIImage *onImageColorInverted;
+@property (nonatomic,strong) UIImage *offImageColorInverted;
+@property (nonatomic,readonly) UIImage *currentOnImage;
+@property (nonatomic,readonly) UIImage *currentOffImage;
+@property (nonatomic,assign) BOOL isOn;
+@property (nonatomic,assign) BOOL areColorsInverted;
+-(void)refreshImage;
 @end

@@ -178,6 +178,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [CommonUtilities checkForAndApplyVisualChanges:self.view];
     [self determineIfFirstTimeAndSetupSettings]; 
 }
 

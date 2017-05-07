@@ -12,6 +12,7 @@
 #import "constants.h"
 #import "ViewHelper.h"
 #import "SingletonCluster.h"
+#import "CommonUtilities.h"
 
 @interface ZoneChoiceViewController ()
 @property (nonatomic,strong) NSArray<Zone *> *zones;
@@ -85,6 +86,7 @@
     [super viewDidLayoutSubviews];
     self.zoneChoiceTable.dataSource = self;
     self.zoneChoiceTable.rowHeight = ZONE_CHOICE_ROW_HEIGHT;
+    [CommonUtilities checkForAndApplyVisualChanges:self.view];
 }
 
 - (void)didReceiveMemoryWarning {

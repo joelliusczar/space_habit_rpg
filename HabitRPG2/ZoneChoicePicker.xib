@@ -53,7 +53,9 @@
                         <tableView clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9CA-Io-tEW">
                             <rect key="frame" x="8" y="8" width="272" height="304"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
                         <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xV5-Wm-tsw" customClass="CustomSwitch">
                             <rect key="frame" x="218.99999999999997" y="344" width="46" height="30"/>
@@ -62,27 +64,28 @@
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="image" keyPath="onImage" value="black_checked_full.png"/>
-                                <userDefinedRuntimeAttribute type="image" keyPath="offImage" value="black_checked_empty.png"/>
+                                <userDefinedRuntimeAttribute type="image" keyPath="onImage" value="white_checked_full.png"/>
+                                <userDefinedRuntimeAttribute type="image" keyPath="offImage" value="white_checked_empty.png"/>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isOn" value="YES"/>
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eb3-iT-cAT">
                             <rect key="frame" x="219" y="306" width="46" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                             <state key="normal" title="Skip?">
-                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Show story?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2q-AJ-AC1">
                             <rect key="frame" x="110" y="344" width="101" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="295" id="QUi-Tz-hGq"/>
                         <constraint firstAttribute="height" constant="405" id="lvC-oO-dVY"/>
@@ -177,7 +180,7 @@
     </objects>
     <resources>
         <image name="behind_alert_view.png" width="320" height="460"/>
-        <image name="black_checked_empty.png" width="31" height="28"/>
-        <image name="black_checked_full.png" width="31" height="28"/>
+        <image name="white_checked_empty.png" width="31" height="28"/>
+        <image name="white_checked_full.png" width="31" height="28"/>
     </resources>
 </document>
