@@ -13,6 +13,7 @@
 #import "ViewHelper.h"
 #import "SingletonCluster.h"
 #import "CommonUtilities.h"
+#import "ZoneHelper.h"
 
 @interface ZoneChoiceViewController ()
 @property (nonatomic,strong) NSArray<Zone *> *zones;
@@ -111,26 +112,11 @@
     return cell; 
 }
 
--(void)saveZoneChoice:(Zone *)zoneChoice{
-    NSObject<P_CoreData> *dataController = self.dataController;
-    for(int32_t i = 0;i<self.zones.count;i++){
-        if(self.zones[i] != zoneChoice){
-            [dataController softDeleteModel:self.zones[i]];
-        }
-    }
-    zoneChoice.isFront = true;
-    [dataController save:zoneChoice];
-}
-
--(Zone *)pickRandomChoice{
-    uint r = [[SingletonCluster getSharedInstance].stdLibWrapper randomUInt:(uint)self.zones.count];
-    return self.zones[r];
-}
 
 -(void)nextBtn_pressed_action:(UIButton *)sender{
     BOOL show = self.skipSwitch.isOn;
     [self.central setToShowStory:show];
     [ViewHelper popViewFromFront:self];
-    [self.central afterIntro:[self pickRandomChoice]];
+    [self.central afterZonePick:nil];
 }
 @end

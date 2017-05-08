@@ -9,6 +9,8 @@
 #import "ZoneDescriptionViewController.h"
 #import "CentralViewControllerP.h"
 #import "ViewHelper.h"
+#import "SingletonCluster.h"
+#import "constants.h"
 
 @interface ZoneDescriptionViewController ()
 @property (nonatomic,weak) ZoneChoiceViewController *prevScreen;
@@ -96,9 +98,8 @@
 }
 
 -(void)confirmBtn_click_action:(UIButton *)sender{
-    [self.prevScreen saveZoneChoice:self.model];
     [ViewHelper popViewFromFront:self.prevScreen];
-    [self.central afterIntro:self.model];
+    [self.central afterZonePick:self.model];
 }
 
 

@@ -17,5 +17,4 @@
 @property (nonatomic,weak) UIViewController <CentralViewControllerP> *central;
 @property (nonatomic,strong) ZoneDescriptionViewController *descViewController;
 +(instancetype)constructWithCentral:(UIViewController <CentralViewControllerP> *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices;
--(void)saveZoneChoice:(Zone *)zoneChoice;
 @end

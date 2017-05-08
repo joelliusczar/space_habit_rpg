@@ -22,5 +22,7 @@
 @property (nonatomic,strong) Monster *nowMonster;
 -(void)setToShowStory:(BOOL)shouldShowStory;
 -(void)showZoneChoiceView;
+-(void)afterZonePick:(Zone *)zoneChoice;
 -(void)afterIntro:(Zone *)zoneChoice;
+-(void)afterNormalZonePick:(Zone *)zoneChoice;
 @end

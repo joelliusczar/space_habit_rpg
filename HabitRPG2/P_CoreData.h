@@ -14,21 +14,23 @@
 @class OnlyOneEntities;
 
 @protocol P_CoreData <NSObject>
-    @property (nonatomic,strong) OnlyOneEntities *userData;
-    -(instancetype)initWithDBFileName: (NSString *) dbFileName;
-    -(NSManagedObject *)constructEmptyEntity:(NSString *) entityType;
-    -(NSFetchedResultsController *)getItemFetcher:(NSString *) entityName
-                                        predicate: (NSPredicate *) filter
-                                           sortBy:(NSArray *) sortAttrs;
-    -(NSArray<NSManagedObject *> *)getItem:(NSString *) entityName
-                      predicate: (NSPredicate *) filter
-                         sortBy:(NSArray<NSSortDescriptor *> *) sortAttrs;
-    -(NSArray<NSManagedObject *> *)getItemWithRequest:(NSFetchRequest *) fetchRequest
-                                 predicate: (NSPredicate *)filter
-                                    sortBy: (NSArray<NSSortDescriptor *> *)sortArray;
-    -(BOOL)save:(NSManagedObject *)entity;
-    -(void)softDeleteModel:(NSManagedObject *)model;
-    -(BOOL)deleteModelAndSave:(NSManagedObject *)model;
-    -(void)deleteAllRecords;
-    -(NSManagedObjectContext *)getContext:(NSString *)entityName;
+@property (nonatomic,strong) OnlyOneEntities *userData;
+-(instancetype)initWithDBFileName: (NSString *) dbFileName;
+-(NSManagedObject *)constructEmptyEntity:(NSString *) entityType;
+-(NSFetchedResultsController *)getItemFetcher:(NSString *) entityName
+                                    predicate: (NSPredicate *) filter
+                                       sortBy:(NSArray *) sortAttrs;
+-(NSArray<NSManagedObject *> *)getItem:(NSString *) entityName
+                  predicate: (NSPredicate *) filter
+                     sortBy:(NSArray<NSSortDescriptor *> *) sortAttrs;
+-(NSArray<NSManagedObject *> *)getItemWithRequest:(NSFetchRequest *) fetchRequest
+                             predicate: (NSPredicate *)filter
+                                sortBy: (NSArray<NSSortDescriptor *> *)sortArray;
+-(BOOL)save:(NSManagedObject *)entity;
+-(void)softDeleteModel:(NSManagedObject *)model;
+-(BOOL)deleteModelAndSave:(NSManagedObject *)model;
+-(void)deleteAllRecords;
+-(NSManagedObjectContext *)getContextByName:(NSString *)entityName;
+-(NSManagedObjectContext *)getContext:(NSManagedObject *)managedObject;
+-(void)removeInsertedNotInSet:(NSSet<NSManagedObject *> *)keepThese;
 @end

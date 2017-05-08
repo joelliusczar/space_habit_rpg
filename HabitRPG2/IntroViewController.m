@@ -154,6 +154,7 @@
     }
     else{
         [ViewHelper popViewFromFront:self];
+        [self.central afterZonePick:nil];
         
     }
     self.isStoryDone = YES;

@@ -92,7 +92,7 @@
 
 @synthesize statsView = _statsView;
 -(UIView *)statsView{
-    if(!_statsView){
+    if(_statsView==nil){
         _statsView = [self.view viewWithTag:1];
     }
     return _statsView;
@@ -100,7 +100,7 @@
 
 @synthesize shipNameLbl = _shipNameLbl;
 -(UILabel *)shipNameLbl{
-    if(!_shipNameLbl){
+    if(_shipNameLbl==nil){
         _shipNameLbl = [self.statsView viewWithTag:2];
     }
     return _shipNameLbl;
@@ -108,7 +108,7 @@
 
 @synthesize heroHPLbl = _heroHPLbl;
 -(UILabel *)heroHPLbl{
-    if(!_heroHPLbl){
+    if(_heroHPLbl==nil){
         _heroHPLbl = [self.statsView viewWithTag:3];
     }
     return _heroHPLbl;
@@ -116,7 +116,7 @@
 
 @synthesize heroHPBar = _heroHPBar;
 -(UIProgressView *)heroHPBar{
-    if(!_heroHPBar){
+    if(_heroHPBar==nil){
         _heroHPBar = [self.statsView viewWithTag:4];
     }
     return _heroHPBar;
@@ -125,7 +125,7 @@
 @synthesize monsterHPLbl = _monsterHPLbl;
 -(UILabel *)monsterHPLbl{
     
-    if(!_monsterHPLbl){
+    if(_monsterHPLbl==nil){
         _monsterHPLbl = [self.statsView viewWithTag:5];
     }
     return _monsterHPLbl;
@@ -134,7 +134,7 @@
 @synthesize monsterHPBar = _monsterHPBar;
 -(UIProgressView *)monsterHPBar{
     
-    if(!_monsterHPBar){
+    if(_monsterHPBar==nil){
         _monsterHPBar = [self.statsView viewWithTag:6];
     }
     return _monsterHPBar;
@@ -143,7 +143,7 @@
 @synthesize xpLbl = _xpLbl;
 -(UILabel *)xpLbl{
     
-    if(!_xpLbl){
+    if(_xpLbl==nil){
         _xpLbl = [self.statsView viewWithTag:7];
     }
     return _xpLbl;
@@ -152,7 +152,7 @@
 @synthesize xpBar = _xpBar;
 -(UIProgressView *)xpBar{
     
-    if(!_xpBar){
+    if(_xpBar==nil){
         _xpBar = [self.statsView viewWithTag:8];
     }
     return _xpBar;
@@ -161,7 +161,7 @@
 @synthesize lvlLbl = _lvlLbl;
 -(UILabel *)lvlLbl{
     
-    if(!_lvlLbl){
+    if(_lvlLbl==nil){
         _lvlLbl = [self.statsView viewWithTag:9];
     }
     return _lvlLbl;
@@ -170,7 +170,7 @@
 @synthesize goldLbl = _goldLbl;
 -(UILabel *)goldLbl{
     
-    if(!_goldLbl){
+    if(_goldLbl==nil){
         _goldLbl = [self.statsView viewWithTag:10];
     }
     return _goldLbl;
@@ -239,6 +239,15 @@
     [introView didMoveToParentViewController:self];
 }
 
+-(void)showNormalView{
+//    Zone *z = [ZoneHelper getZone:YES];
+//    if(z==nil){
+//        NSMutableArray<Zone *> *zoneChoices = [ZoneHelper constructMultipleZoneChoices:self.userHero AndMatchHeroLvl:NO];
+//        return;
+//    }
+}
+
+
 -(void)determineIfFirstTimeAndSetupSettings{
     if(self.dataController.userData.theDataInfo.gameState == GAME_STATE_UNINITIALIZED){
         [self showIntroView];        
@@ -253,12 +262,16 @@
     [self.dataController save:self.userSettings];
 }
 
--(void)showZoneChoiceView{
-    NSArray<Zone *> *zoneChoices = [ZoneHelper constructMultipleZoneChoices:self.userHero AndMatchHeroLvl:YES];
+-(void)showZoneChoiceView:(NSArray<Zone *> *)zoneChoices{
     ZoneChoiceViewController *zoneChoiceView = [ZoneChoiceViewController constructWithCentral:self AndZoneChoices:zoneChoices];
     [self.view addSubview:zoneChoiceView.view];
     [self addChildViewController:zoneChoiceView];
     [zoneChoiceView didMoveToParentViewController:self];
+}
+
+-(void)showZoneChoiceView{
+    NSArray<Zone *> *zoneChoices = [ZoneHelper constructMultipleZoneChoices:self.userHero AndMatchHeroLvl:YES];
+    [self showZoneChoiceView:zoneChoices];
 }
 
 -(void)updateHeroHPUI:(int)part whole:(int)whole{
@@ -310,7 +323,26 @@
     }
 }
 
+-(void)afterZonePick:(Zone *)zoneChoice{
+    NSSet<NSManagedObject *> *zSet = [NSSet setWithObject:zoneChoice];
+    [SHData removeInsertedNotInSet:zSet];
+    if(zoneChoice==nil){
+        zoneChoice = [ZoneHelper constructZoneChoice:self.userHero AndMatchHeroLvl:NO];
+    }
+    if([SingletonCluster getSharedInstance].gameState==GAME_STATE_UNINITIALIZED){
+        [self afterIntro:zoneChoice];
+    }
+    else{
+        [self afterNormalZonePick:zoneChoice];
+    }
+}
+
+-(void)afterNormalZonePick:(Zone *)zoneChoice{
+    
+}
+
 -(void)afterIntro:(Zone *)zoneChoice{
+    [ZoneHelper moveZoneToFront:zoneChoice];
     self.nowZone = zoneChoice;
     self.nowMonster = [MonsterHelper constructRandomMonster:zoneChoice.zoneKey AroundLvl:zoneChoice.lvl];
     [self initializeStatesView];
@@ -319,6 +351,8 @@
     [self setupTabs];
     self.dataController.userData.theDataInfo.gameState = GAME_STATE_INITIALIZED;
     self.userSettings.createDate = [NSDate date];
+    [self.dataController save:self.nowZone];
+    [self.dataController save:self.nowMonster];
     [self.dataController save:self.dataController.userData.theDataInfo];
     [self.dataController save:self.userSettings];
     [self showMonsterStory];

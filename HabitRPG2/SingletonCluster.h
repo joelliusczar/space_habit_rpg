@@ -16,13 +16,15 @@
 #import "P_stdlibWrapper.h"
 
 #define SAVE_DATA(entity) [[SingletonCluster getSharedInstance].dataController save:entity]
+#define SHData [SingletonCluster getSharedInstance].dataController
 
 @interface SingletonCluster : NSObject
-    +(instancetype)getSharedInstance;
-    @property (nonatomic,strong) NSObject<P_CoreData> *dataController;
-    @property (nonatomic,strong) NSObject<P_ResourceUtility> *resourceUtility;
-    @property (nonatomic,strong) ZoneInfoDictionary *zoneInfoDictionary;
-    @property (nonatomic,strong) MonsterInfoDictionary *monsterInfoDictionary;
-    @property (nonatomic,strong) NSObject<P_stdlibWrapper> *stdLibWrapper;
-    @property (nonatomic,assign) int32_t EnviromentNum;
++(instancetype)getSharedInstance;
+@property (nonatomic,strong) NSObject<P_CoreData> *dataController;
+@property (nonatomic,strong) NSObject<P_ResourceUtility> *resourceUtility;
+@property (nonatomic,strong) ZoneInfoDictionary *zoneInfoDictionary;
+@property (nonatomic,strong) MonsterInfoDictionary *monsterInfoDictionary;
+@property (nonatomic,strong) NSObject<P_stdlibWrapper> *stdLibWrapper;
+@property (nonatomic,readonly) int EnviromentNum;
+@property (nonatomic,readonly) int gameState;
 @end

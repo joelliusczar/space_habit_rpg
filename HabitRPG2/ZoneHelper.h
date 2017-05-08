@@ -13,15 +13,16 @@
 extern NSString* const HOME_KEY;
 
 @interface ZoneHelper : NSObject
-    +(NSArray*)getUnlockedZoneGroupKeys:(NSUInteger)heroLvl;
-    +(NSString*)getRandomZoneDefinitionKey:(NSUInteger)heroLvl;
-    +(NSString*)getSymbolSuffix:(NSUInteger)visitCount;
-    +(NSArray*)getSymbolsList;
-    +(Zone * )constructEmptyZone;
-    +(Zone *)constructHomeZone;
-    +(Zone *)constructZoneChoice:(Hero *)hero AndMatchHeroLvl:(BOOL)matchLvl;
-    +(NSArray<Zone *> *)constructMultipleZoneChoices:(Hero *)hero AndMatchHeroLvl:(BOOL)matchLvl;
-    +(Zone *)getZoneByZoneKey:(NSString *)zoneKey;
-    +(Zone *)getZone:(BOOL)isFront;
-    +(int64_t)getNextUniqueId;
++(NSArray*)getUnlockedZoneGroupKeys:(NSUInteger)heroLvl;
++(NSString*)getRandomZoneDefinitionKey:(NSUInteger)heroLvl;
++(NSString*)getSymbolSuffix:(NSUInteger)visitCount;
++(NSArray*)getSymbolsList;
++(Zone * )constructEmptyZone;
++(Zone *)constructHomeZone;
++(Zone *)constructZoneChoice:(Hero *)hero AndMatchHeroLvl:(BOOL)matchLvl;
++(NSMutableArray<Zone *> *)constructMultipleZoneChoices:(Hero *)hero AndMatchHeroLvl:(BOOL)matchLvl;
++(Zone *)getZoneByZoneKey:(NSString *)zoneKey;
++(Zone *)getZone:(BOOL)isFront;
++(int64_t)getNextUniqueId;
++(void)moveZoneToFront:(Zone *)newFront;
 @end
