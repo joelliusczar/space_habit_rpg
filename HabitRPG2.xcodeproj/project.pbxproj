@@ -189,6 +189,7 @@
 		273978A21EB8473100F217B4 /* MonsterTransaction+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MonsterTransaction+CoreDataProperties.h"; path = "../MonsterTransaction+CoreDataProperties.h"; sourceTree = "<group>"; };
 		273978A31EB8473100F217B4 /* MonsterTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MonsterTransaction+CoreDataProperties.m"; path = "../MonsterTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
 		273978B01EBACB2000F217B4 /* Model 19.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 19.xcdatamodel"; sourceTree = "<group>"; };
+		273978C31EC29A3E00F217B4 /* Model 20.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 20.xcdatamodel"; sourceTree = "<group>"; };
 		277ABEC21E947B66008CC239 /* Model 15.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 15.xcdatamodel"; sourceTree = "<group>"; };
 		277ABEC61E949B76008CC239 /* P_stdlibWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_stdlibWrapper.h; sourceTree = "<group>"; };
 		277ABEC71E949B96008CC239 /* StdLibWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StdLibWrapper.h; sourceTree = "<group>"; };
@@ -1216,6 +1217,7 @@
 		68E260601D7BC3EA00425D46 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				273978C31EC29A3E00F217B4 /* Model 20.xcdatamodel */,
 				273978B01EBACB2000F217B4 /* Model 19.xcdatamodel */,
 				273978891EB598C300F217B4 /* Model 18.xcdatamodel */,
 				277ABF271E9B3EB8008CC239 /* Model 17.xcdatamodel */,
@@ -1234,7 +1236,7 @@
 				68BE458C1D9CCF4C003F3400 /* Model 2.xcdatamodel */,
 				68E260611D7BC3EA00425D46 /* Model.xcdatamodel */,
 			);
-			currentVersion = 273978B01EBACB2000F217B4 /* Model 19.xcdatamodel */;
+			currentVersion = 273978C31EC29A3E00F217B4 /* Model 20.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

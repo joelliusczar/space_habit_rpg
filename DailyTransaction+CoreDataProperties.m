@@ -2,7 +2,7 @@
 //  DailyTransaction+CoreDataProperties.m
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 5/3/17.
+//  Created by Joel Pridgen on 5/9/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
@@ -15,7 +15,7 @@
 }
 
 @dynamic action;
-@dynamic activationTime;
+@dynamic timestamp;
 @dynamic misc;
 @dynamic transaction_daily;
 
