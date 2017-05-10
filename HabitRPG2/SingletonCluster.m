@@ -27,9 +27,17 @@
 @synthesize dataController = _dataController;
 -(NSObject<P_CoreData> *)dataController{
     if(_dataController==nil){
-        _dataController = [[CoreDataStackController alloc] initWithDBFileName:nil];
+        _dataController = [CoreDataStackController new];
     }
     return _dataController;
+}
+
+@synthesize concurrentDataController = _concurrentDataController;
+-(NSObject<P_CoreData> *)concurrentDataController{
+    if(_concurrentDataController==nil){
+        _concurrentDataController = [CoreDataStackController newWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    }
+    return _concurrentDataController;
 }
 
 @synthesize resourceUtility = _resourceUtility;

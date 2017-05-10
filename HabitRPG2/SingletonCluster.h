@@ -21,6 +21,7 @@
 @interface SingletonCluster : NSObject
 +(instancetype)getSharedInstance;
 @property (nonatomic,strong) NSObject<P_CoreData> *dataController;
+@property (nonatomic,strong) NSObject<P_CoreData> *concurrentDataController;
 @property (nonatomic,strong) NSObject<P_ResourceUtility> *resourceUtility;
 @property (nonatomic,strong) ZoneInfoDictionary *zoneInfoDictionary;
 @property (nonatomic,strong) MonsterInfoDictionary *monsterInfoDictionary;

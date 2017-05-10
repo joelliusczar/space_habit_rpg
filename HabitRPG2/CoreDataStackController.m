@@ -24,6 +24,8 @@
 
 @end
 
+NSString *defaultDbName = @"Model.sqlite";
+
 @implementation CoreDataStackController
 
 -(BOOL)isTesting{
@@ -51,6 +53,8 @@
     return _contexts;
 }
 
+@synthesize ConcurrencyType = _ConcurrencyType;
+
 @synthesize coordinator = _coordinator;
 -(NSPersistentStoreCoordinator *)coordinator{
     if(!_coordinator){
@@ -65,15 +69,52 @@
     return _coordinator;
 }
 
--(instancetype)initWithDBFileName: (NSString *) dbFileName{
-    self = [super init];
-    if(!self){
+-(instancetype)init{
+    if(self=[super init]){
+        _dbFileName = defaultDbName;
+        _ConcurrencyType = NSMainQueueConcurrencyType;
+    }
+    return self;
+}
+
++(instancetype)new{
+    CoreDataStackController *instance = [[CoreDataStackController alloc] init];
+    if(instance==nil){
         return nil;
     }
-    self.dbFileName = dbFileName.length?dbFileName:@"Model.sqlite";
-    [self initializeCoreData];
+    [instance initializeCoreData];
+    return instance;
+}
+
++(instancetype)newWithDBFileName:(NSString *)dbFileName AndConcurrencyType:(NSUInteger)concurrencyType{
+    CoreDataStackController *instance = [[CoreDataStackController alloc] init];
+    if(instance==nil){
+        return nil;
+    }
+    instance.dbFileName = dbFileName.length?dbFileName:defaultDbName;
+    instance.ConcurrencyType = concurrencyType;
+    [instance initializeCoreData];
     
-    return self;
+    return instance;
+}
+
++(instancetype)newWithConcurrencyType:(NSUInteger)concurrencyType{
+    CoreDataStackController *instance = [[CoreDataStackController alloc] init];
+    if(instance==nil){
+        return nil;
+    }
+    instance.ConcurrencyType=concurrencyType;
+    return instance;
+}
+
++(instancetype)newWithDBFileName: (NSString *) dbFileName{
+    CoreDataStackController *instance = [[CoreDataStackController alloc] init];
+    if(instance==nil){
+        return nil;
+    }
+    instance.dbFileName = dbFileName.length?dbFileName:defaultDbName;
+    [instance initializeCoreData];
+    return instance;
 }
 
 -(NSManagedObjectContext *)getContext:(NSManagedObject *)managedObject{
@@ -84,7 +125,7 @@
     if(self.coordinator.managedObjectModel.entitiesByName[entityName]){
         NSManagedObjectContext *c = nil;
         if(!(c=self.contexts[entityName])){
-            c = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+            c = [[NSManagedObjectContext alloc] initWithConcurrencyType:self.ConcurrencyType];
             [c setPersistentStoreCoordinator:self.coordinator];
             self.contexts[entityName] = c;
         }
@@ -214,6 +255,7 @@
     NSString *typeName = keepThese.anyObject.entity.name;
     NSSet<NSManagedObject *> *insertedSet = [self getContextByName:typeName].insertedObjects;
     for(NSManagedObject *item in insertedSet){
+        NSAssert([typeName isEqualToString:item.entity.name],@"type mismatch");
         if(![keepThese containsObject:item]){
             [self softDeleteModel:item];
         }

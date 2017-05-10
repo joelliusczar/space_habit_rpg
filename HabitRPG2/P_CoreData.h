@@ -15,7 +15,10 @@
 
 @protocol P_CoreData <NSObject>
 @property (nonatomic,strong) OnlyOneEntities *userData;
--(instancetype)initWithDBFileName: (NSString *) dbFileName;
+@property (nonatomic,assign) NSUInteger ConcurrencyType;
++(instancetype)newWithDBFileName: (NSString *) dbFileName;
++(instancetype)newWithDBFileName:(NSString *)dbFileName AndConcurrencyType:(NSUInteger)concurrencyType;
++(instancetype)newWithConcurrencyType:(NSUInteger)concurrencyType;
 -(NSManagedObject *)constructEmptyEntity:(NSString *) entityType;
 -(NSFetchedResultsController *)getItemFetcher:(NSString *) entityName
                                     predicate: (NSPredicate *) filter
