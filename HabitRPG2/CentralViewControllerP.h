@@ -24,5 +24,4 @@
 -(void)showZoneChoiceView;
 -(void)afterZonePick:(Zone *)zoneChoice;
 -(void)afterIntro;
--(void)afterNormalZonePick:(Zone *)zoneChoice;
 @end

@@ -6,11 +6,13 @@
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
-#define KVO_HERO_HP @"gold"
-#define KVO_HERO_XP @"nowHp"
-#define KVO_MONSTER_HP @"nowHp"
-#define KVO_GOLD @"nowXp"
-#define KVO_LVL @"lvl"
+#define KVO_HERO_HP @"userHero.nowHp"
+#define KVO_HERO_XP @"userHero.nowXp"
+#define KVO_MONSTER_HP @"nowMonster.nowHp"
+#define KVO_GOLD @"userHero.gold"
+#define KVO_LVL @"userHero.lvl"
+#define KVO_MON_NAME @"nowMonster.fullName"
+#define KVO_ZONE_NAME @"nowZone.fullName"
 
 #import "CentralViewController.h"
 #import "DailyViewController.h"
@@ -179,6 +181,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [CommonUtilities checkForAndApplyVisualChanges:self.view];
+    //most likely any changes you want to add to load should go in
+    //determineIfFirstTimeAndSetupSettings
     [self determineIfFirstTimeAndSetupSettings]; 
 }
 
@@ -239,7 +243,7 @@
     [introView didMoveToParentViewController:self];
 }
 
--(void)showNormalView{
+-(void)setupNormalZoneAndMonster{
     Zone *z = [ZoneHelper getZone:YES];
     if(z==nil){
         NSMutableArray<Zone *> *zoneChoices = [ZoneHelper constructMultipleZoneChoices:self.userHero AndMatchHeroLvl:NO];
@@ -248,23 +252,20 @@
     }
     self.nowZone = z;
     Monster *m = [MonsterHelper getCurrentMonster];
-    if(m==nil){
+    if(m==nil||m.nowHp<1){
+        z.monstersKilled=(m!=nil&&m.nowHp<1)?(z.monstersKilled+1):z.monstersKilled;
         if(z.monstersKilled>=z.maxMonsters){
             NSMutableArray<Zone *> *zoneChoices = [ZoneHelper constructMultipleZoneChoices:self.userHero AndMatchHeroLvl:NO];
             [zoneChoices addObject:z];
             [self showZoneChoiceView:zoneChoices];
+            //setups observers after user has picked zones
             return;
         }
-        self.nowMonster = [MonsterHelper constructRandomMonster:z.zoneKey AroundLvl:z.lvl];
-        [SHData save:self.nowMonster];
+        m = [MonsterHelper constructRandomMonster:z.zoneKey AroundLvl:z.lvl];
+        [SHData save:m];
         [self showMonsterStory];
     }
     self.nowMonster = m;
-    if(self.nowMonster.nowHp<=0){
-        self.nowMonster = [MonsterHelper constructRandomMonster:z.zoneKey AroundLvl:z.lvl];
-        [SHData save:self.nowMonster];
-        [self showMonsterStory];
-    }
 }
 
 
@@ -273,7 +274,11 @@
         [self showIntroView];        
     }
     else{
-        
+        [self setupNormalZoneAndMonster];
+        [self initializeStatesView];
+        self.statsView.hidden = NO;
+        [self setupObservers];
+        [self setupTabs];
     }
 }
 
@@ -312,43 +317,32 @@
     self.monsterHPBar.progress = hpPercent;
 }
 
+-(void)setupSingleObserver:(NSString *)keyPath{
+    @try{
+        [self removeObserver:self forKeyPath:keyPath context:nil];
+    }
+    @catch(NSException *ex){}
+    [self addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionNew context:nil];
+}
+
 -(void)setupHeroObservers{
-    @try{
-        [self.userHero removeObserver:self forKeyPath:KVO_HERO_HP context:nil];
-    }
-    @catch(NSException *ex){}
-    [self.userHero addObserver:self forKeyPath:KVO_HERO_HP options:NSKeyValueObservingOptionNew context:nil];
-    
-    @try{
-        [self.userHero removeObserver:self forKeyPath:KVO_GOLD context:nil];
-    }
-    @catch(NSException *ex){}
-    [self.userHero addObserver:self forKeyPath:KVO_GOLD options:NSKeyValueObservingOptionNew context:nil];
-    
-    @try{
-        [self.userHero removeObserver:self forKeyPath:KVO_HERO_XP context:nil];
-    }
-    @catch(NSException *ex){}
-    [self.userHero addObserver:self forKeyPath:KVO_HERO_XP options:NSKeyValueObservingOptionNew context:nil];
-    
-    @try{
-        [self.userHero removeObserver:self forKeyPath:KVO_LVL context:nil];
-    }
-    @catch(NSException *ex){}
-    [self.userHero addObserver:self forKeyPath:KVO_LVL options:NSKeyValueObservingOptionNew context:nil];
+    [self setupSingleObserver:KVO_HERO_HP];
+    [self setupSingleObserver:KVO_GOLD];
+    [self setupSingleObserver:KVO_HERO_XP];
+    [self setupSingleObserver:KVO_LVL];
     
 }
 
 -(void)setupMonsterObservers{
-    @try{
-        [self.nowMonster removeObserver:self forKeyPath:KVO_MONSTER_HP context:nil];
-    }
-    @catch(NSException *ex){}
-    [self.nowMonster addObserver:self forKeyPath:KVO_MONSTER_HP options:NSKeyValueObservingOptionNew context:nil];
+    [self setupSingleObserver:KVO_MONSTER_HP];
+    [self setupSingleObserver:KVO_MON_NAME];
+}
+
+-(void)setupZoneObservers{
+    [self setupSingleObserver:KVO_ZONE_NAME];
 }
 
 -(void)setupObservers{
-    //TODO; figure out object observation consistency, ie, if we replace monster, is it still being observed?
     [self setupHeroObservers];
     [self setupMonsterObservers];
 }
@@ -372,19 +366,20 @@
     if([keyPath isEqualToString:KVO_MONSTER_HP]){
         [self updateMonsterHPUI:self.nowMonster.nowHp whole:self.nowMonster.maxHp];
     }
+    if([keyPath isEqualToString:KVO_MON_NAME]){}
+    if([keyPath isEqualToString:KVO_ZONE_NAME]){}
 }
 
 -(void)afterZonePick:(Zone *)zoneChoice{
-    NSSet<NSManagedObject *> *zSet = [NSSet setWithObject:zoneChoice];
-    [SHData removeInsertedNotInSet:zSet];
+    if(zoneChoice!=nil){
+        NSSet<NSManagedObject *> *zSet = [NSSet setWithObject:zoneChoice];
+        [SHData removeInsertedNotInSet:zSet];
+    }
     if(zoneChoice==nil){
         zoneChoice = [ZoneHelper constructZoneChoice:self.userHero AndMatchHeroLvl:NO];
     }
     if([SingletonCluster getSharedInstance].gameState==GAME_STATE_UNINITIALIZED){
         [self afterIntro];
-    }
-    else{
-        [self afterNormalZonePick:zoneChoice];
     }
     self.nowZone = zoneChoice;
     [ZoneHelper moveZoneToFront:zoneChoice];
@@ -392,10 +387,6 @@
     [self.dataController save:self.nowZone];
     [self.dataController save:self.nowMonster];
     [self showMonsterStory];
-}
-
--(void)afterNormalZonePick:(Zone *)zoneChoice{
-    
 }
 
 -(void)afterIntro{
