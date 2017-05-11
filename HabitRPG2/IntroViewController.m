@@ -18,13 +18,14 @@
 #import "ZoneInfoDictionary.h"
 #import "ZoneHelper.h"
 #import "CommonUtilities.h"
+#import "CustomSwitch.h"
 
 @interface IntroViewController ()
 @property (nonatomic,weak) UIViewController<CentralViewControllerP> *central;
-@property (nonatomic,weak) UITextView *introMessage;
-@property (nonatomic,weak) UILabel *headline;
-@property (nonatomic,weak) UIButton *nextButton;
-@property (nonatomic,weak) UISwitch *skipSwitch;
+@property (weak, nonatomic) IBOutlet UILabel *headline;
+@property (weak, nonatomic) IBOutlet UITextView *introMessage;
+@property (weak, nonatomic) IBOutlet CustomSwitch *skipSwitch;
+@property (weak, nonatomic) IBOutlet UIButton *nextButton;
 @property (nonatomic,assign) BOOL isThreadAllowed;
 @property (nonatomic,assign) BOOL isStoryDone;
 @property (nonatomic,assign) BOOL isThreadCurrentlyRunning;
@@ -32,50 +33,15 @@
 
 @implementation IntroViewController
 
-@synthesize introMessage = _introMessage;
--(UITextView *)introMessage{
-    if(!_introMessage){
-        UIView *v = [self getContentSubview];
-        _introMessage = [v viewWithTag:3];
-    }
-    return _introMessage;
-}
-
-@synthesize headline = _headline;
--(UILabel *)headline{
-    if(!_headline){
-        UIView *v = [self getContentSubview];
-        _headline = [v viewWithTag:2];
-    }
-    return _headline;
-}
-
 @synthesize nextButton = _nextButton;
 -(UIButton *)nextButton{
-    if(!_nextButton){
-        UIView *v = [self getContentSubview];
-        _nextButton = [v viewWithTag:4];
+    if(_nextButton!=nil){
         [_nextButton addTarget:self action:@selector(pressedNext:) forControlEvents:UIControlEventTouchUpInside];
-        
     }
     return _nextButton;
 }
 
-@synthesize skipSwitch = _skipSwitch;
--(UISwitch *)skipSwitch{
-    if(!_skipSwitch){
-        UIView *v = [self getContentSubview];
-        _skipSwitch = [v viewWithTag:5];
-    }
-    return _skipSwitch;
-}
-
--(UIView *)getContentSubview{
-    return [self.view viewWithTag:1];;
-}
-
-
--(id)initWithCentralViewController:(UIViewController<CentralViewControllerP> *)central{
+-(instancetype)initWithCentralViewController:(UIViewController<CentralViewControllerP> *)central{
     if(self = [self initWithNibName:@"IntroViewController" bundle:nil]){
         self.central = central;
         self.isThreadAllowed = YES;
