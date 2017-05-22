@@ -739,6 +739,7 @@
 				68F3F9B81D70E82E00840DD2 /* Assets.xcassets */,
 				68F3F9AF1D70E82E00840DD2 /* AppDelegate.h */,
 				68F3F9B01D70E82E00840DD2 /* AppDelegate.m */,
+				68F3F9AD1D70E82E00840DD2 /* main.m */,
 				68F3F9BD1D70E82E00840DD2 /* Info.plist */,
 				68F3F9AC1D70E82E00840DD2 /* Supporting Files */,
 				68E260601D7BC3EA00425D46 /* Model.xcdatamodeld */,
@@ -767,7 +768,6 @@
 				6886A48C1D8F6EB3005E12B3 /* switch_checked.png */,
 				6886A48A1D8F6EA6005E12B3 /* switch_unchecked.png */,
 				6886A4851D8F1C49005E12B3 /* unchecked_task.png */,
-				68F3F9AD1D70E82E00840DD2 /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

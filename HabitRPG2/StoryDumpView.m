@@ -60,8 +60,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.synopsisView.text = self.storyItem.synopsis;
-    self.headlineLbl.text = self.storyItem.headline;
+    NSString *synopsis = nil!=self.storyItem?self.storyItem.synopsis:@"";
+    NSString *headline = nil!=self.storyItem?self.storyItem.headline:@"";
+    self.synopsisView.text = synopsis;
+    self.headlineLbl.text = headline;
     [self.headlineLbl sizeToFit];
     [self doneBtn];
 }

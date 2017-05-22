@@ -292,12 +292,12 @@
     if(zoneChoice==nil){
         zoneChoice = [ZoneHelper constructZoneChoice:self.userHero AndMatchHeroLvl:NO];
     }
-    if([SingletonCluster getSharedInstance].gameState==GAME_STATE_UNINITIALIZED){
-        [self afterIntro];
-    }
     self.nowZone = zoneChoice;
     [ZoneHelper moveZoneToFront:zoneChoice];
     self.nowMonster = [MonsterHelper constructRandomMonster:zoneChoice.zoneKey AroundLvl:zoneChoice.lvl];
+    if([SingletonCluster getSharedInstance].gameState==GAME_STATE_UNINITIALIZED){
+        [self afterIntro];
+    }
     [self.dataController save:self.nowZone];
     [self.dataController save:self.nowMonster];
     [self showMonsterStory];

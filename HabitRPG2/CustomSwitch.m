@@ -48,16 +48,20 @@
 }
 
 -(UIImage *)currentOnImage{
+#if !TARGET_INTERFACE_BUILDER
     if(self.areColorsInverted){
         return self.onImageColorInverted;
     }
+#endif
     return _onImage;
 }
 
 -(UIImage *)currentOffImage{
+#if !TARGET_INTERFACE_BUILDER
     if(self.areColorsInverted){
         return self.offImageColorInverted;
     }
+#endif
     return _offImage;
 }
 
@@ -76,14 +80,13 @@
 
  //Only override drawRect: if you perform custom drawing.
  //An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    [super drawRect:rect];
-    [self addTarget:self action:@selector(onPress:) forControlEvents:UIControlEventTouchUpInside];
-    
-}
+//- (void)drawRect:(CGRect)rect {
+//    [super drawRect:rect];
+//}
 
--(void)onPress:(id)sender{
+-(BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event{
     self.isOn = !self.isOn;
+    return NO;
 }
 
 

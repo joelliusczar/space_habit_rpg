@@ -23,6 +23,7 @@ extern NSString* const HOME_KEY;
 +(NSMutableArray<Zone *> *)constructMultipleZoneChoices:(Hero *)hero AndMatchHeroLvl:(BOOL)matchLvl;
 +(Zone *)getZoneByZoneKey:(NSString *)zoneKey;
 +(Zone *)getZone:(BOOL)isFront;
++(NSArray<NSManagedObject *> *)getAllZones:(NSPredicate *)filter;
 +(int64_t)getNextUniqueId;
 +(void)moveZoneToFront:(Zone *)newFront;
 @end

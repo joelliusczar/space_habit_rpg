@@ -161,7 +161,7 @@ NSString* const HOME_KEY = @"HOME";
 
 +(NSArray<NSManagedObject *> *)getAllZones:(NSPredicate *)filter{
     NSFetchRequest<Zone *> *request = [Zone fetchRequest];
-    NSSortDescriptor *sortByIsFront = [[NSSortDescriptor alloc] initWithKey:@"isFront" ascending:YES];
+    NSSortDescriptor *sortByIsFront = [[NSSortDescriptor alloc] initWithKey:@"isFront" ascending:NO];
     NSArray<NSManagedObject *> *results = [[SingletonCluster getSharedInstance].dataController getItemWithRequest:request predicate:filter sortBy:@[sortByIsFront]];
     return results;
 }
@@ -177,16 +177,16 @@ NSString* const HOME_KEY = @"HOME";
 +(void)moveZoneToFront:(Zone *)newFront{
     NSArray<NSManagedObject *> *results = [ZoneHelper getAllZones:nil];
     newFront.isFront = YES;
-    NSAssert(results.count<3, @"There are too many zones");
-    if(results.count==0){
+    NSAssert(results.count<4, @"There are too many zones");
+    if(results.count==1){
         return;
     }
-    if(results.count==1){
+    if(results.count==2){
         ((Zone *)results[0]).isFront = NO;
         return;
     }
-    [[SingletonCluster getSharedInstance].dataController softDeleteModel:results[0]];
-    ((Zone *)results[1]).isFront = NO;
+    [SHData softDeleteModel:results[1]];
+    ((Zone *)results[0]).isFront = NO;
     
 }
 

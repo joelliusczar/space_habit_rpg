@@ -401,7 +401,55 @@ int rIdx_zh;
         zl = [ZoneHelper constructMultipleZoneChoices:h AndMatchHeroLvl:NO];
         XCTAssertEqual(zl.count, 5);
     }
-    
+
+    -(void)testMoveToFront{
+        Zone *z0 = [ZoneHelper constructHomeZone];
+        XCTAssertTrue(z0.isFront);
+        [SHData save:z0];
+        
+        Zone *z1 = [ZoneHelper constructEmptyZone];
+        z1.zoneKey = @"GAS";
+        [ZoneHelper moveZoneToFront:z1];
+        [SHData save:z1];
+        
+        NSArray<NSManagedObject *> *zones = [ZoneHelper getAllZones:nil];
+        XCTAssertEqual(zones.count, 2);
+        XCTAssertTrue(((Zone *)zones[0]).isFront);
+        XCTAssertTrue([((Zone *)zones[0]).zoneKey isEqualToString:@"GAS"]);
+        XCTAssertFalse(((Zone *)zones[1]).isFront);
+        XCTAssertTrue([((Zone *)zones[1]).zoneKey isEqualToString:@"HOME"]);
+        
+        Zone *z2 = [ZoneHelper constructEmptyZone];
+        z2.zoneKey = @"NEBULA";
+        [ZoneHelper moveZoneToFront:z2];
+        [SHData save:z2];
+        
+        zones = [ZoneHelper getAllZones:nil];
+        XCTAssertEqual(zones.count, 2);
+        XCTAssertTrue(((Zone *)zones[0]).isFront);
+        XCTAssertTrue([((Zone *)zones[0]).zoneKey isEqualToString:@"NEBULA"]);
+        XCTAssertFalse(((Zone *)zones[1]).isFront);
+        XCTAssertTrue([((Zone *)zones[1]).zoneKey isEqualToString:@"GAS"]);
+        
+        //these are insync from the database?
+        XCTAssertFalse(z0.isFront);
+        XCTAssertFalse(z1.isFront);
+        XCTAssertTrue(z2.isFront);
+        
+        Zone *z1_1 = (Zone *)zones[1];
+        [ZoneHelper moveZoneToFront:z1_1];
+        [SHData save:z1_1];
+        
+        zones = [ZoneHelper getAllZones:nil];
+        XCTAssertEqual(zones.count, 2);
+        XCTAssertTrue(((Zone *)zones[0]).isFront);
+        XCTAssertTrue([((Zone *)zones[0]).zoneKey isEqualToString:@"GAS"]);
+        XCTAssertFalse(((Zone *)zones[1]).isFront);
+        XCTAssertTrue([((Zone *)zones[1]).zoneKey isEqualToString:@"NEBULA"]);
+        
+        
+    }
+
     -(void)testGetZone{
         Zone *z = [ZoneHelper constructEmptyZone];
         z.isFront = YES;
