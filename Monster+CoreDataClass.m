@@ -72,4 +72,15 @@ float MAX_HP_MODIFIER = .1;
     return [self.monInfoDict getEncounterWeight:self.monsterKey];
 }
 
+-(NSMutableDictionary *)mapable{
+    return [NSMutableDictionary dictionaryWithObjectsAndKeys:
+            self.monsterKey,@"monsterKey"
+            ,[NSNumber numberWithInt:self.lvl],@"lvl"
+            ,[NSNumber numberWithInt:self.nowHp],@"nowHp"
+            ,[NSNumber numberWithInt:self.attack],@"attack"
+            ,[NSNumber numberWithInt:self.defense],@"defense"
+            ,[NSNumber numberWithInt:self.maxHp],@"maxHp"
+            , nil];
+}
+
 @end

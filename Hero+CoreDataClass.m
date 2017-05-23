@@ -9,11 +9,13 @@
 #import "Hero+CoreDataClass.h"
 
 @implementation Hero
-//-(int32_t)lvl_H{
-//    return self.lvl.intValue;
-//}
-//
-//-(void)setLvl_H:(int32_t)lvl_H{
-//    self.lvl = [NSNumber numberWithInt:lvl_H];
-//}
+-(NSMutableDictionary *)mapable{
+    return [NSMutableDictionary dictionaryWithObjectsAndKeys:
+            self.shipName,@"shipName"
+            ,[NSNumber numberWithInt:self.lvl],@"lvl"
+            ,[NSNumber numberWithInt:self.maxHp],@"maxHp"
+            ,[NSNumber numberWithInt:self.nowHp],@"nowHP"
+            ,[NSNumber numberWithInt:self.maxXp],@"maxXp"
+            ,[NSNumber numberWithInt:self.nowXp],@"nowXp",nil];
+}
 @end

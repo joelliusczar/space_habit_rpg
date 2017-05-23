@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,readonly) int32_t maxHp;
 @property (nonatomic,readonly) float treasureDropRate;
 @property (nonatomic,readonly) int32_t encounterWeight;
+@property (readonly,nonatomic) NSMutableDictionary *mapable;
 @end
 
 NS_ASSUME_NONNULL_END

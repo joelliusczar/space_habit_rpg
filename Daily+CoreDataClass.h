@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Daily : NSManagedObject
 @property (nonatomic,assign) NSInteger rowNum;
 @property (nonatomic,assign) NSInteger sectionNum;
+@property (readonly,nonatomic) NSMutableDictionary *mapable;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -11,5 +11,18 @@
 @implementation Daily
 @synthesize rowNum = _rowNum;
 @synthesize sectionNum = _sectionNum;
-
+-(NSMutableDictionary *)mapable{
+    return [NSMutableDictionary dictionaryWithObjectsAndKeys:
+            self.dailyName,@"dailyName"
+            ,[NSNumber numberWithInt:self.activeDaysHash],@"activeDaysHash"
+            ,[NSNumber numberWithInt:self.difficulty],@"difficulty"
+            ,[NSNumber numberWithInt:self.rate],@"rate"
+            ,[NSNumber numberWithInt:self.streakLength],@"streakLength"
+            ,[NSNumber numberWithInt:self.urgency],@"urgency"
+            ,[NSNumber numberWithBool:self.isActive],@"isActive"
+            ,self.lastActivationTime,@"lastActivationTime"
+            ,self.nextDueTime,@"nextDueTime"
+            ,self.rollbackActivationTime,@"rollbackActivationTime"
+            , nil];
+}
 @end

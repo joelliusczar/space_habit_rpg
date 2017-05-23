@@ -9,5 +9,11 @@
 #import "Todo+CoreDataClass.h"
 
 @implementation Todo
-
+-(NSMutableDictionary *)mapable{
+    return [NSMutableDictionary dictionaryWithObjectsAndKeys:
+            self.todoName,@"todoName"
+            ,self.dueDate,@"dueDate"
+            ,self.effectiveDate,@"effectiveDate"
+            , nil];
+}
 @end

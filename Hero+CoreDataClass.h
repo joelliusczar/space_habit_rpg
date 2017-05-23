@@ -12,7 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Hero : NSManagedObject
-//@property (nonatomic) int32_t lvl_H;
+@property (readonly,nonatomic) NSMutableDictionary *mapable;
 @end
 
 NS_ASSUME_NONNULL_END

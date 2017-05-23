@@ -13,6 +13,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Zone : NSManagedObject <P_StoryItem>
+@property (readonly,nonatomic) NSMutableDictionary *mapable;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -38,4 +38,16 @@
     return @"";
 }
 
+-(NSMutableDictionary *)mapable{
+    return [NSMutableDictionary dictionaryWithObjectsAndKeys:
+            self.fullName,@"fullName"
+            ,self.zoneKey,@"zoneKey"
+            ,self.suffix,@"suffix"
+            ,[NSNumber numberWithInt:self.lvl],@"lvl"
+            ,[NSNumber numberWithInt:self.maxMonsters],@"maxMonsters"
+            ,[NSNumber numberWithInt:self.monstersKilled],@"monstersKilled"
+            ,[NSNumber numberWithLong:self.uniqueId],@"uniqueId"
+            ,[NSNumber numberWithBool:self.isFront],@"isFront", nil];
+}
+
 @end
