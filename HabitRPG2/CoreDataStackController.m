@@ -69,6 +69,15 @@ NSString *defaultDbName = @"Model.sqlite";
     return _coordinator;
 }
 
+@synthesize transactionContext = _transactionContext;
+-(NSManagedObjectContext *)transactionContext{
+    if(nil==_transactionContext){
+        _transactionContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        [_transactionContext setPersistentStoreCoordinator:self.coordinator];
+    }
+    return _transactionContext;
+}
+
 -(instancetype)init{
     if(self=[super init]){
         _dbFileName = defaultDbName;
@@ -198,17 +207,25 @@ NSString *defaultDbName = @"Model.sqlite";
     return results;
 }
 
+-(BOOL)saveWithContext:(NSManagedObjectContext *)context{
+    NSError *error;
+    BOOL success;
+    if(!(success = [context save:&error])){
+        NSLog(@"Error saving context: %@",error.localizedFailureReason);
+    }
+    return success;
+}
+
 -(BOOL)save:(NSManagedObject *)entity{
     if(self.disableSave){
         return self.disabledSaveResult;
     }
     
-    NSError *error;
-    BOOL success;
-    if(!(success = [[self getContext:entity] save:&error])){
-        NSLog(@"Error saving context: %@",error.localizedFailureReason);
-    }
-    return success;
+    return [self saveWithContext:[self getContext:entity]];
+}
+
+-(BOOL)saveTransaction{
+    return [self saveWithContext:self.transactionContext];
 }
 
 -(void)softDeleteModel:(NSManagedObject *)model{

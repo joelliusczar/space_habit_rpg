@@ -16,6 +16,7 @@
 @protocol P_CoreData <NSObject>
 @property (nonatomic,strong) OnlyOneEntities *userData;
 @property (nonatomic,assign) NSUInteger ConcurrencyType;
+@property (nonatomic,strong) NSManagedObjectContext *transactionContext;
 +(instancetype)newWithDBFileName: (NSString *) dbFileName;
 +(instancetype)newWithDBFileName:(NSString *)dbFileName AndConcurrencyType:(NSUInteger)concurrencyType;
 +(instancetype)newWithConcurrencyType:(NSUInteger)concurrencyType;
@@ -30,6 +31,7 @@
                              predicate: (NSPredicate *)filter
                                 sortBy: (NSArray<NSSortDescriptor *> *)sortArray;
 -(BOOL)save:(NSManagedObject *)entity;
+-(BOOL)saveTransaction;
 -(void)softDeleteModel:(NSManagedObject *)model;
 -(BOOL)deleteModelAndSave:(NSManagedObject *)model;
 -(void)deleteAllRecords;
