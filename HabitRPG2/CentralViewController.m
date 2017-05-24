@@ -33,6 +33,8 @@
 #import "SingletonCluster.h"
 #import "MonsterHelper.h"
 #import "StoryDumpView.h"
+#import "ZoneTransaction+CoreDataClass.h"
+#import "MonsterTransaction+CoreDataClass.h"
 
 @import CoreGraphics;
 
@@ -295,11 +297,26 @@
     self.nowZone = zoneChoice;
     [ZoneHelper moveZoneToFront:zoneChoice];
     self.nowMonster = [MonsterHelper constructRandomMonster:zoneChoice.zoneKey AroundLvl:zoneChoice.lvl];
+    NSMutableDictionary *zoneInfo = self.nowZone.mapable;
+    NSMutableDictionary *monsterInfo = self.nowMonster.mapable;
     if([SingletonCluster getSharedInstance].gameState==GAME_STATE_UNINITIALIZED){
         [self afterIntro];
     }
     [self.dataController save:self.nowZone];
     [self.dataController save:self.nowMonster];
+    [self.dataController.transactionContext performBlock:^{
+        ZoneTransaction *zt = (ZoneTransaction *)[self.dataController constructEmptyEntity:ZONE_TRANSACTION_ENTITY_NAME];
+        zt.timestamp = [NSDate date];
+        zt.misc = [CommonUtilities dictToString:zoneInfo];
+        
+        MonsterTransaction *mt = (MonsterTransaction *)[self.dataController constructEmptyEntity:MONSTER_TRANSACTION_ENTITY_NAME];
+        mt.timestamp = [NSDate date];
+        mt.misc = [CommonUtilities dictToString:monsterInfo];
+        
+        if(![self.dataController saveTransaction]){
+            abort();
+        }
+    }];
     [self showMonsterStory];
 }
 

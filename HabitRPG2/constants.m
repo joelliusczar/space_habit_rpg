@@ -19,6 +19,14 @@ NSString* const MONSTER_ENTITY_NAME = @"Monster";
 NSString* const DATA_INFO_ENTITY_NAME = @"DataInfo";
 NSString* const SUFFIX_ENTITY_NAME = @"Suffix";
 
+NSString* const DAILY_TRANSACTION_ENTITY_NAME = @"DailyTransaction";
+NSString* const HABIT_TRANSACTION_ENTITY_NAME = @"HabitTransaction";
+NSString* const TODO_TRANSACTION_ENTITY_NAME = @"TodoTransaction";
+NSString* const GOOD_TRANSACTION_ENTITY_NAME = @"GoodTransaction";
+NSString* const HERO_TRANSACTION_ENTITY_NAME = @"HeroTransaction";
+NSString* const ZONE_TRANSACTION_ENTITY_NAME = @"ZoneTransaction";
+NSString* const MONSTER_TRANSACTION_ENTITY_NAME = @"MonsterTransaction";
+
 
 u_int32_t const DAYS_IN_WEEK = 7;
 u_int32_t const MAX_MONSTER_RAND_UP_BOUND = 11;

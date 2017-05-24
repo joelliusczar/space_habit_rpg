@@ -16,7 +16,7 @@
             ,[NSNumber numberWithInt:self.difficulty],@"difficulty"
             ,[NSNumber numberWithInt:self.freeViolations],@"freeViolations"
             ,[NSNumber numberWithInt:self.urgency],@"urgency"
-            ,[NSNumber numberWithBool:self.polarity],@"polarity"
+            ,[NSNumber numberWithBool:self.isGood],@"isGood"
             ,[NSNumber numberWithBool:self.isActive],@"isActive"
             ,[NSNumber numberWithBool:self.neglectPunishReward],@"neglectPunishReward"
             , nil];

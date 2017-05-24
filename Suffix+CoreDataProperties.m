@@ -2,7 +2,7 @@
 //  Suffix+CoreDataProperties.m
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 3/26/17.
+//  Created by Joel Pridgen on 5/23/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
@@ -14,7 +14,7 @@
 	return [[NSFetchRequest alloc] initWithEntityName:@"Suffix"];
 }
 
-@dynamic zoneKey;
 @dynamic visitCount;
+@dynamic zoneKey;
 
 @end

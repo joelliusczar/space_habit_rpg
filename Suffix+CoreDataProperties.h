@@ -2,7 +2,7 @@
 //  Suffix+CoreDataProperties.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 3/26/17.
+//  Created by Joel Pridgen on 5/23/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
@@ -15,8 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<Suffix *> *)fetchRequest;
 
-@property (nullable, nonatomic, copy) NSString *zoneKey;
 @property (nonatomic) int32_t visitCount;
+@property (nullable, nonatomic, copy) NSString *zoneKey;
 
 @end
 

@@ -2,7 +2,7 @@
 //  HabitTransaction+CoreDataProperties.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 5/9/17.
+//  Created by Joel Pridgen on 5/23/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
@@ -15,10 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<HabitTransaction *> *)fetchRequest;
 
-@property (nonatomic) int32_t action;
-@property (nullable, nonatomic, copy) NSDate *timestamp;
 @property (nullable, nonatomic, copy) NSString *misc;
-@property (nullable, nonatomic, retain) Habit *transaction_habit;
+@property (nullable, nonatomic, copy) NSDate *timestamp;
 
 @end
 

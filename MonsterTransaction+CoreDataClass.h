@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "P_Transaction.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,3 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 NS_ASSUME_NONNULL_END
 
 #import "MonsterTransaction+CoreDataProperties.h"
+
+@interface MonsterTransaction (Transaction) <P_Transaction>
+@end

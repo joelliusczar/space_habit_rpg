@@ -2,7 +2,7 @@
 //  DataInfo+CoreDataProperties.m
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 5/2/17.
+//  Created by Joel Pridgen on 5/23/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
@@ -15,7 +15,7 @@
 }
 
 @dynamic gameState;
-@dynamic nextZoneId;
 @dynamic migrationNumber;
+@dynamic nextZoneId;
 
 @end

@@ -2,7 +2,7 @@
 //  Hero+CoreDataProperties.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 1/16/17.
+//  Created by Joel Pridgen on 5/23/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 

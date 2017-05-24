@@ -29,4 +29,5 @@ CGFloat GetYStartUnderLabel(CGFloat height);
 +(void)invertTitleShadowColorForAllStates:(UIView *_Nonnull)view;
 +(UIImage *_Nonnull)invertImageColors:(UIImage *_Nonnull)img;
 +(void)checkForAndApplyVisualChanges:(UIView *_Nonnull)view;
++(NSString *_Nonnull)dictToString:(NSDictionary *_Nonnull)dict;
 @end

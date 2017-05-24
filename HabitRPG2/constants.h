@@ -36,6 +36,13 @@ extern NSString* const MONSTER_ENTITY_NAME;
 extern NSString* const DATA_INFO_ENTITY_NAME;
 extern NSString* const SUFFIX_ENTITY_NAME;
 
+extern NSString* const DAILY_TRANSACTION_ENTITY_NAME;
+extern NSString* const HABIT_TRANSACTION_ENTITY_NAME;
+extern NSString* const TODO_TRANSACTION_ENTITY_NAME;
+extern NSString* const GOOD_TRANSACTION_ENTITY_NAME;
+extern NSString* const ZONE_TRANSACTION_ENTITY_NAME;
+extern NSString* const MONSTER_TRANSACTION_ENTITY_NAME;
+
 extern u_int32_t const DAYS_IN_WEEK;
 extern u_int32_t const MAX_MONSTER_RAND_UP_BOUND;
 extern u_int32_t const MAX_MONSTER_LOW_BOUND;

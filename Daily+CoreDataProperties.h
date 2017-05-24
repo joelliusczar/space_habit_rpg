@@ -2,8 +2,8 @@
 //  Daily+CoreDataProperties.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 11/15/16.
-//  Copyright © 2016 Joel Pridgen. All rights reserved.
+//  Created by Joel Pridgen on 5/23/17.
+//  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
 #import "Daily+CoreDataClass.h"
@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic) int32_t activeDaysHash;
 @property (nullable, nonatomic, copy) NSString *dailyName;
-@property (nonatomic) int16_t difficulty;
+@property (nonatomic) int32_t difficulty;
 @property (nonatomic) BOOL isActive;
 @property (nullable, nonatomic, copy) NSDate *lastActivationTime;
 @property (nullable, nonatomic, copy) NSDate *nextDueTime;
@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) int32_t rate;
 @property (nullable, nonatomic, copy) NSDate *rollbackActivationTime;
 @property (nonatomic) int32_t streakLength;
-@property (nonatomic) int16_t urgency;
+@property (nonatomic) int32_t urgency;
 
 @end
 
