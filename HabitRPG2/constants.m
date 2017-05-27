@@ -38,6 +38,9 @@ u_int32_t const MIN_ZONE_CHOICE_COUNT = 3;
 u_int32_t const MAX_ZONE_CHOICE_RAND_UP_BOUND = 3;
 CGFloat const ZONE_CHOICE_ROW_HEIGHT = 75;
 
+NSString* const TRANSACTION_TYPE_KEY = @"TransactionType";
+NSString* const TRANSACTION_TYPE_CREATE = @"ADDED";
+
 //zone groups
 NSString* const LVL_0_ZONES = @"LVL_0_ZONES";
 NSString* const LVL_1_ZONES = @"LVL_1_ZONES";
