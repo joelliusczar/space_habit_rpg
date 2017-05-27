@@ -12,6 +12,7 @@
 #import "ZoneHelper.h"
 #import "MockStdLibWrapper.h"
 #import "TestGlobals.h"
+#import "TestHelpers.h"
 
 #define SET_UP_BOUND() shouldUseLowerBoundChoices_zh[i++] = NO
 #define SET_LOW_BOUND() shouldUseLowerBoundChoices_zh[i++] = YES
@@ -32,6 +33,8 @@ NSManagedObjectContext *testContext_zh;
     ASSERT_IS_TEST();
     testContext_zh = [SHData constructContext:NSMainQueueConcurrencyType];
     SHData.inUseContext = testContext_zh;
+    [TestHelpers resetCoreData:SHData.inUseContext];
+    [SHData initializeCoreData];
     mw_zh = [[MockStdLibWrapper alloc] init];
     [SingletonCluster getSharedInstance].stdLibWrapper =mw_zh;
     mw_zh.mockRandom = ^uint(uint range){

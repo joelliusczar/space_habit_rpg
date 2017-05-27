@@ -120,7 +120,7 @@ NSString* const HOME_KEY = @"HOME";
 +(int32_t)getVisitCountForZone:(NSString *)zoneKey{
     Suffix *s = [ZoneHelper getSuffixEntity:zoneKey];
     int currentVisitCount = s.visitCount++;
-    [SHData save];
+    [SHData saveAndWait];
     return currentVisitCount;
 }
 

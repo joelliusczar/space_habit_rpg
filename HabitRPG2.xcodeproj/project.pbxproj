@@ -38,6 +38,7 @@
 		273979001EC4092A00F217B4 /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273978FF1EC4092A00F217B4 /* IntroViewController.xib */; };
 		275A079C1ED50AF5001422CD /* GoodTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 275A07841ED50AF5001422CD /* GoodTransaction+CoreDataClass.m */; };
 		275A079D1ED50AF5001422CD /* GoodTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 275A07861ED50AF5001422CD /* GoodTransaction+CoreDataProperties.m */; };
+		275A07B71EDA1FB9001422CD /* TestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 275A07B61EDA1FB9001422CD /* TestHelpers.m */; };
 		277ABEC91E949B96008CC239 /* StdLibWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEC81E949B96008CC239 /* StdLibWrapper.m */; };
 		277ABED11E95DEF6008CC239 /* ProbWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABED01E95DEF6008CC239 /* ProbWeight.m */; };
 		277ABEF21E975959008CC239 /* ModelsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEF11E975959008CC239 /* ModelsTest.m */; };
@@ -191,6 +192,8 @@
 		275A07841ED50AF5001422CD /* GoodTransaction+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GoodTransaction+CoreDataClass.m"; path = "../GoodTransaction+CoreDataClass.m"; sourceTree = "<group>"; };
 		275A07851ED50AF5001422CD /* GoodTransaction+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GoodTransaction+CoreDataProperties.h"; path = "../GoodTransaction+CoreDataProperties.h"; sourceTree = "<group>"; };
 		275A07861ED50AF5001422CD /* GoodTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GoodTransaction+CoreDataProperties.m"; path = "../GoodTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
+		275A07B51EDA1FB9001422CD /* TestHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHelpers.h; sourceTree = "<group>"; };
+		275A07B61EDA1FB9001422CD /* TestHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHelpers.m; sourceTree = "<group>"; };
 		277ABEC61E949B76008CC239 /* P_stdlibWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_stdlibWrapper.h; sourceTree = "<group>"; };
 		277ABEC71E949B96008CC239 /* StdLibWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StdLibWrapper.h; sourceTree = "<group>"; };
 		277ABEC81E949B96008CC239 /* StdLibWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StdLibWrapper.m; sourceTree = "<group>"; };
@@ -402,6 +405,8 @@
 				277ABEF01E97592A008CC239 /* Tests */,
 				277ABEDE1E96F68E008CC239 /* Info.plist */,
 				277ABF611EA3BC97008CC239 /* TestGlobals.h */,
+				275A07B51EDA1FB9001422CD /* TestHelpers.h */,
+				275A07B61EDA1FB9001422CD /* TestHelpers.m */,
 			);
 			path = HabitRPG2Tests;
 			sourceTree = "<group>";
@@ -950,6 +955,7 @@
 				277ABEF21E975959008CC239 /* ModelsTest.m in Sources */,
 				277ABF701EAD98EB008CC239 /* ProbilityWeightTestFourItems.m in Sources */,
 				277ABF691EA46CE1008CC239 /* ProbilityWeightTest.m in Sources */,
+				275A07B71EDA1FB9001422CD /* TestHelpers.m in Sources */,
 				277ABF2E1E9C31C0008CC239 /* MockStdLibWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

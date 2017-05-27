@@ -14,12 +14,14 @@
 @class OnlyOneEntities;
 
 @protocol P_CoreData <NSObject>
+
 @property (strong,nonatomic) OnlyOneEntities *userData;
 @property (strong,nonatomic) NSManagedObjectContext *writeContext;
 @property (strong,nonatomic) NSManagedObjectContext *readContext;
 @property (strong,nonatomic) NSManagedObjectContext *inUseContext;
 +(instancetype)newWithDBFileName: (NSString *) dbFileName;
 -(NSManagedObject *)constructEmptyEntity:(NSString *) entityType;
+-(void)initializeCoreData;
 -(NSFetchedResultsController *)getItemFetcher:(NSString *) entityName
                                     predicate: (NSPredicate *) filter
                                        sortBy:(NSArray *) sortAttrs;
@@ -30,7 +32,9 @@
                              predicate: (NSPredicate *)filter
                                 sortBy: (NSArray<NSSortDescriptor *> *)sortArray;
 -(NSManagedObjectContext *)constructContext:(NSManagedObjectContextConcurrencyType)concurrencyType;
--(void)save;
+-(dispatch_semaphore_t)save;
+-(void)saveAndWait;
 -(void)softDeleteModel:(NSManagedObject *)model;
 -(void)insertIntoContext:(NSManagedObject *)model;
+
 @end

@@ -12,6 +12,7 @@
 #import "Monster+CoreDataClass.h"
 #import "MockStdLibWrapper.h"
 #import "TestGlobals.h"
+#import "TestHelpers.h"
 
 #define SET_UP_BOUND() shouldUseLowerBoundChoices_mh[i++] = NO
 #define SET_LOW_BOUND() shouldUseLowerBoundChoices_mh[i++] = YES
@@ -32,6 +33,8 @@ NSManagedObjectContext *testContext_mh;
         ASSERT_IS_TEST();
         testContext_mh = [SHData constructContext:NSMainQueueConcurrencyType];
         SHData.inUseContext = testContext_mh;
+        [TestHelpers resetCoreData:SHData.inUseContext];
+        [SHData initializeCoreData];
         mw_mh = [[MockStdLibWrapper alloc] init];
         [SingletonCluster getSharedInstance].stdLibWrapper =mw_mh;
         rIdx_mh = 0;

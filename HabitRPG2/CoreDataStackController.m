@@ -172,14 +172,28 @@ NSString *defaultDbName = @"Model.sqlite";
     return context;
 }
 
--(void)save{
+-(void)saveWithContext:(NSManagedObjectContext *)context{
+    BOOL success;
+    NSError *error;
+    if(!(success = [context save:&error])){
+        NSLog(@"Error saving context: %@",error.localizedFailureReason);
+    }
+}
+
+-(dispatch_semaphore_t)save{
     NSManagedObjectContext *context = self.inUseContext?self.inUseContext:self.writeContext;
+    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
     [context performBlock:^{
-        BOOL success;
-        NSError *error;
-        if(!(success = [context save:&error])){
-            NSLog(@"Error saving context: %@",error.localizedFailureReason);
-        }
+        [self saveWithContext:context];
+        dispatch_semaphore_signal(sema);
+    }];
+    return sema;
+}
+
+-(void)saveAndWait{
+    NSManagedObjectContext *context = self.inUseContext?self.inUseContext:self.writeContext;
+    [context performBlockAndWait:^{
+        [self saveWithContext:context];
     }];
 }
 
