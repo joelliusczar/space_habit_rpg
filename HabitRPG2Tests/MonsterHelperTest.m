@@ -23,22 +23,26 @@
 MockStdLibWrapper *mw_mh;
 BOOL shouldUseLowerBoundChoices_mh[25];
 int rIdx_mh;
+NSManagedObjectContext *testContext_mh;
 
 @implementation MonsterHelperTest
 
     - (void)setUp {
         [super setUp];
         ASSERT_IS_TEST();
+        testContext_mh = [SHData constructContext:NSMainQueueConcurrencyType];
+        SHData.inUseContext = testContext_mh;
         mw_mh = [[MockStdLibWrapper alloc] init];
         [SingletonCluster getSharedInstance].stdLibWrapper =mw_mh;
         rIdx_mh = 0;
         mw_mh.mockRandom = ^uint(uint range){
             return shouldUseLowerBoundChoices_mh[rIdx_mh++]?0:(range-1);
         };
-        DELETE_ALL();
     }
 
     - (void)tearDown {
+        testContext_mh = nil;
+        SHData.inUseContext = nil;
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         [super tearDown];
     }

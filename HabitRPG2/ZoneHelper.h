@@ -24,6 +24,5 @@ extern NSString* const HOME_KEY;
 +(Zone *)getZoneByZoneKey:(NSString *)zoneKey;
 +(Zone *)getZone:(BOOL)isFront;
 +(NSArray<NSManagedObject *> *)getAllZones:(NSPredicate *)filter;
-+(int64_t)getNextUniqueId;
 +(void)moveZoneToFront:(Zone *)newFront;
 @end

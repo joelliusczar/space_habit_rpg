@@ -176,7 +176,7 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
     self.modelForEditing.streakLength = 0;
     self.modelForEditing.activeDaysHash = [self.dailyHelper calculateActiveDaysHash:self.activeDaySwitches];
     //todo add something for custom reward
-    [self.dataController save:self.modelForEditing];
+    [self.dataController save];
     if(self.rowInfo == nil){
         [self.parentDailyController showNewDaily:self.modelForEditing];
     }
@@ -188,10 +188,11 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 
 -(BOOL)deleteModel{
     
-    BOOL success = [self.dataController deleteModelAndSave:self.modelForEditing];
+    [self.dataController softDeleteModel:self.modelForEditing]; //TODO decided if save happens here. I think
+    //it does, but we're not here yet.
     [self.parentDailyController removeItemFromViewAtRow:self.rowInfo];
     [self cleanUp];
-    return success;
+    return YES; //TODO: refactor so return type is void
 }
 
 -(void)cleanUp{

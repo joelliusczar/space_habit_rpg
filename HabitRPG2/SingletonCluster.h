@@ -15,13 +15,12 @@
 #import "MonsterInfoDictionary.h"
 #import "P_stdlibWrapper.h"
 
-#define SAVE_DATA(entity) [[SingletonCluster getSharedInstance].dataController save:entity]
+#define SAVE_DATA() [[SingletonCluster getSharedInstance].dataController save]
 #define SHData [SingletonCluster getSharedInstance].dataController
 
 @interface SingletonCluster : NSObject
 +(instancetype)getSharedInstance;
 @property (nonatomic,strong) NSObject<P_CoreData> *dataController;
-@property (nonatomic,strong) NSObject<P_CoreData> *concurrentDataController;
 @property (nonatomic,strong) NSObject<P_ResourceUtility> *resourceUtility;
 @property (nonatomic,strong) ZoneInfoDictionary *zoneInfoDictionary;
 @property (nonatomic,strong) MonsterInfoDictionary *monsterInfoDictionary;

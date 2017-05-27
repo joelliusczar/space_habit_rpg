@@ -32,13 +32,6 @@
     return _dataController;
 }
 
-@synthesize concurrentDataController = _concurrentDataController;
--(NSObject<P_CoreData> *)concurrentDataController{
-    if(_concurrentDataController==nil){
-        _concurrentDataController = [CoreDataStackController newWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    }
-    return _concurrentDataController;
-}
 
 @synthesize resourceUtility = _resourceUtility;
 -(NSObject<P_ResourceUtility> *)resourceUtility{

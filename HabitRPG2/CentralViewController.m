@@ -178,7 +178,7 @@
             return;
         }
         m = [MonsterHelper constructRandomMonster:z.zoneKey AroundLvl:z.lvl];
-        [SHData save:m];
+        [SHData save];
         [self showMonsterStory];
     }
     self.nowMonster = m;
@@ -200,7 +200,6 @@
 
 -(void)setToShowStory:(BOOL)shouldShowStory{
     self.userSettings.storyModeisOn = shouldShowStory;
-    [self.dataController save:self.userSettings];
 }
 
 -(void)showZoneChoiceView:(NSArray<Zone *> *)zoneChoices{
@@ -287,36 +286,27 @@
 }
 
 -(void)afterZonePick:(Zone *)zoneChoice{
-    if(zoneChoice!=nil){
-        NSSet<NSManagedObject *> *zSet = [NSSet setWithObject:zoneChoice];
-        [SHData removeInsertedNotInSet:zSet];
-    }
     if(zoneChoice==nil){
         zoneChoice = [ZoneHelper constructZoneChoice:self.userHero AndMatchHeroLvl:NO];
     }
-    self.nowZone = zoneChoice;
+    
     [ZoneHelper moveZoneToFront:zoneChoice];
+    [self.dataController insertIntoContext:zoneChoice];
+    self.nowZone = zoneChoice;
     self.nowMonster = [MonsterHelper constructRandomMonster:zoneChoice.zoneKey AroundLvl:zoneChoice.lvl];
     NSMutableDictionary *zoneInfo = self.nowZone.mapable;
     NSMutableDictionary *monsterInfo = self.nowMonster.mapable;
     if([SingletonCluster getSharedInstance].gameState==GAME_STATE_UNINITIALIZED){
         [self afterIntro];
     }
-    [self.dataController save:self.nowZone];
-    [self.dataController save:self.nowMonster];
-    [self.dataController.transactionContext performBlock:^{
-        ZoneTransaction *zt = (ZoneTransaction *)[self.dataController constructEmptyEntity:ZONE_TRANSACTION_ENTITY_NAME];
-        zt.timestamp = [NSDate date];
-        zt.misc = [CommonUtilities dictToString:zoneInfo];
-        
-        MonsterTransaction *mt = (MonsterTransaction *)[self.dataController constructEmptyEntity:MONSTER_TRANSACTION_ENTITY_NAME];
-        mt.timestamp = [NSDate date];
-        mt.misc = [CommonUtilities dictToString:monsterInfo];
-        
-        if(![self.dataController saveTransaction]){
-            abort();
-        }
-    }];
+    ZoneTransaction *zt = (ZoneTransaction *)[self.dataController constructEmptyEntity:ZONE_TRANSACTION_ENTITY_NAME];
+    zt.timestamp = [NSDate date];
+    zt.misc = [CommonUtilities dictToString:zoneInfo];
+    
+    MonsterTransaction *mt = (MonsterTransaction *)[self.dataController constructEmptyEntity:MONSTER_TRANSACTION_ENTITY_NAME];
+    mt.timestamp = [NSDate date];
+    mt.misc = [CommonUtilities dictToString:monsterInfo];
+    [self.dataController save];
     [self showMonsterStory];
 }
 
@@ -327,8 +317,6 @@
     [self setupTabs];
     self.dataController.userData.theDataInfo.gameState = GAME_STATE_INITIALIZED;
     self.userSettings.createDate = [NSDate date];
-    [self.dataController save:self.dataController.userData.theDataInfo];
-    [self.dataController save:self.userSettings];
 }
 
 -(void)initializeStatesView{

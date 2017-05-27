@@ -14,12 +14,11 @@
 @class OnlyOneEntities;
 
 @protocol P_CoreData <NSObject>
-@property (nonatomic,strong) OnlyOneEntities *userData;
-@property (nonatomic,assign) NSUInteger ConcurrencyType;
-@property (nonatomic,strong) NSManagedObjectContext *transactionContext;
+@property (strong,nonatomic) OnlyOneEntities *userData;
+@property (strong,nonatomic) NSManagedObjectContext *writeContext;
+@property (strong,nonatomic) NSManagedObjectContext *readContext;
+@property (strong,nonatomic) NSManagedObjectContext *inUseContext;
 +(instancetype)newWithDBFileName: (NSString *) dbFileName;
-+(instancetype)newWithDBFileName:(NSString *)dbFileName AndConcurrencyType:(NSUInteger)concurrencyType;
-+(instancetype)newWithConcurrencyType:(NSUInteger)concurrencyType;
 -(NSManagedObject *)constructEmptyEntity:(NSString *) entityType;
 -(NSFetchedResultsController *)getItemFetcher:(NSString *) entityName
                                     predicate: (NSPredicate *) filter
@@ -30,12 +29,8 @@
 -(NSArray<NSManagedObject *> *)getItemWithRequest:(NSFetchRequest *) fetchRequest
                              predicate: (NSPredicate *)filter
                                 sortBy: (NSArray<NSSortDescriptor *> *)sortArray;
--(BOOL)save:(NSManagedObject *)entity;
--(BOOL)saveTransaction;
+-(NSManagedObjectContext *)constructContext:(NSManagedObjectContextConcurrencyType)concurrencyType;
+-(void)save;
 -(void)softDeleteModel:(NSManagedObject *)model;
--(BOOL)deleteModelAndSave:(NSManagedObject *)model;
--(void)deleteAllRecords;
--(NSManagedObjectContext *)getContextByName:(NSString *)entityName;
--(NSManagedObjectContext *)getContext:(NSManagedObject *)managedObject;
--(void)removeInsertedNotInSet:(NSSet<NSManagedObject *> *)keepThese;
+-(void)insertIntoContext:(NSManagedObject *)model;
 @end

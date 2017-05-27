@@ -49,7 +49,7 @@ NSString* const HOME_KEY = @"HOME";
 
 +(NSString*)getRandomZoneDefinitionKey:(NSUInteger)heroLvl{
     NSArray<NSString *> *groupKeys = [ZoneHelper getUnlockedZoneGroupKeys: heroLvl];
-    uint32_t r = [CommonUtilities randomUInt:(uint32_t)groupKeys.count];
+    uint r = [CommonUtilities randomUInt:(uint)groupKeys.count];
     NSString *groupKey = groupKeys[r];
     ZoneInfoDictionary *zd = [SingletonCluster getSharedInstance].zoneInfoDictionary;
     NSArray *zoneList = [zd getGroupKeyList:groupKey];
@@ -77,7 +77,7 @@ NSString* const HOME_KEY = @"HOME";
 }
 
 +(Zone *)constructEmptyZone{
-    return (Zone *)[[SingletonCluster getSharedInstance].dataController constructEmptyEntity:ZONE_ENTITY_NAME];
+    return [[Zone alloc] initWithEntity:Zone.entity insertIntoManagedObjectContext:nil];
 }
 
 +(Zone *)constructHomeZone{
@@ -87,9 +87,7 @@ NSString* const HOME_KEY = @"HOME";
     z.maxMonsters = 0;
     z.monstersKilled = 0;
     z.suffix = @"";
-    z.uniqueId = [self getNextUniqueId];
     z.isFront = YES;
-    [[SingletonCluster getSharedInstance].dataController save:z];
     return z;
 }
 
@@ -105,13 +103,16 @@ NSString* const HOME_KEY = @"HOME";
 }
 
 +(NSMutableArray<Zone *> *)constructMultipleZoneChoices:(Hero *)hero AndMatchHeroLvl:(BOOL)matchLvl{
-    u_int32_t zoneCount = [CommonUtilities randomUInt:MAX_ZONE_CHOICE_RAND_UP_BOUND]  + MIN_ZONE_CHOICE_COUNT;
+    //Zone create uses nil context so that should be okay
+    NSManagedObjectContext *suffixContext = [SHData constructContext:NSMainQueueConcurrencyType];
+    SHData.inUseContext = suffixContext;
+    uint zoneCount = [CommonUtilities randomUInt:MAX_ZONE_CHOICE_RAND_UP_BOUND]  + MIN_ZONE_CHOICE_COUNT;
     NSMutableArray<Zone *> *choices = [NSMutableArray arrayWithCapacity:zoneCount];
     choices[0] = [self constructZoneChoice:hero AndMatchHeroLvl:matchLvl];
-    for(u_int32_t i = 1;i<zoneCount;i++){
+    for(uint i = 1;i<zoneCount;i++){
         choices[i] = [self constructZoneChoice:hero AndMatchHeroLvl:NO];
     }
-    
+    SHData.inUseContext = nil;
     return choices;
 }
 
@@ -119,7 +120,7 @@ NSString* const HOME_KEY = @"HOME";
 +(int32_t)getVisitCountForZone:(NSString *)zoneKey{
     Suffix *s = [ZoneHelper getSuffixEntity:zoneKey];
     int currentVisitCount = s.visitCount++;
-    [[SingletonCluster getSharedInstance].dataController save:s];
+    [SHData save];
     return currentVisitCount;
 }
 
@@ -127,14 +128,14 @@ NSString* const HOME_KEY = @"HOME";
     NSFetchRequest<Suffix *> *request = [Suffix fetchRequest];
     NSSortDescriptor *sortByZoneKey = [[NSSortDescriptor alloc] initWithKey:@"zoneKey" ascending:NO];
     NSPredicate *filter = [NSPredicate predicateWithFormat:@"zoneKey = %@",zoneKey];
-    NSArray<NSManagedObject *> *results = [[SingletonCluster getSharedInstance].dataController getItemWithRequest:request predicate:filter sortBy:@[sortByZoneKey]];
+    NSArray<NSManagedObject *> *results = [SHData getItemWithRequest:request predicate:filter sortBy:@[sortByZoneKey]];
     NSAssert(results.count<2, @"There are too many entities");
     Suffix *s;
     if(results.count){
         s = (Suffix *)results[0];
     }
     else{
-        s = (Suffix *)[[SingletonCluster getSharedInstance].dataController constructEmptyEntity:SUFFIX_ENTITY_NAME];
+        s = (Suffix *)[SHData constructEmptyEntity:SUFFIX_ENTITY_NAME];
         s.zoneKey = zoneKey;
     }
     return s;
@@ -162,26 +163,18 @@ NSString* const HOME_KEY = @"HOME";
 +(NSArray<NSManagedObject *> *)getAllZones:(NSPredicate *)filter{
     NSFetchRequest<Zone *> *request = [Zone fetchRequest];
     NSSortDescriptor *sortByIsFront = [[NSSortDescriptor alloc] initWithKey:@"isFront" ascending:NO];
-    NSArray<NSManagedObject *> *results = [[SingletonCluster getSharedInstance].dataController getItemWithRequest:request predicate:filter sortBy:@[sortByIsFront]];
+    NSArray<NSManagedObject *> *results = [SHData getItemWithRequest:request predicate:filter sortBy:@[sortByIsFront]];
     return results;
-}
-
-+(int64_t)getNextUniqueId{
-    DataInfo *di = [SingletonCluster getSharedInstance].dataController.userData.theDataInfo;
-    int64_t nextId = di.nextZoneId;
-    di.nextZoneId++;
-    [[SingletonCluster getSharedInstance].dataController save:di];
-    return nextId;
 }
 
 +(void)moveZoneToFront:(Zone *)newFront{
     NSArray<NSManagedObject *> *results = [ZoneHelper getAllZones:nil];
     newFront.isFront = YES;
-    NSAssert(results.count<4, @"There are too many zones");
-    if(results.count==1){
+    NSAssert(results.count<3, @"There are too many zones");
+    if(results.count==0){
         return;
     }
-    if(results.count==2){
+    if(results.count==1){
         ((Zone *)results[0]).isFront = NO;
         return;
     }

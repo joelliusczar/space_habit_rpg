@@ -68,7 +68,6 @@
     DataInfo *dataInfo = (DataInfo *)[self.dataController constructEmptyEntity: DATA_INFO_ENTITY_NAME];
     dataInfo.nextZoneId = 0;
     dataInfo.gameState = GAME_STATE_UNINITIALIZED;
-    [self.dataController save:dataInfo];
     return dataInfo;
 }
 
@@ -84,7 +83,6 @@
     settings.reminderHour = 17; //5 o'clock?
     settings.storyModeisOn = YES;
     settings.zoneLvlPenalty = 1; //0 - no penalty? 1: restart lvl?
-    [self.dataController save:settings];
     return settings;
 }
 
@@ -97,7 +95,6 @@
     hero.nowHp = 50;
     hero.nowXp = 0;
     hero.shipName = @"";
-    [self.dataController save:hero];
     return hero;
 }
 @end
