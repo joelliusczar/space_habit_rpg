@@ -25,7 +25,6 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 @property (nonatomic,strong) UIStepper *rateStep;
 @property (nonatomic,strong) UIButton *rewardCustomBtn;
 @property (nonatomic,strong) UILabel *rewardCustomLbl;
-@property (nonatomic,weak)  NSObject<P_CoreData> *dataController;
 @property (nonatomic,weak) DailyViewController *parentDailyController;
 @property (nonatomic,weak) Daily *modelForEditing;
 @property (nonatomic,strong) DailyHelper *dailyHelper;
@@ -120,7 +119,7 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 @synthesize modelForEditing = _modelForEditing;
 -(Daily *)modelForEditing{
     if(_modelForEditing == nil){
-        _modelForEditing = (Daily *)[self.dataController constructEmptyEntity:DAILY_ENTITY_NAME];
+        _modelForEditing = (Daily *)[SHData constructEmptyEntity:DAILY_ENTITY_NAME];
     }
     return _modelForEditing;
 }
@@ -135,11 +134,9 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 }
 
 
--(id)initWithDataController:(NSObject<P_CoreData> *)dataController AndWithParentDailyController:(DailyViewController *)parentDailyController{
+-(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController{
     if(self = [self initWithNibName:@"DailyEditView" bundle:nil]){
-        self.dataController = dataController;
         self.parentDailyController = parentDailyController;
-        
         [self view];
     }
     return self;
@@ -176,7 +173,7 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
     self.modelForEditing.streakLength = 0;
     self.modelForEditing.activeDaysHash = [self.dailyHelper calculateActiveDaysHash:self.activeDaySwitches];
     //todo add something for custom reward
-    [self.dataController save];
+    [SHData save]; //TODO: this is probably all sorts of fucked up at the moment
     if(self.rowInfo == nil){
         [self.parentDailyController showNewDaily:self.modelForEditing];
     }
@@ -188,7 +185,7 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 
 -(BOOL)deleteModel{
     
-    [self.dataController softDeleteModel:self.modelForEditing]; //TODO decided if save happens here. I think
+    [SHData softDeleteModel:self.modelForEditing]; //TODO decided if save happens here. I think
     //it does, but we're not here yet.
     [self.parentDailyController removeItemFromViewAtRow:self.rowInfo];
     [self cleanUp];

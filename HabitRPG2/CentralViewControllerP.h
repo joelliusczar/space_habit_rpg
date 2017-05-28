@@ -15,7 +15,6 @@
 
 @protocol CentralViewControllerP <NSObject>
 @property (nonatomic,strong) NSObject<P_CoreData> *dataController;
-@property (nonatomic,strong) EditNavigationController *editController;
 @property (nonatomic,readonly) Settings *userSettings;
 @property (nonatomic,readonly) Hero *userHero;
 @property (nonatomic,strong) Zone *nowZone;

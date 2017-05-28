@@ -13,113 +13,49 @@
 
 @interface EditNavigationController ()
 
-@property (nonatomic,strong) UIToolbar *toolbar;
-@property (nonatomic,strong) UINavigationBar *navbar;
 @property (nonatomic,strong) UIScrollView *scrollView;
-@property (nonatomic,weak) UIBarButtonItem *deleteBtn;
-@property (nonatomic,weak) UIBarButtonItem *saveBtn;
 @property (nonatomic,assign) id<EditingSaver> editingScreen;
-@property (nonatomic,weak) UINavigationItem *navItem;
-@property (nonatomic,weak) UIBarButtonItem *leaveBtn;
+@property (weak, nonatomic) IBOutlet UILabel *headline;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveBtn;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *deleteBtn;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollContainer;
 
 @end
 
 @implementation EditNavigationController
 
-@synthesize toolbar = _toolbar;
--(UIToolbar *)toolbar{
-    if(_toolbar == nil){
-        _toolbar = [self.view viewWithTag:1];
+-(instancetype)initWithTitle:(NSString *)viewTitle AndEditor:(UIViewController<EditingSaver>*)editView{
+    if(self = [self initWithNibName:@"EditNavigationController" bundle:nil]){
+        self.viewTitle = viewTitle;
+        self.editingScreen = editView;
     }
-    return _toolbar;
+    return self;
 }
-
-@synthesize navbar = _navbar;
--(UINavigationBar *)navbar{
-    if(_navbar == nil){
-        _navbar = [self.view viewWithTag:2];
-    }
-    return _navbar;
-}
-
-
-@synthesize deleteBtn = _deleteBtn;
--(UIBarButtonItem *)deleteBtn{
-    if(_deleteBtn == nil){
-        _deleteBtn = self.toolbar.items[0];
-        _deleteBtn.target = self;
-        _deleteBtn.action = @selector(pressedDelete:);
-    }
-    return _deleteBtn;
-}
-
-@synthesize saveBtn = _saveBtn;
--(UIBarButtonItem *)saveBtn{
-    
-    if(_saveBtn == nil){
-        _saveBtn = self.toolbar.items[2];
-        _saveBtn.target = self;
-        _saveBtn.action = @selector(pressedSave:);
-        
-    }
-    return _saveBtn;
-}
-
-@synthesize navItem = _navItem;
--(UINavigationItem *)navItem{
-    if(_navItem == nil){
-        _navItem = self.navbar.items[0];
-        
-    }
-    return _navItem;
-}
-
-@synthesize leaveBtn = _leaveBtn;
--(UIBarButtonItem *)leaveBtn{
-    if(_leaveBtn == nil){
-        _leaveBtn = self.navItem.leftBarButtonItem;
-        _leaveBtn.title = @"Cancel";
-        _leaveBtn.target = self;
-        _leaveBtn.action = @selector(pressedLeave:);
-    }
-    return _leaveBtn;
-}
-
 
 -(id)initWithTitle:(NSString *)viewTitle{
     if(self = [self initWithNibName:@"EditNavigationController" bundle:nil]){
-        self.viewTitle = viewTitle;
+        self.headline.text = viewTitle;
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    self.scrollView.backgroundColor = [UIColor clearColor];
-    self.navbar.delegate = self;
-    self.navItem.title = self.viewTitle;
-    [self.scrollView addSubview:self.editingScreen.view];
-    [self.view addSubview:self.scrollView];
-    self.scrollView.scrollEnabled = YES;
-    [self.view bringSubviewToFront:self.toolbar];
-    [self.view bringSubviewToFront:self.navbar];
-    [self leaveBtn];
-    [self deleteBtn];
-    [self saveBtn];
+    self.headline.text = self.viewTitle;
+    //self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    //self.scrollView.backgroundColor = [UIColor clearColor];
+    [self.scrollContainer addSubview:self.editingScreen.view];
+    self.scrollContainer.contentSize = CGSizeMake(self.scrollContainer.frame.size.width, self.editingScreen.view.frame.size.height);
+    //[self.view addSubview:self.scrollView];
+    self.scrollContainer.scrollEnabled = YES;
+    [self.scrollContainer sizeToFit];
+    //[self.view bringSubviewToFront:self.toolbar];
+    //[self.view bringSubviewToFront:self.navbar];
     
 }
 
 -(void)viewDidLayoutSubviews{
-    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, 900);
-}
-
--(void)setupTaskEditor:(id<EditingSaver>)editView{
-    self.editingScreen = editView;
-}
-
--(UIBarPosition)positionForBar:(id<UIBarPositioning>)bar{
-    return UIBarPositionTopAttached;
+    //self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, 900);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -142,6 +78,11 @@
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 
+- (IBAction)deleteBtn_press_action:(id)sender {
+}
+
+- (IBAction)saveBtn_press_action:(id)sender {
+}
 
 
 @end

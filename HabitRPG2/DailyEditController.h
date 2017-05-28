@@ -17,6 +17,6 @@
 
 
 @interface DailyEditController : UIViewController <EditingSaver>
--(id)initWithDataController:(NSObject<P_CoreData> *)dataController AndWithParentDailyController:(DailyViewController *)parentDailyController;
+-(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController;
 -(void)loadExistingDailyForEditing:(Daily *)daily WithIndexPath:(NSIndexPath *)rowInfo;
 @end

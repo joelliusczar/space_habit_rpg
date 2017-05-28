@@ -15,12 +15,12 @@
 #import "IntroViewController.h"
 #import "SingletonCluster.h"
 #import "CommonUtilities.h"
+#import "ViewHelper.h"
 
 
 @interface DailyViewController ()
 
     @property (nonatomic,weak) NSObject<P_CoreData> *dataController;
-    @property (nonatomic,weak) EditNavigationController *editController;
     @property (nonatomic,weak) UIButton *addButton;
     @property (nonatomic,strong) DailyEditController *dailyEditor;
     @property (nonatomic,weak)  CentralViewController *parentController;
@@ -35,18 +35,10 @@
 
 static NSString *const EntityName = @"Daily";
 
-@synthesize editController = _editController;
--(EditNavigationController *)editController{
-    if(_editController == nil){
-        _editController = self.parentController.editController;
-    }
-    return _editController;
-}
-
 @synthesize dailyEditor = _dailyEditor;
 -(DailyEditController *)dailyEditor{
     if(_dailyEditor == nil){
-        _dailyEditor = [[DailyEditController alloc]initWithDataController:self.dataController AndWithParentDailyController:self];
+        _dailyEditor = [[DailyEditController alloc] initWithParentDailyController:self];
     }
     return _dailyEditor;
 }
@@ -98,8 +90,6 @@ static NSString *const EntityName = @"Daily";
     
     
     [self addButton];
-
-    [self.editController setupTaskEditor:self.dailyEditor];
     
 }
 
@@ -231,15 +221,17 @@ static NSString *const EntityName = @"Daily";
 }
 
 -(void)pressedAddBtn:(id)sender{
-    self.editController.viewTitle = @"Dailies";
-    [self showViewController:self.editController sender:self];
+    DailyEditController *dailyEditor = [[DailyEditController alloc] initWithParentDailyController:self];
+    EditNavigationController *editController = [[EditNavigationController alloc] initWithTitle:@"Add Daily" AndEditor:dailyEditor];
+    [ViewHelper pushViewToFront:editController OfParent:self.parentController];
+    //[self showViewController:editController sender:self];
 }
 
 -(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     void (^pressedEdit)(UITableViewRowAction *,NSIndexPath *) = ^(UITableViewRowAction *action,NSIndexPath *path){
         [self.dailyEditor loadExistingDailyForEditing:self.incompleteItems[indexPath.row] WithIndexPath:indexPath];
-        [self showViewController:self.editController sender:self];
+        //open edit screen
     };
     
     UITableViewRowAction *openEditBox = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Edit" handler:pressedEdit];

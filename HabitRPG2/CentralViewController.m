@@ -59,14 +59,6 @@
 @synthesize nowMonster = _nowMonster;
 @synthesize nowZone = _nowZone;
 
-@synthesize editController = _editController;
--(EditNavigationController *)editController{
-    if(_editController == nil){
-        _editController = [[EditNavigationController alloc]initWithTitle:@""];
-    }
-    return _editController;
-}
-
 @synthesize dataController = _dataController;
 -(NSObject<P_CoreData> *)dataController{
     if(_dataController == nil){
