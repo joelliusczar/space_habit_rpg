@@ -10,65 +10,34 @@
 #import "CommonUtilities.h"
 #import "SingletonCluster.h"
 #import "P_CustomSwitch.h"
+#import "EditNavigationController.h"
 
 
 static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 
 
 @interface DailyEditController ()
-@property (nonatomic,strong) UITextField *nameBox;
-@property (nonatomic,strong) UITextView *descriptionBox;
-@property (nonatomic,strong) UISlider *urgencySld;
-@property (nonatomic,strong) UISlider *difficultySld;
+
+@property (weak, nonatomic) IBOutlet UITextField *nameBox;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionBox;
+@property (weak, nonatomic) IBOutlet UISlider *urgencySld;
+@property (weak, nonatomic) IBOutlet UISlider *difficultySld;
 @property (nonatomic,strong) NSMutableArray<UIButton<P_CustomSwitch> *> *activeDaySwitches;
-@property (nonatomic,strong) UILabel *rateLbl;
-@property (nonatomic,strong) UIStepper *rateStep;
-@property (nonatomic,strong) UIButton *rewardCustomBtn;
-@property (nonatomic,strong) UILabel *rewardCustomLbl;
+@property (weak, nonatomic) IBOutlet UIStepper *rateStep;
+@property (weak, nonatomic) IBOutlet UILabel *rateLbl;
+@property (weak, nonatomic) IBOutlet UILabel *rewardsList;
 @property (nonatomic,weak) DailyViewController *parentDailyController;
 @property (nonatomic,weak) Daily *modelForEditing;
 @property (nonatomic,strong) DailyHelper *dailyHelper;
 @property (nonatomic,strong) NSIndexPath *rowInfo;
 @property (nonatomic,assign) dailyStatus section;
+
 @end
 
 @implementation DailyEditController
 
-
-
-@synthesize nameBox = _nameBox;
--(UITextField *)nameBox{
-    if(_nameBox == nil){
-        _nameBox = [self.view viewWithTag:13];
-    }
-    return _nameBox;
-}
-
-@synthesize descriptionBox = _descriptionBox;
--(UITextView *)descriptionBox{
-    if(_descriptionBox == nil){
-        _descriptionBox = [self.view viewWithTag:1];
-    }
-    return _descriptionBox;
-}
-
-@synthesize urgencySld = _urgencySld;
--(UISlider *)urgencySld{
-    if(_urgencySld == nil){
-        _urgencySld = [self.view viewWithTag:2];
-        [_urgencySld addTarget:self action:@selector(urgencySlider_move:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _urgencySld;
-}
-
-@synthesize difficultySld = _difficultySld;
--(UISlider *)difficultySld{
-    if(_difficultySld == nil){
-        _difficultySld = [self.view viewWithTag:3];;
-        [_difficultySld addTarget:self action:@selector(difficultySlider_move:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _difficultySld;
-}
+@synthesize isDirty = _isDirty;
+@synthesize delegate = _delegate;
 
 @synthesize activeDaySwitches = _activeDaySwitches;
 -(NSMutableArray<UIButton<P_CustomSwitch> *> *)activeDaySwitches{
@@ -80,40 +49,6 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
         }
     }
     return _activeDaySwitches;
-}
-
-@synthesize rateLbl = _rateLbl;
--(UILabel *)rateLbl{
-    if(_rateLbl == nil){
-        _rateLbl = [self.view viewWithTag:11];
-    }
-    return _rateLbl;
-}
-
-@synthesize rateStep = _rateStep;
--(UIStepper *)rateStep{
-    if(_rateStep == nil){
-        _rateStep = [self.view viewWithTag:12];
-        [_rateStep addTarget:self action:@selector(rateStep_pressed:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _rateStep;
-}
-
-@synthesize rewardCustomBtn = _rewardCustomBtn;
--(UIButton *)rewardCustomBtn{
-    if(_rewardCustomBtn == nil){
-        _rewardCustomBtn = [self.view viewWithTag:14];
-        [_rewardCustomBtn addTarget:self action:@selector(rewardCustomBtn_pressed:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _rewardCustomBtn;
-}
-
-@synthesize rewardCustomLbl = _rewardCustomLbl;
--(UILabel *)rewardCustomLbl{
-    if(_rewardCustomLbl == nil){
-        _rewardCustomLbl = [self.view viewWithTag:15];
-    }
-    return _rewardCustomLbl;
 }
 
 @synthesize modelForEditing = _modelForEditing;
@@ -145,20 +80,28 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupControlsAndEvents];
+    @try{
+        [self removeObserver:self forKeyPath:@"isDirty" context:nil];
+    }
+    @catch(NSException *ex){}
+    [self addObserver:self forKeyPath:@"isDirty" options:NSKeyValueObservingOptionNew context:nil];
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-
-
--(void)cancelEdit{
-    [self cleanUp];
+-(void)observeValueForKeyPath:(NSString *)keyPath
+                     ofObject:(nullable id)object
+                       change:(nullable NSDictionary<NSKeyValueChangeKey,id> *)change
+                      context:(nullable void *)context{
+    if([keyPath isEqualToString:@"isDirty"]){
+        if(self.delegate){
+            [self.delegate enableSave];
+        }
+    }
+    
 }
 
 -(void)saveEdit{
@@ -212,17 +155,6 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 
 }
 
-
-
--(void)setupControlsAndEvents{
-    //trip the lazy loading
-    [self urgencySld];
-    [self difficultySld];
-    [self rateStep];
-    [self rewardCustomBtn];
-    
-}
-
 -(void)loadExistingDailyForEditing:(Daily *)daily WithIndexPath:(NSIndexPath *)rowInfo{
     [self defaultControls];
     self.modelForEditing = daily;
@@ -240,30 +172,6 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
     
 }
 
--(void)rateStep_pressed:(UIStepper *)sender{
-    double stepperValue = [sender value];
-    int32_t rate = (int32_t)stepperValue;
-    if(rate > 366){
-        rate = 366;
-    }
-    if(rate < 1){
-        rate = 1;
-    }
-    sender.value = rate;
-    self.rateLbl.text = [NSString stringWithFormat: TRIGGER_LABEL_FORMAT,(int32_t)rate];
-}
-
--(void)urgencySlider_move:(UISlider *)sender{
-    int32_t sliderValue = (int32_t)sender.value;
-    sender.value = sliderValue;
-    NSLog(@"%f",sender.value);
-}
--(void)difficultySlider_move:(UISlider *)sender{
-    int32_t sliderValue = (int32_t)sender.value;
-    sender.value = sliderValue;
-    NSLog(@"%f",sender.value);
-}
-
 -(void)rewardCustomBtn_pressed:(UIButton *)sender{
     NSLog(@"button pressed");
 }
@@ -277,5 +185,40 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)nameBox_endEdit_action:(UITextField *)sender forEvent:(UIEvent *)event {
+    
+}
+
+- (IBAction)showXtra_push_action:(UIButton *)sender forEvent:(UIEvent *)event {
+}
+
+- (IBAction)urgencySld_valueChange_action:(UISlider *)sender forEvent:(UIEvent *)event {
+    int sliderValue = (int)sender.value;
+    sender.value = sliderValue;
+    NSLog(@"%f",sender.value);
+}
+
+- (IBAction)difficultySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event {
+    int sliderValue = (int)sender.value;
+    sender.value = sliderValue;
+    NSLog(@"%f",sender.value);
+}
+
+- (IBAction)rateStep_valueChange_action:(UIStepper *)sender forEvent:(UIEvent *)event {
+    double stepperValue = [sender value];
+    int rate = (int)stepperValue;
+    if(rate > 366){
+        rate = 366;
+    }
+    if(rate < 1){
+        rate = 1;
+    }
+    sender.value = rate;
+    self.rateLbl.text = [NSString stringWithFormat: TRIGGER_LABEL_FORMAT,(int)rate];
+}
+
+- (IBAction)addRewardBtn_push_action:(UIButton *)sender forEvent:(UIEvent *)event {
+}
+
 
 @end

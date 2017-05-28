@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "P_TaskEditorDelegate.h"
 @import CoreData;
 
 @protocol EditingSaver <NSObject>
 @required
-@property UIView *view;
--(void)cancelEdit;
+@property (assign,nonatomic) id<P_TaskEditorDelegate> delegate;
+@property (assign,nonatomic) BOOL isDirty;
 -(void)saveEdit;
 -(BOOL)deleteModel;
 @end

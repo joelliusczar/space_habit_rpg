@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "EditingSaver.h"
+#import "P_TaskEditorDelegate.h"
 
-@interface EditNavigationController : UIViewController <UINavigationBarDelegate>
+@interface EditNavigationController : UIViewController<P_TaskEditorDelegate>
 @property (strong,nonatomic) NSString *viewTitle;
 -(instancetype)initWithTitle:(NSString *)viewTitle AndEditor:(UIViewController<EditingSaver>*)editView;
 @end

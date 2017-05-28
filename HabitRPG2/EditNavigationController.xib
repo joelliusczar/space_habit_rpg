@@ -12,9 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditNavigationController">
             <connections>
-                <outlet property="deleteBtn" destination="78z-Sb-09F" id="QZz-I9-Cqb"/>
+                <outlet property="background" destination="uA6-OK-2OO" id="K7S-2o-eOK"/>
+                <outlet property="deleteBtn" destination="78z-Sb-09F" id="1f0-h8-H9J"/>
                 <outlet property="headline" destination="eWw-lr-aM3" id="FnK-ll-bpY"/>
-                <outlet property="saveBtn" destination="LWG-qI-mIK" id="p6t-eJ-7h4"/>
+                <outlet property="modalView" destination="DVu-J2-zm4" id="wtc-98-7EQ"/>
+                <outlet property="saveBtn" destination="LWG-qI-mIK" id="Fcv-LF-XNd"/>
                 <outlet property="scrollContainer" destination="Tvo-tY-HIU" id="F3K-ht-x8G"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -24,8 +26,9 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="behind_alert_view.png" translatesAutoresizingMaskIntoConstraints="NO" id="uA6-OK-2OO">
+                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="behind_alert_view.png" translatesAutoresizingMaskIntoConstraints="NO" id="uA6-OK-2OO">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                    <gestureRecognizers/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DVu-J2-zm4">
                     <rect key="frame" x="63" y="163" width="288" height="410"/>
@@ -38,13 +41,13 @@
                                 <constraint firstAttribute="width" constant="272" id="pTM-tp-23D"/>
                             </constraints>
                             <items>
-                                <barButtonItem title="Delete" id="78z-Sb-09F">
+                                <barButtonItem enabled="NO" title="Delete" id="78z-Sb-09F">
                                     <connections>
                                         <action selector="deleteBtn_press_action:" destination="-1" id="Lkc-oE-iGZ"/>
                                     </connections>
                                 </barButtonItem>
                                 <barButtonItem width="155" style="plain" systemItem="fixedSpace" id="Gko-Jk-U6t"/>
-                                <barButtonItem title="Save" id="LWG-qI-mIK">
+                                <barButtonItem enabled="NO" title="Save" id="LWG-qI-mIK">
                                     <connections>
                                         <action selector="saveBtn_press_action:" destination="-1" id="pFf-Wo-MwQ"/>
                                     </connections>
