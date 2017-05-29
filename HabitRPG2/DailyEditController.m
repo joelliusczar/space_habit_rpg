@@ -34,6 +34,8 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 
 @end
 
+NSString* const IS_DIRTY = @"isDirty";
+
 @implementation DailyEditController
 
 @synthesize isDirty = _isDirty;
@@ -81,10 +83,10 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 - (void)viewDidLoad {
     [super viewDidLoad];
     @try{
-        [self removeObserver:self forKeyPath:@"isDirty" context:nil];
+        [self removeObserver:self forKeyPath:IS_DIRTY context:nil];
     }
     @catch(NSException *ex){}
-    [self addObserver:self forKeyPath:@"isDirty" options:NSKeyValueObservingOptionNew context:nil];
+    [self addObserver:self forKeyPath:IS_DIRTY options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -96,7 +98,7 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
                      ofObject:(nullable id)object
                        change:(nullable NSDictionary<NSKeyValueChangeKey,id> *)change
                       context:(nullable void *)context{
-    if([keyPath isEqualToString:@"isDirty"]){
+    if([keyPath isEqualToString:IS_DIRTY]){
         if(self.delegate){
             [self.delegate enableSave];
         }
@@ -218,6 +220,13 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 }
 
 - (IBAction)addRewardBtn_push_action:(UIButton *)sender forEvent:(UIEvent *)event {
+}
+
+-(void)dealloc{
+    @try{
+        [self removeObserver:self forKeyPath:IS_DIRTY context:nil];
+    }
+    @catch(NSException *ex){}
 }
 
 

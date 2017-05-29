@@ -14,8 +14,8 @@
 
 @interface EditNavigationController ()
 
-@property (nonatomic,strong) UIScrollView *scrollView;
-@property (nonatomic,assign) UIViewController<EditingSaver>* editingScreen;
+@property (strong,nonatomic) UIScrollView *scrollView;
+@property (strong,nonatomic) UIViewController<EditingSaver>* editingScreen;
 @property (weak, nonatomic) IBOutlet UILabel *headline;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollContainer;
 @property (weak, nonatomic) IBOutlet UIImageView *background;
