@@ -85,6 +85,7 @@
 //}
 
 -(BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event{
+    [self sendActionsForControlEvents:UIControlEventTouchUpInside];
     self.isOn = !self.isOn;
     return NO;
 }

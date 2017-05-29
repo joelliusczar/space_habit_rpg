@@ -13,10 +13,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditNavigationController">
             <connections>
                 <outlet property="background" destination="uA6-OK-2OO" id="K7S-2o-eOK"/>
-                <outlet property="deleteBtn" destination="78z-Sb-09F" id="1f0-h8-H9J"/>
+                <outlet property="deleteBtn" destination="SaF-Zy-dGk" id="m5E-hY-b5g"/>
                 <outlet property="headline" destination="eWw-lr-aM3" id="FnK-ll-bpY"/>
                 <outlet property="modalView" destination="DVu-J2-zm4" id="wtc-98-7EQ"/>
-                <outlet property="saveBtn" destination="LWG-qI-mIK" id="Fcv-LF-XNd"/>
+                <outlet property="saveBtn" destination="Rjy-6h-ASQ" id="ORc-wm-fbF"/>
                 <outlet property="scrollContainer" destination="Tvo-tY-HIU" id="F3K-ht-x8G"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -41,16 +41,28 @@
                                 <constraint firstAttribute="width" constant="272" id="pTM-tp-23D"/>
                             </constraints>
                             <items>
-                                <barButtonItem enabled="NO" title="Delete" id="78z-Sb-09F">
-                                    <connections>
-                                        <action selector="deleteBtn_press_action:" destination="-1" id="Lkc-oE-iGZ"/>
-                                    </connections>
+                                <barButtonItem style="plain" id="FzX-OP-sxi">
+                                    <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SaF-Zy-dGk">
+                                        <rect key="frame" x="16" y="7" width="57" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="Delete"/>
+                                        <connections>
+                                            <action selector="deleteBtn_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="Jmt-tu-LVP"/>
+                                        </connections>
+                                    </button>
                                 </barButtonItem>
-                                <barButtonItem width="155" style="plain" systemItem="fixedSpace" id="Gko-Jk-U6t"/>
-                                <barButtonItem enabled="NO" title="Save" id="LWG-qI-mIK">
-                                    <connections>
-                                        <action selector="saveBtn_press_action:" destination="-1" id="pFf-Wo-MwQ"/>
-                                    </connections>
+                                <barButtonItem width="137" style="plain" systemItem="fixedSpace" id="Gko-Jk-U6t"/>
+                                <barButtonItem style="plain" id="RiP-TM-LEl">
+                                    <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Rjy-6h-ASQ">
+                                        <rect key="frame" x="220" y="7" width="39" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="Save"/>
+                                        <connections>
+                                            <action selector="saveBtn_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="u7h-Qa-eed"/>
+                                        </connections>
+                                    </button>
                                 </barButtonItem>
                             </items>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

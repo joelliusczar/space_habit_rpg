@@ -11,6 +11,7 @@
 #import "SingletonCluster.h"
 #import "P_CustomSwitch.h"
 #import "EditNavigationController.h"
+#import "CustomSwitch.h"
 
 
 static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
@@ -18,19 +19,22 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 
 @interface DailyEditController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *nameBox;
-@property (weak, nonatomic) IBOutlet UITextView *descriptionBox;
-@property (weak, nonatomic) IBOutlet UISlider *urgencySld;
-@property (weak, nonatomic) IBOutlet UISlider *difficultySld;
+@property (weak,nonatomic) IBOutlet UIView *advancedOptsView;
+@property (weak,nonatomic) IBOutlet UITextField *nameBox;
+@property (weak,nonatomic) IBOutlet UITextView *notesBox;
+@property (weak,nonatomic) IBOutlet UISlider *urgencySld;
+@property (weak,nonatomic) IBOutlet UISlider *difficultySld;
+@property (weak,nonatomic) IBOutlet UIButton *showXtraOptsBtn;
 @property (nonatomic,strong) NSMutableArray<UIButton<P_CustomSwitch> *> *activeDaySwitches;
-@property (weak, nonatomic) IBOutlet UIStepper *rateStep;
-@property (weak, nonatomic) IBOutlet UILabel *rateLbl;
-@property (weak, nonatomic) IBOutlet UILabel *rewardsList;
-@property (nonatomic,weak) DailyViewController *parentDailyController;
-@property (nonatomic,weak) Daily *modelForEditing;
-@property (nonatomic,strong) DailyHelper *dailyHelper;
-@property (nonatomic,strong) NSIndexPath *rowInfo;
-@property (nonatomic,assign) dailyStatus section;
+@property (weak,nonatomic) IBOutlet UIStepper *rateStep;
+@property (weak,nonatomic) IBOutlet UILabel *rateLbl;
+@property (weak,nonatomic) IBOutlet UILabel *rewardsList;
+@property (weak,nonatomic) DailyViewController *parentDailyController;
+@property (weak,nonatomic) Daily *modelForEditing;
+@property (strong,nonatomic) DailyHelper *dailyHelper;
+@property (strong,nonatomic) NSIndexPath *rowInfo;
+@property (assign,nonatomic) dailyStatus section;
+@property (assign,nonatomic) BOOL areXtraOptsOpen;
 
 @end
 
@@ -82,6 +86,7 @@ NSString* const IS_DIRTY = @"isDirty";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.notesBox.delegate = self;
     @try{
         [self removeObserver:self forKeyPath:IS_DIRTY context:nil];
     }
@@ -109,7 +114,7 @@ NSString* const IS_DIRTY = @"isDirty";
 -(void)saveEdit{
     //todo check for loophole with nextDueTime
     self.modelForEditing.dailyName = self.nameBox.text;
-    self.modelForEditing.note = self.descriptionBox.text;
+    self.modelForEditing.note = self.notesBox.text;
     self.modelForEditing.urgency = self.urgencySld.value;
     self.modelForEditing.difficulty = self.difficultySld.value;
     int32_t rate = (int32_t)self.rateStep.value;
@@ -145,7 +150,7 @@ NSString* const IS_DIRTY = @"isDirty";
 
 -(void)defaultControls{
     self.nameBox.text = @"";
-    self.descriptionBox.text = @"";
+    self.notesBox.text = @"";
     self.urgencySld.value = 3;
     self.difficultySld.value = 3;
     self.rateLbl.text = [NSString stringWithFormat:TRIGGER_LABEL_FORMAT,1];
@@ -162,7 +167,7 @@ NSString* const IS_DIRTY = @"isDirty";
     self.modelForEditing = daily;
     self.rowInfo = rowInfo;
     self.nameBox.text = self.modelForEditing.dailyName ? self.modelForEditing.dailyName  : @"";
-    self.descriptionBox.text = self.modelForEditing.note ? self.modelForEditing.note : @"";
+    self.notesBox.text = self.modelForEditing.note ? self.modelForEditing.note : @"";
     self.urgencySld.value = self.modelForEditing.urgency;
     self.difficultySld.value = self.modelForEditing.difficulty;
     int32_t hash = self.modelForEditing.activeDaysHash;
@@ -174,8 +179,8 @@ NSString* const IS_DIRTY = @"isDirty";
     
 }
 
--(void)rewardCustomBtn_pressed:(UIButton *)sender{
-    NSLog(@"button pressed");
+-(void)textViewDidChange:(UITextView *)textView{
+    NSLog(@"%@",@"text change");
 }
 
 /*
@@ -192,9 +197,19 @@ NSString* const IS_DIRTY = @"isDirty";
 }
 
 - (IBAction)showXtra_push_action:(UIButton *)sender forEvent:(UIEvent *)event {
+    if(self.areXtraOptsOpen){
+        self.advancedOptsView.hidden = YES;
+        self.areXtraOptsOpen = NO;
+        return;
+    }
+    self.advancedOptsView.hidden = NO;
+    self.areXtraOptsOpen = YES;
+    if(self.delegate){
+        [self.delegate resizeScrollView:self.advancedOptsView.hidden];
+    }
 }
 
-- (IBAction)urgencySld_valueChange_action:(UISlider *)sender forEvent:(UIEvent *)event {
+-(IBAction)urgencySld_valueChange_action:(UISlider *)sender forEvent:(UIEvent *)event {
     int sliderValue = (int)sender.value;
     sender.value = sliderValue;
     NSLog(@"%f",sender.value);
@@ -217,6 +232,9 @@ NSString* const IS_DIRTY = @"isDirty";
     }
     sender.value = rate;
     self.rateLbl.text = [NSString stringWithFormat: TRIGGER_LABEL_FORMAT,(int)rate];
+}
+- (IBAction)daySwitch_push_action:(CustomSwitch *)sender forEvent:(UIEvent *)event {
+    NSLog(@"%@",@"day switch");
 }
 
 - (IBAction)addRewardBtn_push_action:(UIButton *)sender forEvent:(UIEvent *)event {
