@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *background;
 @property (weak, nonatomic) IBOutlet UIView *modalView;
 @property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
-@property (weak, nonatomic) IBOutlet UIButton *saveBtn;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveBtnBarItem;
 
 @property (assign,nonatomic) CGFloat defaultScrollHeight;
 
@@ -76,6 +76,15 @@
 }
 
 -(IBAction)saveBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
+    if(self.editingScreen.nameStr.length){
+        [self.editingScreen saveEdit];
+        [ViewHelper popViewFromFront:self];
+        return;
+    }
+    UIAlertController *saveAlert = [UIAlertController alertControllerWithTitle:@"Name?" message:@"Please give this item a name" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+    [saveAlert addAction:okAction];
+    [self presentViewController:saveAlert animated:YES completion:nil];
 }
 
 -(void)background_tap_action:(UITapGestureRecognizer *)sender {
@@ -85,11 +94,11 @@
 }
 
 -(void)enableSave{
-    self.saveBtn.enabled = YES;
+    self.saveBtnBarItem.enabled = YES;
 }
 
 -(void)enableDelete{
-    self.deleteBtn.enabled = YES;
+    self.deleteBtn.hidden = NO;
 }
 
 -(void)resizeScrollView:(BOOL)isXtraOptsHidden{

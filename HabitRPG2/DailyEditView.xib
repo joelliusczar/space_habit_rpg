@@ -28,8 +28,8 @@
             <rect key="frame" x="0.0" y="0.0" width="333" height="750"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mON-22-QXY">
-                    <rect key="frame" x="16" y="20" width="97" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mON-22-QXY">
+                    <rect key="frame" x="16" y="20" width="46" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="13"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -46,17 +46,6 @@
                         <action selector="showXtra_push_action:forEvent:" destination="-1" eventType="touchUpInside" id="EqQ-gp-gQm"/>
                     </connections>
                 </button>
-                <textField opaque="NO" clipsSubviews="YES" tag="13" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rgd-4C-GaY">
-                    <rect key="frame" x="121" y="15" width="136" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="13"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <action selector="descriptionBox_endEdit_action:" destination="-1" eventType="editingDidEnd" id="G3X-23-TTv"/>
-                        <action selector="nameBox_endEdit_action:forEvent:" destination="-1" eventType="editingDidEnd" id="DT7-do-YKa"/>
-                    </connections>
-                </textField>
                 <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mS0-6v-xcs">
                     <rect key="frame" x="0.0" y="96" width="333" height="654"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -281,6 +270,16 @@
                     </subviews>
                     <color key="backgroundColor" red="0.14115569" green="0.49360895160000001" blue="0.85067921879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
+                <textField opaque="NO" clipsSubviews="YES" tag="13" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Required" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rgd-4C-GaY">
+                    <rect key="frame" x="61" y="15" width="191" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="13"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="nameBox_endEdit_action:forEvent:" destination="-1" eventType="editingDidEnd" id="DT7-do-YKa"/>
+                    </connections>
+                </textField>
             </subviews>
             <color key="backgroundColor" red="0.14115568995475769" green="0.49360895156860352" blue="0.85067921876907349" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

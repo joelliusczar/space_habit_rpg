@@ -44,6 +44,7 @@ NSString* const IS_DIRTY = @"isDirty";
 
 @synthesize isDirty = _isDirty;
 @synthesize delegate = _delegate;
+@synthesize nameStr = _nameStr;
 
 @synthesize activeDaySwitches = _activeDaySwitches;
 -(NSMutableArray<UIButton<P_CustomSwitch> *> *)activeDaySwitches{
@@ -170,29 +171,23 @@ NSString* const IS_DIRTY = @"isDirty";
     self.notesBox.text = self.modelForEditing.note ? self.modelForEditing.note : @"";
     self.urgencySld.value = self.modelForEditing.urgency;
     self.difficultySld.value = self.modelForEditing.difficulty;
-    int32_t hash = self.modelForEditing.activeDaysHash;
+    int hash = self.modelForEditing.activeDaysHash;
     [self.dailyHelper setActiveDaySwitches:self.activeDaySwitches fromHash:hash];
     NSInteger rate = self.modelForEditing.rate;
     self.rateStep.value = rate;
-    self.rateLbl.text = [NSString stringWithFormat:TRIGGER_LABEL_FORMAT,(int32_t)rate];
-    
+    self.rateLbl.text = [NSString stringWithFormat:TRIGGER_LABEL_FORMAT,(int)rate];
+    [self.delegate enableDelete];
     
 }
 
 -(void)textViewDidChange:(UITextView *)textView{
-    NSLog(@"%@",@"text change");
+    self.isDirty = YES;
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 - (IBAction)nameBox_endEdit_action:(UITextField *)sender forEvent:(UIEvent *)event {
+    self.isDirty = YES;
+    self.nameStr = self.nameBox.text;
     
 }
 
@@ -210,18 +205,19 @@ NSString* const IS_DIRTY = @"isDirty";
 }
 
 -(IBAction)urgencySld_valueChange_action:(UISlider *)sender forEvent:(UIEvent *)event {
+    self.isDirty = YES;
     int sliderValue = (int)sender.value;
     sender.value = sliderValue;
-    NSLog(@"%f",sender.value);
 }
 
 - (IBAction)difficultySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event {
+    self.isDirty = YES;
     int sliderValue = (int)sender.value;
     sender.value = sliderValue;
-    NSLog(@"%f",sender.value);
 }
 
 - (IBAction)rateStep_valueChange_action:(UIStepper *)sender forEvent:(UIEvent *)event {
+    self.isDirty = YES;
     double stepperValue = [sender value];
     int rate = (int)stepperValue;
     if(rate > 366){
@@ -234,7 +230,7 @@ NSString* const IS_DIRTY = @"isDirty";
     self.rateLbl.text = [NSString stringWithFormat: TRIGGER_LABEL_FORMAT,(int)rate];
 }
 - (IBAction)daySwitch_push_action:(CustomSwitch *)sender forEvent:(UIEvent *)event {
-    NSLog(@"%@",@"day switch");
+    self.isDirty = YES;
 }
 
 - (IBAction)addRewardBtn_push_action:(UIButton *)sender forEvent:(UIEvent *)event {

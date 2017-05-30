@@ -14,6 +14,7 @@
 @required
 @property (assign,nonatomic) id<P_TaskEditorDelegate> delegate;
 @property (assign,nonatomic) BOOL isDirty;
+@property (strong,nonatomic) NSString *nameStr;
 -(void)saveEdit;
 -(BOOL)deleteModel;
 @end
