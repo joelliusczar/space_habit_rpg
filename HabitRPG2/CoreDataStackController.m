@@ -111,9 +111,15 @@ NSString *defaultDbName = @"Model.sqlite";
     NSAssert(store != nil,@"Error initializing PSC: %@\n%@",[error localizedDescription],[error userInfo]);
 }
 
--(NSManagedObject *)constructEmptyEntity:(NSString *) entityType{
+-(NSManagedObject *)constructEmptyEntity:(NSEntityDescription *) entityType InContext:(NSManagedObjectContext *)context{
+    NSManagedObject *obj = [[NSManagedObject alloc] initWithEntity:entityType insertIntoManagedObjectContext:context];
+    return obj;
+}
+
+-(NSManagedObject *)constructEmptyEntity:(NSEntityDescription *) entityType{
     NSManagedObjectContext *context = self.inUseContext?self.inUseContext:self.writeContext;
-    NSManagedObject *obj = [NSEntityDescription insertNewObjectForEntityForName:entityType inManagedObjectContext:context];
+    NSManagedObject *obj = [self constructEmptyEntity:entityType
+                                            InContext:context];
     return obj;
 }
 

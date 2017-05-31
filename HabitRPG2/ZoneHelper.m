@@ -135,7 +135,7 @@ NSString* const HOME_KEY = @"HOME";
         s = (Suffix *)results[0];
     }
     else{
-        s = (Suffix *)[SHData constructEmptyEntity:SUFFIX_ENTITY_NAME];
+        s = (Suffix *)[SHData constructEmptyEntity:Suffix.entity];
         s.zoneKey = zoneKey;
     }
     return s;

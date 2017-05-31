@@ -20,7 +20,8 @@
 @property (strong,nonatomic) NSManagedObjectContext *readContext;
 @property (strong,nonatomic) NSManagedObjectContext *inUseContext;
 +(instancetype)newWithDBFileName: (NSString *) dbFileName;
--(NSManagedObject *)constructEmptyEntity:(NSString *) entityType;
+-(NSManagedObject *)constructEmptyEntity:(NSEntityDescription *) entityType;
+-(NSManagedObject *)constructEmptyEntity:(NSEntityDescription *) entityType InContext:(NSManagedObjectContext *)context;
 -(void)initializeCoreData;
 -(NSFetchedResultsController *)getItemFetcher:(NSString *) entityName
                                     predicate: (NSPredicate *) filter

@@ -39,7 +39,7 @@
     
     -(void)testHeroProperties{
         CoreDataStackController *dc = (CoreDataStackController *)[SingletonCluster getSharedInstance].dataController;
-        Hero *h = (Hero *)[dc constructEmptyEntity:HERO_ENTITY_NAME];
+        Hero *h = (Hero *)[dc constructEmptyEntity:Hero.entity];
         h.gold = 3.14;
         h.lvl = 15;
         h.maxHp = 56;
@@ -56,7 +56,7 @@
     
     -(void)testMonsterProperties{
         CoreDataStackController *dc = (CoreDataStackController *)[SingletonCluster getSharedInstance].dataController;
-        Monster *m = (Monster *)[dc constructEmptyEntity:MONSTER_ENTITY_NAME];
+        Monster *m = (Monster *)[dc constructEmptyEntity:Monster.entity];
         m.lvl = 13;
         m.monsterKey = @"DUST_FAIRY";
         m.nowHp = 123;
@@ -74,7 +74,7 @@
     
     -(void)testZoneProperties{
         CoreDataStackController *dc = (CoreDataStackController *)[SingletonCluster getSharedInstance].dataController;
-        Zone *z = (Zone *)[dc constructEmptyEntity:ZONE_ENTITY_NAME];
+        Zone *z = (Zone *)[dc constructEmptyEntity:Zone.entity];
         z.lvl = 5;
         z.zoneKey = @"SAFE_SPACE";
         z.isFront = YES;

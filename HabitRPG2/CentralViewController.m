@@ -291,12 +291,12 @@
     if([SingletonCluster getSharedInstance].gameState==GAME_STATE_UNINITIALIZED){
         [self afterIntro];
     }
-    ZoneTransaction *zt = (ZoneTransaction *)[self.dataController constructEmptyEntity:ZONE_TRANSACTION_ENTITY_NAME];
+    ZoneTransaction *zt = (ZoneTransaction *)[self.dataController constructEmptyEntity:ZoneTransaction.entity];
     zt.timestamp = [NSDate date];
     zoneInfo[TRANSACTION_TYPE_KEY] = TRANSACTION_TYPE_CREATE;
     zt.misc = [CommonUtilities dictToString:zoneInfo];
     
-    MonsterTransaction *mt = (MonsterTransaction *)[self.dataController constructEmptyEntity:MONSTER_TRANSACTION_ENTITY_NAME];
+    MonsterTransaction *mt = (MonsterTransaction *)[self.dataController constructEmptyEntity:MonsterTransaction.entity];
     mt.timestamp = [NSDate date];
     monsterInfo[TRANSACTION_TYPE_KEY] = TRANSACTION_TYPE_CREATE;
     mt.misc = [CommonUtilities dictToString:monsterInfo];

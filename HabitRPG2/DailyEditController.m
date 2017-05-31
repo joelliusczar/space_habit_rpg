@@ -30,7 +30,7 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 @property (weak,nonatomic) IBOutlet UILabel *rateLbl;
 @property (weak,nonatomic) IBOutlet UILabel *rewardsList;
 @property (weak,nonatomic) DailyViewController *parentDailyController;
-@property (weak,nonatomic) Daily *modelForEditing;
+@property (strong,nonatomic) Daily *modelForEditing;
 @property (strong,nonatomic) DailyHelper *dailyHelper;
 @property (strong,nonatomic) NSIndexPath *rowInfo;
 @property (assign,nonatomic) dailyStatus section;
@@ -60,10 +60,14 @@ NSString* const IS_DIRTY = @"isDirty";
 
 @synthesize modelForEditing = _modelForEditing;
 -(Daily *)modelForEditing{
-    if(_modelForEditing == nil){
-        _modelForEditing = (Daily *)[SHData constructEmptyEntity:DAILY_ENTITY_NAME];
+    if(nil==_modelForEditing){
+        _modelForEditing = [[Daily alloc] initWithEntity:Daily.entity insertIntoManagedObjectContext:nil];
     }
     return _modelForEditing;
+}
+
+-(void)setModelForEditing:(Daily *)modelForEditing{
+    _modelForEditing = modelForEditing;
 }
 
 @synthesize dailyHelper = _dailyHelper;
@@ -118,19 +122,20 @@ NSString* const IS_DIRTY = @"isDirty";
     self.modelForEditing.note = self.notesBox.text;
     self.modelForEditing.urgency = self.urgencySld.value;
     self.modelForEditing.difficulty = self.difficultySld.value;
-    int32_t rate = (int32_t)self.rateStep.value;
+    int rate = (int)self.rateStep.value;
     self.modelForEditing.rate = rate;
     self.modelForEditing.nextDueTime = [self.dailyHelper calculateNextDueTime:[NSDate date] WithRate:rate];
     self.modelForEditing.streakLength = 0;
     self.modelForEditing.activeDaysHash = [self.dailyHelper calculateActiveDaysHash:self.activeDaySwitches];
     //todo add something for custom reward
+    [SHData insertIntoContext:self.modelForEditing];
     [SHData save]; //TODO: this is probably all sorts of fucked up at the moment
-    if(self.rowInfo == nil){
-        [self.parentDailyController showNewDaily:self.modelForEditing];
-    }
-    else{
-        [self.parentDailyController refreshTableAtRow:self.rowInfo];
-    }
+//    if(self.rowInfo == nil){
+//        [self.parentDailyController showNewDaily:self.modelForEditing];
+//    }
+//    else{
+//        [self.parentDailyController refreshTableAtRow:self.rowInfo];
+//    }
     [self cleanUp];
 }
 
@@ -183,12 +188,9 @@ NSString* const IS_DIRTY = @"isDirty";
 -(void)textViewDidChange:(UITextView *)textView{
     self.isDirty = YES;
 }
-
-
-- (IBAction)nameBox_endEdit_action:(UITextField *)sender forEvent:(UIEvent *)event {
+- (IBAction)nameBox_editingChanged_action:(UITextField *)sender forEvent:(UIEvent *)event {
     self.isDirty = YES;
     self.nameStr = self.nameBox.text;
-    
 }
 
 - (IBAction)showXtra_push_action:(UIButton *)sender forEvent:(UIEvent *)event {

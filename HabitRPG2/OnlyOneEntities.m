@@ -65,14 +65,14 @@
 }
 
 -(DataInfo *)constructDataInfoInitialState{
-    DataInfo *dataInfo = (DataInfo *)[self.dataController constructEmptyEntity: DATA_INFO_ENTITY_NAME];
+    DataInfo *dataInfo = (DataInfo *)[self.dataController constructEmptyEntity: DataInfo.entity];
     dataInfo.nextZoneId = 0;
     dataInfo.gameState = GAME_STATE_UNINITIALIZED;
     return dataInfo;
 }
 
 -(Settings *)constructSettingsInitialState{
-    Settings *settings = (Settings *)[self.dataController constructEmptyEntity:SETTINGS_ENTITY_NAME];
+    Settings *settings = (Settings *)[self.dataController constructEmptyEntity:Settings.entity];
     settings.createDate = [NSDate date];
     settings.dayStart = 0;
     settings.deathGoldPenalty = .25;
@@ -87,7 +87,7 @@
 }
 
 -(Hero *)constructHeroInitialState{
-    Hero *hero = (Hero *)[self.dataController constructEmptyEntity:HERO_ENTITY_NAME];
+    Hero *hero = (Hero *)[self.dataController constructEmptyEntity:Hero.entity];
     hero.gold = 0;
     hero.lvl = 1;
     hero.maxHp = 50;

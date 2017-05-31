@@ -27,7 +27,7 @@
 +(Monster *)constructEmptyMonster{
     
     NSObject<P_CoreData> *dataController = [SingletonCluster getSharedInstance].dataController;
-    return (Monster *)[dataController constructEmptyEntity:MONSTER_ENTITY_NAME];
+    return (Monster *)[dataController constructEmptyEntity:Monster.entity];
 }
 
 +(NSString *)randomMonsterKey:(NSString *)zoneKey{

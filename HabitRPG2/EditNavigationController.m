@@ -88,6 +88,7 @@
 }
 
 -(void)background_tap_action:(UITapGestureRecognizer *)sender {
+    [self.view endEditing:YES];
     if(sender.view != self.modalView){
         [ViewHelper popViewFromFront:self];
     }

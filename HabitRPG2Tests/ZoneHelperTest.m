@@ -296,7 +296,7 @@ NSManagedObjectContext *testContext_zh;
 -(void)testConstructZoneChoice{
     int i = 0;
     rIdx_zh = 0;
-    Hero *h = (Hero *)[SHData constructEmptyEntity:HERO_ENTITY_NAME];
+    Hero *h = (Hero *)[SHData constructEmptyEntity:Hero.entity];
     h.lvl = 14;
     SET_LOW_BOUND();
     SET_LOW_BOUND();
@@ -353,7 +353,7 @@ NSManagedObjectContext *testContext_zh;
 }
 
 -(void)testConstructMultipleZoneChoices{
-    Hero *h = (Hero *)[SHData constructEmptyEntity:HERO_ENTITY_NAME];
+    Hero *h = (Hero *)[SHData constructEmptyEntity:Hero.entity];
     h.lvl = 52;
     
     int i = 0;
