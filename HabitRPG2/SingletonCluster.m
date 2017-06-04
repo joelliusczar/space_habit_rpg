@@ -26,7 +26,7 @@
 
 @synthesize dataController = _dataController;
 -(NSObject<P_CoreData> *)dataController{
-    if(_dataController==nil){
+    if(nil==_dataController){
         _dataController = [CoreDataStackController new];
     }
     return _dataController;
@@ -35,7 +35,7 @@
 
 @synthesize resourceUtility = _resourceUtility;
 -(NSObject<P_ResourceUtility> *)resourceUtility{
-    if(_resourceUtility==nil){
+    if(nil==_resourceUtility){
         _resourceUtility = [[ResourceUtility alloc] init];
     }
     return _resourceUtility;
@@ -43,7 +43,7 @@
 
 @synthesize zoneInfoDictionary = _zoneInfoDictionary;
 -(ZoneInfoDictionary *)zoneInfoDictionary{
-    if(_zoneInfoDictionary==nil){
+    if(nil==_zoneInfoDictionary){
         _zoneInfoDictionary = [ZoneInfoDictionary construct];
     }
     return _zoneInfoDictionary;
@@ -51,7 +51,7 @@
 
 @synthesize monsterInfoDictionary = _monsterInfoDictionary;
 -(MonsterInfoDictionary *)monsterInfoDictionary{
-    if(_monsterInfoDictionary==nil){
+    if(nil==_monsterInfoDictionary){
         _monsterInfoDictionary = [MonsterInfoDictionary construct];
     }
     return _monsterInfoDictionary;
@@ -59,7 +59,7 @@
 
 @synthesize stdLibWrapper = _stdLibWrapper;
 -(NSObject<P_stdlibWrapper> *)stdLibWrapper{
-    if(_stdLibWrapper==nil){
+    if(nil==_stdLibWrapper){
         _stdLibWrapper = [[StdLibWrapper alloc] init];
     }
     return _stdLibWrapper;
@@ -67,6 +67,22 @@
 
 -(int)gameState{
     return [SingletonCluster getSharedInstance].dataController.userData.theDataInfo.gameState;
+}
+
+@synthesize inUseCalendar = _inUseCalendar;
+-(NSCalendar *)inUseCalendar{
+    if(nil==_inUseCalendar){
+        _inUseCalendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+    }
+    return _inUseCalendar;
+}
+
+@synthesize inUseTimeZone = _inUseTimeZone;
+-(NSTimeZone *)inUseTimeZone{
+    if(nil==_inUseTimeZone){
+        _inUseTimeZone = NSTimeZone.systemTimeZone;
+    }
+    return _inUseTimeZone;
 }
 
 -(instancetype)initClass{

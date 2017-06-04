@@ -124,14 +124,11 @@ NSString *defaultDbName = @"Model.sqlite";
 }
 
 
--(NSFetchedResultsController *)getItemFetcher:(NSString *) entityName
+-(NSFetchedResultsController *)getItemFetcher:(NSFetchRequest *) fetchRequest
                                     predicate: (NSPredicate *) filter
                                     sortBy:(NSArray *) sortAttrs
 {
     NSManagedObjectContext *context = self.inUseContext?self.inUseContext:self.readContext;
-    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:context];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    fetchRequest.entity = entity;
     [fetchRequest setFetchBatchSize:0];
     fetchRequest.sortDescriptors = sortAttrs;
     fetchRequest.predicate = filter;

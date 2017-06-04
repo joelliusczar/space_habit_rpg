@@ -1,17 +1,18 @@
 //
-//  DailyHelper.h
+//  Daily+DailyHelper.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 9/10/16.
-//  Copyright © 2016 Joel Pridgen. All rights reserved.
+//  Created by Joel Pridgen on 6/4/17.
+//  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "Daily+CoreDataClass.h"
 
-@interface DailyHelper : NSObject
+@interface Daily (DailyHelper)
++(Daily *)constructDaily;
 +(BOOL)isDailyCompleteForTheDay:(Daily *)daily;
 +(NSDate *)calculateNextDueTime:(NSDate *)checkinDate WithRate:(int)rate;
 +(int)calculateActiveDaysHash:(NSMutableArray *)activeDays;
 +(void)setActiveDaySwitches:(NSMutableArray *)activeDays fromHash:(NSInteger)hash;
++(NSFetchedResultsController *)getUnfinishedDailiesController:(NSDate *)todayStart;
 @end

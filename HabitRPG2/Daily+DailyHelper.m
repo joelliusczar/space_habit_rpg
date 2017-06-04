@@ -1,12 +1,12 @@
 //
-//  DailyHelper.m
+//  Daily+DailyHelper.m
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 9/10/16.
-//  Copyright © 2016 Joel Pridgen. All rights reserved.
+//  Created by Joel Pridgen on 6/4/17.
+//  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import "DailyHelper.h"
+#import "Daily+DailyHelper.h"
 #import "Daily+CoreDataClass.h"
 #import "constants.h"
 #import "CommonUtilities.h"
@@ -14,11 +14,11 @@
 #import "SingletonCluster.h"
 #import "NSDate+DateHelper.h"
 
-@interface DailyHelper()
+@implementation Daily (DailyHelper)
 
-@end
-
-@implementation DailyHelper
++(Daily *)constructDaily{
+    return (Daily *)[SHData constructEmptyEntity:Daily.entity InContext:nil];
+}
 
 +(BOOL)isDailyCompleteForTheDay:(Daily *)daily{
     //todo
@@ -63,12 +63,9 @@
     return [NSArray arrayWithObjects:sortByUrgency,sortByDifficulty, nil];
 }
 
-+(NSFetchedResultsController *)getUnfinishedDaiiesController:(int)dayStart {
-    NSDate *todayStart = [NSDate todayStart];
-    todayStart = [NSDate adjustTime:todayStart hour:dayStart minute:0 second:0];
++(NSFetchedResultsController *)getUnfinishedDailiesController:(NSDate *)todayStart{
     NSPredicate *filter = [NSPredicate predicateWithFormat:@"isActive = 1 AND (lastActivationTime = NULL OR lastActivationTime < %@)",todayStart];
-    NSFetchedResultsController *resultsController = [SHData getItemFetcher:Daily.fetchRequest predicate:filter sortBy:@[[DailyHelper buildFetchDescriptors]]];
+    NSFetchedResultsController *resultsController = [SHData getItemFetcher:Daily.fetchRequest predicate:filter sortBy:[Daily buildFetchDescriptors]];
     return resultsController;
 }
-
 @end

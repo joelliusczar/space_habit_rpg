@@ -12,6 +12,7 @@
 #import "P_CustomSwitch.h"
 #import "EditNavigationController.h"
 #import "CustomSwitch.h"
+#import "Daily+DailyHelper.h"
 
 
 static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
@@ -61,7 +62,7 @@ NSString* const IS_DIRTY = @"isDirty";
 @synthesize modelForEditing = _modelForEditing;
 -(Daily *)modelForEditing{
     if(nil==_modelForEditing){
-        _modelForEditing = [[Daily alloc] initWithEntity:Daily.entity insertIntoManagedObjectContext:nil];
+        _modelForEditing = [Daily constructDaily];
     }
     return _modelForEditing;
 }
@@ -117,6 +118,7 @@ NSString* const IS_DIRTY = @"isDirty";
 }
 
 -(void)saveEdit{
+    //TODO; uncoment code
     //todo check for loophole with nextDueTime
     self.modelForEditing.dailyName = self.nameBox.text;
     self.modelForEditing.note = self.notesBox.text;
@@ -124,9 +126,9 @@ NSString* const IS_DIRTY = @"isDirty";
     self.modelForEditing.difficulty = self.difficultySld.value;
     int rate = (int)self.rateStep.value;
     self.modelForEditing.rate = rate;
-    self.modelForEditing.nextDueTime = [self.dailyHelper calculateNextDueTime:[NSDate date] WithRate:rate];
+    //self.modelForEditing.nextDueTime = [self.dailyHelper calculateNextDueTime:[NSDate date] WithRate:rate];
     self.modelForEditing.streakLength = 0;
-    self.modelForEditing.activeDaysHash = [self.dailyHelper calculateActiveDaysHash:self.activeDaySwitches];
+    //self.modelForEditing.activeDaysHash = [self.dailyHelper calculateActiveDaysHash:self.activeDaySwitches];
     //todo add something for custom reward
     [SHData insertIntoContext:self.modelForEditing];
     [SHData save]; //TODO: this is probably all sorts of fucked up at the moment
@@ -169,6 +171,7 @@ NSString* const IS_DIRTY = @"isDirty";
 }
 
 -(void)loadExistingDailyForEditing:(Daily *)daily WithIndexPath:(NSIndexPath *)rowInfo{
+    //TODO; uncoment code
     [self defaultControls];
     self.modelForEditing = daily;
     self.rowInfo = rowInfo;
@@ -176,8 +179,8 @@ NSString* const IS_DIRTY = @"isDirty";
     self.notesBox.text = self.modelForEditing.note ? self.modelForEditing.note : @"";
     self.urgencySld.value = self.modelForEditing.urgency;
     self.difficultySld.value = self.modelForEditing.difficulty;
-    int hash = self.modelForEditing.activeDaysHash;
-    [self.dailyHelper setActiveDaySwitches:self.activeDaySwitches fromHash:hash];
+    //int hash = self.modelForEditing.activeDaysHash;
+    //[self.dailyHelper setActiveDaySwitches:self.activeDaySwitches fromHash:hash];
     NSInteger rate = self.modelForEditing.rate;
     self.rateStep.value = rate;
     self.rateLbl.text = [NSString stringWithFormat:TRIGGER_LABEL_FORMAT,(int)rate];

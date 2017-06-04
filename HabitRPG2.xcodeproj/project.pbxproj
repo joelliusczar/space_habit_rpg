@@ -39,6 +39,11 @@
 		275A079C1ED50AF5001422CD /* GoodTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 275A07841ED50AF5001422CD /* GoodTransaction+CoreDataClass.m */; };
 		275A079D1ED50AF5001422CD /* GoodTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 275A07861ED50AF5001422CD /* GoodTransaction+CoreDataProperties.m */; };
 		275A07B71EDA1FB9001422CD /* TestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 275A07B61EDA1FB9001422CD /* TestHelpers.m */; };
+		275FEEFE1EE3172C00AED1A2 /* NSDate+DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 275FEEFD1EE3172C00AED1A2 /* NSDate+DateHelper.m */; };
+		275FEF001EE344BB00AED1A2 /* DateHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 275FEEFF1EE344BB00AED1A2 /* DateHelperTest.m */; };
+		275FEF021EE3A78200AED1A2 /* timeZoneList.txt in Resources */ = {isa = PBXBuildFile; fileRef = 275FEF011EE3A78200AED1A2 /* timeZoneList.txt */; };
+		275FEF0A1EE3CF3000AED1A2 /* DailyHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 275FEF091EE3CF3000AED1A2 /* DailyHelperTest.m */; };
+		275FEF0D1EE45AE600AED1A2 /* Daily+DailyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 275FEF0C1EE45AE600AED1A2 /* Daily+DailyHelper.m */; };
 		277ABEC91E949B96008CC239 /* StdLibWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEC81E949B96008CC239 /* StdLibWrapper.m */; };
 		277ABED11E95DEF6008CC239 /* ProbWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABED01E95DEF6008CC239 /* ProbWeight.m */; };
 		277ABEF21E975959008CC239 /* ModelsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEF11E975959008CC239 /* ModelsTest.m */; };
@@ -195,6 +200,13 @@
 		275A07861ED50AF5001422CD /* GoodTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GoodTransaction+CoreDataProperties.m"; path = "../GoodTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
 		275A07B51EDA1FB9001422CD /* TestHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHelpers.h; sourceTree = "<group>"; };
 		275A07B61EDA1FB9001422CD /* TestHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHelpers.m; sourceTree = "<group>"; };
+		275FEEFC1EE3172C00AED1A2 /* NSDate+DateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DateHelper.h"; sourceTree = "<group>"; };
+		275FEEFD1EE3172C00AED1A2 /* NSDate+DateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DateHelper.m"; sourceTree = "<group>"; };
+		275FEEFF1EE344BB00AED1A2 /* DateHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateHelperTest.m; sourceTree = "<group>"; };
+		275FEF011EE3A78200AED1A2 /* timeZoneList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = timeZoneList.txt; sourceTree = "<group>"; };
+		275FEF091EE3CF3000AED1A2 /* DailyHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyHelperTest.m; sourceTree = "<group>"; };
+		275FEF0B1EE45AE600AED1A2 /* Daily+DailyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Daily+DailyHelper.h"; sourceTree = "<group>"; };
+		275FEF0C1EE45AE600AED1A2 /* Daily+DailyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Daily+DailyHelper.m"; sourceTree = "<group>"; };
 		277ABEC61E949B76008CC239 /* P_stdlibWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_stdlibWrapper.h; sourceTree = "<group>"; };
 		277ABEC71E949B96008CC239 /* StdLibWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StdLibWrapper.h; sourceTree = "<group>"; };
 		277ABEC81E949B96008CC239 /* StdLibWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StdLibWrapper.m; sourceTree = "<group>"; };
@@ -390,6 +402,17 @@
 			name = Lookups;
 			sourceTree = "<group>";
 		};
+		272144FE1EDFB46E00D98C03 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				68A921E61DBC7FF1007C946C /* Daily+CoreDataProperties.h */,
+				271217591DCE84310072ACC6 /* Daily+CoreDataClass.h */,
+				2712175A1DCE84310072ACC6 /* Daily+CoreDataClass.m */,
+				68A921E71DBC7FF1007C946C /* Daily+CoreDataProperties.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		277ABECA1E94A08E008CC239 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -420,6 +443,8 @@
 				277ABF2F1E9C31F3008CC239 /* ZoneHelperTest.m */,
 				277ABF5C1EA27A91008CC239 /* CommonUtilitiesTest.m */,
 				277ABF5E1EA33320008CC239 /* MonsterHelperTest.m */,
+				275FEEFF1EE344BB00AED1A2 /* DateHelperTest.m */,
+				275FEF091EE3CF3000AED1A2 /* DailyHelperTest.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -671,10 +696,7 @@
 			isa = PBXGroup;
 			children = (
 				68D25C271D8E2E0500FF1BE0 /* Views */,
-				68A921E61DBC7FF1007C946C /* Daily+CoreDataProperties.h */,
-				271217591DCE84310072ACC6 /* Daily+CoreDataClass.h */,
-				2712175A1DCE84310072ACC6 /* Daily+CoreDataClass.m */,
-				68A921E71DBC7FF1007C946C /* Daily+CoreDataProperties.m */,
+				272144FE1EDFB46E00D98C03 /* Model */,
 				686686EC1D79060300BB2D09 /* DailyCellController.h */,
 				686686ED1D79060300BB2D09 /* DailyCellController.m */,
 				68D25C201D8B951B00FF1BE0 /* DailyEditController.h */,
@@ -687,6 +709,8 @@
 				2739789D1EB8473100F217B4 /* DailyTransaction+CoreDataClass.m */,
 				2739789E1EB8473100F217B4 /* DailyTransaction+CoreDataProperties.h */,
 				2739789F1EB8473100F217B4 /* DailyTransaction+CoreDataProperties.m */,
+				275FEF0B1EE45AE600AED1A2 /* Daily+DailyHelper.h */,
+				275FEF0C1EE45AE600AED1A2 /* Daily+DailyHelper.m */,
 			);
 			name = Dailies;
 			sourceTree = "<group>";
@@ -809,6 +833,9 @@
 				277ABEC81E949B96008CC239 /* StdLibWrapper.m */,
 				277ABECF1E95DEF6008CC239 /* ProbWeight.h */,
 				277ABED01E95DEF6008CC239 /* ProbWeight.m */,
+				275FEEFC1EE3172C00AED1A2 /* NSDate+DateHelper.h */,
+				275FEEFD1EE3172C00AED1A2 /* NSDate+DateHelper.m */,
+				275FEF011EE3A78200AED1A2 /* timeZoneList.txt */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -860,7 +887,7 @@
 				KnownAssetTags = (
 					New,
 				);
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Joel Pridgen";
 				TargetAttributes = {
 					277ABED91E96F68E008CC239 = {
@@ -913,6 +940,7 @@
 				686ED3991DA5E0F9004EDD36 /* title_Screen_R_4.png in Resources */,
 				277ABF341E9F1AE8008CC239 /* behind_alert_view.png in Resources */,
 				686ED3BB1DB4660F004EDD36 /* white_checked_full.png in Resources */,
+				275FEF021EE3A78200AED1A2 /* timeZoneList.txt in Resources */,
 				68F3F9F41D70FC5E00840DD2 /* TodoViewController.xib in Resources */,
 				686ED3C41DB47FAF004EDD36 /* black_checked_full.png in Resources */,
 				68F3F9EF1D70FC0D00840DD2 /* HabitController.xib in Resources */,
@@ -951,6 +979,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				277ABF301E9C31F3008CC239 /* ZoneHelperTest.m in Sources */,
+				275FEF0A1EE3CF3000AED1A2 /* DailyHelperTest.m in Sources */,
+				275FEF001EE344BB00AED1A2 /* DateHelperTest.m in Sources */,
 				277ABF5F1EA33320008CC239 /* MonsterHelperTest.m in Sources */,
 				277ABF6E1EA86240008CC239 /* TestProbWeightsThreeItems.m in Sources */,
 				277ABF5D1EA27A91008CC239 /* CommonUtilitiesTest.m in Sources */,
@@ -967,6 +997,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				686686EE1D79060300BB2D09 /* DailyCellController.m in Sources */,
+				275FEEFE1EE3172C00AED1A2 /* NSDate+DateHelper.m in Sources */,
 				68A921F91DBC7FF2007C946C /* Habit+CoreDataProperties.m in Sources */,
 				68F3F9F31D70FC5E00840DD2 /* TodoViewController.m in Sources */,
 				68F3FA021D74897A00840DD2 /* MenuViewController.m in Sources */,
@@ -1002,6 +1033,7 @@
 				686ED3BF1DB47954004EDD36 /* ZoneChoiceViewController.m in Sources */,
 				273978AE1EB8473100F217B4 /* MonsterTransaction+CoreDataClass.m in Sources */,
 				27C92C151E297F650025727E /* ZoneChoiceCellController.m in Sources */,
+				275FEF0D1EE45AE600AED1A2 /* Daily+DailyHelper.m in Sources */,
 				2712176C1DCE84310072ACC6 /* Hero+CoreDataClass.m in Sources */,
 				27C92C1A1E29C9F10025727E /* ZoneInfoDictionary.m in Sources */,
 				68F3F9F81D70FD3F00840DD2 /* GoodsViewController.m in Sources */,

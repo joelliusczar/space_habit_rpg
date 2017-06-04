@@ -17,14 +17,17 @@
 
 #define SAVE_DATA() [[SingletonCluster getSharedInstance].dataController save]
 #define SHData [SingletonCluster getSharedInstance].dataController
+#define SharedGlobal [SingletonCluster getSharedInstance]
 
 @interface SingletonCluster : NSObject
 +(instancetype)getSharedInstance;
-@property (nonatomic,strong) NSObject<P_CoreData> *dataController;
-@property (nonatomic,strong) NSObject<P_ResourceUtility> *resourceUtility;
-@property (nonatomic,strong) ZoneInfoDictionary *zoneInfoDictionary;
-@property (nonatomic,strong) MonsterInfoDictionary *monsterInfoDictionary;
-@property (nonatomic,strong) NSObject<P_stdlibWrapper> *stdLibWrapper;
+@property (strong,nonatomic) NSObject<P_CoreData> *dataController;
+@property (strong,nonatomic) NSObject<P_ResourceUtility> *resourceUtility;
+@property (strong,nonatomic) ZoneInfoDictionary *zoneInfoDictionary;
+@property (strong,nonatomic) MonsterInfoDictionary *monsterInfoDictionary;
+@property (strong,nonatomic) NSObject<P_stdlibWrapper> *stdLibWrapper;
 @property (nonatomic,readonly) int EnviromentNum;
 @property (nonatomic,readonly) int gameState;
+@property (strong,nonatomic) NSCalendar *inUseCalendar;
+@property (strong,nonatomic) NSTimeZone *inUseTimeZone;
 @end

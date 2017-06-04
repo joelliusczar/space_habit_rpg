@@ -23,7 +23,7 @@
 -(NSManagedObject *)constructEmptyEntity:(NSEntityDescription *) entityType;
 -(NSManagedObject *)constructEmptyEntity:(NSEntityDescription *) entityType InContext:(NSManagedObjectContext *)context;
 -(void)initializeCoreData;
--(NSFetchedResultsController *)getItemFetcher:(NSString *) entityName
+-(NSFetchedResultsController *)getItemFetcher:(NSFetchRequest *) fetchRequest
                                     predicate: (NSPredicate *) filter
                                        sortBy:(NSArray *) sortAttrs;
 -(NSArray<NSManagedObject *> *)getItem:(NSString *) entityName

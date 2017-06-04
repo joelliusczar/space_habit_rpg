@@ -152,24 +152,26 @@ static NSString *const EntityName = @"Daily";
 }
 
 -(void)setupData:(NSObject<P_CoreData> *)data{
+    //NSPredicate *unfinished = [NSPredicate predicateWithFormat:@"isActive = 1 AND "];
+    
     self.dataController = data;
-    NSFetchedResultsController *resultsController = [self.dataController getItemFetcher:DAILY_ENTITY_NAME predicate:nil sortBy:[self getFetchDescriptors]];
-    NSError *error;
-    if(![resultsController performFetch:&error]){
-        NSLog(@"Error fetching data: %@", error.localizedFailureReason);
-        return;
-    }
+//    NSFetchedResultsController *resultsController = [self.dataController getItemFetcher:DAILY_ENTITY_NAME predicate:nil sortBy:[self getFetchDescriptors]];
+    //NSError *error;
+//    if(![resultsController performFetch:&error]){
+//        NSLog(@"Error fetching data: %@", error.localizedFailureReason);
+//        return;
+//    }
     self.completeItems = [NSMutableArray array];
     self.incompleteItems = [NSMutableArray array];
     
-    for(Daily *d in resultsController.fetchedObjects){
-        if([self.dailyHelper isDailyCompleteForTheDay:d]){
-            [self.completeItems addObject:d];
-        }
-        else{
-            [self.incompleteItems addObject:d];
-        }
-    }
+//    for(Daily *d in resultsController.fetchedObjects){
+//        if([self.dailyHelper isDailyCompleteForTheDay:d]){
+//            [self.completeItems addObject:d];
+//        }
+//        else{
+//            [self.incompleteItems addObject:d];
+//        }
+//    }
     
 }
 

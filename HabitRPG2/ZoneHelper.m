@@ -157,7 +157,7 @@ NSString* const HOME_KEY = @"HOME";
     NSPredicate *filter = [NSPredicate predicateWithFormat:@"isFront =%d",isFront?1:0];
     NSArray<NSManagedObject *> *results = [ZoneHelper getAllZones:filter];
     NSAssert(results.count<2, @"There are too many zones");
-    return (Zone *)results[0];
+    return results.count>0?(Zone *)results[0]:nil;
 }
 
 +(NSArray<NSManagedObject *> *)getAllZones:(NSPredicate *)filter{
