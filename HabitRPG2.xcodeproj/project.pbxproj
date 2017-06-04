@@ -22,6 +22,7 @@
 		271C048B1E8C955A002221E9 /* SingletonCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C048A1E8C955A002221E9 /* SingletonCluster.m */; };
 		271C048E1E8C9C06002221E9 /* MonsterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C048D1E8C9C06002221E9 /* MonsterHelper.m */; };
 		271C04921E8F3784002221E9 /* SuffixList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 271C04911E8F3784002221E9 /* SuffixList.plist */; };
+		273782381EE4D1B200EA5B1D /* FrequentCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 273782371EE4D1B200EA5B1D /* FrequentCase.m */; };
 		273978851EB55F3700F217B4 /* StoryDumpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 273978831EB55F3700F217B4 /* StoryDumpView.m */; };
 		273978861EB55F3700F217B4 /* StoryDumpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273978841EB55F3700F217B4 /* StoryDumpView.xib */; };
 		2739788B1EB843F800F217B4 /* MonsterInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2739788A1EB843F800F217B4 /* MonsterInfo.plist */; };
@@ -167,6 +168,8 @@
 		271C048D1E8C9C06002221E9 /* MonsterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterHelper.m; sourceTree = "<group>"; };
 		271C04911E8F3784002221E9 /* SuffixList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SuffixList.plist; sourceTree = "<group>"; };
 		272144FD1EDB59F600D98C03 /* P_TaskEditorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_TaskEditorDelegate.h; sourceTree = "<group>"; };
+		273782361EE4D1B200EA5B1D /* FrequentCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrequentCase.h; sourceTree = "<group>"; };
+		273782371EE4D1B200EA5B1D /* FrequentCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrequentCase.m; sourceTree = "<group>"; };
 		273978821EB55F3700F217B4 /* StoryDumpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryDumpView.h; sourceTree = "<group>"; };
 		273978831EB55F3700F217B4 /* StoryDumpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryDumpView.m; sourceTree = "<group>"; };
 		273978841EB55F3700F217B4 /* StoryDumpView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoryDumpView.xib; sourceTree = "<group>"; };
@@ -431,6 +434,8 @@
 				277ABF611EA3BC97008CC239 /* TestGlobals.h */,
 				275A07B51EDA1FB9001422CD /* TestHelpers.h */,
 				275A07B61EDA1FB9001422CD /* TestHelpers.m */,
+				273782361EE4D1B200EA5B1D /* FrequentCase.h */,
+				273782371EE4D1B200EA5B1D /* FrequentCase.m */,
 			);
 			path = HabitRPG2Tests;
 			sourceTree = "<group>";
@@ -989,6 +994,7 @@
 				277ABF691EA46CE1008CC239 /* ProbilityWeightTest.m in Sources */,
 				275A07B71EDA1FB9001422CD /* TestHelpers.m in Sources */,
 				277ABF2E1E9C31C0008CC239 /* MockStdLibWrapper.m in Sources */,
+				273782381EE4D1B200EA5B1D /* FrequentCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

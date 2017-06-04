@@ -6,35 +6,27 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <XCTest/XCTest.h>
-#import "SingletonCluster.h"
+#import "FrequentCase.h"
 #import "constants.h"
 #import "ZoneHelper.h"
 #import "MockStdLibWrapper.h"
-#import "TestGlobals.h"
-#import "TestHelpers.h"
 
 #define SET_UP_BOUND() shouldUseLowerBoundChoices_zh[i++] = NO
 #define SET_LOW_BOUND() shouldUseLowerBoundChoices_zh[i++] = YES
 
-@interface ZoneHelperTest : XCTestCase
+@interface ZoneHelperTest : FrequentCase
 
 @end
 
 MockStdLibWrapper *mw_zh;
 BOOL shouldUseLowerBoundChoices_zh[25];
 int rIdx_zh;
-NSManagedObjectContext *testContext_zh;
 
 @implementation ZoneHelperTest
     
 - (void)setUp {
     [super setUp];
     ASSERT_IS_TEST();
-    testContext_zh = [SHData constructContext:NSMainQueueConcurrencyType];
-    SHData.inUseContext = testContext_zh;
-    [TestHelpers resetCoreData:SHData.inUseContext];
-    [SHData initializeCoreData];
     mw_zh = [[MockStdLibWrapper alloc] init];
     [SingletonCluster getSharedInstance].stdLibWrapper =mw_zh;
     mw_zh.mockRandom = ^uint(uint range){
@@ -44,8 +36,6 @@ NSManagedObjectContext *testContext_zh;
 }
 
 - (void)tearDown {
-    testContext_zh = nil;
-    SHData.inUseContext = nil;
     [super tearDown];
 }
 

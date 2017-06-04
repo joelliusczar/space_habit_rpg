@@ -6,30 +6,21 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <XCTest/XCTest.h>
+#import "FrequentCase.h"
 #import "Daily+CoreDataClass.h"
 #import "Daily+DailyHelper.h"
-#import "SingletonCluster.h"
 #import "NSDate+DateHelper.h"
-#import "TestHelpers.h"
-#import "TestGlobals.h"
 
-@interface DailyHelperTest : XCTestCase
+@interface DailyHelperTest : FrequentCase
 
 @end
 
 NSMutableArray<Daily *> *testDailies = nil;
-NSManagedObjectContext *testContext_dh;
 
 @implementation DailyHelperTest
 
 -(void)setUp {
     [super setUp];
-    ASSERT_IS_TEST();
-    testContext_dh = [SHData constructContext:NSMainQueueConcurrencyType];
-    SHData.inUseContext = testContext_dh;
-    [TestHelpers resetCoreData:SHData.inUseContext];
-    [SHData initializeCoreData];
     testDailies = [NSMutableArray array];
     int a0=0,a1=0,a2=0,a3=0,a4=0,a5=0;
     for(int i = 0;i<50;i++){
@@ -77,8 +68,7 @@ NSManagedObjectContext *testContext_dh;
 }
 
 -(void)tearDown {
-    testContext_dh = nil;
-    SHData.inUseContext = nil;
+    testDailies = nil;
     [super tearDown];
 }
 
@@ -103,5 +93,6 @@ NSManagedObjectContext *testContext_dh;
     }
     XCTAssertEqual(results.fetchedObjects.count,31);
 }
+
 
 @end

@@ -6,35 +6,27 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <XCTest/XCTest.h>
-#import "SingletonCluster.h"
+#import "FrequentCase.h"
 #import "MonsterHelper.h"
 #import "Monster+CoreDataClass.h"
 #import "MockStdLibWrapper.h"
-#import "TestGlobals.h"
-#import "TestHelpers.h"
 
 #define SET_UP_BOUND() shouldUseLowerBoundChoices_mh[i++] = NO
 #define SET_LOW_BOUND() shouldUseLowerBoundChoices_mh[i++] = YES
 
-@interface MonsterHelperTest : XCTestCase
+@interface MonsterHelperTest : FrequentCase
 
 @end
 
 MockStdLibWrapper *mw_mh;
 BOOL shouldUseLowerBoundChoices_mh[25];
 int rIdx_mh;
-NSManagedObjectContext *testContext_mh;
 
 @implementation MonsterHelperTest
 
     - (void)setUp {
         [super setUp];
         ASSERT_IS_TEST();
-        testContext_mh = [SHData constructContext:NSMainQueueConcurrencyType];
-        SHData.inUseContext = testContext_mh;
-        [TestHelpers resetCoreData:SHData.inUseContext];
-        [SHData initializeCoreData];
         mw_mh = [[MockStdLibWrapper alloc] init];
         [SingletonCluster getSharedInstance].stdLibWrapper =mw_mh;
         rIdx_mh = 0;
@@ -44,8 +36,6 @@ NSManagedObjectContext *testContext_mh;
     }
 
     - (void)tearDown {
-        testContext_mh = nil;
-        SHData.inUseContext = nil;
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         [super tearDown];
     }
