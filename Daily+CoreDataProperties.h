@@ -2,7 +2,7 @@
 //  Daily+CoreDataProperties.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 5/23/17.
+//  Created by Joel Pridgen on 6/4/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSDate *rollbackActivationTime;
 @property (nonatomic) int32_t streakLength;
 @property (nonatomic) int32_t urgency;
+@property (nonatomic) int32_t userOrder;
 
 @end
 

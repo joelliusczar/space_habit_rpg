@@ -23,6 +23,7 @@
 		271C048E1E8C9C06002221E9 /* MonsterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C048D1E8C9C06002221E9 /* MonsterHelper.m */; };
 		271C04921E8F3784002221E9 /* SuffixList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 271C04911E8F3784002221E9 /* SuffixList.plist */; };
 		273782381EE4D1B200EA5B1D /* FrequentCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 273782371EE4D1B200EA5B1D /* FrequentCase.m */; };
+		2737823E1EE4DB9C00EA5B1D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 273782391EE4DB9C00EA5B1D /* Model.xcdatamodeld */; };
 		273978851EB55F3700F217B4 /* StoryDumpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 273978831EB55F3700F217B4 /* StoryDumpView.m */; };
 		273978861EB55F3700F217B4 /* StoryDumpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273978841EB55F3700F217B4 /* StoryDumpView.xib */; };
 		2739788B1EB843F800F217B4 /* MonsterInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2739788A1EB843F800F217B4 /* MonsterInfo.plist */; };
@@ -67,7 +68,6 @@
 		27C92C441E3314000025727E /* ZoneDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C421E3314000025727E /* ZoneDescriptionViewController.m */; };
 		27C92C451E3314000025727E /* ZoneDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C431E3314000025727E /* ZoneDescriptionViewController.xib */; };
 		27C92C481E341DA10025727E /* ViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C471E341DA10025727E /* ViewHelper.m */; };
-		27E00EB21ED4E5F4008B35CD /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27E00E9D1ED4E5F4008B35CD /* Model.xcdatamodeld */; };
 		27F4401C1E220097002BEDD4 /* OnlyOneEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */; };
 		686686EB1D79032200BB2D09 /* DailyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 686686EA1D79032200BB2D09 /* DailyCell.xib */; };
 		686686EE1D79060300BB2D09 /* DailyCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686686ED1D79060300BB2D09 /* DailyCellController.m */; };
@@ -170,6 +170,11 @@
 		272144FD1EDB59F600D98C03 /* P_TaskEditorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_TaskEditorDelegate.h; sourceTree = "<group>"; };
 		273782361EE4D1B200EA5B1D /* FrequentCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrequentCase.h; sourceTree = "<group>"; };
 		273782371EE4D1B200EA5B1D /* FrequentCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrequentCase.m; sourceTree = "<group>"; };
+		2737823A1EE4DB9C00EA5B1D /* Model 19.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 19.xcdatamodel"; sourceTree = "<group>"; };
+		2737823B1EE4DB9C00EA5B1D /* Model 20.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 20.xcdatamodel"; sourceTree = "<group>"; };
+		2737823C1EE4DB9C00EA5B1D /* Model 21.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 21.xcdatamodel"; sourceTree = "<group>"; };
+		2737823D1EE4DB9C00EA5B1D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		2737823F1EE4DE6900EA5B1D /* Model 22.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 22.xcdatamodel"; sourceTree = "<group>"; };
 		273978821EB55F3700F217B4 /* StoryDumpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryDumpView.h; sourceTree = "<group>"; };
 		273978831EB55F3700F217B4 /* StoryDumpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryDumpView.m; sourceTree = "<group>"; };
 		273978841EB55F3700F217B4 /* StoryDumpView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoryDumpView.xib; sourceTree = "<group>"; };
@@ -196,7 +201,6 @@
 		273978A21EB8473100F217B4 /* MonsterTransaction+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MonsterTransaction+CoreDataProperties.h"; path = "../MonsterTransaction+CoreDataProperties.h"; sourceTree = "<group>"; };
 		273978A31EB8473100F217B4 /* MonsterTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MonsterTransaction+CoreDataProperties.m"; path = "../MonsterTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
 		273978FF1EC4092A00F217B4 /* IntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroViewController.xib; sourceTree = "<group>"; };
-		275A07701ED50861001422CD /* Model 21.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 21.xcdatamodel"; sourceTree = "<group>"; };
 		275A07831ED50AF5001422CD /* GoodTransaction+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GoodTransaction+CoreDataClass.h"; path = "../GoodTransaction+CoreDataClass.h"; sourceTree = "<group>"; };
 		275A07841ED50AF5001422CD /* GoodTransaction+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GoodTransaction+CoreDataClass.m"; path = "../GoodTransaction+CoreDataClass.m"; sourceTree = "<group>"; };
 		275A07851ED50AF5001422CD /* GoodTransaction+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GoodTransaction+CoreDataProperties.h"; path = "../GoodTransaction+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -248,26 +252,6 @@
 		27C92C461E341DA10025727E /* ViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewHelper.h; sourceTree = "<group>"; };
 		27C92C471E341DA10025727E /* ViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewHelper.m; sourceTree = "<group>"; };
 		27E00E981ED3FAE8008B35CD /* P_Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_Transaction.h; sourceTree = "<group>"; };
-		27E00E9E1ED4E5F4008B35CD /* Model 10.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 10.xcdatamodel"; sourceTree = "<group>"; };
-		27E00E9F1ED4E5F4008B35CD /* Model 11.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 11.xcdatamodel"; sourceTree = "<group>"; };
-		27E00EA01ED4E5F4008B35CD /* Model 12.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 12.xcdatamodel"; sourceTree = "<group>"; };
-		27E00EA11ED4E5F4008B35CD /* Model 13.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 13.xcdatamodel"; sourceTree = "<group>"; };
-		27E00EA21ED4E5F4008B35CD /* Model 14.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 14.xcdatamodel"; sourceTree = "<group>"; };
-		27E00EA31ED4E5F4008B35CD /* Model 15.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 15.xcdatamodel"; sourceTree = "<group>"; };
-		27E00EA41ED4E5F4008B35CD /* Model 16.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 16.xcdatamodel"; sourceTree = "<group>"; };
-		27E00EA51ED4E5F4008B35CD /* Model 17.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 17.xcdatamodel"; sourceTree = "<group>"; };
-		27E00EA61ED4E5F4008B35CD /* Model 18.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 18.xcdatamodel"; sourceTree = "<group>"; };
-		27E00EA71ED4E5F4008B35CD /* Model 19.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 19.xcdatamodel"; sourceTree = "<group>"; };
-		27E00EA81ED4E5F4008B35CD /* Model 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 2.xcdatamodel"; sourceTree = "<group>"; };
-		27E00EA91ED4E5F4008B35CD /* Model 20.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 20.xcdatamodel"; sourceTree = "<group>"; };
-		27E00EAA1ED4E5F4008B35CD /* Model 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 3.xcdatamodel"; sourceTree = "<group>"; };
-		27E00EAB1ED4E5F4008B35CD /* Model 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 4.xcdatamodel"; sourceTree = "<group>"; };
-		27E00EAC1ED4E5F4008B35CD /* Model 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 5.xcdatamodel"; sourceTree = "<group>"; };
-		27E00EAD1ED4E5F4008B35CD /* Model 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 6.xcdatamodel"; sourceTree = "<group>"; };
-		27E00EAE1ED4E5F4008B35CD /* Model 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 7.xcdatamodel"; sourceTree = "<group>"; };
-		27E00EAF1ED4E5F4008B35CD /* Model 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 8.xcdatamodel"; sourceTree = "<group>"; };
-		27E00EB01ED4E5F4008B35CD /* Model 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 9.xcdatamodel"; sourceTree = "<group>"; };
-		27E00EB11ED4E5F4008B35CD /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		27F4401A1E220097002BEDD4 /* OnlyOneEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyOneEntities.h; sourceTree = "<group>"; };
 		27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlyOneEntities.m; sourceTree = "<group>"; };
 		686686EA1D79032200BB2D09 /* DailyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyCell.xib; sourceTree = "<group>"; };
@@ -753,7 +737,7 @@
 		68F3F9A01D70E82E00840DD2 = {
 			isa = PBXGroup;
 			children = (
-				27E00E9D1ED4E5F4008B35CD /* Model.xcdatamodeld */,
+				273782391EE4DB9C00EA5B1D /* Model.xcdatamodeld */,
 				277ABF711EAD9DC3008CC239 /* Scripts */,
 				68F3F9AB1D70E82E00840DD2 /* HabitRPG2 */,
 				277ABEDB1E96F68E008CC239 /* HabitRPG2Tests */,
@@ -994,6 +978,7 @@
 				277ABF691EA46CE1008CC239 /* ProbilityWeightTest.m in Sources */,
 				275A07B71EDA1FB9001422CD /* TestHelpers.m in Sources */,
 				277ABF2E1E9C31C0008CC239 /* MockStdLibWrapper.m in Sources */,
+				2737823E1EE4DB9C00EA5B1D /* Model.xcdatamodeld in Sources */,
 				273782381EE4D1B200EA5B1D /* FrequentCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1031,7 +1016,6 @@
 				68A921F61DBC7FF2007C946C /* Good+CoreDataProperties.m in Sources */,
 				273978A71EB8473100F217B4 /* TodoTransaction+CoreDataProperties.m in Sources */,
 				273978A61EB8473100F217B4 /* TodoTransaction+CoreDataClass.m in Sources */,
-				27E00EB21ED4E5F4008B35CD /* Model.xcdatamodeld in Sources */,
 				686ED3C71DB481C4004EDD36 /* ZoneHelper.m in Sources */,
 				68E260991D84923C00425D46 /* DailyHelper.m in Sources */,
 				6886A4891D8F3CB2005E12B3 /* TaskCell.m in Sources */,
@@ -1269,32 +1253,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		27E00E9D1ED4E5F4008B35CD /* Model.xcdatamodeld */ = {
+		273782391EE4DB9C00EA5B1D /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				275A07701ED50861001422CD /* Model 21.xcdatamodel */,
-				27E00E9E1ED4E5F4008B35CD /* Model 10.xcdatamodel */,
-				27E00E9F1ED4E5F4008B35CD /* Model 11.xcdatamodel */,
-				27E00EA01ED4E5F4008B35CD /* Model 12.xcdatamodel */,
-				27E00EA11ED4E5F4008B35CD /* Model 13.xcdatamodel */,
-				27E00EA21ED4E5F4008B35CD /* Model 14.xcdatamodel */,
-				27E00EA31ED4E5F4008B35CD /* Model 15.xcdatamodel */,
-				27E00EA41ED4E5F4008B35CD /* Model 16.xcdatamodel */,
-				27E00EA51ED4E5F4008B35CD /* Model 17.xcdatamodel */,
-				27E00EA61ED4E5F4008B35CD /* Model 18.xcdatamodel */,
-				27E00EA71ED4E5F4008B35CD /* Model 19.xcdatamodel */,
-				27E00EA81ED4E5F4008B35CD /* Model 2.xcdatamodel */,
-				27E00EA91ED4E5F4008B35CD /* Model 20.xcdatamodel */,
-				27E00EAA1ED4E5F4008B35CD /* Model 3.xcdatamodel */,
-				27E00EAB1ED4E5F4008B35CD /* Model 4.xcdatamodel */,
-				27E00EAC1ED4E5F4008B35CD /* Model 5.xcdatamodel */,
-				27E00EAD1ED4E5F4008B35CD /* Model 6.xcdatamodel */,
-				27E00EAE1ED4E5F4008B35CD /* Model 7.xcdatamodel */,
-				27E00EAF1ED4E5F4008B35CD /* Model 8.xcdatamodel */,
-				27E00EB01ED4E5F4008B35CD /* Model 9.xcdatamodel */,
-				27E00EB11ED4E5F4008B35CD /* Model.xcdatamodel */,
+				2737823F1EE4DE6900EA5B1D /* Model 22.xcdatamodel */,
+				2737823A1EE4DB9C00EA5B1D /* Model 19.xcdatamodel */,
+				2737823B1EE4DB9C00EA5B1D /* Model 20.xcdatamodel */,
+				2737823C1EE4DB9C00EA5B1D /* Model 21.xcdatamodel */,
+				2737823D1EE4DB9C00EA5B1D /* Model.xcdatamodel */,
 			);
-			currentVersion = 275A07701ED50861001422CD /* Model 21.xcdatamodel */;
+			currentVersion = 2737823F1EE4DE6900EA5B1D /* Model 22.xcdatamodel */;
 			name = Model.xcdatamodeld;
 			path = HabitRPG2/Model.xcdatamodeld;
 			sourceTree = "<group>";

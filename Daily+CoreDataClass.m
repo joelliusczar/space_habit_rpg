@@ -23,6 +23,7 @@
             ,self.lastActivationTime.timeIntervalSince1970,@"lastActivationTime"
             ,self.nextDueTime.timeIntervalSince1970,@"nextDueTime"
             ,self.rollbackActivationTime.timeIntervalSince1970,@"rollbackActivationTime"
+            ,[NSNumber numberWithInt:self.userOrder]
             , nil];
 }
 @end

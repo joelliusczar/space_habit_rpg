@@ -19,6 +19,7 @@
             ,[NSNumber numberWithBool:self.isGood],@"isGood"
             ,[NSNumber numberWithBool:self.isActive],@"isActive"
             ,[NSNumber numberWithBool:self.neglectPunishReward],@"neglectPunishReward"
+            ,[NSNumber numberWithInt:self.userOrder]
             , nil];
 }
 @end

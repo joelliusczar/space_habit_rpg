@@ -13,6 +13,7 @@
     return [NSMutableDictionary dictionaryWithObjectsAndKeys:
             self.goodName,@"goodName"
             ,[NSNumber numberWithInt:self.cost],@"cost"
-            ,[NSNumber numberWithInt:self.useType],@"useType", nil];
+            ,[NSNumber numberWithInt:self.useType],@"useType"
+            ,nil];
 }
 @end

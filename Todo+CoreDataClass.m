@@ -14,6 +14,7 @@
             self.todoName,@"todoName"
             ,self.dueDate.timeIntervalSince1970,@"dueDate"
             ,self.effectiveDate.timeIntervalSince1970,@"effectiveDate"
+            ,[NSNumber numberWithInt:self.userOrder]
             , nil];
 }
 @end

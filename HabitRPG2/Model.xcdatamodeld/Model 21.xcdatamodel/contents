@@ -112,6 +112,7 @@
         <element name="DailyTransaction" positionX="-180" positionY="-144" width="128" height="75"/>
         <element name="DataInfo" positionX="-387" positionY="72" width="128" height="90"/>
         <element name="Good" positionX="-290" positionY="174" width="128" height="105"/>
+        <element name="GoodTransaction" positionX="-180" positionY="-144" width="128" height="75"/>
         <element name="Habit" positionX="108" positionY="18" width="128" height="180"/>
         <element name="HabitTransaction" positionX="-171" positionY="-135" width="128" height="75"/>
         <element name="Hero" positionX="-90" positionY="-58" width="128" height="150"/>
@@ -123,6 +124,5 @@
         <element name="TodoTransaction" positionX="-162" positionY="-126" width="128" height="75"/>
         <element name="Zone" positionX="-128" positionY="129" width="128" height="150"/>
         <element name="ZoneTransaction" positionX="-153" positionY="-117" width="128" height="75"/>
-        <element name="GoodTransaction" positionX="-180" positionY="-144" width="128" height="75"/>
     </elements>
 </model>
