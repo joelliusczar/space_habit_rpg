@@ -92,7 +92,23 @@ NSMutableArray<Daily *> *testDailies = nil;
         XCTAssertNil(error);
     }
     XCTAssertEqual(results.fetchedObjects.count,31);
+    //add save new item
+    Daily *d = [Daily constructDaily];
+    d.dailyName = @"addedDaily";
+    [SHData insertIntoContext:d];
+    //after insert, before fetch
+    XCTAssertEqual(results.fetchedObjects.count,31);
+    
+    if(![results performFetch:&error]){
+        NSLog(@"Error fetching data: %@", error.localizedFailureReason);
+        XCTAssertNil(error);
+    }
+    //after insert, after fetch, before save
+    XCTAssertEqual(results.fetchedObjects.count,32);
+    //saving is unecessary to be included in fetch results
+    
 }
+
 
 
 @end
