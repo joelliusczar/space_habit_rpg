@@ -14,14 +14,11 @@
 #import "Daily+CoreDataClass.h"
 
 
-
-
-@interface DailyViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
--(id)initWithDataController:(NSObject<P_CoreData> *)dataController AndWithParent:(CentralViewController *)parent;
--(void)setuptab:(NSObject<P_CoreData> *)dataController;
--(void)showNewDaily:(Daily *)daily;
--(void)refreshTableAtRow:(NSIndexPath *)row;
--(void)removeItemFromViewAtRow:(NSIndexPath *)rowInfo;
+@interface DailyViewController : UIViewController <UITableViewDelegate, UITableViewDataSource,NSFetchedResultsControllerDelegate>
+-(id)initWithParent:(CentralViewController *)parent;
+-(void)setuptab;
+-(void)refreshTableAtRow:(NSIndexPath *)row;;
 -(void)completeDaily:(Daily *)daily;
 -(void)undoCompletedDaily:(Daily *)daily;
+-(void)fetchUpdates;
 @end

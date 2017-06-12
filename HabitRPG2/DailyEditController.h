@@ -12,7 +12,6 @@
 #import "P_CoreData.h"
 #import "constants.h"
 #import "Daily+CoreDataClass.h"
-#import "DailyHelper.h"
 
 
 @interface DailyEditController : UIViewController <EditingSaver,UITextViewDelegate>

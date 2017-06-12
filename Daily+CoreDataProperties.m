@@ -25,6 +25,6 @@
 @dynamic rollbackActivationTime;
 @dynamic streakLength;
 @dynamic urgency;
-@dynamic userOrder;
+@dynamic customUserOrder;
 
 @end

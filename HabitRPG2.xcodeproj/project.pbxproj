@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2709B3911EE4FBDC00EEE5CC /* Model.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 273782391EE4DB9C00EA5B1D /* Model.xcdatamodeld */; };
 		271217691DCE84310072ACC6 /* Daily+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712175A1DCE84310072ACC6 /* Daily+CoreDataClass.m */; };
 		2712176A1DCE84310072ACC6 /* Good+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712175C1DCE84310072ACC6 /* Good+CoreDataClass.m */; };
 		2712176B1DCE84310072ACC6 /* Habit+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712175E1DCE84310072ACC6 /* Habit+CoreDataClass.m */; };
@@ -105,7 +106,6 @@
 		68D25C221D8B951B00FF1BE0 /* DailyEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D25C211D8B951B00FF1BE0 /* DailyEditController.m */; };
 		68DD159A1D9A1FC00073E7D8 /* checked_task.png in Resources */ = {isa = PBXBuildFile; fileRef = 68DD15991D9A1FC00073E7D8 /* checked_task.png */; };
 		68E260651D7FC3F200425D46 /* CoreDataStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260641D7FC3F200425D46 /* CoreDataStackController.m */; };
-		68E260991D84923C00425D46 /* DailyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260981D84923C00425D46 /* DailyHelper.m */; };
 		68E260CF1D851DA500425D46 /* EditNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E260CD1D851DA500425D46 /* EditNavigationController.m */; };
 		68E260D01D851DA500425D46 /* EditNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68E260CE1D851DA500425D46 /* EditNavigationController.xib */; };
 		68F3F9AE1D70E82E00840DD2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3F9AD1D70E82E00840DD2 /* main.m */; };
@@ -309,8 +309,6 @@
 		68DD15991D9A1FC00073E7D8 /* checked_task.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked_task.png; sourceTree = "<group>"; };
 		68E260631D7FC3F200425D46 /* CoreDataStackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataStackController.h; sourceTree = "<group>"; };
 		68E260641D7FC3F200425D46 /* CoreDataStackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataStackController.m; sourceTree = "<group>"; };
-		68E260971D84923C00425D46 /* DailyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyHelper.h; sourceTree = "<group>"; };
-		68E260981D84923C00425D46 /* DailyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyHelper.m; sourceTree = "<group>"; };
 		68E260CC1D851DA500425D46 /* EditNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNavigationController.h; sourceTree = "<group>"; };
 		68E260CD1D851DA500425D46 /* EditNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNavigationController.m; sourceTree = "<group>"; };
 		68E260CE1D851DA500425D46 /* EditNavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditNavigationController.xib; sourceTree = "<group>"; };
@@ -692,8 +690,6 @@
 				68D25C211D8B951B00FF1BE0 /* DailyEditController.m */,
 				68F3F9E61D70EC9700840DD2 /* DailyViewController.h */,
 				68F3F9E71D70EC9700840DD2 /* DailyViewController.m */,
-				68E260971D84923C00425D46 /* DailyHelper.h */,
-				68E260981D84923C00425D46 /* DailyHelper.m */,
 				2739789C1EB8473100F217B4 /* DailyTransaction+CoreDataClass.h */,
 				2739789D1EB8473100F217B4 /* DailyTransaction+CoreDataClass.m */,
 				2739789E1EB8473100F217B4 /* DailyTransaction+CoreDataProperties.h */,
@@ -922,6 +918,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2709B3911EE4FBDC00EEE5CC /* Model.xcdatamodeld in Resources */,
 				27C92C1F1E29FE110025727E /* ZoneInfo.plist in Resources */,
 				686ED3951DA5DEC0004EDD36 /* title_Screen_2x.png in Resources */,
 				2739788B1EB843F800F217B4 /* MonsterInfo.plist in Resources */,
@@ -1017,7 +1014,6 @@
 				273978A71EB8473100F217B4 /* TodoTransaction+CoreDataProperties.m in Sources */,
 				273978A61EB8473100F217B4 /* TodoTransaction+CoreDataClass.m in Sources */,
 				686ED3C71DB481C4004EDD36 /* ZoneHelper.m in Sources */,
-				68E260991D84923C00425D46 /* DailyHelper.m in Sources */,
 				6886A4891D8F3CB2005E12B3 /* TaskCell.m in Sources */,
 				68E260CF1D851DA500425D46 /* EditNavigationController.m in Sources */,
 				686ED3BF1DB47954004EDD36 /* ZoneChoiceViewController.m in Sources */,

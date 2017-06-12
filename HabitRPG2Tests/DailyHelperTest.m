@@ -88,6 +88,7 @@ NSMutableArray<Daily *> *testDailies = nil;
     NSFetchedResultsController *results = [Daily getUnfinishedDailiesController:testDate];
     NSError *error;
     if(![results performFetch:&error]){
+        
         NSLog(@"Error fetching data: %@", error.localizedFailureReason);
         XCTAssertNil(error);
     }
@@ -107,6 +108,19 @@ NSMutableArray<Daily *> *testDailies = nil;
     XCTAssertEqual(results.fetchedObjects.count,32);
     //saving is unecessary to be included in fetch results
     
+    NSManagedObjectContext *prevContext = SHData.inUseContext;
+    SHData.inUseContext = [SHData constructContext:NSMainQueueConcurrencyType];
+    Daily *d2 = [Daily constructDaily];
+    d2.dailyName = @"addedDaily2";
+    [SHData insertIntoContext:d2];
+    [SHData saveAndWait];
+    SHData.inUseContext = prevContext;
+    
+    if(![results performFetch:&error]){
+        NSLog(@"Error fetching data: %@", error.localizedFailureReason);
+        XCTAssertNil(error);
+    }
+    XCTAssertEqual(results.fetchedObjects.count,33);
 }
 
 

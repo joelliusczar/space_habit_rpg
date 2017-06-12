@@ -104,7 +104,7 @@
 }
 
 -(void)setupTabs {
-    DailyViewController* dc = [[DailyViewController alloc]initWithDataController:self.dataController AndWithParent:self];
+    DailyViewController* dc = [[DailyViewController alloc]initWithParent:self];
     
     HabitController* hc = [[HabitController alloc]
                            initWithNibName:@"HabitController"

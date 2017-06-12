@@ -32,7 +32,6 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 @property (weak,nonatomic) IBOutlet UILabel *rewardsList;
 @property (weak,nonatomic) DailyViewController *parentDailyController;
 @property (strong,nonatomic) Daily *modelForEditing;
-@property (strong,nonatomic) DailyHelper *dailyHelper;
 @property (strong,nonatomic) NSIndexPath *rowInfo;
 @property (assign,nonatomic) dailyStatus section;
 @property (assign,nonatomic) BOOL areXtraOptsOpen;
@@ -70,16 +69,6 @@ NSString* const IS_DIRTY = @"isDirty";
 -(void)setModelForEditing:(Daily *)modelForEditing{
     _modelForEditing = modelForEditing;
 }
-
-@synthesize dailyHelper = _dailyHelper;
--(DailyHelper *)dailyHelper{
-    
-    if(_dailyHelper){
-        _dailyHelper = [[DailyHelper alloc] init];
-    }
-    return _dailyHelper;
-}
-
 
 -(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController{
     if(self = [self initWithNibName:@"DailyEditView" bundle:nil]){
@@ -132,20 +121,9 @@ NSString* const IS_DIRTY = @"isDirty";
     //todo add something for custom reward
     [SHData insertIntoContext:self.modelForEditing];
     [SHData save]; //TODO: this is probably all sorts of fucked up at the moment
-//    if(self.rowInfo == nil){
-//        [self.parentDailyController showNewDaily:self.modelForEditing];
-//    }
-//    else{
-//        [self.parentDailyController refreshTableAtRow:self.rowInfo];
-//    }
-    [self cleanUp];
 }
 
 -(BOOL)deleteModel{
-    
-    [SHData softDeleteModel:self.modelForEditing]; //TODO decided if save happens here. I think
-    //it does, but we're not here yet.
-    [self.parentDailyController removeItemFromViewAtRow:self.rowInfo];
     [self cleanUp];
     return YES; //TODO: refactor so return type is void
 }

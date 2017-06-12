@@ -10,24 +10,22 @@
 #import "constants.h"
 #import "EditNavigationController.h"
 #import "DailyEditController.h"
-#import "DailyHelper.h"
 #import "DailyCellController.h"
 #import "IntroViewController.h"
 #import "SingletonCluster.h"
 #import "CommonUtilities.h"
 #import "ViewHelper.h"
+#import "Daily+DailyHelper.h"
+#import "NSDate+DateHelper.h"
 
 
 @interface DailyViewController ()
 
-    @property (nonatomic,weak) NSObject<P_CoreData> *dataController;
-    @property (nonatomic,weak) UIButton *addButton;
-    @property (nonatomic,strong) DailyEditController *dailyEditor;
-    @property (nonatomic,weak)  CentralViewController *parentController;
-    @property (nonatomic,strong) UITableView *dailiesTable;
-    @property (nonatomic,strong) NSMutableArray *incompleteItems;
-    @property (nonatomic,strong) NSMutableArray *completeItems;
-    @property (nonatomic,strong) DailyHelper *dailyHelper;
+    @property (strong,nonatomic) DailyEditController *dailyEditor;
+    @property (weak,nonatomic)  CentralViewController *parentController;
+    @property (strong,nonatomic) UITableView *dailiesTable;
+    @property (strong,nonatomic) NSFetchedResultsController *incompleteItems;
+    @property (strong,nonatomic) NSFetchedResultsController *completeItems;
 
 @end
 
@@ -43,29 +41,11 @@ static NSString *const EntityName = @"Daily";
     return _dailyEditor;
 }
 
-@synthesize addButton = _addButton;
--(UIButton *)addButton{
-    if(_addButton == nil){
-        _addButton = [self.view viewWithTag:1];
-        [_addButton addTarget:self action:@selector(pressedAddBtn:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _addButton;
-}
-
-@synthesize dailyHelper = _dailyHelper;
--(DailyHelper *)dailyHelper{
-    
-    if(_dailyHelper){
-        _dailyHelper = [[DailyHelper alloc] init];
-    }
-    return _dailyHelper;
-}
-
--(id)initWithDataController:(NSObject<P_CoreData> *)dataController AndWithParent:(CentralViewController *)parent
+-(id)initWithParent:(CentralViewController *)parent
 {
     if(self = [self initWithNibName:@"DailyViewController" bundle:nil]){
         self.parentController = parent;
-        [self setuptab:dataController];
+        [self setuptab];
         
     }
     return self;
@@ -87,9 +67,11 @@ static NSString *const EntityName = @"Daily";
                                                        viewHeight);
     self.dailiesTable.delegate = self;
     self.dailiesTable.dataSource = self;
+    self.incompleteItems.delegate = self;
+    self.completeItems.delegate = self;
     
-    
-    [self addButton];
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:SHData.readContext selector:@selector(mergeChangesFromContextDidSaveNotification:) name:NSManagedObjectContextDidSaveNotification object:SHData.writeContext];
     
 }
 
@@ -98,40 +80,18 @@ static NSString *const EntityName = @"Daily";
     // Dispose of any resources that can be recreated.
 }
 
--(void)setuptab:(NSObject<P_CoreData> *)dataController{
+-(void)setuptab{
     UITabBarItem *tbi = [self tabBarItem];
-    [self setupData:dataController];
-    
-    
+    [self setupData];
     [tbi setTitle:@"Dailies"];
-}
-
--(void)showNewDaily:(Daily *)daily{
-    [self.incompleteItems addObject:daily];
-    [self.dailiesTable reloadData];
 }
 
 -(void)refreshTableAtRow:(NSIndexPath *)row{
     [self.dailiesTable reloadRowsAtIndexPaths:@[row] withRowAnimation:UITableViewRowAnimationNone];
 }
 
--(void)removeItemFromViewAtRow:(NSIndexPath *)rowInfo{
-    if(rowInfo.section == INCOMPLETE){
-        [self.incompleteItems removeObjectAtIndex:rowInfo.row];
-        //todo reload by section
-    }
-    else{
-        [self.completeItems removeObjectAtIndex:rowInfo.row];
-        //reload by section
-    }
-    [self.dailiesTable reloadData];
-}
-
 -(void)completeDaily:(Daily *)daily{
-    if(daily == self.incompleteItems[daily.rowNum]){
-        [self.incompleteItems removeObjectAtIndex:daily.rowNum];
-        [self.completeItems addObject:daily];
-        [self.dailiesTable reloadData];
+    if(daily == self.incompleteItems.fetchedObjects[daily.rowNum]){
         //todo complete action
     }
     else{
@@ -140,10 +100,7 @@ static NSString *const EntityName = @"Daily";
 }
 
 -(void)undoCompletedDaily:(Daily *)daily{
-    if(daily == self.completeItems[daily.rowNum]){
-        [self.completeItems removeObjectAtIndex:daily.rowNum];
-        [self.incompleteItems addObject:daily];
-        [self.dailiesTable reloadData];
+    if(daily == self.completeItems.fetchedObjects[daily.rowNum]){
         //reverse complete action
     }
     else{
@@ -151,28 +108,21 @@ static NSString *const EntityName = @"Daily";
     }
 }
 
--(void)setupData:(NSObject<P_CoreData> *)data{
-    //NSPredicate *unfinished = [NSPredicate predicateWithFormat:@"isActive = 1 AND "];
+-(void)setupData{
+    NSDate *todayStart = [NSDate todayStart];
+    todayStart = [NSDate adjustTime:todayStart hour:SHData.userData.theSettings.dayStart minute:0 second:0];
+    self.incompleteItems = [Daily getUnfinishedDailiesController:todayStart];
     
-    self.dataController = data;
-//    NSFetchedResultsController *resultsController = [self.dataController getItemFetcher:DAILY_ENTITY_NAME predicate:nil sortBy:[self getFetchDescriptors]];
-    //NSError *error;
-//    if(![resultsController performFetch:&error]){
-//        NSLog(@"Error fetching data: %@", error.localizedFailureReason);
-//        return;
-//    }
-    self.completeItems = [NSMutableArray array];
-    self.incompleteItems = [NSMutableArray array];
+    [self fetchUpdates];
     
-//    for(Daily *d in resultsController.fetchedObjects){
-//        if([self.dailyHelper isDailyCompleteForTheDay:d]){
-//            [self.completeItems addObject:d];
-//        }
-//        else{
-//            [self.incompleteItems addObject:d];
-//        }
-//    }
-    
+}
+
+-(void)fetchUpdates{
+    NSError *error;
+    if(![self.incompleteItems performFetch:&error]){
+        NSLog(@"Error fetching data: %@", error.localizedFailureReason);
+        return;
+    }
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -181,10 +131,10 @@ static NSString *const EntityName = @"Daily";
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if(section == INCOMPLETE){
-        return [self.incompleteItems count];
+        return self.incompleteItems.fetchedObjects.count;
     }
     else{
-        return [self.completeItems  count];
+        return self.completeItems.fetchedObjects.count;
     }
 }
 
@@ -202,10 +152,10 @@ static NSString *const EntityName = @"Daily";
     DailyCellController *cell = [DailyCellController getDailyCell:tableView WithParent:self];
     Daily *d = nil;
     if(indexPath.section == INCOMPLETE){
-        d = self.incompleteItems[indexPath.row];
+        d = self.incompleteItems.fetchedObjects[indexPath.row];
     }
     else{
-        d = self.completeItems[indexPath.row];
+        d = self.completeItems.fetchedObjects[indexPath.row];
     }
     d.rowNum = indexPath.row;
     d.sectionNum = indexPath.section;
@@ -214,25 +164,34 @@ static NSString *const EntityName = @"Daily";
     return cell;
 }
 
--(NSArray *)getFetchDescriptors{
-    NSSortDescriptor *sortByUrgency = [[NSSortDescriptor alloc]
-                                       initWithKey:@"urgency" ascending:NO];
-    NSSortDescriptor *sortByDifficulty = [[NSSortDescriptor alloc]
-                                          initWithKey:@"difficulty" ascending:YES];
-    return [NSArray arrayWithObjects:sortByUrgency,sortByDifficulty, nil];
+-(void)controllerWillChangeContent:(NSFetchedResultsController *)controller{
+    [self.dailiesTable beginUpdates];
 }
 
--(void)pressedAddBtn:(id)sender{
+-(void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath{
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            [self.dailiesTable insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        default:
+            break;
+    }
+}
+
+-(void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
+    [self.dailiesTable endUpdates];
+}
+
+- (IBAction)addDailyBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
     DailyEditController *dailyEditor = [[DailyEditController alloc] initWithParentDailyController:self];
     EditNavigationController *editController = [[EditNavigationController alloc] initWithTitle:@"Add Daily" AndEditor:dailyEditor];
     [ViewHelper pushViewToFront:editController OfParent:self.parentController];
-    //[self showViewController:editController sender:self];
 }
 
 -(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     void (^pressedEdit)(UITableViewRowAction *,NSIndexPath *) = ^(UITableViewRowAction *action,NSIndexPath *path){
-        [self.dailyEditor loadExistingDailyForEditing:self.incompleteItems[indexPath.row] WithIndexPath:indexPath];
+        [self.dailyEditor loadExistingDailyForEditing:self.incompleteItems.fetchedObjects[indexPath.row] WithIndexPath:indexPath];
         //open edit screen
     };
     

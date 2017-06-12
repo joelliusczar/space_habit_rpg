@@ -55,12 +55,14 @@
     }
 }
 
-+(NSArray *)buildFetchDescriptors{
++(NSArray<NSSortDescriptor *> *)buildFetchDescriptors{
+    NSSortDescriptor *sortByUserOrder = [[NSSortDescriptor alloc]
+                                       initWithKey:@"customUserOrder" ascending:NO];
     NSSortDescriptor *sortByUrgency = [[NSSortDescriptor alloc]
                                        initWithKey:@"urgency" ascending:NO];
     NSSortDescriptor *sortByDifficulty = [[NSSortDescriptor alloc]
                                           initWithKey:@"difficulty" ascending:YES];
-    return [NSArray arrayWithObjects:sortByUrgency,sortByDifficulty, nil];
+    return [NSArray arrayWithObjects:sortByUserOrder,sortByUrgency,sortByDifficulty, nil];
 }
 
 +(NSFetchedResultsController *)getUnfinishedDailiesController:(NSDate *)todayStart{

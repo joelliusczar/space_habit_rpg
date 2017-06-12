@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSDate *rollbackActivationTime;
 @property (nonatomic) int32_t streakLength;
 @property (nonatomic) int32_t urgency;
-@property (nonatomic) int32_t userOrder;
+@property (nonatomic) int32_t customUserOrder;
 
 @end
 
