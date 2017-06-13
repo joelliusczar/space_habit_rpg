@@ -17,7 +17,8 @@ typedef NS_ENUM(NSUInteger,dailyStatus) {
 
 typedef NS_ENUM(NSInteger,enviromentCode) {
     ENV_DEFAULT =0
-    ,ENV_UTEST = 1
+    ,ENV_BETA = 1<<0
+    ,ENV_UTEST = 1<<1
 };
 
 typedef NS_ENUM(NSInteger,gameState) {
@@ -55,6 +56,7 @@ extern CGFloat const ZONE_CHOICE_ROW_HEIGHT;
 
 extern NSString* const TRANSACTION_TYPE_KEY;
 extern NSString* const TRANSACTION_TYPE_CREATE;
+extern NSString* const REPORT_USER_ID_KEY;
 
 
 //zone groups

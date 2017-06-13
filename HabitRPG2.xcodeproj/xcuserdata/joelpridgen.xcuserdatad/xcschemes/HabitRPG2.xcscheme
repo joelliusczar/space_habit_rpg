@@ -88,6 +88,13 @@
             ReferencedContainer = "container:HabitRPG2.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "IS_BETA"
+            value = "YES"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

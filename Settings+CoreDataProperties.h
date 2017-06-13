@@ -2,7 +2,7 @@
 //  Settings+CoreDataProperties.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 5/23/17.
+//  Created by Joel Pridgen on 6/12/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
@@ -26,6 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) int32_t reminderHour;
 @property (nonatomic) BOOL storyModeisOn;
 @property (nonatomic) int32_t zoneLvlPenalty;
+@property (nullable, nonatomic, copy) NSString *userId;
+@property (nonatomic) BOOL allowReport;
 
 @end
 

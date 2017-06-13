@@ -2,7 +2,7 @@
 //  Settings+CoreDataProperties.m
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 5/23/17.
+//  Created by Joel Pridgen on 6/12/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
@@ -25,5 +25,7 @@
 @dynamic reminderHour;
 @dynamic storyModeisOn;
 @dynamic zoneLvlPenalty;
+@dynamic userId;
+@dynamic allowReport;
 
 @end

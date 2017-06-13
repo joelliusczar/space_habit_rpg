@@ -40,6 +40,7 @@ CGFloat const ZONE_CHOICE_ROW_HEIGHT = 75;
 
 NSString* const TRANSACTION_TYPE_KEY = @"TransactionType";
 NSString* const TRANSACTION_TYPE_CREATE = @"ADDED";
+NSString* const REPORT_USER_ID_KEY = @"reportUserId";
 
 //zone groups
 NSString* const LVL_0_ZONES = @"LVL_0_ZONES";

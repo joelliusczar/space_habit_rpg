@@ -8,6 +8,7 @@
 
 #import "OnlyOneEntities.h"
 #import "constants.h"
+#import "SingletonCluster.h"
 
 
 @interface OnlyOneEntities()
@@ -83,6 +84,8 @@
     settings.reminderHour = 17; //5 o'clock?
     settings.storyModeisOn = YES;
     settings.zoneLvlPenalty = 1; //0 - no penalty? 1: restart lvl?
+    settings.allowReport = NO|(SharedGlobal.EnviromentNum&ENV_BETA);
+    settings.userId = [SharedGlobal.reportCaller getUniqueID];
     return settings;
 }
 

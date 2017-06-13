@@ -11,6 +11,7 @@
 #import "ResourceUtility.h"
 #import "StdLibWrapper.h"
 #import "constants.h"
+#import "ReportServiceCaller.h"
 
 
 @implementation SingletonCluster
@@ -18,10 +19,15 @@
 -(int)EnviromentNum{
     NSDictionary* environment = [[NSProcessInfo processInfo] environment];
     NSString* testEnabled = environment[@"IS_UNIT_TESTING"];
+    NSString* betaEnabled = environment[@"IS_BETA"];
+    int num = 0;
     if([testEnabled isEqualToString:@"YES"]){
-        return ENV_UTEST;
+        num |= ENV_UTEST;
     }
-    return ENV_DEFAULT;
+    if([betaEnabled isEqualToString:@"YES"]){
+        num |= ENV_BETA;
+    }
+    return num;
 }
 
 @synthesize dataController = _dataController;
@@ -39,6 +45,14 @@
         _resourceUtility = [[ResourceUtility alloc] init];
     }
     return _resourceUtility;
+}
+
+@synthesize reportCaller = _reportCaller;
+-(NSObject<P_ReportServiceCaller> *)reportCaller{
+    if(nil==_reportCaller){
+        _reportCaller = [ReportServiceCaller new];
+    }
+    return _reportCaller;
 }
 
 @synthesize zoneInfoDictionary = _zoneInfoDictionary;
