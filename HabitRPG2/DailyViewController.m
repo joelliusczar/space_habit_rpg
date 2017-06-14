@@ -173,6 +173,8 @@ static NSString *const EntityName = @"Daily";
         case NSFetchedResultsChangeInsert:
             [self.dailiesTable insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
+        case NSFetchedResultsChangeUpdate:
+            break;
         default:
             break;
     }
@@ -190,9 +192,13 @@ static NSString *const EntityName = @"Daily";
 
 -(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    
     void (^pressedEdit)(UITableViewRowAction *,NSIndexPath *) = ^(UITableViewRowAction *action,NSIndexPath *path){
-        [self.dailyEditor loadExistingDailyForEditing:self.incompleteItems.fetchedObjects[indexPath.row] WithIndexPath:indexPath];
-        //open edit screen
+        NSFetchedResultsController *fetchController = path.section == INCOMPLETE?self.incompleteItems:self.completeItems;
+        
+        DailyEditController *dailyEditor = [[DailyEditController alloc] initWithParentDailyController:self ToEdit:fetchController.fetchedObjects[indexPath.row] AtIndexPath:path];
+        EditNavigationController *editController = [[EditNavigationController alloc] initWithTitle:@"Add Daily" AndEditor:dailyEditor];
+        [ViewHelper pushViewToFront:editController OfParent:self.parentController];
     };
     
     UITableViewRowAction *openEditBox = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Edit" handler:pressedEdit];

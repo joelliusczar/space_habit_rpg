@@ -24,6 +24,8 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 @property (weak,nonatomic) IBOutlet UITextField *nameBox;
 @property (weak,nonatomic) IBOutlet UITextView *notesBox;
 @property (weak,nonatomic) IBOutlet UISlider *urgencySld;
+@property (weak, nonatomic) IBOutlet UILabel *urgencyLbl;
+@property (weak, nonatomic) IBOutlet UILabel *difficultyLbl;
 @property (weak,nonatomic) IBOutlet UISlider *difficultySld;
 @property (weak,nonatomic) IBOutlet UIButton *showXtraOptsBtn;
 @property (nonatomic,strong) NSMutableArray<UIButton<P_CustomSwitch> *> *activeDaySwitches;
@@ -59,21 +61,19 @@ NSString* const IS_DIRTY = @"isDirty";
 }
 
 @synthesize modelForEditing = _modelForEditing;
--(Daily *)modelForEditing{
-    if(nil==_modelForEditing){
-        _modelForEditing = [Daily constructDaily];
-    }
-    return _modelForEditing;
-}
 
--(void)setModelForEditing:(Daily *)modelForEditing{
-    _modelForEditing = modelForEditing;
-}
 
 -(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController{
     if(self = [self initWithNibName:@"DailyEditView" bundle:nil]){
         self.parentDailyController = parentDailyController;
         [self view];
+    }
+    return self;
+}
+
+-(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController ToEdit:(Daily *)daily AtIndexPath:(NSIndexPath *)rowInfow{
+    if(self = [self initWithParentDailyController:parentDailyController]){
+        [self loadExistingDailyForEditing:daily WithIndexPath:rowInfow];
     }
     return self;
 }
@@ -109,17 +109,23 @@ NSString* const IS_DIRTY = @"isDirty";
 -(void)saveEdit{
     //TODO; uncoment code
     //todo check for loophole with nextDueTime
+    BOOL isModelNew = nil==self.modelForEditing;
+    if(isModelNew){
+        self.modelForEditing = [Daily constructDaily];
+    }
     self.modelForEditing.dailyName = self.nameBox.text;
     self.modelForEditing.note = self.notesBox.text;
     self.modelForEditing.urgency = self.urgencySld.value;
     self.modelForEditing.difficulty = self.difficultySld.value;
     int rate = (int)self.rateStep.value;
     self.modelForEditing.rate = rate;
-    //self.modelForEditing.nextDueTime = [self.dailyHelper calculateNextDueTime:[NSDate date] WithRate:rate];
+    self.modelForEditing.nextDueTime = [Daily calculateNextDueTime:[NSDate date] WithRate:rate];
     self.modelForEditing.streakLength = 0;
-    //self.modelForEditing.activeDaysHash = [self.dailyHelper calculateActiveDaysHash:self.activeDaySwitches];
+    self.modelForEditing.activeDaysHash = [Daily calculateActiveDaysHash:self.activeDaySwitches];
     //todo add something for custom reward
-    [SHData insertIntoContext:self.modelForEditing];
+    if(isModelNew){
+        [SHData insertIntoContext:self.modelForEditing];
+    }
     [SHData save]; //TODO: this is probably all sorts of fucked up at the moment
 }
 
@@ -154,11 +160,14 @@ NSString* const IS_DIRTY = @"isDirty";
     self.modelForEditing = daily;
     self.rowInfo = rowInfo;
     self.nameBox.text = self.modelForEditing.dailyName ? self.modelForEditing.dailyName  : @"";
+    self.nameStr = self.nameBox.text;
     self.notesBox.text = self.modelForEditing.note ? self.modelForEditing.note : @"";
     self.urgencySld.value = self.modelForEditing.urgency;
+    self.urgencyLbl.text = [NSString stringWithFormat:@"Urgency: %d",self.modelForEditing.urgency];
     self.difficultySld.value = self.modelForEditing.difficulty;
-    //int hash = self.modelForEditing.activeDaysHash;
-    //[self.dailyHelper setActiveDaySwitches:self.activeDaySwitches fromHash:hash];
+    self.difficultyLbl.text = [NSString stringWithFormat:@"Difficulty: %d",self.modelForEditing.difficulty];
+    int hash = self.modelForEditing.activeDaysHash;
+    [Daily setActiveDaySwitches:self.activeDaySwitches fromHash:hash];
     NSInteger rate = self.modelForEditing.rate;
     self.rateStep.value = rate;
     self.rateLbl.text = [NSString stringWithFormat:TRIGGER_LABEL_FORMAT,(int)rate];
@@ -190,12 +199,14 @@ NSString* const IS_DIRTY = @"isDirty";
 -(IBAction)urgencySld_valueChange_action:(UISlider *)sender forEvent:(UIEvent *)event {
     self.isDirty = YES;
     int sliderValue = (int)sender.value;
+    self.urgencyLbl.text = [NSString stringWithFormat:@"Urgency: %d",sliderValue];
     sender.value = sliderValue;
 }
 
 - (IBAction)difficultySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event {
     self.isDirty = YES;
     int sliderValue = (int)sender.value;
+    self.difficultyLbl.text = [NSString stringWithFormat:@"Difficulty: %d",sliderValue];
     sender.value = sliderValue;
 }
 

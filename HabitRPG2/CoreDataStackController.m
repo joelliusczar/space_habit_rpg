@@ -29,7 +29,7 @@ NSString *defaultDbName = @"Model.sqlite";
 @synthesize inUseContext = _inUseContext;
 
 -(BOOL)isTesting{
-    return [SingletonCluster getSharedInstance].EnviromentNum != ENV_DEFAULT;
+    return [SingletonCluster getSharedInstance].EnviromentNum&ENV_UTEST;
 }
 
 -(NSString *)storeType{
