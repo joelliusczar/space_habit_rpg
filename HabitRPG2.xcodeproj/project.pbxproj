@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2709B3911EE4FBDC00EEE5CC /* Model.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 273782391EE4DB9C00EA5B1D /* Model.xcdatamodeld */; };
 		2709B3991EEF750800EEE5CC /* ReportServiceCaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 2709B3981EEF750800EEE5CC /* ReportServiceCaller.m */; };
+		2709B39C1EF0D31200EEE5CC /* Interceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2709B39B1EF0D31200EEE5CC /* Interceptor.m */; };
 		271217691DCE84310072ACC6 /* Daily+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712175A1DCE84310072ACC6 /* Daily+CoreDataClass.m */; };
 		2712176A1DCE84310072ACC6 /* Good+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712175C1DCE84310072ACC6 /* Good+CoreDataClass.m */; };
 		2712176B1DCE84310072ACC6 /* Habit+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712175E1DCE84310072ACC6 /* Habit+CoreDataClass.m */; };
@@ -141,6 +142,8 @@
 		2709B3961EEF74E900EEE5CC /* P_ReportServiceCaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ReportServiceCaller.h; sourceTree = "<group>"; };
 		2709B3971EEF750800EEE5CC /* ReportServiceCaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportServiceCaller.h; sourceTree = "<group>"; };
 		2709B3981EEF750800EEE5CC /* ReportServiceCaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportServiceCaller.m; sourceTree = "<group>"; };
+		2709B39A1EF0D31200EEE5CC /* Interceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interceptor.h; sourceTree = "<group>"; };
+		2709B39B1EF0D31200EEE5CC /* Interceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Interceptor.m; sourceTree = "<group>"; };
 		271217591DCE84310072ACC6 /* Daily+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Daily+CoreDataClass.h"; sourceTree = SOURCE_ROOT; };
 		2712175A1DCE84310072ACC6 /* Daily+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Daily+CoreDataClass.m"; sourceTree = SOURCE_ROOT; };
 		2712175B1DCE84310072ACC6 /* Good+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Good+CoreDataClass.h"; sourceTree = SOURCE_ROOT; };
@@ -829,6 +832,8 @@
 				275FEF011EE3A78200AED1A2 /* timeZoneList.txt */,
 				2709B3971EEF750800EEE5CC /* ReportServiceCaller.h */,
 				2709B3981EEF750800EEE5CC /* ReportServiceCaller.m */,
+				2709B39A1EF0D31200EEE5CC /* Interceptor.h */,
+				2709B39B1EF0D31200EEE5CC /* Interceptor.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1019,6 +1024,7 @@
 				271217691DCE84310072ACC6 /* Daily+CoreDataClass.m in Sources */,
 				68BE45911D9DEA0B003F3400 /* IntroViewController.m in Sources */,
 				68F3F9E41D70E8DB00840DD2 /* CentralViewController.m in Sources */,
+				2709B39C1EF0D31200EEE5CC /* Interceptor.m in Sources */,
 				68A921F61DBC7FF2007C946C /* Good+CoreDataProperties.m in Sources */,
 				273978A71EB8473100F217B4 /* TodoTransaction+CoreDataProperties.m in Sources */,
 				273978A61EB8473100F217B4 /* TodoTransaction+CoreDataClass.m in Sources */,

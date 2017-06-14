@@ -17,7 +17,7 @@
 #import "ViewHelper.h"
 #import "Daily+DailyHelper.h"
 #import "NSDate+DateHelper.h"
-
+#import "Interceptor.h"
 
 @interface DailyViewController ()
 
@@ -174,6 +174,7 @@ static NSString *const EntityName = @"Daily";
             [self.dailiesTable insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
         case NSFetchedResultsChangeUpdate:
+            
             break;
         default:
             break;
@@ -185,20 +186,27 @@ static NSString *const EntityName = @"Daily";
 }
 
 - (IBAction)addDailyBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
-    DailyEditController *dailyEditor = [[DailyEditController alloc] initWithParentDailyController:self];
-    EditNavigationController *editController = [[EditNavigationController alloc] initWithTitle:@"Add Daily" AndEditor:dailyEditor];
-    [ViewHelper pushViewToFront:editController OfParent:self.parentController];
+    
+    wrapReturnVoid wrappedCall = ^void(){
+        DailyEditController *dailyEditor = [[DailyEditController alloc] initWithParentDailyController:self];
+        EditNavigationController *editController = [[EditNavigationController alloc] initWithTitle:@"Add Daily" AndEditor:dailyEditor];
+        [ViewHelper pushViewToFront:editController OfParent:self.parentController];
+    };
+    [Interceptor callVoidWrapped:wrappedCall];
 }
 
 -(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
     void (^pressedEdit)(UITableViewRowAction *,NSIndexPath *) = ^(UITableViewRowAction *action,NSIndexPath *path){
-        NSFetchedResultsController *fetchController = path.section == INCOMPLETE?self.incompleteItems:self.completeItems;
-        
-        DailyEditController *dailyEditor = [[DailyEditController alloc] initWithParentDailyController:self ToEdit:fetchController.fetchedObjects[indexPath.row] AtIndexPath:path];
-        EditNavigationController *editController = [[EditNavigationController alloc] initWithTitle:@"Add Daily" AndEditor:dailyEditor];
-        [ViewHelper pushViewToFront:editController OfParent:self.parentController];
+        wrapReturnVoid wrappedCall = ^void(){
+            NSFetchedResultsController *fetchController = path.section == INCOMPLETE?self.incompleteItems:self.completeItems;
+            
+            DailyEditController *dailyEditor = [[DailyEditController alloc] initWithParentDailyController:self ToEdit:fetchController.fetchedObjects[indexPath.row] AtIndexPath:path];
+            EditNavigationController *editController = [[EditNavigationController alloc] initWithTitle:@"Add Daily" AndEditor:dailyEditor];
+            [ViewHelper pushViewToFront:editController OfParent:self.parentController];
+        };
+        [Interceptor callVoidWrapped:wrappedCall];
     };
     
     UITableViewRowAction *openEditBox = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Edit" handler:pressedEdit];

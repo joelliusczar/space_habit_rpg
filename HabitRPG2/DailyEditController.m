@@ -13,6 +13,7 @@
 #import "EditNavigationController.h"
 #import "CustomSwitch.h"
 #import "Daily+DailyHelper.h"
+#import "Interceptor.h"
 
 
 static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
@@ -109,23 +110,23 @@ NSString* const IS_DIRTY = @"isDirty";
 -(void)saveEdit{
     //TODO; uncoment code
     //todo check for loophole with nextDueTime
-    BOOL isModelNew = nil==self.modelForEditing;
-    if(isModelNew){
-        self.modelForEditing = [Daily constructDaily];
-    }
-    self.modelForEditing.dailyName = self.nameBox.text;
-    self.modelForEditing.note = self.notesBox.text;
-    self.modelForEditing.urgency = self.urgencySld.value;
-    self.modelForEditing.difficulty = self.difficultySld.value;
-    int rate = (int)self.rateStep.value;
-    self.modelForEditing.rate = rate;
-    self.modelForEditing.nextDueTime = [Daily calculateNextDueTime:[NSDate date] WithRate:rate];
-    self.modelForEditing.streakLength = 0;
-    self.modelForEditing.activeDaysHash = [Daily calculateActiveDaysHash:self.activeDaySwitches];
-    //todo add something for custom reward
-    if(isModelNew){
+    Daily *savingModel = nil;
+    if(nil==self.modelForEditing){
+        savingModel = [Daily constructDaily];
         [SHData insertIntoContext:self.modelForEditing];
     }
+    else{
+        savingModel = [SHData.writeContext objectWithID:self.modelForEditing.objectID];
+    }
+    savingModel.dailyName = self.nameBox.text;
+    savingModel.note = self.notesBox.text;
+    savingModel.urgency = self.urgencySld.value;
+    savingModel.difficulty = self.difficultySld.value;
+    int rate = (int)self.rateStep.value;
+    savingModel.rate = rate;
+    savingModel.nextDueTime = [Daily calculateNextDueTime:[NSDate date] WithRate:rate];
+    savingModel.activeDaysHash = [Daily calculateActiveDaysHash:self.activeDaySwitches];
+    //TODO add something for custom reward
     [SHData save]; //TODO: this is probably all sorts of fucked up at the moment
 }
 
@@ -179,49 +180,64 @@ NSString* const IS_DIRTY = @"isDirty";
     self.isDirty = YES;
 }
 - (IBAction)nameBox_editingChanged_action:(UITextField *)sender forEvent:(UIEvent *)event {
-    self.isDirty = YES;
-    self.nameStr = self.nameBox.text;
+    wrapReturnVoid wrappedCall = ^void(){
+        self.isDirty = YES;
+        self.nameStr = self.nameBox.text;
+    };
+    [Interceptor callVoidWrapped:wrappedCall];
 }
 
 - (IBAction)showXtra_push_action:(UIButton *)sender forEvent:(UIEvent *)event {
-    if(self.areXtraOptsOpen){
-        self.advancedOptsView.hidden = YES;
-        self.areXtraOptsOpen = NO;
-        return;
-    }
-    self.advancedOptsView.hidden = NO;
-    self.areXtraOptsOpen = YES;
-    if(self.delegate){
-        [self.delegate resizeScrollView:self.advancedOptsView.hidden];
-    }
+    wrapReturnVoid wrappedCall = ^void(){
+        if(self.areXtraOptsOpen){
+            self.advancedOptsView.hidden = YES;
+            self.areXtraOptsOpen = NO;
+            return;
+        }
+        self.advancedOptsView.hidden = NO;
+        self.areXtraOptsOpen = YES;
+        if(self.delegate){
+            [self.delegate resizeScrollView:self.advancedOptsView.hidden];
+        }
+    };
+    [Interceptor callVoidWrapped:wrappedCall];
 }
 
 -(IBAction)urgencySld_valueChange_action:(UISlider *)sender forEvent:(UIEvent *)event {
-    self.isDirty = YES;
-    int sliderValue = (int)sender.value;
-    self.urgencyLbl.text = [NSString stringWithFormat:@"Urgency: %d",sliderValue];
-    sender.value = sliderValue;
+    wrapReturnVoid wrappedCall = ^void(){
+        self.isDirty = YES;
+        int sliderValue = (int)sender.value;
+        self.urgencyLbl.text = [NSString stringWithFormat:@"Urgency: %d",sliderValue];
+        sender.value = sliderValue;
+    };
+    [Interceptor callVoidWrapped:wrappedCall];
 }
 
 - (IBAction)difficultySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event {
-    self.isDirty = YES;
-    int sliderValue = (int)sender.value;
-    self.difficultyLbl.text = [NSString stringWithFormat:@"Difficulty: %d",sliderValue];
-    sender.value = sliderValue;
+    wrapReturnVoid wrappedCall = ^void(){
+        self.isDirty = YES;
+        int sliderValue = (int)sender.value;
+        self.difficultyLbl.text = [NSString stringWithFormat:@"Difficulty: %d",sliderValue];
+        sender.value = sliderValue;
+    };
+    [Interceptor callVoidWrapped:wrappedCall];
 }
 
 - (IBAction)rateStep_valueChange_action:(UIStepper *)sender forEvent:(UIEvent *)event {
-    self.isDirty = YES;
-    double stepperValue = [sender value];
-    int rate = (int)stepperValue;
-    if(rate > 366){
-        rate = 366;
-    }
-    if(rate < 1){
-        rate = 1;
-    }
-    sender.value = rate;
-    self.rateLbl.text = [NSString stringWithFormat: TRIGGER_LABEL_FORMAT,(int)rate];
+    wrapReturnVoid wrappedCall = ^void(){
+        self.isDirty = YES;
+        double stepperValue = [sender value];
+        int rate = (int)stepperValue;
+        if(rate > 366){
+            rate = 366;
+        }
+        if(rate < 1){
+            rate = 1;
+        }
+        sender.value = rate;
+        self.rateLbl.text = [NSString stringWithFormat: TRIGGER_LABEL_FORMAT,(int)rate];
+    };
+    [Interceptor callVoidWrapped:wrappedCall];
 }
 - (IBAction)daySwitch_push_action:(CustomSwitch *)sender forEvent:(UIEvent *)event {
     self.isDirty = YES;
