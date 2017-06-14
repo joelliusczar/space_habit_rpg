@@ -60,9 +60,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    [self completeBtn];
-    
-    
+    [self completeBtn];  
 }
 
 -(void)setupCell:(Daily *)model AndRow:(NSIndexPath *)rowInfo{

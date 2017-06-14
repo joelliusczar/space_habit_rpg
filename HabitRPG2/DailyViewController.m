@@ -185,6 +185,10 @@ static NSString *const EntityName = @"Daily";
     [self.dailiesTable endUpdates];
 }
 
+-(void)configureCell:(UITableViewCell *)cell atIndexPath:indexPath{
+    
+}
+
 - (IBAction)addDailyBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
     
     wrapReturnVoid wrappedCall = ^void(){
@@ -192,7 +196,7 @@ static NSString *const EntityName = @"Daily";
         EditNavigationController *editController = [[EditNavigationController alloc] initWithTitle:@"Add Daily" AndEditor:dailyEditor];
         [ViewHelper pushViewToFront:editController OfParent:self.parentController];
     };
-    [Interceptor callVoidWrapped:wrappedCall];
+    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@addDailyBtn_press_action",self.description]];
 }
 
 -(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -206,14 +210,12 @@ static NSString *const EntityName = @"Daily";
             EditNavigationController *editController = [[EditNavigationController alloc] initWithTitle:@"Add Daily" AndEditor:dailyEditor];
             [ViewHelper pushViewToFront:editController OfParent:self.parentController];
         };
-        [Interceptor callVoidWrapped:wrappedCall];
+        [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@pressedEdit",self.description]];
     };
     
     UITableViewRowAction *openEditBox = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Edit" handler:pressedEdit];
     
     return @[openEditBox];
 }
-
-
 
 @end

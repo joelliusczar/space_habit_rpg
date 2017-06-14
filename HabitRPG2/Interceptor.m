@@ -10,11 +10,11 @@
 
 @implementation Interceptor
 
-+(void)callVoidWrapped:(wrapReturnVoid)callMe{
++(void)callVoidWrapped:(wrapReturnVoid)callMe withInfo:(id)info{
     callMe();
 }
 
-+(int32_t)callInt32Wrapped:(wrapReturnInt32)callMe{
++(int32_t)callInt32Wrapped:(wrapReturnInt32)callMe withInfo:(id)info{
     return callMe();
 }
 

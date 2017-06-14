@@ -108,26 +108,32 @@ NSString* const IS_DIRTY = @"isDirty";
 }
 
 -(void)saveEdit{
-    //TODO; uncoment code
-    //todo check for loophole with nextDueTime
     Daily *savingModel = nil;
+    int rate = (int)self.rateStep.value;
     if(nil==self.modelForEditing){
         savingModel = [Daily constructDaily];
         [SHData insertIntoContext:self.modelForEditing];
+        //initialize the next time this daily activates
+        savingModel.nextDueTime = [Daily calculateNextDueTime:[NSDate date] WithRate:rate];
     }
     else{
         savingModel = [SHData.writeContext objectWithID:self.modelForEditing.objectID];
+        //if the rate has changed then we need to adjust the next time this activates
+        if(rate != savingModel.rate){
+            savingModel.nextDueTime = [Daily calculateNextDueTime:[NSDate date] WithRate:rate];
+        }
     }
     savingModel.dailyName = self.nameBox.text;
     savingModel.note = self.notesBox.text;
     savingModel.urgency = self.urgencySld.value;
     savingModel.difficulty = self.difficultySld.value;
-    int rate = (int)self.rateStep.value;
     savingModel.rate = rate;
-    savingModel.nextDueTime = [Daily calculateNextDueTime:[NSDate date] WithRate:rate];
     savingModel.activeDaysHash = [Daily calculateActiveDaysHash:self.activeDaySwitches];
     //TODO add something for custom reward
-    [SHData save]; //TODO: this is probably all sorts of fucked up at the moment
+    if(savingModel.streakLength>0){
+        [self promptForStreakReset:savingModel];
+    }
+    [SHData save];
 }
 
 -(BOOL)deleteModel{
@@ -139,6 +145,17 @@ NSString* const IS_DIRTY = @"isDirty";
     [self defaultControls];
     self.modelForEditing = nil;
     self.rowInfo = nil;
+}
+
+-(void)promptForStreakReset:(Daily *)savingModel{
+    UIAlertController *streakAlert = [UIAlertController alertControllerWithTitle:@"Reset Streak?" message:@"Since you made changes to this daily, do you want to reset your streak for it??" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        savingModel.streakLength = 0;
+    }];
+    UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){}];
+    [streakAlert addAction:yesAction];
+    [streakAlert addAction:noAction];
+    [self presentViewController:streakAlert animated:YES completion:nil];
 }
 
 -(void)defaultControls{
@@ -184,7 +201,7 @@ NSString* const IS_DIRTY = @"isDirty";
         self.isDirty = YES;
         self.nameStr = self.nameBox.text;
     };
-    [Interceptor callVoidWrapped:wrappedCall];
+    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@nameBox_editingChanged_action",self.description]];
 }
 
 - (IBAction)showXtra_push_action:(UIButton *)sender forEvent:(UIEvent *)event {
@@ -200,7 +217,7 @@ NSString* const IS_DIRTY = @"isDirty";
             [self.delegate resizeScrollView:self.advancedOptsView.hidden];
         }
     };
-    [Interceptor callVoidWrapped:wrappedCall];
+    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@showXtra_push_action",self.description]];
 }
 
 -(IBAction)urgencySld_valueChange_action:(UISlider *)sender forEvent:(UIEvent *)event {
@@ -210,7 +227,7 @@ NSString* const IS_DIRTY = @"isDirty";
         self.urgencyLbl.text = [NSString stringWithFormat:@"Urgency: %d",sliderValue];
         sender.value = sliderValue;
     };
-    [Interceptor callVoidWrapped:wrappedCall];
+    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@urgencySld_valueChange_action",self.description]];
 }
 
 - (IBAction)difficultySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event {
@@ -220,7 +237,7 @@ NSString* const IS_DIRTY = @"isDirty";
         self.difficultyLbl.text = [NSString stringWithFormat:@"Difficulty: %d",sliderValue];
         sender.value = sliderValue;
     };
-    [Interceptor callVoidWrapped:wrappedCall];
+    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@difficultySld_valueChanged_action",self.description]];
 }
 
 - (IBAction)rateStep_valueChange_action:(UIStepper *)sender forEvent:(UIEvent *)event {
@@ -237,7 +254,7 @@ NSString* const IS_DIRTY = @"isDirty";
         sender.value = rate;
         self.rateLbl.text = [NSString stringWithFormat: TRIGGER_LABEL_FORMAT,(int)rate];
     };
-    [Interceptor callVoidWrapped:wrappedCall];
+    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@rateStep_valueChange_action",self.description]];
 }
 - (IBAction)daySwitch_push_action:(CustomSwitch *)sender forEvent:(UIEvent *)event {
     self.isDirty = YES;

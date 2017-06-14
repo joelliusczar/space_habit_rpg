@@ -9,6 +9,7 @@
 #import "EditNavigationController.h"
 #import "EditingSaver.h"
 #import "ViewHelper.h"
+#import "Interceptor.h"
 @import CoreGraphics;
 
 
@@ -58,31 +59,24 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)pressedLeave:(id)sender{
-    [self dismissViewControllerAnimated:NO completion:nil];
-}
-
--(void)pressedDelete:(id)sender{
-    [self.editingScreen deleteModel];
-    [self dismissViewControllerAnimated:NO completion:nil];
-}
-
--(void)pressedSave:(id)sender{
-    [self.editingScreen saveEdit];
-    [self dismissViewControllerAnimated:NO completion:nil];
-}
-
 -(IBAction)deleteBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
 }
 
 -(IBAction)saveBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
-    if(self.editingScreen.nameStr.length){
-        [self.editingScreen saveEdit];
-        [ViewHelper popViewFromFront:self];
-        return;
-    }
+    wrapReturnVoid wrappedCall = ^void(){
+        if(self.editingScreen.nameStr.length){
+            [self.editingScreen saveEdit];
+            [ViewHelper popViewFromFront:self];
+            return;
+        }
+        [self alertMissingInfo];
+    };
+    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@saveBtn_press_action",self.description]];
+}
+
+-(void)alertMissingInfo{
     UIAlertController *saveAlert = [UIAlertController alertControllerWithTitle:@"Name?" message:@"Please give this item a name" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {}];
     [saveAlert addAction:okAction];
     [self presentViewController:saveAlert animated:YES completion:nil];
 }
