@@ -33,11 +33,14 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 @property (weak,nonatomic) IBOutlet UIStepper *rateStep;
 @property (weak,nonatomic) IBOutlet UILabel *rateLbl;
 @property (weak,nonatomic) IBOutlet UILabel *rewardsList;
+@property (weak, nonatomic) IBOutlet UILabel *streakCountLbl;
+@property (weak, nonatomic) IBOutlet UIButton *streakResetBtn;
 @property (weak,nonatomic) DailyViewController *parentDailyController;
 @property (strong,nonatomic) Daily *modelForEditing;
 @property (strong,nonatomic) NSIndexPath *rowInfo;
 @property (assign,nonatomic) dailyStatus section;
 @property (assign,nonatomic) BOOL areXtraOptsOpen;
+@property (assign,nonatomic) BOOL isStreakReset;
 
 @end
 
@@ -129,10 +132,10 @@ NSString* const IS_DIRTY = @"isDirty";
     savingModel.difficulty = self.difficultySld.value;
     savingModel.rate = rate;
     savingModel.activeDaysHash = [Daily calculateActiveDaysHash:self.activeDaySwitches];
-    //TODO add something for custom reward
-    if(savingModel.streakLength>0){
-        [self promptForStreakReset:savingModel];
+    if(self.isStreakReset){
+        savingModel.streakLength = 0;
     }
+    //TODO add something for custom reward
     [SHData save];
 }
 
@@ -147,16 +150,6 @@ NSString* const IS_DIRTY = @"isDirty";
     self.rowInfo = nil;
 }
 
--(void)promptForStreakReset:(Daily *)savingModel{
-    UIAlertController *streakAlert = [UIAlertController alertControllerWithTitle:@"Reset Streak?" message:@"Since you made changes to this daily, do you want to reset your streak for it??" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-        savingModel.streakLength = 0;
-    }];
-    UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){}];
-    [streakAlert addAction:yesAction];
-    [streakAlert addAction:noAction];
-    [self presentViewController:streakAlert animated:YES completion:nil];
-}
 
 -(void)defaultControls{
     self.nameBox.text = @"";
@@ -189,6 +182,9 @@ NSString* const IS_DIRTY = @"isDirty";
     NSInteger rate = self.modelForEditing.rate;
     self.rateStep.value = rate;
     self.rateLbl.text = [NSString stringWithFormat:TRIGGER_LABEL_FORMAT,(int)rate];
+    self.streakCountLbl.hidden = NO;
+    self.streakResetBtn.hidden = NO;
+    self.streakCountLbl.text = [NSString stringWithFormat:@"Streak: %d",daily.streakLength];
     [self.delegate enableDelete];
     
 }
@@ -257,10 +253,26 @@ NSString* const IS_DIRTY = @"isDirty";
     [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@rateStep_valueChange_action",self.description]];
 }
 - (IBAction)daySwitch_push_action:(CustomSwitch *)sender forEvent:(UIEvent *)event {
-    self.isDirty = YES;
+    wrapReturnVoid wrappedCall = ^void(){
+        self.isDirty = YES;
+    };
+    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@daySwitch_push_action~%ld",self.description,sender.tag]];
 }
 
 - (IBAction)addRewardBtn_push_action:(UIButton *)sender forEvent:(UIEvent *)event {
+    wrapReturnVoid wrappedCall = ^void(){
+    };
+    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@addRewardBtn_push_action",self.description]];
+}
+
+- (IBAction)streakResetBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
+    wrapReturnVoid wrappedCall = ^void(){
+        if(self.modelForEditing){
+            self.isStreakReset = YES;
+            self.isDirty = YES;
+        }
+    };
+    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@streakResetBtn_press_action",self.description]];
 }
 
 -(void)dealloc{
