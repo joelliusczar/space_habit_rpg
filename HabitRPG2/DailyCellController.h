@@ -13,12 +13,7 @@
 
 @interface DailyCellController : TaskCell
 
-@property (nonatomic,weak)  UILabel *nameLbl;
-@property (nonatomic,weak)  UILabel *streakLbl;
-@property (nonatomic,weak)  UILabel *daysLeftLbl;
-@property (nonatomic,weak)  UIButton *checkbutton;
-
 +(id)getDailyCell:(UITableView *)tableView WithParent:(DailyViewController *)parent;
 -(void)setupCell:(Daily *)model AndRow:(NSIndexPath *)rowInfo;
-
+-(void)refreshCell:(NSIndexPath *)rowInfo;
 @end

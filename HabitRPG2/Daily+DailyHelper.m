@@ -55,6 +55,11 @@
     }
 }
 
++(int)getDaysLeft:(NSDate *)lastActivationTime{
+    //TODO
+    return 0;
+}
+
 +(NSArray<NSSortDescriptor *> *)buildFetchDescriptors{
     NSSortDescriptor *sortByUserOrder = [[NSSortDescriptor alloc]
                                        initWithKey:@"customUserOrder" ascending:NO];

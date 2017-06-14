@@ -174,7 +174,7 @@ static NSString *const EntityName = @"Daily";
             [self.dailiesTable insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
         case NSFetchedResultsChangeUpdate:
-            
+            [self configureCell:[self.dailiesTable cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
         default:
             break;
@@ -185,8 +185,9 @@ static NSString *const EntityName = @"Daily";
     [self.dailiesTable endUpdates];
 }
 
--(void)configureCell:(UITableViewCell *)cell atIndexPath:indexPath{
-    
+-(void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
+    DailyCellController *dailyCell = (DailyCellController *)cell;
+    [dailyCell refreshCell:indexPath];
 }
 
 - (IBAction)addDailyBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
