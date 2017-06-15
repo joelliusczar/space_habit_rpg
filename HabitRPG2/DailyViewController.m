@@ -176,6 +176,9 @@ static NSString *const EntityName = @"Daily";
         case NSFetchedResultsChangeUpdate:
             [self configureCell:[self.dailiesTable cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
+        case NSFetchedResultsChangeDelete:
+            [self.dailiesTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
         default:
             break;
     }
@@ -206,7 +209,6 @@ static NSString *const EntityName = @"Daily";
     void (^pressedEdit)(UITableViewRowAction *,NSIndexPath *) = ^(UITableViewRowAction *action,NSIndexPath *path){
         wrapReturnVoid wrappedCall = ^void(){
             NSFetchedResultsController *fetchController = path.section == INCOMPLETE?self.incompleteItems:self.completeItems;
-            
             DailyEditController *dailyEditor = [[DailyEditController alloc] initWithParentDailyController:self ToEdit:fetchController.fetchedObjects[indexPath.row] AtIndexPath:path];
             EditNavigationController *editController = [[EditNavigationController alloc] initWithTitle:@"Add Daily" AndEditor:dailyEditor];
             [ViewHelper pushViewToFront:editController OfParent:self.parentController];

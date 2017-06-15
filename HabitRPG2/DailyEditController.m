@@ -69,14 +69,14 @@ NSString* const IS_DIRTY = @"isDirty";
 
 -(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController{
     if(self = [self initWithNibName:@"DailyEditView" bundle:nil]){
-        self.parentDailyController = parentDailyController;
-        [self view];
+        _parentDailyController = parentDailyController;
     }
     return self;
 }
 
 -(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController ToEdit:(Daily *)daily AtIndexPath:(NSIndexPath *)rowInfow{
     if(self = [self initWithParentDailyController:parentDailyController]){
+        _modelForEditing = daily;
         [self loadExistingDailyForEditing:daily WithIndexPath:rowInfow];
     }
     return self;
@@ -91,6 +91,12 @@ NSString* const IS_DIRTY = @"isDirty";
     }
     @catch(NSException *ex){}
     [self addObserver:self forKeyPath:IS_DIRTY options:NSKeyValueObservingOptionNew context:nil];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    if(self.modelForEditing){
+        [self.delegate enableDelete];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -115,7 +121,7 @@ NSString* const IS_DIRTY = @"isDirty";
     int rate = (int)self.rateStep.value;
     if(nil==self.modelForEditing){
         savingModel = [Daily constructDaily];
-        [SHData insertIntoContext:self.modelForEditing];
+        [SHData insertIntoContext:savingModel];
         //initialize the next time this daily activates
         savingModel.nextDueTime = [Daily calculateNextDueTime:[NSDate date] WithRate:rate];
     }
@@ -140,35 +146,16 @@ NSString* const IS_DIRTY = @"isDirty";
 }
 
 -(BOOL)deleteModel{
-    [self cleanUp];
-    return YES; //TODO: refactor so return type is void
-}
-
--(void)cleanUp{
-    [self defaultControls];
-    self.modelForEditing = nil;
-    self.rowInfo = nil;
-}
-
-
--(void)defaultControls{
-    self.nameBox.text = @"";
-    self.notesBox.text = @"";
-    self.urgencySld.value = 3;
-    self.difficultySld.value = 3;
-    self.rateLbl.text = [NSString stringWithFormat:TRIGGER_LABEL_FORMAT,1];
-    self.rateStep.value = 1;
-    for(int i = 0;i<DAYS_IN_WEEK;i++){
-        self.activeDaySwitches[i].isOn = YES;
+    if(self.modelForEditing){
+        Daily *toBeDeleted = [SHData.writeContext objectWithID:self.modelForEditing.objectID];
+        [SHData softDeleteModel:toBeDeleted];
+        [SHData save];
+        return YES;
     }
-    self.modelForEditing = nil;
-
+    return NO;
 }
 
 -(void)loadExistingDailyForEditing:(Daily *)daily WithIndexPath:(NSIndexPath *)rowInfo{
-    //TODO; uncoment code
-    [self defaultControls];
-    self.modelForEditing = daily;
     self.rowInfo = rowInfo;
     self.nameBox.text = self.modelForEditing.dailyName ? self.modelForEditing.dailyName  : @"";
     self.nameStr = self.nameBox.text;

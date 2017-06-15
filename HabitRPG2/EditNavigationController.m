@@ -23,7 +23,6 @@
 @property (weak, nonatomic) IBOutlet UIView *modalView;
 @property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveBtnBarItem;
-
 @property (assign,nonatomic) CGFloat defaultScrollHeight;
 
 @end
@@ -60,6 +59,25 @@
 }
 
 -(IBAction)deleteBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
+    wrapReturnVoid wrappedCall = ^void(){
+        [self confirmDelete];
+    };
+    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@deleteBtn_press_action",self.description]];
+}
+
+-(void)confirmDelete{
+    UIAlertController *deleteAlert = [UIAlertController alertControllerWithTitle:@"Delete?" message:@"Are you sure you want to delete this?" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){}];
+    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Yes" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        wrapReturnVoid wrappedCall = ^void(){
+            [self.editingScreen deleteModel];
+            [ViewHelper popViewFromFront:self];
+        };
+        [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@confirmDelete~yesAction",self.description]];
+    }];
+    [deleteAlert addAction:noAction];
+    [deleteAlert addAction:yesAction];
+    [self presentViewController:deleteAlert animated:YES completion:nil];
 }
 
 -(IBAction)saveBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
@@ -82,10 +100,13 @@
 }
 
 -(void)background_tap_action:(UITapGestureRecognizer *)sender {
-    [self.view endEditing:YES];
-    if(sender.view != self.modalView){
-        [ViewHelper popViewFromFront:self];
-    }
+    wrapReturnVoid wrappedCall = ^void(){
+        [self.view endEditing:YES];
+        if(sender.view != self.modalView){
+            [ViewHelper popViewFromFront:self];
+        }
+    };
+    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@background_tap_action",self.description]];
 }
 
 -(void)enableSave{
