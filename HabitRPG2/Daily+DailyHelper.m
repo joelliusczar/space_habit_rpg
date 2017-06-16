@@ -25,13 +25,9 @@
     return NO;
 }
 
-//todo fix this long to int
 +(NSDate *)calculateNextDueTime:(NSDate *)checkinDate WithRate:(int32_t)rate{
-    NSCalendar *cal = [NSCalendar currentCalendar];
-    NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
-    [offsetComponents setDay:rate];
-    return [cal dateByAddingComponents:offsetComponents toDate:checkinDate options:0];
-    
+    NSDate *checkinDateStart = [SharedGlobal.inUseCalendar startOfDayForDate:checkinDate];
+    return [NSDate adjustDate:checkinDateStart year:0 month:0 day:rate];
 }
 
 +(int)calculateActiveDaysHash:(NSMutableArray<NSObject<P_CustomSwitch> *> *)activeDays{
@@ -40,7 +36,6 @@
     for(int i = 0;i<DAYS_IN_WEEK;i++){
         if(activeDays[i].isOn){
             daysHash |= currentDayBit;
-            
         }
         currentDayBit = currentDayBit << 1;
     }
@@ -55,9 +50,9 @@
     }
 }
 
-+(int)getDaysLeft:(NSDate *)lastActivationTime{
-    //TODO
-    return 0;
++(int)getDaysLeft:(NSDate *)nextDueTime{
+    NSTimeInterval timeLeft = nextDueTime.timeIntervalSince1970 - [NSDate date].timeIntervalSince1970;
+    return (int)(timeLeft/866400);
 }
 
 +(NSArray<NSSortDescriptor *> *)buildFetchDescriptors{
@@ -75,4 +70,11 @@
     NSFetchedResultsController *resultsController = [SHData getItemFetcher:Daily.fetchRequest predicate:filter sortBy:[Daily buildFetchDescriptors]];
     return resultsController;
 }
+
++(NSFetchedResultsController *)getFinishedDailiesController:(NSDate *)todayStart{
+    NSPredicate *filter = [NSPredicate predicateWithFormat:@"isActive = 1 AND lastActivationTime >= %@",todayStart];
+    NSFetchedResultsController *resultsController = [SHData getItemFetcher:Daily.fetchRequest predicate: filter sortBy:@[[[NSSortDescriptor alloc] initWithKey:@"lastActivationTime" ascending:NO]]];
+    return resultsController;
+}
+
 @end

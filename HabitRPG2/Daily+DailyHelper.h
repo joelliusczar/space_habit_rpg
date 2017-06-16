@@ -14,7 +14,7 @@
 +(NSDate *)calculateNextDueTime:(NSDate *)checkinDate WithRate:(int)rate;
 +(int)calculateActiveDaysHash:(NSMutableArray *)activeDays;
 +(void)setActiveDaySwitches:(NSMutableArray *)activeDays fromHash:(NSInteger)hash;
-+(int)getDaysLeft:(NSDate *)lastActivationTime;
++(int)getDaysLeft:(NSDate *)nextDueTime;
 +(NSFetchedResultsController *)getUnfinishedDailiesController:(NSDate *)todayStart;
-
++(NSFetchedResultsController *)getFinishedDailiesController:(NSDate *)todayStart;
 @end

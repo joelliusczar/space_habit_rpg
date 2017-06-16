@@ -92,7 +92,11 @@ static NSString *const EntityName = @"Daily";
 
 -(void)completeDaily:(Daily *)daily{
     if(daily == self.incompleteItems.fetchedObjects[daily.rowNum]){
-        //todo complete action
+        daily.rollbackActivationTime = daily.lastActivationTime;
+        daily.lastActivationTime = [NSDate date];
+        daily.nextDueTime = [Daily calculateNextDueTime:[NSDate date] WithRate:daily.rate];
+        //TODO calculate damage done to monster
+        //TODO save
     }
     else{
         NSLog(@"Oh oh! Something illogical was about to happen. There was a mismatch in completeDaily.");
@@ -101,7 +105,8 @@ static NSString *const EntityName = @"Daily";
 
 -(void)undoCompletedDaily:(Daily *)daily{
     if(daily == self.completeItems.fetchedObjects[daily.rowNum]){
-        //reverse complete action
+        daily.lastActivationTime = daily.rollbackActivationTime;
+        //TODO more stuff
     }
     else{
         NSLog(@"Oh oh! Something illogical was about to happen. There was a mismatch in completeDaily.");
@@ -112,6 +117,7 @@ static NSString *const EntityName = @"Daily";
     NSDate *todayStart = [NSDate todayStart];
     todayStart = [NSDate adjustTime:todayStart hour:SHData.userData.theSettings.dayStart minute:0 second:0];
     self.incompleteItems = [Daily getUnfinishedDailiesController:todayStart];
+    self.completeItems = [Daily getFinishedDailiesController:todayStart];
     
     [self fetchUpdates];
     
@@ -120,8 +126,11 @@ static NSString *const EntityName = @"Daily";
 -(void)fetchUpdates{
     NSError *error;
     if(![self.incompleteItems performFetch:&error]){
-        NSLog(@"Error fetching data: %@", error.localizedFailureReason);
+        NSLog(@"Error fetching incompleted items: %@", error.localizedFailureReason);
         return;
+    }
+    if(![self.completeItems performFetch:&error]){
+        NSLog(@"Error fetching completed items: %@", error.localizedFailureReason);
     }
 }
 
@@ -169,15 +178,19 @@ static NSString *const EntityName = @"Daily";
 }
 
 -(void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath{
+    NSInteger sectionNum = controller==self.incompleteItems?INCOMPLETE:COMPLETE;
+    NSIndexPath *customExistingPath = indexPath?[NSIndexPath indexPathForRow:indexPath.row inSection:sectionNum]:nil;
+    NSIndexPath *customNewPath = newIndexPath?[NSIndexPath indexPathForRow:newIndexPath.row inSection:sectionNum]:nil;
+    
     switch (type) {
         case NSFetchedResultsChangeInsert:
-            [self.dailiesTable insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self.dailiesTable insertRowsAtIndexPaths:@[customNewPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:[self.dailiesTable cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            [self configureCell:[self.dailiesTable cellForRowAtIndexPath:customExistingPath] atIndexPath:customExistingPath];
             break;
         case NSFetchedResultsChangeDelete:
-            [self.dailiesTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self.dailiesTable deleteRowsAtIndexPaths:@[customExistingPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
         default:
             break;

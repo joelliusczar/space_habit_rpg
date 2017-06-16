@@ -67,6 +67,12 @@
     else{
         self.daysLeftLbl.hidden = YES;
     }
+    if(self.sectionIndex == INCOMPLETE){
+        [self.completeBtn setImage:[UIImage imageNamed:@"unchecked_task.png"] forState:UIControlStateNormal];
+    }
+    else{
+        [self.completeBtn setImage:[UIImage imageNamed:@"checked_task.png"] forState:UIControlStateNormal];
+    }
 }
 
 -(void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -79,12 +85,10 @@
     wrapReturnVoid wrappedCall = ^void(){
         if(self.model.sectionNum == INCOMPLETE){
             self.model.sectionNum  = COMPLETE;
-            [self.completeBtn setImage:[UIImage imageNamed:@"checked_task.png"] forState:UIControlStateNormal];
             [self.parentDailyController completeDaily:self.model];
         }
         else{
             self.model.sectionNum  = INCOMPLETE;
-            [self.completeBtn setImage:[UIImage imageNamed:@"unchecked_task.png"] forState:UIControlStateNormal];
             [self.parentDailyController undoCompletedDaily:self.model];
         }
     };
