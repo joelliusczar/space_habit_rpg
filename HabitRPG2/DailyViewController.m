@@ -93,8 +93,7 @@ static NSString *const EntityName = @"Daily";
 -(void)completeDaily:(Daily *)daily{
     if(daily == self.incompleteItems.fetchedObjects[daily.rowNum]){
         daily.rollbackActivationTime = daily.lastActivationTime;
-        daily.lastActivationTime = [NSDate date];
-        daily.nextDueTime = [Daily calculateNextDueTime:[NSDate date] WithRate:daily.rate];
+        daily.lastActivationTime = [NSDate todayStart];
         //TODO calculate damage done to monster
         //TODO save
     }

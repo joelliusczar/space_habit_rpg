@@ -123,14 +123,10 @@ NSString* const IS_DIRTY = @"isDirty";
         savingModel = [Daily constructDaily];
         [SHData insertIntoContext:savingModel];
         //initialize the next time this daily activates
-        savingModel.nextDueTime = [Daily calculateNextDueTime:[NSDate date] WithRate:rate];
     }
     else{
         savingModel = [SHData.writeContext objectWithID:self.modelForEditing.objectID];
         //if the rate has changed then we need to adjust the next time this activates
-        if(rate != savingModel.rate){
-            savingModel.nextDueTime = [Daily calculateNextDueTime:[NSDate date] WithRate:rate];
-        }
     }
     savingModel.dailyName = self.nameBox.text;
     savingModel.note = self.notesBox.text;

@@ -11,6 +11,8 @@
 #import "Daily+DailyHelper.h"
 #import "constants.h"
 #import "Interceptor.h"
+#import "NSDate+DateHelper.h"
+#import "SingletonCluster.h"
 @import CoreGraphics;
 
 
@@ -53,6 +55,7 @@
     self.rowIndex = rowInfo.row;
     self.sectionIndex = rowInfo.section;
     self.nameLbl.text = self.model.dailyName;
+    
     if(self.model.streakLength > 0){
         self.streakLbl.hidden = NO;
         self.streakLbl.text = [NSString stringWithFormat:@"Streak: %d",self.model.streakLength];
@@ -62,7 +65,8 @@
     }
     if(self.model.rate > 1){
         self.daysLeftLbl.hidden = NO;
-        self.daysLeftLbl.text = [NSString stringWithFormat:@"Days left: %d",[Daily getDaysLeft:self.model.nextDueTime]];
+        NSDate *nextDueTime = [Daily calculateNextDueTime:self.model.lastActivationTime withRate:self.model.rate andDayStart:SHData.userData.theSettings.dayStart];
+        self.daysLeftLbl.text = [NSString stringWithFormat:@"Days left: %d",(int)([NSDate daysBetween:nextDueTime to:[NSDate date]])];
     }
     else{
         self.daysLeftLbl.hidden = YES;

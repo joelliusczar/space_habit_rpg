@@ -10,11 +10,9 @@
 
 @interface Daily (DailyHelper)
 +(Daily *)constructDaily;
-+(BOOL)isDailyCompleteForTheDay:(Daily *)daily;
-+(NSDate *)calculateNextDueTime:(NSDate *)checkinDate WithRate:(int)rate;
++(NSDate *)calculateNextDueTime:(NSDate *)checkinDate withRate:(int)rate andDayStart:(int)dayStart;
 +(int)calculateActiveDaysHash:(NSMutableArray *)activeDays;
 +(void)setActiveDaySwitches:(NSMutableArray *)activeDays fromHash:(NSInteger)hash;
-+(int)getDaysLeft:(NSDate *)nextDueTime;
 +(NSFetchedResultsController *)getUnfinishedDailiesController:(NSDate *)todayStart;
 +(NSFetchedResultsController *)getFinishedDailiesController:(NSDate *)todayStart;
 @end

@@ -20,14 +20,12 @@
     return (Daily *)[SHData constructEmptyEntity:Daily.entity InContext:nil];
 }
 
-+(BOOL)isDailyCompleteForTheDay:(Daily *)daily{
-    //todo
-    return NO;
-}
-
-+(NSDate *)calculateNextDueTime:(NSDate *)checkinDate WithRate:(int32_t)rate{
++(NSDate *)calculateNextDueTime:(NSDate *)checkinDate withRate:(int)rate andDayStart:(int)dayStart{
+    NSAssert(rate>0,@"rate must be at least 1");
+    NSAssert(dayStart >= 0 && dayStart < 24,@"day start must be between 0 and 24");
     NSDate *checkinDateStart = [SharedGlobal.inUseCalendar startOfDayForDate:checkinDate];
-    return [NSDate adjustDate:checkinDateStart year:0 month:0 day:rate];
+    NSDate *nextDueDateStart = [NSDate adjustDate:checkinDateStart year:0 month:0 day:rate];
+    return [NSDate adjustTime:nextDueDateStart hour:dayStart minute:0 second:0];
 }
 
 +(int)calculateActiveDaysHash:(NSMutableArray<NSObject<P_CustomSwitch> *> *)activeDays{
@@ -48,11 +46,6 @@
         activeDays[i].isOn = hash & currentDayBit;
         currentDayBit = currentDayBit << 1;
     }
-}
-
-+(int)getDaysLeft:(NSDate *)nextDueTime{
-    NSTimeInterval timeLeft = nextDueTime.timeIntervalSince1970 - [NSDate date].timeIntervalSince1970;
-    return (int)(timeLeft/866400);
 }
 
 +(NSArray<NSSortDescriptor *> *)buildFetchDescriptors{

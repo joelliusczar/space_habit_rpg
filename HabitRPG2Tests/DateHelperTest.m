@@ -49,28 +49,33 @@
 }
 
 -(void)testAdjustDateDay{
-    //test simple adding
+//test simple adding
     NSDate *testDate = [NSDate createDateTime:1988 month:4 day:27 hour:13 minute:35 second:12];
     NSDate *result = [NSDate adjustDate:testDate year:0 month:0 day:2];
     XCTAssertEqual(result.timeIntervalSince1970, 578338512);
-    //test rollover to next month
+//test rollover to next month
     result = [NSDate adjustDate:testDate year:0 month:0 day:4];
     XCTAssertEqual(result.timeIntervalSince1970, 578511312);
-    //test rollover to next year during a leap year
+//test rollover to next year during a leap year
     result = [NSDate adjustDate:testDate year:0 month:0 day:249];
     XCTAssertEqual(result.timeIntervalSince1970, 599682912);
-    //test rollover from febuary during leap year
+//test rollover from febuary during leap year
     testDate = [NSDate createDateTime:1988 month:2 day:28 hour:13 minute:35 second:12];
     result = [NSDate adjustDate:testDate year:0 month:0 day:1];
     XCTAssertEqual(result.timeIntervalSince1970, 573158112);
     result = [NSDate adjustDate:testDate year:0 month:0 day:2];
     XCTAssertEqual(result.timeIntervalSince1970, 573244512);
-    //test rollover from febuary during non leap year
+//test rollover from febuary during non leap year
     testDate = [NSDate createDateTime:1989 month:2 day:28 hour:13 minute:35 second:12];
     result = [NSDate adjustDate:testDate year:0 month:0 day:2];
     XCTAssertEqual(result.timeIntervalSince1970, 604866912);
 }
 
-
+-(void)testGetDaysLeft{
+    NSDate *fromTime = [NSDate createDateTime:1988 month:4 day:27 hour:0 minute:0 second:0];
+    NSDate *toTime = [NSDate createDateTime:1988 month:4 day:28 hour:0 minute:0 second:0];
+    int daysLeft = (int)[NSDate daysBetween:fromTime to:toTime];
+    XCTAssertEqual(daysLeft,1);
+}
 
 @end

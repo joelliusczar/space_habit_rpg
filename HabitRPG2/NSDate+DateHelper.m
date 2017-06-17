@@ -48,4 +48,9 @@
     return [SharedGlobal.inUseCalendar startOfDayForDate:[NSDate date]];
 }
 
++(double)daysBetween:(NSDate *)fromDate to:(NSDate *)toDate{
+    NSTimeInterval timeLeft = toDate.timeIntervalSince1970 - fromDate.timeIntervalSince1970;
+    return (timeLeft/86400.0);
+}
+
 @end

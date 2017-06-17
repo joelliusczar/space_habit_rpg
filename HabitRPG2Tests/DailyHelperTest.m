@@ -86,26 +86,39 @@ NSMutableArray<Daily *> *testDailies = nil;
     
     NSDate *testDate = [NSDate createDateTime:1988 month:4 day:27 hour:6 minute:0 second:0];
     NSFetchedResultsController *results = [Daily getUnfinishedDailiesController:testDate];
+    NSFetchedResultsController *results2 = [Daily getFinishedDailiesController:testDate];
     NSError *error;
     if(![results performFetch:&error]){
         
         NSLog(@"Error fetching data: %@", error.localizedFailureReason);
         XCTAssertNil(error);
     }
+    if(![results2 performFetch:&error]){
+        
+        NSLog(@"Error fetching data: %@", error.localizedFailureReason);
+        XCTAssertNil(error);
+    }
     XCTAssertEqual(results.fetchedObjects.count,31);
+    XCTAssertEqual(results2.fetchedObjects.count,19);
     //add save new item
     Daily *d = [Daily constructDaily];
     d.dailyName = @"addedDaily";
     [SHData insertIntoContext:d];
     //after insert, before fetch
     XCTAssertEqual(results.fetchedObjects.count,31);
+    XCTAssertEqual(results2.fetchedObjects.count,19);
     
     if(![results performFetch:&error]){
         NSLog(@"Error fetching data: %@", error.localizedFailureReason);
         XCTAssertNil(error);
     }
+    if(![results2 performFetch:&error]){
+        NSLog(@"Error fetching data: %@", error.localizedFailureReason);
+        XCTAssertNil(error);
+    }
     //after insert, after fetch, before save
     XCTAssertEqual(results.fetchedObjects.count,32);
+    XCTAssertEqual(results2.fetchedObjects.count,19);
     //saving is unecessary to be included in fetch results
     
     NSManagedObjectContext *prevContext = SHData.inUseContext;
@@ -120,9 +133,26 @@ NSMutableArray<Daily *> *testDailies = nil;
         NSLog(@"Error fetching data: %@", error.localizedFailureReason);
         XCTAssertNil(error);
     }
+    if(![results2 performFetch:&error]){
+        NSLog(@"Error fetching data: %@", error.localizedFailureReason);
+        XCTAssertNil(error);
+    }
     XCTAssertEqual(results.fetchedObjects.count,33);
+    XCTAssertEqual(results2.fetchedObjects.count,19);
 }
 
+-(void)testCalculateNextDueTime{
+    NSDate *checkinTime = [NSDate createDateTime:1988 month:4 day:27 hour:11 minute:15 second:30 timeZone:[NSTimeZone timeZoneWithName:@"America/New_York"]];
+    //is due next day at 12AM
+    NSDate *nextDueTime = [Daily calculateNextDueTime:checkinTime withRate:1 andDayStart:0];
+    XCTAssertEqual(nextDueTime.timeIntervalSince1970,578203200);
+    //is due next day at 6AM
+    nextDueTime = [Daily calculateNextDueTime:checkinTime withRate:1 andDayStart:6];
+    XCTAssertEqual(nextDueTime.timeIntervalSince1970,578224800);
+    //2 days later at 2PM
+    nextDueTime = [Daily calculateNextDueTime:checkinTime withRate:2 andDayStart:14];
+    XCTAssertEqual(nextDueTime.timeIntervalSince1970,578340000);
+}
 
 
 @end
