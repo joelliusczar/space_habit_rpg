@@ -65,8 +65,7 @@
     }
     if(self.model.rate > 1){
         self.daysLeftLbl.hidden = NO;
-        NSDate *nextDueTime = [Daily calculateNextDueTime:self.model.lastActivationTime withRate:self.model.rate andDayStart:SHData.userData.theSettings.dayStart];
-        self.daysLeftLbl.text = [NSString stringWithFormat:@"Days left: %d",(int)([NSDate daysBetween:nextDueTime to:[NSDate date]])];
+        self.daysLeftLbl.text = self.model.daysUntilDue==0?@"Today":[NSString stringWithFormat:@"Due in %d days",self.model.daysUntilDue];
     }
     else{
         self.daysLeftLbl.hidden = YES;

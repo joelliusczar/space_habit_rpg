@@ -10,6 +10,7 @@
 #import "Daily+CoreDataClass.h"
 #import "Daily+DailyHelper.h"
 #import "NSDate+DateHelper.h"
+#import "NSDate+testReplace.h"
 
 @interface DailyHelperTest : FrequentCase
 
@@ -21,6 +22,7 @@ NSMutableArray<Daily *> *testDailies = nil;
 
 -(void)setUp {
     [super setUp];
+    [NSDate swizzleThatShit];
     testDailies = [NSMutableArray array];
     int a0=0,a1=0,a2=0,a3=0,a4=0,a5=0;
     for(int i = 0;i<50;i++){
@@ -152,6 +154,20 @@ NSMutableArray<Daily *> *testDailies = nil;
     //2 days later at 2PM
     nextDueTime = [Daily calculateNextDueTime:checkinTime withRate:2 andDayStart:14];
     XCTAssertEqual(nextDueTime.timeIntervalSince1970,578340000);
+}
+
+-(void)testDaysUntilDue{
+    Daily *d = [Daily constructDaily];
+    d.lastActivationTime = [NSDate createDateTime:1988 month:4 day:27 hour:13 minute:24 second:11 timeZone: [NSTimeZone timeZoneWithName:@"America/New_York"]];
+    //if the rate is one, it should always result in being 0 days until Daily is due
+    d.rate = 1;
+    SCSettings.dayStart = 0;
+    testTodayReplacement = [NSDate createDateTime:1988 month:4 day:28 hour:9 minute:24 second:11 timeZone: [NSTimeZone timeZoneWithName:@"America/New_York"]];
+    XCTAssertEqual(d.daysUntilDue,0);
+    d.rate = 2;
+    XCTAssertEqual(d.daysUntilDue,1);
+    d.rate = 7;
+    XCTAssertEqual(d.daysUntilDue,6);
 }
 
 

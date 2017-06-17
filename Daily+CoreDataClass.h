@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,assign) NSInteger rowNum;
 @property (nonatomic,assign) NSInteger sectionNum;
 @property (readonly,nonatomic) NSMutableDictionary *mapable;
+@property (readonly,nonatomic) NSDate *nextDueTime;
+@property (readonly,nonatomic) int daysUntilDue;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -53,4 +53,9 @@
     return (timeLeft/86400.0);
 }
 
++(NSDate *)setTime:(NSDate *)dt hour:(NSInteger)h minute:(NSInteger)m second:(NSInteger)s{
+    NSDate *roundedDownDate = [SharedGlobal.inUseCalendar startOfDayForDate:dt];
+    return [NSDate adjustTime:roundedDownDate hour:h minute:m second:s];
+}
+
 @end

@@ -15,5 +15,7 @@
 +(NSDate *)createDateTime:(NSInteger)year month:(NSInteger)month day:(NSInteger)day hour:(NSInteger)hour minute:(NSInteger)minute second:(NSInteger)second timeZone:(NSTimeZone *)timeZone;
 +(NSDate *)todayStart;
 +(double)daysBetween:(NSDate *)fromDate to:(NSDate *)toDate;
++(NSDate *)setTime:(NSDate *)dt hour:(NSInteger)h minute:(NSInteger)m second:(NSInteger)s;
+
 @end
 

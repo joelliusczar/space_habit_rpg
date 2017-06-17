@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "NSDate+DateHelper.h"
 #import "SingletonCluster.h"
+#import "NSDate+testReplace.h"
 
 @interface DateHelperTest : XCTestCase
 
@@ -76,6 +77,14 @@
     NSDate *toTime = [NSDate createDateTime:1988 month:4 day:28 hour:0 minute:0 second:0];
     int daysLeft = (int)[NSDate daysBetween:fromTime to:toTime];
     XCTAssertEqual(daysLeft,1);
+}
+
+-(void)testSwizzleDate{
+    testTodayReplacement = [NSDate createDateTime:1988 month:4 day:27 hour:13 minute:45 second:40 timeZone:[NSTimeZone timeZoneWithName:@"America/New_York"]];
+    [NSDate swizzleThatShit];
+    NSDate *testDate = [NSDate date];
+    XCTAssertEqual(testDate.timeIntervalSince1970,testTodayReplacement.timeIntervalSince1970);
+    
 }
 
 @end
