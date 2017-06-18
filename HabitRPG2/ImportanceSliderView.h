@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "P_ImportanceSlidersDelegate.h"
 
-@interface ImportanceSliderViewController : UIViewController
+@interface ImportanceSliderView : UIView
 @property (weak,nonatomic) IBOutlet UILabel *urgencyLbl;
 @property (weak,nonatomic) IBOutlet UISlider *urgencySld;
 @property (weak,nonatomic) IBOutlet UILabel *difficultyLbl;

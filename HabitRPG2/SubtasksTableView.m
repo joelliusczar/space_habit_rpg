@@ -6,22 +6,16 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import "SubtasksTableViewController.h"
+#import "SubtasksTableView.h"
 
-@interface SubtasksTableViewController ()
+@interface SubtasksTableView ()
 
 @end
 
-@implementation SubtasksTableViewController
+@implementation SubtasksTableView
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(instancetype)new{
+    return [[NSBundle mainBundle] loadNibNamed:@"SubtasksTableView" owner:self options:nil][0];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

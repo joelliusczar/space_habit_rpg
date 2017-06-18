@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "rateSetterDelegate.h"
 
-@interface rateSetterViewController : UIViewController
+@interface RateSetterView : UIView
 @property (weak,nonatomic) id<rateSetterDelegate> delegate;
 @end

@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImportanceSliderViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImportanceSliderView">
             <connections>
                 <outlet property="difficultyLbl" destination="iZR-2k-3aS" id="m6C-ue-TEb"/>
                 <outlet property="difficultySld" destination="yZ3-f2-u80" id="CL3-bO-7mY"/>

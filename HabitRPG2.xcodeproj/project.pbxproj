@@ -44,12 +44,12 @@
 		273979001EC4092A00F217B4 /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273978FF1EC4092A00F217B4 /* IntroViewController.xib */; };
 		274FFC291EF6236600FAF809 /* ActiveDaysPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC271EF6236600FAF809 /* ActiveDaysPicker.m */; };
 		274FFC2A1EF6236600FAF809 /* ActiveDaysPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274FFC281EF6236600FAF809 /* ActiveDaysPicker.xib */; };
-		274FFC2F1EF6296D00FAF809 /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC2D1EF6296D00FAF809 /* NoteViewController.m */; };
-		274FFC301EF6296D00FAF809 /* NoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274FFC2E1EF6296D00FAF809 /* NoteViewController.xib */; };
-		274FFC3C1EF62FA200FAF809 /* SubtasksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC3A1EF62FA200FAF809 /* SubtasksTableViewController.m */; };
-		274FFC3D1EF62FA200FAF809 /* SubtasksTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274FFC3B1EF62FA200FAF809 /* SubtasksTableViewController.xib */; };
-		274FFC421EF6E2B100FAF809 /* rateSetterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC401EF6E2B100FAF809 /* rateSetterViewController.m */; };
-		274FFC431EF6E2B100FAF809 /* rateSetterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274FFC411EF6E2B100FAF809 /* rateSetterViewController.xib */; };
+		274FFC2F1EF6296D00FAF809 /* NoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC2D1EF6296D00FAF809 /* NoteView.m */; };
+		274FFC301EF6296D00FAF809 /* NoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274FFC2E1EF6296D00FAF809 /* NoteView.xib */; };
+		274FFC3C1EF62FA200FAF809 /* SubtasksTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC3A1EF62FA200FAF809 /* SubtasksTableView.m */; };
+		274FFC3D1EF62FA200FAF809 /* SubtasksTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274FFC3B1EF62FA200FAF809 /* SubtasksTableView.xib */; };
+		274FFC421EF6E2B100FAF809 /* RateSetterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC401EF6E2B100FAF809 /* RateSetterView.m */; };
+		274FFC431EF6E2B100FAF809 /* RateSetterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274FFC411EF6E2B100FAF809 /* RateSetterView.xib */; };
 		275A079C1ED50AF5001422CD /* GoodTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 275A07841ED50AF5001422CD /* GoodTransaction+CoreDataClass.m */; };
 		275A079D1ED50AF5001422CD /* GoodTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 275A07861ED50AF5001422CD /* GoodTransaction+CoreDataProperties.m */; };
 		275A07B71EDA1FB9001422CD /* TestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 275A07B61EDA1FB9001422CD /* TestHelpers.m */; };
@@ -88,8 +88,8 @@
 		27E89C901EF5E6A8009B7474 /* ReminderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E89C8F1EF5E6A8009B7474 /* ReminderCell.xib */; };
 		27E89C941EF5E732009B7474 /* ReminderCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E89C931EF5E732009B7474 /* ReminderCellController.m */; };
 		27E89C981EF5F3EE009B7474 /* SubTaskCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E89C971EF5F3EE009B7474 /* SubTaskCellController.m */; };
-		27E89C9D1EF5FCD5009B7474 /* ImportanceSliderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E89C9B1EF5FCD5009B7474 /* ImportanceSliderViewController.m */; };
-		27E89C9E1EF5FCD5009B7474 /* ImportanceSliderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E89C9C1EF5FCD5009B7474 /* ImportanceSliderViewController.xib */; };
+		27E89C9D1EF5FCD5009B7474 /* ImportanceSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E89C9B1EF5FCD5009B7474 /* ImportanceSliderView.m */; };
+		27E89C9E1EF5FCD5009B7474 /* ImportanceSliderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E89C9C1EF5FCD5009B7474 /* ImportanceSliderView.xib */; };
 		27F4401C1E220097002BEDD4 /* OnlyOneEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */; };
 		686686EB1D79032200BB2D09 /* DailyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 686686EA1D79032200BB2D09 /* DailyCell.xib */; };
 		686686EE1D79060300BB2D09 /* DailyCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686686ED1D79060300BB2D09 /* DailyCellController.m */; };
@@ -235,17 +235,17 @@
 		274FFC271EF6236600FAF809 /* ActiveDaysPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveDaysPicker.m; sourceTree = "<group>"; };
 		274FFC281EF6236600FAF809 /* ActiveDaysPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActiveDaysPicker.xib; sourceTree = "<group>"; };
 		274FFC2B1EF6269F00FAF809 /* P_ActiveDaysPickerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ActiveDaysPickerDelegate.h; sourceTree = "<group>"; };
-		274FFC2C1EF6296D00FAF809 /* NoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteViewController.h; sourceTree = "<group>"; };
-		274FFC2D1EF6296D00FAF809 /* NoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteViewController.m; sourceTree = "<group>"; };
-		274FFC2E1EF6296D00FAF809 /* NoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteViewController.xib; sourceTree = "<group>"; };
+		274FFC2C1EF6296D00FAF809 /* NoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteView.h; sourceTree = "<group>"; };
+		274FFC2D1EF6296D00FAF809 /* NoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteView.m; sourceTree = "<group>"; };
+		274FFC2E1EF6296D00FAF809 /* NoteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteView.xib; sourceTree = "<group>"; };
 		274FFC321EF62B2200FAF809 /* P_NotesViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_NotesViewDelegate.h; sourceTree = "<group>"; };
-		274FFC391EF62FA200FAF809 /* SubtasksTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubtasksTableViewController.h; sourceTree = "<group>"; };
-		274FFC3A1EF62FA200FAF809 /* SubtasksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubtasksTableViewController.m; sourceTree = "<group>"; };
-		274FFC3B1EF62FA200FAF809 /* SubtasksTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubtasksTableViewController.xib; sourceTree = "<group>"; };
+		274FFC391EF62FA200FAF809 /* SubtasksTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubtasksTableView.h; sourceTree = "<group>"; };
+		274FFC3A1EF62FA200FAF809 /* SubtasksTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubtasksTableView.m; sourceTree = "<group>"; };
+		274FFC3B1EF62FA200FAF809 /* SubtasksTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubtasksTableView.xib; sourceTree = "<group>"; };
 		274FFC3E1EF6CA2200FAF809 /* P_SubtasksTableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_SubtasksTableViewDelegate.h; sourceTree = "<group>"; };
-		274FFC3F1EF6E2B100FAF809 /* rateSetterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rateSetterViewController.h; sourceTree = "<group>"; };
-		274FFC401EF6E2B100FAF809 /* rateSetterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rateSetterViewController.m; sourceTree = "<group>"; };
-		274FFC411EF6E2B100FAF809 /* rateSetterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = rateSetterViewController.xib; sourceTree = "<group>"; };
+		274FFC3F1EF6E2B100FAF809 /* RateSetterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateSetterView.h; sourceTree = "<group>"; };
+		274FFC401EF6E2B100FAF809 /* RateSetterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateSetterView.m; sourceTree = "<group>"; };
+		274FFC411EF6E2B100FAF809 /* RateSetterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RateSetterView.xib; sourceTree = "<group>"; };
 		274FFC441EF6E3BB00FAF809 /* rateSetterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rateSetterDelegate.h; sourceTree = "<group>"; };
 		275A07831ED50AF5001422CD /* GoodTransaction+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GoodTransaction+CoreDataClass.h"; path = "../GoodTransaction+CoreDataClass.h"; sourceTree = "<group>"; };
 		275A07841ED50AF5001422CD /* GoodTransaction+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GoodTransaction+CoreDataClass.m"; path = "../GoodTransaction+CoreDataClass.m"; sourceTree = "<group>"; };
@@ -314,9 +314,9 @@
 		27E89C951EF5E8F7009B7474 /* P_Reminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_Reminder.h; sourceTree = "<group>"; };
 		27E89C961EF5F3EE009B7474 /* SubTaskCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubTaskCellController.h; sourceTree = "<group>"; };
 		27E89C971EF5F3EE009B7474 /* SubTaskCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubTaskCellController.m; sourceTree = "<group>"; };
-		27E89C9A1EF5FCD5009B7474 /* ImportanceSliderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportanceSliderViewController.h; sourceTree = "<group>"; };
-		27E89C9B1EF5FCD5009B7474 /* ImportanceSliderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportanceSliderViewController.m; sourceTree = "<group>"; };
-		27E89C9C1EF5FCD5009B7474 /* ImportanceSliderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImportanceSliderViewController.xib; sourceTree = "<group>"; };
+		27E89C9A1EF5FCD5009B7474 /* ImportanceSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportanceSliderView.h; sourceTree = "<group>"; };
+		27E89C9B1EF5FCD5009B7474 /* ImportanceSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportanceSliderView.m; sourceTree = "<group>"; };
+		27E89C9C1EF5FCD5009B7474 /* ImportanceSliderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImportanceSliderView.xib; sourceTree = "<group>"; };
 		27E89C9F1EF600D9009B7474 /* P_ImportanceSlidersDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ImportanceSlidersDelegate.h; sourceTree = "<group>"; };
 		27F4401A1E220097002BEDD4 /* OnlyOneEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyOneEntities.h; sourceTree = "<group>"; };
 		27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlyOneEntities.m; sourceTree = "<group>"; };
@@ -613,21 +613,21 @@
 			isa = PBXGroup;
 			children = (
 				274FFC311EF62AF900FAF809 /* ControlDelegates */,
-				27E89C9A1EF5FCD5009B7474 /* ImportanceSliderViewController.h */,
-				27E89C9B1EF5FCD5009B7474 /* ImportanceSliderViewController.m */,
-				27E89C9C1EF5FCD5009B7474 /* ImportanceSliderViewController.xib */,
+				27E89C9A1EF5FCD5009B7474 /* ImportanceSliderView.h */,
+				27E89C9B1EF5FCD5009B7474 /* ImportanceSliderView.m */,
+				27E89C9C1EF5FCD5009B7474 /* ImportanceSliderView.xib */,
 				274FFC261EF6236600FAF809 /* ActiveDaysPicker.h */,
 				274FFC271EF6236600FAF809 /* ActiveDaysPicker.m */,
 				274FFC281EF6236600FAF809 /* ActiveDaysPicker.xib */,
-				274FFC2C1EF6296D00FAF809 /* NoteViewController.h */,
-				274FFC2D1EF6296D00FAF809 /* NoteViewController.m */,
-				274FFC2E1EF6296D00FAF809 /* NoteViewController.xib */,
-				274FFC391EF62FA200FAF809 /* SubtasksTableViewController.h */,
-				274FFC3A1EF62FA200FAF809 /* SubtasksTableViewController.m */,
-				274FFC3B1EF62FA200FAF809 /* SubtasksTableViewController.xib */,
-				274FFC3F1EF6E2B100FAF809 /* rateSetterViewController.h */,
-				274FFC401EF6E2B100FAF809 /* rateSetterViewController.m */,
-				274FFC411EF6E2B100FAF809 /* rateSetterViewController.xib */,
+				274FFC2C1EF6296D00FAF809 /* NoteView.h */,
+				274FFC2D1EF6296D00FAF809 /* NoteView.m */,
+				274FFC2E1EF6296D00FAF809 /* NoteView.xib */,
+				274FFC391EF62FA200FAF809 /* SubtasksTableView.h */,
+				274FFC3A1EF62FA200FAF809 /* SubtasksTableView.m */,
+				274FFC3B1EF62FA200FAF809 /* SubtasksTableView.xib */,
+				274FFC3F1EF6E2B100FAF809 /* RateSetterView.h */,
+				274FFC401EF6E2B100FAF809 /* RateSetterView.m */,
+				274FFC411EF6E2B100FAF809 /* RateSetterView.xib */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -1044,11 +1044,11 @@
 			files = (
 				2709B3911EE4FBDC00EEE5CC /* Model.xcdatamodeld in Resources */,
 				27C92C1F1E29FE110025727E /* ZoneInfo.plist in Resources */,
-				274FFC431EF6E2B100FAF809 /* rateSetterViewController.xib in Resources */,
+				274FFC431EF6E2B100FAF809 /* RateSetterView.xib in Resources */,
 				686ED3951DA5DEC0004EDD36 /* title_Screen_2x.png in Resources */,
 				2739788B1EB843F800F217B4 /* MonsterInfo.plist in Resources */,
 				686686EB1D79032200BB2D09 /* DailyCell.xib in Resources */,
-				27E89C9E1EF5FCD5009B7474 /* ImportanceSliderViewController.xib in Resources */,
+				27E89C9E1EF5FCD5009B7474 /* ImportanceSliderView.xib in Resources */,
 				686ED3991DA5E0F9004EDD36 /* title_Screen_R_4.png in Resources */,
 				277ABF341E9F1AE8008CC239 /* behind_alert_view.png in Resources */,
 				686ED3BB1DB4660F004EDD36 /* white_checked_full.png in Resources */,
@@ -1074,7 +1074,7 @@
 				6886A48B1D8F6EA6005E12B3 /* switch_unchecked.png in Resources */,
 				686ED3931DA5DEB5004EDD36 /* title_Screen_HD_47.png in Resources */,
 				68F3F9EA1D70EC9700840DD2 /* DailyViewController.xib in Resources */,
-				274FFC3D1EF62FA200FAF809 /* SubtasksTableViewController.xib in Resources */,
+				274FFC3D1EF62FA200FAF809 /* SubtasksTableView.xib in Resources */,
 				6886A4861D8F1C49005E12B3 /* unchecked_task.png in Resources */,
 				274FFC2A1EF6236600FAF809 /* ActiveDaysPicker.xib in Resources */,
 				68DD159A1D9A1FC00073E7D8 /* checked_task.png in Resources */,
@@ -1082,7 +1082,7 @@
 				6886A48D1D8F6EB3005E12B3 /* switch_checked.png in Resources */,
 				686ED3911DA5DD66004EDD36 /* title_Screen_HD_55.png in Resources */,
 				68F3FA031D74897A00840DD2 /* MenuViewController.xib in Resources */,
-				274FFC301EF6296D00FAF809 /* NoteViewController.xib in Resources */,
+				274FFC301EF6296D00FAF809 /* NoteView.xib in Resources */,
 				68F3F9F91D70FD3F00840DD2 /* GoodsViewController.xib in Resources */,
 				686ED3BA1DB4660F004EDD36 /* white_checked_empty.png in Resources */,
 			);
@@ -1116,7 +1116,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27E89C9D1EF5FCD5009B7474 /* ImportanceSliderViewController.m in Sources */,
+				27E89C9D1EF5FCD5009B7474 /* ImportanceSliderView.m in Sources */,
 				686686EE1D79060300BB2D09 /* DailyCellController.m in Sources */,
 				2709B3991EEF750800EEE5CC /* ReportServiceCaller.m in Sources */,
 				275FEEFE1EE3172C00AED1A2 /* NSDate+DateHelper.m in Sources */,
@@ -1135,11 +1135,11 @@
 				2712176B1DCE84310072ACC6 /* Habit+CoreDataClass.m in Sources */,
 				68F3F9B11D70E82E00840DD2 /* AppDelegate.m in Sources */,
 				27127E351DDD42B50074A8F5 /* DataInfo+CoreDataClass.m in Sources */,
-				274FFC3C1EF62FA200FAF809 /* SubtasksTableViewController.m in Sources */,
-				274FFC421EF6E2B100FAF809 /* rateSetterViewController.m in Sources */,
+				274FFC3C1EF62FA200FAF809 /* SubtasksTableView.m in Sources */,
+				274FFC421EF6E2B100FAF809 /* RateSetterView.m in Sources */,
 				68BA38861D93576600CB5A76 /* CommonUtilities.m in Sources */,
 				27AE66731E875EFB000F31BD /* Suffix+CoreDataProperties.m in Sources */,
-				274FFC2F1EF6296D00FAF809 /* NoteViewController.m in Sources */,
+				274FFC2F1EF6296D00FAF809 /* NoteView.m in Sources */,
 				68D25C221D8B951B00FF1BE0 /* DailyEditController.m in Sources */,
 				68E260651D7FC3F200425D46 /* CoreDataStackController.m in Sources */,
 				2712176E1DCE84310072ACC6 /* Settings+CoreDataClass.m in Sources */,

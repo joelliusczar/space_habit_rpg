@@ -6,22 +6,16 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import "ImportanceSliderViewController.h"
+#import "ImportanceSliderView.h"
 
-@interface ImportanceSliderViewController ()
+@interface ImportanceSliderView ()
 
 @end
 
-@implementation ImportanceSliderViewController
+@implementation ImportanceSliderView
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(instancetype)new{
+    return [[NSBundle mainBundle] loadNibNamed:@"ImportanceSliderView" owner:self options:nil][0];
 }
 
 - (IBAction)urgencySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event {
