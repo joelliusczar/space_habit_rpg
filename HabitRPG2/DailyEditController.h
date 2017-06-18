@@ -14,8 +14,8 @@
 #import "Daily+CoreDataClass.h"
 
 
-@interface DailyEditController : UIViewController <EditingSaver,UITextViewDelegate>
+@interface DailyEditController : UIViewController <EditingSaver,UITextViewDelegate, UITableViewDataSource>
 -(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController;
--(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController ToEdit:(Daily *)daily AtIndexPath:(NSIndexPath *)rowInfow;
--(void)loadExistingDailyForEditing:(Daily *)daily WithIndexPath:(NSIndexPath *)rowInfo;
+-(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController ToEdit:(Daily *)daily AtIndexPath:(NSIndexPath *)rowInfo;
+-(void)loadExistingDailyForEditing:(Daily *)daily;
 @end

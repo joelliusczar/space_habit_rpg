@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class DailySubTask;
+@class DailyReminders;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Daily : NSManagedObject

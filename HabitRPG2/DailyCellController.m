@@ -56,13 +56,15 @@
     self.sectionIndex = rowInfo.section;
     self.nameLbl.text = self.model.dailyName;
     
+    //for current streak count
     if(self.model.streakLength > 0){
         self.streakLbl.hidden = NO;
-        self.streakLbl.text = [NSString stringWithFormat:@"Streak: %d",self.model.streakLength];
+        self.streakLbl.text = [NSString stringWithFormat:@"Combo: %d",self.model.streakLength];
     }
     else{
         self.streakLbl.hidden = YES;
     }
+    //for due in x days
     if(self.model.rate > 1){
         self.daysLeftLbl.hidden = NO;
         self.daysLeftLbl.text = self.model.daysUntilDue==0?@"Today":[NSString stringWithFormat:@"Due in %d days",self.model.daysUntilDue];
@@ -70,6 +72,7 @@
     else{
         self.daysLeftLbl.hidden = YES;
     }
+    //for check image
     if(self.sectionIndex == INCOMPLETE){
         [self.completeBtn setImage:[UIImage imageNamed:@"unchecked_task.png"] forState:UIControlStateNormal];
     }

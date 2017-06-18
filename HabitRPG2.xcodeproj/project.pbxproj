@@ -72,6 +72,14 @@
 		27C92C441E3314000025727E /* ZoneDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C421E3314000025727E /* ZoneDescriptionViewController.m */; };
 		27C92C451E3314000025727E /* ZoneDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C431E3314000025727E /* ZoneDescriptionViewController.xib */; };
 		27C92C481E341DA10025727E /* ViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C471E341DA10025727E /* ViewHelper.m */; };
+		27E89C6A1EF5AD68009B7474 /* SubtaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E89C691EF5AD68009B7474 /* SubtaskCell.xib */; };
+		27E89C7B1EF5CE4C009B7474 /* DailyReminders+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E89C721EF5CE4C009B7474 /* DailyReminders+CoreDataClass.m */; };
+		27E89C7C1EF5CE4C009B7474 /* DailyReminders+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E89C741EF5CE4C009B7474 /* DailyReminders+CoreDataProperties.m */; };
+		27E89C7E1EF5CE4C009B7474 /* DailySubTask+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E89C781EF5CE4C009B7474 /* DailySubTask+CoreDataClass.m */; };
+		27E89C7F1EF5CE4C009B7474 /* DailySubTask+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E89C7A1EF5CE4C009B7474 /* DailySubTask+CoreDataProperties.m */; };
+		27E89C901EF5E6A8009B7474 /* ReminderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E89C8F1EF5E6A8009B7474 /* ReminderCell.xib */; };
+		27E89C941EF5E732009B7474 /* ReminderCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E89C931EF5E732009B7474 /* ReminderCellController.m */; };
+		27E89C981EF5F3EE009B7474 /* SubTaskCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E89C971EF5F3EE009B7474 /* SubTaskCellController.m */; };
 		27F4401C1E220097002BEDD4 /* OnlyOneEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */; };
 		686686EB1D79032200BB2D09 /* DailyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 686686EA1D79032200BB2D09 /* DailyCell.xib */; };
 		686686EE1D79060300BB2D09 /* DailyCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686686ED1D79060300BB2D09 /* DailyCellController.m */; };
@@ -264,6 +272,22 @@
 		27C92C461E341DA10025727E /* ViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewHelper.h; sourceTree = "<group>"; };
 		27C92C471E341DA10025727E /* ViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewHelper.m; sourceTree = "<group>"; };
 		27E00E981ED3FAE8008B35CD /* P_Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_Transaction.h; sourceTree = "<group>"; };
+		27E89C681EF59034009B7474 /* Model 25.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 25.xcdatamodel"; sourceTree = "<group>"; };
+		27E89C691EF5AD68009B7474 /* SubtaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubtaskCell.xib; sourceTree = "<group>"; };
+		27E89C711EF5CE4C009B7474 /* DailyReminders+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DailyReminders+CoreDataClass.h"; path = "../DailyReminders+CoreDataClass.h"; sourceTree = "<group>"; };
+		27E89C721EF5CE4C009B7474 /* DailyReminders+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DailyReminders+CoreDataClass.m"; path = "../DailyReminders+CoreDataClass.m"; sourceTree = "<group>"; };
+		27E89C731EF5CE4C009B7474 /* DailyReminders+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DailyReminders+CoreDataProperties.h"; path = "../DailyReminders+CoreDataProperties.h"; sourceTree = "<group>"; };
+		27E89C741EF5CE4C009B7474 /* DailyReminders+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DailyReminders+CoreDataProperties.m"; path = "../DailyReminders+CoreDataProperties.m"; sourceTree = "<group>"; };
+		27E89C771EF5CE4C009B7474 /* DailySubTask+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DailySubTask+CoreDataClass.h"; path = "../DailySubTask+CoreDataClass.h"; sourceTree = "<group>"; };
+		27E89C781EF5CE4C009B7474 /* DailySubTask+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DailySubTask+CoreDataClass.m"; path = "../DailySubTask+CoreDataClass.m"; sourceTree = "<group>"; };
+		27E89C791EF5CE4C009B7474 /* DailySubTask+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DailySubTask+CoreDataProperties.h"; path = "../DailySubTask+CoreDataProperties.h"; sourceTree = "<group>"; };
+		27E89C7A1EF5CE4C009B7474 /* DailySubTask+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DailySubTask+CoreDataProperties.m"; path = "../DailySubTask+CoreDataProperties.m"; sourceTree = "<group>"; };
+		27E89C8F1EF5E6A8009B7474 /* ReminderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReminderCell.xib; sourceTree = "<group>"; };
+		27E89C921EF5E732009B7474 /* ReminderCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReminderCellController.h; sourceTree = "<group>"; };
+		27E89C931EF5E732009B7474 /* ReminderCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReminderCellController.m; sourceTree = "<group>"; };
+		27E89C951EF5E8F7009B7474 /* P_Reminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_Reminder.h; sourceTree = "<group>"; };
+		27E89C961EF5F3EE009B7474 /* SubTaskCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubTaskCellController.h; sourceTree = "<group>"; };
+		27E89C971EF5F3EE009B7474 /* SubTaskCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubTaskCellController.m; sourceTree = "<group>"; };
 		27F4401A1E220097002BEDD4 /* OnlyOneEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyOneEntities.h; sourceTree = "<group>"; };
 		27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlyOneEntities.m; sourceTree = "<group>"; };
 		686686EA1D79032200BB2D09 /* DailyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyCell.xib; sourceTree = "<group>"; };
@@ -402,6 +426,14 @@
 		272144FE1EDFB46E00D98C03 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				27E89C711EF5CE4C009B7474 /* DailyReminders+CoreDataClass.h */,
+				27E89C721EF5CE4C009B7474 /* DailyReminders+CoreDataClass.m */,
+				27E89C731EF5CE4C009B7474 /* DailyReminders+CoreDataProperties.h */,
+				27E89C741EF5CE4C009B7474 /* DailyReminders+CoreDataProperties.m */,
+				27E89C771EF5CE4C009B7474 /* DailySubTask+CoreDataClass.h */,
+				27E89C781EF5CE4C009B7474 /* DailySubTask+CoreDataClass.m */,
+				27E89C791EF5CE4C009B7474 /* DailySubTask+CoreDataProperties.h */,
+				27E89C7A1EF5CE4C009B7474 /* DailySubTask+CoreDataProperties.m */,
 				68A921E61DBC7FF1007C946C /* Daily+CoreDataProperties.h */,
 				271217591DCE84310072ACC6 /* Daily+CoreDataClass.h */,
 				2712175A1DCE84310072ACC6 /* Daily+CoreDataClass.m */,
@@ -608,6 +640,7 @@
 				271C04851E8B6323002221E9 /* P_ResourceUtility.h */,
 				27E00E981ED3FAE8008B35CD /* P_Transaction.h */,
 				272144FD1EDB59F600D98C03 /* P_TaskEditorDelegate.h */,
+				27E89C951EF5E8F7009B7474 /* P_Reminder.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -711,6 +744,8 @@
 				2739789F1EB8473100F217B4 /* DailyTransaction+CoreDataProperties.m */,
 				275FEF0B1EE45AE600AED1A2 /* Daily+DailyHelper.h */,
 				275FEF0C1EE45AE600AED1A2 /* Daily+DailyHelper.m */,
+				27E89C961EF5F3EE009B7474 /* SubTaskCellController.h */,
+				27E89C971EF5F3EE009B7474 /* SubTaskCellController.m */,
 			);
 			name = Dailies;
 			sourceTree = "<group>";
@@ -722,6 +757,7 @@
 				68F3F9E81D70EC9700840DD2 /* DailyViewController.xib */,
 				687F01211D77CA6500C7B08B /* DailyTablesViewController.xib */,
 				686686EA1D79032200BB2D09 /* DailyCell.xib */,
+				27E89C691EF5AD68009B7474 /* SubtaskCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -733,6 +769,7 @@
 				686ED3A91DADE47C004EDD36 /* EditingScreen */,
 				686ED3A81DADDF69004EDD36 /* Protocols */,
 				68E260631D7FC3F200425D46 /* CoreDataStackController.h */,
+				27E89C8F1EF5E6A8009B7474 /* ReminderCell.xib */,
 				68E260641D7FC3F200425D46 /* CoreDataStackController.m */,
 				68F3F9E31D70E8DB00840DD2 /* CentralViewController.xib */,
 				68F3F9E11D70E8DB00840DD2 /* CentralViewController.h */,
@@ -741,6 +778,10 @@
 				27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */,
 				271C04891E8C955A002221E9 /* SingletonCluster.h */,
 				271C048A1E8C955A002221E9 /* SingletonCluster.m */,
+				6886A4871D8F3CB2005E12B3 /* TaskCell.h */,
+				6886A4881D8F3CB2005E12B3 /* TaskCell.m */,
+				27E89C921EF5E732009B7474 /* ReminderCellController.h */,
+				27E89C931EF5E732009B7474 /* ReminderCellController.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -787,8 +828,6 @@
 				68F3F9AD1D70E82E00840DD2 /* main.m */,
 				68F3F9BD1D70E82E00840DD2 /* Info.plist */,
 				68F3F9AC1D70E82E00840DD2 /* Supporting Files */,
-				6886A4871D8F3CB2005E12B3 /* TaskCell.h */,
-				6886A4881D8F3CB2005E12B3 /* TaskCell.m */,
 			);
 			path = HabitRPG2;
 			sourceTree = "<group>";
@@ -946,9 +985,11 @@
 				277ABF341E9F1AE8008CC239 /* behind_alert_view.png in Resources */,
 				686ED3BB1DB4660F004EDD36 /* white_checked_full.png in Resources */,
 				275FEF021EE3A78200AED1A2 /* timeZoneList.txt in Resources */,
+				27E89C901EF5E6A8009B7474 /* ReminderCell.xib in Resources */,
 				68F3F9F41D70FC5E00840DD2 /* TodoViewController.xib in Resources */,
 				686ED3C41DB47FAF004EDD36 /* black_checked_full.png in Resources */,
 				68F3F9EF1D70FC0D00840DD2 /* HabitController.xib in Resources */,
+				27E89C6A1EF5AD68009B7474 /* SubtaskCell.xib in Resources */,
 				273979001EC4092A00F217B4 /* IntroViewController.xib in Resources */,
 				27C92C451E3314000025727E /* ZoneDescriptionViewController.xib in Resources */,
 				6889C65E1D88F82700598435 /* DailyEditView.xib in Resources */,
@@ -1035,12 +1076,14 @@
 				68A921F61DBC7FF2007C946C /* Good+CoreDataProperties.m in Sources */,
 				273978A71EB8473100F217B4 /* TodoTransaction+CoreDataProperties.m in Sources */,
 				273978A61EB8473100F217B4 /* TodoTransaction+CoreDataClass.m in Sources */,
+				27E89C7C1EF5CE4C009B7474 /* DailyReminders+CoreDataProperties.m in Sources */,
 				686ED3C71DB481C4004EDD36 /* ZoneHelper.m in Sources */,
 				6886A4891D8F3CB2005E12B3 /* TaskCell.m in Sources */,
 				68E260CF1D851DA500425D46 /* EditNavigationController.m in Sources */,
 				686ED3BF1DB47954004EDD36 /* ZoneChoiceViewController.m in Sources */,
 				273978AE1EB8473100F217B4 /* MonsterTransaction+CoreDataClass.m in Sources */,
 				27C92C151E297F650025727E /* ZoneChoiceCellController.m in Sources */,
+				27E89C7E1EF5CE4C009B7474 /* DailySubTask+CoreDataClass.m in Sources */,
 				275FEF0D1EE45AE600AED1A2 /* Daily+DailyHelper.m in Sources */,
 				2712176C1DCE84310072ACC6 /* Hero+CoreDataClass.m in Sources */,
 				27C92C1A1E29C9F10025727E /* ZoneInfoDictionary.m in Sources */,
@@ -1058,8 +1101,11 @@
 				6886A4801D8E5FD0005E12B3 /* constants.m in Sources */,
 				271C04881E8B639D002221E9 /* ResourceUtility.m in Sources */,
 				68A921F41DBC7FF2007C946C /* Hero+CoreDataProperties.m in Sources */,
+				27E89C941EF5E732009B7474 /* ReminderCellController.m in Sources */,
+				27E89C981EF5F3EE009B7474 /* SubTaskCellController.m in Sources */,
 				277ABEC91E949B96008CC239 /* StdLibWrapper.m in Sources */,
 				273978A41EB8473100F217B4 /* ZoneTransaction+CoreDataClass.m in Sources */,
+				27E89C7B1EF5CE4C009B7474 /* DailyReminders+CoreDataClass.m in Sources */,
 				686ED3B71DAF3DBD004EDD36 /* CustomSwitch.m in Sources */,
 				68A921F51DBC7FF2007C946C /* Daily+CoreDataProperties.m in Sources */,
 				27C92C481E341DA10025727E /* ViewHelper.m in Sources */,
@@ -1068,6 +1114,7 @@
 				68F3F9AE1D70E82E00840DD2 /* main.m in Sources */,
 				273978A81EB8473100F217B4 /* HabitTransaction+CoreDataClass.m in Sources */,
 				273978A51EB8473100F217B4 /* ZoneTransaction+CoreDataProperties.m in Sources */,
+				27E89C7F1EF5CE4C009B7474 /* DailySubTask+CoreDataProperties.m in Sources */,
 				27AE66721E875EFB000F31BD /* Suffix+CoreDataClass.m in Sources */,
 				275A079C1ED50AF5001422CD /* GoodTransaction+CoreDataClass.m in Sources */,
 				271217701DCE84310072ACC6 /* Zone+CoreDataClass.m in Sources */,
@@ -1274,6 +1321,7 @@
 		273782391EE4DB9C00EA5B1D /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				27E89C681EF59034009B7474 /* Model 25.xcdatamodel */,
 				2709B39D1EF4DFCA00EEE5CC /* Model 24.xcdatamodel */,
 				2709B3921EEF733400EEE5CC /* Model 23.xcdatamodel */,
 				2737823F1EE4DE6900EA5B1D /* Model 22.xcdatamodel */,
@@ -1282,7 +1330,7 @@
 				2737823C1EE4DB9C00EA5B1D /* Model 21.xcdatamodel */,
 				2737823D1EE4DB9C00EA5B1D /* Model.xcdatamodel */,
 			);
-			currentVersion = 2709B39D1EF4DFCA00EEE5CC /* Model 24.xcdatamodel */;
+			currentVersion = 27E89C681EF59034009B7474 /* Model 25.xcdatamodel */;
 			name = Model.xcdatamodeld;
 			path = HabitRPG2/Model.xcdatamodeld;
 			sourceTree = "<group>";

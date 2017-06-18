@@ -14,6 +14,8 @@
 #import "CustomSwitch.h"
 #import "Daily+DailyHelper.h"
 #import "Interceptor.h"
+#import "ReminderCellController.h"
+#import "SubTaskCellController.h"
 
 
 static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
@@ -35,6 +37,7 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 @property (weak,nonatomic) IBOutlet UILabel *rewardsList;
 @property (weak, nonatomic) IBOutlet UILabel *streakCountLbl;
 @property (weak, nonatomic) IBOutlet UIButton *streakResetBtn;
+@property (weak, nonatomic) IBOutlet UITableView *subtaskTbl;
 @property (weak,nonatomic) DailyViewController *parentDailyController;
 @property (strong,nonatomic) Daily *modelForEditing;
 @property (strong,nonatomic) NSIndexPath *rowInfo;
@@ -65,6 +68,16 @@ NSString* const IS_DIRTY = @"isDirty";
 }
 
 @synthesize modelForEditing = _modelForEditing;
+-(Daily *)modelForEditing{
+    if(nil==_modelForEditing){
+        _modelForEditing = [Daily constructDaily];
+        [SHData insertIntoContext:_modelForEditing];
+    }
+    else if(![SHData.writeContext.registeredObjects containsObject:_modelForEditing]){
+        _modelForEditing = [SHData.writeContext objectWithID:self.modelForEditing.objectID];
+    }
+    return _modelForEditing;
+}
 
 
 -(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController{
@@ -74,10 +87,10 @@ NSString* const IS_DIRTY = @"isDirty";
     return self;
 }
 
--(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController ToEdit:(Daily *)daily AtIndexPath:(NSIndexPath *)rowInfow{
+-(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController ToEdit:(Daily *)daily AtIndexPath:(NSIndexPath *)rowInfo{
     if(self = [self initWithParentDailyController:parentDailyController]){
         _modelForEditing = daily;
-        [self loadExistingDailyForEditing:daily WithIndexPath:rowInfow];
+        _rowInfo = rowInfo;
     }
     return self;
 }
@@ -86,6 +99,11 @@ NSString* const IS_DIRTY = @"isDirty";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.notesBox.delegate = self;
+    self.subtaskTbl.dataSource = self;
+    self.subtaskTbl.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    if(self.modelForEditing){
+        [self loadExistingDailyForEditing:self.modelForEditing];
+    }
     @try{
         [self removeObserver:self forKeyPath:IS_DIRTY context:nil];
     }
@@ -117,17 +135,8 @@ NSString* const IS_DIRTY = @"isDirty";
 }
 
 -(void)saveEdit{
-    Daily *savingModel = nil;
+    Daily *savingModel = self.modelForEditing;
     int rate = (int)self.rateStep.value;
-    if(nil==self.modelForEditing){
-        savingModel = [Daily constructDaily];
-        [SHData insertIntoContext:savingModel];
-        //initialize the next time this daily activates
-    }
-    else{
-        savingModel = [SHData.writeContext objectWithID:self.modelForEditing.objectID];
-        //if the rate has changed then we need to adjust the next time this activates
-    }
     savingModel.dailyName = self.nameBox.text;
     savingModel.note = self.notesBox.text;
     savingModel.urgency = self.urgencySld.value;
@@ -151,8 +160,7 @@ NSString* const IS_DIRTY = @"isDirty";
     return NO;
 }
 
--(void)loadExistingDailyForEditing:(Daily *)daily WithIndexPath:(NSIndexPath *)rowInfo{
-    self.rowInfo = rowInfo;
+-(void)loadExistingDailyForEditing:(Daily *)daily{
     self.nameBox.text = self.modelForEditing.dailyName ? self.modelForEditing.dailyName  : @"";
     self.nameStr = self.nameBox.text;
     self.notesBox.text = self.modelForEditing.note ? self.modelForEditing.note : @"";
@@ -257,6 +265,17 @@ NSString* const IS_DIRTY = @"isDirty";
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@streakResetBtn_press_action",self.description]];
 }
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.modelForEditing.daily_subtask.count +1;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    SubTaskCellController *cell = [SubTaskCellController getSubtaskCell:tableView withParent:self andModel:nil];
+    return cell;
+}
+
+
 
 -(void)dealloc{
     @try{
