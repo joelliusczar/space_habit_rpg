@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol rateSetterDelegate <NSObject>
+@protocol P_RateSetterDelegate <NSObject>
 -(void)rateValueChanged:(UIStepper *)sender passedEvent:(UIEvent *)e;
 @end

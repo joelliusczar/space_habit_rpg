@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "P_ImportanceSlidersDelegate.h"
+#import "P_EditScreenControl.h"
 
-@interface ImportanceSliderView : UIView
+@interface ImportanceSliderView : UIView <P_EditScreenControl>
+@property (weak,nonatomic) IBOutlet ImportanceSliderView *mainView;
 @property (weak,nonatomic) IBOutlet UILabel *urgencyLbl;
 @property (weak,nonatomic) IBOutlet UISlider *urgencySld;
 @property (weak,nonatomic) IBOutlet UILabel *difficultyLbl;

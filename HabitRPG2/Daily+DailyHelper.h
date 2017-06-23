@@ -11,8 +11,8 @@
 @interface Daily (DailyHelper)
 +(Daily *)constructDaily;
 +(NSDate *)calculateNextDueTime:(NSDate *)checkinDate withRate:(int)rate andDayStart:(int)dayStart;
-+(int)calculateActiveDaysHash:(NSMutableArray *)activeDays;
-+(void)setActiveDaySwitches:(NSMutableArray *)activeDays fromHash:(NSInteger)hash;
++(int)calculateActiveDaysHash:(NSArray *)activeDays;
++(void)setActiveDaySwitches:(NSArray *)activeDays fromHash:(NSInteger)hash;
 +(NSFetchedResultsController *)getUnfinishedDailiesController:(NSDate *)todayStart;
 +(NSFetchedResultsController *)getFinishedDailiesController:(NSDate *)todayStart;
 @end

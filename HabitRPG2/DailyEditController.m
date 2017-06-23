@@ -14,8 +14,13 @@
 #import "CustomSwitch.h"
 #import "Daily+DailyHelper.h"
 #import "Interceptor.h"
-#import "ReminderCellController.h"
-#import "SubTaskCellController.h"
+#import "NoteView.h"
+#import "ImportanceSliderView.h"
+#import "ActiveDaysPicker.h"
+#import "SubtasksTableView.h"
+#import "RateSetterView.h"
+#import "P_EditScreenControl.h"
+#import "DailyEditControlKeep.h"
 
 
 static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
@@ -23,27 +28,17 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 
 @interface DailyEditController ()
 
-@property (weak,nonatomic) IBOutlet UIView *advancedOptsView;
 @property (weak,nonatomic) IBOutlet UITextField *nameBox;
-@property (weak,nonatomic) IBOutlet UITextView *notesBox;
-@property (weak,nonatomic) IBOutlet UISlider *urgencySld;
-@property (weak, nonatomic) IBOutlet UILabel *urgencyLbl;
-@property (weak, nonatomic) IBOutlet UILabel *difficultyLbl;
-@property (weak,nonatomic) IBOutlet UISlider *difficultySld;
 @property (weak,nonatomic) IBOutlet UIButton *showXtraOptsBtn;
 @property (nonatomic,strong) NSMutableArray<UIButton<P_CustomSwitch> *> *activeDaySwitches;
-@property (weak,nonatomic) IBOutlet UIStepper *rateStep;
-@property (weak,nonatomic) IBOutlet UILabel *rateLbl;
-@property (weak,nonatomic) IBOutlet UILabel *rewardsList;
-@property (weak, nonatomic) IBOutlet UILabel *streakCountLbl;
-@property (weak, nonatomic) IBOutlet UIButton *streakResetBtn;
-@property (weak, nonatomic) IBOutlet UITableView *subtaskTbl;
+@property (weak,nonatomic) IBOutlet UITableView *controlsTbl;
 @property (weak,nonatomic) DailyViewController *parentDailyController;
 @property (strong,nonatomic) Daily *modelForEditing;
 @property (strong,nonatomic) NSIndexPath *rowInfo;
 @property (assign,nonatomic) dailyStatus section;
 @property (assign,nonatomic) BOOL areXtraOptsOpen;
 @property (assign,nonatomic) BOOL isStreakReset;
+@property (strong,nonatomic) DailyEditControlKeep *editControls;
 
 @end
 
@@ -79,6 +74,14 @@ NSString* const IS_DIRTY = @"isDirty";
     return _modelForEditing;
 }
 
+@synthesize editControls = _editControls;
+-(DailyEditControlKeep *)editControls{
+    if(nil==_editControls){
+        _editControls = [[DailyEditControlKeep alloc] initWithDelegate:self];
+    }
+    return _editControls;
+}
+
 
 -(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController{
     if(self = [self initWithNibName:@"DailyEditView" bundle:nil]){
@@ -98,11 +101,11 @@ NSString* const IS_DIRTY = @"isDirty";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.notesBox.delegate = self;
-    self.subtaskTbl.dataSource = self;
-    self.subtaskTbl.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.controlsTbl.dataSource = self;
+    self.controlsTbl.delegate = self;
+    self.controlsTbl.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     if(self.modelForEditing){
-        [self loadExistingDailyForEditing:self.modelForEditing];
+        //[self loadExistingDailyForEditing:self.modelForEditing];
     }
     @try{
         [self removeObserver:self forKeyPath:IS_DIRTY context:nil];
@@ -136,13 +139,13 @@ NSString* const IS_DIRTY = @"isDirty";
 
 -(void)saveEdit{
     Daily *savingModel = self.modelForEditing;
-    int rate = (int)self.rateStep.value;
+    int rate = (int)self.editControls.rateSetterView.rateStep.value;
     savingModel.dailyName = self.nameBox.text;
-    savingModel.note = self.notesBox.text;
-    savingModel.urgency = self.urgencySld.value;
-    savingModel.difficulty = self.difficultySld.value;
+    savingModel.note = self.editControls.noteView.noteBox.text;
+    savingModel.urgency = self.editControls.importanceSliders.urgencySld.value;
+    savingModel.difficulty = self.editControls.importanceSliders.difficultySld.value;
     savingModel.rate = rate;
-    savingModel.activeDaysHash = [Daily calculateActiveDaysHash:self.activeDaySwitches];
+    savingModel.activeDaysHash = [Daily calculateActiveDaysHash:self.editControls.activeDaysPicker.activeDaySwitches];
     if(self.isStreakReset){
         savingModel.streakLength = 0;
     }
@@ -163,21 +166,28 @@ NSString* const IS_DIRTY = @"isDirty";
 -(void)loadExistingDailyForEditing:(Daily *)daily{
     self.nameBox.text = self.modelForEditing.dailyName ? self.modelForEditing.dailyName  : @"";
     self.nameStr = self.nameBox.text;
-    self.notesBox.text = self.modelForEditing.note ? self.modelForEditing.note : @"";
-    self.urgencySld.value = self.modelForEditing.urgency;
-    self.urgencyLbl.text = [NSString stringWithFormat:@"Urgency: %d",self.modelForEditing.urgency];
-    self.difficultySld.value = self.modelForEditing.difficulty;
-    self.difficultyLbl.text = [NSString stringWithFormat:@"Difficulty: %d",self.modelForEditing.difficulty];
+    self.editControls.noteView.noteBox.text = self.modelForEditing.note ? self.modelForEditing.note : @"";
+    self.editControls.importanceSliders.urgencySld.value = self.modelForEditing.urgency;
+    self.editControls.importanceSliders.urgencyLbl.text = [NSString stringWithFormat:@"Urgency: %d",self.modelForEditing.urgency];
+    self.editControls.importanceSliders.difficultySld.value = self.modelForEditing.difficulty;
+    self.editControls.importanceSliders.difficultyLbl.text = [NSString stringWithFormat:@"Difficulty: %d",self.modelForEditing.difficulty];
     int hash = self.modelForEditing.activeDaysHash;
     [Daily setActiveDaySwitches:self.activeDaySwitches fromHash:hash];
     NSInteger rate = self.modelForEditing.rate;
-    self.rateStep.value = rate;
-    self.rateLbl.text = [NSString stringWithFormat:TRIGGER_LABEL_FORMAT,(int)rate];
-    self.streakCountLbl.hidden = NO;
-    self.streakResetBtn.hidden = NO;
-    self.streakCountLbl.text = [NSString stringWithFormat:@"Streak: %d",daily.streakLength];
+    self.editControls.rateSetterView.rateStep.value = rate;
+    self.editControls.rateSetterView.rateLbl.text = [NSString stringWithFormat:TRIGGER_LABEL_FORMAT,(int)rate];
+//    self.streakCountLbl.hidden = NO;
+//    self.streakResetBtn.hidden = NO;
+//    self.streakCountLbl.text = [NSString stringWithFormat:@"Streak: %d",daily.streakLength];
     [self.delegate enableDelete];
     
+}
+
+-(void)textDidChange:(UITextView *)textView{
+    wrapReturnVoid wrappedCall = ^void(){
+        self.isDirty = YES;
+    };
+    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@textDidChange",self.description]];
 }
 
 -(void)textViewDidChange:(UITextView *)textView{
@@ -194,40 +204,40 @@ NSString* const IS_DIRTY = @"isDirty";
 - (IBAction)showXtra_push_action:(UIButton *)sender forEvent:(UIEvent *)event {
     wrapReturnVoid wrappedCall = ^void(){
         if(self.areXtraOptsOpen){
-            self.advancedOptsView.hidden = YES;
+            //TODO self.advancedOptsView.hidden = YES;
             self.areXtraOptsOpen = NO;
             return;
         }
-        self.advancedOptsView.hidden = NO;
+        //TODO self.advancedOptsView.hidden = NO;
         self.areXtraOptsOpen = YES;
         if(self.delegate){
-            [self.delegate resizeScrollView:self.advancedOptsView.hidden];
+            //TODO [self.delegate resizeScrollView:self.advancedOptsView.hidden];
         }
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@showXtra_push_action",self.description]];
 }
 
--(IBAction)urgencySld_valueChange_action:(UISlider *)sender forEvent:(UIEvent *)event {
+-(IBAction)urgencyLvlChanged:(UISlider *)sender passedEvent:(UIEvent *)e {
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
         int sliderValue = (int)sender.value;
-        self.urgencyLbl.text = [NSString stringWithFormat:@"Urgency: %d",sliderValue];
+        self.editControls.importanceSliders.urgencyLbl.text = [NSString stringWithFormat:@"Urgency: %d",sliderValue];
         sender.value = sliderValue;
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@urgencySld_valueChange_action",self.description]];
 }
 
-- (IBAction)difficultySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event {
+- (IBAction)difficultyLvlChanged:(UISlider *)sender passedEvent:(UIEvent *)e{
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
         int sliderValue = (int)sender.value;
-        self.difficultyLbl.text = [NSString stringWithFormat:@"Difficulty: %d",sliderValue];
+        self.editControls.importanceSliders.difficultyLbl.text = [NSString stringWithFormat:@"Difficulty: %d",sliderValue];
         sender.value = sliderValue;
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@difficultySld_valueChanged_action",self.description]];
 }
 
-- (IBAction)rateStep_valueChange_action:(UIStepper *)sender forEvent:(UIEvent *)event {
+- (IBAction)rateValueChanged:(UIStepper *)sender passedEvent:(UIEvent *)e {
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
         double stepperValue = [sender value];
@@ -239,11 +249,12 @@ NSString* const IS_DIRTY = @"isDirty";
             rate = 1;
         }
         sender.value = rate;
-        self.rateLbl.text = [NSString stringWithFormat: TRIGGER_LABEL_FORMAT,(int)rate];
+        self.editControls.rateSetterView.rateLbl.text = [NSString stringWithFormat: TRIGGER_LABEL_FORMAT,(int)rate];
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@rateStep_valueChange_action",self.description]];
 }
-- (IBAction)daySwitch_push_action:(CustomSwitch *)sender forEvent:(UIEvent *)event {
+
+-(void)anySwitchChanged:(CustomSwitch *)sender passedEvent:(UIEvent *)e{
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
     };
@@ -267,12 +278,20 @@ NSString* const IS_DIRTY = @"isDirty";
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.modelForEditing.daily_subtask.count +1;
+    return self.editControls.allControls.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    SubTaskCellController *cell = [SubTaskCellController getSubtaskCell:tableView withParent:self andModel:nil];
+    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    UIView *cellView = self.editControls.allControls[indexPath.row];
+    cellView.subviews[0].backgroundColor = self.view.backgroundColor;
+    cell.backgroundColor = self.view.backgroundColor;
+    [cell addSubview:cellView];
     return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return self.editControls.allControls[indexPath.row].frame.size.height;
 }
 
 

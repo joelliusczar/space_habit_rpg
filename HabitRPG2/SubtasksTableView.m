@@ -14,8 +14,17 @@
 
 @implementation SubtasksTableView
 
--(instancetype)new{
-    return [[NSBundle mainBundle] loadNibNamed:@"SubtasksTableView" owner:self options:nil][0];
+-(instancetype)initWithFrame:(CGRect)frame{
+    if(self = [super initWithFrame:frame]){
+        _mainView = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self.class) owner:self options:nil][0];
+        [self addSubview:_mainView];
+    }
+    return self;
+}
+
+-(void)awakeFromNib{
+    [super awakeFromNib];
+    self.subtasksList.dataSource = self.mainView;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

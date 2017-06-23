@@ -14,8 +14,16 @@
 
 @implementation ImportanceSliderView
 
--(instancetype)new{
-    return [[NSBundle mainBundle] loadNibNamed:@"ImportanceSliderView" owner:self options:nil][0];
++(CGRect)naturalFrame{
+    return CGRectMake(0,0,297,152);
+}
+
+-(instancetype)initWithFrame:(CGRect)frame{
+    if(self = [super initWithFrame:frame]){
+        _mainView = [[NSBundle mainBundle] loadNibNamed:@"ImportanceSliderView" owner:self options:nil][0];
+        [self addSubview: _mainView];
+    }
+    return self;
 }
 
 - (IBAction)urgencySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event {

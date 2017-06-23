@@ -12,9 +12,10 @@
 #import "P_CoreData.h"
 #import "constants.h"
 #import "Daily+CoreDataClass.h"
+#import "P_DailyEditCompound.h"
 
 
-@interface DailyEditController : UIViewController <EditingSaver,UITextViewDelegate, UITableViewDataSource>
+@interface DailyEditController : UIViewController <EditingSaver, UITableViewDataSource, UITableViewDelegate,P_DailyEditCompound>
 -(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController;
 -(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController ToEdit:(Daily *)daily AtIndexPath:(NSIndexPath *)rowInfo;
 -(void)loadExistingDailyForEditing:(Daily *)daily;

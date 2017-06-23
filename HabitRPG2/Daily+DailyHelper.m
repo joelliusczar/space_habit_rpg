@@ -28,7 +28,7 @@
     return [NSDate adjustTime:nextDueDateStart hour:dayStart minute:0 second:0];
 }
 
-+(int)calculateActiveDaysHash:(NSMutableArray<NSObject<P_CustomSwitch> *> *)activeDays{
++(int)calculateActiveDaysHash:(NSArray<NSObject<P_CustomSwitch> *> *)activeDays{
     int32_t daysHash = 0;
     int32_t currentDayBit = 1;
     for(int i = 0;i<DAYS_IN_WEEK;i++){
@@ -40,7 +40,7 @@
     return daysHash;
 }
 
-+(void)setActiveDaySwitches:(NSMutableArray<NSObject<P_CustomSwitch> *> *)activeDays fromHash:(NSInteger)hash{
++(void)setActiveDaySwitches:(NSArray<NSObject<P_CustomSwitch> *> *)activeDays fromHash:(NSInteger)hash{
     int currentDayBit = 1;
     for(int i = 0;i<DAYS_IN_WEEK;i++){
         activeDays[i].isOn = hash & currentDayBit;

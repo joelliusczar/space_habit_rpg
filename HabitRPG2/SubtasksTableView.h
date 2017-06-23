@@ -10,5 +10,7 @@
 #import "P_SubtasksTableViewDelegate.h"
 
 @interface SubtasksTableView : UIView<UITableViewDataSource>
+@property (weak,nonatomic) IBOutlet SubtasksTableView *mainView;
+@property (weak,nonatomic) IBOutlet UITableView *subtasksList;
 @property (weak,nonatomic) id<P_SubtasksTableViewDelegate> delegate;
 @end

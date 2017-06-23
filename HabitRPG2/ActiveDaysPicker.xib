@@ -11,12 +11,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActiveDaysPicker">
             <connections>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="mainView" destination="i5M-Pr-FkT" id="vxC-ig-TUE"/>
                 <outletCollection property="activeDaySwitches" destination="XGF-wE-JMo" id="cvN-TL-7cB"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="ActiveDaysPicker">
             <rect key="frame" x="0.0" y="0.0" width="278" height="179"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -84,6 +84,9 @@
                         <userDefinedRuntimeAttribute type="image" keyPath="offImage" value="white_checked_empty.png"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isOn" value="YES"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="activeDaySwitch_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="e3R-wv-WCJ"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGF-wE-JMo" customClass="CustomSwitch">
                     <rect key="frame" x="77" y="47" width="46" height="34"/>
@@ -105,6 +108,9 @@
                         <userDefinedRuntimeAttribute type="image" keyPath="offImage" value="white_checked_empty.png"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isOn" value="YES"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="activeDaySwitch_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="z2Q-y1-2yy"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rOK-z9-wOz" customClass="CustomSwitch">
                     <rect key="frame" x="77" y="89" width="46" height="30"/>
@@ -114,6 +120,9 @@
                         <userDefinedRuntimeAttribute type="image" keyPath="offImage" value="white_checked_empty.png"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isOn" value="YES"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="activeDaySwitch_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="aII-VM-0bR"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="9" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UOg-RV-2YP" customClass="CustomSwitch">
                     <rect key="frame" x="77" y="131" width="46" height="30"/>
@@ -123,6 +132,9 @@
                         <userDefinedRuntimeAttribute type="image" keyPath="offImage" value="white_checked_empty.png"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isOn" value="YES"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="activeDaySwitch_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="iK4-xn-kEa"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JUC-SM-SBA" customClass="CustomSwitch">
                     <rect key="frame" x="199" y="131" width="46" height="30"/>
@@ -132,6 +144,9 @@
                         <userDefinedRuntimeAttribute type="image" keyPath="offImage" value="white_checked_empty.png"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isOn" value="YES"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="activeDaySwitch_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="IgK-jp-8LW"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HaR-9W-Okl" customClass="CustomSwitch">
                     <rect key="frame" x="199" y="89" width="46" height="30"/>
@@ -141,10 +156,16 @@
                         <userDefinedRuntimeAttribute type="image" keyPath="offImage" value="white_checked_empty.png"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isOn" value="YES"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="activeDaySwitch_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="WU2-uH-kQJ"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="mainView" destination="-1" id="qE5-Gu-fkr"/>
+            </connections>
             <point key="canvasLocation" x="54" y="-190.5"/>
         </view>
     </objects>

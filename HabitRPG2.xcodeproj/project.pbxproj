@@ -50,6 +50,7 @@
 		274FFC3D1EF62FA200FAF809 /* SubtasksTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274FFC3B1EF62FA200FAF809 /* SubtasksTableView.xib */; };
 		274FFC421EF6E2B100FAF809 /* RateSetterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC401EF6E2B100FAF809 /* RateSetterView.m */; };
 		274FFC431EF6E2B100FAF809 /* RateSetterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274FFC411EF6E2B100FAF809 /* RateSetterView.xib */; };
+		274FFC4A1EF887DB00FAF809 /* DailyEditControlKeep.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC491EF887DB00FAF809 /* DailyEditControlKeep.m */; };
 		275A079C1ED50AF5001422CD /* GoodTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 275A07841ED50AF5001422CD /* GoodTransaction+CoreDataClass.m */; };
 		275A079D1ED50AF5001422CD /* GoodTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 275A07861ED50AF5001422CD /* GoodTransaction+CoreDataProperties.m */; };
 		275A07B71EDA1FB9001422CD /* TestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 275A07B61EDA1FB9001422CD /* TestHelpers.m */; };
@@ -246,7 +247,10 @@
 		274FFC3F1EF6E2B100FAF809 /* RateSetterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateSetterView.h; sourceTree = "<group>"; };
 		274FFC401EF6E2B100FAF809 /* RateSetterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateSetterView.m; sourceTree = "<group>"; };
 		274FFC411EF6E2B100FAF809 /* RateSetterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RateSetterView.xib; sourceTree = "<group>"; };
-		274FFC441EF6E3BB00FAF809 /* rateSetterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rateSetterDelegate.h; sourceTree = "<group>"; };
+		274FFC441EF6E3BB00FAF809 /* P_RateSetterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_RateSetterDelegate.h; sourceTree = "<group>"; };
+		274FFC471EF87E0400FAF809 /* P_EditScreenControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_EditScreenControl.h; sourceTree = "<group>"; };
+		274FFC481EF887DB00FAF809 /* DailyEditControlKeep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyEditControlKeep.h; sourceTree = "<group>"; };
+		274FFC491EF887DB00FAF809 /* DailyEditControlKeep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyEditControlKeep.m; sourceTree = "<group>"; };
 		275A07831ED50AF5001422CD /* GoodTransaction+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GoodTransaction+CoreDataClass.h"; path = "../GoodTransaction+CoreDataClass.h"; sourceTree = "<group>"; };
 		275A07841ED50AF5001422CD /* GoodTransaction+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GoodTransaction+CoreDataClass.m"; path = "../GoodTransaction+CoreDataClass.m"; sourceTree = "<group>"; };
 		275A07851ED50AF5001422CD /* GoodTransaction+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GoodTransaction+CoreDataProperties.h"; path = "../GoodTransaction+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -286,6 +290,7 @@
 		27AE666F1E875EFB000F31BD /* Suffix+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Suffix+CoreDataClass.m"; sourceTree = "<group>"; };
 		27AE66701E875EFB000F31BD /* Suffix+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Suffix+CoreDataProperties.h"; sourceTree = "<group>"; };
 		27AE66711E875EFB000F31BD /* Suffix+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Suffix+CoreDataProperties.m"; sourceTree = "<group>"; };
+		27B47E871EF8F2F500B81275 /* P_DailyEditCompound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_DailyEditCompound.h; sourceTree = "<group>"; };
 		27C92C111E28A1330025727E /* ZoneChoiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZoneChoiceCell.xib; sourceTree = "<group>"; };
 		27C92C131E297F640025727E /* ZoneChoiceCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneChoiceCellController.h; sourceTree = "<group>"; };
 		27C92C141E297F640025727E /* ZoneChoiceCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneChoiceCellController.m; sourceTree = "<group>"; };
@@ -479,7 +484,9 @@
 				274FFC2B1EF6269F00FAF809 /* P_ActiveDaysPickerDelegate.h */,
 				274FFC321EF62B2200FAF809 /* P_NotesViewDelegate.h */,
 				274FFC3E1EF6CA2200FAF809 /* P_SubtasksTableViewDelegate.h */,
-				274FFC441EF6E3BB00FAF809 /* rateSetterDelegate.h */,
+				274FFC441EF6E3BB00FAF809 /* P_RateSetterDelegate.h */,
+				274FFC471EF87E0400FAF809 /* P_EditScreenControl.h */,
+				27B47E871EF8F2F500B81275 /* P_DailyEditCompound.h */,
 			);
 			name = ControlDelegates;
 			sourceTree = "<group>";
@@ -811,6 +818,8 @@
 				275FEF0C1EE45AE600AED1A2 /* Daily+DailyHelper.m */,
 				27E89C961EF5F3EE009B7474 /* SubTaskCellController.h */,
 				27E89C971EF5F3EE009B7474 /* SubTaskCellController.m */,
+				274FFC481EF887DB00FAF809 /* DailyEditControlKeep.h */,
+				274FFC491EF887DB00FAF809 /* DailyEditControlKeep.m */,
 			);
 			name = Dailies;
 			sourceTree = "<group>";
@@ -1148,6 +1157,7 @@
 				271217691DCE84310072ACC6 /* Daily+CoreDataClass.m in Sources */,
 				68BE45911D9DEA0B003F3400 /* IntroViewController.m in Sources */,
 				68F3F9E41D70E8DB00840DD2 /* CentralViewController.m in Sources */,
+				274FFC4A1EF887DB00FAF809 /* DailyEditControlKeep.m in Sources */,
 				2709B39C1EF0D31200EEE5CC /* Interceptor.m in Sources */,
 				68A921F61DBC7FF2007C946C /* Good+CoreDataProperties.m in Sources */,
 				273978A71EB8473100F217B4 /* TodoTransaction+CoreDataProperties.m in Sources */,

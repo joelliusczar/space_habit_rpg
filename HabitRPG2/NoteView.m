@@ -8,14 +8,30 @@
 
 #import "NoteView.h"
 
-@interface NoteView ()
 
+@interface NoteView ()
 @end
 
 @implementation NoteView
 
--(instancetype)new{
-    return [[NSBundle mainBundle] loadNibNamed:@"NoteView" owner:self options:nil][0];
++(CGRect)naturalFrame{
+    return CGRectMake(0,0,258,157);
+}
+
+-(instancetype)initWithFrame:(CGRect)frame{
+    
+    if(self = [super initWithFrame:frame]){
+        _mainView = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self.class) owner:self options:nil][0];
+        [self addSubview:_mainView];
+    }
+
+    return self;
+}
+
+-(void)awakeFromNib{
+    [super awakeFromNib];
+    //it's pretty fucked up that I have to do it this way.
+    self.noteBox.delegate = self.mainView;
 }
 
 -(void)textViewDidChange:(UITextView *)textView{

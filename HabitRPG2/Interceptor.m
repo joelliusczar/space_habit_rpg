@@ -11,6 +11,7 @@
 @implementation Interceptor
 
 +(void)callVoidWrapped:(wrapReturnVoid)callMe withInfo:(id)info{
+    NSLog(@"%@",info);
     callMe();
 }
 

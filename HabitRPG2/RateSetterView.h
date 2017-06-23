@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "rateSetterDelegate.h"
+#import "P_RateSetterDelegate.h"
+#import "P_EditScreenControl.h"
 
-@interface RateSetterView : UIView
-@property (weak,nonatomic) id<rateSetterDelegate> delegate;
+@interface RateSetterView : UIView <P_EditScreenControl>
+@property (weak,nonatomic) IBOutlet RateSetterView *mainView;
+@property (weak,nonatomic) IBOutlet UIStepper *rateStep;
+@property (weak,nonatomic) IBOutlet UILabel *rateLbl;
+@property (weak,nonatomic) id<P_RateSetterDelegate> delegate;
 @end
