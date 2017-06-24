@@ -12,14 +12,12 @@
 @import CoreData;
 
 @interface CoreDataStackController()
-
 @property (nonatomic,strong) NSString* dbFileName;
 @property (nonatomic,strong) NSPersistentStoreCoordinator *coordinator;
 @property (nonatomic,assign) BOOL isTesting;
 @property (nonatomic,readonly) NSString* storeType;
 @property (nonatomic,strong) NSMutableDictionary<NSString *,NSManagedObjectContext *> *contexts;
 -(void)initializeCoreData;
-
 @end
 
 NSString *defaultDbName = @"Model.sqlite";
@@ -28,13 +26,16 @@ NSString *defaultDbName = @"Model.sqlite";
 
 @synthesize inUseContext = _inUseContext;
 
+
 -(BOOL)isTesting{
     return [SingletonCluster getSharedInstance].EnviromentNum&ENV_UTEST;
 }
 
+
 -(NSString *)storeType{
     return self.isTesting?NSInMemoryStoreType:NSSQLiteStoreType;
 }
+
 
 @synthesize userData = _userData;
 -(OnlyOneEntities *)userData{
@@ -44,19 +45,28 @@ NSString *defaultDbName = @"Model.sqlite";
     return _userData;
 }
 
+
 @synthesize coordinator = _coordinator;
 -(NSPersistentStoreCoordinator *)coordinator{
+    
     if(!_coordinator){
-        NSURL *modelURL = [[NSBundle bundleForClass:self.class] URLForResource:@"Model" withExtension:@"momd"];
+        NSURL *modelURL =
+        [[NSBundle bundleForClass:self.class]
+         URLForResource:@"Model" withExtension:@"momd"];
+        
         NSManagedObjectModel *mom =
         [[NSManagedObjectModel alloc]
          initWithContentsOfURL:modelURL];
+        
         NSAssert(mom != nil, @"Error initializing Managaed Object Model");
         
-        _coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
+        _coordinator =
+        [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
+        
     }
     return _coordinator;
 }
+
 
 @synthesize writeContext = _writeContext;
 -(NSManagedObjectContext *)writeContext{
@@ -100,24 +110,53 @@ NSString *defaultDbName = @"Model.sqlite";
     return instance;
 }
 
+
 -(void)initializeCoreData{
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSURL *documentsURL = [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    NSURL *storeURL = [documentsURL URLByAppendingPathComponent:self.dbFileName];
+    
+    NSURL *documentsURL =
+    [[fileManager URLsForDirectory:NSDocumentDirectory
+                         inDomains:NSUserDomainMask] lastObject];
+    
+    NSURL *storeURL =
+    [documentsURL URLByAppendingPathComponent:self.dbFileName];
     
     NSError *error = nil;
-    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
-    NSPersistentStore *store = [self.coordinator addPersistentStoreWithType:self.storeType configuration:nil URL:storeURL options:options error:&error];
-    NSAssert(store != nil,@"Error initializing PSC: %@\n%@",[error localizedDescription],[error userInfo]);
+    
+    NSDictionary *options =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+     [NSNumber numberWithBool:YES],
+     NSMigratePersistentStoresAutomaticallyOption,
+     [NSNumber numberWithBool:YES],
+     NSInferMappingModelAutomaticallyOption, nil];
+    
+    NSPersistentStore *store =
+    [self.coordinator addPersistentStoreWithType:self.storeType
+                                   configuration:nil
+                                             URL:storeURL
+                                         options:options error:&error];
+    
+    NSAssert(store != nil,
+             @"Error initializing PSC: %@\n%@",
+             [error localizedDescription],[error userInfo]);
 }
 
--(NSManagedObject *)constructEmptyEntity:(NSEntityDescription *) entityType InContext:(NSManagedObjectContext *)context{
-    NSManagedObject *obj = [[NSManagedObject alloc] initWithEntity:entityType insertIntoManagedObjectContext:context];
+
+-(NSManagedObject *)constructEmptyEntity:(NSEntityDescription *) entityType
+                               InContext:(NSManagedObjectContext *)context{
+    
+    NSManagedObject *obj = [[NSManagedObject alloc]
+                            initWithEntity:entityType
+                            insertIntoManagedObjectContext:context];
+    
     return obj;
 }
 
+
 -(NSManagedObject *)constructEmptyEntity:(NSEntityDescription *) entityType{
-    NSManagedObjectContext *context = self.inUseContext?self.inUseContext:self.writeContext;
+    NSManagedObjectContext *context =
+    self.inUseContext?self.inUseContext:self.writeContext;
+    
     NSManagedObject *obj = [self constructEmptyEntity:entityType
                                             InContext:context];
     return obj;
@@ -128,11 +167,16 @@ NSString *defaultDbName = @"Model.sqlite";
                                     predicate: (NSPredicate *) filter
                                     sortBy:(NSArray *) sortAttrs
 {
-    NSManagedObjectContext *context = self.inUseContext?self.inUseContext:self.readContext;
+    NSManagedObjectContext *context =
+    self.inUseContext?self.inUseContext:self.readContext;
+    
     [fetchRequest setFetchBatchSize:0];
     fetchRequest.sortDescriptors = sortAttrs;
     fetchRequest.predicate = filter;
-    return [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
+    
+    return [[NSFetchedResultsController alloc]
+            initWithFetchRequest:fetchRequest
+            managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
     
 }
 
@@ -140,10 +184,17 @@ NSString *defaultDbName = @"Model.sqlite";
                         predicate: (NSPredicate *) filter
                         sortBy:(NSArray *) sortAttrs
 {
-    NSManagedObjectContext *context = self.inUseContext?self.inUseContext:self.readContext;
-    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:context];
+    
+    NSManagedObjectContext *context =
+    self.inUseContext?self.inUseContext:self.readContext;
+    
+    NSEntityDescription *entity =
+    [NSEntityDescription entityForName:entityName
+                inManagedObjectContext:context];
+    
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     fetchRequest.entity = entity;
+    
     return [self getItemWithRequest:fetchRequest
                           predicate:filter
                              sortBy:sortAttrs];
@@ -153,7 +204,9 @@ NSString *defaultDbName = @"Model.sqlite";
                                 predicate:(NSPredicate *)filter
                                 sortBy:(NSArray<NSSortDescriptor *> *)sortArray
 {
-    NSManagedObjectContext *context = self.inUseContext?self.inUseContext:self.readContext;
+    NSManagedObjectContext *context =
+    self.inUseContext?self.inUseContext:self.readContext;
+    
     request.predicate = filter;
     request.sortDescriptors = sortArray;
     NSError *err;
@@ -169,8 +222,12 @@ NSString *defaultDbName = @"Model.sqlite";
     return results;
 }
 
--(NSManagedObjectContext *)constructContext:(NSManagedObjectContextConcurrencyType)concurrencyType{
-    NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:concurrencyType];
+-(NSManagedObjectContext *)constructContext:
+(NSManagedObjectContextConcurrencyType)concurrencyType{
+    
+    NSManagedObjectContext *context =
+    [[NSManagedObjectContext alloc] initWithConcurrencyType:concurrencyType];
+    
     [context setPersistentStoreCoordinator:self.coordinator];
     return context;
 }
@@ -184,7 +241,9 @@ NSString *defaultDbName = @"Model.sqlite";
 }
 
 -(dispatch_semaphore_t)save{
-    NSManagedObjectContext *context = self.inUseContext?self.inUseContext:self.writeContext;
+    NSManagedObjectContext *context =
+    self.inUseContext?self.inUseContext:self.writeContext;
+    
     dispatch_semaphore_t sema = dispatch_semaphore_create(0);
     [context performBlock:^{
         [self saveWithContext:context];
@@ -194,19 +253,25 @@ NSString *defaultDbName = @"Model.sqlite";
 }
 
 -(void)saveAndWait{
-    NSManagedObjectContext *context = self.inUseContext?self.inUseContext:self.writeContext;
+    NSManagedObjectContext *context =
+    self.inUseContext?self.inUseContext:self.writeContext;
+    
     [context performBlockAndWait:^{
         [self saveWithContext:context];
     }];
 }
 
 -(void)softDeleteModel:(NSManagedObject *)model{
-    NSManagedObjectContext *context = self.inUseContext?self.inUseContext:self.writeContext;
+    NSManagedObjectContext *context =
+    self.inUseContext?self.inUseContext:self.writeContext;
+    
     [context deleteObject:model];
 }
 
 -(void)insertIntoContext:(NSManagedObject *)model{
-    NSManagedObjectContext *context = self.inUseContext?self.inUseContext:self.writeContext;
+    NSManagedObjectContext *context =
+    self.inUseContext?self.inUseContext:self.writeContext;
+    
     [context insertObject:model];
 }
 

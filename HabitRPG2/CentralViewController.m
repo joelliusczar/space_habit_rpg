@@ -35,6 +35,7 @@
 #import "StoryDumpView.h"
 #import "ZoneTransaction+CoreDataClass.h"
 #import "MonsterTransaction+CoreDataClass.h"
+#import "NSObject+Helper.h"
 
 @import CoreGraphics;
 
@@ -69,12 +70,14 @@
 
 @synthesize userHero = _userHero;
 -(Hero *)userHero{
-    return [SingletonCluster getSharedInstance].dataController.userData.theHero;
+    return [SingletonCluster getSharedInstance].
+    dataController.userData.theHero;
 }
 
 @synthesize userSettings = _userSettings;
 -(Settings *)userSettings{
-    return [SingletonCluster getSharedInstance].dataController.userData.theSettings;
+    return [SingletonCluster getSharedInstance].
+    dataController.userData.theSettings;
 }
 
 @synthesize tabsController = _tabsController;
@@ -136,11 +139,10 @@
     
     CGFloat width = self.view.frame.size.width;
     CGFloat height = self.view.frame.size.height;
-    self.tabsController.view.frame = CGRectMake(0,
-                                                [CommonUtilities GetYStart:height]
-                                                ,width,
-                                                height -
-                                                [CommonUtilities GetYStart:height]);
+    self.tabsController.view.frame =
+    CGRectMake(0,
+               [CommonUtilities GetYStart:height],
+               width,height -[CommonUtilities GetYStart:height]);
 }
 
 -(void)showIntroView{
@@ -154,16 +156,24 @@
 -(void)setupNormalZoneAndMonster{
     Zone *z = [ZoneHelper getZone:YES];
     if(z==nil){
-        NSMutableArray<Zone *> *zoneChoices = [ZoneHelper constructMultipleZoneChoices:self.userHero AndMatchHeroLvl:NO];
+        NSMutableArray<Zone *> *zoneChoices =
+        [ZoneHelper constructMultipleZoneChoices:self.userHero
+                                 AndMatchHeroLvl:NO];
+        
         [self showZoneChoiceView:zoneChoices];
         return;
     }
     self.nowZone = z;
     Monster *m = [MonsterHelper getCurrentMonster];
     if(m==nil||m.nowHp<1){
-        z.monstersKilled=(m!=nil&&m.nowHp<1)?(z.monstersKilled+1):z.monstersKilled;
+        z.monstersKilled=
+        (m!=nil&&m.nowHp<1)?(z.monstersKilled+1):z.monstersKilled;
+        
         if(z.monstersKilled>=z.maxMonsters){
-            NSMutableArray<Zone *> *zoneChoices = [ZoneHelper constructMultipleZoneChoices:self.userHero AndMatchHeroLvl:NO];
+            NSMutableArray<Zone *> *zoneChoices =
+            [ZoneHelper constructMultipleZoneChoices:self.userHero
+                                     AndMatchHeroLvl:NO];
+            
             [zoneChoices addObject:z];
             [self showZoneChoiceView:zoneChoices];
             //setups observers after user has picked zones
@@ -178,7 +188,9 @@
 
 
 -(void)determineIfFirstTimeAndSetupSettings{
-    if(self.dataController.userData.theDataInfo.gameState == GAME_STATE_UNINITIALIZED){
+    if(self.dataController.userData.theDataInfo.gameState ==
+       GAME_STATE_UNINITIALIZED){
+        
         [self showIntroView];        
     }
     else{
@@ -195,14 +207,20 @@
 }
 
 -(void)showZoneChoiceView:(NSArray<Zone *> *)zoneChoices{
-    ZoneChoiceViewController *zoneChoiceView = [ZoneChoiceViewController constructWithCentral:self AndZoneChoices:zoneChoices];
+    ZoneChoiceViewController *zoneChoiceView =
+    [ZoneChoiceViewController constructWithCentral:self
+                                    AndZoneChoices:zoneChoices];
+    
     [self.view addSubview:zoneChoiceView.view];
     [self addChildViewController:zoneChoiceView];
     [zoneChoiceView didMoveToParentViewController:self];
 }
 
 -(void)showZoneChoiceView{
-    NSArray<Zone *> *zoneChoices = [ZoneHelper constructMultipleZoneChoices:self.userHero AndMatchHeroLvl:YES];
+    NSArray<Zone *> *zoneChoices =
+    [ZoneHelper constructMultipleZoneChoices:self.userHero
+                             AndMatchHeroLvl:YES];
+    
     [self showZoneChoiceView:zoneChoices];
 }
 
@@ -219,84 +237,101 @@
 }
 
 -(void)updateMonsterHPUI:(int)part whole:(int)whole{
-    self.monsterDescLbl.text = [NSString stringWithFormat:@"%@ Lvl:%d HP:%d/%d",self.nowMonster.fullName,self.nowMonster.lvl, part,whole];
+    self.monsterDescLbl.text =
+    [NSString stringWithFormat:@"%@ Lvl:%d HP:%d/%d",
+     self.nowMonster.fullName,self.nowMonster.lvl, part,whole];
+    
     float hpPercent = ((float)part)/whole;
     self.monsterHPBar.progress = hpPercent;
 }
 
--(void)setupSingleObserver:(NSString *)keyPath{
-    @try{
-        [self removeObserver:self forKeyPath:keyPath context:nil];
-    }
-    @catch(NSException *ex){}
-    [self addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionNew context:nil];
-}
-
--(void)setupHeroObservers{
-    [self setupSingleObserver:KVO_HERO_HP];
-    [self setupSingleObserver:KVO_GOLD];
-    [self setupSingleObserver:KVO_HERO_XP];
-    [self setupSingleObserver:KVO_LVL];
-    
-}
-
--(void)setupMonsterObservers{
-    [self setupSingleObserver:KVO_MONSTER_HP];
-    [self setupSingleObserver:KVO_MON_NAME];
-}
-
--(void)setupZoneObservers{
-    [self setupSingleObserver:KVO_ZONE_NAME];
-}
 
 -(void)setupObservers{
-    [self setupHeroObservers];
-    [self setupMonsterObservers];
+    [self addObserver:self forKeyPath:KVO_HERO_HP
+              options:NSKeyValueObservingOptionNew context:nil];
+    
+    [self addObserver:self forKeyPath:KVO_GOLD
+              options:NSKeyValueObservingOptionNew context:nil];
+    
+    [self addObserver:self forKeyPath:KVO_HERO_XP
+              options:NSKeyValueObservingOptionNew context:nil];
+
+    [self addObserver:self forKeyPath:KVO_LVL
+              options:NSKeyValueObservingOptionNew context:nil];
+    
+    [self addObserver:self forKeyPath:KVO_MONSTER_HP
+              options:NSKeyValueObservingOptionNew context:nil];
+    
+    [self addObserver:self forKeyPath:KVO_MON_NAME
+              options:NSKeyValueObservingOptionNew context:nil];
+    
+    [self addObserver:self forKeyPath:KVO_ZONE_NAME
+              options:NSKeyValueObservingOptionNew context:nil];
 }
+
 
 -(void)observeValueForKeyPath:(NSString *)keyPath
                      ofObject:(id)object
                        change:(NSDictionary *)change
                       context:(void *)context{
+    
     if([keyPath isEqualToString:KVO_HERO_HP]){
         [self updateHeroHPUI:self.userHero.nowHp whole:self.userHero.maxHp];
     }
     if([keyPath isEqualToString:KVO_GOLD]){
-        self.goldLbl.text = [NSString stringWithFormat:@"$%.2f",self.userHero.gold];
+        self.goldLbl.text =
+        [NSString stringWithFormat:@"$%.2f",self.userHero.gold];
     }
     if([keyPath isEqualToString:KVO_HERO_XP]){
         [self updateHeroXPUI:self.userHero.nowXp whole:self.userHero.maxXp];
     }
     if([keyPath isEqualToString:KVO_LVL]){
-        self.lvlLbl.text = [NSString stringWithFormat:@"Lv:%d",self.userHero.lvl];
+        self.lvlLbl.text =
+        [NSString stringWithFormat:@"Lv:%d",self.userHero.lvl];
     }
     if([keyPath isEqualToString:KVO_MONSTER_HP]){
-        [self updateMonsterHPUI:self.nowMonster.nowHp whole:self.nowMonster.maxHp];
+        [self updateMonsterHPUI:self.nowMonster.nowHp
+                          whole:self.nowMonster.maxHp];
     }
     if([keyPath isEqualToString:KVO_MON_NAME]){}
     if([keyPath isEqualToString:KVO_ZONE_NAME]){}
 }
 
+
 -(void)afterZonePick:(Zone *)zoneChoice{
     if(zoneChoice==nil){
-        zoneChoice = [ZoneHelper constructZoneChoice:self.userHero AndMatchHeroLvl:NO];
+        zoneChoice =
+        [ZoneHelper constructZoneChoice:self.userHero AndMatchHeroLvl:NO];
     }
     
     [ZoneHelper moveZoneToFront:zoneChoice];
     [self.dataController insertIntoContext:zoneChoice];
     self.nowZone = zoneChoice;
-    self.nowMonster = [MonsterHelper constructRandomMonster:zoneChoice.zoneKey AroundLvl:zoneChoice.lvl];
+    
+    self.nowMonster =
+    [MonsterHelper constructRandomMonster:zoneChoice.zoneKey
+                                AroundLvl:zoneChoice.lvl];
+    
     NSMutableDictionary *zoneInfo = self.nowZone.mapable;
     NSMutableDictionary *monsterInfo = self.nowMonster.mapable;
-    if([SingletonCluster getSharedInstance].gameState==GAME_STATE_UNINITIALIZED){
+    
+    if([SingletonCluster getSharedInstance].gameState==
+       GAME_STATE_UNINITIALIZED){
+    
         [self afterIntro];
     }
-    ZoneTransaction *zt = (ZoneTransaction *)[self.dataController constructEmptyEntity:ZoneTransaction.entity];
+    
+    ZoneTransaction *zt =
+    (ZoneTransaction *)[self.dataController
+                        constructEmptyEntity:ZoneTransaction.entity];
+    
     zt.timestamp = [NSDate date];
     zoneInfo[TRANSACTION_TYPE_KEY] = TRANSACTION_TYPE_CREATE;
     zt.misc = [CommonUtilities dictToString:zoneInfo];
-    
-    MonsterTransaction *mt = (MonsterTransaction *)[self.dataController constructEmptyEntity:MonsterTransaction.entity];
+    MonsterTransaction *mt =
+    (MonsterTransaction *)[self.dataController
+                           constructEmptyEntity:MonsterTransaction.entity];
+
     mt.timestamp = [NSDate date];
     monsterInfo[TRANSACTION_TYPE_KEY] = TRANSACTION_TYPE_CREATE;
     mt.misc = [CommonUtilities dictToString:monsterInfo];
@@ -304,26 +339,36 @@
     [self showMonsterStory];
 }
 
+
 -(void)afterIntro{
     [self initializeStatesView];
     self.statsView.hidden = NO;
     [self setupObservers];
     [self setupTabs];
-    self.dataController.userData.theDataInfo.gameState = GAME_STATE_INITIALIZED;
+    self.dataController.userData.theDataInfo.gameState =
+    GAME_STATE_INITIALIZED;
+    
     self.userSettings.createDate = [NSDate date];
 }
 
+
 -(void)initializeStatesView{
     [self updateHeroHPUI:self.userHero.nowHp whole:self.userHero.maxHp];
-    self.goldLbl.text = [NSString stringWithFormat:@"$%.2f",self.userHero.gold];
+    self.goldLbl.text =
+    [NSString stringWithFormat:@"$%.2f",self.userHero.gold];
+    
     [self updateHeroXPUI:self.userHero.nowXp whole:self.userHero.maxXp];
     self.lvlLbl.text = [NSString stringWithFormat:@"Lv:%d",self.userHero.lvl];
-    [self updateMonsterHPUI:self.nowMonster.nowHp whole:self.nowMonster.maxHp];
+    [self updateMonsterHPUI:self.nowMonster.nowHp
+                      whole:self.nowMonster.maxHp];
 }
+
 
 -(void)showMonsterStory{
     if(self.userSettings.storyModeisOn){
-        StoryDumpView *sdv = [[StoryDumpView alloc] initWithStoryItem:self.nowMonster];
+        StoryDumpView *sdv =
+        [[StoryDumpView alloc] initWithStoryItem:self.nowMonster];
+        
         [ViewHelper pushViewToFront:sdv OfParent:self];
     }
 }
