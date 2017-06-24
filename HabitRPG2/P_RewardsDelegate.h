@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @protocol P_RewardsDelegate <NSObject>
-
+-(void)addRewardsBtn_press_action:(UIButton *)sender
+                         forEvent:(UIEvent *)event;
 @end

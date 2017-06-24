@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @protocol P_StreakResetterDelegate <NSObject>
-
+-(void)resetStreakPress:(UIButton *)sender passedEvent:(UIEvent *)e;
 @end
