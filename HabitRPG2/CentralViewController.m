@@ -20,7 +20,6 @@
 #import "TodoViewController.h"
 #import "GoodsViewController.h"
 #import "MenuViewController.h"
-#import "CoreDataStackController.h"
 #import "P_CoreData.h"
 #import "Settings+CoreDataClass.h"
 #import "Hero+CoreDataClass.h"
@@ -39,18 +38,17 @@
 
 @import CoreGraphics;
 
-
 @interface CentralViewController ()
 @property (strong,nonatomic) UITabBarController *tabsController;
-@property (weak, nonatomic) IBOutlet UIView *statsView;
-@property (weak, nonatomic) IBOutlet UILabel *heroDescLbl;
-@property (weak, nonatomic) IBOutlet UIProgressView *heroHPBar;
-@property (weak, nonatomic) IBOutlet UILabel *monsterDescLbl;
-@property (weak, nonatomic) IBOutlet UIProgressView *monsterHPBar;
-@property (weak, nonatomic) IBOutlet UILabel *xpLbl;
-@property (weak, nonatomic) IBOutlet UIProgressView *xpBar;
-@property (weak, nonatomic) IBOutlet UILabel *lvlLbl;
-@property (weak, nonatomic) IBOutlet UILabel *goldLbl;
+@property (weak,nonatomic) IBOutlet UIView *statsView;
+@property (weak,nonatomic) IBOutlet UILabel *heroDescLbl;
+@property (weak,nonatomic) IBOutlet UIProgressView *heroHPBar;
+@property (weak,nonatomic) IBOutlet UILabel *monsterDescLbl;
+@property (weak,nonatomic) IBOutlet UIProgressView *monsterHPBar;
+@property (weak,nonatomic) IBOutlet UILabel *xpLbl;
+@property (weak,nonatomic) IBOutlet UIProgressView *xpBar;
+@property (weak,nonatomic) IBOutlet UILabel *lvlLbl;
+@property (weak,nonatomic) IBOutlet UILabel *goldLbl;
 @end
 
 @implementation CentralViewController

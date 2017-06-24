@@ -75,6 +75,10 @@
 		277ABF731EAD9DD7008CC239 /* probWeightsUTBig.py in Resources */ = {isa = PBXBuildFile; fileRef = 277ABF721EAD9DD7008CC239 /* probWeightsUTBig.py */; };
 		27AE66721E875EFB000F31BD /* Suffix+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE666F1E875EFB000F31BD /* Suffix+CoreDataClass.m */; };
 		27AE66731E875EFB000F31BD /* Suffix+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE66711E875EFB000F31BD /* Suffix+CoreDataProperties.m */; };
+		27C3C20C1EFEED9600F205A6 /* StreakResetterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C3C20B1EFEED9600F205A6 /* StreakResetterView.m */; };
+		27C3C20E1EFEEDC100F205A6 /* StreakResetterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C3C20D1EFEEDC100F205A6 /* StreakResetterView.xib */; };
+		27C3C2151EFEF6F800F205A6 /* RewardsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C3C2141EFEF6F800F205A6 /* RewardsView.m */; };
+		27C3C2171EFEF89500F205A6 /* RewardsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C3C2161EFEF89500F205A6 /* RewardsView.xib */; };
 		27C92C121E28A1330025727E /* ZoneChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C111E28A1330025727E /* ZoneChoiceCell.xib */; };
 		27C92C151E297F650025727E /* ZoneChoiceCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C141E297F640025727E /* ZoneChoiceCellController.m */; };
 		27C92C1A1E29C9F10025727E /* ZoneInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C191E29C9F10025727E /* ZoneInfoDictionary.m */; };
@@ -294,6 +298,14 @@
 		27AE66701E875EFB000F31BD /* Suffix+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Suffix+CoreDataProperties.h"; sourceTree = "<group>"; };
 		27AE66711E875EFB000F31BD /* Suffix+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Suffix+CoreDataProperties.m"; sourceTree = "<group>"; };
 		27B47E871EF8F2F500B81275 /* P_DailyEditCompound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_DailyEditCompound.h; sourceTree = "<group>"; };
+		27C3C20A1EFEED9600F205A6 /* StreakResetterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreakResetterView.h; sourceTree = "<group>"; };
+		27C3C20B1EFEED9600F205A6 /* StreakResetterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreakResetterView.m; sourceTree = "<group>"; };
+		27C3C20D1EFEEDC100F205A6 /* StreakResetterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StreakResetterView.xib; sourceTree = "<group>"; };
+		27C3C2111EFEF0F700F205A6 /* P_StreakResetterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_StreakResetterDelegate.h; sourceTree = "<group>"; };
+		27C3C2121EFEF67A00F205A6 /* P_RewardsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_RewardsDelegate.h; sourceTree = "<group>"; };
+		27C3C2131EFEF6F800F205A6 /* RewardsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RewardsView.h; sourceTree = "<group>"; };
+		27C3C2141EFEF6F800F205A6 /* RewardsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardsView.m; sourceTree = "<group>"; };
+		27C3C2161EFEF89500F205A6 /* RewardsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RewardsView.xib; sourceTree = "<group>"; };
 		27C92C111E28A1330025727E /* ZoneChoiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZoneChoiceCell.xib; sourceTree = "<group>"; };
 		27C92C131E297F640025727E /* ZoneChoiceCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneChoiceCellController.h; sourceTree = "<group>"; };
 		27C92C141E297F640025727E /* ZoneChoiceCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneChoiceCellController.m; sourceTree = "<group>"; };
@@ -490,6 +502,8 @@
 				274FFC441EF6E3BB00FAF809 /* P_RateSetterDelegate.h */,
 				274FFC471EF87E0400FAF809 /* P_EditScreenControl.h */,
 				27B47E871EF8F2F500B81275 /* P_DailyEditCompound.h */,
+				27C3C2111EFEF0F700F205A6 /* P_StreakResetterDelegate.h */,
+				27C3C2121EFEF67A00F205A6 /* P_RewardsDelegate.h */,
 			);
 			name = ControlDelegates;
 			sourceTree = "<group>";
@@ -638,6 +652,12 @@
 				274FFC3F1EF6E2B100FAF809 /* RateSetterView.h */,
 				274FFC401EF6E2B100FAF809 /* RateSetterView.m */,
 				274FFC411EF6E2B100FAF809 /* RateSetterView.xib */,
+				27C3C20A1EFEED9600F205A6 /* StreakResetterView.h */,
+				27C3C20B1EFEED9600F205A6 /* StreakResetterView.m */,
+				27C3C20D1EFEEDC100F205A6 /* StreakResetterView.xib */,
+				27C3C2131EFEF6F800F205A6 /* RewardsView.h */,
+				27C3C2141EFEF6F800F205A6 /* RewardsView.m */,
+				27C3C2161EFEF89500F205A6 /* RewardsView.xib */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -1065,7 +1085,9 @@
 				27E89C9E1EF5FCD5009B7474 /* ImportanceSliderView.xib in Resources */,
 				686ED3991DA5E0F9004EDD36 /* title_Screen_R_4.png in Resources */,
 				277ABF341E9F1AE8008CC239 /* behind_alert_view.png in Resources */,
+				27C3C2171EFEF89500F205A6 /* RewardsView.xib in Resources */,
 				686ED3BB1DB4660F004EDD36 /* white_checked_full.png in Resources */,
+				27C3C20E1EFEEDC100F205A6 /* StreakResetterView.xib in Resources */,
 				275FEF021EE3A78200AED1A2 /* timeZoneList.txt in Resources */,
 				27E89C901EF5E6A8009B7474 /* ReminderCell.xib in Resources */,
 				68F3F9F41D70FC5E00840DD2 /* TodoViewController.xib in Resources */,
@@ -1158,6 +1180,7 @@
 				68E260651D7FC3F200425D46 /* CoreDataStackController.m in Sources */,
 				2712176E1DCE84310072ACC6 /* Settings+CoreDataClass.m in Sources */,
 				274FFC291EF6236600FAF809 /* ActiveDaysPicker.m in Sources */,
+				27C3C20C1EFEED9600F205A6 /* StreakResetterView.m in Sources */,
 				273978AD1EB8473100F217B4 /* DailyTransaction+CoreDataProperties.m in Sources */,
 				271217691DCE84310072ACC6 /* Daily+CoreDataClass.m in Sources */,
 				68BE45911D9DEA0B003F3400 /* IntroViewController.m in Sources */,
@@ -1194,6 +1217,7 @@
 				271C04881E8B639D002221E9 /* ResourceUtility.m in Sources */,
 				68A921F41DBC7FF2007C946C /* Hero+CoreDataProperties.m in Sources */,
 				27E89C941EF5E732009B7474 /* ReminderCellController.m in Sources */,
+				27C3C2151EFEF6F800F205A6 /* RewardsView.m in Sources */,
 				27E89C981EF5F3EE009B7474 /* SubTaskCellController.m in Sources */,
 				277ABEC91E949B96008CC239 /* StdLibWrapper.m in Sources */,
 				273978A41EB8473100F217B4 /* ZoneTransaction+CoreDataClass.m in Sources */,

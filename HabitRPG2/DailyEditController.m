@@ -30,7 +30,9 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 
 @property (weak,nonatomic) IBOutlet UITextField *nameBox;
 @property (weak,nonatomic) IBOutlet UIButton *showXtraOptsBtn;
-@property (nonatomic,strong) NSMutableArray<UIButton<P_CustomSwitch> *> *activeDaySwitches;
+@property (nonatomic,strong)
+NSMutableArray<UIButton<P_CustomSwitch> *> *activeDaySwitches;
+
 @property (weak,nonatomic) IBOutlet UITableView *controlsTbl;
 @property (weak,nonatomic) DailyViewController *parentDailyController;
 @property (strong,nonatomic) Daily *modelForEditing;
@@ -103,7 +105,9 @@ NSString* const IS_DIRTY = @"isDirty";
     [super viewDidLoad];
     self.controlsTbl.dataSource = self;
     self.controlsTbl.delegate = self;
-    self.controlsTbl.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.controlsTbl.tableFooterView =
+    [[UIView alloc] initWithFrame:CGRectZero];
+    
     if(self.modelForEditing){
         //[self loadExistingDailyForEditing:self.modelForEditing];
     }
@@ -129,6 +133,7 @@ NSString* const IS_DIRTY = @"isDirty";
                      ofObject:(nullable id)object
                        change:(nullable NSDictionary<NSKeyValueChangeKey,id> *)change
                       context:(nullable void *)context{
+    
     if([keyPath isEqualToString:IS_DIRTY]){
         if(self.delegate){
             [self.delegate enableSave];
@@ -142,10 +147,16 @@ NSString* const IS_DIRTY = @"isDirty";
     int rate = (int)self.editControls.rateSetterView.rateStep.value;
     savingModel.dailyName = self.nameBox.text;
     savingModel.note = self.editControls.noteView.noteBox.text;
-    savingModel.urgency = self.editControls.importanceSliders.urgencySld.value;
-    savingModel.difficulty = self.editControls.importanceSliders.difficultySld.value;
+    savingModel.urgency =
+    self.editControls.importanceSliders.urgencySld.value;
+    savingModel.difficulty =
+    
+    self.editControls.importanceSliders.difficultySld.value;
     savingModel.rate = rate;
-    savingModel.activeDaysHash = [Daily calculateActiveDaysHash:self.editControls.activeDaysPicker.activeDaySwitches];
+    
+    savingModel.activeDaysHash =
+    [Daily calculateActiveDaysHash:self.editControls.activeDaysPicker.activeDaySwitches];
+    
     if(self.isStreakReset){
         savingModel.streakLength = 0;
     }
@@ -155,7 +166,10 @@ NSString* const IS_DIRTY = @"isDirty";
 
 -(BOOL)deleteModel{
     if(self.modelForEditing){
-        Daily *toBeDeleted = [SHData.writeContext objectWithID:self.modelForEditing.objectID];
+        Daily *toBeDeleted =
+        [SHData.writeContext
+         objectWithID:self.modelForEditing.objectID];
+        
         [SHData softDeleteModel:toBeDeleted];
         [SHData save];
         return YES;
@@ -166,11 +180,22 @@ NSString* const IS_DIRTY = @"isDirty";
 -(void)loadExistingDailyForEditing:(Daily *)daily{
     self.nameBox.text = self.modelForEditing.dailyName ? self.modelForEditing.dailyName  : @"";
     self.nameStr = self.nameBox.text;
-    self.editControls.noteView.noteBox.text = self.modelForEditing.note ? self.modelForEditing.note : @"";
-    self.editControls.importanceSliders.urgencySld.value = self.modelForEditing.urgency;
-    self.editControls.importanceSliders.urgencyLbl.text = [NSString stringWithFormat:@"Urgency: %d",self.modelForEditing.urgency];
-    self.editControls.importanceSliders.difficultySld.value = self.modelForEditing.difficulty;
-    self.editControls.importanceSliders.difficultyLbl.text = [NSString stringWithFormat:@"Difficulty: %d",self.modelForEditing.difficulty];
+    self.editControls.noteView.noteBox.text =
+    self.modelForEditing.note ? self.modelForEditing.note : @"";
+    
+    self.editControls.importanceSliders.urgencySld.value =
+    self.modelForEditing.urgency;
+    
+    self.editControls.importanceSliders.urgencyLbl.text =
+    [NSString stringWithFormat:@"Urgency: %d",
+     self.modelForEditing.urgency];
+    
+    self.editControls.importanceSliders.difficultySld.value =
+    self.modelForEditing.difficulty;
+    
+    self.editControls.importanceSliders.difficultyLbl.text =
+    [NSString stringWithFormat:@"Difficulty: %d",self.modelForEditing.difficulty];
+    
     int hash = self.modelForEditing.activeDaysHash;
     [Daily setActiveDaySwitches:self.activeDaySwitches fromHash:hash];
     NSInteger rate = self.modelForEditing.rate;
