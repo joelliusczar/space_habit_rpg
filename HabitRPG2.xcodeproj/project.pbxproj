@@ -59,6 +59,7 @@
 		275FEF021EE3A78200AED1A2 /* timeZoneList.txt in Resources */ = {isa = PBXBuildFile; fileRef = 275FEF011EE3A78200AED1A2 /* timeZoneList.txt */; };
 		275FEF0A1EE3CF3000AED1A2 /* DailyHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 275FEF091EE3CF3000AED1A2 /* DailyHelperTest.m */; };
 		275FEF0D1EE45AE600AED1A2 /* Daily+DailyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 275FEF0C1EE45AE600AED1A2 /* Daily+DailyHelper.m */; };
+		277404111EFDBD43008E1AFC /* NSObject+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 277404101EFDBD43008E1AFC /* NSObject+Helper.m */; };
 		277ABEC91E949B96008CC239 /* StdLibWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEC81E949B96008CC239 /* StdLibWrapper.m */; };
 		277ABED11E95DEF6008CC239 /* ProbWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABED01E95DEF6008CC239 /* ProbWeight.m */; };
 		277ABEF21E975959008CC239 /* ModelsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEF11E975959008CC239 /* ModelsTest.m */; };
@@ -264,6 +265,8 @@
 		275FEF091EE3CF3000AED1A2 /* DailyHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyHelperTest.m; sourceTree = "<group>"; };
 		275FEF0B1EE45AE600AED1A2 /* Daily+DailyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Daily+DailyHelper.h"; sourceTree = "<group>"; };
 		275FEF0C1EE45AE600AED1A2 /* Daily+DailyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Daily+DailyHelper.m"; sourceTree = "<group>"; };
+		2774040F1EFDBD43008E1AFC /* NSObject+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Helper.h"; sourceTree = "<group>"; };
+		277404101EFDBD43008E1AFC /* NSObject+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Helper.m"; sourceTree = "<group>"; };
 		277ABEC61E949B76008CC239 /* P_stdlibWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_stdlibWrapper.h; sourceTree = "<group>"; };
 		277ABEC71E949B96008CC239 /* StdLibWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StdLibWrapper.h; sourceTree = "<group>"; };
 		277ABEC81E949B96008CC239 /* StdLibWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StdLibWrapper.m; sourceTree = "<group>"; };
@@ -954,6 +957,8 @@
 				2709B3981EEF750800EEE5CC /* ReportServiceCaller.m */,
 				2709B39A1EF0D31200EEE5CC /* Interceptor.h */,
 				2709B39B1EF0D31200EEE5CC /* Interceptor.m */,
+				2774040F1EFDBD43008E1AFC /* NSObject+Helper.h */,
+				277404101EFDBD43008E1AFC /* NSObject+Helper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1164,6 +1169,7 @@
 				273978A61EB8473100F217B4 /* TodoTransaction+CoreDataClass.m in Sources */,
 				27E89C7C1EF5CE4C009B7474 /* DailyReminders+CoreDataProperties.m in Sources */,
 				686ED3C71DB481C4004EDD36 /* ZoneHelper.m in Sources */,
+				277404111EFDBD43008E1AFC /* NSObject+Helper.m in Sources */,
 				6886A4891D8F3CB2005E12B3 /* TaskCell.m in Sources */,
 				68E260CF1D851DA500425D46 /* EditNavigationController.m in Sources */,
 				686ED3BF1DB47954004EDD36 /* ZoneChoiceViewController.m in Sources */,
