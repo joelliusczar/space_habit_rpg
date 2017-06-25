@@ -11,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StreakResetterView">
             <connections>
-                <outlet property="mainView" destination="iN0-l3-epB" id="Ua9-eo-GvW"/>
                 <outlet property="streakCountLbl" destination="CzN-5g-eMv" id="91Z-Zt-J9w"/>
                 <outlet property="streakResetBtn" destination="U2P-L0-UrF" id="iIC-ck-xO1"/>
             </connections>
@@ -41,7 +40,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="mainView" destination="-1" id="7Oi-m5-QO3"/>
+                <outlet property="mainView" destination="-1" id="R6f-As-4E0"/>
             </connections>
             <point key="canvasLocation" x="-76" y="-554"/>
         </view>

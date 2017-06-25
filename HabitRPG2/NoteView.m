@@ -33,7 +33,7 @@
 -(void)awakeFromNib{
     [super awakeFromNib];
     //it's pretty fucked up that I have to do it this way.
-    self.noteBox.delegate = self.mainView;
+    self.mainView.noteBox.delegate = self.mainView;
 }
 
 -(void)textViewDidChange:(UITextView *)textView{

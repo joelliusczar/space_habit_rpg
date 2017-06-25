@@ -11,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NoteView">
             <connections>
-                <outlet property="mainView" destination="i5M-Pr-FkT" id="yar-tf-9QR"/>
                 <outlet property="noteBox" destination="YrF-sZ-lR3" id="Skv-HZ-TgH"/>
             </connections>
         </placeholder>
@@ -40,7 +39,6 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="mainView" destination="-1" id="c8M-yv-2K5"/>
-                <outlet property="noteBox" destination="YrF-sZ-lR3" id="OXx-rh-pad"/>
             </connections>
             <point key="canvasLocation" x="-22" y="-216"/>
         </view>

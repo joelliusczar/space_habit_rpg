@@ -13,7 +13,6 @@
             <connections>
                 <outlet property="difficultyLbl" destination="iZR-2k-3aS" id="m6C-ue-TEb"/>
                 <outlet property="difficultySld" destination="yZ3-f2-u80" id="CL3-bO-7mY"/>
-                <outlet property="mainView" destination="i5M-Pr-FkT" id="kK8-KI-pQ8"/>
                 <outlet property="urgencyLbl" destination="lnK-t2-OHW" id="E8B-aq-6jI"/>
                 <outlet property="urgencySld" destination="VGf-Jc-nJZ" id="7e3-cH-oI0"/>
             </connections>
@@ -57,7 +56,7 @@
             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="mainView" destination="-1" id="0VG-pj-yTO"/>
+                <outlet property="mainView" destination="-1" id="0Z2-HF-UrW"/>
             </connections>
             <point key="canvasLocation" x="44.5" y="-232"/>
         </view>

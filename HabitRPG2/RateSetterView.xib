@@ -11,7 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RateSetterView">
             <connections>
-                <outlet property="mainView" destination="i5M-Pr-FkT" id="nqC-Xe-1Tq"/>
+                <outlet property="rateLbl" destination="Y22-uB-vkl" id="p7R-kY-dMO"/>
+                <outlet property="rateStep" destination="lKd-rh-mhB" id="gC7-Br-30l"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -40,9 +41,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="mainView" destination="-1" id="6hg-XZ-1Af"/>
-                <outlet property="rateLbl" destination="Y22-uB-vkl" id="1Io-zr-Ts2"/>
-                <outlet property="rateStep" destination="lKd-rh-mhB" id="nVz-6s-0aE"/>
+                <outlet property="mainView" destination="-1" id="e96-cZ-vBa"/>
             </connections>
             <point key="canvasLocation" x="-2" y="-218"/>
         </view>

@@ -11,6 +11,6 @@
 #import "P_EditScreenControl.h"
 
 @interface RewardsView : UIView <P_EditScreenControl>
-@property (weak,nonatomic) RewardsView *mainView;
+@property (weak,nonatomic) IBOutlet RewardsView *mainView;
 @property (weak,nonatomic) id<P_RewardsDelegate> delegate;
 @end

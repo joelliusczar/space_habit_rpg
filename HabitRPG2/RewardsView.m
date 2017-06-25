@@ -31,7 +31,8 @@
 
 - (IBAction)addRewardsBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
     if(self.delegate){
-        [self.delegate addRewardsBtn_press_action:sender forEvent:event];
+        [self.delegate addRewardsBtn_press_action:sender
+                                         forEvent:event];
     }
 }
 

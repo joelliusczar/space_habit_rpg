@@ -11,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActiveDaysPicker">
             <connections>
-                <outlet property="mainView" destination="i5M-Pr-FkT" id="vxC-ig-TUE"/>
                 <outletCollection property="activeDaySwitches" destination="XGF-wE-JMo" id="cvN-TL-7cB"/>
             </connections>
         </placeholder>
@@ -164,7 +163,7 @@
             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="mainView" destination="-1" id="qE5-Gu-fkr"/>
+                <outlet property="mainView" destination="-1" id="eid-TM-oBW"/>
             </connections>
             <point key="canvasLocation" x="54" y="-190.5"/>
         </view>
