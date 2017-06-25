@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "P_CommonDelegate.h"
 
-@protocol P_StreakResetterDelegate <NSObject>
+@protocol P_StreakResetterDelegate <NSObject,P_CommonDelegate>
 -(void)streakResetBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event;
 @end

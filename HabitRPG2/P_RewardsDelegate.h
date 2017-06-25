@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "P_CommonDelegate.h"
 
-@protocol P_RewardsDelegate <NSObject>
+@protocol P_RewardsDelegate <NSObject,P_CommonDelegate>
 -(void)addRewardsBtn_press_action:(UIButton *)sender
                          forEvent:(UIEvent *)event;
 @end

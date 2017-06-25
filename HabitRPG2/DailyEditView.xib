@@ -19,7 +19,7 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" semanticContentAttribute="playback" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="333" height="960"/>
+            <rect key="frame" x="0.0" y="0.0" width="333" height="385"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RhM-CD-7Be">
@@ -43,8 +43,8 @@
                         <action selector="nameBox_editingChanged_action:forEvent:" destination="-1" eventType="editingChanged" id="rN6-1D-gpU"/>
                     </connections>
                 </textField>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tXI-Qs-aDL">
-                    <rect key="frame" x="0.0" y="96" width="296" height="864"/>
+                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tXI-Qs-aDL">
+                    <rect key="frame" x="0.0" y="96" width="296" height="269"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.14115569" green="0.49360895160000001" blue="0.85067921879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </tableView>
@@ -58,7 +58,7 @@
             </subviews>
             <color key="backgroundColor" red="0.14115568995475769" green="0.49360895156860352" blue="0.85067921876907349" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="236.5" y="473"/>
+            <point key="canvasLocation" x="236.5" y="185.5"/>
         </view>
     </objects>
 </document>

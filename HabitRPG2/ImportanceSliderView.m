@@ -7,6 +7,7 @@
 //
 
 #import "ImportanceSliderView.h"
+#import "P_CommonDelegate.h"
 
 @interface ImportanceSliderView ()
 
@@ -18,21 +19,28 @@
     return CGRectMake(0,0,297,152);
 }
 
+
 -(instancetype)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
-        _mainView = [[NSBundle mainBundle] loadNibNamed:@"ImportanceSliderView" owner:self options:nil][0];
+        _mainView =
+        [[NSBundle mainBundle]
+         loadNibNamed:NSStringFromClass(self.class)
+         owner:self options:nil][0];
+        
         [self addSubview: _mainView];
     }
     return self;
 }
 
-- (IBAction)urgencySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event {
+
+-(IBAction)urgencySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event {
     if(self.delegate){
         [self.delegate urgencySld_valueChanged_action:sender forEvent:event];
     }
 }
 
-- (IBAction)difficultySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event {
+
+-(IBAction)difficultySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event {
     if(self.delegate){
         [self.delegate difficultySld_valueChanged_action:sender forEvent:event];
     }

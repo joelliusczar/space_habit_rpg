@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "P_CommonDelegate.h"
 
-@protocol P_SubtasksTableViewDelegate <NSObject>
+@protocol P_SubtasksTableViewDelegate <NSObject,P_CommonDelegate>
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 

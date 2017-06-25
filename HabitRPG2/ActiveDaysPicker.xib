@@ -12,6 +12,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActiveDaysPicker">
             <connections>
                 <outletCollection property="activeDaySwitches" destination="XGF-wE-JMo" id="cvN-TL-7cB"/>
+                <outletCollection property="activeDaySwitches" destination="ZAQ-Kw-KsY" id="vJ4-cb-PXD"/>
+                <outletCollection property="activeDaySwitches" destination="ri6-il-G2G" id="TJl-sb-bts"/>
+                <outletCollection property="activeDaySwitches" destination="rOK-z9-wOz" id="wey-ck-Qcb"/>
+                <outletCollection property="activeDaySwitches" destination="HaR-9W-Okl" id="x7D-Ci-RHM"/>
+                <outletCollection property="activeDaySwitches" destination="UOg-RV-2YP" id="uTM-un-jRq"/>
+                <outletCollection property="activeDaySwitches" destination="JUC-SM-SBA" id="lN1-GP-ve4"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

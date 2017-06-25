@@ -306,6 +306,7 @@
 		27C3C2131EFEF6F800F205A6 /* RewardsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RewardsView.h; sourceTree = "<group>"; };
 		27C3C2141EFEF6F800F205A6 /* RewardsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardsView.m; sourceTree = "<group>"; };
 		27C3C2161EFEF89500F205A6 /* RewardsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RewardsView.xib; sourceTree = "<group>"; };
+		27C3C2191EFF594C00F205A6 /* P_CommonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_CommonDelegate.h; sourceTree = "<group>"; };
 		27C92C111E28A1330025727E /* ZoneChoiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZoneChoiceCell.xib; sourceTree = "<group>"; };
 		27C92C131E297F640025727E /* ZoneChoiceCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneChoiceCellController.h; sourceTree = "<group>"; };
 		27C92C141E297F640025727E /* ZoneChoiceCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneChoiceCellController.m; sourceTree = "<group>"; };
@@ -504,6 +505,7 @@
 				27B47E871EF8F2F500B81275 /* P_DailyEditCompound.h */,
 				27C3C2111EFEF0F700F205A6 /* P_StreakResetterDelegate.h */,
 				27C3C2121EFEF67A00F205A6 /* P_RewardsDelegate.h */,
+				27C3C2191EFF594C00F205A6 /* P_CommonDelegate.h */,
 			);
 			name = ControlDelegates;
 			sourceTree = "<group>";

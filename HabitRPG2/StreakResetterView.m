@@ -26,4 +26,13 @@
     return self;
 }
 
+- (IBAction)streakResetBtn_press_action:(UIButton *)sender
+                               forEvent:(UIEvent *)event {
+    if(self.delegate){
+        [self.delegate streakResetBtn_press_action:sender
+                                          forEvent:event];
+    }
+}
+
+
 @end

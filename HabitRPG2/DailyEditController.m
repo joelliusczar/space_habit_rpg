@@ -30,9 +30,6 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 
 @property (weak,nonatomic) IBOutlet UITextField *nameBox;
 @property (weak,nonatomic) IBOutlet UIButton *showXtraOptsBtn;
-@property (nonatomic,strong)
-NSMutableArray<UIButton<P_CustomSwitch> *> *activeDaySwitches;
-
 @property (weak,nonatomic) IBOutlet UITableView *controlsTbl;
 @property (weak,nonatomic) DailyViewController *parentDailyController;
 @property (strong,nonatomic) Daily *modelForEditing;
@@ -52,18 +49,6 @@ NSString* const IS_DIRTY = @"isDirty";
 @synthesize delegate = _delegate;
 @synthesize nameStr = _nameStr;
 
-@synthesize activeDaySwitches = _activeDaySwitches;
--(NSMutableArray<UIButton<P_CustomSwitch> *> *)activeDaySwitches{
-    if(_activeDaySwitches == nil){
-        _activeDaySwitches = [NSMutableArray arrayWithCapacity:DAYS_IN_WEEK];
-        NSInteger dayTag = 4;
-        for(int i = 0;i< DAYS_IN_WEEK;i++){
-            [_activeDaySwitches addObject:[self.view viewWithTag:(dayTag + i)]];
-        }
-    }
-    return _activeDaySwitches;
-}
-
 @synthesize modelForEditing = _modelForEditing;
 -(Daily *)modelForEditing{
     if(nil==_modelForEditing){
@@ -71,15 +56,17 @@ NSString* const IS_DIRTY = @"isDirty";
         [SHData insertIntoContext:_modelForEditing];
     }
     else if(![SHData.writeContext.registeredObjects containsObject:_modelForEditing]){
-        _modelForEditing = [SHData.writeContext objectWithID:self.modelForEditing.objectID];
+        _modelForEditing = [SHData.writeContext objectWithID:_modelForEditing.objectID];
     }
     return _modelForEditing;
 }
+
 
 @synthesize editControls = _editControls;
 -(DailyEditControlKeep *)editControls{
     if(nil==_editControls){
         _editControls = [[DailyEditControlKeep alloc] initWithDelegate:self];
+        [_editControls setupDelegates];
     }
     return _editControls;
 }
@@ -108,18 +95,14 @@ NSString* const IS_DIRTY = @"isDirty";
     self.controlsTbl.tableFooterView =
     [[UIView alloc] initWithFrame:CGRectZero];
     
-    if(self.modelForEditing){
-        //[self loadExistingDailyForEditing:self.modelForEditing];
+    if(_modelForEditing){
+        [self loadExistingDailyForEditing:self.modelForEditing];
     }
-    @try{
-        [self removeObserver:self forKeyPath:IS_DIRTY context:nil];
-    }
-    @catch(NSException *ex){}
     [self addObserver:self forKeyPath:IS_DIRTY options:NSKeyValueObservingOptionNew context:nil];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    if(self.modelForEditing){
+    if(_modelForEditing){
         [self.delegate enableDelete];
     }
 }
@@ -142,6 +125,7 @@ NSString* const IS_DIRTY = @"isDirty";
     
 }
 
+
 -(void)saveEdit{
     Daily *savingModel = self.modelForEditing;
     int rate = (int)self.editControls.rateSetterView.rateStep.value;
@@ -149,11 +133,11 @@ NSString* const IS_DIRTY = @"isDirty";
     savingModel.note = self.editControls.noteView.noteBox.text;
     savingModel.urgency =
     self.editControls.importanceSliders.urgencySld.value;
+    
     savingModel.difficulty =
-    
     self.editControls.importanceSliders.difficultySld.value;
-    savingModel.rate = rate;
     
+    savingModel.rate = rate;
     savingModel.activeDaysHash =
     [Daily calculateActiveDaysHash:self.editControls.activeDaysPicker.activeDaySwitches];
     
@@ -197,13 +181,16 @@ NSString* const IS_DIRTY = @"isDirty";
     [NSString stringWithFormat:@"Difficulty: %d",self.modelForEditing.difficulty];
     
     int hash = self.modelForEditing.activeDaysHash;
-    [Daily setActiveDaySwitches:self.activeDaySwitches fromHash:hash];
+    [Daily setActiveDaySwitches:self.editControls.activeDaysPicker.activeDaySwitches fromHash:hash];
+    
     NSInteger rate = self.modelForEditing.rate;
     self.editControls.rateSetterView.rateStep.value = rate;
     self.editControls.rateSetterView.rateLbl.text = [NSString stringWithFormat:TRIGGER_LABEL_FORMAT,(int)rate];
-//    self.streakCountLbl.hidden = NO;
-//    self.streakResetBtn.hidden = NO;
-//    self.streakCountLbl.text = [NSString stringWithFormat:@"Streak: %d",daily.streakLength];
+    
+    self.editControls.streakResetterView.streakCountLbl.hidden = NO;
+    self.editControls.streakResetterView.streakResetBtn.hidden = NO;
+    self.editControls.streakResetterView.streakCountLbl.text = [NSString stringWithFormat:@"Streak: %d",daily.streakLength];
+    
     [self.delegate enableDelete];
     
 }
@@ -215,9 +202,12 @@ NSString* const IS_DIRTY = @"isDirty";
     [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@textDidChange",self.description]];
 }
 
+
 -(void)textViewDidChange:(UITextView *)textView{
     self.isDirty = YES;
 }
+
+
 - (IBAction)nameBox_editingChanged_action:(UITextField *)sender forEvent:(UIEvent *)event {
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
@@ -226,21 +216,23 @@ NSString* const IS_DIRTY = @"isDirty";
     [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@nameBox_editingChanged_action",self.description]];
 }
 
+
 - (IBAction)showXtra_push_action:(UIButton *)sender forEvent:(UIEvent *)event {
     wrapReturnVoid wrappedCall = ^void(){
         if(self.areXtraOptsOpen){
-            //TODO self.advancedOptsView.hidden = YES;
+            self.controlsTbl.hidden = YES;
             self.areXtraOptsOpen = NO;
             return;
         }
-        //TODO self.advancedOptsView.hidden = NO;
+        self.controlsTbl.hidden = NO;
         self.areXtraOptsOpen = YES;
         if(self.delegate){
-            //TODO [self.delegate resizeScrollView:self.advancedOptsView.hidden];
+            [self.delegate resizeScrollView:self.controlsTbl.hidden];
         }
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@showXtra_push_action",self.description]];
 }
+
 
 -(IBAction)urgencySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event {
     wrapReturnVoid wrappedCall = ^void(){
@@ -252,7 +244,8 @@ NSString* const IS_DIRTY = @"isDirty";
     [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@urgencySld_valueChange_action",self.description]];
 }
 
-- (IBAction)difficultySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event{
+
+-(IBAction)difficultySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event{
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
         int sliderValue = (int)sender.value;
@@ -262,7 +255,8 @@ NSString* const IS_DIRTY = @"isDirty";
     [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@difficultySld_valueChanged_action",self.description]];
 }
 
-- (IBAction)rateStep_valueChanged_action:(UIStepper *)sender forEvent:(UIEvent *)event {
+
+-(IBAction)rateStep_valueChanged_action:(UIStepper *)sender forEvent:(UIEvent *)event {
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
         double stepperValue = [sender value];
@@ -279,6 +273,7 @@ NSString* const IS_DIRTY = @"isDirty";
     [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@rateStep_valueChange_action",self.description]];
 }
 
+
 -(void)activeDaySwitch_press_action:(CustomSwitch *)sender forEvent:(UIEvent *)event{
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
@@ -286,13 +281,15 @@ NSString* const IS_DIRTY = @"isDirty";
     [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@daySwitch_push_action~%ld",self.description,sender.tag]];
 }
 
-- (IBAction)addRewardBtn_push_action:(UIButton *)sender forEvent:(UIEvent *)event {
+
+-(void)addRewardBtn_push_action:(UIButton *)sender forEvent:(UIEvent *)event {
     wrapReturnVoid wrappedCall = ^void(){
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@addRewardBtn_push_action",self.description]];
 }
 
-- (IBAction)streakResetBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
+
+-(void)streakResetBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
     wrapReturnVoid wrappedCall = ^void(){
         if(self.modelForEditing){
             self.isStreakReset = YES;
@@ -302,9 +299,11 @@ NSString* const IS_DIRTY = @"isDirty";
     [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@streakResetBtn_press_action",self.description]];
 }
 
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.editControls.allControls.count;
 }
+
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [[UITableViewCell alloc] init];
@@ -314,6 +313,7 @@ NSString* const IS_DIRTY = @"isDirty";
     [cell addSubview:cellView];
     return cell;
 }
+
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return self.editControls.allControls[indexPath.row].frame.size.height;

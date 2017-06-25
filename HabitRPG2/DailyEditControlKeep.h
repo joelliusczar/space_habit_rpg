@@ -24,4 +24,5 @@
 @property (strong,nonatomic) ImportanceSliderView *importanceSliders;
 @property (strong,nonatomic) StreakResetterView *streakResetterView;
 -(instancetype)initWithDelegate:(id<P_DailyEditCompound>)delegate;
+-(void)setupDelegates;
 @end

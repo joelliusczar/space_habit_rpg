@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "P_CommonDelegate.h"
 
-@protocol P_RateSetterDelegate <NSObject>
+@protocol P_RateSetterDelegate <NSObject,P_CommonDelegate>
 -(void)rateStep_valueChanged_action:(UIStepper *)sender forEvent:(UIEvent *)event;
 @end

@@ -27,38 +27,37 @@
     return _noteView;
 }
 
+
 @synthesize activeDaysPicker = _activeDaysPicker;
 -(ActiveDaysPicker *)activeDaysPicker{
     if(nil==_activeDaysPicker){
-        _activeDaysPicker = [[ActiveDaysPicker alloc] initWithFrame:ActiveDaysPicker.naturalFrame];
-        if(self.delegate){
-            _activeDaysPicker.delegate = self.delegate;
-        }
+        _activeDaysPicker =
+        [[ActiveDaysPicker alloc] initWithFrame:ActiveDaysPicker.naturalFrame];
     }
     return _activeDaysPicker;
 }
 
+
 @synthesize rateSetterView = _rateSetterView;
 -(RateSetterView *)rateSetterView{
     if(nil==_rateSetterView){
-        _rateSetterView = [[RateSetterView alloc] initWithFrame:RateSetterView.naturalFrame];
-        if(self.delegate){
-            _rateSetterView.delegate = self.delegate;
-        }
+        _rateSetterView =
+        [[RateSetterView alloc] initWithFrame:RateSetterView.naturalFrame];
     }
     return _rateSetterView;
 }
 
+
 @synthesize importanceSliders = _importanceSliders;
 -(ImportanceSliderView *)importanceSliders{
     if(nil==_importanceSliders){
-        _importanceSliders = [[ImportanceSliderView alloc] initWithFrame:ImportanceSliderView.naturalFrame];
-        if(self.delegate){
-            _importanceSliders.delegate = self.delegate;
-        }
+        _importanceSliders =
+        [[ImportanceSliderView alloc]
+         initWithFrame:ImportanceSliderView.naturalFrame];
     }
     return _importanceSliders;
 }
+
 
 @synthesize streakResetterView = _streakResetterView;
 -(StreakResetterView *)streakResetterView{
@@ -66,12 +65,10 @@
         _streakResetterView = [[StreakResetterView alloc]
                                initWithFrame:
                                StreakResetterView.naturalFrame];
-        if(self.delegate){
-            _streakResetterView.delegate = self.delegate;
-        }
     }
     return _streakResetterView;
 }
+
 
 @synthesize allControls = _allControls;
 -(NSArray<UIView<P_EditScreenControl> *> *)allControls{
@@ -87,6 +84,7 @@
     return _allControls;
 }
 
+
 -(instancetype)initWithDelegate:(id<P_DailyEditCompound>)delegate{
     if(self = [super init]){
         _delegate = delegate;
@@ -94,8 +92,13 @@
     return self;
 }
 
+
 -(void)setupDelegates{
-    
+    self.noteView.delegate = self.delegate;
+    self.activeDaysPicker.delegate = self.delegate;
+    self.rateSetterView.delegate = self.delegate;
+    self.importanceSliders.delegate = self.delegate;
+    self.streakResetterView.delegate = self.delegate;
 }
 
 @end

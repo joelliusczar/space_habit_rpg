@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "P_CommonDelegate.h"
 
-@protocol P_ImportanceSlidersDelegate <NSObject>
+@protocol P_ImportanceSlidersDelegate <NSObject,P_CommonDelegate>
 -(void)urgencySld_valueChanged_action:(UISlider *)sender
                              forEvent:(UIEvent *)event;
 

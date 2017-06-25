@@ -37,26 +37,38 @@
     return self;
 }
 
-- (void)viewDidLoad {
+
+-(void)viewDidLoad {
     [super viewDidLoad];
     self.editingScreen.delegate = self;
     self.headline.text = self.viewTitle;
     [self.scrollContainer addSubview:self.editingScreen.view];
     self.defaultScrollHeight = self.scrollContainer.frame.size.height;
-        self.scrollContainer.contentSize = CGSizeMake(self.scrollContainer.frame.size.width, self.editingScreen.view.frame.size.height);
+    self.scrollContainer.contentSize =
+    CGSizeMake(self.scrollContainer.frame.size.width,
+               self.editingScreen.view.frame.size.height);
+    
     self.scrollContainer.scrollEnabled = YES;
     [self.scrollContainer sizeToFit];
-    UITapGestureRecognizer *tapGesturebg = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(background_tap_action:)];
-    UITapGestureRecognizer *tapGesturefg = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(background_tap_action:)];
+    UITapGestureRecognizer *tapGesturebg =
+    [[UITapGestureRecognizer alloc]
+     initWithTarget:self action:@selector(background_tap_action:)];
+    
+    UITapGestureRecognizer *tapGesturefg =
+    [[UITapGestureRecognizer alloc]
+     initWithTarget:self action:@selector(background_tap_action:)];
+    
     [self.modalView addGestureRecognizer:tapGesturefg];
     [self.view addGestureRecognizer:tapGesturebg];
     
 }
 
-- (void)didReceiveMemoryWarning {
+
+-(void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 -(IBAction)deleteBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
     wrapReturnVoid wrappedCall = ^void(){
@@ -65,10 +77,12 @@
     [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@deleteBtn_press_action",self.description]];
 }
 
+
 -(void)confirmDelete{
     UIAlertController *deleteAlert = [UIAlertController alertControllerWithTitle:@"Delete?" message:@"Are you sure you want to delete this?" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){}];
-    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Yes" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+    UIAlertAction *yesAction =
+    [UIAlertAction actionWithTitle:@"Yes" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         wrapReturnVoid wrappedCall = ^void(){
             [self.editingScreen deleteModel];
             [ViewHelper popViewFromFront:self];
@@ -77,7 +91,8 @@
     }];
     [deleteAlert addAction:noAction];
     [deleteAlert addAction:yesAction];
-    [self presentViewController:deleteAlert animated:YES completion:nil];
+    [self presentViewController:deleteAlert
+                       animated:YES completion:nil];
 }
 
 -(IBAction)saveBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
@@ -92,12 +107,14 @@
     [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@saveBtn_press_action",self.description]];
 }
 
+
 -(void)alertMissingInfo{
     UIAlertController *saveAlert = [UIAlertController alertControllerWithTitle:@"Name?" message:@"Please give this item a name" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {}];
     [saveAlert addAction:okAction];
     [self presentViewController:saveAlert animated:YES completion:nil];
 }
+
 
 -(void)background_tap_action:(UITapGestureRecognizer *)sender {
     wrapReturnVoid wrappedCall = ^void(){
@@ -109,20 +126,25 @@
     [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@background_tap_action",self.description]];
 }
 
+
 -(void)enableSave{
     self.saveBtnBarItem.enabled = YES;
 }
 
+
 -(void)enableDelete{
     self.deleteBtn.hidden = NO;
 }
+
 
 -(void)resizeScrollView:(BOOL)isXtraOptsHidden{
     if(isXtraOptsHidden){
         self.scrollContainer.contentSize = CGSizeMake(self.scrollContainer.frame.size.width, self.defaultScrollHeight);
     }
     else{
-        self.scrollContainer.contentSize = CGSizeMake(self.scrollContainer.frame.size.width, self.editingScreen.view.frame.size.height);
+        self.scrollContainer.contentSize =
+        CGSizeMake(self.scrollContainer.frame.size.width,
+                   self.editingScreen.view.frame.size.height);
     }
 }
 

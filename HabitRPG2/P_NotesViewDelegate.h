@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "P_CommonDelegate.h"
 
-@protocol P_NotesViewDelegate <NSObject>
+@protocol P_NotesViewDelegate <NSObject,P_CommonDelegate>
 -(void)textDidChange:(UITextView *)textView;
 @end
