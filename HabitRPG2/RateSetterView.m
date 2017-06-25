@@ -28,7 +28,7 @@
 
 - (IBAction)rateStep_valueChanged_action:(UIStepper *)sender forEvent:(UIEvent *)event {
     if(self.delegate){
-        [self.delegate rateValueChanged:sender passedEvent:event];
+        [self.delegate rateStep_valueChanged_action:sender forEvent:event];
     }
 }
 

@@ -13,6 +13,7 @@
 #import "ActiveDaysPicker.h"
 #import "RateSetterView.h"
 #import "ImportanceSliderView.h"
+#import "StreakResetterView.h"
 #import "P_DailyEditCompound.h"
 
 @interface DailyEditControlKeep : NSObject
@@ -21,5 +22,6 @@
 @property (strong,nonatomic) ActiveDaysPicker *activeDaysPicker;
 @property (strong,nonatomic) RateSetterView *rateSetterView;
 @property (strong,nonatomic) ImportanceSliderView *importanceSliders;
+@property (strong,nonatomic) StreakResetterView *streakResetterView;
 -(instancetype)initWithDelegate:(id<P_DailyEditCompound>)delegate;
 @end

@@ -242,7 +242,7 @@ NSString* const IS_DIRTY = @"isDirty";
     [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@showXtra_push_action",self.description]];
 }
 
--(IBAction)urgencyLvlChanged:(UISlider *)sender passedEvent:(UIEvent *)e {
+-(IBAction)urgencySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event {
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
         int sliderValue = (int)sender.value;
@@ -252,7 +252,7 @@ NSString* const IS_DIRTY = @"isDirty";
     [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@urgencySld_valueChange_action",self.description]];
 }
 
-- (IBAction)difficultyLvlChanged:(UISlider *)sender passedEvent:(UIEvent *)e{
+- (IBAction)difficultySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event{
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
         int sliderValue = (int)sender.value;
@@ -262,7 +262,7 @@ NSString* const IS_DIRTY = @"isDirty";
     [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@difficultySld_valueChanged_action",self.description]];
 }
 
-- (IBAction)rateValueChanged:(UIStepper *)sender passedEvent:(UIEvent *)e {
+- (IBAction)rateStep_valueChanged_action:(UIStepper *)sender forEvent:(UIEvent *)event {
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
         double stepperValue = [sender value];
@@ -279,7 +279,7 @@ NSString* const IS_DIRTY = @"isDirty";
     [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@rateStep_valueChange_action",self.description]];
 }
 
--(void)anySwitchChanged:(CustomSwitch *)sender passedEvent:(UIEvent *)e{
+-(void)activeDaySwitch_press_action:(CustomSwitch *)sender forEvent:(UIEvent *)event{
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
     };

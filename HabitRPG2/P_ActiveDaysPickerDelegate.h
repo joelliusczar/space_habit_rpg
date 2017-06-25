@@ -11,5 +11,5 @@
 #import "CustomSwitch.h"
 
 @protocol P_ActiveDaysPickerDelegate <NSObject>
--(void)anySwitchChanged:(CustomSwitch *)sender passedEvent:(UIEvent *)e;
+-(void)activeDaySwitch_press_action:(CustomSwitch *)sender forEvent:(UIEvent *)event;
 @end

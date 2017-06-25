@@ -42,7 +42,9 @@
 -(RateSetterView *)rateSetterView{
     if(nil==_rateSetterView){
         _rateSetterView = [[RateSetterView alloc] initWithFrame:RateSetterView.naturalFrame];
-        _rateSetterView.delegate = self.delegate;
+        if(self.delegate){
+            _rateSetterView.delegate = self.delegate;
+        }
     }
     return _rateSetterView;
 }
@@ -51,20 +53,38 @@
 -(ImportanceSliderView *)importanceSliders{
     if(nil==_importanceSliders){
         _importanceSliders = [[ImportanceSliderView alloc] initWithFrame:ImportanceSliderView.naturalFrame];
-        _importanceSliders.delegate = self.delegate;
+        if(self.delegate){
+            _importanceSliders.delegate = self.delegate;
+        }
     }
     return _importanceSliders;
 }
 
+@synthesize streakResetterView = _streakResetterView;
+-(StreakResetterView *)streakResetterView{
+    if(nil==_streakResetterView){
+        _streakResetterView = [[StreakResetterView alloc]
+                               initWithFrame:
+                               StreakResetterView.naturalFrame];
+        if(self.delegate){
+            _streakResetterView.delegate = self.delegate;
+        }
+    }
+    return _streakResetterView;
+}
 
 @synthesize allControls = _allControls;
 -(NSArray<UIView<P_EditScreenControl> *> *)allControls{
-    return [NSArray arrayWithObjects:
-            self.noteView
-            ,self.activeDaysPicker
-            ,self.rateSetterView
-            ,self.importanceSliders
-            ,nil];
+    if(nil==_allControls){
+        _allControls = [NSArray arrayWithObjects:
+                        self.noteView
+                        ,self.activeDaysPicker
+                        ,self.rateSetterView
+                        ,self.importanceSliders
+                        ,self.streakResetterView
+                        ,nil];
+    }
+    return _allControls;
 }
 
 -(instancetype)initWithDelegate:(id<P_DailyEditCompound>)delegate{
@@ -72,6 +92,10 @@
         _delegate = delegate;
     }
     return self;
+}
+
+-(void)setupDelegates{
+    
 }
 
 @end

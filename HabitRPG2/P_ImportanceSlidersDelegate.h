@@ -10,6 +10,9 @@
 #import <UIKit/UIKit.h>
 
 @protocol P_ImportanceSlidersDelegate <NSObject>
--(void)urgencyLvlChanged:(UISlider *)sender passedEvent:(UIEvent *)e;
--(void)difficultyLvlChanged:(UISlider *)sender passedEvent:(UIEvent *)e;
+-(void)urgencySld_valueChanged_action:(UISlider *)sender
+                             forEvent:(UIEvent *)event;
+
+-(void)difficultySld_valueChanged_action:(UISlider *)sender
+                             forEvent:(UIEvent *)event;
 @end

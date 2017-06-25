@@ -28,13 +28,13 @@
 
 - (IBAction)urgencySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event {
     if(self.delegate){
-        [self.delegate urgencyLvlChanged:sender passedEvent:event];
+        [self.delegate urgencySld_valueChanged_action:sender forEvent:event];
     }
 }
 
 - (IBAction)difficultySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event {
     if(self.delegate){
-        [self.delegate difficultyLvlChanged:sender passedEvent:event];
+        [self.delegate difficultySld_valueChanged_action:sender forEvent:event];
     }
 }
 

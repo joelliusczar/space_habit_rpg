@@ -11,7 +11,8 @@
 #import "P_ActiveDaysPickerDelegate.h"
 #import "P_RateSetterDelegate.h"
 #import "P_ImportanceSlidersDelegate.h"
+#import "P_StreakResetterDelegate.h"
 
-@protocol P_DailyEditCompound <NSObject,P_NotesViewDelegate,P_ActiveDaysPickerDelegate,P_RateSetterDelegate,P_ImportanceSlidersDelegate>
+@protocol P_DailyEditCompound <NSObject,P_NotesViewDelegate,P_ActiveDaysPickerDelegate,P_RateSetterDelegate,P_ImportanceSlidersDelegate,P_StreakResetterDelegate>
 
 @end
