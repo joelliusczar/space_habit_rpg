@@ -79,6 +79,10 @@
 		27C3C20E1EFEEDC100F205A6 /* StreakResetterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C3C20D1EFEEDC100F205A6 /* StreakResetterView.xib */; };
 		27C3C2151EFEF6F800F205A6 /* RewardsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C3C2141EFEF6F800F205A6 /* RewardsView.m */; };
 		27C3C2171EFEF89500F205A6 /* RewardsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C3C2161EFEF89500F205A6 /* RewardsView.xib */; };
+		27C3C21C1F001DF300F205A6 /* ReminderListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C3C21B1F001DF300F205A6 /* ReminderListView.m */; };
+		27C3C21E1F0022D600F205A6 /* ReminderListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C3C21D1F0022D600F205A6 /* ReminderListView.xib */; };
+		27C3C2251F08799200F205A6 /* AddItemsFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C3C2241F08799200F205A6 /* AddItemsFooter.m */; };
+		27C3C2271F0879B200F205A6 /* AddItemsFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C3C2261F0879B200F205A6 /* AddItemsFooter.xib */; };
 		27C92C121E28A1330025727E /* ZoneChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C111E28A1330025727E /* ZoneChoiceCell.xib */; };
 		27C92C151E297F650025727E /* ZoneChoiceCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C141E297F640025727E /* ZoneChoiceCellController.m */; };
 		27C92C1A1E29C9F10025727E /* ZoneInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C191E29C9F10025727E /* ZoneInfoDictionary.m */; };
@@ -307,6 +311,14 @@
 		27C3C2141EFEF6F800F205A6 /* RewardsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardsView.m; sourceTree = "<group>"; };
 		27C3C2161EFEF89500F205A6 /* RewardsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RewardsView.xib; sourceTree = "<group>"; };
 		27C3C2191EFF594C00F205A6 /* P_CommonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_CommonDelegate.h; sourceTree = "<group>"; };
+		27C3C21A1F001DF300F205A6 /* ReminderListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReminderListView.h; sourceTree = "<group>"; };
+		27C3C21B1F001DF300F205A6 /* ReminderListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReminderListView.m; sourceTree = "<group>"; };
+		27C3C21D1F0022D600F205A6 /* ReminderListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReminderListView.xib; sourceTree = "<group>"; };
+		27C3C21F1F07854700F205A6 /* P_DueDateWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_DueDateWrapper.h; sourceTree = "<group>"; };
+		27C3C2231F08799200F205A6 /* AddItemsFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddItemsFooter.h; sourceTree = "<group>"; };
+		27C3C2241F08799200F205A6 /* AddItemsFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddItemsFooter.m; sourceTree = "<group>"; };
+		27C3C2261F0879B200F205A6 /* AddItemsFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddItemsFooter.xib; sourceTree = "<group>"; };
+		27C3C2281F08BC4F00F205A6 /* P_AddItemsFooterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_AddItemsFooterDelegate.h; sourceTree = "<group>"; };
 		27C92C111E28A1330025727E /* ZoneChoiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZoneChoiceCell.xib; sourceTree = "<group>"; };
 		27C92C131E297F640025727E /* ZoneChoiceCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneChoiceCellController.h; sourceTree = "<group>"; };
 		27C92C141E297F640025727E /* ZoneChoiceCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneChoiceCellController.m; sourceTree = "<group>"; };
@@ -506,6 +518,7 @@
 				27C3C2111EFEF0F700F205A6 /* P_StreakResetterDelegate.h */,
 				27C3C2121EFEF67A00F205A6 /* P_RewardsDelegate.h */,
 				27C3C2191EFF594C00F205A6 /* P_CommonDelegate.h */,
+				27C3C2281F08BC4F00F205A6 /* P_AddItemsFooterDelegate.h */,
 			);
 			name = ControlDelegates;
 			sourceTree = "<group>";
@@ -516,6 +529,7 @@
 				277ABEC61E949B76008CC239 /* P_stdlibWrapper.h */,
 				277ABECB1E94A0C0008CC239 /* P_CustomSwitch.h */,
 				2709B3961EEF74E900EEE5CC /* P_ReportServiceCaller.h */,
+				27C3C21F1F07854700F205A6 /* P_DueDateWrapper.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -660,6 +674,12 @@
 				27C3C2131EFEF6F800F205A6 /* RewardsView.h */,
 				27C3C2141EFEF6F800F205A6 /* RewardsView.m */,
 				27C3C2161EFEF89500F205A6 /* RewardsView.xib */,
+				27C3C21A1F001DF300F205A6 /* ReminderListView.h */,
+				27C3C21B1F001DF300F205A6 /* ReminderListView.m */,
+				27C3C21D1F0022D600F205A6 /* ReminderListView.xib */,
+				27C3C2231F08799200F205A6 /* AddItemsFooter.h */,
+				27C3C2241F08799200F205A6 /* AddItemsFooter.m */,
+				27C3C2261F0879B200F205A6 /* AddItemsFooter.xib */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -1102,8 +1122,10 @@
 				273978861EB55F3700F217B4 /* StoryDumpView.xib in Resources */,
 				6886A48F1D8F6F9B005E12B3 /* edit_button.png in Resources */,
 				68F3F9B91D70E82E00840DD2 /* Assets.xcassets in Resources */,
+				27C3C2271F0879B200F205A6 /* AddItemsFooter.xib in Resources */,
 				687F01231D77CA6500C7B08B /* DailyTablesViewController.xib in Resources */,
 				686ED3C21DB47FA5004EDD36 /* black_checked_empty.png in Resources */,
+				27C3C21E1F0022D600F205A6 /* ReminderListView.xib in Resources */,
 				27C92C121E28A1330025727E /* ZoneChoiceCell.xib in Resources */,
 				68F3F9E51D70E8DB00840DD2 /* CentralViewController.xib in Resources */,
 				277ABF321E9F1A30008CC239 /* ZoneChoicePicker.xib in Resources */,
@@ -1160,6 +1182,7 @@
 				275FEEFE1EE3172C00AED1A2 /* NSDate+DateHelper.m in Sources */,
 				68A921F91DBC7FF2007C946C /* Habit+CoreDataProperties.m in Sources */,
 				68F3F9F31D70FC5E00840DD2 /* TodoViewController.m in Sources */,
+				27C3C21C1F001DF300F205A6 /* ReminderListView.m in Sources */,
 				68F3FA021D74897A00840DD2 /* MenuViewController.m in Sources */,
 				273978851EB55F3700F217B4 /* StoryDumpView.m in Sources */,
 				271C04831E8A1152002221E9 /* MonsterInfoDictionary.m in Sources */,
@@ -1190,6 +1213,7 @@
 				274FFC4A1EF887DB00FAF809 /* DailyEditControlKeep.m in Sources */,
 				2709B39C1EF0D31200EEE5CC /* Interceptor.m in Sources */,
 				68A921F61DBC7FF2007C946C /* Good+CoreDataProperties.m in Sources */,
+				27C3C2251F08799200F205A6 /* AddItemsFooter.m in Sources */,
 				273978A71EB8473100F217B4 /* TodoTransaction+CoreDataProperties.m in Sources */,
 				273978A61EB8473100F217B4 /* TodoTransaction+CoreDataClass.m in Sources */,
 				27E89C7C1EF5CE4C009B7474 /* DailyReminders+CoreDataProperties.m in Sources */,

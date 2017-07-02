@@ -2,7 +2,7 @@
 //  DailyReminders+CoreDataProperties.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 6/17/17.
+//  Created by Joel Pridgen on 7/1/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
@@ -15,8 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<DailyReminders *> *)fetchRequest;
 
-@property (nonatomic) int32_t reminderHour;
 @property (nonatomic) int32_t daysBeforeDue;
+@property (nullable, nonatomic, copy) NSDate *reminderHour;
 @property (nullable, nonatomic, retain) Daily *remind_daily;
 
 @end

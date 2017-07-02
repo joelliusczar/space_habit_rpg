@@ -14,6 +14,7 @@
 #import "RateSetterView.h"
 #import "ImportanceSliderView.h"
 #import "StreakResetterView.h"
+#import "ReminderListView.h"
 #import "P_DailyEditCompound.h"
 
 @interface DailyEditControlKeep : NSObject
@@ -23,6 +24,7 @@
 @property (strong,nonatomic) RateSetterView *rateSetterView;
 @property (strong,nonatomic) ImportanceSliderView *importanceSliders;
 @property (strong,nonatomic) StreakResetterView *streakResetterView;
+@property (strong,nonatomic) ReminderListView *reminderListView;
 -(instancetype)initWithDelegate:(id<P_DailyEditCompound>)delegate;
 -(void)setupDelegates;
 @end

@@ -17,7 +17,7 @@
     </entity>
     <entity name="DailyReminders" representedClassName="DailyReminders" syncable="YES">
         <attribute name="daysBeforeDue" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="reminderHour" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="reminderHour" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="remind_daily" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Daily" inverseName="daily_remind" inverseEntity="Daily" syncable="YES"/>
     </entity>
     <entity name="DailySubTask" representedClassName="DailySubTask" syncable="YES">
@@ -129,6 +129,8 @@
     </entity>
     <elements>
         <element name="Daily" positionX="-254" positionY="-84" width="128" height="240"/>
+        <element name="DailyReminders" positionX="-144" positionY="-126" width="128" height="90"/>
+        <element name="DailySubTask" positionX="-180" positionY="-144" width="128" height="150"/>
         <element name="DailyTransaction" positionX="-180" positionY="-144" width="128" height="75"/>
         <element name="DataInfo" positionX="-387" positionY="72" width="128" height="90"/>
         <element name="Good" positionX="-290" positionY="174" width="128" height="105"/>
@@ -144,7 +146,5 @@
         <element name="TodoTransaction" positionX="-162" positionY="-126" width="128" height="75"/>
         <element name="Zone" positionX="-128" positionY="129" width="128" height="150"/>
         <element name="ZoneTransaction" positionX="-153" positionY="-117" width="128" height="75"/>
-        <element name="DailySubTask" positionX="-180" positionY="-144" width="128" height="150"/>
-        <element name="DailyReminders" positionX="-144" positionY="-126" width="128" height="90"/>
     </elements>
 </model>

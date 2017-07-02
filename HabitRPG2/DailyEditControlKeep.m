@@ -69,6 +69,16 @@
     return _streakResetterView;
 }
 
+@synthesize reminderListView = _reminderListView;
+-(ReminderListView *)reminderListView{
+    if(nil==_reminderListView){
+        _reminderListView = [[ReminderListView alloc]
+                             initWithFrame:
+                             ReminderListView.naturalFrame];
+    }
+    return _reminderListView;
+}
+
 
 @synthesize allControls = _allControls;
 -(NSArray<UIView<P_EditScreenControl> *> *)allControls{
@@ -79,6 +89,7 @@
                         ,self.rateSetterView
                         ,self.importanceSliders
                         ,self.streakResetterView
+                        ,self.reminderListView
                         ,nil];
     }
     return _allControls;

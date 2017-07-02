@@ -32,12 +32,21 @@
 }
 
 -(NSDate *)nextDueTime{
-    return [Daily calculateNextDueTime:self.lastActivationTime withRate:self.rate andDayStart:SCSettings.dayStart];
+    return
+    [Daily calculateNextDueTime:self.lastActivationTime withRate:self.rate
+                    andDayStart:SCSettings.dayStart];
 }
 
 -(int)daysUntilDue{
-    NSDate *roundedDownToday = [NSDate setTime:[NSDate date] hour:SCSettings.dayStart minute:0 second:0];
+    NSDate *roundedDownToday =
+    [NSDate setTime:[NSDate date] hour:SCSettings.dayStart minute:0 second:0];
+    
     return (int)[NSDate daysBetween:roundedDownToday to:self.nextDueTime];
+}
+
+-(NSOrderedSet<NSManagedObject<P_Reminder> *> *)getReminderSet{
+    return
+    (NSOrderedSet<NSManagedObject<P_Reminder> *> *)self.daily_remind;
 }
 
 @end

@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "P_Reminder.h"
 
 @class Daily;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DailyReminders : NSManagedObject
+@interface DailyReminders : NSManagedObject<P_Reminder>
 
 @end
 

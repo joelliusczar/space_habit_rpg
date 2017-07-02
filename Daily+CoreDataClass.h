@@ -8,17 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "P_DueDateWrapper.h"
 
 @class DailySubTask;
 @class DailyReminders;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Daily : NSManagedObject
+@interface Daily : NSManagedObject <P_DueDateWrapper>
 @property (nonatomic,assign) NSInteger rowNum;
 @property (nonatomic,assign) NSInteger sectionNum;
 @property (readonly,nonatomic) NSMutableDictionary *mapable;
-@property (readonly,nonatomic) NSDate *nextDueTime;
 @property (readonly,nonatomic) int daysUntilDue;
 @end
 

@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @protocol P_Reminder <NSObject>
-
+@property (readonly,weak,nonatomic) NSString *synopsis;
 @end

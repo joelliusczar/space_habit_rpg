@@ -2,7 +2,7 @@
 //  DailyReminders+CoreDataProperties.m
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 6/17/17.
+//  Created by Joel Pridgen on 7/1/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
@@ -14,8 +14,8 @@
 	return [[NSFetchRequest alloc] initWithEntityName:@"DailyReminders"];
 }
 
-@dynamic reminderHour;
 @dynamic daysBeforeDue;
+@dynamic reminderHour;
 @dynamic remind_daily;
 
 @end
