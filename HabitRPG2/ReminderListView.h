@@ -11,14 +11,14 @@
 #import "P_DueDateWrapper.h"
 #import "P_Reminder.h"
 #import "P_AddItemsFooterDelegate.h"
+#import "ControlController.h"
 
 @import CoreData;
 
-@interface ReminderListView :UIView
+@interface ReminderListView :ControlController
 <P_EditScreenControl,
 UITableViewDataSource,UITableViewDelegate,P_AddItemsFooterDelegate>
 
-@property (weak,nonatomic) IBOutlet ReminderListView *mainView;
 @property (weak,nonatomic) IBOutlet UITableView *reminderList;
 @property (weak,nonatomic) NSObject<P_DueDateWrapper>* dueDateInfo;
 @property (weak,nonatomic)

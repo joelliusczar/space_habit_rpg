@@ -2,7 +2,7 @@
 //  DailySubTask+CoreDataProperties.m
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 6/17/17.
+//  Created by Joel Pridgen on 7/2/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
@@ -14,12 +14,12 @@
 	return [[NSFetchRequest alloc] initWithEntityName:@"DailySubTask"];
 }
 
-@dynamic dailySubTaskName;
 @dynamic activeDaysHash;
+@dynamic dailySubTaskName;
 @dynamic difficulty;
-@dynamic urgency;
 @dynamic lastActivationTime;
 @dynamic rate;
+@dynamic urgency;
 @dynamic subtask_daily;
 
 @end

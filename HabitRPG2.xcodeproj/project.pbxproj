@@ -42,6 +42,9 @@
 		273978AE1EB8473100F217B4 /* MonsterTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 273978A11EB8473100F217B4 /* MonsterTransaction+CoreDataClass.m */; };
 		273978AF1EB8473100F217B4 /* MonsterTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 273978A31EB8473100F217B4 /* MonsterTransaction+CoreDataProperties.m */; };
 		273979001EC4092A00F217B4 /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273978FF1EC4092A00F217B4 /* IntroViewController.xib */; };
+		274A37561F08C7BE00F31E0F /* ReminderTimeSpinPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274A37551F08C7BE00F31E0F /* ReminderTimeSpinPicker.xib */; };
+		274A375C1F08CD6D00F31E0F /* ReminderTimeSpinPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A375B1F08CD6D00F31E0F /* ReminderTimeSpinPicker.m */; };
+		274A37961F0962A100F31E0F /* ControlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37951F0962A100F31E0F /* ControlController.m */; };
 		274FFC291EF6236600FAF809 /* ActiveDaysPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC271EF6236600FAF809 /* ActiveDaysPicker.m */; };
 		274FFC2A1EF6236600FAF809 /* ActiveDaysPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274FFC281EF6236600FAF809 /* ActiveDaysPicker.xib */; };
 		274FFC2F1EF6296D00FAF809 /* NoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC2D1EF6296D00FAF809 /* NoteView.m */; };
@@ -241,6 +244,12 @@
 		273978A21EB8473100F217B4 /* MonsterTransaction+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MonsterTransaction+CoreDataProperties.h"; path = "../MonsterTransaction+CoreDataProperties.h"; sourceTree = "<group>"; };
 		273978A31EB8473100F217B4 /* MonsterTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MonsterTransaction+CoreDataProperties.m"; path = "../MonsterTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
 		273978FF1EC4092A00F217B4 /* IntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroViewController.xib; sourceTree = "<group>"; };
+		274A37551F08C7BE00F31E0F /* ReminderTimeSpinPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReminderTimeSpinPicker.xib; sourceTree = "<group>"; };
+		274A375A1F08CD6D00F31E0F /* ReminderTimeSpinPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReminderTimeSpinPicker.h; sourceTree = "<group>"; };
+		274A375B1F08CD6D00F31E0F /* ReminderTimeSpinPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReminderTimeSpinPicker.m; sourceTree = "<group>"; };
+		274A375D1F0951F000F31E0F /* Model 26.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 26.xcdatamodel"; sourceTree = "<group>"; };
+		274A37941F0962A100F31E0F /* ControlController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlController.h; sourceTree = "<group>"; };
+		274A37951F0962A100F31E0F /* ControlController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlController.m; sourceTree = "<group>"; };
 		274FFC261EF6236600FAF809 /* ActiveDaysPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveDaysPicker.h; sourceTree = "<group>"; };
 		274FFC271EF6236600FAF809 /* ActiveDaysPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveDaysPicker.m; sourceTree = "<group>"; };
 		274FFC281EF6236600FAF809 /* ActiveDaysPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActiveDaysPicker.xib; sourceTree = "<group>"; };
@@ -489,14 +498,8 @@
 		272144FE1EDFB46E00D98C03 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				27E89C711EF5CE4C009B7474 /* DailyReminders+CoreDataClass.h */,
-				27E89C721EF5CE4C009B7474 /* DailyReminders+CoreDataClass.m */,
-				27E89C731EF5CE4C009B7474 /* DailyReminders+CoreDataProperties.h */,
-				27E89C741EF5CE4C009B7474 /* DailyReminders+CoreDataProperties.m */,
-				27E89C771EF5CE4C009B7474 /* DailySubTask+CoreDataClass.h */,
-				27E89C781EF5CE4C009B7474 /* DailySubTask+CoreDataClass.m */,
-				27E89C791EF5CE4C009B7474 /* DailySubTask+CoreDataProperties.h */,
-				27E89C7A1EF5CE4C009B7474 /* DailySubTask+CoreDataProperties.m */,
+				274A37591F08CD1000F31E0F /* Daily Subtask */,
+				274A37581F08CCF700F31E0F /* DailyReminder */,
 				68A921E61DBC7FF1007C946C /* Daily+CoreDataProperties.h */,
 				271217591DCE84310072ACC6 /* Daily+CoreDataClass.h */,
 				2712175A1DCE84310072ACC6 /* Daily+CoreDataClass.m */,
@@ -505,7 +508,42 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		274FFC311EF62AF900FAF809 /* ControlDelegates */ = {
+		274A37571F08CCB400F31E0F /* Reminders Controls */ = {
+			isa = PBXGroup;
+			children = (
+				27C3C21A1F001DF300F205A6 /* ReminderListView.h */,
+				27C3C21B1F001DF300F205A6 /* ReminderListView.m */,
+				27C3C21D1F0022D600F205A6 /* ReminderListView.xib */,
+				274A37551F08C7BE00F31E0F /* ReminderTimeSpinPicker.xib */,
+				274A375A1F08CD6D00F31E0F /* ReminderTimeSpinPicker.h */,
+				274A375B1F08CD6D00F31E0F /* ReminderTimeSpinPicker.m */,
+			);
+			name = "Reminders Controls";
+			sourceTree = "<group>";
+		};
+		274A37581F08CCF700F31E0F /* DailyReminder */ = {
+			isa = PBXGroup;
+			children = (
+				27E89C711EF5CE4C009B7474 /* DailyReminders+CoreDataClass.h */,
+				27E89C721EF5CE4C009B7474 /* DailyReminders+CoreDataClass.m */,
+				27E89C731EF5CE4C009B7474 /* DailyReminders+CoreDataProperties.h */,
+				27E89C741EF5CE4C009B7474 /* DailyReminders+CoreDataProperties.m */,
+			);
+			name = DailyReminder;
+			sourceTree = "<group>";
+		};
+		274A37591F08CD1000F31E0F /* Daily Subtask */ = {
+			isa = PBXGroup;
+			children = (
+				27E89C771EF5CE4C009B7474 /* DailySubTask+CoreDataClass.h */,
+				27E89C781EF5CE4C009B7474 /* DailySubTask+CoreDataClass.m */,
+				27E89C791EF5CE4C009B7474 /* DailySubTask+CoreDataProperties.h */,
+				27E89C7A1EF5CE4C009B7474 /* DailySubTask+CoreDataProperties.m */,
+			);
+			name = "Daily Subtask";
+			sourceTree = "<group>";
+		};
+		274FFC311EF62AF900FAF809 /* Control Delegates */ = {
 			isa = PBXGroup;
 			children = (
 				27E89C9F1EF600D9009B7474 /* P_ImportanceSlidersDelegate.h */,
@@ -520,7 +558,7 @@
 				27C3C2191EFF594C00F205A6 /* P_CommonDelegate.h */,
 				27C3C2281F08BC4F00F205A6 /* P_AddItemsFooterDelegate.h */,
 			);
-			name = ControlDelegates;
+			name = "Control Delegates";
 			sourceTree = "<group>";
 		};
 		277ABECA1E94A08E008CC239 /* Protocols */ = {
@@ -652,7 +690,8 @@
 		27E89C991EF5FC40009B7474 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				274FFC311EF62AF900FAF809 /* ControlDelegates */,
+				274A37571F08CCB400F31E0F /* Reminders Controls */,
+				274FFC311EF62AF900FAF809 /* Control Delegates */,
 				27E89C9A1EF5FCD5009B7474 /* ImportanceSliderView.h */,
 				27E89C9B1EF5FCD5009B7474 /* ImportanceSliderView.m */,
 				27E89C9C1EF5FCD5009B7474 /* ImportanceSliderView.xib */,
@@ -674,12 +713,11 @@
 				27C3C2131EFEF6F800F205A6 /* RewardsView.h */,
 				27C3C2141EFEF6F800F205A6 /* RewardsView.m */,
 				27C3C2161EFEF89500F205A6 /* RewardsView.xib */,
-				27C3C21A1F001DF300F205A6 /* ReminderListView.h */,
-				27C3C21B1F001DF300F205A6 /* ReminderListView.m */,
-				27C3C21D1F0022D600F205A6 /* ReminderListView.xib */,
 				27C3C2231F08799200F205A6 /* AddItemsFooter.h */,
 				27C3C2241F08799200F205A6 /* AddItemsFooter.m */,
 				27C3C2261F0879B200F205A6 /* AddItemsFooter.xib */,
+				274A37941F0962A100F31E0F /* ControlController.h */,
+				274A37951F0962A100F31E0F /* ControlController.m */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -1122,6 +1160,7 @@
 				273978861EB55F3700F217B4 /* StoryDumpView.xib in Resources */,
 				6886A48F1D8F6F9B005E12B3 /* edit_button.png in Resources */,
 				68F3F9B91D70E82E00840DD2 /* Assets.xcassets in Resources */,
+				274A37561F08C7BE00F31E0F /* ReminderTimeSpinPicker.xib in Resources */,
 				27C3C2271F0879B200F205A6 /* AddItemsFooter.xib in Resources */,
 				687F01231D77CA6500C7B08B /* DailyTablesViewController.xib in Resources */,
 				686ED3C21DB47FA5004EDD36 /* black_checked_empty.png in Resources */,
@@ -1211,6 +1250,7 @@
 				68BE45911D9DEA0B003F3400 /* IntroViewController.m in Sources */,
 				68F3F9E41D70E8DB00840DD2 /* CentralViewController.m in Sources */,
 				274FFC4A1EF887DB00FAF809 /* DailyEditControlKeep.m in Sources */,
+				274A37961F0962A100F31E0F /* ControlController.m in Sources */,
 				2709B39C1EF0D31200EEE5CC /* Interceptor.m in Sources */,
 				68A921F61DBC7FF2007C946C /* Good+CoreDataProperties.m in Sources */,
 				27C3C2251F08799200F205A6 /* AddItemsFooter.m in Sources */,
@@ -1240,6 +1280,7 @@
 				68A921F81DBC7FF2007C946C /* Todo+CoreDataProperties.m in Sources */,
 				273978AF1EB8473100F217B4 /* MonsterTransaction+CoreDataProperties.m in Sources */,
 				6886A4801D8E5FD0005E12B3 /* constants.m in Sources */,
+				274A375C1F08CD6D00F31E0F /* ReminderTimeSpinPicker.m in Sources */,
 				271C04881E8B639D002221E9 /* ResourceUtility.m in Sources */,
 				68A921F41DBC7FF2007C946C /* Hero+CoreDataProperties.m in Sources */,
 				27E89C941EF5E732009B7474 /* ReminderCellController.m in Sources */,
@@ -1463,6 +1504,7 @@
 		273782391EE4DB9C00EA5B1D /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				274A375D1F0951F000F31E0F /* Model 26.xcdatamodel */,
 				27E89C681EF59034009B7474 /* Model 25.xcdatamodel */,
 				2709B39D1EF4DFCA00EEE5CC /* Model 24.xcdatamodel */,
 				2709B3921EEF733400EEE5CC /* Model 23.xcdatamodel */,
@@ -1472,7 +1514,7 @@
 				2737823C1EE4DB9C00EA5B1D /* Model 21.xcdatamodel */,
 				2737823D1EE4DB9C00EA5B1D /* Model.xcdatamodel */,
 			);
-			currentVersion = 27E89C681EF59034009B7474 /* Model 25.xcdatamodel */;
+			currentVersion = 274A375D1F0951F000F31E0F /* Model 26.xcdatamodel */;
 			name = Model.xcdatamodeld;
 			path = HabitRPG2/Model.xcdatamodeld;
 			sourceTree = "<group>";

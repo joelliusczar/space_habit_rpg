@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "P_SubtasksTableViewDelegate.h"
+#import "ControlController.h"
 
-@interface SubtasksTableView : UIView<UITableViewDataSource>
-@property (weak,nonatomic) IBOutlet SubtasksTableView *mainView;
+@interface SubtasksTableView : ControlController<UITableViewDataSource>
 @property (weak,nonatomic) IBOutlet UITableView *subtasksList;
 @property (weak,nonatomic) id<P_SubtasksTableViewDelegate> delegate;
 @end

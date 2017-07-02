@@ -22,12 +22,9 @@ NSDate *testDate = nil; //TODO remove
     return CGRectMake(0,0,300,100);
 }
 
-+(void)initialize{ //TODO remove
-    testDate = [NSDate dateWithTimeIntervalSince1970:1498443328];
-}
 
 -(instancetype)initWithDueDateInfo:(NSObject<P_DueDateWrapper> *)dueDateInfo{
-    if(self = [self initWithFrame:self.class.naturalFrame]){
+    if(self = [self initDefault]){
         _dueDateInfo = dueDateInfo;
         _reminderSet = [dueDateInfo getReminderSet];
         
@@ -35,15 +32,15 @@ NSDate *testDate = nil; //TODO remove
     return self;
 }
 
--(instancetype)initWithFrame:(CGRect)frame{
-    if(self = [super initWithFrame:frame]){
-        _mainView = [[NSBundle mainBundle]
-                     loadNibNamed:NSStringFromClass(self.class)
-                     owner:self options:nil][0];
-        
-        [self addSubview:_mainView];
-    }
-    return self;
+
+-(void)viewDidLoad{
+    [super viewDidLoad];
+}
+
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    self.view.frame = self.class.naturalFrame;
 }
 
 

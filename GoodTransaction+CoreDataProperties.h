@@ -2,7 +2,7 @@
 //  GoodTransaction+CoreDataProperties.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 5/23/17.
+//  Created by Joel Pridgen on 7/2/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
@@ -15,8 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<GoodTransaction *> *)fetchRequest;
 
-@property (nullable, nonatomic, copy) NSDate *timestamp;
 @property (nullable, nonatomic, copy) NSString *misc;
+@property (nullable, nonatomic, copy) NSDate *timestamp;
 
 @end
 

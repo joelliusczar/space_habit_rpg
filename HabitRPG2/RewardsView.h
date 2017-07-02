@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "P_RewardsDelegate.h"
 #import "P_EditScreenControl.h"
+#import "ControlController.h"
 
-@interface RewardsView : UIView <P_EditScreenControl>
-@property (weak,nonatomic) IBOutlet RewardsView *mainView;
+@interface RewardsView : ControlController <P_EditScreenControl>
 @property (weak,nonatomic) id<P_RewardsDelegate> delegate;
 @end

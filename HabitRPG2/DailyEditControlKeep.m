@@ -7,6 +7,7 @@
 //
 
 #import "DailyEditControlKeep.h"
+#import "ControlController.h"
 
 @interface DailyEditControlKeep()
 @property (assign,nonatomic) id<P_DailyEditCompound> delegate;
@@ -19,10 +20,7 @@
 @synthesize noteView = _noteView;
 -(NoteView *)noteView{
     if(nil==_noteView){
-        _noteView = [[NoteView alloc] initWithFrame:NoteView.naturalFrame];
-        if(self.delegate){
-            _noteView.delegate = self.delegate;
-        }
+        _noteView = [[NoteView alloc] initDefault];
     }
     return _noteView;
 }
@@ -32,7 +30,7 @@
 -(ActiveDaysPicker *)activeDaysPicker{
     if(nil==_activeDaysPicker){
         _activeDaysPicker =
-        [[ActiveDaysPicker alloc] initWithFrame:ActiveDaysPicker.naturalFrame];
+        [[ActiveDaysPicker alloc] initDefault];
     }
     return _activeDaysPicker;
 }
@@ -41,8 +39,7 @@
 @synthesize rateSetterView = _rateSetterView;
 -(RateSetterView *)rateSetterView{
     if(nil==_rateSetterView){
-        _rateSetterView =
-        [[RateSetterView alloc] initWithFrame:RateSetterView.naturalFrame];
+        _rateSetterView = [[RateSetterView alloc] initDefault];
     }
     return _rateSetterView;
 }
@@ -52,8 +49,7 @@
 -(ImportanceSliderView *)importanceSliders{
     if(nil==_importanceSliders){
         _importanceSliders =
-        [[ImportanceSliderView alloc]
-         initWithFrame:ImportanceSliderView.naturalFrame];
+        [[ImportanceSliderView alloc] initDefault];
     }
     return _importanceSliders;
 }
@@ -62,26 +58,23 @@
 @synthesize streakResetterView = _streakResetterView;
 -(StreakResetterView *)streakResetterView{
     if(nil==_streakResetterView){
-        _streakResetterView = [[StreakResetterView alloc]
-                               initWithFrame:
-                               StreakResetterView.naturalFrame];
+        _streakResetterView = [[StreakResetterView alloc] initDefault];
     }
     return _streakResetterView;
 }
 
 @synthesize reminderListView = _reminderListView;
 -(ReminderListView *)reminderListView{
-    if(nil==_reminderListView){
-        _reminderListView = [[ReminderListView alloc]
-                             initWithFrame:
-                             ReminderListView.naturalFrame];
-    }
-    return _reminderListView;
+//    if(nil==_reminderListView){
+//        _reminderListView = [[ReminderListView alloc] initD];
+//    }
+//    return _reminderListView;
+    return nil;
 }
 
 
 @synthesize allControls = _allControls;
--(NSArray<UIView<P_EditScreenControl> *> *)allControls{
+-(NSArray<UIViewController<P_EditScreenControl> *> *)allControls{
     if(nil==_allControls){
         _allControls = [NSArray arrayWithObjects:
                         self.noteView

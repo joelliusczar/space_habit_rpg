@@ -307,16 +307,18 @@ NSString* const IS_DIRTY = @"isDirty";
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [[UITableViewCell alloc] init];
-    UIView *cellView = self.editControls.allControls[indexPath.row];
-    cellView.subviews[0].backgroundColor = self.view.backgroundColor;
+    UIView *cellView = self.editControls.allControls[indexPath.row].view;
+    cellView.backgroundColor = self.view.backgroundColor;
     cell.backgroundColor = self.view.backgroundColor;
+    cell.autoresizesSubviews = NO;
     [cell addSubview:cellView];
     return cell;
 }
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return self.editControls.allControls[indexPath.row].frame.size.height;
+    //NSLog(@"tb %@ height %f\n\n",self.editControls.allControls[indexPath.row].class,self.editControls.allControls[indexPath.row].view.frame.size.height);
+    return self.editControls.allControls[indexPath.row].view.frame.size.height;
 }
 
 

@@ -2,7 +2,7 @@
 //  Settings+CoreDataProperties.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 6/12/17.
+//  Created by Joel Pridgen on 7/2/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<Settings *> *)fetchRequest;
 
+@property (nonatomic) BOOL allowReport;
 @property (nullable, nonatomic, copy) NSDate *createDate;
 @property (nonatomic) int32_t dayStart;
 @property (nonatomic) float deathGoldPenalty;
@@ -25,9 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) BOOL permaDeath;
 @property (nonatomic) int32_t reminderHour;
 @property (nonatomic) BOOL storyModeisOn;
-@property (nonatomic) int32_t zoneLvlPenalty;
 @property (nullable, nonatomic, copy) NSString *userId;
-@property (nonatomic) BOOL allowReport;
+@property (nonatomic) int32_t zoneLvlPenalty;
 
 @end
 

@@ -2,7 +2,7 @@
 //  Settings+CoreDataProperties.m
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 6/12/17.
+//  Created by Joel Pridgen on 7/2/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
@@ -14,6 +14,7 @@
 	return [[NSFetchRequest alloc] initWithEntityName:@"Settings"];
 }
 
+@dynamic allowReport;
 @dynamic createDate;
 @dynamic dayStart;
 @dynamic deathGoldPenalty;
@@ -24,8 +25,7 @@
 @dynamic permaDeath;
 @dynamic reminderHour;
 @dynamic storyModeisOn;
-@dynamic zoneLvlPenalty;
 @dynamic userId;
-@dynamic allowReport;
+@dynamic zoneLvlPenalty;
 
 @end

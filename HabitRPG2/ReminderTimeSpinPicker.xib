@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReminderTimeSpinPicker">
+            <connections>
+                <outlet property="picker" destination="cph-eG-im8" id="N3A-Qt-CKy"/>
+                <outlet property="view" destination="YwG-y3-3KR" id="9dn-on-Aia"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="YwG-y3-3KR">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="behind_alert_view.png" translatesAutoresizingMaskIntoConstraints="NO" id="1A9-UA-drd">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                </imageView>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cph-eG-im8">
+                    <rect key="frame" x="0.0" y="520" width="414" height="216"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="FBG-RE-dH2"/>
+                    </connections>
+                </pickerView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="1A9-UA-drd" firstAttribute="centerX" secondItem="YwG-y3-3KR" secondAttribute="centerX" id="4Kg-v1-AvH"/>
+                <constraint firstItem="1A9-UA-drd" firstAttribute="leading" secondItem="YwG-y3-3KR" secondAttribute="leading" id="MnX-zX-s9j"/>
+                <constraint firstAttribute="trailing" secondItem="cph-eG-im8" secondAttribute="trailing" id="NcM-OB-B9Z"/>
+                <constraint firstItem="1A9-UA-drd" firstAttribute="top" secondItem="YwG-y3-3KR" secondAttribute="top" id="SXf-ti-hTB"/>
+                <constraint firstAttribute="trailing" secondItem="1A9-UA-drd" secondAttribute="trailing" id="Txf-kV-9P3"/>
+                <constraint firstItem="1A9-UA-drd" firstAttribute="centerY" secondItem="YwG-y3-3KR" secondAttribute="centerY" id="arQ-hM-Wpa"/>
+                <constraint firstItem="cph-eG-im8" firstAttribute="centerX" secondItem="YwG-y3-3KR" secondAttribute="centerX" id="pgI-ON-gk2"/>
+                <constraint firstItem="cph-eG-im8" firstAttribute="leading" secondItem="YwG-y3-3KR" secondAttribute="leading" id="sUk-EK-C8f"/>
+                <constraint firstItem="cph-eG-im8" firstAttribute="bottom" secondItem="YwG-y3-3KR" secondAttribute="bottom" id="tos-cA-Gbe"/>
+                <constraint firstAttribute="bottom" secondItem="1A9-UA-drd" secondAttribute="bottom" id="yh8-JU-Xrw"/>
+            </constraints>
+            <connections>
+                <outlet property="mainView" destination="-1" id="9Eh-ke-xhF"/>
+            </connections>
+            <point key="canvasLocation" x="2" y="-95"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="behind_alert_view.png" width="320" height="460"/>
+    </resources>
+</document>

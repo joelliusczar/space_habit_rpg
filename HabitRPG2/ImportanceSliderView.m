@@ -20,19 +20,6 @@
 }
 
 
--(instancetype)initWithFrame:(CGRect)frame{
-    if(self = [super initWithFrame:frame]){
-        _mainView =
-        [[NSBundle mainBundle]
-         loadNibNamed:NSStringFromClass(self.class)
-         owner:self options:nil][0];
-        
-        [self addSubview: _mainView];
-    }
-    return self;
-}
-
-
 -(IBAction)urgencySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event {
     if(self.delegate){
         [self.delegate urgencySld_valueChanged_action:sender forEvent:event];

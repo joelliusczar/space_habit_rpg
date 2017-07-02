@@ -2,7 +2,7 @@
 //  GoodTransaction+CoreDataProperties.m
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 5/23/17.
+//  Created by Joel Pridgen on 7/2/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
@@ -14,7 +14,7 @@
 	return [[NSFetchRequest alloc] initWithEntityName:@"GoodTransaction"];
 }
 
-@dynamic timestamp;
 @dynamic misc;
+@dynamic timestamp;
 
 @end

@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "P_AddItemsFooterDelegate.h"
+#import "ControlController.h"
 
-@interface AddItemsFooter : UIView
-@property (weak,nonatomic) IBOutlet AddItemsFooter *mainView;
+@interface AddItemsFooter : ControlController
 @property (weak,nonatomic) id<P_AddItemsFooterDelegate> delegate;
 @end

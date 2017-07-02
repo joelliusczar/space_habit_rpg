@@ -2,7 +2,7 @@
 //  Todo+CoreDataProperties.h
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 6/4/17.
+//  Created by Joel Pridgen on 7/2/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 

@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActiveDaysPicker">
             <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="wMQ-xB-lWb"/>
                 <outletCollection property="activeDaySwitches" destination="XGF-wE-JMo" id="cvN-TL-7cB"/>
                 <outletCollection property="activeDaySwitches" destination="ZAQ-Kw-KsY" id="vJ4-cb-PXD"/>
                 <outletCollection property="activeDaySwitches" destination="ri6-il-G2G" id="TJl-sb-bts"/>
@@ -21,7 +22,7 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="ActiveDaysPicker">
+        <view autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="278" height="179"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -168,9 +169,6 @@
             </subviews>
             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="mainView" destination="-1" id="eid-TM-oBW"/>
-            </connections>
             <point key="canvasLocation" x="54" y="-190.5"/>
         </view>
     </objects>
