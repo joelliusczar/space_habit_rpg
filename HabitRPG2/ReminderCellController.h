@@ -7,10 +7,9 @@
 //
 
 #import "TaskCell.h"
-#import "P_Reminder.h"
-#import <CoreData/CoreData.h>
+#import "Reminder+CoreDataClass.h"
 
 @interface ReminderCellController : TaskCell
-+(instancetype)getReminderCell:(UITableView *)tableView withParent:(id)parent andReminder:(NSManagedObject<P_Reminder> *)reminderModel;
++(instancetype)getReminderCell:(UITableView *)tableView withParent:(id)parent andReminder:(Reminder *)reminderModel;
 
 @end

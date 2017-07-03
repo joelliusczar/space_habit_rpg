@@ -24,24 +24,55 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                 </imageView>
                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cph-eG-im8">
-                    <rect key="frame" x="0.0" y="520" width="414" height="216"/>
+                    <rect key="frame" x="0.0" y="476" width="414" height="216"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="216" id="fEY-gr-MfF"/>
+                    </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="FBG-RE-dH2"/>
                     </connections>
                 </pickerView>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kds-JC-wZJ">
+                    <rect key="frame" x="0.0" y="692" width="414" height="44"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="Qjj-QU-Cf9"/>
+                    </constraints>
+                    <items>
+                        <barButtonItem style="plain" id="p2p-rI-2MV">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TDR-bO-tcL">
+                                <rect key="frame" x="20" y="11" width="78" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                <state key="normal" title="Select">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pickerSelectBtn_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="Wf7-oe-BNj"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </items>
+                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                </toolbar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="Kds-JC-wZJ" secondAttribute="trailing" id="0xy-L7-QDG"/>
                 <constraint firstItem="1A9-UA-drd" firstAttribute="centerX" secondItem="YwG-y3-3KR" secondAttribute="centerX" id="4Kg-v1-AvH"/>
+                <constraint firstItem="Kds-JC-wZJ" firstAttribute="top" secondItem="cph-eG-im8" secondAttribute="bottom" id="7kc-TF-XT2"/>
                 <constraint firstItem="1A9-UA-drd" firstAttribute="leading" secondItem="YwG-y3-3KR" secondAttribute="leading" id="MnX-zX-s9j"/>
                 <constraint firstAttribute="trailing" secondItem="cph-eG-im8" secondAttribute="trailing" id="NcM-OB-B9Z"/>
+                <constraint firstItem="Kds-JC-wZJ" firstAttribute="centerX" secondItem="YwG-y3-3KR" secondAttribute="centerX" id="NeH-wF-DeB"/>
                 <constraint firstItem="1A9-UA-drd" firstAttribute="top" secondItem="YwG-y3-3KR" secondAttribute="top" id="SXf-ti-hTB"/>
                 <constraint firstAttribute="trailing" secondItem="1A9-UA-drd" secondAttribute="trailing" id="Txf-kV-9P3"/>
+                <constraint firstItem="Kds-JC-wZJ" firstAttribute="leading" secondItem="YwG-y3-3KR" secondAttribute="leading" id="XHg-OM-YiW"/>
                 <constraint firstItem="1A9-UA-drd" firstAttribute="centerY" secondItem="YwG-y3-3KR" secondAttribute="centerY" id="arQ-hM-Wpa"/>
                 <constraint firstItem="cph-eG-im8" firstAttribute="centerX" secondItem="YwG-y3-3KR" secondAttribute="centerX" id="pgI-ON-gk2"/>
+                <constraint firstItem="Kds-JC-wZJ" firstAttribute="bottom" secondItem="YwG-y3-3KR" secondAttribute="bottom" id="rD2-7o-E98"/>
                 <constraint firstItem="cph-eG-im8" firstAttribute="leading" secondItem="YwG-y3-3KR" secondAttribute="leading" id="sUk-EK-C8f"/>
-                <constraint firstItem="cph-eG-im8" firstAttribute="bottom" secondItem="YwG-y3-3KR" secondAttribute="bottom" id="tos-cA-Gbe"/>
                 <constraint firstAttribute="bottom" secondItem="1A9-UA-drd" secondAttribute="bottom" id="yh8-JU-Xrw"/>
             </constraints>
             <connections>

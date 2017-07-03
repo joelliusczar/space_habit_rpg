@@ -44,9 +44,16 @@
     return (int)[NSDate daysBetween:roundedDownToday to:self.nextDueTime];
 }
 
--(NSOrderedSet<NSManagedObject<P_Reminder> *> *)getReminderSet{
-    return
-    (NSOrderedSet<NSManagedObject<P_Reminder> *> *)self.daily_remind;
+-(NSOrderedSet<Reminder *> *)getReminderSet{
+    return self.daily_remind;
+}
+
+-(void)addNewReminder:(Reminder *)reminder{
+    [self addDaily_remindObject:reminder];
+}
+
+-(void)removeReminder:(Reminder *)reminder{
+    [self removeDaily_remindObject:reminder];
 }
 
 @end

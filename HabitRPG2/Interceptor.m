@@ -11,12 +11,21 @@
 @implementation Interceptor
 
 +(void)callVoidWrapped:(wrapReturnVoid)callMe withInfo:(id)info{
-    NSLog(@"%@",info);
+    [self handleInterceptedInfo:info];
     callMe();
 }
 
 +(int32_t)callInt32Wrapped:(wrapReturnInt32)callMe withInfo:(id)info{
     return callMe();
+}
+
++(void)handleInterceptedInfo:(id)info{
+    if(nil==info){}
+    else if([info isKindOfClass:NSString.class]){
+        NSLog(@"%@",info);
+    }
+    else if([info isKindOfClass:NSDictionary.class]){}
+    else if([info isKindOfClass:NSArray.class]){}
 }
 
 @end

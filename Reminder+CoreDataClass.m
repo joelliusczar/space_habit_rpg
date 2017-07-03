@@ -1,16 +1,17 @@
 //
-//  DailyReminders+CoreDataClass.m
+//  Reminder+CoreDataClass.m
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 6/17/17.
+//  Created by Joel Pridgen on 7/3/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import "DailyReminders+CoreDataClass.h"
+#import "Reminder+CoreDataClass.h"
 #import "Daily+CoreDataClass.h"
 #import "SingletonCluster.h"
 
-@implementation DailyReminders
+@implementation Reminder
+
 -(NSString *)synopsis{
     NSDateComponentsFormatter *format =
     [[NSDateComponentsFormatter alloc] init];
@@ -24,4 +25,5 @@
     return [NSString stringWithFormat:@"Remind at:%@ %d days before",
             [format stringFromDateComponents:components],self.daysBeforeDue];
 }
+
 @end

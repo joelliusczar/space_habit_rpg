@@ -12,7 +12,7 @@
         <attribute name="rollbackActivationTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="streakLength" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="urgency" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="daily_remind" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Reminders" inverseName="remind_daily" inverseEntity="Reminders" syncable="YES"/>
+        <relationship name="daily_remind" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Reminder" inverseName="remind_daily" inverseEntity="Reminder" syncable="YES"/>
         <relationship name="daily_subtask" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="DailySubTask" inverseName="subtask_daily" inverseEntity="DailySubTask" syncable="YES"/>
     </entity>
     <entity name="DailySubTask" representedClassName="DailySubTask" syncable="YES">
@@ -77,7 +77,7 @@
         <attribute name="misc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
-    <entity name="Reminders" representedClassName="Reminders" syncable="YES">
+    <entity name="Reminder" representedClassName="Reminder" syncable="YES" codeGenerationType="class">
         <attribute name="daysBeforeDue" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="reminderHour" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="remind_daily" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Daily" inverseName="daily_remind" inverseEntity="Daily" syncable="YES"/>
@@ -129,7 +129,6 @@
     </entity>
     <elements>
         <element name="Daily" positionX="-254" positionY="-84" width="128" height="240"/>
-        <element name="Reminders" positionX="-144" positionY="-126" width="128" height="90"/>
         <element name="DailySubTask" positionX="-180" positionY="-144" width="128" height="150"/>
         <element name="DailyTransaction" positionX="-180" positionY="-144" width="128" height="75"/>
         <element name="DataInfo" positionX="-387" positionY="72" width="128" height="90"/>
@@ -146,5 +145,6 @@
         <element name="TodoTransaction" positionX="-162" positionY="-126" width="128" height="75"/>
         <element name="Zone" positionX="-128" positionY="129" width="128" height="150"/>
         <element name="ZoneTransaction" positionX="-153" positionY="-117" width="128" height="75"/>
+        <element name="Reminder" positionX="-180" positionY="-144" width="128" height="90"/>
     </elements>
 </model>

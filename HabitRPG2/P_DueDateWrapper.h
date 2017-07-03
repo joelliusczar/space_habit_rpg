@@ -7,11 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "P_Reminder.h"
+#import "Reminder+CoreDataClass.h"
 
 @import CoreData;
 
 @protocol P_DueDateWrapper <NSObject>
 @property (readonly,nonatomic) NSDate *nextDueTime;
--(NSOrderedSet<NSManagedObject<P_Reminder> *> *)getReminderSet;
+-(NSOrderedSet<Reminder *> *)getReminderSet;
+-(void)addNewReminder:(Reminder *)reminder;
+-(void)removeReminder:(Reminder *)reminder;
 @end

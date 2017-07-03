@@ -9,17 +9,30 @@
 #import "ReminderListView.h"
 #import "SingletonCluster.h"
 #import "ReminderCellController.h"
+#import "AddItemsFooter.h"
+#import "ViewHelper.h"
+#import "Interceptor.h"
+#import "Reminder+CoreDataClass.h"
+#import "NSDate+DateHelper.h"
+#import "SHMath.h"
 @import UserNotifications;
 
-NSDate *testDate = nil; //TODO remove
+@interface ReminderListView()
+@property (strong,nonatomic) AddItemsFooter *footerControl;
+@end
 
 @implementation ReminderListView
 
-@synthesize dueDateInfo = _dueDateInfo;
-@synthesize reminderSet = _reminderSet;
 
 +(CGRect)naturalFrame{
     return CGRectMake(0,0,300,100);
+}
+
+-(AddItemsFooter *)footerControl{
+    if(nil==_footerControl){
+        _footerControl = [[AddItemsFooter alloc]initDefault];
+    }
+    return _footerControl;
 }
 
 
@@ -32,15 +45,10 @@ NSDate *testDate = nil; //TODO remove
     return self;
 }
 
-
 -(void)viewDidLoad{
     [super viewDidLoad];
-}
-
-
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    self.view.frame = self.class.naturalFrame;
+    self.reminderList.tableFooterView = self.footerControl.view;
+    self.footerControl.delegate = self;
 }
 
 
@@ -50,6 +58,7 @@ numberOfRowsInSection:(NSInteger)section{
     return self.reminderSet.count;
 }
 
+
 -(UITableViewCell *)tableView:(UITableView *)tableView
         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ReminderCellController *cell =
@@ -58,8 +67,28 @@ numberOfRowsInSection:(NSInteger)section{
     return cell;
 }
 
--(void)addItemBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event{
 
+-(void)addItemBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event{
+    [ViewHelper pushViewToFront:self.footerControl OfParent:self];
+}
+
+
+-(void)pickerSelection_action:(UIPickerView *)sender
+                     forEvent:(TimeSpinPickerEventInfo *)event{
+    
+    wrapReturnVoid wrappedCall = ^void(){
+        Reminder *reminder =
+        (Reminder *)[SHData constructEmptyEntity:Reminder.entity];
+        
+        //we only really care out the hour and minute, so I'm just storing
+        //it on my birthday
+        reminder.reminderHour =
+        [NSDate createDateTime:1988 month:4 day:27 hour:event.selectedHourRow
+                        minute:event.selectedMinRow second:0];
+        reminder.daysBeforeDue = [SHMath longToIntExact:event.selectedDaysBeforeRow];
+        [self.dueDateInfo addNewReminder:reminder];
+    };
+    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 @end

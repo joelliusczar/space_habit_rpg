@@ -9,20 +9,21 @@
 #import <UIKit/UIKit.h>
 #import "P_EditScreenControl.h"
 #import "P_DueDateWrapper.h"
-#import "P_Reminder.h"
 #import "P_AddItemsFooterDelegate.h"
 #import "ControlController.h"
+#import "Reminder+CoreDataClass.h"
+#import "P_ReminderTimeSpinPickerDelegate.h"
 
 @import CoreData;
 
 @interface ReminderListView :ControlController
-<P_EditScreenControl,
-UITableViewDataSource,UITableViewDelegate,P_AddItemsFooterDelegate>
+<P_EditScreenControl
+,UITableViewDataSource
+,P_AddItemsFooterDelegate
+,P_ReminderTimeSpinPickerDelegate>
 
 @property (weak,nonatomic) IBOutlet UITableView *reminderList;
 @property (weak,nonatomic) NSObject<P_DueDateWrapper>* dueDateInfo;
-@property (weak,nonatomic)
-    NSOrderedSet<NSManagedObject<P_Reminder> *> *reminderSet;
-
+@property (weak,nonatomic) NSOrderedSet<Reminder *> *reminderSet;
 -(instancetype)initWithDueDateInfo:(NSObject<P_DueDateWrapper> *)dueDateInfo;
 @end

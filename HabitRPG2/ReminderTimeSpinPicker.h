@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "ControlController.h"
+#import "P_ReminderTimeSpinPickerDelegate.h"
+
 
 @interface ReminderTimeSpinPicker : ControlController<UIPickerViewDataSource>
 @property (weak,nonatomic) IBOutlet UIPickerView *picker;
+@property (weak,nonatomic) id<P_ReminderTimeSpinPickerDelegate> delegate;
 @end

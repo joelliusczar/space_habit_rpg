@@ -8,12 +8,12 @@
 
 #import "ReminderCellController.h"
 @interface ReminderCellController()
-@property (weak,nonatomic) NSManagedObject<P_Reminder> *model;
+@property (weak,nonatomic) Reminder *model;
 @end
 
 @implementation ReminderCellController
 
-+(instancetype)getReminderCell:(UITableView *)tableView withParent:(id)parent andReminder:(NSManagedObject<P_Reminder> *)reminderModel{
++(instancetype)getReminderCell:(UITableView *)tableView withParent:(id)parent andReminder:(Reminder *)reminderModel{
     ReminderCellController *cell = [ReminderCellController getCell:tableView WithNibName:@"ReminderCell" AndParent:parent];
     cell.model = reminderModel;
     return cell;
