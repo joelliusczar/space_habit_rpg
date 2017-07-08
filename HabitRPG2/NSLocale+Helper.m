@@ -17,6 +17,12 @@
     [NSDateFormatter dateFormatFromTemplate:@"j"
                                     options:0
                                      locale:self];
+    return [NSLocale hourMaskForGivenFormat:formatString];
+
+}
+
+
++(NSInteger)hourMaskForGivenFormat:(NSString *)formatString{
     NSInteger hourFormatMask = 0;
     NSUInteger len = formatString.length;
     unichar searchable[len+1];
@@ -33,11 +39,10 @@
             hourFormatMask |= ZERO_BASED_12_HOUR;
         }
         if(searchable[i]=='k'){
-            hourFormatMask |= ONE_BASED_12_HOUR;
+            hourFormatMask |= ONE_BASED_24_HOUR;
         }
     }
     return hourFormatMask;
-
 }
 
 
@@ -47,8 +52,12 @@
 
 
 -(NSInteger)hourInLocaleFormat:(NSInteger)hour{
+    return [NSLocale hour:hour inGivenFormatMask:self.hourFormatMask];
+}
+
+
++(NSInteger)hour:(NSInteger)hour inGivenFormatMask:(NSInteger)hourMask{
     NSAssert(hour<24&&hour>=0,@"Hour is out of range");
-    NSInteger hourMask = self.hourFormatMask;
     BOOL isUsing24Hours = [NSLocale isMask24Hours:hourMask];
     if(isUsing24Hours){
         //if for some reason both the zero based flag and one based flag
@@ -62,7 +71,7 @@
     else{
         //this will default to one based if there's a conflict
         //because that's what I use
-        if(hourMask&ONE_BASED_12_HOUR&&hour==0){
+        if(hourMask&ONE_BASED_12_HOUR&&(hour==0||hour==12)){
             return 12;
             
         }

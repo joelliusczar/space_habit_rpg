@@ -92,7 +92,9 @@ NSString *defaultDbName = @"Model.sqlite";
 }
 
 +(instancetype)new{
-    CoreDataStackController *instance = [[CoreDataStackController alloc] init];
+    CoreDataStackController *instance =
+    [[CoreDataStackController alloc] init];
+    
     if(instance==nil){
         return nil;
     }
@@ -101,7 +103,9 @@ NSString *defaultDbName = @"Model.sqlite";
 }
 
 +(instancetype)newWithDBFileName: (NSString *) dbFileName{
-    CoreDataStackController *instance = [[CoreDataStackController alloc] init];
+    CoreDataStackController *instance =
+    [[CoreDataStackController alloc] init];
+    
     if(instance==nil){
         return nil;
     }

@@ -13,5 +13,7 @@
 @property (readonly,nonatomic) NSInteger hourFormatMask;
 @property (readonly,nonatomic) NSString* AMSymbol;
 @property (readonly,nonatomic) NSString* PMSymbol;
++(NSInteger)hourMaskForGivenFormat:(NSString *)formatString;
 -(NSInteger)hourInLocaleFormat:(NSInteger)hour;
++(NSInteger)hour:(NSInteger)hour inGivenFormatMask:(NSInteger)hourMask;
 @end

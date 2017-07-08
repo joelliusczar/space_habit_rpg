@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HabitRPG2/CoreDataStackController.m"
-            timestampString = "520704726.534352"
+            timestampString = "521180353.229209"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "-initializeCoreData"
             landmarkType = "7">
          </BreakpointContent>
@@ -281,13 +281,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HabitRPG2Tests/DateHelperTest.m"
-            timestampString = "520998238.08667"
+            filePath = "ObjCScriptRunner/MassPrinter.m"
+            timestampString = "521238068.792977"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "711"
-            endingLineNumber = "711"
-            landmarkName = "-testIs24Hours"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "+runRegexOnFileContents:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -297,76 +297,30 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HabitRPG2Tests/DateHelperTest.m"
-            timestampString = "520999650.277215"
+            filePath = "ObjCScriptRunner/MassPrinter.m"
+            timestampString = "521238068.792977"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "553"
-            endingLineNumber = "553"
-            landmarkName = "-testIs24Hours"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "+runRegexOnFileContents:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[DateHelperTest testIs24Hours]"
-                  moduleName = "HabitRPG2Tests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/HabitRPG2Tests/DateHelperTest.m"
-                  timestampString = "520999703.026363"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "553"
-                  endingLineNumber = "553"
-                  offsetFromSymbolStart = "212916">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[DateHelperTest testIs24Hours]"
-                  moduleName = "HabitRPG2Tests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/HabitRPG2Tests/DateHelperTest.m"
-                  timestampString = "520999703.030212"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "553"
-                  endingLineNumber = "553"
-                  offsetFromSymbolStart = "214324">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[DateHelperTest testIs24Hours]"
-                  moduleName = "HabitRPG2Tests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/HabitRPG2Tests/DateHelperTest.m"
-                  timestampString = "520999703.045839"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "553"
-                  endingLineNumber = "553"
-                  offsetFromSymbolStart = "214813">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[DateHelperTest testIs24Hours]"
-                  moduleName = "HabitRPG2Tests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/HabitRPG2Tests/DateHelperTest.m"
-                  timestampString = "520999703.049609"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "553"
-                  endingLineNumber = "553"
-                  offsetFromSymbolStart = "214941">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ObjCScriptRunner/MassPrinter.m"
+            timestampString = "521238068.792977"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "+outputAllLocaleFormatStringsToFile"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

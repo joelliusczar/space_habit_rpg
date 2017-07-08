@@ -51,6 +51,8 @@
 		274A37B21F0A093B00F31E0F /* SHEventInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37B11F0A093B00F31E0F /* SHEventInfo.m */; };
 		274A37B51F0A1D6200F31E0F /* SHMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37B41F0A1D6200F31E0F /* SHMath.m */; };
 		274A37B81F0DC03100F31E0F /* NSLocale+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37B71F0DC03100F31E0F /* NSLocale+Helper.m */; };
+		274A37C61F107ACF00F31E0F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37C51F107ACF00F31E0F /* main.m */; };
+		274A37CC1F107B7A00F31E0F /* MassPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37CB1F107B7A00F31E0F /* MassPrinter.m */; };
 		274FFC291EF6236600FAF809 /* ActiveDaysPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC271EF6236600FAF809 /* ActiveDaysPicker.m */; };
 		274FFC2A1EF6236600FAF809 /* ActiveDaysPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274FFC281EF6236600FAF809 /* ActiveDaysPicker.xib */; };
 		274FFC2F1EF6296D00FAF809 /* NoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC2D1EF6296D00FAF809 /* NoteView.m */; };
@@ -173,6 +175,18 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		274A37C11F107ACE00F31E0F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2709B3921EEF733400EEE5CC /* Model 23.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 23.xcdatamodel"; sourceTree = "<group>"; };
 		2709B3961EEF74E900EEE5CC /* P_ReportServiceCaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ReportServiceCaller.h; sourceTree = "<group>"; };
@@ -268,6 +282,10 @@
 		274A37B41F0A1D6200F31E0F /* SHMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMath.m; sourceTree = "<group>"; };
 		274A37B61F0DC03100F31E0F /* NSLocale+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLocale+Helper.h"; sourceTree = "<group>"; };
 		274A37B71F0DC03100F31E0F /* NSLocale+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLocale+Helper.m"; sourceTree = "<group>"; };
+		274A37C31F107ACF00F31E0F /* ObjCScriptRunner */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ObjCScriptRunner; sourceTree = BUILT_PRODUCTS_DIR; };
+		274A37C51F107ACF00F31E0F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		274A37CA1F107B7A00F31E0F /* MassPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MassPrinter.h; sourceTree = "<group>"; };
+		274A37CB1F107B7A00F31E0F /* MassPrinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MassPrinter.m; sourceTree = "<group>"; };
 		274FFC261EF6236600FAF809 /* ActiveDaysPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveDaysPicker.h; sourceTree = "<group>"; };
 		274FFC271EF6236600FAF809 /* ActiveDaysPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveDaysPicker.m; sourceTree = "<group>"; };
 		274FFC281EF6236600FAF809 /* ActiveDaysPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActiveDaysPicker.xib; sourceTree = "<group>"; };
@@ -461,6 +479,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		274A37C01F107ACE00F31E0F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		277ABED71E96F68E008CC239 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -564,6 +589,16 @@
 				274A37B11F0A093B00F31E0F /* SHEventInfo.m */,
 			);
 			name = EventArgs;
+			sourceTree = "<group>";
+		};
+		274A37C41F107ACF00F31E0F /* ObjCScriptRunner */ = {
+			isa = PBXGroup;
+			children = (
+				274A37C51F107ACF00F31E0F /* main.m */,
+				274A37CA1F107B7A00F31E0F /* MassPrinter.h */,
+				274A37CB1F107B7A00F31E0F /* MassPrinter.m */,
+			);
+			path = ObjCScriptRunner;
 			sourceTree = "<group>";
 		};
 		274FFC311EF62AF900FAF809 /* Control Delegates */ = {
@@ -971,10 +1006,10 @@
 		68F3F9A01D70E82E00840DD2 = {
 			isa = PBXGroup;
 			children = (
-				273782391EE4DB9C00EA5B1D /* Model.xcdatamodeld */,
 				277ABF711EAD9DC3008CC239 /* Scripts */,
 				68F3F9AB1D70E82E00840DD2 /* HabitRPG2 */,
 				277ABEDB1E96F68E008CC239 /* HabitRPG2Tests */,
+				274A37C41F107ACF00F31E0F /* ObjCScriptRunner */,
 				68F3F9AA1D70E82E00840DD2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -984,6 +1019,7 @@
 			children = (
 				68F3F9A91D70E82E00840DD2 /* HabitRPG2.app */,
 				277ABEDA1E96F68E008CC239 /* HabitRPG2Tests.xctest */,
+				274A37C31F107ACF00F31E0F /* ObjCScriptRunner */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -991,6 +1027,7 @@
 		68F3F9AB1D70E82E00840DD2 /* HabitRPG2 */ = {
 			isa = PBXGroup;
 			children = (
+				273782391EE4DB9C00EA5B1D /* Model.xcdatamodeld */,
 				274A37A21F09FCCB00F31E0F /* Reminders */,
 				27AE66761E876007000F31BD /* Suffix */,
 				686ED3AC1DADE4C5004EDD36 /* Hero */,
@@ -1075,6 +1112,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		274A37C21F107ACE00F31E0F /* ObjCScriptRunner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 274A37C71F107ACF00F31E0F /* Build configuration list for PBXNativeTarget "ObjCScriptRunner" */;
+			buildPhases = (
+				274A37BF1F107ACE00F31E0F /* Sources */,
+				274A37C01F107ACE00F31E0F /* Frameworks */,
+				274A37C11F107ACE00F31E0F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ObjCScriptRunner;
+			productName = ObjCScriptRunner;
+			productReference = 274A37C31F107ACF00F31E0F /* ObjCScriptRunner */;
+			productType = "com.apple.product-type.tool";
+		};
 		277ABED91E96F68E008CC239 /* HabitRPG2Tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 277ABEE11E96F68E008CC239 /* Build configuration list for PBXNativeTarget "HabitRPG2Tests" */;
@@ -1122,6 +1176,10 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Joel Pridgen";
 				TargetAttributes = {
+					274A37C21F107ACE00F31E0F = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
 					277ABED91E96F68E008CC239 = {
 						CreatedOnToolsVersion = 8.3;
 						ProvisioningStyle = Automatic;
@@ -1148,6 +1206,7 @@
 			targets = (
 				68F3F9A81D70E82E00840DD2 /* HabitRPG2 */,
 				277ABED91E96F68E008CC239 /* HabitRPG2Tests */,
+				274A37C21F107ACE00F31E0F /* ObjCScriptRunner */,
 			);
 		};
 /* End PBXProject section */
@@ -1219,6 +1278,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		274A37BF1F107ACE00F31E0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				274A37CC1F107B7A00F31E0F /* MassPrinter.m in Sources */,
+				274A37C61F107ACF00F31E0F /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		277ABED61E96F68E008CC239 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1349,6 +1417,32 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		274A37C81F107ACF00F31E0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "-";
+				DEVELOPMENT_TEAM = XK3RJ8E2L2;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		274A37C91F107ACF00F31E0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "-";
+				DEVELOPMENT_TEAM = XK3RJ8E2L2;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		277ABEE21E96F68E008CC239 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1504,6 +1598,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		274A37C71F107ACF00F31E0F /* Build configuration list for PBXNativeTarget "ObjCScriptRunner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				274A37C81F107ACF00F31E0F /* Debug */,
+				274A37C91F107ACF00F31E0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		277ABEE11E96F68E008CC239 /* Build configuration list for PBXNativeTarget "HabitRPG2Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1549,8 +1651,7 @@
 				2737823D1EE4DB9C00EA5B1D /* Model.xcdatamodel */,
 			);
 			currentVersion = 274A37981F09FB9600F31E0F /* Model 27.xcdatamodel */;
-			name = Model.xcdatamodeld;
-			path = HabitRPG2/Model.xcdatamodeld;
+			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
