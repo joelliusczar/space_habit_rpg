@@ -11,7 +11,12 @@
 #import "P_ReminderTimeSpinPickerDelegate.h"
 
 
-@interface ReminderTimeSpinPicker : ControlController<UIPickerViewDataSource>
+@interface ReminderTimeSpinPicker :
+ControlController<UIPickerViewDataSource,UIPickerViewDelegate>
 @property (weak,nonatomic) IBOutlet UIPickerView *picker;
 @property (weak,nonatomic) id<P_ReminderTimeSpinPickerDelegate> delegate;
+@property (weak,nonatomic) NSLocale *inUseLocale;
+@property (assign,nonatomic) NSInteger dayRange;
+-(instancetype)initWithLocale:(NSLocale *)locale
+                  andDayRange:(NSInteger)dayRange;
 @end

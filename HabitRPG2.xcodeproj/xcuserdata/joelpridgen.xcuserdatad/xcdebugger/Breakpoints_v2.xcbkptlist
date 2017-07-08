@@ -234,13 +234,139 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HabitRPG2/ReminderListView.m"
-            timestampString = "520754097.82711"
+            timestampString = "520890362.597915"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "-pickerSelection_action:forEvent:"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HabitRPG2Tests/DateHelperTest.m"
+            timestampString = "520998043.319381"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "-testCreateSimpleTime"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HabitRPG2Tests/DateHelperTest.m"
+            timestampString = "520998043.319381"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "-testTimeOfDayInPreferredFormat"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HabitRPG2Tests/DateHelperTest.m"
+            timestampString = "520998238.08667"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "711"
+            endingLineNumber = "711"
+            landmarkName = "-testIs24Hours"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HabitRPG2Tests/DateHelperTest.m"
+            timestampString = "520999650.277215"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "553"
+            endingLineNumber = "553"
+            landmarkName = "-testIs24Hours"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[DateHelperTest testIs24Hours]"
+                  moduleName = "HabitRPG2Tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/HabitRPG2Tests/DateHelperTest.m"
+                  timestampString = "520999703.026363"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "553"
+                  endingLineNumber = "553"
+                  offsetFromSymbolStart = "212916">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[DateHelperTest testIs24Hours]"
+                  moduleName = "HabitRPG2Tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/HabitRPG2Tests/DateHelperTest.m"
+                  timestampString = "520999703.030212"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "553"
+                  endingLineNumber = "553"
+                  offsetFromSymbolStart = "214324">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[DateHelperTest testIs24Hours]"
+                  moduleName = "HabitRPG2Tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/HabitRPG2Tests/DateHelperTest.m"
+                  timestampString = "520999703.045839"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "553"
+                  endingLineNumber = "553"
+                  offsetFromSymbolStart = "214813">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[DateHelperTest testIs24Hours]"
+                  moduleName = "HabitRPG2Tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/HabitRPG2Tests/DateHelperTest.m"
+                  timestampString = "520999703.049609"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "553"
+                  endingLineNumber = "553"
+                  offsetFromSymbolStart = "214941">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -33,4 +33,5 @@
 @property (nonatomic,readonly) int gameState;
 @property (strong,nonatomic) NSCalendar *inUseCalendar;
 @property (strong,nonatomic) NSTimeZone *inUseTimeZone;
+@property (strong,nonatomic) NSLocale *inUseLocale;
 @end

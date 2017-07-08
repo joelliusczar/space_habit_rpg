@@ -80,13 +80,15 @@
 }
 
 -(int)gameState{
-    return [SingletonCluster getSharedInstance].dataController.userData.theDataInfo.gameState;
+    return [SingletonCluster getSharedInstance]
+    .dataController.userData.theDataInfo.gameState;
 }
 
 @synthesize inUseCalendar = _inUseCalendar;
 -(NSCalendar *)inUseCalendar{
     if(nil==_inUseCalendar){
-        _inUseCalendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+        _inUseCalendar =
+        [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
     }
     return _inUseCalendar;
 }
@@ -99,13 +101,23 @@
     return _inUseTimeZone;
 }
 
+-(NSLocale *)inUseLocale{
+    if(nil==_inUseLocale){
+        _inUseLocale = NSLocale.autoupdatingCurrentLocale;
+    }
+    return _inUseLocale;
+}
+
 -(instancetype)initClass{
     if(self = [super init]){}
     return self;
 }
 
 -(instancetype)init{
-    @throw [NSException exceptionWithName:@"Not designated initializer" reason:@"User [SingletonCluster getSharedInstance]" userInfo:nil];
+    @throw [NSException
+            exceptionWithName:@"Not designated initializer"
+            reason:@"User [SingletonCluster getSharedInstance]" userInfo:nil];
+    
     return nil;
 }
 

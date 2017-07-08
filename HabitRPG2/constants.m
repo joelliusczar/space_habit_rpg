@@ -42,6 +42,11 @@ NSString* const TRANSACTION_TYPE_KEY = @"TransactionType";
 NSString* const TRANSACTION_TYPE_CREATE = @"ADDED";
 NSString* const REPORT_USER_ID_KEY = @"reportUserId";
 
+int const MINUTES_IN_HOUR = 60;
+int const HOURS_IN_DAY = 24;
+int const DAY_HALF = 12;
+
+
 //zone groups
 NSString* const LVL_0_ZONES = @"LVL_0_ZONES";
 NSString* const LVL_1_ZONES = @"LVL_1_ZONES";

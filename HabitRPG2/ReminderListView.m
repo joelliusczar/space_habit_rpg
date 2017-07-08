@@ -85,7 +85,7 @@ numberOfRowsInSection:(NSInteger)section{
         reminder.reminderHour =
         [NSDate createDateTime:1988 month:4 day:27 hour:event.selectedHourRow
                         minute:event.selectedMinRow second:0];
-        reminder.daysBeforeDue = [SHMath longToIntExact:event.selectedDaysBeforeRow];
+        reminder.daysBeforeDue = [SHMath toIntExact:event.selectedDaysBeforeRow];
         [self.dueDateInfo addNewReminder:reminder];
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];

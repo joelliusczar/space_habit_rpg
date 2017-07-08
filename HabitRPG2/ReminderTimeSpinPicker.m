@@ -7,30 +7,81 @@
 //
 
 #import "ReminderTimeSpinPicker.h"
+#import "SingletonCluster.h"
+#import "NSLocale+Helper.h"
+#import "constants.h"
+
+const int HOUR_OF_DAY_COL = 0;
+const int MINUTE_COL = 1;
+const int DAYS_BEFORE_COL_IN_24_HOUR_CLOCK = 3;
+const int DAYS_BEFORE_COL_IN_12_HOUR_CLOCK = 4;
+const int AM_PM_COL = 3;
+const int AM_ROW = 0;
+const int PM_ROW = 1;
+
+@interface ReminderTimeSpinPicker()
+@end
 
 @implementation ReminderTimeSpinPicker
 
+-(instancetype)initWithLocale:(NSLocale *)locale
+                  andDayRange:(NSInteger)dayRange{
+    
+    if(self = [super init]){
+        _inUseLocale = locale;
+        _dayRange = dayRange;
+    }
+    return self;
+}
+
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
-    //hour,minute, days before
-    return 3;
+    int hrsMinDaysBefore = 3;
+    int amPm = 1;
+    //if locale uses 24 hour format: hour,minute, days before
+    //but if 12 hour, an extra column for AM/PM
+    return
+    self.inUseLocale.isUsing24HourFormat
+    ?hrsMinDaysBefore:hrsMinDaysBefore+amPm;
 }
 
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView
 numberOfRowsInComponent:(NSInteger)component{
-    if(component==0){
-        return 24; //hours
+    if(component==HOUR_OF_DAY_COL){
+        return HOURS_IN_DAY;
     }
-    else if(component==1){
-        return 60; //minutes
+    else if(component==MINUTE_COL){
+        return MINUTES_IN_HOUR; 
     }
     else{
-        return 7;
+        return self.dayRange;
     }
 }
 
 
--(IBAction)pickerSelectBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
+-(NSString *)pickerView:(UIPickerView *)pickerView
+            titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    if(component==HOUR_OF_DAY_COL){
+        return
+        [NSString stringWithFormat:@"%ld",
+         [self.inUseLocale hourInLocaleFormat:row]];
+    }
+    else if(component==MINUTE_COL){
+        return [NSString stringWithFormat:@"%20ld",row];
+    }
+    else if(!self.inUseLocale.isUsing24HourFormat&&component==AM_PM_COL){
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.locale = self.inUseLocale;
+        return component==AM_ROW?formatter.AMSymbol:formatter.PMSymbol;
+    }
+    else{
+        return [NSString stringWithFormat:@"%ld days before",row];
+    }
+}
+
+
+-(IBAction)pickerSelectBtn_press_action:(UIButton *)sender
+                               forEvent:(UIEvent *)event {
     if(self.delegate){
         TimeSpinPickerEventInfo *eventInfo = [TimeSpinPickerEventInfo new];
         eventInfo.selectedHourRow = [self.picker selectedRowInComponent:0];
@@ -44,6 +95,38 @@ numberOfRowsInComponent:(NSInteger)component{
 }
 
 
-
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
+      inComponent:(NSInteger)component{
+    
+    if(!self.inUseLocale.isUsing24HourFormat){
+        //adjust am/pm if user switches hour to afternoon or morning
+        if(component==HOUR_OF_DAY_COL){
+            if([pickerView selectedRowInComponent:AM_PM_COL]==AM_ROW
+               &&row>=DAY_HALF){
+                [pickerView selectRow:PM_ROW
+                          inComponent:AM_PM_COL animated:NO];
+            }
+            else if([pickerView selectedRowInComponent:AM_PM_COL]==PM_ROW
+                    &&row<DAY_HALF){
+                [pickerView selectRow:AM_ROW
+                          inComponent:AM_PM_COL animated:NO];
+            }
+        }
+        //adjust hour if user switches am/pm
+        else if(component==AM_PM_COL){
+            NSInteger currentHour = [pickerView
+                               selectedRowInComponent:HOUR_OF_DAY_COL];
+            
+            if(row==AM_ROW&&currentHour>DAY_HALF){
+                [pickerView selectRow:currentHour%DAY_HALF
+                          inComponent:HOUR_OF_DAY_COL animated:NO];
+            }
+            else if(row==PM_ROW&&currentHour<DAY_HALF){
+                [pickerView selectRow:currentHour+DAY_HALF
+                          inComponent:HOUR_OF_DAY_COL animated:NO];
+            }
+        }
+    }
+}
 
 @end

@@ -50,6 +50,7 @@
 		274A37AF1F0A083A00F31E0F /* TimeSpinPickerEventInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37AE1F0A083A00F31E0F /* TimeSpinPickerEventInfo.m */; };
 		274A37B21F0A093B00F31E0F /* SHEventInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37B11F0A093B00F31E0F /* SHEventInfo.m */; };
 		274A37B51F0A1D6200F31E0F /* SHMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37B41F0A1D6200F31E0F /* SHMath.m */; };
+		274A37B81F0DC03100F31E0F /* NSLocale+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37B71F0DC03100F31E0F /* NSLocale+Helper.m */; };
 		274FFC291EF6236600FAF809 /* ActiveDaysPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC271EF6236600FAF809 /* ActiveDaysPicker.m */; };
 		274FFC2A1EF6236600FAF809 /* ActiveDaysPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274FFC281EF6236600FAF809 /* ActiveDaysPicker.xib */; };
 		274FFC2F1EF6296D00FAF809 /* NoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC2D1EF6296D00FAF809 /* NoteView.m */; };
@@ -265,6 +266,8 @@
 		274A37B11F0A093B00F31E0F /* SHEventInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEventInfo.m; sourceTree = "<group>"; };
 		274A37B31F0A1D6200F31E0F /* SHMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMath.h; sourceTree = "<group>"; };
 		274A37B41F0A1D6200F31E0F /* SHMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMath.m; sourceTree = "<group>"; };
+		274A37B61F0DC03100F31E0F /* NSLocale+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLocale+Helper.h"; sourceTree = "<group>"; };
+		274A37B71F0DC03100F31E0F /* NSLocale+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLocale+Helper.m"; sourceTree = "<group>"; };
 		274FFC261EF6236600FAF809 /* ActiveDaysPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveDaysPicker.h; sourceTree = "<group>"; };
 		274FFC271EF6236600FAF809 /* ActiveDaysPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveDaysPicker.m; sourceTree = "<group>"; };
 		274FFC281EF6236600FAF809 /* ActiveDaysPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActiveDaysPicker.xib; sourceTree = "<group>"; };
@@ -1063,6 +1066,8 @@
 				277404101EFDBD43008E1AFC /* NSObject+Helper.m */,
 				274A37B31F0A1D6200F31E0F /* SHMath.h */,
 				274A37B41F0A1D6200F31E0F /* SHMath.m */,
+				274A37B61F0DC03100F31E0F /* NSLocale+Helper.h */,
+				274A37B71F0DC03100F31E0F /* NSLocale+Helper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1292,6 +1297,7 @@
 				273978AE1EB8473100F217B4 /* MonsterTransaction+CoreDataClass.m in Sources */,
 				274A37AF1F0A083A00F31E0F /* TimeSpinPickerEventInfo.m in Sources */,
 				27C92C151E297F650025727E /* ZoneChoiceCellController.m in Sources */,
+				274A37B81F0DC03100F31E0F /* NSLocale+Helper.m in Sources */,
 				27E89C7E1EF5CE4C009B7474 /* DailySubTask+CoreDataClass.m in Sources */,
 				275FEF0D1EE45AE600AED1A2 /* Daily+DailyHelper.m in Sources */,
 				2712176C1DCE84310072ACC6 /* Hero+CoreDataClass.m in Sources */,

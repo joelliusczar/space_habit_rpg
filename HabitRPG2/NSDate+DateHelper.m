@@ -10,23 +10,46 @@
 #import "SingletonCluster.h"
 
 @implementation NSDate (DateHelper)
-+(NSDate *)adjustDate:(NSDate *)date year:(NSInteger)y month:(NSInteger)m day:(NSInteger)d{
+
++(NSDate *)adjustDate:(NSDate *)date year:(NSInteger)y month:(NSInteger)m
+                  day:(NSInteger)d{
+    
     NSCalendar *calendar = SharedGlobal.inUseCalendar;
-    date = [calendar dateByAddingUnit:NSCalendarUnitYear value:y toDate:date options:0];
-    date = [calendar dateByAddingUnit:NSCalendarUnitMonth value:m toDate:date options:0];
-    date = [calendar dateByAddingUnit:NSCalendarUnitDay value:d toDate:date options:0];
+    date = [calendar dateByAddingUnit:NSCalendarUnitYear value:y
+                               toDate:date options:0];
+    
+    date = [calendar dateByAddingUnit:NSCalendarUnitMonth value:m
+                               toDate:date options:0];
+    
+    date = [calendar dateByAddingUnit:NSCalendarUnitDay value:d
+                               toDate:date options:0];
+    
     return date;
 }
 
-+(NSDate *)adjustTime:(NSDate *)dt hour:(NSInteger)h minute:(NSInteger)m second:(NSInteger)s{
+
++(NSDate *)adjustTime:(NSDate *)dt hour:(NSInteger)h minute:(NSInteger)m
+               second:(NSInteger)s{
+    
     NSCalendar *calendar = SharedGlobal.inUseCalendar;
-    dt = [calendar dateByAddingUnit:NSCalendarUnitHour value:h toDate:dt options:0];
-    dt = [calendar dateByAddingUnit:NSCalendarUnitMinute value:m toDate:dt options:0];
-    dt = [calendar dateByAddingUnit:NSCalendarUnitSecond value:s toDate:dt options:0];
+    dt = [calendar dateByAddingUnit:NSCalendarUnitHour value:h
+                             toDate:dt options:0];
+    
+    dt = [calendar dateByAddingUnit:NSCalendarUnitMinute value:m
+                             toDate:dt options:0];
+    
+    dt = [calendar dateByAddingUnit:NSCalendarUnitSecond value:s
+                             toDate:dt options:0];
+    
     return dt;
 }
 
-+(NSDate *)createDateTime:(NSInteger)year month:(NSInteger)month day:(NSInteger)day hour:(NSInteger)hour minute:(NSInteger)minute second:(NSInteger)second timeZone:(NSTimeZone *)timeZone{
+
++(NSDate *)createDateTime:(NSInteger)year month:(NSInteger)month
+                      day:(NSInteger)day hour:(NSInteger)hour
+                   minute:(NSInteger)minute second:(NSInteger)second
+                 timeZone:(NSTimeZone *)timeZone{
+    
     NSDateComponents *comps = [NSDateComponents new];
     comps.year = year;
     comps.month = month;
@@ -40,8 +63,22 @@
     
 }
 
-+(NSDate *)createDateTime:(NSInteger)year month:(NSInteger)month day:(NSInteger)day hour:(NSInteger)hour minute:(NSInteger)minute second:(NSInteger)second{
-    return [NSDate createDateTime:year month:month day:day hour:hour minute:minute second:second timeZone:SharedGlobal.inUseTimeZone];
+
++(NSDate *)createDateTime:(NSInteger)year month:(NSInteger)month
+                      day:(NSInteger)day hour:(NSInteger)hour
+                   minute:(NSInteger)minute second:(NSInteger)second{
+    
+    return
+    [NSDate createDateTime:year month:month day:day hour:hour minute:minute
+                    second:second timeZone:SharedGlobal.inUseTimeZone];
+}
+
+
++(NSDate *)createSimpleTime:(NSInteger)hour minute:(NSInteger)minute
+                     second:(NSInteger)second{
+    return
+    [NSDate createDateTime:1970 month:1 day:1 hour:hour minute:minute
+                    second:second];
 }
 
 +(NSDate *)todayStart{
@@ -49,7 +86,9 @@
 }
 
 +(double)daysBetween:(NSDate *)fromDate to:(NSDate *)toDate{
-    NSTimeInterval timeLeft = toDate.timeIntervalSince1970 - fromDate.timeIntervalSince1970;
+    NSTimeInterval timeLeft =
+    toDate.timeIntervalSince1970 - fromDate.timeIntervalSince1970;
+    
     return (timeLeft/86400.0);
 }
 
@@ -57,5 +96,19 @@
     NSDate *roundedDownDate = [SharedGlobal.inUseCalendar startOfDayForDate:dt];
     return [NSDate adjustTime:roundedDownDate hour:h minute:m second:s];
 }
+
++(NSString *)timeOfDayInSystemPreferredFormat:(NSInteger)hour
+                              andMinute:(NSInteger)minute{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.locale = SharedGlobal.inUseLocale;
+    formatter.timeStyle = NSDateFormatterShortStyle;
+    NSString *dateString = [formatter stringFromDate:
+                            [NSDate createSimpleTime:hour minute:minute
+                                              second:0]];
+    
+    return dateString;
+}
+
+
 
 @end

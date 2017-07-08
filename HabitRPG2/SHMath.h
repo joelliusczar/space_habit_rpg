@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface SHMath : NSObject
-+(int)longToIntExact:(long)num;
++(int)toIntExact:(long)num;
 @end

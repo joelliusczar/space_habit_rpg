@@ -21,6 +21,14 @@ typedef NS_ENUM(NSInteger,enviromentCode) {
     ,ENV_UTEST = 1<<1
 };
 
+typedef NS_ENUM(NSInteger,hourFormatType){
+    BLANK =0
+    ,ZERO_BASED_12_HOUR = 1<<0
+    ,ONE_BASED_12_HOUR = 1<<1
+    ,ZERO_BASED_24_HOUR = 1<<2
+    ,ONE_BASED_24_HOUR = 1<<3
+};
+
 typedef NS_ENUM(NSInteger,gameState) {
     GAME_STATE_UNINITIALIZED =0
     ,GAME_STATE_INITIALIZED = 1
@@ -58,6 +66,9 @@ extern NSString* const TRANSACTION_TYPE_KEY;
 extern NSString* const TRANSACTION_TYPE_CREATE;
 extern NSString* const REPORT_USER_ID_KEY;
 
+extern int const MINUTES_IN_HOUR;
+extern int const HOURS_IN_DAY;
+extern int const DAY_HALF;
 
 //zone groups
 extern NSString* const LVL_0_ZONES;

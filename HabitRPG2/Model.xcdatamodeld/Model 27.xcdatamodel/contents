@@ -77,7 +77,7 @@
         <attribute name="misc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
-    <entity name="Reminder" representedClassName="Reminder" syncable="YES" codeGenerationType="class">
+    <entity name="Reminder" representedClassName="Reminder" syncable="YES">
         <attribute name="daysBeforeDue" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="reminderHour" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="remind_daily" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Daily" inverseName="daily_remind" inverseEntity="Daily" syncable="YES"/>

@@ -10,7 +10,7 @@
 
 @implementation SHMath
 
-+(int)longToIntExact:(long)num{
++(int)toIntExact:(long)num{
     if(num>INT32_MAX || num<INT32_MIN){
         @throw [NSException
                 exceptionWithName:NSRangeException
