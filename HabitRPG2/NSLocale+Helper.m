@@ -71,7 +71,7 @@
     else{
         //this will default to one based if there's a conflict
         //because that's what I use
-        if(hourMask&ONE_BASED_12_HOUR&&(hour==0||hour==12)){
+        if((hourMask&ONE_BASED_12_HOUR)&&(hour==0||hour==12)){
             return 12;
             
         }

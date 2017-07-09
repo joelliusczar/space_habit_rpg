@@ -23,7 +23,9 @@
 ,P_ReminderTimeSpinPickerDelegate>
 
 @property (weak,nonatomic) IBOutlet UITableView *reminderList;
-@property (weak,nonatomic) NSObject<P_DueDateWrapper>* dueDateInfo;
+@property (strong,nonatomic) NSObject<P_DueDateWrapper>* dueDateInfo;
 @property (weak,nonatomic) NSOrderedSet<Reminder *> *reminderSet;
--(instancetype)initWithDueDateInfo:(NSObject<P_DueDateWrapper> *)dueDateInfo;
+@property (strong,nonatomic) NSLocale *locale;
+-(instancetype)initWithDueDateInfo:(NSObject<P_DueDateWrapper> *)dueDateInfo
+                         andLocale:(NSLocale *)locale;
 @end

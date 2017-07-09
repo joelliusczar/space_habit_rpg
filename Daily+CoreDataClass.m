@@ -16,6 +16,7 @@
 @synthesize rowNum = _rowNum;
 @synthesize sectionNum = _sectionNum;
 
+
 -(NSMutableDictionary *)mapable{
     return [NSMutableDictionary dictionaryWithObjectsAndKeys:
             self.dailyName,@"dailyName"
@@ -31,11 +32,13 @@
             , nil];
 }
 
+
 -(NSDate *)nextDueTime{
     return
     [Daily calculateNextDueTime:self.lastActivationTime withRate:self.rate
                     andDayStart:SCSettings.dayStart];
 }
+
 
 -(int)daysUntilDue{
     NSDate *roundedDownToday =
@@ -44,13 +47,21 @@
     return (int)[NSDate daysBetween:roundedDownToday to:self.nextDueTime];
 }
 
+
+-(NSInteger)maxDaysBefore{
+    return self.rate;
+}
+
+
 -(NSOrderedSet<Reminder *> *)getReminderSet{
     return self.daily_remind;
 }
 
+
 -(void)addNewReminder:(Reminder *)reminder{
     [self addDaily_remindObject:reminder];
 }
+
 
 -(void)removeReminder:(Reminder *)reminder{
     [self removeDaily_remindObject:reminder];

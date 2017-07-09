@@ -15,10 +15,10 @@
 #import "Reminder+CoreDataClass.h"
 #import "NSDate+DateHelper.h"
 #import "SHMath.h"
+#import "ReminderTimeSpinPicker.h"
 @import UserNotifications;
 
 @interface ReminderListView()
-@property (strong,nonatomic) AddItemsFooter *footerControl;
 @end
 
 @implementation ReminderListView
@@ -28,27 +28,24 @@
     return CGRectMake(0,0,300,100);
 }
 
--(AddItemsFooter *)footerControl{
-    if(nil==_footerControl){
-        _footerControl = [[AddItemsFooter alloc]initDefault];
-    }
-    return _footerControl;
-}
 
-
--(instancetype)initWithDueDateInfo:(NSObject<P_DueDateWrapper> *)dueDateInfo{
+-(instancetype)initWithDueDateInfo:(NSObject<P_DueDateWrapper> *)dueDateInfo
+                         andLocale:(NSLocale *)locale{
+    
     if(self = [self initDefault]){
         _dueDateInfo = dueDateInfo;
         _reminderSet = [dueDateInfo getReminderSet];
-        
+        _locale = locale;
     }
     return self;
 }
 
+
 -(void)viewDidLoad{
     [super viewDidLoad];
-    self.reminderList.tableFooterView = self.footerControl.view;
-    self.footerControl.delegate = self;
+    AddItemsFooter *footerControl = [[AddItemsFooter alloc] initDefault];
+    self.reminderList.tableFooterView = footerControl.view;
+    footerControl.delegate = self;
 }
 
 
@@ -69,7 +66,10 @@ numberOfRowsInSection:(NSInteger)section{
 
 
 -(void)addItemBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event{
-    [ViewHelper pushViewToFront:self.footerControl OfParent:self];
+    ReminderTimeSpinPicker *timePicker =
+    [[ReminderTimeSpinPicker alloc] initWithLocale:self.locale andDayRange:self.dueDateInfo.maxDaysBefore];
+    
+    [ViewHelper pushViewToFront:timePicker OfParent:self];
 }
 
 
@@ -80,11 +80,11 @@ numberOfRowsInSection:(NSInteger)section{
         Reminder *reminder =
         (Reminder *)[SHData constructEmptyEntity:Reminder.entity];
         
-        //we only really care out the hour and minute, so I'm just storing
-        //it on my birthday
+        //we only really care out the hour and minute
         reminder.reminderHour =
-        [NSDate createDateTime:1988 month:4 day:27 hour:event.selectedHourRow
-                        minute:event.selectedMinRow second:0];
+        [NSDate createSimpleTime:event.selectedHourRow
+                          minute:event.selectedMinRow second:0];
+        
         reminder.daysBeforeDue = [SHMath toIntExact:event.selectedDaysBeforeRow];
         [self.dueDateInfo addNewReminder:reminder];
     };

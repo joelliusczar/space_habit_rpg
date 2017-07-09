@@ -32,7 +32,6 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 @property (weak,nonatomic) IBOutlet UIButton *showXtraOptsBtn;
 @property (weak,nonatomic) IBOutlet UITableView *controlsTbl;
 @property (weak,nonatomic) DailyViewController *parentDailyController;
-@property (strong,nonatomic) Daily *modelForEditing;
 @property (strong,nonatomic) NSIndexPath *rowInfo;
 @property (assign,nonatomic) dailyStatus section;
 @property (assign,nonatomic) BOOL areXtraOptsOpen;
@@ -45,41 +44,24 @@ NSString* const IS_DIRTY = @"isDirty";
 
 @implementation DailyEditController
 
-@synthesize isDirty = _isDirty;
+//These need to be synthesized since they come from a protocol
 @synthesize delegate = _delegate;
+@synthesize isDirty = _isDirty;
 @synthesize nameStr = _nameStr;
 
-@synthesize modelForEditing = _modelForEditing;
--(Daily *)modelForEditing{
-    if(nil==_modelForEditing){
-        _modelForEditing = [Daily constructDaily];
-        [SHData insertIntoContext:_modelForEditing];
-    }
-    else if(![SHData.writeContext.registeredObjects containsObject:_modelForEditing]){
-        _modelForEditing = [SHData.writeContext objectWithID:_modelForEditing.objectID];
-    }
-    return _modelForEditing;
-}
-
-
-@synthesize editControls = _editControls;
--(DailyEditControlKeep *)editControls{
-    if(nil==_editControls){
-        _editControls = [[DailyEditControlKeep alloc] initWithDelegate:self];
-        [_editControls setupDelegates];
-    }
-    return _editControls;
-}
-
-
--(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController{
+-(instancetype)initWithParentDailyController:
+(DailyViewController *)parentDailyController{
     if(self = [self initWithNibName:@"DailyEditView" bundle:nil]){
         _parentDailyController = parentDailyController;
     }
     return self;
 }
 
--(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController ToEdit:(Daily *)daily AtIndexPath:(NSIndexPath *)rowInfo{
+
+-(instancetype)initWithParentDailyController:
+(DailyViewController *)parentDailyController ToEdit:
+(Daily *)daily AtIndexPath:(NSIndexPath *)rowInfo{
+    
     if(self = [self initWithParentDailyController:parentDailyController]){
         _modelForEditing = daily;
         _rowInfo = rowInfo;
@@ -90,19 +72,38 @@ NSString* const IS_DIRTY = @"isDirty";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.controlsTbl.dataSource = self;
-    self.controlsTbl.delegate = self;
     self.controlsTbl.tableFooterView =
     [[UIView alloc] initWithFrame:CGRectZero];
     
-    if(_modelForEditing){
+    //I don't want modelForEditing lazy loaded because it makes the logic confusing.
+    //sometimes it unexpectedly gets initialized and that messes things up.
+    //So, I want exact control over when it gets initialized
+    if(self.modelForEditing){
+        if(![SHData.writeContext.registeredObjects containsObject:self.modelForEditing]){
+            self.modelForEditing = [SHData.writeContext objectWithID:self.modelForEditing.objectID];
+        }
         [self loadExistingDailyForEditing:self.modelForEditing];
     }
+    else{
+        self.modelForEditing = [Daily constructDaily];
+        [SHData insertIntoContext:self.modelForEditing];
+    }
+    //I want the editControls stuff to happen here because when it gets
+    //lazy loaded, it gets out of hand
+    self.editControls = [[DailyEditControlKeep alloc]
+                         initWithDailyEditController:self];
+    [self.editControls setupDelegates];
+    //it is important that this table delegate stuff happens after we check
+    //for the existence of the model, otherwise table events will trigger
+    //at inconvienient times, and either invalid data or null pointer exceptions
+    //will happen
+    self.controlsTbl.dataSource = self;
+    self.controlsTbl.delegate = self;
     [self addObserver:self forKeyPath:IS_DIRTY options:NSKeyValueObservingOptionNew context:nil];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    if(_modelForEditing){
+    if(self.modelForEditing){
         [self.delegate enableDelete];
     }
 }
@@ -162,35 +163,38 @@ NSString* const IS_DIRTY = @"isDirty";
 }
 
 -(void)loadExistingDailyForEditing:(Daily *)daily{
-    self.nameBox.text = self.modelForEditing.dailyName ? self.modelForEditing.dailyName  : @"";
+    self.nameBox.text = self.modelForEditing.dailyName?self.modelForEditing.dailyName:@"";
     self.nameStr = self.nameBox.text;
-    self.editControls.noteView.noteBox.text =
-    self.modelForEditing.note ? self.modelForEditing.note : @"";
+    self.editControls.noteView.noteBox.text = self.modelForEditing.note?self.modelForEditing.note:@"";
     
-    self.editControls.importanceSliders.urgencySld.value =
-    self.modelForEditing.urgency;
+    self.editControls.importanceSliders.urgencySld.value = self.modelForEditing.urgency;
     
-    self.editControls.importanceSliders.urgencyLbl.text =
-    [NSString stringWithFormat:@"Urgency: %d",
-     self.modelForEditing.urgency];
+    self.editControls.importanceSliders.urgencyLbl.text = [NSString stringWithFormat:
+                                                           @"Urgency: %d"
+                                                           ,self.modelForEditing.urgency];
+    self.editControls.importanceSliders.difficultySld.value = self.modelForEditing.difficulty;
     
-    self.editControls.importanceSliders.difficultySld.value =
-    self.modelForEditing.difficulty;
-    
-    self.editControls.importanceSliders.difficultyLbl.text =
-    [NSString stringWithFormat:@"Difficulty: %d",self.modelForEditing.difficulty];
+    self.editControls.importanceSliders.difficultyLbl.text = [NSString
+                                                              stringWithFormat:
+                                                              @"Difficulty: %d"
+                                                              ,self.modelForEditing.difficulty];
     
     int hash = self.modelForEditing.activeDaysHash;
-    [Daily setActiveDaySwitches:self.editControls.activeDaysPicker.activeDaySwitches fromHash:hash];
+    [Daily setActiveDaySwitches:self.editControls.activeDaysPicker.activeDaySwitches
+                       fromHash:hash];
     
     NSInteger rate = self.modelForEditing.rate;
     self.editControls.rateSetterView.rateStep.value = rate;
-    self.editControls.rateSetterView.rateLbl.text = [NSString stringWithFormat:TRIGGER_LABEL_FORMAT,(int)rate];
-    
+    self.editControls.rateSetterView.rateLbl.text = [NSString
+                                                     stringWithFormat:
+                                                     TRIGGER_LABEL_FORMAT
+                                                     ,(int)rate];
     self.editControls.streakResetterView.streakCountLbl.hidden = NO;
     self.editControls.streakResetterView.streakResetBtn.hidden = NO;
-    self.editControls.streakResetterView.streakCountLbl.text = [NSString stringWithFormat:@"Streak: %d",daily.streakLength];
-    
+    self.editControls.streakResetterView.streakCountLbl.text = [NSString
+                                                                stringWithFormat:
+                                                                @"Streak: %d"
+                                                                ,daily.streakLength];
     [self.delegate enableDelete];
     
 }
@@ -199,7 +203,10 @@ NSString* const IS_DIRTY = @"isDirty";
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
     };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@textDidChange",self.description]];
+    [Interceptor callVoidWrapped:wrappedCall
+                        withInfo:[NSString stringWithFormat:
+                                  @"%@textDidChange"
+                                  ,self.description]];
 }
 
 
@@ -213,7 +220,10 @@ NSString* const IS_DIRTY = @"isDirty";
         self.isDirty = YES;
         self.nameStr = self.nameBox.text;
     };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@nameBox_editingChanged_action",self.description]];
+    [Interceptor callVoidWrapped:wrappedCall
+                        withInfo:[NSString stringWithFormat:
+                                  @"%@nameBox_editingChanged_action"
+                                  ,self.description]];
 }
 
 
@@ -230,7 +240,10 @@ NSString* const IS_DIRTY = @"isDirty";
             [self.delegate resizeScrollView:self.controlsTbl.hidden];
         }
     };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@showXtra_push_action",self.description]];
+    [Interceptor callVoidWrapped:wrappedCall
+                        withInfo:[NSString stringWithFormat:
+                                  @"%@showXtra_push_action",
+                                  self.description]];
 }
 
 
@@ -238,10 +251,16 @@ NSString* const IS_DIRTY = @"isDirty";
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
         int sliderValue = (int)sender.value;
-        self.editControls.importanceSliders.urgencyLbl.text = [NSString stringWithFormat:@"Urgency: %d",sliderValue];
+        self.editControls.importanceSliders.urgencyLbl.text = [NSString
+                                                               stringWithFormat:
+                                                               @"Urgency: %d"
+                                                               ,sliderValue];
         sender.value = sliderValue;
     };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@urgencySld_valueChange_action",self.description]];
+    [Interceptor callVoidWrapped:wrappedCall
+                        withInfo:[NSString stringWithFormat:
+                                  @"%@urgencySld_valueChange_action"
+                                  ,self.description]];
 }
 
 
@@ -249,10 +268,15 @@ NSString* const IS_DIRTY = @"isDirty";
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
         int sliderValue = (int)sender.value;
-        self.editControls.importanceSliders.difficultyLbl.text = [NSString stringWithFormat:@"Difficulty: %d",sliderValue];
+        self.editControls.importanceSliders.difficultyLbl.text =
+        [NSString stringWithFormat:@"Difficulty: %d",sliderValue];
+        
         sender.value = sliderValue;
     };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@difficultySld_valueChanged_action",self.description]];
+    [Interceptor callVoidWrapped:wrappedCall
+                        withInfo:[NSString stringWithFormat:
+                                  @"%@difficultySld_valueChanged_action"
+                                  ,self.description]];
 }
 
 
@@ -268,9 +292,13 @@ NSString* const IS_DIRTY = @"isDirty";
             rate = 1;
         }
         sender.value = rate;
-        self.editControls.rateSetterView.rateLbl.text = [NSString stringWithFormat: TRIGGER_LABEL_FORMAT,(int)rate];
+        self.editControls.rateSetterView.rateLbl.text =
+        [NSString stringWithFormat: TRIGGER_LABEL_FORMAT,(int)rate];
     };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@rateStep_valueChange_action",self.description]];
+    [Interceptor callVoidWrapped:wrappedCall
+                        withInfo:[NSString stringWithFormat:
+                                  @"%@rateStep_valueChange_action"
+                                  ,self.description]];
 }
 
 
@@ -278,14 +306,20 @@ NSString* const IS_DIRTY = @"isDirty";
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
     };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@daySwitch_push_action~%ld",self.description,sender.tag]];
+    [Interceptor callVoidWrapped:wrappedCall
+                        withInfo:[NSString stringWithFormat:
+                                  @"%@daySwitch_push_action~%ld"
+                                  ,self.description,sender.tag]];
 }
 
 
 -(void)addRewardBtn_push_action:(UIButton *)sender forEvent:(UIEvent *)event {
     wrapReturnVoid wrappedCall = ^void(){
     };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@addRewardBtn_push_action",self.description]];
+    [Interceptor callVoidWrapped:wrappedCall
+                        withInfo:[NSString stringWithFormat:
+                                  @"%@addRewardBtn_push_action"
+                                  ,self.description]];
 }
 
 
@@ -296,7 +330,10 @@ NSString* const IS_DIRTY = @"isDirty";
             self.isDirty = YES;
         }
     };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@streakResetBtn_press_action",self.description]];
+    [Interceptor callVoidWrapped:wrappedCall
+                        withInfo:[NSString stringWithFormat:
+                                  @"%@streakResetBtn_press_action"
+                                  ,self.description]];
 }
 
 
@@ -305,7 +342,8 @@ NSString* const IS_DIRTY = @"isDirty";
 }
 
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+-(UITableViewCell *)tableView:(UITableView *)tableView
+        cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     UIView *cellView = self.editControls.allControls[indexPath.row].view;
     cellView.backgroundColor = self.view.backgroundColor;
@@ -316,11 +354,10 @@ NSString* const IS_DIRTY = @"isDirty";
 }
 
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    //NSLog(@"tb %@ height %f\n\n",self.editControls.allControls[indexPath.row].class,self.editControls.allControls[indexPath.row].view.frame.size.height);
+-(CGFloat)tableView:(UITableView *)tableView
+heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return self.editControls.allControls[indexPath.row].view.frame.size.height;
 }
-
 
 
 -(void)dealloc{

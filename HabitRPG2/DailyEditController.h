@@ -16,6 +16,7 @@
 
 
 @interface DailyEditController : UIViewController <EditingSaver, UITableViewDataSource, UITableViewDelegate,P_DailyEditCompound>
+@property (strong,nonatomic) Daily *modelForEditing;
 -(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController;
 -(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController ToEdit:(Daily *)daily AtIndexPath:(NSIndexPath *)rowInfo;
 -(void)loadExistingDailyForEditing:(Daily *)daily;

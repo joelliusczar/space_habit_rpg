@@ -13,6 +13,7 @@
 
 @protocol P_DueDateWrapper <NSObject>
 @property (readonly,nonatomic) NSDate *nextDueTime;
+@property (readonly,nonatomic) NSInteger maxDaysBefore;
 -(NSOrderedSet<Reminder *> *)getReminderSet;
 -(void)addNewReminder:(Reminder *)reminder;
 -(void)removeReminder:(Reminder *)reminder;

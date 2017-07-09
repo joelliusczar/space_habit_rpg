@@ -8,16 +8,15 @@
 
 #import "DailyEditControlKeep.h"
 #import "ControlController.h"
+#import "SingletonCluster.h"
+#import "Daily+CoreDataClass.h"
 
 @interface DailyEditControlKeep()
-@property (assign,nonatomic) id<P_DailyEditCompound> delegate;
+@property (weak,nonatomic) DailyEditController *delegate;
 @end
 
 @implementation DailyEditControlKeep
 
-@synthesize delegate = _delegate;
-
-@synthesize noteView = _noteView;
 -(NoteView *)noteView{
     if(nil==_noteView){
         _noteView = [[NoteView alloc] initDefault];
@@ -25,8 +24,6 @@
     return _noteView;
 }
 
-
-@synthesize activeDaysPicker = _activeDaysPicker;
 -(ActiveDaysPicker *)activeDaysPicker{
     if(nil==_activeDaysPicker){
         _activeDaysPicker =
@@ -35,8 +32,6 @@
     return _activeDaysPicker;
 }
 
-
-@synthesize rateSetterView = _rateSetterView;
 -(RateSetterView *)rateSetterView{
     if(nil==_rateSetterView){
         _rateSetterView = [[RateSetterView alloc] initDefault];
@@ -44,8 +39,6 @@
     return _rateSetterView;
 }
 
-
-@synthesize importanceSliders = _importanceSliders;
 -(ImportanceSliderView *)importanceSliders{
     if(nil==_importanceSliders){
         _importanceSliders =
@@ -54,8 +47,6 @@
     return _importanceSliders;
 }
 
-
-@synthesize streakResetterView = _streakResetterView;
 -(StreakResetterView *)streakResetterView{
     if(nil==_streakResetterView){
         _streakResetterView = [[StreakResetterView alloc] initDefault];
@@ -63,17 +54,15 @@
     return _streakResetterView;
 }
 
-@synthesize reminderListView = _reminderListView;
 -(ReminderListView *)reminderListView{
-//    if(nil==_reminderListView){
-//        _reminderListView = [[ReminderListView alloc] initD];
-//    }
-//    return _reminderListView;
-    return nil;
+    if(nil==_reminderListView){
+        _reminderListView = [[ReminderListView alloc]
+                             initWithDueDateInfo:self.delegate.modelForEditing
+                             andLocale:SharedGlobal.inUseLocale];
+    }
+    return _reminderListView;
 }
 
-
-@synthesize allControls = _allControls;
 -(NSArray<UIViewController<P_EditScreenControl> *> *)allControls{
     if(nil==_allControls){
         _allControls = [NSArray arrayWithObjects:
@@ -88,14 +77,12 @@
     return _allControls;
 }
 
-
--(instancetype)initWithDelegate:(id<P_DailyEditCompound>)delegate{
+-(instancetype)initWithDailyEditController:(DailyEditController *)delegate{
     if(self = [super init]){
         _delegate = delegate;
     }
     return self;
 }
-
 
 -(void)setupDelegates{
     self.noteView.delegate = self.delegate;
@@ -104,5 +91,6 @@
     self.importanceSliders.delegate = self.delegate;
     self.streakResetterView.delegate = self.delegate;
 }
+
 
 @end

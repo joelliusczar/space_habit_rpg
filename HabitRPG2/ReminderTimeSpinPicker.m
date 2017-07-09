@@ -70,9 +70,9 @@ numberOfRowsInComponent:(NSInteger)component{
         return [NSString stringWithFormat:@"%20ld",row];
     }
     else if(!self.inUseLocale.isUsing24HourFormat&&component==AM_PM_COL){
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        formatter.locale = self.inUseLocale;
-        return component==AM_ROW?formatter.AMSymbol:formatter.PMSymbol;
+
+        return
+        component==AM_ROW?self.inUseLocale.AMSymbol:self.inUseLocale.PMSymbol;
     }
     else{
         return [NSString stringWithFormat:@"%ld days before",row];
@@ -84,10 +84,16 @@ numberOfRowsInComponent:(NSInteger)component{
                                forEvent:(UIEvent *)event {
     if(self.delegate){
         TimeSpinPickerEventInfo *eventInfo = [TimeSpinPickerEventInfo new];
-        eventInfo.selectedHourRow = [self.picker selectedRowInComponent:0];
-        eventInfo.selectedMinRow = [self.picker selectedRowInComponent:1];
+        eventInfo.selectedHourRow =
+        [self.picker selectedRowInComponent:HOUR_OF_DAY_COL];
+        
+        eventInfo.selectedMinRow =
+        [self.picker selectedRowInComponent:MINUTE_COL];
+        NSInteger daysCol =
+        self.inUseLocale.isUsing24HourFormat?DAYS_BEFORE_COL_IN_24_HOUR_CLOCK:DAYS_BEFORE_COL_IN_12_HOUR_CLOCK;
+        
         eventInfo.selectedDaysBeforeRow =
-        [self.picker selectedRowInComponent:2];
+        [self.picker selectedRowInComponent:daysCol];
         
         [self.delegate pickerSelection_action:self.picker
                                      forEvent:eventInfo];

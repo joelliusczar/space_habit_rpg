@@ -75,9 +75,6 @@
                 <constraint firstItem="cph-eG-im8" firstAttribute="leading" secondItem="YwG-y3-3KR" secondAttribute="leading" id="sUk-EK-C8f"/>
                 <constraint firstAttribute="bottom" secondItem="1A9-UA-drd" secondAttribute="bottom" id="yh8-JU-Xrw"/>
             </constraints>
-            <connections>
-                <outlet property="mainView" destination="-1" id="9Eh-ke-xhF"/>
-            </connections>
             <point key="canvasLocation" x="2" y="-95"/>
         </view>
     </objects>

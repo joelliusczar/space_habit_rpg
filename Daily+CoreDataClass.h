@@ -11,7 +11,6 @@
 #import "P_DueDateWrapper.h"
 
 @class DailySubTask;
-@class DailyReminders;
 
 NS_ASSUME_NONNULL_BEGIN
 
