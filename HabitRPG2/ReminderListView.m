@@ -30,12 +30,14 @@
 
 
 -(instancetype)initWithDueDateInfo:(NSObject<P_DueDateWrapper> *)dueDateInfo
+                 andBackViewController:(UIViewController *)backViewController
                          andLocale:(NSLocale *)locale{
     
     if(self = [self initDefault]){
         _dueDateInfo = dueDateInfo;
         _reminderSet = [dueDateInfo getReminderSet];
         _locale = locale;
+        _backViewController = backViewController;
     }
     return self;
 }
@@ -67,9 +69,9 @@ numberOfRowsInSection:(NSInteger)section{
 
 -(void)addItemBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event{
     ReminderTimeSpinPicker *timePicker =
-    [[ReminderTimeSpinPicker alloc] initWithLocale:self.locale andDayRange:self.dueDateInfo.maxDaysBefore];
-    
-    [ViewHelper pushViewToFront:timePicker OfParent:self];
+    [[ReminderTimeSpinPicker alloc] initWithLocale:self.locale
+                                       andDayRange:self.dueDateInfo.maxDaysBefore];
+    [ViewHelper pushViewToFront:timePicker OfParent:self.backViewController];
 }
 
 

@@ -209,7 +209,7 @@ static NSString *const EntityName = @"Daily";
     
     wrapReturnVoid wrappedCall = ^void(){
         DailyEditController *dailyEditor = [[DailyEditController alloc] initWithParentDailyController:self];
-        EditNavigationController *editController = [[EditNavigationController alloc] initWithTitle:@"Add Daily" AndEditor:dailyEditor];
+        EditNavigationController *editController = [[EditNavigationController alloc] initWithTitle:@"Add Daily" andEditor:dailyEditor];
         [ViewHelper pushViewToFront:editController OfParent:self.parentController];
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@addDailyBtn_press_action",self.description]];
@@ -222,7 +222,7 @@ static NSString *const EntityName = @"Daily";
         wrapReturnVoid wrappedCall = ^void(){
             NSFetchedResultsController *fetchController = path.section == INCOMPLETE?self.incompleteItems:self.completeItems;
             DailyEditController *dailyEditor = [[DailyEditController alloc] initWithParentDailyController:self ToEdit:fetchController.fetchedObjects[indexPath.row] AtIndexPath:path];
-            EditNavigationController *editController = [[EditNavigationController alloc] initWithTitle:@"Add Daily" AndEditor:dailyEditor];
+            EditNavigationController *editController = [[EditNavigationController alloc] initWithTitle:@"Add Daily" andEditor:dailyEditor];
             [ViewHelper pushViewToFront:editController OfParent:self.parentController];
         };
         [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@pressedEdit",self.description]];

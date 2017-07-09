@@ -15,9 +15,16 @@
 #import "P_DailyEditCompound.h"
 
 
-@interface DailyEditController : UIViewController <EditingSaver, UITableViewDataSource, UITableViewDelegate,P_DailyEditCompound>
+@interface DailyEditController : UIViewController
+<EditingSaver
+,UITableViewDataSource
+,UITableViewDelegate
+,P_DailyEditCompound>
 @property (strong,nonatomic) Daily *modelForEditing;
+@property (weak,nonatomic) DailyViewController *parentDailyController;
 -(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController;
--(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController ToEdit:(Daily *)daily AtIndexPath:(NSIndexPath *)rowInfo;
+-(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController
+                                      ToEdit:(Daily *)daily
+                                 AtIndexPath:(NSIndexPath *)rowInfo;
 -(void)loadExistingDailyForEditing:(Daily *)daily;
 @end

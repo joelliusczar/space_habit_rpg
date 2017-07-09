@@ -29,7 +29,9 @@
 
 @implementation EditNavigationController
 
--(instancetype)initWithTitle:(NSString *)viewTitle AndEditor:(UIViewController<EditingSaver>*)editView{
+-(instancetype)initWithTitle:(NSString *)viewTitle
+                   andEditor:(UIViewController<EditingSaver>*)editView{
+    
     if(self = [self initWithNibName:@"EditNavigationController" bundle:nil]){
         _viewTitle = viewTitle;
         _editingScreen = editView;
@@ -40,24 +42,20 @@
 
 -(void)viewDidLoad {
     [super viewDidLoad];
-    self.editingScreen.delegate = self;
+    self.editingScreen.editorContainer = self;
     self.headline.text = self.viewTitle;
     [self.scrollContainer addSubview:self.editingScreen.view];
     self.defaultScrollHeight = self.scrollContainer.frame.size.height;
-    self.scrollContainer.contentSize =
-    CGSizeMake(self.scrollContainer.frame.size.width,
-               self.editingScreen.view.frame.size.height);
-    
+    self.scrollContainer.contentSize = CGSizeMake(self.scrollContainer.frame.size.width,
+                                                  self.editingScreen.view.frame.size.height);
     self.scrollContainer.scrollEnabled = YES;
     [self.scrollContainer sizeToFit];
-    UITapGestureRecognizer *tapGesturebg =
-    [[UITapGestureRecognizer alloc]
-     initWithTarget:self action:@selector(background_tap_action:)];
-    
-    UITapGestureRecognizer *tapGesturefg =
-    [[UITapGestureRecognizer alloc]
-     initWithTarget:self action:@selector(background_tap_action:)];
-    
+    UITapGestureRecognizer *tapGesturebg = [[UITapGestureRecognizer alloc]
+                                           initWithTarget:self
+                                           action:@selector(background_tap_action:)];
+    UITapGestureRecognizer *tapGesturefg = [[UITapGestureRecognizer alloc]
+                                           initWithTarget:self
+                                           action:@selector(background_tap_action:)];
     [self.modalView addGestureRecognizer:tapGesturefg];
     [self.view addGestureRecognizer:tapGesturebg];
     

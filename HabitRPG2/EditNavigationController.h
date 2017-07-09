@@ -12,5 +12,6 @@
 
 @interface EditNavigationController : UIViewController<P_TaskEditorDelegate>
 @property (strong,nonatomic) NSString *viewTitle;
--(instancetype)initWithTitle:(NSString *)viewTitle AndEditor:(UIViewController<EditingSaver>*)editView;
+-(instancetype)initWithTitle:(NSString *)viewTitle
+                   andEditor:(UIViewController<EditingSaver>*)editView;
 @end

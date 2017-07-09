@@ -31,13 +31,12 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 @property (weak,nonatomic) IBOutlet UITextField *nameBox;
 @property (weak,nonatomic) IBOutlet UIButton *showXtraOptsBtn;
 @property (weak,nonatomic) IBOutlet UITableView *controlsTbl;
-@property (weak,nonatomic) DailyViewController *parentDailyController;
 @property (strong,nonatomic) NSIndexPath *rowInfo;
 @property (assign,nonatomic) dailyStatus section;
 @property (assign,nonatomic) BOOL areXtraOptsOpen;
 @property (assign,nonatomic) BOOL isStreakReset;
 @property (strong,nonatomic) DailyEditControlKeep *editControls;
-
+@property (assign,nonatomic) BOOL isEditingExisting;
 @end
 
 NSString* const IS_DIRTY = @"isDirty";
@@ -45,7 +44,7 @@ NSString* const IS_DIRTY = @"isDirty";
 @implementation DailyEditController
 
 //These need to be synthesized since they come from a protocol
-@synthesize delegate = _delegate;
+@synthesize editorContainer = _editorContainer;
 @synthesize isDirty = _isDirty;
 @synthesize nameStr = _nameStr;
 
@@ -53,6 +52,7 @@ NSString* const IS_DIRTY = @"isDirty";
 (DailyViewController *)parentDailyController{
     if(self = [self initWithNibName:@"DailyEditView" bundle:nil]){
         _parentDailyController = parentDailyController;
+        _isEditingExisting = NO;
     }
     return self;
 }
@@ -65,6 +65,7 @@ NSString* const IS_DIRTY = @"isDirty";
     if(self = [self initWithParentDailyController:parentDailyController]){
         _modelForEditing = daily;
         _rowInfo = rowInfo;
+        _isEditingExisting = YES;
     }
     return self;
 }
@@ -72,8 +73,7 @@ NSString* const IS_DIRTY = @"isDirty";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.controlsTbl.tableFooterView =
-    [[UIView alloc] initWithFrame:CGRectZero];
+    self.controlsTbl.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     //I don't want modelForEditing lazy loaded because it makes the logic confusing.
     //sometimes it unexpectedly gets initialized and that messes things up.
@@ -103,15 +103,17 @@ NSString* const IS_DIRTY = @"isDirty";
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    if(self.modelForEditing){
-        [self.delegate enableDelete];
+    if(self.isEditingExisting){
+        [self.editorContainer enableDelete];
     }
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 -(void)observeValueForKeyPath:(NSString *)keyPath
                      ofObject:(nullable id)object
@@ -119,8 +121,8 @@ NSString* const IS_DIRTY = @"isDirty";
                       context:(nullable void *)context{
     
     if([keyPath isEqualToString:IS_DIRTY]){
-        if(self.delegate){
-            [self.delegate enableSave];
+        if(self.editorContainer){
+            [self.editorContainer enableSave];
         }
     }
     
@@ -195,7 +197,7 @@ NSString* const IS_DIRTY = @"isDirty";
                                                                 stringWithFormat:
                                                                 @"Streak: %d"
                                                                 ,daily.streakLength];
-    [self.delegate enableDelete];
+    [self.editorContainer enableDelete];
     
 }
 
@@ -236,8 +238,8 @@ NSString* const IS_DIRTY = @"isDirty";
         }
         self.controlsTbl.hidden = NO;
         self.areXtraOptsOpen = YES;
-        if(self.delegate){
-            [self.delegate resizeScrollView:self.controlsTbl.hidden];
+        if(self.editorContainer){
+            [self.editorContainer resizeScrollView:self.controlsTbl.hidden];
         }
     };
     [Interceptor callVoidWrapped:wrappedCall

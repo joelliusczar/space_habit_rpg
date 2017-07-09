@@ -58,7 +58,7 @@
                     <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </toolbar>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Kds-JC-wZJ" secondAttribute="trailing" id="0xy-L7-QDG"/>
                 <constraint firstItem="1A9-UA-drd" firstAttribute="centerX" secondItem="YwG-y3-3KR" secondAttribute="centerX" id="4Kg-v1-AvH"/>

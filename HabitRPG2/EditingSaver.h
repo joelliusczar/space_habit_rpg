@@ -8,11 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "P_TaskEditorDelegate.h"
-@import CoreData;
 
 @protocol EditingSaver <NSObject>
 @required
-@property (assign,nonatomic) id<P_TaskEditorDelegate> delegate;
+@property (weak,nonatomic) UIViewController<P_TaskEditorDelegate> *editorContainer;
 @property (assign,nonatomic) BOOL isDirty;
 @property (strong,nonatomic) NSString *nameStr;
 -(void)saveEdit;

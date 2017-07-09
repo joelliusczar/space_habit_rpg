@@ -26,6 +26,8 @@
 @property (strong,nonatomic) NSObject<P_DueDateWrapper>* dueDateInfo;
 @property (weak,nonatomic) NSOrderedSet<Reminder *> *reminderSet;
 @property (strong,nonatomic) NSLocale *locale;
+@property (weak,nonatomic) UIViewController *backViewController;
 -(instancetype)initWithDueDateInfo:(NSObject<P_DueDateWrapper> *)dueDateInfo
+             andBackViewController:(UIViewController *)backViewController
                          andLocale:(NSLocale *)locale;
 @end
