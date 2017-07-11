@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "constants.h"
 
 @interface NSDate (DateHelper)
 +(NSDate *)adjustDate:(NSDate *)date year:(NSInteger)y month:(NSInteger)m
@@ -34,6 +35,7 @@
 
 +(NSString *)timeOfDayInSystemPreferredFormat:(NSInteger)hour
                               andMinute:(NSInteger)minute;
+-(NSString *)extractTimeInFormat:(hourFormatType)format;
 
 @end
 

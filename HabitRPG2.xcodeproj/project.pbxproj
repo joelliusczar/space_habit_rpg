@@ -53,6 +53,11 @@
 		274A37B81F0DC03100F31E0F /* NSLocale+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37B71F0DC03100F31E0F /* NSLocale+Helper.m */; };
 		274A37C61F107ACF00F31E0F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37C51F107ACF00F31E0F /* main.m */; };
 		274A37CC1F107B7A00F31E0F /* MassPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37CB1F107B7A00F31E0F /* MassPrinter.m */; };
+		274A37CF1F1313A700F31E0F /* PersonThing.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37CE1F1313A700F31E0F /* PersonThing.m */; };
+		274A37D21F13280400F31E0F /* PersonThingUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37D11F13280400F31E0F /* PersonThingUser.m */; };
+		274A37D51F133AA200F31E0F /* Experiments.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37D41F133AA200F31E0F /* Experiments.m */; };
+		274A37E71F145CA400F31E0F /* House.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37E61F145CA400F31E0F /* House.m */; };
+		274A37EA1F145D2200F31E0F /* House+Things.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37E91F145D2200F31E0F /* House+Things.m */; };
 		274FFC291EF6236600FAF809 /* ActiveDaysPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC271EF6236600FAF809 /* ActiveDaysPicker.m */; };
 		274FFC2A1EF6236600FAF809 /* ActiveDaysPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274FFC281EF6236600FAF809 /* ActiveDaysPicker.xib */; };
 		274FFC2F1EF6296D00FAF809 /* NoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC2D1EF6296D00FAF809 /* NoteView.m */; };
@@ -286,6 +291,16 @@
 		274A37C51F107ACF00F31E0F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		274A37CA1F107B7A00F31E0F /* MassPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MassPrinter.h; sourceTree = "<group>"; };
 		274A37CB1F107B7A00F31E0F /* MassPrinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MassPrinter.m; sourceTree = "<group>"; };
+		274A37CD1F1313A700F31E0F /* PersonThing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonThing.h; sourceTree = "<group>"; };
+		274A37CE1F1313A700F31E0F /* PersonThing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonThing.m; sourceTree = "<group>"; };
+		274A37D01F13280400F31E0F /* PersonThingUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonThingUser.h; sourceTree = "<group>"; };
+		274A37D11F13280400F31E0F /* PersonThingUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonThingUser.m; sourceTree = "<group>"; };
+		274A37D31F133AA200F31E0F /* Experiments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Experiments.h; sourceTree = "<group>"; };
+		274A37D41F133AA200F31E0F /* Experiments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Experiments.m; sourceTree = "<group>"; };
+		274A37E51F145CA400F31E0F /* House.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = House.h; sourceTree = "<group>"; };
+		274A37E61F145CA400F31E0F /* House.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = House.m; sourceTree = "<group>"; };
+		274A37E81F145D2200F31E0F /* House+Things.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "House+Things.h"; sourceTree = "<group>"; };
+		274A37E91F145D2200F31E0F /* House+Things.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "House+Things.m"; sourceTree = "<group>"; };
 		274FFC261EF6236600FAF809 /* ActiveDaysPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveDaysPicker.h; sourceTree = "<group>"; };
 		274FFC271EF6236600FAF809 /* ActiveDaysPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveDaysPicker.m; sourceTree = "<group>"; };
 		274FFC281EF6236600FAF809 /* ActiveDaysPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActiveDaysPicker.xib; sourceTree = "<group>"; };
@@ -597,6 +612,16 @@
 				274A37C51F107ACF00F31E0F /* main.m */,
 				274A37CA1F107B7A00F31E0F /* MassPrinter.h */,
 				274A37CB1F107B7A00F31E0F /* MassPrinter.m */,
+				274A37CD1F1313A700F31E0F /* PersonThing.h */,
+				274A37CE1F1313A700F31E0F /* PersonThing.m */,
+				274A37D01F13280400F31E0F /* PersonThingUser.h */,
+				274A37D11F13280400F31E0F /* PersonThingUser.m */,
+				274A37D31F133AA200F31E0F /* Experiments.h */,
+				274A37D41F133AA200F31E0F /* Experiments.m */,
+				274A37E51F145CA400F31E0F /* House.h */,
+				274A37E61F145CA400F31E0F /* House.m */,
+				274A37E81F145D2200F31E0F /* House+Things.h */,
+				274A37E91F145D2200F31E0F /* House+Things.m */,
 			);
 			path = ObjCScriptRunner;
 			sourceTree = "<group>";
@@ -1282,6 +1307,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				274A37E71F145CA400F31E0F /* House.m in Sources */,
+				274A37D21F13280400F31E0F /* PersonThingUser.m in Sources */,
+				274A37D51F133AA200F31E0F /* Experiments.m in Sources */,
+				274A37EA1F145D2200F31E0F /* House+Things.m in Sources */,
+				274A37CF1F1313A700F31E0F /* PersonThing.m in Sources */,
 				274A37CC1F107B7A00F31E0F /* MassPrinter.m in Sources */,
 				274A37C61F107ACF00F31E0F /* main.m in Sources */,
 			);

@@ -105,7 +105,7 @@ NSString* const IS_DIRTY = @"isDirty";
 -(void)viewDidAppear:(BOOL)animated{
     if(self.isEditingExisting){
         [self.editorContainer enableDelete];
-    }
+    } 
 }
 
 

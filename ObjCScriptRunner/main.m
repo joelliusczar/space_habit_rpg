@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "MassPrinter.h"
+#import "PersonThingUser.h"
+#import "Experiments.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        [MassPrinter outputAllLocaleFormatStringsToFile];
+        [Experiments getAllIvar];
     }
     return 0;
 }

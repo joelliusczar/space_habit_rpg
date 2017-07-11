@@ -8,6 +8,7 @@
 
 #import "NSDate+DateHelper.h"
 #import "SingletonCluster.h"
+#import "NSLocale+Helper.h"
 
 @implementation NSDate (DateHelper)
 
@@ -109,6 +110,12 @@
     return dateString;
 }
 
-
+-(NSString *)extractTimeInFormat:(hourFormatType)format{
+    NSDateComponents *components=[SharedGlobal.inUseCalendar
+                                    components:NSCalendarUnitHour|NSCalendarUnitMinute
+                                    fromDate:self];
+    NSInteger convertedHour=[NSLocale hour:components.hour inGivenFormatMask:format];
+    return [NSString stringWithFormat:@"%ld:%ld",convertedHour,components.minute];
+}
 
 @end

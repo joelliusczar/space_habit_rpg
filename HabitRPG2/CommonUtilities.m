@@ -14,7 +14,6 @@
 #import "CustomSwitch.h"
 
 
-
 @implementation CommonUtilities
 
 +(NSDate *)getReferenceDate{
@@ -149,8 +148,11 @@
 
 +(NSString *_Nonnull)dictToString:(NSDictionary *_Nonnull)dict{
     NSError *err = nil;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&err];
+    NSData *jsonData = [NSJSONSerialization
+                        dataWithJSONObject:dict
+                        options:NSJSONWritingPrettyPrinted error:&err];
     return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 }
+
 
 @end

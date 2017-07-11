@@ -14,7 +14,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DailySubTask : NSManagedObject
-
+@property (readonly,nonatomic) NSMutableDictionary *mapable;
+-(void)copyInto:(NSObject *)object;
 @end
 
 NS_ASSUME_NONNULL_END

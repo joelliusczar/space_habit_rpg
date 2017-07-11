@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface SHEventInfo : NSObject
 @property (readonly,nonatomic) NSTimeInterval timestamp;
 @end

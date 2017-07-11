@@ -10,6 +10,8 @@
 #import "Daily+DailyHelper.h"
 #import "SingletonCluster.h"
 #import "NSDate+DateHelper.h"
+#import "Reminder+CoreDataClass.h"
+#import "DailySubTask+CoreDataClass.h"
 
 @implementation Daily
 
@@ -18,18 +20,63 @@
 
 
 -(NSMutableDictionary *)mapable{
-    return [NSMutableDictionary dictionaryWithObjectsAndKeys:
-            self.dailyName,@"dailyName"
-            ,[NSNumber numberWithInt:self.activeDaysHash],@"activeDaysHash"
-            ,[NSNumber numberWithInt:self.difficulty],@"difficulty"
-            ,[NSNumber numberWithInt:self.rate],@"rate"
-            ,[NSNumber numberWithInt:self.streakLength],@"streakLength"
-            ,[NSNumber numberWithInt:self.urgency],@"urgency"
-            ,[NSNumber numberWithBool:self.isActive],@"isActive"
-            ,self.lastActivationTime.timeIntervalSince1970,@"lastActivationTime"
-            ,self.rollbackActivationTime.timeIntervalSince1970,@"rollbackActivationTime"
-            ,[NSNumber numberWithInt:self.customUserOrder],@"customUserOrder"
-            , nil];
+    
+    NSMutableDictionary *mappedData = [NSMutableDictionary dictionary];
+    //since NSDates don't play with JSON,I'm going to overrite these
+    //guys here
+    [self copyInto:mappedData];
+    [mappedData
+     setValue:[NSNumber numberWithDouble:self.lastActivationTime.timeIntervalSince1970]
+                  forKey:@"lastActivationTime"];
+    [mappedData
+     setValue:[NSNumber numberWithDouble:self.rollbackActivationTime.timeIntervalSince1970]
+     forKey:@"rollbackActivationTime"];
+    [mappedData setValue:[self mappedReminders] forKey:@"daily_remind"];
+    [mappedData setValue:[self mappedSubtasks] forKey:@"daily_subtask"];
+    return mappedData;
+}
+
+
+-(NSArray<NSMutableDictionary *> *)mappedReminders{
+    NSMutableArray<NSMutableDictionary *> *reminders = [NSMutableArray array];
+    for(Reminder *reminder in self.daily_remind){
+        [reminders addObject:reminder.mapable];
+    }
+    return reminders;
+}
+
+-(NSArray<NSMutableDictionary *> *)mappedSubtasks{
+    NSMutableArray<NSMutableDictionary *> *subtasks = [NSMutableArray array];
+    for(DailySubTask *subtask in self.daily_subtask){
+        [subtasks addObject:subtask.mapable];
+    }
+    return subtasks;
+}
+
+-(void)copyInto:(NSObject *)object{
+    NSAssert([object isKindOfClass:Daily.class]||[object isKindOfClass:NSDictionary.class],
+             @"object needs to be of the same class or a dictionary");
+    [object setValue:self.dailyName forKey:@"dailyName"];
+    [object setValue:[NSNumber numberWithInt:self.activeDaysHash]
+              forKey:@"activeDaysHash"];
+    [object setValue:[NSNumber numberWithInt:self.difficulty]
+              forKey:@"difficulty"];
+    [object setValue:[NSNumber numberWithInt:self.rate]
+              forKey:@"rate"];
+    [object setValue:[NSNumber numberWithInt:self.streakLength]
+              forKey:@"streakLength"];
+    [object setValue:[NSNumber numberWithInt:self.urgency]
+              forKey:@"urgency"];
+    [object setValue:[NSNumber numberWithInt:self.urgency]
+              forKey:@"urgency"];
+    [object setValue:[NSNumber numberWithInt:self.isActive]
+              forKey:@"isActive"];
+    [object setValue:self.lastActivationTime forKey:@"lastActivationTime"];
+    [object setValue:self.rollbackActivationTime forKey:@"rollbackActivationTime"];
+    [object setValue:[NSNumber numberWithInt:self.customUserOrder]
+              forKey:@"customUserOrder"];
+    [object setValue:self.daily_remind forKey:@"daily_remind"];
+    [object setValue:self.daily_subtask forKey:@"daily_subtask"];
 }
 
 

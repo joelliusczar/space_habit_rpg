@@ -13,9 +13,9 @@
 
 const int HOUR_OF_DAY_COL = 0;
 const int MINUTE_COL = 1;
-const int DAYS_BEFORE_COL_IN_24_HOUR_CLOCK = 3;
-const int DAYS_BEFORE_COL_IN_12_HOUR_CLOCK = 4;
-const int AM_PM_COL = 3;
+const int DAYS_BEFORE_COL_IN_24_HOUR_CLOCK = 2;
+const int DAYS_BEFORE_COL_IN_12_HOUR_CLOCK = 3;
+const int AM_PM_COL = 2;
 const int AM_ROW = 0;
 const int PM_ROW = 1;
 
@@ -39,19 +39,21 @@ const int PM_ROW = 1;
     int amPm = 1;
     //if locale uses 24 hour format: hour,minute, days before
     //but if 12 hour, an extra column for AM/PM
-    return
-    self.inUseLocale.isUsing24HourFormat
-    ?hrsMinDaysBefore:hrsMinDaysBefore+amPm;
+    return self.inUseLocale.isUsing24HourFormat?hrsMinDaysBefore:hrsMinDaysBefore+amPm;
 }
 
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView
 numberOfRowsInComponent:(NSInteger)component{
+    NSLog(@"%ld",component);
     if(component==HOUR_OF_DAY_COL){
         return HOURS_IN_DAY;
     }
     else if(component==MINUTE_COL){
         return MINUTES_IN_HOUR; 
+    }
+    else if(!self.inUseLocale.isUsing24HourFormat&&component==AM_PM_COL){
+        return 2;
     }
     else{
         return self.dayRange;
@@ -67,12 +69,12 @@ numberOfRowsInComponent:(NSInteger)component{
          [self.inUseLocale hourInLocaleFormat:row]];
     }
     else if(component==MINUTE_COL){
-        return [NSString stringWithFormat:@"%20ld",row];
+        return [NSString stringWithFormat:@"%02ld",row];
     }
     else if(!self.inUseLocale.isUsing24HourFormat&&component==AM_PM_COL){
 
         return
-        component==AM_ROW?self.inUseLocale.AMSymbol:self.inUseLocale.PMSymbol;
+        row==AM_ROW?self.inUseLocale.AMSymbol:self.inUseLocale.PMSymbol;
     }
     else{
         return [NSString stringWithFormat:@"%ld days before",row];
