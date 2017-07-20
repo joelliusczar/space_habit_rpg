@@ -50,14 +50,14 @@
                                                   self.editingScreen.view.frame.size.height);
     self.scrollContainer.scrollEnabled = YES;
     [self.scrollContainer sizeToFit];
-    UITapGestureRecognizer *tapGesturebg = [[UITapGestureRecognizer alloc]
+    UITapGestureRecognizer *tapGestureBG = [[UITapGestureRecognizer alloc]
                                            initWithTarget:self
                                            action:@selector(background_tap_action:)];
-    UITapGestureRecognizer *tapGesturefg = [[UITapGestureRecognizer alloc]
+    UITapGestureRecognizer *tapGestureFG = [[UITapGestureRecognizer alloc]
                                            initWithTarget:self
                                            action:@selector(background_tap_action:)];
-    [self.modalView addGestureRecognizer:tapGesturefg];
-    [self.view addGestureRecognizer:tapGesturebg];
+    [self.modalView addGestureRecognizer:tapGestureFG];
+    [self.view addGestureRecognizer:tapGestureBG];
     
 }
 
@@ -72,20 +72,29 @@
     wrapReturnVoid wrappedCall = ^void(){
         [self confirmDelete];
     };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@deleteBtn_press_action",self.description]];
+    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
 -(void)confirmDelete{
-    UIAlertController *deleteAlert = [UIAlertController alertControllerWithTitle:@"Delete?" message:@"Are you sure you want to delete this?" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){}];
-    UIAlertAction *yesAction =
-    [UIAlertAction actionWithTitle:@"Yes" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+    UIAlertController *deleteAlert = [UIAlertController
+                                      alertControllerWithTitle:@"Delete?"
+                                      message:@"Are you sure you want to delete this?"
+                                      preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *noAction = [UIAlertAction
+                               actionWithTitle:@"No"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *action){}];
+    UIAlertAction *yesAction = [UIAlertAction
+                                actionWithTitle:@"Yes"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction *action)
+    {
         wrapReturnVoid wrappedCall = ^void(){
             [self.editingScreen deleteModel];
             [ViewHelper popViewFromFront:self];
         };
-        [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@confirmDelete~yesAction",self.description]];
+        [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
     }];
     [deleteAlert addAction:noAction];
     [deleteAlert addAction:yesAction];
@@ -102,13 +111,19 @@
         }
         [self alertMissingInfo];
     };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@saveBtn_press_action",self.description]];
+    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
 -(void)alertMissingInfo{
-    UIAlertController *saveAlert = [UIAlertController alertControllerWithTitle:@"Name?" message:@"Please give this item a name" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {}];
+    UIAlertController *saveAlert = [UIAlertController
+                                    alertControllerWithTitle:@"Name?"
+                                    message:@"Please give this item a name"
+                                    preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction
+                               actionWithTitle:@"OK"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *action) {}];
     [saveAlert addAction:okAction];
     [self presentViewController:saveAlert animated:YES completion:nil];
 }
@@ -117,11 +132,11 @@
 -(void)background_tap_action:(UITapGestureRecognizer *)sender {
     wrapReturnVoid wrappedCall = ^void(){
         [self.view endEditing:YES];
-        if(sender.view != self.modalView){
+        if(sender.view == self.view&&self.view.isFocused){
             [ViewHelper popViewFromFront:self];
         }
     };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@background_tap_action",self.description]];
+    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
@@ -137,11 +152,11 @@
 
 -(void)resizeScrollView:(BOOL)isXtraOptsHidden{
     if(isXtraOptsHidden){
-        self.scrollContainer.contentSize = CGSizeMake(self.scrollContainer.frame.size.width, self.defaultScrollHeight);
+        self.scrollContainer.contentSize = CGSizeMake(self.scrollContainer.frame.size.width,
+                                                      self.defaultScrollHeight);
     }
     else{
-        self.scrollContainer.contentSize =
-        CGSizeMake(self.scrollContainer.frame.size.width,
+        self.scrollContainer.contentSize = CGSizeMake(self.scrollContainer.frame.size.width,
                    self.editingScreen.view.frame.size.height);
     }
 }

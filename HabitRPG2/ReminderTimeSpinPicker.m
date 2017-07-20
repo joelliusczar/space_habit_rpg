@@ -10,6 +10,8 @@
 #import "SingletonCluster.h"
 #import "NSLocale+Helper.h"
 #import "constants.h"
+#import "ViewHelper.h"
+#import "Interceptor.h"
 
 const int HOUR_OF_DAY_COL = 0;
 const int MINUTE_COL = 1;
@@ -34,12 +36,29 @@ const int PM_ROW = 1;
     return self;
 }
 
+-(void)viewDidLoad{
+    UITapGestureRecognizer *tapGestureBG = [[UITapGestureRecognizer alloc]
+                                            initWithTarget:self
+                                            action:@selector(background_tap_action:)];
+    [self.view addGestureRecognizer:tapGestureBG];
+}
+
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     int hrsMinDaysBefore = 3;
     int amPm = 1;
     //if locale uses 24 hour format: hour,minute, days before
     //but if 12 hour, an extra column for AM/PM
     return self.inUseLocale.isUsing24HourFormat?hrsMinDaysBefore:hrsMinDaysBefore+amPm;
+}
+
+
+-(void)background_tap_action:(UITapGestureRecognizer *)sender{
+    wrapReturnVoid wrappedCall = ^void(){
+        if(sender.view==self.view){
+            [ViewHelper popViewFromFront:self];
+        }
+    };
+    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
@@ -100,6 +119,7 @@ numberOfRowsInComponent:(NSInteger)component{
         [self.delegate pickerSelection_action:self.picker
                                      forEvent:eventInfo];
     }
+    [ViewHelper popViewFromFront:self];
 }
 
 -(CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component{

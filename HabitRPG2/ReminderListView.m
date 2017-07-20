@@ -71,6 +71,7 @@ numberOfRowsInSection:(NSInteger)section{
     ReminderTimeSpinPicker *timePicker =
     [[ReminderTimeSpinPicker alloc] initWithLocale:self.locale
                                        andDayRange:self.dueDateInfo.maxDaysBefore];
+    timePicker.delegate = self;
     [ViewHelper pushViewToFront:timePicker OfParent:self.backViewController];
 }
 
