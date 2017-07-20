@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @protocol P_CustomSwitch <NSObject>
-@property (nonatomic,assign) IBInspectable BOOL isOn;
+@property (assign,nonatomic) IBInspectable BOOL isOn;
+@property (nonatomic) NSInteger tag;
 @end

@@ -154,5 +154,20 @@
     return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 }
 
++(int)calculateActiveDaysHash:(NSArray<id<P_CustomSwitch>> *)activeDays{
+    int32_t daysHash = 0;
+    for(int i = 0;i<activeDays.count;i++){
+            daysHash |= activeDays[i].tag;
+    }
+    return daysHash;
+}
+
++(void)setActiveDaySwitches:(NSArray<id<P_CustomSwitch>> *)activeDays
+                   fromHash:(NSInteger)hash{
+    for(int i = 0;i<activeDays.count;i++){
+        activeDays[i].isOn = hash & activeDays[i].tag;
+    }
+}
+
 
 @end

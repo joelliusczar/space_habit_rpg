@@ -7,6 +7,7 @@
 //
 
 #import "ActiveDaysPicker.h"
+#import "CommonUtilities.h"
 
 @interface ActiveDaysPicker ()
 
@@ -23,6 +24,17 @@
     if(self.delegate){
         [self.delegate activeDaySwitch_press_action:sender forEvent:event];
     }
+}
+
+
+-(int)activeDaysHash{
+    return [CommonUtilities calculateActiveDaysHash:self.activeDaySwitches];
+}
+
+
+-(void)setActiveDaysHash:(int)activeDaysHash{
+    [CommonUtilities setActiveDaySwitches:self.activeDaySwitches
+                                 fromHash:activeDaysHash];
 }
 
 

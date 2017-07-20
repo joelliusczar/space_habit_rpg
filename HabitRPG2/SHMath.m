@@ -10,6 +10,10 @@
 
 @implementation SHMath
 
++(BOOL)isPowerOfTwo:(NSInteger)num{
+    return (num&(num-1))==0;
+}
+
 +(int)toIntExact:(long)num{
     if(num>INT32_MAX || num<INT32_MIN){
         @throw [NSException

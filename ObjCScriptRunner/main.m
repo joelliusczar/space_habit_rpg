@@ -13,7 +13,7 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        [Experiments getAllIvar];
+        [Experiments oversizedCast];
     }
     return 0;
 }

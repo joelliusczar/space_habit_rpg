@@ -301,6 +301,7 @@
 		274A37E61F145CA400F31E0F /* House.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = House.m; sourceTree = "<group>"; };
 		274A37E81F145D2200F31E0F /* House+Things.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "House+Things.h"; sourceTree = "<group>"; };
 		274A37E91F145D2200F31E0F /* House+Things.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "House+Things.m"; sourceTree = "<group>"; };
+		274A37F01F148F4500F31E0F /* WeekdayEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeekdayEnum.h; sourceTree = "<group>"; };
 		274FFC261EF6236600FAF809 /* ActiveDaysPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveDaysPicker.h; sourceTree = "<group>"; };
 		274FFC271EF6236600FAF809 /* ActiveDaysPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveDaysPicker.m; sourceTree = "<group>"; };
 		274FFC281EF6236600FAF809 /* ActiveDaysPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActiveDaysPicker.xib; sourceTree = "<group>"; };
@@ -1130,6 +1131,7 @@
 				274A37B41F0A1D6200F31E0F /* SHMath.m */,
 				274A37B61F0DC03100F31E0F /* NSLocale+Helper.h */,
 				274A37B71F0DC03100F31E0F /* NSLocale+Helper.m */,
+				274A37F01F148F4500F31E0F /* WeekdayEnum.h */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";

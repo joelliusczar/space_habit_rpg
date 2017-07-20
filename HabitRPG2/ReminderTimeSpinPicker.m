@@ -77,7 +77,7 @@ numberOfRowsInComponent:(NSInteger)component{
         row==AM_ROW?self.inUseLocale.AMSymbol:self.inUseLocale.PMSymbol;
     }
     else{
-        return [NSString stringWithFormat:@"%ld days before",row];
+        return row>0?[NSString stringWithFormat:@"%ld days before",row]:@"Same Day";
     }
 }
 
@@ -102,6 +102,21 @@ numberOfRowsInComponent:(NSInteger)component{
     }
 }
 
+-(CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component{
+    if(component==HOUR_OF_DAY_COL){
+        return 35;
+    }
+    else if(component==MINUTE_COL){
+        return 40;
+    }
+    else if(!self.inUseLocale.isUsing24HourFormat&&component==AM_PM_COL){
+        return 45;
+    }
+    else{
+        return 200;
+    }
+}
+
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
       inComponent:(NSInteger)component{
@@ -112,12 +127,12 @@ numberOfRowsInComponent:(NSInteger)component{
             if([pickerView selectedRowInComponent:AM_PM_COL]==AM_ROW
                &&row>=DAY_HALF){
                 [pickerView selectRow:PM_ROW
-                          inComponent:AM_PM_COL animated:NO];
+                          inComponent:AM_PM_COL animated:YES];
             }
             else if([pickerView selectedRowInComponent:AM_PM_COL]==PM_ROW
                     &&row<DAY_HALF){
                 [pickerView selectRow:AM_ROW
-                          inComponent:AM_PM_COL animated:NO];
+                          inComponent:AM_PM_COL animated:YES];
             }
         }
         //adjust hour if user switches am/pm
@@ -125,13 +140,13 @@ numberOfRowsInComponent:(NSInteger)component{
             NSInteger currentHour = [pickerView
                                selectedRowInComponent:HOUR_OF_DAY_COL];
             
-            if(row==AM_ROW&&currentHour>DAY_HALF){
+            if(row==AM_ROW&&currentHour>=DAY_HALF){
                 [pickerView selectRow:currentHour%DAY_HALF
-                          inComponent:HOUR_OF_DAY_COL animated:NO];
+                          inComponent:HOUR_OF_DAY_COL animated:YES];
             }
             else if(row==PM_ROW&&currentHour<DAY_HALF){
                 [pickerView selectRow:currentHour+DAY_HALF
-                          inComponent:HOUR_OF_DAY_COL animated:NO];
+                          inComponent:HOUR_OF_DAY_COL animated:YES];
             }
         }
     }

@@ -21,7 +21,7 @@
 #import "RateSetterView.h"
 #import "P_EditScreenControl.h"
 #import "DailyEditControlKeep.h"
-
+#import "WeekdayEnum.h"
 
 static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 
@@ -47,6 +47,13 @@ NSString* const IS_DIRTY = @"isDirty";
 @synthesize editorContainer = _editorContainer;
 @synthesize isDirty = _isDirty;
 @synthesize nameStr = _nameStr;
+
+-(Daily *)tempModel{
+    if(nil==_tempModel){
+        _tempModel = (Daily *)[SHData constructEmptyEntity:Daily.entity InContext:nil];
+    }
+    return _tempModel;
+}
 
 -(instancetype)initWithParentDailyController:
 (DailyViewController *)parentDailyController{
@@ -82,12 +89,14 @@ NSString* const IS_DIRTY = @"isDirty";
         if(![SHData.writeContext.registeredObjects containsObject:self.modelForEditing]){
             self.modelForEditing = [SHData.writeContext objectWithID:self.modelForEditing.objectID];
         }
-        [self loadExistingDailyForEditing:self.modelForEditing];
+        [self.modelForEditing copyInto:self.tempModel];
+        [self.editorContainer enableDelete];
     }
     else{
         self.modelForEditing = [Daily constructDaily];
         [SHData insertIntoContext:self.modelForEditing];
     }
+    [self loadExistingDailyForEditing:self.tempModel];
     //I want the editControls stuff to happen here because when it gets
     //lazy loaded, it gets out of hand
     self.editControls = [[DailyEditControlKeep alloc]
@@ -130,23 +139,7 @@ NSString* const IS_DIRTY = @"isDirty";
 
 
 -(void)saveEdit{
-    Daily *savingModel = self.modelForEditing;
-    int rate = (int)self.editControls.rateSetterView.rateStep.value;
-    savingModel.dailyName = self.nameBox.text;
-    savingModel.note = self.editControls.noteView.noteBox.text;
-    savingModel.urgency =
-    self.editControls.importanceSliders.urgencySld.value;
-    
-    savingModel.difficulty =
-    self.editControls.importanceSliders.difficultySld.value;
-    
-    savingModel.rate = rate;
-    savingModel.activeDaysHash =
-    [Daily calculateActiveDaysHash:self.editControls.activeDaysPicker.activeDaySwitches];
-    
-    if(self.isStreakReset){
-        savingModel.streakLength = 0;
-    }
+    [self.tempModel copyInto:self.modelForEditing];
     //TODO add something for custom reward
     [SHData save];
 }
@@ -164,28 +157,35 @@ NSString* const IS_DIRTY = @"isDirty";
     return NO;
 }
 
+-(void)initializeTempModel{
+    self.tempModel.activeDaysHash = ALLDAYS;
+    self.tempModel.dailyName = @"";
+    self.tempModel.difficulty = 3;
+    self.tempModel.urgency = 3;
+    self.tempModel.note = @"";
+    self.tempModel.rate = 1;
+    self.tempModel.streakLength = 0;
+}
+
 -(void)loadExistingDailyForEditing:(Daily *)daily{
-    self.nameBox.text = self.modelForEditing.dailyName?self.modelForEditing.dailyName:@"";
+    self.nameBox.text = daily.dailyName.length>0?daily.dailyName:@"";
     self.nameStr = self.nameBox.text;
-    self.editControls.noteView.noteBox.text = self.modelForEditing.note?self.modelForEditing.note:@"";
+    self.editControls.noteView.noteBox.text = daily.note.length>0?daily.note:@"";
     
-    self.editControls.importanceSliders.urgencySld.value = self.modelForEditing.urgency;
+    self.editControls.importanceSliders.urgencySld.value = daily.urgency;
     
     self.editControls.importanceSliders.urgencyLbl.text = [NSString stringWithFormat:
                                                            @"Urgency: %d"
-                                                           ,self.modelForEditing.urgency];
-    self.editControls.importanceSliders.difficultySld.value = self.modelForEditing.difficulty;
+                                                           ,daily.urgency];
+    self.editControls.importanceSliders.difficultySld.value = daily.difficulty;
     
     self.editControls.importanceSliders.difficultyLbl.text = [NSString
                                                               stringWithFormat:
                                                               @"Difficulty: %d"
-                                                              ,self.modelForEditing.difficulty];
+                                                              ,daily.difficulty];
     
-    int hash = self.modelForEditing.activeDaysHash;
-    [Daily setActiveDaySwitches:self.editControls.activeDaysPicker.activeDaySwitches
-                       fromHash:hash];
-    
-    NSInteger rate = self.modelForEditing.rate;
+    self.editControls.activeDaysPicker.activeDaysHash = daily.activeDaysHash;
+    NSInteger rate = daily.rate;
     self.editControls.rateSetterView.rateStep.value = rate;
     self.editControls.rateSetterView.rateLbl.text = [NSString
                                                      stringWithFormat:
@@ -197,18 +197,16 @@ NSString* const IS_DIRTY = @"isDirty";
                                                                 stringWithFormat:
                                                                 @"Streak: %d"
                                                                 ,daily.streakLength];
-    [self.editorContainer enableDelete];
-    
 }
 
+//noteBox
 -(void)textDidChange:(UITextView *)textView{
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
+        self.tempModel.note = textView.text;
     };
     [Interceptor callVoidWrapped:wrappedCall
-                        withInfo:[NSString stringWithFormat:
-                                  @"%@textDidChange"
-                                  ,self.description]];
+                        withInfo:nil];
 }
 
 
@@ -243,9 +241,7 @@ NSString* const IS_DIRTY = @"isDirty";
         }
     };
     [Interceptor callVoidWrapped:wrappedCall
-                        withInfo:[NSString stringWithFormat:
-                                  @"%@showXtra_push_action",
-                                  self.description]];
+                        withInfo:nil];
 }
 
 
@@ -258,11 +254,9 @@ NSString* const IS_DIRTY = @"isDirty";
                                                                @"Urgency: %d"
                                                                ,sliderValue];
         sender.value = sliderValue;
+        self.tempModel.urgency = sliderValue;
     };
-    [Interceptor callVoidWrapped:wrappedCall
-                        withInfo:[NSString stringWithFormat:
-                                  @"%@urgencySld_valueChange_action"
-                                  ,self.description]];
+    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
@@ -270,15 +264,14 @@ NSString* const IS_DIRTY = @"isDirty";
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
         int sliderValue = (int)sender.value;
-        self.editControls.importanceSliders.difficultyLbl.text =
-        [NSString stringWithFormat:@"Difficulty: %d",sliderValue];
-        
+        self.editControls.importanceSliders.difficultyLbl.text = [NSString
+                                                                  stringWithFormat:
+                                                                  @"Difficulty: %d"
+                                                                  ,sliderValue];
         sender.value = sliderValue;
+        self.tempModel.difficulty = sliderValue;
     };
-    [Interceptor callVoidWrapped:wrappedCall
-                        withInfo:[NSString stringWithFormat:
-                                  @"%@difficultySld_valueChanged_action"
-                                  ,self.description]];
+    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
@@ -296,46 +289,42 @@ NSString* const IS_DIRTY = @"isDirty";
         sender.value = rate;
         self.editControls.rateSetterView.rateLbl.text =
         [NSString stringWithFormat: TRIGGER_LABEL_FORMAT,(int)rate];
+        self.tempModel.rate = rate;
     };
-    [Interceptor callVoidWrapped:wrappedCall
-                        withInfo:[NSString stringWithFormat:
-                                  @"%@rateStep_valueChange_action"
-                                  ,self.description]];
+    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
 -(void)activeDaySwitch_press_action:(CustomSwitch *)sender forEvent:(UIEvent *)event{
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
+        if(sender.isOn){
+            self.tempModel.activeDaysHash |= (int)sender.tag;
+        }
+        else{
+            self.tempModel.activeDaysHash &= ~(int)sender.tag;
+        }
     };
-    [Interceptor callVoidWrapped:wrappedCall
-                        withInfo:[NSString stringWithFormat:
-                                  @"%@daySwitch_push_action~%ld"
-                                  ,self.description,sender.tag]];
+    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
 -(void)addRewardBtn_push_action:(UIButton *)sender forEvent:(UIEvent *)event {
     wrapReturnVoid wrappedCall = ^void(){
     };
-    [Interceptor callVoidWrapped:wrappedCall
-                        withInfo:[NSString stringWithFormat:
-                                  @"%@addRewardBtn_push_action"
-                                  ,self.description]];
+    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
 -(void)streakResetBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
     wrapReturnVoid wrappedCall = ^void(){
         if(self.modelForEditing){
-            self.isStreakReset = YES;
+            self.tempModel.streakLength = 0;
             self.isDirty = YES;
+            
         }
     };
-    [Interceptor callVoidWrapped:wrappedCall
-                        withInfo:[NSString stringWithFormat:
-                                  @"%@streakResetBtn_press_action"
-                                  ,self.description]];
+    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 

@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface SHMath : NSObject
++(BOOL)isPowerOfTwo:(NSInteger)num;
 +(int)toIntExact:(long)num;
 @end

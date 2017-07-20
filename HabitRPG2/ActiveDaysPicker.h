@@ -15,4 +15,5 @@
 @interface ActiveDaysPicker : ControlController <P_EditScreenControl>
 @property (strong, nonatomic) IBOutletCollection(CustomSwitch) NSArray *activeDaySwitches;
 @property (weak,nonatomic) id<P_ActiveDaysPickerDelegate> delegate;
+@property (nonatomic) int activeDaysHash;
 @end

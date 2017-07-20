@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "P_CustomSwitch.h"
 @import CoreGraphics;
 
 
@@ -30,4 +31,7 @@ CGFloat GetYStartUnderLabel(CGFloat height);
 +(UIImage *_Nonnull)invertImageColors:(UIImage *_Nonnull)img;
 +(void)checkForAndApplyVisualChanges:(UIView *_Nonnull)view;
 +(NSString *_Nonnull)dictToString:(NSDictionary *_Nonnull)dict;
++(int)calculateActiveDaysHash:(NSArray<id<P_CustomSwitch>> *_Nonnull)activeDays;
++(void)setActiveDaySwitches:(NSArray<id<P_CustomSwitch>> *_Nonnull)activeDays
+                   fromHash:(NSInteger)hash;
 @end

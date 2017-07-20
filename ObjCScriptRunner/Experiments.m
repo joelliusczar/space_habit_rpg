@@ -41,4 +41,11 @@
     }
     free(ivars);
 }
+
++(void)oversizedCast{
+    NSInteger biggy = 1L<<31;
+    int32_t i32 = (int32_t)biggy;
+    NSLog(@"%ld",biggy);
+    NSLog(@"%d",i32);
+}
 @end
