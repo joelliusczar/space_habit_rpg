@@ -108,7 +108,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     Zone *z = self.zones[indexPath.row];
-    ZoneChoiceCellController *cell = [ZoneChoiceCellController getZoneChoiceCell:tableView WithOwner:self AndModel:z AndRow:indexPath];
+    ZoneChoiceCellController *cell = [ZoneChoiceCellController getZoneChoiceCell:tableView WithParent:self AndModel:z AndRow:indexPath];
     return cell; 
 }
 

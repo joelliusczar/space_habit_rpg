@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ControlController : UIViewController
+@property (weak,nonatomic) UIView *container;
 -(instancetype)initDefault;
 @end

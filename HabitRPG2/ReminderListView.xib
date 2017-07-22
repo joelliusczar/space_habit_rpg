@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReminderListView">
             <connections>
-                <outlet property="reminderList" destination="y4T-Lj-Mg2" id="21S-kS-6P6"/>
+                <outlet property="reminderTbl" destination="y4T-Lj-Mg2" id="8lF-TQ-ff3"/>
                 <outlet property="view" destination="iN0-l3-epB" id="nar-c7-Ixc"/>
             </connections>
         </placeholder>
@@ -22,7 +22,7 @@
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y4T-Lj-Mg2">
                     <rect key="frame" x="6" y="12" width="261" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="FoD-Ea-MxS"/>

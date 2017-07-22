@@ -14,7 +14,11 @@
 @implementation ReminderCellController
 
 +(instancetype)getReminderCell:(UITableView *)tableView withParent:(id)parent andReminder:(Reminder *)reminderModel{
-    ReminderCellController *cell = [ReminderCellController getCell:tableView WithNibName:@"ReminderCell" AndParent:parent];
+    ReminderCellController *cell = [tableView
+                                    dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
+    if(nil==cell){
+        cell = [[ReminderCellController alloc] init];
+    }
     cell.model = reminderModel;
     return cell;
 }

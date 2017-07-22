@@ -14,8 +14,8 @@
 
 @property (nonatomic,strong) UILabel *nameLbl;
 @property (nonatomic,strong) UILabel *lvlLbl;
-+(instancetype)getZoneChoiceCell:(UITableView *)tableView WithOwner:(ZoneChoiceViewController *)owner
++(instancetype)getZoneChoiceCell:(UITableView *)tableView WithParent:(ZoneChoiceViewController *)parent
                         AndModel:(Zone *)model AndRow:(NSIndexPath *)rowInfo;
--(void)setupCell:(Zone *)model AndOwner:(ZoneChoiceViewController *)owner
+-(void)setupCell:(Zone *)model AndParent:(ZoneChoiceViewController *)parent
           AndRow:(NSIndexPath *)rowInfo;
 @end

@@ -13,7 +13,7 @@
 
 @interface DailyCellController : TaskCell
 
-+(id)getDailyCell:(UITableView *)tableView WithParent:(DailyViewController *)parent;
++(instancetype)getDailyCell:(UITableView *)tableView WithParent:(DailyViewController *)parent;
 -(void)setupCell:(Daily *)model AndRow:(NSIndexPath *)rowInfo;
 -(void)refreshCell:(NSIndexPath *)rowInfo;
 @end

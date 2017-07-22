@@ -37,6 +37,7 @@ NSTimeInterval const CHARACTER_DELAY = .01;
 u_int32_t const MIN_ZONE_CHOICE_COUNT = 3;
 u_int32_t const MAX_ZONE_CHOICE_RAND_UP_BOUND = 3;
 CGFloat const ZONE_CHOICE_ROW_HEIGHT = 75;
+CGFloat const EDIT_SCREEN_TOP_CONTROL_HEIGHT = 60;
 
 NSString* const TRANSACTION_TYPE_KEY = @"TransactionType";
 NSString* const TRANSACTION_TYPE_CREATE = @"ADDED";
@@ -56,3 +57,4 @@ NSString* const LVL_15_ZONES = @"LVL_15_ZONES";
 NSString* const LVL_20_ZONES = @"LVL_20_ZONES";
 NSString* const LVL_25_ZONES = @"LVL_25_ZONES";
 NSString* const LVL_30_ZONES = @"LVL_30_ZONES";
+

@@ -10,13 +10,14 @@
 #import "EditingSaver.h"
 #import "ViewHelper.h"
 #import "Interceptor.h"
+#import "UIScrollView+ScrollAdjusters.h"
+#import "constants.h"
 @import CoreGraphics;
 
 
 @interface EditNavigationController ()
 
 @property (strong,nonatomic) UIScrollView *scrollView;
-@property (strong,nonatomic) UIViewController<EditingSaver>* editingScreen;
 @property (weak, nonatomic) IBOutlet UILabel *headline;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollContainer;
 @property (weak, nonatomic) IBOutlet UIImageView *background;
@@ -158,6 +159,13 @@
     else{
         self.scrollContainer.contentSize = CGSizeMake(self.scrollContainer.frame.size.width,
                    self.editingScreen.view.frame.size.height);
+    }
+}
+
+-(void)scrollByOffset:(CGFloat)offset{
+    [self.editingScreen.controlsTbl scrollByOffset:offset];
+    if(self.scrollContainer.contentOffset.y < EDIT_SCREEN_TOP_CONTROL_HEIGHT){
+        [self.scrollContainer scrollByOffset:offset];
     }
 }
 

@@ -9,10 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "CustomSwitch.h"
 #import "P_ActiveDaysPickerDelegate.h"
-#import "P_EditScreenControl.h"
 #import "ControlController.h"
 
-@interface ActiveDaysPicker : ControlController <P_EditScreenControl>
+@interface ActiveDaysPicker : ControlController
 @property (strong, nonatomic) IBOutletCollection(CustomSwitch) NSArray *activeDaySwitches;
 @property (weak,nonatomic) id<P_ActiveDaysPickerDelegate> delegate;
 @property (nonatomic) int activeDaysHash;

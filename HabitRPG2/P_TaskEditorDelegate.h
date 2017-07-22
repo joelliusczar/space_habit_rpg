@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @protocol P_TaskEditorDelegate <NSObject>
+
 -(void)enableSave;
 -(void)enableDelete;
 -(void)resizeScrollView:(BOOL)isXtraOptsHidden;

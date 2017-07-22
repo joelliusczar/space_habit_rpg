@@ -16,6 +16,7 @@
 #import "NSDate+DateHelper.h"
 #import "SHMath.h"
 #import "ReminderTimeSpinPicker.h"
+#import "UIView+Helpers.h"
 @import UserNotifications;
 
 @interface ReminderListView()
@@ -30,7 +31,7 @@
 
 
 -(instancetype)initWithDueDateInfo:(NSObject<P_DueDateWrapper> *)dueDateInfo
-                 andBackViewController:(UIViewController *)backViewController
+                 andBackViewController:(EditNavigationController *)backViewController
                          andLocale:(NSLocale *)locale{
     
     if(self = [self initDefault]){
@@ -46,7 +47,7 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     AddItemsFooter *footerControl = [[AddItemsFooter alloc] initDefault];
-    self.reminderList.tableFooterView = footerControl.view;
+    self.reminderTbl.tableFooterView = footerControl.view;
     footerControl.delegate = self;
 }
 
@@ -63,6 +64,7 @@ numberOfRowsInSection:(NSInteger)section{
     ReminderCellController *cell =
     [ReminderCellController getReminderCell:tableView withParent:self
                                 andReminder:self.reminderSet[indexPath.row]];
+    cell.lblRowDesc.text = [NSString stringWithFormat:@"%ld",indexPath.row];
     return cell;
 }
 
@@ -80,18 +82,39 @@ numberOfRowsInSection:(NSInteger)section{
                      forEvent:(TimeSpinPickerEventInfo *)event{
     
     wrapReturnVoid wrappedCall = ^void(){
-        Reminder *reminder =
-        (Reminder *)[SHData constructEmptyEntity:Reminder.entity];
-        
-        //we only really care out the hour and minute
-        reminder.reminderHour =
-        [NSDate createSimpleTime:event.selectedHourRow
-                          minute:event.selectedMinRow second:0];
-        
-        reminder.daysBeforeDue = [SHMath toIntExact:event.selectedDaysBeforeRow];
-        [self.dueDateInfo addNewReminder:reminder];
+        [self insertNewReminder:event.selectedHourRow
+                         minute:event.selectedMinRow
+                     daysBefore:event.selectedDaysBeforeRow];
+        NSIndexPath *indexPath = [NSIndexPath
+                                  indexPathForRow:self.reminderSet.count-1
+                                  inSection:0];
+        [self.reminderTbl
+         insertRowsAtIndexPaths:@[indexPath]
+         withRowAnimation:UITableViewRowAnimationFade];
+        //auto scroll so that reminders remains centered
+        [self.backViewController scrollByOffset:44];
+        [self.view sizeToFit];
+        //[self resizeRemindersListHeightByOffset:44];
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+}
+
+-(void)insertNewReminder:(NSInteger)hour minute:(NSInteger)minute
+              daysBefore:(NSInteger)daysBefore{
+    Reminder *reminder = (Reminder *)[SHData
+                                      constructEmptyEntity:Reminder.entity];
+    //we only really care about the hour and minute
+    reminder.reminderHour = [NSDate
+                             createSimpleTime:hour
+                             minute:minute second:0];
+    reminder.daysBeforeDue = [SHMath toIntExact:daysBefore];
+    [self.dueDateInfo addNewReminder:reminder];
+}
+
+
+-(void)resizeRemindersListHeightByOffset:(NSInteger)offset{
+    [self.view resizeHeightByOffset:offset];
+    //[self.reminderTbl resizeHeightByOffset:offset];
 }
 
 @end

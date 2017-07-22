@@ -9,5 +9,4 @@
 #import <UIKit/UIKit.h>
 
 @interface TaskCell : UITableViewCell
-+(id)getCell:(UITableView *)tableView WithNibName:(NSString *)nibName AndParent:(id)parent;
 @end

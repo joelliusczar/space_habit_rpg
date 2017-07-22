@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "P_EditScreenControl.h"
 #import <UIKit/UIKit.h>
 #import "NoteView.h"
 #import "ActiveDaysPicker.h"
@@ -16,9 +15,10 @@
 #import "StreakResetterView.h"
 #import "ReminderListView.h"
 #import "DailyEditController.h"
+#import "ControlController.h"
 
 @interface DailyEditControlKeep : NSObject
-@property (strong,nonatomic)NSArray<UIViewController<P_EditScreenControl> *> *allControls;
+@property (strong,nonatomic)NSArray<ControlController *> *allControls;
 @property (strong,nonatomic) NoteView *noteView;
 @property (strong,nonatomic) ActiveDaysPicker *activeDaysPicker;
 @property (strong,nonatomic) RateSetterView *rateSetterView;

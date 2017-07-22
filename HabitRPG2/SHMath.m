@@ -10,8 +10,8 @@
 
 @implementation SHMath
 
-+(BOOL)isPowerOfTwo:(NSInteger)num{
-    return (num&(num-1))==0;
++(BOOL)isPowerOfTwo:(NSUInteger)num{
+    return num!=0&&(num&(num-1))==0;
 }
 
 +(int)toIntExact:(long)num{

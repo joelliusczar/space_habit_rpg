@@ -8,10 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "EditingSaver.h"
-#import "P_TaskEditorDelegate.h"
 
-@interface EditNavigationController : UIViewController<P_TaskEditorDelegate>
+
+@interface EditNavigationController : UIViewController
 @property (strong,nonatomic) NSString *viewTitle;
+@property (strong,nonatomic) UIViewController<EditingSaver>* editingScreen;
 -(instancetype)initWithTitle:(NSString *)viewTitle
                    andEditor:(UIViewController<EditingSaver>*)editView;
+-(void)enableSave;
+-(void)enableDelete;
+-(void)resizeScrollView:(BOOL)isXtraOptsHidden;
+-(void)scrollByOffset:(CGFloat)offset;
 @end

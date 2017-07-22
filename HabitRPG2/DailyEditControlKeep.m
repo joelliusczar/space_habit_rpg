@@ -64,7 +64,7 @@
     return _reminderListView;
 }
 
--(NSArray<UIViewController<P_EditScreenControl> *> *)allControls{
+-(NSArray<ControlController*> *)allControls{
     if(nil==_allControls){
         _allControls = [NSArray arrayWithObjects:
                         self.noteView

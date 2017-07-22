@@ -12,12 +12,10 @@
 #import "CommonUtilities.h"
 
 @interface ZoneChoiceCellController()
-@property (nonatomic,weak) ZoneChoiceViewController *ownerZoneController;
+@property (nonatomic,weak) ZoneChoiceViewController *parentZoneController;
 @property (nonatomic,weak) Zone *model;
 @property (nonatomic,weak) NSIndexPath *rowInfo;
 @property (nonatomic,strong) UISwipeGestureRecognizer *swiper;
--(void)setupCell:(Zone *)model AndOwner:(ZoneChoiceViewController *)owner
-          AndRow:(NSIndexPath *)rowInfo;
 @end
 
 @implementation ZoneChoiceCellController
@@ -47,18 +45,25 @@
     return _swiper;
 }
 
-+(instancetype)getZoneChoiceCell:(UITableView *)tableView WithOwner:(ZoneChoiceViewController *)owner
-    AndModel:(Zone *)model AndRow:(NSIndexPath *)rowInfo
+
+
++(instancetype)getZoneChoiceCell:(UITableView *)tableView
+                      WithParent:(ZoneChoiceViewController *)parent
+                        AndModel:(Zone *)model AndRow:(NSIndexPath *)rowInfo
 {
-    ZoneChoiceCellController *cell = [ZoneChoiceCellController getCell:tableView WithNibName:@"ZoneChoiceCell" AndParent:owner];
-    [cell setupCell:model AndOwner:owner AndRow:rowInfo];
+    ZoneChoiceCellController *cell = [tableView
+                                      dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
+    if(nil==cell){
+        cell = [[ZoneChoiceCellController alloc] init];
+    }
+    [cell setupCell:model AndParent:parent AndRow:rowInfo];
     return cell;
 }
 
--(void)setupCell:(Zone *)model AndOwner:(ZoneChoiceViewController *)owner
+-(void)setupCell:(Zone *)model AndParent:(ZoneChoiceViewController *)parent
           AndRow:(NSIndexPath *)rowInfo
 {
-    self.ownerZoneController = owner;
+    self.parentZoneController = parent;
     self.model = model;
     self.nameLbl.text = self.model.fullName;
     self.lvlLbl.text = [NSString stringWithFormat:@"Lvl: %d",self.model.lvl];
@@ -73,9 +78,9 @@
 
 -(void)handleSwipe:(UISwipeGestureRecognizer *)swipe{
     if(swipe.direction == UISwipeGestureRecognizerDirectionLeft){
-        ZoneDescriptionViewController *descView = self.ownerZoneController.descViewController;
+        ZoneDescriptionViewController *descView = self.parentZoneController.descViewController;
         [descView setDisplayItems:self.model];
-        [ViewHelper pushViewToFront:descView OfParent:self.ownerZoneController];
+        [ViewHelper pushViewToFront:descView OfParent:self.parentZoneController];
     }
     else{
         NSLog(@"%@",@"wrong");

@@ -10,6 +10,6 @@
 #import "Reminder+CoreDataClass.h"
 
 @interface ReminderCellController : TaskCell
+@property (weak, nonatomic) IBOutlet UILabel *lblRowDesc;
 +(instancetype)getReminderCell:(UITableView *)tableView withParent:(id)parent andReminder:(Reminder *)reminderModel;
-
 @end

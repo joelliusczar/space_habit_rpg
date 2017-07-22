@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "P_NotesViewDelegate.h"
-#import "P_EditScreenControl.h"
 #import "ControlController.h"
 
-@interface NoteView : ControlController <UITextViewDelegate, P_EditScreenControl>
+@interface NoteView : ControlController <UITextViewDelegate>
 @property (weak,nonatomic) IBOutlet UITextView *noteBox;
 @property (weak,nonatomic) id<P_NotesViewDelegate> delegate;
 @end

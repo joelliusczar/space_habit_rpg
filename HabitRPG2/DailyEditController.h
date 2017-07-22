@@ -20,6 +20,9 @@
 ,UITableViewDataSource
 ,UITableViewDelegate
 ,P_DailyEditCompound>
+@property (weak,nonatomic) IBOutlet UITextField *nameBox;
+@property (weak,nonatomic) IBOutlet UIButton *showXtraOptsBtn;
+@property (weak,nonatomic) IBOutlet UITableView *controlsTbl;
 @property (strong,nonatomic) Daily *modelForEditing;
 @property (weak,nonatomic) DailyViewController *parentDailyController;
 @property (strong,nonatomic) Daily *tempModel;

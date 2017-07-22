@@ -15,16 +15,21 @@
 
 @implementation TaskCell
 
-
-
-+(id)getCell:(UITableView *)tableView WithNibName:(NSString *)nibName AndParent:(id)parent{
-    TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:nibName];
-    if(cell == nil){
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:nibName owner:parent options:nil];
-        cell = nib[0];
+-(instancetype)initWithFrame:(CGRect)frame{
+    if(self = [super initWithFrame:frame]){
+        UIView *view = [self loadXib];
+        [self addSubview:view];
     }
+    return self;
+}
 
-    return cell;
+
+-(instancetype)init{
+    if(self = [super init]){
+        UIView *view = [self loadXib];
+        [self addSubview:view];
+    }
+    return self;
 }
 
 
@@ -32,10 +37,17 @@
     [super awakeFromNib];
 }
 
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+
+-(UIView *)loadXib{
+    return [[NSBundle bundleForClass:self.class]
+            loadNibNamed:NSStringFromClass(self.class) owner:self options:nil][0];
 }
 
 

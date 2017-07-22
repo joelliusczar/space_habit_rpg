@@ -58,6 +58,8 @@
 		274A37D51F133AA200F31E0F /* Experiments.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37D41F133AA200F31E0F /* Experiments.m */; };
 		274A37E71F145CA400F31E0F /* House.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37E61F145CA400F31E0F /* House.m */; };
 		274A37EA1F145D2200F31E0F /* House+Things.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37E91F145D2200F31E0F /* House+Things.m */; };
+		274A382F1F2150ED00F31E0F /* MathTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A382E1F2150ED00F31E0F /* MathTest.m */; };
+		274A38381F2194FD00F31E0F /* ParentMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A38371F2194FD00F31E0F /* ParentMan.m */; };
 		274FFC291EF6236600FAF809 /* ActiveDaysPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC271EF6236600FAF809 /* ActiveDaysPicker.m */; };
 		274FFC2A1EF6236600FAF809 /* ActiveDaysPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274FFC281EF6236600FAF809 /* ActiveDaysPicker.xib */; };
 		274FFC2F1EF6296D00FAF809 /* NoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC2D1EF6296D00FAF809 /* NoteView.m */; };
@@ -70,6 +72,10 @@
 		275A079C1ED50AF5001422CD /* GoodTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 275A07841ED50AF5001422CD /* GoodTransaction+CoreDataClass.m */; };
 		275A079D1ED50AF5001422CD /* GoodTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 275A07861ED50AF5001422CD /* GoodTransaction+CoreDataProperties.m */; };
 		275A07B71EDA1FB9001422CD /* TestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 275A07B61EDA1FB9001422CD /* TestHelpers.m */; };
+		275D9F241F219850009DA715 /* ChildMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 275D9F231F219850009DA715 /* ChildMan.m */; };
+		275D9F271F21A33E009DA715 /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 275D9F261F21A33E009DA715 /* TaskCell.m */; };
+		275D9F2A1F22294F009DA715 /* UIScrollView+ScrollAdjusters.m in Sources */ = {isa = PBXBuildFile; fileRef = 275D9F291F22294F009DA715 /* UIScrollView+ScrollAdjusters.m */; };
+		275D9F2D1F22BAED009DA715 /* UIView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 275D9F2C1F22BAED009DA715 /* UIView+Helpers.m */; };
 		275FEEFE1EE3172C00AED1A2 /* NSDate+DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 275FEEFD1EE3172C00AED1A2 /* NSDate+DateHelper.m */; };
 		275FEF001EE344BB00AED1A2 /* DateHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 275FEEFF1EE344BB00AED1A2 /* DateHelperTest.m */; };
 		275FEF021EE3A78200AED1A2 /* timeZoneList.txt in Resources */ = {isa = PBXBuildFile; fileRef = 275FEF011EE3A78200AED1A2 /* timeZoneList.txt */; };
@@ -109,7 +115,7 @@
 		27E89C6A1EF5AD68009B7474 /* SubtaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E89C691EF5AD68009B7474 /* SubtaskCell.xib */; };
 		27E89C7E1EF5CE4C009B7474 /* DailySubTask+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E89C781EF5CE4C009B7474 /* DailySubTask+CoreDataClass.m */; };
 		27E89C7F1EF5CE4C009B7474 /* DailySubTask+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E89C7A1EF5CE4C009B7474 /* DailySubTask+CoreDataProperties.m */; };
-		27E89C901EF5E6A8009B7474 /* ReminderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E89C8F1EF5E6A8009B7474 /* ReminderCell.xib */; };
+		27E89C901EF5E6A8009B7474 /* ReminderCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E89C8F1EF5E6A8009B7474 /* ReminderCellController.xib */; };
 		27E89C941EF5E732009B7474 /* ReminderCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E89C931EF5E732009B7474 /* ReminderCellController.m */; };
 		27E89C981EF5F3EE009B7474 /* SubTaskCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E89C971EF5F3EE009B7474 /* SubTaskCellController.m */; };
 		27E89C9D1EF5FCD5009B7474 /* ImportanceSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E89C9B1EF5FCD5009B7474 /* ImportanceSliderView.m */; };
@@ -133,7 +139,6 @@
 		687F01231D77CA6500C7B08B /* DailyTablesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 687F01211D77CA6500C7B08B /* DailyTablesViewController.xib */; };
 		6886A4801D8E5FD0005E12B3 /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 6886A47F1D8E5FD0005E12B3 /* constants.m */; };
 		6886A4861D8F1C49005E12B3 /* unchecked_task.png in Resources */ = {isa = PBXBuildFile; fileRef = 6886A4851D8F1C49005E12B3 /* unchecked_task.png */; };
-		6886A4891D8F3CB2005E12B3 /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6886A4881D8F3CB2005E12B3 /* TaskCell.m */; };
 		6886A48B1D8F6EA6005E12B3 /* switch_unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 6886A48A1D8F6EA6005E12B3 /* switch_unchecked.png */; };
 		6886A48D1D8F6EB3005E12B3 /* switch_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 6886A48C1D8F6EB3005E12B3 /* switch_checked.png */; };
 		6886A48F1D8F6F9B005E12B3 /* edit_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 6886A48E1D8F6F9A005E12B3 /* edit_button.png */; };
@@ -233,7 +238,6 @@
 		271C048C1E8C9C06002221E9 /* MonsterHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterHelper.h; sourceTree = "<group>"; };
 		271C048D1E8C9C06002221E9 /* MonsterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterHelper.m; sourceTree = "<group>"; };
 		271C04911E8F3784002221E9 /* SuffixList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SuffixList.plist; sourceTree = "<group>"; };
-		272144FD1EDB59F600D98C03 /* P_TaskEditorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_TaskEditorDelegate.h; sourceTree = "<group>"; };
 		273782361EE4D1B200EA5B1D /* FrequentCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrequentCase.h; sourceTree = "<group>"; };
 		273782371EE4D1B200EA5B1D /* FrequentCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrequentCase.m; sourceTree = "<group>"; };
 		2737823A1EE4DB9C00EA5B1D /* Model 19.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 19.xcdatamodel"; sourceTree = "<group>"; };
@@ -302,6 +306,9 @@
 		274A37E81F145D2200F31E0F /* House+Things.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "House+Things.h"; sourceTree = "<group>"; };
 		274A37E91F145D2200F31E0F /* House+Things.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "House+Things.m"; sourceTree = "<group>"; };
 		274A37F01F148F4500F31E0F /* WeekdayEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeekdayEnum.h; sourceTree = "<group>"; };
+		274A382E1F2150ED00F31E0F /* MathTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathTest.m; sourceTree = "<group>"; };
+		274A38361F2194FD00F31E0F /* ParentMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentMan.h; sourceTree = "<group>"; };
+		274A38371F2194FD00F31E0F /* ParentMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentMan.m; sourceTree = "<group>"; };
 		274FFC261EF6236600FAF809 /* ActiveDaysPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveDaysPicker.h; sourceTree = "<group>"; };
 		274FFC271EF6236600FAF809 /* ActiveDaysPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveDaysPicker.m; sourceTree = "<group>"; };
 		274FFC281EF6236600FAF809 /* ActiveDaysPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActiveDaysPicker.xib; sourceTree = "<group>"; };
@@ -318,7 +325,6 @@
 		274FFC401EF6E2B100FAF809 /* RateSetterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateSetterView.m; sourceTree = "<group>"; };
 		274FFC411EF6E2B100FAF809 /* RateSetterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RateSetterView.xib; sourceTree = "<group>"; };
 		274FFC441EF6E3BB00FAF809 /* P_RateSetterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_RateSetterDelegate.h; sourceTree = "<group>"; };
-		274FFC471EF87E0400FAF809 /* P_EditScreenControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_EditScreenControl.h; sourceTree = "<group>"; };
 		274FFC481EF887DB00FAF809 /* DailyEditControlKeep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyEditControlKeep.h; sourceTree = "<group>"; };
 		274FFC491EF887DB00FAF809 /* DailyEditControlKeep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyEditControlKeep.m; sourceTree = "<group>"; };
 		275A07831ED50AF5001422CD /* GoodTransaction+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GoodTransaction+CoreDataClass.h"; path = "../GoodTransaction+CoreDataClass.h"; sourceTree = "<group>"; };
@@ -327,6 +333,14 @@
 		275A07861ED50AF5001422CD /* GoodTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GoodTransaction+CoreDataProperties.m"; path = "../GoodTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
 		275A07B51EDA1FB9001422CD /* TestHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHelpers.h; sourceTree = "<group>"; };
 		275A07B61EDA1FB9001422CD /* TestHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHelpers.m; sourceTree = "<group>"; };
+		275D9F221F219850009DA715 /* ChildMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildMan.h; sourceTree = "<group>"; };
+		275D9F231F219850009DA715 /* ChildMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildMan.m; sourceTree = "<group>"; };
+		275D9F251F21A2EF009DA715 /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
+		275D9F261F21A33E009DA715 /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
+		275D9F281F22294F009DA715 /* UIScrollView+ScrollAdjusters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+ScrollAdjusters.h"; sourceTree = "<group>"; };
+		275D9F291F22294F009DA715 /* UIScrollView+ScrollAdjusters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+ScrollAdjusters.m"; sourceTree = "<group>"; };
+		275D9F2B1F22BAED009DA715 /* UIView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Helpers.h"; sourceTree = "<group>"; };
+		275D9F2C1F22BAED009DA715 /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helpers.m"; sourceTree = "<group>"; };
 		275FEEFC1EE3172C00AED1A2 /* NSDate+DateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DateHelper.h"; sourceTree = "<group>"; };
 		275FEEFD1EE3172C00AED1A2 /* NSDate+DateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DateHelper.m"; sourceTree = "<group>"; };
 		275FEEFF1EE344BB00AED1A2 /* DateHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateHelperTest.m; sourceTree = "<group>"; };
@@ -398,7 +412,7 @@
 		27E89C781EF5CE4C009B7474 /* DailySubTask+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DailySubTask+CoreDataClass.m"; path = "../DailySubTask+CoreDataClass.m"; sourceTree = "<group>"; };
 		27E89C791EF5CE4C009B7474 /* DailySubTask+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DailySubTask+CoreDataProperties.h"; path = "../DailySubTask+CoreDataProperties.h"; sourceTree = "<group>"; };
 		27E89C7A1EF5CE4C009B7474 /* DailySubTask+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DailySubTask+CoreDataProperties.m"; path = "../DailySubTask+CoreDataProperties.m"; sourceTree = "<group>"; };
-		27E89C8F1EF5E6A8009B7474 /* ReminderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReminderCell.xib; sourceTree = "<group>"; };
+		27E89C8F1EF5E6A8009B7474 /* ReminderCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReminderCellController.xib; sourceTree = "<group>"; };
 		27E89C921EF5E732009B7474 /* ReminderCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReminderCellController.h; sourceTree = "<group>"; };
 		27E89C931EF5E732009B7474 /* ReminderCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReminderCellController.m; sourceTree = "<group>"; };
 		27E89C961EF5F3EE009B7474 /* SubTaskCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubTaskCellController.h; sourceTree = "<group>"; };
@@ -433,8 +447,6 @@
 		6886A47E1D8E5FD0005E12B3 /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 		6886A47F1D8E5FD0005E12B3 /* constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = constants.m; sourceTree = "<group>"; };
 		6886A4851D8F1C49005E12B3 /* unchecked_task.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked_task.png; sourceTree = "<group>"; };
-		6886A4871D8F3CB2005E12B3 /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
-		6886A4881D8F3CB2005E12B3 /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
 		6886A48A1D8F6EA6005E12B3 /* switch_unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_unchecked.png; sourceTree = "<group>"; };
 		6886A48C1D8F6EB3005E12B3 /* switch_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_checked.png; sourceTree = "<group>"; };
 		6886A48E1D8F6F9A005E12B3 /* edit_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit_button.png; sourceTree = "<group>"; };
@@ -564,6 +576,9 @@
 		274A37571F08CCB400F31E0F /* Reminders Controls */ = {
 			isa = PBXGroup;
 			children = (
+				27E89C8F1EF5E6A8009B7474 /* ReminderCellController.xib */,
+				27E89C921EF5E732009B7474 /* ReminderCellController.h */,
+				27E89C931EF5E732009B7474 /* ReminderCellController.m */,
 				27C3C21A1F001DF300F205A6 /* ReminderListView.h */,
 				27C3C21B1F001DF300F205A6 /* ReminderListView.m */,
 				27C3C21D1F0022D600F205A6 /* ReminderListView.xib */,
@@ -623,6 +638,10 @@
 				274A37E61F145CA400F31E0F /* House.m */,
 				274A37E81F145D2200F31E0F /* House+Things.h */,
 				274A37E91F145D2200F31E0F /* House+Things.m */,
+				274A38361F2194FD00F31E0F /* ParentMan.h */,
+				274A38371F2194FD00F31E0F /* ParentMan.m */,
+				275D9F221F219850009DA715 /* ChildMan.h */,
+				275D9F231F219850009DA715 /* ChildMan.m */,
 			);
 			path = ObjCScriptRunner;
 			sourceTree = "<group>";
@@ -635,7 +654,6 @@
 				274FFC321EF62B2200FAF809 /* P_NotesViewDelegate.h */,
 				274FFC3E1EF6CA2200FAF809 /* P_SubtasksTableViewDelegate.h */,
 				274FFC441EF6E3BB00FAF809 /* P_RateSetterDelegate.h */,
-				274FFC471EF87E0400FAF809 /* P_EditScreenControl.h */,
 				27B47E871EF8F2F500B81275 /* P_DailyEditCompound.h */,
 				27C3C2111EFEF0F700F205A6 /* P_StreakResetterDelegate.h */,
 				27C3C2121EFEF67A00F205A6 /* P_RewardsDelegate.h */,
@@ -684,6 +702,7 @@
 				277ABF5E1EA33320008CC239 /* MonsterHelperTest.m */,
 				275FEEFF1EE344BB00AED1A2 /* DateHelperTest.m */,
 				275FEF091EE3CF3000AED1A2 /* DailyHelperTest.m */,
+				274A382E1F2150ED00F31E0F /* MathTest.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -775,6 +794,8 @@
 		27E89C991EF5FC40009B7474 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				275D9F261F21A33E009DA715 /* TaskCell.m */,
+				275D9F251F21A2EF009DA715 /* TaskCell.h */,
 				274A37AC1F0A07A200F31E0F /* EventArgs */,
 				274A37571F08CCB400F31E0F /* Reminders Controls */,
 				274FFC311EF62AF900FAF809 /* Control Delegates */,
@@ -880,7 +901,6 @@
 				271C047D1E89BCBA002221E9 /* P_CoreData.h */,
 				271C04851E8B6323002221E9 /* P_ResourceUtility.h */,
 				27E00E981ED3FAE8008B35CD /* P_Transaction.h */,
-				272144FD1EDB59F600D98C03 /* P_TaskEditorDelegate.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -1012,7 +1032,6 @@
 				686ED3A91DADE47C004EDD36 /* EditingScreen */,
 				686ED3A81DADDF69004EDD36 /* Protocols */,
 				68E260631D7FC3F200425D46 /* CoreDataStackController.h */,
-				27E89C8F1EF5E6A8009B7474 /* ReminderCell.xib */,
 				68E260641D7FC3F200425D46 /* CoreDataStackController.m */,
 				68F3F9E31D70E8DB00840DD2 /* CentralViewController.xib */,
 				68F3F9E11D70E8DB00840DD2 /* CentralViewController.h */,
@@ -1021,10 +1040,6 @@
 				27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */,
 				271C04891E8C955A002221E9 /* SingletonCluster.h */,
 				271C048A1E8C955A002221E9 /* SingletonCluster.m */,
-				6886A4871D8F3CB2005E12B3 /* TaskCell.h */,
-				6886A4881D8F3CB2005E12B3 /* TaskCell.m */,
-				27E89C921EF5E732009B7474 /* ReminderCellController.h */,
-				27E89C931EF5E732009B7474 /* ReminderCellController.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1132,6 +1147,10 @@
 				274A37B61F0DC03100F31E0F /* NSLocale+Helper.h */,
 				274A37B71F0DC03100F31E0F /* NSLocale+Helper.m */,
 				274A37F01F148F4500F31E0F /* WeekdayEnum.h */,
+				275D9F281F22294F009DA715 /* UIScrollView+ScrollAdjusters.h */,
+				275D9F291F22294F009DA715 /* UIScrollView+ScrollAdjusters.m */,
+				275D9F2B1F22BAED009DA715 /* UIView+Helpers.h */,
+				275D9F2C1F22BAED009DA715 /* UIView+Helpers.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1264,7 +1283,7 @@
 				686ED3BB1DB4660F004EDD36 /* white_checked_full.png in Resources */,
 				27C3C20E1EFEEDC100F205A6 /* StreakResetterView.xib in Resources */,
 				275FEF021EE3A78200AED1A2 /* timeZoneList.txt in Resources */,
-				27E89C901EF5E6A8009B7474 /* ReminderCell.xib in Resources */,
+				27E89C901EF5E6A8009B7474 /* ReminderCellController.xib in Resources */,
 				68F3F9F41D70FC5E00840DD2 /* TodoViewController.xib in Resources */,
 				686ED3C41DB47FAF004EDD36 /* black_checked_full.png in Resources */,
 				68F3F9EF1D70FC0D00840DD2 /* HabitController.xib in Resources */,
@@ -1313,9 +1332,11 @@
 				274A37D21F13280400F31E0F /* PersonThingUser.m in Sources */,
 				274A37D51F133AA200F31E0F /* Experiments.m in Sources */,
 				274A37EA1F145D2200F31E0F /* House+Things.m in Sources */,
+				274A38381F2194FD00F31E0F /* ParentMan.m in Sources */,
 				274A37CF1F1313A700F31E0F /* PersonThing.m in Sources */,
 				274A37CC1F107B7A00F31E0F /* MassPrinter.m in Sources */,
 				274A37C61F107ACF00F31E0F /* main.m in Sources */,
+				275D9F241F219850009DA715 /* ChildMan.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1337,6 +1358,7 @@
 				277ABF2E1E9C31C0008CC239 /* MockStdLibWrapper.m in Sources */,
 				2737823E1EE4DB9C00EA5B1D /* Model.xcdatamodeld in Sources */,
 				273782381EE4D1B200EA5B1D /* FrequentCase.m in Sources */,
+				274A382F1F2150ED00F31E0F /* MathTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1390,8 +1412,8 @@
 				273978A71EB8473100F217B4 /* TodoTransaction+CoreDataProperties.m in Sources */,
 				273978A61EB8473100F217B4 /* TodoTransaction+CoreDataClass.m in Sources */,
 				686ED3C71DB481C4004EDD36 /* ZoneHelper.m in Sources */,
+				275D9F271F21A33E009DA715 /* TaskCell.m in Sources */,
 				277404111EFDBD43008E1AFC /* NSObject+Helper.m in Sources */,
-				6886A4891D8F3CB2005E12B3 /* TaskCell.m in Sources */,
 				68E260CF1D851DA500425D46 /* EditNavigationController.m in Sources */,
 				686ED3BF1DB47954004EDD36 /* ZoneChoiceViewController.m in Sources */,
 				273978AE1EB8473100F217B4 /* MonsterTransaction+CoreDataClass.m in Sources */,
@@ -1412,6 +1434,7 @@
 				686ED3A71DA751AC004EDD36 /* StoryConstants.m in Sources */,
 				273978AC1EB8473100F217B4 /* DailyTransaction+CoreDataClass.m in Sources */,
 				68A921F81DBC7FF2007C946C /* Todo+CoreDataProperties.m in Sources */,
+				275D9F2A1F22294F009DA715 /* UIScrollView+ScrollAdjusters.m in Sources */,
 				273978AF1EB8473100F217B4 /* MonsterTransaction+CoreDataProperties.m in Sources */,
 				6886A4801D8E5FD0005E12B3 /* constants.m in Sources */,
 				274A375C1F08CD6D00F31E0F /* ReminderTimeSpinPicker.m in Sources */,
@@ -1433,6 +1456,7 @@
 				27E89C7F1EF5CE4C009B7474 /* DailySubTask+CoreDataProperties.m in Sources */,
 				27AE66721E875EFB000F31BD /* Suffix+CoreDataClass.m in Sources */,
 				275A079C1ED50AF5001422CD /* GoodTransaction+CoreDataClass.m in Sources */,
+				275D9F2D1F22BAED009DA715 /* UIView+Helpers.m in Sources */,
 				271217701DCE84310072ACC6 /* Zone+CoreDataClass.m in Sources */,
 				271C048B1E8C955A002221E9 /* SingletonCluster.m in Sources */,
 			);
@@ -1637,6 +1661,7 @@
 				274A37C91F107ACF00F31E0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		277ABEE11E96F68E008CC239 /* Build configuration list for PBXNativeTarget "HabitRPG2Tests" */ = {
 			isa = XCConfigurationList;

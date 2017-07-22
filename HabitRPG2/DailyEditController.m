@@ -19,7 +19,6 @@
 #import "ActiveDaysPicker.h"
 #import "SubtasksTableView.h"
 #import "RateSetterView.h"
-#import "P_EditScreenControl.h"
 #import "DailyEditControlKeep.h"
 #import "WeekdayEnum.h"
 
@@ -27,10 +26,6 @@ static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
 
 
 @interface DailyEditController ()
-
-@property (weak,nonatomic) IBOutlet UITextField *nameBox;
-@property (weak,nonatomic) IBOutlet UIButton *showXtraOptsBtn;
-@property (weak,nonatomic) IBOutlet UITableView *controlsTbl;
 @property (strong,nonatomic) NSIndexPath *rowInfo;
 @property (assign,nonatomic) dailyStatus section;
 @property (assign,nonatomic) BOOL areXtraOptsOpen;
@@ -336,6 +331,7 @@ NSString* const IS_DIRTY = @"isDirty";
 -(UITableViewCell *)tableView:(UITableView *)tableView
         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [[UITableViewCell alloc] init];
+    //self.editControls.allControls
     UIView *cellView = self.editControls.allControls[indexPath.row].view;
     cellView.backgroundColor = self.view.backgroundColor;
     cell.backgroundColor = self.view.backgroundColor;

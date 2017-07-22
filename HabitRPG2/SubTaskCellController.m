@@ -10,8 +10,13 @@
 
 @implementation SubTaskCellController
 
-+(instancetype)getSubtaskCell:(UITableView *)tableView withParent:(id)parent andModel:(DailySubTask *)model{
-    SubTaskCellController *cell = [SubTaskCellController getCell:tableView WithNibName:@"SubtaskCell" AndParent:parent];
++(instancetype)getSubtaskCell:(UITableView *)tableView withParent:(id)parent
+                     andModel:(DailySubTask *)model{
+    SubTaskCellController *cell = [tableView
+                                   dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
+    if(nil==cell){
+        cell = [[SubTaskCellController alloc] init];
+    }
     return cell;
 }
 
