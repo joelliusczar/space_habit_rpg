@@ -11,4 +11,5 @@
 @interface ControlController : UIViewController
 @property (weak,nonatomic) UIView *container;
 -(instancetype)initDefault;
+-(void)setBackgroundColor:(UIColor *)color;
 @end

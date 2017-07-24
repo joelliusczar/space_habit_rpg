@@ -10,6 +10,7 @@
 
 @interface UIView (Helpers)
 
--(void)resizeHeightByOffset:(NSInteger)offset;
+-(void)resizeHeightByOffset:(CGFloat)offset;
+-(void)resizeBoundsHeightByOffset:(CGFloat)change;
 
 @end

@@ -17,6 +17,8 @@
 #import "SHMath.h"
 #import "ReminderTimeSpinPicker.h"
 #import "UIView+Helpers.h"
+#import "UIScrollView+ScrollAdjusters.h"
+#import "constants.h"
 @import UserNotifications;
 
 @interface ReminderListView()
@@ -46,9 +48,7 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    AddItemsFooter *footerControl = [[AddItemsFooter alloc] initDefault];
-    self.reminderTbl.tableFooterView = footerControl.view;
-    footerControl.delegate = self;
+    self.reminderTbl.tableFooterView = nil;
 }
 
 
@@ -91,10 +91,12 @@ numberOfRowsInSection:(NSInteger)section{
         [self.reminderTbl
          insertRowsAtIndexPaths:@[indexPath]
          withRowAnimation:UITableViewRowAnimationFade];
-        //auto scroll so that reminders remains centered
-        [self.backViewController scrollByOffset:44];
-        [self.view sizeToFit];
-        //[self resizeRemindersListHeightByOffset:44];
+        //need the begin/end update lines because buttons will get covered by
+        //invisble stuff and not respond
+        [self.backViewController.editingScreen.controlsTbl beginUpdates];
+        [self resizeRemindersListHeightByOffset:44];
+        [self scrollRemindersListByOffset:44];
+        [self.backViewController.editingScreen.controlsTbl endUpdates];
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
@@ -112,9 +114,31 @@ numberOfRowsInSection:(NSInteger)section{
 }
 
 
--(void)resizeRemindersListHeightByOffset:(NSInteger)offset{
-    [self.view resizeHeightByOffset:offset];
-    //[self.reminderTbl resizeHeightByOffset:offset];
+-(void)resizeRemindersListHeightByOffset:(CGFloat)offset{
+    
+    [self.backViewController.scrollContainer resizeContentHeight:offset];
+    NSLog(@"new foot %f",self.reminderTbl.tableFooterView.frame.size.height);
+    if(self.reminderTbl.frame.size.height < SUB_TABLE_MAX_HEIGHT){
+        [self.reminderTbl resizeHeightByOffset:offset];
+        [self.view resizeHeightByOffset:offset];
+    }
+}
+
+
+-(void)scrollRemindersListByOffset:(CGFloat)offset{
+    //auto scroll so that reminders remains centered
+    [self.backViewController scrollByOffset:44];
+    [self.reminderTbl scrollByOffset:44];
+    if(self.reminderTbl.frame.size.height >= 220){
+        
+    }
+}
+
+
+-(void)setBackgroundColor:(UIColor *)color{
+    [super setBackgroundColor:color];
+    self.reminderTbl.backgroundColor = color;
+    self.contentColor = color;
 }
 
 @end

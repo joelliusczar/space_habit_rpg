@@ -10,4 +10,5 @@
 
 @interface UIScrollView (ScrollAdjusters)
 -(void)scrollByOffset:(CGFloat)offset;
+-(void)resizeContentHeight:(CGFloat)change;
 @end

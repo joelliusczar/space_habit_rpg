@@ -10,6 +10,7 @@
 #import "P_AddItemsFooterDelegate.h"
 #import "ControlController.h"
 
-@interface AddItemsFooter : ControlController
-@property (weak,nonatomic) id<P_AddItemsFooterDelegate> delegate;
+IB_DESIGNABLE
+@interface AddItemsFooter : UIView
+@property (weak,nonatomic) IBOutlet id<P_AddItemsFooterDelegate> delegate;
 @end

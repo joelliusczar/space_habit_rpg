@@ -13,6 +13,7 @@
 @interface EditNavigationController : UIViewController
 @property (strong,nonatomic) NSString *viewTitle;
 @property (strong,nonatomic) UIViewController<EditingSaver>* editingScreen;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollContainer;
 -(instancetype)initWithTitle:(NSString *)viewTitle
                    andEditor:(UIViewController<EditingSaver>*)editView;
 -(void)enableSave;

@@ -200,8 +200,7 @@ NSString* const IS_DIRTY = @"isDirty";
         self.isDirty = YES;
         self.tempModel.note = textView.text;
     };
-    [Interceptor callVoidWrapped:wrappedCall
-                        withInfo:nil];
+    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
@@ -215,10 +214,7 @@ NSString* const IS_DIRTY = @"isDirty";
         self.isDirty = YES;
         self.nameStr = self.nameBox.text;
     };
-    [Interceptor callVoidWrapped:wrappedCall
-                        withInfo:[NSString stringWithFormat:
-                                  @"%@nameBox_editingChanged_action"
-                                  ,self.description]];
+    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
@@ -235,8 +231,7 @@ NSString* const IS_DIRTY = @"isDirty";
             [self.editorContainer resizeScrollView:self.controlsTbl.hidden];
         }
     };
-    [Interceptor callVoidWrapped:wrappedCall
-                        withInfo:nil];
+    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
@@ -333,7 +328,8 @@ NSString* const IS_DIRTY = @"isDirty";
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     //self.editControls.allControls
     UIView *cellView = self.editControls.allControls[indexPath.row].view;
-    cellView.backgroundColor = self.view.backgroundColor;
+    [self.editControls.allControls[indexPath.row]
+     setBackgroundColor:self.view.backgroundColor];
     cell.backgroundColor = self.view.backgroundColor;
     cell.autoresizesSubviews = NO;
     [cell addSubview:cellView];

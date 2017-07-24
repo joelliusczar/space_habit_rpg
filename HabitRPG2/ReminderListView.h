@@ -26,6 +26,7 @@
 @property (weak,nonatomic) NSOrderedSet<Reminder *> *reminderSet;
 @property (strong,nonatomic) NSLocale *locale;
 @property (weak,nonatomic) EditNavigationController *backViewController;
+@property (strong,nonatomic) UIColor *contentColor;
 -(instancetype)initWithDueDateInfo:(NSObject<P_DueDateWrapper> *)dueDateInfo
              andBackViewController:(EditNavigationController *)backViewController
                          andLocale:(NSLocale *)locale;

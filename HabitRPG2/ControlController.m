@@ -20,4 +20,9 @@
     return self;
 }
 
+
+-(void)setBackgroundColor:(UIColor *)color{
+    self.view.backgroundColor = color;
+}
+
 @end

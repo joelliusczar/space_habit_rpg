@@ -11,9 +11,19 @@
 @implementation UIScrollView (ScrollAdjusters)
 
 -(void)scrollByOffset:(CGFloat)offset{
-    CGPoint point = self.contentOffset;
-    point.y += offset;
-    self.contentOffset = point;
+    CGRect frame = self.frame;
+    frame.origin.y += (offset + self.contentOffset.y);
+    [self scrollRectToVisible:frame animated:YES];
+//    CGPoint point = self.contentOffset;
+//    point.y += offset;
+//    self.contentOffset = point;
+}
+
+
+-(void)resizeContentHeight:(CGFloat)change{
+    CGSize size = self.contentSize;
+    size.height += change;
+    self.contentSize = size;
 }
 
 @end

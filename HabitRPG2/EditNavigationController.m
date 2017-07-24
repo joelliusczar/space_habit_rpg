@@ -19,7 +19,6 @@
 
 @property (strong,nonatomic) UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UILabel *headline;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollContainer;
 @property (weak, nonatomic) IBOutlet UIImageView *background;
 @property (weak, nonatomic) IBOutlet UIView *modalView;
 @property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
