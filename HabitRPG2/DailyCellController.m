@@ -21,10 +21,6 @@
 @property (nonatomic,weak) Daily *model;
 @property (nonatomic,weak) DailyViewController *parentDailyController;
 //@property (nonatomic,weak) UIButton *completeBtn;
-@property (weak,nonatomic) IBOutlet UILabel *daysLeftLbl;
-@property (weak,nonatomic) IBOutlet UILabel *nameLbl;
-@property (weak,nonatomic) IBOutlet UILabel *streakLbl;
-@property (weak,nonatomic) IBOutlet UIButton *completeBtn;
 @property (assign,nonatomic) NSInteger rowIndex;
 @property (assign,nonatomic) NSInteger sectionIndex;
 
@@ -44,7 +40,6 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    [self completeBtn];  
 }
 
 -(void)setupCell:(Daily *)model AndRow:(NSIndexPath *)rowInfo{
@@ -100,7 +95,7 @@
             [self.parentDailyController undoCompletedDaily:self.model];
         }
     };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@completeBtn_press_action~section:%ld~row:%ld",self.description,self.sectionIndex,self.rowIndex]];
+    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 @end

@@ -205,14 +205,19 @@ NSString* const IS_DIRTY = @"isDirty";
 
 
 -(void)textViewDidChange:(UITextView *)textView{
-    self.isDirty = YES;
+    wrapReturnVoid wrappedCall = ^void(){
+        self.isDirty = YES;
+        self.tempModel.note = textView.text;
+    };
+    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
 - (IBAction)nameBox_editingChanged_action:(UITextField *)sender forEvent:(UIEvent *)event {
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
-        self.nameStr = self.nameBox.text;
+        self.nameStr = sender.text;
+        self.tempModel.dailyName = sender.text;
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }

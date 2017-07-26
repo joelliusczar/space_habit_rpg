@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+@import UIKit;
 
 @interface NSObject (Helper)
--(void)safeRemoveObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath context:(void *)context;
+-(void)safeRemoveObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath
+                  context:(void *)context;
+-(UIView *)loadXib:(NSString *)nibName;
 @end

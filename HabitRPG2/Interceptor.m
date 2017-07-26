@@ -11,9 +11,8 @@
 @implementation Interceptor
 
 +(void)callVoidWrapped:(wrapReturnVoid)callMe withInfo:(id)info{
-    [self handleInterceptedInfo:info];
-    NSArray<NSString *> *callStack = NSThread.callStackSymbols;
-    NSLog(@"%@",callStack[1]);
+    //[self handleInterceptedInfo:info];
+    //NSArray<NSString *> *callStack = NSThread.callStackSymbols;
     callMe();
 }
 

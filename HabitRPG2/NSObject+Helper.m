@@ -15,4 +15,10 @@
     }
     @catch(NSException *ex){}
 }
+
+
+-(UIView *)loadXib:(NSString *)nibName{
+    return [[NSBundle bundleForClass:self.class]
+            loadNibNamed:nibName owner:self options:nil][0];
+}
 @end

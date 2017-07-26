@@ -57,6 +57,7 @@
     NSAssert([object isKindOfClass:Daily.class]||[object isKindOfClass:NSDictionary.class],
              @"object needs to be of the same class or a dictionary");
     [object setValue:self.dailyName forKey:@"dailyName"];
+    [object setValue:self.note forKey:@"note"];
     [object setValue:[NSNumber numberWithInt:self.activeDaysHash]
               forKey:@"activeDaysHash"];
     [object setValue:[NSNumber numberWithInt:self.difficulty]

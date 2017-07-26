@@ -10,7 +10,6 @@
 
 
 @interface TaskCell()
-@property (nonatomic,strong) UIButton *editButton;
 @end
 
 @implementation TaskCell
