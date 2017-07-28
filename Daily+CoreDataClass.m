@@ -76,8 +76,6 @@
     [object setValue:self.rollbackActivationTime forKey:@"rollbackActivationTime"];
     [object setValue:[NSNumber numberWithInt:self.customUserOrder]
               forKey:@"customUserOrder"];
-    [object setValue:self.daily_remind forKey:@"daily_remind"];
-    [object setValue:self.daily_subtask forKey:@"daily_subtask"];
 }
 
 

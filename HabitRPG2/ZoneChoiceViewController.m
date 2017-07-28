@@ -8,7 +8,6 @@
 
 #import "ZoneChoiceViewController.h"
 #import "ZoneChoiceCellController.h"
-#import "CustomSwitch.h"
 #import "constants.h"
 #import "ViewHelper.h"
 #import "SingletonCluster.h"
@@ -17,9 +16,6 @@
 
 @interface ZoneChoiceViewController ()
 @property (nonatomic,strong) NSArray<Zone *> *zones;
-@property (nonatomic,weak) UITableView *zoneChoiceTable; 
-@property (nonatomic,weak) UIButton *nextBtn;
-@property (nonatomic,weak) CustomSwitch *skipSwitch;
 @property (nonatomic,weak) NSObject<P_CoreData> *dataController;
 -(instancetype)initWithCentral:(UIViewController<CentralViewControllerP> *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices;
 
@@ -27,33 +23,7 @@
 
 @implementation ZoneChoiceViewController
 
-@synthesize zoneChoiceTable = _zoneChoiceTable;
--(UITableView *)zoneChoiceTable{
-    if(!_zoneChoiceTable){
-        UIView *v = [self getContentSubview];
-        _zoneChoiceTable = [v viewWithTag:2];
-    }
-    return _zoneChoiceTable;
-}
 
-@synthesize nextBtn = _nextBtn;
--(UIButton *)nextBtn{
-    if(!_nextBtn){
-        UIView *v = [self getContentSubview];
-        _nextBtn = [v viewWithTag:3];
-        [_nextBtn addTarget:self action:@selector(nextBtn_pressed_action:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _nextBtn;
-}
-
-@synthesize skipSwitch = _skipSwitch;
--(CustomSwitch *)skipSwitch{
-    if(!_skipSwitch){
-        UIView *v = [self getContentSubview];
-        _skipSwitch = [v viewWithTag:4];
-    }
-    return _skipSwitch;
-}
 
 @synthesize descViewController = _descViewController;
 -(ZoneDescriptionViewController *)descViewController{
@@ -79,16 +49,14 @@
 }
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
     NSAssert(self.zones, @"ZoneChoiceViewController is in an invalid state. Zones hasn't been constructed");
-}
-    
--(void)viewDidLayoutSubviews{
-    [super viewDidLayoutSubviews];
+    [super viewDidLoad];
+    self.zoneChoiceTable.tableFooterView = nil;
     self.zoneChoiceTable.dataSource = self;
     self.zoneChoiceTable.rowHeight = ZONE_CHOICE_ROW_HEIGHT;
     [CommonUtilities checkForAndApplyVisualChanges:self.view];
 }
+
 
 -(void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

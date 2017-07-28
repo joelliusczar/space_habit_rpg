@@ -17,7 +17,7 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
         UIView *view = [self loadXib];
-        [self addSubview:view];
+        [self.contentView addSubview:view];
     }
     return self;
 }
@@ -26,7 +26,7 @@
 -(instancetype)init{
     if(self = [super init]){
         UIView *view = [self loadXib];
-        [self addSubview:view];
+        [self.contentView addSubview:view];
     }
     return self;
 }

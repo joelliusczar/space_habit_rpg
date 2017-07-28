@@ -37,5 +37,6 @@
 -(void)saveAndWait;
 -(void)softDeleteModel:(NSManagedObject *)model;
 -(void)insertIntoContext:(NSManagedObject *)model;
-
+-(NSManagedObject *)openExistingObject:(NSManagedObject *)existingObject inContext:(NSManagedObjectContext *)context;
+-(NSManagedObject *)getWritableObjectVersion:(NSManagedObject *)existingObject;
 @end

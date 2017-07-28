@@ -53,11 +53,12 @@
     UITapGestureRecognizer *tapGestureBG = [[UITapGestureRecognizer alloc]
                                            initWithTarget:self
                                            action:@selector(background_tap_action:)];
+    //the foreground one is tell the keyboard to go away
     UITapGestureRecognizer *tapGestureFG = [[UITapGestureRecognizer alloc]
-                                           initWithTarget:self
-                                           action:@selector(background_tap_action:)];
+                                            initWithTarget:self
+                                            action:@selector(background_tap_action:)];
     [self.modalView addGestureRecognizer:tapGestureFG];
-    [self.view addGestureRecognizer:tapGestureBG];
+    [self.background addGestureRecognizer:tapGestureBG];
     
 }
 
@@ -131,8 +132,9 @@
 
 -(void)background_tap_action:(UITapGestureRecognizer *)sender {
     wrapReturnVoid wrappedCall = ^void(){
-        [self.view endEditing:YES];
-        if(sender.view == self.view&&self.view.isFocused){
+        [self.view endEditing:YES]; //tell the keyboard to go away
+        
+        if(sender.view == self.background){
             [ViewHelper popViewFromFront:self];
         }
     };

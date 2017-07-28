@@ -30,8 +30,26 @@ typedef NS_ENUM(NSInteger,hourFormatType){
 };
 
 typedef NS_ENUM(NSInteger,gameState) {
-    GAME_STATE_UNINITIALIZED =0
+    GAME_STATE_UNINITIALIZED = 0
     ,GAME_STATE_INITIALIZED = 1
+};
+
+//may not even use these
+extern NSInteger const PM_PRIME;
+extern NSInteger const AM_PRIME;
+typedef NS_ENUM(NSInteger,hourPrimes){
+    PRIME_0 = 3
+    ,PRIME_1 = 5
+    ,PRIME_2 = 7
+    ,PRIME_3 = 11
+    ,PRIME_4 = 13
+    ,PRIME_5 = 17
+    ,PRIME_6 = 19
+    ,PRIME_7 = 23
+    ,PRIME_8 = 29
+    ,PRIME_9 = 31
+    ,PRIME_10 = 37
+    ,PRIME_11 = 41
 };
 
 extern NSString* const DAILY_ENTITY_NAME;

@@ -57,7 +57,7 @@
 -(ReminderListView *)reminderListView{
     if(nil==_reminderListView){
         _reminderListView = [[ReminderListView alloc]
-                             initWithDueDateInfo:self.delegate.tempModel
+                             initWithDueDateInfo:self.delegate.modelForEditing
                              andBackViewController:self.delegate.editorContainer
                              andLocale:SharedGlobal.inUseLocale];
     }

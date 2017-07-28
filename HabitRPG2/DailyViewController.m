@@ -71,7 +71,10 @@ static NSString *const EntityName = @"Daily";
     self.completeItems.delegate = self;
     
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:SHData.readContext selector:@selector(mergeChangesFromContextDidSaveNotification:) name:NSManagedObjectContextDidSaveNotification object:SHData.writeContext];
+    [nc addObserver:SHData.readContext
+           selector:@selector(mergeChangesFromContextDidSaveNotification:)
+               name:NSManagedObjectContextDidSaveNotification
+             object:SHData.writeContext];
     
 }
 
@@ -91,25 +94,15 @@ static NSString *const EntityName = @"Daily";
 }
 
 -(void)completeDaily:(Daily *)daily{
-    if(daily == self.incompleteItems.fetchedObjects[daily.rowNum]){
         daily.rollbackActivationTime = daily.lastActivationTime;
         daily.lastActivationTime = [NSDate todayStart];
         //TODO calculate damage done to monster
         //TODO save
-    }
-    else{
-        NSLog(@"Oh oh! Something illogical was about to happen. There was a mismatch in completeDaily.");
-    }
 }
 
 -(void)undoCompletedDaily:(Daily *)daily{
-    if(daily == self.completeItems.fetchedObjects[daily.rowNum]){
-        daily.lastActivationTime = daily.rollbackActivationTime;
-        //TODO more stuff
-    }
-    else{
-        NSLog(@"Oh oh! Something illogical was about to happen. There was a mismatch in completeDaily.");
-    }
+    daily.lastActivationTime = daily.rollbackActivationTime;
+    //TODO more stuff
 }
 
 -(void)setupData{
@@ -221,8 +214,13 @@ static NSString *const EntityName = @"Daily";
     void (^pressedEdit)(UITableViewRowAction *,NSIndexPath *) = ^(UITableViewRowAction *action,NSIndexPath *path){
         wrapReturnVoid wrappedCall = ^void(){
             NSFetchedResultsController *fetchController = path.section == INCOMPLETE?self.incompleteItems:self.completeItems;
-            DailyEditController *dailyEditor = [[DailyEditController alloc] initWithParentDailyController:self ToEdit:fetchController.fetchedObjects[indexPath.row] AtIndexPath:path];
-            EditNavigationController *editController = [[EditNavigationController alloc] initWithTitle:@"Add Daily" andEditor:dailyEditor];
+            DailyEditController *dailyEditor = [[DailyEditController alloc]
+                                                initWithParentDailyController:self
+                                                ToEdit:fetchController.fetchedObjects[indexPath.row]
+                                                AtIndexPath:path];
+            EditNavigationController *editController = [[EditNavigationController alloc]
+                                                        initWithTitle:@"Add Daily"
+                                                        andEditor:dailyEditor];
             [ViewHelper pushViewToFront:editController OfParent:self.parentController];
         };
         [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@pressedEdit",self.description]];

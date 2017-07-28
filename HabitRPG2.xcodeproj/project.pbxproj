@@ -106,7 +106,7 @@
 		27C3C21E1F0022D600F205A6 /* ReminderListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C3C21D1F0022D600F205A6 /* ReminderListView.xib */; };
 		27C3C2251F08799200F205A6 /* AddItemsFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C3C2241F08799200F205A6 /* AddItemsFooter.m */; };
 		27C3C2271F0879B200F205A6 /* AddItemsFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C3C2261F0879B200F205A6 /* AddItemsFooter.xib */; };
-		27C92C121E28A1330025727E /* ZoneChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C111E28A1330025727E /* ZoneChoiceCell.xib */; };
+		27C92C121E28A1330025727E /* ZoneChoiceCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C111E28A1330025727E /* ZoneChoiceCellController.xib */; };
 		27C92C151E297F650025727E /* ZoneChoiceCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C141E297F640025727E /* ZoneChoiceCellController.m */; };
 		27C92C1A1E29C9F10025727E /* ZoneInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C191E29C9F10025727E /* ZoneInfoDictionary.m */; };
 		27C92C1F1E29FE110025727E /* ZoneInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C161E29AD770025727E /* ZoneInfo.plist */; };
@@ -397,7 +397,7 @@
 		27C3C2241F08799200F205A6 /* AddItemsFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddItemsFooter.m; sourceTree = "<group>"; };
 		27C3C2261F0879B200F205A6 /* AddItemsFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddItemsFooter.xib; sourceTree = "<group>"; };
 		27C3C2281F08BC4F00F205A6 /* P_AddItemsFooterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_AddItemsFooterDelegate.h; sourceTree = "<group>"; };
-		27C92C111E28A1330025727E /* ZoneChoiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZoneChoiceCell.xib; sourceTree = "<group>"; };
+		27C92C111E28A1330025727E /* ZoneChoiceCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZoneChoiceCellController.xib; sourceTree = "<group>"; };
 		27C92C131E297F640025727E /* ZoneChoiceCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneChoiceCellController.h; sourceTree = "<group>"; };
 		27C92C141E297F640025727E /* ZoneChoiceCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneChoiceCellController.m; sourceTree = "<group>"; };
 		27C92C161E29AD770025727E /* ZoneInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ZoneInfo.plist; sourceTree = "<group>"; };
@@ -753,7 +753,7 @@
 		27C92C3C1E3313580025727E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				27C92C111E28A1330025727E /* ZoneChoiceCell.xib */,
+				27C92C111E28A1330025727E /* ZoneChoiceCellController.xib */,
 				27C92C131E297F640025727E /* ZoneChoiceCellController.h */,
 				27C92C141E297F640025727E /* ZoneChoiceCellController.m */,
 			);
@@ -1304,7 +1304,7 @@
 				687F01231D77CA6500C7B08B /* DailyTablesViewController.xib in Resources */,
 				686ED3C21DB47FA5004EDD36 /* black_checked_empty.png in Resources */,
 				27C3C21E1F0022D600F205A6 /* ReminderListView.xib in Resources */,
-				27C92C121E28A1330025727E /* ZoneChoiceCell.xib in Resources */,
+				27C92C121E28A1330025727E /* ZoneChoiceCellController.xib in Resources */,
 				68F3F9E51D70E8DB00840DD2 /* CentralViewController.xib in Resources */,
 				277ABF321E9F1A30008CC239 /* ZoneChoicePicker.xib in Resources */,
 				271C04921E8F3784002221E9 /* SuffixList.plist in Resources */,

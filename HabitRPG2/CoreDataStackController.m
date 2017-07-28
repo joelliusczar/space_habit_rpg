@@ -158,8 +158,7 @@ NSString *defaultDbName = @"Model.sqlite";
 
 
 -(NSManagedObject *)constructEmptyEntity:(NSEntityDescription *) entityType{
-    NSManagedObjectContext *context =
-    self.inUseContext?self.inUseContext:self.writeContext;
+    NSManagedObjectContext *context = [self getPreferedWriteContext];
     
     NSManagedObject *obj = [self constructEmptyEntity:entityType
                                             InContext:context];
@@ -184,6 +183,7 @@ NSString *defaultDbName = @"Model.sqlite";
     
 }
 
+
 -(NSArray<NSManagedObject *> *)getItem:(NSString *) entityName
                         predicate: (NSPredicate *) filter
                         sortBy:(NSArray *) sortAttrs
@@ -203,6 +203,7 @@ NSString *defaultDbName = @"Model.sqlite";
                           predicate:filter
                              sortBy:sortAttrs];
 }
+
 
 -(NSArray<NSManagedObject *> *)getItemWithRequest:(NSFetchRequest *)request
                                 predicate:(NSPredicate *)filter
@@ -226,6 +227,7 @@ NSString *defaultDbName = @"Model.sqlite";
     return results;
 }
 
+
 -(NSManagedObjectContext *)constructContext:
 (NSManagedObjectContextConcurrencyType)concurrencyType{
     
@@ -236,6 +238,7 @@ NSString *defaultDbName = @"Model.sqlite";
     return context;
 }
 
+
 -(void)saveWithContext:(NSManagedObjectContext *)context{
     BOOL success;
     NSError *error;
@@ -244,10 +247,9 @@ NSString *defaultDbName = @"Model.sqlite";
     }
 }
 
+
 -(dispatch_semaphore_t)save{
-    NSManagedObjectContext *context =
-    self.inUseContext?self.inUseContext:self.writeContext;
-    
+    NSManagedObjectContext *context = [self getPreferedWriteContext];
     dispatch_semaphore_t sema = dispatch_semaphore_create(0);
     [context performBlock:^{
         [self saveWithContext:context];
@@ -256,27 +258,40 @@ NSString *defaultDbName = @"Model.sqlite";
     return sema;
 }
 
+
 -(void)saveAndWait{
-    NSManagedObjectContext *context =
-    self.inUseContext?self.inUseContext:self.writeContext;
-    
+    NSManagedObjectContext *context = [self getPreferedWriteContext];
     [context performBlockAndWait:^{
         [self saveWithContext:context];
     }];
 }
 
+
 -(void)softDeleteModel:(NSManagedObject *)model{
-    NSManagedObjectContext *context =
-    self.inUseContext?self.inUseContext:self.writeContext;
-    
+    NSManagedObjectContext *context = [self getPreferedWriteContext];
     [context deleteObject:model];
 }
 
+
 -(void)insertIntoContext:(NSManagedObject *)model{
-    NSManagedObjectContext *context =
-    self.inUseContext?self.inUseContext:self.writeContext;
-    
+    NSManagedObjectContext *context = [self getPreferedWriteContext];
     [context insertObject:model];
+}
+
+
+-(NSManagedObject *)openExistingObject:(NSManagedObject *)existingObject
+                             inContext:(NSManagedObjectContext *)context{
+    return [context objectWithID:existingObject.objectID];
+}
+
+
+-(NSManagedObject *)getWritableObjectVersion:(NSManagedObject *)existingObject{
+    NSManagedObjectContext *context = [self getPreferedWriteContext];
+    return [self openExistingObject:existingObject inContext:context];
+}
+
+-(NSManagedObjectContext *)getPreferedWriteContext{
+    return self.inUseContext?self.inUseContext:self.writeContext;
 }
 
 @end

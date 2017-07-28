@@ -8,6 +8,9 @@
 
 #import "constants.h"
 
+NSInteger const PM_PRIME = 2;
+NSInteger const AM_PRIME = 43;
+
 NSString* const DAILY_ENTITY_NAME = @"Daily";
 NSString* const HABIT_ENTITY_NAME = @"Habit";
 NSString* const TODO_ENTITY_NAME = @"Todo";

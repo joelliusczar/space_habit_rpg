@@ -20,23 +20,7 @@
 
 @implementation ZoneChoiceCellController
 
-@synthesize nameLbl = _nameLbl;
--(UILabel *)nameLbl{
-    if(!_nameLbl){
-        _nameLbl = [self.contentView viewWithTag:1];
-    }
-    return _nameLbl;
-}
 
-@synthesize lvlLbl = _lvlLbl;
--(UILabel *)lvlLbl{
-    if(!_lvlLbl){
-        _lvlLbl = [self.contentView viewWithTag:2];
-    }
-    return _lvlLbl;
-}
-
-@synthesize swiper = _swiper;
 -(UISwipeGestureRecognizer *)swiper{
     if(!_swiper){
         _swiper = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];

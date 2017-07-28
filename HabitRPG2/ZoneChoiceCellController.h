@@ -12,8 +12,8 @@
 
 @interface ZoneChoiceCellController : TaskCell
 
-@property (nonatomic,strong) UILabel *nameLbl;
-@property (nonatomic,strong) UILabel *lvlLbl;
+@property (nonatomic,weak) IBOutlet UILabel *nameLbl;
+@property (nonatomic,weak) IBOutlet UILabel *lvlLbl;
 +(instancetype)getZoneChoiceCell:(UITableView *)tableView WithParent:(ZoneChoiceViewController *)parent
                         AndModel:(Zone *)model AndRow:(NSIndexPath *)rowInfo;
 -(void)setupCell:(Zone *)model AndParent:(ZoneChoiceViewController *)parent

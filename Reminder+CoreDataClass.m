@@ -44,7 +44,7 @@
     [object setValue:[NSNumber numberWithInt:self.daysBeforeDue]
               forKey:@"daysBeforeDue"];
     [object setValue:self.reminderHour forKey:@"reminderHour"];
-    [object setValue:self.remind_daily forKey:@"remind_daily"];
+
 }
 
 @end
