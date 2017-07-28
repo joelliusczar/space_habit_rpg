@@ -80,9 +80,9 @@
 
 
 -(NSDate *)nextDueTime{
-    return
-    [Daily calculateNextDueTime:self.lastActivationTime withRate:self.rate
-                    andDayStart:SCSettings.dayStart];
+    return [Daily calculateNextDueTime:self.lastActivationTime
+                              withRate:self.rate
+                           andDayStart:SCSettings.dayStart];
 }
 
 

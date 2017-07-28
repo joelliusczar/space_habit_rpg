@@ -23,7 +23,7 @@
 +(void)handleInterceptedInfo:(id)info{
     if(nil==info){}
     else if([info isKindOfClass:NSString.class]){
-        NSLog(@"%@",info);
+        //NSLog(@"%@",info);
     }
     else if([info isKindOfClass:NSDictionary.class]){}
     else if([info isKindOfClass:NSArray.class]){}

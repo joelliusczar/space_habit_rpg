@@ -64,7 +64,6 @@ const int PM_ROW = 1;
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView
 numberOfRowsInComponent:(NSInteger)component{
-    NSLog(@"%ld",component);
     if(component==HOUR_OF_DAY_COL){
         return HOURS_IN_DAY;
     }

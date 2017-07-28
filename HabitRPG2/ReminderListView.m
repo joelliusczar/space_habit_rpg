@@ -21,8 +21,6 @@
 #import "constants.h"
 @import UserNotifications;
 
-NSInteger const REMINDER_CELL_HEIGHT = 44;
-
 @interface ReminderListView()
 @end
 
@@ -50,7 +48,10 @@ NSInteger const REMINDER_CELL_HEIGHT = 44;
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self resizeRemindersListHeightByOffset:REMINDER_CELL_HEIGHT*self.reminderSet.count];
+    CGFloat tblHeight = self.reminderSet.count<SUB_TABLE_MAX_ROWS?
+                            SUB_TABLE_CELL_HEIGHT*self.reminderSet.count:
+                            SUB_TABLE_MAX_HEIGHT;
+    [self resizeRemindersListHeightByOffset:tblHeight];
     self.reminderTbl.tableFooterView = nil;
 }
 
@@ -97,8 +98,8 @@ numberOfRowsInSection:(NSInteger)section{
         //need the begin/end update lines because buttons will get covered by
         //invisble stuff and not respond
         [self.backViewController.editingScreen.controlsTbl beginUpdates];
-        [self resizeRemindersListHeightByOffset:REMINDER_CELL_HEIGHT];
-        [self scrollRemindersListByOffset:REMINDER_CELL_HEIGHT];
+        [self resizeRemindersListHeightByOffset:SUB_TABLE_CELL_HEIGHT];
+        [self scrollRemindersListByOffset:SUB_TABLE_CELL_HEIGHT];
         [self.backViewController.editingScreen.controlsTbl endUpdates];
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
@@ -129,8 +130,8 @@ numberOfRowsInSection:(NSInteger)section{
 
 -(void)scrollRemindersListByOffset:(CGFloat)offset{
     //auto scroll so that reminders remains centered
-    [self.backViewController scrollByOffset:REMINDER_CELL_HEIGHT];
-    [self.reminderTbl scrollByOffset:REMINDER_CELL_HEIGHT];
+    [self.backViewController scrollByOffset:SUB_TABLE_CELL_HEIGHT];
+    [self.reminderTbl scrollByOffset:SUB_TABLE_CELL_HEIGHT];
 }
 
 

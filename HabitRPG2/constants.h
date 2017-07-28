@@ -80,6 +80,9 @@ extern u_int32_t const MIN_ZONE_CHOICE_COUNT;
 extern u_int32_t const MAX_ZONE_CHOICE_RAND_UP_BOUND;
 extern CGFloat const ZONE_CHOICE_ROW_HEIGHT;
 extern CGFloat const EDIT_SCREEN_TOP_CONTROL_HEIGHT;
+
+extern CGFloat const SUB_TABLE_CELL_HEIGHT;
+extern NSInteger const SUB_TABLE_MAX_ROWS;
 extern CGFloat const SUB_TABLE_MAX_HEIGHT;
 
 extern NSString* const TRANSACTION_TYPE_KEY;
