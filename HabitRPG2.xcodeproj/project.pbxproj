@@ -11,16 +11,6 @@
 		2709B3991EEF750800EEE5CC /* ReportServiceCaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 2709B3981EEF750800EEE5CC /* ReportServiceCaller.m */; };
 		2709B39C1EF0D31200EEE5CC /* Interceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2709B39B1EF0D31200EEE5CC /* Interceptor.m */; };
 		2709B3A31EF56AFC00EEE5CC /* NSDate+testReplace.m in Sources */ = {isa = PBXBuildFile; fileRef = 2709B3A21EF56AFC00EEE5CC /* NSDate+testReplace.m */; };
-		271217691DCE84310072ACC6 /* Daily+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712175A1DCE84310072ACC6 /* Daily+CoreDataClass.m */; };
-		2712176A1DCE84310072ACC6 /* Good+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712175C1DCE84310072ACC6 /* Good+CoreDataClass.m */; };
-		2712176B1DCE84310072ACC6 /* Habit+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712175E1DCE84310072ACC6 /* Habit+CoreDataClass.m */; };
-		2712176C1DCE84310072ACC6 /* Hero+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 271217601DCE84310072ACC6 /* Hero+CoreDataClass.m */; };
-		2712176D1DCE84310072ACC6 /* Monster+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 271217621DCE84310072ACC6 /* Monster+CoreDataClass.m */; };
-		2712176E1DCE84310072ACC6 /* Settings+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 271217641DCE84310072ACC6 /* Settings+CoreDataClass.m */; };
-		2712176F1DCE84310072ACC6 /* Todo+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 271217661DCE84310072ACC6 /* Todo+CoreDataClass.m */; };
-		271217701DCE84310072ACC6 /* Zone+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 271217681DCE84310072ACC6 /* Zone+CoreDataClass.m */; };
-		27127E351DDD42B50074A8F5 /* DataInfo+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27127E321DDD42B50074A8F5 /* DataInfo+CoreDataClass.m */; };
-		27127E361DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27127E341DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m */; };
 		271C04831E8A1152002221E9 /* MonsterInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C04821E8A1152002221E9 /* MonsterInfoDictionary.m */; };
 		271C04881E8B639D002221E9 /* ResourceUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C04871E8B639D002221E9 /* ResourceUtility.m */; };
 		271C048B1E8C955A002221E9 /* SingletonCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C048A1E8C955A002221E9 /* SingletonCluster.m */; };
@@ -31,22 +21,10 @@
 		273978851EB55F3700F217B4 /* StoryDumpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 273978831EB55F3700F217B4 /* StoryDumpView.m */; };
 		273978861EB55F3700F217B4 /* StoryDumpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273978841EB55F3700F217B4 /* StoryDumpView.xib */; };
 		2739788B1EB843F800F217B4 /* MonsterInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2739788A1EB843F800F217B4 /* MonsterInfo.plist */; };
-		273978A41EB8473100F217B4 /* ZoneTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2739788D1EB8473100F217B4 /* ZoneTransaction+CoreDataClass.m */; };
-		273978A51EB8473100F217B4 /* ZoneTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2739788F1EB8473100F217B4 /* ZoneTransaction+CoreDataProperties.m */; };
-		273978A61EB8473100F217B4 /* TodoTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 273978911EB8473100F217B4 /* TodoTransaction+CoreDataClass.m */; };
-		273978A71EB8473100F217B4 /* TodoTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 273978931EB8473100F217B4 /* TodoTransaction+CoreDataProperties.m */; };
-		273978A81EB8473100F217B4 /* HabitTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 273978951EB8473100F217B4 /* HabitTransaction+CoreDataClass.m */; };
-		273978A91EB8473100F217B4 /* HabitTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 273978971EB8473100F217B4 /* HabitTransaction+CoreDataProperties.m */; };
-		273978AC1EB8473100F217B4 /* DailyTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2739789D1EB8473100F217B4 /* DailyTransaction+CoreDataClass.m */; };
-		273978AD1EB8473100F217B4 /* DailyTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2739789F1EB8473100F217B4 /* DailyTransaction+CoreDataProperties.m */; };
-		273978AE1EB8473100F217B4 /* MonsterTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 273978A11EB8473100F217B4 /* MonsterTransaction+CoreDataClass.m */; };
-		273978AF1EB8473100F217B4 /* MonsterTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 273978A31EB8473100F217B4 /* MonsterTransaction+CoreDataProperties.m */; };
 		273979001EC4092A00F217B4 /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273978FF1EC4092A00F217B4 /* IntroViewController.xib */; };
 		274A37561F08C7BE00F31E0F /* ReminderTimeSpinPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274A37551F08C7BE00F31E0F /* ReminderTimeSpinPicker.xib */; };
 		274A375C1F08CD6D00F31E0F /* ReminderTimeSpinPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A375B1F08CD6D00F31E0F /* ReminderTimeSpinPicker.m */; };
 		274A37961F0962A100F31E0F /* ControlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37951F0962A100F31E0F /* ControlController.m */; };
-		274A37A01F09FCA300F31E0F /* Reminder+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A379C1F09FCA300F31E0F /* Reminder+CoreDataClass.m */; };
-		274A37A11F09FCA300F31E0F /* Reminder+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A379E1F09FCA300F31E0F /* Reminder+CoreDataProperties.m */; };
 		274A37AF1F0A083A00F31E0F /* TimeSpinPickerEventInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37AE1F0A083A00F31E0F /* TimeSpinPickerEventInfo.m */; };
 		274A37B21F0A093B00F31E0F /* SHEventInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37B11F0A093B00F31E0F /* SHEventInfo.m */; };
 		274A37B51F0A1D6200F31E0F /* SHMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37B41F0A1D6200F31E0F /* SHMath.m */; };
@@ -69,8 +47,6 @@
 		274FFC421EF6E2B100FAF809 /* RateSetterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC401EF6E2B100FAF809 /* RateSetterView.m */; };
 		274FFC431EF6E2B100FAF809 /* RateSetterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274FFC411EF6E2B100FAF809 /* RateSetterView.xib */; };
 		274FFC4A1EF887DB00FAF809 /* DailyEditControlKeep.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC491EF887DB00FAF809 /* DailyEditControlKeep.m */; };
-		275A079C1ED50AF5001422CD /* GoodTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 275A07841ED50AF5001422CD /* GoodTransaction+CoreDataClass.m */; };
-		275A079D1ED50AF5001422CD /* GoodTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 275A07861ED50AF5001422CD /* GoodTransaction+CoreDataProperties.m */; };
 		275A07B71EDA1FB9001422CD /* TestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 275A07B61EDA1FB9001422CD /* TestHelpers.m */; };
 		275D9F241F219850009DA715 /* ChildMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 275D9F231F219850009DA715 /* ChildMan.m */; };
 		275D9F271F21A33E009DA715 /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 275D9F261F21A33E009DA715 /* TaskCell.m */; };
@@ -95,9 +71,43 @@
 		277ABF6E1EA86240008CC239 /* TestProbWeightsThreeItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABF6D1EA86240008CC239 /* TestProbWeightsThreeItems.m */; };
 		277ABF701EAD98EB008CC239 /* ProbilityWeightTestFourItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABF6F1EAD98EB008CC239 /* ProbilityWeightTestFourItems.m */; };
 		277ABF731EAD9DD7008CC239 /* probWeightsUTBig.py in Resources */ = {isa = PBXBuildFile; fileRef = 277ABF721EAD9DD7008CC239 /* probWeightsUTBig.py */; };
-		27AE66721E875EFB000F31BD /* Suffix+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE666F1E875EFB000F31BD /* Suffix+CoreDataClass.m */; };
-		27AE66731E875EFB000F31BD /* Suffix+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE66711E875EFB000F31BD /* Suffix+CoreDataProperties.m */; };
+		2785DCCF1F2CC21600B5C28C /* GoodTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2785DCCE1F2CC21600B5C28C /* GoodTransaction+CoreDataClass.m */; };
+		2785DCD21F2CC25F00B5C28C /* TodoTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2785DCD11F2CC25F00B5C28C /* TodoTransaction+CoreDataClass.m */; };
 		27AF22E71F270FBA00F7D872 /* SHControlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AF22E61F270FBA00F7D872 /* SHControlController.m */; };
+		27B0CD001F2BEB17005BEC75 /* Reminder+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CCFD1F2BEB17005BEC75 /* Reminder+CoreDataClass.m */; };
+		27B0CD011F2BEB17005BEC75 /* Reminder+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CCFF1F2BEB17005BEC75 /* Reminder+CoreDataProperties.m */; };
+		27B0CD041F2BEB42005BEC75 /* Suffix+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CD031F2BEB42005BEC75 /* Suffix+CoreDataClass.m */; };
+		27B0CD091F2BEB5D005BEC75 /* Hero+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CD061F2BEB5D005BEC75 /* Hero+CoreDataClass.m */; };
+		27B0CD0A1F2BEB5D005BEC75 /* Hero+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CD081F2BEB5D005BEC75 /* Hero+CoreDataProperties.m */; };
+		27B0CD0F1F2BEB78005BEC75 /* Monster+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CD0C1F2BEB78005BEC75 /* Monster+CoreDataClass.m */; };
+		27B0CD101F2BEB78005BEC75 /* Monster+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CD0E1F2BEB78005BEC75 /* Monster+CoreDataProperties.m */; };
+		27B0CD151F2BEB94005BEC75 /* Zone+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CD121F2BEB94005BEC75 /* Zone+CoreDataClass.m */; };
+		27B0CD161F2BEB94005BEC75 /* Zone+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CD141F2BEB94005BEC75 /* Zone+CoreDataProperties.m */; };
+		27B0CD1B1F2BEBA9005BEC75 /* Habit+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CD181F2BEBA9005BEC75 /* Habit+CoreDataClass.m */; };
+		27B0CD1C1F2BEBA9005BEC75 /* Habit+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CD1A1F2BEBA9005BEC75 /* Habit+CoreDataProperties.m */; };
+		27B0CD211F2BEBD4005BEC75 /* Good+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CD1E1F2BEBD4005BEC75 /* Good+CoreDataClass.m */; };
+		27B0CD221F2BEBD4005BEC75 /* Good+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CD201F2BEBD4005BEC75 /* Good+CoreDataProperties.m */; };
+		27B0CD271F2BEBEB005BEC75 /* Todo+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CD241F2BEBEB005BEC75 /* Todo+CoreDataClass.m */; };
+		27B0CD281F2BEBEB005BEC75 /* Todo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CD261F2BEBEB005BEC75 /* Todo+CoreDataProperties.m */; };
+		27B0CD2D1F2BEC04005BEC75 /* DataInfo+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CD2A1F2BEC04005BEC75 /* DataInfo+CoreDataClass.m */; };
+		27B0CD2E1F2BEC04005BEC75 /* DataInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CD2C1F2BEC04005BEC75 /* DataInfo+CoreDataProperties.m */; };
+		27B0CD311F2BEC21005BEC75 /* MonsterTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CD301F2BEC21005BEC75 /* MonsterTransaction+CoreDataClass.m */; };
+		27B0CD341F2BEC32005BEC75 /* ZoneTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CD331F2BEC32005BEC75 /* ZoneTransaction+CoreDataClass.m */; };
+		27B0CDC51F2BEECD005BEC75 /* GoodTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CDA21F2BEECD005BEC75 /* GoodTransaction+CoreDataProperties.m */; };
+		27B0CDC61F2BEECD005BEC75 /* ZoneTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CDA41F2BEECD005BEC75 /* ZoneTransaction+CoreDataProperties.m */; };
+		27B0CDC71F2BEECD005BEC75 /* Suffix+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CDA61F2BEECD005BEC75 /* Suffix+CoreDataProperties.m */; };
+		27B0CDC91F2BEECD005BEC75 /* HabitTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CDAA1F2BEECD005BEC75 /* HabitTransaction+CoreDataProperties.m */; };
+		27B0CDCB1F2BEECD005BEC75 /* MonsterTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CDAE1F2BEECD005BEC75 /* MonsterTransaction+CoreDataProperties.m */; };
+		27B0CDCF1F2BEECD005BEC75 /* DailySubTask+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CDB61F2BEECD005BEC75 /* DailySubTask+CoreDataProperties.m */; };
+		27B0CDD11F2BEECD005BEC75 /* TodoTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CDBA1F2BEECD005BEC75 /* TodoTransaction+CoreDataProperties.m */; };
+		27B0CDD21F2BEECD005BEC75 /* Daily+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CDBC1F2BEECD005BEC75 /* Daily+CoreDataProperties.m */; };
+		27B0CDD51F2BEECD005BEC75 /* DailyTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CDC21F2BEECD005BEC75 /* DailyTransaction+CoreDataProperties.m */; };
+		27B0CDD61F2BEECD005BEC75 /* Settings+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CDC41F2BEECD005BEC75 /* Settings+CoreDataProperties.m */; };
+		27B0CDD91F2BF488005BEC75 /* Settings+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CDD81F2BF488005BEC75 /* Settings+CoreDataClass.m */; };
+		27B0CDDC1F2BF4C9005BEC75 /* Daily+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CDDB1F2BF4C9005BEC75 /* Daily+CoreDataClass.m */; };
+		27B0CDDF1F2BF501005BEC75 /* DailySubTask+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CDDE1F2BF501005BEC75 /* DailySubTask+CoreDataClass.m */; };
+		27B0CDE21F2BF53B005BEC75 /* HabitTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CDE11F2BF53B005BEC75 /* HabitTransaction+CoreDataClass.m */; };
+		27B0CDE71F2C4091005BEC75 /* DailyTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CDE61F2C4091005BEC75 /* DailyTransaction+CoreDataClass.m */; };
 		27C3C20C1EFEED9600F205A6 /* StreakResetterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C3C20B1EFEED9600F205A6 /* StreakResetterView.m */; };
 		27C3C20E1EFEEDC100F205A6 /* StreakResetterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C3C20D1EFEEDC100F205A6 /* StreakResetterView.xib */; };
 		27C3C2151EFEF6F800F205A6 /* RewardsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C3C2141EFEF6F800F205A6 /* RewardsView.m */; };
@@ -114,8 +124,6 @@
 		27C92C451E3314000025727E /* ZoneDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C431E3314000025727E /* ZoneDescriptionViewController.xib */; };
 		27C92C481E341DA10025727E /* ViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C471E341DA10025727E /* ViewHelper.m */; };
 		27E89C6A1EF5AD68009B7474 /* SubtaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E89C691EF5AD68009B7474 /* SubtaskCell.xib */; };
-		27E89C7E1EF5CE4C009B7474 /* DailySubTask+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E89C781EF5CE4C009B7474 /* DailySubTask+CoreDataClass.m */; };
-		27E89C7F1EF5CE4C009B7474 /* DailySubTask+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E89C7A1EF5CE4C009B7474 /* DailySubTask+CoreDataProperties.m */; };
 		27E89C901EF5E6A8009B7474 /* ReminderCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E89C8F1EF5E6A8009B7474 /* ReminderCellController.xib */; };
 		27E89C941EF5E732009B7474 /* ReminderCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E89C931EF5E732009B7474 /* ReminderCellController.m */; };
 		27E89C981EF5F3EE009B7474 /* SubTaskCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E89C971EF5F3EE009B7474 /* SubTaskCellController.m */; };
@@ -144,14 +152,6 @@
 		6886A48D1D8F6EB3005E12B3 /* switch_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 6886A48C1D8F6EB3005E12B3 /* switch_checked.png */; };
 		6886A48F1D8F6F9B005E12B3 /* edit_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 6886A48E1D8F6F9A005E12B3 /* edit_button.png */; };
 		6889C65E1D88F82700598435 /* DailyEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6889C65D1D88F82700598435 /* DailyEditView.xib */; };
-		68A921F41DBC7FF2007C946C /* Hero+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921E51DBC7FF1007C946C /* Hero+CoreDataProperties.m */; };
-		68A921F51DBC7FF2007C946C /* Daily+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921E71DBC7FF1007C946C /* Daily+CoreDataProperties.m */; };
-		68A921F61DBC7FF2007C946C /* Good+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921E91DBC7FF1007C946C /* Good+CoreDataProperties.m */; };
-		68A921F71DBC7FF2007C946C /* Zone+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921EB1DBC7FF2007C946C /* Zone+CoreDataProperties.m */; };
-		68A921F81DBC7FF2007C946C /* Todo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921ED1DBC7FF2007C946C /* Todo+CoreDataProperties.m */; };
-		68A921F91DBC7FF2007C946C /* Habit+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921EF1DBC7FF2007C946C /* Habit+CoreDataProperties.m */; };
-		68A921FA1DBC7FF2007C946C /* Monster+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921F11DBC7FF2007C946C /* Monster+CoreDataProperties.m */; };
-		68A921FB1DBC7FF2007C946C /* Settings+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A921F31DBC7FF2007C946C /* Settings+CoreDataProperties.m */; };
 		68BA38861D93576600CB5A76 /* CommonUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BA38851D93576600CB5A76 /* CommonUtilities.m */; };
 		68BE45911D9DEA0B003F3400 /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BE458F1D9DEA0B003F3400 /* IntroViewController.m */; };
 		68D25C221D8B951B00FF1BE0 /* DailyEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D25C211D8B951B00FF1BE0 /* DailyEditController.m */; };
@@ -208,26 +208,6 @@
 		2709B39D1EF4DFCA00EEE5CC /* Model 24.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 24.xcdatamodel"; sourceTree = "<group>"; };
 		2709B3A11EF56AFC00EEE5CC /* NSDate+testReplace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+testReplace.h"; sourceTree = "<group>"; };
 		2709B3A21EF56AFC00EEE5CC /* NSDate+testReplace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+testReplace.m"; sourceTree = "<group>"; };
-		271217591DCE84310072ACC6 /* Daily+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Daily+CoreDataClass.h"; sourceTree = SOURCE_ROOT; };
-		2712175A1DCE84310072ACC6 /* Daily+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Daily+CoreDataClass.m"; sourceTree = SOURCE_ROOT; };
-		2712175B1DCE84310072ACC6 /* Good+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Good+CoreDataClass.h"; sourceTree = SOURCE_ROOT; };
-		2712175C1DCE84310072ACC6 /* Good+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Good+CoreDataClass.m"; sourceTree = SOURCE_ROOT; };
-		2712175D1DCE84310072ACC6 /* Habit+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Habit+CoreDataClass.h"; sourceTree = SOURCE_ROOT; };
-		2712175E1DCE84310072ACC6 /* Habit+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Habit+CoreDataClass.m"; sourceTree = SOURCE_ROOT; };
-		2712175F1DCE84310072ACC6 /* Hero+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Hero+CoreDataClass.h"; sourceTree = SOURCE_ROOT; };
-		271217601DCE84310072ACC6 /* Hero+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Hero+CoreDataClass.m"; sourceTree = SOURCE_ROOT; };
-		271217611DCE84310072ACC6 /* Monster+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Monster+CoreDataClass.h"; sourceTree = SOURCE_ROOT; };
-		271217621DCE84310072ACC6 /* Monster+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Monster+CoreDataClass.m"; sourceTree = SOURCE_ROOT; };
-		271217631DCE84310072ACC6 /* Settings+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Settings+CoreDataClass.h"; sourceTree = SOURCE_ROOT; };
-		271217641DCE84310072ACC6 /* Settings+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Settings+CoreDataClass.m"; sourceTree = SOURCE_ROOT; };
-		271217651DCE84310072ACC6 /* Todo+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Todo+CoreDataClass.h"; sourceTree = SOURCE_ROOT; };
-		271217661DCE84310072ACC6 /* Todo+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Todo+CoreDataClass.m"; sourceTree = SOURCE_ROOT; };
-		271217671DCE84310072ACC6 /* Zone+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Zone+CoreDataClass.h"; sourceTree = SOURCE_ROOT; };
-		271217681DCE84310072ACC6 /* Zone+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Zone+CoreDataClass.m"; sourceTree = SOURCE_ROOT; };
-		27127E311DDD42B50074A8F5 /* DataInfo+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DataInfo+CoreDataClass.h"; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		27127E321DDD42B50074A8F5 /* DataInfo+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DataInfo+CoreDataClass.m"; sourceTree = SOURCE_ROOT; };
-		27127E331DDD42B50074A8F5 /* DataInfo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DataInfo+CoreDataProperties.h"; sourceTree = SOURCE_ROOT; };
-		27127E341DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DataInfo+CoreDataProperties.m"; sourceTree = SOURCE_ROOT; };
 		271C047D1E89BCBA002221E9 /* P_CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_CoreData.h; sourceTree = "<group>"; };
 		271C04811E8A1152002221E9 /* MonsterInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterInfoDictionary.h; sourceTree = "<group>"; };
 		271C04821E8A1152002221E9 /* MonsterInfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterInfoDictionary.m; sourceTree = "<group>"; };
@@ -251,26 +231,6 @@
 		273978841EB55F3700F217B4 /* StoryDumpView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoryDumpView.xib; sourceTree = "<group>"; };
 		273978881EB5618200F217B4 /* P_StoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_StoryItem.h; sourceTree = "<group>"; };
 		2739788A1EB843F800F217B4 /* MonsterInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MonsterInfo.plist; sourceTree = "<group>"; };
-		2739788C1EB8473100F217B4 /* ZoneTransaction+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ZoneTransaction+CoreDataClass.h"; path = "../ZoneTransaction+CoreDataClass.h"; sourceTree = "<group>"; };
-		2739788D1EB8473100F217B4 /* ZoneTransaction+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ZoneTransaction+CoreDataClass.m"; path = "../ZoneTransaction+CoreDataClass.m"; sourceTree = "<group>"; };
-		2739788E1EB8473100F217B4 /* ZoneTransaction+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ZoneTransaction+CoreDataProperties.h"; path = "../ZoneTransaction+CoreDataProperties.h"; sourceTree = "<group>"; };
-		2739788F1EB8473100F217B4 /* ZoneTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ZoneTransaction+CoreDataProperties.m"; path = "../ZoneTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
-		273978901EB8473100F217B4 /* TodoTransaction+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TodoTransaction+CoreDataClass.h"; path = "../TodoTransaction+CoreDataClass.h"; sourceTree = "<group>"; };
-		273978911EB8473100F217B4 /* TodoTransaction+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TodoTransaction+CoreDataClass.m"; path = "../TodoTransaction+CoreDataClass.m"; sourceTree = "<group>"; };
-		273978921EB8473100F217B4 /* TodoTransaction+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TodoTransaction+CoreDataProperties.h"; path = "../TodoTransaction+CoreDataProperties.h"; sourceTree = "<group>"; };
-		273978931EB8473100F217B4 /* TodoTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TodoTransaction+CoreDataProperties.m"; path = "../TodoTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
-		273978941EB8473100F217B4 /* HabitTransaction+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HabitTransaction+CoreDataClass.h"; path = "../HabitTransaction+CoreDataClass.h"; sourceTree = "<group>"; };
-		273978951EB8473100F217B4 /* HabitTransaction+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "HabitTransaction+CoreDataClass.m"; path = "../HabitTransaction+CoreDataClass.m"; sourceTree = "<group>"; };
-		273978961EB8473100F217B4 /* HabitTransaction+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HabitTransaction+CoreDataProperties.h"; path = "../HabitTransaction+CoreDataProperties.h"; sourceTree = "<group>"; };
-		273978971EB8473100F217B4 /* HabitTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "HabitTransaction+CoreDataProperties.m"; path = "../HabitTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
-		2739789C1EB8473100F217B4 /* DailyTransaction+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DailyTransaction+CoreDataClass.h"; path = "../DailyTransaction+CoreDataClass.h"; sourceTree = "<group>"; };
-		2739789D1EB8473100F217B4 /* DailyTransaction+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DailyTransaction+CoreDataClass.m"; path = "../DailyTransaction+CoreDataClass.m"; sourceTree = "<group>"; };
-		2739789E1EB8473100F217B4 /* DailyTransaction+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DailyTransaction+CoreDataProperties.h"; path = "../DailyTransaction+CoreDataProperties.h"; sourceTree = "<group>"; };
-		2739789F1EB8473100F217B4 /* DailyTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DailyTransaction+CoreDataProperties.m"; path = "../DailyTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
-		273978A01EB8473100F217B4 /* MonsterTransaction+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MonsterTransaction+CoreDataClass.h"; path = "../MonsterTransaction+CoreDataClass.h"; sourceTree = "<group>"; };
-		273978A11EB8473100F217B4 /* MonsterTransaction+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MonsterTransaction+CoreDataClass.m"; path = "../MonsterTransaction+CoreDataClass.m"; sourceTree = "<group>"; };
-		273978A21EB8473100F217B4 /* MonsterTransaction+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MonsterTransaction+CoreDataProperties.h"; path = "../MonsterTransaction+CoreDataProperties.h"; sourceTree = "<group>"; };
-		273978A31EB8473100F217B4 /* MonsterTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MonsterTransaction+CoreDataProperties.m"; path = "../MonsterTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
 		273978FF1EC4092A00F217B4 /* IntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroViewController.xib; sourceTree = "<group>"; };
 		274A37551F08C7BE00F31E0F /* ReminderTimeSpinPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReminderTimeSpinPicker.xib; sourceTree = "<group>"; };
 		274A375A1F08CD6D00F31E0F /* ReminderTimeSpinPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReminderTimeSpinPicker.h; sourceTree = "<group>"; };
@@ -280,10 +240,6 @@
 		274A37951F0962A100F31E0F /* ControlController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlController.m; sourceTree = "<group>"; };
 		274A37971F09BA9C00F31E0F /* P_ReminderTimeSpinPickerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ReminderTimeSpinPickerDelegate.h; sourceTree = "<group>"; };
 		274A37981F09FB9600F31E0F /* Model 27.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 27.xcdatamodel"; sourceTree = "<group>"; };
-		274A379B1F09FCA300F31E0F /* Reminder+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Reminder+CoreDataClass.h"; path = "../Reminder+CoreDataClass.h"; sourceTree = "<group>"; };
-		274A379C1F09FCA300F31E0F /* Reminder+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Reminder+CoreDataClass.m"; path = "../Reminder+CoreDataClass.m"; sourceTree = "<group>"; };
-		274A379D1F09FCA300F31E0F /* Reminder+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Reminder+CoreDataProperties.h"; path = "../Reminder+CoreDataProperties.h"; sourceTree = "<group>"; };
-		274A379E1F09FCA300F31E0F /* Reminder+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Reminder+CoreDataProperties.m"; path = "../Reminder+CoreDataProperties.m"; sourceTree = "<group>"; };
 		274A37AD1F0A083A00F31E0F /* TimeSpinPickerEventInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeSpinPickerEventInfo.h; sourceTree = "<group>"; };
 		274A37AE1F0A083A00F31E0F /* TimeSpinPickerEventInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeSpinPickerEventInfo.m; sourceTree = "<group>"; };
 		274A37B01F0A093B00F31E0F /* SHEventInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHEventInfo.h; sourceTree = "<group>"; };
@@ -328,10 +284,6 @@
 		274FFC441EF6E3BB00FAF809 /* P_RateSetterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_RateSetterDelegate.h; sourceTree = "<group>"; };
 		274FFC481EF887DB00FAF809 /* DailyEditControlKeep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyEditControlKeep.h; sourceTree = "<group>"; };
 		274FFC491EF887DB00FAF809 /* DailyEditControlKeep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyEditControlKeep.m; sourceTree = "<group>"; };
-		275A07831ED50AF5001422CD /* GoodTransaction+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GoodTransaction+CoreDataClass.h"; path = "../GoodTransaction+CoreDataClass.h"; sourceTree = "<group>"; };
-		275A07841ED50AF5001422CD /* GoodTransaction+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GoodTransaction+CoreDataClass.m"; path = "../GoodTransaction+CoreDataClass.m"; sourceTree = "<group>"; };
-		275A07851ED50AF5001422CD /* GoodTransaction+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GoodTransaction+CoreDataProperties.h"; path = "../GoodTransaction+CoreDataProperties.h"; sourceTree = "<group>"; };
-		275A07861ED50AF5001422CD /* GoodTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GoodTransaction+CoreDataProperties.m"; path = "../GoodTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
 		275A07B51EDA1FB9001422CD /* TestHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHelpers.h; sourceTree = "<group>"; };
 		275A07B61EDA1FB9001422CD /* TestHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHelpers.m; sourceTree = "<group>"; };
 		275D9F221F219850009DA715 /* ChildMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildMan.h; sourceTree = "<group>"; };
@@ -372,13 +324,82 @@
 		277ABF6D1EA86240008CC239 /* TestProbWeightsThreeItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestProbWeightsThreeItems.m; sourceTree = "<group>"; };
 		277ABF6F1EAD98EB008CC239 /* ProbilityWeightTestFourItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProbilityWeightTestFourItems.m; sourceTree = "<group>"; };
 		277ABF721EAD9DD7008CC239 /* probWeightsUTBig.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = probWeightsUTBig.py; sourceTree = "<group>"; };
+		2785DCCD1F2CC21600B5C28C /* GoodTransaction+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GoodTransaction+CoreDataClass.h"; sourceTree = "<group>"; };
+		2785DCCE1F2CC21600B5C28C /* GoodTransaction+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GoodTransaction+CoreDataClass.m"; sourceTree = "<group>"; };
+		2785DCD01F2CC25F00B5C28C /* TodoTransaction+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TodoTransaction+CoreDataClass.h"; sourceTree = "<group>"; };
+		2785DCD11F2CC25F00B5C28C /* TodoTransaction+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TodoTransaction+CoreDataClass.m"; sourceTree = "<group>"; };
 		27AE66541E8720F9000F31BD /* CentralViewControllerP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralViewControllerP.h; sourceTree = "<group>"; };
-		27AE666E1E875EFB000F31BD /* Suffix+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Suffix+CoreDataClass.h"; sourceTree = "<group>"; };
-		27AE666F1E875EFB000F31BD /* Suffix+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Suffix+CoreDataClass.m"; sourceTree = "<group>"; };
-		27AE66701E875EFB000F31BD /* Suffix+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Suffix+CoreDataProperties.h"; sourceTree = "<group>"; };
-		27AE66711E875EFB000F31BD /* Suffix+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Suffix+CoreDataProperties.m"; sourceTree = "<group>"; };
 		27AF22E51F270FBA00F7D872 /* SHControlController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHControlController.h; sourceTree = "<group>"; };
 		27AF22E61F270FBA00F7D872 /* SHControlController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHControlController.m; sourceTree = "<group>"; };
+		27B0CCB91F2BE658005BEC75 /* Model 28.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 28.xcdatamodel"; sourceTree = "<group>"; };
+		27B0CCFC1F2BEB17005BEC75 /* Reminder+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Reminder+CoreDataClass.h"; sourceTree = "<group>"; };
+		27B0CCFD1F2BEB17005BEC75 /* Reminder+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Reminder+CoreDataClass.m"; sourceTree = "<group>"; };
+		27B0CCFE1F2BEB17005BEC75 /* Reminder+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Reminder+CoreDataProperties.h"; sourceTree = "<group>"; };
+		27B0CCFF1F2BEB17005BEC75 /* Reminder+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Reminder+CoreDataProperties.m"; sourceTree = "<group>"; };
+		27B0CD021F2BEB42005BEC75 /* Suffix+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Suffix+CoreDataClass.h"; path = "HabitRPG2/Suffix+CoreDataClass.h"; sourceTree = "<group>"; };
+		27B0CD031F2BEB42005BEC75 /* Suffix+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Suffix+CoreDataClass.m"; path = "HabitRPG2/Suffix+CoreDataClass.m"; sourceTree = "<group>"; };
+		27B0CD051F2BEB5D005BEC75 /* Hero+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Hero+CoreDataClass.h"; sourceTree = "<group>"; };
+		27B0CD061F2BEB5D005BEC75 /* Hero+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Hero+CoreDataClass.m"; sourceTree = "<group>"; };
+		27B0CD071F2BEB5D005BEC75 /* Hero+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Hero+CoreDataProperties.h"; sourceTree = "<group>"; };
+		27B0CD081F2BEB5D005BEC75 /* Hero+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Hero+CoreDataProperties.m"; sourceTree = "<group>"; };
+		27B0CD0B1F2BEB78005BEC75 /* Monster+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Monster+CoreDataClass.h"; sourceTree = "<group>"; };
+		27B0CD0C1F2BEB78005BEC75 /* Monster+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Monster+CoreDataClass.m"; sourceTree = "<group>"; };
+		27B0CD0D1F2BEB78005BEC75 /* Monster+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Monster+CoreDataProperties.h"; sourceTree = "<group>"; };
+		27B0CD0E1F2BEB78005BEC75 /* Monster+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Monster+CoreDataProperties.m"; sourceTree = "<group>"; };
+		27B0CD111F2BEB94005BEC75 /* Zone+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Zone+CoreDataClass.h"; sourceTree = "<group>"; };
+		27B0CD121F2BEB94005BEC75 /* Zone+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Zone+CoreDataClass.m"; sourceTree = "<group>"; };
+		27B0CD131F2BEB94005BEC75 /* Zone+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Zone+CoreDataProperties.h"; sourceTree = "<group>"; };
+		27B0CD141F2BEB94005BEC75 /* Zone+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Zone+CoreDataProperties.m"; sourceTree = "<group>"; };
+		27B0CD171F2BEBA9005BEC75 /* Habit+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Habit+CoreDataClass.h"; sourceTree = "<group>"; };
+		27B0CD181F2BEBA9005BEC75 /* Habit+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Habit+CoreDataClass.m"; sourceTree = "<group>"; };
+		27B0CD191F2BEBA9005BEC75 /* Habit+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Habit+CoreDataProperties.h"; sourceTree = "<group>"; };
+		27B0CD1A1F2BEBA9005BEC75 /* Habit+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Habit+CoreDataProperties.m"; sourceTree = "<group>"; };
+		27B0CD1D1F2BEBD4005BEC75 /* Good+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Good+CoreDataClass.h"; sourceTree = "<group>"; };
+		27B0CD1E1F2BEBD4005BEC75 /* Good+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Good+CoreDataClass.m"; sourceTree = "<group>"; };
+		27B0CD1F1F2BEBD4005BEC75 /* Good+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Good+CoreDataProperties.h"; sourceTree = "<group>"; };
+		27B0CD201F2BEBD4005BEC75 /* Good+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Good+CoreDataProperties.m"; sourceTree = "<group>"; };
+		27B0CD231F2BEBEB005BEC75 /* Todo+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Todo+CoreDataClass.h"; sourceTree = "<group>"; };
+		27B0CD241F2BEBEB005BEC75 /* Todo+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Todo+CoreDataClass.m"; sourceTree = "<group>"; };
+		27B0CD251F2BEBEB005BEC75 /* Todo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Todo+CoreDataProperties.h"; sourceTree = "<group>"; };
+		27B0CD261F2BEBEB005BEC75 /* Todo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Todo+CoreDataProperties.m"; sourceTree = "<group>"; };
+		27B0CD291F2BEC04005BEC75 /* DataInfo+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DataInfo+CoreDataClass.h"; sourceTree = "<group>"; };
+		27B0CD2A1F2BEC04005BEC75 /* DataInfo+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DataInfo+CoreDataClass.m"; sourceTree = "<group>"; };
+		27B0CD2B1F2BEC04005BEC75 /* DataInfo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DataInfo+CoreDataProperties.h"; sourceTree = "<group>"; };
+		27B0CD2C1F2BEC04005BEC75 /* DataInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DataInfo+CoreDataProperties.m"; sourceTree = "<group>"; };
+		27B0CD2F1F2BEC21005BEC75 /* MonsterTransaction+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MonsterTransaction+CoreDataClass.h"; sourceTree = "<group>"; };
+		27B0CD301F2BEC21005BEC75 /* MonsterTransaction+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MonsterTransaction+CoreDataClass.m"; sourceTree = "<group>"; };
+		27B0CD321F2BEC32005BEC75 /* ZoneTransaction+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZoneTransaction+CoreDataClass.h"; sourceTree = "<group>"; };
+		27B0CD331F2BEC32005BEC75 /* ZoneTransaction+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ZoneTransaction+CoreDataClass.m"; sourceTree = "<group>"; };
+		27B0CDA11F2BEECC005BEC75 /* GoodTransaction+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GoodTransaction+CoreDataProperties.h"; sourceTree = "<group>"; };
+		27B0CDA21F2BEECD005BEC75 /* GoodTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GoodTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
+		27B0CDA31F2BEECD005BEC75 /* ZoneTransaction+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZoneTransaction+CoreDataProperties.h"; sourceTree = "<group>"; };
+		27B0CDA41F2BEECD005BEC75 /* ZoneTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ZoneTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
+		27B0CDA51F2BEECD005BEC75 /* Suffix+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Suffix+CoreDataProperties.h"; path = "HabitRPG2/Suffix+CoreDataProperties.h"; sourceTree = "<group>"; };
+		27B0CDA61F2BEECD005BEC75 /* Suffix+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Suffix+CoreDataProperties.m"; path = "HabitRPG2/Suffix+CoreDataProperties.m"; sourceTree = "<group>"; };
+		27B0CDA91F2BEECD005BEC75 /* HabitTransaction+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HabitTransaction+CoreDataProperties.h"; sourceTree = "<group>"; };
+		27B0CDAA1F2BEECD005BEC75 /* HabitTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HabitTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
+		27B0CDAD1F2BEECD005BEC75 /* MonsterTransaction+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MonsterTransaction+CoreDataProperties.h"; sourceTree = "<group>"; };
+		27B0CDAE1F2BEECD005BEC75 /* MonsterTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MonsterTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
+		27B0CDB51F2BEECD005BEC75 /* DailySubTask+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DailySubTask+CoreDataProperties.h"; sourceTree = "<group>"; };
+		27B0CDB61F2BEECD005BEC75 /* DailySubTask+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DailySubTask+CoreDataProperties.m"; sourceTree = "<group>"; };
+		27B0CDB91F2BEECD005BEC75 /* TodoTransaction+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TodoTransaction+CoreDataProperties.h"; sourceTree = "<group>"; };
+		27B0CDBA1F2BEECD005BEC75 /* TodoTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TodoTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
+		27B0CDBB1F2BEECD005BEC75 /* Daily+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Daily+CoreDataProperties.h"; sourceTree = "<group>"; };
+		27B0CDBC1F2BEECD005BEC75 /* Daily+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Daily+CoreDataProperties.m"; sourceTree = "<group>"; };
+		27B0CDC11F2BEECD005BEC75 /* DailyTransaction+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DailyTransaction+CoreDataProperties.h"; sourceTree = "<group>"; };
+		27B0CDC21F2BEECD005BEC75 /* DailyTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DailyTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
+		27B0CDC31F2BEECD005BEC75 /* Settings+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Settings+CoreDataProperties.h"; sourceTree = "<group>"; };
+		27B0CDC41F2BEECD005BEC75 /* Settings+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Settings+CoreDataProperties.m"; sourceTree = "<group>"; };
+		27B0CDD71F2BF488005BEC75 /* Settings+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Settings+CoreDataClass.h"; sourceTree = "<group>"; };
+		27B0CDD81F2BF488005BEC75 /* Settings+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Settings+CoreDataClass.m"; sourceTree = "<group>"; };
+		27B0CDDA1F2BF4C9005BEC75 /* Daily+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Daily+CoreDataClass.h"; sourceTree = "<group>"; };
+		27B0CDDB1F2BF4C9005BEC75 /* Daily+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Daily+CoreDataClass.m"; sourceTree = "<group>"; };
+		27B0CDDD1F2BF501005BEC75 /* DailySubTask+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DailySubTask+CoreDataClass.h"; sourceTree = "<group>"; };
+		27B0CDDE1F2BF501005BEC75 /* DailySubTask+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DailySubTask+CoreDataClass.m"; sourceTree = "<group>"; };
+		27B0CDE01F2BF53B005BEC75 /* HabitTransaction+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HabitTransaction+CoreDataClass.h"; sourceTree = "<group>"; };
+		27B0CDE11F2BF53B005BEC75 /* HabitTransaction+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HabitTransaction+CoreDataClass.m"; sourceTree = "<group>"; };
+		27B0CDE31F2BF560005BEC75 /* DailyTransaction+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DailyTransaction+CoreDataClass.h"; sourceTree = "<group>"; };
+		27B0CDE61F2C4091005BEC75 /* DailyTransaction+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DailyTransaction+CoreDataClass.m"; sourceTree = "<group>"; };
 		27B47E871EF8F2F500B81275 /* P_DailyEditCompound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_DailyEditCompound.h; sourceTree = "<group>"; };
 		27C3C20A1EFEED9600F205A6 /* StreakResetterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreakResetterView.h; sourceTree = "<group>"; };
 		27C3C20B1EFEED9600F205A6 /* StreakResetterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreakResetterView.m; sourceTree = "<group>"; };
@@ -411,10 +432,6 @@
 		27E00E981ED3FAE8008B35CD /* P_Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_Transaction.h; sourceTree = "<group>"; };
 		27E89C681EF59034009B7474 /* Model 25.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 25.xcdatamodel"; sourceTree = "<group>"; };
 		27E89C691EF5AD68009B7474 /* SubtaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubtaskCell.xib; sourceTree = "<group>"; };
-		27E89C771EF5CE4C009B7474 /* DailySubTask+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DailySubTask+CoreDataClass.h"; path = "../DailySubTask+CoreDataClass.h"; sourceTree = "<group>"; };
-		27E89C781EF5CE4C009B7474 /* DailySubTask+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DailySubTask+CoreDataClass.m"; path = "../DailySubTask+CoreDataClass.m"; sourceTree = "<group>"; };
-		27E89C791EF5CE4C009B7474 /* DailySubTask+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DailySubTask+CoreDataProperties.h"; path = "../DailySubTask+CoreDataProperties.h"; sourceTree = "<group>"; };
-		27E89C7A1EF5CE4C009B7474 /* DailySubTask+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DailySubTask+CoreDataProperties.m"; path = "../DailySubTask+CoreDataProperties.m"; sourceTree = "<group>"; };
 		27E89C8F1EF5E6A8009B7474 /* ReminderCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReminderCellController.xib; sourceTree = "<group>"; };
 		27E89C921EF5E732009B7474 /* ReminderCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReminderCellController.h; sourceTree = "<group>"; };
 		27E89C931EF5E732009B7474 /* ReminderCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReminderCellController.m; sourceTree = "<group>"; };
@@ -454,22 +471,6 @@
 		6886A48C1D8F6EB3005E12B3 /* switch_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_checked.png; sourceTree = "<group>"; };
 		6886A48E1D8F6F9A005E12B3 /* edit_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit_button.png; sourceTree = "<group>"; };
 		6889C65D1D88F82700598435 /* DailyEditView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyEditView.xib; sourceTree = "<group>"; };
-		68A921E41DBC7FF1007C946C /* Hero+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Hero+CoreDataProperties.h"; path = "../Hero+CoreDataProperties.h"; sourceTree = "<group>"; };
-		68A921E51DBC7FF1007C946C /* Hero+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Hero+CoreDataProperties.m"; path = "../Hero+CoreDataProperties.m"; sourceTree = "<group>"; };
-		68A921E61DBC7FF1007C946C /* Daily+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Daily+CoreDataProperties.h"; path = "../Daily+CoreDataProperties.h"; sourceTree = "<group>"; };
-		68A921E71DBC7FF1007C946C /* Daily+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Daily+CoreDataProperties.m"; path = "../Daily+CoreDataProperties.m"; sourceTree = "<group>"; };
-		68A921E81DBC7FF1007C946C /* Good+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Good+CoreDataProperties.h"; path = "../Good+CoreDataProperties.h"; sourceTree = "<group>"; };
-		68A921E91DBC7FF1007C946C /* Good+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Good+CoreDataProperties.m"; path = "../Good+CoreDataProperties.m"; sourceTree = "<group>"; };
-		68A921EA1DBC7FF2007C946C /* Zone+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Zone+CoreDataProperties.h"; path = "../Zone+CoreDataProperties.h"; sourceTree = "<group>"; };
-		68A921EB1DBC7FF2007C946C /* Zone+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Zone+CoreDataProperties.m"; path = "../Zone+CoreDataProperties.m"; sourceTree = "<group>"; };
-		68A921EC1DBC7FF2007C946C /* Todo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Todo+CoreDataProperties.h"; path = "../Todo+CoreDataProperties.h"; sourceTree = "<group>"; };
-		68A921ED1DBC7FF2007C946C /* Todo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Todo+CoreDataProperties.m"; path = "../Todo+CoreDataProperties.m"; sourceTree = "<group>"; };
-		68A921EE1DBC7FF2007C946C /* Habit+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Habit+CoreDataProperties.h"; path = "../Habit+CoreDataProperties.h"; sourceTree = "<group>"; };
-		68A921EF1DBC7FF2007C946C /* Habit+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Habit+CoreDataProperties.m"; path = "../Habit+CoreDataProperties.m"; sourceTree = "<group>"; };
-		68A921F01DBC7FF2007C946C /* Monster+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Monster+CoreDataProperties.h"; path = "../Monster+CoreDataProperties.h"; sourceTree = "<group>"; };
-		68A921F11DBC7FF2007C946C /* Monster+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Monster+CoreDataProperties.m"; path = "../Monster+CoreDataProperties.m"; sourceTree = "<group>"; };
-		68A921F21DBC7FF2007C946C /* Settings+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Settings+CoreDataProperties.h"; path = "../Settings+CoreDataProperties.h"; sourceTree = "<group>"; };
-		68A921F31DBC7FF2007C946C /* Settings+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Settings+CoreDataProperties.m"; path = "../Settings+CoreDataProperties.m"; sourceTree = "<group>"; };
 		68BA38841D93576600CB5A76 /* CommonUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtilities.h; sourceTree = "<group>"; };
 		68BA38851D93576600CB5A76 /* CommonUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtilities.m; sourceTree = "<group>"; };
 		68BE458E1D9DEA0B003F3400 /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroViewController.h; sourceTree = "<group>"; };
@@ -537,10 +538,10 @@
 		27127E171DDAD6300074A8F5 /* DataInfo */ = {
 			isa = PBXGroup;
 			children = (
-				27127E311DDD42B50074A8F5 /* DataInfo+CoreDataClass.h */,
-				27127E321DDD42B50074A8F5 /* DataInfo+CoreDataClass.m */,
-				27127E331DDD42B50074A8F5 /* DataInfo+CoreDataProperties.h */,
-				27127E341DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m */,
+				27B0CD291F2BEC04005BEC75 /* DataInfo+CoreDataClass.h */,
+				27B0CD2A1F2BEC04005BEC75 /* DataInfo+CoreDataClass.m */,
+				27B0CD2B1F2BEC04005BEC75 /* DataInfo+CoreDataProperties.h */,
+				27B0CD2C1F2BEC04005BEC75 /* DataInfo+CoreDataProperties.m */,
 			);
 			name = DataInfo;
 			sourceTree = "<group>";
@@ -568,10 +569,14 @@
 			isa = PBXGroup;
 			children = (
 				274A37591F08CD1000F31E0F /* Daily Subtask */,
-				68A921E61DBC7FF1007C946C /* Daily+CoreDataProperties.h */,
-				271217591DCE84310072ACC6 /* Daily+CoreDataClass.h */,
-				2712175A1DCE84310072ACC6 /* Daily+CoreDataClass.m */,
-				68A921E71DBC7FF1007C946C /* Daily+CoreDataProperties.m */,
+				27B0CDBB1F2BEECD005BEC75 /* Daily+CoreDataProperties.h */,
+				27B0CDDA1F2BF4C9005BEC75 /* Daily+CoreDataClass.h */,
+				27B0CDDB1F2BF4C9005BEC75 /* Daily+CoreDataClass.m */,
+				27B0CDBC1F2BEECD005BEC75 /* Daily+CoreDataProperties.m */,
+				27B0CDE31F2BF560005BEC75 /* DailyTransaction+CoreDataClass.h */,
+				27B0CDE61F2C4091005BEC75 /* DailyTransaction+CoreDataClass.m */,
+				27B0CDC11F2BEECD005BEC75 /* DailyTransaction+CoreDataProperties.h */,
+				27B0CDC21F2BEECD005BEC75 /* DailyTransaction+CoreDataProperties.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -595,10 +600,10 @@
 		274A37591F08CD1000F31E0F /* Daily Subtask */ = {
 			isa = PBXGroup;
 			children = (
-				27E89C771EF5CE4C009B7474 /* DailySubTask+CoreDataClass.h */,
-				27E89C781EF5CE4C009B7474 /* DailySubTask+CoreDataClass.m */,
-				27E89C791EF5CE4C009B7474 /* DailySubTask+CoreDataProperties.h */,
-				27E89C7A1EF5CE4C009B7474 /* DailySubTask+CoreDataProperties.m */,
+				27B0CDDD1F2BF501005BEC75 /* DailySubTask+CoreDataClass.h */,
+				27B0CDDE1F2BF501005BEC75 /* DailySubTask+CoreDataClass.m */,
+				27B0CDB51F2BEECD005BEC75 /* DailySubTask+CoreDataProperties.h */,
+				27B0CDB61F2BEECD005BEC75 /* DailySubTask+CoreDataProperties.m */,
 			);
 			name = "Daily Subtask";
 			sourceTree = "<group>";
@@ -606,10 +611,10 @@
 		274A37A21F09FCCB00F31E0F /* Reminders */ = {
 			isa = PBXGroup;
 			children = (
-				274A379B1F09FCA300F31E0F /* Reminder+CoreDataClass.h */,
-				274A379C1F09FCA300F31E0F /* Reminder+CoreDataClass.m */,
-				274A379D1F09FCA300F31E0F /* Reminder+CoreDataProperties.h */,
-				274A379E1F09FCA300F31E0F /* Reminder+CoreDataProperties.m */,
+				27B0CCFC1F2BEB17005BEC75 /* Reminder+CoreDataClass.h */,
+				27B0CCFD1F2BEB17005BEC75 /* Reminder+CoreDataClass.m */,
+				27B0CCFE1F2BEB17005BEC75 /* Reminder+CoreDataProperties.h */,
+				27B0CCFF1F2BEB17005BEC75 /* Reminder+CoreDataProperties.m */,
 			);
 			name = Reminders;
 			sourceTree = "<group>";
@@ -740,10 +745,10 @@
 		27AE66761E876007000F31BD /* Suffix */ = {
 			isa = PBXGroup;
 			children = (
-				27AE666E1E875EFB000F31BD /* Suffix+CoreDataClass.h */,
-				27AE666F1E875EFB000F31BD /* Suffix+CoreDataClass.m */,
-				27AE66701E875EFB000F31BD /* Suffix+CoreDataProperties.h */,
-				27AE66711E875EFB000F31BD /* Suffix+CoreDataProperties.m */,
+				27B0CDA51F2BEECD005BEC75 /* Suffix+CoreDataProperties.h */,
+				27B0CDA61F2BEECD005BEC75 /* Suffix+CoreDataProperties.m */,
+				27B0CD021F2BEB42005BEC75 /* Suffix+CoreDataClass.h */,
+				27B0CD031F2BEB42005BEC75 /* Suffix+CoreDataClass.m */,
 				271C04911E8F3784002221E9 /* SuffixList.plist */,
 			);
 			name = Suffix;
@@ -763,14 +768,14 @@
 		27C92C3E1E3313770025727E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2739788C1EB8473100F217B4 /* ZoneTransaction+CoreDataClass.h */,
-				2739788D1EB8473100F217B4 /* ZoneTransaction+CoreDataClass.m */,
-				2739788E1EB8473100F217B4 /* ZoneTransaction+CoreDataProperties.h */,
-				2739788F1EB8473100F217B4 /* ZoneTransaction+CoreDataProperties.m */,
-				271217671DCE84310072ACC6 /* Zone+CoreDataClass.h */,
-				271217681DCE84310072ACC6 /* Zone+CoreDataClass.m */,
-				68A921EA1DBC7FF2007C946C /* Zone+CoreDataProperties.h */,
-				68A921EB1DBC7FF2007C946C /* Zone+CoreDataProperties.m */,
+				27B0CDA31F2BEECD005BEC75 /* ZoneTransaction+CoreDataProperties.h */,
+				27B0CDA41F2BEECD005BEC75 /* ZoneTransaction+CoreDataProperties.m */,
+				27B0CD321F2BEC32005BEC75 /* ZoneTransaction+CoreDataClass.h */,
+				27B0CD331F2BEC32005BEC75 /* ZoneTransaction+CoreDataClass.m */,
+				27B0CD111F2BEB94005BEC75 /* Zone+CoreDataClass.h */,
+				27B0CD121F2BEB94005BEC75 /* Zone+CoreDataClass.m */,
+				27B0CD131F2BEB94005BEC75 /* Zone+CoreDataProperties.h */,
+				27B0CD141F2BEB94005BEC75 /* Zone+CoreDataProperties.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -837,14 +842,14 @@
 		686ED39C1DA5FF28004EDD36 /* Todos */ = {
 			isa = PBXGroup;
 			children = (
-				273978901EB8473100F217B4 /* TodoTransaction+CoreDataClass.h */,
-				273978911EB8473100F217B4 /* TodoTransaction+CoreDataClass.m */,
-				273978921EB8473100F217B4 /* TodoTransaction+CoreDataProperties.h */,
-				273978931EB8473100F217B4 /* TodoTransaction+CoreDataProperties.m */,
-				271217651DCE84310072ACC6 /* Todo+CoreDataClass.h */,
-				271217661DCE84310072ACC6 /* Todo+CoreDataClass.m */,
-				68A921EC1DBC7FF2007C946C /* Todo+CoreDataProperties.h */,
-				68A921ED1DBC7FF2007C946C /* Todo+CoreDataProperties.m */,
+				2785DCD01F2CC25F00B5C28C /* TodoTransaction+CoreDataClass.h */,
+				2785DCD11F2CC25F00B5C28C /* TodoTransaction+CoreDataClass.m */,
+				27B0CD231F2BEBEB005BEC75 /* Todo+CoreDataClass.h */,
+				27B0CD241F2BEBEB005BEC75 /* Todo+CoreDataClass.m */,
+				27B0CD251F2BEBEB005BEC75 /* Todo+CoreDataProperties.h */,
+				27B0CD261F2BEBEB005BEC75 /* Todo+CoreDataProperties.m */,
+				27B0CDB91F2BEECD005BEC75 /* TodoTransaction+CoreDataProperties.h */,
+				27B0CDBA1F2BEECD005BEC75 /* TodoTransaction+CoreDataProperties.m */,
 				68F3F9F21D70FC5E00840DD2 /* TodoViewController.xib */,
 				68F3F9F01D70FC5E00840DD2 /* TodoViewController.h */,
 				68F3F9F11D70FC5E00840DD2 /* TodoViewController.m */,
@@ -855,14 +860,14 @@
 		686ED39D1DA6007E004EDD36 /* Habits */ = {
 			isa = PBXGroup;
 			children = (
-				273978941EB8473100F217B4 /* HabitTransaction+CoreDataClass.h */,
-				273978951EB8473100F217B4 /* HabitTransaction+CoreDataClass.m */,
-				273978961EB8473100F217B4 /* HabitTransaction+CoreDataProperties.h */,
-				273978971EB8473100F217B4 /* HabitTransaction+CoreDataProperties.m */,
-				2712175D1DCE84310072ACC6 /* Habit+CoreDataClass.h */,
-				2712175E1DCE84310072ACC6 /* Habit+CoreDataClass.m */,
-				68A921EE1DBC7FF2007C946C /* Habit+CoreDataProperties.h */,
-				68A921EF1DBC7FF2007C946C /* Habit+CoreDataProperties.m */,
+				27B0CDE01F2BF53B005BEC75 /* HabitTransaction+CoreDataClass.h */,
+				27B0CDE11F2BF53B005BEC75 /* HabitTransaction+CoreDataClass.m */,
+				27B0CD171F2BEBA9005BEC75 /* Habit+CoreDataClass.h */,
+				27B0CD181F2BEBA9005BEC75 /* Habit+CoreDataClass.m */,
+				27B0CD191F2BEBA9005BEC75 /* Habit+CoreDataProperties.h */,
+				27B0CD1A1F2BEBA9005BEC75 /* Habit+CoreDataProperties.m */,
+				27B0CDA91F2BEECD005BEC75 /* HabitTransaction+CoreDataProperties.h */,
+				27B0CDAA1F2BEECD005BEC75 /* HabitTransaction+CoreDataProperties.m */,
 				68F3F9EB1D70FC0D00840DD2 /* HabitController.h */,
 				68F3F9ED1D70FC0D00840DD2 /* HabitController.xib */,
 				68F3F9EC1D70FC0D00840DD2 /* HabitController.m */,
@@ -873,14 +878,14 @@
 		686ED39E1DA600A7004EDD36 /* Goods */ = {
 			isa = PBXGroup;
 			children = (
-				275A07831ED50AF5001422CD /* GoodTransaction+CoreDataClass.h */,
-				275A07841ED50AF5001422CD /* GoodTransaction+CoreDataClass.m */,
-				275A07851ED50AF5001422CD /* GoodTransaction+CoreDataProperties.h */,
-				275A07861ED50AF5001422CD /* GoodTransaction+CoreDataProperties.m */,
-				2712175B1DCE84310072ACC6 /* Good+CoreDataClass.h */,
-				2712175C1DCE84310072ACC6 /* Good+CoreDataClass.m */,
-				68A921E81DBC7FF1007C946C /* Good+CoreDataProperties.h */,
-				68A921E91DBC7FF1007C946C /* Good+CoreDataProperties.m */,
+				2785DCCD1F2CC21600B5C28C /* GoodTransaction+CoreDataClass.h */,
+				2785DCCE1F2CC21600B5C28C /* GoodTransaction+CoreDataClass.m */,
+				27B0CDA11F2BEECC005BEC75 /* GoodTransaction+CoreDataProperties.h */,
+				27B0CDA21F2BEECD005BEC75 /* GoodTransaction+CoreDataProperties.m */,
+				27B0CD1D1F2BEBD4005BEC75 /* Good+CoreDataClass.h */,
+				27B0CD1E1F2BEBD4005BEC75 /* Good+CoreDataClass.m */,
+				27B0CD1F1F2BEBD4005BEC75 /* Good+CoreDataProperties.h */,
+				27B0CD201F2BEBD4005BEC75 /* Good+CoreDataProperties.m */,
 				68F3F9F51D70FD3F00840DD2 /* GoodsViewController.h */,
 				68F3F9F71D70FD3F00840DD2 /* GoodsViewController.xib */,
 				68F3F9F61D70FD3F00840DD2 /* GoodsViewController.m */,
@@ -923,10 +928,10 @@
 		686ED3AA1DADE4A4004EDD36 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				271217631DCE84310072ACC6 /* Settings+CoreDataClass.h */,
-				271217641DCE84310072ACC6 /* Settings+CoreDataClass.m */,
-				68A921F21DBC7FF2007C946C /* Settings+CoreDataProperties.h */,
-				68A921F31DBC7FF2007C946C /* Settings+CoreDataProperties.m */,
+				27B0CDD71F2BF488005BEC75 /* Settings+CoreDataClass.h */,
+				27B0CDD81F2BF488005BEC75 /* Settings+CoreDataClass.m */,
+				27B0CDC31F2BEECD005BEC75 /* Settings+CoreDataProperties.h */,
+				27B0CDC41F2BEECD005BEC75 /* Settings+CoreDataProperties.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -951,10 +956,10 @@
 		686ED3AC1DADE4C5004EDD36 /* Hero */ = {
 			isa = PBXGroup;
 			children = (
-				2712175F1DCE84310072ACC6 /* Hero+CoreDataClass.h */,
-				271217601DCE84310072ACC6 /* Hero+CoreDataClass.m */,
-				68A921E41DBC7FF1007C946C /* Hero+CoreDataProperties.h */,
-				68A921E51DBC7FF1007C946C /* Hero+CoreDataProperties.m */,
+				27B0CD051F2BEB5D005BEC75 /* Hero+CoreDataClass.h */,
+				27B0CD061F2BEB5D005BEC75 /* Hero+CoreDataClass.m */,
+				27B0CD071F2BEB5D005BEC75 /* Hero+CoreDataProperties.h */,
+				27B0CD081F2BEB5D005BEC75 /* Hero+CoreDataProperties.m */,
 			);
 			name = Hero;
 			sourceTree = "<group>";
@@ -962,15 +967,15 @@
 		686ED3AD1DADE4DB004EDD36 /* Monster */ = {
 			isa = PBXGroup;
 			children = (
+				27B0CDAD1F2BEECD005BEC75 /* MonsterTransaction+CoreDataProperties.h */,
+				27B0CDAE1F2BEECD005BEC75 /* MonsterTransaction+CoreDataProperties.m */,
+				27B0CD2F1F2BEC21005BEC75 /* MonsterTransaction+CoreDataClass.h */,
+				27B0CD301F2BEC21005BEC75 /* MonsterTransaction+CoreDataClass.m */,
+				27B0CD0B1F2BEB78005BEC75 /* Monster+CoreDataClass.h */,
+				27B0CD0C1F2BEB78005BEC75 /* Monster+CoreDataClass.m */,
+				27B0CD0D1F2BEB78005BEC75 /* Monster+CoreDataProperties.h */,
+				27B0CD0E1F2BEB78005BEC75 /* Monster+CoreDataProperties.m */,
 				271C047E1E89ECF7002221E9 /* Lookups */,
-				271217611DCE84310072ACC6 /* Monster+CoreDataClass.h */,
-				271217621DCE84310072ACC6 /* Monster+CoreDataClass.m */,
-				68A921F01DBC7FF2007C946C /* Monster+CoreDataProperties.h */,
-				68A921F11DBC7FF2007C946C /* Monster+CoreDataProperties.m */,
-				273978A01EB8473100F217B4 /* MonsterTransaction+CoreDataClass.h */,
-				273978A11EB8473100F217B4 /* MonsterTransaction+CoreDataClass.m */,
-				273978A21EB8473100F217B4 /* MonsterTransaction+CoreDataProperties.h */,
-				273978A31EB8473100F217B4 /* MonsterTransaction+CoreDataProperties.m */,
 				271C047B1E886B49002221E9 /* Helpers */,
 			);
 			name = Monster;
@@ -1003,10 +1008,6 @@
 				68D25C211D8B951B00FF1BE0 /* DailyEditController.m */,
 				68F3F9E61D70EC9700840DD2 /* DailyViewController.h */,
 				68F3F9E71D70EC9700840DD2 /* DailyViewController.m */,
-				2739789C1EB8473100F217B4 /* DailyTransaction+CoreDataClass.h */,
-				2739789D1EB8473100F217B4 /* DailyTransaction+CoreDataClass.m */,
-				2739789E1EB8473100F217B4 /* DailyTransaction+CoreDataProperties.h */,
-				2739789F1EB8473100F217B4 /* DailyTransaction+CoreDataProperties.m */,
 				275FEF0B1EE45AE600AED1A2 /* Daily+DailyHelper.h */,
 				275FEF0C1EE45AE600AED1A2 /* Daily+DailyHelper.m */,
 				27E89C961EF5F3EE009B7474 /* SubTaskCellController.h */,
@@ -1371,99 +1372,99 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2785DCD21F2CC25F00B5C28C /* TodoTransaction+CoreDataClass.m in Sources */,
+				27B0CDD91F2BF488005BEC75 /* Settings+CoreDataClass.m in Sources */,
 				27E89C9D1EF5FCD5009B7474 /* ImportanceSliderView.m in Sources */,
+				27B0CD281F2BEBEB005BEC75 /* Todo+CoreDataProperties.m in Sources */,
 				686686EE1D79060300BB2D09 /* DailyCellController.m in Sources */,
+				27B0CDD21F2BEECD005BEC75 /* Daily+CoreDataProperties.m in Sources */,
 				2709B3991EEF750800EEE5CC /* ReportServiceCaller.m in Sources */,
 				275FEEFE1EE3172C00AED1A2 /* NSDate+DateHelper.m in Sources */,
-				68A921F91DBC7FF2007C946C /* Habit+CoreDataProperties.m in Sources */,
+				27B0CDDC1F2BF4C9005BEC75 /* Daily+CoreDataClass.m in Sources */,
+				27B0CDD11F2BEECD005BEC75 /* TodoTransaction+CoreDataProperties.m in Sources */,
+				27B0CD151F2BEB94005BEC75 /* Zone+CoreDataClass.m in Sources */,
 				68F3F9F31D70FC5E00840DD2 /* TodoViewController.m in Sources */,
-				274A37A01F09FCA300F31E0F /* Reminder+CoreDataClass.m in Sources */,
+				27B0CD011F2BEB17005BEC75 /* Reminder+CoreDataProperties.m in Sources */,
+				27B0CD101F2BEB78005BEC75 /* Monster+CoreDataProperties.m in Sources */,
 				27C3C21C1F001DF300F205A6 /* ReminderListView.m in Sources */,
 				68F3FA021D74897A00840DD2 /* MenuViewController.m in Sources */,
+				27B0CD0F1F2BEB78005BEC75 /* Monster+CoreDataClass.m in Sources */,
+				27B0CD161F2BEB94005BEC75 /* Zone+CoreDataProperties.m in Sources */,
 				273978851EB55F3700F217B4 /* StoryDumpView.m in Sources */,
 				271C04831E8A1152002221E9 /* MonsterInfoDictionary.m in Sources */,
 				27C92C441E3314000025727E /* ZoneDescriptionViewController.m in Sources */,
-				68A921FA1DBC7FF2007C946C /* Monster+CoreDataProperties.m in Sources */,
+				27B0CDCB1F2BEECD005BEC75 /* MonsterTransaction+CoreDataProperties.m in Sources */,
 				277ABED11E95DEF6008CC239 /* ProbWeight.m in Sources */,
 				274A37B51F0A1D6200F31E0F /* SHMath.m in Sources */,
-				275A079D1ED50AF5001422CD /* GoodTransaction+CoreDataProperties.m in Sources */,
-				274A37A11F09FCA300F31E0F /* Reminder+CoreDataProperties.m in Sources */,
+				27B0CD1B1F2BEBA9005BEC75 /* Habit+CoreDataClass.m in Sources */,
 				68F3F9EE1D70FC0D00840DD2 /* HabitController.m in Sources */,
-				68A921F71DBC7FF2007C946C /* Zone+CoreDataProperties.m in Sources */,
+				27B0CD001F2BEB17005BEC75 /* Reminder+CoreDataClass.m in Sources */,
 				27F4401C1E220097002BEDD4 /* OnlyOneEntities.m in Sources */,
-				2712176B1DCE84310072ACC6 /* Habit+CoreDataClass.m in Sources */,
+				27B0CD2E1F2BEC04005BEC75 /* DataInfo+CoreDataProperties.m in Sources */,
+				27B0CD271F2BEBEB005BEC75 /* Todo+CoreDataClass.m in Sources */,
 				68F3F9B11D70E82E00840DD2 /* AppDelegate.m in Sources */,
-				27127E351DDD42B50074A8F5 /* DataInfo+CoreDataClass.m in Sources */,
 				274FFC3C1EF62FA200FAF809 /* SubtasksTableView.m in Sources */,
 				274FFC421EF6E2B100FAF809 /* RateSetterView.m in Sources */,
+				27B0CDCF1F2BEECD005BEC75 /* DailySubTask+CoreDataProperties.m in Sources */,
 				68BA38861D93576600CB5A76 /* CommonUtilities.m in Sources */,
-				27AE66731E875EFB000F31BD /* Suffix+CoreDataProperties.m in Sources */,
 				274FFC2F1EF6296D00FAF809 /* NoteView.m in Sources */,
 				68D25C221D8B951B00FF1BE0 /* DailyEditController.m in Sources */,
 				68E260651D7FC3F200425D46 /* CoreDataStackController.m in Sources */,
-				2712176E1DCE84310072ACC6 /* Settings+CoreDataClass.m in Sources */,
 				274FFC291EF6236600FAF809 /* ActiveDaysPicker.m in Sources */,
 				27C3C20C1EFEED9600F205A6 /* StreakResetterView.m in Sources */,
-				273978AD1EB8473100F217B4 /* DailyTransaction+CoreDataProperties.m in Sources */,
-				271217691DCE84310072ACC6 /* Daily+CoreDataClass.m in Sources */,
 				68BE45911D9DEA0B003F3400 /* IntroViewController.m in Sources */,
 				68F3F9E41D70E8DB00840DD2 /* CentralViewController.m in Sources */,
 				274A37B21F0A093B00F31E0F /* SHEventInfo.m in Sources */,
 				274FFC4A1EF887DB00FAF809 /* DailyEditControlKeep.m in Sources */,
 				274A37961F0962A100F31E0F /* ControlController.m in Sources */,
 				2709B39C1EF0D31200EEE5CC /* Interceptor.m in Sources */,
-				68A921F61DBC7FF2007C946C /* Good+CoreDataProperties.m in Sources */,
+				27B0CDC91F2BEECD005BEC75 /* HabitTransaction+CoreDataProperties.m in Sources */,
+				27B0CDC71F2BEECD005BEC75 /* Suffix+CoreDataProperties.m in Sources */,
 				27AF22E71F270FBA00F7D872 /* SHControlController.m in Sources */,
 				27C3C2251F08799200F205A6 /* AddItemsFooter.m in Sources */,
-				273978A71EB8473100F217B4 /* TodoTransaction+CoreDataProperties.m in Sources */,
-				273978A61EB8473100F217B4 /* TodoTransaction+CoreDataClass.m in Sources */,
+				27B0CD311F2BEC21005BEC75 /* MonsterTransaction+CoreDataClass.m in Sources */,
 				686ED3C71DB481C4004EDD36 /* ZoneHelper.m in Sources */,
+				27B0CD0A1F2BEB5D005BEC75 /* Hero+CoreDataProperties.m in Sources */,
 				275D9F271F21A33E009DA715 /* TaskCell.m in Sources */,
 				277404111EFDBD43008E1AFC /* NSObject+Helper.m in Sources */,
+				27B0CDE21F2BF53B005BEC75 /* HabitTransaction+CoreDataClass.m in Sources */,
 				68E260CF1D851DA500425D46 /* EditNavigationController.m in Sources */,
+				27B0CDDF1F2BF501005BEC75 /* DailySubTask+CoreDataClass.m in Sources */,
+				27B0CD1C1F2BEBA9005BEC75 /* Habit+CoreDataProperties.m in Sources */,
+				27B0CDC51F2BEECD005BEC75 /* GoodTransaction+CoreDataProperties.m in Sources */,
 				686ED3BF1DB47954004EDD36 /* ZoneChoiceViewController.m in Sources */,
-				273978AE1EB8473100F217B4 /* MonsterTransaction+CoreDataClass.m in Sources */,
+				27B0CDC61F2BEECD005BEC75 /* ZoneTransaction+CoreDataProperties.m in Sources */,
+				27B0CD221F2BEBD4005BEC75 /* Good+CoreDataProperties.m in Sources */,
 				274A37AF1F0A083A00F31E0F /* TimeSpinPickerEventInfo.m in Sources */,
 				27C92C151E297F650025727E /* ZoneChoiceCellController.m in Sources */,
+				27B0CDE71F2C4091005BEC75 /* DailyTransaction+CoreDataClass.m in Sources */,
 				274A37B81F0DC03100F31E0F /* NSLocale+Helper.m in Sources */,
-				27E89C7E1EF5CE4C009B7474 /* DailySubTask+CoreDataClass.m in Sources */,
+				27B0CD091F2BEB5D005BEC75 /* Hero+CoreDataClass.m in Sources */,
 				275FEF0D1EE45AE600AED1A2 /* Daily+DailyHelper.m in Sources */,
-				2712176C1DCE84310072ACC6 /* Hero+CoreDataClass.m in Sources */,
 				27C92C1A1E29C9F10025727E /* ZoneInfoDictionary.m in Sources */,
 				68F3F9F81D70FD3F00840DD2 /* GoodsViewController.m in Sources */,
-				2712176F1DCE84310072ACC6 /* Todo+CoreDataClass.m in Sources */,
-				68A921FB1DBC7FF2007C946C /* Settings+CoreDataProperties.m in Sources */,
 				271C048E1E8C9C06002221E9 /* MonsterHelper.m in Sources */,
-				2712176D1DCE84310072ACC6 /* Monster+CoreDataClass.m in Sources */,
-				2712176A1DCE84310072ACC6 /* Good+CoreDataClass.m in Sources */,
+				27B0CD341F2BEC32005BEC75 /* ZoneTransaction+CoreDataClass.m in Sources */,
 				68F3F9E91D70EC9700840DD2 /* DailyViewController.m in Sources */,
 				686ED3A71DA751AC004EDD36 /* StoryConstants.m in Sources */,
-				273978AC1EB8473100F217B4 /* DailyTransaction+CoreDataClass.m in Sources */,
-				68A921F81DBC7FF2007C946C /* Todo+CoreDataProperties.m in Sources */,
 				275D9F2A1F22294F009DA715 /* UIScrollView+ScrollAdjusters.m in Sources */,
-				273978AF1EB8473100F217B4 /* MonsterTransaction+CoreDataProperties.m in Sources */,
 				6886A4801D8E5FD0005E12B3 /* constants.m in Sources */,
 				274A375C1F08CD6D00F31E0F /* ReminderTimeSpinPicker.m in Sources */,
 				271C04881E8B639D002221E9 /* ResourceUtility.m in Sources */,
-				68A921F41DBC7FF2007C946C /* Hero+CoreDataProperties.m in Sources */,
 				27E89C941EF5E732009B7474 /* ReminderCellController.m in Sources */,
 				27C3C2151EFEF6F800F205A6 /* RewardsView.m in Sources */,
 				27E89C981EF5F3EE009B7474 /* SubTaskCellController.m in Sources */,
 				277ABEC91E949B96008CC239 /* StdLibWrapper.m in Sources */,
-				273978A41EB8473100F217B4 /* ZoneTransaction+CoreDataClass.m in Sources */,
 				686ED3B71DAF3DBD004EDD36 /* CustomSwitch.m in Sources */,
-				68A921F51DBC7FF2007C946C /* Daily+CoreDataProperties.m in Sources */,
+				2785DCCF1F2CC21600B5C28C /* GoodTransaction+CoreDataClass.m in Sources */,
 				27C92C481E341DA10025727E /* ViewHelper.m in Sources */,
-				27127E361DDD42B50074A8F5 /* DataInfo+CoreDataProperties.m in Sources */,
-				273978A91EB8473100F217B4 /* HabitTransaction+CoreDataProperties.m in Sources */,
+				27B0CD041F2BEB42005BEC75 /* Suffix+CoreDataClass.m in Sources */,
 				68F3F9AE1D70E82E00840DD2 /* main.m in Sources */,
-				273978A81EB8473100F217B4 /* HabitTransaction+CoreDataClass.m in Sources */,
-				273978A51EB8473100F217B4 /* ZoneTransaction+CoreDataProperties.m in Sources */,
-				27E89C7F1EF5CE4C009B7474 /* DailySubTask+CoreDataProperties.m in Sources */,
-				27AE66721E875EFB000F31BD /* Suffix+CoreDataClass.m in Sources */,
-				275A079C1ED50AF5001422CD /* GoodTransaction+CoreDataClass.m in Sources */,
 				275D9F2D1F22BAED009DA715 /* UIView+Helpers.m in Sources */,
-				271217701DCE84310072ACC6 /* Zone+CoreDataClass.m in Sources */,
+				27B0CD2D1F2BEC04005BEC75 /* DataInfo+CoreDataClass.m in Sources */,
+				27B0CDD61F2BEECD005BEC75 /* Settings+CoreDataProperties.m in Sources */,
+				27B0CD211F2BEBD4005BEC75 /* Good+CoreDataClass.m in Sources */,
+				27B0CDD51F2BEECD005BEC75 /* DailyTransaction+CoreDataProperties.m in Sources */,
 				271C048B1E8C955A002221E9 /* SingletonCluster.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1702,6 +1703,7 @@
 		273782391EE4DB9C00EA5B1D /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				27B0CCB91F2BE658005BEC75 /* Model 28.xcdatamodel */,
 				274A37981F09FB9600F31E0F /* Model 27.xcdatamodel */,
 				274A375D1F0951F000F31E0F /* Model 26.xcdatamodel */,
 				27E89C681EF59034009B7474 /* Model 25.xcdatamodel */,
@@ -1713,7 +1715,7 @@
 				2737823C1EE4DB9C00EA5B1D /* Model 21.xcdatamodel */,
 				2737823D1EE4DB9C00EA5B1D /* Model.xcdatamodel */,
 			);
-			currentVersion = 274A37981F09FB9600F31E0F /* Model 27.xcdatamodel */;
+			currentVersion = 27B0CCB91F2BE658005BEC75 /* Model 28.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
