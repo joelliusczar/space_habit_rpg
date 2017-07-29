@@ -21,4 +21,6 @@
 @property (strong,nonatomic) NSString *nameStr;
 -(void)saveEdit;
 -(BOOL)deleteModel;
+@optional
+-(void)unsaved_closing_action;
 @end

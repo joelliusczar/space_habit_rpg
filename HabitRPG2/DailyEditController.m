@@ -142,23 +142,6 @@ NSString* const IS_DIRTY = @"isDirty";
 
 
 -(void)saveEdit{
-    Daily *savingModel = self.modelForEditing;
-    int rate = (int)self.editControls.rateSetterView.rateStep.value;
-    savingModel.dailyName = self.nameBox.text;
-    savingModel.note = self.editControls.noteView.noteBox.text;
-    savingModel.urgency =
-    self.editControls.importanceSliders.urgencySld.value;
-
-    savingModel.difficulty =
-    self.editControls.importanceSliders.difficultySld.value;
-
-    savingModel.rate = rate;
-    savingModel.activeDaysHash = self.editControls.activeDaysPicker.activeDaysHash;
-
-    if(self.isStreakReset){
-            savingModel.streakLength = 0;
-    }
-    //TODO add something for custom reward
     [SHData save];
 }
 
@@ -212,14 +195,16 @@ NSString* const IS_DIRTY = @"isDirty";
 -(void)textDidChange:(UITextView *)textView{
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
+        self.modelForEditing.note = self.editControls.noteView.noteBox.text;
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
-
+//I don't think this is used anywhere
 -(void)textViewDidChange:(UITextView *)textView{
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
+        @throw [NSException exceptionWithName:@"is in use" reason:nil userInfo:nil];
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
@@ -228,6 +213,7 @@ NSString* const IS_DIRTY = @"isDirty";
 - (IBAction)nameBox_editingChanged_action:(UITextField *)sender forEvent:(UIEvent *)event {
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
+        self.modelForEditing.dailyName = sender.text;
         self.nameStr = sender.text;
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
@@ -260,6 +246,7 @@ NSString* const IS_DIRTY = @"isDirty";
                                                                @"Urgency: %d"
                                                                ,sliderValue];
         sender.value = sliderValue;
+        self.modelForEditing.urgency = sliderValue;
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
@@ -274,6 +261,7 @@ NSString* const IS_DIRTY = @"isDirty";
                                                                   @"Difficulty: %d"
                                                                   ,sliderValue];
         sender.value = sliderValue;
+        self.modelForEditing.difficulty = sliderValue;
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
@@ -291,8 +279,9 @@ NSString* const IS_DIRTY = @"isDirty";
             rate = 1;
         }
         sender.value = rate;
-        self.editControls.rateSetterView.rateLbl.text =
-        [NSString stringWithFormat: TRIGGER_LABEL_FORMAT,(int)rate];
+        self.editControls.rateSetterView.rateLbl.text = [NSString
+                                                         stringWithFormat: TRIGGER_LABEL_FORMAT,(int)rate];
+        self.modelForEditing.rate = rate;
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
@@ -301,6 +290,14 @@ NSString* const IS_DIRTY = @"isDirty";
 -(void)activeDaySwitch_press_action:(CustomSwitch *)sender forEvent:(UIEvent *)event{
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
+        if(sender.isOn){
+            //I'm okay with casting the long to int because I only need the
+            //first seven bits anyway
+            self.modelForEditing.activeDaysHash |= (int)sender.tag;
+        }
+        else{
+            self.modelForEditing.activeDaysHash &= ~(int)sender.tag;
+        }
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
@@ -317,7 +314,7 @@ NSString* const IS_DIRTY = @"isDirty";
     wrapReturnVoid wrappedCall = ^void(){
         if(self.modelForEditing){
             self.isDirty = YES;
-            
+            self.modelForEditing.streakLength = 0;
         }
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
@@ -346,6 +343,12 @@ NSString* const IS_DIRTY = @"isDirty";
 -(CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return self.editControls.allControls[indexPath.row].view.frame.size.height;
+}
+
+
+-(void)unsaved_closing_action{
+    NSManagedObjectContext *context = self.modelForEditing.managedObjectContext;
+    [context refreshObject:self.modelForEditing mergeChanges:NO];
 }
 
 

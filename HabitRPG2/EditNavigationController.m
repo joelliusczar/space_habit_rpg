@@ -135,6 +135,7 @@
         [self.view endEditing:YES]; //tell the keyboard to go away
         
         if(sender.view == self.background){
+            [self.editingScreen unsaved_closing_action];
             [ViewHelper popViewFromFront:self];
         }
     };

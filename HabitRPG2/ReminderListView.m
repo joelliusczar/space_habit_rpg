@@ -74,6 +74,9 @@ numberOfRowsInSection:(NSInteger)section{
 
 
 -(void)addItemBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event{
+    //the reason I was using a temp model earlier is because
+    //the model that was getting passed through here
+    //earlier only had the original value.
     ReminderTimeSpinPicker *timePicker =
     [[ReminderTimeSpinPicker alloc] initWithLocale:self.locale
                                        andDayRange:self.dueDateInfo.maxDaysBefore];
