@@ -19,7 +19,7 @@
 #define SAVE_DATA() [[SingletonCluster getSharedInstance].dataController save]
 #define SHData [SingletonCluster getSharedInstance].dataController
 #define SharedGlobal [SingletonCluster getSharedInstance]
-#define SCSettings [SingletonCluster getSharedInstance].dataController.userData.theSettings
+#define SHSettings [SingletonCluster getSharedInstance].dataController.userData.theSettings
 
 @interface SingletonCluster : NSObject
 +(instancetype)getSharedInstance;

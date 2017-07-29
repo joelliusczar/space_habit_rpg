@@ -76,19 +76,23 @@
     [object setValue:self.rollbackActivationTime forKey:@"rollbackActivationTime"];
     [object setValue:[NSNumber numberWithInt:self.customUserOrder]
               forKey:@"customUserOrder"];
+    [object setValue:self.lastUpdateTime forKey:@"lastUpdateTime"];
 }
 
 
 -(NSDate *)nextDueTime{
-    return [Daily calculateNextDueTime:self.lastActivationTime
+    NSDate *usableDate = self.lastActivationTime?
+                            self.lastActivationTime:
+                            self.lastUpdateTime;
+    return [Daily calculateNextDueTime:usableDate
                               withRate:self.rate
-                           andDayStart:SCSettings.dayStart];
+                           andDayStart:SHSettings.dayStart];
 }
 
 
 -(int)daysUntilDue{
     NSDate *roundedDownToday =
-    [NSDate setTime:[NSDate date] hour:SCSettings.dayStart minute:0 second:0];
+    [NSDate setTime:[NSDate date] hour:SHSettings.dayStart minute:0 second:0];
     
     return (int)[NSDate daysBetween:roundedDownToday to:self.nextDueTime];
 }

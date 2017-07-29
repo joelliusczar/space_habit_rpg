@@ -84,6 +84,7 @@ NSString* const IS_DIRTY = @"isDirty";
         self.modelForEditing = [Daily constructDaily];
         [SHData insertIntoContext:self.modelForEditing];
     }
+    self.modelForEditing.lastUpdateTime = [NSDate date];
     //I want the editControls stuff to happen here because when it gets
     //lazy loaded, it gets out of hand
     self.editControls = [[DailyEditControlKeep alloc]
