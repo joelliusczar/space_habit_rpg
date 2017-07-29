@@ -22,4 +22,16 @@
     cm.whamjar = 11;
     return cm;
 }
+
+
+-(void)writeOverLocal{
+    NSLog(@"%@",@"L-2");
+}
+
+
+-(void)writeOverPublic{
+    NSLog(@"%@",@"P-2");
+}
+
+
 @end

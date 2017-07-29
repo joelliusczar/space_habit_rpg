@@ -11,5 +11,8 @@
 @interface ParentMan : NSObject
 @property (assign) NSInteger contrlNum;
 +(instancetype)newParentMan;
+-(instancetype)initTwo;
+-(void)writeOverPublic;
+-(void)nothing;
 @end
 

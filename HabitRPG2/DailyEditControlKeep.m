@@ -20,6 +20,8 @@
 -(NoteView *)noteView{
     if(nil==_noteView){
         _noteView = [[NoteView alloc] initDefault];
+        _noteView.delegate = self.delegate;
+        [_noteView view];
     }
     return _noteView;
 }
@@ -28,6 +30,8 @@
     if(nil==_activeDaysPicker){
         _activeDaysPicker =
         [[ActiveDaysPicker alloc] initDefault];
+        _activeDaysPicker.delegate = self.delegate;
+        [_activeDaysPicker view];
     }
     return _activeDaysPicker;
 }
@@ -35,6 +39,8 @@
 -(RateSetterView *)rateSetterView{
     if(nil==_rateSetterView){
         _rateSetterView = [[RateSetterView alloc] initDefault];
+        _rateSetterView.delegate = self.delegate;
+        [_rateSetterView view];
     }
     return _rateSetterView;
 }
@@ -43,6 +49,8 @@
     if(nil==_importanceSliders){
         _importanceSliders =
         [[ImportanceSliderView alloc] initDefault];
+        _importanceSliders.delegate = self.delegate;
+        [_importanceSliders view];
     }
     return _importanceSliders;
 }
@@ -50,6 +58,8 @@
 -(StreakResetterView *)streakResetterView{
     if(nil==_streakResetterView){
         _streakResetterView = [[StreakResetterView alloc] initDefault];
+        _streakResetterView.delegate = self.delegate;
+        [_streakResetterView view];
     }
     return _streakResetterView;
 }
@@ -83,14 +93,6 @@
         _delegate = delegate;
     }
     return self;
-}
-
--(void)setupDelegates{
-    self.noteView.delegate = self.delegate;
-    self.activeDaysPicker.delegate = self.delegate;
-    self.rateSetterView.delegate = self.delegate;
-    self.importanceSliders.delegate = self.delegate;
-    self.streakResetterView.delegate = self.delegate;
 }
 
 

@@ -22,4 +22,22 @@
     return pm;
 }
 
+-(instancetype)initTwo{
+    if(self = [super init]){
+        [self writeOverLocal];
+        [self writeOverPublic];
+    }
+    return self;
+}
+
+-(void)writeOverLocal{
+    NSLog(@"%@",@"L-1");
+}
+
+-(void)writeOverPublic{
+    NSLog(@"%@",@"P-1");
+}
+
+-(void)nothing{}
+
 @end

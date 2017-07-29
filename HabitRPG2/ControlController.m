@@ -15,7 +15,8 @@
 @implementation ControlController
 
 -(instancetype)initDefault{
-    if(self = [self initWithNibName:NSStringFromClass(self.class) bundle:nil])
+    if(self = [self initWithNibName:NSStringFromClass(self.class)
+                             bundle:[NSBundle bundleForClass:self.class]])
     {}
     return self;
 }

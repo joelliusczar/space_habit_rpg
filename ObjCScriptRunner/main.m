@@ -14,10 +14,8 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        ChildMan *cm = [ChildMan newChildMan];
-        NSLog(@"%ld",cm.whamjar);
-        ChildMan *cm2 = [ChildMan newParentMan];
-        NSLog(@"%ld",cm2.contrlNum);
+        ChildMan *cm = [[ChildMan alloc] initTwo];
+        [cm nothing];
     }
     return 0;
 }

@@ -26,5 +26,4 @@
 @property (strong,nonatomic) StreakResetterView *streakResetterView;
 @property (strong,nonatomic) ReminderListView *reminderListView;
 -(instancetype)initWithDailyEditController:(DailyEditController *)delegate;
--(void)setupDelegates;
 @end

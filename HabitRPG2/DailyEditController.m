@@ -78,18 +78,19 @@ NSString* const IS_DIRTY = @"isDirty";
         if(![SHData.writeContext.registeredObjects containsObject:self.modelForEditing]){
             self.modelForEditing = [SHData.writeContext objectWithID:self.modelForEditing.objectID];
         }
-        [self loadExistingDailyForEditing:self.modelForEditing];
     }
     else{
         self.modelForEditing = [Daily constructDaily];
         [SHData insertIntoContext:self.modelForEditing];
+        [self initializeModel:self.modelForEditing];
     }
-    self.modelForEditing.lastUpdateTime = [NSDate date];
     //I want the editControls stuff to happen here because when it gets
     //lazy loaded, it gets out of hand
     self.editControls = [[DailyEditControlKeep alloc]
                          initWithDailyEditController:self];
-    [self.editControls setupDelegates];
+    [self loadExistingDailyForEditing:self.modelForEditing];
+    self.modelForEditing.lastUpdateTime = [NSDate date];
+    
     //it is important that this table delegate stuff happens after we check
     //for the existence of the model, otherwise table events will trigger
     //at inconvienient times, and either invalid data or null pointer exceptions
@@ -109,6 +110,20 @@ NSString* const IS_DIRTY = @"isDirty";
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+//This method is not really necessary but using it will help my flow in
+//viewDidLoad so that I didn't have a weird flag in there denoting that the
+//model already existed. Besides, this makes things sorta more explicit
+-(void)initializeModel:(Daily *)daily{
+    daily.activeDaysHash = ALLDAYS;
+    daily.dailyName = @"";
+    daily.difficulty = 3;
+    daily.urgency = 3;
+    daily.note = @"";
+    daily.rate = 1;
+    daily.streakLength = 0;
 }
 
 
