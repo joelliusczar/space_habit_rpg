@@ -51,6 +51,7 @@ static NSString *const EntityName = @"Daily";
     return self;
 }
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -78,10 +79,12 @@ static NSString *const EntityName = @"Daily";
     
 }
 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 -(void)setuptab{
     UITabBarItem *tbi = [self tabBarItem];
@@ -89,9 +92,6 @@ static NSString *const EntityName = @"Daily";
     [tbi setTitle:@"Dailies"];
 }
 
--(void)refreshTableAtRow:(NSIndexPath *)row{
-    [self.dailiesTable reloadRowsAtIndexPaths:@[row] withRowAnimation:UITableViewRowAnimationNone];
-}
 
 -(void)completeDaily:(Daily *)daily{
         daily.rollbackActivationTime = daily.lastActivationTime;
@@ -100,10 +100,12 @@ static NSString *const EntityName = @"Daily";
         //TODO save
 }
 
+
 -(void)undoCompletedDaily:(Daily *)daily{
     daily.lastActivationTime = daily.rollbackActivationTime;
     //TODO more stuff
 }
+
 
 -(void)setupData{
     NSDate *todayStart = [NSDate todayStart];
@@ -114,6 +116,7 @@ static NSString *const EntityName = @"Daily";
     [self fetchUpdates];
     
 }
+
 
 -(void)fetchUpdates{
     NSError *error;
@@ -161,7 +164,7 @@ static NSString *const EntityName = @"Daily";
     d.rowNum = indexPath.row;
     d.sectionNum = indexPath.section;
     [cell setupCell:d AndRow:indexPath];
-    
+
     return cell;
 }
 

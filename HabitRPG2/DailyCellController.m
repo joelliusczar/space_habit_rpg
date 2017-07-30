@@ -20,7 +20,6 @@
 @interface DailyCellController()
 @property (nonatomic,weak) Daily *model;
 @property (nonatomic,weak) DailyViewController *parentDailyController;
-//@property (nonatomic,weak) UIButton *completeBtn;
 @property (assign,nonatomic) NSInteger rowIndex;
 @property (assign,nonatomic) NSInteger sectionIndex;
 

@@ -23,15 +23,6 @@
 }
 
 
--(instancetype)init{
-    if(self = [super init]){
-        UIView *view = [self loadXib];
-        [self.contentView addSubview:view];
-    }
-    return self;
-}
-
-
 - (void)awakeFromNib {
     [super awakeFromNib];
 }

@@ -17,7 +17,6 @@
 @interface DailyViewController : UIViewController <UITableViewDelegate, UITableViewDataSource,NSFetchedResultsControllerDelegate>
 -(id)initWithParent:(CentralViewController *)parent;
 -(void)setuptab;
--(void)refreshTableAtRow:(NSIndexPath *)row;;
 -(void)completeDaily:(Daily *)daily;
 -(void)undoCompletedDaily:(Daily *)daily;
 -(void)fetchUpdates;
