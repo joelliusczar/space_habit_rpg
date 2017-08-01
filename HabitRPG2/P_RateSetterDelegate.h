@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "P_CommonDelegate.h"
+#import "CustomSwitch.h"
 
 @protocol P_RateSetterDelegate <NSObject,P_CommonDelegate>
 -(void)rateStep_valueChanged_action:(UIStepper *)sender forEvent:(UIEvent *)event;
+-(void)countAllDaysSwitch_checked_action:(CustomSwitch *)sender
+                                forEvent:(UIEvent *)event;
 @end

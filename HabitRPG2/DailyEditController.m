@@ -124,6 +124,7 @@ NSString* const IS_DIRTY = @"isDirty";
     daily.note = @"";
     daily.rate = 1;
     daily.streakLength = 0;
+    daily.shouldInactiveDaysCount = YES;
 }
 
 
@@ -237,7 +238,7 @@ NSString* const IS_DIRTY = @"isDirty";
 }
 
 
--(IBAction)urgencySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event {
+-(void)urgencySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event {
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
         int sliderValue = (int)sender.value;
@@ -252,7 +253,7 @@ NSString* const IS_DIRTY = @"isDirty";
 }
 
 
--(IBAction)difficultySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event{
+-(void)difficultySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event{
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
         int sliderValue = (int)sender.value;
@@ -267,7 +268,7 @@ NSString* const IS_DIRTY = @"isDirty";
 }
 
 
--(IBAction)rateStep_valueChanged_action:(UIStepper *)sender forEvent:(UIEvent *)event {
+-(void)rateStep_valueChanged_action:(UIStepper *)sender forEvent:(UIEvent *)event {
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
         double stepperValue = [sender value];
@@ -282,6 +283,15 @@ NSString* const IS_DIRTY = @"isDirty";
         self.editControls.rateSetterView.rateLbl.text = [NSString
                                                          stringWithFormat: TRIGGER_LABEL_FORMAT,(int)rate];
         self.modelForEditing.rate = rate;
+    };
+    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+}
+
+
+-(void)countAllDaysSwitch_checked_action:(CustomSwitch *)sender forEvent:(UIEvent *)event{
+    wrapReturnVoid wrappedCall = ^void(){
+        self.isDirty = YES;
+        self.modelForEditing.shouldInactiveDaysCount = sender.isOn;
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }

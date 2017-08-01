@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "P_RateSetterDelegate.h"
 #import "ControlController.h"
+#import "CustomSwitch.h"
 
 @interface RateSetterView : ControlController
 @property (weak,nonatomic) IBOutlet UIStepper *rateStep;
 @property (weak,nonatomic) IBOutlet UILabel *rateLbl;
+@property (weak,nonatomic) IBOutlet UILabel *countAllDaysLbl;
+@property (weak,nonatomic) IBOutlet CustomSwitch *shouldCountAllDaysSwitch;
 @property (weak,nonatomic) id<P_RateSetterDelegate> delegate;
 @end
