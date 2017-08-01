@@ -77,6 +77,8 @@
     [object setValue:[NSNumber numberWithInt:self.customUserOrder]
               forKey:@"customUserOrder"];
     [object setValue:self.lastUpdateTime forKey:@"lastUpdateTime"];
+    [object setValue:[NSNumber numberWithBool:self.shouldInactiveDaysCount]
+                                       forKey:@"shouldInactiveDaysCount"];
 }
 
 

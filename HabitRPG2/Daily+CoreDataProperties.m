@@ -2,7 +2,7 @@
 //  Daily+CoreDataProperties.m
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 7/28/17.
+//  Created by Joel Pridgen on 8/1/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
@@ -20,12 +20,13 @@
 @dynamic difficulty;
 @dynamic isActive;
 @dynamic lastActivationTime;
+@dynamic lastUpdateTime;
 @dynamic note;
 @dynamic rate;
 @dynamic rollbackActivationTime;
 @dynamic streakLength;
 @dynamic urgency;
-@dynamic lastUpdateTime;
+@dynamic shouldInactiveDaysCount;
 @dynamic daily_remind;
 @dynamic daily_subtask;
 

@@ -44,6 +44,8 @@
     [object setValue:[NSNumber numberWithInt:self.daysBeforeDue]
               forKey:@"daysBeforeDue"];
     [object setValue:self.reminderHour forKey:@"reminderHour"];
+    [object setValue:self.lastUpdateTime forKey:@"lastUpdateTime"];
+    [object setValue:self.notificationID forKey:@"notificationID"];
 
 }
 
