@@ -19,9 +19,11 @@
 #import "UIView+Helpers.h"
 #import "UIScrollView+ScrollAdjusters.h"
 #import "constants.h"
+#import "NotificationHelper.h"
 @import UserNotifications;
 
 @interface ReminderListView()
+@property (strong,nonatomic) UNUserNotificationCenter *center;
 @end
 
 @implementation ReminderListView
@@ -89,6 +91,7 @@ numberOfRowsInSection:(NSInteger)section{
                      forEvent:(TimeSpinPickerEventInfo *)event{
     
     wrapReturnVoid wrappedCall = ^void(){
+        [self.backViewController enableSave];
         [self insertNewReminder:event.selectedHourRow
                          minute:event.selectedMinRow
                      daysBefore:event.selectedDaysBeforeRow];
@@ -118,6 +121,7 @@ numberOfRowsInSection:(NSInteger)section{
                              minute:minute second:0];
     reminder.daysBeforeDue = [SHMath toIntExact:daysBefore];
     [self.dueDateInfo addNewReminder:reminder];
+    [NotificationHelper addNewNotificationIfPossible:self.dueDateInfo.taskTitle];
 }
 
 

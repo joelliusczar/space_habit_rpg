@@ -57,6 +57,7 @@
 		275FEF021EE3A78200AED1A2 /* timeZoneList.txt in Resources */ = {isa = PBXBuildFile; fileRef = 275FEF011EE3A78200AED1A2 /* timeZoneList.txt */; };
 		275FEF0A1EE3CF3000AED1A2 /* DailyHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 275FEF091EE3CF3000AED1A2 /* DailyHelperTest.m */; };
 		275FEF0D1EE45AE600AED1A2 /* Daily+DailyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 275FEF0C1EE45AE600AED1A2 /* Daily+DailyHelper.m */; };
+		276159791F2E3B64002E8BF9 /* NotificationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 276159781F2E3B64002E8BF9 /* NotificationHelper.m */; };
 		277404111EFDBD43008E1AFC /* NSObject+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 277404101EFDBD43008E1AFC /* NSObject+Helper.m */; };
 		277ABEC91E949B96008CC239 /* StdLibWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEC81E949B96008CC239 /* StdLibWrapper.m */; };
 		277ABED11E95DEF6008CC239 /* ProbWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABED01E95DEF6008CC239 /* ProbWeight.m */; };
@@ -301,6 +302,8 @@
 		275FEF091EE3CF3000AED1A2 /* DailyHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyHelperTest.m; sourceTree = "<group>"; };
 		275FEF0B1EE45AE600AED1A2 /* Daily+DailyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Daily+DailyHelper.h"; sourceTree = "<group>"; };
 		275FEF0C1EE45AE600AED1A2 /* Daily+DailyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Daily+DailyHelper.m"; sourceTree = "<group>"; };
+		276159771F2E3B64002E8BF9 /* NotificationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationHelper.h; sourceTree = "<group>"; };
+		276159781F2E3B64002E8BF9 /* NotificationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationHelper.m; sourceTree = "<group>"; };
 		2774040F1EFDBD43008E1AFC /* NSObject+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Helper.h"; sourceTree = "<group>"; };
 		277404101EFDBD43008E1AFC /* NSObject+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Helper.m"; sourceTree = "<group>"; };
 		277ABEC61E949B76008CC239 /* P_stdlibWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_stdlibWrapper.h; sourceTree = "<group>"; };
@@ -568,15 +571,12 @@
 		272144FE1EDFB46E00D98C03 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				276159761F2E36FD002E8BF9 /* Transactions */,
 				274A37591F08CD1000F31E0F /* Daily Subtask */,
 				27B0CDBB1F2BEECD005BEC75 /* Daily+CoreDataProperties.h */,
 				27B0CDDA1F2BF4C9005BEC75 /* Daily+CoreDataClass.h */,
 				27B0CDDB1F2BF4C9005BEC75 /* Daily+CoreDataClass.m */,
 				27B0CDBC1F2BEECD005BEC75 /* Daily+CoreDataProperties.m */,
-				27B0CDE31F2BF560005BEC75 /* DailyTransaction+CoreDataClass.h */,
-				27B0CDE61F2C4091005BEC75 /* DailyTransaction+CoreDataClass.m */,
-				27B0CDC11F2BEECD005BEC75 /* DailyTransaction+CoreDataProperties.h */,
-				27B0CDC21F2BEECD005BEC75 /* DailyTransaction+CoreDataProperties.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -670,6 +670,17 @@
 				274A37971F09BA9C00F31E0F /* P_ReminderTimeSpinPickerDelegate.h */,
 			);
 			name = "Control Delegates";
+			sourceTree = "<group>";
+		};
+		276159761F2E36FD002E8BF9 /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				27B0CDE31F2BF560005BEC75 /* DailyTransaction+CoreDataClass.h */,
+				27B0CDE61F2C4091005BEC75 /* DailyTransaction+CoreDataClass.m */,
+				27B0CDC11F2BEECD005BEC75 /* DailyTransaction+CoreDataProperties.h */,
+				27B0CDC21F2BEECD005BEC75 /* DailyTransaction+CoreDataProperties.m */,
+			);
+			name = Transactions;
 			sourceTree = "<group>";
 		};
 		277ABECA1E94A08E008CC239 /* Protocols */ = {
@@ -1033,6 +1044,7 @@
 		68DD159E1D9CAA010073E7D8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				68F3F9FA1D71C9A500840DD2 /* Helpers */,
 				27E89C991EF5FC40009B7474 /* Controls */,
 				686ED3AA1DADE4A4004EDD36 /* Settings */,
 				686ED3A91DADE47C004EDD36 /* EditingScreen */,
@@ -1083,12 +1095,11 @@
 				686ED39E1DA600A7004EDD36 /* Goods */,
 				686ED39D1DA6007E004EDD36 /* Habits */,
 				686ED39C1DA5FF28004EDD36 /* Todos */,
+				68D25C231D8E2ACA00FF1BE0 /* Dailies */,
 				27127E171DDAD6300074A8F5 /* DataInfo */,
 				686ED39F1DA60142004EDD36 /* Menu */,
 				68BE458D1D9DE889003F3400 /* Story */,
 				68DD159E1D9CAA010073E7D8 /* Common */,
-				68D25C231D8E2ACA00FF1BE0 /* Dailies */,
-				68F3F9FA1D71C9A500840DD2 /* Helpers */,
 				68F3F9B81D70E82E00840DD2 /* Assets.xcassets */,
 				68F3F9AF1D70E82E00840DD2 /* AppDelegate.h */,
 				68F3F9B01D70E82E00840DD2 /* AppDelegate.m */,
@@ -1157,6 +1168,8 @@
 				275D9F291F22294F009DA715 /* UIScrollView+ScrollAdjusters.m */,
 				275D9F2B1F22BAED009DA715 /* UIView+Helpers.h */,
 				275D9F2C1F22BAED009DA715 /* UIView+Helpers.m */,
+				276159771F2E3B64002E8BF9 /* NotificationHelper.h */,
+				276159781F2E3B64002E8BF9 /* NotificationHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1372,6 +1385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				276159791F2E3B64002E8BF9 /* NotificationHelper.m in Sources */,
 				2785DCD21F2CC25F00B5C28C /* TodoTransaction+CoreDataClass.m in Sources */,
 				27B0CDD91F2BF488005BEC75 /* Settings+CoreDataClass.m in Sources */,
 				27E89C9D1EF5FCD5009B7474 /* ImportanceSliderView.m in Sources */,

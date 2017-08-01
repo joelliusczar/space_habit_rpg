@@ -41,6 +41,7 @@ u_int32_t const MIN_ZONE_CHOICE_COUNT = 3;
 u_int32_t const MAX_ZONE_CHOICE_RAND_UP_BOUND = 3;
 CGFloat const ZONE_CHOICE_ROW_HEIGHT = 75;
 CGFloat const EDIT_SCREEN_TOP_CONTROL_HEIGHT = 60;
+NSString * const NOTIFY_CAT_ID = @"SHReminder";
 
 CGFloat const SUB_TABLE_CELL_HEIGHT = 44;
 NSInteger const SUB_TABLE_MAX_ROWS = 4;

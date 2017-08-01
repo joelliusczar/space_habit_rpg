@@ -95,7 +95,7 @@ numberOfRowsInComponent:(NSInteger)component{
         row==AM_ROW?self.inUseLocale.AMSymbol:self.inUseLocale.PMSymbol;
     }
     else{
-        return row>0?[NSString stringWithFormat:@"%ld days before",row]:@"Same Day";
+        return row>0?[NSString stringWithFormat:@"%ld days before",row]:@"Every Day";
     }
 }
 

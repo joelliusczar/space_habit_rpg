@@ -103,6 +103,11 @@
 }
 
 
+-(NSString *)taskTitle{
+    return self.dailyName;
+}
+
+
 -(NSOrderedSet<Reminder *> *)getReminderSet{
     return self.daily_remind;
 }
