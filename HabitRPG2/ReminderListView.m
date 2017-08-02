@@ -121,7 +121,10 @@ numberOfRowsInSection:(NSInteger)section{
                              minute:minute second:0];
     reminder.daysBeforeDue = [SHMath toIntExact:daysBefore];
     [self.dueDateInfo addNewReminder:reminder];
-    [NotificationHelper addNewNotificationIfPossible:self.dueDateInfo.taskTitle];
+    NSString *notificationId = @"";
+    [NotificationHelper addNewNotificationIfPossible:self.dueDateInfo.taskTitle
+                                      notificationId:notificationId
+                                            userInfo:self.dueDateInfo.simpleMapable];
 }
 
 
