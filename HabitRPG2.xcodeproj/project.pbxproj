@@ -58,6 +58,8 @@
 		275FEF0A1EE3CF3000AED1A2 /* DailyHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 275FEF091EE3CF3000AED1A2 /* DailyHelperTest.m */; };
 		275FEF0D1EE45AE600AED1A2 /* Daily+DailyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 275FEF0C1EE45AE600AED1A2 /* Daily+DailyHelper.m */; };
 		276159791F2E3B64002E8BF9 /* NotificationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 276159781F2E3B64002E8BF9 /* NotificationHelper.m */; };
+		276159B81F31A310002E8BF9 /* RateTypeSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 276159B61F31A310002E8BF9 /* RateTypeSelector.m */; };
+		276159B91F31A310002E8BF9 /* RateTypeSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 276159B71F31A310002E8BF9 /* RateTypeSelector.xib */; };
 		277404111EFDBD43008E1AFC /* NSObject+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 277404101EFDBD43008E1AFC /* NSObject+Helper.m */; };
 		277ABEC91E949B96008CC239 /* StdLibWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEC81E949B96008CC239 /* StdLibWrapper.m */; };
 		277ABED11E95DEF6008CC239 /* ProbWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABED01E95DEF6008CC239 /* ProbWeight.m */; };
@@ -306,6 +308,10 @@
 		276159781F2E3B64002E8BF9 /* NotificationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationHelper.m; sourceTree = "<group>"; };
 		276159A01F3033F8002E8BF9 /* Model 29.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 29.xcdatamodel"; sourceTree = "<group>"; };
 		276159B11F31A0CB002E8BF9 /* Model 30.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 30.xcdatamodel"; sourceTree = "<group>"; };
+		276159B51F31A310002E8BF9 /* RateTypeSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateTypeSelector.h; sourceTree = "<group>"; };
+		276159B61F31A310002E8BF9 /* RateTypeSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateTypeSelector.m; sourceTree = "<group>"; };
+		276159B71F31A310002E8BF9 /* RateTypeSelector.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RateTypeSelector.xib; sourceTree = "<group>"; };
+		276159BA1F327460002E8BF9 /* P_RateTypeSelectorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_RateTypeSelectorDelegate.h; sourceTree = "<group>"; };
 		2774040F1EFDBD43008E1AFC /* NSObject+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Helper.h"; sourceTree = "<group>"; };
 		277404101EFDBD43008E1AFC /* NSObject+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Helper.m"; sourceTree = "<group>"; };
 		277ABEC61E949B76008CC239 /* P_stdlibWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_stdlibWrapper.h; sourceTree = "<group>"; };
@@ -670,6 +676,7 @@
 				27C3C2191EFF594C00F205A6 /* P_CommonDelegate.h */,
 				27C3C2281F08BC4F00F205A6 /* P_AddItemsFooterDelegate.h */,
 				274A37971F09BA9C00F31E0F /* P_ReminderTimeSpinPickerDelegate.h */,
+				276159BA1F327460002E8BF9 /* P_RateTypeSelectorDelegate.h */,
 			);
 			name = "Control Delegates";
 			sourceTree = "<group>";
@@ -848,6 +855,9 @@
 				274A37951F0962A100F31E0F /* ControlController.m */,
 				27AF22E51F270FBA00F7D872 /* SHControlController.h */,
 				27AF22E61F270FBA00F7D872 /* SHControlController.m */,
+				276159B51F31A310002E8BF9 /* RateTypeSelector.h */,
+				276159B61F31A310002E8BF9 /* RateTypeSelector.m */,
+				276159B71F31A310002E8BF9 /* RateTypeSelector.xib */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -1316,6 +1326,7 @@
 				6886A48F1D8F6F9B005E12B3 /* edit_button.png in Resources */,
 				68F3F9B91D70E82E00840DD2 /* Assets.xcassets in Resources */,
 				274A37561F08C7BE00F31E0F /* ReminderTimeSpinPicker.xib in Resources */,
+				276159B91F31A310002E8BF9 /* RateTypeSelector.xib in Resources */,
 				27C3C2271F0879B200F205A6 /* AddItemsFooter.xib in Resources */,
 				687F01231D77CA6500C7B08B /* DailyTablesViewController.xib in Resources */,
 				686ED3C21DB47FA5004EDD36 /* black_checked_empty.png in Resources */,
@@ -1479,6 +1490,7 @@
 				275D9F2D1F22BAED009DA715 /* UIView+Helpers.m in Sources */,
 				27B0CD2D1F2BEC04005BEC75 /* DataInfo+CoreDataClass.m in Sources */,
 				27B0CDD61F2BEECD005BEC75 /* Settings+CoreDataProperties.m in Sources */,
+				276159B81F31A310002E8BF9 /* RateTypeSelector.m in Sources */,
 				27B0CD211F2BEBD4005BEC75 /* Good+CoreDataClass.m in Sources */,
 				27B0CDD51F2BEECD005BEC75 /* DailyTransaction+CoreDataProperties.m in Sources */,
 				271C048B1E8C955A002221E9 /* SingletonCluster.m in Sources */,
