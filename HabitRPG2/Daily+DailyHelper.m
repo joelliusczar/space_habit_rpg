@@ -20,6 +20,8 @@
     return (Daily *)[SHData constructEmptyEntity:Daily.entity InContext:nil];
 }
 
+//TODO: days of week 0-6, mon: 0 - sun: 6
+//TODO: every x days, 1 day of week: ((7+active day) -dayofweektoday) % 7
 +(NSDate *)calculateNextDueTime:(NSDate *)checkinDate withRate:(int)rate andDayStart:(int)dayStart{
     NSAssert(rate>0,@"rate must be at least 1");
     NSAssert(dayStart >= 0 && dayStart < 24,@"day start must be between 0 and 24");
