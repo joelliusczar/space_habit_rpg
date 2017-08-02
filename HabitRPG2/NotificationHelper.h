@@ -10,8 +10,13 @@
 @import UserNotifications;
 
 @interface NotificationHelper : NSObject
-+(UNMutableNotificationContent *)buildDefaultNotificationContent:(NSString *)notificationText;
++(UNMutableNotificationContent *)buildDefaultNotificationContent:(NSString *)notificationText
+                                                        userInfo:(NSDictionary *)info;
 +(void)cleanUpSentReminders;
-+(void)buildNotificationPermissionWrapped:(NSString *)notificationText;
-+(void)addNewNotificationIfPossible:(NSString *)notificationText;
++(void)buildNotificationPermissionWrapped:(NSString *)notificationText
+                           notificationId:(NSString *)notificationId
+                                 userInfo:(NSDictionary *)info;
++(void)addNewNotificationIfPossible:(NSString *)notificationText
+                     notificationId:(NSString *)notificationId
+                           userInfo:(NSDictionary *)info;
 @end

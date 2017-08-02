@@ -13,7 +13,8 @@
 
 @implementation NotificationHelper
 
-+(UNMutableNotificationContent *)buildDefaultNotificationContent:(NSString *)notificationText{
++(UNMutableNotificationContent *)buildDefaultNotificationContent:(NSString *)notificationText
+                                                        userInfo:(NSDictionary *)info{
     UNMutableNotificationContent *content = [UNMutableNotificationContent new];
     content.title = @"Reminder:";
     content.body = notificationText;
@@ -31,7 +32,10 @@
         NSLog(@"delivered: %ld",notifications.count);
         for(UNNotification *notification in notifications){
             NSString *noticeText = notification.request.content.body;
-            [self addNewNotificationIfPossible:noticeText];
+            
+            [self addNewNotificationIfPossible:noticeText
+                                notificationId:notification.request.identifier
+                                      userInfo:notification.request.content.userInfo];
         }
         [center removeAllDeliveredNotifications];
         UIApplication.sharedApplication.applicationIconBadgeNumber = 0;
@@ -41,20 +45,28 @@
 }
 
 
-+(void)addNewNotificationIfPossible:(NSString *)notificationText{
++(void)addNewNotificationIfPossible:(NSString *)notificationText
+                     notificationId:(NSString *)notificationId
+                           userInfo:(NSDictionary *)info{
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
     [center getNotificationSettingsWithCompletionHandler:
      ^(UNNotificationSettings *settings){
          if(settings.authorizationStatus == UNAuthorizationStatusNotDetermined){
-             [self buildNotificationPermissionWrapped:notificationText];
+             [self buildNotificationPermissionWrapped:notificationText
+                                       notificationId:notificationId
+                                             userInfo:info];
          }
          else if(settings.authorizationStatus == UNAuthorizationStatusAuthorized){
-             [self buildNotificationPermissionWrapped:notificationText];
+             [self buildNotificationPermissionWrapped:notificationText
+                                       notificationId:notificationId
+                                             userInfo:info];
          }
      }];
 }
 
-+(void)buildNotificationPermissionWrapped:(NSString *)notificationText{
++(void)buildNotificationPermissionWrapped:(NSString *)notificationText
+                           notificationId:(NSString *)notificationId
+                                 userInfo:(NSDictionary *)info{
     UNUserNotificationCenter *center = [UNUserNotificationCenter
                                         currentNotificationCenter];
     UNAuthorizationOptions options = UNAuthorizationOptionAlert
@@ -63,21 +75,24 @@
     [center requestAuthorizationWithOptions:options completionHandler:
      ^(BOOL granted,NSError *wrong){
          if(granted){
-             [self buildNotification:notificationText];
+             [self buildNotification:notificationText notificationId:notificationId
+                            userInfo:info];
          }
      }];
 }
 
-+(void)buildNotification:(NSString *)notificationText{
++(void)buildNotification:(NSString *)notificationText
+          notificationId:(NSString *)notificationId
+                userInfo:(NSDictionary *)info{
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
     UNMutableNotificationContent *content = [NotificationHelper
                                              buildDefaultNotificationContent:
-                                             notificationText];
+                                             notificationText userInfo:info];
     UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger
                                                   triggerWithTimeInterval:60
                                                   repeats:NO];
     UNNotificationRequest *request = [UNNotificationRequest
-                                      requestWithIdentifier:@"Remider"
+                                      requestWithIdentifier:notificationId
                                       content:content
                                       trigger:trigger];
     [center addNotificationRequest:request withCompletionHandler:
