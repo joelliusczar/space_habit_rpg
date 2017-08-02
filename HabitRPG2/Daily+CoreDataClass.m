@@ -21,18 +21,24 @@
 
 -(NSMutableDictionary *)mapable{
     
+    NSMutableDictionary *mappedData = [self simpleMapable];
+    [mappedData setValue:[self mappedReminders] forKey:@"daily_remind"];
+    [mappedData setValue:[self mappedSubtasks] forKey:@"daily_subtask"];
+    return mappedData;
+}
+
+//so that we don't have to map all of the relationships
+-(NSMutableDictionary *)simpleMapable{
     NSMutableDictionary *mappedData = [NSMutableDictionary dictionary];
     //since NSDates don't play with JSON,I'm going to overrite these
     //guys here
     [self copyInto:mappedData];
     [mappedData
      setValue:[NSNumber numberWithDouble:self.lastActivationTime.timeIntervalSince1970]
-                  forKey:@"lastActivationTime"];
+     forKey:@"lastActivationTime"];
     [mappedData
      setValue:[NSNumber numberWithDouble:self.rollbackActivationTime.timeIntervalSince1970]
      forKey:@"rollbackActivationTime"];
-    [mappedData setValue:[self mappedReminders] forKey:@"daily_remind"];
-    [mappedData setValue:[self mappedSubtasks] forKey:@"daily_subtask"];
     return mappedData;
 }
 
