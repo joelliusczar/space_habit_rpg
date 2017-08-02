@@ -15,6 +15,7 @@
 @property (readonly,nonatomic) NSDate *nextDueTime;
 @property (readonly,nonatomic) NSInteger maxDaysBefore;
 @property (readonly,nonatomic) NSString *taskTitle;
+@property (readonly,nonatomic) NSMutableDictionary *simpleMapable;
 -(NSOrderedSet<Reminder *> *)getReminderSet;
 -(void)addNewReminder:(Reminder *)reminder;
 -(void)removeReminder:(Reminder *)reminder;
