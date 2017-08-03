@@ -117,14 +117,14 @@ NSString* const IS_DIRTY = @"isDirty";
 //viewDidLoad so that I didn't have a weird flag in there denoting that the
 //model already existed. Besides, this makes things sorta more explicit
 -(void)initializeModel:(Daily *)daily{
-    daily.activeDaysHash = ALLDAYS;
+    daily.activeDays = ALL_DAYS_JSON;
+    daily.rateType = WEEKLY_RATE;
     daily.dailyName = @"";
     daily.difficulty = 3;
     daily.urgency = 3;
     daily.note = @"";
     daily.rate = 1;
     daily.streakLength = 0;
-    daily.shouldInactiveDaysCount = YES;
 }
 
 
@@ -177,7 +177,7 @@ NSString* const IS_DIRTY = @"isDirty";
                                                               @"Difficulty: %d"
                                                               ,daily.difficulty];
     
-    self.editControls.activeDaysPicker.activeDaysHash = daily.activeDaysHash;
+    //TODOself.editControls.activeDaysPicker.activeDaysHash = daily.activeDaysHash;
     NSInteger rate = daily.rate;
     self.editControls.rateSetterView.rateStep.value = rate;
     self.editControls.rateSetterView.rateLbl.text = [NSString
@@ -291,7 +291,6 @@ NSString* const IS_DIRTY = @"isDirty";
 -(void)countAllDaysSwitch_checked_action:(CustomSwitch *)sender forEvent:(UIEvent *)event{
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
-        self.modelForEditing.shouldInactiveDaysCount = sender.isOn;
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
@@ -303,10 +302,10 @@ NSString* const IS_DIRTY = @"isDirty";
         if(sender.isOn){
             //I'm okay with casting the long to int because I only need the
             //first seven bits anyway
-            self.modelForEditing.activeDaysHash |= (int)sender.tag;
+            //TODO self.modelForEditing.activeDaysHash |= (int)sender.tag;
         }
         else{
-            self.modelForEditing.activeDaysHash &= ~(int)sender.tag;
+            //TODO self.modelForEditing.activeDaysHash &= ~(int)sender.tag;
         }
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];

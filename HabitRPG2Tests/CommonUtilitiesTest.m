@@ -111,6 +111,25 @@ BOOL shouldUseLowerBound =YES;
     
 }
 
+-(void)testJsonStuff{
+    NSMutableDictionary *testDict = [NSMutableDictionary dictionary];
+    testDict[@"SAT"] = @1;
+    testDict[@"MON"] = @1;
+    
+    NSString *testJson = [CommonUtilities dictToString:testDict];
+    NSMutableDictionary *testDict2 = [CommonUtilities jsonStringToDict:testJson];
+    XCTAssertEqual(((NSNumber *)testDict2[@"SAT"]).integerValue,1);
+    [testDict2 removeObjectForKey:@"MON"];
+    testDict2[@"THR"] = @1;
+    
+    NSString *testJson2 = [CommonUtilities dictToString:testDict2];
+    NSMutableDictionary *testDict3 = [CommonUtilities jsonStringToDict:testJson2];
+    XCTAssertEqual(((NSNumber *)testDict3[@"THR"]).integerValue,1);
+    XCTAssertNil(testDict3[@"MON"]);
+    
+    
+}
+
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.

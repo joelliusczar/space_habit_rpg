@@ -146,6 +146,7 @@
     }
 }
 
+
 +(NSString *_Nonnull)dictToString:(NSDictionary *_Nonnull)dict{
     NSError *err = nil;
     NSData *jsonData = [NSJSONSerialization
@@ -153,6 +154,17 @@
                         options:NSJSONWritingPrettyPrinted error:&err];
     return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 }
+
+
++(NSMutableDictionary *_Nonnull)jsonStringToDict:(NSString *_Nonnull)jsonStr{
+    NSError *err;
+    NSData *jsonData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSMutableDictionary *jsonDict = [NSJSONSerialization
+                              JSONObjectWithData:jsonData
+                              options:NSJSONReadingMutableContainers error:&err];
+    return jsonDict;
+}
+
 
 +(int)calculateActiveDaysHash:(NSArray<id<P_CustomSwitch>> *)activeDays{
     int32_t daysHash = 0;

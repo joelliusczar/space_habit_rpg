@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<Daily *> *)fetchRequest;
 
-@property (nonatomic) int32_t activeDaysHash;
+@property (nullable, nonatomic, copy) NSString *activeDays;
 @property (nonatomic) int32_t customUserOrder;
 @property (nullable, nonatomic, copy) NSString *dailyName;
 @property (nonatomic) int32_t difficulty;
@@ -24,11 +24,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSDate *lastUpdateTime;
 @property (nullable, nonatomic, copy) NSString *note;
 @property (nonatomic) int32_t rate;
+@property (nonatomic) int32_t rateType;
 @property (nullable, nonatomic, copy) NSDate *rollbackActivationTime;
-@property (nonatomic) BOOL shouldInactiveDaysCount;
 @property (nonatomic) int32_t streakLength;
 @property (nonatomic) int32_t urgency;
-@property (nonatomic) int32_t rateType;
+@property (nullable, nonatomic, copy) NSDate *cycleStartTime;
 @property (nullable, nonatomic, retain) NSOrderedSet<Reminder *> *daily_remind;
 @property (nullable, nonatomic, retain) NSOrderedSet<DailySubTask *> *daily_subtask;
 

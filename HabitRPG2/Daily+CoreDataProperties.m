@@ -14,7 +14,7 @@
 	return [[NSFetchRequest alloc] initWithEntityName:@"Daily"];
 }
 
-@dynamic activeDaysHash;
+@dynamic activeDays;
 @dynamic customUserOrder;
 @dynamic dailyName;
 @dynamic difficulty;
@@ -23,11 +23,11 @@
 @dynamic lastUpdateTime;
 @dynamic note;
 @dynamic rate;
+@dynamic rateType;
 @dynamic rollbackActivationTime;
-@dynamic shouldInactiveDaysCount;
 @dynamic streakLength;
 @dynamic urgency;
-@dynamic rateType;
+@dynamic cycleStartTime;
 @dynamic daily_remind;
 @dynamic daily_subtask;
 

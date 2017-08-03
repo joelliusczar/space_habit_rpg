@@ -31,6 +31,7 @@ CGFloat GetYStartUnderLabel(CGFloat height);
 +(UIImage *_Nonnull)invertImageColors:(UIImage *_Nonnull)img;
 +(void)checkForAndApplyVisualChanges:(UIView *_Nonnull)view;
 +(NSString *_Nonnull)dictToString:(NSDictionary *_Nonnull)dict;
++(NSMutableDictionary *_Nonnull)jsonStringToDict:(NSString *_Nonnull)jsonStr;
 +(int)calculateActiveDaysHash:(NSArray<id<P_CustomSwitch>> *_Nonnull)activeDays;
 +(void)setActiveDaySwitches:(NSArray<id<P_CustomSwitch>> *_Nonnull)activeDays
                    fromHash:(NSInteger)hash;

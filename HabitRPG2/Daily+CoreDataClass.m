@@ -10,6 +10,7 @@
 #import "Daily+DailyHelper.h"
 #import "SingletonCluster.h"
 #import "NSDate+DateHelper.h"
+#import "CommonUtilities.h"
 #import "Reminder+CoreDataClass.h"
 #import "DailySubTask+CoreDataClass.h"
 
@@ -17,6 +18,14 @@
 
 @synthesize rowNum = _rowNum;
 @synthesize sectionNum = _sectionNum;
+
+@synthesize activeDaysDict = _activeDaysDict;
+-(NSMutableDictionary *)activeDaysDict{
+    if(nil==_activeDaysDict){
+        _activeDaysDict = [CommonUtilities jsonStringToDict:self.activeDays];
+    }
+    return _activeDaysDict;
+}
 
 
 -(NSMutableDictionary *)mapable{
@@ -64,8 +73,8 @@
              @"object needs to be of the same class or a dictionary");
     [object setValue:self.dailyName forKey:@"dailyName"];
     [object setValue:self.note forKey:@"note"];
-    [object setValue:[NSNumber numberWithInt:self.activeDaysHash]
-              forKey:@"activeDaysHash"];
+    [object setValue:self.activeDays
+              forKey:@"activeDays"];
     [object setValue:[NSNumber numberWithInt:self.difficulty]
               forKey:@"difficulty"];
     [object setValue:[NSNumber numberWithInt:self.rate]
@@ -83,8 +92,6 @@
     [object setValue:[NSNumber numberWithInt:self.customUserOrder]
               forKey:@"customUserOrder"];
     [object setValue:self.lastUpdateTime forKey:@"lastUpdateTime"];
-    [object setValue:[NSNumber numberWithBool:self.shouldInactiveDaysCount]
-                                       forKey:@"shouldInactiveDaysCount"];
 }
 
 
@@ -114,6 +121,8 @@
 -(NSString *)taskTitle{
     return self.dailyName;
 }
+
+
 
 
 -(NSOrderedSet<Reminder *> *)getReminderSet{

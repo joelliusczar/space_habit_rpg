@@ -161,7 +161,7 @@ NSMutableArray<Daily *> *testDailies = nil;
     d.lastActivationTime = [NSDate createDateTime:1988 month:4 day:27 hour:13 minute:24 second:11 timeZone: [NSTimeZone timeZoneWithName:@"America/New_York"]];
     //if the rate is one, it should always result in being 0 days until Daily is due
     d.rate = 1;
-    SCSettings.dayStart = 0;
+    SHSettings.dayStart = 0;
     testTodayReplacement = [NSDate createDateTime:1988 month:4 day:28 hour:9 minute:24 second:11 timeZone: [NSTimeZone timeZoneWithName:@"America/New_York"]];
     XCTAssertEqual(d.daysUntilDue,0);
     d.rate = 2;
