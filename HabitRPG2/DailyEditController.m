@@ -339,7 +339,7 @@ NSString* const IS_DIRTY = @"isDirty";
         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     //self.editControls.allControls
-    UIView *cellView = self.editControls.allControls[indexPath.row].view;
+    UIView *cellView = self.editControls.allControls[indexPath.row];
     [self.editControls.allControls[indexPath.row]
      setBackgroundColor:self.view.backgroundColor];
     cell.backgroundColor = self.view.backgroundColor;
@@ -351,7 +351,7 @@ NSString* const IS_DIRTY = @"isDirty";
 
 -(CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return self.editControls.allControls[indexPath.row].view.frame.size.height;
+    return self.editControls.allControls[indexPath.row].frame.size.height;
 }
 
 

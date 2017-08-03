@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RateSetContainer">
+            <connections>
+                <outlet property="activeDaysView" destination="0b1-z1-tEc" id="wiq-gF-osq"/>
+                <outlet property="openRateTypeBtn" destination="cjs-Oz-gc5" id="q9q-D6-0Uc"/>
+                <outlet property="rateSetter" destination="okR-px-Wud" id="FxQ-JM-JmK"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="379" height="426"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjs-Oz-gc5">
+                    <rect key="frame" x="18" y="0.0" width="343" height="30"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="343" id="JIY-5N-gYC"/>
+                        <constraint firstAttribute="height" constant="30" id="ee0-oL-3hM"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                    <state key="normal" title="Button"/>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0b1-z1-tEc">
+                    <rect key="frame" x="18" y="105" width="343" height="281"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="343" id="bZx-lF-ik0"/>
+                        <constraint firstAttribute="width" secondItem="0b1-z1-tEc" secondAttribute="height" multiplier="343:281" id="ce8-ge-WxO"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="okR-px-Wud" customClass="RateSetterView">
+                    <rect key="frame" x="20" y="33" width="343" height="72"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="343" id="HWc-85-Svg"/>
+                        <constraint firstAttribute="height" constant="72" id="xur-gA-tBp"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.10559471419999999" green="1" blue="0.18085308929999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="0b1-z1-tEc" firstAttribute="top" secondItem="okR-px-Wud" secondAttribute="bottom" id="4Oz-n9-7ID"/>
+                <constraint firstItem="0b1-z1-tEc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7K8-LF-4Uo"/>
+                <constraint firstItem="cjs-Oz-gc5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="18" id="D0z-kg-yrj"/>
+                <constraint firstAttribute="trailing" secondItem="cjs-Oz-gc5" secondAttribute="trailing" constant="18" id="MO0-d1-8RB"/>
+                <constraint firstItem="0b1-z1-tEc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="OKZ-Og-4aR"/>
+                <constraint firstItem="okR-px-Wud" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="OSx-25-7xs"/>
+                <constraint firstItem="cjs-Oz-gc5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Rpu-K9-oBr"/>
+                <constraint firstItem="okR-px-Wud" firstAttribute="top" secondItem="cjs-Oz-gc5" secondAttribute="bottom" constant="3" id="vIL-YL-Pc2"/>
+                <constraint firstItem="okR-px-Wud" firstAttribute="top" secondItem="cjs-Oz-gc5" secondAttribute="bottom" constant="3" id="waN-ID-PvT"/>
+                <constraint firstAttribute="trailing" secondItem="okR-px-Wud" secondAttribute="trailing" constant="16" id="yBa-Lb-NSv"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="84.5" y="34"/>
+        </view>
+    </objects>
+</document>

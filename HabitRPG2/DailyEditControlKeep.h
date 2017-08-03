@@ -18,7 +18,7 @@
 #import "ControlController.h"
 
 @interface DailyEditControlKeep : NSObject
-@property (strong,nonatomic)NSArray<ControlController *> *allControls;
+@property (strong,nonatomic)NSArray<UIView *> *allControls;
 @property (strong,nonatomic) NoteView *noteView;
 @property (strong,nonatomic) ActiveDaysPicker *activeDaysPicker;
 @property (strong,nonatomic) RateSetterView *rateSetterView;

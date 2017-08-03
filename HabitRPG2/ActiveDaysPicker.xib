@@ -11,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActiveDaysPicker">
             <connections>
-                <outlet property="view" destination="i5M-Pr-FkT" id="wMQ-xB-lWb"/>
                 <outletCollection property="activeDaySwitches" destination="XGF-wE-JMo" id="cvN-TL-7cB"/>
                 <outletCollection property="activeDaySwitches" destination="ZAQ-Kw-KsY" id="vJ4-cb-PXD"/>
                 <outletCollection property="activeDaySwitches" destination="ri6-il-G2G" id="TJl-sb-bts"/>

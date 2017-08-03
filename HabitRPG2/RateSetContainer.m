@@ -1,24 +1,19 @@
 //
-//  NoteViewController.m
+//  RateSetContainerController.m
 //  HabitRPG2
 //
-//  Created by Joel Pridgen on 6/17/17.
+//  Created by Joel Pridgen on 8/2/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import "NoteView.h"
+#import "RateSetContainer.h"
 #import "NSObject+Helper.h"
 
+@interface RateSetContainer ()
 
-@interface NoteView ()
 @end
 
-@implementation NoteView
-
-+(CGRect)naturalFrame{
-    return CGRectMake(0,0,258,157);
-}
-
+@implementation RateSetContainer
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
@@ -26,12 +21,6 @@
         [self addSubview:_mainView];
     }
     return self;
-}
-
--(void)textViewDidChange:(UITextView *)textView{
-    if(self.delegate){
-        [self.delegate textDidChange:textView];
-    }
 }
 
 @end

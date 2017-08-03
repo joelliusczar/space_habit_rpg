@@ -8,6 +8,7 @@
 
 #import "ImportanceSliderView.h"
 #import "P_CommonDelegate.h"
+#import "NSObject+Helper.h"
 
 @interface ImportanceSliderView ()
 
@@ -17,6 +18,15 @@
 
 +(CGRect)naturalFrame{
     return CGRectMake(0,0,297,152);
+}
+
+
+-(instancetype)initWithFrame:(CGRect)frame{
+    if(self = [super initWithFrame:frame]){
+        _mainView = [self loadXib:NSStringFromClass(self.class)];
+        [self addSubview:_mainView];
+    }
+    return self;
 }
 
 

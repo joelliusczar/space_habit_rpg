@@ -11,10 +11,10 @@
 #import "ControlController.h"
 #import "CustomSwitch.h"
 
-@interface RateSetterView : ControlController
+IB_DESIGNABLE
+@interface RateSetterView : UIView
 @property (weak,nonatomic) IBOutlet UIStepper *rateStep;
 @property (weak,nonatomic) IBOutlet UILabel *rateLbl;
-@property (weak,nonatomic) IBOutlet UILabel *countAllDaysLbl;
-@property (weak,nonatomic) IBOutlet CustomSwitch *shouldCountAllDaysSwitch;
+@property (weak,nonatomic) UIView *mainView;
 @property (weak,nonatomic) id<P_RateSetterDelegate> delegate;
 @end

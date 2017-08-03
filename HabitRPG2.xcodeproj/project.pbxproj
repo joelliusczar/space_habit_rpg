@@ -60,6 +60,8 @@
 		276159791F2E3B64002E8BF9 /* NotificationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 276159781F2E3B64002E8BF9 /* NotificationHelper.m */; };
 		276159B81F31A310002E8BF9 /* RateTypeSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 276159B61F31A310002E8BF9 /* RateTypeSelector.m */; };
 		276159B91F31A310002E8BF9 /* RateTypeSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 276159B71F31A310002E8BF9 /* RateTypeSelector.xib */; };
+		276159C21F32B815002E8BF9 /* RateSetContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 276159C01F32B815002E8BF9 /* RateSetContainer.m */; };
+		276159C31F32B815002E8BF9 /* RateSetContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 276159C11F32B815002E8BF9 /* RateSetContainer.xib */; };
 		277404111EFDBD43008E1AFC /* NSObject+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 277404101EFDBD43008E1AFC /* NSObject+Helper.m */; };
 		277ABEC91E949B96008CC239 /* StdLibWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEC81E949B96008CC239 /* StdLibWrapper.m */; };
 		277ABED11E95DEF6008CC239 /* ProbWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABED01E95DEF6008CC239 /* ProbWeight.m */; };
@@ -313,6 +315,9 @@
 		276159B71F31A310002E8BF9 /* RateTypeSelector.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RateTypeSelector.xib; sourceTree = "<group>"; };
 		276159BA1F327460002E8BF9 /* P_RateTypeSelectorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_RateTypeSelectorDelegate.h; sourceTree = "<group>"; };
 		276159BB1F327DCE002E8BF9 /* Model 31.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 31.xcdatamodel"; sourceTree = "<group>"; };
+		276159BF1F32B815002E8BF9 /* RateSetContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateSetContainer.h; sourceTree = "<group>"; };
+		276159C01F32B815002E8BF9 /* RateSetContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateSetContainer.m; sourceTree = "<group>"; };
+		276159C11F32B815002E8BF9 /* RateSetContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RateSetContainer.xib; sourceTree = "<group>"; };
 		2774040F1EFDBD43008E1AFC /* NSObject+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Helper.h"; sourceTree = "<group>"; };
 		277404101EFDBD43008E1AFC /* NSObject+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Helper.m"; sourceTree = "<group>"; };
 		277ABEC61E949B76008CC239 /* P_stdlibWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_stdlibWrapper.h; sourceTree = "<group>"; };
@@ -859,6 +864,9 @@
 				276159B51F31A310002E8BF9 /* RateTypeSelector.h */,
 				276159B61F31A310002E8BF9 /* RateTypeSelector.m */,
 				276159B71F31A310002E8BF9 /* RateTypeSelector.xib */,
+				276159BF1F32B815002E8BF9 /* RateSetContainer.h */,
+				276159C01F32B815002E8BF9 /* RateSetContainer.m */,
+				276159C11F32B815002E8BF9 /* RateSetContainer.xib */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -1308,6 +1316,7 @@
 				686ED3951DA5DEC0004EDD36 /* title_Screen_2x.png in Resources */,
 				2739788B1EB843F800F217B4 /* MonsterInfo.plist in Resources */,
 				686686EB1D79032200BB2D09 /* DailyCellController.xib in Resources */,
+				276159C31F32B815002E8BF9 /* RateSetContainer.xib in Resources */,
 				27E89C9E1EF5FCD5009B7474 /* ImportanceSliderView.xib in Resources */,
 				686ED3991DA5E0F9004EDD36 /* title_Screen_R_4.png in Resources */,
 				277ABF341E9F1AE8008CC239 /* behind_alert_view.png in Resources */,
@@ -1479,6 +1488,7 @@
 				6886A4801D8E5FD0005E12B3 /* constants.m in Sources */,
 				274A375C1F08CD6D00F31E0F /* ReminderTimeSpinPicker.m in Sources */,
 				271C04881E8B639D002221E9 /* ResourceUtility.m in Sources */,
+				276159C21F32B815002E8BF9 /* RateSetContainer.m in Sources */,
 				27E89C941EF5E732009B7474 /* ReminderCellController.m in Sources */,
 				27C3C2151EFEF6F800F205A6 /* RewardsView.m in Sources */,
 				27E89C981EF5F3EE009B7474 /* SubTaskCellController.m in Sources */,

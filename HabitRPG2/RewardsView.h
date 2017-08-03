@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "P_RewardsDelegate.h"
-#import "ControlController.h"
 
-@interface RewardsView : ControlController
+IB_DESIGNABLE
+@interface RewardsView : UIView
+@property (weak,nonatomic) UIView *mainView;
 @property (weak,nonatomic) id<P_RewardsDelegate> delegate;
 @end

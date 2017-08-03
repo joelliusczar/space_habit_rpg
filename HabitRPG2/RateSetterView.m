@@ -7,6 +7,7 @@
 //
 
 #import "RateSetterView.h"
+#import "NSObject+Helper.h"
 
 @interface RateSetterView ()
 
@@ -18,15 +19,21 @@
     return CGRectMake(0,0,302,100);
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    [self hideCountAllDaysIfNeeded];
+
+-(instancetype)initWithFrame:(CGRect)frame{
+    if(self = [super initWithFrame:frame]){
+        _mainView = [self loadXib:NSStringFromClass(self.class)];
+        [self addSubview:_mainView];
+    }
+    return self;
 }
 
--(void)hideCountAllDaysIfNeeded{
-    BOOL shouldHide = (NSInteger)self.rateStep.value <= 1;
-    self.countAllDaysLbl.hidden = shouldHide;
-    self.shouldCountAllDaysSwitch.hidden = shouldHide;
+-(instancetype)initWithCoder:(NSCoder *)coder{
+    if(self = [super initWithCoder:coder]){
+        _mainView = [self loadXib:NSStringFromClass(self.class)];
+        [self addSubview:_mainView];
+    }
+    return self;
 }
 
 
@@ -34,15 +41,8 @@
     if(self.delegate){
         [self.delegate rateStep_valueChanged_action:sender forEvent:event];
     }
-    [self hideCountAllDaysIfNeeded];
 }
 
 
--(IBAction)countAllDaysSwitch_checked_action:(CustomSwitch *)sender
-                                    forEvent:(UIEvent *)event{
-    if(self.delegate){
-        [self.delegate countAllDaysSwitch_checked_action:sender forEvent:event];
-    }
-}
 
 @end

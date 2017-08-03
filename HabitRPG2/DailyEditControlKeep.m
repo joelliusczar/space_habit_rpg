@@ -19,28 +19,17 @@
 
 -(NoteView *)noteView{
     if(nil==_noteView){
-        _noteView = [[NoteView alloc] initDefault];
+        _noteView = [[NoteView alloc] init];
         _noteView.delegate = self.delegate;
-        [_noteView view];
     }
     return _noteView;
 }
 
--(ActiveDaysPicker *)activeDaysPicker{
-    if(nil==_activeDaysPicker){
-        _activeDaysPicker =
-        [[ActiveDaysPicker alloc] initDefault];
-        _activeDaysPicker.delegate = self.delegate;
-        [_activeDaysPicker view];
-    }
-    return _activeDaysPicker;
-}
 
 -(RateSetterView *)rateSetterView{
     if(nil==_rateSetterView){
-        _rateSetterView = [[RateSetterView alloc] initDefault];
+        _rateSetterView = [[RateSetterView alloc] init];
         _rateSetterView.delegate = self.delegate;
-        [_rateSetterView view];
     }
     return _rateSetterView;
 }
@@ -48,18 +37,16 @@
 -(ImportanceSliderView *)importanceSliders{
     if(nil==_importanceSliders){
         _importanceSliders =
-        [[ImportanceSliderView alloc] initDefault];
+        [[ImportanceSliderView alloc] init];
         _importanceSliders.delegate = self.delegate;
-        [_importanceSliders view];
     }
     return _importanceSliders;
 }
 
 -(StreakResetterView *)streakResetterView{
     if(nil==_streakResetterView){
-        _streakResetterView = [[StreakResetterView alloc] initDefault];
+        _streakResetterView = [[StreakResetterView alloc] init];
         _streakResetterView.delegate = self.delegate;
-        [_streakResetterView view];
     }
     return _streakResetterView;
 }
@@ -74,11 +61,10 @@
     return _reminderListView;
 }
 
--(NSArray<ControlController*> *)allControls{
+-(NSArray<UIView*> *)allControls{
     if(nil==_allControls){
         _allControls = [NSArray arrayWithObjects:
                         self.noteView
-                        ,self.activeDaysPicker
                         ,self.rateSetterView
                         ,self.importanceSliders
                         ,self.streakResetterView

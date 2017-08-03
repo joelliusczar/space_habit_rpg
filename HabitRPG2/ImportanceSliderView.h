@@ -10,10 +10,12 @@
 #import "P_ImportanceSlidersDelegate.h"
 #import "ControlController.h"
 
-@interface ImportanceSliderView : ControlController
+IB_DESIGNABLE
+@interface ImportanceSliderView : UIView
 @property (weak,nonatomic) IBOutlet UILabel *urgencyLbl;
 @property (weak,nonatomic) IBOutlet UISlider *urgencySld;
 @property (weak,nonatomic) IBOutlet UILabel *difficultyLbl;
 @property (weak,nonatomic) IBOutlet UISlider *difficultySld;
+@property (weak,nonatomic) UIView *mainView;
 @property (weak,nonatomic) id<P_ImportanceSlidersDelegate> delegate;
 @end
