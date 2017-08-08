@@ -10,4 +10,5 @@
 
 @interface SHView : UIView
 @property (weak,nonatomic) UIView *mainView;
+-(void)changeBackgroundColorTo:(UIColor *)color;
 @end

@@ -25,8 +25,13 @@
     if(self = [super initWithCoder:coder]){
         _mainView = [self loadXib:NSStringFromClass(self.class)];
         [self addSubview:_mainView];
+        self.frame = _mainView.frame;
     }
     return self;
+}
+
+-(void)changeBackgroundColorTo:(UIColor *)color{
+    self.mainView.backgroundColor = color;
 }
 
 @end

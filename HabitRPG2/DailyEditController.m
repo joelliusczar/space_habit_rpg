@@ -326,12 +326,9 @@ NSString* const IS_DIRTY = @"isDirty";
 -(UITableViewCell *)tableView:(UITableView *)tableView
         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [[UITableViewCell alloc] init];
-    //self.editControls.allControls
-    UIView *cellView = self.editControls.allControls[indexPath.row];
-    [self.editControls.allControls[indexPath.row]
-     setBackgroundColor:self.view.backgroundColor];
+    SHView *cellView = self.editControls.allControls[indexPath.row];
+    [cellView changeBackgroundColorTo:self.view.backgroundColor];
     cell.backgroundColor = self.view.backgroundColor;
-    cell.autoresizesSubviews = NO;
     [cell addSubview:cellView];
     return cell;
 }

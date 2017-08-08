@@ -35,8 +35,7 @@
 
 -(ImportanceSliderView *)urgencySlider{
     if(nil==_urgencySlider){
-        _urgencySlider =
-        [[ImportanceSliderView alloc] init];
+        _urgencySlider = [[ImportanceSliderView alloc] init];
         _urgencySlider.delegate = self.delegate;
     }
     return _urgencySlider;
@@ -44,8 +43,7 @@
 
 -(ImportanceSliderView *)difficultySlider{
     if(nil==_difficultySlider){
-        _difficultySlider =
-        [[ImportanceSliderView alloc] init];
+        _difficultySlider = [[ImportanceSliderView alloc] init];
         _difficultySlider.delegate = self.delegate;
     }
     return _difficultySlider;
