@@ -9,14 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "P_DueDateWrapper.h"
 #import "P_AddItemsFooterDelegate.h"
-#import "ControlController.h"
 #import "Reminder+CoreDataClass.h"
 #import "P_ReminderTimeSpinPickerDelegate.h"
 #import "EditNavigationController.h"
+#import "P_TimeUtilityStore.h"
+#import "SHView.h"
 
 @import CoreData;
 
-@interface ReminderListView :ControlController
+@interface ReminderListView :SHView
 <UITableViewDataSource
 ,P_AddItemsFooterDelegate
 ,P_ReminderTimeSpinPickerDelegate>
@@ -24,10 +25,10 @@
 @property (weak,nonatomic) IBOutlet UITableView *reminderTbl;
 @property (strong,nonatomic) NSObject<P_DueDateWrapper>* dueDateInfo;
 @property (weak,nonatomic) NSOrderedSet<Reminder *> *reminderSet;
-@property (strong,nonatomic) NSLocale *locale;
+@property (strong,nonatomic) NSObject<P_TimeUtilityStore> *timeStore;
 @property (weak,nonatomic) EditNavigationController *backViewController;
 @property (strong,nonatomic) UIColor *contentColor;
--(instancetype)initWithDueDateInfo:(NSObject<P_DueDateWrapper> *)dueDateInfo
++(instancetype)newWithDueDateInfo:(NSObject<P_DueDateWrapper> *)dueDateInfo
              andBackViewController:(EditNavigationController *)backViewController
-                         andLocale:(NSLocale *)locale;
+                         andTimeStore:(NSObject<P_TimeUtilityStore> *)timeStore;
 @end

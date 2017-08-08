@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "CustomSwitch.h"
 #import "P_ActiveDaysPickerDelegate.h"
-#import "ControlController.h"
 
 IB_DESIGNABLE
 @interface ActiveDaysPicker : UIView

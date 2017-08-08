@@ -7,16 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ControlController.h"
+#import "SHSpinPicker.h"
 #import "P_ReminderTimeSpinPickerDelegate.h"
+#import "P_TimeUtilityStore.h"
 
 
 @interface ReminderTimeSpinPicker :
-ControlController<UIPickerViewDataSource,UIPickerViewDelegate>
-@property (weak,nonatomic) IBOutlet UIPickerView *picker;
+SHSpinPicker
 @property (weak,nonatomic) id<P_ReminderTimeSpinPickerDelegate> delegate;
-@property (weak,nonatomic) NSLocale *inUseLocale;
+@property (weak,nonatomic) NSObject<P_TimeUtilityStore> *timeStore;
 @property (assign,nonatomic) NSInteger dayRange;
--(instancetype)initWithLocale:(NSLocale *)locale
+-(instancetype)initWithTimeStore:(NSObject<P_TimeUtilityStore> *)timeStore
                   andDayRange:(NSInteger)dayRange;
 @end

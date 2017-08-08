@@ -6,11 +6,10 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 #import "RateSetterView.h"
-@import UIKit;
+#import "SHView.h"
 
-@interface RateSetContainer : UIView
+@interface RateSetContainer : SHView
 @property (weak,nonatomic) IBOutlet UIButton *openRateTypeBtn;
 @property (weak,nonatomic) IBOutlet UIView *activeDaysView;
 @property (weak,nonatomic) IBOutlet RateSetterView *rateSetter;
-@property (weak,nonatomic) UIView *mainView;
 @end

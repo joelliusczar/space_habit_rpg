@@ -7,7 +7,6 @@
 //
 
 #import "DailyEditControlKeep.h"
-#import "ControlController.h"
 #import "SingletonCluster.h"
 #import "Daily+CoreDataClass.h"
 
@@ -34,13 +33,22 @@
     return _rateSetterView;
 }
 
--(ImportanceSliderView *)importanceSliders{
-    if(nil==_importanceSliders){
-        _importanceSliders =
+-(ImportanceSliderView *)urgencySlider{
+    if(nil==_urgencySlider){
+        _urgencySlider =
         [[ImportanceSliderView alloc] init];
-        _importanceSliders.delegate = self.delegate;
+        _urgencySlider.delegate = self.delegate;
     }
-    return _importanceSliders;
+    return _urgencySlider;
+}
+
+-(ImportanceSliderView *)difficultySlider{
+    if(nil==_difficultySlider){
+        _difficultySlider =
+        [[ImportanceSliderView alloc] init];
+        _difficultySlider.delegate = self.delegate;
+    }
+    return _difficultySlider;
 }
 
 -(StreakResetterView *)streakResetterView{
@@ -53,10 +61,9 @@
 
 -(ReminderListView *)reminderListView{
     if(nil==_reminderListView){
-        _reminderListView = [[ReminderListView alloc]
-                             initWithDueDateInfo:self.delegate.modelForEditing
+        _reminderListView = [ReminderListView newWithDueDateInfo:self.delegate.modelForEditing
                              andBackViewController:self.delegate.editorContainer
-                             andLocale:SharedGlobal.inUseLocale];
+                             andTimeStore:SharedGlobal];
     }
     return _reminderListView;
 }
@@ -65,8 +72,8 @@
     if(nil==_allControls){
         _allControls = [NSArray arrayWithObjects:
                         self.noteView
-                        ,self.rateSetterView
-                        ,self.importanceSliders
+                        ,self.urgencySlider
+                        ,self.difficultySlider
                         ,self.streakResetterView
                         ,self.reminderListView
                         ,nil];

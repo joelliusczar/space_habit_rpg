@@ -20,14 +20,6 @@
 }
 
 
--(instancetype)initWithFrame:(CGRect)frame{
-    if(self = [super initWithFrame:frame]){
-        _mainView = [self loadXib:NSStringFromClass(self.class)];
-        [self addSubview:_mainView];
-    }
-    return self;
-}
-
 -(void)textViewDidChange:(UITextView *)textView{
     if(self.delegate){
         [self.delegate textDidChange:textView];

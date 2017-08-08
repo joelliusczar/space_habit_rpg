@@ -20,10 +20,10 @@
 #import "UIScrollView+ScrollAdjusters.h"
 #import "constants.h"
 #import "NotificationHelper.h"
+#import "NSObject+Helper.h"
 @import UserNotifications;
 
 @interface ReminderListView()
-@property (strong,nonatomic) UNUserNotificationCenter *center;
 @end
 
 @implementation ReminderListView
@@ -33,28 +33,21 @@
     return CGRectMake(0,0,300,100);
 }
 
-
--(instancetype)initWithDueDateInfo:(NSObject<P_DueDateWrapper> *)dueDateInfo
++(instancetype)newWithDueDateInfo:(NSObject<P_DueDateWrapper> *)dueDateInfo
                  andBackViewController:(EditNavigationController *)backViewController
-                         andLocale:(NSLocale *)locale{
+                         andTimeStore:(NSObject<P_TimeUtilityStore> *)timeStore{
+    ReminderListView *instance = [[ReminderListView alloc] init];
+    instance.dueDateInfo = dueDateInfo = dueDateInfo;
+    instance.reminderSet = [dueDateInfo getReminderSet];
+    instance.timeStore = timeStore;
+    instance.backViewController = backViewController;
     
-    if(self = [self initDefault]){
-        _dueDateInfo = dueDateInfo;
-        _reminderSet = [dueDateInfo getReminderSet];
-        _locale = locale;
-        _backViewController = backViewController;
-    }
-    return self;
-}
-
-
--(void)viewDidLoad{
-    [super viewDidLoad];
-    CGFloat tblHeight = self.reminderSet.count<SUB_TABLE_MAX_ROWS?
-                            SUB_TABLE_CELL_HEIGHT*self.reminderSet.count:
-                            SUB_TABLE_MAX_HEIGHT;
-    [self resizeRemindersListHeightByOffset:tblHeight];
-    self.reminderTbl.tableFooterView = nil;
+    CGFloat tblHeight = instance.reminderSet.count<SUB_TABLE_MAX_ROWS?
+    SUB_TABLE_CELL_HEIGHT*instance.reminderSet.count:
+    SUB_TABLE_MAX_HEIGHT;
+    [instance resizeRemindersListHeightByOffset:tblHeight];
+    instance.reminderTbl.tableFooterView = nil;
+    return instance;
 }
 
 
@@ -80,7 +73,7 @@ numberOfRowsInSection:(NSInteger)section{
     //the model that was getting passed through here
     //earlier only had the original value.
     ReminderTimeSpinPicker *timePicker =
-    [[ReminderTimeSpinPicker alloc] initWithLocale:self.locale
+    [[ReminderTimeSpinPicker alloc] initWithTimeStore:self.timeStore
                                        andDayRange:self.dueDateInfo.maxDaysBefore];
     timePicker.delegate = self;
     [ViewHelper pushViewToFront:timePicker OfParent:self.backViewController];
@@ -129,11 +122,11 @@ numberOfRowsInSection:(NSInteger)section{
 
 
 -(void)resizeRemindersListHeightByOffset:(CGFloat)offset{
-    
+    //NOTE this may be broken now
     [self.backViewController.scrollContainer resizeContentHeight:offset];
     if(self.reminderTbl.frame.size.height < SUB_TABLE_MAX_HEIGHT){
         [self.reminderTbl resizeHeightByOffset:offset];
-        [self.view resizeHeightByOffset:offset];
+        [self resizeHeightByOffset:offset];
     }
 }
 

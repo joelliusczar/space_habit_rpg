@@ -16,6 +16,11 @@
 		271C048B1E8C955A002221E9 /* SingletonCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C048A1E8C955A002221E9 /* SingletonCluster.m */; };
 		271C048E1E8C9C06002221E9 /* MonsterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C048D1E8C9C06002221E9 /* MonsterHelper.m */; };
 		271C04921E8F3784002221E9 /* SuffixList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 271C04911E8F3784002221E9 /* SuffixList.plist */; };
+		272427E31F391DA40028B22E /* SHView.m in Sources */ = {isa = PBXBuildFile; fileRef = 272427E21F391DA40028B22E /* SHView.m */; };
+		272596341F32D216006EECD2 /* monthlyDayPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 272596331F32D216006EECD2 /* monthlyDayPicker.m */; };
+		272596361F32D231006EECD2 /* monthlyDayPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 272596351F32D231006EECD2 /* monthlyDayPicker.xib */; };
+		272596391F32D6C1006EECD2 /* SHSpinPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 272596381F32D6C1006EECD2 /* SHSpinPicker.m */; };
+		2725963C1F32D81F006EECD2 /* MonthPartPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725963B1F32D81F006EECD2 /* MonthPartPicker.m */; };
 		273782381EE4D1B200EA5B1D /* FrequentCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 273782371EE4D1B200EA5B1D /* FrequentCase.m */; };
 		2737823E1EE4DB9C00EA5B1D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 273782391EE4DB9C00EA5B1D /* Model.xcdatamodeld */; };
 		273978851EB55F3700F217B4 /* StoryDumpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 273978831EB55F3700F217B4 /* StoryDumpView.m */; };
@@ -24,7 +29,6 @@
 		273979001EC4092A00F217B4 /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273978FF1EC4092A00F217B4 /* IntroViewController.xib */; };
 		274A37561F08C7BE00F31E0F /* ReminderTimeSpinPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274A37551F08C7BE00F31E0F /* ReminderTimeSpinPicker.xib */; };
 		274A375C1F08CD6D00F31E0F /* ReminderTimeSpinPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A375B1F08CD6D00F31E0F /* ReminderTimeSpinPicker.m */; };
-		274A37961F0962A100F31E0F /* ControlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37951F0962A100F31E0F /* ControlController.m */; };
 		274A37AF1F0A083A00F31E0F /* TimeSpinPickerEventInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37AE1F0A083A00F31E0F /* TimeSpinPickerEventInfo.m */; };
 		274A37B21F0A093B00F31E0F /* SHEventInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37B11F0A093B00F31E0F /* SHEventInfo.m */; };
 		274A37B51F0A1D6200F31E0F /* SHMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37B41F0A1D6200F31E0F /* SHMath.m */; };
@@ -224,6 +228,16 @@
 		271C048C1E8C9C06002221E9 /* MonsterHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterHelper.h; sourceTree = "<group>"; };
 		271C048D1E8C9C06002221E9 /* MonsterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterHelper.m; sourceTree = "<group>"; };
 		271C04911E8F3784002221E9 /* SuffixList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SuffixList.plist; sourceTree = "<group>"; };
+		272427E01F38198F0028B22E /* P_TimeUtilityStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_TimeUtilityStore.h; sourceTree = "<group>"; };
+		272427E11F391DA40028B22E /* SHView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHView.h; sourceTree = "<group>"; };
+		272427E21F391DA40028B22E /* SHView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHView.m; sourceTree = "<group>"; };
+		272596321F32D216006EECD2 /* monthlyDayPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = monthlyDayPicker.h; sourceTree = "<group>"; };
+		272596331F32D216006EECD2 /* monthlyDayPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = monthlyDayPicker.m; sourceTree = "<group>"; };
+		272596351F32D231006EECD2 /* monthlyDayPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = monthlyDayPicker.xib; sourceTree = "<group>"; };
+		272596371F32D6C1006EECD2 /* SHSpinPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSpinPicker.h; sourceTree = "<group>"; };
+		272596381F32D6C1006EECD2 /* SHSpinPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSpinPicker.m; sourceTree = "<group>"; };
+		2725963A1F32D81F006EECD2 /* MonthPartPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthPartPicker.h; sourceTree = "<group>"; };
+		2725963B1F32D81F006EECD2 /* MonthPartPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthPartPicker.m; sourceTree = "<group>"; };
 		273782361EE4D1B200EA5B1D /* FrequentCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrequentCase.h; sourceTree = "<group>"; };
 		273782371EE4D1B200EA5B1D /* FrequentCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrequentCase.m; sourceTree = "<group>"; };
 		2737823A1EE4DB9C00EA5B1D /* Model 19.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 19.xcdatamodel"; sourceTree = "<group>"; };
@@ -241,8 +255,6 @@
 		274A375A1F08CD6D00F31E0F /* ReminderTimeSpinPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReminderTimeSpinPicker.h; sourceTree = "<group>"; };
 		274A375B1F08CD6D00F31E0F /* ReminderTimeSpinPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReminderTimeSpinPicker.m; sourceTree = "<group>"; };
 		274A375D1F0951F000F31E0F /* Model 26.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 26.xcdatamodel"; sourceTree = "<group>"; };
-		274A37941F0962A100F31E0F /* ControlController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlController.h; sourceTree = "<group>"; };
-		274A37951F0962A100F31E0F /* ControlController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlController.m; sourceTree = "<group>"; };
 		274A37971F09BA9C00F31E0F /* P_ReminderTimeSpinPickerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ReminderTimeSpinPickerDelegate.h; sourceTree = "<group>"; };
 		274A37981F09FB9600F31E0F /* Model 27.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 27.xcdatamodel"; sourceTree = "<group>"; };
 		274A37AD1F0A083A00F31E0F /* TimeSpinPickerEventInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeSpinPickerEventInfo.h; sourceTree = "<group>"; };
@@ -857,8 +869,6 @@
 				27C3C2231F08799200F205A6 /* AddItemsFooter.h */,
 				27C3C2241F08799200F205A6 /* AddItemsFooter.m */,
 				27C3C2261F0879B200F205A6 /* AddItemsFooter.xib */,
-				274A37941F0962A100F31E0F /* ControlController.h */,
-				274A37951F0962A100F31E0F /* ControlController.m */,
 				27AF22E51F270FBA00F7D872 /* SHControlController.h */,
 				27AF22E61F270FBA00F7D872 /* SHControlController.m */,
 				276159B51F31A310002E8BF9 /* RateTypeSelector.h */,
@@ -867,6 +877,15 @@
 				276159BF1F32B815002E8BF9 /* RateSetContainer.h */,
 				276159C01F32B815002E8BF9 /* RateSetContainer.m */,
 				276159C11F32B815002E8BF9 /* RateSetContainer.xib */,
+				272596321F32D216006EECD2 /* monthlyDayPicker.h */,
+				272596331F32D216006EECD2 /* monthlyDayPicker.m */,
+				272596351F32D231006EECD2 /* monthlyDayPicker.xib */,
+				272596371F32D6C1006EECD2 /* SHSpinPicker.h */,
+				272596381F32D6C1006EECD2 /* SHSpinPicker.m */,
+				2725963A1F32D81F006EECD2 /* MonthPartPicker.h */,
+				2725963B1F32D81F006EECD2 /* MonthPartPicker.m */,
+				272427E11F391DA40028B22E /* SHView.h */,
+				272427E21F391DA40028B22E /* SHView.m */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -943,6 +962,7 @@
 				271C047D1E89BCBA002221E9 /* P_CoreData.h */,
 				271C04851E8B6323002221E9 /* P_ResourceUtility.h */,
 				27E00E981ED3FAE8008B35CD /* P_Transaction.h */,
+				272427E01F38198F0028B22E /* P_TimeUtilityStore.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -1315,6 +1335,7 @@
 				274FFC431EF6E2B100FAF809 /* RateSetterView.xib in Resources */,
 				686ED3951DA5DEC0004EDD36 /* title_Screen_2x.png in Resources */,
 				2739788B1EB843F800F217B4 /* MonsterInfo.plist in Resources */,
+				272596361F32D231006EECD2 /* monthlyDayPicker.xib in Resources */,
 				686686EB1D79032200BB2D09 /* DailyCellController.xib in Resources */,
 				276159C31F32B815002E8BF9 /* RateSetContainer.xib in Resources */,
 				27E89C9E1EF5FCD5009B7474 /* ImportanceSliderView.xib in Resources */,
@@ -1417,7 +1438,9 @@
 				27B0CDD21F2BEECD005BEC75 /* Daily+CoreDataProperties.m in Sources */,
 				2709B3991EEF750800EEE5CC /* ReportServiceCaller.m in Sources */,
 				275FEEFE1EE3172C00AED1A2 /* NSDate+DateHelper.m in Sources */,
+				272427E31F391DA40028B22E /* SHView.m in Sources */,
 				27B0CDDC1F2BF4C9005BEC75 /* Daily+CoreDataClass.m in Sources */,
+				272596391F32D6C1006EECD2 /* SHSpinPicker.m in Sources */,
 				27B0CDD11F2BEECD005BEC75 /* TodoTransaction+CoreDataProperties.m in Sources */,
 				27B0CD151F2BEB94005BEC75 /* Zone+CoreDataClass.m in Sources */,
 				68F3F9F31D70FC5E00840DD2 /* TodoViewController.m in Sources */,
@@ -1453,11 +1476,11 @@
 				68F3F9E41D70E8DB00840DD2 /* CentralViewController.m in Sources */,
 				274A37B21F0A093B00F31E0F /* SHEventInfo.m in Sources */,
 				274FFC4A1EF887DB00FAF809 /* DailyEditControlKeep.m in Sources */,
-				274A37961F0962A100F31E0F /* ControlController.m in Sources */,
 				2709B39C1EF0D31200EEE5CC /* Interceptor.m in Sources */,
 				27B0CDC91F2BEECD005BEC75 /* HabitTransaction+CoreDataProperties.m in Sources */,
 				27B0CDC71F2BEECD005BEC75 /* Suffix+CoreDataProperties.m in Sources */,
 				27AF22E71F270FBA00F7D872 /* SHControlController.m in Sources */,
+				2725963C1F32D81F006EECD2 /* MonthPartPicker.m in Sources */,
 				27C3C2251F08799200F205A6 /* AddItemsFooter.m in Sources */,
 				27B0CD311F2BEC21005BEC75 /* MonsterTransaction+CoreDataClass.m in Sources */,
 				686ED3C71DB481C4004EDD36 /* ZoneHelper.m in Sources */,
@@ -1486,6 +1509,7 @@
 				686ED3A71DA751AC004EDD36 /* StoryConstants.m in Sources */,
 				275D9F2A1F22294F009DA715 /* UIScrollView+ScrollAdjusters.m in Sources */,
 				6886A4801D8E5FD0005E12B3 /* constants.m in Sources */,
+				272596341F32D216006EECD2 /* monthlyDayPicker.m in Sources */,
 				274A375C1F08CD6D00F31E0F /* ReminderTimeSpinPicker.m in Sources */,
 				271C04881E8B639D002221E9 /* ResourceUtility.m in Sources */,
 				276159C21F32B815002E8BF9 /* RateSetContainer.m in Sources */,

@@ -7,21 +7,11 @@
 //
 
 #import "StreakResetterView.h"
-#import "NSObject+Helper.h"
 
 @implementation StreakResetterView
 
 +(CGRect)naturalFrame{
     return CGRectMake(0,0,268,62);
-}
-
-
--(instancetype)initWithFrame:(CGRect)frame{
-    if(self = [super initWithFrame:frame]){
-        _mainView = [self loadXib:NSStringFromClass(self.class)];
-        [self addSubview:_mainView];
-    }
-    return self;
 }
 
 

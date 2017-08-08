@@ -8,14 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "P_ImportanceSlidersDelegate.h"
-#import "ControlController.h"
+#import "SHView.h"
 
 IB_DESIGNABLE
-@interface ImportanceSliderView : UIView
-@property (weak,nonatomic) IBOutlet UILabel *urgencyLbl;
-@property (weak,nonatomic) IBOutlet UISlider *urgencySld;
-@property (weak,nonatomic) IBOutlet UILabel *difficultyLbl;
-@property (weak,nonatomic) IBOutlet UISlider *difficultySld;
-@property (weak,nonatomic) UIView *mainView;
+@interface ImportanceSliderView : SHView
+@property (weak,nonatomic) IBOutlet UILabel *importanceLbl;
+@property (weak,nonatomic) IBOutlet UISlider *importanceSld;
 @property (weak,nonatomic) id<P_ImportanceSlidersDelegate> delegate;
 @end

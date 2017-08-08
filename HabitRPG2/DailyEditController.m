@@ -165,14 +165,14 @@ NSString* const IS_DIRTY = @"isDirty";
     self.nameStr = self.nameBox.text;
     self.editControls.noteView.noteBox.text = daily.note.length>0?daily.note:@"";
     
-    self.editControls.importanceSliders.urgencySld.value = daily.urgency;
+    self.editControls.urgencySlider.importanceSld.value = daily.urgency;
     
-    self.editControls.importanceSliders.urgencyLbl.text = [NSString stringWithFormat:
+    self.editControls.urgencySlider.importanceLbl.text = [NSString stringWithFormat:
                                                            @"Urgency: %d"
                                                            ,daily.urgency];
-    self.editControls.importanceSliders.difficultySld.value = daily.difficulty;
+    self.editControls.difficultySlider.importanceSld.value = daily.difficulty;
     
-    self.editControls.importanceSliders.difficultyLbl.text = [NSString
+    self.editControls.difficultySlider.importanceLbl.text = [NSString
                                                               stringWithFormat:
                                                               @"Difficulty: %d"
                                                               ,daily.difficulty];
@@ -238,31 +238,19 @@ NSString* const IS_DIRTY = @"isDirty";
 }
 
 
--(void)urgencySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event {
+-(void)importanceSld_valueChanged_action:(ImportanceSliderView *)sender forEvent:(UIEvent *)event{
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
-        int sliderValue = (int)sender.value;
-        self.editControls.importanceSliders.urgencyLbl.text = [NSString
-                                                               stringWithFormat:
-                                                               @"Urgency: %d"
-                                                               ,sliderValue];
-        sender.value = sliderValue;
-        self.modelForEditing.urgency = sliderValue;
-    };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
-}
-
-
--(void)difficultySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event{
-    wrapReturnVoid wrappedCall = ^void(){
-        self.isDirty = YES;
-        int sliderValue = (int)sender.value;
-        self.editControls.importanceSliders.difficultyLbl.text = [NSString
-                                                                  stringWithFormat:
-                                                                  @"Difficulty: %d"
-                                                                  ,sliderValue];
-        sender.value = sliderValue;
-        self.modelForEditing.difficulty = sliderValue;
+        int sliderValue = (int)sender.importanceSld.value;
+        if(sender == self.editControls.urgencySlider){
+            self.modelForEditing.urgency = sliderValue;
+            sender.importanceLbl.text = [NSString stringWithFormat:@"Urgency: %d",sliderValue];
+        }
+        else{
+            self.modelForEditing.difficulty = sliderValue;
+            sender.importanceLbl.text = [NSString stringWithFormat:@"Difficulty: %d",sliderValue];
+        }
+        sender.importanceSld.value = sliderValue;
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }

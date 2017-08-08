@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "P_AddItemsFooterDelegate.h"
-#import "ControlController.h"
+#import "SHView.h"
 
 IB_DESIGNABLE
-@interface AddItemsFooter : UIView
+@interface AddItemsFooter : SHView
 @property (weak,nonatomic) IBOutlet id<P_AddItemsFooterDelegate> delegate;
 @end

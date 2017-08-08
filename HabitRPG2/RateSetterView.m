@@ -7,7 +7,6 @@
 //
 
 #import "RateSetterView.h"
-#import "NSObject+Helper.h"
 
 @interface RateSetterView ()
 
@@ -17,23 +16,6 @@
 
 +(CGRect)naturalFrame{
     return CGRectMake(0,0,302,100);
-}
-
-
--(instancetype)initWithFrame:(CGRect)frame{
-    if(self = [super initWithFrame:frame]){
-        _mainView = [self loadXib:NSStringFromClass(self.class)];
-        [self addSubview:_mainView];
-    }
-    return self;
-}
-
--(instancetype)initWithCoder:(NSCoder *)coder{
-    if(self = [super initWithCoder:coder]){
-        _mainView = [self loadXib:NSStringFromClass(self.class)];
-        [self addSubview:_mainView];
-    }
-    return self;
 }
 
 

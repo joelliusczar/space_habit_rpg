@@ -21,26 +21,13 @@
 }
 
 
--(instancetype)initWithFrame:(CGRect)frame{
-    if(self = [super initWithFrame:frame]){
-        _mainView = [self loadXib:NSStringFromClass(self.class)];
-        [self addSubview:_mainView];
-    }
-    return self;
-}
-
-
--(IBAction)urgencySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event {
+-(IBAction)importanceSld_valueChanged_action:(UISlider *)sender
+                                    forEvent:(UIEvent *)event {
     if(self.delegate){
-        [self.delegate urgencySld_valueChanged_action:sender forEvent:event];
+        [self.delegate importanceSld_valueChanged_action:self
+                                                forEvent:event];
     }
 }
 
-
--(IBAction)difficultySld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event {
-    if(self.delegate){
-        [self.delegate difficultySld_valueChanged_action:sender forEvent:event];
-    }
-}
 
 @end

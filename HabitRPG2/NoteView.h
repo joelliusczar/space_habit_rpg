@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "P_NotesViewDelegate.h"
+#import "SHView.h"
 
-@interface NoteView : UIView <UITextViewDelegate>
+@interface NoteView : SHView <UITextViewDelegate>
 @property (weak,nonatomic) IBOutlet UITextView *noteBox;
-@property (weak,nonatomic) UIView *mainView;
 @property (weak,nonatomic) id<P_NotesViewDelegate> delegate;
 @end

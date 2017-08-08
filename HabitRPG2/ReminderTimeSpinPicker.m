@@ -26,39 +26,23 @@ const int PM_ROW = 1;
 
 @implementation ReminderTimeSpinPicker
 
--(instancetype)initWithLocale:(NSLocale *)locale
+-(instancetype)initWithTimeStore:(NSObject<P_TimeUtilityStore> *)timeStore
                   andDayRange:(NSInteger)dayRange{
     
     if(self = [super init]){
-        _inUseLocale = locale;
+        _timeStore = timeStore;
         _dayRange = dayRange;
     }
     return self;
 }
 
--(void)viewDidLoad{
-    UITapGestureRecognizer *tapGestureBG = [[UITapGestureRecognizer alloc]
-                                            initWithTarget:self
-                                            action:@selector(background_tap_action:)];
-    [self.view addGestureRecognizer:tapGestureBG];
-}
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     int hrsMinDaysBefore = 3;
     int amPm = 1;
     //if locale uses 24 hour format: hour,minute, days before
     //but if 12 hour, an extra column for AM/PM
-    return self.inUseLocale.isUsing24HourFormat?hrsMinDaysBefore:hrsMinDaysBefore+amPm;
-}
-
-
--(void)background_tap_action:(UITapGestureRecognizer *)sender{
-    wrapReturnVoid wrappedCall = ^void(){
-        if(sender.view==self.view){
-            [ViewHelper popViewFromFront:self];
-        }
-    };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+    return self.timeStore.inUseLocale.isUsing24HourFormat?hrsMinDaysBefore:hrsMinDaysBefore+amPm;
 }
 
 
@@ -70,7 +54,7 @@ numberOfRowsInComponent:(NSInteger)component{
     else if(component==MINUTE_COL){
         return MINUTES_IN_HOUR; 
     }
-    else if(!self.inUseLocale.isUsing24HourFormat&&component==AM_PM_COL){
+    else if(!self.timeStore.inUseLocale.isUsing24HourFormat&&component==AM_PM_COL){
         return 2;
     }
     else{
@@ -84,15 +68,15 @@ numberOfRowsInComponent:(NSInteger)component{
     if(component==HOUR_OF_DAY_COL){
         return
         [NSString stringWithFormat:@"%ld",
-         [self.inUseLocale hourInLocaleFormat:row]];
+         [self.timeStore.inUseLocale hourInLocaleFormat:row]];
     }
     else if(component==MINUTE_COL){
         return [NSString stringWithFormat:@"%02ld",row];
     }
-    else if(!self.inUseLocale.isUsing24HourFormat&&component==AM_PM_COL){
+    else if(!self.timeStore.inUseLocale.isUsing24HourFormat&&component==AM_PM_COL){
 
         return
-        row==AM_ROW?self.inUseLocale.AMSymbol:self.inUseLocale.PMSymbol;
+        row==AM_ROW?self.timeStore.inUseLocale.AMSymbol:self.timeStore.inUseLocale.PMSymbol;
     }
     else{
         return row>0?[NSString stringWithFormat:@"%ld days before",row]:@"Every Day";
@@ -110,7 +94,7 @@ numberOfRowsInComponent:(NSInteger)component{
         eventInfo.selectedMinRow =
         [self.picker selectedRowInComponent:MINUTE_COL];
         NSInteger daysCol =
-        self.inUseLocale.isUsing24HourFormat?DAYS_BEFORE_COL_IN_24_HOUR_CLOCK:DAYS_BEFORE_COL_IN_12_HOUR_CLOCK;
+        self.timeStore.inUseLocale.isUsing24HourFormat?DAYS_BEFORE_COL_IN_24_HOUR_CLOCK:DAYS_BEFORE_COL_IN_12_HOUR_CLOCK;
         
         eventInfo.selectedDaysBeforeRow =
         [self.picker selectedRowInComponent:daysCol];
@@ -128,7 +112,7 @@ numberOfRowsInComponent:(NSInteger)component{
     else if(component==MINUTE_COL){
         return 40;
     }
-    else if(!self.inUseLocale.isUsing24HourFormat&&component==AM_PM_COL){
+    else if(!self.timeStore.inUseLocale.isUsing24HourFormat&&component==AM_PM_COL){
         return 45;
     }
     else{
@@ -140,7 +124,7 @@ numberOfRowsInComponent:(NSInteger)component{
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
       inComponent:(NSInteger)component{
     
-    if(!self.inUseLocale.isUsing24HourFormat){
+    if(!self.timeStore.inUseLocale.isUsing24HourFormat){
         //adjust am/pm if user switches hour to afternoon or morning
         if(component==HOUR_OF_DAY_COL){
             if([pickerView selectedRowInComponent:AM_PM_COL]==AM_ROW
