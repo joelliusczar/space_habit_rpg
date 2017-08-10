@@ -46,14 +46,14 @@
     SUB_TABLE_CELL_HEIGHT*instance.reminderSet.count:
     SUB_TABLE_MAX_HEIGHT;
     [instance resizeRemindersListHeightByOffset:tblHeight];
-    instance.reminderTbl.tableFooterView = nil;
+    instance.reminderTbl.tableFooterView = [[UIView alloc]
+                                            initWithFrame:CGRectZero];
     return instance;
 }
 
 
 -(NSInteger)tableView:(UITableView *)tableView
 numberOfRowsInSection:(NSInteger)section{
-    
     return self.reminderSet.count;
 }
 
@@ -96,6 +96,7 @@ numberOfRowsInSection:(NSInteger)section{
          withRowAnimation:UITableViewRowAnimationFade];
         //need the begin/end update lines because buttons will get covered by
         //invisble stuff and not respond
+        //also, apparently they tell the table to refresh the heights
         [self.backViewController.editingScreen.controlsTbl beginUpdates];
         [self resizeRemindersListHeightByOffset:SUB_TABLE_CELL_HEIGHT];
         [self scrollRemindersListByOffset:SUB_TABLE_CELL_HEIGHT];
@@ -126,7 +127,7 @@ numberOfRowsInSection:(NSInteger)section{
     [self.backViewController.scrollContainer resizeContentHeight:offset];
     if(self.reminderTbl.frame.size.height < SUB_TABLE_MAX_HEIGHT){
         [self.reminderTbl resizeHeightByOffset:offset];
-        [self resizeHeightByOffset:offset];
+        [self.mainView resizeHeightByOffset:offset];
     }
 }
 
@@ -137,11 +138,5 @@ numberOfRowsInSection:(NSInteger)section{
     [self.reminderTbl scrollByOffset:SUB_TABLE_CELL_HEIGHT];
 }
 
-
--(void)setBackgroundColor:(UIColor *)color{
-    [super setBackgroundColor:color];
-    self.reminderTbl.backgroundColor = color;
-    self.contentColor = color;
-}
 
 @end

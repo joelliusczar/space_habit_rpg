@@ -327,9 +327,10 @@ NSString* const IS_DIRTY = @"isDirty";
         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     SHView *cellView = self.editControls.allControls[indexPath.row];
+    cellView.holderView = cell;
     [cellView changeBackgroundColorTo:self.view.backgroundColor];
-    cell.backgroundColor = self.view.backgroundColor;
-    [cell addSubview:cellView];
+    cell.backgroundColor = [UIColor orangeColor];
+    [cell.contentView addSubview:cellView];
     return cell;
 }
 
