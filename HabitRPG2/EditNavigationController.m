@@ -165,10 +165,10 @@
 }
 
 -(void)scrollByOffset:(CGFloat)offset{
-    [self.editingScreen.controlsTbl scrollByOffset:offset];
     if(self.scrollContainer.contentOffset.y < EDIT_SCREEN_TOP_CONTROL_HEIGHT){
         [self.scrollContainer scrollByOffset:offset];
     }
+    [self.editingScreen.controlsTbl scrollByOffset:offset];
 }
 
 @end

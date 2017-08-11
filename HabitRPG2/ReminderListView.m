@@ -123,11 +123,10 @@ numberOfRowsInSection:(NSInteger)section{
 
 
 -(void)resizeRemindersListHeightByOffset:(CGFloat)offset{
-    //NOTE this may be broken now
-    [self.backViewController.scrollContainer resizeContentHeight:offset];
     if(self.reminderTbl.frame.size.height < SUB_TABLE_MAX_HEIGHT){
         [self.reminderTbl resizeHeightByOffset:offset];
         [self.mainView resizeHeightByOffset:offset];
+        [self resizeHeightByOffset:offset];
     }
 }
 

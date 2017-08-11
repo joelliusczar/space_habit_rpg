@@ -14,9 +14,7 @@
     CGRect frame = self.frame;
     frame.origin.y += (offset + self.contentOffset.y);
     [self scrollRectToVisible:frame animated:YES];
-//    CGPoint point = self.contentOffset;
-//    point.y += offset;
-//    self.contentOffset = point;
+
 }
 
 

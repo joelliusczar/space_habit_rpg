@@ -329,7 +329,7 @@ NSString* const IS_DIRTY = @"isDirty";
     SHView *cellView = self.editControls.allControls[indexPath.row];
     cellView.holderView = cell;
     [cellView changeBackgroundColorTo:self.view.backgroundColor];
-    cell.backgroundColor = [UIColor orangeColor];
+    cell.backgroundColor = self.view.backgroundColor;
     [cell.contentView addSubview:cellView];
     return cell;
 }
@@ -337,7 +337,7 @@ NSString* const IS_DIRTY = @"isDirty";
 
 -(CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return self.editControls.allControls[indexPath.row].frame.size.height;
+    return self.editControls.allControls[indexPath.row].mainView.frame.size.height;
 }
 
 
