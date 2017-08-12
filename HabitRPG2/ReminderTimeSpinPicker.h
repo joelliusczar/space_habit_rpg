@@ -15,8 +15,8 @@
 @interface ReminderTimeSpinPicker :
 SHSpinPicker
 @property (weak,nonatomic) id<P_ReminderTimeSpinPickerDelegate> delegate;
-@property (weak,nonatomic) NSObject<P_TimeUtilityStore> *timeStore;
+@property (weak,nonatomic) id<P_TimeUtilityStore> timeStore;
 @property (assign,nonatomic) NSInteger dayRange;
--(instancetype)initWithTimeStore:(NSObject<P_TimeUtilityStore> *)timeStore
+-(instancetype)initWithTimeStore:(id<P_TimeUtilityStore>)timeStore
                   andDayRange:(NSInteger)dayRange;
 @end

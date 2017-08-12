@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina3_5" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,7 +16,7 @@
                 <outlet property="everyXCheckLbl" destination="8c2-Ea-QN3" id="d2l-Ns-JuN"/>
                 <outlet property="monthlyBtn" destination="Jfm-Ni-cKw" id="Rn1-VC-8ee"/>
                 <outlet property="monthlyCheckLbl" destination="9kx-KV-wBe" id="btP-Gx-ZZu"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="plJ-ln-zHK"/>
                 <outlet property="weeklyBtn" destination="0LT-Ta-BSg" id="teR-yp-iaT"/>
                 <outlet property="weeklyCheckLbl" destination="29r-a7-zbW" id="hyG-m9-i0b"/>
                 <outlet property="yearlyBtn" destination="eda-Vn-Bsh" id="umz-hO-4KO"/>
@@ -24,19 +24,18 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+        <view contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="behind_alert_view.png" translatesAutoresizingMaskIntoConstraints="NO" id="rF9-Ip-an6">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                 </imageView>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GDY-1s-ufd">
-                    <rect key="frame" x="40" y="103" width="240" height="235"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GDY-1s-ufd">
+                    <rect key="frame" x="87" y="250.66666666666669" width="240" height="235.00000000000006"/>
                     <subviews>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0LT-Ta-BSg" customClass="UIButton">
-                            <rect key="frame" x="0.0" y="88" width="240" height="40"/>
+                            <rect key="frame" x="0.0" y="85" width="240" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Days of the Week" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ooZ-oM-D5c">
@@ -60,7 +59,7 @@
                             </connections>
                         </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jfm-Ni-cKw" customClass="UIButton">
-                            <rect key="frame" x="0.0" y="127" width="240" height="40"/>
+                            <rect key="frame" x="0.0" y="123" width="240" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Days of the Month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1S-VE-ihr">
@@ -79,12 +78,15 @@
                                 </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <accessibility key="accessibilityConfiguration">
+                                <accessibilityTraits key="traits" button="YES"/>
+                            </accessibility>
                             <connections>
                                 <action selector="rateType_click_action:forEvent:" destination="-1" eventType="touchUpInside" id="jG2-gV-jqW"/>
                             </connections>
                         </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eda-Vn-Bsh" customClass="UIButton">
-                            <rect key="frame" x="0.0" y="163" width="240" height="40"/>
+                            <rect key="frame" x="0.0" y="160" width="240" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Days of the Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dtl-ym-LbX">
@@ -133,12 +135,18 @@
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="235" id="5xf-Rf-GGh"/>
+                        <constraint firstAttribute="width" constant="240" id="Uzm-IC-2n9"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="rF9-Ip-an6" secondAttribute="bottom" id="8IY-I8-Vey"/>
+                <constraint firstItem="GDY-1s-ufd" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Acw-4c-ASP"/>
                 <constraint firstItem="rF9-Ip-an6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Fny-51-VEZ"/>
+                <constraint firstItem="GDY-1s-ufd" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Nca-zr-qdO"/>
                 <constraint firstAttribute="trailing" secondItem="rF9-Ip-an6" secondAttribute="trailing" id="U1L-wC-hti"/>
                 <constraint firstItem="rF9-Ip-an6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="XJ1-DD-33e"/>
             </constraints>

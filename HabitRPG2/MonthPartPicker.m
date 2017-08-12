@@ -18,6 +18,13 @@ const NSInteger DAY_COLUMN = 1;
 
 @implementation MonthPartPicker
 
+-(instancetype)initWithTimeStore:(NSObject<P_TimeUtilityStore> *)timeStore{
+    if(self = [self init]){
+        _timeStore = timeStore;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -39,7 +46,7 @@ numberOfRowsInComponent:(NSInteger)component{
     if(component == 0){
         return POTENTIAL_WEEKS_IN_MONTH_NUM;
     }
-    return DAYS_IN_WEEK;
+    return self.timeStore.inUseCalendar.shortWeekdaySymbols.count;
 }
 
 
@@ -48,12 +55,13 @@ numberOfRowsInComponent:(NSInteger)component{
            forComponent:(NSInteger)component{
     
     if(component==ORDINAL_COLUMN){
-        NSNumberFormatter *formatter = [NSNumberFormatter new];
-        [formatter setNumberStyle:NSNumberFormatterOrdinalStyle];
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        formatter.locale = self.timeStore.inUseLocale;
+        formatter.numberStyle = NSNumberFormatterOrdinalStyle;
         return [formatter
                 stringFromNumber:[NSNumber numberWithInteger:row]];
     }
-    return @"";
+    return self.timeStore.inUseCalendar.shortWeekdaySymbols[row];
 }
 
 

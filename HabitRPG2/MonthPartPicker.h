@@ -10,5 +10,6 @@
 #import "P_TimeUtilityStore.h"
 
 @interface MonthPartPicker : SHSpinPicker
-
+@property (weak,nonatomic) NSObject<P_TimeUtilityStore> *timeStore;
+-(instancetype)initWithTimeStore:(NSObject<P_TimeUtilityStore> *)timeStore;
 @end

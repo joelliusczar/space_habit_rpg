@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewHelper : NSObject
-+(void)pushViewToFront:(UIViewController *)child OfParent:(UIViewController *)parent;
-+(void)popViewFromFront:(UIViewController *)child;
++(void)pushViewToFront:(UIViewController  * _Nonnull )child
+              OfParent:(UIViewController  * _Nonnull )parent;
++(void)popViewFromFront:(UIViewController * _Nonnull)child;
 @end

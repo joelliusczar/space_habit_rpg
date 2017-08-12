@@ -23,12 +23,12 @@
 ,P_ReminderTimeSpinPickerDelegate>
 
 @property (weak,nonatomic) IBOutlet UITableView *reminderTbl;
-@property (strong,nonatomic) NSObject<P_DueDateWrapper>* dueDateInfo;
+@property (strong,nonatomic) id<P_DueDateWrapper> dueDateInfo;
 @property (weak,nonatomic) NSOrderedSet<Reminder *> *reminderSet;
-@property (strong,nonatomic) NSObject<P_TimeUtilityStore> *timeStore;
+@property (strong,nonatomic) id<P_TimeUtilityStore> timeStore;
 @property (weak,nonatomic) EditNavigationController *backViewController;
 @property (strong,nonatomic) UIColor *contentColor;
-+(instancetype)newWithDueDateInfo:(NSObject<P_DueDateWrapper> *)dueDateInfo
++(instancetype)newWithDueDateInfo:(id<P_DueDateWrapper>)dueDateInfo
              andBackViewController:(EditNavigationController *)backViewController
-                         andTimeStore:(NSObject<P_TimeUtilityStore> *)timeStore;
+                         andTimeStore:(id<P_TimeUtilityStore>)timeStore;
 @end

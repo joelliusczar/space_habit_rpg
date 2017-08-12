@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "constants.h"
 
 @protocol P_RateTypeSelectorDelegate <NSObject>
--(void)updateRateType:(int)rateType;
+-(void)updateRateType:(RateType)rateType;
 @end

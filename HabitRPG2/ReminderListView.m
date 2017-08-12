@@ -33,9 +33,9 @@
     return CGRectMake(0,0,300,100);
 }
 
-+(instancetype)newWithDueDateInfo:(NSObject<P_DueDateWrapper> *)dueDateInfo
++(instancetype)newWithDueDateInfo:(id<P_DueDateWrapper>)dueDateInfo
                  andBackViewController:(EditNavigationController *)backViewController
-                         andTimeStore:(NSObject<P_TimeUtilityStore> *)timeStore{
+                         andTimeStore:(id<P_TimeUtilityStore>)timeStore{
     ReminderListView *instance = [[ReminderListView alloc] init];
     instance.dueDateInfo = dueDateInfo = dueDateInfo;
     instance.reminderSet = [dueDateInfo getReminderSet];

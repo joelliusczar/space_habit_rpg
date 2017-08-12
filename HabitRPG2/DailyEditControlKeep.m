@@ -66,10 +66,20 @@
     return _reminderListView;
 }
 
+-(RateSetContainer *)rateSetContainer{
+    if(nil==_rateSetContainer){
+        _rateSetContainer = [RateSetContainer newWithDaily:self.delegate.modelForEditing
+                                     andBackViewController:self.delegate.editorContainer
+                                              andTimeStore:SharedGlobal];
+    }
+    return _rateSetContainer;
+}
+
 -(NSArray<UIView*> *)allControls{
     if(nil==_allControls){
         _allControls = [NSArray arrayWithObjects:
                         self.noteView
+                        ,self.rateSetContainer
                         ,self.urgencySlider
                         ,self.difficultySlider
                         ,self.streakResetterView

@@ -26,10 +26,10 @@ const int PM_ROW = 1;
 
 @implementation ReminderTimeSpinPicker
 
--(instancetype)initWithTimeStore:(NSObject<P_TimeUtilityStore> *)timeStore
+-(instancetype)initWithTimeStore:(id<P_TimeUtilityStore>)timeStore
                   andDayRange:(NSInteger)dayRange{
     
-    if(self = [super init]){
+    if(self = [super initWithNibName:@"SHSpinPicker" bundle:nil]){
         _timeStore = timeStore;
         _dayRange = dayRange;
     }

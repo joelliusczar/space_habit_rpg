@@ -7,6 +7,7 @@
 //
 
 #import "P_RateTypeSelectorDelegate.h"
+#import "constants.h"
 @import UIKit;
 
 @interface RateTypeSelector : UIViewController
@@ -19,5 +20,8 @@
 @property (weak,nonatomic) IBOutlet UILabel *yearlyCheckLbl;
 @property (weak,nonatomic) IBOutlet UIButton *yearlyBtn;
 @property (weak,nonatomic) IBOutlet UIImageView *backgroundView;
+@property (assign,nonatomic) RateType rateType;
+-(instancetype)initWithRateType:(RateType)rateType
+                    andDelegate:(id<P_RateTypeSelectorDelegate>)delegate;
 @property (weak,nonatomic) id<P_RateTypeSelectorDelegate> delegate;
 @end

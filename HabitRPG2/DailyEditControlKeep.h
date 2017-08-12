@@ -15,6 +15,7 @@
 #import "StreakResetterView.h"
 #import "ReminderListView.h"
 #import "DailyEditController.h"
+#import "RateSetContainer.h"
 #import "SHView.h"
 
 @interface DailyEditControlKeep : NSObject
@@ -26,5 +27,6 @@
 @property (strong,nonatomic) ImportanceSliderView *difficultySlider;
 @property (strong,nonatomic) StreakResetterView *streakResetterView;
 @property (strong,nonatomic) ReminderListView *reminderListView;
+@property (strong,nonatomic) RateSetContainer *rateSetContainer;
 -(instancetype)initWithDailyEditController:(DailyEditController *)delegate;
 @end

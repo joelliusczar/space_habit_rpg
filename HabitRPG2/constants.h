@@ -21,11 +21,11 @@ typedef NS_ENUM(NSInteger,enviromentCode) {
     ,ENV_UTEST = 1<<1
 };
 
-typedef NS_ENUM(NSInteger,rateType){
-    DAILY_RATE = 1<<0
-    ,WEEKLY_RATE = 1<<1
-    ,MONTHLY_RATE = 1<<2
-    ,YEARLY_RATE = 1<<3
+typedef NS_ENUM(NSInteger,RateType){
+    DAILY_RATE = 0
+    ,WEEKLY_RATE = 1<<0
+    ,MONTHLY_RATE = 1<<1
+    ,YEARLY_RATE = 1<<2
 };
 
 typedef NS_ENUM(NSInteger,hourFormatType){
