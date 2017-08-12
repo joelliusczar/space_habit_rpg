@@ -23,4 +23,38 @@
 }
 
 
+-(void)setupBorder:(UIRectEdge)edges
+     withThickness:(CGFloat)thickness
+          andColor:(UIColor *)color{
+    CALayer *layer = self.layer;
+    if(edges&UIRectEdgeTop){
+        CALayer *borderLayer = [[CALayer alloc] init];
+        borderLayer.backgroundColor = color.CGColor;
+        borderLayer.frame = CGRectMake(0,0,self.frame.size.width,thickness);
+        [layer addSublayer:borderLayer];
+    }
+    if(edges&UIRectEdgeLeft){
+        CALayer *borderLayer = [[CALayer alloc] init];
+        borderLayer.backgroundColor = color.CGColor;
+        borderLayer.frame = CGRectMake(0,0,thickness,self.frame.size.height);
+        [layer addSublayer:borderLayer];
+    }
+    if(edges&UIRectEdgeRight){
+        CALayer *borderLayer = [[CALayer alloc] init];
+        borderLayer.backgroundColor = color.CGColor;
+        CGFloat offsetX = self.frame.size.width -  thickness;
+        borderLayer.frame = CGRectMake(offsetX,0,thickness,self.frame.size.height);
+        [layer addSublayer:borderLayer];
+    }
+    if(edges&UIRectEdgeBottom){
+        CALayer *borderLayer = [[CALayer alloc] init];
+        borderLayer.backgroundColor = color.CGColor;
+        CGFloat offsetY = self.frame.size.height -thickness;
+        borderLayer.frame = CGRectMake(0,offsetY,self.frame.size.width,thickness);
+        [layer addSublayer:borderLayer];
+    }
+    
+}
+
+
 @end

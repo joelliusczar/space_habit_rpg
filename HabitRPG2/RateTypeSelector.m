@@ -9,6 +9,7 @@
 #import "RateTypeSelector.h"
 #import "Interceptor.h"
 #import "ViewHelper.h"
+#import "UIView+Helpers.h"
 
 @interface RateTypeSelector ()
 
@@ -31,11 +32,7 @@
     UITapGestureRecognizer *tapGestureBG = [[UITapGestureRecognizer alloc]
                                             initWithTarget:self action:@selector(background_tap_action:)];
     [self.backgroundView addGestureRecognizer:tapGestureBG];
-    [self formatButton:self.everyXBtn];
-    [self formatButton:self.weeklyBtn];
-    [self formatButton:self.monthlyBtn];
-    [self formatButton:self.yearlyBtn];
-    [self setCheckmark:self.rateType];
+    [self formatView];
 }
 
 
@@ -45,13 +42,21 @@
 }
 
 
--(void)formatButton:(UIButton *)button{
-    NSAssert(button,@"button was nil");
-    CALayer *btnLayer = button.layer;
-    btnLayer.borderWidth = 2.0f;
-    btnLayer.borderColor = [UIColor darkGrayColor].CGColor;
-    btnLayer.masksToBounds = YES;
-    btnLayer.cornerRadius = .5f;
+-(void)formatView{
+    [self setupBorder:self.everyXBtn];
+    [self setupBorder:self.weeklyBtn];
+    [self setupBorder:self.monthlyBtn];
+    [self setupBorder:self.yearlyBtn];
+    [self setupBorder:self.view];
+    [self setCheckmark:self.rateType];
+}
+
+
+-(void)setupBorder:(UIView *)view{
+    NSAssert(view,@"button was nil");
+    [view setupBorder:UIRectEdgeTop|UIRectEdgeBottom
+        withThickness:1.0f
+             andColor:[UIColor lightGrayColor]];
 }
 
 
@@ -73,8 +78,8 @@
 
 
 -(IBAction)rateType_click_action:(UIView *)sender forEvent:(UIEvent *)event{
+    RateType rateType = self.rateType;
     if(self.delegate){
-        RateType rateType = self.rateType;
         if(sender == self.yearlyBtn){
             rateType = YEARLY_RATE;
         }
@@ -86,7 +91,11 @@
         }
         [self.delegate updateRateType: rateType];
     }
-    [ViewHelper popViewFromFront:self];
+    [self setCheckmark:rateType];
+    long arbitraryDispatchTime = 100000;
+    dispatch_after(dispatch_walltime(nil,arbitraryDispatchTime),dispatch_get_main_queue(),^(){
+        [ViewHelper popViewFromFront:self];
+    });
 }
 
 

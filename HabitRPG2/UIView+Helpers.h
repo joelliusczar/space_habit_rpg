@@ -12,5 +12,5 @@
 
 -(void)resizeHeightByOffset:(CGFloat)offset;
 -(void)resizeBoundsHeightByOffset:(CGFloat)change;
-
+-(void)setupBorder:(UIRectEdge)edges withThickness:(CGFloat)thickness andColor:(UIColor *)color;
 @end
