@@ -27,10 +27,12 @@
     return self;
 }
 
-- (void)viewDidLoad {
+
+-(void)viewDidLoad{
     [super viewDidLoad];
     UITapGestureRecognizer *tapGestureBG = [[UITapGestureRecognizer alloc]
-                                            initWithTarget:self action:@selector(background_tap_action:)];
+                                            initWithTarget:self
+                                            action:@selector(background_tap_action:)];
     [self.backgroundView addGestureRecognizer:tapGestureBG];
     [self formatView];
 }
@@ -67,6 +69,7 @@
     self.yearlyCheckLbl.hidden = rateType!=YEARLY_RATE;
 }
 
+
 -(void)background_tap_action:(UITapGestureRecognizer *)sender{
     wrapReturnVoid wrappedCall = ^void(){
         if(sender.view == self.backgroundView){
@@ -89,9 +92,14 @@
         else if(sender == self.weeklyBtn){
             rateType = WEEKLY_RATE;
         }
+        else{
+            rateType = DAILY_RATE;
+        }
         [self.delegate updateRateType: rateType];
     }
     [self setCheckmark:rateType];
+    //I want to display some sort of visible change in response to
+    //the user action before the view goes away
     long arbitraryDispatchTime = 100000;
     dispatch_after(dispatch_walltime(nil,arbitraryDispatchTime),dispatch_get_main_queue(),^(){
         [ViewHelper popViewFromFront:self];

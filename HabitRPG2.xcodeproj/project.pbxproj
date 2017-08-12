@@ -613,7 +613,6 @@
 				27C3C21A1F001DF300F205A6 /* ReminderListView.h */,
 				27C3C21B1F001DF300F205A6 /* ReminderListView.m */,
 				27C3C21D1F0022D600F205A6 /* ReminderListView.xib */,
-				274A37551F08C7BE00F31E0F /* SHSpinPicker.xib */,
 				274A375A1F08CD6D00F31E0F /* ReminderTimeSpinPicker.h */,
 				274A375B1F08CD6D00F31E0F /* ReminderTimeSpinPicker.m */,
 			);
@@ -876,6 +875,7 @@
 				276159C11F32B815002E8BF9 /* RateSetContainer.xib */,
 				272596371F32D6C1006EECD2 /* SHSpinPicker.h */,
 				272596381F32D6C1006EECD2 /* SHSpinPicker.m */,
+				274A37551F08C7BE00F31E0F /* SHSpinPicker.xib */,
 				2725963A1F32D81F006EECD2 /* MonthPartPicker.h */,
 				2725963B1F32D81F006EECD2 /* MonthPartPicker.m */,
 				272427E11F391DA40028B22E /* SHView.h */,
