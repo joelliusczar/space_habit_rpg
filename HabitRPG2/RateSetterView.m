@@ -14,11 +14,6 @@
 
 @implementation RateSetterView
 
-+(CGRect)naturalFrame{
-    return CGRectMake(0,0,302,100);
-}
-
-
 - (IBAction)rateStep_valueChanged_action:(UIStepper *)sender forEvent:(UIEvent *)event {
     if(self.delegate){
         [self.delegate rateStep_valueChanged_action:sender forEvent:event];

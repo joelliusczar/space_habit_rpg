@@ -15,5 +15,5 @@ IB_DESIGNABLE
 @interface RateSetterView : SHView
 @property (weak,nonatomic) IBOutlet UIStepper *rateStep;
 @property (weak,nonatomic) IBOutlet UILabel *rateLbl;
-@property (weak,nonatomic) id<P_RateSetterDelegate> delegate;
+@property (weak,nonatomic) IBOutlet id<P_RateSetterDelegate> delegate;
 @end

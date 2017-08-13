@@ -11,7 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RateSetContainer">
             <connections>
+                <outlet property="activeDaysControlContainer" destination="GSt-Vo-h2F" id="zbY-HF-zIM"/>
                 <outlet property="openRateTypeBtn" destination="cjs-Oz-gc5" id="q9q-D6-0Uc"/>
+                <outlet property="rateSetter" destination="eap-7w-kuR" id="QwP-EW-s8F"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -33,6 +35,14 @@
                     <rect key="frame" x="0.0" y="42" width="256" height="71"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="gHL-PV-MSP"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GSt-Vo-h2F">
+                    <rect key="frame" x="0.0" y="110" width="275" height="296"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.95183328270000001" green="0.17352055250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.10559471419999999" green="1" blue="0.18085308929999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

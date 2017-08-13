@@ -26,7 +26,7 @@
     RateSetContainer *instance = [[RateSetContainer alloc] init];
     instance.timeStore = timeStore;
     instance.daily = daily;
-    instance.backViewController = backViewController;
+    instance.backViewController = backViewController;;
     return instance;
 }
 
@@ -41,6 +41,13 @@
 
 -(void)updateRateType:(RateType)rateType{
     self.daily.rateType = rateType;
+}
+
+-(void)rateStep_valueChanged_action:(UIStepper *)sender
+                           forEvent:(UIEvent *)event{
+    if(self.delegate){
+        [self.delegate rateStep_valueChanged_action:sender forEvent:event];
+    }
 }
 
 @end

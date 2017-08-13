@@ -27,8 +27,7 @@
 
 -(RateSetterView *)rateSetterView{
     if(nil==_rateSetterView){
-        _rateSetterView = [[RateSetterView alloc] init];
-        _rateSetterView.delegate = self.delegate;
+        _rateSetterView = self.rateSetContainer.rateSetter;
     }
     return _rateSetterView;
 }
@@ -71,6 +70,7 @@
         _rateSetContainer = [RateSetContainer newWithDaily:self.delegate.modelForEditing
                                      andBackViewController:self.delegate.editorContainer
                                               andTimeStore:SharedGlobal];
+        _rateSetContainer.delegate = self.delegate;
     }
     return _rateSetContainer;
 }
