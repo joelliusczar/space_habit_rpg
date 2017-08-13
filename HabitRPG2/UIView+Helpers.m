@@ -64,4 +64,14 @@
 }
 
 
+-(void)replaceSubviewsWith:(UIView *)view{
+    NSAssert(view,@"view is nil");
+    for(UIView *v in self.subviews){
+        [v removeFromSuperview];
+    }
+    [self addSubview:view];
+}
+
+
+
 @end

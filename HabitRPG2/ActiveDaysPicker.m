@@ -16,27 +16,11 @@
 
 @implementation ActiveDaysPicker
 
-+(CGRect)naturalFrame{
-    return CGRectMake(0,0,278,179);
-}
-
-
--(instancetype)initWithFrame:(CGRect)frame{
-    if(self = [super initWithFrame:frame]){
-        _mainView = [self loadXib:NSStringFromClass(self.class)];
-        [self addSubview:_mainView];
-    }
-    return self;
-}
-
 
 - (IBAction)activeDaySwitch_press_action:(CustomSwitch *)sender forEvent:(UIEvent *)event {
     if(self.delegate){
         [self.delegate activeDaySwitch_press_action:sender forEvent:event];
     }
 }
-
-
-
 
 @end

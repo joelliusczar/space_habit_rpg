@@ -12,5 +12,6 @@
 
 IB_DESIGNABLE
 @interface AddItemsFooter : SHView
+@property (weak,nonatomic) IBOutlet UILabel *addItemLbl;
 @property (weak,nonatomic) IBOutlet id<P_AddItemsFooterDelegate> delegate;
 @end

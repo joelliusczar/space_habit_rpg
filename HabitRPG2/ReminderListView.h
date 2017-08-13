@@ -13,6 +13,7 @@
 #import "P_ReminderTimeSpinPickerDelegate.h"
 #import "EditNavigationController.h"
 #import "P_TimeUtilityStore.h"
+#import "AddItemsFooter.h"
 #import "SHView.h"
 
 @import CoreData;
@@ -27,6 +28,7 @@
 @property (weak,nonatomic) NSOrderedSet<Reminder *> *reminderSet;
 @property (strong,nonatomic) id<P_TimeUtilityStore> timeStore;
 @property (weak,nonatomic) EditNavigationController *backViewController;
+@property (weak,nonatomic) IBOutlet AddItemsFooter *addItemsFooter;
 @property (strong,nonatomic) UIColor *contentColor;
 +(instancetype)newWithDueDateInfo:(id<P_DueDateWrapper>)dueDateInfo
              andBackViewController:(EditNavigationController *)backViewController

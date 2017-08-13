@@ -14,7 +14,7 @@
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
-        _mainView = [self loadXib:NSStringFromClass(self.class)];
+        _mainView = [self loadDefaultXib];
         [self addSubview:_mainView];
         //this is neccessary because other wise the outer frame
         //is too small and invisibly blocks user actions.
@@ -26,12 +26,18 @@
 
 -(instancetype)initWithCoder:(NSCoder *)coder{
     if(self = [super initWithCoder:coder]){
-        _mainView = [self loadXib:NSStringFromClass(self.class)];
+        _mainView = [self loadDefaultXib];
         [self addSubview:_mainView];
         [self resizeFrame:_mainView.frame.size];
     }
     return self;
 }
+
+
+-(UIView *)loadDefaultXib{
+    return [self loadXib:(NSStringFromClass(self.class))];
+}
+
 
 -(void)changeBackgroundColorTo:(UIColor *)color{
     self.mainView.backgroundColor = color;

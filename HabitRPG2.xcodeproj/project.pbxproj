@@ -19,6 +19,9 @@
 		272427E31F391DA40028B22E /* SHView.m in Sources */ = {isa = PBXBuildFile; fileRef = 272427E21F391DA40028B22E /* SHView.m */; };
 		272427E41F3EA3C50028B22E /* RateTypeSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 276159B71F31A310002E8BF9 /* RateTypeSelector.xib */; };
 		272427E61F3EC11C0028B22E /* rounded_border.png in Resources */ = {isa = PBXBuildFile; fileRef = 272427E51F3EC11C0028B22E /* rounded_border.png */; };
+		2724281E1F40E7790028B22E /* MonthlyDayPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2724281D1F40E7790028B22E /* MonthlyDayPicker.m */; };
+		272428201F40E8060028B22E /* MonthlyDayPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2724281F1F40E8060028B22E /* MonthlyDayPicker.xib */; };
+		272428231F4101330028B22E /* ItemFlexibleListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 272428221F4101330028B22E /* ItemFlexibleListView.m */; };
 		272596391F32D6C1006EECD2 /* SHSpinPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 272596381F32D6C1006EECD2 /* SHSpinPicker.m */; };
 		2725963C1F32D81F006EECD2 /* MonthPartPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725963B1F32D81F006EECD2 /* MonthPartPicker.m */; };
 		273782381EE4D1B200EA5B1D /* FrequentCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 273782371EE4D1B200EA5B1D /* FrequentCase.m */; };
@@ -231,6 +234,11 @@
 		272427E11F391DA40028B22E /* SHView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHView.h; sourceTree = "<group>"; };
 		272427E21F391DA40028B22E /* SHView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHView.m; sourceTree = "<group>"; };
 		272427E51F3EC11C0028B22E /* rounded_border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rounded_border.png; sourceTree = "<group>"; };
+		2724281C1F40E7790028B22E /* MonthlyDayPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthlyDayPicker.h; sourceTree = "<group>"; };
+		2724281D1F40E7790028B22E /* MonthlyDayPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthlyDayPicker.m; sourceTree = "<group>"; };
+		2724281F1F40E8060028B22E /* MonthlyDayPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthlyDayPicker.xib; sourceTree = "<group>"; };
+		272428211F4101330028B22E /* ItemFlexibleListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemFlexibleListView.h; sourceTree = "<group>"; };
+		272428221F4101330028B22E /* ItemFlexibleListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemFlexibleListView.m; sourceTree = "<group>"; };
 		272596371F32D6C1006EECD2 /* SHSpinPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSpinPicker.h; sourceTree = "<group>"; };
 		272596381F32D6C1006EECD2 /* SHSpinPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSpinPicker.m; sourceTree = "<group>"; };
 		2725963A1F32D81F006EECD2 /* MonthPartPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthPartPicker.h; sourceTree = "<group>"; };
@@ -880,6 +888,11 @@
 				2725963B1F32D81F006EECD2 /* MonthPartPicker.m */,
 				272427E11F391DA40028B22E /* SHView.h */,
 				272427E21F391DA40028B22E /* SHView.m */,
+				2724281C1F40E7790028B22E /* MonthlyDayPicker.h */,
+				2724281D1F40E7790028B22E /* MonthlyDayPicker.m */,
+				2724281F1F40E8060028B22E /* MonthlyDayPicker.xib */,
+				272428211F4101330028B22E /* ItemFlexibleListView.h */,
+				272428221F4101330028B22E /* ItemFlexibleListView.m */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -1349,6 +1362,7 @@
 				273979001EC4092A00F217B4 /* IntroViewController.xib in Resources */,
 				27C92C451E3314000025727E /* ZoneDescriptionViewController.xib in Resources */,
 				6889C65E1D88F82700598435 /* DailyEditView.xib in Resources */,
+				272428201F40E8060028B22E /* MonthlyDayPicker.xib in Resources */,
 				273978861EB55F3700F217B4 /* StoryDumpView.xib in Resources */,
 				6886A48F1D8F6F9B005E12B3 /* edit_button.png in Resources */,
 				68F3F9B91D70E82E00840DD2 /* Assets.xcassets in Resources */,
@@ -1439,6 +1453,7 @@
 				27B0CDD11F2BEECD005BEC75 /* TodoTransaction+CoreDataProperties.m in Sources */,
 				27B0CD151F2BEB94005BEC75 /* Zone+CoreDataClass.m in Sources */,
 				68F3F9F31D70FC5E00840DD2 /* TodoViewController.m in Sources */,
+				272428231F4101330028B22E /* ItemFlexibleListView.m in Sources */,
 				27B0CD011F2BEB17005BEC75 /* Reminder+CoreDataProperties.m in Sources */,
 				27B0CD101F2BEB78005BEC75 /* Monster+CoreDataProperties.m in Sources */,
 				27C3C21C1F001DF300F205A6 /* ReminderListView.m in Sources */,
@@ -1512,6 +1527,7 @@
 				27E89C981EF5F3EE009B7474 /* SubTaskCellController.m in Sources */,
 				277ABEC91E949B96008CC239 /* StdLibWrapper.m in Sources */,
 				686ED3B71DAF3DBD004EDD36 /* CustomSwitch.m in Sources */,
+				2724281E1F40E7790028B22E /* MonthlyDayPicker.m in Sources */,
 				2785DCCF1F2CC21600B5C28C /* GoodTransaction+CoreDataClass.m in Sources */,
 				27C92C481E341DA10025727E /* ViewHelper.m in Sources */,
 				27B0CD041F2BEB42005BEC75 /* Suffix+CoreDataClass.m in Sources */,

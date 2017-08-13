@@ -43,11 +43,12 @@
     instance.backViewController = backViewController;
     
     CGFloat tblHeight = instance.reminderSet.count<SUB_TABLE_MAX_ROWS?
-    SUB_TABLE_CELL_HEIGHT*instance.reminderSet.count:
-    SUB_TABLE_MAX_HEIGHT;
+        SUB_TABLE_CELL_HEIGHT*instance.reminderSet.count:
+        SUB_TABLE_MAX_HEIGHT;
     [instance resizeRemindersListHeightByOffset:tblHeight];
     instance.reminderTbl.tableFooterView = [[UIView alloc]
                                             initWithFrame:CGRectZero];
+    instance.addItemsFooter.addItemLbl.text = @"Add New Reminder";
     return instance;
 }
 

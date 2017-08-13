@@ -106,6 +106,7 @@ numberOfRowsInComponent:(NSInteger)component{
 }
 
 -(CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component{
+    //these numbers were picked somewhat arbitrarily
     if(component==HOUR_OF_DAY_COL){
         return 35;
     }

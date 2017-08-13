@@ -18,7 +18,7 @@ const NSInteger DAY_COLUMN = 1;
 
 @implementation MonthPartPicker
 
--(instancetype)initWithTimeStore:(NSObject<P_TimeUtilityStore> *)timeStore{
+-(instancetype)initWithTimeStore:(id<P_TimeUtilityStore>)timeStore{
     if(self = [self init]){
         _timeStore = timeStore;
     }
@@ -67,6 +67,12 @@ numberOfRowsInComponent:(NSInteger)component{
 
 -(CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component{
     return 200;
+}
+
+
+-(IBAction)pickerSelectBtn_press_action:(UIButton *)sender
+                               forEvent:(UIEvent *)event{
+    
 }
 
 @end

@@ -9,12 +9,20 @@
 #import "RateSetContainer.h"
 #import "RateTypeSelector.h"
 #import "ViewHelper.h"
+#import "UIView+Helpers.h"
 
 @interface RateSetContainer ()
 
 @end
 
 @implementation RateSetContainer
+
+-(MonthPartPicker *)monthPartPicker{
+    if(nil==_monthPartPicker){
+        _monthPartPicker = [[MonthPartPicker alloc] initWithTimeStore:self.timeStore];
+    }
+    return _monthPartPicker;
+}
 
 +(instancetype)newWithDaily:(Daily * _Nonnull)daily
             andBackViewController:(EditNavigationController * _Nonnull)backViewController
@@ -42,6 +50,13 @@
 -(void)updateRateType:(RateType)rateType{
     self.daily.rateType = rateType;
 }
+
+-(void)setRateTypeActiveDaysControl:(RateType)rateType{
+    if(rateType == MONTHLY_RATE){
+        //[self replaceSubviewsWith:self.monthPartPicker];
+    }
+}
+
 
 -(void)rateStep_valueChanged_action:(UIStepper *)sender
                            forEvent:(UIEvent *)event{

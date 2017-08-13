@@ -46,8 +46,18 @@
             userInfo:nil];
 }
 
+
 -(NSInteger)pickerView:(UIPickerView *)pickerView
 numberOfRowsInComponent:(NSInteger)component{
+    @throw [NSException
+            exceptionWithName:@"abstract method exception"
+            reason:@"This method needs to be implemented in a subclass"
+            userInfo:nil];
+}
+
+
+-(IBAction)pickerSelectBtn_press_action:(UIButton *)sender
+                               forEvent:(UIEvent *)event{
     @throw [NSException
             exceptionWithName:@"abstract method exception"
             reason:@"This method needs to be implemented in a subclass"

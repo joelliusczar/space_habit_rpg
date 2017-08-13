@@ -11,4 +11,6 @@
 @interface SHSpinPicker : UIViewController
 <UIPickerViewDataSource,UIPickerViewDelegate>
 @property (weak,nonatomic) IBOutlet UIPickerView *picker;
+-(IBAction)pickerSelectBtn_press_action:(UIButton *)sender
+                               forEvent:(UIEvent *)event;
 @end
