@@ -84,7 +84,7 @@
                         </label>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" directionalLockEnabled="YES" scrollEnabled="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="Tvo-tY-HIU">
                             <rect key="frame" x="9" y="50" width="271" height="308"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         </scrollView>
                     </subviews>
                     <color key="backgroundColor" red="0.099043423960000002" green="0.099043423960000002" blue="0.099043423960000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

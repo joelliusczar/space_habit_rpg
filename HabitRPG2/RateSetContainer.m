@@ -38,6 +38,7 @@
     [ViewHelper pushViewToFront:typeSelector OfParent:self.backViewController];
 }
 
+
 -(void)updateRateType:(RateType)rateType{
     self.daily.rateType = rateType;
 }

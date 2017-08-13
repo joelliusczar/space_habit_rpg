@@ -8,6 +8,7 @@
 
 #import "SHView.h"
 #import "NSObject+Helper.h"
+#import "UIView+Helpers.h"
 
 @implementation SHView
 
@@ -15,7 +16,9 @@
     if(self = [super initWithFrame:frame]){
         _mainView = [self loadXib:NSStringFromClass(self.class)];
         [self addSubview:_mainView];
-        self.frame = _mainView.frame;
+        //this is neccessary because other wise the outer frame
+        //is too small and invisibly blocks user actions.
+        [self resizeFrame:_mainView.frame.size];
     }
     return self;
 }
@@ -25,7 +28,7 @@
     if(self = [super initWithCoder:coder]){
         _mainView = [self loadXib:NSStringFromClass(self.class)];
         [self addSubview:_mainView];
-        self.frame = _mainView.frame;
+        [self resizeFrame:_mainView.frame.size];
     }
     return self;
 }
