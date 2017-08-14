@@ -20,9 +20,9 @@
 		272427E41F3EA3C50028B22E /* RateTypeSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 276159B71F31A310002E8BF9 /* RateTypeSelector.xib */; };
 		272427E61F3EC11C0028B22E /* rounded_border.png in Resources */ = {isa = PBXBuildFile; fileRef = 272427E51F3EC11C0028B22E /* rounded_border.png */; };
 		2724281E1F40E7790028B22E /* MonthlyDayPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2724281D1F40E7790028B22E /* MonthlyDayPicker.m */; };
-		272428201F40E8060028B22E /* MonthlyDayPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2724281F1F40E8060028B22E /* MonthlyDayPicker.xib */; };
 		272428231F4101330028B22E /* ItemFlexibleListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 272428221F4101330028B22E /* ItemFlexibleListView.m */; };
 		2724282B1F41090D0028B22E /* NSException+SHCommonExceptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2724282A1F41090D0028B22E /* NSException+SHCommonExceptions.m */; };
+		2724282E1F4156670028B22E /* ListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2724282D1F4156670028B22E /* ListItemCell.m */; };
 		272596391F32D6C1006EECD2 /* SHSpinPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 272596381F32D6C1006EECD2 /* SHSpinPicker.m */; };
 		2725963C1F32D81F006EECD2 /* MonthPartPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725963B1F32D81F006EECD2 /* MonthPartPicker.m */; };
 		273782381EE4D1B200EA5B1D /* FrequentCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 273782371EE4D1B200EA5B1D /* FrequentCase.m */; };
@@ -136,7 +136,7 @@
 		27C92C451E3314000025727E /* ZoneDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C431E3314000025727E /* ZoneDescriptionViewController.xib */; };
 		27C92C481E341DA10025727E /* ViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C92C471E341DA10025727E /* ViewHelper.m */; };
 		27E89C6A1EF5AD68009B7474 /* SubtaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E89C691EF5AD68009B7474 /* SubtaskCell.xib */; };
-		27E89C901EF5E6A8009B7474 /* ReminderCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E89C8F1EF5E6A8009B7474 /* ReminderCellController.xib */; };
+		27E89C901EF5E6A8009B7474 /* ListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E89C8F1EF5E6A8009B7474 /* ListItemCell.xib */; };
 		27E89C941EF5E732009B7474 /* ReminderCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E89C931EF5E732009B7474 /* ReminderCellController.m */; };
 		27E89C981EF5F3EE009B7474 /* SubTaskCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E89C971EF5F3EE009B7474 /* SubTaskCellController.m */; };
 		27E89C9D1EF5FCD5009B7474 /* ImportanceSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E89C9B1EF5FCD5009B7474 /* ImportanceSliderView.m */; };
@@ -237,12 +237,13 @@
 		272427E51F3EC11C0028B22E /* rounded_border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rounded_border.png; sourceTree = "<group>"; };
 		2724281C1F40E7790028B22E /* MonthlyDayPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthlyDayPicker.h; sourceTree = "<group>"; };
 		2724281D1F40E7790028B22E /* MonthlyDayPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthlyDayPicker.m; sourceTree = "<group>"; };
-		2724281F1F40E8060028B22E /* MonthlyDayPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthlyDayPicker.xib; sourceTree = "<group>"; };
 		272428211F4101330028B22E /* ItemFlexibleListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemFlexibleListView.h; sourceTree = "<group>"; };
 		272428221F4101330028B22E /* ItemFlexibleListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemFlexibleListView.m; sourceTree = "<group>"; };
 		272428241F41053A0028B22E /* P_MonthComponentSpinPickerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_MonthComponentSpinPickerDelegate.h; sourceTree = "<group>"; };
 		272428291F41090D0028B22E /* NSException+SHCommonExceptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSException+SHCommonExceptions.h"; sourceTree = "<group>"; };
 		2724282A1F41090D0028B22E /* NSException+SHCommonExceptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSException+SHCommonExceptions.m"; sourceTree = "<group>"; };
+		2724282C1F4156670028B22E /* ListItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListItemCell.h; sourceTree = "<group>"; };
+		2724282D1F4156670028B22E /* ListItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListItemCell.m; sourceTree = "<group>"; };
 		272596371F32D6C1006EECD2 /* SHSpinPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSpinPicker.h; sourceTree = "<group>"; };
 		272596381F32D6C1006EECD2 /* SHSpinPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSpinPicker.m; sourceTree = "<group>"; };
 		2725963A1F32D81F006EECD2 /* MonthPartPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthPartPicker.h; sourceTree = "<group>"; };
@@ -470,7 +471,7 @@
 		27E00E981ED3FAE8008B35CD /* P_Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_Transaction.h; sourceTree = "<group>"; };
 		27E89C681EF59034009B7474 /* Model 25.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 25.xcdatamodel"; sourceTree = "<group>"; };
 		27E89C691EF5AD68009B7474 /* SubtaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubtaskCell.xib; sourceTree = "<group>"; };
-		27E89C8F1EF5E6A8009B7474 /* ReminderCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReminderCellController.xib; sourceTree = "<group>"; };
+		27E89C8F1EF5E6A8009B7474 /* ListItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListItemCell.xib; sourceTree = "<group>"; };
 		27E89C921EF5E732009B7474 /* ReminderCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReminderCellController.h; sourceTree = "<group>"; };
 		27E89C931EF5E732009B7474 /* ReminderCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReminderCellController.m; sourceTree = "<group>"; };
 		27E89C961EF5F3EE009B7474 /* SubTaskCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubTaskCellController.h; sourceTree = "<group>"; };
@@ -636,7 +637,6 @@
 		274A37571F08CCB400F31E0F /* Reminders Controls */ = {
 			isa = PBXGroup;
 			children = (
-				27E89C8F1EF5E6A8009B7474 /* ReminderCellController.xib */,
 				27E89C921EF5E732009B7474 /* ReminderCellController.h */,
 				27E89C931EF5E732009B7474 /* ReminderCellController.m */,
 				27C3C21A1F001DF300F205A6 /* ReminderListView.h */,
@@ -905,7 +905,9 @@
 				2725963B1F32D81F006EECD2 /* MonthPartPicker.m */,
 				2724281C1F40E7790028B22E /* MonthlyDayPicker.h */,
 				2724281D1F40E7790028B22E /* MonthlyDayPicker.m */,
-				2724281F1F40E8060028B22E /* MonthlyDayPicker.xib */,
+				2724282C1F4156670028B22E /* ListItemCell.h */,
+				2724282D1F4156670028B22E /* ListItemCell.m */,
+				27E89C8F1EF5E6A8009B7474 /* ListItemCell.xib */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -1368,7 +1370,7 @@
 				686ED3BB1DB4660F004EDD36 /* white_checked_full.png in Resources */,
 				27C3C20E1EFEEDC100F205A6 /* StreakResetterView.xib in Resources */,
 				275FEF021EE3A78200AED1A2 /* timeZoneList.txt in Resources */,
-				27E89C901EF5E6A8009B7474 /* ReminderCellController.xib in Resources */,
+				27E89C901EF5E6A8009B7474 /* ListItemCell.xib in Resources */,
 				68F3F9F41D70FC5E00840DD2 /* TodoViewController.xib in Resources */,
 				686ED3C41DB47FAF004EDD36 /* black_checked_full.png in Resources */,
 				272427E61F3EC11C0028B22E /* rounded_border.png in Resources */,
@@ -1377,7 +1379,6 @@
 				273979001EC4092A00F217B4 /* IntroViewController.xib in Resources */,
 				27C92C451E3314000025727E /* ZoneDescriptionViewController.xib in Resources */,
 				6889C65E1D88F82700598435 /* DailyEditView.xib in Resources */,
-				272428201F40E8060028B22E /* MonthlyDayPicker.xib in Resources */,
 				273978861EB55F3700F217B4 /* StoryDumpView.xib in Resources */,
 				6886A48F1D8F6F9B005E12B3 /* edit_button.png in Resources */,
 				68F3F9B91D70E82E00840DD2 /* Assets.xcassets in Resources */,
@@ -1473,6 +1474,7 @@
 				27B0CD101F2BEB78005BEC75 /* Monster+CoreDataProperties.m in Sources */,
 				27C3C21C1F001DF300F205A6 /* ReminderListView.m in Sources */,
 				68F3FA021D74897A00840DD2 /* MenuViewController.m in Sources */,
+				2724282E1F4156670028B22E /* ListItemCell.m in Sources */,
 				27B0CD0F1F2BEB78005BEC75 /* Monster+CoreDataClass.m in Sources */,
 				27B0CD161F2BEB94005BEC75 /* Zone+CoreDataProperties.m in Sources */,
 				273978851EB55F3700F217B4 /* StoryDumpView.m in Sources */,

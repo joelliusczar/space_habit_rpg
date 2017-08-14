@@ -7,6 +7,7 @@
 //
 
 #import "TaskCell.h"
+#import "NSObject+Helper.h"
 
 
 @interface TaskCell()
@@ -16,15 +17,15 @@
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
-        UIView *view = [self loadXib];
+        UIView *view = [self loadDefaultXib];
         [self.contentView addSubview:view];
     }
     return self;
 }
 
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
+-(UIView *)loadDefaultXib{
+    return [self loadXib:NSStringFromClass(self.class)];
 }
 
 
@@ -34,11 +35,6 @@
     // Configure the view for the selected state
 }
 
-
--(UIView *)loadXib{
-    return [[NSBundle bundleForClass:self.class]
-            loadNibNamed:NSStringFromClass(self.class) owner:self options:nil][0];
-}
 
 
 

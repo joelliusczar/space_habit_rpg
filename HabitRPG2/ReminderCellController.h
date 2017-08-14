@@ -6,10 +6,9 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import "TaskCell.h"
+#import "ListItemCell.h"
 #import "Reminder+CoreDataClass.h"
 
-@interface ReminderCellController : TaskCell
-@property (weak, nonatomic) IBOutlet UILabel *lblRowDesc;
+@interface ReminderCellController : ListItemCell
 +(instancetype)getReminderCell:(UITableView *)tableView withParent:(id)parent andReminder:(Reminder *)reminderModel;
 @end

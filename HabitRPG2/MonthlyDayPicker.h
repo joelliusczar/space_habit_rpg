@@ -6,8 +6,8 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import "SHView.h"
+#import "ItemFlexibleListView.h"
 
-@interface MonthlyDayPicker : SHView
+@interface MonthlyDayPicker : ItemFlexibleListView
 
 @end

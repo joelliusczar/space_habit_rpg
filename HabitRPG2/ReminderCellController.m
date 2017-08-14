@@ -13,6 +13,7 @@
 
 @implementation ReminderCellController
 
+
 +(instancetype)getReminderCell:(UITableView *)tableView withParent:(id)parent andReminder:(Reminder *)reminderModel{
     ReminderCellController *cell = [tableView
                                     dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
@@ -23,7 +24,5 @@
     return cell;
 }
 
-- (IBAction)addReminderBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
-}
 
 @end

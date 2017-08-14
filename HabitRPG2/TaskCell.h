@@ -9,4 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface TaskCell : UITableViewCell
+-(UIView *)loadDefaultXib;
 @end
