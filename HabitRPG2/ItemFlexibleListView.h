@@ -8,9 +8,11 @@
 
 #import "SHView.h"
 #import "AddItemsFooter.h"
+#import "P_AddItemsFooterDelegate.h"
 #import "EditNavigationController.h"
 
-@interface ItemFlexibleListView : SHView
+@interface ItemFlexibleListView :
+SHView<UITableViewDataSource,P_AddItemsFooterDelegate>
 @property (weak,nonatomic) IBOutlet UITableView *itemTbl;
 @property (weak,nonatomic) EditNavigationController *backViewController;
 @property (weak,nonatomic) IBOutlet AddItemsFooter *addItemsFooter;

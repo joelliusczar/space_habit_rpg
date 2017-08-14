@@ -22,6 +22,7 @@
 		2724281E1F40E7790028B22E /* MonthlyDayPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2724281D1F40E7790028B22E /* MonthlyDayPicker.m */; };
 		272428201F40E8060028B22E /* MonthlyDayPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2724281F1F40E8060028B22E /* MonthlyDayPicker.xib */; };
 		272428231F4101330028B22E /* ItemFlexibleListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 272428221F4101330028B22E /* ItemFlexibleListView.m */; };
+		2724282B1F41090D0028B22E /* NSException+SHCommonExceptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2724282A1F41090D0028B22E /* NSException+SHCommonExceptions.m */; };
 		272596391F32D6C1006EECD2 /* SHSpinPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 272596381F32D6C1006EECD2 /* SHSpinPicker.m */; };
 		2725963C1F32D81F006EECD2 /* MonthPartPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725963B1F32D81F006EECD2 /* MonthPartPicker.m */; };
 		273782381EE4D1B200EA5B1D /* FrequentCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 273782371EE4D1B200EA5B1D /* FrequentCase.m */; };
@@ -239,6 +240,9 @@
 		2724281F1F40E8060028B22E /* MonthlyDayPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthlyDayPicker.xib; sourceTree = "<group>"; };
 		272428211F4101330028B22E /* ItemFlexibleListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemFlexibleListView.h; sourceTree = "<group>"; };
 		272428221F4101330028B22E /* ItemFlexibleListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemFlexibleListView.m; sourceTree = "<group>"; };
+		272428241F41053A0028B22E /* P_MonthComponentSpinPickerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_MonthComponentSpinPickerDelegate.h; sourceTree = "<group>"; };
+		272428291F41090D0028B22E /* NSException+SHCommonExceptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSException+SHCommonExceptions.h"; sourceTree = "<group>"; };
+		2724282A1F41090D0028B22E /* NSException+SHCommonExceptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSException+SHCommonExceptions.m"; sourceTree = "<group>"; };
 		272596371F32D6C1006EECD2 /* SHSpinPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSpinPicker.h; sourceTree = "<group>"; };
 		272596381F32D6C1006EECD2 /* SHSpinPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSpinPicker.m; sourceTree = "<group>"; };
 		2725963A1F32D81F006EECD2 /* MonthPartPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthPartPicker.h; sourceTree = "<group>"; };
@@ -612,6 +616,22 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		272428251F41074A0028B22E /* Abstract */ = {
+			isa = PBXGroup;
+			children = (
+				27AF22E51F270FBA00F7D872 /* SHControlController.h */,
+				27AF22E61F270FBA00F7D872 /* SHControlController.m */,
+				272596371F32D6C1006EECD2 /* SHSpinPicker.h */,
+				272596381F32D6C1006EECD2 /* SHSpinPicker.m */,
+				274A37551F08C7BE00F31E0F /* SHSpinPicker.xib */,
+				272427E11F391DA40028B22E /* SHView.h */,
+				272427E21F391DA40028B22E /* SHView.m */,
+				272428211F4101330028B22E /* ItemFlexibleListView.h */,
+				272428221F4101330028B22E /* ItemFlexibleListView.m */,
+			);
+			name = Abstract;
+			sourceTree = "<group>";
+		};
 		274A37571F08CCB400F31E0F /* Reminders Controls */ = {
 			isa = PBXGroup;
 			children = (
@@ -699,6 +719,7 @@
 				27C3C2281F08BC4F00F205A6 /* P_AddItemsFooterDelegate.h */,
 				274A37971F09BA9C00F31E0F /* P_ReminderTimeSpinPickerDelegate.h */,
 				276159BA1F327460002E8BF9 /* P_RateTypeSelectorDelegate.h */,
+				272428241F41053A0028B22E /* P_MonthComponentSpinPickerDelegate.h */,
 			);
 			name = "Control Delegates";
 			sourceTree = "<group>";
@@ -844,6 +865,7 @@
 		27E89C991EF5FC40009B7474 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				272428251F41074A0028B22E /* Abstract */,
 				275D9F261F21A33E009DA715 /* TaskCell.m */,
 				275D9F251F21A2EF009DA715 /* TaskCell.h */,
 				274A37AC1F0A07A200F31E0F /* EventArgs */,
@@ -873,26 +895,17 @@
 				27C3C2231F08799200F205A6 /* AddItemsFooter.h */,
 				27C3C2241F08799200F205A6 /* AddItemsFooter.m */,
 				27C3C2261F0879B200F205A6 /* AddItemsFooter.xib */,
-				27AF22E51F270FBA00F7D872 /* SHControlController.h */,
-				27AF22E61F270FBA00F7D872 /* SHControlController.m */,
 				276159B51F31A310002E8BF9 /* RateTypeSelector.h */,
 				276159B61F31A310002E8BF9 /* RateTypeSelector.m */,
 				276159B71F31A310002E8BF9 /* RateTypeSelector.xib */,
 				276159BF1F32B815002E8BF9 /* RateSetContainer.h */,
 				276159C01F32B815002E8BF9 /* RateSetContainer.m */,
 				276159C11F32B815002E8BF9 /* RateSetContainer.xib */,
-				272596371F32D6C1006EECD2 /* SHSpinPicker.h */,
-				272596381F32D6C1006EECD2 /* SHSpinPicker.m */,
-				274A37551F08C7BE00F31E0F /* SHSpinPicker.xib */,
 				2725963A1F32D81F006EECD2 /* MonthPartPicker.h */,
 				2725963B1F32D81F006EECD2 /* MonthPartPicker.m */,
-				272427E11F391DA40028B22E /* SHView.h */,
-				272427E21F391DA40028B22E /* SHView.m */,
 				2724281C1F40E7790028B22E /* MonthlyDayPicker.h */,
 				2724281D1F40E7790028B22E /* MonthlyDayPicker.m */,
 				2724281F1F40E8060028B22E /* MonthlyDayPicker.xib */,
-				272428211F4101330028B22E /* ItemFlexibleListView.h */,
-				272428221F4101330028B22E /* ItemFlexibleListView.m */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -1106,6 +1119,8 @@
 				27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */,
 				271C04891E8C955A002221E9 /* SingletonCluster.h */,
 				271C048A1E8C955A002221E9 /* SingletonCluster.m */,
+				272428291F41090D0028B22E /* NSException+SHCommonExceptions.h */,
+				2724282A1F41090D0028B22E /* NSException+SHCommonExceptions.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1526,6 +1541,7 @@
 				27C3C2151EFEF6F800F205A6 /* RewardsView.m in Sources */,
 				27E89C981EF5F3EE009B7474 /* SubTaskCellController.m in Sources */,
 				277ABEC91E949B96008CC239 /* StdLibWrapper.m in Sources */,
+				2724282B1F41090D0028B22E /* NSException+SHCommonExceptions.m in Sources */,
 				686ED3B71DAF3DBD004EDD36 /* CustomSwitch.m in Sources */,
 				2724281E1F40E7790028B22E /* MonthlyDayPicker.m in Sources */,
 				2785DCCF1F2CC21600B5C28C /* GoodTransaction+CoreDataClass.m in Sources */,

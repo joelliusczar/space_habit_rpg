@@ -9,6 +9,7 @@
 #import "SHSpinPicker.h"
 #import "Interceptor.h"
 #import "ViewHelper.h"
+#import "NSException+SHCommonExceptions.h"
 
 @interface SHSpinPicker ()
 
@@ -40,28 +41,19 @@
 
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
-    @throw [NSException
-            exceptionWithName:@"abstract method exception"
-            reason:@"This method needs to be implemented in a subclass"
-            userInfo:nil];
+    @throw [NSException abstractException];
 }
 
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView
 numberOfRowsInComponent:(NSInteger)component{
-    @throw [NSException
-            exceptionWithName:@"abstract method exception"
-            reason:@"This method needs to be implemented in a subclass"
-            userInfo:nil];
+    @throw [NSException abstractException];
 }
 
 
 -(IBAction)pickerSelectBtn_press_action:(UIButton *)sender
                                forEvent:(UIEvent *)event{
-    @throw [NSException
-            exceptionWithName:@"abstract method exception"
-            reason:@"This method needs to be implemented in a subclass"
-            userInfo:nil];
+    @throw [NSException abstractException];
 }
 
 @end

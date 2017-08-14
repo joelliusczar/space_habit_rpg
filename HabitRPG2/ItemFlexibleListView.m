@@ -7,15 +7,26 @@
 //
 
 #import "ItemFlexibleListView.h"
+#import "NSException+SHCommonExceptions.h"
 
 @implementation ItemFlexibleListView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+-(NSInteger)tableView:(UITableView *)tableView
+numberOfRowsInSection:(NSInteger)section{
+    @throw [NSException abstractException];
 }
-*/
+
+-(UITableViewCell *)tableView:(UITableViewCell *)tableView
+        cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    @throw [NSException abstractException];
+}
+
+-(void)addItemBtn_press_action:(UIButton *)sender
+                      forEvent:(UIEvent *)event{
+    @throw [NSException abstractException];
+}
+
+
+
 
 @end
