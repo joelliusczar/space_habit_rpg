@@ -125,7 +125,7 @@
 		27C3C2151EFEF6F800F205A6 /* RewardsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C3C2141EFEF6F800F205A6 /* RewardsView.m */; };
 		27C3C2171EFEF89500F205A6 /* RewardsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C3C2161EFEF89500F205A6 /* RewardsView.xib */; };
 		27C3C21C1F001DF300F205A6 /* ReminderListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C3C21B1F001DF300F205A6 /* ReminderListView.m */; };
-		27C3C21E1F0022D600F205A6 /* ReminderListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C3C21D1F0022D600F205A6 /* ReminderListView.xib */; };
+		27C3C21E1F0022D600F205A6 /* ItemFlexibleListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C3C21D1F0022D600F205A6 /* ItemFlexibleListView.xib */; };
 		27C3C2251F08799200F205A6 /* AddItemsFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C3C2241F08799200F205A6 /* AddItemsFooter.m */; };
 		27C3C2271F0879B200F205A6 /* AddItemsFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C3C2261F0879B200F205A6 /* AddItemsFooter.xib */; };
 		27C92C121E28A1330025727E /* ZoneChoiceCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C92C111E28A1330025727E /* ZoneChoiceCellController.xib */; };
@@ -450,7 +450,7 @@
 		27C3C2191EFF594C00F205A6 /* P_CommonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_CommonDelegate.h; sourceTree = "<group>"; };
 		27C3C21A1F001DF300F205A6 /* ReminderListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReminderListView.h; sourceTree = "<group>"; };
 		27C3C21B1F001DF300F205A6 /* ReminderListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReminderListView.m; sourceTree = "<group>"; };
-		27C3C21D1F0022D600F205A6 /* ReminderListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReminderListView.xib; sourceTree = "<group>"; };
+		27C3C21D1F0022D600F205A6 /* ItemFlexibleListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemFlexibleListView.xib; sourceTree = "<group>"; };
 		27C3C21F1F07854700F205A6 /* P_DueDateWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_DueDateWrapper.h; sourceTree = "<group>"; };
 		27C3C2231F08799200F205A6 /* AddItemsFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddItemsFooter.h; sourceTree = "<group>"; };
 		27C3C2241F08799200F205A6 /* AddItemsFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddItemsFooter.m; sourceTree = "<group>"; };
@@ -628,6 +628,7 @@
 				272427E21F391DA40028B22E /* SHView.m */,
 				272428211F4101330028B22E /* ItemFlexibleListView.h */,
 				272428221F4101330028B22E /* ItemFlexibleListView.m */,
+				27C3C21D1F0022D600F205A6 /* ItemFlexibleListView.xib */,
 			);
 			name = Abstract;
 			sourceTree = "<group>";
@@ -640,7 +641,6 @@
 				27E89C931EF5E732009B7474 /* ReminderCellController.m */,
 				27C3C21A1F001DF300F205A6 /* ReminderListView.h */,
 				27C3C21B1F001DF300F205A6 /* ReminderListView.m */,
-				27C3C21D1F0022D600F205A6 /* ReminderListView.xib */,
 				274A375A1F08CD6D00F31E0F /* ReminderTimeSpinPicker.h */,
 				274A375B1F08CD6D00F31E0F /* ReminderTimeSpinPicker.m */,
 			);
@@ -1385,7 +1385,7 @@
 				27C3C2271F0879B200F205A6 /* AddItemsFooter.xib in Resources */,
 				687F01231D77CA6500C7B08B /* DailyTablesViewController.xib in Resources */,
 				686ED3C21DB47FA5004EDD36 /* black_checked_empty.png in Resources */,
-				27C3C21E1F0022D600F205A6 /* ReminderListView.xib in Resources */,
+				27C3C21E1F0022D600F205A6 /* ItemFlexibleListView.xib in Resources */,
 				27C92C121E28A1330025727E /* ZoneChoiceCellController.xib in Resources */,
 				68F3F9E51D70E8DB00840DD2 /* CentralViewController.xib in Resources */,
 				277ABF321E9F1A30008CC239 /* ZoneChoicePicker.xib in Resources */,

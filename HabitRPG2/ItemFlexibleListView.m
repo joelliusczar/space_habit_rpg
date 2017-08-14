@@ -8,8 +8,15 @@
 
 #import "ItemFlexibleListView.h"
 #import "NSException+SHCommonExceptions.h"
+#import "NSObject+Helper.h"
 
 @implementation ItemFlexibleListView
+
+
+-(UIView *)loadDefaultXib{
+    return [self loadXib:@"ItemFlexibleListView"];
+}
+
 
 -(NSInteger)tableView:(UITableView *)tableView
 numberOfRowsInSection:(NSInteger)section{

@@ -14,22 +14,18 @@
 #import "EditNavigationController.h"
 #import "P_TimeUtilityStore.h"
 #import "AddItemsFooter.h"
-#import "SHView.h"
+#import "ItemFlexibleListView.h"
 
 @import CoreData;
 
-@interface ReminderListView :SHView
+@interface ReminderListView :ItemFlexibleListView
 <UITableViewDataSource
 ,P_AddItemsFooterDelegate
 ,P_ReminderTimeSpinPickerDelegate>
 
-@property (weak,nonatomic) IBOutlet UITableView *reminderTbl;
 @property (strong,nonatomic) id<P_DueDateWrapper> dueDateInfo;
 @property (weak,nonatomic) NSOrderedSet<Reminder *> *reminderSet;
 @property (strong,nonatomic) id<P_TimeUtilityStore> timeStore;
-@property (weak,nonatomic) EditNavigationController *backViewController;
-@property (weak,nonatomic) IBOutlet AddItemsFooter *addItemsFooter;
-@property (strong,nonatomic) UIColor *contentColor;
 +(instancetype)newWithDueDateInfo:(id<P_DueDateWrapper>)dueDateInfo
              andBackViewController:(EditNavigationController *)backViewController
                          andTimeStore:(id<P_TimeUtilityStore>)timeStore;

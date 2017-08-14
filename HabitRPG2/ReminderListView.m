@@ -46,7 +46,7 @@
         SUB_TABLE_CELL_HEIGHT*instance.reminderSet.count:
         SUB_TABLE_MAX_HEIGHT;
     [instance resizeRemindersListHeightByOffset:tblHeight];
-    instance.reminderTbl.tableFooterView = [[UIView alloc]
+    instance.itemTbl.tableFooterView = [[UIView alloc]
                                             initWithFrame:CGRectZero];
     instance.addItemsFooter.addItemLbl.text = @"Add New Reminder";
     return instance;
@@ -92,7 +92,7 @@ numberOfRowsInSection:(NSInteger)section{
         NSIndexPath *indexPath = [NSIndexPath
                                   indexPathForRow:self.reminderSet.count-1
                                   inSection:0];
-        [self.reminderTbl
+        [self.itemTbl
          insertRowsAtIndexPaths:@[indexPath]
          withRowAnimation:UITableViewRowAnimationFade];
         //need the begin/end update lines because buttons will get covered by
@@ -124,8 +124,8 @@ numberOfRowsInSection:(NSInteger)section{
 
 
 -(void)resizeRemindersListHeightByOffset:(CGFloat)offset{
-    if(self.reminderTbl.frame.size.height < SUB_TABLE_MAX_HEIGHT){
-        [self.reminderTbl resizeHeightByOffset:offset];
+    if(self.itemTbl.frame.size.height < SUB_TABLE_MAX_HEIGHT){
+        [self.itemTbl resizeHeightByOffset:offset];
         [self.mainView resizeHeightByOffset:offset];
         [self resizeHeightByOffset:offset];
     }
@@ -135,7 +135,7 @@ numberOfRowsInSection:(NSInteger)section{
 -(void)scrollRemindersListByOffset:(CGFloat)offset{
     //auto scroll so that reminders remains centered
     [self.backViewController scrollByOffset:SUB_TABLE_CELL_HEIGHT];
-    [self.reminderTbl scrollByOffset:SUB_TABLE_CELL_HEIGHT];
+    [self.itemTbl scrollByOffset:SUB_TABLE_CELL_HEIGHT];
 }
 
 

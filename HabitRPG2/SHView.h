@@ -12,4 +12,5 @@
 @property (weak,nonatomic) UIView *mainView;
 @property (weak,nonatomic) UIView *holderView;
 -(void)changeBackgroundColorTo:(UIColor *)color;
+-(UIView *)loadDefaultXib;
 @end
