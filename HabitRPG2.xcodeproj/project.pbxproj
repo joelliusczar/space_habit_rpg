@@ -47,8 +47,8 @@
 		274A37EA1F145D2200F31E0F /* House+Things.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37E91F145D2200F31E0F /* House+Things.m */; };
 		274A382F1F2150ED00F31E0F /* MathTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A382E1F2150ED00F31E0F /* MathTest.m */; };
 		274A38381F2194FD00F31E0F /* ParentMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A38371F2194FD00F31E0F /* ParentMan.m */; };
-		274FFC291EF6236600FAF809 /* ActiveDaysPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC271EF6236600FAF809 /* ActiveDaysPicker.m */; };
-		274FFC2A1EF6236600FAF809 /* ActiveDaysPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274FFC281EF6236600FAF809 /* ActiveDaysPicker.xib */; };
+		274FFC291EF6236600FAF809 /* WeeklyActiveDays.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC271EF6236600FAF809 /* WeeklyActiveDays.m */; };
+		274FFC2A1EF6236600FAF809 /* WeeklyActiveDays.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274FFC281EF6236600FAF809 /* WeeklyActiveDays.xib */; };
 		274FFC2F1EF6296D00FAF809 /* NoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC2D1EF6296D00FAF809 /* NoteView.m */; };
 		274FFC301EF6296D00FAF809 /* NoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274FFC2E1EF6296D00FAF809 /* NoteView.xib */; };
 		274FFC3C1EF62FA200FAF809 /* SubtasksTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC3A1EF62FA200FAF809 /* SubtasksTableView.m */; };
@@ -296,10 +296,10 @@
 		274A382E1F2150ED00F31E0F /* MathTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathTest.m; sourceTree = "<group>"; };
 		274A38361F2194FD00F31E0F /* ParentMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentMan.h; sourceTree = "<group>"; };
 		274A38371F2194FD00F31E0F /* ParentMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentMan.m; sourceTree = "<group>"; };
-		274FFC261EF6236600FAF809 /* ActiveDaysPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveDaysPicker.h; sourceTree = "<group>"; };
-		274FFC271EF6236600FAF809 /* ActiveDaysPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveDaysPicker.m; sourceTree = "<group>"; };
-		274FFC281EF6236600FAF809 /* ActiveDaysPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActiveDaysPicker.xib; sourceTree = "<group>"; };
-		274FFC2B1EF6269F00FAF809 /* P_ActiveDaysPickerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ActiveDaysPickerDelegate.h; sourceTree = "<group>"; };
+		274FFC261EF6236600FAF809 /* WeeklyActiveDays.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = WeeklyActiveDays.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		274FFC271EF6236600FAF809 /* WeeklyActiveDays.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = WeeklyActiveDays.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		274FFC281EF6236600FAF809 /* WeeklyActiveDays.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeeklyActiveDays.xib; sourceTree = "<group>"; };
+		274FFC2B1EF6269F00FAF809 /* P_WeeklyActiveDaysDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = P_WeeklyActiveDaysDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		274FFC2C1EF6296D00FAF809 /* NoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteView.h; sourceTree = "<group>"; };
 		274FFC2D1EF6296D00FAF809 /* NoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteView.m; sourceTree = "<group>"; };
 		274FFC2E1EF6296D00FAF809 /* NoteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteView.xib; sourceTree = "<group>"; };
@@ -312,7 +312,7 @@
 		274FFC401EF6E2B100FAF809 /* RateSetterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateSetterView.m; sourceTree = "<group>"; };
 		274FFC411EF6E2B100FAF809 /* RateSetterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RateSetterView.xib; sourceTree = "<group>"; };
 		274FFC441EF6E3BB00FAF809 /* P_RateSetterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_RateSetterDelegate.h; sourceTree = "<group>"; };
-		274FFC481EF887DB00FAF809 /* DailyEditControlKeep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyEditControlKeep.h; sourceTree = "<group>"; };
+		274FFC481EF887DB00FAF809 /* DailyEditControlKeep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DailyEditControlKeep.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		274FFC491EF887DB00FAF809 /* DailyEditControlKeep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyEditControlKeep.m; sourceTree = "<group>"; };
 		275A07B51EDA1FB9001422CD /* TestHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHelpers.h; sourceTree = "<group>"; };
 		275A07B61EDA1FB9001422CD /* TestHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHelpers.m; sourceTree = "<group>"; };
@@ -442,7 +442,7 @@
 		27B0CDE11F2BF53B005BEC75 /* HabitTransaction+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HabitTransaction+CoreDataClass.m"; sourceTree = "<group>"; };
 		27B0CDE31F2BF560005BEC75 /* DailyTransaction+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DailyTransaction+CoreDataClass.h"; sourceTree = "<group>"; };
 		27B0CDE61F2C4091005BEC75 /* DailyTransaction+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DailyTransaction+CoreDataClass.m"; sourceTree = "<group>"; };
-		27B47E871EF8F2F500B81275 /* P_DailyEditCompound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_DailyEditCompound.h; sourceTree = "<group>"; };
+		27B47E871EF8F2F500B81275 /* P_DailyEditCompound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = P_DailyEditCompound.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		27C3C20A1EFEED9600F205A6 /* StreakResetterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreakResetterView.h; sourceTree = "<group>"; };
 		27C3C20B1EFEED9600F205A6 /* StreakResetterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreakResetterView.m; sourceTree = "<group>"; };
 		27C3C20D1EFEEDC100F205A6 /* StreakResetterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StreakResetterView.xib; sourceTree = "<group>"; };
@@ -518,7 +518,7 @@
 		68BE458E1D9DEA0B003F3400 /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroViewController.h; sourceTree = "<group>"; };
 		68BE458F1D9DEA0B003F3400 /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroViewController.m; sourceTree = "<group>"; };
 		68D25C201D8B951B00FF1BE0 /* DailyEditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyEditController.h; sourceTree = "<group>"; };
-		68D25C211D8B951B00FF1BE0 /* DailyEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyEditController.m; sourceTree = "<group>"; };
+		68D25C211D8B951B00FF1BE0 /* DailyEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DailyEditController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		68DD15991D9A1FC00073E7D8 /* checked_task.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked_task.png; sourceTree = "<group>"; };
 		68E260631D7FC3F200425D46 /* CoreDataStackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataStackController.h; sourceTree = "<group>"; };
 		68E260641D7FC3F200425D46 /* CoreDataStackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataStackController.m; sourceTree = "<group>"; };
@@ -640,9 +640,9 @@
 		272428301F4167140028B22E /* ActiveDays */ = {
 			isa = PBXGroup;
 			children = (
-				274FFC261EF6236600FAF809 /* ActiveDaysPicker.h */,
-				274FFC271EF6236600FAF809 /* ActiveDaysPicker.m */,
-				274FFC281EF6236600FAF809 /* ActiveDaysPicker.xib */,
+				274FFC261EF6236600FAF809 /* WeeklyActiveDays.h */,
+				274FFC271EF6236600FAF809 /* WeeklyActiveDays.m */,
+				274FFC281EF6236600FAF809 /* WeeklyActiveDays.xib */,
 				2724281C1F40E7790028B22E /* MonthlyDayPicker.h */,
 				2724281D1F40E7790028B22E /* MonthlyDayPicker.m */,
 			);
@@ -725,7 +725,7 @@
 			isa = PBXGroup;
 			children = (
 				27E89C9F1EF600D9009B7474 /* P_ImportanceSlidersDelegate.h */,
-				274FFC2B1EF6269F00FAF809 /* P_ActiveDaysPickerDelegate.h */,
+				274FFC2B1EF6269F00FAF809 /* P_WeeklyActiveDaysDelegate.h */,
 				274FFC321EF62B2200FAF809 /* P_NotesViewDelegate.h */,
 				274FFC3E1EF6CA2200FAF809 /* P_SubtasksTableViewDelegate.h */,
 				274FFC441EF6E3BB00FAF809 /* P_RateSetterDelegate.h */,
@@ -1410,7 +1410,7 @@
 				68F3F9EA1D70EC9700840DD2 /* DailyViewController.xib in Resources */,
 				274FFC3D1EF62FA200FAF809 /* SubtasksTableView.xib in Resources */,
 				6886A4861D8F1C49005E12B3 /* unchecked_task.png in Resources */,
-				274FFC2A1EF6236600FAF809 /* ActiveDaysPicker.xib in Resources */,
+				274FFC2A1EF6236600FAF809 /* WeeklyActiveDays.xib in Resources */,
 				68DD159A1D9A1FC00073E7D8 /* checked_task.png in Resources */,
 				686ED3981DA5E0F9004EDD36 /* title_Screen_1x.png in Resources */,
 				6886A48D1D8F6EB3005E12B3 /* switch_checked.png in Resources */,
@@ -1511,7 +1511,7 @@
 				274FFC2F1EF6296D00FAF809 /* NoteView.m in Sources */,
 				68D25C221D8B951B00FF1BE0 /* DailyEditController.m in Sources */,
 				68E260651D7FC3F200425D46 /* CoreDataStackController.m in Sources */,
-				274FFC291EF6236600FAF809 /* ActiveDaysPicker.m in Sources */,
+				274FFC291EF6236600FAF809 /* WeeklyActiveDays.m in Sources */,
 				27C3C20C1EFEED9600F205A6 /* StreakResetterView.m in Sources */,
 				68BE45911D9DEA0B003F3400 /* IntroViewController.m in Sources */,
 				68F3F9E41D70E8DB00840DD2 /* CentralViewController.m in Sources */,

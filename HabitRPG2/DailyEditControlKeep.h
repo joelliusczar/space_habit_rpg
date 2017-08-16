@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "NoteView.h"
-#import "ActiveDaysPicker.h"
+#import "WeeklyActiveDays.h"
 #import "RateSetterView.h"
 #import "ImportanceSliderView.h"
 #import "StreakResetterView.h"
@@ -21,7 +21,7 @@
 @interface DailyEditControlKeep : NSObject
 @property (strong,nonatomic)NSArray<SHView *> *allControls;
 @property (strong,nonatomic) NoteView *noteView;
-@property (strong,nonatomic) ActiveDaysPicker *activeDaysPicker;
+@property (strong,nonatomic) WeeklyActiveDays *activeDaysPicker;
 @property (strong,nonatomic) RateSetterView *rateSetterView;
 @property (strong,nonatomic) ImportanceSliderView *urgencySlider;
 @property (strong,nonatomic) ImportanceSliderView *difficultySlider;

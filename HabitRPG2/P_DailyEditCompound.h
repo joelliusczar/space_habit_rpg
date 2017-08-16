@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "P_NotesViewDelegate.h"
-#import "P_ActiveDaysPickerDelegate.h"
+#import "P_WeeklyActiveDaysDelegate.h"
 #import "P_RateSetterDelegate.h"
 #import "P_ImportanceSlidersDelegate.h"
 #import "P_StreakResetterDelegate.h"
 
 @protocol P_DailyEditCompound <NSObject
 ,P_NotesViewDelegate
-,P_ActiveDaysPickerDelegate
+,P_WeeklyActiveDaysDelegate
 ,P_RateSetterDelegate
 ,P_ImportanceSlidersDelegate
 ,P_StreakResetterDelegate>

@@ -1,5 +1,5 @@
 //
-//  P_ActiveDaysPickerDelegate.h
+//  P_WeeklyActiveDaysDelegate.h
 //  HabitRPG2
 //
 //  Created by Joel Pridgen on 6/17/17.
@@ -11,6 +11,6 @@
 #import "CustomSwitch.h"
 #import "P_CommonDelegate.h"
 
-@protocol P_ActiveDaysPickerDelegate <NSObject,P_CommonDelegate>
+@protocol P_WeeklyActiveDaysDelegate <NSObject,P_CommonDelegate>
 -(void)activeDaySwitch_press_action:(CustomSwitch *)sender forEvent:(UIEvent *)event;
 @end

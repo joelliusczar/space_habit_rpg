@@ -1,20 +1,20 @@
 //
-//  ActiveDaysPicker.m
+//  WeeklyActiveDays.m
 //  HabitRPG2
 //
 //  Created by Joel Pridgen on 6/17/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import "ActiveDaysPicker.h"
+#import "WeeklyActiveDays.h"
 #import "CommonUtilities.h"
 #import "NSObject+Helper.h"
 
-@interface ActiveDaysPicker ()
+@interface WeeklyActiveDays ()
 
 @end
 
-@implementation ActiveDaysPicker
+@implementation WeeklyActiveDays
 
 
 - (IBAction)activeDaySwitch_press_action:(CustomSwitch *)sender forEvent:(UIEvent *)event {

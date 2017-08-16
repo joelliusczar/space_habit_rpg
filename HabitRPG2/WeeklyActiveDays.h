@@ -1,5 +1,5 @@
 //
-//  ActiveDaysPicker.h
+//  WeeklyActiveDays.h
 //  HabitRPG2
 //
 //  Created by Joel Pridgen on 6/17/17.
@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "CustomSwitch.h"
-#import "P_ActiveDaysPickerDelegate.h"
+#import "P_WeeklyActiveDaysDelegate.h"
 #import "SHView.h"
 
 IB_DESIGNABLE
-@interface ActiveDaysPicker : SHView
+@interface WeeklyActiveDays : SHView
 @property (strong, nonatomic) IBOutletCollection(CustomSwitch) NSArray *activeDaySwitches;
-@property (weak,nonatomic) id<P_ActiveDaysPickerDelegate> delegate;
+@property (weak,nonatomic) id<P_WeeklyActiveDaysDelegate> delegate;
 @end

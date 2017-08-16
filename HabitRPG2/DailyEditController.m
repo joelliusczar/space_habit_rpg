@@ -16,7 +16,7 @@
 #import "Interceptor.h"
 #import "NoteView.h"
 #import "ImportanceSliderView.h"
-#import "ActiveDaysPicker.h"
+#import "WeeklyActiveDays.h"
 #import "SubtasksTableView.h"
 #import "RateSetterView.h"
 #import "DailyEditControlKeep.h"
@@ -177,7 +177,7 @@ NSString* const IS_DIRTY = @"isDirty";
                                                               @"Difficulty: %d"
                                                               ,daily.difficulty];
     
-    //TODOself.editControls.activeDaysPicker.activeDaysHash = daily.activeDaysHash;
+    //TODOself.editControls.WeeklyActiveDays.activeDaysHash = daily.activeDaysHash;
     NSInteger rate = daily.rate;
     self.editControls.rateSetterView.rateStep.value = rate;
     self.editControls.rateSetterView.rateLbl.text = [NSString
