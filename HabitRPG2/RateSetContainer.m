@@ -61,7 +61,7 @@
 
 -(void)setRateTypeActiveDaysControl:(RateType)rateType{
     if(rateType == MONTHLY_RATE){
-        //[self replaceSubviewsWith:self.monthPartPicker];
+        //[self replaceSubviewsWith:self.m];
     }
 }
 

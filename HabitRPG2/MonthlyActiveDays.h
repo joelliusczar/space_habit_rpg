@@ -1,5 +1,5 @@
 //
-//  MonthlyDayActiveDays.h
+//  MonthlyActiveDays.h
 //  HabitRPG2
 //
 //  Created by Joel Pridgen on 8/13/17.
@@ -9,7 +9,7 @@
 #import "ItemFlexibleListView.h"
 #import "Daily+CoreDataClass.h"
 
-@interface MonthlyDayActiveDays : ItemFlexibleListView
+@interface MonthlyActiveDays : ItemFlexibleListView
 @property (weak,nonatomic) Daily *daily;
 +(instancetype)newWithDaily:(Daily *)daily
       andBackViewController:(EditNavigationController *)backViewController;

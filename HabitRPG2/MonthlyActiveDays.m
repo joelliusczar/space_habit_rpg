@@ -1,22 +1,22 @@
 //
-//  MonthlyDayActiveDays.m
+//  MonthlyActiveDays.m
 //  HabitRPG2
 //
 //  Created by Joel Pridgen on 8/13/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import "MonthlyDayActiveDays.h"
+#import "MonthlyActiveDays.h"
 #import "CommonUtilities.h"
 #import "constants.h"
 #import "ListItemCell.h"
 #import "SingletonCluster.h"
 
-@interface MonthlyDayActiveDays ()
+@interface MonthlyActiveDays ()
 @property (strong,nonatomic) NSMutableArray<NSDictionary *> *daysOfMonth;
 @end
 
-@implementation MonthlyDayActiveDays
+@implementation MonthlyActiveDays
 
 
 -(NSMutableArray<NSDictionary *> *)daysOfMonth{
@@ -39,7 +39,7 @@
     NSAssert(daily,@"daily was nil");
     NSAssert(backViewController,@"backViewController was nil");
     
-    MonthlyDayActiveDays *instance = [[MonthlyDayActiveDays alloc] init];
+    MonthlyActiveDays *instance = [[MonthlyActiveDays alloc] init];
     instance.backViewController = backViewController;
     instance.daily = daily;
     return instance;

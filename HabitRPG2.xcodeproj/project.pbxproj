@@ -19,7 +19,7 @@
 		272427E31F391DA40028B22E /* SHView.m in Sources */ = {isa = PBXBuildFile; fileRef = 272427E21F391DA40028B22E /* SHView.m */; };
 		272427E41F3EA3C50028B22E /* RateTypeSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 276159B71F31A310002E8BF9 /* RateTypeSelector.xib */; };
 		272427E61F3EC11C0028B22E /* rounded_border.png in Resources */ = {isa = PBXBuildFile; fileRef = 272427E51F3EC11C0028B22E /* rounded_border.png */; };
-		2724281E1F40E7790028B22E /* MonthlyDayActiveDays.m in Sources */ = {isa = PBXBuildFile; fileRef = 2724281D1F40E7790028B22E /* MonthlyDayActiveDays.m */; };
+		2724281E1F40E7790028B22E /* MonthlyActiveDays.m in Sources */ = {isa = PBXBuildFile; fileRef = 2724281D1F40E7790028B22E /* MonthlyActiveDays.m */; };
 		272428231F4101330028B22E /* ItemFlexibleListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 272428221F4101330028B22E /* ItemFlexibleListView.m */; };
 		2724282B1F41090D0028B22E /* NSException+SHCommonExceptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2724282A1F41090D0028B22E /* NSException+SHCommonExceptions.m */; };
 		2724282E1F4156670028B22E /* ListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2724282D1F4156670028B22E /* ListItemCell.m */; };
@@ -236,8 +236,8 @@
 		272427E11F391DA40028B22E /* SHView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHView.h; sourceTree = "<group>"; };
 		272427E21F391DA40028B22E /* SHView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHView.m; sourceTree = "<group>"; };
 		272427E51F3EC11C0028B22E /* rounded_border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rounded_border.png; sourceTree = "<group>"; };
-		2724281C1F40E7790028B22E /* MonthlyDayActiveDays.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MonthlyDayActiveDays.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		2724281D1F40E7790028B22E /* MonthlyDayActiveDays.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MonthlyDayActiveDays.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		2724281C1F40E7790028B22E /* MonthlyActiveDays.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MonthlyActiveDays.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		2724281D1F40E7790028B22E /* MonthlyActiveDays.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MonthlyActiveDays.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		272428211F4101330028B22E /* ItemFlexibleListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemFlexibleListView.h; sourceTree = "<group>"; };
 		272428221F4101330028B22E /* ItemFlexibleListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemFlexibleListView.m; sourceTree = "<group>"; };
 		272428241F41053A0028B22E /* P_MonthComponentSpinPickerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_MonthComponentSpinPickerDelegate.h; sourceTree = "<group>"; };
@@ -640,11 +640,14 @@
 		272428301F4167140028B22E /* ActiveDays */ = {
 			isa = PBXGroup;
 			children = (
+				276159BF1F32B815002E8BF9 /* RateSetContainer.h */,
+				276159C01F32B815002E8BF9 /* RateSetContainer.m */,
+				276159C11F32B815002E8BF9 /* RateSetContainer.xib */,
 				274FFC261EF6236600FAF809 /* WeeklyActiveDays.h */,
 				274FFC271EF6236600FAF809 /* WeeklyActiveDays.m */,
 				274FFC281EF6236600FAF809 /* WeeklyActiveDays.xib */,
-				2724281C1F40E7790028B22E /* MonthlyDayActiveDays.h */,
-				2724281D1F40E7790028B22E /* MonthlyDayActiveDays.m */,
+				2724281C1F40E7790028B22E /* MonthlyActiveDays.h */,
+				2724281D1F40E7790028B22E /* MonthlyActiveDays.m */,
 			);
 			name = ActiveDays;
 			sourceTree = "<group>";
@@ -913,9 +916,6 @@
 				276159B51F31A310002E8BF9 /* RateTypeSelector.h */,
 				276159B61F31A310002E8BF9 /* RateTypeSelector.m */,
 				276159B71F31A310002E8BF9 /* RateTypeSelector.xib */,
-				276159BF1F32B815002E8BF9 /* RateSetContainer.h */,
-				276159C01F32B815002E8BF9 /* RateSetContainer.m */,
-				276159C11F32B815002E8BF9 /* RateSetContainer.xib */,
 				2725963A1F32D81F006EECD2 /* MonthPartPicker.h */,
 				2725963B1F32D81F006EECD2 /* MonthPartPicker.m */,
 				2724282C1F4156670028B22E /* ListItemCell.h */,
@@ -1559,7 +1559,7 @@
 				277ABEC91E949B96008CC239 /* StdLibWrapper.m in Sources */,
 				2724282B1F41090D0028B22E /* NSException+SHCommonExceptions.m in Sources */,
 				686ED3B71DAF3DBD004EDD36 /* CustomSwitch.m in Sources */,
-				2724281E1F40E7790028B22E /* MonthlyDayActiveDays.m in Sources */,
+				2724281E1F40E7790028B22E /* MonthlyActiveDays.m in Sources */,
 				2785DCCF1F2CC21600B5C28C /* GoodTransaction+CoreDataClass.m in Sources */,
 				27C92C481E341DA10025727E /* ViewHelper.m in Sources */,
 				27B0CD041F2BEB42005BEC75 /* Suffix+CoreDataClass.m in Sources */,
