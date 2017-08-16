@@ -67,14 +67,17 @@ numberOfRowsInComponent:(NSInteger)component{
         formatter.locale = self.utilityStore.inUseLocale;
         formatter.numberStyle = NSNumberFormatterOrdinalStyle;
         return [formatter
-                stringFromNumber:[NSNumber numberWithInteger:row]];
+                stringFromNumber:[NSNumber numberWithInteger:row+1]];
     }
-    return self.utilityStore.inUseCalendar.shortWeekdaySymbols[row];
+    return self.utilityStore.inUseCalendar.weekdaySymbols[row];
 }
 
 
 -(CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component{
-    return 200;
+    if(component==ORDINAL_COLUMN){
+        return 50;
+    }
+    return 75;
 }
 
 
