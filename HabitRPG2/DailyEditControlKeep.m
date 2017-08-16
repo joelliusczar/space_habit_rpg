@@ -59,8 +59,8 @@
 -(ReminderListView *)reminderListView{
     if(nil==_reminderListView){
         _reminderListView = [ReminderListView newWithDueDateInfo:self.delegate.modelForEditing
-                             andBackViewController:self.delegate.editorContainer
-                             andTimeStore:SharedGlobal];
+                             andBackViewController:self.delegate.editorContainer];
+        _reminderListView.utilityStore = SharedGlobal;
     }
     return _reminderListView;
 }
@@ -68,9 +68,9 @@
 -(RateSetContainer *)rateSetContainer{
     if(nil==_rateSetContainer){
         _rateSetContainer = [RateSetContainer newWithDaily:self.delegate.modelForEditing
-                                     andBackViewController:self.delegate.editorContainer
-                                              andTimeStore:SharedGlobal];
+                                     andBackViewController:self.delegate.editorContainer];
         _rateSetContainer.delegate = self.delegate;
+        _rateSetContainer.utilityStore = SharedGlobal;
     }
     return _rateSetContainer;
 }

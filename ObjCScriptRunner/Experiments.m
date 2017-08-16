@@ -9,6 +9,7 @@
 #import <objc/runtime.h>
 #import "Experiments.h"
 #import "House.h"
+#import "House+Ass.h"
 
 
 @implementation Experiments
@@ -48,4 +49,19 @@
     NSLog(@"%ld",biggy);
     NSLog(@"%d",i32);
 }
+
+
++(void)tryToUseObjectAsDict{
+    House *h = [House new];
+    [h setValue:@67 forKey:@"nonmember"];
+    NSLog(@"%@",[h valueForKey:@"nonmember"]);
+}
+
++(void)playWithAss{
+    House.ghostNum = 19;
+    NSLog(@"%ld",House.ghostNum);
+    House.ghostNum = 23;
+    NSLog(@"%ld",House.ghostNum);
+}
+
 @end

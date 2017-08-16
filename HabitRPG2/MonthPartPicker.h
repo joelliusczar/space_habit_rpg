@@ -7,9 +7,8 @@
 //
 
 #import "SHSpinPicker.h"
-#import "P_TimeUtilityStore.h"
+#import "P_UtilityStore.h"
 
 @interface MonthPartPicker : SHSpinPicker
-@property (weak,nonatomic) id<P_TimeUtilityStore> timeStore;
--(instancetype)initWithTimeStore:(id<P_TimeUtilityStore>)timeStore;
+@property (weak,nonatomic) id<P_UtilityStore> utilityStore;
 @end

@@ -14,8 +14,7 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        ChildMan *cm = [[ChildMan alloc] initTwo];
-        [cm nothing];
+        [Experiments playWithAss];
     }
     return 0;
 }

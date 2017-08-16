@@ -12,4 +12,6 @@
 +(void)dateToJSON;
 +(void)getAllIvar;
 +(void)oversizedCast;
++(void)tryToUseObjectAsDict;
++(void)playWithAss;
 @end

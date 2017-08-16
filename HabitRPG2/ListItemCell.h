@@ -10,4 +10,5 @@
 
 @interface ListItemCell : TaskCell
 @property (weak, nonatomic) IBOutlet UILabel *lblRowDesc;
++(instancetype)getListItemCell:(UITableView *)tableView;
 @end

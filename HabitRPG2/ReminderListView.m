@@ -29,17 +29,15 @@
 @implementation ReminderListView
 
 
-+(CGRect)naturalFrame{
-    return CGRectMake(0,0,300,100);
-}
 
+
+//I think the reason why I did the class method styled constructor
+//was so that calls to 'self' would not get fucked up by subclasses
 +(instancetype)newWithDueDateInfo:(id<P_DueDateWrapper>)dueDateInfo
-                 andBackViewController:(EditNavigationController *)backViewController
-                         andTimeStore:(id<P_TimeUtilityStore>)timeStore{
+                 andBackViewController:(EditNavigationController *)backViewController{
     ReminderListView *instance = [[ReminderListView alloc] init];
     instance.dueDateInfo = dueDateInfo = dueDateInfo;
     instance.reminderSet = [dueDateInfo getReminderSet];
-    instance.timeStore = timeStore;
     instance.backViewController = backViewController;
     
     CGFloat tblHeight = instance.reminderSet.count<SUB_TABLE_MAX_ROWS?
@@ -74,8 +72,8 @@ numberOfRowsInSection:(NSInteger)section{
     //the model that was getting passed through here
     //earlier only had the original value.
     ReminderTimeSpinPicker *timePicker =
-    [[ReminderTimeSpinPicker alloc] initWithTimeStore:self.timeStore
-                                       andDayRange:self.dueDateInfo.maxDaysBefore];
+    [[ReminderTimeSpinPicker alloc] initWithDayRange:self.dueDateInfo.maxDaysBefore];
+    timePicker.utilityStore = self.utilityStore;
     timePicker.delegate = self;
     [ViewHelper pushViewToFront:timePicker OfParent:self.backViewController];
 }

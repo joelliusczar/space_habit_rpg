@@ -33,7 +33,7 @@
     return self;
 }
 
-
+//I'm depending on subclasses being able to override this
 -(UIView *)loadDefaultXib{
     return [self loadXib:(NSStringFromClass(self.class))];
 }

@@ -12,7 +12,6 @@
 #import "Reminder+CoreDataClass.h"
 #import "P_ReminderTimeSpinPickerDelegate.h"
 #import "EditNavigationController.h"
-#import "P_TimeUtilityStore.h"
 #import "AddItemsFooter.h"
 #import "ItemFlexibleListView.h"
 
@@ -25,8 +24,6 @@
 
 @property (strong,nonatomic) id<P_DueDateWrapper> dueDateInfo;
 @property (weak,nonatomic) NSOrderedSet<Reminder *> *reminderSet;
-@property (strong,nonatomic) id<P_TimeUtilityStore> timeStore;
 +(instancetype)newWithDueDateInfo:(id<P_DueDateWrapper>)dueDateInfo
-             andBackViewController:(EditNavigationController *)backViewController
-                         andTimeStore:(id<P_TimeUtilityStore>)timeStore;
+             andBackViewController:(EditNavigationController *)backViewController;
 @end

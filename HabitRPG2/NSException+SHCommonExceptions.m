@@ -19,4 +19,11 @@
 }
 
 
++(NSException *)oddException{
+    return [NSException
+            exceptionWithName:@"odd event exception"
+            reason:@"Something really weird was about to happen"
+            userInfo:nil];
+}
+
 @end

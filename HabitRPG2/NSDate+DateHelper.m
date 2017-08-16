@@ -7,15 +7,60 @@
 //
 
 #import "NSDate+DateHelper.h"
-#import "SingletonCluster.h"
 #import "NSLocale+Helper.h"
+#import <objc/runtime.h>
+#import "NSException+SHCommonExceptions.h"
+#import "SingletonCluster.h"
 
 @implementation NSDate (DateHelper)
+
+
++(NSLocale *)inUseLocale{
+    id tmp = objc_getAssociatedObject(self,@selector(inUseLocale));
+    if(tmp){
+        return (NSLocale *)tmp;
+    }
+    return SharedGlobal.inUseLocale;
+}
+
+
++(void)setInUseLocale:(NSLocale *)locale{
+    objc_setAssociatedObject(self,@selector(inUseLocale),locale,OBJC_ASSOCIATION_RETAIN);
+}
+
+
++(NSCalendar *)inUseCalendar{
+    id tmp = objc_getAssociatedObject(self,@selector(inUseCalendar));
+    if(tmp){
+        return (NSCalendar *)tmp;
+    }
+    return SharedGlobal.inUseCalendar;
+}
+
+
++(void)setInUseCalendar:(NSCalendar *)calendar{
+    objc_setAssociatedObject(self,@selector(inUseCalendar),calendar,OBJC_ASSOCIATION_RETAIN);
+}
+
+
++(NSTimeZone *)inUseTimeZone{
+    id tmp = objc_getAssociatedObject(self,@selector(inUseTimeZone));
+    if(tmp){
+        return (NSTimeZone *)tmp;
+    }
+    return SharedGlobal.inUseTimeZone;
+}
+
+
++(void)setInUseTimeZone:(NSTimeZone *)timeZone{
+    objc_setAssociatedObject(self,@selector(inUseTimeZone),timeZone,OBJC_ASSOCIATION_RETAIN);
+}
+
 
 +(NSDate *)adjustDate:(NSDate *)date year:(NSInteger)y month:(NSInteger)m
                   day:(NSInteger)d{
     
-    NSCalendar *calendar = SharedGlobal.inUseCalendar;
+    NSCalendar *calendar = self.inUseCalendar;
     date = [calendar dateByAddingUnit:NSCalendarUnitYear value:y
                                toDate:date options:0];
     
@@ -32,7 +77,7 @@
 +(NSDate *)adjustTime:(NSDate *)dt hour:(NSInteger)h minute:(NSInteger)m
                second:(NSInteger)s{
     
-    NSCalendar *calendar = SharedGlobal.inUseCalendar;
+    NSCalendar *calendar = self.inUseCalendar;
     dt = [calendar dateByAddingUnit:NSCalendarUnitHour value:h
                              toDate:dt options:0];
     
@@ -59,7 +104,7 @@
     comps.minute = minute;
     comps.second = second;
     comps.timeZone = timeZone;
-    NSCalendar *calendar = SharedGlobal.inUseCalendar;
+    NSCalendar *calendar = self.inUseCalendar;
     return [calendar dateFromComponents:comps];
     
 }
@@ -71,7 +116,7 @@
     
     return
     [NSDate createDateTime:year month:month day:day hour:hour minute:minute
-                    second:second timeZone:SharedGlobal.inUseTimeZone];
+                    second:second timeZone:self.inUseTimeZone];
 }
 
 
@@ -83,7 +128,7 @@
 }
 
 +(NSDate *)todayStart{
-    return [SharedGlobal.inUseCalendar startOfDayForDate:[NSDate date]];
+    return [self.inUseCalendar startOfDayForDate:[NSDate date]];
 }
 
 +(double)daysBetween:(NSDate *)fromDate to:(NSDate *)toDate{
@@ -94,14 +139,14 @@
 }
 
 +(NSDate *)setTime:(NSDate *)dt hour:(NSInteger)h minute:(NSInteger)m second:(NSInteger)s{
-    NSDate *roundedDownDate = [SharedGlobal.inUseCalendar startOfDayForDate:dt];
+    NSDate *roundedDownDate = [self.inUseCalendar startOfDayForDate:dt];
     return [NSDate adjustTime:roundedDownDate hour:h minute:m second:s];
 }
 
 +(NSString *)timeOfDayInSystemPreferredFormat:(NSInteger)hour
                               andMinute:(NSInteger)minute{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.locale = SharedGlobal.inUseLocale;
+    formatter.locale = self.inUseLocale;
     formatter.timeStyle = NSDateFormatterShortStyle;
     NSString *dateString = [formatter stringFromDate:
                             [NSDate createSimpleTime:hour minute:minute
@@ -111,7 +156,8 @@
 }
 
 -(NSString *)extractTimeInFormat:(hourFormatType)format{
-    NSDateComponents *components=[SharedGlobal.inUseCalendar
+    
+    NSDateComponents *components=[NSDate.inUseCalendar
                                     components:NSCalendarUnitHour|NSCalendarUnitMinute
                                     fromDate:self];
     NSInteger convertedHour=[NSLocale hour:components.hour inGivenFormatMask:format];

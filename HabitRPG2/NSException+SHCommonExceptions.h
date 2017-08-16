@@ -10,4 +10,5 @@
 
 @interface NSException (SHCommonExceptions)
 +(NSException *)abstractException;
++(NSException *)oddException;
 @end

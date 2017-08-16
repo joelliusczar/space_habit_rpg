@@ -10,6 +10,7 @@
 #import "RateTypeSelector.h"
 #import "ViewHelper.h"
 #import "UIView+Helpers.h"
+#import "SingletonCluster.h"
 
 @interface RateSetContainer ()
 
@@ -17,22 +18,29 @@
 
 @implementation RateSetContainer
 
+
+-(id<P_UtilityStore>)utilityStore{
+    if(nil==_utilityStore){
+        _utilityStore = SharedGlobal;
+    }
+    return _utilityStore;
+}
+
+
 -(MonthPartPicker *)monthPartPicker{
     if(nil==_monthPartPicker){
-        _monthPartPicker = [[MonthPartPicker alloc] initWithTimeStore:self.timeStore];
+        _monthPartPicker = [[MonthPartPicker alloc] init];
+        _monthPartPicker.utilityStore = self.utilityStore;
     }
     return _monthPartPicker;
 }
 
 +(instancetype)newWithDaily:(Daily * _Nonnull)daily
-            andBackViewController:(EditNavigationController * _Nonnull)backViewController
-                     andTimeStore:(id<P_TimeUtilityStore> _Nonnull)timeStore{
+            andBackViewController:(EditNavigationController * _Nonnull)backViewController{
     NSAssert(daily,@"daily was nil");
     NSAssert(backViewController,@"backViewController was nil");
-    NSAssert(timeStore,@"timeStore was nil");
     
     RateSetContainer *instance = [[RateSetContainer alloc] init];
-    instance.timeStore = timeStore;
     instance.daily = daily;
     instance.backViewController = backViewController;;
     return instance;

@@ -15,14 +15,14 @@
 #import "MonsterInfoDictionary.h"
 #import "P_stdlibWrapper.h"
 #import "P_ReportServiceCaller.h"
-#import "P_TimeUtilityStore.h"
+#import "P_UtilityStore.h"
 
 #define SAVE_DATA() [[SingletonCluster getSharedInstance].dataController save]
 #define SHData [SingletonCluster getSharedInstance].dataController
 #define SharedGlobal [SingletonCluster getSharedInstance]
 #define SHSettings [SingletonCluster getSharedInstance].dataController.userData.theSettings
 
-@interface SingletonCluster : NSObject<P_TimeUtilityStore>
+@interface SingletonCluster : NSObject<P_UtilityStore>
 +(instancetype)getSharedInstance;
 @property (strong,nonatomic) NSObject<P_CoreData> *dataController;
 @property (strong,nonatomic) NSObject<P_ResourceUtility> *resourceUtility;

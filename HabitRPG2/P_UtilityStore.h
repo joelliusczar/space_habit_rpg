@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol P_TimeUtilityStore <NSObject>
+@protocol P_UtilityStore <NSObject>
 @property (strong,nonatomic) NSCalendar *inUseCalendar;
 @property (strong,nonatomic) NSTimeZone *inUseTimeZone;
 @property (strong,nonatomic) NSLocale *inUseLocale;

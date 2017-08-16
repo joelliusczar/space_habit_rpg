@@ -11,6 +11,16 @@
 
 @implementation ListItemCell
 
++(instancetype)getListItemCell:(UITableView *)tableView{
+    NSAssert(tableView,@"tableview is nil");
+    ListItemCell *cell = [tableView
+            dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
+    if(nil==cell){
+        cell = [[ListItemCell alloc] init];
+    }
+    return cell;
+}
+
 -(UIView *)loadDefaultXib{
     return [self loadXib:@"ListItemCell"];
 }

@@ -9,8 +9,17 @@
 #import "ItemFlexibleListView.h"
 #import "NSException+SHCommonExceptions.h"
 #import "NSObject+Helper.h"
+#import "SingletonCluster.h"
 
 @implementation ItemFlexibleListView
+
+
+-(id<P_UtilityStore>)utilityStore{
+    if(nil==_utilityStore){
+        _utilityStore = SharedGlobal;
+    }
+    return _utilityStore;
+}
 
 
 -(UIView *)loadDefaultXib{

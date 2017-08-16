@@ -8,6 +8,7 @@
 
 #import "MonthPartPicker.h"
 #import "constants.h"
+#import "SingletonCluster.h"
 
 @interface MonthPartPicker ()
 
@@ -18,12 +19,14 @@ const NSInteger DAY_COLUMN = 1;
 
 @implementation MonthPartPicker
 
--(instancetype)initWithTimeStore:(id<P_TimeUtilityStore>)timeStore{
-    if(self = [self init]){
-        _timeStore = timeStore;
+
+-(id<P_UtilityStore>)utilityStore{
+    if(nil==_utilityStore){
+        _utilityStore = SharedGlobal;
     }
-    return self;
+    return _utilityStore;
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,7 +49,7 @@ numberOfRowsInComponent:(NSInteger)component{
     if(component == 0){
         return POTENTIAL_WEEKS_IN_MONTH_NUM;
     }
-    return self.timeStore.inUseCalendar.shortWeekdaySymbols.count;
+    return self.utilityStore.inUseCalendar.shortWeekdaySymbols.count;
 }
 
 
@@ -56,12 +59,12 @@ numberOfRowsInComponent:(NSInteger)component{
     
     if(component==ORDINAL_COLUMN){
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-        formatter.locale = self.timeStore.inUseLocale;
+        formatter.locale = self.utilityStore.inUseLocale;
         formatter.numberStyle = NSNumberFormatterOrdinalStyle;
         return [formatter
                 stringFromNumber:[NSNumber numberWithInteger:row]];
     }
-    return self.timeStore.inUseCalendar.shortWeekdaySymbols[row];
+    return self.utilityStore.inUseCalendar.shortWeekdaySymbols[row];
 }
 
 
