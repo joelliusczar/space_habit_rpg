@@ -1740,6 +1740,7 @@
 				COPY_HEADERS_RUN_UNIFDEF = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = HabitRPG2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.HabitRPG2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1756,6 +1757,7 @@
 				COPY_HEADERS_RUN_UNIFDEF = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = HabitRPG2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.HabitRPG2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
