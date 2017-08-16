@@ -27,6 +27,14 @@
 }
 
 
+-(WeeklyActiveDays *)weeklyActiveDays{
+    if(nil==_weeklyActiveDays){
+        _weeklyActiveDays = [[WeeklyActiveDays alloc] init];
+    }
+    return _weeklyActiveDays;
+}
+
+
 -(MonthlyActiveDays *)monthlyActiveDays{
     if(nil==_monthlyActiveDays){
         _monthlyActiveDays = [MonthlyActiveDays
@@ -64,7 +72,11 @@
 }
 
 -(void)setRateTypeActiveDaysControl:(RateType)rateType{
-    if(rateType == MONTHLY_RATE){
+    if(rateType==WEEKLY_RATE){
+        [self.activeDaysControlContainer
+         replaceSubviewsWith:self.weeklyActiveDays];
+    }
+    else if(rateType == MONTHLY_RATE){
         [self.activeDaysControlContainer
          replaceSubviewsWith:self.monthlyActiveDays];
     }
