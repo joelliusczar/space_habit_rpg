@@ -27,6 +27,11 @@ const NSInteger DAY_COLUMN = 1;
     return _utilityStore;
 }
 
+-(instancetype)init{
+    if(self = [super initWithNibName:@"SHSpinPicker" bundle:nil]){}
+    return self;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -75,7 +80,9 @@ numberOfRowsInComponent:(NSInteger)component{
 
 -(IBAction)pickerSelectBtn_press_action:(UIButton *)sender
                                forEvent:(UIEvent *)event{
-    
+    if(self.delegate){
+        [self.delegate pickerSelection_action:self.picker forEvent:event];
+    }
 }
 
 @end

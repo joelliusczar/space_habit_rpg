@@ -27,12 +27,14 @@
 }
 
 
--(MonthPartPicker *)monthPartPicker{
-    if(nil==_monthPartPicker){
-        _monthPartPicker = [[MonthPartPicker alloc] init];
-        _monthPartPicker.utilityStore = self.utilityStore;
+-(MonthlyActiveDays *)monthlyActiveDays{
+    if(nil==_monthlyActiveDays){
+        _monthlyActiveDays = [MonthlyActiveDays
+                              newWithDaily:self.daily
+                              andBackViewController:self.backViewController];
+        _monthlyActiveDays.utilityStore = self.utilityStore;
     }
-    return _monthPartPicker;
+    return _monthlyActiveDays;
 }
 
 +(instancetype)newWithDaily:(Daily * _Nonnull)daily
@@ -42,7 +44,8 @@
     
     RateSetContainer *instance = [[RateSetContainer alloc] init];
     instance.daily = daily;
-    instance.backViewController = backViewController;;
+    instance.backViewController = backViewController;
+    [instance updateRateType:daily.rateType];
     return instance;
 }
 
@@ -57,11 +60,13 @@
 
 -(void)updateRateType:(RateType)rateType{
     self.daily.rateType = rateType;
+    [self setRateTypeActiveDaysControl:rateType];
 }
 
 -(void)setRateTypeActiveDaysControl:(RateType)rateType{
     if(rateType == MONTHLY_RATE){
-        //[self replaceSubviewsWith:self.m];
+        [self.activeDaysControlContainer
+         replaceSubviewsWith:self.monthlyActiveDays];
     }
 }
 

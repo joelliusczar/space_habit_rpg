@@ -10,5 +10,5 @@
 
 @protocol P_MonthComponentSpinPickerDelegate <NSObject>
 -(void)pickerSelection_action:(UIPickerView *)sender
-                     forEvent:(UIEvent)event;
+                     forEvent:(UIEvent *)event;
 @end

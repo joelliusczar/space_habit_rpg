@@ -11,6 +11,8 @@
 #import "constants.h"
 #import "ListItemCell.h"
 #import "SingletonCluster.h"
+#import "MonthPartPicker.h"
+#import "ViewHelper.h"
 
 @interface MonthlyActiveDays ()
 @property (strong,nonatomic) NSMutableArray<NSDictionary *> *daysOfMonth;
@@ -64,4 +66,17 @@
     return cell;
 }
 
+
+-(void)addItemBtn_press_action:(UIButton *)sender
+                      forEvent:(UIEvent *)event{
+    MonthPartPicker *dayOfMonthPicker = [[MonthPartPicker alloc] init];
+    dayOfMonthPicker.utilityStore = self.utilityStore;
+    dayOfMonthPicker.delegate = self;
+    [ViewHelper pushViewToFront:dayOfMonthPicker OfParent:self.backViewController];
+    
+}
+
+-(void)pickerSelection_action:(UIPickerView *)sender forEvent:(UIEvent *)event{
+    
+}
 @end
