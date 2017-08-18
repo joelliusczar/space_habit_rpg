@@ -100,7 +100,7 @@
     return xp.intValue;
 }
 
--(int32_t)getBaseHP:(NSString *)monsterKey{//todo figure out how I want to handle this
+-(int32_t)getBaseHP:(NSString *)monsterKey{//TODO: figure out how I want to handle this
     NSNumber *hp = (NSNumber *)[self getMonsterInfo:monsterKey][@"HP"];
     return hp.intValue;
 }

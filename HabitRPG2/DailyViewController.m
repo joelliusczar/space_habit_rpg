@@ -96,14 +96,14 @@ static NSString *const EntityName = @"Daily";
 -(void)completeDaily:(Daily *)daily{
         daily.rollbackActivationTime = daily.lastActivationTime;
         daily.lastActivationTime = [NSDate todayStart];
-        //TODO calculate damage done to monster
-        //TODO save
+        //TODO: calculate damage done to monster
+        //TODO: save
 }
 
 
 -(void)undoCompletedDaily:(Daily *)daily{
     daily.lastActivationTime = daily.rollbackActivationTime;
-    //TODO more stuff
+    //TODO: more stuff
 }
 
 

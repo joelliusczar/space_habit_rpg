@@ -13,23 +13,25 @@
 #import "SingletonCluster.h"
 #import "MonthPartPicker.h"
 #import "ViewHelper.h"
+#import "Interceptor.h"
+#import "ItemFlexibleListView+YearMonthCommon.h"
 
 @interface MonthlyActiveDays ()
-@property (strong,nonatomic) NSMutableArray<NSDictionary *> *daysOfMonth;
+@property (strong,nonatomic) NSMutableArray<NSDictionary<NSString *,NSNumber *> *> *daysOfMonth;
 @end
 
 @implementation MonthlyActiveDays
 
 
--(NSMutableArray<NSDictionary *> *)daysOfMonth{
+-(NSMutableArray<NSDictionary<NSString *,NSNumber *> *> *)daysOfMonth{
     if(nil==_daysOfMonth){
-        if(self.daily.rateType == MONTHLY_RATE){
-            NSString *activeDays = self.daily.activeDays;
-            NSDictionary *dict = [CommonUtilities jsonStringToDict:activeDays];
-            _daysOfMonth = (NSMutableArray<NSDictionary *> *)dict[@"daysOfMonth"];
+        NSString *activeDays = self.daily.activeDays;
+        NSDictionary *dict = [CommonUtilities jsonStringToDict:activeDays];
+        if(dict[@"daysOfMonth"]){
+            _daysOfMonth = dict[@"daysOfMonth"];
         }
         else{
-            _daysOfMonth = [NSMutableArray<NSDictionary *> array];
+            _daysOfMonth = [NSMutableArray array];
         }
     }
         
@@ -77,6 +79,11 @@
 }
 
 -(void)pickerSelection_action:(UIPickerView *)sender forEvent:(UIEvent *)event{
-    
+    wrapReturnVoid wrappedCall = ^(){
+        [self addNewItem:sender backendList:self.daysOfMonth fieldNames:@[@"ordinal",@"dayOfWeek"]];
+    };
+    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
+
+
 @end

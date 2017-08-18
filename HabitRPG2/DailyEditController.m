@@ -290,10 +290,10 @@ NSString* const IS_DIRTY = @"isDirty";
         if(sender.isOn){
             //I'm okay with casting the long to int because I only need the
             //first seven bits anyway
-            //TODO self.modelForEditing.activeDaysHash |= (int)sender.tag;
+            //TODO: self.modelForEditing.activeDaysHash |= (int)sender.tag;
         }
         else{
-            //TODO self.modelForEditing.activeDaysHash &= ~(int)sender.tag;
+            //TODO: self.modelForEditing.activeDaysHash &= ~(int)sender.tag;
         }
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];

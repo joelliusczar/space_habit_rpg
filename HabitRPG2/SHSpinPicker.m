@@ -17,6 +17,13 @@
 
 @implementation SHSpinPicker
 
+
+-(instancetype)init{
+    if(self = [super initWithNibName:@"SHSpinPicker" bundle:nil]){}
+    return self;
+}
+
+
 -(void)viewDidLoad{
     UITapGestureRecognizer *tapGestureBG = [[UITapGestureRecognizer alloc]
                                             initWithTarget:self

@@ -9,6 +9,7 @@
 #import "MonthPartPicker.h"
 #import "constants.h"
 #import "SingletonCluster.h"
+#import "ViewHelper.h"
 
 @interface MonthPartPicker ()
 
@@ -25,11 +26,6 @@ const NSInteger DAY_COLUMN = 1;
         _utilityStore = SharedGlobal;
     }
     return _utilityStore;
-}
-
--(instancetype)init{
-    if(self = [super initWithNibName:@"SHSpinPicker" bundle:nil]){}
-    return self;
 }
 
 
@@ -86,6 +82,7 @@ numberOfRowsInComponent:(NSInteger)component{
     if(self.delegate){
         [self.delegate pickerSelection_action:self.picker forEvent:event];
     }
+    [ViewHelper popViewFromFront:self];
 }
 
 @end

@@ -142,6 +142,9 @@
 		27E89C981EF5F3EE009B7474 /* SubTaskCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E89C971EF5F3EE009B7474 /* SubTaskCellController.m */; };
 		27E89C9D1EF5FCD5009B7474 /* ImportanceSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E89C9B1EF5FCD5009B7474 /* ImportanceSliderView.m */; };
 		27E89C9E1EF5FCD5009B7474 /* ImportanceSliderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E89C9C1EF5FCD5009B7474 /* ImportanceSliderView.xib */; };
+		27F0D5B41F450056002DE59C /* YearlyActiveDays.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F0D5B31F450056002DE59C /* YearlyActiveDays.m */; };
+		27F0D5B81F4500CB002DE59C /* YearPartPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F0D5B71F4500CB002DE59C /* YearPartPicker.m */; };
+		27F0D5BC1F46993B002DE59C /* ItemFlexibleListView+YearMonthCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F0D5BB1F46993B002DE59C /* ItemFlexibleListView+YearMonthCommon.m */; };
 		27F4401C1E220097002BEDD4 /* OnlyOneEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */; };
 		686686EB1D79032200BB2D09 /* DailyCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 686686EA1D79032200BB2D09 /* DailyCellController.xib */; };
 		686686EE1D79060300BB2D09 /* DailyCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686686ED1D79060300BB2D09 /* DailyCellController.m */; };
@@ -483,6 +486,12 @@
 		27E89C9B1EF5FCD5009B7474 /* ImportanceSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportanceSliderView.m; sourceTree = "<group>"; };
 		27E89C9C1EF5FCD5009B7474 /* ImportanceSliderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImportanceSliderView.xib; sourceTree = "<group>"; };
 		27E89C9F1EF600D9009B7474 /* P_ImportanceSlidersDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ImportanceSlidersDelegate.h; sourceTree = "<group>"; };
+		27F0D5B21F450056002DE59C /* YearlyActiveDays.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearlyActiveDays.h; sourceTree = "<group>"; };
+		27F0D5B31F450056002DE59C /* YearlyActiveDays.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearlyActiveDays.m; sourceTree = "<group>"; };
+		27F0D5B61F4500CB002DE59C /* YearPartPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearPartPicker.h; sourceTree = "<group>"; };
+		27F0D5B71F4500CB002DE59C /* YearPartPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearPartPicker.m; sourceTree = "<group>"; };
+		27F0D5BA1F46993B002DE59C /* ItemFlexibleListView+YearMonthCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ItemFlexibleListView+YearMonthCommon.h"; sourceTree = "<group>"; };
+		27F0D5BB1F46993B002DE59C /* ItemFlexibleListView+YearMonthCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ItemFlexibleListView+YearMonthCommon.m"; sourceTree = "<group>"; };
 		27F4401A1E220097002BEDD4 /* OnlyOneEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyOneEntities.h; sourceTree = "<group>"; };
 		27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlyOneEntities.m; sourceTree = "<group>"; };
 		686686EA1D79032200BB2D09 /* DailyCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyCellController.xib; sourceTree = "<group>"; };
@@ -648,6 +657,14 @@
 				274FFC281EF6236600FAF809 /* WeeklyActiveDays.xib */,
 				2724281C1F40E7790028B22E /* MonthlyActiveDays.h */,
 				2724281D1F40E7790028B22E /* MonthlyActiveDays.m */,
+				27F0D5B21F450056002DE59C /* YearlyActiveDays.h */,
+				27F0D5B31F450056002DE59C /* YearlyActiveDays.m */,
+				2725963A1F32D81F006EECD2 /* MonthPartPicker.h */,
+				2725963B1F32D81F006EECD2 /* MonthPartPicker.m */,
+				27F0D5B61F4500CB002DE59C /* YearPartPicker.h */,
+				27F0D5B71F4500CB002DE59C /* YearPartPicker.m */,
+				27F0D5BA1F46993B002DE59C /* ItemFlexibleListView+YearMonthCommon.h */,
+				27F0D5BB1F46993B002DE59C /* ItemFlexibleListView+YearMonthCommon.m */,
 			);
 			name = ActiveDays;
 			sourceTree = "<group>";
@@ -916,8 +933,6 @@
 				276159B51F31A310002E8BF9 /* RateTypeSelector.h */,
 				276159B61F31A310002E8BF9 /* RateTypeSelector.m */,
 				276159B71F31A310002E8BF9 /* RateTypeSelector.xib */,
-				2725963A1F32D81F006EECD2 /* MonthPartPicker.h */,
-				2725963B1F32D81F006EECD2 /* MonthPartPicker.m */,
 				2724282C1F4156670028B22E /* ListItemCell.h */,
 				2724282D1F4156670028B22E /* ListItemCell.m */,
 				27E89C8F1EF5E6A8009B7474 /* ListItemCell.xib */,
@@ -1298,6 +1313,7 @@
 				68F3F9A51D70E82E00840DD2 /* Sources */,
 				68F3F9A61D70E82E00840DD2 /* Frameworks */,
 				68F3F9A71D70E82E00840DD2 /* Resources */,
+				27F0D5B91F451DB8002DE59C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1424,6 +1440,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		27F0D5B91F451DB8002DE59C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXIT:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		274A37BF1F107ACE00F31E0F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1495,6 +1527,7 @@
 				271C04831E8A1152002221E9 /* MonsterInfoDictionary.m in Sources */,
 				27C92C441E3314000025727E /* ZoneDescriptionViewController.m in Sources */,
 				27B0CDCB1F2BEECD005BEC75 /* MonsterTransaction+CoreDataProperties.m in Sources */,
+				27F0D5B81F4500CB002DE59C /* YearPartPicker.m in Sources */,
 				277ABED11E95DEF6008CC239 /* ProbWeight.m in Sources */,
 				274A37B51F0A1D6200F31E0F /* SHMath.m in Sources */,
 				27B0CD1B1F2BEBA9005BEC75 /* Habit+CoreDataClass.m in Sources */,
@@ -1524,6 +1557,7 @@
 				2725963C1F32D81F006EECD2 /* MonthPartPicker.m in Sources */,
 				27C3C2251F08799200F205A6 /* AddItemsFooter.m in Sources */,
 				27B0CD311F2BEC21005BEC75 /* MonsterTransaction+CoreDataClass.m in Sources */,
+				27F0D5B41F450056002DE59C /* YearlyActiveDays.m in Sources */,
 				686ED3C71DB481C4004EDD36 /* ZoneHelper.m in Sources */,
 				27B0CD0A1F2BEB5D005BEC75 /* Hero+CoreDataProperties.m in Sources */,
 				275D9F271F21A33E009DA715 /* TaskCell.m in Sources */,
@@ -1539,6 +1573,7 @@
 				274A37AF1F0A083A00F31E0F /* TimeSpinPickerEventInfo.m in Sources */,
 				27C92C151E297F650025727E /* ZoneChoiceCellController.m in Sources */,
 				27B0CDE71F2C4091005BEC75 /* DailyTransaction+CoreDataClass.m in Sources */,
+				27F0D5BC1F46993B002DE59C /* ItemFlexibleListView+YearMonthCommon.m in Sources */,
 				274A37B81F0DC03100F31E0F /* NSLocale+Helper.m in Sources */,
 				27B0CD091F2BEB5D005BEC75 /* Hero+CoreDataClass.m in Sources */,
 				275FEF0D1EE45AE600AED1A2 /* Daily+DailyHelper.m in Sources */,

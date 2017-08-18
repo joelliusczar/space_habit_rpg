@@ -36,7 +36,7 @@ const int PM_ROW = 1;
 
 -(instancetype)initWithDayRange:(NSInteger)dayRange{
     
-    if(self = [super initWithNibName:@"SHSpinPicker" bundle:nil]){
+    if(self = [super init]){
         _dayRange = dayRange;
     }
     return self;
