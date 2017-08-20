@@ -38,6 +38,18 @@
     return [self loadXib:(NSStringFromClass(self.class))];
 }
 
+//so that I don't have to always be resizing both self and mainView
+-(void)resizeHeightByOffset:(CGFloat)offset{
+    [super resizeHeightByOffset:offset];
+    [self.mainView resizeHeightByOffset:offset];
+}
+
+
+-(void)resizeFrame:(CGSize)size{
+    [super resizeFrame:size];
+    [self.mainView resizeFrame:size];
+}
+
 
 -(void)changeBackgroundColorTo:(UIColor *)color{
     self.mainView.backgroundColor = color;

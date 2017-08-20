@@ -37,6 +37,7 @@
     YearlyActiveDays *instance = [[YearlyActiveDays alloc] init];
     instance.daily = daily;
     instance.backViewController = backViewController;
+    [instance commonSetup];
     return instance;
 }
 
@@ -58,6 +59,11 @@
 
 -(void)addItemBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event{
     
+}
+
+
+-(NSInteger)backendListCount{
+    return self.daysOfYear.count;
 }
 
 

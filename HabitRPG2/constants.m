@@ -43,8 +43,8 @@ u_int32_t const MAX_ZONE_CHOICE_RAND_UP_BOUND = 3;
 CGFloat const ZONE_CHOICE_ROW_HEIGHT = 75;
 CGFloat const EDIT_SCREEN_TOP_CONTROL_HEIGHT = 60;
 NSString * const NOTIFY_CAT_ID = @"SHReminder";
-NSString* const ALL_DAYS_JSON = @"{\"SUN\":1,\"MON\":1,\"TUE\":1,"
-"\"WED\":1,\"THR\":1,\"SAT\":1}";
+NSString* const ALL_DAYS_JSON = @"{\"daysOfWeek\":{\"SUN\":1,\"MON\":1,\"TUE\":1,"
+"\"WED\":1,\"THR\":1,\"SAT\":1}}";
 
 CGFloat const SUB_TABLE_CELL_HEIGHT = 44;
 NSInteger const SUB_TABLE_MAX_ROWS = 4;
@@ -68,4 +68,12 @@ NSString* const LVL_15_ZONES = @"LVL_15_ZONES";
 NSString* const LVL_20_ZONES = @"LVL_20_ZONES";
 NSString* const LVL_25_ZONES = @"LVL_25_ZONES";
 NSString* const LVL_30_ZONES = @"LVL_30_ZONES";
+
+int const HOUR_OF_DAY_COL = 0;
+int const MINUTE_COL = 1;
+int const DAYS_BEFORE_COL_IN_24_HOUR_CLOCK = 2;
+int const DAYS_BEFORE_COL_IN_12_HOUR_CLOCK = 3;
+int const AM_PM_COL = 2;
+int const AM_ROW = 0;
+int const PM_ROW = 1;
 

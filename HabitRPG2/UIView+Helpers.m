@@ -7,6 +7,7 @@
 //
 
 #import "UIView+Helpers.h"
+#import "NSException+SHCommonExceptions.h"
 
 @implementation UIView (Helpers)
 
@@ -20,6 +21,7 @@
     CGRect bounds = self.bounds;
     bounds.size.height += change;
     self.bounds = bounds;
+    @throw [NSException stillUsedException];
 }
 
 
@@ -65,11 +67,12 @@
 
 
 -(void)replaceSubviewsWith:(UIView *)view{
-    NSAssert(view,@"view is nil");
     for(UIView *v in self.subviews){
         [v removeFromSuperview];
     }
-    [self addSubview:view];
+    if(view){
+        [self addSubview:view];
+    }
 }
 
 

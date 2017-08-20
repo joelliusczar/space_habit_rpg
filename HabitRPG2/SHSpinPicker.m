@@ -10,12 +10,21 @@
 #import "Interceptor.h"
 #import "ViewHelper.h"
 #import "NSException+SHCommonExceptions.h"
+#import "SingletonCluster.h"
 
 @interface SHSpinPicker ()
 
 @end
 
 @implementation SHSpinPicker
+
+
+-(id<P_UtilityStore>)utilityStore{
+    if(nil==_utilityStore){
+        _utilityStore = SharedGlobal;
+    }
+    return _utilityStore;
+}
 
 
 -(instancetype)init{
@@ -60,7 +69,10 @@ numberOfRowsInComponent:(NSInteger)component{
 
 -(IBAction)pickerSelectBtn_press_action:(UIButton *)sender
                                forEvent:(UIEvent *)event{
-    @throw [NSException abstractException];
+    if(self.delegate){
+        [self.delegate pickerSelection_action:self.picker forEvent:event];
+    }
+    [ViewHelper popViewFromFront:self];
 }
 
 @end

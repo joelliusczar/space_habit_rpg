@@ -15,6 +15,7 @@
 #import "ViewHelper.h"
 #import "Interceptor.h"
 #import "ItemFlexibleListView+YearMonthCommon.h"
+#import "NSNumber+Helpers.h"
 
 @interface MonthlyActiveDays ()
 @property (strong,nonatomic) NSMutableArray<NSDictionary<NSString *,NSNumber *> *> *daysOfMonth;
@@ -25,14 +26,8 @@
 
 -(NSMutableArray<NSDictionary<NSString *,NSNumber *> *> *)daysOfMonth{
     if(nil==_daysOfMonth){
-        NSString *activeDays = self.daily.activeDays;
-        NSDictionary *dict = [CommonUtilities jsonStringToDict:activeDays];
-        if(dict[@"daysOfMonth"]){
-            _daysOfMonth = dict[@"daysOfMonth"];
-        }
-        else{
-            _daysOfMonth = [NSMutableArray array];
-        }
+        _daysOfMonth = [ItemFlexibleListView extractActiveDays:@"daysOfMonth"
+                                                     fromDaily:self.daily];
     }
         
     return _daysOfMonth;
@@ -46,6 +41,7 @@
     MonthlyActiveDays *instance = [[MonthlyActiveDays alloc] init];
     instance.backViewController = backViewController;
     instance.daily = daily;
+    [instance commonSetup];
     return instance;
 }
 
@@ -62,7 +58,7 @@
     NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
     numFormatter.locale = self.utilityStore.inUseLocale;
     numFormatter.numberStyle = NSNumberFormatterOrdinalStyle;
-    NSString *ordinal = [numFormatter stringFromNumber:monthItemDict[@"ordinal"]];
+    NSString *ordinal = [numFormatter stringFromNumber:[monthItemDict[@"ordinal"] plusInteger:1]];
     NSString *dayOfWeek = self.utilityStore.inUseCalendar.weekdaySymbols[monthItemDict[@"dayOfWeek"].integerValue];
     cell.lblRowDesc.text = [NSString stringWithFormat:@"%@ %@",ordinal,dayOfWeek];
     return cell;
@@ -71,18 +67,25 @@
 
 -(void)addItemBtn_press_action:(UIButton *)sender
                       forEvent:(UIEvent *)event{
-    MonthPartPicker *dayOfMonthPicker = [[MonthPartPicker alloc] init];
-    dayOfMonthPicker.utilityStore = self.utilityStore;
-    dayOfMonthPicker.delegate = self;
-    [ViewHelper pushViewToFront:dayOfMonthPicker OfParent:self.backViewController];
-    
+    wrapReturnVoid wrappedCall = ^(){
+        MonthPartPicker *dayOfMonthPicker = [[MonthPartPicker alloc] init];
+        [self showSHSpinPicker:dayOfMonthPicker];
+    };
+    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
+
 
 -(void)pickerSelection_action:(UIPickerView *)sender forEvent:(UIEvent *)event{
     wrapReturnVoid wrappedCall = ^(){
         [self addNewItem:sender backendList:self.daysOfMonth fieldNames:@[@"ordinal",@"dayOfWeek"]];
+        [self resizeAndScrollByChange:SUB_TABLE_CELL_HEIGHT];
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+}
+
+
+-(NSInteger)backendListCount{
+    return self.daysOfMonth.count;
 }
 
 

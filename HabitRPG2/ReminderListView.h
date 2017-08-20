@@ -10,7 +10,7 @@
 #import "P_DueDateWrapper.h"
 #import "P_AddItemsFooterDelegate.h"
 #import "Reminder+CoreDataClass.h"
-#import "P_ReminderTimeSpinPickerDelegate.h"
+#import "P_SHSpinPickerDelegate.h"
 #import "EditNavigationController.h"
 #import "AddItemsFooter.h"
 #import "ItemFlexibleListView.h"
@@ -20,7 +20,7 @@
 @interface ReminderListView :ItemFlexibleListView
 <UITableViewDataSource
 ,P_AddItemsFooterDelegate
-,P_ReminderTimeSpinPickerDelegate>
+,P_SHSpinPickerDelegate>
 
 @property (strong,nonatomic) id<P_DueDateWrapper> dueDateInfo;
 @property (weak,nonatomic) NSOrderedSet<Reminder *> *reminderSet;

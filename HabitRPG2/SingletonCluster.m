@@ -89,6 +89,7 @@
     if(nil==_inUseCalendar){
         _inUseCalendar =
         [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+        _inUseCalendar.locale = self.inUseLocale;
     }
     return _inUseCalendar;
 }

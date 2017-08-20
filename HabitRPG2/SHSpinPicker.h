@@ -7,10 +7,14 @@
 //
 
 @import UIKit;
+#import "P_SHSpinPickerDelegate.h"
+#import "P_UtilityStore.h"
 
 @interface SHSpinPicker : UIViewController
 <UIPickerViewDataSource,UIPickerViewDelegate>
 @property (weak,nonatomic) IBOutlet UIPickerView *picker;
+@property (strong,nonatomic) id<P_UtilityStore> utilityStore;
+@property (weak,nonatomic) id<P_SHSpinPickerDelegate> delegate;
 -(IBAction)pickerSelectBtn_press_action:(UIButton *)sender
                                forEvent:(UIEvent *)event;
 @end

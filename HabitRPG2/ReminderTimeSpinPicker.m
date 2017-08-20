@@ -13,13 +13,6 @@
 #import "ViewHelper.h"
 #import "Interceptor.h"
 
-const int HOUR_OF_DAY_COL = 0;
-const int MINUTE_COL = 1;
-const int DAYS_BEFORE_COL_IN_24_HOUR_CLOCK = 2;
-const int DAYS_BEFORE_COL_IN_12_HOUR_CLOCK = 3;
-const int AM_PM_COL = 2;
-const int AM_ROW = 0;
-const int PM_ROW = 1;
 
 @interface ReminderTimeSpinPicker()
 @end
@@ -89,27 +82,6 @@ numberOfRowsInComponent:(NSInteger)component{
     }
 }
 
-
--(IBAction)pickerSelectBtn_press_action:(UIButton *)sender
-                               forEvent:(UIEvent *)event {
-    if(self.delegate){
-        TimeSpinPickerEventInfo *eventInfo = [TimeSpinPickerEventInfo new];
-        eventInfo.selectedHourRow =
-        [self.picker selectedRowInComponent:HOUR_OF_DAY_COL];
-        
-        eventInfo.selectedMinRow =
-        [self.picker selectedRowInComponent:MINUTE_COL];
-        NSInteger daysCol =
-        self.utilityStore.inUseLocale.isUsing24HourFormat?DAYS_BEFORE_COL_IN_24_HOUR_CLOCK:DAYS_BEFORE_COL_IN_12_HOUR_CLOCK;
-        
-        eventInfo.selectedDaysBeforeRow =
-        [self.picker selectedRowInComponent:daysCol];
-        
-        [self.delegate pickerSelection_action:self.picker
-                                     forEvent:eventInfo];
-    }
-    [ViewHelper popViewFromFront:self];
-}
 
 -(CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component{
     //these numbers were picked somewhat arbitrarily

@@ -13,7 +13,7 @@
 #import "SingletonCluster.h"
 
 @interface RateSetContainer ()
-
+@property (assign,nonatomic) CGSize defaultSize;
 @end
 
 @implementation RateSetContainer
@@ -41,6 +41,7 @@
                               newWithDaily:self.daily
                               andBackViewController:self.backViewController];
         _monthlyActiveDays.utilityStore = self.utilityStore;
+        _monthlyActiveDays.holderView = self;
     }
     return _monthlyActiveDays;
 }
@@ -53,6 +54,7 @@
     RateSetContainer *instance = [[RateSetContainer alloc] init];
     instance.daily = daily;
     instance.backViewController = backViewController;
+    instance.defaultSize = instance.frame.size;
     [instance updateRateType:daily.rateType];
     return instance;
 }
@@ -72,13 +74,21 @@
 }
 
 -(void)setRateTypeActiveDaysControl:(RateType)rateType{
-    if(rateType==WEEKLY_RATE){
+    if(rateType == WEEKLY_RATE){
+        CGFloat h = self.weeklyActiveDays.frame.size.height;
+        [self fitControlHeightToSubControlHeight:h];
         [self.activeDaysControlContainer
          replaceSubviewsWith:self.weeklyActiveDays];
     }
     else if(rateType == MONTHLY_RATE){
+        CGFloat h = self.monthlyActiveDays.frame.size.height;
+        [self fitControlHeightToSubControlHeight:h];
         [self.activeDaysControlContainer
          replaceSubviewsWith:self.monthlyActiveDays];
+    }
+    else if(rateType == DAILY_RATE){
+        [self resetHeight];
+        [self.activeDaysControlContainer replaceSubviewsWith:nil];
     }
 }
 
@@ -88,6 +98,23 @@
     if(self.delegate){
         [self.delegate rateStep_valueChanged_action:sender forEvent:event];
     }
+}
+
+
+-(void)resetHeight{
+    [self resizeFrame:self.defaultSize];
+    [self.activeDaysControlContainer resizeFrame:CGRectZero.size];
+}
+
+
+-(void)fitControlHeightToSubControlHeight:(CGFloat)h{
+    [self resetHeight];
+    // max height for the tables? This should be controlled inside the
+    //table itself I think
+    [self.backViewController.editingScreen.controlsTbl beginUpdates];
+    [self resizeHeightByOffset:h];
+    [self.activeDaysControlContainer resizeHeightByOffset:h];
+    [self.backViewController.editingScreen.controlsTbl endUpdates];
 }
 
 @end

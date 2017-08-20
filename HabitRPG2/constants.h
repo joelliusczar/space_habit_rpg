@@ -113,3 +113,11 @@ extern NSString* const LVL_20_ZONES;
 extern NSString* const LVL_25_ZONES;
 extern NSString* const LVL_30_ZONES;
 
+extern int const HOUR_OF_DAY_COL;
+extern int const MINUTE_COL;
+extern int const DAYS_BEFORE_COL_IN_24_HOUR_CLOCK;
+extern int const DAYS_BEFORE_COL_IN_12_HOUR_CLOCK;
+extern int const AM_PM_COL;
+extern int const AM_ROW;
+extern int const PM_ROW;
+

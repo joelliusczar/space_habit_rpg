@@ -26,4 +26,12 @@
             userInfo:nil];
 }
 
+
++(NSException *)stillUsedException{
+    return [NSException
+            exceptionWithName:@"Still used exception"
+            reason:@"yep, this is still used"
+            userInfo:nil];
+}
+
 @end

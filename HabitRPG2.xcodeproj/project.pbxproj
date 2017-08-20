@@ -145,6 +145,7 @@
 		27F0D5B41F450056002DE59C /* YearlyActiveDays.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F0D5B31F450056002DE59C /* YearlyActiveDays.m */; };
 		27F0D5B81F4500CB002DE59C /* YearPartPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F0D5B71F4500CB002DE59C /* YearPartPicker.m */; };
 		27F0D5BC1F46993B002DE59C /* ItemFlexibleListView+YearMonthCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F0D5BB1F46993B002DE59C /* ItemFlexibleListView+YearMonthCommon.m */; };
+		27F0D5BF1F4A3E02002DE59C /* NSNumber+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F0D5BE1F4A3E02002DE59C /* NSNumber+Helpers.m */; };
 		27F4401C1E220097002BEDD4 /* OnlyOneEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */; };
 		686686EB1D79032200BB2D09 /* DailyCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 686686EA1D79032200BB2D09 /* DailyCellController.xib */; };
 		686686EE1D79060300BB2D09 /* DailyCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686686ED1D79060300BB2D09 /* DailyCellController.m */; };
@@ -492,6 +493,9 @@
 		27F0D5B71F4500CB002DE59C /* YearPartPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearPartPicker.m; sourceTree = "<group>"; };
 		27F0D5BA1F46993B002DE59C /* ItemFlexibleListView+YearMonthCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ItemFlexibleListView+YearMonthCommon.h"; sourceTree = "<group>"; };
 		27F0D5BB1F46993B002DE59C /* ItemFlexibleListView+YearMonthCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ItemFlexibleListView+YearMonthCommon.m"; sourceTree = "<group>"; };
+		27F0D5BD1F4A3E02002DE59C /* NSNumber+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Helpers.h"; sourceTree = "<group>"; };
+		27F0D5BE1F4A3E02002DE59C /* NSNumber+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Helpers.m"; sourceTree = "<group>"; };
+		27F0D5C01F4A4000002DE59C /* P_SHSpinPickerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_SHSpinPickerDelegate.h; sourceTree = "<group>"; };
 		27F4401A1E220097002BEDD4 /* OnlyOneEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyOneEntities.h; sourceTree = "<group>"; };
 		27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlyOneEntities.m; sourceTree = "<group>"; };
 		686686EA1D79032200BB2D09 /* DailyCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyCellController.xib; sourceTree = "<group>"; };
@@ -757,6 +761,7 @@
 				274A37971F09BA9C00F31E0F /* P_ReminderTimeSpinPickerDelegate.h */,
 				276159BA1F327460002E8BF9 /* P_RateTypeSelectorDelegate.h */,
 				272428241F41053A0028B22E /* P_MonthComponentSpinPickerDelegate.h */,
+				27F0D5C01F4A4000002DE59C /* P_SHSpinPickerDelegate.h */,
 			);
 			name = "Control Delegates";
 			sourceTree = "<group>";
@@ -1264,6 +1269,8 @@
 				275D9F2C1F22BAED009DA715 /* UIView+Helpers.m */,
 				276159771F2E3B64002E8BF9 /* NotificationHelper.h */,
 				276159781F2E3B64002E8BF9 /* NotificationHelper.m */,
+				27F0D5BD1F4A3E02002DE59C /* NSNumber+Helpers.h */,
+				27F0D5BE1F4A3E02002DE59C /* NSNumber+Helpers.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1562,6 +1569,7 @@
 				27B0CD0A1F2BEB5D005BEC75 /* Hero+CoreDataProperties.m in Sources */,
 				275D9F271F21A33E009DA715 /* TaskCell.m in Sources */,
 				277404111EFDBD43008E1AFC /* NSObject+Helper.m in Sources */,
+				27F0D5BF1F4A3E02002DE59C /* NSNumber+Helpers.m in Sources */,
 				27B0CDE21F2BF53B005BEC75 /* HabitTransaction+CoreDataClass.m in Sources */,
 				68E260CF1D851DA500425D46 /* EditNavigationController.m in Sources */,
 				27B0CDDF1F2BF501005BEC75 /* DailySubTask+CoreDataClass.m in Sources */,

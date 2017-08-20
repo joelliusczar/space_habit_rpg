@@ -40,12 +40,7 @@
     instance.reminderSet = [dueDateInfo getReminderSet];
     instance.backViewController = backViewController;
     
-    CGFloat tblHeight = instance.reminderSet.count<SUB_TABLE_MAX_ROWS?
-        SUB_TABLE_CELL_HEIGHT*instance.reminderSet.count:
-        SUB_TABLE_MAX_HEIGHT;
-    [instance resizeRemindersListHeightByOffset:tblHeight];
-    instance.itemTbl.tableFooterView = [[UIView alloc]
-                                            initWithFrame:CGRectZero];
+    [instance commonSetup];
     instance.addItemsFooter.addItemLbl.text = @"Add New Reminder";
     return instance;
 }
@@ -80,26 +75,22 @@ numberOfRowsInSection:(NSInteger)section{
 
 
 -(void)pickerSelection_action:(UIPickerView *)sender
-                     forEvent:(TimeSpinPickerEventInfo *)event{
+                     forEvent:(UIEvent *)event{
     
     wrapReturnVoid wrappedCall = ^void(){
         [self.backViewController enableSave];
-        [self insertNewReminder:event.selectedHourRow
-                         minute:event.selectedMinRow
-                     daysBefore:event.selectedDaysBeforeRow];
+        NSInteger hourRow = [sender selectedRowInComponent:HOUR_OF_DAY_COL];
+        NSInteger minuteRow = [sender selectedRowInComponent:MINUTE_COL];
+        NSInteger daysCol = sender.numberOfComponents -1;
+        NSInteger daysBefore = [sender selectedRowInComponent:daysCol];
+        [self insertNewReminder:hourRow minute:minuteRow daysBefore:daysBefore];
         NSIndexPath *indexPath = [NSIndexPath
                                   indexPathForRow:self.reminderSet.count-1
                                   inSection:0];
         [self.itemTbl
          insertRowsAtIndexPaths:@[indexPath]
          withRowAnimation:UITableViewRowAnimationFade];
-        //need the begin/end update lines because buttons will get covered by
-        //invisble stuff and not respond
-        //also, apparently they tell the table to refresh the heights
-        [self.backViewController.editingScreen.controlsTbl beginUpdates];
-        [self resizeRemindersListHeightByOffset:SUB_TABLE_CELL_HEIGHT];
-        [self scrollRemindersListByOffset:SUB_TABLE_CELL_HEIGHT];
-        [self.backViewController.editingScreen.controlsTbl endUpdates];
+        [self resizeAndScrollByChange:SUB_TABLE_CELL_HEIGHT];
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
@@ -122,19 +113,8 @@ numberOfRowsInSection:(NSInteger)section{
 }
 
 
--(void)resizeRemindersListHeightByOffset:(CGFloat)offset{
-    if(self.itemTbl.frame.size.height < SUB_TABLE_MAX_HEIGHT){
-        [self.itemTbl resizeHeightByOffset:offset];
-        [self.mainView resizeHeightByOffset:offset];
-        [self resizeHeightByOffset:offset];
-    }
-}
-
-
--(void)scrollRemindersListByOffset:(CGFloat)offset{
-    //auto scroll so that reminders remains centered
-    [self.backViewController scrollByOffset:SUB_TABLE_CELL_HEIGHT];
-    [self.itemTbl scrollByOffset:SUB_TABLE_CELL_HEIGHT];
+-(NSInteger)backendListCount{
+    return self.reminderSet.count;
 }
 
 

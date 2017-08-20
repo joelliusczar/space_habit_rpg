@@ -21,14 +21,6 @@ const NSInteger DAY_COLUMN = 1;
 @implementation MonthPartPicker
 
 
--(id<P_UtilityStore>)utilityStore{
-    if(nil==_utilityStore){
-        _utilityStore = SharedGlobal;
-    }
-    return _utilityStore;
-}
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -76,13 +68,5 @@ numberOfRowsInComponent:(NSInteger)component{
     return 75;
 }
 
-
--(IBAction)pickerSelectBtn_press_action:(UIButton *)sender
-                               forEvent:(UIEvent *)event{
-    if(self.delegate){
-        [self.delegate pickerSelection_action:self.picker forEvent:event];
-    }
-    [ViewHelper popViewFromFront:self];
-}
 
 @end

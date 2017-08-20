@@ -7,10 +7,6 @@
 //
 
 #import "SHSpinPicker.h"
-#import "P_UtilityStore.h"
-#import "P_MonthComponentSpinPickerDelegate.h"
 
 @interface MonthPartPicker : SHSpinPicker
-@property (weak,nonatomic) id<P_MonthComponentSpinPickerDelegate> delegate;
-@property (strong,nonatomic) id<P_UtilityStore> utilityStore;
 @end
