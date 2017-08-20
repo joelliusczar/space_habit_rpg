@@ -20,13 +20,6 @@
 @implementation ReminderTimeSpinPicker
 
 
--(id<P_UtilityStore>)utilityStore{
-    if(nil==_utilityStore){
-        _utilityStore = SharedGlobal;
-    }
-    return _utilityStore;
-}
-
 -(instancetype)initWithDayRange:(NSInteger)dayRange{
     
     if(self = [super init]){
