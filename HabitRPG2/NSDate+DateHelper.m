@@ -127,6 +127,12 @@
                     second:second];
 }
 
+
++(NSDate *)createSimpleDate:(NSInteger)year month:(NSInteger)month day:(NSInteger)day{
+    return [NSDate createDateTime:year month:month day:day hour:0 minute:0 second:0];
+}
+
+
 +(NSDate *)todayStart{
     return [self.inUseCalendar startOfDayForDate:[NSDate date]];
 }

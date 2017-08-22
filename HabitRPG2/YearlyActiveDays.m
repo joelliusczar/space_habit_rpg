@@ -9,6 +9,9 @@
 #import "YearlyActiveDays.h"
 #import "CommonUtilities.h"
 #import "ListItemCell.h"
+#import "YearPartPicker.h"
+#import "Interceptor.h"
+#import "ItemFlexibleListView+YearMonthCommon.h"
 
 @interface YearlyActiveDays ()
 @property (strong,nonatomic) NSMutableArray<NSDictionary<NSString *,NSNumber *> *> *daysOfYear;
@@ -18,15 +21,8 @@
 
 -(NSMutableArray<NSDictionary<NSString*,NSNumber *> *> *)daysOfYear{
     if(nil == _daysOfYear){
-        NSString *activeDays = self.daily.activeDays;
-        NSDictionary *dict = [CommonUtilities
-                              jsonStringToDict:activeDays];
-        if(dict[@"daysOfYear"]){
-            _daysOfYear = dict[@"daysOfYear"];
-        }
-        else{
-            _daysOfYear = [NSMutableArray array];
-        }
+        _daysOfYear = [YearlyActiveDays
+                       extractActiveDays:@"daysOfYear" fromDaily:self.daily];
     }
     return _daysOfYear;
 }
@@ -58,7 +54,20 @@
 
 
 -(void)addItemBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event{
-    
+    wrapReturnVoid wrappedCall = ^(){
+        YearPartPicker *dayOfYearPicker = [[YearPartPicker alloc] init];
+        [self showSHSpinPicker:dayOfYearPicker];
+    };
+    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+}
+
+
+-(void)pickerSelection_action:(UIPickerView *)sender forEvent:(UIEvent *)event{
+    wrapReturnVoid wrappedCall = ^(){
+        [self addNewItem:sender backendList:self.daysOfYear fieldNames:@[@"month",@"day"]];
+        [self scaleTableForAddItem];
+    };
+    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 

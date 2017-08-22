@@ -10,9 +10,9 @@
 #import "constants.h"
 
 @interface NSDate (DateHelper)
-@property (class,strong,nonatomic) NSLocale *inUseLocale;
-@property (class,strong,nonatomic) NSCalendar *inUseCalendar;
-@property (class,strong,nonatomic) NSTimeZone *inUseTimeZone;
+@property (class,strong,atomic) NSLocale *inUseLocale;
+@property (class,strong,atomic) NSCalendar *inUseCalendar;
+@property (class,strong,atomic) NSTimeZone *inUseTimeZone;
 +(NSDate *)adjustDate:(NSDate *)date year:(NSInteger)y month:(NSInteger)m
                   day:(NSInteger)d;
 +(NSDate *)adjustTime:(NSDate *)dt hour:(NSInteger)h minute:(NSInteger)m
@@ -30,6 +30,8 @@
             second:(NSInteger)s;
 +(NSDate *)createSimpleTime:(NSInteger)hour minute:(NSInteger)minute
                      second:(NSInteger)second;
++(NSDate *)createSimpleDate:(NSInteger)year month:(NSInteger)month
+                        day:(NSInteger)day;
 +(NSString *)timeOfDayInSystemPreferredFormat:(NSInteger)hour
                               andMinute:(NSInteger)minute;
 -(NSString *)extractTimeInFormat:(hourFormatType)format;

@@ -13,4 +13,5 @@
 @property (weak,nonatomic) UIView *holderView;
 -(void)changeBackgroundColorTo:(UIColor *)color;
 -(UIView *)loadDefaultXib;
+-(instancetype)initEmpty;
 @end

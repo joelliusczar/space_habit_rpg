@@ -25,10 +25,6 @@
                                                    ,[NSNumber numberWithInteger:value1],fieldNames[1]
                                                    ,nil];
     [backendList addObject:insert];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:backendList.count -1 inSection:0];
-    [self.itemTbl insertRowsAtIndexPaths:@[indexPath]
-                        withRowAnimation:UITableViewRowAnimationFade];
-    
 }
 
 

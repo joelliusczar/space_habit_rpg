@@ -78,7 +78,7 @@
 -(void)pickerSelection_action:(UIPickerView *)sender forEvent:(UIEvent *)event{
     wrapReturnVoid wrappedCall = ^(){
         [self addNewItem:sender backendList:self.daysOfMonth fieldNames:@[@"ordinal",@"dayOfWeek"]];
-        [self resizeAndScrollByChange:SUB_TABLE_CELL_HEIGHT];
+        [self scaleTableForAddItem];
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }

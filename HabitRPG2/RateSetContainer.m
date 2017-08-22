@@ -46,6 +46,19 @@
     return _monthlyActiveDays;
 }
 
+
+-(YearlyActiveDays *)yearlyActiveDays{
+    if(nil == _yearlyActiveDays){
+        _yearlyActiveDays = [YearlyActiveDays
+                             newWithDaily:self.daily
+                             andBackViewController:self.backViewController];
+        _yearlyActiveDays.utilityStore = self.utilityStore;
+        _yearlyActiveDays.holderView = self;
+    }
+    return _yearlyActiveDays;
+}
+
+
 +(instancetype)newWithDaily:(Daily * _Nonnull)daily
             andBackViewController:(EditNavigationController * _Nonnull)backViewController{
     NSAssert(daily,@"daily was nil");
@@ -74,22 +87,28 @@
 }
 
 -(void)setRateTypeActiveDaysControl:(RateType)rateType{
+    //TODO: test this for loading saved daily
     if(rateType == WEEKLY_RATE){
-        CGFloat h = self.weeklyActiveDays.frame.size.height;
-        [self fitControlHeightToSubControlHeight:h];
-        [self.activeDaysControlContainer
-         replaceSubviewsWith:self.weeklyActiveDays];
+        [self switchActiveDaysControlFor:self.weeklyActiveDays];
     }
     else if(rateType == MONTHLY_RATE){
-        CGFloat h = self.monthlyActiveDays.frame.size.height;
-        [self fitControlHeightToSubControlHeight:h];
-        [self.activeDaysControlContainer
-         replaceSubviewsWith:self.monthlyActiveDays];
+        [self switchActiveDaysControlFor:self.monthlyActiveDays];
+    }
+    else if(rateType == YEARLY_RATE){
+        [self switchActiveDaysControlFor:self.yearlyActiveDays];
     }
     else if(rateType == DAILY_RATE){
-        [self resetHeight];
-        [self.activeDaysControlContainer replaceSubviewsWith:nil];
+        [self switchActiveDaysControlFor:[[SHView alloc] initEmpty]];
     }
+}
+
+
+-(void)switchActiveDaysControlFor:(SHView *)activeDaysControl{
+    NSAssert(activeDaysControl,@"activeDaysControl was nil");
+    CGFloat h = activeDaysControl.frame.size.height;
+    [self fitControlHeightToSubControlHeight:h];
+    [self.activeDaysControlContainer
+     replaceSubviewsWith:activeDaysControl];
 }
 
 

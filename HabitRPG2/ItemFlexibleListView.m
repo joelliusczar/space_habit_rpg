@@ -84,6 +84,17 @@
 }
 
 
+-(void)scaleTableForAddItem{
+    NSIndexPath *indexPath = [NSIndexPath
+                              indexPathForRow:[self backendListCount]-1
+                              inSection:0];
+    [self.itemTbl
+     insertRowsAtIndexPaths:@[indexPath]
+     withRowAnimation:UITableViewRowAnimationFade];
+    [self resizeAndScrollByChange:SUB_TABLE_CELL_HEIGHT];
+}
+
+
 -(NSInteger)tableView:(UITableView *)tableView
 numberOfRowsInSection:(NSInteger)section{
     @throw [NSException abstractException];

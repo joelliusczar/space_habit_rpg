@@ -29,4 +29,5 @@
 -(void)resizeAndScrollByChange:(CGFloat)change;
 -(void)commonSetup;
 -(void)showSHSpinPicker:(SHSpinPicker *)picker;
+-(void)scaleTableForAddItem;
 @end

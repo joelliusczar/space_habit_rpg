@@ -84,13 +84,7 @@ numberOfRowsInSection:(NSInteger)section{
         NSInteger daysCol = sender.numberOfComponents -1;
         NSInteger daysBefore = [sender selectedRowInComponent:daysCol];
         [self insertNewReminder:hourRow minute:minuteRow daysBefore:daysBefore];
-        NSIndexPath *indexPath = [NSIndexPath
-                                  indexPathForRow:self.reminderSet.count-1
-                                  inSection:0];
-        [self.itemTbl
-         insertRowsAtIndexPaths:@[indexPath]
-         withRowAnimation:UITableViewRowAnimationFade];
-        [self resizeAndScrollByChange:SUB_TABLE_CELL_HEIGHT];
+        [self scaleTableForAddItem];
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }

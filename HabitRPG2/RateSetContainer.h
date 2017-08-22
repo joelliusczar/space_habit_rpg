@@ -8,6 +8,7 @@
 #import "RateSetterView.h"
 #import "MonthlyActiveDays.h"
 #import "WeeklyActiveDays.h"
+#import "YearlyActiveDays.h"
 #import "SHView.h"
 #import "P_UtilityStore.h"
 #import "P_RateTypeSelectorDelegate.h"
@@ -22,6 +23,7 @@ SHView<P_RateTypeSelectorDelegate,P_RateSetterDelegate>
 @property (weak,nonatomic) IBOutlet RateSetterView * _Nullable rateSetter;
 @property (strong,nonatomic) MonthlyActiveDays * _Nullable monthlyActiveDays;
 @property (strong,nonatomic) WeeklyActiveDays * _Nullable weeklyActiveDays;
+@property (strong,nonatomic) YearlyActiveDays * _Nullable yearlyActiveDays;
 @property (weak,nonatomic) id<P_RateSetterDelegate> _Nullable delegate;
 @property (strong,nonatomic) _Nullable id<P_UtilityStore> utilityStore;
 @property (strong,nonatomic) Daily * _Nonnull daily;
@@ -29,3 +31,8 @@ SHView<P_RateTypeSelectorDelegate,P_RateSetterDelegate>
 +(instancetype _Nonnull )newWithDaily:(Daily * _Nonnull)daily
             andBackViewController:(EditNavigationController * _Nonnull)backViewController;
 @end
+
+//TODO: work out saving
+//TODO: fix jumpiness
+//TODO: fix gaps
+//
