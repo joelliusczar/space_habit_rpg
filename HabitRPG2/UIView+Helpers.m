@@ -17,13 +17,6 @@
     self.frame = frame;
 }
 
--(void)resizeBoundsHeightByOffset:(CGFloat)change{
-    CGRect bounds = self.bounds;
-    bounds.size.height += change;
-    self.bounds = bounds;
-    @throw [NSException stillUsedException];
-}
-
 
 -(void)setupBorder:(UIRectEdge)edges
      withThickness:(CGFloat)thickness

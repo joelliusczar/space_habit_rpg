@@ -24,6 +24,5 @@
 
 @property (strong,nonatomic) id<P_DueDateWrapper> dueDateInfo;
 @property (weak,nonatomic) NSOrderedSet<Reminder *> *reminderSet;
-+(instancetype)newWithDueDateInfo:(id<P_DueDateWrapper>)dueDateInfo
-             andBackViewController:(EditNavigationController *)backViewController;
++(instancetype)newWithDueDateInfo:(id<P_DueDateWrapper>)dueDateInfo;
 @end

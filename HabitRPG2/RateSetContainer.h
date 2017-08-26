@@ -15,9 +15,14 @@
 #import "P_RateSetterDelegate.h"
 #import "Daily+CoreDataClass.h"
 #import "EditNavigationController.h"
+#import "P_ResizeResponder.h"
+#import "P_ItemFlexibleListDelegate.h"
 
 @interface RateSetContainer :
-SHView<P_RateTypeSelectorDelegate,P_RateSetterDelegate>
+SHView
+<P_RateTypeSelectorDelegate
+,P_RateSetterDelegate
+,P_ResizeResponder>
 @property (weak,nonatomic) IBOutlet UIButton  * _Nullable openRateTypeBtn;
 @property (weak,nonatomic) IBOutlet UIView  * _Nullable activeDaysControlContainer;
 @property (weak,nonatomic) IBOutlet RateSetterView * _Nullable rateSetter;
@@ -25,14 +30,14 @@ SHView<P_RateTypeSelectorDelegate,P_RateSetterDelegate>
 @property (strong,nonatomic) WeeklyActiveDays * _Nullable weeklyActiveDays;
 @property (strong,nonatomic) YearlyActiveDays * _Nullable yearlyActiveDays;
 @property (weak,nonatomic) id<P_RateSetterDelegate> _Nullable delegate;
+@property (weak,nonatomic) id<P_ItemFlexibleListDelegate> _Nullable tblDelegate;
+@property (weak,nonatomic) id<P_ResizeResponder> _Nullable resizeResponder;
 @property (strong,nonatomic) _Nullable id<P_UtilityStore> utilityStore;
 @property (strong,nonatomic) Daily * _Nonnull daily;
-@property (strong,nonatomic) EditNavigationController * _Nonnull backViewController;
-+(instancetype _Nonnull )newWithDaily:(Daily * _Nonnull)daily
-            andBackViewController:(EditNavigationController * _Nonnull)backViewController;
++(instancetype _Nonnull )newWithDaily:(Daily * _Nonnull)daily;
 @end
 
 //TODO: work out saving
 //TODO: fix jumpiness
-//TODO: fix gaps
-//
+//TODO: make rate setter responsive to rate type
+//TODO: make entire add item view into button

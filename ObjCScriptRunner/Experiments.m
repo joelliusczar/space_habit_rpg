@@ -10,6 +10,7 @@
 #import "Experiments.h"
 #import "House.h"
 #import "House+Ass.h"
+#import "Experiments+Bravo.h"
 
 
 @implementation Experiments
@@ -57,11 +58,34 @@
     NSLog(@"%@",[h valueForKey:@"nonmember"]);
 }
 
+
 +(void)playWithAss{
     House.ghostNum = 19;
     NSLog(@"%ld",House.ghostNum);
     House.ghostNum = 23;
     NSLog(@"%ld",House.ghostNum);
 }
+
+
+-(void)callBravo{
+    [self bravoMethod];
+}
+
+
++(void)playingWithNulls{
+    House *h = nil;
+    [h returnsNothing];
+    [h getFive];
+}
+
++(void)orderedSetFun{
+    House *h1 = [[House alloc] init];
+    House *h2 = [[House alloc] init];
+    NSOrderedSet *oSet = [[NSOrderedSet alloc] initWithObjects:h1,h1,h2,nil];
+    NSLog(@"%ld",oSet.count);
+    NSOrderedSet *oSet2 = [[NSOrderedSet alloc] initWithObjects:h1,h2,nil];
+    NSLog(@"%ld",oSet2.count);
+}
+
 
 @end

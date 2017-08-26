@@ -88,6 +88,7 @@ NSString* const IS_DIRTY = @"isDirty";
     //lazy loaded, it gets out of hand
     self.editControls = [[DailyEditControlKeep alloc]
                          initWithDailyEditController:self];
+    self.editorContainer.editControls = self.editControls;
     [self loadExistingDailyForEditing:self.modelForEditing];
     self.modelForEditing.lastUpdateTime = [NSDate date];
     
@@ -315,6 +316,13 @@ NSString* const IS_DIRTY = @"isDirty";
         }
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+}
+
+
+-(void)pickerSelection_action:(UIPickerView *)picker
+           onItemFlexibleList:(ItemFlexibleListView *)itemFlexibleList
+                     forEvent:(UIEvent *)event{
+    [self.editorContainer enableSave];
 }
 
 

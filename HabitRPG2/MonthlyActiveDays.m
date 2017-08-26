@@ -33,13 +33,10 @@
     return _daysOfMonth;
 }
 
-+(instancetype)newWithDaily:(Daily *)daily
-      andBackViewController:(EditNavigationController *)backViewController{
++(instancetype)newWithDaily:(Daily *)daily{
     NSAssert(daily,@"daily was nil");
-    NSAssert(backViewController,@"backViewController was nil");
     
     MonthlyActiveDays *instance = [[MonthlyActiveDays alloc] init];
-    instance.backViewController = backViewController;
     instance.daily = daily;
     [instance commonSetup];
     return instance;

@@ -58,26 +58,28 @@
 
 -(ReminderListView *)reminderListView{
     if(nil==_reminderListView){
-        _reminderListView = [ReminderListView newWithDueDateInfo:self.delegate.modelForEditing
-                             andBackViewController:self.delegate.editorContainer];
+        _reminderListView = [ReminderListView newWithDueDateInfo:self.delegate.modelForEditing];
         _reminderListView.utilityStore = SharedGlobal;
+        _reminderListView.resizeResponder = self.delegate.editorContainer;
+        _reminderListView.delegate = self.delegate;
     }
     return _reminderListView;
 }
 
 -(RateSetContainer *)rateSetContainer{
     if(nil==_rateSetContainer){
-        _rateSetContainer = [RateSetContainer newWithDaily:self.delegate.modelForEditing
-                                     andBackViewController:self.delegate.editorContainer];
+        _rateSetContainer = [RateSetContainer newWithDaily:self.delegate.modelForEditing];
         _rateSetContainer.delegate = self.delegate;
         _rateSetContainer.utilityStore = SharedGlobal;
+        _rateSetContainer.resizeResponder = self.delegate.editorContainer;
+        _rateSetContainer.tblDelegate = self.delegate;
     }
     return _rateSetContainer;
 }
 
--(NSArray<UIView*> *)allControls{
+-(NSOrderedSet<UIView*> *)allControls{
     if(nil==_allControls){
-        _allControls = [NSArray arrayWithObjects:
+        _allControls = [NSOrderedSet orderedSetWithObjects:
                         self.noteView
                         ,self.rateSetContainer
                         ,self.urgencySlider

@@ -12,6 +12,8 @@
 @property (strong,nonatomic) NSString *couch;
 @property (assign,nonatomic) NSInteger count;
 @property (assign,nonatomic) NSInteger lamps;
+-(void)returnsNothing;
+-(NSInteger)getFive;
 @end
 
 #import "House+Things.h"

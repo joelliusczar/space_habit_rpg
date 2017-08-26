@@ -38,10 +38,11 @@
 -(MonthlyActiveDays *)monthlyActiveDays{
     if(nil==_monthlyActiveDays){
         _monthlyActiveDays = [MonthlyActiveDays
-                              newWithDaily:self.daily
-                              andBackViewController:self.backViewController];
+                              newWithDaily:self.daily];
         _monthlyActiveDays.utilityStore = self.utilityStore;
-        _monthlyActiveDays.holderView = self;
+        _monthlyActiveDays.holderView = self.activeDaysControlContainer;
+        _monthlyActiveDays.resizeResponder = self;
+        _monthlyActiveDays.delegate = self.tblDelegate;
     }
     return _monthlyActiveDays;
 }
@@ -50,23 +51,21 @@
 -(YearlyActiveDays *)yearlyActiveDays{
     if(nil == _yearlyActiveDays){
         _yearlyActiveDays = [YearlyActiveDays
-                             newWithDaily:self.daily
-                             andBackViewController:self.backViewController];
+                             newWithDaily:self.daily];
         _yearlyActiveDays.utilityStore = self.utilityStore;
-        _yearlyActiveDays.holderView = self;
+        _yearlyActiveDays.holderView = self.activeDaysControlContainer;
+        _yearlyActiveDays.resizeResponder = self;
+        _yearlyActiveDays.delegate = self.tblDelegate;
     }
     return _yearlyActiveDays;
 }
 
 
-+(instancetype)newWithDaily:(Daily * _Nonnull)daily
-            andBackViewController:(EditNavigationController * _Nonnull)backViewController{
++(instancetype)newWithDaily:(Daily * _Nonnull)daily{
     NSAssert(daily,@"daily was nil");
-    NSAssert(backViewController,@"backViewController was nil");
     
     RateSetContainer *instance = [[RateSetContainer alloc] init];
     instance.daily = daily;
-    instance.backViewController = backViewController;
     instance.defaultSize = instance.frame.size;
     [instance updateRateType:daily.rateType];
     return instance;
@@ -77,7 +76,7 @@
     RateTypeSelector *typeSelector = [[RateTypeSelector alloc]
                                       initWithRateType:self.daily.rateType
                                       andDelegate:self];
-    [ViewHelper pushViewToFront:typeSelector OfParent:self.backViewController];
+    [self.resizeResponder pushViewControllerToNearestParent:typeSelector];
 }
 
 
@@ -114,9 +113,7 @@
 
 -(void)rateStep_valueChanged_action:(UIStepper *)sender
                            forEvent:(UIEvent *)event{
-    if(self.delegate){
-        [self.delegate rateStep_valueChanged_action:sender forEvent:event];
-    }
+    [self.delegate rateStep_valueChanged_action:sender forEvent:event];
 }
 
 
@@ -130,10 +127,43 @@
     [self resetHeight];
     // max height for the tables? This should be controlled inside the
     //table itself I think
-    [self.backViewController.editingScreen.controlsTbl beginUpdates];
+    [self beginUpdate];
     [self resizeHeightByOffset:h];
     [self.activeDaysControlContainer resizeHeightByOffset:h];
-    [self.backViewController.editingScreen.controlsTbl endUpdates];
+    [self endUpdate];
 }
+
+
+-(void)respondToHeightResize:(CGFloat)change{
+    [self resizeHeightByOffset:change];
+    [self.activeDaysControlContainer resizeHeightByOffset:change];
+    [self.resizeResponder respondToHeightResize:change];
+}
+
+
+-(void)scrollByOffset:(CGFloat)offset{
+    [self.resizeResponder scrollByOffset:offset];
+}
+
+
+-(void)scrollVisibleToControl:(SHView *)control{
+    [self.resizeResponder scrollVisibleToControl:control];
+}
+
+
+-(void)pushViewControllerToNearestParent:(UIViewController *)child{
+    [self.resizeResponder pushViewControllerToNearestParent:child];
+}
+
+
+-(void)beginUpdate{
+    [self.resizeResponder beginUpdate];
+}
+
+
+-(void)endUpdate{
+    [self.resizeResponder endUpdate];
+}
+
 
 @end

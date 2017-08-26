@@ -14,7 +14,9 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        [Experiments playWithAss];
+        Experiments *exp = [[Experiments alloc] init];
+        [exp callBravo];
+        [Experiments orderedSetFun];
     }
     return 0;
 }

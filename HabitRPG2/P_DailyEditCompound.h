@@ -12,12 +12,14 @@
 #import "P_RateSetterDelegate.h"
 #import "P_ImportanceSlidersDelegate.h"
 #import "P_StreakResetterDelegate.h"
+#import "P_ItemFlexibleListDelegate.h"
 
 @protocol P_DailyEditCompound <NSObject
 ,P_NotesViewDelegate
 ,P_WeeklyActiveDaysDelegate
 ,P_RateSetterDelegate
 ,P_ImportanceSlidersDelegate
-,P_StreakResetterDelegate>
+,P_StreakResetterDelegate
+,P_ItemFlexibleListDelegate>
 
 @end

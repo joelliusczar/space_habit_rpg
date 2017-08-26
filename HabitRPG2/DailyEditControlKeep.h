@@ -17,9 +17,10 @@
 #import "DailyEditController.h"
 #import "RateSetContainer.h"
 #import "SHView.h"
+#import "P_EditControlKeep.h"
 
-@interface DailyEditControlKeep : NSObject
-@property (strong,nonatomic)NSArray<SHView *> *allControls;
+@interface DailyEditControlKeep : NSObject<P_EditControlKeep>
+@property (strong,nonatomic) NSOrderedSet<SHView *> *allControls;
 @property (strong,nonatomic) NoteView *noteView;
 @property (strong,nonatomic) WeeklyActiveDays *activeDaysPicker;
 @property (strong,nonatomic) RateSetterView *rateSetterView;

@@ -12,6 +12,8 @@
 #import "Interceptor.h"
 #import "UIScrollView+ScrollAdjusters.h"
 #import "constants.h"
+#import "RateSetContainer.h"
+#import "ItemFlexibleListView.h"
 @import CoreGraphics;
 
 
@@ -164,11 +166,46 @@
     }
 }
 
+
+-(void)beginUpdate{
+    [self.editingScreen.controlsTbl beginUpdates];
+}
+
+
 -(void)scrollByOffset:(CGFloat)offset{
+    //scroll past the title control part but no farther for
+    //the scrollContainer which houses our editing controls
     if(self.scrollContainer.contentOffset.y < EDIT_SCREEN_TOP_CONTROL_HEIGHT){
         [self.scrollContainer scrollByOffset:offset];
     }
-    [self.editingScreen.controlsTbl scrollByOffset:offset];
+    
 }
+
+
+-(void)scrollVisibleToControl:(SHView *)control{
+    NSUInteger rowNum = [self.editControls.allControls indexOfObject:control];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:rowNum inSection:0];
+    CGRect rect = [self.editingScreen.controlsTbl rectForRowAtIndexPath:indexPath];
+    if([control isKindOfClass:RateSetContainer.class]){
+        CGFloat tblTopY = ((RateSetContainer *)control)
+                            .activeDaysControlContainer.frame.origin.y;
+        rect.origin.y += tblTopY;
+    }
+    [self.editingScreen.controlsTbl scrollRectToVisible:rect animated:YES];
+}
+
+
+-(void)respondToHeightResize:(CGFloat)change{}
+
+
+-(void)pushViewControllerToNearestParent:(UIViewController *)child{
+    [ViewHelper pushViewToFront:child OfParent:self];
+}
+
+
+-(void)endUpdate{
+    [self.editingScreen.controlsTbl endUpdates];
+}
+
 
 @end

@@ -33,12 +33,10 @@
 
 //I think the reason why I did the class method styled constructor
 //was so that calls to 'self' would not get fucked up by subclasses
-+(instancetype)newWithDueDateInfo:(id<P_DueDateWrapper>)dueDateInfo
-                 andBackViewController:(EditNavigationController *)backViewController{
++(instancetype)newWithDueDateInfo:(id<P_DueDateWrapper>)dueDateInfo{
     ReminderListView *instance = [[ReminderListView alloc] init];
     instance.dueDateInfo = dueDateInfo = dueDateInfo;
     instance.reminderSet = [dueDateInfo getReminderSet];
-    instance.backViewController = backViewController;
     
     [instance commonSetup];
     instance.addItemsFooter.addItemLbl.text = @"Add New Reminder";
@@ -68,9 +66,7 @@ numberOfRowsInSection:(NSInteger)section{
     //earlier only had the original value.
     ReminderTimeSpinPicker *timePicker =
     [[ReminderTimeSpinPicker alloc] initWithDayRange:self.dueDateInfo.maxDaysBefore];
-    timePicker.utilityStore = self.utilityStore;
-    timePicker.delegate = self;
-    [ViewHelper pushViewToFront:timePicker OfParent:self.backViewController];
+    [self showSHSpinPicker:timePicker];
 }
 
 
@@ -78,13 +74,13 @@ numberOfRowsInSection:(NSInteger)section{
                      forEvent:(UIEvent *)event{
     
     wrapReturnVoid wrappedCall = ^void(){
-        [self.backViewController enableSave];
         NSInteger hourRow = [sender selectedRowInComponent:HOUR_OF_DAY_COL];
         NSInteger minuteRow = [sender selectedRowInComponent:MINUTE_COL];
         NSInteger daysCol = sender.numberOfComponents -1;
         NSInteger daysBefore = [sender selectedRowInComponent:daysCol];
         [self insertNewReminder:hourRow minute:minuteRow daysBefore:daysBefore];
         [self scaleTableForAddItem];
+        [super pickerSelection_action:sender forEvent:event];
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }

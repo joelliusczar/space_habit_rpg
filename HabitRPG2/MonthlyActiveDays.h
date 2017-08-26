@@ -11,6 +11,5 @@
 
 @interface MonthlyActiveDays : ItemFlexibleListView
 @property (weak,nonatomic) Daily *daily;
-+(instancetype)newWithDaily:(Daily *)daily
-      andBackViewController:(EditNavigationController *)backViewController;
++(instancetype)newWithDaily:(Daily *)daily;
 @end

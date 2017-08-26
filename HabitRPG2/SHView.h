@@ -11,7 +11,7 @@
 @interface SHView : UIView
 @property (weak,nonatomic) UIView *mainView;
 @property (weak,nonatomic) UIView *holderView;
+-(instancetype)initEmpty;
 -(void)changeBackgroundColorTo:(UIColor *)color;
 -(UIView *)loadDefaultXib;
--(instancetype)initEmpty;
 @end

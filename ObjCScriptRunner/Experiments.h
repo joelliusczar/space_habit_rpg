@@ -14,4 +14,7 @@
 +(void)oversizedCast;
 +(void)tryToUseObjectAsDict;
 +(void)playWithAss;
+-(void)callBravo;
++(void)playingWithNulls;
++(void)orderedSetFun;
 @end

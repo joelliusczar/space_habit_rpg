@@ -28,11 +28,9 @@
 }
 
 
-+(instancetype)newWithDaily:(Daily *)daily
-      andBackViewController:(EditNavigationController *)backViewController{
++(instancetype)newWithDaily:(Daily *)daily{
     YearlyActiveDays *instance = [[YearlyActiveDays alloc] init];
     instance.daily = daily;
-    instance.backViewController = backViewController;
     [instance commonSetup];
     return instance;
 }

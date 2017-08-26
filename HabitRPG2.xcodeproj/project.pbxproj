@@ -11,6 +11,7 @@
 		2709B3991EEF750800EEE5CC /* ReportServiceCaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 2709B3981EEF750800EEE5CC /* ReportServiceCaller.m */; };
 		2709B39C1EF0D31200EEE5CC /* Interceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2709B39B1EF0D31200EEE5CC /* Interceptor.m */; };
 		2709B3A31EF56AFC00EEE5CC /* NSDate+testReplace.m in Sources */ = {isa = PBXBuildFile; fileRef = 2709B3A21EF56AFC00EEE5CC /* NSDate+testReplace.m */; };
+		2710BB961F514E8700A43B6C /* Experiments+Bravo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2710BB951F514E8700A43B6C /* Experiments+Bravo.m */; };
 		271C04831E8A1152002221E9 /* MonsterInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C04821E8A1152002221E9 /* MonsterInfoDictionary.m */; };
 		271C04881E8B639D002221E9 /* ResourceUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C04871E8B639D002221E9 /* ResourceUtility.m */; };
 		271C048B1E8C955A002221E9 /* SingletonCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C048A1E8C955A002221E9 /* SingletonCluster.m */; };
@@ -225,6 +226,11 @@
 		2709B39D1EF4DFCA00EEE5CC /* Model 24.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 24.xcdatamodel"; sourceTree = "<group>"; };
 		2709B3A11EF56AFC00EEE5CC /* NSDate+testReplace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+testReplace.h"; sourceTree = "<group>"; };
 		2709B3A21EF56AFC00EEE5CC /* NSDate+testReplace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+testReplace.m"; sourceTree = "<group>"; };
+		2710BB921F51190700A43B6C /* P_ResizeResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ResizeResponder.h; sourceTree = "<group>"; };
+		2710BB931F51489100A43B6C /* P_ItemFlexibleListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ItemFlexibleListDelegate.h; sourceTree = "<group>"; };
+		2710BB941F514E8700A43B6C /* Experiments+Bravo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Experiments+Bravo.h"; sourceTree = "<group>"; };
+		2710BB951F514E8700A43B6C /* Experiments+Bravo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Experiments+Bravo.m"; sourceTree = "<group>"; };
+		2710BB971F51D76000A43B6C /* P_EditControlKeep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_EditControlKeep.h; sourceTree = "<group>"; };
 		271C047D1E89BCBA002221E9 /* P_CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_CoreData.h; sourceTree = "<group>"; };
 		271C04811E8A1152002221E9 /* MonsterInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterInfoDictionary.h; sourceTree = "<group>"; };
 		271C04821E8A1152002221E9 /* MonsterInfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterInfoDictionary.m; sourceTree = "<group>"; };
@@ -741,6 +747,8 @@
 				275D9F231F219850009DA715 /* ChildMan.m */,
 				272428401F42AFFF0028B22E /* House+Ass.h */,
 				272428411F42AFFF0028B22E /* House+Ass.m */,
+				2710BB941F514E8700A43B6C /* Experiments+Bravo.h */,
+				2710BB951F514E8700A43B6C /* Experiments+Bravo.m */,
 			);
 			path = ObjCScriptRunner;
 			sourceTree = "<group>";
@@ -762,6 +770,7 @@
 				276159BA1F327460002E8BF9 /* P_RateTypeSelectorDelegate.h */,
 				272428241F41053A0028B22E /* P_MonthComponentSpinPickerDelegate.h */,
 				27F0D5C01F4A4000002DE59C /* P_SHSpinPickerDelegate.h */,
+				2710BB931F51489100A43B6C /* P_ItemFlexibleListDelegate.h */,
 			);
 			name = "Control Delegates";
 			sourceTree = "<group>";
@@ -1018,6 +1027,8 @@
 				271C04851E8B6323002221E9 /* P_ResourceUtility.h */,
 				27E00E981ED3FAE8008B35CD /* P_Transaction.h */,
 				272427E01F38198F0028B22E /* P_UtilityStore.h */,
+				2710BB921F51190700A43B6C /* P_ResizeResponder.h */,
+				2710BB971F51D76000A43B6C /* P_EditControlKeep.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -1474,6 +1485,7 @@
 				274A37D51F133AA200F31E0F /* Experiments.m in Sources */,
 				274A37EA1F145D2200F31E0F /* House+Things.m in Sources */,
 				274A38381F2194FD00F31E0F /* ParentMan.m in Sources */,
+				2710BB961F514E8700A43B6C /* Experiments+Bravo.m in Sources */,
 				274A37CF1F1313A700F31E0F /* PersonThing.m in Sources */,
 				274A37CC1F107B7A00F31E0F /* MassPrinter.m in Sources */,
 				274A37C61F107ACF00F31E0F /* main.m in Sources */,

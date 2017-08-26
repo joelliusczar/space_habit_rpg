@@ -11,7 +11,6 @@
 @interface UIView (Helpers)
 
 -(void)resizeHeightByOffset:(CGFloat)offset;
--(void)resizeBoundsHeightByOffset:(CGFloat)change;
 -(void)setupBorder:(UIRectEdge)edges withThickness:(CGFloat)thickness andColor:(UIColor *)color;
 -(void)resizeFrame:(CGSize)size;
 -(void)replaceSubviewsWith:(UIView *)view;

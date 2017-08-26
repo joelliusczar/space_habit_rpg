@@ -10,4 +10,13 @@
 
 @implementation House
 
+-(void)returnsNothing{
+    NSLog(@"%@",@"nothing");
+}
+
+
+-(NSInteger)getFive{
+    return 5;
+}
+
 @end

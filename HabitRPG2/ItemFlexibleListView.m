@@ -45,28 +45,26 @@
     if(self.itemTbl.frame.size.height < SUB_TABLE_MAX_HEIGHT){
         [self.itemTbl resizeHeightByOffset:change];
         [self resizeHeightByOffset:change];
-        if(self.holderView){
-            [self.holderView resizeHeightByOffset:change];
-        }
+        [self.resizeResponder respondToHeightResize:change];
     }
 }
 
 
 -(void)scrollRemindersListByOffset:(CGFloat)offset{
     //auto scroll so that reminders remains centered
-    [self.backViewController scrollByOffset:SUB_TABLE_CELL_HEIGHT];
-    [self.itemTbl scrollByOffset:SUB_TABLE_CELL_HEIGHT];
+    [self.resizeResponder scrollByOffset:offset];
+    [self.resizeResponder scrollVisibleToControl:self];
+    [self scrollItemTblToLastRow];
 }
 
 
--(void)resizeAndScrollByChange:(CGFloat)change{
-    //need the begin/end update lines because buttons will get covered by
-    //invisble stuff and not respond
-    //also, apparently they tell the table to refresh the heights
-    [self.backViewController.editingScreen.controlsTbl beginUpdates];
-    [self resizeItemListHeightByChange:SUB_TABLE_CELL_HEIGHT];
-    [self scrollRemindersListByOffset:SUB_TABLE_CELL_HEIGHT];
-    [self.backViewController.editingScreen.controlsTbl endUpdates];
+-(void)scrollItemTblToLastRow{
+    NSIndexPath *lastRow = [NSIndexPath
+                            indexPathForRow:[self backendListCount] -1
+                            inSection:0];
+    [self.itemTbl scrollToRowAtIndexPath:lastRow
+                        atScrollPosition:UITableViewScrollPositionBottom
+                                animated:YES];
 }
 
 
@@ -80,7 +78,7 @@
 -(void)showSHSpinPicker:(SHSpinPicker *)picker{
     picker.utilityStore = self.utilityStore;
     picker.delegate = self;
-    [ViewHelper pushViewToFront:picker OfParent:self.backViewController];
+    [self.resizeResponder pushViewControllerToNearestParent:picker];
 }
 
 
@@ -88,10 +86,15 @@
     NSIndexPath *indexPath = [NSIndexPath
                               indexPathForRow:[self backendListCount]-1
                               inSection:0];
-    [self.itemTbl
-     insertRowsAtIndexPaths:@[indexPath]
-     withRowAnimation:UITableViewRowAnimationFade];
-    [self resizeAndScrollByChange:SUB_TABLE_CELL_HEIGHT];
+    [self.itemTbl insertRowsAtIndexPaths:@[indexPath]
+                        withRowAnimation:UITableViewRowAnimationFade];
+    //need the begin/end update lines because buttons will get covered by
+    //invisble stuff and not respond
+    //also, apparently they tell the table to refresh the heights
+    [self.resizeResponder beginUpdate];
+    [self resizeItemListHeightByChange:SUB_TABLE_CELL_HEIGHT];
+    [self scrollRemindersListByOffset:SUB_TABLE_CELL_HEIGHT];
+    [self.resizeResponder endUpdate];
 }
 
 
@@ -109,12 +112,14 @@ numberOfRowsInSection:(NSInteger)section{
 
 -(void)addItemBtn_press_action:(UIButton *)sender
                       forEvent:(UIEvent *)event{
-    @throw [NSException abstractException];
+    [self.delegate addItemBtn_press_action:sender
+                        onItemFlexibleList:self forEvent:event];
 }
 
 
 -(void)pickerSelection_action:(UIPickerView *)picker forEvent:(UIEvent *)event{
-    @throw [NSException abstractException];
+        [self.delegate pickerSelection_action:picker
+                           onItemFlexibleList:self forEvent:event];
 }
 
 
