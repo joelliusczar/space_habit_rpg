@@ -185,13 +185,9 @@
 -(void)scrollVisibleToControl:(SHView *)control{
     NSUInteger rowNum = [self.editControls.allControls indexOfObject:control];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:rowNum inSection:0];
-    CGRect rect = [self.editingScreen.controlsTbl rectForRowAtIndexPath:indexPath];
-    if([control isKindOfClass:RateSetContainer.class]){
-        CGFloat tblTopY = ((RateSetContainer *)control)
-                            .activeDaysControlContainer.frame.origin.y;
-        rect.origin.y += tblTopY;
-    }
-    [self.editingScreen.controlsTbl scrollRectToVisible:rect animated:YES];
+    [self.editingScreen.controlsTbl scrollToRowAtIndexPath:indexPath
+                                          atScrollPosition:UITableViewScrollPositionBottom
+                                                  animated:YES];
 }
 
 

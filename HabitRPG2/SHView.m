@@ -10,6 +10,7 @@
 #import "NSObject+Helper.h"
 #import "UIView+Helpers.h"
 
+
 @implementation SHView
 
 -(instancetype)initWithFrame:(CGRect)frame{
@@ -36,7 +37,7 @@
 
 -(void)setupCustomView{
     //only do this part if there is an actual xib to load
-    if(![NSStringFromClass(self.class) isEqualToString:@"SHView"]){
+    if(![self isMemberOfClass:SHView.class]){
         _mainView = [self loadDefaultXib];
         [self addSubview:_mainView];
         //this is neccessary because other wise the outer frame
@@ -65,6 +66,7 @@
 
 -(void)changeBackgroundColorTo:(UIColor *)color{
     self.mainView.backgroundColor = color;
+    self.backgroundColor = color;
 }
 
 

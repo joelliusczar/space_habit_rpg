@@ -336,8 +336,8 @@ NSString* const IS_DIRTY = @"isDirty";
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     SHView *cellView = self.editControls.allControls[indexPath.row];
     cellView.holderView = cell;
-    //[cellView changeBackgroundColorTo:self.view.backgroundColor];
-    cell.backgroundColor = [UIColor orangeColor];//self.view.backgroundColor;
+    [cellView changeBackgroundColorTo:self.view.backgroundColor];
+    cell.backgroundColor = self.view.backgroundColor;
     [cell.contentView addSubview:cellView];
     return cell;
 }

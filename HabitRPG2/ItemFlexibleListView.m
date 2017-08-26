@@ -93,8 +93,8 @@
     //also, apparently they tell the table to refresh the heights
     [self.resizeResponder beginUpdate];
     [self resizeItemListHeightByChange:SUB_TABLE_CELL_HEIGHT];
-    [self scrollRemindersListByOffset:SUB_TABLE_CELL_HEIGHT];
     [self.resizeResponder endUpdate];
+    [self scrollRemindersListByOffset:SUB_TABLE_CELL_HEIGHT];
 }
 
 

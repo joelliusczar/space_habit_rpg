@@ -14,6 +14,7 @@
 
 @interface RateSetContainer ()
 @property (assign,nonatomic) CGSize defaultSize;
+@property (weak,nonatomic) SHView *currentActiveDaysControl;
 @end
 
 @implementation RateSetContainer
@@ -30,6 +31,7 @@
 -(WeeklyActiveDays *)weeklyActiveDays{
     if(nil==_weeklyActiveDays){
         _weeklyActiveDays = [[WeeklyActiveDays alloc] init];
+        [_weeklyActiveDays changeBackgroundColorTo:self.backgroundColor];
     }
     return _weeklyActiveDays;
 }
@@ -39,10 +41,7 @@
     if(nil==_monthlyActiveDays){
         _monthlyActiveDays = [MonthlyActiveDays
                               newWithDaily:self.daily];
-        _monthlyActiveDays.utilityStore = self.utilityStore;
-        _monthlyActiveDays.holderView = self.activeDaysControlContainer;
-        _monthlyActiveDays.resizeResponder = self;
-        _monthlyActiveDays.delegate = self.tblDelegate;
+        [self commonTableSetup: _monthlyActiveDays];
     }
     return _monthlyActiveDays;
 }
@@ -52,10 +51,7 @@
     if(nil == _yearlyActiveDays){
         _yearlyActiveDays = [YearlyActiveDays
                              newWithDaily:self.daily];
-        _yearlyActiveDays.utilityStore = self.utilityStore;
-        _yearlyActiveDays.holderView = self.activeDaysControlContainer;
-        _yearlyActiveDays.resizeResponder = self;
-        _yearlyActiveDays.delegate = self.tblDelegate;
+        [self commonTableSetup:_yearlyActiveDays];
     }
     return _yearlyActiveDays;
 }
@@ -69,6 +65,14 @@
     instance.defaultSize = instance.frame.size;
     [instance updateRateType:daily.rateType];
     return instance;
+}
+
+-(void)commonTableSetup:(ItemFlexibleListView *)tbl{
+    tbl.utilityStore = self.utilityStore;
+    tbl.holderView = self.activeDaysControlContainer;
+    tbl.resizeResponder = self;
+    tbl.delegate = self.tblDelegate;
+    [tbl changeBackgroundColorTo:self.backgroundColor];
 }
 
 -(IBAction)setRateTypeBtn_click_action:(UIButton *)sender
@@ -89,15 +93,23 @@
     //TODO: test this for loading saved daily
     if(rateType == WEEKLY_RATE){
         [self switchActiveDaysControlFor:self.weeklyActiveDays];
+        self.currentActiveDaysControl = self.weeklyActiveDays;
     }
     else if(rateType == MONTHLY_RATE){
         [self switchActiveDaysControlFor:self.monthlyActiveDays];
+        [self.resizeResponder scrollByOffset:SUB_TABLE_CELL_HEIGHT];
+        [self.resizeResponder scrollVisibleToControl:self];
+        self.currentActiveDaysControl = self.monthlyActiveDays;
     }
     else if(rateType == YEARLY_RATE){
         [self switchActiveDaysControlFor:self.yearlyActiveDays];
+        [self.resizeResponder scrollByOffset:SUB_TABLE_CELL_HEIGHT];
+        [self.resizeResponder scrollVisibleToControl:self];
+        self.currentActiveDaysControl = self.yearlyActiveDays;
     }
     else if(rateType == DAILY_RATE){
         [self switchActiveDaysControlFor:[[SHView alloc] initEmpty]];
+        self.currentActiveDaysControl = nil;
     }
 }
 
@@ -147,7 +159,7 @@
 
 
 -(void)scrollVisibleToControl:(SHView *)control{
-    [self.resizeResponder scrollVisibleToControl:control];
+    [self.resizeResponder scrollVisibleToControl:self];
 }
 
 
@@ -165,5 +177,10 @@
     [self.resizeResponder endUpdate];
 }
 
+-(void)changeBackgroundColorTo:(UIColor *)color{
+    [super changeBackgroundColorTo:color];
+    [self.rateSetter changeBackgroundColorTo:color];
+    [self.currentActiveDaysControl changeBackgroundColorTo:color];
+}
 
 @end

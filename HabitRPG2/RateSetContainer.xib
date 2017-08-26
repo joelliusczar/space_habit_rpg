@@ -42,7 +42,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eap-7w-kuR" customClass="RateSetterView">
-                    <rect key="frame" x="9.5" y="30" width="256" height="71"/>
+                    <rect key="frame" x="9.5" y="33" width="256" height="71"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="256" id="Bnr-J8-Elm"/>
@@ -55,12 +55,12 @@
             </subviews>
             <color key="backgroundColor" red="0.10559471419999999" green="1" blue="0.18085308929999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="GSt-Vo-h2F" firstAttribute="top" secondItem="eap-7w-kuR" secondAttribute="bottom" constant="9" id="HGg-9k-ijo"/>
+                <constraint firstItem="GSt-Vo-h2F" firstAttribute="top" secondItem="eap-7w-kuR" secondAttribute="bottom" constant="6" id="HGg-9k-ijo"/>
                 <constraint firstItem="cjs-Oz-gc5" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Rs6-ND-One"/>
                 <constraint firstAttribute="bottom" secondItem="GSt-Vo-h2F" secondAttribute="bottom" constant="9" id="SIL-M2-fh7"/>
                 <constraint firstItem="GSt-Vo-h2F" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Ub3-f0-qWP"/>
                 <constraint firstItem="eap-7w-kuR" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="WBB-h5-u2r"/>
-                <constraint firstItem="eap-7w-kuR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="XQN-O4-TyG"/>
+                <constraint firstItem="eap-7w-kuR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="33" id="XQN-O4-TyG"/>
                 <constraint firstItem="cjs-Oz-gc5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="3" id="cl5-SN-hYA"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
