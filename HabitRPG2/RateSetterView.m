@@ -8,18 +8,49 @@
 
 #import "RateSetterView.h"
 
+
 @interface RateSetterView ()
 
 @end
 
 @implementation RateSetterView
 
+
+-(void)setRateType:(RateType)rateType{
+    _rateType = rateType;
+    [self updateRateValue:1];
+}
+
+
 - (IBAction)rateStep_valueChanged_action:(UIStepper *)sender forEvent:(UIEvent *)event {
-    if(self.delegate){
-        [self.delegate rateStep_valueChanged_action:sender forEvent:event];
+
+    [self.delegate rateStep_valueChanged_action:sender forEvent:event];
+    NSInteger rate = (NSInteger)sender.value;
+    self.rateLbl.text = [NSString stringWithFormat:[RateSetterView
+                                                    getFormatString:self.rateType withRate:rate],rate];
+}
+
+
++(NSString *)getFormatString:(RateType)rateType withRate:(NSInteger)rate{
+    //TODO: add new negative rateTypes
+    switch(rateType){
+        case DAILY_RATE:
+            return rate==1?@"Triggers every day":@"Triggers every %d days";
+        case WEEKLY_RATE:
+            return rate==1?@"Triggers every week":@"Triggers every %d weeks";
+        case MONTHLY_RATE:
+            return rate==1?@"Triggers every month":@"Triggers every %d months";
+        case YEARLY_RATE:
+            return rate==1?@"Triggers every year":@"Triggers every %d years";
     }
 }
 
+
+-(void)updateRateValue:(NSInteger)rate{
+    self.rateStep.value = rate;
+    self.rateLbl.text = [NSString stringWithFormat:[RateSetterView
+                                                    getFormatString:self.rateType withRate:rate],rate];
+}
 
 
 @end

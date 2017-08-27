@@ -86,7 +86,9 @@
 
 -(void)updateRateType:(RateType)rateType{
     self.daily.rateType = rateType;
+    self.daily.rate = 1;
     [self setRateTypeActiveDaysControl:rateType];
+    self.rateSetter.rateType = rateType;
 }
 
 -(void)setRateTypeActiveDaysControl:(RateType)rateType{

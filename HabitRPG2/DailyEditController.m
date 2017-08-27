@@ -22,8 +22,6 @@
 #import "DailyEditControlKeep.h"
 #import "WeekdayEnum.h"
 
-static NSString* const TRIGGER_LABEL_FORMAT = @"Triggers every %d days";
-
 
 @interface DailyEditController ()
 @property (strong,nonatomic) NSIndexPath *rowInfo;
@@ -178,13 +176,10 @@ NSString* const IS_DIRTY = @"isDirty";
                                                               @"Difficulty: %d"
                                                               ,daily.difficulty];
     
-    //TODOself.editControls.WeeklyActiveDays.activeDaysHash = daily.activeDaysHash;
+    //TODO: self.editControls.WeeklyActiveDays.activeDaysHash = daily.activeDaysHash;
     NSInteger rate = daily.rate;
-    self.editControls.rateSetterView.rateStep.value = rate;
-    self.editControls.rateSetterView.rateLbl.text = [NSString
-                                                     stringWithFormat:
-                                                     TRIGGER_LABEL_FORMAT
-                                                     ,(int)rate];
+    [self.editControls.rateSetterView updateRateValue:rate];
+
     self.editControls.streakResetterView.streakCountLbl.hidden = NO;
     self.editControls.streakResetterView.streakResetBtn.hidden = NO;
     self.editControls.streakResetterView.streakCountLbl.text = [NSString
@@ -269,8 +264,6 @@ NSString* const IS_DIRTY = @"isDirty";
             rate = 1;
         }
         sender.value = rate;
-        self.editControls.rateSetterView.rateLbl.text = [NSString
-                                                         stringWithFormat: TRIGGER_LABEL_FORMAT,(int)rate];
         self.modelForEditing.rate = rate;
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];

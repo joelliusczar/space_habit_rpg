@@ -38,6 +38,5 @@ SHView
 @end
 
 //TODO: work out saving
-//TODO: make rate setter responsive to rate type
 //TODO: make entire add item view into button
 //TODO: fix double cells
