@@ -65,7 +65,7 @@ numberOfRowsInComponent:(NSInteger)component{
     if(component==ORDINAL_COLUMN){
         return 50;
     }
-    return 75;
+    return 150;
 }
 
 

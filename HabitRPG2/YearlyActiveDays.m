@@ -32,6 +32,7 @@
     YearlyActiveDays *instance = [[YearlyActiveDays alloc] init];
     instance.daily = daily;
     [instance commonSetup];
+    [instance.addItemsFooter.addItemBtn setTitle:@"Add day of the year" forState:UIControlStateNormal];
     return instance;
 }
 

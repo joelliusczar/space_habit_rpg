@@ -11,9 +11,7 @@
 @implementation AddItemsFooter
 
 -(IBAction)addItemBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
-    if(self.delegate){
-        [self.delegate addItemBtn_press_action:sender forEvent:event];
-    }
+    [self.delegate addItemBtn_press_action:sender forEvent:event];
 }
 
 @end

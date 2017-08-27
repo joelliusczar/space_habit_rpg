@@ -39,7 +39,7 @@
     instance.reminderSet = [dueDateInfo getReminderSet];
     
     [instance commonSetup];
-    instance.addItemsFooter.addItemLbl.text = @"Add New Reminder";
+    [instance.addItemsFooter.addItemBtn setTitle:@"Add New Reminder" forState:UIControlStateNormal];
     return instance;
 }
 

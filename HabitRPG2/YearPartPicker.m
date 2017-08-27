@@ -29,7 +29,7 @@ int const DAYS_COL = 1;
 }
 
 
--(NSInteger)numberOfComponentsInpickerView:(UIPickerView *)picker{
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)picker{
     return 2;
 }
 
@@ -39,7 +39,27 @@ numberOfRowsInComponent:(NSInteger)component{
     if(component == MONTH_COL){
         return self.utilityStore.inUseCalendar.monthSymbols.count;
     }
+    //if no day setup is needed
+    if(self.numberOfDaysInSelectedMonth)
+    {
+        return self.numberOfDaysInSelectedMonth;
+    }
+    NSInteger row =[self.picker numberOfRowsInComponent:MONTH_COL]==12?
+                    [self.picker selectedRowInComponent:MONTH_COL]:0;
+    [self setupSelectedMonthLength:row+1];
     return self.numberOfDaysInSelectedMonth;
+}
+
+
+-(void)setupSelectedMonthLength:(NSInteger)month1Base{
+    NSAssert(month1Base>0&&month1Base<13,@"month should between 1 and 12");
+    
+    NSDate *sampleDate = [NSDate createSimpleDate:1972 month:month1Base day:1];
+    NSRange range = [self.utilityStore.inUseCalendar
+                     rangeOfUnit:NSCalendarUnitDay
+                     inUnit:NSCalendarUnitMonth
+                     forDate:sampleDate];
+    self.numberOfDaysInSelectedMonth = range.length;
 }
 
 
@@ -47,12 +67,7 @@ numberOfRowsInComponent:(NSInteger)component{
      didSelectRow:(NSInteger)row
       inComponent:(NSInteger)component{
     if(component == MONTH_COL){
-        NSDate *sampleDate = [NSDate createSimpleDate:1972 month:row+1 day:1];
-        NSRange range = [self.utilityStore.inUseCalendar
-                         rangeOfUnit:NSCalendarUnitDay
-                         inUnit:NSCalendarUnitMonth
-                         forDate:sampleDate];
-        self.numberOfDaysInSelectedMonth = range.length;
+        [self setupSelectedMonthLength:row+1];
         [pickerView selectRow:0 inComponent:DAYS_COL animated:YES];
         [pickerView reloadComponent:DAYS_COL];
     }
@@ -70,6 +85,9 @@ numberOfRowsInComponent:(NSInteger)component{
 
 
 -(CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component{
+    if(component==MONTH_COL){
+        return 150;
+    }
     return 75;
 }
 

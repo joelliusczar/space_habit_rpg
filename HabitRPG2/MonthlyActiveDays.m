@@ -23,7 +23,7 @@
 
 @implementation MonthlyActiveDays
 
-
+//This is staying as an array unless I determine that JSON can handle sets
 -(NSMutableArray<NSDictionary<NSString *,NSNumber *> *> *)daysOfMonth{
     if(nil==_daysOfMonth){
         _daysOfMonth = [ItemFlexibleListView extractActiveDays:@"daysOfMonth"
@@ -39,6 +39,7 @@
     MonthlyActiveDays *instance = [[MonthlyActiveDays alloc] init];
     instance.daily = daily;
     [instance commonSetup];
+    [instance.addItemsFooter.addItemBtn setTitle:@"Add day of the month" forState:UIControlStateNormal];
     return instance;
 }
 
