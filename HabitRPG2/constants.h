@@ -26,6 +26,9 @@ typedef NS_ENUM(NSInteger,RateType){
     ,WEEKLY_RATE = 1<<0
     ,MONTHLY_RATE = 1<<1
     ,YEARLY_RATE = 1<<2
+    ,WEEKLY_RATE_INVERSE = 1<<3
+    ,MONTHLY_RATE_INVERSE = 1<<4
+    ,YEARLY_RATE_INVERSE = 1<<5
 };
 
 typedef NS_ENUM(NSInteger,hourFormatType){

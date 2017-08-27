@@ -32,7 +32,6 @@
 
 
 +(NSString *)getFormatString:(RateType)rateType withRate:(NSInteger)rate{
-    //TODO: add new negative rateTypes
     switch(rateType){
         case DAILY_RATE:
             return rate==1?@"Triggers every day":@"Triggers every %d days";
@@ -42,6 +41,12 @@
             return rate==1?@"Triggers every month":@"Triggers every %d months";
         case YEARLY_RATE:
             return rate==1?@"Triggers every year":@"Triggers every %d years";
+        case WEEKLY_RATE_INVERSE:
+            return rate==1?@"Skips checked days every week":@"Skips checked days every %d weeks";
+        case MONTHLY_RATE_INVERSE:
+            return rate==1?@"Skips every month":@"Skips every %d months";
+        case YEARLY_RATE_INVERSE:
+            return rate==1?@"Skips every year":@"Skips every %d years";
     }
 }
 
