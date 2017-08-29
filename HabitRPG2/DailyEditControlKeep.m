@@ -9,9 +9,11 @@
 #import "DailyEditControlKeep.h"
 #import "SingletonCluster.h"
 #import "Daily+CoreDataClass.h"
+#import "EditNavigationController.h"
 
 @interface DailyEditControlKeep()
-@property (weak,nonatomic) DailyEditController *delegate;
+@property (strong,nonatomic) DailyEditResponder *delegate;
+@property (weak,nonatomic) EditNavigationController *resizeResponder;
 @end
 
 @implementation DailyEditControlKeep
@@ -58,9 +60,9 @@
 
 -(ReminderListView *)reminderListView{
     if(nil==_reminderListView){
-        _reminderListView = [ReminderListView newWithDueDateInfo:self.delegate.modelForEditing];
+        _reminderListView = [ReminderListView newWithDueDateInfo:self.delegate.daily];
         _reminderListView.utilityStore = SharedGlobal;
-        _reminderListView.resizeResponder = self.delegate.editorContainer;
+        _reminderListView.resizeResponder = self.resizeResponder;
         _reminderListView.delegate = self.delegate;
     }
     return _reminderListView;
@@ -68,10 +70,10 @@
 
 -(RateSetContainer *)rateSetContainer{
     if(nil==_rateSetContainer){
-        _rateSetContainer = [RateSetContainer newWithDaily:self.delegate.modelForEditing];
+        _rateSetContainer = [RateSetContainer newWithDaily:self.delegate.daily];
         _rateSetContainer.delegate = self.delegate;
         _rateSetContainer.utilityStore = SharedGlobal;
-        _rateSetContainer.resizeResponder = self.delegate.editorContainer;
+        _rateSetContainer.resizeResponder = self.resizeResponder;
         _rateSetContainer.tblDelegate = self.delegate;
     }
     return _rateSetContainer;
@@ -91,11 +93,16 @@
     return _allControls;
 }
 
--(instancetype)initWithDailyEditController:(DailyEditController *)delegate{
+-(instancetype)initWith:(DailyEditResponder *)delegate and:(EditNavigationController *)resizeResponder{
     if(self = [super init]){
         _delegate = delegate;
+        _resizeResponder = resizeResponder;
     }
     return self;
+}
+
+-(void)dealloc{
+    _delegate = nil;
 }
 
 

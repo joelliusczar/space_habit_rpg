@@ -21,9 +21,8 @@
 
 
 -(void)textViewDidChange:(UITextView *)textView{
-    if(self.delegate){
-        [self.delegate textDidChange:textView];
-    }
+    [self.delegate noteView:self textDidChange:textView];
+
 }
 
 @end

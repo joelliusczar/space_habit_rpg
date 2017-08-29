@@ -18,8 +18,7 @@
 @interface DailyEditController : UIViewController
 <EditingSaver
 ,UITableViewDataSource
-,UITableViewDelegate
-,P_DailyEditCompound>
+,UITableViewDelegate>
 @property (weak,nonatomic) IBOutlet UITextField *nameBox;
 @property (weak,nonatomic) IBOutlet UIButton *showXtraOptsBtn;
 @property (weak,nonatomic) IBOutlet UITableView *controlsTbl;

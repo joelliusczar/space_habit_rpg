@@ -21,6 +21,8 @@
 #import "RateSetterView.h"
 #import "DailyEditControlKeep.h"
 #import "WeekdayEnum.h"
+#import "DailyEditResponder.h"
+
 
 
 @interface DailyEditController ()
@@ -29,19 +31,19 @@
 @property (assign,nonatomic) BOOL areXtraOptsOpen;
 @property (assign,nonatomic) BOOL isStreakReset;
 @property (strong,nonatomic) DailyEditControlKeep *editControls;
+@property (strong,nonatomic) DailyEditResponder *editResponder;
 @property (assign,nonatomic) BOOL isEditingExisting;
 @end
 
-NSString* const IS_DIRTY = @"isDirty";
+NSString* const IS_DIRTY = @"editResponder.isDirty";
 
 @implementation DailyEditController
 
 //These need to be synthesized since they come from a protocol
 @synthesize editorContainer = _editorContainer;
-@synthesize isDirty = _isDirty;
 @synthesize nameStr = _nameStr;
 
-
+//used for new Dailies
 -(instancetype)initWithParentDailyController:
 (DailyViewController *)parentDailyController{
     if(self = [self initWithNibName:@"DailyEditView" bundle:nil]){
@@ -51,7 +53,7 @@ NSString* const IS_DIRTY = @"isDirty";
     return self;
 }
 
-
+//used for existing dailies
 -(instancetype)initWithParentDailyController:
 (DailyViewController *)parentDailyController ToEdit:
 (Daily *)daily AtIndexPath:(NSIndexPath *)rowInfo{
@@ -69,24 +71,8 @@ NSString* const IS_DIRTY = @"isDirty";
     [super viewDidLoad];
     self.controlsTbl.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
-    //I don't want modelForEditing lazy loaded because it makes the logic confusing.
-    //sometimes it unexpectedly gets initialized and that messes things up.
-    //So, I want exact control over when it gets initialized
-    if(self.modelForEditing){
-        if(![SHData.writeContext.registeredObjects containsObject:self.modelForEditing]){
-            self.modelForEditing = [SHData.writeContext objectWithID:self.modelForEditing.objectID];
-        }
-    }
-    else{
-        self.modelForEditing = [Daily constructDaily];
-        [SHData insertIntoContext:self.modelForEditing];
-        [self initializeModel:self.modelForEditing];
-    }
-    //I want the editControls stuff to happen here because when it gets
-    //lazy loaded, it gets out of hand
-    self.editControls = [[DailyEditControlKeep alloc]
-                         initWithDailyEditController:self];
-    self.editorContainer.editControls = self.editControls;
+    [self setupModelForEditing];
+    [self setupEditControls];
     [self loadExistingDailyForEditing:self.modelForEditing];
     self.modelForEditing.lastUpdateTime = [NSDate date];
     
@@ -109,6 +95,32 @@ NSString* const IS_DIRTY = @"isDirty";
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+-(void)setupModelForEditing{
+    //I don't want modelForEditing lazy loaded because it makes the logic confusing.
+    //sometimes it unexpectedly gets initialized and that messes things up.
+    //So, I want exact control over when it gets initialized
+    if(self.modelForEditing){
+        if(![SHData.writeContext.registeredObjects containsObject:self.modelForEditing]){
+            self.modelForEditing = [SHData.writeContext objectWithID:self.modelForEditing.objectID];
+        }
+    }
+    else{
+        self.modelForEditing = [Daily constructDaily];
+        [SHData insertIntoContext:self.modelForEditing];
+        [self initializeModel:self.modelForEditing];
+    }
+}
+
+
+-(void)setupEditControls{
+    //I want the editControls stuff to happen here because when it gets
+    //lazy loaded, it gets out of hand
+    self.editResponder = [[DailyEditResponder alloc] initWith:self.modelForEditing];
+    self.editControls = self.editResponder.editControls;
+    self.editorContainer.editControls = self.editControls;
 }
 
 
@@ -188,34 +200,6 @@ NSString* const IS_DIRTY = @"isDirty";
                                                                 ,daily.streakLength];
 }
 
-//noteBox
--(void)textDidChange:(UITextView *)textView{
-    wrapReturnVoid wrappedCall = ^void(){
-        self.isDirty = YES;
-        self.modelForEditing.note = self.editControls.noteView.noteBox.text;
-    };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
-}
-
-//I don't think this is used anywhere
--(void)textViewDidChange:(UITextView *)textView{
-    wrapReturnVoid wrappedCall = ^void(){
-        self.isDirty = YES;
-        @throw [NSException exceptionWithName:@"is in use" reason:nil userInfo:nil];
-    };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
-}
-
-
-- (IBAction)nameBox_editingChanged_action:(UITextField *)sender forEvent:(UIEvent *)event {
-    wrapReturnVoid wrappedCall = ^void(){
-        self.isDirty = YES;
-        self.modelForEditing.dailyName = sender.text;
-        self.nameStr = sender.text;
-    };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
-}
-
 
 - (IBAction)showXtra_push_action:(UIButton *)sender forEvent:(UIEvent *)event {
     wrapReturnVoid wrappedCall = ^void(){
@@ -228,84 +212,6 @@ NSString* const IS_DIRTY = @"isDirty";
         self.areXtraOptsOpen = YES;
         if(self.editorContainer){
             [self.editorContainer resizeScrollView:self.controlsTbl.hidden];
-        }
-    };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
-}
-
-
--(void)importanceSld_valueChanged_action:(ImportanceSliderView *)sender forEvent:(UIEvent *)event{
-    wrapReturnVoid wrappedCall = ^void(){
-        self.isDirty = YES;
-        int sliderValue = (int)sender.importanceSld.value;
-        if(sender == self.editControls.urgencySlider){
-            self.modelForEditing.urgency = sliderValue;
-            sender.importanceLbl.text = [NSString stringWithFormat:@"Urgency: %d",sliderValue];
-        }
-        else{
-            self.modelForEditing.difficulty = sliderValue;
-            sender.importanceLbl.text = [NSString stringWithFormat:@"Difficulty: %d",sliderValue];
-        }
-        sender.importanceSld.value = sliderValue;
-    };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
-}
-
-
--(void)rateStep_valueChanged_action:(UIStepper *)sender forEvent:(UIEvent *)event {
-    wrapReturnVoid wrappedCall = ^void(){
-        self.isDirty = YES;
-        double stepperValue = [sender value];
-        int rate = (int)stepperValue;
-        if(rate > 366){
-            rate = 366;
-        }
-        if(rate < 1){
-            rate = 1;
-        }
-        sender.value = rate;
-        self.modelForEditing.rate = rate;
-    };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
-}
-
-
--(void)countAllDaysSwitch_checked_action:(CustomSwitch *)sender forEvent:(UIEvent *)event{
-    wrapReturnVoid wrappedCall = ^void(){
-        self.isDirty = YES;
-    };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
-}
-
-
--(void)activeDaySwitch_press_action:(CustomSwitch *)sender forEvent:(UIEvent *)event{
-    wrapReturnVoid wrappedCall = ^void(){
-        self.isDirty = YES;
-        if(sender.isOn){
-            //I'm okay with casting the long to int because I only need the
-            //first seven bits anyway
-            //TODO: self.modelForEditing.activeDaysHash |= (int)sender.tag;
-        }
-        else{
-            //TODO: self.modelForEditing.activeDaysHash &= ~(int)sender.tag;
-        }
-    };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
-}
-
-
--(void)addRewardBtn_push_action:(UIButton *)sender forEvent:(UIEvent *)event {
-    wrapReturnVoid wrappedCall = ^void(){
-    };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
-}
-
-
--(void)streakResetBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
-    wrapReturnVoid wrappedCall = ^void(){
-        if(self.modelForEditing){
-            self.isDirty = YES;
-            self.modelForEditing.streakLength = 0;
         }
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];

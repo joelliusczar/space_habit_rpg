@@ -14,10 +14,12 @@
 #import "ImportanceSliderView.h"
 #import "StreakResetterView.h"
 #import "ReminderListView.h"
-#import "DailyEditController.h"
+#import "DailyEditResponder.h"
 #import "RateSetContainer.h"
 #import "SHView.h"
 #import "P_EditControlKeep.h"
+
+@class DailyEditResponder;
 
 @interface DailyEditControlKeep : NSObject<P_EditControlKeep>
 @property (strong,nonatomic) NSOrderedSet<SHView *> *allControls;
@@ -29,5 +31,6 @@
 @property (strong,nonatomic) StreakResetterView *streakResetterView;
 @property (strong,nonatomic) ReminderListView *reminderListView;
 @property (strong,nonatomic) RateSetContainer *rateSetContainer;
--(instancetype)initWithDailyEditController:(DailyEditController *)delegate;
+-(instancetype)initWith:(DailyEditResponder *)delegate and:(EditNavigationController *)resizeResponder;
+
 @end

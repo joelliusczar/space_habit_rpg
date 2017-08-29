@@ -27,6 +27,59 @@
     return _activeDaysDict;
 }
 
+-(NSString *)name_w:(NSString *)name{
+    self.dailyName = name;
+    return name;
+}
+
+
+-(NSString *)noteText_w:(NSString *)noteText{
+    self.note = noteText;
+    return noteText;
+}
+
+
+-(NSInteger)rate_w:(int)rate{
+    if(rate > 366){
+        rate = 366;
+    }
+    if(rate < 1){
+        rate = 1;
+    }
+    self.rate = rate;
+    return rate;
+}
+
+
+int checkImportanceRange(int importance){
+    if(importance > 10){
+        return 10;
+    }
+    if(importance < 0){
+        return 0;
+    }
+    return importance;
+}
+
+
+-(NSInteger)urgency_w:(int)urgency{
+    urgency = checkImportanceRange(urgency);
+    self.urgency = urgency;
+    return urgency;
+}
+
+
+-(NSInteger)difficulty_w:(int)difficulty{
+    difficulty = checkImportanceRange(difficulty);
+    self.difficulty = difficulty;
+    return difficulty;
+}
+
+
+-(NSInteger)streak_w:(int)streak{
+    self.streakLength = streak;
+    return streak;
+}
 
 -(NSMutableDictionary *)mapable{
     

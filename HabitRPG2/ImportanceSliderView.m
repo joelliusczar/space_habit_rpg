@@ -23,10 +23,8 @@
 
 -(IBAction)importanceSld_valueChanged_action:(UISlider *)sender
                                     forEvent:(UIEvent *)event {
-    if(self.delegate){
-        [self.delegate importanceSld_valueChanged_action:self
+        [self.delegate importanceSlider:self sld_valueChanged_action:sender
                                                 forEvent:event];
-    }
 }
 
 

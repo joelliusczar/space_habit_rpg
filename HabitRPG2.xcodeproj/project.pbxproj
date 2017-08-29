@@ -13,6 +13,7 @@
 		2709B3A31EF56AFC00EEE5CC /* NSDate+testReplace.m in Sources */ = {isa = PBXBuildFile; fileRef = 2709B3A21EF56AFC00EEE5CC /* NSDate+testReplace.m */; };
 		2710BB961F514E8700A43B6C /* Experiments+Bravo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2710BB951F514E8700A43B6C /* Experiments+Bravo.m */; };
 		2710BBC41F53150F00A43B6C /* blue_plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 2710BBC31F53150F00A43B6C /* blue_plus.png */; };
+		2710BBCA1F53CF1500A43B6C /* DailyEditResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2710BBC91F53CF1500A43B6C /* DailyEditResponder.m */; };
 		271C04831E8A1152002221E9 /* MonsterInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C04821E8A1152002221E9 /* MonsterInfoDictionary.m */; };
 		271C04881E8B639D002221E9 /* ResourceUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C04871E8B639D002221E9 /* ResourceUtility.m */; };
 		271C048B1E8C955A002221E9 /* SingletonCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C048A1E8C955A002221E9 /* SingletonCluster.m */; };
@@ -233,6 +234,8 @@
 		2710BB951F514E8700A43B6C /* Experiments+Bravo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Experiments+Bravo.m"; sourceTree = "<group>"; };
 		2710BB971F51D76000A43B6C /* P_EditControlKeep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_EditControlKeep.h; sourceTree = "<group>"; };
 		2710BBC31F53150F00A43B6C /* blue_plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_plus.png; sourceTree = "<group>"; };
+		2710BBC81F53CF1500A43B6C /* DailyEditResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyEditResponder.h; sourceTree = "<group>"; };
+		2710BBC91F53CF1500A43B6C /* DailyEditResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyEditResponder.m; sourceTree = "<group>"; };
 		271C047D1E89BCBA002221E9 /* P_CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_CoreData.h; sourceTree = "<group>"; };
 		271C04811E8A1152002221E9 /* MonsterInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterInfoDictionary.h; sourceTree = "<group>"; };
 		271C04821E8A1152002221E9 /* MonsterInfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterInfoDictionary.m; sourceTree = "<group>"; };
@@ -1134,6 +1137,8 @@
 				27E89C971EF5F3EE009B7474 /* SubTaskCellController.m */,
 				274FFC481EF887DB00FAF809 /* DailyEditControlKeep.h */,
 				274FFC491EF887DB00FAF809 /* DailyEditControlKeep.m */,
+				2710BBC81F53CF1500A43B6C /* DailyEditResponder.h */,
+				2710BBC91F53CF1500A43B6C /* DailyEditResponder.m */,
 			);
 			name = Dailies;
 			sourceTree = "<group>";
@@ -1575,6 +1580,7 @@
 				274FFC4A1EF887DB00FAF809 /* DailyEditControlKeep.m in Sources */,
 				2709B39C1EF0D31200EEE5CC /* Interceptor.m in Sources */,
 				27B0CDC91F2BEECD005BEC75 /* HabitTransaction+CoreDataProperties.m in Sources */,
+				2710BBCA1F53CF1500A43B6C /* DailyEditResponder.m in Sources */,
 				27B0CDC71F2BEECD005BEC75 /* Suffix+CoreDataProperties.m in Sources */,
 				27AF22E71F270FBA00F7D872 /* SHControlController.m in Sources */,
 				2725963C1F32D81F006EECD2 /* MonthPartPicker.m in Sources */,

@@ -21,6 +21,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly,nonatomic) int daysUntilDue;
 @property (strong,nonatomic) NSMutableDictionary *activeDaysDict;
 -(void)copyInto:(NSObject *)object;
+-(NSString *)name_w:(NSString *)name;
+-(NSString *)noteText_w:(NSString *)noteText;
+-(NSInteger)urgency_w:(int)urgency;
+-(NSInteger)difficulty_w:(int)difficulty;
+-(NSInteger)rate_w:(int)rate;
+-(NSInteger)streak_w:(int)streak;
 @end
 
 NS_ASSUME_NONNULL_END

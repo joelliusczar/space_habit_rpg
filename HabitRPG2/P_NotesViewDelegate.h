@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 #import "P_CommonDelegate.h"
 
+@class NoteView;
+
 @protocol P_NotesViewDelegate <NSObject,P_CommonDelegate>
--(void)textDidChange:(UITextView *)textView;
+-(void)noteView:(NoteView *)noteView textDidChange:(UITextView *)textView;
 @end

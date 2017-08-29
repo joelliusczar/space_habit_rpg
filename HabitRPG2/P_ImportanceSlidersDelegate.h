@@ -13,7 +13,7 @@
 @class ImportanceSliderView;
 
 @protocol P_ImportanceSlidersDelegate <NSObject,P_CommonDelegate>
--(void)importanceSld_valueChanged_action:(ImportanceSliderView *)sender
+-(void)importanceSlider:(ImportanceSliderView *)sliderView sld_valueChanged_action:(UISlider *)sender
                              forEvent:(UIEvent *)event;
 
 @end
