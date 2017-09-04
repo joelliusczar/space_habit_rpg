@@ -16,26 +16,16 @@
 #import "Interceptor.h"
 #import "ItemFlexibleListView+YearMonthCommon.h"
 #import "NSNumber+Helpers.h"
+#import "SHEventInfo.h"
 
 @interface MonthlyActiveDays ()
-@property (strong,nonatomic) NSMutableArray<NSDictionary<NSString *,NSNumber *> *> *daysOfMonth;
 @end
 
 @implementation MonthlyActiveDays
 
-//This is staying as an array unless I determine that JSON can handle sets
--(NSMutableArray<NSDictionary<NSString *,NSNumber *> *> *)daysOfMonth{
-    if(nil==_daysOfMonth){
-        _daysOfMonth = [ItemFlexibleListView extractActiveDays:@"daysOfMonth"
-                                                     fromDaily:self.daily];
-    }
-        
-    return _daysOfMonth;
-}
 
 +(instancetype)newWithDaily:(Daily *)daily{
     NSAssert(daily,@"daily was nil");
-    
     MonthlyActiveDays *instance = [[MonthlyActiveDays alloc] init];
     instance.daily = daily;
     [instance commonSetup];
@@ -45,14 +35,14 @@
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.daysOfMonth.count;
+    return self.daily.inUseActiveDays.count;
 }
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView
         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ListItemCell *cell = [ListItemCell getListItemCell:tableView];
-    NSDictionary<NSString *,NSNumber *> *monthItemDict = self.daysOfMonth[indexPath.row];
+    NSDictionary<NSString *,NSNumber *> *monthItemDict = self.daily.inUseActiveDays[indexPath.row];
     NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
     numFormatter.locale = self.utilityStore.inUseLocale;
     numFormatter.numberStyle = NSNumberFormatterOrdinalStyle;
@@ -63,28 +53,35 @@
 }
 
 
--(void)addItemBtn_press_action:(UIButton *)sender
-                      forEvent:(UIEvent *)event{
+-(void)addItemBtn_press_action:(SHEventInfo *)eventInfo{
     wrapReturnVoid wrappedCall = ^(){
+        [self hideKeyboard];
         MonthPartPicker *dayOfMonthPicker = [[MonthPartPicker alloc] init];
         [self showSHSpinPicker:dayOfMonthPicker];
+        [eventInfo.senderStack addObject:self];
+        [super addItemBtn_press_action:eventInfo];
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
--(void)pickerSelection_action:(UIPickerView *)sender forEvent:(UIEvent *)event{
+-(void)pickerSelection_action:(SHEventInfo *)eventInfo{
     wrapReturnVoid wrappedCall = ^(){
-        [self addNewItem:sender backendList:self.daysOfMonth fieldNames:@[@"ordinal",@"dayOfWeek"]];
+        [self addNewItem:eventInfo.senderStack[1]
+             backendList:self.daily.inUseActiveDays
+              fieldNames:@[@"ordinal",@"dayOfWeek"]];
         [self scaleTableForAddItem];
+        [eventInfo.senderStack addObject:self];
+        [super pickerSelection_action:eventInfo];
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
 -(NSInteger)backendListCount{
-    return self.daysOfMonth.count;
+    return self.daily.inUseActiveDays.count;
 }
+
 
 
 @end

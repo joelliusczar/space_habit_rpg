@@ -21,6 +21,7 @@
 #import "constants.h"
 #import "NotificationHelper.h"
 #import "NSObject+Helper.h"
+#import "SHEventInfo.h"
 @import UserNotifications;
 
 @interface ReminderListView()
@@ -60,27 +61,28 @@ numberOfRowsInSection:(NSInteger)section{
 }
 
 
--(void)addItemBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event{
+-(void)addItemBtn_press_action:(SHEventInfo *)eventInfo{
     //the reason I was using a temp model earlier is because
     //the model that was getting passed through here
     //earlier only had the original value.
+    [self hideKeyboard];
     ReminderTimeSpinPicker *timePicker =
     [[ReminderTimeSpinPicker alloc] initWithDayRange:self.dueDateInfo.maxDaysBefore];
     [self showSHSpinPicker:timePicker];
 }
 
 
--(void)pickerSelection_action:(UIPickerView *)sender
-                     forEvent:(UIEvent *)event{
-    
+-(void)pickerSelection_action:(SHEventInfo *)eventInfo{
     wrapReturnVoid wrappedCall = ^void(){
-        NSInteger hourRow = [sender selectedRowInComponent:HOUR_OF_DAY_COL];
-        NSInteger minuteRow = [sender selectedRowInComponent:MINUTE_COL];
-        NSInteger daysCol = sender.numberOfComponents -1;
-        NSInteger daysBefore = [sender selectedRowInComponent:daysCol];
+        UIPickerView *picker = (UIPickerView *)eventInfo.senderStack[1];
+        NSInteger hourRow = [picker selectedRowInComponent:HOUR_OF_DAY_COL];
+        NSInteger minuteRow = [picker selectedRowInComponent:MINUTE_COL];
+        NSInteger daysCol = picker.numberOfComponents -1;
+        NSInteger daysBefore = [picker selectedRowInComponent:daysCol];
         [self insertNewReminder:hourRow minute:minuteRow daysBefore:daysBefore];
         [self scaleTableForAddItem];
-        [super pickerSelection_action:sender forEvent:event];
+        [eventInfo.senderStack addObject:self];
+        [super pickerSelection_action:eventInfo];
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }

@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "P_CommonDelegate.h"
+#import "SHEventInfo.h"
 
 @class NoteView;
 
 @protocol P_NotesViewDelegate <NSObject,P_CommonDelegate>
--(void)noteView:(NoteView *)noteView textDidChange:(UITextView *)textView;
+-(void)textDidChange:(SHEventInfo *)eventInfo;
 @end

@@ -12,21 +12,12 @@
 #import "YearPartPicker.h"
 #import "Interceptor.h"
 #import "ItemFlexibleListView+YearMonthCommon.h"
+#import "SHEventInfo.h"
 
 @interface YearlyActiveDays ()
-@property (strong,nonatomic) NSMutableArray<NSDictionary<NSString *,NSNumber *> *> *daysOfYear;
 @end
 
 @implementation YearlyActiveDays
-
--(NSMutableArray<NSDictionary<NSString*,NSNumber *> *> *)daysOfYear{
-    if(nil == _daysOfYear){
-        _daysOfYear = [YearlyActiveDays
-                       extractActiveDays:@"daysOfYear" fromDaily:self.daily];
-    }
-    return _daysOfYear;
-}
-
 
 +(instancetype)newWithDaily:(Daily *)daily{
     YearlyActiveDays *instance = [[YearlyActiveDays alloc] init];
@@ -38,40 +29,47 @@
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.daysOfYear.count;
+    return self.daily.inUseActiveDays.count;
 }
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView
         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ListItemCell *cell = [ListItemCell getListItemCell:tableView];
-    NSDictionary<NSString *,NSNumber *> *yearItemDict = self.daysOfYear[indexPath.row];
+    NSDictionary<NSString *,NSNumber *> *yearItemDict = self.daily.inUseActiveDays[indexPath.row];
     NSString *month = self.utilityStore.inUseCalendar.monthSymbols[yearItemDict[@"month"].integerValue];
     cell.lblRowDesc.text = [NSString stringWithFormat:@"%@ %@",month,yearItemDict[@"day"]];
     return cell;
 }
 
 
--(void)addItemBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event{
+-(void)addItemBtn_press_action:(SHEventInfo *)eventInfo{
     wrapReturnVoid wrappedCall = ^(){
+        [self hideKeyboard];
         YearPartPicker *dayOfYearPicker = [[YearPartPicker alloc] init];
         [self showSHSpinPicker:dayOfYearPicker];
+        [eventInfo.senderStack addObject:self];
+        [super addItemBtn_press_action:eventInfo];
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
--(void)pickerSelection_action:(UIPickerView *)sender forEvent:(UIEvent *)event{
+-(void)pickerSelection_action:(SHEventInfo *)eventInfo{
     wrapReturnVoid wrappedCall = ^(){
-        [self addNewItem:sender backendList:self.daysOfYear fieldNames:@[@"month",@"day"]];
+        [self addNewItem:eventInfo.senderStack[1]
+             backendList:self.daily.inUseActiveDays
+              fieldNames:@[@"month",@"day"]];
         [self scaleTableForAddItem];
+        [eventInfo.senderStack addObject:self];
+        [super pickerSelection_action:eventInfo];
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
 -(NSInteger)backendListCount{
-    return self.daysOfYear.count;
+    return self.daily.inUseActiveDays.count;
 }
 
 

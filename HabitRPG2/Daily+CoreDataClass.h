@@ -10,16 +10,16 @@
 #import <CoreData/CoreData.h>
 #import "P_DueDateWrapper.h"
 
+
 @class DailySubTask;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Daily : NSManagedObject <P_DueDateWrapper>
-@property (nonatomic,assign) NSInteger rowNum;
-@property (nonatomic,assign) NSInteger sectionNum;
 @property (readonly,nonatomic) NSMutableDictionary *mapable;
 @property (readonly,nonatomic) int daysUntilDue;
 @property (strong,nonatomic) NSMutableDictionary *activeDaysDict;
+@property (readonly,nonatomic) NSMutableArray<NSDictionary<NSString *,NSNumber *> *> *inUseActiveDays;
 -(void)copyInto:(NSObject *)object;
 -(NSString *)name_w:(NSString *)name;
 -(NSString *)noteText_w:(NSString *)noteText;
@@ -27,6 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSInteger)difficulty_w:(int)difficulty;
 -(NSInteger)rate_w:(int)rate;
 -(NSInteger)streak_w:(int)streak;
+-(void)setupDefaults;
 @end
 
 NS_ASSUME_NONNULL_END

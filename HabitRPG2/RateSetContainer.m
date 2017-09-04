@@ -11,6 +11,9 @@
 #import "ViewHelper.h"
 #import "UIView+Helpers.h"
 #import "SingletonCluster.h"
+#import "Interceptor.h"
+#import "RateTypeHelper.h"
+#import "ItemFlexibleListView.h"
 
 @interface RateSetContainer ()
 @property (assign,nonatomic) CGSize defaultSize;
@@ -77,41 +80,72 @@
 
 -(IBAction)setRateTypeBtn_click_action:(UIButton *)sender
                               ForEvent:(UIEvent *)event{
-    RateTypeSelector *typeSelector = [[RateTypeSelector alloc]
-                                      initWithRateType:self.daily.rateType
-                                      andDelegate:self];
-    [self.resizeResponder pushViewControllerToNearestParent:typeSelector];
+    wrapReturnVoid wrappedCall = ^(){
+        RateTypeSelector *typeSelector = [[RateTypeSelector alloc]
+                                          initWithRateType:self.daily.rateType
+                                          andDelegate:self];
+        [self.resizeResponder pushViewControllerToNearestParent:typeSelector];
+    };
+    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+}
+
+
+-(void)updateRateType:(RateType)rateType with:(SHEventInfo *)eventInfo{
+    [self updateRateType:rateType];
 }
 
 
 -(void)updateRateType:(RateType)rateType{
-    self.daily.rateType = rateType;
+    
     self.daily.rate = 1;
-    [self setRateTypeActiveDaysControl:rateType];
     self.rateSetter.rateType = rateType;
+    if(!areSameBaseRateTypes(rateType,self.daily.rateType)){
+        [self setRateTypeActiveDaysControl:rateType];
+    }
+    else{
+        [self refreshActiveDaysControl];
+    }
+    self.daily.rateType = rateType;
 }
+
+
+-(void)refreshActiveDaysControl{
+    if([self.currentActiveDaysControl isKindOfClass:ItemFlexibleListView.class]){
+        [((ItemFlexibleListView *)self.currentActiveDaysControl) refreshTable];
+    }
+    else if([self.currentActiveDaysControl isKindOfClass:WeeklyActiveDays.class]){
+        
+    }
+}
+
 
 -(void)setRateTypeActiveDaysControl:(RateType)rateType{
     //TODO: test this for loading saved daily
+    rateType = extractBaseRateType(rateType);
     if(rateType == WEEKLY_RATE){
         [self switchActiveDaysControlFor:self.weeklyActiveDays];
         self.currentActiveDaysControl = self.weeklyActiveDays;
+        [self.openRateTypeBtn setTitle:@"Triggers Every Week" forState:UIControlStateNormal];
     }
     else if(rateType == MONTHLY_RATE){
         [self switchActiveDaysControlFor:self.monthlyActiveDays];
         [self.resizeResponder scrollByOffset:SUB_TABLE_CELL_HEIGHT];
         [self.resizeResponder scrollVisibleToControl:self];
         self.currentActiveDaysControl = self.monthlyActiveDays;
+        [self.openRateTypeBtn setTitle:@"Triggers Every Month" forState:UIControlStateNormal];
     }
     else if(rateType == YEARLY_RATE){
         [self switchActiveDaysControlFor:self.yearlyActiveDays];
         [self.resizeResponder scrollByOffset:SUB_TABLE_CELL_HEIGHT];
         [self.resizeResponder scrollVisibleToControl:self];
         self.currentActiveDaysControl = self.yearlyActiveDays;
+        [self.openRateTypeBtn setTitle:@"Triggers Every Year" forState:UIControlStateNormal];
+        
     }
     else if(rateType == DAILY_RATE){
         [self switchActiveDaysControlFor:[[SHView alloc] initEmpty]];
         self.currentActiveDaysControl = nil;
+        [self.openRateTypeBtn setTitle:@"Triggers Every Day" forState:UIControlStateNormal];
     }
 }
 
@@ -121,13 +155,13 @@
     CGFloat h = activeDaysControl.frame.size.height;
     [self fitControlHeightToSubControlHeight:h];
     [self.activeDaysControlContainer
-     replaceSubviewsWith:activeDaysControl];
+        replaceSubviewsWith:activeDaysControl];
 }
 
 
--(void)rateStep_valueChanged_action:(UIStepper *)sender
-                           forEvent:(UIEvent *)event{
-    [self.delegate rateStep_valueChanged_action:sender forEvent:event];
+-(void)rateStep_valueChanged_action:(SHEventInfo *)eventInfo{
+    [eventInfo.senderStack addObject:self];
+    [self.delegate rateStep_valueChanged_action:eventInfo];
 }
 
 
@@ -151,17 +185,31 @@
 -(void)respondToHeightResize:(CGFloat)change{
     [self resizeHeightByOffset:change];
     [self.activeDaysControlContainer resizeHeightByOffset:change];
-    [self.resizeResponder respondToHeightResize:change];
+    [self respondToHeightResize_m:change];
+}
+
+
+-(void)respondToHeightResize_m:(CGFloat)change{
+    SEL delegateSel = @selector(respondToHeightResize:);
+    if([self.resizeResponder respondsToSelector:delegateSel]){
+        [self.resizeResponder respondToHeightResize:change];
+    }
 }
 
 
 -(void)scrollByOffset:(CGFloat)offset{
-    [self.resizeResponder scrollByOffset:offset];
+    SEL delegateSel = @selector(scrollByOffset:);
+    if([self.resizeResponder respondsToSelector:delegateSel]){
+        [self.resizeResponder scrollByOffset:offset];
+    }
 }
 
 
 -(void)scrollVisibleToControl:(SHView *)control{
-    [self.resizeResponder scrollVisibleToControl:self];
+    SEL delegateSel = @selector(scrollVisibleToControl:);
+    if([self.resizeResponder respondsToSelector:delegateSel]){
+        [self.resizeResponder scrollVisibleToControl:self];
+    }
 }
 
 
@@ -171,18 +219,42 @@
 
 
 -(void)beginUpdate{
-    [self.resizeResponder beginUpdate];
+    SEL delegateSel = @selector(beginUpdate);
+    if([self.resizeResponder respondsToSelector:delegateSel]){
+        [self.resizeResponder beginUpdate];
+    }
 }
 
 
 -(void)endUpdate{
-    [self.resizeResponder endUpdate];
+    SEL delegateSel = @selector(endUpdate);
+    if([self.resizeResponder respondsToSelector:delegateSel]){
+        [self.resizeResponder endUpdate];
+    }
 }
 
 -(void)changeBackgroundColorTo:(UIColor *)color{
     [super changeBackgroundColorTo:color];
     [self.rateSetter changeBackgroundColorTo:color];
     [self.currentActiveDaysControl changeBackgroundColorTo:color];
+}
+
+
+-(void)hideKeyboard{
+    if([self.resizeResponder respondsToSelector:@selector(hideKeyboard)]){
+        [self.resizeResponder hideKeyboard];
+    }
+}
+
+
+-(IBAction)invertRateTypeBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event{
+    wrapReturnVoid wrappedCall = ^(){
+        self.daily.rateType = invertRateType(self.daily.rateType);
+        NSString *btnText = !isInverseRateType(self.daily.rateType)
+                            ?@"Triggers all days except...":@"Triggers only on...";
+        [self.invertRateTypeBtn setTitle:btnText forState:UIControlStateNormal];
+    };
+    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "WeeklyActiveDays.h"
 #import "CommonUtilities.h"
 #import "NSObject+Helper.h"
+#import "SHEventInfo.h"
 
 @interface WeeklyActiveDays ()
 
@@ -18,9 +19,8 @@
 
 
 - (IBAction)activeDaySwitch_press_action:(CustomSwitch *)sender forEvent:(UIEvent *)event {
-    if(self.delegate){
-        [self.delegate activeDaySwitch_press_action:sender forEvent:event];
-    }
+    SHEventInfo *e = eventInfoCopy;
+    [self.delegate activeDaySwitch_press_action:e];
 }
 
 @end

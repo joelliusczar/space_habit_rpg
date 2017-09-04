@@ -10,11 +10,14 @@
 #import "SHView.h"
 
 @protocol P_ResizeResponder <NSObject>
+@required
+-(void)pushViewControllerToNearestParent:(UIViewController *)child;
+-(void)hideKeyboard;
 @optional
 -(void)respondToHeightResize:(CGFloat)change;
 -(void)scrollByOffset:(CGFloat)offset;
 -(void)scrollVisibleToControl:(SHView *)control;
 -(void)beginUpdate;
 -(void)endUpdate;
--(void)pushViewControllerToNearestParent:(UIViewController *)child;
+-(void)resetHeight;
 @end

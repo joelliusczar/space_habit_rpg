@@ -10,4 +10,5 @@
 
 @interface Experiments (Bravo)
 -(void)bravoMethod;
+-(void)addObservo;
 @end

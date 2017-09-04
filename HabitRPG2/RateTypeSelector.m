@@ -10,6 +10,7 @@
 #import "Interceptor.h"
 #import "ViewHelper.h"
 #import "UIView+Helpers.h"
+#import "SHEventInfo.h"
 
 @interface RateTypeSelector ()
 
@@ -95,7 +96,8 @@
         else{
             rateType = DAILY_RATE;
         }
-        [self.delegate updateRateType: rateType];
+        SHEventInfo *e = eventInfoCopy;
+        [self.delegate updateRateType: rateType with:e];
     }
     [self setCheckmark:rateType];
     //I want to display some sort of visible change in response to

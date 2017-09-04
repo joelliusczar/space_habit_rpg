@@ -110,7 +110,7 @@ NSString* const IS_DIRTY = @"editResponder.isDirty";
     else{
         self.modelForEditing = [Daily constructDaily];
         [SHData insertIntoContext:self.modelForEditing];
-        [self initializeModel:self.modelForEditing];
+        [self.modelForEditing setupDefaults];
     }
 }
 
@@ -120,22 +120,8 @@ NSString* const IS_DIRTY = @"editResponder.isDirty";
     //lazy loaded, it gets out of hand
     self.editResponder = [[DailyEditResponder alloc] initWith:self.modelForEditing];
     self.editControls = self.editResponder.editControls;
+    self.editControls.resizeResponder = self.editorContainer;
     self.editorContainer.editControls = self.editControls;
-}
-
-
-//This method is not really necessary but using it will help my flow in
-//viewDidLoad so that I didn't have a weird flag in there denoting that the
-//model already existed. Besides, this makes things sorta more explicit
--(void)initializeModel:(Daily *)daily{
-    daily.activeDays = ALL_DAYS_JSON;
-    daily.rateType = WEEKLY_RATE;
-    daily.dailyName = @"";
-    daily.difficulty = 3;
-    daily.urgency = 3;
-    daily.note = @"";
-    daily.rate = 1;
-    daily.streakLength = 0;
 }
 
 

@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "constants.h"
+#import "SHEventInfo.h"
 
 @protocol P_RateTypeSelectorDelegate <NSObject>
--(void)updateRateType:(RateType)rateType;
+-(void)updateRateType:(RateType)rateType with:(SHEventInfo *)eventInfo;
 @end

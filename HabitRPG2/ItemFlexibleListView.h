@@ -32,4 +32,6 @@
 -(void)commonSetup;
 -(void)showSHSpinPicker:(SHSpinPicker *)picker;
 -(void)scaleTableForAddItem;
+-(void)hideKeyboard;
+-(void)refreshTable;
 @end

@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SHEventInfo.h"
 
 @protocol P_AddItemsFooterDelegate <NSObject>
--(void)addItemBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event;
+-(void)addItemBtn_press_action:(SHEventInfo *)eventInfo;
 @end

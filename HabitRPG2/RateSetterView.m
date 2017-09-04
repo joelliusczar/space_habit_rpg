@@ -7,7 +7,7 @@
 //
 
 #import "RateSetterView.h"
-
+#import "SHEventInfo.h"
 
 @interface RateSetterView ()
 
@@ -23,8 +23,9 @@
 
 
 - (IBAction)rateStep_valueChanged_action:(UIStepper *)sender forEvent:(UIEvent *)event {
-
-    [self.delegate rateStep_valueChanged_action:sender forEvent:event];
+    
+    SHEventInfo *e = eventInfoCopy;
+    [self.delegate rateStep_valueChanged_action:e];
     NSInteger rate = (NSInteger)sender.value;
     self.rateLbl.text = [NSString stringWithFormat:[RateSetterView
                                                     getFormatString:self.rateType withRate:rate],rate];

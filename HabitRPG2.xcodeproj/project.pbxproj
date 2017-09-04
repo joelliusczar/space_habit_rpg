@@ -11,6 +11,9 @@
 		2709B3991EEF750800EEE5CC /* ReportServiceCaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 2709B3981EEF750800EEE5CC /* ReportServiceCaller.m */; };
 		2709B39C1EF0D31200EEE5CC /* Interceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2709B39B1EF0D31200EEE5CC /* Interceptor.m */; };
 		2709B3A31EF56AFC00EEE5CC /* NSDate+testReplace.m in Sources */ = {isa = PBXBuildFile; fileRef = 2709B3A21EF56AFC00EEE5CC /* NSDate+testReplace.m */; };
+		270D39AF1F58C6B300F371F0 /* UserOfProtocus.m in Sources */ = {isa = PBXBuildFile; fileRef = 270D39AE1F58C6B300F371F0 /* UserOfProtocus.m */; };
+		270D39B21F58C7B000F371F0 /* XPSideKick.m in Sources */ = {isa = PBXBuildFile; fileRef = 270D39B11F58C7B000F371F0 /* XPSideKick.m */; };
+		270D39BC1F5D1CF900F371F0 /* RateTypeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 270D39BA1F5D1CF900F371F0 /* RateTypeHelper.m */; };
 		2710BB961F514E8700A43B6C /* Experiments+Bravo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2710BB951F514E8700A43B6C /* Experiments+Bravo.m */; };
 		2710BBC41F53150F00A43B6C /* blue_plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 2710BBC31F53150F00A43B6C /* blue_plus.png */; };
 		2710BBCA1F53CF1500A43B6C /* DailyEditResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2710BBC91F53CF1500A43B6C /* DailyEditResponder.m */; };
@@ -228,6 +231,13 @@
 		2709B39D1EF4DFCA00EEE5CC /* Model 24.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 24.xcdatamodel"; sourceTree = "<group>"; };
 		2709B3A11EF56AFC00EEE5CC /* NSDate+testReplace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+testReplace.h"; sourceTree = "<group>"; };
 		2709B3A21EF56AFC00EEE5CC /* NSDate+testReplace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+testReplace.m"; sourceTree = "<group>"; };
+		270D39AC1F58C69500F371F0 /* Protocus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Protocus.h; sourceTree = "<group>"; };
+		270D39AD1F58C6B300F371F0 /* UserOfProtocus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserOfProtocus.h; sourceTree = "<group>"; };
+		270D39AE1F58C6B300F371F0 /* UserOfProtocus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserOfProtocus.m; sourceTree = "<group>"; };
+		270D39B01F58C7B000F371F0 /* XPSideKick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPSideKick.h; sourceTree = "<group>"; };
+		270D39B11F58C7B000F371F0 /* XPSideKick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPSideKick.m; sourceTree = "<group>"; };
+		270D39BA1F5D1CF900F371F0 /* RateTypeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateTypeHelper.m; sourceTree = "<group>"; };
+		270D39BB1F5D1CF900F371F0 /* RateTypeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateTypeHelper.h; sourceTree = "<group>"; };
 		2710BB921F51190700A43B6C /* P_ResizeResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ResizeResponder.h; sourceTree = "<group>"; };
 		2710BB931F51489100A43B6C /* P_ItemFlexibleListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ItemFlexibleListDelegate.h; sourceTree = "<group>"; };
 		2710BB941F514E8700A43B6C /* Experiments+Bravo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Experiments+Bravo.h"; sourceTree = "<group>"; };
@@ -754,6 +764,11 @@
 				272428411F42AFFF0028B22E /* House+Ass.m */,
 				2710BB941F514E8700A43B6C /* Experiments+Bravo.h */,
 				2710BB951F514E8700A43B6C /* Experiments+Bravo.m */,
+				270D39AC1F58C69500F371F0 /* Protocus.h */,
+				270D39AD1F58C6B300F371F0 /* UserOfProtocus.h */,
+				270D39AE1F58C6B300F371F0 /* UserOfProtocus.m */,
+				270D39B01F58C7B000F371F0 /* XPSideKick.h */,
+				270D39B11F58C7B000F371F0 /* XPSideKick.m */,
 			);
 			path = ObjCScriptRunner;
 			sourceTree = "<group>";
@@ -1290,6 +1305,8 @@
 				276159781F2E3B64002E8BF9 /* NotificationHelper.m */,
 				27F0D5BD1F4A3E02002DE59C /* NSNumber+Helpers.h */,
 				27F0D5BE1F4A3E02002DE59C /* NSNumber+Helpers.m */,
+				270D39BA1F5D1CF900F371F0 /* RateTypeHelper.m */,
+				270D39BB1F5D1CF900F371F0 /* RateTypeHelper.h */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1490,11 +1507,13 @@
 			files = (
 				272428421F42AFFF0028B22E /* House+Ass.m in Sources */,
 				274A37E71F145CA400F31E0F /* House.m in Sources */,
+				270D39AF1F58C6B300F371F0 /* UserOfProtocus.m in Sources */,
 				274A37D21F13280400F31E0F /* PersonThingUser.m in Sources */,
 				274A37D51F133AA200F31E0F /* Experiments.m in Sources */,
 				274A37EA1F145D2200F31E0F /* House+Things.m in Sources */,
 				274A38381F2194FD00F31E0F /* ParentMan.m in Sources */,
 				2710BB961F514E8700A43B6C /* Experiments+Bravo.m in Sources */,
+				270D39B21F58C7B000F371F0 /* XPSideKick.m in Sources */,
 				274A37CF1F1313A700F31E0F /* PersonThing.m in Sources */,
 				274A37CC1F107B7A00F31E0F /* MassPrinter.m in Sources */,
 				274A37C61F107ACF00F31E0F /* main.m in Sources */,
@@ -1595,6 +1614,7 @@
 				27B0CDE21F2BF53B005BEC75 /* HabitTransaction+CoreDataClass.m in Sources */,
 				68E260CF1D851DA500425D46 /* EditNavigationController.m in Sources */,
 				27B0CDDF1F2BF501005BEC75 /* DailySubTask+CoreDataClass.m in Sources */,
+				270D39BC1F5D1CF900F371F0 /* RateTypeHelper.m in Sources */,
 				27B0CD1C1F2BEBA9005BEC75 /* Habit+CoreDataProperties.m in Sources */,
 				27B0CDC51F2BEECD005BEC75 /* GoodTransaction+CoreDataProperties.m in Sources */,
 				686ED3BF1DB47954004EDD36 /* ZoneChoiceViewController.m in Sources */,

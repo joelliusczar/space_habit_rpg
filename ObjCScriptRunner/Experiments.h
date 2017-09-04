@@ -7,8 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Protocus.h"
+#import "UserOfProtocus.h"
 
 @interface Experiments : NSObject
+@property (assign,nonatomic) NSInteger stupidNum;
+@property (strong,nonatomic) id<Protocus> proteboat;
+@property (strong,nonatomic) UserOfProtocus *protocurious;
 +(void)dateToJSON;
 +(void)getAllIvar;
 +(void)oversizedCast;
@@ -17,4 +22,8 @@
 -(void)callBravo;
 +(void)playingWithNulls;
 +(void)orderedSetFun;
++(void)pointToDict;
++(void)moreJSON;
++(void)protoItUp;
++(void)someNotStuff;
 @end

@@ -11,6 +11,7 @@
 #import "ViewHelper.h"
 #import "NSException+SHCommonExceptions.h"
 #import "SingletonCluster.h"
+#import "SHEventInfo.h"
 
 @interface SHSpinPicker ()
 
@@ -69,9 +70,8 @@ numberOfRowsInComponent:(NSInteger)component{
 
 -(IBAction)pickerSelectBtn_press_action:(UIButton *)sender
                                forEvent:(UIEvent *)event{
-    if(self.delegate){
-        [self.delegate pickerSelection_action:self.picker forEvent:event];
-    }
+    SHEventInfo *e = [[SHEventInfo alloc] init:event withSenders:sender,self.picker,self,nil];
+    [self.delegate pickerSelection_action:e];
     [ViewHelper popViewFromFront:self];
 }
 

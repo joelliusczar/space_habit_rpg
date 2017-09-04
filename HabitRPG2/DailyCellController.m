@@ -85,14 +85,14 @@
 
 -(IBAction)completeBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
     wrapReturnVoid wrappedCall = ^void(){
-        if(self.model.sectionNum == INCOMPLETE){
-            self.model.sectionNum  = COMPLETE;
-            [self.parentDailyController completeDaily:self.model];
-        }
-        else{
-            self.model.sectionNum  = INCOMPLETE;
-            [self.parentDailyController undoCompletedDaily:self.model];
-        }
+//        if(self.model.sectionNum == INCOMPLETE){
+//            self.model.sectionNum  = COMPLETE;
+//            [self.parentDailyController completeDaily:self.model];
+//        }
+//        else{
+//            self.model.sectionNum  = INCOMPLETE;
+//            [self.parentDailyController undoCompletedDaily:self.model];
+//        }
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }

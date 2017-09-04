@@ -8,12 +8,16 @@
 
 #import "DailyEditResponder.h"
 #import "Interceptor.h"
+#import "SHEventInfo.h"
 
 @implementation DailyEditResponder
 
 
 -(DailyEditControlKeep *)editControls{
-    if(nil==_editControls){}
+    if(nil==_editControls){
+        _editControls = [[DailyEditControlKeep alloc] init];
+        _editControls.delegate = self;
+    }
     return _editControls;
 }
 
@@ -28,27 +32,30 @@
 }
 
 
--(void)noteView:(NoteView *)noteView textDidChange:(UITextView *)textView{
+-(void)textDidChange:(SHEventInfo *)eventInfo{
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
+        UITextView *textView = (UITextView *)eventInfo.senderStack[0];
         [self.daily noteText_w:textView.text];
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
--(void)rateStep_valueChanged_action:(UIStepper *)sender forEvent:(UIEvent *)event {
+-(void)rateStep_valueChanged_action:(SHEventInfo *)eventInfo {
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
+        UIStepper *sender = (UIStepper *)eventInfo.senderStack[0];
         sender.value = [self.daily rate_w:(int)sender.value];
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
--(void)activeDaySwitch_press_action:(CustomSwitch *)sender forEvent:(UIEvent *)event{
+-(void)activeDaySwitch_press_action:(SHEventInfo *)eventInfo{
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
+        CustomSwitch *sender = (CustomSwitch *)eventInfo.senderStack[0];
         if(sender.isOn){
             //I'm okay with casting the long to int because I only need the
             //first seven bits anyway
@@ -62,7 +69,7 @@
 }
 
 
--(void)streakResetBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
+-(void)streakResetBtn_press_action:(SHEventInfo *)eventInfo {
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
         [self.daily streak_w:0];
@@ -71,10 +78,11 @@
 }
 
 
--(void)importanceSlider:(ImportanceSliderView *)sliderView
-sld_valueChanged_action:(UISlider *)sender forEvent:(UIEvent *)event{
+-(void)sld_valueChanged_action:(SHEventInfo *)eventInfo{
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
+        UISlider *sender = (UISlider *)eventInfo.senderStack[0];
+        ImportanceSliderView *sliderView = (ImportanceSliderView *)eventInfo.senderStack[1];
         int sliderValue = (int)sender.value;
         if(sliderView == self.editControls.urgencySlider){
             sliderView.importanceSld.value = [self.daily urgency_w:sliderValue];

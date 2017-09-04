@@ -7,11 +7,13 @@
 //
 
 #import "AddItemsFooter.h"
+#import "SHEventInfo.h"
 
 @implementation AddItemsFooter
 
 -(IBAction)addItemBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
-    [self.delegate addItemBtn_press_action:sender forEvent:event];
+    SHEventInfo *e = eventInfoCopy;
+    [self.delegate addItemBtn_press_action:e];
 }
 
 @end

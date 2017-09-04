@@ -9,6 +9,7 @@
 #import "ImportanceSliderView.h"
 #import "P_CommonDelegate.h"
 #import "NSObject+Helper.h"
+#import "SHEventInfo.h"
 
 @interface ImportanceSliderView ()
 
@@ -16,15 +17,11 @@
 
 @implementation ImportanceSliderView
 
-+(CGRect)naturalFrame{
-    return CGRectMake(0,0,297,152);
-}
-
 
 -(IBAction)importanceSld_valueChanged_action:(UISlider *)sender
                                     forEvent:(UIEvent *)event {
-        [self.delegate importanceSlider:self sld_valueChanged_action:sender
-                                                forEvent:event];
+    SHEventInfo *e = eventInfoCopy;
+    [self.delegate sld_valueChanged_action:e];
 }
 
 

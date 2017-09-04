@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "P_CommonDelegate.h"
+#import "SHEventInfo.h"
 
 @class ImportanceSliderView;
 
 @protocol P_ImportanceSlidersDelegate <NSObject,P_CommonDelegate>
--(void)importanceSlider:(ImportanceSliderView *)sliderView sld_valueChanged_action:(UISlider *)sender
-                             forEvent:(UIEvent *)event;
+-(void)sld_valueChanged_action:(SHEventInfo *)eventInfo;
 
 @end

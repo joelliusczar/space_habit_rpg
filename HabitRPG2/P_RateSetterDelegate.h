@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "P_CommonDelegate.h"
 #import "CustomSwitch.h"
+#import "SHEventInfo.h"
 
 @protocol P_RateSetterDelegate <NSObject,P_CommonDelegate>
--(void)rateStep_valueChanged_action:(UIStepper *)sender forEvent:(UIEvent *)event;
+-(void)rateStep_valueChanged_action:(SHEventInfo *)eventInfo;
 @end

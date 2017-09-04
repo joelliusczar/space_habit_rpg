@@ -161,8 +161,6 @@ static NSString *const EntityName = @"Daily";
     else{
         d = self.completeItems.fetchedObjects[indexPath.row];
     }
-    d.rowNum = indexPath.row;
-    d.sectionNum = indexPath.section;
     [cell setupCell:d AndRow:indexPath];
 
     return cell;

@@ -7,15 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SHEventInfo.h"
 
 @class ItemFlexibleListView;
 
 @protocol P_ItemFlexibleListDelegate <NSObject>
 @optional
--(void)pickerSelection_action:(UIPickerView *)picker
-          onItemFlexibleList:(ItemFlexibleListView *)itemFlexibleList
-                     forEvent:(UIEvent *)event;
--(void)addItemBtn_press_action:(UIButton *)sender
-            onItemFlexibleList:(ItemFlexibleListView *)itemFlexibleList
-                      forEvent:(UIEvent *)event;
+-(void)pickerSelection_action:(SHEventInfo *)eventInfo;
+-(void)addItemBtn_press_action:(SHEventInfo *)eventInfo;
+-(void)switchInverseBtn_press_action:(SHEventInfo *)eventInfo;
 @end

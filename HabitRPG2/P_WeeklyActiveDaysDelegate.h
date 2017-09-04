@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "CustomSwitch.h"
 #import "P_CommonDelegate.h"
+#import "SHEventInfo.h"
 
 @protocol P_WeeklyActiveDaysDelegate <NSObject,P_CommonDelegate>
--(void)activeDaySwitch_press_action:(CustomSwitch *)sender forEvent:(UIEvent *)event;
+-(void)activeDaySwitch_press_action:(SHEventInfo *)eventInfo;
 @end

@@ -8,6 +8,10 @@
 
 #import "NSObject+Helper.h"
 
+
+typedef void (*eventCaller)(id,SEL,SHEventInfo *);
+typedef void (*voidCaller)(id,SEL);
+
 @implementation NSObject (Helper)
 
 
@@ -25,4 +29,7 @@
     return [[NSBundle bundleForClass:self.class]
             loadNibNamed:nibName owner:self options:nil][0];
 }
+
+
+
 @end

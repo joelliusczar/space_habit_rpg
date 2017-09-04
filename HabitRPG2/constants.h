@@ -6,8 +6,6 @@
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
-
-
 #import <Foundation/Foundation.h>
 @import CoreGraphics;
 
@@ -21,14 +19,16 @@ typedef NS_ENUM(NSInteger,enviromentCode) {
     ,ENV_UTEST = 1<<1
 };
 
-typedef NS_ENUM(NSInteger,RateType){
+#define INVERSE_RATE_MODIFIER (1<<7)
+
+typedef NS_ENUM(int,RateType){
     DAILY_RATE = 0
     ,WEEKLY_RATE = 1<<0
     ,MONTHLY_RATE = 1<<1
     ,YEARLY_RATE = 1<<2
-    ,WEEKLY_RATE_INVERSE = 1<<3
-    ,MONTHLY_RATE_INVERSE = 1<<4
-    ,YEARLY_RATE_INVERSE = 1<<5
+    ,WEEKLY_RATE_INVERSE = WEEKLY_RATE|INVERSE_RATE_MODIFIER
+    ,MONTHLY_RATE_INVERSE = MONTHLY_RATE|INVERSE_RATE_MODIFIER
+    ,YEARLY_RATE_INVERSE = YEARLY_RATE|INVERSE_RATE_MODIFIER
 };
 
 typedef NS_ENUM(NSInteger,hourFormatType){

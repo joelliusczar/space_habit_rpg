@@ -26,6 +26,7 @@ SHView
 @property (weak,nonatomic) IBOutlet UIButton  * _Nullable openRateTypeBtn;
 @property (weak,nonatomic) IBOutlet UIView  * _Nullable activeDaysControlContainer;
 @property (weak,nonatomic) IBOutlet RateSetterView * _Nullable rateSetter;
+@property (weak,nonatomic) IBOutlet UIButton * _Nullable invertRateTypeBtn;
 @property (strong,nonatomic) MonthlyActiveDays * _Nullable monthlyActiveDays;
 @property (strong,nonatomic) WeeklyActiveDays * _Nullable weeklyActiveDays;
 @property (strong,nonatomic) YearlyActiveDays * _Nullable yearlyActiveDays;

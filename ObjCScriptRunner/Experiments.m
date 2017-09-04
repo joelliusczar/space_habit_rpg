@@ -11,6 +11,9 @@
 #import "House.h"
 #import "House+Ass.h"
 #import "Experiments+Bravo.h"
+#import "UserOfProtocus.h"
+#import "XPSideKick.h"
+
 
 
 @implementation Experiments
@@ -85,6 +88,64 @@
     NSLog(@"%ld",oSet.count);
     NSOrderedSet *oSet2 = [[NSOrderedSet alloc] initWithObjects:h1,h2,nil];
     NSLog(@"%ld",oSet2.count);
+}
+
+
++(void)pointToDict{
+    House *h = [House new];
+    h.count = 19;
+    NSDictionary *dict = [NSDictionary dictionaryWithObject:h forKey:@"house"];
+    House *h2 = (House *)dict[@"house"];
+    h2.count = 23;
+    NSLog(@"%ld",h.count);
+}
+
+
++(NSMutableDictionary *)jsonStringToDict:(NSString *)jsonStr{
+    NSError *err;
+    NSData *jsonData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSMutableDictionary *jsonDict = [NSJSONSerialization
+                                     JSONObjectWithData:jsonData
+                                     options:NSJSONReadingMutableContainers error:&err];
+    return jsonDict;
+}
+
++(void)moreJSON{
+    NSString* ALL_DAYS_JSON = @"{\"daysOfWeek\":{\"SUN\":1,\"MON\":1,\"TUE\":1,"
+    "\"WED\":1,\"THR\":1,\"SAT\":1},\"daysOfMonth\":[],\"daysOfYear\":[],"
+    "\"daysOfWeek_INV\":[],\"daysOfMonth_INV\":[],\"daysOfYear_INV\":[]}";
+    id dict = [self jsonStringToDict:ALL_DAYS_JSON];
+    NSMutableArray* arr = dict[@"daysOfMonth"];
+    NSDictionary *small = [NSDictionary dictionaryWithObject:@4 forKey:@"ordinal"];
+    NSDictionary *small2 = [NSDictionary dictionaryWithObject:@6 forKey:@"ordinal"];
+    [arr addObject:small];
+    [arr addObject:small2];
+}
+
++(void)protoItUp{
+    Experiments *exp = [[Experiments alloc] init];
+    [exp.proteboat optionalius];
+    [exp.proteboat usedAnyway];
+    exp.proteboat = [XPSideKick proteThatBoat];
+    [exp.proteboat usedAnyway];
+    if([exp.proteboat respondsToSelector:@selector(optionalius)]){
+        [exp.proteboat optionalius];
+    }
+    
+}
+
++(void)someNotStuff{
+    int a = 6;
+    int b = 4;
+    int c = 1;
+    int d = a&b;
+    d = !(a&b);
+    d = a&c;
+    d = !(a&c);
+    int e = 7;
+    int f = 0;
+    int g = !e;
+    g = !f;
 }
 
 

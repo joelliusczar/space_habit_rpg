@@ -14,6 +14,7 @@
 #import "UIView+Helpers.h"
 #import "UIScrollView+ScrollAdjusters.h"
 #import "ViewHelper.h"
+#import "SHEventInfo.h"
 
 @interface ItemFlexibleListView()
 @end
@@ -45,15 +46,15 @@
     if(self.itemTbl.frame.size.height < SUB_TABLE_MAX_HEIGHT){
         [self.itemTbl resizeHeightByOffset:change];
         [self resizeHeightByOffset:change];
-        [self.resizeResponder respondToHeightResize:change];
+        [self respondToHeightResize:change];
     }
 }
 
 
 -(void)scrollRemindersListByOffset:(CGFloat)offset{
     //auto scroll so that reminders remains centered
-    [self.resizeResponder scrollByOffset:offset];
-    [self.resizeResponder scrollVisibleToControl:self];
+    [self scrollByOffset:offset];
+    [self scrollVisibleToControl:self];
     [self scrollItemTblToLastRow];
 }
 
@@ -91,9 +92,9 @@
     //need the begin/end update lines because buttons will get covered by
     //invisble stuff and not respond
     //also, apparently they tell the table to refresh the heights
-    [self.resizeResponder beginUpdate];
+    [self beginUpdate];
     [self resizeItemListHeightByChange:SUB_TABLE_CELL_HEIGHT];
-    [self.resizeResponder endUpdate];
+    [self endUpdate];
     [self scrollRemindersListByOffset:SUB_TABLE_CELL_HEIGHT];
 }
 
@@ -110,18 +111,72 @@ numberOfRowsInSection:(NSInteger)section{
 }
 
 
--(void)addItemBtn_press_action:(UIButton *)sender
-                      forEvent:(UIEvent *)event{
-    [self.delegate addItemBtn_press_action:sender
-                        onItemFlexibleList:self forEvent:event];
+-(void)addItemBtn_press_action:(SHEventInfo *)eventInfo{
+    [eventInfo.senderStack addObject:self];
+    SEL delegateSel = @selector(addItemBtn_press_action:);
+    if([self.delegate respondsToSelector:delegateSel]){
+        [self.delegate addItemBtn_press_action:eventInfo];
+    }
 }
 
 
--(void)pickerSelection_action:(UIPickerView *)picker forEvent:(UIEvent *)event{
-        [self.delegate pickerSelection_action:picker
-                           onItemFlexibleList:self forEvent:event];
+-(void)pickerSelection_action:(SHEventInfo *)eventInfo{
+    [eventInfo.senderStack addObject:self];
+    SEL delegateSel = @selector(pickerSelection_action:);
+    if([self.delegate respondsToSelector:delegateSel]){
+        [self.delegate pickerSelection_action:eventInfo];
+    }
 }
 
+
+-(void)beginUpdate{
+    SEL delegateSel = @selector(beginUpdate);
+    if([self.resizeResponder respondsToSelector:delegateSel]){
+        [self.resizeResponder beginUpdate];
+    }
+}
+
+
+-(void)endUpdate{
+    SEL delegateSel = @selector(endUpdate);
+    if([self.resizeResponder respondsToSelector:delegateSel]){
+        [self.resizeResponder endUpdate];
+    }
+}
+
+-(void)respondToHeightResize:(CGFloat)change{
+    SEL delegateSel = @selector(respondToHeightResize:);
+    if([self.resizeResponder respondsToSelector:delegateSel]){
+        [self.resizeResponder respondToHeightResize:change];
+    }
+}
+
+-(void)scrollByOffset:(CGFloat)offset{
+    SEL delegateSel = @selector(scrollByOffset:);
+    if([self.resizeResponder respondsToSelector:delegateSel]){
+        [self.resizeResponder scrollByOffset:offset];
+    }
+}
+
+
+-(void)scrollVisibleToControl:(SHView *)control{
+    SEL delegateSel = @selector(scrollVisibleToControl:);
+    if([self.resizeResponder respondsToSelector:delegateSel]){
+        [self.resizeResponder scrollVisibleToControl:control];
+    }
+}
+
+
+-(void)hideKeyboard{
+    if([self.resizeResponder respondsToSelector:@selector(hideKeyboard)]){
+        [self.resizeResponder hideKeyboard];
+    }
+}
+
+
+-(void)refreshTable{
+    [self.itemTbl reloadData];
+}
 
 -(NSInteger)backendListCount{
     @throw [NSException abstractException];

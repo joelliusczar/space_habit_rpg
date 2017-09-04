@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SHEventInfo.h"
 
 @protocol P_MonthComponentSpinPickerDelegate <NSObject>
--(void)pickerSelection_action:(UIPickerView *)sender
-                     forEvent:(UIEvent *)event;
+-(void)pickerSelection_action:(SHEventInfo *)eventInfo;
 @end

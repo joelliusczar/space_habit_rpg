@@ -13,11 +13,10 @@
 #import "CommonUtilities.h"
 #import "Reminder+CoreDataClass.h"
 #import "DailySubTask+CoreDataClass.h"
+#import "constants.h"
 
 @implementation Daily
 
-@synthesize rowNum = _rowNum;
-@synthesize sectionNum = _sectionNum;
 
 @synthesize activeDaysDict = _activeDaysDict;
 -(NSMutableDictionary *)activeDaysDict{
@@ -26,6 +25,34 @@
     }
     return _activeDaysDict;
 }
+
+-(NSMutableArray<NSDictionary<NSString *,NSNumber *> *> *)inUseActiveDays{
+    NSString *rateTypeKey = [self getRateTypeKey:self.rateType];
+    return self.activeDaysDict[rateTypeKey];
+}
+
+
+-(NSString *)getRateTypeKey:(RateType)rateType{
+    switch(rateType){
+        case WEEKLY_RATE:
+            return @"daysOfWeek";
+        case WEEKLY_RATE_INVERSE:
+            return @"daysOfWeek_INV";
+        case MONTHLY_RATE:
+            return @"daysOfMonth";
+        case MONTHLY_RATE_INVERSE:
+            return @"daysOfMonth_INV";
+        case YEARLY_RATE:
+            return @"daysOfYear";
+        case YEARLY_RATE_INVERSE:
+            return @"daysOfYear_INV";
+        case DAILY_RATE:
+        DEFAULT:
+            return @"";
+    }
+}
+
+
 
 -(NSString *)name_w:(NSString *)name{
     self.dailyName = name;
@@ -190,6 +217,21 @@ int checkImportanceRange(int importance){
 
 -(void)removeReminder:(Reminder *)reminder{
     [self removeDaily_remindObject:reminder];
+}
+
+
+//This method is not really necessary but using it will help my flow in
+//viewDidLoad so that I didn't have a weird flag in there denoting that the
+//model already existed. Besides, this makes things sorta more explicit
+-(void)setupDefaults{
+    self.activeDays = ALL_DAYS_JSON;
+    self.rateType = WEEKLY_RATE;
+    self.dailyName = @"";
+    self.difficulty = 3;
+    self.urgency = 3;
+    self.note = @"";
+    self.rate = 1;
+    self.streakLength = 0;
 }
 
 @end

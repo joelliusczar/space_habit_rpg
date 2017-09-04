@@ -134,8 +134,7 @@
 
 -(void)background_tap_action:(UITapGestureRecognizer *)sender {
     wrapReturnVoid wrappedCall = ^void(){
-        [self.view endEditing:YES]; //tell the keyboard to go away
-        
+        [self hideKeyboard];
         if(sender.view == self.background){
             [self.editingScreen unsaved_closing_action];
             [ViewHelper popViewFromFront:self];
@@ -201,6 +200,11 @@
 
 -(void)endUpdate{
     [self.editingScreen.controlsTbl endUpdates];
+}
+
+
+-(void)hideKeyboard{
+    [self.view endEditing:YES];
 }
 
 

@@ -12,8 +12,6 @@
 #import "EditNavigationController.h"
 
 @interface DailyEditControlKeep()
-@property (strong,nonatomic) DailyEditResponder *delegate;
-@property (weak,nonatomic) EditNavigationController *resizeResponder;
 @end
 
 @implementation DailyEditControlKeep
@@ -91,14 +89,6 @@
                         ,nil];
     }
     return _allControls;
-}
-
--(instancetype)initWith:(DailyEditResponder *)delegate and:(EditNavigationController *)resizeResponder{
-    if(self = [super init]){
-        _delegate = delegate;
-        _resizeResponder = resizeResponder;
-    }
-    return self;
 }
 
 -(void)dealloc{

@@ -8,6 +8,7 @@
 
 #import "NoteView.h"
 #import "NSObject+Helper.h"
+#import "SHEventInfo.h"
 
 
 @interface NoteView ()
@@ -15,14 +16,10 @@
 
 @implementation NoteView
 
-+(CGRect)naturalFrame{
-    return CGRectMake(0,0,258,157);
-}
-
 
 -(void)textViewDidChange:(UITextView *)textView{
-    [self.delegate noteView:self textDidChange:textView];
-
+    SHEventInfo *e = [[SHEventInfo alloc]init:nil withSenders:textView,self,nil];
+    [self.delegate textDidChange:e];
 }
 
 @end
