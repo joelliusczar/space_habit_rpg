@@ -41,12 +41,12 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView
         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ListItemCell *cell = [ListItemCell getListItemCell:tableView];
-    NSDictionary<NSString *,NSNumber *> *monthItemDict = self.daily.inUseActiveDays[indexPath.row];
+    RateValueItemDict *monthItemDict = self.daily.inUseActiveDays[indexPath.row];
     NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
     numFormatter.locale = self.utilityStore.inUseLocale;
     numFormatter.numberStyle = NSNumberFormatterOrdinalStyle;
-    NSString *ordinal = [numFormatter stringFromNumber:[monthItemDict[@"ordinal"] plusInteger:1]];
-    NSString *dayOfWeek = self.utilityStore.inUseCalendar.weekdaySymbols[monthItemDict[@"dayOfWeek"].integerValue];
+    NSString *ordinal = [numFormatter stringFromNumber:[monthItemDict[ORDINAL_WEEK_KEY] plusInteger:1]];
+    NSString *dayOfWeek = self.utilityStore.inUseCalendar.weekdaySymbols[monthItemDict[DAY_OF_WEEK_KEY].integerValue];
     cell.lblRowDesc.text = [NSString stringWithFormat:@"%@ %@",ordinal,dayOfWeek];
     return cell;
 }

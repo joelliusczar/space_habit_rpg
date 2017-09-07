@@ -35,9 +35,9 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView
         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ListItemCell *cell = [ListItemCell getListItemCell:tableView];
-    NSDictionary<NSString *,NSNumber *> *yearItemDict = self.daily.inUseActiveDays[indexPath.row];
-    NSString *month = self.utilityStore.inUseCalendar.monthSymbols[yearItemDict[@"month"].integerValue];
-    cell.lblRowDesc.text = [NSString stringWithFormat:@"%@ %@",month,yearItemDict[@"day"]];
+    RateValueItemDict *yearItemDict = self.daily.inUseActiveDays[indexPath.row];
+    NSString *month = self.utilityStore.inUseCalendar.monthSymbols[yearItemDict[MONTH_KEY].integerValue];
+    cell.lblRowDesc.text = [NSString stringWithFormat:@"%@ %@",month,yearItemDict[DAY_OF_MONTH_KEY]];
     return cell;
 }
 

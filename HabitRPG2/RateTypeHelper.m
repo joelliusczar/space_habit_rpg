@@ -58,12 +58,12 @@ RateType setRateTypeInversion(RateType rateType,BOOL isInverse){
 
 
 BOOL areMonthlyRateValueItemsEqual(RateValueItemDict *a,RateValueItemDict *b){
-    return a[ORDINAL_KEY].integerValue == b[ORDINAL_KEY].integerValue &&
-            a[DAYS_OF_WEEK_KEY].integerValue == b[DAYS_OF_WEEK_KEY].integerValue;
+    return a[ORDINAL_WEEK_KEY].integerValue == b[ORDINAL_WEEK_KEY].integerValue &&
+            a[DAY_OF_WEEK_KEY].integerValue == b[DAY_OF_WEEK_KEY].integerValue;
 }
 
 
 BOOL areYearlyRateValueItemsEqual(RateValueItemDict *a,RateValueItemDict *b){
     return a[MONTH_KEY].integerValue == b[MONTH_KEY].integerValue &&
-            a[DAYS_OF_MONTH_KEY].integerValue == b[DAYS_OF_MONTH_KEY].integerValue;
+            a[DAY_OF_MONTH_KEY].integerValue == b[DAY_OF_MONTH_KEY].integerValue;
 }

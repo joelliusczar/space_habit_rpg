@@ -239,7 +239,7 @@
 		270D39AE1F58C6B300F371F0 /* UserOfProtocus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserOfProtocus.m; sourceTree = "<group>"; };
 		270D39B01F58C7B000F371F0 /* XPSideKick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPSideKick.h; sourceTree = "<group>"; };
 		270D39B11F58C7B000F371F0 /* XPSideKick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPSideKick.m; sourceTree = "<group>"; };
-		270D39BA1F5D1CF900F371F0 /* RateTypeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateTypeHelper.m; sourceTree = "<group>"; };
+		270D39BA1F5D1CF900F371F0 /* RateTypeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RateTypeHelper.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		270D39BB1F5D1CF900F371F0 /* RateTypeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateTypeHelper.h; sourceTree = "<group>"; };
 		270D39BD1F5E067400F371F0 /* ActiveDaysTriKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveDaysTriKey.h; sourceTree = "<group>"; };
 		270D39BE1F5E067400F371F0 /* ActiveDaysTriKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveDaysTriKey.m; sourceTree = "<group>"; };
@@ -280,7 +280,7 @@
 		272596371F32D6C1006EECD2 /* SHSpinPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSpinPicker.h; sourceTree = "<group>"; };
 		272596381F32D6C1006EECD2 /* SHSpinPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSpinPicker.m; sourceTree = "<group>"; };
 		2725963A1F32D81F006EECD2 /* MonthPartPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthPartPicker.h; sourceTree = "<group>"; };
-		2725963B1F32D81F006EECD2 /* MonthPartPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthPartPicker.m; sourceTree = "<group>"; };
+		2725963B1F32D81F006EECD2 /* MonthPartPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MonthPartPicker.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		273782361EE4D1B200EA5B1D /* FrequentCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrequentCase.h; sourceTree = "<group>"; };
 		273782371EE4D1B200EA5B1D /* FrequentCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrequentCase.m; sourceTree = "<group>"; };
 		2737823A1EE4DB9C00EA5B1D /* Model 19.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 19.xcdatamodel"; sourceTree = "<group>"; };
@@ -403,7 +403,7 @@
 		27A559B41F5E329B00C915E6 /* Experiments+Charlie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Experiments+Charlie.h"; sourceTree = "<group>"; };
 		27A559B51F5E329B00C915E6 /* Experiments+Charlie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Experiments+Charlie.m"; sourceTree = "<group>"; };
 		27A559B71F5E334500C915E6 /* Daily+ActiveDays.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Daily+ActiveDays.h"; sourceTree = "<group>"; };
-		27A559B81F5E334500C915E6 /* Daily+ActiveDays.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Daily+ActiveDays.m"; sourceTree = "<group>"; };
+		27A559B81F5E334500C915E6 /* Daily+ActiveDays.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "Daily+ActiveDays.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		27A559BA1F5E5F3000C915E6 /* NSMutableArray+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Helper.h"; sourceTree = "<group>"; };
 		27A559BB1F5E5F3000C915E6 /* NSMutableArray+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Helper.m"; sourceTree = "<group>"; };
 		27AE66541E8720F9000F31BD /* CentralViewControllerP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralViewControllerP.h; sourceTree = "<group>"; };
@@ -520,7 +520,7 @@
 		27E89C9C1EF5FCD5009B7474 /* ImportanceSliderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImportanceSliderView.xib; sourceTree = "<group>"; };
 		27E89C9F1EF600D9009B7474 /* P_ImportanceSlidersDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ImportanceSlidersDelegate.h; sourceTree = "<group>"; };
 		27F0D5B21F450056002DE59C /* YearlyActiveDays.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearlyActiveDays.h; sourceTree = "<group>"; };
-		27F0D5B31F450056002DE59C /* YearlyActiveDays.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearlyActiveDays.m; sourceTree = "<group>"; };
+		27F0D5B31F450056002DE59C /* YearlyActiveDays.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = YearlyActiveDays.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		27F0D5B61F4500CB002DE59C /* YearPartPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearPartPicker.h; sourceTree = "<group>"; };
 		27F0D5B71F4500CB002DE59C /* YearPartPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearPartPicker.m; sourceTree = "<group>"; };
 		27F0D5BD1F4A3E02002DE59C /* NSNumber+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Helpers.h"; sourceTree = "<group>"; };
@@ -549,8 +549,8 @@
 		686ED3C51DB481C4004EDD36 /* ZoneHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneHelper.h; sourceTree = "<group>"; };
 		686ED3C61DB481C4004EDD36 /* ZoneHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneHelper.m; sourceTree = "<group>"; };
 		687F01211D77CA6500C7B08B /* DailyTablesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyTablesViewController.xib; sourceTree = "<group>"; };
-		6886A47E1D8E5FD0005E12B3 /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
-		6886A47F1D8E5FD0005E12B3 /* constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = constants.m; sourceTree = "<group>"; };
+		6886A47E1D8E5FD0005E12B3 /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = constants.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		6886A47F1D8E5FD0005E12B3 /* constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = constants.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		6886A4851D8F1C49005E12B3 /* unchecked_task.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked_task.png; sourceTree = "<group>"; };
 		6886A48A1D8F6EA6005E12B3 /* switch_unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_unchecked.png; sourceTree = "<group>"; };
 		6886A48C1D8F6EB3005E12B3 /* switch_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_checked.png; sourceTree = "<group>"; };

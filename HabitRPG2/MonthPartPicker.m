@@ -15,7 +15,7 @@
 
 @end
 
-const NSInteger ORDINAL_COLUMN = 0;
+const NSInteger ORDINAL_WEEK_COLUMN = 0;
 const NSInteger DAY_COLUMN = 1;
 
 @implementation MonthPartPicker
@@ -50,7 +50,7 @@ numberOfRowsInComponent:(NSInteger)component{
             titleForRow:(NSInteger)row
            forComponent:(NSInteger)component{
     
-    if(component==ORDINAL_COLUMN){
+    if(component==ORDINAL_WEEK_COLUMN){
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         formatter.locale = self.utilityStore.inUseLocale;
         formatter.numberStyle = NSNumberFormatterOrdinalStyle;
@@ -62,7 +62,7 @@ numberOfRowsInComponent:(NSInteger)component{
 
 
 -(CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component{
-    if(component==ORDINAL_COLUMN){
+    if(component==ORDINAL_WEEK_COLUMN){
         return 50;
     }
     return 150;

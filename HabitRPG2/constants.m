@@ -45,7 +45,8 @@ CGFloat const EDIT_SCREEN_TOP_CONTROL_HEIGHT = 60;
 NSString * const NOTIFY_CAT_ID = @"SHReminder";
 NSString* const ALL_DAYS_JSON = @"{\"daysOfWeek\":[{\"SUN\":1,\"MON\":1,\"TUE\":1,"
 "\"WED\":1,\"THR\":1,\"SAT\":1}],\"daysOfMonth\":[],\"daysOfYear\":[],"
-"\"daysOfWeek_INV\":[],\"daysOfMonth_INV\":[],\"daysOfYear_INV\":[]}";
+"\"daysOfWeek_INV\":[{\"SUN\":0,\"MON\":0,\"TUE\":0,"
+"\"WED\":0,\"THR\":0,\"SAT\":0}],\"daysOfMonth_INV\":[],\"daysOfYear_INV\":[]}";
 
 CGFloat const SUB_TABLE_CELL_HEIGHT = 44;
 NSInteger const SUB_TABLE_MAX_ROWS = 4;
@@ -79,7 +80,7 @@ int const AM_ROW = 0;
 int const PM_ROW = 1;
 
 
-NSString* const ORDINAL_KEY = @"ORDINAL";
-NSString* const DAYS_OF_WEEK_KEY = @"DAYS_OF_WEEK";
+NSString* const ORDINAL_WEEK_KEY = @"ORDINAL_WEEK";
+NSString* const DAY_OF_WEEK_KEY = @"DAY_OF_WEEK";
 NSString* const MONTH_KEY = @"MONTH";
-NSString* const DAYS_OF_MONTH_KEY = @"DAYS_OF_MONTH";
+NSString* const DAY_OF_MONTH_KEY = @"DAY_OF_MONTH";

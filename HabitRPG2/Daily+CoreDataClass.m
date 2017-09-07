@@ -33,7 +33,7 @@
 }
 
 
--(NSMutableArray<NSDictionary<NSString *,NSNumber *> *> *)inUseActiveDays{
+-(NSMutableArray<RateValueItemDict *> *)inUseActiveDays{
     return [self getActiveDaysForRateType:self.rateType];
 }
 

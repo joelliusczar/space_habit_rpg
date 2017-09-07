@@ -15,11 +15,11 @@
 
 bestMatchPredicate monthlyBestMatch = ^BOOL(RateValueItemDict *a,RateValueItemDict *b){
     
-    NSInteger ordinalA = a[ORDINAL_KEY].integerValue;
-    NSInteger ordinalB = b[ORDINAL_KEY].integerValue;
+    NSInteger ordinalA = a[ORDINAL_WEEK_KEY].integerValue;
+    NSInteger ordinalB = b[ORDINAL_WEEK_KEY].integerValue;
     
-    NSInteger dayOfWeekA = a[DAYS_OF_WEEK_KEY].integerValue;
-    NSInteger dayOfWeekB = b[DAYS_OF_WEEK_KEY].integerValue;
+    NSInteger dayOfWeekA = a[DAY_OF_WEEK_KEY].integerValue;
+    NSInteger dayOfWeekB = b[DAY_OF_WEEK_KEY].integerValue;
     
     return ordinalA < ordinalB || (ordinalA == ordinalB && dayOfWeekA <= dayOfWeekB);
 };
@@ -30,8 +30,8 @@ bestMatchPredicate yearlyBestMatch = ^BOOL(RateValueItemDict *a,RateValueItemDic
     NSInteger monthA = a[MONTH_KEY].integerValue;
     NSInteger monthB = b[MONTH_KEY].integerValue;
     
-    NSInteger dayOfMonthA = a[DAYS_OF_MONTH_KEY].integerValue;
-    NSInteger dayOfMonthB = b[DAYS_OF_MONTH_KEY].integerValue;
+    NSInteger dayOfMonthA = a[DAY_OF_MONTH_KEY].integerValue;
+    NSInteger dayOfMonthB = b[DAY_OF_MONTH_KEY].integerValue;
     
     return monthA < monthB || (monthA == monthB && dayOfMonthA <= dayOfMonthB);
 };
@@ -96,12 +96,16 @@ bestMatchPredicate yearlyBestMatch = ^BOOL(RateValueItemDict *a,RateValueItemDic
 -(NSInteger)addMonthlyItem:(BOOL)isInverse ordinal:(NSInteger)ordinal dayOfWeekNum:(NSInteger)weekdayNum{
 
     RateValueItemDict *monthlyItem = [NSDictionary dictionaryWithObjectsAndKeys:
-                                 ORDINAL_KEY,[NSNumber numberWithInteger:ordinal]
-                                 ,DAYS_OF_WEEK_KEY,[NSNumber numberWithInteger:weekdayNum]
+                                 [NSNumber numberWithInteger:ordinal],ORDINAL_WEEK_KEY
+                                 ,[NSNumber numberWithInteger:weekdayNum],DAY_OF_WEEK_KEY
                                  ,nil];
     RateType rateType = setRateTypeInversion(MONTHLY_RATE,isInverse);
     NSMutableArray<RateValueItemDict *> *activeDays = [self getActiveDaysForRateType:rateType];
     NSInteger index = [activeDays findPlaceFor:monthlyItem whereBestFits:monthlyBestMatch];
+    if(index == activeDays.count){
+        [activeDays addObject:monthlyItem];
+        return index;
+    }
     if(!areMonthlyRateValueItemsEqual(monthlyItem,activeDays[index])){
         [activeDays insertObject:monthlyItem atIndex:index];
         return index;
@@ -113,12 +117,16 @@ bestMatchPredicate yearlyBestMatch = ^BOOL(RateValueItemDict *a,RateValueItemDic
 -(NSInteger)addYearlyItem:(BOOL)isInverse monthNum:(NSInteger)monthNum dayOfMonth:(NSInteger)monthDay{
     
     RateValueItemDict *yearlyItem = [NSDictionary dictionaryWithObjectsAndKeys:
-                                 MONTH_KEY,[NSNumber numberWithInteger:monthNum]
-                                 ,DAYS_OF_MONTH_KEY,[NSNumber numberWithInteger:monthDay]
+                                 [NSNumber numberWithInteger:monthNum],MONTH_KEY
+                                 ,[NSNumber numberWithInteger:monthDay],DAY_OF_MONTH_KEY
                                  ,nil];
     RateType rateType = setRateTypeInversion(YEARLY_RATE,isInverse);
     NSMutableArray<RateValueItemDict *> *activeDays = [self getActiveDaysForRateType:rateType];
     NSInteger index = [activeDays findPlaceFor:yearlyItem whereBestFits:yearlyBestMatch];
+    if(index == activeDays.count){
+        [activeDays addObject:yearlyItem];
+        return 0;
+    }
     if(!areYearlyRateValueItemsEqual(yearlyItem,activeDays[index])){
         [activeDays insertObject:yearlyItem atIndex:index];
         return index;
