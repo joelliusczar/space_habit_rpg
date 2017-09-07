@@ -11,9 +11,13 @@
 
 #include "constants.h"
 
+
 RateType extractBaseRateType(RateType rateType);
 RateType invertRateType(RateType rateType);
 BOOL isInverseRateType(RateType rateType);
 BOOL areSameBaseRateTypes(RateType a,RateType b);
-
+NSString* getRateTypeKey(RateType rateType);
+RateType setRateTypeInversion(RateType rateType,BOOL isInverse);
+BOOL areMonthlyRateValueItemsEqual(RateValueItemDict *a,RateValueItemDict *b);
+BOOL areYearlyRateValueItemsEqual(RateValueItemDict *a,RateValueItemDict *b);
 #endif /* RateTypeHelper_h */

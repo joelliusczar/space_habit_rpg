@@ -14,6 +14,7 @@
 		270D39AF1F58C6B300F371F0 /* UserOfProtocus.m in Sources */ = {isa = PBXBuildFile; fileRef = 270D39AE1F58C6B300F371F0 /* UserOfProtocus.m */; };
 		270D39B21F58C7B000F371F0 /* XPSideKick.m in Sources */ = {isa = PBXBuildFile; fileRef = 270D39B11F58C7B000F371F0 /* XPSideKick.m */; };
 		270D39BC1F5D1CF900F371F0 /* RateTypeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 270D39BA1F5D1CF900F371F0 /* RateTypeHelper.m */; };
+		270D39BF1F5E067400F371F0 /* ActiveDaysTriKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 270D39BE1F5E067400F371F0 /* ActiveDaysTriKey.m */; };
 		2710BB961F514E8700A43B6C /* Experiments+Bravo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2710BB951F514E8700A43B6C /* Experiments+Bravo.m */; };
 		2710BBC41F53150F00A43B6C /* blue_plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 2710BBC31F53150F00A43B6C /* blue_plus.png */; };
 		2710BBCA1F53CF1500A43B6C /* DailyEditResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2710BBC91F53CF1500A43B6C /* DailyEditResponder.m */; };
@@ -92,6 +93,9 @@
 		277ABF731EAD9DD7008CC239 /* probWeightsUTBig.py in Resources */ = {isa = PBXBuildFile; fileRef = 277ABF721EAD9DD7008CC239 /* probWeightsUTBig.py */; };
 		2785DCCF1F2CC21600B5C28C /* GoodTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2785DCCE1F2CC21600B5C28C /* GoodTransaction+CoreDataClass.m */; };
 		2785DCD21F2CC25F00B5C28C /* TodoTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2785DCD11F2CC25F00B5C28C /* TodoTransaction+CoreDataClass.m */; };
+		27A559B61F5E329B00C915E6 /* Experiments+Charlie.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559B51F5E329B00C915E6 /* Experiments+Charlie.m */; };
+		27A559B91F5E334500C915E6 /* Daily+ActiveDays.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559B81F5E334500C915E6 /* Daily+ActiveDays.m */; };
+		27A559BC1F5E5F3000C915E6 /* NSMutableArray+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559BB1F5E5F3000C915E6 /* NSMutableArray+Helper.m */; };
 		27AF22E71F270FBA00F7D872 /* SHControlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AF22E61F270FBA00F7D872 /* SHControlController.m */; };
 		27B0CD001F2BEB17005BEC75 /* Reminder+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CCFD1F2BEB17005BEC75 /* Reminder+CoreDataClass.m */; };
 		27B0CD011F2BEB17005BEC75 /* Reminder+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CCFF1F2BEB17005BEC75 /* Reminder+CoreDataProperties.m */; };
@@ -150,7 +154,6 @@
 		27E89C9E1EF5FCD5009B7474 /* ImportanceSliderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E89C9C1EF5FCD5009B7474 /* ImportanceSliderView.xib */; };
 		27F0D5B41F450056002DE59C /* YearlyActiveDays.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F0D5B31F450056002DE59C /* YearlyActiveDays.m */; };
 		27F0D5B81F4500CB002DE59C /* YearPartPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F0D5B71F4500CB002DE59C /* YearPartPicker.m */; };
-		27F0D5BC1F46993B002DE59C /* ItemFlexibleListView+YearMonthCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F0D5BB1F46993B002DE59C /* ItemFlexibleListView+YearMonthCommon.m */; };
 		27F0D5BF1F4A3E02002DE59C /* NSNumber+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F0D5BE1F4A3E02002DE59C /* NSNumber+Helpers.m */; };
 		27F4401C1E220097002BEDD4 /* OnlyOneEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */; };
 		686686EB1D79032200BB2D09 /* DailyCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 686686EA1D79032200BB2D09 /* DailyCellController.xib */; };
@@ -238,6 +241,8 @@
 		270D39B11F58C7B000F371F0 /* XPSideKick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPSideKick.m; sourceTree = "<group>"; };
 		270D39BA1F5D1CF900F371F0 /* RateTypeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateTypeHelper.m; sourceTree = "<group>"; };
 		270D39BB1F5D1CF900F371F0 /* RateTypeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateTypeHelper.h; sourceTree = "<group>"; };
+		270D39BD1F5E067400F371F0 /* ActiveDaysTriKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveDaysTriKey.h; sourceTree = "<group>"; };
+		270D39BE1F5E067400F371F0 /* ActiveDaysTriKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveDaysTriKey.m; sourceTree = "<group>"; };
 		2710BB921F51190700A43B6C /* P_ResizeResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ResizeResponder.h; sourceTree = "<group>"; };
 		2710BB931F51489100A43B6C /* P_ItemFlexibleListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ItemFlexibleListDelegate.h; sourceTree = "<group>"; };
 		2710BB941F514E8700A43B6C /* Experiments+Bravo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Experiments+Bravo.h"; sourceTree = "<group>"; };
@@ -395,6 +400,12 @@
 		2785DCCE1F2CC21600B5C28C /* GoodTransaction+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GoodTransaction+CoreDataClass.m"; sourceTree = "<group>"; };
 		2785DCD01F2CC25F00B5C28C /* TodoTransaction+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TodoTransaction+CoreDataClass.h"; sourceTree = "<group>"; };
 		2785DCD11F2CC25F00B5C28C /* TodoTransaction+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TodoTransaction+CoreDataClass.m"; sourceTree = "<group>"; };
+		27A559B41F5E329B00C915E6 /* Experiments+Charlie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Experiments+Charlie.h"; sourceTree = "<group>"; };
+		27A559B51F5E329B00C915E6 /* Experiments+Charlie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Experiments+Charlie.m"; sourceTree = "<group>"; };
+		27A559B71F5E334500C915E6 /* Daily+ActiveDays.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Daily+ActiveDays.h"; sourceTree = "<group>"; };
+		27A559B81F5E334500C915E6 /* Daily+ActiveDays.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Daily+ActiveDays.m"; sourceTree = "<group>"; };
+		27A559BA1F5E5F3000C915E6 /* NSMutableArray+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Helper.h"; sourceTree = "<group>"; };
+		27A559BB1F5E5F3000C915E6 /* NSMutableArray+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Helper.m"; sourceTree = "<group>"; };
 		27AE66541E8720F9000F31BD /* CentralViewControllerP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralViewControllerP.h; sourceTree = "<group>"; };
 		27AF22E51F270FBA00F7D872 /* SHControlController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHControlController.h; sourceTree = "<group>"; };
 		27AF22E61F270FBA00F7D872 /* SHControlController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHControlController.m; sourceTree = "<group>"; };
@@ -512,8 +523,6 @@
 		27F0D5B31F450056002DE59C /* YearlyActiveDays.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearlyActiveDays.m; sourceTree = "<group>"; };
 		27F0D5B61F4500CB002DE59C /* YearPartPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearPartPicker.h; sourceTree = "<group>"; };
 		27F0D5B71F4500CB002DE59C /* YearPartPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearPartPicker.m; sourceTree = "<group>"; };
-		27F0D5BA1F46993B002DE59C /* ItemFlexibleListView+YearMonthCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ItemFlexibleListView+YearMonthCommon.h"; sourceTree = "<group>"; };
-		27F0D5BB1F46993B002DE59C /* ItemFlexibleListView+YearMonthCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ItemFlexibleListView+YearMonthCommon.m"; sourceTree = "<group>"; };
 		27F0D5BD1F4A3E02002DE59C /* NSNumber+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Helpers.h"; sourceTree = "<group>"; };
 		27F0D5BE1F4A3E02002DE59C /* NSNumber+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Helpers.m"; sourceTree = "<group>"; };
 		27F0D5C01F4A4000002DE59C /* P_SHSpinPickerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_SHSpinPickerDelegate.h; sourceTree = "<group>"; };
@@ -650,6 +659,8 @@
 				27B0CDDA1F2BF4C9005BEC75 /* Daily+CoreDataClass.h */,
 				27B0CDDB1F2BF4C9005BEC75 /* Daily+CoreDataClass.m */,
 				27B0CDBC1F2BEECD005BEC75 /* Daily+CoreDataProperties.m */,
+				27A559B71F5E334500C915E6 /* Daily+ActiveDays.h */,
+				27A559B81F5E334500C915E6 /* Daily+ActiveDays.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -688,8 +699,6 @@
 				2725963B1F32D81F006EECD2 /* MonthPartPicker.m */,
 				27F0D5B61F4500CB002DE59C /* YearPartPicker.h */,
 				27F0D5B71F4500CB002DE59C /* YearPartPicker.m */,
-				27F0D5BA1F46993B002DE59C /* ItemFlexibleListView+YearMonthCommon.h */,
-				27F0D5BB1F46993B002DE59C /* ItemFlexibleListView+YearMonthCommon.m */,
 			);
 			name = ActiveDays;
 			sourceTree = "<group>";
@@ -769,6 +778,8 @@
 				270D39AE1F58C6B300F371F0 /* UserOfProtocus.m */,
 				270D39B01F58C7B000F371F0 /* XPSideKick.h */,
 				270D39B11F58C7B000F371F0 /* XPSideKick.m */,
+				27A559B41F5E329B00C915E6 /* Experiments+Charlie.h */,
+				27A559B51F5E329B00C915E6 /* Experiments+Charlie.m */,
 			);
 			path = ObjCScriptRunner;
 			sourceTree = "<group>";
@@ -1154,6 +1165,8 @@
 				274FFC491EF887DB00FAF809 /* DailyEditControlKeep.m */,
 				2710BBC81F53CF1500A43B6C /* DailyEditResponder.h */,
 				2710BBC91F53CF1500A43B6C /* DailyEditResponder.m */,
+				270D39BD1F5E067400F371F0 /* ActiveDaysTriKey.h */,
+				270D39BE1F5E067400F371F0 /* ActiveDaysTriKey.m */,
 			);
 			name = Dailies;
 			sourceTree = "<group>";
@@ -1269,6 +1282,8 @@
 			isa = PBXGroup;
 			children = (
 				277ABECA1E94A08E008CC239 /* Protocols */,
+				27A559BA1F5E5F3000C915E6 /* NSMutableArray+Helper.h */,
+				27A559BB1F5E5F3000C915E6 /* NSMutableArray+Helper.m */,
 				6886A47E1D8E5FD0005E12B3 /* constants.h */,
 				6886A47F1D8E5FD0005E12B3 /* constants.m */,
 				68BA38841D93576600CB5A76 /* CommonUtilities.h */,
@@ -1516,6 +1531,7 @@
 				270D39B21F58C7B000F371F0 /* XPSideKick.m in Sources */,
 				274A37CF1F1313A700F31E0F /* PersonThing.m in Sources */,
 				274A37CC1F107B7A00F31E0F /* MassPrinter.m in Sources */,
+				27A559B61F5E329B00C915E6 /* Experiments+Charlie.m in Sources */,
 				274A37C61F107ACF00F31E0F /* main.m in Sources */,
 				275D9F241F219850009DA715 /* ChildMan.m in Sources */,
 			);
@@ -1567,6 +1583,7 @@
 				27B0CD101F2BEB78005BEC75 /* Monster+CoreDataProperties.m in Sources */,
 				27C3C21C1F001DF300F205A6 /* ReminderListView.m in Sources */,
 				68F3FA021D74897A00840DD2 /* MenuViewController.m in Sources */,
+				27A559B91F5E334500C915E6 /* Daily+ActiveDays.m in Sources */,
 				2724282E1F4156670028B22E /* ListItemCell.m in Sources */,
 				27B0CD0F1F2BEB78005BEC75 /* Monster+CoreDataClass.m in Sources */,
 				27B0CD161F2BEB94005BEC75 /* Zone+CoreDataProperties.m in Sources */,
@@ -1623,12 +1640,12 @@
 				274A37AF1F0A083A00F31E0F /* TimeSpinPickerEventInfo.m in Sources */,
 				27C92C151E297F650025727E /* ZoneChoiceCellController.m in Sources */,
 				27B0CDE71F2C4091005BEC75 /* DailyTransaction+CoreDataClass.m in Sources */,
-				27F0D5BC1F46993B002DE59C /* ItemFlexibleListView+YearMonthCommon.m in Sources */,
 				274A37B81F0DC03100F31E0F /* NSLocale+Helper.m in Sources */,
 				27B0CD091F2BEB5D005BEC75 /* Hero+CoreDataClass.m in Sources */,
 				275FEF0D1EE45AE600AED1A2 /* Daily+DailyHelper.m in Sources */,
 				27C92C1A1E29C9F10025727E /* ZoneInfoDictionary.m in Sources */,
 				68F3F9F81D70FD3F00840DD2 /* GoodsViewController.m in Sources */,
+				270D39BF1F5E067400F371F0 /* ActiveDaysTriKey.m in Sources */,
 				271C048E1E8C9C06002221E9 /* MonsterHelper.m in Sources */,
 				27B0CD341F2BEC32005BEC75 /* ZoneTransaction+CoreDataClass.m in Sources */,
 				68F3F9E91D70EC9700840DD2 /* DailyViewController.m in Sources */,
@@ -1652,6 +1669,7 @@
 				275D9F2D1F22BAED009DA715 /* UIView+Helpers.m in Sources */,
 				27B0CD2D1F2BEC04005BEC75 /* DataInfo+CoreDataClass.m in Sources */,
 				27B0CDD61F2BEECD005BEC75 /* Settings+CoreDataProperties.m in Sources */,
+				27A559BC1F5E5F3000C915E6 /* NSMutableArray+Helper.m in Sources */,
 				276159B81F31A310002E8BF9 /* RateTypeSelector.m in Sources */,
 				27B0CD211F2BEBD4005BEC75 /* Good+CoreDataClass.m in Sources */,
 				27B0CDD51F2BEECD005BEC75 /* DailyTransaction+CoreDataProperties.m in Sources */,

@@ -11,7 +11,6 @@
 #import "ListItemCell.h"
 #import "YearPartPicker.h"
 #import "Interceptor.h"
-#import "ItemFlexibleListView+YearMonthCommon.h"
 #import "SHEventInfo.h"
 
 @interface YearlyActiveDays ()
@@ -57,10 +56,11 @@
 
 -(void)pickerSelection_action:(SHEventInfo *)eventInfo{
     wrapReturnVoid wrappedCall = ^(){
-        [self addNewItem:eventInfo.senderStack[1]
-             backendList:self.daily.inUseActiveDays
-              fieldNames:@[@"month",@"day"]];
-        [self scaleTableForAddItem];
+        UIPickerView *picker = (UIPickerView *)eventInfo.senderStack[1];
+        NSInteger row = [self.daily addYearlyItem:self.daily.isInverseRateType
+                    monthNum:[picker selectedRowInComponent:0]
+                    dayOfMonth:[picker selectedRowInComponent:1]];
+        [self scaleTableForAddItem:row];
         [eventInfo.senderStack addObject:self];
         [super pickerSelection_action:eventInfo];
     };

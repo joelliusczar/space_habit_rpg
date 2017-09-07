@@ -26,3 +26,44 @@ BOOL isInverseRateType(RateType rateType){
 BOOL areSameBaseRateTypes(RateType a,RateType b){
     return extractBaseRateType(a) == extractBaseRateType(b);
 }
+
+
+NSString* getRateTypeKey(RateType rateType){
+    switch(rateType){
+        case WEEKLY_RATE:
+            return @"daysOfWeek";
+        case WEEKLY_RATE_INVERSE:
+            return @"daysOfWeek_INV";
+        case MONTHLY_RATE:
+            return @"daysOfMonth";
+        case MONTHLY_RATE_INVERSE:
+            return @"daysOfMonth_INV";
+        case YEARLY_RATE:
+            return @"daysOfYear";
+        case YEARLY_RATE_INVERSE:
+            return @"daysOfYear_INV";
+        case DAILY_RATE:
+        DEFAULT:
+            return @"";
+    }
+}
+
+
+RateType setRateTypeInversion(RateType rateType,BOOL isInverse){
+    if(isInverse){
+        return rateType|INVERSE_RATE_MODIFIER;
+    }
+    return rateType&~INVERSE_RATE_MODIFIER;
+}
+
+
+BOOL areMonthlyRateValueItemsEqual(RateValueItemDict *a,RateValueItemDict *b){
+    return a[ORDINAL_KEY].integerValue == b[ORDINAL_KEY].integerValue &&
+            a[DAYS_OF_WEEK_KEY].integerValue == b[DAYS_OF_WEEK_KEY].integerValue;
+}
+
+
+BOOL areYearlyRateValueItemsEqual(RateValueItemDict *a,RateValueItemDict *b){
+    return a[MONTH_KEY].integerValue == b[MONTH_KEY].integerValue &&
+            a[DAYS_OF_MONTH_KEY].integerValue == b[DAYS_OF_MONTH_KEY].integerValue;
+}

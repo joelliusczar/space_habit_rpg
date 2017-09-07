@@ -149,4 +149,27 @@
 }
 
 
++(void)useImuteAsMute{
+    NSDictionary *d1 = [NSDictionary dictionaryWithObject:@"value1" forKey:@"key1"];
+    NSMutableDictionary *d2 = (NSMutableDictionary *)d1;
+    [d2 setObject:@"value2" forKey:@"key2"];
+    NSArray *a1 = [NSArray arrayWithObject:@"item1"];
+    NSMutableArray *a2 = (NSMutableArray *)a1;
+    [a2 addObject:@"item2"];
+}
+
+
++(void)insertAtLast{
+    NSMutableArray *arr = [NSMutableArray arrayWithObjects:@1,@2,@3,@4,nil];
+    [arr insertObject:@5 atIndex:4];
+    [arr insertObject:@6 atIndex:7];
+}
+
+
++(void)insertWhere{
+    NSMutableArray *arr = [NSMutableArray arrayWithObjects:@1,@2,@3,@4,nil];
+    [arr insertObject:@5 atIndex:1];
+}
+
+
 @end

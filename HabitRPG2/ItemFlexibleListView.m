@@ -83,9 +83,9 @@
 }
 
 
--(void)scaleTableForAddItem{
+-(void)scaleTableForAddItem:(NSInteger)row{
     NSIndexPath *indexPath = [NSIndexPath
-                              indexPathForRow:[self backendListCount]-1
+                              indexPathForRow:row
                               inSection:0];
     [self.itemTbl insertRowsAtIndexPaths:@[indexPath]
                         withRowAnimation:UITableViewRowAnimationFade];

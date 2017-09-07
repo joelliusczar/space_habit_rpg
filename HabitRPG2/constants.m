@@ -43,8 +43,8 @@ u_int32_t const MAX_ZONE_CHOICE_RAND_UP_BOUND = 3;
 CGFloat const ZONE_CHOICE_ROW_HEIGHT = 75;
 CGFloat const EDIT_SCREEN_TOP_CONTROL_HEIGHT = 60;
 NSString * const NOTIFY_CAT_ID = @"SHReminder";
-NSString* const ALL_DAYS_JSON = @"{\"daysOfWeek\":{\"SUN\":1,\"MON\":1,\"TUE\":1,"
-"\"WED\":1,\"THR\":1,\"SAT\":1},\"daysOfMonth\":[],\"daysOfYear\":[],"
+NSString* const ALL_DAYS_JSON = @"{\"daysOfWeek\":[{\"SUN\":1,\"MON\":1,\"TUE\":1,"
+"\"WED\":1,\"THR\":1,\"SAT\":1}],\"daysOfMonth\":[],\"daysOfYear\":[],"
 "\"daysOfWeek_INV\":[],\"daysOfMonth_INV\":[],\"daysOfYear_INV\":[]}";
 
 CGFloat const SUB_TABLE_CELL_HEIGHT = 44;
@@ -78,3 +78,8 @@ int const AM_PM_COL = 2;
 int const AM_ROW = 0;
 int const PM_ROW = 1;
 
+
+NSString* const ORDINAL_KEY = @"ORDINAL";
+NSString* const DAYS_OF_WEEK_KEY = @"DAYS_OF_WEEK";
+NSString* const MONTH_KEY = @"MONTH";
+NSString* const DAYS_OF_MONTH_KEY = @"DAYS_OF_MONTH";

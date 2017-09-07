@@ -26,4 +26,9 @@
 +(void)moreJSON;
 +(void)protoItUp;
 +(void)someNotStuff;
++(void)useImuteAsMute;
++(void)insertAtLast;
++(void)insertWhere;
 @end
+
+#import "Experiments+Charlie.h"

@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 @import CoreGraphics;
 
+#define RateValueItemDict NSDictionary<NSString *,NSNumber *>
+
 typedef NS_ENUM(NSUInteger,dailyStatus) {
     INCOMPLETE = 0
     ,COMPLETE = 1};
@@ -124,3 +126,8 @@ extern int const AM_PM_COL;
 extern int const AM_ROW;
 extern int const PM_ROW;
 
+
+extern NSString* const ORDINAL_KEY;
+extern NSString* const DAYS_OF_WEEK_KEY;
+extern NSString* const MONTH_KEY;
+extern NSString* const DAYS_OF_MONTH_KEY;

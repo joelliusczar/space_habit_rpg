@@ -14,7 +14,6 @@
 #import "MonthPartPicker.h"
 #import "ViewHelper.h"
 #import "Interceptor.h"
-#import "ItemFlexibleListView+YearMonthCommon.h"
 #import "NSNumber+Helpers.h"
 #import "SHEventInfo.h"
 
@@ -67,10 +66,11 @@
 
 -(void)pickerSelection_action:(SHEventInfo *)eventInfo{
     wrapReturnVoid wrappedCall = ^(){
-        [self addNewItem:eventInfo.senderStack[1]
-             backendList:self.daily.inUseActiveDays
-              fieldNames:@[@"ordinal",@"dayOfWeek"]];
-        [self scaleTableForAddItem];
+        UIPickerView *picker = (UIPickerView *)eventInfo.senderStack[1];
+        NSInteger row = [self.daily addMonthlyItem:self.daily.isInverseRateType
+                    ordinal:[picker selectedRowInComponent:0]
+                    dayOfWeekNum:[picker selectedRowInComponent:1]];
+        [self scaleTableForAddItem:row];
         [eventInfo.senderStack addObject:self];
         [super pickerSelection_action:eventInfo];
     };

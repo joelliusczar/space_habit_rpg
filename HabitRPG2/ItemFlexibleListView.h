@@ -31,7 +31,7 @@
 -(void)scrollRemindersListByOffset:(CGFloat)offset;
 -(void)commonSetup;
 -(void)showSHSpinPicker:(SHSpinPicker *)picker;
--(void)scaleTableForAddItem;
+-(void)scaleTableForAddItem:(NSInteger)row;
 -(void)hideKeyboard;
 -(void)refreshTable;
 @end

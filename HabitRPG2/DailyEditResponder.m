@@ -9,6 +9,7 @@
 #import "DailyEditResponder.h"
 #import "Interceptor.h"
 #import "SHEventInfo.h"
+#import "RateTypeHelper.h"
 
 @implementation DailyEditResponder
 
@@ -56,14 +57,7 @@
     wrapReturnVoid wrappedCall = ^void(){
         self.isDirty = YES;
         CustomSwitch *sender = (CustomSwitch *)eventInfo.senderStack[0];
-        if(sender.isOn){
-            //I'm okay with casting the long to int because I only need the
-            //first seven bits anyway
-            //TODO: self.modelForEditing.activeDaysHash |= (int)sender.tag;
-        }
-        else{
-            //TODO: self.modelForEditing.activeDaysHash &= ~(int)sender.tag;
-        }
+        [self.daily flipDayOfWeek_w:sender.dayKey setTo:sender.isOn for:isInverseRateType(self.daily.rateType)];
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }

@@ -80,7 +80,7 @@ numberOfRowsInSection:(NSInteger)section{
         NSInteger daysCol = picker.numberOfComponents -1;
         NSInteger daysBefore = [picker selectedRowInComponent:daysCol];
         [self insertNewReminder:hourRow minute:minuteRow daysBefore:daysBefore];
-        [self scaleTableForAddItem];
+        [self scaleTableForAddItem:(self.backendListCount -1)];
         [eventInfo.senderStack addObject:self];
         [super pickerSelection_action:eventInfo];
     };

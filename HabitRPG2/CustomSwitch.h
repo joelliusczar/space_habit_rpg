@@ -11,13 +11,14 @@
 
 IB_DESIGNABLE
 @interface CustomSwitch : UIButton<P_CustomSwitch>
-@property (nonatomic,assign) IBInspectable BOOL isOn;
-@property (nonatomic,strong) IBInspectable UIImage *onImage;
-@property (nonatomic,strong) IBInspectable UIImage *offImage;
-@property (nonatomic,strong) UIImage *onImageColorInverted;
-@property (nonatomic,strong) UIImage *offImageColorInverted;
-@property (nonatomic,readonly) UIImage *currentOnImage;
-@property (nonatomic,readonly) UIImage *currentOffImage;
-@property (nonatomic,assign) BOOL areColorsInverted;
+@property (assign,nonatomic) IBInspectable BOOL isOn;
+@property (strong,nonatomic) IBInspectable UIImage *onImage;
+@property (strong,nonatomic) IBInspectable UIImage *offImage;
+@property (strong,nonatomic) IBInspectable NSString *dayKey;
+@property (strong,nonatomic) UIImage *onImageColorInverted;
+@property (strong,nonatomic) UIImage *offImageColorInverted;
+@property (readonly,nonatomic) UIImage *currentOnImage;
+@property (readonly,nonatomic) UIImage *currentOffImage;
+@property (assign,nonatomic) BOOL areColorsInverted;
 -(void)refreshImage;
 @end

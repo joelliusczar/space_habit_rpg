@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "P_DueDateWrapper.h"
-
+#import "constants.h"
 
 @class DailySubTask;
 
@@ -19,7 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly,nonatomic) NSMutableDictionary *mapable;
 @property (readonly,nonatomic) int daysUntilDue;
 @property (strong,nonatomic) NSMutableDictionary *activeDaysDict;
-@property (readonly,nonatomic) NSMutableArray<NSDictionary<NSString *,NSNumber *> *> *inUseActiveDays;
+@property (readonly,nonatomic) NSMutableArray<RateValueItemDict *> *inUseActiveDays;
+@property (readonly,nonatomic) BOOL isInverseRateType;
 -(void)copyInto:(NSObject *)object;
 -(NSString *)name_w:(NSString *)name;
 -(NSString *)noteText_w:(NSString *)noteText;
@@ -33,3 +34,4 @@ NS_ASSUME_NONNULL_BEGIN
 NS_ASSUME_NONNULL_END
 
 #import "Daily+CoreDataProperties.h"
+#import "Daily+ActiveDays.h"

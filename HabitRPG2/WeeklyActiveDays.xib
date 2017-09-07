@@ -88,6 +88,7 @@
                         <userDefinedRuntimeAttribute type="image" keyPath="onImage" value="white_checked_full.png"/>
                         <userDefinedRuntimeAttribute type="image" keyPath="offImage" value="white_checked_empty.png"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isOn" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="dayKey" value="SUN"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="activeDaySwitch_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="e3R-wv-WCJ"/>
@@ -100,6 +101,7 @@
                         <userDefinedRuntimeAttribute type="image" keyPath="onImage" value="white_checked_full.png"/>
                         <userDefinedRuntimeAttribute type="image" keyPath="offImage" value="white_checked_empty.png"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isOn" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="dayKey" value="MON"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="activeDaySwitch_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="DVe-fr-xMN"/>
@@ -112,6 +114,7 @@
                         <userDefinedRuntimeAttribute type="image" keyPath="onImage" value="white_checked_full.png"/>
                         <userDefinedRuntimeAttribute type="image" keyPath="offImage" value="white_checked_empty.png"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isOn" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="dayKey" value="TUE"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="activeDaySwitch_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="z2Q-y1-2yy"/>
@@ -124,6 +127,7 @@
                         <userDefinedRuntimeAttribute type="image" keyPath="onImage" value="white_checked_full.png"/>
                         <userDefinedRuntimeAttribute type="image" keyPath="offImage" value="white_checked_empty.png"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isOn" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="dayKey" value="WED"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="activeDaySwitch_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="aII-VM-0bR"/>
@@ -136,6 +140,7 @@
                         <userDefinedRuntimeAttribute type="image" keyPath="onImage" value="white_checked_full.png"/>
                         <userDefinedRuntimeAttribute type="image" keyPath="offImage" value="white_checked_empty.png"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isOn" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="dayKey" value="FRI"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="activeDaySwitch_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="iK4-xn-kEa"/>
@@ -148,6 +153,7 @@
                         <userDefinedRuntimeAttribute type="image" keyPath="onImage" value="white_checked_full.png"/>
                         <userDefinedRuntimeAttribute type="image" keyPath="offImage" value="white_checked_empty.png"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isOn" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="dayKey" value="SAT"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="activeDaySwitch_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="IgK-jp-8LW"/>
@@ -160,6 +166,7 @@
                         <userDefinedRuntimeAttribute type="image" keyPath="onImage" value="white_checked_full.png"/>
                         <userDefinedRuntimeAttribute type="image" keyPath="offImage" value="white_checked_empty.png"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isOn" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="dayKey" value="THR"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="activeDaySwitch_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="WU2-uH-kQJ"/>

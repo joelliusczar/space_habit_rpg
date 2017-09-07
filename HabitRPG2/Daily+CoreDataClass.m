@@ -14,6 +14,7 @@
 #import "Reminder+CoreDataClass.h"
 #import "DailySubTask+CoreDataClass.h"
 #import "constants.h"
+#import "RateTypeHelper.h"
 
 @implementation Daily
 
@@ -26,32 +27,15 @@
     return _activeDaysDict;
 }
 
+
+-(BOOL)isInverseRateType{
+    return isInverseRateType(self.rateType);
+}
+
+
 -(NSMutableArray<NSDictionary<NSString *,NSNumber *> *> *)inUseActiveDays{
-    NSString *rateTypeKey = [self getRateTypeKey:self.rateType];
-    return self.activeDaysDict[rateTypeKey];
+    return [self getActiveDaysForRateType:self.rateType];
 }
-
-
--(NSString *)getRateTypeKey:(RateType)rateType{
-    switch(rateType){
-        case WEEKLY_RATE:
-            return @"daysOfWeek";
-        case WEEKLY_RATE_INVERSE:
-            return @"daysOfWeek_INV";
-        case MONTHLY_RATE:
-            return @"daysOfMonth";
-        case MONTHLY_RATE_INVERSE:
-            return @"daysOfMonth_INV";
-        case YEARLY_RATE:
-            return @"daysOfYear";
-        case YEARLY_RATE_INVERSE:
-            return @"daysOfYear_INV";
-        case DAILY_RATE:
-        DEFAULT:
-            return @"";
-    }
-}
-
 
 
 -(NSString *)name_w:(NSString *)name{
@@ -107,6 +91,7 @@ int checkImportanceRange(int importance){
     self.streakLength = streak;
     return streak;
 }
+
 
 -(NSMutableDictionary *)mapable{
     
