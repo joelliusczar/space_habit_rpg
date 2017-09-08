@@ -175,9 +175,7 @@ NSString* const IS_DIRTY = @"editResponder.isDirty";
                                                               ,daily.difficulty];
     
     //TODO: self.editControls.WeeklyActiveDays.activeDaysHash = daily.activeDaysHash;
-    NSInteger rate = daily.rate;
-    [self.editControls.rateSetterView updateRateValue:rate];
-
+    //TODO: rate count display?
     self.editControls.streakResetterView.streakCountLbl.hidden = NO;
     self.editControls.streakResetterView.streakResetBtn.hidden = NO;
     self.editControls.streakResetterView.streakCountLbl.text = [NSString

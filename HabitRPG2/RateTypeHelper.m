@@ -67,3 +67,23 @@ BOOL areYearlyRateValueItemsEqual(RateValueItemDict *a,RateValueItemDict *b){
     return a[MONTH_KEY].integerValue == b[MONTH_KEY].integerValue &&
             a[DAY_OF_MONTH_KEY].integerValue == b[DAY_OF_MONTH_KEY].integerValue;
 }
+
+
+NSString * getFormatString(RateType rateType, NSInteger rate){
+    switch(rateType){
+        case DAILY_RATE:
+        return rate==1?@"Triggers every day":@"Triggers every %d days";
+        case WEEKLY_RATE:
+        return rate==1?@"Triggers every week":@"Triggers every %d weeks";
+        case MONTHLY_RATE:
+        return rate==1?@"Triggers every month":@"Triggers every %d months";
+        case YEARLY_RATE:
+        return rate==1?@"Triggers every year":@"Triggers every %d years";
+        case WEEKLY_RATE_INVERSE:
+        return rate==1?@"Skips checked days every week":@"Skips checked days every %d weeks";
+        case MONTHLY_RATE_INVERSE:
+        return rate==1?@"Skips every month":@"Skips every %d months";
+        case YEARLY_RATE_INVERSE:
+        return rate==1?@"Skips every year":@"Skips every %d years";
+    }
+}

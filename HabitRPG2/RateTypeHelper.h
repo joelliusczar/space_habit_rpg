@@ -20,4 +20,5 @@ NSString* getRateTypeKey(RateType rateType);
 RateType setRateTypeInversion(RateType rateType,BOOL isInverse);
 BOOL areMonthlyRateValueItemsEqual(RateValueItemDict *a,RateValueItemDict *b);
 BOOL areYearlyRateValueItemsEqual(RateValueItemDict *a,RateValueItemDict *b);
+NSString * getFormatString(RateType rateType, NSInteger rate);
 #endif /* RateTypeHelper_h */

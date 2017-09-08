@@ -97,8 +97,8 @@
 
 -(void)updateRateType:(RateType)rateType shouldForceLoad:(BOOL)shouldForceLoad{
     
-    self.daily.rate = 1;
-    self.rateSetter.rateType = rateType;
+    [self.daily rate_w:1];
+    self.rateSetter.rateStep.value = 1; //prevent old stepper value from overwriting
     BOOL areSame = areSameBaseRateTypes(rateType,self.daily.rateType);
     //it is important that this happen before setRateTypeActiveDaysControl:
     //else it will use the old rateType which will have fucky results
@@ -109,7 +109,14 @@
     else{
         [self refreshActiveDaysControl];
     }
-    
+    [self updateRateTypeButtonText];
+}
+
+
+-(void)updateRateTypeButtonText{
+    NSString *formatText = getFormatString(self.daily.rateType,self.daily.rate);
+    NSString *updatedText = [NSString stringWithFormat:formatText,self.daily.rate ];
+    [self.openRateTypeBtn setTitle:updatedText forState:UIControlStateNormal];
 }
 
 
@@ -168,6 +175,7 @@
 -(void)rateStep_valueChanged_action:(SHEventInfo *)eventInfo{
     [eventInfo.senderStack addObject:self];
     [self.delegate rateStep_valueChanged_action:eventInfo];
+    [self updateRateTypeButtonText];
 }
 
 
