@@ -21,7 +21,7 @@ bestMatchPredicate monthlyBestMatch = ^BOOL(RateValueItemDict *a,RateValueItemDi
     NSInteger dayOfWeekA = a[DAY_OF_WEEK_KEY].integerValue;
     NSInteger dayOfWeekB = b[DAY_OF_WEEK_KEY].integerValue;
     
-    return ordinalA < ordinalB || (ordinalA == ordinalB && dayOfWeekA <= dayOfWeekB);
+    return ordinalA > ordinalB || (ordinalA == ordinalB && dayOfWeekA >= dayOfWeekB);
 };
 
 
@@ -33,7 +33,7 @@ bestMatchPredicate yearlyBestMatch = ^BOOL(RateValueItemDict *a,RateValueItemDic
     NSInteger dayOfMonthA = a[DAY_OF_MONTH_KEY].integerValue;
     NSInteger dayOfMonthB = b[DAY_OF_MONTH_KEY].integerValue;
     
-    return monthA < monthB || (monthA == monthB && dayOfMonthA <= dayOfMonthB);
+    return monthA > monthB || (monthA == monthB && dayOfMonthA >= dayOfMonthB);
 };
 
 
