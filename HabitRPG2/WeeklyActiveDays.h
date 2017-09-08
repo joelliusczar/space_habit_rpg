@@ -10,9 +10,11 @@
 #import "CustomSwitch.h"
 #import "P_WeeklyActiveDaysDelegate.h"
 #import "SHView.h"
+#import "constants.h"
 
 IB_DESIGNABLE
 @interface WeeklyActiveDays : SHView
 @property (strong, nonatomic) IBOutletCollection(CustomSwitch) NSArray *activeDaySwitches;
 @property (weak,nonatomic) id<P_WeeklyActiveDaysDelegate> delegate;
+-(void)setActiveDaysOfWeek:(RateValueItemDict *)activeDays;
 @end

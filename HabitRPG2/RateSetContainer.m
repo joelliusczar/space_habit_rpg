@@ -66,7 +66,7 @@
     RateSetContainer *instance = [[RateSetContainer alloc] init];
     instance.daily = daily;
     instance.defaultSize = instance.frame.size;
-    [instance updateRateType:daily.rateType];
+    [instance updateRateType:daily.rateType shouldForceLoad:YES];
     return instance;
 }
 
@@ -91,15 +91,15 @@
 
 
 -(void)updateRateType:(RateType)rateType with:(SHEventInfo *)eventInfo{
-    [self updateRateType:rateType];
+    [self updateRateType:rateType shouldForceLoad:NO];
 }
 
 
--(void)updateRateType:(RateType)rateType{
+-(void)updateRateType:(RateType)rateType shouldForceLoad:(BOOL)shouldForceLoad{
     
     self.daily.rate = 1;
     self.rateSetter.rateType = rateType;
-    if(!areSameBaseRateTypes(rateType,self.daily.rateType)){
+    if(shouldForceLoad||!areSameBaseRateTypes(rateType,self.daily.rateType)){
         [self setRateTypeActiveDaysControl:rateType];
     }
     else{
@@ -114,7 +114,8 @@
         [((ItemFlexibleListView *)self.currentActiveDaysControl) refreshTable];
     }
     else if([self.currentActiveDaysControl isKindOfClass:WeeklyActiveDays.class]){
-        
+        [self.weeklyActiveDays setActiveDaysOfWeek:
+                                [self.daily getActiveDaysForRateType:self.daily.rateType][0]];
     }
 }
 
@@ -126,6 +127,7 @@
         [self switchActiveDaysControlFor:self.weeklyActiveDays];
         self.currentActiveDaysControl = self.weeklyActiveDays;
         [self.openRateTypeBtn setTitle:@"Triggers Every Week" forState:UIControlStateNormal];
+        [self.weeklyActiveDays setActiveDaysOfWeek:[self.daily getActiveDaysForRateType:self.daily.rateType][0]];
     }
     else if(rateType == MONTHLY_RATE){
         [self switchActiveDaysControlFor:self.monthlyActiveDays];

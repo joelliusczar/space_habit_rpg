@@ -24,6 +24,7 @@
                     <rect key="frame" x="16" y="-2" width="242" height="0.0"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="separatorColor" red="0.95183328270000001" green="0.17352055250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="FoD-Ea-MxS"/>
                     </connections>

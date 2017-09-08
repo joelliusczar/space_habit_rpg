@@ -44,9 +44,9 @@ CGFloat const ZONE_CHOICE_ROW_HEIGHT = 75;
 CGFloat const EDIT_SCREEN_TOP_CONTROL_HEIGHT = 60;
 NSString * const NOTIFY_CAT_ID = @"SHReminder";
 NSString* const ALL_DAYS_JSON = @"{\"daysOfWeek\":[{\"SUN\":1,\"MON\":1,\"TUE\":1,"
-"\"WED\":1,\"THR\":1,\"SAT\":1}],\"daysOfMonth\":[],\"daysOfYear\":[],"
+"\"WED\":1,\"THR\":1,\"FRI\":1,\"SAT\":1}],\"daysOfMonth\":[],\"daysOfYear\":[],"
 "\"daysOfWeek_INV\":[{\"SUN\":0,\"MON\":0,\"TUE\":0,"
-"\"WED\":0,\"THR\":0,\"SAT\":0}],\"daysOfMonth_INV\":[],\"daysOfYear_INV\":[]}";
+"\"WED\":0,\"THR\":0,\"FRI\":0,\"SAT\":0}],\"daysOfMonth_INV\":[],\"daysOfYear_INV\":[]}";
 
 CGFloat const SUB_TABLE_CELL_HEIGHT = 44;
 NSInteger const SUB_TABLE_MAX_ROWS = 4;

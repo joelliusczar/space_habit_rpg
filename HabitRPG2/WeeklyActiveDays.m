@@ -23,4 +23,11 @@
     [self.delegate activeDaySwitch_press_action:e];
 }
 
+
+-(void)setActiveDaysOfWeek:(RateValueItemDict *)activeDaysDict{
+    for(CustomSwitch *flip in self.activeDaySwitches){
+        flip.isOn = activeDaysDict[flip.dayKey].boolValue;
+    }
+}
+
 @end
