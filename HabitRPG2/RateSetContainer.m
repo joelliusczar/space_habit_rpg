@@ -99,13 +99,17 @@
     
     self.daily.rate = 1;
     self.rateSetter.rateType = rateType;
-    if(shouldForceLoad||!areSameBaseRateTypes(rateType,self.daily.rateType)){
+    BOOL areSame = areSameBaseRateTypes(rateType,self.daily.rateType);
+    //it is important that this happen before setRateTypeActiveDaysControl:
+    //else it will use the old rateType which will have fucky results
+    self.daily.rateType = rateType;
+    if(shouldForceLoad||!areSame){
         [self setRateTypeActiveDaysControl:rateType];
     }
     else{
         [self refreshActiveDaysControl];
     }
-    self.daily.rateType = rateType;
+    
 }
 
 
