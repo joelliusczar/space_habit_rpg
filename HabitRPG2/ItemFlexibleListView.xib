@@ -17,20 +17,19 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="283" height="38"/>
+            <rect key="frame" x="0.0" y="0.0" width="283" height="37"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="y4T-Lj-Mg2">
-                    <rect key="frame" x="16" y="-2" width="242" height="0.0"/>
+                    <rect key="frame" x="16" y="0.0" width="242" height="0.0"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="separatorColor" red="0.95183328270000001" green="0.17352055250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="FoD-Ea-MxS"/>
                     </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Cc-Ah-ok6" customClass="AddItemsFooter">
-                    <rect key="frame" x="16" y="1" width="242" height="37"/>
+                    <rect key="frame" x="16" y="0.0" width="242" height="37"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="242" id="Cx6-7C-eok"/>
