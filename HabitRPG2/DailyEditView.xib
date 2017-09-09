@@ -40,7 +40,7 @@
                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="13"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
-                        <action selector="nameBox_editingChanged_action:forEvent:" destination="-1" eventType="editingChanged" id="rN6-1D-gpU"/>
+                        <action selector="nameBox_editingChange_action:forEvent:" destination="-1" eventType="editingChanged" id="iUc-Za-42y"/>
                     </connections>
                 </textField>
                 <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tXI-Qs-aDL">

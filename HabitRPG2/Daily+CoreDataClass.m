@@ -12,7 +12,6 @@
 #import "NSDate+DateHelper.h"
 #import "CommonUtilities.h"
 #import "Reminder+CoreDataClass.h"
-#import "DailySubTask+CoreDataClass.h"
 #import "constants.h"
 #import "RateTypeHelper.h"
 
@@ -93,73 +92,6 @@ int checkImportanceRange(int importance){
 }
 
 
--(NSMutableDictionary *)mapable{
-    
-    NSMutableDictionary *mappedData = [self simpleMapable];
-    [mappedData setValue:[self mappedReminders] forKey:@"daily_remind"];
-    [mappedData setValue:[self mappedSubtasks] forKey:@"daily_subtask"];
-    return mappedData;
-}
-
-//so that we don't have to map all of the relationships
--(NSMutableDictionary *)simpleMapable{
-    NSMutableDictionary *mappedData = [NSMutableDictionary dictionary];
-    //since NSDates don't play with JSON,I'm going to overrite these
-    //guys here
-    [self copyInto:mappedData];
-    [mappedData
-     setValue:[NSNumber numberWithDouble:self.lastActivationTime.timeIntervalSince1970]
-     forKey:@"lastActivationTime"];
-    [mappedData
-     setValue:[NSNumber numberWithDouble:self.rollbackActivationTime.timeIntervalSince1970]
-     forKey:@"rollbackActivationTime"];
-    return mappedData;
-}
-
-
--(NSArray<NSMutableDictionary *> *)mappedReminders{
-    NSMutableArray<NSMutableDictionary *> *reminders = [NSMutableArray array];
-    for(Reminder *reminder in self.daily_remind){
-        [reminders addObject:reminder.mapable];
-    }
-    return reminders;
-}
-
--(NSArray<NSMutableDictionary *> *)mappedSubtasks{
-    NSMutableArray<NSMutableDictionary *> *subtasks = [NSMutableArray array];
-    for(DailySubTask *subtask in self.daily_subtask){
-        [subtasks addObject:subtask.mapable];
-    }
-    return subtasks;
-}
-
--(void)copyInto:(NSObject *)object{
-    NSAssert([object isKindOfClass:Daily.class]||[object isKindOfClass:NSDictionary.class],
-             @"object needs to be of the same class or a dictionary");
-    [object setValue:self.dailyName forKey:@"dailyName"];
-    [object setValue:self.note forKey:@"note"];
-    [object setValue:self.activeDays
-              forKey:@"activeDays"];
-    [object setValue:[NSNumber numberWithInt:self.difficulty]
-              forKey:@"difficulty"];
-    [object setValue:[NSNumber numberWithInt:self.rate]
-              forKey:@"rate"];
-    [object setValue:[NSNumber numberWithInt:self.streakLength]
-              forKey:@"streakLength"];
-    [object setValue:[NSNumber numberWithInt:self.urgency]
-              forKey:@"urgency"];
-    [object setValue:[NSNumber numberWithInt:self.urgency]
-              forKey:@"urgency"];
-    [object setValue:[NSNumber numberWithInt:self.isActive]
-              forKey:@"isActive"];
-    [object setValue:self.lastActivationTime forKey:@"lastActivationTime"];
-    [object setValue:self.rollbackActivationTime forKey:@"rollbackActivationTime"];
-    [object setValue:[NSNumber numberWithInt:self.customUserOrder]
-              forKey:@"customUserOrder"];
-    [object setValue:self.lastUpdateTime forKey:@"lastUpdateTime"];
-}
-
-
 -(NSDate *)nextDueTime{
     NSDate *usableDate = self.lastActivationTime?
                             self.lastActivationTime:
@@ -188,8 +120,6 @@ int checkImportanceRange(int importance){
 }
 
 
-
-
 -(NSOrderedSet<Reminder *> *)getReminderSet{
     return self.daily_remind;
 }
@@ -202,6 +132,21 @@ int checkImportanceRange(int importance){
 
 -(void)removeReminder:(Reminder *)reminder{
     [self removeDaily_remindObject:reminder];
+}
+
+//so that we don't have to map all of the relationships
+-(NSMutableDictionary *)simpleMapable{
+    NSMutableDictionary *mappedData = [NSMutableDictionary dictionary];
+    //since NSDates don't play with JSON,I'm going to overrite these
+    //guys here
+    [self copyInto:mappedData];
+    [mappedData
+     setValue:[NSNumber numberWithDouble:self.lastActivationTime.timeIntervalSince1970]
+     forKey:@"lastActivationTime"];
+    [mappedData
+     setValue:[NSNumber numberWithDouble:self.rollbackActivationTime.timeIntervalSince1970]
+     forKey:@"rollbackActivationTime"];
+    return mappedData;
 }
 
 
@@ -217,6 +162,11 @@ int checkImportanceRange(int importance){
     self.note = @"";
     self.rate = 1;
     self.streakLength = 0;
+}
+
+
+-(void)preSave{
+    self.activeDays = [CommonUtilities dictToString:self.activeDaysDict];
 }
 
 @end

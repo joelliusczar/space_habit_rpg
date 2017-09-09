@@ -17,6 +17,7 @@
 
 @interface DailyEditController : UIViewController
 <EditingSaver
+,P_DailyEditCompound
 ,UITableViewDataSource
 ,UITableViewDelegate>
 @property (weak,nonatomic) IBOutlet UITextField *nameBox;
