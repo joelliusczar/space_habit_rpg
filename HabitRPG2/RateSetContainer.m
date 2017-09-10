@@ -22,6 +22,9 @@
 
 @implementation RateSetContainer
 
+NSString* const defaultInvertBtnText = @"Triggers only on...";
+NSString* const invertedInvertBtnText = @"Triggers all days except...";
+
 
 -(id<P_UtilityStore>)utilityStore{
     if(nil==_utilityStore){
@@ -66,8 +69,9 @@
     RateSetContainer *instance = [[RateSetContainer alloc] init];
     instance.daily = daily;
     instance.defaultSize = instance.frame.size;
-    [instance updateRateType:daily.rateType shouldForceLoad:YES];
+    [instance updateRateTypeControls:daily.rateType shouldChange:YES];
     [instance updateRateTypeButtonText];
+    [instance updateInvertRateTypeButtonText];
     return instance;
 }
 
@@ -92,24 +96,24 @@
 
 
 -(void)updateRateType:(RateType)rateType with:(SHEventInfo *)eventInfo{
-    [self updateRateType:rateType shouldForceLoad:NO];
-}
-
-
--(void)updateRateType:(RateType)rateType shouldForceLoad:(BOOL)shouldForceLoad{
-    
-    if(rateType != self.daily.rateType){
-        //no need to update if they are the same.
-        //Besides, it causes the Save btn to become
-        //inconviently enabled sometimes
-        [self.daily rate_w:1];
-    }
-    self.rateSetter.rateStep.value = 1; //prevent old stepper value from overwriting
+    [self resetRate];
     BOOL areSame = areSameBaseRateTypes(rateType,self.daily.rateType);
     //it is important that this happen before setRateTypeActiveDaysControl:
     //else it will use the old rateType which will have fucky results
-    self.daily.rateType = rateType;
-    if(shouldForceLoad||!areSame){
+    [self.daily rateType_w:rateType];
+    [self updateRateTypeControls:rateType shouldChange:!areSame];
+}
+
+
+-(void)resetRate{
+    [self.daily rate_w:1];
+    self.rateSetter.rateStep.value = 1;//prevent old stepper value from overwriting
+}
+
+
+-(void)updateRateTypeControls:(RateType)rateType shouldChange:(BOOL)shouldChange{
+    
+    if(shouldChange){
         [self setRateTypeActiveDaysControl:rateType];
     }
     else{
@@ -126,6 +130,12 @@
 }
 
 
+-(void)updateInvertRateTypeButtonText{
+    NSString *buttonText = !self.daily.isInverseRateType?defaultInvertBtnText:invertedInvertBtnText;
+    [self.invertRateTypeBtn setTitle:buttonText forState:UIControlStateNormal];
+}
+
+
 -(void)refreshActiveDaysControl{
     if([self.currentActiveDaysControl isKindOfClass:ItemFlexibleListView.class]){
         [((ItemFlexibleListView *)self.currentActiveDaysControl) refreshTable];
@@ -136,14 +146,16 @@
     }
 }
 
-
+/*
+ rate type should be set on daily already
+*/
 -(void)setRateTypeActiveDaysControl:(RateType)rateType{
     //TODO: test this for loading saved daily
     rateType = extractBaseRateType(rateType);
+    [self updateRateTypeButtonText];
     if(rateType == WEEKLY_RATE){
         [self switchActiveDaysControlFor:self.weeklyActiveDays];
         self.currentActiveDaysControl = self.weeklyActiveDays;
-        [self.openRateTypeBtn setTitle:@"Triggers Every Week" forState:UIControlStateNormal];
         [self.weeklyActiveDays setActiveDaysOfWeek:[self.daily getActiveDaysForRateType:self.daily.rateType][0]];
     }
     else if(rateType == MONTHLY_RATE){
@@ -151,20 +163,17 @@
         [self.resizeResponder scrollByOffset:SUB_TABLE_CELL_HEIGHT];
         [self.resizeResponder scrollVisibleToControl:self];
         self.currentActiveDaysControl = self.monthlyActiveDays;
-        [self.openRateTypeBtn setTitle:@"Triggers Every Month" forState:UIControlStateNormal];
     }
     else if(rateType == YEARLY_RATE){
         [self switchActiveDaysControlFor:self.yearlyActiveDays];
         [self.resizeResponder scrollByOffset:SUB_TABLE_CELL_HEIGHT];
         [self.resizeResponder scrollVisibleToControl:self];
         self.currentActiveDaysControl = self.yearlyActiveDays;
-        [self.openRateTypeBtn setTitle:@"Triggers Every Year" forState:UIControlStateNormal];
         
     }
     else if(rateType == DAILY_RATE){
         [self switchActiveDaysControlFor:[[SHView alloc] initEmpty]];
         self.currentActiveDaysControl = nil;
-        [self.openRateTypeBtn setTitle:@"Triggers Every Day" forState:UIControlStateNormal];
     }
 }
 
@@ -269,10 +278,10 @@
 
 -(IBAction)invertRateTypeBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event{
     wrapReturnVoid wrappedCall = ^(){
-        self.daily.rateType = invertRateType(self.daily.rateType);
-        NSString *btnText = !isInverseRateType(self.daily.rateType)
-                            ?@"Triggers all days except...":@"Triggers only on...";
-        [self.invertRateTypeBtn setTitle:btnText forState:UIControlStateNormal];
+        [self resetRate];
+        [self.daily rateType_w:invertRateType(self.daily.rateType)];
+        [self updateInvertRateTypeButtonText];
+        [self updateRateTypeButtonText];
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }

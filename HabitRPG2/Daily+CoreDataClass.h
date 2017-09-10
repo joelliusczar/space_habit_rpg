@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSString *)noteText_w:(NSString *)noteText;
 -(NSInteger)urgency_w:(int)urgency;
 -(NSInteger)difficulty_w:(int)difficulty;
+-(RateType)rateType_w:(RateType)rateType;
 -(NSInteger)rate_w:(int)rate;
 -(NSInteger)streak_w:(int)streak;
 -(void)setupDefaults;

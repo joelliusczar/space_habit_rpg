@@ -69,7 +69,7 @@
 -(void)addCellWithMonth:(NSInteger)month dayOfMonth:(NSInteger)dayOfMonth{
     NSInteger row = [self.daily addYearlyItem:self.daily.isInverseRateType
                                      monthNum:month
-                                   dayOfMonth:dayOfMonth];
+                                   dayOfMonth:dayOfMonth+1];
     [self addItemToTableAndScale:row];
 }
 

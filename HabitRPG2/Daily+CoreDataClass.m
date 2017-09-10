@@ -54,6 +54,13 @@
 }
 
 
+-(RateType)rateType_w:(RateType)rateType{
+    self.isTouched = YES;
+    self.rateType = rateType;
+    return rateType;
+}
+
+
 -(NSInteger)rate_w:(int)rate{
     self.isTouched = YES;
     if(rate > 366){
