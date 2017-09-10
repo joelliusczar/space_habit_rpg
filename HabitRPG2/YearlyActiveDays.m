@@ -70,13 +70,13 @@
     NSInteger row = [self.daily addYearlyItem:self.daily.isInverseRateType
                                      monthNum:month
                                    dayOfMonth:dayOfMonth];
-    [self scaleTableForAddItem:row];
+    [self addItemToTableAndScale:row];
 }
 
 
 -(void)deleteCellAt:(NSIndexPath *)indexPath{
     [self.daily deleteRateValueItem:self.daily.rateType atIndex:indexPath.row];
-    [self scaleTableForRemoveItem:indexPath];
+    [self removeItemFromTableAndScale:indexPath];
 }
 
 -(NSInteger)backendListCount{

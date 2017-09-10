@@ -22,17 +22,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="242" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vse-RZ-PEt">
-                        <rect key="frame" x="8" y="8" width="46" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" title="Button"/>
-                        <connections>
-                            <action selector="addReminderBtn_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="JiW-y5-K5M"/>
-                            <action selector="addReminderBtn_press_action:forEvent:" destination="YcH-Mp-9Ja" eventType="touchUpInside" id="joT-gq-Ug2"/>
-                        </connections>
-                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOg-s4-oPs">
-                        <rect key="frame" x="62" y="14" width="305" height="21"/>
+                        <rect key="frame" x="8" y="11" width="226" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -40,7 +31,7 @@
                     </label>
                 </subviews>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="116.5" y="124"/>
+            <point key="canvasLocation" x="116" y="124"/>
         </tableViewCell>
     </objects>
 </document>

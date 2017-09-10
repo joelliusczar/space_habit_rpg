@@ -80,7 +80,7 @@ numberOfRowsInSection:(NSInteger)section{
         NSInteger daysCol = picker.numberOfComponents -1;
         NSInteger daysBefore = [picker selectedRowInComponent:daysCol];
         [self insertNewReminder:hourRow minute:minuteRow daysBefore:daysBefore];
-        [self scaleTableForAddItem:(self.backendListCount -1)];
+        [self addItemToTableAndScale:(self.backendListCount -1)];
         [eventInfo.senderStack addObject:self];
         [super pickerSelection_action:eventInfo];
     };
@@ -108,7 +108,7 @@ numberOfRowsInSection:(NSInteger)section{
 -(void)deleteCellAt:(NSIndexPath *)indexPath{
     //TODO: test this
     [self.dueDateInfo removeReminder:self.reminderSet[indexPath.row]];
-    [self scaleTableForRemoveItem:indexPath];
+    [self removeItemFromTableAndScale:indexPath];
 }
 
 

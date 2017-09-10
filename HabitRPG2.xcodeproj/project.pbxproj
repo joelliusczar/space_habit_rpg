@@ -96,6 +96,7 @@
 		27A559B91F5E334500C915E6 /* Daily+ActiveDays.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559B81F5E334500C915E6 /* Daily+ActiveDays.m */; };
 		27A559BC1F5E5F3000C915E6 /* NSMutableArray+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559BB1F5E5F3000C915E6 /* NSMutableArray+Helper.m */; };
 		27A559CD1F6258BF00C915E6 /* Daily+Mapable.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559CC1F6258BF00C915E6 /* Daily+Mapable.m */; };
+		27A559D01F65A19A00C915E6 /* ItemFlexibleListEventInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559CF1F65A19A00C915E6 /* ItemFlexibleListEventInfo.m */; };
 		27AF22E71F270FBA00F7D872 /* SHControlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AF22E61F270FBA00F7D872 /* SHControlController.m */; };
 		27B0CD001F2BEB17005BEC75 /* Reminder+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CCFD1F2BEB17005BEC75 /* Reminder+CoreDataClass.m */; };
 		27B0CD011F2BEB17005BEC75 /* Reminder+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CCFF1F2BEB17005BEC75 /* Reminder+CoreDataProperties.m */; };
@@ -406,6 +407,8 @@
 		27A559BB1F5E5F3000C915E6 /* NSMutableArray+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Helper.m"; sourceTree = "<group>"; };
 		27A559CB1F6258BF00C915E6 /* Daily+Mapable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Daily+Mapable.h"; sourceTree = "<group>"; };
 		27A559CC1F6258BF00C915E6 /* Daily+Mapable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Daily+Mapable.m"; sourceTree = "<group>"; };
+		27A559CE1F65A19A00C915E6 /* ItemFlexibleListEventInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemFlexibleListEventInfo.h; sourceTree = "<group>"; };
+		27A559CF1F65A19A00C915E6 /* ItemFlexibleListEventInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemFlexibleListEventInfo.m; sourceTree = "<group>"; };
 		27AE66541E8720F9000F31BD /* CentralViewControllerP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralViewControllerP.h; sourceTree = "<group>"; };
 		27AF22E51F270FBA00F7D872 /* SHControlController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHControlController.h; sourceTree = "<group>"; };
 		27AF22E61F270FBA00F7D872 /* SHControlController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHControlController.m; sourceTree = "<group>"; };
@@ -747,6 +750,8 @@
 				274A37AE1F0A083A00F31E0F /* TimeSpinPickerEventInfo.m */,
 				274A37B01F0A093B00F31E0F /* SHEventInfo.h */,
 				274A37B11F0A093B00F31E0F /* SHEventInfo.m */,
+				27A559CE1F65A19A00C915E6 /* ItemFlexibleListEventInfo.h */,
+				27A559CF1F65A19A00C915E6 /* ItemFlexibleListEventInfo.m */,
 			);
 			name = EventArgs;
 			sourceTree = "<group>";
@@ -1669,6 +1674,7 @@
 				275D9F2D1F22BAED009DA715 /* UIView+Helpers.m in Sources */,
 				27B0CD2D1F2BEC04005BEC75 /* DataInfo+CoreDataClass.m in Sources */,
 				27B0CDD61F2BEECD005BEC75 /* Settings+CoreDataProperties.m in Sources */,
+				27A559D01F65A19A00C915E6 /* ItemFlexibleListEventInfo.m in Sources */,
 				27A559BC1F5E5F3000C915E6 /* NSMutableArray+Helper.m in Sources */,
 				276159B81F31A310002E8BF9 /* RateTypeSelector.m in Sources */,
 				27B0CD211F2BEBD4005BEC75 /* Good+CoreDataClass.m in Sources */,

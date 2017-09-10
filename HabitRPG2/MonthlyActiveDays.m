@@ -80,13 +80,13 @@
     NSInteger row = [self.daily addMonthlyItem:self.daily.isInverseRateType
                                        ordinal:weekOrdinal
                                   dayOfWeekNum:dayOfWeek];
-    [self scaleTableForAddItem:row];
+    [self addItemToTableAndScale:row];
 }
 
 
 -(void)deleteCellAt:(NSIndexPath *)indexPath{
     [self.daily deleteRateValueItem:self.daily.rateType atIndex:indexPath.row];
-    [self scaleTableForRemoveItem:indexPath];
+    [self removeItemFromTableAndScale:indexPath];
 }
 
 

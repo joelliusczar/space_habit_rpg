@@ -12,8 +12,9 @@
 #define eventInfoCopy [[SHEventInfo alloc] init:event withSenders:sender,self,nil]
 
 @interface SHEventInfo : NSObject
-@property (readonly,nonatomic) NSTimeInterval timestamp;
-@property (readonly,nonatomic) NSMutableOrderedSet *senderStack;
-@property (readonly,nonatomic) UIEvent *wrappedEvent;
+@property (readonly,assign,nonatomic) NSTimeInterval timestamp;
+@property (readonly,strong,nonatomic) NSMutableOrderedSet *senderStack;
+@property (readonly,strong,nonatomic) UIEvent *wrappedEvent;
 -(instancetype)init:(UIEvent *)event withSenders:(id)senders, ... NS_REQUIRES_NIL_TERMINATION;
+-(instancetype)init:(UIEvent *)event withParameters:(va_list)args andParamStart:(id)paramStart;
 @end

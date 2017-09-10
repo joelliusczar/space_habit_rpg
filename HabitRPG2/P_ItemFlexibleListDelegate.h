@@ -6,14 +6,17 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
+@class ItemFlexibleListEventInfo;
+
 #import <Foundation/Foundation.h>
 #import "SHEventInfo.h"
+#import "ItemFlexibleListEventInfo.h"
 
-@class ItemFlexibleListView;
 
 @protocol P_ItemFlexibleListDelegate <NSObject>
 @optional
 -(void)pickerSelection_action:(SHEventInfo *)eventInfo;
 -(void)addItemBtn_press_action:(SHEventInfo *)eventInfo;
--(void)switchInverseBtn_press_action:(SHEventInfo *)eventInfo;
+-(void)notifyAddNewCell:(ItemFlexibleListEventInfo *)eventInfo;
+-(void)notifyDeleteCell:(ItemFlexibleListEventInfo *)eventInfo;
 @end

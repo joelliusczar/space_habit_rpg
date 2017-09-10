@@ -37,21 +37,20 @@
 }
 
 
-+(CGFloat)getInitialHeight:(NSUInteger)itemCount{
+CGFloat getInitialHeight(NSUInteger itemCount){
     return itemCount < SUB_TABLE_MAX_ROWS?
-        SUB_TABLE_CELL_HEIGHT*itemCount:
-        [self calculateMaxTableHeight:SUB_TABLE_CELL_HEIGHT];
+    SUB_TABLE_CELL_HEIGHT*itemCount:
+    calculateMaxTableHeight(SUB_TABLE_CELL_HEIGHT);
 }
 
 
-+(CGFloat)calculateMaxTableHeight:(CGFloat)changeHeight{
+CGFloat calculateMaxTableHeight(CGFloat changeHeight){
     return SUB_TABLE_MAX_ROWS*fabs(changeHeight);
 }
 
 
 -(void)resizeItemListHeightByChange:(CGFloat)change{
-    CGFloat maxHeight = [ItemFlexibleListView
-                            calculateMaxTableHeight:change];
+    CGFloat maxHeight = calculateMaxTableHeight(change);
     if(change < 0 && (self.itemTbl.contentSize.height + change) > maxHeight){
         return;
     }
@@ -84,7 +83,7 @@
 
 
 -(void)commonSetup{
-    CGFloat tblHeight = [ItemFlexibleListView getInitialHeight:self.backendListCount];
+    CGFloat tblHeight = getInitialHeight(self.backendListCount);
     [self resizeItemListHeightByChange:tblHeight];
     self.itemTbl.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
@@ -97,7 +96,7 @@
 }
 
 
--(void)scaleTableForAddItem:(NSInteger)row{
+-(void)addItemToTableAndScale:(NSInteger)row{
     NSIndexPath *indexPath = [NSIndexPath
                               indexPathForRow:row
                               inSection:0];
@@ -110,15 +109,17 @@
     [self resizeItemListHeightByChange:SUB_TABLE_CELL_HEIGHT];
     [self endUpdate];
     [self scrollRemindersListByOffset:SUB_TABLE_CELL_HEIGHT];
+    [self notifyAddNewCell:indexPath];
 }
 
 
--(void)scaleTableForRemoveItem:(NSIndexPath *)indexPath{
+-(void)removeItemFromTableAndScale:(NSIndexPath *)indexPath{
     [self.itemTbl deleteRowsAtIndexPaths:@[indexPath]
                         withRowAnimation:UITableViewRowAnimationFade];
     [self beginUpdate];
     [self resizeItemListHeightByChange:-SUB_TABLE_CELL_HEIGHT];
     [self endUpdate];
+    [self notifyDeleteCell:indexPath];
 }
 
 
@@ -152,6 +153,7 @@ numberOfRowsInSection:(NSInteger)section{
                                               rowActionWithStyle:UITableViewRowActionStyleNormal
                                               title:@"Delete"
                                               handler:pressedDelete];
+    openDeleteButton.backgroundColor = UIColor.redColor;
     return @[openDeleteButton];
 }
 
@@ -170,6 +172,28 @@ numberOfRowsInSection:(NSInteger)section{
     SEL delegateSel = @selector(pickerSelection_action:);
     if([self.delegate respondsToSelector:delegateSel]){
         [self.delegate pickerSelection_action:eventInfo];
+    }
+}
+
+
+-(void)notifyAddNewCell:(NSIndexPath *)indexPath{
+    ItemFlexibleListEventInfo *eventInfo = [[ItemFlexibleListEventInfo alloc]
+                                            initWithItemFlexibleList:self
+                                            andIndexPath:indexPath];
+    SEL delegateSel = @selector(notifyAddNewCell:);
+    if([self.delegate respondsToSelector:delegateSel]){
+        [self.delegate notifyAddNewCell:eventInfo];
+    }
+}
+    
+    
+-(void)notifyDeleteCell:(NSIndexPath *)indexPath{
+    ItemFlexibleListEventInfo *eventInfo = [[ItemFlexibleListEventInfo alloc]
+                                            initWithItemFlexibleList:self
+                                            andIndexPath:indexPath];
+    SEL delegateSel = @selector(notifyDeleteCell:);
+    if([self.delegate respondsToSelector:delegateSel]){
+        [self.delegate notifyDeleteCell:eventInfo];
     }
 }
 
