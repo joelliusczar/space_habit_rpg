@@ -98,7 +98,12 @@
 
 -(void)updateRateType:(RateType)rateType shouldForceLoad:(BOOL)shouldForceLoad{
     
-    [self.daily rate_w:1];
+    if(rateType != self.daily.rateType){
+        //no need to update if they are the same.
+        //Besides, it causes the Save btn to become
+        //inconviently enabled sometimes
+        [self.daily rate_w:1];
+    }
     self.rateSetter.rateStep.value = 1; //prevent old stepper value from overwriting
     BOOL areSame = areSameBaseRateTypes(rateType,self.daily.rateType);
     //it is important that this happen before setRateTypeActiveDaysControl:

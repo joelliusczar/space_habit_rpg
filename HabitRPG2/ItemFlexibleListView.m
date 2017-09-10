@@ -16,6 +16,7 @@
 #import "ViewHelper.h"
 #import "SHEventInfo.h"
 #import "Interceptor.h"
+#import <math.h>
 
 @interface ItemFlexibleListView()
 @end
@@ -44,7 +45,7 @@
 
 
 +(CGFloat)calculateMaxTableHeight:(CGFloat)changeHeight{
-    return SUB_TABLE_MAX_ROWS*changeHeight;
+    return SUB_TABLE_MAX_ROWS*fabs(changeHeight);
 }
 
 
