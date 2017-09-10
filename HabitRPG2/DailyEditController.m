@@ -34,14 +34,13 @@
 @property (assign,nonatomic) BOOL isEditingExisting;
 @end
 
-NSString* const IS_DIRTY = @"isDirty";
+NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
 
 @implementation DailyEditController
 
 //These need to be synthesized since they come from a protocol
 @synthesize editorContainer = _editorContainer;
 @synthesize nameStr = _nameStr;
-@synthesize isDirty = _isDirty;
 
 
 //used for new Dailies
@@ -83,7 +82,7 @@ NSString* const IS_DIRTY = @"isDirty";
     //will happen
     self.controlsTbl.dataSource = self;
     self.controlsTbl.delegate = self;
-    [self addObserver:self forKeyPath:IS_DIRTY options:NSKeyValueObservingOptionNew context:nil];
+    [self addObserver:self forKeyPath:IS_TOUCHED options:NSKeyValueObservingOptionNew context:nil];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -132,7 +131,7 @@ NSString* const IS_DIRTY = @"isDirty";
                        change:(nullable NSDictionary<NSKeyValueChangeKey,id> *)change
                       context:(nullable void *)context{
     
-    if([keyPath isEqualToString:IS_DIRTY]){
+    if([keyPath isEqualToString:IS_TOUCHED]){
         if(self.editorContainer){
             [self.editorContainer enableSave];
         }
@@ -178,8 +177,6 @@ NSString* const IS_DIRTY = @"isDirty";
                                                               @"Difficulty: %d"
                                                               ,daily.difficulty];
     
-    //TODO: self.editControls.WeeklyActiveDays.activeDaysHash = daily.activeDaysHash;
-    //TODO: rate count display?
     self.editControls.streakResetterView.streakCountLbl.hidden = NO;
     self.editControls.streakResetterView.streakResetBtn.hidden = NO;
     self.editControls.streakResetterView.streakCountLbl.text = [NSString
@@ -191,7 +188,6 @@ NSString* const IS_DIRTY = @"isDirty";
 
 - (IBAction)nameBox_editingChange_action:(UITextField *)sender forEvent:(UIEvent *)event {
     wrapReturnVoid wrappedCall = ^void(){
-        self.isDirty = YES;
         [self.modelForEditing name_w:sender.text];
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
@@ -200,7 +196,6 @@ NSString* const IS_DIRTY = @"isDirty";
 
 -(void)textDidChange:(SHEventInfo *)eventInfo{
     wrapReturnVoid wrappedCall = ^void(){
-        self.isDirty = YES;
         UITextView *textView = (UITextView *)eventInfo.senderStack[0];
         [self.modelForEditing noteText_w:textView.text];
         self.nameStr = textView.text;
@@ -211,7 +206,6 @@ NSString* const IS_DIRTY = @"isDirty";
     
 -(void)rateStep_valueChanged_action:(SHEventInfo *)eventInfo {
     wrapReturnVoid wrappedCall = ^void(){
-        self.isDirty = YES;
         UIStepper *sender = (UIStepper *)eventInfo.senderStack[0];
         sender.value = [self.modelForEditing rate_w:(int)sender.value];
     };
@@ -221,7 +215,6 @@ NSString* const IS_DIRTY = @"isDirty";
     
 -(void)activeDaySwitch_press_action:(SHEventInfo *)eventInfo{
     wrapReturnVoid wrappedCall = ^void(){
-        self.isDirty = YES;
         CustomSwitch *sender = (CustomSwitch *)eventInfo.senderStack[0];
         [self.modelForEditing
                 flipDayOfWeek_w:sender.dayKey
@@ -234,7 +227,6 @@ NSString* const IS_DIRTY = @"isDirty";
     
 -(void)streakResetBtn_press_action:(SHEventInfo *)eventInfo {
     wrapReturnVoid wrappedCall = ^void(){
-        self.isDirty = YES;
         [self.modelForEditing streak_w:0];
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
@@ -243,7 +235,6 @@ NSString* const IS_DIRTY = @"isDirty";
     
 -(void)sld_valueChanged_action:(SHEventInfo *)eventInfo{
     wrapReturnVoid wrappedCall = ^void(){
-        self.isDirty = YES;
         UISlider *sender = (UISlider *)eventInfo.senderStack[0];
         ImportanceSliderView *sliderView = (ImportanceSliderView *)eventInfo.senderStack[1];
         int sliderValue = (int)sender.value;
@@ -316,7 +307,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
 -(void)dealloc{
     @try{
-        [self removeObserver:self forKeyPath:IS_DIRTY context:nil];
+        [self removeObserver:self forKeyPath:IS_TOUCHED context:nil];
     }
     @catch(NSException *ex){}
 }

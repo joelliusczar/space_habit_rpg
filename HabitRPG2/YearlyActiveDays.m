@@ -57,16 +57,27 @@
 -(void)pickerSelection_action:(SHEventInfo *)eventInfo{
     wrapReturnVoid wrappedCall = ^(){
         UIPickerView *picker = (UIPickerView *)eventInfo.senderStack[1];
-        NSInteger row = [self.daily addYearlyItem:self.daily.isInverseRateType
-                    monthNum:[picker selectedRowInComponent:0]
-                    dayOfMonth:[picker selectedRowInComponent:1]];
-        [self scaleTableForAddItem:row];
+        [self addCellWithMonth:[picker selectedRowInComponent:0]
+                        dayOfMonth:[picker selectedRowInComponent:1]];
         [eventInfo.senderStack addObject:self];
         [super pickerSelection_action:eventInfo];
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
+
+-(void)addCellWithMonth:(NSInteger)month dayOfMonth:(NSInteger)dayOfMonth{
+    NSInteger row = [self.daily addYearlyItem:self.daily.isInverseRateType
+                                     monthNum:month
+                                   dayOfMonth:dayOfMonth];
+    [self scaleTableForAddItem:row];
+}
+
+
+-(void)deleteCellAt:(NSIndexPath *)indexPath{
+    [self.daily deleteRateValueItem:self.daily.rateType atIndex:indexPath.row];
+    [self scaleTableForRemoveItem:indexPath];
+}
 
 -(NSInteger)backendListCount{
     return self.daily.inUseActiveDays.count;

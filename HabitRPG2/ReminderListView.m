@@ -105,6 +105,13 @@ numberOfRowsInSection:(NSInteger)section{
 }
 
 
+-(void)deleteCellAt:(NSIndexPath *)indexPath{
+    //TODO: test this
+    [self.dueDateInfo removeReminder:self.reminderSet[indexPath.row]];
+    [self scaleTableForRemoveItem:indexPath];
+}
+
+
 -(NSInteger)backendListCount{
     return self.reminderSet.count;
 }

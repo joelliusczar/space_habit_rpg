@@ -18,6 +18,7 @@
 
 @interface ItemFlexibleListView :SHView
 <UITableViewDataSource
+,UITableViewDelegate
 ,P_AddItemsFooterDelegate
 ,P_SHSpinPickerDelegate>
 @property (weak,nonatomic) IBOutlet UITableView *itemTbl;
@@ -32,6 +33,7 @@
 -(void)commonSetup;
 -(void)showSHSpinPicker:(SHSpinPicker *)picker;
 -(void)scaleTableForAddItem:(NSInteger)row;
+-(void)scaleTableForRemoveItem:(NSIndexPath *)indexPath;
 -(void)hideKeyboard;
 -(void)refreshTable;
 @end

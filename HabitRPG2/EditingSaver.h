@@ -17,7 +17,6 @@
 @property (weak,nonatomic) UITextField *nameBox;
 @property (weak,nonatomic) UIButton *showXtraOptsBtn;
 @property (weak,nonatomic) UITableView *controlsTbl;
-@property (assign,nonatomic) BOOL isDirty;
 @property (strong,nonatomic) NSString *nameStr;
 -(void)saveEdit;
 -(BOOL)deleteModel;

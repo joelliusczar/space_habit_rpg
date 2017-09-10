@@ -63,18 +63,30 @@
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
-
+//add
 -(void)pickerSelection_action:(SHEventInfo *)eventInfo{
     wrapReturnVoid wrappedCall = ^(){
         UIPickerView *picker = (UIPickerView *)eventInfo.senderStack[1];
-        NSInteger row = [self.daily addMonthlyItem:self.daily.isInverseRateType
-                    ordinal:[picker selectedRowInComponent:0]
-                    dayOfWeekNum:[picker selectedRowInComponent:1]];
-        [self scaleTableForAddItem:row];
+        [self addCellWithWeekOrdinal:[picker selectedRowInComponent:0]
+                                        dayOfWeek:[picker selectedRowInComponent:1]];
         [eventInfo.senderStack addObject:self];
         [super pickerSelection_action:eventInfo];
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+}
+
+
+-(void)addCellWithWeekOrdinal:(NSInteger)weekOrdinal dayOfWeek:(NSInteger)dayOfWeek{
+    NSInteger row = [self.daily addMonthlyItem:self.daily.isInverseRateType
+                                       ordinal:weekOrdinal
+                                  dayOfWeekNum:dayOfWeek];
+    [self scaleTableForAddItem:row];
+}
+
+
+-(void)deleteCellAt:(NSIndexPath *)indexPath{
+    [self.daily deleteRateValueItem:self.daily.rateType atIndex:indexPath.row];
+    [self scaleTableForRemoveItem:indexPath];
 }
 
 

@@ -38,5 +38,4 @@ SHView
 +(instancetype _Nonnull )newWithDaily:(Daily * _Nonnull)daily;
 @end
 
-//TODO: work out saving
 

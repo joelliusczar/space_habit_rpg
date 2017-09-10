@@ -15,4 +15,5 @@
 -(void)setActiveDay:(ActiveDaysTriKey *)triKey withValue:(NSNumber *)value;
 -(NSInteger)addMonthlyItem:(BOOL)isInverse ordinal:(NSInteger)ordinal dayOfWeekNum:(NSInteger)weekdayNum;
 -(NSInteger)addYearlyItem:(BOOL)isInverse monthNum:(NSInteger)monthNum dayOfMonth:(NSInteger)monthDay;
+-(void)deleteRateValueItem:(RateType)rateType atIndex:(NSInteger)index;
 @end

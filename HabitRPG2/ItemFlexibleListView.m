@@ -15,6 +15,7 @@
 #import "UIScrollView+ScrollAdjusters.h"
 #import "ViewHelper.h"
 #import "SHEventInfo.h"
+#import "Interceptor.h"
 
 @interface ItemFlexibleListView()
 @end
@@ -99,6 +100,12 @@
 }
 
 
+-(void)scaleTableForRemoveItem:(NSIndexPath *)indexPath{
+    [self.itemTbl deleteRowsAtIndexPaths:@[indexPath]
+                        withRowAnimation:UITableViewRowAnimationFade];
+}
+
+
 -(NSInteger)tableView:(UITableView *)tableView
 numberOfRowsInSection:(NSInteger)section{
     @throw [NSException abstractException];
@@ -108,6 +115,28 @@ numberOfRowsInSection:(NSInteger)section{
 -(UITableViewCell *)tableView:(UITableViewCell *)tableView
         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     @throw [NSException abstractException];
+}
+
+
+-(void)deleteCellAt:(NSIndexPath *)indexPath{
+    @throw [NSException abstractException];
+}
+
+
+-(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView
+                 editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
+    void (^pressedDelete)(UITableViewRowAction *,NSIndexPath *) =
+            ^(UITableViewRowAction *action,NSIndexPath *indexPath){
+                wrapReturnVoid wrappedCall = ^void(){
+                    [self deleteCellAt:indexPath];
+                };
+                [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+            };
+    UITableViewRowAction *openDeleteButton = [UITableViewRowAction
+                                              rowActionWithStyle:UITableViewRowActionStyleNormal
+                                              title:@"Delete"
+                                              handler:pressedDelete];
+    return @[openDeleteButton];
 }
 
 

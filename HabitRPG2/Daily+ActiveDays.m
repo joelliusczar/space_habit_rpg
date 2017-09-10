@@ -59,6 +59,7 @@ bestMatchPredicate yearlyBestMatch = ^BOOL(RateValueItemDict *a,RateValueItemDic
 
     
 -(NSMutableDictionary *)createActiveDaysWeek:(BOOL)areActive{
+    self.isTouched = YES;
     self.isActiveDaysTouched = YES;
     NSNumber *activeness = [NSNumber numberWithBool:areActive];
     return [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -74,6 +75,7 @@ bestMatchPredicate yearlyBestMatch = ^BOOL(RateValueItemDict *a,RateValueItemDic
 
 
 -(void)setActiveDay:(ActiveDaysTriKey *)triKey withValue:(NSNumber *)value{
+    self.isTouched = YES;
     self.isActiveDaysTouched = YES;
     NSArray *array = [self getActiveDaysForRateType:triKey.rateType];
     NSMutableDictionary *dict = array[triKey.index];
@@ -82,6 +84,7 @@ bestMatchPredicate yearlyBestMatch = ^BOOL(RateValueItemDict *a,RateValueItemDic
   
     
 -(BOOL)flipDayOfWeek_w:(NSString *)key setTo:(BOOL)isOn for:(BOOL)isInverse{
+    self.isTouched = YES;
     self.isActiveDaysTouched = YES;
     RateType rateType = isInverse?WEEKLY_RATE_INVERSE:WEEKLY_RATE;
     ActiveDaysTriKey *triKey = [[ActiveDaysTriKey alloc] initWithRateType:rateType key:key index:0];
@@ -94,6 +97,7 @@ bestMatchPredicate yearlyBestMatch = ^BOOL(RateValueItemDict *a,RateValueItemDic
                    ordinal:(NSInteger)ordinal
                    dayOfWeekNum:(NSInteger)weekdayNum{
     
+    self.isTouched = YES;
     self.isActiveDaysTouched = YES;
     RateValueItemDict *monthlyItem = [NSDictionary dictionaryWithObjectsAndKeys:
                                  [NSNumber numberWithInteger:ordinal],ORDINAL_WEEK_KEY
@@ -117,7 +121,7 @@ bestMatchPredicate yearlyBestMatch = ^BOOL(RateValueItemDict *a,RateValueItemDic
 -(NSInteger)addYearlyItem:(BOOL)isInverse
                  monthNum:(NSInteger)monthNum
                  dayOfMonth:(NSInteger)monthDay{
-    
+    self.isTouched = YES;
     self.isActiveDaysTouched = YES;
     RateValueItemDict *yearlyItem = [NSDictionary dictionaryWithObjectsAndKeys:
                                  [NSNumber numberWithInteger:monthNum],MONTH_KEY
@@ -135,6 +139,15 @@ bestMatchPredicate yearlyBestMatch = ^BOOL(RateValueItemDict *a,RateValueItemDic
         return index;
     }
     return -1;
+}
+
+
+-(void)deleteRateValueItem:(RateType)rateType atIndex:(NSInteger)index{
+    self.isTouched = YES;
+    self.isActiveDaysTouched = YES;
+    NSMutableArray *activeDays = [self getActiveDaysForRateType:rateType];
+    [activeDays removeObjectAtIndex:index];
+    
 }
 
 @end

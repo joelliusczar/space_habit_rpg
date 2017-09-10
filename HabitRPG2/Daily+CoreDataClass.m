@@ -18,6 +18,10 @@
 @implementation Daily
 
 
+@synthesize isTouched;
+@synthesize isActiveDaysTouched = _isActiveDaysTouched;
+
+
 @synthesize activeDaysDict = _activeDaysDict;
 -(NSMutableDictionary *)activeDaysDict{
     if(nil==_activeDaysDict){
@@ -38,18 +42,21 @@
 
 
 -(NSString *)name_w:(NSString *)name{
+    self.isTouched = YES;
     self.dailyName = name;
     return name;
 }
 
 
 -(NSString *)noteText_w:(NSString *)noteText{
+    self.isTouched = YES;
     self.note = noteText;
     return noteText;
 }
 
 
 -(NSInteger)rate_w:(int)rate{
+    self.isTouched = YES;
     if(rate > 366){
         rate = 366;
     }
@@ -73,6 +80,7 @@ int checkImportanceRange(int importance){
 
 
 -(NSInteger)urgency_w:(int)urgency{
+    self.isTouched = YES;
     urgency = checkImportanceRange(urgency);
     self.urgency = urgency;
     return urgency;
@@ -80,6 +88,7 @@ int checkImportanceRange(int importance){
 
 
 -(NSInteger)difficulty_w:(int)difficulty{
+    self.isTouched = YES;
     difficulty = checkImportanceRange(difficulty);
     self.difficulty = difficulty;
     return difficulty;
@@ -87,6 +96,7 @@ int checkImportanceRange(int importance){
 
 
 -(NSInteger)streak_w:(int)streak{
+    self.isTouched = YES;
     self.streakLength = streak;
     return streak;
 }

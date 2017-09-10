@@ -67,6 +67,7 @@
     instance.daily = daily;
     instance.defaultSize = instance.frame.size;
     [instance updateRateType:daily.rateType shouldForceLoad:YES];
+    [instance updateRateTypeButtonText];
     return instance;
 }
 
