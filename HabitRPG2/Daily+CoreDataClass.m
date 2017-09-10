@@ -19,7 +19,6 @@
 
 
 @synthesize isTouched;
-@synthesize isActiveDaysTouched = _isActiveDaysTouched;
 
 
 @synthesize activeDaysDict = _activeDaysDict;

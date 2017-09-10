@@ -20,7 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong,nonatomic) NSMutableDictionary *activeDaysDict;
 @property (readonly,nonatomic) NSMutableArray<RateValueItemDict *> *inUseActiveDays;
 @property (readonly,nonatomic) BOOL isInverseRateType;
-@property (assign,nonatomic) BOOL isActiveDaysTouched;
 @property (assign,nonatomic) BOOL isTouched;
 -(NSString *)name_w:(NSString *)name;
 -(NSString *)noteText_w:(NSString *)noteText;
