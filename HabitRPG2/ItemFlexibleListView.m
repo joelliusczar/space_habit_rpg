@@ -39,16 +39,28 @@
 +(CGFloat)getInitialHeight:(NSUInteger)itemCount{
     return itemCount < SUB_TABLE_MAX_ROWS?
         SUB_TABLE_CELL_HEIGHT*itemCount:
-        SUB_TABLE_MAX_HEIGHT;
+        [self calculateMaxTableHeight:SUB_TABLE_CELL_HEIGHT];
+}
+
+
++(CGFloat)calculateMaxTableHeight:(CGFloat)changeHeight{
+    return SUB_TABLE_MAX_ROWS*changeHeight;
 }
 
 
 -(void)resizeItemListHeightByChange:(CGFloat)change{
-    if(self.itemTbl.frame.size.height < SUB_TABLE_MAX_HEIGHT){
-        [self.itemTbl resizeHeightByOffset:change];
-        [self resizeHeightByOffset:change];
-        [self respondToHeightResize:change];
+    CGFloat maxHeight = [ItemFlexibleListView
+                            calculateMaxTableHeight:change];
+    if(change < 0 && (self.itemTbl.contentSize.height + change) > maxHeight){
+        return;
     }
+    if(self.itemTbl.frame.size.height >= maxHeight){
+        return;
+    }
+
+    [self.itemTbl resizeHeightByOffset:change];
+    [self resizeHeightByOffset:change];
+    [self respondToHeightResize:change];
 }
 
 
@@ -103,6 +115,9 @@
 -(void)scaleTableForRemoveItem:(NSIndexPath *)indexPath{
     [self.itemTbl deleteRowsAtIndexPaths:@[indexPath]
                         withRowAnimation:UITableViewRowAnimationFade];
+    [self beginUpdate];
+    [self resizeItemListHeightByChange:-SUB_TABLE_CELL_HEIGHT];
+    [self endUpdate];
 }
 
 
