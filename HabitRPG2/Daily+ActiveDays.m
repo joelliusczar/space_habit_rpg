@@ -102,6 +102,7 @@ bestMatchPredicate yearlyBestMatch = ^BOOL(RateValueItemDict *a,RateValueItemDic
     RateType rateType = setRateTypeInversion(MONTHLY_RATE,isInverse);
     NSMutableArray<RateValueItemDict *> *activeDays = [self getActiveDaysForRateType:rateType];
     NSInteger index = [activeDays findPlaceFor:monthlyItem whereBestFits:monthlyBestMatch];
+    NSAssert(index >= 0,@"index was a negative number");
     if(index == activeDays.count){
         [activeDays addObject:monthlyItem];
         return index;

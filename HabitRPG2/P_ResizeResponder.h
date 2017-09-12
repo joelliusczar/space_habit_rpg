@@ -20,4 +20,5 @@
 -(void)beginUpdate;
 -(void)endUpdate;
 -(void)resetHeight;
+-(void)refreshView;
 @end

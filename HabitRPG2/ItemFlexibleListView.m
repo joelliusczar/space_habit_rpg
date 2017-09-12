@@ -83,9 +83,14 @@ CGFloat calculateMaxTableHeight(CGFloat changeHeight){
 
 
 -(void)commonSetup{
+    [self setupInitialHeight];
+    self.itemTbl.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+}
+
+
+-(void)setupInitialHeight{
     CGFloat tblHeight = getInitialHeight(self.backendListCount);
     [self resizeItemListHeightByChange:tblHeight];
-    self.itemTbl.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 
@@ -97,6 +102,9 @@ CGFloat calculateMaxTableHeight(CGFloat changeHeight){
 
 
 -(void)addItemToTableAndScale:(NSInteger)row{
+    
+    NSAssert(row >= 0,@"row was an invalid index");
+    
     NSIndexPath *indexPath = [NSIndexPath
                               indexPathForRow:row
                               inSection:0];
@@ -240,6 +248,13 @@ numberOfRowsInSection:(NSInteger)section{
     if([self.resizeResponder respondsToSelector:@selector(hideKeyboard)]){
         [self.resizeResponder hideKeyboard];
     }
+}
+
+
+-(void)resetHeight{
+    CGFloat h = self.itemTbl.frame.size.height;
+    [self resizeItemListHeightByChange:-h];
+    
 }
 
 

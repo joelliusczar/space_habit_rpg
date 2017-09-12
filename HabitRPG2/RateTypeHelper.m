@@ -43,6 +43,8 @@ NSString* getRateTypeKey(RateType rateType){
         case YEARLY_RATE_INVERSE:
             return @"daysOfYear_INV";
         case DAILY_RATE:
+        case DAILY_RATE_INVERSE:
+            @throw [NSException exceptionWithName:@"can't go there" reason:@"I didn't know the code could go here" userInfo:nil];
         DEFAULT:
             return @"";
     }
@@ -79,6 +81,8 @@ NSString * getFormatString(RateType rateType, NSInteger rate){
         return rate==1?@"Triggers every month":@"Triggers every %d months";
         case YEARLY_RATE:
         return rate==1?@"Triggers every year":@"Triggers every %d years";
+        case DAILY_RATE_INVERSE:
+        return rate==1?@"Skips every day":@"Skips every %d days";
         case WEEKLY_RATE_INVERSE:
         return rate==1?@"Skips checked days every week":@"Skips checked days every %d weeks";
         case MONTHLY_RATE_INVERSE:

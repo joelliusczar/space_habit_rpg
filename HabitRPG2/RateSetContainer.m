@@ -38,6 +38,7 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
     if(nil==_weeklyActiveDays){
         _weeklyActiveDays = [[WeeklyActiveDays alloc] init];
         [_weeklyActiveDays changeBackgroundColorTo:self.backgroundColor];
+        _weeklyActiveDays.delegate = self.weeklyDaysDelegate;
     }
     return _weeklyActiveDays;
 }
@@ -96,6 +97,11 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 
 
 -(void)updateRateType:(RateType)rateType with:(SHEventInfo *)eventInfo{
+    [self updateRateType:rateType];
+}
+
+
+-(void)updateRateType:(RateType)rateType{
     [self resetRate];
     BOOL areSame = areSameBaseRateTypes(rateType,self.daily.rateType);
     //it is important that this happen before setRateTypeActiveDaysControl:
@@ -120,6 +126,7 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
         [self refreshActiveDaysControl];
     }
     [self updateRateTypeButtonText];
+    [self updateInvertRateTypeButtonText];
 }
 
 
@@ -138,7 +145,13 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 
 -(void)refreshActiveDaysControl{
     if([self.currentActiveDaysControl isKindOfClass:ItemFlexibleListView.class]){
-        [((ItemFlexibleListView *)self.currentActiveDaysControl) refreshTable];
+        ItemFlexibleListView *activeDaysList = (ItemFlexibleListView *)self.currentActiveDaysControl;
+        [activeDaysList resetHeight];
+        [activeDaysList setupInitialHeight];
+        [activeDaysList refreshTable];
+        [self fitControlHeightToSubControlHeight:activeDaysList];
+        [self.resizeResponder refreshView];
+        
     }
     else if([self.currentActiveDaysControl isKindOfClass:WeeklyActiveDays.class]){
         [self.weeklyActiveDays setActiveDaysOfWeek:
@@ -150,7 +163,6 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
  rate type should be set on daily already
 */
 -(void)setRateTypeActiveDaysControl:(RateType)rateType{
-    //TODO: test this for loading saved daily
     rateType = extractBaseRateType(rateType);
     [self updateRateTypeButtonText];
     if(rateType == WEEKLY_RATE){
@@ -180,8 +192,7 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 
 -(void)switchActiveDaysControlFor:(SHView *)activeDaysControl{
     NSAssert(activeDaysControl,@"activeDaysControl was nil");
-    CGFloat h = activeDaysControl.frame.size.height;
-    [self fitControlHeightToSubControlHeight:h];
+    [self fitControlHeightToSubControlHeight:activeDaysControl];
     [self.activeDaysControlContainer
         replaceSubviewsWith:activeDaysControl];
 }
@@ -200,10 +211,10 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 }
 
 
--(void)fitControlHeightToSubControlHeight:(CGFloat)h{
+-(void)fitControlHeightToSubControlHeight:(SHView *)control{
+    
     [self resetHeight];
-    // max height for the tables? This should be controlled inside the
-    //table itself I think
+    CGFloat h = control.frame.size.height;
     [self beginUpdate];
     [self resizeHeightByOffset:h];
     [self.activeDaysControlContainer resizeHeightByOffset:h];
@@ -214,11 +225,11 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 -(void)respondToHeightResize:(CGFloat)change{
     [self resizeHeightByOffset:change];
     [self.activeDaysControlContainer resizeHeightByOffset:change];
-    [self respondToHeightResize_m:change];
+    [self notify_respondToHeightResize:change];
 }
 
 
--(void)respondToHeightResize_m:(CGFloat)change{
+-(void)notify_respondToHeightResize:(CGFloat)change{
     SEL delegateSel = @selector(respondToHeightResize:);
     if([self.resizeResponder respondsToSelector:delegateSel]){
         [self.resizeResponder respondToHeightResize:change];
@@ -270,18 +281,20 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 
 
 -(void)hideKeyboard{
-    if([self.resizeResponder respondsToSelector:@selector(hideKeyboard)]){
-        [self.resizeResponder hideKeyboard];
+    [self.resizeResponder hideKeyboard];
+}
+
+
+-(void)refreshView{
+    if([self.resizeResponder respondsToSelector:@selector(refreshView)]){
+        [self.resizeResponder refreshView];
     }
 }
 
 
 -(IBAction)invertRateTypeBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event{
     wrapReturnVoid wrappedCall = ^(){
-        [self resetRate];
-        [self.daily rateType_w:invertRateType(self.daily.rateType)];
-        [self updateInvertRateTypeButtonText];
-        [self updateRateTypeButtonText];
+        [self updateRateType:invertRateType(self.daily.rateType)];
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }

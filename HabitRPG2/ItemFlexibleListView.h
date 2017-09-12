@@ -78,5 +78,7 @@ CGFloat getInitialHeight(NSUInteger itemCount);
 -(void)addItemToTableAndScale:(NSInteger)row;
 -(void)removeItemFromTableAndScale:(NSIndexPath *)indexPath;
 -(void)hideKeyboard;
+-(void)resetHeight;
 -(void)refreshTable;
+-(void)setupInitialHeight;
 @end

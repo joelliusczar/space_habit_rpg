@@ -203,6 +203,14 @@
 }
 
 
+-(void)refreshView{
+    NSArray<NSIndexPath *> *indexPaths = [self.editingScreen.controlsTbl indexPathsForVisibleRows];
+    [self.editingScreen.controlsTbl
+                    reloadRowsAtIndexPaths:indexPaths
+                    withRowAnimation:UITableViewRowAnimationFade];
+}
+
+
 -(void)hideKeyboard{
     [self.view endEditing:YES];
 }

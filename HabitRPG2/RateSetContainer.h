@@ -17,6 +17,7 @@
 #import "EditNavigationController.h"
 #import "P_ResizeResponder.h"
 #import "P_ItemFlexibleListDelegate.h"
+#import "P_WeeklyActiveDaysDelegate.h"
 
 @interface RateSetContainer :
 SHView
@@ -33,6 +34,7 @@ SHView
 @property (weak,nonatomic) id<P_RateSetterDelegate> _Nullable delegate;
 @property (weak,nonatomic) id<P_ItemFlexibleListDelegate> _Nullable tblDelegate;
 @property (weak,nonatomic) id<P_ResizeResponder> _Nullable resizeResponder;
+@property (weak,nonatomic) id<P_WeeklyActiveDaysDelegate> _Nullable weeklyDaysDelegate;
 @property (strong,nonatomic) _Nullable id<P_UtilityStore> utilityStore;
 @property (strong,nonatomic) Daily * _Nonnull daily;
 +(instancetype _Nonnull )newWithDaily:(Daily * _Nonnull)daily;

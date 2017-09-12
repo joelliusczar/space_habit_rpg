@@ -70,7 +70,9 @@
     NSInteger row = [self.daily addYearlyItem:self.daily.isInverseRateType
                                      monthNum:month
                                    dayOfMonth:dayOfMonth+1];
-    [self addItemToTableAndScale:row];
+    if(row >= 0){
+        [self addItemToTableAndScale:row];
+    }
 }
 
 

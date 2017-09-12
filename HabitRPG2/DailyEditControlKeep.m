@@ -129,6 +129,7 @@
         _rateSetContainer.utilityStore = SharedGlobal;
         [self addToResizeResponderSet:_rateSetContainer];
         _rateSetContainer.tblDelegate = self.delegate;
+        _rateSetContainer.weeklyDaysDelegate = self.delegate;
     }
     return _rateSetContainer;
 }

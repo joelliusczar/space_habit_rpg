@@ -63,7 +63,7 @@
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
-//add
+
 -(void)pickerSelection_action:(SHEventInfo *)eventInfo{
     wrapReturnVoid wrappedCall = ^(){
         UIPickerView *picker = (UIPickerView *)eventInfo.senderStack[1];
@@ -80,7 +80,9 @@
     NSInteger row = [self.daily addMonthlyItem:self.daily.isInverseRateType
                                        ordinal:weekOrdinal
                                   dayOfWeekNum:dayOfWeek];
-    [self addItemToTableAndScale:row];
+    if(row >= 0){
+        [self addItemToTableAndScale:row];
+    }
 }
 
 
