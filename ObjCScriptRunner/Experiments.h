@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "Protocus.h"
 #import "UserOfProtocus.h"
+#import "PossibleInvocationCockblock.h"
 
 @interface Experiments : NSObject
 @property (assign,nonatomic) NSInteger stupidNum;
 @property (strong,nonatomic) id<Protocus> proteboat;
 @property (strong,nonatomic) UserOfProtocus *protocurious;
+@property (strong,nonatomic) id<PossibleInvocationCockblock> cb;
 +(void)dateToJSON;
 +(void)getAllIvar;
 +(void)oversizedCast;
@@ -29,6 +31,14 @@
 +(void)useImuteAsMute;
 +(void)insertAtLast;
 +(void)insertWhere;
++(void)ExpArrayStuff;
++(void)indexThatShit;
++(void)tryThatSubscriptAgain;
+-(void)acceptsProtocolGuy:(id<PossibleInvocationCockblock>) pg;
++(void)invokesShit;
++(void)methodSignatureShit;
+-(void)acceptsArgs:(NSInteger)num andStr:(NSString *)str and:(NSArray *)array;
++(void)protocolTestShit;
 @end
 
 #import "Experiments+Charlie.h"

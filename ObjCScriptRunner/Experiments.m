@@ -13,6 +13,11 @@
 #import "Experiments+Bravo.h"
 #import "UserOfProtocus.h"
 #import "XPSideKick.h"
+#import "ExpArray.h"
+#import "Indexable.h"
+#import "SelectorDict.h"
+#import "CockblockShield.h"
+#import "Holder.h"
 
 
 
@@ -172,4 +177,60 @@
 }
 
 
++(void)ExpArrayStuff{
+    ExpArray *arr = [[ExpArray alloc] init];
+    House *h = arr[0];
+    arr.hause = nil;
+    h = arr[0];
+}
+
++(void)indexThatShit{
+    Indexable *indexable = [[Indexable alloc]init];
+    id result = indexable[5];
+    result = indexable[@"Hello"];
+}
+
++(void)tryThatSubscriptAgain{
+    //SelectorDict *dict = [[SelectorDict alloc] init];
+    //id result = dict[@selector(helloMethod)];
+    //dict[@selector(helloMethod)] = @"Hello";
+}
+
+-(void)acceptsProtocolGuy:(id<PossibleInvocationCockblock>)pg{
+    
+}
+
++(void)invokesShit{
+    Experiments *exp = [Experiments new];
+    NSMethodSignature *sig = [exp methodSignatureForSelector:@selector(acceptsProtocolGuy:)];
+    NSInvocation *invoker = [NSInvocation invocationWithMethodSignature:sig];
+    NSObject *obj = [NSObject new];
+    CockblockShield *shield = [CockblockShield new];
+    [invoker setTarget:exp];
+    [invoker setSelector:@selector(acceptsProtocolGuy:)];
+    
+    [invoker setArgument:&shield atIndex:2];
+    [invoker invoke];
+    
+    [invoker setArgument:&obj atIndex:2];
+    [invoker invoke];
+}
+
+-(void)acceptsArgs:(NSInteger)num andStr:(NSString *)str and:(NSArray *)array{}
+
+
++(void)methodSignatureShit{
+//    Experiments *exp = [Experiments new];
+//    Method m = class_getInstanceMethod(exp.class,@selector(acceptsProtocolGuy:));
+//    struct objc_method_description *s = method_getDescription(m);
+    
+}
+
+
++(void)protocolTestShit{
+    Experiments *exp = [Experiments new];
+    [exp conformsToProtocol:PossibleInvocationCockblock];
+}
+
+    
 @end

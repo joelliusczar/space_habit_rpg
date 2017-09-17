@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		270366E51F6B7D1900D4BDC8 /* SHControlKeepTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 270366E41F6B7D1900D4BDC8 /* SHControlKeepTest.m */; };
+		270366E81F6BA2E200D4BDC8 /* TestKeepObjectAlt.m in Sources */ = {isa = PBXBuildFile; fileRef = 270366E71F6BA2E200D4BDC8 /* TestKeepObjectAlt.m */; };
+		270366EB1F6BA86A00D4BDC8 /* SelectorDict.m in Sources */ = {isa = PBXBuildFile; fileRef = 270366EA1F6BA86A00D4BDC8 /* SelectorDict.m */; };
+		270366EE1F6CB0AF00D4BDC8 /* SELPtr.m in Sources */ = {isa = PBXBuildFile; fileRef = 270366ED1F6CB0AF00D4BDC8 /* SELPtr.m */; };
+		270366F51F6CF2B500D4BDC8 /* CockblockShield.m in Sources */ = {isa = PBXBuildFile; fileRef = 270366F41F6CF2B500D4BDC8 /* CockblockShield.m */; };
+		270366F81F6DCD6600D4BDC8 /* Holder.m in Sources */ = {isa = PBXBuildFile; fileRef = 270366F71F6DCD6600D4BDC8 /* Holder.m */; };
 		2709B3911EE4FBDC00EEE5CC /* Model.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 273782391EE4DB9C00EA5B1D /* Model.xcdatamodeld */; };
 		2709B3991EEF750800EEE5CC /* ReportServiceCaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 2709B3981EEF750800EEE5CC /* ReportServiceCaller.m */; };
 		2709B39C1EF0D31200EEE5CC /* Interceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2709B39B1EF0D31200EEE5CC /* Interceptor.m */; };
@@ -97,6 +103,12 @@
 		27A559BC1F5E5F3000C915E6 /* NSMutableArray+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559BB1F5E5F3000C915E6 /* NSMutableArray+Helper.m */; };
 		27A559CD1F6258BF00C915E6 /* Daily+Mapable.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559CC1F6258BF00C915E6 /* Daily+Mapable.m */; };
 		27A559D01F65A19A00C915E6 /* ItemFlexibleListEventInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559CF1F65A19A00C915E6 /* ItemFlexibleListEventInfo.m */; };
+		27A559D31F67893A00C915E6 /* ExpArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559D21F67893A00C915E6 /* ExpArray.m */; };
+		27A559D61F67986900C915E6 /* SHControlKeep.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559D51F67986900C915E6 /* SHControlKeep.m */; };
+		27A559D91F67A98300C915E6 /* Indexable.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559D81F67A98300C915E6 /* Indexable.m */; };
+		27A559DC1F6A3F9E00C915E6 /* TestKeepObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559DB1F6A3F9E00C915E6 /* TestKeepObject.m */; };
+		27A559E21F6A41B600C915E6 /* TestKeepSubject_A.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559E11F6A41B600C915E6 /* TestKeepSubject_A.m */; };
+		27A559E51F6A41EA00C915E6 /* TestKeepSubject_B.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559E41F6A41E900C915E6 /* TestKeepSubject_B.m */; };
 		27AF22E71F270FBA00F7D872 /* SHControlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AF22E61F270FBA00F7D872 /* SHControlController.m */; };
 		27B0CD001F2BEB17005BEC75 /* Reminder+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CCFD1F2BEB17005BEC75 /* Reminder+CoreDataClass.m */; };
 		27B0CD011F2BEB17005BEC75 /* Reminder+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0CCFF1F2BEB17005BEC75 /* Reminder+CoreDataProperties.m */; };
@@ -226,6 +238,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		270366E41F6B7D1900D4BDC8 /* SHControlKeepTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHControlKeepTest.m; sourceTree = "<group>"; };
+		270366E61F6BA2E200D4BDC8 /* TestKeepObjectAlt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKeepObjectAlt.h; sourceTree = "<group>"; };
+		270366E71F6BA2E200D4BDC8 /* TestKeepObjectAlt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestKeepObjectAlt.m; sourceTree = "<group>"; };
+		270366E91F6BA86A00D4BDC8 /* SelectorDict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectorDict.h; sourceTree = "<group>"; };
+		270366EA1F6BA86A00D4BDC8 /* SelectorDict.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectorDict.m; sourceTree = "<group>"; };
+		270366EC1F6CB0AF00D4BDC8 /* SELPtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SELPtr.h; sourceTree = "<group>"; };
+		270366ED1F6CB0AF00D4BDC8 /* SELPtr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SELPtr.m; sourceTree = "<group>"; };
+		270366F11F6CB8E200D4BDC8 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		270366F21F6CEFBE00D4BDC8 /* PossibleInvocationCockblock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PossibleInvocationCockblock.h; sourceTree = "<group>"; };
+		270366F31F6CF2B500D4BDC8 /* CockblockShield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CockblockShield.h; sourceTree = "<group>"; };
+		270366F41F6CF2B500D4BDC8 /* CockblockShield.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CockblockShield.m; sourceTree = "<group>"; };
+		270366F61F6DCD6600D4BDC8 /* Holder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Holder.h; sourceTree = "<group>"; };
+		270366F71F6DCD6600D4BDC8 /* Holder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Holder.m; sourceTree = "<group>"; };
 		2709B3921EEF733400EEE5CC /* Model 23.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 23.xcdatamodel"; sourceTree = "<group>"; };
 		2709B3961EEF74E900EEE5CC /* P_ReportServiceCaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ReportServiceCaller.h; sourceTree = "<group>"; };
 		2709B3971EEF750800EEE5CC /* ReportServiceCaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportServiceCaller.h; sourceTree = "<group>"; };
@@ -409,6 +434,21 @@
 		27A559CC1F6258BF00C915E6 /* Daily+Mapable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Daily+Mapable.m"; sourceTree = "<group>"; };
 		27A559CE1F65A19A00C915E6 /* ItemFlexibleListEventInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemFlexibleListEventInfo.h; sourceTree = "<group>"; };
 		27A559CF1F65A19A00C915E6 /* ItemFlexibleListEventInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemFlexibleListEventInfo.m; sourceTree = "<group>"; };
+		27A559D11F67893A00C915E6 /* ExpArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpArray.h; sourceTree = "<group>"; };
+		27A559D21F67893A00C915E6 /* ExpArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpArray.m; sourceTree = "<group>"; };
+		27A559D41F67986900C915E6 /* SHControlKeep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHControlKeep.h; sourceTree = "<group>"; };
+		27A559D51F67986900C915E6 /* SHControlKeep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHControlKeep.m; sourceTree = "<group>"; };
+		27A559D71F67A98300C915E6 /* Indexable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Indexable.h; sourceTree = "<group>"; };
+		27A559D81F67A98300C915E6 /* Indexable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Indexable.m; sourceTree = "<group>"; };
+		27A559DA1F6A3F9E00C915E6 /* TestKeepObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKeepObject.h; sourceTree = "<group>"; };
+		27A559DB1F6A3F9E00C915E6 /* TestKeepObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestKeepObject.m; sourceTree = "<group>"; };
+		27A559DD1F6A3FBE00C915E6 /* TestKeepProtocol_A.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKeepProtocol_A.h; sourceTree = "<group>"; };
+		27A559DE1F6A3FD000C915E6 /* TestKeepProtocol_B.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKeepProtocol_B.h; sourceTree = "<group>"; };
+		27A559DF1F6A3FEB00C915E6 /* TestKeepProtocol_C.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKeepProtocol_C.h; sourceTree = "<group>"; };
+		27A559E01F6A41B600C915E6 /* TestKeepSubject_A.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKeepSubject_A.h; sourceTree = "<group>"; };
+		27A559E11F6A41B600C915E6 /* TestKeepSubject_A.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestKeepSubject_A.m; sourceTree = "<group>"; };
+		27A559E31F6A41E900C915E6 /* TestKeepSubject_B.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKeepSubject_B.h; sourceTree = "<group>"; };
+		27A559E41F6A41E900C915E6 /* TestKeepSubject_B.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestKeepSubject_B.m; sourceTree = "<group>"; };
 		27AE66541E8720F9000F31BD /* CentralViewControllerP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralViewControllerP.h; sourceTree = "<group>"; };
 		27AF22E51F270FBA00F7D872 /* SHControlController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHControlController.h; sourceTree = "<group>"; };
 		27AF22E61F270FBA00F7D872 /* SHControlController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHControlController.m; sourceTree = "<group>"; };
@@ -787,6 +827,17 @@
 				270D39B11F58C7B000F371F0 /* XPSideKick.m */,
 				27A559B41F5E329B00C915E6 /* Experiments+Charlie.h */,
 				27A559B51F5E329B00C915E6 /* Experiments+Charlie.m */,
+				27A559D11F67893A00C915E6 /* ExpArray.h */,
+				27A559D21F67893A00C915E6 /* ExpArray.m */,
+				27A559D71F67A98300C915E6 /* Indexable.h */,
+				27A559D81F67A98300C915E6 /* Indexable.m */,
+				270366E91F6BA86A00D4BDC8 /* SelectorDict.h */,
+				270366EA1F6BA86A00D4BDC8 /* SelectorDict.m */,
+				270366F21F6CEFBE00D4BDC8 /* PossibleInvocationCockblock.h */,
+				270366F31F6CF2B500D4BDC8 /* CockblockShield.h */,
+				270366F41F6CF2B500D4BDC8 /* CockblockShield.m */,
+				270366F61F6DCD6600D4BDC8 /* Holder.h */,
+				270366F71F6DCD6600D4BDC8 /* Holder.m */,
 			);
 			path = ObjCScriptRunner;
 			sourceTree = "<group>";
@@ -863,6 +914,7 @@
 				275FEEFF1EE344BB00AED1A2 /* DateHelperTest.m */,
 				275FEF091EE3CF3000AED1A2 /* DailyHelperTest.m */,
 				274A382E1F2150ED00F31E0F /* MathTest.m */,
+				270366E41F6B7D1900D4BDC8 /* SHControlKeepTest.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -872,6 +924,17 @@
 			children = (
 				277ABF2C1E9C31C0008CC239 /* MockStdLibWrapper.h */,
 				277ABF2D1E9C31C0008CC239 /* MockStdLibWrapper.m */,
+				27A559DA1F6A3F9E00C915E6 /* TestKeepObject.h */,
+				27A559DB1F6A3F9E00C915E6 /* TestKeepObject.m */,
+				27A559DD1F6A3FBE00C915E6 /* TestKeepProtocol_A.h */,
+				27A559DE1F6A3FD000C915E6 /* TestKeepProtocol_B.h */,
+				27A559DF1F6A3FEB00C915E6 /* TestKeepProtocol_C.h */,
+				27A559E01F6A41B600C915E6 /* TestKeepSubject_A.h */,
+				27A559E11F6A41B600C915E6 /* TestKeepSubject_A.m */,
+				27A559E31F6A41E900C915E6 /* TestKeepSubject_B.h */,
+				27A559E41F6A41E900C915E6 /* TestKeepSubject_B.m */,
+				270366E61F6BA2E200D4BDC8 /* TestKeepObjectAlt.h */,
+				270366E71F6BA2E200D4BDC8 /* TestKeepObjectAlt.m */,
 			);
 			name = MockClasses;
 			sourceTree = "<group>";
@@ -1207,6 +1270,10 @@
 				271C048A1E8C955A002221E9 /* SingletonCluster.m */,
 				272428291F41090D0028B22E /* NSException+SHCommonExceptions.h */,
 				2724282A1F41090D0028B22E /* NSException+SHCommonExceptions.m */,
+				27A559D41F67986900C915E6 /* SHControlKeep.h */,
+				27A559D51F67986900C915E6 /* SHControlKeep.m */,
+				270366EC1F6CB0AF00D4BDC8 /* SELPtr.h */,
+				270366ED1F6CB0AF00D4BDC8 /* SELPtr.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1255,6 +1322,7 @@
 				68F3F9AD1D70E82E00840DD2 /* main.m */,
 				68F3F9BD1D70E82E00840DD2 /* Info.plist */,
 				68F3F9AC1D70E82E00840DD2 /* Supporting Files */,
+				270366F11F6CB8E200D4BDC8 /* PrefixHeader.pch */,
 			);
 			path = HabitRPG2;
 			sourceTree = "<group>";
@@ -1527,14 +1595,19 @@
 			files = (
 				272428421F42AFFF0028B22E /* House+Ass.m in Sources */,
 				274A37E71F145CA400F31E0F /* House.m in Sources */,
+				27A559D91F67A98300C915E6 /* Indexable.m in Sources */,
 				270D39AF1F58C6B300F371F0 /* UserOfProtocus.m in Sources */,
 				274A37D21F13280400F31E0F /* PersonThingUser.m in Sources */,
 				274A37D51F133AA200F31E0F /* Experiments.m in Sources */,
+				270366EB1F6BA86A00D4BDC8 /* SelectorDict.m in Sources */,
 				274A37EA1F145D2200F31E0F /* House+Things.m in Sources */,
 				274A38381F2194FD00F31E0F /* ParentMan.m in Sources */,
+				270366F81F6DCD6600D4BDC8 /* Holder.m in Sources */,
 				2710BB961F514E8700A43B6C /* Experiments+Bravo.m in Sources */,
+				270366F51F6CF2B500D4BDC8 /* CockblockShield.m in Sources */,
 				270D39B21F58C7B000F371F0 /* XPSideKick.m in Sources */,
 				274A37CF1F1313A700F31E0F /* PersonThing.m in Sources */,
+				27A559D31F67893A00C915E6 /* ExpArray.m in Sources */,
 				274A37CC1F107B7A00F31E0F /* MassPrinter.m in Sources */,
 				27A559B61F5E329B00C915E6 /* Experiments+Charlie.m in Sources */,
 				274A37C61F107ACF00F31E0F /* main.m in Sources */,
@@ -1546,13 +1619,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27A559E51F6A41EA00C915E6 /* TestKeepSubject_B.m in Sources */,
 				277ABF301E9C31F3008CC239 /* ZoneHelperTest.m in Sources */,
+				27A559DC1F6A3F9E00C915E6 /* TestKeepObject.m in Sources */,
+				270366E81F6BA2E200D4BDC8 /* TestKeepObjectAlt.m in Sources */,
 				275FEF0A1EE3CF3000AED1A2 /* DailyHelperTest.m in Sources */,
 				275FEF001EE344BB00AED1A2 /* DateHelperTest.m in Sources */,
 				277ABF5F1EA33320008CC239 /* MonsterHelperTest.m in Sources */,
 				277ABF6E1EA86240008CC239 /* TestProbWeightsThreeItems.m in Sources */,
+				270366E51F6B7D1900D4BDC8 /* SHControlKeepTest.m in Sources */,
 				277ABF5D1EA27A91008CC239 /* CommonUtilitiesTest.m in Sources */,
 				277ABEF21E975959008CC239 /* ModelsTest.m in Sources */,
+				27A559E21F6A41B600C915E6 /* TestKeepSubject_A.m in Sources */,
 				2709B3A31EF56AFC00EEE5CC /* NSDate+testReplace.m in Sources */,
 				277ABF701EAD98EB008CC239 /* ProbilityWeightTestFourItems.m in Sources */,
 				277ABF691EA46CE1008CC239 /* ProbilityWeightTest.m in Sources */,
@@ -1580,11 +1658,13 @@
 				272427E31F391DA40028B22E /* SHView.m in Sources */,
 				27B0CDDC1F2BF4C9005BEC75 /* Daily+CoreDataClass.m in Sources */,
 				272596391F32D6C1006EECD2 /* SHSpinPicker.m in Sources */,
+				270366EE1F6CB0AF00D4BDC8 /* SELPtr.m in Sources */,
 				27B0CDD11F2BEECD005BEC75 /* TodoTransaction+CoreDataProperties.m in Sources */,
 				27B0CD151F2BEB94005BEC75 /* Zone+CoreDataClass.m in Sources */,
 				68F3F9F31D70FC5E00840DD2 /* TodoViewController.m in Sources */,
 				272428231F4101330028B22E /* ItemFlexibleListView.m in Sources */,
 				27B0CD011F2BEB17005BEC75 /* Reminder+CoreDataProperties.m in Sources */,
+				27A559D61F67986900C915E6 /* SHControlKeep.m in Sources */,
 				27B0CD101F2BEB78005BEC75 /* Monster+CoreDataProperties.m in Sources */,
 				27C3C21C1F001DF300F205A6 /* ReminderListView.m in Sources */,
 				68F3FA021D74897A00840DD2 /* MenuViewController.m in Sources */,
@@ -1848,6 +1928,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_HEADERS_RUN_UNIFDEF = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/HabitRPG2/PrefixHeader.pch";
 				INFOPLIST_FILE = HabitRPG2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1865,6 +1947,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_HEADERS_RUN_UNIFDEF = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/HabitRPG2/PrefixHeader.pch";
 				INFOPLIST_FILE = HabitRPG2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

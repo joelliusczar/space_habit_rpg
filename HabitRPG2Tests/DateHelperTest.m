@@ -99,8 +99,7 @@
 
 -(void)testCreateSimpleTime{
     NSDate *testDate = [NSDate createSimpleTime:2 minute:0 second:0];
-    XCTAssertEqual(testDate.timeIntervalSince1970,7200);
-    testDate = [NSDate createSimpleTime:24 minute:1 second:1];
+    XCTAssertEqual(testDate.timeIntervalSince1970,25200);
 }
 
 
