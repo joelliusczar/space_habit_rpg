@@ -10,12 +10,18 @@
 #import "Protocus.h"
 #import "UserOfProtocus.h"
 #import "PossibleInvocationCockblock.h"
+#import "House.h"
+#import "WeakLeash.h"
 
 @interface Experiments : NSObject
 @property (assign,nonatomic) NSInteger stupidNum;
 @property (strong,nonatomic) id<Protocus> proteboat;
 @property (strong,nonatomic) UserOfProtocus *protocurious;
 @property (strong,nonatomic) id<PossibleInvocationCockblock> cb;
+@property (strong,nonatomic) House *houseOfMyOwn;
+@property (strong,nonatomic) NSHashTable *hashSet;
+@property (strong,nonatomic) WeakLeash *wl;
+@property (strong,nonatomic) NSPointerArray *pointers;
 +(void)dateToJSON;
 +(void)getAllIvar;
 +(void)oversizedCast;
@@ -38,7 +44,18 @@
 +(void)invokesShit;
 +(void)methodSignatureShit;
 -(void)acceptsArgs:(NSInteger)num andStr:(NSString *)str and:(NSArray *)array;
-+(void)protocolTestShit;
+-(void)hashStuffOne;
+-(void)hashSTuffTwo;
+-(void)hashStuffThree;
++(void)TestHashSet;
+-(void)weak1;
+-(void)weak2;
++(void)TestWeakStuff;
+-(void)weakArray;
++(void)testWeakArray;
++(void)stackOverflowHashQuestion;
++(void)stackOverflowHashQuestionProp;
++(void)stackOverflowHashQuestion2;
 @end
 
 #import "Experiments+Charlie.h"

@@ -35,6 +35,7 @@
 
 
 -(void)viewDidLoad{
+    [super viewDidLoad];
     UITapGestureRecognizer *tapGestureBG = [[UITapGestureRecognizer alloc]
                                             initWithTarget:self
                                             action:@selector(background_tap_action:)];

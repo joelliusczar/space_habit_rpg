@@ -24,11 +24,12 @@
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(self.delegate){
-        return [self.delegate tableView:tableView cellForRowAtIndexPath:indexPath];
+    if(!self.delegate){
+        //this will crash because the delegate needs to implement tableView:cellForRowAtIndexPath:
+        @throw [NSException exceptionWithName:@"missing delegate"
+                                       reason:@"delegate needs to be instantiated" userInfo:nil];
     }
-    //this will crash because the delegate needs to implement tableView:cellForRowAtIndexPath:
-    return nil;
+    return [self.delegate tableView:tableView cellForRowAtIndexPath:indexPath];
 }
 
 

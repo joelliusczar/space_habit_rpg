@@ -11,8 +11,8 @@
 #import "TestKeepProtocol_B.h"
 
 @interface TestKeepSubject_B : NSObject
-@property (strong,nonatomic) id<TestKeepProtocol_A> delegateA2;
-@property (strong,nonatomic) id<TestKeepProtocol_B> delegateB2;
+@property (weak,nonatomic) id<TestKeepProtocol_A> delegateA2;
+@property (weak,nonatomic) id<TestKeepProtocol_B> delegateB2;
 -(NSInteger)callGetA2;
 -(NSInteger)callGetB2;
 @end

@@ -12,6 +12,7 @@
 @property (strong,nonatomic) NSString *couch;
 @property (assign,nonatomic) NSInteger count;
 @property (assign,nonatomic) NSInteger lamps;
+@property (weak,nonatomic) NSHashTable *hs;
 -(void)returnsNothing;
 -(NSInteger)getFive;
 @end

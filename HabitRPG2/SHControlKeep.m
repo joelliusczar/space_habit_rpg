@@ -7,18 +7,25 @@
 //
 
 #import "SHControlKeep.h"
+#import "NSMutableDictionary+Helper.h"
+
 
 @interface AssociatedObjectAndSet: NSObject
 @property (strong,nonatomic) id object;
-@property (strong,nonatomic) NSMutableSet *set;
-+(instancetype)newWithSet:(NSMutableSet *)set;
+@property (strong,nonatomic) NSHashTable *set; //strong references are maintained elsewhere
 @end
 
 @implementation AssociatedObjectAndSet
-+(instancetype)newWithSet:(NSMutableSet *)set{
-    AssociatedObjectAndSet *instance = [[AssociatedObjectAndSet alloc] init];
-    instance.set = set;
-    return instance;
+-(instancetype)init{
+    if(self = [super init]){
+        _set = [NSHashTable weakObjectsHashTable];
+    }
+    return self;
+}
+
+-(void)dealloc{
+    _object = nil;
+    _set = nil;
 }
 @end
 
@@ -31,31 +38,32 @@
 @implementation SHControlKeep
 
 -(NSMutableArray<LazyLoadBlock> *)lazyLoaders{
-    if(nil == _lazyLoaders){
-        _lazyLoaders = [NSMutableArray array];
-    }
-    return _lazyLoaders;
+    return _lazyLoaders?_lazyLoaders:[NSMutableArray<LazyLoadBlock> array];
 }
 
 
 -(NSMutableArray *)controlBackend{
-    if(nil == _controlBackend){
-        _controlBackend = [NSMutableArray array];
-    }
-    return _controlBackend;
+    return _controlBackend?_controlBackend:[NSMutableArray array];
 }
 
 
 -(NSMutableDictionary *)associations{
-    if(nil == _associations){
-        _associations = [NSMutableDictionary dictionary];
-    }
-    return _associations;
+    return _associations?_associations:[NSMutableDictionary dictionary];
 }
 
 
 -(NSUInteger)count{
     return self.lazyLoaders.count;
+}
+
+
+-(NSUInteger)associatedCount{
+    return self.associations.count;
+}
+
+
+NSString* buildKey(SELPtr *sel,NSString *secondaryKey){
+    return [NSString stringWithFormat:@"%@:%@",secondaryKey,NSStringFromSelector(sel.selector)];
 }
 
 
@@ -65,15 +73,25 @@
     if(control != [NSNull null]){
         return control;
     }
-    control = self.lazyLoaders[idx](self);
+    control = self.lazyLoaders[idx](self); //any associations will happen in the provided block
     self.controlBackend[idx] = control?control:[NSNull null];
     return control;
 }
 
 
+-(void)setObject:(id)loaderBlock atIndexedSubscript:(NSUInteger)idx{
+    self.lazyLoaders[idx] = loaderBlock;
+    self.controlBackend[idx] = [NSNull null];
+}
+
+
+-(id)objectForKeyedSubscript:(SELPtr *)key secondaryKey:(NSString *)secondaryKey{
+    return self.associations[buildKey(key,secondaryKey)];
+}
+
+
 -(id)objectForKeyedSubscript:(SELPtr *)key{
-    
-    return self.associations[NSStringFromSelector(key.selector)];
+    return [self objectForKeyedSubscript:key secondaryKey:@""];
 }
 
 
@@ -89,12 +107,11 @@ BOOL associateObject(SEL selector,id subject,id object){
 }
 
 
--(AssociatedObjectAndSet *)getOrCreateAssociationForKey:(SELPtr *)key{
-    AssociatedObjectAndSet *association = self.associations[NSStringFromSelector(key.selector)];
+-(AssociatedObjectAndSet *)getOrCreateAssociationForKey:(NSString *)key{
+    AssociatedObjectAndSet *association = self.associations[key];
     if(nil == association){
-        association = [AssociatedObjectAndSet
-                       newWithSet:[NSMutableSet set]];
-        self.associations[NSStringFromSelector(key.selector)] = association;
+        association = [[AssociatedObjectAndSet alloc] init];
+        self.associations[key] = association;
     }
     return association;
 }
@@ -102,22 +119,33 @@ BOOL associateObject(SEL selector,id subject,id object){
 
 //call this from a loadedBlock to add a subject to the set and wireup the object recieving actions
 //if it exists
--(BOOL)addSubjectToActionSet:(id)subject withKey:(SELPtr *)key{
-    AssociatedObjectAndSet *association = [self getOrCreateAssociationForKey:key];
+-(BOOL)addSubjectToActionSet:(id)subject withKey:(SELPtr *)key secondaryKey:(NSString *)secondaryKey{
+    AssociatedObjectAndSet *association = [self getOrCreateAssociationForKey:buildKey(key,secondaryKey)];
     [association.set addObject:subject];
+    
     return association.object?associateObject(key.selector,subject,association.object):false;
+}
+
+-(BOOL)addSubjectToActionSet:(id)subject withKey:(SELPtr *)key{
+    return [self addSubjectToActionSet:subject withKey:key secondaryKey:@""];
 }
 
 
 //use this when setting something as a global delegate
--(void)setObject:(id)obj forKeyedSubscript:(SELPtr *)key{
-    AssociatedObjectAndSet *association = [self getOrCreateAssociationForKey:key];
+-(void)setObject:(id)obj forKeyedSubscript:(SELPtr *)key secondaryKey:(NSString *)secondaryKey{
+    AssociatedObjectAndSet *association = [self getOrCreateAssociationForKey:buildKey(key,secondaryKey)];
     association.object = obj;
-    for(id subject in association.set){
-        //assign our new object to each subject in the set associated with that selector
-        associateObject(key.selector,subject,association.object);
+    @autoreleasepool{
+        
+        for(id subject in association.set){
+            //assign our new object to each subject in the set associated with that selector
+            associateObject(key.selector,subject,association.object);
+        }
     }
-    
+}
+
+-(void)setObject:(id)obj forKeyedSubscript:(SELPtr *)key{
+    [self setObject:obj forKeyedSubscript:key secondaryKey:@""];
 }
 
 

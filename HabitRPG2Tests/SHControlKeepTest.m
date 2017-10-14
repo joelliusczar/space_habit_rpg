@@ -13,6 +13,7 @@
 #import "TestKeepSubject_A.h"
 #import "TestKeepSubject_B.h"
 #import "TestKeepObjectAlt.h"
+#import <objc/runtime.h>
 
 
 @interface SHControlKeepTest : XCTestCase
@@ -22,6 +23,7 @@
 @property (copy,nonatomic) LazyLoadBlock blockB;
 @property (copy,nonatomic) LazyLoadBlock invalidBlock;
 @property (copy,nonatomic) LazyLoadBlock blockA2;
+@property (weak,nonatomic) TestKeepSubject_A *designatedWeak;
 @end
 
 @implementation SHControlKeepTest
@@ -68,12 +70,33 @@
     [super tearDown];
 }
 
+
+NSHashTable* getSet(SHControlKeep *keep,NSString *key){
+    Ivar iv = class_getInstanceVariable(keep.class,"_associations");
+    NSDictionary *dict = object_getIvar(keep,iv);
+    id assocItem = dict[key];
+    Ivar iv2 = class_getInstanceVariable([assocItem class],"_set");
+    return object_getIvar(assocItem,iv2);
+}
+
+
+LazyLoadBlock getNumberedBlock(int num){
+    return ^id(SHControlKeep *meep){
+        TestKeepSubject_A *subA = [[TestKeepSubject_A alloc] init];
+        subA.changer = num;
+        [meep addSubjectToActionSet:subA withKey:takeKey(setDelegateA:)];
+        return subA;
+    };
+}
+
+
 -(void)testCount{
     [self.keep addLoaderBlock:self.blockA];
     XCTAssertEqual(self.keep.count,1);
     [self.keep addLoaderBlock:self.nilBlock];
     [self.keep addLoaderBlock:self.blockB];
     XCTAssertEqual(self.keep.count,3);
+    XCTAssertEqual(self.keep.associatedCount,0);
 }
 
 
@@ -81,6 +104,7 @@
     [self.keep addLoaderBlock:self.nilBlock];
     id result = self.keep[0];
     XCTAssertNil(result);
+    XCTAssertEqual(self.keep.associatedCount,0);
 }
 
 -(void)testSubjectNoObject{
@@ -89,6 +113,7 @@
     XCTAssertEqual([subA callGetA],0);
     XCTAssertEqual([subA callGetB],0);
     XCTAssertEqual([subA callGetC],0);
+    XCTAssertEqual(self.keep.associatedCount,3);
 }
 
 -(void)testPersistency{
@@ -118,6 +143,7 @@
     self.keep[takeKey(setDelegateB:)] = obj;
     XCTAssertEqual([subA callGetB],65);
     XCTAssertEqual([subA2 callGetB],67);
+    
 }
 
 -(TestKeepSubject_A *)loadThenReplaceSetup{
@@ -165,6 +191,54 @@
 
 
 -(void)testObjectThenAddSubject{
+    [self.keep addLoaderBlock:self.blockA];
+    TestKeepObject *obj = [[TestKeepObject alloc] init];
+    self.keep[takeKey(setDelegateA:)] = obj;
+    XCTAssertEqual(self.keep.associatedCount,1);
+    self.keep[takeKey(setDelegateB:)] = obj;
+    XCTAssertEqual(self.keep.associatedCount,2);
+    TestKeepSubject_A *subA = self.keep[0];
+    XCTAssertEqual(self.keep.associatedCount,3);
+    XCTAssertEqual([subA callGetA],52);
+    XCTAssertEqual([subA callGetB],65);
+    XCTAssertEqual([subA callGetC],0);
+}
+
+-(void)testDeprecatedSubjectRelease{
+    [self.keep addLoaderBlock:self.blockA];
+    TestKeepObject *obj = [[TestKeepObject alloc] init];
+    self.keep[takeKey(setDelegateA:)] = obj;
+    self.keep[takeKey(setDelegateB:)] = obj;
+    TestKeepSubject_A *subA = self.keep[0];
+    NSHashTable *set = getSet(self.keep,@":setDelegateA:");
+    @autoreleasepool{
+        BOOL isInSet = [set containsObject:subA];
+        XCTAssertTrue(isInSet);
+    }
+    subA = nil;
+    self.keep[0] = self.nilBlock;
+    XCTAssertEqual(set.allObjects.count,0);
+}
+
+-(void)testMemoryLoopingThroughSet{
+    TestKeepObject *obj = [[TestKeepObject alloc] init];
+    self.keep[takeKey(setDelegateA:)] = obj;
+    int limit = 25;
+    for(int i = 0; i < limit;i++){
+        [self.keep addLoaderBlock:getNumberedBlock(i)];
+    }
+    self.keep[takeKey(setDelegateA:)] = nil;
+    for(int i = 0;i < limit;i++){
+        self.keep[i] = self.nilBlock;
+
+    }
+    NSHashTable *set = getSet(self.keep,@":setDelegateA:");
+
+    XCTAssertEqual(set.allObjects.count,0);
+    for(int i = 0; i < set.allObjects.count;i++){
+        TestKeepSubject_A *subA = set.allObjects[i];
+        NSLog(@"%ld",subA.changer);
+    }
     
 }
 

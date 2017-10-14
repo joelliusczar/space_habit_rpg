@@ -12,9 +12,9 @@
 #import "TestKeepProtocol_C.h"
 
 @interface TestKeepSubject_A : NSObject
-@property (strong,nonatomic) id<TestKeepProtocol_A> delegateA;
-@property (strong,nonatomic) id<TestKeepProtocol_B> delegateB;
-@property (strong,nonatomic) id<TestKeepProtocol_C> delegateC;
+@property (weak,nonatomic) id<TestKeepProtocol_A> delegateA;
+@property (weak,nonatomic) id<TestKeepProtocol_B> delegateB;
+@property (weak,nonatomic) id<TestKeepProtocol_C> delegateC;
 @property (assign,nonatomic) NSInteger changer;
 -(NSInteger)callGetA;
 -(NSInteger)callGetB;

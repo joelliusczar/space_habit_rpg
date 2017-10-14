@@ -170,10 +170,16 @@ static NSString *const EntityName = @"Daily";
     [self.dailiesTable beginUpdates];
 }
 
+
+/*
+This will be called the user creates a new daily, checks it off, or deletes one
+*/
 -(void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath{
+    NSAssert(controller==self.incompleteItems||controller==self.completeItems,
+             @"controller is pointing to an invalid objects");
     NSInteger sectionNum = controller==self.incompleteItems?INCOMPLETE:COMPLETE;
-    NSIndexPath *customExistingPath = indexPath?[NSIndexPath indexPathForRow:indexPath.row inSection:sectionNum]:nil;
-    NSIndexPath *customNewPath = newIndexPath?[NSIndexPath indexPathForRow:newIndexPath.row inSection:sectionNum]:nil;
+    NSIndexPath *customExistingPath = [NSIndexPath indexPathForRow:indexPath.row inSection:sectionNum];
+    NSIndexPath *customNewPath = [NSIndexPath indexPathForRow:newIndexPath.row inSection:sectionNum];
     
     switch (type) {
         case NSFetchedResultsChangeInsert:

@@ -226,10 +226,105 @@
     
 }
 
+-(void)hashStuffOne{
+    self.hashSet = [NSHashTable weakObjectsHashTable];
+    self.houseOfMyOwn = [[House alloc] init];
+    self.houseOfMyOwn.lamps = 7;
+    [self.hashSet addObject:self.houseOfMyOwn];
+}
 
-+(void)protocolTestShit{
+-(void)hashSTuffTwo{
+    House *h0 = [self.hashSet anyObject];
+    h0 = nil;
+    self.houseOfMyOwn = nil;
+}
+
+
+-(void)hashStuffThree{
+    House *h1 = [self.hashSet anyObject];
+    NSLog(@"%@",h1);
+}
+
++(void)TestHashSet{
     Experiments *exp = [Experiments new];
-    [exp conformsToProtocol:PossibleInvocationCockblock];
+    [exp hashStuffOne];
+    [exp hashSTuffTwo];
+    NSLog(@"count: %ld",exp.hashSet.count);
+}
+
+-(void)weak1{
+    self.houseOfMyOwn = [House new];
+    self.houseOfMyOwn.lamps = 19;
+    self.wl = [WeakLeash new];
+    self.wl.weakHouse = self.houseOfMyOwn;
+    self.houseOfMyOwn = nil;
+    
+}
+
+-(void)weak2{}
+
++(void)TestWeakStuff{
+    Experiments *exp = [Experiments new];
+    [exp weak1];
+}
+
+
+-(void)weakArray{
+    self.pointers = [NSPointerArray weakObjectsPointerArray];
+    self.houseOfMyOwn = [House new];
+    self.houseOfMyOwn.lamps = 7;
+    House *h0 = [House new];
+    [self.pointers addPointer:(__bridge void * _Nullable)(self.houseOfMyOwn)];
+    [self.pointers addPointer:(__bridge void * _Nullable)(h0)];
+    self.houseOfMyOwn = nil;
+    h0 = nil;
+}
+
+
++(void)testWeakArray{
+    Experiments *exp = [Experiments new];
+    [exp weakArray];
+}
+
++(void)stackOverflowHashQuestion{
+    NSHashTable *hashTable = [NSHashTable weakObjectsHashTable];
+    House *object = [[House alloc] init];
+    [hashTable addObject:object];
+    NSLog(@"%@",[hashTable anyObject]);
+    NSLog(@"%ld",hashTable.count);
+    
+    object = nil;
+    NSLog(@"%@",@"after dealloc hopefully");
+    NSLog(@"%@",[hashTable anyObject]);
+    int i = 0;
+    while([hashTable anyObject] && ++i<100000){};
+    NSLog(@"%ld",hashTable.count);
+}
+
+
++(void)stackOverflowHashQuestionProp{
+    NSLog(@"strong property");
+    Experiments *exp = [Experiments new];
+    exp.houseOfMyOwn = [[House alloc] init];
+    NSHashTable *hashTable = [NSHashTable weakObjectsHashTable];
+    [hashTable addObject:exp.houseOfMyOwn];
+    NSLog(@"%@",[hashTable anyObject]);
+    exp.houseOfMyOwn = nil;
+    NSLog(@"%@",[hashTable anyObject]);
+    
+}
+
++(void)stackOverflowHashQuestion2{
+    NSHashTable *hashTable = [NSHashTable weakObjectsHashTable];
+    House *object = [[House alloc] init];
+    House *object2 = [House new];
+    [hashTable addObject:object];
+    [hashTable addObject:object2];
+    @autoreleasepool{
+        [hashTable containsObject:object];
+    }
+    object = nil;
+    object2 = nil;
 }
 
     

@@ -86,6 +86,7 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
 }
 
 -(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     if(self.isEditingExisting){
         [self.editorContainer enableDelete];
     } 

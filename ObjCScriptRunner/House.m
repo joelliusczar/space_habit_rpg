@@ -19,4 +19,8 @@
     return 5;
 }
 
+-(void)dealloc{
+    NSLog(@"%@",@"Deallocating, motherfucker!");
+}
+
 @end
