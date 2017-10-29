@@ -56,6 +56,9 @@
 +(void)stackOverflowHashQuestion;
 +(void)stackOverflowHashQuestionProp;
 +(void)stackOverflowHashQuestion2;
++(void)expWithNonnullParams;
++(void)mapStuff;
++(void)blockStuff;
 @end
 
 #import "Experiments+Charlie.h"

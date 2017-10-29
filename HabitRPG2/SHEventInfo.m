@@ -39,10 +39,5 @@
 }
 
 
--(void)dealloc{
-    _senderStack = nil;
-    _wrappedEvent = nil;
-}
-
 
 @end

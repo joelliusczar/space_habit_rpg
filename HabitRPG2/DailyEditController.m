@@ -14,15 +14,9 @@
 #import "CustomSwitch.h"
 #import "Daily+DailyHelper.h"
 #import "Interceptor.h"
-#import "NoteView.h"
-#import "ImportanceSliderView.h"
-#import "WeeklyActiveDays.h"
-#import "SubtasksTableView.h"
-#import "RateSetterView.h"
 #import "DailyEditControlKeep.h"
 #import "WeekdayEnum.h"
 #import "RateTypeHelper.h"
-
 
 
 @interface DailyEditController ()
@@ -30,7 +24,7 @@
 @property (assign,nonatomic) dailyStatus section;
 @property (assign,nonatomic) BOOL areXtraOptsOpen;
 @property (assign,nonatomic) BOOL isStreakReset;
-@property (strong,nonatomic) DailyEditControlKeep *editControls;
+@property (strong,nonatomic) SHControlKeep<SHView *,id> *editControls;
 @property (assign,nonatomic) BOOL isEditingExisting;
 @end
 
@@ -119,11 +113,11 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
 -(void)setupEditControls{
     //I want the editControls stuff to happen here because when it gets
     //lazy loaded, it gets out of hand
-    self.editControls = [[DailyEditControlKeep alloc]
-                              initWithDaily:self.modelForEditing];
-    self.editControls.delegate = self;
-    self.editControls.resizeResponder = self.editorContainer;
+    
+    self.editControls = [self buildControlKeep:self.modelForEditing];
+    [self setResponders:self.editControls];
     self.editorContainer.editControls = self.editControls;
+    
 }
 
 
@@ -164,26 +158,6 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
 -(void)loadExistingDailyForEditing:(Daily *)daily{
     self.nameBox.text = daily.dailyName.length>0?daily.dailyName:@"";
     self.nameStr = self.nameBox.text;
-    self.editControls.noteView.noteBox.text = daily.note.length>0?daily.note:@"";
-    
-    self.editControls.urgencySlider.importanceSld.value = daily.urgency;
-    
-    self.editControls.urgencySlider.importanceLbl.text = [NSString stringWithFormat:
-                                                           @"Urgency: %d"
-                                                           ,daily.urgency];
-    self.editControls.difficultySlider.importanceSld.value = daily.difficulty;
-    
-    self.editControls.difficultySlider.importanceLbl.text = [NSString
-                                                              stringWithFormat:
-                                                              @"Difficulty: %d"
-                                                              ,daily.difficulty];
-    
-    self.editControls.streakResetterView.streakCountLbl.hidden = NO;
-    self.editControls.streakResetterView.streakResetBtn.hidden = NO;
-    self.editControls.streakResetterView.streakCountLbl.text = [NSString
-                                                                stringWithFormat:
-                                                                @"Streak: %d"
-                                                                ,daily.streakLength];
 }
 
 
@@ -239,13 +213,12 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
         UISlider *sender = (UISlider *)eventInfo.senderStack[0];
         ImportanceSliderView *sliderView = (ImportanceSliderView *)eventInfo.senderStack[1];
         int sliderValue = (int)sender.value;
-        if(sliderView == self.editControls.urgencySlider){
-            sliderView.importanceSld.value = [self.modelForEditing urgency_w:sliderValue];
-            sliderView.importanceLbl.text = [NSString stringWithFormat:@"Urgency: %d",sliderValue];
+        [sliderView updateImportanceSlider:sliderValue];
+        if(sliderView == self.editControls.specificLookup[@"urgencySld"]){
+            [self.modelForEditing urgency_w:sliderValue];
         }
         else{
-            sliderView.importanceSld.value = [self.modelForEditing difficulty_w:sliderValue];
-            sliderView.importanceLbl.text = [NSString stringWithFormat:@"Difficulty: %d",sliderValue];
+            [self.modelForEditing difficulty_w:sliderValue];
         }
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
@@ -278,14 +251,14 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.editControls.allControls.count;
+    return self.editControls.count;
 }
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView
         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [[UITableViewCell alloc] init];
-    SHView *cellView = self.editControls.allControls[indexPath.row];
+    SHView *cellView = self.editControls[indexPath.row];
     cellView.holderView = cell;
     [cellView changeBackgroundColorTo:self.view.backgroundColor];
     cell.backgroundColor = self.view.backgroundColor;
@@ -296,7 +269,7 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
 
 -(CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return self.editControls.allControls[indexPath.row].mainView.frame.size.height;
+    return self.editControls[indexPath.row].mainView.frame.size.height;
 }
 
 

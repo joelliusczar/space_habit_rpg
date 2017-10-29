@@ -31,3 +31,5 @@
                                  AtIndexPath:(NSIndexPath *)rowInfo;
 -(void)loadExistingDailyForEditing:(Daily *)daily;
 @end
+
+#import "DailyEditController+ControlLoaders.h"

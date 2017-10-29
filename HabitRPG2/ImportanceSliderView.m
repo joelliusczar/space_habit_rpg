@@ -24,5 +24,19 @@
     [self.delegate sld_valueChanged_action:e];
 }
 
+-(double)value{
+    return self.importanceSld.value;
+}
+
+-(void)setValue:(double)value{
+    self.importanceSld.value = value;
+}
+
+
+-(void)updateImportanceSlider:(int)updVal{
+    self.importanceSld.value = updVal;
+    self.importanceLbl.text = [NSString stringWithFormat:@"%@: %d",self.controlName,updVal];
+}
+
 
 @end

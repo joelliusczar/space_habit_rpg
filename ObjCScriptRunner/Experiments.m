@@ -18,6 +18,7 @@
 #import "SelectorDict.h"
 #import "CockblockShield.h"
 #import "Holder.h"
+#import "ExpNonNull.h"
 
 
 
@@ -327,5 +328,35 @@
     object2 = nil;
 }
 
+
++(void)expWithNonnullParams{
+//    NSLog(@"%d",[ExpNonNull cNonNull:nil]);
+//    ExpNonNull *enn = [[ExpNonNull alloc] init];
+//    NSLog(@"%d",[enn instanceNonNulls:nil]);
+//    House *h0 = [ExpNonNull cRetNonNull];
+//    h0 = [enn instanceRetNonNulls];
+    
+}
+
++(void)mapStuff{
+    NSMapTable *map = [NSMapTable weakToStrongObjectsMapTable];
+    [map setObject:@"Hello" forKey:@"key1"];
+    
+    NSString *str = [map objectForKey:@"key1"];
+    NSLog(@"%@",str);
+}
+
++(void)blockStuff{
+    int t = 7;
+    void (^tb)() = ^void(){
+        NSLog(@"%d",t);
+    };
+    
+    t += 2;
+    tb();
+    t++;
+    tb();
+
+}
     
 @end

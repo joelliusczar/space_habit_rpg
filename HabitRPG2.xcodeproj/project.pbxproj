@@ -20,28 +20,29 @@
 		270D39BF1F5E067400F371F0 /* ActiveDaysTriKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 270D39BE1F5E067400F371F0 /* ActiveDaysTriKey.m */; };
 		2710BB961F514E8700A43B6C /* Experiments+Bravo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2710BB951F514E8700A43B6C /* Experiments+Bravo.m */; };
 		2710BBC41F53150F00A43B6C /* blue_plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 2710BBC31F53150F00A43B6C /* blue_plus.png */; };
-		271AB3311F7A29E900D30521 /* MockStdLibWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABF2D1E9C31C0008CC239 /* MockStdLibWrapper.m */; };
-		271AB3321F7A29E900D30521 /* TestKeepObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559DB1F6A3F9E00C915E6 /* TestKeepObject.m */; };
-		271AB3331F7A29E900D30521 /* TestKeepSubject_A.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559E11F6A41B600C915E6 /* TestKeepSubject_A.m */; };
-		271AB3341F7A29E900D30521 /* TestKeepSubject_B.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559E41F6A41E900C915E6 /* TestKeepSubject_B.m */; };
-		271AB3351F7A29E900D30521 /* TestKeepObjectAlt.m in Sources */ = {isa = PBXBuildFile; fileRef = 270366E71F6BA2E200D4BDC8 /* TestKeepObjectAlt.m */; };
-		271AB3361F7A29E900D30521 /* ARCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2737AF441F708BD5000FCFD3 /* ARCTest.m */; };
-		271AB3371F7A29E900D30521 /* TestProbWeightsThreeItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABF6D1EA86240008CC239 /* TestProbWeightsThreeItems.m */; };
-		271AB3381F7A29E900D30521 /* ProbilityWeightTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABF681EA46CE1008CC239 /* ProbilityWeightTest.m */; };
-		271AB3391F7A29E900D30521 /* ProbilityWeightTestFourItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABF6F1EAD98EB008CC239 /* ProbilityWeightTestFourItems.m */; };
-		271AB33A1F7A29E900D30521 /* ModelsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEF11E975959008CC239 /* ModelsTest.m */; };
-		271AB33B1F7A29E900D30521 /* ZoneHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABF2F1E9C31F3008CC239 /* ZoneHelperTest.m */; };
-		271AB33C1F7A29E900D30521 /* CommonUtilitiesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABF5C1EA27A91008CC239 /* CommonUtilitiesTest.m */; };
-		271AB33D1F7A29E900D30521 /* MonsterHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABF5E1EA33320008CC239 /* MonsterHelperTest.m */; };
-		271AB33E1F7A29E900D30521 /* DateHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 275FEEFF1EE344BB00AED1A2 /* DateHelperTest.m */; };
-		271AB33F1F7A29E900D30521 /* DailyHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 275FEF091EE3CF3000AED1A2 /* DailyHelperTest.m */; };
-		271AB3401F7A29E900D30521 /* MathTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A382E1F2150ED00F31E0F /* MathTest.m */; };
-		271AB3411F7A29E900D30521 /* SHControlKeepTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 270366E41F6B7D1900D4BDC8 /* SHControlKeepTest.m */; };
-		271AB3421F7A29E900D30521 /* TestsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2737AF411F70896E000FCFD3 /* TestsTest.m */; };
-		271AB3431F7A29E900D30521 /* NSDate+testReplace.m in Sources */ = {isa = PBXBuildFile; fileRef = 2709B3A21EF56AFC00EEE5CC /* NSDate+testReplace.m */; };
-		271AB3441F7A29E900D30521 /* TestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 275A07B61EDA1FB9001422CD /* TestHelpers.m */; };
-		271AB3451F7A29E900D30521 /* FrequentCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 273782371EE4D1B200EA5B1D /* FrequentCase.m */; };
-		271AB3471F80D41E00D30521 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 271AB3461F80D41E00D30521 /* Info.plist */; };
+		271AB34A1F9BBFC100D30521 /* ExpNonNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 271AB3491F9BBFC100D30521 /* ExpNonNull.m */; };
+		271AB34D1F9BC5F900D30521 /* DailyEditController+ControlLoaders.m in Sources */ = {isa = PBXBuildFile; fileRef = 271AB34C1F9BC5F800D30521 /* DailyEditController+ControlLoaders.m */; };
+		271AB3911F9CEBBB00D30521 /* MockStdLibWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABF2D1E9C31C0008CC239 /* MockStdLibWrapper.m */; };
+		271AB3931F9CEBBB00D30521 /* TestKeepObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559DB1F6A3F9E00C915E6 /* TestKeepObject.m */; };
+		271AB3981F9CEBBB00D30521 /* TestKeepSubject_A.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559E11F6A41B600C915E6 /* TestKeepSubject_A.m */; };
+		271AB39A1F9CEBBB00D30521 /* TestKeepSubject_B.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559E41F6A41E900C915E6 /* TestKeepSubject_B.m */; };
+		271AB39C1F9CEBBB00D30521 /* TestKeepObjectAlt.m in Sources */ = {isa = PBXBuildFile; fileRef = 270366E71F6BA2E200D4BDC8 /* TestKeepObjectAlt.m */; };
+		271AB39E1F9CEBBB00D30521 /* ARCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2737AF441F708BD5000FCFD3 /* ARCTest.m */; };
+		271AB39F1F9CEBBB00D30521 /* TestProbWeightsThreeItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABF6D1EA86240008CC239 /* TestProbWeightsThreeItems.m */; };
+		271AB3A01F9CEBBB00D30521 /* ProbilityWeightTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABF681EA46CE1008CC239 /* ProbilityWeightTest.m */; };
+		271AB3A11F9CEBBB00D30521 /* ProbilityWeightTestFourItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABF6F1EAD98EB008CC239 /* ProbilityWeightTestFourItems.m */; };
+		271AB3A21F9CEBBB00D30521 /* ModelsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABEF11E975959008CC239 /* ModelsTest.m */; };
+		271AB3A31F9CEBBB00D30521 /* ZoneHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABF2F1E9C31F3008CC239 /* ZoneHelperTest.m */; };
+		271AB3A41F9CEBBB00D30521 /* CommonUtilitiesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABF5C1EA27A91008CC239 /* CommonUtilitiesTest.m */; };
+		271AB3A51F9CEBBB00D30521 /* MonsterHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ABF5E1EA33320008CC239 /* MonsterHelperTest.m */; };
+		271AB3A61F9CEBBB00D30521 /* DateHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 275FEEFF1EE344BB00AED1A2 /* DateHelperTest.m */; };
+		271AB3A71F9CEBBB00D30521 /* DailyHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 275FEF091EE3CF3000AED1A2 /* DailyHelperTest.m */; };
+		271AB3A81F9CEBBB00D30521 /* MathTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A382E1F2150ED00F31E0F /* MathTest.m */; };
+		271AB3A91F9CEBBB00D30521 /* SHControlKeepTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 270366E41F6B7D1900D4BDC8 /* SHControlKeepTest.m */; };
+		271AB3AA1F9CEBBB00D30521 /* TestsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2737AF411F70896E000FCFD3 /* TestsTest.m */; };
+		271AB3AC1F9CEBBB00D30521 /* NSDate+testReplace.m in Sources */ = {isa = PBXBuildFile; fileRef = 2709B3A21EF56AFC00EEE5CC /* NSDate+testReplace.m */; };
+		271AB3AF1F9CEBBB00D30521 /* TestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 275A07B61EDA1FB9001422CD /* TestHelpers.m */; };
+		271AB3B11F9CEBBB00D30521 /* FrequentCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 273782371EE4D1B200EA5B1D /* FrequentCase.m */; };
 		271C04831E8A1152002221E9 /* MonsterInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C04821E8A1152002221E9 /* MonsterInfoDictionary.m */; };
 		271C04881E8B639D002221E9 /* ResourceUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C04871E8B639D002221E9 /* ResourceUtility.m */; };
 		271C048B1E8C955A002221E9 /* SingletonCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C048A1E8C955A002221E9 /* SingletonCluster.m */; };
@@ -219,7 +220,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		271AB32C1F7A29AE00D30521 /* PBXContainerItemProxy */ = {
+		271AB38B1F9CEA2500D30521 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 68F3F9A11D70E82E00840DD2 /* Project object */;
 			proxyType = 1;
@@ -278,8 +279,16 @@
 		2710BB951F514E8700A43B6C /* Experiments+Bravo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Experiments+Bravo.m"; sourceTree = "<group>"; };
 		2710BB971F51D76000A43B6C /* P_EditControlKeep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_EditControlKeep.h; sourceTree = "<group>"; };
 		2710BBC31F53150F00A43B6C /* blue_plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_plus.png; sourceTree = "<group>"; };
-		271AB3271F7A29AE00D30521 /* HabitRPG2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitRPG2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		271AB3461F80D41E00D30521 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		271AB3481F9BBFC100D30521 /* ExpNonNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpNonNull.h; sourceTree = "<group>"; };
+		271AB3491F9BBFC100D30521 /* ExpNonNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpNonNull.m; sourceTree = "<group>"; };
+		271AB34B1F9BC5F800D30521 /* DailyEditController+ControlLoaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DailyEditController+ControlLoaders.h"; sourceTree = "<group>"; };
+		271AB34C1F9BC5F800D30521 /* DailyEditController+ControlLoaders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DailyEditController+ControlLoaders.m"; sourceTree = "<group>"; };
+		271AB34E1F9BD2AE00D30521 /* AllSHControls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllSHControls.h; sourceTree = "<group>"; };
+		271AB35A1F9CE89A00D30521 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		271AB3861F9CEA2500D30521 /* HabitRPG2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitRPG2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		271AB38A1F9CEA2500D30521 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		271AB3B21FA2BAA400D30521 /* P_Interceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_Interceptor.h; sourceTree = "<group>"; };
+		271AB3B31FA2BD1E00D30521 /* P_NumberControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_NumberControl.h; sourceTree = "<group>"; };
 		271C047D1E89BCBA002221E9 /* P_CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_CoreData.h; sourceTree = "<group>"; };
 		271C04811E8A1152002221E9 /* MonsterInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterInfoDictionary.h; sourceTree = "<group>"; };
 		271C04821E8A1152002221E9 /* MonsterInfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterInfoDictionary.m; sourceTree = "<group>"; };
@@ -446,8 +455,8 @@
 		27A559CF1F65A19A00C915E6 /* ItemFlexibleListEventInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemFlexibleListEventInfo.m; sourceTree = "<group>"; };
 		27A559D11F67893A00C915E6 /* ExpArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpArray.h; sourceTree = "<group>"; };
 		27A559D21F67893A00C915E6 /* ExpArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpArray.m; sourceTree = "<group>"; };
-		27A559D41F67986900C915E6 /* SHControlKeep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHControlKeep.h; sourceTree = "<group>"; };
-		27A559D51F67986900C915E6 /* SHControlKeep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHControlKeep.m; sourceTree = "<group>"; };
+		27A559D41F67986900C915E6 /* SHControlKeep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SHControlKeep.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		27A559D51F67986900C915E6 /* SHControlKeep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SHControlKeep.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		27A559D71F67A98300C915E6 /* Indexable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Indexable.h; sourceTree = "<group>"; };
 		27A559D81F67A98300C915E6 /* Indexable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Indexable.m; sourceTree = "<group>"; };
 		27A559DA1F6A3F9E00C915E6 /* TestKeepObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKeepObject.h; sourceTree = "<group>"; };
@@ -649,7 +658,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		271AB3241F7A29AE00D30521 /* Frameworks */ = {
+		271AB3831F9CEA2500D30521 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -682,6 +691,31 @@
 				27B0CD2C1F2BEC04005BEC75 /* DataInfo+CoreDataProperties.m */,
 			);
 			name = DataInfo;
+			sourceTree = "<group>";
+		};
+		271AB3571F9CE89A00D30521 /* HabitRPG2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				271AB35A1F9CE89A00D30521 /* Info.plist */,
+			);
+			path = HabitRPG2Tests;
+			sourceTree = "<group>";
+		};
+		271AB3871F9CEA2500D30521 /* HabitRPG2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				277ABF2B1E9C3189008CC239 /* MockClasses */,
+				277ABEF01E97592A008CC239 /* Tests */,
+				2709B3A11EF56AFC00EEE5CC /* NSDate+testReplace.h */,
+				2709B3A21EF56AFC00EEE5CC /* NSDate+testReplace.m */,
+				277ABF611EA3BC97008CC239 /* TestGlobals.h */,
+				275A07B51EDA1FB9001422CD /* TestHelpers.h */,
+				275A07B61EDA1FB9001422CD /* TestHelpers.m */,
+				273782361EE4D1B200EA5B1D /* FrequentCase.h */,
+				273782371EE4D1B200EA5B1D /* FrequentCase.m */,
+				271AB38A1F9CEA2500D30521 /* Info.plist */,
+			);
+			path = HabitRPG2Tests;
 			sourceTree = "<group>";
 		};
 		271C047B1E886B49002221E9 /* Helpers */ = {
@@ -733,6 +767,7 @@
 				272428211F4101330028B22E /* ItemFlexibleListView.h */,
 				272428221F4101330028B22E /* ItemFlexibleListView.m */,
 				27C3C21D1F0022D600F205A6 /* ItemFlexibleListView.xib */,
+				271AB3B31FA2BD1E00D30521 /* P_NumberControl.h */,
 			);
 			name = Abstract;
 			sourceTree = "<group>";
@@ -850,6 +885,8 @@
 				270366F71F6DCD6600D4BDC8 /* Holder.m */,
 				2737AF3E1F6F7B1C000FCFD3 /* WeakLeash.h */,
 				2737AF3F1F6F7B1C000FCFD3 /* WeakLeash.m */,
+				271AB3481F9BBFC100D30521 /* ExpNonNull.h */,
+				271AB3491F9BBFC100D30521 /* ExpNonNull.m */,
 			);
 			path = ObjCScriptRunner;
 			sourceTree = "<group>";
@@ -896,23 +933,6 @@
 				27C3C21F1F07854700F205A6 /* P_DueDateWrapper.h */,
 			);
 			name = Protocols;
-			sourceTree = "<group>";
-		};
-		277ABEDB1E96F68E008CC239 /* HabitRPG2Tests */ = {
-			isa = PBXGroup;
-			children = (
-				271AB3461F80D41E00D30521 /* Info.plist */,
-				277ABF2B1E9C3189008CC239 /* MockClasses */,
-				277ABEF01E97592A008CC239 /* Tests */,
-				2709B3A11EF56AFC00EEE5CC /* NSDate+testReplace.h */,
-				2709B3A21EF56AFC00EEE5CC /* NSDate+testReplace.m */,
-				277ABF611EA3BC97008CC239 /* TestGlobals.h */,
-				275A07B51EDA1FB9001422CD /* TestHelpers.h */,
-				275A07B61EDA1FB9001422CD /* TestHelpers.m */,
-				273782361EE4D1B200EA5B1D /* FrequentCase.h */,
-				273782371EE4D1B200EA5B1D /* FrequentCase.m */,
-			);
-			path = HabitRPG2Tests;
 			sourceTree = "<group>";
 		};
 		277ABEF01E97592A008CC239 /* Tests */ = {
@@ -1066,6 +1086,7 @@
 				2724282C1F4156670028B22E /* ListItemCell.h */,
 				2724282D1F4156670028B22E /* ListItemCell.m */,
 				27E89C8F1EF5E6A8009B7474 /* ListItemCell.xib */,
+				271AB34E1F9BD2AE00D30521 /* AllSHControls.h */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -1145,6 +1166,7 @@
 				272427E01F38198F0028B22E /* P_UtilityStore.h */,
 				2710BB921F51190700A43B6C /* P_ResizeResponder.h */,
 				2710BB971F51D76000A43B6C /* P_EditControlKeep.h */,
+				271AB3B21FA2BAA400D30521 /* P_Interceptor.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -1250,6 +1272,8 @@
 				274FFC491EF887DB00FAF809 /* DailyEditControlKeep.m */,
 				270D39BD1F5E067400F371F0 /* ActiveDaysTriKey.h */,
 				270D39BE1F5E067400F371F0 /* ActiveDaysTriKey.m */,
+				271AB34B1F9BC5F800D30521 /* DailyEditController+ControlLoaders.h */,
+				271AB34C1F9BC5F800D30521 /* DailyEditController+ControlLoaders.m */,
 			);
 			name = Dailies;
 			sourceTree = "<group>";
@@ -1298,8 +1322,9 @@
 			children = (
 				277ABF711EAD9DC3008CC239 /* Scripts */,
 				68F3F9AB1D70E82E00840DD2 /* HabitRPG2 */,
-				277ABEDB1E96F68E008CC239 /* HabitRPG2Tests */,
 				274A37C41F107ACF00F31E0F /* ObjCScriptRunner */,
+				271AB3571F9CE89A00D30521 /* HabitRPG2Tests */,
+				271AB3871F9CEA2500D30521 /* HabitRPG2Tests */,
 				68F3F9AA1D70E82E00840DD2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -1309,7 +1334,7 @@
 			children = (
 				68F3F9A91D70E82E00840DD2 /* HabitRPG2.app */,
 				274A37C31F107ACF00F31E0F /* ObjCScriptRunner */,
-				271AB3271F7A29AE00D30521 /* HabitRPG2Tests.xctest */,
+				271AB3861F9CEA2500D30521 /* HabitRPG2Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1419,22 +1444,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		271AB3261F7A29AE00D30521 /* HabitRPG2Tests */ = {
+		271AB3851F9CEA2500D30521 /* HabitRPG2Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 271AB32E1F7A29AE00D30521 /* Build configuration list for PBXNativeTarget "HabitRPG2Tests" */;
+			buildConfigurationList = 271AB38D1F9CEA2500D30521 /* Build configuration list for PBXNativeTarget "HabitRPG2Tests" */;
 			buildPhases = (
-				271AB3231F7A29AE00D30521 /* Sources */,
-				271AB3241F7A29AE00D30521 /* Frameworks */,
-				271AB3251F7A29AE00D30521 /* Resources */,
+				271AB3821F9CEA2500D30521 /* Sources */,
+				271AB3831F9CEA2500D30521 /* Frameworks */,
+				271AB3841F9CEA2500D30521 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				271AB32D1F7A29AE00D30521 /* PBXTargetDependency */,
+				271AB38C1F9CEA2500D30521 /* PBXTargetDependency */,
 			);
 			name = HabitRPG2Tests;
 			productName = HabitRPG2Tests;
-			productReference = 271AB3271F7A29AE00D30521 /* HabitRPG2Tests.xctest */;
+			productReference = 271AB3861F9CEA2500D30521 /* HabitRPG2Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		274A37C21F107ACE00F31E0F /* ObjCScriptRunner */ = {
@@ -1484,7 +1509,7 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Joel Pridgen";
 				TargetAttributes = {
-					271AB3261F7A29AE00D30521 = {
+					271AB3851F9CEA2500D30521 = {
 						CreatedOnToolsVersion = 8.3.3;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 68F3F9A81D70E82E00840DD2;
@@ -1514,17 +1539,16 @@
 			targets = (
 				68F3F9A81D70E82E00840DD2 /* HabitRPG2 */,
 				274A37C21F107ACE00F31E0F /* ObjCScriptRunner */,
-				271AB3261F7A29AE00D30521 /* HabitRPG2Tests */,
+				271AB3851F9CEA2500D30521 /* HabitRPG2Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		271AB3251F7A29AE00D30521 /* Resources */ = {
+		271AB3841F9CEA2500D30521 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				271AB3471F80D41E00D30521 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1606,31 +1630,31 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		271AB3231F7A29AE00D30521 /* Sources */ = {
+		271AB3821F9CEA2500D30521 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				271AB3311F7A29E900D30521 /* MockStdLibWrapper.m in Sources */,
-				271AB3321F7A29E900D30521 /* TestKeepObject.m in Sources */,
-				271AB3331F7A29E900D30521 /* TestKeepSubject_A.m in Sources */,
-				271AB3341F7A29E900D30521 /* TestKeepSubject_B.m in Sources */,
-				271AB3351F7A29E900D30521 /* TestKeepObjectAlt.m in Sources */,
-				271AB3361F7A29E900D30521 /* ARCTest.m in Sources */,
-				271AB3371F7A29E900D30521 /* TestProbWeightsThreeItems.m in Sources */,
-				271AB3381F7A29E900D30521 /* ProbilityWeightTest.m in Sources */,
-				271AB3391F7A29E900D30521 /* ProbilityWeightTestFourItems.m in Sources */,
-				271AB33A1F7A29E900D30521 /* ModelsTest.m in Sources */,
-				271AB33B1F7A29E900D30521 /* ZoneHelperTest.m in Sources */,
-				271AB33C1F7A29E900D30521 /* CommonUtilitiesTest.m in Sources */,
-				271AB33D1F7A29E900D30521 /* MonsterHelperTest.m in Sources */,
-				271AB33E1F7A29E900D30521 /* DateHelperTest.m in Sources */,
-				271AB33F1F7A29E900D30521 /* DailyHelperTest.m in Sources */,
-				271AB3401F7A29E900D30521 /* MathTest.m in Sources */,
-				271AB3411F7A29E900D30521 /* SHControlKeepTest.m in Sources */,
-				271AB3421F7A29E900D30521 /* TestsTest.m in Sources */,
-				271AB3431F7A29E900D30521 /* NSDate+testReplace.m in Sources */,
-				271AB3441F7A29E900D30521 /* TestHelpers.m in Sources */,
-				271AB3451F7A29E900D30521 /* FrequentCase.m in Sources */,
+				271AB3911F9CEBBB00D30521 /* MockStdLibWrapper.m in Sources */,
+				271AB3931F9CEBBB00D30521 /* TestKeepObject.m in Sources */,
+				271AB3981F9CEBBB00D30521 /* TestKeepSubject_A.m in Sources */,
+				271AB39A1F9CEBBB00D30521 /* TestKeepSubject_B.m in Sources */,
+				271AB39C1F9CEBBB00D30521 /* TestKeepObjectAlt.m in Sources */,
+				271AB39E1F9CEBBB00D30521 /* ARCTest.m in Sources */,
+				271AB39F1F9CEBBB00D30521 /* TestProbWeightsThreeItems.m in Sources */,
+				271AB3A01F9CEBBB00D30521 /* ProbilityWeightTest.m in Sources */,
+				271AB3A11F9CEBBB00D30521 /* ProbilityWeightTestFourItems.m in Sources */,
+				271AB3A21F9CEBBB00D30521 /* ModelsTest.m in Sources */,
+				271AB3A31F9CEBBB00D30521 /* ZoneHelperTest.m in Sources */,
+				271AB3A41F9CEBBB00D30521 /* CommonUtilitiesTest.m in Sources */,
+				271AB3A51F9CEBBB00D30521 /* MonsterHelperTest.m in Sources */,
+				271AB3A61F9CEBBB00D30521 /* DateHelperTest.m in Sources */,
+				271AB3A71F9CEBBB00D30521 /* DailyHelperTest.m in Sources */,
+				271AB3A81F9CEBBB00D30521 /* MathTest.m in Sources */,
+				271AB3A91F9CEBBB00D30521 /* SHControlKeepTest.m in Sources */,
+				271AB3AA1F9CEBBB00D30521 /* TestsTest.m in Sources */,
+				271AB3AC1F9CEBBB00D30521 /* NSDate+testReplace.m in Sources */,
+				271AB3AF1F9CEBBB00D30521 /* TestHelpers.m in Sources */,
+				271AB3B11F9CEBBB00D30521 /* FrequentCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1647,6 +1671,7 @@
 				270366EB1F6BA86A00D4BDC8 /* SelectorDict.m in Sources */,
 				274A37EA1F145D2200F31E0F /* House+Things.m in Sources */,
 				274A38381F2194FD00F31E0F /* ParentMan.m in Sources */,
+				271AB34A1F9BBFC100D30521 /* ExpNonNull.m in Sources */,
 				270366F81F6DCD6600D4BDC8 /* Holder.m in Sources */,
 				2710BB961F514E8700A43B6C /* Experiments+Bravo.m in Sources */,
 				270366F51F6CF2B500D4BDC8 /* CockblockShield.m in Sources */,
@@ -1683,6 +1708,7 @@
 				68F3F9F31D70FC5E00840DD2 /* TodoViewController.m in Sources */,
 				272428231F4101330028B22E /* ItemFlexibleListView.m in Sources */,
 				27B0CD011F2BEB17005BEC75 /* Reminder+CoreDataProperties.m in Sources */,
+				271AB34D1F9BC5F900D30521 /* DailyEditController+ControlLoaders.m in Sources */,
 				27A559D61F67986900C915E6 /* SHControlKeep.m in Sources */,
 				27B0CD101F2BEB78005BEC75 /* Monster+CoreDataProperties.m in Sources */,
 				27C3C21C1F001DF300F205A6 /* ReminderListView.m in Sources */,
@@ -1786,15 +1812,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		271AB32D1F7A29AE00D30521 /* PBXTargetDependency */ = {
+		271AB38C1F9CEA2500D30521 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 68F3F9A81D70E82E00840DD2 /* HabitRPG2 */;
-			targetProxy = 271AB32C1F7A29AE00D30521 /* PBXContainerItemProxy */;
+			targetProxy = 271AB38B1F9CEA2500D30521 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		271AB32F1F7A29AE00D30521 /* Debug */ = {
+		271AB38E1F9CEA2500D30521 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1810,7 +1836,7 @@
 			};
 			name = Debug;
 		};
-		271AB3301F7A29AE00D30521 /* Release */ = {
+		271AB38F1F9CEA2500D30521 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1981,11 +2007,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		271AB32E1F7A29AE00D30521 /* Build configuration list for PBXNativeTarget "HabitRPG2Tests" */ = {
+		271AB38D1F9CEA2500D30521 /* Build configuration list for PBXNativeTarget "HabitRPG2Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				271AB32F1F7A29AE00D30521 /* Debug */,
-				271AB3301F7A29AE00D30521 /* Release */,
+				271AB38E1F9CEA2500D30521 /* Debug */,
+				271AB38F1F9CEA2500D30521 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

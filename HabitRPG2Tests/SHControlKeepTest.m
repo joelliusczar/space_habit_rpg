@@ -23,6 +23,7 @@
 @property (copy,nonatomic) LazyLoadBlock blockB;
 @property (copy,nonatomic) LazyLoadBlock invalidBlock;
 @property (copy,nonatomic) LazyLoadBlock blockA2;
+@property (copy,nonatomic) LazyLoadBlock blockKey;
 @property (weak,nonatomic) TestKeepSubject_A *designatedWeak;
 @end
 
@@ -31,35 +32,40 @@
 - (void)setUp {
     [super setUp];
     self.keep = [[SHControlKeep alloc] init];
-    self.blockA = ^id(SHControlKeep *meep){
+    self.blockA = ^id(SHControlKeep *meep,ControlExtent *ext){
         TestKeepSubject_A *subA = [[TestKeepSubject_A alloc] init];
         subA.changer = 0;
-        [meep addSubjectToActionSet:subA withKey:takeKey(setDelegateA:)];
-        [meep addSubjectToActionSet:subA withKey:takeKey(setDelegateB:)];
-        [meep addSubjectToActionSet:subA withKey:takeKey(setDelegateC:)];
+        [meep addControlToActionSet:subA withKey:takeKey(setDelegateA:)];
+        [meep addControlToActionSet:subA withKey:takeKey(setDelegateB:)];
+        [meep addControlToActionSet:subA withKey:takeKey(setDelegateC:)];
         return subA;
     };
-    self.blockA2 = ^id(SHControlKeep *meep){
+    self.blockA2 = ^id(SHControlKeep *meep,ControlExtent *ext){
         TestKeepSubject_A *subA = [[TestKeepSubject_A alloc] init];
         subA.changer = 2;
-        [meep addSubjectToActionSet:subA withKey:takeKey(setDelegateA:)];
-        [meep addSubjectToActionSet:subA withKey:takeKey(setDelegateB:)];
-        [meep addSubjectToActionSet:subA withKey:takeKey(setDelegateC:)];
+        [meep addControlToActionSet:subA withKey:takeKey(setDelegateA:)];
+        [meep addControlToActionSet:subA withKey:takeKey(setDelegateB:)];
+        [meep addControlToActionSet:subA withKey:takeKey(setDelegateC:)];
         return subA;
     };
-    self.nilBlock = ^id(SHControlKeep *meep){
+    self.nilBlock = ^id(SHControlKeep *meep,ControlExtent *ext){
         return nil;
     };
-    self.blockB = ^id(SHControlKeep *meep){
+    self.blockB = ^id(SHControlKeep *meep,ControlExtent *ext){
         TestKeepSubject_B *subB = [[TestKeepSubject_B alloc] init];
-        [meep addSubjectToActionSet:subB withKey:takeKey(setDelegateA:)];
-        [meep addSubjectToActionSet:subB withKey:takeKey(setDelegateB:)];
+        [meep addControlToActionSet:subB withKey:takeKey(setDelegateA:)];
+        [meep addControlToActionSet:subB withKey:takeKey(setDelegateB:)];
         return subB;
     };
-    self.invalidBlock = ^id(SHControlKeep *meep){
+    self.invalidBlock = ^id(SHControlKeep *meep,ControlExtent *ext){
         TestKeepSubject_B *subB = [[TestKeepSubject_B alloc] init];
-        [meep addSubjectToActionSet:subB withKey:takeKey(setDelegateC:)];
+        [meep addControlToActionSet:subB withKey:takeKey(setDelegateC:)];
         return subB;
+    };
+    self.blockKey = ^id(SHControlKeep *meep,ControlExtent *ext){
+        TestKeepSubject_A *subA = [[TestKeepSubject_A alloc] init];
+        ext.key = @"subA";
+        return subA;
     };
     
 }
@@ -81,10 +87,10 @@ NSHashTable* getSet(SHControlKeep *keep,NSString *key){
 
 
 LazyLoadBlock getNumberedBlock(int num){
-    return ^id(SHControlKeep *meep){
+    return ^id(SHControlKeep *meep,ControlExtent *ext){
         TestKeepSubject_A *subA = [[TestKeepSubject_A alloc] init];
         subA.changer = num;
-        [meep addSubjectToActionSet:subA withKey:takeKey(setDelegateA:)];
+        [meep addControlToActionSet:subA withKey:takeKey(setDelegateA:)];
         return subA;
     };
 }
@@ -239,7 +245,14 @@ LazyLoadBlock getNumberedBlock(int num){
         TestKeepSubject_A *subA = set.allObjects[i];
         NSLog(@"%ld",subA.changer);
     }
-    
+}
+
+-(void)testKeyedControlGet{
+    [self.keep addLoaderBlock:self.blockKey];
+    id subA1 = self.keep[0];
+    XCTAssertTrue([subA1 isKindOfClass:TestKeepSubject_A.class]);
+    id subA2 = self.keep.specificLookup[@"subA"];
+    XCTAssertEqual(subA1,subA2);
 }
 
 @end

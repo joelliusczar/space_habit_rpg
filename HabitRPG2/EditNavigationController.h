@@ -10,12 +10,13 @@
 #import "EditingSaver.h"
 #import "P_ResizeResponder.h"
 #import "P_EditControlKeep.h"
+#import "SHControlKeep.h"
 
 
 @interface EditNavigationController : UIViewController<P_ResizeResponder>
 @property (strong,nonatomic) NSString *viewTitle;
 @property (strong,nonatomic) UIViewController<EditingSaver>* editingScreen;
-@property (weak,nonatomic) id<P_EditControlKeep> editControls;
+@property (weak,nonatomic) SHControlKeep *editControls;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollContainer;
 -(instancetype)initWithTitle:(NSString *)viewTitle
                    andEditor:(UIViewController<EditingSaver>*)editView;

@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "P_ImportanceSlidersDelegate.h"
 #import "SHView.h"
+#import "P_NumberControl.h"
 
 IB_DESIGNABLE
-@interface ImportanceSliderView : SHView
+@interface ImportanceSliderView : SHView<P_NumberControl>
 @property (weak,nonatomic) IBOutlet UILabel *importanceLbl;
 @property (weak,nonatomic) IBOutlet UISlider *importanceSld;
+@property (strong,nonatomic) NSString *controlName;
 @property (weak,nonatomic) id<P_ImportanceSlidersDelegate> delegate;
+-(void)updateImportanceSlider:(int)updVal;
 @end
