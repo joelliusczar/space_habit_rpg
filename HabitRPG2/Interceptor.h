@@ -7,12 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "P_Interceptor.h"
 
-typedef void (^wrapReturnVoid)();
-typedef int32_t (^wrapReturnInt32)();
-
-
-@interface Interceptor : NSObject
+@interface Interceptor : NSObject<P_Interceptor>
 +(void)callVoidWrapped:(wrapReturnVoid)callMe withInfo:(id)info;
-+(int32_t)callInt32Wrapped:(wrapReturnInt32)callMe withInfo:(id)info;
 @end

@@ -84,7 +84,7 @@ numberOfRowsInSection:(NSInteger)section{
         [eventInfo.senderStack addObject:self];
         [super pickerSelection_action:eventInfo];
     };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 

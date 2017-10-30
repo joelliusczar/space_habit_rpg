@@ -18,8 +18,11 @@
 
 
 -(void)textViewDidChange:(UITextView *)textView{
-    SHEventInfo *e = [[SHEventInfo alloc]init:nil withSenders:textView,self,nil];
-    [self.delegate textDidChange:e];
+    wrapReturnVoid wrappedCall = ^void(){
+        SHEventInfo *e = [[SHEventInfo alloc]init:nil withSenders:textView,self,nil];
+        [self.delegate textDidChange:e];
+    };
+    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 @end

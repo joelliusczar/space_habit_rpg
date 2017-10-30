@@ -162,84 +162,63 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
 
 
 - (IBAction)nameBox_editingChange_action:(UITextField *)sender forEvent:(UIEvent *)event {
-    wrapReturnVoid wrappedCall = ^void(){
-        [self.modelForEditing name_w:sender.text];
-    };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+    [self.modelForEditing name_w:sender.text];
 }
 
 
 -(void)textDidChange:(SHEventInfo *)eventInfo{
-    wrapReturnVoid wrappedCall = ^void(){
-        UITextView *textView = (UITextView *)eventInfo.senderStack[0];
-        [self.modelForEditing noteText_w:textView.text];
-        self.nameStr = textView.text;
-    };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+    UITextView *textView = (UITextView *)eventInfo.senderStack[0];
+    [self.modelForEditing noteText_w:textView.text];
+    self.nameStr = textView.text;
 }
     
     
 -(void)rateStep_valueChanged_action:(SHEventInfo *)eventInfo {
-    wrapReturnVoid wrappedCall = ^void(){
-        UIStepper *sender = (UIStepper *)eventInfo.senderStack[0];
-        sender.value = [self.modelForEditing rate_w:(int)sender.value];
-    };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+    UIStepper *sender = (UIStepper *)eventInfo.senderStack[0];
+    sender.value = [self.modelForEditing rate_w:(int)sender.value];
 }
     
     
 -(void)activeDaySwitch_press_action:(SHEventInfo *)eventInfo{
-    wrapReturnVoid wrappedCall = ^void(){
-        CustomSwitch *sender = (CustomSwitch *)eventInfo.senderStack[0];
-        [self.modelForEditing
-                flipDayOfWeek_w:sender.dayKey
-                setTo:sender.isOn
-                for:isInverseRateType(self.modelForEditing.rateType)];
-    };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+    CustomSwitch *sender = (CustomSwitch *)eventInfo.senderStack[0];
+    [self.modelForEditing
+            flipDayOfWeek_w:sender.dayKey
+            setTo:sender.isOn
+            for:isInverseRateType(self.modelForEditing.rateType)];
 }
     
     
 -(void)streakResetBtn_press_action:(SHEventInfo *)eventInfo {
-    wrapReturnVoid wrappedCall = ^void(){
-        [self.modelForEditing streak_w:0];
-    };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+    [self.modelForEditing streak_w:0];
 }
     
     
 -(void)sld_valueChanged_action:(SHEventInfo *)eventInfo{
-    wrapReturnVoid wrappedCall = ^void(){
-        UISlider *sender = (UISlider *)eventInfo.senderStack[0];
-        ImportanceSliderView *sliderView = (ImportanceSliderView *)eventInfo.senderStack[1];
-        int sliderValue = (int)sender.value;
-        [sliderView updateImportanceSlider:sliderValue];
-        if(sliderView == self.editControls.specificLookup[@"urgencySld"]){
-            [self.modelForEditing urgency_w:sliderValue];
-        }
-        else{
-            [self.modelForEditing difficulty_w:sliderValue];
-        }
-    };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+    UISlider *sender = (UISlider *)eventInfo.senderStack[0];
+    ImportanceSliderView *sliderView = (ImportanceSliderView *)eventInfo.senderStack[1];
+    int sliderValue = (int)sender.value;
+    [sliderView updateImportanceSlider:sliderValue];
+    if(sliderView == self.editControls.specificLookup[@"urgencySld"]){
+        [self.modelForEditing urgency_w:sliderValue];
+    }
+    else{
+        [self.modelForEditing difficulty_w:sliderValue];
+    }
 }
 
 
 
 - (IBAction)showXtra_push_action:(UIButton *)sender forEvent:(UIEvent *)event {
-    wrapReturnVoid wrappedCall = ^void(){
-        if(self.areXtraOptsOpen){
-            self.controlsTbl.hidden = YES;
-            self.areXtraOptsOpen = NO;
-            return;
-        }
-        self.controlsTbl.hidden = NO;
-        self.areXtraOptsOpen = YES;
-        if(self.editorContainer){
-            [self.editorContainer resizeScrollView:self.controlsTbl.hidden];
-        }
-    };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+    if(self.areXtraOptsOpen){
+        self.controlsTbl.hidden = YES;
+        self.areXtraOptsOpen = NO;
+        return;
+    }
+    self.controlsTbl.hidden = NO;
+    self.areXtraOptsOpen = YES;
+    if(self.editorContainer){
+        [self.editorContainer resizeScrollView:self.controlsTbl.hidden];
+    }
 }
 
 

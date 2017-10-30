@@ -17,9 +17,11 @@
 
 
 - (IBAction)rateStep_valueChanged_action:(UIStepper *)sender forEvent:(UIEvent *)event {
-    
-    SHEventInfo *e = eventInfoCopy;
-    [self.delegate rateStep_valueChanged_action:e];
+    wrapReturnVoid wrappedCall = ^void(){
+        SHEventInfo *e = eventInfoCopy;
+        [self.delegate rateStep_valueChanged_action:e];
+    };
+    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 

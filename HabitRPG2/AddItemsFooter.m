@@ -12,8 +12,11 @@
 @implementation AddItemsFooter
 
 -(IBAction)addItemBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
-    SHEventInfo *e = eventInfoCopy;
-    [self.delegate addItemBtn_press_action:e];
+    wrapReturnVoid wrappedCall = ^void(){
+        SHEventInfo *e = eventInfoCopy;
+        [self.delegate addItemBtn_press_action:e];
+    };
+    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 @end

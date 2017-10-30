@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "P_Interceptor.h"
+#import "P_SHView.h"
+
 
 @interface SHView : UIView
 @property (weak,nonatomic) UIView *mainView;
 @property (weak,nonatomic) UIView *holderView;
+@property (strong,nonatomic) id<P_Interceptor> interceptor;
 -(instancetype)initEmpty;
 -(void)changeBackgroundColorTo:(UIColor *)color;
 -(UIView *)loadDefaultXib;

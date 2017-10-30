@@ -10,14 +10,26 @@
 
 @implementation Interceptor
 
+-(void)callVoidWrapped:(wrapReturnVoid)callMe withInfo:(id)info{
+    [Interceptor callVoidWrapped:callMe withInfo:info];
+}
+
+
 +(void)callVoidWrapped:(wrapReturnVoid)callMe withInfo:(id)info{
     //[self handleInterceptedInfo:info];
     //NSArray<NSString *> *callStack = NSThread.callStackSymbols;
     callMe();
 }
 
-+(int32_t)callInt32Wrapped:(wrapReturnInt32)callMe withInfo:(id)info{
-    return callMe();
+
+-(BOOL)callBoolWrapped:(wrapReturnBool)callMe withInfo:(id)info{
+    @try{
+        return callMe();
+    }
+    @catch(NSException *ex){
+        NSLog(@"%@",@"got em bool");
+    }
+    
 }
 
 +(void)handleInterceptedInfo:(id)info{

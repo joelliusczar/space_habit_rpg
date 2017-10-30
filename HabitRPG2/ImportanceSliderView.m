@@ -20,8 +20,11 @@
 
 -(IBAction)importanceSld_valueChanged_action:(UISlider *)sender
                                     forEvent:(UIEvent *)event {
-    SHEventInfo *e = eventInfoCopy;
-    [self.delegate sld_valueChanged_action:e];
+    wrapReturnVoid wrappedCall = ^void(){
+        SHEventInfo *e = eventInfoCopy;
+        [self.delegate sld_valueChanged_action:e];
+    };
+    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 -(double)value{

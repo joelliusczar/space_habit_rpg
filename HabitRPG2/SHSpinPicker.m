@@ -49,7 +49,7 @@
             [ViewHelper popViewFromFront:self];
         }
     };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,9 +71,12 @@ numberOfRowsInComponent:(NSInteger)component{
 
 -(IBAction)pickerSelectBtn_press_action:(UIButton *)sender
                                forEvent:(UIEvent *)event{
-    SHEventInfo *e = [[SHEventInfo alloc] init:event withSenders:sender,self.picker,self,nil];
-    [self.delegate pickerSelection_action:e];
-    [ViewHelper popViewFromFront:self];
+    wrapReturnVoid wrappedCall = ^void(){
+        SHEventInfo *e = [[SHEventInfo alloc] init:event withSenders:sender,self.picker,self,nil];
+        [self.delegate pickerSelection_action:e];
+        [ViewHelper popViewFromFront:self];
+    };
+    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 @end

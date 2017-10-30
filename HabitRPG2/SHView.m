@@ -9,9 +9,18 @@
 #import "SHView.h"
 #import "NSObject+Helper.h"
 #import "UIView+Helpers.h"
+#import "Interceptor.h"
 
 
 @implementation SHView
+
+-(id<P_Interceptor>)interceptor{
+    if(nil==_interceptor){
+        _interceptor = [[Interceptor alloc] init];
+    }
+    return _interceptor;
+}
+
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){

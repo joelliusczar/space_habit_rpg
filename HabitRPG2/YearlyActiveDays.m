@@ -50,7 +50,7 @@
         [eventInfo.senderStack addObject:self];
         [super addItemBtn_press_action:eventInfo];
     };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
@@ -62,7 +62,7 @@
         [eventInfo.senderStack addObject:self];
         [super pickerSelection_action:eventInfo];
     };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 

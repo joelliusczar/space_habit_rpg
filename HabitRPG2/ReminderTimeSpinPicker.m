@@ -95,36 +95,39 @@ numberOfRowsInComponent:(NSInteger)component{
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
       inComponent:(NSInteger)component{
+    wrapReturnVoid wrappedCall = ^void(){
+        if(!self.utilityStore.inUseLocale.isUsing24HourFormat){
+            //adjust am/pm if user switches hour to afternoon or morning
+            if(component==HOUR_OF_DAY_COL){
+                if([pickerView selectedRowInComponent:AM_PM_COL]==AM_ROW
+                   &&row>=DAY_HALF){
+                    [pickerView selectRow:PM_ROW
+                              inComponent:AM_PM_COL animated:YES];
+                }
+                else if([pickerView selectedRowInComponent:AM_PM_COL]==PM_ROW
+                        &&row<DAY_HALF){
+                    [pickerView selectRow:AM_ROW
+                              inComponent:AM_PM_COL animated:YES];
+                }
+            }
+            //adjust hour if user switches am/pm
+            else if(component==AM_PM_COL){
+                NSInteger currentHour = [pickerView
+                                         selectedRowInComponent:HOUR_OF_DAY_COL];
+                
+                if(row==AM_ROW&&currentHour>=DAY_HALF){
+                    [pickerView selectRow:currentHour%DAY_HALF
+                              inComponent:HOUR_OF_DAY_COL animated:YES];
+                }
+                else if(row==PM_ROW&&currentHour<DAY_HALF){
+                    [pickerView selectRow:currentHour+DAY_HALF
+                              inComponent:HOUR_OF_DAY_COL animated:YES];
+                }
+            }
+        }
+    };
+    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
     
-    if(!self.utilityStore.inUseLocale.isUsing24HourFormat){
-        //adjust am/pm if user switches hour to afternoon or morning
-        if(component==HOUR_OF_DAY_COL){
-            if([pickerView selectedRowInComponent:AM_PM_COL]==AM_ROW
-               &&row>=DAY_HALF){
-                [pickerView selectRow:PM_ROW
-                          inComponent:AM_PM_COL animated:YES];
-            }
-            else if([pickerView selectedRowInComponent:AM_PM_COL]==PM_ROW
-                    &&row<DAY_HALF){
-                [pickerView selectRow:AM_ROW
-                          inComponent:AM_PM_COL animated:YES];
-            }
-        }
-        //adjust hour if user switches am/pm
-        else if(component==AM_PM_COL){
-            NSInteger currentHour = [pickerView
-                               selectedRowInComponent:HOUR_OF_DAY_COL];
-            
-            if(row==AM_ROW&&currentHour>=DAY_HALF){
-                [pickerView selectRow:currentHour%DAY_HALF
-                          inComponent:HOUR_OF_DAY_COL animated:YES];
-            }
-            else if(row==PM_ROW&&currentHour<DAY_HALF){
-                [pickerView selectRow:currentHour+DAY_HALF
-                          inComponent:HOUR_OF_DAY_COL animated:YES];
-            }
-        }
-    }
 }
 
 @end

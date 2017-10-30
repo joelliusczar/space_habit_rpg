@@ -8,9 +8,10 @@
 
 #import "P_RateTypeSelectorDelegate.h"
 #import "constants.h"
+#import "SHViewController.h"
 @import UIKit;
 
-@interface RateTypeSelector : UIViewController
+@interface RateTypeSelector : SHViewController
 @property (weak,nonatomic) IBOutlet UILabel *everyXCheckLbl;
 @property (weak,nonatomic) IBOutlet UIButton *everyXBtn;
 @property (weak,nonatomic) IBOutlet UILabel *weeklyCheckLbl;

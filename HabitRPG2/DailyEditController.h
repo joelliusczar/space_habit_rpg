@@ -13,6 +13,7 @@
 #import "constants.h"
 #import "Daily+CoreDataClass.h"
 #import "P_DailyEditCompound.h"
+#import "SHTextField.h"
 
 
 @interface DailyEditController : UIViewController
@@ -20,7 +21,7 @@
 ,P_DailyEditCompound
 ,UITableViewDataSource
 ,UITableViewDelegate>
-@property (weak,nonatomic) IBOutlet UITextField *nameBox;
+@property (weak,nonatomic) IBOutlet SHTextField *nameBox;
 @property (weak,nonatomic) IBOutlet UIButton *showXtraOptsBtn;
 @property (weak,nonatomic) IBOutlet UITableView *controlsTbl;
 @property (strong,nonatomic) Daily *modelForEditing;

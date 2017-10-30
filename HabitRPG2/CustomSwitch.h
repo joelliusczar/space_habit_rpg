@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "P_CustomSwitch.h"
+#import "SHButton.h"
 
 IB_DESIGNABLE
-@interface CustomSwitch : UIButton<P_CustomSwitch>
+@interface CustomSwitch : SHButton<P_CustomSwitch>
 @property (assign,nonatomic) IBInspectable BOOL isOn;
 @property (strong,nonatomic) IBInspectable UIImage *onImage;
 @property (strong,nonatomic) IBInspectable UIImage *offImage;

@@ -155,7 +155,7 @@ numberOfRowsInSection:(NSInteger)section{
                 wrapReturnVoid wrappedCall = ^void(){
                     [self deleteCellAt:indexPath];
                 };
-                [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+                [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
             };
     UITableViewRowAction *openDeleteButton = [UITableViewRowAction
                                               rowActionWithStyle:UITableViewRowActionStyleNormal
@@ -167,87 +167,118 @@ numberOfRowsInSection:(NSInteger)section{
 
 
 -(void)addItemBtn_press_action:(SHEventInfo *)eventInfo{
-    [eventInfo.senderStack addObject:self];
-    SEL delegateSel = @selector(addItemBtn_press_action:);
-    if([self.delegate respondsToSelector:delegateSel]){
-        [self.delegate addItemBtn_press_action:eventInfo];
-    }
+    wrapReturnVoid wrappedCall = ^void(){
+        [eventInfo.senderStack addObject:self];
+        SEL delegateSel = @selector(addItemBtn_press_action:);
+        if([self.delegate respondsToSelector:delegateSel]){
+            [self.delegate addItemBtn_press_action:eventInfo];
+        }
+    };
+    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
 -(void)pickerSelection_action:(SHEventInfo *)eventInfo{
-    [eventInfo.senderStack addObject:self];
-    SEL delegateSel = @selector(pickerSelection_action:);
-    if([self.delegate respondsToSelector:delegateSel]){
-        [self.delegate pickerSelection_action:eventInfo];
-    }
+    wrapReturnVoid wrappedCall = ^void(){
+        [eventInfo.senderStack addObject:self];
+        SEL delegateSel = @selector(pickerSelection_action:);
+        if([self.delegate respondsToSelector:delegateSel]){
+            [self.delegate pickerSelection_action:eventInfo];
+        }
+    };
+    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
 -(void)notifyAddNewCell:(NSIndexPath *)indexPath{
-    ItemFlexibleListEventInfo *eventInfo = [[ItemFlexibleListEventInfo alloc]
-                                            initWithItemFlexibleList:self
-                                            andIndexPath:indexPath];
-    SEL delegateSel = @selector(notifyAddNewCell:);
-    if([self.delegate respondsToSelector:delegateSel]){
-        [self.delegate notifyAddNewCell:eventInfo];
-    }
+    wrapReturnVoid wrappedCall = ^void(){
+        ItemFlexibleListEventInfo *eventInfo = [[ItemFlexibleListEventInfo alloc]
+                                                initWithItemFlexibleList:self
+                                                andIndexPath:indexPath];
+        SEL delegateSel = @selector(notifyAddNewCell:);
+        if([self.delegate respondsToSelector:delegateSel]){
+            [self.delegate notifyAddNewCell:eventInfo];
+        }
+    };
+    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
     
     
 -(void)notifyDeleteCell:(NSIndexPath *)indexPath{
-    ItemFlexibleListEventInfo *eventInfo = [[ItemFlexibleListEventInfo alloc]
-                                            initWithItemFlexibleList:self
-                                            andIndexPath:indexPath];
-    SEL delegateSel = @selector(notifyDeleteCell:);
-    if([self.delegate respondsToSelector:delegateSel]){
-        [self.delegate notifyDeleteCell:eventInfo];
-    }
+    wrapReturnVoid wrappedCall = ^void(){
+        ItemFlexibleListEventInfo *eventInfo = [[ItemFlexibleListEventInfo alloc]
+                                                initWithItemFlexibleList:self
+                                                andIndexPath:indexPath];
+        SEL delegateSel = @selector(notifyDeleteCell:);
+        if([self.delegate respondsToSelector:delegateSel]){
+            [self.delegate notifyDeleteCell:eventInfo];
+        }
+    };
+    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
 -(void)beginUpdate{
-    SEL delegateSel = @selector(beginUpdate);
-    if([self.resizeResponder respondsToSelector:delegateSel]){
-        [self.resizeResponder beginUpdate];
-    }
+    wrapReturnVoid wrappedCall = ^void(){
+        SEL delegateSel = @selector(beginUpdate);
+        if([self.resizeResponder respondsToSelector:delegateSel]){
+            [self.resizeResponder beginUpdate];
+        }
+    };
+    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
 -(void)endUpdate{
-    SEL delegateSel = @selector(endUpdate);
-    if([self.resizeResponder respondsToSelector:delegateSel]){
-        [self.resizeResponder endUpdate];
-    }
+    wrapReturnVoid wrappedCall = ^void(){
+        SEL delegateSel = @selector(endUpdate);
+        if([self.resizeResponder respondsToSelector:delegateSel]){
+            [self.resizeResponder endUpdate];
+        }
+    };
+    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+    
 }
 
 -(void)respondToHeightResize:(CGFloat)change{
-    SEL delegateSel = @selector(respondToHeightResize:);
-    if([self.resizeResponder respondsToSelector:delegateSel]){
-        [self.resizeResponder respondToHeightResize:change];
-    }
+    wrapReturnVoid wrappedCall = ^void(){
+        SEL delegateSel = @selector(respondToHeightResize:);
+        if([self.resizeResponder respondsToSelector:delegateSel]){
+            [self.resizeResponder respondToHeightResize:change];
+        }
+    };
+    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 -(void)scrollByOffset:(CGFloat)offset{
-    SEL delegateSel = @selector(scrollByOffset:);
-    if([self.resizeResponder respondsToSelector:delegateSel]){
-        [self.resizeResponder scrollByOffset:offset];
-    }
+    wrapReturnVoid wrappedCall = ^void(){
+        SEL delegateSel = @selector(scrollByOffset:);
+        if([self.resizeResponder respondsToSelector:delegateSel]){
+            [self.resizeResponder scrollByOffset:offset];
+        }
+    };
+    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
 -(void)scrollVisibleToControl:(SHView *)control{
-    SEL delegateSel = @selector(scrollVisibleToControl:);
-    if([self.resizeResponder respondsToSelector:delegateSel]){
-        [self.resizeResponder scrollVisibleToControl:control];
-    }
+    wrapReturnVoid wrappedCall = ^void(){
+        SEL delegateSel = @selector(scrollVisibleToControl:);
+        if([self.resizeResponder respondsToSelector:delegateSel]){
+            [self.resizeResponder scrollVisibleToControl:control];
+        }
+    };
+    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
 -(void)hideKeyboard{
-    if([self.resizeResponder respondsToSelector:@selector(hideKeyboard)]){
-        [self.resizeResponder hideKeyboard];
-    }
+    wrapReturnVoid wrappedCall = ^void(){
+        if([self.resizeResponder respondsToSelector:@selector(hideKeyboard)]){
+            [self.resizeResponder hideKeyboard];
+        }
+    };
+    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 

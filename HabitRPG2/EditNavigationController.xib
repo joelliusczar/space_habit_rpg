@@ -42,7 +42,7 @@
                             </constraints>
                             <items>
                                 <barButtonItem style="plain" id="FzX-OP-sxi">
-                                    <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SaF-Zy-dGk">
+                                    <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SaF-Zy-dGk" customClass="SHButton">
                                         <rect key="frame" x="16" y="7" width="57" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
@@ -54,7 +54,7 @@
                                 </barButtonItem>
                                 <barButtonItem width="137" style="plain" systemItem="fixedSpace" id="Gko-Jk-U6t"/>
                                 <barButtonItem enabled="NO" style="plain" id="RiP-TM-LEl">
-                                    <button key="customView" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Rjy-6h-ASQ">
+                                    <button key="customView" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Rjy-6h-ASQ" customClass="SHButton">
                                         <rect key="frame" x="220" y="7" width="39" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>

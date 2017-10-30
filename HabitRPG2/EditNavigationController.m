@@ -14,6 +14,7 @@
 #import "constants.h"
 #import "RateSetContainer.h"
 #import "ItemFlexibleListView.h"
+#import "SHButton.h"
 @import CoreGraphics;
 
 
@@ -23,7 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *headline;
 @property (weak, nonatomic) IBOutlet UIImageView *background;
 @property (weak, nonatomic) IBOutlet UIView *modalView;
-@property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
+@property (weak, nonatomic) IBOutlet SHButton *deleteBtn;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveBtnBarItem;
 @property (assign,nonatomic) CGFloat defaultScrollHeight;
 
@@ -72,10 +73,7 @@
 
 
 -(IBAction)deleteBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
-    wrapReturnVoid wrappedCall = ^void(){
-        [self confirmDelete];
-    };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+    [self confirmDelete];
 }
 
 
@@ -106,15 +104,12 @@
 }
 
 -(IBAction)saveBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
-    wrapReturnVoid wrappedCall = ^void(){
-        if(self.editingScreen.nameStr.length){
-            [self.editingScreen saveEdit];
-            [ViewHelper popViewFromFront:self];
-            return;
-        }
-        [self alertMissingInfo];
-    };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+    if(self.editingScreen.nameStr.length){
+        [self.editingScreen saveEdit];
+        [ViewHelper popViewFromFront:self];
+        return;
+    }
+    [self alertMissingInfo];
 }
 
 
@@ -133,14 +128,11 @@
 
 
 -(void)background_tap_action:(UITapGestureRecognizer *)sender {
-    wrapReturnVoid wrappedCall = ^void(){
-        [self hideKeyboard];
-        if(sender.view == self.background){
-            [self.editingScreen unsaved_closing_action];
-            [ViewHelper popViewFromFront:self];
-        }
-    };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+    [self hideKeyboard];
+    if(sender.view == self.background){
+        [self.editingScreen unsaved_closing_action];
+        [ViewHelper popViewFromFront:self];
+    }
 }
 
 

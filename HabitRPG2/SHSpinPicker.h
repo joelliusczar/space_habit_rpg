@@ -9,8 +9,9 @@
 @import UIKit;
 #import "P_SHSpinPickerDelegate.h"
 #import "P_UtilityStore.h"
+#import "SHViewController.h"
 
-@interface SHSpinPicker : UIViewController
+@interface SHSpinPicker : SHViewController
 <UIPickerViewDataSource,UIPickerViewDelegate>
 @property (weak,nonatomic) IBOutlet UIPickerView *picker;
 @property (strong,nonatomic) id<P_UtilityStore> utilityStore;

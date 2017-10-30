@@ -43,6 +43,9 @@
 		271AB3AC1F9CEBBB00D30521 /* NSDate+testReplace.m in Sources */ = {isa = PBXBuildFile; fileRef = 2709B3A21EF56AFC00EEE5CC /* NSDate+testReplace.m */; };
 		271AB3AF1F9CEBBB00D30521 /* TestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 275A07B61EDA1FB9001422CD /* TestHelpers.m */; };
 		271AB3B11F9CEBBB00D30521 /* FrequentCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 273782371EE4D1B200EA5B1D /* FrequentCase.m */; };
+		271AB3BC1FA686EB00D30521 /* SHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 271AB3BB1FA686EB00D30521 /* SHViewController.m */; };
+		271AB3C01FA68F8D00D30521 /* SHButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 271AB3BF1FA68F8D00D30521 /* SHButton.m */; };
+		271AB3C31FA69E1500D30521 /* SHTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 271AB3C21FA69E1500D30521 /* SHTextField.m */; };
 		271C04831E8A1152002221E9 /* MonsterInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C04821E8A1152002221E9 /* MonsterInfoDictionary.m */; };
 		271C04881E8B639D002221E9 /* ResourceUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C04871E8B639D002221E9 /* ResourceUtility.m */; };
 		271C048B1E8C955A002221E9 /* SingletonCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 271C048A1E8C955A002221E9 /* SingletonCluster.m */; };
@@ -289,6 +292,13 @@
 		271AB38A1F9CEA2500D30521 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		271AB3B21FA2BAA400D30521 /* P_Interceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_Interceptor.h; sourceTree = "<group>"; };
 		271AB3B31FA2BD1E00D30521 /* P_NumberControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_NumberControl.h; sourceTree = "<group>"; };
+		271AB3BA1FA686EB00D30521 /* SHViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHViewController.h; sourceTree = "<group>"; };
+		271AB3BB1FA686EB00D30521 /* SHViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHViewController.m; sourceTree = "<group>"; };
+		271AB3BE1FA68F8D00D30521 /* SHButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHButton.h; sourceTree = "<group>"; };
+		271AB3BF1FA68F8D00D30521 /* SHButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHButton.m; sourceTree = "<group>"; };
+		271AB3C11FA69E1500D30521 /* SHTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHTextField.h; sourceTree = "<group>"; };
+		271AB3C21FA69E1500D30521 /* SHTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHTextField.m; sourceTree = "<group>"; };
+		271AB3C41FA69EC900D30521 /* P_SHView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_SHView.h; sourceTree = "<group>"; };
 		271C047D1E89BCBA002221E9 /* P_CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_CoreData.h; sourceTree = "<group>"; };
 		271C04811E8A1152002221E9 /* MonsterInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterInfoDictionary.h; sourceTree = "<group>"; };
 		271C04821E8A1152002221E9 /* MonsterInfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterInfoDictionary.m; sourceTree = "<group>"; };
@@ -718,6 +728,17 @@
 			path = HabitRPG2Tests;
 			sourceTree = "<group>";
 		};
+		271AB3BD1FA68F3200D30521 /* NormalControls */ = {
+			isa = PBXGroup;
+			children = (
+				271AB3BE1FA68F8D00D30521 /* SHButton.h */,
+				271AB3BF1FA68F8D00D30521 /* SHButton.m */,
+				271AB3C11FA69E1500D30521 /* SHTextField.h */,
+				271AB3C21FA69E1500D30521 /* SHTextField.m */,
+			);
+			name = NormalControls;
+			sourceTree = "<group>";
+		};
 		271C047B1E886B49002221E9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -768,6 +789,9 @@
 				272428221F4101330028B22E /* ItemFlexibleListView.m */,
 				27C3C21D1F0022D600F205A6 /* ItemFlexibleListView.xib */,
 				271AB3B31FA2BD1E00D30521 /* P_NumberControl.h */,
+				271AB3BA1FA686EB00D30521 /* SHViewController.h */,
+				271AB3BB1FA686EB00D30521 /* SHViewController.m */,
+				271AB3C41FA69EC900D30521 /* P_SHView.h */,
 			);
 			name = Abstract;
 			sourceTree = "<group>";
@@ -924,17 +948,6 @@
 			name = Transactions;
 			sourceTree = "<group>";
 		};
-		277ABECA1E94A08E008CC239 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				277ABEC61E949B76008CC239 /* P_stdlibWrapper.h */,
-				277ABECB1E94A0C0008CC239 /* P_CustomSwitch.h */,
-				2709B3961EEF74E900EEE5CC /* P_ReportServiceCaller.h */,
-				27C3C21F1F07854700F205A6 /* P_DueDateWrapper.h */,
-			);
-			name = Protocols;
-			sourceTree = "<group>";
-		};
 		277ABEF01E97592A008CC239 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1052,6 +1065,7 @@
 		27E89C991EF5FC40009B7474 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				271AB3BD1FA68F3200D30521 /* NormalControls */,
 				272428301F4167140028B22E /* ActiveDays */,
 				272428251F41074A0028B22E /* Abstract */,
 				275D9F261F21A33E009DA715 /* TaskCell.m */,
@@ -1158,6 +1172,10 @@
 		686ED3A81DADDF69004EDD36 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				277ABEC61E949B76008CC239 /* P_stdlibWrapper.h */,
+				277ABECB1E94A0C0008CC239 /* P_CustomSwitch.h */,
+				2709B3961EEF74E900EEE5CC /* P_ReportServiceCaller.h */,
+				27C3C21F1F07854700F205A6 /* P_DueDateWrapper.h */,
 				27AE66541E8720F9000F31BD /* CentralViewControllerP.h */,
 				68F736B01D8B810200AE10A8 /* EditingSaver.h */,
 				271C047D1E89BCBA002221E9 /* P_CoreData.h */,
@@ -1293,14 +1311,54 @@
 		68DD159E1D9CAA010073E7D8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				68F3F9FA1D71C9A500840DD2 /* Helpers */,
-				27E89C991EF5FC40009B7474 /* Controls */,
 				686ED3AA1DADE4A4004EDD36 /* Settings */,
 				686ED3A91DADE47C004EDD36 /* EditingScreen */,
 				686ED3A81DADDF69004EDD36 /* Protocols */,
 				68E260631D7FC3F200425D46 /* CoreDataStackController.h */,
 				68E260641D7FC3F200425D46 /* CoreDataStackController.m */,
 				68F3F9E31D70E8DB00840DD2 /* CentralViewController.xib */,
+				27A559BA1F5E5F3000C915E6 /* NSMutableArray+Helper.h */,
+				27A559BB1F5E5F3000C915E6 /* NSMutableArray+Helper.m */,
+				6886A47E1D8E5FD0005E12B3 /* constants.h */,
+				6886A47F1D8E5FD0005E12B3 /* constants.m */,
+				68BA38841D93576600CB5A76 /* CommonUtilities.h */,
+				68BA38851D93576600CB5A76 /* CommonUtilities.m */,
+				686ED3B51DAF3DBD004EDD36 /* CustomSwitch.h */,
+				686ED3B61DAF3DBD004EDD36 /* CustomSwitch.m */,
+				27C92C461E341DA10025727E /* ViewHelper.h */,
+				27C92C471E341DA10025727E /* ViewHelper.m */,
+				271C04861E8B639D002221E9 /* ResourceUtility.h */,
+				271C04871E8B639D002221E9 /* ResourceUtility.m */,
+				277ABEC71E949B96008CC239 /* StdLibWrapper.h */,
+				277ABEC81E949B96008CC239 /* StdLibWrapper.m */,
+				277ABECF1E95DEF6008CC239 /* ProbWeight.h */,
+				277ABED01E95DEF6008CC239 /* ProbWeight.m */,
+				275FEEFC1EE3172C00AED1A2 /* NSDate+DateHelper.h */,
+				275FEEFD1EE3172C00AED1A2 /* NSDate+DateHelper.m */,
+				275FEF011EE3A78200AED1A2 /* timeZoneList.txt */,
+				2709B3971EEF750800EEE5CC /* ReportServiceCaller.h */,
+				2709B3981EEF750800EEE5CC /* ReportServiceCaller.m */,
+				2709B39A1EF0D31200EEE5CC /* Interceptor.h */,
+				2709B39B1EF0D31200EEE5CC /* Interceptor.m */,
+				2774040F1EFDBD43008E1AFC /* NSObject+Helper.h */,
+				277404101EFDBD43008E1AFC /* NSObject+Helper.m */,
+				274A37B31F0A1D6200F31E0F /* SHMath.h */,
+				274A37B41F0A1D6200F31E0F /* SHMath.m */,
+				274A37B61F0DC03100F31E0F /* NSLocale+Helper.h */,
+				274A37B71F0DC03100F31E0F /* NSLocale+Helper.m */,
+				274A37F01F148F4500F31E0F /* WeekdayEnum.h */,
+				275D9F281F22294F009DA715 /* UIScrollView+ScrollAdjusters.h */,
+				275D9F291F22294F009DA715 /* UIScrollView+ScrollAdjusters.m */,
+				275D9F2B1F22BAED009DA715 /* UIView+Helpers.h */,
+				275D9F2C1F22BAED009DA715 /* UIView+Helpers.m */,
+				276159771F2E3B64002E8BF9 /* NotificationHelper.h */,
+				276159781F2E3B64002E8BF9 /* NotificationHelper.m */,
+				27F0D5BD1F4A3E02002DE59C /* NSNumber+Helpers.h */,
+				27F0D5BE1F4A3E02002DE59C /* NSNumber+Helpers.m */,
+				270D39BA1F5D1CF900F371F0 /* RateTypeHelper.m */,
+				270D39BB1F5D1CF900F371F0 /* RateTypeHelper.h */,
+				2737AF3B1F6F02F8000FCFD3 /* NSMutableDictionary+Helper.h */,
+				2737AF3C1F6F02F8000FCFD3 /* NSMutableDictionary+Helper.m */,
 				68F3F9E11D70E8DB00840DD2 /* CentralViewController.h */,
 				68F3F9E21D70E8DB00840DD2 /* CentralViewController.m */,
 				27F4401A1E220097002BEDD4 /* OnlyOneEntities.h */,
@@ -1342,6 +1400,7 @@
 		68F3F9AB1D70E82E00840DD2 /* HabitRPG2 */ = {
 			isa = PBXGroup;
 			children = (
+				27E89C991EF5FC40009B7474 /* Controls */,
 				273782391EE4DB9C00EA5B1D /* Model.xcdatamodeld */,
 				274A37A21F09FCCB00F31E0F /* Reminders */,
 				27AE66761E876007000F31BD /* Suffix */,
@@ -1389,56 +1448,6 @@
 				6886A4851D8F1C49005E12B3 /* unchecked_task.png */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		68F3F9FA1D71C9A500840DD2 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				277ABECA1E94A08E008CC239 /* Protocols */,
-				27A559BA1F5E5F3000C915E6 /* NSMutableArray+Helper.h */,
-				27A559BB1F5E5F3000C915E6 /* NSMutableArray+Helper.m */,
-				6886A47E1D8E5FD0005E12B3 /* constants.h */,
-				6886A47F1D8E5FD0005E12B3 /* constants.m */,
-				68BA38841D93576600CB5A76 /* CommonUtilities.h */,
-				68BA38851D93576600CB5A76 /* CommonUtilities.m */,
-				686ED3B51DAF3DBD004EDD36 /* CustomSwitch.h */,
-				686ED3B61DAF3DBD004EDD36 /* CustomSwitch.m */,
-				27C92C461E341DA10025727E /* ViewHelper.h */,
-				27C92C471E341DA10025727E /* ViewHelper.m */,
-				271C04861E8B639D002221E9 /* ResourceUtility.h */,
-				271C04871E8B639D002221E9 /* ResourceUtility.m */,
-				277ABEC71E949B96008CC239 /* StdLibWrapper.h */,
-				277ABEC81E949B96008CC239 /* StdLibWrapper.m */,
-				277ABECF1E95DEF6008CC239 /* ProbWeight.h */,
-				277ABED01E95DEF6008CC239 /* ProbWeight.m */,
-				275FEEFC1EE3172C00AED1A2 /* NSDate+DateHelper.h */,
-				275FEEFD1EE3172C00AED1A2 /* NSDate+DateHelper.m */,
-				275FEF011EE3A78200AED1A2 /* timeZoneList.txt */,
-				2709B3971EEF750800EEE5CC /* ReportServiceCaller.h */,
-				2709B3981EEF750800EEE5CC /* ReportServiceCaller.m */,
-				2709B39A1EF0D31200EEE5CC /* Interceptor.h */,
-				2709B39B1EF0D31200EEE5CC /* Interceptor.m */,
-				2774040F1EFDBD43008E1AFC /* NSObject+Helper.h */,
-				277404101EFDBD43008E1AFC /* NSObject+Helper.m */,
-				274A37B31F0A1D6200F31E0F /* SHMath.h */,
-				274A37B41F0A1D6200F31E0F /* SHMath.m */,
-				274A37B61F0DC03100F31E0F /* NSLocale+Helper.h */,
-				274A37B71F0DC03100F31E0F /* NSLocale+Helper.m */,
-				274A37F01F148F4500F31E0F /* WeekdayEnum.h */,
-				275D9F281F22294F009DA715 /* UIScrollView+ScrollAdjusters.h */,
-				275D9F291F22294F009DA715 /* UIScrollView+ScrollAdjusters.m */,
-				275D9F2B1F22BAED009DA715 /* UIView+Helpers.h */,
-				275D9F2C1F22BAED009DA715 /* UIView+Helpers.m */,
-				276159771F2E3B64002E8BF9 /* NotificationHelper.h */,
-				276159781F2E3B64002E8BF9 /* NotificationHelper.m */,
-				27F0D5BD1F4A3E02002DE59C /* NSNumber+Helpers.h */,
-				27F0D5BE1F4A3E02002DE59C /* NSNumber+Helpers.m */,
-				270D39BA1F5D1CF900F371F0 /* RateTypeHelper.m */,
-				270D39BB1F5D1CF900F371F0 /* RateTypeHelper.h */,
-				2737AF3B1F6F02F8000FCFD3 /* NSMutableDictionary+Helper.h */,
-				2737AF3C1F6F02F8000FCFD3 /* NSMutableDictionary+Helper.m */,
-			);
-			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1690,6 +1699,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				271AB3C01FA68F8D00D30521 /* SHButton.m in Sources */,
 				276159791F2E3B64002E8BF9 /* NotificationHelper.m in Sources */,
 				2785DCD21F2CC25F00B5C28C /* TodoTransaction+CoreDataClass.m in Sources */,
 				27B0CDD91F2BF488005BEC75 /* Settings+CoreDataClass.m in Sources */,
@@ -1697,6 +1707,7 @@
 				27B0CD281F2BEBEB005BEC75 /* Todo+CoreDataProperties.m in Sources */,
 				686686EE1D79060300BB2D09 /* DailyCellController.m in Sources */,
 				27B0CDD21F2BEECD005BEC75 /* Daily+CoreDataProperties.m in Sources */,
+				271AB3BC1FA686EB00D30521 /* SHViewController.m in Sources */,
 				2709B3991EEF750800EEE5CC /* ReportServiceCaller.m in Sources */,
 				275FEEFE1EE3172C00AED1A2 /* NSDate+DateHelper.m in Sources */,
 				272427E31F391DA40028B22E /* SHView.m in Sources */,
@@ -1776,6 +1787,7 @@
 				275FEF0D1EE45AE600AED1A2 /* Daily+DailyHelper.m in Sources */,
 				27C92C1A1E29C9F10025727E /* ZoneInfoDictionary.m in Sources */,
 				68F3F9F81D70FD3F00840DD2 /* GoodsViewController.m in Sources */,
+				271AB3C31FA69E1500D30521 /* SHTextField.m in Sources */,
 				270D39BF1F5E067400F371F0 /* ActiveDaysTriKey.m in Sources */,
 				271C048E1E8C9C06002221E9 /* MonsterHelper.m in Sources */,
 				27B0CD341F2BEC32005BEC75 /* ZoneTransaction+CoreDataClass.m in Sources */,
@@ -2014,6 +2026,7 @@
 				271AB38F1F9CEA2500D30521 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		274A37C71F107ACF00F31E0F /* Build configuration list for PBXNativeTarget "ObjCScriptRunner" */ = {
 			isa = XCConfigurationList;

@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HabitRPG2/DailyEditController.m"
-            timestampString = "531005062.502915"
+            timestampString = "531030379.554907"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "260"
-            endingLineNumber = "260"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HabitRPG2/ImportanceSliderView.m"
-            timestampString = "530758034.065039"
+            timestampString = "531030379.554907"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
             landmarkName = "-importanceSld_valueChanged_action:forEvent:"
             landmarkType = "7">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HabitRPG2/DailyEditController.m"
-            timestampString = "530758075.18977"
+            timestampString = "531030379.554907"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
             landmarkName = "-sld_valueChanged_action:"
             landmarkType = "7">
          </BreakpointContent>
@@ -249,13 +249,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HabitRPG2/DailyEditController.m"
-            timestampString = "531004978.516598"
+            filePath = "HabitRPG2/ImportanceSliderView.m"
+            timestampString = "531008123.485877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
-            landmarkName = "-sld_valueChanged_action:"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "-importanceSld_valueChanged_action:forEvent:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
