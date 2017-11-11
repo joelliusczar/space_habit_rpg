@@ -13,6 +13,7 @@
 @property (assign,nonatomic) NSInteger count;
 @property (assign,nonatomic) NSInteger lamps;
 @property (weak,nonatomic) NSHashTable *hs;
+@property (weak,nonatomic) House *h;
 -(void)returnsNothing;
 -(NSInteger)getFive;
 @end

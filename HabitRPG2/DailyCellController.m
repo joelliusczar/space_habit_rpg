@@ -84,6 +84,8 @@
 }
 
 -(IBAction)completeBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
+        (void)sender;
+        (void)event;
 //        if(self.model.sectionNum == INCOMPLETE){
 //            self.model.sectionNum  = COMPLETE;
 //            [self.parentDailyController completeDaily:self.model];

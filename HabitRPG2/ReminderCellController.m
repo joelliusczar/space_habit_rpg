@@ -15,6 +15,7 @@
 
 
 +(instancetype)getReminderCell:(UITableView *)tableView withParent:(id)parent andReminder:(Reminder *)reminderModel{
+    (void)parent;
     ReminderCellController *cell = [tableView
                                     dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
     if(nil==cell){

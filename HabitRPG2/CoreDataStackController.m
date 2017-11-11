@@ -12,11 +12,11 @@
 @import CoreData;
 
 @interface CoreDataStackController()
-@property (nonatomic,strong) NSString* dbFileName;
-@property (nonatomic,strong) NSPersistentStoreCoordinator *coordinator;
-@property (nonatomic,assign) BOOL isTesting;
-@property (nonatomic,readonly) NSString* storeType;
-@property (nonatomic,strong) NSMutableDictionary<NSString *,NSManagedObjectContext *> *contexts;
+@property (strong,nonatomic) NSString* dbFileName;
+@property (strong,nonatomic) NSPersistentStoreCoordinator *coordinator;
+@property (readonly,nonatomic) BOOL isTesting;
+@property (readonly,nonatomic) NSString* storeType;
+@property (strong,nonatomic) NSMutableDictionary<NSString *,NSManagedObjectContext *> *contexts;
 -(void)initializeCoreData;
 @end
 

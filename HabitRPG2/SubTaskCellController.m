@@ -12,6 +12,8 @@
 
 +(instancetype)getSubtaskCell:(UITableView *)tableView withParent:(id)parent
                      andModel:(DailySubTask *)model{
+    (void)parent;
+    (void)model;
     SubTaskCellController *cell = [tableView
                                    dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
     if(nil==cell){

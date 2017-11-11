@@ -84,6 +84,9 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
     [tbl changeBackgroundColorTo:self.backgroundColor];
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-parameter"
+
 -(IBAction)setRateTypeBtn_click_action:(UIButton *)sender
                               ForEvent:(UIEvent *)event{
     wrapReturnVoid wrappedCall = ^(){
@@ -100,6 +103,23 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
     [self updateRateType:rateType];
 }
 
+
+-(IBAction)invertRateTypeBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event{
+    wrapReturnVoid wrappedCall = ^(){
+        [self updateRateType:invertRateType(self.daily.rateType)];
+    };
+    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+}
+
+
+-(void)scrollVisibleToControl:(SHView *)control{
+    SEL delegateSel = @selector(scrollVisibleToControl:);
+    if([self.resizeResponder respondsToSelector:delegateSel]){
+        [self.resizeResponder scrollVisibleToControl:self];
+    }
+}
+
+#pragma clang diagnostic pop
 
 -(void)updateRateType:(RateType)rateType{
     [self resetRate];
@@ -245,14 +265,6 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 }
 
 
--(void)scrollVisibleToControl:(SHView *)control{
-    SEL delegateSel = @selector(scrollVisibleToControl:);
-    if([self.resizeResponder respondsToSelector:delegateSel]){
-        [self.resizeResponder scrollVisibleToControl:self];
-    }
-}
-
-
 -(void)pushViewControllerToNearestParent:(UIViewController *)child{
     [self.resizeResponder pushViewControllerToNearestParent:child];
 }
@@ -291,12 +303,5 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
     }
 }
 
-
--(IBAction)invertRateTypeBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event{
-    wrapReturnVoid wrappedCall = ^(){
-        [self updateRateType:invertRateType(self.daily.rateType)];
-    };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
-}
 
 @end

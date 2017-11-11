@@ -136,6 +136,7 @@ NSString* buildKey(SELPtr *sel,NSString *secondaryKey){
 w_LazyLoadBlock wrapLoaderBlock(LazyLoadBlock loaderBlock,NSUInteger idx){
     return ^ControlExtent *(SHControlKeep *keep){
         ControlExtent *controlExtent = [[ControlExtent alloc] init];
+        controlExtent.idx = idx;
         controlExtent.control = loaderBlock(keep,controlExtent);
         NSCAssert(controlExtent != controlExtent.control,@"You should not try to return control extent.");
         NSCAssert(controlExtent.control != keep,@"You should not try to return keep");

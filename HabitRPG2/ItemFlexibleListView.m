@@ -6,6 +6,8 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
+#pragma clang diagnostic ignored "-Wunused-parameter"
+
 #import "ItemFlexibleListView.h"
 #import "NSException+SHCommonExceptions.h"
 #import "NSObject+Helper.h"
@@ -38,7 +40,7 @@
 
 
 CGFloat getInitialHeight(NSUInteger itemCount){
-    return itemCount < SUB_TABLE_MAX_ROWS?
+    return itemCount < (NSUInteger)SUB_TABLE_MAX_ROWS?
     SUB_TABLE_CELL_HEIGHT*itemCount:
     calculateMaxTableHeight(SUB_TABLE_CELL_HEIGHT);
 }

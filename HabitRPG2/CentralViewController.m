@@ -66,13 +66,13 @@
     return _dataController;
 }
 
-@synthesize userHero = _userHero;
+
 -(Hero *)userHero{
     return [SingletonCluster getSharedInstance].
     dataController.userData.theHero;
 }
 
-@synthesize userSettings = _userSettings;
+
 -(Settings *)userSettings{
     return [SingletonCluster getSharedInstance].
     dataController.userData.theSettings;
@@ -267,6 +267,8 @@
               options:NSKeyValueObservingOptionNew context:nil];
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-parameter"
 
 -(void)observeValueForKeyPath:(NSString *)keyPath
                      ofObject:(id)object
@@ -294,6 +296,8 @@
     if([keyPath isEqualToString:KVO_MON_NAME]){}
     if([keyPath isEqualToString:KVO_ZONE_NAME]){}
 }
+
+#pragma clang diagnostic pop
 
 
 -(void)afterZonePick:(Zone *)zoneChoice{

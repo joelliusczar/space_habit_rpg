@@ -15,6 +15,7 @@
 
 +(UNMutableNotificationContent *)buildDefaultNotificationContent:(NSString *)notificationText
                                                         userInfo:(NSDictionary *)info{
+    (void)info;
     UNMutableNotificationContent *content = [UNMutableNotificationContent new];
     content.title = @"Reminder:";
     content.body = notificationText;
@@ -74,6 +75,7 @@
     |UNAuthorizationOptionSound;
     [center requestAuthorizationWithOptions:options completionHandler:
      ^(BOOL granted,NSError *wrong){
+         (void)wrong;
          if(granted){
              [self buildNotification:notificationText notificationId:notificationId
                             userInfo:info];

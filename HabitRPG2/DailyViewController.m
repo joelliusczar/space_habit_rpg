@@ -129,9 +129,13 @@ static NSString *const EntityName = @"Daily";
     }
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-parameter"
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 2;
 }
+
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if(section == INCOMPLETE){
@@ -151,59 +155,16 @@ static NSString *const EntityName = @"Daily";
     }
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    DailyCellController *cell = [DailyCellController getDailyCell:tableView WithParent:self];
-    Daily *d = nil;
-    if(indexPath.section == INCOMPLETE){
-        d = self.incompleteItems.fetchedObjects[indexPath.row];
-    }
-    else{
-        d = self.completeItems.fetchedObjects[indexPath.row];
-    }
-    [cell setupCell:d AndRow:indexPath];
-
-    return cell;
-}
 
 -(void)controllerWillChangeContent:(NSFetchedResultsController *)controller{
     [self.dailiesTable beginUpdates];
 }
 
 
-/*
-This will be called the user creates a new daily, checks it off, or deletes one
-*/
--(void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath{
-    NSAssert(controller==self.incompleteItems||controller==self.completeItems,
-             @"controller is pointing to an invalid objects");
-    NSInteger sectionNum = controller==self.incompleteItems?INCOMPLETE:COMPLETE;
-    NSIndexPath *customExistingPath = [NSIndexPath indexPathForRow:indexPath.row inSection:sectionNum];
-    NSIndexPath *customNewPath = [NSIndexPath indexPathForRow:newIndexPath.row inSection:sectionNum];
-    
-    switch (type) {
-        case NSFetchedResultsChangeInsert:
-            [self.dailiesTable insertRowsAtIndexPaths:@[customNewPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-        case NSFetchedResultsChangeUpdate:
-            [self configureCell:[self.dailiesTable cellForRowAtIndexPath:customExistingPath] atIndexPath:customExistingPath];
-            break;
-        case NSFetchedResultsChangeDelete:
-            [self.dailiesTable deleteRowsAtIndexPaths:@[customExistingPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-        default:
-            break;
-    }
-}
-
 -(void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
     [self.dailiesTable endUpdates];
 }
 
--(void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
-    DailyCellController *dailyCell = (DailyCellController *)cell;
-    [dailyCell refreshCell:indexPath];
-}
 
 - (IBAction)addDailyBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
     
@@ -214,6 +175,7 @@ This will be called the user creates a new daily, checks it off, or deletes one
     };
     [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@addDailyBtn_press_action",self.description]];
 }
+
 
 -(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -237,5 +199,64 @@ This will be called the user creates a new daily, checks it off, or deletes one
     
     return @[openEditBox];
 }
+
+#pragma clang diagnostic pop
+
+
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    DailyCellController *cell = [DailyCellController getDailyCell:tableView WithParent:self];
+    Daily *d = nil;
+    if(indexPath.section == INCOMPLETE){
+        d = self.incompleteItems.fetchedObjects[indexPath.row];
+    }
+    else{
+        d = self.completeItems.fetchedObjects[indexPath.row];
+    }
+    [cell setupCell:d AndRow:indexPath];
+
+    return cell;
+}
+
+
+
+
+/*
+This will be called the user creates a new daily, checks it off, or deletes one
+*/
+-(void)controller:(NSFetchedResultsController *)controller
+                    didChangeObject:(id)anObject
+                    atIndexPath:(NSIndexPath *)indexPath
+                    forChangeType:(NSFetchedResultsChangeType)type
+                    newIndexPath:(NSIndexPath *)newIndexPath{
+    NSAssert(controller==self.incompleteItems||controller==self.completeItems,
+             @"controller is pointing to an invalid objects");
+    (void)anObject;
+    NSInteger sectionNum = controller==self.incompleteItems?INCOMPLETE:COMPLETE;
+    NSIndexPath *customExistingPath = [NSIndexPath indexPathForRow:indexPath.row inSection:sectionNum];
+    NSIndexPath *customNewPath = [NSIndexPath indexPathForRow:newIndexPath.row inSection:sectionNum];
+    
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            [self.dailiesTable insertRowsAtIndexPaths:@[customNewPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeUpdate:
+            [self configureCell:[self.dailiesTable cellForRowAtIndexPath:customExistingPath] atIndexPath:customExistingPath];
+            break;
+        case NSFetchedResultsChangeDelete:
+            [self.dailiesTable deleteRowsAtIndexPaths:@[customExistingPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        default:
+            break;
+    }
+}
+
+-(void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
+    DailyCellController *dailyCell = (DailyCellController *)cell;
+    [dailyCell refreshCell:indexPath];
+}
+
+
 
 @end

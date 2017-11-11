@@ -120,6 +120,8 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
     
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-parameter"
 
 -(void)observeValueForKeyPath:(NSString *)keyPath
                      ofObject:(nullable id)object
@@ -135,77 +137,9 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
 }
 
 
--(void)saveEdit{
-    [self.modelForEditing preSave];
-    [SHData save];
-}
-
-
--(BOOL)deleteModel{
-    if(self.modelForEditing){
-        Daily *toBeDeleted =
-        [SHData.writeContext
-         objectWithID:self.modelForEditing.objectID];
-        
-        [SHData softDeleteModel:toBeDeleted];
-        [SHData save];
-        return YES;
-    }
-    return NO;
-}
-
-
--(void)loadExistingDailyForEditing:(Daily *)daily{
-    self.nameBox.text = daily.dailyName.length>0?daily.dailyName:@"";
-    self.nameStr = self.nameBox.text;
-}
-
-
 - (IBAction)nameBox_editingChange_action:(UITextField *)sender forEvent:(UIEvent *)event {
     [self.modelForEditing name_w:sender.text];
 }
-
-
--(void)textDidChange:(SHEventInfo *)eventInfo{
-    UITextView *textView = (UITextView *)eventInfo.senderStack[0];
-    [self.modelForEditing noteText_w:textView.text];
-    self.nameStr = textView.text;
-}
-    
-    
--(void)rateStep_valueChanged_action:(SHEventInfo *)eventInfo {
-    UIStepper *sender = (UIStepper *)eventInfo.senderStack[0];
-    sender.value = [self.modelForEditing rate_w:(int)sender.value];
-}
-    
-    
--(void)activeDaySwitch_press_action:(SHEventInfo *)eventInfo{
-    CustomSwitch *sender = (CustomSwitch *)eventInfo.senderStack[0];
-    [self.modelForEditing
-            flipDayOfWeek_w:sender.dayKey
-            setTo:sender.isOn
-            for:isInverseRateType(self.modelForEditing.rateType)];
-}
-    
-    
--(void)streakResetBtn_press_action:(SHEventInfo *)eventInfo {
-    [self.modelForEditing streak_w:0];
-}
-    
-    
--(void)sld_valueChanged_action:(SHEventInfo *)eventInfo{
-    UISlider *sender = (UISlider *)eventInfo.senderStack[0];
-    ImportanceSliderView *sliderView = (ImportanceSliderView *)eventInfo.senderStack[1];
-    int sliderValue = (int)sender.value;
-    [sliderView updateImportanceSlider:sliderValue];
-    if(sliderView == self.editControls.specificLookup[@"urgencySld"]){
-        [self.modelForEditing urgency_w:sliderValue];
-    }
-    else{
-        [self.modelForEditing difficulty_w:sliderValue];
-    }
-}
-
 
 
 - (IBAction)showXtra_push_action:(UIButton *)sender forEvent:(UIEvent *)event {
@@ -249,6 +183,74 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
 -(CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return self.editControls[indexPath.row].mainView.frame.size.height;
+}
+
+
+-(void)streakResetBtn_press_action:(SHEventInfo *)eventInfo {
+    [self.modelForEditing streak_w:0];
+}
+
+#pragma clang diagnostic pop
+
+-(void)saveEdit{
+    [self.modelForEditing preSave];
+    [SHData save];
+}
+
+
+-(BOOL)deleteModel{
+    if(self.modelForEditing){
+        Daily *toBeDeleted =
+        [SHData.writeContext
+         objectWithID:self.modelForEditing.objectID];
+        
+        [SHData softDeleteModel:toBeDeleted];
+        [SHData save];
+        return YES;
+    }
+    return NO;
+}
+
+
+-(void)loadExistingDailyForEditing:(Daily *)daily{
+    self.nameBox.text = daily.dailyName.length>0?daily.dailyName:@"";
+    self.nameStr = self.nameBox.text;
+}
+
+
+-(void)textDidChange:(SHEventInfo *)eventInfo{
+    UITextView *textView = (UITextView *)eventInfo.senderStack[0];
+    [self.modelForEditing noteText_w:textView.text];
+    self.nameStr = textView.text;
+}
+    
+    
+-(void)rateStep_valueChanged_action:(SHEventInfo *)eventInfo {
+    UIStepper *sender = (UIStepper *)eventInfo.senderStack[0];
+    sender.value = [self.modelForEditing rate_w:(int)sender.value];
+}
+    
+    
+-(void)activeDaySwitch_press_action:(SHEventInfo *)eventInfo{
+    CustomSwitch *sender = (CustomSwitch *)eventInfo.senderStack[0];
+    [self.modelForEditing
+            flipDayOfWeek_w:sender.dayKey
+            setTo:sender.isOn
+            for:isInverseRateType(self.modelForEditing.rateType)];
+}
+    
+    
+-(void)sld_valueChanged_action:(SHEventInfo *)eventInfo{
+    UISlider *sender = (UISlider *)eventInfo.senderStack[0];
+    ImportanceSliderView *sliderView = (ImportanceSliderView *)eventInfo.senderStack[1];
+    int sliderValue = (int)sender.value;
+    [sliderView updateImportanceSlider:sliderValue];
+    if(sliderView == self.editControls.specificLookup[@"urgencySld"]){
+        [self.modelForEditing urgency_w:sliderValue];
+    }
+    else{
+        [self.modelForEditing difficulty_w:sliderValue];
+    }
 }
 
 

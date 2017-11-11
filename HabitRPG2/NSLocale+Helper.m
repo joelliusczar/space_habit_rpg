@@ -28,7 +28,7 @@
     unichar searchable[len+1];
     [formatString getCharacters:searchable];
     
-    for(int i=0;i<len;i++){
+    for(NSUInteger i=0;i<len;i++){
         if(searchable[i]=='H'){
             hourFormatMask |= ZERO_BASED_24_HOUR;
         }

@@ -28,6 +28,8 @@ int const DAYS_COL = 1;
     // Dispose of any resources that can be recreated.
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-parameter"
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)picker{
     return 2;
@@ -49,6 +51,26 @@ numberOfRowsInComponent:(NSInteger)component{
     [self setupSelectedMonthLength:row+1];
     return self.numberOfDaysInSelectedMonth;
 }
+
+
+-(NSString *)pickerView:(UIPickerView *)pickerView
+            titleForRow:(NSInteger)row
+           forComponent:(NSInteger)component{
+    if(component == MONTH_COL){
+        return self.utilityStore.inUseCalendar.monthSymbols[row];
+    }
+    return [NSString stringWithFormat:@"%ld",row + 1];
+}
+
+
+-(CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component{
+    if(component==MONTH_COL){
+        return 150;
+    }
+    return 75;
+}
+
+#pragma clang diagnostic pop
 
 
 -(void)setupSelectedMonthLength:(NSInteger)month1Base{
@@ -73,22 +95,5 @@ numberOfRowsInComponent:(NSInteger)component{
     }
 }
 
-
--(NSString *)pickerView:(UIPickerView *)pickerView
-            titleForRow:(NSInteger)row
-           forComponent:(NSInteger)component{
-    if(component == MONTH_COL){
-        return self.utilityStore.inUseCalendar.monthSymbols[row];
-    }
-    return [NSString stringWithFormat:@"%ld",row + 1];
-}
-
-
--(CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component{
-    if(component==MONTH_COL){
-        return 150;
-    }
-    return 75;
-}
 
 @end

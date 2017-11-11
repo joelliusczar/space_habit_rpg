@@ -93,6 +93,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma clang diagnostic push 
+#pragma clang diagnostic ignored "-Wunused-parameter"
+
 -(void)backSwipe_rightSwipe_action:(UISwipeGestureRecognizer *)sender{
     [ViewHelper popViewFromFront:self];
 }
@@ -102,5 +105,6 @@
     [self.central afterZonePick:self.model];
 }
 
+#pragma clang diagnostic pop
 
 @end

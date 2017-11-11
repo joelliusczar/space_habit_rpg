@@ -6,6 +6,8 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
+#pragma clang diagnostic ignored "-Wunused-parameter"
+
 #import "SHSpinPicker.h"
 #import "Interceptor.h"
 #import "ViewHelper.h"

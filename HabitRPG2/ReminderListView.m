@@ -36,7 +36,7 @@
 //was so that calls to 'self' would not get fucked up by subclasses
 +(instancetype)newWithDueDateInfo:(id<P_DueDateWrapper>)dueDateInfo{
     ReminderListView *instance = [[ReminderListView alloc] init];
-    instance.dueDateInfo = dueDateInfo = dueDateInfo;
+    instance.dueDateInfo = dueDateInfo;
     instance.reminderSet = [dueDateInfo getReminderSet];
     
     [instance commonSetup];
@@ -44,11 +44,15 @@
     return instance;
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-parameter"
 
 -(NSInteger)tableView:(UITableView *)tableView
 numberOfRowsInSection:(NSInteger)section{
     return self.reminderSet.count;
 }
+
+#pragma clang diagnostic pop
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView
@@ -62,6 +66,7 @@ numberOfRowsInSection:(NSInteger)section{
 
 
 -(void)addItemBtn_press_action:(SHEventInfo *)eventInfo{
+    (void)eventInfo;
     //the reason I was using a temp model earlier is because
     //the model that was getting passed through here
     //earlier only had the original value.

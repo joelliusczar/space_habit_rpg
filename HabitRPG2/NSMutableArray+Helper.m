@@ -10,12 +10,12 @@
 
 @implementation NSMutableArray (Helper)
 
--(NSInteger)findPlaceFor:(id)object whereBestFits:(bestMatchPredicate)bestFitBlock{
+-(NSUInteger)findPlaceFor:(id)object whereBestFits:(bestMatchPredicate)bestFitBlock{
     
     if(self.count == 0){
         return 0;
     }
-    for(int i = 0;i<self.count;i++){
+    for(NSUInteger i = 0;i<self.count;i++){
         if(bestFitBlock(self[i],object)){
             return i;
         }

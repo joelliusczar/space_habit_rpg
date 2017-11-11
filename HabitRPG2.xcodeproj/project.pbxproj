@@ -1991,6 +1991,10 @@
 				INFOPLIST_FILE = HabitRPG2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CFLAGS = (
+					"-Wall",
+					"-Wextra",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.HabitRPG2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2010,6 +2014,10 @@
 				INFOPLIST_FILE = HabitRPG2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CFLAGS = (
+					"-Wall",
+					"-Wextra",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.HabitRPG2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;

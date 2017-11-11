@@ -26,6 +26,7 @@
 
 @interface ControlExtent: NSObject
 @property (strong,nonatomic) NSString *key;
+@property (assign,nonatomic) NSUInteger idx;
 @end
 
 

@@ -28,6 +28,8 @@
     return self;
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-parameter"
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     int hrsMinDaysBefore = 3;
@@ -92,6 +94,7 @@ numberOfRowsInComponent:(NSInteger)component{
     }
 }
 
+#pragma clang diagnostic pop
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
       inComponent:(NSInteger)component{

@@ -12,5 +12,5 @@
 typedef BOOL (^bestMatchPredicate)(RateValueItemDict *,RateValueItemDict *);
 
 @interface NSMutableArray (Helper)
--(NSInteger)findPlaceFor:(id)object whereBestFits:(bestMatchPredicate)bestFitBlock;
+-(NSUInteger)findPlaceFor:(id)object whereBestFits:(bestMatchPredicate)bestFitBlock;
 @end

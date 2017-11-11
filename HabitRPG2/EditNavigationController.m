@@ -71,6 +71,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-parameter"
 
 -(IBAction)deleteBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
     [self confirmDelete];
@@ -90,13 +92,13 @@
                                 actionWithTitle:@"Yes"
                                 style:UIAlertActionStyleDefault
                                 handler:^(UIAlertAction *action)
-    {
-        wrapReturnVoid wrappedCall = ^void(){
-            [self.editingScreen deleteModel];
-            [ViewHelper popViewFromFront:self];
-        };
-        [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
-    }];
+                                {
+                                    wrapReturnVoid wrappedCall = ^void(){
+                                        [self.editingScreen deleteModel];
+                                        [ViewHelper popViewFromFront:self];
+                                    };
+                                    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+                                }];
     [deleteAlert addAction:noAction];
     [deleteAlert addAction:yesAction];
     [self presentViewController:deleteAlert
@@ -125,6 +127,8 @@
     [saveAlert addAction:okAction];
     [self presentViewController:saveAlert animated:YES completion:nil];
 }
+
+#pragma clang diagnostic pop
 
 
 -(void)background_tap_action:(UITapGestureRecognizer *)sender {
@@ -182,7 +186,7 @@
 }
 
 
--(void)respondToHeightResize:(CGFloat)change{}
+-(void)respondToHeightResize:(CGFloat)change{(void)change;}
 
 
 -(void)pushViewControllerToNearestParent:(UIViewController *)child{

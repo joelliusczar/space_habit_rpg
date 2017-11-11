@@ -84,11 +84,15 @@
 //    [super drawRect:rect];
 //}
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-parameter"
+
 -(BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event{
     [self sendActionsForControlEvents:UIControlEventTouchUpInside];
     self.isOn = !self.isOn;
     return NO;
 }
 
+#pragma clang diagnostic pop
 
 @end

@@ -67,17 +67,14 @@
     return [self.view viewWithTag:1];;
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-parameter"
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if(self.zones){
         return self.zones.count;
     }
     return 0;
-}
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    Zone *z = self.zones[indexPath.row];
-    ZoneChoiceCellController *cell = [ZoneChoiceCellController getZoneChoiceCell:tableView WithParent:self AndModel:z AndRow:indexPath];
-    return cell; 
 }
 
 
@@ -87,4 +84,16 @@
     [ViewHelper popViewFromFront:self];
     [self.central afterZonePick:nil];
 }
+
+#pragma clang diagnostic pop
+
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    Zone *z = self.zones[indexPath.row];
+    ZoneChoiceCellController *cell = [ZoneChoiceCellController getZoneChoiceCell:tableView WithParent:self AndModel:z AndRow:indexPath];
+    return cell; 
+}
+
+
+
 @end

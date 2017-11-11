@@ -16,6 +16,7 @@
 
 
 +(void)callVoidWrapped:(wrapReturnVoid)callMe withInfo:(id)info{
+    (void)info;
     //[self handleInterceptedInfo:info];
     //NSArray<NSString *> *callStack = NSThread.callStackSymbols;
     callMe();
@@ -23,6 +24,7 @@
 
 
 -(BOOL)callBoolWrapped:(wrapReturnBool)callMe withInfo:(id)info{
+    (void)info;
     @try{
         return callMe();
     }

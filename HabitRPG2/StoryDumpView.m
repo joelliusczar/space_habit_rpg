@@ -6,6 +6,8 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
+#pragma clang diagnostic ignored "-Wunused-parameter"
+
 #import "StoryDumpView.h"
 #import "ViewHelper.h"
 

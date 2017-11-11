@@ -13,6 +13,8 @@
 #import "House.h"
 #import "WeakLeash.h"
 
+typedef id (^mbTest)();
+
 @interface Experiments : NSObject
 @property (assign,nonatomic) NSInteger stupidNum;
 @property (strong,nonatomic) id<Protocus> proteboat;
@@ -22,6 +24,8 @@
 @property (strong,nonatomic) NSHashTable *hashSet;
 @property (strong,nonatomic) WeakLeash *wl;
 @property (strong,nonatomic) NSPointerArray *pointers;
+@property (weak,nonatomic) House *designatedWeak;
+
 +(void)dateToJSON;
 +(void)getAllIvar;
 +(void)oversizedCast;
@@ -59,6 +63,8 @@
 +(void)expWithNonnullParams;
 +(void)mapStuff;
 +(void)blockStuff;
+-(mbTest)blockMakeMemoryStuff;
++(void)blockTestMemoryStuff;
 @end
 
 #import "Experiments+Charlie.h"

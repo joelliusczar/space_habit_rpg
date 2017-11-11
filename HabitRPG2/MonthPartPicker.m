@@ -31,6 +31,8 @@ const NSInteger DAY_COLUMN = 1;
     // Dispose of any resources that can be recreated.
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-parameter"
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 2;
@@ -67,6 +69,8 @@ numberOfRowsInComponent:(NSInteger)component{
     }
     return 150;
 }
+
+#pragma clang diagnostic pop
 
 
 @end

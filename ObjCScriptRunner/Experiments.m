@@ -358,5 +358,46 @@
     tb();
 
 }
+
+-(void)privateSetWeak{
+    House *h = [[House alloc] init];
+    _designatedWeak = h;
+    NSLog(@"In private %@",_designatedWeak);
+}
+
+
+-(void)privateSetWeak2{
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Warc-unsafe-retained-assign"
+    House *h = [[House alloc] init];
+    h.h = [[House alloc] init];
+    self.designatedWeak = h.h;
+    NSLog(@"In private %@",self.designatedWeak);
+    #pragma clang diagnostic pop
+}
+
+
+-(mbTest)blockMakeMemoryStuff{
+    NSLog(@"making block");
+    House *h = [[House alloc] init];
+    _designatedWeak = h;
+    h.couch = @"Test hello";
+    mbTest blk = ^id(){
+        NSLog(@"%@",h.couch);
+        return h;
+    };
+    return blk;
+}
+
+
++(void)blockTestMemoryStuff{
+    Experiments *exp = [[Experiments alloc] init];
+    [exp privateSetWeak];
+    NSLog(@"%@",exp.designatedWeak?@"Weak exists":@"weak does not exist");
+    mbTest blk = [exp blockMakeMemoryStuff];
+    NSLog(@"%@",exp.designatedWeak?@"Weak exists":@"weak does not exist");
+    NSLog(@"block created");
+    blk();
+}
     
 @end

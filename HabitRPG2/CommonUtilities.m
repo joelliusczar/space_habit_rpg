@@ -168,7 +168,7 @@
 
 +(int)calculateActiveDaysHash:(NSArray<id<P_CustomSwitch>> *)activeDays{
     int32_t daysHash = 0;
-    for(int i = 0;i<activeDays.count;i++){
+    for(NSUInteger i = 0;i<activeDays.count;i++){
         daysHash |= activeDays[i].isOn?activeDays[i].tag:0;
     }
     return daysHash;
@@ -176,7 +176,7 @@
 
 +(void)setActiveDaySwitches:(NSArray<id<P_CustomSwitch>> *)activeDays
                    fromHash:(NSInteger)hash{
-    for(int i = 0;i<activeDays.count;i++){
+    for(NSUInteger i = 0;i<activeDays.count;i++){
         activeDays[i].isOn = hash & activeDays[i].tag;
     }
 }

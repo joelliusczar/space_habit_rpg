@@ -101,8 +101,7 @@ bestMatchPredicate yearlyBestMatch = ^BOOL(RateValueItemDict *a,RateValueItemDic
                                  ,nil];
     RateType rateType = setRateTypeInversion(MONTHLY_RATE,isInverse);
     NSMutableArray<RateValueItemDict *> *activeDays = [self getActiveDaysForRateType:rateType];
-    NSInteger index = [activeDays findPlaceFor:monthlyItem whereBestFits:monthlyBestMatch];
-    NSAssert(index >= 0,@"index was a negative number");
+    NSUInteger index = [activeDays findPlaceFor:monthlyItem whereBestFits:monthlyBestMatch];
     if(index == activeDays.count){
         [activeDays addObject:monthlyItem];
         return index;
@@ -125,7 +124,7 @@ bestMatchPredicate yearlyBestMatch = ^BOOL(RateValueItemDict *a,RateValueItemDic
                                  ,nil];
     RateType rateType = setRateTypeInversion(YEARLY_RATE,isInverse);
     NSMutableArray<RateValueItemDict *> *activeDays = [self getActiveDaysForRateType:rateType];
-    NSInteger index = [activeDays findPlaceFor:yearlyItem whereBestFits:yearlyBestMatch];
+    NSUInteger index = [activeDays findPlaceFor:yearlyItem whereBestFits:yearlyBestMatch];
     if(index == activeDays.count){
         [activeDays addObject:yearlyItem];
         return 0;

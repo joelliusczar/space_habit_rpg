@@ -74,7 +74,7 @@
 
 -(void)autoTypeoutTitle:(NSString *)title characterDelay:(NSTimeInterval)delay{
     
-    for(int i = 0;i<title.length&&self.isThreadAllowed;i++){
+    for(NSUInteger i = 0;i<title.length&&self.isThreadAllowed;i++){
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.headline setText:[NSString stringWithFormat:@"%@%C",self.headline.text,
                                     [title characterAtIndex:i]]];
@@ -86,7 +86,7 @@
 
 
 -(void)autoTypeIntro:(NSString *)text characterDelay:(NSTimeInterval)delay{
-    for(int i = 0;i<text.length&&self.isThreadAllowed;i++){
+    for(NSUInteger i = 0;i<text.length&&self.isThreadAllowed;i++){
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.introMessage setText:[NSString stringWithFormat:@"%@%C",self.introMessage.text,
                                         [text characterAtIndex:i]]];
@@ -95,6 +95,9 @@
         [NSThread sleepForTimeInterval:delay];
     }
 }
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-parameter"
 
 -(void)pressedNext:(UIButton *)sender{
     BOOL show = self.skipSwitch.isOn;
@@ -126,5 +129,7 @@
     self.isStoryDone = YES;
     
 }
+
+#pragma clang diagnostic pop
 
 @end

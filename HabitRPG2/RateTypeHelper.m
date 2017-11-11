@@ -45,8 +45,6 @@ NSString* getRateTypeKey(RateType rateType){
         case DAILY_RATE:
         case DAILY_RATE_INVERSE:
             @throw [NSException exceptionWithName:@"can't go there" reason:@"I didn't know the code could go here" userInfo:nil];
-        DEFAULT:
-            return @"";
     }
 }
 

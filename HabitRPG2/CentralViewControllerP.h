@@ -14,11 +14,11 @@
 #import "Monster+CoreDataClass.h"
 
 @protocol CentralViewControllerP <NSObject>
-@property (nonatomic,strong) NSObject<P_CoreData> *dataController;
-@property (nonatomic,readonly) Settings *userSettings;
-@property (nonatomic,readonly) Hero *userHero;
-@property (nonatomic,strong) Zone *nowZone;
-@property (nonatomic,strong) Monster *nowMonster;
+@property (strong,nonatomic) id<P_CoreData> dataController;
+@property (readonly,nonatomic) Settings *userSettings;
+@property (readonly,nonatomic) Hero *userHero;
+@property (strong,nonatomic) Zone *nowZone;
+@property (strong,nonatomic) Monster *nowMonster;
 -(void)setToShowStory:(BOOL)shouldShowStory;
 -(void)showZoneChoiceView;
 -(void)afterZonePick:(Zone *)zoneChoice;
