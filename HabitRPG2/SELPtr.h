@@ -12,6 +12,7 @@
 @interface SELPtr : NSObject<NSCopying>
 @property (readonly,assign,nonatomic) SEL selector;
 +(instancetype)sel:(SEL)selector;
++(instancetype)selName:(NSString *)selectorName;
 @end
 
 

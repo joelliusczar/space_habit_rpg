@@ -15,6 +15,10 @@
 #import "RateTypeHelper.h"
 #import "ItemFlexibleListView.h"
 
+NSString* const yearlyKey = @"yearly";
+NSString* const monthlyKey = @"monthly";
+NSString* const weeklyKey = @"weekly";
+
 @interface RateSetContainer ()
 @property (assign,nonatomic) CGSize defaultSize;
 @property (weak,nonatomic) SHView *currentActiveDaysControl;
@@ -120,6 +124,41 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 }
 
 #pragma clang diagnostic pop
+
+
+-(SHControlKeep *)buildControlKeep:(Daily *)daily{
+    NSAssert(daily,@"Daily should not be nil");
+    SHControlKeep *keep = [[SHControlKeep alloc] init];
+    
+    [keep addLoaderBlock:^id(SHControlKeep *keep,ControlExtent *controlExtent){
+        MonthlyActiveDays *monthly = [MonthlyActiveDays newWithDaily:daily];
+        [self commonTableSetup:monthly];
+        [keep addControlToActionSetWithKey:takeKey(setResizeResponder:)];
+        [keep addControlToActionSetWithKey:takeKey(setTblDelegate:)];
+        controlExtent.key = monthlyKey;
+        return monthly;
+    }];
+    
+    [keep addLoaderBlock:^id(SHControlKeep *keep,ControlExtent *controlExtent){
+        YearlyActiveDays *yearly = [YearlyActiveDays newWithDaily:daily];
+        [self commonTableSetup: yearly];
+        [keep addControlToActionSetWithKey:takeKey(setResizeResponder:)];
+        [keep addControlToActionSetWithKey:takeKey(setTblDelegate:)];
+        controlExtent.key = yearlyKey;
+        return yearly;
+    }];
+    
+    [keep addLoaderBlock:^id(SHControlKeep *keep,ControlExtent *controlExtent){
+        WeeklyActiveDays *weekly = [[WeeklyActiveDays alloc] init];
+        [weekly changeBackgroundColorTo:self.backgroundColor];
+        [keep addControlToActionSetWithKey:takeKey(setDelegate:)];
+        controlExtent.key = weeklyKey;
+        return weekly;
+    }];
+    
+    return keep;
+}
+
 
 -(void)updateRateType:(RateType)rateType{
     [self resetRate];

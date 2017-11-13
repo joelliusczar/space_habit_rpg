@@ -18,4 +18,15 @@
 -(NSInteger)getFive;
 @end
 
+
+@interface FakeHouse : NSObject
+@property (strong,nonatomic) NSString *couch;
+@property (assign,nonatomic) NSInteger count;
+@property (assign,nonatomic) NSInteger lamps;
+@property (weak,nonatomic) NSHashTable *hs;
+@property (weak,nonatomic) House *h;
+-(void)returnsNothing;
+-(NSInteger)getFive;
+@end
+
 #import "House+Things.h"

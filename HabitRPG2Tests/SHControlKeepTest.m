@@ -35,17 +35,17 @@
     self.blockA = ^id(SHControlKeep *meep,ControlExtent *ext){
         TestKeepSubject_A *subA = [[TestKeepSubject_A alloc] init];
         subA.changer = 0;
-        [meep addControlToActionSet:subA withKey:takeKey(setDelegateA:)];
-        [meep addControlToActionSet:subA withKey:takeKey(setDelegateB:)];
-        [meep addControlToActionSet:subA withKey:takeKey(setDelegateC:)];
+        [meep addControlToActionSetWithKey:takeKey(setDelegateA:)];
+        [meep addControlToActionSetWithKey:takeKey(setDelegateB:)];
+        [meep addControlToActionSetWithKey:takeKey(setDelegateC:)];
         return subA;
     };
     self.blockA2 = ^id(SHControlKeep *meep,ControlExtent *ext){
         TestKeepSubject_A *subA = [[TestKeepSubject_A alloc] init];
         subA.changer = 2;
-        [meep addControlToActionSet:subA withKey:takeKey(setDelegateA:)];
-        [meep addControlToActionSet:subA withKey:takeKey(setDelegateB:)];
-        [meep addControlToActionSet:subA withKey:takeKey(setDelegateC:)];
+        [meep addControlToActionSetWithKey:takeKey(setDelegateA:)];
+        [meep addControlToActionSetWithKey:takeKey(setDelegateB:)];
+        [meep addControlToActionSetWithKey:takeKey(setDelegateC:)];
         return subA;
     };
     self.nilBlock = ^id(SHControlKeep *meep,ControlExtent *ext){
@@ -53,13 +53,13 @@
     };
     self.blockB = ^id(SHControlKeep *meep,ControlExtent *ext){
         TestKeepSubject_B *subB = [[TestKeepSubject_B alloc] init];
-        [meep addControlToActionSet:subB withKey:takeKey(setDelegateA:)];
-        [meep addControlToActionSet:subB withKey:takeKey(setDelegateB:)];
+        [meep addControlToActionSetWithKey:takeKey(setDelegateA:)];
+        [meep addControlToActionSetWithKey:takeKey(setDelegateB:)];
         return subB;
     };
     self.invalidBlock = ^id(SHControlKeep *meep,ControlExtent *ext){
         TestKeepSubject_B *subB = [[TestKeepSubject_B alloc] init];
-        [meep addControlToActionSet:subB withKey:takeKey(setDelegateC:)];
+        [meep addControlToActionSetWithKey:takeKey(setDelegateC:)];
         return subB;
     };
     self.blockKey = ^id(SHControlKeep *meep,ControlExtent *ext){
@@ -90,7 +90,7 @@ LazyLoadBlock getNumberedBlock(int num){
     return ^id(SHControlKeep *meep,ControlExtent *ext){
         TestKeepSubject_A *subA = [[TestKeepSubject_A alloc] init];
         subA.changer = num;
-        [meep addControlToActionSet:subA withKey:takeKey(setDelegateA:)];
+        [meep addControlToActionSetWithKey:takeKey(setDelegateA:)];
         return subA;
     };
 }
@@ -98,24 +98,24 @@ LazyLoadBlock getNumberedBlock(int num){
 
 -(void)testCount{
     [self.keep addLoaderBlock:self.blockA];
-    XCTAssertEqual(self.keep.count,1);
+    XCTAssertEqual(self.keep.controlList.count,1);
     [self.keep addLoaderBlock:self.nilBlock];
     [self.keep addLoaderBlock:self.blockB];
-    XCTAssertEqual(self.keep.count,3);
+    XCTAssertEqual(self.keep.controlList.count,3);
     XCTAssertEqual(self.keep.associatedCount,0);
 }
 
 
 -(void)testNilBlock{
     [self.keep addLoaderBlock:self.nilBlock];
-    id result = self.keep[0];
+    id result = self.keep.controlList[0];
     XCTAssertNil(result);
     XCTAssertEqual(self.keep.associatedCount,0);
 }
 
 -(void)testSubjectNoObject{
     [self.keep addLoaderBlock:self.blockA];
-    TestKeepSubject_A *subA = self.keep[0];
+    TestKeepSubject_A *subA = self.keep.controlList[0];
     XCTAssertEqual([subA callGetA],0);
     XCTAssertEqual([subA callGetB],0);
     XCTAssertEqual([subA callGetC],0);
@@ -124,29 +124,29 @@ LazyLoadBlock getNumberedBlock(int num){
 
 -(void)testPersistency{
     [self.keep addLoaderBlock:self.blockA];
-    TestKeepSubject_A *subA = self.keep[0];
-    TestKeepSubject_A *subA2 = self.keep[0];
+    TestKeepSubject_A *subA = self.keep.controlList[0];
+    TestKeepSubject_A *subA2 = self.keep.controlList[0];
     XCTAssertEqual(subA,subA2);
 }
 
 -(void)testDuplicateLoader{
     [self.keep addLoaderBlock:self.blockA];
     [self.keep addLoaderBlock:self.blockA];
-    TestKeepSubject_A *subA1 = self.keep[0];
-    TestKeepSubject_A *subA2 = self.keep[1];
+    TestKeepSubject_A *subA1 = self.keep.controlList[0];
+    TestKeepSubject_A *subA2 = self.keep.controlList[1];
     XCTAssertNotEqual(subA1,subA2);
 }
 
 -(void)testSubjectLoadThenObject{
     [self.keep addLoaderBlock:self.blockA];
     [self.keep addLoaderBlock:self.blockA2];
-    TestKeepSubject_A *subA = self.keep[0];
-    TestKeepSubject_A *subA2 = self.keep[1];
+    TestKeepSubject_A *subA = self.keep.controlList[0];
+    TestKeepSubject_A *subA2 = self.keep.controlList[1];
     TestKeepObject *obj = [[TestKeepObject alloc] init];
-    self.keep[takeKey(setDelegateA:)] = obj;
+    self.keep.responderLookup[takeKey(setDelegateA:)] = obj;
     XCTAssertEqual([subA callGetA],52);
     XCTAssertEqual([subA2 callGetA],54);
-    self.keep[takeKey(setDelegateB:)] = obj;
+    self.keep.responderLookup[takeKey(setDelegateB:)] = obj;
     XCTAssertEqual([subA callGetB],65);
     XCTAssertEqual([subA2 callGetB],67);
     
@@ -154,10 +154,10 @@ LazyLoadBlock getNumberedBlock(int num){
 
 -(TestKeepSubject_A *)loadThenReplaceSetup{
     [self.keep addLoaderBlock:self.blockA];
-    TestKeepSubject_A *subA = self.keep[0];
+    TestKeepSubject_A *subA = self.keep.controlList[0];
     TestKeepObject *obj = [[TestKeepObject alloc] init];
-    self.keep[takeKey(setDelegateA:)] = obj;
-    self.keep[takeKey(setDelegateB:)] = obj;
+    self.keep.responderLookup[takeKey(setDelegateA:)] = obj;
+    self.keep.responderLookup[takeKey(setDelegateB:)] = obj;
     return subA;
 }
 
@@ -165,8 +165,8 @@ LazyLoadBlock getNumberedBlock(int num){
     TestKeepSubject_A *subA = [self loadThenReplaceSetup];
     XCTAssertEqual([subA callGetA],52);
     XCTAssertEqual([subA callGetB],65);
-    self.keep[takeKey(setDelegateA:)] = nil;
-    self.keep[takeKey(setDelegateB:)] = nil;
+    self.keep.responderLookup[takeKey(setDelegateA:)] = nil;
+    self.keep.responderLookup[takeKey(setDelegateB:)] = nil;
     XCTAssertEqual([subA callGetA],0);
     XCTAssertEqual([subA callGetB],0);
 }
@@ -177,10 +177,10 @@ LazyLoadBlock getNumberedBlock(int num){
     XCTAssertEqual([subA callGetA],52);
     XCTAssertEqual([subA callGetB],65);
     TestKeepObjectAlt *objAlt = [[TestKeepObjectAlt alloc] init];
-    self.keep[takeKey(setDelegateA:)] = objAlt;
+    self.keep.responderLookup[takeKey(setDelegateA:)] = objAlt;
     XCTAssertEqual([subA callGetA],10);
     XCTAssertEqual([subA callGetB],65);
-    self.keep[takeKey(setDelegateB:)] = objAlt;
+    self.keep.responderLookup[takeKey(setDelegateB:)] = objAlt;
     XCTAssertEqual([subA callGetA],10);
     XCTAssertEqual([subA callGetB],30);
 }
@@ -188,10 +188,10 @@ LazyLoadBlock getNumberedBlock(int num){
 
 -(void)testSubjectBLoadMissingStuff{
     [self.keep addLoaderBlock:self.blockA];
-    TestKeepSubject_A *subA = self.keep[0];
+    TestKeepSubject_A *subA = self.keep.controlList[0];
     XCTAssertEqual([subA callGetC],0);
     TestKeepObject *obj = [[TestKeepObject alloc] init];
-    self.keep[takeKey(setDelegateC:)] = obj;
+    self.keep.responderLookup[takeKey(setDelegateC:)] = obj;
     XCTAssertThrows([subA callGetC]);
 }
 
@@ -199,11 +199,11 @@ LazyLoadBlock getNumberedBlock(int num){
 -(void)testObjectThenAddSubject{
     [self.keep addLoaderBlock:self.blockA];
     TestKeepObject *obj = [[TestKeepObject alloc] init];
-    self.keep[takeKey(setDelegateA:)] = obj;
+    self.keep.responderLookup[takeKey(setDelegateA:)] = obj;
     XCTAssertEqual(self.keep.associatedCount,1);
-    self.keep[takeKey(setDelegateB:)] = obj;
+    self.keep.responderLookup[takeKey(setDelegateB:)] = obj;
     XCTAssertEqual(self.keep.associatedCount,2);
-    TestKeepSubject_A *subA = self.keep[0];
+    TestKeepSubject_A *subA = self.keep.controlList[0];
     XCTAssertEqual(self.keep.associatedCount,3);
     XCTAssertEqual([subA callGetA],52);
     XCTAssertEqual([subA callGetB],65);
@@ -213,29 +213,29 @@ LazyLoadBlock getNumberedBlock(int num){
 -(void)testDeprecatedSubjectRelease{
     [self.keep addLoaderBlock:self.blockA];
     TestKeepObject *obj = [[TestKeepObject alloc] init];
-    self.keep[takeKey(setDelegateA:)] = obj;
-    self.keep[takeKey(setDelegateB:)] = obj;
-    TestKeepSubject_A *subA = self.keep[0];
+    self.keep.responderLookup[takeKey(setDelegateA:)] = obj;
+    self.keep.responderLookup[takeKey(setDelegateB:)] = obj;
+    TestKeepSubject_A *subA = self.keep.controlList[0];
     NSHashTable *set = getSet(self.keep,@":setDelegateA:");
     @autoreleasepool{
         BOOL isInSet = [set containsObject:subA];
         XCTAssertTrue(isInSet);
     }
     subA = nil;
-    self.keep[0] = self.nilBlock;
+    self.keep.controlList[0] = [[VarWrapper<LazyLoadBlock> alloc] init:self.nilBlock,nil];
     XCTAssertEqual(set.allObjects.count,0);
 }
 
 -(void)testMemoryLoopingThroughSet{
     TestKeepObject *obj = [[TestKeepObject alloc] init];
-    self.keep[takeKey(setDelegateA:)] = obj;
+    self.keep.responderLookup[takeKey(setDelegateA:)] = obj;
     int limit = 25;
     for(int i = 0; i < limit;i++){
         [self.keep addLoaderBlock:getNumberedBlock(i)];
     }
-    self.keep[takeKey(setDelegateA:)] = nil;
+    self.keep.responderLookup[takeKey(setDelegateA:)] = nil;
     for(int i = 0;i < limit;i++){
-        self.keep[i] = self.nilBlock;
+        self.keep.controlList[i] = [[VarWrapper<LazyLoadBlock> alloc] init:self.nilBlock,nil];
 
     }
     NSHashTable *set = getSet(self.keep,@":setDelegateA:");
@@ -249,9 +249,9 @@ LazyLoadBlock getNumberedBlock(int num){
 
 -(void)testKeyedControlGet{
     [self.keep addLoaderBlock:self.blockKey];
-    id subA1 = self.keep[0];
+    id subA1 = self.keep.controlList[0];
     XCTAssertTrue([subA1 isKindOfClass:TestKeepSubject_A.class]);
-    id subA2 = self.keep.specificLookup[@"subA"];
+    id subA2 = self.keep.controlLookup[@"subA"];
     XCTAssertEqual(subA1,subA2);
 }
 

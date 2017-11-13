@@ -81,6 +81,9 @@
 		274A37E71F145CA400F31E0F /* House.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37E61F145CA400F31E0F /* House.m */; };
 		274A37EA1F145D2200F31E0F /* House+Things.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A37E91F145D2200F31E0F /* House+Things.m */; };
 		274A38381F2194FD00F31E0F /* ParentMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A38371F2194FD00F31E0F /* ParentMan.m */; };
+		274E2AEA1FB816A400324949 /* VarWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E2AE91FB816A400324949 /* VarWrapper.m */; };
+		274E2AED1FB8189E00324949 /* GenericThing.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E2AEC1FB8189E00324949 /* GenericThing.m */; };
+		274E2AF31FB9369100324949 /* ReadOonly.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E2AF21FB9369100324949 /* ReadOonly.m */; };
 		274FFC291EF6236600FAF809 /* WeeklyActiveDays.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC271EF6236600FAF809 /* WeeklyActiveDays.m */; };
 		274FFC2A1EF6236600FAF809 /* WeeklyActiveDays.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274FFC281EF6236600FAF809 /* WeeklyActiveDays.xib */; };
 		274FFC2F1EF6296D00FAF809 /* NoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC2D1EF6296D00FAF809 /* NoteView.m */; };
@@ -381,6 +384,13 @@
 		274A382E1F2150ED00F31E0F /* MathTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathTest.m; sourceTree = "<group>"; };
 		274A38361F2194FD00F31E0F /* ParentMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentMan.h; sourceTree = "<group>"; };
 		274A38371F2194FD00F31E0F /* ParentMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentMan.m; sourceTree = "<group>"; };
+		274E2AE81FB816A400324949 /* VarWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VarWrapper.h; sourceTree = "<group>"; };
+		274E2AE91FB816A400324949 /* VarWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VarWrapper.m; sourceTree = "<group>"; };
+		274E2AEB1FB8189E00324949 /* GenericThing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericThing.h; sourceTree = "<group>"; };
+		274E2AEC1FB8189E00324949 /* GenericThing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericThing.m; sourceTree = "<group>"; };
+		274E2AEE1FB833A600324949 /* CommonTypeDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTypeDefs.h; sourceTree = "<group>"; };
+		274E2AF11FB9369100324949 /* ReadOonly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadOonly.h; sourceTree = "<group>"; };
+		274E2AF21FB9369100324949 /* ReadOonly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadOonly.m; sourceTree = "<group>"; };
 		274FFC261EF6236600FAF809 /* WeeklyActiveDays.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = WeeklyActiveDays.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		274FFC271EF6236600FAF809 /* WeeklyActiveDays.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = WeeklyActiveDays.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		274FFC281EF6236600FAF809 /* WeeklyActiveDays.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeeklyActiveDays.xib; sourceTree = "<group>"; };
@@ -911,6 +921,10 @@
 				2737AF3F1F6F7B1C000FCFD3 /* WeakLeash.m */,
 				271AB3481F9BBFC100D30521 /* ExpNonNull.h */,
 				271AB3491F9BBFC100D30521 /* ExpNonNull.m */,
+				274E2AEB1FB8189E00324949 /* GenericThing.h */,
+				274E2AEC1FB8189E00324949 /* GenericThing.m */,
+				274E2AF11FB9369100324949 /* ReadOonly.h */,
+				274E2AF21FB9369100324949 /* ReadOonly.m */,
 			);
 			path = ObjCScriptRunner;
 			sourceTree = "<group>";
@@ -1371,6 +1385,9 @@
 				27A559D51F67986900C915E6 /* SHControlKeep.m */,
 				270366EC1F6CB0AF00D4BDC8 /* SELPtr.h */,
 				270366ED1F6CB0AF00D4BDC8 /* SELPtr.m */,
+				274E2AE81FB816A400324949 /* VarWrapper.h */,
+				274E2AE91FB816A400324949 /* VarWrapper.m */,
+				274E2AEE1FB833A600324949 /* CommonTypeDefs.h */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1681,6 +1698,8 @@
 				274A37EA1F145D2200F31E0F /* House+Things.m in Sources */,
 				274A38381F2194FD00F31E0F /* ParentMan.m in Sources */,
 				271AB34A1F9BBFC100D30521 /* ExpNonNull.m in Sources */,
+				274E2AF31FB9369100324949 /* ReadOonly.m in Sources */,
+				274E2AED1FB8189E00324949 /* GenericThing.m in Sources */,
 				270366F81F6DCD6600D4BDC8 /* Holder.m in Sources */,
 				2710BB961F514E8700A43B6C /* Experiments+Bravo.m in Sources */,
 				270366F51F6CF2B500D4BDC8 /* CockblockShield.m in Sources */,
@@ -1804,6 +1823,7 @@
 				277ABEC91E949B96008CC239 /* StdLibWrapper.m in Sources */,
 				2724282B1F41090D0028B22E /* NSException+SHCommonExceptions.m in Sources */,
 				686ED3B71DAF3DBD004EDD36 /* CustomSwitch.m in Sources */,
+				274E2AEA1FB816A400324949 /* VarWrapper.m in Sources */,
 				2724281E1F40E7790028B22E /* MonthlyActiveDays.m in Sources */,
 				2785DCCF1F2CC21600B5C28C /* GoodTransaction+CoreDataClass.m in Sources */,
 				27C92C481E341DA10025727E /* ViewHelper.m in Sources */,

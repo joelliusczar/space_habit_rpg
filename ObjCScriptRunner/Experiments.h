@@ -12,6 +12,7 @@
 #import "PossibleInvocationCockblock.h"
 #import "House.h"
 #import "WeakLeash.h"
+#import "GenericThing.h"
 
 typedef id (^mbTest)();
 
@@ -65,6 +66,9 @@ typedef id (^mbTest)();
 +(void)blockStuff;
 -(mbTest)blockMakeMemoryStuff;
 +(void)blockTestMemoryStuff;
++(void)genericStuff;
++(void)recieveGenericStuff:(GenericThing<House *> *)thing;
++(void)readOnlyStuff;
 @end
 
 #import "Experiments+Charlie.h"

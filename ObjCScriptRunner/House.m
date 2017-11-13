@@ -24,3 +24,21 @@
 }
 
 @end
+
+
+@implementation FakeHouse
+
+-(void)returnsNothing{
+    NSLog(@"%@",@"nothing");
+}
+
+
+-(NSInteger)getFive{
+    return 5;
+}
+
+-(void)dealloc{
+    NSLog(@"%@",@"Deallocating, motherfucker!");
+}
+
+@end

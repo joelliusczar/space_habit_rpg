@@ -8,15 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import "SHView.h"
+#import "VarWrapper.h"
 
 #define takeKey(methodName) [SELPtr sel:@selector(methodName)]
+#define takeKey_s(methodName) [SELPtr selName:methodName]
 
-/**
-*ControlDictionary is a private class designed to be used by SHControlKeep
-*/
-@interface ControlDictionary<T_Control>: NSObject
-@property (readonly,assign,nonatomic) NSUInteger count;
--(T_Control)objectForKeyedSubscript:(id)key;
+@class SHControlKeep;
+
+@interface ControlExtent: NSObject
+@property (strong,nonatomic) id<NSCopying> key;
+@property (assign,nonatomic) NSUInteger idx;
+@property (strong,nonatomic) id control;
+@property (readonly,assign,nonatomic) BOOL isReadOnlyMode;
 @end
 
 @interface AssociatedResponderAndSet<T_Responder>: NSObject
@@ -24,9 +27,39 @@
 @property (strong,nonatomic) NSHashTable *set; //strong references are maintained elsewhere
 @end
 
-@interface ControlExtent: NSObject
-@property (strong,nonatomic) NSString *key;
-@property (assign,nonatomic) NSUInteger idx;
+typedef id (^LazyLoadBlock)(SHControlKeep *,ControlExtent *);
+/**
+ *ControlDictionary is a private class designed to be used by SHControlKeep
+ */
+@interface ControlDictionary<T_Control>: NSObject
+@property (readonly,assign,nonatomic) NSUInteger count;
+@property (weak,nonatomic) SHControlKeep *owner;
+-(T_Control)objectForKeyedSubscript:(id)key;
+-(void)setObject:(LazyLoadBlock)obj forKeyedSubscript:(id<NSCopying>)key;
+-(void)removeObjectForKey:(id)key;
+-(instancetype)init:(SHControlKeep *)owner;
+@end
+
+
+@interface ControlList<T_Control>: NSObject
+@property (weak,nonatomic) SHControlKeep *owner;
+/*number of controls stored in keep*/
+@property (readonly,nonatomic) NSUInteger count;
+-(T_Control)objectAtIndexedSubscript:(NSUInteger)idx;
+-(NSUInteger)indexOfObject:(T_Control)object;
+-(void)setObject:(VarWrapper<LazyLoadBlock> *)loaderBlock atIndexedSubscript:(NSUInteger)idx;
+-(void)setObject:(LazyLoadBlock)loaderBlock atIndexedSubscript:(NSUInteger)idx andKey:(id<NSCopying>)key;
+-(instancetype)init:(SHControlKeep *)owner;
+@end
+
+
+@interface ResponderDictionary<T_Responder>: NSObject
+@property (weak,nonatomic) SHControlKeep *owner;
+-(void)setObject:(T_Responder)obj forKeyedSubscript:(SELPtr *)key;
+-(void)setObject:(T_Responder)obj forKeyedSubscript:(SELPtr *)key secondaryKey:(NSString *)secondaryKey;
+-(AssociatedResponderAndSet *)objectForKeyedSubscript:(SELPtr *)key;
+-(AssociatedResponderAndSet *)objectForKeyedSubscript:(SELPtr *)key secondaryKey:(NSString *)secondaryKey;
+-(instancetype)init:(SHControlKeep *)owner;
 @end
 
 
@@ -64,26 +97,18 @@ for example, objectAtIndexedSubscript is dealing with my 'subjects'
 */
 
 @interface SHControlKeep<T_Control,T_Responder> : NSObject
-/*number of controls stored in keep*/
-@property (readonly,nonatomic) NSUInteger count;
 /*number of delegates that controls might be associated with. This count can include nills*/
 @property (readonly,nonatomic) NSUInteger associatedCount;
 @property (strong,nonatomic) NSMutableDictionary *customProps;
-@property (strong,nonatomic) ControlDictionary<T_Control> *specificLookup; //this will only have values specifically defined by client
--(T_Control)objectAtIndexedSubscript:(NSUInteger)idx;
--(AssociatedResponderAndSet *)objectForKeyedSubscript:(SELPtr *)key;
--(AssociatedResponderAndSet *)objectForKeyedSubscript:(SELPtr *)key secondaryKey:(NSString *)secondaryKey;
--(void)setObject:(T_Responder)obj forKeyedSubscript:(SELPtr *)key;
--(void)setObject:(T_Responder)obj forKeyedSubscript:(SELPtr *)key secondaryKey:(NSString *)secondaryKey;
--(BOOL)addControlToActionSet:(T_Control)control withKey:(SELPtr *)key;
--(BOOL)addControlToActionSet:(T_Control)control withKey:(SELPtr *)key secondaryKey:(NSString *)secondaryKey;
--(NSUInteger)indexOfObject:(T_Control)object;
-@end
-
-
-typedef id (^LazyLoadBlock)(SHControlKeep *,ControlExtent *);
-
-@interface SHControlKeep()
--(void)setObject:(id)loaderBlock atIndexedSubscript:(NSUInteger)idx;
+@property (strong,nonatomic) ControlDictionary<T_Control> *controlLookup; //this will only have values specifically defined by client
+@property (strong,nonatomic) ControlList<T_Control> *controlList;
+@property (strong,nonatomic) ResponderDictionary<T_Responder> *responderLookup;
+-(void)addControlToActionSetWithKey:(SELPtr *)key;
+-(void)addControlToActionSetWithKey:(SELPtr *)key secondaryKey:(NSString *)secondaryKey;
 -(void)addLoaderBlock:(LazyLoadBlock)loaderBlock;
+/*if the client sets key through here, it overrides key set on the controlExtent inside the loader block*/
+-(void)addLoaderBlock:(LazyLoadBlock)loaderBlock withKey:(id<NSCopying>)key;
 @end
+
+
+

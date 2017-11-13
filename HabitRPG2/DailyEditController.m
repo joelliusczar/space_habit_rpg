@@ -164,14 +164,14 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.editControls.count;
+    return self.editControls.controlList.count;
 }
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView
         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [[UITableViewCell alloc] init];
-    SHView *cellView = self.editControls[indexPath.row];
+    SHView *cellView = self.editControls.controlList[indexPath.row];
     cellView.holderView = cell;
     [cellView changeBackgroundColorTo:self.view.backgroundColor];
     cell.backgroundColor = self.view.backgroundColor;
@@ -182,7 +182,7 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
 
 -(CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return self.editControls[indexPath.row].mainView.frame.size.height;
+    return self.editControls.controlList[indexPath.row].mainView.frame.size.height;
 }
 
 
@@ -245,7 +245,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     ImportanceSliderView *sliderView = (ImportanceSliderView *)eventInfo.senderStack[1];
     int sliderValue = (int)sender.value;
     [sliderView updateImportanceSlider:sliderValue];
-    if(sliderView == self.editControls.specificLookup[@"urgencySld"]){
+    if(sliderView == self.editControls.controlLookup[@"urgencySld"]){
         [self.modelForEditing urgency_w:sliderValue];
     }
     else{

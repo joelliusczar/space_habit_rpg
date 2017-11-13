@@ -178,7 +178,7 @@
 
 
 -(void)scrollVisibleToControl:(SHView *)control{
-    NSUInteger rowNum = [self.editControls indexOfObject:control];
+    NSUInteger rowNum = [self.editControls.controlList indexOfObject:control];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:rowNum inSection:0];
     [self.editingScreen.controlsTbl scrollToRowAtIndexPath:indexPath
                                           atScrollPosition:UITableViewScrollPositionBottom

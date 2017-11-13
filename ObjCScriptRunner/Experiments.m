@@ -19,7 +19,7 @@
 #import "CockblockShield.h"
 #import "Holder.h"
 #import "ExpNonNull.h"
-
+#import "ReadOonly.h"
 
 
 @implementation Experiments
@@ -398,6 +398,29 @@
     NSLog(@"%@",exp.designatedWeak?@"Weak exists":@"weak does not exist");
     NSLog(@"block created");
     blk();
+}
+
+
++(void)genericStuff{
+    GenericThings<House *,FakeHouse *> *gt = [[GenericThings alloc] init];
+    gt.thing = [[House alloc] init];
+    gt.thing2 = [[FakeHouse alloc] init];
+    [Experiments recieveGenericStuff:gt];
+}
+
+
++(void)recieveGenericStuff:(GenericThing<House *> *)thing{
+    NSLog(@"%@",[thing isKindOfClass:GenericThings.class]?@"It is Things":@"It's only a thing");
+    GenericThings *gt = (GenericThings *)thing;
+    NSLog(@"%@",gt.thing2);
+}
+
+
++(void)readOnlyStuff{
+    ReadOonly *ro = [[ReadOonly alloc] init];
+    //ro.rudy = 7;
+    setRoody(7,ro);
+    NSLog(@"%ld",ro.rudy);
 }
     
 @end
