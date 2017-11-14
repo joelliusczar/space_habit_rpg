@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define vw(item) [[VarWrapper alloc] init:item,nil]
+
 @interface VarWrapper<T> : NSObject
 @property (strong,nonatomic) T item;
 -(instancetype)init:(id)item, ... NS_REQUIRES_NIL_TERMINATION;

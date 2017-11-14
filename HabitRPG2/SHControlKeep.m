@@ -82,7 +82,7 @@ w_LazyLoadBlock wrapLoaderBlock(LazyLoadBlock loaderBlock,NSUInteger idx,id<NSCo
         controlExtent.idx = idx; //incase the passed block tried to change this
         controlExtent.isReadOnlyMode = YES;
         if(controlExtent.key){
-            keep.indexLookup[controlExtent.key] = [NSNumber numberWithUnsignedInteger:idx];
+            keep.indexLookup[controlExtent.key] = @(idx);
         }
         processControlsForActionSets(keep,controlExtent.control);
         return controlExtent;
@@ -128,13 +128,13 @@ BOOL associateResponder(SEL selector,id control,id responder){
 }
 
 
--(void)setObject:(LazyLoadBlock)obj forKeyedSubscript:(id<NSCopying>)key{
+-(void)setObject:(VarWrapper<LazyLoadBlock> *)obj forKeyedSubscript:(id<NSCopying>)key{
     if(self.owner.indexLookup[key]){
         NSUInteger idx = self.owner.indexLookup[key].unsignedIntegerValue;
         self.owner.controlList[idx] = [[VarWrapper<LazyLoadBlock> alloc] init:obj,nil];
     }
     else{
-        [self.owner addLoaderBlock:obj withKey:key];
+        [self.owner addLoaderBlock:obj.item withKey:key];
     }
 }
 
@@ -361,6 +361,7 @@ BOOL associateResponder(SEL selector,id control,id responder){
     if(nil == self.actionSetAdditionsQueue){
         self.actionSetAdditionsQueue = [NSMutableSet set];
     }
+    /*This is slightly buggy because I need to override hash on PairWrapper*/
     PairWrapper *pw = [[PairWrapper alloc] init:key,secondaryKey,nil];
     NSAssert(![self.actionSetAdditionsQueue containsObject:pw],@"You're trying to add duplicate keys. Stop that!");
     [self.actionSetAdditionsQueue addObject:pw];

@@ -15,9 +15,9 @@
 #import "RateTypeHelper.h"
 #import "ItemFlexibleListView.h"
 
-NSString* const yearlyKey = @"yearly";
-NSString* const monthlyKey = @"monthly";
-NSString* const weeklyKey = @"weekly";
+NSString * const yearly = @"yearly";
+NSString * const monthly = @"monthly";
+NSString * const weekly = @"weekly";
 
 @interface RateSetContainer ()
 @property (assign,nonatomic) CGSize defaultSize;
@@ -39,32 +39,17 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 
 
 -(WeeklyActiveDays *)weeklyActiveDays{
-    if(nil==_weeklyActiveDays){
-        _weeklyActiveDays = [[WeeklyActiveDays alloc] init];
-        [_weeklyActiveDays changeBackgroundColorTo:self.backgroundColor];
-        _weeklyActiveDays.delegate = self.weeklyDaysDelegate;
-    }
-    return _weeklyActiveDays;
+    return self.rateControls.controlLookup[weekly];
 }
 
 
 -(MonthlyActiveDays *)monthlyActiveDays{
-    if(nil==_monthlyActiveDays){
-        _monthlyActiveDays = [MonthlyActiveDays
-                              newWithDaily:self.daily];
-        [self commonTableSetup: _monthlyActiveDays];
-    }
-    return _monthlyActiveDays;
+    return self.rateControls.controlLookup[monthly];
 }
 
 
 -(YearlyActiveDays *)yearlyActiveDays{
-    if(nil == _yearlyActiveDays){
-        _yearlyActiveDays = [YearlyActiveDays
-                             newWithDaily:self.daily];
-        [self commonTableSetup:_yearlyActiveDays];
-    }
-    return _yearlyActiveDays;
+    return self.rateControls.controlLookup[yearly];
 }
 
 
@@ -74,6 +59,7 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
     RateSetContainer *instance = [[RateSetContainer alloc] init];
     instance.daily = daily;
     instance.defaultSize = instance.frame.size;
+    instance.rateControls = [instance buildControlKeep:daily];
     [instance updateRateTypeControls:daily.rateType shouldChange:YES];
     [instance updateRateTypeButtonText];
     [instance updateInvertRateTypeButtonText];
@@ -123,41 +109,43 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
     }
 }
 
-#pragma clang diagnostic pop
-
 
 -(SHControlKeep *)buildControlKeep:(Daily *)daily{
     NSAssert(daily,@"Daily should not be nil");
     SHControlKeep *keep = [[SHControlKeep alloc] init];
     
-    [keep addLoaderBlock:^id(SHControlKeep *keep,ControlExtent *controlExtent){
+    RateSetContainer * __weak weakSelf = self;
+    
+    
+    keep.controlLookup[monthly] = vw(^id(SHControlKeep *keep,ControlExtent *controlExtent){
         MonthlyActiveDays *monthly = [MonthlyActiveDays newWithDaily:daily];
-        [self commonTableSetup:monthly];
+        [weakSelf commonTableSetup:monthly];
         [keep addControlToActionSetWithKey:takeKey(setResizeResponder:)];
         [keep addControlToActionSetWithKey:takeKey(setTblDelegate:)];
-        controlExtent.key = monthlyKey;
         return monthly;
-    }];
+    });
     
-    [keep addLoaderBlock:^id(SHControlKeep *keep,ControlExtent *controlExtent){
+    keep.controlLookup[yearly] =  vw(^id(SHControlKeep *keep,ControlExtent *controlExtent){
         YearlyActiveDays *yearly = [YearlyActiveDays newWithDaily:daily];
-        [self commonTableSetup: yearly];
+        [weakSelf commonTableSetup: yearly];
         [keep addControlToActionSetWithKey:takeKey(setResizeResponder:)];
         [keep addControlToActionSetWithKey:takeKey(setTblDelegate:)];
-        controlExtent.key = yearlyKey;
         return yearly;
-    }];
-    
-    [keep addLoaderBlock:^id(SHControlKeep *keep,ControlExtent *controlExtent){
+    });
+    keep.controlLookup[weekly] = vw(^id(SHControlKeep *keep,ControlExtent *controlExtent){
         WeeklyActiveDays *weekly = [[WeeklyActiveDays alloc] init];
         [weekly changeBackgroundColorTo:self.backgroundColor];
         [keep addControlToActionSetWithKey:takeKey(setDelegate:)];
-        controlExtent.key = weeklyKey;
         return weekly;
-    }];
+    });
     
     return keep;
 }
+
+#pragma clang diagnostic pop
+
+
+
 
 
 -(void)updateRateType:(RateType)rateType{

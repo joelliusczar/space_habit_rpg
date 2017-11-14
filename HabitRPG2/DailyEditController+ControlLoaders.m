@@ -26,9 +26,16 @@
         return note;
     }];
     
+    
     [keep addLoaderBlock:^id(SHControlKeep *keep,ControlExtent *controlExtent){
-        RateSetterView *rateSetter = [[RateSetterView alloc] init];
-        return rateSetter;
+        RateSetContainer *rateContainer = [RateSetContainer newWithDaily:daily];
+        rateContainer.utilityStore = SharedGlobal;
+        
+        [keep addControlToActionSetWithKey:takeKey(setDelegate:)];
+        [keep addControlToActionSetWithKey:takeKey(setResizeResponder:)];
+        [keep addControlToActionSetWithKey:takeKey(setTblDelegate:)];
+        [keep addControlToActionSetWithKey:takeKey(setWeeklyDaysDelegate:)];
+        return rateContainer;
     }];
     
     [keep addLoaderBlock:^id(SHControlKeep *keep,ControlExtent *controlExtent){
@@ -64,16 +71,7 @@
         return list;
     }];
     
-    [keep addLoaderBlock:^id(SHControlKeep *keep,ControlExtent *controlExtent){
-        RateSetContainer *rateContainer = [RateSetContainer newWithDaily:daily];
-        rateContainer.utilityStore = SharedGlobal;
-        
-        [keep addControlToActionSetWithKey:takeKey(setDelegate:)];
-        [keep addControlToActionSetWithKey:takeKey(setResizeResponder:)];
-        [keep addControlToActionSetWithKey:takeKey(setTblDelegate:)];
-        [keep addControlToActionSetWithKey:takeKey(setWeeklyDaysDelegate:)];
-        return rateContainer;
-    }];
+    
     
     return keep;
 }

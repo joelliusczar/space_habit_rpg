@@ -35,7 +35,7 @@ typedef id (^LazyLoadBlock)(SHControlKeep *,ControlExtent *);
 @property (readonly,assign,nonatomic) NSUInteger count;
 @property (weak,nonatomic) SHControlKeep *owner;
 -(T_Control)objectForKeyedSubscript:(id)key;
--(void)setObject:(LazyLoadBlock)obj forKeyedSubscript:(id<NSCopying>)key;
+-(void)setObject:(VarWrapper<LazyLoadBlock> *)obj forKeyedSubscript:(id<NSCopying>)key;
 -(void)removeObjectForKey:(id)key;
 -(instancetype)init:(SHControlKeep *)owner;
 @end
