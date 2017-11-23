@@ -10,12 +10,13 @@
 #import "Daily+CoreDataClass.h"
 #import "TaskCell.h"
 #import "DailyViewController.h"
+#import "SHButton.h"
 
 @interface DailyCellController : TaskCell
 @property (weak,nonatomic) IBOutlet UILabel *daysLeftLbl;
 @property (weak,nonatomic) IBOutlet UILabel *nameLbl;
 @property (weak,nonatomic) IBOutlet UILabel *streakLbl;
-@property (weak,nonatomic) IBOutlet UIButton *completeBtn;
+@property (weak,nonatomic) IBOutlet SHButton *completeBtn;
 +(instancetype)getDailyCell:(UITableView *)tableView WithParent:(DailyViewController *)parent;
 -(void)setupCell:(Daily *)model AndRow:(NSIndexPath *)rowInfo;
 -(void)refreshCell:(NSIndexPath *)rowInfo;

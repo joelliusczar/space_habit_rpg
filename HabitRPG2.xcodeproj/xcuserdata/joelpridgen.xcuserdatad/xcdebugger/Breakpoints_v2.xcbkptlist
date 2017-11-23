@@ -570,11 +570,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HabitRPG2/EditNavigationController.m"
-            timestampString = "533122878.168268"
+            timestampString = "533148295.91376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "-scrollVisibleToControl:"
             landmarkType = "7">
          </BreakpointContent>
@@ -634,11 +634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HabitRPG2/EditNavigationController.m"
-            timestampString = "533122878.168268"
+            timestampString = "533148295.91376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "247"
-            endingLineNumber = "247"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
             landmarkName = "-hideKeyboard"
             landmarkType = "7">
          </BreakpointContent>
