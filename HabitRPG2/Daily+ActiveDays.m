@@ -60,7 +60,7 @@ bestMatchPredicate yearlyBestMatch = ^BOOL(RateValueItemDict *a,RateValueItemDic
     
 -(NSMutableDictionary *)createActiveDaysWeek:(BOOL)areActive{
     self.isTouched = YES;
-    NSNumber *activeness = [NSNumber numberWithBool:areActive];
+    NSNumber *activeness = @(areActive?1:0);
     return [NSMutableDictionary dictionaryWithObjectsAndKeys:
             @"SUN",activeness
             ,@"MON",activeness
@@ -85,7 +85,7 @@ bestMatchPredicate yearlyBestMatch = ^BOOL(RateValueItemDict *a,RateValueItemDic
     self.isTouched = YES;
     RateType rateType = isInverse?WEEKLY_RATE_INVERSE:WEEKLY_RATE;
     ActiveDaysTriKey *triKey = [[ActiveDaysTriKey alloc] initWithRateType:rateType key:key index:0];
-    [self setActiveDay:triKey withValue:[NSNumber numberWithBool:isOn]];
+    [self setActiveDay:triKey withValue:@(isOn?1:0)];
     return isOn;
 }
 

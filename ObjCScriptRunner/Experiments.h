@@ -76,6 +76,7 @@ typedef id (^mbTest)();
 +(void)encodeStuff;
 +(void)retainStuff;
 +(void)underbarWeakStuff;
++(void)castingBools;
 @end
 
 #import "Experiments+Charlie.h"

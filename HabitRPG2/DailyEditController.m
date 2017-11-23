@@ -235,7 +235,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     CustomSwitch *sender = (CustomSwitch *)eventInfo.senderStack[0];
     [self.modelForEditing
             flipDayOfWeek_w:sender.dayKey
-            setTo:sender.isOn
+            setTo:!sender.isOn
             for:isInverseRateType(self.modelForEditing.rateType)];
 }
     

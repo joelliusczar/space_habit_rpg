@@ -469,6 +469,7 @@
     NSLog(@"Type is: %@",[es2 whatItDo:mb]);
 }
 
+
 +(void)retainStuff{
     Retainer *r1 = [[Retainer alloc] init];
     Retainer *r2 = [[Retainer alloc] init];
@@ -478,6 +479,7 @@
     r2 = nil;
 }
 
+
 +(void)underbarWeakStuff{
     House *h1 = [[House alloc] init];
     House * __weak h2 = h1;
@@ -485,6 +487,18 @@
     dict[@"key1"] = h2;
     h1 = nil;
     NSLog(@"end underbarWeakStuff");
+}
+
+
++(void)castingBools{
+    int s = 8;
+    BOOL b = s;
+    BOOL b2 = NO;
+    NSUInteger ui = b;
+    NSUInteger ui2 = b2;
+    NSInteger i = b;
+    NSInteger i2 = b2;
+    
 }
     
 @end
