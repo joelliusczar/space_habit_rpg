@@ -16,7 +16,10 @@
 @class SHControlKeep;
 
 @interface ControlExtent: NSObject
-@property (strong,nonatomic) id<NSCopying> key;
+/*using the NSObject protocol with key is required because the compiler is retarded
+ It doesn't see isEqual when implementing NSCopying, so we have to implement NSObject also
+*/
+@property (strong,nonatomic) id<NSCopying,NSObject> key;
 @property (assign,nonatomic) NSUInteger idx;
 @property (strong,nonatomic) id control;
 @property (readonly,assign,nonatomic) BOOL isReadOnlyMode;

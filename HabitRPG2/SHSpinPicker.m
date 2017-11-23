@@ -71,7 +71,7 @@ numberOfRowsInComponent:(NSInteger)component{
 }
 
 
--(IBAction)pickerSelectBtn_press_action:(UIButton *)sender
+-(IBAction)pickerSelectBtn_press_action:(SHButton *)sender
                                forEvent:(UIEvent *)event{
     wrapReturnVoid wrappedCall = ^void(){
         SHEventInfo *e = [[SHEventInfo alloc] init:event withSenders:sender,self.picker,self,nil];

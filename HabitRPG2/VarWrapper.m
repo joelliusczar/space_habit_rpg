@@ -37,6 +37,25 @@
     return self;
 }
 
+
+-(NSUInteger)hash{
+    if([self.item respondsToSelector:@selector(hash)]){
+        return [self.item hash];
+    }
+    /*Objective c's generics only work with object type so we shouldn't even
+     have to worry about code trying to call hash on things that don't have that 
+     property.
+    */
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                   reason:@"The code should not have been able to get here."
+                                   userInfo:nil];
+}
+
+-(BOOL)isEqual:(id)object{
+    VarWrapper *obj = (VarWrapper *)object;
+    return [self.item isEqual:obj.item];
+}
+
 @end
 
 

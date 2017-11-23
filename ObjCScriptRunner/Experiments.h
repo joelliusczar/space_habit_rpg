@@ -69,6 +69,11 @@ typedef id (^mbTest)();
 +(void)genericStuff;
 +(void)recieveGenericStuff:(GenericThing<House *> *)thing;
 +(void)readOnlyStuff;
++(void)nilPointerStuff;
++(void)doublePointerStuff;
++(void)constantStuff;
++(void)comparingThings;
++(void)encodeStuff;
 @end
 
 #import "Experiments+Charlie.h"

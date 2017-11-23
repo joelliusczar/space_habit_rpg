@@ -15,9 +15,9 @@
 #import "RateTypeHelper.h"
 #import "ItemFlexibleListView.h"
 
-NSString * const yearly = @"yearly";
-NSString * const monthly = @"monthly";
-NSString * const weekly = @"weekly";
+NSString * const YEARLY_KEY = @"yearly";
+NSString * const MONTHLY_KEY = @"monthly";
+NSString * const WEEKLY_KEY = @"weekly";
 
 @interface RateSetContainer ()
 @property (assign,nonatomic) CGSize defaultSize;
@@ -39,19 +39,42 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 
 
 -(WeeklyActiveDays *)weeklyActiveDays{
-    return self.rateControls.controlLookup[weekly];
+    return self.rateControls.controlLookup[WEEKLY_KEY];
 }
 
 
 -(MonthlyActiveDays *)monthlyActiveDays{
-    return self.rateControls.controlLookup[monthly];
+    return self.rateControls.controlLookup[MONTHLY_KEY];
 }
 
 
 -(YearlyActiveDays *)yearlyActiveDays{
-    return self.rateControls.controlLookup[yearly];
+    return self.rateControls.controlLookup[YEARLY_KEY];
 }
 
+
+-(SHControlKeep *)rateControls{
+    if(nil == _rateControls){
+        _rateControls = [self buildControlKeep:self.daily];
+    }
+    return _rateControls;
+}
+
+
+-(void)setWeeklyDaysDelegate:(id<P_WeeklyActiveDaysDelegate>)weeklyDaysDelegate{
+    _weeklyDaysDelegate = weeklyDaysDelegate;
+    [self.rateControls.responderLookup setObject:weeklyDaysDelegate
+                               forKeyedSubscript:takeKey(setDelegate:)
+                               secondaryKey:WEEKLY_KEY];
+}
+
+
+-(void)setTblDelegate:(id<P_ItemFlexibleListDelegate>)tblDelegate{
+    _tblDelegate = tblDelegate;
+    [self.rateControls.responderLookup setObject:tblDelegate
+                               forKeyedSubscript:takeKey(setDelegate:)
+                               secondaryKey:@"TBL"];
+}
 
 +(instancetype)newWithDaily:(Daily * _Nonnull)daily{
     NSAssert(daily,@"daily was nil");
@@ -59,7 +82,8 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
     RateSetContainer *instance = [[RateSetContainer alloc] init];
     instance.daily = daily;
     instance.defaultSize = instance.frame.size;
-    instance.rateControls = [instance buildControlKeep:daily];
+    instance.rateControls.responderLookup[takeKey(setDelegate:)] = instance;
+    instance.rateControls.responderLookup[takeKey(setResizeResponder:)] = instance;
     [instance updateRateTypeControls:daily.rateType shouldChange:YES];
     [instance updateRateTypeButtonText];
     [instance updateInvertRateTypeButtonText];
@@ -79,13 +103,10 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 
 -(IBAction)setRateTypeBtn_click_action:(UIButton *)sender
                               ForEvent:(UIEvent *)event{
-    wrapReturnVoid wrappedCall = ^(){
-        RateTypeSelector *typeSelector = [[RateTypeSelector alloc]
-                                          initWithRateType:self.daily.rateType
-                                          andDelegate:self];
-        [self.resizeResponder pushViewControllerToNearestParent:typeSelector];
-    };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+    RateTypeSelector *typeSelector = [[RateTypeSelector alloc]
+                                      initWithRateType:self.daily.rateType
+                                      andDelegate:self];
+    [self.resizeResponder pushViewControllerToNearestParent:typeSelector];
 }
 
 
@@ -95,10 +116,7 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 
 
 -(IBAction)invertRateTypeBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event{
-    wrapReturnVoid wrappedCall = ^(){
-        [self updateRateType:invertRateType(self.daily.rateType)];
-    };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+    [self updateRateType:invertRateType(self.daily.rateType)];
 }
 
 
@@ -115,27 +133,31 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
     SHControlKeep *keep = [[SHControlKeep alloc] init];
     
     RateSetContainer * __weak weakSelf = self;
+    NSString *errMessage = @"RateSetContainer got itself into an inconsistent state";
     
     
-    keep.controlLookup[monthly] = vw(^id(SHControlKeep *keep,ControlExtent *controlExtent){
+    keep.controlLookup[MONTHLY_KEY] = vw(^id(SHControlKeep *keep,ControlExtent *controlExtent){
+        NSAssert(weakSelf,errMessage);
         MonthlyActiveDays *monthly = [MonthlyActiveDays newWithDaily:daily];
         [weakSelf commonTableSetup:monthly];
         [keep addControlToActionSetWithKey:takeKey(setResizeResponder:)];
-        [keep addControlToActionSetWithKey:takeKey(setTblDelegate:)];
+        [keep addControlToActionSetWithKey:takeKey(setDelegate:) secondaryKey:@"TBL"];
         return monthly;
     });
     
-    keep.controlLookup[yearly] =  vw(^id(SHControlKeep *keep,ControlExtent *controlExtent){
+    keep.controlLookup[YEARLY_KEY] =  vw(^id(SHControlKeep *keep,ControlExtent *controlExtent){
+        NSAssert(weakSelf,errMessage);
         YearlyActiveDays *yearly = [YearlyActiveDays newWithDaily:daily];
         [weakSelf commonTableSetup: yearly];
         [keep addControlToActionSetWithKey:takeKey(setResizeResponder:)];
-        [keep addControlToActionSetWithKey:takeKey(setTblDelegate:)];
+        [keep addControlToActionSetWithKey:takeKey(setDelegate:) secondaryKey:@"TBL"];
         return yearly;
     });
-    keep.controlLookup[weekly] = vw(^id(SHControlKeep *keep,ControlExtent *controlExtent){
+    keep.controlLookup[WEEKLY_KEY] = vw(^id(SHControlKeep *keep,ControlExtent *controlExtent){
+        NSAssert(weakSelf,errMessage);
         WeeklyActiveDays *weekly = [[WeeklyActiveDays alloc] init];
-        [weekly changeBackgroundColorTo:self.backgroundColor];
-        [keep addControlToActionSetWithKey:takeKey(setDelegate:)];
+        [weekly changeBackgroundColorTo:weakSelf.backgroundColor];
+        [keep addControlToActionSetWithKey:takeKey(setDelegate:) secondaryKey:WEEKLY_KEY];
         return weekly;
     });
     
@@ -214,20 +236,17 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
     [self updateRateTypeButtonText];
     if(rateType == WEEKLY_RATE){
         [self switchActiveDaysControlFor:self.weeklyActiveDays];
-        self.currentActiveDaysControl = self.weeklyActiveDays;
         [self.weeklyActiveDays setActiveDaysOfWeek:[self.daily getActiveDaysForRateType:self.daily.rateType][0]];
     }
     else if(rateType == MONTHLY_RATE){
         [self switchActiveDaysControlFor:self.monthlyActiveDays];
         [self.resizeResponder scrollByOffset:SUB_TABLE_CELL_HEIGHT];
         [self.resizeResponder scrollVisibleToControl:self];
-        self.currentActiveDaysControl = self.monthlyActiveDays;
     }
     else if(rateType == YEARLY_RATE){
         [self switchActiveDaysControlFor:self.yearlyActiveDays];
         [self.resizeResponder scrollByOffset:SUB_TABLE_CELL_HEIGHT];
         [self.resizeResponder scrollVisibleToControl:self];
-        self.currentActiveDaysControl = self.yearlyActiveDays;
         
     }
     else if(rateType == DAILY_RATE){
@@ -242,6 +261,7 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
     [self fitControlHeightToSubControlHeight:activeDaysControl];
     [self.activeDaysControlContainer
         replaceSubviewsWith:activeDaysControl];
+    self.currentActiveDaysControl = activeDaysControl;
 }
 
 

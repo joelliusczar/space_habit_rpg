@@ -84,6 +84,7 @@
 		274E2AEA1FB816A400324949 /* VarWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E2AE91FB816A400324949 /* VarWrapper.m */; };
 		274E2AED1FB8189E00324949 /* GenericThing.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E2AEC1FB8189E00324949 /* GenericThing.m */; };
 		274E2AF31FB9369100324949 /* ReadOonly.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E2AF21FB9369100324949 /* ReadOonly.m */; };
+		274E2AF61FC3C40700324949 /* EncodeStuff.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E2AF51FC3C40600324949 /* EncodeStuff.m */; };
 		274FFC291EF6236600FAF809 /* WeeklyActiveDays.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC271EF6236600FAF809 /* WeeklyActiveDays.m */; };
 		274FFC2A1EF6236600FAF809 /* WeeklyActiveDays.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274FFC281EF6236600FAF809 /* WeeklyActiveDays.xib */; };
 		274FFC2F1EF6296D00FAF809 /* NoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC2D1EF6296D00FAF809 /* NoteView.m */; };
@@ -391,6 +392,8 @@
 		274E2AEE1FB833A600324949 /* CommonTypeDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTypeDefs.h; sourceTree = "<group>"; };
 		274E2AF11FB9369100324949 /* ReadOonly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadOonly.h; sourceTree = "<group>"; };
 		274E2AF21FB9369100324949 /* ReadOonly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadOonly.m; sourceTree = "<group>"; };
+		274E2AF41FC3C40600324949 /* EncodeStuff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncodeStuff.h; sourceTree = "<group>"; };
+		274E2AF51FC3C40600324949 /* EncodeStuff.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncodeStuff.m; sourceTree = "<group>"; };
 		274FFC261EF6236600FAF809 /* WeeklyActiveDays.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = WeeklyActiveDays.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		274FFC271EF6236600FAF809 /* WeeklyActiveDays.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = WeeklyActiveDays.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		274FFC281EF6236600FAF809 /* WeeklyActiveDays.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeeklyActiveDays.xib; sourceTree = "<group>"; };
@@ -925,6 +928,8 @@
 				274E2AEC1FB8189E00324949 /* GenericThing.m */,
 				274E2AF11FB9369100324949 /* ReadOonly.h */,
 				274E2AF21FB9369100324949 /* ReadOonly.m */,
+				274E2AF41FC3C40600324949 /* EncodeStuff.h */,
+				274E2AF51FC3C40600324949 /* EncodeStuff.m */,
 			);
 			path = ObjCScriptRunner;
 			sourceTree = "<group>";
@@ -1702,6 +1707,7 @@
 				274E2AED1FB8189E00324949 /* GenericThing.m in Sources */,
 				270366F81F6DCD6600D4BDC8 /* Holder.m in Sources */,
 				2710BB961F514E8700A43B6C /* Experiments+Bravo.m in Sources */,
+				274E2AF61FC3C40700324949 /* EncodeStuff.m in Sources */,
 				270366F51F6CF2B500D4BDC8 /* CockblockShield.m in Sources */,
 				270D39B21F58C7B000F371F0 /* XPSideKick.m in Sources */,
 				274A37CF1F1313A700F31E0F /* PersonThing.m in Sources */,

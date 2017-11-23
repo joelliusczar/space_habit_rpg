@@ -24,10 +24,10 @@ SHView
 <P_RateTypeSelectorDelegate
 ,P_RateSetterDelegate
 ,P_ResizeResponder>
-@property (weak,nonatomic) IBOutlet UIButton  * _Nullable openRateTypeBtn;
+@property (weak,nonatomic) IBOutlet SHButton  * _Nullable openRateTypeBtn;
 @property (weak,nonatomic) IBOutlet UIView  * _Nullable activeDaysControlContainer;
 @property (weak,nonatomic) IBOutlet RateSetterView * _Nullable rateSetter;
-@property (weak,nonatomic) IBOutlet UIButton * _Nullable invertRateTypeBtn;
+@property (weak,nonatomic) IBOutlet SHButton * _Nullable invertRateTypeBtn;
 @property (readonly,strong,nonatomic) MonthlyActiveDays * _Nullable monthlyActiveDays;
 @property (readonly,strong,nonatomic) WeeklyActiveDays * _Nullable weeklyActiveDays;
 @property (readonly,strong,nonatomic) YearlyActiveDays * _Nullable yearlyActiveDays;

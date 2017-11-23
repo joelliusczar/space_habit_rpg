@@ -20,6 +20,7 @@
 #import "Holder.h"
 #import "ExpNonNull.h"
 #import "ReadOonly.h"
+#import "EncodeStuff.h"
 
 
 @implementation Experiments
@@ -421,6 +422,50 @@
     //ro.rudy = 7;
     setRoody(7,ro);
     NSLog(@"%ld",ro.rudy);
+}
+
+
++(void)nilPointerStuff{
+    House *h = [[House alloc] init];
+    House *h2 = h.h;
+    h2 = [[House alloc] init];
+    NSLog(@"%@",h.h);
+}
+
+
++(void)doublePointerStuff{
+    House *h = [[House alloc] init];
+    (void)h;
+    //House **h2;
+    
+}
+
+
++(void)constantStuff{
+    NSLog(@"sizeof(NSUInteger) : %ld",sizeof(NSUInteger));
+    NSLog(@"CHAR_BIT : %d",CHAR_BIT);
+}
+
+
++(void)comparingThings{
+    SEL a1 = @selector(constantStuff);
+    SEL a2 = @selector(constantStuff);
+    SEL b1 = @selector(doublePointerStuff);
+    
+    NSLog(@"%@",a1==a2?@"a1 and a2 equal":@"a1 and a2 not equal");
+    NSLog(@"%@",a1==b1?@"a1 and b1 equal":@"a1 and b1 not equal");
+}
+
++(void)encodeStuff{
+    EncodeStuff<House *> *es = [[EncodeStuff alloc] init];
+    House *h = [[House alloc] init];
+    NSLog(@"Type is: %@",[es whatItDo:h]);
+    
+    EncodeStuff<mbTest> *es2 = [[EncodeStuff alloc] init];
+    mbTest mb = ^id(){
+        return [[House alloc] init];
+    };
+    NSLog(@"Type is: %@",[es2 whatItDo:mb]);
 }
     
 @end

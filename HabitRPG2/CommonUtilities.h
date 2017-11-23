@@ -11,6 +11,14 @@
 #import "P_CustomSwitch.h"
 @import CoreGraphics;
 
+/* 
+Hash combining method from 
+http://www.mikeash.com/pyblog/friday-qa-2010-06-18-implementing-equality-and-hashing.html
+*/
+#define NSUINT_BIT (CHAR_BIT * sizeof(NSUInteger))
+#define NSUINT_Rotate(val,howmuch) \
+ ( ((NSUInteger)val) << howmuch | ((NSUInteger)val) >> (NSUINT_BIT - howmuch) )
+
 
 @interface CommonUtilities : NSObject
 NSDate* _Nonnull getReferenceDate();

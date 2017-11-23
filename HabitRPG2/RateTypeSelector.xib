@@ -34,7 +34,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GDY-1s-ufd">
                     <rect key="frame" x="87" y="250.66666666666669" width="240" height="235.00000000000006"/>
                     <subviews>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0LT-Ta-BSg" customClass="UIButton">
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0LT-Ta-BSg" customClass="SHButton">
                             <rect key="frame" x="0.0" y="85" width="240" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -58,7 +58,7 @@
                                 <action selector="rateType_click_action:forEvent:" destination="-1" eventType="touchUpInside" id="AK7-Yg-o5M"/>
                             </connections>
                         </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jfm-Ni-cKw" customClass="UIButton">
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jfm-Ni-cKw" customClass="SHButton">
                             <rect key="frame" x="0.0" y="123" width="240" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -85,7 +85,7 @@
                                 <action selector="rateType_click_action:forEvent:" destination="-1" eventType="touchUpInside" id="jG2-gV-jqW"/>
                             </connections>
                         </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eda-Vn-Bsh" customClass="UIButton">
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eda-Vn-Bsh" customClass="SHButton">
                             <rect key="frame" x="0.0" y="160" width="240" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -109,7 +109,7 @@
                                 <action selector="rateType_click_action:forEvent:" destination="-1" eventType="touchUpInside" id="T6P-7p-ilA"/>
                             </connections>
                         </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9iX-Rh-9lB" customClass="UIButton">
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9iX-Rh-9lB" customClass="SHButton">
                             <rect key="frame" x="0.0" y="47" width="240" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>

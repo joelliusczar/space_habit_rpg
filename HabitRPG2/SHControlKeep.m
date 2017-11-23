@@ -41,7 +41,7 @@ typedef ControlExtent* (^w_LazyLoadBlock)(SHControlKeep *);
 }
 
 
--(void)setKey:(id<NSCopying>)key{
+-(void)setKey:(id<NSCopying,NSObject>)key{
     if(self.isReadOnlyMode){
         return;
     }
@@ -53,22 +53,12 @@ typedef ControlExtent* (^w_LazyLoadBlock)(SHControlKeep *);
     _isReadOnlyMode = isReadOnlyMode;
 }
 
+
 @end
 
 
-void processControlsForActionSets(SHControlKeep *keep,id control){
-    if(nil == keep.actionSetAdditionsQueue){
-        return;
-    }
-    
-    for (PairWrapper<SELPtr *,NSString *> *keyPair in keep.actionSetAdditionsQueue) {
-        [keep addControlToActionSet:control withKey:keyPair.item secondaryKey:keyPair.item2];
-    }
-    keep.actionSetAdditionsQueue = nil;
-}
 
-
-w_LazyLoadBlock wrapLoaderBlock(LazyLoadBlock loaderBlock,NSUInteger idx,id<NSCopying> key){
+w_LazyLoadBlock wrapLoaderBlock(LazyLoadBlock loaderBlock,NSUInteger idx,id<NSCopying,NSObject> key){
     return ^ControlExtent *(SHControlKeep *keep){
         ControlExtent *controlExtent = [[ControlExtent alloc] init];
         controlExtent.isReadOnlyMode = NO;
@@ -84,7 +74,14 @@ w_LazyLoadBlock wrapLoaderBlock(LazyLoadBlock loaderBlock,NSUInteger idx,id<NSCo
         if(controlExtent.key){
             keep.indexLookup[controlExtent.key] = @(idx);
         }
-        processControlsForActionSets(keep,controlExtent.control);
+        if(keep.actionSetAdditionsQueue){
+            for (PairWrapper<SELPtr *,NSString *> *keyPair in keep.actionSetAdditionsQueue) {
+                [keep addControlToActionSet:controlExtent.control
+                                    withKey:keyPair.item
+                                    secondaryKey:keyPair.item2];
+            }
+            keep.actionSetAdditionsQueue = nil;
+        }
         return controlExtent;
     };
 }
@@ -203,7 +200,12 @@ BOOL associateResponder(SEL selector,id control,id responder){
 
 
 -(NSUInteger)indexOfObject:(id)object{
-    return [self.owner.controlBackend indexOfObject:object];
+    for(NSUInteger i = 0;i < self.owner.controlBackend.count;i++){
+        if(self.owner.controlBackend[i].control == object){
+            return i;
+        }
+    }
+    return -1;
 }
 
 @end
@@ -387,7 +389,7 @@ BOOL associateResponder(SEL selector,id control,id responder){
 }
 
 
--(void)addLoaderBlock:(LazyLoadBlock)loaderBlock withKey:(id<NSCopying>)key{
+-(void)addLoaderBlock:(LazyLoadBlock)loaderBlock withKey:(id<NSCopying,NSObject>)key{
     if(key){
         self.indexLookup[key] = [NSNumber numberWithUnsignedInteger:self.lazyLoaders.count];
     }

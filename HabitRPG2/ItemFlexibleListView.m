@@ -127,7 +127,7 @@ CGFloat calculateMaxTableHeight(CGFloat changeHeight){
     [self.itemTbl deleteRowsAtIndexPaths:@[indexPath]
                         withRowAnimation:UITableViewRowAnimationFade];
     [self beginUpdate];
-    [self resizeItemListHeightByChange:-SUB_TABLE_CELL_HEIGHT];
+    [self resizeItemListHeightByChange:-1*SUB_TABLE_CELL_HEIGHT];
     [self endUpdate];
     [self notifyDeleteCell:indexPath];
 }
@@ -169,26 +169,20 @@ numberOfRowsInSection:(NSInteger)section{
 
 
 -(void)addItemBtn_press_action:(SHEventInfo *)eventInfo{
-    wrapReturnVoid wrappedCall = ^void(){
-        [eventInfo.senderStack addObject:self];
-        SEL delegateSel = @selector(addItemBtn_press_action:);
-        if([self.delegate respondsToSelector:delegateSel]){
-            [self.delegate addItemBtn_press_action:eventInfo];
-        }
-    };
-    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+    [eventInfo.senderStack addObject:self];
+    SEL delegateSel = @selector(addItemBtn_press_action:);
+    if([self.delegate respondsToSelector:delegateSel]){
+        [self.delegate addItemBtn_press_action:eventInfo];
+    }
 }
 
 
 -(void)pickerSelection_action:(SHEventInfo *)eventInfo{
-    wrapReturnVoid wrappedCall = ^void(){
-        [eventInfo.senderStack addObject:self];
-        SEL delegateSel = @selector(pickerSelection_action:);
-        if([self.delegate respondsToSelector:delegateSel]){
-            [self.delegate pickerSelection_action:eventInfo];
-        }
-    };
-    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+    [eventInfo.senderStack addObject:self];
+    SEL delegateSel = @selector(pickerSelection_action:);
+    if([self.delegate respondsToSelector:delegateSel]){
+        [self.delegate pickerSelection_action:eventInfo];
+    }
 }
 
 

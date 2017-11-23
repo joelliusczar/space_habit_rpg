@@ -11,14 +11,11 @@
 
 @implementation SELPtr
 
--(void)m_setSelector:(SEL)selector{
-    _selector = selector;
-}
-
 
 +(instancetype)sel:(SEL)selector{
     SELPtr *instance = [[SELPtr alloc] init];
-    [instance m_setSelector:selector];
+    instance->_selector = selector;
+    instance->_selectorName = NSStringFromSelector(selector);
     return instance;
 }
 
@@ -33,13 +30,21 @@
 #pragma clang diagnostic ignored "-Wunused-parameter"
 
 -(id)copyWithZone:(NSZone *)zone{
-    SELPtr *copy = [[[self class] alloc] init];
-    if(copy){
-        [copy m_setSelector:self.selector];
-    }
-    return copy;
+    return [SELPtr sel:self.selector];
 }
 
 #pragma clang diagnostic pop
+
+-(NSUInteger)hash{
+    return self.selectorName.hash;
+}
+
+-(BOOL)isEqual:(id)object{
+    if(![object isKindOfClass:self.class]){
+        return NO;
+    }
+    SELPtr *obj = (SELPtr *)object;
+    return self.selector == obj.selector;
+}
 
 @end

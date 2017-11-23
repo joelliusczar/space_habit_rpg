@@ -82,33 +82,30 @@
 
 
 -(IBAction)rateType_click_action:(UIView *)sender forEvent:(UIEvent *)event{
-    wrapReturnVoid wrappedCall = ^void(){
-        RateType rateType = self.rateType;
-        if(self.delegate){
-            if(sender == self.yearlyBtn){
-                rateType = YEARLY_RATE;
-            }
-            else if(sender == self.monthlyBtn){
-                rateType = MONTHLY_RATE;
-            }
-            else if(sender == self.weeklyBtn){
-                rateType = WEEKLY_RATE;
-            }
-            else{
-                rateType = DAILY_RATE;
-            }
-            SHEventInfo *e = eventInfoCopy;
-            [self.delegate updateRateType: rateType with:e];
+    RateType rateType = self.rateType;
+    if(self.delegate){
+        if(sender == self.yearlyBtn){
+            rateType = YEARLY_RATE;
         }
-        [self setCheckmark:rateType];
-        //I want to display some sort of visible change in response to
-        //the user action before the view goes away
-        long arbitraryDispatchTime = 100000;
-        dispatch_after(dispatch_walltime(nil,arbitraryDispatchTime),dispatch_get_main_queue(),^(){
-            [ViewHelper popViewFromFront:self];
-        });
-    };
-    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+        else if(sender == self.monthlyBtn){
+            rateType = MONTHLY_RATE;
+        }
+        else if(sender == self.weeklyBtn){
+            rateType = WEEKLY_RATE;
+        }
+        else{
+            rateType = DAILY_RATE;
+        }
+        SHEventInfo *e = eventInfoCopy;
+        [self.delegate updateRateType: rateType with:e];
+    }
+    [self setCheckmark:rateType];
+    //I want to display some sort of visible change in response to
+    //the user action before the view goes away
+    long arbitraryDispatchTime = 100000;
+    dispatch_after(dispatch_walltime(nil,arbitraryDispatchTime),dispatch_get_main_queue(),^(){
+        [ViewHelper popViewFromFront:self];
+    });
 }
 
 
