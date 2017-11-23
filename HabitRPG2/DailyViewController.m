@@ -18,6 +18,7 @@
 #import "Daily+DailyHelper.h"
 #import "NSDate+DateHelper.h"
 #import "Interceptor.h"
+#import "SHButton.h"
 
 @interface DailyViewController ()
 
@@ -166,14 +167,10 @@ static NSString *const EntityName = @"Daily";
 }
 
 
-- (IBAction)addDailyBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
-    
-    wrapReturnVoid wrappedCall = ^void(){
-        DailyEditController *dailyEditor = [[DailyEditController alloc] initWithParentDailyController:self];
-        EditNavigationController *editController = [[EditNavigationController alloc] initWithTitle:@"Add Daily" andEditor:dailyEditor];
-        [ViewHelper pushViewToFront:editController OfParent:self.parentController];
-    };
-    [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@addDailyBtn_press_action",self.description]];
+- (IBAction)addDailyBtn_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
+    DailyEditController *dailyEditor = [[DailyEditController alloc] initWithParentDailyController:self];
+    EditNavigationController *editController = [[EditNavigationController alloc] initWithTitle:@"Add Daily" andEditor:dailyEditor];
+    [ViewHelper pushViewToFront:editController OfParent:self.parentController];
 }
 
 

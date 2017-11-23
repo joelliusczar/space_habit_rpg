@@ -15,5 +15,7 @@
 #import "StreakResetterView.h"
 #import "ReminderListView.h"
 #import "RateSetContainer.h"
+#import "SHTextField.h"
+#import "SHButton.h"
 
 #endif /* AllSHControls_h */

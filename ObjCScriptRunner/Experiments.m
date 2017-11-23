@@ -21,6 +21,7 @@
 #import "ExpNonNull.h"
 #import "ReadOonly.h"
 #import "EncodeStuff.h"
+#import "Retainer.h";
 
 
 @implementation Experiments
@@ -466,6 +467,24 @@
         return [[House alloc] init];
     };
     NSLog(@"Type is: %@",[es2 whatItDo:mb]);
+}
+
++(void)retainStuff{
+    Retainer *r1 = [[Retainer alloc] init];
+    Retainer *r2 = [[Retainer alloc] init];
+    r1.r = r2;
+    r2.r = r1;
+    r1 = nil;
+    r2 = nil;
+}
+
++(void)underbarWeakStuff{
+    House *h1 = [[House alloc] init];
+    House * __weak h2 = h1;
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"key1"] = h2;
+    h1 = nil;
+    NSLog(@"end underbarWeakStuff");
 }
     
 @end

@@ -85,6 +85,7 @@
 		274E2AED1FB8189E00324949 /* GenericThing.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E2AEC1FB8189E00324949 /* GenericThing.m */; };
 		274E2AF31FB9369100324949 /* ReadOonly.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E2AF21FB9369100324949 /* ReadOonly.m */; };
 		274E2AF61FC3C40700324949 /* EncodeStuff.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E2AF51FC3C40600324949 /* EncodeStuff.m */; };
+		274E2AFC1FC6B64F00324949 /* Retainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E2AFB1FC6B64F00324949 /* Retainer.m */; };
 		274FFC291EF6236600FAF809 /* WeeklyActiveDays.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC271EF6236600FAF809 /* WeeklyActiveDays.m */; };
 		274FFC2A1EF6236600FAF809 /* WeeklyActiveDays.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274FFC281EF6236600FAF809 /* WeeklyActiveDays.xib */; };
 		274FFC2F1EF6296D00FAF809 /* NoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC2D1EF6296D00FAF809 /* NoteView.m */; };
@@ -93,7 +94,6 @@
 		274FFC3D1EF62FA200FAF809 /* SubtasksTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274FFC3B1EF62FA200FAF809 /* SubtasksTableView.xib */; };
 		274FFC421EF6E2B100FAF809 /* RateSetterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC401EF6E2B100FAF809 /* RateSetterView.m */; };
 		274FFC431EF6E2B100FAF809 /* RateSetterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274FFC411EF6E2B100FAF809 /* RateSetterView.xib */; };
-		274FFC4A1EF887DB00FAF809 /* DailyEditControlKeep.m in Sources */ = {isa = PBXBuildFile; fileRef = 274FFC491EF887DB00FAF809 /* DailyEditControlKeep.m */; };
 		275D9F241F219850009DA715 /* ChildMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 275D9F231F219850009DA715 /* ChildMan.m */; };
 		275D9F271F21A33E009DA715 /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 275D9F261F21A33E009DA715 /* TaskCell.m */; };
 		275D9F2A1F22294F009DA715 /* UIScrollView+ScrollAdjusters.m in Sources */ = {isa = PBXBuildFile; fileRef = 275D9F291F22294F009DA715 /* UIScrollView+ScrollAdjusters.m */; };
@@ -394,6 +394,8 @@
 		274E2AF21FB9369100324949 /* ReadOonly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadOonly.m; sourceTree = "<group>"; };
 		274E2AF41FC3C40600324949 /* EncodeStuff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncodeStuff.h; sourceTree = "<group>"; };
 		274E2AF51FC3C40600324949 /* EncodeStuff.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncodeStuff.m; sourceTree = "<group>"; };
+		274E2AFA1FC6B64F00324949 /* Retainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Retainer.h; sourceTree = "<group>"; };
+		274E2AFB1FC6B64F00324949 /* Retainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Retainer.m; sourceTree = "<group>"; };
 		274FFC261EF6236600FAF809 /* WeeklyActiveDays.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = WeeklyActiveDays.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		274FFC271EF6236600FAF809 /* WeeklyActiveDays.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = WeeklyActiveDays.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		274FFC281EF6236600FAF809 /* WeeklyActiveDays.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeeklyActiveDays.xib; sourceTree = "<group>"; };
@@ -410,8 +412,6 @@
 		274FFC401EF6E2B100FAF809 /* RateSetterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateSetterView.m; sourceTree = "<group>"; };
 		274FFC411EF6E2B100FAF809 /* RateSetterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RateSetterView.xib; sourceTree = "<group>"; };
 		274FFC441EF6E3BB00FAF809 /* P_RateSetterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_RateSetterDelegate.h; sourceTree = "<group>"; };
-		274FFC481EF887DB00FAF809 /* DailyEditControlKeep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DailyEditControlKeep.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		274FFC491EF887DB00FAF809 /* DailyEditControlKeep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyEditControlKeep.m; sourceTree = "<group>"; };
 		275A07B51EDA1FB9001422CD /* TestHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHelpers.h; sourceTree = "<group>"; };
 		275A07B61EDA1FB9001422CD /* TestHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHelpers.m; sourceTree = "<group>"; };
 		275D9F221F219850009DA715 /* ChildMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildMan.h; sourceTree = "<group>"; };
@@ -930,6 +930,8 @@
 				274E2AF21FB9369100324949 /* ReadOonly.m */,
 				274E2AF41FC3C40600324949 /* EncodeStuff.h */,
 				274E2AF51FC3C40600324949 /* EncodeStuff.m */,
+				274E2AFA1FC6B64F00324949 /* Retainer.h */,
+				274E2AFB1FC6B64F00324949 /* Retainer.m */,
 			);
 			path = ObjCScriptRunner;
 			sourceTree = "<group>";
@@ -1305,8 +1307,6 @@
 				275FEF0C1EE45AE600AED1A2 /* Daily+DailyHelper.m */,
 				27E89C961EF5F3EE009B7474 /* SubTaskCellController.h */,
 				27E89C971EF5F3EE009B7474 /* SubTaskCellController.m */,
-				274FFC481EF887DB00FAF809 /* DailyEditControlKeep.h */,
-				274FFC491EF887DB00FAF809 /* DailyEditControlKeep.m */,
 				270D39BD1F5E067400F371F0 /* ActiveDaysTriKey.h */,
 				270D39BE1F5E067400F371F0 /* ActiveDaysTriKey.m */,
 				271AB34B1F9BC5F800D30521 /* DailyEditController+ControlLoaders.h */,
@@ -1700,6 +1700,7 @@
 				274A37D21F13280400F31E0F /* PersonThingUser.m in Sources */,
 				274A37D51F133AA200F31E0F /* Experiments.m in Sources */,
 				270366EB1F6BA86A00D4BDC8 /* SelectorDict.m in Sources */,
+				274E2AFC1FC6B64F00324949 /* Retainer.m in Sources */,
 				274A37EA1F145D2200F31E0F /* House+Things.m in Sources */,
 				274A38381F2194FD00F31E0F /* ParentMan.m in Sources */,
 				271AB34A1F9BBFC100D30521 /* ExpNonNull.m in Sources */,
@@ -1779,7 +1780,6 @@
 				68BE45911D9DEA0B003F3400 /* IntroViewController.m in Sources */,
 				68F3F9E41D70E8DB00840DD2 /* CentralViewController.m in Sources */,
 				274A37B21F0A093B00F31E0F /* SHEventInfo.m in Sources */,
-				274FFC4A1EF887DB00FAF809 /* DailyEditControlKeep.m in Sources */,
 				2709B39C1EF0D31200EEE5CC /* Interceptor.m in Sources */,
 				27B0CDC91F2BEECD005BEC75 /* HabitTransaction+CoreDataProperties.m in Sources */,
 				27B0CDC71F2BEECD005BEC75 /* Suffix+CoreDataProperties.m in Sources */,

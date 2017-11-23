@@ -26,7 +26,7 @@
 @end
 
 @interface AssociatedResponderAndSet<T_Responder>: NSObject
-@property (strong,nonatomic) T_Responder responder;
+@property (weak,nonatomic) T_Responder responder;
 @property (strong,nonatomic) NSHashTable *set; //strong references are maintained elsewhere
 @end
 

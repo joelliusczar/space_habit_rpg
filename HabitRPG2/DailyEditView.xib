@@ -22,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="333" height="385"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RhM-CD-7Be">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RhM-CD-7Be" customClass="SHButton">
                     <rect key="frame" x="16" y="58" width="176" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="13"/>
@@ -40,7 +40,7 @@
                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="13"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
-                        <action selector="nameBox_editingChange_action:forEvent:" destination="-1" eventType="editingChanged" id="iUc-Za-42y"/>
+                        <action selector="nameBox_editingChange_action:forEvent:" destination="-1" eventType="editingChanged" id="p2H-WR-gBt"/>
                     </connections>
                 </textField>
                 <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tXI-Qs-aDL">

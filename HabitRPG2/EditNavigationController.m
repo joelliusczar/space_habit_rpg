@@ -27,7 +27,9 @@
 @property (weak, nonatomic) IBOutlet SHButton *deleteBtn;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveBtnBarItem;
 @property (assign,nonatomic) CGFloat defaultScrollHeight;
-
+@property (assign,nonatomic) BOOL isKeyboardOpen;
+@property (strong,nonatomic) UIGestureRecognizer *tapGestureBG;
+@property (strong,nonatomic) UIGestureRecognizer *tapGestureFG;
 @end
 
 @implementation EditNavigationController
@@ -42,6 +44,29 @@
     return self;
 }
 
+void setupBackgroundTapActions(EditNavigationController *nav){
+    nav.tapGestureBG = [[UITapGestureRecognizer alloc]
+                                            initWithTarget:nav
+                                            action:@selector(background_tap_action:)];
+    //the foreground one is tell the keyboard to go away
+    nav.tapGestureFG = [[UITapGestureRecognizer alloc]
+                                            initWithTarget:nav
+                                            action:@selector(background_tap_action:)];
+    [nav.modalView addGestureRecognizer:nav.tapGestureFG];
+    [nav.background addGestureRecognizer:nav.tapGestureBG];
+}
+
+void setupNotificationCenterStuff(EditNavigationController *nav){
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:nav
+               selector:@selector(noticeShowKeyboard:)
+               name:UIKeyboardDidShowNotification
+               object:nil];
+    [center addObserver:nav
+               selector:@selector(noticeHideKeyboard:)
+               name:UIKeyboardDidHideNotification
+               object:nil];
+}
 
 -(void)viewDidLoad {
     [super viewDidLoad];
@@ -53,16 +78,8 @@
                                                   self.editingScreen.view.frame.size.height);
     self.scrollContainer.scrollEnabled = YES;
     [self.scrollContainer sizeToFit];
-    UITapGestureRecognizer *tapGestureBG = [[UITapGestureRecognizer alloc]
-                                           initWithTarget:self
-                                           action:@selector(background_tap_action:)];
-    //the foreground one is tell the keyboard to go away
-    UITapGestureRecognizer *tapGestureFG = [[UITapGestureRecognizer alloc]
-                                            initWithTarget:self
-                                            action:@selector(background_tap_action:)];
-    [self.modalView addGestureRecognizer:tapGestureFG];
-    [self.background addGestureRecognizer:tapGestureBG];
-    
+    setupBackgroundTapActions(self);
+    setupNotificationCenterStuff(self);
 }
 
 
@@ -74,7 +91,17 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"
 
--(IBAction)deleteBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
+-(void)noticeShowKeyboard:(NSNotification *)notification{
+    self.isKeyboardOpen = YES;
+}
+
+
+-(void)noticeHideKeyboard:(NSNotification *)notification{
+    self.isKeyboardOpen = NO;
+}
+
+
+-(IBAction)deleteBtn_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
     [self confirmDelete];
 }
 
@@ -105,7 +132,7 @@
                        animated:YES completion:nil];
 }
 
--(IBAction)saveBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
+-(IBAction)saveBtn_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
     if(self.editingScreen.nameStr.length){
         [self.editingScreen saveEdit];
         [ViewHelper popViewFromFront:self];
@@ -132,7 +159,10 @@
 
 
 -(void)background_tap_action:(UITapGestureRecognizer *)sender {
-    [self hideKeyboard];
+    if(self.isKeyboardOpen){
+        [self hideKeyboard];
+        return;
+    }
     if(sender.view == self.background){
         [self.editingScreen unsaved_closing_action];
         [ViewHelper popViewFromFront:self];
@@ -209,6 +239,12 @@
 
 -(void)hideKeyboard{
     [self.view endEditing:YES];
+}
+
+
+-(void)dealloc{
+    NSLog(@"EditNavigationController deallocating");
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 

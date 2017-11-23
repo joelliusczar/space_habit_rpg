@@ -74,6 +74,8 @@ typedef id (^mbTest)();
 +(void)constantStuff;
 +(void)comparingThings;
 +(void)encodeStuff;
++(void)retainStuff;
++(void)underbarWeakStuff;
 @end
 
 #import "Experiments+Charlie.h"

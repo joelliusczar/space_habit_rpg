@@ -14,7 +14,6 @@
 #import "CustomSwitch.h"
 #import "Daily+DailyHelper.h"
 #import "Interceptor.h"
-#import "DailyEditControlKeep.h"
 #import "WeekdayEnum.h"
 #import "RateTypeHelper.h"
 
@@ -137,8 +136,9 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
 }
 
 
-- (IBAction)nameBox_editingChange_action:(UITextField *)sender forEvent:(UIEvent *)event {
+- (IBAction)nameBox_editingChange_action:(SHTextField *)sender forEvent:(UIEvent *)event {
     [self.modelForEditing name_w:sender.text];
+    self.nameStr = sender.text;
 }
 
 
@@ -261,6 +261,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
 
 -(void)dealloc{
+    NSLog(@"DailyEditController deallocating");
     @try{
         [self removeObserver:self forKeyPath:IS_TOUCHED context:nil];
     }
