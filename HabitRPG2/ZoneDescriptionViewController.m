@@ -11,39 +11,16 @@
 #import "ViewHelper.h"
 #import "SingletonCluster.h"
 #import "constants.h"
+#import "SHButton.h"
 
 @interface ZoneDescriptionViewController ()
-@property (nonatomic,weak) ZoneChoiceViewController *prevScreen;
-@property (nonatomic,weak) UIViewController <CentralViewControllerP> *central;
-@property (nonatomic,weak,readonly) UITextView *zoneDescription;
-@property (nonatomic,weak,readonly) UILabel *headlineLbl;
-@property (nonatomic,weak,readonly) UIButton *confirmBtn;
-@property (nonatomic,strong,readonly) UISwipeGestureRecognizer *backSwipe;
-@property (nonatomic,weak) Zone *model;
+@property (weak,nonatomic) ZoneChoiceViewController *prevScreen;
+@property (weak,nonatomic) UIViewController <CentralViewControllerP> *central;
+@property (readonly,strong,nonatomic) UISwipeGestureRecognizer *backSwipe;
 @end
 
 @implementation ZoneDescriptionViewController
 
-@synthesize prevScreen = _prevScreen;
-@synthesize central = _central;
-
-@synthesize zoneDescription = _zoneDescription;
--(UITextView *)zoneDescription{
-    if(!_zoneDescription){
-        _zoneDescription = [self.view viewWithTag:2];
-    }
-    return _zoneDescription;
-}
-
-@synthesize confirmBtn = _confirmBtn;
--(UIButton *)confirmBtn{
-    if(!_confirmBtn){
-        UIView *v = [self getContentSubview];
-        _confirmBtn = [v viewWithTag:3];
-        [_confirmBtn addTarget:self action:@selector(confirmBtn_click_action:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _confirmBtn;
-}
 
 @synthesize backSwipe = _backSwipe;
 -(UISwipeGestureRecognizer *)backSwipe{
@@ -54,14 +31,6 @@
     return _backSwipe;
 }
 
-@synthesize headlineLbl = _headlineLbl;
--(UILabel *)headlineLbl{
-    if(!_headlineLbl){
-        UIView *v = [self getContentSubview];
-        _headlineLbl = [v viewWithTag:4];
-    }
-    return _headlineLbl;
-}
 
 -(instancetype)init:(ZoneChoiceViewController *)prevScreen{
     if(self = [self initWithNibName:@"StoryDumpView" bundle:nil]){
@@ -72,21 +41,17 @@
 }
 
 -(void)setDisplayItems:(Zone *)model{
-    self.model = model;
-    self.zoneDescription.text = model.synopsis;
+    self.storyItem = model;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.confirmBtn setTitle:@"Pick this Zone" forState:UIControlStateNormal];
-    [self.confirmBtn sizeToFit];
+    [self.doneBtn setTitle:@"Pick this Zone" forState:UIControlStateNormal];
+    [self.doneBtn sizeToFit];
     [self.view addGestureRecognizer:self.backSwipe];
     self.headlineLbl.text = @"";
 }
 
--(UIView *)getContentSubview{
-    return [self.view viewWithTag:1];;
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -99,11 +64,11 @@
 -(void)backSwipe_rightSwipe_action:(UISwipeGestureRecognizer *)sender{
     [ViewHelper popViewFromFront:self];
 }
-
--(void)confirmBtn_click_action:(UIButton *)sender{
+- (IBAction)doneBtn_pressed_action:(SHButton *)sender forEvent:(UIEvent *)event  {
     [ViewHelper popViewFromFront:self.prevScreen];
-    [self.central afterZonePick:self.model];
+    [self.central afterZonePick:(Zone *)self.storyItem];
 }
+
 
 #pragma clang diagnostic pop
 

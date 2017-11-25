@@ -91,7 +91,6 @@
             [self.introMessage setText:[NSString stringWithFormat:@"%@%C",self.introMessage.text,
                                         [text characterAtIndex:i]]];
         });
-        [self.introMessage endEditing:YES];
         [NSThread sleepForTimeInterval:delay];
     }
 }

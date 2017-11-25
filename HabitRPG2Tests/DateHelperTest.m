@@ -125,8 +125,8 @@
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"mt"];//HH
     XCTAssertTrue(testLocale.isUsing24HourFormat);
-    testLocale = [NSLocale localeWithLocaleIdentifier:@"ha"];//h a
-    XCTAssertFalse(testLocale.isUsing24HourFormat);
+    testLocale = [NSLocale localeWithLocaleIdentifier:@"ha"];//H
+    XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"es_HN"];//HH
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"ml_IN"];//h a
@@ -191,8 +191,8 @@
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"kde"];//H
     XCTAssertTrue(testLocale.isUsing24HourFormat);
-    testLocale = [NSLocale localeWithLocaleIdentifier:@"sn"];//h a
-    XCTAssertFalse(testLocale.isUsing24HourFormat);
+    testLocale = [NSLocale localeWithLocaleIdentifier:@"sn"];//HH
+    XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"cgg_UG"];//H
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"so"];//h a
@@ -229,8 +229,8 @@
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"sw"];//HH
     XCTAssertTrue(testLocale.isUsing24HourFormat);
-    testLocale = [NSLocale localeWithLocaleIdentifier:@"nd"];//h a
-    XCTAssertFalse(testLocale.isUsing24HourFormat);
+    testLocale = [NSLocale localeWithLocaleIdentifier:@"nd"];//H
+    XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"sr_Latn"];//HH
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"el_GR"];//h a
@@ -283,12 +283,12 @@
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"tzm_Latn"];//H
     XCTAssertTrue(testLocale.isUsing24HourFormat);
-    testLocale = [NSLocale localeWithLocaleIdentifier:@"yo"];//h a
-    XCTAssertFalse(testLocale.isUsing24HourFormat);
+    testLocale = [NSLocale localeWithLocaleIdentifier:@"yo"];//HH
+    XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"gsw_CH"];//H
     XCTAssertTrue(testLocale.isUsing24HourFormat);
-    testLocale = [NSLocale localeWithLocaleIdentifier:@"ha_Latn_GH"];//h a
-    XCTAssertFalse(testLocale.isUsing24HourFormat);
+    testLocale = [NSLocale localeWithLocaleIdentifier:@"ha_Latn_GH"];//H
+    XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"is_IS"];//HH
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"pt_BR"];//HH
@@ -311,8 +311,8 @@
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"mr_IN"];//h a
     XCTAssertFalse(testLocale.isUsing24HourFormat);
-    testLocale = [NSLocale localeWithLocaleIdentifier:@"ar_SA"];//h a
-    XCTAssertFalse(testLocale.isUsing24HourFormat);
+    testLocale = [NSLocale localeWithLocaleIdentifier:@"ar_SA"];//H
+    XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"ka_GE"];//HH
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"mfe_MU"];//H
@@ -335,8 +335,8 @@
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"shi_Latn"];//H
     XCTAssertTrue(testLocale.isUsing24HourFormat);
-    testLocale = [NSLocale localeWithLocaleIdentifier:@"ig"];//h a
-    XCTAssertFalse(testLocale.isUsing24HourFormat);
+    testLocale = [NSLocale localeWithLocaleIdentifier:@"ig"];//HH
+    XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"ses"];//H
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"ii"];//h a
@@ -417,14 +417,14 @@
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"ar_LY"];//h a
     XCTAssertFalse(testLocale.isUsing24HourFormat);
-    testLocale = [NSLocale localeWithLocaleIdentifier:@"en_BW"];//h a
-    XCTAssertFalse(testLocale.isUsing24HourFormat);
+    testLocale = [NSLocale localeWithLocaleIdentifier:@"en_BW"];//HH
+    XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"asa"];//H
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"zh"];//ah时
     XCTAssertFalse(testLocale.isUsing24HourFormat);
-    testLocale = [NSLocale localeWithLocaleIdentifier:@"ha_Latn"];//h a
-    XCTAssertFalse(testLocale.isUsing24HourFormat);
+    testLocale = [NSLocale localeWithLocaleIdentifier:@"ha_Latn"];//H
+    XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"fr_NE"];//HH 'h'
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"es_MX"];//H
@@ -467,8 +467,8 @@
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"naq"];//h a
     XCTAssertFalse(testLocale.isUsing24HourFormat);
-    testLocale = [NSLocale localeWithLocaleIdentifier:@"zu"];//h a
-    XCTAssertFalse(testLocale.isUsing24HourFormat);
+    testLocale = [NSLocale localeWithLocaleIdentifier:@"zu"];//HH
+    XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"en_IE"];//HH
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"ar_MA"];//HH
@@ -515,16 +515,16 @@
     XCTAssertFalse(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"ar_KW"];//h a
     XCTAssertFalse(testLocale.isUsing24HourFormat);
-    testLocale = [NSLocale localeWithLocaleIdentifier:@"af_ZA"];//h a
-    XCTAssertFalse(testLocale.isUsing24HourFormat);
+    testLocale = [NSLocale localeWithLocaleIdentifier:@"af_ZA"];//HH
+    XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"en_CA"];//h a
     XCTAssertFalse(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"fr_DJ"];//h a
     XCTAssertFalse(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"ti_ER"];//h a
     XCTAssertFalse(testLocale.isUsing24HourFormat);
-    testLocale = [NSLocale localeWithLocaleIdentifier:@"ig_NG"];//h a
-    XCTAssertFalse(testLocale.isUsing24HourFormat);
+    testLocale = [NSLocale localeWithLocaleIdentifier:@"ig_NG"];//HH
+    XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"en_AU"];//h a
     XCTAssertFalse(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"ur"];//h a
@@ -553,8 +553,8 @@
     XCTAssertFalse(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"ee"];//a 'ga' h
     XCTAssertFalse(testLocale.isUsing24HourFormat);
-    testLocale = [NSLocale localeWithLocaleIdentifier:@"nd_ZW"];//h a
-    XCTAssertFalse(testLocale.isUsing24HourFormat);
+    testLocale = [NSLocale localeWithLocaleIdentifier:@"nd_ZW"];//H
+    XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"bem"];//h a
     XCTAssertFalse(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"uz"];//HH
@@ -593,8 +593,8 @@
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"ru_UA"];//H
     XCTAssertTrue(testLocale.isUsing24HourFormat);
-    testLocale = [NSLocale localeWithLocaleIdentifier:@"yo_NG"];//h a
-    XCTAssertFalse(testLocale.isUsing24HourFormat);
+    testLocale = [NSLocale localeWithLocaleIdentifier:@"yo_NG"];//HH
+    XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"dav_KE"];//H
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"gv_GB"];//HH
@@ -635,8 +635,8 @@
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"ses_ML"];//H
     XCTAssertTrue(testLocale.isUsing24HourFormat);
-    testLocale = [NSLocale localeWithLocaleIdentifier:@"en_ZW"];//h a
-    XCTAssertFalse(testLocale.isUsing24HourFormat);
+    testLocale = [NSLocale localeWithLocaleIdentifier:@"en_ZW"];//HH
+    XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"ak_GH"];//h a
     XCTAssertFalse(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"vi_VN"];//HH
@@ -699,8 +699,8 @@
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"ko"];//a h시
     XCTAssertFalse(testLocale.isUsing24HourFormat);
-    testLocale = [NSLocale localeWithLocaleIdentifier:@"ha_Latn_NG"];//h a
-    XCTAssertFalse(testLocale.isUsing24HourFormat);
+    testLocale = [NSLocale localeWithLocaleIdentifier:@"ha_Latn_NG"];//H
+    XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"sg_CF"];//H
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"om_ET"];//h a
@@ -799,8 +799,8 @@
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"es_ES"];//H
     XCTAssertTrue(testLocale.isUsing24HourFormat);
-    testLocale = [NSLocale localeWithLocaleIdentifier:@"af"];//h a
-    XCTAssertFalse(testLocale.isUsing24HourFormat);
+    testLocale = [NSLocale localeWithLocaleIdentifier:@"af"];//HH
+    XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"asa_TZ"];//H
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"cs_CZ"];//H
@@ -845,8 +845,8 @@
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"sr_Latn_ME"];//HH
     XCTAssertTrue(testLocale.isUsing24HourFormat);
-    testLocale = [NSLocale localeWithLocaleIdentifier:@"sn_ZW"];//h a
-    XCTAssertFalse(testLocale.isUsing24HourFormat);
+    testLocale = [NSLocale localeWithLocaleIdentifier:@"sn_ZW"];//HH
+    XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"or_IN"];//h a
     XCTAssertFalse(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"ar"];//h a
@@ -871,8 +871,8 @@
     XCTAssertFalse(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"ga"];//HH
     XCTAssertTrue(testLocale.isUsing24HourFormat);
-    testLocale = [NSLocale localeWithLocaleIdentifier:@"af_NA"];//h a
-    XCTAssertFalse(testLocale.isUsing24HourFormat);
+    testLocale = [NSLocale localeWithLocaleIdentifier:@"af_NA"];//HH
+    XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"kea_CV"];//HH
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"es_DO"];//h a
@@ -913,8 +913,8 @@
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"so_ET"];//h a
     XCTAssertFalse(testLocale.isUsing24HourFormat);
-    testLocale = [NSLocale localeWithLocaleIdentifier:@"en_ZA"];//h a
-    XCTAssertFalse(testLocale.isUsing24HourFormat);
+    testLocale = [NSLocale localeWithLocaleIdentifier:@"en_ZA"];//HH
+    XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"ii_CN"];//h a
     XCTAssertFalse(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"fr_BL"];//HH 'h'
@@ -953,8 +953,8 @@
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"hy_AM"];//H
     XCTAssertTrue(testLocale.isUsing24HourFormat);
-    testLocale = [NSLocale localeWithLocaleIdentifier:@"zu_ZA"];//h a
-    XCTAssertFalse(testLocale.isUsing24HourFormat);
+    testLocale = [NSLocale localeWithLocaleIdentifier:@"zu_ZA"];//HH
+    XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"guz"];//H
     XCTAssertTrue(testLocale.isUsing24HourFormat);
     testLocale = [NSLocale localeWithLocaleIdentifier:@"mk"];//HH

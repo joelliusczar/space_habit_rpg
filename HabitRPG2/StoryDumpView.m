@@ -12,42 +12,12 @@
 #import "ViewHelper.h"
 
 @interface StoryDumpView ()
-@property (readonly,weak,nonatomic) UITextView *synopsisView;
-@property (readonly,weak,nonatomic) UIButton *doneBtn;
-@property (readonly,weak,nonatomic) UILabel *headlineLbl;
-@property (strong,nonatomic) NSObject<P_StoryItem> *storyItem;
 @end
 
 @implementation StoryDumpView
 
 @synthesize storyItem = _storyItem;
 
-@synthesize synopsisView = _synopsisView;
--(UITextView *)synopsisView{
-    if(!_synopsisView){
-        _synopsisView = [self.view viewWithTag:2];
-    }
-    return _synopsisView;
-}
-
-@synthesize doneBtn = _doneBtn;
--(UIButton *)doneBtn{
-    if(!_doneBtn){
-        UIView *v = [self getContentSubview];
-        _doneBtn = [v viewWithTag:3];
-        [_doneBtn addTarget:self action:@selector(doneBtn_pressed_action:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _doneBtn;
-}
-
-@synthesize headlineLbl = _headlineLbl;
--(UILabel *)headlineLbl{
-    if(!_headlineLbl){
-        UIView *v = [self getContentSubview];
-        _headlineLbl = [v viewWithTag:4];
-    }
-    return _headlineLbl;
-}
 
 -(instancetype)initWithStoryItem:(NSObject<P_StoryItem> *)storyItem{
     if(self = [self initWithNibName:@"StoryDumpView" bundle:nil]){
@@ -56,9 +26,6 @@
     return self;
 }
 
--(UIView *)getContentSubview{
-    return [self.view viewWithTag:1];;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -75,7 +42,7 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)doneBtn_pressed_action:(UIButton *)sender{
+- (IBAction)doneBtn_pressed_action:(SHButton *)sender forEvent:(UIEvent *)event {
     [ViewHelper popViewFromFront:self];
 }
 

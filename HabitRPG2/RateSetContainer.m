@@ -63,17 +63,13 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 
 -(void)setWeeklyDaysDelegate:(id<P_WeeklyActiveDaysDelegate>)weeklyDaysDelegate{
     _weeklyDaysDelegate = weeklyDaysDelegate;
-    [self.rateControls.responderLookup setObject:weeklyDaysDelegate
-                               forKeyedSubscript:takeKey(setDelegate:)
-                               secondaryKey:WEEKLY_KEY];
+    self.rateControls.responderLookup[WEEKLY_KEY] = weeklyDaysDelegate;
 }
 
 
 -(void)setTblDelegate:(id<P_ItemFlexibleListDelegate>)tblDelegate{
     _tblDelegate = tblDelegate;
-    [self.rateControls.responderLookup setObject:tblDelegate
-                               forKeyedSubscript:takeKey(setDelegate:)
-                               secondaryKey:@"TBL"];
+    self.rateControls.responderLookup[@"tbl"] =  tblDelegate;
 }
 
 +(instancetype)newWithDaily:(Daily * _Nonnull)daily{
@@ -140,8 +136,12 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
         NSAssert(weakSelf,errMessage);
         MonthlyActiveDays *monthly = [MonthlyActiveDays newWithDaily:daily];
         [weakSelf commonTableSetup:monthly];
-        [keep addControlToActionSetWithKey:takeKey(setResizeResponder:)];
-        [keep addControlToActionSetWithKey:takeKey(setDelegate:) secondaryKey:@"TBL"];
+        [keep forResponderKey:@"resize" doSetupAction:^(id responder){
+            monthly.resizeResponder = responder;
+        }];
+        [keep forResponderKey:@"tbl" doSetupAction:^(id responder){
+            monthly.delegate = responder;
+        }];
         return monthly;
     });
     
@@ -149,15 +149,21 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
         NSAssert(weakSelf,errMessage);
         YearlyActiveDays *yearly = [YearlyActiveDays newWithDaily:daily];
         [weakSelf commonTableSetup: yearly];
-        [keep addControlToActionSetWithKey:takeKey(setResizeResponder:)];
-        [keep addControlToActionSetWithKey:takeKey(setDelegate:) secondaryKey:@"TBL"];
+        [keep forResponderKey:@"resize" doSetupAction:^(id responder){
+            yearly.resizeResponder = responder;
+        }];
+        [keep forResponderKey:@"tbl" doSetupAction:^(id responder){
+            yearly.delegate = responder;
+        }];
         return yearly;
     });
     keep.controlLookup[WEEKLY_KEY] = vw(^id(SHControlKeep *keep,ControlExtent *controlExtent){
         NSAssert(weakSelf,errMessage);
         WeeklyActiveDays *weekly = [[WeeklyActiveDays alloc] init];
         [weekly changeBackgroundColorTo:weakSelf.backgroundColor];
-        [keep addControlToActionSetWithKey:takeKey(setDelegate:) secondaryKey:WEEKLY_KEY];
+        [keep forResponderKey:WEEKLY_KEY doSetupAction:^(id responder){
+            weekly.delegate = responder;
+        }];
         return weekly;
     });
     

@@ -21,7 +21,7 @@ http://www.mikeash.com/pyblog/friday-qa-2010-06-18-implementing-equality-and-has
 
 
 @interface CommonUtilities : NSObject
-NSDate* _Nonnull getReferenceDate();
+NSDate* _Nonnull getReferenceDate(void);
 uint calculateLvl(uint lvl,uint range);
 uint randomUInt(uint bound);
 CGFloat GetYStart(CGFloat height);

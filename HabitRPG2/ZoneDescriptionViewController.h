@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "Zone+CoreDataClass.h"
 #import "ZoneChoiceViewController.h"
+#import "StoryDumpView.h"
 
 @class ZoneChoiceViewController;
 
-@interface ZoneDescriptionViewController : UIViewController
+@interface ZoneDescriptionViewController : StoryDumpView
 -(instancetype)init:(ZoneChoiceViewController *)prevScreen;
 -(void)setDisplayItems:(Zone *)model;
 @end

@@ -16,41 +16,21 @@ typedef ControlExtent* (^w_LazyLoadBlock)(SHControlKeep *);
 @property (strong,nonatomic) NSMutableArray<w_LazyLoadBlock> *lazyLoaders;
 @property (strong,nonatomic) NSMutableArray<ControlExtent *> *controlBackend;
 @property (strong,nonatomic) NSMutableDictionary<id,NSNumber *> *indexLookup;
-@property (strong,nonatomic) NSMutableDictionary<NSString *,AssociatedResponderAndSet *> *associations;
-@property (strong,nonatomic) NSMutableSet<PairWrapper<SELPtr *,NSString *> *> *actionSetAdditionsQueue;
--(AssociatedResponderAndSet *)getOrCreateAssociationForKey:(NSString *)key;
--(BOOL)addControlToActionSet:(id)control withKey:(SELPtr *)key;
--(BOOL)addControlToActionSet:(id)control withKey:(SELPtr *)key secondaryKey:(NSString *)secondaryKey;
+@property (strong,nonatomic) NSMutableDictionary<id<NSCopying>,AssociatedResponderAndSet *> *associations;
+@property (strong,nonatomic) NSMutableArray<PairWrapper<KeyToken *,id<NSCopying>> *> *tokenQueue;
+-(AssociatedResponderAndSet *)getOrCreateAssociationForKey:(id<NSCopying>)key;
+-(void)cleanupSetupBlocks:(ControlExtent *)controlExtent;
 @end
 
 @implementation ControlExtent
 
--(void)setIdx:(NSUInteger)idx{
-    if(self.isReadOnlyMode){
-        return;
-    }
-    _idx = idx;
-}
-
-
--(void)setControl:(id)control{
-    if(self.isReadOnlyMode){
-        return;
-    }
-    _control = control;
-}
-
-
--(void)setKey:(id<NSCopying,NSObject>)key{
-    if(self.isReadOnlyMode){
-        return;
-    }
-    _key = key;
-}
-
-
--(void)setIsReadOnlyMode:(BOOL)isReadOnlyMode{
-    _isReadOnlyMode = isReadOnlyMode;
+-(instancetype)copyExtent{
+    ControlExtent *copy = [[ControlExtent alloc] init];
+    copy.idx = self.idx;
+    copy.key = self.key;
+    copy.control = self.control;
+    copy.blockTrackers = self.blockTrackers;
+    return copy;
 }
 
 
@@ -61,48 +41,20 @@ typedef ControlExtent* (^w_LazyLoadBlock)(SHControlKeep *);
 w_LazyLoadBlock wrapLoaderBlock(LazyLoadBlock loaderBlock,NSUInteger idx,id<NSCopying,NSObject> key){
     return ^ControlExtent *(SHControlKeep *keep){
         ControlExtent *controlExtent = [[ControlExtent alloc] init];
-        controlExtent.isReadOnlyMode = NO;
         controlExtent.idx = idx;
-        controlExtent.control = loaderBlock(keep,controlExtent);
+        ControlExtent *copy = [controlExtent copyExtent];
+        controlExtent.control = loaderBlock(keep,copy);
         NSCAssert(controlExtent != controlExtent.control,@"You should not try to return control extent.");
         NSCAssert(controlExtent.control != keep,@"You should not try to return keep");
         if(key){
             controlExtent.key = key;
+            keep.indexLookup[key] = @(idx);
         }
-        controlExtent.idx = idx; //incase the passed block tried to change this
-        controlExtent.isReadOnlyMode = YES;
-        if(controlExtent.key){
-            keep.indexLookup[controlExtent.key] = @(idx);
-        }
-        if(keep.actionSetAdditionsQueue){
-            for (PairWrapper<SELPtr *,NSString *> *keyPair in keep.actionSetAdditionsQueue) {
-                [keep addControlToActionSet:controlExtent.control
-                                    withKey:keyPair.item
-                                    secondaryKey:keyPair.item2];
-            }
-            keep.actionSetAdditionsQueue = nil;
-        }
+        controlExtent.blockTrackers = [NSArray arrayWithArray:keep.tokenQueue];
+        keep.tokenQueue = nil;
         return controlExtent;
     };
 }
-
-
-NSString* buildKey(SELPtr *sel,NSString *secondaryKey){
-    return [NSString stringWithFormat:@"%@:%@",secondaryKey,NSStringFromSelector(sel.selector)];
-}
-
-
-//assign responder to control. control will do actions to responder
-BOOL associateResponder(SEL selector,id control,id responder){
-    typedef void (*setter)(id,SEL,id);
-    if([control respondsToSelector:selector]){
-        setter impl = (setter)[control methodForSelector:selector];
-        impl(control,selector,responder);
-        return true;
-    }
-    return false;
-}
-
 
 
 @implementation ControlDictionary
@@ -113,7 +65,6 @@ BOOL associateResponder(SEL selector,id control,id responder){
     }
     return self;
 }
-
 
 
 -(id)objectForKeyedSubscript:(id)key{
@@ -221,32 +172,19 @@ BOOL associateResponder(SEL selector,id control,id responder){
     return self;
 }
 
--(AssociatedResponderAndSet *)objectForKeyedSubscript:(SELPtr *)key secondaryKey:(NSString *)secondaryKey{
-    return self.owner.associations[buildKey(key,secondaryKey)];
-}
 
-
--(AssociatedResponderAndSet *)objectForKeyedSubscript:(SELPtr *)key{
-    return [self objectForKeyedSubscript:key secondaryKey:@""];
+-(AssociatedResponderAndSet *)objectForKeyedSubscript:(id<NSCopying>)key{
+    return self.owner.associations[key];
 }
 
 
 //use this when setting something as a global delegate
--(void)setObject:(id)obj forKeyedSubscript:(SELPtr *)key secondaryKey:(NSString *)secondaryKey{
-    AssociatedResponderAndSet *association = [self.owner getOrCreateAssociationForKey:buildKey(key,secondaryKey)];
+-(void)setObject:(id)obj forKeyedSubscript:(id<NSCopying>)key{
+    AssociatedResponderAndSet *association = [self.owner getOrCreateAssociationForKey:key];
     association.responder = obj;
-    @autoreleasepool{
-        
-        for(id control in association.set){
-            //assign our new responder to each control in the set associated with that selector
-            associateResponder(key.selector,control,association.responder);
-        }
+    for(setupResponder block in association.setupActions.allValues){
+        block(association.responder);
     }
-}
-
-
--(void)setObject:(id)obj forKeyedSubscript:(SELPtr *)key{
-    [self setObject:obj forKeyedSubscript:key secondaryKey:@""];
 }
 
 
@@ -257,14 +195,9 @@ BOOL associateResponder(SEL selector,id control,id responder){
 
 -(instancetype)init{
     if(self = [super init]){
-        _set = [NSHashTable weakObjectsHashTable];
+        _setupActions = [NSMutableDictionary dictionary];
     }
     return self;
-}
-
--(void)dealloc{
-    _responder = nil;
-    _set = nil;
 }
 
 @end
@@ -344,7 +277,7 @@ BOOL associateResponder(SEL selector,id control,id responder){
     return self.associations.count;
 }
 
--(AssociatedResponderAndSet *)getOrCreateAssociationForKey:(NSString *)key{
+-(AssociatedResponderAndSet *)getOrCreateAssociationForKey:(id<NSCopying>)key{
     AssociatedResponderAndSet *association = self.associations[key];
     if(nil == association){
         association = [[AssociatedResponderAndSet alloc] init];
@@ -354,33 +287,24 @@ BOOL associateResponder(SEL selector,id control,id responder){
 }
 
 
--(void)addControlToActionSetWithKey:(SELPtr *)key{
-    [self addControlToActionSetWithKey:key secondaryKey:@""];
-}
-
-
--(void)addControlToActionSetWithKey:(SELPtr *)key secondaryKey:(NSString *)secondaryKey{
-    if(nil == self.actionSetAdditionsQueue){
-        self.actionSetAdditionsQueue = [NSMutableSet set];
+-(void)addToTokenQueue:(PairWrapper<KeyToken *,id<NSCopying>> *)tokenAndKey{
+    if(nil == self.tokenQueue){
+        self.tokenQueue = [NSMutableArray array];
     }
-    /*This is slightly buggy because I need to override hash on PairWrapper*/
-    PairWrapper *pw = [[PairWrapper alloc] init:key,secondaryKey,nil];
-    NSAssert(![self.actionSetAdditionsQueue containsObject:pw],@"You're trying to add duplicate keys. Stop that!");
-    [self.actionSetAdditionsQueue addObject:pw];
+    [self.tokenQueue addObject:tokenAndKey];
 }
 
 //call this from a loadedBlock to add a control to the set and wireup the responder recieving actions
 //if it exists
--(BOOL)addControlToActionSet:(id)control withKey:(SELPtr *)key secondaryKey:(NSString *)secondaryKey{
-    AssociatedResponderAndSet *association = [self getOrCreateAssociationForKey:buildKey(key,secondaryKey)];
-    [association.set addObject:control];
-    
-    return association.responder?associateResponder(key.selector,control,association.responder):false;
-}
-
-
--(BOOL)addControlToActionSet:(id)control withKey:(SELPtr *)key{
-    return [self addControlToActionSet:control withKey:key secondaryKey:@""];
+-(KeyToken *)forResponderKey:(id<NSCopying>)key doSetupAction:(setupResponder)setupAction{
+    AssociatedResponderAndSet *association = [self getOrCreateAssociationForKey:key];
+    KeyToken *token = [[KeyToken alloc] init];
+    association.setupActions[token] = setupAction;
+    if(association.responder){
+        setupAction(association.responder);
+    }
+    [self addToTokenQueue:pw(token,key)];
+    return token;
 }
 
 
@@ -396,5 +320,14 @@ BOOL associateResponder(SEL selector,id control,id responder){
     [self.lazyLoaders addObject:wrapLoaderBlock(loaderBlock,self.lazyLoaders.count,key)];
     [self.controlBackend addObject:[[ControlExtent alloc] init]];
 }
+
+
+-(void)cleanupSetupBlocks:(ControlExtent *)controlExtent{
+    for(PairWrapper<KeyToken *,id<NSCopying>> *pair in controlExtent.blockTrackers){
+        AssociatedResponderAndSet *association = self.associations[pair.item2];
+        [association.setupActions removeObjectForKey:pair.item];
+    }
+}
+
 
 @end

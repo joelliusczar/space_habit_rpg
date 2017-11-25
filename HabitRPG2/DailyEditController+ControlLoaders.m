@@ -22,7 +22,9 @@
     [keep addLoaderBlock:^id(SHControlKeep *keep,ControlExtent *controlExtent){
         NoteView *note = [[NoteView alloc] init];
         note.noteBox.text = daily.note.length>0?daily.note:@"";
-        [keep addControlToActionSetWithKey:takeKey(setDelegate:)];
+        [keep forResponderKey:@"_" doSetupAction:^(id responder){
+            note.delegate = responder;
+        }];
         return note;
     }];
     
@@ -31,10 +33,18 @@
         RateSetContainer *rateContainer = [RateSetContainer newWithDaily:daily];
         rateContainer.utilityStore = SharedGlobal;
         
-        [keep addControlToActionSetWithKey:takeKey(setDelegate:)];
-        [keep addControlToActionSetWithKey:takeKey(setResizeResponder:)];
-        [keep addControlToActionSetWithKey:takeKey(setTblDelegate:)];
-        [keep addControlToActionSetWithKey:takeKey(setWeeklyDaysDelegate:)];
+        [keep forResponderKey:@"_" doSetupAction:^(id responder){
+            rateContainer.delegate = responder;
+        }];
+        [keep forResponderKey:@"resize" doSetupAction:^(id responder){
+            rateContainer.resizeResponder = responder;
+        }];
+        [keep forResponderKey:@"_" doSetupAction:^(id responder){
+            rateContainer.tblDelegate = responder;
+        }];
+        [keep forResponderKey:@"_" doSetupAction:^(id responder){
+            rateContainer.weeklyDaysDelegate = responder;
+        }];
         return rateContainer;
     }];
     
@@ -42,7 +52,9 @@
         ImportanceSliderView *difficultySld = [[ImportanceSliderView alloc] init];
         difficultySld.controlName = @"difficulty";
         [difficultySld updateImportanceSlider:daily.difficulty];
-        [keep addControlToActionSetWithKey:takeKey(setDelegate:)];
+        [keep forResponderKey:@"_" doSetupAction:^(id responder){
+            difficultySld.delegate = responder;
+        }];
         return difficultySld;
     } withKey:@"difficultySld"];
     
@@ -50,7 +62,9 @@
         ImportanceSliderView *urgencySld = [[ImportanceSliderView alloc] init];
         urgencySld.controlName = @"urgency";
         [urgencySld updateImportanceSlider:daily.urgency];
-        [keep addControlToActionSetWithKey:takeKey(setDelegate:)];
+        [keep forResponderKey:@"_" doSetupAction:^(id responder){
+            urgencySld.delegate = responder;
+        }];
         return urgencySld;
     } withKey:@"urgencySld"];
     
@@ -66,8 +80,13 @@
         ReminderListView *list = [ReminderListView newWithDueDateInfo:daily];
         list.utilityStore = SharedGlobal;
         
-        [keep addControlToActionSetWithKey:takeKey(setDelegate:)];
-        [keep addControlToActionSetWithKey:takeKey(setResizeResponder:)];
+        
+        [keep forResponderKey:@"_" doSetupAction:^(id responder){
+            list.delegate = responder;
+        }];
+        [keep forResponderKey:@"resize" doSetupAction:^(id responder){
+            list.resizeResponder = responder;
+        }];
         return list;
     }];
     
@@ -78,9 +97,9 @@
 
 
 -(void)setResponders:(SHControlKeep *)keep{
-    keep.responderLookup[takeKey(setDelegate:)] = self;
-    keep.responderLookup[takeKey(setResizeResponder:)] = self.editorContainer;
-    keep.responderLookup[takeKey(setTblDelegate:)] = self;
-    keep.responderLookup[takeKey(setWeeklyDaysDelegate:)] = self;
+    keep.responderLookup[@"_"] = self;
+    keep.responderLookup[@"resize"] = self.editorContainer;
+    keep.responderLookup[@"_"] = self;
+    keep.responderLookup[@"_"] = self;
 }
 @end

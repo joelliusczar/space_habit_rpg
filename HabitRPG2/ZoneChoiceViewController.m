@@ -24,8 +24,6 @@
 @implementation ZoneChoiceViewController
 
 
-
-@synthesize descViewController = _descViewController;
 -(ZoneDescriptionViewController *)descViewController{
     if(!_descViewController){
         _descViewController = [[ZoneDescriptionViewController alloc] init:self];
@@ -63,9 +61,6 @@
     // Dispose of any resources that can be recreated.
 }
 
--(UIView *)getContentSubview{
-    return [self.view viewWithTag:1];;
-}
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"

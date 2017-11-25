@@ -498,7 +498,13 @@
     NSUInteger ui2 = b2;
     NSInteger i = b;
     NSInteger i2 = b2;
-    
+    (void)ui;(void)ui2;(void)i;(void)i2;
+}
+
++(void)pointerAddressStuff{
+    House *h = [[House alloc] init];
+    NSUInteger addr = (NSUInteger)&h;
+    NSLog(@"Address: %lu", addr);
 }
     
 @end

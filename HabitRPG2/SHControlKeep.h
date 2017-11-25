@@ -9,28 +9,34 @@
 #import <Foundation/Foundation.h>
 #import "SHView.h"
 #import "VarWrapper.h"
+#import "P_ControlKeep.h"
+#import "KeyToken.h"
 
 #define takeKey(methodName) [SELPtr sel:@selector(methodName)]
 #define takeKey_s(methodName) [SELPtr selName:methodName]
 
+
 @class SHControlKeep;
 
+
+
 @interface ControlExtent: NSObject
-/*using the NSObject protocol with key is required because the compiler is retarded
- It doesn't see isEqual when implementing NSCopying, so we have to implement NSObject also
-*/
-@property (strong,nonatomic) id<NSCopying,NSObject> key;
+@property (strong,nonatomic) id<NSCopying> key;
 @property (assign,nonatomic) NSUInteger idx;
 @property (strong,nonatomic) id control;
-@property (readonly,assign,nonatomic) BOOL isReadOnlyMode;
-@end
-
-@interface AssociatedResponderAndSet<T_Responder>: NSObject
-@property (weak,nonatomic) T_Responder responder;
-@property (strong,nonatomic) NSHashTable *set; //strong references are maintained elsewhere
+@property (strong,nonatomic) NSArray<PairWrapper<KeyToken *,id<NSCopying>> *> *blockTrackers;
+-(instancetype)copyExtent;
 @end
 
 typedef id (^LazyLoadBlock)(SHControlKeep *,ControlExtent *);
+typedef void (^setupResponder)(id responder);
+
+@interface AssociatedResponderAndSet<T_Responder>: NSObject
+@property (weak,nonatomic) T_Responder responder;
+@property (strong,nonatomic) NSMutableDictionary<KeyToken *,setupResponder> *setupActions;
+@end
+
+
 /**
  *ControlDictionary is a private class designed to be used by SHControlKeep
  */
@@ -58,10 +64,8 @@ typedef id (^LazyLoadBlock)(SHControlKeep *,ControlExtent *);
 
 @interface ResponderDictionary<T_Responder>: NSObject
 @property (weak,nonatomic) SHControlKeep *owner;
--(void)setObject:(T_Responder)obj forKeyedSubscript:(SELPtr *)key;
--(void)setObject:(T_Responder)obj forKeyedSubscript:(SELPtr *)key secondaryKey:(NSString *)secondaryKey;
--(AssociatedResponderAndSet *)objectForKeyedSubscript:(SELPtr *)key;
--(AssociatedResponderAndSet *)objectForKeyedSubscript:(SELPtr *)key secondaryKey:(NSString *)secondaryKey;
+-(void)setObject:(T_Responder)obj forKeyedSubscript:(id<NSCopying>)key;
+-(AssociatedResponderAndSet *)objectForKeyedSubscript:(id<NSCopying>)key;
 -(instancetype)init:(SHControlKeep *)owner;
 @end
 
@@ -99,15 +103,14 @@ object/subject is also not used completely consistently,
 for example, objectAtIndexedSubscript is dealing with my 'subjects'
 */
 
-@interface SHControlKeep<T_Control,T_Responder> : NSObject
+@interface SHControlKeep<T_Control,T_Responder> : NSObject<P_ControlKeep>
 /*number of delegates that controls might be associated with. This count can include nills*/
 @property (readonly,nonatomic) NSUInteger associatedCount;
 @property (strong,nonatomic) NSMutableDictionary *customProps;
 @property (strong,nonatomic) ControlDictionary<T_Control> *controlLookup; //this will only have values specifically defined by client
 @property (strong,nonatomic) ControlList<T_Control> *controlList;
 @property (strong,nonatomic) ResponderDictionary<T_Responder> *responderLookup;
--(void)addControlToActionSetWithKey:(SELPtr *)key;
--(void)addControlToActionSetWithKey:(SELPtr *)key secondaryKey:(NSString *)secondaryKey;
+-(KeyToken *)forResponderKey:(id<NSCopying>)key doSetupAction:(setupResponder)setupAction;
 -(void)addLoaderBlock:(LazyLoadBlock)loaderBlock;
 /*if the client sets key through here, it overrides key set on the controlExtent inside the loader block*/
 -(void)addLoaderBlock:(LazyLoadBlock)loaderBlock withKey:(id<NSCopying>)key;

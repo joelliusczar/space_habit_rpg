@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "P_StoryItem.h"
+#import "SHButton.h"
 
 @interface StoryDumpView : UIViewController
+@property (weak,nonatomic) IBOutlet UITextView *synopsisView;
+@property (weak,nonatomic) IBOutlet SHButton *doneBtn;
+@property (weak,nonatomic) IBOutlet UILabel *headlineLbl;
+@property (strong,nonatomic) NSObject<P_StoryItem> *storyItem;
 -(instancetype)initWithStoryItem:(NSObject<P_StoryItem> *)storyItem;
 @end

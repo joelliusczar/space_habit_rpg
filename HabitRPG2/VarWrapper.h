@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #define vw(item) [[VarWrapper alloc] init:item,nil]
+#define pw(item1,item2) [[PairWrapper alloc] init:item1,item2,nil]
 
 @interface VarWrapper<T> : NSObject
 @property (strong,nonatomic) T item;

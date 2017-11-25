@@ -17,6 +17,7 @@
     [NSDateFormatter dateFormatFromTemplate:@"j"
                                     options:0
                                      locale:self];
+    NSLog(@"%@ %@",self.localeIdentifier,formatString);
     return [NSLocale hourMaskForGivenFormat:formatString];
 
 }

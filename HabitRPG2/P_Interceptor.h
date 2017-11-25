@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-typedef void (^wrapReturnVoid)();
-typedef BOOL (^wrapReturnBool)();
+typedef void (^wrapReturnVoid)(void);
+typedef BOOL (^wrapReturnBool)(void);
 
 @protocol P_Interceptor <NSObject>
 -(void)callVoidWrapped:(wrapReturnVoid)callMe withInfo:(id)info;

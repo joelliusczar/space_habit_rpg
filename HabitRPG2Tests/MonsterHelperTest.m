@@ -57,8 +57,8 @@ int rIdx_mh;
         XCTAssertTrue([ml[1] isEqualToString:@"SMALL_ASTEROID"]);
         XCTAssertTrue([ml[2] isEqualToString:@"SPACEMAN"]);
         XCTAssertTrue([ml[3] isEqualToString:@"MECH"]);
-        XCTAssertTrue([ml[4] isEqualToString:@"SPACE_SLIME"]);
-        XCTAssertTrue([ml[5] isEqualToString:@"SPACE_FAIRY"]);
+        XCTAssertTrue([ml[4] isEqualToString:@"SPACE_FAIRY"]);
+        XCTAssertTrue([ml[5] isEqualToString:@"SPACE_SLIME"]);
         XCTAssertTrue([ml[6] isEqualToString:@"PIRATES"]);
     }
     

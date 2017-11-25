@@ -39,7 +39,9 @@
                                       userInfo:notification.request.content.userInfo];
         }
         [center removeAllDeliveredNotifications];
-        UIApplication.sharedApplication.applicationIconBadgeNumber = 0;
+        dispatch_sync(dispatch_get_main_queue(),^{
+            UIApplication.sharedApplication.applicationIconBadgeNumber = 0;
+        });
     }];
     
     
@@ -49,6 +51,7 @@
 +(void)addNewNotificationIfPossible:(NSString *)notificationText
                      notificationId:(NSString *)notificationId
                            userInfo:(NSDictionary *)info{
+                           
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
     [center getNotificationSettingsWithCompletionHandler:
      ^(UNNotificationSettings *settings){

@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Menlo.ttc">
+            <string>Menlo-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditNavigationController">
             <connections>
@@ -26,24 +30,23 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="behind_alert_view.png" translatesAutoresizingMaskIntoConstraints="NO" id="uA6-OK-2OO">
+                <imageView tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="behind_alert_view.png" translatesAutoresizingMaskIntoConstraints="NO" id="uA6-OK-2OO">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <gestureRecognizers/>
                 </imageView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DVu-J2-zm4">
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DVu-J2-zm4">
                     <rect key="frame" x="63" y="163" width="288" height="410"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PBr-8y-gk9">
+                        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PBr-8y-gk9">
                             <rect key="frame" x="8" y="358" width="272" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.099043423960000002" green="0.099043423960000002" blue="0.099043423960000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="44" id="QTt-AB-vXm"/>
-                                <constraint firstAttribute="width" constant="272" id="pTM-tp-23D"/>
-                            </constraints>
                             <items>
                                 <barButtonItem style="plain" id="FzX-OP-sxi">
                                     <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SaF-Zy-dGk" customClass="SHButton">
-                                        <rect key="frame" x="16" y="7" width="57" height="30"/>
+                                        <rect key="frame" x="20" y="7.6666666666666288" width="51" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                         <state key="normal" title="Delete"/>
@@ -55,7 +58,7 @@
                                 <barButtonItem width="137" style="plain" systemItem="fixedSpace" id="Gko-Jk-U6t"/>
                                 <barButtonItem enabled="NO" style="plain" id="RiP-TM-LEl">
                                     <button key="customView" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Rjy-6h-ASQ" customClass="SHButton">
-                                        <rect key="frame" x="220" y="7" width="39" height="30"/>
+                                        <rect key="frame" x="208" y="7.6666666666666288" width="34" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                         <state key="normal" title="Save"/>
@@ -88,23 +91,9 @@
                         </scrollView>
                     </subviews>
                     <color key="backgroundColor" red="0.099043423960000002" green="0.099043423960000002" blue="0.099043423960000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstItem="PBr-8y-gk9" firstAttribute="leading" secondItem="DVu-J2-zm4" secondAttribute="leadingMargin" id="7bg-eG-TAE"/>
-                        <constraint firstAttribute="width" constant="288" id="V5e-c3-vxe"/>
-                        <constraint firstItem="PBr-8y-gk9" firstAttribute="bottom" secondItem="DVu-J2-zm4" secondAttribute="bottomMargin" id="thP-TG-cix"/>
-                        <constraint firstAttribute="height" constant="410" id="ymn-NA-dt9"/>
-                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstItem="DVu-J2-zm4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="DrM-hw-dbL"/>
-                <constraint firstItem="DVu-J2-zm4" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="KLq-rb-ME7"/>
-                <constraint firstItem="uA6-OK-2OO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Z4z-FE-CyM"/>
-                <constraint firstItem="uA6-OK-2OO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="geT-qq-9Gu"/>
-                <constraint firstItem="uA6-OK-2OO" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="hhK-0R-VMr"/>
-                <constraint firstItem="uA6-OK-2OO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="yDJ-cX-Yc5"/>
-            </constraints>
         </view>
     </objects>
     <resources>
