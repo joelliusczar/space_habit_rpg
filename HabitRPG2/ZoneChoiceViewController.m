@@ -17,7 +17,7 @@
 @interface ZoneChoiceViewController ()
 @property (nonatomic,strong) NSArray<Zone *> *zones;
 @property (nonatomic,weak) NSObject<P_CoreData> *dataController;
--(instancetype)initWithCentral:(UIViewController<CentralViewControllerP> *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices;
+-(instancetype)initWithCentral:(UIViewController<P_CentralViewController> *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices;
 
 @end
 
@@ -31,7 +31,7 @@
     return _descViewController;
 }
 
--(instancetype)initWithCentral:(UIViewController<CentralViewControllerP> *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices{
+-(instancetype)initWithCentral:(UIViewController<P_CentralViewController> *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices{
     if(self = [self initWithNibName:@"ZoneChoicePicker" bundle:nil]){
         _central = central;
         _dataController = central.dataController;
@@ -42,7 +42,7 @@
 }
 
 
-+(instancetype)constructWithCentral:(UIViewController<CentralViewControllerP> *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices{
++(instancetype)constructWithCentral:(UIViewController<P_CentralViewController> *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices{
     return [[ZoneChoiceViewController alloc] initWithCentral:central AndZoneChoices:zoneChoices];
 }
 
@@ -76,7 +76,7 @@
 -(void)nextBtn_pressed_action:(UIButton *)sender{
     BOOL show = self.skipSwitch.isOn;
     [self.central setToShowStory:show];
-    [ViewHelper popViewFromFront:self];
+    popVCFromFront(self);
     [self.central afterZonePick:nil];
 }
 

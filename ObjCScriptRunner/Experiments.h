@@ -14,7 +14,7 @@
 #import "WeakLeash.h"
 #import "GenericThing.h"
 
-typedef id (^mbTest)();
+typedef id (^mbTest)(void);
 
 @interface Experiments : NSObject
 @property (assign,nonatomic) NSInteger stupidNum;
@@ -78,6 +78,8 @@ typedef id (^mbTest)();
 +(void)underbarWeakStuff;
 +(void)castingBools;
 +(void)pointerAddressStuff;
+void cMakeHouses(void);
++(void)callCMakeHouses;
 @end
 
 #import "Experiments+Charlie.h"

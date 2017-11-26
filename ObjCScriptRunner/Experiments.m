@@ -21,7 +21,7 @@
 #import "ExpNonNull.h"
 #import "ReadOonly.h"
 #import "EncodeStuff.h"
-#import "Retainer.h";
+#import "Retainer.h"
 
 
 @implementation Experiments
@@ -350,7 +350,7 @@
 
 +(void)blockStuff{
     int t = 7;
-    void (^tb)() = ^void(){
+    void (^tb)(void) = ^void(){
         NSLog(@"%d",t);
     };
     
@@ -505,6 +505,16 @@
     House *h = [[House alloc] init];
     NSUInteger addr = (NSUInteger)&h;
     NSLog(@"Address: %lu", addr);
+}
+
+void cMakeHouses(void){
+    House *h = [[House alloc] init];
+    [h returnsNothing];
+}
+
+
++(void)callCMakeHouses{
+    cMakeHouses();
 }
     
 @end

@@ -125,23 +125,14 @@
                               initWithNibName:@"MenuViewController"
                               bundle:nil];
     [mc setuptab];
-    NSArray* controllers = [NSArray arrayWithObjects:dc,hc,tc,gc,mc,nil];
     
-    self.tabsController.viewControllers = controllers;
+    self.tabsController.viewControllers = @[dc,hc,tc,gc,mc];
     
-    
-    [self.view addSubview:self.tabsController.view];
+    [self.tabsContainer addSubview:self.tabsController.view];
     [self addChildViewController:self.tabsController];
-    
-    [self.tabsController didMoveToParentViewController:self];
-    
-    CGFloat width = self.view.frame.size.width;
-    CGFloat height = self.view.frame.size.height;
-    self.tabsController.view.frame =
-    CGRectMake(0,
-               [CommonUtilities GetYStart:height],
-               width,height -[CommonUtilities GetYStart:height]);
+    self.tabsController.view.frame = self.tabsContainer.bounds;
 }
+
 
 -(void)showIntroView{
     IntroViewController *introView = [[IntroViewController alloc]
@@ -371,7 +362,7 @@
         StoryDumpView *sdv =
         [[StoryDumpView alloc] initWithStoryItem:self.nowMonster];
         
-        [ViewHelper pushViewToFront:sdv OfParent:self];
+        arrangeAndPushVCToFrontOfParent(sdv,self);
     }
 }
 

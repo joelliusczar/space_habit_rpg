@@ -64,7 +64,7 @@
     if(swipe.direction == UISwipeGestureRecognizerDirectionLeft){
         ZoneDescriptionViewController *descView = self.parentZoneController.descViewController;
         [descView setDisplayItems:self.model];
-        [ViewHelper pushViewToFront:descView OfParent:self.parentZoneController];
+        arrangeAndPushVCToFrontOfParent(descView,self.parentZoneController);
     }
     else{
         NSLog(@"%@",@"wrong");

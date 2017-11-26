@@ -43,7 +43,7 @@
 }
 
 - (IBAction)doneBtn_pressed_action:(SHButton *)sender forEvent:(UIEvent *)event {
-    [ViewHelper popViewFromFront:self];
+    popVCFromFront(self);
 }
 
 

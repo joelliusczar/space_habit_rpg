@@ -12,8 +12,8 @@
 #import "Daily+CoreDataClass.h"
 #import "Zone+CoreDataClass.h"
 #import "Monster+CoreDataClass.h"
-#import "CentralViewControllerP.h"
+#import "P_CentralViewController.h"
 
-@interface CentralViewController : UIViewController <CentralViewControllerP>;
-
+@interface CentralViewController : UIViewController <P_CentralViewController>;
+@property (weak,nonatomic) IBOutlet UIView *tabsContainer;
 @end

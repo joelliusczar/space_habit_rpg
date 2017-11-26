@@ -13,7 +13,7 @@
 #import "Zone+CoreDataClass.h"
 #import "Monster+CoreDataClass.h"
 
-@protocol CentralViewControllerP <NSObject>
+@protocol P_CentralViewController <NSObject>
 @property (strong,nonatomic) id<P_CoreData> dataController;
 @property (readonly,nonatomic) Settings *userSettings;
 @property (readonly,nonatomic) Hero *userHero;

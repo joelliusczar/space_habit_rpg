@@ -74,7 +74,7 @@
 -(void)background_tap_action:(UITapGestureRecognizer *)sender{
     wrapReturnVoid wrappedCall = ^void(){
         if(sender.view == self.backgroundView){
-            [ViewHelper popViewFromFront:self];
+            popVCFromFront(self);
         }
     };
     [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
@@ -104,7 +104,7 @@
     //the user action before the view goes away
     long arbitraryDispatchTime = 100000;
     dispatch_after(dispatch_walltime(nil,arbitraryDispatchTime),dispatch_get_main_queue(),^(){
-        [ViewHelper popViewFromFront:self];
+        popVCFromFront(self);
     });
 }
 

@@ -70,6 +70,7 @@ void setupNotificationCenterStuff(EditNavigationController *nav){
 
 -(void)viewDidLoad {
     [super viewDidLoad];
+    [self.view layoutIfNeeded];
     self.editingScreen.editorContainer = self;
     self.headline.text = self.viewTitle;
     [self.scrollContainer addSubview:self.editingScreen.view];
@@ -122,7 +123,7 @@ void setupNotificationCenterStuff(EditNavigationController *nav){
                                 {
                                     wrapReturnVoid wrappedCall = ^void(){
                                         [self.editingScreen deleteModel];
-                                        [ViewHelper popViewFromFront:self];
+                                        popVCFromFront(self);
                                     };
                                     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
                                 }];
@@ -135,7 +136,7 @@ void setupNotificationCenterStuff(EditNavigationController *nav){
 -(IBAction)saveBtn_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
     if(self.editingScreen.nameStr.length){
         [self.editingScreen saveEdit];
-        [ViewHelper popViewFromFront:self];
+        popVCFromFront(self);
         return;
     }
     [self alertMissingInfo];
@@ -165,7 +166,7 @@ void setupNotificationCenterStuff(EditNavigationController *nav){
     }
     if(sender.view == self.background){
         [self.editingScreen unsaved_closing_action];
-        [ViewHelper popViewFromFront:self];
+        popVCFromFront(self);
     }
 }
 
@@ -220,7 +221,7 @@ void setupNotificationCenterStuff(EditNavigationController *nav){
 
 
 -(void)pushViewControllerToNearestParent:(UIViewController *)child{
-    [ViewHelper pushViewToFront:child OfParent:self];
+    arrangeAndPushVCToFrontOfParent(child,self);
 }
 
 

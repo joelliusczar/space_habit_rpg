@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Menlo.ttc">
+            <string>Menlo-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHSpinPicker">
             <connections>
@@ -20,30 +25,27 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="behind_alert_view.png" translatesAutoresizingMaskIntoConstraints="NO" id="1A9-UA-drd">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="behind_alert_view.png" translatesAutoresizingMaskIntoConstraints="NO" id="1A9-UA-drd">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cph-eG-im8">
+                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cph-eG-im8">
                     <rect key="frame" x="0.0" y="542" width="414" height="150"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="150" id="fEY-gr-MfF"/>
-                    </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="FBG-RE-dH2"/>
                         <outlet property="delegate" destination="-1" id="cjJ-vz-Uxc"/>
                     </connections>
                 </pickerView>
-                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kds-JC-wZJ">
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kds-JC-wZJ">
                     <rect key="frame" x="0.0" y="692" width="414" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="Qjj-QU-Cf9"/>
-                    </constraints>
                     <items>
                         <barButtonItem style="plain" id="p2p-rI-2MV">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TDR-bO-tcL" customClass="SHButton">
-                                <rect key="frame" x="20" y="11" width="78" height="22"/>
+                                <rect key="frame" x="20" y="7.6666666666666288" width="374" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                 <state key="normal" title="Select">
@@ -60,22 +62,6 @@
                 </toolbar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstAttribute="trailing" secondItem="Kds-JC-wZJ" secondAttribute="trailing" id="0xy-L7-QDG"/>
-                <constraint firstItem="1A9-UA-drd" firstAttribute="centerX" secondItem="YwG-y3-3KR" secondAttribute="centerX" id="4Kg-v1-AvH"/>
-                <constraint firstItem="Kds-JC-wZJ" firstAttribute="top" secondItem="cph-eG-im8" secondAttribute="bottom" id="7kc-TF-XT2"/>
-                <constraint firstItem="1A9-UA-drd" firstAttribute="leading" secondItem="YwG-y3-3KR" secondAttribute="leading" id="MnX-zX-s9j"/>
-                <constraint firstAttribute="trailing" secondItem="cph-eG-im8" secondAttribute="trailing" id="NcM-OB-B9Z"/>
-                <constraint firstItem="Kds-JC-wZJ" firstAttribute="centerX" secondItem="YwG-y3-3KR" secondAttribute="centerX" id="NeH-wF-DeB"/>
-                <constraint firstItem="1A9-UA-drd" firstAttribute="top" secondItem="YwG-y3-3KR" secondAttribute="top" id="SXf-ti-hTB"/>
-                <constraint firstAttribute="trailing" secondItem="1A9-UA-drd" secondAttribute="trailing" id="Txf-kV-9P3"/>
-                <constraint firstItem="Kds-JC-wZJ" firstAttribute="leading" secondItem="YwG-y3-3KR" secondAttribute="leading" id="XHg-OM-YiW"/>
-                <constraint firstItem="1A9-UA-drd" firstAttribute="centerY" secondItem="YwG-y3-3KR" secondAttribute="centerY" id="arQ-hM-Wpa"/>
-                <constraint firstItem="cph-eG-im8" firstAttribute="centerX" secondItem="YwG-y3-3KR" secondAttribute="centerX" id="pgI-ON-gk2"/>
-                <constraint firstItem="Kds-JC-wZJ" firstAttribute="bottom" secondItem="YwG-y3-3KR" secondAttribute="bottom" id="rD2-7o-E98"/>
-                <constraint firstItem="cph-eG-im8" firstAttribute="leading" secondItem="YwG-y3-3KR" secondAttribute="leading" id="sUk-EK-C8f"/>
-                <constraint firstAttribute="bottom" secondItem="1A9-UA-drd" secondAttribute="bottom" id="yh8-JU-Xrw"/>
-            </constraints>
             <point key="canvasLocation" x="2" y="-95"/>
         </view>
     </objects>

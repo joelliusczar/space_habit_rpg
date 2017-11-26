@@ -9,8 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface ViewHelper : NSObject
-+(void)pushViewToFront:(UIViewController  * _Nonnull )child
-              OfParent:(UIViewController  * _Nonnull )parent;
-+(void)popViewFromFront:(UIViewController * _Nonnull)child;
-@end
+
+void arrangeAndPushVCToFrontOfParent(UIViewController *child,UIViewController *parent);
+void popVCFromFront(UIViewController * child);
+

@@ -6,6 +6,8 @@
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
+#define dummy 0 && defined(IS_DEV) && IS_DEV
+
 #import "DailyViewController.h"
 #import "constants.h"
 #import "EditNavigationController.h"
@@ -19,6 +21,11 @@
 #import "NSDate+DateHelper.h"
 #import "Interceptor.h"
 #import "SHButton.h"
+#if dummy
+#import "DummyViewController.h"
+#endif
+
+
 
 @interface DailyViewController ()
 
@@ -167,10 +174,25 @@ static NSString *const EntityName = @"Daily";
 }
 
 
+UIViewController * getEditScreen(UIViewController *dailyController){
+    #if dummy
+    DummyViewController *dummyVC = [[DummyViewController alloc]
+                                  initWithNibName:@"DummyViewController"
+                                  bundle:nil];
+        return dummyVC;
+    #else
+    DailyEditController *dailyEditor = [[DailyEditController alloc]
+                                            initWithParentDailyController:dailyController];
+    EditNavigationController *editController = [[EditNavigationController alloc]
+                                                initWithTitle:@"Add Daily"
+                                                andEditor:dailyEditor];
+    return editController;
+    #endif
+}
+
+
 - (IBAction)addDailyBtn_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
-    DailyEditController *dailyEditor = [[DailyEditController alloc] initWithParentDailyController:self];
-    EditNavigationController *editController = [[EditNavigationController alloc] initWithTitle:@"Add Daily" andEditor:dailyEditor];
-    [ViewHelper pushViewToFront:editController OfParent:self.parentController];
+    arrangeAndPushVCToFrontOfParent(getEditScreen(self),self.parentController);
 }
 
 
@@ -187,7 +209,7 @@ static NSString *const EntityName = @"Daily";
             EditNavigationController *editController = [[EditNavigationController alloc]
                                                         initWithTitle:@"Add Daily"
                                                         andEditor:dailyEditor];
-            [ViewHelper pushViewToFront:editController OfParent:self.parentController];
+            arrangeAndPushVCToFrontOfParent(editController,self.parentController);
         };
         [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@pressedEdit",self.description]];
     };

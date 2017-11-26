@@ -7,7 +7,7 @@
 //
 
 #import "ZoneDescriptionViewController.h"
-#import "CentralViewControllerP.h"
+#import "P_CentralViewController.h"
 #import "ViewHelper.h"
 #import "SingletonCluster.h"
 #import "constants.h"
@@ -15,7 +15,7 @@
 
 @interface ZoneDescriptionViewController ()
 @property (weak,nonatomic) ZoneChoiceViewController *prevScreen;
-@property (weak,nonatomic) UIViewController <CentralViewControllerP> *central;
+@property (weak,nonatomic) UIViewController <P_CentralViewController> *central;
 @property (readonly,strong,nonatomic) UISwipeGestureRecognizer *backSwipe;
 @end
 
@@ -62,10 +62,10 @@
 #pragma clang diagnostic ignored "-Wunused-parameter"
 
 -(void)backSwipe_rightSwipe_action:(UISwipeGestureRecognizer *)sender{
-    [ViewHelper popViewFromFront:self];
+    popVCFromFront(self);
 }
 - (IBAction)doneBtn_pressed_action:(SHButton *)sender forEvent:(UIEvent *)event  {
-    [ViewHelper popViewFromFront:self.prevScreen];
+    popVCFromFront(self.prevScreen);
     [self.central afterZonePick:(Zone *)self.storyItem];
 }
 

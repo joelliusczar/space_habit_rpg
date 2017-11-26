@@ -25,9 +25,9 @@
 @property (weak,nonatomic) IBOutlet SHButton *showXtraOptsBtn;
 @property (weak,nonatomic) IBOutlet UITableView *controlsTbl;
 @property (strong,nonatomic) Daily *modelForEditing;
-@property (weak,nonatomic) DailyViewController *parentDailyController;
--(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController;
--(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController
+@property (weak,nonatomic) UIViewController *parentDailyController;
+-(instancetype)initWithParentDailyController:(UIViewController *)parentDailyController;
+-(instancetype)initWithParentDailyController:(UIViewController *)parentDailyController
                                       ToEdit:(Daily *)daily
                                  AtIndexPath:(NSIndexPath *)rowInfo;
 -(void)loadExistingDailyForEditing:(Daily *)daily;

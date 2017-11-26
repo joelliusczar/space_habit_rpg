@@ -8,22 +8,20 @@
 
 #import "ViewHelper.h"
 
-@implementation ViewHelper
 
-+(void)pushViewToFront:(UIViewController * _Nonnull)child
-              OfParent:(UIViewController * _Nonnull)parent{
-    NSAssert(child,@"child was nil");
-    NSAssert(parent,@"parent was nil");
+void arrangeAndPushVCToFrontOfParent(UIViewController *child,UIViewController *parent){
+    NSCAssert(child,@"child was nil");
+    NSCAssert(parent,@"parent was nil");
+    child.view.frame = parent.view.bounds;
     [parent.view addSubview:child.view];
     [parent addChildViewController:child];
     [child didMoveToParentViewController:parent];
 }
 
-+(void)popViewFromFront:(UIViewController * _Nonnull)child{
-    NSAssert(child,@"child was nil");
+void popVCFromFront(UIViewController * child){
+    NSCAssert(child,@"child was nil");
     [child willMoveToParentViewController:nil];
     [child.view removeFromSuperview];
     [child removeFromParentViewController];
 }
 
-@end

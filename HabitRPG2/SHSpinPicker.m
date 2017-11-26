@@ -48,7 +48,7 @@
 -(void)background_tap_action:(UITapGestureRecognizer *)sender{
     wrapReturnVoid wrappedCall = ^void(){
         if(sender.view==self.view){
-            [ViewHelper popViewFromFront:self];
+            popVCFromFront(self);
         }
     };
     [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
@@ -72,11 +72,12 @@ numberOfRowsInComponent:(NSInteger)component{
 
 
 -(IBAction)pickerSelectBtn_press_action:(SHButton *)sender
-                               forEvent:(UIEvent *)event{
+            forEvent:(UIEvent *)event
+{
     wrapReturnVoid wrappedCall = ^void(){
         SHEventInfo *e = [[SHEventInfo alloc] init:event withSenders:sender,self.picker,self,nil];
         [self.delegate pickerSelection_action:e];
-        [ViewHelper popViewFromFront:self];
+        popVCFromFront(self);
     };
     [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }

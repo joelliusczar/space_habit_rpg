@@ -113,6 +113,8 @@
 		2785DCCF1F2CC21600B5C28C /* GoodTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2785DCCE1F2CC21600B5C28C /* GoodTransaction+CoreDataClass.m */; };
 		2785DCD21F2CC25F00B5C28C /* TodoTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2785DCD11F2CC25F00B5C28C /* TodoTransaction+CoreDataClass.m */; };
 		278D63251FC8EC3700315535 /* KeyToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 278D63241FC8EC3700315535 /* KeyToken.m */; };
+		278D632A1FCA178F00315535 /* DummyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278D63281FCA178F00315535 /* DummyViewController.m */; };
+		278D632B1FCA178F00315535 /* DummyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 278D63291FCA178F00315535 /* DummyViewController.xib */; };
 		27A559B61F5E329B00C915E6 /* Experiments+Charlie.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559B51F5E329B00C915E6 /* Experiments+Charlie.m */; };
 		27A559B91F5E334500C915E6 /* Daily+ActiveDays.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559B81F5E334500C915E6 /* Daily+ActiveDays.m */; };
 		27A559BC1F5E5F3000C915E6 /* NSMutableArray+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559BB1F5E5F3000C915E6 /* NSMutableArray+Helper.m */; };
@@ -470,6 +472,9 @@
 		278D63221FC7936400315535 /* P_ControlKeep.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = P_ControlKeep.h; sourceTree = "<group>"; };
 		278D63231FC8EC3700315535 /* KeyToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyToken.h; sourceTree = "<group>"; };
 		278D63241FC8EC3700315535 /* KeyToken.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyToken.m; sourceTree = "<group>"; };
+		278D63271FCA178F00315535 /* DummyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DummyViewController.h; sourceTree = "<group>"; };
+		278D63281FCA178F00315535 /* DummyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DummyViewController.m; sourceTree = "<group>"; };
+		278D63291FCA178F00315535 /* DummyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DummyViewController.xib; sourceTree = "<group>"; };
 		27A559B41F5E329B00C915E6 /* Experiments+Charlie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Experiments+Charlie.h"; sourceTree = "<group>"; };
 		27A559B51F5E329B00C915E6 /* Experiments+Charlie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Experiments+Charlie.m"; sourceTree = "<group>"; };
 		27A559B71F5E334500C915E6 /* Daily+ActiveDays.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Daily+ActiveDays.h"; sourceTree = "<group>"; };
@@ -495,7 +500,7 @@
 		27A559E11F6A41B600C915E6 /* TestKeepSubject_A.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestKeepSubject_A.m; sourceTree = "<group>"; };
 		27A559E31F6A41E900C915E6 /* TestKeepSubject_B.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKeepSubject_B.h; sourceTree = "<group>"; };
 		27A559E41F6A41E900C915E6 /* TestKeepSubject_B.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestKeepSubject_B.m; sourceTree = "<group>"; };
-		27AE66541E8720F9000F31BD /* CentralViewControllerP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralViewControllerP.h; sourceTree = "<group>"; };
+		27AE66541E8720F9000F31BD /* P_CentralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_CentralViewController.h; sourceTree = "<group>"; };
 		27AF22E51F270FBA00F7D872 /* SHControlController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHControlController.h; sourceTree = "<group>"; };
 		27AF22E61F270FBA00F7D872 /* SHControlController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHControlController.m; sourceTree = "<group>"; };
 		27B0CCB91F2BE658005BEC75 /* Model 28.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 28.xcdatamodel"; sourceTree = "<group>"; };
@@ -1030,6 +1035,16 @@
 			name = Scripts;
 			sourceTree = "<group>";
 		};
+		278D63261FCA174600315535 /* Trash */ = {
+			isa = PBXGroup;
+			children = (
+				278D63271FCA178F00315535 /* DummyViewController.h */,
+				278D63281FCA178F00315535 /* DummyViewController.m */,
+				278D63291FCA178F00315535 /* DummyViewController.xib */,
+			);
+			name = Trash;
+			sourceTree = "<group>";
+		};
 		27AE66761E876007000F31BD /* Suffix */ = {
 			isa = PBXGroup;
 			children = (
@@ -1201,7 +1216,7 @@
 				277ABECB1E94A0C0008CC239 /* P_CustomSwitch.h */,
 				2709B3961EEF74E900EEE5CC /* P_ReportServiceCaller.h */,
 				27C3C21F1F07854700F205A6 /* P_DueDateWrapper.h */,
-				27AE66541E8720F9000F31BD /* CentralViewControllerP.h */,
+				27AE66541E8720F9000F31BD /* P_CentralViewController.h */,
 				68F736B01D8B810200AE10A8 /* EditingSaver.h */,
 				271C047D1E89BCBA002221E9 /* P_CoreData.h */,
 				271C04851E8B6323002221E9 /* P_ResourceUtility.h */,
@@ -1341,6 +1356,8 @@
 				68E260631D7FC3F200425D46 /* CoreDataStackController.h */,
 				68E260641D7FC3F200425D46 /* CoreDataStackController.m */,
 				68F3F9E31D70E8DB00840DD2 /* CentralViewController.xib */,
+				68F3F9E21D70E8DB00840DD2 /* CentralViewController.m */,
+				68F3F9E11D70E8DB00840DD2 /* CentralViewController.h */,
 				27A559BA1F5E5F3000C915E6 /* NSMutableArray+Helper.h */,
 				27A559BB1F5E5F3000C915E6 /* NSMutableArray+Helper.m */,
 				6886A47E1D8E5FD0005E12B3 /* constants.h */,
@@ -1383,8 +1400,6 @@
 				270D39BB1F5D1CF900F371F0 /* RateTypeHelper.h */,
 				2737AF3B1F6F02F8000FCFD3 /* NSMutableDictionary+Helper.h */,
 				2737AF3C1F6F02F8000FCFD3 /* NSMutableDictionary+Helper.m */,
-				68F3F9E11D70E8DB00840DD2 /* CentralViewController.h */,
-				68F3F9E21D70E8DB00840DD2 /* CentralViewController.m */,
 				27F4401A1E220097002BEDD4 /* OnlyOneEntities.h */,
 				27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */,
 				271C04891E8C955A002221E9 /* SingletonCluster.h */,
@@ -1445,6 +1460,7 @@
 				68BE458D1D9DE889003F3400 /* Story */,
 				68DD159E1D9CAA010073E7D8 /* Common */,
 				68F3F9B81D70E82E00840DD2 /* Assets.xcassets */,
+				278D63261FCA174600315535 /* Trash */,
 				68F3F9AF1D70E82E00840DD2 /* AppDelegate.h */,
 				68F3F9B01D70E82E00840DD2 /* AppDelegate.m */,
 				68F3F9AD1D70E82E00840DD2 /* main.m */,
@@ -1594,6 +1610,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				278D632B1FCA178F00315535 /* DummyViewController.xib in Resources */,
 				272427E41F3EA3C50028B22E /* RateTypeSelector.xib in Resources */,
 				2709B3911EE4FBDC00EEE5CC /* Model.xcdatamodeld in Resources */,
 				27C92C1F1E29FE110025727E /* ZoneInfo.plist in Resources */,
@@ -1746,6 +1763,7 @@
 				272427E31F391DA40028B22E /* SHView.m in Sources */,
 				27B0CDDC1F2BF4C9005BEC75 /* Daily+CoreDataClass.m in Sources */,
 				272596391F32D6C1006EECD2 /* SHSpinPicker.m in Sources */,
+				278D632A1FCA178F00315535 /* DummyViewController.m in Sources */,
 				270366EE1F6CB0AF00D4BDC8 /* SELPtr.m in Sources */,
 				27B0CDD11F2BEECD005BEC75 /* TodoTransaction+CoreDataProperties.m in Sources */,
 				27B0CD151F2BEB94005BEC75 /* Zone+CoreDataClass.m in Sources */,

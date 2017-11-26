@@ -21,7 +21,7 @@
 #import "CustomSwitch.h"
 
 @interface IntroViewController ()
-@property (nonatomic,weak) UIViewController<CentralViewControllerP> *central;
+@property (nonatomic,weak) UIViewController<P_CentralViewController> *central;
 @property (weak, nonatomic) IBOutlet UILabel *headline;
 @property (weak, nonatomic) IBOutlet UITextView *introMessage;
 @property (weak, nonatomic) IBOutlet CustomSwitch *skipSwitch;
@@ -41,7 +41,7 @@
     return _nextButton;
 }
 
--(instancetype)initWithCentralViewController:(UIViewController<CentralViewControllerP> *)central{
+-(instancetype)initWithCentralViewController:(UIViewController<P_CentralViewController> *)central{
     if(self = [self initWithNibName:@"IntroViewController" bundle:nil]){
         self.central = central;
         self.isThreadAllowed = YES;
@@ -117,11 +117,11 @@
         });
         
     }else if(show){
-        [ViewHelper popViewFromFront:self];
+        popVCFromFront(self);
         [self.central showZoneChoiceView];
     }
     else{
-        [ViewHelper popViewFromFront:self];
+        popVCFromFront(self);
         [self.central afterZonePick:nil];
         
     }
