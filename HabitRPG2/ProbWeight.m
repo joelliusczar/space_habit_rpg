@@ -61,7 +61,7 @@ NSString *freqSumLow = @"cummFreqLow";
      */
     -(NSString *)weightedRandomKey{
         NSAssert(self.sum > 0,@"ProbWeight is empty");
-        uint32_t r = [CommonUtilities randomUInt:self.sum];
+        uint32_t r = randomUInt(self.sum);
         int64_t start = 0;
         int64_t end = self.weights.count;
         int64_t mid = ((end-start)/2) + start;

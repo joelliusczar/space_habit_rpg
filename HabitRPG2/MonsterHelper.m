@@ -19,7 +19,7 @@
 +(Monster *)constructRandomMonster:(NSString *)zoneKey AroundLvl:(uint32_t)zoneLvl{
     Monster *m = [MonsterHelper constructEmptyMonster];
     m.monsterKey = [MonsterHelper randomMonsterKey:zoneKey];
-    m.lvl = [CommonUtilities calculateLvl:zoneLvl OffsetBy:MONSTER_LVL_RANGE];
+    m.lvl = calculateLvl(zoneLvl,MONSTER_LVL_RANGE);
     m.nowHp = m.maxHp;
     return m;
 }

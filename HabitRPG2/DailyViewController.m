@@ -70,8 +70,8 @@ static NSString *const EntityName = @"Daily";
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
     CGFloat height = [UIScreen mainScreen].bounds.size.height;
     CGFloat minY = self.view.frame.origin.y;
-    CGFloat viewHeight = self.view.frame.size.height - [CommonUtilities GetYStartUnderLabel:height];
-    self.dailiesTable.frame = CGRectMake(0, minY + [CommonUtilities GetYStartUnderLabel:height],
+    CGFloat viewHeight = self.view.frame.size.height - GetYStartUnderLabel(height);
+    self.dailiesTable.frame = CGRectMake(0, minY + GetYStartUnderLabel(height),
                                                        width,
                                                        viewHeight);
     self.dailiesTable.delegate = self;

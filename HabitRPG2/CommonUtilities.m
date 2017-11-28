@@ -16,7 +16,7 @@
 
 @implementation CommonUtilities
 
-+(NSDate *)getReferenceDate{
+NSDate* _Nonnull getReferenceDate(){
     NSCalendar *cal = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
     dateComponents.year = 2016;
@@ -29,7 +29,7 @@
     return [cal dateFromComponents:dateComponents];
 }
 
-+(uint32_t)calculateLvl:(uint32_t)lvl OffsetBy:(uint32_t)range{
+uint calculateLvl(uint lvl,uint range){
     lvl = lvl?lvl:1;
     uint32_t minLvl = 0;
     if(lvl <= range){
@@ -41,18 +41,18 @@
         range = (2*range)+1;
     }
     
-    return [CommonUtilities randomUInt:range] +minLvl;
+    return randomUInt(range) +minLvl;
 }
 
-+(uint32_t)randomUInt:(uint32_t)offset{
-    return [[SingletonCluster getSharedInstance].stdLibWrapper randomUInt:offset];
+uint randomUInt(uint bound){
+    return [[SingletonCluster getSharedInstance].stdLibWrapper randomUInt:bound];
 }
 
-+(CGFloat)GetYStart: (CGFloat)height{
+CGFloat GetYStart(CGFloat height){
     return height *.25;
 }
 
-+(CGFloat)GetYStartUnderLabel: (CGFloat)height{
+CGFloat GetYStartUnderLabel(CGFloat height){
     return height *.10;
 }
 

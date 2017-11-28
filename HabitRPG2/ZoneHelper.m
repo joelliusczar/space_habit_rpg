@@ -49,11 +49,11 @@ NSString* const HOME_KEY = @"HOME";
 
 +(NSString*)getRandomZoneDefinitionKey:(NSUInteger)heroLvl{
     NSArray<NSString *> *groupKeys = [ZoneHelper getUnlockedZoneGroupKeys: heroLvl];
-    uint r = [CommonUtilities randomUInt:(uint)groupKeys.count];
+    uint r = randomUInt((uint)groupKeys.count);
     NSString *groupKey = groupKeys[r];
     ZoneInfoDictionary *zd = [SingletonCluster getSharedInstance].zoneInfoDictionary;
     NSArray *zoneList = [zd getGroupKeyList:groupKey];
-    r = [CommonUtilities randomUInt:(uint32_t)zoneList.count];
+    r = randomUInt((uint32_t)zoneList.count);
     return zoneList[r];
 }
 
@@ -96,9 +96,9 @@ NSString* const HOME_KEY = @"HOME";
     NSString *zoneKey = [ZoneHelper getRandomZoneDefinitionKey:hero.lvl];
     z.zoneKey = zoneKey;
     z.suffix = [ZoneHelper getSymbolSuffix:[ZoneHelper getVisitCountForZone:zoneKey]];
-    z.maxMonsters = [CommonUtilities randomUInt:MAX_MONSTER_RAND_UP_BOUND]  + MAX_MONSTER_LOW_BOUND;
+    z.maxMonsters = randomUInt(MAX_MONSTER_RAND_UP_BOUND)  + MAX_MONSTER_LOW_BOUND;
     z.monstersKilled = 0;
-    z.lvl = matchLvl?hero.lvl:[CommonUtilities calculateLvl:hero.lvl OffsetBy:ZONE_LVL_RANGE];
+    z.lvl = matchLvl?hero.lvl:calculateLvl(hero.lvl,ZONE_LVL_RANGE);
     return z;
 }
 
@@ -106,7 +106,7 @@ NSString* const HOME_KEY = @"HOME";
     //Zone create uses nil context so that should be okay
     NSManagedObjectContext *suffixContext = [SHData constructContext:NSMainQueueConcurrencyType];
     SHData.inUseContext = suffixContext;
-    uint zoneCount = [CommonUtilities randomUInt:MAX_ZONE_CHOICE_RAND_UP_BOUND]  + MIN_ZONE_CHOICE_COUNT;
+    uint zoneCount = randomUInt(MAX_ZONE_CHOICE_RAND_UP_BOUND)  + MIN_ZONE_CHOICE_COUNT;
     NSMutableArray<Zone *> *choices = [NSMutableArray arrayWithCapacity:zoneCount];
     choices[0] = [self constructZoneChoice:hero AndMatchHeroLvl:matchLvl];
     for(uint i = 1;i<zoneCount;i++){

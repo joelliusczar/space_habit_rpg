@@ -16,6 +16,10 @@
 
 @implementation AppDelegate
 
+void printWorkingDir(){
+    NSURL *url = [[NSFileManager.defaultManager URLsForDirectory: NSDocumentDirectory inDomains: NSUserDomainMask] lastObject];
+    NSLog(@"%@",url);
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     (void)application;
