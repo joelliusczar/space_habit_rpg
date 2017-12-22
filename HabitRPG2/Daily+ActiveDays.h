@@ -7,13 +7,14 @@
 //
 
 #import "Daily+CoreDataClass.h"
-#import "ActiveDaysTriKey.h"
 
 @interface Daily (ActiveDays)
 -(NSMutableArray<RateValueItemDict *> * )getActiveDaysForRateType:(RateType)rateType;
--(BOOL)flipDayOfWeek_w:(NSString *)key setTo:(BOOL)isOn for:(BOOL)isInverse;
--(void)setActiveDay:(ActiveDaysTriKey *)triKey withValue:(NSNumber *)value;
+-(void)flipDayOfWeek_w:(NSUInteger)dayIdx for:(BOOL)isInverse;
 -(NSInteger)addMonthlyItem:(BOOL)isInverse ordinal:(NSInteger)ordinal dayOfWeekNum:(NSInteger)weekdayNum;
 -(NSInteger)addYearlyItem:(BOOL)isInverse monthNum:(NSInteger)monthNum dayOfMonth:(NSInteger)monthDay;
 -(void)deleteRateValueItem:(RateType)rateType atIndex:(NSInteger)index;
+-(NSDate *)nextDueTime_DAILY:(NSDate *)checkinDate;
+-(NSDate *)nextDueTime_DAILY_INVERSE:(NSDate *)checkinDate;
+//-(NSDate *)nextDueTime_WEEKLY:(NSDate *)checkinDate;
 @end

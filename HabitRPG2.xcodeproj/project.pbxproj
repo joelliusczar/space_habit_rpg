@@ -17,7 +17,6 @@
 		270D39AF1F58C6B300F371F0 /* UserOfProtocus.m in Sources */ = {isa = PBXBuildFile; fileRef = 270D39AE1F58C6B300F371F0 /* UserOfProtocus.m */; };
 		270D39B21F58C7B000F371F0 /* XPSideKick.m in Sources */ = {isa = PBXBuildFile; fileRef = 270D39B11F58C7B000F371F0 /* XPSideKick.m */; };
 		270D39BC1F5D1CF900F371F0 /* RateTypeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 270D39BA1F5D1CF900F371F0 /* RateTypeHelper.m */; };
-		270D39BF1F5E067400F371F0 /* ActiveDaysTriKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 270D39BE1F5E067400F371F0 /* ActiveDaysTriKey.m */; };
 		2710BB961F514E8700A43B6C /* Experiments+Bravo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2710BB951F514E8700A43B6C /* Experiments+Bravo.m */; };
 		2710BBC41F53150F00A43B6C /* blue_plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 2710BBC31F53150F00A43B6C /* blue_plus.png */; };
 		271AB34A1F9BBFC100D30521 /* ExpNonNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 271AB3491F9BBFC100D30521 /* ExpNonNull.m */; };
@@ -115,6 +114,7 @@
 		278D63251FC8EC3700315535 /* KeyToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 278D63241FC8EC3700315535 /* KeyToken.m */; };
 		278D632A1FCA178F00315535 /* DummyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278D63281FCA178F00315535 /* DummyViewController.m */; };
 		278D632B1FCA178F00315535 /* DummyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 278D63291FCA178F00315535 /* DummyViewController.xib */; };
+		278D632F1FD7B23A00315535 /* FlexibleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 278D632E1FD7B23A00315535 /* FlexibleConstants.m */; };
 		27A559B61F5E329B00C915E6 /* Experiments+Charlie.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559B51F5E329B00C915E6 /* Experiments+Charlie.m */; };
 		27A559B91F5E334500C915E6 /* Daily+ActiveDays.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559B81F5E334500C915E6 /* Daily+ActiveDays.m */; };
 		27A559BC1F5E5F3000C915E6 /* NSMutableArray+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A559BB1F5E5F3000C915E6 /* NSMutableArray+Helper.m */; };
@@ -281,8 +281,6 @@
 		270D39B11F58C7B000F371F0 /* XPSideKick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPSideKick.m; sourceTree = "<group>"; };
 		270D39BA1F5D1CF900F371F0 /* RateTypeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RateTypeHelper.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		270D39BB1F5D1CF900F371F0 /* RateTypeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateTypeHelper.h; sourceTree = "<group>"; };
-		270D39BD1F5E067400F371F0 /* ActiveDaysTriKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveDaysTriKey.h; sourceTree = "<group>"; };
-		270D39BE1F5E067400F371F0 /* ActiveDaysTriKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveDaysTriKey.m; sourceTree = "<group>"; };
 		2710BB921F51190700A43B6C /* P_ResizeResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ResizeResponder.h; sourceTree = "<group>"; };
 		2710BB931F51489100A43B6C /* P_ItemFlexibleListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ItemFlexibleListDelegate.h; sourceTree = "<group>"; };
 		2710BB941F514E8700A43B6C /* Experiments+Bravo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Experiments+Bravo.h"; sourceTree = "<group>"; };
@@ -475,6 +473,9 @@
 		278D63271FCA178F00315535 /* DummyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DummyViewController.h; sourceTree = "<group>"; };
 		278D63281FCA178F00315535 /* DummyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DummyViewController.m; sourceTree = "<group>"; };
 		278D63291FCA178F00315535 /* DummyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DummyViewController.xib; sourceTree = "<group>"; };
+		278D632C1FD7B21600315535 /* P_FlexibleConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = P_FlexibleConstants.h; sourceTree = "<group>"; };
+		278D632D1FD7B23A00315535 /* FlexibleConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlexibleConstants.h; sourceTree = "<group>"; };
+		278D632E1FD7B23A00315535 /* FlexibleConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlexibleConstants.m; sourceTree = "<group>"; };
 		27A559B41F5E329B00C915E6 /* Experiments+Charlie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Experiments+Charlie.h"; sourceTree = "<group>"; };
 		27A559B51F5E329B00C915E6 /* Experiments+Charlie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Experiments+Charlie.m"; sourceTree = "<group>"; };
 		27A559B71F5E334500C915E6 /* Daily+ActiveDays.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Daily+ActiveDays.h"; sourceTree = "<group>"; };
@@ -1226,6 +1227,7 @@
 				2710BB971F51D76000A43B6C /* P_EditControlKeep.h */,
 				271AB3B21FA2BAA400D30521 /* P_Interceptor.h */,
 				278D63221FC7936400315535 /* P_ControlKeep.h */,
+				278D632C1FD7B21600315535 /* P_FlexibleConstants.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -1327,8 +1329,6 @@
 				275FEF0C1EE45AE600AED1A2 /* Daily+DailyHelper.m */,
 				27E89C961EF5F3EE009B7474 /* SubTaskCellController.h */,
 				27E89C971EF5F3EE009B7474 /* SubTaskCellController.m */,
-				270D39BD1F5E067400F371F0 /* ActiveDaysTriKey.h */,
-				270D39BE1F5E067400F371F0 /* ActiveDaysTriKey.m */,
 				271AB34B1F9BC5F800D30521 /* DailyEditController+ControlLoaders.h */,
 				271AB34C1F9BC5F800D30521 /* DailyEditController+ControlLoaders.m */,
 			);
@@ -1415,6 +1415,8 @@
 				274E2AEE1FB833A600324949 /* CommonTypeDefs.h */,
 				278D63231FC8EC3700315535 /* KeyToken.h */,
 				278D63241FC8EC3700315535 /* KeyToken.m */,
+				278D632D1FD7B23A00315535 /* FlexibleConstants.h */,
+				278D632E1FD7B23A00315535 /* FlexibleConstants.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1805,6 +1807,7 @@
 				68BE45911D9DEA0B003F3400 /* IntroViewController.m in Sources */,
 				68F3F9E41D70E8DB00840DD2 /* CentralViewController.m in Sources */,
 				274A37B21F0A093B00F31E0F /* SHEventInfo.m in Sources */,
+				278D632F1FD7B23A00315535 /* FlexibleConstants.m in Sources */,
 				2709B39C1EF0D31200EEE5CC /* Interceptor.m in Sources */,
 				27B0CDC91F2BEECD005BEC75 /* HabitTransaction+CoreDataProperties.m in Sources */,
 				27B0CDC71F2BEECD005BEC75 /* Suffix+CoreDataProperties.m in Sources */,
@@ -1838,7 +1841,6 @@
 				27C92C1A1E29C9F10025727E /* ZoneInfoDictionary.m in Sources */,
 				68F3F9F81D70FD3F00840DD2 /* GoodsViewController.m in Sources */,
 				271AB3C31FA69E1500D30521 /* SHTextField.m in Sources */,
-				270D39BF1F5E067400F371F0 /* ActiveDaysTriKey.m in Sources */,
 				271C048E1E8C9C06002221E9 /* MonsterHelper.m in Sources */,
 				27B0CD341F2BEC32005BEC75 /* ZoneTransaction+CoreDataClass.m in Sources */,
 				68F3F9E91D70EC9700840DD2 /* DailyViewController.m in Sources */,

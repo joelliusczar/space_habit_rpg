@@ -24,7 +24,7 @@
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
-        [self setupCustomView];
+        [self viewAdditionalSetup];
     }
     return self;
 }
@@ -32,7 +32,7 @@
 
 -(instancetype)initWithCoder:(NSCoder *)coder{
     if(self = [super initWithCoder:coder]){
-        [self setupCustomView];
+        [self viewAdditionalSetup];
     }
     return self;
 }
@@ -44,16 +44,20 @@
 }
 
 
--(void)setupCustomView{
+-(void)viewAdditionalSetup{
     //only do this part if there is an actual xib to load
-    if(![self isMemberOfClass:SHView.class]){
+    if(![self isMemberOfClass:SHView.class]){ //we're checking that this is a derived class
         _mainView = [self loadDefaultXib];
         [self addSubview:_mainView];
         //this is neccessary because other wise the outer frame
         //is too small and invisibly blocks user actions.
         [self resizeFrame:_mainView.frame.size];
     }
+    [self setupCustomOptions];
 }
+
+//override in subclass
+-(void)setupCustomOptions{}
 
 //I'm depending on subclasses being able to override this
 -(UIView *)loadDefaultXib{

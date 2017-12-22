@@ -15,6 +15,9 @@
 #import "constants.h"
 #import "RateTypeHelper.h"
 
+@interface Daily()
+@end
+
 @implementation Daily
 
 
@@ -109,19 +112,39 @@ int checkImportanceRange(int importance){
 
 
 -(NSDate *)nextDueTime{
-    NSDate *usableDate = self.lastActivationTime?
+    NSDate *checkinDate = self.lastActivationTime?
                             self.lastActivationTime:
                             self.lastUpdateTime;
-    return [Daily calculateNextDueTime:usableDate
-                              withRate:self.rate
-                           andDayStart:SHSettings.dayStart];
+    switch(self.rateType){
+            
+        case YEARLY_RATE:
+        case YEARLY_RATE_INVERSE:
+        case MONTHLY_RATE:
+        case MONTHLY_RATE_INVERSE:
+        case WEEKLY_RATE:
+        {
+            
+        }
+        case WEEKLY_RATE_INVERSE:
+        {
+            
+        }
+        case DAILY_RATE:
+        {
+            return [self nextDueTime_DAILY:checkinDate];
+        }
+        case DAILY_RATE_INVERSE:
+        {
+            return [self nextDueTime_DAILY_INVERSE:checkinDate];
+        }
+    }
+    return nil;
 }
 
 
 -(int)daysUntilDue{
-    NSDate *roundedDownToday =
-    [NSDate setTime:[NSDate date] hour:SHSettings.dayStart minute:0 second:0];
-    
+    NSDate *roundedDownToday = [[NSDate date]
+                                    setTime:SHSettings.dayStart minute:0 second:0];
     return (int)[NSDate daysBetween:roundedDownToday to:self.nextDueTime];
 }
 

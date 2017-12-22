@@ -230,7 +230,7 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
     }
     else if([self.currentActiveDaysControl isKindOfClass:WeeklyActiveDays.class]){
         [self.weeklyActiveDays setActiveDaysOfWeek:
-                                [self.daily getActiveDaysForRateType:self.daily.rateType][0]];
+                                [self.daily getActiveDaysForRateType:self.daily.rateType]];
     }
 }
 
@@ -242,7 +242,7 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
     [self updateRateTypeButtonText];
     if(rateType == WEEKLY_RATE){
         [self switchActiveDaysControlFor:self.weeklyActiveDays];
-        [self.weeklyActiveDays setActiveDaysOfWeek:[self.daily getActiveDaysForRateType:self.daily.rateType][0]];
+        [self.weeklyActiveDays setActiveDaysOfWeek:[self.daily getActiveDaysForRateType:self.daily.rateType]];
     }
     else if(rateType == MONTHLY_RATE){
         [self switchActiveDaysControlFor:self.monthlyActiveDays];

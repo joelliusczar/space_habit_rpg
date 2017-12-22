@@ -22,6 +22,7 @@
 #import "ReadOonly.h"
 #import "EncodeStuff.h"
 #import "Retainer.h"
+#import <limits.h>
 
 
 @implementation Experiments
@@ -515,6 +516,65 @@ void cMakeHouses(void){
 
 +(void)callCMakeHouses{
     cMakeHouses();
+}
+
++(void)weekdays{
+    NSCalendar *cal = NSCalendar.currentCalendar;
+    NSInteger wdnum = [cal component:NSCalendarUnitWeekday fromDate:[NSDate date]];
+    wdnum = [cal component:NSCalendarUnitWeekdayOrdinal fromDate:[NSDate date]];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSArray<NSString *> *days = formatter.shortWeekdaySymbols;
+    days = formatter.weekdaySymbols;
+    days = formatter.standaloneWeekdaySymbols;
+    days = formatter.veryShortWeekdaySymbols;
+}
+
+NSString *convertCharToBin(unsigned char input){
+    char binRep[9] = "00000000";
+    int idx = 0;
+    while(input > 0){
+        if(input & 1){
+            binRep[idx] = '1';
+        }
+        idx++;
+        input >>= 1;
+    }
+    for(int i = 0; i < 8/2;i++){
+        char tmp = binRep[i];
+        binRep[i] = binRep[7 - i];
+        binRep[7 - i] = tmp;
+    }
+    return [NSString stringWithUTF8String:binRep];
+}
+
++(void)uintSubtract{
+    unsigned char a = UCHAR_MAX;
+    char b = CHAR_MAX;
+    a++;
+    b++;
+    b <<= 1;
+    NSLog(@"a bin: %@ - dec: %d",convertCharToBin(a),a);
+    NSLog(@"b bin: %@ - dec: %d",convertCharToBin(b),b);
+    a = CHAR_MAX;
+    a+=5;
+    unsigned char c = CHAR_MAX;
+    NSLog(@"c max bin: %@ - dec: %d",convertCharToBin(c),c);
+    c+=2;
+    unsigned char d = a - c;
+    unsigned char c2 = -1*c;
+     NSLog(@"c +2 bin: %@ - dec: %d",convertCharToBin(c),c);
+    NSLog(@"c *-1 bin: %@ - dec: %d",convertCharToBin(c2),c2);
+    NSLog(@"d bin: %@ - dec: %d",convertCharToBin(d),d);
+    char e = -1*((char)c);
+    unsigned char h = a + e;
+    NSLog(@"e bin: %@ - dec: %d",convertCharToBin(e),e);
+    NSLog(@"h bin: %@ - dec: %d",convertCharToBin(h),h);
+    char f = CHAR_MIN;
+    char g = -1*f;
+    NSLog(@"g bin: %@ - dec: %d",convertCharToBin(g),g);
+    unsigned char i = 6;
+    unsigned char j = -1*i;
+    NSLog(@"j bin: %@ - dec: %d",convertCharToBin(j),j);
 }
     
 @end

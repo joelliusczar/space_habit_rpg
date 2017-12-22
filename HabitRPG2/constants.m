@@ -84,3 +84,7 @@ NSString* const ORDINAL_WEEK_KEY = @"ORDINAL_WEEK";
 NSString* const DAY_OF_WEEK_KEY = @"DAY_OF_WEEK";
 NSString* const MONTH_KEY = @"MONTH";
 NSString* const DAY_OF_MONTH_KEY = @"DAY_OF_MONTH";
+
+NSString* const BACKRANGE_KEY = @"BACKRANGE";
+NSString* const FORRANGE_KEY = @"FORRANGE";
+NSString* const IS_DAY_ACTIVE_KEY = @"IS_DAY_ACTIVE";

@@ -18,4 +18,5 @@
 -(instancetype)initEmpty;
 -(void)changeBackgroundColorTo:(UIColor *)color;
 -(UIView *)loadDefaultXib;
+-(void)setupCustomOptions;
 @end

@@ -80,6 +80,8 @@ typedef id (^mbTest)(void);
 +(void)pointerAddressStuff;
 void cMakeHouses(void);
 +(void)callCMakeHouses;
++(void)weekdays;
++(void)uintSubtract;
 @end
 
 #import "Experiments+Charlie.h"

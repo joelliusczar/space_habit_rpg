@@ -18,15 +18,26 @@
 @implementation WeeklyActiveDays
 
 
+-(void)setupCustomOptions{
+    [super setupCustomOptions];
+    self.sundaySwitch.tag = 0;
+    self.mondaySwitch.tag = 1;
+    self.tuesdaySwitch.tag = 2;
+    self.wednesdaySwitch.tag = 3;
+    self.thursdaySwitch.tag = 4;
+    self.fridaySwitch.tag = 5;
+    self.saturdaySwitch.tag = 6;
+}
+
 - (IBAction)activeDaySwitch_press_action:(CustomSwitch *)sender forEvent:(UIEvent *)event {
     SHEventInfo *e = eventInfoCopy;
     [self.delegate activeDaySwitch_press_action:e];
 }
 
 
--(void)setActiveDaysOfWeek:(RateValueItemDict *)activeDaysDict{
+-(void)setActiveDaysOfWeek:(NSArray<RateValueItemDict *> *)activeDays{
     for(CustomSwitch *flip in self.activeDaySwitches){
-        flip.isOn = activeDaysDict[flip.dayKey].boolValue;
+        flip.isOn = activeDays[flip.tag][IS_DAY_ACTIVE_KEY].boolValue;
     }
 }
 

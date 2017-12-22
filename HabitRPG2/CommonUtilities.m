@@ -56,6 +56,14 @@ CGFloat GetYStartUnderLabel(CGFloat height){
     return height *.10;
 }
 
+void reverse_UINT(NSUInteger * _Nonnull array,NSUInteger len){
+    for(NSUInteger i = 0;i < len/2;i++){
+        NSUInteger tmp = array[i];
+        array[i] = array[len - i -1];
+        array[len -i -1] = tmp;
+    }
+}
+
 +(UIColor *)invertColor:(UIColor *)color{
     if(!color) return nil;
     CGFloat r,g,b,a;

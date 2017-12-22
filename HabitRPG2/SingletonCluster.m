@@ -12,6 +12,7 @@
 #import "StdLibWrapper.h"
 #import "constants.h"
 #import "ReportServiceCaller.h"
+#import "FlexibleConstants.h"
 
 
 @implementation SingletonCluster
@@ -107,6 +108,14 @@
         _inUseLocale = NSLocale.autoupdatingCurrentLocale;
     }
     return _inUseLocale;
+}
+
+
+-(id<P_FlexibleConstants>)constants{
+    if(nil == _constants){
+        _constants = [[FlexibleConstants alloc] init];
+    }
+    return _constants;
 }
 
 -(instancetype)initClass{

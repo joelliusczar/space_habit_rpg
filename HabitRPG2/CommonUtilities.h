@@ -26,6 +26,7 @@ uint calculateLvl(uint lvl,uint range);
 uint randomUInt(uint bound);
 CGFloat GetYStart(CGFloat height);
 CGFloat GetYStartUnderLabel(CGFloat height);
+void reverse_UINT(NSUInteger * _Nonnull array,NSUInteger len);
 +(UIColor *_Nonnull)invertColor:(UIColor *_Nonnull)color;
 +(void)invertViewColors:(UIView *_Nonnull)view;
 +(void)applyVisualChangeToAllSubviews:(UIView *_Nonnull)view;
@@ -38,4 +39,5 @@ CGFloat GetYStartUnderLabel(CGFloat height);
 +(int)calculateActiveDaysHash:(NSArray<id<P_CustomSwitch>> *_Nonnull)activeDays;
 +(void)setActiveDaySwitches:(NSArray<id<P_CustomSwitch>> *_Nonnull)activeDays
                    fromHash:(NSInteger)hash;
+
 @end

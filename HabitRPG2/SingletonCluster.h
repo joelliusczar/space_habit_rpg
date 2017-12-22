@@ -16,11 +16,13 @@
 #import "P_stdlibWrapper.h"
 #import "P_ReportServiceCaller.h"
 #import "P_UtilityStore.h"
+#import "P_FlexibleConstants.h"
 
 #define SAVE_DATA() [[SingletonCluster getSharedInstance].dataController save]
 #define SHData [SingletonCluster getSharedInstance].dataController
 #define SharedGlobal [SingletonCluster getSharedInstance]
 #define SHSettings [SingletonCluster getSharedInstance].dataController.userData.theSettings
+#define SHCONST [SingletonCluster getSharedInstance].constants
 
 @interface SingletonCluster : NSObject<P_UtilityStore>
 +(instancetype)getSharedInstance;
@@ -35,4 +37,5 @@
 @property (strong,nonatomic) NSCalendar *inUseCalendar;
 @property (strong,nonatomic) NSTimeZone *inUseTimeZone;
 @property (strong,nonatomic) NSLocale *inUseLocale;
+@property (strong,nonatomic) id<P_FlexibleConstants> constants;
 @end

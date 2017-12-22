@@ -132,3 +132,7 @@ extern NSString* const ORDINAL_WEEK_KEY;
 extern NSString* const DAY_OF_WEEK_KEY;
 extern NSString* const MONTH_KEY;
 extern NSString* const DAY_OF_MONTH_KEY;
+
+extern NSString * const BACKRANGE_KEY;
+extern NSString * const FORRANGE_KEY;
+extern NSString * const IS_DAY_ACTIVE_KEY;

@@ -11,5 +11,4 @@
 @protocol P_CustomSwitch <NSObject>
 @property (assign,nonatomic) IBInspectable BOOL isOn;
 @property (nonatomic) NSInteger tag;
-@property (strong,nonatomic) IBInspectable NSString *dayKey;
 @end

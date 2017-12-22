@@ -9,9 +9,11 @@
 #import "Daily+ActiveDays.h"
 #import "RateTypeHelper.h"
 #import "NSMutableArray+Helper.h"
+#import "NSDate+DateHelper.h"
+#import "constants.h"
+#import "Daily+DailyHelper.h"
 
 @implementation Daily (ActiveDays)
-
 
 bestMatchPredicate monthlyBestMatch = ^BOOL(RateValueItemDict *a,RateValueItemDict *b){
     
@@ -39,54 +41,31 @@ bestMatchPredicate yearlyBestMatch = ^BOOL(RateValueItemDict *a,RateValueItemDic
 
 -(NSMutableArray<RateValueItemDict *> * )getActiveDaysForRateType:(RateType)rateType{
     NSString *rateTypeKey = getRateTypeKey(rateType);
-    NSMutableArray *activeDays = self.activeDaysDict[rateTypeKey];
-    if(!activeDays){
-        if(rateType == WEEKLY_RATE){
-            NSMutableDictionary *week = [self createActiveDaysWeek:YES];
-            activeDays = [NSMutableArray arrayWithObject:week];
-        }
-        else if(rateType == WEEKLY_RATE_INVERSE){
-            NSMutableDictionary *week = [self createActiveDaysWeek:NO];
-            activeDays = [NSMutableArray arrayWithObject:week];
+    NSMutableArray *week = self.activeDaysDict[rateTypeKey];
+    BOOL activeDays[SHCONST.DAYS_IN_WEEK];
+    if(!week){
+        if(rateType == WEEKLY_RATE || rateType == WEEKLY_RATE_INVERSE){
+            [Daily setActivenessArray:nil activeDays:activeDays];
+            week = [Daily buildWeek:activeDays scaler:self.rate];
         }
         else{
-            activeDays = [NSMutableArray array];
+            week = [NSMutableArray array];
         }
-        self.activeDaysDict[rateTypeKey] = activeDays;
+        self.activeDaysDict[rateTypeKey] = week;
     }
-    return activeDays;
+    return week;
 }
 
     
--(NSMutableDictionary *)createActiveDaysWeek:(BOOL)areActive{
-    self.isTouched = YES;
-    NSNumber *activeness = @(areActive?1:0);
-    return [NSMutableDictionary dictionaryWithObjectsAndKeys:
-            @"SUN",activeness
-            ,@"MON",activeness
-            ,@"TUE",activeness
-            ,@"WED",activeness
-            ,@"THR",activeness
-            ,@"FRI",activeness
-            ,@"SAT",activeness
-            ,nil];
-}
-
-
--(void)setActiveDay:(ActiveDaysTriKey *)triKey withValue:(NSNumber *)value{
-    self.isTouched = YES;
-    NSArray *array = [self getActiveDaysForRateType:triKey.rateType];
-    NSMutableDictionary *dict = array[triKey.index];
-    dict[triKey.key] = value;
-}
-  
-    
--(BOOL)flipDayOfWeek_w:(NSString *)key setTo:(BOOL)isOn for:(BOOL)isInverse{
+-(void)flipDayOfWeek_w:(NSUInteger)dayIdx for:(BOOL)isInverse{
     self.isTouched = YES;
     RateType rateType = isInverse?WEEKLY_RATE_INVERSE:WEEKLY_RATE;
-    ActiveDaysTriKey *triKey = [[ActiveDaysTriKey alloc] initWithRateType:rateType key:key index:0];
-    [self setActiveDay:triKey withValue:@(isOn?1:0)];
-    return isOn;
+    NSMutableArray *week = [self getActiveDaysForRateType:rateType];
+    BOOL activeDays[SHCONST.DAYS_IN_WEEK];
+    [Daily setActivenessArray:week activeDays:activeDays];
+    activeDays[dayIdx] = !activeDays[dayIdx];
+    week = [Daily buildWeek:activeDays scaler:self.rate];
+    self.activeDaysDict[getRateTypeKey(rateType)] = week;
 }
 
 
@@ -141,7 +120,51 @@ bestMatchPredicate yearlyBestMatch = ^BOOL(RateValueItemDict *a,RateValueItemDic
     self.isTouched = YES;
     NSMutableArray *activeDays = [self getActiveDaysForRateType:rateType];
     [activeDays removeObjectAtIndex:index];
-    
 }
+
+
+-(NSDate *)nextDueTime_DAILY:(NSDate *)checkinDate{
+    NSDate *checkinDateStart = [SharedGlobal.inUseCalendar startOfDayForDate:checkinDate];
+    NSDate *nextDueDateStart = [checkinDateStart adjustDate:0 month:0 day:self.rate];
+    return [nextDueDateStart adjustTime:SHSettings.dayStart minute:0 second:0];
+}
+
+
+-(NSDate *)nextDueTime_DAILY_INVERSE:(NSDate *)checkinDate{
+    NSDate *todayStart = [NSDate todayStart];
+    int daysBtw = (int)[NSDate daysBetween:checkinDate to:todayStart];
+    if(self.rate - daysBtw == 0){
+        return [todayStart adjustDate:0 month:0 day:1];
+    }
+    return [todayStart adjustDate:0 month:0 day:0];
+}
+
+/*
+ if a task is due thr and you activate it monday, it will not penalty you
+ thr but you activate again tuesday, it will not stack. So, come next thr
+ if you have not activated after friday, it will hurt you.
+ if activation time is before the time when it should be due...
+ case for prev activation first time calling this method
+ */
+//-(NSDate *)nextDueTime_WEEKLY:(NSDate *)checkinDate{
+//    RateValueItemDict *activeDays = [self getActiveDaysForRateType:WEEKLY_RATE][0];
+//    NSUInteger todayIdx = (NSUInteger)[[NSDate date] getWeekdayIndex] +1;
+//
+//    
+//    for(NSUInteger dayIdx = 0;dayIdx < WEEKDAY_KEYS.count;dayIdx++){
+//
+//        if(activeDays[WEEKDAY_KEYS[dayIdx]].boolValue){
+//
+//        }
+//
+//        if(activeDays[WEEKDAY_KEYS[nextDayIdx]].boolValue){
+//            NSInteger daySpan = (NSInteger)(nextDayIdx - dayIdx);
+//            daySpan += self.rate >1?((self.rate -1)*7):0;
+//            if()
+//            break;
+//        }
+//    }
+//
+//}
 
 @end

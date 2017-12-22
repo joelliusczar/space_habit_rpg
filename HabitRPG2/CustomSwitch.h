@@ -15,7 +15,6 @@ IB_DESIGNABLE
 @property (assign,nonatomic) IBInspectable BOOL isOn;
 @property (strong,nonatomic) IBInspectable UIImage *onImage;
 @property (strong,nonatomic) IBInspectable UIImage *offImage;
-@property (strong,nonatomic) IBInspectable NSString *dayKey;
 @property (strong,nonatomic) UIImage *onImageColorInverted;
 @property (strong,nonatomic) UIImage *offImageColorInverted;
 @property (readonly,nonatomic) UIImage *currentOnImage;

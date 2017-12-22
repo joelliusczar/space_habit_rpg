@@ -15,6 +15,13 @@
 IB_DESIGNABLE
 @interface WeeklyActiveDays : SHView
 @property (strong, nonatomic) IBOutletCollection(CustomSwitch) NSArray *activeDaySwitches;
+@property (weak,nonatomic) IBOutlet CustomSwitch *sundaySwitch;
+@property (weak,nonatomic) IBOutlet CustomSwitch *mondaySwitch;
+@property (weak,nonatomic) IBOutlet CustomSwitch *tuesdaySwitch;
+@property (weak,nonatomic) IBOutlet CustomSwitch *wednesdaySwitch;
+@property (weak,nonatomic) IBOutlet CustomSwitch *thursdaySwitch;
+@property (weak,nonatomic) IBOutlet CustomSwitch *fridaySwitch;
+@property (weak,nonatomic) IBOutlet CustomSwitch *saturdaySwitch;
 @property (weak,nonatomic) id<P_WeeklyActiveDaysDelegate> delegate;
--(void)setActiveDaysOfWeek:(RateValueItemDict *)activeDays;
+-(void)setActiveDaysOfWeek:(NSArray<RateValueItemDict *> *)activeDays;
 @end
