@@ -210,6 +210,42 @@ NSMutableArray<Daily *> *testDailies = nil;
     XCTAssertEqual(results[6][FORRANGE_KEY].integerValue,1);
     XCTAssertEqual(results[6][BACKRANGE_KEY].integerValue,6);
     
+    results = [Daily buildWeek:testSet scaler:4];
+    //sunday
+    XCTAssertEqual(results[0][IS_DAY_ACTIVE_KEY].boolValue,YES);
+    XCTAssertEqual(results[0][FORRANGE_KEY].integerValue,28);
+    XCTAssertEqual(results[0][BACKRANGE_KEY].integerValue,28);
+    
+    //monday
+    XCTAssertEqual(results[1][IS_DAY_ACTIVE_KEY].boolValue,NO);
+    XCTAssertEqual(results[1][FORRANGE_KEY].integerValue,27);
+    XCTAssertEqual(results[1][BACKRANGE_KEY].integerValue,1);
+    
+    //tuesday
+    XCTAssertEqual(results[2][IS_DAY_ACTIVE_KEY].boolValue,NO);
+    XCTAssertEqual(results[2][FORRANGE_KEY].integerValue,26);
+    XCTAssertEqual(results[2][BACKRANGE_KEY].integerValue,2);
+    
+    //wednesday
+    XCTAssertEqual(results[3][IS_DAY_ACTIVE_KEY].boolValue,NO);
+    XCTAssertEqual(results[3][FORRANGE_KEY].integerValue,25);
+    XCTAssertEqual(results[3][BACKRANGE_KEY].integerValue,3);
+    
+    //thurday
+    XCTAssertEqual(results[4][IS_DAY_ACTIVE_KEY].boolValue,NO);
+    XCTAssertEqual(results[4][FORRANGE_KEY].integerValue,24);
+    XCTAssertEqual(results[4][BACKRANGE_KEY].integerValue,4);
+    
+    //friday
+    XCTAssertEqual(results[5][IS_DAY_ACTIVE_KEY].boolValue,NO);
+    XCTAssertEqual(results[5][FORRANGE_KEY].integerValue,23);
+    XCTAssertEqual(results[5][BACKRANGE_KEY].integerValue,5);
+    
+    //saturday
+    XCTAssertEqual(results[6][IS_DAY_ACTIVE_KEY].boolValue,NO);
+    XCTAssertEqual(results[6][FORRANGE_KEY].integerValue,22);
+    XCTAssertEqual(results[6][BACKRANGE_KEY].integerValue,6);
+    
     testSet[0] = NO;
     testSet[1] = YES; //monday
     testSet[3] = YES; //wednesday
@@ -249,6 +285,155 @@ NSMutableArray<Daily *> *testDailies = nil;
     XCTAssertEqual(results[6][IS_DAY_ACTIVE_KEY].boolValue,NO);
     XCTAssertEqual(results[6][FORRANGE_KEY].integerValue,2);
     XCTAssertEqual(results[6][BACKRANGE_KEY].integerValue,3);
+    
+    results = [Daily buildWeek:testSet scaler:7];
+    
+    //sunday
+    XCTAssertEqual(results[0][IS_DAY_ACTIVE_KEY].boolValue,NO);
+    XCTAssertEqual(results[0][FORRANGE_KEY].integerValue,1);
+    XCTAssertEqual(results[0][BACKRANGE_KEY].integerValue,46);
+    
+    //monday
+    XCTAssertEqual(results[1][IS_DAY_ACTIVE_KEY].boolValue,YES);
+    XCTAssertEqual(results[1][FORRANGE_KEY].integerValue,2);
+    XCTAssertEqual(results[1][BACKRANGE_KEY].integerValue,47);
+    
+    //tuesday
+    XCTAssertEqual(results[2][IS_DAY_ACTIVE_KEY].boolValue,NO);
+    XCTAssertEqual(results[2][FORRANGE_KEY].integerValue,1);
+    XCTAssertEqual(results[2][BACKRANGE_KEY].integerValue,1);
+    
+    //wednesday
+    XCTAssertEqual(results[3][IS_DAY_ACTIVE_KEY].boolValue,YES);
+    XCTAssertEqual(results[3][FORRANGE_KEY].integerValue,47);
+    XCTAssertEqual(results[3][BACKRANGE_KEY].integerValue,2);
+    
+    //thurday
+    XCTAssertEqual(results[4][IS_DAY_ACTIVE_KEY].boolValue,NO);
+    XCTAssertEqual(results[4][FORRANGE_KEY].integerValue,46);
+    XCTAssertEqual(results[4][BACKRANGE_KEY].integerValue,1);
+    
+    //friday
+    XCTAssertEqual(results[5][IS_DAY_ACTIVE_KEY].boolValue,NO);
+    XCTAssertEqual(results[5][FORRANGE_KEY].integerValue,45);
+    XCTAssertEqual(results[5][BACKRANGE_KEY].integerValue,2);
+    
+    //saturday
+    XCTAssertEqual(results[6][IS_DAY_ACTIVE_KEY].boolValue,NO);
+    XCTAssertEqual(results[6][FORRANGE_KEY].integerValue,44);
+    XCTAssertEqual(results[6][BACKRANGE_KEY].integerValue,3);
+    
+    for(int i = 0;i<SHCONST.DAYS_IN_WEEK;i++){
+        testSet[i] = YES;
+    }
+    results = [Daily buildWeek:testSet scaler:1];
+    //sunday
+    XCTAssertEqual(results[0][IS_DAY_ACTIVE_KEY].boolValue,YES);
+    XCTAssertEqual(results[0][FORRANGE_KEY].integerValue,1);
+    XCTAssertEqual(results[0][BACKRANGE_KEY].integerValue,1);
+    
+    //monday
+    XCTAssertEqual(results[1][IS_DAY_ACTIVE_KEY].boolValue,YES);
+    XCTAssertEqual(results[1][FORRANGE_KEY].integerValue,1);
+    XCTAssertEqual(results[1][BACKRANGE_KEY].integerValue,1);
+    
+    //tuesday
+    XCTAssertEqual(results[2][IS_DAY_ACTIVE_KEY].boolValue,YES);
+    XCTAssertEqual(results[2][FORRANGE_KEY].integerValue,1);
+    XCTAssertEqual(results[2][BACKRANGE_KEY].integerValue,1);
+    
+    //wednesday
+    XCTAssertEqual(results[3][IS_DAY_ACTIVE_KEY].boolValue,YES);
+    XCTAssertEqual(results[3][FORRANGE_KEY].integerValue,1);
+    XCTAssertEqual(results[3][BACKRANGE_KEY].integerValue,1);
+    
+    //thurday
+    XCTAssertEqual(results[4][IS_DAY_ACTIVE_KEY].boolValue,YES);
+    XCTAssertEqual(results[4][FORRANGE_KEY].integerValue,1);
+    XCTAssertEqual(results[4][BACKRANGE_KEY].integerValue,1);
+    
+    //friday
+    XCTAssertEqual(results[5][IS_DAY_ACTIVE_KEY].boolValue,YES);
+    XCTAssertEqual(results[5][FORRANGE_KEY].integerValue,1);
+    XCTAssertEqual(results[5][BACKRANGE_KEY].integerValue,1);
+    
+    //saturday
+    XCTAssertEqual(results[6][IS_DAY_ACTIVE_KEY].boolValue,YES);
+    XCTAssertEqual(results[6][FORRANGE_KEY].integerValue,1);
+    XCTAssertEqual(results[6][BACKRANGE_KEY].integerValue,1);
+    
+    results = [Daily buildWeek:testSet scaler:3];
+    //sunday
+    XCTAssertEqual(results[0][IS_DAY_ACTIVE_KEY].boolValue,YES);
+    XCTAssertEqual(results[0][FORRANGE_KEY].integerValue,1);
+    XCTAssertEqual(results[0][BACKRANGE_KEY].integerValue,15);
+    
+    //monday
+    XCTAssertEqual(results[1][IS_DAY_ACTIVE_KEY].boolValue,YES);
+    XCTAssertEqual(results[1][FORRANGE_KEY].integerValue,1);
+    XCTAssertEqual(results[1][BACKRANGE_KEY].integerValue,1);
+    
+    //tuesday
+    XCTAssertEqual(results[2][IS_DAY_ACTIVE_KEY].boolValue,YES);
+    XCTAssertEqual(results[2][FORRANGE_KEY].integerValue,1);
+    XCTAssertEqual(results[2][BACKRANGE_KEY].integerValue,1);
+    
+    //wednesday
+    XCTAssertEqual(results[3][IS_DAY_ACTIVE_KEY].boolValue,YES);
+    XCTAssertEqual(results[3][FORRANGE_KEY].integerValue,1);
+    XCTAssertEqual(results[3][BACKRANGE_KEY].integerValue,1);
+    
+    //thurday
+    XCTAssertEqual(results[4][IS_DAY_ACTIVE_KEY].boolValue,YES);
+    XCTAssertEqual(results[4][FORRANGE_KEY].integerValue,1);
+    XCTAssertEqual(results[4][BACKRANGE_KEY].integerValue,1);
+    
+    //friday
+    XCTAssertEqual(results[5][IS_DAY_ACTIVE_KEY].boolValue,YES);
+    XCTAssertEqual(results[5][FORRANGE_KEY].integerValue,1);
+    XCTAssertEqual(results[5][BACKRANGE_KEY].integerValue,1);
+    
+    //saturday
+    XCTAssertEqual(results[6][IS_DAY_ACTIVE_KEY].boolValue,YES);
+    XCTAssertEqual(results[6][FORRANGE_KEY].integerValue,15);
+    XCTAssertEqual(results[6][BACKRANGE_KEY].integerValue,1);
+    
+    testSet[4] = NO;
+    results = [Daily buildWeek:testSet scaler:3];
+    //sunday
+    XCTAssertEqual(results[0][IS_DAY_ACTIVE_KEY].boolValue,YES);
+    XCTAssertEqual(results[0][FORRANGE_KEY].integerValue,1);
+    XCTAssertEqual(results[0][BACKRANGE_KEY].integerValue,15);
+    
+    //monday
+    XCTAssertEqual(results[1][IS_DAY_ACTIVE_KEY].boolValue,YES);
+    XCTAssertEqual(results[1][FORRANGE_KEY].integerValue,1);
+    XCTAssertEqual(results[1][BACKRANGE_KEY].integerValue,1);
+    
+    //tuesday
+    XCTAssertEqual(results[2][IS_DAY_ACTIVE_KEY].boolValue,YES);
+    XCTAssertEqual(results[2][FORRANGE_KEY].integerValue,1);
+    XCTAssertEqual(results[2][BACKRANGE_KEY].integerValue,1);
+    
+    //wednesday
+    XCTAssertEqual(results[3][IS_DAY_ACTIVE_KEY].boolValue,YES);
+    XCTAssertEqual(results[3][FORRANGE_KEY].integerValue,2);
+    XCTAssertEqual(results[3][BACKRANGE_KEY].integerValue,1);
+    
+    //thurday
+    XCTAssertEqual(results[4][IS_DAY_ACTIVE_KEY].boolValue,NO);
+    XCTAssertEqual(results[4][FORRANGE_KEY].integerValue,1);
+    XCTAssertEqual(results[4][BACKRANGE_KEY].integerValue,1);
+    
+    //friday
+    XCTAssertEqual(results[5][IS_DAY_ACTIVE_KEY].boolValue,YES);
+    XCTAssertEqual(results[5][FORRANGE_KEY].integerValue,1);
+    XCTAssertEqual(results[5][BACKRANGE_KEY].integerValue,2);
+    
+    //saturday
+    XCTAssertEqual(results[6][IS_DAY_ACTIVE_KEY].boolValue,YES);
+    XCTAssertEqual(results[6][FORRANGE_KEY].integerValue,15);
+    XCTAssertEqual(results[6][BACKRANGE_KEY].integerValue,1);
 }
 
 
