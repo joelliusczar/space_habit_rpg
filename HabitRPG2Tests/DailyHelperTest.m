@@ -436,5 +436,102 @@ NSMutableArray<Daily *> *testDailies = nil;
     XCTAssertEqual(results[6][BACKRANGE_KEY].integerValue,1);
 }
 
+//TODO: test hourly difference and think about the case where the user changes their start up time
+//I don't think the scaler stuff comes into play yet
+-(void)testPreviousDate{
+    BOOL testSet[] = {0,1,0,1,0,0,0};//monday, wednesday
+    NSArray<RateValueItemDict *> *activeDays = [Daily buildWeek:testSet scaler:1];
+    //year: 2017, timezone EST
+    //monday dec 25
+    NSDate *result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514178000] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1513746000); //wed dec 20
+    //tueday dec 26
+    result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514264400] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1514178000);
+    //wed dec 27
+    result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514350800] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1514178000);
+    //thus dec 28
+    result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514437200] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1514350800);
+    //fri dec 29
+    result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514523600] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1514350800);
+    //sat dec 30
+    result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514610000] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1514350800);
+    //sun dec 31
+    result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514696400] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1514350800);
+    //mon jan 1
+    result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514782800] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1514350800);
+    //tue jan 2
+    result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514869200] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1514782800);
+    
+    BOOL testSet2[] = {1,0,0,0,0,0,0};
+    activeDays = [Daily buildWeek:testSet2 scaler:1];
+    //year: 2017, timezone EST
+    //monday dec 25
+    result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514178000] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1514091600); //wed dec 20
+    //tueday dec 26
+    result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514264400] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1514091600);
+    //wed dec 27
+    result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514350800] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1514091600);
+    //thus dec 28
+    result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514437200] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1514091600);
+    //fri dec 29
+    result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514523600] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1514091600);
+    //sat dec 30
+    result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514610000] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1514091600);
+    //sun dec 31
+    result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514696400] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1514091600);
+    //mon jan 1
+    result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514782800] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1514696400);
+    //tue jan 2
+    result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514869200] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1514696400);
+    
+    BOOL testSet3[] = {1,1,1,1,1,1,1};
+    activeDays = [Daily buildWeek:testSet3 scaler:1];
+    //year: 2017, timezone EST
+    //monday dec 25
+    result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514178000] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1514091600); //wed dec 20
+    //tueday dec 26
+    result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514264400] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1514178000);
+    //wed dec 27
+    result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514350800] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1514264400);
+    //thus dec 28
+    result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514437200] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1514350800);
+    //fri dec 29
+    result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514523600] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1514437200);
+    //sat dec 30
+    result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514610000] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1514523600);
+    //sun dec 31
+    result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514696400] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1514610000);
+    //mon jan 1
+    result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514782800] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1514696400);
+    //tue jan 2
+    result = [Daily previousDueTime_WEEKLY:[NSDate dateWithTimeIntervalSince1970:1514869200] activeDays:activeDays];
+    XCTAssertEqual(result.timeIntervalSince1970,1514782800);
+    
+}
 
 @end
