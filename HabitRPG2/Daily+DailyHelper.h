@@ -15,6 +15,8 @@
 +(NSMutableArray<RateValueItemDict *> *)buildWeek:(BOOL *)activeDays scaler:(int)scaler;
 +(NSMutableArray<RateValueItemDict *> *)buildEmptyWeek;
 +(void)setActivenessArray:(NSArray<RateValueItemDict *> *)week activeDays:(BOOL *)activeDays;
-+(NSDate *)previousDueTime_WEEKLY:(NSDate *)checkinDate
-                       activeDays:(NSArray<RateValueItemDict *> *)activeDays;
++(NSDate *)previousDueTime_WEEKLY:(NSDate *)lastDueTime checkinTime:(NSDate *)checkinTime
+                       week:(NSArray<RateValueItemDict *> *)week
+                       weekScaler:(NSUInteger)weekScaler;
+
 @end

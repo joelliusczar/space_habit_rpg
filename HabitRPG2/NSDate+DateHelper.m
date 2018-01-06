@@ -138,9 +138,9 @@
 
 +(double)daysBetween:(NSDate *)fromDate to:(NSDate *)toDate{
     NSTimeInterval timeLeft =
-    toDate.timeIntervalSince1970 - fromDate.timeIntervalSince1970;
-    
-    return (timeLeft/86400.0);
+        toDate.timeIntervalSince1970 - fromDate.timeIntervalSince1970;
+    double DAY_LENGTH = 86400.0;
+    return (timeLeft/DAY_LENGTH);
 }
 
 -(NSDate *)setTime:(NSInteger)h minute:(NSInteger)m second:(NSInteger)s{

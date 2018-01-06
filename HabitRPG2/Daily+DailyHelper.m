@@ -153,31 +153,35 @@ NSArray<RateValueItemDict *> *buildWeek(NSUInteger *daysAheadCounts
     return [NSMutableSet setWithArray:keys];
 }
 
-+(NSDate *)previousDueTime_WEEKLY:(NSDate *)checkinDate
-                       activeDays:(NSArray<RateValueItemDict *> *)activeDays{
-    NSUInteger checkinIdx = (NSUInteger)[checkinDate getWeekdayIndex];
-    NSUInteger prevActiveIdx = activeDays.count; //out of bounds
-    NSInteger reverseIdx = checkinIdx; //init to day of check in
-    for(NSUInteger dayIdx = 0;dayIdx < activeDays.count;dayIdx++){
-        reverseIdx--;
-        if(reverseIdx >= 0 ){
-            //breaks on the first match because that is the previous day
-            if(activeDays[reverseIdx][IS_DAY_ACTIVE_KEY].boolValue){
-                break;
-            }
-            continue;
-        }
-        //check the days of the week after check in date.break if found
-        if(activeDays[activeDays.count -dayIdx -1][IS_DAY_ACTIVE_KEY].boolValue){
+
+/*TODO: do lastDueTime need to be converted to todayStart and if so I guess that should be
+updated to all dailies
+ */
++(NSDate *)previousDueTime_WEEKLY:(NSDate *)lastDueTime checkinTime:(NSDate *)checkinTime
+                       week:(NSArray<RateValueItemDict *> *)week
+                       weekScaler:(NSUInteger)weekScaler{
+    
+    NSAssert(lastDueTime&&week&&checkinTime,@"parameters cannot be null");
+    NSAssert(checkinTime.timeIntervalSince1970 > lastDueTime.timeIntervalSince1970,
+             @"checkinTime must be greater than lastDueTime");
+    NSAssert(weekScaler > 0,@"week scaler cannot be less than 1");
+    NSUInteger lastDayIdx = [lastDueTime getWeekdayIndex];
+    NSUInteger daySpan = [NSDate
+                          daysBetween:[lastDueTime adjustDate:0 month:0 day:-1*lastDayIdx]
+                          to:checkinTime];
+    NSUInteger checkinDayIdx = [checkinTime getWeekdayIndex];
+    NSUInteger prevSunToFirstSpan = daySpan - checkinDayIdx; //move to beginig of week
+    NSUInteger sunOfPrevActiveWeek = prevSunToFirstSpan - (prevSunToFirstSpan % (SHCONST.DAYS_IN_WEEK * weekScaler));
+    NSUInteger prevDayIdx = SHCONST.DAYS_IN_WEEK;
+    for(NSUInteger i = 0;i < SHCONST.DAYS_IN_WEEK;i++){
+        NSUInteger dayIdx = (SHCONST.DAYS_IN_WEEK + checkinDayIdx -i -1) % SHCONST.DAYS_IN_WEEK;
+        if(week[dayIdx][IS_DAY_ACTIVE_KEY].boolValue){
+            prevDayIdx = dayIdx;
             break;
         }
     }
-    //if found
-    if(prevActiveIdx < activeDays.count){
-        return [checkinDate adjustDate:0 month:0 day:-1*activeDays[prevActiveIdx][BACKRANGE_KEY].integerValue];
-    }
-    //else case:this means that there's only one active day a week
-    return [checkinDate adjustDate:0 month:0 day:-1*activeDays[checkinIdx][BACKRANGE_KEY].integerValue];
+    NSAssert(prevDayIdx < SHCONST.DAYS_IN_WEEK,@"no days are active");
+    return [lastDueTime adjustDate:0 month:0 day: sunOfPrevActiveWeek + prevDayIdx];
 }
 
 @end
