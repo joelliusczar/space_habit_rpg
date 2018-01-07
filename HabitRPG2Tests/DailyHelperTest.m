@@ -33,32 +33,32 @@ NSMutableArray<Daily *> *testDailies = nil;
         NSDate *dailyDate = nil;
         if(i%10 == 0){
             //before
-            dailyDate = [NSDate createDateTime:1988 month:4 day:27 hour:5 minute:0 second:0];
+            dailyDate = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:5 minute:0 second:0];
             a0++;
         }
         else if(i%9 == 0){
             //on
-            dailyDate = [NSDate createDateTime:1988 month:4 day:27 hour:6 minute:0 second:0];
+            dailyDate = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:6 minute:0 second:0];
             a1++;
         }
         else if(i%8 == 0){
             //after
-            dailyDate = [NSDate createDateTime:1988 month:4 day:27 hour:7 minute:0 second:0];
+            dailyDate = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:7 minute:0 second:0];
             a2++;
         }
         else if(i%7 == 0){
             //after next actual day
-            dailyDate = [NSDate createDateTime:1988 month:4 day:28 hour:2 minute:0 second:0];
+            dailyDate = [NSDate createDateTimeWithYear:1988 month:4 day:28 hour:2 minute:0 second:0];
             a3++;
         }
         else if(i%6 == 0){
             //after after
-            dailyDate = [NSDate createDateTime:1988 month:4 day:28 hour:8 minute:0 second:0];
+            dailyDate = [NSDate createDateTimeWithYear:1988 month:4 day:28 hour:8 minute:0 second:0];
             a4++;
         }
         else if(i%5 == 0){
             //before before
-            dailyDate = [NSDate createDateTime:1988 month:4 day:26 hour:8 minute:0 second:0];
+            dailyDate = [NSDate createDateTimeWithYear:1988 month:4 day:26 hour:8 minute:0 second:0];
             a5++;
         }
         testDailies[i].lastActivationTime = dailyDate;
@@ -87,7 +87,7 @@ NSMutableArray<Daily *> *testDailies = nil;
 
 -(void)testRetrieveUnfinishedDailies{
     
-    NSDate *testDate = [NSDate createDateTime:1988 month:4 day:27 hour:6 minute:0 second:0];
+    NSDate *testDate = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:6 minute:0 second:0];
     NSFetchedResultsController *results = [Daily getUnfinishedDailiesController:testDate];
     NSFetchedResultsController *results2 = [Daily getFinishedDailiesController:testDate];
     NSError *error;
@@ -145,7 +145,7 @@ NSMutableArray<Daily *> *testDailies = nil;
 }
 
 //-(void)testCalculateNextDueTime{
-//    NSDate *checkinTime = [NSDate createDateTime:1988 month:4 day:27 hour:11 minute:15 second:30 timeZone:[NSTimeZone timeZoneWithName:@"America/New_York"]];
+//    NSDate *checkinTime = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:11 minute:15 second:30 timeZone:[NSTimeZone timeZoneWithName:@"America/New_York"]];
 //    //is due next day at 12AM
 //    NSDate *nextDueTime = [Daily calculateNextDueTime:checkinTime withRate:1 andDayStart:0];
 //    XCTAssertEqual(nextDueTime.timeIntervalSince1970,578203200);
@@ -159,11 +159,11 @@ NSMutableArray<Daily *> *testDailies = nil;
 
 -(void)testDaysUntilDue{
     Daily *d = [Daily constructDaily];
-    d.lastActivationTime = [NSDate createDateTime:1988 month:4 day:27 hour:13 minute:24 second:11 timeZone: [NSTimeZone timeZoneWithName:@"America/New_York"]];
+    d.lastActivationTime = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:13 minute:24 second:11 timeZone: [NSTimeZone timeZoneWithName:@"America/New_York"]];
     //if the rate is one, it should always result in being 0 days until Daily is due
     d.rate = 1;
     SHSettings.dayStart = 0;
-    testTodayReplacement = [NSDate createDateTime:1988 month:4 day:28 hour:9 minute:24 second:11 timeZone: [NSTimeZone timeZoneWithName:@"America/New_York"]];
+    testTodayReplacement = [NSDate createDateTimeWithYear:1988 month:4 day:28 hour:9 minute:24 second:11 timeZone: [NSTimeZone timeZoneWithName:@"America/New_York"]];
     XCTAssertEqual(d.daysUntilDue,0);
     d.rate = 2;
     XCTAssertEqual(d.daysUntilDue,1);
@@ -442,10 +442,17 @@ NSMutableArray<Daily *> *testDailies = nil;
     BOOL testSet[] = {0,1,0,1,0,0,0};//monday, wednesday
     int weekScaler = 3;
     NSArray<RateValueItemDict *> *week = [Daily buildWeek:testSet scaler:weekScaler];
-    NSDate *lastDueDate = [NSDate createSimpleDate:2017 month:1 day:5];
-    NSDate *checkinDate = [lastDueDate adjustDate:0 month:0 day:81];
+    NSDate *base = [NSDate createSimpleDateWithYear:2018 month:1 day:7];
+    
+    NSDate *lastDueDate = [base dateAfterYears:0 months:0 days:1];
+    NSDate *checkinDate = [base dateAfterYears:0 months:0 days:81];
     NSDate *result = [Daily previousDueTime_WEEKLY:lastDueDate checkinTime:checkinDate week:week weekScaler:weekScaler];
-    NSDate *expectedDate = [NSDate createSimpleDate:2017 month:1 day: 71];
+    NSDate *expectedDate = [base dateAfterYears:0 months:0 days:66];
+    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    
+    checkinDate = [base dateAfterYears:0 months:0 days:65];
+    result = [Daily previousDueTime_WEEKLY:lastDueDate checkinTime:checkinDate week:week weekScaler:weekScaler];
+    expectedDate = [base dateAfterYears:0 months:0 days:64];
     XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
     
 }

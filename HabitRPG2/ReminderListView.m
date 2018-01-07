@@ -99,7 +99,7 @@ numberOfRowsInSection:(NSInteger)section{
                                       constructEmptyEntity:Reminder.entity];
     //we only really care about the hour and minute
     reminder.reminderHour = [NSDate
-                             createSimpleTime:hour
+                             createSimpleTimeWithHour:hour
                              minute:minute second:0];
     reminder.daysBeforeDue = [SHMath toIntExact:daysBefore];
     [self.dueDateInfo addNewReminder:reminder];

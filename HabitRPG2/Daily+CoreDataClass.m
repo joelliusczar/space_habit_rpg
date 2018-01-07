@@ -141,10 +141,10 @@ int checkImportanceRange(int importance){
     return nil;
 }
 
-
+//TODO: this day start may need to change
 -(int)daysUntilDue{
     NSDate *roundedDownToday = [[NSDate date]
-                                    setTime:SHSettings.dayStart minute:0 second:0];
+                                    setHour:SHSettings.dayStart minute:0 second:0];
     return (int)[NSDate daysBetween:roundedDownToday to:self.nextDueTime];
 }
 

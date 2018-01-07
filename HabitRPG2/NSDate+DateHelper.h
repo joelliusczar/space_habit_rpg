@@ -13,21 +13,21 @@
 @property (class,strong,atomic) NSLocale *inUseLocale;
 @property (class,strong,atomic) NSCalendar *inUseCalendar;
 @property (class,strong,atomic) NSTimeZone *inUseTimeZone;
--(NSDate *)adjustDate:(NSInteger)y month:(NSInteger)m day:(NSInteger)d;
--(NSDate *)adjustTime:(NSInteger)h minute:(NSInteger)m second:(NSInteger)s;
-+(NSDate *)createDateTime:(NSInteger)year month:(NSInteger)month
+-(NSDate *)dateAfterYears:(NSInteger)y months:(NSInteger)m days:(NSInteger)d;
+-(NSDate *)timeAfterHours:(NSInteger)h minutes:(NSInteger)m seconds:(NSInteger)s;
++(NSDate *)createDateTimeWithYear:(NSInteger)year month:(NSInteger)month
                       day:(NSInteger)day hour:(NSInteger)hour
                    minute:(NSInteger)minute second:(NSInteger)second;
-+(NSDate *)createDateTime:(NSInteger)year month:(NSInteger)month
++(NSDate *)createDateTimeWithYear:(NSInteger)year month:(NSInteger)month
                       day:(NSInteger)day hour:(NSInteger)hour
                    minute:(NSInteger)minute second:(NSInteger)second
                  timeZone:(NSTimeZone *)timeZone;
 +(NSDate *)todayStart;
-+(double)daysBetween:(NSDate *)fromDate to:(NSDate *)toDate;
--(NSDate *)setTime:(NSInteger)h minute:(NSInteger)m second:(NSInteger)s;
-+(NSDate *)createSimpleTime:(NSInteger)hour minute:(NSInteger)minute
++(NSInteger)daysBetween:(NSDate *)fromDate to:(NSDate *)toDate;
+-(NSDate *)setHour:(NSInteger)h minute:(NSInteger)m second:(NSInteger)s;
++(NSDate *)createSimpleTimeWithHour:(NSInteger)hour minute:(NSInteger)minute
                      second:(NSInteger)second;
-+(NSDate *)createSimpleDate:(NSInteger)year month:(NSInteger)month
++(NSDate *)createSimpleDateWithYear:(NSInteger)year month:(NSInteger)month
                         day:(NSInteger)day;
 +(NSString *)timeOfDayInSystemPreferredFormat:(NSInteger)hour
                               andMinute:(NSInteger)minute;

@@ -125,18 +125,13 @@ bestMatchPredicate yearlyBestMatch = ^BOOL(RateValueItemDict *a,RateValueItemDic
 
 -(NSDate *)nextDueTime_DAILY:(NSDate *)checkinDate{
     NSDate *checkinDateStart = [SharedGlobal.inUseCalendar startOfDayForDate:checkinDate];
-    NSDate *nextDueDateStart = [checkinDateStart adjustDate:0 month:0 day:self.rate];
-    return [nextDueDateStart adjustTime:SHSettings.dayStart minute:0 second:0];
+    NSDate *nextDueDateStart = [checkinDateStart dateAfterYears:0 months:0 days:self.rate];
+    return [nextDueDateStart timeAfterHours:SHSettings.dayStart minutes:0 seconds:0];
 }
 
 
 -(NSDate *)nextDueTime_DAILY_INVERSE:(NSDate *)checkinDate{
-    NSDate *todayStart = [NSDate todayStart];
-    int daysBtw = (int)[NSDate daysBetween:checkinDate to:todayStart];
-    if(self.rate - daysBtw == 0){
-        return [todayStart adjustDate:0 month:0 day:1];
-    }
-    return [todayStart adjustDate:0 month:0 day:0];
+    return nil;
 }
 
 /*

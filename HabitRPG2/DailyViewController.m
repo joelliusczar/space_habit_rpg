@@ -117,7 +117,7 @@ static NSString *const EntityName = @"Daily";
 
 -(void)setupData{
     NSDate *todayStart = [NSDate todayStart];
-    todayStart = [todayStart adjustTime:SHData.userData.theSettings.dayStart minute:0 second:0];
+    todayStart = [todayStart timeAfterHours:SHData.userData.theSettings.dayStart minutes:0 seconds:0];
     self.incompleteItems = [Daily getUnfinishedDailiesController:todayStart];
     self.completeItems = [Daily getFinishedDailiesController:todayStart];
     

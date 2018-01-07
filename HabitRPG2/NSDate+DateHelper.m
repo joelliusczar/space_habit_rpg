@@ -57,7 +57,7 @@
 }
 
 
--(NSDate *)adjustDate:(NSInteger)y month:(NSInteger)m day:(NSInteger)d{
+-(NSDate *)dateAfterYears:(NSInteger)y months:(NSInteger)m days:(NSInteger)d{
     
     NSCalendar *calendar = NSDate.inUseCalendar;
     NSDate *date = [calendar dateByAddingUnit:NSCalendarUnitYear value:y
@@ -67,14 +67,14 @@
                                toDate:date options:0];
     
     date = [calendar dateByAddingUnit:NSCalendarUnitDay value:d
-                               toDate:date options:0];
+                               toDate:date options:NSCalendarMatchStrictly];
     
     return date;
 }
 
 
--(NSDate *)adjustTime:(NSInteger)h minute:(NSInteger)m
-               second:(NSInteger)s{
+-(NSDate *)timeAfterHours:(NSInteger)h minutes:(NSInteger)m
+               seconds:(NSInteger)s{
     
     NSCalendar *calendar = NSDate.inUseCalendar;
     NSDate *dt = [calendar dateByAddingUnit:NSCalendarUnitHour value:h
@@ -90,7 +90,7 @@
 }
 
 
-+(NSDate *)createDateTime:(NSInteger)year month:(NSInteger)month
++(NSDate *)createDateTimeWithYear:(NSInteger)year month:(NSInteger)month
                       day:(NSInteger)day hour:(NSInteger)hour
                    minute:(NSInteger)minute second:(NSInteger)second
                  timeZone:(NSTimeZone *)timeZone{
@@ -109,26 +109,26 @@
 }
 
 
-+(NSDate *)createDateTime:(NSInteger)year month:(NSInteger)month
++(NSDate *)createDateTimeWithYear:(NSInteger)year month:(NSInteger)month
                       day:(NSInteger)day hour:(NSInteger)hour
                    minute:(NSInteger)minute second:(NSInteger)second{
     
     return
-    [NSDate createDateTime:year month:month day:day hour:hour minute:minute
+    [NSDate createDateTimeWithYear:year month:month day:day hour:hour minute:minute
                     second:second timeZone:self.inUseTimeZone];
 }
 
 
-+(NSDate *)createSimpleTime:(NSInteger)hour minute:(NSInteger)minute
++(NSDate *)createSimpleTimeWithHour:(NSInteger)hour minute:(NSInteger)minute
                      second:(NSInteger)second{
     return
-    [NSDate createDateTime:1970 month:1 day:1 hour:hour minute:minute
+    [NSDate createDateTimeWithYear:1970 month:1 day:1 hour:hour minute:minute
                     second:second];
 }
 
 
-+(NSDate *)createSimpleDate:(NSInteger)year month:(NSInteger)month day:(NSInteger)day{
-    return [NSDate createDateTime:year month:month day:day hour:0 minute:0 second:0];
++(NSDate *)createSimpleDateWithYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day{
+    return [NSDate createDateTimeWithYear:year month:month day:day hour:0 minute:0 second:0];
 }
 
 
@@ -136,16 +136,16 @@
     return [self.inUseCalendar startOfDayForDate:[NSDate date]];
 }
 
-+(double)daysBetween:(NSDate *)fromDate to:(NSDate *)toDate{
-    NSTimeInterval timeLeft =
-        toDate.timeIntervalSince1970 - fromDate.timeIntervalSince1970;
-    double DAY_LENGTH = 86400.0;
-    return (timeLeft/DAY_LENGTH);
++(NSInteger)daysBetween:(NSDate *)fromDate to:(NSDate *)toDate{
+    NSCalendar *calendar = self.inUseCalendar;
+    NSDateComponents *dayComponent = [calendar components:NSCalendarUnitDay
+                                                 fromDate:fromDate toDate:toDate options:0];
+    return dayComponent.day;
 }
 
--(NSDate *)setTime:(NSInteger)h minute:(NSInteger)m second:(NSInteger)s{
+-(NSDate *)setHour:(NSInteger)h minute:(NSInteger)m second:(NSInteger)s{
     NSDate *roundedDownDate = [NSDate.inUseCalendar startOfDayForDate:self];
-    return [roundedDownDate adjustTime:h minute:m second:s];
+    return [roundedDownDate timeAfterHours:h minutes:m seconds:s];
 }
 
 +(NSString *)timeOfDayInSystemPreferredFormat:(NSInteger)hour
@@ -154,7 +154,7 @@
     formatter.locale = self.inUseLocale;
     formatter.timeStyle = NSDateFormatterShortStyle;
     NSString *dateString = [formatter stringFromDate:
-                            [NSDate createSimpleTime:hour minute:minute
+                            [NSDate createSimpleTimeWithHour:hour minute:minute
                                               second:0]];
     
     return dateString;
@@ -170,12 +170,7 @@
 }
 
 -(NSInteger)getWeekdayIndex{
-    /*
-        I'm specifically using the gregorian calendar here because I do not to deal
-        with any possible bugs that might result from using a calendar that might not have
-        seven days
-     */
-    return [[NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian] component:NSCalendarUnitWeekday fromDate:self] -1;
+    return [NSDate.inUseCalendar component:NSCalendarUnitWeekday fromDate:self] % 7;
 }
 
 @end

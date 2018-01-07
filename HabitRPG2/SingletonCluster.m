@@ -85,6 +85,12 @@
     .dataController.userData.theDataInfo.gameState;
 }
 
+
+/*
+ I'm specifically using the gregorian calendar here because I do not to deal
+ with any possible bugs that might result from using a calendar that might not have
+ seven days
+ */
 @synthesize inUseCalendar = _inUseCalendar;
 -(NSCalendar *)inUseCalendar{
     if(nil==_inUseCalendar){

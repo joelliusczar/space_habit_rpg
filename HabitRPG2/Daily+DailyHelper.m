@@ -166,9 +166,8 @@ updated to all dailies
              @"checkinTime must be greater than lastDueTime");
     NSAssert(weekScaler > 0,@"week scaler cannot be less than 1");
     NSUInteger lastDayIdx = [lastDueTime getWeekdayIndex];
-    NSUInteger daySpan = [NSDate
-                          daysBetween:[lastDueTime adjustDate:0 month:0 day:-1*lastDayIdx]
-                          to:checkinTime];
+    NSDate *firstDayOfFirstWeek = [lastDueTime dateAfterYears:0 months:0 days:-1*lastDayIdx];
+    NSUInteger daySpan = [NSDate daysBetween:firstDayOfFirstWeek to:checkinTime];
     NSUInteger checkinDayIdx = [checkinTime getWeekdayIndex];
     NSUInteger prevSunToFirstSpan = daySpan - checkinDayIdx; //move to beginig of week
     NSUInteger sunOfPrevActiveWeek = prevSunToFirstSpan - (prevSunToFirstSpan % (SHCONST.DAYS_IN_WEEK * weekScaler));
@@ -181,7 +180,7 @@ updated to all dailies
         }
     }
     NSAssert(prevDayIdx < SHCONST.DAYS_IN_WEEK,@"no days are active");
-    return [lastDueTime adjustDate:0 month:0 day: sunOfPrevActiveWeek + prevDayIdx];
+    return [firstDayOfFirstWeek dateAfterYears:0 months:0 days:sunOfPrevActiveWeek + prevDayIdx];
 }
 
 @end

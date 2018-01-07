@@ -17,7 +17,7 @@
 @implementation CommonUtilities
 
 NSDate* _Nonnull getReferenceDate(){
-    NSCalendar *cal = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendar *cal = SharedGlobal.inUseCalendar;
     NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
     dateComponents.year = 2016;
     dateComponents.month = 1;

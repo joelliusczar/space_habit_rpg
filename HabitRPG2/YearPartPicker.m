@@ -75,8 +75,8 @@ numberOfRowsInComponent:(NSInteger)component{
 
 -(void)setupSelectedMonthLength:(NSInteger)month1Base{
     NSAssert(month1Base>0&&month1Base<13,@"month should between 1 and 12");
-    
-    NSDate *sampleDate = [NSDate createSimpleDate:1972 month:month1Base day:1];
+    int arbitraryYear = 1972;
+    NSDate *sampleDate = [NSDate createSimpleDateWithYear:arbitraryYear month:month1Base day:1];
     NSRange range = [self.utilityStore.inUseCalendar
                      rangeOfUnit:NSCalendarUnitDay
                      inUnit:NSCalendarUnitMonth
