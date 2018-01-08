@@ -217,6 +217,7 @@ NSInteger calcDaysBetween(NSInteger span){
 }
 
 -(void)testGetDayOfWeek{
+    //time zone is GMT
     NSDate *testDate = [NSDate createSimpleDateWithYear:2018 month:1 day:7];
     NSInteger result = [testDate getWeekdayIndex];
     XCTAssertEqual(result,0);

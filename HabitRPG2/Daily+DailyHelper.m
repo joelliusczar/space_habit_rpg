@@ -156,6 +156,7 @@ NSArray<RateValueItemDict *> *buildWeek(NSUInteger *daysAheadCounts
 
 /*TODO: do lastDueTime need to be converted to todayStart and if so I guess that should be
 updated to all dailies
+ Assume that dates are in GMT, otherwise things get fucky
  */
 +(NSDate *)previousDueTime_WEEKLY:(NSDate *)lastDueTime checkinTime:(NSDate *)checkinTime
                        week:(NSArray<RateValueItemDict *> *)week
@@ -165,12 +166,11 @@ updated to all dailies
     NSAssert(checkinTime.timeIntervalSince1970 > lastDueTime.timeIntervalSince1970,
              @"checkinTime must be greater than lastDueTime");
     NSAssert(weekScaler > 0,@"week scaler cannot be less than 1");
+    
     NSUInteger lastDayIdx = [lastDueTime getWeekdayIndex];
     NSDate *firstDayOfFirstWeek = [lastDueTime dateAfterYears:0 months:0 days:-1*lastDayIdx];
     NSUInteger daySpan = [NSDate daysBetween:firstDayOfFirstWeek to:checkinTime];
     NSUInteger checkinDayIdx = [checkinTime getWeekdayIndex];
-    NSUInteger prevSunToFirstSpan = daySpan - checkinDayIdx; //move to beginig of week
-    NSUInteger sunOfPrevActiveWeek = prevSunToFirstSpan - (prevSunToFirstSpan % (SHCONST.DAYS_IN_WEEK * weekScaler));
     NSUInteger prevDayIdx = SHCONST.DAYS_IN_WEEK;
     for(NSUInteger i = 0;i < SHCONST.DAYS_IN_WEEK;i++){
         NSUInteger dayIdx = (SHCONST.DAYS_IN_WEEK + checkinDayIdx -i -1) % SHCONST.DAYS_IN_WEEK;
@@ -180,7 +180,13 @@ updated to all dailies
         }
     }
     NSAssert(prevDayIdx < SHCONST.DAYS_IN_WEEK,@"no days are active");
-    return [firstDayOfFirstWeek dateAfterYears:0 months:0 days:sunOfPrevActiveWeek + prevDayIdx];
+    NSUInteger sameWeekOffset = prevDayIdx > checkinDayIdx?SHCONST.DAYS_IN_WEEK:0;
+    NSUInteger prevSunToFirstSpan = daySpan - checkinDayIdx -sameWeekOffset; //move to beginig of week
+    NSUInteger sunOfPrevActiveWeek = prevSunToFirstSpan - (prevSunToFirstSpan % (SHCONST.DAYS_IN_WEEK * weekScaler));
+    
+    NSDate *result = [firstDayOfFirstWeek dateAfterYears:0 months:0 days:sunOfPrevActiveWeek + prevDayIdx];
+    NSAssert(result.timeIntervalSince1970 <= checkinTime.timeIntervalSince1970,@"error in calculation");
+    return result;
 }
 
 @end

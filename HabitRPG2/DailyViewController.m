@@ -103,7 +103,7 @@ static NSString *const EntityName = @"Daily";
 
 -(void)completeDaily:(Daily *)daily{
         daily.rollbackActivationTime = daily.lastActivationTime;
-        daily.lastActivationTime = [NSDate todayStart];
+        daily.lastActivationTime = [[NSDate date] dayStart];
         //TODO: calculate damage done to monster
         //TODO: save
 }
@@ -116,7 +116,7 @@ static NSString *const EntityName = @"Daily";
 
 
 -(void)setupData{
-    NSDate *todayStart = [NSDate todayStart];
+    NSDate *todayStart = [[NSDate date] dayStart];
     todayStart = [todayStart timeAfterHours:SHData.userData.theSettings.dayStart minutes:0 seconds:0];
     self.incompleteItems = [Daily getUnfinishedDailiesController:todayStart];
     self.completeItems = [Daily getFinishedDailiesController:todayStart];

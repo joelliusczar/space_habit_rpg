@@ -293,7 +293,6 @@
 		271AB34B1F9BC5F800D30521 /* DailyEditController+ControlLoaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DailyEditController+ControlLoaders.h"; sourceTree = "<group>"; };
 		271AB34C1F9BC5F800D30521 /* DailyEditController+ControlLoaders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DailyEditController+ControlLoaders.m"; sourceTree = "<group>"; };
 		271AB34E1F9BD2AE00D30521 /* AllSHControls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllSHControls.h; sourceTree = "<group>"; };
-		271AB35A1F9CE89A00D30521 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		271AB3861F9CEA2500D30521 /* HabitRPG2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitRPG2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		271AB38A1F9CEA2500D30521 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		271AB3B21FA2BAA400D30521 /* P_Interceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_Interceptor.h; sourceTree = "<group>"; };
@@ -383,7 +382,6 @@
 		274A37E61F145CA400F31E0F /* House.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = House.m; sourceTree = "<group>"; };
 		274A37E81F145D2200F31E0F /* House+Things.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "House+Things.h"; sourceTree = "<group>"; };
 		274A37E91F145D2200F31E0F /* House+Things.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "House+Things.m"; sourceTree = "<group>"; };
-		274A37F01F148F4500F31E0F /* WeekdayEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeekdayEnum.h; sourceTree = "<group>"; };
 		274A382E1F2150ED00F31E0F /* MathTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathTest.m; sourceTree = "<group>"; };
 		274A38361F2194FD00F31E0F /* ParentMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentMan.h; sourceTree = "<group>"; };
 		274A38371F2194FD00F31E0F /* ParentMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentMan.m; sourceTree = "<group>"; };
@@ -729,14 +727,6 @@
 			name = DataInfo;
 			sourceTree = "<group>";
 		};
-		271AB3571F9CE89A00D30521 /* HabitRPG2Tests */ = {
-			isa = PBXGroup;
-			children = (
-				271AB35A1F9CE89A00D30521 /* Info.plist */,
-			);
-			path = HabitRPG2Tests;
-			sourceTree = "<group>";
-		};
 		271AB3871F9CEA2500D30521 /* HabitRPG2Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1063,6 +1053,31 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		27C547882002A398008A7D1F /* NSObject+Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				27F0D5BD1F4A3E02002DE59C /* NSNumber+Helpers.h */,
+				27F0D5BE1F4A3E02002DE59C /* NSNumber+Helpers.m */,
+				2737AF3B1F6F02F8000FCFD3 /* NSMutableDictionary+Helper.h */,
+				2737AF3C1F6F02F8000FCFD3 /* NSMutableDictionary+Helper.m */,
+				272428291F41090D0028B22E /* NSException+SHCommonExceptions.h */,
+				2724282A1F41090D0028B22E /* NSException+SHCommonExceptions.m */,
+				275D9F2B1F22BAED009DA715 /* UIView+Helpers.h */,
+				275D9F2C1F22BAED009DA715 /* UIView+Helpers.m */,
+				274A37B61F0DC03100F31E0F /* NSLocale+Helper.h */,
+				274A37B71F0DC03100F31E0F /* NSLocale+Helper.m */,
+				2774040F1EFDBD43008E1AFC /* NSObject+Helper.h */,
+				277404101EFDBD43008E1AFC /* NSObject+Helper.m */,
+				275D9F281F22294F009DA715 /* UIScrollView+ScrollAdjusters.h */,
+				275D9F291F22294F009DA715 /* UIScrollView+ScrollAdjusters.m */,
+				27A559BA1F5E5F3000C915E6 /* NSMutableArray+Helper.h */,
+				27A559BB1F5E5F3000C915E6 /* NSMutableArray+Helper.m */,
+				275FEEFC1EE3172C00AED1A2 /* NSDate+DateHelper.h */,
+				275FEEFD1EE3172C00AED1A2 /* NSDate+DateHelper.m */,
+			);
+			name = "NSObject+Helpers";
+			sourceTree = "<group>";
+		};
 		27C92C3C1E3313580025727E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1354,6 +1369,7 @@
 		68DD159E1D9CAA010073E7D8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				27C547882002A398008A7D1F /* NSObject+Helpers */,
 				686ED3AA1DADE4A4004EDD36 /* Settings */,
 				686ED3A91DADE47C004EDD36 /* EditingScreen */,
 				686ED3A81DADDF69004EDD36 /* Protocols */,
@@ -1362,8 +1378,6 @@
 				68F3F9E31D70E8DB00840DD2 /* CentralViewController.xib */,
 				68F3F9E21D70E8DB00840DD2 /* CentralViewController.m */,
 				68F3F9E11D70E8DB00840DD2 /* CentralViewController.h */,
-				27A559BA1F5E5F3000C915E6 /* NSMutableArray+Helper.h */,
-				27A559BB1F5E5F3000C915E6 /* NSMutableArray+Helper.m */,
 				6886A47E1D8E5FD0005E12B3 /* constants.h */,
 				6886A47F1D8E5FD0005E12B3 /* constants.m */,
 				68BA38841D93576600CB5A76 /* CommonUtilities.h */,
@@ -1378,38 +1392,21 @@
 				277ABEC81E949B96008CC239 /* StdLibWrapper.m */,
 				277ABECF1E95DEF6008CC239 /* ProbWeight.h */,
 				277ABED01E95DEF6008CC239 /* ProbWeight.m */,
-				275FEEFC1EE3172C00AED1A2 /* NSDate+DateHelper.h */,
-				275FEEFD1EE3172C00AED1A2 /* NSDate+DateHelper.m */,
 				275FEF011EE3A78200AED1A2 /* timeZoneList.txt */,
 				2709B3971EEF750800EEE5CC /* ReportServiceCaller.h */,
 				2709B3981EEF750800EEE5CC /* ReportServiceCaller.m */,
 				2709B39A1EF0D31200EEE5CC /* Interceptor.h */,
 				2709B39B1EF0D31200EEE5CC /* Interceptor.m */,
-				2774040F1EFDBD43008E1AFC /* NSObject+Helper.h */,
-				277404101EFDBD43008E1AFC /* NSObject+Helper.m */,
 				274A37B31F0A1D6200F31E0F /* SHMath.h */,
 				274A37B41F0A1D6200F31E0F /* SHMath.m */,
-				274A37B61F0DC03100F31E0F /* NSLocale+Helper.h */,
-				274A37B71F0DC03100F31E0F /* NSLocale+Helper.m */,
-				274A37F01F148F4500F31E0F /* WeekdayEnum.h */,
-				275D9F281F22294F009DA715 /* UIScrollView+ScrollAdjusters.h */,
-				275D9F291F22294F009DA715 /* UIScrollView+ScrollAdjusters.m */,
-				275D9F2B1F22BAED009DA715 /* UIView+Helpers.h */,
-				275D9F2C1F22BAED009DA715 /* UIView+Helpers.m */,
 				276159771F2E3B64002E8BF9 /* NotificationHelper.h */,
 				276159781F2E3B64002E8BF9 /* NotificationHelper.m */,
-				27F0D5BD1F4A3E02002DE59C /* NSNumber+Helpers.h */,
-				27F0D5BE1F4A3E02002DE59C /* NSNumber+Helpers.m */,
 				270D39BA1F5D1CF900F371F0 /* RateTypeHelper.m */,
 				270D39BB1F5D1CF900F371F0 /* RateTypeHelper.h */,
-				2737AF3B1F6F02F8000FCFD3 /* NSMutableDictionary+Helper.h */,
-				2737AF3C1F6F02F8000FCFD3 /* NSMutableDictionary+Helper.m */,
 				27F4401A1E220097002BEDD4 /* OnlyOneEntities.h */,
 				27F4401B1E220097002BEDD4 /* OnlyOneEntities.m */,
 				271C04891E8C955A002221E9 /* SingletonCluster.h */,
 				271C048A1E8C955A002221E9 /* SingletonCluster.m */,
-				272428291F41090D0028B22E /* NSException+SHCommonExceptions.h */,
-				2724282A1F41090D0028B22E /* NSException+SHCommonExceptions.m */,
 				27A559D41F67986900C915E6 /* SHControlKeep.h */,
 				27A559D51F67986900C915E6 /* SHControlKeep.m */,
 				270366EC1F6CB0AF00D4BDC8 /* SELPtr.h */,
@@ -1431,7 +1428,6 @@
 				277ABF711EAD9DC3008CC239 /* Scripts */,
 				68F3F9AB1D70E82E00840DD2 /* HabitRPG2 */,
 				274A37C41F107ACF00F31E0F /* ObjCScriptRunner */,
-				271AB3571F9CE89A00D30521 /* HabitRPG2Tests */,
 				271AB3871F9CEA2500D30521 /* HabitRPG2Tests */,
 				68F3F9AA1D70E82E00840DD2 /* Products */,
 			);

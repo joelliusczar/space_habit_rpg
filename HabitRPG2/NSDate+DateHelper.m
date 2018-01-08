@@ -17,10 +17,11 @@
 
 +(NSLocale *)inUseLocale{
     id tmp = objc_getAssociatedObject(self,@selector(inUseLocale));
-    if(tmp){
-        return (NSLocale *)tmp;
+    if(nil == tmp){
+        tmp = SharedGlobal.inUseLocale;
     }
-    return SharedGlobal.inUseLocale;
+    NSLocale *locale = (NSLocale *)tmp;
+    return locale;
 }
 
 
@@ -31,10 +32,13 @@
 
 +(NSCalendar *)inUseCalendar{
     id tmp = objc_getAssociatedObject(self,@selector(inUseCalendar));
-    if(tmp){
-        return (NSCalendar *)tmp;
+    if(nil == tmp){
+        tmp = SharedGlobal.inUseCalendar;
     }
-    return SharedGlobal.inUseCalendar;
+    NSCalendar *calendar = (NSCalendar *)tmp;
+    calendar.timeZone = self.inUseTimeZone;
+    calendar.locale = self.inUseLocale;
+    return calendar;
 }
 
 
@@ -45,10 +49,11 @@
 
 +(NSTimeZone *)inUseTimeZone{
     id tmp = objc_getAssociatedObject(self,@selector(inUseTimeZone));
-    if(tmp){
-        return (NSTimeZone *)tmp;
+    if(nil == tmp){
+        tmp = SharedGlobal.inUseTimeZone;
     }
-    return SharedGlobal.inUseTimeZone;
+    NSTimeZone *tz = (NSTimeZone *)tmp;
+    return tz;
 }
 
 
@@ -67,7 +72,7 @@
                                toDate:date options:0];
     
     date = [calendar dateByAddingUnit:NSCalendarUnitDay value:d
-                               toDate:date options:NSCalendarMatchStrictly];
+                               toDate:date options:0];
     
     return date;
 }
@@ -132,9 +137,10 @@
 }
 
 
-+(NSDate *)todayStart{
-    return [self.inUseCalendar startOfDayForDate:[NSDate date]];
+-(NSDate *)dayStart{
+    return [NSDate.inUseCalendar startOfDayForDate:self];
 }
+
 
 +(NSInteger)daysBetween:(NSDate *)fromDate to:(NSDate *)toDate{
     NSCalendar *calendar = self.inUseCalendar;
@@ -169,8 +175,15 @@
     return [NSString stringWithFormat:@"%ld:%ld",convertedHour,components.minute];
 }
 
+/*
+ In here, I want to force it to use GMT so that the returned results will be consistent
+ */
 -(NSInteger)getWeekdayIndex{
-    return [NSDate.inUseCalendar component:NSCalendarUnitWeekday fromDate:self] % 7;
+    NSTimeZone *currentTZ = objc_getAssociatedObject(NSDate.class,@selector(inUseTimeZone));
+    NSDate.inUseTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+    NSInteger idx = [NSDate.inUseCalendar component:NSCalendarUnitWeekday fromDate:self] -1;
+    NSDate.inUseTimeZone = currentTZ;
+    return idx;
 }
 
 @end

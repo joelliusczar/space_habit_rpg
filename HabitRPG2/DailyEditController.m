@@ -14,7 +14,6 @@
 #import "CustomSwitch.h"
 #import "Daily+DailyHelper.h"
 #import "Interceptor.h"
-#import "WeekdayEnum.h"
 #import "RateTypeHelper.h"
 
 

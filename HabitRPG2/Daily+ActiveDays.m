@@ -131,6 +131,7 @@ bestMatchPredicate yearlyBestMatch = ^BOOL(RateValueItemDict *a,RateValueItemDic
 
 
 -(NSDate *)nextDueTime_DAILY_INVERSE:(NSDate *)checkinDate{
+    (void)checkinDate;
     return nil;
 }
 

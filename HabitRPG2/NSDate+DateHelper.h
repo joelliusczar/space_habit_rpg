@@ -22,7 +22,7 @@
                       day:(NSInteger)day hour:(NSInteger)hour
                    minute:(NSInteger)minute second:(NSInteger)second
                  timeZone:(NSTimeZone *)timeZone;
-+(NSDate *)todayStart;
+-(NSDate *)dayStart;
 +(NSInteger)daysBetween:(NSDate *)fromDate to:(NSDate *)toDate;
 -(NSDate *)setHour:(NSInteger)h minute:(NSInteger)m second:(NSInteger)s;
 +(NSDate *)createSimpleTimeWithHour:(NSInteger)hour minute:(NSInteger)minute

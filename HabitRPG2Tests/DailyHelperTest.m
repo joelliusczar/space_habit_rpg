@@ -445,7 +445,7 @@ NSMutableArray<Daily *> *testDailies = nil;
     NSDate *base = [NSDate createSimpleDateWithYear:2018 month:1 day:7];
     
     NSDate *lastDueDate = [base dateAfterYears:0 months:0 days:1];
-    NSDate *checkinDate = [base dateAfterYears:0 months:0 days:81];
+    NSDate *checkinDate = [base dateAfterYears:0 months:0 days:81]; //march 29
     NSDate *result = [Daily previousDueTime_WEEKLY:lastDueDate checkinTime:checkinDate week:week weekScaler:weekScaler];
     NSDate *expectedDate = [base dateAfterYears:0 months:0 days:66];
     XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
@@ -453,6 +453,88 @@ NSMutableArray<Daily *> *testDailies = nil;
     checkinDate = [base dateAfterYears:0 months:0 days:65];
     result = [Daily previousDueTime_WEEKLY:lastDueDate checkinTime:checkinDate week:week weekScaler:weekScaler];
     expectedDate = [base dateAfterYears:0 months:0 days:64];
+    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    
+    checkinDate = [base dateAfterYears:0 months:0 days:5];
+    result = [Daily previousDueTime_WEEKLY:lastDueDate checkinTime:checkinDate week:week weekScaler:weekScaler];
+    expectedDate = [base dateAfterYears:0 months:0 days:3];
+    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    
+    checkinDate = [base dateAfterYears:0 months:0 days:2];
+    result = [Daily previousDueTime_WEEKLY:lastDueDate checkinTime:checkinDate week:week weekScaler:weekScaler];
+    expectedDate = [base dateAfterYears:0 months:0 days:1];
+    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    
+    bool testSet2[] = {0,0,0,0,0,1,0};
+    week = [Daily buildWeek:testSet2 scaler:weekScaler];
+    
+    lastDueDate = [base dateAfterYears:0 months:0 days:5];
+    checkinDate = [base dateAfterYears:0 months:0 days:81]; //march 29
+    result = [Daily previousDueTime_WEEKLY:lastDueDate checkinTime:checkinDate week:week weekScaler:weekScaler];
+    expectedDate = [base dateAfterYears:0 months:0 days:68];
+    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    
+    checkinDate = [base dateAfterYears:0 months:0 days:6];
+    result = [Daily previousDueTime_WEEKLY:lastDueDate checkinTime:checkinDate week:week weekScaler:weekScaler];
+    expectedDate = [base dateAfterYears:0 months:0 days:5];
+    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    
+    bool testSet3[] = {1,0,0,0,0,0,0};
+    week = [Daily buildWeek:testSet3 scaler:weekScaler];
+    
+    lastDueDate = base;
+    checkinDate = [base dateAfterYears:0 months:0 days:81]; //march 29
+    result = [Daily previousDueTime_WEEKLY:lastDueDate checkinTime:checkinDate week:week weekScaler:weekScaler];
+    expectedDate = [base dateAfterYears:0 months:0 days:63];
+    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    
+    checkinDate = [base dateAfterYears:0 months:0 days:62];
+    result = [Daily previousDueTime_WEEKLY:lastDueDate checkinTime:checkinDate week:week weekScaler:weekScaler];
+    expectedDate = [base dateAfterYears:0 months:0 days:42];
+    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    
+    checkinDate = [base dateAfterYears:0 months:0 days:1];
+    result = [Daily previousDueTime_WEEKLY:lastDueDate checkinTime:checkinDate week:week weekScaler:weekScaler];
+    expectedDate = [base dateAfterYears:0 months:0 days:0];
+    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    
+    bool testSet4[] = {0,0,0,0,0,0,1};
+    week = [Daily buildWeek:testSet4 scaler:weekScaler];
+    
+    lastDueDate = [base dateAfterYears:0 months:0 days:6];
+    checkinDate = [base dateAfterYears:0 months:0 days:81]; //march 29
+    result = [Daily previousDueTime_WEEKLY:lastDueDate checkinTime:checkinDate week:week weekScaler:weekScaler];
+    expectedDate = [base dateAfterYears:0 months:0 days:69];
+    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    
+    checkinDate = [base dateAfterYears:0 months:0 days:13];
+    result = [Daily previousDueTime_WEEKLY:lastDueDate checkinTime:checkinDate week:week weekScaler:weekScaler];
+    expectedDate = [base dateAfterYears:0 months:0 days:6];
+    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    
+    checkinDate = [base dateAfterYears:0 months:0 days:20];
+    result = [Daily previousDueTime_WEEKLY:lastDueDate checkinTime:checkinDate week:week weekScaler:weekScaler];
+    expectedDate = [base dateAfterYears:0 months:0 days:6];
+    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    
+    checkinDate = [base dateAfterYears:0 months:0 days:26];
+    result = [Daily previousDueTime_WEEKLY:lastDueDate checkinTime:checkinDate week:week weekScaler:weekScaler];
+    expectedDate = [base dateAfterYears:0 months:0 days:6];
+    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    
+    checkinDate = [base dateAfterYears:0 months:0 days:34];
+    result = [Daily previousDueTime_WEEKLY:lastDueDate checkinTime:checkinDate week:week weekScaler:weekScaler];
+    expectedDate = [base dateAfterYears:0 months:0 days:27];
+    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    
+    checkinDate = [base dateAfterYears:0 months:0 days:68];
+    result = [Daily previousDueTime_WEEKLY:lastDueDate checkinTime:checkinDate week:week weekScaler:weekScaler];
+    expectedDate = [base dateAfterYears:0 months:0 days:48];
+    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    
+    checkinDate = [base dateAfterYears:0 months:0 days:7];
+    result = [Daily previousDueTime_WEEKLY:lastDueDate checkinTime:checkinDate week:week weekScaler:weekScaler];
+    expectedDate = [base dateAfterYears:0 months:0 days:6];
     XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
     
 }
