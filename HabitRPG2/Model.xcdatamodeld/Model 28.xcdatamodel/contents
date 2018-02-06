@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="16G1036" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="Daily" representedClassName="Daily" syncable="YES">
         <attribute name="activeDaysHash" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="customUserOrder" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -98,7 +98,7 @@
         <attribute name="heroLvlPenalty" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="invertColors" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isPasscodeProtected" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="lastCheckinTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="lastcheckinDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="lastUpdateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="permaDeath" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="reminderHour" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -139,23 +139,23 @@
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Daily" positionX="-254" positionY="-84" width="128" height="255"/>
-        <element name="DailySubTask" positionX="-180" positionY="-144" width="128" height="165"/>
-        <element name="DailyTransaction" positionX="-180" positionY="-144" width="128" height="75"/>
-        <element name="DataInfo" positionX="-387" positionY="72" width="128" height="105"/>
-        <element name="Good" positionX="-290" positionY="174" width="128" height="120"/>
-        <element name="GoodTransaction" positionX="-180" positionY="-144" width="128" height="75"/>
-        <element name="Habit" positionX="108" positionY="18" width="128" height="210"/>
-        <element name="HabitTransaction" positionX="-171" positionY="-135" width="128" height="75"/>
-        <element name="Hero" positionX="-90" positionY="-58" width="128" height="165"/>
-        <element name="Monster" positionX="-234" positionY="344" width="128" height="105"/>
-        <element name="MonsterTransaction" positionX="-144" positionY="-108" width="128" height="75"/>
-        <element name="Reminder" positionX="-180" positionY="-144" width="128" height="105"/>
-        <element name="Settings" positionX="-387" positionY="-297" width="128" height="255"/>
-        <element name="Suffix" positionX="-180" positionY="-144" width="128" height="75"/>
-        <element name="Todo" positionX="52" positionY="243" width="128" height="165"/>
-        <element name="TodoTransaction" positionX="-162" positionY="-126" width="128" height="75"/>
-        <element name="Zone" positionX="-128" positionY="129" width="128" height="165"/>
-        <element name="ZoneTransaction" positionX="-153" positionY="-117" width="128" height="75"/>
+        <element name="Daily" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="DailySubTask" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="DailyTransaction" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="DataInfo" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Good" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="GoodTransaction" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Habit" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="HabitTransaction" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Hero" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Monster" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="MonsterTransaction" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Reminder" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Settings" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Suffix" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Todo" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="TodoTransaction" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Zone" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ZoneTransaction" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

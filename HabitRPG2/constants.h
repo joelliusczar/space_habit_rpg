@@ -148,3 +148,5 @@ extern NSString* const DAY_OF_MONTH_KEY;
 extern NSString * const BACKRANGE_KEY;
 extern NSString * const FORRANGE_KEY;
 extern NSString * const IS_DAY_ACTIVE_KEY;
+
+extern int const DAY_LEN;

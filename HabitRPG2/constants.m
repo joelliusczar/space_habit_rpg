@@ -43,10 +43,8 @@ u_int32_t const MAX_ZONE_CHOICE_RAND_UP_BOUND = 3;
 CGFloat const ZONE_CHOICE_ROW_HEIGHT = 75;
 CGFloat const EDIT_SCREEN_TOP_CONTROL_HEIGHT = 60;
 NSString * const NOTIFY_CAT_ID = @"SHReminder";
-NSString* const ALL_DAYS_JSON = @"{\"daysOfWeek\":[{\"SUN\":1,\"MON\":1,\"TUE\":1,"
-"\"WED\":1,\"THR\":1,\"FRI\":1,\"SAT\":1}],\"daysOfMonth\":[],\"daysOfYear\":[],"
-"\"daysOfWeek_INV\":[{\"SUN\":0,\"MON\":0,\"TUE\":0,"
-"\"WED\":0,\"THR\":0,\"FRI\":0,\"SAT\":0}],\"daysOfMonth_INV\":[],\"daysOfYear_INV\":[]}";
+NSString* const ALL_DAYS_JSON = @"{\"daysOfWeek\":[],\"daysOfMonth\":[],\"daysOfYear\":[],"
+"\"daysOfWeek_INV\":[],\"daysOfMonth_INV\":[],\"daysOfYear_INV\":[]}";
 
 CGFloat const SUB_TABLE_CELL_HEIGHT = 44;
 NSInteger const SUB_TABLE_MAX_ROWS = 4;
@@ -88,3 +86,5 @@ NSString* const DAY_OF_MONTH_KEY = @"DAY_OF_MONTH";
 NSString* const BACKRANGE_KEY = @"BACKRANGE";
 NSString* const FORRANGE_KEY = @"FORRANGE";
 NSString* const IS_DAY_ACTIVE_KEY = @"IS_DAY_ACTIVE";
+
+int const DAY_LEN = 84600; //only use this for extremely simple calculations, e.g. a week or less

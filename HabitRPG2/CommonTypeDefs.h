@@ -9,3 +9,5 @@
 #import <Foundation/Foundation.h>
 
 typedef void (*setter)(id,SEL,id);
+
+#define unixTime(dtObj) dtObj.timeIntervalSince1970

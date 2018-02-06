@@ -13,6 +13,7 @@
 #import "P_CustomSwitch.h"
 #import "SingletonCluster.h"
 #import "NSDate+DateHelper.h"
+#import "CommonTypeDefs.h"
 
 @implementation Daily (Helper)
 
@@ -135,10 +136,12 @@ NSArray<RateValueItemDict *> *buildWeek(NSUInteger *daysAheadCounts
 
 
 +(void)setActivenessArray:(NSArray<RateValueItemDict *> *)week activeDays:(BOOL *)activeDays{
-    NSUInteger idx = 0;
-    for(RateValueItemDict *dict in week){
-        activeDays[idx] = dict[IS_DAY_ACTIVE_KEY].boolValue;
-        idx++;
+    for(NSUInteger i = 0;i < SHCONST.DAYS_IN_WEEK;i++){
+        if(week){
+            activeDays[i] = week[i][IS_DAY_ACTIVE_KEY].boolValue;
+            continue;
+        }
+        activeDays[i] = YES;
     }
 }
 
@@ -153,40 +156,117 @@ NSArray<RateValueItemDict *> *buildWeek(NSUInteger *daysAheadCounts
     return [NSMutableSet setWithArray:keys];
 }
 
+NSInteger distanceFromActiveWeek(NSUInteger weekNum,NSUInteger weekScaler){
+    return weekNum % (weekScaler * SHCONST.DAYS_IN_WEEK);
+}
 
-/*TODO: do lastDueTime need to be converted to todayStart and if so I guess that should be
-updated to all dailies
- Assume that dates are in GMT, otherwise things get fucky
- */
-+(NSDate *)previousDueTime_WEEKLY:(NSDate *)lastDueTime checkinTime:(NSDate *)checkinTime
-                       week:(NSArray<RateValueItemDict *> *)week
-                       weekScaler:(NSUInteger)weekScaler{
-    
-    NSAssert(lastDueTime&&week&&checkinTime,@"parameters cannot be null");
-    NSAssert(checkinTime.timeIntervalSince1970 > lastDueTime.timeIntervalSince1970,
-             @"checkinTime must be greater than lastDueTime");
-    NSAssert(weekScaler > 0,@"week scaler cannot be less than 1");
-    
-    NSUInteger lastDayIdx = [lastDueTime getWeekdayIndex];
-    NSDate *firstDayOfFirstWeek = [lastDueTime dateAfterYears:0 months:0 days:-1*lastDayIdx];
-    NSUInteger daySpan = [NSDate daysBetween:firstDayOfFirstWeek to:checkinTime];
-    NSUInteger checkinDayIdx = [checkinTime getWeekdayIndex];
+NSInteger offsetForSameWeek(bool isActiveWeek,NSUInteger inputDayIdx,NSUInteger prevDayIdx){
+    /*
+     if checkin day is in active week but before all active days
+     push it back a week so that it get's the last active day of
+     the previous active weeks
+     */
+    return prevDayIdx > inputDayIdx || (prevDayIdx == inputDayIdx && isActiveWeek)
+        ?SHCONST.DAYS_IN_WEEK:0;
+}
+
+NSUInteger findPrevDayIdxInWeek(BOOL isActiveWeek,NSUInteger checkinDayIdx
+    ,NSArray<RateValueItemDict *> *week)
+{
     NSUInteger prevDayIdx = SHCONST.DAYS_IN_WEEK;
     for(NSUInteger i = 0;i < SHCONST.DAYS_IN_WEEK;i++){
-        NSUInteger dayIdx = (SHCONST.DAYS_IN_WEEK + checkinDayIdx -i -1) % SHCONST.DAYS_IN_WEEK;
-        if(week[dayIdx][IS_DAY_ACTIVE_KEY].boolValue){
-            prevDayIdx = dayIdx;
+        //if active week use active day before today
+        //if not active week just use last active day in week
+        NSUInteger reverseDayIdx = isActiveWeek?
+          (SHCONST.DAYS_IN_WEEK + checkinDayIdx -i -1) % SHCONST.DAYS_IN_WEEK:
+          SHCONST.DAYS_IN_WEEK - i -1;
+        if(week[reverseDayIdx][IS_DAY_ACTIVE_KEY].boolValue){
+            prevDayIdx = reverseDayIdx;
             break;
         }
     }
-    NSAssert(prevDayIdx < SHCONST.DAYS_IN_WEEK,@"no days are active");
-    NSUInteger sameWeekOffset = prevDayIdx > checkinDayIdx?SHCONST.DAYS_IN_WEEK:0;
-    NSUInteger prevSunToFirstSpan = daySpan - checkinDayIdx -sameWeekOffset; //move to beginig of week
-    NSUInteger sunOfPrevActiveWeek = prevSunToFirstSpan - (prevSunToFirstSpan % (SHCONST.DAYS_IN_WEEK * weekScaler));
+    NSCAssert(prevDayIdx < SHCONST.DAYS_IN_WEEK,@"no days are active");
+    return prevDayIdx;
+}
+
+NSUInteger findNextDayIdx(NSUInteger checkinDayIdx,NSArray<RateValueItemDict *> *week){
+    for(NSUInteger i = 0;i < SHCONST.DAYS_IN_WEEK;i++){
+        NSUInteger dayIdx = (SHCONST.DAYS_IN_WEEK + checkinDayIdx + i +1)
+            % SHCONST.DAYS_IN_WEEK;
+        if(week[dayIdx][IS_DAY_ACTIVE_KEY].boolValue){
+            return dayIdx;
+        }
+    }
+    @throw [NSException
+        exceptionWithName:NSInternalInconsistencyException
+            reason:@"no active days" userInfo:nil];
+}
+
+
+/*TODO: do lastDueDate need to be converted to todayStart and if so I guess that should be
+updated to all dailies
+ Assume that dates are in GMT, otherwise things get fucky
+ Edge cases that I had to fix:
+ 1)if the checkinDate is in the active week there is an active day after checkindate
+ that week then it would erroneously return a future date as a the previousduedate
+ 2) checkinDate was in a non active week but its day of the week was between active days
+ (ex, tues and between an active mon and wed) then it would return the previous monday
+ rather the previous wednesday as the previousduedate when it should have been wednesday.
+ 3)checkindate was itself an active day and it was returning itself as the previousDueDate
+ 
+ */
++(NSDate *)previousDueDate_WEEKLY:(NSDate *)lastDueDate checkinDate:(NSDate *)checkinDate
+    week:(NSArray<RateValueItemDict *> *)week
+    weekScaler:(NSUInteger)weekScaler
+{
+    NSAssert(lastDueDate&&week&&checkinDate,@"parameters cannot be null");
+    NSAssert(unixTime(checkinDate) > unixTime(lastDueDate),
+             @"checkinDate must be greater than lastDueDate");
+    NSAssert(weekScaler > 0,@"week scaler cannot be less than 1");
     
-    NSDate *result = [firstDayOfFirstWeek dateAfterYears:0 months:0 days:sunOfPrevActiveWeek + prevDayIdx];
-    NSAssert(result.timeIntervalSince1970 <= checkinTime.timeIntervalSince1970,@"error in calculation");
+    NSUInteger lastDayIdx = [lastDueDate getWeekdayIndex];
+    NSDate *firstDayOfFirstWeek = [lastDueDate dateAfterYears:0 months:0 days:-1*lastDayIdx];
+    NSUInteger daySpan = [NSDate daysBetween:firstDayOfFirstWeek to:checkinDate];
+    NSUInteger checkinDayIdx = [checkinDate getWeekdayIndex];
+    NSUInteger firstSunToPrevSunSpan = daySpan - checkinDayIdx; //move to begining of week
+    BOOL isActiveWeek = distanceFromActiveWeek(firstSunToPrevSunSpan,weekScaler) == 0;
+    NSUInteger prevDayIdx = findPrevDayIdxInWeek(isActiveWeek,checkinDayIdx,week);
+    firstSunToPrevSunSpan -= (offsetForSameWeek(isActiveWeek,checkinDayIdx,prevDayIdx));
+    NSUInteger sunOfPrevActiveWeek =
+        firstSunToPrevSunSpan - distanceFromActiveWeek(firstSunToPrevSunSpan,weekScaler);
+    NSDate *result = [firstDayOfFirstWeek dateAfterYears:0
+        months:0 days:sunOfPrevActiveWeek + prevDayIdx];
+    NSAssert(unixTime(result) <= unixTime(checkinDate),@"error in calculation");
     return result;
+}
+
++(NSArray<NSDate *> *)bothWeeklyDueDatesFromLastDueDate:(NSDate *)lastDueDate
+    checkinDate:(NSDate *)checkinDate
+    week:(NSArray<RateValueItemDict *> *)week
+    weekScaler:(NSInteger)weekScaler
+{
+    NSDate *previousDate = [Daily previousDueDate_WEEKLY:lastDueDate
+        checkinDate:checkinDate week:week weekScaler:weekScaler];
+    NSUInteger prevDayIdx = [previousDate getWeekdayIndex];
+    NSDate *firstDayOfPrevWeek = [previousDate dateAfterYears:0 months:0 days: -1*prevDayIdx];
+    NSUInteger daySpan = [NSDate daysBetween:firstDayOfPrevWeek to:checkinDate];
+    NSUInteger checkinDayIdx = [checkinDate getWeekdayIndex];
+    NSUInteger prevSunToThisSunSpan = daySpan - checkinDayIdx;
+    NSInteger weekCount = distanceFromActiveWeek(prevSunToThisSunSpan,weekScaler);
+    NSUInteger nextActiveWeek = prevSunToThisSunSpan +
+        (((weekScaler - weekCount) % weekScaler) * SHCONST.DAYS_IN_WEEK);
+    NSUInteger nextDayIdx = findNextDayIdx(checkinDayIdx,week);
+    NSDate *result = [firstDayOfPrevWeek
+        dateAfterYears:0 months:0 days:nextActiveWeek + nextDayIdx];
+    return @[previousDate,result];
+}
+
++(NSDate *)nextDueDate_WEEKLY:(NSDate *)lastDueDate checkinDate:(NSDate *)checkinDate
+    week:(NSArray<RateValueItemDict *> *)week
+    weekScaler:(NSUInteger)weekScaler
+{
+     return [Daily bothWeeklyDueDatesFromLastDueDate:lastDueDate checkinDate:checkinDate
+             week:week weekScaler:weekScaler][1];
 }
 
 @end

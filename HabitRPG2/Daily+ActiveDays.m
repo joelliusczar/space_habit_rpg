@@ -41,19 +41,19 @@ bestMatchPredicate yearlyBestMatch = ^BOOL(RateValueItemDict *a,RateValueItemDic
 
 -(NSMutableArray<RateValueItemDict *> * )getActiveDaysForRateType:(RateType)rateType{
     NSString *rateTypeKey = getRateTypeKey(rateType);
-    NSMutableArray *week = self.activeDaysDict[rateTypeKey];
+    NSMutableArray *daySet = self.activeDaysDict[rateTypeKey];
     BOOL activeDays[SHCONST.DAYS_IN_WEEK];
-    if(!week){
+    if(nil == daySet||daySet.count == 0){
         if(rateType == WEEKLY_RATE || rateType == WEEKLY_RATE_INVERSE){
             [Daily setActivenessArray:nil activeDays:activeDays];
-            week = [Daily buildWeek:activeDays scaler:self.rate];
+            daySet = [Daily buildWeek:activeDays scaler:self.rate];
         }
         else{
-            week = [NSMutableArray array];
+            daySet = [NSMutableArray array];
         }
-        self.activeDaysDict[rateTypeKey] = week;
+        self.activeDaysDict[rateTypeKey] = daySet;
     }
-    return week;
+    return daySet;
 }
 
     
