@@ -191,7 +191,7 @@ NSUInteger findPrevDayIdxInWeek(BOOL isActiveWeek,NSUInteger checkinDayIdx
 
 NSUInteger findNextDayIdx(NSUInteger checkinDayIdx,NSArray<RateValueItemDict *> *week){
     for(NSUInteger i = 0;i < SHCONST.DAYS_IN_WEEK;i++){
-        NSUInteger dayIdx = (SHCONST.DAYS_IN_WEEK + checkinDayIdx + i +1)
+        NSUInteger dayIdx = (SHCONST.DAYS_IN_WEEK + checkinDayIdx + i)
             % SHCONST.DAYS_IN_WEEK;
         if(week[dayIdx][IS_DAY_ACTIVE_KEY].boolValue){
             return dayIdx;
@@ -204,6 +204,7 @@ NSUInteger findNextDayIdx(NSUInteger checkinDayIdx,NSArray<RateValueItemDict *> 
 
 
 /*TODO: do lastDueDate need to be converted to todayStart and if so I guess that should be
+TODO: lastDueDate should always be at least in the same week as actual active days
 updated to all dailies
  Assume that dates are in GMT, otherwise things get fucky
  Edge cases that I had to fix:
@@ -248,16 +249,20 @@ updated to all dailies
     NSDate *previousDate = [Daily previousDueDate_WEEKLY:lastDueDate
         checkinDate:checkinDate week:week weekScaler:weekScaler];
     NSUInteger prevDayIdx = [previousDate getWeekdayIndex];
-    NSDate *firstDayOfPrevWeek = [previousDate dateAfterYears:0 months:0 days: -1*prevDayIdx];
+    NSDate *firstDayOfPrevWeek = [previousDate dateAfterYears:0 months:0
+        days: -1*prevDayIdx];
     NSUInteger daySpan = [NSDate daysBetween:firstDayOfPrevWeek to:checkinDate];
     NSUInteger checkinDayIdx = [checkinDate getWeekdayIndex];
     NSUInteger prevSunToThisSunSpan = daySpan - checkinDayIdx;
-    NSInteger weekCount = distanceFromActiveWeek(prevSunToThisSunSpan,weekScaler);
+    NSInteger weekCount = (distanceFromActiveWeek(prevSunToThisSunSpan,weekScaler)
+        / SHCONST.DAYS_IN_WEEK);
     NSUInteger nextActiveWeek = prevSunToThisSunSpan +
         (((weekScaler - weekCount) % weekScaler) * SHCONST.DAYS_IN_WEEK);
-    NSUInteger nextDayIdx = findNextDayIdx(checkinDayIdx,week);
+    NSUInteger weekStartIdx = weekCount == 0 ? checkinDayIdx : 0;
+    NSUInteger nextDayIdx = findNextDayIdx(weekStartIdx,week);
+    NSUInteger sameWeekOffset = nextDayIdx < checkinDayIdx && weekCount == 0 ? weekScaler * SHCONST.DAYS_IN_WEEK: 0;
     NSDate *result = [firstDayOfPrevWeek
-        dateAfterYears:0 months:0 days:nextActiveWeek + nextDayIdx];
+        dateAfterYears:0 months:0 days:nextActiveWeek + nextDayIdx + sameWeekOffset];
     return @[previousDate,result];
 }
 

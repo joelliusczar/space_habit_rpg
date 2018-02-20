@@ -78,7 +78,7 @@
     settings.dayStart = 0;
     settings.deathGoldPenalty = .25;
     settings.heroLvlPenalty = 0;
-    settings.lastcheckinDate = [NSDate date];
+    settings.lastCheckinDate = [NSDate date];
     settings.permaDeath = NO;
     settings.isPasscodeProtected = NO;
     settings.reminderHour = 17; //5 o'clock?

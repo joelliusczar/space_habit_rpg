@@ -493,6 +493,11 @@ NSMutableArray<Daily *> *testDailies = nil;
     expectedDate = [base dateAfterYears:0 months:0 days:3];
     XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
     
+    checkinDate = [base dateAfterYears:0 months:0 days:50];
+    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
+    expectedDate = [base dateAfterYears:0 months:0 days:45];
+    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    
     weekScaler = 1;
     week = [Daily buildWeek:testSet scaler:weekScaler];
     base = [NSDate createSimpleDateWithYear:2018 month:1 day:7];
@@ -781,5 +786,124 @@ NSMutableArray<Daily *> *testDailies = nil;
     XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
     
 }
+
+-(void)testNextDueDateWeekly{
+    NSUInteger btw;
+    BOOL testSet0[] = {0,1,0,1,0,0,0};
+    int weekScaler = 3;
+    NSArray<RateValueItemDict *> *week = [Daily buildWeek:testSet0 scaler:weekScaler];
+    NSDate *base = [NSDate createSimpleDateWithYear:2018 month:1 day:7];
+    NSDate *lastDueDate = [base dateAfterYears:0 months:0 days:1];
+    NSDate *checkinDate = [base dateAfterYears:0 months:0 days:81];
+    NSDate *result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
+    NSDate *expected = [base dateAfterYears:0 months:0 days:85];
+    btw = [NSDate daysBetween:base to:result];
+    XCTAssertEqual(result.timeIntervalSince1970,expected.timeIntervalSince1970);
+    
+    checkinDate = [base dateAfterYears:0 months:0 days:65];
+    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
+    expected = [base dateAfterYears:0 months:0 days:66];
+    btw = [NSDate daysBetween:base to:result];
+    XCTAssertEqual(result.timeIntervalSince1970,expected.timeIntervalSince1970);
+    
+    checkinDate = [base dateAfterYears:0 months:0 days:63];
+    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
+    expected = [base dateAfterYears:0 months:0 days:64];
+    btw = [NSDate daysBetween:base to:result];
+    XCTAssertEqual(result.timeIntervalSince1970,expected.timeIntervalSince1970);
+    
+    checkinDate = [base dateAfterYears:0 months:0 days:62];
+    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
+    expected = [base dateAfterYears:0 months:0 days:64];
+    btw = [NSDate daysBetween:base to:result];
+    XCTAssertEqual(result.timeIntervalSince1970,expected.timeIntervalSince1970);
+    
+    checkinDate = [base dateAfterYears:0 months:0 days:50];
+    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
+    expected = [base dateAfterYears:0 months:0 days:64];
+    btw = [NSDate daysBetween:base to:result];
+    XCTAssertEqual(result.timeIntervalSince1970,expected.timeIntervalSince1970);
+    
+    checkinDate = [base dateAfterYears:0 months:0 days:46];
+    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
+    expected = [base dateAfterYears:0 months:0 days:64];
+    btw = [NSDate daysBetween:base to:result];
+    XCTAssertEqual(result.timeIntervalSince1970,expected.timeIntervalSince1970);
+    
+    checkinDate = [base dateAfterYears:0 months:0 days:66];
+    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
+    expected = [base dateAfterYears:0 months:0 days:66];
+    btw = [NSDate daysBetween:base to:result];
+    XCTAssertEqual(result.timeIntervalSince1970,expected.timeIntervalSince1970);
+    
+    checkinDate = [base dateAfterYears:0 months:0 days:64];
+    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
+    expected = [base dateAfterYears:0 months:0 days:64];
+    btw = [NSDate daysBetween:base to:result];
+    XCTAssertEqual(result.timeIntervalSince1970,expected.timeIntervalSince1970);
+    
+    weekScaler = 1;
+    week = [Daily buildWeek:testSet0 scaler:weekScaler];
+    
+    checkinDate = [base dateAfterYears:0 months:0 days: 62];
+    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
+    expected = [base dateAfterYears:0 months:0 days:64];
+    
+    checkinDate = [base dateAfterYears:0 months:0 days: 63];
+    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
+    expected = [base dateAfterYears:0 months:0 days:64];
+    
+    checkinDate = [base dateAfterYears:0 months:0 days: 64];
+    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
+    expected = [base dateAfterYears:0 months:0 days:64];
+    
+    checkinDate = [base dateAfterYears:0 months:0 days: 65];
+    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
+    expected = [base dateAfterYears:0 months:0 days:66];
+    
+    checkinDate = [base dateAfterYears:0 months:0 days: 66];
+    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
+    expected = [base dateAfterYears:0 months:0 days:66];
+    
+    checkinDate = [base dateAfterYears:0 months:0 days: 67];
+    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
+    expected = [base dateAfterYears:0 months:0 days:71];
+    
+    checkinDate = [base dateAfterYears:0 months:0 days: 68];
+    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
+    expected = [base dateAfterYears:0 months:0 days:71];
+    
+    checkinDate = [base dateAfterYears:0 months:0 days: 69];
+    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
+    expected = [base dateAfterYears:0 months:0 days:71];
+    
+    checkinDate = [base dateAfterYears:0 months:0 days: 70];
+    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
+    expected = [base dateAfterYears:0 months:0 days:71];
+    
+    checkinDate = [base dateAfterYears:0 months:0 days: 71];
+    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
+    expected = [base dateAfterYears:0 months:0 days:71];
+    
+    checkinDate = [base dateAfterYears:0 months:0 days: 72];
+    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
+    expected = [base dateAfterYears:0 months:0 days:73];
+    
+    checkinDate = [base dateAfterYears:0 months:0 days: 73];
+    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
+    expected = [base dateAfterYears:0 months:0 days:73];
+    
+    checkinDate = [base dateAfterYears:0 months:0 days: 74];
+    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
+    expected = [base dateAfterYears:0 months:0 days:77];
+    
+    BOOL testSet1[] = {1,0,0,0,0,0,0};
+    weekScaler = 3;
+    week = [Daily buildWeek:testSet1 scaler:weekScaler];
+    
+    
+}
+
+
 
 @end
