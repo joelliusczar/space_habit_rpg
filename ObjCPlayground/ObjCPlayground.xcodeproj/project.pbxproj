@@ -1,0 +1,456 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2747C42C2044C51F00FB5669 /* UserOfProtocus.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3F82044C51600FB5669 /* UserOfProtocus.m */; };
+		2747C42D2044C51F00FB5669 /* ParentMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3F92044C51600FB5669 /* ParentMan.m */; };
+		2747C42E2044C51F00FB5669 /* SelectorDict.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3FA2044C51600FB5669 /* SelectorDict.m */; };
+		2747C42F2044C51F00FB5669 /* ExpNonNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3FD2044C51600FB5669 /* ExpNonNull.m */; };
+		2747C4302044C51F00FB5669 /* EncodeStuff.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4002044C51700FB5669 /* EncodeStuff.m */; };
+		2747C4312044C51F00FB5669 /* Holder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4032044C51700FB5669 /* Holder.m */; };
+		2747C4322044C51F00FB5669 /* Indexable.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4072044C51800FB5669 /* Indexable.m */; };
+		2747C4332044C51F00FB5669 /* Retainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C40A2044C51800FB5669 /* Retainer.m */; };
+		2747C4342044C51F00FB5669 /* House.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C40C2044C51900FB5669 /* House.m */; };
+		2747C4352044C51F00FB5669 /* House+Ass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C40D2044C51900FB5669 /* House+Ass.m */; };
+		2747C4362044C51F00FB5669 /* PersonThing.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C40E2044C51900FB5669 /* PersonThing.m */; };
+		2747C4372044C51F00FB5669 /* ChildMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4122044C51A00FB5669 /* ChildMan.m */; };
+		2747C4382044C51F00FB5669 /* GenericThing.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4152044C51A00FB5669 /* GenericThing.m */; };
+		2747C4392044C51F00FB5669 /* XPSideKick.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4162044C51B00FB5669 /* XPSideKick.m */; };
+		2747C43A2044C51F00FB5669 /* CockblockShield.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4172044C51B00FB5669 /* CockblockShield.m */; };
+		2747C43B2044C51F00FB5669 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4192044C51B00FB5669 /* main.m */; };
+		2747C43C2044C51F00FB5669 /* House+Things.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C41A2044C51B00FB5669 /* House+Things.m */; };
+		2747C43D2044C51F00FB5669 /* PersonThingUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C41C2044C51C00FB5669 /* PersonThingUser.m */; };
+		2747C43E2044C51F00FB5669 /* WeakLeash.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C41E2044C51C00FB5669 /* WeakLeash.m */; };
+		2747C43F2044C51F00FB5669 /* ExpArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C41F2044C51C00FB5669 /* ExpArray.m */; };
+		2747C4402044C51F00FB5669 /* Experiments+Charlie.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4202044C51C00FB5669 /* Experiments+Charlie.m */; };
+		2747C4412044C51F00FB5669 /* ReadOonly.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4212044C51D00FB5669 /* ReadOonly.m */; };
+		2747C4422044C51F00FB5669 /* Experiments+Bravo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4222044C51D00FB5669 /* Experiments+Bravo.m */; };
+		2747C4432044C51F00FB5669 /* MassPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4282044C51E00FB5669 /* MassPrinter.m */; };
+		2747C4442044C51F00FB5669 /* Experiments.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C42B2044C51E00FB5669 /* Experiments.m */; };
+		2747C4482044C67E00FB5669 /* Pool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4472044C67E00FB5669 /* Pool.m */; };
+		2747C44B2044C73E00FB5669 /* Lake.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C44A2044C73E00FB5669 /* Lake.m */; };
+		2747C44E2044C80500FB5669 /* Ocean.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C44D2044C80500FB5669 /* Ocean.m */; };
+		2747C50A204A3A7400FB5669 /* ExtraAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C509204A3A7400FB5669 /* ExtraAction.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2747C3EC2044C43D00FB5669 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		2747C3EE2044C43D00FB5669 /* ObjCPlayground */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ObjCPlayground; sourceTree = BUILT_PRODUCTS_DIR; };
+		2747C3F82044C51600FB5669 /* UserOfProtocus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserOfProtocus.m; sourceTree = "<group>"; };
+		2747C3F92044C51600FB5669 /* ParentMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentMan.m; sourceTree = "<group>"; };
+		2747C3FA2044C51600FB5669 /* SelectorDict.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectorDict.m; sourceTree = "<group>"; };
+		2747C3FB2044C51600FB5669 /* EncodeStuff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncodeStuff.h; sourceTree = "<group>"; };
+		2747C3FC2044C51600FB5669 /* GenericThing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericThing.h; sourceTree = "<group>"; };
+		2747C3FD2044C51600FB5669 /* ExpNonNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpNonNull.m; sourceTree = "<group>"; };
+		2747C3FE2044C51600FB5669 /* CockblockShield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CockblockShield.h; sourceTree = "<group>"; };
+		2747C3FF2044C51700FB5669 /* ParentMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentMan.h; sourceTree = "<group>"; };
+		2747C4002044C51700FB5669 /* EncodeStuff.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncodeStuff.m; sourceTree = "<group>"; };
+		2747C4012044C51700FB5669 /* Indexable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Indexable.h; sourceTree = "<group>"; };
+		2747C4022044C51700FB5669 /* ReadOonly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadOonly.h; sourceTree = "<group>"; };
+		2747C4032044C51700FB5669 /* Holder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Holder.m; sourceTree = "<group>"; };
+		2747C4042044C51700FB5669 /* Holder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Holder.h; sourceTree = "<group>"; };
+		2747C4052044C51800FB5669 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		2747C4062044C51800FB5669 /* House+Things.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "House+Things.h"; sourceTree = "<group>"; };
+		2747C4072044C51800FB5669 /* Indexable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Indexable.m; sourceTree = "<group>"; };
+		2747C4082044C51800FB5669 /* PossibleInvocationCockblock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PossibleInvocationCockblock.h; sourceTree = "<group>"; };
+		2747C4092044C51800FB5669 /* XPSideKick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPSideKick.h; sourceTree = "<group>"; };
+		2747C40A2044C51800FB5669 /* Retainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Retainer.m; sourceTree = "<group>"; };
+		2747C40B2044C51900FB5669 /* PersonThing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonThing.h; sourceTree = "<group>"; };
+		2747C40C2044C51900FB5669 /* House.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = House.m; sourceTree = "<group>"; };
+		2747C40D2044C51900FB5669 /* House+Ass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "House+Ass.m"; sourceTree = "<group>"; };
+		2747C40E2044C51900FB5669 /* PersonThing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonThing.m; sourceTree = "<group>"; };
+		2747C40F2044C51900FB5669 /* ExpNonNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpNonNull.h; sourceTree = "<group>"; };
+		2747C4102044C51900FB5669 /* Experiments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Experiments.h; sourceTree = "<group>"; };
+		2747C4112044C51A00FB5669 /* House+Ass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "House+Ass.h"; sourceTree = "<group>"; };
+		2747C4122044C51A00FB5669 /* ChildMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildMan.m; sourceTree = "<group>"; };
+		2747C4132044C51A00FB5669 /* UserOfProtocus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserOfProtocus.h; sourceTree = "<group>"; };
+		2747C4142044C51A00FB5669 /* Retainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Retainer.h; sourceTree = "<group>"; };
+		2747C4152044C51A00FB5669 /* GenericThing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericThing.m; sourceTree = "<group>"; };
+		2747C4162044C51B00FB5669 /* XPSideKick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPSideKick.m; sourceTree = "<group>"; };
+		2747C4172044C51B00FB5669 /* CockblockShield.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CockblockShield.m; sourceTree = "<group>"; };
+		2747C4182044C51B00FB5669 /* SelectorDict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectorDict.h; sourceTree = "<group>"; };
+		2747C4192044C51B00FB5669 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2747C41A2044C51B00FB5669 /* House+Things.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "House+Things.m"; sourceTree = "<group>"; };
+		2747C41B2044C51C00FB5669 /* WeakLeash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeakLeash.h; sourceTree = "<group>"; };
+		2747C41C2044C51C00FB5669 /* PersonThingUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonThingUser.m; sourceTree = "<group>"; };
+		2747C41D2044C51C00FB5669 /* MassPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MassPrinter.h; sourceTree = "<group>"; };
+		2747C41E2044C51C00FB5669 /* WeakLeash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeakLeash.m; sourceTree = "<group>"; };
+		2747C41F2044C51C00FB5669 /* ExpArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpArray.m; sourceTree = "<group>"; };
+		2747C4202044C51C00FB5669 /* Experiments+Charlie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Experiments+Charlie.m"; sourceTree = "<group>"; };
+		2747C4212044C51D00FB5669 /* ReadOonly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadOonly.m; sourceTree = "<group>"; };
+		2747C4222044C51D00FB5669 /* Experiments+Bravo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Experiments+Bravo.m"; sourceTree = "<group>"; };
+		2747C4232044C51D00FB5669 /* House.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = House.h; sourceTree = "<group>"; };
+		2747C4242044C51D00FB5669 /* PersonThingUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonThingUser.h; sourceTree = "<group>"; };
+		2747C4252044C51D00FB5669 /* Experiments+Bravo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Experiments+Bravo.h"; sourceTree = "<group>"; };
+		2747C4262044C51E00FB5669 /* ExpArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpArray.h; sourceTree = "<group>"; };
+		2747C4272044C51E00FB5669 /* ChildMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildMan.h; sourceTree = "<group>"; };
+		2747C4282044C51E00FB5669 /* MassPrinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MassPrinter.m; sourceTree = "<group>"; };
+		2747C4292044C51E00FB5669 /* Experiments+Charlie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Experiments+Charlie.h"; sourceTree = "<group>"; };
+		2747C42A2044C51E00FB5669 /* Protocus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Protocus.h; sourceTree = "<group>"; };
+		2747C42B2044C51E00FB5669 /* Experiments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Experiments.m; sourceTree = "<group>"; };
+		2747C4462044C67E00FB5669 /* Pool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pool.h; sourceTree = "<group>"; };
+		2747C4472044C67E00FB5669 /* Pool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pool.m; sourceTree = "<group>"; };
+		2747C4492044C73E00FB5669 /* Lake.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lake.h; sourceTree = "<group>"; };
+		2747C44A2044C73E00FB5669 /* Lake.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Lake.m; sourceTree = "<group>"; };
+		2747C44C2044C80500FB5669 /* Ocean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ocean.h; sourceTree = "<group>"; };
+		2747C44D2044C80500FB5669 /* Ocean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Ocean.m; sourceTree = "<group>"; };
+		2747C508204A3A7400FB5669 /* ExtraAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtraAction.h; sourceTree = "<group>"; };
+		2747C509204A3A7400FB5669 /* ExtraAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExtraAction.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2747C3EB2044C43D00FB5669 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2747C3E52044C43D00FB5669 = {
+			isa = PBXGroup;
+			children = (
+				2747C3F02044C43D00FB5669 /* ObjCPlayground */,
+				2747C3EF2044C43D00FB5669 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2747C3EF2044C43D00FB5669 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2747C3EE2044C43D00FB5669 /* ObjCPlayground */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2747C3F02044C43D00FB5669 /* ObjCPlayground */ = {
+			isa = PBXGroup;
+			children = (
+				2747C4452044C65B00FB5669 /* 3Gen */,
+				2747C4272044C51E00FB5669 /* ChildMan.h */,
+				2747C4122044C51A00FB5669 /* ChildMan.m */,
+				2747C3FE2044C51600FB5669 /* CockblockShield.h */,
+				2747C4172044C51B00FB5669 /* CockblockShield.m */,
+				2747C3FB2044C51600FB5669 /* EncodeStuff.h */,
+				2747C4002044C51700FB5669 /* EncodeStuff.m */,
+				2747C4262044C51E00FB5669 /* ExpArray.h */,
+				2747C41F2044C51C00FB5669 /* ExpArray.m */,
+				2747C4102044C51900FB5669 /* Experiments.h */,
+				2747C42B2044C51E00FB5669 /* Experiments.m */,
+				2747C4252044C51D00FB5669 /* Experiments+Bravo.h */,
+				2747C4222044C51D00FB5669 /* Experiments+Bravo.m */,
+				2747C4292044C51E00FB5669 /* Experiments+Charlie.h */,
+				2747C4202044C51C00FB5669 /* Experiments+Charlie.m */,
+				2747C40F2044C51900FB5669 /* ExpNonNull.h */,
+				2747C3FD2044C51600FB5669 /* ExpNonNull.m */,
+				2747C3FC2044C51600FB5669 /* GenericThing.h */,
+				2747C4152044C51A00FB5669 /* GenericThing.m */,
+				2747C4042044C51700FB5669 /* Holder.h */,
+				2747C4032044C51700FB5669 /* Holder.m */,
+				2747C4232044C51D00FB5669 /* House.h */,
+				2747C40C2044C51900FB5669 /* House.m */,
+				2747C4112044C51A00FB5669 /* House+Ass.h */,
+				2747C40D2044C51900FB5669 /* House+Ass.m */,
+				2747C4062044C51800FB5669 /* House+Things.h */,
+				2747C41A2044C51B00FB5669 /* House+Things.m */,
+				2747C4012044C51700FB5669 /* Indexable.h */,
+				2747C4072044C51800FB5669 /* Indexable.m */,
+				2747C4052044C51800FB5669 /* info.plist */,
+				2747C41D2044C51C00FB5669 /* MassPrinter.h */,
+				2747C4282044C51E00FB5669 /* MassPrinter.m */,
+				2747C3FF2044C51700FB5669 /* ParentMan.h */,
+				2747C3F92044C51600FB5669 /* ParentMan.m */,
+				2747C40B2044C51900FB5669 /* PersonThing.h */,
+				2747C40E2044C51900FB5669 /* PersonThing.m */,
+				2747C4242044C51D00FB5669 /* PersonThingUser.h */,
+				2747C41C2044C51C00FB5669 /* PersonThingUser.m */,
+				2747C4082044C51800FB5669 /* PossibleInvocationCockblock.h */,
+				2747C42A2044C51E00FB5669 /* Protocus.h */,
+				2747C4022044C51700FB5669 /* ReadOonly.h */,
+				2747C4212044C51D00FB5669 /* ReadOonly.m */,
+				2747C4142044C51A00FB5669 /* Retainer.h */,
+				2747C40A2044C51800FB5669 /* Retainer.m */,
+				2747C4182044C51B00FB5669 /* SelectorDict.h */,
+				2747C3FA2044C51600FB5669 /* SelectorDict.m */,
+				2747C4132044C51A00FB5669 /* UserOfProtocus.h */,
+				2747C3F82044C51600FB5669 /* UserOfProtocus.m */,
+				2747C41B2044C51C00FB5669 /* WeakLeash.h */,
+				2747C41E2044C51C00FB5669 /* WeakLeash.m */,
+				2747C4092044C51800FB5669 /* XPSideKick.h */,
+				2747C4162044C51B00FB5669 /* XPSideKick.m */,
+				2747C4192044C51B00FB5669 /* main.m */,
+				2747C508204A3A7400FB5669 /* ExtraAction.h */,
+				2747C509204A3A7400FB5669 /* ExtraAction.m */,
+			);
+			path = ObjCPlayground;
+			sourceTree = "<group>";
+		};
+		2747C4452044C65B00FB5669 /* 3Gen */ = {
+			isa = PBXGroup;
+			children = (
+				2747C4462044C67E00FB5669 /* Pool.h */,
+				2747C4472044C67E00FB5669 /* Pool.m */,
+				2747C4492044C73E00FB5669 /* Lake.h */,
+				2747C44A2044C73E00FB5669 /* Lake.m */,
+				2747C44C2044C80500FB5669 /* Ocean.h */,
+				2747C44D2044C80500FB5669 /* Ocean.m */,
+			);
+			path = 3Gen;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2747C3ED2044C43D00FB5669 /* ObjCPlayground */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2747C3F52044C43D00FB5669 /* Build configuration list for PBXNativeTarget "ObjCPlayground" */;
+			buildPhases = (
+				2747C3EA2044C43D00FB5669 /* Sources */,
+				2747C3EB2044C43D00FB5669 /* Frameworks */,
+				2747C3EC2044C43D00FB5669 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ObjCPlayground;
+			productName = ObjCPlayground;
+			productReference = 2747C3EE2044C43D00FB5669 /* ObjCPlayground */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2747C3E62044C43D00FB5669 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Joel Gillette";
+				TargetAttributes = {
+					2747C3ED2044C43D00FB5669 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 2747C3E92044C43D00FB5669 /* Build configuration list for PBXProject "ObjCPlayground" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2747C3E52044C43D00FB5669;
+			productRefGroup = 2747C3EF2044C43D00FB5669 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2747C3ED2044C43D00FB5669 /* ObjCPlayground */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2747C3EA2044C43D00FB5669 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2747C44E2044C80500FB5669 /* Ocean.m in Sources */,
+				2747C43A2044C51F00FB5669 /* CockblockShield.m in Sources */,
+				2747C43C2044C51F00FB5669 /* House+Things.m in Sources */,
+				2747C42D2044C51F00FB5669 /* ParentMan.m in Sources */,
+				2747C42C2044C51F00FB5669 /* UserOfProtocus.m in Sources */,
+				2747C4322044C51F00FB5669 /* Indexable.m in Sources */,
+				2747C4402044C51F00FB5669 /* Experiments+Charlie.m in Sources */,
+				2747C4352044C51F00FB5669 /* House+Ass.m in Sources */,
+				2747C4332044C51F00FB5669 /* Retainer.m in Sources */,
+				2747C4372044C51F00FB5669 /* ChildMan.m in Sources */,
+				2747C4302044C51F00FB5669 /* EncodeStuff.m in Sources */,
+				2747C4412044C51F00FB5669 /* ReadOonly.m in Sources */,
+				2747C42E2044C51F00FB5669 /* SelectorDict.m in Sources */,
+				2747C4382044C51F00FB5669 /* GenericThing.m in Sources */,
+				2747C4482044C67E00FB5669 /* Pool.m in Sources */,
+				2747C4392044C51F00FB5669 /* XPSideKick.m in Sources */,
+				2747C50A204A3A7400FB5669 /* ExtraAction.m in Sources */,
+				2747C4312044C51F00FB5669 /* Holder.m in Sources */,
+				2747C43F2044C51F00FB5669 /* ExpArray.m in Sources */,
+				2747C4432044C51F00FB5669 /* MassPrinter.m in Sources */,
+				2747C43B2044C51F00FB5669 /* main.m in Sources */,
+				2747C4362044C51F00FB5669 /* PersonThing.m in Sources */,
+				2747C4442044C51F00FB5669 /* Experiments.m in Sources */,
+				2747C4342044C51F00FB5669 /* House.m in Sources */,
+				2747C42F2044C51F00FB5669 /* ExpNonNull.m in Sources */,
+				2747C43D2044C51F00FB5669 /* PersonThingUser.m in Sources */,
+				2747C44B2044C73E00FB5669 /* Lake.m in Sources */,
+				2747C43E2044C51F00FB5669 /* WeakLeash.m in Sources */,
+				2747C4422044C51F00FB5669 /* Experiments+Bravo.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2747C3F32044C43D00FB5669 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		2747C3F42044C43D00FB5669 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		2747C3F62044C43D00FB5669 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XK3RJ8E2L2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2747C3F72044C43D00FB5669 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XK3RJ8E2L2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2747C3E92044C43D00FB5669 /* Build configuration list for PBXProject "ObjCPlayground" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2747C3F32044C43D00FB5669 /* Debug */,
+				2747C3F42044C43D00FB5669 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2747C3F52044C43D00FB5669 /* Build configuration list for PBXNativeTarget "ObjCPlayground" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2747C3F62044C43D00FB5669 /* Debug */,
+				2747C3F72044C43D00FB5669 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2747C3E62044C43D00FB5669 /* Project object */;
+}
