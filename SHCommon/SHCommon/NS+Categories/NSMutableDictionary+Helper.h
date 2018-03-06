@@ -11,4 +11,6 @@
 
 @interface NSMutableDictionary (Helper)
 -(id)getWithKey:(id)key OrCreateFromBlock:(id (^)(void))creator;
++(NSString *)dictToString:(NSDictionary *)dict;
++(NSMutableDictionary *)jsonStringToDict:(NSString *)jsonStr;
 @end

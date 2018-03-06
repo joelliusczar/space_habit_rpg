@@ -841,6 +841,7 @@
 				INFOPLIST_FILE = HabitRPG2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				NEW_SETTING = "";
 				OTHER_CFLAGS = (
 					"-Wall",
 					"-Wextra",
@@ -864,6 +865,7 @@
 				INFOPLIST_FILE = HabitRPG2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				NEW_SETTING = "";
 				OTHER_CFLAGS = (
 					"-Wall",
 					"-Wextra",

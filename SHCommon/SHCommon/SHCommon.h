@@ -42,6 +42,7 @@ FOUNDATION_EXPORT const unsigned char SHCommonVersionString[];
 #import "KeyToken.h"
 #import "P_ControlKeep.h"
 #import "ProbWeight.h"
-
+#import "UIColor+Helper.h"
+#import "UIImage+Helper.h"
 
 

@@ -29,4 +29,7 @@
 @property (strong,nonatomic) FlexibleConstants *constants;
 @property (strong,nonatomic) NSMutableDictionary *bag;
 @property (strong,nonatomic) NSBundle *bundle;
+-(void)setCalendarCascade:(NSCalendar *)calendar;
+-(void)setTimeZoneCascade:(NSTimeZone *)timezone;
+-(void)setLocaleCascade:(NSLocale *)locale;
 @end

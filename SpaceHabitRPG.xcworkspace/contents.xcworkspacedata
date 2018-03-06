@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:TestUI/TestUI.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:SHControlsSpecial/SHControlsSpecial.xcodeproj">
    </FileRef>
    <FileRef

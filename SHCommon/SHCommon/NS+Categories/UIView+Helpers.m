@@ -6,8 +6,12 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import "UIView+Helpers.h"
 #import "NSException+SHCommonExceptions.h"
+#import "P_ColorInversionHint.h"
+#import "UIColor+Helper.h"
+
 
 @implementation UIView (Helpers)
 
@@ -69,5 +73,82 @@
 }
 
 
+-(void)invertViewColors{
+    UIColor *c;
+    if([self respondsToSelector:@selector(setTextColor:)]
+       &&[self respondsToSelector:@selector(textColor)]){
+        c = (UIColor *)[self valueForKey:@"textColor"];
+        [self setValue:[c invertColor] forKey:@"textColor"];
+    }
+    if([self respondsToSelector:@selector(setTitleColor:forState:)]
+       &&[self respondsToSelector:@selector(titleColorForState:)]){
+        [self invertTitleColorForAllStates];
+    }
+    if([self respondsToSelector:@selector(setTitleShadowColor:forState:)]
+       &&[self respondsToSelector:@selector(titleShadowColorForState:)]){
+        [self invertTitleShadowColorForAllStates];
+    }
+    if([self respondsToSelector:@selector(setAreColorsInverted:)]
+       &&[self respondsToSelector:@selector(areColorsInverted)]){
+        BOOL areInverted = ((NSNumber *)[self valueForKey:@"areColorsInverted"]).boolValue;
+        [self setValue:[NSNumber numberWithBool:!areInverted] forKey:@"areColorsInverted"];
+    }
+    c = self.backgroundColor;
+    self.backgroundColor = [c invertColor];
+}
+
+-(void)applyVisualChangeToAllSubviews{
+    if(UIAccessibilityIsInvertColorsEnabled()||isTestingInvert){
+        [self invertViewColors];
+    }
+    if(!self.subviews.count){
+        return;
+    }
+    
+    for(UIView *subView in self.subviews){
+        [subView applyVisualChangeToAllSubviews];
+    }
+}
+
+-(void)checkForAndApplyVisualChanges{
+    if(UIAccessibilityIsInvertColorsEnabled()||isTestingInvert){
+        [self applyVisualChangeToAllSubviews];
+    }
+}
+
+
+-(void)invertTitleShadowColorForAllStates{
+    SEL getterSEL = @selector(titleShadowColorForState:);
+    SEL setterSEL = @selector(setTitleShadowColor:forState:);
+    [self invertColorForPropertyForStateWithGetSelector:getterSEL AndSetSelector:setterSEL];
+}
+
+
+-(void)invertColorForPropertyForStateWithGetSelector:(SEL)getterSEL AndSetSelector:(SEL)setterSEL{
+    UIColor *c;
+    UIColor *inverted;
+    typedef void (*setPropertyColorForState)(id,SEL,UIColor*,NSUInteger);
+    typedef UIColor* (*getPropertyColorForState)(id,SEL,NSUInteger);
+    getPropertyColorForState methodInvokeGet = (getPropertyColorForState)[self methodForSelector:getterSEL];
+    setPropertyColorForState methodInvokeSet = (setPropertyColorForState)[self methodForSelector:setterSEL];
+    //invert normal state
+    c = methodInvokeGet(self,getterSEL,UIControlStateNormal);
+    inverted = [c invertColor];
+    methodInvokeSet(self,setterSEL,inverted,UIControlStateNormal);
+    int UIControlStateMaxShift = 4;
+    for(int i = 0;i<UIControlStateMaxShift;i++){
+        NSUInteger controlState = 1 << i;
+        c = methodInvokeGet(self,getterSEL,controlState);
+        inverted = [c invertColor];
+        methodInvokeSet(self,setterSEL,inverted,controlState);
+    }
+}
+
+
+-(void)invertTitleColorForAllStates{
+    SEL getterSEL = @selector(titleColorForState:);
+    SEL setterSEL = @selector(setTitleColor:forState:);
+    [self invertColorForPropertyForStateWithGetSelector:getterSEL AndSetSelector:setterSEL];
+}
 
 @end

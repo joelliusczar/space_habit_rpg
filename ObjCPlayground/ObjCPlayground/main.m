@@ -18,7 +18,7 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         //Experiments *exp = [[Experiments alloc] init];
         //[exp playWithCharlie];
-        [Experiments threeGenStuff];
+        [Experiments replaceStrat2];
     }
     return 0;
 }

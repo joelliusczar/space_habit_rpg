@@ -6,6 +6,9 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
+//#define outsideFunc() r_outside()
+//#define insideFunc() r_inside()
+
 #import <objc/runtime.h>
 #import "Experiments.h"
 #import "House.h"
@@ -26,7 +29,17 @@
 #import "Pool.h"
 #import "Lake.h"
 #import "Ocean.h"
+#import <Playground/Coverride.h>
+#import "PureCBaby.h"
 
+
+void r_outside(){
+    NSLog(@"Outside replaced");
+}
+
+void r_inside(){
+    NSLog(@"Inside replaced");
+}
 
 @implementation Experiments
 +(void)dateToJSON{
@@ -606,7 +619,18 @@ NSString *convertCharToBin(unsigned char input){
 +(void)classAsKey{
     //NSMutableDictionary<Class,NSString *> *dict = [NSMutableDictionary dictionary];
     //dict[House.class] = @"The House";
-    
+}
+
++(void)replaceCFuncs{
+    Coverride *c = [[Coverride alloc] init];
+    [c callsItAll];
+    outsideNC();
+    insideNC();
+    insideFunc();
+}
+
++(void)replaceStrat2{
+    Hijack();
 }
     
 @end

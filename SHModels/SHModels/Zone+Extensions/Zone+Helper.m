@@ -9,7 +9,7 @@
 #import "Zone+Helper.h"
 #import "ModelConstants.h"
 #import "Suffix+CoreDataClass.h"
-#import <SHCommon/CommonUtilities.h>
+#import "ModelTools.h"
 #import "SingletonCluster+Entity.h"
 
 NSString* const HOME_KEY = @"HOME";

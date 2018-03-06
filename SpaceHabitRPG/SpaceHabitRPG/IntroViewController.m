@@ -19,6 +19,7 @@
 #import <SHModels/Zone+Helper.h>
 #import <SHCommon/CommonUtilities.h>
 #import <SHControls/SHSwitch.h>
+#import <SHCommon/UIView+Helpers.h>
 
 @interface IntroViewController ()
 @property (nonatomic,weak) UIViewController<P_CentralViewController> *central;
@@ -57,7 +58,7 @@
     self.introMessage.text = @"";
     NSString *headlineText = @"Welcome to Space Habit Frontier";
     [self nextButton];
-    [CommonUtilities checkForAndApplyVisualChanges:self.view];
+    [self.view checkForAndApplyVisualChanges];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         self.isThreadCurrentlyRunning = YES;
         [self autoTypeoutTitle:headlineText characterDelay:CHARACTER_DELAY];

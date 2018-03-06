@@ -36,7 +36,19 @@
 		2747C44B2044C73E00FB5669 /* Lake.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C44A2044C73E00FB5669 /* Lake.m */; };
 		2747C44E2044C80500FB5669 /* Ocean.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C44D2044C80500FB5669 /* Ocean.m */; };
 		2747C50A204A3A7400FB5669 /* ExtraAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C509204A3A7400FB5669 /* ExtraAction.m */; };
+		274EFB30204B0F8C00CB3C4C /* Playground.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 274EFB2A204B09A500CB3C4C /* Playground.framework */; };
+		274EFB57204D01A900CB3C4C /* PureCBaby.c in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB56204D01A900CB3C4C /* PureCBaby.c */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		274EFB29204B09A500CB3C4C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 274EFB25204B09A300CB3C4C /* Playground.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 274EFB1A204B09A300CB3C4C;
+			remoteInfo = Playground;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		2747C3EC2044C43D00FB5669 /* CopyFiles */ = {
@@ -112,6 +124,9 @@
 		2747C44D2044C80500FB5669 /* Ocean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Ocean.m; sourceTree = "<group>"; };
 		2747C508204A3A7400FB5669 /* ExtraAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtraAction.h; sourceTree = "<group>"; };
 		2747C509204A3A7400FB5669 /* ExtraAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExtraAction.m; sourceTree = "<group>"; };
+		274EFB25204B09A300CB3C4C /* Playground.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Playground.xcodeproj; path = Playground/Playground.xcodeproj; sourceTree = "<group>"; };
+		274EFB55204D01A900CB3C4C /* PureCBaby.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PureCBaby.h; sourceTree = "<group>"; };
+		274EFB56204D01A900CB3C4C /* PureCBaby.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = PureCBaby.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				274EFB30204B0F8C00CB3C4C /* Playground.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,8 +144,10 @@
 		2747C3E52044C43D00FB5669 = {
 			isa = PBXGroup;
 			children = (
+				274EFB25204B09A300CB3C4C /* Playground.xcodeproj */,
 				2747C3F02044C43D00FB5669 /* ObjCPlayground */,
 				2747C3EF2044C43D00FB5669 /* Products */,
+				274EFB2F204B0F8C00CB3C4C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,6 +163,9 @@
 			isa = PBXGroup;
 			children = (
 				2747C4452044C65B00FB5669 /* 3Gen */,
+				2747C4192044C51B00FB5669 /* main.m */,
+				2747C4102044C51900FB5669 /* Experiments.h */,
+				2747C42B2044C51E00FB5669 /* Experiments.m */,
 				2747C4272044C51E00FB5669 /* ChildMan.h */,
 				2747C4122044C51A00FB5669 /* ChildMan.m */,
 				2747C3FE2044C51600FB5669 /* CockblockShield.h */,
@@ -153,8 +174,6 @@
 				2747C4002044C51700FB5669 /* EncodeStuff.m */,
 				2747C4262044C51E00FB5669 /* ExpArray.h */,
 				2747C41F2044C51C00FB5669 /* ExpArray.m */,
-				2747C4102044C51900FB5669 /* Experiments.h */,
-				2747C42B2044C51E00FB5669 /* Experiments.m */,
 				2747C4252044C51D00FB5669 /* Experiments+Bravo.h */,
 				2747C4222044C51D00FB5669 /* Experiments+Bravo.m */,
 				2747C4292044C51E00FB5669 /* Experiments+Charlie.h */,
@@ -196,9 +215,10 @@
 				2747C41E2044C51C00FB5669 /* WeakLeash.m */,
 				2747C4092044C51800FB5669 /* XPSideKick.h */,
 				2747C4162044C51B00FB5669 /* XPSideKick.m */,
-				2747C4192044C51B00FB5669 /* main.m */,
 				2747C508204A3A7400FB5669 /* ExtraAction.h */,
 				2747C509204A3A7400FB5669 /* ExtraAction.m */,
+				274EFB55204D01A900CB3C4C /* PureCBaby.h */,
+				274EFB56204D01A900CB3C4C /* PureCBaby.c */,
 			);
 			path = ObjCPlayground;
 			sourceTree = "<group>";
@@ -214,6 +234,21 @@
 				2747C44D2044C80500FB5669 /* Ocean.m */,
 			);
 			path = 3Gen;
+			sourceTree = "<group>";
+		};
+		274EFB26204B09A300CB3C4C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				274EFB2A204B09A500CB3C4C /* Playground.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		274EFB2F204B0F8C00CB3C4C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,12 +296,28 @@
 			mainGroup = 2747C3E52044C43D00FB5669;
 			productRefGroup = 2747C3EF2044C43D00FB5669 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 274EFB26204B09A300CB3C4C /* Products */;
+					ProjectRef = 274EFB25204B09A300CB3C4C /* Playground.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2747C3ED2044C43D00FB5669 /* ObjCPlayground */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		274EFB2A204B09A500CB3C4C /* Playground.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Playground.framework;
+			remoteRef = 274EFB29204B09A500CB3C4C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2747C3EA2044C43D00FB5669 /* Sources */ = {
@@ -296,6 +347,7 @@
 				2747C43B2044C51F00FB5669 /* main.m in Sources */,
 				2747C4362044C51F00FB5669 /* PersonThing.m in Sources */,
 				2747C4442044C51F00FB5669 /* Experiments.m in Sources */,
+				274EFB57204D01A900CB3C4C /* PureCBaby.c in Sources */,
 				2747C4342044C51F00FB5669 /* House.m in Sources */,
 				2747C42F2044C51F00FB5669 /* ExpNonNull.m in Sources */,
 				2747C43D2044C51F00FB5669 /* PersonThingUser.m in Sources */,

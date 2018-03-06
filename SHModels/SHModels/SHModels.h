@@ -65,6 +65,7 @@ FOUNDATION_EXPORT const unsigned char SHModelsVersionString[];
 #import "Monster+CoreDataClass.h"
 #import "SHModels.h"
 #import "Monster+Helper.h"
+#import "ModelTools.h"
 
 // In this header, you should import all the public headers of your framework using statements like #import <SHModels/PublicHeader.h>
 

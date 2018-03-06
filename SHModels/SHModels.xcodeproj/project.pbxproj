@@ -113,6 +113,8 @@
 		2747C4D72048DA8300FB5669 /* Monster+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C4D52048DA8300FB5669 /* Monster+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C5072049143500FB5669 /* Model.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 2747C2F52043AE3D00FB5669 /* Model.xcdatamodeld */; };
 		2747C513204A471D00FB5669 /* SuffixList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2747C512204A471D00FB5669 /* SuffixList.plist */; };
+		274EFB66204E462E00CB3C4C /* ModelTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB64204E462E00CB3C4C /* ModelTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		274EFB67204E462E00CB3C4C /* ModelTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB65204E462E00CB3C4C /* ModelTools.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -238,6 +240,8 @@
 		2747C4D42048DA8300FB5669 /* Monster+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Monster+Helper.m"; sourceTree = "<group>"; };
 		2747C4D52048DA8300FB5669 /* Monster+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Monster+Helper.h"; sourceTree = "<group>"; };
 		2747C512204A471D00FB5669 /* SuffixList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SuffixList.plist; sourceTree = "<group>"; };
+		274EFB64204E462E00CB3C4C /* ModelTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelTools.h; sourceTree = "<group>"; };
+		274EFB65204E462E00CB3C4C /* ModelTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelTools.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,6 +320,8 @@
 				2747C4CF2048D90700FB5669 /* MonsterInfo.plist */,
 				2747C4CD2048D8FE00FB5669 /* ZoneInfo.plist */,
 				2747C512204A471D00FB5669 /* SuffixList.plist */,
+				274EFB64204E462E00CB3C4C /* ModelTools.h */,
+				274EFB65204E462E00CB3C4C /* ModelTools.m */,
 				2747C2ED2043ADE000FB5669 /* SHModels.h */,
 			);
 			path = SHModels;
@@ -618,6 +624,7 @@
 				2747C3522043AF7C00FB5669 /* Settings+CoreDataProperties.h in Headers */,
 				2747C3B52043B53100FB5669 /* Daily+ActiveDays.h in Headers */,
 				2747C4D72048DA8300FB5669 /* Monster+Helper.h in Headers */,
+				274EFB66204E462E00CB3C4C /* ModelTools.h in Headers */,
 				2747C38C2043AF7D00FB5669 /* Good+CoreDataProperties.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -728,6 +735,7 @@
 				2747C38F2043AF7D00FB5669 /* MonsterTransaction+CoreDataClass.m in Sources */,
 				2747C4612046307B00FB5669 /* Zone+Helper.m in Sources */,
 				2747C37A2043AF7D00FB5669 /* Zone+CoreDataClass.m in Sources */,
+				274EFB67204E462E00CB3C4C /* ModelTools.m in Sources */,
 				2747C3632043AF7D00FB5669 /* DailySubTask+CoreDataProperties.m in Sources */,
 				2747C3592043AF7D00FB5669 /* DataInfo+CoreDataProperties.m in Sources */,
 				2747C3742043AF7D00FB5669 /* Daily+CoreDataProperties.m in Sources */,

@@ -9,7 +9,7 @@
 #import "Monster+Helper.h"
 #import "SingletonCluster+Entity.h"
 #import <SHData/P_CoreData.h>
-#import <SHCommon/CommonUtilities.h>
+#import "ModelTools.h"
 #import <SHGlobal/Constants.h>
 #import "MonsterInfoDictionary.h"
 #import <SHCommon/ProbWeight.h>

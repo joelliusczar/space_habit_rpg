@@ -10,7 +10,7 @@
 #import "Daily+DailyHelper.h"
 #import <SHCommon/SingletonCluster.h>
 #import <SHCommon/NSDate+DateHelper.h>
-#import <SHCommon/CommonUtilities.h>
+#import <SHCommon/NSMutableDictionary+Helper.h>
 #import "Reminder+CoreDataClass.h"
 #import <SHGlobal/Constants.h>
 #import "RateTypeHelper.h"
@@ -28,7 +28,7 @@
 @synthesize activeDaysDict = _activeDaysDict;
 -(NSMutableDictionary *)activeDaysDict{
     if(nil==_activeDaysDict){
-        _activeDaysDict = [CommonUtilities jsonStringToDict:self.activeDays];
+        _activeDaysDict = [NSMutableDictionary jsonStringToDict:self.activeDays];
     }
     return _activeDaysDict;
 }
@@ -206,7 +206,7 @@ int checkImportanceRange(int importance){
 
 
 -(void)preSave{
-    self.activeDays = [CommonUtilities dictToString:self.activeDaysDict];
+    self.activeDays = [NSMutableDictionary dictToString:self.activeDaysDict];
 }
 
 @end

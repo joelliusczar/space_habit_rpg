@@ -24,9 +24,10 @@
 #import <SHGlobal/Constants.h>
 #import <SHCommon/ViewHelper.h>
 #import <SHModels/Zone+Helper.h>
-#import <SHCommon/CommonUtilities.h>
+#import <SHCommon/NSMutableDictionary+Helper.h>
 #import "SingletonCluster+App.h"
 #import <SHModels/Monster+Helper.h>
+#import <SHCommon/UIView+Helpers.h>
 
 #import <SHCommon/NSObject+Helper.h>
 
@@ -89,7 +90,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [CommonUtilities checkForAndApplyVisualChanges:self.view];
+    [self.view checkForAndApplyVisualChanges];
     //most likely any changes you want to add to load should go in
     //determineIfFirstTimeAndSetupSettings
     [self determineIfFirstTimeAndSetupSettings]; 
@@ -320,14 +321,14 @@
     
     zt.timestamp = [NSDate date];
     zoneInfo[TRANSACTION_TYPE_KEY] = TRANSACTION_TYPE_CREATE;
-    zt.misc = [CommonUtilities dictToString:zoneInfo];
+    zt.misc = [NSMutableDictionary dictToString:zoneInfo];
     MonsterTransaction *mt =
     (MonsterTransaction *)[self.dataController
                            constructEmptyEntity:MonsterTransaction.entity];
 
     mt.timestamp = [NSDate date];
     monsterInfo[TRANSACTION_TYPE_KEY] = TRANSACTION_TYPE_CREATE;
-    mt.misc = [CommonUtilities dictToString:monsterInfo];
+    mt.misc = [NSMutableDictionary dictToString:monsterInfo];
     [self.dataController save];
     [self showMonsterStory];
 }

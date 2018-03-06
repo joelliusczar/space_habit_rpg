@@ -27,6 +27,10 @@
 		2747C4962048CF4E00FB5669 /* P_ControlKeep.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C4952048CF4E00FB5669 /* P_ControlKeep.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C4DA2048DC1300FB5669 /* ProbWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4D82048DC1200FB5669 /* ProbWeight.m */; };
 		2747C4DB2048DC1300FB5669 /* ProbWeight.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C4D92048DC1200FB5669 /* ProbWeight.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		274EFB5A204E3FE000CB3C4C /* UIColor+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB58204E3FE000CB3C4C /* UIColor+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		274EFB5B204E3FE000CB3C4C /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB59204E3FE000CB3C4C /* UIColor+Helper.m */; };
+		274EFB62204E43C900CB3C4C /* UIImage+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB60204E43C900CB3C4C /* UIImage+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		274EFB63204E43C900CB3C4C /* UIImage+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB61204E43C900CB3C4C /* UIImage+Helper.m */; };
 		27730BA02041E337003BEB6C /* SHGlobal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27730BA12041E337003BEB6C /* SHGlobal.framework */; };
 		2781FF6D204204D80035AD82 /* CommonUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781FF5A204204D70035AD82 /* CommonUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2781FF6E204204D80035AD82 /* CommonUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781FF5B204204D70035AD82 /* CommonUtilities.m */; };
@@ -80,6 +84,10 @@
 		2747C4952048CF4E00FB5669 /* P_ControlKeep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ControlKeep.h; sourceTree = "<group>"; };
 		2747C4D82048DC1200FB5669 /* ProbWeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProbWeight.m; sourceTree = "<group>"; };
 		2747C4D92048DC1200FB5669 /* ProbWeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProbWeight.h; sourceTree = "<group>"; };
+		274EFB58204E3FE000CB3C4C /* UIColor+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Helper.h"; sourceTree = "<group>"; };
+		274EFB59204E3FE000CB3C4C /* UIColor+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Helper.m"; sourceTree = "<group>"; };
+		274EFB60204E43C900CB3C4C /* UIImage+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Helper.h"; sourceTree = "<group>"; };
+		274EFB61204E43C900CB3C4C /* UIImage+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Helper.m"; sourceTree = "<group>"; };
 		27730BA12041E337003BEB6C /* SHGlobal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHGlobal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2781FF5A204204D70035AD82 /* CommonUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtilities.h; sourceTree = "<group>"; };
 		2781FF5B204204D70035AD82 /* CommonUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtilities.m; sourceTree = "<group>"; };
@@ -214,6 +222,10 @@
 				27DD1D232043A2210030D954 /* NSObject+Helper.m */,
 				2781FF65204204D80035AD82 /* UIView+Helpers.h */,
 				2781FF5D204204D70035AD82 /* UIView+Helpers.m */,
+				274EFB58204E3FE000CB3C4C /* UIColor+Helper.h */,
+				274EFB59204E3FE000CB3C4C /* UIColor+Helper.m */,
+				274EFB60204E43C900CB3C4C /* UIImage+Helper.h */,
+				274EFB61204E43C900CB3C4C /* UIImage+Helper.m */,
 			);
 			path = "NS+Categories";
 			sourceTree = "<group>";
@@ -250,6 +262,8 @@
 				2747C4962048CF4E00FB5669 /* P_ControlKeep.h in Headers */,
 				2747C4852048CC9100FB5669 /* NotificationHelper.h in Headers */,
 				2747C4892048CDB400FB5669 /* SHControlKeep.h in Headers */,
+				274EFB62204E43C900CB3C4C /* UIImage+Helper.h in Headers */,
+				274EFB5A204E3FE000CB3C4C /* UIColor+Helper.h in Headers */,
 				2747C4DB2048DC1300FB5669 /* ProbWeight.h in Headers */,
 				27118841203FFA810085A549 /* SHCommon.h in Headers */,
 			);
@@ -334,11 +348,13 @@
 				2747C48A2048CDB400FB5669 /* SHControlKeep.m in Sources */,
 				2781FF70204204D80035AD82 /* UIView+Helpers.m in Sources */,
 				2747C4762047CC1D00FB5669 /* NSNumber+Helper.m in Sources */,
+				274EFB5B204E3FE000CB3C4C /* UIColor+Helper.m in Sources */,
 				2747C3C22043B6C000FB5669 /* NSMutableArray+Helper.m in Sources */,
 				2781FF6E204204D80035AD82 /* CommonUtilities.m in Sources */,
 				2747C4942048CE8600FB5669 /* VarWrapper.m in Sources */,
 				27DD1D292043A2210030D954 /* NSDate+DateHelper.m in Sources */,
 				2747C3D52043BE6A00FB5669 /* NSMutableDictionary+Helper.m in Sources */,
+				274EFB63204E43C900CB3C4C /* UIImage+Helper.m in Sources */,
 				2781FF71204204D80035AD82 /* Interceptor.m in Sources */,
 				27DD1D2B2043A2210030D954 /* NSObject+Helper.m in Sources */,
 				2747C47A2047CD8800FB5669 /* SHMath.m in Sources */,

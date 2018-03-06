@@ -7,7 +7,7 @@
 //
 
 #import "SHSwitch.h"
-#import <SHCommon/CommonUtilities.h>
+#import <SHCommon/UIImage+Helper.h>
 @import CoreGraphics;
 
 @implementation SHSwitch
@@ -34,7 +34,7 @@
 @synthesize onImageColorInverted = _onImageColorInverted;
 -(UIImage *)onImageColorInverted{
     if(!_onImageColorInverted){
-        _onImageColorInverted = [CommonUtilities invertImageColors:self.onImage];
+        _onImageColorInverted = [self.onImage invertImageColors];
     }
     return _onImageColorInverted;
 }
@@ -42,7 +42,7 @@
 @synthesize offImageColorInverted = _offImageColorInverted;
 -(UIImage *)offImageColorInverted{
     if(!_offImageColorInverted){
-        _offImageColorInverted = [CommonUtilities invertImageColors:self.offImage];
+        _offImageColorInverted = [self.offImage invertImageColors];
     }
     return _offImageColorInverted;
 }

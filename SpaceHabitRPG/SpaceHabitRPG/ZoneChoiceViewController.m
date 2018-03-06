@@ -13,6 +13,7 @@
 #import <SHCommon/SingletonCluster.h>
 #import <SHCommon/CommonUtilities.h>
 #import <SHModels/Zone+Helper.h>
+#import <SHCommon/UIView+Helpers.h>
 
 @interface ZoneChoiceViewController ()
 @property (nonatomic,strong) NSArray<Zone *> *zones;
@@ -52,7 +53,7 @@
     self.zoneChoiceTable.tableFooterView = nil;
     self.zoneChoiceTable.dataSource = self;
     self.zoneChoiceTable.rowHeight = ZONE_CHOICE_ROW_HEIGHT;
-    [CommonUtilities checkForAndApplyVisualChanges:self.view];
+    [self.view checkForAndApplyVisualChanges];
 }
 
 

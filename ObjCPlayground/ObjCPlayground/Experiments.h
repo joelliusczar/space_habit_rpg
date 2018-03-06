@@ -14,6 +14,7 @@
 #import "WeakLeash.h"
 #import "GenericThing.h"
 
+
 typedef id (^mbTest)(void);
 
 @interface Experiments : NSObject
@@ -84,6 +85,8 @@ void cMakeHouses(void);
 +(void)uintSubtract;
 +(void)threeGenStuff;
 +(void)classAsKey;
++(void)replaceCFuncs;
++(void)replaceStrat2;
 @end
 
 #import "Experiments+Charlie.h"
