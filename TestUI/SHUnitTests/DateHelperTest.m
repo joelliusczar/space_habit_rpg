@@ -11,7 +11,7 @@
 #import <SHModels/SingletonCluster+Entity.h>
 #import "NSDate+testReplace.h"
 #import <SHCommon/NSLocale+Helper.h>
-#import "FrequentCase.h"
+@import TestCommon;
 
 @interface DateHelperTest : FrequentCase
 

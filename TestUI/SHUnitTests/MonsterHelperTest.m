@@ -6,10 +6,10 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import "FrequentCase.h"
 #import <SHModels/Monster+Helper.h>
 #import <SHModels/Monster+CoreDataClass.h>
 #import <SHCommon/CommonUtilities.h>
+@import TestCommon;
 
 @interface MonsterHelperTest : FrequentCase
 

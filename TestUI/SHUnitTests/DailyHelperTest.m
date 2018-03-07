@@ -6,12 +6,12 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import "FrequentCase.h"
 #import <SHModels/Daily+CoreDataClass.h>
 #import <SHModels/Daily+DailyHelper.h>
 #import <SHCommon/NSDate+DateHelper.h>
 #import "NSDate+testReplace.h"
 #import <SHGlobal/FlexibleConstants.h>
+@import TestCommon;
 
 @interface DailyHelperTest : FrequentCase
 

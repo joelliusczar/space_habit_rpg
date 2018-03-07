@@ -12,6 +12,5 @@
 #define ASSERT_IS_TEST() if([SingletonCluster getSharedInstance].EnviromentNum!=ENV_UTEST) \
 [NSException raise:@"invalid environment" format:@"This is not test"]
 
-extern uint (^mockRandom)(uint);
 
 #endif /* TestGlobals_h */

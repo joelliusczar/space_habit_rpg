@@ -7,10 +7,10 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "FrequentCase.h"
 #import <SHCommon/NSDate+DateHelper.h>
 #import "NSDate+testReplace.h"
 #import <SHCommon/NSLocale+Helper.h>
+@import TestCommon;
 
 @interface TestLocale : FrequentCase
 

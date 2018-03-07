@@ -18,7 +18,6 @@
 		2747C59A204A62EF00FB5669 /* TestKeepSubject_B.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C578204A62EA00FB5669 /* TestKeepSubject_B.m */; };
 		2747C59B204A62EF00FB5669 /* TestLocale.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C579204A62EA00FB5669 /* TestLocale.m */; };
 		2747C59D204A62EF00FB5669 /* ARCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C57B204A62EA00FB5669 /* ARCTest.m */; };
-		2747C59E204A62EF00FB5669 /* FrequentCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C57C204A62EB00FB5669 /* FrequentCase.m */; };
 		2747C59F204A62EF00FB5669 /* TestKeepObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C57E204A62EB00FB5669 /* TestKeepObject.m */; };
 		2747C5A0204A62EF00FB5669 /* TestProbWeightsThreeItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C57F204A62EB00FB5669 /* TestProbWeightsThreeItems.m */; };
 		2747C5A1204A62EF00FB5669 /* ModelsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C580204A62EB00FB5669 /* ModelsTest.m */; };
@@ -30,7 +29,6 @@
 		2747C5A7204A62EF00FB5669 /* DailyHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C588204A62EC00FB5669 /* DailyHelperTest.m */; };
 		2747C5A8204A62EF00FB5669 /* SHControlKeepTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C589204A62EC00FB5669 /* SHControlKeepTest.m */; };
 		2747C5A9204A62EF00FB5669 /* TestKeepSubject_A.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C58B204A62ED00FB5669 /* TestKeepSubject_A.m */; };
-		2747C5AA204A62EF00FB5669 /* TestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C58C204A62ED00FB5669 /* TestHelpers.m */; };
 		2747C5AB204A62EF00FB5669 /* DateHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C590204A62ED00FB5669 /* DateHelperTest.m */; };
 		2747C5AC204A62EF00FB5669 /* CommonUtilitiesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C593204A62EE00FB5669 /* CommonUtilitiesTest.m */; };
 		2747C5AE204A62EF00FB5669 /* ProbilityWeightTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C595204A62EE00FB5669 /* ProbilityWeightTest.m */; };
@@ -38,6 +36,7 @@
 		2747C5B0204A63DE00FB5669 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2747C5B1204A63DE00FB5669 /* SHCommon.framework */; };
 		2747C5B2204A63E300FB5669 /* SHData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2747C5B3204A63E300FB5669 /* SHData.framework */; };
 		2747C5B4204A63E900FB5669 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2747C5B5204A63E900FB5669 /* SHModels.framework */; };
+		274EFB87204F9C3100CB3C4C /* TestCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 274EFB88204F9C3100CB3C4C /* TestCommon.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,8 +69,6 @@
 		2747C578204A62EA00FB5669 /* TestKeepSubject_B.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestKeepSubject_B.m; sourceTree = "<group>"; };
 		2747C579204A62EA00FB5669 /* TestLocale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLocale.m; sourceTree = "<group>"; };
 		2747C57B204A62EA00FB5669 /* ARCTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARCTest.m; sourceTree = "<group>"; };
-		2747C57C204A62EB00FB5669 /* FrequentCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrequentCase.m; sourceTree = "<group>"; };
-		2747C57D204A62EB00FB5669 /* TestGlobals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestGlobals.h; sourceTree = "<group>"; };
 		2747C57E204A62EB00FB5669 /* TestKeepObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestKeepObject.m; sourceTree = "<group>"; };
 		2747C57F204A62EB00FB5669 /* TestProbWeightsThreeItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestProbWeightsThreeItems.m; sourceTree = "<group>"; };
 		2747C580204A62EB00FB5669 /* ModelsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelsTest.m; sourceTree = "<group>"; };
@@ -84,9 +81,7 @@
 		2747C587204A62EC00FB5669 /* ZoneHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneHelperTest.m; sourceTree = "<group>"; };
 		2747C588204A62EC00FB5669 /* DailyHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyHelperTest.m; sourceTree = "<group>"; };
 		2747C589204A62EC00FB5669 /* SHControlKeepTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHControlKeepTest.m; sourceTree = "<group>"; };
-		2747C58A204A62EC00FB5669 /* TestHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHelpers.h; sourceTree = "<group>"; };
 		2747C58B204A62ED00FB5669 /* TestKeepSubject_A.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestKeepSubject_A.m; sourceTree = "<group>"; };
-		2747C58C204A62ED00FB5669 /* TestHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHelpers.m; sourceTree = "<group>"; };
 		2747C58D204A62ED00FB5669 /* TestKeepObjectAlt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKeepObjectAlt.h; sourceTree = "<group>"; };
 		2747C58E204A62ED00FB5669 /* NSDate+testReplace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+testReplace.h"; sourceTree = "<group>"; };
 		2747C58F204A62ED00FB5669 /* TestKeepProtocol_C.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKeepProtocol_C.h; sourceTree = "<group>"; };
@@ -97,10 +92,10 @@
 		2747C594204A62EE00FB5669 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2747C595204A62EE00FB5669 /* ProbilityWeightTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProbilityWeightTest.m; sourceTree = "<group>"; };
 		2747C596204A62EE00FB5669 /* TestsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestsTest.m; sourceTree = "<group>"; };
-		2747C597204A62EF00FB5669 /* FrequentCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrequentCase.h; sourceTree = "<group>"; };
 		2747C5B1204A63DE00FB5669 /* SHCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2747C5B3204A63E300FB5669 /* SHData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2747C5B5204A63E900FB5669 /* SHModels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHModels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		274EFB88204F9C3100CB3C4C /* TestCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TestCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				274EFB87204F9C3100CB3C4C /* TestCommon.framework in Frameworks */,
 				2747C5B4204A63E900FB5669 /* SHModels.framework in Frameworks */,
 				2747C5B2204A63E300FB5669 /* SHData.framework in Frameworks */,
 				2747C5B0204A63DE00FB5669 /* SHCommon.framework in Frameworks */,
@@ -163,6 +159,7 @@
 		2747C564204A621800FB5669 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				274EFB88204F9C3100CB3C4C /* TestCommon.framework */,
 				2747C5B5204A63E900FB5669 /* SHModels.framework */,
 				2747C5B3204A63E300FB5669 /* SHData.framework */,
 				2747C5B1204A63DE00FB5669 /* SHCommon.framework */,
@@ -201,9 +198,6 @@
 		2747C5B6204A646000FB5669 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				2747C58A204A62EC00FB5669 /* TestHelpers.h */,
-				2747C58C204A62ED00FB5669 /* TestHelpers.m */,
-				2747C57D204A62EB00FB5669 /* TestGlobals.h */,
 				2747C577204A62EA00FB5669 /* TestKeepObject.h */,
 				2747C57E204A62EB00FB5669 /* TestKeepObject.m */,
 				2747C58D204A62ED00FB5669 /* TestKeepObjectAlt.h */,
@@ -215,8 +209,6 @@
 				2747C58B204A62ED00FB5669 /* TestKeepSubject_A.m */,
 				2747C592204A62EE00FB5669 /* TestKeepSubject_B.h */,
 				2747C578204A62EA00FB5669 /* TestKeepSubject_B.m */,
-				2747C597204A62EF00FB5669 /* FrequentCase.h */,
-				2747C57C204A62EB00FB5669 /* FrequentCase.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -340,8 +332,6 @@
 				2747C59B204A62EF00FB5669 /* TestLocale.m in Sources */,
 				2747C5AF204A62EF00FB5669 /* TestsTest.m in Sources */,
 				2747C599204A62EF00FB5669 /* ProbilityWeightTestFourItems.m in Sources */,
-				2747C59E204A62EF00FB5669 /* FrequentCase.m in Sources */,
-				2747C5AA204A62EF00FB5669 /* TestHelpers.m in Sources */,
 				2747C5A5204A62EF00FB5669 /* MathTest.m in Sources */,
 				2747C5AE204A62EF00FB5669 /* ProbilityWeightTest.m in Sources */,
 				2747C5A0204A62EF00FB5669 /* TestProbWeightsThreeItems.m in Sources */,
@@ -419,6 +409,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = "$BUILD_DIR/**";
@@ -476,6 +467,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = "$BUILD_DIR/**";

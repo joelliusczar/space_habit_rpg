@@ -6,11 +6,10 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import "FrequentCase.h"
-#import <SHGlobal/Constants.h>
 #import <SHModels/ModelConstants.h>
+#import <SHModels/Zone+CoreDataClass.h>
 #import <SHModels/Zone+Helper.h>
-#import <SHCommon/CommonUtilities.h>
+@import TestCommon;
 
 #define SET_UP_BOUND() shouldUseLowerBoundChoices_zh[i++] = NO
 #define SET_LOW_BOUND() shouldUseLowerBoundChoices_zh[i++] = YES

@@ -19,7 +19,7 @@
 #import <SHGlobal/Constants.h>
 #import <SHData/CoreDataStackController.h>
 #import <SHModels/SingletonCluster+Entity.h>
-#import "FrequentCase.h"
+@import TestCommon;
 
 @interface ModelsTest : FrequentCase
 
