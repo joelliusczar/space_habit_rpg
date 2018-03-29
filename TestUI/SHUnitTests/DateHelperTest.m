@@ -470,14 +470,41 @@
 -(void)testAddDayToTs{
     long ts = 578102400;
     long ans = 0;
-    addDayToTimestamp(ts,0,0,&ans);
+    addDaysToTimestamp(ts,0,0,&ans);
     XCTAssertEqual(ts,ans);
-    addDayToTimestamp(ts,1,0,&ans);
+    addDaysToTimestamp(ts,1,0,&ans);
     XCTAssertEqual(578188800,ans);
-    addDayToTimestamp(ts,-1,0,&ans);
+    addDaysToTimestamp(ts,-1,0,&ans);
     XCTAssertEqual(578016000,ans);
-    addDayToTimestamp(ts,4,0,&ans);
+    addDaysToTimestamp(ts,4,0,&ans);
     XCTAssertEqual(578448000,ans);
+}
+
+-(void)testAddYearToTimestamp{
+    long ts = 578102400;
+    long ans = 0;
+    addYearsToTimestamp(ts,0,NO_OPTION,&ans);
+    XCTAssertEqual(ts,ans);
+    addYearsToTimestamp(ts,1,NO_OPTION,&ans);
+    XCTAssertEqual(ans,609638400);
+    addYearsToTimestamp(ts,2,NO_OPTION,&ans);
+    XCTAssertEqual(ans,641174400);
+    addYearsToTimestamp(ts,3,NO_OPTION,&ans);
+    XCTAssertEqual(ans,672710400);
+    addYearsToTimestamp(ts,4,NO_OPTION,&ans);
+    XCTAssertEqual(ans,704419200);
+    addYearsToTimestamp(ts,5,NO_OPTION,&ans);
+    XCTAssertEqual(ans,735955200);
+    addYearsToTimestamp(ts,6,NO_OPTION,&ans);
+    XCTAssertEqual(ans,767491200);
+    addYearsToTimestamp(ts,7,NO_OPTION,&ans);
+    XCTAssertEqual(ans,799027200);
+    addYearsToTimestamp(ts,8,NO_OPTION,&ans);
+    XCTAssertEqual(ans,830736000);
+    
+    ts = 573091200;
+    addYearsToTimestamp(ts,1,NO_OPTION,&ans);
+    XCTAssertEqual(ans,609638400);
 }
 
 -(void)testAdjustDateYear{
