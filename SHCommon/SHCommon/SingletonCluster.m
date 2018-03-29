@@ -122,24 +122,4 @@
 }
 
 
--(void)setCalendarCascade:(NSCalendar *)calendar{
-    NSAssert(calendar,@"Tried to set nil calendar");
-    self.inUseCalendar = calendar;
-    NSDate.inUseCalendar = calendar;
-}
-
-
--(void)setTimeZoneCascade:(NSTimeZone *)timezone{
-    NSAssert(timezone,@"Tired to set nil timezone");
-    self.inUseTimeZone = timezone;
-    NSDate.inUseTimeZone = timezone;
-}
-
-
--(void)setLocaleCascade:(NSLocale *)locale{
-    NSAssert(locale,@"Tried to set nil locale");
-    self.inUseLocale = locale;
-    NSDate.inUseLocale = locale;
-}
-
 @end

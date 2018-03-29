@@ -11,77 +11,25 @@
 #import <objc/runtime.h>
 #import "NSException+SHCommonExceptions.h"
 #import "SingletonCluster.h"
+#include "c_datetime.h"
 
 @implementation NSDate (DateHelper)
 
 
-+(NSLocale *)inUseLocale{
-    id tmp = objc_getAssociatedObject(self,@selector(inUseLocale));
-    if(nil == tmp){
-        tmp = SharedGlobal.inUseLocale;
-    }
-    NSLocale *locale = (NSLocale *)tmp;
-    return locale;
-}
-
-
-+(void)setInUseLocale:(NSLocale *)locale{
-    objc_setAssociatedObject(self,@selector(inUseLocale),locale,OBJC_ASSOCIATION_RETAIN);
-}
-
-
-+(NSCalendar *)inUseCalendar{
-    id tmp = objc_getAssociatedObject(self,@selector(inUseCalendar));
-    if(nil == tmp){
-        tmp = SharedGlobal.inUseCalendar;
-    }
-    NSCalendar *calendar = (NSCalendar *)tmp;
-    calendar.timeZone = self.inUseTimeZone;
-    calendar.locale = self.inUseLocale;
-    return calendar;
-}
-
-
-+(void)setInUseCalendar:(NSCalendar *)calendar{
-    objc_setAssociatedObject(self,@selector(inUseCalendar),calendar,OBJC_ASSOCIATION_RETAIN);
-}
-
-
-+(NSTimeZone *)inUseTimeZone{
-    id tmp = objc_getAssociatedObject(self,@selector(inUseTimeZone));
-    if(nil == tmp){
-        tmp = SharedGlobal.inUseTimeZone;
-    }
-    NSTimeZone *tz = (NSTimeZone *)tmp;
-    return tz;
-}
-
-
-+(void)setInUseTimeZone:(NSTimeZone *)timeZone{
-    objc_setAssociatedObject(self,@selector(inUseTimeZone),timeZone,OBJC_ASSOCIATION_RETAIN);
-}
-
 
 -(NSDate *)dateAfterYears:(NSInteger)y months:(NSInteger)m days:(NSInteger)d{
     
-    NSCalendar *calendar = NSDate.inUseCalendar;
-    NSDate *date = [calendar dateByAddingUnit:NSCalendarUnitYear value:y
-                               toDate:self options:0];
-    
-    date = [calendar dateByAddingUnit:NSCalendarUnitMonth value:m
-                               toDate:date options:0];
-    
-    date = [calendar dateByAddingUnit:NSCalendarUnitDay value:d
-                               toDate:date options:0];
-    
-    return date;
+    NSInteger timestamp = self.timeIntervalSince1970;
+    NSInteger adjustedTimestamp;
+    addToTimestamp(timestamp,y,(int)m,(int)d,&adjustedTimestamp);
+    return [NSDate dateWithTimeIntervalSince1970:adjustedTimestamp];
 }
 
 
 -(NSDate *)timeAfterHours:(NSInteger)h minutes:(NSInteger)m
                seconds:(NSInteger)s{
     
-    NSCalendar *calendar = NSDate.inUseCalendar;
+    NSCalendar *calendar = SharedGlobal.inUseCalendar;
     NSDate *dt = [calendar dateByAddingUnit:NSCalendarUnitHour value:h
                              toDate:self options:0];
     
@@ -100,16 +48,11 @@
                    minute:(NSInteger)minute second:(NSInteger)second
                  timeZone:(NSTimeZone *)timeZone{
     
-    NSDateComponents *comps = [NSDateComponents new];
-    comps.year = year;
-    comps.month = month;
-    comps.day = day;
-    comps.hour = hour;
-    comps.minute = minute;
-    comps.second = second;
-    comps.timeZone = timeZone;
-    NSCalendar *calendar = self.inUseCalendar;
-    return [calendar dateFromComponents:comps];
+    NSInteger timestamp;
+    
+    createDateTime(year,(int)month,(int)day,(int)hour,(int)minute,(int)second
+      ,(int)(timeZone.secondsFromGMT),&timestamp);
+    return [NSDate dateWithTimeIntervalSince1970:timestamp];
     
 }
 
@@ -117,10 +60,8 @@
 +(NSDate *)createDateTimeWithYear:(NSInteger)year month:(NSInteger)month
                       day:(NSInteger)day hour:(NSInteger)hour
                    minute:(NSInteger)minute second:(NSInteger)second{
-    
-    return
-    [NSDate createDateTimeWithYear:year month:month day:day hour:hour minute:minute
-                    second:second timeZone:self.inUseTimeZone];
+    return [NSDate createDateTimeWithYear:year month:month day:day hour:hour minute:minute
+                    second:second timeZone:NSTimeZone.defaultTimeZone];
 }
 
 
@@ -138,26 +79,31 @@
 
 
 -(NSDate *)dayStart{
-    return [NSDate.inUseCalendar startOfDayForDate:self];
+    NSInteger timestamp = self.timeIntervalSince1970;
+    NSInteger dayStartTimestamp;
+    dayStart(timestamp,(int)NSTimeZone.defaultTimeZone.secondsFromGMT,&dayStartTimestamp);
+    return [NSDate dateWithTimeIntervalSince1970:dayStartTimestamp];
 }
 
 
 +(NSInteger)daysBetween:(NSDate *)fromDate to:(NSDate *)toDate{
-    NSCalendar *calendar = self.inUseCalendar;
-    NSDateComponents *dayComponent = [calendar components:NSCalendarUnitDay
-                                                 fromDate:fromDate toDate:toDate options:0];
-    return dayComponent.day;
+    NSInteger timestampA = toDate.timeIntervalSince1970;
+    NSInteger timestampB = fromDate.timeIntervalSince1970;
+    NSInteger daysBetween;
+    calcDaysBetween(timestampA,(int)NSTimeZone.defaultTimeZone.secondsFromGMT,timestampB,
+      (int)NSTimeZone.defaultTimeZone.secondsFromGMT,&daysBetween);
+    return daysBetween;
 }
 
 -(NSDate *)setHour:(NSInteger)h minute:(NSInteger)m second:(NSInteger)s{
-    NSDate *roundedDownDate = [NSDate.inUseCalendar startOfDayForDate:self];
+    NSDate *roundedDownDate = [SharedGlobal.inUseCalendar startOfDayForDate:self];
     return [roundedDownDate timeAfterHours:h minutes:m seconds:s];
 }
 
 +(NSString *)timeOfDayInSystemPreferredFormat:(NSInteger)hour
                               andMinute:(NSInteger)minute{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.locale = self.inUseLocale;
+    formatter.locale = SharedGlobal.inUseLocale;
     formatter.timeStyle = NSDateFormatterShortStyle;
     NSString *dateString = [formatter stringFromDate:
                             [NSDate createSimpleTimeWithHour:hour minute:minute
@@ -168,7 +114,7 @@
 
 -(NSString *)extractTimeInFormat:(hourFormatType)format{
     
-    NSDateComponents *components = [NSDate.inUseCalendar
+    NSDateComponents *components = [SharedGlobal.inUseCalendar
                                     components:NSCalendarUnitHour|NSCalendarUnitMinute
                                     fromDate:self];
     NSInteger convertedHour = [NSLocale hour:components.hour inGivenFormatMask:format];
@@ -180,9 +126,9 @@
  */
 -(NSInteger)getWeekdayIndex{
     NSTimeZone *currentTZ = objc_getAssociatedObject(NSDate.class,@selector(inUseTimeZone));
-    NSDate.inUseTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
-    NSInteger idx = [NSDate.inUseCalendar component:NSCalendarUnitWeekday fromDate:self] -1;
-    NSDate.inUseTimeZone = currentTZ;
+    NSTimeZone.defaultTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+    NSInteger idx = [SharedGlobal.inUseCalendar component:NSCalendarUnitWeekday fromDate:self] -1;
+    NSTimeZone.defaultTimeZone = currentTZ;
     return idx;
 }
 

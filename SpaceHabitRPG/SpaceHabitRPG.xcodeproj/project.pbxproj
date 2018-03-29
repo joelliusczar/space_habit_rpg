@@ -11,8 +11,6 @@
 		2747C49B2048D53100FB5669 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2747C49A2048D53100FB5669 /* Assets.xcassets */; };
 		2747C49F2048D54700FB5669 /* CentralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C49C2048D54600FB5669 /* CentralViewController.m */; };
 		2747C4A02048D54700FB5669 /* CentralViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2747C49D2048D54600FB5669 /* CentralViewController.xib */; };
-		2747C4A22048D55600FB5669 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2747C4A32048D55600FB5669 /* SHCommon.framework */; };
-		2747C4A42048D70000FB5669 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2747C4A52048D70000FB5669 /* SHModels.framework */; };
 		2747C4AA2048D75300FB5669 /* EditNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2747C4A72048D75200FB5669 /* EditNavigationController.xib */; };
 		2747C4AB2048D75300FB5669 /* EditNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4A82048D75300FB5669 /* EditNavigationController.m */; };
 		2747C4B22048D7B100FB5669 /* HabitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4AC2048D7AF00FB5669 /* HabitController.m */; };
@@ -28,7 +26,6 @@
 		2747C4C72048D8A300FB5669 /* ZoneChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4C62048D8A300FB5669 /* ZoneChoiceViewController.m */; };
 		2747C4CB2048D8CF00FB5669 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2747C4C82048D8CE00FB5669 /* MenuViewController.xib */; };
 		2747C4CC2048D8CF00FB5669 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4CA2048D8CF00FB5669 /* MenuViewController.m */; };
-		2747C4D12048D96400FB5669 /* SHData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2747C4D22048D96400FB5669 /* SHData.framework */; };
 		2747C4E02048E12C00FB5669 /* ZoneDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4DD2048E12B00FB5669 /* ZoneDescriptionViewController.m */; };
 		2747C4E12048E12C00FB5669 /* ZoneDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2747C4DF2048E12B00FB5669 /* ZoneDescriptionViewController.xib */; };
 		2747C4E52048E15500FB5669 /* StoryDumpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4E22048E15500FB5669 /* StoryDumpView.m */; };
@@ -38,13 +35,16 @@
 		2747C4EE2048E2EC00FB5669 /* StoryConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4ED2048E2EC00FB5669 /* StoryConstants.m */; };
 		2747C4F52048E5DB00FB5669 /* DailyCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2747C4F32048E5DA00FB5669 /* DailyCellController.xib */; };
 		2747C4F62048E5DB00FB5669 /* DailyCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4F42048E5DA00FB5669 /* DailyCellController.m */; };
-		2747C4F72048E8CE00FB5669 /* SHControlsSpecial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2747C4F82048E8CE00FB5669 /* SHControlsSpecial.framework */; };
 		2747C4FB20490BBB00FB5669 /* SingletonCluster+App.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4FA20490BBB00FB5669 /* SingletonCluster+App.m */; };
 		2747C50320490E3400FB5669 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C50220490E3400FB5669 /* main.m */; };
 		2747C515204A47BF00FB5669 /* ZoneChoicePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2747C514204A47BE00FB5669 /* ZoneChoicePicker.xib */; };
 		2747C518204A491E00FB5669 /* DailyEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C517204A491E00FB5669 /* DailyEditController.m */; };
 		2747C51A204A494A00FB5669 /* DailyEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2747C519204A494A00FB5669 /* DailyEditView.xib */; };
 		2747C51D204A499000FB5669 /* DailyEditController+ControlLoaders.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C51C204A499000FB5669 /* DailyEditController+ControlLoaders.m */; };
+		27B15AA920524CB60045B226 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AA820524CB60045B226 /* SHCommon.framework */; };
+		27B15AAB20524CDC0045B226 /* SHControlsSpecial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AAA20524CDC0045B226 /* SHControlsSpecial.framework */; };
+		27B15AAD20524CFE0045B226 /* SHControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AAC20524CFE0045B226 /* SHControls.framework */; };
+		27B15AAF20524D6E0045B226 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AAE20524D6E0045B226 /* SHModels.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,8 +54,6 @@
 		2747C49C2048D54600FB5669 /* CentralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentralViewController.m; sourceTree = "<group>"; };
 		2747C49D2048D54600FB5669 /* CentralViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CentralViewController.xib; sourceTree = "<group>"; };
 		2747C49E2048D54600FB5669 /* CentralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralViewController.h; sourceTree = "<group>"; };
-		2747C4A32048D55600FB5669 /* SHCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2747C4A52048D70000FB5669 /* SHModels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHModels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2747C4A62048D75200FB5669 /* P_CentralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_CentralViewController.h; sourceTree = "<group>"; };
 		2747C4A72048D75200FB5669 /* EditNavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditNavigationController.xib; sourceTree = "<group>"; };
 		2747C4A82048D75300FB5669 /* EditNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNavigationController.m; sourceTree = "<group>"; };
@@ -80,7 +78,6 @@
 		2747C4C82048D8CE00FB5669 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
 		2747C4C92048D8CE00FB5669 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		2747C4CA2048D8CF00FB5669 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
-		2747C4D22048D96400FB5669 /* SHData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2747C4DC2048E06800FB5669 /* EditingSaver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditingSaver.h; sourceTree = "<group>"; };
 		2747C4DD2048E12B00FB5669 /* ZoneDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneDescriptionViewController.m; sourceTree = "<group>"; };
 		2747C4DE2048E12B00FB5669 /* ZoneDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneDescriptionViewController.h; sourceTree = "<group>"; };
@@ -96,7 +93,6 @@
 		2747C4F22048E5DA00FB5669 /* DailyCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyCellController.h; sourceTree = "<group>"; };
 		2747C4F32048E5DA00FB5669 /* DailyCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyCellController.xib; sourceTree = "<group>"; };
 		2747C4F42048E5DA00FB5669 /* DailyCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyCellController.m; sourceTree = "<group>"; };
-		2747C4F82048E8CE00FB5669 /* SHControlsSpecial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHControlsSpecial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2747C4F920490BBB00FB5669 /* SingletonCluster+App.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SingletonCluster+App.h"; sourceTree = "<group>"; };
 		2747C4FA20490BBB00FB5669 /* SingletonCluster+App.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SingletonCluster+App.m"; sourceTree = "<group>"; };
 		2747C50220490E3400FB5669 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -109,6 +105,10 @@
 		2747C51C204A499000FB5669 /* DailyEditController+ControlLoaders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DailyEditController+ControlLoaders.m"; sourceTree = "<group>"; };
 		2747C51E204A4A2300FB5669 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		276951A420437DF5002D1C9A /* SpaceHabitRPG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceHabitRPG.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		27B15AA820524CB60045B226 /* SHCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHCommon.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHCommon.framework"; sourceTree = "<group>"; };
+		27B15AAA20524CDC0045B226 /* SHControlsSpecial.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHControlsSpecial.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHControlsSpecial.framework"; sourceTree = "<group>"; };
+		27B15AAC20524CFE0045B226 /* SHControls.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHControls.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHControls.framework"; sourceTree = "<group>"; };
+		27B15AAE20524D6E0045B226 /* SHModels.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHModels.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHModels.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,10 +116,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2747C4F72048E8CE00FB5669 /* SHControlsSpecial.framework in Frameworks */,
-				2747C4D12048D96400FB5669 /* SHData.framework in Frameworks */,
-				2747C4A42048D70000FB5669 /* SHModels.framework in Frameworks */,
-				2747C4A22048D55600FB5669 /* SHCommon.framework in Frameworks */,
+				27B15AAF20524D6E0045B226 /* SHModels.framework in Frameworks */,
+				27B15AAD20524CFE0045B226 /* SHControls.framework in Frameworks */,
+				27B15AAB20524CDC0045B226 /* SHControlsSpecial.framework in Frameworks */,
+				27B15AA920524CB60045B226 /* SHCommon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,10 +129,10 @@
 		2747C4A12048D55600FB5669 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2747C4F82048E8CE00FB5669 /* SHControlsSpecial.framework */,
-				2747C4D22048D96400FB5669 /* SHData.framework */,
-				2747C4A52048D70000FB5669 /* SHModels.framework */,
-				2747C4A32048D55600FB5669 /* SHCommon.framework */,
+				27B15AAE20524D6E0045B226 /* SHModels.framework */,
+				27B15AAC20524CFE0045B226 /* SHControls.framework */,
+				27B15AAA20524CDC0045B226 /* SHControlsSpecial.framework */,
+				27B15AA820524CB60045B226 /* SHCommon.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -461,7 +461,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XK3RJ8E2L2;
-				FRAMEWORK_SEARCH_PATHS = "$BUILD_DIR/**";
+				FRAMEWORK_SEARCH_PATHS = "$BUILD_DIR/Debug-iphoneos/**";
 				GCC_PREFIX_HEADER = $SRCROOT/SpaceHabitRPG/PrefixHeader.pch;
 				INFOPLIST_FILE = SpaceHabitRPG/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -482,7 +482,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XK3RJ8E2L2;
-				FRAMEWORK_SEARCH_PATHS = "$BUILD_DIR/**";
+				FRAMEWORK_SEARCH_PATHS = "$BUILD_DIR/Release-iphoneos/**";
 				GCC_PREFIX_HEADER = $SRCROOT/SpaceHabitRPG/PrefixHeader.pch;
 				INFOPLIST_FILE = SpaceHabitRPG/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

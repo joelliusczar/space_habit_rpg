@@ -76,12 +76,12 @@
 		271D613F20421A9A005C9F7E /* ItemFlexibleListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271D610320421A9A005C9F7E /* ItemFlexibleListView.xib */; };
 		271D614020421A9A005C9F7E /* SHControlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D610420421A9A005C9F7E /* SHControlController.m */; };
 		271D614120421A9A005C9F7E /* P_SHView.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D610520421A9A005C9F7E /* P_SHView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D614220421C8E005C9F7E /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 271D614320421C8E005C9F7E /* SHCommon.framework */; };
 		271D614520421F1A005C9F7E /* P_ResizeResponder.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D614420421F1A005C9F7E /* P_ResizeResponder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271D614820421FF8005C9F7E /* UIScrollView+ScrollAdjusters.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D614620421FF7005C9F7E /* UIScrollView+ScrollAdjusters.m */; };
 		271D614920421FF8005C9F7E /* UIScrollView+ScrollAdjusters.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D614720421FF7005C9F7E /* UIScrollView+ScrollAdjusters.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C527204A573200FB5669 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2747C526204A573200FB5669 /* Media.xcassets */; };
-		27ED28B62040047400CD5536 /* SHGlobal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27ED28B72040047400CD5536 /* SHGlobal.framework */; };
+		27B15A9920524A4F0045B226 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A9820524A4F0045B226 /* SHCommon.framework */; };
+		27B15A9B20524A5C0045B226 /* SHGlobal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A9A20524A5C0045B226 /* SHGlobal.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -156,12 +156,12 @@
 		271D610320421A9A005C9F7E /* ItemFlexibleListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemFlexibleListView.xib; sourceTree = "<group>"; };
 		271D610420421A9A005C9F7E /* SHControlController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHControlController.m; sourceTree = "<group>"; };
 		271D610520421A9A005C9F7E /* P_SHView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_SHView.h; sourceTree = "<group>"; };
-		271D614320421C8E005C9F7E /* SHCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		271D614420421F1A005C9F7E /* P_ResizeResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ResizeResponder.h; sourceTree = "<group>"; };
 		271D614620421FF7005C9F7E /* UIScrollView+ScrollAdjusters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+ScrollAdjusters.m"; path = "SHControls/UIScrollView+ScrollAdjusters.m"; sourceTree = "<group>"; };
 		271D614720421FF7005C9F7E /* UIScrollView+ScrollAdjusters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+ScrollAdjusters.h"; path = "SHControls/UIScrollView+ScrollAdjusters.h"; sourceTree = "<group>"; };
 		2747C526204A573200FB5669 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = SHControls/Media.xcassets; sourceTree = "<group>"; };
-		27ED28B72040047400CD5536 /* SHGlobal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHGlobal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27B15A9820524A4F0045B226 /* SHCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHCommon.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHCommon.framework"; sourceTree = "<group>"; };
+		27B15A9A20524A5C0045B226 /* SHGlobal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHGlobal.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHGlobal.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,8 +169,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				271D614220421C8E005C9F7E /* SHCommon.framework in Frameworks */,
-				27ED28B62040047400CD5536 /* SHGlobal.framework in Frameworks */,
+				27B15A9B20524A5C0045B226 /* SHGlobal.framework in Frameworks */,
+				27B15A9920524A4F0045B226 /* SHCommon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,8 +245,8 @@
 		2711884B203FFE5B0085A549 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				271D614320421C8E005C9F7E /* SHCommon.framework */,
-				27ED28B72040047400CD5536 /* SHGlobal.framework */,
+				27B15A9A20524A5C0045B226 /* SHGlobal.framework */,
+				27B15A9820524A4F0045B226 /* SHCommon.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

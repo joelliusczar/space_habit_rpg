@@ -10,22 +10,22 @@
 		2747C3DB2043C95100FB5669 /* CoreDataStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3D82043C95100FB5669 /* CoreDataStackController.m */; };
 		2747C3DC2043C95100FB5669 /* P_CoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3D92043C95100FB5669 /* P_CoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C3DD2043C95100FB5669 /* CoreDataStackController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3DA2043C95100FB5669 /* CoreDataStackController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2747C3DF2043CA4A00FB5669 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2747C3E02043CA4A00FB5669 /* SHCommon.framework */; };
 		2747C4512046235500FB5669 /* SingletonCluster+Data.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C44F2046235500FB5669 /* SingletonCluster+Data.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C4522046235500FB5669 /* SingletonCluster+Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4502046235500FB5669 /* SingletonCluster+Data.m */; };
 		27730B992041E0DE003BEB6C /* SHData.h in Headers */ = {isa = PBXBuildFile; fileRef = 27730B972041E0DE003BEB6C /* SHData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27B15A9D20524ACC0045B226 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A9C20524ACC0045B226 /* SHCommon.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2747C3D82043C95100FB5669 /* CoreDataStackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataStackController.m; sourceTree = "<group>"; };
 		2747C3D92043C95100FB5669 /* P_CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_CoreData.h; sourceTree = "<group>"; };
 		2747C3DA2043C95100FB5669 /* CoreDataStackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataStackController.h; sourceTree = "<group>"; };
-		2747C3E02043CA4A00FB5669 /* SHCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2747C44F2046235500FB5669 /* SingletonCluster+Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SingletonCluster+Data.h"; sourceTree = "<group>"; };
 		2747C4502046235500FB5669 /* SingletonCluster+Data.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SingletonCluster+Data.m"; sourceTree = "<group>"; };
 		27730B942041E0DE003BEB6C /* SHData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27730B972041E0DE003BEB6C /* SHData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHData.h; sourceTree = "<group>"; };
 		27730B982041E0DE003BEB6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27B15A9C20524ACC0045B226 /* SHCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHCommon.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHCommon.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,7 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2747C3DF2043CA4A00FB5669 /* SHCommon.framework in Frameworks */,
+				27B15A9D20524ACC0045B226 /* SHCommon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,7 +43,7 @@
 		2747C3DE2043CA4A00FB5669 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2747C3E02043CA4A00FB5669 /* SHCommon.framework */,
+				27B15A9C20524ACC0045B226 /* SHCommon.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -289,7 +289,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "$BUILD_DIR/**";
+				FRAMEWORK_SEARCH_PATHS = "$BUILD_DIR/Debug-iphoneos/**";
 				INFOPLIST_FILE = SHData/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -314,7 +314,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "$BUILD_DIR/**";
+				FRAMEWORK_SEARCH_PATHS = "$BUILD_DIR/Relase-iphoneos/**";
 				INFOPLIST_FILE = SHData/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27004253205251B3001FA0B5 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27004252205251B3001FA0B5 /* SHModels.framework */; };
+		271B24C0204FC58600CA4338 /* nextDayTests.h in Headers */ = {isa = PBXBuildFile; fileRef = 271B24BE204FC58600CA4338 /* nextDayTests.h */; };
+		271B24C1204FC58600CA4338 /* nextDayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 271B24BF204FC58600CA4338 /* nextDayTests.m */; };
 		274EFB77204F9AEA00CB3C4C /* TestCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB75204F9AEA00CB3C4C /* TestCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		274EFB82204F9B7700CB3C4C /* TestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB7D204F9B7600CB3C4C /* TestHelpers.m */; };
 		274EFB83204F9B7700CB3C4C /* FrequentCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB7E204F9B7700CB3C4C /* FrequentCase.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -14,11 +17,12 @@
 		274EFB85204F9B7700CB3C4C /* TestGlobals.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB80204F9B7700CB3C4C /* TestGlobals.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		274EFB86204F9B7700CB3C4C /* TestHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB81204F9B7700CB3C4C /* TestHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		274EFB8D204FB27200CB3C4C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 274EFB8C204FB27200CB3C4C /* XCTest.framework */; };
-		274EFB8E204FBD4F00CB3C4C /* SHData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 274EFB8F204FBD4F00CB3C4C /* SHData.framework */; };
-		274EFB90204FBD5400CB3C4C /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 274EFB91204FBD5400CB3C4C /* SHModels.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		27004252205251B3001FA0B5 /* SHModels.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHModels.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHModels.framework"; sourceTree = "<group>"; };
+		271B24BE204FC58600CA4338 /* nextDayTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = nextDayTests.h; sourceTree = "<group>"; };
+		271B24BF204FC58600CA4338 /* nextDayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = nextDayTests.m; sourceTree = "<group>"; };
 		274EFB72204F9AEA00CB3C4C /* TestCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TestCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		274EFB75204F9AEA00CB3C4C /* TestCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestCommon.h; sourceTree = "<group>"; };
 		274EFB76204F9AEA00CB3C4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -28,8 +32,6 @@
 		274EFB80204F9B7700CB3C4C /* TestGlobals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestGlobals.h; sourceTree = "<group>"; };
 		274EFB81204F9B7700CB3C4C /* TestHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHelpers.h; sourceTree = "<group>"; };
 		274EFB8C204FB27200CB3C4C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		274EFB8F204FBD4F00CB3C4C /* SHData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		274EFB91204FBD5400CB3C4C /* SHModels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHModels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,8 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				274EFB90204FBD5400CB3C4C /* SHModels.framework in Frameworks */,
-				274EFB8E204FBD4F00CB3C4C /* SHData.framework in Frameworks */,
+				27004253205251B3001FA0B5 /* SHModels.framework in Frameworks */,
 				274EFB8D204FB27200CB3C4C /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,6 +74,8 @@
 				274EFB7D204F9B7600CB3C4C /* TestHelpers.m */,
 				274EFB75204F9AEA00CB3C4C /* TestCommon.h */,
 				274EFB76204F9AEA00CB3C4C /* Info.plist */,
+				271B24BE204FC58600CA4338 /* nextDayTests.h */,
+				271B24BF204FC58600CA4338 /* nextDayTests.m */,
 			);
 			path = TestCommon;
 			sourceTree = "<group>";
@@ -80,8 +83,7 @@
 		274EFB89204F9CB300CB3C4C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				274EFB91204FBD5400CB3C4C /* SHModels.framework */,
-				274EFB8F204FBD4F00CB3C4C /* SHData.framework */,
+				27004252205251B3001FA0B5 /* SHModels.framework */,
 				274EFB8C204FB27200CB3C4C /* XCTest.framework */,
 			);
 			name = Frameworks;
@@ -96,6 +98,7 @@
 			files = (
 				274EFB83204F9B7700CB3C4C /* FrequentCase.h in Headers */,
 				274EFB77204F9AEA00CB3C4C /* TestCommon.h in Headers */,
+				271B24C0204FC58600CA4338 /* nextDayTests.h in Headers */,
 				274EFB86204F9B7700CB3C4C /* TestHelpers.h in Headers */,
 				274EFB85204F9B7700CB3C4C /* TestGlobals.h in Headers */,
 			);
@@ -169,6 +172,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				271B24C1204FC58600CA4338 /* nextDayTests.m in Sources */,
 				274EFB82204F9B7700CB3C4C /* TestHelpers.m in Sources */,
 				274EFB84204F9B7700CB3C4C /* FrequentCase.m in Sources */,
 			);

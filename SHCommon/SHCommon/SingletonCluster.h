@@ -24,12 +24,8 @@
 @property (strong,nonatomic) NSObject<P_ReportServiceCaller> *reportCaller;
 @property (nonatomic,readonly) int EnviromentNum;
 @property (strong,nonatomic) NSCalendar *inUseCalendar;
-@property (strong,nonatomic) NSTimeZone *inUseTimeZone;
 @property (strong,nonatomic) NSLocale *inUseLocale;
 @property (strong,nonatomic) FlexibleConstants *constants;
 @property (strong,nonatomic) NSMutableDictionary *bag;
 @property (strong,nonatomic) NSBundle *bundle;
--(void)setCalendarCascade:(NSCalendar *)calendar;
--(void)setTimeZoneCascade:(NSTimeZone *)timezone;
--(void)setLocaleCascade:(NSLocale *)locale;
 @end

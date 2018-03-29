@@ -13,12 +13,14 @@
 #import "Experiments+Bravo.h"
 #import "ChildMan.h"
 #import "XPSideKick.h"
+#import "NoArcExp.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         //Experiments *exp = [[Experiments alloc] init];
         //[exp playWithCharlie];
-        [Experiments replaceStrat2];
+        [Experiments timeZoneStuff];
+        //[NoArcExp objectToCharPtr];
     }
     return 0;
 }

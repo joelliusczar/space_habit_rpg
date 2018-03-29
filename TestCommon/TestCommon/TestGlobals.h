@@ -11,6 +11,6 @@
 
 #define ASSERT_IS_TEST() if([SingletonCluster getSharedInstance].EnviromentNum!=ENV_UTEST) \
 [NSException raise:@"invalid environment" format:@"This is not test"]
-
+#define failTest() [NSException raise:[NSString stringWithFormat:@"expected Value:%@ actual Value:%@",expected,actual] format:@""]
 
 #endif /* TestGlobals_h */

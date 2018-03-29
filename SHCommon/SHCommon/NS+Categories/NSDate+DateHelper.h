@@ -10,9 +10,6 @@
 #import <SHGlobal/Constants.h>
 
 @interface NSDate (DateHelper)
-@property (class,strong,atomic) NSLocale *inUseLocale;
-@property (class,strong,atomic) NSCalendar *inUseCalendar;
-@property (class,strong,atomic) NSTimeZone *inUseTimeZone;
 -(NSDate *)dateAfterYears:(NSInteger)y months:(NSInteger)m days:(NSInteger)d;
 -(NSDate *)timeAfterHours:(NSInteger)h minutes:(NSInteger)m seconds:(NSInteger)s;
 +(NSDate *)createDateTimeWithYear:(NSInteger)year month:(NSInteger)month

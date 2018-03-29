@@ -31,6 +31,7 @@
 #import "Ocean.h"
 #import <Playground/Coverride.h>
 #import "PureCBaby.h"
+#import "House+Hacked.h"
 
 
 void r_outside(){
@@ -631,6 +632,30 @@ NSString *convertCharToBin(unsigned char input){
 
 +(void)replaceStrat2{
     Hijack();
+}
+
++(void)tryHacked{
+    House *h = [[House alloc] init];
+    h.stuffedInt = 5;
+    NSLog(@"stuffedInt: %d",h.stuffedInt);
+    h.stuffedInt = 7;
+    NSLog(@"stuffedInt: %d",h.stuffedInt);
+}
+
+
++(void)timeZoneStuff{
+    [NSTimeZone setDefaultTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
+    NSTimeZone *plain = [NSTimeZone defaultTimeZone];
+    NSTimeZone *local = [NSTimeZone localTimeZone];
+    NSLog(@"%d",local.isDaylightSavingTime?1:0);
+    NSLog(@"%@",plain);
+    NSLog(@"%@",local);
+    [NSTimeZone setDefaultTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"EST"]];
+    NSLog(@"%@",plain);
+    NSLog(@"%@",local);
+    NSTimeZone *set = [NSTimeZone timeZoneForSecondsFromGMT:-18000];
+    NSLog(@"%@",set);
+    NSLog(@"%d",set.isDaylightSavingTime?1:0);
 }
     
 @end

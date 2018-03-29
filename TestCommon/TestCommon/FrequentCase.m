@@ -15,7 +15,7 @@
     [super setUp];
     ASSERT_IS_TEST();
     SharedGlobal.bundle = [NSBundle bundleForClass:NSClassFromString(@"OnlyOneEntities")];
-    SharedGlobal.inUseTimeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
+    NSTimeZone.defaultTimeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
     self.testContext = [SHData constructContext:NSMainQueueConcurrencyType];
     SHData.inUseContext = self.testContext;
     [TestHelpers resetCoreData:SHData.inUseContext];

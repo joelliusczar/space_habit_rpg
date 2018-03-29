@@ -88,17 +88,14 @@
 		2747C3B52043B53100FB5669 /* Daily+ActiveDays.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3AF2043B53100FB5669 /* Daily+ActiveDays.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C3B62043B53100FB5669 /* Daily+Mapable.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3B02043B53100FB5669 /* Daily+Mapable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C3B72043B53100FB5669 /* Daily+DailyHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3B12043B53100FB5669 /* Daily+DailyHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2747C3B92043B59100FB5669 /* SHGlobal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2747C3BA2043B59100FB5669 /* SHGlobal.framework */; };
 		2747C3BD2043B67200FB5669 /* RateTypeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3BB2043B67200FB5669 /* RateTypeHelper.m */; };
 		2747C3BE2043B67200FB5669 /* RateTypeHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3BC2043B67200FB5669 /* RateTypeHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2747C3C32043B78300FB5669 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2747C3C42043B78300FB5669 /* SHCommon.framework */; };
 		2747C3C62043B83C00FB5669 /* P_StoryItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3C52043B83C00FB5669 /* P_StoryItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C3C82043B89100FB5669 /* P_Transaction.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3C72043B89100FB5669 /* P_Transaction.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C3CE2043BACB00FB5669 /* MonsterInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3CA2043BACA00FB5669 /* MonsterInfoDictionary.m */; };
 		2747C3CF2043BACB00FB5669 /* MonsterInfoDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3CB2043BACA00FB5669 /* MonsterInfoDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C3D02043BACB00FB5669 /* ZoneInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3CC2043BACA00FB5669 /* ZoneInfoDictionary.m */; };
 		2747C3D12043BACB00FB5669 /* ZoneInfoDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3CD2043BACB00FB5669 /* ZoneInfoDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2747C45320462AEB00FB5669 /* SHData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2747C45420462AEB00FB5669 /* SHData.framework */; };
 		2747C45720462B1C00FB5669 /* SingletonCluster+Entity.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C45520462B1C00FB5669 /* SingletonCluster+Entity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C45820462B1C00FB5669 /* SingletonCluster+Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C45620462B1C00FB5669 /* SingletonCluster+Entity.m */; };
 		2747C45B20462D4800FB5669 /* OnlyOneEntities.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C45920462D4800FB5669 /* OnlyOneEntities.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -115,6 +112,9 @@
 		2747C513204A471D00FB5669 /* SuffixList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2747C512204A471D00FB5669 /* SuffixList.plist */; };
 		274EFB66204E462E00CB3C4C /* ModelTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB64204E462E00CB3C4C /* ModelTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		274EFB67204E462E00CB3C4C /* ModelTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB65204E462E00CB3C4C /* ModelTools.m */; };
+		27B15A9F20524B4F0045B226 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A9E20524B4F0045B226 /* SHCommon.framework */; };
+		27B15AA120524B5D0045B226 /* SHData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AA020524B5D0045B226 /* SHData.framework */; };
+		27B15AA320524B6B0045B226 /* SHGlobal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AA220524B6B0045B226 /* SHGlobal.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -215,10 +215,8 @@
 		2747C3AF2043B53100FB5669 /* Daily+ActiveDays.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Daily+ActiveDays.h"; sourceTree = "<group>"; };
 		2747C3B02043B53100FB5669 /* Daily+Mapable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Daily+Mapable.h"; sourceTree = "<group>"; };
 		2747C3B12043B53100FB5669 /* Daily+DailyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Daily+DailyHelper.h"; sourceTree = "<group>"; };
-		2747C3BA2043B59100FB5669 /* SHGlobal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHGlobal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2747C3BB2043B67200FB5669 /* RateTypeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateTypeHelper.m; sourceTree = "<group>"; };
 		2747C3BC2043B67200FB5669 /* RateTypeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateTypeHelper.h; sourceTree = "<group>"; };
-		2747C3C42043B78300FB5669 /* SHCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2747C3C52043B83C00FB5669 /* P_StoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_StoryItem.h; sourceTree = "<group>"; };
 		2747C3C72043B89100FB5669 /* P_Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_Transaction.h; sourceTree = "<group>"; };
 		2747C3C92043B96900FB5669 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -226,7 +224,6 @@
 		2747C3CB2043BACA00FB5669 /* MonsterInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterInfoDictionary.h; sourceTree = "<group>"; };
 		2747C3CC2043BACA00FB5669 /* ZoneInfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneInfoDictionary.m; sourceTree = "<group>"; };
 		2747C3CD2043BACB00FB5669 /* ZoneInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneInfoDictionary.h; sourceTree = "<group>"; };
-		2747C45420462AEB00FB5669 /* SHData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2747C45520462B1C00FB5669 /* SingletonCluster+Entity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SingletonCluster+Entity.h"; sourceTree = "<group>"; };
 		2747C45620462B1C00FB5669 /* SingletonCluster+Entity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SingletonCluster+Entity.m"; sourceTree = "<group>"; };
 		2747C45920462D4800FB5669 /* OnlyOneEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyOneEntities.h; sourceTree = "<group>"; };
@@ -242,6 +239,9 @@
 		2747C512204A471D00FB5669 /* SuffixList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SuffixList.plist; sourceTree = "<group>"; };
 		274EFB64204E462E00CB3C4C /* ModelTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelTools.h; sourceTree = "<group>"; };
 		274EFB65204E462E00CB3C4C /* ModelTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelTools.m; sourceTree = "<group>"; };
+		27B15A9E20524B4F0045B226 /* SHCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHCommon.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHCommon.framework"; sourceTree = "<group>"; };
+		27B15AA020524B5D0045B226 /* SHData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHData.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHData.framework"; sourceTree = "<group>"; };
+		27B15AA220524B6B0045B226 /* SHGlobal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHGlobal.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHGlobal.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,9 +249,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2747C45320462AEB00FB5669 /* SHData.framework in Frameworks */,
-				2747C3C32043B78300FB5669 /* SHCommon.framework in Frameworks */,
-				2747C3B92043B59100FB5669 /* SHGlobal.framework in Frameworks */,
+				27B15AA320524B6B0045B226 /* SHGlobal.framework in Frameworks */,
+				27B15AA120524B5D0045B226 /* SHData.framework in Frameworks */,
+				27B15A9F20524B4F0045B226 /* SHCommon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,9 +541,9 @@
 		2747C3B82043B59100FB5669 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2747C45420462AEB00FB5669 /* SHData.framework */,
-				2747C3C42043B78300FB5669 /* SHCommon.framework */,
-				2747C3BA2043B59100FB5669 /* SHGlobal.framework */,
+				27B15AA220524B6B0045B226 /* SHGlobal.framework */,
+				27B15AA020524B5D0045B226 /* SHData.framework */,
+				27B15A9E20524B4F0045B226 /* SHCommon.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

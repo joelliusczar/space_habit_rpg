@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		271D615920433434005C9F7E /* SHControlsSpecial.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D615720433434005C9F7E /* SHControlsSpecial.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D61602043346E005C9F7E /* SHControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 271D61612043346E005C9F7E /* SHControls.framework */; };
 		271D617120434499005C9F7E /* MonthlyActiveDays.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D616320434498005C9F7E /* MonthlyActiveDays.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271D617220434499005C9F7E /* YearPartPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D616420434498005C9F7E /* YearPartPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271D617320434499005C9F7E /* RateSetContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D616520434498005C9F7E /* RateSetContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -23,7 +22,6 @@
 		271D617C20434499005C9F7E /* MonthPartPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D616E20434498005C9F7E /* MonthPartPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271D617D20434499005C9F7E /* YearlyActiveDays.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D616F20434499005C9F7E /* YearlyActiveDays.m */; };
 		271D617E20434499005C9F7E /* WeeklyActiveDays.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D617020434499005C9F7E /* WeeklyActiveDays.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2747C46720466CD000FB5669 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2747C46820466CD000FB5669 /* SHModels.framework */; };
 		2747C46D2047C95400FB5669 /* ReminderListView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C4692047C95300FB5669 /* ReminderListView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C46E2047C95400FB5669 /* ReminderCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C46A2047C95400FB5669 /* ReminderCellController.m */; };
 		2747C46F2047C95400FB5669 /* ReminderListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C46B2047C95400FB5669 /* ReminderListView.m */; };
@@ -35,13 +33,14 @@
 		2747C50020490D0A00FB5669 /* TimeSpinPickerEventInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4FE20490D0900FB5669 /* TimeSpinPickerEventInfo.m */; };
 		2747C50120490D0A00FB5669 /* TimeSpinPickerEventInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C4FF20490D0A00FB5669 /* TimeSpinPickerEventInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C520204A4C4300FB5669 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2747C51F204A4C4300FB5669 /* Media.xcassets */; };
+		27B15AA520524BED0045B226 /* SHControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AA420524BED0045B226 /* SHControls.framework */; };
+		27B15AA720524BFE0045B226 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AA620524BFE0045B226 /* SHModels.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		271D615420433434005C9F7E /* SHControlsSpecial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHControlsSpecial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		271D615720433434005C9F7E /* SHControlsSpecial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHControlsSpecial.h; sourceTree = "<group>"; };
 		271D615820433434005C9F7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		271D61612043346E005C9F7E /* SHControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		271D616320434498005C9F7E /* MonthlyActiveDays.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthlyActiveDays.h; sourceTree = "<group>"; };
 		271D616420434498005C9F7E /* YearPartPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearPartPicker.h; sourceTree = "<group>"; };
 		271D616520434498005C9F7E /* RateSetContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateSetContainer.h; sourceTree = "<group>"; };
@@ -56,7 +55,6 @@
 		271D616E20434498005C9F7E /* MonthPartPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthPartPicker.h; sourceTree = "<group>"; };
 		271D616F20434499005C9F7E /* YearlyActiveDays.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearlyActiveDays.m; sourceTree = "<group>"; };
 		271D617020434499005C9F7E /* WeeklyActiveDays.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeeklyActiveDays.h; sourceTree = "<group>"; };
-		2747C46820466CD000FB5669 /* SHModels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHModels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2747C4692047C95300FB5669 /* ReminderListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReminderListView.h; sourceTree = "<group>"; };
 		2747C46A2047C95400FB5669 /* ReminderCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReminderCellController.m; sourceTree = "<group>"; };
 		2747C46B2047C95400FB5669 /* ReminderListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReminderListView.m; sourceTree = "<group>"; };
@@ -68,6 +66,8 @@
 		2747C4FE20490D0900FB5669 /* TimeSpinPickerEventInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeSpinPickerEventInfo.m; sourceTree = "<group>"; };
 		2747C4FF20490D0A00FB5669 /* TimeSpinPickerEventInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeSpinPickerEventInfo.h; sourceTree = "<group>"; };
 		2747C51F204A4C4300FB5669 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		27B15AA420524BED0045B226 /* SHControls.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHControls.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHControls.framework"; sourceTree = "<group>"; };
+		27B15AA620524BFE0045B226 /* SHModels.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHModels.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHModels.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,8 +75,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2747C46720466CD000FB5669 /* SHModels.framework in Frameworks */,
-				271D61602043346E005C9F7E /* SHControls.framework in Frameworks */,
+				27B15AA720524BFE0045B226 /* SHModels.framework in Frameworks */,
+				27B15AA520524BED0045B226 /* SHControls.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,8 +124,8 @@
 		271D615F2043346E005C9F7E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2747C46820466CD000FB5669 /* SHModels.framework */,
-				271D61612043346E005C9F7E /* SHControls.framework */,
+				27B15AA620524BFE0045B226 /* SHModels.framework */,
+				27B15AA420524BED0045B226 /* SHControls.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
