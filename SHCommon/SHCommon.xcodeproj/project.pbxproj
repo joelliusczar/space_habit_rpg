@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2708C4532082FB0B000CF174 /* SHTimeZone.h in Headers */ = {isa = PBXBuildFile; fileRef = 2708C4512082FB0B000CF174 /* SHTimeZone.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2708C4542082FB0B000CF174 /* SHTimeZone.c in Sources */ = {isa = PBXBuildFile; fileRef = 2708C4522082FB0B000CF174 /* SHTimeZone.c */; };
+		2708C457208309F0000CF174 /* SHDatetime_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = 2708C4552082FE4E000CF174 /* SHDatetime_struct.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2708C458208309F7000CF174 /* TimeShift_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = 2708C4562082FEE9000CF174 /* TimeShift_struct.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27118841203FFA810085A549 /* SHCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 2711883F203FFA810085A549 /* SHCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C3C12043B6C000FB5669 /* NSMutableArray+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3BF2043B6C000FB5669 /* NSMutableArray+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C3C22043B6C000FB5669 /* NSMutableArray+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3C02043B6C000FB5669 /* NSMutableArray+Helper.m */; };
@@ -31,8 +35,8 @@
 		274EFB5B204E3FE000CB3C4C /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB59204E3FE000CB3C4C /* UIColor+Helper.m */; };
 		274EFB62204E43C900CB3C4C /* UIImage+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB60204E43C900CB3C4C /* UIImage+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		274EFB63204E43C900CB3C4C /* UIImage+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB61204E43C900CB3C4C /* UIImage+Helper.m */; };
-		276C177120545E930023D853 /* c_datetime.h in Headers */ = {isa = PBXBuildFile; fileRef = 276C176F20545E930023D853 /* c_datetime.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		276C177220545E930023D853 /* c_datetime.c in Sources */ = {isa = PBXBuildFile; fileRef = 276C177020545E930023D853 /* c_datetime.c */; };
+		276C177120545E930023D853 /* SHDatetime.h in Headers */ = {isa = PBXBuildFile; fileRef = 276C176F20545E930023D853 /* SHDatetime.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		276C177220545E930023D853 /* SHDatetime.c in Sources */ = {isa = PBXBuildFile; fileRef = 276C177020545E930023D853 /* SHDatetime.c */; };
 		2781FF6D204204D80035AD82 /* CommonUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781FF5A204204D70035AD82 /* CommonUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2781FF6E204204D80035AD82 /* CommonUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781FF5B204204D70035AD82 /* CommonUtilities.m */; };
 		2781FF6F204204D80035AD82 /* SingletonCluster.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781FF5C204204D70035AD82 /* SingletonCluster.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -61,9 +65,17 @@
 		27DD1D292043A2210030D954 /* NSDate+DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DD1D212043A2210030D954 /* NSDate+DateHelper.m */; };
 		27DD1D2A2043A2210030D954 /* NSLocale+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27DD1D222043A2210030D954 /* NSLocale+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27DD1D2B2043A2210030D954 /* NSObject+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DD1D232043A2210030D954 /* NSObject+Helper.m */; };
+		27F942C2207098980064D1A9 /* DTConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F942C0207098980064D1A9 /* DTConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27F942C3207098980064D1A9 /* DTConstants.c in Sources */ = {isa = PBXBuildFile; fileRef = 27F942C1207098980064D1A9 /* DTConstants.c */; };
+		27F942C6207169DA0064D1A9 /* SHConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F942C4207169DA0064D1A9 /* SHConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27F942C7207169DA0064D1A9 /* SHConstants.c in Sources */ = {isa = PBXBuildFile; fileRef = 27F942C5207169DA0064D1A9 /* SHConstants.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2708C4512082FB0B000CF174 /* SHTimeZone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTimeZone.h; sourceTree = "<group>"; };
+		2708C4522082FB0B000CF174 /* SHTimeZone.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHTimeZone.c; sourceTree = "<group>"; };
+		2708C4552082FE4E000CF174 /* SHDatetime_struct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDatetime_struct.h; sourceTree = "<group>"; };
+		2708C4562082FEE9000CF174 /* TimeShift_struct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeShift_struct.h; sourceTree = "<group>"; };
 		2711883C203FFA810085A549 /* SHCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2711883F203FFA810085A549 /* SHCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHCommon.h; sourceTree = "<group>"; };
 		27118840203FFA810085A549 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,8 +102,8 @@
 		274EFB59204E3FE000CB3C4C /* UIColor+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Helper.m"; sourceTree = "<group>"; };
 		274EFB60204E43C900CB3C4C /* UIImage+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Helper.h"; sourceTree = "<group>"; };
 		274EFB61204E43C900CB3C4C /* UIImage+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Helper.m"; sourceTree = "<group>"; };
-		276C176F20545E930023D853 /* c_datetime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = c_datetime.h; sourceTree = "<group>"; };
-		276C177020545E930023D853 /* c_datetime.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = c_datetime.c; sourceTree = "<group>"; };
+		276C176F20545E930023D853 /* SHDatetime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDatetime.h; sourceTree = "<group>"; };
+		276C177020545E930023D853 /* SHDatetime.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHDatetime.c; sourceTree = "<group>"; };
 		2781FF5A204204D70035AD82 /* CommonUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtilities.h; sourceTree = "<group>"; };
 		2781FF5B204204D70035AD82 /* CommonUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtilities.m; sourceTree = "<group>"; };
 		2781FF5C204204D70035AD82 /* SingletonCluster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonCluster.h; sourceTree = "<group>"; };
@@ -120,6 +132,10 @@
 		27DD1D212043A2210030D954 /* NSDate+DateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DateHelper.m"; sourceTree = "<group>"; };
 		27DD1D222043A2210030D954 /* NSLocale+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLocale+Helper.h"; sourceTree = "<group>"; };
 		27DD1D232043A2210030D954 /* NSObject+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Helper.m"; sourceTree = "<group>"; };
+		27F942C0207098980064D1A9 /* DTConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTConstants.h; sourceTree = "<group>"; };
+		27F942C1207098980064D1A9 /* DTConstants.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = DTConstants.c; sourceTree = "<group>"; };
+		27F942C4207169DA0064D1A9 /* SHConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHConstants.h; sourceTree = "<group>"; };
+		27F942C5207169DA0064D1A9 /* SHConstants.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHConstants.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,8 +170,8 @@
 		2711883E203FFA810085A549 /* SHCommon */ = {
 			isa = PBXGroup;
 			children = (
-				276C176E20545E230023D853 /* c_tools */,
 				27DD1D1B2043A2210030D954 /* NS+Categories */,
+				276C176E20545E230023D853 /* c_tools */,
 				2781FF7E2042053A0035AD82 /* Protocols */,
 				2781FF5A204204D70035AD82 /* CommonUtilities.h */,
 				2781FF5B204204D70035AD82 /* CommonUtilities.m */,
@@ -191,8 +207,16 @@
 		276C176E20545E230023D853 /* c_tools */ = {
 			isa = PBXGroup;
 			children = (
-				276C176F20545E930023D853 /* c_datetime.h */,
-				276C177020545E930023D853 /* c_datetime.c */,
+				276C176F20545E930023D853 /* SHDatetime.h */,
+				276C177020545E930023D853 /* SHDatetime.c */,
+				27F942C0207098980064D1A9 /* DTConstants.h */,
+				27F942C1207098980064D1A9 /* DTConstants.c */,
+				27F942C4207169DA0064D1A9 /* SHConstants.h */,
+				27F942C5207169DA0064D1A9 /* SHConstants.c */,
+				2708C4512082FB0B000CF174 /* SHTimeZone.h */,
+				2708C4522082FB0B000CF174 /* SHTimeZone.c */,
+				2708C4552082FE4E000CF174 /* SHDatetime_struct.h */,
+				2708C4562082FEE9000CF174 /* TimeShift_struct.h */,
 			);
 			path = c_tools;
 			sourceTree = "<group>";
@@ -278,9 +302,14 @@
 				2747C4892048CDB400FB5669 /* SHControlKeep.h in Headers */,
 				274EFB62204E43C900CB3C4C /* UIImage+Helper.h in Headers */,
 				274EFB5A204E3FE000CB3C4C /* UIColor+Helper.h in Headers */,
-				276C177120545E930023D853 /* c_datetime.h in Headers */,
+				276C177120545E930023D853 /* SHDatetime.h in Headers */,
 				2747C4DB2048DC1300FB5669 /* ProbWeight.h in Headers */,
+				27F942C2207098980064D1A9 /* DTConstants.h in Headers */,
 				27118841203FFA810085A549 /* SHCommon.h in Headers */,
+				27F942C6207169DA0064D1A9 /* SHConstants.h in Headers */,
+				2708C457208309F0000CF174 /* SHDatetime_struct.h in Headers */,
+				2708C458208309F7000CF174 /* TimeShift_struct.h in Headers */,
+				2708C4532082FB0B000CF174 /* SHTimeZone.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27DD1D252043A2210030D954 /* NSLocale+Helper.m in Sources */,
+				2708C4542082FB0B000CF174 /* SHTimeZone.c in Sources */,
 				27DD1D282043A2210030D954 /* NSException+SHCommonExceptions.m in Sources */,
 				2747C4DA2048DC1300FB5669 /* ProbWeight.m in Sources */,
 				2781FF74204204D80035AD82 /* ViewHelper.m in Sources */,
@@ -363,6 +393,7 @@
 				2747C48A2048CDB400FB5669 /* SHControlKeep.m in Sources */,
 				2781FF70204204D80035AD82 /* UIView+Helpers.m in Sources */,
 				2747C4762047CC1D00FB5669 /* NSNumber+Helper.m in Sources */,
+				27F942C3207098980064D1A9 /* DTConstants.c in Sources */,
 				274EFB5B204E3FE000CB3C4C /* UIColor+Helper.m in Sources */,
 				2747C3C22043B6C000FB5669 /* NSMutableArray+Helper.m in Sources */,
 				2781FF6E204204D80035AD82 /* CommonUtilities.m in Sources */,
@@ -372,8 +403,9 @@
 				274EFB63204E43C900CB3C4C /* UIImage+Helper.m in Sources */,
 				2781FF71204204D80035AD82 /* Interceptor.m in Sources */,
 				27DD1D2B2043A2210030D954 /* NSObject+Helper.m in Sources */,
+				27F942C7207169DA0064D1A9 /* SHConstants.c in Sources */,
 				2747C47A2047CD8800FB5669 /* SHMath.m in Sources */,
-				276C177220545E930023D853 /* c_datetime.c in Sources */,
+				276C177220545E930023D853 /* SHDatetime.c in Sources */,
 				2747C4912048CE8600FB5669 /* KeyToken.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

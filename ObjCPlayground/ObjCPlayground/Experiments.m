@@ -657,5 +657,59 @@ NSString *convertCharToBin(unsigned char input){
     NSLog(@"%@",set);
     NSLog(@"%d",set.isDaylightSavingTime?1:0);
 }
+
++(void)dateTimeStuff{
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    components.year = 1988;
+    components.month = 2;
+    components.day = 29;
+    components.hour = 23;
+    components.minute = 59;
+    components.second = 59;
+    [NSTimeZone setDefaultTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    NSDate *base = [NSCalendar.currentCalendar dateFromComponents:components];
+    NSDate *nsAns = [NSCalendar.currentCalendar dateByAddingUnit:NSCalendarUnitYear value:1 toDate:base options:0];
+    NSLog(@"Add 1 Year: %@",nsAns);
+    
+    nsAns = [NSCalendar.currentCalendar dateByAddingUnit:NSCalendarUnitYear value:4 toDate:base options:0];
+    NSLog(@"Add 4 years: %@",nsAns);
+    
+    nsAns = [NSCalendar.currentCalendar dateByAddingUnit:NSCalendarUnitSecond value:1 toDate:base options:0];
+    NSLog(@"Add 1 sec: %@",nsAns);
+    
+    nsAns = [NSCalendar.currentCalendar dateByAddingUnit:NSCalendarUnitSecond value:1 toDate:base options:NSCalendarWrapComponents];
+    NSLog(@"Add 1 Sec(Wrap): %@",nsAns);
+    
+    nsAns = [NSCalendar.currentCalendar dateByAddingUnit:NSCalendarUnitSecond value:1 toDate:base options:NSCalendarMatchStrictly];
+    NSLog(@"Add 1 Sec(Strict): %@",nsAns);
+    
+    nsAns = [NSCalendar.currentCalendar dateByAddingUnit:NSCalendarUnitSecond value:1 toDate:base options:NSCalendarSearchBackwards];
+    NSLog(@"Add 1 Sec(SearchBackwards): %@",nsAns);
+    
+    nsAns = [NSCalendar.currentCalendar dateByAddingUnit:NSCalendarUnitSecond value:1 toDate:base options:NSCalendarMatchNextTime];
+    NSLog(@"Add 1 Sec(NextTime): %@",nsAns);
+    
+    components.year = 1989;
+    components.month = 1;
+    components.day = 31;
+    components.hour = 4;
+    components.minute = 30;
+    components.second = 0;
+    base = [NSCalendar.currentCalendar dateFromComponents:components];
+    nsAns = [NSCalendar.currentCalendar dateByAddingUnit:NSCalendarUnitMonth value:1 toDate:base options:0];
+    NSLog(@"Add 1 month: %@",nsAns);
+    
+    nsAns = [NSCalendar.currentCalendar dateByAddingUnit:NSCalendarUnitMonth value:1 toDate:base options:NSCalendarWrapComponents];
+    NSLog(@"Add 1 month(wrap): %@",nsAns);
+    
+    nsAns = [NSCalendar.currentCalendar dateByAddingUnit:NSCalendarUnitMonth value:1 toDate:base options:NSCalendarMatchStrictly];
+    NSLog(@"Add 1 month(strict): %@",nsAns);
+    
+    nsAns = [NSCalendar.currentCalendar dateByAddingUnit:NSCalendarUnitMonth value:1 toDate:base options:NSCalendarMatchNextTime];
+    NSLog(@"Add 1 month(next): %@",nsAns);
+    
+    nsAns = [NSCalendar.currentCalendar dateByAddingUnit:NSCalendarUnitMonth value:1 toDate:base options:NSCalendarMatchLast];
+    NSLog(@"Add 1 month(last): %@",nsAns);
+}
     
 @end

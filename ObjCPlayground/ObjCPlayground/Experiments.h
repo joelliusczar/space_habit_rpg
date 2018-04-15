@@ -89,6 +89,7 @@ void cMakeHouses(void);
 +(void)replaceStrat2;
 +(void)tryHacked;
 +(void)timeZoneStuff;
++(void)dateTimeStuff;
 @end
 
 #import "Experiments+Charlie.h"

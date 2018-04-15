@@ -11,18 +11,21 @@
 #import <objc/runtime.h>
 #import "NSException+SHCommonExceptions.h"
 #import "SingletonCluster.h"
-#include "c_datetime.h"
+#include "SHDatetime.h"
 
 @implementation NSDate (DateHelper)
 
 
 
 -(NSDate *)dateAfterYears:(NSInteger)y months:(NSInteger)m days:(NSInteger)d{
-    
-    NSInteger timestamp = self.timeIntervalSince1970;
-    NSInteger adjustedTimestamp;
-    addToTimestamp(timestamp,y,(int)m,(int)d,&adjustedTimestamp);
-    return [NSDate dateWithTimeIntervalSince1970:adjustedTimestamp];
+    SHDateTime dt;
+    int tzOffset = (int)[NSTimeZone.defaultTimeZone secondsFromGMTForDate:self];
+    timestampToDt(self.timeIntervalSince1970,tzOffset,&dt);
+    tryAddYearsToDtInPlace(&dt,y,0);
+    tryAddMonthsToDtInPlace(&dt,m,0);
+    tryAddDaysToDtInPlace(&dt,d,0);
+    int error;
+    return [NSDate dateWithTimeIntervalSince1970:dtToTimestamp(&dt,&error)];
 }
 
 
@@ -50,7 +53,7 @@
     
     NSInteger timestamp;
     
-    createDateTime(year,(int)month,(int)day,(int)hour,(int)minute,(int)second
+    tryCreateDateTime(year,(int)month,(int)day,(int)hour,(int)minute,(int)second
       ,(int)(timeZone.secondsFromGMT),&timestamp);
     return [NSDate dateWithTimeIntervalSince1970:timestamp];
     
@@ -81,18 +84,21 @@
 -(NSDate *)dayStart{
     NSInteger timestamp = self.timeIntervalSince1970;
     NSInteger dayStartTimestamp;
-    dayStart(timestamp,(int)NSTimeZone.defaultTimeZone.secondsFromGMT,&dayStartTimestamp);
+    tryDayStart(timestamp,(int)NSTimeZone.defaultTimeZone.secondsFromGMT,&dayStartTimestamp);
     return [NSDate dateWithTimeIntervalSince1970:dayStartTimestamp];
 }
 
 
 +(NSInteger)daysBetween:(NSDate *)fromDate to:(NSDate *)toDate{
-    NSInteger timestampA = toDate.timeIntervalSince1970;
-    NSInteger timestampB = fromDate.timeIntervalSince1970;
-    NSInteger daysBetween;
-    calcDaysBetween(timestampA,(int)NSTimeZone.defaultTimeZone.secondsFromGMT,timestampB,
-      (int)NSTimeZone.defaultTimeZone.secondsFromGMT,&daysBetween);
-    return daysBetween;
+    SHDateTime dtFrom;
+    SHDateTime dtTo;
+    timestampToDt(fromDate.timeIntervalSince1970
+      ,(int)NSTimeZone.defaultTimeZone.secondsFromGMT,&dtFrom);
+    timestampToDt(toDate.timeIntervalSince1970
+                       ,(int)NSTimeZone.defaultTimeZone.secondsFromGMT,&dtTo);
+
+    int err;
+    return dateDiffDays(&dtTo,&dtFrom,&err);
 }
 
 -(NSDate *)setHour:(NSInteger)h minute:(NSInteger)m second:(NSInteger)s{
@@ -121,15 +127,13 @@
     return [NSString stringWithFormat:@"%ld:%ld",convertedHour,components.minute];
 }
 
-/*
- In here, I want to force it to use GMT so that the returned results will be consistent
- */
+
 -(NSInteger)getWeekdayIndex{
-    NSTimeZone *currentTZ = objc_getAssociatedObject(NSDate.class,@selector(inUseTimeZone));
-    NSTimeZone.defaultTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
-    NSInteger idx = [SharedGlobal.inUseCalendar component:NSCalendarUnitWeekday fromDate:self] -1;
-    NSTimeZone.defaultTimeZone = currentTZ;
-    return idx;
+    SHDateTime dt;
+    int tzOffset = (int)[NSTimeZone.defaultTimeZone secondsFromGMTForDate:self];
+    timestampToDt(self.timeIntervalSince1970,tzOffset,&dt);
+    int error;
+    return calcWeekdayIdx(&dt,&error);
 }
 
 @end
