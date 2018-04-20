@@ -711,5 +711,10 @@ NSString *convertCharToBin(unsigned char input){
     nsAns = [NSCalendar.currentCalendar dateByAddingUnit:NSCalendarUnitMonth value:1 toDate:base options:NSCalendarMatchLast];
     NSLog(@"Add 1 month(last): %@",nsAns);
 }
+
++(void)runC_Exp{
+    
+    arrayExps();
+}
     
 @end

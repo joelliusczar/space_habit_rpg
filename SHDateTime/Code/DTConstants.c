@@ -38,4 +38,5 @@ const int NORMAL_YEAR_DAYS = 365;
 const int LEAP_YEAR_DAYS = 366;
 const long YEAR_ZERO_FIRST_SEC = -62168515200;
 const int FEB = 2;
+const char * const WEEKDAYS[WEEKLEN] = {"SUN","MON","TUE","WED","THR","FRI","SAT"};
 

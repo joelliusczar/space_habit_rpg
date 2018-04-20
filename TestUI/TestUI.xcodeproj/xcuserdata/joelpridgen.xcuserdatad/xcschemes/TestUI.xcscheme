@@ -20,6 +20,20 @@
                ReferencedContainer = "container:TestUI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "27D3183C2086C8CA0047F5F1"
+               BuildableName = "libSHDatetime.a"
+               BlueprintName = "SHDatetime"
+               ReferencedContainer = "container:../SHDatetime/SHDatetime.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

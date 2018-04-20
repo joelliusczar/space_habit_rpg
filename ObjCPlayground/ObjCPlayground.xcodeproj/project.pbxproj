@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		271691F52089672A0059A58E /* C_Exp.c in Sources */ = {isa = PBXBuildFile; fileRef = 271691F42089672A0059A58E /* C_Exp.c */; };
 		2747C42C2044C51F00FB5669 /* UserOfProtocus.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3F82044C51600FB5669 /* UserOfProtocus.m */; };
 		2747C42D2044C51F00FB5669 /* ParentMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3F92044C51600FB5669 /* ParentMan.m */; };
 		2747C42E2044C51F00FB5669 /* SelectorDict.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3FA2044C51600FB5669 /* SelectorDict.m */; };
@@ -65,6 +66,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		271691F32089672A0059A58E /* C_Exp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = C_Exp.h; sourceTree = "<group>"; };
+		271691F42089672A0059A58E /* C_Exp.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = C_Exp.c; sourceTree = "<group>"; };
 		2747C3EE2044C43D00FB5669 /* ObjCPlayground */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ObjCPlayground; sourceTree = BUILT_PRODUCTS_DIR; };
 		2747C3F82044C51600FB5669 /* UserOfProtocus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserOfProtocus.m; sourceTree = "<group>"; };
 		2747C3F92044C51600FB5669 /* ParentMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentMan.m; sourceTree = "<group>"; };
@@ -229,6 +232,8 @@
 				2761E3032055A9B8001F6282 /* NoArcExp.m */,
 				2761E3062055B3FA001F6282 /* House+Hacked.h */,
 				2761E3072055B3FA001F6282 /* House+Hacked.m */,
+				271691F32089672A0059A58E /* C_Exp.h */,
+				271691F42089672A0059A58E /* C_Exp.c */,
 			);
 			path = ObjCPlayground;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 				2747C44E2044C80500FB5669 /* Ocean.m in Sources */,
 				2747C43A2044C51F00FB5669 /* CockblockShield.m in Sources */,
 				2747C43C2044C51F00FB5669 /* House+Things.m in Sources */,
+				271691F52089672A0059A58E /* C_Exp.c in Sources */,
 				2747C42D2044C51F00FB5669 /* ParentMan.m in Sources */,
 				2747C42C2044C51F00FB5669 /* UserOfProtocus.m in Sources */,
 				2747C4322044C51F00FB5669 /* Indexable.m in Sources */,

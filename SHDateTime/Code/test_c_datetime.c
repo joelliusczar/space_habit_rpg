@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <limits.h>
 #include <stdlib.h>
-#include "c_datetime.h"
+#include "SHDatetime_struct.h"
+#include "SHDatetime.h"
 
 typedef struct {
     int month;
@@ -49,8 +50,8 @@ int testCTimeExhaustive(long lowBound, long upBound){
     long dayIdx = 0;
     for(long i=lowBound;!isEnd;i++){
         if(i == upBound) isEnd = 1;
-        timestampToDateObj(i,0,&dt);
-        dateObjToTimestamp(&dt,&ans);
+        timestampToDt(i,0,&dt);
+        tryDtToTimestamp(&dt,&ans);
         if(i % 86400 == 0){
             int month0 = _dts[dayIdx %1461].month;
             int day0 = _dts[dayIdx%1461].day;

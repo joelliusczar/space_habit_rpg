@@ -6,9 +6,8 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <SHModels/Daily+CoreDataClass.h>
-#import <SHModels/Daily+DailyHelper.h>
-#import <SHCommon/NSDate+DateHelper.h>
+#import <SHModels/SHModels.h>
+#import <SHCommon/SHCommon.h>
 #import "NSDate+testReplace.h"
 #import <SHGlobal/FlexibleConstants.h>
 @import TestCommon;

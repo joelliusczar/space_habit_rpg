@@ -10,6 +10,8 @@
 #define DTConstants_h
 
 #include <stdio.h>
+
+#define WEEKLEN 7
 extern const int BASE_YEAR;
 extern const int BEFORE_EPOCH_BASE_YEAR;
 extern const int FIRST_LEAP_YEAR;
@@ -41,4 +43,5 @@ extern const int NORMAL_YEAR_DAYS;
 extern const int LEAP_YEAR_DAYS;
 extern const long YEAR_ZERO_FIRST_SEC;
 extern const int FEB;
+extern const char * const WEEKDAYS[WEEKLEN];
 #endif /* DTConstants_h */

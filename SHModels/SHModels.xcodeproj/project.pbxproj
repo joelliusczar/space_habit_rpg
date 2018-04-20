@@ -219,7 +219,6 @@
 		2747C3BC2043B67200FB5669 /* RateTypeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateTypeHelper.h; sourceTree = "<group>"; };
 		2747C3C52043B83C00FB5669 /* P_StoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_StoryItem.h; sourceTree = "<group>"; };
 		2747C3C72043B89100FB5669 /* P_Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_Transaction.h; sourceTree = "<group>"; };
-		2747C3C92043B96900FB5669 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		2747C3CA2043BACA00FB5669 /* MonsterInfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterInfoDictionary.m; sourceTree = "<group>"; };
 		2747C3CB2043BACA00FB5669 /* MonsterInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterInfoDictionary.h; sourceTree = "<group>"; };
 		2747C3CC2043BACA00FB5669 /* ZoneInfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneInfoDictionary.m; sourceTree = "<group>"; };
@@ -312,7 +311,6 @@
 				2747C3CD2043BACB00FB5669 /* ZoneInfoDictionary.h */,
 				2747C3CC2043BACA00FB5669 /* ZoneInfoDictionary.m */,
 				2747C2EE2043ADE000FB5669 /* Info.plist */,
-				2747C3C92043B96900FB5669 /* PrefixHeader.pch */,
 				2747C45520462B1C00FB5669 /* SingletonCluster+Entity.h */,
 				2747C45620462B1C00FB5669 /* SingletonCluster+Entity.m */,
 				2747C4632046320E00FB5669 /* ModelConstants.h */,
@@ -528,12 +526,12 @@
 		2747C3AB2043B53100FB5669 /* Daily+Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				2747C3B12043B53100FB5669 /* Daily+DailyHelper.h */,
 				2747C3AC2043B53100FB5669 /* Daily+DailyHelper.m */,
 				2747C3AD2043B53100FB5669 /* Daily+Mapable.m */,
 				2747C3AE2043B53100FB5669 /* Daily+ActiveDays.m */,
 				2747C3AF2043B53100FB5669 /* Daily+ActiveDays.h */,
 				2747C3B02043B53100FB5669 /* Daily+Mapable.h */,
-				2747C3B12043B53100FB5669 /* Daily+DailyHelper.h */,
 			);
 			path = "Daily+Extensions";
 			sourceTree = "<group>";
@@ -877,7 +875,8 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = "$BUILD_DIR/**";
-				GCC_PREFIX_HEADER = $SRCROOT/SHModels/PrefixHeader.pch;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = SHModels/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -903,7 +902,8 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = "$BUILD_DIR/**";
-				GCC_PREFIX_HEADER = $SRCROOT/SHModels/PrefixHeader.pch;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = SHModels/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

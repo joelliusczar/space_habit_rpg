@@ -37,6 +37,7 @@
 		2747C5B2204A63E300FB5669 /* SHData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2747C5B3204A63E300FB5669 /* SHData.framework */; };
 		2747C5B4204A63E900FB5669 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2747C5B5204A63E900FB5669 /* SHModels.framework */; };
 		274EFB87204F9C3100CB3C4C /* TestCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 274EFB88204F9C3100CB3C4C /* TestCommon.framework */; };
+		27D80A182086E89900FB4CE2 /* libSHDatetime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D80A172086E89900FB4CE2 /* libSHDatetime.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		2747C5B3204A63E300FB5669 /* SHData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2747C5B5204A63E900FB5669 /* SHModels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHModels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		274EFB88204F9C3100CB3C4C /* TestCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TestCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27D80A172086E89900FB4CE2 /* libSHDatetime.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSHDatetime.a; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/libSHDatetime.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				2747C5B2204A63E300FB5669 /* SHData.framework in Frameworks */,
 				2747C5B0204A63DE00FB5669 /* SHCommon.framework in Frameworks */,
 				2747C565204A621800FB5669 /* SHGlobal.framework in Frameworks */,
+				27D80A182086E89900FB4CE2 /* libSHDatetime.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,6 +162,7 @@
 		2747C564204A621800FB5669 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				27D80A172086E89900FB4CE2 /* libSHDatetime.a */,
 				274EFB88204F9C3100CB3C4C /* TestCommon.framework */,
 				2747C5B5204A63E900FB5669 /* SHModels.framework */,
 				2747C5B3204A63E300FB5669 /* SHData.framework */,
@@ -490,30 +494,38 @@
 		2747C548204A5DB000FB5669 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XK3RJ8E2L2;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = TestUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.TestUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYSTEM_HEADER_SEARCH_PATHS = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "$BUILT_PRODUCTS_DIR/**";
 			};
 			name = Debug;
 		};
 		2747C549204A5DB000FB5669 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XK3RJ8E2L2;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = TestUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.TestUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYSTEM_HEADER_SEARCH_PATHS = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "$BUILT_PRODUCTS_DIR/**";
 			};
 			name = Release;
 		};
@@ -528,6 +540,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = TestUI;
+				USER_HEADER_SEARCH_PATHS = "$BUILT_PRODUCTS_DIR/**";
 			};
 			name = Debug;
 		};
@@ -542,6 +555,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = TestUI;
+				USER_HEADER_SEARCH_PATHS = "$BUILT_PRODUCTS_DIR/**";
 			};
 			name = Release;
 		};

@@ -13,7 +13,7 @@
 #import "House.h"
 #import "WeakLeash.h"
 #import "GenericThing.h"
-
+#import "C_Exp.h"
 
 typedef id (^mbTest)(void);
 
@@ -90,6 +90,7 @@ void cMakeHouses(void);
 +(void)tryHacked;
 +(void)timeZoneStuff;
 +(void)dateTimeStuff;
++(void)runC_Exp;
 @end
 
 #import "Experiments+Charlie.h"

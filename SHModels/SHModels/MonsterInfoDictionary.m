@@ -8,6 +8,7 @@
 
 #import "MonsterInfoDictionary.h"
 #import <SHCommon/CommonUtilities.h>
+#import <SHCommon/SingletonCluster.h>
 
 
 @interface MonsterInfoDictionary()
