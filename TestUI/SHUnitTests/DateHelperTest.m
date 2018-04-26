@@ -39,7 +39,8 @@
     NSDate *testDate;
     
     NSInteger ans = 0;
-    tryCreateDate(0,1,1,0,&ans);
+    int error;
+    tryCreateDate(0,1,1,0,&ans,&error);
     
     XCTAssertEqual(ans,-62168515200);
     
@@ -94,8 +95,8 @@
 
 -(void)testTimestampToDateObj{
     SHDateTime dt;
-    
-    timestampToDt(-62168515200,0,&dt);
+    int error;
+    tryTimestampToDt(-62168515200,0,&dt,&error);
     XCTAssertEqual(dt.year,0);
     XCTAssertEqual(dt.month,1);
     XCTAssertEqual(dt.day,1);
@@ -103,7 +104,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(-2051222400,0,&dt);
+    tryTimestampToDt(-2051222400,0,&dt,&error);
     XCTAssertEqual(dt.year,1905);
     XCTAssertEqual(dt.month,1);
     XCTAssertEqual(dt.day,1);
@@ -111,7 +112,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(-2082844800,0,&dt);
+    tryTimestampToDt(-2082844800,0,&dt,&error);
     XCTAssertEqual(dt.year,1904);
     XCTAssertEqual(dt.month,1);
     XCTAssertEqual(dt.day,1);
@@ -119,7 +120,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(-126230399,0,&dt);
+    tryTimestampToDt(-126230399,0,&dt,&error);
     XCTAssertEqual(dt.year,1966);
     XCTAssertEqual(dt.month,1);
     XCTAssertEqual(dt.day,1);
@@ -127,7 +128,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,1);
     
-    timestampToDt(-2145916799,0,&dt);
+    tryTimestampToDt(-2145916799,0,&dt,&error);
     XCTAssertEqual(dt.year,1902);
     XCTAssertEqual(dt.month,1);
     XCTAssertEqual(dt.day,1);
@@ -135,7 +136,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,1);
     
-    timestampToDt(157766399,0,&dt);
+    tryTimestampToDt(157766399,0,&dt,&error);
     XCTAssertEqual(dt.year,1974);
     XCTAssertEqual(dt.month,12);
     XCTAssertEqual(dt.day,31);
@@ -143,7 +144,7 @@
     XCTAssertEqual(dt.minute,59);
     XCTAssertEqual(dt.second,59);
     
-    timestampToDt(-126230400,0,&dt);
+    tryTimestampToDt(-126230400,0,&dt,&error);
     XCTAssertEqual(dt.year,1966);
     XCTAssertEqual(dt.month,1);
     XCTAssertEqual(dt.day,1);
@@ -151,7 +152,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(-2145916800,0,&dt);
+    tryTimestampToDt(-2145916800,0,&dt,&error);
     XCTAssertEqual(dt.year,1902);
     XCTAssertEqual(dt.month,1);
     XCTAssertEqual(dt.day,1);
@@ -159,7 +160,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(68256000,0,&dt);
+    tryTimestampToDt(68256000,0,&dt,&error);
     XCTAssertEqual(dt.year,1972);
     XCTAssertEqual(dt.month,3);
     XCTAssertEqual(dt.day,1);
@@ -167,7 +168,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(94694400,0,&dt);
+    tryTimestampToDt(94694400,0,&dt,&error);
     XCTAssertEqual(dt.year,1973);
     XCTAssertEqual(dt.month,1);
     XCTAssertEqual(dt.day,1);
@@ -175,7 +176,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(-63158401,0,&dt);
+    tryTimestampToDt(-63158401,0,&dt,&error);
     XCTAssertEqual(dt.year,1967);
     XCTAssertEqual(dt.month,12);
     XCTAssertEqual(dt.day,31);
@@ -183,7 +184,7 @@
     XCTAssertEqual(dt.minute,59);
     XCTAssertEqual(dt.second,59);
     
-    timestampToDt(126230399,0,&dt);
+    tryTimestampToDt(126230399,0,&dt,&error);
     XCTAssertEqual(dt.year,1973);
     XCTAssertEqual(dt.month,12);
     XCTAssertEqual(dt.day,31);
@@ -191,7 +192,7 @@
     XCTAssertEqual(dt.minute,59);
     XCTAssertEqual(dt.second,59);
     
-    timestampToDt(126230400,0,&dt);
+    tryTimestampToDt(126230400,0,&dt,&error);
     XCTAssertEqual(dt.year,1974);
     XCTAssertEqual(dt.month,1);
     XCTAssertEqual(dt.day,1);
@@ -199,7 +200,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(94694399,0,&dt);
+    tryTimestampToDt(94694399,0,&dt,&error);
     XCTAssertEqual(dt.year,1972);
     XCTAssertEqual(dt.month,12);
     XCTAssertEqual(dt.day,31);
@@ -207,7 +208,7 @@
     XCTAssertEqual(dt.minute,59);
     XCTAssertEqual(dt.second,59);
     
-    timestampToDt(-63158400,0,&dt);
+    tryTimestampToDt(-63158400,0,&dt,&error);
     XCTAssertEqual(dt.year,1968);
     XCTAssertEqual(dt.month,1);
     XCTAssertEqual(dt.day,1);
@@ -215,7 +216,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(63158400,0,&dt);
+    tryTimestampToDt(63158400,0,&dt,&error);
     XCTAssertEqual(dt.year,1972);
     XCTAssertEqual(dt.month,1);
     XCTAssertEqual(dt.day,2);
@@ -223,7 +224,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(0,0,&dt);
+    tryTimestampToDt(0,0,&dt,&error);
     XCTAssertEqual(dt.year,1970);
     XCTAssertEqual(dt.month,1);
     XCTAssertEqual(dt.day,1);
@@ -231,7 +232,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(1,0,&dt);
+    tryTimestampToDt(1,0,&dt,&error);
     XCTAssertEqual(dt.year,1970);
     XCTAssertEqual(dt.month,1);
     XCTAssertEqual(dt.day,1);
@@ -239,7 +240,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,1);
     
-    timestampToDt(2851200,0,&dt);
+    tryTimestampToDt(2851200,0,&dt,&error);
     XCTAssertEqual(dt.year,1970);
     XCTAssertEqual(dt.month,2);
     XCTAssertEqual(dt.day,3);
@@ -247,7 +248,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(31449600,0,&dt);
+    tryTimestampToDt(31449600,0,&dt,&error);
     XCTAssertEqual(dt.year,1970);
     XCTAssertEqual(dt.month,12);
     XCTAssertEqual(dt.day,31);
@@ -255,7 +256,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(-31536000,0,&dt);
+    tryTimestampToDt(-31536000,0,&dt,&error);
     XCTAssertEqual(dt.year,1969);
     XCTAssertEqual(dt.month,1);
     XCTAssertEqual(dt.day,1);
@@ -263,7 +264,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(63071999,0,&dt);
+    tryTimestampToDt(63071999,0,&dt,&error);
     XCTAssertEqual(dt.year,1971);
     XCTAssertEqual(dt.month,12);
     XCTAssertEqual(dt.day,31);
@@ -271,7 +272,7 @@
     XCTAssertEqual(dt.minute,59);
     XCTAssertEqual(dt.second,59);
     
-    timestampToDt(230947200,0,&dt);
+    tryTimestampToDt(230947200,0,&dt,&error);
     XCTAssertEqual(dt.year,1977);
     XCTAssertEqual(dt.month,4);
     XCTAssertEqual(dt.day,27);
@@ -279,7 +280,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(65318400,0,&dt);
+    tryTimestampToDt(65318400,0,&dt,&error);
     XCTAssertEqual(dt.year,1972);
     XCTAssertEqual(dt.month,1);
     XCTAssertEqual(dt.day,27);
@@ -287,7 +288,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(68083200,0,&dt);
+    tryTimestampToDt(68083200,0,&dt,&error);
     XCTAssertEqual(dt.year,1972);
     XCTAssertEqual(dt.month,2);
     XCTAssertEqual(dt.day,28);
@@ -295,7 +296,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(68169600,0,&dt);
+    tryTimestampToDt(68169600,0,&dt,&error);
     XCTAssertEqual(dt.year,1972);
     XCTAssertEqual(dt.month,2);
     XCTAssertEqual(dt.day,29);
@@ -303,7 +304,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(68256000,0,&dt);
+    tryTimestampToDt(68256000,0,&dt,&error);
     XCTAssertEqual(dt.year,1972);
     XCTAssertEqual(dt.month,3);
     XCTAssertEqual(dt.day,1);
@@ -311,7 +312,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(73180800,0,&dt);
+    tryTimestampToDt(73180800,0,&dt,&error);
     XCTAssertEqual(dt.year,1972);
     XCTAssertEqual(dt.month,4);
     XCTAssertEqual(dt.day,27);
@@ -319,7 +320,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(220924800,0,&dt);
+    tryTimestampToDt(220924800,0,&dt,&error);
     XCTAssertEqual(dt.year,1977);
     XCTAssertEqual(dt.month,1);
     XCTAssertEqual(dt.day,1);
@@ -327,7 +328,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(956793600,0,&dt);
+    tryTimestampToDt(956793600,0,&dt,&error);
     XCTAssertEqual(dt.year,2000);
     XCTAssertEqual(dt.month,4);
     XCTAssertEqual(dt.day,27);
@@ -335,7 +336,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(199411200,0,&dt);
+    tryTimestampToDt(199411200,0,&dt,&error);
     XCTAssertEqual(dt.year,1976);
     XCTAssertEqual(dt.month,4);
     XCTAssertEqual(dt.day,27);
@@ -343,7 +344,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(191548800,0,&dt);
+    tryTimestampToDt(191548800,0,&dt,&error);
     XCTAssertEqual(dt.year,1976);
     XCTAssertEqual(dt.month,1);
     XCTAssertEqual(dt.day,27);
@@ -351,7 +352,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(220838400,0,&dt);
+    tryTimestampToDt(220838400,0,&dt,&error);
     XCTAssertEqual(dt.year,1976);
     XCTAssertEqual(dt.month,12);
     XCTAssertEqual(dt.day,31);
@@ -359,7 +360,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(2147483647,0,&dt);
+    tryTimestampToDt(2147483647,0,&dt,&error);
     XCTAssertEqual(dt.year,2038);
     XCTAssertEqual(dt.month,1);
     XCTAssertEqual(dt.day,19);
@@ -367,7 +368,7 @@
     XCTAssertEqual(dt.minute,14);
     XCTAssertEqual(dt.second,7);
     
-    timestampToDt(63072000,0,&dt);
+    tryTimestampToDt(63072000,0,&dt,&error);
     XCTAssertEqual(dt.year,1972);
     XCTAssertEqual(dt.month,1);
     XCTAssertEqual(dt.day,1);
@@ -375,7 +376,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(-31536000,0,&dt);
+    tryTimestampToDt(-31536000,0,&dt,&error);
     XCTAssertEqual(dt.year,1969);
     XCTAssertEqual(dt.month,1);
     XCTAssertEqual(dt.day,1);
@@ -383,7 +384,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(-384780,0,&dt);
+    tryTimestampToDt(-384780,0,&dt,&error);
     XCTAssertEqual(dt.year,1969);
     XCTAssertEqual(dt.month,12);
     XCTAssertEqual(dt.day,27);
@@ -391,7 +392,7 @@
     XCTAssertEqual(dt.minute,7);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(-31536001,0,&dt);
+    tryTimestampToDt(-31536001,0,&dt,&error);
     XCTAssertEqual(dt.year,1968);
     XCTAssertEqual(dt.month,12);
     XCTAssertEqual(dt.day,31);
@@ -399,7 +400,7 @@
     XCTAssertEqual(dt.minute,59);
     XCTAssertEqual(dt.second,59);
     
-    timestampToDt(-31920780,0,&dt);
+    tryTimestampToDt(-31920780,0,&dt,&error);
     XCTAssertEqual(dt.year,1968);
     XCTAssertEqual(dt.month,12);
     XCTAssertEqual(dt.day,27);
@@ -407,7 +408,7 @@
     XCTAssertEqual(dt.minute,7);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(-63543180,0,&dt);
+    tryTimestampToDt(-63543180,0,&dt,&error);
     XCTAssertEqual(dt.year,1967);
     XCTAssertEqual(dt.month,12);
     XCTAssertEqual(dt.day,27);
@@ -415,7 +416,7 @@
     XCTAssertEqual(dt.minute,7);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(-91191180,0,&dt);
+    tryTimestampToDt(-91191180,0,&dt,&error);
     XCTAssertEqual(dt.year,1967);
     XCTAssertEqual(dt.month,2);
     XCTAssertEqual(dt.day,10);
@@ -423,7 +424,7 @@
     XCTAssertEqual(dt.minute,7);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(-95079180,0,&dt);
+    tryTimestampToDt(-95079180,0,&dt,&error);
     XCTAssertEqual(dt.year,1966);
     XCTAssertEqual(dt.month,12);
     XCTAssertEqual(dt.day,27);
@@ -431,7 +432,7 @@
     XCTAssertEqual(dt.minute,7);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(-126615180,0,&dt);
+    tryTimestampToDt(-126615180,0,&dt,&error);
     XCTAssertEqual(dt.year,1965);
     XCTAssertEqual(dt.month,12);
     XCTAssertEqual(dt.day,27);
@@ -439,7 +440,7 @@
     XCTAssertEqual(dt.minute,7);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(-189773580,0,&dt);
+    tryTimestampToDt(-189773580,0,&dt,&error);
     XCTAssertEqual(dt.year,1963);
     XCTAssertEqual(dt.month,12);
     XCTAssertEqual(dt.day,27);
@@ -447,7 +448,7 @@
     XCTAssertEqual(dt.minute,7);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(-86400,0,&dt);
+    tryTimestampToDt(-86400,0,&dt,&error);
     XCTAssertEqual(dt.year,1969);
     XCTAssertEqual(dt.month,12);
     XCTAssertEqual(dt.day,31);
@@ -455,7 +456,7 @@
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
     
-    timestampToDt(-86401,0,&dt);
+    tryTimestampToDt(-86401,0,&dt,&error);
     XCTAssertEqual(dt.year,1969);
     XCTAssertEqual(dt.month,12);
     XCTAssertEqual(dt.day,30);
@@ -463,7 +464,7 @@
     XCTAssertEqual(dt.minute,59);
     XCTAssertEqual(dt.second,59);
     
-    timestampToDt(-1,0,&dt);
+    tryTimestampToDt(-1,0,&dt,&error);
     XCTAssertEqual(dt.year,1969);
     XCTAssertEqual(dt.month,12);
     XCTAssertEqual(dt.day,31);
@@ -471,7 +472,7 @@
     XCTAssertEqual(dt.minute,59);
     XCTAssertEqual(dt.second,59);
     
-    timestampToDt(-53049600,0,&dt);
+    tryTimestampToDt(-53049600,0,&dt,&error);
     XCTAssertEqual(dt.year,1968);
     XCTAssertEqual(dt.month,4);
     XCTAssertEqual(dt.day,27);
@@ -483,13 +484,14 @@
 -(void)testAddDayToTs{
     long ts = 578102400;
     long ans = 0;
-    tryAddDaysToTimestamp(ts,0,0,&ans);
+    int error;
+    tryAddDaysToTimestamp(ts,0,0,&ans,&error);
     XCTAssertEqual(ts,ans);
-    tryAddDaysToTimestamp(ts,1,0,&ans);
+    tryAddDaysToTimestamp(ts,1,0,&ans,&error);
     XCTAssertEqual(578188800,ans);
-    tryAddDaysToTimestamp(ts,-1,0,&ans);
+    tryAddDaysToTimestamp(ts,-1,0,&ans,&error);
     XCTAssertEqual(578016000,ans);
-    tryAddDaysToTimestamp(ts,4,0,&ans);
+    tryAddDaysToTimestamp(ts,4,0,&ans,&error);
     XCTAssertEqual(578448000,ans);
 }
 
@@ -498,7 +500,7 @@
         {3,11,2,0,UNIX_HOUR},
         {11,4,2,0,0}
     };
-    
+    int error;
     SHDateTime dt = {.year = 2018,.month = 3, .day = 9, .timezoneOffset = -5*UNIX_HOUR,
         .hour = 2, .minute = 13, .second = 0
     };
@@ -508,7 +510,7 @@
     dt.shiftLen = sizeof(dst)/sizeof(TimeShift);
     dt.currentShiftIdx = selectTimeShiftForDt(&dt,dst,dt.shiftLen);
     SHDateTime copy = dt;
-    tryAddDaysToDtInPlace(&copy,2,0);
+    tryAddDaysToDtInPlace(&copy,2,0,&error);
     XCTAssertEqual(copy.day,11);
     XCTAssertEqual(copy.hour,3);
     XCTAssertEqual(copy.minute,13);
@@ -516,7 +518,7 @@
     dt.hour = 1;
     copy = dt;
     
-    tryAddDaysToDtInPlace(&copy,2,0);
+    tryAddDaysToDtInPlace(&copy,2,0,&error);
     XCTAssertEqual(copy.day,11);
     XCTAssertEqual(copy.hour,1);
     XCTAssertEqual(copy.minute,13);
@@ -525,7 +527,7 @@
     dt.minute = 59;
     copy = dt;
     
-    tryAddDaysToDtInPlace(&copy,2,0);
+    tryAddDaysToDtInPlace(&copy,2,0,&error);
     XCTAssertEqual(copy.day,11);
     XCTAssertEqual(copy.hour,1);
     XCTAssertEqual(copy.minute,59);
@@ -534,7 +536,7 @@
     dt.minute = 0;
     copy = dt;
     
-    tryAddDaysToDtInPlace(&copy,2,0);
+    tryAddDaysToDtInPlace(&copy,2,0,&error);
     XCTAssertEqual(copy.day,11);
     XCTAssertEqual(copy.hour,3);
     XCTAssertEqual(copy.minute,0);
@@ -544,7 +546,7 @@
     dt.minute = 1;
     copy = dt;
     
-    tryAddDaysToDtInPlace(&copy,2,0);
+    tryAddDaysToDtInPlace(&copy,2,0,&error);
     XCTAssertEqual(copy.day,11);
     XCTAssertEqual(copy.hour,3);
     XCTAssertEqual(copy.minute,1);
@@ -553,7 +555,7 @@
     copy = dt;
     
     dt.hour = 6;
-    tryAddDaysToDtInPlace(&copy,3,0);
+    tryAddDaysToDtInPlace(&copy,3,0,&error);
     XCTAssertEqual(copy.day,12);
     XCTAssertEqual(copy.hour,3);
     XCTAssertEqual(copy.minute,1);
@@ -567,7 +569,7 @@
     dt.currentShiftIdx = selectTimeShiftForDt(&dt,dst,dt.shiftLen);
     copy = dt;
     
-    tryAddDaysToDtInPlace(&copy,1,0);
+    tryAddDaysToDtInPlace(&copy,1,0,&error);
     XCTAssertEqual(copy.day,4);
     XCTAssertEqual(copy.hour,0);
     XCTAssertEqual(copy.minute,1);
@@ -576,7 +578,7 @@
     dt.hour = 2;
     copy = dt;
     
-    tryAddDaysToDtInPlace(&copy,1,0);
+    tryAddDaysToDtInPlace(&copy,1,0,&error);
     XCTAssertEqual(copy.day,4);
     XCTAssertEqual(copy.hour,1);
     XCTAssertEqual(copy.minute,1);
@@ -585,7 +587,7 @@
     dt.hour = 3;
     copy = dt;
     
-    tryAddDaysToDtInPlace(&copy,1,0);
+    tryAddDaysToDtInPlace(&copy,1,0,&error);
     XCTAssertEqual(copy.day,4);
     XCTAssertEqual(copy.hour,3);
     XCTAssertEqual(copy.minute,1);
@@ -594,7 +596,7 @@
     dt.hour = 2;
     copy = dt;
     
-    tryAddDaysToDtInPlace(&copy,2,0);
+    tryAddDaysToDtInPlace(&copy,2,0,&error);
     XCTAssertEqual(copy.day,5);
     XCTAssertEqual(copy.hour,2);
     XCTAssertEqual(copy.minute,1);

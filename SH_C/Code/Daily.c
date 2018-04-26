@@ -9,28 +9,26 @@
 #include "Daily.h"
 #include "DTConstants.h"
 #include "SHArray.h"
+#include "ErrorConstants.h"
 
-MAKE_FIND_IDX_REV(char,bool,*,*)
+MAKE_FIND_IDX_REV(bool,int,,)
+MAKE_FIND_IDX(bool,int,,)
 
-
-void filWeek(int *daysAheadCounts,int *daysBeforeCounts,bool *activeDays
-             ,RateValueItem *rvi){
-    for(int dayIdx = 0;dayIdx < WEEKLEN;dayIdx++){
-        rvi[0].forrange = daysAheadCounts[dayIdx];
-        rvi[0].backrange = daysBeforeCounts[dayIdx];
-        rvi[0].isDayActive = activeDays[dayIdx];
-    }
+static bool _setError(int code,int *error){
+    *error = code;
+    return false;
 }
+
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 
-static bool isDayActive(char *day,long idx,bool *activeDays){
-    return activeDays[idx];
+static bool isDayActive(bool isActive,long idx,int blank){
+    return isActive;
 }
 
 #pragma GCC diagnostic pop
 
-static void setDayCounts(int *daysCounts,bool *activeDays,int counter,bool isReverse){
+static void setDayCounts(long *daysCounts,bool *activeDays,long counter,bool isReverse){
     for(int dayIdx = 0;dayIdx < WEEKLEN;dayIdx++){
         int useIdx = isReverse?WEEKLEN -dayIdx -1:dayIdx;
         counter++;
@@ -42,14 +40,33 @@ static void setDayCounts(int *daysCounts,bool *activeDays,int counter,bool isRev
 }
 
 
-void buildWeek(bool *activeDays,int scaler,RateValueItem *rvi){
-    long lastIdx = findIdxRev(char,bool)(WEEKDAYS,WEEKLEN,&isDayActive);
+void filWeek(long *daysAheadCounts,long *daysBeforeCounts,bool *activeDays
+             ,RateValueItem *rvi){
+    for(int dayIdx = 0;dayIdx < WEEKLEN;dayIdx++){
+        rvi[0].forrange = daysAheadCounts[dayIdx];
+        rvi[0].backrange = daysBeforeCounts[dayIdx];
+        rvi[0].isDayActive = activeDays[dayIdx];
+    }
+}
+
+
+void buildWeek(bool *activeDays,long scaler,RateValueItem *rvi){
+    long lastIdx = findIdxRev(bool,int)(activeDays,WEEKLEN,&isDayActive,0);
     if(lastIdx == NOT_FOUND){
         buildEmptyWeek(rvi);
         return;
     }
     long daysBefore = (WEEKLEN - lastIdx) + (scaler -1)*WEEKLEN -1;
+    long daysBeforeCounts[WEEKLEN];
+    setDayCounts(daysBeforeCounts,activeDays,daysBefore,false);
+    long firstIdx = findIdx(bool,int)(activeDays,WEEKLEN,&isDayActive,0);
+    long daysAhead = firstIdx + (scaler -1)*WEEKLEN;
+    long daysAheadCounts[WEEKLEN];
+    setDayCounts(daysAheadCounts,activeDays,daysAhead,true);
+    
+    return filWeek(daysAheadCounts,daysBeforeCounts,activeDays,rvi);
 }
+
 
 void buildEmptyWeek(RateValueItem *rvi){
     for(int i = 0;i < WEEKLEN;i++){
@@ -57,4 +74,20 @@ void buildEmptyWeek(RateValueItem *rvi){
         rvi[i].backrange = 0;
         rvi[i].isDayActive = false;
     }
+}
+
+
+bool previousDueDate_WEEKLY(SHDateTime *lastDueDate,SHDateTime *checkinDate
+                            ,RateValueItem *rvi,long scaler,SHDateTime *ans,int *error){
+    if(!(lastDueDate&&checkinDate&&rvi)) return _setError(NULL_VALUES,error);
+    int cnvtErr1,cnvtErr2;
+    if(!(dtToTimestamp(checkinDate,&cnvtErr1) > dtToTimestamp(lastDueDate,&cnvtErr2))){
+        return _setError(OUT_OF_RANGE,error);
+    }
+    if(cnvtErr1||cnvtErr2) return _setError(0,error);
+    
+    int lastDayIdx = calcWeekdayIdx(lastDueDate,error);
+    SHDateTime *firstDayOfFirstWeek;
+    tryAddDaysToDt(&lastDueDate,-lastDayIdx,0,&firstDayOfFirstWeek,error);
+    long daySpan = dateDiffDays(checkinDate,firstDayOfFirstWeek,error);
 }

@@ -6,11 +6,13 @@
 //  Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
-#include "SHDatetime.h"
-#include "SHConstants.h"
+
 #include <limits.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include "SHDatetime.h"
+#include "SHConstants.h"
+#include "ErrorHandling.h"
 
 static int _monthSums[12] = {0,31,59,90,120,151,181,212,243,273,304,334};
 static int _backwardMonthSums[12] = {334,306,275,245,214,184,153,122,92,61,31,0};
@@ -40,10 +42,11 @@ static int _getMonthFromDaySum(int daySum, int isLeapYear){
     return 12;
 }
 
-static int _isTimestampRangeInvalid(long timestamp,int timezoneOffset){
-    if(timestamp < 0 && (YEAR_ZERO_FIRST_SEC - timestamp) > -1*timezoneOffset) return GEN_ERROR;
-    if(timestamp > 0 && (LONG_MAX - timestamp) < timezoneOffset) return GEN_ERROR;
-    return NO_ERROR;
+static int _isTimestampRangeInvalid(long timestamp,int timezoneOffset,int *error){
+    *error = NO_ERROR;
+    if(timestamp < 0 && (YEAR_ZERO_FIRST_SEC - timestamp) > -1*timezoneOffset) return setErrorCode(OUT_OF_RANGE,error);
+    if(timestamp > 0 && (LONG_MAX - timestamp) < timezoneOffset) return setErrorCode(OUT_OF_RANGE,error);
+    return true;
 }
 
 static long _calcNumLeapYears(long year) {
@@ -100,8 +103,9 @@ static void _calcTimeFromTimestamp(long timestamp,int minOffset,TimeCalcResult *
 
 long createDateTime(long year,int month,int day,int hour,int minute,int second
   ,int timezoneOffset,int *error){
+    *error = NO_ERROR;
     long ans;
-    *error = tryCreateDateTime(year,month,day,hour,minute,second,timezoneOffset,&ans);
+    tryCreateDateTime(year,month,day,hour,minute,second,timezoneOffset,&ans,error);
     return ans;
 }
 
@@ -123,10 +127,11 @@ int isValidSHDateTime(SHDateTime const *dt){
       ,dt->second);
 }
 
-int tryCreateDateTime(long year,int month,int day,int hour,int minute,int second
-  ,int timezoneOffset,long *ans){
+bool tryCreateDateTime(long year,int month,int day,int hour,int minute,int second
+  ,int timezoneOffset,long *ans,int *error){
+    *error = NO_ERROR;
     int isValid = _areTimeComponentsValid(year,month,day,hour,minute,second);
-    if(!isValid) return GEN_ERROR;
+    if(!isValid) return setErrorCode(GEN_ERROR,error);
     long sum;
     long leapYearCount = _calcNumLeapYearsBaseLeap(year);
     int isLeapYear = _isLeapYearFromBaseYear(year);
@@ -153,34 +158,37 @@ int tryCreateDateTime(long year,int month,int day,int hour,int minute,int second
     }
     sum -= timezoneOffset;
     *ans = sum;
-    return NO_ERROR;
+    return true;
 }
 
 long createDate(long year,int month,int day,int timezoneOffset,int *error){
+    *error = NO_ERROR;
     long ans;
-    *error = tryCreateDate(year,month,day,timezoneOffset,&ans);
+    tryCreateDate(year,month,day,timezoneOffset,&ans,error);
     return ans;
 }
 
-int tryCreateDate(long year,int month,int day,int timezoneOffset,long *ans){
-    return tryCreateDateTime(year,month,day,0,0,0,timezoneOffset,ans);
+bool tryCreateDate(long year,int month,int day,int timezoneOffset,long *ans,int *error){
+    *error = NO_ERROR;
+    return tryCreateDateTime(year,month,day,0,0,0,timezoneOffset,ans,error);
 }
 
 int createTime(int hour,int minute,int second,int *error){
+    *error = NO_ERROR;
     int ans;
-    *error = tryCreateTime(hour,minute,second,&ans);
+    tryCreateTime(hour,minute,second,&ans,error);
     return ans;
 }
 
-int tryCreateTime(int hour,int minute,int second,int *ans){
+bool tryCreateTime(int hour,int minute,int second,int *ans,int *error){
+    *error = NO_ERROR;
     long tmpAns = *ans;
-    int error;
-    error = tryCreateDateTime(1970,1,1,hour,minute,second,0,&tmpAns);
+    bool result = tryCreateDateTime(1970,1,1,hour,minute,second,0,&tmpAns,error);
     *ans = (int)tmpAns;
-    return error;
+    return result;
 }
 
-int _filDateTimeObj(long year,int month,int day,int hour,int min,int sec,
+bool _filDateTimeObj(long year,int month,int day,int hour,int min,int sec,
   int timezoneOffset,SHDateTime *dt){
     dt->year = year;
     dt->month = month;
@@ -192,7 +200,7 @@ int _filDateTimeObj(long year,int month,int day,int hour,int min,int sec,
     dt->shifts = NULL;
     dt->shiftLen = 0;
     dt->currentShiftIdx = NOT_FOUND;
-    return NO_ERROR;
+    return true;
 }
 
 void _timestampShortToDateObj(int timestamp,SHDateTime *dt){
@@ -220,9 +228,11 @@ long _calcShiftedTimestamp(long timestamp,long years,int isBeforeEpoch){
     return timestamp;
 }
 
-int timestampToDt(long timestamp, int timezoneOffset,SHDateTime *dt){
-    if(!dt) return GEN_ERROR;
-    if(_isTimestampRangeInvalid(timestamp,timezoneOffset)) return GEN_ERROR;
+
+bool tryTimestampToDt(long timestamp, int timezoneOffset,SHDateTime *dt,int *error){
+    *error = NO_ERROR;
+    if(!dt) return setErrorCode(NULL_VALUES,error);
+    if(!_isTimestampRangeInvalid(timestamp,timezoneOffset,error)) return false;
     if(timestamp - timezoneOffset == 0){
         return _filDateTimeObj(BASE_YEAR,1,1,0,0,0,timezoneOffset,dt);
     }
@@ -230,7 +240,7 @@ int timestampToDt(long timestamp, int timezoneOffset,SHDateTime *dt){
     if(timestamp > TIMESTAMP_END_1968 && timestamp < TIMESTAMP_BEGIN_1972){
       _timestampShortToDateObj((int)timestamp,dt);
       dt->timezoneOffset = timezoneOffset;
-      return NO_ERROR;
+      return true;
     }
     int isBeforeEpoch = timestamp < 0;
     long leapBasedTimestamp = isBeforeEpoch?timestamp+UNIX_YEAR:timestamp - 2*UNIX_YEAR;
@@ -263,74 +273,92 @@ int timestampToDt(long timestamp, int timezoneOffset,SHDateTime *dt){
              ,timezoneOffset,dt);
 }
 
-int timestampToDtUnitsOnly(long timestamp,SHDateTime *dt){
+bool timestampToDtUnitsOnly(long timestamp,SHDateTime *dt,int *error){
+    *error = NO_ERROR;
     TimeShift *shifts = dt->shifts;
     int shiftLen = dt->shiftLen;
     int shiftIdx = dt->currentShiftIdx;
-    if(timestampToDt(timestamp,dt->timezoneOffset,dt))return GEN_ERROR;
+    if(!tryTimestampToDt(timestamp,dt->timezoneOffset,dt,error)) return setErrorCode(*error,error);
     dt->shifts = shifts;
     dt->shiftLen = shiftLen;
     dt->currentShiftIdx = shiftIdx;
-    return NO_ERROR;
+    return true;
 }
 
-int tryDtToTimestamp(SHDateTime const *dt,long *ans){
-    if(!dt) return GEN_ERROR;
+bool tryDtToTimestamp(SHDateTime const *dt,long *ans,int *error){
+    *error = NO_ERROR;
+    if(!dt) return setErrorCode(NULL_VALUES,error);
     return tryCreateDateTime(dt->year,dt->month,dt->day,dt->hour,dt->minute,dt->second,
-      dt->timezoneOffset,ans);
+      dt->timezoneOffset,ans,error);
 }
 
 long dtToTimestamp(SHDateTime const *dt,int *error){
+    *error = NO_ERROR;
     long ans;
-    *error = tryDtToTimestamp(dt,&ans);
+    tryDtToTimestamp(dt,&ans,error);
     return ans;
 }
 
 
-int tryExtractTime(SHDateTime *dt,int *ans){
-    return tryCreateTime(dt->hour,dt->minute,dt->second,ans);
+bool tryExtractTime(SHDateTime *dt,int *ans,int *error){
+    *error = NO_ERROR;
+    return tryCreateTime(dt->hour,dt->minute,dt->second,ans,error);
 }
 
 
 int extractTime(SHDateTime *dt,int *error){
+    *error = NO_ERROR;
     int ans;
-    *error = tryExtractTime(dt,&ans);
+    tryExtractTime(dt,&ans,error);
     return ans;
 }
 
 
 
-int tryAddDaysToDtInPlace(SHDateTime *dt,long days,TimeAdjustOptions options){
+bool tryAddDaysToDtInPlace(SHDateTime *dt,long days,TimeAdjustOptions options,int *error){
     (void)options;
+    *error = NO_ERROR;
     long converted;
-    if(tryDtToTimestamp(dt,&converted)) return INVALID_STATE;
+    if(!tryDtToTimestamp(dt,&converted,error)) return false;
     long ans;
-    if(tryAddDaysToTimestamp(converted,days,0,&ans)) return GEN_ERROR;
-    if(timestampToDtUnitsOnly(ans,dt))return GEN_ERROR;
-    return updateTimezoneForShifts(dt);
+    if(!tryAddDaysToTimestamp(converted,days,0,&ans,error)) return false;
+    if(!timestampToDtUnitsOnly(ans,dt,error))return false;
+    return updateTimezoneForShifts(dt,error);
 }
 
-int tryAddDaysToDt(SHDateTime const *dt,long days,TimeAdjustOptions options,SHDateTime *ans){
+
+bool tryAddDaysToDt(SHDateTime const *dt,long days,TimeAdjustOptions options
+  ,SHDateTime *ans,int *error){
+    *error = NO_ERROR;
     *ans = *dt;
-    return tryAddDaysToDtInPlace(ans,days,options);
+    return tryAddDaysToDtInPlace(ans,days,options,error);
 
 }
 
-int tryAddDaysToTimestamp(long timestamp,long days, TimeAdjustOptions options,long *ans){
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+
+bool tryAddDaysToTimestamp(long timestamp,long days, TimeAdjustOptions options,long *ans,int *error){
     (void)options;
+    *error = NO_ERROR;
     timestamp += (days*UNIX_DAY);
     *ans = timestamp;
-    return NO_ERROR;
+    return true;
 }
 
-int tryAddMonthsToDt(SHDateTime const *dt,long months,TimeAdjustOptions options
-  ,SHDateTime *ans){
+#pragma GCC diagnostic pop
+
+bool tryAddMonthsToDt(SHDateTime const *dt,long months,TimeAdjustOptions options
+  ,SHDateTime *ans,int *error){
+    *error = NO_ERROR;
     *ans = *dt;
-    return tryAddMonthsToDtInPlace(ans,months,options);
+    return tryAddMonthsToDtInPlace(ans,months,options,error);
 }
 
-int tryAddMonthsToDtInPlace(SHDateTime *dt,long months,TimeAdjustOptions options){
-    if(months == 0) return NO_ERROR;
+bool tryAddMonthsToDtInPlace(SHDateTime *dt,long months,TimeAdjustOptions options
+  ,int *error){
+    *error = NO_ERROR;
+    if(months == 0) return true;
     if(options == NO_OPTION) options = SHIFT_BKD;
     long totalMonths = months + dt->month;
     int exMonths = totalMonths % YEAR_MONTHS;
@@ -348,27 +376,30 @@ int tryAddMonthsToDtInPlace(SHDateTime *dt,long months,TimeAdjustOptions options
             dt->month++;
         }
     }
-    updateTimezoneForShifts(dt);
-    return NO_ERROR;
+    updateTimezoneForShifts(dt,error);
+    return true;
 }
 
-int tryAddMonthsToTimestamp(long timestamp,long months,int timezoneOffset
-  ,TimeAdjustOptions options,long *ans){
+bool tryAddMonthsToTimestamp(long timestamp,long months,int timezoneOffset
+  ,TimeAdjustOptions options,long *ans,int *error){
+    *error = NO_ERROR;
     SHDateTime dt;
-    if(timestampToDt(timestamp,timezoneOffset,&dt)) return GEN_ERROR;
-    if(tryAddMonthsToDtInPlace(&dt,months,options)) return GEN_ERROR;
-    return tryDtToTimestamp(&dt,ans);
+    if(!tryTimestampToDt(timestamp,timezoneOffset,&dt,error)) return false;
+    if(!tryAddMonthsToDtInPlace(&dt,months,options,error)) return false;
+    return tryDtToTimestamp(&dt,ans,error);
 }
 
-static int _addYears_SHIFT(SHDateTime *dt,long years, TimeAdjustOptions options) {
+static bool _addYears_SHIFT(SHDateTime *dt,long years, TimeAdjustOptions options
+  ,int *error) {
+    *error = NO_ERROR;
     long yearSum = years + dt->year;
     options = options == NO_OPTION?SHIFT_BKD:options;
     if(options & ERROR){
         if(!_isLeapYearFromBaseYear(yearSum)&&_isLeapDayCusp(dt)){
-            return GEN_ERROR;
+            return setErrorCode(GEN_ERROR,error);
         }
         dt->year = yearSum;
-        return NO_ERROR;
+        return true;
     }
     if((options & SHIFT_BKD) || (options & SHIFT_FWD)){
         if(!_isLeapYearFromBaseYear(yearSum)&&_isLeapDayCusp(dt)){
@@ -379,109 +410,111 @@ static int _addYears_SHIFT(SHDateTime *dt,long years, TimeAdjustOptions options)
             }
         }
         dt->year = yearSum;
-        return NO_ERROR;
+        return true;
     }
-    return GEN_ERROR;
+    return setErrorCode(GEN_ERROR,error);
 }
 
 long addYearsToTimestamp(long timestamp,long years,int timezoneOffset
   ,TimeAdjustOptions options,int *error){
+    *error = NO_ERROR;
     long ans;
-    *error = tryAddYearsToTimestamp(timestamp,years,timezoneOffset,options,&ans);
+    tryAddYearsToTimestamp(timestamp,years,timezoneOffset,options,&ans,error);
     return ans;
 }
 
-int tryAddYearsToTimestamp(long timestamp,long years,int timezoneOffset
-  ,TimeAdjustOptions options,long *ans){
+bool tryAddYearsToTimestamp(long timestamp,long years,int timezoneOffset
+  ,TimeAdjustOptions options,long *ans,int *error){
+    *error = NO_ERROR;
     SHDateTime dt;
-    if(timestampToDt(timestamp,timezoneOffset,&dt)) return GEN_ERROR;
-    if(tryAddYearsToDtInPlace(&dt,years,options)) return GEN_ERROR;
-    return tryDtToTimestamp(&dt,ans);
+    if(!tryTimestampToDt(timestamp,timezoneOffset,&dt,error)) return false;
+    if(!tryAddYearsToDtInPlace(&dt,years,options,error)) return false;
+    return tryDtToTimestamp(&dt,ans,error);
 }
 
-int tryAddYearsToDt(SHDateTime const *dt,long years,TimeAdjustOptions options
-  ,SHDateTime *ans){
+bool tryAddYearsToDt(SHDateTime const *dt,long years,TimeAdjustOptions options
+  ,SHDateTime *ans,int *error){
+    *error = NO_ERROR;
     *ans = *dt;
-    return tryAddYearsToDtInPlace(ans,years,options);
+    return tryAddYearsToDtInPlace(ans,years,options,error);
 }
 
-int tryAddYearsToDtInPlace(SHDateTime *dt,long years,TimeAdjustOptions options){
-    if(years == 0) return NO_ERROR;
+bool tryAddYearsToDtInPlace(SHDateTime *dt,long years,TimeAdjustOptions options
+  ,int *error){
+    *error = NO_ERROR;
+    if(years == 0) return true;
     
     if((options &(SHIFT_BKD|SHIFT_FWD))||options == NO_OPTION){
-        return _addYears_SHIFT(dt,years, options);
+        return _addYears_SHIFT(dt,years, options,error);
     }
     if(options & SIMPLE){
         long timestamp;
-        if(tryDtToTimestamp(dt,&timestamp)) return GEN_ERROR;
+        if(!tryDtToTimestamp(dt,&timestamp,error)) return false;
         timestamp += years*UNIX_YEAR;
-        if(timestampToDt(timestamp,dt->timezoneOffset,dt)) return GEN_ERROR;
-        return NO_ERROR;
+        if(!tryTimestampToDt(timestamp,dt->timezoneOffset,dt,error)) return false;
+        return true;
     }
-    return GEN_ERROR;
+    return false;
 }
 
-int tryDayStart(long timestamp,int timezoneOffset,long *ans){
+bool tryDayStart(long timestamp,int timezoneOffset,long *ans,int *error){
+    *error = NO_ERROR;
     SHDateTime dt;
-    if(timestampToDt(timestamp,timezoneOffset,&dt)) return GEN_ERROR;
+    if(!tryTimestampToDt(timestamp,timezoneOffset,&dt,error)) return false;
     dt.hour = 0;
     dt.minute = 0;
     dt.second = 0;
-    return tryDtToTimestamp(&dt,ans);
+    return tryDtToTimestamp(&dt,ans,error);
 }
 
 
 int calcWeekdayIdx(SHDateTime *dt,int *error){
-    long tmp;
-    if((*error = tryDtToTimestamp(dt,&tmp))) return NOT_FOUND;
+    long timestamp;
+    *error = NO_ERROR;
+    if(!tryDtToTimestamp(dt,&timestamp,error)) return NOT_FOUND;
     int ans;
-    if(tryCalcWeekdayIdx(tmp,dt->timezoneOffset,&ans)) return NOT_FOUND;
-    return ans;
-}
-
-
-int tryCalcWeekdayIdx(long timestamp,int timezoneOffset,int *ans){
-    if(_isTimestampRangeInvalid(timestamp,timezoneOffset)) return GEN_ERROR;
-    timestamp -= timezoneOffset;
+    timestamp -= dt->timezoneOffset;
     long totalDays = timestamp/UNIX_DAY;
     //if within the first week
     if(totalDays > -1*WEEK_START_DAYS_BEFORE && totalDays < WEEK_START_DAYS_AFTER){
         return (int)totalDays + EPOCH_WEEK_CORRECTION;
     }
     totalDays = totalDays > 0?totalDays - WEEK_START_DAYS_AFTER:
-      -1*totalDays - WEEK_START_DAYS_BEFORE;
-    *ans = totalDays % 7;
-    return NO_ERROR;
+    -1*totalDays - WEEK_START_DAYS_BEFORE;
+    ans = totalDays % 7;
+    return ans;
 }
 
-int tryDiffDateSecs(SHDateTime const *A,SHDateTime const *B,long *ans){
-    if(!isValidSHDateTime(A)) return GEN_ERROR;
-    if(!isValidSHDateTime(B)) return GEN_ERROR;
+
+bool tryDiffDateSecs(SHDateTime const *A,SHDateTime const *B,long *ans,int *error){
+    *error = NO_ERROR;
+    if(!isValidSHDateTime(A)) return setErrorCode(GEN_ERROR,error);
+    if(!isValidSHDateTime(B)) return setErrorCode(GEN_ERROR,error);
     int errorA,errorB;
     errorA = errorB = 0;
     *ans = dtToTimestamp(A,&errorA) - dtToTimestamp(B,&errorB);
     if(errorA | errorB) return errorA | errorB;
-    return NO_ERROR;
+    return true;
 }
 
 long dateDiffSecs(SHDateTime const *A,SHDateTime const *B,int *error){
-    long ans;
     *error = NO_ERROR;
-    *error = tryDiffDateSecs(A,B,&ans);
+    long ans;
+    tryDiffDateSecs(A,B,&ans,error);
     return ans;
 }
 
 long dateDiffDays(SHDateTime const *A,SHDateTime const *B,int *error){
-    long ans;
     *error = NO_ERROR;
-    *error = tryDateDiffDays(A,B,&ans);
+    long ans;
+    tryDateDiffDays(A,B,&ans,error);
     return ans;
 }
 
-int tryDateDiffDays(SHDateTime const *A,SHDateTime const *B,long *ans){
-    int error = NO_ERROR;
-    *ans = dateDiffSecs(A,B,&error);
+bool tryDateDiffDays(SHDateTime const *A,SHDateTime const *B,long *ans,int *error){
+    *error = NO_ERROR;
+    *ans = dateDiffSecs(A,B,error);
     *ans /= UNIX_DAY;
-    return error;
+    return setErrorCode(*error,error);
 }
 

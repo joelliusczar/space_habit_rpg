@@ -21,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		27004252205251B3001FA0B5 /* SHModels.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHModels.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHModels.framework"; sourceTree = "<group>"; };
+		2716921C208EA8D80059A58E /* libSH_CTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_CTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		271B24BE204FC58600CA4338 /* nextDayTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = nextDayTests.h; sourceTree = "<group>"; };
 		271B24BF204FC58600CA4338 /* nextDayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = nextDayTests.m; sourceTree = "<group>"; };
 		274EFB72204F9AEA00CB3C4C /* TestCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TestCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +84,7 @@
 		274EFB89204F9CB300CB3C4C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2716921C208EA8D80059A58E /* libSH_CTools.a */,
 				27004252205251B3001FA0B5 /* SHModels.framework */,
 				274EFB8C204FB27200CB3C4C /* XCTest.framework */,
 			);

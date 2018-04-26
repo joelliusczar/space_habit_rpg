@@ -11,6 +11,8 @@
 		271691CD20885F890059A58E /* Daily.c in Sources */ = {isa = PBXBuildFile; fileRef = 271691CB20885F890059A58E /* Daily.c */; };
 		271691ED208866770059A58E /* libSHDatetime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 271691EE208866770059A58E /* libSHDatetime.a */; };
 		2716920C20897A740059A58E /* libSH_CTools.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2716920D20897A740059A58E /* libSH_CTools.a */; };
+		27169213208AF0960059A58E /* ErrorConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27169211208AF0960059A58E /* ErrorConstants.h */; };
+		27169214208AF0960059A58E /* ErrorConstants.c in Sources */ = {isa = PBXBuildFile; fileRef = 27169212208AF0960059A58E /* ErrorConstants.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		271691CB20885F890059A58E /* Daily.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Daily.c; sourceTree = "<group>"; };
 		271691EE208866770059A58E /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2716920D20897A740059A58E /* libSH_CTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_CTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		27169211208AF0960059A58E /* ErrorConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ErrorConstants.h; sourceTree = "<group>"; };
+		27169212208AF0960059A58E /* ErrorConstants.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ErrorConstants.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			children = (
 				271691CA20885F890059A58E /* Daily.h */,
 				271691CB20885F890059A58E /* Daily.c */,
+				27169211208AF0960059A58E /* ErrorConstants.h */,
+				27169212208AF0960059A58E /* ErrorConstants.c */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -77,6 +83,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				271691CC20885F890059A58E /* Daily.h in Headers */,
+				27169213208AF0960059A58E /* ErrorConstants.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27169214208AF0960059A58E /* ErrorConstants.c in Sources */,
 				271691CD20885F890059A58E /* Daily.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,9 +267,9 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos11.2;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				USER_HEADER_SEARCH_PATHS = $BUILT_PRODUCTS_DIR/usr/local/include;
-				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -277,9 +285,9 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos11.2;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				USER_HEADER_SEARCH_PATHS = $BUILT_PRODUCTS_DIR/usr/local/include;
-				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};

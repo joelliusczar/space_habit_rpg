@@ -20,11 +20,11 @@
 -(NSDate *)dateAfterYears:(NSInteger)y months:(NSInteger)m days:(NSInteger)d{
     SHDateTime dt;
     int tzOffset = (int)[NSTimeZone.defaultTimeZone secondsFromGMTForDate:self];
-    timestampToDt(self.timeIntervalSince1970,tzOffset,&dt);
-    tryAddYearsToDtInPlace(&dt,y,0);
-    tryAddMonthsToDtInPlace(&dt,m,0);
-    tryAddDaysToDtInPlace(&dt,d,0);
     int error;
+    tryTimestampToDt(self.timeIntervalSince1970,tzOffset,&dt,&error);
+    tryAddYearsToDtInPlace(&dt,y,0,&error);
+    tryAddMonthsToDtInPlace(&dt,m,0,&error);
+    tryAddDaysToDtInPlace(&dt,d,0,&error);
     return [NSDate dateWithTimeIntervalSince1970:dtToTimestamp(&dt,&error)];
 }
 
@@ -52,9 +52,9 @@
                  timeZone:(NSTimeZone *)timeZone{
     
     NSInteger timestamp;
-    
+    int error;
     tryCreateDateTime(year,(int)month,(int)day,(int)hour,(int)minute,(int)second
-      ,(int)(timeZone.secondsFromGMT),&timestamp);
+      ,(int)(timeZone.secondsFromGMT),&timestamp,&error);
     return [NSDate dateWithTimeIntervalSince1970:timestamp];
     
 }
@@ -84,7 +84,8 @@
 -(NSDate *)dayStart{
     NSInteger timestamp = self.timeIntervalSince1970;
     NSInteger dayStartTimestamp;
-    tryDayStart(timestamp,(int)NSTimeZone.defaultTimeZone.secondsFromGMT,&dayStartTimestamp);
+    int error;
+    tryDayStart(timestamp,(int)NSTimeZone.defaultTimeZone.secondsFromGMT,&dayStartTimestamp,&error);
     return [NSDate dateWithTimeIntervalSince1970:dayStartTimestamp];
 }
 
@@ -92,12 +93,12 @@
 +(NSInteger)daysBetween:(NSDate *)fromDate to:(NSDate *)toDate{
     SHDateTime dtFrom;
     SHDateTime dtTo;
-    timestampToDt(fromDate.timeIntervalSince1970
-      ,(int)NSTimeZone.defaultTimeZone.secondsFromGMT,&dtFrom);
-    timestampToDt(toDate.timeIntervalSince1970
-                       ,(int)NSTimeZone.defaultTimeZone.secondsFromGMT,&dtTo);
-
     int err;
+    tryTimestampToDt(fromDate.timeIntervalSince1970
+      ,(int)NSTimeZone.defaultTimeZone.secondsFromGMT,&dtFrom,&err);
+    tryTimestampToDt(toDate.timeIntervalSince1970
+                       ,(int)NSTimeZone.defaultTimeZone.secondsFromGMT,&dtTo,&err);
+
     return dateDiffDays(&dtTo,&dtFrom,&err);
 }
 
@@ -131,8 +132,8 @@
 -(NSInteger)getWeekdayIndex{
     SHDateTime dt;
     int tzOffset = (int)[NSTimeZone.defaultTimeZone secondsFromGMTForDate:self];
-    timestampToDt(self.timeIntervalSince1970,tzOffset,&dt);
     int error;
+    tryTimestampToDt(self.timeIntervalSince1970,tzOffset,&dt,&error);
     return calcWeekdayIdx(&dt,&error);
 }
 

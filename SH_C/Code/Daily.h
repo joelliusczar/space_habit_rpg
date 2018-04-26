@@ -11,15 +11,18 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include "SHDatetime.h"
 
 typedef struct {
     bool isDayActive;
-    int backrange;
-    int forrange;
+    long backrange;
+    long forrange;
 } RateValueItem;
 
-void filWeek(int *daysAheadCounts,int *daysBeforeCounts,bool *activeDays
+void filWeek(long *daysAheadCounts,long *daysBeforeCounts,bool *activeDays
   ,RateValueItem *rvi);
-void buildWeek(bool *activeDays,int scaler,RateValueItem *rvi);
+void buildWeek(bool *activeDays,long scaler,RateValueItem *rvi);
 void buildEmptyWeek(RateValueItem *rvi);
+bool previousDueDate_WEEKLY(SHDateTime *lastDueDate,SHDateTime *checkinDate
+  ,RateValueItem *rvi,long scaler,SHDateTime *ans,int *error);
 #endif /* Daily_h */

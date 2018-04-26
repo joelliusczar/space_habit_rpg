@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		271691F120886F630059A58E /* libSHGlobal_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 271691F220886F630059A58E /* libSHGlobal_C.a */; };
+		2716922920916D0F0059A58E /* libSH_CTools.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2716922A20916D0F0059A58E /* libSH_CTools.a */; };
+		2716922B20916D170059A58E /* libSHGlobal_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2716922C20916D170059A58E /* libSHGlobal_C.a */; };
 		27D318512086C9040047F5F1 /* SHTimeZone.c in Sources */ = {isa = PBXBuildFile; fileRef = 27D318462086C9040047F5F1 /* SHTimeZone.c */; };
 		27D318522086C9040047F5F1 /* TimeShift_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D318472086C9040047F5F1 /* TimeShift_struct.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27D318532086C9040047F5F1 /* DTConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D318482086C9040047F5F1 /* DTConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27D318542086C9040047F5F1 /* SHDatetime.c in Sources */ = {isa = PBXBuildFile; fileRef = 27D318492086C9040047F5F1 /* SHDatetime.c */; };
 		27D318552086C9040047F5F1 /* SHDatetime_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D3184A2086C9040047F5F1 /* SHDatetime_struct.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27D318562086C9040047F5F1 /* test_c_datetime.c in Sources */ = {isa = PBXBuildFile; fileRef = 27D3184B2086C9040047F5F1 /* test_c_datetime.c */; };
 		27D318572086C9040047F5F1 /* SHTimeZone.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D3184C2086C9040047F5F1 /* SHTimeZone.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27D318592086C9040047F5F1 /* DTConstants.c in Sources */ = {isa = PBXBuildFile; fileRef = 27D3184E2086C9040047F5F1 /* DTConstants.c */; };
 		27D3185A2086C9040047F5F1 /* SHDatetime.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D3184F2086C9040047F5F1 /* SHDatetime.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -21,14 +21,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		271691F220886F630059A58E /* libSHGlobal_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHGlobal_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2716922A20916D0F0059A58E /* libSH_CTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_CTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2716922C20916D170059A58E /* libSHGlobal_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHGlobal_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		27D3183D2086C8CA0047F5F1 /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		27D318462086C9040047F5F1 /* SHTimeZone.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SHTimeZone.c; sourceTree = "<group>"; };
 		27D318472086C9040047F5F1 /* TimeShift_struct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeShift_struct.h; sourceTree = "<group>"; };
 		27D318482086C9040047F5F1 /* DTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTConstants.h; sourceTree = "<group>"; };
 		27D318492086C9040047F5F1 /* SHDatetime.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SHDatetime.c; sourceTree = "<group>"; };
 		27D3184A2086C9040047F5F1 /* SHDatetime_struct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDatetime_struct.h; sourceTree = "<group>"; };
-		27D3184B2086C9040047F5F1 /* test_c_datetime.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test_c_datetime.c; sourceTree = "<group>"; };
 		27D3184C2086C9040047F5F1 /* SHTimeZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHTimeZone.h; sourceTree = "<group>"; };
 		27D3184E2086C9040047F5F1 /* DTConstants.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = DTConstants.c; sourceTree = "<group>"; };
 		27D3184F2086C9040047F5F1 /* SHDatetime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDatetime.h; sourceTree = "<group>"; };
@@ -40,7 +40,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				271691F120886F630059A58E /* libSHGlobal_C.a in Frameworks */,
+				2716922B20916D170059A58E /* libSHGlobal_C.a in Frameworks */,
+				2716922920916D0F0059A58E /* libSH_CTools.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,7 +51,8 @@
 		271691E6208861E50059A58E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				271691F220886F630059A58E /* libSHGlobal_C.a */,
+				2716922C20916D170059A58E /* libSHGlobal_C.a */,
+				2716922A20916D0F0059A58E /* libSH_CTools.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -81,7 +83,6 @@
 				27D318492086C9040047F5F1 /* SHDatetime.c */,
 				27D3184A2086C9040047F5F1 /* SHDatetime_struct.h */,
 				27D318472086C9040047F5F1 /* TimeShift_struct.h */,
-				27D3184B2086C9040047F5F1 /* test_c_datetime.c */,
 				27D3184C2086C9040047F5F1 /* SHTimeZone.h */,
 				27D318462086C9040047F5F1 /* SHTimeZone.c */,
 				27D80A192086E9B400FB4CE2 /* libSHDatetime.h */,
@@ -163,7 +164,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				27D318592086C9040047F5F1 /* DTConstants.c in Sources */,
-				27D318562086C9040047F5F1 /* test_c_datetime.c in Sources */,
 				27D318542086C9040047F5F1 /* SHDatetime.c in Sources */,
 				27D318512086C9040047F5F1 /* SHTimeZone.c in Sources */,
 			);
@@ -223,7 +223,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 			};
 			name = Debug;
 		};
@@ -271,7 +272,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 			};
 			name = Release;
 		};
@@ -279,18 +281,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = XK3RJ8E2L2;
 				EXECUTABLE_PREFIX = lib;
 				FRAMEWORK_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
 					"-Wall",
 					"-Wextra",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos11.2;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				USER_HEADER_SEARCH_PATHS = $BUILT_PRODUCTS_DIR/usr/local/include/;
-				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -298,19 +302,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = XK3RJ8E2L2;
 				EXECUTABLE_PREFIX = lib;
 				FRAMEWORK_SEARCH_PATHS = "";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
 					"-Wall",
 					"-Wextra",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos11.2;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				USER_HEADER_SEARCH_PATHS = $BUILT_PRODUCTS_DIR/usr/local/include/;
-				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};

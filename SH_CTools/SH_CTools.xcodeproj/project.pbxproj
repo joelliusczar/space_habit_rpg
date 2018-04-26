@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2716920A2089762D0059A58E /* SHArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 271692082089762D0059A58E /* SHArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2716920F208991130059A58E /* libSHGlobal_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27169210208991130059A58E /* libSHGlobal_C.a */; };
+		27169227208EBCF60059A58E /* libSHGlobal_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27169228208EBCF60059A58E /* libSHGlobal_C.a */; };
+		2716922D20916ED50059A58E /* SHArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 271692082089762D0059A58E /* SHArray.h */; };
+		2716922E20916ED90059A58E /* ErrorHandling.h in Headers */ = {isa = PBXBuildFile; fileRef = 27169215208BB2450059A58E /* ErrorHandling.h */; };
+		2716922F20916EDD0059A58E /* ErrorHandling.c in Sources */ = {isa = PBXBuildFile; fileRef = 27169216208BB2450059A58E /* ErrorHandling.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		271692002089758B0059A58E /* libSH_CTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSH_CTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		271692082089762D0059A58E /* SHArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHArray.h; sourceTree = "<group>"; };
-		27169210208991130059A58E /* libSHGlobal_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHGlobal_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		27169215208BB2450059A58E /* ErrorHandling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ErrorHandling.h; sourceTree = "<group>"; };
+		27169216208BB2450059A58E /* ErrorHandling.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ErrorHandling.c; sourceTree = "<group>"; };
+		27169228208EBCF60059A58E /* libSHGlobal_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHGlobal_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -22,7 +26,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2716920F208991130059A58E /* libSHGlobal_C.a in Frameworks */,
+				27169227208EBCF60059A58E /* libSHGlobal_C.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +54,8 @@
 			isa = PBXGroup;
 			children = (
 				271692082089762D0059A58E /* SHArray.h */,
+				27169215208BB2450059A58E /* ErrorHandling.h */,
+				27169216208BB2450059A58E /* ErrorHandling.c */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -57,7 +63,7 @@
 		2716920E208991130059A58E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				27169210208991130059A58E /* libSHGlobal_C.a */,
+				27169228208EBCF60059A58E /* libSHGlobal_C.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -69,7 +75,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2716920A2089762D0059A58E /* SHArray.h in Headers */,
+				2716922E20916ED90059A58E /* ErrorHandling.h in Headers */,
+				2716922D20916ED50059A58E /* SHArray.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2716922F20916EDD0059A58E /* ErrorHandling.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,8 +194,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -235,43 +243,49 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
 		271692052089758B0059A58E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = XK3RJ8E2L2;
 				EXECUTABLE_PREFIX = lib;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
 					"-Wall",
 					"-Wextra",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos11.2;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				USER_HEADER_SEARCH_PATHS = $BUILT_PRODUCTS_DIR/usr/local/include/;
-				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
 		271692062089758B0059A58E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = XK3RJ8E2L2;
 				EXECUTABLE_PREFIX = lib;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
 					"-Wall",
 					"-Wextra",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos11.2;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				USER_HEADER_SEARCH_PATHS = $BUILT_PRODUCTS_DIR/usr/local/include/;
-				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};

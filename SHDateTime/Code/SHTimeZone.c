@@ -9,6 +9,7 @@
 #include "SHTimeZone.h"
 #include "SHDatetime.h"
 #include "SHConstants.h"
+#include "ErrorHandling.h"
 
 int _compareDtAndTimeShift(SHDateTime *dt,TimeShift *shift,int (*compare)(long,long)){
     int error;
@@ -61,7 +62,7 @@ int findTimeShiftIdx(SHDateTime *dt){
     return NOT_FOUND;
 }
 
-int updateTimezoneForShifts(SHDateTime *dt){
+bool updateTimezoneForShifts(SHDateTime *dt,int *error){
     if(dt->shifts){
         
         int oldShiftIdx = dt->currentShiftIdx;
@@ -69,22 +70,24 @@ int updateTimezoneForShifts(SHDateTime *dt){
             return INVALID_STATE;
         }
         long ts;
-        if(tryDtToTimestamp(dt,&ts)) return INVALID_STATE;
+        int cnvtErr;
+        if(!tryDtToTimestamp(dt,&ts,&cnvtErr)) return setErrorCode(cnvtErr,error);
         int updShiftIdx = findTimeShiftIdx(dt);
         TimeShift *oldShift = &dt->shifts[oldShiftIdx];
         TimeShift *updShift = &dt->shifts[updShiftIdx];
         if(oldShift != updShift){
             dt->timezoneOffset -= oldShift->adjustment;
             dt->timezoneOffset += updShift->adjustment;
-            int error;
-            int shiftCuspTS = createTime(updShift->hour,updShift->minute,0,&error);
-            int dtTS = extractTime(dt,&error);
+            int shiftCuspTS = createTime(updShift->hour,updShift->minute,0,&cnvtErr);
+            if(cnvtErr) return setErrorCode(cnvtErr,error);
+            int dtTS = extractTime(dt,&cnvtErr);
+            if(cnvtErr) return setErrorCode(cnvtErr,error);
             int shiftDif = (dtTS-shiftCuspTS);
             if(shiftDif >= UNIX_HOUR||dt->day > updShift->day||dt->month > updShift->month){
                 ts += oldShift->adjustment;
                 ts -= updShift->adjustment;
             }
-            if(timestampToDtUnitsOnly(ts,dt)) return GEN_ERROR;
+            if(!timestampToDtUnitsOnly(ts,dt,&cnvtErr)) return setErrorCode(cnvtErr,error);
             dt->currentShiftIdx = updShiftIdx;
             return NO_ERROR;
         }

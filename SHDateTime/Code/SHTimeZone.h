@@ -10,6 +10,7 @@
 #define SHTimeZone_h
 
 #include <stdio.h>
+#include <stdbool.h>
 #include "SHDatetime_struct.h"
 #include "TimeShift_struct.h"
 
@@ -17,6 +18,6 @@
 
 int findTimeShiftIdx(SHDateTime *dt);
 int selectTimeShiftForDt(SHDateTime *dt,TimeShift *shifts,int shiftCount);
-int updateTimezoneForShifts(SHDateTime *dt);
+bool updateTimezoneForShifts(SHDateTime *dt,int *error);
 int isValidTimeShift(TimeShift *shift);
 #endif /* SHTimeZone_h */
