@@ -11,8 +11,8 @@
 #include "SHArray.h"
 #include "ErrorConstants.h"
 
-MAKE_FIND_IDX_REV(bool,int,,)
-MAKE_FIND_IDX(bool,int,,)
+DEF_FIND_IDX_REV(bool,int,,)
+DEF_FIND_IDX(bool,int,,)
 
 static bool _setError(int code,int *error){
     *error = code;
@@ -77,8 +77,8 @@ void buildEmptyWeek(RateValueItem *rvi){
 }
 
 
-bool previousDueDate_WEEKLY(SHDateTime *lastDueDate,SHDateTime *checkinDate
-                            ,RateValueItem *rvi,long scaler,SHDateTime *ans,int *error){
+bool previousDueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate
+                            ,RateValueItem *rvi,long scaler,SHDatetime *ans,int *error){
     if(!(lastDueDate&&checkinDate&&rvi)) return _setError(NULL_VALUES,error);
     int cnvtErr1,cnvtErr2;
     if(!(dtToTimestamp(checkinDate,&cnvtErr1) > dtToTimestamp(lastDueDate,&cnvtErr2))){
@@ -87,7 +87,7 @@ bool previousDueDate_WEEKLY(SHDateTime *lastDueDate,SHDateTime *checkinDate
     if(cnvtErr1||cnvtErr2) return _setError(0,error);
     
     int lastDayIdx = calcWeekdayIdx(lastDueDate,error);
-    SHDateTime *firstDayOfFirstWeek;
+    SHDatetime *firstDayOfFirstWeek;
     tryAddDaysToDt(&lastDueDate,-lastDayIdx,0,&firstDayOfFirstWeek,error);
     long daySpan = dateDiffDays(checkinDate,firstDayOfFirstWeek,error);
 }

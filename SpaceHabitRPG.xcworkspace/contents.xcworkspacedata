@@ -1,6 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "group:Build_Scripts"
+      name = "Build_Scripts">
+      <FileRef
+         location = "group:Build_Scripts.sh">
+      </FileRef>
+      <FileRef
+         location = "group:DTCopy.sh">
+      </FileRef>
+      <FileRef
+         location = "group:ObjCPlayground.sh">
+      </FileRef>
+      <FileRef
+         location = "group:SH_C.sh">
+      </FileRef>
+      <FileRef
+         location = "group:SH_CTools.sh">
+      </FileRef>
+      <FileRef
+         location = "group:SHCommon.sh">
+      </FileRef>
+      <FileRef
+         location = "group:SHControls.sh">
+      </FileRef>
+      <FileRef
+         location = "group:SHControlsSpecial.sh">
+      </FileRef>
+      <FileRef
+         location = "group:SHData.sh">
+      </FileRef>
+      <FileRef
+         location = "group:SHDatetime.sh">
+      </FileRef>
+      <FileRef
+         location = "group:SHGlobal_C.sh">
+      </FileRef>
+      <FileRef
+         location = "group:SHGlobal.sh">
+      </FileRef>
+      <FileRef
+         location = "group:SHMaster.sh">
+      </FileRef>
+      <FileRef
+         location = "group:SHModels.sh">
+      </FileRef>
+      <FileRef
+         location = "group:SpaceHabitRPG.sh">
+      </FileRef>
+      <FileRef
+         location = "group:TestCommon.sh">
+      </FileRef>
+      <FileRef
+         location = "group:TestUI.sh">
+      </FileRef>
+   </Group>
    <FileRef
       location = "group:SH_CTools/SH_CTools.xcodeproj">
    </FileRef>

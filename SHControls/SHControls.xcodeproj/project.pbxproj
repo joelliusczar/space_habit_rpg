@@ -381,6 +381,7 @@
 				271187D6203FF88E0085A549 /* Frameworks */,
 				271187D7203FF88E0085A549 /* Headers */,
 				271187D8203FF88E0085A549 /* Resources */,
+				27DF9C482094EC3600F98023 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -444,6 +445,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		27DF9C482094EC3600F98023 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = $SRCROOT/../Build_Scripts/SHControls.sh;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		271187D5203FF88E0085A549 /* Sources */ = {

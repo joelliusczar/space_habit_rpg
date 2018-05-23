@@ -38,6 +38,7 @@
 		2747C5B4204A63E900FB5669 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2747C5B5204A63E900FB5669 /* SHModels.framework */; };
 		274EFB87204F9C3100CB3C4C /* TestCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 274EFB88204F9C3100CB3C4C /* TestCommon.framework */; };
 		27D80A182086E89900FB4CE2 /* libSHDatetime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D80A172086E89900FB4CE2 /* libSHDatetime.a */; };
+		27DF9C5020B4E83500F98023 /* libSHDatetime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27DF9C5120B4E83500F98023 /* libSHDatetime.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		2747C5B5204A63E900FB5669 /* SHModels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHModels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		274EFB88204F9C3100CB3C4C /* TestCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TestCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27D80A172086E89900FB4CE2 /* libSHDatetime.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSHDatetime.a; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/libSHDatetime.a"; sourceTree = "<group>"; };
+		27DF9C5120B4E83500F98023 /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27DF9C5020B4E83500F98023 /* libSHDatetime.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +165,7 @@
 		2747C564204A621800FB5669 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				27DF9C5120B4E83500F98023 /* libSHDatetime.a */,
 				27D80A172086E89900FB4CE2 /* libSHDatetime.a */,
 				274EFB88204F9C3100CB3C4C /* TestCommon.framework */,
 				2747C5B5204A63E900FB5669 /* SHModels.framework */,
@@ -227,6 +231,7 @@
 				2747C52D204A5DB000FB5669 /* Sources */,
 				2747C52E204A5DB000FB5669 /* Frameworks */,
 				2747C52F204A5DB000FB5669 /* Resources */,
+				27DF9C452094EBEA00F98023 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -313,6 +318,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		27DF9C452094EBEA00F98023 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = $SRCROOT/../Build_Scripts/TestUI.sh;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2747C52D204A5DB000FB5669 /* Sources */ = {

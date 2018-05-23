@@ -94,7 +94,7 @@
 
 
 -(void)testTimestampToDateObj{
-    SHDateTime dt;
+    SHDatetime dt;
     int error;
     tryTimestampToDt(-62168515200,0,&dt,&error);
     XCTAssertEqual(dt.year,0);
@@ -496,20 +496,20 @@
 }
 
 -(void)testAddDays{
-    TimeShift dst[2] = {
+    Timeshift dst[2] = {
         {3,11,2,0,UNIX_HOUR},
         {11,4,2,0,0}
     };
     int error;
-    SHDateTime dt = {.year = 2018,.month = 3, .day = 9, .timezoneOffset = -5*UNIX_HOUR,
+    SHDatetime dt = {.year = 2018,.month = 3, .day = 9, .timezoneOffset = -5*UNIX_HOUR,
         .hour = 2, .minute = 13, .second = 0
     };
     
 
     dt.shifts = dst;
-    dt.shiftLen = sizeof(dst)/sizeof(TimeShift);
+    dt.shiftLen = sizeof(dst)/sizeof(Timeshift);
     dt.currentShiftIdx = selectTimeShiftForDt(&dt,dst,dt.shiftLen);
-    SHDateTime copy = dt;
+    SHDatetime copy = dt;
     tryAddDaysToDtInPlace(&copy,2,0,&error);
     XCTAssertEqual(copy.day,11);
     XCTAssertEqual(copy.hour,3);
@@ -818,6 +818,14 @@ NSInteger calcDaysFromBase(NSInteger span){
     testDate = [NSDate createSimpleDateWithYear:2018 month:1 day:14];
     result = [testDate getWeekdayIndex];
     XCTAssertEqual(result,0);
+    
+    testDate = [NSDate createSimpleDateWithYear:1969 month:12 day:27];
+    result = [testDate getWeekdayIndex];
+    XCTAssertEqual(result,6);
+    
+    testDate = [NSDate createSimpleDateWithYear:1969 month:12 day:26];
+    result = [testDate getWeekdayIndex];
+    XCTAssertEqual(result,5);
 }
 
 @end

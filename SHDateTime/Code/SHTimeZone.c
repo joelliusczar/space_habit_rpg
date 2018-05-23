@@ -11,7 +11,7 @@
 #include "SHConstants.h"
 #include "ErrorHandling.h"
 
-int _compareDtAndTimeShift(SHDateTime *dt,TimeShift *shift,int (*compare)(long,long)){
+int _compareDtAndTimeShift(SHDatetime *dt,Timeshift *shift,int (*compare)(long,long)){
     int error;
     long dtTimestamp = createDateTime(BASE_YEAR,dt->month,dt->day,dt->hour,dt->minute
                                       ,dt->second,0,&error);
@@ -24,7 +24,7 @@ int _isDtAfterShift(long dt,long shift){
     return dt >= shift;
 }
 
-int _isAfterShiftCusp(SHDateTime *dt,TimeShift *extant){
+int _isAfterShiftCusp(SHDatetime *dt,Timeshift *extant){
     return _compareDtAndTimeShift(dt,extant,&_isDtAfterShift);
 }
 
@@ -32,16 +32,16 @@ int _isDtBeforeShift(long dt,long shift){
     return dt < shift;
 }
 
-int _isBeforeShiftCusp(SHDateTime *dt,TimeShift *next){
+int _isBeforeShiftCusp(SHDatetime *dt,Timeshift *next){
     return _compareDtAndTimeShift(dt,next,&_isDtBeforeShift);
 }
 
-int selectTimeShiftForDt(SHDateTime *dt,TimeShift *shifts,int shiftCount){
+int selectTimeShiftForDt(SHDatetime *dt,Timeshift *shifts,int shiftCount){
     int max = shiftCount;
     for(int i = 0;i<max;i++){
-        TimeShift extant = shifts[i];
+        Timeshift extant = shifts[i];
         int wrappedIdx = (i+1) % max;
-        TimeShift next = shifts[wrappedIdx];
+        Timeshift next = shifts[wrappedIdx];
         if(_isBeforeShiftCusp(dt,&extant)){
             return ((i-1)+max) % max;
         }
@@ -55,14 +55,14 @@ int selectTimeShiftForDt(SHDateTime *dt,TimeShift *shifts,int shiftCount){
     return NOT_FOUND;
 }
 
-int findTimeShiftIdx(SHDateTime *dt){
+int findTimeShiftIdx(SHDatetime *dt){
     if(dt->shifts){
         return selectTimeShiftForDt(dt,dt->shifts,dt->shiftLen);
     }
     return NOT_FOUND;
 }
 
-bool updateTimezoneForShifts(SHDateTime *dt,int *error){
+bool updateTimezoneForShifts(SHDatetime *dt,int *error){
     if(dt->shifts){
         
         int oldShiftIdx = dt->currentShiftIdx;
@@ -73,8 +73,8 @@ bool updateTimezoneForShifts(SHDateTime *dt,int *error){
         int cnvtErr;
         if(!tryDtToTimestamp(dt,&ts,&cnvtErr)) return setErrorCode(cnvtErr,error);
         int updShiftIdx = findTimeShiftIdx(dt);
-        TimeShift *oldShift = &dt->shifts[oldShiftIdx];
-        TimeShift *updShift = &dt->shifts[updShiftIdx];
+        Timeshift *oldShift = &dt->shifts[oldShiftIdx];
+        Timeshift *updShift = &dt->shifts[updShiftIdx];
         if(oldShift != updShift){
             dt->timezoneOffset -= oldShift->adjustment;
             dt->timezoneOffset += updShift->adjustment;

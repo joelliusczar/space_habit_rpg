@@ -23,6 +23,6 @@ void filWeek(long *daysAheadCounts,long *daysBeforeCounts,bool *activeDays
   ,RateValueItem *rvi);
 void buildWeek(bool *activeDays,long scaler,RateValueItem *rvi);
 void buildEmptyWeek(RateValueItem *rvi);
-bool previousDueDate_WEEKLY(SHDateTime *lastDueDate,SHDateTime *checkinDate
-  ,RateValueItem *rvi,long scaler,SHDateTime *ans,int *error);
+bool previousDueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate
+  ,RateValueItem *rvi,long scaler,SHDatetime *ans,int *error);
 #endif /* Daily_h */

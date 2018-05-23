@@ -10,7 +10,6 @@
 		2716922920916D0F0059A58E /* libSH_CTools.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2716922A20916D0F0059A58E /* libSH_CTools.a */; };
 		2716922B20916D170059A58E /* libSHGlobal_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2716922C20916D170059A58E /* libSHGlobal_C.a */; };
 		27D318512086C9040047F5F1 /* SHTimeZone.c in Sources */ = {isa = PBXBuildFile; fileRef = 27D318462086C9040047F5F1 /* SHTimeZone.c */; };
-		27D318522086C9040047F5F1 /* TimeShift_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D318472086C9040047F5F1 /* TimeShift_struct.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27D318532086C9040047F5F1 /* DTConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D318482086C9040047F5F1 /* DTConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27D318542086C9040047F5F1 /* SHDatetime.c in Sources */ = {isa = PBXBuildFile; fileRef = 27D318492086C9040047F5F1 /* SHDatetime.c */; };
 		27D318552086C9040047F5F1 /* SHDatetime_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D3184A2086C9040047F5F1 /* SHDatetime_struct.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -25,7 +24,6 @@
 		2716922C20916D170059A58E /* libSHGlobal_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHGlobal_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		27D3183D2086C8CA0047F5F1 /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		27D318462086C9040047F5F1 /* SHTimeZone.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SHTimeZone.c; sourceTree = "<group>"; };
-		27D318472086C9040047F5F1 /* TimeShift_struct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeShift_struct.h; sourceTree = "<group>"; };
 		27D318482086C9040047F5F1 /* DTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTConstants.h; sourceTree = "<group>"; };
 		27D318492086C9040047F5F1 /* SHDatetime.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SHDatetime.c; sourceTree = "<group>"; };
 		27D3184A2086C9040047F5F1 /* SHDatetime_struct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDatetime_struct.h; sourceTree = "<group>"; };
@@ -82,7 +80,6 @@
 				27D3184F2086C9040047F5F1 /* SHDatetime.h */,
 				27D318492086C9040047F5F1 /* SHDatetime.c */,
 				27D3184A2086C9040047F5F1 /* SHDatetime_struct.h */,
-				27D318472086C9040047F5F1 /* TimeShift_struct.h */,
 				27D3184C2086C9040047F5F1 /* SHTimeZone.h */,
 				27D318462086C9040047F5F1 /* SHTimeZone.c */,
 				27D80A192086E9B400FB4CE2 /* libSHDatetime.h */,
@@ -100,7 +97,6 @@
 				27D318572086C9040047F5F1 /* SHTimeZone.h in Headers */,
 				27D318532086C9040047F5F1 /* DTConstants.h in Headers */,
 				27D3185A2086C9040047F5F1 /* SHDatetime.h in Headers */,
-				27D318522086C9040047F5F1 /* TimeShift_struct.h in Headers */,
 				27D80A1A2086E9B400FB4CE2 /* libSHDatetime.h in Headers */,
 				27D318552086C9040047F5F1 /* SHDatetime_struct.h in Headers */,
 			);
@@ -116,6 +112,7 @@
 				27D318392086C8CA0047F5F1 /* Sources */,
 				27D3183A2086C8CA0047F5F1 /* Frameworks */,
 				27D3183B2086C8CA0047F5F1 /* Headers */,
+				27DF9C41209425B300F98023 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -157,6 +154,22 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		27DF9C41209425B300F98023 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = $SRCROOT/../Build_Scripts/SHDatetime.sh;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		27D318392086C8CA0047F5F1 /* Sources */ = {

@@ -127,7 +127,7 @@ bool tryCreateTime(int hour,int minute,int second,int *ans,int *error);
    pass(0) or fail(1)
  returns:timestamp for day
  */
-int extractTime(SHDateTime *dt,int *error);
+int extractTime(SHDatetime *dt,int *error);
 
 /*
  tryExtractTime:
@@ -138,7 +138,7 @@ int extractTime(SHDateTime *dt,int *error);
    pass(0) or fail(1)
  returns:true for pass, false for fail
  */
-bool tryExtractTime(SHDateTime *dt,int *ans,int *error);
+bool tryExtractTime(SHDatetime *dt,int *ans,int *error);
 
 /*
  timestampToDt:
@@ -151,7 +151,7 @@ bool tryExtractTime(SHDateTime *dt,int *ans,int *error);
    pass(0) or fail(1)
  return: true for pass, false for fail
  */
-bool tryTimestampToDt(long timestamp, int timezoneOffset,SHDateTime *dt,int *error);
+bool tryTimestampToDt(long timestamp, int timezoneOffset,SHDatetime *dt,int *error);
 
 /*
  timestampToDtUnitsOnly:
@@ -162,7 +162,7 @@ bool tryTimestampToDt(long timestamp, int timezoneOffset,SHDateTime *dt,int *err
    pass(0) or fail(1)
  return: true for pass, false for fail
  */
-bool timestampToDtUnitsOnly(long timestamp,SHDateTime *dt,int *error);
+bool timestampToDtUnitsOnly(long timestamp,SHDatetime *dt,int *error);
 
 /*
  dtToTimestamp:
@@ -173,7 +173,7 @@ bool timestampToDtUnitsOnly(long timestamp,SHDateTime *dt,int *error);
    pass(0) or fail(1)
  return: the epoch timestamp
  */
-long dtToTimestamp(SHDateTime const *dt,int *error);
+long dtToTimestamp(SHDatetime const *dt,int *error);
 
 /*
  tryDtToTimestamp:
@@ -185,7 +185,7 @@ long dtToTimestamp(SHDateTime const *dt,int *error);
    pass(0) or fail(1)
  return: true for pass, false for fail
  */
-bool tryDtToTimestamp(SHDateTime const *dt,long *ans,int *error);
+bool tryDtToTimestamp(SHDatetime const *dt,long *ans,int *error);
 
 /*
  tryAddYearsToDt:
@@ -199,8 +199,8 @@ bool tryDtToTimestamp(SHDateTime const *dt,long *ans,int *error);
    pass(0) or fail(1)
  return: true for pass, false for fail
  */
-bool tryAddYearsToDt(SHDateTime const *dt,long years,TimeAdjustOptions options,
-  SHDateTime *ans,int *error);
+bool tryAddYearsToDt(SHDatetime const *dt,long years,TimeAdjustOptions options,
+  SHDatetime *ans,int *error);
 
 /*
  tryAddYearsToDtInPlace:
@@ -213,7 +213,7 @@ bool tryAddYearsToDt(SHDateTime const *dt,long years,TimeAdjustOptions options,
    pass(0) or fail(1)
  return: true for pass, false for fail
  */
-bool tryAddYearsToDtInPlace(SHDateTime *dt,long years,TimeAdjustOptions options
+bool tryAddYearsToDtInPlace(SHDatetime *dt,long years,TimeAdjustOptions options
   ,int *error);
 
 /*
@@ -259,8 +259,8 @@ bool tryAddYearsToTimestamp(long timestamp,long years,int timezoneOffset
    pass(0) or fail(1)
  return: true for pass, false for fail
  */
-bool tryAddMonthsToDt(SHDateTime const *dt,long months,TimeAdjustOptions options
-                     ,SHDateTime *ans,int *error);
+bool tryAddMonthsToDt(SHDatetime const *dt,long months,TimeAdjustOptions options
+                     ,SHDatetime *ans,int *error);
 
 /*
  tryAddMonthsToDtInPlace:
@@ -273,7 +273,7 @@ bool tryAddMonthsToDt(SHDateTime const *dt,long months,TimeAdjustOptions options
    pass(0) or fail(1)
  return: true for pass, false for fail
  */
-bool tryAddMonthsToDtInPlace(SHDateTime *dt,long months,TimeAdjustOptions options
+bool tryAddMonthsToDtInPlace(SHDatetime *dt,long months,TimeAdjustOptions options
   ,int *error);
 
 /*
@@ -305,8 +305,8 @@ bool tryAddMonthsToTimestamp(long timestamp,long months,int timezoneOffset
  ans: stores the timechanges in here
  return: true for pass, false for fail
  */
-bool tryAddDaysToDt(SHDateTime const *dt,long days,TimeAdjustOptions options
-  ,SHDateTime *ans,int *error);
+bool tryAddDaysToDt(SHDatetime const *dt,long days,TimeAdjustOptions options
+  ,SHDatetime *ans,int *error);
 
 /*
  tryAddDaysToDtInPlace:
@@ -319,7 +319,7 @@ bool tryAddDaysToDt(SHDateTime const *dt,long days,TimeAdjustOptions options
    pass(0) or fail(1)
  return: true for pass, false for fail
  */
-bool tryAddDaysToDtInPlace(SHDateTime *dt,long days,TimeAdjustOptions options
+bool tryAddDaysToDtInPlace(SHDatetime *dt,long days,TimeAdjustOptions options
   ,int *error);
 
 /*
@@ -357,9 +357,9 @@ takes a SHDateTime and infers what the day of the week is. By default, Sunday is
 dt: extract the weekday from this
 error: pointer to variable to store an error number, right now it's just
    pass(0) or fail(1)
- return: index 0 - 6 of the day of the week that dt represents
+ return: index 0 - 6 of the day of the week that dt represents, -1 if there was an error
  */
-int calcWeekdayIdx(SHDateTime *dt,int *error);
+int calcWeekdayIdx(SHDatetime *dt,int *error);
 
 /*
  dateDiffDays:
@@ -370,7 +370,7 @@ int calcWeekdayIdx(SHDateTime *dt,int *error);
    pass(0) or fail(1)
  return: the difference between two dates in days. This can be negative
  */
-long dateDiffDays(SHDateTime const *A,SHDateTime const *B,int *error);
+long dateDiffDays(SHDatetime const *A,SHDatetime const *B,int *error);
 
 /*
  tryDateDiffDays:
@@ -383,7 +383,7 @@ long dateDiffDays(SHDateTime const *A,SHDateTime const *B,int *error);
    pass(0) or fail(1)
  return: true for pass, false for fail
  */
-bool tryDateDiffDays(SHDateTime const *A,SHDateTime const *B,long *ans,int *error);
+bool tryDateDiffDays(SHDatetime const *A,SHDatetime const *B,long *ans,int *error);
 
 /*
  dateDiffSecs:
@@ -394,7 +394,7 @@ bool tryDateDiffDays(SHDateTime const *A,SHDateTime const *B,long *ans,int *erro
  pass(0) or fail(1)
  return: the difference between two dates in seconds. This can be negative
  */
-long dateDiffSecs(SHDateTime const *A,SHDateTime const *B,int *error);
+long dateDiffSecs(SHDatetime const *A,SHDatetime const *B,int *error);
 
 /*
  tryDiffDateSecs:
@@ -407,7 +407,7 @@ long dateDiffSecs(SHDateTime const *A,SHDateTime const *B,int *error);
    pass(0) or fail(1)
  return: true for pass, false for fail
  */
-bool tryDiffDateSecs(SHDateTime const *A,SHDateTime const *B,long *ans,int *error);
+bool tryDiffDateSecs(SHDatetime const *A,SHDatetime const *B,long *ans,int *error);
 
 /*
  isValidSHDateTime:
@@ -415,6 +415,20 @@ bool tryDiffDateSecs(SHDateTime const *A,SHDateTime const *B,long *ans,int *erro
    and less than whatever the max possible year is; the month is between 1 and 12; etc.
  returns: 1 or 0, true or false
  */
-int isValidSHDateTime(SHDateTime const *dt);
+int isValidSHDateTime(SHDatetime const *dt);
+
+/*
+ initDt:
+ zeros out an SHDatetime object
+ dt: the datetime object we're setting to factory state.
+ */
+bool initDt(SHDatetime *dt);
+
+/*
+ initTimeshift:
+ zeros out a Timeshift object
+ shift: the Timeshift object we're setting to factory state.
+ */
+bool initTimeshift(Timeshift *shift);
 
 #endif /* datetime_h */

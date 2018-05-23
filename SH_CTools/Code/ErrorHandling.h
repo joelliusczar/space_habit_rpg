@@ -19,4 +19,5 @@ extern const int CORRUPT_STRUCT;
 
 
 bool setErrorCode(int code,int *error);
+int setIndexErrorCode(int code,int *error);
 #endif /* ErrorHandling_h */

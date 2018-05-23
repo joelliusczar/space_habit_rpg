@@ -16,8 +16,8 @@
 
 
 
-int findTimeShiftIdx(SHDateTime *dt);
-int selectTimeShiftForDt(SHDateTime *dt,TimeShift *shifts,int shiftCount);
-bool updateTimezoneForShifts(SHDateTime *dt,int *error);
-int isValidTimeShift(TimeShift *shift);
+int findTimeShiftIdx(SHDatetime *dt);
+int selectTimeShiftForDt(SHDatetime *dt,Timeshift *shifts,int shiftCount);
+bool updateTimezoneForShifts(SHDatetime *dt,int *error);
+int isValidTimeShift(Timeshift *shift);
 #endif /* SHTimeZone_h */

@@ -16,7 +16,7 @@ typedef struct{
     int hour;
     int minute;
     int adjustment;
-}TimeShift;
+}Timeshift;
 
 typedef struct {
     long year;
@@ -26,9 +26,9 @@ typedef struct {
     int minute;
     int second;
     int timezoneOffset;
-    TimeShift *shifts;
+    Timeshift *shifts;
     int shiftLen;
     int currentShiftIdx;
-} SHDateTime;
+} SHDatetime;
 
 #endif /* SHDateTime_struct_h */
