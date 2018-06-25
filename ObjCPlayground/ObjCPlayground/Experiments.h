@@ -91,6 +91,7 @@ void cMakeHouses(void);
 +(void)timeZoneStuff;
 +(void)dateTimeStuff;
 +(void)runC_Exp;
++(void)getWeekDayIndexes;
 @end
 
 #import "Experiments+Charlie.h"

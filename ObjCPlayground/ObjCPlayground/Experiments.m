@@ -716,5 +716,25 @@ NSString *convertCharToBin(unsigned char input){
     
     arrayExps();
 }
+
++(void)getWeekDayIndexes{
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    [components setValue:1776 forComponent:NSCalendarUnitYear];
+    [components setValue:7 forComponent:NSCalendarUnitMonth];
+    [components setValue:4 forComponent:NSCalendarUnitDay];
+    components.calendar = NSCalendar.currentCalendar;
+    NSDate *d0 = [components date];
+    //NSInteger w = [components weekdayOrdinal];
+    //NSLog(@"%@",d0);
+    NSTimeZone.defaultTimeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
+    components = [[NSDateComponents alloc] init];
+    [components setValue:1900 forComponent:NSCalendarUnitYear];
+    [components setValue:1 forComponent:NSCalendarUnitMonth];
+    [components setValue:1 forComponent:NSCalendarUnitDay];
+    components.calendar = NSCalendar.currentCalendar;
+    d0 = [components date];
+    //NSInteger w = [components weekdayOrdinal];
+    NSLog(@"%f",d0.timeIntervalSince1970);
+}
     
 @end

@@ -69,7 +69,7 @@ bool updateTimezoneForShifts(SHDatetime *dt,int *error){
         if(oldShiftIdx < 0 || oldShiftIdx >= dt->shiftLen){
             return INVALID_STATE;
         }
-        long ts;
+        double ts;
         int cnvtErr;
         if(!tryDtToTimestamp(dt,&ts,&cnvtErr)) return setErrorCode(cnvtErr,error);
         int updShiftIdx = findTimeShiftIdx(dt);
@@ -83,7 +83,7 @@ bool updateTimezoneForShifts(SHDatetime *dt,int *error){
             int dtTS = extractTime(dt,&cnvtErr);
             if(cnvtErr) return setErrorCode(cnvtErr,error);
             int shiftDif = (dtTS-shiftCuspTS);
-            if(shiftDif >= UNIX_HOUR||dt->day > updShift->day||dt->month > updShift->month){
+            if(shiftDif >= HOUR_IN_SECONDS||dt->day > updShift->day||dt->month > updShift->month){
                 ts += oldShift->adjustment;
                 ts -= updShift->adjustment;
             }

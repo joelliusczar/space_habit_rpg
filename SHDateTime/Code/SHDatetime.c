@@ -10,6 +10,7 @@
 #include <limits.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <math.h>
 #include "SHDatetime.h"
 #include "SHConstants.h"
 #include "ErrorHandling.h"
@@ -26,7 +27,7 @@ typedef struct{
     
 } TimeCalcResult;
 
-static int _getMonthFromDaySum(int daySum, int isLeapYear){
+static int _getMonthFromDaySum(int daySum, bool isLeapYear){
     if(daySum < 1 || daySum > (366 + (isLeapYear?1:0))) return -1;
     if(daySum <= 31) return 1;
     if(daySum <= (59 + (isLeapYear?1:0))) return 2;
@@ -49,74 +50,257 @@ static int _isTimestampRangeInvalid(long timestamp,int timezoneOffset,int *error
     return true;
 }
 
-static long _calcNumLeapYears(long year) {
-    long mod = year > 0?year:year + -1*year*4; //for neg numbers, factor was abitrary
-    long ans = (year + 4 - (mod % 4))/4;
-    return ans < 0?-1*ans:ans;
+static bool _isLeapYear(long years){
+    return (years % 4 == 0)&&((years % 100 !=0)||(years % 400 == 0));
+}
+
+static bool _isLeapYearCorrected(long years,long correction){
+    return _isLeapYear(years -correction);
+}
+
+static bool _isLeapYearFromBaseYear(long year){
+    return _isLeapYearCorrected(year, BEST_LEAP_YEAR);
+}
+
+static long _calcNumLeapYearsWithCycleLen(long year,long cycleLen){
+    /*There might be a simpler way to do determine this,
+     but I promise you, it's a bigger pain in the ass to get this
+     right than you might expect.
+     negative leap years are num of leap years before 2000,
+     pos are after. Either way, we get absolute value 2000 is just a convinient date
+     Leap leaps do not count themselves, that's one of the reasons why we don't
+     simply divide by 4(cycleLen) because we want 4/4 = 0, not 4/4 = 1, and
+     part of the reason we want that is because the 0-leap year:
+     2000 would be 0/4 = 0, so we want to maintain that pattern with the other
+     leap years.
+     Examples:
+     year = -6 -> mod= -6-(4*-6)=-6+24=18,-> (-6+4) -(18%4) = -2 -2=-4,->-4/4=-1
+     year = -5 -> mod= -5-(4*-5)=-5+20=15,-> (-5+4) -(15%4) = -1-3=-4,->-4/4=-1
+     year = -4 -> mod= -4-(4*-4)=-4+16=12,-> (-4+4) -(12%4) = 0-0=0,->0/4 =0;
+     year = -3 -> mod= -3-(4*-3)=-3+12=9, -> (-3+4) -(9%4)=1-1=0,-> 0/4 =0;
+     year = -2 -> mod= -2 -(4*-2)=-2+8=6, -> (-2+4) -(6%4)= 2-2 = 0,-> 0/4 = 0;
+     year = -1 -> mod= -1 -(4*-1) = -1+4=3, -> (-1+4) -(3%4)= 3-3 =0,-> 0/4 = 0;
+     (2001)year = 0 -> mod= 0 - (4*0)=0, -> (0+4) - (0%4) -> 4-0 -> 4 -> 4/4 = 1;
+     year=1 ->mod=1, -> (1+4) -(1%4)=5-1=0 -> 4/4 = 1;
+     year=2 -> mod=2, -> (2+4)-(2%4)=6-2=4 -> 4/4 = 1;
+     year=3 -> mod=3,-> (3+4)-(3%4)=7-3=4 -> 4/4 = 1;
+     year=4 -> mod=4,-> (4+4)-(4%4)=8-0=8-> 8/4 = 2
+     */
+    long mod = year > 0?year:year - (cycleLen*year); //
+    long multipleOfCycleLen = year + cycleLen - (mod % cycleLen);
+    long ans = (multipleOfCycleLen)/cycleLen;
+    return ans;
+    /*
+     for neg years, factor was abitrary. Can be any multiple of cycleLen
+     This is best explained with examples
+     for positive years: year = mod, so you can think of the operation
+     as shaving off the remainder so that it's a multiple of cycleLen
+     for negative years:
+      */
+}
+
+static long _calcNumLeapYearsExclusive(long year) {
+    long ans = _calcNumLeapYearsWithCycleLen(year,4) -
+      _calcNumLeapYearsWithCycleLen(year,100) +
+      _calcNumLeapYearsWithCycleLen(year,400);
+    return ans;
 }
 
 static long _calcNumLeapYearsBaseLeap(long year){
-    long dif = year - FIRST_LEAP_YEAR + (year >= FIRST_LEAP_YEAR?-1:0);
-    return _calcNumLeapYears(dif);
+    /*
+     If year is greater than or equal to 2000 offset it by one
+     because even though 2000 is a leap year, we don't want to say
+     there's been 1 leap year in 2000. Besides, we already have an
+     offset for when the year itself is a leap year.
+     */
+    long dif = year - BEST_LEAP_YEAR + (year >= BEST_LEAP_YEAR?-1:0);
+    long ans = _calcNumLeapYearsExclusive(dif);
+    /*We want to offset the leap to 2000 rather than 1972 since it will handle
+     multiples of 100 and 400 better. Our little window shift creates some problems
+     where the leap years between 1972 and 2000 don't align right.
+     So, we just that here.
+     */
+    if(year < FIRST_LEAP_YEAR || year > BEST_LEAP_YEAR || !_isLeapYear(dif)){
+        ans += LEAP_COUNT_BETWEEN_1972_2000;
+    }
+    else{
+        ans += (LEAP_COUNT_BETWEEN_1972_2000 -1);
+    }
+    return ans < 0?-ans:ans;
 }
 
-static int _isLeapYear(long years){
-    return !(years % 4);
-}
 
-static int _isLeapYearFromBaseYear(long year){
-    long diff = year - FIRST_LEAP_YEAR;
-    return _isLeapYear(diff);
-}
-
-
-static int _isLeapDayCusp(SHDatetime *dt){
+static bool _isLeapDayCusp(SHDatetime *dt){
     return dt->month == 2 && dt->day == 29;
 }
 
-static long _calcYears(long seconds){
-    int beforeEpochOffset = seconds < 0?1:0;
-    seconds = seconds < 0?-1*seconds:seconds;
-    seconds -= beforeEpochOffset;
-    int excess = seconds % LEAP_CYCLE_UNIX;
+
+static long _calcYearsFor20thCent(long seconds,bool isBefore1970){
+    if(seconds < 0) return -1;
     long years = 0;
-    long leapCycles = seconds / LEAP_CYCLE_UNIX;
-    if(excess > UNIX_LEAP_YEAR_LAST_SEC){
-        years++;
-        excess -= UNIX_LEAP_YEAR;
+    int leapExcess = seconds % SECONDS_PER_4_YEARS;
+    if(leapExcess >= 94694400){
+        years = 3;
     }
-    else{
-        return (leapCycles*LEAP_CYCLE_YEAR);
+    else if(leapExcess >= (isBefore1970?63158400:63072000)){
+        years = 2;
     }
-    years += (excess/UNIX_YEAR) + (leapCycles*LEAP_CYCLE_YEAR);
+    else if(leapExcess >= 31536000){
+        years = 1;
+    }
+    
+    long leapCycles = seconds / SECONDS_PER_4_YEARS;
+    years +=  (leapCycles*YEARS_PER_LEAP_CYCLE_SM);
     return years;
 }
 
 
+static int _calcYearsBefore20thCent(long seconds){
+    if(seconds < 0) return -1;
+    int years = 0;
+    int leapExcess = seconds % SECONDS_PER_4_YEARS;
+    if(leapExcess >= (3*SECONDS_PER_YEAR)){
+        years = 3;
+    }
+    else if(leapExcess >= (2*SECONDS_PER_YEAR)){
+        years = 2;
+    }
+    else if(leapExcess >= SECONDS_PER_YEAR){
+        years = 1;
+    }
+    long leapCycles = seconds / SECONDS_PER_4_YEARS;
+    years +=  (leapCycles*4);
+    return years;
+}
+
+static long _calcYearsAfter20thCent(long seconds,bool isLeapCent){
+    if(seconds < 0) return -1;
+    long years = 0;
+    if(!isLeapCent){
+        //turn of normal century does not include leap year
+        if(seconds < (4*SECONDS_PER_YEAR)){
+            for(int yearFactor = 3;yearFactor > 0;yearFactor--){
+                if(seconds >= (yearFactor*SECONDS_PER_YEAR)){
+                    years = yearFactor;
+                    return years;
+                }
+            }
+            return 0;
+        }
+        seconds -= 4*SECONDS_PER_YEAR; //shave off the non-leap year segment
+        years += 4;
+    }
+    int leapExcess = seconds % SECONDS_PER_4_YEARS;
+    if(leapExcess >= (2*SECONDS_PER_YEAR + SECONDS_PER_LEAP_YEAR)){
+        years = 3;
+    }
+    else if(leapExcess >= (SECONDS_PER_YEAR + SECONDS_PER_LEAP_YEAR)){
+        years = 2;
+    }
+    else if(leapExcess >= SECONDS_PER_LEAP_YEAR){
+        years = 1;
+    }
+    
+    long leapCycles = seconds / SECONDS_PER_4_YEARS;
+    years +=  (leapCycles*YEARS_PER_LEAP_CYCLE_SM);
+    return years;
+}
+
+static long _calcYearsPerQuadricentennial(long seconds,bool isPast){
+    long years = 0;
+    long leapExcess = 0;
+    long leapCycles = 0;
+    if(seconds > SECONDS_PER_400_YEARS){
+        leapCycles = seconds / SECONDS_PER_400_YEARS;
+        seconds %= SECONDS_PER_400_YEARS;
+        years += leapCycles * 400;
+    }
+    
+    //example years 1200-1300, year 1200 is a leap year due to 400 year rule
+    if(isPast && seconds > (3*SECONDS_PER_100_YEARS)){
+        return years + _calcYearsBefore20thCent(seconds);
+    }
+    else if(seconds <= (SECONDS_PER_LEAP_CENT)){
+        return years + _calcYearsAfter20thCent(seconds,true);
+    }
+    
+    if(!isPast){
+        years += 100;
+        seconds -= (SECONDS_PER_LEAP_CENT + 1);
+    }
+    
+    leapExcess = seconds % SECONDS_PER_100_YEARS;
+    leapCycles = seconds / SECONDS_PER_100_YEARS;
+    if(isPast){
+        years += _calcYearsBefore20thCent(seconds);
+    }
+    else{
+        years += _calcYearsAfter20thCent(leapExcess,false);
+    }
+    years += leapCycles * 100;
+    return years;
+}
+
+static long _calcYears(long seconds){
+    long years = 0;
+    seconds += (seconds < 0?1:0);
+    if(seconds > SPAN_1970_2000){
+        seconds -= SPAN_1970_2000;
+        years = 30;
+        return years + _calcYearsPerQuadricentennial(seconds,false);
+    }
+    else if(seconds <= SPAN_1970_1899){
+        seconds -= SPAN_1970_1899;
+        years = 70;
+        
+        if(seconds < -3*SECONDS_PER_100_YEARS){ //year before 1600
+            years += 300;
+            seconds +=(3*SECONDS_PER_100_YEARS);
+            return years + _calcYearsPerQuadricentennial(-seconds,true);
+        }
+        //years between 1600 and 1700
+        if(seconds < -2*SECONDS_PER_100_YEARS + LAST_SECOND_OF_DAY){
+            years += 2*100;
+            seconds += (2*SECONDS_PER_100_YEARS);
+            return years + _calcYearsBefore20thCent(-seconds);
+        }
+        
+        for(int cents = 1;cents >= 0;cents--){
+            if(seconds <= -cents*SECONDS_PER_100_YEARS){
+                years += cents*100;
+                seconds += (cents*SECONDS_PER_100_YEARS);
+                return years + _calcYearsBefore20thCent(-seconds);
+            }
+        }
+    }
+    return _calcYearsFor20thCent(labs(seconds),seconds < 0);
+}
+
+
 static void _calcTimeFromTimestamp(long timestamp,int minOffset,TimeCalcResult *result){
-    result->totalMins = timestamp / UNIX_MIN;
+    result->totalMins = timestamp / MIN_IN_SECONDS;
     result->exSecs = timestamp % 60;
     result->totalMins += ((result->exSecs+minOffset) / 60);
     result->totalHours = result->totalMins/60;
     result->totalDays = result->totalHours / 24;
 }
 
-long createDateTime(long year,int month,int day,int hour,int minute,int second
+double createDateTime(long year,int month,int day,int hour,int minute,int second
   ,int timezoneOffset,int *error){
     *error = NO_ERROR;
-    long ans;
+    double ans;
     tryCreateDateTime(year,month,day,hour,minute,second,timezoneOffset,&ans,error);
     return ans;
 }
 
-int _areTimeComponentsValid(long year,int month,int day,int hour,int minute,int second){
-    int isValid = year >= 0;
+bool _areTimeComponentsValid(long year,int month,int day,int hour,int minute,int second){
+    bool isValid = year >= 0 && year <= 9999;
     isValid &= (hour >= 0 && hour < 24);
     isValid &= (minute >= 0 && minute < 60);
     isValid &= (second >= 0 && second < 60);
     isValid &= month > 0 && month < 13;
     
-    int isLeapYear = _isLeapYearFromBaseYear(year);
+    bool isLeapYear = _isLeapYearFromBaseYear(year);
     isValid &= (day > 0 && day <= (_monthCount[month-1] + (isLeapYear&&month==2?1:0)));
     
     return isValid;
@@ -128,61 +312,62 @@ int isValidSHDateTime(SHDatetime const *dt){
 }
 
 bool tryCreateDateTime(long year,int month,int day,int hour,int minute,int second
-  ,int timezoneOffset,long *ans,int *error){
+  ,int timezoneOffset,double *ans,int *error){
     *error = NO_ERROR;
-    int isValid = _areTimeComponentsValid(year,month,day,hour,minute,second);
+    bool isValid = _areTimeComponentsValid(year,month,day,hour,minute,second);
     if(!isValid) return setErrorCode(GEN_ERROR,error);
-    long sum;
+    double sum;
     long leapYearCount = _calcNumLeapYearsBaseLeap(year);
-    int isLeapYear = _isLeapYearFromBaseYear(year);
+    bool isLeapYear = _isLeapYearFromBaseYear(year);
     if(year >= BASE_YEAR){
         long span = year - BASE_YEAR;
         int dayTotal = _monthSums[month-1];
-        long yearStart = span*UNIX_DAY*365 + UNIX_DAY*leapYearCount;
+        long yearStart = span*DAY_IN_SECONDS*365 + DAY_IN_SECONDS*leapYearCount;
         dayTotal+=(day-1);
         int FEB_DAY_SUM = 59;
-        int leapDayOffset = isLeapYear
-          &&(dayTotal > FEB_DAY_SUM||(month==3&&dayTotal== FEB_DAY_SUM))
-          ?1:0;
-        sum = yearStart + dayTotal*UNIX_DAY + leapDayOffset*UNIX_DAY;
-        sum+=(hour*UNIX_HOUR + minute*UNIX_MIN + second);
+        int leapDayOffset = isLeapYear &&
+          (dayTotal > FEB_DAY_SUM||(month==3&&dayTotal== FEB_DAY_SUM)) ?
+          1:0;
+        sum = yearStart + dayTotal*DAY_IN_SECONDS + leapDayOffset*DAY_IN_SECONDS;
+        sum += (hour*HOUR_IN_SECONDS + minute*MIN_IN_SECONDS + second);
     }
     else{
         long span = year - BASE_YEAR + 1;
         int dayTotal = _backwardMonthSums[month-1];
-        long yearStart = span*UNIX_DAY*NORMAL_YEAR_DAYS - UNIX_DAY*leapYearCount;
+        long yearStart = span*DAY_IN_SECONDS*NORMAL_YEAR_DAYS - DAY_IN_SECONDS*leapYearCount;
         day = day - _monthCount[month-1] - (isLeapYear&&dayTotal >= 306?1:0);
-        dayTotal=day - dayTotal;
-        sum = yearStart + dayTotal*UNIX_DAY;
-        sum+=((hour-23)*UNIX_HOUR + (minute-59)*UNIX_MIN + (second -60));
+        dayTotal= day - dayTotal;
+        sum = yearStart + dayTotal*DAY_IN_SECONDS;
+        sum+=((hour-23)*HOUR_IN_SECONDS + (minute-59)*MIN_IN_SECONDS + (second -60));
     }
     sum -= timezoneOffset;
     *ans = sum;
     return true;
 }
 
-long createDate(long year,int month,int day,int timezoneOffset,int *error){
+double createDate(long year,int month,int day,int timezoneOffset,int *error){
     *error = NO_ERROR;
-    long ans;
+    double ans;
     tryCreateDate(year,month,day,timezoneOffset,&ans,error);
     return ans;
 }
 
-bool tryCreateDate(long year,int month,int day,int timezoneOffset,long *ans,int *error){
+bool tryCreateDate(long year,int month,int day,int timezoneOffset,double *ans,
+    int *error){
     *error = NO_ERROR;
     return tryCreateDateTime(year,month,day,0,0,0,timezoneOffset,ans,error);
 }
 
-int createTime(int hour,int minute,int second,int *error){
+double createTime(int hour,int minute,int second,int *error){
     *error = NO_ERROR;
-    int ans;
+    double ans;
     tryCreateTime(hour,minute,second,&ans,error);
     return ans;
 }
 
-bool tryCreateTime(int hour,int minute,int second,int *ans,int *error){
+bool tryCreateTime(int hour,int minute,int second,double *ans,int *error){
     *error = NO_ERROR;
-    long tmpAns = *ans;
+    double tmpAns = *ans;
     bool result = tryCreateDateTime(1970,1,1,hour,minute,second,0,&tmpAns,error);
     *ans = (int)tmpAns;
     return result;
@@ -206,13 +391,13 @@ bool _filDateTimeObj(long year,int month,int day,int hour,int min,int sec,
 void _timestampShortToDateObj(int timestamp,SHDatetime *dt){
     TimeCalcResult result;
     int isBeforeEpoch = timestamp < 0;
-    timestamp += (isBeforeEpoch?UNIX_YEAR:0);
+    timestamp += (isBeforeEpoch?SECONDS_PER_YEAR:0);
     _calcTimeFromTimestamp(timestamp,0,&result);
     int totalYears = (int)(result.totalDays/NORMAL_YEAR_DAYS);
     int exDays = (int)result.totalDays -totalYears*NORMAL_YEAR_DAYS + INCLUDE_TODAY;
     int month = _getMonthFromDaySum(exDays,false);
     exDays -= _monthSums[month -1];
-    int exHours = result.totalHours % DAY_HOURS;
+    int exHours = result.totalHours % HOURS_PER_DAY;
     int exMin = result.totalMins % MIN_SEC_LEN;
     int year = isBeforeEpoch?BEFORE_EPOCH_BASE_YEAR:BASE_YEAR + totalYears;
     _filDateTimeObj(year,month,exDays,exHours,exMin,result.exSecs,0,dt);
@@ -220,16 +405,16 @@ void _timestampShortToDateObj(int timestamp,SHDatetime *dt){
 
 long _calcShiftedTimestamp(long timestamp,long years,int isBeforeEpoch){
     if(years > 1){
-        return (timestamp % (years*UNIX_YEAR));
+        return (timestamp % (years*SECONDS_PER_YEAR));
     }
     else if(years == 1){
-        return timestamp + (isBeforeEpoch?UNIX_YEAR:-UNIX_YEAR);
+        return timestamp + (isBeforeEpoch?SECONDS_PER_YEAR:-SECONDS_PER_YEAR);
     }
     return timestamp;
 }
 
 
-bool tryTimestampToDt(long timestamp, int timezoneOffset,SHDatetime *dt,int *error){
+bool tryTimestampToDt(double timestamp, int timezoneOffset,SHDatetime *dt,int *error){
     *error = NO_ERROR;
     if(!dt) return setErrorCode(NULL_VALUES,error);
     if(!_isTimestampRangeInvalid(timestamp,timezoneOffset,error)) return false;
@@ -237,25 +422,22 @@ bool tryTimestampToDt(long timestamp, int timezoneOffset,SHDatetime *dt,int *err
         return _filDateTimeObj(BASE_YEAR,1,1,0,0,0,timezoneOffset,dt);
     }
     timestamp += timezoneOffset;
-    if(timestamp > TIMESTAMP_END_1968 && timestamp < TIMESTAMP_BEGIN_1972){
-      _timestampShortToDateObj((int)timestamp,dt);
-      dt->timezoneOffset = timezoneOffset;
-      return true;
-    }
-    int isBeforeEpoch = timestamp < 0;
-    long leapBasedTimestamp = isBeforeEpoch?timestamp+UNIX_YEAR:timestamp - 2*UNIX_YEAR;
-    long totalYears = _calcYears(leapBasedTimestamp);
-    int isLeapYear = !((totalYears)%LEAP_CYCLE_YEAR);
-    long shiftedTimestamp = _calcShiftedTimestamp(leapBasedTimestamp,totalYears,isBeforeEpoch);
-    int baseYear = isBeforeEpoch?LEAP_YEAR_BEFORE_EPOCH:FIRST_LEAP_YEAR;
+    bool isBeforeEpoch = timestamp < 0;
+    long totalYears = _calcYears(timestamp);
+    long yearCorrection = isBeforeEpoch?(1969 -2000):2000-1970;
+    bool isLeapYear = _isLeapYearCorrected(totalYears,yearCorrection);
+    long shiftedTimestamp = _calcShiftedTimestamp(timestamp,totalYears
+                              ,isBeforeEpoch);
+    totalYears *= (isBeforeEpoch?MIRROR_BEFORE_EPOCH:EPOCH_NEUTRAL);
+    int baseYear = isBeforeEpoch?1969:1970;
     if(shiftedTimestamp == YEAR_CUSP){
-      totalYears *= (isBeforeEpoch?MIRROR_BEFORE_EPOCH:EPOCH_NEUTRAL);
       return _filDateTimeObj(baseYear + totalYears,1,1,0,0,0,timezoneOffset,dt);
     }
-    totalYears *= (isBeforeEpoch?MIRROR_BEFORE_EPOCH:EPOCH_NEUTRAL);
+    
     long leapCount = _calcNumLeapYearsBaseLeap(totalYears+baseYear);
     if(isBeforeEpoch){
-        long complimentYear = (isLeapYear?UNIX_LEAP_YEAR:UNIX_YEAR) + leapCount*UNIX_DAY;
+        long complimentYear = (isLeapYear?SPECIAL_TIMESTAMP:SECONDS_PER_YEAR)
+          + leapCount*DAY_IN_SECONDS;
         shiftedTimestamp = (complimentYear + shiftedTimestamp);
     }
     TimeCalcResult result;
@@ -266,52 +448,54 @@ bool tryTimestampToDt(long timestamp, int timezoneOffset,SHDatetime *dt,int *err
     int currentLeapOffset = (isLeapYear&&exDays > LEAP_FEB_SUM?1:0);
     exDays -= currentLeapOffset;
     exDays -= _monthSums[month-1];
-    int exHours = result.totalHours % DAY_HOURS;
+    int exHours = result.totalHours % HOURS_PER_DAY;
     int exMins = result.totalMins % MIN_SEC_LEN;
     
     return _filDateTimeObj(totalYears+baseYear,month,exDays,exHours,exMins,result.exSecs
              ,timezoneOffset,dt);
 }
 
-bool timestampToDtUnitsOnly(long timestamp,SHDatetime *dt,int *error){
+bool timestampToDtUnitsOnly(double timestamp,SHDatetime *dt,int *error){
     *error = NO_ERROR;
     Timeshift *shifts = dt->shifts;
     int shiftLen = dt->shiftLen;
     int shiftIdx = dt->currentShiftIdx;
-    if(!tryTimestampToDt(timestamp,dt->timezoneOffset,dt,error)) return setErrorCode(*error,error);
+    if(!tryTimestampToDt(timestamp,dt->timezoneOffset,dt,error)){
+        return setErrorCode(*error,error);
+    }
     dt->shifts = shifts;
     dt->shiftLen = shiftLen;
     dt->currentShiftIdx = shiftIdx;
     return true;
 }
 
-bool tryDtToTimestamp(SHDatetime const *dt,long *ans,int *error){
+bool tryDtToTimestamp(SHDatetime const *dt,double *ans,int *error){
     *error = NO_ERROR;
     if(!dt) return setErrorCode(NULL_VALUES,error);
     return tryCreateDateTime(dt->year,dt->month,dt->day,dt->hour,dt->minute,dt->second,
       dt->timezoneOffset,ans,error);
 }
 
-long dtToTimestamp(SHDatetime const *dt,int *error){
+double dtToTimestamp(SHDatetime const *dt,int *error){
     *error = NO_ERROR;
     if(!dt) return setErrorCode(NULL_VALUES,error);
-    long ans;
+    double ans;
     tryDtToTimestamp(dt,&ans,error);
     return ans;
 }
 
 
-bool tryExtractTime(SHDatetime *dt,int *ans,int *error){
+bool tryExtractTime(SHDatetime *dt,double *ans,int *error){
     *error = NO_ERROR;
     if(!dt) return setErrorCode(NULL_VALUES,error);
     return tryCreateTime(dt->hour,dt->minute,dt->second,ans,error);
 }
 
 
-int extractTime(SHDatetime *dt,int *error){
+double extractTime(SHDatetime *dt,int *error){
     *error = NO_ERROR;
     if(!dt) return setErrorCode(NULL_VALUES,error);
-    int ans;
+    double ans;
     tryExtractTime(dt,&ans,error);
     return ans;
 }
@@ -322,9 +506,9 @@ bool tryAddDaysToDtInPlace(SHDatetime *dt,long days,TimeAdjustOptions options,in
     (void)options;
     *error = NO_ERROR;
     if(!dt) return setErrorCode(NULL_VALUES,error);
-    long converted;
+    double converted;
     if(!tryDtToTimestamp(dt,&converted,error)) return false;
-    long ans;
+    double ans;
     if(!tryAddDaysToTimestamp(converted,days,0,&ans,error)) return false;
     if(!timestampToDtUnitsOnly(ans,dt,error))return false;
     return updateTimezoneForShifts(dt,error);
@@ -343,11 +527,11 @@ bool tryAddDaysToDt(SHDatetime const *dt,long days,TimeAdjustOptions options
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 
-bool tryAddDaysToTimestamp(long timestamp,long days, TimeAdjustOptions options,long *ans
-  ,int *error){
+bool tryAddDaysToTimestamp(double timestamp,long days, TimeAdjustOptions options,
+   double *ans,int *error){
     (void)options;
     *error = NO_ERROR;
-    timestamp += (days*UNIX_DAY);
+    timestamp += (days*DAY_IN_SECONDS);
     *ans = timestamp;
     return true;
 }
@@ -369,8 +553,8 @@ bool tryAddMonthsToDtInPlace(SHDatetime *dt,long months,TimeAdjustOptions option
     if(months == 0) return true;
     if(options == NO_OPTION) options = SHIFT_BKD;
     long totalMonths = months + dt->month;
-    int exMonths = totalMonths % YEAR_MONTHS;
-    long years = totalMonths / YEAR_MONTHS;
+    int exMonths = totalMonths % YEAR_IN_MONTHS;
+    long years = totalMonths / YEAR_IN_MONTHS;
     dt->month = exMonths;
     dt->year += years;
     int monthLastDay = _monthCount[dt->month -1]
@@ -388,8 +572,8 @@ bool tryAddMonthsToDtInPlace(SHDatetime *dt,long months,TimeAdjustOptions option
     return true;
 }
 
-bool tryAddMonthsToTimestamp(long timestamp,long months,int timezoneOffset
-  ,TimeAdjustOptions options,long *ans,int *error){
+bool tryAddMonthsToTimestamp(double timestamp,long months,int timezoneOffset,
+  TimeAdjustOptions options,double *ans,int *error){
     *error = NO_ERROR;
     SHDatetime dt;
     if(!tryTimestampToDt(timestamp,timezoneOffset,&dt,error)) return false;
@@ -423,16 +607,16 @@ static bool _addYears_SHIFT(SHDatetime *dt,long years, TimeAdjustOptions options
     return setErrorCode(GEN_ERROR,error);
 }
 
-long addYearsToTimestamp(long timestamp,long years,int timezoneOffset
-  ,TimeAdjustOptions options,int *error){
+double addYearsToTimestamp(double timestamp,long years,int timezoneOffset,
+  TimeAdjustOptions options,int *error){
     *error = NO_ERROR;
-    long ans;
+    double ans;
     tryAddYearsToTimestamp(timestamp,years,timezoneOffset,options,&ans,error);
     return ans;
 }
 
-bool tryAddYearsToTimestamp(long timestamp,long years,int timezoneOffset
-  ,TimeAdjustOptions options,long *ans,int *error){
+bool tryAddYearsToTimestamp(double timestamp,long years,int timezoneOffset,
+  TimeAdjustOptions options,double *ans,int *error){
     *error = NO_ERROR;
     SHDatetime dt;
     if(!tryTimestampToDt(timestamp,timezoneOffset,&dt,error)) return false;
@@ -458,16 +642,16 @@ bool tryAddYearsToDtInPlace(SHDatetime *dt,long years,TimeAdjustOptions options
         return _addYears_SHIFT(dt,years, options,error);
     }
     if(options & SIMPLE){
-        long timestamp;
+        double timestamp;
         if(!tryDtToTimestamp(dt,&timestamp,error)) return false;
-        timestamp += years*UNIX_YEAR;
+        timestamp += years*SECONDS_PER_YEAR;
         if(!tryTimestampToDt(timestamp,dt->timezoneOffset,dt,error)) return false;
         return true;
     }
     return false;
 }
 
-bool tryDayStart(long timestamp,int timezoneOffset,long *ans,int *error){
+bool tryDayStart(double timestamp,int timezoneOffset,double *ans,int *error){
     *error = NO_ERROR;
     SHDatetime dt;
     if(!tryTimestampToDt(timestamp,timezoneOffset,&dt,error)) return false;
@@ -479,19 +663,26 @@ bool tryDayStart(long timestamp,int timezoneOffset,long *ans,int *error){
 
 
 int calcWeekdayIdx(SHDatetime *dt,int *error){
-    long timestamp;
+    double timestamp;
     *error = NO_ERROR;
     if(!tryDtToTimestamp(dt,&timestamp,error)) return NOT_FOUND;
     int ans;
-    timestamp -= dt->timezoneOffset;
-    long totalDays = timestamp/UNIX_DAY;
-    //if within the first week
-    if(totalDays > -1*WEEK_START_DAYS_BEFORE && totalDays < WEEK_START_DAYS_AFTER){
-        return (int)totalDays + EPOCH_WEEK_CORRECTION;
+    timestamp += dt->timezoneOffset;
+    bool isAfterEpoch = dt->year >= BASE_YEAR;
+    if(isAfterEpoch){
+        long totalDays = timestamp/DAY_IN_SECONDS;
+        //if within the first week
+        if(totalDays < WEEK_START_DAYS_AFTER){
+            return (int)totalDays + EPOCH_WEEK_CORRECTION;
+        }
+        totalDays = totalDays - WEEK_START_DAYS_AFTER;
+        ans = totalDays % 7;
+        return ans;
     }
-    totalDays = totalDays > 0?totalDays - WEEK_START_DAYS_AFTER:
-    -1*totalDays - WEEK_START_DAYS_BEFORE;
-    ans = totalDays % 7;
+    long totalDays = (timestamp/DAY_IN_SECONDS);
+
+    totalDays = totalDays -3;
+    ans = (((totalDays % 7) + 7) % 7);
     return ans;
 }
 
@@ -507,7 +698,7 @@ bool tryDiffDateSecs(SHDatetime const *A,SHDatetime const *B,long *ans,int *erro
     return true;
 }
 
-long dateDiffSecs(SHDatetime const *A,SHDatetime const *B,int *error){
+double dateDiffSecs(SHDatetime const *A,SHDatetime const *B,int *error){
     *error = NO_ERROR;
     if(!A||!B) return setErrorCode(NULL_VALUES,error);
     long ans;
@@ -529,7 +720,7 @@ bool tryDateDiffDays(SHDatetime const *A,SHDatetime const *B,long *ans,int *erro
     *error = NO_ERROR;
     if(!A||!B) return setErrorCode(NULL_VALUES,error);
     *ans = dateDiffSecs(A,B,error);
-    *ans /= UNIX_DAY;
+    *ans /= DAY_IN_SECONDS;
     if(*error) return setErrorCode(*error,error);
     return true;
 }

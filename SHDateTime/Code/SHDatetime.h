@@ -15,7 +15,7 @@
 #include "DTConstants.h"
 #include "SHTimeZone.h"
 
-
+ 
 typedef enum {NO_OPTION = 0,
     SHIFT_FWD = 1,
     SHIFT_BKD = 2,
@@ -30,6 +30,84 @@ typedef enum {NO_OPTION = 0,
  *****
  */
 
+
+double createDateTime(long year,int month,int day,int hour,int minute,int second
+  ,int timezoneOffset, int *error);
+
+bool tryCreateDateTime(long year,int month,int day,int hour,int minute,int second
+  ,int timezoneOffset, double *ans,int *error);
+
+double createDate(long year,int month,int day,int timezoneOffset,int *error);
+
+bool tryCreateDate(long year,int month,int day,int timezoneOffset,double *ans,int *error);
+
+double createTime(int hour,int minute,int second,int *error);
+
+bool tryCreateTime(int hour,int minute,int second,double *ans,int *error);
+
+double extractTime(SHDatetime *dt,int *error);
+
+bool tryExtractTime(SHDatetime *dt,double *ans,int *error);
+
+bool tryTimestampToDt(double timestamp, int timezoneOffset,SHDatetime *dt,int *error);
+
+bool timestampToDtUnitsOnly(double timestamp,SHDatetime *dt,int *error);
+
+double dtToTimestamp(SHDatetime const *dt,int *error);
+
+bool tryDtToTimestamp(SHDatetime const *dt,double *ans,int *error);
+
+bool tryAddYearsToDt(SHDatetime const *dt,long years,TimeAdjustOptions options,
+  SHDatetime *ans,int *error);
+
+bool tryAddYearsToDtInPlace(SHDatetime *dt,long years,TimeAdjustOptions options,
+  int *error);
+
+double addYearsToTimestamp(double timestamp,long years,int timezoneOffset,
+  TimeAdjustOptions options,int *error);
+
+bool tryAddYearsToTimestamp(double timestamp,long years,int timezoneOffset,
+  TimeAdjustOptions options,double *ans,int *error);
+
+bool tryAddMonthsToDt(SHDatetime const *dt,long months,TimeAdjustOptions options,
+  SHDatetime *ans,int *error);
+
+bool tryAddMonthsToDtInPlace(SHDatetime *dt,long months,TimeAdjustOptions options,
+  int *error);
+
+bool tryAddMonthsToTimestamp(double timestamp,long months,int timezoneOffset,
+  TimeAdjustOptions options,double *ans,int *error);
+
+bool tryAddDaysToDt(SHDatetime const *dt,long days,TimeAdjustOptions options,
+  SHDatetime *ans,int *error);
+
+bool tryAddDaysToDtInPlace(SHDatetime *dt,long days,TimeAdjustOptions options,
+  int *error);
+
+bool tryAddDaysToTimestamp(double timestamp,long day,TimeAdjustOptions options,
+  double *ans,int *error);
+
+bool tryDayStart(double timestamp,int timezoneOffset,double *ans,int *error);
+
+int calcWeekdayIdx(SHDatetime *dt,int *error);
+
+long dateDiffDays(SHDatetime const *A,SHDatetime const *B,int *error);
+
+bool tryDateDiffDays(SHDatetime const *A,SHDatetime const *B,long *ans,int *error);
+
+double dateDiffSecs(SHDatetime const *A,SHDatetime const *B,int *error);
+
+bool tryDiffDateSecs(SHDatetime const *A,SHDatetime const *B,long *ans,int *error);
+
+int isValidSHDateTime(SHDatetime const *dt);
+
+bool initDt(SHDatetime *dt);
+
+bool initTimeshift(Timeshift *shift);
+
+#endif /* datetime_h */
+
+
 /*
  createDateTime:
  Converts time units to unix epoch time
@@ -41,11 +119,9 @@ typedef enum {NO_OPTION = 0,
  second: between 0 and 59
  timezoneOffset: whatever, this should probably be a real timezone
  error: pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ pass(0) or fail(1)
  returns: the unix epoch timestamp
  */
-long createDateTime(long year,int month,int day,int hour,int minute,int second
-  ,int timezoneOffset, int *error);
 
 /*
  tryCreateDateTime:
@@ -59,11 +135,9 @@ long createDateTime(long year,int month,int day,int hour,int minute,int second
  timezoneOffset: whatever, this should probably be a real timezone
  ans: pointer to variable to store result
  error: pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ pass(0) or fail(1)
  returns:  true for pass, false for fail
  */
-bool tryCreateDateTime(long year,int month,int day,int hour,int minute,int second
-  ,int timezoneOffset, long *ans,int *error);
 
 /*
  createDate:
@@ -73,10 +147,9 @@ bool tryCreateDateTime(long year,int month,int day,int hour,int minute,int secon
  day: between 1 and 31,30,29, or 28 depending on month and year
  timezoneOffset: whatever, this should probably be a real timezone
  error: pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ pass(0) or fail(1)
  returns: the unix epoch timestamp
  */
-long createDate(long year,int month,int day,int timezoneOffset,int *error);
 
 /*
  tryCreateDate:
@@ -89,10 +162,9 @@ long createDate(long year,int month,int day,int timezoneOffset,int *error);
  pass(0) or fail(1)
  ans: pointer to variable to store result
  error: pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ pass(0) or fail(1)
  returns:true for pass, false for fail
  */
-bool tryCreateDate(long year,int month,int day,int timezoneOffset,long *ans,int *error);
 
 /*
  createTime:
@@ -101,10 +173,9 @@ bool tryCreateDate(long year,int month,int day,int timezoneOffset,long *ans,int 
  minute: between 0 and 59
  second: between 0 and 59
  error: pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ pass(0) or fail(1)
  returns: the unix epoch timestamp for the time
  */
-int createTime(int hour,int minute,int second,int *error);
 
 /*
  tryCreateTime:
@@ -115,19 +186,17 @@ int createTime(int hour,int minute,int second,int *error);
  ans: pointer to variable to store result
  returns:true for pass, false for fail
  */
-bool tryCreateTime(int hour,int minute,int second,int *ans,int *error);
 
 /*
  extractTime:
  gets the time in seconds from the hour,minute, and seconds on the SHDatetime
  dt:SHDateTime to get hour,minute,and seconds from
  error:pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ pass(0) or fail(1)
  error: pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ pass(0) or fail(1)
  returns:timestamp for day
  */
-int extractTime(SHDatetime *dt,int *error);
 
 /*
  tryExtractTime:
@@ -135,23 +204,21 @@ int extractTime(SHDatetime *dt,int *error);
  dt:SHDateTime to get hour,minute,and seconds from
  ans: pointer to variable to store result
  error: pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ pass(0) or fail(1)
  returns:true for pass, false for fail
  */
-bool tryExtractTime(SHDatetime *dt,int *ans,int *error);
 
 /*
  timestampToDt:
  converts a unix timestamp to year,month,day,hour,second and stores it in an
-   SHDateTime
+ SHDateTime
  timestamp: a unix epoch timestamp
  timezoneOffset: whatever, this should probably be a real timezone
  dt: the SHDateTime to store the results in
  error: pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ pass(0) or fail(1)
  return: true for pass, false for fail
  */
-bool tryTimestampToDt(long timestamp, int timezoneOffset,SHDatetime *dt,int *error);
 
 /*
  timestampToDtUnitsOnly:
@@ -159,10 +226,9 @@ bool tryTimestampToDt(long timestamp, int timezoneOffset,SHDatetime *dt,int *err
  timestamp: a unix epoch timestamp
  dt: the SHDateTime to store the results in
  error: pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ pass(0) or fail(1)
  return: true for pass, false for fail
  */
-bool timestampToDtUnitsOnly(long timestamp,SHDatetime *dt,int *error);
 
 /*
  dtToTimestamp:
@@ -170,22 +236,20 @@ bool timestampToDtUnitsOnly(long timestamp,SHDatetime *dt,int *error);
  and converts them to an epoch timestamp
  dt: the SHDateTime that we're pulling the time units from
  error: pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ pass(0) or fail(1)
  return: the epoch timestamp
  */
-long dtToTimestamp(SHDatetime const *dt,int *error);
 
 /*
  tryDtToTimestamp:
  this is a wrapper around createDateTime. It takes the components on the SHDateTime
-   and converts them to an epoch timestamp
+ and converts them to an epoch timestamp
  dt: the SHDateTime that we're pulling the time units from
  ans: pointer to variable to store result
  error: pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ pass(0) or fail(1)
  return: true for pass, false for fail
  */
-bool tryDtToTimestamp(SHDatetime const *dt,long *ans,int *error);
 
 /*
  tryAddYearsToDt:
@@ -193,14 +257,12 @@ bool tryDtToTimestamp(SHDatetime const *dt,long *ans,int *error);
  dt: we use this as base time
  years: how ever many you want
  options: use this to determine if non leap years on feb 29 should go to feb 28,
-   or mar 1; or if it should just simply add the timestamps, or return an error
+ or mar 1; or if it should just simply add the timestamps, or return an error
  ans: stores the timechanges in here
  error: pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ pass(0) or fail(1)
  return: true for pass, false for fail
  */
-bool tryAddYearsToDt(SHDatetime const *dt,long years,TimeAdjustOptions options,
-  SHDatetime *ans,int *error);
 
 /*
  tryAddYearsToDtInPlace:
@@ -208,13 +270,11 @@ bool tryAddYearsToDt(SHDatetime const *dt,long years,TimeAdjustOptions options,
  dt: we use this as base time, and we update it
  years: how ever many you want
  options: use this to determine if non leap years on feb 29 should go to feb 28,
-   or mar 1; or if it should just simply add the timestamps, or return an error
+ or mar 1; or if it should just simply add the timestamps, or return an error
  error: pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ pass(0) or fail(1)
  return: true for pass, false for fail
  */
-bool tryAddYearsToDtInPlace(SHDatetime *dt,long years,TimeAdjustOptions options
-  ,int *error);
 
 /*
  addYearsToTimestamp:
@@ -223,13 +283,11 @@ bool tryAddYearsToDtInPlace(SHDatetime *dt,long years,TimeAdjustOptions options
  years: nothing to say here
  timezoneOffset: whatever, this should probably be a real timezone
  options: use this to determine if non leap years on feb 29 should go to feb 28,
-   or mar 1; or if it should just simply add the timestamps, or return an error
+ or mar 1; or if it should just simply add the timestamps, or return an error
  error: pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ pass(0) or fail(1)
  return: the ajusted timestamp
  */
-long addYearsToTimestamp(long timestamp,long years,int timezoneOffset
-  ,TimeAdjustOptions options,int *error);
 
 /*
  tryAddYearsToTimestamp:
@@ -238,14 +296,12 @@ long addYearsToTimestamp(long timestamp,long years,int timezoneOffset
  years: nothing to say here
  timezoneOffset: whatever, this should probably be a real timezone
  options: use this to determine if non leap years on feb 29 should go to feb 28,
-   or mar 1; or if it should just simply add the timestamps, or return an error
+ or mar 1; or if it should just simply add the timestamps, or return an error
  ans: pointer to variable to store result
  error: pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ pass(0) or fail(1)
  return: true for pass, false for fail
  */
-bool tryAddYearsToTimestamp(long timestamp,long years,int timezoneOffset
-  ,TimeAdjustOptions options,long *ans,int *error);
 
 /*
  tryAddMonthsToDt:
@@ -256,11 +312,9 @@ bool tryAddYearsToTimestamp(long timestamp,long years,int timezoneOffset
  or mar 1; or if it should just simply add the timestamps, or return an error
  ans: stores the timechanges in here
  error: pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ pass(0) or fail(1)
  return: true for pass, false for fail
  */
-bool tryAddMonthsToDt(SHDatetime const *dt,long months,TimeAdjustOptions options
-                     ,SHDatetime *ans,int *error);
 
 /*
  tryAddMonthsToDtInPlace:
@@ -270,11 +324,9 @@ bool tryAddMonthsToDt(SHDatetime const *dt,long months,TimeAdjustOptions options
  options: use this to determine if non leap years on feb 29 should go to feb 28,
  or mar 1; or if it should just simply add the timestamps, or return an error
  error: pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ pass(0) or fail(1)
  return: true for pass, false for fail
  */
-bool tryAddMonthsToDtInPlace(SHDatetime *dt,long months,TimeAdjustOptions options
-  ,int *error);
 
 /*
  tryAddMonthsToTimestamp:
@@ -286,11 +338,9 @@ bool tryAddMonthsToDtInPlace(SHDatetime *dt,long months,TimeAdjustOptions option
  or mar 1; or if it should just simply add the timestamps, or return an error
  ans: pointer to variable to store result
  error: pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ pass(0) or fail(1)
  return: true for pass, false for fail
  */
-bool tryAddMonthsToTimestamp(long timestamp,long months,int timezoneOffset
-  ,TimeAdjustOptions options,long *ans,int *error);
 
 /*
  tryAddDaysToDt:
@@ -301,12 +351,10 @@ bool tryAddMonthsToTimestamp(long timestamp,long months,int timezoneOffset
  should go to feb 28, or mar 1; or if it should just simply add the timestamps,
  or return an error
  error: pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ pass(0) or fail(1)
  ans: stores the timechanges in here
  return: true for pass, false for fail
  */
-bool tryAddDaysToDt(SHDatetime const *dt,long days,TimeAdjustOptions options
-  ,SHDatetime *ans,int *error);
 
 /*
  tryAddDaysToDtInPlace:
@@ -316,11 +364,9 @@ bool tryAddDaysToDt(SHDatetime const *dt,long days,TimeAdjustOptions options
  options: use this to determine if non leap years on feb 29 should go to feb 28,
  or mar 1; or if it should just simply add the timestamps, or return an error
  error: pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ pass(0) or fail(1)
  return: true for pass, false for fail
  */
-bool tryAddDaysToDtInPlace(SHDatetime *dt,long days,TimeAdjustOptions options
-  ,int *error);
 
 /*
  tryAddDaysToTimestamp:
@@ -330,13 +376,11 @@ bool tryAddDaysToDtInPlace(SHDatetime *dt,long days,TimeAdjustOptions options
  timezoneOffset: whatever, this should probably be a real timezone
  options: use this to determine if non leap years on feb 29 should go to feb 28,
  or mar 1; or if it should just simply add the timestamps, or return an error
-  ans: pointer to variable to store result
+ ans: pointer to variable to store result
  error: pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ pass(0) or fail(1)
  return: true for pass, false for fail
  */
-bool tryAddDaysToTimestamp(long timestamp,long day,TimeAdjustOptions options, long *ans
-  ,int *error);
 
 /*
  tryDayStart:
@@ -345,21 +389,19 @@ bool tryAddDaysToTimestamp(long timestamp,long day,TimeAdjustOptions options, lo
  timezoneOffset: whatever, this should probably be a real timezone
  ans: pointer to variable to store result
  error: pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ pass(0) or fail(1)
  return: true for pass, false for fail
  */
-bool tryDayStart(long timestamp,int timezoneOffset,long *ans,int *error);
 
 /*
-calcWeekdayIdx:
-takes a SHDateTime and infers what the day of the week is. By default, Sunday is 0,
-  Saturday is 6
-dt: extract the weekday from this
-error: pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ calcWeekdayIdx:
+ takes a SHDateTime and infers what the day of the week is. By default, Sunday is 0,
+ Saturday is 6
+ dt: extract the weekday from this
+ error: pointer to variable to store an error number, right now it's just
+ pass(0) or fail(1)
  return: index 0 - 6 of the day of the week that dt represents, -1 if there was an error
  */
-int calcWeekdayIdx(SHDatetime *dt,int *error);
 
 /*
  dateDiffDays:
@@ -367,10 +409,9 @@ int calcWeekdayIdx(SHDatetime *dt,int *error);
  A: the date subtracted from
  B: the date that is subtracting
  error: pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ pass(0) or fail(1)
  return: the difference between two dates in days. This can be negative
  */
-long dateDiffDays(SHDatetime const *A,SHDatetime const *B,int *error);
 
 /*
  tryDateDiffDays:
@@ -378,12 +419,11 @@ long dateDiffDays(SHDatetime const *A,SHDatetime const *B,int *error);
  A: the date subtracted from
  B: the date that is subtracting
  ans: pointer to variable to store result. the difference between two dates in days.
-   This can be negative
+ This can be negative
  error: pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ pass(0) or fail(1)
  return: true for pass, false for fail
  */
-bool tryDateDiffDays(SHDatetime const *A,SHDatetime const *B,long *ans,int *error);
 
 /*
  dateDiffSecs:
@@ -394,7 +434,6 @@ bool tryDateDiffDays(SHDatetime const *A,SHDatetime const *B,long *ans,int *erro
  pass(0) or fail(1)
  return: the difference between two dates in seconds. This can be negative
  */
-long dateDiffSecs(SHDatetime const *A,SHDatetime const *B,int *error);
 
 /*
  tryDiffDateSecs:
@@ -404,31 +443,27 @@ long dateDiffSecs(SHDatetime const *A,SHDatetime const *B,int *error);
  ans: pointer to variable to store result. the difference between two dates in seconds.
  This can be negative
  error: pointer to variable to store an error number, right now it's just
-   pass(0) or fail(1)
+ pass(0) or fail(1)
  return: true for pass, false for fail
  */
-bool tryDiffDateSecs(SHDatetime const *A,SHDatetime const *B,long *ans,int *error);
 
 /*
  isValidSHDateTime:
  this tests if an SHDateTime object has valid properties. ie. year is greater than 0,
-   and less than whatever the max possible year is; the month is between 1 and 12; etc.
+ and less than whatever the max possible year is; the month is between 1 and 12; etc.
  returns: 1 or 0, true or false
  */
-int isValidSHDateTime(SHDatetime const *dt);
 
 /*
  initDt:
  zeros out an SHDatetime object
  dt: the datetime object we're setting to factory state.
  */
-bool initDt(SHDatetime *dt);
 
 /*
  initTimeshift:
  zeros out a Timeshift object
  shift: the Timeshift object we're setting to factory state.
  */
-bool initTimeshift(Timeshift *shift);
 
-#endif /* datetime_h */
+

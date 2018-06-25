@@ -51,7 +51,7 @@
                    minute:(NSInteger)minute second:(NSInteger)second
                  timeZone:(NSTimeZone *)timeZone{
     
-    NSInteger timestamp;
+    double timestamp;
     int error;
     tryCreateDateTime(year,(int)month,(int)day,(int)hour,(int)minute,(int)second
       ,(int)(timeZone.secondsFromGMT),&timestamp,&error);
