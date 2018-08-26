@@ -56,5 +56,7 @@ extern const int BEST_LEAP_YEAR;
 extern const int LEAP_COUNT_BETWEEN_1972_2000;
 extern const int SPAN_1970_2000;
 extern const long SPAN_1970_1899;
+extern const double MILLION;
+extern const double BILLION;
 extern const char * const WEEKDAYS[WEEKLEN];
 #endif /* DTConstants_h */

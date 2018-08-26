@@ -25,6 +25,7 @@ typedef struct {
     int hour;
     int minute;
     int second;
+    int milisecond;
     int timezoneOffset;
     Timeshift *shifts;
     int shiftLen;

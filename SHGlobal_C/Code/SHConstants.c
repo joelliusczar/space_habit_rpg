@@ -7,7 +7,6 @@
 //
 
 #include "SHConstants.h"
-const int NO_ERROR = 0;
 const int GEN_ERROR = -1;
 const int NOT_FOUND = -1;
 const int SKIP = -2;

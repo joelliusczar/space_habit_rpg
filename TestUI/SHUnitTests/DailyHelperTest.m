@@ -6,9 +6,10 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <SHModels/SHModels.h>
 #import <SHCommon/SHCommon.h>
 #import "NSDate+testReplace.h"
+@import SHModels;
+
 #import <SHGlobal/FlexibleConstants.h>
 @import TestCommon;
 
@@ -22,7 +23,6 @@ NSMutableArray<Daily *> *testDailies = nil;
 
 -(void)setUp {
     [super setUp];
-    [NSDate swizzleThatShit];
     testDailies = [NSMutableArray array];
     int a0=0,a1=0,a2=0,a3=0,a4=0,a5=0;
     for(int i = 0;i<50;i++){
@@ -157,6 +157,7 @@ NSMutableArray<Daily *> *testDailies = nil;
 //}
 
 -(void)testDaysUntilDue{
+    [NSDate swizzleThatShit];
     Daily *d = [Daily constructDaily];
     d.lastActivationTime = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:13 minute:24 second:11
       timeZone: [NSTimeZone timeZoneForSecondsFromGMT:-18000]];

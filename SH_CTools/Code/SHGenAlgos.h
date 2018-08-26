@@ -9,6 +9,18 @@
 #ifndef SHGenAlgos_h
 #define SHGenAlgos_h
 
+#if defined(__clang__)
+#ifndef blockoptimazation
+#define blockoptimazation __attribute__ ((optnone))
+#endif
+#elif defined(__GNUC__)
+#ifndef blockoptimazation
+#define blockoptimazation __attribute__((optimize("O0")))
+#endif
+#endif 
+
 #include <stdio.h>
-long calcStrHash(char const *str);
+#include <inttypes.h>
+int64_t calcStrHash(char const *str);
+double kahanSum(const double* const nums,int64_t len);
 #endif /* SHGenAlgos_h */

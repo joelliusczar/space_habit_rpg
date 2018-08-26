@@ -17,6 +17,12 @@
 		27D318592086C9040047F5F1 /* DTConstants.c in Sources */ = {isa = PBXBuildFile; fileRef = 27D3184E2086C9040047F5F1 /* DTConstants.c */; };
 		27D3185A2086C9040047F5F1 /* SHDatetime.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D3184F2086C9040047F5F1 /* SHDatetime.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27D80A1A2086E9B400FB4CE2 /* libSHDatetime.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D80A192086E9B400FB4CE2 /* libSHDatetime.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27EE2AB32131D059005A8E1F /* SHDatetimePtrExt.h in Headers */ = {isa = PBXBuildFile; fileRef = 27EE2AB12131D059005A8E1F /* SHDatetimePtrExt.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27EE2AB42131D059005A8E1F /* SHDatetimePtrExt.c in Sources */ = {isa = PBXBuildFile; fileRef = 27EE2AB22131D059005A8E1F /* SHDatetimePtrExt.c */; };
+		27EE2AB721321218005A8E1F /* SHDatetimeMod.h in Headers */ = {isa = PBXBuildFile; fileRef = 27EE2AB521321218005A8E1F /* SHDatetimeMod.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27EE2AB821321218005A8E1F /* SHDatetimeMod.c in Sources */ = {isa = PBXBuildFile; fileRef = 27EE2AB621321218005A8E1F /* SHDatetimeMod.c */; };
+		27EE2ABB213212A3005A8E1F /* SHDatetimeCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 27EE2AB9213212A3005A8E1F /* SHDatetimeCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27EE2ABC213212A3005A8E1F /* SHDatetimeCommon.c in Sources */ = {isa = PBXBuildFile; fileRef = 27EE2ABA213212A3005A8E1F /* SHDatetimeCommon.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +37,12 @@
 		27D3184E2086C9040047F5F1 /* DTConstants.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = DTConstants.c; sourceTree = "<group>"; };
 		27D3184F2086C9040047F5F1 /* SHDatetime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDatetime.h; sourceTree = "<group>"; };
 		27D80A192086E9B400FB4CE2 /* libSHDatetime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libSHDatetime.h; sourceTree = "<group>"; };
+		27EE2AB12131D059005A8E1F /* SHDatetimePtrExt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDatetimePtrExt.h; sourceTree = "<group>"; };
+		27EE2AB22131D059005A8E1F /* SHDatetimePtrExt.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHDatetimePtrExt.c; sourceTree = "<group>"; };
+		27EE2AB521321218005A8E1F /* SHDatetimeMod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDatetimeMod.h; sourceTree = "<group>"; };
+		27EE2AB621321218005A8E1F /* SHDatetimeMod.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHDatetimeMod.c; sourceTree = "<group>"; };
+		27EE2AB9213212A3005A8E1F /* SHDatetimeCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDatetimeCommon.h; sourceTree = "<group>"; };
+		27EE2ABA213212A3005A8E1F /* SHDatetimeCommon.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHDatetimeCommon.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +95,12 @@
 				27D3184C2086C9040047F5F1 /* SHTimeZone.h */,
 				27D318462086C9040047F5F1 /* SHTimeZone.c */,
 				27D80A192086E9B400FB4CE2 /* libSHDatetime.h */,
+				27EE2AB12131D059005A8E1F /* SHDatetimePtrExt.h */,
+				27EE2AB22131D059005A8E1F /* SHDatetimePtrExt.c */,
+				27EE2AB521321218005A8E1F /* SHDatetimeMod.h */,
+				27EE2AB621321218005A8E1F /* SHDatetimeMod.c */,
+				27EE2AB9213212A3005A8E1F /* SHDatetimeCommon.h */,
+				27EE2ABA213212A3005A8E1F /* SHDatetimeCommon.c */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -97,7 +115,10 @@
 				27D318572086C9040047F5F1 /* SHTimeZone.h in Headers */,
 				27D318532086C9040047F5F1 /* DTConstants.h in Headers */,
 				27D3185A2086C9040047F5F1 /* SHDatetime.h in Headers */,
+				27EE2ABB213212A3005A8E1F /* SHDatetimeCommon.h in Headers */,
+				27EE2AB32131D059005A8E1F /* SHDatetimePtrExt.h in Headers */,
 				27D80A1A2086E9B400FB4CE2 /* libSHDatetime.h in Headers */,
+				27EE2AB721321218005A8E1F /* SHDatetimeMod.h in Headers */,
 				27D318552086C9040047F5F1 /* SHDatetime_struct.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -129,7 +150,7 @@
 		27D318352086C8CA0047F5F1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Joel Gillette";
 				TargetAttributes = {
 					27D3183C2086C8CA0047F5F1 = {
@@ -178,6 +199,9 @@
 			files = (
 				27D318592086C9040047F5F1 /* DTConstants.c in Sources */,
 				27D318542086C9040047F5F1 /* SHDatetime.c in Sources */,
+				27EE2AB42131D059005A8E1F /* SHDatetimePtrExt.c in Sources */,
+				27EE2AB821321218005A8E1F /* SHDatetimeMod.c in Sources */,
+				27EE2ABC213212A3005A8E1F /* SHDatetimeCommon.c in Sources */,
 				27D318512086C9040047F5F1 /* SHTimeZone.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,6 +223,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -206,6 +231,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -233,6 +259,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -255,6 +282,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -262,6 +290,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -283,6 +312,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;

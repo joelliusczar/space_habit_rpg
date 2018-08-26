@@ -12,6 +12,7 @@
 #import "NSException+SHCommonExceptions.h"
 #import "SingletonCluster.h"
 #import "SHDatetime.h"
+#import "ErrorHandling.h"
 
 @implementation NSDate (DateHelper)
 
@@ -20,7 +21,7 @@
 -(NSDate *)dateAfterYears:(NSInteger)y months:(NSInteger)m days:(NSInteger)d{
     SHDatetime dt;
     int tzOffset = (int)[NSTimeZone.defaultTimeZone secondsFromGMTForDate:self];
-    int error;
+    SHErrorCode error;
     tryTimestampToDt(self.timeIntervalSince1970,tzOffset,&dt,&error);
     tryAddYearsToDtInPlace(&dt,y,0,&error);
     tryAddMonthsToDtInPlace(&dt,m,0,&error);
@@ -52,7 +53,7 @@
                  timeZone:(NSTimeZone *)timeZone{
     
     double timestamp;
-    int error;
+    SHErrorCode error;
     tryCreateDateTime(year,(int)month,(int)day,(int)hour,(int)minute,(int)second
       ,(int)(timeZone.secondsFromGMT),&timestamp,&error);
     return [NSDate dateWithTimeIntervalSince1970:timestamp];
@@ -83,8 +84,8 @@
 
 -(NSDate *)dayStart{
     NSInteger timestamp = self.timeIntervalSince1970;
-    NSInteger dayStartTimestamp;
-    int error;
+    double dayStartTimestamp;
+    SHErrorCode error;
     tryDayStart(timestamp,(int)NSTimeZone.defaultTimeZone.secondsFromGMT,&dayStartTimestamp,&error);
     return [NSDate dateWithTimeIntervalSince1970:dayStartTimestamp];
 }
@@ -93,7 +94,7 @@
 +(NSInteger)daysBetween:(NSDate *)fromDate to:(NSDate *)toDate{
     SHDatetime dtFrom;
     SHDatetime dtTo;
-    int err;
+    SHErrorCode err;
     tryTimestampToDt(fromDate.timeIntervalSince1970
       ,(int)NSTimeZone.defaultTimeZone.secondsFromGMT,&dtFrom,&err);
     tryTimestampToDt(toDate.timeIntervalSince1970
@@ -132,7 +133,7 @@
 -(NSInteger)getWeekdayIndex{
     SHDatetime dt;
     int tzOffset = (int)[NSTimeZone.defaultTimeZone secondsFromGMTForDate:self];
-    int error;
+    SHErrorCode error;
     tryTimestampToDt(self.timeIntervalSince1970,tzOffset,&dt,&error);
     return calcWeekdayIdx(&dt,&error);
 }

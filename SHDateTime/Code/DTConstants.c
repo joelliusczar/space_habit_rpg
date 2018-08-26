@@ -47,5 +47,7 @@ const int BEST_LEAP_YEAR = 2000;
 const int LEAP_COUNT_BETWEEN_1972_2000 = 7;
 const int SPAN_1970_2000 = 946684800;
 const long SPAN_1970_1899 = -2208988800;
+const double MILLION = 1000000;
+const double BILLION = 1000000000;
 const char * const WEEKDAYS[WEEKLEN] = {"SUN","MON","TUE","WED","THR","FRI","SAT"};
 

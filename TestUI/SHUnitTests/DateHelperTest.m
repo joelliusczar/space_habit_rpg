@@ -15,6 +15,7 @@
 
 
 
+
 @import TestCommon;
 
 @interface DateHelperTest : FrequentCase
@@ -38,8 +39,8 @@
 -(void)testCreateDate{
     NSDate *testDate;
     
-    NSInteger ans = 0;
-    int error;
+    double ans = 0;
+    SHErrorCode error;
     tryCreateDate(0,1,1,0,&ans,&error);
     
     
@@ -87,6 +88,10 @@
     XCTAssertEqual(testDate.timeIntervalSince1970, -58060800);
     testDate = [NSDate createDateTimeWithYear:1967 month:4 day:27 hour:0 minute:0 second:0];
     XCTAssertEqual(testDate.timeIntervalSince1970, -84672000);
+    testDate = [NSDate createDateTimeWithYear:2104 month:12 day:31 hour:0 minute:0 second:0];
+    XCTAssertEqual(testDate.timeIntervalSince1970, 4260124800);
+    testDate = [NSDate createDateTimeWithYear:2104 month:12 day:31 hour:23 minute:59 second:59];
+    XCTAssertEqual(testDate.timeIntervalSince1970, 4260211199);
     
     
 }
@@ -94,7 +99,7 @@
 
 -(void)testTimestampToDateObj{
     SHDatetime dt;
-    int error;
+    SHErrorCode error;
     
     tryTimestampToDt(-2051222400,0,&dt,&error);
     XCTAssertEqual(dt.year,1905);
@@ -743,12 +748,146 @@
     XCTAssertEqual(dt.hour,0);
     XCTAssertEqual(dt.minute,0);
     XCTAssertEqual(dt.second,0);
+    
+    tryTimestampToDt(-8520336001,0,&dt,&error);
+    XCTAssertEqual(dt.year,1699);
+    XCTAssertEqual(dt.month,12);
+    XCTAssertEqual(dt.day,31);
+    XCTAssertEqual(dt.hour,23);
+    XCTAssertEqual(dt.minute,59);
+    XCTAssertEqual(dt.second,59);
+    
+    tryTimestampToDt(-11644473601,0,&dt,&error);
+    XCTAssertEqual(dt.year,1600);
+    XCTAssertEqual(dt.month,12);
+    XCTAssertEqual(dt.day,31);
+    XCTAssertEqual(dt.hour,23);
+    XCTAssertEqual(dt.minute,59);
+    XCTAssertEqual(dt.second,59);
+    
+    tryTimestampToDt(-11673417601,0,&dt,&error);
+    XCTAssertEqual(dt.year,1600);
+    XCTAssertEqual(dt.month,1);
+    XCTAssertEqual(dt.day,31);
+    XCTAssertEqual(dt.hour,23);
+    XCTAssertEqual(dt.minute,59);
+    XCTAssertEqual(dt.second,59);
+    
+    tryTimestampToDt(-11676009602,0,&dt,&error);
+    XCTAssertEqual(dt.year,1600);
+    XCTAssertEqual(dt.month,1);
+    XCTAssertEqual(dt.day,1);
+    XCTAssertEqual(dt.hour,23);
+    XCTAssertEqual(dt.minute,59);
+    XCTAssertEqual(dt.second,58);
+    
+    tryTimestampToDt(-11676096001,0,&dt,&error);
+    XCTAssertEqual(dt.year,1599);
+    XCTAssertEqual(dt.month,12);
+    XCTAssertEqual(dt.day,31);
+    XCTAssertEqual(dt.hour,23);
+    XCTAssertEqual(dt.minute,59);
+    XCTAssertEqual(dt.second,59);
+    
+    tryTimestampToDt(-11707632000,0,&dt,&error);
+    XCTAssertEqual(dt.year,1599);
+    XCTAssertEqual(dt.month,1);
+    XCTAssertEqual(dt.day,1);
+    XCTAssertEqual(dt.hour,0);
+    XCTAssertEqual(dt.minute,0);
+    XCTAssertEqual(dt.second,0);
+    
+    tryTimestampToDt(-11802240001,0,&dt,&error);
+    XCTAssertEqual(dt.year,1596);
+    XCTAssertEqual(dt.month,1);
+    XCTAssertEqual(dt.day,1);
+    XCTAssertEqual(dt.hour,23);
+    XCTAssertEqual(dt.minute,59);
+    XCTAssertEqual(dt.second,59);
+    
+    tryTimestampToDt(-14831769601,0,&dt,&error);
+    XCTAssertEqual(dt.year,1499);
+    XCTAssertEqual(dt.month,12);
+    XCTAssertEqual(dt.day,31);
+    XCTAssertEqual(dt.hour,23);
+    XCTAssertEqual(dt.minute,59);
+    XCTAssertEqual(dt.second,59);
+    
+    tryTimestampToDt(253402300799,0,&dt,&error);
+    XCTAssertEqual(dt.year,9999);
+    XCTAssertEqual(dt.month,12);
+    XCTAssertEqual(dt.day,31);
+    XCTAssertEqual(dt.hour,23);
+    XCTAssertEqual(dt.minute,59);
+    XCTAssertEqual(dt.second,59);
+}
+
+-(void)testDecimalTime{
+    SHDatetime dt = {.year = 2018,.month = 3, .day = 9, .timezoneOffset = 0,
+        .hour = 2, .minute = 13, .second = 0, .milisecond = 96
+    };
+    double precision = .0001;
+    SHErrorCode error;
+    double timestamp = dtToTimestamp(&dt,&error);
+    
+    dt.year = 9999;
+    dt.month = 12;
+    dt.day = 31;
+    dt.hour = 23;
+    dt.minute = 59;
+    dt.second = 59;
+    timestamp = dtToTimestamp(&dt,&error);
+    XCTAssertEqualWithAccuracy(253402300799.096,timestamp,precision);
+    
+    tryTimestampToDt(253402300799.096025,0,&dt,&error);
+    XCTAssertEqual(dt.year,9999);
+    XCTAssertEqual(dt.month,12);
+    XCTAssertEqual(dt.day,31);
+    XCTAssertEqual(dt.hour,23);
+    XCTAssertEqual(dt.minute,59);
+    XCTAssertEqual(dt.second,59);
+    XCTAssertEqual(dt.milisecond,96);
+    
+    dt.year = 1969;
+    dt.month = 1;
+    dt.day = 1;
+    dt.hour = 0;
+    dt.minute = 0;
+    dt.second = 0;
+    timestamp = dtToTimestamp(&dt,&error);
+    XCTAssertEqualWithAccuracy(timestamp,-31536000.096,precision);
+    
+    dt.year = 1;
+    dt.month = 1;
+    dt.day = 1;
+    dt.hour = 0;
+    dt.minute = 0;
+    dt.second = 0;
+    timestamp = dtToTimestamp(&dt,&error);
+    XCTAssertEqualWithAccuracy(timestamp,-62135596800.096,precision);
+    
+}
+
+-(void)testDayOfYear{
+    SHErrorCode error = 0;
+    int result = calcDayOfYearFromTimestamp(10022400,0,&error);
+    XCTAssertEqual(result,117);
+    result = calcDayOfYearFromTimestamp(73180800,0,&error);
+    XCTAssertEqual(result,118);
+    result = calcDayOfYearFromTimestamp(5097600,0,&error);
+    XCTAssertEqual(result,60);
+    result = calcDayOfYearFromTimestamp(68256000,0,&error);
+    XCTAssertEqual(result,61);
+    result = calcDayOfYearFromTimestamp(68169600,0,&error);
+    XCTAssertEqual(result,60);
+    result = calcDayOfYearFromTimestamp(5011200,0,&error);
+    XCTAssertEqual(result,59);
 }
 
 -(void)testAddDayToTs{
     double ts = 578102400;
     double ans = 0;
-    int error;
+    SHErrorCode error;
     tryAddDaysToTimestamp(ts,0,0,&ans,&error);
     XCTAssertEqual(ts,ans);
     tryAddDaysToTimestamp(ts,1,0,&ans,&error);
@@ -764,7 +903,7 @@
         {3,11,2,0,HOUR_IN_SECONDS},
         {11,4,2,0,0}
     };
-    int error;
+    SHErrorCode error;
     SHDatetime dt = {.year = 2018,.month = 3, .day = 9, .timezoneOffset = -5*HOUR_IN_SECONDS,
         .hour = 2, .minute = 13, .second = 0
     };

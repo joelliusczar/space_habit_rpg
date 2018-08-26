@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include <inttypes.h>
 #include "SHDatetime.h"
 
 typedef struct {
@@ -19,10 +20,10 @@ typedef struct {
     long forrange;
 } RateValueItem;
 
-void filWeek(long *daysAheadCounts,long *daysBeforeCounts,bool *activeDays
+void filWeek(int64_t *daysAheadCounts,int64_t *daysBeforeCounts,bool *activeDays
   ,RateValueItem *rvi);
-void buildWeek(bool *activeDays,long scaler,RateValueItem *rvi);
+void buildWeek(bool *activeDays,int64_t scaler,RateValueItem *rvi);
 void buildEmptyWeek(RateValueItem *rvi);
 bool previousDueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate
-  ,RateValueItem *rvi,long scaler,SHDatetime *ans,int *error);
+  ,RateValueItem *rvi,int64_t scaler,SHDatetime *ans,int *error);
 #endif /* Daily_h */

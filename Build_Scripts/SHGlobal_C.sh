@@ -8,4 +8,4 @@
 
 cd ${SRCROOT}/../Build_Scripts
 . SHMaster.sh
-. DTCopy.sh
+. DTCopy.sh SHGlobal_C

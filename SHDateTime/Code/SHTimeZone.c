@@ -7,15 +7,15 @@
 //
 
 #include "SHTimeZone.h"
-#include "SHDatetime.h"
+#include "SHDatetimeMod.h"
 #include "SHConstants.h"
 #include "ErrorHandling.h"
 
 int _compareDtAndTimeShift(SHDatetime *dt,Timeshift *shift,int (*compare)(long,long)){
-    int error;
-    long dtTimestamp = createDateTime(BASE_YEAR,dt->month,dt->day,dt->hour,dt->minute
+    SHError error;
+    long dtTimestamp = createDateTime_m(BASE_YEAR,dt->month,dt->day,dt->hour,dt->minute
                                       ,dt->second,0,&error);
-    long shiftTimestamp = createDateTime(BASE_YEAR,shift->month,shift->day,shift->hour
+    long shiftTimestamp = createDateTime_m(BASE_YEAR,shift->month,shift->day,shift->hour
                                          ,shift->minute,0,0,&error);
     return compare(dtTimestamp,shiftTimestamp);
 }
@@ -62,7 +62,7 @@ int findTimeShiftIdx(SHDatetime *dt){
     return NOT_FOUND;
 }
 
-bool updateTimezoneForShifts(SHDatetime *dt,int *error){
+bool updateTimezoneForShifts_m(SHDatetime *dt,SHError *error){
     if(dt->shifts){
         
         int oldShiftIdx = dt->currentShiftIdx;
@@ -70,24 +70,27 @@ bool updateTimezoneForShifts(SHDatetime *dt,int *error){
             return INVALID_STATE;
         }
         double ts;
-        int cnvtErr;
-        if(!tryDtToTimestamp(dt,&ts,&cnvtErr)) return setErrorCode(cnvtErr,error);
+        SHError cnvtErr;
+        setSHErrorDefault(&cnvtErr);
+        if(!tryDtToTimestamp_m(dt,&ts,&cnvtErr)) return handleError(cnvtErr.code,"",error);
         int updShiftIdx = findTimeShiftIdx(dt);
         Timeshift *oldShift = &dt->shifts[oldShiftIdx];
         Timeshift *updShift = &dt->shifts[updShiftIdx];
         if(oldShift != updShift){
             dt->timezoneOffset -= oldShift->adjustment;
             dt->timezoneOffset += updShift->adjustment;
-            int shiftCuspTS = createTime(updShift->hour,updShift->minute,0,&cnvtErr);
-            if(cnvtErr) return setErrorCode(cnvtErr,error);
-            int dtTS = extractTime(dt,&cnvtErr);
-            if(cnvtErr) return setErrorCode(cnvtErr,error);
+            int shiftCuspTS = createTime_m(updShift->hour,updShift->minute,0,&cnvtErr);
+            if(cnvtErr.code) return handleError(cnvtErr.code,"",error);
+            int dtTS = extractTime_m(dt,&cnvtErr);
+            if(cnvtErr.code) return handleError(cnvtErr.code,"",error);
             int shiftDif = (dtTS-shiftCuspTS);
             if(shiftDif >= HOUR_IN_SECONDS||dt->day > updShift->day||dt->month > updShift->month){
                 ts += oldShift->adjustment;
                 ts -= updShift->adjustment;
             }
-            if(!timestampToDtUnitsOnly(ts,dt,&cnvtErr)) return setErrorCode(cnvtErr,error);
+            if(!timestampToDtUnitsOnly_m(ts,dt,&cnvtErr)){
+                return handleError(cnvtErr.code,"",error);
+            }
             dt->currentShiftIdx = updShiftIdx;
             return NO_ERROR;
         }
