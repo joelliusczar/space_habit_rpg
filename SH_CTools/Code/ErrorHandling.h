@@ -19,13 +19,16 @@ typedef enum {
     CORRUPT_STRUCT = 3
 } SHErrorCode;
 
-typedef bool (*ErrorCallback)(SHErrorCode err,const char* const msg,void* info);
+
+typedef bool (*ErrorCallback)(SHErrorCode err,const char* const msg,void* info,
+  bool* isError);
 
 typedef struct {
     SHErrorCode code;
     ErrorCallback errorCallback;
     const char* msg;
     void* callbackInfo;
+    bool isError;
 } SHError;
 
 bool setErrorCode(int code,int *error);

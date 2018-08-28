@@ -14,8 +14,9 @@ static void _useErrorObj(SHErrorCode code,const char* const msg,SHError* errObj)
     if(!errObj) return;
     errObj->code = code;
     errObj->msg = msg;
+    errObj->isError = true;
     if(errObj->errorCallback){
-        errObj->errorCallback(code,msg,errObj->callbackInfo);
+        errObj->errorCallback(code,msg,errObj->callbackInfo,&errObj->isError);
     }
 }
 

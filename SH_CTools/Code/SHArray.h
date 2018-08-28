@@ -24,7 +24,7 @@
 #define findIdx(T1,T2) findIdx_##T1##_##T2
 
 #define DEF_FIND_IDX_REV(T1,T2,P1,P2) static int64_t findIdxRev_##T1##_##T2( T1 P1 *arr\
-  ,int64_t len, bool (*test)( T1 P1,long, T2 P2 ), T2 P2 extra){\
+  ,int64_t len, bool (*test)( T1 P1,int64_t, T2 P2 ), T2 P2 extra){\
     for(int64_t idx = 0; idx < len;idx++){\
       int64_t revIdx = len - idx -1;\
       if(test( arr[revIdx],idx,extra)) return revIdx;\
