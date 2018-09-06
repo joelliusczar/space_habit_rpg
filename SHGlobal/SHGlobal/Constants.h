@@ -59,6 +59,7 @@ typedef NS_ENUM(NSInteger,gameState) {
     ,GAME_STATE_INITIALIZED = 1
 };
 
+
 //may not even use these
 extern NSInteger const PM_PRIME;
 extern NSInteger const AM_PRIME;
@@ -140,3 +141,9 @@ extern NSString * const FORRANGE_KEY;
 extern NSString * const IS_DAY_ACTIVE_KEY;
 
 extern int const DAY_LEN;
+
+//control widths
+extern int const HOUR_PICKER_COL_WIDTH;
+extern int const MIN_PICKER_COL_WIDTH;
+extern int const AM_PM_PICKER_COL_WIDTH;
+extern int const LEFTOVER_PICKER_COL_WIDTH;

@@ -78,3 +78,8 @@ NSString* const FORRANGE_KEY = @"FORRANGE";
 NSString* const IS_DAY_ACTIVE_KEY = @"IS_DAY_ACTIVE";
 
 int const DAY_LEN = 84600; //only use this for extremely simple calculations, e.g. a week or less
+
+int const HOUR_PICKER_COL_WIDTH = 35;
+int const MIN_PICKER_COL_WIDTH = 40;
+int const AM_PM_PICKER_COL_WIDTH = 45;
+int const LEFTOVER_PICKER_COL_WIDTH = 200;

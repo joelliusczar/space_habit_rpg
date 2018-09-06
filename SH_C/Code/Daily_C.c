@@ -6,7 +6,7 @@
 //  Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
-#include "Daily.h"
+#include "Daily_C.h"
 #include "DTConstants.h"
 #include "SHArray.h"
 #include "ErrorHandling.h"

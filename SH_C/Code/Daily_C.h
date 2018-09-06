@@ -6,8 +6,8 @@
 //  Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
-#ifndef Daily_h
-#define Daily_h
+#ifndef Daily_C_h
+#define Daily_C_h
 
 #include <stdio.h>
 #include <stdbool.h>
@@ -31,4 +31,4 @@ SHDatetime* bothWeeklyDueDatesFromLastDueDate(SHDatetime* lastDueDate,SHDatetime
   ,RateValueItem* week,int64_t scaler,SHError *error);
 bool nextDueDate_WEEKLY(SHDatetime* lastDueDate,SHDatetime* checkinDate
   , RateValueItem* week,int64_t scaler,SHDatetime *ans,SHError* error);
-#endif /* Daily_h */
+#endif /* Daily_C_h */

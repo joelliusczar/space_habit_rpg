@@ -49,7 +49,7 @@ numberOfRowsInComponent:(NSInteger)component{
         return MINUTES_IN_HOUR; 
     }
     else if(!self.utilityStore.inUseLocale.isUsing24HourFormat&&component==AM_PM_COL){
-        return 2;
+        return AM_PM_COL;
     }
     else{
         return self.dayRange;
@@ -81,16 +81,16 @@ numberOfRowsInComponent:(NSInteger)component{
 -(CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component{
     //these numbers were picked somewhat arbitrarily
     if(component==HOUR_OF_DAY_COL){
-        return 35;
+        return HOUR_PICKER_COL_WIDTH;
     }
     else if(component==MINUTE_COL){
-        return 40;
+        return MIN_PICKER_COL_WIDTH;
     }
     else if(!self.utilityStore.inUseLocale.isUsing24HourFormat&&component==AM_PM_COL){
-        return 45;
+        return AM_PM_PICKER_COL_WIDTH;
     }
     else{
-        return 200;
+        return LEFTOVER_PICKER_COL_WIDTH;
     }
 }
 
