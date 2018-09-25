@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include <inttypes.h>
 
 typedef enum {
     NO_ERROR = 0,
@@ -29,12 +30,14 @@ typedef struct {
     const char* msg;
     void* callbackInfo;
     bool isError;
+	uintptr_t filler[8];
 } SHError;
 
-bool setErrorCode(int code,int *error);
+bool setErrorCode(SHErrorCode code,SHErrorCode *error);
 bool handleError(SHErrorCode code,const char* const msg,SHError* errObj);
-int setIndexErrorCode(int code,int *error);
-int handleErrorRetNotFound(SHErrorCode code,const char* const msg,SHError *errObj);
+int setIndexErrorCode(SHErrorCode code,SHErrorCode* error);
+int handleErrorRetNotFound(SHErrorCode code,const char* const msg,SHError* errObj);
 void setSHErrorDefault(SHError* errObj);
 void prepareSHError(SHError* errObj);
+void disposeSHError(SHError* errObj);
 #endif /* ErrorHandling_h */

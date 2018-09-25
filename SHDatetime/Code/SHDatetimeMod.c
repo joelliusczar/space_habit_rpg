@@ -54,8 +54,12 @@ static int _getMonthFromDaySum(int daySum, bool isLeapYear){
 
 static int _isTimestampRangeInvalid(int64_t timestamp,int timezoneOffset,SHError *error){
     prepareSHError(error);
-    if(timestamp < 0 && (YEAR_ZERO_FIRST_SEC - timestamp) > -1*timezoneOffset) return setErrorCode(OUT_OF_RANGE,(int *)error);
-    if(timestamp > 0 && (LONG_MAX - timestamp) < timezoneOffset) return setErrorCode(OUT_OF_RANGE,(int *)error);
+    if(timestamp < 0 && (YEAR_ZERO_FIRST_SEC - timestamp) > -1*timezoneOffset){
+		return setErrorCode(OUT_OF_RANGE,&error->code);
+	}
+    if(timestamp > 0 && (LONG_MAX - timestamp) < timezoneOffset){
+		return setErrorCode(OUT_OF_RANGE,&error->code);
+	}
     return true;
 }
 
@@ -724,7 +728,7 @@ int calcWeekdayIdx_m(SHDatetime *dt,SHError *error){
 }
 
 int calcDayOfYear_m(SHDatetime *dt,SHError *error){
-    if(!isValidSHDateTime_m(dt)) return setIndexErrorCode(GEN_ERROR,(int *)error);
+    if(!isValidSHDateTime_m(dt)) return setIndexErrorCode(GEN_ERROR,&error->code);
     bool shouldAddLeapDay = _shouldAddLeapDay(dt->year,dt->month,dt->day);
     int days = _monthSums[dt->month -1];
     days += (shouldAddLeapDay && !(dt->month == 2 && dt->day == 29)  ? 1 : 0);
@@ -794,7 +798,7 @@ static bool _calcFractSecs(FractSecs *fractSecs,double timestamp){
 
 static bool _calcFractFromParts(double miliseconds,double* ans,SHError *error){
     prepareSHError(error);
-    if(miliseconds > 1000) return setErrorCode(OUT_OF_RANGE,(int *)error);
+    if(miliseconds > 1000) return setErrorCode(OUT_OF_RANGE,&error->code);
     *ans = miliseconds/1000.0;
     return true;
 }

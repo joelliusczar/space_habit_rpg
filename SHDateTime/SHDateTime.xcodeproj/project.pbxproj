@@ -28,6 +28,14 @@
 /* Begin PBXFileReference section */
 		2716922A20916D0F0059A58E /* libSH_CTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_CTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2716922C20916D170059A58E /* libSHGlobal_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHGlobal_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		27BB29002151D4B1003225BB /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		27BB2908215738BE003225BB /* vars.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = vars.mk; sourceTree = "<group>"; };
+		27BB290D2157D8E2003225BB /* cl_dt_all.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = cl_dt_all.py; sourceTree = "<group>"; };
+		27BB290E2157D8E2003225BB /* dt_test.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = dt_test.py; sourceTree = "<group>"; };
+		27BB290F2157D93B003225BB /* SHDatetime_struct.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = SHDatetime_struct.py; sourceTree = "<group>"; };
+		27BB291021582F39003225BB /* dt_prompt.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = dt_prompt.c; sourceTree = "<group>"; };
+		27BB29112158450A003225BB /* cl_datetime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cl_datetime.h; sourceTree = "<group>"; };
+		27BB29122158450A003225BB /* cl_datetime.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cl_datetime.c; sourceTree = "<group>"; };
 		27D3183D2086C8CA0047F5F1 /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		27D318462086C9040047F5F1 /* SHTimeZone.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SHTimeZone.c; sourceTree = "<group>"; };
 		27D318482086C9040047F5F1 /* DTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTConstants.h; sourceTree = "<group>"; };
@@ -67,9 +75,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		27BB28FF2151D453003225BB /* Copy */ = {
+			isa = PBXGroup;
+			children = (
+				27BB29122158450A003225BB /* cl_datetime.c */,
+				27BB29112158450A003225BB /* cl_datetime.h */,
+				27BB291021582F39003225BB /* dt_prompt.c */,
+				27BB290D2157D8E2003225BB /* cl_dt_all.py */,
+				27BB290E2157D8E2003225BB /* dt_test.py */,
+				27BB29002151D4B1003225BB /* Makefile */,
+				27BB2908215738BE003225BB /* vars.mk */,
+				27BB290F2157D93B003225BB /* SHDatetime_struct.py */,
+			);
+			path = Copy;
+			sourceTree = "<group>";
+		};
 		27D318342086C8CA0047F5F1 = {
 			isa = PBXGroup;
 			children = (
+				27BB28FF2151D453003225BB /* Copy */,
 				27D318442086C9040047F5F1 /* Code */,
 				27D3183E2086C8CA0047F5F1 /* Products */,
 				271691E6208861E50059A58E /* Frameworks */,

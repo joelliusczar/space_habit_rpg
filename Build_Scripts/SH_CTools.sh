@@ -8,4 +8,7 @@
 
 cd ${SRCROOT}/../Build_Scripts
 . SHMaster.sh
-. DTCopy.sh SH_CTools
+if [ -n "$IS_JOEL" ]; then
+    copyFiles 'SH_CTools'
+    copyFiles 'SH_CTools' 'Copy'
+fi

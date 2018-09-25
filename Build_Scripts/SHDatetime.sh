@@ -8,4 +8,10 @@
 
 cd ${SRCROOT}/../Build_Scripts
 . SHMaster.sh
-. DTCopy.sh SHDatetime
+pwd
+if [ -n "$IS_JOEL" ]; then
+	copyFiles 'SHDatetime'
+	copyFiles 'SHDatetime' 'Copy'
+	cp -r ../Copy/ ${SRCROOT}/../../SH_CP/
+fi
+

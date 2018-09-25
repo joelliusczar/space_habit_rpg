@@ -19,6 +19,9 @@
 		271691CB20885F890059A58E /* Daily_C.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Daily_C.c; sourceTree = "<group>"; };
 		271691EE208866770059A58E /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2716920D20897A740059A58E /* libSH_CTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_CTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		27BB290A215749B8003225BB /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		27BB290B215749E7003225BB /* vars.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = vars.mk; sourceTree = "<group>"; };
+		27BB290C2157CBAA003225BB /* DailyTestEveything.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = DailyTestEveything.py; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +40,7 @@
 		271691B920885EF70059A58E = {
 			isa = PBXGroup;
 			children = (
+				27BB29092157499D003225BB /* Copy */,
 				271691C920885F890059A58E /* Code */,
 				271691C320885EF70059A58E /* Products */,
 				271691CE208860100059A58E /* Frameworks */,
@@ -67,6 +71,16 @@
 				271691EE208866770059A58E /* libSHDatetime.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		27BB29092157499D003225BB /* Copy */ = {
+			isa = PBXGroup;
+			children = (
+				27BB290A215749B8003225BB /* Makefile */,
+				27BB290B215749E7003225BB /* vars.mk */,
+				27BB290C2157CBAA003225BB /* DailyTestEveything.py */,
+			);
+			path = Copy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

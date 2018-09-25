@@ -21,6 +21,8 @@
 		27169215208BB2450059A58E /* ErrorHandling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ErrorHandling.h; sourceTree = "<group>"; };
 		27169216208BB2450059A58E /* ErrorHandling.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ErrorHandling.c; sourceTree = "<group>"; };
 		27169228208EBCF60059A58E /* libSHGlobal_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHGlobal_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		27BB2905215207A3003225BB /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		27BB29132159CE1E003225BB /* vars.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = vars.mk; sourceTree = "<group>"; };
 		27DF9C4C20956D6300F98023 /* SHGenAlgos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHGenAlgos.h; sourceTree = "<group>"; };
 		27DF9C4D20956D6300F98023 /* SHGenAlgos.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHGenAlgos.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -40,6 +42,7 @@
 		271691F72089758B0059A58E = {
 			isa = PBXGroup;
 			children = (
+				27BB290421520778003225BB /* Copy */,
 				27169207208975970059A58E /* Code */,
 				271692012089758B0059A58E /* Products */,
 				2716920E208991130059A58E /* Frameworks */,
@@ -72,6 +75,15 @@
 				27169228208EBCF60059A58E /* libSHGlobal_C.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		27BB290421520778003225BB /* Copy */ = {
+			isa = PBXGroup;
+			children = (
+				27BB2905215207A3003225BB /* Makefile */,
+				27BB29132159CE1E003225BB /* vars.mk */,
+			);
+			path = Copy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

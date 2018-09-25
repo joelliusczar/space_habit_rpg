@@ -1,0 +1,22 @@
+SH_TOOLS_PATH = ../SH_CTools
+include ../SHBase.mk
+include $(SH_TOOLS_PATH)/vars.mk
+include vars.mk
+SH_TOOLS_HEADERS = $(call rwildcard,$(SH_TOOLS_PATH),*.h)
+SH_TOOLS_SOURCES = $(call rwildcard,$(SH_TOOLS_PATH),*.c)
+SH_TOOLS_OBJECTS=$(SH_TOOLS_SOURCES:.c=.o)
+INC+=-I$(SH_TOOLS_PATH)
+SH_TOOLS_FULL := $(SH_TOOLS_PATH)/$(SH_TOOLS_FULL)
+
+DT_SHARED_FULL=lib${DT_SHARED}.so
+.DEFAULT_GOAL:=$(DT_SHARED_FULL)
+
+
+$(DT_SHARED_FULL): $(OBJECTS) $(SH_TOOLS_FULL)
+	$(CC) $(CFLAGS) $(OBJECTS) -Wl,-rpath,$(SH_TOOLS_PATH) -L$(SH_TOOLS_PATH) \
+	-l$(SH_TOOLS) -shared -o $(DT_SHARED_FULL)
+
+
+$(SH_TOOLS_FULL): $(SH_TOOLS_OBJECTS)
+	cd $(SH_TOOLS_PATH) && $(MAKE)
+

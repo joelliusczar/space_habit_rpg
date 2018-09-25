@@ -20,7 +20,7 @@ static void _useErrorObj(SHErrorCode code,const char* const msg,SHError* errObj)
     }
 }
 
-bool setErrorCode(int code,int *error){
+bool setErrorCode(SHErrorCode code,SHErrorCode *error){
     *error = code;
     return false;
 }
@@ -30,7 +30,7 @@ bool handleError(SHErrorCode code,const char* const msg,SHError* errObj){
     return false;
 }
 
-int setIndexErrorCode(int code,int *error){
+int setIndexErrorCode(SHErrorCode code,SHErrorCode *error){
     *error = code;
     return NOT_FOUND;
 }
@@ -52,3 +52,14 @@ void prepareSHError(SHError* errObj){
     errObj->code = NO_ERROR;
     errObj->msg = "";
 }
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wincompatible-pointer-types-discards-qualifiers"
+void disposeSHError(SHError *errObj){
+	if(!errObj) return;
+	free(errObj->msg);
+	free(errObj->callbackInfo);
+	free(errObj);
+}
+
+#pragma GCC diagnostic pop
