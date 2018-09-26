@@ -36,6 +36,7 @@
 		27BB291021582F39003225BB /* dt_prompt.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = dt_prompt.c; sourceTree = "<group>"; };
 		27BB29112158450A003225BB /* cl_datetime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cl_datetime.h; sourceTree = "<group>"; };
 		27BB29122158450A003225BB /* cl_datetime.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cl_datetime.c; sourceTree = "<group>"; };
+		27BB2918215B0D5F003225BB /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		27D3183D2086C8CA0047F5F1 /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		27D318462086C9040047F5F1 /* SHTimeZone.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SHTimeZone.c; sourceTree = "<group>"; };
 		27D318482086C9040047F5F1 /* DTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTConstants.h; sourceTree = "<group>"; };
@@ -78,14 +79,47 @@
 		27BB28FF2151D453003225BB /* Copy */ = {
 			isa = PBXGroup;
 			children = (
+				27BB2915215B0BF8003225BB /* dt_prompt */,
+				27BB2914215B0BE3003225BB /* Makefiles */,
+			);
+			path = Copy;
+			sourceTree = "<group>";
+		};
+		27BB2914215B0BE3003225BB /* Makefiles */ = {
+			isa = PBXGroup;
+			children = (
+				27BB2908215738BE003225BB /* vars.mk */,
+				27BB29002151D4B1003225BB /* Makefile */,
+			);
+			path = Makefiles;
+			sourceTree = "<group>";
+		};
+		27BB2915215B0BF8003225BB /* dt_prompt */ = {
+			isa = PBXGroup;
+			children = (
+				27BB2917215B0D31003225BB /* Copy */,
+				27BB2916215B0D2A003225BB /* Code */,
+			);
+			path = dt_prompt;
+			sourceTree = "<group>";
+		};
+		27BB2916215B0D2A003225BB /* Code */ = {
+			isa = PBXGroup;
+			children = (
 				27BB29122158450A003225BB /* cl_datetime.c */,
 				27BB29112158450A003225BB /* cl_datetime.h */,
 				27BB291021582F39003225BB /* dt_prompt.c */,
 				27BB290D2157D8E2003225BB /* cl_dt_all.py */,
 				27BB290E2157D8E2003225BB /* dt_test.py */,
-				27BB29002151D4B1003225BB /* Makefile */,
-				27BB2908215738BE003225BB /* vars.mk */,
 				27BB290F2157D93B003225BB /* SHDatetime_struct.py */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
+		27BB2917215B0D31003225BB /* Copy */ = {
+			isa = PBXGroup;
+			children = (
+				27BB2918215B0D5F003225BB /* Makefile */,
 			);
 			path = Copy;
 			sourceTree = "<group>";

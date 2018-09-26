@@ -10,8 +10,12 @@ cd ${SRCROOT}/../Build_Scripts
 . SHMaster.sh
 pwd
 if [ -n "$IS_JOEL" ]; then
-	copyFiles 'SHDatetime'
-	copyFiles 'SHDatetime' 'Copy'
-	cp -r ../Copy/ ${SRCROOT}/../../SH_CP/
+	copyFiles "$SHFolder/SHDatetime"
+	copyFiles "$SHFolder/SHDatetime" 'Copy/Makefiles'
+	copyFiles "$SHFolder/SHDatetime" 'Copy/dt_prompt'
+	cp -r ../Copy/ ${SRCROOT}/../../${SHFolder}/
+	copyFiles "Code/SHDatetime/SHDatetime" #Copy the library code
+	copyFiles "Code/SHDatetime" 'Copy/dt_prompt/Code' #copy the test harness code
+	copyFiles "Code/SHDatetime" 'Copy/dt_prompt/Copy' #copy the makefile
 fi
 
