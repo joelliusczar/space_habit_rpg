@@ -6,7 +6,7 @@ from ctypes import c_double
 from ctypes import byref
 from ctypes import POINTER
 from datetime import datetime, timezone
-from SHDatetime_struct import Timeshift, SHDatetime
+from SHDatetime_struct import Timeshift, SHDatetime, make_dt_copy
 import sys
 
 lib = cdll.LoadLibrary('./libdt.so')
@@ -84,14 +84,7 @@ def testCTimeExhaustive(lowBound,upBound):
 
     return 0
 
-def make_dt_copy(dt):
-    copy = SHDatetime(dt.year,dt.month,dt.day,dt.hour,
-        dt.minute,dt.second)
-    copy.timezoneOffset = dt.timezoneOffset
-    copy.shifts = dt.shifts
-    copy.shiftLen = dt.shiftLen
-    copy.currentShiftIdx = dt.currentShiftIdx
-    return copy
+
 
 if __name__ == "__main__":
     lowBound = 0

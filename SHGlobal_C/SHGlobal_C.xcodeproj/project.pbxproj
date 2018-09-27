@@ -31,7 +31,6 @@
 		271691D1208861190059A58E = {
 			isa = PBXGroup;
 			children = (
-				27BB2902215203E2003225BB /* Copy */,
 				271691E12088616E0059A58E /* Code */,
 				271691DB208861190059A58E /* Products */,
 			);
@@ -52,13 +51,6 @@
 				271691E32088616E0059A58E /* SHConstants.h */,
 			);
 			path = Code;
-			sourceTree = "<group>";
-		};
-		27BB2902215203E2003225BB /* Copy */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Copy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

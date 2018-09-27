@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2716922920916D0F0059A58E /* libSH_CTools.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2716922A20916D0F0059A58E /* libSH_CTools.a */; };
 		2716922B20916D170059A58E /* libSHGlobal_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2716922C20916D170059A58E /* libSHGlobal_C.a */; };
+		27BB291D215B4712003225BB /* SHDatetimeNoErr.h in Headers */ = {isa = PBXBuildFile; fileRef = 27BB291B215B4712003225BB /* SHDatetimeNoErr.h */; };
+		27BB291E215B4712003225BB /* SHDatetimeNoErr.c in Sources */ = {isa = PBXBuildFile; fileRef = 27BB291C215B4712003225BB /* SHDatetimeNoErr.c */; };
 		27D318512086C9040047F5F1 /* SHTimeZone.c in Sources */ = {isa = PBXBuildFile; fileRef = 27D318462086C9040047F5F1 /* SHTimeZone.c */; };
 		27D318532086C9040047F5F1 /* DTConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D318482086C9040047F5F1 /* DTConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27D318542086C9040047F5F1 /* SHDatetime.c in Sources */ = {isa = PBXBuildFile; fileRef = 27D318492086C9040047F5F1 /* SHDatetime.c */; };
@@ -37,6 +39,8 @@
 		27BB29112158450A003225BB /* cl_datetime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cl_datetime.h; sourceTree = "<group>"; };
 		27BB29122158450A003225BB /* cl_datetime.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cl_datetime.c; sourceTree = "<group>"; };
 		27BB2918215B0D5F003225BB /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		27BB291B215B4712003225BB /* SHDatetimeNoErr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDatetimeNoErr.h; sourceTree = "<group>"; };
+		27BB291C215B4712003225BB /* SHDatetimeNoErr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHDatetimeNoErr.c; sourceTree = "<group>"; };
 		27D3183D2086C8CA0047F5F1 /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		27D318462086C9040047F5F1 /* SHTimeZone.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SHTimeZone.c; sourceTree = "<group>"; };
 		27D318482086C9040047F5F1 /* DTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTConstants.h; sourceTree = "<group>"; };
@@ -159,6 +163,8 @@
 				27EE2AB621321218005A8E1F /* SHDatetimeMod.c */,
 				27EE2AB9213212A3005A8E1F /* SHDatetimeCommon.h */,
 				27EE2ABA213212A3005A8E1F /* SHDatetimeCommon.c */,
+				27BB291B215B4712003225BB /* SHDatetimeNoErr.h */,
+				27BB291C215B4712003225BB /* SHDatetimeNoErr.c */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -174,6 +180,7 @@
 				27D318532086C9040047F5F1 /* DTConstants.h in Headers */,
 				27D3185A2086C9040047F5F1 /* SHDatetime.h in Headers */,
 				27EE2ABB213212A3005A8E1F /* SHDatetimeCommon.h in Headers */,
+				27BB291D215B4712003225BB /* SHDatetimeNoErr.h in Headers */,
 				27EE2AB32131D059005A8E1F /* SHDatetimePtrExt.h in Headers */,
 				27D80A1A2086E9B400FB4CE2 /* libSHDatetime.h in Headers */,
 				27EE2AB721321218005A8E1F /* SHDatetimeMod.h in Headers */,
@@ -257,6 +264,7 @@
 			files = (
 				27D318592086C9040047F5F1 /* DTConstants.c in Sources */,
 				27D318542086C9040047F5F1 /* SHDatetime.c in Sources */,
+				27BB291E215B4712003225BB /* SHDatetimeNoErr.c in Sources */,
 				27EE2AB42131D059005A8E1F /* SHDatetimePtrExt.c in Sources */,
 				27EE2AB821321218005A8E1F /* SHDatetimeMod.c in Sources */,
 				27EE2ABC213212A3005A8E1F /* SHDatetimeCommon.c in Sources */,

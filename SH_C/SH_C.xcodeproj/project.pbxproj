@@ -22,6 +22,7 @@
 		27BB290A215749B8003225BB /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		27BB290B215749E7003225BB /* vars.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = vars.mk; sourceTree = "<group>"; };
 		27BB290C2157CBAA003225BB /* DailyTestEveything.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = DailyTestEveything.py; sourceTree = "<group>"; };
+		27BB291A215B1093003225BB /* DailyStructs.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = DailyStructs.py; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +80,7 @@
 				27BB290A215749B8003225BB /* Makefile */,
 				27BB290B215749E7003225BB /* vars.mk */,
 				27BB290C2157CBAA003225BB /* DailyTestEveything.py */,
+				27BB291A215B1093003225BB /* DailyStructs.py */,
 			);
 			path = Copy;
 			sourceTree = "<group>";

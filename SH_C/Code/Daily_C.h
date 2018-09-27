@@ -17,8 +17,8 @@
 
 typedef struct {
     bool isDayActive;
-    long backrange;
-    long forrange;
+    int64_t backrange;
+    int64_t forrange;
 } RateValueItem;
 
 void filWeek(int64_t *daysAheadCounts,int64_t *daysBeforeCounts,bool *activeDays
@@ -31,4 +31,11 @@ SHDatetime* bothWeeklyDueDatesFromLastDueDate(SHDatetime* lastDueDate,SHDatetime
   ,RateValueItem* week,int64_t scaler,SHError *error);
 bool nextDueDate_WEEKLY(SHDatetime* lastDueDate,SHDatetime* checkinDate
   , RateValueItem* week,int64_t scaler,SHDatetime *ans,SHError* error);
+
+/*
+ activeDays: an array of exactly 7 elements.
+ scaler: this is the frequency, ex: event happens every 3 weeks
+ rvi: this should be an array of 7 elements. Any values in this will get over written
+ void buildWeek(bool *activeDays,int64_t scaler,RateValueItem *rvi)
+ */
 #endif /* Daily_C_h */

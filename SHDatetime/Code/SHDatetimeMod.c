@@ -36,6 +36,11 @@ static bool _calcFractFromParts(double miliseconds,double* ans,SHError *error);
 static void _popDtWithFracSecs(SHDatetime* dt,FractSecs* fractSecs);
 static bool _shouldAddLeapDay(int64_t year,int month,int day);
 
+
+/*
+ want to calculate the month based on how many days have passed
+ in the year already.
+ */
 static int _getMonthFromDaySum(int daySum, bool isLeapYear){
     if(daySum < 1 || daySum > (366 + (isLeapYear?1:0))) return -1;
     if(daySum <= 31) return 1;
@@ -52,6 +57,10 @@ static int _getMonthFromDaySum(int daySum, bool isLeapYear){
     return 12;
 }
 
+
+/*
+ 	this is an error checking method
+ */
 static int _isTimestampRangeInvalid(int64_t timestamp,int timezoneOffset,SHError *error){
     prepareSHError(error);
     if(timestamp < 0 && (YEAR_ZERO_FIRST_SEC - timestamp) > -1*timezoneOffset){
@@ -63,6 +72,12 @@ static int _isTimestampRangeInvalid(int64_t timestamp,int timezoneOffset,SHError
     return true;
 }
 
+
+/*
+  this assumes that years starts at 0. So, don't send actual years to
+ this. For actual years, using either _isLeapYearCorrected or
+ _isLeapYearFromBaseYear (this one is based on the year 2000)
+ */
 static bool _isLeapYear(int64_t years){
     return (years % 4 == 0)&&((years % 100 !=0)||(years % 400 == 0));
 }
@@ -131,7 +146,7 @@ static int64_t _calcNumLeapYearsBaseLeap(int64_t year){
     /*We want to offset the leap to 2000 rather than 1972 since it will handle
      multiples of 100 and 400 better. Our little window shift creates some problems
      where the leap years between 1972 and 2000 don't align right.
-     So, we just that here.
+     So, we just do that here.
      */
     if(year < FIRST_LEAP_YEAR || year > BEST_LEAP_YEAR || !_isLeapYear(dif)){
         ans += LEAP_COUNT_BETWEEN_1972_2000;
@@ -142,14 +157,19 @@ static int64_t _calcNumLeapYearsBaseLeap(int64_t year){
     return ans < 0?-ans:ans;
 }
 
-
+/*
+ 	checks if the day is feb 29th
+ */
 static bool _isLeapDayCusp(SHDatetime *dt){
     return dt->month == 2 && dt->day == 29;
 }
 
+/*
+ 	checks if year is a leap year and the date is after feb 28th
+ */
 static bool _shouldAddLeapDay(int64_t year,int month,int day){
     return _isLeapYearFromBaseYear(year) && (month > 2
-                                             || (month == 2 && day > 28));
+             || (month == 2 && day > 28));
 }
 
 
@@ -318,7 +338,7 @@ static void _calcTimeFromTimestamp(int64_t timestamp,int minOffset,TimeCalcResul
 }
 
 double createDateTime_m(int64_t year,int month,int day,int hour,int minute,int second
-                      ,int timezoneOffset,SHError *error){
+  ,int timezoneOffset,SHError *error){
     prepareSHError(error);
     double ans;
     tryCreateDateTime_m(year,month,day,hour,minute,second,timezoneOffset,&ans,error);
@@ -340,7 +360,7 @@ bool _areTimeComponentsValid(int64_t year,int month,int day,int hour,int minute,
 
 
 bool  tryCreateDateTime_m(int64_t year,int month,int day,int hour,int minute,int second
-                       ,int timezoneOffset,double *ans,SHError *error){
+  ,int timezoneOffset,double *ans,SHError *error){
     prepareSHError(error);
     bool isValid = _areTimeComponentsValid(year,month,day,hour,minute,second);
     if(!isValid) return handleError(GEN_ERROR,"",error);
@@ -381,7 +401,7 @@ double createDate_m(int64_t year,int month,int day,int timezoneOffset,SHError *e
 }
 
 bool tryCreateDate_m(int64_t year,int month,int day,int timezoneOffset,double *ans,
-                   SHError *error){
+  SHError *error){
     prepareSHError(error);
     return tryCreateDateTime_m(year,month,day,0,0,0,timezoneOffset,ans,error);
 }
@@ -402,7 +422,7 @@ bool  tryCreateTime_m(int hour,int minute,int second,double *ans,SHError *error)
 }
 
 bool _filDateTimeObj(int64_t year,int month,int day,int hour,int min,int sec,
-                     int timezoneOffset,SHDatetime *dt){
+  int timezoneOffset,SHDatetime *dt){
     dt->year = year;
     dt->month = month;
     dt->day = day;
@@ -443,7 +463,7 @@ int64_t _calcShiftedTimestamp(int64_t timestamp,int64_t years,int isBeforeEpoch)
 
 
 bool  tryTimestampToDt_m(double timestamp, int timezoneOffset,SHDatetime *dt,
-                      SHError *error){
+  SHError *error){
     prepareSHError(error);
     if(!dt) return handleError(NULL_VALUES,"",error);
     if(!_isTimestampRangeInvalid(timestamp,timezoneOffset,error)) return false;
@@ -459,7 +479,7 @@ bool  tryTimestampToDt_m(double timestamp, int timezoneOffset,SHDatetime *dt,
     int64_t yearCorrection = isBeforeEpoch?(1969 -2000):2000-1970;
     bool isLeapYear = _isLeapYearCorrected(totalYears,yearCorrection);
     int64_t shiftedTimestamp = _calcShiftedTimestamp(timestamp,totalYears
-                                                     ,isBeforeEpoch);
+                                  ,isBeforeEpoch);
     totalYears *= (isBeforeEpoch?MIRROR_BEFORE_EPOCH:EPOCH_NEUTRAL);
     int baseYear = isBeforeEpoch?1969:1970;
     if(shiftedTimestamp == YEAR_CUSP){
@@ -484,7 +504,7 @@ bool  tryTimestampToDt_m(double timestamp, int timezoneOffset,SHDatetime *dt,
     int exMins = result.totalMins % MIN_SEC_LEN;
     
     return _filDateTimeObj(totalYears+baseYear,month,exDays,exHours,exMins,result.exSecs
-                           ,timezoneOffset,dt);
+             ,timezoneOffset,dt);
 }
 
 bool  timestampToDtUnitsOnly_m(double timestamp,SHDatetime *dt,SHError *error){
@@ -543,7 +563,7 @@ double extractTime_m(SHDatetime *dt,SHError *error){
 
 
 bool tryAddDaysToDtInPlace_m(SHDatetime *dt,int64_t days,TimeAdjustOptions options,
-                           SHError *error){
+  SHError *error){
     (void)options;
     prepareSHError(error);
     if(!dt) return handleError(NULL_VALUES,"",error);
@@ -557,7 +577,7 @@ bool tryAddDaysToDtInPlace_m(SHDatetime *dt,int64_t days,TimeAdjustOptions optio
 
 
 bool tryAddDaysToDt_m(SHDatetime const *dt,int64_t days,TimeAdjustOptions options
-                    ,SHDatetime *ans,SHError *error){
+  ,SHDatetime *ans,SHError *error){
     prepareSHError(error);
     if(!dt) return handleError(NULL_VALUES,"",error);
     *ans = *dt;
@@ -569,7 +589,7 @@ bool tryAddDaysToDt_m(SHDatetime const *dt,int64_t days,TimeAdjustOptions option
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 
 bool tryAddDaysToTimestamp_m(double timestamp,int64_t days, TimeAdjustOptions options,
-                           double *ans,SHError *error){
+  double *ans,SHError *error){
     (void)options;
     prepareSHError(error);
     timestamp += (days*DAY_IN_SECONDS);
@@ -580,15 +600,15 @@ bool tryAddDaysToTimestamp_m(double timestamp,int64_t days, TimeAdjustOptions op
 #pragma GCC diagnostic pop
 
 bool tryAddMonthsToDt_m(SHDatetime const *dt,int64_t months,TimeAdjustOptions options
-                      ,SHDatetime *ans,SHError *error){
+  ,SHDatetime *ans,SHError *error){
     prepareSHError(error);
     if(!dt) return handleError(NULL_VALUES,"",error);
     *ans = *dt;
     return tryAddMonthsToDtInPlace_m(ans,months,options,error);
 }
 
-bool tryAddMonthsToDtInPlace_m(SHDatetime *dt,int64_t months,TimeAdjustOptions options,
-                             SHError *error){
+bool tryAddMonthsToDtInPlace_m(SHDatetime *dt,int64_t months,TimeAdjustOptions options
+  ,SHError *error){
     prepareSHError(error);
     if(!dt) return handleError(NULL_VALUES,"",error);
     if(months == 0) return true;
@@ -614,7 +634,7 @@ bool tryAddMonthsToDtInPlace_m(SHDatetime *dt,int64_t months,TimeAdjustOptions o
 }
 
 bool tryAddMonthsToTimestamp_m(double timestamp,int64_t months,int timezoneOffset,
-                             TimeAdjustOptions options,double *ans,SHError *error){
+  TimeAdjustOptions options,double *ans,SHError *error){
     prepareSHError(error);
     SHDatetime dt;
     if(!tryTimestampToDt_m(timestamp,timezoneOffset,&dt,error)) return false;
@@ -623,7 +643,7 @@ bool tryAddMonthsToTimestamp_m(double timestamp,int64_t months,int timezoneOffse
 }
 
 static bool _addYears_SHIFT(SHDatetime *dt,int64_t years, TimeAdjustOptions options,
-                            SHError *error) {
+  SHError *error) {
     prepareSHError(error);
     int64_t yearSum = years + dt->year;
     options = options == NO_OPTION?SHIFT_BKD:options;
@@ -649,15 +669,15 @@ static bool _addYears_SHIFT(SHDatetime *dt,int64_t years, TimeAdjustOptions opti
 }
 
 double addYearsToTimestamp_m(double timestamp,int64_t years,int timezoneOffset,
-                           TimeAdjustOptions options,SHError *error){
+  TimeAdjustOptions options,SHError *error){
     prepareSHError(error);
     double ans;
     tryAddYearsToTimestamp_m(timestamp,years,timezoneOffset,options,&ans,error);
     return ans;
 }
 
-bool tryAddYearsToTimestamp_m(double timestamp,int64_t years,int timezoneOffset,
-                            TimeAdjustOptions options,double *ans,SHError *error){
+bool tryAddYearsToTimestamp_m(double timestamp,int64_t years,int timezoneOffset
+  ,TimeAdjustOptions options,double *ans,SHError *error){
     prepareSHError(error);
     SHDatetime dt;
     if(!tryTimestampToDt_m(timestamp,timezoneOffset,&dt,error)) return false;
@@ -666,7 +686,7 @@ bool tryAddYearsToTimestamp_m(double timestamp,int64_t years,int timezoneOffset,
 }
 
 bool tryAddYearsToDt_m(SHDatetime const *dt,int64_t years,TimeAdjustOptions options
-                     ,SHDatetime *ans,SHError *error){
+  ,SHDatetime *ans,SHError *error){
     prepareSHError(error);
     if(!dt) return handleError(NULL_VALUES,"",error);
     *ans = *dt;
@@ -674,7 +694,7 @@ bool tryAddYearsToDt_m(SHDatetime const *dt,int64_t years,TimeAdjustOptions opti
 }
 
 bool tryAddYearsToDtInPlace_m(SHDatetime *dt,int64_t years,TimeAdjustOptions options
-                            ,SHError *error){
+  ,SHError *error){
     prepareSHError(error);
     if(!dt) return handleError(NULL_VALUES,"",error);
     if(years == 0) return true;
@@ -696,10 +716,20 @@ bool tryDayStart_m(double timestamp,int timezoneOffset,double *ans,SHError *erro
     prepareSHError(error);
     SHDatetime dt;
     if(!tryTimestampToDt_m(timestamp,timezoneOffset,&dt,error)) return false;
-    dt.hour = 0;
-    dt.minute = 0;
-    dt.second = 0;
+    dayStart(&dt);
     return tryDtToTimestamp_m(&dt,ans,error);
+}
+
+
+SHDatetime* dayStart(SHDatetime *dt){
+  if(!dt){
+    return dt;
+  }
+  dt->hour = 0;
+  dt->minute = 0;
+  dt->second = 0;
+  dt->milisecond = 0;
+  return dt;
 }
 
 
@@ -785,7 +815,7 @@ bool tryDateDiffDays_m(SHDatetime const *A,SHDatetime const *B,int64_t *ans,SHEr
 
 bool isValidSHDateTime_m(SHDatetime const *dt){
     return dt && _areTimeComponentsValid(dt->year,dt->month,dt->day,dt->hour,dt->minute
-                                         ,dt->second);
+     ,dt->second);
 }
 
 
