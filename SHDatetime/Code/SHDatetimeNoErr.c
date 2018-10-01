@@ -8,6 +8,7 @@
 
 #include "SHDatetimeNoErr.h"
 
+SHError _shError;
 
 void setSHError(SHError * err){
 	if(!err){

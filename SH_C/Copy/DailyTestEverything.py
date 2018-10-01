@@ -4,11 +4,14 @@ from ctypes import c_int
 from ctypes import byref
 from ctypes import c_bool
 from ctypes import POINTER
-from SHDatetime_struct import Timeshift, SHDatetime, make_dt_copy,formatDateStr
+import sys
+sys.path.append( "../")
+from SHDatetime.SHDatetime_struct import Timeshift, SHDatetime, make_dt_copy, formatDateStr
 from DailyStructs import RateValueItem
 
-lib = cdll.LoadLibrary('./SH_C/libshTop.so')
-dtlib = cdll.LoadLibrary('./SH_C/libSHDatetime.so')
+lib = cdll.LoadLibrary('./libshTop.so')
+dtlib = cdll.LoadLibrary('../SHDatetime/libSHDatetimeDaily.so')
+
 
 def doAllStartDays(fromDate,toDate):
   while fromDate.year <= toDate.year:
@@ -36,22 +39,26 @@ def doAllScalers(startDate,checkinDate,endDate,week,weekSeed):
     ans = SHDatetime()
     error = c_int(0)
     rvi = RateValueItem * 7
+    
     formatStr = "startDate: {} -- checkindate"
-      ": {} week: {} scaler: {}_______"
-      filledFormatStr = formatStr.format(formatDateStr(startDate),formatDateStr(checkinDate)
-      ,reverse("{0:b}".format(weekSeed)),s)
+    ": {} week: {} scaler: {}_______"
+    
+    filledFormatStr = formatStr.format(formatDateStr(startDate),formatDateStr(checkinDate)
+    ,reverse("{0:b}".format(weekSeed)),s)
+    
     print(filledFormatStr,end="\r",flush=True)
     lib.buildWeek(byref(week),c_longlong(s),byref(rvi))
     success = lib.nextDueDate_WEEKLY(byref(startDate),byref(checkinDate),byref(rvi)
-      ,c_longlong(s),byref(ans),byref(error))
+    ,c_longlong(s),byref(ans),byref(error))
+    
     if not success:
       raise RuntimeError("Error calculating next due date")
     ansTs = dtlib.dtToTimestamp(byref(ans),byref(error)).value
     dtExpected = findNextDueDate(startDate,checkinDate,week,s)
     if ansTs != dtlib.dtToTimestamp(byref(dtExpected),byref(error)):
-      
       print("Expected:{}\n Actual: {}\n".format(formatDateStr(dtExpected)
-        ,formatDateStr(ans)))
+      ,formatDateStr(ans)))
+      
       raise RuntimeError("Test failed")
 
 def findNextDueDate(startDate,checkinDate,week,scaler):
@@ -97,25 +104,8 @@ if __name__ == "__main__":
   dtlib.calcWeekdayIdx.restype = c_int
   dtlib.dayStart.restype = POINTER(SHDatetime)
   dtlib.dtToTimestamp.restype = c_longlong
-  SHDatetime fromDate = SHDatetime()
-  fromDate.year = c_longlong(1978)
-  fromDate.month = c_int(1)
-  fromDate.day = c_int(1)
-  fromDate.hour = c_int(0)
-  fromDate.minute = c_int(0)
-  fromDate.second = c_int(0)
-  fromDate.milisecond = c_int(0)
-  fromDate.timezoneOffset = c_int(0)
-  
-  SHDatetime toDate = SHDatetime()
-  toDate.year = c_longlong(2102)
-  toDate.month = c_int(12)
-  toDate.day = c_int(31)
-  toDate.hour = c_int(23)
-  toDate.minute = c_int(59)
-  toDate.second = c_int(59)
-  toDate.milisecond = c_int(0)
-  toDate.timezoneOffset = c_int(0)
+  fromDate = SHDatetime(1978,1,1,0,0,0,0,0)
+  toDate = SHDatetime(2102,12,31,23,59,59,0,0)
   
   doAllStartDays(fromDate,toDate)
 

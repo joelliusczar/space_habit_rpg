@@ -2,7 +2,7 @@ from ctypes import c_int
 from ctypes import c_long
 from ctypes import c_double
 from ctypes import POINTER
-
+from ctypes import Structure
 
 class Timeshift(Structure):
   _fields_ = [("month",c_int),

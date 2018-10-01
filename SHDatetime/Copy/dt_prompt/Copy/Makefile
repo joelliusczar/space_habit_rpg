@@ -15,7 +15,7 @@ DEBUG?=$(OPTIMIZE)
 all: $(HEADER_FILES) $(SOURCES) $(EXECUTABLE) COPY
 
 $(EXECUTABLE): $(DT_SHARED_FULL) dt_prompt.c
-	$(CC) $(INC) $(CFLAGS) -L./ -l$(DT_SHARED) dt_prompt.c -o $@
+	$(CC) $(INC) $(CFLAGS) -L. -l$(DT_SHARED) dt_prompt.c -o $@
 
 COPY: $(DT_SHARED_FULL) $(EXECUTABLE)
 	@if [ ${DEBUG} = ${OPTIMIZE} ]; then\

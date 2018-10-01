@@ -30,6 +30,7 @@ SOURCES = $(SH_TOOLS_SOURCES) $(SH_C_SOURCES) $(SH_C_SOURCES)
 all: $(HEADER_FILES) $(SOURCES) $(DT_SHARED_FULL) $(SH_TOOLS_FULL) $(SH_TOP_FULL)
 	@echo "dtShared $DT_SHARED_FULL"
 
+
 $(EXECUTABLE): $(SIMPLE_DT_FULL) dt_prompt.c
 	$(CC) $(INC) $(CFLAGS) -L$(SIMPLE_DT_PATH) -Wl,-rpath,$(SIMPLE_DT_PATH) \
 	-l$(SIMPLE_DT) dt_prompt.c -o $@

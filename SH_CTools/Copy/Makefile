@@ -1,7 +1,12 @@
 include ../SHBase.mk
 include vars.mk
-SH_TOOLS_FULL=$(call libfy,$(SH_TOOLS))
+SOURCE?=''
+SH_TOOLS_FULL=$(call libfy,$(SH_TOOLS)$(SOURCE))
 .DEFAULT_GOAL:=$(SH_TOOLS_FULL)
+PARENT_PATH ?= .
 
 $(SH_TOOLS_FULL): $(OBJECTS)
-	$(CC) $(INC) $(CFLAGS) $(OBJECTS) -shared -o $(SH_TOOLS_FULL)
+	@echo $(PARENT_PATH)
+	$(CC) $(INC) $(CFLAGS) $(OBJECTS) -Wl,$(PATH_KEYWORD),$(PARENT_PATH)$(SH_TOOLS_FULL) -shared -o $(SH_TOOLS_FULL)
+
+
