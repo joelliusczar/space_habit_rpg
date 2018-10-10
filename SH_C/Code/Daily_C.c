@@ -12,6 +12,7 @@
 #include "ErrorHandling.h"
 #include <stdlib.h>
 
+
 DEF_FIND_IDX_REV(bool,int,,)
 DEF_FIND_IDX(bool,int,,)
 
@@ -40,10 +41,11 @@ static void _setDayCounts(int64_t *daysCounts,bool *activeDays,int64_t counter
 
 void filWeek(int64_t *daysAheadCounts,int64_t *daysBeforeCounts,bool *activeDays
   ,RateValueItem *rvi){
+    if(!(daysAheadCounts&&daysBeforeCounts&&activeDays&&rvi)) return;
     for(int dayIdx = 0;dayIdx < WEEKLEN;dayIdx++){
-        rvi[0].forrange = daysAheadCounts[dayIdx];
-        rvi[0].backrange = daysBeforeCounts[dayIdx];
-        rvi[0].isDayActive = activeDays[dayIdx];
+        rvi[dayIdx].forrange = daysAheadCounts[dayIdx];
+        rvi[dayIdx].backrange = daysBeforeCounts[dayIdx];
+        rvi[dayIdx].isDayActive = activeDays[dayIdx];
     }
 }
 
@@ -54,6 +56,7 @@ static int64_t _distanceFromActiveWeek(int64_t weekNum,int64_t weekScaler){
 
 
 void buildWeek(bool *activeDays,int64_t scaler,RateValueItem *rvi){
+    if(!(activeDays&&rvi)) return;
     int64_t lastIdx = findIdxRev(bool,int)(activeDays,WEEKLEN,&_isDayActive,0);
     if(lastIdx == NOT_FOUND){
         buildEmptyWeek(rvi);
@@ -84,7 +87,7 @@ static int _findPrevDayIdxInWeek(bool isActiveWeek,int checkinDayIdx
     int prevDayIdx = DAYS_IN_WEEK;
     for(int i = 0; i < DAYS_IN_WEEK; i++){
         int reverseDayIdx = isActiveWeek ?
-          (DAYS_IN_WEEK + checkinDayIdx - i -1) & DAYS_IN_WEEK :
+          (DAYS_IN_WEEK + checkinDayIdx - i -1) % DAYS_IN_WEEK :
           DAYS_IN_WEEK - i - 1;
         if(week[reverseDayIdx].isDayActive){
             prevDayIdx = reverseDayIdx;
@@ -117,12 +120,20 @@ static int _offsetForSameWeek(bool isActiveWeek, int inputDayIdx,int prevDayIdx)
 
 bool previousDueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate
   ,RateValueItem *rvi,int64_t scaler,SHDatetime *ans,SHError *error){
-    if(!(lastDueDate&&checkinDate&&rvi)) return handleError(NULL_VALUES, "", error);
+    SHLog("previousDueDate_WEEKLY");
+    if(!(ans&&lastDueDate&&checkinDate&&rvi&&ans)){
+      return handleError(NULL_VALUES, "One of the inputs is null", error);
+    }
+    if(!(lastDueDate&&checkinDate&&rvi)) return handleError(NULL_VALUES
+                                                  ,"Invalid null inputs", error);
     SHErrorCode cnvtErr1,cnvtErr2;
     if(!(dtToTimestamp(checkinDate,&cnvtErr1) > dtToTimestamp(lastDueDate,&cnvtErr2))){
-        return handleError(OUT_OF_RANGE,"",error);
+        return handleError(OUT_OF_RANGE
+                 ,"Checkindate needs to be after lastDueDate",error);
     }
-    if(cnvtErr1||cnvtErr2) return handleError(cnvtErr1||cnvtErr2, "", error);
+    if(cnvtErr1||cnvtErr2) return handleError(cnvtErr1||cnvtErr2
+                                    ,"There was a conversion error with the\
+                               datetimes", error);
     
     int lastDayIdx = calcWeekdayIdx_m(lastDueDate,error);
     SHDatetime firstDayOfFirstWeek;
@@ -136,21 +147,29 @@ bool previousDueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate
     int64_t sunOfPrevActionWeek
       = firstSunToPrevSunSpan - _distanceFromActiveWeek(firstSunToPrevSunSpan, scaler);
     tryAddDaysToDt_m(&firstDayOfFirstWeek,sunOfPrevActionWeek + prevDayIdx,0,ans,error);
-    if(!(dtToTimestamp(ans,&cnvtErr1) <= dtToTimestamp(checkinDate,&cnvtErr2))){
-        return handleError(OUT_OF_RANGE,"",error);
+    if((dtToTimestamp(ans,&cnvtErr1) >= dtToTimestamp(checkinDate,&cnvtErr2))){
+        return handleError(OUT_OF_RANGE
+                 ,"The calculated answer for previous due date is after the \
+                checkindate",error);
     }
+    SHLog("leaving previousDueDate_WEEKLY");
     return true;
 }
 
 
 SHDatetime* bothWeeklyDueDatesFromLastDueDate(SHDatetime* lastDueDate,SHDatetime* checkinDate
   ,RateValueItem* week,int64_t scaler,SHError *error){
+    SHLog("bothWeeklyDueDatesFromLastDueDate");
     SHDatetime previousDate;
     previousDueDate_WEEKLY(lastDueDate, checkinDate, week, scaler, &previousDate, error);
+    if(error && error->code != NO_ERROR){
+      return handleErrorRetNull(error->code,"Error getting previous date"
+               ,error);
+    }
     int prevDayIdx = calcWeekdayIdx_m(&previousDate, error);
     SHDatetime firstDayOfPrevWeek;
     tryAddDaysToDt_m(&previousDate, -1*prevDayIdx, 0, &firstDayOfPrevWeek, error);
-    int64_t daySpan = dateDiffDays_m(&firstDayOfPrevWeek, checkinDate, error);
+    int64_t daySpan = dateDiffDays_m(checkinDate,&firstDayOfPrevWeek, error);
     int checkinDayIdx = calcWeekdayIdx_m(checkinDate, error);
     int64_t prevSunToThisSunSpan = daySpan - checkinDayIdx;
     int64_t weekCount = (_distanceFromActiveWeek(prevSunToThisSunSpan, scaler)/DAYS_IN_WEEK);
@@ -164,15 +183,30 @@ SHDatetime* bothWeeklyDueDatesFromLastDueDate(SHDatetime* lastDueDate,SHDatetime
     SHDatetime* resultPair = malloc(sizeof(SHDatetime)*2);
     resultPair[0] = previousDate;
     resultPair[1] = result;
+    SHLog("leaving bothWeeklyDueDatesFromLastDueDate");
     return resultPair;
 }
 
 bool nextDueDate_WEEKLY(SHDatetime* lastDueDate,SHDatetime* checkinDate
-  , RateValueItem* week,int64_t scaler,SHDatetime *ans,SHError* error){
-    SHDatetime* resultPair = bothWeeklyDueDatesFromLastDueDate(lastDueDate, checkinDate
-      , week, scaler, error);
-    *ans = resultPair[1];
-    free(resultPair);
-    if(error->code) return handleError(error->code, "", error);
-    return true;
+,RateValueItem* week,int64_t scaler,SHDatetime *ans,SHError* error){
+  SHLog("nextDueDate_WEEKLY\n");
+  if(!ans){
+    return handleError(NULL_VALUES, "One of the inputs is null", error);
+  }
+  SHDatetime* resultPair = bothWeeklyDueDatesFromLastDueDate(lastDueDate, checkinDate
+    , week, scaler, error);
+  if(!resultPair){
+    return handleError(GEN_ERROR, "Error calculating next due date", error);
+  }
+  *ans = resultPair[1];
+  free(resultPair);
+  if(error && error->code != NO_ERROR){
+    return handleError(error->code, "Error calculating next due date", error);
+  }
+  SHLog("leaving nextDueDate_WEEKLY\n");
+  if(dtToTimestamp_m(ans,error) <= dtToTimestamp_m(checkinDate,error)){
+    return handleError(OUT_OF_RANGE, "The calculated next due date was\
+           before the check in date.", error);
+  }
+  return true;
 }

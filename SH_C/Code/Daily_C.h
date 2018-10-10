@@ -15,10 +15,12 @@
 #include "SHDatetime.h"
 #include "ErrorHandling.h"
 
+
 typedef struct {
     bool isDayActive;
     int64_t backrange;
     int64_t forrange;
+    uintptr_t filler[4];
 } RateValueItem;
 
 void filWeek(int64_t *daysAheadCounts,int64_t *daysBeforeCounts,bool *activeDays

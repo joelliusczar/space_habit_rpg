@@ -84,7 +84,7 @@ bool tryAddDaysToTimestamp_m(double timestamp,int64_t day,TimeAdjustOptions opti
 
 bool tryDayStart_m(double timestamp,int timezoneOffset,double *ans,SHError *error);
 
-SHDatetime* dayStart(SHDatetime *dt);
+SHDatetime* dayStartInPlace(SHDatetime *dt);
 
 int calcWeekdayIdx_m(SHDatetime *dt,SHError *error);
 
