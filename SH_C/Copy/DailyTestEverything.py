@@ -9,7 +9,6 @@ from ctypes import c_void_p
 from ctypes import c_double
 import os
 import sys
-import faulthandler
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append( "../")
 from SHDatetime.SHDatetime_struct import *
@@ -58,7 +57,7 @@ def doAllScalers(startDate,checkinDate,endDate,week,weekSeed):
     formatStr = "startDate: {} -- checkindate: {} week: {} scaler: {}_______"
     
     filledFormatStr = formatStr.format(formatDateStr(startDate),formatDateStr(checkinDate)
-    ,"{0:b}".format(weekSeed)[::-1],s)
+    ,weekSeed,s)
     
     print(filledFormatStr,end="\r",flush=True)
     lib.buildWeek(byref(week),c_int64(s),byref(rvi))
@@ -94,7 +93,7 @@ def findNextDueDate(startDate,checkinDate,week,scaler):
   added = SHDatetime()
   currentTs = 0
   while currentTs < limit:
-    print("Finding next due date {0:_<82}".format(currentTs),end="\r",flush=True)
+    #print("Finding next due date {0:_<82}".format(currentTs),end="\r",flush=True)
     lib.tryAddDaysToDt_m(byref(tmpDate),c_int64(days),c_int(0),byref(added),byref(myErr))
     addedDayStart = lib.dayStartInPlace(byref(added))
     currentTs = lib.dtToTimestamp(addedDayStart,byref(error))
@@ -126,7 +125,6 @@ def buildWeekOfActiveDays(seed):
   return week
 
 if __name__ == "__main__":
-  faulthandler.enable(all_threads=True)
   lib.nextDueDate_WEEKLY.restype = c_bool
   lib.calcWeekdayIdx.restype = c_int
   lib.dayStartInPlace.restype = POINTER(SHDatetime)

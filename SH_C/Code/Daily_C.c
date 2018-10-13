@@ -16,6 +16,9 @@
 DEF_FIND_IDX_REV(bool,int,,)
 DEF_FIND_IDX(bool,int,,)
 
+bool _ArePreviousDateInputsValid(SHDatetime *lastDueDate,SHDatetime *checkinDate
+,RateValueItem *rvi,int64_t scaler,SHDatetime *ans,SHError *error);
+
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-parameter"
@@ -121,20 +124,9 @@ static int _offsetForSameWeek(bool isActiveWeek, int inputDayIdx,int prevDayIdx)
 bool previousDueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate
   ,RateValueItem *rvi,int64_t scaler,SHDatetime *ans,SHError *error){
     SHLog("previousDueDate_WEEKLY");
-    if(!(ans&&lastDueDate&&checkinDate&&rvi&&ans)){
-      return handleError(NULL_VALUES, "One of the inputs is null", error);
+    if(!_ArePreviousDateInputsValid(lastDueDate,checkinDate,rvi,scaler,ans,error)){
+      return false;
     }
-    if(!(lastDueDate&&checkinDate&&rvi)) return handleError(NULL_VALUES
-                                                  ,"Invalid null inputs", error);
-    SHErrorCode cnvtErr1,cnvtErr2;
-    if(!(dtToTimestamp(checkinDate,&cnvtErr1) > dtToTimestamp(lastDueDate,&cnvtErr2))){
-        return handleError(OUT_OF_RANGE
-                 ,"Checkindate needs to be after lastDueDate",error);
-    }
-    if(cnvtErr1||cnvtErr2) return handleError(cnvtErr1||cnvtErr2
-                                    ,"There was a conversion error with the\
-                               datetimes", error);
-    
     int lastDayIdx = calcWeekdayIdx_m(lastDueDate,error);
     SHDatetime firstDayOfFirstWeek;
     tryAddDaysToDt_m(lastDueDate,-lastDayIdx,0,&firstDayOfFirstWeek,error);
@@ -147,10 +139,9 @@ bool previousDueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate
     int64_t sunOfPrevActionWeek
       = firstSunToPrevSunSpan - _distanceFromActiveWeek(firstSunToPrevSunSpan, scaler);
     tryAddDaysToDt_m(&firstDayOfFirstWeek,sunOfPrevActionWeek + prevDayIdx,0,ans,error);
-    if((dtToTimestamp(ans,&cnvtErr1) >= dtToTimestamp(checkinDate,&cnvtErr2))){
+    if((dtToTimestamp_m(ans,error) >= dtToTimestamp_m(checkinDate,error))){
         return handleError(OUT_OF_RANGE
-                 ,"The calculated answer for previous due date is after the \
-                checkindate",error);
+                 ,"The calculated answer for previous due date is after the checkindate",error);
     }
     SHLog("leaving previousDueDate_WEEKLY");
     return true;
@@ -205,8 +196,37 @@ bool nextDueDate_WEEKLY(SHDatetime* lastDueDate,SHDatetime* checkinDate
   }
   SHLog("leaving nextDueDate_WEEKLY\n");
   if(dtToTimestamp_m(ans,error) <= dtToTimestamp_m(checkinDate,error)){
-    return handleError(OUT_OF_RANGE, "The calculated next due date was\
-           before the check in date.", error);
+    char ansStr[50];
+    char checkinStr[50];
+    makeDTPrintStr(ans,ansStr);
+    makeDTPrintStr(checkinDate,checkinStr);
+    char frmtErrMsg[200];
+    sprintf(frmtErrMsg, "The calculated next due date was before the check in date. Answer: %s "
+                          "checkinDate: %s Scaler:%"PRId64
+                          ,ansStr,checkinStr,scaler);
+    return handleError(OUT_OF_RANGE, frmtErrMsg, error);
+  }
+  return true;
+}
+
+bool _ArePreviousDateInputsValid(SHDatetime *lastDueDate,SHDatetime *checkinDate
+,RateValueItem *rvi,int64_t scaler,SHDatetime *ans,SHError *error){
+  if(!(ans&&lastDueDate&&checkinDate&&rvi&&ans)){
+    return handleError(NULL_VALUES, "One of the inputs is null", error);
+  }
+  if(scaler < 1){
+    return handleError(OUT_OF_RANGE, "Scaler needs to be greater than zero", error);
+  }
+  SHErrorCode cnvtErr1,cnvtErr2;
+  if(!(dtToTimestamp(checkinDate,&cnvtErr1) > dtToTimestamp(lastDueDate,&cnvtErr2))){
+      return handleError(OUT_OF_RANGE,"Checkindate needs to be after lastDueDate",error);
+  }
+  if(cnvtErr1||cnvtErr2){
+   return handleError(cnvtErr1||cnvtErr2,"There was a conversion error with the datetimes", error);
+  }
+  int64_t lastDayIdx = calcWeekdayIdx_m(lastDueDate,error);
+  if(!rvi[lastDayIdx].isDayActive){
+    return handleError(INVALID_STATE, "Previous due date is on an non active day.", error);
   }
   return true;
 }

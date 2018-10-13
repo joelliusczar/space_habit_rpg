@@ -10,12 +10,12 @@
 #define SHGenAlgos_h
 
 #if defined(__clang__)
-#ifndef blockoptimazation
-#define blockoptimazation __attribute__ ((optnone))
+#ifndef blockoptimization
+#define blockoptimization __attribute__ ((optnone))
 #endif
 #elif defined(__GNUC__)
-#ifndef blockoptimazation
-#define blockoptimazation __attribute__((optimize("O0")))
+#ifndef blockoptimization
+#define blockoptimization __attribute__((optimize("O0")))
 #endif
 #endif 
 

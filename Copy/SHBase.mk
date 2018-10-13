@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-Wall -Wextra $(DEBUG) $(EXTRA)
+CFLAGS=-Wall -Wextra -std=c99 $(DEBUG) $(EXTRA)
 rwildcard=$(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))
 libfy=lib$(1).so
 stlibfy=lib$(1).a

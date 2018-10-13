@@ -19,6 +19,11 @@
 		271691CB20885F890059A58E /* Daily_C.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Daily_C.c; sourceTree = "<group>"; };
 		271691EE208866770059A58E /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2716920D20897A740059A58E /* libSH_CTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_CTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2737D587216DAFEA00E0111F /* simple_start.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = simple_start.sh; sourceTree = "<group>"; };
+		2737D588216DAFEA00E0111F /* daily_server_run.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = daily_server_run.sh; sourceTree = "<group>"; };
+		2737D589216DAFEA00E0111F /* daily_server_cleanup.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = daily_server_cleanup.sh; sourceTree = "<group>"; };
+		2737D58A216DAFEA00E0111F /* daily_server.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = daily_server.sh; sourceTree = "<group>"; };
+		2737D58B216EE67B00E0111F /* DailySingleTest.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = DailySingleTest.py; sourceTree = "<group>"; };
 		27BB290A215749B8003225BB /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		27BB290B215749E7003225BB /* vars.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = vars.mk; sourceTree = "<group>"; };
 		27BB290C2157CBAA003225BB /* DailyTestEverything.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = DailyTestEverything.py; sourceTree = "<group>"; };
@@ -41,6 +46,7 @@
 		271691B920885EF70059A58E = {
 			isa = PBXGroup;
 			children = (
+				2737D586216DAFEA00E0111F /* Scripts */,
 				27BB29092157499D003225BB /* Copy */,
 				271691C920885F890059A58E /* Code */,
 				271691C320885EF70059A58E /* Products */,
@@ -74,6 +80,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2737D586216DAFEA00E0111F /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				2737D587216DAFEA00E0111F /* simple_start.sh */,
+				2737D588216DAFEA00E0111F /* daily_server_run.sh */,
+				2737D589216DAFEA00E0111F /* daily_server_cleanup.sh */,
+				2737D58A216DAFEA00E0111F /* daily_server.sh */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
 		27BB29092157499D003225BB /* Copy */ = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +98,7 @@
 				27BB290B215749E7003225BB /* vars.mk */,
 				27BB290C2157CBAA003225BB /* DailyTestEverything.py */,
 				27BB291A215B1093003225BB /* DailyStructs.py */,
+				2737D58B216EE67B00E0111F /* DailySingleTest.py */,
 			);
 			path = Copy;
 			sourceTree = "<group>";

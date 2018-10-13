@@ -75,7 +75,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestUI/SHUnitTests/DailyHelperTest.m"
-            timestampString = "555189883.921834"
+            timestampString = "561149736.017307"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "171"
@@ -200,7 +200,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestUI/SHUnitTests/DailyHelperTest.m"
-            timestampString = "555189883.924826"
+            timestampString = "561149736.018074"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "168"
@@ -232,7 +232,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestUI/SHUnitTests/DailyHelperTest.m"
-            timestampString = "555189883.925037"
+            timestampString = "561149736.018422"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "170"
@@ -341,7 +341,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestUI/SHUnitTests/DailyHelperTest.m"
-            timestampString = "555189883.925168"
+            timestampString = "561149736.01872"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "452"
@@ -373,7 +373,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestUI/SHUnitTests/DailyHelperTest.m"
-            timestampString = "555189883.925275"
+            timestampString = "561149736.019194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "169"
@@ -1631,7 +1631,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SHDatetime/Code/SHDatetime.c"
-            timestampString = "556942997.7068599"
+            timestampString = "561149736.021024"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "291"
@@ -1679,7 +1679,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestUI/SHUnitTests/DailyHelperTest.m"
-            timestampString = "555189884.001349"
+            timestampString = "561149736.021276"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "66"
@@ -1702,6 +1702,209 @@
             endingLineNumber = "12"
             landmarkName = "unknown"
             landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TestUI/SHUnitTests/DailyHelperTest.m"
+            timestampString = "561149736.022019"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "950"
+            endingLineNumber = "950"
+            landmarkName = "-testNextDueDateWeekly"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[DailyHelperTest testNextDueDateWeekly]"
+                  moduleName = "SHUnitTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/TestUI/SHUnitTests/DailyHelperTest.m"
+                  timestampString = "561098131.821128"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "930"
+                  endingLineNumber = "930"
+                  offsetFromSymbolStart = "42471">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[DailyHelperTest testNextDueDateWeekly]"
+                  moduleName = "SHUnitTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/TestUI/SHUnitTests/DailyHelperTest.m"
+                  timestampString = "561098131.823782"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "930"
+                  endingLineNumber = "930"
+                  offsetFromSymbolStart = "42606">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[DailyHelperTest testNextDueDateWeekly]"
+                  moduleName = "SHUnitTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/TestUI/SHUnitTests/DailyHelperTest.m"
+                  timestampString = "561098131.826071"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "930"
+                  endingLineNumber = "930"
+                  offsetFromSymbolStart = "44400">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[DailyHelperTest testNextDueDateWeekly]"
+                  moduleName = "SHUnitTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/TestUI/SHUnitTests/DailyHelperTest.m"
+                  timestampString = "561098131.8290811"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "930"
+                  endingLineNumber = "930"
+                  offsetFromSymbolStart = "44561">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[DailyHelperTest testNextDueDateWeekly]"
+                  moduleName = "SHUnitTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/TestUI/SHUnitTests/DailyHelperTest.m"
+                  timestampString = "561098131.832413"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "930"
+                  endingLineNumber = "930"
+                  offsetFromSymbolStart = "44688">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TestUI/SHUnitTests/DailyHelperTest.m"
+            timestampString = "561149736.022508"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "820"
+            endingLineNumber = "820"
+            landmarkName = "-testPreviousWeeklyDueDate2"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[DailyHelperTest testPreviousWeeklyDueDate2]"
+                  moduleName = "SHUnitTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/TestUI/SHUnitTests/DailyHelperTest.m"
+                  timestampString = "561135524.962072"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "820"
+                  endingLineNumber = "820"
+                  offsetFromSymbolStart = "1281">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[DailyHelperTest testPreviousWeeklyDueDate2]"
+                  moduleName = "SHUnitTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/TestUI/SHUnitTests/DailyHelperTest.m"
+                  timestampString = "561135524.969221"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "820"
+                  endingLineNumber = "820"
+                  offsetFromSymbolStart = "1373">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[DailyHelperTest testPreviousWeeklyDueDate2]"
+                  moduleName = "SHUnitTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/TestUI/SHUnitTests/DailyHelperTest.m"
+                  timestampString = "561135524.979269"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "820"
+                  endingLineNumber = "820"
+                  offsetFromSymbolStart = "1487">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[DailyHelperTest testPreviousWeeklyDueDate2]"
+                  moduleName = "SHUnitTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/TestUI/SHUnitTests/DailyHelperTest.m"
+                  timestampString = "561135524.984962"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "820"
+                  endingLineNumber = "820"
+                  offsetFromSymbolStart = "2010">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TestUI/SHUnitTests/DailyHelperTest.m"
+            timestampString = "561149736.023121"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "817"
+            endingLineNumber = "817"
+            landmarkName = "-testPreviousWeeklyDueDate2"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SH_C/Code/Daily_C.c"
+            timestampString = "561149736.023926"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "previousDueDate_WEEKLY"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -11,6 +11,7 @@
 @import SHModels;
 
 #import <SHGlobal/FlexibleConstants.h>
+#import "Daily_C.h"
 @import TestCommon;
 
 @interface DailyHelperTest : FrequentCase
@@ -442,466 +443,515 @@ NSMutableArray<Daily *> *testDailies = nil;
 //I don't think the scaler stuff comes into play yet
 //TODO: there's some test I want to do to test against going out of range past 'Base'
 -(void)testPreviousDate{
-    NSInteger btw;
+    int64_t btw;
+    RateValueItem week[7];
     BOOL testSet[] = {0,1,0,1,0,0,0};//monday, wednesday
     int weekScaler = 3;
-    NSArray<RateValueItemDict *> *week = [Daily buildWeek:testSet scaler:weekScaler];
-    NSDate *base = [NSDate createSimpleDateWithYear:2018 month:1 day:7];
+    buildWeek(testSet, weekScaler, week);
+    SHDatetime base = {2018,1,7,0,0,0,0};
+    SHDatetime lastDueDate;
+    SHDatetime checkinDate;
+    SHDatetime expectedDate;
+    SHDatetime result;
+    SHError err;
+    prepareSHError(&err);
+    tryAddDaysToDt_m(&base,1,0,&lastDueDate,&err);
+    tryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,66,0,&expectedDate,&err);
+
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    NSDate *lastDueDate = [base dateAfterYears:0 months:0 days:1];
-    NSDate *checkinDate = [base dateAfterYears:0 months:0 days:81]; //march 29
-    NSDate *result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    NSDate *expectedDate = [base dateAfterYears:0 months:0 days:66];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,65,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,64,0,&expectedDate,&err);
+    btw = dateDiffDays_m(&result,&base,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:65];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:64];
-    btw = [NSDate daysBetween:base to:result];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,66,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,64,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:66];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:64];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,64,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,45,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:64];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:45];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,72,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,66,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:72];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:66];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,5,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,3,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:5];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:3];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,2,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,1,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:2];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:1];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,24,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,22,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:24];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:22];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,22,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,3,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:22];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:3];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
-    
-    checkinDate = [base dateAfterYears:0 months:0 days:50];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:45];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,50,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,45,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
     weekScaler = 1;
-    week = [Daily buildWeek:testSet scaler:weekScaler];
-    base = [NSDate createSimpleDateWithYear:2018 month:1 day:7];
+    buildWeek(testSet,weekScaler,week);
+    base.year = 2018;
+    base.month = 1;
+    base.day = 7;
     
-    lastDueDate = [base dateAfterYears:0 months:0 days:1];
-    checkinDate = [base dateAfterYears:0 months:0 days:81]; //march 29
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:80];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,1,0,&lastDueDate,&err);
+    tryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,80,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:65];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:64];
-    btw = [NSDate daysBetween:base to:result];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,65,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,64,0,&expectedDate,&err);
+    btw = dateDiffDays_m(&result,&base,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:66];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:64];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,66,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,64,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:64];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:59];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,64,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,59,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:72];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:71];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,72,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,71,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:5];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:3];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,5,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,3,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:2];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:1];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,2,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,1,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:24];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:22];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,24,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,22,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:22];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:17];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,22,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,17,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
     bool testSet2[] = {0,0,0,0,0,1,0};
     weekScaler = 3;
-    week = [Daily buildWeek:testSet2 scaler:weekScaler];
+    buildWeek(testSet2,weekScaler,week);
     
-    lastDueDate = [base dateAfterYears:0 months:0 days:5];
-    checkinDate = [base dateAfterYears:0 months:0 days:81]; //march 29
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:68];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,5,0,&lastDueDate,&err);
+    tryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,68,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:6];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:5];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,6,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,5,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
     weekScaler = 1;
-    week = [Daily buildWeek:testSet2 scaler:weekScaler];
+    buildWeek(testSet2,weekScaler,week);
     
-    lastDueDate = [base dateAfterYears:0 months:0 days:5];
-    checkinDate = [base dateAfterYears:0 months:0 days:81]; //march 29
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:75];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,5,0,&lastDueDate,&err);
+    tryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,75,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:6];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:5];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,6,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,5,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
     bool testSet3[] = {1,0,0,0,0,0,0};
     weekScaler = 3;
-    week = [Daily buildWeek:testSet3 scaler:weekScaler];
+    buildWeek(testSet3,weekScaler,week);
     
     lastDueDate = base;
-    checkinDate = [base dateAfterYears:0 months:0 days:81]; //march 29
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:63];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,63,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:62];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:42];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,62,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,42,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:1];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:0];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,1,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,0,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
     weekScaler = 1;
-    week = [Daily buildWeek:testSet3 scaler:weekScaler];
+    buildWeek(testSet3,weekScaler,week);
     
     lastDueDate = base;
-    checkinDate = [base dateAfterYears:0 months:0 days:81]; //march 29
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:77];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,77,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:62];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:56];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,62,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,56,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:1];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:0];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,1,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,0,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:7];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:0];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,7,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,0,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
     bool testSet4[] = {0,0,0,0,0,0,1};
     weekScaler = 3;
-    week = [Daily buildWeek:testSet4 scaler:weekScaler];
+    buildWeek(testSet4,weekScaler,week);
     
-    lastDueDate = [base dateAfterYears:0 months:0 days:6];
-    checkinDate = [base dateAfterYears:0 months:0 days:81]; //march 29
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:69];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,6,0,&lastDueDate,&err);
+    tryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,69,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:13];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:6];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,13,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:20];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:6];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,20,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:26];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:6];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,26,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:34];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:27];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,34,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,27,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:68];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:48];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,68,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,48,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:7];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:6];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,7,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
     weekScaler = 1;
-    week = [Daily buildWeek:testSet4 scaler:weekScaler];
+    buildWeek(testSet4,weekScaler,week);
     
-    lastDueDate = [base dateAfterYears:0 months:0 days:6];
-    checkinDate = [base dateAfterYears:0 months:0 days:81]; //march 29
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:76];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,6,0,&lastDueDate,&err);
+    tryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,76,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:13];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:6];
-    btw = [NSDate daysBetween:base to:result];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,13,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
+    btw = dateDiffDays_m(&result,&base,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:20];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:13];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,20,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,13,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:26];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:20];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,26,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,20,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:34];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:27];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,34,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,27,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:68];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:62];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,68,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,62,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:7];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:6];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,7,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
     bool testSet5[] = {1,1,1,1,1,1,1};
     weekScaler = 3;
-    week = [Daily buildWeek:testSet5 scaler:weekScaler];
+    buildWeek(testSet5,weekScaler,week);
     
-    lastDueDate = [base dateAfterYears:0 months:0 days:6];
-    checkinDate = [base dateAfterYears:0 months:0 days:81]; //march 29
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:69];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,6,0,&lastDueDate,&err);
+    tryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,69,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:13];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:6];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,13,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:20];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:6];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,20,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:7];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:6];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,7,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:34];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:27];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,34,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,27,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:68];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:67];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,68,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,67,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:6];
-    XCTAssertThrows([Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler]);
+    tryAddDaysToDt_m(&base,6,0,&checkinDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
     weekScaler = 1;
-    week = [Daily buildWeek:testSet5 scaler:weekScaler];
+    buildWeek(testSet5,weekScaler,week);
     
-    lastDueDate = [base dateAfterYears:0 months:0 days:6];
-    checkinDate = [base dateAfterYears:0 months:0 days:81]; //march 29
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:80];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,6,0,&lastDueDate,&err);
+    tryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,80,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:13];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:12];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,13,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,12,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:20];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:19];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,20,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,19,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:7];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:6];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,7,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:34];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:33];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,34,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,33,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:68];
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:67];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,68,0,&checkinDate,&err);
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,67,0,&expectedDate,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
     
     bool testSet6[] = {1,1,0,0,0,0,0};
     weekScaler = 3;
-    week = [Daily buildWeek:testSet6 scaler:weekScaler];
+    buildWeek(testSet6,weekScaler,week);
     
-    lastDueDate = [base dateAfterYears:0 months:0 days:1];
-    checkinDate = [base dateAfterYears:0 months:0 days:7]; //march 29
-    result = [Daily previousDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expectedDate = [base dateAfterYears:0 months:0 days:1];
-    btw = [NSDate daysBetween:base to:result];
-    XCTAssertEqual(result.timeIntervalSince1970,expectedDate.timeIntervalSince1970);
-    
+    tryAddDaysToDt_m(&base,1,0,&lastDueDate,&err);
+    tryAddDaysToDt_m(&base,7,0,&checkinDate,&err); //march 29
+    previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,1,0,&expectedDate,&err);
+    btw = dateDiffDays_m(&result,&base,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+  
+}
+
+-(void)testPreviousWeeklyDueDate2{
+  RateValueItem week[7];
+  BOOL testSet[] = {0,1,0,0,0,0,0};//monday
+  int weekScaler = 1;
+  buildWeek(testSet, weekScaler, week);
+  SHDatetime base = {1978,1,1,0,0,0,0};
+  SHDatetime lastDueDate;
+  SHDatetime checkinDate;
+  SHDatetime expected;
+  SHDatetime result;
+  SHError err;
+  prepareSHError(&err);
+  tryAddDaysToDt_m(&base,0,0,&lastDueDate,&err);
+  tryAddDaysToDt_m(&base,1,0,&checkinDate,&err);
+  tryAddDaysToDt_m(&base,0,0,&expected,&err);
+  bool isSuccess = previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+  XCTAssertEqual(isSuccess,false);
+  
 }
 
 -(void)testNextDueDateWeekly{
-    NSUInteger btw;
+    int64_t btw;
+    RateValueItem week[7];
     BOOL testSet0[] = {0,1,0,1,0,0,0};
     int weekScaler = 3;
-    NSArray<RateValueItemDict *> *week = [Daily buildWeek:testSet0 scaler:weekScaler];
-    NSDate *base = [NSDate createSimpleDateWithYear:2018 month:1 day:7];
-    NSDate *lastDueDate = [base dateAfterYears:0 months:0 days:1];
-    NSDate *checkinDate = [base dateAfterYears:0 months:0 days:81];
-    NSDate *result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    NSDate *expected = [base dateAfterYears:0 months:0 days:85];
-    btw = [NSDate daysBetween:base to:result];
-    XCTAssertEqual(result.timeIntervalSince1970,expected.timeIntervalSince1970);
+    buildWeek(testSet0, weekScaler, week);
+    SHDatetime base = {2018,1,7,0,0,0,0};
+    SHDatetime lastDueDate;
+    SHDatetime checkinDate;
+    SHDatetime expected;
+    SHDatetime result;
+    SHError err;
+    prepareSHError(&err);
+    tryAddDaysToDt_m(&base,1,0,&lastDueDate,&err);
+    tryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
+    nextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,85,0,&expected,&err);
+    btw = dateDiffDays_m(&result,&base,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:65];
-    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expected = [base dateAfterYears:0 months:0 days:66];
-    btw = [NSDate daysBetween:base to:result];
-    XCTAssertEqual(result.timeIntervalSince1970,expected.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,65,0,&checkinDate,&err);
+    nextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,66,0,&expected,&err);
+    btw = dateDiffDays_m(&result,&base,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:63];
-    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expected = [base dateAfterYears:0 months:0 days:64];
-    btw = [NSDate daysBetween:base to:result];
-    XCTAssertEqual(result.timeIntervalSince1970,expected.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,63,0,&checkinDate,&err);
+    nextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,64,0,&expected,&err);
+    btw = dateDiffDays_m(&result,&base,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:62];
-    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expected = [base dateAfterYears:0 months:0 days:64];
-    btw = [NSDate daysBetween:base to:result];
-    XCTAssertEqual(result.timeIntervalSince1970,expected.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,62,0,&checkinDate,&err);
+    nextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,64,0,&expected,&err);
+    btw = dateDiffDays_m(&result,&base,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:50];
-    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expected = [base dateAfterYears:0 months:0 days:64];
-    btw = [NSDate daysBetween:base to:result];
-    XCTAssertEqual(result.timeIntervalSince1970,expected.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,50,0,&checkinDate,&err);
+    nextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,64,0,&expected,&err);
+    btw = dateDiffDays_m(&result,&base,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:46];
-    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expected = [base dateAfterYears:0 months:0 days:64];
-    btw = [NSDate daysBetween:base to:result];
-    XCTAssertEqual(result.timeIntervalSince1970,expected.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,46,0,&checkinDate,&err);
+    nextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,64,0,&expected,&err);
+    btw = dateDiffDays_m(&result,&base,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:66];
-    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expected = [base dateAfterYears:0 months:0 days:66];
-    btw = [NSDate daysBetween:base to:result];
-    XCTAssertEqual(result.timeIntervalSince1970,expected.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,66,0,&checkinDate,&err);
+    nextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,66,0,&expected,&err);
+    btw = dateDiffDays_m(&result,&base,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days:64];
-    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expected = [base dateAfterYears:0 months:0 days:64];
-    btw = [NSDate daysBetween:base to:result];
-    XCTAssertEqual(result.timeIntervalSince1970,expected.timeIntervalSince1970);
+    tryAddDaysToDt_m(&base,64,0,&checkinDate,&err);
+    nextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,64,0,&expected,&err);
+    btw = dateDiffDays_m(&result,&base,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
     
     weekScaler = 1;
-    week = [Daily buildWeek:testSet0 scaler:weekScaler];
+    buildWeek(testSet0, weekScaler, week);
     
-    checkinDate = [base dateAfterYears:0 months:0 days: 62];
-    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expected = [base dateAfterYears:0 months:0 days:64];
+    tryAddDaysToDt_m(&base,62,0,&checkinDate,&err);
+    nextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,64,0,&expected,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days: 63];
-    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expected = [base dateAfterYears:0 months:0 days:64];
+    tryAddDaysToDt_m(&base,63,0,&checkinDate,&err);
+    nextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,64,0,&expected,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days: 64];
-    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expected = [base dateAfterYears:0 months:0 days:64];
+    tryAddDaysToDt_m(&base,64,0,&checkinDate,&err);
+    nextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,64,0,&expected,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days: 65];
-    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expected = [base dateAfterYears:0 months:0 days:66];
+    tryAddDaysToDt_m(&base,65,0,&checkinDate,&err);
+    nextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,66,0,&expected,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days: 66];
-    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expected = [base dateAfterYears:0 months:0 days:66];
+    tryAddDaysToDt_m(&base,66,0,&checkinDate,&err);
+    nextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,66,0,&expected,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days: 67];
-    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expected = [base dateAfterYears:0 months:0 days:71];
+    tryAddDaysToDt_m(&base,67,0,&checkinDate,&err);
+    nextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,71,0,&expected,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days: 68];
-    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expected = [base dateAfterYears:0 months:0 days:71];
+    tryAddDaysToDt_m(&base,68,0,&checkinDate,&err);
+    nextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,71,0,&expected,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days: 69];
-    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expected = [base dateAfterYears:0 months:0 days:71];
+    tryAddDaysToDt_m(&base,69,0,&checkinDate,&err);
+    nextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,71,0,&expected,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days: 70];
-    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expected = [base dateAfterYears:0 months:0 days:71];
+    tryAddDaysToDt_m(&base,70,0,&checkinDate,&err);
+    nextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,71,0,&expected,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days: 71];
-    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expected = [base dateAfterYears:0 months:0 days:71];
+    tryAddDaysToDt_m(&base,71,0,&checkinDate,&err);
+    nextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,71,0,&expected,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days: 72];
-    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expected = [base dateAfterYears:0 months:0 days:73];
+    tryAddDaysToDt_m(&base,72,0,&checkinDate,&err);
+    nextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,73,0,&expected,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days: 73];
-    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expected = [base dateAfterYears:0 months:0 days:73];
+    tryAddDaysToDt_m(&base,73,0,&checkinDate,&err);
+    nextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,73,0,&expected,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
     
-    checkinDate = [base dateAfterYears:0 months:0 days: 74];
-    result = [Daily nextDueDate_WEEKLY:lastDueDate checkinDate:checkinDate week:week weekScaler:weekScaler];
-    expected = [base dateAfterYears:0 months:0 days:77];
+    tryAddDaysToDt_m(&base,74,0,&checkinDate,&err);
+    nextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    tryAddDaysToDt_m(&base,78,0,&expected,&err);
+    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
     
     BOOL testSet1[] = {1,0,0,0,0,0,0};
     weekScaler = 3;
-    week = [Daily buildWeek:testSet1 scaler:weekScaler];
+    buildWeek(testSet1, weekScaler, week);
     
     
 }

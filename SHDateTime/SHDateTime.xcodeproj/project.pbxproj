@@ -30,6 +30,10 @@
 /* Begin PBXFileReference section */
 		2716922A20916D0F0059A58E /* libSH_CTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_CTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2716922C20916D170059A58E /* libSHGlobal_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHGlobal_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2737D580216DA8BB00E0111F /* simple_start.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = simple_start.sh; sourceTree = "<group>"; };
+		2737D581216DA8BB00E0111F /* dt_server_run.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = dt_server_run.sh; sourceTree = "<group>"; };
+		2737D582216DA8BB00E0111F /* dt_server_cleanup.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = dt_server_cleanup.sh; sourceTree = "<group>"; };
+		2737D583216DA8BB00E0111F /* dt_server.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = dt_server.sh; sourceTree = "<group>"; };
 		27BB29002151D4B1003225BB /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		27BB2908215738BE003225BB /* vars.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = vars.mk; sourceTree = "<group>"; };
 		27BB290D2157D8E2003225BB /* cl_dt_all.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = cl_dt_all.py; sourceTree = "<group>"; };
@@ -78,6 +82,17 @@
 				2716922A20916D0F0059A58E /* libSH_CTools.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2737D57F216DA8BB00E0111F /* dt_server */ = {
+			isa = PBXGroup;
+			children = (
+				2737D580216DA8BB00E0111F /* simple_start.sh */,
+				2737D581216DA8BB00E0111F /* dt_server_run.sh */,
+				2737D582216DA8BB00E0111F /* dt_server_cleanup.sh */,
+				2737D583216DA8BB00E0111F /* dt_server.sh */,
+			);
+			path = dt_server;
 			sourceTree = "<group>";
 		};
 		27BB28FF2151D453003225BB /* Copy */ = {
@@ -131,6 +146,7 @@
 		27D318342086C8CA0047F5F1 = {
 			isa = PBXGroup;
 			children = (
+				2737D57F216DA8BB00E0111F /* dt_server */,
 				27BB28FF2151D453003225BB /* Copy */,
 				27D318442086C9040047F5F1 /* Code */,
 				27D3183E2086C8CA0047F5F1 /* Products */,

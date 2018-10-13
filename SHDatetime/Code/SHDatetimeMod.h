@@ -104,6 +104,7 @@ bool tryDiffDateSecs_m(SHDatetime const *A,SHDatetime const *B,int64_t *ans,
 
 bool isValidSHDateTime_m(SHDatetime const *dt);
 
+void makeDTPrintStr(SHDatetime const *dt,char* str);
 #endif /* SHDatetimeMod_h */
 
 

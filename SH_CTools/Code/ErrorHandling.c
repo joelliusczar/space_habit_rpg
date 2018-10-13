@@ -49,23 +49,23 @@ void * handleErrorRetNull(SHErrorCode code,const char* const msg,SHError* errObj
   return NULL;
 }
 
-void setSHErrorDefault(SHError * errObj){
-  if(!errObj) return;
-  errObj->code = NO_ERROR;
-  errObj->errorCallback = NULL;
-  errObj->callbackInfo = NULL;
-}
 
 void prepareSHError(SHError* errObj){
   SHLog("prepareSHError");
   if(!errObj) return;
   errObj->code = NO_ERROR;
   errObj->msg = "";
+  errObj->errorCallback = NULL;
+  errObj->callbackInfo = NULL;
   SHLog("leaving prepareSHError");
 }
 
 #pragma GCC diagnostic push
+#if defined(__clang__)
 #pragma GCC diagnostic ignored "-Wincompatible-pointer-types-discards-qualifiers"
+#elif defined(__GNUC__)
+#pragma GCC diagnostic ignored "-Wdiscarded-qualifiers"
+#endif
 void disposeSHError(SHError *errObj){
 	if(!errObj) return;
 	free(errObj->msg);

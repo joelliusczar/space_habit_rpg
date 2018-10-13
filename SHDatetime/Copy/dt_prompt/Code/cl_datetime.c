@@ -306,7 +306,7 @@ SHErrorCode selectChoice(int argc,char *argv[]){
         SHDatetime ans;
         cl_timestampToDt(argc,argv,&error,&ans);
         if(error) return error;
-        printf("%lld-%d-%d %d:%d:%d tz offset: %d\n",
+        printf("%"PRId64 "-%d-%d %d:%d:%d tz offset: %d\n",
           dt.year,dt.month,dt.day,dt.hour,dt.minute,dt.second
           ,dt.timezoneOffset);
         return NO_ERROR;
@@ -315,7 +315,7 @@ SHErrorCode selectChoice(int argc,char *argv[]){
         SHDatetime ans;
         dtAdd(argc,argv,&error,&ans);
         if(error) return error;
-        printf("%lld - %d - %d %d:%d:%d tz offset: %d\n",
+        printf("%"PRId64 "- %d - %d %d:%d:%d tz offset: %d\n",
           dt.year,dt.month,dt.day,dt.hour,dt.minute,dt.second
           ,dt.timezoneOffset);
         return NO_ERROR;

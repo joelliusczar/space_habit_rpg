@@ -14,7 +14,7 @@
 double createDateTime(int64_t year,int month,int day,int hour,int minute,int second
   ,int timezoneOffset,SHErrorCode *error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     double ans = createDateTime_m(year,month,day,hour,minute,second,timezoneOffset,&err);
     if(error) *error = err.code;
     return ans;
@@ -28,7 +28,7 @@ int isValidSHDateTime(SHDatetime const *dt){
 bool tryCreateDateTime(int64_t year,int month,int day,int hour,int minute,int second
   ,int timezoneOffset,double *ans,SHErrorCode *error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     bool isSuccess = tryCreateDateTime_m(year, month, day, hour, minute, second,
       timezoneOffset, ans, &err);
     if(error) *error = err.code;
@@ -37,7 +37,7 @@ bool tryCreateDateTime(int64_t year,int month,int day,int hour,int minute,int se
 
 double createDate(int64_t year,int month,int day,int timezoneOffset,SHErrorCode *error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     double ans = createDate_m(year,month,day,timezoneOffset,&err);
     if(error) *error = err.code;
     return ans;
@@ -46,7 +46,7 @@ double createDate(int64_t year,int month,int day,int timezoneOffset,SHErrorCode 
 bool tryCreateDate(int64_t year,int month,int day,int timezoneOffset,double *ans,
     SHErrorCode *error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     bool isSuccess = tryCreateDate_m(year,month,day,timezoneOffset,ans,&err);
     if(error) *error = err.code;
     return isSuccess;
@@ -54,7 +54,7 @@ bool tryCreateDate(int64_t year,int month,int day,int timezoneOffset,double *ans
 
 double createTime(int hour,int minute,int second,SHErrorCode *error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     double ans = createTime_m(hour,minute,second,&err);
     if(error) *error = err.code;
     return ans;
@@ -62,7 +62,7 @@ double createTime(int hour,int minute,int second,SHErrorCode *error){
 
 bool tryCreateTime(int hour,int minute,int second,double *ans,SHErrorCode *error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     bool isSuccess = tryCreateTime_m(hour,minute,second,ans,&err);
     if(error) *error = err.code;
     return isSuccess;
@@ -72,7 +72,7 @@ bool tryCreateTime(int hour,int minute,int second,double *ans,SHErrorCode *error
 bool tryTimestampToDt(double timestamp, int timezoneOffset,SHDatetime *dt,
   SHErrorCode *error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     bool isSuccess = tryTimestampToDt_m(timestamp,timezoneOffset,dt,&err);
     if(error) *error = err.code;
     return isSuccess;
@@ -80,7 +80,7 @@ bool tryTimestampToDt(double timestamp, int timezoneOffset,SHDatetime *dt,
 
 bool timestampToDtUnitsOnly(double timestamp,SHDatetime *dt,SHErrorCode *error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     bool isSuccess = timestampToDtUnitsOnly_m(timestamp,dt,&err);
     if(error) *error = err.code;
     return isSuccess;
@@ -89,7 +89,7 @@ bool timestampToDtUnitsOnly(double timestamp,SHDatetime *dt,SHErrorCode *error){
 bool tryDtToTimestamp(SHDatetime const *dt,double *ans,SHErrorCode *error){
     SHLog("tryDtToTimestamp");
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     bool isSuccess = tryDtToTimestamp_m(dt,ans,&err);
     if(error) *error = err.code;
     SHLog("leaving tryDtToTimestamp");
@@ -99,7 +99,7 @@ bool tryDtToTimestamp(SHDatetime const *dt,double *ans,SHErrorCode *error){
 double dtToTimestamp(SHDatetime const *dt,SHErrorCode *error){
     SHLog("dtToTimestamp");
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     double ans = dtToTimestamp_m(dt,&err);
     if(error) *error = err.code;
     SHLog("leaving dtToTimestamp");
@@ -109,7 +109,7 @@ double dtToTimestamp(SHDatetime const *dt,SHErrorCode *error){
 
 bool tryExtractTime(SHDatetime *dt,double *ans,SHErrorCode *error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     bool isSuccess = tryExtractTime_m(dt,ans,&err);
     if(error) *error = err.code;
     return isSuccess;
@@ -118,7 +118,7 @@ bool tryExtractTime(SHDatetime *dt,double *ans,SHErrorCode *error){
 
 double extractTime(SHDatetime *dt,SHErrorCode *error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     double ans = extractTime_m(dt,&err);
     if(error) *error = err.code;
     return ans;
@@ -128,7 +128,7 @@ double extractTime(SHDatetime *dt,SHErrorCode *error){
 bool tryAddDaysToDtInPlace(SHDatetime *dt,int64_t days,TimeAdjustOptions options,
   SHErrorCode *error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     bool isSuccess = tryAddDaysToDtInPlace_m(dt,days,options,&err);
     if(error) *error = err.code;
     return isSuccess;
@@ -139,7 +139,7 @@ bool tryAddDaysToDt(SHDatetime const *dt,int64_t days,TimeAdjustOptions options
   ,SHDatetime *ans,SHErrorCode *error){
     SHLog("tryAddDaysToDt");
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     bool isSuccess = tryAddDaysToDt_m(dt,days,options,ans,&err);
     if(error) *error = err.code;
     SHLog("leaving tryAddDaysToDt");
@@ -152,7 +152,7 @@ bool tryAddDaysToDt(SHDatetime const *dt,int64_t days,TimeAdjustOptions options
 bool tryAddDaysToTimestamp(double timestamp,int64_t days, TimeAdjustOptions options,
    double *ans,SHErrorCode *error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     bool isSuccess = tryAddDaysToTimestamp_m(timestamp,days,options,ans,&err);
     if(error) *error = err.code;
     return isSuccess;
@@ -163,7 +163,7 @@ bool tryAddDaysToTimestamp(double timestamp,int64_t days, TimeAdjustOptions opti
 bool tryAddMonthsToDt(SHDatetime const *dt,int64_t months,TimeAdjustOptions options
   ,SHDatetime *ans,SHErrorCode *error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     bool isSuccess = tryAddMonthsToDt_m(dt,months,options,ans,&err);
     if(error) *error = err.code;
     return isSuccess;
@@ -172,7 +172,7 @@ bool tryAddMonthsToDt(SHDatetime const *dt,int64_t months,TimeAdjustOptions opti
 bool tryAddMonthsToDtInPlace(SHDatetime *dt,int64_t months,TimeAdjustOptions options,
   SHErrorCode *error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     bool isSuccess = tryAddMonthsToDtInPlace_m(dt,months,options,&err);
     if(error) *error = err.code;
     return isSuccess;
@@ -181,7 +181,7 @@ bool tryAddMonthsToDtInPlace(SHDatetime *dt,int64_t months,TimeAdjustOptions opt
 bool tryAddMonthsToTimestamp(double timestamp,int64_t months,int timezoneOffset,
   TimeAdjustOptions options,double *ans,SHErrorCode *error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     bool isSuccess = tryAddMonthsToTimestamp_m(timestamp,months,timezoneOffset,options,
       ans,&err);
     if(error) *error = err.code;
@@ -192,7 +192,7 @@ bool tryAddMonthsToTimestamp(double timestamp,int64_t months,int timezoneOffset,
 double addYearsToTimestamp(double timestamp,int64_t years,int timezoneOffset,
   TimeAdjustOptions options,SHErrorCode *error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     double ans = addYearsToTimestamp_m(timestamp,years,timezoneOffset,options,&err);
     if(error) *error = err.code;
     return ans;
@@ -201,7 +201,7 @@ double addYearsToTimestamp(double timestamp,int64_t years,int timezoneOffset,
 bool tryAddYearsToTimestamp(double timestamp,int64_t years,int timezoneOffset,
   TimeAdjustOptions options,double *ans,SHErrorCode *error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     bool isSuccess = tryAddYearsToTimestamp_m(timestamp,years,timezoneOffset,options,
       ans,&err);
     if(error) *error = err.code;
@@ -211,7 +211,7 @@ bool tryAddYearsToTimestamp(double timestamp,int64_t years,int timezoneOffset,
 bool tryAddYearsToDt(SHDatetime const *dt,int64_t years,TimeAdjustOptions options
   ,SHDatetime *ans,SHErrorCode *error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     bool isSuccess = tryAddYearsToDt_m(dt,years,options,ans,&err);
     if(error) *error = err.code;
     return isSuccess;
@@ -220,7 +220,7 @@ bool tryAddYearsToDt(SHDatetime const *dt,int64_t years,TimeAdjustOptions option
 bool tryAddYearsToDtInPlace(SHDatetime *dt,int64_t years,TimeAdjustOptions options
   ,SHErrorCode *error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     bool isSuccess = tryAddYearsToDtInPlace_m(dt,years,options,&err);
     if(error) *error = err.code;
     return isSuccess;
@@ -228,7 +228,7 @@ bool tryAddYearsToDtInPlace(SHDatetime *dt,int64_t years,TimeAdjustOptions optio
 
 bool tryDayStart(double timestamp,int timezoneOffset,double *ans,SHErrorCode *error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     bool isSuccess = tryDayStart_m(timestamp,timezoneOffset,ans,&err);
     if(error) *error = err.code;
     return isSuccess;
@@ -237,7 +237,7 @@ bool tryDayStart(double timestamp,int timezoneOffset,double *ans,SHErrorCode *er
 
 int calcWeekdayIdx(SHDatetime *dt,SHErrorCode *error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     int ans = calcWeekdayIdx_m(dt,&err);
     if(error) *error = err.code;
     return ans;
@@ -245,7 +245,7 @@ int calcWeekdayIdx(SHDatetime *dt,SHErrorCode *error){
 
 int calcDayOfYear(SHDatetime *dt,SHErrorCode *error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     int ans = calcDayOfYear_m(dt,&err);
     if(error) *error = err.code;
     return ans;
@@ -254,7 +254,7 @@ int calcDayOfYear(SHDatetime *dt,SHErrorCode *error){
 
 int calcDayOfYearFromTimestamp(double timestamp,int timezoneOffset,SHErrorCode * error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     int ans = calcDayOfYearFromTimestamp_m(timestamp,timezoneOffset,&err);
     if(error) *error = err.code;
     return ans;
@@ -263,7 +263,7 @@ int calcDayOfYearFromTimestamp(double timestamp,int timezoneOffset,SHErrorCode *
 
 bool tryDiffDateSecs(SHDatetime const *A,SHDatetime const *B,int64_t *ans,SHErrorCode *error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     bool isSuccess = tryDiffDateSecs_m(A,B,ans,&err);
     if(error) *error = err.code;
     return isSuccess;
@@ -271,7 +271,7 @@ bool tryDiffDateSecs(SHDatetime const *A,SHDatetime const *B,int64_t *ans,SHErro
 
 double dateDiffSecs(SHDatetime const *A,SHDatetime const *B,SHErrorCode *error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     double ans = dateDiffSecs_m(A,B,&err);
     if(error) *error = err.code;
     return ans;
@@ -280,7 +280,7 @@ double dateDiffSecs(SHDatetime const *A,SHDatetime const *B,SHErrorCode *error){
 
 int64_t dateDiffDays(SHDatetime const *A,SHDatetime const *B,SHErrorCode *error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     int64_t ans = dateDiffDays_m(A,B,&err);
     if(error) *error = err.code;
     return ans;
@@ -289,7 +289,7 @@ int64_t dateDiffDays(SHDatetime const *A,SHDatetime const *B,SHErrorCode *error)
 
 bool tryDateDiffDays(SHDatetime const *A,SHDatetime const *B,int64_t *ans,SHErrorCode *error){
     SHError err;
-    setSHErrorDefault(&err);
+    prepareSHError(&err);
     bool isSuccess = tryDateDiffDays_m(A,B,ans,&err);
     if(error) *error = err.code;
     return isSuccess;

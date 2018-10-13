@@ -10,9 +10,7 @@
 #define SHConstants_h
 
 #include <stdio.h>
-extern const int GEN_ERROR;
 extern const int NOT_FOUND;
 extern const int SKIP;
-extern const int INVALID_STATE;
 extern const int DAYS_IN_WEEK;
 #endif /* SHConstants_h */

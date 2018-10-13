@@ -76,7 +76,7 @@ int _updateTimezoneForShifts(SHDatetime *dt,SHError *error){
       }
       double ts;
       SHError cnvtErr;
-      setSHErrorDefault(&cnvtErr);
+      prepareSHError(&cnvtErr);
       if(!tryDtToTimestamp_m(dt,&ts,&cnvtErr)){
         return handleError(cnvtErr.code,"Error in date object to"
              "timestamp in tz update",error);
