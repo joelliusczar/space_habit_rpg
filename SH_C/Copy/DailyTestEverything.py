@@ -22,6 +22,11 @@ def err_callback(err,msg,info,isError):
 def dbg_func(msg):
   print("In debug callback: {}".format(msg))
 
+errMsg = c_char_p(b"")
+voidObj = c_void_p(None)
+myErr = SHError(c_int(0),callbackType(err_callback),errMsg,voidObj,c_bool(False))
+
+
 def doAllStartDays(fromDate,toDate):
   error = c_int(0)
   while lib.dtToTimestamp(byref(fromDate),byref(error)) < lib.dtToTimestamp(byref(toDate),byref(error)):
@@ -40,9 +45,11 @@ def doAllCheckinDays(fromDate,toDate):
     lib.tryAddDaysToDtInPlace(byref(checkinDate),c_int(1),c_int(0),byref(error))
 
 def doAllWeekCombos(startDate,checkinDate,endDate):
+  lastDayIdx = lib.calcWeekdayIdx(byref(startDate),byref(myErr))
   for i in range(1,128):
     week = buildWeekOfActiveDays(i)
-    doAllScalers(startDate,checkinDate,endDate,week,i)
+    if week[lastDayIdx]:
+      doAllScalers(startDate,checkinDate,endDate,week,i)
 
 def doAllScalers(startDate,checkinDate,endDate,week,weekSeed):
   error = c_int(0)
@@ -61,10 +68,8 @@ def doAllScalers(startDate,checkinDate,endDate,week,weekSeed):
     
     print(filledFormatStr,end="\r",flush=True)
     lib.buildWeek(byref(week),c_int64(s),byref(rvi))
-    errMsg = c_char_p(b"")
-    voidObj = c_void_p(None)
+    
     #lib.setDebugCallback(dbgFncPtr)
-    myErr = SHError(c_int(0),callbackType(err_callback),errMsg,voidObj,c_bool(False))
     success = lib.nextDueDate_WEEKLY(byref(startDate),byref(checkinDate),byref(rvi)
     ,c_int64(s),byref(ans),byref(myErr))
     
