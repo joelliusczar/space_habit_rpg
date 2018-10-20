@@ -35,4 +35,11 @@ typedef struct {
   uintptr_t filler[8];
 } SHDatetime;
 
+typedef enum {NO_OPTION = 0,
+    SHIFT_FWD = 1,
+    SHIFT_BKD = 2,
+    ERROR = 3,
+    SIMPLE = 4,
+} TimeAdjustOptions;
+
 #endif /* SHDateTime_struct_h */

@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS=-Wall -Wextra $(DEBUG)
 rwildcard=$(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))
-INC=-ISHGlobal_C -ISHDatetime -ISH_CTools
+INC=-ISHDatetime -ISH_CTools
 HEADER_FILES := $(call rwildcard,./,*.h)
 SOURCES:= $(call rwildcard,./,*.c)
 OBJECTS=$(SOURCES:.c=.o)

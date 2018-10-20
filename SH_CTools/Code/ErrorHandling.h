@@ -39,8 +39,7 @@ typedef enum {
 } SHErrorCode;
 
 
-typedef bool (*ErrorCallback)(SHErrorCode err,const char* const msg,void* info,
-  bool* isError);
+typedef bool (*ErrorCallback)(SHErrorCode err,const char* const msg,void* info,bool* isError);
 
 typedef struct {
     SHErrorCode code;

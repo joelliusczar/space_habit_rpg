@@ -799,9 +799,9 @@ NSMutableArray<Daily *> *testDailies = nil;
   
 }
 
--(void)testPreviousWeeklyDueDate2{
+-(void)testDueDates2{
   RateValueItem week[7];
-  BOOL testSet[] = {0,1,0,0,0,0,0};//monday
+  BOOL testSet[] = {0,1,0,0,0,0,0};
   int weekScaler = 1;
   buildWeek(testSet, weekScaler, week);
   SHDatetime base = {1978,1,1,0,0,0,0};
@@ -816,7 +816,19 @@ NSMutableArray<Daily *> *testDailies = nil;
   tryAddDaysToDt_m(&base,0,0,&expected,&err);
   bool isSuccess = previousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
   XCTAssertEqual(isSuccess,false);
+  BOOL testSet2[] = {1,0,0,0,0,0,0};
+  base.year = 2006;
+  buildWeek(testSet2, weekScaler, week);
+  tryAddDaysToDt_m(&base,7,0,&checkinDate,&err);
+  tryAddDaysToDt_m(&base,0,0,&lastDueDate,&err);
+  isSuccess = nextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+  XCTAssertEqual(isSuccess,true);
   
+  buildWeek(testSet2, 2, week);
+  tryAddDaysToDt_m(&base,0,0,&checkinDate,&err);
+  tryAddDaysToDt_m(&base,0,0,&lastDueDate,&err);
+  isSuccess = nextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+  XCTAssertEqual(isSuccess,true);
 }
 
 -(void)testNextDueDateWeekly{
@@ -870,7 +882,7 @@ NSMutableArray<Daily *> *testDailies = nil;
     XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
     
     tryAddDaysToDt_m(&base,66,0,&checkinDate,&err);
-    nextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    bool isSuccess = nextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
     tryAddDaysToDt_m(&base,66,0,&expected,&err);
     btw = dateDiffDays_m(&result,&base,&err);
     XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));

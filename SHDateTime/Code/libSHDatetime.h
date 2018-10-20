@@ -10,7 +10,6 @@
 #define libSHDatetime_h
 
 #include SHConstants.h
-#include Timeshift_struct.h
 #include DTConstants.h
 #include SHDatetime_struct.h
 #include SHTimeZone.h

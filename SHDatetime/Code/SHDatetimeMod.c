@@ -859,7 +859,7 @@ bool isValidSHDateTime_m(SHDatetime const *dt){
 }
 
 
-void makeDTPrintStr(SHDatetime const *dt,char* str){
+void SHDTToString(SHDatetime const *dt,char* str){
   sprintf(str, "%"PRId64"-%d-%d %d:%d:%d",dt->year,dt->month,dt->day,dt->hour,dt->minute,dt->second);
 }
 

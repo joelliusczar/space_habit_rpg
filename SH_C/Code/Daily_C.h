@@ -23,16 +23,23 @@ typedef struct {
     uintptr_t filler[4];
 } RateValueItem;
 
-void filWeek(int64_t *daysAheadCounts,int64_t *daysBeforeCounts,bool *activeDays
-  ,RateValueItem *rvi);
+void filWeek(int64_t *daysAheadCounts,int64_t *daysBeforeCounts,bool *activeDays,RateValueItem *rvi);
 void buildWeek(bool *activeDays,int64_t scaler,RateValueItem *rvi);
 void buildEmptyWeek(RateValueItem *rvi);
-bool previousDueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate
-  ,RateValueItem *rvi,int64_t scaler,SHDatetime *ans,SHError *error);
+bool previousDueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate,RateValueItem *rvi
+,int64_t scaler,SHDatetime *ans,SHError *error);
+
 SHDatetime* bothWeeklyDueDatesFromLastDueDate(SHDatetime* lastDueDate,SHDatetime* checkinDate
-  ,RateValueItem* week,int64_t scaler,SHError *error);
-bool nextDueDate_WEEKLY(SHDatetime* lastDueDate,SHDatetime* checkinDate
-  , RateValueItem* week,int64_t scaler,SHDatetime *ans,SHError* error);
+,RateValueItem* week,int64_t scaler,SHError *error);
+
+bool nextDueDate_WEEKLY(SHDatetime* lastDueDate,SHDatetime* checkinDate, RateValueItem* week,int64_t scaler
+,SHDatetime *ans,SHError* error);
+
+bool nextDueDate_WEEKLY_INV(SHDatetime* lastDueDate,SHDatetime* checkinDate, RateValueItem* week,int64_t scaler
+,SHDatetime *ans,SHError* error);
+
+bool isDateADueDate(SHDatetime* previousDueDate,SHDatetime* checkinDate, RateValueItem* week,int64_t scaler
+,SHError *error);
 
 /*
  activeDays: an array of exactly 7 elements.

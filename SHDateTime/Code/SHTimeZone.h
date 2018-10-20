@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include <stdbool.h>
-#include "SHDatetimeCommon.h"
+#include "SHDatetime_struct.h"
 #include "ErrorHandling.h"
 
 

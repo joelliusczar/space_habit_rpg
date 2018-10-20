@@ -74,9 +74,6 @@
       location = "group:SH_CTools/SH_CTools.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SHGlobal_C/SHGlobal_C.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:SH_C/SH_C.xcodeproj">
    </FileRef>
    <FileRef

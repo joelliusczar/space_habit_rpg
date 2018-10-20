@@ -13,7 +13,7 @@
 
 
 SHDatetime* timestampToDt(double timestamp,int timezoneOffset,SHError *error){
-    SHDatetime* dt = malloc(sizeof(SHDatetime));
-    tryTimestampToDt_m(timestamp,timezoneOffset,dt,error);
-    return dt;
+  SHDatetime* dt = malloc(sizeof(SHDatetime));
+  tryTimestampToDt_m(timestamp,timezoneOffset,dt,error);
+  return dt;
 }

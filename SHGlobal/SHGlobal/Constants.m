@@ -31,7 +31,6 @@ NSString* const ZONE_TRANSACTION_ENTITY_NAME = @"ZoneTransaction";
 NSString* const MONSTER_TRANSACTION_ENTITY_NAME = @"MonsterTransaction";
 
 
-u_int32_t const DAYS_IN_WEEK = 7;
 u_int32_t const POTENTIAL_WEEKS_IN_MONTH_NUM = 5;
 u_int32_t const MAX_MONSTER_RAND_UP_BOUND = 11;
 u_int32_t const MAX_MONSTER_LOW_BOUND = 5;

@@ -17,10 +17,10 @@ from DailyStructs import RateValueItem
 lib = cdll.LoadLibrary('./libshTop.so')
 
 def err_callback(err,msg,info,isError):
-  print("In err callback: {}".format(msg))
+  print("\nIn err callback: {}".format(msg))
 
 def dbg_func(msg):
-  print("In debug callback: {}".format(msg))
+  print("\nIn debug callback: {}".format(msg))
 
 errMsg = c_char_p(b"")
 voidObj = c_void_p(None)
@@ -39,21 +39,20 @@ def doAllCheckinDays(fromDate,toDate):
   startDate = make_dt_copy(fromDate)
   checkinDate = make_dt_copy(fromDate)
   error = c_int(0)
-  lib.tryAddDaysToDtInPlace(byref(checkinDate),c_int(1),c_int(0),byref(error))
   while lib.dtToTimestamp(byref(checkinDate),byref(error)) < lib.dtToTimestamp(byref(toDate),byref(error)):
-    doAllWeekCombos(startDate,checkinDate,toDate)
+    doAllWeekCombos(startDate,checkinDate)
     lib.tryAddDaysToDtInPlace(byref(checkinDate),c_int(1),c_int(0),byref(error))
 
-def doAllWeekCombos(startDate,checkinDate,endDate):
+def doAllWeekCombos(startDate,checkinDate):
   lastDayIdx = lib.calcWeekdayIdx(byref(startDate),byref(myErr))
   for i in range(1,128):
     week = buildWeekOfActiveDays(i)
     if week[lastDayIdx]:
-      doAllScalers(startDate,checkinDate,endDate,week,i)
+      doAllScalers(startDate,checkinDate,week,i)
 
-def doAllScalers(startDate,checkinDate,endDate,week,weekSeed):
+def doAllScalers(startDate,checkinDate,week,weekSeed):
   error = c_int(0)
-  maxScaler = lib.dateDiffDays(byref(endDate),byref(startDate),byref(error))
+  maxScaler = 2000
   dbgFncDef = CFUNCTYPE(None,c_char_p)
   dbgFncPtr = dbgFncDef(dbg_func)
   ans = SHDatetime()
@@ -85,15 +84,14 @@ def doAllScalers(startDate,checkinDate,endDate,week,weekSeed):
 
 def findNextDueDate(startDate,checkinDate,week,scaler):
   error = c_int(0)
-  myErr = SHError(c_int(0),callbackType(err_callback),c_char_p(b""),c_void_p(None),c_bool(False))
-  days = 1
+  days = 0
   tmpDate = make_dt_copy(startDate)
   checkinCopy = make_dt_copy(checkinDate)
   checkinDayStart = lib.dayStartInPlace(byref(checkinCopy))
   ts = lib.dtToTimestamp(checkinDayStart,byref(error))
   superWeek = buildSuperWeek(week,scaler)
   offset = lib.calcWeekdayIdx(byref(tmpDate),byref(error))
-  limitDt = SHDatetime(9999,12,31,0,0,0)
+  limitDt = SHDatetime(2100,12,31,0,0,0)
   limit = lib.dtToTimestamp(byref(limitDt),byref(error))
   added = SHDatetime()
   currentTs = 0
@@ -102,7 +100,7 @@ def findNextDueDate(startDate,checkinDate,week,scaler):
     lib.tryAddDaysToDt_m(byref(tmpDate),c_int64(days),c_int(0),byref(added),byref(myErr))
     addedDayStart = lib.dayStartInPlace(byref(added))
     currentTs = lib.dtToTimestamp(addedDayStart,byref(error))
-    if currentTs > ts:
+    if currentTs >= ts:
       if superWeek[(days + offset) % len(superWeek)]:
         return added
     days += 1
@@ -112,9 +110,7 @@ def findNextDueDate(startDate,checkinDate,week,scaler):
 def buildSuperWeek(week,scaler):
   superWeek = [b for b in week]
   scaler -= 1
-  while scaler > 0:
-    superWeek.extend(False for b in range(7))
-    scaler -= 1
+  superWeek.extend(False for b in range(7*scaler))
   return superWeek
 
 
@@ -134,8 +130,8 @@ if __name__ == "__main__":
   lib.calcWeekdayIdx.restype = c_int
   lib.dayStartInPlace.restype = POINTER(SHDatetime)
   lib.dtToTimestamp.restype = c_double
-  fromDate = SHDatetime(1978,1,1,0,0,0,0,0)
-  toDate = SHDatetime(2102,12,31,23,59,59,0,0)
+  fromDate = SHDatetime(2006,1,1,0,0,0,0,0)
+  toDate = SHDatetime(2040,12,31,23,59,59,0,0)
   print("Start___________________________",end="\r",flush=True)
   doAllStartDays(fromDate,toDate)
 
