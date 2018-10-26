@@ -12,6 +12,7 @@
 #import <SHCommon/ViewHelper.h>
 
 @interface StoryDumpView ()
+@property (nonatomic,strong) UITapGestureRecognizer *tapper;
 @end
 
 @implementation StoryDumpView
@@ -19,11 +20,20 @@
 @synthesize storyItem = _storyItem;
 
 
+-(UITapGestureRecognizer *)tapper{
+  if(!_tapper){
+    _tapper = [[UITapGestureRecognizer alloc] initWithTarget:self.synopsisView
+                                                      action:@selector(handleTap:)];
+    
+  }
+  return _tapper;
+}
+
 -(instancetype)initWithStoryItem:(NSObject<P_StoryItem> *)storyItem{
-    if(self = [self initWithNibName:@"StoryDumpView" bundle:nil]){
-        _storyItem = storyItem;
-    }
-    return self;
+  if(self = [self initWithNibName:@"StoryDumpView" bundle:nil]){
+    _storyItem = storyItem;
+  }
+  return self;
 }
 
 
@@ -35,6 +45,7 @@
     self.headlineLbl.text = headline;
     [self.headlineLbl sizeToFit];
     [self doneBtn];
+    [self.view addGestureRecognizer:self.tapper];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,6 +55,11 @@
 
 - (IBAction)doneBtn_pressed_action:(SHButton *)sender forEvent:(UIEvent *)event {
     popVCFromFront(self);
+}
+
+
+-(void)handleTap:(UITapGestureRecognizer *)recognizer{
+  
 }
 
 

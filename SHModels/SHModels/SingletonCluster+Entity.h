@@ -11,12 +11,14 @@
 #import "OnlyOneEntities.h"
 #import "ZoneInfoDictionary.h"
 #import "MonsterInfoDictionary.h"
+#import "StoryItemDictionary.h"
 
 #define SHSettings [SingletonCluster getSharedInstance].userData.theSettings
 
 
 @interface SingletonCluster (Entity)
-@property (nonatomic) OnlyOneEntities * userData;
-@property (nonatomic) ZoneInfoDictionary * zoneInfoDictionary;
-@property (nonatomic) MonsterInfoDictionary * monsterInfoDictionary;
+@property (nonatomic) OnlyOneEntities* userData;
+@property (nonatomic) ZoneInfoDictionary* zoneInfoDictionary;
+@property (nonatomic) MonsterInfoDictionary* monsterInfoDictionary;
+@property (nonatomic) StoryItemDictionary* storyItemDictionary;
 @end

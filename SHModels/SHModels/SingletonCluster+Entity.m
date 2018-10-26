@@ -12,39 +12,51 @@
 
 @implementation SingletonCluster (Entity)
 
--(OnlyOneEntities *)userData{
+-(OnlyOneEntities*)userData{
     return [self.bag getWithKey:@"entity" OrCreateFromBlock:^id(){
         return [[OnlyOneEntities alloc] initWithDataController:self.dataController];
     }];
 }
 
 
--(void)setUserData:(OnlyOneEntities *)userData{
+-(void)setUserData:(OnlyOneEntities*)userData{
     self.bag[@"entity"] = userData;
 }
 
 
--(ZoneInfoDictionary *)zoneInfoDictionary{
+-(ZoneInfoDictionary*)zoneInfoDictionary{
     return [self.bag getWithKey:@"zoneDict" OrCreateFromBlock:^id(){
         return [ZoneInfoDictionary new];
     }];
 }
 
 
--(void)setZoneInfoDictionary:(ZoneInfoDictionary *)zoneInfoDictionary{
+-(void)setZoneInfoDictionary:(ZoneInfoDictionary*)zoneInfoDictionary{
     self.bag[@"zoneDict"] = zoneInfoDictionary;
 }
 
 
--(MonsterInfoDictionary *)monsterInfoDictionary{
+-(MonsterInfoDictionary*)monsterInfoDictionary{
     return [self.bag getWithKey:@"monsterDict" OrCreateFromBlock:^id(){
         return [MonsterInfoDictionary new];
     }];
 }
 
 
--(void)setMonsterInfoDictionary:(MonsterInfoDictionary *)monsterInfoDictionary{
+-(void)setMonsterInfoDictionary:(MonsterInfoDictionary*)monsterInfoDictionary{
     self.bag[@"monsterDict"] = monsterInfoDictionary;
+}
+
+
+-(StoryItemDictionary*)storyItemDictionary{
+    return [self.bag getWithKey:@"storyDict" OrCreateFromBlock:^id(){
+        return [StoryItemDictionary new];
+    }];
+}
+
+
+-(void)setStoryItemDictionary:(StoryItemDictionary*)storyItemDictionary{
+    self.bag[@"storyDict"] = storyItemDictionary;
 }
 
 @end

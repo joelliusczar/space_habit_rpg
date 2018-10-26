@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 typedef void (*setter)(id,SEL,id);
+typedef void (^wrapReturnVoid)(void);
+typedef BOOL (^wrapReturnBool)(void);
 
 #define unixTime(dtObj) dtObj.timeIntervalSince1970

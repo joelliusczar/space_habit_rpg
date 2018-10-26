@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "InfoDictionary.h"
 
-
-@interface ZoneInfoDictionary : NSObject
+@interface ZoneInfoDictionary : InfoDictionary
 @property (nonatomic,assign) BOOL isTesting;
 -(NSArray<NSString*> *)getGroupKeyList:(NSString *)key;
 -(NSDictionary *)getZoneInfo:(NSString *)zoneKey;

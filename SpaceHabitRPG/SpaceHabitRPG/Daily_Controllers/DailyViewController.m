@@ -21,9 +21,7 @@
 #import <SHCommon/NSDate+DateHelper.h>
 #import <SHCommon/Interceptor.h>
 #import <SHControls/SHButton.h>
-#if dummy
-#import "DummyViewController.h"
-#endif
+
 
 
 
@@ -155,39 +153,32 @@ static NSString *const EntityName = @"Daily";
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    if(section == INCOMPLETE){
-        return @"Unfinished";
-    }
-    else{
-        return @"Finished";
-    }
+  if(section == INCOMPLETE){
+    return @"Unfinished";
+  }
+  else{
+    return @"Finished";
+  }
 }
 
 
 -(void)controllerWillChangeContent:(NSFetchedResultsController *)controller{
-    [self.dailiesTable beginUpdates];
+  [self.dailiesTable beginUpdates];
 }
 
 
 -(void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
-    [self.dailiesTable endUpdates];
+  [self.dailiesTable endUpdates];
 }
 
 
 UIViewController * getEditScreen(UIViewController *dailyController){
-    #if dummy
-    DummyViewController *dummyVC = [[DummyViewController alloc]
-                                  initWithNibName:@"DummyViewController"
-                                  bundle:nil];
-        return dummyVC;
-    #else
     DailyEditController *dailyEditor = [[DailyEditController alloc]
                                             initWithParentDailyController:dailyController];
     EditNavigationController *editController = [[EditNavigationController alloc]
                                                 initWithTitle:@"Add Daily"
                                                 andEditor:dailyEditor];
     return editController;
-    #endif
 }
 
 

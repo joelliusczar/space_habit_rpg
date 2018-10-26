@@ -67,27 +67,28 @@
 #pragma clang diagnostic ignored "-Wunused-parameter"
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if(self.zones){
-        return self.zones.count;
-    }
-    return 0;
+  if(self.zones){
+      return self.zones.count;
+  }
+  return 0;
 }
 
 
--(void)nextBtn_pressed_action:(UIButton *)sender{
-    BOOL show = self.skipSwitch.isOn;
-    [self.central setToShowStory:show];
-    popVCFromFront(self);
-    [self.central afterZonePick:nil];
+-(IBAction)skipBtn_pressed_action:(UIButton *)sender{
+  [self.central setToShowStory:NO];
+  popVCFromFront(self);
+  [self.central afterZonePick:nil];
 }
+
 
 #pragma clang diagnostic pop
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    Zone *z = self.zones[indexPath.row];
-    ZoneChoiceCellController *cell = [ZoneChoiceCellController getZoneChoiceCell:tableView WithParent:self AndModel:z AndRow:indexPath];
-    return cell; 
+  Zone *z = self.zones[indexPath.row];
+  ZoneChoiceCellController *cell = [ZoneChoiceCellController getZoneChoiceCell:tableView
+                                          WithParent:self AndModel:z AndRow:indexPath];
+  return cell;
 }
 
 

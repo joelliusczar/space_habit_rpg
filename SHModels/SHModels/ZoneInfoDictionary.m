@@ -11,32 +11,14 @@
 #import <SHCommon/P_ResourceUtility.h>
 
 @interface ZoneInfoDictionary()
-@property (nonatomic,strong) NSDictionary *treeDict;
-@property (nonatomic,strong) NSMutableDictionary *flatDict;
 @end
 
 @implementation ZoneInfoDictionary
 
-@synthesize treeDict = _treeDict;
--(NSDictionary *)treeDict{
-    if(!_treeDict){
-        NSObject<P_ResourceUtility> *ru = SharedGlobal.resourceUtility;
-        NSBundle *bundle = [NSBundle bundleForClass:self.class];
-        _treeDict = [ru getPListDict:@"ZoneInfo" withBundle:bundle];
-    }
-    return _treeDict;
-}
-
-@synthesize flatDict = _flatDict;
--(NSMutableDictionary *)flatDict{
-    if(!_flatDict){
-        _flatDict = [NSMutableDictionary dictionary];
-    }
-    return _flatDict;
-}
 
 +(instancetype)new{
-    ZoneInfoDictionary *instance = [[ZoneInfoDictionary alloc]init];
+    ZoneInfoDictionary *instance = [[ZoneInfoDictionary alloc] initWithPListKey:@"ZoneInfo"];
+    instance.bundleClass = instance.class;
     return instance;
 }
 

@@ -112,6 +112,11 @@
 		2747C513204A471D00FB5669 /* SuffixList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2747C512204A471D00FB5669 /* SuffixList.plist */; };
 		274EFB66204E462E00CB3C4C /* ModelTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB64204E462E00CB3C4C /* ModelTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		274EFB67204E462E00CB3C4C /* ModelTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB65204E462E00CB3C4C /* ModelTools.m */; };
+		2781552E217D706F005C5279 /* StoryItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2781552D217D706F005C5279 /* StoryItems.plist */; };
+		27815533217D721C005C5279 /* InfoDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 27815531217D721C005C5279 /* InfoDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27815534217D721C005C5279 /* InfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 27815532217D721C005C5279 /* InfoDictionary.m */; };
+		2781553721805C88005C5279 /* StoryItemDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781553521805C88005C5279 /* StoryItemDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2781553821805C88005C5279 /* StoryItemDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781553621805C88005C5279 /* StoryItemDictionary.m */; };
 		27B15A9F20524B4F0045B226 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A9E20524B4F0045B226 /* SHCommon.framework */; };
 		27B15AA120524B5D0045B226 /* SHData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AA020524B5D0045B226 /* SHData.framework */; };
 		27B15AA320524B6B0045B226 /* SHGlobal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AA220524B6B0045B226 /* SHGlobal.framework */; };
@@ -239,6 +244,11 @@
 		2747C512204A471D00FB5669 /* SuffixList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SuffixList.plist; sourceTree = "<group>"; };
 		274EFB64204E462E00CB3C4C /* ModelTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelTools.h; sourceTree = "<group>"; };
 		274EFB65204E462E00CB3C4C /* ModelTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelTools.m; sourceTree = "<group>"; };
+		2781552D217D706F005C5279 /* StoryItems.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = StoryItems.plist; sourceTree = "<group>"; };
+		27815531217D721C005C5279 /* InfoDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InfoDictionary.h; sourceTree = "<group>"; };
+		27815532217D721C005C5279 /* InfoDictionary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InfoDictionary.m; sourceTree = "<group>"; };
+		2781553521805C88005C5279 /* StoryItemDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoryItemDictionary.h; sourceTree = "<group>"; };
+		2781553621805C88005C5279 /* StoryItemDictionary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoryItemDictionary.m; sourceTree = "<group>"; };
 		27B15A9E20524B4F0045B226 /* SHCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHCommon.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHCommon.framework"; sourceTree = "<group>"; };
 		27B15AA020524B5D0045B226 /* SHData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHData.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHData.framework"; sourceTree = "<group>"; };
 		27B15AA220524B6B0045B226 /* SHGlobal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHGlobal.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHGlobal.framework"; sourceTree = "<group>"; };
@@ -324,6 +334,11 @@
 				274EFB64204E462E00CB3C4C /* ModelTools.h */,
 				274EFB65204E462E00CB3C4C /* ModelTools.m */,
 				2747C2ED2043ADE000FB5669 /* SHModels.h */,
+				2781552D217D706F005C5279 /* StoryItems.plist */,
+				27815531217D721C005C5279 /* InfoDictionary.h */,
+				27815532217D721C005C5279 /* InfoDictionary.m */,
+				2781553521805C88005C5279 /* StoryItemDictionary.h */,
+				2781553621805C88005C5279 /* StoryItemDictionary.m */,
 			);
 			path = SHModels;
 			sourceTree = "<group>";
@@ -626,7 +641,9 @@
 				2747C3522043AF7C00FB5669 /* Settings+CoreDataProperties.h in Headers */,
 				2747C3B52043B53100FB5669 /* Daily+ActiveDays.h in Headers */,
 				2747C4D72048DA8300FB5669 /* Monster+Helper.h in Headers */,
+				2781553721805C88005C5279 /* StoryItemDictionary.h in Headers */,
 				274EFB66204E462E00CB3C4C /* ModelTools.h in Headers */,
+				27815533217D721C005C5279 /* InfoDictionary.h in Headers */,
 				2747C38C2043AF7D00FB5669 /* Good+CoreDataProperties.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -691,6 +708,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2747C5072049143500FB5669 /* Model.xcdatamodeld in Resources */,
+				2781552E217D706F005C5279 /* StoryItems.plist in Resources */,
 				2747C4CE2048D8FE00FB5669 /* ZoneInfo.plist in Resources */,
 				2747C4D02048D90700FB5669 /* MonsterInfo.plist in Resources */,
 				2747C513204A471D00FB5669 /* SuffixList.plist in Resources */,
@@ -739,6 +757,7 @@
 				2747C3922043AF7D00FB5669 /* GoodTransaction+CoreDataProperties.m in Sources */,
 				2747C38A2043AF7D00FB5669 /* Suffix+CoreDataProperties.m in Sources */,
 				2747C37D2043AF7D00FB5669 /* Good+CoreDataProperties.m in Sources */,
+				27815534217D721C005C5279 /* InfoDictionary.m in Sources */,
 				2747C45C20462D4800FB5669 /* OnlyOneEntities.m in Sources */,
 				2747C3052043AE3E00FB5669 /* Model.xcdatamodeld in Sources */,
 				2747C3872043AF7D00FB5669 /* Daily+CoreDataClass.m in Sources */,
@@ -748,6 +767,7 @@
 				2747C37C2043AF7D00FB5669 /* HabitTransaction+CoreDataProperties.m in Sources */,
 				2747C3532043AF7D00FB5669 /* TodoTransaction+CoreDataClass.m in Sources */,
 				2747C37F2043AF7D00FB5669 /* Hero+CoreDataClass.m in Sources */,
+				2781553821805C88005C5279 /* StoryItemDictionary.m in Sources */,
 				2747C3B32043B53100FB5669 /* Daily+Mapable.m in Sources */,
 				2747C3862043AF7D00FB5669 /* GoodTransaction+CoreDataClass.m in Sources */,
 				2747C34E2043AF7C00FB5669 /* Todo+CoreDataProperties.m in Sources */,

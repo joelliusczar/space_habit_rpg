@@ -102,6 +102,7 @@ extern u_int32_t const MAX_MONSTER_LOW_BOUND;
 extern u_int32_t const ZONE_LVL_RANGE;
 extern u_int32_t const MONSTER_LVL_RANGE;
 extern NSTimeInterval const CHARACTER_DELAY;
+extern u_int32_t const TYPE_INCR_SIZE;
 extern u_int32_t const MIN_ZONE_CHOICE_COUNT;
 extern u_int32_t const MAX_ZONE_CHOICE_RAND_UP_BOUND;
 extern CGFloat const ZONE_CHOICE_ROW_HEIGHT;

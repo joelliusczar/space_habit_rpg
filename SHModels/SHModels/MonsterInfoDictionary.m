@@ -12,32 +12,14 @@
 
 
 @interface MonsterInfoDictionary()
-    @property (nonatomic,strong) NSDictionary *treeDict;
-    @property (nonatomic,strong) NSMutableDictionary *flatDict;
 @end
 
 @implementation MonsterInfoDictionary
 
-@synthesize treeDict = _treeDict;
--(NSDictionary *)treeDict{
-    if(!_treeDict){
-        NSBundle *bundle = [NSBundle bundleForClass:self.class];
-        NSObject<P_ResourceUtility> *ru = [SingletonCluster getSharedInstance].resourceUtility;
-        _treeDict = [ru getPListDict:@"MonsterInfo" withBundle:bundle];
-    }
-    return _treeDict;
-}
-
-@synthesize flatDict = _flatDict;
--(NSMutableDictionary *)flatDict{
-    if(!_flatDict){
-        _flatDict = [NSMutableDictionary dictionary];
-    }
-    return _flatDict;
-}
 
 +(instancetype)new{
-    MonsterInfoDictionary *instance = [[MonsterInfoDictionary alloc]init];
+    MonsterInfoDictionary *instance = [[MonsterInfoDictionary alloc] initWithPListKey:@"MonsterInfo"];
+    instance.bundleClass = instance.class;
     return instance;
 }
 

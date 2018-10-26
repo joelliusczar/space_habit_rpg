@@ -16,8 +16,7 @@
 
 @interface ZoneChoiceViewController : UIViewController <UITableViewDataSource>
 @property (nonatomic,weak) IBOutlet UITableView *zoneChoiceTable;
-@property (nonatomic,weak) IBOutlet UIButton *nextBtn;
-@property (nonatomic,weak) IBOutlet SHSwitch *skipSwitch;
+@property (nonatomic,weak) IBOutlet SHButton *skipButton;
 @property (nonatomic,weak) UIViewController <P_CentralViewController> *central;
 @property (nonatomic,strong) ZoneDescriptionViewController *descViewController;
 +(instancetype)constructWithCentral:(UIViewController <P_CentralViewController> *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices;

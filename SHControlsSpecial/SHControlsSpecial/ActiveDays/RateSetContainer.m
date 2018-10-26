@@ -128,9 +128,11 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 -(SHControlKeep *)buildControlKeep:(Daily *)daily{
     NSAssert(daily,@"Daily should not be nil");
     SHControlKeep *keep = [[SHControlKeep alloc] init];
-    
-    RateSetContainer * __weak weakSelf = self;
-    NSString *errMessage = @"RateSetContainer got itself into an inconsistent state";
+  
+    //I want to avoid circular references
+    //self->keep->keep now has a strong pointer to self
+    RateSetContainer* __weak weakSelf = self;
+    NSString* errMessage = @"RateSetContainer got itself into an inconsistent state";
     
     
     keep.controlLookup[MONTHLY_KEY] = vw(^id(SHControlKeep *keep,ControlExtent *controlExtent){

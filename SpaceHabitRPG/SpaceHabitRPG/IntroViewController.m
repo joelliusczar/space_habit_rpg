@@ -20,13 +20,15 @@
 #import <SHCommon/CommonUtilities.h>
 #import <SHControls/SHSwitch.h>
 #import <SHCommon/UIView+Helpers.h>
+#import "SHControls/UIScrollView+ScrollAdjusters.h"
 
 @interface IntroViewController ()
 @property (nonatomic,weak) UIViewController<P_CentralViewController> *central;
 @property (weak, nonatomic) IBOutlet UILabel *headline;
-@property (weak, nonatomic) IBOutlet UITextView *introMessage;
-@property (weak, nonatomic) IBOutlet SHSwitch *skipSwitch;
+@property (weak, nonatomic) IBOutlet UITextView *introMessageView;
+@property (weak, nonatomic) IBOutlet SHButton *skipButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
+@property (strong, nonatomic) UITapGestureRecognizer *tapper;
 @property (nonatomic,assign) BOOL isThreadAllowed;
 @property (nonatomic,assign) BOOL isStoryDone;
 @property (nonatomic,assign) BOOL isThreadCurrentlyRunning;
@@ -42,6 +44,15 @@
     return _nextButton;
 }
 
+
+-(UITapGestureRecognizer *)tapper{
+  if(!_tapper){
+    _tapper = [[UITapGestureRecognizer alloc] initWithTarget:self.introMessageView
+      action:@selector(handleTap:)];
+  }
+  return _tapper;
+}
+
 -(instancetype)initWithCentralViewController:(UIViewController<P_CentralViewController> *)central{
     if(self = [self initWithNibName:@"IntroViewController" bundle:nil]){
         self.central = central;
@@ -53,19 +64,20 @@
 
 
 -(void)viewDidLoad {
-    [super viewDidLoad];
-    self.headline.text = @"";
-    self.introMessage.text = @"";
-    NSString *headlineText = @"Welcome to Space Habit Frontier";
-    [self nextButton];
-    [self.view checkForAndApplyVisualChanges];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        self.isThreadCurrentlyRunning = YES;
-        [self autoTypeoutTitle:headlineText characterDelay:CHARACTER_DELAY];
-        [self autoTypeIntro:INTRO characterDelay:CHARACTER_DELAY];
-        self.isThreadCurrentlyRunning = NO;
-    });
-    
+  [super viewDidLoad];
+  self.headline.text = @"";
+  self.introMessageView.text = @"";
+  NSString *headlineText = @"Welcome to Space Habit Frontier";
+  NSString* intro = [SharedGlobal.storyItemDictionary getStoryItem:@"intro"];
+  [self nextButton];
+  [self.view checkForAndApplyVisualChanges];
+  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+    self.isThreadCurrentlyRunning = YES;
+    [self autoTypeoutTitle:headlineText characterDelay:CHARACTER_DELAY];
+    [self autoTypeIntro:intro characterDelay:CHARACTER_DELAY];
+    self.isThreadCurrentlyRunning = NO;
+  });
+  
 }
 
 -(void)didReceiveMemoryWarning {
@@ -73,43 +85,59 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)autoTypeoutTitle:(NSString *)title characterDelay:(NSTimeInterval)delay{
-    
-    for(NSUInteger i = 0;i<title.length&&self.isThreadAllowed;i++){
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.headline setText:[NSString stringWithFormat:@"%@%C",self.headline.text,
-                                    [title characterAtIndex:i]]];
-        });
-        
-        [NSThread sleepForTimeInterval:delay];
-    }
+-(void)autoTypeMessage:(NSString*)text characterDelay:(NSTimeInterval)delay
+blockFactory:(wrapReturnVoid (^)(NSString*,NSUInteger))blockFactory{
+  for(NSUInteger i = 0;i<text.length&&self.isThreadAllowed;i+=TYPE_INCR_SIZE){
+    NSString* segment = i + TYPE_INCR_SIZE < text.length ?
+        [text substringWithRange:NSMakeRange(i,TYPE_INCR_SIZE)] :
+        [text substringFromIndex:i];
+    dispatch_async(dispatch_get_main_queue(), blockFactory(segment,i));
+    [NSThread sleepForTimeInterval:delay];
+  }
 }
 
 
--(void)autoTypeIntro:(NSString *)text characterDelay:(NSTimeInterval)delay{
-    for(NSUInteger i = 0;i<text.length&&self.isThreadAllowed;i++){
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.introMessage setText:[NSString stringWithFormat:@"%@%C",self.introMessage.text,
-                                        [text characterAtIndex:i]]];
-        });
-        [NSThread sleepForTimeInterval:delay];
-    }
-}
+
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"
 
+
+-(void)autoTypeoutTitle:(NSString *)title characterDelay:(NSTimeInterval)delay{
+  [self autoTypeMessage:title characterDelay:delay blockFactory:^(NSString* text,NSUInteger idx){
+    return ^{
+        [self.headline setText:[NSString stringWithFormat:@"%@%@",self.headline.text,text]];
+    };
+  }];
+}
+
+
+-(void)autoTypeIntro:(NSString *)text characterDelay:(NSTimeInterval)delay{
+  [self autoTypeMessage:text characterDelay:delay blockFactory:^(NSString* text,NSUInteger idx){
+    return ^{
+      
+      [self.introMessageView setText:[NSString stringWithFormat:@"%@%@",self.introMessageView.text,
+        text]];
+      [self.introMessageView setNeedsDisplay];
+      CGFloat contentHeight = self.introMessageView.contentSize.height;
+      if(contentHeight > (self.introMessageView.frame.size.height*.5)){
+        [self.introMessageView scrollByOffset:25];
+      }
+    };
+  }];
+}
+
+
 -(void)pressedNext:(UIButton *)sender{
-    BOOL show = self.skipSwitch.isOn;
-    [self.central setToShowStory:show];
+    [self.central setToShowStory:YES];
     self.isThreadAllowed = NO;
     ZoneInfoDictionary *zd = [SingletonCluster getSharedInstance].zoneInfoDictionary;
     self.headline.text = [NSString stringWithFormat:@"Welcome to %@",[zd getZoneName:HOME_KEY]];
-    if(show&&!self.isStoryDone){
+    if(!self.isStoryDone){
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
                 while(self.isThreadCurrentlyRunning);
                 dispatch_async(dispatch_get_main_queue(), ^{
-                self.introMessage.text = @"";
+                self.introMessageView.text = @"";
             });
             self.isThreadAllowed = YES;
             self.isThreadCurrentlyRunning = YES;
@@ -117,17 +145,19 @@
             self.isThreadCurrentlyRunning = NO;
         });
         
-    }else if(show){
+    }else{
         popVCFromFront(self);
         [self.central showZoneChoiceView];
     }
-    else{
-        popVCFromFront(self);
-        [self.central afterZonePick:nil];
-        
-    }
     self.isStoryDone = YES;
     
+}
+
+-(void)handleTap:(UITapGestureRecognizer *)recognizer{
+  if(!self.isStoryDone && self.isThreadCurrentlyRunning){
+    self.isThreadCurrentlyRunning = NO;
+    self.isStoryDone = YES;
+  }
 }
 
 #pragma clang diagnostic pop

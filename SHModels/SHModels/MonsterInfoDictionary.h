@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "InfoDictionary.h"
 
-@interface MonsterInfoDictionary : NSObject
+@interface MonsterInfoDictionary : InfoDictionary
 @property (nonatomic,assign) BOOL isTesting;
 -(NSArray<NSString*> *)getMonsterKeyList:(NSString *)zoneKey;
 -(NSDictionary *)getMonsterInfo:(NSString *)monsterKey;

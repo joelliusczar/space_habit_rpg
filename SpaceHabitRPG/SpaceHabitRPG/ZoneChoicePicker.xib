@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Menlo.ttc">
-            <string>Menlo-Regular</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZoneChoiceViewController">
             <connections>
-                <outlet property="nextBtn" destination="xV5-Wm-tsw" id="3x7-e0-FgR"/>
-                <outlet property="skipSwitch" destination="Eb3-iT-cAT" id="Exd-oh-ASt"/>
+                <outlet property="skipButton" destination="Eb3-iT-cAT" id="S6S-Hm-ntJ"/>
                 <outlet property="view" destination="iN0-l3-epB" id="o7s-9I-U1O"/>
                 <outlet property="zoneChoiceTable" destination="9CA-Io-tEW" id="8f2-3S-Kb6"/>
             </connections>
@@ -32,77 +27,60 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                 </imageView>
                 <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="STF-TF-AyJ">
-                    <rect key="frame" x="59.666666666666657" y="165.66666666666663" width="295" height="405"/>
+                    <rect key="frame" x="59.666666666666657" y="148.66666666666663" width="295" height="439"/>
                     <subviews>
-                        <tableView clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9CA-Io-tEW">
-                            <rect key="frame" x="8" y="8" width="272" height="304"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </tableView>
-                        <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xV5-Wm-tsw" customClass="CustomSwitch">
-                            <rect key="frame" x="218.99999999999997" y="344" width="46" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="image" keyPath="onImage" value="white_checked_full.png"/>
-                                <userDefinedRuntimeAttribute type="image" keyPath="offImage" value="white_checked_empty.png"/>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="isOn" value="YES"/>
-                            </userDefinedRuntimeAttributes>
-                        </button>
-                        <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eb3-iT-cAT" customClass="CustomSwitch">
-                            <rect key="frame" x="219" y="306" width="46" height="30"/>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eb3-iT-cAT" userLabel="SkipButton" customClass="SHButton">
+                            <rect key="frame" x="134" y="378" width="46" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                             <state key="normal" title="Skip?">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="skipBtn_pressed_action:" destination="-1" eventType="touchUpInside" id="Syf-UQ-7CC"/>
+                            </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Show story?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2q-AJ-AC1">
-                            <rect key="frame" x="110" y="344" width="101" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pick a zone to travel to next" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSC-ia-jsP">
+                            <rect key="frame" x="22" y="25" width="219" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <tableView clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9CA-Io-tEW">
+                            <rect key="frame" x="11" y="66" width="272" height="304"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="sectionIndexBackgroundColor" red="0.10559471419999999" green="1" blue="0.18085308929999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </tableView>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="405" id="Ha9-aA-f9w"/>
-                        <constraint firstAttribute="width" constant="295" id="UP4-3J-vx6"/>
+                        <constraint firstAttribute="height" constant="439" id="6fN-eC-EqP"/>
+                        <constraint firstAttribute="width" constant="295" id="RDJ-n1-Hui"/>
                     </constraints>
                     <variation key="default">
                         <mask key="subviews">
-                            <exclude reference="xV5-Wm-tsw"/>
                             <exclude reference="Eb3-iT-cAT"/>
-                            <exclude reference="g2q-AJ-AC1"/>
                         </mask>
                     </variation>
                     <variation key="widthClass=compact">
                         <mask key="subviews">
-                            <include reference="9CA-Io-tEW"/>
-                            <include reference="xV5-Wm-tsw"/>
                             <include reference="Eb3-iT-cAT"/>
-                            <include reference="g2q-AJ-AC1"/>
+                            <include reference="9CA-Io-tEW"/>
                         </mask>
                     </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailingMargin" secondItem="STF-TF-AyJ" secondAttribute="trailing" constant="39.329999999999998" id="7hq-Dd-AJ8"/>
                 <constraint firstItem="5gu-jd-XZB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="I9z-i7-cQk"/>
+                <constraint firstItem="STF-TF-AyJ" firstAttribute="centerYWithinMargins" secondItem="iN0-l3-epB" secondAttribute="centerY" id="LU5-JW-Ufr"/>
                 <constraint firstAttribute="bottom" secondItem="5gu-jd-XZB" secondAttribute="bottom" id="N2q-b8-ueb"/>
-                <constraint firstItem="STF-TF-AyJ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Qir-c1-6NI"/>
-                <constraint firstItem="STF-TF-AyJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" constant="145.66999999999999" id="UVH-ZP-OZD"/>
                 <constraint firstAttribute="trailing" secondItem="5gu-jd-XZB" secondAttribute="trailing" id="czg-fj-FED"/>
+                <constraint firstItem="STF-TF-AyJ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ngO-RN-hMk"/>
                 <constraint firstItem="5gu-jd-XZB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="o2X-jC-eoT"/>
-                <constraint firstAttribute="bottomMargin" secondItem="STF-TF-AyJ" secondAttribute="bottom" constant="165.33000000000001" id="qCl-kX-Iwa"/>
-                <constraint firstItem="STF-TF-AyJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" constant="39.670000000000002" id="tts-vQ-ufG"/>
-                <constraint firstItem="STF-TF-AyJ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="wla-It-Mlw"/>
             </constraints>
             <variation key="widthClass=compact">
                 <mask key="subviews">
@@ -115,7 +93,5 @@
     </objects>
     <resources>
         <image name="behind_alert_view.png" width="320" height="460"/>
-        <image name="white_checked_empty.png" width="31" height="28"/>
-        <image name="white_checked_full.png" width="31" height="28"/>
     </resources>
 </document>
