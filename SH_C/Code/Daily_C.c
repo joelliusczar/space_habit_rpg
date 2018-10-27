@@ -13,6 +13,7 @@
 #include <stdlib.h>
 
 
+//these define our find algorithms for specific types
 DEF_FIND_IDX_REV(bool,int,,)
 DEF_FIND_IDX(bool,int,,)
 

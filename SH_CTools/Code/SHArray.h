@@ -14,7 +14,7 @@
 #include <inttypes.h>
 #include <string.h>
 
-#define DEF_FIND_IDX(T1,T2,P1,P2) static long findIdx_##T1##_##T2( T1 P1 *arr,int64_t len,\
+#define DEF_FIND_IDX(T1,T2,P1,P2) static int64_t findIdx_##T1##_##T2( T1 P1 *arr,int64_t len,\
   bool (*test)( T1 P1,int64_t, T2 P2 ), T2 P2 extra){\
     for(int64_t idx = 0; idx < len;idx++){\
       if(test( arr[idx],idx,extra)) return idx;\
