@@ -28,3 +28,8 @@ void reverse_UINT(NSUInteger * _Nonnull array,NSUInteger len){
     }
 }
 
+CGFloat getParentChildHeightOffset(CGRect parentFrame,CGRect childFrame){
+  return CGRectGetHeight(childFrame) < CGRectGetHeight(parentFrame) ?
+      CGRectGetHeight(parentFrame) - CGRectGetHeight(childFrame) : 0;
+}
+

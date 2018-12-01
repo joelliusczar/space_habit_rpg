@@ -11,7 +11,7 @@
 #include "SHConstants.h"
 #include "ErrorHandling.h"
 
-int _compareDtAndTimeShift(SHDatetime *dt,Timeshift *shift,int (*compare)(int64_t,int64_t)){
+static int _compareDtAndTimeShift(SHDatetime *dt,Timeshift *shift,int (*compare)(int64_t,int64_t)){
     SHError error;
     int64_t dtTimestamp = createDateTime_m(BASE_YEAR,dt->month,dt->day,dt->hour,dt->minute
                           ,dt->second,0,&error);
@@ -20,19 +20,19 @@ int _compareDtAndTimeShift(SHDatetime *dt,Timeshift *shift,int (*compare)(int64_
     return compare(dtTimestamp,shiftTimestamp);
 }
 
-int _isDtAfterShift(int64_t dt,int64_t shift){
+static int _isDtAfterShift(int64_t dt,int64_t shift){
     return dt >= shift;
 }
 
-int _isAfterShiftCusp(SHDatetime *dt,Timeshift *extant){
+static int _isAfterShiftCusp(SHDatetime *dt,Timeshift *extant){
     return _compareDtAndTimeShift(dt,extant,&_isDtAfterShift);
 }
 
-int _isDtBeforeShift(int64_t dt,int64_t shift){
+static int _isDtBeforeShift(int64_t dt,int64_t shift){
     return dt < shift;
 }
 
-int _isBeforeShiftCusp(SHDatetime *dt,Timeshift *next){
+static int _isBeforeShiftCusp(SHDatetime *dt,Timeshift *next){
     return _compareDtAndTimeShift(dt,next,&_isDtBeforeShift);
 }
 
@@ -64,7 +64,7 @@ int findTimeShiftIdx(SHDatetime *dt){
     return NOT_FOUND;
 }
 
-int _updateTimezoneForShifts(SHDatetime *dt,SHError *error){
+static int _updateTimezoneForShifts(SHDatetime *dt,SHError *error){
   SHLog("_updateTimezoneForShifts\n");
   if(!(dt&&error)) {
     return handleError(NULL_VALUES, "Null inputs", error);

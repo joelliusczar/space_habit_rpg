@@ -23,6 +23,6 @@ http://www.mikeash.com/pyblog/friday-qa-2010-06-18-implementing-equality-and-has
 extern uint (*randomUInt)(uint);
 CGFloat GetYStartUnderLabel(CGFloat height);
 void reverse_UINT(NSUInteger * array,NSUInteger len);
-
+CGFloat getParentChildHeightOffset(CGRect parentFrame,CGRect childFrame);
 #endif
 

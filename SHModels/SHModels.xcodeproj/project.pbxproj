@@ -108,7 +108,6 @@
 		2747C4D02048D90700FB5669 /* MonsterInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2747C4CF2048D90700FB5669 /* MonsterInfo.plist */; };
 		2747C4D62048DA8300FB5669 /* Monster+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4D42048DA8300FB5669 /* Monster+Helper.m */; };
 		2747C4D72048DA8300FB5669 /* Monster+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C4D52048DA8300FB5669 /* Monster+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2747C5072049143500FB5669 /* Model.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 2747C2F52043AE3D00FB5669 /* Model.xcdatamodeld */; };
 		2747C513204A471D00FB5669 /* SuffixList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2747C512204A471D00FB5669 /* SuffixList.plist */; };
 		274EFB66204E462E00CB3C4C /* ModelTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB64204E462E00CB3C4C /* ModelTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		274EFB67204E462E00CB3C4C /* ModelTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB65204E462E00CB3C4C /* ModelTools.m */; };
@@ -707,7 +706,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2747C5072049143500FB5669 /* Model.xcdatamodeld in Resources */,
 				2781552E217D706F005C5279 /* StoryItems.plist in Resources */,
 				2747C4CE2048D8FE00FB5669 /* ZoneInfo.plist in Resources */,
 				2747C4D02048D90700FB5669 /* MonsterInfo.plist in Resources */,

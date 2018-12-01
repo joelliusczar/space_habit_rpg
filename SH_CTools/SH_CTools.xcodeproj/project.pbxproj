@@ -10,7 +10,7 @@
 		2716922D20916ED50059A58E /* SHArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 271692082089762D0059A58E /* SHArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2716922E20916ED90059A58E /* ErrorHandling.h in Headers */ = {isa = PBXBuildFile; fileRef = 27169215208BB2450059A58E /* ErrorHandling.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2716922F20916EDD0059A58E /* ErrorHandling.c in Sources */ = {isa = PBXBuildFile; fileRef = 27169216208BB2450059A58E /* ErrorHandling.c */; };
-		2781552B21758C3F005C5279 /* SHConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781552921758C3F005C5279 /* SHConstants.h */; };
+		2781552B21758C3F005C5279 /* SHConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781552921758C3F005C5279 /* SHConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2781552C21758C3F005C5279 /* SHConstants.c in Sources */ = {isa = PBXBuildFile; fileRef = 2781552A21758C3F005C5279 /* SHConstants.c */; };
 		27DF9C4E20956D6300F98023 /* SHGenAlgos.h in Headers */ = {isa = PBXBuildFile; fileRef = 27DF9C4C20956D6300F98023 /* SHGenAlgos.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27DF9C4F20956D6300F98023 /* SHGenAlgos.c in Sources */ = {isa = PBXBuildFile; fileRef = 27DF9C4D20956D6300F98023 /* SHGenAlgos.c */; };
@@ -21,7 +21,6 @@
 		271692082089762D0059A58E /* SHArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHArray.h; sourceTree = "<group>"; };
 		27169215208BB2450059A58E /* ErrorHandling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ErrorHandling.h; sourceTree = "<group>"; };
 		27169216208BB2450059A58E /* ErrorHandling.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ErrorHandling.c; sourceTree = "<group>"; };
-		27169228208EBCF60059A58E /* libSHGlobal_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHGlobal_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2781552921758C3F005C5279 /* SHConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHConstants.h; sourceTree = "<group>"; };
 		2781552A21758C3F005C5279 /* SHConstants.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHConstants.c; sourceTree = "<group>"; };
 		27BB2905215207A3003225BB /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
@@ -76,7 +75,6 @@
 		2716920E208991130059A58E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				27169228208EBCF60059A58E /* libSHGlobal_C.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -99,8 +97,8 @@
 			files = (
 				2716922E20916ED90059A58E /* ErrorHandling.h in Headers */,
 				2716922D20916ED50059A58E /* SHArray.h in Headers */,
-				27DF9C4E20956D6300F98023 /* SHGenAlgos.h in Headers */,
 				2781552B21758C3F005C5279 /* SHConstants.h in Headers */,
+				27DF9C4E20956D6300F98023 /* SHGenAlgos.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,7 +308,6 @@
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				USER_HEADER_SEARCH_PATHS = $BUILT_PRODUCTS_DIR/usr/local/include/;
-				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -330,7 +327,6 @@
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				USER_HEADER_SEARCH_PATHS = $BUILT_PRODUCTS_DIR/usr/local/include/;
-				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};

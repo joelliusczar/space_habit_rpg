@@ -151,4 +151,11 @@
     [self invertColorForPropertyForStateWithGetSelector:getterSEL AndSetSelector:setterSEL];
 }
 
+
+-(void)translateViewVertically:(CGFloat)offset{
+  CGRect frame = self.frame;
+  frame.origin.y += offset;
+  self.frame = frame;
+}
+
 @end

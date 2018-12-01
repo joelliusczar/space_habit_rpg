@@ -26,7 +26,6 @@
 
 /* Begin PBXFileReference section */
 		2716922A20916D0F0059A58E /* libSH_CTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_CTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		2716922C20916D170059A58E /* libSHGlobal_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHGlobal_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2737D580216DA8BB00E0111F /* simple_start.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = simple_start.sh; sourceTree = "<group>"; };
 		2737D581216DA8BB00E0111F /* dt_server_run.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = dt_server_run.sh; sourceTree = "<group>"; };
 		2737D582216DA8BB00E0111F /* dt_server_cleanup.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = dt_server_cleanup.sh; sourceTree = "<group>"; };
@@ -72,7 +71,6 @@
 		271691E6208861E50059A58E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2716922C20916D170059A58E /* libSHGlobal_C.a */,
 				2716922A20916D0F0059A58E /* libSH_CTools.a */,
 			);
 			name = Frameworks;
@@ -411,7 +409,6 @@
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				USER_HEADER_SEARCH_PATHS = $BUILT_PRODUCTS_DIR/usr/local/include/;
-				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -434,7 +431,6 @@
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				USER_HEADER_SEARCH_PATHS = $BUILT_PRODUCTS_DIR/usr/local/include/;
-				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};

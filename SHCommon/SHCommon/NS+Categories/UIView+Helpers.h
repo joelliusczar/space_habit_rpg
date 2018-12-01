@@ -20,4 +20,6 @@
 -(void)checkForAndApplyVisualChanges;
 -(void)invertTitleColorForAllStates;
 -(void)invertTitleShadowColorForAllStates;
+-(void)translateViewVertically:(CGFloat)offset;
+
 @end

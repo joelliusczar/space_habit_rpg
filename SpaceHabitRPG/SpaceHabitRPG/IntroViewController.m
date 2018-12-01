@@ -25,7 +25,10 @@
 @interface IntroViewController ()
 @property (nonatomic,weak) UIViewController<P_CentralViewController> *central;
 @property (weak, nonatomic) IBOutlet UILabel *headline;
-@property (weak, nonatomic) IBOutlet UITextView *introMessageView;
+@property (weak,nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak,nonatomic) IBOutlet UIView *scrollContent;
+@property (weak,nonatomic) IBOutlet NSLayoutConstraint *contentHeight;
+@property (strong, nonatomic) UITextView *introMessageView;
 @property (weak, nonatomic) IBOutlet SHButton *skipButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 @property (strong, nonatomic) UITapGestureRecognizer *tapper;
@@ -36,14 +39,6 @@
 
 @implementation IntroViewController
 
-@synthesize nextButton = _nextButton;
--(UIButton *)nextButton{
-    if(_nextButton!=nil){
-        [_nextButton addTarget:self action:@selector(pressedNext:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _nextButton;
-}
-
 
 -(UITapGestureRecognizer *)tapper{
   if(!_tapper){
@@ -51,6 +46,27 @@
       action:@selector(handleTap:)];
   }
   return _tapper;
+}
+
+-(UITextView*)introMessageView{
+  if(!_introMessageView){
+    _introMessageView = [[UITextView alloc] init];
+    _introMessageView.backgroundColor = [UIColor blackColor];
+    _introMessageView.textColor = [UIColor whiteColor];
+    NSString* intro = [SharedGlobal.storyItemDictionary getStoryItem:@"intro"];
+    _introMessageView.text = intro;
+    CGRect frame = _introMessageView.frame;
+    frame.size.width = self.scrollView.frame.size.width;
+    _introMessageView.frame = frame;
+    _introMessageView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    _introMessageView.adjustsFontForContentSizeCategory = YES;
+    [_introMessageView sizeToFit];
+    CGRect msgFrame = _introMessageView.frame;
+    CGFloat diff = getParentChildHeightOffset(self.scrollView.frame,msgFrame);
+    msgFrame.origin.y += CGRectGetHeight(msgFrame) + diff;
+    _introMessageView.frame = msgFrame;
+  }
+  return _introMessageView;
 }
 
 -(instancetype)initWithCentralViewController:(UIViewController<P_CentralViewController> *)central{
@@ -65,19 +81,38 @@
 
 -(void)viewDidLoad {
   [super viewDidLoad];
-  self.headline.text = @"";
-  self.introMessageView.text = @"";
+}
+
+
+/*
+  Because of a bug with XCode (or ObjC) and some of the widths not getting
+  set until viewDidAppear.
+  Normally, this is probably a bad place to put this stuff, but since I',
+  only using this view once, I figure it's alright.
+*/
+-(void)viewDidAppear:(BOOL)animated{
+  [super viewDidAppear:animated];
   NSString *headlineText = @"Welcome to Space Habit Frontier";
-  NSString* intro = [SharedGlobal.storyItemDictionary getStoryItem:@"intro"];
-  [self nextButton];
+  self.headline.text = @"";
+  [self placeIntroMessageView];
   [self.view checkForAndApplyVisualChanges];
+  CGFloat scrollLength = self.introMessageView.frame.origin.y;
+  CGFloat scrollIncrement = 1;
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
     self.isThreadCurrentlyRunning = YES;
     [self autoTypeoutTitle:headlineText characterDelay:CHARACTER_DELAY];
-    [self autoTypeIntro:intro characterDelay:CHARACTER_DELAY];
+    [self scrollThroughMessage:CHARACTER_DELAY scrollLength:scrollLength
+      scrollIncrement:scrollIncrement];
     self.isThreadCurrentlyRunning = NO;
   });
-  
+}
+
+
+-(void)placeIntroMessageView{
+  CGRect msgFrame = self.introMessageView.frame;
+  CGFloat diff = getParentChildHeightOffset(self.scrollView.frame, msgFrame);
+  self.contentHeight.constant += (CGRectGetHeight(self.introMessageView.frame) + diff);
+  [self.scrollContent addSubview:self.introMessageView];
 }
 
 -(void)didReceiveMemoryWarning {
@@ -85,73 +120,55 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)autoTypeMessage:(NSString*)text characterDelay:(NSTimeInterval)delay
-blockFactory:(wrapReturnVoid (^)(NSString*,NSUInteger))blockFactory{
-  for(NSUInteger i = 0;i<text.length&&self.isThreadAllowed;i+=TYPE_INCR_SIZE){
-    NSString* segment = i + TYPE_INCR_SIZE < text.length ?
-        [text substringWithRange:NSMakeRange(i,TYPE_INCR_SIZE)] :
-        [text substringFromIndex:i];
-    dispatch_async(dispatch_get_main_queue(), blockFactory(segment,i));
-    [NSThread sleepForTimeInterval:delay];
-  }
-}
-
-
-
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"
 
 
 -(void)autoTypeoutTitle:(NSString *)title characterDelay:(NSTimeInterval)delay{
-  [self autoTypeMessage:title characterDelay:delay blockFactory:^(NSString* text,NSUInteger idx){
-    return ^{
-        [self.headline setText:[NSString stringWithFormat:@"%@%@",self.headline.text,text]];
-    };
-  }];
-}
-
-
--(void)autoTypeIntro:(NSString *)text characterDelay:(NSTimeInterval)delay{
-  [self autoTypeMessage:text characterDelay:delay blockFactory:^(NSString* text,NSUInteger idx){
-    return ^{
+  
+    for(NSUInteger i = 0;i<title.length&&self.isThreadAllowed;i++){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.headline setText:[NSString stringWithFormat:@"%@%C",self.headline.text,
+              [title characterAtIndex:i]]];
+        });
       
-      [self.introMessageView setText:[NSString stringWithFormat:@"%@%@",self.introMessageView.text,
-        text]];
-      [self.introMessageView setNeedsDisplay];
-      CGFloat contentHeight = self.introMessageView.contentSize.height;
-      if(contentHeight > (self.introMessageView.frame.size.height*.5)){
-        [self.introMessageView scrollByOffset:25];
-      }
-    };
-  }];
+        [NSThread sleepForTimeInterval:delay];
+    }
 }
 
 
--(void)pressedNext:(UIButton *)sender{
-    [self.central setToShowStory:YES];
+-(void)scrollThroughMessage:(NSTimeInterval)delay scrollLength:(CGFloat)scrollLength
+scrollIncrement:(CGFloat)scrollIncrement{
+  while(self.isThreadAllowed && scrollLength > 0){
+    scrollLength -= scrollIncrement;
+    dispatch_async(dispatch_get_main_queue(), ^{
+      [self.introMessageView translateViewVertically:-scrollIncrement];
+    });
+    [NSThread sleepForTimeInterval:delay];
+  }
+}
+
+
+- (IBAction)nextButton_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
+  [self.central setToShowStory:YES];
     self.isThreadAllowed = NO;
     ZoneInfoDictionary *zd = [SingletonCluster getSharedInstance].zoneInfoDictionary;
     self.headline.text = [NSString stringWithFormat:@"Welcome to %@",[zd getZoneName:HOME_KEY]];
     if(!self.isStoryDone){
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-                while(self.isThreadCurrentlyRunning);
-                dispatch_async(dispatch_get_main_queue(), ^{
-                self.introMessageView.text = @"";
-            });
-            self.isThreadAllowed = YES;
-            self.isThreadCurrentlyRunning = YES;
-            [self autoTypeIntro:[zd getZoneDescription:HOME_KEY] characterDelay:CHARACTER_DELAY];
-            self.isThreadCurrentlyRunning = NO;
-        });
-        
+        //[self autoTypeIntro:[zd getZoneDescription:HOME_KEY] characterDelay:CHARACTER_DELAY];
     }else{
         popVCFromFront(self);
         [self.central showZoneChoiceView];
     }
     self.isStoryDone = YES;
-    
+
 }
+
+
+- (IBAction)skipButton_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
+}
+
 
 -(void)handleTap:(UITapGestureRecognizer *)recognizer{
   if(!self.isStoryDone && self.isThreadCurrentlyRunning){
