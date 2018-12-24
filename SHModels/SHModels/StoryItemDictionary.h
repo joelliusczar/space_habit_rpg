@@ -8,6 +8,7 @@
 
 #import "InfoDictionary.h"
 //not currently using this class
-@interface StoryItemDictionary : InfoDictionary
+@interface StoryItemDictionary : NSObject
+@property (readonly,nonatomic,strong) InfoDictionary* storyInfoDict;
 -(NSString*)getStoryItem:(NSString*)key;
 @end

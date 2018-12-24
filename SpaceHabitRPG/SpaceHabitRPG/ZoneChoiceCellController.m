@@ -8,9 +8,9 @@
 
 #import "ZoneChoiceCellController.h"
 #import "ZoneDescriptionViewController.h"
-#import <SHCommon/ViewHelper.h>
+#import <SHControls/UIViewController+Helper.h>
 #import <SHCommon/CommonUtilities.h>
-#import <SHCommon/UIView+Helpers.h>
+#import <SHControls/UIView+Helpers.h>
 
 @interface ZoneChoiceCellController()
 @property (nonatomic,weak) ZoneChoiceViewController *parentZoneController;
@@ -32,14 +32,13 @@
 
 
 
-+(instancetype)getZoneChoiceCell:(UITableView *)tableView
-                      WithParent:(ZoneChoiceViewController *)parent
-                        AndModel:(Zone *)model AndRow:(NSIndexPath *)rowInfo
++(instancetype)getZoneChoiceCell:(UITableView *)tableView WithParent:(ZoneChoiceViewController *)parent
+AndModel:(Zone *)model AndRow:(NSIndexPath *)rowInfo
 {
     ZoneChoiceCellController *cell = [tableView
-                                      dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
+      dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
     if(nil==cell){
-        cell = [[ZoneChoiceCellController alloc] init];
+      cell = [[ZoneChoiceCellController alloc] init];
     }
     [cell setupCell:model AndParent:parent AndRow:rowInfo];
     return cell;
@@ -65,7 +64,7 @@
     if(swipe.direction == UISwipeGestureRecognizerDirectionLeft){
         ZoneDescriptionViewController *descView = self.parentZoneController.descViewController;
         [descView setDisplayItems:self.model];
-        arrangeAndPushVCToFrontOfParent(descView,self.parentZoneController);
+        [self.parentZoneController arrangeAndPushChildVCToFront:descView];
     }
     else{
         NSLog(@"%@",@"wrong");

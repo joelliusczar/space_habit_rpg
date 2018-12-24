@@ -9,7 +9,8 @@
 #import "RateSetContainer.h"
 #import <SHControls/RateTypeSelector.h>
 #import <SHCommon/ViewHelper.h>
-#import <SHCommon/UIView+Helpers.h>
+#import <SHControls/UIView+Helpers.h>
+#import <SHControls/FrontEndConstants.h>
 #import <SHCommon/SingletonCluster.h>
 #import <SHCommon/Interceptor.h>
 #import <SHModels/RateTypeHelper.h>

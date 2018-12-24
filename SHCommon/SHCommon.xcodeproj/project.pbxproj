@@ -36,12 +36,10 @@
 		2781FF6D204204D80035AD82 /* CommonUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781FF5A204204D70035AD82 /* CommonUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2781FF6E204204D80035AD82 /* CommonUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781FF5B204204D70035AD82 /* CommonUtilities.m */; };
 		2781FF6F204204D80035AD82 /* SingletonCluster.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781FF5C204204D70035AD82 /* SingletonCluster.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2781FF70204204D80035AD82 /* UIView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781FF5D204204D70035AD82 /* UIView+Helpers.m */; };
 		2781FF71204204D80035AD82 /* Interceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781FF5E204204D70035AD82 /* Interceptor.m */; };
 		2781FF73204204D80035AD82 /* ViewHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781FF60204204D70035AD82 /* ViewHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2781FF74204204D80035AD82 /* ViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781FF61204204D70035AD82 /* ViewHelper.m */; };
 		2781FF77204204D80035AD82 /* ReportServiceCaller.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781FF64204204D80035AD82 /* ReportServiceCaller.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2781FF78204204D80035AD82 /* UIView+Helpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781FF65204204D80035AD82 /* UIView+Helpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2781FF79204204D80035AD82 /* ReportServiceCaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781FF66204204D80035AD82 /* ReportServiceCaller.m */; };
 		2781FF7A204204D80035AD82 /* Interceptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781FF67204204D80035AD82 /* Interceptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2781FF7B204204D80035AD82 /* SingletonCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781FF68204204D80035AD82 /* SingletonCluster.m */; };
@@ -97,12 +95,10 @@
 		2781FF5A204204D70035AD82 /* CommonUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtilities.h; sourceTree = "<group>"; };
 		2781FF5B204204D70035AD82 /* CommonUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtilities.m; sourceTree = "<group>"; };
 		2781FF5C204204D70035AD82 /* SingletonCluster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonCluster.h; sourceTree = "<group>"; };
-		2781FF5D204204D70035AD82 /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helpers.m"; sourceTree = "<group>"; };
 		2781FF5E204204D70035AD82 /* Interceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Interceptor.m; sourceTree = "<group>"; };
 		2781FF60204204D70035AD82 /* ViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewHelper.h; sourceTree = "<group>"; };
 		2781FF61204204D70035AD82 /* ViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewHelper.m; sourceTree = "<group>"; };
 		2781FF64204204D80035AD82 /* ReportServiceCaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportServiceCaller.h; sourceTree = "<group>"; };
-		2781FF65204204D80035AD82 /* UIView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Helpers.h"; sourceTree = "<group>"; };
 		2781FF66204204D80035AD82 /* ReportServiceCaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportServiceCaller.m; sourceTree = "<group>"; };
 		2781FF67204204D80035AD82 /* Interceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interceptor.h; sourceTree = "<group>"; };
 		2781FF68204204D80035AD82 /* SingletonCluster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingletonCluster.m; sourceTree = "<group>"; };
@@ -234,8 +230,6 @@
 				27DD1D212043A2210030D954 /* NSDate+DateHelper.m */,
 				27DD1D1F2043A2210030D954 /* NSObject+Helper.h */,
 				27DD1D232043A2210030D954 /* NSObject+Helper.m */,
-				2781FF65204204D80035AD82 /* UIView+Helpers.h */,
-				2781FF5D204204D70035AD82 /* UIView+Helpers.m */,
 				274EFB58204E3FE000CB3C4C /* UIColor+Helper.h */,
 				274EFB59204E3FE000CB3C4C /* UIColor+Helper.m */,
 				274EFB60204E43C900CB3C4C /* UIImage+Helper.h */,
@@ -265,7 +259,6 @@
 				27DD1D272043A2210030D954 /* NSObject+Helper.h in Headers */,
 				27DD1D262043A2210030D954 /* NSDate+DateHelper.h in Headers */,
 				2781FF7A204204D80035AD82 /* Interceptor.h in Headers */,
-				2781FF78204204D80035AD82 /* UIView+Helpers.h in Headers */,
 				2781FF77204204D80035AD82 /* ReportServiceCaller.h in Headers */,
 				2747C3C12043B6C000FB5669 /* NSMutableArray+Helper.h in Headers */,
 				2747C3D42043BE6A00FB5669 /* NSMutableDictionary+Helper.h in Headers */,
@@ -377,7 +370,6 @@
 				2781FF7C204204D80035AD82 /* ResourceUtility.m in Sources */,
 				2747C4862048CC9100FB5669 /* NotificationHelper.m in Sources */,
 				2747C48A2048CDB400FB5669 /* SHControlKeep.m in Sources */,
-				2781FF70204204D80035AD82 /* UIView+Helpers.m in Sources */,
 				2747C4762047CC1D00FB5669 /* NSNumber+Helper.m in Sources */,
 				274EFB5B204E3FE000CB3C4C /* UIColor+Helper.m in Sources */,
 				2747C3C22043B6C000FB5669 /* NSMutableArray+Helper.m in Sources */,

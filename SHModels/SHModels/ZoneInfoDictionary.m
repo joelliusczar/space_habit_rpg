@@ -15,38 +15,23 @@
 
 @implementation ZoneInfoDictionary
 
-
-+(instancetype)new{
-    ZoneInfoDictionary *instance = [[ZoneInfoDictionary alloc] initWithPListKey:@"ZoneInfo"];
-    instance.bundleClass = instance.class;
-    return instance;
+@synthesize zoneInfoDict = _zoneInfoDict;
+-(InfoDictionary*)zoneInfoDict{
+  if(nil == _zoneInfoDict){
+    _zoneInfoDict = [[InfoDictionary alloc] initWithPListKey:@"ZoneInfo"
+      AndBundleClass:ZoneInfoDictionary.class];
+  }
+  return _zoneInfoDict;
 }
+
 
 -(NSArray<NSString*>*)getGroupKeyList:(NSString *)key{
-    NSDictionary *group = self.treeDict[key];
-    return group.allKeys;
+    return [self.zoneInfoDict getGroupKeyList:key];
 }
 
--(NSDictionary *)searchZoneGroupsForZone:(NSString *)zoneKey{
-    NSEnumerator<NSString*> *enumerator = [self.treeDict keyEnumerator];
-    NSString *nextKey;
-    while(nextKey = [enumerator nextObject]){
-        if(self.treeDict[nextKey][zoneKey]){
-            return self.treeDict[nextKey][zoneKey];
-        }
-    }
-    return nil;
-}
 
 -(NSDictionary *)getZoneInfo:(NSString *)zoneKey{
-    NSDictionary *zoneInfo;
-    if(!(zoneInfo = [self.flatDict valueForKey:zoneKey])){
-        zoneInfo = [self searchZoneGroupsForZone:zoneKey];
-        if(zoneInfo){
-            self.flatDict[zoneKey] = zoneInfo;
-        }
-    }
-    return zoneInfo;
+    return [self.zoneInfoDict getInfo:zoneKey];
 }
 
 -(NSString *)getZoneName:(NSString *)zoneKey{

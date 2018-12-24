@@ -6,11 +6,12 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
+
 #import <Foundation/Foundation.h>
 #import "UIView+Helpers.h"
-#import "NSException+SHCommonExceptions.h"
-#import "P_ColorInversionHint.h"
-#import "UIColor+Helper.h"
+#import <SHCommon/NSException+SHCommonExceptions.h>
+#import <SHCommon/P_ColorInversionHint.h>
+#import <SHCommon/UIColor+Helper.h>
 
 
 @implementation UIView (Helpers)
@@ -72,7 +73,7 @@
     }
 }
 
-
+//deprecated
 -(void)invertViewColors{
     UIColor *c;
     if([self respondsToSelector:@selector(setTextColor:)]
@@ -110,10 +111,19 @@
     }
 }
 
+#define INVERT_DISABLED 1
+/*
+I know this is now clutter and should be deleted, it's widespread enough
+that it would be a pain in the ass to add back if I change my mind.
+*/
 -(void)checkForAndApplyVisualChanges{
-    if(UIAccessibilityIsInvertColorsEnabled()||isTestingInvert){
-        [self applyVisualChangeToAllSubviews];
-    }
+#ifdef INVERT_DISABLED
+  return;
+#endif
+#ifndef INVERT_DISABLED //doing the if and if not was easier
+// than pragma ignore warning
+  [self applyVisualChangeToAllSubviews];
+#endif
 }
 
 
@@ -123,7 +133,7 @@
     [self invertColorForPropertyForStateWithGetSelector:getterSEL AndSetSelector:setterSEL];
 }
 
-
+//deprecated
 -(void)invertColorForPropertyForStateWithGetSelector:(SEL)getterSEL AndSetSelector:(SEL)setterSEL{
     UIColor *c;
     UIColor *inverted;
@@ -144,7 +154,7 @@
     }
 }
 
-
+//deprecated
 -(void)invertTitleColorForAllStates{
     SEL getterSEL = @selector(titleColorForState:);
     SEL setterSEL = @selector(setTitleColor:forState:);
@@ -157,5 +167,13 @@
   frame.origin.y += offset;
   self.frame = frame;
 }
+
+
+-(void)resetVerticalOrigin{
+  CGRect frame = self.frame;
+  frame.origin.y = 0;
+  self.frame = frame;
+}
+
 
 @end

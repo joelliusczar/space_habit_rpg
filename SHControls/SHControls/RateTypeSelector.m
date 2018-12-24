@@ -9,7 +9,7 @@
 #import "RateTypeSelector.h"
 #import <SHCommon/Interceptor.h>
 #import <SHCommon/ViewHelper.h>
-#import <SHCommon/UIView+Helpers.h>
+#import "UIView+Helpers.h"
 #import "SHEventInfo.h"
 
 @interface RateTypeSelector ()

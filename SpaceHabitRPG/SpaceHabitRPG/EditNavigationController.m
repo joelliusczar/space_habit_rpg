@@ -15,6 +15,7 @@
 #import <SHControlsSpecial/RateSetContainer.h>
 #import <SHControls/ItemFlexibleListView.h>
 #import <SHControls/SHButton.h>
+#import <SHControls/FrontEndConstants.h>
 @import CoreGraphics;
 
 

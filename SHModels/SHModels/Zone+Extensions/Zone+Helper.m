@@ -76,31 +76,38 @@ NSString* const HOME_KEY = @"HOME";
     return symbols;
 }
 
-+(Zone *)constructEmptyZone{
-    return [[Zone alloc] initWithEntity:Zone.entity insertIntoManagedObjectContext:nil];
+
+Zone* constructSpecificZone(NSString* zoneKey, int32_t lvl,int32_t monsterCount){
+  
+  NSCAssert(zoneKey,@"Key can't be null");
+  NSCAssert(lvl > 0, @"Lvl must be greater than 0");
+  Zone *z = constructEmptyZone();
+  z.zoneKey = zoneKey;
+  z.suffix = [Zone getSymbolSuffix:[Zone getVisitCountForZone:zoneKey]];
+  z.maxMonsters = monsterCount;
+  z.monstersKilled = 0;
+  z.lvl = lvl;
+  return z;
 }
 
-+(Zone *)constructHomeZone{
-    Zone *z = [Zone constructEmptyZone];
-    z.zoneKey = HOME_KEY;
-    z.lvl = 0;
-    z.maxMonsters = 0;
-    z.monstersKilled = 0;
-    z.suffix = @"";
-    z.isFront = YES;
-    return z;
+
+Zone* constructRandomZoneChoice(Hero* hero,BOOL shouldMatchLvl){
+  NSString *zoneKey = [Zone getRandomZoneDefinitionKey:hero.lvl];
+  int32_t zoneLvl = shouldMatchLvl?hero.lvl:calculateLvl(hero.lvl,ZONE_LVL_RANGE);
+  Zone *z = constructSpecificZone2(zoneKey,zoneLvl);
+  return z;
 }
 
-+(Zone *)constructZoneChoice:(nonnull Hero *)hero AndMatchHeroLvl:(BOOL)matchLvl{
-    Zone *z = [Zone constructEmptyZone];
-    NSString *zoneKey = [Zone getRandomZoneDefinitionKey:hero.lvl];
-    z.zoneKey = zoneKey;
-    z.suffix = [Zone getSymbolSuffix:[Zone getVisitCountForZone:zoneKey]];
-    z.maxMonsters = randomUInt(MAX_MONSTER_RAND_UP_BOUND)  + MAX_MONSTER_LOW_BOUND;
-    z.monstersKilled = 0;
-    z.lvl = matchLvl?hero.lvl:calculateLvl(hero.lvl,ZONE_LVL_RANGE);
-    return z;
+Zone* constructEmptyZone(){
+  return [[Zone alloc] initWithEntity:Zone.entity insertIntoManagedObjectContext:nil];
 }
+
+
+Zone* constructSpecificZone2(NSString* zoneKey,int32_t lvl){
+  int32_t monsterCount = randomUInt(MAX_MONSTER_RAND_UP_BOUND)  + MAX_MONSTER_LOW_BOUND;
+  return constructSpecificZone(zoneKey, lvl, monsterCount);
+}
+
 
 +(NSMutableArray<Zone *> *)constructMultipleZoneChoices:(Hero *)hero AndMatchHeroLvl:(BOOL)matchLvl{
     //Zone create uses nil context so that should be okay
@@ -108,9 +115,9 @@ NSString* const HOME_KEY = @"HOME";
     SHData.inUseContext = suffixContext;
     uint zoneCount = randomUInt(MAX_ZONE_CHOICE_RAND_UP_BOUND)  + MIN_ZONE_CHOICE_COUNT;
     NSMutableArray<Zone *> *choices = [NSMutableArray arrayWithCapacity:zoneCount];
-    choices[0] = [self constructZoneChoice:hero AndMatchHeroLvl:matchLvl];
+    choices[0] = constructRandomZoneChoice(hero,matchLvl);
     for(uint i = 1;i<zoneCount;i++){
-        choices[i] = [self constructZoneChoice:hero AndMatchHeroLvl:NO];
+        choices[i] = constructRandomZoneChoice(hero,NO);
     }
     SHData.inUseContext = nil;
     return choices;

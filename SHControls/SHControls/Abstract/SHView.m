@@ -8,7 +8,7 @@
 
 #import "SHView.h"
 #import <SHCommon/NSObject+Helper.h>
-#import <SHCommon/UIView+Helpers.h>
+#import "UIView+Helpers.h"
 #import <SHCommon/Interceptor.h>
 
 

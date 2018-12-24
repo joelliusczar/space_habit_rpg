@@ -12,8 +12,8 @@
 #import <SHCommon/NSException+SHCommonExceptions.h>
 #import <SHCommon/NSObject+Helper.h>
 #import <SHCommon/SingletonCluster.h>
-#import <SHGlobal/constants.h>
-#import <SHCommon/UIView+Helpers.h>
+#import "FrontEndConstants.h"
+#import "UIView+Helpers.h"
 #import "UIScrollView+ScrollAdjusters.h"
 #import <SHCommon/ViewHelper.h>
 #import "SHEventInfo.h"

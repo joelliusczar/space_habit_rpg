@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "InfoDictionary.h"
 
-@interface ZoneInfoDictionary : InfoDictionary
+@interface ZoneInfoDictionary : NSObject
 @property (nonatomic,assign) BOOL isTesting;
+@property (readonly,nonatomic,strong) InfoDictionary *zoneInfoDict;
 -(NSArray<NSString*> *)getGroupKeyList:(NSString *)key;
 -(NSDictionary *)getZoneInfo:(NSString *)zoneKey;
 -(NSString *)getZoneName:(NSString *)zoneKey;

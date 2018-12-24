@@ -15,11 +15,8 @@
 -(void)setupBorder:(UIRectEdge)edges withThickness:(CGFloat)thickness andColor:(UIColor *)color;
 -(void)resizeFrame:(CGSize)size;
 -(void)replaceSubviewsWith:(UIView *)view;
--(void)invertViewColors;
--(void)applyVisualChangeToAllSubviews;
 -(void)checkForAndApplyVisualChanges;
--(void)invertTitleColorForAllStates;
--(void)invertTitleShadowColorForAllStates;
 -(void)translateViewVertically:(CGFloat)offset;
+-(void)resetVerticalOrigin;
 
 @end

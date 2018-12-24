@@ -2119,13 +2119,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpaceHabitRPG/SpaceHabitRPG/ZoneChoiceViewController.m"
-            timestampString = "562911110.56564"
+            timestampString = "566591305.455144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
             endingLineNumber = "87"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "7">
+            landmarkName = "ZoneChoiceViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2135,7 +2135,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpaceHabitRPG/SpaceHabitRPG/ZoneChoiceViewController.m"
-            timestampString = "562911110.5657409"
+            timestampString = "566591305.455255"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
@@ -2167,11 +2167,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpaceHabitRPG/SpaceHabitRPG/IntroViewController.m"
-            timestampString = "563854815.9224989"
+            timestampString = "567221569.453351"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "-viewDidAppear:"
             landmarkType = "7">
          </BreakpointContent>

@@ -31,11 +31,53 @@
 }
 
 
--(instancetype)initWithPListKey:(NSString*)key{
+-(instancetype)initWithPListKey:(NSString*)key AndBundleClass:(Class)bundleClass{
   if(self = [super init]){
     _pListKey = key;
+    _bundleClass = bundleClass;
   }
   return self;
+}
+
+
+-(NSDictionary*)searchTreeForKey:(NSString*)key{
+  NSEnumerator<NSString*> *enumerator = [self.treeDict keyEnumerator];
+  NSString *nextKey;
+  while(nextKey = [enumerator nextObject]){
+      if(self.treeDict[nextKey][key]){
+          return self.treeDict[nextKey][key];
+      }
+  }
+  return nil;
+}
+
+-(NSDictionary*)getInfo:(NSString*)key{
+  NSDictionary *info;
+    if(!(info = [self.flatDict valueForKey:key])){
+        info = [self searchTreeForKey:key];
+        if(info){
+            self.flatDict[key] = info;
+        }
+    }
+    return info;
+}
+
+
+-(NSDictionary*)getInfo:(NSString *)key forGroup:(NSString*)groupKey{
+  if(self.treeDict[groupKey][key]){
+        NSDictionary *info = self.treeDict[groupKey][key];
+        if(!self.flatDict[key]){
+            self.flatDict[key] = info;
+        }
+        return info;
+    }
+    return nil;
+}
+
+
+-(NSArray<NSString*>*)getGroupKeyList:(NSString *)key{
+    NSDictionary *group = self.treeDict[key];
+    return group.allKeys;
 }
 
 @end

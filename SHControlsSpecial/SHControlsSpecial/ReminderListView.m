@@ -7,7 +7,6 @@
 //
 
 #import "ReminderListView.h"
-//#import <SHCommon/SingletonCluster.h>
 #import <SHModels/SingletonCluster+Entity.h>
 #import "ReminderCellController.h"
 #import <SHControls/AddItemsFooter.h>
@@ -17,9 +16,9 @@
 #import <SHCommon/NSDate+DateHelper.h>
 #import <SHCommon/SHMath.h>
 #import "ReminderTimeSpinPicker.h"
-#import <SHCommon/UIView+Helpers.h>
+#import <SHControls/UIView+Helpers.h>
 #import <SHControls/UIScrollView+ScrollAdjusters.h>
-#import <SHGlobal/Constants.h>
+#import <SHControls/FrontEndConstants.h>
 #import <SHCommon/NotificationHelper.h>
 #import <SHCommon/NSObject+Helper.h>
 #import <SHControls/SHEventInfo.h>

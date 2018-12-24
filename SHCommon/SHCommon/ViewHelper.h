@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-
+/*
+  Header is deprecated, use the UIVIewController category: Helper instead
+*/
 void arrangeAndPushVCToFrontOfParent(UIViewController *child,UIViewController *parent);
 void popVCFromFront(UIViewController * child);
 

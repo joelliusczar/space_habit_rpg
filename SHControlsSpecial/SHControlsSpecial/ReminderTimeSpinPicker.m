@@ -10,6 +10,7 @@
 #import <SHCommon/SingletonCluster.h>
 #import <SHCommon/NSLocale+Helper.h>
 #import <SHGlobal/Constants.h>
+#import <SHControls/FrontEndConstants.h>
 #import <SHCommon/ViewHelper.h>
 #import <SHCommon/Interceptor.h>
 

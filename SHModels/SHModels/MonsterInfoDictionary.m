@@ -16,49 +16,27 @@
 
 @implementation MonsterInfoDictionary
 
-
-+(instancetype)new{
-    MonsterInfoDictionary *instance = [[MonsterInfoDictionary alloc] initWithPListKey:@"MonsterInfo"];
-    instance.bundleClass = instance.class;
-    return instance;
+@synthesize monsterInfoDict = _monsterInfoDict;
+-(InfoDictionary*)monsterInfoDict{
+  if(nil == _monsterInfoDict){
+    _monsterInfoDict = [[InfoDictionary alloc] initWithPListKey:@"MonsterInfo"
+      AndBundleClass:MonsterInfoDictionary.class];
+  }
+  return _monsterInfoDict;
 }
+
 
 -(NSArray<NSString *> *)getMonsterKeyList:(NSString *)zoneKey{
-    NSDictionary *zone = self.treeDict[zoneKey];
-    return zone.allKeys;
+    return [self.monsterInfoDict getGroupKeyList:zoneKey];
 }
 
--(NSDictionary *)searchZonesForMonster:(NSString *)monsterKey{
-    NSEnumerator<NSString*> *enumerator = [self.treeDict keyEnumerator];
-    NSString *nextKey;
-    while(nextKey = [enumerator nextObject]){
-        if(self.treeDict[nextKey][monsterKey]){
-            return self.treeDict[nextKey][monsterKey];
-        }
-    }
-    return nil;
-}
 
 -(NSDictionary *)getMonsterInfo:(NSString *)monsterKey ForZone:(NSString *)zoneKey{
-    if(self.treeDict[zoneKey][monsterKey]){
-        NSDictionary *monsterInfo = self.treeDict[zoneKey][monsterKey];
-        if(!self.flatDict[zoneKey]){
-            self.flatDict[zoneKey] = monsterInfo;
-        }
-        return monsterInfo;
-    }
-    return nil;
+    return [self.monsterInfoDict getInfo:monsterKey forGroup:zoneKey];
 }
 
 -(NSDictionary *)getMonsterInfo:(NSString *)monsterKey{
-    NSDictionary *monsterInfo;
-    if(!(monsterInfo = [self.flatDict valueForKey:monsterKey])){
-        monsterInfo = [self searchZonesForMonster:monsterKey];
-        if(monsterInfo){
-            self.flatDict[monsterKey] = monsterInfo;
-        }
-    }
-    return monsterInfo;
+    return [self.monsterInfoDict getInfo:monsterKey];
 }
 
 -(NSString *)getName:(NSString *)monsterKey{

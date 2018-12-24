@@ -10,7 +10,7 @@
 #import <SHData/P_CoreData.h>
 #import <SHModels/Settings+CoreDataClass.h>
 #import "StoryConstants.h"
-#import <SHGlobal/Constants.h>
+#import <SHControls/FrontEndConstants.h>
 #import "ZoneChoiceViewController.h"
 #import <SHModels/Hero+CoreDataClass.h>
 #import <SHCommon/ViewHelper.h>
@@ -19,7 +19,7 @@
 #import <SHModels/Zone+Helper.h>
 #import <SHCommon/CommonUtilities.h>
 #import <SHControls/SHSwitch.h>
-#import <SHCommon/UIView+Helpers.h>
+#import <SHControls/UIView+Helpers.h>
 #import "SHControls/UIScrollView+ScrollAdjusters.h"
 
 @interface IntroViewController ()
@@ -42,8 +42,9 @@
 
 -(UITapGestureRecognizer *)tapper{
   if(!_tapper){
-    _tapper = [[UITapGestureRecognizer alloc] initWithTarget:self.introMessageView
+    _tapper = [[UITapGestureRecognizer alloc] initWithTarget:self
       action:@selector(handleTap:)];
+    _tapper.numberOfTapsRequired = 1;
   }
   return _tapper;
 }
@@ -63,8 +64,9 @@
     [_introMessageView sizeToFit];
     CGRect msgFrame = _introMessageView.frame;
     CGFloat diff = getParentChildHeightOffset(self.scrollView.frame,msgFrame);
-    msgFrame.origin.y += CGRectGetHeight(msgFrame) + diff;
-    _introMessageView.frame = msgFrame;
+    [_introMessageView translateViewVertically:CGRectGetHeight(msgFrame) + diff];
+    _introMessageView.editable = NO;
+    _introMessageView.selectable = NO;
   }
   return _introMessageView;
 }
@@ -88,7 +90,8 @@
   Because of a bug with XCode (or ObjC) and some of the widths not getting
   set until viewDidAppear.
   Normally, this is probably a bad place to put this stuff, but since I',
-  only using this view once, I figure it's alright.
+  only using this view once, I figure it's alright considering the bug I was
+  having to fight with.
 */
 -(void)viewDidAppear:(BOOL)animated{
   [super viewDidAppear:animated];
@@ -97,12 +100,11 @@
   [self placeIntroMessageView];
   [self.view checkForAndApplyVisualChanges];
   CGFloat scrollLength = self.introMessageView.frame.origin.y;
-  CGFloat scrollIncrement = 1;
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
     self.isThreadCurrentlyRunning = YES;
     [self autoTypeoutTitle:headlineText characterDelay:CHARACTER_DELAY];
-    [self scrollThroughMessage:CHARACTER_DELAY scrollLength:scrollLength
-      scrollIncrement:scrollIncrement];
+    [self scrollThroughMessage:SCROLL_DELAY scrollLength:scrollLength
+      scrollIncrement:SCROLL_INCREMENT];
     self.isThreadCurrentlyRunning = NO;
   });
 }
@@ -113,6 +115,7 @@
   CGFloat diff = getParentChildHeightOffset(self.scrollView.frame, msgFrame);
   self.contentHeight.constant += (CGRectGetHeight(self.introMessageView.frame) + diff);
   [self.scrollContent addSubview:self.introMessageView];
+  [self.introMessageView addGestureRecognizer:self.tapper];
 }
 
 -(void)didReceiveMemoryWarning {
@@ -152,29 +155,34 @@ scrollIncrement:(CGFloat)scrollIncrement{
 
 - (IBAction)nextButton_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
   [self.central setToShowStory:YES];
-    self.isThreadAllowed = NO;
-    ZoneInfoDictionary *zd = [SingletonCluster getSharedInstance].zoneInfoDictionary;
-    self.headline.text = [NSString stringWithFormat:@"Welcome to %@",[zd getZoneName:HOME_KEY]];
-    if(!self.isStoryDone){
-        //[self autoTypeIntro:[zd getZoneDescription:HOME_KEY] characterDelay:CHARACTER_DELAY];
-    }else{
-        popVCFromFront(self);
-        [self.central showZoneChoiceView];
-    }
-    self.isStoryDone = YES;
-
+  self.isThreadAllowed = NO;
+  self.isStoryDone = YES;
+  Zone* z = constructSpecificZone2(HOME_KEY,1);
+  [self.central afterZonePick:z];
 }
 
 
 - (IBAction)skipButton_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
+  if(!self.isStoryDone && self.isThreadCurrentlyRunning){
+    self.isStoryDone = YES;
+    self.isThreadAllowed = NO;
+  }
+  popVCFromFront(self);
+  [self.central showZoneChoiceView];
 }
 
 
 -(void)handleTap:(UITapGestureRecognizer *)recognizer{
   if(!self.isStoryDone && self.isThreadCurrentlyRunning){
-    self.isThreadCurrentlyRunning = NO;
     self.isStoryDone = YES;
+    self.isThreadAllowed = NO;
+    [self.introMessageView resetVerticalOrigin];
   }
+}
+
+
+-(void)afterScroll{
+  _introMessageView.selectable = YES;
 }
 
 #pragma clang diagnostic pop

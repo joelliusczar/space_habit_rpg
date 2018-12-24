@@ -27,7 +27,7 @@
 #import <SHCommon/NSMutableDictionary+Helper.h>
 #import "SingletonCluster+App.h"
 #import <SHModels/Monster+Helper.h>
-#import <SHCommon/UIView+Helpers.h>
+#import <SHControls/UIView+Helpers.h>
 
 #import <SHCommon/NSObject+Helper.h>
 
@@ -142,49 +142,49 @@
 }
 
 -(void)setupNormalZoneAndMonster{
-    Zone *z = [Zone getZone:YES];
-    if(z==nil){
-        NSMutableArray<Zone *> *zoneChoices =
-        [Zone constructMultipleZoneChoices:self.userHero
-                                 AndMatchHeroLvl:NO];
-        
-        [self showZoneChoiceView:zoneChoices];
-        return;
+  
+  BOOL isFront = YES;
+  Zone *z = [Zone getZone:isFront];
+  if(z==nil){
+      NSMutableArray<Zone *> *zoneChoices =
+      [Zone constructMultipleZoneChoices:self.userHero
+        AndMatchHeroLvl:NO];
+    
+      [self showZoneChoiceView:zoneChoices];
+      return;
+  }
+  self.nowZone = z;
+  Monster *m = [Monster getCurrentMonster];
+  if(m==nil||m.nowHp<1){
+    z.monstersKilled=
+    (m!=nil&&m.nowHp<1)?(z.monstersKilled+1):z.monstersKilled;
+  
+    if(z.monstersKilled>=z.maxMonsters){
+      NSMutableArray<Zone *> *zoneChoices =
+      [Zone constructMultipleZoneChoices:self.userHero
+        AndMatchHeroLvl:NO];
+    
+      [zoneChoices addObject:z];
+      [self showZoneChoiceView:zoneChoices];
+      //setups observers after user has picked zones
+      return;
     }
-    self.nowZone = z;
-    Monster *m = [Monster getCurrentMonster];
-    if(m==nil||m.nowHp<1){
-        z.monstersKilled=
-        (m!=nil&&m.nowHp<1)?(z.monstersKilled+1):z.monstersKilled;
-        
-        if(z.monstersKilled>=z.maxMonsters){
-            NSMutableArray<Zone *> *zoneChoices =
-            [Zone constructMultipleZoneChoices:self.userHero
-                                     AndMatchHeroLvl:NO];
-            
-            [zoneChoices addObject:z];
-            [self showZoneChoiceView:zoneChoices];
-            //setups observers after user has picked zones
-            return;
-        }
-        m = [Monster constructRandomMonster:z.zoneKey AroundLvl:z.lvl];
-        [SHData save];
-        [self showMonsterStory];
-    }
-    self.nowMonster = m;
+    m = [Monster constructRandomMonster:z.zoneKey AroundLvl:z.lvl];
+    [SHData save];
+    [self showMonsterStory];
+  }
+  self.nowMonster = m;
 }
 
 
 -(void)determineIfFirstTimeAndSetupSettings{
     if(SharedGlobal.userData.theDataInfo.gameState ==
        GAME_STATE_UNINITIALIZED){
-        
         [self showIntroView];        
     }
     else{
         [self setupNormalZoneAndMonster];
         [self initializeStatesView];
-        self.statsView.hidden = NO;
         [self setupObservers];
         [self setupTabs];
     }
@@ -197,7 +197,7 @@
 -(void)showZoneChoiceView:(NSArray<Zone *> *)zoneChoices{
     ZoneChoiceViewController *zoneChoiceView =
     [ZoneChoiceViewController constructWithCentral:self
-                                    AndZoneChoices:zoneChoices];
+      AndZoneChoices:zoneChoices];
     
     [self.view addSubview:zoneChoiceView.view];
     [self addChildViewController:zoneChoiceView];
@@ -207,7 +207,7 @@
 -(void)showZoneChoiceView{
     NSArray<Zone *> *zoneChoices =
     [Zone constructMultipleZoneChoices:self.userHero
-                             AndMatchHeroLvl:YES];
+      AndMatchHeroLvl:YES];
     
     [self showZoneChoiceView:zoneChoices];
 }
@@ -236,34 +236,34 @@
 
 -(void)setupObservers{
     [self addObserver:self forKeyPath:KVO_HERO_HP
-              options:NSKeyValueObservingOptionNew context:nil];
+      options:NSKeyValueObservingOptionNew context:nil];
     
     [self addObserver:self forKeyPath:KVO_GOLD
-              options:NSKeyValueObservingOptionNew context:nil];
+       options:NSKeyValueObservingOptionNew context:nil];
     
     [self addObserver:self forKeyPath:KVO_HERO_XP
-              options:NSKeyValueObservingOptionNew context:nil];
+      options:NSKeyValueObservingOptionNew context:nil];
 
     [self addObserver:self forKeyPath:KVO_LVL
-              options:NSKeyValueObservingOptionNew context:nil];
+      options:NSKeyValueObservingOptionNew context:nil];
     
     [self addObserver:self forKeyPath:KVO_MONSTER_HP
-              options:NSKeyValueObservingOptionNew context:nil];
+      options:NSKeyValueObservingOptionNew context:nil];
     
     [self addObserver:self forKeyPath:KVO_MON_NAME
-              options:NSKeyValueObservingOptionNew context:nil];
+      options:NSKeyValueObservingOptionNew context:nil];
     
     [self addObserver:self forKeyPath:KVO_ZONE_NAME
-              options:NSKeyValueObservingOptionNew context:nil];
+      options:NSKeyValueObservingOptionNew context:nil];
 }
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"
 
 -(void)observeValueForKeyPath:(NSString *)keyPath
-                     ofObject:(id)object
-                       change:(NSDictionary<NSKeyValueChangeKey,id> *)change
-                      context:(void *)context{
+ofObject:(id)object
+change:(NSDictionary<NSKeyValueChangeKey,id> *)change
+context:(void *)context{
     
     if([keyPath isEqualToString:KVO_HERO_HP]){
         [self updateHeroHPUI:self.userHero.nowHp whole:self.userHero.maxHp];
@@ -292,8 +292,7 @@
 
 -(void)afterZonePick:(Zone *)zoneChoice{
     if(zoneChoice==nil){
-        zoneChoice =
-        [Zone constructZoneChoice:self.userHero AndMatchHeroLvl:NO];
+        zoneChoice = constructRandomZoneChoice(self.userHero,NO);
     }
     
     [Zone moveZoneToFront:zoneChoice];
@@ -334,11 +333,9 @@
 
 -(void)afterIntro{
     [self initializeStatesView];
-    self.statsView.hidden = NO;
     [self setupObservers];
     [self setupTabs];
-    SharedGlobal.userData.theDataInfo.gameState =
-    GAME_STATE_INITIALIZED;
+    SharedGlobal.userData.theDataInfo.gameState = GAME_STATE_INITIALIZED;
     
     self.userSettings.createDate = [NSDate date];
 }
@@ -352,7 +349,8 @@
     [self updateHeroXPUI:self.userHero.nowXp whole:self.userHero.maxXp];
     self.lvlLbl.text = [NSString stringWithFormat:@"Lv:%d",self.userHero.lvl];
     [self updateMonsterHPUI:self.nowMonster.nowHp
-                      whole:self.nowMonster.maxHp];
+      whole:self.nowMonster.maxHp];
+    self.statsView.hidden = NO;
 }
 
 

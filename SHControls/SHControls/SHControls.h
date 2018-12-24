@@ -53,7 +53,9 @@ FOUNDATION_EXPORT const unsigned char SHControlsVersionString[];
 #import "SHSwitch.h"
 #import "ImportanceSliderView.h"
 #import "TaskCell.h"
-
+#import "FrontEndConstants.h"
+#import "UIView+Helpers.h"
+#import "UIViewController+Helper.h"
 
 // In this header, you should import all the public headers of your framework using statements like #import <SHControls/PublicHeader.h>
 

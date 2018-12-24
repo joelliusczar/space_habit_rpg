@@ -43,7 +43,7 @@
                         <action selector="skipButton_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="56c-v9-d0q"/>
                     </connections>
                 </button>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iKY-U6-ddy">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iKY-U6-ddy">
                     <rect key="frame" x="0.0" y="45" width="320" height="368"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUR-g1-3EJ">

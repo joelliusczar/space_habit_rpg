@@ -77,11 +77,17 @@
 		271D614020421A9A005C9F7E /* SHControlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D610420421A9A005C9F7E /* SHControlController.m */; };
 		271D614120421A9A005C9F7E /* P_SHView.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D610520421A9A005C9F7E /* P_SHView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271D614520421F1A005C9F7E /* P_ResizeResponder.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D614420421F1A005C9F7E /* P_ResizeResponder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D614820421FF8005C9F7E /* UIScrollView+ScrollAdjusters.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D614620421FF7005C9F7E /* UIScrollView+ScrollAdjusters.m */; };
-		271D614920421FF8005C9F7E /* UIScrollView+ScrollAdjusters.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D614720421FF7005C9F7E /* UIScrollView+ScrollAdjusters.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27249B9A21C5809E006A884B /* UIView+Helpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 27249B9821C5809E006A884B /* UIView+Helpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27249B9B21C5809E006A884B /* UIView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 27249B9921C5809E006A884B /* UIView+Helpers.m */; };
+		27249B9E21C58240006A884B /* UIScrollView+ScrollAdjusters.h in Headers */ = {isa = PBXBuildFile; fileRef = 27249B9C21C58240006A884B /* UIScrollView+ScrollAdjusters.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27249B9F21C58240006A884B /* UIScrollView+ScrollAdjusters.m in Sources */ = {isa = PBXBuildFile; fileRef = 27249B9D21C58240006A884B /* UIScrollView+ScrollAdjusters.m */; };
+		27249BA221CF0D59006A884B /* FrontEndConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 27249BA021CF0D59006A884B /* FrontEndConstants.m */; };
+		27249BA321CF0D59006A884B /* FrontEndConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27249BA121CF0D59006A884B /* FrontEndConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C527204A573200FB5669 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2747C526204A573200FB5669 /* Media.xcassets */; };
 		27B15A9920524A4F0045B226 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A9820524A4F0045B226 /* SHCommon.framework */; };
 		27B15A9B20524A5C0045B226 /* SHGlobal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A9A20524A5C0045B226 /* SHGlobal.framework */; };
+		27D0D6E421D02A2D00886721 /* UIViewController+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D0D6E221D02A2D00886721 /* UIViewController+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27D0D6E521D02A2D00886721 /* UIViewController+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0D6E321D02A2D00886721 /* UIViewController+Helper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -157,11 +163,17 @@
 		271D610420421A9A005C9F7E /* SHControlController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHControlController.m; sourceTree = "<group>"; };
 		271D610520421A9A005C9F7E /* P_SHView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_SHView.h; sourceTree = "<group>"; };
 		271D614420421F1A005C9F7E /* P_ResizeResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ResizeResponder.h; sourceTree = "<group>"; };
-		271D614620421FF7005C9F7E /* UIScrollView+ScrollAdjusters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+ScrollAdjusters.m"; path = "SHControls/UIScrollView+ScrollAdjusters.m"; sourceTree = "<group>"; };
-		271D614720421FF7005C9F7E /* UIScrollView+ScrollAdjusters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+ScrollAdjusters.h"; path = "SHControls/UIScrollView+ScrollAdjusters.h"; sourceTree = "<group>"; };
+		27249B9821C5809E006A884B /* UIView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Helpers.h"; path = "SHControls/UIView+Helpers.h"; sourceTree = "<group>"; };
+		27249B9921C5809E006A884B /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Helpers.m"; path = "SHControls/UIView+Helpers.m"; sourceTree = "<group>"; };
+		27249B9C21C58240006A884B /* UIScrollView+ScrollAdjusters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+ScrollAdjusters.h"; path = "SHControls/UIScrollView+ScrollAdjusters.h"; sourceTree = "<group>"; };
+		27249B9D21C58240006A884B /* UIScrollView+ScrollAdjusters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+ScrollAdjusters.m"; path = "SHControls/UIScrollView+ScrollAdjusters.m"; sourceTree = "<group>"; };
+		27249BA021CF0D59006A884B /* FrontEndConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FrontEndConstants.m; path = SHControls/FrontEndConstants.m; sourceTree = "<group>"; };
+		27249BA121CF0D59006A884B /* FrontEndConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrontEndConstants.h; path = SHControls/FrontEndConstants.h; sourceTree = "<group>"; };
 		2747C526204A573200FB5669 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = SHControls/Media.xcassets; sourceTree = "<group>"; };
 		27B15A9820524A4F0045B226 /* SHCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHCommon.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHCommon.framework"; sourceTree = "<group>"; };
 		27B15A9A20524A5C0045B226 /* SHGlobal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHGlobal.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHGlobal.framework"; sourceTree = "<group>"; };
+		27D0D6E221D02A2D00886721 /* UIViewController+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Helper.h"; sourceTree = "<group>"; };
+		27D0D6E321D02A2D00886721 /* UIViewController+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Helper.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +192,13 @@
 		271187D0203FF88E0085A549 = {
 			isa = PBXGroup;
 			children = (
+				27D0D6E121D02A2D00886721 /* Categories */,
+				27249BA121CF0D59006A884B /* FrontEndConstants.h */,
+				27249BA021CF0D59006A884B /* FrontEndConstants.m */,
+				27249B9C21C58240006A884B /* UIScrollView+ScrollAdjusters.h */,
+				27249B9D21C58240006A884B /* UIScrollView+ScrollAdjusters.m */,
+				27249B9821C5809E006A884B /* UIView+Helpers.h */,
+				27249B9921C5809E006A884B /* UIView+Helpers.m */,
 				2747C526204A573200FB5669 /* Media.xcassets */,
 				271D60F720421A9A005C9F7E /* Abstract */,
 				271D60C420421A99005C9F7E /* ControlDelegates */,
@@ -217,8 +236,6 @@
 				271187E7203FF9DB0085A549 /* SubtasksTableView.xib */,
 				27118808203FF9DF0085A549 /* TaskCell.h */,
 				271187F6203FF9DC0085A549 /* TaskCell.m */,
-				271D614720421FF7005C9F7E /* UIScrollView+ScrollAdjusters.h */,
-				271D614620421FF7005C9F7E /* UIScrollView+ScrollAdjusters.m */,
 				271187DC203FF88E0085A549 /* SHControls */,
 				271187DB203FF88E0085A549 /* Products */,
 				2711884B203FFE5B0085A549 /* Frameworks */,
@@ -320,6 +337,16 @@
 			path = SHControls/Abstract;
 			sourceTree = "<group>";
 		};
+		27D0D6E121D02A2D00886721 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				27D0D6E221D02A2D00886721 /* UIViewController+Helper.h */,
+				27D0D6E321D02A2D00886721 /* UIViewController+Helper.m */,
+			);
+			name = Categories;
+			path = SHControls/Categories;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -327,9 +354,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27249B9E21C58240006A884B /* UIScrollView+ScrollAdjusters.h in Headers */,
 				271D610F20421A9A005C9F7E /* P_ImportanceSlidersDelegate.h in Headers */,
 				271D610620421A9A005C9F7E /* P_StreakResetterDelegate.h in Headers */,
 				271D614520421F1A005C9F7E /* P_ResizeResponder.h in Headers */,
+				27D0D6E421D02A2D00886721 /* UIViewController+Helper.h in Headers */,
 				27118827203FF9DF0085A549 /* ImportanceSliderView.h in Headers */,
 				271D610720421A9A005C9F7E /* P_SubtasksTableViewDelegate.h in Headers */,
 				271D613E20421A9A005C9F7E /* SHView.h in Headers */,
@@ -345,7 +374,6 @@
 				271D613720421A9A005C9F7E /* SHControlController.h in Headers */,
 				271D611B20421A9A005C9F7E /* SHEventInfo.h in Headers */,
 				27118812203FF9DF0085A549 /* SubtasksTableView.h in Headers */,
-				271D614920421FF8005C9F7E /* UIScrollView+ScrollAdjusters.h in Headers */,
 				271D611E20421A9A005C9F7E /* SHTextField.h in Headers */,
 				271D613C20421A9A005C9F7E /* SHViewController.h in Headers */,
 				27118818203FF9DF0085A549 /* StreakResetterView.h in Headers */,
@@ -366,6 +394,8 @@
 				2711882E203FF9DF0085A549 /* TaskCell.h in Headers */,
 				271D611F20421A9A005C9F7E /* SHButton.h in Headers */,
 				271D611520421A9A005C9F7E /* P_SHSwitch.h in Headers */,
+				27249B9A21C5809E006A884B /* UIView+Helpers.h in Headers */,
+				27249BA321CF0D59006A884B /* FrontEndConstants.h in Headers */,
 				271D610920421A9A005C9F7E /* P_CommonDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,18 +506,21 @@
 				271D613620421A9A005C9F7E /* SHViewController.m in Sources */,
 				27118823203FF9DF0085A549 /* RateTypeSelector.m in Sources */,
 				2711881B203FF9DF0085A549 /* ListItemCell.m in Sources */,
-				271D614820421FF8005C9F7E /* UIScrollView+ScrollAdjusters.m in Sources */,
 				271D613920421A9A005C9F7E /* SHSpinPicker.m in Sources */,
 				27118811203FF9DF0085A549 /* StreakResetterView.m in Sources */,
 				271188502040001B0085A549 /* SHSwitch.m in Sources */,
+				27249B9B21C5809E006A884B /* UIView+Helpers.m in Sources */,
 				271D611920421A9A005C9F7E /* ItemFlexibleListEventInfo.m in Sources */,
 				27118819203FF9DF0085A549 /* SubtasksTableView.m in Sources */,
 				2711880E203FF9DF0085A549 /* NoteView.m in Sources */,
+				27249BA221CF0D59006A884B /* FrontEndConstants.m in Sources */,
 				271D613A20421A9A005C9F7E /* SHView.m in Sources */,
 				271D611D20421A9A005C9F7E /* SHTextField.m in Sources */,
 				27118826203FF9DF0085A549 /* AddItemsFooter.m in Sources */,
+				27D0D6E521D02A2D00886721 /* UIViewController+Helper.m in Sources */,
 				27118816203FF9DF0085A549 /* RewardsView.m in Sources */,
 				27118830203FF9DF0085A549 /* ImportanceSliderView.m in Sources */,
+				27249B9F21C58240006A884B /* UIScrollView+ScrollAdjusters.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

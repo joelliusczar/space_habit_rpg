@@ -41,7 +41,6 @@
 		2747C518204A491E00FB5669 /* DailyEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C517204A491E00FB5669 /* DailyEditController.m */; };
 		2747C51A204A494A00FB5669 /* DailyEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2747C519204A494A00FB5669 /* DailyEditView.xib */; };
 		2747C51D204A499000FB5669 /* DailyEditController+ControlLoaders.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C51C204A499000FB5669 /* DailyEditController+ControlLoaders.m */; };
-		2781553F218D6E49005C5279 /* IntroTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2781553E218D6E49005C5279 /* IntroTextView.xib */; };
 		27B15AA920524CB60045B226 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AA820524CB60045B226 /* SHCommon.framework */; };
 		27B15AAB20524CDC0045B226 /* SHControlsSpecial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AAA20524CDC0045B226 /* SHControlsSpecial.framework */; };
 		27B15AAD20524CFE0045B226 /* SHControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AAC20524CFE0045B226 /* SHControls.framework */; };
@@ -106,7 +105,6 @@
 		2747C51C204A499000FB5669 /* DailyEditController+ControlLoaders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DailyEditController+ControlLoaders.m"; sourceTree = "<group>"; };
 		2747C51E204A4A2300FB5669 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		276951A420437DF5002D1C9A /* SpaceHabitRPG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceHabitRPG.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2781553E218D6E49005C5279 /* IntroTextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroTextView.xib; sourceTree = "<group>"; };
 		27B15AA820524CB60045B226 /* SHCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHCommon.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHCommon.framework"; sourceTree = "<group>"; };
 		27B15AAA20524CDC0045B226 /* SHControlsSpecial.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHControlsSpecial.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHControlsSpecial.framework"; sourceTree = "<group>"; };
 		27B15AAC20524CFE0045B226 /* SHControls.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHControls.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHControls.framework"; sourceTree = "<group>"; };
@@ -223,7 +221,6 @@
 				2747C4FA20490BBB00FB5669 /* SingletonCluster+App.m */,
 				2747C5042049112800FB5669 /* Info.plist */,
 				2747C51E204A4A2300FB5669 /* PrefixHeader.pch */,
-				2781553E218D6E49005C5279 /* IntroTextView.xib */,
 			);
 			path = SpaceHabitRPG;
 			sourceTree = "<group>";
@@ -301,7 +298,6 @@
 				2747C4AA2048D75300FB5669 /* EditNavigationController.xib in Resources */,
 				2747C4B42048D7B100FB5669 /* DailyViewController.xib in Resources */,
 				2747C4BF2048D80E00FB5669 /* GoodsViewController.xib in Resources */,
-				2781553F218D6E49005C5279 /* IntroTextView.xib in Resources */,
 				2747C49B2048D53100FB5669 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface UIScrollView (ScrollAdjusters)
+
 -(void)scrollByOffset:(CGFloat)offset;
 -(void)resizeContentHeight:(CGFloat)change;
+
 @end

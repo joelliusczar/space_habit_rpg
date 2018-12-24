@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-@import CoreGraphics;
 
 typedef NSDictionary<NSString *,NSNumber *> RateValueItemDict;
 
@@ -101,18 +100,12 @@ extern u_int32_t const MAX_MONSTER_RAND_UP_BOUND;
 extern u_int32_t const MAX_MONSTER_LOW_BOUND;
 extern u_int32_t const ZONE_LVL_RANGE;
 extern u_int32_t const MONSTER_LVL_RANGE;
-extern NSTimeInterval const CHARACTER_DELAY;
 extern u_int32_t const TYPE_INCR_SIZE;
 extern u_int32_t const MIN_ZONE_CHOICE_COUNT;
 extern u_int32_t const MAX_ZONE_CHOICE_RAND_UP_BOUND;
-extern CGFloat const ZONE_CHOICE_ROW_HEIGHT;
-extern CGFloat const EDIT_SCREEN_TOP_CONTROL_HEIGHT;
 extern NSString* const NOTIFY_CAT_ID;
 extern NSString* const ALL_DAYS_JSON;
 
-extern CGFloat const SUB_TABLE_CELL_HEIGHT;
-extern NSInteger const SUB_TABLE_MAX_ROWS;
-extern CGFloat const SUB_TABLE_MAX_HEIGHT;
 
 extern NSString* const TRANSACTION_TYPE_KEY;
 extern NSString* const TRANSACTION_TYPE_CREATE;
@@ -121,15 +114,6 @@ extern NSString* const REPORT_USER_ID_KEY;
 extern int const MINUTES_IN_HOUR;
 extern int const HOURS_IN_DAY;
 extern int const DAY_HALF;
-
-extern int const HOUR_OF_DAY_COL;
-extern int const MINUTE_COL;
-extern int const DAYS_BEFORE_COL_IN_24_HOUR_CLOCK;
-extern int const DAYS_BEFORE_COL_IN_12_HOUR_CLOCK;
-extern int const AM_PM_COL;
-extern int const AM_ROW;
-extern int const PM_ROW;
-
 
 extern NSString* const ORDINAL_WEEK_KEY;
 extern NSString* const DAY_OF_WEEK_KEY;
@@ -142,8 +126,4 @@ extern NSString * const IS_DAY_ACTIVE_KEY;
 
 extern int const DAY_LEN;
 
-//control widths
-extern int const HOUR_PICKER_COL_WIDTH;
-extern int const MIN_PICKER_COL_WIDTH;
-extern int const AM_PM_PICKER_COL_WIDTH;
-extern int const LEFTOVER_PICKER_COL_WIDTH;
+
