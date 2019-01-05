@@ -8,3 +8,4 @@
 
 cd ${SRCROOT}/../Build_Scripts
 . SHMaster.sh
+#echo "$(PLATFORM_DIR)"

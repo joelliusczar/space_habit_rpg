@@ -13,13 +13,17 @@
 #import "SingletonCluster+Entity.h"
 
 NSString* const HOME_KEY = @"HOME";
+@interface Zone ()
+Suffix* getSuffixEntity(NSString* zoneKey);
+int32_t getVisitCountForZone(NSString* zoneKey);
+@end
 
 @implementation Zone (Helper)
 
 /*
  We're adding the zone groups to a list and one of them will be randomly selected
  */
-+(NSArray<NSString *>*)getUnlockedZoneGroupKeys:(NSUInteger)heroLvl{
+NSArray<NSString *>* getUnlockedZoneGroupKeys(NSUInteger heroLvl){
     if(heroLvl == 0){
         return @[LVL_0_ZONES];
     }
@@ -46,8 +50,8 @@ NSString* const HOME_KEY = @"HOME";
     return [NSArray arrayWithArray:availableZoneGroups];
 }
 
-+(NSString*)getRandomZoneDefinitionKey:(NSUInteger)heroLvl{
-    NSArray<NSString *> *groupKeys = [Zone getUnlockedZoneGroupKeys: heroLvl];
+NSString* getRandomZoneDefinitionKey(NSUInteger heroLvl){
+    NSArray<NSString *> *groupKeys = getUnlockedZoneGroupKeys(heroLvl);
     uint r = randomUInt((uint)groupKeys.count);
     NSString *groupKey = groupKeys[r];
     ZoneInfoDictionary *zd = [SingletonCluster getSharedInstance].zoneInfoDictionary;
@@ -56,9 +60,9 @@ NSString* const HOME_KEY = @"HOME";
     return zoneList[r];
 }
 
-+(NSString*)getSymbolSuffix:(NSUInteger)visitCount{
+NSString* getSymbolSuffix(NSUInteger visitCount){
     NSMutableArray<NSString *> *suffixList = [NSMutableArray array];
-    NSArray *symbols = [Zone getSymbolsList];
+    NSArray *symbols = getSymbolsList();
     while(visitCount > 0){
         NSUInteger m = (visitCount-1) % symbols.count;
         visitCount -= m;
@@ -68,8 +72,8 @@ NSString* const HOME_KEY = @"HOME";
     return [[[suffixList reverseObjectEnumerator] allObjects] componentsJoinedByString:@" "];
 }
 
-+(NSArray *)getSymbolsList{
-    NSBundle *bundle = [NSBundle bundleForClass:self.class];
+NSArray<NSString*>* getSymbolsList(){
+    NSBundle *bundle = [NSBundle bundleForClass:Zone.class];
     NSArray *symbols = [SharedGlobal.resourceUtility getPListArray:@"SuffixList"
       withBundle:bundle];
     
@@ -83,7 +87,7 @@ Zone* constructSpecificZone(NSString* zoneKey, int32_t lvl,int32_t monsterCount)
   NSCAssert(lvl > 0, @"Lvl must be greater than 0");
   Zone *z = constructEmptyZone();
   z.zoneKey = zoneKey;
-  z.suffix = [Zone getSymbolSuffix:[Zone getVisitCountForZone:zoneKey]];
+  z.suffix = getSymbolSuffix(getVisitCountForZone(zoneKey));
   z.maxMonsters = monsterCount;
   z.monstersKilled = 0;
   z.lvl = lvl;
@@ -92,7 +96,7 @@ Zone* constructSpecificZone(NSString* zoneKey, int32_t lvl,int32_t monsterCount)
 
 
 Zone* constructRandomZoneChoice(Hero* hero,BOOL shouldMatchLvl){
-  NSString *zoneKey = [Zone getRandomZoneDefinitionKey:hero.lvl];
+  NSString *zoneKey = getRandomZoneDefinitionKey(hero.lvl);
   int32_t zoneLvl = shouldMatchLvl?hero.lvl:calculateLvl(hero.lvl,ZONE_LVL_RANGE);
   Zone *z = constructSpecificZone2(zoneKey,zoneLvl);
   return z;
@@ -109,7 +113,7 @@ Zone* constructSpecificZone2(NSString* zoneKey,int32_t lvl){
 }
 
 
-+(NSMutableArray<Zone *> *)constructMultipleZoneChoices:(Hero *)hero AndMatchHeroLvl:(BOOL)matchLvl{
+NSMutableArray<Zone*>* constructMultipleZoneChoices(Hero* hero,BOOL matchLvl){
     //Zone create uses nil context so that should be okay
     NSManagedObjectContext *suffixContext = [SHData constructContext:NSMainQueueConcurrencyType];
     SHData.inUseContext = suffixContext;
@@ -124,19 +128,19 @@ Zone* constructSpecificZone2(NSString* zoneKey,int32_t lvl){
 }
 
 
-+(int32_t)getVisitCountForZone:(NSString *)zoneKey{
-    Suffix *s = [Zone getSuffixEntity:zoneKey];
+int32_t getVisitCountForZone(NSString* zoneKey){
+    Suffix *s = getSuffixEntity(zoneKey);
     int currentVisitCount = s.visitCount++;
     [SHData saveAndWait];
     return currentVisitCount;
 }
 
-+(Suffix *)getSuffixEntity:(NSString *)zoneKey{
+Suffix* getSuffixEntity(NSString* zoneKey){
     NSFetchRequest<Suffix *> *request = [Suffix fetchRequest];
     NSSortDescriptor *sortByZoneKey = [[NSSortDescriptor alloc] initWithKey:@"zoneKey" ascending:NO];
     NSPredicate *filter = [NSPredicate predicateWithFormat:@"zoneKey = %@",zoneKey];
     NSArray<NSManagedObject *> *results = [SHData getItemWithRequest:request predicate:filter sortBy:@[sortByZoneKey]];
-    NSAssert(results.count<2, @"There are too many entities");
+    NSCAssert(results.count<2, @"There are too many entities");
     Suffix *s;
     if(results.count){
         s = (Suffix *)results[0];
@@ -149,34 +153,23 @@ Zone* constructSpecificZone2(NSString* zoneKey,int32_t lvl){
 }
 
 
-//deprecated
-+(Zone *)getZoneByZoneKey:(NSString *)zoneKey{
-    NSFetchRequest<Zone *> *request = [Zone fetchRequest];
-    NSSortDescriptor *sortBySuffixNumber= [[NSSortDescriptor alloc] initWithKey:@"suffixNumber" ascending:NO];
-    NSPredicate *filter = [NSPredicate predicateWithFormat:@"zoneKey = %@",zoneKey];
-    
-    NSArray<NSManagedObject *> *results = [[SingletonCluster getSharedInstance].dataController getItemWithRequest:request predicate:filter sortBy:@[sortBySuffixNumber]];
-    NSAssert(results.count<2, @"There are too many zones");
-    return (Zone *)results[0];
-}
-
-+(Zone *)getZone:(BOOL)isFront{
+Zone * getZone(BOOL isFront){
     NSPredicate *filter = [NSPredicate predicateWithFormat:@"isFront =%d",isFront?1:0];
-    NSArray<NSManagedObject *> *results = [Zone getAllZones:filter];
-    NSAssert(results.count<2, @"There are too many zones");
+    NSArray<NSManagedObject *> *results = getAllZones(filter);
+    NSCAssert(results.count<2, @"There are too many zones");
     return results.count>0?(Zone *)results[0]:nil;
 }
 
-+(NSArray<NSManagedObject *> *)getAllZones:(NSPredicate *)filter{
+NSArray<NSManagedObject *>* getAllZones(NSPredicate* filter){
     NSFetchRequest<Zone *> *request = [Zone fetchRequest];
     NSSortDescriptor *sortByIsFront = [[NSSortDescriptor alloc] initWithKey:@"isFront" ascending:NO];
     NSArray<NSManagedObject *> *results = [SHData getItemWithRequest:request predicate:filter sortBy:@[sortByIsFront]];
     return results;
 }
 
-+(void)moveZoneToFront:(Zone *)newFront{
-    NSArray<NSManagedObject *> *results = [Zone getAllZones:nil];
-    newFront.isFront = YES;
+-(void)moveZoneToFront{
+    NSArray<NSManagedObject *> *results = getAllZones(nil);
+    self.isFront = YES;
     NSAssert(results.count<3, @"There are too many zones");
     if(results.count==0){
         return;
@@ -187,7 +180,6 @@ Zone* constructSpecificZone2(NSString* zoneKey,int32_t lvl){
     }
     [SHData softDeleteModel:results[1]];
     ((Zone *)results[0]).isFront = NO;
-    
 }
 
 @end

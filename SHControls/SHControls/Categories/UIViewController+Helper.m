@@ -19,7 +19,7 @@
 }
 
 
--(void)popChildVCFromFront{
+-(void)popVCFromFront{
   [self willMoveToParentViewController:nil];
   [self.view removeFromSuperview];
   [self removeFromParentViewController];

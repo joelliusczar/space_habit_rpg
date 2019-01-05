@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 //if you want UIViewContoller and its view to be front, call this
 -(void)arrangeAndPushChildVCToFront:(UIViewController *)child;
 //if you want to get rid of a child view controller, call this
--(void)popChildVCFromFront;
+-(void)popVCFromFront;
 
 @end
 

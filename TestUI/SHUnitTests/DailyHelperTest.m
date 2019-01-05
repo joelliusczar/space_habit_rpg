@@ -883,6 +883,7 @@ NSMutableArray<Daily *> *testDailies = nil;
     
     tryAddDaysToDt_m(&base,66,0,&checkinDate,&err);
     bool isSuccess = nextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+    (void)isSuccess;
     tryAddDaysToDt_m(&base,66,0,&expected,&err);
     btw = dateDiffDays_m(&result,&base,&err);
     XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));

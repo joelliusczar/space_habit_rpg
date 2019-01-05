@@ -22,7 +22,7 @@
 #import <SHModels/Settings+CoreDataClass.h>
 #import <SHModels/Hero+CoreDataClass.h>
 #import <SHGlobal/Constants.h>
-#import <SHCommon/ViewHelper.h>
+#import <SHControls/UIViewController+Helper.h>
 #import <SHModels/Zone+Helper.h>
 #import <SHCommon/NSMutableDictionary+Helper.h>
 #import "SingletonCluster+App.h"
@@ -138,38 +138,35 @@
 -(void)showIntroView{
     IntroViewController *introView = [[IntroViewController alloc]
       initWithCentralViewController:self];
-    arrangeAndPushVCToFrontOfParent(introView,self);
+    [self arrangeAndPushChildVCToFront:introView];
 }
 
 -(void)setupNormalZoneAndMonster{
   
   BOOL isFront = YES;
-  Zone *z = [Zone getZone:isFront];
+  Zone *z = getZone(isFront);
   if(z==nil){
-      NSMutableArray<Zone *> *zoneChoices =
-      [Zone constructMultipleZoneChoices:self.userHero
-        AndMatchHeroLvl:NO];
+      NSMutableArray<Zone *> *zoneChoices = constructMultipleZoneChoices(self.userHero,NO);
     
       [self showZoneChoiceView:zoneChoices];
       return;
   }
   self.nowZone = z;
-  Monster *m = [Monster getCurrentMonster];
+  Monster *m = getCurrentMonster();
   if(m==nil||m.nowHp<1){
     z.monstersKilled=
     (m!=nil&&m.nowHp<1)?(z.monstersKilled+1):z.monstersKilled;
   
     if(z.monstersKilled>=z.maxMonsters){
       NSMutableArray<Zone *> *zoneChoices =
-      [Zone constructMultipleZoneChoices:self.userHero
-        AndMatchHeroLvl:NO];
+      constructMultipleZoneChoices(self.userHero,NO);
     
       [zoneChoices addObject:z];
       [self showZoneChoiceView:zoneChoices];
       //setups observers after user has picked zones
       return;
     }
-    m = [Monster constructRandomMonster:z.zoneKey AroundLvl:z.lvl];
+    m = constructRandomMonster(z.zoneKey,z.lvl);
     [SHData save];
     [self showMonsterStory];
   }
@@ -205,10 +202,7 @@
 }
 
 -(void)showZoneChoiceView{
-    NSArray<Zone *> *zoneChoices =
-    [Zone constructMultipleZoneChoices:self.userHero
-      AndMatchHeroLvl:YES];
-    
+    NSArray<Zone *> *zoneChoices = constructMultipleZoneChoices(self.userHero,YES);
     [self showZoneChoiceView:zoneChoices];
 }
 
@@ -295,13 +289,11 @@ context:(void *)context{
         zoneChoice = constructRandomZoneChoice(self.userHero,NO);
     }
     
-    [Zone moveZoneToFront:zoneChoice];
+    [zoneChoice moveZoneToFront];
     [self.dataController insertIntoContext:zoneChoice];
     self.nowZone = zoneChoice;
     
-    self.nowMonster =
-    [Monster constructRandomMonster:zoneChoice.zoneKey
-                                AroundLvl:zoneChoice.lvl];
+    self.nowMonster = constructRandomMonster(zoneChoice.zoneKey,zoneChoice.lvl);
     
     NSMutableDictionary *zoneInfo = self.nowZone.mapable;
     NSMutableDictionary *monsterInfo = self.nowMonster.mapable;

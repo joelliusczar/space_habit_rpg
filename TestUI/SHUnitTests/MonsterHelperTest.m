@@ -38,7 +38,7 @@ uint monsterHelper_mockRandom(uint range){
     }
 
     -(void)testConstructEmpty{
-        Monster *m = [Monster constructEmptyMonster];
+        Monster *m = constructEmptyMonster();
         XCTAssertNotNil(m);
     }
     
@@ -63,9 +63,9 @@ uint monsterHelper_mockRandom(uint range){
         int i =0;
         SET_LOW_BOUND();
         SET_UP_BOUND();
-        NSString *s = [Monster randomMonsterKey:@"NEBULA"];
+        NSString *s = randomMonsterKey(@"NEBULA");
         XCTAssertTrue([s isEqualToString:@"DUST_FAIRY"]);
-        s = [Monster randomMonsterKey:@"NEBULA"];
+        s = randomMonsterKey(@"NEBULA");
         XCTAssertTrue([s isEqualToString:@"PIRATES"]);
         
     }
@@ -74,7 +74,7 @@ uint monsterHelper_mockRandom(uint range){
         int i =0;
         SET_LOW_BOUND();
         SET_LOW_BOUND();
-        Monster *m = [Monster constructRandomMonster:@"NEBULA" AroundLvl:32];
+        Monster *m = constructRandomMonster(@"NEBULA",32);
         XCTAssertTrue([m.fullName isEqualToString:@"Dust Fairy"]);
         XCTAssertEqual(m.lvl,22);
         XCTAssertEqual(m.maxHp,400);
@@ -82,7 +82,7 @@ uint monsterHelper_mockRandom(uint range){
         
         SET_LOW_BOUND();
         SET_UP_BOUND();
-        m = [Monster constructRandomMonster:@"NEBULA" AroundLvl:32];
+        m = constructRandomMonster(@"NEBULA",32);
         XCTAssertTrue([m.fullName isEqualToString:@"Dust Fairy"]);
         XCTAssertEqual(m.lvl,42);
         XCTAssertEqual(m.maxHp,650);
@@ -90,7 +90,7 @@ uint monsterHelper_mockRandom(uint range){
         
         SET_UP_BOUND();
         SET_LOW_BOUND();
-        m = [Monster constructRandomMonster:@"NEBULA" AroundLvl:32];
+        m = constructRandomMonster(@"NEBULA",32);
         XCTAssertTrue([m.fullName isEqualToString:@"Petty Space Pirates"]);
         XCTAssertEqual(m.lvl,22);
         XCTAssertEqual(m.maxHp,160);
@@ -98,7 +98,7 @@ uint monsterHelper_mockRandom(uint range){
         
         SET_UP_BOUND();
         SET_UP_BOUND();
-        m = [Monster constructRandomMonster:@"NEBULA" AroundLvl:32];
+        m = constructRandomMonster(@"NEBULA",32);
         XCTAssertTrue([m.fullName isEqualToString:@"Petty Space Pirates"]);
         XCTAssertEqual(m.lvl,42);
         XCTAssertEqual(m.maxHp,260);

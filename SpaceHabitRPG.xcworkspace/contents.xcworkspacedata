@@ -18,6 +18,13 @@
    <Group
       location = "group:Build_Scripts"
       name = "Build_Scripts">
+      <Group
+         location = "container:"
+         name = "SQL">
+         <FileRef
+            location = "group:clean_up_script.sql">
+         </FileRef>
+      </Group>
       <FileRef
          location = "group:Build_Scripts.sh">
       </FileRef>

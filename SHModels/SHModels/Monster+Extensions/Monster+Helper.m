@@ -12,33 +12,32 @@
 #import "ModelTools.h"
 #import <SHGlobal/Constants.h>
 #import "MonsterInfoDictionary.h"
-#import <SHCommon/ProbWeight.h>
+
 
 @implementation Monster (Helper)
 
-+(Monster *)constructRandomMonster:(NSString *)zoneKey AroundLvl:(uint32_t)zoneLvl{
-    Monster *m = [Monster constructEmptyMonster];
-    m.monsterKey = [Monster randomMonsterKey:zoneKey];
+Monster* constructRandomMonster(NSString* zoneKey,uint32_t zoneLvl){
+    Monster *m = constructEmptyMonster();
+    m.monsterKey = randomMonsterKey(zoneKey);
     m.lvl = calculateLvl(zoneLvl,MONSTER_LVL_RANGE);
     m.nowHp = m.maxHp;
     return m;
 }
 
-+(Monster *)constructEmptyMonster{
-    
+Monster* constructEmptyMonster(){
     NSObject<P_CoreData> *dataController = [SingletonCluster getSharedInstance].dataController;
     return (Monster *)[dataController constructEmptyEntity:Monster.entity];
 }
 
-+(NSString *)randomMonsterKey:(NSString *)zoneKey{
+NSString* randomMonsterKey(NSString* zoneKey){
     MonsterInfoDictionary *monInfoDict = [SingletonCluster getSharedInstance].monsterInfoDictionary;
     NSMutableArray<NSString *> *monsterKeys = [NSMutableArray arrayWithArray:[monInfoDict getMonsterKeyList:zoneKey]];
     [monsterKeys addObjectsFromArray:[monInfoDict getMonsterKeyList:@"ALL"]];
-    ProbWeight *pbw = [Monster buildProbilityWeigher:monsterKeys];
+    ProbWeight *pbw = buildProbilityWeight(monsterKeys);
     return [pbw weightedRandomKey];
 }
 
-+(ProbWeight *)buildProbilityWeigher:(NSMutableArray<NSString *> *)keys{
+ProbWeight* buildProbilityWeight(NSMutableArray<NSString*>* keys){
     MonsterInfoDictionary *monInfoDict = [SingletonCluster getSharedInstance].monsterInfoDictionary;
     ProbWeight *pbw = [[ProbWeight alloc] init];
     for(NSString* zoneKey in keys){
@@ -48,11 +47,11 @@
     return pbw;
 }
 
-+(Monster *)getCurrentMonster{
+Monster* getCurrentMonster(){
     NSFetchRequest<Monster *> *request = [Monster fetchRequest];
     NSSortDescriptor *sortByMonsterKey = [[NSSortDescriptor alloc]initWithKey:@"monsterKey" ascending:NO];
     NSArray<NSManagedObject *> *results = [[SingletonCluster getSharedInstance].dataController getItemWithRequest:request predicate:nil sortBy:@[sortByMonsterKey]];
-    NSAssert(results.count<2,@"There are too many monsters");
+    NSCAssert(results.count<2,@"There are too many monsters");
     return (Monster *)results[0];
 }
 

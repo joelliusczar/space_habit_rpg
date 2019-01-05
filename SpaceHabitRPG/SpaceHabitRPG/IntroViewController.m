@@ -13,7 +13,7 @@
 #import <SHControls/FrontEndConstants.h>
 #import "ZoneChoiceViewController.h"
 #import <SHModels/Hero+CoreDataClass.h>
-#import <SHCommon/ViewHelper.h>
+#import <SHControls/UIViewController+Helper.h>
 #import <SHModels/SingletonCluster+Entity.h>
 #import <SHModels/ZoneInfoDictionary.h>
 #import <SHModels/Zone+Helper.h>
@@ -150,6 +150,9 @@ scrollIncrement:(CGFloat)scrollIncrement{
     });
     [NSThread sleepForTimeInterval:delay];
   }
+  dispatch_async(dispatch_get_main_queue(),^{
+    [self afterScroll];
+  });
 }
 
 
@@ -167,7 +170,7 @@ scrollIncrement:(CGFloat)scrollIncrement{
     self.isStoryDone = YES;
     self.isThreadAllowed = NO;
   }
-  popVCFromFront(self);
+  [self popVCFromFront];
   [self.central showZoneChoiceView];
 }
 
@@ -177,6 +180,7 @@ scrollIncrement:(CGFloat)scrollIncrement{
     self.isStoryDone = YES;
     self.isThreadAllowed = NO;
     [self.introMessageView resetVerticalOrigin];
+    [self afterScroll];
   }
 }
 

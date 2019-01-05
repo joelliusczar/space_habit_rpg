@@ -9,11 +9,11 @@
 #import "ZoneChoiceViewController.h"
 #import "ZoneChoiceCellController.h"
 #import <SHControls/FrontEndConstants.h>
-#import <SHCommon/ViewHelper.h>
 #import <SHCommon/SingletonCluster.h>
 #import <SHCommon/CommonUtilities.h>
 #import <SHModels/Zone+Helper.h>
 #import <SHControls/UIView+Helpers.h>
+#import <SHControls/UIViewController+Helper.h>
 
 @interface ZoneChoiceViewController ()
 @property (nonatomic,strong) NSArray<Zone *> *zones;
@@ -78,7 +78,7 @@
 
 -(IBAction)skipBtn_pressed_action:(UIButton *)sender{
   [self.central setToShowStory:NO];
-  popVCFromFront(self);
+  [self popVCFromFront];
   [self.central afterZonePick:nil];
 }
 

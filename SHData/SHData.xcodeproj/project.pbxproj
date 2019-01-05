@@ -169,7 +169,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = $SRCROOT/../Build_Scripts/SHData.sh;
+			shellScript = "$SRCROOT/../Build_Scripts/SHData.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

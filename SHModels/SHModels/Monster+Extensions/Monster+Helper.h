@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "Monster+CoreDataClass.h"
+#import <SHCommon/ProbWeight.h>
 
 @interface Monster (Helper)
-+(Monster *)constructRandomMonster:(NSString *)zoneKey AroundLvl:(uint32_t)zoneLvl;
-+(NSString *)randomMonsterKey:(NSString *)zoneKey;
-+(Monster *)constructEmptyMonster;
-+(Monster *)getCurrentMonster;
+Monster* constructRandomMonster(NSString* zoneKey,uint32_t zoneLvl);
+NSString* randomMonsterKey(NSString* zoneKey);
+Monster* constructEmptyMonster(void);
+ProbWeight* buildProbilityWeight(NSMutableArray<NSString*>* keys);
+Monster* getCurrentMonster(void);
 @end
