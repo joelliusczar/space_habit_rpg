@@ -43,7 +43,6 @@
 		2747C5B2204A63E300FB5669 /* SHData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2747C5B3204A63E300FB5669 /* SHData.framework */; };
 		2747C5B4204A63E900FB5669 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2747C5B5204A63E900FB5669 /* SHModels.framework */; };
 		274EFB87204F9C3100CB3C4C /* TestCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 274EFB88204F9C3100CB3C4C /* TestCommon.framework */; };
-		2778275221DC679000883025 /* TestUI.app in Resources */ = {isa = PBXBuildFile; fileRef = 2747C531204A5DB000FB5669 /* TestUI.app */; };
 		2781552821716B4F005C5279 /* libSH_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2781552721716B4F005C5279 /* libSH_C.a */; };
 		27D0D6E721D0820200886721 /* TestsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0D6E621D0820200886721 /* TestsTest.m */; };
 		27D80A182086E89900FB4CE2 /* libSHDatetime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D80A172086E89900FB4CE2 /* libSHDatetime.a */; };
@@ -337,7 +336,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2778275221DC679000883025 /* TestUI.app in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

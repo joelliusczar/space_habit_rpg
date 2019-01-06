@@ -81,20 +81,6 @@ NSArray<NSString*>* getSymbolsList(){
 }
 
 
-Zone* constructSpecificZone(NSString* zoneKey, int32_t lvl,int32_t monsterCount){
-  
-  NSCAssert(zoneKey,@"Key can't be null");
-  NSCAssert(lvl > 0, @"Lvl must be greater than 0");
-  Zone *z = constructEmptyZone();
-  z.zoneKey = zoneKey;
-  z.suffix = getSymbolSuffix(getVisitCountForZone(zoneKey));
-  z.maxMonsters = monsterCount;
-  z.monstersKilled = 0;
-  z.lvl = lvl;
-  return z;
-}
-
-
 Zone* constructRandomZoneChoice(Hero* hero,BOOL shouldMatchLvl){
   NSString *zoneKey = getRandomZoneDefinitionKey(hero.lvl);
   int32_t zoneLvl = shouldMatchLvl?hero.lvl:calculateLvl(hero.lvl,ZONE_LVL_RANGE);
@@ -110,6 +96,20 @@ Zone* constructEmptyZone(){
 Zone* constructSpecificZone2(NSString* zoneKey,int32_t lvl){
   int32_t monsterCount = randomUInt(MAX_MONSTER_RAND_UP_BOUND)  + MAX_MONSTER_LOW_BOUND;
   return constructSpecificZone(zoneKey, lvl, monsterCount);
+}
+
+
+Zone* constructSpecificZone(NSString* zoneKey, int32_t lvl,int32_t monsterCount){
+  
+  NSCAssert(zoneKey,@"Key can't be null");
+  NSCAssert(lvl > 0, @"Lvl must be greater than 0");
+  Zone *z = constructEmptyZone();
+  z.zoneKey = zoneKey;
+  z.suffix = getSymbolSuffix(getVisitCountForZone(zoneKey));
+  z.maxMonsters = monsterCount;
+  z.monstersKilled = 0;
+  z.lvl = lvl;
+  return z;
 }
 
 

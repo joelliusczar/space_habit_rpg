@@ -307,10 +307,10 @@ uint zoneHelper_mockRandom(uint range){
     
     i = 0;
     rIdx_zh = 0;
-    SET_LOW_BOUND();
-    SET_LOW_BOUND();
-    SET_UP_BOUND();
-    SET_LOW_BOUND();
+    SET_LOW_BOUND(); //zoneGroup
+    SET_LOW_BOUND(); //zone
+    SET_LOW_BOUND(); //zone lvl
+    SET_UP_BOUND(); //maxMonsters
     z = constructRandomZoneChoice(h,NO);
     XCTAssertTrue([z.zoneKey isEqualToString:@"NEBULA"]);
     XCTAssertEqual(z.lvl, 4);
@@ -341,6 +341,10 @@ uint zoneHelper_mockRandom(uint range){
     
     int i = 0;
     rIdx_zh = 0;
+    /*
+    If I break these tests again, try adjusting the order of my SET_LOW_BOUND,
+    SET_UP_BOUND calls below. Yes, this is a fragile test.
+    */
     SET_LOW_BOUND();//choice count
     SET_LOW_BOUND();//zoneGroup
     SET_LOW_BOUND();//zone
@@ -348,8 +352,8 @@ uint zoneHelper_mockRandom(uint range){
     
     SET_LOW_BOUND();//zoneGroup
     SET_LOW_BOUND();//zone
-    SET_UP_BOUND(); //maxMonsters
     SET_LOW_BOUND(); //zone lvl
+    SET_UP_BOUND(); //maxMonsters
     
     SET_LOW_BOUND();//zoneGroup
     SET_LOW_BOUND();//zone
@@ -395,48 +399,54 @@ uint zoneHelper_mockRandom(uint range){
 }
 
 -(void)testMoveToFront{
-    
-    Zone *z1 = constructEmptyZone();
-    z1.zoneKey = @"GAS";
-    [z1 moveZoneToFront];
-    [SHData insertIntoContext:z1];
-    [SHData save];
-    
-    NSArray<NSManagedObject *> *zones = getAllZones(nil);
-    XCTAssertEqual(zones.count, 2);
-    XCTAssertTrue(((Zone *)zones[0]).isFront);
-    XCTAssertTrue([((Zone *)zones[0]).zoneKey isEqualToString:@"GAS"]);
-    XCTAssertFalse(((Zone *)zones[1]).isFront);
-    XCTAssertTrue([((Zone *)zones[1]).zoneKey isEqualToString:@"HOME"]);
-    
-    Zone *z2 = constructEmptyZone();
-    z2.zoneKey = @"NEBULA";
-    [z2 moveZoneToFront];
-    [SHData insertIntoContext:z2];
-    [SHData save];
-    
-    zones = getAllZones(nil);
-    XCTAssertEqual(zones.count, 2);
-    XCTAssertTrue(((Zone *)zones[0]).isFront);
-    XCTAssertTrue([((Zone *)zones[0]).zoneKey isEqualToString:@"NEBULA"]);
-    XCTAssertFalse(((Zone *)zones[1]).isFront);
-    XCTAssertTrue([((Zone *)zones[1]).zoneKey isEqualToString:@"GAS"]);
-    
-    //these are insync from the database?
-    XCTAssertFalse(z1.isFront);
-    XCTAssertTrue(z2.isFront);
-    
-    Zone *z1_1 = (Zone *)zones[1];
-    [z1_1 moveZoneToFront];
-    [SHData insertIntoContext:z1_1];
-    [SHData save];
-    
-    zones = getAllZones(nil);
-    XCTAssertEqual(zones.count, 2);
-    XCTAssertTrue(((Zone *)zones[0]).isFront);
-    XCTAssertTrue([((Zone *)zones[0]).zoneKey isEqualToString:@"GAS"]);
-    XCTAssertFalse(((Zone *)zones[1]).isFront);
-    XCTAssertTrue([((Zone *)zones[1]).zoneKey isEqualToString:@"NEBULA"]);
+  
+  Zone *z0 = constructSpecificZone(HOME_KEY,1,0);
+  [z0 moveZoneToFront];
+  XCTAssertTrue(z0.isFront);
+  [SHData insertIntoContext:z0];
+  [SHData save];
+
+  Zone *z1 = constructEmptyZone();
+  z1.zoneKey = @"GAS";
+  [z1 moveZoneToFront];
+  [SHData insertIntoContext:z1];
+  [SHData save];
+  
+  NSArray<NSManagedObject *> *zones = getAllZones(nil);
+  XCTAssertEqual(zones.count, 2);
+  XCTAssertTrue(((Zone *)zones[0]).isFront);
+  XCTAssertTrue([((Zone *)zones[0]).zoneKey isEqualToString:@"GAS"]);
+  XCTAssertFalse(((Zone *)zones[1]).isFront);
+  XCTAssertTrue([((Zone *)zones[1]).zoneKey isEqualToString:@"HOME"]);
+  
+  Zone *z2 = constructEmptyZone();
+  z2.zoneKey = @"NEBULA";
+  [z2 moveZoneToFront];
+  [SHData insertIntoContext:z2];
+  [SHData save];
+  
+  zones = getAllZones(nil);
+  XCTAssertEqual(zones.count, 2);
+  XCTAssertTrue(((Zone *)zones[0]).isFront);
+  XCTAssertTrue([((Zone *)zones[0]).zoneKey isEqualToString:@"NEBULA"]);
+  XCTAssertFalse(((Zone *)zones[1]).isFront);
+  XCTAssertTrue([((Zone *)zones[1]).zoneKey isEqualToString:@"GAS"]);
+  
+  //these are insync from the database?
+  XCTAssertFalse(z1.isFront);
+  XCTAssertTrue(z2.isFront);
+  
+  Zone *z1_1 = (Zone *)zones[1];
+  [z1_1 moveZoneToFront];
+  [SHData insertIntoContext:z1_1];
+  [SHData save];
+  
+  zones = getAllZones(nil);
+  XCTAssertEqual(zones.count, 2);
+  XCTAssertTrue(((Zone *)zones[0]).isFront);
+  XCTAssertTrue([((Zone *)zones[0]).zoneKey isEqualToString:@"GAS"]);
+  XCTAssertFalse(((Zone *)zones[1]).isFront);
+  XCTAssertTrue([((Zone *)zones[1]).zoneKey isEqualToString:@"NEBULA"]);
     
     
 }
