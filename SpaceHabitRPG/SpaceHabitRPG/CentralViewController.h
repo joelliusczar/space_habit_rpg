@@ -12,8 +12,16 @@
 #import <SHModels/Daily+CoreDataClass.h>
 #import <SHModels/Zone+CoreDataClass.h>
 #import <SHModels/Monster+CoreDataClass.h>
-#import "P_CentralViewController.h"
 
-@interface CentralViewController : UIViewController <P_CentralViewController>;
+@interface CentralViewController : UIViewController;
 @property (weak,nonatomic) IBOutlet UIView *tabsContainer;
+@property (strong,nonatomic) id<P_CoreData> dataController;
+@property (readonly,nonatomic) Settings *userSettings;
+@property (readonly,nonatomic) Hero *userHero;
+@property (strong,nonatomic) Zone *nowZone;
+@property (strong,nonatomic) Monster *nowMonster;
+-(void)setToShowStory:(BOOL)shouldShowStory;
+-(void)showZoneChoiceView;
+-(void)afterZonePick:(Zone *)zoneChoice;
+-(void)afterIntro;
 @end

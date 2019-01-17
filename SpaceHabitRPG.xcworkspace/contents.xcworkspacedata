@@ -19,17 +19,24 @@
       location = "group:Build_Scripts"
       name = "Build_Scripts">
       <Group
-         location = "container:"
+         location = "group:SQL"
          name = "SQL">
          <FileRef
             location = "group:clean_up_script.sql">
          </FileRef>
       </Group>
-      <FileRef
-         location = "group:Build_Scripts.sh">
-      </FileRef>
+      <Group
+         location = "group:Manage"
+         name = "Manage">
+         <FileRef
+            location = "group:reset_app.sh">
+         </FileRef>
+      </Group>
       <FileRef
          location = "group:DTCopy.sh">
+      </FileRef>
+      <FileRef
+         location = "group:/Users/joelpridgen/Documents/spacehabitrpg/Build_Scripts/Build_Scripts.sh">
       </FileRef>
       <FileRef
          location = "group:ObjCPlayground.sh">

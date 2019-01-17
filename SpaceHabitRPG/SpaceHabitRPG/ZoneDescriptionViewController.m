@@ -7,7 +7,6 @@
 //
 
 #import "ZoneDescriptionViewController.h"
-#import "P_CentralViewController.h"
 #import <SHCommon/ViewHelper.h>
 #import <SHCommon/SingletonCluster.h>
 #import <SHGlobal/Constants.h>
@@ -15,7 +14,7 @@
 
 @interface ZoneDescriptionViewController ()
 @property (weak,nonatomic) ZoneChoiceViewController *prevScreen;
-@property (weak,nonatomic) UIViewController <P_CentralViewController> *central;
+@property (weak,nonatomic) CentralViewController *central;
 @property (readonly,strong,nonatomic) UISwipeGestureRecognizer *backSwipe;
 @end
 

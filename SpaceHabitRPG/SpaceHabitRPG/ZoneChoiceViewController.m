@@ -18,7 +18,7 @@
 @interface ZoneChoiceViewController ()
 @property (nonatomic,strong) NSArray<Zone *> *zones;
 @property (nonatomic,weak) NSObject<P_CoreData> *dataController;
--(instancetype)initWithCentral:(UIViewController<P_CentralViewController> *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices;
+-(instancetype)initWithCentral:(CentralViewController *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices;
 
 @end
 
@@ -32,7 +32,7 @@
     return _descViewController;
 }
 
--(instancetype)initWithCentral:(UIViewController<P_CentralViewController> *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices{
+-(instancetype)initWithCentral:(CentralViewController *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices{
   
   if(self = [self initWithNibName:@"ZoneChoicePicker" bundle:nil]){
       _central = central;
@@ -44,7 +44,7 @@
 }
 
 
-+(instancetype)constructWithCentral:(UIViewController<P_CentralViewController> *)central
++(instancetype)constructWithCentral:(CentralViewController *)central
     AndZoneChoices:(NSArray<Zone *> *)zoneChoices{
   return [[ZoneChoiceViewController alloc] initWithCentral:central AndZoneChoices:zoneChoices];
 }

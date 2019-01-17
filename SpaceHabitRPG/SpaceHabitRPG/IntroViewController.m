@@ -23,7 +23,7 @@
 #import "SHControls/UIScrollView+ScrollAdjusters.h"
 
 @interface IntroViewController ()
-@property (nonatomic,weak) UIViewController<P_CentralViewController> *central;
+@property (nonatomic,weak) CentralViewController *central;
 @property (weak, nonatomic) IBOutlet UILabel *headline;
 @property (weak,nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak,nonatomic) IBOutlet UIView *scrollContent;
@@ -71,7 +71,7 @@
   return _introMessageView;
 }
 
--(instancetype)initWithCentralViewController:(UIViewController<P_CentralViewController> *)central{
+-(instancetype)initWithCentralViewController:(CentralViewController *)central{
     if(self = [self initWithNibName:@"IntroViewController" bundle:nil]){
         self.central = central;
         self.isThreadAllowed = YES;
@@ -92,6 +92,9 @@
   Normally, this is probably a bad place to put this stuff, but since I',
   only using this view once, I figure it's alright considering the bug I was
   having to fight with.
+  The bug was that frame.width would equal whatever the width of the phone
+  you had selected in Interface Builder rather than the width of the phone
+  that I was actually simulating.
 */
 -(void)viewDidAppear:(BOOL)animated{
   [super viewDidAppear:animated];
@@ -171,7 +174,6 @@ scrollIncrement:(CGFloat)scrollIncrement{
     self.isThreadAllowed = NO;
   }
   [self popVCFromFront];
-  [self.central showZoneChoiceView];
 }
 
 

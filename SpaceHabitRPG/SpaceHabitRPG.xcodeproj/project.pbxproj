@@ -54,7 +54,6 @@
 		2747C49C2048D54600FB5669 /* CentralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentralViewController.m; sourceTree = "<group>"; };
 		2747C49D2048D54600FB5669 /* CentralViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CentralViewController.xib; sourceTree = "<group>"; };
 		2747C49E2048D54600FB5669 /* CentralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralViewController.h; sourceTree = "<group>"; };
-		2747C4A62048D75200FB5669 /* P_CentralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_CentralViewController.h; sourceTree = "<group>"; };
 		2747C4A72048D75200FB5669 /* EditNavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditNavigationController.xib; sourceTree = "<group>"; };
 		2747C4A82048D75300FB5669 /* EditNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNavigationController.m; sourceTree = "<group>"; };
 		2747C4A92048D75300FB5669 /* EditNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNavigationController.h; sourceTree = "<group>"; };
@@ -186,7 +185,6 @@
 				2747C4A92048D75300FB5669 /* EditNavigationController.h */,
 				2747C4A82048D75300FB5669 /* EditNavigationController.m */,
 				2747C4A72048D75200FB5669 /* EditNavigationController.xib */,
-				2747C4A62048D75200FB5669 /* P_CentralViewController.h */,
 				2747C4AE2048D7AF00FB5669 /* HabitController.h */,
 				2747C4AC2048D7AF00FB5669 /* HabitController.m */,
 				2747C4B12048D7B000FB5669 /* HabitController.xib */,
