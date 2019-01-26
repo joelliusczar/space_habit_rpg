@@ -15,5 +15,7 @@
 @property (weak,nonatomic) IBOutlet SHButton *doneBtn;
 @property (weak,nonatomic) IBOutlet UILabel *headlineLbl;
 @property (strong,nonatomic) NSObject<P_StoryItem> *storyItem;
+@property (nonatomic) UIColor* backgroundColor;
+@property (copy,nonatomic) void (^responseBlock)(StoryDumpView *);
 -(instancetype)initWithStoryItem:(NSObject<P_StoryItem> *)storyItem;
 @end

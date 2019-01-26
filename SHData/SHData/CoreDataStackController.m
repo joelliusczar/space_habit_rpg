@@ -97,6 +97,8 @@ NSString *defaultDbName = @"Model.sqlite";
     if(instance==nil){
         return nil;
     }
+    //The reason why I set appBundle using the
+    //member ptr syntax is because the property is readonly
     instance->_appBundle = bundle;
     instance.dbFileName = dbFileName.length?dbFileName:defaultDbName;
     [instance initializeCoreData];
@@ -111,8 +113,7 @@ NSString *defaultDbName = @"Model.sqlite";
     [[fileManager URLsForDirectory:NSDocumentDirectory
                          inDomains:NSUserDomainMask] lastObject];
     
-    NSURL *storeURL =
-    [documentsURL URLByAppendingPathComponent:self.dbFileName];
+    NSURL *storeURL = [documentsURL URLByAppendingPathComponent:self.dbFileName];
     
     NSError *error = nil;
     
@@ -207,7 +208,7 @@ NSString *defaultDbName = @"Model.sqlite";
     
     NSArray *results = [context executeFetchRequest:request error:&err];
     if(!results&&err){
-        NSLog(@"Error fetching data: %@", err.localizedFailureReason);
+        handleDataError(err, @"Error fetching data");
         return nil;
     }
     if(results.count < 1){
@@ -232,12 +233,12 @@ NSString *defaultDbName = @"Model.sqlite";
     BOOL success;
     NSError *error;
     if(!(success = [context save:&error])){
-        NSLog(@"Error saving context: %@",error.localizedFailureReason);
+        handleDataError(error,@"Error saving context");
     }
 }
 
 
--(dispatch_semaphore_t)save{
+-(dispatch_semaphore_t)saveNoWaiting{
     NSManagedObjectContext *context = [self getPreferedWriteContext];
     dispatch_semaphore_t sema = dispatch_semaphore_create(0);
     [context performBlock:^{
@@ -281,6 +282,10 @@ NSString *defaultDbName = @"Model.sqlite";
 
 -(NSManagedObjectContext *)getPreferedWriteContext{
     return self.inUseContext?self.inUseContext:self.writeContext;
+}
+
+void handleDataError(NSError *error,NSString *additionalMessage){
+  NSLog(@"%@: %@",additionalMessage,error.localizedFailureReason);
 }
 
 @end

@@ -6,7 +6,22 @@
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
+#import <SHGlobal/Constants.h>
+#import <SHCommon/NSMutableDictionary+Helper.h>
+#import <SHCommon/NSObject+Helper.h>
+#import <SHData/P_CoreData.h>
+#import <SHModels/ZoneTransaction+CoreDataClass.h>
+#import <SHModels/MonsterTransaction+CoreDataClass.h>
+#import <SHModels/Settings+CoreDataClass.h>
+#import <SHModels/Hero+CoreDataClass.h>
+#import <SHModels/Zone+Helper.h>
+#import <SHModels/Monster+Helper.h>
+#import <SHModels/ZoneTransaction_Medium.h>
+#import <SHModels/MonsterTransaction_Medium.h>
+#import <SHControls/UIViewController+Helper.h>
+#import <SHControls/UIView+Helpers.h>
 
+#import "SingletonCluster+App.h"
 #import "CentralViewController.h"
 #import "DailyViewController.h"
 #import "HabitController.h"
@@ -16,20 +31,6 @@
 #import "IntroViewController.h"
 #import "ZoneChoiceViewController.h"
 #import "StoryDumpView.h"
-#import <SHModels/ZoneTransaction+CoreDataClass.h>
-#import <SHModels/MonsterTransaction+CoreDataClass.h>
-#import <SHData/P_CoreData.h>
-#import <SHModels/Settings+CoreDataClass.h>
-#import <SHModels/Hero+CoreDataClass.h>
-#import <SHGlobal/Constants.h>
-#import <SHControls/UIViewController+Helper.h>
-#import <SHModels/Zone+Helper.h>
-#import <SHCommon/NSMutableDictionary+Helper.h>
-#import "SingletonCluster+App.h"
-#import <SHModels/Monster+Helper.h>
-#import <SHControls/UIView+Helpers.h>
-
-#import <SHCommon/NSObject+Helper.h>
 
 #define KVO_HERO_HP @"userHero.nowHp"
 #define KVO_HERO_XP @"userHero.nowXp"
@@ -38,6 +39,9 @@
 #define KVO_LVL @"userHero.lvl"
 #define KVO_MON_NAME @"nowMonster.fullName"
 #define KVO_ZONE_NAME @"nowZone.fullName"
+
+#define observeKey(key) [self addObserver:self forKeyPath:KVO_HERO_HP\
+  options:NSKeyValueObservingOptionNew context:nil]
 
 @import CoreGraphics;
 
@@ -52,10 +56,10 @@
 @property (weak,nonatomic) IBOutlet UIProgressView *xpBar;
 @property (weak,nonatomic) IBOutlet UILabel *lvlLbl;
 @property (weak,nonatomic) IBOutlet UILabel *goldLbl;
+@property (weak,nonatomic) IntroViewController *introVC;
 @end
 
 @implementation CentralViewController
-
     
     
 @synthesize nowMonster = _nowMonster;
@@ -136,22 +140,25 @@
 
 
 -(void)showIntroView{
-    IntroViewController *introView = [[IntroViewController alloc]
-      initWithCentralViewController:self];
-    [self arrangeAndPushChildVCToFront:introView];
+  IntroViewController *introVC = [[IntroViewController alloc]
+    initWithCentralViewController:self];
+  [self arrangeAndPushChildVCToFront:introVC];
+  self.introVC = introVC;
 }
+
 
 -(void)setupNormalZoneAndMonster{
   
-  BOOL isFront = YES;
-  Zone *z = getZone(isFront);
-  if(z==nil){
-      NSMutableArray<Zone *> *zoneChoices = constructMultipleZoneChoices(self.userHero,NO);
-    
-      [self showZoneChoiceView:zoneChoices];
-      return;
+  Zone * z = [self getCurrentZone];
+  if(nil == z){
+    //we're not ready yet
+    return;
   }
-  self.nowZone = z;
+  /*
+    Part of me thinks this monster stuff should be abstracted
+    to its own method but I'd still have to do this zone
+    stuff above and it ends up becoming the same method
+  */
   Monster *m = getCurrentMonster();
   if(m==nil||m.nowHp<1){
     z.monstersKilled=
@@ -167,7 +174,7 @@
       return;
     }
     m = constructRandomMonster(z.zoneKey,z.lvl);
-    [SHData save];
+    [SHData saveNoWaiting];
     [self showMonsterStory];
   }
   self.nowMonster = m;
@@ -229,26 +236,15 @@
 
 
 -(void)setupObservers{
-    [self addObserver:self forKeyPath:KVO_HERO_HP
-      options:NSKeyValueObservingOptionNew context:nil];
-    
-    [self addObserver:self forKeyPath:KVO_GOLD
-       options:NSKeyValueObservingOptionNew context:nil];
-    
-    [self addObserver:self forKeyPath:KVO_HERO_XP
-      options:NSKeyValueObservingOptionNew context:nil];
 
-    [self addObserver:self forKeyPath:KVO_LVL
-      options:NSKeyValueObservingOptionNew context:nil];
-    
-    [self addObserver:self forKeyPath:KVO_MONSTER_HP
-      options:NSKeyValueObservingOptionNew context:nil];
-    
-    [self addObserver:self forKeyPath:KVO_MON_NAME
-      options:NSKeyValueObservingOptionNew context:nil];
-    
-    [self addObserver:self forKeyPath:KVO_ZONE_NAME
-      options:NSKeyValueObservingOptionNew context:nil];
+  observeKey(KVO_HERO_HP);
+  observeKey(KVO_GOLD);
+  observeKey(KVO_HERO_XP);
+  observeKey(KVO_LVL);
+  observeKey(KVO_MONSTER_HP);
+  observeKey(KVO_MON_NAME);
+  observeKey(KVO_ZONE_NAME);
+  
 }
 
 #pragma clang diagnostic push
@@ -285,74 +281,110 @@ context:(void *)context{
 
 
 -(void)afterZonePick:(Zone *)zoneChoice{
-    if(zoneChoice==nil){
-        zoneChoice = constructRandomZoneChoice(self.userHero,NO);
-    }
-    
-    [zoneChoice moveZoneToFront];
-    [self.dataController insertIntoContext:zoneChoice];
-    self.nowZone = zoneChoice;
-    
-    self.nowMonster = constructRandomMonster(zoneChoice.zoneKey,zoneChoice.lvl);
-    
-    NSMutableDictionary *zoneInfo = self.nowZone.mapable;
-    NSMutableDictionary *monsterInfo = self.nowMonster.mapable;
-    
-    if([SingletonCluster getSharedInstance].gameState==
-       GAME_STATE_UNINITIALIZED){
-    
-        [self afterIntro];
-    }
-    
-    ZoneTransaction *zt =
-    (ZoneTransaction *)[self.dataController
-                        constructEmptyEntity:ZoneTransaction.entity];
-    
-    zt.timestamp = [NSDate date];
-    zoneInfo[TRANSACTION_TYPE_KEY] = TRANSACTION_TYPE_CREATE;
-    zt.misc = [NSMutableDictionary dictToString:zoneInfo];
-    MonsterTransaction *mt =
-    (MonsterTransaction *)[self.dataController
-                           constructEmptyEntity:MonsterTransaction.entity];
+  if(zoneChoice==nil){
+    zoneChoice = constructRandomZoneChoice(self.userHero,NO);
+  }
+  [zoneChoice moveZoneToFront];
+  
+  //?? is this insert line necessary?
+  /*Yes, because for it's entity setup, we insert into a nil context
+    and it does no harm even it did already exist. check out test, testDoubleInsert
+  */
+  [self.dataController insertIntoContext:zoneChoice];
+  self.nowZone = zoneChoice;
 
-    mt.timestamp = [NSDate date];
-    monsterInfo[TRANSACTION_TYPE_KEY] = TRANSACTION_TYPE_CREATE;
-    mt.misc = [NSMutableDictionary dictToString:monsterInfo];
-    [self.dataController save];
-    [self showMonsterStory];
+  ZoneTransaction_Medium *zt = [ZoneTransaction_Medium
+    newWithDataController:self.dataController];
+  
+  [zt addCreateTransaction:self.nowZone];
+  [self showZoneStory];
 }
 
 
 -(void)afterIntro{
-    [self initializeStatesView];
-    [self setupObservers];
-    [self setupTabs];
-    SharedGlobal.userData.theDataInfo.gameState = GAME_STATE_INITIALIZED;
-    
-    self.userSettings.createDate = [NSDate date];
+  [self initializeStatesView];
+  [self setupObservers];
+  [self setupTabs];
+  SharedGlobal.userData.theDataInfo.gameState = GAME_STATE_INITIALIZED;
+  
+  self.userSettings.createDate = [NSDate date];
 }
 
 
 -(void)initializeStatesView{
-    [self updateHeroHPUI:self.userHero.nowHp whole:self.userHero.maxHp];
-    self.goldLbl.text =
-    [NSString stringWithFormat:@"$%.2f",self.userHero.gold];
+  [self updateHeroHPUI:self.userHero.nowHp whole:self.userHero.maxHp];
+  self.goldLbl.text =
+  [NSString stringWithFormat:@"$%.2f",self.userHero.gold];
+  
+  [self updateHeroXPUI:self.userHero.nowXp whole:self.userHero.maxXp];
+  self.lvlLbl.text = [NSString stringWithFormat:@"Lv:%d",self.userHero.lvl];
+  [self updateMonsterHPUI:self.nowMonster.nowHp
+    whole:self.nowMonster.maxHp];
+  self.statsView.hidden = NO;
+}
+
+
+-(Zone *)getCurrentZone{
+  if(self.nowZone){
+    return self.nowZone;
+  }
+  BOOL isFront = YES;
+  Zone *z = getZone(isFront);
+  if(z==nil){
+      NSMutableArray<Zone *> *zoneChoices = constructMultipleZoneChoices(self.userHero,NO);
     
-    [self updateHeroXPUI:self.userHero.nowXp whole:self.userHero.maxXp];
-    self.lvlLbl.text = [NSString stringWithFormat:@"Lv:%d",self.userHero.lvl];
-    [self updateMonsterHPUI:self.nowMonster.nowHp
-      whole:self.nowMonster.maxHp];
-    self.statsView.hidden = NO;
+      [self showZoneChoiceView:zoneChoices];
+      return nil;
+  }
+  self.nowZone = z;
+  return z;
+}
+
+
+-(void)showStoryItem:(NSObject<P_StoryItem>*)storyItem withResponse:(void (^)(StoryDumpView *))response{
+  if(self.userSettings.storyModeisOn){
+      StoryDumpView *sdv =
+      [[StoryDumpView alloc] initWithStoryItem:storyItem];
+      sdv.responseBlock = response;
+      sdv.backgroundColor = UIColor.whiteColor;
+      [self arrangeAndPushChildVCToFront:sdv];
+    }
 }
 
 
 -(void)showMonsterStory{
-    if(self.userSettings.storyModeisOn){
-        StoryDumpView *sdv =
-        [[StoryDumpView alloc] initWithStoryItem:self.nowMonster];
-        
-        arrangeAndPushVCToFrontOfParent(sdv,self);
+  CentralViewController * __weak weakSelf = self;
+  [self showStoryItem:self.nowMonster withResponse:^(StoryDumpView * sdv){
+    (void)sdv;
+    if(nil == weakSelf){
+      return;
     }
+    if(nil != weakSelf.introVC){
+      [weakSelf.introVC popVCFromFront];
+    }
+    if([SingletonCluster getSharedInstance].gameState == GAME_STATE_UNINITIALIZED){
+    [weakSelf afterIntro];
+  }
+  }];
+}
+
+
+-(void)showZoneStory{
+  CentralViewController * __weak weakSelf = self;
+  [self showStoryItem:self.nowZone withResponse:^(StoryDumpView * sdv){
+    (void)sdv;
+    if(nil == weakSelf){
+      return;
+    }
+    weakSelf.nowMonster = constructRandomMonster(weakSelf.nowZone.zoneKey,weakSelf.nowZone.lvl);
+    
+    MonsterTransaction_Medium *mt = [MonsterTransaction_Medium
+      newWithDataController:weakSelf.dataController];
+    
+    [mt addCreateTransaction:weakSelf.nowMonster];
+    [weakSelf.dataController saveNoWaiting];
+    [weakSelf showMonsterStory];
+  }];
 }
 
 

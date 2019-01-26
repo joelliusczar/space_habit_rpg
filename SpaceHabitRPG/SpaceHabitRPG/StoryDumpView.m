@@ -29,6 +29,17 @@
   return _tapper;
 }
 
+
+-(UIColor *)backgroundColor{
+  return self.view.backgroundColor;
+}
+
+
+-(void)setBackgroundColor:(UIColor *)backgroundColor{
+  self.view.backgroundColor = backgroundColor;
+}
+
+
 -(instancetype)initWithStoryItem:(NSObject<P_StoryItem> *)storyItem{
   if(self = [self initWithNibName:@"StoryDumpView" bundle:nil]){
     _storyItem = storyItem;
@@ -54,6 +65,9 @@
 }
 
 - (IBAction)doneBtn_pressed_action:(SHButton *)sender forEvent:(UIEvent *)event {
+    if(self.responseBlock){
+      self.responseBlock(self);
+    }
     popVCFromFront(self);
 }
 

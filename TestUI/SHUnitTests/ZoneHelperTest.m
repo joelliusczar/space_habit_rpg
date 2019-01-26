@@ -404,13 +404,13 @@ uint zoneHelper_mockRandom(uint range){
   [z0 moveZoneToFront];
   XCTAssertTrue(z0.isFront);
   [SHData insertIntoContext:z0];
-  [SHData save];
+  [SHData saveNoWaiting];
 
   Zone *z1 = constructEmptyZone();
   z1.zoneKey = @"GAS";
   [z1 moveZoneToFront];
   [SHData insertIntoContext:z1];
-  [SHData save];
+  [SHData saveNoWaiting];
   
   NSArray<NSManagedObject *> *zones = getAllZones(nil);
   XCTAssertEqual(zones.count, 2);
@@ -423,7 +423,7 @@ uint zoneHelper_mockRandom(uint range){
   z2.zoneKey = @"NEBULA";
   [z2 moveZoneToFront];
   [SHData insertIntoContext:z2];
-  [SHData save];
+  [SHData saveNoWaiting];
   
   zones = getAllZones(nil);
   XCTAssertEqual(zones.count, 2);
@@ -439,7 +439,7 @@ uint zoneHelper_mockRandom(uint range){
   Zone *z1_1 = (Zone *)zones[1];
   [z1_1 moveZoneToFront];
   [SHData insertIntoContext:z1_1];
-  [SHData save];
+  [SHData saveNoWaiting];
   
   zones = getAllZones(nil);
   XCTAssertEqual(zones.count, 2);
@@ -460,7 +460,7 @@ uint zoneHelper_mockRandom(uint range){
     z2.zoneKey = @"GAS";
     [SHData insertIntoContext:z];
     [SHData insertIntoContext:z2];
-    SAVE_DATA();
+    SAVE_DATA_ASYNC();
     Zone *z3 = getZone(YES);
     XCTAssertTrue(z3.isFront);
     XCTAssertTrue([z3.zoneKey isEqualToString:@"NEBULA"]);
@@ -471,7 +471,7 @@ uint zoneHelper_mockRandom(uint range){
     z5.isFront = YES;
     z5.zoneKey = @"TEMPLE";
     [SHData insertIntoContext:z5];
-    SAVE_DATA();
+    SAVE_DATA_ASYNC();
     XCTAssertThrows(getZone(YES));
 }
 

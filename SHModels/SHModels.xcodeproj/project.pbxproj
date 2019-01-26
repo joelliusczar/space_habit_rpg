@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		274295EA21FAA19300EE0132 /* ZoneTransaction_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 274295E821FAA19300EE0132 /* ZoneTransaction_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		274295EB21FAA19300EE0132 /* ZoneTransaction_Medium.m in Sources */ = {isa = PBXBuildFile; fileRef = 274295E921FAA19300EE0132 /* ZoneTransaction_Medium.m */; };
+		274295EE21FAA33200EE0132 /* MonsterTransaction_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 274295EC21FAA33200EE0132 /* MonsterTransaction_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		274295EF21FAA33200EE0132 /* MonsterTransaction_Medium.m in Sources */ = {isa = PBXBuildFile; fileRef = 274295ED21FAA33200EE0132 /* MonsterTransaction_Medium.m */; };
 		2747C2EF2043ADE000FB5669 /* SHModels.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C2ED2043ADE000FB5669 /* SHModels.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C3052043AE3E00FB5669 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2747C2F52043AE3D00FB5669 /* Model.xcdatamodeld */; };
 		2747C34E2043AF7C00FB5669 /* Todo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3062043AF7400FB5669 /* Todo+CoreDataProperties.m */; };
@@ -123,6 +127,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		274295E821FAA19300EE0132 /* ZoneTransaction_Medium.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZoneTransaction_Medium.h; sourceTree = "<group>"; };
+		274295E921FAA19300EE0132 /* ZoneTransaction_Medium.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZoneTransaction_Medium.m; sourceTree = "<group>"; };
+		274295EC21FAA33200EE0132 /* MonsterTransaction_Medium.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonsterTransaction_Medium.h; sourceTree = "<group>"; };
+		274295ED21FAA33200EE0132 /* MonsterTransaction_Medium.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonsterTransaction_Medium.m; sourceTree = "<group>"; };
 		2747C2EA2043ADE000FB5669 /* SHModels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHModels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2747C2ED2043ADE000FB5669 /* SHModels.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHModels.h; sourceTree = "<group>"; };
 		2747C2EE2043ADE000FB5669 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -459,6 +467,8 @@
 				2747C3472043AF7C00FB5669 /* MonsterTransaction+CoreDataClass.m */,
 				2747C3222043AF7700FB5669 /* MonsterTransaction+CoreDataProperties.h */,
 				2747C3192043AF7600FB5669 /* MonsterTransaction+CoreDataProperties.m */,
+				274295EC21FAA33200EE0132 /* MonsterTransaction_Medium.h */,
+				274295ED21FAA33200EE0132 /* MonsterTransaction_Medium.m */,
 			);
 			path = MonsterTransaction;
 			sourceTree = "<group>";
@@ -536,6 +546,8 @@
 				2747C30D2043AF7500FB5669 /* ZoneTransaction+CoreDataClass.m */,
 				2747C33D2043AF7B00FB5669 /* ZoneTransaction+CoreDataProperties.h */,
 				2747C34D2043AF7C00FB5669 /* ZoneTransaction+CoreDataProperties.m */,
+				274295E821FAA19300EE0132 /* ZoneTransaction_Medium.h */,
+				274295E921FAA19300EE0132 /* ZoneTransaction_Medium.m */,
 			);
 			path = ZoneTransaction;
 			sourceTree = "<group>";
@@ -641,7 +653,9 @@
 				2747C3B52043B53100FB5669 /* Daily+ActiveDays.h in Headers */,
 				2747C4D72048DA8300FB5669 /* Monster+Helper.h in Headers */,
 				2781553721805C88005C5279 /* StoryItemDictionary.h in Headers */,
+				274295EE21FAA33200EE0132 /* MonsterTransaction_Medium.h in Headers */,
 				274EFB66204E462E00CB3C4C /* ModelTools.h in Headers */,
+				274295EA21FAA19300EE0132 /* ZoneTransaction_Medium.h in Headers */,
 				27815533217D721C005C5279 /* InfoDictionary.h in Headers */,
 				2747C38C2043AF7D00FB5669 /* Good+CoreDataProperties.h in Headers */,
 			);
@@ -727,7 +741,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = $SRCROOT/../Build_Scripts/SHModels.sh;
+			shellScript = "$SRCROOT/../Build_Scripts/SHModels.sh\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -740,7 +755,9 @@
 				2747C3642043AF7D00FB5669 /* DailyTransaction+CoreDataClass.m in Sources */,
 				2747C4D62048DA8300FB5669 /* Monster+Helper.m in Sources */,
 				2747C36F2043AF7D00FB5669 /* Settings+CoreDataProperties.m in Sources */,
+				274295EF21FAA33200EE0132 /* MonsterTransaction_Medium.m in Sources */,
 				2747C3812043AF7D00FB5669 /* Good+CoreDataClass.m in Sources */,
+				274295EB21FAA19300EE0132 /* ZoneTransaction_Medium.m in Sources */,
 				2747C3CE2043BACB00FB5669 /* MonsterInfoDictionary.m in Sources */,
 				2747C3582043AF7D00FB5669 /* Monster+CoreDataProperties.m in Sources */,
 				2747C36E2043AF7D00FB5669 /* Habit+CoreDataClass.m in Sources */,

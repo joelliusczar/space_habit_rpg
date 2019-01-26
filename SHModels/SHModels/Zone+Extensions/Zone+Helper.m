@@ -89,6 +89,7 @@ Zone* constructRandomZoneChoice(Hero* hero,BOOL shouldMatchLvl){
 }
 
 Zone* constructEmptyZone(){
+  //if we change here update afterZonePick
   return [[Zone alloc] initWithEntity:Zone.entity insertIntoManagedObjectContext:nil];
 }
 

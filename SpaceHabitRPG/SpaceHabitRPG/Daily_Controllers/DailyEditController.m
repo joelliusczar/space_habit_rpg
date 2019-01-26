@@ -193,7 +193,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
 -(void)saveEdit{
     [self.modelForEditing preSave];
-    [SHData save];
+    [SHData saveNoWaiting];
 }
 
 
@@ -204,7 +204,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
          objectWithID:self.modelForEditing.objectID];
         
         [SHData softDeleteModel:toBeDeleted];
-        [SHData save];
+        [SHData saveNoWaiting];
         return YES;
     }
     return NO;

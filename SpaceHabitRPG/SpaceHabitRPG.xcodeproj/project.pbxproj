@@ -29,7 +29,6 @@
 		2747C4E02048E12C00FB5669 /* ZoneDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4DD2048E12B00FB5669 /* ZoneDescriptionViewController.m */; };
 		2747C4E12048E12C00FB5669 /* ZoneDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2747C4DF2048E12B00FB5669 /* ZoneDescriptionViewController.xib */; };
 		2747C4E52048E15500FB5669 /* StoryDumpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4E22048E15500FB5669 /* StoryDumpView.m */; };
-		2747C4E62048E15500FB5669 /* StoryDumpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2747C4E42048E15500FB5669 /* StoryDumpView.xib */; };
 		2747C4EA2048E1EE00FB5669 /* ZoneChoiceCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4E82048E1ED00FB5669 /* ZoneChoiceCellController.m */; };
 		2747C4EB2048E1EE00FB5669 /* ZoneChoiceCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2747C4E92048E1EE00FB5669 /* ZoneChoiceCellController.xib */; };
 		2747C4EE2048E2EC00FB5669 /* StoryConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4ED2048E2EC00FB5669 /* StoryConstants.m */; };
@@ -45,6 +44,7 @@
 		27B15AAB20524CDC0045B226 /* SHControlsSpecial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AAA20524CDC0045B226 /* SHControlsSpecial.framework */; };
 		27B15AAD20524CFE0045B226 /* SHControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AAC20524CFE0045B226 /* SHControls.framework */; };
 		27B15AAF20524D6E0045B226 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AAE20524D6E0045B226 /* SHModels.framework */; };
+		27D5D4A521FCD18D00A78C35 /* StoryDumpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27D5D4A421FCD18D00A78C35 /* StoryDumpView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,7 +83,6 @@
 		2747C4DF2048E12B00FB5669 /* ZoneDescriptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZoneDescriptionViewController.xib; sourceTree = "<group>"; };
 		2747C4E22048E15500FB5669 /* StoryDumpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryDumpView.m; sourceTree = "<group>"; };
 		2747C4E32048E15500FB5669 /* StoryDumpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryDumpView.h; sourceTree = "<group>"; };
-		2747C4E42048E15500FB5669 /* StoryDumpView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoryDumpView.xib; sourceTree = "<group>"; };
 		2747C4E72048E1ED00FB5669 /* ZoneChoiceCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneChoiceCellController.h; sourceTree = "<group>"; };
 		2747C4E82048E1ED00FB5669 /* ZoneChoiceCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneChoiceCellController.m; sourceTree = "<group>"; };
 		2747C4E92048E1EE00FB5669 /* ZoneChoiceCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZoneChoiceCellController.xib; sourceTree = "<group>"; };
@@ -108,6 +107,7 @@
 		27B15AAA20524CDC0045B226 /* SHControlsSpecial.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHControlsSpecial.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHControlsSpecial.framework"; sourceTree = "<group>"; };
 		27B15AAC20524CFE0045B226 /* SHControls.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHControls.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHControls.framework"; sourceTree = "<group>"; };
 		27B15AAE20524D6E0045B226 /* SHModels.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHModels.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHModels.framework"; sourceTree = "<group>"; };
+		27D5D4A421FCD18D00A78C35 /* StoryDumpView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoryDumpView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,7 +209,7 @@
 				2747C4DF2048E12B00FB5669 /* ZoneDescriptionViewController.xib */,
 				2747C4E32048E15500FB5669 /* StoryDumpView.h */,
 				2747C4E22048E15500FB5669 /* StoryDumpView.m */,
-				2747C4E42048E15500FB5669 /* StoryDumpView.xib */,
+				27D5D4A421FCD18D00A78C35 /* StoryDumpView.xib */,
 				2747C4E72048E1ED00FB5669 /* ZoneChoiceCellController.h */,
 				2747C4E82048E1ED00FB5669 /* ZoneChoiceCellController.m */,
 				2747C4E92048E1EE00FB5669 /* ZoneChoiceCellController.xib */,
@@ -287,7 +287,6 @@
 				2747C4B52048D7B100FB5669 /* HabitController.xib in Resources */,
 				2747C4A02048D54700FB5669 /* CentralViewController.xib in Resources */,
 				2747C4B92048D7D200FB5669 /* TodoViewController.xib in Resources */,
-				2747C4E62048E15500FB5669 /* StoryDumpView.xib in Resources */,
 				2747C4F52048E5DB00FB5669 /* DailyCellController.xib in Resources */,
 				2747C515204A47BF00FB5669 /* ZoneChoicePicker.xib in Resources */,
 				2747C4E12048E12C00FB5669 /* ZoneDescriptionViewController.xib in Resources */,
@@ -295,6 +294,7 @@
 				2747C4CB2048D8CF00FB5669 /* MenuViewController.xib in Resources */,
 				2747C4AA2048D75300FB5669 /* EditNavigationController.xib in Resources */,
 				2747C4B42048D7B100FB5669 /* DailyViewController.xib in Resources */,
+				27D5D4A521FCD18D00A78C35 /* StoryDumpView.xib in Resources */,
 				2747C4BF2048D80E00FB5669 /* GoodsViewController.xib in Resources */,
 				2747C49B2048D53100FB5669 /* Assets.xcassets in Resources */,
 			);
@@ -314,7 +314,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = $SRCROOT/../Build_Scripts/SpaceHabitRPG.sh;
+			shellScript = "$SRCROOT/../Build_Scripts/SpaceHabitRPG.sh\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 

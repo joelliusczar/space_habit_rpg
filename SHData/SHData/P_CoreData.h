@@ -31,7 +31,7 @@
   predicate: (NSPredicate *)filter
   sortBy: (NSArray<NSSortDescriptor *> *)sortArray;
 -(NSManagedObjectContext *)constructContext:(NSManagedObjectContextConcurrencyType)concurrencyType;
--(dispatch_semaphore_t)save;
+-(dispatch_semaphore_t)saveNoWaiting;
 -(void)saveAndWait;
 -(void)softDeleteModel:(NSManagedObject *)model;
 -(void)insertIntoContext:(NSManagedObject *)model;

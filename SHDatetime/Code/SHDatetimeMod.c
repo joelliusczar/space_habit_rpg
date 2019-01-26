@@ -360,7 +360,7 @@ bool _areTimeComponentsValid(int64_t year,int month,int day,int hour,int minute,
 }
 
 
-bool  tryCreateDateTime_m(int64_t year,int month,int day,int hour,int minute,int second,int timezoneOffset
+bool tryCreateDateTime_m(int64_t year,int month,int day,int hour,int minute,int second,int timezoneOffset
 ,double *ans,SHError *error){
   SHLog("tryCreateDateTime_m");
   prepareSHError(error);

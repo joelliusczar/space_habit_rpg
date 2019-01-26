@@ -31,6 +31,12 @@
          <FileRef
             location = "group:reset_app.sh">
          </FileRef>
+         <FileRef
+            location = "group:opendb.sh">
+         </FileRef>
+         <FileRef
+            location = "group:build_all_and_test.sh">
+         </FileRef>
       </Group>
       <FileRef
          location = "group:DTCopy.sh">
