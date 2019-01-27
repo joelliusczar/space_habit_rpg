@@ -57,21 +57,15 @@
         _inUseCalendar =
         [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
         _inUseCalendar.locale = self.inUseLocale;
+        _inUseCalendar.timeZone = NSTimeZone.defaultTimeZone;
     }
     return _inUseCalendar;
 }
 
-@synthesize inUseTimeZone = _inUseTimeZone;
--(NSTimeZone *)inUseTimeZone{
-    if(nil==_inUseTimeZone){
-        _inUseTimeZone = NSTimeZone.systemTimeZone;
-    }
-    return _inUseTimeZone;
-}
 
 -(NSLocale *)inUseLocale{
     if(nil==_inUseLocale){
-        _inUseLocale = NSLocale.autoupdatingCurrentLocale;
+        _inUseLocale = NSLocale.currentLocale;
     }
     return _inUseLocale;
 }

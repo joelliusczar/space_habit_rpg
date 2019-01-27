@@ -618,7 +618,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = TestUI;
-				USER_HEADER_SEARCH_PATHS = "$BUILT_PRODUCTS_DIR/**";
+				USER_HEADER_SEARCH_PATHS = "$BUILT_PRODUCTS_DIR/** $(PLATFORM_DIR)/Developer/Library/Frameworks/**";
 			};
 			name = Release;
 		};

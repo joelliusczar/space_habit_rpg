@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <SHGlobal/Constants.h>
 
-typedef BOOL (^bestMatchPredicate)(RateValueItemDict *,RateValueItemDict *);
 
-@interface NSMutableArray (Helper)
--(NSUInteger)findPlaceFor:(id)object whereBestFits:(bestMatchPredicate)bestFitBlock;
+@interface NSMutableArray<ItemType> (Helper)
+-(NSUInteger)findPlaceFor:(id)object whereBestFits:(BOOL (^)(ItemType,ItemType))bestFitBlock;
+-(NSUInteger)findPlaceFor:(id)object whereBestFitsFP:(BOOL (*)(ItemType,ItemType))bestFitFP;
 @end

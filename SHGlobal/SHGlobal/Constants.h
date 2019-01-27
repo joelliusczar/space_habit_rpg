@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NSDictionary<NSString *,NSNumber *> RateValueItemDict;
 
 typedef NS_ENUM(NSUInteger,dailyStatus) {
     INCOMPLETE = 0

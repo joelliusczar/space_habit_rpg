@@ -10,8 +10,7 @@
 
 @implementation NSMutableArray (Helper)
 
--(NSUInteger)findPlaceFor:(id)object whereBestFits:(bestMatchPredicate)bestFitBlock{
-    
+-(NSUInteger)findPlaceFor:(id)object whereBestFits:(BOOL (^)(id,id))bestFitBlock{
     if(self.count == 0){
         return 0;
     }
@@ -22,5 +21,12 @@
     }
     return self.count;
 }
+
+-(NSUInteger)findPlaceFor:(id)object whereBestFitsFP:(BOOL (*)(id,id))bestFitFP{
+  return [self findPlaceFor:object whereBestFits:^BOOL(id a,id b){
+    return bestFitFP(a,b);
+  }];
+}
+
 
 @end

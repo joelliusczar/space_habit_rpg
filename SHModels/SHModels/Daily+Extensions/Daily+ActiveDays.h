@@ -6,7 +6,9 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
+#import "ModelConstants.h"
 #import "Daily+CoreDataClass.h"
+
 
 @interface Daily (ActiveDays)
 -(NSMutableArray<RateValueItemDict *> * )getActiveDaysForRateType:(RateType)rateType;

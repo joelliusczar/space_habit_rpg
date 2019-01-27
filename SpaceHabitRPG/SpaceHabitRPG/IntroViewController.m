@@ -173,7 +173,9 @@ scrollIncrement:(CGFloat)scrollIncrement{
     self.isStoryDone = YES;
     self.isThreadAllowed = NO;
   }
-  [self popVCFromFront];
+  [self.central setToShowStory:NO];
+  Zone* z = constructSpecificZone2(HOME_KEY,1);
+  [self.central afterZonePick:z];
 }
 
 

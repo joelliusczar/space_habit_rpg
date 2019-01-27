@@ -75,7 +75,7 @@
 
 
 -(Hero *)userHero{
-    return [SingletonCluster getSharedInstance].userData.theHero;
+    return SharedGlobal.userData.theHero;
 }
 
 
@@ -140,6 +140,12 @@
 
 
 -(void)showIntroView{
+  /*Since self.introVC is a weak ref, we must create this local var
+  to hold the value until the strong ref gets attached.
+  I made self.introVC a weak because I only want a reference to it
+  if it actually exists. I don't want to actively keep it alive, which
+  is what a strong ref would do.
+  */
   IntroViewController *introVC = [[IntroViewController alloc]
     initWithCentralViewController:self];
   [self arrangeAndPushChildVCToFront:introVC];
@@ -181,16 +187,21 @@
 }
 
 
+-(void)prepareScreen{
+  [self initializeStatesView];
+  [self setupObservers];
+  [self setupTabs];
+}
+
+
 -(void)determineIfFirstTimeAndSetupSettings{
     if(SharedGlobal.userData.theDataInfo.gameState ==
        GAME_STATE_UNINITIALIZED){
         [self showIntroView];        
     }
     else{
-        [self setupNormalZoneAndMonster];
-        [self initializeStatesView];
-        [self setupObservers];
-        [self setupTabs];
+      [self setupNormalZoneAndMonster];
+      [self prepareScreen];
     }
 }
 
@@ -302,9 +313,7 @@ context:(void *)context{
 
 
 -(void)afterIntro{
-  [self initializeStatesView];
-  [self setupObservers];
-  [self setupTabs];
+  [self prepareScreen];
   SharedGlobal.userData.theDataInfo.gameState = GAME_STATE_INITIALIZED;
   
   self.userSettings.createDate = [NSDate date];
@@ -341,13 +350,16 @@ context:(void *)context{
 }
 
 
--(void)showStoryItem:(NSObject<P_StoryItem>*)storyItem withResponse:(void (^)(StoryDumpView *))response{
+-(void)showStoryItem:(NSObject<P_StoryItem>*)storyItem withResponse:(void (^)(StoryDumpView * nullable))response{
   if(self.userSettings.storyModeisOn){
       StoryDumpView *sdv =
       [[StoryDumpView alloc] initWithStoryItem:storyItem];
       sdv.responseBlock = response;
       sdv.backgroundColor = UIColor.whiteColor;
       [self arrangeAndPushChildVCToFront:sdv];
+    }
+    else{
+      response(nil);
     }
 }
 
@@ -362,9 +374,9 @@ context:(void *)context{
     if(nil != weakSelf.introVC){
       [weakSelf.introVC popVCFromFront];
     }
-    if([SingletonCluster getSharedInstance].gameState == GAME_STATE_UNINITIALIZED){
-    [weakSelf afterIntro];
-  }
+    if(SharedGlobal.gameState == GAME_STATE_UNINITIALIZED){
+      [weakSelf afterIntro];
+    }
   }];
 }
 

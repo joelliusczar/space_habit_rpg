@@ -30,5 +30,6 @@
                               andMinute:(NSInteger)minute;
 -(NSString *)extractTimeInFormat:(hourFormatType)format;
 -(NSInteger)getWeekdayIndex;
+-(NSDateComponents *)getDateComponents;
 @end
 

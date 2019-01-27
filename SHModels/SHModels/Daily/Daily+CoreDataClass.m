@@ -15,7 +15,7 @@
 #import <SHGlobal/Constants.h>
 #import "RateTypeHelper.h"
 #import "SingletonCluster+Entity.h"
-#import "Daily_C.h"
+#import <Daily_C.h>
 
 @interface Daily()
 @end

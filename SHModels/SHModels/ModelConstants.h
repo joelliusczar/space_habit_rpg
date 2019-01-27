@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NSDictionary<NSString *,NSNumber *> RateValueItemDict;
+
 //zone groups
 extern NSString* const LVL_0_ZONES;
 extern NSString* const LVL_1_ZONES;

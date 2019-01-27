@@ -138,4 +138,13 @@
     return calcWeekdayIdx(&dt,&error);
 }
 
+
+-(NSDateComponents *)getDateComponents{
+  NSCalendarUnit calendarUnits = (252 + 2097152); //magic number for year,month,day,hour,min,sec
+  NSDateComponents *components = [SharedGlobal.inUseCalendar
+    components:calendarUnits
+    fromDate:self];
+  return components;
+}
+
 @end

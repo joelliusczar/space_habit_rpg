@@ -27,6 +27,7 @@
 - (void)setUp {
     [super setUp];
     NSTimeZone.defaultTimeZone = [NSTimeZone timeZoneForSecondsFromGMT:-18000];
+    SharedGlobal.inUseCalendar = nil; //reset this guy
 }
 
 
@@ -1265,6 +1266,30 @@ NSInteger calcDaysFromBase(NSInteger span){
     testDate = [NSDate createSimpleDateWithYear:1776 month:7 day:4];
     result = [testDate getWeekdayIndex];
     XCTAssertEqual(result,4);
+}
+
+
+-(void)testGetComponents{
+  NSDate *testDate = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:15 minute:32 second:17];
+  NSDateComponents *components = [testDate getDateComponents];
+  XCTAssertEqual(components.year,1988);
+  XCTAssertEqual(components.month, 4);
+  XCTAssertEqual(components.day, 27);
+  XCTAssertEqual(components.hour,15);
+  XCTAssertEqual(components.minute, 32);
+  XCTAssertEqual(components.second, 17);
+}
+
+-(void)testDayStart{
+  NSDate *testDate = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:15 minute:32 second:17];
+  NSDate *result = [testDate dayStart];
+  NSDateComponents *components = [result getDateComponents];
+  XCTAssertEqual(components.year,1988);
+  XCTAssertEqual(components.month, 4);
+  XCTAssertEqual(components.day, 27);
+  XCTAssertEqual(components.hour,0);
+  XCTAssertEqual(components.minute, 0);
+  XCTAssertEqual(components.second, 0);
 }
 
 @end

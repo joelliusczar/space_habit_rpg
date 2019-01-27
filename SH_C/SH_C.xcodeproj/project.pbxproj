@@ -10,7 +10,7 @@
 		271691CC20885F890059A58E /* Daily_C.h in Headers */ = {isa = PBXBuildFile; fileRef = 271691CA20885F890059A58E /* Daily_C.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271691CD20885F890059A58E /* Daily_C.c in Sources */ = {isa = PBXBuildFile; fileRef = 271691CB20885F890059A58E /* Daily_C.c */; };
 		271691ED208866770059A58E /* libSHDatetime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 271691EE208866770059A58E /* libSHDatetime.a */; };
-		2716920C20897A740059A58E /* libSH_CTools.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2716920D20897A740059A58E /* libSH_CTools.a */; };
+		277970CD21FD764C00D3F86D /* RateValueItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 277970CC21FD75E900D3F86D /* RateValueItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +24,7 @@
 		2737D589216DAFEA00E0111F /* daily_server_cleanup.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = daily_server_cleanup.sh; sourceTree = "<group>"; };
 		2737D58A216DAFEA00E0111F /* daily_server.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = daily_server.sh; sourceTree = "<group>"; };
 		2737D58B216EE67B00E0111F /* DailySingleTest.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = DailySingleTest.py; sourceTree = "<group>"; };
+		277970CC21FD75E900D3F86D /* RateValueItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RateValueItem.h; sourceTree = "<group>"; };
 		27BB290A215749B8003225BB /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		27BB290B215749E7003225BB /* vars.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = vars.mk; sourceTree = "<group>"; };
 		27BB290C2157CBAA003225BB /* DailyTestEverything.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = DailyTestEverything.py; sourceTree = "<group>"; };
@@ -35,7 +36,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2716920C20897A740059A58E /* libSH_CTools.a in Frameworks */,
 				271691ED208866770059A58E /* libSHDatetime.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,6 +67,7 @@
 			children = (
 				271691CA20885F890059A58E /* Daily_C.h */,
 				271691CB20885F890059A58E /* Daily_C.c */,
+				277970CC21FD75E900D3F86D /* RateValueItem.h */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -111,6 +112,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				271691CC20885F890059A58E /* Daily_C.h in Headers */,
+				277970CD21FD764C00D3F86D /* RateValueItem.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,7 +181,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = $SRCROOT/../Build_Scripts/SH_C.sh;
+			shellScript = "$SRCROOT/../Build_Scripts/SH_C.sh\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 

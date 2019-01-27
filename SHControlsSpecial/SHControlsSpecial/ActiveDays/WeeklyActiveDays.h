@@ -9,8 +9,8 @@
 @import UIKit;
 @import SHControls;
 #import "P_WeeklyActiveDaysDelegate.h"
-
 #import <SHGlobal/Constants.h>
+#import <SHModels/ModelConstants.h>
 
 IB_DESIGNABLE
 @interface WeeklyActiveDays : SHView

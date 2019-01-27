@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <SHGlobal/Constants.h>
 #import <CoreData/CoreData.h>
 #import "P_DueDateItem.h"
-#import <SHGlobal/Constants.h>
+#import "ModelConstants.h"
+
 
 @class DailySubTask;
 

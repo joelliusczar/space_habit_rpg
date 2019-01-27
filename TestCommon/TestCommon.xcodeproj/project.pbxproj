@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		27004253205251B3001FA0B5 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27004252205251B3001FA0B5 /* SHModels.framework */; };
 		27101ABF21D17EE100A3756E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27101ABE21D17EAF00A3756E /* XCTest.framework */; };
-		271B24C0204FC58600CA4338 /* nextDayTests.h in Headers */ = {isa = PBXBuildFile; fileRef = 271B24BE204FC58600CA4338 /* nextDayTests.h */; };
-		271B24C1204FC58600CA4338 /* nextDayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 271B24BF204FC58600CA4338 /* nextDayTests.m */; };
 		274EFB77204F9AEA00CB3C4C /* TestCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB75204F9AEA00CB3C4C /* TestCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		274EFB82204F9B7700CB3C4C /* TestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB7D204F9B7600CB3C4C /* TestHelpers.m */; };
 		274EFB83204F9B7700CB3C4C /* FrequentCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB7E204F9B7700CB3C4C /* FrequentCase.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -23,8 +21,6 @@
 		27004252205251B3001FA0B5 /* SHModels.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHModels.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHModels.framework"; sourceTree = "<group>"; };
 		27101ABE21D17EAF00A3756E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = XCTest.framework; sourceTree = "<group>"; };
 		2716921C208EA8D80059A58E /* libSH_CTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_CTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		271B24BE204FC58600CA4338 /* nextDayTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = nextDayTests.h; sourceTree = "<group>"; };
-		271B24BF204FC58600CA4338 /* nextDayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = nextDayTests.m; sourceTree = "<group>"; };
 		274EFB72204F9AEA00CB3C4C /* TestCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TestCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		274EFB75204F9AEA00CB3C4C /* TestCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestCommon.h; sourceTree = "<group>"; };
 		274EFB76204F9AEA00CB3C4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -85,8 +81,6 @@
 				274EFB7D204F9B7600CB3C4C /* TestHelpers.m */,
 				274EFB75204F9AEA00CB3C4C /* TestCommon.h */,
 				274EFB76204F9AEA00CB3C4C /* Info.plist */,
-				271B24BE204FC58600CA4338 /* nextDayTests.h */,
-				271B24BF204FC58600CA4338 /* nextDayTests.m */,
 			);
 			path = TestCommon;
 			sourceTree = "<group>";
@@ -111,7 +105,6 @@
 			files = (
 				274EFB83204F9B7700CB3C4C /* FrequentCase.h in Headers */,
 				274EFB77204F9AEA00CB3C4C /* TestCommon.h in Headers */,
-				271B24C0204FC58600CA4338 /* nextDayTests.h in Headers */,
 				274EFB86204F9B7700CB3C4C /* TestHelpers.h in Headers */,
 				274EFB85204F9B7700CB3C4C /* TestGlobals.h in Headers */,
 			);
@@ -202,7 +195,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				271B24C1204FC58600CA4338 /* nextDayTests.m in Sources */,
 				274EFB82204F9B7700CB3C4C /* TestHelpers.m in Sources */,
 				274EFB84204F9B7700CB3C4C /* FrequentCase.m in Sources */,
 			);
