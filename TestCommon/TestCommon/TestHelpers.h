@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import <objc/runtime.h>
 
 @interface TestHelpers : NSObject
 
 +(void)resetCoreData:(NSManagedObjectContext *)context;
-
++(id)getPrivateValue:(id<NSObject>)obj ivarName:(NSString *)ivarName;
 @end

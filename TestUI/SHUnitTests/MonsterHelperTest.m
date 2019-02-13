@@ -43,13 +43,13 @@ uint monsterHelper_mockRandom(uint range){
     }
     
     -(void)testMonsterOrder{
-        NSArray<NSString *> *ml = [[SingletonCluster getSharedInstance].monsterInfoDictionary getMonsterKeyList:@"NEBULA"];
+        NSArray<NSString *> *ml = [SharedGlobal.monsterInfoDictionary getMonsterKeyList:@"NEBULA"];
         XCTAssertTrue([ml[0] isEqualToString:@"DUST_FAIRY"]);
         XCTAssertTrue([ml[1] isEqualToString:@"LOST_SAT"]);
         XCTAssertTrue([ml[2] isEqualToString:@"SENTIENT_CLOUD"]);
         XCTAssertTrue([ml[3] isEqualToString:@"CLOUD_FORTRESS"]);
         
-        ml = [[SingletonCluster getSharedInstance].monsterInfoDictionary getMonsterKeyList:@"ALL"];
+        ml = [SharedGlobal.monsterInfoDictionary getMonsterKeyList:@"ALL"];
         XCTAssertTrue([ml[0] isEqualToString:@"M_SCOUT"]);
         XCTAssertTrue([ml[1] isEqualToString:@"SMALL_ASTEROID"]);
         XCTAssertTrue([ml[2] isEqualToString:@"SPACEMAN"]);

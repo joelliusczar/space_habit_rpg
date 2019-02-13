@@ -416,7 +416,7 @@ bool tryCreateDate_m(int64_t year,int month,int day,int timezoneOffset,double *a
 
 double createTime_m(int hour,int minute,int second,SHError *error){
   prepareSHError(error);
-  double ans;
+  double ans = 0;
   tryCreateTime_m(hour,minute,second,&ans,error);
   return ans;
 }
@@ -571,8 +571,8 @@ bool tryExtractTime_m(SHDatetime *dt,double *ans,SHError *error){
 
 double extractTime_m(SHDatetime *dt,SHError *error){
   prepareSHError(error);
-  if(!dt) return handleError(NULL_VALUES,"Null Datetime obj",error);
-  double ans;
+  if(NULL == dt) return handleError(NULL_VALUES,"Null Datetime obj",error);
+  double ans = 0;
   tryExtractTime_m(dt,&ans,error);
   return ans;
 }
@@ -695,7 +695,7 @@ static bool _addYears_SHIFT(SHDatetime *dt,int64_t years, TimeAdjustOptions opti
 double addYearsToTimestamp_m(double timestamp,int64_t years,int timezoneOffset,TimeAdjustOptions options
 ,SHError *error){
   prepareSHError(error);
-  double ans;
+  double ans = 0;
   tryAddYearsToTimestamp_m(timestamp,years,timezoneOffset,options,&ans,error);
   return ans;
 }
@@ -763,10 +763,10 @@ SHDatetime* dayStartInPlace(SHDatetime *dt){
 
 
 int calcWeekdayIdx_m(SHDatetime *dt,SHError *error){
-  double timestamp;
+  double timestamp = 0;
   prepareSHError(error);
   if(!tryDtToTimestamp_m(dt,&timestamp,error)) return NOT_FOUND;
-  int ans;
+  int ans = 0;
   timestamp += dt->timezoneOffset;
   bool isAfterEpoch = dt->year >= BASE_YEAR;
   if(isAfterEpoch){
@@ -827,7 +827,7 @@ bool tryDiffDateSecs_m(SHDatetime const *A,SHDatetime const *B,int64_t *ans,SHEr
 double dateDiffSecs_m(SHDatetime const *A,SHDatetime const *B,SHError *error){
   prepareSHError(error);
   if(!A||!B) return handleError(NULL_VALUES,"Null Datetime obj",error);
-  int64_t ans;
+  int64_t ans = 0;
   tryDiffDateSecs_m(A,B,&ans,error);
   return ans;
 }
@@ -867,7 +867,6 @@ void SHDTToString(SHDatetime const *dt,char* str){
 static bool _calcFractSecs(FractSecs *fractSecs,double timestamp){
   double fraction = timestamp - (int64_t)timestamp;
   fractSecs->milisecond = (int)(fraction*1000);
-  fraction -= ((double)fractSecs->milisecond/1000.0);
   return true;
 }
 

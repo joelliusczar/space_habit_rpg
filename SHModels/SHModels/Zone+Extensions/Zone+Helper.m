@@ -54,7 +54,7 @@ NSString* getRandomZoneDefinitionKey(NSUInteger heroLvl){
     NSArray<NSString *> *groupKeys = getUnlockedZoneGroupKeys(heroLvl);
     uint r = randomUInt((uint)groupKeys.count);
     NSString *groupKey = groupKeys[r];
-    ZoneInfoDictionary *zd = [SingletonCluster getSharedInstance].zoneInfoDictionary;
+    ZoneInfoDictionary *zd = SharedGlobal.zoneInfoDictionary;
     NSArray *zoneList = [zd getGroupKeyList:groupKey];
     r = randomUInt((uint32_t)zoneList.count);
     return zoneList[r];
@@ -88,14 +88,16 @@ Zone* constructRandomZoneChoice(Hero* hero,BOOL shouldMatchLvl){
   return z;
 }
 
+
 Zone* constructEmptyZone(){
   //if we change here update afterZonePick
-  return [[Zone alloc] initWithEntity:Zone.entity insertIntoManagedObjectContext:nil];
+  NSEntityDescription *entity = Zone.entity;
+  return [[Zone alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
 }
 
 
 Zone* constructSpecificZone2(NSString* zoneKey,int32_t lvl){
-  int32_t monsterCount = randomUInt(MAX_MONSTER_RAND_UP_BOUND)  + MAX_MONSTER_LOW_BOUND;
+  int32_t monsterCount = randomUInt(MAX_MONSTER_RAND_UP_BOUND) + MAX_MONSTER_LOW_BOUND;
   return constructSpecificZone(zoneKey, lvl, monsterCount);
 }
 
@@ -116,15 +118,16 @@ Zone* constructSpecificZone(NSString* zoneKey, int32_t lvl,int32_t monsterCount)
 
 NSMutableArray<Zone*>* constructMultipleZoneChoices(Hero* hero,BOOL matchLvl){
     //Zone create uses nil context so that should be okay
-    NSManagedObjectContext *suffixContext = [SHData constructContext:NSMainQueueConcurrencyType];
-    SHData.inUseContext = suffixContext;
+  
+  
+    [SHData beginUsingTemporaryContext];
     uint zoneCount = randomUInt(MAX_ZONE_CHOICE_RAND_UP_BOUND)  + MIN_ZONE_CHOICE_COUNT;
     NSMutableArray<Zone *> *choices = [NSMutableArray arrayWithCapacity:zoneCount];
     choices[0] = constructRandomZoneChoice(hero,matchLvl);
     for(uint i = 1;i<zoneCount;i++){
         choices[i] = constructRandomZoneChoice(hero,NO);
     }
-    SHData.inUseContext = nil;
+    [SHData endUsingTemporaryContext];
     return choices;
 }
 
@@ -157,7 +160,10 @@ Suffix* getSuffixEntity(NSString* zoneKey){
 Zone * getZone(BOOL isFront){
     NSPredicate *filter = [NSPredicate predicateWithFormat:@"isFront =%d",isFront?1:0];
     NSArray<NSManagedObject *> *results = getAllZones(filter);
-    NSCAssert(results.count<2, @"There are too many zones");
+    if(results.count > 1){
+      @throw [NSException exceptionWithName:@"CorruptionException"
+        reason:@"There are too many zones" userInfo:nil];
+    }
     return results.count>0?(Zone *)results[0]:nil;
 }
 

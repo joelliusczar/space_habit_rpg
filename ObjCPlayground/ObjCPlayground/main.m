@@ -19,7 +19,7 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         //Experiments *exp = [[Experiments alloc] init];
         //[exp playWithCharlie];
-        [Experiments getWeekDayIndexes];
+        [Experiments testWeakArray];
         //[NoArcExp objectToCharPtr];
     }
     return 0;

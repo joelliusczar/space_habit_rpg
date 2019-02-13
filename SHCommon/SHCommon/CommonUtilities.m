@@ -10,15 +10,9 @@
 
 #import "CommonUtilities.h"
 
-uint randomUIntF(uint bound){
-    return arc4random_uniform(bound);
-}
 
-uint (*randomUInt)(uint) = &randomUIntF;
 
-CGFloat GetYStartUnderLabel(CGFloat height){
-    return height *.10;
-}
+uint (*randomUInt)(uint) = &arc4random_uniform;
 
 void reverse_UINT(NSUInteger * _Nonnull array,NSUInteger len){
     for(NSUInteger i = 0;i < len/2;i++){
@@ -33,3 +27,9 @@ CGFloat getParentChildHeightOffset(CGRect parentFrame,CGRect childFrame){
       CGRectGetHeight(parentFrame) - CGRectGetHeight(childFrame) : 0;
 }
 
+
+BOOL waitForSema(dispatch_semaphore_t sema,NSInteger timeoutSecs){
+  dispatch_time_t t = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * timeoutSecs);
+  long result = dispatch_wait(sema,t);
+  return result == 0;
+}

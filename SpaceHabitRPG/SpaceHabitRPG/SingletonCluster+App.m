@@ -12,7 +12,7 @@
 
 
 -(int)gameState{
-    return [SingletonCluster getSharedInstance].userData.theDataInfo.gameState;
+    return SharedGlobal.userData.theDataInfo.gameState;
 }
 
 

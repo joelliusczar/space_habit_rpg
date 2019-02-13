@@ -1292,4 +1292,13 @@ NSInteger calcDaysFromBase(NSInteger span){
   XCTAssertEqual(components.second, 0);
 }
 
+
+-(void)testAMPMSymbol{
+  NSLocale *loc = SharedGlobal.inUseLocale;
+  NSString *pm = loc.PMSymbol;
+  NSString *am = loc.AMSymbol;
+  XCTAssertTrue([pm isEqualToString:@"PM"]);
+  XCTAssertTrue([am isEqualToString:@"AM"]);
+}
+
 @end

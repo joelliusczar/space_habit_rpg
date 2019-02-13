@@ -16,7 +16,7 @@
 -(NSDictionary *)treeDict{
     if(!_treeDict){
         NSBundle *bundle = [NSBundle bundleForClass:self.bundleClass];
-        NSObject<P_ResourceUtility> *ru = [SingletonCluster getSharedInstance].resourceUtility;
+        NSObject<P_ResourceUtility> *ru = SharedGlobal.resourceUtility;
         _treeDict = [ru getPListDict:self.pListKey withBundle:bundle];
     }
     return _treeDict;

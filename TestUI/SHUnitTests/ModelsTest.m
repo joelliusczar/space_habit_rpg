@@ -32,7 +32,7 @@
 
 - (void)setUp {
   [super setUp];
-  XCTAssertEqual([SingletonCluster getSharedInstance].EnviromentNum,ENV_UTEST);
+  XCTAssertEqual(SharedGlobal.EnviromentNum,ENV_UTEST);
   // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
@@ -59,7 +59,7 @@
 }
 
 -(void)testMonsterProperties{
-  NSObject<P_CoreData> *dc = [SingletonCluster getSharedInstance].dataController;
+  NSObject<P_CoreData> *dc = SharedGlobal.dataController;
   Monster *m = (Monster *)[dc constructEmptyEntity:Monster.entity];
   m.lvl = 13;
   m.monsterKey = @"DUST_FAIRY";
@@ -77,7 +77,7 @@
 }
 
 -(void)testZoneProperties{
-  NSObject<P_CoreData> *dc = [SingletonCluster getSharedInstance].dataController;
+  NSObject<P_CoreData> *dc = SharedGlobal.dataController;
   Zone *z = (Zone *)[dc constructEmptyEntity:Zone.entity];
   z.lvl = 5;
   z.zoneKey = @"SAFE_SPACE";
@@ -97,7 +97,7 @@
 }
 
 -(void)testRemoveEntitRefBeforeSaving{
-  NSObject<P_CoreData> *dc = [SingletonCluster getSharedInstance].dataController;
+  NSObject<P_CoreData> *dc = SharedGlobal.dataController;
   ZoneTransaction *zt = (ZoneTransaction *)[dc
     constructEmptyEntity:ZoneTransaction.entity];
   zt.misc = @"Just random shit!";
@@ -110,15 +110,8 @@
   NSAssert([misc isEqualToString:@"Just random shit!"],@"Strings not equal");
 }
 
--(NSArray<NSManagedObject*> *)fetchAnything:(NSFetchRequest *)request
-dataController:(NSObject<P_CoreData>*) dataController{
-  NSPredicate *filter = [NSPredicate predicateWithValue:YES];
-  NSArray<NSManagedObject*>* results = [SHData getItemWithRequest:request predicate:filter sortBy:nil];
-  return results;
-}
-
 -(void)testDoubleInsert{
-  NSObject<P_CoreData> *dc = [SingletonCluster getSharedInstance].dataController;
+  NSObject<P_CoreData> *dc = SharedGlobal.dataController;
   Zone *z = constructSpecificZone2(@"SAFE_SPACE",16);
   [dc insertIntoContext:z];
   [dc insertIntoContext:z];

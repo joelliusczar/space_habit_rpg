@@ -20,7 +20,7 @@
 @synthesize zoneInfoDict = _zoneInfoDict;
 -(ZoneInfoDictionary *)zoneInfoDict{
     if(!_zoneInfoDict){
-        _zoneInfoDict = [[SingletonCluster getSharedInstance].bag getWithKey:@"zoneDict"
+        _zoneInfoDict = [SharedGlobal.bag getWithKey:@"zoneDict"
         OrCreateFromBlock:^id(){
             return [ZoneInfoDictionary new];
         }];
@@ -52,5 +52,6 @@
             ,[NSNumber numberWithLong:self.uniqueId],@"uniqueId"
             ,[NSNumber numberWithBool:self.isFront],@"isFront", nil];
 }
+
 
 @end

@@ -68,7 +68,7 @@
 @synthesize dataController = _dataController;
 -(NSObject<P_CoreData> *)dataController{
     if(_dataController == nil){
-        _dataController = [SingletonCluster getSharedInstance].dataController;
+        _dataController = SharedGlobal.dataController;
     }
     return _dataController;
 }
@@ -377,6 +377,7 @@ context:(void *)context{
     if(SharedGlobal.gameState == GAME_STATE_UNINITIALIZED){
       [weakSelf afterIntro];
     }
+    [weakSelf.dataController saveNoWaiting];
   }];
 }
 
@@ -394,7 +395,6 @@ context:(void *)context{
       newWithDataController:weakSelf.dataController];
     
     [mt addCreateTransaction:weakSelf.nowMonster];
-    [weakSelf.dataController saveNoWaiting];
     [weakSelf showMonsterStory];
   }];
 }

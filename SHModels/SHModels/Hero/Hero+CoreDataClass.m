@@ -18,4 +18,5 @@
             ,[NSNumber numberWithInt:self.maxXp],@"maxXp"
             ,[NSNumber numberWithInt:self.nowXp],@"nowXp",nil];
 }
+
 @end

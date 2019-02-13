@@ -103,12 +103,17 @@
   [self placeIntroMessageView];
   [self.view checkForAndApplyVisualChanges];
   CGFloat scrollLength = self.introMessageView.frame.origin.y;
+  IntroViewController* __weak weakSelf = self;
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-    self.isThreadCurrentlyRunning = YES;
-    [self autoTypeoutTitle:headlineText characterDelay:CHARACTER_DELAY];
-    [self scrollThroughMessage:SCROLL_DELAY scrollLength:scrollLength
-      scrollIncrement:SCROLL_INCREMENT];
-    self.isThreadCurrentlyRunning = NO;
+    @autoreleasepool {
+      IntroViewController* selfRef = weakSelf;
+      if(nil == selfRef) return;
+      selfRef.isThreadCurrentlyRunning = YES;
+      [selfRef autoTypeoutTitle:headlineText characterDelay:CHARACTER_DELAY];
+      [selfRef scrollThroughMessage:SCROLL_DELAY scrollLength:scrollLength
+        scrollIncrement:SCROLL_INCREMENT];
+      selfRef.isThreadCurrentlyRunning = NO;
+    }
   });
 }
 
@@ -132,11 +137,15 @@
 
 
 -(void)autoTypeoutTitle:(NSString *)title characterDelay:(NSTimeInterval)delay{
-  
+    IntroViewController* __weak weakSelf = self;
     for(NSUInteger i = 0;i<title.length&&self.isThreadAllowed;i++){
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.headline setText:[NSString stringWithFormat:@"%@%C",self.headline.text,
-              [title characterAtIndex:i]]];
+          @autoreleasepool {
+            IntroViewController* selfRef = weakSelf;
+            if(nil == selfRef) return;
+            [selfRef.headline setText:[NSString stringWithFormat:@"%@%C",selfRef.headline.text,
+                                      [title characterAtIndex:i]]];
+          }
         });
       
         [NSThread sleepForTimeInterval:delay];

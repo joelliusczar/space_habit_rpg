@@ -124,13 +124,12 @@ NSMutableArray<Daily *> *testDailies = nil;
     XCTAssertEqual(results2.fetchedObjects.count,19);
     //saving is unecessary to be included in fetch results
     
-    NSManagedObjectContext *prevContext = SHData.inUseContext;
-    SHData.inUseContext = [SHData constructContext:NSMainQueueConcurrencyType];
+    [SHData beginUsingTemporaryContext];
     Daily *d2 = [Daily constructDaily];
     d2.dailyName = @"addedDaily2";
     [SHData insertIntoContext:d2];
     [SHData saveAndWait];
-    SHData.inUseContext = prevContext;
+    [SHData endUsingTemporaryContext];
     
     if(![results performFetch:&error]){
         NSLog(@"Error fetching data: %@", error.localizedFailureReason);

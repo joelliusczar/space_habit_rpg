@@ -18,7 +18,7 @@
 @implementation Daily (Helper)
 
 +(Daily *)constructDaily{
-    return (Daily *)[SHData constructEmptyEntity:Daily.entity InContext:nil];
+    return (Daily *)[SHData constructEmptyEntityUnattached:Daily.entity];
 }
 
 //TODO: days of week 0-6, mon: 0 - sun: 6

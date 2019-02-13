@@ -53,6 +53,7 @@
  */
 @synthesize inUseCalendar = _inUseCalendar;
 -(NSCalendar *)inUseCalendar{
+  
     if(nil==_inUseCalendar){
         _inUseCalendar =
         [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
@@ -79,7 +80,7 @@
 }
 
 
--(NSMutableDictionary<Class,id> *)bag{
+-(NSMutableDictionary*)bag{
     if(nil==_bag){
         _bag = [NSMutableDictionary dictionary];
     }

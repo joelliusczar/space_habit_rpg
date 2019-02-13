@@ -8,10 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import <objc/runtime.h>
+#import <SHModels/SingletonCluster+Entity.h> 
 #import "TestHelpers.h"
 #import "TestGlobals.h"
-#import <SHModels/SingletonCluster+Entity.h>
+
 
 @interface FrequentCase : XCTestCase
-@property (strong,nonatomic) NSManagedObjectContext *testContext;
+-(void)resetDb;
+
+-(NSArray<NSManagedObject*> *)fetchAnything:(NSFetchRequest *)request
+dataController:(NSObject<P_CoreData>*) dataController;
+
 @end

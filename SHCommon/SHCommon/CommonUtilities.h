@@ -20,9 +20,16 @@ http://www.mikeash.com/pyblog/friday-qa-2010-06-18-implementing-equality-and-has
 #define NSUINT_BIT (CHAR_BIT * sizeof(NSUInteger))
 #define NSUINT_Rotate(val,howmuch) \
  ( ((NSUInteger)val) << howmuch | ((NSUInteger)val) >> (NSUINT_BIT - howmuch) )
+
+/*I have considered making randomUInt
+into a macro and then redefining it for tests but macros are expanded
+at compile time and since different project are compiled at different times,
+I could not depend on it, so instead I am using a function pointer stored in a
+public variable that I can swap out at run time
+*/
 extern uint (*randomUInt)(uint);
-CGFloat GetYStartUnderLabel(CGFloat height);
 void reverse_UINT(NSUInteger * array,NSUInteger len);
 CGFloat getParentChildHeightOffset(CGRect parentFrame,CGRect childFrame);
+BOOL waitForSema(dispatch_semaphore_t sema,NSInteger timeoutSecs);
 #endif
 

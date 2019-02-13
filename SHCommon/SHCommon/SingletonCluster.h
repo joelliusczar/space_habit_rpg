@@ -18,6 +18,7 @@
 #define SharedGlobal [SingletonCluster getSharedInstance]
 #define SHCONST [SingletonCluster getSharedInstance].constants
 
+
 @interface SingletonCluster : NSObject<P_UtilityStore>
 +(instancetype)getSharedInstance;
 @property (strong,nonatomic) NSObject<P_ResourceUtility> *resourceUtility;

@@ -19,7 +19,8 @@
 @end
 
 
-BOOL shouldUseLowerBound =YES;
+static BOOL shouldUseLowerBound =YES;
+static uint (*ogRandFn)(uint);
 
 uint mockRandom(uint bound){
     return shouldUseLowerBound?0:(bound-1);
@@ -40,10 +41,12 @@ NSDate* getReferenceDate(){
     
     return [cal dateFromComponents:dateComponents];
 }
+
     
 - (void)setUp {
     [super setUp];
     XCTAssertEqual(SharedGlobal.EnviromentNum,ENV_UTEST);
+    ogRandFn = randomUInt;
     randomUInt = &mockRandom;
 }
 
@@ -145,6 +148,12 @@ NSDate* getReferenceDate(){
     XCTAssertNil(testDict3[@"MON"]);
     
     
+}
+
+-(void)testRandomUintF{
+  uint bound = 25;
+  uint result = ogRandFn(bound);
+  XCTAssertTrue(result >= 0 && result <= 25);
 }
 
 

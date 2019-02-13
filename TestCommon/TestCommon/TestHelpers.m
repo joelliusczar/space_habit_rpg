@@ -16,4 +16,9 @@
     [context.persistentStoreCoordinator removePersistentStore:ps error:&err];
 }
 
+
++(id)getPrivateValue:(id<NSObject>)obj ivarName:(NSString *)ivarName{
+  Ivar ivar = class_getInstanceVariable(obj.class,[ivarName UTF8String]);
+  return object_getIvar(obj,ivar);
+}
 @end

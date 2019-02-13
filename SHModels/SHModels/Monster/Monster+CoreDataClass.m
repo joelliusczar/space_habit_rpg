@@ -20,7 +20,7 @@ float MAX_HP_MODIFIER = .1;
 @synthesize monInfoDict = _monInfoDict;
 -(MonsterInfoDictionary *)monInfoDict{
     if(!_monInfoDict){
-        _monInfoDict = [SingletonCluster getSharedInstance].monsterInfoDictionary;
+        _monInfoDict = SharedGlobal.monsterInfoDictionary;
     }
     return _monInfoDict;
 }
@@ -82,5 +82,6 @@ float MAX_HP_MODIFIER = .1;
             ,[NSNumber numberWithInt:self.maxHp],@"maxHp"
             , nil];
 }
+
 
 @end

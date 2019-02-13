@@ -7,7 +7,7 @@
 //
 
 #import <SHCommon/SHCommon.h>
-#import "P_CoreData.h"
+#import "CoreDataStackController.h"
 
 #define SAVE_DATA_ASYNC() [[SingletonCluster getSharedInstance].dataController saveNoWaiting]
 #define SHData [SingletonCluster getSharedInstance].dataController

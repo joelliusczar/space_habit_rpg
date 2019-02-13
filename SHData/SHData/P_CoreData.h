@@ -11,30 +11,32 @@
 @import UIKit;
 @import CoreData;
 
+typedef NSManagedObjectContext SHContext;
+
 @protocol P_CoreData <NSObject>
 
-@property (strong,nonatomic) NSManagedObjectContext *writeContext;
-@property (strong,nonatomic) NSManagedObjectContext *readContext;
-@property (strong,nonatomic) NSManagedObjectContext *inUseContext;
-+(instancetype)newWithBundle:(NSBundle *)bundle dBFileName:(NSString *)dbFileName;
 -(NSManagedObject *)constructEmptyEntity:(NSEntityDescription *) entityType;
--(NSManagedObject *)constructEmptyEntity:(NSEntityDescription *) entityType
-  InContext:(NSManagedObjectContext *)context;
--(void)initializeCoreData;
+-(NSManagedObject*)constructEmptyEntityUnattached:(NSEntityDescription*)entityType;
+
 -(NSFetchedResultsController *)getItemFetcher:(NSFetchRequest *) fetchRequest
-  predicate: (NSPredicate *) filter
-  sortBy:(NSArray *) sortAttrs;
+predicate: (NSPredicate *) filter
+sortBy:(NSArray *) sortAttrs;
+
 -(NSArray<NSManagedObject *> *)getItem:(NSString *) entityName
-  predicate: (NSPredicate *) filter
-  sortBy:(NSArray<NSSortDescriptor *> *) sortAttrs;
+predicate: (NSPredicate *) filter
+sortBy:(NSArray<NSSortDescriptor *> *) sortAttrs;
+
 -(NSArray<NSManagedObject *> *)getItemWithRequest:(NSFetchRequest *) fetchRequest
-  predicate: (NSPredicate *)filter
-  sortBy: (NSArray<NSSortDescriptor *> *)sortArray;
--(NSManagedObjectContext *)constructContext:(NSManagedObjectContextConcurrencyType)concurrencyType;
+predicate: (NSPredicate *)filter
+sortBy: (NSArray<NSSortDescriptor *> *)sortArray;
+
 -(dispatch_semaphore_t)saveNoWaiting;
 -(void)saveAndWait;
 -(void)softDeleteModel:(NSManagedObject *)model;
 -(void)insertIntoContext:(NSManagedObject *)model;
--(NSManagedObject *)openExistingObject:(NSManagedObject *)existingObject inContext:(NSManagedObjectContext *)context;
--(NSManagedObject *)getWritableObjectVersion:(NSManagedObject *)existingObject;
+-(void)refreshAllContexts;
+-(id)runblockInTempContext:(id (^)(void))block;
+-(void)beginUsingTemporaryContext;
+/*ending should not be necessary is the instance gets deallocated*/
+-(void)endUsingTemporaryContext;
 @end

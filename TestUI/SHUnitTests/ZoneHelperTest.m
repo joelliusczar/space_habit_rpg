@@ -9,6 +9,7 @@
 #import <SHModels/ModelConstants.h>
 #import <SHModels/Zone+CoreDataClass.h>
 #import <SHModels/Zone+Helper.h>
+
 @import TestCommon;
 
 #define SET_UP_BOUND() shouldUseLowerBoundChoices_zh[i++] = NO
@@ -24,7 +25,6 @@ int rIdx_zh;
 uint zoneHelper_mockRandom(uint range){
     return shouldUseLowerBoundChoices_zh[rIdx_zh++]?0:(range-1);
 }
-
 
 @implementation ZoneHelperTest
     
@@ -142,18 +142,18 @@ uint zoneHelper_mockRandom(uint range){
 }
 
 -(void)testZoneDictionaryOrder{
-    NSArray<NSString *> *zl = [[SingletonCluster getSharedInstance].zoneInfoDictionary getGroupKeyList:LVL_1_ZONES];
+    NSArray<NSString *> *zl = [SharedGlobal.zoneInfoDictionary getGroupKeyList:LVL_1_ZONES];
     XCTAssertTrue([zl[0] isEqualToString:@"NEBULA"]);
     XCTAssertTrue([zl[1] isEqualToString:@"EMPTY_SPACE"]);
     XCTAssertTrue([zl[2] isEqualToString:@"SAFE_SPACE"]);
     XCTAssertTrue([zl[3] isEqualToString:@"GAS"]);
     
-    zl = [[SingletonCluster getSharedInstance].zoneInfoDictionary getGroupKeyList:LVL_10_ZONES];
+    zl = [SharedGlobal.zoneInfoDictionary getGroupKeyList:LVL_10_ZONES];
     XCTAssertTrue([zl[0] isEqualToString:@"DEFENSE"]);
     XCTAssertTrue([zl[1] isEqualToString:@"CAVE"]);
     XCTAssertTrue([zl[2] isEqualToString:@"GARBAGE_BALL"]);
     
-    zl = [[SingletonCluster getSharedInstance].zoneInfoDictionary getGroupKeyList:LVL_30_ZONES];
+    zl = [SharedGlobal.zoneInfoDictionary getGroupKeyList:LVL_30_ZONES];
     XCTAssertTrue([zl[0] isEqualToString:@"WORLD_END"]);
     XCTAssertTrue([zl[1] isEqualToString:@"INFINITE"]);
     XCTAssertTrue([zl[2] isEqualToString:@"BEGINNING"]);
@@ -262,7 +262,7 @@ uint zoneHelper_mockRandom(uint range){
     XCTAssertTrue([s isEqualToString:@"Alpha Alpha Alpha"]);
 }
 
--(void)testgetSymbolsList{
+-(void)testGetSymbolsList{
     NSArray<NSString *> *a = getSymbolsList();
     XCTAssertEqual(a.count, 100);
     XCTAssertTrue([a[0] isEqualToString:@"Alpha"]);
@@ -271,6 +271,12 @@ uint zoneHelper_mockRandom(uint range){
 }
 
 -(void)testConstructEmptyZone{
+    Zone *z = constructEmptyZone();
+    XCTAssertNotNil(z);
+}
+
+
+-(void)testConstructEmptyZone2{
     Zone *z = constructEmptyZone();
     XCTAssertNotNil(z);
 }
@@ -335,71 +341,108 @@ uint zoneHelper_mockRandom(uint range){
     
 }
 
--(void)testConstructMultipleZoneChoices{
-    Hero *h = (Hero *)[SHData constructEmptyEntity:Hero.entity];
-    h.lvl = 52;
-    
-    int i = 0;
-    rIdx_zh = 0;
-    /*
-    If I break these tests again, try adjusting the order of my SET_LOW_BOUND,
-    SET_UP_BOUND calls below. Yes, this is a fragile test.
-    */
-    SET_LOW_BOUND();//choice count
-    SET_LOW_BOUND();//zoneGroup
-    SET_LOW_BOUND();//zone
-    SET_UP_BOUND(); //maxMonsters
-    
-    SET_LOW_BOUND();//zoneGroup
-    SET_LOW_BOUND();//zone
-    SET_LOW_BOUND(); //zone lvl
-    SET_UP_BOUND(); //maxMonsters
-    
-    SET_LOW_BOUND();//zoneGroup
-    SET_LOW_BOUND();//zone
-    SET_UP_BOUND(); //maxMonsters
-    SET_UP_BOUND(); //zone lvl
-    
-    NSArray<Zone *> *zl = constructMultipleZoneChoices(h,YES);
-    XCTAssertEqual(zl.count, 3);
-    XCTAssertEqual(zl[0].lvl, 52);
-    XCTAssertEqual(zl[1].lvl, 42);
-    XCTAssertEqual(zl[2].lvl, 62);
-    
-    i = 0;
-    rIdx_zh = 0;
-    SET_UP_BOUND();//choice count
-    SET_LOW_BOUND();//zoneGroup
-    SET_LOW_BOUND();//zone
-    SET_UP_BOUND(); //maxMonsters
-    SET_LOW_BOUND(); //zone lvl
-    
-    SET_LOW_BOUND();//zoneGroup
-    SET_LOW_BOUND();//zone
-    SET_UP_BOUND(); //maxMonsters
-    SET_LOW_BOUND(); //zone lvl
-    
-    SET_LOW_BOUND();//zoneGroup
-    SET_LOW_BOUND();//zone
-    SET_UP_BOUND(); //maxMonsters
-    SET_UP_BOUND(); //zone lvl
-    
-    SET_LOW_BOUND();//zoneGroup
-    SET_LOW_BOUND();//zone
-    SET_UP_BOUND(); //maxMonsters
-    SET_LOW_BOUND(); //zone lvl
-    
-    SET_LOW_BOUND();//zoneGroup
-    SET_LOW_BOUND();//zone
-    SET_UP_BOUND(); //maxMonsters
-    SET_LOW_BOUND(); //zone lvl
-    
-    zl = constructMultipleZoneChoices(h,NO);
-    XCTAssertEqual(zl.count, 5);
+//-(void)testConstructMultipleZoneChoices{
+//    Hero *h = (Hero *)[SHData constructEmptyEntity:Hero.entity];
+//    h.lvl = 52;
+//
+//    int i = 0;
+//    rIdx_zh = 0;
+//    /*
+//    If I break these tests again, try adjusting the order of my SET_LOW_BOUND,
+//    SET_UP_BOUND calls below. Yes, this is a fragile test.
+//    */
+//    SET_LOW_BOUND();//choice count
+//    SET_LOW_BOUND();//zoneGroup
+//    SET_LOW_BOUND();//zone
+//    SET_UP_BOUND(); //maxMonsters
+//
+//    SET_LOW_BOUND();//zoneGroup
+//    SET_LOW_BOUND();//zone
+//    SET_LOW_BOUND(); //zone lvl
+//    SET_UP_BOUND(); //maxMonsters
+//
+//    SET_LOW_BOUND();//zoneGroup
+//    SET_LOW_BOUND();//zone
+//    SET_UP_BOUND(); //maxMonsters
+//    SET_UP_BOUND(); //zone lvl
+//
+//    NSArray<Zone *> *zl = constructMultipleZoneChoices(h,YES);
+//    XCTAssertEqual(zl.count, 3);
+//    XCTAssertEqual(zl[0].lvl, 52);
+//    XCTAssertEqual(zl[1].lvl, 42);
+//    XCTAssertEqual(zl[2].lvl, 62);
+//
+//    i = 0;
+//    rIdx_zh = 0;
+//    SET_UP_BOUND();//choice count
+//    SET_LOW_BOUND();//zoneGroup
+//    SET_LOW_BOUND();//zone
+//    SET_UP_BOUND(); //maxMonsters
+//    SET_LOW_BOUND(); //zone lvl
+//
+//    SET_LOW_BOUND();//zoneGroup
+//    SET_LOW_BOUND();//zone
+//    SET_UP_BOUND(); //maxMonsters
+//    SET_LOW_BOUND(); //zone lvl
+//
+//    SET_LOW_BOUND();//zoneGroup
+//    SET_LOW_BOUND();//zone
+//    SET_UP_BOUND(); //maxMonsters
+//    SET_UP_BOUND(); //zone lvl
+//
+//    SET_LOW_BOUND();//zoneGroup
+//    SET_LOW_BOUND();//zone
+//    SET_UP_BOUND(); //maxMonsters
+//    SET_LOW_BOUND(); //zone lvl
+//
+//    SET_LOW_BOUND();//zoneGroup
+//    SET_LOW_BOUND();//zone
+//    SET_UP_BOUND(); //maxMonsters
+//    SET_LOW_BOUND(); //zone lvl
+//
+//    zl = constructMultipleZoneChoices(h,NO);
+//    XCTAssertEqual(zl.count, 5);
+//}
+
+-(void)testConstructSpecificZone{
+    Zone *z = constructSpecificZone(HOME_KEY,1,0);
+    XCTAssertNotNil(z);
 }
 
+void throwsEx(){
+  @throw [NSException exceptionWithName:@"x" reason:@"x" userInfo:nil];
+}
+
+-(void)testGetZone{
+    Zone *z = constructEmptyZone();
+    z.isFront = YES;
+    z.zoneKey = @"NEBULA";
+    Zone *z2 = constructEmptyZone();
+    z2.isFront = NO;
+    z2.zoneKey = @"GAS";
+    [SHData insertIntoContext:z];
+    [SHData insertIntoContext:z2];
+    dispatch_semaphore_t sema1 = [SHData saveNoWaiting];
+    BOOL isDone = waitForSema(sema1, 1);
+    XCTAssert(isDone);
+    Zone *z3 = getZone(YES);
+    XCTAssertTrue(z3.isFront);
+    XCTAssertTrue([z3.zoneKey isEqualToString:@"NEBULA"]);
+    Zone *z4 = getZone(NO);
+    XCTAssertTrue(!z4.isFront);
+    XCTAssertTrue([z4.zoneKey isEqualToString:@"GAS"]);
+    Zone *z5 = constructEmptyZone();
+    z5.isFront = YES;
+    z5.zoneKey = @"TEMPLE";
+    [SHData insertIntoContext:z5];
+    dispatch_semaphore_t sema2 = [SHData saveNoWaiting];
+    BOOL isDone2 = waitForSema(sema2, 1);
+    XCTAssert(isDone2);
+    XCTAssertThrows(getZone(YES));
+}
+
+
 -(void)testMoveToFront{
-  
   Zone *z0 = constructSpecificZone(HOME_KEY,1,0);
   [z0 moveZoneToFront];
   XCTAssertTrue(z0.isFront);
@@ -447,32 +490,9 @@ uint zoneHelper_mockRandom(uint range){
   XCTAssertTrue([((Zone *)zones[0]).zoneKey isEqualToString:@"GAS"]);
   XCTAssertFalse(((Zone *)zones[1]).isFront);
   XCTAssertTrue([((Zone *)zones[1]).zoneKey isEqualToString:@"NEBULA"]);
-    
-    
 }
 
--(void)testGetZone{
-    Zone *z = constructEmptyZone();
-    z.isFront = YES;
-    z.zoneKey = @"NEBULA";
-    Zone *z2 = constructEmptyZone();
-    z2.isFront = NO;
-    z2.zoneKey = @"GAS";
-    [SHData insertIntoContext:z];
-    [SHData insertIntoContext:z2];
-    SAVE_DATA_ASYNC();
-    Zone *z3 = getZone(YES);
-    XCTAssertTrue(z3.isFront);
-    XCTAssertTrue([z3.zoneKey isEqualToString:@"NEBULA"]);
-    Zone *z4 = getZone(NO);
-    XCTAssertTrue(!z4.isFront);
-    XCTAssertTrue([z4.zoneKey isEqualToString:@"GAS"]);
-    Zone *z5 = constructEmptyZone();
-    z5.isFront = YES;
-    z5.zoneKey = @"TEMPLE";
-    [SHData insertIntoContext:z5];
-    SAVE_DATA_ASYNC();
-    XCTAssertThrows(getZone(YES));
-}
+
+
 
 @end
