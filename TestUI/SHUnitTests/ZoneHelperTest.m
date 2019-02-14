@@ -8,7 +8,7 @@
 
 #import <SHModels/ModelConstants.h>
 #import <SHModels/Zone+CoreDataClass.h>
-#import <SHModels/Zone+Helper.h>
+#import <SHModels/Zone_Medium.h>
 
 @import TestCommon;
 
@@ -39,6 +39,7 @@ uint zoneHelper_mockRandom(uint range){
 }
 
 -(void)testgetUnlockedZoneGroupKeys{
+  
     NSArray<NSString *> *t = getUnlockedZoneGroupKeys(0);
     XCTAssertEqual(t.count, 1);
     XCTAssertTrue([t[0] isEqualToString:LVL_0_ZONES]);
@@ -160,184 +161,196 @@ uint zoneHelper_mockRandom(uint range){
 }
 
 -(void)testGetRandomZoneDefinitionKey{
-    int i = 0;
-    rIdx_zh = 0;
-    SET_LOW_BOUND();
-    SET_LOW_BOUND();
-    NSString *s = getRandomZoneDefinitionKey(10);
-    XCTAssertTrue([s isEqualToString:@"NEBULA"]);
-    
-    i = 0;
-    rIdx_zh = 0;
-    SET_LOW_BOUND();
-    SET_UP_BOUND();
-    s = getRandomZoneDefinitionKey(10);
-    XCTAssertTrue([s isEqualToString:@"GAS"]);
-    
-    i = 0;
-    rIdx_zh = 0;
-    SET_UP_BOUND();
-    SET_UP_BOUND();
-    s = getRandomZoneDefinitionKey(10);
-    XCTAssertTrue([s isEqualToString:@"GARBAGE_BALL"]);
-    
-    i = 0;
-    rIdx_zh = 0;
-    SET_UP_BOUND();
-    SET_LOW_BOUND();
-    s = getRandomZoneDefinitionKey(10);
-    XCTAssertTrue([s isEqualToString:@"DEFENSE"]);
-    
-    i = 0;
-    rIdx_zh = 0;
-    SET_UP_BOUND();
-    SET_LOW_BOUND();
-    s = getRandomZoneDefinitionKey(30);
-    XCTAssertTrue([s isEqualToString:@"WORLD_END"]);
-    
-    i = 0;
-    rIdx_zh = 0;
-    SET_UP_BOUND();
-    SET_UP_BOUND();
-    s = getRandomZoneDefinitionKey(30);
-    XCTAssertTrue([s isEqualToString:@"BEGINNING"]);
+  int i = 0;
+  rIdx_zh = 0;
+  Zone_Medium* zoneMed = [Zone_Medium newWithDataController:SHData
+    withResourceUtil:SharedGlobal.resourceUtility withInfoDict:SharedGlobal.zoneInfoDictionary];
+  SET_LOW_BOUND();
+  SET_LOW_BOUND();
+  NSString *s = [zoneMed getRandomZoneDefinitionKey:10];
+  XCTAssertTrue([s isEqualToString:@"NEBULA"]);
+  
+  i = 0;
+  rIdx_zh = 0;
+  SET_LOW_BOUND();
+  SET_UP_BOUND();
+  s = [zoneMed getRandomZoneDefinitionKey:10];
+  XCTAssertTrue([s isEqualToString:@"GAS"]);
+  
+  i = 0;
+  rIdx_zh = 0;
+  SET_UP_BOUND();
+  SET_UP_BOUND();
+  s = [zoneMed getRandomZoneDefinitionKey:10];
+  XCTAssertTrue([s isEqualToString:@"GARBAGE_BALL"]);
+  
+  i = 0;
+  rIdx_zh = 0;
+  SET_UP_BOUND();
+  SET_LOW_BOUND();
+  s = [zoneMed getRandomZoneDefinitionKey:10];
+  XCTAssertTrue([s isEqualToString:@"DEFENSE"]);
+  
+  i = 0;
+  rIdx_zh = 0;
+  SET_UP_BOUND();
+  SET_LOW_BOUND();
+  s = [zoneMed getRandomZoneDefinitionKey:30];
+  XCTAssertTrue([s isEqualToString:@"WORLD_END"]);
+  
+  i = 0;
+  rIdx_zh = 0;
+  SET_UP_BOUND();
+  SET_UP_BOUND();
+  s = [zoneMed getRandomZoneDefinitionKey:30];
+  XCTAssertTrue([s isEqualToString:@"BEGINNING"]);
 }
 
 -(void)testGetSymbolSuffix{
-    NSString *s = getSymbolSuffix(0);
-    XCTAssertTrue([s isEqualToString:@""]);
-    s = getSymbolSuffix(1);
-    XCTAssertTrue([s isEqualToString:@"Alpha"]);
-    s = getSymbolSuffix(9);
-    XCTAssertTrue([s isEqualToString:@"November"]);
-    s = getSymbolSuffix(100);
-    XCTAssertTrue([s isEqualToString:@"Zed"]);
-    s = getSymbolSuffix(101);
-    XCTAssertTrue([s isEqualToString:@"Alpha Alpha"]);
-    s = getSymbolSuffix(102);
-    XCTAssertTrue([s isEqualToString:@"Alpha Beta"]);
-    s = getSymbolSuffix(199);
-    XCTAssertTrue([s isEqualToString:@"Alpha Omega"]);
-    s = getSymbolSuffix(200);
-    XCTAssertTrue([s isEqualToString:@"Alpha Zed"]);
-    s = getSymbolSuffix(201);
-    XCTAssertTrue([s isEqualToString:@"Beta Alpha"]);
-    s = getSymbolSuffix(301);
-    XCTAssertTrue([s isEqualToString:@"Cain Alpha"]);
-    s = getSymbolSuffix(901);
-    XCTAssertTrue([s isEqualToString:@"November Alpha"]);
-    s = getSymbolSuffix(1001);
-    XCTAssertTrue([s isEqualToString:@"Kilo Alpha"]);
-    s = getSymbolSuffix(2001);
-    XCTAssertTrue([s isEqualToString:@"Ludwig Alpha"]);
-    s = getSymbolSuffix(3001);
-    XCTAssertTrue([s isEqualToString:@"Zulu Alpha"]);
-    s = getSymbolSuffix(5001);
-    XCTAssertTrue([s isEqualToString:@"Flanders Alpha"]);
-    s = getSymbolSuffix(8001);
-    XCTAssertTrue([s isEqualToString:@"Sparta Alpha"]);
-    s = getSymbolSuffix(9001);
-    XCTAssertTrue([s isEqualToString:@"Superior Alpha"]);
-    s = getSymbolSuffix(9051);
-    XCTAssertTrue([s isEqualToString:@"Superior Berlin"]);
-    s = getSymbolSuffix(9100);
-    XCTAssertTrue([s isEqualToString:@"Superior Zed"]);
-    s = getSymbolSuffix(9500);
-    XCTAssertTrue([s isEqualToString:@"Xs Zed"]);
-    s = getSymbolSuffix(9800);
-    XCTAssertTrue([s isEqualToString:@"Zen Zed"]);
-    s = getSymbolSuffix(9900);
-    XCTAssertTrue([s isEqualToString:@"Apex Zed"]);
-    s = getSymbolSuffix(9990);
-    XCTAssertTrue([s isEqualToString:@"Omega Superior"]);
-    s = getSymbolSuffix(9995);
-    XCTAssertTrue([s isEqualToString:@"Omega Rex"]);
-    s = getSymbolSuffix(9999);
-    XCTAssertTrue([s isEqualToString:@"Omega Omega"]);
-    s = getSymbolSuffix(10000);
-    XCTAssertTrue([s isEqualToString:@"Omega Zed"]);
-    s = getSymbolSuffix(10001);
-    XCTAssertTrue([s isEqualToString:@"Zed Alpha"]);
-    s = getSymbolSuffix(10101);
-    XCTAssertTrue([s isEqualToString:@"Alpha Alpha Alpha"]);
+  Zone_Medium* zoneMed = [Zone_Medium newWithDataController:SHData
+    withResourceUtil:SharedGlobal.resourceUtility withInfoDict:SharedGlobal.zoneInfoDictionary];
+  NSString *s = [zoneMed getSymbolSuffix:0];
+  XCTAssertTrue([s isEqualToString:@""]);
+  s = [zoneMed getSymbolSuffix:1];
+  XCTAssertTrue([s isEqualToString:@"Alpha"]);
+  s = [zoneMed getSymbolSuffix:9];
+  XCTAssertTrue([s isEqualToString:@"November"]);
+  s = [zoneMed getSymbolSuffix:100];
+  XCTAssertTrue([s isEqualToString:@"Zed"]);
+  s = [zoneMed getSymbolSuffix:101];
+  XCTAssertTrue([s isEqualToString:@"Alpha Alpha"]);
+  s = [zoneMed getSymbolSuffix:102];
+  XCTAssertTrue([s isEqualToString:@"Alpha Beta"]);
+  s = [zoneMed getSymbolSuffix:199];
+  XCTAssertTrue([s isEqualToString:@"Alpha Omega"]);
+  s = [zoneMed getSymbolSuffix:200];
+  XCTAssertTrue([s isEqualToString:@"Alpha Zed"]);
+  s = [zoneMed getSymbolSuffix:201];
+  XCTAssertTrue([s isEqualToString:@"Beta Alpha"]);
+  s = [zoneMed getSymbolSuffix:301];
+  XCTAssertTrue([s isEqualToString:@"Cain Alpha"]);
+  s = [zoneMed getSymbolSuffix:901];
+  XCTAssertTrue([s isEqualToString:@"November Alpha"]);
+  s = [zoneMed getSymbolSuffix:1001];
+  XCTAssertTrue([s isEqualToString:@"Kilo Alpha"]);
+  s = [zoneMed getSymbolSuffix:2001];
+  XCTAssertTrue([s isEqualToString:@"Ludwig Alpha"]);
+  s = [zoneMed getSymbolSuffix:3001];
+  XCTAssertTrue([s isEqualToString:@"Zulu Alpha"]);
+  s = [zoneMed getSymbolSuffix:5001];
+  XCTAssertTrue([s isEqualToString:@"Flanders Alpha"]);
+  s = [zoneMed getSymbolSuffix:8001];
+  XCTAssertTrue([s isEqualToString:@"Sparta Alpha"]);
+  s = [zoneMed getSymbolSuffix:9001];
+  XCTAssertTrue([s isEqualToString:@"Superior Alpha"]);
+  s = [zoneMed getSymbolSuffix:9051];
+  XCTAssertTrue([s isEqualToString:@"Superior Berlin"]);
+  s = [zoneMed getSymbolSuffix:9100];
+  XCTAssertTrue([s isEqualToString:@"Superior Zed"]);
+  s = [zoneMed getSymbolSuffix:9500];
+  XCTAssertTrue([s isEqualToString:@"Xs Zed"]);
+  s = [zoneMed getSymbolSuffix:9800];
+  XCTAssertTrue([s isEqualToString:@"Zen Zed"]);
+  s = [zoneMed getSymbolSuffix:9900];
+  XCTAssertTrue([s isEqualToString:@"Apex Zed"]);
+  s = [zoneMed getSymbolSuffix:9990];
+  XCTAssertTrue([s isEqualToString:@"Omega Superior"]);
+  s = [zoneMed getSymbolSuffix:9995];
+  XCTAssertTrue([s isEqualToString:@"Omega Rex"]);
+  s = [zoneMed getSymbolSuffix:9999];
+  XCTAssertTrue([s isEqualToString:@"Omega Omega"]);
+  s = [zoneMed getSymbolSuffix:10000];
+  XCTAssertTrue([s isEqualToString:@"Omega Zed"]);
+  s = [zoneMed getSymbolSuffix:10001];
+  XCTAssertTrue([s isEqualToString:@"Zed Alpha"]);
+  s = [zoneMed getSymbolSuffix:10101];
+  XCTAssertTrue([s isEqualToString:@"Alpha Alpha Alpha"]);
 }
 
 -(void)testGetSymbolsList{
-    NSArray<NSString *> *a = getSymbolsList();
-    XCTAssertEqual(a.count, 100);
-    XCTAssertTrue([a[0] isEqualToString:@"Alpha"]);
-    XCTAssertTrue([a[50] isEqualToString:@"Berlin"]);
-    XCTAssertTrue([a[99] isEqualToString:@"Zed"]);
+  Zone_Medium* zoneMed = [Zone_Medium newWithDataController:SHData
+    withResourceUtil:SharedGlobal.resourceUtility withInfoDict:SharedGlobal.zoneInfoDictionary];
+  NSArray<NSString *> *a = [zoneMed getSymbolsList];
+  XCTAssertEqual(a.count, 100);
+  XCTAssertTrue([a[0] isEqualToString:@"Alpha"]);
+  XCTAssertTrue([a[50] isEqualToString:@"Berlin"]);
+  XCTAssertTrue([a[99] isEqualToString:@"Zed"]);
 }
 
 -(void)testConstructEmptyZone{
-    Zone *z = constructEmptyZone();
-    XCTAssertNotNil(z);
+  Zone_Medium* zoneMed = [Zone_Medium newWithDataController:SHData
+    withResourceUtil:SharedGlobal.resourceUtility withInfoDict:SharedGlobal.zoneInfoDictionary];
+  Zone *z = [zoneMed constructEmptyZone];
+  XCTAssertNotNil(z);
 }
 
 
 -(void)testConstructEmptyZone2{
-    Zone *z = constructEmptyZone();
-    XCTAssertNotNil(z);
+  Zone_Medium* zoneMed = [Zone_Medium newWithDataController:SHData
+    withResourceUtil:SharedGlobal.resourceUtility withInfoDict:SharedGlobal.zoneInfoDictionary];
+  Zone *z = [zoneMed constructEmptyZone];
+  XCTAssertNotNil(z);
 }
 
 
 -(void)testConstructZoneChoice{
-    int i = 0;
-    rIdx_zh = 0;
-    Hero *h = (Hero *)[SHData constructEmptyEntity:Hero.entity];
-    h.lvl = 14;
-    SET_LOW_BOUND();
-    SET_LOW_BOUND();
-    SET_LOW_BOUND();
-    Zone *z = constructRandomZoneChoice(h,YES);
-    XCTAssertTrue([z.zoneKey isEqualToString:@"NEBULA"]);
-    XCTAssertEqual(z.lvl, 14);
-    XCTAssertTrue([z.suffix isEqualToString:@""]);
-    XCTAssertEqual(z.maxMonsters,5);
-    XCTAssertEqual(z.monstersKilled, 0);
-    XCTAssertTrue([z.fullName isEqualToString:@"Nebula"]);
-    
-    i = 0;
-    rIdx_zh = 0;
-    SET_LOW_BOUND();
-    SET_LOW_BOUND();
-    SET_UP_BOUND();
-    z = constructRandomZoneChoice(h,YES);
-    XCTAssertTrue([z.zoneKey isEqualToString:@"NEBULA"]);
-    XCTAssertEqual(z.lvl, 14);
-    XCTAssertTrue([z.suffix isEqualToString:@"Alpha"]);
-    XCTAssertEqual(z.maxMonsters,15);
-    XCTAssertEqual(z.monstersKilled, 0);
-    XCTAssertTrue([z.fullName isEqualToString:@"Nebula Alpha"]);
-    
-    i = 0;
-    rIdx_zh = 0;
-    SET_LOW_BOUND(); //zoneGroup
-    SET_LOW_BOUND(); //zone
-    SET_LOW_BOUND(); //zone lvl
-    SET_UP_BOUND(); //maxMonsters
-    z = constructRandomZoneChoice(h,NO);
-    XCTAssertTrue([z.zoneKey isEqualToString:@"NEBULA"]);
-    XCTAssertEqual(z.lvl, 4);
-    XCTAssertTrue([z.suffix isEqualToString:@"Beta"]);
-    XCTAssertEqual(z.maxMonsters,15);
-    XCTAssertEqual(z.monstersKilled, 0);
-    XCTAssertTrue([z.fullName isEqualToString:@"Nebula Beta"]);
-    
-    i = 0;
-    rIdx_zh = 0;
-    SET_LOW_BOUND();//zoneGroup
-    SET_LOW_BOUND();//zone
-    SET_UP_BOUND(); //maxMonsters
-    SET_UP_BOUND(); //zone lvl
-    z = constructRandomZoneChoice(h,NO);
-    XCTAssertTrue([z.zoneKey isEqualToString:@"NEBULA"]);
-    XCTAssertEqual(z.lvl, 24);
-    XCTAssertTrue([z.suffix isEqualToString:@"Cain"]);
-    XCTAssertEqual(z.maxMonsters,15);
-    XCTAssertEqual(z.monstersKilled, 0);
-    XCTAssertTrue([z.fullName isEqualToString:@"Nebula Cain"]);
+  Zone_Medium* zoneMed = [Zone_Medium newWithDataController:SHData
+    withResourceUtil:SharedGlobal.resourceUtility withInfoDict:SharedGlobal.zoneInfoDictionary];
+  int i = 0;
+  rIdx_zh = 0;
+  Hero *h = (Hero *)[SHData constructEmptyEntity:Hero.entity];
+  h.lvl = 14;
+  SET_LOW_BOUND();
+  SET_LOW_BOUND();
+  SET_LOW_BOUND();
+  Zone *z = [zoneMed constructRandomZoneChoiceGivenHero:h ifShouldMatchLvl:YES];
+  XCTAssertTrue([z.zoneKey isEqualToString:@"NEBULA"]);
+  XCTAssertEqual(z.lvl, 14);
+  XCTAssertTrue([z.suffix isEqualToString:@""]);
+  XCTAssertEqual(z.maxMonsters,5);
+  XCTAssertEqual(z.monstersKilled, 0);
+  XCTAssertTrue([z.fullName isEqualToString:@"Nebula"]);
+  
+  i = 0;
+  rIdx_zh = 0;
+  SET_LOW_BOUND();
+  SET_LOW_BOUND();
+  SET_UP_BOUND();
+  z = [zoneMed constructRandomZoneChoiceGivenHero:h ifShouldMatchLvl:YES];
+  XCTAssertTrue([z.zoneKey isEqualToString:@"NEBULA"]);
+  XCTAssertEqual(z.lvl, 14);
+  XCTAssertTrue([z.suffix isEqualToString:@"Alpha"]);
+  XCTAssertEqual(z.maxMonsters,15);
+  XCTAssertEqual(z.monstersKilled, 0);
+  XCTAssertTrue([z.fullName isEqualToString:@"Nebula Alpha"]);
+  
+  i = 0;
+  rIdx_zh = 0;
+  SET_LOW_BOUND(); //zoneGroup
+  SET_LOW_BOUND(); //zone
+  SET_LOW_BOUND(); //zone lvl
+  SET_UP_BOUND(); //maxMonsters
+  z = [zoneMed constructRandomZoneChoiceGivenHero:h ifShouldMatchLvl:NO];
+  XCTAssertTrue([z.zoneKey isEqualToString:@"NEBULA"]);
+  XCTAssertEqual(z.lvl, 4);
+  XCTAssertTrue([z.suffix isEqualToString:@"Beta"]);
+  XCTAssertEqual(z.maxMonsters,15);
+  XCTAssertEqual(z.monstersKilled, 0);
+  XCTAssertTrue([z.fullName isEqualToString:@"Nebula Beta"]);
+  
+  i = 0;
+  rIdx_zh = 0;
+  SET_LOW_BOUND();//zoneGroup
+  SET_LOW_BOUND();//zone
+  SET_UP_BOUND(); //maxMonsters
+  SET_UP_BOUND(); //zone lvl
+  z = [zoneMed constructRandomZoneChoiceGivenHero:h ifShouldMatchLvl:NO];
+  XCTAssertTrue([z.zoneKey isEqualToString:@"NEBULA"]);
+  XCTAssertEqual(z.lvl, 24);
+  XCTAssertTrue([z.suffix isEqualToString:@"Cain"]);
+  XCTAssertEqual(z.maxMonsters,15);
+  XCTAssertEqual(z.monstersKilled, 0);
+  XCTAssertTrue([z.fullName isEqualToString:@"Nebula Cain"]);
     
 }
 
@@ -405,8 +418,10 @@ uint zoneHelper_mockRandom(uint range){
 //}
 
 -(void)testConstructSpecificZone{
-    Zone *z = constructSpecificZone(HOME_KEY,1,0);
-    XCTAssertNotNil(z);
+  Zone_Medium* zoneMed = [Zone_Medium newWithDataController:SHData
+    withResourceUtil:SharedGlobal.resourceUtility withInfoDict:SharedGlobal.zoneInfoDictionary];
+  Zone *z = [zoneMed constructSpecificZone:HOME_KEY withLvl:1 withMonsterCount:0];
+  XCTAssertNotNil(z);
 }
 
 void throwsEx(){
@@ -414,61 +429,65 @@ void throwsEx(){
 }
 
 -(void)testGetZone{
-    Zone *z = constructEmptyZone();
-    z.isFront = YES;
-    z.zoneKey = @"NEBULA";
-    Zone *z2 = constructEmptyZone();
-    z2.isFront = NO;
-    z2.zoneKey = @"GAS";
-    [SHData insertIntoContext:z];
-    [SHData insertIntoContext:z2];
-    dispatch_semaphore_t sema1 = [SHData saveNoWaiting];
-    BOOL isDone = waitForSema(sema1, 1);
-    XCTAssert(isDone);
-    Zone *z3 = getZone(YES);
-    XCTAssertTrue(z3.isFront);
-    XCTAssertTrue([z3.zoneKey isEqualToString:@"NEBULA"]);
-    Zone *z4 = getZone(NO);
-    XCTAssertTrue(!z4.isFront);
-    XCTAssertTrue([z4.zoneKey isEqualToString:@"GAS"]);
-    Zone *z5 = constructEmptyZone();
-    z5.isFront = YES;
-    z5.zoneKey = @"TEMPLE";
-    [SHData insertIntoContext:z5];
-    dispatch_semaphore_t sema2 = [SHData saveNoWaiting];
-    BOOL isDone2 = waitForSema(sema2, 1);
-    XCTAssert(isDone2);
-    XCTAssertThrows(getZone(YES));
+  Zone_Medium* zoneMed = [Zone_Medium newWithDataController:SHData
+    withResourceUtil:SharedGlobal.resourceUtility withInfoDict:SharedGlobal.zoneInfoDictionary];
+  Zone *z = [zoneMed constructEmptyZone];
+  z.isFront = YES;
+  z.zoneKey = @"NEBULA";
+  Zone *z2 = [zoneMed constructEmptyZone];
+  z2.isFront = NO;
+  z2.zoneKey = @"GAS";
+  [SHData insertIntoContext:z];
+  [SHData insertIntoContext:z2];
+  dispatch_semaphore_t sema1 = [SHData saveNoWaiting];
+  BOOL isDone = waitForSema(sema1, 1);
+  XCTAssert(isDone);
+  Zone *z3 = [zoneMed getZone:YES];
+  XCTAssertTrue(z3.isFront);
+  XCTAssertTrue([z3.zoneKey isEqualToString:@"NEBULA"]);
+  Zone *z4 = [zoneMed getZone:NO];
+  XCTAssertTrue(!z4.isFront);
+  XCTAssertTrue([z4.zoneKey isEqualToString:@"GAS"]);
+  Zone *z5 = [zoneMed constructEmptyZone];
+  z5.isFront = YES;
+  z5.zoneKey = @"TEMPLE";
+  [SHData insertIntoContext:z5];
+  dispatch_semaphore_t sema2 = [SHData saveNoWaiting];
+  BOOL isDone2 = waitForSema(sema2, 1);
+  XCTAssert(isDone2);
+  XCTAssertThrows([zoneMed getZone:YES]);
 }
 
 
 -(void)testMoveToFront{
-  Zone *z0 = constructSpecificZone(HOME_KEY,1,0);
-  [z0 moveZoneToFront];
+  Zone_Medium* zoneMed = [Zone_Medium newWithDataController:SHData
+    withResourceUtil:SharedGlobal.resourceUtility withInfoDict:SharedGlobal.zoneInfoDictionary];
+  Zone *z0 = [zoneMed constructSpecificZone:HOME_KEY withLvl:1 withMonsterCount:0];;
+  [zoneMed moveZoneToFront:z0];
   XCTAssertTrue(z0.isFront);
   [SHData insertIntoContext:z0];
   [SHData saveNoWaiting];
 
-  Zone *z1 = constructEmptyZone();
+  Zone *z1 = [zoneMed constructEmptyZone];
   z1.zoneKey = @"GAS";
-  [z1 moveZoneToFront];
+  [zoneMed moveZoneToFront:z1];
   [SHData insertIntoContext:z1];
   [SHData saveNoWaiting];
   
-  NSArray<NSManagedObject *> *zones = getAllZones(nil);
+  NSArray<NSManagedObject *> *zones = [zoneMed getAllZones:nil];
   XCTAssertEqual(zones.count, 2);
   XCTAssertTrue(((Zone *)zones[0]).isFront);
   XCTAssertTrue([((Zone *)zones[0]).zoneKey isEqualToString:@"GAS"]);
   XCTAssertFalse(((Zone *)zones[1]).isFront);
   XCTAssertTrue([((Zone *)zones[1]).zoneKey isEqualToString:@"HOME"]);
   
-  Zone *z2 = constructEmptyZone();
+  Zone *z2 = [zoneMed constructEmptyZone];
   z2.zoneKey = @"NEBULA";
-  [z2 moveZoneToFront];
+  [zoneMed moveZoneToFront:z2];
   [SHData insertIntoContext:z2];
   [SHData saveNoWaiting];
   
-  zones = getAllZones(nil);
+  zones = [zoneMed getAllZones:nil];
   XCTAssertEqual(zones.count, 2);
   XCTAssertTrue(((Zone *)zones[0]).isFront);
   XCTAssertTrue([((Zone *)zones[0]).zoneKey isEqualToString:@"NEBULA"]);
@@ -480,11 +499,11 @@ void throwsEx(){
   XCTAssertTrue(z2.isFront);
   
   Zone *z1_1 = (Zone *)zones[1];
-  [z1_1 moveZoneToFront];
+  [zoneMed moveZoneToFront:z1_1];
   [SHData insertIntoContext:z1_1];
   [SHData saveNoWaiting];
   
-  zones = getAllZones(nil);
+  zones = [zoneMed getAllZones:nil];
   XCTAssertEqual(zones.count, 2);
   XCTAssertTrue(((Zone *)zones[0]).isFront);
   XCTAssertTrue([((Zone *)zones[0]).zoneKey isEqualToString:@"GAS"]);

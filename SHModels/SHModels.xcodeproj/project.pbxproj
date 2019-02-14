@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2736A6CA2214D7FC006CB907 /* Zone_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 2736A6C82214D7FC006CB907 /* Zone_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2736A6CB2214D7FC006CB907 /* Zone_Medium.m in Sources */ = {isa = PBXBuildFile; fileRef = 2736A6C92214D7FC006CB907 /* Zone_Medium.m */; };
 		274295EA21FAA19300EE0132 /* ZoneTransaction_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 274295E821FAA19300EE0132 /* ZoneTransaction_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		274295EB21FAA19300EE0132 /* ZoneTransaction_Medium.m in Sources */ = {isa = PBXBuildFile; fileRef = 274295E921FAA19300EE0132 /* ZoneTransaction_Medium.m */; };
 		274295EE21FAA33200EE0132 /* MonsterTransaction_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 274295EC21FAA33200EE0132 /* MonsterTransaction_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -104,8 +106,6 @@
 		2747C45820462B1C00FB5669 /* SingletonCluster+Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C45620462B1C00FB5669 /* SingletonCluster+Entity.m */; };
 		2747C45B20462D4800FB5669 /* OnlyOneEntities.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C45920462D4800FB5669 /* OnlyOneEntities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C45C20462D4800FB5669 /* OnlyOneEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C45A20462D4800FB5669 /* OnlyOneEntities.m */; };
-		2747C4602046307B00FB5669 /* Zone+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C45E2046307B00FB5669 /* Zone+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2747C4612046307B00FB5669 /* Zone+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C45F2046307B00FB5669 /* Zone+Helper.m */; };
 		2747C4652046320E00FB5669 /* ModelConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C4632046320E00FB5669 /* ModelConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C4662046320E00FB5669 /* ModelConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4642046320E00FB5669 /* ModelConstants.m */; };
 		2747C4CE2048D8FE00FB5669 /* ZoneInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2747C4CD2048D8FE00FB5669 /* ZoneInfo.plist */; };
@@ -127,6 +127,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2736A6C82214D7FC006CB907 /* Zone_Medium.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Zone_Medium.h; sourceTree = "<group>"; };
+		2736A6C92214D7FC006CB907 /* Zone_Medium.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Zone_Medium.m; sourceTree = "<group>"; };
 		274295E821FAA19300EE0132 /* ZoneTransaction_Medium.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZoneTransaction_Medium.h; sourceTree = "<group>"; };
 		274295E921FAA19300EE0132 /* ZoneTransaction_Medium.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZoneTransaction_Medium.m; sourceTree = "<group>"; };
 		274295EC21FAA33200EE0132 /* MonsterTransaction_Medium.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonsterTransaction_Medium.h; sourceTree = "<group>"; };
@@ -240,8 +242,6 @@
 		2747C45620462B1C00FB5669 /* SingletonCluster+Entity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SingletonCluster+Entity.m"; sourceTree = "<group>"; };
 		2747C45920462D4800FB5669 /* OnlyOneEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyOneEntities.h; sourceTree = "<group>"; };
 		2747C45A20462D4800FB5669 /* OnlyOneEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlyOneEntities.m; sourceTree = "<group>"; };
-		2747C45E2046307B00FB5669 /* Zone+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Zone+Helper.h"; sourceTree = "<group>"; };
-		2747C45F2046307B00FB5669 /* Zone+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Zone+Helper.m"; sourceTree = "<group>"; };
 		2747C4632046320E00FB5669 /* ModelConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelConstants.h; sourceTree = "<group>"; };
 		2747C4642046320E00FB5669 /* ModelConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelConstants.m; sourceTree = "<group>"; };
 		2747C4CD2048D8FE00FB5669 /* ZoneInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ZoneInfo.plist; sourceTree = "<group>"; };
@@ -579,8 +579,8 @@
 		2747C45D2046304B00FB5669 /* Zone+Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				2747C45E2046307B00FB5669 /* Zone+Helper.h */,
-				2747C45F2046307B00FB5669 /* Zone+Helper.m */,
+				2736A6C82214D7FC006CB907 /* Zone_Medium.h */,
+				2736A6C92214D7FC006CB907 /* Zone_Medium.m */,
 			);
 			path = "Zone+Extensions";
 			sourceTree = "<group>";
@@ -602,7 +602,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2747C4602046307B00FB5669 /* Zone+Helper.h in Headers */,
 				2747C45B20462D4800FB5669 /* OnlyOneEntities.h in Headers */,
 				2747C36B2043AF7D00FB5669 /* Reminder+CoreDataProperties.h in Headers */,
 				2747C3692043AF7D00FB5669 /* MonsterTransaction+CoreDataClass.h in Headers */,
@@ -656,6 +655,7 @@
 				274295EE21FAA33200EE0132 /* MonsterTransaction_Medium.h in Headers */,
 				274EFB66204E462E00CB3C4C /* ModelTools.h in Headers */,
 				274295EA21FAA19300EE0132 /* ZoneTransaction_Medium.h in Headers */,
+				2736A6CA2214D7FC006CB907 /* Zone_Medium.h in Headers */,
 				27815533217D721C005C5279 /* InfoDictionary.h in Headers */,
 				2747C38C2043AF7D00FB5669 /* Good+CoreDataProperties.h in Headers */,
 			);
@@ -787,7 +787,6 @@
 				2747C3862043AF7D00FB5669 /* GoodTransaction+CoreDataClass.m in Sources */,
 				2747C34E2043AF7C00FB5669 /* Todo+CoreDataProperties.m in Sources */,
 				2747C38F2043AF7D00FB5669 /* MonsterTransaction+CoreDataClass.m in Sources */,
-				2747C4612046307B00FB5669 /* Zone+Helper.m in Sources */,
 				2747C37A2043AF7D00FB5669 /* Zone+CoreDataClass.m in Sources */,
 				274EFB67204E462E00CB3C4C /* ModelTools.m in Sources */,
 				2747C3632043AF7D00FB5669 /* DailySubTask+CoreDataProperties.m in Sources */,
@@ -795,6 +794,7 @@
 				2747C3742043AF7D00FB5669 /* Daily+CoreDataProperties.m in Sources */,
 				2747C3612043AF7D00FB5669 /* MonsterTransaction+CoreDataProperties.m in Sources */,
 				2747C3932043AF7D00FB5669 /* TodoTransaction+CoreDataProperties.m in Sources */,
+				2736A6CB2214D7FC006CB907 /* Zone_Medium.m in Sources */,
 				2747C36C2043AF7D00FB5669 /* Habit+CoreDataProperties.m in Sources */,
 				2747C45820462B1C00FB5669 /* SingletonCluster+Entity.m in Sources */,
 				2747C37B2043AF7D00FB5669 /* DailyTransaction+CoreDataProperties.m in Sources */,

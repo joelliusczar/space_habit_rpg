@@ -21,7 +21,7 @@
 #import <SHGlobal/Constants.h>
 #import <SHData/CoreDataStackController.h>
 #import <SHModels/SingletonCluster+Entity.h>
-#import <SHModels/Zone+Helper.h>
+#import <SHModels/Zone_Medium.h>
 @import TestCommon;
 
 @interface ModelsTest : FrequentCase
@@ -111,8 +111,10 @@
 }
 
 -(void)testDoubleInsert{
+  Zone_Medium* zoneMed = [Zone_Medium newWithDataController:SHData
+    withResourceUtil:SharedGlobal.resourceUtility withInfoDict:SharedGlobal.zoneInfoDictionary];
   NSObject<P_CoreData> *dc = SharedGlobal.dataController;
-  Zone *z = constructSpecificZone2(@"SAFE_SPACE",16);
+  Zone *z = [zoneMed constructSpecificZone2:@"SAFE_SPACE" withLvl:16];
   [dc insertIntoContext:z];
   [dc insertIntoContext:z];
   [dc saveNoWaiting];
@@ -126,7 +128,7 @@
   NSAssert(results2.count == 1,@"result was not one");
   //this last part is to verify that it's not just returning only one
   //regardless of what is in stored
-  Zone *z3 = constructSpecificZone2(@"SAFE_SPACE",16);
+  Zone *z3 = [zoneMed constructSpecificZone2:@"SAFE_SPACE" withLvl:16];
   [dc insertIntoContext:z3];
   [dc saveNoWaiting];
   NSArray<NSManagedObject*>* results3 = [self fetchAnything:request dataController:dc];
