@@ -34,7 +34,7 @@ withInfoDict:(ZoneInfoDictionary*)zoneInfo;
 withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount;
 
 -(NSMutableArray<Zone*>*)constructMultipleZoneChoicesGivenHero:(Hero*)hero ifShouldMatchLvl:(BOOL)matchLvl;
--(NSArray<NSManagedObject*>*)getAllZones:(nullable NSPredicate*) filter;
+-(NSArray<Zone*>*)getAllZones:(nullable NSPredicate*) filter;
 -(Zone*)getZone:(BOOL)isFront;
 
 -(void)moveZoneToFront:(Zone*)zone;
