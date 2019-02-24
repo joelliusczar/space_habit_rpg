@@ -6,10 +6,9 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import <objc/runtime.h>
-#import <SHModels/SingletonCluster+Entity.h> 
+#import <SHModels/SingletonCluster+Entity.h>
 #import "TestHelpers.h"
 #import "TestGlobals.h"
 

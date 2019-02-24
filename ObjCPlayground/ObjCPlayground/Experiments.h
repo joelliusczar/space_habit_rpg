@@ -14,6 +14,8 @@
 #import "WeakLeash.h"
 #import "GenericThing.h"
 #import "C_Exp.h"
+#import "WeakHolder.h"
+#import "RefO.h"
 
 typedef id (^mbTest)(void);
 
@@ -92,6 +94,10 @@ void cMakeHouses(void);
 +(void)dateTimeStuff;
 +(void)runC_Exp;
 +(void)getWeekDayIndexes;
++(void)shdataStuff;
++(void)memSetErase;
++(void)memSizeStuff;
++(void)endianess;
 @end
 
 #import "Experiments+Charlie.h"

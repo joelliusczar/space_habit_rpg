@@ -20,7 +20,6 @@ FOUNDATION_EXPORT const unsigned char SHCommonVersionString[];
 #import "P_Interceptor.h"
 #import "Interceptor.h"
 #import "NSObject+Helper.h"
-#import "ViewHelper.h"
 #import "P_UtilityStore.h"
 #import "NSException+SHCommonExceptions.h"
 #import "P_ResourceUtility.h"

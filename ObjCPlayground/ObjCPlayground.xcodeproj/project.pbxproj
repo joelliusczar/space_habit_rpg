@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		271691F52089672A0059A58E /* C_Exp.c in Sources */ = {isa = PBXBuildFile; fileRef = 271691F42089672A0059A58E /* C_Exp.c */; };
+		2726A84F22225209003993B3 /* libSHDatetime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2726A84E22225209003993B3 /* libSHDatetime.a */; };
+		2726A8522222523D003993B3 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2726A8512222523D003993B3 /* SHCommon.framework */; };
+		2726A85722225299003993B3 /* RefO.m in Sources */ = {isa = PBXBuildFile; fileRef = 2726A85422225299003993B3 /* RefO.m */; };
+		2726A8582222529A003993B3 /* WeakHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2726A85622225299003993B3 /* WeakHolder.m */; };
+		2726A85C2222568A003993B3 /* SHData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2726A85B2222568A003993B3 /* SHData.framework */; };
+		2726A85E22225D7C003993B3 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2726A85D22225D7C003993B3 /* SHModels.framework */; };
+		2726A86022225D8B003993B3 /* TestCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2726A85F22225D8B003993B3 /* TestCommon.framework */; };
 		2747C42C2044C51F00FB5669 /* UserOfProtocus.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3F82044C51600FB5669 /* UserOfProtocus.m */; };
 		2747C42D2044C51F00FB5669 /* ParentMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3F92044C51600FB5669 /* ParentMan.m */; };
 		2747C42E2044C51F00FB5669 /* SelectorDict.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3FA2044C51600FB5669 /* SelectorDict.m */; };
@@ -68,6 +75,16 @@
 /* Begin PBXFileReference section */
 		271691F32089672A0059A58E /* C_Exp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = C_Exp.h; sourceTree = "<group>"; };
 		271691F42089672A0059A58E /* C_Exp.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = C_Exp.c; sourceTree = "<group>"; };
+		2726A84E22225209003993B3 /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2726A8512222523D003993B3 /* SHCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2726A85322225299003993B3 /* RefO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefO.h; sourceTree = "<group>"; };
+		2726A85422225299003993B3 /* RefO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefO.m; sourceTree = "<group>"; };
+		2726A85522225299003993B3 /* WeakHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeakHolder.h; sourceTree = "<group>"; };
+		2726A85622225299003993B3 /* WeakHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeakHolder.m; sourceTree = "<group>"; };
+		2726A85922225357003993B3 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		2726A85B2222568A003993B3 /* SHData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2726A85D22225D7C003993B3 /* SHModels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHModels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2726A85F22225D8B003993B3 /* TestCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TestCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2747C3EE2044C43D00FB5669 /* ObjCPlayground */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ObjCPlayground; sourceTree = BUILT_PRODUCTS_DIR; };
 		2747C3F82044C51600FB5669 /* UserOfProtocus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserOfProtocus.m; sourceTree = "<group>"; };
 		2747C3F92044C51600FB5669 /* ParentMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentMan.m; sourceTree = "<group>"; };
@@ -143,6 +160,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2726A86022225D8B003993B3 /* TestCommon.framework in Frameworks */,
+				2726A85E22225D7C003993B3 /* SHModels.framework in Frameworks */,
+				2726A85C2222568A003993B3 /* SHData.framework in Frameworks */,
+				2726A8522222523D003993B3 /* SHCommon.framework in Frameworks */,
+				2726A84F22225209003993B3 /* libSHDatetime.a in Frameworks */,
 				274EFB30204B0F8C00CB3C4C /* Playground.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,6 +256,10 @@
 				2761E3072055B3FA001F6282 /* House+Hacked.m */,
 				271691F32089672A0059A58E /* C_Exp.h */,
 				271691F42089672A0059A58E /* C_Exp.c */,
+				2726A85322225299003993B3 /* RefO.h */,
+				2726A85422225299003993B3 /* RefO.m */,
+				2726A85522225299003993B3 /* WeakHolder.h */,
+				2726A85622225299003993B3 /* WeakHolder.m */,
 			);
 			path = ObjCPlayground;
 			sourceTree = "<group>";
@@ -262,6 +288,12 @@
 		274EFB2F204B0F8C00CB3C4C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2726A85F22225D8B003993B3 /* TestCommon.framework */,
+				2726A85D22225D7C003993B3 /* SHModels.framework */,
+				2726A85B2222568A003993B3 /* SHData.framework */,
+				2726A85922225357003993B3 /* XCTest.framework */,
+				2726A8512222523D003993B3 /* SHCommon.framework */,
+				2726A84E22225209003993B3 /* libSHDatetime.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -355,7 +387,9 @@
 				2747C42E2044C51F00FB5669 /* SelectorDict.m in Sources */,
 				2747C4382044C51F00FB5669 /* GenericThing.m in Sources */,
 				2747C4482044C67E00FB5669 /* Pool.m in Sources */,
+				2726A8582222529A003993B3 /* WeakHolder.m in Sources */,
 				2761E3042055A9B8001F6282 /* NoArcExp.m in Sources */,
+				2726A85722225299003993B3 /* RefO.m in Sources */,
 				2747C4392044C51F00FB5669 /* XPSideKick.m in Sources */,
 				2747C50A204A3A7400FB5669 /* ExtraAction.m in Sources */,
 				2747C4312044C51F00FB5669 /* Holder.m in Sources */,
@@ -414,6 +448,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks/**",
+					"$BUILD_DIR/**",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -471,6 +509,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks/**",
+					"$BUILD_DIR/**",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

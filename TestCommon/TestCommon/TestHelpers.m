@@ -17,8 +17,24 @@
 }
 
 
-+(id)getPrivateValue:(id<NSObject>)obj ivarName:(NSString *)ivarName{
++(void*)getPrivateValue:(id<NSObject>)obj ivarName:(NSString *)ivarName{
   Ivar ivar = class_getInstanceVariable(obj.class,[ivarName UTF8String]);
-  return object_getIvar(obj,ivar);
+  return (__bridge void *)(object_getIvar(obj,ivar));
 }
+
+
++(void)setPrivateVar:(id<NSObject>)obj ivarName:(NSString *)ivarName
+newVal:(id)newVal{
+  Ivar ivar = class_getInstanceVariable(obj.class,[ivarName UTF8String]);
+  object_setIvar(obj, ivar, newVal);
+}
+
+
++(void)forceRelease:(id)obj{
+  msg_send fRelease = (msg_send)objc_msgSend;
+  SEL rel = NSSelectorFromString(@"release");
+  fRelease(obj,rel);
+}
+
+
 @end

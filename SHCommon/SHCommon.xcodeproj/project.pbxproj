@@ -37,8 +37,6 @@
 		2781FF6E204204D80035AD82 /* CommonUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781FF5B204204D70035AD82 /* CommonUtilities.m */; };
 		2781FF6F204204D80035AD82 /* SingletonCluster.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781FF5C204204D70035AD82 /* SingletonCluster.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2781FF71204204D80035AD82 /* Interceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781FF5E204204D70035AD82 /* Interceptor.m */; };
-		2781FF73204204D80035AD82 /* ViewHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781FF60204204D70035AD82 /* ViewHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2781FF74204204D80035AD82 /* ViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781FF61204204D70035AD82 /* ViewHelper.m */; };
 		2781FF77204204D80035AD82 /* ReportServiceCaller.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781FF64204204D80035AD82 /* ReportServiceCaller.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2781FF79204204D80035AD82 /* ReportServiceCaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781FF66204204D80035AD82 /* ReportServiceCaller.m */; };
 		2781FF7A204204D80035AD82 /* Interceptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781FF67204204D80035AD82 /* Interceptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -96,8 +94,6 @@
 		2781FF5B204204D70035AD82 /* CommonUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtilities.m; sourceTree = "<group>"; };
 		2781FF5C204204D70035AD82 /* SingletonCluster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonCluster.h; sourceTree = "<group>"; };
 		2781FF5E204204D70035AD82 /* Interceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Interceptor.m; sourceTree = "<group>"; };
-		2781FF60204204D70035AD82 /* ViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewHelper.h; sourceTree = "<group>"; };
-		2781FF61204204D70035AD82 /* ViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewHelper.m; sourceTree = "<group>"; };
 		2781FF64204204D80035AD82 /* ReportServiceCaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportServiceCaller.h; sourceTree = "<group>"; };
 		2781FF66204204D80035AD82 /* ReportServiceCaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportServiceCaller.m; sourceTree = "<group>"; };
 		2781FF67204204D80035AD82 /* Interceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interceptor.h; sourceTree = "<group>"; };
@@ -167,8 +163,6 @@
 				2781FF69204204D80035AD82 /* ResourceUtility.m */,
 				2781FF5C204204D70035AD82 /* SingletonCluster.h */,
 				2781FF68204204D80035AD82 /* SingletonCluster.m */,
-				2781FF60204204D70035AD82 /* ViewHelper.h */,
-				2781FF61204204D70035AD82 /* ViewHelper.m */,
 				2747C4772047CD8800FB5669 /* SHMath.h */,
 				2747C4782047CD8800FB5669 /* SHMath.m */,
 				2747C4832048CC9100FB5669 /* NotificationHelper.h */,
@@ -245,7 +239,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2781FF73204204D80035AD82 /* ViewHelper.h in Headers */,
 				2781FF7D204204D80035AD82 /* ResourceUtility.h in Headers */,
 				2781FF6F204204D80035AD82 /* SingletonCluster.h in Headers */,
 				2781FF6D204204D80035AD82 /* CommonUtilities.h in Headers */,
@@ -364,7 +357,6 @@
 				27DD1D252043A2210030D954 /* NSLocale+Helper.m in Sources */,
 				27DD1D282043A2210030D954 /* NSException+SHCommonExceptions.m in Sources */,
 				2747C4DA2048DC1300FB5669 /* ProbWeight.m in Sources */,
-				2781FF74204204D80035AD82 /* ViewHelper.m in Sources */,
 				2781FF79204204D80035AD82 /* ReportServiceCaller.m in Sources */,
 				2781FF7B204204D80035AD82 /* SingletonCluster.m in Sources */,
 				2781FF7C204204D80035AD82 /* ResourceUtility.m in Sources */,
@@ -392,6 +384,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"ARCHS[sdk=macosx*]" = "$(VALID_ARCHS)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -445,6 +438,8 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
+				"VALID_ARCHS[sdk=macosx*]" = x86_64;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};

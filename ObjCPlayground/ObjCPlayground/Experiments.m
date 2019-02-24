@@ -10,6 +10,7 @@
 //#define insideFunc() r_inside()
 
 #import <objc/runtime.h>
+#import <objc/objc-runtime.h>
 #import "Experiments.h"
 #import "House.h"
 #import "House+Ass.h"
@@ -32,6 +33,15 @@
 #import <Playground/Coverride.h>
 #import "PureCBaby.h"
 #import "House+Hacked.h"
+#import <SHData/CoreDataStackController.h>
+#import <SHModels/Zone+CoreDataClass.h>
+#import <SHModels/Zone_Medium.h>
+#import <SHModels/ZoneInfoDictionary.h>
+#import <SHCommon/ResourceUtility.h>
+#import <SHCommon/CommonUtilities.h>
+#import <TestCommon/TestHelpers.h>
+#import <malloc/malloc.h>
+
 
 
 void r_outside(){
@@ -157,7 +167,7 @@ void r_inside(){
     if([exp.proteboat respondsToSelector:@selector(optionalius)]){
         [exp.proteboat optionalius];
     }
-    
+  
 }
 
 +(void)someNotStuff{
@@ -218,7 +228,7 @@ void r_inside(){
 }
 
 -(void)acceptsProtocolGuy:(id<PossibleInvocationCockblock>)pg{
-    
+  
 }
 
 +(void)invokesShit{
@@ -229,10 +239,10 @@ void r_inside(){
     CockblockShield *shield = [CockblockShield new];
     [invoker setTarget:exp];
     [invoker setSelector:@selector(acceptsProtocolGuy:)];
-    
+  
     [invoker setArgument:&shield atIndex:2];
     [invoker invoke];
-    
+  
     [invoker setArgument:&obj atIndex:2];
     [invoker invoke];
 }
@@ -244,7 +254,7 @@ void r_inside(){
 //    Experiments *exp = [Experiments new];
 //    Method m = class_getInstanceMethod(exp.class,@selector(acceptsProtocolGuy:));
 //    struct objc_method_description *s = method_getDescription(m);
-    
+  
 }
 
 -(void)hashStuffOne{
@@ -279,7 +289,7 @@ void r_inside(){
     self.wl = [WeakLeash new];
     self.wl.weakHouse = self.houseOfMyOwn;
     self.houseOfMyOwn = nil;
-    
+  
 }
 
 -(void)weak2{}
@@ -313,7 +323,7 @@ void r_inside(){
     [hashTable addObject:object];
     NSLog(@"%@",[hashTable anyObject]);
     NSLog(@"%ld",hashTable.count);
-    
+  
     object = nil;
     NSLog(@"%@",@"after dealloc hopefully");
     NSLog(@"%@",[hashTable anyObject]);
@@ -332,7 +342,7 @@ void r_inside(){
     NSLog(@"%@",[hashTable anyObject]);
     exp.houseOfMyOwn = nil;
     NSLog(@"%@",[hashTable anyObject]);
-    
+  
 }
 
 +(void)stackOverflowHashQuestion2{
@@ -355,13 +365,13 @@ void r_inside(){
 //    NSLog(@"%d",[enn instanceNonNulls:nil]);
 //    House *h0 = [ExpNonNull cRetNonNull];
 //    h0 = [enn instanceRetNonNulls];
-    
+  
 }
 
 +(void)mapStuff{
     NSMapTable *map = [NSMapTable weakToStrongObjectsMapTable];
     [map setObject:@"Hello" forKey:@"key1"];
-    
+  
     NSString *str = [map objectForKey:@"key1"];
     NSLog(@"%@",str);
 }
@@ -371,7 +381,7 @@ void r_inside(){
     void (^tb)(void) = ^void(){
         NSLog(@"%d",t);
     };
-    
+  
     t += 2;
     tb();
     t++;
@@ -456,7 +466,7 @@ void r_inside(){
     House *h = [[House alloc] init];
     (void)h;
     //House **h2;
-    
+  
 }
 
 
@@ -470,7 +480,7 @@ void r_inside(){
     SEL a1 = @selector(constantStuff);
     SEL a2 = @selector(constantStuff);
     SEL b1 = @selector(doublePointerStuff);
-    
+  
     NSLog(@"%@",a1==a2?@"a1 and a2 equal":@"a1 and a2 not equal");
     NSLog(@"%@",a1==b1?@"a1 and b1 equal":@"a1 and b1 not equal");
 }
@@ -479,7 +489,7 @@ void r_inside(){
     EncodeStuff<House *> *es = [[EncodeStuff alloc] init];
     House *h = [[House alloc] init];
     NSLog(@"Type is: %@",[es whatItDo:h]);
-    
+  
     EncodeStuff<mbTest> *es2 = [[EncodeStuff alloc] init];
     mbTest mb = ^id(){
         return [[House alloc] init];
@@ -605,12 +615,12 @@ NSString *convertCharToBin(unsigned char input){
     [p0 someClassStuff:p1];
     [p0 someClassStuff:l0];
     [p0 someClassStuff:o0];
-    
+  
     NSLog(@"Lake");
     [l0 someClassStuff:p0];
     [l0 someClassStuff:l1];
     [l0 someClassStuff:o0];
-    
+  
     NSLog(@"Ocean");
     [o0 someClassStuff:p0];
     [o0 someClassStuff:l0];
@@ -670,25 +680,25 @@ NSString *convertCharToBin(unsigned char input){
     NSDate *base = [NSCalendar.currentCalendar dateFromComponents:components];
     NSDate *nsAns = [NSCalendar.currentCalendar dateByAddingUnit:NSCalendarUnitYear value:1 toDate:base options:0];
     NSLog(@"Add 1 Year: %@",nsAns);
-    
+  
     nsAns = [NSCalendar.currentCalendar dateByAddingUnit:NSCalendarUnitYear value:4 toDate:base options:0];
     NSLog(@"Add 4 years: %@",nsAns);
-    
+  
     nsAns = [NSCalendar.currentCalendar dateByAddingUnit:NSCalendarUnitSecond value:1 toDate:base options:0];
     NSLog(@"Add 1 sec: %@",nsAns);
-    
+  
     nsAns = [NSCalendar.currentCalendar dateByAddingUnit:NSCalendarUnitSecond value:1 toDate:base options:NSCalendarWrapComponents];
     NSLog(@"Add 1 Sec(Wrap): %@",nsAns);
-    
+  
     nsAns = [NSCalendar.currentCalendar dateByAddingUnit:NSCalendarUnitSecond value:1 toDate:base options:NSCalendarMatchStrictly];
     NSLog(@"Add 1 Sec(Strict): %@",nsAns);
-    
+  
     nsAns = [NSCalendar.currentCalendar dateByAddingUnit:NSCalendarUnitSecond value:1 toDate:base options:NSCalendarSearchBackwards];
     NSLog(@"Add 1 Sec(SearchBackwards): %@",nsAns);
-    
+  
     nsAns = [NSCalendar.currentCalendar dateByAddingUnit:NSCalendarUnitSecond value:1 toDate:base options:NSCalendarMatchNextTime];
     NSLog(@"Add 1 Sec(NextTime): %@",nsAns);
-    
+  
     components.year = 1989;
     components.month = 1;
     components.day = 31;
@@ -698,22 +708,22 @@ NSString *convertCharToBin(unsigned char input){
     base = [NSCalendar.currentCalendar dateFromComponents:components];
     nsAns = [NSCalendar.currentCalendar dateByAddingUnit:NSCalendarUnitMonth value:1 toDate:base options:0];
     NSLog(@"Add 1 month: %@",nsAns);
-    
+  
     nsAns = [NSCalendar.currentCalendar dateByAddingUnit:NSCalendarUnitMonth value:1 toDate:base options:NSCalendarWrapComponents];
     NSLog(@"Add 1 month(wrap): %@",nsAns);
-    
+  
     nsAns = [NSCalendar.currentCalendar dateByAddingUnit:NSCalendarUnitMonth value:1 toDate:base options:NSCalendarMatchStrictly];
     NSLog(@"Add 1 month(strict): %@",nsAns);
-    
+  
     nsAns = [NSCalendar.currentCalendar dateByAddingUnit:NSCalendarUnitMonth value:1 toDate:base options:NSCalendarMatchNextTime];
     NSLog(@"Add 1 month(next): %@",nsAns);
-    
+  
     nsAns = [NSCalendar.currentCalendar dateByAddingUnit:NSCalendarUnitMonth value:1 toDate:base options:NSCalendarMatchLast];
     NSLog(@"Add 1 month(last): %@",nsAns);
 }
 
 +(void)runC_Exp{
-    
+  
     arrayExps();
 }
 
@@ -736,5 +746,117 @@ NSString *convertCharToBin(unsigned char input){
     //NSInteger w = [components weekdayOrdinal];
     NSLog(@"%f",d0.timeIntervalSince1970);
 }
-    
+
+
+-(WeakHolder*)_shdataStuff{
+  NSBundle *testBundle = [NSBundle bundleForClass:NSClassFromString(@"OnlyOneEntities")];
+  WeakHolder* wh = [WeakHolder new];
+  CoreDataStackController* dc = nil;
+  @autoreleasepool {
+    dc = [CoreDataStackController newWithBundle:testBundle storeType:NSInMemoryStoreType];
+  }
+  
+  Zone_Medium* zoneMed = [Zone_Medium newWithDataController:dc
+    withResourceUtil:[[ResourceUtility alloc] init] withInfoDict:[ZoneInfoDictionary new]];
+  
+  Zone *z = nil;
+  @autoreleasepool {
+    z = [zoneMed constructEmptyZone];
+  }
+  
+  z.isFront = YES;
+  z.zoneKey = @"NEBULA";
+  [dc insertIntoContext:z];
+  dispatch_semaphore_t sema1 = [dc saveNoWaiting];
+  BOOL isDone = waitForSema(sema1, 3);
+  Zone *z3 = [zoneMed getZone:YES];
+  SHContext* __weak context = nil;
+  SHContext* __weak context2 = nil;
+  
+  NSPersistentStoreCoordinator* __weak store = nil;
+  context = (SHContext*)[TestHelpers getPrivateValue:dc ivarName:@"_writeContext"];
+  context2 = (SHContext*)[TestHelpers getPrivateValue:dc ivarName:@"_readContext"];
+  store = context.persistentStoreCoordinator;
+  NSError* error = nil;
+  [store destroyPersistentStoreAtURL:dc.storeURL withType:NSInMemoryStoreType options:nil error:&error];
+  id refQue =[TestHelpers getPrivateValue:context2 ivarName:@"_referenceQueue"];
+  void* rlObv = [TestHelpers getPrivateValue:refQue ivarName:@"_rlObserver"];
+  [TestHelpers setPrivateVar:refQue ivarName:@"_context" newVal:nil];
+  (void)isDone;
+  (void)z3;
+  (void)rlObv;
+  House* negTst = [House new];
+  wh.item1 = context;
+  wh.item2 = context2;
+  wh.item3 = negTst;
+  wh.item4 = dc;
+  wh.item5 = z3;
+  wh.item6 = z;
+  //objc_msgSend();
+  [TestHelpers forceRelease:context2];
+  return wh;
+}
+
+
++(void)shdataStuff{
+  WeakHolder* wh = nil;
+  @autoreleasepool {
+    Experiments* exp = [Experiments new];
+    wh = [exp _shdataStuff];
+  }
+  NSLog(@"%@",wh.item1);
+  NSLog(@"%@",wh.item2);
+  NSLog(@"%@",wh.item3);
+  NSLog(@"%@",wh.item4);
+  NSLog(@"%@",wh.item5);
+  NSLog(@"%@",wh.item6);
+}
+
+
++(void)memSizeStuff{
+  RefO* r = [RefO new];
+  r.sm = (int16_t)0xffff;
+  r.i16 = (int16_t)0xffff;
+  r.i162 = (int16_t)0xffff;
+  r.mobj = [NSObject new];
+//  r.mobj2 = [NSObject new];
+//  r.mobj3 = [NSObject new];
+//  r.mobj4 = [NSObject new];
+//  r.mobj5 = [NSObject new];
+  NSLog(@"malloc size: %lu",malloc_size((__bridge const void*)r));
+  NSLog(@"size: %lu",class_getInstanceSize(r.class));
+  NSObject* obj = [NSObject new];
+  NSData *data = [NSData dataWithBytes:(__bridge const void*)r length:malloc_size((__bridge const void*)r)];
+  NSLog(@"Object contains %@", data);
+  
+  
+  WeakHolder* wh = [WeakHolder new];
+  
+  NSLog(@"weakHolder size: %lu",class_getInstanceSize(wh.class));
+  
+  NSLog(@"obj size: %lu",class_getInstanceSize(obj.class));
+  
+}
+
+
++(void)memSetErase{
+  RefO* r = [RefO new];
+  r.i16 = 32;
+  r.mobj = [NSObject new];
+  NSObject* __weak w = r.mobj;
+//  @autoreleasepool {
+  memset((__bridge void*)r,0,malloc_size((__bridge const void*)r));
+//  }
+  free((__bridge void*)r);
+  r.i16 = 71;
+}
+
+
++(void)endianess{
+  int a = 0xabcd;
+  NSData *data = [NSData dataWithBytes:&a length:sizeof(int)];
+  NSLog(@"Object contains %@", data);
+
+}
+
 @end

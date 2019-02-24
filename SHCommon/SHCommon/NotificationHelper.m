@@ -8,8 +8,9 @@
 
 #import "NotificationHelper.h"
 #import <SHGlobal/Constants.h>
+#if USE_UIKIT_PUBLIC_HEADERS
 @import UIKit;
-
+#endif
 
 @implementation NotificationHelper
 
@@ -27,6 +28,7 @@
 
 
 +(void)cleanUpSentReminders{
+#if USE_UIKIT_PUBLIC_HEADERS
     UNUserNotificationCenter *center = [UNUserNotificationCenter
                                         currentNotificationCenter];
     [center getDeliveredNotificationsWithCompletionHandler:^(NSArray<UNNotification *> *notifications){
@@ -43,7 +45,9 @@
             UIApplication.sharedApplication.applicationIconBadgeNumber = 0;
         });
     }];
-    
+#else
+  NSLog(@"This method is compiled to empty when not on mobile device");
+#endif
     
 }
 

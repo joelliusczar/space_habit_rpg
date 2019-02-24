@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <SHGlobal/Constants.h>
-@import UIKit;
 @import CoreData;
 
 typedef NSManagedObjectContext SHContext;
