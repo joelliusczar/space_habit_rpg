@@ -10,7 +10,6 @@
 #define CommonUtilities_h
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 @import CoreGraphics;
 
 /* 

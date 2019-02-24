@@ -7,10 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#if USE_UIKIT_PUBLIC_HEADERS
 @import UIKit;
+#endif
 
 @interface NSObject (Helper)
 -(void)safeRemoveObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath
                   context:(void *)context;
+#if USE_UIKIT_PUBLIC_HEADERS
 -(UIView *)loadXib:(NSString *)nibName;
+#endif
 @end

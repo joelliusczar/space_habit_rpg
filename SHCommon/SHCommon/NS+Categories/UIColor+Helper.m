@@ -6,6 +6,8 @@
 //  Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
+#if USE_UIKIT_PUBLIC_HEADERS
+
 #import "UIColor+Helper.h"
 
 @implementation UIColor (Helper)
@@ -17,3 +19,5 @@
 }
 
 @end
+
+#endif
