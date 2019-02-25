@@ -68,7 +68,7 @@ w_LazyLoadBlock wrapLoaderBlock(LazyLoadBlock loaderBlock,NSUInteger idx,id<NSCo
 
 
 -(id)objectForKeyedSubscript:(id)key{
-    if(!self.owner.indexLookup[key]){
+    if(nil == self.owner.indexLookup[key]){
         return nil;
     }
     NSUInteger idx = self.owner.indexLookup[key].unsignedIntegerValue;
@@ -77,7 +77,7 @@ w_LazyLoadBlock wrapLoaderBlock(LazyLoadBlock loaderBlock,NSUInteger idx,id<NSCo
 
 
 -(void)setObject:(VarWrapper<LazyLoadBlock> *)obj forKeyedSubscript:(id<NSCopying>)key{
-    if(self.owner.indexLookup[key]){
+    if(nil != self.owner.indexLookup[key]){
         NSUInteger idx = self.owner.indexLookup[key].unsignedIntegerValue;
         self.owner.controlList[idx] = [[VarWrapper<LazyLoadBlock> alloc] init:obj,nil];
     }
@@ -88,7 +88,7 @@ w_LazyLoadBlock wrapLoaderBlock(LazyLoadBlock loaderBlock,NSUInteger idx,id<NSCo
 
 
 -(void)removeObjectForKey:(id)key{
-    if(!self.owner.indexLookup[key]){
+    if(nil == self.owner.indexLookup[key]){
         return;
     }
     NSUInteger idx = self.owner.indexLookup[key].unsignedIntegerValue;

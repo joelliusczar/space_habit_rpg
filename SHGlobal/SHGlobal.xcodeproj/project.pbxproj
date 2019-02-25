@@ -19,6 +19,7 @@
 		2747C3D62043C00D00FB5669 /* CommonTypeDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTypeDefs.h; sourceTree = "<group>"; };
 		27730BA62041E4B0003BEB6C /* FlexibleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexibleConstants.h; sourceTree = "<group>"; };
 		27730BA72041E4B0003BEB6C /* FlexibleConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexibleConstants.m; sourceTree = "<group>"; };
+		27B0B1F32223A8B30028AF59 /* SHGlobalConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHGlobalConfig.xcconfig; sourceTree = "<group>"; };
 		27ED28A7204003E200CD5536 /* SHGlobal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHGlobal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27ED28AA204003E200CD5536 /* SHGlobal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHGlobal.h; sourceTree = "<group>"; };
 		27ED28AB204003E200CD5536 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -40,6 +41,7 @@
 		27ED289D204003E200CD5536 = {
 			isa = PBXGroup;
 			children = (
+				27B0B1F32223A8B30028AF59 /* SHGlobalConfig.xcconfig */,
 				27ED28A9204003E200CD5536 /* SHGlobal */,
 				27ED28A8204003E200CD5536 /* Products */,
 			);
@@ -293,6 +295,7 @@
 		};
 		27ED28B0204003E200CD5536 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27B0B1F32223A8B30028AF59 /* SHGlobalConfig.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -317,6 +320,7 @@
 		};
 		27ED28B1204003E200CD5536 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27B0B1F32223A8B30028AF59 /* SHGlobalConfig.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;

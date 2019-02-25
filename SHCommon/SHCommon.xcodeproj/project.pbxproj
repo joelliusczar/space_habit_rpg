@@ -105,6 +105,7 @@
 		2781FF812042053A0035AD82 /* P_Interceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_Interceptor.h; sourceTree = "<group>"; };
 		2781FF822042053A0035AD82 /* P_ReportServiceCaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ReportServiceCaller.h; sourceTree = "<group>"; };
 		2781FF832042053A0035AD82 /* P_ColorInversionHint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ColorInversionHint.h; sourceTree = "<group>"; };
+		27B0B1F02223A6700028AF59 /* SHCommonConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHCommonConfig.xcconfig; sourceTree = "<group>"; };
 		27B15A9620524A170045B226 /* SHGlobal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHGlobal.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHGlobal.framework"; sourceTree = "<group>"; };
 		27D80A142086E75D00FB4CE2 /* libSHDatetime.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSHDatetime.a; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/libSHDatetime.a"; sourceTree = "<group>"; };
 		27DD1D1C2043A2210030D954 /* NSException+SHCommonExceptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSException+SHCommonExceptions.h"; sourceTree = "<group>"; };
@@ -134,6 +135,7 @@
 		27118832203FFA810085A549 = {
 			isa = PBXGroup;
 			children = (
+				27B0B1F02223A6700028AF59 /* SHCommonConfig.xcconfig */,
 				2711883E203FFA810085A549 /* SHCommon */,
 				2711883D203FFA810085A549 /* Products */,
 				27730B9F2041E337003BEB6C /* Frameworks */,
@@ -503,6 +505,7 @@
 		};
 		27118845203FFA810085A549 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27B0B1F02223A6700028AF59 /* SHCommonConfig.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -535,6 +538,7 @@
 		};
 		27118846203FFA810085A549 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27B0B1F02223A6700028AF59 /* SHCommonConfig.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;

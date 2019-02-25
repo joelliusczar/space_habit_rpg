@@ -23,4 +23,5 @@ typedef void (*msg_send)(id,SEL);
 +(void)setPrivateVar:(id)obj ivarName:(NSString *)ivarName
 newVal:(id)newVal;
 
++(NSArray<NSString*>*)getMethodList:(id)obj;
 @end

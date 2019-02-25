@@ -23,6 +23,7 @@
 		27169216208BB2450059A58E /* ErrorHandling.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ErrorHandling.c; sourceTree = "<group>"; };
 		2781552921758C3F005C5279 /* SHConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHConstants.h; sourceTree = "<group>"; };
 		2781552A21758C3F005C5279 /* SHConstants.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHConstants.c; sourceTree = "<group>"; };
+		27B0B1EF2223A4970028AF59 /* SH_CToolsConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SH_CToolsConfig.xcconfig; sourceTree = "<group>"; };
 		27BB2905215207A3003225BB /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		27BB29132159CE1E003225BB /* vars.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = vars.mk; sourceTree = "<group>"; };
 		27DF9C4C20956D6300F98023 /* SHGenAlgos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHGenAlgos.h; sourceTree = "<group>"; };
@@ -43,6 +44,7 @@
 		271691F72089758B0059A58E = {
 			isa = PBXGroup;
 			children = (
+				27B0B1EF2223A4970028AF59 /* SH_CToolsConfig.xcconfig */,
 				27BB290421520778003225BB /* Copy */,
 				27169207208975970059A58E /* Code */,
 				271692012089758B0059A58E /* Products */,
@@ -299,6 +301,7 @@
 		};
 		271692052089758B0059A58E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27B0B1EF2223A4970028AF59 /* SH_CToolsConfig.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = YES;
@@ -315,6 +318,7 @@
 		};
 		271692062089758B0059A58E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27B0B1EF2223A4970028AF59 /* SH_CToolsConfig.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = YES;

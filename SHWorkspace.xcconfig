@@ -1,0 +1,20 @@
+//
+//  SHWorkspace.xcconfig
+//  SHCommon
+//
+//  Created by Joel Pridgen on 2/24/19.
+//  Copyright © 2019 Joel Gillette. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+
+// Intermediate build files go here
+PROJECT_TEMP_DIR = $(SRCROOT)/../../spacehabitrpg_output/build/$(PLATFORM_NAME)/$(PROJECT_NAME).build
+
+// Build-related files for the active build configuration go here
+CONFIGURATION_BUILD_DIR = $(SRCROOT)/../../spacehabitrpg_output/build/$(PLATFORM_NAME)/$CONFIGURATION
+
+// The final product executables and other build products go here
+BUILT_PRODUCTS_DIR = $(SRCROOT)/../../spacehabitrpg_output/build/$(PLATFORM_NAME)/$CONFIGURATION

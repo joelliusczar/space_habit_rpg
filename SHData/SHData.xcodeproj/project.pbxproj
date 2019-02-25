@@ -25,6 +25,7 @@
 		27730B942041E0DE003BEB6C /* SHData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27730B972041E0DE003BEB6C /* SHData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHData.h; sourceTree = "<group>"; };
 		27730B982041E0DE003BEB6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27B0B1F22223A87C0028AF59 /* SHDataConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHDataConfig.xcconfig; sourceTree = "<group>"; };
 		27B15A9C20524ACC0045B226 /* SHCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHCommon.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHCommon.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,6 +52,7 @@
 		27730B8A2041E0DE003BEB6C = {
 			isa = PBXGroup;
 			children = (
+				27B0B1F22223A87C0028AF59 /* SHDataConfig.xcconfig */,
 				27730B962041E0DE003BEB6C /* SHData */,
 				27730B952041E0DE003BEB6C /* Products */,
 				2747C3DE2043CA4A00FB5669 /* Frameworks */,
@@ -305,6 +307,7 @@
 		};
 		27730B9D2041E0DE003BEB6C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27B0B1F22223A87C0028AF59 /* SHDataConfig.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -330,6 +333,7 @@
 		};
 		27730B9E2041E0DE003BEB6C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27B0B1F22223A87C0028AF59 /* SHDataConfig.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		27004253205251B3001FA0B5 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27004252205251B3001FA0B5 /* SHModels.framework */; };
-		27101ABF21D17EE100A3756E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27101ABE21D17EAF00A3756E /* XCTest.framework */; };
 		274EFB77204F9AEA00CB3C4C /* TestCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB75204F9AEA00CB3C4C /* TestCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		274EFB82204F9B7700CB3C4C /* TestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB7D204F9B7600CB3C4C /* TestHelpers.m */; };
 		274EFB83204F9B7700CB3C4C /* FrequentCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB7E204F9B7700CB3C4C /* FrequentCase.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -19,7 +18,6 @@
 
 /* Begin PBXFileReference section */
 		27004252205251B3001FA0B5 /* SHModels.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHModels.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHModels.framework"; sourceTree = "<group>"; };
-		27101ABE21D17EAF00A3756E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = XCTest.framework; sourceTree = "<group>"; };
 		2716921C208EA8D80059A58E /* libSH_CTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_CTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		274EFB72204F9AEA00CB3C4C /* TestCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TestCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		274EFB75204F9AEA00CB3C4C /* TestCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestCommon.h; sourceTree = "<group>"; };
@@ -30,6 +28,7 @@
 		274EFB80204F9B7700CB3C4C /* TestGlobals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestGlobals.h; sourceTree = "<group>"; };
 		274EFB81204F9B7700CB3C4C /* TestHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHelpers.h; sourceTree = "<group>"; };
 		274EFB8C204FB27200CB3C4C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		27B0B1F52223B9C70028AF59 /* TestCommonConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TestCommonConfig.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,7 +36,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27101ABF21D17EE100A3756E /* XCTest.framework in Frameworks */,
 				27004253205251B3001FA0B5 /* SHModels.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,18 +43,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		27101ABD21D17EAF00A3756E /* XCTest */ = {
-			isa = PBXGroup;
-			children = (
-				27101ABE21D17EAF00A3756E /* XCTest.framework */,
-			);
-			name = XCTest;
-			path = ../../spacehabitrpg_output/XCTest;
-			sourceTree = "<group>";
-		};
 		274EFB68204F9AEA00CB3C4C = {
 			isa = PBXGroup;
 			children = (
+				27B0B1F52223B9C70028AF59 /* TestCommonConfig.xcconfig */,
 				274EFB74204F9AEA00CB3C4C /* TestCommon */,
 				274EFB73204F9AEA00CB3C4C /* Products */,
 				274EFB89204F9CB300CB3C4C /* Frameworks */,
@@ -88,7 +78,6 @@
 		274EFB89204F9CB300CB3C4C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				27101ABD21D17EAF00A3756E /* XCTest */,
 				2716921C208EA8D80059A58E /* libSH_CTools.a */,
 				27004252205251B3001FA0B5 /* SHModels.framework */,
 				274EFB8C204FB27200CB3C4C /* XCTest.framework */,
@@ -322,6 +311,7 @@
 		};
 		274EFB7B204F9AEA00CB3C4C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27B0B1F52223B9C70028AF59 /* TestCommonConfig.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -345,6 +335,7 @@
 		};
 		274EFB7C204F9AEA00CB3C4C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27B0B1F52223B9C70028AF59 /* TestCommonConfig.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;

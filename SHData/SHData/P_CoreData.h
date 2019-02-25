@@ -30,12 +30,12 @@ predicate: (NSPredicate *)filter
 sortBy: (NSArray<NSSortDescriptor *> *)sortArray;
 
 -(dispatch_semaphore_t)saveNoWaiting;
--(void)saveAndWait;
--(void)softDeleteModel:(NSManagedObject *)model;
--(void)insertIntoContext:(NSManagedObject *)model;
--(void)refreshAllContexts;
--(id)runblockInTempContext:(id (^)(void))block;
+-(BOOL)saveAndWait;
+-(BOOL)softDeleteModel:(NSManagedObject *)model;
+-(BOOL)insertIntoContext:(NSManagedObject *)model;
+-(id)runblockInCurrentContext:(id (^)(SHContext*))block;
+-(id)runblockInTempContext:(id (^)(SHContext*))block;
 -(void)beginUsingTemporaryContext;
-/*ending should not be necessary is the instance gets deallocated*/
+/*ending should not be necessary if the instance gets deallocated*/
 -(void)endUsingTemporaryContext;
 @end

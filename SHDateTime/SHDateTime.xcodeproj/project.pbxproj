@@ -30,6 +30,7 @@
 		2737D581216DA8BB00E0111F /* dt_server_run.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = dt_server_run.sh; sourceTree = "<group>"; };
 		2737D582216DA8BB00E0111F /* dt_server_cleanup.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = dt_server_cleanup.sh; sourceTree = "<group>"; };
 		2737D583216DA8BB00E0111F /* dt_server.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = dt_server.sh; sourceTree = "<group>"; };
+		27B0B1EE2223A4300028AF59 /* SHDatetimeConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHDatetimeConfig.xcconfig; sourceTree = "<group>"; };
 		27BB29002151D4B1003225BB /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		27BB2908215738BE003225BB /* vars.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = vars.mk; sourceTree = "<group>"; };
 		27BB290D2157D8E2003225BB /* cl_dt_all.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = cl_dt_all.py; sourceTree = "<group>"; };
@@ -138,6 +139,7 @@
 		27D318342086C8CA0047F5F1 = {
 			isa = PBXGroup;
 			children = (
+				27B0B1EE2223A4300028AF59 /* SHDatetimeConfig.xcconfig */,
 				2737D57F216DA8BB00E0111F /* dt_server */,
 				27BB28FF2151D453003225BB /* Copy */,
 				27D318442086C9040047F5F1 /* Code */,
@@ -394,6 +396,7 @@
 		};
 		27D318422086C8CA0047F5F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27B0B1EE2223A4300028AF59 /* SHDatetimeConfig.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = YES;
@@ -413,6 +416,7 @@
 		};
 		27D318432086C8CA0047F5F1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27B0B1EE2223A4300028AF59 /* SHDatetimeConfig.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = YES;

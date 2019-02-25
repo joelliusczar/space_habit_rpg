@@ -37,4 +37,16 @@ newVal:(id)newVal{
 }
 
 
++(NSArray<NSString*>*)getMethodList:(id)obj{
+  uint32_t outCount = 0;
+  Method* m = class_copyMethodList([obj class],&outCount);
+  NSMutableArray* results = [NSMutableArray array];
+  for(int i = 0; i < outCount;i++){
+     [results addObject: NSStringFromSelector(method_getName(*m))];
+     m++;
+  }
+  return [NSArray arrayWithArray:results];
+}
+
+
 @end

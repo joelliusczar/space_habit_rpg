@@ -19,7 +19,6 @@
 @property (strong,nonatomic) NSManagedObjectModel* objectModel;
 -(SHContext *)constructContext:(NSManagedObjectContextConcurrencyType)concurrencyType;
 -(SHContext *)constructContextDefault;
--(id)runblock:(id (^)(void))block inContext:(SHContext *)context;
 -(NSManagedObject *)openExistingObject:(NSManagedObject *)existingObject
 inContext:(SHContext *)context;
 
@@ -89,8 +88,8 @@ NSString* const DEFAULT_DB_NAME = @"Model.sqlite";
 @synthesize readContext = _readContext;
 -(NSManagedObjectContext *)readContext{
     if(nil==_readContext){
-        _readContext = [self constructContext:NSMainQueueConcurrencyType];
-        _readContext.name = @"Read Context";
+      _readContext = [self constructContext:NSMainQueueConcurrencyType];
+      _readContext.name = @"Read Context";
     }
     return _readContext;
 }
@@ -170,19 +169,25 @@ CoreDataStackController* setUpSelfWithBundle(NSBundle *bundle){
   NSPersistentStore *store =
   [self.coordinator addPersistentStoreWithType:self.storeType configuration:nil URL:storeURL
     options:options error:&error];
-  
-  NSAssert(store != nil,
-           @"Error initializing PSC: %@\n%@",
-           [error localizedDescription],[error userInfo]);
+  if(store == nil){
+    handleDataError(error, [NSString stringWithFormat:@"Error initializing PSC: %@\n%@",
+      error.localizedDescription,error.userInfo]);
+  }
   
 }
 
 
 -(NSManagedObject *)constructEmptyEntity:(NSEntityDescription *) entityType
-InContext:(NSManagedObjectContext *)context{
+InContext:(nonnull NSManagedObjectContext *)context{
   
-  NSManagedObject *obj = [[NSManagedObject alloc] initWithEntity:entityType
-    insertIntoManagedObjectContext:context];
+  NSManagedObject* __block obj;
+  
+  [context performBlockAndWait:^{
+    @autoreleasepool {
+      obj = [[NSManagedObject alloc] initWithEntity:entityType
+      insertIntoManagedObjectContext:context];
+    }
+  }];
   
   return obj;
 }
@@ -198,7 +203,8 @@ InContext:(NSManagedObjectContext *)context{
 }
 
 -(NSManagedObject*)constructEmptyEntityUnattached:(NSEntityDescription*)entityType{
-  return [self constructEmptyEntity:entityType InContext:nil];
+  return [[NSManagedObject alloc] initWithEntity:entityType
+      insertIntoManagedObjectContext:nil];
 }
 
 
@@ -207,15 +213,15 @@ InContext:(NSManagedObjectContext *)context{
                                     sortBy:(NSArray *) sortAttrs
 {
     NSManagedObjectContext *context = self.inUseContext?self.inUseContext:self.readContext;
-    
+  
     [fetchRequest setFetchBatchSize:0];
     fetchRequest.sortDescriptors = sortAttrs;
     fetchRequest.predicate = filter;
-    
+  
     return [[NSFetchedResultsController alloc]
             initWithFetchRequest:fetchRequest
             managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
-    
+  
 }
 
 
@@ -223,16 +229,16 @@ InContext:(NSManagedObjectContext *)context{
 predicate: (NSPredicate *) filter
 sortBy:(NSArray *) sortAttrs
 {
-    
+  
     NSManagedObjectContext *context =
     self.inUseContext?self.inUseContext:self.readContext;
-    
+  
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityName
                                     inManagedObjectContext:context];
-    
+  
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     fetchRequest.entity = entity;
-    
+  
     return [self getItemWithRequest:fetchRequest
                           predicate:filter
                              sortBy:sortAttrs];
@@ -242,30 +248,32 @@ sortBy:(NSArray *) sortAttrs
 -(NSArray<NSManagedObject *> *)getItemWithRequest:(NSFetchRequest *)request
 predicate:(NSPredicate *)filter sortBy:(NSArray<NSSortDescriptor *> *)sortArray
 {
-    NSManagedObjectContext* context = self.inUseContext?self.inUseContext:self.readContext;
-  
-    request.predicate = filter;
-    request.sortDescriptors = sortArray;
-    NSError *err = nil;
-    
-    NSArray *results = [context executeFetchRequest:request error:&err];
-  
-    context = nil;
-    context.persistentStoreCoordinator = nil;
-    if(!results&&err){
-        handleDataError(err, @"Error fetching data");
-        return nil;
+  NSManagedObjectContext* context = self.inUseContext?self.inUseContext:self.readContext;
+
+  request.predicate = filter;
+  request.sortDescriptors = sortArray;
+  NSError* __block err = nil;
+  NSArray* __block results = nil;
+  [context performBlockAndWait:^{
+    @autoreleasepool {
+      results = [context executeFetchRequest:request error:&err];
     }
-    if(results.count < 1){
-        return nil;
-    }
-    return results;
+  }];
+  
+  if(!results&&err){
+      handleDataError(err, @"Error fetching data");
+      return nil;
+  }
+  if(results.count < 1){
+      return nil;
+  }
+  return results;
 }
 
 
 -(NSManagedObjectContext *)constructContext:
 (NSManagedObjectContextConcurrencyType)concurrencyType{
-    
+  
     NSManagedObjectContext *context =
       [[NSManagedObjectContext alloc] initWithConcurrencyType:concurrencyType];
   
@@ -279,15 +287,23 @@ predicate:(NSPredicate *)filter sortBy:(NSArray<NSSortDescriptor *> *)sortArray
 }
 
 
--(id)runblock:(id (^)(void))block inContext:(SHContext *)context{
-  [self beginUsingSpecificTemporaryContext:context];
-  id result = block();
-  [self endUsingTemporaryContext];
+-(id)runblockInCurrentContext:(id (^)(SHContext*))block{
+  SHContext* context = self.inUseContext?self.inUseContext:self.readContext;
+  id __block result = nil;
+  [context performBlockAndWait:^{
+    @autoreleasepool {
+      result = block(context);
+    }
+  }];
   return result;
 }
 
--(id)runblockInTempContext:(id (^)(void))block{
-  return [self runblock:block inContext:nil];
+
+-(id)runblockInTempContext:(id (^)(SHContext*))block{
+  [self beginUsingTemporaryContext];
+  id result = [self runblockInCurrentContext:block];
+  [self endUsingTemporaryContext];
+  return result;
 }
 
 -(void)saveWithContext:(NSManagedObjectContext *)context{
@@ -324,34 +340,48 @@ predicate:(NSPredicate *)filter sortBy:(NSArray<NSSortDescriptor *> *)sortArray
 }
 
 
--(void)saveAndWait{
+-(BOOL)saveAndWait{
   NSManagedObjectContext *context = [self getPreferedWriteContext];
+  BOOL __block success = FALSE;
   [context performBlockAndWait:^{
-    BOOL success;
     NSError *error;
     if(!(success = [context save:&error])){
         handleDataError(error,@"Error saving context");
     }
   }];
+  return success;
 }
 
 
--(void)softDeleteModel:(NSManagedObject *)model{
-  NSManagedObjectContext *context = [self getPreferedWriteContext];
-  [context deleteObject:model];
+-(BOOL)softDeleteModel:(NSManagedObject *)model{
+  NSManagedObjectContext *context = model.managedObjectContext;
+  if(nil == context) return FALSE;
+  [context performBlockAndWait:^{
+    [context deleteObject:model];
+  }];
+  return TRUE;
 }
 
 
--(void)insertIntoContext:(NSManagedObject *)model{
+-(BOOL)insertIntoContext:(NSManagedObject *)model{
+  //if we're inserting, then the context must be null
+  //otherwise it will throw an exception
+  if(model.managedObjectContext) return FALSE;
   NSManagedObjectContext *context = [self getPreferedWriteContext];
-  [context insertObject:model];
+  [context performBlockAndWait:^{
+      [context insertObject:model];
+  }];
+  return TRUE;
 }
 
 
 -(NSManagedObject *)openExistingObject:(NSManagedObject *)existingObject
 inContext:(NSManagedObjectContext *)context{
-
-    return [context objectWithID:existingObject.objectID];
+    NSManagedObject* __block altObj = nil;
+    [context performBlockAndWait:^{
+      altObj = [context objectWithID:existingObject.objectID];
+    }];
+    return altObj;
 }
 
 
@@ -395,42 +425,6 @@ static void handleDataError(NSError *error,NSString *additionalMessage){
   NSLog(@"%@: %@",additionalMessage,error.localizedFailureReason);
 }
 
--(void)unhookStores:(SHContext *)context{
-  if(nil == context) return;
-  NSError* __block outerErr = nil;
-  [context.persistentStoreCoordinator.persistentStores enumerateObjectsUsingBlock:
-  ^(NSPersistentStore* ps,NSUInteger idx,BOOL *stop){
-    (void)idx;
-    NSError *err = nil;
-    [context.persistentStoreCoordinator removePersistentStore:ps error:&err];
-    if(err){
-      *stop = YES;
-      outerErr = err;
-    }
-  }];
-  if(outerErr){
-    handleDataError(outerErr, @"Something went wrong while deallocating");
-  }
-}
 
-
--(void)refreshAllContexts{
-  [self.readContext refreshAllObjects];
-  if(self.inUseContext){
-    [self.inUseContext refreshAllObjects];
-  }
-}
-
-//-(void)dealloc{
-//  [self unhookStores:self->_readContext];
-//  [self unhookStores:self->_writeContext];
-//  [self unhookStores:self->_inUseContext];
-//  for(NSUInteger idx = 0; idx < self.tempContextStack.count;idx++){
-//    SHContext* context = (SHContext*)[self.tempContextStack pointerAtIndex:idx];
-//    [self.tempContextStack removePointerAtIndex:idx];
-//    [self unhookStores:context];
-//  }
-//
-//}
 
 @end

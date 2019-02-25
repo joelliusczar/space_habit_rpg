@@ -256,6 +256,7 @@
 		27815532217D721C005C5279 /* InfoDictionary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InfoDictionary.m; sourceTree = "<group>"; };
 		2781553521805C88005C5279 /* StoryItemDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoryItemDictionary.h; sourceTree = "<group>"; };
 		2781553621805C88005C5279 /* StoryItemDictionary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoryItemDictionary.m; sourceTree = "<group>"; };
+		27B0B1F42223A8E20028AF59 /* SHModelsConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHModelsConfig.xcconfig; sourceTree = "<group>"; };
 		27B15A9E20524B4F0045B226 /* SHCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHCommon.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHCommon.framework"; sourceTree = "<group>"; };
 		27B15AA020524B5D0045B226 /* SHData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHData.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHData.framework"; sourceTree = "<group>"; };
 		27B15AA220524B6B0045B226 /* SHGlobal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHGlobal.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHGlobal.framework"; sourceTree = "<group>"; };
@@ -280,6 +281,7 @@
 		2747C2E02043ADE000FB5669 = {
 			isa = PBXGroup;
 			children = (
+				27B0B1F42223A8E20028AF59 /* SHModelsConfig.xcconfig */,
 				2747C2EC2043ADE000FB5669 /* SHModels */,
 				2747C2EB2043ADE000FB5669 /* Products */,
 				2747C3B82043B59100FB5669 /* Frameworks */,
@@ -848,7 +850,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = "$BUILD_DIR/**";
+				FRAMEWORK_SEARCH_PATHS = "$BUILT_PRODUCTS_DIR/**";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -863,13 +865,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$BUILD_DIR/**";
+				HEADER_SEARCH_PATHS = "$BUILT_PRODUCTS_DIR/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
-				USER_HEADER_SEARCH_PATHS = "";
 				"VALID_ARCHS[sdk=macosx*]" = x86_64;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -913,7 +914,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "$BUILD_DIR/**";
+				FRAMEWORK_SEARCH_PATHS = "$BUILT_PRODUCTS_DIR/**";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -922,11 +923,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$BUILD_DIR/**";
+				HEADER_SEARCH_PATHS = "$BUILT_PRODUCTS_DIR/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -935,6 +935,7 @@
 		};
 		2747C2F32043ADE000FB5669 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27B0B1F42223A8E20028AF59 /* SHModelsConfig.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -961,6 +962,7 @@
 		};
 		2747C2F42043ADE000FB5669 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27B0B1F42223A8E20028AF59 /* SHModelsConfig.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;

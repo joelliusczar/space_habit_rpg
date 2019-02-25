@@ -12,6 +12,7 @@
 @import CoreData;
 
 @interface FrequentCase ()
+@property (weak,nonatomic) NSObject* weakObj;
 @end
 
 @implementation FrequentCase
@@ -21,7 +22,7 @@
   ASSERT_IS_TEST();
   //I think we want to ensure that it uses the bundle from SHModels rather
   //the bundle for TestUI or TestCommon
-
+  NSLog(@"context: %@",self.weakObj);
   NSBundle *testBundle = [NSBundle bundleForClass:NSClassFromString(@"OnlyOneEntities")];
   SharedGlobal.bundle = testBundle;
   CoreDataStackController* dc = [CoreDataStackController newWithBundle:testBundle storeType:NSInMemoryStoreType];
@@ -62,18 +63,26 @@ dataController:(NSObject<P_CoreData>*) dataController{
     [store destroyPersistentStoreAtURL:wdc.storeURL withType:NSInMemoryStoreType options:nil error:&error];
     mom = context.persistentStoreCoordinator.managedObjectModel;
     SharedGlobal.dataController = nil;
-    while(CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, 1) == kCFRunLoopRunHandledSource){
-    ;
-    }
+    id refQue =[TestHelpers getPrivateValue:context2 ivarName:@"_referenceQueue"];
+    void* rlObv = [TestHelpers getPrivateValue:refQue ivarName:@"_rlObserver"];
+    [TestHelpers setPrivateVar:refQue ivarName:@"_context" newVal:nil];
+//    while(CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, 1) == kCFRunLoopRunHandledSource){
+//    ;
+//    }
+    //[TestHelpers forceRelease:context2];
+    NSDictionary* dict = NSThread.currentThread.threadDictionary;
+
   }
   NSLog(@"%@",context);
   NSLog(@"%@",context2);
-  
+  self.weakObj = context2;
   
   //XCTAssertNil(mom);
   //XCTAssert(nil == context);
   XCTAssertNil(wdc);
   [super tearDown];
 }
+
+
 
 @end

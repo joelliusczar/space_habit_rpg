@@ -66,20 +66,20 @@ withInfoDict:(ZoneInfoDictionary*)zoneInfo{
 
 
 -(Suffix*)getSuffixEntity:(NSString*)zoneKey{
-  NSFetchRequest<Suffix *> *request = [Suffix fetchRequest];
-  NSSortDescriptor *sortByZoneKey = [[NSSortDescriptor alloc] initWithKey:@"zoneKey" ascending:NO];
-  NSPredicate *filter = [NSPredicate predicateWithFormat:@"zoneKey = %@",zoneKey];
+  NSFetchRequest<Suffix*>* request = [Suffix fetchRequest];
+  NSSortDescriptor* sortByZoneKey = [[NSSortDescriptor alloc] initWithKey:@"zoneKey" ascending:NO];
+  NSPredicate* filter = [NSPredicate predicateWithFormat:@"zoneKey = %@",zoneKey];
 
-  NSArray<NSManagedObject *> *results = [self.dataController
+  NSArray<NSManagedObject*>* results = [self.dataController
     getItemWithRequest:request predicate:filter sortBy:@[sortByZoneKey]];
 
   NSCAssert(results.count<2, @"There are too many entities");
-  Suffix *s;
+  Suffix* s = nil;
   if(results.count){
-      s = (Suffix *)results[0];
+      s = (Suffix*)results[0];
   }
   else{
-      s = (Suffix *)[self.dataController constructEmptyEntity:Suffix.entity];
+      s = (Suffix*)[self.dataController constructEmptyEntity:Suffix.entity];
       s.zoneKey = zoneKey;
   }
   return s;
@@ -88,15 +88,27 @@ withInfoDict:(ZoneInfoDictionary*)zoneInfo{
 
 -(Zone*)constructEmptyZone{
   //if we change here update afterZonePick
-  NSEntityDescription *entity = Zone.entity;
-  return [[Zone alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+  return (Zone*)[self.dataController constructEmptyEntityUnattached:Zone.entity];
 }
 
-
+/*
+  I am going to let this on touching a suffix rather than
+  picking a zone with a suffix because I don't want
+  zone alpha to show up twice for example
+*/
 -(int32_t)getVisitCountForZone:(NSString*)zoneKey{
+  /*
+    The reason we're doing this whole temp context stuff is because we
+    call save for the suffix and we don't want stuff that's already in the context to save
+    this used to be in constructMultipleZoneChoicesGivenHero
+    but I counldn't remember my reason for having it there
+    to justify keeping it there.
+  */
+  [self.dataController beginUsingTemporaryContext];
   Suffix *s = [self getSuffixEntity:zoneKey];
   int currentVisitCount = s.visitCount++;
   [self.dataController saveAndWait];
+  [self.dataController endUsingTemporaryContext];
   return currentVisitCount;
 }
 
@@ -104,8 +116,8 @@ withInfoDict:(ZoneInfoDictionary*)zoneInfo{
 -(Zone*)constructSpecificZone:(NSString*) zoneKey
 withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount{
   
-  NSCAssert(zoneKey,@"Key can't be null");
-  NSCAssert(lvl > 0, @"Lvl must be greater than 0");
+  NSAssert(zoneKey,@"Key can't be null");
+  NSAssert(lvl > 0, @"Lvl must be greater than 0");
   Zone *z = [self constructEmptyZone];
   z.zoneKey = zoneKey;
   z.suffix = [self getSymbolSuffix:[self getVisitCountForZone:zoneKey]];
@@ -132,15 +144,14 @@ withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount{
 
 -(NSMutableArray<Zone*>*)constructMultipleZoneChoicesGivenHero:(Hero*)hero ifShouldMatchLvl:(BOOL)matchLvl{
   //Zone create uses nil context so that should be okay
-
-  [self.dataController beginUsingTemporaryContext];
+  
   uint zoneCount = randomUInt(MAX_ZONE_CHOICE_RAND_UP_BOUND)  + MIN_ZONE_CHOICE_COUNT;
   NSMutableArray<Zone *> *choices = [NSMutableArray arrayWithCapacity:zoneCount];
   choices[0] = [self constructRandomZoneChoiceGivenHero:hero ifShouldMatchLvl:matchLvl];
   for(uint i = 1;i<zoneCount;i++){
       choices[i] = [self constructRandomZoneChoiceGivenHero:hero ifShouldMatchLvl:NO];
   }
-  [self.dataController endUsingTemporaryContext];
+  
   return choices;
 }
 
@@ -158,7 +169,7 @@ withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount{
 
 -(Zone*)getZone:(BOOL)isFront{
   NSPredicate *filter = [NSPredicate predicateWithFormat:@"isFront =%d",isFront?1:0];
-  NSArray<NSManagedObject *> *results = [self getAllZones:filter];
+  NSArray<Zone*> *results = [self getAllZones:filter];
   if(results.count > 1){
     @throw [NSException exceptionWithName:@"CorruptionException"
       reason:@"There are too many zones" userInfo:nil];
@@ -186,7 +197,7 @@ withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount{
 /*
  We're adding the zone groups to a list and one of them will be randomly selected
  */
-NSArray<NSString *>* getUnlockedZoneGroupKeys(NSUInteger heroLvl){
+NSArray<NSString*>* getUnlockedZoneGroupKeys(NSUInteger heroLvl){
   if(heroLvl == 0){
       return @[LVL_0_ZONES];
   }
