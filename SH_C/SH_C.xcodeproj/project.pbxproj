@@ -25,7 +25,8 @@
 		2737D58A216DAFEA00E0111F /* daily_server.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = daily_server.sh; sourceTree = "<group>"; };
 		2737D58B216EE67B00E0111F /* DailySingleTest.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = DailySingleTest.py; sourceTree = "<group>"; };
 		277970CC21FD75E900D3F86D /* RateValueItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RateValueItem.h; sourceTree = "<group>"; };
-		27B0B1ED2223A3EC0028AF59 /* SH_C_Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SH_C_Config.xcconfig; sourceTree = "<group>"; };
+		278FFD9F222B2BBB00DAF985 /* SH_C.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SH_C.debug.xcconfig; sourceTree = "<group>"; };
+		27B0B1ED2223A3EC0028AF59 /* SH_C.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SH_C.base.xcconfig; sourceTree = "<group>"; };
 		27BB290A215749B8003225BB /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		27BB290B215749E7003225BB /* vars.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = vars.mk; sourceTree = "<group>"; };
 		27BB290C2157CBAA003225BB /* DailyTestEverything.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = DailyTestEverything.py; sourceTree = "<group>"; };
@@ -47,7 +48,7 @@
 		271691B920885EF70059A58E = {
 			isa = PBXGroup;
 			children = (
-				27B0B1ED2223A3EC0028AF59 /* SH_C_Config.xcconfig */,
+				276E6D96222A4AA500CB36CB /* Configs */,
 				2737D586216DAFEA00E0111F /* Scripts */,
 				27BB29092157499D003225BB /* Copy */,
 				271691C920885F890059A58E /* Code */,
@@ -92,6 +93,15 @@
 				2737D58A216DAFEA00E0111F /* daily_server.sh */,
 			);
 			path = Scripts;
+			sourceTree = "<group>";
+		};
+		276E6D96222A4AA500CB36CB /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				27B0B1ED2223A3EC0028AF59 /* SH_C.base.xcconfig */,
+				278FFD9F222B2BBB00DAF985 /* SH_C.debug.xcconfig */,
+			);
+			path = Configs;
 			sourceTree = "<group>";
 		};
 		27BB29092157499D003225BB /* Copy */ = {
@@ -202,9 +212,8 @@
 /* Begin XCBuildConfiguration section */
 		271691C420885EF70059A58E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 278FFD9F222B2BBB00DAF985 /* SH_C.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				"ARCHS[sdk=macosx*]" = "$(VALID_ARCHS)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -256,15 +265,13 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
-				"VALID_ARCHS[sdk=macosx*]" = x86_64;
 			};
 			name = Debug;
 		};
 		271691C520885EF70059A58E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27B0B1ED2223A3EC0028AF59 /* SH_C.base.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -314,7 +321,6 @@
 		};
 		271691C720885EF70059A58E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27B0B1ED2223A3EC0028AF59 /* SH_C_Config.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XK3RJ8E2L2;
@@ -324,13 +330,11 @@
 					"-Wextra",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = $BUILT_PRODUCTS_DIR/usr/local/include;
 			};
 			name = Debug;
 		};
 		271691C820885EF70059A58E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27B0B1ED2223A3EC0028AF59 /* SH_C_Config.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XK3RJ8E2L2;
@@ -340,7 +344,6 @@
 					"-Wextra",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = $BUILT_PRODUCTS_DIR/usr/local/include;
 			};
 			name = Release;
 		};

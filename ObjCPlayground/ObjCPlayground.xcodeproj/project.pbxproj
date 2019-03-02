@@ -44,21 +44,10 @@
 		2747C44B2044C73E00FB5669 /* Lake.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C44A2044C73E00FB5669 /* Lake.m */; };
 		2747C44E2044C80500FB5669 /* Ocean.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C44D2044C80500FB5669 /* Ocean.m */; };
 		2747C50A204A3A7400FB5669 /* ExtraAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C509204A3A7400FB5669 /* ExtraAction.m */; };
-		274EFB30204B0F8C00CB3C4C /* Playground.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 274EFB2A204B09A500CB3C4C /* Playground.framework */; };
 		274EFB57204D01A900CB3C4C /* PureCBaby.c in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB56204D01A900CB3C4C /* PureCBaby.c */; };
 		2761E3042055A9B8001F6282 /* NoArcExp.m in Sources */ = {isa = PBXBuildFile; fileRef = 2761E3032055A9B8001F6282 /* NoArcExp.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2761E3082055B3FA001F6282 /* House+Hacked.m in Sources */ = {isa = PBXBuildFile; fileRef = 2761E3072055B3FA001F6282 /* House+Hacked.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		274EFB29204B09A500CB3C4C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 274EFB25204B09A300CB3C4C /* Playground.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 274EFB1A204B09A300CB3C4C;
-			remoteInfo = Playground;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		2747C3EC2044C43D00FB5669 /* CopyFiles */ = {
@@ -146,13 +135,13 @@
 		2747C44D2044C80500FB5669 /* Ocean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Ocean.m; sourceTree = "<group>"; };
 		2747C508204A3A7400FB5669 /* ExtraAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtraAction.h; sourceTree = "<group>"; };
 		2747C509204A3A7400FB5669 /* ExtraAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExtraAction.m; sourceTree = "<group>"; };
-		274EFB25204B09A300CB3C4C /* Playground.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Playground.xcodeproj; path = Playground/Playground.xcodeproj; sourceTree = "<group>"; };
 		274EFB55204D01A900CB3C4C /* PureCBaby.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PureCBaby.h; sourceTree = "<group>"; };
 		274EFB56204D01A900CB3C4C /* PureCBaby.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = PureCBaby.c; sourceTree = "<group>"; };
 		2761E3022055A9B8001F6282 /* NoArcExp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoArcExp.h; sourceTree = "<group>"; };
 		2761E3032055A9B8001F6282 /* NoArcExp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoArcExp.m; sourceTree = "<group>"; };
 		2761E3062055B3FA001F6282 /* House+Hacked.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "House+Hacked.h"; sourceTree = "<group>"; };
 		2761E3072055B3FA001F6282 /* House+Hacked.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "House+Hacked.m"; sourceTree = "<group>"; };
+		278FFDA4222B2FAB00DAF985 /* ObjCPlayground.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ObjCPlayground.base.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,12 +149,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2726A86022225D8B003993B3 /* TestCommon.framework in Frameworks */,
-				2726A85E22225D7C003993B3 /* SHModels.framework in Frameworks */,
-				2726A85C2222568A003993B3 /* SHData.framework in Frameworks */,
-				2726A8522222523D003993B3 /* SHCommon.framework in Frameworks */,
 				2726A84F22225209003993B3 /* libSHDatetime.a in Frameworks */,
-				274EFB30204B0F8C00CB3C4C /* Playground.framework in Frameworks */,
+				2726A8522222523D003993B3 /* SHCommon.framework in Frameworks */,
+				2726A85C2222568A003993B3 /* SHData.framework in Frameworks */,
+				2726A85E22225D7C003993B3 /* SHModels.framework in Frameworks */,
+				2726A86022225D8B003993B3 /* TestCommon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,7 +163,7 @@
 		2747C3E52044C43D00FB5669 = {
 			isa = PBXGroup;
 			children = (
-				274EFB25204B09A300CB3C4C /* Playground.xcodeproj */,
+				278FFDA2222B2F8100DAF985 /* Configs */,
 				2747C3F02044C43D00FB5669 /* ObjCPlayground */,
 				2747C3EF2044C43D00FB5669 /* Products */,
 				274EFB2F204B0F8C00CB3C4C /* Frameworks */,
@@ -277,14 +265,6 @@
 			path = 3Gen;
 			sourceTree = "<group>";
 		};
-		274EFB26204B09A300CB3C4C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				274EFB2A204B09A500CB3C4C /* Playground.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		274EFB2F204B0F8C00CB3C4C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +276,14 @@
 				2726A84E22225209003993B3 /* libSHDatetime.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		278FFDA2222B2F8100DAF985 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				278FFDA4222B2FAB00DAF985 /* ObjCPlayground.base.xcconfig */,
+			);
+			path = Configs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,28 +331,12 @@
 			mainGroup = 2747C3E52044C43D00FB5669;
 			productRefGroup = 2747C3EF2044C43D00FB5669 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 274EFB26204B09A300CB3C4C /* Products */;
-					ProjectRef = 274EFB25204B09A300CB3C4C /* Playground.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				2747C3ED2044C43D00FB5669 /* ObjCPlayground */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		274EFB2A204B09A500CB3C4C /* Playground.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Playground.framework;
-			remoteRef = 274EFB29204B09A500CB3C4C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2747C3EA2044C43D00FB5669 /* Sources */ = {
@@ -414,6 +386,7 @@
 /* Begin XCBuildConfiguration section */
 		2747C3F32044C43D00FB5669 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 278FFDA4222B2FAB00DAF985 /* ObjCPlayground.base.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -448,10 +421,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks/**",
-					"$BUILD_DIR/**",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -475,6 +444,7 @@
 		};
 		2747C3F42044C43D00FB5669 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 278FFDA4222B2FAB00DAF985 /* ObjCPlayground.base.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -509,10 +479,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks/**",
-					"$BUILD_DIR/**",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

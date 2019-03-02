@@ -105,7 +105,8 @@
 		2781FF812042053A0035AD82 /* P_Interceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_Interceptor.h; sourceTree = "<group>"; };
 		2781FF822042053A0035AD82 /* P_ReportServiceCaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ReportServiceCaller.h; sourceTree = "<group>"; };
 		2781FF832042053A0035AD82 /* P_ColorInversionHint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ColorInversionHint.h; sourceTree = "<group>"; };
-		27B0B1F02223A6700028AF59 /* SHCommonConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHCommonConfig.xcconfig; sourceTree = "<group>"; };
+		278FFDA6222B321700DAF985 /* SHCommon.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHCommon.debug.xcconfig; sourceTree = "<group>"; };
+		27B0B1F02223A6700028AF59 /* SHCommon.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHCommon.base.xcconfig; sourceTree = "<group>"; };
 		27B15A9620524A170045B226 /* SHGlobal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHGlobal.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHGlobal.framework"; sourceTree = "<group>"; };
 		27D80A142086E75D00FB4CE2 /* libSHDatetime.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSHDatetime.a; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/libSHDatetime.a"; sourceTree = "<group>"; };
 		27DD1D1C2043A2210030D954 /* NSException+SHCommonExceptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSException+SHCommonExceptions.h"; sourceTree = "<group>"; };
@@ -135,7 +136,7 @@
 		27118832203FFA810085A549 = {
 			isa = PBXGroup;
 			children = (
-				27B0B1F02223A6700028AF59 /* SHCommonConfig.xcconfig */,
+				276E6D92222A46A500CB36CB /* Configs */,
 				2711883E203FFA810085A549 /* SHCommon */,
 				2711883D203FFA810085A549 /* Products */,
 				27730B9F2041E337003BEB6C /* Frameworks */,
@@ -182,6 +183,15 @@
 				27118840203FFA810085A549 /* Info.plist */,
 			);
 			path = SHCommon;
+			sourceTree = "<group>";
+		};
+		276E6D92222A46A500CB36CB /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				27B0B1F02223A6700028AF59 /* SHCommon.base.xcconfig */,
+				278FFDA6222B321700DAF985 /* SHCommon.debug.xcconfig */,
+			);
+			path = Configs;
 			sourceTree = "<group>";
 		};
 		27730B9F2041E337003BEB6C /* Frameworks */ = {
@@ -384,9 +394,8 @@
 /* Begin XCBuildConfiguration section */
 		27118842203FFA810085A549 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 278FFDA6222B321700DAF985 /* SHCommon.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				"ARCHS[sdk=macosx*]" = "$(VALID_ARCHS)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -420,7 +429,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = "$BUILD_DIR/**";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -435,13 +443,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$BUILT_PRODUCTS_DIR/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
-				"VALID_ARCHS[sdk=macosx*]" = x86_64;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -449,8 +454,8 @@
 		};
 		27118843203FFA810085A549 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27B0B1F02223A6700028AF59 /* SHCommon.base.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -484,7 +489,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "$BUILT_PRODUCTS_DIR/**";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -493,7 +497,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$BUILT_PRODUCTS_DIR/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -505,7 +508,6 @@
 		};
 		27118845203FFA810085A549 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27B0B1F02223A6700028AF59 /* SHCommonConfig.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -514,11 +516,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$BUILD_DIR/**",
-					"$BUILT_PRODUCTS_DIR/**",
-				);
-				HEADER_SEARCH_PATHS = "$BUILT_PRODUCTS_DIR/**";
 				INFOPLIST_FILE = "$(SRCROOT)/SHCommon/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -532,13 +529,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = $BUILT_PRODUCTS_DIR/usr/local/include/;
 			};
 			name = Debug;
 		};
 		27118846203FFA810085A549 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27B0B1F02223A6700028AF59 /* SHCommonConfig.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -547,11 +542,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$BUILD_DIR/**",
-					"$BUILT_PRODUCTS_DIR/**",
-				);
-				HEADER_SEARCH_PATHS = "$BUILT_PRODUCTS_DIR/**";
 				INFOPLIST_FILE = "$(SRCROOT)/SHCommon/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -564,7 +554,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = $BUILT_PRODUCTS_DIR/usr/local/include/;
 			};
 			name = Release;
 		};

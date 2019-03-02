@@ -12,9 +12,10 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <inttypes.h>
+#include <ErrorHandling.h>
 #include "DTConstants.h"
 #include "SHTimeZone.h"
-#include "ErrorHandling.h"
+
 
 /*
  *****

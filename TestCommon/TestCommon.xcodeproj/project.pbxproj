@@ -28,7 +28,8 @@
 		274EFB80204F9B7700CB3C4C /* TestGlobals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestGlobals.h; sourceTree = "<group>"; };
 		274EFB81204F9B7700CB3C4C /* TestHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHelpers.h; sourceTree = "<group>"; };
 		274EFB8C204FB27200CB3C4C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		27B0B1F52223B9C70028AF59 /* TestCommonConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TestCommonConfig.xcconfig; sourceTree = "<group>"; };
+		278FFDA1222B2F2700DAF985 /* TestCommon.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TestCommon.debug.xcconfig; sourceTree = "<group>"; };
+		27B0B1F52223B9C70028AF59 /* TestCommon.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TestCommon.base.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +47,7 @@
 		274EFB68204F9AEA00CB3C4C = {
 			isa = PBXGroup;
 			children = (
-				27B0B1F52223B9C70028AF59 /* TestCommonConfig.xcconfig */,
+				276E6D99222A53B300CB36CB /* Configs */,
 				274EFB74204F9AEA00CB3C4C /* TestCommon */,
 				274EFB73204F9AEA00CB3C4C /* Products */,
 				274EFB89204F9CB300CB3C4C /* Frameworks */,
@@ -83,6 +84,15 @@
 				274EFB8C204FB27200CB3C4C /* XCTest.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		276E6D99222A53B300CB36CB /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				27B0B1F52223B9C70028AF59 /* TestCommon.base.xcconfig */,
+				278FFDA1222B2F2700DAF985 /* TestCommon.debug.xcconfig */,
+			);
+			path = Configs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,9 +204,8 @@
 /* Begin XCBuildConfiguration section */
 		274EFB78204F9AEA00CB3C4C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 278FFDA1222B2F2700DAF985 /* TestCommon.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				"ARCHS[sdk=macosx*]" = "$(VALID_ARCHS)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -248,8 +257,6 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
-				"VALID_ARCHS[sdk=macosx*]" = x86_64;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -257,8 +264,8 @@
 		};
 		274EFB79204F9AEA00CB3C4C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27B0B1F52223B9C70028AF59 /* TestCommon.base.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -311,7 +318,6 @@
 		};
 		274EFB7B204F9AEA00CB3C4C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27B0B1F52223B9C70028AF59 /* TestCommonConfig.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -335,7 +341,6 @@
 		};
 		274EFB7C204F9AEA00CB3C4C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27B0B1F52223B9C70028AF59 /* TestCommonConfig.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;

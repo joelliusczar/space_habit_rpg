@@ -10,6 +10,8 @@
 		2747C3D72043C00D00FB5669 /* CommonTypeDefs.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3D62043C00D00FB5669 /* CommonTypeDefs.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27730BA92041E4B0003BEB6C /* FlexibleConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27730BA62041E4B0003BEB6C /* FlexibleConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27730BAA2041E4B0003BEB6C /* FlexibleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 27730BA72041E4B0003BEB6C /* FlexibleConstants.m */; };
+		27C7923B22279F2200A92487 /* Dummy.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C7923922279F2200A92487 /* Dummy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27C7923C22279F2200A92487 /* Dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C7923A22279F2200A92487 /* Dummy.m */; };
 		27ED28AC204003E200CD5536 /* SHGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = 27ED28AA204003E200CD5536 /* SHGlobal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27ED28B42040043D00CD5536 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ED28B22040043D00CD5536 /* Constants.m */; };
 		27ED28B52040043D00CD5536 /* Constants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27ED28B32040043D00CD5536 /* Constants.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -19,7 +21,10 @@
 		2747C3D62043C00D00FB5669 /* CommonTypeDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTypeDefs.h; sourceTree = "<group>"; };
 		27730BA62041E4B0003BEB6C /* FlexibleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexibleConstants.h; sourceTree = "<group>"; };
 		27730BA72041E4B0003BEB6C /* FlexibleConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexibleConstants.m; sourceTree = "<group>"; };
-		27B0B1F32223A8B30028AF59 /* SHGlobalConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHGlobalConfig.xcconfig; sourceTree = "<group>"; };
+		278FFDA8222B32D300DAF985 /* SHGlobal.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHGlobal.debug.xcconfig; sourceTree = "<group>"; };
+		27B0B1F32223A8B30028AF59 /* SHGlobal.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHGlobal.base.xcconfig; sourceTree = "<group>"; };
+		27C7923922279F2200A92487 /* Dummy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dummy.h; sourceTree = "<group>"; };
+		27C7923A22279F2200A92487 /* Dummy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dummy.m; sourceTree = "<group>"; };
 		27ED28A7204003E200CD5536 /* SHGlobal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHGlobal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27ED28AA204003E200CD5536 /* SHGlobal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHGlobal.h; sourceTree = "<group>"; };
 		27ED28AB204003E200CD5536 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -38,10 +43,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		276E6D93222A46C100CB36CB /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				27B0B1F32223A8B30028AF59 /* SHGlobal.base.xcconfig */,
+				278FFDA8222B32D300DAF985 /* SHGlobal.debug.xcconfig */,
+			);
+			path = Configs;
+			sourceTree = "<group>";
+		};
 		27ED289D204003E200CD5536 = {
 			isa = PBXGroup;
 			children = (
-				27B0B1F32223A8B30028AF59 /* SHGlobalConfig.xcconfig */,
+				276E6D93222A46C100CB36CB /* Configs */,
 				27ED28A9204003E200CD5536 /* SHGlobal */,
 				27ED28A8204003E200CD5536 /* Products */,
 			);
@@ -65,6 +79,8 @@
 				27ED28B22040043D00CD5536 /* Constants.m */,
 				27ED28AA204003E200CD5536 /* SHGlobal.h */,
 				27ED28AB204003E200CD5536 /* Info.plist */,
+				27C7923922279F2200A92487 /* Dummy.h */,
+				27C7923A22279F2200A92487 /* Dummy.m */,
 			);
 			path = SHGlobal;
 			sourceTree = "<group>";
@@ -79,6 +95,7 @@
 				27ED28B52040043D00CD5536 /* Constants.h in Headers */,
 				27730BA92041E4B0003BEB6C /* FlexibleConstants.h in Headers */,
 				27ED28AC204003E200CD5536 /* SHGlobal.h in Headers */,
+				27C7923B22279F2200A92487 /* Dummy.h in Headers */,
 				2747C3D72043C00D00FB5669 /* CommonTypeDefs.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,6 +185,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27C7923C22279F2200A92487 /* Dummy.m in Sources */,
 				27730BAA2041E4B0003BEB6C /* FlexibleConstants.m in Sources */,
 				27ED28B42040043D00CD5536 /* Constants.m in Sources */,
 			);
@@ -178,9 +196,8 @@
 /* Begin XCBuildConfiguration section */
 		27ED28AD204003E200CD5536 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 278FFDA8222B32D300DAF985 /* SHGlobal.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				"ARCHS[sdk=macosx*]" = "$(VALID_ARCHS)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -228,12 +245,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
-				"VALID_ARCHS[sdk=macosx*]" = x86_64;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -241,8 +256,8 @@
 		};
 		27ED28AE204003E200CD5536 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27B0B1F32223A8B30028AF59 /* SHGlobal.base.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -284,7 +299,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -295,7 +310,6 @@
 		};
 		27ED28B0204003E200CD5536 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27B0B1F32223A8B30028AF59 /* SHGlobalConfig.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -320,7 +334,6 @@
 		};
 		27ED28B1204003E200CD5536 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27B0B1F32223A8B30028AF59 /* SHGlobalConfig.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;

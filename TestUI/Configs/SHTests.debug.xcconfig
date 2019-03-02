@@ -1,0 +1,19 @@
+//
+//  SHTests.debug.xcconfig
+//  TestUI
+//
+//  Created by Joel Pridgen on 2/27/19.
+//  Copyright © 2019 Joel Gillette. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "../Configs/SHWorkspace.xcconfig"
+#include "SHTests.base.xcconfig"
+
+
+//TARGET_BUILD_DIR = $(BUILT_PRODUCTS_DIR)/TestUI.app
+//TEST_HOST = $(BUILT_PRODUCTS_DIR)/TestUI.app/TestUI
+
+

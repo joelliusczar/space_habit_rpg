@@ -7,52 +7,47 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		27101AB221D177A200A3756E /* TestCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 274EFB88204F9C3100CB3C4C /* TestCommon.framework */; };
-		27101AB321D177A600A3756E /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2747C5B5204A63E900FB5669 /* SHModels.framework */; };
-		27101AB421D177A800A3756E /* SHData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2747C5B3204A63E300FB5669 /* SHData.framework */; };
-		27101AB521D177AC00A3756E /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2747C5B1204A63DE00FB5669 /* SHCommon.framework */; };
-		27101AB621D177AF00A3756E /* SHGlobal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2747C566204A621800FB5669 /* SHGlobal.framework */; };
-		2726A8622222741D003993B3 /* ZoneHelperTest2.m in Sources */ = {isa = PBXBuildFile; fileRef = 2726A8612222741D003993B3 /* ZoneHelperTest2.m */; };
-		2737D58D21715E9C00E0111F /* libSH_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2737D58C21715E9C00E0111F /* libSH_C.a */; };
-		273BF4D422093A5000B0D11E /* CoreDataTests2.m in Sources */ = {isa = PBXBuildFile; fileRef = 273BF4D322093A5000B0D11E /* CoreDataTests2.m */; };
 		2747C536204A5DB000FB5669 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C535204A5DB000FB5669 /* AppDelegate.m */; };
 		2747C539204A5DB000FB5669 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C538204A5DB000FB5669 /* ViewController.m */; };
 		2747C53C204A5DB000FB5669 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2747C53A204A5DB000FB5669 /* Main.storyboard */; };
 		2747C53E204A5DB000FB5669 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2747C53D204A5DB000FB5669 /* Assets.xcassets */; };
 		2747C541204A5DB000FB5669 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2747C53F204A5DB000FB5669 /* LaunchScreen.storyboard */; };
 		2747C544204A5DB000FB5669 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C543204A5DB000FB5669 /* main.m */; };
-		2747C565204A621800FB5669 /* SHGlobal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2747C566204A621800FB5669 /* SHGlobal.framework */; };
-		2747C599204A62EF00FB5669 /* ProbilityWeightTestFourItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C576204A62EA00FB5669 /* ProbilityWeightTestFourItems.m */; };
-		2747C59A204A62EF00FB5669 /* TestKeepSubject_B.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C578204A62EA00FB5669 /* TestKeepSubject_B.m */; };
-		2747C59B204A62EF00FB5669 /* TestLocale.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C579204A62EA00FB5669 /* TestLocale.m */; };
-		2747C59D204A62EF00FB5669 /* ARCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C57B204A62EA00FB5669 /* ARCTest.m */; };
-		2747C59F204A62EF00FB5669 /* TestKeepObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C57E204A62EB00FB5669 /* TestKeepObject.m */; };
-		2747C5A0204A62EF00FB5669 /* TestProbWeightsThreeItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C57F204A62EB00FB5669 /* TestProbWeightsThreeItems.m */; };
-		2747C5A1204A62EF00FB5669 /* ModelsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C580204A62EB00FB5669 /* ModelsTest.m */; };
-		2747C5A2204A62EF00FB5669 /* NSDate+testReplace.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C581204A62EB00FB5669 /* NSDate+testReplace.m */; };
-		2747C5A3204A62EF00FB5669 /* TestKeepObjectAlt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C582204A62EB00FB5669 /* TestKeepObjectAlt.m */; };
-		2747C5A4204A62EF00FB5669 /* MonsterHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C583204A62EB00FB5669 /* MonsterHelperTest.m */; };
-		2747C5A5204A62EF00FB5669 /* MathTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C584204A62EC00FB5669 /* MathTest.m */; };
-		2747C5A6204A62EF00FB5669 /* ZoneHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C587204A62EC00FB5669 /* ZoneHelperTest.m */; };
-		2747C5A7204A62EF00FB5669 /* DailyHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C588204A62EC00FB5669 /* DailyHelperTest.m */; };
-		2747C5A8204A62EF00FB5669 /* SHControlKeepTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C589204A62EC00FB5669 /* SHControlKeepTest.m */; };
-		2747C5A9204A62EF00FB5669 /* TestKeepSubject_A.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C58B204A62ED00FB5669 /* TestKeepSubject_A.m */; };
-		2747C5AB204A62EF00FB5669 /* DateHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C590204A62ED00FB5669 /* DateHelperTest.m */; };
-		2747C5AC204A62EF00FB5669 /* CommonUtilitiesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C593204A62EE00FB5669 /* CommonUtilitiesTest.m */; };
-		2747C5AE204A62EF00FB5669 /* ProbilityWeightTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C595204A62EE00FB5669 /* ProbilityWeightTest.m */; };
-		2747C5B0204A63DE00FB5669 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2747C5B1204A63DE00FB5669 /* SHCommon.framework */; };
-		2747C5B2204A63E300FB5669 /* SHData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2747C5B3204A63E300FB5669 /* SHData.framework */; };
-		2747C5B4204A63E900FB5669 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2747C5B5204A63E900FB5669 /* SHModels.framework */; };
-		274EFB87204F9C3100CB3C4C /* TestCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 274EFB88204F9C3100CB3C4C /* TestCommon.framework */; };
-		275DDF2421FE9EDA00F77AEF /* CoreDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DDF2321FE9EDA00F77AEF /* CoreDataTests.m */; };
-		2781552821716B4F005C5279 /* libSH_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2781552721716B4F005C5279 /* libSH_C.a */; };
-		27D0D6E721D0820200886721 /* TestsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0D6E621D0820200886721 /* TestsTest.m */; };
-		27D80A182086E89900FB4CE2 /* libSHDatetime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D80A172086E89900FB4CE2 /* libSHDatetime.a */; };
-		27DF9C5020B4E83500F98023 /* libSHDatetime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27DF9C5120B4E83500F98023 /* libSHDatetime.a */; };
+		276E6D9B222A54B300CB36CB /* libSH_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 276E6D9A222A54B300CB36CB /* libSH_C.a */; };
+		276E6D9D222A54B300CB36CB /* libSH_CTools.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 276E6D9C222A54B300CB36CB /* libSH_CTools.a */; };
+		276E6D9F222A54B300CB36CB /* libSHDatetime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 276E6D9E222A54B300CB36CB /* libSHDatetime.a */; };
+		276E6DA1222A54B300CB36CB /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 276E6DA0222A54B300CB36CB /* SHCommon.framework */; };
+		276E6DA3222A54B300CB36CB /* SHData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 276E6DA2222A54B300CB36CB /* SHData.framework */; };
+		276E6DA5222A54B300CB36CB /* SHGlobal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 276E6DA4222A54B300CB36CB /* SHGlobal.framework */; };
+		276E6DA7222A54B300CB36CB /* TestCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 276E6DA6222A54B300CB36CB /* TestCommon.framework */; };
+		276E6DA8222A54E300CB36CB /* SHTestObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C792432228A46600A92487 /* SHTestObserver.m */; };
+		276E6DA9222A54E300CB36CB /* TestKeepObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C57E204A62EB00FB5669 /* TestKeepObject.m */; };
+		276E6DAA222A54E300CB36CB /* TestKeepObjectAlt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C582204A62EB00FB5669 /* TestKeepObjectAlt.m */; };
+		276E6DAB222A54E400CB36CB /* TestKeepSubject_A.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C58B204A62ED00FB5669 /* TestKeepSubject_A.m */; };
+		276E6DAC222A54E400CB36CB /* TestKeepSubject_B.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C578204A62EA00FB5669 /* TestKeepSubject_B.m */; };
+		276E6DAD222A54E400CB36CB /* ARCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C57B204A62EA00FB5669 /* ARCTest.m */; };
+		276E6DAE222A54E400CB36CB /* CommonUtilitiesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C593204A62EE00FB5669 /* CommonUtilitiesTest.m */; };
+		276E6DAF222A54E400CB36CB /* DailyHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C588204A62EC00FB5669 /* DailyHelperTest.m */; };
+		276E6DB0222A54E400CB36CB /* DateHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C590204A62ED00FB5669 /* DateHelperTest.m */; };
+		276E6DB1222A54E400CB36CB /* MathTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C584204A62EC00FB5669 /* MathTest.m */; };
+		276E6DB2222A54E400CB36CB /* ModelsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C580204A62EB00FB5669 /* ModelsTest.m */; };
+		276E6DB3222A54E400CB36CB /* MonsterHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C583204A62EB00FB5669 /* MonsterHelperTest.m */; };
+		276E6DB4222A54E400CB36CB /* NSDate+testReplace.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C581204A62EB00FB5669 /* NSDate+testReplace.m */; };
+		276E6DB5222A54E400CB36CB /* ProbilityWeightTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C595204A62EE00FB5669 /* ProbilityWeightTest.m */; };
+		276E6DB6222A54E400CB36CB /* ProbilityWeightTestFourItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C576204A62EA00FB5669 /* ProbilityWeightTestFourItems.m */; };
+		276E6DB7222A54E400CB36CB /* SHControlKeepTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C589204A62EC00FB5669 /* SHControlKeepTest.m */; };
+		276E6DB8222A54E400CB36CB /* TestsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0D6E621D0820200886721 /* TestsTest.m */; };
+		276E6DB9222A54E400CB36CB /* TestLocale.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C579204A62EA00FB5669 /* TestLocale.m */; };
+		276E6DBA222A54E400CB36CB /* TestProbWeightsThreeItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C57F204A62EB00FB5669 /* TestProbWeightsThreeItems.m */; };
+		276E6DBB222A54E400CB36CB /* ZoneHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C587204A62EC00FB5669 /* ZoneHelperTest.m */; };
+		276E6DBC222A54E400CB36CB /* CoreDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DDF2321FE9EDA00F77AEF /* CoreDataTests.m */; };
+		276E6DBD222A54E400CB36CB /* CoreDataTests2.m in Sources */ = {isa = PBXBuildFile; fileRef = 273BF4D322093A5000B0D11E /* CoreDataTests2.m */; };
+		27C791F52226DD9000A92487 /* EmptyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C791F42226DD9000A92487 /* EmptyTest.m */; };
+		27C792442228A46600A92487 /* SHTestObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C792432228A46600A92487 /* SHTestObserver.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2747C570204A62AE00FB5669 /* PBXContainerItemProxy */ = {
+		27CBFF1D2224F2EA00604C66 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2747C529204A5DB000FB5669 /* Project object */;
 			proxyType = 1;
@@ -62,8 +57,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2726A8612222741D003993B3 /* ZoneHelperTest2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneHelperTest2.m; sourceTree = "<group>"; };
-		2737D58C21715E9C00E0111F /* libSH_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		273BF4D322093A5000B0D11E /* CoreDataTests2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataTests2.m; sourceTree = "<group>"; };
 		2747C531204A5DB000FB5669 /* TestUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2747C534204A5DB000FB5669 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -75,9 +68,6 @@
 		2747C540204A5DB000FB5669 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2747C542204A5DB000FB5669 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2747C543204A5DB000FB5669 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		2747C566204A621800FB5669 /* SHGlobal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHGlobal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2747C56B204A62AE00FB5669 /* SHUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2747C56F204A62AE00FB5669 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2747C575204A62EA00FB5669 /* TestKeepProtocol_A.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKeepProtocol_A.h; sourceTree = "<group>"; };
 		2747C576204A62EA00FB5669 /* ProbilityWeightTestFourItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProbilityWeightTestFourItems.m; sourceTree = "<group>"; };
 		2747C577204A62EA00FB5669 /* TestKeepObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKeepObject.h; sourceTree = "<group>"; };
@@ -104,18 +94,41 @@
 		2747C591204A62EE00FB5669 /* TestKeepProtocol_B.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKeepProtocol_B.h; sourceTree = "<group>"; };
 		2747C592204A62EE00FB5669 /* TestKeepSubject_B.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKeepSubject_B.h; sourceTree = "<group>"; };
 		2747C593204A62EE00FB5669 /* CommonUtilitiesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtilitiesTest.m; sourceTree = "<group>"; };
-		2747C594204A62EE00FB5669 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2747C595204A62EE00FB5669 /* ProbilityWeightTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProbilityWeightTest.m; sourceTree = "<group>"; };
-		2747C5B1204A63DE00FB5669 /* SHCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2747C5B3204A63E300FB5669 /* SHData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2747C5B5204A63E900FB5669 /* SHModels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHModels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		274EFB88204F9C3100CB3C4C /* TestCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TestCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		275DDF2321FE9EDA00F77AEF /* CoreDataTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataTests.m; sourceTree = "<group>"; };
-		2781552721716B4F005C5279 /* libSH_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		27B0B1EC22239AAD0028AF59 /* SHTestsConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHTestsConfig.xcconfig; sourceTree = "<group>"; };
+		276E6D84222A428600CB36CB /* libSH_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		276E6D86222A428600CB36CB /* libSH_CTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_CTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		276E6D88222A428600CB36CB /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		276E6D8A222A428600CB36CB /* SHCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		276E6D8C222A428600CB36CB /* SHData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		276E6D8E222A428600CB36CB /* SHModels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHModels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		276E6D90222A428600CB36CB /* TestCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TestCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		276E6D9A222A54B300CB36CB /* libSH_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		276E6D9C222A54B300CB36CB /* libSH_CTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_CTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		276E6D9E222A54B300CB36CB /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		276E6DA0222A54B300CB36CB /* SHCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		276E6DA2222A54B300CB36CB /* SHData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		276E6DA4222A54B300CB36CB /* SHGlobal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHGlobal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		276E6DA6222A54B300CB36CB /* TestCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TestCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27B0B1EC22239AAD0028AF59 /* SHTests.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHTests.base.xcconfig; sourceTree = "<group>"; };
+		27C791F42226DD9000A92487 /* EmptyTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmptyTest.m; sourceTree = "<group>"; };
+		27C7922922277D3600A92487 /* libSH_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		27C7922B22277D3600A92487 /* libSH_CTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_CTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		27C7922D22277D3600A92487 /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		27C7922F22277D3600A92487 /* SHCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27C7923122277D3600A92487 /* SHData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27C7923322277D3600A92487 /* SHModels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHModels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27C7923522279BD300A92487 /* TestCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TestCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27C7923722279EF100A92487 /* SHGlobal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHGlobal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27C7923E2227A0C200A92487 /* SHTests.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHTests.debug.xcconfig; sourceTree = "<group>"; };
+		27C7923F2227B36000A92487 /* SHTests.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHTests.release.xcconfig; sourceTree = "<group>"; };
+		27C792402228363600A92487 /* TestUI.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TestUI.base.xcconfig; sourceTree = "<group>"; };
+		27C79241222836D800A92487 /* TestUI.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TestUI.debug.xcconfig; sourceTree = "<group>"; };
+		27C792422228A46600A92487 /* SHTestObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTestObserver.h; sourceTree = "<group>"; };
+		27C792432228A46600A92487 /* SHTestObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTestObserver.m; sourceTree = "<group>"; };
+		27CBFF182224F2EA00604C66 /* SHTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		27CBFF4C2224F56A00604C66 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27D0D6E621D0820200886721 /* TestsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestsTest.m; sourceTree = "<group>"; };
-		27D80A172086E89900FB4CE2 /* libSHDatetime.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSHDatetime.a; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/libSHDatetime.a"; sourceTree = "<group>"; };
-		27DF9C5120B4E83500F98023 /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,27 +136,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2737D58D21715E9C00E0111F /* libSH_C.a in Frameworks */,
-				274EFB87204F9C3100CB3C4C /* TestCommon.framework in Frameworks */,
-				2747C5B4204A63E900FB5669 /* SHModels.framework in Frameworks */,
-				2747C5B2204A63E300FB5669 /* SHData.framework in Frameworks */,
-				2747C5B0204A63DE00FB5669 /* SHCommon.framework in Frameworks */,
-				2747C565204A621800FB5669 /* SHGlobal.framework in Frameworks */,
-				27D80A182086E89900FB4CE2 /* libSHDatetime.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2747C568204A62AE00FB5669 /* Frameworks */ = {
+		27CBFF152224F2EA00604C66 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27101AB521D177AC00A3756E /* SHCommon.framework in Frameworks */,
-				27101AB621D177AF00A3756E /* SHGlobal.framework in Frameworks */,
-				27101AB321D177A600A3756E /* SHModels.framework in Frameworks */,
-				27101AB221D177A200A3756E /* TestCommon.framework in Frameworks */,
-				27101AB421D177A800A3756E /* SHData.framework in Frameworks */,
-				2781552821716B4F005C5279 /* libSH_C.a in Frameworks */,
-				27DF9C5020B4E83500F98023 /* libSHDatetime.a in Frameworks */,
+				276E6D9B222A54B300CB36CB /* libSH_C.a in Frameworks */,
+				276E6D9D222A54B300CB36CB /* libSH_CTools.a in Frameworks */,
+				276E6D9F222A54B300CB36CB /* libSHDatetime.a in Frameworks */,
+				276E6DA1222A54B300CB36CB /* SHCommon.framework in Frameworks */,
+				276E6DA3222A54B300CB36CB /* SHData.framework in Frameworks */,
+				276E6DA5222A54B300CB36CB /* SHGlobal.framework in Frameworks */,
+				276E6DA7222A54B300CB36CB /* TestCommon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,7 +159,8 @@
 		2747C528204A5DB000FB5669 = {
 			isa = PBXGroup;
 			children = (
-				27B0B1EC22239AAD0028AF59 /* SHTestsConfig.xcconfig */,
+				27C7923D2227A07500A92487 /* Configs */,
+				27CBFF4B2224F56A00604C66 /* SHTests */,
 				2747C533204A5DB000FB5669 /* TestUI */,
 				2747C56C204A62AE00FB5669 /* SHUnitTests */,
 				2747C532204A5DB000FB5669 /* Products */,
@@ -165,7 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				2747C531204A5DB000FB5669 /* TestUI.app */,
-				2747C56B204A62AE00FB5669 /* SHUnitTests.xctest */,
+				27CBFF182224F2EA00604C66 /* SHTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -189,15 +196,28 @@
 		2747C564204A621800FB5669 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2781552721716B4F005C5279 /* libSH_C.a */,
-				2737D58C21715E9C00E0111F /* libSH_C.a */,
-				27DF9C5120B4E83500F98023 /* libSHDatetime.a */,
-				27D80A172086E89900FB4CE2 /* libSHDatetime.a */,
-				274EFB88204F9C3100CB3C4C /* TestCommon.framework */,
-				2747C5B5204A63E900FB5669 /* SHModels.framework */,
-				2747C5B3204A63E300FB5669 /* SHData.framework */,
-				2747C5B1204A63DE00FB5669 /* SHCommon.framework */,
-				2747C566204A621800FB5669 /* SHGlobal.framework */,
+				276E6D9A222A54B300CB36CB /* libSH_C.a */,
+				276E6D9C222A54B300CB36CB /* libSH_CTools.a */,
+				276E6D9E222A54B300CB36CB /* libSHDatetime.a */,
+				276E6DA0222A54B300CB36CB /* SHCommon.framework */,
+				276E6DA2222A54B300CB36CB /* SHData.framework */,
+				276E6DA4222A54B300CB36CB /* SHGlobal.framework */,
+				276E6DA6222A54B300CB36CB /* TestCommon.framework */,
+				276E6D84222A428600CB36CB /* libSH_C.a */,
+				276E6D86222A428600CB36CB /* libSH_CTools.a */,
+				276E6D88222A428600CB36CB /* libSHDatetime.a */,
+				276E6D8A222A428600CB36CB /* SHCommon.framework */,
+				276E6D8C222A428600CB36CB /* SHData.framework */,
+				276E6D8E222A428600CB36CB /* SHModels.framework */,
+				276E6D90222A428600CB36CB /* TestCommon.framework */,
+				27C7923722279EF100A92487 /* SHGlobal.framework */,
+				27C7923522279BD300A92487 /* TestCommon.framework */,
+				27C7922922277D3600A92487 /* libSH_C.a */,
+				27C7922B22277D3600A92487 /* libSH_CTools.a */,
+				27C7922D22277D3600A92487 /* libSHDatetime.a */,
+				27C7922F22277D3600A92487 /* SHCommon.framework */,
+				27C7923122277D3600A92487 /* SHData.framework */,
+				27C7923322277D3600A92487 /* SHModels.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -211,7 +231,6 @@
 				2747C593204A62EE00FB5669 /* CommonUtilitiesTest.m */,
 				2747C588204A62EC00FB5669 /* DailyHelperTest.m */,
 				2747C590204A62ED00FB5669 /* DateHelperTest.m */,
-				2747C594204A62EE00FB5669 /* Info.plist */,
 				2747C584204A62EC00FB5669 /* MathTest.m */,
 				2747C580204A62EB00FB5669 /* ModelsTest.m */,
 				2747C583204A62EB00FB5669 /* MonsterHelperTest.m */,
@@ -224,10 +243,8 @@
 				2747C579204A62EA00FB5669 /* TestLocale.m */,
 				2747C57F204A62EB00FB5669 /* TestProbWeightsThreeItems.m */,
 				2747C587204A62EC00FB5669 /* ZoneHelperTest.m */,
-				2747C56F204A62AE00FB5669 /* Info.plist */,
 				275DDF2321FE9EDA00F77AEF /* CoreDataTests.m */,
 				273BF4D322093A5000B0D11E /* CoreDataTests2.m */,
-				2726A8612222741D003993B3 /* ZoneHelperTest2.m */,
 			);
 			path = SHUnitTests;
 			sourceTree = "<group>";
@@ -235,6 +252,8 @@
 		2747C5B6204A646000FB5669 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				27C792422228A46600A92487 /* SHTestObserver.h */,
+				27C792432228A46600A92487 /* SHTestObserver.m */,
 				2747C577204A62EA00FB5669 /* TestKeepObject.h */,
 				2747C57E204A62EB00FB5669 /* TestKeepObject.m */,
 				2747C58D204A62ED00FB5669 /* TestKeepObjectAlt.h */,
@@ -250,6 +269,27 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		27C7923D2227A07500A92487 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				27B0B1EC22239AAD0028AF59 /* SHTests.base.xcconfig */,
+				27C7923E2227A0C200A92487 /* SHTests.debug.xcconfig */,
+				27C7923F2227B36000A92487 /* SHTests.release.xcconfig */,
+				27C792402228363600A92487 /* TestUI.base.xcconfig */,
+				27C79241222836D800A92487 /* TestUI.debug.xcconfig */,
+			);
+			path = Configs;
+			sourceTree = "<group>";
+		};
+		27CBFF4B2224F56A00604C66 /* SHTests */ = {
+			isa = PBXGroup;
+			children = (
+				27C791F42226DD9000A92487 /* EmptyTest.m */,
+				27CBFF4C2224F56A00604C66 /* Info.plist */,
+			);
+			path = SHTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -260,7 +300,6 @@
 				2747C52D204A5DB000FB5669 /* Sources */,
 				2747C52E204A5DB000FB5669 /* Frameworks */,
 				2747C52F204A5DB000FB5669 /* Resources */,
-				27DF9C452094EBEA00F98023 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -271,23 +310,23 @@
 			productReference = 2747C531204A5DB000FB5669 /* TestUI.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2747C56A204A62AE00FB5669 /* SHUnitTests */ = {
+		27CBFF172224F2EA00604C66 /* SHTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2747C572204A62AE00FB5669 /* Build configuration list for PBXNativeTarget "SHUnitTests" */;
+			buildConfigurationList = 27CBFF1F2224F2EA00604C66 /* Build configuration list for PBXNativeTarget "SHTests" */;
 			buildPhases = (
-				2747C567204A62AE00FB5669 /* Sources */,
-				2747C568204A62AE00FB5669 /* Frameworks */,
-				2747C569204A62AE00FB5669 /* Resources */,
+				27CBFF142224F2EA00604C66 /* Sources */,
+				27CBFF152224F2EA00604C66 /* Frameworks */,
+				27CBFF162224F2EA00604C66 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				2747C571204A62AE00FB5669 /* PBXTargetDependency */,
+				27CBFF1E2224F2EA00604C66 /* PBXTargetDependency */,
 			);
-			name = SHUnitTests;
-			productName = SHUnitTests;
-			productReference = 2747C56B204A62AE00FB5669 /* SHUnitTests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
+			name = SHTests;
+			productName = SHTests;
+			productReference = 27CBFF182224F2EA00604C66 /* SHTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -302,8 +341,8 @@
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
-					2747C56A204A62AE00FB5669 = {
-						CreatedOnToolsVersion = 9.2;
+					27CBFF172224F2EA00604C66 = {
+						CreatedOnToolsVersion = 10.1;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2747C530204A5DB000FB5669;
 					};
@@ -322,8 +361,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2747C56A204A62AE00FB5669 /* SHUnitTests */,
 				2747C530204A5DB000FB5669 /* TestUI */,
+				27CBFF172224F2EA00604C66 /* SHTests */,
 			);
 		};
 /* End PBXProject section */
@@ -339,7 +378,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2747C569204A62AE00FB5669 /* Resources */ = {
+		27CBFF162224F2EA00604C66 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -348,22 +387,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		27DF9C452094EBEA00F98023 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "$SRCROOT/../Build_Scripts/TestUI.sh\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		2747C52D204A5DB000FB5669 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -371,46 +394,48 @@
 			files = (
 				2747C539204A5DB000FB5669 /* ViewController.m in Sources */,
 				2747C544204A5DB000FB5669 /* main.m in Sources */,
+				27C792442228A46600A92487 /* SHTestObserver.m in Sources */,
 				2747C536204A5DB000FB5669 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2747C567204A62AE00FB5669 /* Sources */ = {
+		27CBFF142224F2EA00604C66 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2747C59D204A62EF00FB5669 /* ARCTest.m in Sources */,
-				2747C5AC204A62EF00FB5669 /* CommonUtilitiesTest.m in Sources */,
-				2747C59A204A62EF00FB5669 /* TestKeepSubject_B.m in Sources */,
-				2747C5A3204A62EF00FB5669 /* TestKeepObjectAlt.m in Sources */,
-				2726A8622222741D003993B3 /* ZoneHelperTest2.m in Sources */,
-				275DDF2421FE9EDA00F77AEF /* CoreDataTests.m in Sources */,
-				2747C59B204A62EF00FB5669 /* TestLocale.m in Sources */,
-				2747C599204A62EF00FB5669 /* ProbilityWeightTestFourItems.m in Sources */,
-				2747C5A5204A62EF00FB5669 /* MathTest.m in Sources */,
-				2747C5AE204A62EF00FB5669 /* ProbilityWeightTest.m in Sources */,
-				2747C5A0204A62EF00FB5669 /* TestProbWeightsThreeItems.m in Sources */,
-				2747C5A2204A62EF00FB5669 /* NSDate+testReplace.m in Sources */,
-				2747C59F204A62EF00FB5669 /* TestKeepObject.m in Sources */,
-				2747C5AB204A62EF00FB5669 /* DateHelperTest.m in Sources */,
-				2747C5A7204A62EF00FB5669 /* DailyHelperTest.m in Sources */,
-				273BF4D422093A5000B0D11E /* CoreDataTests2.m in Sources */,
-				2747C5A4204A62EF00FB5669 /* MonsterHelperTest.m in Sources */,
-				27D0D6E721D0820200886721 /* TestsTest.m in Sources */,
-				2747C5A9204A62EF00FB5669 /* TestKeepSubject_A.m in Sources */,
-				2747C5A1204A62EF00FB5669 /* ModelsTest.m in Sources */,
-				2747C5A6204A62EF00FB5669 /* ZoneHelperTest.m in Sources */,
-				2747C5A8204A62EF00FB5669 /* SHControlKeepTest.m in Sources */,
+				276E6DA8222A54E300CB36CB /* SHTestObserver.m in Sources */,
+				276E6DA9222A54E300CB36CB /* TestKeepObject.m in Sources */,
+				276E6DAA222A54E300CB36CB /* TestKeepObjectAlt.m in Sources */,
+				276E6DAB222A54E400CB36CB /* TestKeepSubject_A.m in Sources */,
+				276E6DAC222A54E400CB36CB /* TestKeepSubject_B.m in Sources */,
+				276E6DAD222A54E400CB36CB /* ARCTest.m in Sources */,
+				276E6DAE222A54E400CB36CB /* CommonUtilitiesTest.m in Sources */,
+				276E6DAF222A54E400CB36CB /* DailyHelperTest.m in Sources */,
+				276E6DB0222A54E400CB36CB /* DateHelperTest.m in Sources */,
+				276E6DB1222A54E400CB36CB /* MathTest.m in Sources */,
+				276E6DB2222A54E400CB36CB /* ModelsTest.m in Sources */,
+				276E6DB3222A54E400CB36CB /* MonsterHelperTest.m in Sources */,
+				276E6DB4222A54E400CB36CB /* NSDate+testReplace.m in Sources */,
+				276E6DB5222A54E400CB36CB /* ProbilityWeightTest.m in Sources */,
+				276E6DB6222A54E400CB36CB /* ProbilityWeightTestFourItems.m in Sources */,
+				276E6DB7222A54E400CB36CB /* SHControlKeepTest.m in Sources */,
+				276E6DB8222A54E400CB36CB /* TestsTest.m in Sources */,
+				276E6DB9222A54E400CB36CB /* TestLocale.m in Sources */,
+				276E6DBA222A54E400CB36CB /* TestProbWeightsThreeItems.m in Sources */,
+				276E6DBB222A54E400CB36CB /* ZoneHelperTest.m in Sources */,
+				276E6DBC222A54E400CB36CB /* CoreDataTests.m in Sources */,
+				276E6DBD222A54E400CB36CB /* CoreDataTests2.m in Sources */,
+				27C791F52226DD9000A92487 /* EmptyTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2747C571204A62AE00FB5669 /* PBXTargetDependency */ = {
+		27CBFF1E2224F2EA00604C66 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2747C530204A5DB000FB5669 /* TestUI */;
-			targetProxy = 2747C570204A62AE00FB5669 /* PBXContainerItemProxy */;
+			targetProxy = 27CBFF1D2224F2EA00604C66 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -436,9 +461,7 @@
 /* Begin XCBuildConfiguration section */
 		2747C545204A5DB000FB5669 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27B0B1EC22239AAD0028AF59 /* SHTestsConfig.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -472,10 +495,6 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks/**",
-					"$BUILT_PRODUCTS_DIR/**",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -490,11 +509,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$BUILT_PRODUCTS_DIR/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_CFLAGS = "";
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -502,7 +519,6 @@
 		2747C546204A5DB000FB5669 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -536,10 +552,6 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks/**",
-					"$BUILT_PRODUCTS_DIR/**",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -548,10 +560,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$BUILT_PRODUCTS_DIR/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_CFLAGS = "";
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -559,67 +570,75 @@
 		};
 		2747C548204A5DB000FB5669 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27B0B1EC22239AAD0028AF59 /* SHTestsConfig.xcconfig */;
+			baseConfigurationReference = 27C79241222836D800A92487 /* TestUI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XK3RJ8E2L2;
 				INFOPLIST_FILE = TestUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.TestUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		2747C549204A5DB000FB5669 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27B0B1EC22239AAD0028AF59 /* SHTestsConfig.xcconfig */;
+			baseConfigurationReference = 27C7923F2227B36000A92487 /* SHTests.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XK3RJ8E2L2;
 				INFOPLIST_FILE = TestUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.TestUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		2747C573204A62AE00FB5669 /* Debug */ = {
+		27CBFF202224F2EA00604C66 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27B0B1EC22239AAD0028AF59 /* SHTestsConfig.xcconfig */;
+			baseConfigurationReference = 27C7923E2227A0C200A92487 /* SHTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XK3RJ8E2L2;
-				INFOPLIST_FILE = SHUnitTests/Info.plist;
-				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
+				INFOPLIST_FILE = SHTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.SHUnitTests;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.SHTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = TestUI;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestUI.app/TestUI";
 			};
 			name = Debug;
 		};
-		2747C574204A62AE00FB5669 /* Release */ = {
+		27CBFF212224F2EA00604C66 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27B0B1EC22239AAD0028AF59 /* SHTestsConfig.xcconfig */;
+			baseConfigurationReference = 27C79241222836D800A92487 /* TestUI.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XK3RJ8E2L2;
-				INFOPLIST_FILE = SHUnitTests/Info.plist;
-				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
+				INFOPLIST_FILE = SHTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.SHUnitTests;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.SHTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = TestUI;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestUI.app/TestUI";
 			};
 			name = Release;
 		};
@@ -644,11 +663,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2747C572204A62AE00FB5669 /* Build configuration list for PBXNativeTarget "SHUnitTests" */ = {
+		27CBFF1F2224F2EA00604C66 /* Build configuration list for PBXNativeTarget "SHTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2747C573204A62AE00FB5669 /* Debug */,
-				2747C574204A62AE00FB5669 /* Release */,
+				27CBFF202224F2EA00604C66 /* Debug */,
+				27CBFF212224F2EA00604C66 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

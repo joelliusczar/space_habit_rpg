@@ -1,0 +1,16 @@
+//
+//  MacOSArchs.xcconfig
+//  
+//
+//  Created by Joel Pridgen on 3/2/19.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+//:configuration = Debug
+SUPPORTED_PLATFORMS = iphonesimulator iphoneos macosx
+
+VALID_ARCHS[sdk=macosx*] = x86_64
+
+ARCHS[sdk=macosx*] = $(VALID_ARCHS)
+

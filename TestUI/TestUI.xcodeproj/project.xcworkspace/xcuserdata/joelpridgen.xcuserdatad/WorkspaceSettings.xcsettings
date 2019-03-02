@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildLocationStyle</key>
-	<string>CustomLocation</string>
+	<string>UseAppPreferences</string>
 	<key>CustomBuildIntermediatesPath</key>
 	<string>../../spacehabitrpg_output/Build/Intermediates.noindex</string>
 	<key>CustomBuildLocationType</key>
@@ -17,7 +17,7 @@
 	<key>EnabledFullIndexStoreVisibility</key>
 	<false/>
 	<key>IssueFilterStyle</key>
-	<string>ShowActiveSchemeOnly</string>
+	<string>ShowAll</string>
 	<key>LiveSourceIssuesEnabled</key>
 	<true/>
 </dict>

@@ -30,7 +30,8 @@
 		2737D581216DA8BB00E0111F /* dt_server_run.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = dt_server_run.sh; sourceTree = "<group>"; };
 		2737D582216DA8BB00E0111F /* dt_server_cleanup.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = dt_server_cleanup.sh; sourceTree = "<group>"; };
 		2737D583216DA8BB00E0111F /* dt_server.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = dt_server.sh; sourceTree = "<group>"; };
-		27B0B1EE2223A4300028AF59 /* SHDatetimeConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHDatetimeConfig.xcconfig; sourceTree = "<group>"; };
+		278FFDA0222B2E4C00DAF985 /* SHDatetime.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHDatetime.debug.xcconfig; sourceTree = "<group>"; };
+		27B0B1EE2223A4300028AF59 /* SHDatetime.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHDatetime.base.xcconfig; sourceTree = "<group>"; };
 		27BB29002151D4B1003225BB /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		27BB2908215738BE003225BB /* vars.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = vars.mk; sourceTree = "<group>"; };
 		27BB290D2157D8E2003225BB /* cl_dt_all.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = cl_dt_all.py; sourceTree = "<group>"; };
@@ -88,6 +89,15 @@
 			path = dt_server;
 			sourceTree = "<group>";
 		};
+		276E6D94222A473900CB36CB /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				27B0B1EE2223A4300028AF59 /* SHDatetime.base.xcconfig */,
+				278FFDA0222B2E4C00DAF985 /* SHDatetime.debug.xcconfig */,
+			);
+			path = Configs;
+			sourceTree = "<group>";
+		};
 		27BB28FF2151D453003225BB /* Copy */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,7 +149,7 @@
 		27D318342086C8CA0047F5F1 = {
 			isa = PBXGroup;
 			children = (
-				27B0B1EE2223A4300028AF59 /* SHDatetimeConfig.xcconfig */,
+				276E6D94222A473900CB36CB /* Configs */,
 				2737D57F216DA8BB00E0111F /* dt_server */,
 				27BB28FF2151D453003225BB /* Copy */,
 				27D318442086C9040047F5F1 /* Code */,
@@ -283,9 +293,8 @@
 /* Begin XCBuildConfiguration section */
 		27D3183F2086C8CA0047F5F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 278FFDA0222B2E4C00DAF985 /* SHDatetime.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				"ARCHS[sdk=macosx*]" = "$(VALID_ARCHS)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -337,15 +346,13 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
-				"VALID_ARCHS[sdk=macosx*]" = x86_64;
 			};
 			name = Debug;
 		};
 		27D318402086C8CA0047F5F1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27B0B1EE2223A4300028AF59 /* SHDatetime.base.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -390,19 +397,16 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 			};
 			name = Release;
 		};
 		27D318422086C8CA0047F5F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27B0B1EE2223A4300028AF59 /* SHDatetimeConfig.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = XK3RJ8E2L2;
 				EXECUTABLE_PREFIX = lib;
-				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				GCC_WARN_SHADOW = YES;
 				OTHER_CFLAGS = (
@@ -410,19 +414,16 @@
 					"-Wextra",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = $BUILT_PRODUCTS_DIR/usr/local/include/;
 			};
 			name = Debug;
 		};
 		27D318432086C8CA0047F5F1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27B0B1EE2223A4300028AF59 /* SHDatetimeConfig.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = XK3RJ8E2L2;
 				EXECUTABLE_PREFIX = lib;
-				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				GCC_WARN_SHADOW = YES;
 				OTHER_CFLAGS = (
@@ -430,7 +431,6 @@
 					"-Wextra",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = $BUILT_PRODUCTS_DIR/usr/local/include/;
 			};
 			name = Release;
 		};

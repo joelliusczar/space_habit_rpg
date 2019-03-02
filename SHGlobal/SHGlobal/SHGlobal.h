@@ -21,4 +21,5 @@ FOUNDATION_EXPORT const unsigned char SHGlobalVersionString[];
 #import "Constants.h"
 #import "FlexibleConstants.h"
 #import "CommonTypeDefs.h"
+#import "Dummy.h"
 

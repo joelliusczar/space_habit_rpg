@@ -11,7 +11,7 @@
 @import SHModels;
 
 #import <SHGlobal/FlexibleConstants.h>
-#import "Daily_C.h"
+#import <Daily_C.h>
 @import TestCommon;
 
 @interface DailyHelperTest : FrequentCase

@@ -87,7 +87,6 @@ void cMakeHouses(void);
 +(void)uintSubtract;
 +(void)threeGenStuff;
 +(void)classAsKey;
-+(void)replaceCFuncs;
 +(void)replaceStrat2;
 +(void)tryHacked;
 +(void)timeZoneStuff;

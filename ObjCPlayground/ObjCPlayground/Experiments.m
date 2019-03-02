@@ -30,7 +30,6 @@
 #import "Pool.h"
 #import "Lake.h"
 #import "Ocean.h"
-#import <Playground/Coverride.h>
 #import "PureCBaby.h"
 #import "House+Hacked.h"
 #import <SHData/CoreDataStackController.h>
@@ -632,13 +631,6 @@ NSString *convertCharToBin(unsigned char input){
     //dict[House.class] = @"The House";
 }
 
-+(void)replaceCFuncs{
-    Coverride *c = [[Coverride alloc] init];
-    [c callsItAll];
-    outsideNC();
-    insideNC();
-    insideFunc();
-}
 
 +(void)replaceStrat2{
     Hijack();

@@ -1,0 +1,15 @@
+//
+//  TestUI.base.xcconfig
+//  TestUI
+//
+//  Created by Joel Pridgen on 2/28/19.
+//  Copyright © 2019 Joel Gillette. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+
+FRAMEWORK_SEARCH_PATHS = $PLATFORM_DIR/Developer/Library/Frameworks/ $(BUILT_PRODUCTS_DIR)/**
+
+HEADER_SEARCH_PATHS = $(BUILT_PRODUCTS_DIR)/**
