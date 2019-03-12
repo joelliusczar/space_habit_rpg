@@ -17,10 +17,10 @@ FOUNDATION_EXPORT const unsigned char TestCommonVersionString[];
 
 #endif
 
-#import "FrequentCase.h"
-#import "TestHelpers.h"
-#import "TestGlobals.h"
 
 // In this header, you should import all the public headers of your framework using statements like #import <TestCommon/PublicHeader.h>
 
-
+#import "FrequentCase.h"
+#import "TestHelpers.h"
+#import "TestGlobals.h"
+#import "TestDummy.h"

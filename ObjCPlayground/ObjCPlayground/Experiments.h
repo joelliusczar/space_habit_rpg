@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <TestCommon/DumbCoreDataController.h>
 #import "Protocus.h"
 #import "UserOfProtocus.h"
 #import "PossibleInvocationCockblock.h"
@@ -16,6 +17,12 @@
 #import "C_Exp.h"
 #import "WeakHolder.h"
 #import "RefO.h"
+#import "PtrHolder.h"
+#import "FromCFunc.h"
+#import "ArcLessObj.h"
+
+typedef WeakHolder Varholder;
+
 
 typedef id (^mbTest)(void);
 
@@ -97,6 +104,9 @@ void cMakeHouses(void);
 +(void)memSetErase;
 +(void)memSizeStuff;
 +(void)endianess;
++(void)autoreleaseJump;
++(void)passThruARP;
++(void)clsFromCFunc;
 @end
 
 #import "Experiments+Charlie.h"

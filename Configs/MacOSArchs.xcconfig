@@ -14,3 +14,7 @@ VALID_ARCHS[sdk=macosx*] = x86_64
 
 ARCHS[sdk=macosx*] = $(VALID_ARCHS)
 
+MACOSX_DEPLOYMENT_TARGET = 10.14
+
+CODE_SIGN_IDENTITY[sdk=macosx*] = Mac Developer
+

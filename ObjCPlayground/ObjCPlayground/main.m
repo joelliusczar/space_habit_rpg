@@ -16,11 +16,12 @@
 #import "NoArcExp.h"
 
 int main(int argc, const char * argv[]) {
-    @autoreleasepool {
-        //Experiments *exp = [[Experiments alloc] init];
-        //[exp playWithCharlie];
-        [Experiments testWeakArray];
-        //[NoArcExp objectToCharPtr];
-    }
-    return 0;
+  (void)argc;
+  (void)argv;
+  @autoreleasepool {
+      [Experiments shdataStuff];
+      //[NoArcExp allocStruct];
+  }
+  
+  return 0;
 }

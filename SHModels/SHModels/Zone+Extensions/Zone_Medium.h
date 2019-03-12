@@ -26,7 +26,7 @@ withInfoDict:(ZoneInfoDictionary*)zoneInfo;
 -(NSArray<NSString*>*)getSymbolsList;
 -(NSString*)getRandomZoneDefinitionKey:(NSUInteger)heroLvl;
 -(NSString*)getSymbolSuffix:(NSUInteger)visitCount;
--(Zone*)constructEmptyZone;
+-(Zone*)constructEmptyZone NS_RETURNS_RETAINED;
 -(Zone*)constructRandomZoneChoiceGivenHero:(Hero*)hero ifShouldMatchLvl:(BOOL)shouldMatchLvl;
 -(Zone*)constructSpecificZone2:(NSString*) zoneKey withLvl:(int32_t) lvl;
 

@@ -33,50 +33,58 @@
     [super setUp];
     self.keep = [[SHControlKeep alloc] init];
     self.blockA = ^id(SHControlKeep *meep,ControlExtent *ext){
-        TestKeepSubject_A *subA = [[TestKeepSubject_A alloc] init];
-        subA.changer = 0;
-        [meep forResponderKey:@"A" doSetupAction:^(id responder){
-            subA.delegateA = responder;
-        }];
-        [meep forResponderKey:@"B" doSetupAction:^(id responder){
-            subA.delegateB = responder;
-        }];
-        [meep forResponderKey:@"C" doSetupAction:^(id responder){
-            subA.delegateC = responder;
-        }];
-        return subA;
+      (void)ext;
+      TestKeepSubject_A *subA = [[TestKeepSubject_A alloc] init];
+      subA.changer = 0;
+      [meep forResponderKey:@"A" doSetupAction:^(id responder){
+          subA.delegateA = responder;
+      }];
+      [meep forResponderKey:@"B" doSetupAction:^(id responder){
+          subA.delegateB = responder;
+      }];
+      [meep forResponderKey:@"C" doSetupAction:^(id responder){
+          subA.delegateC = responder;
+      }];
+      return subA;
     };
     self.blockA2 = ^id(SHControlKeep *meep,ControlExtent *ext){
-        TestKeepSubject_A *subA = [[TestKeepSubject_A alloc] init];
-        subA.changer = 2;
-        [meep forResponderKey:@"A" doSetupAction:^(id responder){
-            subA.delegateA = responder;
-        }];
-        [meep forResponderKey:@"B" doSetupAction:^(id responder){
-            subA.delegateB = responder;
-        }];
-        [meep forResponderKey:@"C" doSetupAction:^(id responder){
-            subA.delegateC = responder;
-        }];
-        return subA;
+      (void)ext;
+      TestKeepSubject_A *subA = [[TestKeepSubject_A alloc] init];
+      subA.changer = 2;
+      [meep forResponderKey:@"A" doSetupAction:^(id responder){
+          subA.delegateA = responder;
+      }];
+      [meep forResponderKey:@"B" doSetupAction:^(id responder){
+          subA.delegateB = responder;
+      }];
+      [meep forResponderKey:@"C" doSetupAction:^(id responder){
+          subA.delegateC = responder;
+      }];
+      return subA;
     };
     self.nilBlock = ^id(SHControlKeep *meep,ControlExtent *ext){
-        return nil;
+      (void)meep;
+      (void)ext;
+      return nil;
     };
     self.blockB = ^id(SHControlKeep *meep,ControlExtent *ext){
-        TestKeepSubject_B *subB = [[TestKeepSubject_B alloc] init];
-        [meep forResponderKey:@"A" doSetupAction:^(id responder){
-            subB.delegateA2 = responder;
-        }];
-        [meep forResponderKey:@"B" doSetupAction:^(id responder){
-            subB.delegateB2 = responder;
-        }];
-        return subB;
+      (void)meep;
+      (void)ext;
+      TestKeepSubject_B *subB = [[TestKeepSubject_B alloc] init];
+      [meep forResponderKey:@"A" doSetupAction:^(id responder){
+          subB.delegateA2 = responder;
+      }];
+      [meep forResponderKey:@"B" doSetupAction:^(id responder){
+          subB.delegateB2 = responder;
+      }];
+      return subB;
     };
     self.blockKey = ^id(SHControlKeep *meep,ControlExtent *ext){
-        TestKeepSubject_A *subA = [[TestKeepSubject_A alloc] init];
-        ext.key = @"subA";
-        return subA;
+      (void)meep;
+      (void)ext;
+      TestKeepSubject_A *subA = [[TestKeepSubject_A alloc] init];
+      ext.key = @"subA";
+      return subA;
     };
     
 }
@@ -99,13 +107,14 @@ NSHashTable* getSet(SHControlKeep *keep,NSString *key){
 
 LazyLoadBlock getNumberedBlock(int num){
     return ^id(SHControlKeep *meep,ControlExtent *ext){
-        TestKeepSubject_A *subA = [[TestKeepSubject_A alloc] init];
-        subA.changer = num;
-        
-        [meep forResponderKey:@"A" doSetupAction:^(id responder){
-            subA.delegateA = responder;
-        }];
-        return subA;
+      (void)ext;
+      TestKeepSubject_A *subA = [[TestKeepSubject_A alloc] init];
+      subA.changer = num;
+      
+      [meep forResponderKey:@"A" doSetupAction:^(id responder){
+          subA.delegateA = responder;
+      }];
+      return subA;
     };
 }
 
@@ -240,7 +249,7 @@ LazyLoadBlock getNumberedBlock(int num){
     NSHashTable *set = getSet(self.keep,@":setDelegateA:");
 
     XCTAssertEqual(set.allObjects.count,0);
-    for(int i = 0; i < set.allObjects.count;i++){
+    for(NSUInteger i = 0; i < set.allObjects.count;i++){
         TestKeepSubject_A *subA = set.allObjects[i];
         NSLog(@"%ld",subA.changer);
     }

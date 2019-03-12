@@ -214,7 +214,7 @@ bool nextDueDate_WEEKLY_INV(SHDatetime* lastDueDate,SHDatetime* checkinDate, Rat
   (void)scaler;
   (void)ans;
   (void)error;
-  //TODO: fill out this function
+  #warning TODO: fill out this function
   return true;
 }
 

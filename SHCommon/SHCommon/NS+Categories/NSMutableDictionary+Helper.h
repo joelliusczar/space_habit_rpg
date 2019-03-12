@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 
 
-@interface NSMutableDictionary (Helper)
--(id)getWithKey:(id)key OrCreateFromBlock:(id (^)(void))creator;
+@interface NSMutableDictionary<KeyType,ValType> (Helper)
+-(ValType)getWithKey:(KeyType)key OrCreateFromBlock:(id (^)(void))creator;
+-(ValType)getWithKey:(KeyType)key OrCreateFromBlock:(id (^)(id))creator withObj:(id)obj;
 +(NSString *)dictToString:(NSDictionary *)dict;
 +(NSMutableDictionary *)jsonStringToDict:(NSString *)jsonStr;
 @end

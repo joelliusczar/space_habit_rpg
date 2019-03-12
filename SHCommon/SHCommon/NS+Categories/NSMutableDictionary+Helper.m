@@ -21,6 +21,16 @@
     return value;
 }
 
+-(id)getWithKey:(id)key OrCreateFromBlock:(id (^)(id))creator withObj:(id)obj{
+  id value=self[key];
+  if(value){
+      return value;
+  }
+  value=creator(obj);
+  self[key]=value;
+  return value;
+}
+
 +(NSString *_Nonnull)dictToString:(NSDictionary *_Nonnull)dict{
     NSError *err = nil;
     NSData *jsonData = [NSJSONSerialization

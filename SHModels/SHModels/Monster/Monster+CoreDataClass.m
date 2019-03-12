@@ -51,7 +51,8 @@ float MAX_HP_MODIFIER = .1;
     return [self.monInfoDict getBaseAttack:self.monsterKey] + self.lvl;
 }
 
--(int32_t)defense{//TODO: figure out a better way to handle this
+#warning TODO: figure out a better way to handle this
+-(int32_t)defense{
     return [self.monInfoDict getBaseDefense:self.monsterKey];
 }
 

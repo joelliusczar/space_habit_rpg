@@ -14,5 +14,5 @@
 
 @interface SingletonCluster (Data)
 @property (nonatomic) NSString *dbFileName;
-@property (nonatomic) NSObject<P_CoreData> *dataController;
+@property (strong,nonatomic) NSObject<P_CoreData> *dataController;
 @end

@@ -36,7 +36,7 @@
 
 +(void)hackTheHouse{
     Method ogMethod = class_getClassMethod(House.class,@selector(alloc));
-    
+    (void)ogMethod;
 }
 
 

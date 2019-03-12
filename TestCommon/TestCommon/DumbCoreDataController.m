@@ -6,12 +6,12 @@
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
-#import "CoreDataStackController.h"
+#import "DumbCoreDataController.h"
 #import <SHCommon/SingletonCluster.h>
 
 @import CoreData;
 
-@interface CoreDataStackController()
+@interface DumbCoreDataController()
 @property (strong,nonatomic) SHContext *writeContext;
 @property (strong,nonatomic) SHContext *readContext;
 @property (strong,nonatomic) SHContext *inUseContext;
@@ -26,7 +26,7 @@ inContext:(SHContext *)context;
 
 NSString* const DEFAULT_DB_NAME = @"Model.sqlite";
 
-@implementation CoreDataStackController
+@implementation DumbCoreDataController
 
 @synthesize inUseContext = _inUseContext;
 
@@ -111,14 +111,14 @@ NSString* const DEFAULT_DB_NAME = @"Model.sqlite";
 }
 
 
-CoreDataStackController* setUpSelf() NS_RETURNS_RETAINED{
-  CoreDataStackController *instance =
-    [[CoreDataStackController alloc] init];
+DumbCoreDataController* setUpSelf() NS_RETURNS_RETAINED{
+  DumbCoreDataController *instance =
+    [[DumbCoreDataController alloc] init];
   return instance;
 }
 
-CoreDataStackController* setUpSelfWithBundle(NSBundle *bundle) NS_RETURNS_RETAINED{
-  CoreDataStackController *instance = setUpSelf();
+DumbCoreDataController* setUpSelfWithBundle(NSBundle *bundle) NS_RETURNS_RETAINED{
+  DumbCoreDataController *instance = setUpSelf();
   //The reason why I set appBundle using the
   //member ptr syntax is because the property is readonly
   instance->_appBundle = bundle;
@@ -126,27 +126,27 @@ CoreDataStackController* setUpSelfWithBundle(NSBundle *bundle) NS_RETURNS_RETAIN
 }
 
 +(instancetype)new{
-    CoreDataStackController *instance = setUpSelf();
+    DumbCoreDataController *instance = setUpSelf();
     return instance;
 }
 
 
 +(instancetype)newWithBundle:(NSBundle *)bundle{
-  CoreDataStackController *instance = setUpSelfWithBundle(bundle);
+  DumbCoreDataController *instance = setUpSelfWithBundle(bundle);
   [instance initializeCoreData];
   return instance;
 }
 
 
 +(instancetype)newWithBundle:(NSBundle *)bundle dBFileName:(NSString *)dbFileName{
-  CoreDataStackController *instance = setUpSelfWithBundle(bundle);
+  DumbCoreDataController *instance = setUpSelfWithBundle(bundle);
   instance->_dbFileName = dbFileName;
   [instance initializeCoreData];
   return instance;
 }
 
 +(instancetype)newWithBundle:(NSBundle *)bundle storeType:(NSString *)storeType{
-  CoreDataStackController *instance = setUpSelfWithBundle(bundle);
+  DumbCoreDataController *instance = setUpSelfWithBundle(bundle);
   instance->_storeType = storeType;
   [instance initializeCoreData];
   return instance;

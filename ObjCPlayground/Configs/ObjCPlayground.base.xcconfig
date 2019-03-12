@@ -14,3 +14,8 @@
 FRAMEWORK_SEARCH_PATHS = $PLATFORM_DIR/Developer/Library/Frameworks/ $(BUILT_PRODUCTS_DIR)/**
 
 HEADER_SEARCH_PATHS = $(BUILT_PRODUCTS_DIR)/**
+
+LD_RUNPATH_SEARCH_PATHS = $(inherited) @executable_path/Frameworks @loader_path/Frameworks $PLATFORM_DIR/Developer/Library/Frameworks/
+
+//DYLIB_INSTALL_NAME_BASE = @rpath
+

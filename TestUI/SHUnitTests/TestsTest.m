@@ -147,5 +147,25 @@
   XCTAssertNil(o2);
 }
 
+NSObject* getObj(){
+  return [NSObject new];
+}
+
+NSString* getStr(){
+  return @"This is a test";
+}
+
+-(void)testObjFromCFunc{
+  NSObject* obj = getObj();
+  NSObject* __weak wob = obj;
+  obj = nil;
+  XCTAssertNotNil(wob);
+  
+  NSString* str = getStr();
+  NSString* __weak wstr = str;
+  str = nil;
+  XCTAssertNotNil(wstr);
+}
+
 
 @end

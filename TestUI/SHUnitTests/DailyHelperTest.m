@@ -325,7 +325,7 @@ NSMutableArray<Daily *> *testDailies = nil;
     XCTAssertEqual(results[6][FORRANGE_KEY].integerValue,44);
     XCTAssertEqual(results[6][BACKRANGE_KEY].integerValue,3);
     
-    for(int i = 0;i<SHCONST.DAYS_IN_WEEK;i++){
+    for(NSUInteger i = 0;i<SHCONST.DAYS_IN_WEEK;i++){
         testSet[i] = YES;
     }
     results = [Daily buildWeek:testSet scaler:1];
@@ -438,16 +438,16 @@ NSMutableArray<Daily *> *testDailies = nil;
     XCTAssertEqual(results[6][BACKRANGE_KEY].integerValue,1);
 }
 
-//TODO: test hourly difference and think about the case where the user changes their start up time
+#warning TODO: test hourly difference and think about the case where the user changes their start up time
 //I don't think the scaler stuff comes into play yet
-//TODO: there's some test I want to do to test against going out of range past 'Base'
+#warning TODO: there's some test I want to do to test against going out of range past 'Base'
 -(void)testPreviousDate{
     int64_t btw;
     RateValueItem week[7];
     BOOL testSet[] = {0,1,0,1,0,0,0};//monday, wednesday
     int weekScaler = 3;
     buildWeek(testSet, weekScaler, week);
-    SHDatetime base = {2018,1,7,0,0,0,0};
+    SHDatetime base = newSHDatetime_datetime2(2018,1,7,0,0,0,0);
     SHDatetime lastDueDate;
     SHDatetime checkinDate;
     SHDatetime expectedDate;
@@ -803,7 +803,7 @@ NSMutableArray<Daily *> *testDailies = nil;
   BOOL testSet[] = {0,1,0,0,0,0,0};
   int weekScaler = 1;
   buildWeek(testSet, weekScaler, week);
-  SHDatetime base = {1978,1,1,0,0,0,0};
+  SHDatetime base = newSHDatetime_datetime2(1978,1,1,0,0,0,0);
   SHDatetime lastDueDate;
   SHDatetime checkinDate;
   SHDatetime expected;
@@ -836,7 +836,7 @@ NSMutableArray<Daily *> *testDailies = nil;
     BOOL testSet0[] = {0,1,0,1,0,0,0};
     int weekScaler = 3;
     buildWeek(testSet0, weekScaler, week);
-    SHDatetime base = {2018,1,7,0,0,0,0};
+    SHDatetime base = newDatetime_date(2018,1,7);
     SHDatetime lastDueDate;
     SHDatetime checkinDate;
     SHDatetime expected;

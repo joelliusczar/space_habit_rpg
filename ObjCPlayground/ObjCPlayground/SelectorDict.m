@@ -10,11 +10,13 @@
 
 @implementation SelectorDict
 -(id)objectForKeyedSubscript:(Class)key{
-    return self.it;
+  (void)key;
+  return self.it;
 }
 
 -(void)setObject:(id)obj forKeyedSubscript:(Class)key{
-    self.it = obj;
+  (void)key;
+  self.it = obj;
 }
 
 -(void)helloMethod{}

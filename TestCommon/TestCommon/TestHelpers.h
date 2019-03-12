@@ -21,7 +21,8 @@ typedef void (*msg_send)(id,SEL);
 +(void)forceRelease:(id)obj;
 
 +(void)setPrivateVar:(id)obj ivarName:(NSString *)ivarName
-newVal:(id)newVal;
+ newVal:(id)newVal;
 
 +(NSArray<NSString*>*)getMethodList:(id)obj;
++(NSArray<NSString*>*)getMethodListOfClass:(Class)cls;
 @end

@@ -38,10 +38,16 @@ newVal:(id)newVal{
 
 
 +(NSArray<NSString*>*)getMethodList:(id)obj{
+  return [TestHelpers getMethodListOfClass:[obj class]];
+}
+
+
++(NSArray<NSString*>*)getMethodListOfClass:(Class)cls{
+  if(nil == cls) return [NSArray array];
   uint32_t outCount = 0;
-  Method* m = class_copyMethodList([obj class],&outCount);
+  Method* m = class_copyMethodList(cls,&outCount);
   NSMutableArray* results = [NSMutableArray array];
-  for(int i = 0; i < outCount;i++){
+  for(uint32_t i = 0; i < outCount;i++){
      [results addObject: NSStringFromSelector(method_getName(*m))];
      m++;
   }

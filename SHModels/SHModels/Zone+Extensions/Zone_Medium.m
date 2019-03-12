@@ -168,8 +168,10 @@ withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount{
 
 
 -(Zone*)getZone:(BOOL)isFront{
-  NSPredicate *filter = [NSPredicate predicateWithFormat:@"isFront =%d",isFront?1:0];
-  NSArray<Zone*> *results = [self getAllZones:filter];
+  NSPredicate *filter = nil;
+  NSArray<Zone*> *results = nil;
+  filter = [NSPredicate predicateWithFormat:@"isFront =%d",isFront?1:0];
+  results = [self getAllZones:filter];
   if(results.count > 1){
     @throw [NSException exceptionWithName:@"CorruptionException"
       reason:@"There are too many zones" userInfo:nil];

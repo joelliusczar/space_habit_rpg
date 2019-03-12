@@ -33,9 +33,11 @@ static NSObject* dbMutex;
 
 -(NSObject<P_CoreData> *)dataController{
   @synchronized (dbMutex) {
-    return [self.bag getWithKey:@"dc" OrCreateFromBlock:^id(){
-        return [CoreDataStackController newWithBundle:self.bundle dBFileName:self.dbFileName];
-    }];
+    id ans = [self.bag getWithKey:@"dc" OrCreateFromBlock:^id(id obj){
+        SingletonCluster* sc = (SingletonCluster*)obj;
+        return [CoreDataStackController newWithBundle:sc.bundle dBFileName:sc.dbFileName];
+    } withObj:self];
+    return ans;
   }
 }
 

@@ -14,12 +14,14 @@
     NSLog(@"%@",@"Bravo!");
 }
 
--(void)observeValueForKeyPath:(NSString *)keyPath
-                     ofObject:(id)object
-                       change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
-    if([keyPath isEqualToString:@"stupidNum"]){
-        NSLog(@"%@",@"stupid num event");
-    }
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
+ change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
+  (void)object;
+  (void)change;
+  (void)context;
+  if([keyPath isEqualToString:@"stupidNum"]){
+      NSLog(@"%@",@"stupid num event");
+  }
 }
 
 

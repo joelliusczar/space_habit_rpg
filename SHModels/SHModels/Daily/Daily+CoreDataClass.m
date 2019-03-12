@@ -143,7 +143,7 @@ int checkImportanceRange(int importance){
     return nil;
 }
 
-//TODO: this day start may need to change
+#warning TODO: this day start may need to change
 -(int)daysUntilDue{
     NSDate *roundedDownToday = [[NSDate date]
                                     setHour:SHSettings.dayStart minute:0 second:0];

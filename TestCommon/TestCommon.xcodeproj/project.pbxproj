@@ -14,6 +14,10 @@
 		274EFB84204F9B7700CB3C4C /* FrequentCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB7F204F9B7700CB3C4C /* FrequentCase.m */; };
 		274EFB85204F9B7700CB3C4C /* TestGlobals.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB80204F9B7700CB3C4C /* TestGlobals.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		274EFB86204F9B7700CB3C4C /* TestHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB81204F9B7700CB3C4C /* TestHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27B7AF25223094D000FAA229 /* TestDummy.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B7AF23223094D000FAA229 /* TestDummy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27B7AF26223094D000FAA229 /* TestDummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B7AF24223094D000FAA229 /* TestDummy.m */; };
+		27B7AF2B2232061A00FAA229 /* DumbCoreDataController.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B7AF292232061A00FAA229 /* DumbCoreDataController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27B7AF2C2232061A00FAA229 /* DumbCoreDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B7AF2A2232061A00FAA229 /* DumbCoreDataController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		274EFB8C204FB27200CB3C4C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		278FFDA1222B2F2700DAF985 /* TestCommon.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TestCommon.debug.xcconfig; sourceTree = "<group>"; };
 		27B0B1F52223B9C70028AF59 /* TestCommon.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TestCommon.base.xcconfig; sourceTree = "<group>"; };
+		27B7AF23223094D000FAA229 /* TestDummy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestDummy.h; sourceTree = "<group>"; };
+		27B7AF24223094D000FAA229 /* TestDummy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestDummy.m; sourceTree = "<group>"; };
+		27B7AF292232061A00FAA229 /* DumbCoreDataController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DumbCoreDataController.h; sourceTree = "<group>"; };
+		27B7AF2A2232061A00FAA229 /* DumbCoreDataController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DumbCoreDataController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +80,10 @@
 				274EFB7D204F9B7600CB3C4C /* TestHelpers.m */,
 				274EFB75204F9AEA00CB3C4C /* TestCommon.h */,
 				274EFB76204F9AEA00CB3C4C /* Info.plist */,
+				27B7AF23223094D000FAA229 /* TestDummy.h */,
+				27B7AF24223094D000FAA229 /* TestDummy.m */,
+				27B7AF292232061A00FAA229 /* DumbCoreDataController.h */,
+				27B7AF2A2232061A00FAA229 /* DumbCoreDataController.m */,
 			);
 			path = TestCommon;
 			sourceTree = "<group>";
@@ -103,7 +115,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				274EFB83204F9B7700CB3C4C /* FrequentCase.h in Headers */,
+				27B7AF25223094D000FAA229 /* TestDummy.h in Headers */,
 				274EFB77204F9AEA00CB3C4C /* TestCommon.h in Headers */,
+				27B7AF2B2232061A00FAA229 /* DumbCoreDataController.h in Headers */,
 				274EFB86204F9B7700CB3C4C /* TestHelpers.h in Headers */,
 				274EFB85204F9B7700CB3C4C /* TestGlobals.h in Headers */,
 			);
@@ -194,7 +208,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27B7AF26223094D000FAA229 /* TestDummy.m in Sources */,
 				274EFB82204F9B7700CB3C4C /* TestHelpers.m in Sources */,
+				27B7AF2C2232061A00FAA229 /* DumbCoreDataController.m in Sources */,
 				274EFB84204F9B7700CB3C4C /* FrequentCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,7 +249,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -293,7 +308,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -319,7 +333,6 @@
 		274EFB7B204F9AEA00CB3C4C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = XK3RJ8E2L2;
@@ -331,7 +344,7 @@
 				INFOPLIST_FILE = TestCommon/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
+				MACH_O_TYPE = mh_dylib;
 				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.TestCommon;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -342,7 +355,6 @@
 		274EFB7C204F9AEA00CB3C4C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = XK3RJ8E2L2;
@@ -354,7 +366,7 @@
 				INFOPLIST_FILE = TestCommon/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
+				MACH_O_TYPE = mh_dylib;
 				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.TestCommon;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

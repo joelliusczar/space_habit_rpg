@@ -11,6 +11,8 @@
 #import <SHModels/SingletonCluster+Entity.h>
 #import "TestHelpers.h"
 #import "TestGlobals.h"
+#import "TestDummy.h"
+#import "DumbCoreDataController.h"
 
 
 @interface FrequentCase : XCTestCase

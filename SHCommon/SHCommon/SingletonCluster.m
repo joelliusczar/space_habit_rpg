@@ -94,6 +94,7 @@
     return _bundle;
 }
 
+
 -(instancetype)initClass{
     if(self = [super init]){}
     return self;

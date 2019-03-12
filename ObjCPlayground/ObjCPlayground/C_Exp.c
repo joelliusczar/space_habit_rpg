@@ -10,6 +10,7 @@
 
 void arrayExps(void){
     const char * const words[3] = {"Hello","Freak","Bitches"};
+  
     const char * words2[3] = {"Hello2","Freak2","Bitches2"};
     char * const words3[3] = {"Hello3","Freak3","Bitches3"};
     
@@ -18,6 +19,5 @@ void arrayExps(void){
     words3[2][0] = 'W';
     //words2[2][0] = 'W'; //read-only
     words2[2] = replace;
-    
-    
+    (void)words;
 }

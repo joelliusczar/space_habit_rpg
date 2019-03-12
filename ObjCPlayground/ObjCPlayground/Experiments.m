@@ -73,7 +73,7 @@ void r_inside(){
 
     unsigned int count;
     Ivar* ivars = class_copyIvarList(House.class,&count);
-    for(int i=0;i<count;i++){
+    for(uint i=0;i<count;i++){
 
         NSString * str = [NSString stringWithUTF8String:ivar_getName(ivars[i])];
         NSLog(@"%@",[h valueForKey:str]);
@@ -177,10 +177,12 @@ void r_inside(){
     d = !(a&b);
     d = a&c;
     d = !(a&c);
+    NSLog(@"%d",d);
     int e = 7;
     int f = 0;
     int g = !e;
     g = !f;
+    NSLog(@"%d",g);
 }
 
 
@@ -212,12 +214,14 @@ void r_inside(){
     House *h = arr[0];
     arr.hause = nil;
     h = arr[0];
+    NSLog(@"%@",h);
 }
 
 +(void)indexThatShit{
     Indexable *indexable = [[Indexable alloc]init];
     id result = indexable[5];
     result = indexable[@"Hello"];
+    NSLog(@"%@",result);
 }
 
 +(void)tryThatSubscriptAgain{
@@ -227,7 +231,7 @@ void r_inside(){
 }
 
 -(void)acceptsProtocolGuy:(id<PossibleInvocationCockblock>)pg{
-  
+  (void)pg;
 }
 
 +(void)invokesShit{
@@ -246,7 +250,11 @@ void r_inside(){
     [invoker invoke];
 }
 
--(void)acceptsArgs:(NSInteger)num andStr:(NSString *)str and:(NSArray *)array{}
+-(void)acceptsArgs:(NSInteger)num andStr:(NSString *)str and:(NSArray *)array{
+  (void)num;
+  (void)str;
+  (void)array;
+}
 
 
 +(void)methodSignatureShit{
@@ -458,6 +466,7 @@ void r_inside(){
     House *h2 = h.h;
     h2 = [[House alloc] init];
     NSLog(@"%@",h.h);
+    NSLog(@"%@",h2);
 }
 
 
@@ -740,21 +749,18 @@ NSString *convertCharToBin(unsigned char input){
 }
 
 
--(WeakHolder*)_shdataStuff{
+-(Varholder*)_shdataStuff{
   NSBundle *testBundle = [NSBundle bundleForClass:NSClassFromString(@"OnlyOneEntities")];
-  WeakHolder* wh = [WeakHolder new];
+  Varholder* wh = [Varholder new];
   CoreDataStackController* dc = nil;
-  @autoreleasepool {
-    dc = [CoreDataStackController newWithBundle:testBundle storeType:NSInMemoryStoreType];
-  }
+  dc = [CoreDataStackController newWithBundle:testBundle storeType:NSInMemoryStoreType];
   
   Zone_Medium* zoneMed = [Zone_Medium newWithDataController:dc
     withResourceUtil:[[ResourceUtility alloc] init] withInfoDict:[ZoneInfoDictionary new]];
   
   Zone *z = nil;
-  @autoreleasepool {
-    z = [zoneMed constructEmptyZone];
-  }
+
+  z = [zoneMed constructEmptyZone];
   
   z.isFront = YES;
   z.zoneKey = @"NEBULA";
@@ -771,12 +777,14 @@ NSString *convertCharToBin(unsigned char input){
   store = context.persistentStoreCoordinator;
   NSError* error = nil;
   [store destroyPersistentStoreAtURL:dc.storeURL withType:NSInMemoryStoreType options:nil error:&error];
+  [context2 reset];
   id refQue =[TestHelpers getPrivateValue:context2 ivarName:@"_referenceQueue"];
-  void* rlObv = [TestHelpers getPrivateValue:refQue ivarName:@"_rlObserver"];
+  //void* rlObv = [TestHelpers getPrivateValue:refQue ivarName:@"_rlObserver"];
   [TestHelpers setPrivateVar:refQue ivarName:@"_context" newVal:nil];
+  refQue = nil;
   (void)isDone;
   (void)z3;
-  (void)rlObv;
+  //(void)rlObv;
   House* negTst = [House new];
   wh.item1 = context;
   wh.item2 = context2;
@@ -784,24 +792,78 @@ NSString *convertCharToBin(unsigned char input){
   wh.item4 = dc;
   wh.item5 = z3;
   wh.item6 = z;
+  NSLog(@"bad context: %@",context2);
+  //void* bad = (__bridge void*)context2;
+  //CFRelease(bad);
   //objc_msgSend();
-  [TestHelpers forceRelease:context2];
+  //[TestHelpers forceRelease:context2];
   return wh;
 }
 
 
-+(void)shdataStuff{
-  WeakHolder* wh = nil;
+-(Varholder*)_stripedDownSavedStuff{
+  NSBundle *testBundle = [NSBundle bundleForClass:NSClassFromString(@"OnlyOneEntities")];
+  Varholder* wh = [Varholder new];
+  CoreDataStackController* dc = nil;
+  dc = [CoreDataStackController newWithBundle:testBundle storeType:NSInMemoryStoreType];
+  
+  Zone_Medium* zoneMed = [Zone_Medium newWithDataController:dc
+    withResourceUtil:[[ResourceUtility alloc] init] withInfoDict:[ZoneInfoDictionary new]];
+  
+  Zone *z = nil;
+
+  z = [zoneMed constructEmptyZone];
+  
+  z.isFront = YES;
+  z.zoneKey = @"NEBULA";
+  [dc insertIntoContext:z];
+  dispatch_semaphore_t sema1 = [dc saveNoWaiting];
+  BOOL isDone = waitForSema(sema1, 3);
+  Zone *z3 = [zoneMed getZone:YES];
+  //@autoreleasepool {
+//    SHContext* __weak context = nil;
+//    SHContext* __weak context2 = nil;
+//
+//    NSPersistentStoreCoordinator* __weak store = nil;
+//    context = (SHContext*)[TestHelpers getPrivateValue:dc ivarName:@"_writeContext"];
+//    context2 = (SHContext*)[TestHelpers getPrivateValue:dc ivarName:@"_readContext"];
+//    store = context.persistentStoreCoordinator;
+//    NSError* error = nil;
+//    [store destroyPersistentStoreAtURL:dc.storeURL withType:NSInMemoryStoreType options:nil error:&error];
+//    [context2 reset];
+//    id refQue =[TestHelpers getPrivateValue:context2 ivarName:@"_referenceQueue"];
+//    void* rlObv = [TestHelpers getPrivateValue:refQue ivarName:@"_rlObserver"];
+//    [TestHelpers setPrivateVar:refQue ivarName:@"_context" newVal:nil];
+  //}
+
+  (void)isDone;
+  (void)z3;
+  return wh;
+}
+
++(Varholder*)new_shDataStuffAutoRel{
+  Varholder* wh = nil;
   @autoreleasepool {
     Experiments* exp = [Experiments new];
+  
     wh = [exp _shdataStuff];
   }
-  NSLog(@"%@",wh.item1);
-  NSLog(@"%@",wh.item2);
-  NSLog(@"%@",wh.item3);
-  NSLog(@"%@",wh.item4);
-  NSLog(@"%@",wh.item5);
-  NSLog(@"%@",wh.item6);
+  return wh;
+}
+
++(void)shdataStuff{
+  Varholder* wh = nil;
+  for(int i = 0;i < 5;i++){
+    @autoreleasepool {
+      wh = [self new_shDataStuffAutoRel];
+      NSLog(@"%@",wh.item1);
+      NSLog(@"%@",wh.item2);
+      NSLog(@"%@",wh.item3);
+      NSLog(@"%@",wh.item4);
+      NSLog(@"%@",wh.item5);
+      NSLog(@"%@",wh.item6);
+    }
+  }
 }
 
 
@@ -836,6 +898,7 @@ NSString *convertCharToBin(unsigned char input){
   r.i16 = 32;
   r.mobj = [NSObject new];
   NSObject* __weak w = r.mobj;
+  (void)w;
 //  @autoreleasepool {
   memset((__bridge void*)r,0,malloc_size((__bridge const void*)r));
 //  }
@@ -849,6 +912,75 @@ NSString *convertCharToBin(unsigned char input){
   NSData *data = [NSData dataWithBytes:&a length:sizeof(int)];
   NSLog(@"Object contains %@", data);
 
+}
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunreachable-code"
++(void)autoreleaseJump{
+  NSObject* __weak obj = nil;
+  @autoreleasepool {
+    NSObject* realObj = [NSObject new];;
+    obj = realObj;
+    NSLog(@"Hey this is me obj %@",obj);
+    goto mlabel;
+    NSLog(@"Never prints1");
+    
+  }
+  NSLog(@"Never prints2");
+  mlabel:;
+  NSLog(@"Does print");
+  NSLog(@"obj: %@",obj);
+  NSLog(@"Next print");
+}
+#pragma GCC diagnostic pop
+
+
++(void)passThruARP{
+  NSObject* strob = [NSObject new];
+  NSObject* __weak wob = strob;
+  @autoreleasepool {
+    NSLog(@"The strong: %@",strob);
+  }
+  strob = nil;
+  NSLog(@"The weak: %@",wob);
+}
+
++(FromCFunc*)carveOutObj{
+  FromCFunc* obj = [[FromCFunc alloc] init];
+  return obj;
+}
+
+
+
++(void)clsFromCFunc{
+  FromCFunc* funky = [FromCFunc extraNew];
+  FromCFunc* notAsfunky = [FromCFunc new];
+  FromCFunc* loseDatFunk = [FromCFunc newExtraRelease];
+  FromCFunc* otherFunk = [FromCFunc otherNew];
+  FromCFunc* maybeFunky = [self carveOutObj];
+  FromCFunc* __weak weakFunky = funky;
+  FromCFunc* __weak weakNotAsFunky = notAsfunky;
+  FromCFunc* __weak weakLostFunk = loseDatFunk;
+  FromCFunc* __weak weakOther = otherFunk;
+  FromCFunc* __weak weakMaybe = maybeFunky;
+  NSLog(@"%@",weakFunky);
+  NSLog(@"%@",weakNotAsFunky);
+  NSLog(@"%@",weakLostFunk);
+  NSLog(@"%@",weakOther);
+  NSLog(@"%@",weakMaybe);
+  funky = nil;
+  notAsfunky = nil;
+  loseDatFunk = nil;
+  weakOther = nil;
+  weakMaybe = nil;
+  void* cf = (__bridge void*)weakFunky;
+  CFRelease(cf);
+  //CFRelease(cf);
+  NSLog(@"%@",weakFunky);
+  NSLog(@"%@",weakNotAsFunky);
+  NSLog(@"%@",weakLostFunk);
+  NSLog(@"%@",weakOther);
+  NSLog(@"%@",weakMaybe);
 }
 
 @end

@@ -21,6 +21,12 @@ BUILT_PRODUCTS_DIR = $(SRCROOT)/../../spacehabitrpg_output/build/$(PLATFORM_NAME
 
 ALWAYS_SEARCH_USER_PATHS = NO
 
+//:configuration = Debug
+OTHER_CFLAGS = -Wall -Wextra
+
+CODE_SIGN_IDENTITY = iPhone Developer
+
+IPHONEOS_DEPLOYMENT_TARGET = 11.4
 
 //DEBUG_INFORMATION_FORMAT = dwarf-with-dsym
 //COPY_PHASE_STRIP = NO

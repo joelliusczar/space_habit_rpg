@@ -13,9 +13,10 @@
 @implementation SingletonCluster (Entity)
 
 -(OnlyOneEntities*)userData{
-    return [self.bag getWithKey:@"entity" OrCreateFromBlock:^id(){
-        return [[OnlyOneEntities alloc] initWithDataController:self.dataController];
-    }];
+    return [self.bag getWithKey:@"entity" OrCreateFromBlock:^id(id obj){
+      SingletonCluster* sc = (SingletonCluster*)obj;
+      return [[OnlyOneEntities alloc] initWithDataController:sc.dataController];
+    } withObj:self];
 }
 
 

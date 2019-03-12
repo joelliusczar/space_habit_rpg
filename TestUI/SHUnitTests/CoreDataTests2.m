@@ -73,7 +73,9 @@ NSObject* newObj(){
 void nullOut(){
   NSObject*  obj = [[NSObject alloc] init];
   NSObject* __weak wob = obj;
+  NSLog(@"Before null? %@",wob);
   obj = nil;
+  NSLog(@"After null? %@",wob);
 }
 
 -(void)testWeakFromCFunc{

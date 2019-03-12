@@ -901,8 +901,8 @@
 
 -(void)testAddDays{
     Timeshift dst[2] = {
-        {3,11,2,0,HOUR_IN_SECONDS},
-        {11,4,2,0,0}
+        {3,11,2,0,HOUR_IN_SECONDS,{0}},
+        {11,4,2,0,0,{0}}
     };
     SHErrorCode error;
     SHDatetime dt = {.year = 2018,.month = 3, .day = 9, .timezoneOffset = -5*HOUR_IN_SECONDS,

@@ -21,8 +21,8 @@
     return (Daily *)[SHData constructEmptyEntityUnattached:Daily.entity];
 }
 
-//TODO: days of week 0-6, mon: 0 - sun: 6
-//TODO: every x days, 1 day of week: ((7+active day) -dayofweektoday) % 7
+#warning TODO: days of week 0-6, mon: 0 - sun: 6
+#warning TODO: every x days, 1 day of week: ((7+active day) -dayofweektoday) % 7
 
 
 +(NSArray<NSSortDescriptor *> *)buildFetchDescriptors{

@@ -47,6 +47,9 @@
 		274EFB57204D01A900CB3C4C /* PureCBaby.c in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB56204D01A900CB3C4C /* PureCBaby.c */; };
 		2761E3042055A9B8001F6282 /* NoArcExp.m in Sources */ = {isa = PBXBuildFile; fileRef = 2761E3032055A9B8001F6282 /* NoArcExp.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2761E3082055B3FA001F6282 /* House+Hacked.m in Sources */ = {isa = PBXBuildFile; fileRef = 2761E3072055B3FA001F6282 /* House+Hacked.m */; };
+		279BE809222C9CF10023E34D /* PtrHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 279BE808222C9CF10023E34D /* PtrHolder.m */; };
+		27B719372232C67000540542 /* FromCFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B719362232C67000540542 /* FromCFunc.m */; };
+		27B7193A22342FE600540542 /* ArcLessObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B7193922342FE600540542 /* ArcLessObj.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -142,6 +145,12 @@
 		2761E3062055B3FA001F6282 /* House+Hacked.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "House+Hacked.h"; sourceTree = "<group>"; };
 		2761E3072055B3FA001F6282 /* House+Hacked.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "House+Hacked.m"; sourceTree = "<group>"; };
 		278FFDA4222B2FAB00DAF985 /* ObjCPlayground.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ObjCPlayground.base.xcconfig; sourceTree = "<group>"; };
+		279BE807222C9CF10023E34D /* PtrHolder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PtrHolder.h; sourceTree = "<group>"; };
+		279BE808222C9CF10023E34D /* PtrHolder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PtrHolder.m; sourceTree = "<group>"; };
+		27B719352232C67000540542 /* FromCFunc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FromCFunc.h; sourceTree = "<group>"; };
+		27B719362232C67000540542 /* FromCFunc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FromCFunc.m; sourceTree = "<group>"; };
+		27B7193822342FE600540542 /* ArcLessObj.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArcLessObj.h; sourceTree = "<group>"; };
+		27B7193922342FE600540542 /* ArcLessObj.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArcLessObj.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +257,12 @@
 				2726A85422225299003993B3 /* RefO.m */,
 				2726A85522225299003993B3 /* WeakHolder.h */,
 				2726A85622225299003993B3 /* WeakHolder.m */,
+				279BE807222C9CF10023E34D /* PtrHolder.h */,
+				279BE808222C9CF10023E34D /* PtrHolder.m */,
+				27B719352232C67000540542 /* FromCFunc.h */,
+				27B719362232C67000540542 /* FromCFunc.m */,
+				27B7193822342FE600540542 /* ArcLessObj.h */,
+				27B7193922342FE600540542 /* ArcLessObj.m */,
 			);
 			path = ObjCPlayground;
 			sourceTree = "<group>";
@@ -345,6 +360,7 @@
 			files = (
 				2747C44E2044C80500FB5669 /* Ocean.m in Sources */,
 				2747C43A2044C51F00FB5669 /* CockblockShield.m in Sources */,
+				27B719372232C67000540542 /* FromCFunc.m in Sources */,
 				2747C43C2044C51F00FB5669 /* House+Things.m in Sources */,
 				271691F52089672A0059A58E /* C_Exp.c in Sources */,
 				2747C42D2044C51F00FB5669 /* ParentMan.m in Sources */,
@@ -365,6 +381,7 @@
 				2747C4392044C51F00FB5669 /* XPSideKick.m in Sources */,
 				2747C50A204A3A7400FB5669 /* ExtraAction.m in Sources */,
 				2747C4312044C51F00FB5669 /* Holder.m in Sources */,
+				279BE809222C9CF10023E34D /* PtrHolder.m in Sources */,
 				2747C43F2044C51F00FB5669 /* ExpArray.m in Sources */,
 				2747C4432044C51F00FB5669 /* MassPrinter.m in Sources */,
 				2747C43B2044C51F00FB5669 /* main.m in Sources */,
@@ -374,6 +391,7 @@
 				274EFB57204D01A900CB3C4C /* PureCBaby.c in Sources */,
 				2747C4342044C51F00FB5669 /* House.m in Sources */,
 				2747C42F2044C51F00FB5669 /* ExpNonNull.m in Sources */,
+				27B7193A22342FE600540542 /* ArcLessObj.m in Sources */,
 				2747C43D2044C51F00FB5669 /* PersonThingUser.m in Sources */,
 				2747C44B2044C73E00FB5669 /* Lake.m in Sources */,
 				2747C43E2044C51F00FB5669 /* WeakLeash.m in Sources */,
@@ -435,7 +453,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -487,7 +505,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};

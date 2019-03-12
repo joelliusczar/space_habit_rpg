@@ -7,7 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FromCFunc.h"
+#import "ArcLessObj.h"
+
+typedef struct{
+  int firstItem;
+  int secondItem;
+  int thirdItem;
+} dumbStruct;
 
 @interface NoArcExp : NSObject
 +(void)objectToCharPtr;
++(void)retainShit;
++(void)allocStruct;
 @end
