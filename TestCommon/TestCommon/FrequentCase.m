@@ -79,10 +79,10 @@ void* rcontext = (__bridge_retained void*)context2;
 //    ;
 //    }
     //[TestHelpers forceRelease:context2];
+    
+
   }
   NSLog(@"%@",context);
-  //void* bad = (__bridge_retained void*)context2;
-  //CFRelease(bad);
   
   NSLog(@"%@",context2);
   

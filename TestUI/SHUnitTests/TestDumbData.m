@@ -67,74 +67,29 @@
     
     NSManagedObjectContext* readContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     wcontext = readContext;
-    //wdds.readContext = readContext;
+//    wdds.readContext = readContext;
     readContext.persistentStoreCoordinator = dds.coordinator;
     readContext.name = @"reader";
     request.sortDescriptors = @[sortByIsFront];
     NSError* __block err = nil;
     NSArray* __block results = nil;
-    [dds.readContext performBlockAndWait:^{
+    [readContext performBlockAndWait:^{
       @autoreleasepool {
         results = [readContext executeFetchRequest:request error:&err];
       }
     }];
     NSError *error = nil;
-    [dds.readContext reset];
     [dds.coordinator destroyPersistentStoreAtURL:dds.storeURL withType:NSInMemoryStoreType options:nil error:&error];
     id refQue = [TestHelpers getPrivateValue:readContext ivarName:@"_referenceQueue"];
     [TestHelpers setPrivateVar:refQue ivarName:@"_context" newVal:nil];
+    void* bad = (__bridge void*)readContext;
+    CFRelease(bad);
+   NSLog(@"%@",readContext);
   }
   XCTAssertNil(wcontext);
   NSLog(@"%@",wdds);
 }
 
--(void)testPersistentContainer{
-//  NSPersistentContainer* __weak wc = nil;
-//  @autoreleasepool {
-//    NSBundle* dumbBundle = [NSBundle bundleForClass:NSClassFromString(@"OnlyOneEntities")];
-//    NSURL *modelURL = [dumbBundle URLForResource:@"Model" withExtension:@"momd"];
-//
-//    NSManagedObjectModel* model = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-//    NSPersistentContainer* container = [[NSPersistentContainer alloc] initWithName:@"Test" managedObjectModel:model];
-//    wc = container;
-//    NSManagedObjectContext* writer = [container newBackgroundContext];
-//    Zone* z1 = (Zone*)[[NSManagedObject alloc] initWithEntity:Zone.entity insertIntoManagedObjectContext:nil];
-//    z1.isFront = YES;
-//    z1.zoneKey = @"NEBULA";
-//    [writer performBlockAndWait:^{
-//      [writer insertObject:z1];
-//    }];
-//
-//    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
-//
-//    [writer performBlock:^{
-//      @autoreleasepool {
-//        BOOL success;
-//        NSError *error = nil;
-//        NSLog(@"In save");
-//        if(!(success = [writer save:&error])){
-//        }
-//        dispatch_semaphore_signal(sema);
-//      }
-//    }];
-//
-//    BOOL isDone = waitForSema(sema, 1);
-//    (void)isDone;
-//    NSFetchRequest<Zone *> *request = [Zone fetchRequest];
-//    NSSortDescriptor *sortByIsFront = [[NSSortDescriptor alloc] initWithKey:@"isFront" ascending:NO];
-//
-//    NSManagedObjectContext* reader = [container viewContext];
-//    request.sortDescriptors = @[sortByIsFront];
-//    NSError* __block err = nil;
-//    NSArray* __block results = nil;
-//    [reader performBlockAndWait:^{
-//      @autoreleasepool {
-//        results = [reader executeFetchRequest:request error:&err];
-//      }
-//    }];
-//  }
-//
-}
 
 
 

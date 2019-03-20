@@ -50,6 +50,7 @@
 		279BE809222C9CF10023E34D /* PtrHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 279BE808222C9CF10023E34D /* PtrHolder.m */; };
 		27B719372232C67000540542 /* FromCFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B719362232C67000540542 /* FromCFunc.m */; };
 		27B7193A22342FE600540542 /* ArcLessObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B7193922342FE600540542 /* ArcLessObj.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		27B7194E223860F700540542 /* DumbDataSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B7194D223860F700540542 /* DumbDataSaver.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -151,6 +152,8 @@
 		27B719362232C67000540542 /* FromCFunc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FromCFunc.m; sourceTree = "<group>"; };
 		27B7193822342FE600540542 /* ArcLessObj.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArcLessObj.h; sourceTree = "<group>"; };
 		27B7193922342FE600540542 /* ArcLessObj.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArcLessObj.m; sourceTree = "<group>"; };
+		27B7194C223860F700540542 /* DumbDataSaver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DumbDataSaver.h; sourceTree = "<group>"; };
+		27B7194D223860F700540542 /* DumbDataSaver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DumbDataSaver.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +266,8 @@
 				27B719362232C67000540542 /* FromCFunc.m */,
 				27B7193822342FE600540542 /* ArcLessObj.h */,
 				27B7193922342FE600540542 /* ArcLessObj.m */,
+				27B7194C223860F700540542 /* DumbDataSaver.h */,
+				27B7194D223860F700540542 /* DumbDataSaver.m */,
 			);
 			path = ObjCPlayground;
 			sourceTree = "<group>";
@@ -377,6 +382,7 @@
 				2747C4482044C67E00FB5669 /* Pool.m in Sources */,
 				2726A8582222529A003993B3 /* WeakHolder.m in Sources */,
 				2761E3042055A9B8001F6282 /* NoArcExp.m in Sources */,
+				27B7194E223860F700540542 /* DumbDataSaver.m in Sources */,
 				2726A85722225299003993B3 /* RefO.m in Sources */,
 				2747C4392044C51F00FB5669 /* XPSideKick.m in Sources */,
 				2747C50A204A3A7400FB5669 /* ExtraAction.m in Sources */,

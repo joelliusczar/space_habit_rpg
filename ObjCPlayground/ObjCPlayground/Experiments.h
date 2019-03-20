@@ -20,6 +20,7 @@
 #import "PtrHolder.h"
 #import "FromCFunc.h"
 #import "ArcLessObj.h"
+#import "DumbDataSaver.h"
 
 typedef WeakHolder Varholder;
 
@@ -107,6 +108,7 @@ void cMakeHouses(void);
 +(void)autoreleaseJump;
 +(void)passThruARP;
 +(void)clsFromCFunc;
++(void)dumbDataExp;
 @end
 
 #import "Experiments+Charlie.h"

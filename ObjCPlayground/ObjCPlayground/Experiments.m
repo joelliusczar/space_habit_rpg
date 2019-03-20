@@ -983,4 +983,78 @@ NSString *convertCharToBin(unsigned char input){
   NSLog(@"%@",weakMaybe);
 }
 
+
+void sometingAtContext(NSManagedObjectContext* context){
+  NSLog(@"%@",context);
+}
+
+static NSManagedObjectContext *staticContext;
+
++(void)dumbDataExp{
+
+  DumbDataSaver __weak *wdds = nil;
+  NSManagedObjectContext* __weak wcontext = nil;
+  
+  @autoreleasepool {
+    
+    DumbDataSaver *dds = [DumbDataSaver new];
+    wdds = dds;
+//    dds.writeContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+//    dds.writeContext.persistentStoreCoordinator = dds.coordinator;
+//    dds.writeContext.name = @"writer";
+//
+//    [dds.writeContext performBlockAndWait:^{
+//      Zone* z1 = (Zone*)[[NSManagedObject alloc] initWithEntity:Zone.entity insertIntoManagedObjectContext:nil];
+//      z1.isFront = YES;
+//      z1.zoneKey = @"NEBULA";
+//      [dds.writeContext insertObject:z1];
+//    }];
+//
+//    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+//
+//    [dds.writeContext performBlock:^{
+//      @autoreleasepool {
+//        BOOL success;
+//        NSError *error = nil;
+//        NSLog(@"In save");
+//        if(!(success = [dds.writeContext save:&error])){
+//        }
+//        dispatch_semaphore_signal(sema);
+//      }
+//    }];
+//
+//    BOOL isDone = waitForSema(sema, 1);
+//    (void)isDone;
+    NSManagedObjectContext* context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+    wcontext = context;
+    context.persistentStoreCoordinator = dds.coordinator;
+    context.name = @"main queue";
+    
+    NSFetchRequest *request = [Zone fetchRequest];
+    NSSortDescriptor *sortByIsFront = [[NSSortDescriptor alloc] initWithKey:@"isFront" ascending:NO];
+    request.sortDescriptors = @[sortByIsFront];
+    
+    [context performBlockAndWait:^{
+      NSError* err = nil;
+      NSArray* results = [context executeFetchRequest:request error:&err];
+      while(false);
+    }];
+//    }
+    //wdds.readContext = readContext;
+    //[wdds setReader:readContext];
+
+    //[readContext reset];
+    //[readContext processPendingChanges];
+    //readContext.persistentStoreCoordinator = nil;
+    //[dds.coordinator destroyPersistentStoreAtURL:dds.storeURL withType:NSInMemoryStoreType options:nil error:&error];
+    id refQue = [TestHelpers getPrivateValue:context ivarName:@"_referenceQueue"];
+    [TestHelpers setPrivateVar:refQue ivarName:@"_context" newVal:nil];
+    
+   NSLog(@"%@ 6",context);
+    void* bad = (__bridge void*)context;
+    CFRelease(bad);
+  }
+  NSLog(@"%@",wcontext);
+}
+
 @end
