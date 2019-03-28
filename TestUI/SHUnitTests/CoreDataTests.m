@@ -25,12 +25,7 @@
 }
 
 
--(void)testSetDbName{
-  NSString * oldDbName = SharedGlobal.dbFileName;
-  SharedGlobal.dbFileName = @"badfile";
-  NSFetchRequest *request = Zone.fetchRequest;
-  [self fetchAnything:request dataController:SharedGlobal.dataController];
-  SharedGlobal.dbFileName = oldDbName;
-}
+//-(void)testSetDbName{ delete. I currently have this as read only
+
 
 @end

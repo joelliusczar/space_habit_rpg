@@ -8,10 +8,10 @@
 
 #import "Daily+ActiveDays.h"
 #import "RateTypeHelper.h"
+#import "Daily+Helper.h"
 #import <SHCommon/NSMutableArray+Helper.h>
 #import <SHCommon/NSDate+DateHelper.h>
 #import <SHGlobal/Constants.h>
-#import "Daily+DailyHelper.h"
 #import "SingletonCluster+Entity.h"
 
 @implementation Daily (ActiveDays)
@@ -47,6 +47,16 @@ static BOOL yearlyBestMatch(RateValueItemDict *a,RateValueItemDict *b){
     return monthA > monthB || (monthA == monthB && dayOfMonthA >= dayOfMonthB);
 }
 
+
++(void)setActivenessArray:(NSArray<RateValueItemDict *> *)week activeDays:(BOOL *)activeDays{
+    for(NSUInteger i = 0;i < SHCONST.DAYS_IN_WEEK;i++){
+        if(week){
+            activeDays[i] = week[i][IS_DAY_ACTIVE_KEY].boolValue;
+            continue;
+        }
+        activeDays[i] = YES;
+    }
+}
 
 -(NSMutableArray<RateValueItemDict *> * )getActiveDaysForRateType:(RateType)rateType{
     NSString *rateTypeKey = getRateTypeKey(rateType);

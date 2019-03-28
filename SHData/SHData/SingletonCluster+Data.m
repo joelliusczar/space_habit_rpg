@@ -7,7 +7,7 @@
 //
 
 #import "SingletonCluster+Data.h"
-#import "CoreDataStackController.h"
+#import "SHCoreData.h"
 #import "SHCommon/NSMutableDictionary+Helper.h"
 
 static NSObject* dbMutex;
@@ -27,15 +27,19 @@ static NSObject* dbMutex;
 -(void)setDbFileName:(NSString *)dbFileName{
     self.bag[@"dbName"] = dbFileName;
   
-    /*Reset the datacontroller*/
+    /*Reset the datacontroller
+      This will sometimes not work due to some weird bug with NSManagedObjectContext
+    */
     self.dataController = nil;
 }
 
 -(NSObject<P_CoreData> *)dataController{
   @synchronized (dbMutex) {
     id ans = [self.bag getWithKey:@"dc" OrCreateFromBlock:^id(id obj){
-        SingletonCluster* sc = (SingletonCluster*)obj;
-        return [CoreDataStackController newWithBundle:sc.bundle dBFileName:sc.dbFileName];
+        __weak SingletonCluster* sc = (SingletonCluster*)obj;
+        return [SHCoreData newWithOptionsBlock:^(SHCoreDataOptions *options){
+          options.dbFileName = sc.dbFileName;
+        }];
     } withObj:self];
     return ans;
   }

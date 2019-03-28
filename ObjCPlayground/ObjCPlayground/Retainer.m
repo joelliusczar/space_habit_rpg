@@ -13,4 +13,13 @@
     _r = nil;
     NSLog(@"deallocating r");
 }
+
+@synthesize obj = _obj;
+-(NSObject*)obj{
+  return _obj;
+}
+
+-(void)setObj:(NSObject *)obj{
+  _obj = obj;
+}
 @end

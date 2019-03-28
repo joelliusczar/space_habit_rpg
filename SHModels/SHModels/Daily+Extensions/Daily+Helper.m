@@ -6,7 +6,7 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import "Daily+DailyHelper.h"
+#import "Daily+Helper.h"
 #import "Daily+CoreDataClass.h"
 #import <SHGlobal/Constants.h>
 #import <SHCommon/CommonUtilities.h>
@@ -14,50 +14,13 @@
 #import <SHCommon/NSDate+DateHelper.h>
 #import <SHGlobal/CommonTypeDefs.h>
 #import <SHData/SingletonCluster+Data.h>
+#import <SHData/NSManagedObjectContext+Helper.h>
 
 @implementation Daily (Helper)
-
-+(Daily *)constructDaily{
-    return (Daily *)[SHData constructEmptyEntityUnattached:Daily.entity];
-}
 
 #warning TODO: days of week 0-6, mon: 0 - sun: 6
 #warning TODO: every x days, 1 day of week: ((7+active day) -dayofweektoday) % 7
 
-
-+(NSArray<NSSortDescriptor *> *)buildFetchDescriptors{
-    NSSortDescriptor *sortByUserOrder = [[NSSortDescriptor alloc]
-                                       initWithKey:@"customUserOrder" ascending:NO];
-    NSSortDescriptor *sortByUrgency = [[NSSortDescriptor alloc]
-                                       initWithKey:@"urgency" ascending:NO];
-    NSSortDescriptor *sortByDifficulty = [[NSSortDescriptor alloc]
-                                          initWithKey:@"difficulty" ascending:YES];
-    return [NSArray arrayWithObjects:sortByUserOrder,sortByUrgency,sortByDifficulty, nil];
-}
-
-
-+(NSFetchedResultsController *)getUnfinishedDailiesController:(NSDate *)todayStart{
-    NSPredicate *filter = [NSPredicate predicateWithFormat:@"isActive = 1"
-                           " AND (lastActivationTime = NULL"
-                           " OR lastActivationTime < %@)"
-                           ,todayStart];
-    NSFetchedResultsController *resultsController = [SHData getItemFetcher:Daily.fetchRequest
-                                                                predicate:filter
-                                                                sortBy:[Daily buildFetchDescriptors]];
-    return resultsController;
-}
-
-
-+(NSFetchedResultsController *)getFinishedDailiesController:(NSDate *)todayStart{
-    NSPredicate *filter = [NSPredicate predicateWithFormat:@"isActive = 1 AND lastActivationTime >= %@",todayStart];
-    NSArray *descriptors = @[[[NSSortDescriptor alloc]
-                              initWithKey:@"lastActivationTime"
-                              ascending:NO]];
-    NSFetchedResultsController *resultsController = [SHData getItemFetcher:Daily.fetchRequest
-                                                        predicate: filter
-                                                        sortBy:descriptors];
-    return resultsController;
-}
 
 NSUInteger calcWeeklyDateRange(NSInteger offset,int scaler){
     return (SHCONST.DAYS_IN_WEEK +offset)

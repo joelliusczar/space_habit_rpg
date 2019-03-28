@@ -7,6 +7,7 @@
 //
 
 #import <SHCommon/CommonUtilities.h>
+#import <SHData/NSManagedObjectContext+Helper.h>
 #import "Suffix+CoreDataClass.h"
 #import "ModelTools.h"
 #import "ModelConstants.h"
@@ -65,13 +66,13 @@ withInfoDict:(ZoneInfoDictionary*)zoneInfo{
 }
 
 
--(Suffix*)getSuffixEntity:(NSString*)zoneKey{
+-(Suffix*)getSuffixEntity:(NSString*)zoneKey withContext:(NSManagedObjectContext*)context{
   NSFetchRequest<Suffix*>* request = [Suffix fetchRequest];
   NSSortDescriptor* sortByZoneKey = [[NSSortDescriptor alloc] initWithKey:@"zoneKey" ascending:NO];
   NSPredicate* filter = [NSPredicate predicateWithFormat:@"zoneKey = %@",zoneKey];
-
-  NSArray<NSManagedObject*>* results = [self.dataController
-    getItemWithRequest:request predicate:filter sortBy:@[sortByZoneKey]];
+  request.predicate = filter;
+  request.sortDescriptors = @[sortByZoneKey];
+  NSArray<NSManagedObject*>* results = [context getItemsWithRequest:request];
 
   NSCAssert(results.count<2, @"There are too many entities");
   Suffix* s = nil;
@@ -79,7 +80,7 @@ withInfoDict:(ZoneInfoDictionary*)zoneInfo{
       s = (Suffix*)results[0];
   }
   else{
-      s = (Suffix*)[self.dataController constructEmptyEntity:Suffix.entity];
+      s = (Suffix*)[context newEntity:Suffix.entity];
       s.zoneKey = zoneKey;
   }
   return s;
@@ -88,7 +89,7 @@ withInfoDict:(ZoneInfoDictionary*)zoneInfo{
 
 -(Zone*)constructEmptyZone{
   //if we change here update afterZonePick
-  return (Zone*)[self.dataController constructEmptyEntityUnattached:Zone.entity];
+  return (Zone*)[NSManagedObjectContext newEntityUnattached:Zone.entity];
 }
 
 /*
@@ -104,11 +105,16 @@ withInfoDict:(ZoneInfoDictionary*)zoneInfo{
     but I counldn't remember my reason for having it there
     to justify keeping it there.
   */
-  [self.dataController beginUsingTemporaryContext];
-  Suffix *s = [self getSuffixEntity:zoneKey];
-  int currentVisitCount = s.visitCount++;
-  [self.dataController saveAndWait];
-  [self.dataController endUsingTemporaryContext];
+  __weak Zone_Medium *weakSelf = self;
+  __block int currentVisitCount = 0;
+  NSManagedObjectContext *context = [self.dataController newBackgroundContext];
+  [context performBlockAndWait:^{
+    Suffix *s = [weakSelf getSuffixEntity:zoneKey withContext:context];
+    currentVisitCount = s.visitCount++;
+    NSError *error = nil;
+    [context save:&error];
+  }];
+  
   return currentVisitCount;
 }
 
@@ -156,14 +162,24 @@ withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount{
 }
 
 
--(NSArray<NSManagedObject*>*)getAllZones:(NSPredicate*) filter{
-  NSFetchRequest<Zone *> *request = [Zone fetchRequest];
-  NSSortDescriptor *sortByIsFront = [[NSSortDescriptor alloc] initWithKey:@"isFront" ascending:NO];
-
-  NSArray<NSManagedObject *> *results = [self.dataController
-    getItemWithRequest:request predicate:filter sortBy:@[sortByIsFront]];
+-(NSArray<NSManagedObject*>*)getAllZones:(NSPredicate*) filter withContext:(nullable NSManagedObjectContext *)context{
+  if(nil == context){
+    context = self.dataController.mainThreadContext;
+  }
+  __block NSArray<NSManagedObject *> *results = nil;
+  [context performBlockAndWait:^{
+    NSFetchRequest<Zone *> *request = [Zone fetchRequest];
+    NSSortDescriptor *sortByIsFront = [[NSSortDescriptor alloc] initWithKey:@"isFront" ascending:NO];
+    request.predicate = filter;
+    request.sortDescriptors = @[sortByIsFront];
+    results = [context getItemsWithRequest:request];
+  }];
 
   return results;
+}
+
+-(NSArray<NSManagedObject*>*)getAllZones:(NSPredicate*) filter{
+  return [self getAllZones:filter withContext:nil];
 }
 
 
@@ -180,19 +196,29 @@ withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount{
 }
 
 
+-(void)moveZoneToFront:(Zone*)zone withContext:(NSManagedObjectContext*)context{
+  if(nil == context){
+    context = self.dataController.mainThreadContext;
+  }
+  [context performBlock:^{
+    NSArray<Zone*> *results = [self getAllZones:nil withContext:context];
+    zone.isFront = YES;
+    NSAssert(results.count<3, @"There are too many zones");
+    if(results.count==0){
+        return;
+    }
+    if(results.count==1){
+        ((Zone *)results[0]).isFront = NO;
+        return;
+    }
+    [context deleteObject:results[1]];
+    ((Zone *)results[0]).isFront = NO;
+  }];
+}
+
 -(void)moveZoneToFront:(Zone*)zone{
-  NSArray<Zone*> *results = [self getAllZones:nil];
-  zone.isFront = YES;
-  NSAssert(results.count<3, @"There are too many zones");
-  if(results.count==0){
-      return;
-  }
-  if(results.count==1){
-      ((Zone *)results[0]).isFront = NO;
-      return;
-  }
-  [self.dataController softDeleteModel:results[1]];
-  ((Zone *)results[0]).isFront = NO;
+  [self moveZoneToFront:zone withContext:nil];
+  
 }
 
 

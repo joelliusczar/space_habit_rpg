@@ -7,7 +7,6 @@
 //
 
 #import "Daily+CoreDataClass.h"
-#import "Daily+DailyHelper.h"
 #import <SHCommon/SingletonCluster.h>
 #import <SHCommon/NSDate+DateHelper.h>
 #import <SHCommon/NSMutableDictionary+Helper.h>

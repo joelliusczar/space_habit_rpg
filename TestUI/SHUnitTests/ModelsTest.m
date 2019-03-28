@@ -19,7 +19,8 @@
 #import <SHModels/DataInfo+CoreDataClass.h>
 #import <SHModels/ZoneTransaction+CoreDataClass.h>
 #import <SHGlobal/Constants.h>
-#import <SHData/CoreDataStackController.h>
+#import <SHData/SHCoreData.h>
+#import <SHData/NSManagedObjectContext+Helper.h>
 #import <SHModels/SingletonCluster+Entity.h>
 #import <SHModels/Zone_Medium.h>
 @import TestCommon;
@@ -43,7 +44,8 @@
 
 -(void)testHeroProperties{
   NSObject<P_CoreData> *dc = SharedGlobal.dataController;
-  Hero *h = (Hero *)[dc constructEmptyEntity:Hero.entity];
+  NSManagedObjectContext *context = dc.mainThreadContext;
+  Hero *h = (Hero *)[context newEntity:Hero.entity];
   h.gold = 3.14;
   h.lvl = 15;
   h.maxHp = 56;
@@ -60,7 +62,8 @@
 
 -(void)testMonsterProperties{
   NSObject<P_CoreData> *dc = SharedGlobal.dataController;
-  Monster *m = (Monster *)[dc constructEmptyEntity:Monster.entity];
+  NSManagedObjectContext *context = dc.mainThreadContext;
+  Monster *m = (Monster *)[context newEntity:Monster.entity];
   m.lvl = 13;
   m.monsterKey = @"DUST_FAIRY";
   m.nowHp = 123;
@@ -78,7 +81,8 @@
 
 -(void)testZoneProperties{
   NSObject<P_CoreData> *dc = SharedGlobal.dataController;
-  Zone *z = (Zone *)[dc constructEmptyEntity:Zone.entity];
+  NSManagedObjectContext *context = dc.mainThreadContext;
+  Zone *z = (Zone *)[context newEntity:Zone.entity];
   z.lvl = 5;
   z.zoneKey = @"SAFE_SPACE";
   z.isFront = YES;
@@ -98,13 +102,18 @@
 
 -(void)testRemoveEntitRefBeforeSaving{
   NSObject<P_CoreData> *dc = SharedGlobal.dataController;
-  ZoneTransaction *zt = (ZoneTransaction *)[dc
-    constructEmptyEntity:ZoneTransaction.entity];
-  zt.misc = @"Just random shit!";
-  zt = nil;
-  [dc saveNoWaiting];
+  NSManagedObjectContext *bgContext = [dc newBackgroundContext];
+  [bgContext performBlockAndWait:^{
+    ZoneTransaction *zt = (ZoneTransaction *)[bgContext newEntity:ZoneTransaction.entity];
+    zt.misc = @"Just random shit!";
+    zt = nil;
+    NSError* error = nil;
+    [bgContext save:&error];
+  }];
+  
   NSFetchRequest<ZoneTransaction*>* request = [ZoneTransaction fetchRequest];
-  NSArray<NSManagedObject*>* results = [self fetchAnything:request dataController:dc];
+  
+  NSArray<NSManagedObject*>* results = [self fetchAnything:request context:dc.mainThreadContext];
   NSAssert(results.count == 1,@"result was not one");
   NSString *misc = ((ZoneTransaction*)results[0]).misc;
   NSAssert([misc isEqualToString:@"Just random shit!"],@"Strings not equal");
@@ -113,26 +122,45 @@
 -(void)testDoubleInsert{
   Zone_Medium* zoneMed = [Zone_Medium newWithDataController:SHData
     withResourceUtil:SharedGlobal.resourceUtility withInfoDict:SharedGlobal.zoneInfoDictionary];
-  NSObject<P_CoreData> *dc = SharedGlobal.dataController;
-  Zone *z = [zoneMed constructSpecificZone2:@"SAFE_SPACE" withLvl:16];
-  [dc insertIntoContext:z];
-  [dc insertIntoContext:z];
-  [dc saveNoWaiting];
+  NSManagedObjectContext* bgContext = [SHData newBackgroundContext];
+  [bgContext performBlockAndWait:^{
+    Zone *z = [zoneMed constructSpecificZone2:@"SAFE_SPACE" withLvl:16];
+    [bgContext insertObject:z];
+    [bgContext insertObject:z];
+    NSError* error = nil;
+    [bgContext save:&error];
+  }];
+  //I think this next part is useless
+  NSManagedObjectContext* bgContext2 = [SHData newBackgroundContext];
   NSFetchRequest<Zone *> *request = [Zone fetchRequest];
-  NSArray<NSManagedObject*>* results = [self fetchAnything:request dataController:dc];
-  NSAssert(results.count == 1,@"result was not one");
-  Zone *z_ret = (Zone *)results[0];
-  [dc insertIntoContext:z_ret];
-  [dc saveNoWaiting];
-  NSArray<NSManagedObject*>* results2 = [self fetchAnything:request dataController:dc];
-  NSAssert(results2.count == 1,@"result was not one");
+  [bgContext2 performBlockAndWait:^{
+    NSArray<NSManagedObject*>* results = [self fetchAnything:request context:bgContext2];
+    NSAssert(results.count == 1,@"result was not one");
+    Zone *z_ret = (Zone *)results[0];
+    [bgContext2 insertObject:z_ret];
+    NSError *error = nil;
+    [bgContext2 save:&error];
+    NSArray<NSManagedObject*>* results2 = [self fetchAnything:request context:bgContext2];
+    NSAssert(results2.count == 1,@"result was not one");
+    
+  }];
   //this last part is to verify that it's not just returning only one
   //regardless of what is in stored
-  Zone *z3 = [zoneMed constructSpecificZone2:@"SAFE_SPACE" withLvl:16];
-  [dc insertIntoContext:z3];
-  [dc saveNoWaiting];
-  NSArray<NSManagedObject*>* results3 = [self fetchAnything:request dataController:dc];
-  NSAssert(results3.count == 2,@"result was not two");
+  [bgContext performBlockAndWait:^{
+    
+    Zone *z3 = [zoneMed constructSpecificZone2:@"SAFE_SPACE" withLvl:16];
+    [bgContext insertObject:z3];
+    NSError *error = nil;
+    [bgContext save:&error];
+  }];
+  
+  NSManagedObjectContext* bgContext3 = [SHData newBackgroundContext];
+  [bgContext3 performBlockAndWait:^{
+    
+    NSArray<NSManagedObject*>* results3 = [self fetchAnything:request context:bgContext3];
+    NSAssert(results3.count == 2,@"result was not two");
+  }];
+
 }
 
 @end

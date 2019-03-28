@@ -8,6 +8,7 @@
 
 #import <SHGlobal/Constants.h>
 #import <SHCommon/NSMutableDictionary+Helper.h>
+#import <SHData/NSManagedObjectContext+Helper.h>
 #import "ZoneTransaction+CoreDataClass.h"
 #import "ZoneTransaction_Medium.h"
 
@@ -29,11 +30,17 @@
 
 -(void)addCreateTransaction:(Zone *)z{
   NSMutableDictionary *zoneInfo = z.mapable;
-  ZoneTransaction *zt =(ZoneTransaction *)[self.dataController constructEmptyEntity:ZoneTransaction.entity];
+
+  NSManagedObjectContext* context = [self.dataController newBackgroundContext];
+  [context performBlock:^{
+    ZoneTransaction *zt =(ZoneTransaction *)[context newEntity:ZoneTransaction.entity];
+    zt.timestamp = [NSDate date];
+    zoneInfo[TRANSACTION_TYPE_KEY] = TRANSACTION_TYPE_CREATE;
+    zt.misc = [NSMutableDictionary dictToString:zoneInfo];
+    NSError *error = nil;
+    [context save:&error];
+  }];
   
-  zt.timestamp = [NSDate date];
-  zoneInfo[TRANSACTION_TYPE_KEY] = TRANSACTION_TYPE_CREATE;
-  zt.misc = [NSMutableDictionary dictToString:zoneInfo];
 }
 
 @end

@@ -11,15 +11,19 @@
 
 extern NSString * const DEFAULT_DB_NAME;
 
-@interface CoreDataStackController : NSObject<P_CoreData>
+@interface SHCoreDataOptions : NSObject
+@property (strong,nonatomic) NSBundle *appBundle;
+@property (strong,nonatomic) NSString* dbFileName;
+@property (strong,nonatomic) NSString* storeType;
+@property (strong,nonatomic) NSPersistentStoreCoordinator *coordinator;
+@end
+
+@interface SHCoreData : NSObject<P_CoreData>
 @property (readonly,strong,nonatomic) NSBundle *appBundle;
 @property (readonly,strong,nonatomic) NSString* dbFileName;
-@property (strong,nonatomic) NSPersistentStoreCoordinator *coordinator;
+@property (readonly,strong,nonatomic) NSPersistentStoreCoordinator *coordinator;
 @property (readonly,strong,nonatomic) NSString* storeType;
 @property (readonly,nonatomic) NSURL* storeURL;
-+(instancetype)newWithBundle:(NSBundle *)bundle dBFileName:(NSString *)dbFileName;
-+(instancetype)newWithBundle:(NSBundle *)bundle;
-+(instancetype)newWithBundle:(NSBundle *)bundle storeType:(NSString *)storeType;
++(instancetype)newWithOptionsBlock:(void (^)(SHCoreDataOptions*))optionsBlock;
 -(void)initializeCoreData;
--(NSManagedObject *)getWritableObjectVersion:(NSManagedObject *)existingObject;
 @end

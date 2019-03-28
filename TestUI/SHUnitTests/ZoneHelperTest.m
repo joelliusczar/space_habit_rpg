@@ -6,6 +6,7 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
+#import <SHData/NSManagedObjectContext+Helper.h>
 #import <SHModels/ModelConstants.h>
 #import <SHModels/Zone+CoreDataClass.h>
 #import <SHModels/Zone_Medium.h>
@@ -296,9 +297,10 @@ uint zoneHelper_mockRandom(uint range){
 -(void)testConstructZoneChoice{
   Zone_Medium* zoneMed = [Zone_Medium newWithDataController:SHData
     withResourceUtil:SharedGlobal.resourceUtility withInfoDict:SharedGlobal.zoneInfoDictionary];
+  NSManagedObjectContext* context = SHData.mainThreadContext;
   int i = 0;
   rIdx_zh = 0;
-  Hero *h = (Hero *)[SHData constructEmptyEntity:Hero.entity];
+  Hero *h = (Hero *)[context newEntity:Hero.entity];
   h.lvl = 14;
   SET_LOW_BOUND();
   SET_LOW_BOUND();
@@ -431,30 +433,33 @@ void throwsEx(){
 -(void)testGetZone{
   Zone_Medium* zoneMed = [Zone_Medium newWithDataController:SHData
     withResourceUtil:SharedGlobal.resourceUtility withInfoDict:SharedGlobal.zoneInfoDictionary];
-  Zone *z = [zoneMed constructEmptyZone];
+  __block Zone *z = [zoneMed constructEmptyZone];
+  NSManagedObjectContext* bgContext = [SHData newBackgroundContext];
   z.isFront = YES;
   z.zoneKey = @"NEBULA";
-  Zone *z2 = [zoneMed constructEmptyZone];
+  __block Zone *z2 = [zoneMed constructEmptyZone];
   z2.isFront = NO;
   z2.zoneKey = @"GAS";
-  [SHData insertIntoContext:z];
-  [SHData insertIntoContext:z2];
-  dispatch_semaphore_t sema1 = [SHData saveNoWaiting];
-  BOOL isDone = waitForSema(sema1, 1);
-  XCTAssert(isDone);
+  [bgContext performBlockAndWait:^{
+    [bgContext insertObject:z];
+    [bgContext insertObject:z2];
+    NSError *error = nil;
+    [bgContext save:&error];
+  }];
   Zone *z3 = [zoneMed getZone:YES];
   XCTAssertTrue(z3.isFront);
   XCTAssertTrue([z3.zoneKey isEqualToString:@"NEBULA"]);
   Zone *z4 = [zoneMed getZone:NO];
   XCTAssertTrue(!z4.isFront);
   XCTAssertTrue([z4.zoneKey isEqualToString:@"GAS"]);
-  Zone *z5 = [zoneMed constructEmptyZone];
+  __block Zone *z5 = [zoneMed constructEmptyZone];
   z5.isFront = YES;
   z5.zoneKey = @"TEMPLE";
-  [SHData insertIntoContext:z5];
-  dispatch_semaphore_t sema2 = [SHData saveNoWaiting];
-  BOOL isDone2 = waitForSema(sema2, 1);
-  XCTAssert(isDone2);
+  [bgContext performBlockAndWait:^{
+    [bgContext insertObject:z5];
+    NSError *error = nil;
+    [bgContext save:&error];
+  }];
   XCTAssertThrows([zoneMed getZone:YES]);
 }
 
@@ -462,17 +467,24 @@ void throwsEx(){
 -(void)testMoveToFront{
   Zone_Medium* zoneMed = [Zone_Medium newWithDataController:SHData
     withResourceUtil:SharedGlobal.resourceUtility withInfoDict:SharedGlobal.zoneInfoDictionary];
-  Zone *z0 = [zoneMed constructSpecificZone:HOME_KEY withLvl:1 withMonsterCount:0];;
+  __block Zone *z0 = [zoneMed constructSpecificZone:HOME_KEY withLvl:1 withMonsterCount:0];;
+  NSManagedObjectContext* bgContext = [SHData newBackgroundContext];
   [zoneMed moveZoneToFront:z0];
   XCTAssertTrue(z0.isFront);
-  [SHData insertIntoContext:z0];
-  [SHData saveNoWaiting];
+  [bgContext performBlockAndWait:^{
+    [bgContext insertObject:z0];
+    NSError *error = nil;
+    [bgContext save:&error];
+  }];
 
-  Zone *z1 = [zoneMed constructEmptyZone];
+  __block Zone *z1 = [zoneMed constructEmptyZone];
   z1.zoneKey = @"GAS";
   [zoneMed moveZoneToFront:z1];
-  [SHData insertIntoContext:z1];
-  [SHData saveNoWaiting];
+  [bgContext performBlockAndWait:^{
+    [bgContext insertObject:z1];
+    NSError *error = nil;
+    [bgContext save:&error];
+  }];
   
   NSArray<NSManagedObject *> *zones = [zoneMed getAllZones:nil];
   XCTAssertEqual(zones.count, 2);
@@ -481,34 +493,40 @@ void throwsEx(){
   XCTAssertFalse(((Zone *)zones[1]).isFront);
   XCTAssertTrue([((Zone *)zones[1]).zoneKey isEqualToString:@"HOME"]);
   
-  Zone *z2 = [zoneMed constructEmptyZone];
+  __block Zone *z2 = [zoneMed constructEmptyZone];
   z2.zoneKey = @"NEBULA";
   [zoneMed moveZoneToFront:z2];
-  [SHData insertIntoContext:z2];
-  [SHData saveNoWaiting];
+  [bgContext performBlockAndWait:^{
+    [bgContext insertObject:z2];
+    NSError *error = nil;
+    [bgContext save:&error];
+  }];
+  [bgContext performBlockAndWait:^{
+    NSArray<NSManagedObject *> *zones = [zoneMed getAllZones:nil withContext:bgContext];
+    XCTAssertEqual(zones.count, 2);
+    XCTAssertTrue(((Zone *)zones[0]).isFront);
+    XCTAssertTrue([((Zone *)zones[0]).zoneKey isEqualToString:@"NEBULA"]);
+    XCTAssertFalse(((Zone *)zones[1]).isFront);
+    XCTAssertTrue([((Zone *)zones[1]).zoneKey isEqualToString:@"GAS"]);
+    
+    //these are insync from the database?
+    XCTAssertFalse(z1.isFront);
+    XCTAssertTrue(z2.isFront);
+    
+    Zone *z1_1 = (Zone *)zones[1];
+    [zoneMed moveZoneToFront:z1_1];
+    [bgContext insertObject:z1_1]; //#warning
+    NSError *error = nil;
+    [bgContext save:&error];
+    
+    zones = [zoneMed getAllZones:nil withContext:bgContext];
+    XCTAssertEqual(zones.count, 2);
+    XCTAssertTrue(((Zone *)zones[0]).isFront);
+    XCTAssertTrue([((Zone *)zones[0]).zoneKey isEqualToString:@"GAS"]);
+    XCTAssertFalse(((Zone *)zones[1]).isFront);
+    XCTAssertTrue([((Zone *)zones[1]).zoneKey isEqualToString:@"NEBULA"]);
+  }];
   
-  zones = [zoneMed getAllZones:nil];
-  XCTAssertEqual(zones.count, 2);
-  XCTAssertTrue(((Zone *)zones[0]).isFront);
-  XCTAssertTrue([((Zone *)zones[0]).zoneKey isEqualToString:@"NEBULA"]);
-  XCTAssertFalse(((Zone *)zones[1]).isFront);
-  XCTAssertTrue([((Zone *)zones[1]).zoneKey isEqualToString:@"GAS"]);
-  
-  //these are insync from the database?
-  XCTAssertFalse(z1.isFront);
-  XCTAssertTrue(z2.isFront);
-  
-  Zone *z1_1 = (Zone *)zones[1];
-  [zoneMed moveZoneToFront:z1_1];
-  [SHData insertIntoContext:z1_1];
-  [SHData saveNoWaiting];
-  
-  zones = [zoneMed getAllZones:nil];
-  XCTAssertEqual(zones.count, 2);
-  XCTAssertTrue(((Zone *)zones[0]).isFront);
-  XCTAssertTrue([((Zone *)zones[0]).zoneKey isEqualToString:@"GAS"]);
-  XCTAssertFalse(((Zone *)zones[1]).isFront);
-  XCTAssertTrue([((Zone *)zones[1]).zoneKey isEqualToString:@"NEBULA"]);
 }
 
 

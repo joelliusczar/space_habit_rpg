@@ -124,8 +124,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27169223208EB0FD0059A58E /* libSHDatetime.a in Frameworks */,
 				27169225208EB1180059A58E /* libSH_CTools.a in Frameworks */,
+				27169223208EB0FD0059A58E /* libSHDatetime.a in Frameworks */,
 				27B15A9720524A170045B226 /* SHGlobal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

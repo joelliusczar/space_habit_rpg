@@ -9,11 +9,13 @@
 #import "FrequentCase.h"
 #import <SHModels/OnlyOneEntities.h>
 #import <SHModels/Zone+CoreDataClass.h>
+#import <SHData/NSManagedObjectContext+Helper.h>
 @import CoreData;
 
 @interface FrequentCase ()
 @property (weak,nonatomic) NSObject* weakObj;
 @property (strong,nonatomic) NSObject* strongObj;
+@property (strong,nonatomic) NSPersistentStoreCoordinator *coordinator;
 @end
 
 @implementation FrequentCase
@@ -23,11 +25,16 @@
   ASSERT_IS_TEST();
   //I think we want to ensure that it uses the bundle from SHModels rather
   //the bundle for TestUI or TestCommon
-  NSLog(@"context: %@",self.weakObj);
-  self.strongObj = [TestDummy new];
   NSBundle *testBundle = [NSBundle bundleForClass:NSClassFromString(@"OnlyOneEntities")];
   SharedGlobal.bundle = testBundle;
-  CoreDataStackController* dc = [CoreDataStackController newWithBundle:testBundle storeType:NSInMemoryStoreType];
+  NSPersistentStoreCoordinator *coordinator = self.coordinator;
+  SHCoreData *dc = [SHCoreData newWithOptionsBlock:^(SHCoreDataOptions *options){
+    options.storeType = NSInMemoryStoreType;
+    options.appBundle = testBundle;
+    if(coordinator){
+      options.coordinator = coordinator;
+    }
+  }];
   SharedGlobal.dataController = dc;
   //DumbCoreDataController* dc = [DumbCoreDataController newWithBundle:testBundle storeType:NSInMemoryStoreType];
   NSTimeZone.defaultTimeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
@@ -44,51 +51,14 @@
 
 
 -(NSArray<NSManagedObject*> *)fetchAnything:(NSFetchRequest *)request
-dataController:(NSObject<P_CoreData>*) dataController{
-  NSPredicate *filter = [NSPredicate predicateWithValue:YES];
-  NSArray<NSManagedObject*>* results = [dataController getItemWithRequest:request predicate:filter sortBy:nil];
+context:(NSManagedObjectContext*)context{
+  request.predicate = [NSPredicate predicateWithValue:YES];
+  
+  NSArray<NSManagedObject*>* results = [context getItemsWithRequest:request];
   return results;
 }
 
-/*
-void* rcontext = (__bridge_retained void*)context2;
-    CFRelease(rcontext);
-*/
 -(void)tearDown{
-  CoreDataStackController* __weak wdc = nil;
-  SHContext* __weak context = nil;
-  SHContext* __weak context2 = nil;
-  NSPersistentStoreCoordinator* __weak store = nil;
-  @autoreleasepool {
-    wdc = (CoreDataStackController*)SharedGlobal.dataController;
-    context = (SHContext*)[TestHelpers getPrivateValue:wdc ivarName:@"_writeContext"];
-    context2 = (SHContext*)[TestHelpers getPrivateValue:wdc ivarName:@"_readContext"];
-    [context2 reset];
-    NSError* error = nil;
-    [context2 save:&error];
-    //NSSet<NSManagedObject*>* itemsInTex =  [context2 registeredObjects];
-    store = context.persistentStoreCoordinator;
-    error = nil;
-    [store destroyPersistentStoreAtURL:wdc.storeURL withType:NSInMemoryStoreType options:nil error:&error];
-    SharedGlobal.dataController = nil;
-    id refQue = [TestHelpers getPrivateValue:context2 ivarName:@"_referenceQueue"];
-    [TestHelpers setPrivateVar:refQue ivarName:@"_context" newVal:nil];
-    
-    //NSSet<NSManagedObject*>* itemsInTex =  [context2 registeredObjects];
-//    while(CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, 1) == kCFRunLoopRunHandledSource){
-//    ;
-//    }
-    //[TestHelpers forceRelease:context2];
-    
-
-  }
-  NSLog(@"%@",context);
-  
-  NSLog(@"%@",context2);
-  
-  //XCTAssertNil(mom);
-  //XCTAssert(nil == context);
-  XCTAssertNil(wdc);
   [super tearDown];
 }
 

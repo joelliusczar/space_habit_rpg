@@ -20,7 +20,7 @@ int main(int argc, const char * argv[]) {
   (void)argv;
   @autoreleasepool {
       [Experiments dumbDataExp];
-      //[NoArcExp allocStruct];
+      //[NoArcExp overRelease];
   }
   
   return 0;

@@ -8,6 +8,7 @@
 
 #import <SHGlobal/Constants.h>
 #import <SHCommon/NSMutableDictionary+Helper.h>
+#import <SHData/NSManagedObjectContext+Helper.h>
 #import "MonsterTransaction_Medium.h"
 
 @interface MonsterTransaction_Medium ()
@@ -25,12 +26,19 @@
   return instance;
 }
 -(void)addCreateTransaction:(Monster *)m{
-  MonsterTransaction *mt = (MonsterTransaction *)[self.dataController
-    constructEmptyEntity:MonsterTransaction.entity];
   NSMutableDictionary *monsterInfo = m.mapable;
-  mt.timestamp = [NSDate date];
-  monsterInfo[TRANSACTION_TYPE_KEY] = TRANSACTION_TYPE_CREATE;
-  mt.misc = [NSMutableDictionary dictToString:monsterInfo];
+  NSManagedObjectContext *context = [self.dataController newBackgroundContext];
+  [context performBlock:^{
+    @autoreleasepool {
+      MonsterTransaction *mt = (MonsterTransaction*)[context newEntity:MonsterTransaction.entity];
+      mt.timestamp = [NSDate date];
+      monsterInfo[TRANSACTION_TYPE_KEY] = TRANSACTION_TYPE_CREATE;
+      mt.misc = [NSMutableDictionary dictToString:monsterInfo];
+      NSError *error = nil;
+      [context save:&error];
+    }
+  }];
+  
 }
 
 @end

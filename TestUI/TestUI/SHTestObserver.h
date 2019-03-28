@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHTestObserver : NSObject<XCTestObservation>
+@interface SHTestObserver : UIApplication<XCTestObservation>
 
 @end
 

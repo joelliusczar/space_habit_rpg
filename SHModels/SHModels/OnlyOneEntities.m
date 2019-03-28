@@ -8,6 +8,7 @@
 
 #import "OnlyOneEntities.h"
 #import <SHGlobal/Constants.h>
+#import <SHData/NSManagedObjectContext+Helper.h>
 #import <SHCommon/SingletonCluster.h>
 
 
@@ -19,8 +20,10 @@
 
 @synthesize theDataInfo = _theDataInfo;
 -(DataInfo *)theDataInfo{
-    if(!_theDataInfo){
-        NSArray<NSManagedObject *> *results = [self.dataController getItem:DATA_INFO_ENTITY_NAME predicate:nil sortBy:@[[[NSSortDescriptor alloc] initWithKey:@"nextZoneId" ascending:NO]]];
+    if(nil == _theDataInfo){
+        NSFetchRequest<DataInfo*> *request = DataInfo.fetchRequest;
+        request.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"nextZoneId" ascending:NO]];
+        NSArray<NSManagedObject *> *results = [self.dataController.mainThreadContext getItemsWithRequest:request];
         NSAssert(results.count<2, @"There are too many entities");
         _theDataInfo = results.count>0?(DataInfo *)results[0]:nil;
         if(!_theDataInfo){
@@ -32,26 +35,30 @@
 
 @synthesize theSettings = _theSettings;
 -(Settings *)theSettings{
-    if(!_theSettings){
-        NSArray<NSManagedObject *> *results = [self.dataController getItem:SETTINGS_ENTITY_NAME predicate:nil sortBy:@[[[NSSortDescriptor alloc] initWithKey:@"createDate" ascending:NO]]];
-        NSAssert(results.count<2, @"There are too many entities");
-        _theSettings = results.count>0?(Settings *)results[0]:nil;
-        if(!_theSettings){
-            _theSettings = [self constructSettingsInitialState];
-        }
+    if(nil == _theSettings){
+      NSFetchRequest<Settings*> *request = Settings.fetchRequest;
+      request.sortDescriptors =@[[[NSSortDescriptor alloc] initWithKey:@"createDate" ascending:NO]];
+      NSArray<NSManagedObject *> *results = [self.dataController.mainThreadContext getItemsWithRequest:request];
+      NSAssert(results.count<2, @"There are too many entities");
+      _theSettings = results.count>0?(Settings *)results[0]:nil;
+      if(!_theSettings){
+          _theSettings = [self constructSettingsInitialState];
+      }
     }
     return _theSettings;
 }
 
 @synthesize theHero = _theHero;
 -(Hero *)theHero{
-    if(!_theHero){
-        NSArray<NSManagedObject *> *results = [self.dataController getItem:HERO_ENTITY_NAME predicate:nil sortBy:@[[[NSSortDescriptor alloc] initWithKey:@"lvl" ascending:NO]]];
-        NSAssert(results.count<2, @"There are too many entities");
-        _theHero = results.count>0?(Hero *)results[0]:nil;
-        if(!_theHero){
-            _theHero = [self constructHeroInitialState];
-        }
+    if(nil == _theHero){
+      NSFetchRequest<Settings*> *request = Settings.fetchRequest;
+      request.sortDescriptors =@[[[NSSortDescriptor alloc] initWithKey:@"lvl" ascending:NO]];
+      NSArray<NSManagedObject *> *results = [self.dataController.mainThreadContext getItemsWithRequest:request];
+      NSAssert(results.count<2, @"There are too many entities");
+      _theHero = results.count>0?(Hero *)results[0]:nil;
+      if(nil == _theHero){
+          _theHero = [self constructHeroInitialState];
+      }
     }
     return _theHero;
 }
@@ -66,14 +73,14 @@
 }
 
 -(DataInfo *)constructDataInfoInitialState{
-    DataInfo *dataInfo = (DataInfo *)[self.dataController constructEmptyEntity: DataInfo.entity];
+    DataInfo *dataInfo = (DataInfo *)[self.dataController.mainThreadContext newEntity:DataInfo.entity];
     dataInfo.nextZoneId = 0;
     dataInfo.gameState = GAME_STATE_UNINITIALIZED;
     return dataInfo;
 }
 
 -(Settings *)constructSettingsInitialState{
-    Settings *settings = (Settings *)[self.dataController constructEmptyEntity:Settings.entity];
+    Settings *settings = (Settings *)[self.dataController.mainThreadContext newEntity:Settings.entity];
     settings.createDate = [NSDate date];
     settings.dayStart = 0;
     settings.deathGoldPenalty = .25;
@@ -90,7 +97,7 @@
 }
 
 -(Hero *)constructHeroInitialState{
-    Hero *hero = (Hero *)[self.dataController constructEmptyEntity:Hero.entity];
+    Hero *hero = (Hero *)[self.dataController.mainThreadContext newEntity:Hero.entity];
     hero.gold = 0;
     hero.lvl = 1;
     hero.maxHp = 50;

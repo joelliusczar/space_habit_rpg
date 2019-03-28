@@ -18,5 +18,6 @@
 -(void)deleteRateValueItem:(RateType)rateType atIndex:(NSInteger)index;
 -(NSDate *)nextDueTime_DAILY:(NSDate *)checkinDate;
 -(NSDate *)nextDueTime_DAILY_INVERSE:(NSDate *)checkinDate;
++(void)setActivenessArray:(NSArray<RateValueItemDict *> *)week activeDays:(BOOL *)activeDays;
 //-(NSDate *)nextDueTime_WEEKLY:(NSDate *)checkinDate;
 @end

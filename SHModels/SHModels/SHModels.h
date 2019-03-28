@@ -60,18 +60,19 @@ FOUNDATION_EXPORT const unsigned char SHModelsVersionString[];
 #import "Hero+CoreDataProperties.h"
 #import "Daily+ActiveDays.h"
 #import "Daily+Mapable.h"
-#import "Daily+DailyHelper.h"
+#import "Daily+Helper.h"
 #import "TodoTransaction+CoreDataProperties.h"
 #import "TodoTransaction+CoreDataClass.h"
 #import "P_Transaction.h"
 #import "Monster+CoreDataProperties.h"
 #import "Monster+CoreDataClass.h"
 #import "SHModels.h"
-#import "Monster+Helper.h"
 #import "ModelTools.h"
 #import "MonsterTransaction_Medium.h"
 #import "ZoneTransaction_Medium.h"
 #import "Zone_Medium.h"
+#import "Monster_Medium.h"
+#import "Daily_Medium.h"
 
 // In this header, you should import all the public headers of your framework using statements like #import <SHModels/PublicHeader.h>
 

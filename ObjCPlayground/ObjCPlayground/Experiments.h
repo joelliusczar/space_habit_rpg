@@ -24,6 +24,12 @@
 
 typedef WeakHolder Varholder;
 
+typedef struct{
+  int firstItem;
+  int secondItem;
+  int thirdItem;
+  void *tstPtr;
+} stupidStruct;
 
 typedef id (^mbTest)(void);
 
@@ -109,6 +115,9 @@ void cMakeHouses(void);
 +(void)passThruARP;
 +(void)clsFromCFunc;
 +(void)dumbDataExp;
++(void)lostMems;
++(void)ptrExp;
++(void)forceNill;
 @end
 
 #import "Experiments+Charlie.h"

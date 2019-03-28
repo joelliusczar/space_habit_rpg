@@ -10,4 +10,5 @@
 
 @interface Retainer : NSObject
 @property (strong,nonatomic) Retainer *r;
+@property (strong,nonatomic) NSObject *obj;
 @end

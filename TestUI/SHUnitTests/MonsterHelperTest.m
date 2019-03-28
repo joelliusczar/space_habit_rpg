@@ -6,7 +6,7 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <SHModels/Monster+Helper.h>
+#import <SHModels/Monster_Medium.h>
 @import TestCommon;
 
 @interface MonsterHelperTest : FrequentCase
@@ -38,8 +38,11 @@ uint monsterHelper_mockRandom(uint range){
     }
 
     -(void)testConstructEmpty{
-        Monster *m = constructEmptyMonster();
-        XCTAssertNotNil(m);
+      Monster_Medium *mm = [Monster_Medium newWithDataController:SHData
+        withInfoDict:SharedGlobal.monsterInfoDictionary];
+      
+      Monster *m = [mm newEmptyMonster];
+      XCTAssertNotNil(m);
     }
     
     -(void)testMonsterOrder{
@@ -63,9 +66,11 @@ uint monsterHelper_mockRandom(uint range){
         int i =0;
         SET_LOW_BOUND();
         SET_UP_BOUND();
-        NSString *s = randomMonsterKey(@"NEBULA");
+        Monster_Medium *mm = [Monster_Medium newWithDataController:SHData
+          withInfoDict:SharedGlobal.monsterInfoDictionary];
+        NSString *s = [mm randomMonsterKey:@"NEBULA"];
         XCTAssertTrue([s isEqualToString:@"DUST_FAIRY"]);
-        s = randomMonsterKey(@"NEBULA");
+        s = [mm randomMonsterKey:@"NEBULA"];
         XCTAssertTrue([s isEqualToString:@"PIRATES"]);
         
     }
@@ -74,7 +79,9 @@ uint monsterHelper_mockRandom(uint range){
         int i =0;
         SET_LOW_BOUND();
         SET_LOW_BOUND();
-        Monster *m = constructRandomMonster(@"NEBULA",32);
+        Monster_Medium *mm = [Monster_Medium newWithDataController:SHData
+          withInfoDict:SharedGlobal.monsterInfoDictionary];
+        Monster *m = [mm newRandomMonster:@"NEBULA" zoneLvl:32];
         XCTAssertTrue([m.fullName isEqualToString:@"Dust Fairy"]);
         XCTAssertEqual(m.lvl,22);
         XCTAssertEqual(m.maxHp,400);
@@ -82,7 +89,7 @@ uint monsterHelper_mockRandom(uint range){
         
         SET_LOW_BOUND();
         SET_UP_BOUND();
-        m = constructRandomMonster(@"NEBULA",32);
+        m = [mm newRandomMonster:@"NEBULA" zoneLvl:32];
         XCTAssertTrue([m.fullName isEqualToString:@"Dust Fairy"]);
         XCTAssertEqual(m.lvl,42);
         XCTAssertEqual(m.maxHp,650);
@@ -90,7 +97,7 @@ uint monsterHelper_mockRandom(uint range){
         
         SET_UP_BOUND();
         SET_LOW_BOUND();
-        m = constructRandomMonster(@"NEBULA",32);
+        m = [mm newRandomMonster:@"NEBULA" zoneLvl:32];
         XCTAssertTrue([m.fullName isEqualToString:@"Petty Space Pirates"]);
         XCTAssertEqual(m.lvl,22);
         XCTAssertEqual(m.maxHp,160);
@@ -98,7 +105,7 @@ uint monsterHelper_mockRandom(uint range){
         
         SET_UP_BOUND();
         SET_UP_BOUND();
-        m = constructRandomMonster(@"NEBULA",32);
+        m = [mm newRandomMonster:@"NEBULA" zoneLvl:32];
         XCTAssertTrue([m.fullName isEqualToString:@"Petty Space Pirates"]);
         XCTAssertEqual(m.lvl,42);
         XCTAssertEqual(m.maxHp,260);

@@ -7,6 +7,7 @@
 //
 
 #import <SHCommon/SHCommon.h>
+#import <SHData/NSManagedObjectContext+Helper.h>
 #import "NSDate+testReplace.h"
 @import SHModels;
 
@@ -23,51 +24,57 @@ NSMutableArray<Daily *> *testDailies = nil;
 @implementation DailyHelperTest
 
 -(void)setUp {
-    [super setUp];
-    testDailies = [NSMutableArray array];
-    int a0=0,a1=0,a2=0,a3=0,a4=0,a5=0;
-    for(int i = 0;i<50;i++){
-        testDailies[i] = [Daily constructDaily];
-        testDailies[i].dailyName = [NSString stringWithFormat:@"daily %d",i];
-        [SHData insertIntoContext:testDailies[i]];
-        NSDate *dailyDate = nil;
-        if(i%10 == 0){
-            //before
-            dailyDate = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:5 minute:0 second:0];
-            a0++;
-        }
-        else if(i%9 == 0){
-            //on
-            dailyDate = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:6 minute:0 second:0];
-            a1++;
-        }
-        else if(i%8 == 0){
-            //after
-            dailyDate = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:7 minute:0 second:0];
-            a2++;
-        }
-        else if(i%7 == 0){
-            //after next actual day
-            dailyDate = [NSDate createDateTimeWithYear:1988 month:4 day:28 hour:2 minute:0 second:0];
-            a3++;
-        }
-        else if(i%6 == 0){
-            //after after
-            dailyDate = [NSDate createDateTimeWithYear:1988 month:4 day:28 hour:8 minute:0 second:0];
-            a4++;
-        }
-        else if(i%5 == 0){
-            //before before
-            dailyDate = [NSDate createDateTimeWithYear:1988 month:4 day:26 hour:8 minute:0 second:0];
-            a5++;
-        }
-        testDailies[i].lastActivationTime = dailyDate;
-        testDailies[i].isActive = YES;
-    }
-    [SHData saveAndWait];
-    
-    //sanity check
-    XCTAssertEqual((a0+a1+a2+a3+a4+a5), 27);
+  [super setUp];
+  testDailies = [NSMutableArray array];
+  NSManagedObjectContext* bgContext = [SHData newBackgroundContext];
+  
+    [bgContext performBlockAndWait:^{
+      int a0=0,a1=0,a2=0,a3=0,a4=0,a5=0;
+      for(int i = 0;i<50;i++){
+          testDailies[i] = (Daily*)[NSManagedObjectContext newEntityUnattached:Daily.entity];
+          testDailies[i].dailyName = [NSString stringWithFormat:@"daily %d",i];
+          [bgContext insertObject:testDailies[i]];
+          NSDate *dailyDate = nil;
+          if(i%10 == 0){
+              //before
+              dailyDate = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:5 minute:0 second:0];
+              a0++;
+          }
+          else if(i%9 == 0){
+              //on
+              dailyDate = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:6 minute:0 second:0];
+              a1++;
+          }
+          else if(i%8 == 0){
+              //after
+              dailyDate = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:7 minute:0 second:0];
+              a2++;
+          }
+          else if(i%7 == 0){
+              //after next actual day
+              dailyDate = [NSDate createDateTimeWithYear:1988 month:4 day:28 hour:2 minute:0 second:0];
+              a3++;
+          }
+          else if(i%6 == 0){
+              //after after
+              dailyDate = [NSDate createDateTimeWithYear:1988 month:4 day:28 hour:8 minute:0 second:0];
+              a4++;
+          }
+          else if(i%5 == 0){
+              //before before
+              dailyDate = [NSDate createDateTimeWithYear:1988 month:4 day:26 hour:8 minute:0 second:0];
+              a5++;
+          }
+          testDailies[i].lastActivationTime = dailyDate;
+          testDailies[i].isActive = YES;
+      }
+      NSError *error = nil;
+      [bgContext save:&error];
+      
+      //sanity check
+      XCTAssertEqual((a0+a1+a2+a3+a4+a5), 27);
+    }];
+  
 }
 
 -(void)tearDown {
@@ -76,21 +83,25 @@ NSMutableArray<Daily *> *testDailies = nil;
 }
 
 -(void)testGetAnything{
-    NSFetchedResultsController* resultsController = [SHData getItemFetcher:Daily.fetchRequest predicate:nil sortBy:@[[[NSSortDescriptor alloc] initWithKey:@"urgency" ascending:NO]]];
-    NSError *error;
-    if(![resultsController performFetch:&error]){
-        NSLog(@"Error fetching data: %@", error.localizedFailureReason);
-        XCTAssertNil(error);
-    }
-    XCTAssertEqual(resultsController.fetchedObjects.count,50);
+  NSManagedObjectContext *context = SHData.mainThreadContext;
+  NSFetchRequest<Daily*> *request = Daily.fetchRequest;
+  request.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"urgency" ascending:NO]];
+  NSFetchedResultsController* resultsController = [context getItemFetcher:request];
+  NSError *error;
+  if(![resultsController performFetch:&error]){
+      NSLog(@"Error fetching data: %@", error.localizedFailureReason);
+      XCTAssertNil(error);
+  }
+  XCTAssertEqual(resultsController.fetchedObjects.count,50);
 }
 
 -(void)testRetrieveUnfinishedDailies{
-    
+    Daily_Medium *dm = [Daily_Medium newWithSHData:SHData];
+    NSManagedObjectContext *bgContext = [SHData newBackgroundContext];
     NSDate *testDate = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:6 minute:0 second:0];
-    NSFetchedResultsController *results = [Daily getUnfinishedDailiesController:testDate];
-    NSFetchedResultsController *results2 = [Daily getFinishedDailiesController:testDate];
-    NSError *error;
+    NSFetchedResultsController *results = [dm getUnfinishedDailiesController:testDate withContext:bgContext];
+    NSFetchedResultsController *results2 = [dm getFinishedDailiesController:testDate withContext:bgContext];
+    NSError *error = nil;
     if(![results performFetch:&error]){
         
         NSLog(@"Error fetching data: %@", error.localizedFailureReason);
@@ -103,33 +114,44 @@ NSMutableArray<Daily *> *testDailies = nil;
     }
     XCTAssertEqual(results.fetchedObjects.count,31);
     XCTAssertEqual(results2.fetchedObjects.count,19);
-    //add save new item
-    Daily *d = [Daily constructDaily];
-    d.dailyName = @"addedDaily";
-    [SHData insertIntoContext:d];
-    //after insert, before fetch
-    XCTAssertEqual(results.fetchedObjects.count,31);
-    XCTAssertEqual(results2.fetchedObjects.count,19);
-    
-    if(![results performFetch:&error]){
-        NSLog(@"Error fetching data: %@", error.localizedFailureReason);
-        XCTAssertNil(error);
-    }
-    if(![results2 performFetch:&error]){
-        NSLog(@"Error fetching data: %@", error.localizedFailureReason);
-        XCTAssertNil(error);
-    }
-    //after insert, after fetch, before save
-    XCTAssertEqual(results.fetchedObjects.count,32);
-    XCTAssertEqual(results2.fetchedObjects.count,19);
-    //saving is unecessary to be included in fetch results
-    
-    [SHData beginUsingTemporaryContext];
-    Daily *d2 = [Daily constructDaily];
-    d2.dailyName = @"addedDaily2";
-    [SHData insertIntoContext:d2];
-    [SHData saveAndWait];
-    [SHData endUsingTemporaryContext];
+  
+  
+    [bgContext performBlockAndWait:^{
+      //add save new item
+      Daily *d = (Daily*)[NSManagedObjectContext newEntityUnattached:Daily.entity];
+      d.dailyName = @"addedDaily";
+      [bgContext insertObject:d];
+      //after insert, before fetch
+      XCTAssertEqual(results.fetchedObjects.count,31);
+      XCTAssertEqual(results2.fetchedObjects.count,19);
+      NSError *error = nil;
+      if(![results performFetch:&error]){
+          NSLog(@"Error fetching data: %@", error.localizedFailureReason);
+          XCTAssertNil(error);
+      }
+      if(![results2 performFetch:&error]){
+          NSLog(@"Error fetching data: %@", error.localizedFailureReason);
+          XCTAssertNil(error);
+      }
+      //after insert, after fetch, before save
+      XCTAssertEqual(results.fetchedObjects.count,32);
+      XCTAssertEqual(results2.fetchedObjects.count,19);
+      //saving is unecessary to be included in fetch results
+    }];
+  
+    NSManagedObjectContext *bgContext2 = [SHData newBackgroundContext];
+// keeping this here to help mark what the test was originally about
+//   [SHData beginUsingTemporaryContext];
+  
+    [bgContext2 performBlockAndWait:^{
+      Daily *d2 = (Daily*)[NSManagedObjectContext newEntityUnattached:Daily.entity];
+      d2.dailyName = @"addedDaily2";
+      [bgContext2 insertObject:d2];
+      NSError *error = nil;
+      [bgContext2 save:&error];
+    }];
+  
+//    [SHData endUsingTemporaryContext];
     
     if(![results performFetch:&error]){
         NSLog(@"Error fetching data: %@", error.localizedFailureReason);
@@ -158,7 +180,7 @@ NSMutableArray<Daily *> *testDailies = nil;
 
 -(void)testDaysUntilDue{
     [NSDate swizzleThatShit];
-    Daily *d = [Daily constructDaily];
+    Daily *d = (Daily*)[NSManagedObjectContext newEntityUnattached:Daily.entity];
     d.lastActivationTime = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:13 minute:24 second:11
       timeZone: [NSTimeZone timeZoneForSecondsFromGMT:-18000]];
     //if the rate is one, it should always result in being 0 days until Daily is due

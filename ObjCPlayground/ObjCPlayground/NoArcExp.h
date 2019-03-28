@@ -14,10 +14,12 @@ typedef struct{
   int firstItem;
   int secondItem;
   int thirdItem;
+  void *tstPtr;
 } dumbStruct;
 
 @interface NoArcExp : NSObject
 +(void)objectToCharPtr;
 +(void)retainShit;
 +(void)allocStruct;
++(void)overRelease;
 @end

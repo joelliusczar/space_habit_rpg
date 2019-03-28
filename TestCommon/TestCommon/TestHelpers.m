@@ -55,4 +55,18 @@ newVal:(id)newVal{
 }
 
 
++(NSArray<NSString*>*)getIvarListOfClass:(Class)cls{
+  if(nil == cls) return [NSArray array];
+  uint32_t outCount = 0;
+  Ivar* ivars = class_copyIvarList(cls, &outCount);
+  NSMutableArray* results = [NSMutableArray array];
+  for(uint32_t i = 0; i < outCount;i++){
+    NSString* ivarName = [NSString stringWithUTF8String:ivar_getName(*ivars)];
+     [results addObject: ivarName];
+     ivars++;
+  }
+  return [NSArray arrayWithArray:results];
+}
+
+
 @end

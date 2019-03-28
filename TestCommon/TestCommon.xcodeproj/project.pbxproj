@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		27004253205251B3001FA0B5 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27004252205251B3001FA0B5 /* SHModels.framework */; };
+		273009F822446228006E419C /* NSManagedObjectContext+Hijack.h in Headers */ = {isa = PBXBuildFile; fileRef = 273009F622446228006E419C /* NSManagedObjectContext+Hijack.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		273009F922446228006E419C /* NSManagedObjectContext+Hijack.m in Sources */ = {isa = PBXBuildFile; fileRef = 273009F722446228006E419C /* NSManagedObjectContext+Hijack.m */; };
 		274EFB77204F9AEA00CB3C4C /* TestCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB75204F9AEA00CB3C4C /* TestCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		274EFB82204F9B7700CB3C4C /* TestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB7D204F9B7600CB3C4C /* TestHelpers.m */; };
 		274EFB83204F9B7700CB3C4C /* FrequentCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB7E204F9B7700CB3C4C /* FrequentCase.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -23,6 +25,8 @@
 /* Begin PBXFileReference section */
 		27004252205251B3001FA0B5 /* SHModels.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHModels.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHModels.framework"; sourceTree = "<group>"; };
 		2716921C208EA8D80059A58E /* libSH_CTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_CTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		273009F622446228006E419C /* NSManagedObjectContext+Hijack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+Hijack.h"; sourceTree = "<group>"; };
+		273009F722446228006E419C /* NSManagedObjectContext+Hijack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+Hijack.m"; sourceTree = "<group>"; };
 		274EFB72204F9AEA00CB3C4C /* TestCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TestCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		274EFB75204F9AEA00CB3C4C /* TestCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestCommon.h; sourceTree = "<group>"; };
 		274EFB76204F9AEA00CB3C4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 				27B7AF24223094D000FAA229 /* TestDummy.m */,
 				27B7AF292232061A00FAA229 /* DumbCoreDataController.h */,
 				27B7AF2A2232061A00FAA229 /* DumbCoreDataController.m */,
+				273009F622446228006E419C /* NSManagedObjectContext+Hijack.h */,
+				273009F722446228006E419C /* NSManagedObjectContext+Hijack.m */,
 			);
 			path = TestCommon;
 			sourceTree = "<group>";
@@ -119,6 +125,7 @@
 				274EFB77204F9AEA00CB3C4C /* TestCommon.h in Headers */,
 				27B7AF2B2232061A00FAA229 /* DumbCoreDataController.h in Headers */,
 				274EFB86204F9B7700CB3C4C /* TestHelpers.h in Headers */,
+				273009F822446228006E419C /* NSManagedObjectContext+Hijack.h in Headers */,
 				274EFB85204F9B7700CB3C4C /* TestGlobals.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -208,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				273009F922446228006E419C /* NSManagedObjectContext+Hijack.m in Sources */,
 				27B7AF26223094D000FAA229 /* TestDummy.m in Sources */,
 				274EFB82204F9B7700CB3C4C /* TestHelpers.m in Sources */,
 				27B7AF2C2232061A00FAA229 /* DumbCoreDataController.m in Sources */,

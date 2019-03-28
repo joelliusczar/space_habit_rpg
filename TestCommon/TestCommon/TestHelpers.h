@@ -25,4 +25,6 @@ typedef void (*msg_send)(id,SEL);
 
 +(NSArray<NSString*>*)getMethodList:(id)obj;
 +(NSArray<NSString*>*)getMethodListOfClass:(Class)cls;
++(NSArray<NSString*>*)getIvarListOfClass:(Class)cls;
+
 @end

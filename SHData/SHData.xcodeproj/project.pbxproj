@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2747C3DB2043C95100FB5669 /* CoreDataStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3D82043C95100FB5669 /* CoreDataStackController.m */; };
+		273009FC2249AE46006E419C /* NSManagedObjectContext+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 273009FA2249AE46006E419C /* NSManagedObjectContext+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		273009FD2249AE46006E419C /* NSManagedObjectContext+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 273009FB2249AE46006E419C /* NSManagedObjectContext+Helper.m */; };
+		2747C3DB2043C95100FB5669 /* SHCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3D82043C95100FB5669 /* SHCoreData.m */; };
 		2747C3DC2043C95100FB5669 /* P_CoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3D92043C95100FB5669 /* P_CoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2747C3DD2043C95100FB5669 /* CoreDataStackController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3DA2043C95100FB5669 /* CoreDataStackController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2747C3DD2043C95100FB5669 /* SHCoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3DA2043C95100FB5669 /* SHCoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C4512046235500FB5669 /* SingletonCluster+Data.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C44F2046235500FB5669 /* SingletonCluster+Data.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C4522046235500FB5669 /* SingletonCluster+Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4502046235500FB5669 /* SingletonCluster+Data.m */; };
 		27730B992041E0DE003BEB6C /* SHData.h in Headers */ = {isa = PBXBuildFile; fileRef = 27730B972041E0DE003BEB6C /* SHData.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -17,9 +19,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2747C3D82043C95100FB5669 /* CoreDataStackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataStackController.m; sourceTree = "<group>"; };
+		273009FA2249AE46006E419C /* NSManagedObjectContext+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+Helper.h"; sourceTree = "<group>"; };
+		273009FB2249AE46006E419C /* NSManagedObjectContext+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+Helper.m"; sourceTree = "<group>"; };
+		2747C3D82043C95100FB5669 /* SHCoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCoreData.m; sourceTree = "<group>"; };
 		2747C3D92043C95100FB5669 /* P_CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_CoreData.h; sourceTree = "<group>"; };
-		2747C3DA2043C95100FB5669 /* CoreDataStackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataStackController.h; sourceTree = "<group>"; };
+		2747C3DA2043C95100FB5669 /* SHCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCoreData.h; sourceTree = "<group>"; };
 		2747C44F2046235500FB5669 /* SingletonCluster+Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SingletonCluster+Data.h"; sourceTree = "<group>"; };
 		2747C4502046235500FB5669 /* SingletonCluster+Data.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SingletonCluster+Data.m"; sourceTree = "<group>"; };
 		27730B942041E0DE003BEB6C /* SHData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,8 +84,10 @@
 		27730B962041E0DE003BEB6C /* SHData */ = {
 			isa = PBXGroup;
 			children = (
-				2747C3DA2043C95100FB5669 /* CoreDataStackController.h */,
-				2747C3D82043C95100FB5669 /* CoreDataStackController.m */,
+				273009FA2249AE46006E419C /* NSManagedObjectContext+Helper.h */,
+				273009FB2249AE46006E419C /* NSManagedObjectContext+Helper.m */,
+				2747C3DA2043C95100FB5669 /* SHCoreData.h */,
+				2747C3D82043C95100FB5669 /* SHCoreData.m */,
 				2747C3D92043C95100FB5669 /* P_CoreData.h */,
 				27730B982041E0DE003BEB6C /* Info.plist */,
 				2747C44F2046235500FB5669 /* SingletonCluster+Data.h */,
@@ -100,7 +106,8 @@
 			files = (
 				2747C3DC2043C95100FB5669 /* P_CoreData.h in Headers */,
 				27730B992041E0DE003BEB6C /* SHData.h in Headers */,
-				2747C3DD2043C95100FB5669 /* CoreDataStackController.h in Headers */,
+				2747C3DD2043C95100FB5669 /* SHCoreData.h in Headers */,
+				273009FC2249AE46006E419C /* NSManagedObjectContext+Helper.h in Headers */,
 				2747C4512046235500FB5669 /* SingletonCluster+Data.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -191,7 +198,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2747C4522046235500FB5669 /* SingletonCluster+Data.m in Sources */,
-				2747C3DB2043C95100FB5669 /* CoreDataStackController.m in Sources */,
+				2747C3DB2043C95100FB5669 /* SHCoreData.m in Sources */,
+				273009FD2249AE46006E419C /* NSManagedObjectContext+Helper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

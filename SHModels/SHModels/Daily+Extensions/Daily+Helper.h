@@ -9,12 +9,8 @@
 #import "Daily+CoreDataClass.h"
 
 @interface Daily (Helper)
-+(Daily *)constructDaily;
-+(NSFetchedResultsController *)getUnfinishedDailiesController:(NSDate *)todayStart;
-+(NSFetchedResultsController *)getFinishedDailiesController:(NSDate *)todayStart;
 +(NSMutableArray<RateValueItemDict *> *)buildWeek:(BOOL *)activeDays scaler:(int)scaler;
 +(NSMutableArray<RateValueItemDict *> *)buildEmptyWeek;
-+(void)setActivenessArray:(NSArray<RateValueItemDict *> *)week activeDays:(BOOL *)activeDays;
 +(NSDate *)previousDueDate_WEEKLY:(NSDate *)lastDueDate checkinDate:(NSDate *)checkinDate
     week:(NSArray<RateValueItemDict *> *)week
     weekScaler:(NSUInteger)weekScaler;

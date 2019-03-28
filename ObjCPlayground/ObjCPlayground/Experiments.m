@@ -752,8 +752,8 @@ NSString *convertCharToBin(unsigned char input){
 -(Varholder*)_shdataStuff{
   NSBundle *testBundle = [NSBundle bundleForClass:NSClassFromString(@"OnlyOneEntities")];
   Varholder* wh = [Varholder new];
-  CoreDataStackController* dc = nil;
-  dc = [CoreDataStackController newWithBundle:testBundle storeType:NSInMemoryStoreType];
+  SHCoreData* dc = nil;
+  dc = [SHCoreData newWithBundle:testBundle storeType:NSInMemoryStoreType];
   
   Zone_Medium* zoneMed = [Zone_Medium newWithDataController:dc
     withResourceUtil:[[ResourceUtility alloc] init] withInfoDict:[ZoneInfoDictionary new]];
@@ -804,8 +804,8 @@ NSString *convertCharToBin(unsigned char input){
 -(Varholder*)_stripedDownSavedStuff{
   NSBundle *testBundle = [NSBundle bundleForClass:NSClassFromString(@"OnlyOneEntities")];
   Varholder* wh = [Varholder new];
-  CoreDataStackController* dc = nil;
-  dc = [CoreDataStackController newWithBundle:testBundle storeType:NSInMemoryStoreType];
+  SHCoreData* dc = nil;
+  dc = [SHCoreData newWithBundle:testBundle storeType:NSInMemoryStoreType];
   
   Zone_Medium* zoneMed = [Zone_Medium newWithDataController:dc
     withResourceUtil:[[ResourceUtility alloc] init] withInfoDict:[ZoneInfoDictionary new]];
@@ -984,49 +984,20 @@ NSString *convertCharToBin(unsigned char input){
 }
 
 
-void sometingAtContext(NSManagedObjectContext* context){
-  NSLog(@"%@",context);
-}
-
-static NSManagedObjectContext *staticContext;
-
-+(void)dumbDataExp{
-
++(void)dumbDataPrv{
   DumbDataSaver __weak *wdds = nil;
   NSManagedObjectContext* __weak wcontext = nil;
-  
+  NSManagedObjectContext* __weak wpcontext = nil;
   @autoreleasepool {
     
     DumbDataSaver *dds = [DumbDataSaver new];
     wdds = dds;
-//    dds.writeContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-//    dds.writeContext.persistentStoreCoordinator = dds.coordinator;
-//    dds.writeContext.name = @"writer";
-//
-//    [dds.writeContext performBlockAndWait:^{
-//      Zone* z1 = (Zone*)[[NSManagedObject alloc] initWithEntity:Zone.entity insertIntoManagedObjectContext:nil];
-//      z1.isFront = YES;
-//      z1.zoneKey = @"NEBULA";
-//      [dds.writeContext insertObject:z1];
-//    }];
-//
-//    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
-//
-//    [dds.writeContext performBlock:^{
-//      @autoreleasepool {
-//        BOOL success;
-//        NSError *error = nil;
-//        NSLog(@"In save");
-//        if(!(success = [dds.writeContext save:&error])){
-//        }
-//        dispatch_semaphore_signal(sema);
-//      }
-//    }];
-//
-//    BOOL isDone = waitForSema(sema, 1);
-//    (void)isDone;
+//    NSManagedObjectContext* parentContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+//    parentContext.persistentStoreCoordinator = dds.coordinator;
+//    wpcontext = parentContext;
     NSManagedObjectContext* context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     wcontext = context;
+    //context.parentContext = parentContext;
     context.persistentStoreCoordinator = dds.coordinator;
     context.name = @"main queue";
     
@@ -1034,27 +1005,76 @@ static NSManagedObjectContext *staticContext;
     NSSortDescriptor *sortByIsFront = [[NSSortDescriptor alloc] initWithKey:@"isFront" ascending:NO];
     request.sortDescriptors = @[sortByIsFront];
     
+    Ivar ivar = class_getInstanceVariable(NSManagedObjectContext.class,"_dispatchQueue");
+    ptrdiff_t diff = ivar_getOffset(ivar);
+    unsigned char* byteStart = (unsigned char*)(__bridge void*)context;
+    dispatch_queue_t dispatchQ = (__bridge dispatch_queue_t)*(void **)(byteStart + diff);
+    
+    dispatch_async(dispatchQ,^{
+      NSLog(@"First on queue");
+    });
+    
     [context performBlockAndWait:^{
       NSError* err = nil;
       NSArray* results = [context executeFetchRequest:request error:&err];
-      while(false);
+      (void)results;
     }];
-//    }
-    //wdds.readContext = readContext;
-    //[wdds setReader:readContext];
-
-    //[readContext reset];
-    //[readContext processPendingChanges];
-    //readContext.persistentStoreCoordinator = nil;
-    //[dds.coordinator destroyPersistentStoreAtURL:dds.storeURL withType:NSInMemoryStoreType options:nil error:&error];
     id refQue = [TestHelpers getPrivateValue:context ivarName:@"_referenceQueue"];
     [TestHelpers setPrivateVar:refQue ivarName:@"_context" newVal:nil];
     
+    dispatch_async(dispatchQ,^{
+      NSLog(@"Hello from this other queue!");
+    });
+    
    NSLog(@"%@ 6",context);
-    void* bad = (__bridge void*)context;
-    CFRelease(bad);
+//    void* bad = (__bridge void*)context;
+//    CFRelease(bad);
   }
   NSLog(@"%@",wcontext);
+}
+
++(void)dumbDataExp{
+  //for(int i = 0;i < 5;i++){
+    [self dumbDataPrv];
+  //}
+
+}
+
++(void)lostMems{
+  
+  __weak House* wh = nil;
+  @autoreleasepool {
+    House *h = [House new];
+    wh = h;
+    stupidStruct *ss = malloc(sizeof(stupidStruct));
+    ss->firstItem = 18;
+    ss->secondItem = 77;
+    ss->thirdItem = 76;
+    ss->tstPtr = (__bridge_retained void*)h;
+  }
+}
+
++(void)ptrExp{
+  NSObject *obj = [NSObject new];
+  uintptr_t addr = (uintptr_t)obj;
+  uintptr_t addr2 = (uintptr_t)&obj;
+  uintptr_t indir = (uintptr_t)(*(void **)addr2);
+  char * value = *(char **)addr2;
+  void* ptr = (void*)addr;
+  NSLog(@"0x%016lx",addr);
+  addr++;
+}
+
+
++(void)forceNill{
+  Retainer *r = [Retainer new];
+  __weak NSObject* wob = nil;
+  r.obj = [NSObject new];
+  @autoreleasepool {
+    wob = r.obj;
+  }
+  
+  [TestHelpers setPrivateVar:r ivarName:@"_obj" newVal:nil];
 }
 
 @end

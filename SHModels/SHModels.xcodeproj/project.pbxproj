@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27300A002249BAD2006E419C /* Monster_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 273009FE2249BAD2006E419C /* Monster_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27300A012249BAD2006E419C /* Monster_Medium.m in Sources */ = {isa = PBXBuildFile; fileRef = 273009FF2249BAD2006E419C /* Monster_Medium.m */; };
+		27300A04224AE713006E419C /* Daily_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 27300A02224AE713006E419C /* Daily_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27300A05224AE713006E419C /* Daily_Medium.m in Sources */ = {isa = PBXBuildFile; fileRef = 27300A03224AE713006E419C /* Daily_Medium.m */; };
+		27300A08224AED76006E419C /* Daily+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27300A06224AED76006E419C /* Daily+Helper.m */; };
+		27300A09224AED76006E419C /* Daily+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27300A07224AED76006E419C /* Daily+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2736A6CA2214D7FC006CB907 /* Zone_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 2736A6C82214D7FC006CB907 /* Zone_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2736A6CB2214D7FC006CB907 /* Zone_Medium.m in Sources */ = {isa = PBXBuildFile; fileRef = 2736A6C92214D7FC006CB907 /* Zone_Medium.m */; };
 		274295EA21FAA19300EE0132 /* ZoneTransaction_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 274295E821FAA19300EE0132 /* ZoneTransaction_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -88,12 +94,10 @@
 		2747C3942043AF7D00FB5669 /* Zone+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C34C2043AF7C00FB5669 /* Zone+CoreDataProperties.m */; };
 		2747C3952043AF7D00FB5669 /* ZoneTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C34D2043AF7C00FB5669 /* ZoneTransaction+CoreDataProperties.m */; };
 		2747C3AA2043B51300FB5669 /* P_DueDateItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3A92043B51300FB5669 /* P_DueDateItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2747C3B22043B53100FB5669 /* Daily+DailyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3AC2043B53100FB5669 /* Daily+DailyHelper.m */; };
 		2747C3B32043B53100FB5669 /* Daily+Mapable.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3AD2043B53100FB5669 /* Daily+Mapable.m */; };
 		2747C3B42043B53100FB5669 /* Daily+ActiveDays.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3AE2043B53100FB5669 /* Daily+ActiveDays.m */; };
 		2747C3B52043B53100FB5669 /* Daily+ActiveDays.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3AF2043B53100FB5669 /* Daily+ActiveDays.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C3B62043B53100FB5669 /* Daily+Mapable.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3B02043B53100FB5669 /* Daily+Mapable.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2747C3B72043B53100FB5669 /* Daily+DailyHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3B12043B53100FB5669 /* Daily+DailyHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C3BD2043B67200FB5669 /* RateTypeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3BB2043B67200FB5669 /* RateTypeHelper.m */; };
 		2747C3BE2043B67200FB5669 /* RateTypeHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3BC2043B67200FB5669 /* RateTypeHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C3C62043B83C00FB5669 /* P_StoryItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3C52043B83C00FB5669 /* P_StoryItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -110,8 +114,6 @@
 		2747C4662046320E00FB5669 /* ModelConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4642046320E00FB5669 /* ModelConstants.m */; };
 		2747C4CE2048D8FE00FB5669 /* ZoneInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2747C4CD2048D8FE00FB5669 /* ZoneInfo.plist */; };
 		2747C4D02048D90700FB5669 /* MonsterInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2747C4CF2048D90700FB5669 /* MonsterInfo.plist */; };
-		2747C4D62048DA8300FB5669 /* Monster+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4D42048DA8300FB5669 /* Monster+Helper.m */; };
-		2747C4D72048DA8300FB5669 /* Monster+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C4D52048DA8300FB5669 /* Monster+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C513204A471D00FB5669 /* SuffixList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2747C512204A471D00FB5669 /* SuffixList.plist */; };
 		274EFB66204E462E00CB3C4C /* ModelTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB64204E462E00CB3C4C /* ModelTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		274EFB67204E462E00CB3C4C /* ModelTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB65204E462E00CB3C4C /* ModelTools.m */; };
@@ -127,6 +129,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		273009FE2249BAD2006E419C /* Monster_Medium.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Monster_Medium.h; sourceTree = "<group>"; };
+		273009FF2249BAD2006E419C /* Monster_Medium.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Monster_Medium.m; sourceTree = "<group>"; };
+		27300A02224AE713006E419C /* Daily_Medium.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Daily_Medium.h; sourceTree = "<group>"; };
+		27300A03224AE713006E419C /* Daily_Medium.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Daily_Medium.m; sourceTree = "<group>"; };
+		27300A06224AED76006E419C /* Daily+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Daily+Helper.m"; sourceTree = "<group>"; };
+		27300A07224AED76006E419C /* Daily+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Daily+Helper.h"; sourceTree = "<group>"; };
 		2736A6C82214D7FC006CB907 /* Zone_Medium.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Zone_Medium.h; sourceTree = "<group>"; };
 		2736A6C92214D7FC006CB907 /* Zone_Medium.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Zone_Medium.m; sourceTree = "<group>"; };
 		274295E821FAA19300EE0132 /* ZoneTransaction_Medium.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZoneTransaction_Medium.h; sourceTree = "<group>"; };
@@ -224,12 +232,10 @@
 		2747C34C2043AF7C00FB5669 /* Zone+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Zone+CoreDataProperties.m"; sourceTree = "<group>"; };
 		2747C34D2043AF7C00FB5669 /* ZoneTransaction+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ZoneTransaction+CoreDataProperties.m"; sourceTree = "<group>"; };
 		2747C3A92043B51300FB5669 /* P_DueDateItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_DueDateItem.h; sourceTree = "<group>"; };
-		2747C3AC2043B53100FB5669 /* Daily+DailyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Daily+DailyHelper.m"; sourceTree = "<group>"; };
 		2747C3AD2043B53100FB5669 /* Daily+Mapable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Daily+Mapable.m"; sourceTree = "<group>"; };
 		2747C3AE2043B53100FB5669 /* Daily+ActiveDays.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Daily+ActiveDays.m"; sourceTree = "<group>"; };
 		2747C3AF2043B53100FB5669 /* Daily+ActiveDays.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Daily+ActiveDays.h"; sourceTree = "<group>"; };
 		2747C3B02043B53100FB5669 /* Daily+Mapable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Daily+Mapable.h"; sourceTree = "<group>"; };
-		2747C3B12043B53100FB5669 /* Daily+DailyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Daily+DailyHelper.h"; sourceTree = "<group>"; };
 		2747C3BB2043B67200FB5669 /* RateTypeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateTypeHelper.m; sourceTree = "<group>"; };
 		2747C3BC2043B67200FB5669 /* RateTypeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateTypeHelper.h; sourceTree = "<group>"; };
 		2747C3C52043B83C00FB5669 /* P_StoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_StoryItem.h; sourceTree = "<group>"; };
@@ -246,8 +252,6 @@
 		2747C4642046320E00FB5669 /* ModelConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelConstants.m; sourceTree = "<group>"; };
 		2747C4CD2048D8FE00FB5669 /* ZoneInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ZoneInfo.plist; sourceTree = "<group>"; };
 		2747C4CF2048D90700FB5669 /* MonsterInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MonsterInfo.plist; sourceTree = "<group>"; };
-		2747C4D42048DA8300FB5669 /* Monster+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Monster+Helper.m"; sourceTree = "<group>"; };
-		2747C4D52048DA8300FB5669 /* Monster+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Monster+Helper.h"; sourceTree = "<group>"; };
 		2747C512204A471D00FB5669 /* SuffixList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SuffixList.plist; sourceTree = "<group>"; };
 		274EFB64204E462E00CB3C4C /* ModelTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelTools.h; sourceTree = "<group>"; };
 		274EFB65204E462E00CB3C4C /* ModelTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelTools.m; sourceTree = "<group>"; };
@@ -271,8 +275,8 @@
 			files = (
 				27EE2ABE213C955E005A8E1F /* libSH_C.a in Frameworks */,
 				27B15AA320524B6B0045B226 /* SHGlobal.framework in Frameworks */,
-				27B15AA120524B5D0045B226 /* SHData.framework in Frameworks */,
 				27B15A9F20524B4F0045B226 /* SHCommon.framework in Frameworks */,
+				27B15AA120524B5D0045B226 /* SHData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,12 +562,14 @@
 		2747C3AB2043B53100FB5669 /* Daily+Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				2747C3B12043B53100FB5669 /* Daily+DailyHelper.h */,
-				2747C3AC2043B53100FB5669 /* Daily+DailyHelper.m */,
+				27300A07224AED76006E419C /* Daily+Helper.h */,
+				27300A06224AED76006E419C /* Daily+Helper.m */,
 				2747C3AD2043B53100FB5669 /* Daily+Mapable.m */,
 				2747C3AE2043B53100FB5669 /* Daily+ActiveDays.m */,
 				2747C3AF2043B53100FB5669 /* Daily+ActiveDays.h */,
 				2747C3B02043B53100FB5669 /* Daily+Mapable.h */,
+				27300A02224AE713006E419C /* Daily_Medium.h */,
+				27300A03224AE713006E419C /* Daily_Medium.m */,
 			);
 			path = "Daily+Extensions";
 			sourceTree = "<group>";
@@ -591,8 +597,8 @@
 		2747C4D32048DA8300FB5669 /* Monster+Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				2747C4D52048DA8300FB5669 /* Monster+Helper.h */,
-				2747C4D42048DA8300FB5669 /* Monster+Helper.m */,
+				273009FE2249BAD2006E419C /* Monster_Medium.h */,
+				273009FF2249BAD2006E419C /* Monster_Medium.m */,
 			);
 			name = "Monster+Extensions";
 			path = "SHModels/Monster+Extensions";
@@ -618,7 +624,6 @@
 				2747C36B2043AF7D00FB5669 /* Reminder+CoreDataProperties.h in Headers */,
 				2747C3692043AF7D00FB5669 /* MonsterTransaction+CoreDataClass.h in Headers */,
 				2747C3682043AF7D00FB5669 /* Hero+CoreDataClass.h in Headers */,
-				2747C3B72043B53100FB5669 /* Daily+DailyHelper.h in Headers */,
 				2747C3602043AF7D00FB5669 /* Habit+CoreDataProperties.h in Headers */,
 				2747C3652043AF7D00FB5669 /* DailyTransaction+CoreDataProperties.h in Headers */,
 				2747C3B62043B53100FB5669 /* Daily+Mapable.h in Headers */,
@@ -662,12 +667,14 @@
 				2747C3622043AF7D00FB5669 /* DailySubTask+CoreDataProperties.h in Headers */,
 				2747C3522043AF7C00FB5669 /* Settings+CoreDataProperties.h in Headers */,
 				2747C3B52043B53100FB5669 /* Daily+ActiveDays.h in Headers */,
-				2747C4D72048DA8300FB5669 /* Monster+Helper.h in Headers */,
 				2781553721805C88005C5279 /* StoryItemDictionary.h in Headers */,
 				274295EE21FAA33200EE0132 /* MonsterTransaction_Medium.h in Headers */,
 				274EFB66204E462E00CB3C4C /* ModelTools.h in Headers */,
 				274295EA21FAA19300EE0132 /* ZoneTransaction_Medium.h in Headers */,
 				2736A6CA2214D7FC006CB907 /* Zone_Medium.h in Headers */,
+				27300A09224AED76006E419C /* Daily+Helper.h in Headers */,
+				27300A002249BAD2006E419C /* Monster_Medium.h in Headers */,
+				27300A04224AE713006E419C /* Daily_Medium.h in Headers */,
 				27815533217D721C005C5279 /* InfoDictionary.h in Headers */,
 				2747C38C2043AF7D00FB5669 /* Good+CoreDataProperties.h in Headers */,
 			);
@@ -765,7 +772,6 @@
 			files = (
 				2747C3B42043B53100FB5669 /* Daily+ActiveDays.m in Sources */,
 				2747C3642043AF7D00FB5669 /* DailyTransaction+CoreDataClass.m in Sources */,
-				2747C4D62048DA8300FB5669 /* Monster+Helper.m in Sources */,
 				2747C36F2043AF7D00FB5669 /* Settings+CoreDataProperties.m in Sources */,
 				274295EF21FAA33200EE0132 /* MonsterTransaction_Medium.m in Sources */,
 				2747C3812043AF7D00FB5669 /* Good+CoreDataClass.m in Sources */,
@@ -784,6 +790,7 @@
 				2747C3922043AF7D00FB5669 /* GoodTransaction+CoreDataProperties.m in Sources */,
 				2747C38A2043AF7D00FB5669 /* Suffix+CoreDataProperties.m in Sources */,
 				2747C37D2043AF7D00FB5669 /* Good+CoreDataProperties.m in Sources */,
+				27300A012249BAD2006E419C /* Monster_Medium.m in Sources */,
 				27815534217D721C005C5279 /* InfoDictionary.m in Sources */,
 				2747C45C20462D4800FB5669 /* OnlyOneEntities.m in Sources */,
 				2747C3052043AE3E00FB5669 /* Model.xcdatamodeld in Sources */,
@@ -800,6 +807,7 @@
 				2747C34E2043AF7C00FB5669 /* Todo+CoreDataProperties.m in Sources */,
 				2747C38F2043AF7D00FB5669 /* MonsterTransaction+CoreDataClass.m in Sources */,
 				2747C37A2043AF7D00FB5669 /* Zone+CoreDataClass.m in Sources */,
+				27300A08224AED76006E419C /* Daily+Helper.m in Sources */,
 				274EFB67204E462E00CB3C4C /* ModelTools.m in Sources */,
 				2747C3632043AF7D00FB5669 /* DailySubTask+CoreDataProperties.m in Sources */,
 				2747C3592043AF7D00FB5669 /* DataInfo+CoreDataProperties.m in Sources */,
@@ -811,10 +819,10 @@
 				2747C45820462B1C00FB5669 /* SingletonCluster+Entity.m in Sources */,
 				2747C37B2043AF7D00FB5669 /* DailyTransaction+CoreDataProperties.m in Sources */,
 				2747C3952043AF7D00FB5669 /* ZoneTransaction+CoreDataProperties.m in Sources */,
-				2747C3B22043B53100FB5669 /* Daily+DailyHelper.m in Sources */,
 				2747C38D2043AF7D00FB5669 /* Settings+CoreDataClass.m in Sources */,
 				2747C3D02043BACB00FB5669 /* ZoneInfoDictionary.m in Sources */,
 				2747C4662046320E00FB5669 /* ModelConstants.m in Sources */,
+				27300A05224AE713006E419C /* Daily_Medium.m in Sources */,
 				2747C3782043AF7D00FB5669 /* DailySubTask+CoreDataClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

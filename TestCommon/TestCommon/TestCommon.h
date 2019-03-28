@@ -24,3 +24,4 @@ FOUNDATION_EXPORT const unsigned char TestCommonVersionString[];
 #import "TestHelpers.h"
 #import "TestGlobals.h"
 #import "TestDummy.h"
+#import "NSManagedObjectContext+Hijack.h"

@@ -19,6 +19,6 @@
 -(void)resetDb;
 
 -(NSArray<NSManagedObject*> *)fetchAnything:(NSFetchRequest *)request
-dataController:(NSObject<P_CoreData>*) dataController;
+context:(NSManagedObjectContext*)context;
 
 @end
