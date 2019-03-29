@@ -900,7 +900,7 @@
 }
 
 -(void)testAddDays{
-    Timeshift dst[2] = {
+    SHTimeshift dst[2] = {
         {3,11,2,0,HOUR_IN_SECONDS,{0}},
         {11,4,2,0,0,{0}}
     };
@@ -911,8 +911,8 @@
     
 
     dt.shifts = dst;
-    dt.shiftLen = sizeof(dst)/sizeof(Timeshift);
-    dt.currentShiftIdx = selectTimeShiftForDt(&dt,dst,dt.shiftLen);
+    dt.shiftLen = sizeof(dst)/sizeof(SHTimeshift);
+    dt.currentShiftIdx = shSelectTimeShiftForDt(&dt,dst,dt.shiftLen);
     SHDatetime copy = dt;
     tryAddDaysToDtInPlace(&copy,2,0,&error);
     XCTAssertEqual(copy.day,11);
@@ -970,7 +970,7 @@
     dt.day = 3;
     dt.hour = 0;
     dt.minute = 1;
-    dt.currentShiftIdx = selectTimeShiftForDt(&dt,dst,dt.shiftLen);
+    dt.currentShiftIdx = shSelectTimeShiftForDt(&dt,dst,dt.shiftLen);
     copy = dt;
     
     tryAddDaysToDtInPlace(&copy,1,0,&error);

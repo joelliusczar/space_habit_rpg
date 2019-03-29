@@ -11,8 +11,8 @@
 
 #include <stdio.h>
 #include "SHDatetime_struct.h"
-#include "ErrorHandling.h"
+#include "SHErrorHandling.h"
 
-SHDatetime* timestampToDt(double timestamp,int timezoneOffset,SHError *error);
+SHDatetime* shTimestampToDt(double timestamp,int timezoneOffset,SHError *error);
 
 #endif /* SHDatetimePtrExt_h */

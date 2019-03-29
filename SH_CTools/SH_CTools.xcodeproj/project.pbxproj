@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2716922D20916ED50059A58E /* SHArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 271692082089762D0059A58E /* SHArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2716922E20916ED90059A58E /* ErrorHandling.h in Headers */ = {isa = PBXBuildFile; fileRef = 27169215208BB2450059A58E /* ErrorHandling.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2716922F20916EDD0059A58E /* ErrorHandling.c in Sources */ = {isa = PBXBuildFile; fileRef = 27169216208BB2450059A58E /* ErrorHandling.c */; };
+		2716922E20916ED90059A58E /* SHErrorHandling.h in Headers */ = {isa = PBXBuildFile; fileRef = 27169215208BB2450059A58E /* SHErrorHandling.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2716922F20916EDD0059A58E /* SHErrorHandling.c in Sources */ = {isa = PBXBuildFile; fileRef = 27169216208BB2450059A58E /* SHErrorHandling.c */; };
 		2781552B21758C3F005C5279 /* SHConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781552921758C3F005C5279 /* SHConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2781552C21758C3F005C5279 /* SHConstants.c in Sources */ = {isa = PBXBuildFile; fileRef = 2781552A21758C3F005C5279 /* SHConstants.c */; };
 		27DF9C4E20956D6300F98023 /* SHGenAlgos.h in Headers */ = {isa = PBXBuildFile; fileRef = 27DF9C4C20956D6300F98023 /* SHGenAlgos.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -19,8 +19,8 @@
 /* Begin PBXFileReference section */
 		271692002089758B0059A58E /* libSH_CTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSH_CTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		271692082089762D0059A58E /* SHArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHArray.h; sourceTree = "<group>"; };
-		27169215208BB2450059A58E /* ErrorHandling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ErrorHandling.h; sourceTree = "<group>"; };
-		27169216208BB2450059A58E /* ErrorHandling.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ErrorHandling.c; sourceTree = "<group>"; };
+		27169215208BB2450059A58E /* SHErrorHandling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHErrorHandling.h; sourceTree = "<group>"; };
+		27169216208BB2450059A58E /* SHErrorHandling.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHErrorHandling.c; sourceTree = "<group>"; };
 		2781552921758C3F005C5279 /* SHConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHConstants.h; sourceTree = "<group>"; };
 		2781552A21758C3F005C5279 /* SHConstants.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHConstants.c; sourceTree = "<group>"; };
 		278FFD9E222B2AA000DAF985 /* SH_CTools.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SH_CTools.debug.xcconfig; sourceTree = "<group>"; };
@@ -65,8 +65,8 @@
 			isa = PBXGroup;
 			children = (
 				271692082089762D0059A58E /* SHArray.h */,
-				27169215208BB2450059A58E /* ErrorHandling.h */,
-				27169216208BB2450059A58E /* ErrorHandling.c */,
+				27169215208BB2450059A58E /* SHErrorHandling.h */,
+				27169216208BB2450059A58E /* SHErrorHandling.c */,
 				27DF9C4C20956D6300F98023 /* SHGenAlgos.h */,
 				27DF9C4D20956D6300F98023 /* SHGenAlgos.c */,
 				2781552921758C3F005C5279 /* SHConstants.h */,
@@ -107,7 +107,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2716922E20916ED90059A58E /* ErrorHandling.h in Headers */,
+				2716922E20916ED90059A58E /* SHErrorHandling.h in Headers */,
 				2716922D20916ED50059A58E /* SHArray.h in Headers */,
 				2781552B21758C3F005C5279 /* SHConstants.h in Headers */,
 				27DF9C4E20956D6300F98023 /* SHGenAlgos.h in Headers */,
@@ -189,7 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27DF9C4F20956D6300F98023 /* SHGenAlgos.c in Sources */,
-				2716922F20916EDD0059A58E /* ErrorHandling.c in Sources */,
+				2716922F20916EDD0059A58E /* SHErrorHandling.c in Sources */,
 				2781552C21758C3F005C5279 /* SHConstants.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

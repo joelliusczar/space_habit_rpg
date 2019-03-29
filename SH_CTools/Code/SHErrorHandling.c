@@ -6,14 +6,14 @@
 //  Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
-#include "ErrorHandling.h"
+#include "SHErrorHandling.h"
 #include "SHConstants.h"
 #include <stdlib.h>
 
-debugCallback dbgCallback;
+shDebugCallback shDbgCallback;
 
 static void _useErrorObj(SHErrorCode code,const char* const msg,SHError* errObj){
-  SHLog("_useErrorObj");
+  shLog("_useErrorObj");
   if(!errObj) return;
   errObj->code = code;
   errObj->msg = msg;
@@ -21,43 +21,43 @@ static void _useErrorObj(SHErrorCode code,const char* const msg,SHError* errObj)
   if(errObj->errorCallback){
     errObj->errorCallback(code,msg,errObj->callbackInfo,&errObj->isError);
   }
-  SHLog("leaving _useErrorObj");
+  shLog("leaving _useErrorObj");
 }
 
-bool setErrorCode(SHErrorCode code,SHErrorCode *error){
+bool shSetErrorCode(SHErrorCode code,SHErrorCode *error){
   *error = code;
   return false;
 }
 
-bool handleError(SHErrorCode code,const char* const msg,SHError* errObj){
+bool shHandleError(SHErrorCode code,const char* const msg,SHError* errObj){
   _useErrorObj(code, msg, errObj);
   return false;
 }
 
-int setIndexErrorCode(SHErrorCode code,SHErrorCode *error){
+int shSetIndexErrorCode(SHErrorCode code,SHErrorCode *error){
   *error = code;
   return NOT_FOUND;
 }
 
-int handleErrorRetNotFound(SHErrorCode code,const char* const msg,SHError *errObj){
+int shHandleErrorRetNotFound(SHErrorCode code,const char* const msg,SHError *errObj){
   _useErrorObj(code, msg, errObj);
   return NOT_FOUND;
 }
 
-void * handleErrorRetNull(SHErrorCode code,const char* const msg,SHError* errObj){
+void * shHandleErrorRetNull(SHErrorCode code,const char* const msg,SHError* errObj){
   _useErrorObj(code,msg,errObj);
   return NULL;
 }
 
 
-void prepareSHError(SHError* errObj){
-  SHLog("prepareSHError");
+void shPrepareSHError(SHError* errObj){
+  shLog("prepareSHError");
   if(!errObj) return;
   errObj->code = NO_ERROR;
   errObj->msg = "";
   errObj->errorCallback = NULL;
   errObj->callbackInfo = NULL;
-  SHLog("leaving prepareSHError");
+  shLog("leaving prepareSHError");
 }
 
 #pragma GCC diagnostic push
@@ -66,7 +66,7 @@ void prepareSHError(SHError* errObj){
 #elif defined(__GNUC__)
 #pragma GCC diagnostic ignored "-Wdiscarded-qualifiers"
 #endif
-void disposeSHError(SHError *errObj){
+void shDisposeSHError(SHError *errObj){
 	if(!errObj) return;
 	free(errObj->msg);
 	free(errObj->callbackInfo);
@@ -76,7 +76,7 @@ void disposeSHError(SHError *errObj){
 #pragma GCC diagnostic pop
 
 
-void setDebugCallback(debugCallback callback){
-  dbgCallback = callback;
-  dbgCallback("setter test");
+void shSetDebugCallback(shDebugCallback callback){
+  shDbgCallback = callback;
+  shDbgCallback("setter test");
 }

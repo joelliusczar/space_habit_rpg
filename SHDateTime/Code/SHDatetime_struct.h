@@ -30,7 +30,7 @@ typedef struct{
   int32_t minute;
   int32_t adjustment;
   uintptr_t filler[8];
-}Timeshift;
+}SHTimeshift;
 
 typedef struct {
   int64_t year;
@@ -41,7 +41,7 @@ typedef struct {
   int32_t second;
   int32_t milisecond;
   int32_t timezoneOffset;
-  Timeshift *shifts;
+  SHTimeshift *shifts;
   int32_t shiftLen;
   int32_t currentShiftIdx;
   uintptr_t filler[8];

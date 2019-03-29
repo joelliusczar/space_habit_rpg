@@ -18,8 +18,6 @@
 		274EFB86204F9B7700CB3C4C /* TestHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB81204F9B7700CB3C4C /* TestHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27B7AF25223094D000FAA229 /* TestDummy.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B7AF23223094D000FAA229 /* TestDummy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27B7AF26223094D000FAA229 /* TestDummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B7AF24223094D000FAA229 /* TestDummy.m */; };
-		27B7AF2B2232061A00FAA229 /* DumbCoreDataController.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B7AF292232061A00FAA229 /* DumbCoreDataController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27B7AF2C2232061A00FAA229 /* DumbCoreDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B7AF2A2232061A00FAA229 /* DumbCoreDataController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,8 +38,6 @@
 		27B0B1F52223B9C70028AF59 /* TestCommon.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TestCommon.base.xcconfig; sourceTree = "<group>"; };
 		27B7AF23223094D000FAA229 /* TestDummy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestDummy.h; sourceTree = "<group>"; };
 		27B7AF24223094D000FAA229 /* TestDummy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestDummy.m; sourceTree = "<group>"; };
-		27B7AF292232061A00FAA229 /* DumbCoreDataController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DumbCoreDataController.h; sourceTree = "<group>"; };
-		27B7AF2A2232061A00FAA229 /* DumbCoreDataController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DumbCoreDataController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +82,6 @@
 				274EFB76204F9AEA00CB3C4C /* Info.plist */,
 				27B7AF23223094D000FAA229 /* TestDummy.h */,
 				27B7AF24223094D000FAA229 /* TestDummy.m */,
-				27B7AF292232061A00FAA229 /* DumbCoreDataController.h */,
-				27B7AF2A2232061A00FAA229 /* DumbCoreDataController.m */,
 				273009F622446228006E419C /* NSManagedObjectContext+Hijack.h */,
 				273009F722446228006E419C /* NSManagedObjectContext+Hijack.m */,
 			);
@@ -123,7 +117,6 @@
 				274EFB83204F9B7700CB3C4C /* FrequentCase.h in Headers */,
 				27B7AF25223094D000FAA229 /* TestDummy.h in Headers */,
 				274EFB77204F9AEA00CB3C4C /* TestCommon.h in Headers */,
-				27B7AF2B2232061A00FAA229 /* DumbCoreDataController.h in Headers */,
 				274EFB86204F9B7700CB3C4C /* TestHelpers.h in Headers */,
 				273009F822446228006E419C /* NSManagedObjectContext+Hijack.h in Headers */,
 				274EFB85204F9B7700CB3C4C /* TestGlobals.h in Headers */,
@@ -218,7 +211,6 @@
 				273009F922446228006E419C /* NSManagedObjectContext+Hijack.m in Sources */,
 				27B7AF26223094D000FAA229 /* TestDummy.m in Sources */,
 				274EFB82204F9B7700CB3C4C /* TestHelpers.m in Sources */,
-				27B7AF2C2232061A00FAA229 /* DumbCoreDataController.m in Sources */,
 				274EFB84204F9B7700CB3C4C /* FrequentCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -74,7 +74,6 @@ unsigned int _reservedFlags : 2;
 -(void)dumbDataPrv{
   __weak DumbDataSaver *wdds = nil;
   __weak NSManagedObjectContext*  wcontext = nil;
-  __weak dispatch_queue_t wq = nil;
   @autoreleasepool {
     DumbDataSaver *dds = [DumbDataSaver new];
     wdds = dds;
@@ -108,72 +107,38 @@ unsigned int _reservedFlags : 2;
     
     NSManagedObjectContext* readContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     wcontext = readContext;
-//    wdds.readContext = readContext;
-
-    Ivar ivar = class_getInstanceVariable(NSManagedObjectContext.class,"_dispatchQueue");
-    ptrdiff_t diff = ivar_getOffset(ivar);
-    unsigned char* byteStart = (unsigned char*)(__bridge void*)readContext;
-    dispatch_queue_t dispatchQ = (__bridge dispatch_queue_t)*(void **)(byteStart + diff);
-    
-    dispatch_async(dispatchQ,^{
-      NSLog(@"First on queue");
-    });
-    
     readContext.persistentStoreCoordinator = dds.coordinator;
     readContext.name = @"reader";
     request.sortDescriptors = @[sortByIsFront];
     __block NSArray<NSManagedObject*> *results = nil;
+    [readContext performBlockAndWait:^{
+      @autoreleasepool {
+        
+        NSError *err = nil;
+        results = [readContext executeFetchRequest:request error:&err];
+      }
+    }];
     
     [readContext performBlockAndWait:^{
       @autoreleasepool {
         
         NSError *err = nil;
         results = [readContext executeFetchRequest:request error:&err];
-//          [readContext countForFetchRequest:request error:&err];
       }
     }];
-    
-  
     NSError *error = nil;
     [dds.coordinator destroyPersistentStoreAtURL:dds.storeURL withType:NSInMemoryStoreType options:nil error:&error];
+    
+    void* bad = (__bridge void*)readContext;
+    CFRelease(bad);
 
-    
-    //id dispatchQ = [TestHelpers getPrivateValue:readContext ivarName:@"_dispatchQueue"];
-//    Class dCls = [dispatchQ class];
-//    NSArray* ivars = [TestHelpers getIvarListOfClass:dCls];
-//    NSArray* methods = [TestHelpers getMethodListOfClass:dCls];
-//
-    [readContext reset];
-
-    //[TestHelpers setPrivateVar:readContext ivarName:@"_parentObjectStore" newVal:nil];
-    
-    dispatch_async(dispatchQ,^{
-      NSLog(@"Hello from this other queue!");
-    });
-    wq = dispatchQ;
-    
-    
-    id refQue = [TestHelpers getPrivateValue:readContext ivarName:@"_referenceQueue"];
-    [TestHelpers setPrivateVar:refQue ivarName:@"_context" newVal:nil];
-////    (void)[readContext initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-//    void* bad = (__bridge void*)readContext;
-//    CFRelease(bad);
-
-//    uint32_t outCount = 0;
-//    Method* m = class_copyMethodList(NSManagedObjectContext.class,&outCount);
-//    Method mSpecific = m[23];
-//    struct objc_method_description *res = method_getDescription(mSpecific);
-//    SEL sel = res->name;
-//    ((void (*)(id,SEL,BOOL))objc_msgSend)(readContext,sel,NO);
     NSLog(@"%@",readContext);
   }
   XCTAssertNil(wcontext);
   NSLog(@"%@",wdds);
 }
 
-- (void)skip_testDumbData {
-  NSArray* ivars = [TestHelpers getIvarListOfClass:NSManagedObjectContext.class];
-  NSArray* methods = [TestHelpers getMethodListOfClass:NSManagedObjectContext.class];
+- (void)testDumbData {
   
   @autoreleasepool {
     [self dumbDataPrv];

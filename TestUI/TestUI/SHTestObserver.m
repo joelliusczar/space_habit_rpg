@@ -20,12 +20,16 @@
 
 -(void)testBundleWillStart:(NSBundle *)testBundle{
   (void)testBundle;
-  NSLog(@"First");
 }
 
 -(void)testSuiteWillStart:(XCTestSuite *)testSuite{
   (void)testSuite;
   NSLog(@"Second?");
+}
+
+
+-(void)testCaseWillStart:(XCTestCase *)testCase{
+
 }
 
 

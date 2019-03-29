@@ -9,6 +9,7 @@
 #import "Daily+ActiveDays.h"
 #import "RateTypeHelper.h"
 #import "Daily+Helper.h"
+#import <SHDaily_C.h>
 #import <SHCommon/NSMutableArray+Helper.h>
 #import <SHCommon/NSDate+DateHelper.h>
 #import <SHGlobal/Constants.h>
@@ -58,35 +59,58 @@ static BOOL yearlyBestMatch(RateValueItemDict *a,RateValueItemDict *b){
     }
 }
 
--(NSMutableArray<RateValueItemDict *> * )getActiveDaysForRateType:(RateType)rateType{
-    NSString *rateTypeKey = getRateTypeKey(rateType);
-    NSMutableArray *daySet = self.activeDaysDict[rateTypeKey];
-    BOOL activeDays[SHCONST.DAYS_IN_WEEK];
-    if(nil == daySet||daySet.count == 0){
-        if(rateType == WEEKLY_RATE || rateType == WEEKLY_RATE_INVERSE){
-            [Daily setActivenessArray:nil activeDays:activeDays];
-            daySet = [Daily buildWeek:activeDays scaler:self.rate];
-        }
-        else{
-            daySet = [NSMutableArray array];
-        }
-        self.activeDaysDict[rateTypeKey] = daySet;
-    }
-    return daySet;
-}
 
-    
 -(void)flipDayOfWeek_w:(NSUInteger)dayIdx for:(BOOL)isInverse{
-    self.isTouched = YES;
-    RateType rateType = isInverse?WEEKLY_RATE_INVERSE:WEEKLY_RATE;
-    NSMutableArray *week = [self getActiveDaysForRateType:rateType];
-    BOOL activeDays[SHCONST.DAYS_IN_WEEK];
-    [Daily setActivenessArray:week activeDays:activeDays];
-    activeDays[dayIdx] = !activeDays[dayIdx];
-    week = [Daily buildWeek:activeDays scaler:self.rate];
-    self.activeDaysDict[getRateTypeKey(rateType)] = week;
+  self.isTouched = YES;
+  RateType rateType = isInverse?WEEKLY_RATE_INVERSE:WEEKLY_RATE;
+  NSMutableArray *week = [self getActiveDaysForRateType:rateType];
+  BOOL activeDays[SHCONST.DAYS_IN_WEEK];
+  [Daily setActivenessArray:week activeDays:activeDays];
+  activeDays[dayIdx] = !activeDays[dayIdx];
+  SHRateValueItem rvi[7];
+  memset(rvi,0,sizeof(SHRateValueItem) * 7);
+  shBuildWeek(activeDays,self.rate,rvi);
+  week = [Daily mapRateValueItemsToWeekArray:rvi];
+  self.activeDaysDict[getRateTypeKey(rateType)] = week;
 }
 
++(NSMutableArray<RateValueItemDict*>*)mapRateValueItemsToWeekArray:(SHRateValueItem *)rvi{
+  NSMutableArray<RateValueItemDict*> *mapped = [NSMutableArray array];
+  for(int i = 0; i < 7;i++){
+    RateValueItemDict *dict = @{
+      IS_DAY_ACTIVE_KEY: [NSNumber numberWithBool:rvi[i].isDayActive],
+      FORRANGE_KEY: [NSNumber numberWithInteger:rvi[i].forrange],
+      BACKRANGE_KEY:[NSNumber numberWithInteger:rvi[i].backrange]
+      };
+    [mapped addObject:dict];
+  }
+  return mapped;
+}
+
+
+-(NSMutableArray<RateValueItemDict *> * )getActiveDaysForRateType:(RateType)rateType{
+  NSString *rateTypeKey = getRateTypeKey(rateType);
+  NSMutableArray *daySet = self.activeDaysDict[rateTypeKey];
+  BOOL activeDays[SHCONST.DAYS_IN_WEEK];
+  NSMutableArray *newDaySet = nil;
+  if(nil == daySet||daySet.count == 0){
+    if(rateType == WEEKLY_RATE || rateType == WEEKLY_RATE_INVERSE){
+      [Daily setActivenessArray:nil activeDays:activeDays];
+      SHRateValueItem rvi[7];
+      memset(rvi,0,sizeof(SHRateValueItem) * 7);
+      shBuildWeek(activeDays,self.rate,rvi);
+      newDaySet = [Daily mapRateValueItemsToWeekArray:rvi];
+    }
+    else{
+      newDaySet = [NSMutableArray array];
+    }
+    self.activeDaysDict[rateTypeKey] = newDaySet;
+  }
+  else{
+    newDaySet = daySet;
+  }
+  return newDaySet;
+}
 
 -(NSInteger)addMonthlyItem:(BOOL)isInverse
                    ordinal:(NSInteger)ordinal

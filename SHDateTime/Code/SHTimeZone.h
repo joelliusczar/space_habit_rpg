@@ -11,14 +11,14 @@
 
 #include <stdio.h>
 #include <stdbool.h>
-#include <ErrorHandling.h>
+#include <SHErrorHandling.h>
 #include "SHDatetime_struct.h"
 
 
 
-int findTimeShiftIdx(SHDatetime *dt);
-int selectTimeShiftForDt(SHDatetime *dt,Timeshift *shifts,int shiftCount);
-bool updateTimezoneForShifts(SHDatetime *dt,SHErrorCode *error);
-bool updateTimezoneForShifts_m(SHDatetime *dt,SHError *error);
-int isValidTimeShift(Timeshift *shift);
+int shFindTimeShiftIdx(SHDatetime *dt);
+int shSelectTimeShiftForDt(SHDatetime *dt,SHTimeshift *shifts,int shiftCount);
+bool shUpdateTimezoneForShifts(SHDatetime *dt,SHErrorCode *error);
+bool shUpdateTimezoneForShifts_m(SHDatetime *dt,SHError *error);
+int shIsValidTimeShift(SHTimeshift *shift);
 #endif /* SHTimeZone_h */

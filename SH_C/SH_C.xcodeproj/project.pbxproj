@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		271691CC20885F890059A58E /* Daily_C.h in Headers */ = {isa = PBXBuildFile; fileRef = 271691CA20885F890059A58E /* Daily_C.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271691CD20885F890059A58E /* Daily_C.c in Sources */ = {isa = PBXBuildFile; fileRef = 271691CB20885F890059A58E /* Daily_C.c */; };
+		271691CC20885F890059A58E /* SHDaily_C.h in Headers */ = {isa = PBXBuildFile; fileRef = 271691CA20885F890059A58E /* SHDaily_C.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		271691CD20885F890059A58E /* SHDaily_C.c in Sources */ = {isa = PBXBuildFile; fileRef = 271691CB20885F890059A58E /* SHDaily_C.c */; };
 		271691ED208866770059A58E /* libSHDatetime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 271691EE208866770059A58E /* libSHDatetime.a */; };
-		277970CD21FD764C00D3F86D /* RateValueItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 277970CC21FD75E900D3F86D /* RateValueItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		277970CD21FD764C00D3F86D /* SHRateValueItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 277970CC21FD75E900D3F86D /* SHRateValueItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		271691C220885EF70059A58E /* libSH_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSH_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		271691CA20885F890059A58E /* Daily_C.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Daily_C.h; sourceTree = "<group>"; };
-		271691CB20885F890059A58E /* Daily_C.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Daily_C.c; sourceTree = "<group>"; };
+		271691CA20885F890059A58E /* SHDaily_C.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDaily_C.h; sourceTree = "<group>"; };
+		271691CB20885F890059A58E /* SHDaily_C.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SHDaily_C.c; sourceTree = "<group>"; };
 		271691EE208866770059A58E /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2716920D20897A740059A58E /* libSH_CTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_CTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2737D587216DAFEA00E0111F /* simple_start.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = simple_start.sh; sourceTree = "<group>"; };
@@ -24,7 +24,7 @@
 		2737D589216DAFEA00E0111F /* daily_server_cleanup.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = daily_server_cleanup.sh; sourceTree = "<group>"; };
 		2737D58A216DAFEA00E0111F /* daily_server.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = daily_server.sh; sourceTree = "<group>"; };
 		2737D58B216EE67B00E0111F /* DailySingleTest.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = DailySingleTest.py; sourceTree = "<group>"; };
-		277970CC21FD75E900D3F86D /* RateValueItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RateValueItem.h; sourceTree = "<group>"; };
+		277970CC21FD75E900D3F86D /* SHRateValueItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHRateValueItem.h; sourceTree = "<group>"; };
 		278FFD9F222B2BBB00DAF985 /* SH_C.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SH_C.debug.xcconfig; sourceTree = "<group>"; };
 		27B0B1ED2223A3EC0028AF59 /* SH_C.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SH_C.base.xcconfig; sourceTree = "<group>"; };
 		27BB290A215749B8003225BB /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
@@ -68,9 +68,9 @@
 		271691C920885F890059A58E /* Code */ = {
 			isa = PBXGroup;
 			children = (
-				271691CA20885F890059A58E /* Daily_C.h */,
-				271691CB20885F890059A58E /* Daily_C.c */,
-				277970CC21FD75E900D3F86D /* RateValueItem.h */,
+				271691CA20885F890059A58E /* SHDaily_C.h */,
+				271691CB20885F890059A58E /* SHDaily_C.c */,
+				277970CC21FD75E900D3F86D /* SHRateValueItem.h */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -123,8 +123,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				271691CC20885F890059A58E /* Daily_C.h in Headers */,
-				277970CD21FD764C00D3F86D /* RateValueItem.h in Headers */,
+				271691CC20885F890059A58E /* SHDaily_C.h in Headers */,
+				277970CD21FD764C00D3F86D /* SHRateValueItem.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,7 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				271691CD20885F890059A58E /* Daily_C.c in Sources */,
+				271691CD20885F890059A58E /* SHDaily_C.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,7 +15,7 @@
 @interface FrequentCase ()
 @property (weak,nonatomic) NSObject* weakObj;
 @property (strong,nonatomic) NSObject* strongObj;
-@property (strong,nonatomic) NSPersistentStoreCoordinator *coordinator;
+@property (strong,nonatomic) NSObject<P_CoreData>* dc;
 @end
 
 @implementation FrequentCase
@@ -27,25 +27,20 @@
   //the bundle for TestUI or TestCommon
   NSBundle *testBundle = [NSBundle bundleForClass:NSClassFromString(@"OnlyOneEntities")];
   SharedGlobal.bundle = testBundle;
-  NSPersistentStoreCoordinator *coordinator = self.coordinator;
-  SHCoreData *dc = [SHCoreData newWithOptionsBlock:^(SHCoreDataOptions *options){
-    options.storeType = NSInMemoryStoreType;
-    options.appBundle = testBundle;
-    if(coordinator){
-      options.coordinator = coordinator;
-    }
-  }];
-  SharedGlobal.dataController = dc;
-  //DumbCoreDataController* dc = [DumbCoreDataController newWithBundle:testBundle storeType:NSInMemoryStoreType];
+  if(nil == self.dc){
+    self.dc = [SHCoreData newWithOptionsBlock:^(SHCoreDataOptions *options){
+      options.storeType = NSInMemoryStoreType;
+      options.appBundle = testBundle;
+    }];
+    SharedGlobal.dataController = self.dc;
+  }
   NSTimeZone.defaultTimeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
 }
 
 -(void)resetDb{
+  [self.dc.mainThreadContext reset];
+  [TestHelpers resetCoreData:self.dc.mainThreadContext];
   
-//  [TestHelpers resetCoreData:SHData.inUseContext];
-//  self.testContext = [SHData constructContext:NSMainQueueConcurrencyType];
-//  self.weakContex;
-//  SHData.inUseContext = self.testContext;
 }
 
 
@@ -59,6 +54,10 @@ context:(NSManagedObjectContext*)context{
 }
 
 -(void)tearDown{
+//  NSManagedObjectContext *mainThreadContext = SHData.mainThreadContext;
+//  SharedGlobal.dataController = nil;
+//  void *releasable = (__bridge void*)mainThreadContext;
+//  CFRelease(releasable);
   [super tearDown];
 }
 

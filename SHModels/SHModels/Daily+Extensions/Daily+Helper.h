@@ -9,7 +9,6 @@
 #import "Daily+CoreDataClass.h"
 
 @interface Daily (Helper)
-+(NSMutableArray<RateValueItemDict *> *)buildWeek:(BOOL *)activeDays scaler:(int)scaler;
 +(NSMutableArray<RateValueItemDict *> *)buildEmptyWeek;
 +(NSDate *)previousDueDate_WEEKLY:(NSDate *)lastDueDate checkinDate:(NSDate *)checkinDate
     week:(NSArray<RateValueItemDict *> *)week

@@ -50,63 +50,6 @@ void setDayCounts(NSUInteger *daysCounts,BOOL *activeDays,NSUInteger counter,BOO
 }
 
 
-NSArray<RateValueItemDict *> *buildWeek(NSUInteger *daysAheadCounts
-                                        ,NSUInteger *daysBeforeCounts
-                                        ,BOOL *activeDays){
-    NSMutableArray *accumulator = [NSMutableArray array];
-    for(NSUInteger dayIdx = 0;dayIdx < SHCONST.DAYS_IN_WEEK;dayIdx++){
-        [accumulator addObject:@{
-           IS_DAY_ACTIVE_KEY: @(activeDays[dayIdx])
-           ,BACKRANGE_KEY:@(daysBeforeCounts[dayIdx])
-           ,FORRANGE_KEY:@(daysAheadCounts[dayIdx])
-        }];
-    }
-    return accumulator;
-}
-
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunused-parameter"
-
-+(NSArray<RateValueItemDict *> *)buildWeek:(BOOL *)activeDays scaler:(int)scaler{
-    NSAssert(scaler > 0, @"scaler must be greater than 0");
-    BOOL (^isDayActive)(NSString *,NSUInteger, BOOL *) =
-        ^BOOL(NSString *key,NSUInteger idx,BOOL *stop){
-            return activeDays[idx];
-        };
-
-    NSUInteger lastIdx = [SHCONST.WEEKDAY_KEYS
-                          indexOfObjectWithOptions:NSEnumerationReverse
-                          passingTest:isDayActive];
-    if(lastIdx == NSNotFound){
-        return [Daily buildEmptyWeek];
-    }
-    NSUInteger daysBefore = (SHCONST.DAYS_IN_WEEK -lastIdx)
-        + (scaler -1)*SHCONST.DAYS_IN_WEEK -1;
-    NSUInteger daysBeforeCounts[SHCONST.DAYS_IN_WEEK];
-    setDayCounts(daysBeforeCounts,activeDays,daysBefore,NO);
-    
-    NSUInteger firstIdx = [SHCONST.WEEKDAY_KEYS
-                           indexOfObjectPassingTest:isDayActive];
-    NSUInteger daysAhead = firstIdx + (scaler -1)*SHCONST.DAYS_IN_WEEK;
-    NSUInteger daysAheadCounts[SHCONST.DAYS_IN_WEEK];
-    setDayCounts(daysAheadCounts,activeDays,daysAhead,YES);
-    
-    return buildWeek(daysAheadCounts,daysBeforeCounts,activeDays);
-}
-
-#pragma clang diagnostic pop
-
-
-+(void)setActivenessArray:(NSArray<RateValueItemDict *> *)week activeDays:(BOOL *)activeDays{
-    for(NSUInteger i = 0;i < SHCONST.DAYS_IN_WEEK;i++){
-        if(week){
-            activeDays[i] = week[i][IS_DAY_ACTIVE_KEY].boolValue;
-            continue;
-        }
-        activeDays[i] = YES;
-    }
-}
 
 +(NSMutableSet<NSString *> *)weekToKeySet:(NSArray<RateValueItemDict *> *)activeDays{
     NSMutableArray *keys = [NSMutableArray array];

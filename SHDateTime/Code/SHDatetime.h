@@ -97,7 +97,7 @@ int isValidSHDateTime(SHDatetime const *dt);
 
 bool initDt(SHDatetime *dt);
 
-bool initTimeshift(Timeshift *shift);
+bool initTimeshift(SHTimeshift *shift);
 
 #endif /* datetime_h */
 

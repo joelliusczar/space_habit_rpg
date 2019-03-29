@@ -42,7 +42,6 @@
 		27B719412235F1B900540542 /* DumbDataSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B719402235F1B900540542 /* DumbDataSaver.m */; };
 		27B719432235F24700540542 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B719422235F24700540542 /* SHModels.framework */; };
 		27B719452235F27700540542 /* TestDumbData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B719442235F27700540542 /* TestDumbData.m */; };
-		27B7AF2822311F5100FAA229 /* TestBookends.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B7AF2722311F5100FAA229 /* TestBookends.m */; };
 		27C791F52226DD9000A92487 /* EmptyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C791F42226DD9000A92487 /* EmptyTest.m */; };
 		27C792442228A46600A92487 /* SHTestObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C792432228A46600A92487 /* SHTestObserver.m */; };
 /* End PBXBuildFile section */
@@ -115,7 +114,6 @@
 		27B719422235F24700540542 /* SHModels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHModels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27B719442235F27700540542 /* TestDumbData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestDumbData.m; sourceTree = "<group>"; };
 		27B719462235F59500540542 /* SHCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		27B7AF2722311F5100FAA229 /* TestBookends.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestBookends.m; sourceTree = "<group>"; };
 		27C791F42226DD9000A92487 /* EmptyTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmptyTest.m; sourceTree = "<group>"; };
 		27C7922922277D3600A92487 /* libSH_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C7922B22277D3600A92487 /* libSH_CTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_CTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -255,7 +253,6 @@
 				2747C587204A62EC00FB5669 /* ZoneHelperTest.m */,
 				275DDF2321FE9EDA00F77AEF /* CoreDataTests.m */,
 				273BF4D322093A5000B0D11E /* CoreDataTests2.m */,
-				27B7AF2722311F5100FAA229 /* TestBookends.m */,
 				27B719442235F27700540542 /* TestDumbData.m */,
 			);
 			path = SHUnitTests;
@@ -417,7 +414,6 @@
 				276E6DAB222A54E400CB36CB /* TestKeepSubject_A.m in Sources */,
 				276E6DAC222A54E400CB36CB /* TestKeepSubject_B.m in Sources */,
 				276E6DAD222A54E400CB36CB /* ARCTest.m in Sources */,
-				27B7AF2822311F5100FAA229 /* TestBookends.m in Sources */,
 				276E6DAE222A54E400CB36CB /* CommonUtilitiesTest.m in Sources */,
 				276E6DAF222A54E400CB36CB /* DailyHelperTest.m in Sources */,
 				276E6DB0222A54E400CB36CB /* DateHelperTest.m in Sources */,

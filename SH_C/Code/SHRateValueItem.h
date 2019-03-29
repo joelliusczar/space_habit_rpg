@@ -6,8 +6,8 @@
 //  Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#ifndef RateValueItem_h
-#define RateValueItem_h
+#ifndef SHRateValueItem_h
+#define SHRateValueItem_h
 
 #include <inttypes.h>
 #include <stdbool.h>
@@ -17,6 +17,7 @@ typedef struct {
     int64_t backrange;
     int64_t forrange;
     uintptr_t filler[4];
-} RateValueItem;
+} SHRateValueItem;
 
-#endif /* RateValueItem_h */
+
+#endif /* SHRateValueItem_h */

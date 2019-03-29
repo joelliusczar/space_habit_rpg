@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <inttypes.h>
-#include <ErrorHandling.h>
+#include <SHErrorHandling.h>
 #include "DTConstants.h"
 #include "SHTimeZone.h"
 
@@ -98,7 +98,7 @@ bool tryDiffDateSecs_m(SHDatetime const *A,SHDatetime const *B,int64_t *ans,SHEr
 
 bool isValidSHDateTime_m(SHDatetime const *dt);
 
-void SHDTToString(SHDatetime const *dt,char* str);
+void shDTToString(SHDatetime const *dt,char* str);
 #endif /* SHDatetimeMod_h */
 
 
