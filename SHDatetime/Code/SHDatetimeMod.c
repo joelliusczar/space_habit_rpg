@@ -337,11 +337,11 @@ static void _calcTimeFromTimestamp(int64_t timestamp,int minOffset,TimeCalcResul
 }
 
 
-double createDateTime_m(int64_t year,int month,int day,int hour,int minute,int second,int timezoneOffset
+double shCreateDateTime_m(int64_t year,int month,int day,int hour,int minute,int second,int timezoneOffset
 ,SHError *error){
   shPrepareSHError(error);
   double ans;
-  tryCreateDateTime_m(year,month,day,hour,minute,second,timezoneOffset,&ans,error);
+  shTryCreateDateTime_m(year,month,day,hour,minute,second,timezoneOffset,&ans,error);
   return ans;
 }
 
@@ -360,9 +360,9 @@ bool _areTimeComponentsValid(int64_t year,int month,int day,int hour,int minute,
 }
 
 
-bool tryCreateDateTime_m(int64_t year,int month,int day,int hour,int minute,int second,int timezoneOffset
+bool shTryCreateDateTime_m(int64_t year,int month,int day,int hour,int minute,int second,int timezoneOffset
 ,double *ans,SHError *error){
-  shLog("tryCreateDateTime_m");
+  shLog("shTryCreateDateTime_m");
   shPrepareSHError(error);
   if(!ans) return shHandleError(NULL_VALUES,"Null inputs",error);
   bool isValid = _areTimeComponentsValid(year,month,day,hour,minute,second);
@@ -395,38 +395,38 @@ bool tryCreateDateTime_m(int64_t year,int month,int day,int hour,int minute,int 
   }
   sum -= timezoneOffset;
   *ans = sum;
-  shLog("leaving tryCreateDateTime_m");
+  shLog("leaving shTryCreateDateTime_m");
   return true;
 }
 
 
-double createDate_m(int64_t year,int month,int day,int timezoneOffset,SHError *error){
+double shCreateDate_m(int64_t year,int month,int day,int timezoneOffset,SHError *error){
   shPrepareSHError(error);
   double ans;
-  tryCreateDate_m(year,month,day,timezoneOffset,&ans,error);
+  shTryCreateDate_m(year,month,day,timezoneOffset,&ans,error);
   return ans;
 }
 
 
-bool tryCreateDate_m(int64_t year,int month,int day,int timezoneOffset,double *ans,SHError *error){
+bool shTryCreateDate_m(int64_t year,int month,int day,int timezoneOffset,double *ans,SHError *error){
   shPrepareSHError(error);
-  return tryCreateDateTime_m(year,month,day,0,0,0,timezoneOffset,ans,error);
+  return shTryCreateDateTime_m(year,month,day,0,0,0,timezoneOffset,ans,error);
 }
 
 
-double createTime_m(int hour,int minute,int second,SHError *error){
+double shCreateTime_m(int hour,int minute,int second,SHError *error){
   shPrepareSHError(error);
   double ans = 0;
-  tryCreateTime_m(hour,minute,second,&ans,error);
+  shTryCreateTime_m(hour,minute,second,&ans,error);
   return ans;
 }
 
 
-bool tryCreateTime_m(int hour,int minute,int second,double *ans,SHError *error){
+bool shTryCreateTime_m(int hour,int minute,int second,double *ans,SHError *error){
   shPrepareSHError(error);
   if(!ans) return shHandleError(NULL_VALUES,"Null inputs",error);
   double tmpAns = *ans;
-  bool result =  tryCreateDateTime_m(1970,1,1,hour,minute,second,0,&tmpAns,error);
+  bool result =  shTryCreateDateTime_m(1970,1,1,hour,minute,second,0,&tmpAns,error);
   *ans = tmpAns;
   return result;
 }
@@ -475,7 +475,7 @@ int64_t _calcShiftedTimestamp(int64_t timestamp,int64_t years,int isBeforeEpoch)
 }
 
 
-bool  tryTimestampToDt_m(double timestamp, int timezoneOffset,SHDatetime *dt,SHError *error){
+bool  shTryTimestampToDt_m(double timestamp, int timezoneOffset,SHDatetime *dt,SHError *error){
   shPrepareSHError(error);
   if(!dt) return shHandleError(NULL_VALUES,"Null Datetime obj",error);
   if(!_isTimestampRangeInvalid(timestamp,timezoneOffset,error)) return false;
@@ -516,120 +516,120 @@ bool  tryTimestampToDt_m(double timestamp, int timezoneOffset,SHDatetime *dt,SHE
   return _filDateTimeObj(totalYears+baseYear,month,exDays,exHours,exMins,result.exSecs,timezoneOffset,dt);
 }
 
-bool  timestampToDtUnitsOnly_m(double timestamp,SHDatetime *dt,SHError *error){
-  shLog("timestampToDtUnitsOnly_m");
+bool  shTimestampToDtUnitsOnly_m(double timestamp,SHDatetime *dt,SHError *error){
+  shLog("shTimestampToDtUnitsOnly_m");
   shPrepareSHError(error);
   SHTimeshift *shifts = dt->shifts;
   int shiftLen = dt->shiftLen;
   int shiftIdx = dt->currentShiftIdx;
-  if(! tryTimestampToDt_m(timestamp,dt->timezoneOffset,dt,error)){
+  if(! shTryTimestampToDt_m(timestamp,dt->timezoneOffset,dt,error)){
       return shHandleError(error ? error->code:GEN_ERROR,
                 "There was an error converting timestamp to datetime obj",error);
   }
   dt->shifts = shifts;
   dt->shiftLen = shiftLen;
   dt->currentShiftIdx = shiftIdx;
-  shLog("leaving timestampToDtUnitsOnly_m");
+  shLog("leaving shTimestampToDtUnitsOnly_m");
   return true;
 }
 
-bool tryDtToTimestamp_m(SHDatetime const *dt,double *ans,SHError *error){
-  shLog("tryDtToTimestamp_m");
+bool shTryDtToTimestamp_m(SHDatetime const *dt,double *ans,SHError *error){
+  shLog("shTryDtToTimestamp_m");
   shPrepareSHError(error);
   if(!(dt&&ans)) return shHandleError(NULL_VALUES,"Null inputs",error);
   double fraction = 0.0;
   bool isSuccess = _calcFractFromParts(dt->milisecond,&fraction, error);
   if(!isSuccess) return false;
-  isSuccess = tryCreateDateTime_m(dt->year,dt->month,dt->day,dt->hour,dt->minute,dt->second
+  isSuccess = shTryCreateDateTime_m(dt->year,dt->month,dt->day,dt->hour,dt->minute,dt->second
                 ,dt->timezoneOffset,ans,error);
   *ans += fraction*(dt->year < 1970 ? -1:1);
-  shLog("leaving tryDtToTimestamp_m");
+  shLog("leaving shTryDtToTimestamp_m");
   return isSuccess;
 }
 
-double dtToTimestamp_m(SHDatetime const *dt,SHError *error){
-  shLog("dtToTimestamp_m");
+double shDtToTimestamp_m(SHDatetime const *dt,SHError *error){
+  shLog("shDtToTimestamp_m");
   shPrepareSHError(error);
   if(!dt) return shHandleError(NULL_VALUES,"Null Datetime obj",error);
   double ans;
-  tryDtToTimestamp_m(dt,&ans,error);
-  shLog("leaving dtToTimestamp_m");
+  shTryDtToTimestamp_m(dt,&ans,error);
+  shLog("leaving shDtToTimestamp_m");
   return ans;
 }
 
 
-bool tryExtractTime_m(SHDatetime *dt,double *ans,SHError *error){
+bool shTryExtractTime_m(SHDatetime *dt,double *ans,SHError *error){
   shPrepareSHError(error);
   if(!(dt&&ans)) return shHandleError(NULL_VALUES,"Null inputs",error);
   double fraction = 0.0;
   bool isSuccess = _calcFractFromParts(dt->milisecond,&fraction,error);
   if(!isSuccess) return false;
-  isSuccess = tryCreateTime_m(dt->hour,dt->minute,dt->second,ans,error);
+  isSuccess = shTryCreateTime_m(dt->hour,dt->minute,dt->second,ans,error);
   return isSuccess;
 }
 
 
-double extractTime_m(SHDatetime *dt,SHError *error){
+double shExtractTime_m(SHDatetime *dt,SHError *error){
   shPrepareSHError(error);
   if(NULL == dt) return shHandleError(NULL_VALUES,"Null Datetime obj",error);
   double ans = 0;
-  tryExtractTime_m(dt,&ans,error);
+  shTryExtractTime_m(dt,&ans,error);
   return ans;
 }
 
 
-bool tryAddDaysToDtInPlace_m(SHDatetime *dt,int64_t days,TimeAdjustOptions options,SHError *error){
-  shLog("tryAddDaysToDtInPlace_m");
+bool shTryAddDaysToDtInPlace_m(SHDatetime *dt,int64_t days,TimeAdjustOptions options,SHError *error){
+  shLog("shTryAddDaysToDtInPlace_m");
   (void)options;
   shPrepareSHError(error);
   if(!dt) return shHandleError(NULL_VALUES,"Null Datetime obj",error);
   double converted;
-  if(!tryDtToTimestamp_m(dt,&converted,error)) return false;
+  if(!shTryDtToTimestamp_m(dt,&converted,error)) return false;
   double ans;
-  if(!tryAddDaysToTimestamp_m(converted,days,0,&ans,error)) return false;
-  if(!timestampToDtUnitsOnly_m(ans,dt,error))return false;
-  shLog("almost leaving tryAddDaysToDtInPlace_m");
+  if(!shTryAddDaysToTimestamp_m(converted,days,0,&ans,error)) return false;
+  if(!shTimestampToDtUnitsOnly_m(ans,dt,error))return false;
+  shLog("almost leaving shTryAddDaysToDtInPlace_m");
   return shUpdateTimezoneForShifts_m(dt,error);
 }
 
 
-bool tryAddDaysToDt_m(SHDatetime const *dt,int64_t days,TimeAdjustOptions options,SHDatetime *ans
+bool shTryAddDaysToDt_m(SHDatetime const *dt,int64_t days,TimeAdjustOptions options,SHDatetime *ans
 ,SHError *error){
-  shLog("tryAddDaysToDt_m");
+  shLog("shTryAddDaysToDt_m");
   shPrepareSHError(error);
   if(!(dt&&ans)) return shHandleError(NULL_VALUES,"Null inputs",error);
   *ans = *dt;
-  bool isSuccess = tryAddDaysToDtInPlace_m(ans,days,options,error);
-  shLog("leaving tryAddDaysToDt_m");
+  bool isSuccess = shTryAddDaysToDtInPlace_m(ans,days,options,error);
+  shLog("leaving shTryAddDaysToDt_m");
   return isSuccess;
 }
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 
-bool tryAddDaysToTimestamp_m(double timestamp,int64_t days, TimeAdjustOptions options,double *ans
+bool shTryAddDaysToTimestamp_m(double timestamp,int64_t days, TimeAdjustOptions options,double *ans
 ,SHError *error){
-  shLog("tryAddDaysToTimestamp_m");
+  shLog("shTryAddDaysToTimestamp_m");
   if(!ans) return shHandleError(NULL_VALUES,"Null inputs",error);
   (void)options;
   shPrepareSHError(error);
   timestamp += (days*DAY_IN_SECONDS);
   *ans = timestamp;
-  shLog("leaving tryAddDaysToTimestamp_m");
+  shLog("leaving shTryAddDaysToTimestamp_m");
   return true;
 }
 
 #pragma GCC diagnostic pop
 
-bool tryAddMonthsToDt_m(SHDatetime const *dt,int64_t months,TimeAdjustOptions options,SHDatetime *ans
+bool shTryAddMonthsToDt_m(SHDatetime const *dt,int64_t months,TimeAdjustOptions options,SHDatetime *ans
 ,SHError *error){
   shPrepareSHError(error);
   if(!(dt&&ans)) return shHandleError(NULL_VALUES,"Null inputs",error);
   *ans = *dt;
-  return tryAddMonthsToDtInPlace_m(ans,months,options,error);
+  return shTryAddMonthsToDtInPlace_m(ans,months,options,error);
 }
 
-bool tryAddMonthsToDtInPlace_m(SHDatetime *dt,int64_t months,TimeAdjustOptions options,SHError *error){
+bool shTryAddMonthsToDtInPlace_m(SHDatetime *dt,int64_t months,TimeAdjustOptions options,SHError *error){
   shPrepareSHError(error);
   if(!dt) return shHandleError(NULL_VALUES,"Null Datetime obj",error);
   if(months == 0) return true;
@@ -655,13 +655,13 @@ bool tryAddMonthsToDtInPlace_m(SHDatetime *dt,int64_t months,TimeAdjustOptions o
 }
 
 
-bool tryAddMonthsToTimestamp_m(double timestamp,int64_t months,int timezoneOffset,TimeAdjustOptions options
+bool shTryAddMonthsToTimestamp_m(double timestamp,int64_t months,int timezoneOffset,TimeAdjustOptions options
 ,double *ans,SHError *error){
   shPrepareSHError(error);
   SHDatetime dt;
-  if(!tryTimestampToDt_m(timestamp,timezoneOffset,&dt,error)) return false;
-  if(!tryAddMonthsToDtInPlace_m(&dt,months,options,error)) return false;
-  return tryDtToTimestamp_m(&dt,ans,error);
+  if(!shTryTimestampToDt_m(timestamp,timezoneOffset,&dt,error)) return false;
+  if(!shTryAddMonthsToDtInPlace_m(&dt,months,options,error)) return false;
+  return shTryDtToTimestamp_m(&dt,ans,error);
 }
 
 
@@ -692,35 +692,35 @@ static bool _addYears_SHIFT(SHDatetime *dt,int64_t years, TimeAdjustOptions opti
 }
 
 
-double addYearsToTimestamp_m(double timestamp,int64_t years,int timezoneOffset,TimeAdjustOptions options
+double shAddYearsToTimestamp_m(double timestamp,int64_t years,int timezoneOffset,TimeAdjustOptions options
 ,SHError *error){
   shPrepareSHError(error);
   double ans = 0;
-  tryAddYearsToTimestamp_m(timestamp,years,timezoneOffset,options,&ans,error);
+  shTryAddYearsToTimestamp_m(timestamp,years,timezoneOffset,options,&ans,error);
   return ans;
 }
 
 
-bool tryAddYearsToTimestamp_m(double timestamp,int64_t years,int timezoneOffset,TimeAdjustOptions options
+bool shTryAddYearsToTimestamp_m(double timestamp,int64_t years,int timezoneOffset,TimeAdjustOptions options
 ,double *ans,SHError *error){
   shPrepareSHError(error);
   SHDatetime dt;
-  if(!tryTimestampToDt_m(timestamp,timezoneOffset,&dt,error)) return false;
-  if(!tryAddYearsToDtInPlace_m(&dt,years,options,error)) return false;
-  return tryDtToTimestamp_m(&dt,ans,error);
+  if(!shTryTimestampToDt_m(timestamp,timezoneOffset,&dt,error)) return false;
+  if(!shTryAddYearsToDtInPlace_m(&dt,years,options,error)) return false;
+  return shTryDtToTimestamp_m(&dt,ans,error);
 }
 
 
-bool tryAddYearsToDt_m(SHDatetime const *dt,int64_t years,TimeAdjustOptions options,SHDatetime *ans
+bool shTryAddYearsToDt_m(SHDatetime const *dt,int64_t years,TimeAdjustOptions options,SHDatetime *ans
 ,SHError *error){
   shPrepareSHError(error);
   if(!(dt&&ans)) return shHandleError(NULL_VALUES,"Null inputs",error);
   *ans = *dt;
-  return tryAddYearsToDtInPlace_m(ans,years,options,error);
+  return shTryAddYearsToDtInPlace_m(ans,years,options,error);
 }
 
 
-bool tryAddYearsToDtInPlace_m(SHDatetime *dt,int64_t years,TimeAdjustOptions options,SHError *error){
+bool shTryAddYearsToDtInPlace_m(SHDatetime *dt,int64_t years,TimeAdjustOptions options,SHError *error){
   shPrepareSHError(error);
   if(!dt) return shHandleError(NULL_VALUES,"Null Datetime obj",error);
   if(years == 0) return true;
@@ -729,43 +729,43 @@ bool tryAddYearsToDtInPlace_m(SHDatetime *dt,int64_t years,TimeAdjustOptions opt
   }
   if(options & SIMPLE){
     double timestamp;
-    if(!tryDtToTimestamp_m(dt,&timestamp,error)) return false;
+    if(!shTryDtToTimestamp_m(dt,&timestamp,error)) return false;
     timestamp += years*SECONDS_PER_YEAR;
-    if(!tryTimestampToDt_m(timestamp,dt->timezoneOffset,dt,error)) return false;
+    if(!shTryTimestampToDt_m(timestamp,dt->timezoneOffset,dt,error)) return false;
     return true;
   }
   return false;
 }
 
 
-bool tryDayStart_m(double timestamp,int timezoneOffset,double *ans,SHError *error){
+bool shTryDayStart_m(double timestamp,int timezoneOffset,double *ans,SHError *error){
   shPrepareSHError(error);
   SHDatetime dt;
-  if(!tryTimestampToDt_m(timestamp,timezoneOffset,&dt,error)) return false;
-  dayStartInPlace(&dt);
-  return tryDtToTimestamp_m(&dt,ans,error);
+  if(!shTryTimestampToDt_m(timestamp,timezoneOffset,&dt,error)) return false;
+  shDayStartInPlace(&dt);
+  return shTryDtToTimestamp_m(&dt,ans,error);
 }
 
 
-SHDatetime* dayStartInPlace(SHDatetime *dt){
-  shLog("dayStartInPlace");
+SHDatetime* shDayStartInPlace(SHDatetime *dt){
+  shLog("shDayStartInPlace");
   if(!dt){
-    shLog("leaving empty dayStartInPlace");
+    shLog("leaving empty shDayStartInPlace");
     return dt;
   }
   dt->hour = 0;
   dt->minute = 0;
   dt->second = 0;
   dt->milisecond = 0;
-  shLog("leaving dayStartInPlace");
+  shLog("leaving shDayStartInPlace");
   return dt;
 }
 
 
-int calcWeekdayIdx_m(SHDatetime *dt,SHError *error){
+int shCalcWeekdayIdx_m(SHDatetime *dt,SHError *error){
   double timestamp = 0;
   shPrepareSHError(error);
-  if(!tryDtToTimestamp_m(dt,&timestamp,error)) return NOT_FOUND;
+  if(!shTryDtToTimestamp_m(dt,&timestamp,error)) return NOT_FOUND;
   int ans = 0;
   timestamp += dt->timezoneOffset;
   bool isAfterEpoch = dt->year >= BASE_YEAR;
@@ -787,8 +787,8 @@ int calcWeekdayIdx_m(SHDatetime *dt,SHError *error){
 }
 
 
-int calcDayOfYear_m(SHDatetime *dt,SHError *error){
-  if(!isValidSHDateTime_m(dt)){
+int shCalcDayOfYear_m(SHDatetime *dt,SHError *error){
+  if(!shIsValidSHDateTime_m(dt)){
     return shHandleErrorRetNotFound(GEN_ERROR,"Date components are out of range",error);
   }
   bool shouldAddLeapDay = _shouldAddLeapDay(dt->year,dt->month,dt->day);
@@ -799,54 +799,54 @@ int calcDayOfYear_m(SHDatetime *dt,SHError *error){
 }
 
 
-int calcDayOfYearFromTimestamp_m(double timestamp,int timezoneOffset,SHError * error){
+int shCalcDayOfYearFromTimestamp_m(double timestamp,int timezoneOffset,SHError * error){
   SHDatetime dt;
-  if(!tryTimestampToDt_m(timestamp,timezoneOffset,&dt,error)) return NOT_FOUND;
-  return calcDayOfYear_m(&dt,error);
+  if(!shTryTimestampToDt_m(timestamp,timezoneOffset,&dt,error)) return NOT_FOUND;
+  return shCalcDayOfYear_m(&dt,error);
 }
 
 
-bool tryDiffDateSecs_m(SHDatetime const *A,SHDatetime const *B,int64_t *ans,SHError *error){
+bool shTryDiffDateSecs_m(SHDatetime const *A,SHDatetime const *B,int64_t *ans,SHError *error){
   shPrepareSHError(error);
   if(!ans) return shHandleError(NULL_VALUES,"Null inputs",error);
-  if(!isValidSHDateTime_m(A)){
+  if(!shIsValidSHDateTime_m(A)){
     return shHandleError(GEN_ERROR,"Date components are out of range",error);
   }
-  if(!isValidSHDateTime_m(B)){
+  if(!shIsValidSHDateTime_m(B)){
     return shHandleError(GEN_ERROR,"Date components are out of range",error);
   }
   SHError errorA,errorB;
   shPrepareSHError(&errorA);
   shPrepareSHError(&errorB);
-  *ans = dtToTimestamp_m(A,&errorA) - dtToTimestamp_m(B,&errorB);
+  *ans = shDtToTimestamp_m(A,&errorA) - shDtToTimestamp_m(B,&errorB);
   if(errorA.code | errorB.code) return false;
   return true;
 }
 
 
-double dateDiffSecs_m(SHDatetime const *A,SHDatetime const *B,SHError *error){
+double shDateDiffSecs_m(SHDatetime const *A,SHDatetime const *B,SHError *error){
   shPrepareSHError(error);
   if(!A||!B) return shHandleError(NULL_VALUES,"Null Datetime obj",error);
   int64_t ans = 0;
-  tryDiffDateSecs_m(A,B,&ans,error);
+  shTryDiffDateSecs_m(A,B,&ans,error);
   return ans;
 }
 
 
-int64_t dateDiffDays_m(SHDatetime const *A,SHDatetime const *B,SHError *error){
+int64_t shDateDiffDays_m(SHDatetime const *A,SHDatetime const *B,SHError *error){
   shPrepareSHError(error);
   if(!A||!B) return shHandleError(NULL_VALUES,"Null Datetime obj",error);
   int64_t ans;
-  tryDateDiffDays_m(A,B,&ans,error);
+  shTryDateDiffDays_m(A,B,&ans,error);
   return ans;
 }
 
 
-bool tryDateDiffDays_m(SHDatetime const *A,SHDatetime const *B,int64_t *ans,SHError *error){
+bool shTryDateDiffDays_m(SHDatetime const *A,SHDatetime const *B,int64_t *ans,SHError *error){
   shPrepareSHError(error);
   if(!ans) return shHandleError(NULL_VALUES,"Null inputs",error);
   if(!A||!B) return shHandleError(NULL_VALUES,"Null Datetime obj",error);
-  *ans = dateDiffSecs_m(A,B,error);
+  *ans = shDateDiffSecs_m(A,B,error);
   *ans /= DAY_IN_SECONDS;
   if(error && error->code != NO_ERROR){
     return shHandleError(error->code,"Error calculating day diff",error);
@@ -854,7 +854,7 @@ bool tryDateDiffDays_m(SHDatetime const *A,SHDatetime const *B,int64_t *ans,SHEr
   return true;
 }
 
-bool isValidSHDateTime_m(SHDatetime const *dt){
+bool shIsValidSHDateTime_m(SHDatetime const *dt){
   return dt && _areTimeComponentsValid(dt->year,dt->month,dt->day,dt->hour,dt->minute,dt->second);
 }
 

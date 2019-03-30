@@ -13,9 +13,9 @@
 
 static int _compareDtAndTimeShift(SHDatetime *dt,SHTimeshift *shift,int (*compare)(int64_t,int64_t)){
     SHError error;
-    int64_t dtTimestamp = createDateTime_m(BASE_YEAR,dt->month,dt->day,dt->hour,dt->minute
+    int64_t dtTimestamp = shCreateDateTime_m(BASE_YEAR,dt->month,dt->day,dt->hour,dt->minute
                           ,dt->second,0,&error);
-    int64_t shiftTimestamp = createDateTime_m(BASE_YEAR,shift->month,shift->day,shift->hour
+    int64_t shiftTimestamp = shCreateDateTime_m(BASE_YEAR,shift->month,shift->day,shift->hour
                             ,shift->minute,0,0,&error);
     return compare(dtTimestamp,shiftTimestamp);
 }
@@ -77,7 +77,7 @@ static int _updateTimezoneForShifts(SHDatetime *dt,SHError *error){
       double ts;
       SHError cnvtErr;
       shPrepareSHError(&cnvtErr);
-      if(!tryDtToTimestamp_m(dt,&ts,&cnvtErr)){
+      if(!shTryDtToTimestamp_m(dt,&ts,&cnvtErr)){
         return shHandleError(cnvtErr.code,"Error in date object to"
              "timestamp in tz update",error);
       }
@@ -87,11 +87,11 @@ static int _updateTimezoneForShifts(SHDatetime *dt,SHError *error){
       if(oldShift != updShift){
           dt->timezoneOffset -= oldShift->adjustment;
           dt->timezoneOffset += updShift->adjustment;
-          int shiftCuspTS = createTime_m(updShift->hour,updShift->minute,0,&cnvtErr);
+          int shiftCuspTS = shCreateTime_m(updShift->hour,updShift->minute,0,&cnvtErr);
           if(cnvtErr.code){
             return shHandleError(cnvtErr.code,"Error creating time",error);
           }
-          int dtTS = extractTime_m(dt,&cnvtErr);
+          int dtTS = shExtractTime_m(dt,&cnvtErr);
           if(cnvtErr.code){
             return shHandleError(cnvtErr.code,"Error extracting time",error);
           }
@@ -100,7 +100,7 @@ static int _updateTimezoneForShifts(SHDatetime *dt,SHError *error){
               ts += oldShift->adjustment;
               ts -= updShift->adjustment;
           }
-          if(!timestampToDtUnitsOnly_m(ts,dt,&cnvtErr)){
+          if(!shTimestampToDtUnitsOnly_m(ts,dt,&cnvtErr)){
               return shHandleError(cnvtErr.code,"Error timestampt to date"
               " time object.",error);
           }

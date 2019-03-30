@@ -488,58 +488,58 @@ NSMutableArray<Daily *> *testDailies = nil;
     SHDatetime result;
     SHError err;
     shPrepareSHError(&err);
-    tryAddDaysToDt_m(&base,1,0,&lastDueDate,&err);
-    tryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
+    shTryAddDaysToDt_m(&base,1,0,&lastDueDate,&err);
+    shTryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,66,0,&expectedDate,&err);
+    shTryAddDaysToDt_m(&base,66,0,&expectedDate,&err);
 
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,65,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,65,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,64,0,&expectedDate,&err);
-    btw = dateDiffDays_m(&result,&base,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,64,0,&expectedDate,&err);
+    btw = shDateDiffDays_m(&result,&base,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,66,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,66,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,64,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,64,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,64,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,64,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,45,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,45,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,72,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,72,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,66,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,66,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,5,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,5,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,3,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,3,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,2,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,2,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,1,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,1,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,24,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,24,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,22,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,22,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,22,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,22,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,3,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,3,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,50,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,50,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,45,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,45,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
     weekScaler = 1;
     shBuildWeek(testSet,weekScaler,week);
@@ -547,288 +547,288 @@ NSMutableArray<Daily *> *testDailies = nil;
     base.month = 1;
     base.day = 7;
     
-    tryAddDaysToDt_m(&base,1,0,&lastDueDate,&err);
-    tryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
+    shTryAddDaysToDt_m(&base,1,0,&lastDueDate,&err);
+    shTryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,80,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,80,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,65,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,65,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,64,0,&expectedDate,&err);
-    btw = dateDiffDays_m(&result,&base,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,64,0,&expectedDate,&err);
+    btw = shDateDiffDays_m(&result,&base,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,66,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,66,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,64,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,64,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,64,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,64,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,59,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,59,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,72,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,72,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,71,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,71,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,5,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,5,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,3,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,3,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,2,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,2,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,1,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,1,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,24,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,24,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,22,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,22,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,22,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,22,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,17,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,17,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
     bool testSet2[] = {0,0,0,0,0,1,0};
     weekScaler = 3;
     shBuildWeek(testSet2,weekScaler,week);
     
-    tryAddDaysToDt_m(&base,5,0,&lastDueDate,&err);
-    tryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
+    shTryAddDaysToDt_m(&base,5,0,&lastDueDate,&err);
+    shTryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,68,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,68,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,6,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,6,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,5,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,5,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
     weekScaler = 1;
     shBuildWeek(testSet2,weekScaler,week);
     
-    tryAddDaysToDt_m(&base,5,0,&lastDueDate,&err);
-    tryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
+    shTryAddDaysToDt_m(&base,5,0,&lastDueDate,&err);
+    shTryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,75,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,75,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,6,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,6,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,5,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,5,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
     bool testSet3[] = {1,0,0,0,0,0,0};
     weekScaler = 3;
     shBuildWeek(testSet3,weekScaler,week);
     
     lastDueDate = base;
-    tryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
+    shTryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,63,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,63,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,62,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,62,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,42,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,42,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,1,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,1,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,0,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,0,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
     weekScaler = 1;
     shBuildWeek(testSet3,weekScaler,week);
     
     lastDueDate = base;
-    tryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
+    shTryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,77,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,77,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,62,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,62,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,56,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,56,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,1,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,1,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,0,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,0,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,7,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,7,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,0,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,0,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
     bool testSet4[] = {0,0,0,0,0,0,1};
     weekScaler = 3;
     shBuildWeek(testSet4,weekScaler,week);
     
-    tryAddDaysToDt_m(&base,6,0,&lastDueDate,&err);
-    tryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
+    shTryAddDaysToDt_m(&base,6,0,&lastDueDate,&err);
+    shTryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,69,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,69,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,13,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,13,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,20,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,20,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,26,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,26,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,34,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,34,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,27,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,27,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,68,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,68,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,48,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,48,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,7,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,7,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
     weekScaler = 1;
     shBuildWeek(testSet4,weekScaler,week);
     
-    tryAddDaysToDt_m(&base,6,0,&lastDueDate,&err);
-    tryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
+    shTryAddDaysToDt_m(&base,6,0,&lastDueDate,&err);
+    shTryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,76,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,76,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,13,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,13,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
-    btw = dateDiffDays_m(&result,&base,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
+    btw = shDateDiffDays_m(&result,&base,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,20,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,20,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,13,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,13,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,26,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,26,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,20,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,20,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,34,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,34,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,27,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,27,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,68,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,68,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,62,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,62,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,7,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,7,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
     bool testSet5[] = {1,1,1,1,1,1,1};
     weekScaler = 3;
     shBuildWeek(testSet5,weekScaler,week);
     
-    tryAddDaysToDt_m(&base,6,0,&lastDueDate,&err);
-    tryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
+    shTryAddDaysToDt_m(&base,6,0,&lastDueDate,&err);
+    shTryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,69,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,69,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,13,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,13,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,20,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,20,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,7,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,7,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,34,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,34,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,27,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,27,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,68,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,68,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,67,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,67,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,6,0,&checkinDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,6,0,&checkinDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
     weekScaler = 1;
     shBuildWeek(testSet5,weekScaler,week);
     
-    tryAddDaysToDt_m(&base,6,0,&lastDueDate,&err);
-    tryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
+    shTryAddDaysToDt_m(&base,6,0,&lastDueDate,&err);
+    shTryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,80,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,80,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,13,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,13,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,12,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,12,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,20,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,20,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,19,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,19,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,7,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,7,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,6,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,34,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,34,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,33,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,33,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
-    tryAddDaysToDt_m(&base,68,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,68,0,&checkinDate,&err);
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,67,0,&expectedDate,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,67,0,&expectedDate,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
     
     bool testSet6[] = {1,1,0,0,0,0,0};
     weekScaler = 3;
     shBuildWeek(testSet6,weekScaler,week);
     
-    tryAddDaysToDt_m(&base,1,0,&lastDueDate,&err);
-    tryAddDaysToDt_m(&base,7,0,&checkinDate,&err); //march 29
+    shTryAddDaysToDt_m(&base,1,0,&lastDueDate,&err);
+    shTryAddDaysToDt_m(&base,7,0,&checkinDate,&err); //march 29
     shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,1,0,&expectedDate,&err);
-    btw = dateDiffDays_m(&result,&base,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expectedDate,&err));
+    shTryAddDaysToDt_m(&base,1,0,&expectedDate,&err);
+    btw = shDateDiffDays_m(&result,&base,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expectedDate,&err));
   
 }
 
@@ -844,22 +844,22 @@ NSMutableArray<Daily *> *testDailies = nil;
   SHDatetime result;
   SHError err;
   shPrepareSHError(&err);
-  tryAddDaysToDt_m(&base,0,0,&lastDueDate,&err);
-  tryAddDaysToDt_m(&base,1,0,&checkinDate,&err);
-  tryAddDaysToDt_m(&base,0,0,&expected,&err);
+  shTryAddDaysToDt_m(&base,0,0,&lastDueDate,&err);
+  shTryAddDaysToDt_m(&base,1,0,&checkinDate,&err);
+  shTryAddDaysToDt_m(&base,0,0,&expected,&err);
   bool isSuccess = shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
   XCTAssertEqual(isSuccess,false);
   BOOL testSet2[] = {1,0,0,0,0,0,0};
   base.year = 2006;
   shBuildWeek(testSet2, weekScaler, week);
-  tryAddDaysToDt_m(&base,7,0,&checkinDate,&err);
-  tryAddDaysToDt_m(&base,0,0,&lastDueDate,&err);
+  shTryAddDaysToDt_m(&base,7,0,&checkinDate,&err);
+  shTryAddDaysToDt_m(&base,0,0,&lastDueDate,&err);
   isSuccess = shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
   XCTAssertEqual(isSuccess,true);
   
   shBuildWeek(testSet2, 2, week);
-  tryAddDaysToDt_m(&base,0,0,&checkinDate,&err);
-  tryAddDaysToDt_m(&base,0,0,&lastDueDate,&err);
+  shTryAddDaysToDt_m(&base,0,0,&checkinDate,&err);
+  shTryAddDaysToDt_m(&base,0,0,&lastDueDate,&err);
   isSuccess = shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
   XCTAssertEqual(isSuccess,true);
 }
@@ -877,123 +877,123 @@ NSMutableArray<Daily *> *testDailies = nil;
     SHDatetime result;
     SHError err;
     shPrepareSHError(&err);
-    tryAddDaysToDt_m(&base,1,0,&lastDueDate,&err);
-    tryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
+    shTryAddDaysToDt_m(&base,1,0,&lastDueDate,&err);
+    shTryAddDaysToDt_m(&base,81,0,&checkinDate,&err); //march 29
     shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,85,0,&expected,&err);
-    btw = dateDiffDays_m(&result,&base,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
+    shTryAddDaysToDt_m(&base,85,0,&expected,&err);
+    btw = shDateDiffDays_m(&result,&base,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expected,&err));
     
-    tryAddDaysToDt_m(&base,65,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,65,0,&checkinDate,&err);
     shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,66,0,&expected,&err);
-    btw = dateDiffDays_m(&result,&base,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
+    shTryAddDaysToDt_m(&base,66,0,&expected,&err);
+    btw = shDateDiffDays_m(&result,&base,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expected,&err));
     
-    tryAddDaysToDt_m(&base,63,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,63,0,&checkinDate,&err);
     shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,64,0,&expected,&err);
-    btw = dateDiffDays_m(&result,&base,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
+    shTryAddDaysToDt_m(&base,64,0,&expected,&err);
+    btw = shDateDiffDays_m(&result,&base,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expected,&err));
     
-    tryAddDaysToDt_m(&base,62,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,62,0,&checkinDate,&err);
     shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,64,0,&expected,&err);
-    btw = dateDiffDays_m(&result,&base,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
+    shTryAddDaysToDt_m(&base,64,0,&expected,&err);
+    btw = shDateDiffDays_m(&result,&base,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expected,&err));
     
-    tryAddDaysToDt_m(&base,50,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,50,0,&checkinDate,&err);
     shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,64,0,&expected,&err);
-    btw = dateDiffDays_m(&result,&base,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
+    shTryAddDaysToDt_m(&base,64,0,&expected,&err);
+    btw = shDateDiffDays_m(&result,&base,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expected,&err));
     
-    tryAddDaysToDt_m(&base,46,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,46,0,&checkinDate,&err);
     shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,64,0,&expected,&err);
-    btw = dateDiffDays_m(&result,&base,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
+    shTryAddDaysToDt_m(&base,64,0,&expected,&err);
+    btw = shDateDiffDays_m(&result,&base,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expected,&err));
     
-    tryAddDaysToDt_m(&base,66,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,66,0,&checkinDate,&err);
     bool isSuccess = shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
     (void)isSuccess;
-    tryAddDaysToDt_m(&base,66,0,&expected,&err);
-    btw = dateDiffDays_m(&result,&base,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
+    shTryAddDaysToDt_m(&base,66,0,&expected,&err);
+    btw = shDateDiffDays_m(&result,&base,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expected,&err));
     
-    tryAddDaysToDt_m(&base,64,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,64,0,&checkinDate,&err);
     shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,64,0,&expected,&err);
-    btw = dateDiffDays_m(&result,&base,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
+    shTryAddDaysToDt_m(&base,64,0,&expected,&err);
+    btw = shDateDiffDays_m(&result,&base,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expected,&err));
     
     weekScaler = 1;
     shBuildWeek(testSet0, weekScaler, week);
     
-    tryAddDaysToDt_m(&base,62,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,62,0,&checkinDate,&err);
     shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,64,0,&expected,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
+    shTryAddDaysToDt_m(&base,64,0,&expected,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expected,&err));
     
-    tryAddDaysToDt_m(&base,63,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,63,0,&checkinDate,&err);
     shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,64,0,&expected,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
+    shTryAddDaysToDt_m(&base,64,0,&expected,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expected,&err));
     
-    tryAddDaysToDt_m(&base,64,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,64,0,&checkinDate,&err);
     shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,64,0,&expected,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
+    shTryAddDaysToDt_m(&base,64,0,&expected,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expected,&err));
     
-    tryAddDaysToDt_m(&base,65,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,65,0,&checkinDate,&err);
     shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,66,0,&expected,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
+    shTryAddDaysToDt_m(&base,66,0,&expected,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expected,&err));
     
-    tryAddDaysToDt_m(&base,66,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,66,0,&checkinDate,&err);
     shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,66,0,&expected,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
+    shTryAddDaysToDt_m(&base,66,0,&expected,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expected,&err));
     
-    tryAddDaysToDt_m(&base,67,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,67,0,&checkinDate,&err);
     shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,71,0,&expected,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
+    shTryAddDaysToDt_m(&base,71,0,&expected,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expected,&err));
     
-    tryAddDaysToDt_m(&base,68,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,68,0,&checkinDate,&err);
     shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,71,0,&expected,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
+    shTryAddDaysToDt_m(&base,71,0,&expected,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expected,&err));
     
-    tryAddDaysToDt_m(&base,69,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,69,0,&checkinDate,&err);
     shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,71,0,&expected,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
+    shTryAddDaysToDt_m(&base,71,0,&expected,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expected,&err));
     
-    tryAddDaysToDt_m(&base,70,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,70,0,&checkinDate,&err);
     shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,71,0,&expected,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
+    shTryAddDaysToDt_m(&base,71,0,&expected,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expected,&err));
     
-    tryAddDaysToDt_m(&base,71,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,71,0,&checkinDate,&err);
     shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,71,0,&expected,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
+    shTryAddDaysToDt_m(&base,71,0,&expected,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expected,&err));
     
-    tryAddDaysToDt_m(&base,72,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,72,0,&checkinDate,&err);
     shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,73,0,&expected,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
+    shTryAddDaysToDt_m(&base,73,0,&expected,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expected,&err));
     
-    tryAddDaysToDt_m(&base,73,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,73,0,&checkinDate,&err);
     shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,73,0,&expected,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
+    shTryAddDaysToDt_m(&base,73,0,&expected,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expected,&err));
     
-    tryAddDaysToDt_m(&base,74,0,&checkinDate,&err);
+    shTryAddDaysToDt_m(&base,74,0,&checkinDate,&err);
     shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
-    tryAddDaysToDt_m(&base,78,0,&expected,&err);
-    XCTAssertEqual(dtToTimestamp_m(&result,&err),dtToTimestamp_m(&expected,&err));
+    shTryAddDaysToDt_m(&base,78,0,&expected,&err);
+    XCTAssertEqual(shDtToTimestamp_m(&result,&err),shDtToTimestamp_m(&expected,&err));
     
     BOOL testSet1[] = {1,0,0,0,0,0,0};
     weekScaler = 3;

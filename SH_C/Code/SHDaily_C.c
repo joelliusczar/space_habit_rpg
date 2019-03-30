@@ -128,18 +128,18 @@ bool shPreviousDueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate
   if(!_ArePreviousDateInputsValid(lastDueDate,checkinDate,rvi,scaler,ans,error)){
     return false;
   }
-  int lastDayIdx = calcWeekdayIdx_m(lastDueDate,error);
+  int lastDayIdx = shCalcWeekdayIdx_m(lastDueDate,error);
   SHDatetime firstDayOfFirstWeek;
-  tryAddDaysToDt_m(lastDueDate,-lastDayIdx,0,&firstDayOfFirstWeek,error);
-  int64_t daySpan = dateDiffDays_m(checkinDate,&firstDayOfFirstWeek,error);
-  int checkinDayIdx = calcWeekdayIdx_m(checkinDate,error);
+  shTryAddDaysToDt_m(lastDueDate,-lastDayIdx,0,&firstDayOfFirstWeek,error);
+  int64_t daySpan = shDateDiffDays_m(checkinDate,&firstDayOfFirstWeek,error);
+  int checkinDayIdx = shCalcWeekdayIdx_m(checkinDate,error);
   int64_t firstSunToPrevSunSpan = daySpan - checkinDayIdx;
   bool isActiveWeek = _distanceFromActiveWeek(firstSunToPrevSunSpan, scaler) == 0;
   int prevDayIdx = _findPrevDayIdxInWeek(isActiveWeek, checkinDayIdx, rvi);
   firstSunToPrevSunSpan -= (_offsetForSameWeek(isActiveWeek,checkinDayIdx,prevDayIdx));
   int64_t sunOfPrevActionWeek = firstSunToPrevSunSpan - _distanceFromActiveWeek(firstSunToPrevSunSpan, scaler);
-  tryAddDaysToDt_m(&firstDayOfFirstWeek,sunOfPrevActionWeek + prevDayIdx,0,ans,error);
-  if((dtToTimestamp_m(ans,error) > dtToTimestamp_m(checkinDate,error))){
+  shTryAddDaysToDt_m(&firstDayOfFirstWeek,sunOfPrevActionWeek + prevDayIdx,0,ans,error);
+  if((shDtToTimestamp_m(ans,error) > shDtToTimestamp_m(checkinDate,error))){
       return shHandleError(OUT_OF_RANGE
                ,"The calculated answer for previous due date is after the checkindate",error);
   }
@@ -156,11 +156,11 @@ SHDatetime* shBothWeeklyDueDatesFromLastDueDate(SHDatetime* lastDueDate,SHDateti
   if(error && error->code != NO_ERROR){
     return shHandleErrorRetNull(error->code,"Error getting previous date",error);
   }
-  int prevDayIdx = calcWeekdayIdx_m(&previousDate, error);
+  int prevDayIdx = shCalcWeekdayIdx_m(&previousDate, error);
   SHDatetime firstDayOfPrevWeek;
-  tryAddDaysToDt_m(&previousDate, -1*prevDayIdx, 0, &firstDayOfPrevWeek, error);
-  int64_t daySpan = dateDiffDays_m(checkinDate,&firstDayOfPrevWeek, error);
-  int checkinDayIdx = calcWeekdayIdx_m(checkinDate, error);
+  shTryAddDaysToDt_m(&previousDate, -1*prevDayIdx, 0, &firstDayOfPrevWeek, error);
+  int64_t daySpan = shDateDiffDays_m(checkinDate,&firstDayOfPrevWeek, error);
+  int checkinDayIdx = shCalcWeekdayIdx_m(checkinDate, error);
   int64_t prevSunToThisSunSpan = daySpan - checkinDayIdx;
   int64_t weekCount = (_distanceFromActiveWeek(prevSunToThisSunSpan, scaler)/DAYS_IN_WEEK);
   int64_t nextActiveWeek = prevSunToThisSunSpan + (((scaler - weekCount) % scaler) * DAYS_IN_WEEK);
@@ -168,7 +168,7 @@ SHDatetime* shBothWeeklyDueDatesFromLastDueDate(SHDatetime* lastDueDate,SHDateti
   int nextDayIdx = _findNextDayIdx(weekStartIdx, week);
   int64_t sameWeekOffset = nextDayIdx < checkinDayIdx && weekCount == 0 ? scaler * DAYS_IN_WEEK : 0;
   SHDatetime result;
-  tryAddDaysToDt_m(&firstDayOfPrevWeek, nextActiveWeek + nextDayIdx + sameWeekOffset,0,&result, error);
+  shTryAddDaysToDt_m(&firstDayOfPrevWeek, nextActiveWeek + nextDayIdx + sameWeekOffset,0,&result, error);
   SHDatetime* resultPair = malloc(sizeof(SHDatetime)*2);
   resultPair[0] = previousDate;
   resultPair[1] = result;
@@ -192,7 +192,7 @@ bool shNextDueDate_WEEKLY(SHDatetime* lastDueDate,SHDatetime* checkinDate
     return shHandleError(error->code, "Error calculating next due date", error);
   }
   shLog("leaving nextDueDate_WEEKLY\n");
-  if(dtToTimestamp_m(ans,error) < dtToTimestamp_m(checkinDate,error)){
+  if(shDtToTimestamp_m(ans,error) < shDtToTimestamp_m(checkinDate,error)){
     char ansStr[50];
     char checkinStr[50];
     shDTToString(ans,ansStr);
@@ -233,7 +233,7 @@ bool _ArePreviousDateInputsValid(SHDatetime *lastDueDate,SHDatetime *checkinDate
   if(cnvtErr1||cnvtErr2){
    return shHandleError(cnvtErr1||cnvtErr2,"There was a conversion error with the datetimes", error);
   }
-  int64_t lastDayIdx = calcWeekdayIdx_m(lastDueDate,error);
+  int64_t lastDayIdx = shCalcWeekdayIdx_m(lastDueDate,error);
   if(!rvi[lastDayIdx].isDayActive){
     return shHandleError(INVALID_STATE, "Previous due date is on an non active day.", error);
   }

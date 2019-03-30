@@ -25,78 +25,78 @@
  */
 
 
-double createDateTime_m(int64_t year,int month,int day,int hour,int minute,int second,int timezoneOffset
+double shCreateDateTime_m(int64_t year,int month,int day,int hour,int minute,int second,int timezoneOffset
 ,SHError *error);
 
-bool tryCreateDateTime_m(int64_t year,int month,int day,int hour,int minute,int second,int timezoneOffset
+bool shTryCreateDateTime_m(int64_t year,int month,int day,int hour,int minute,int second,int timezoneOffset
 ,double *ans,SHError *error);
 
-double createDate_m(int64_t year,int month,int day,int timezoneOffset,SHError *error);
+double shCreateDate_m(int64_t year,int month,int day,int timezoneOffset,SHError *error);
 
-bool tryCreateDate_m(int64_t year,int month,int day,int timezoneOffset,double *ans,SHError *error);
+bool shTryCreateDate_m(int64_t year,int month,int day,int timezoneOffset,double *ans,SHError *error);
 
-double createTime_m(int hour,int minute,int second,SHError *error);
+double shCreateTime_m(int hour,int minute,int second,SHError *error);
 
-bool tryCreateTime_m(int hour,int minute,int second,double *ans,SHError *error);
+bool shTryCreateTime_m(int hour,int minute,int second,double *ans,SHError *error);
 
-double extractTime_m(SHDatetime *dt,SHError *error);
+double shExtractTime_m(SHDatetime *dt,SHError *error);
 
-bool tryExtractTime_m(SHDatetime *dt,double *ans,SHError *error);
+bool shTryExtractTime_m(SHDatetime *dt,double *ans,SHError *error);
 
-bool tryTimestampToDt_m(double timestamp, int timezoneOffset,SHDatetime *dt,SHError *error);
+bool shTryTimestampToDt_m(double timestamp, int timezoneOffset,SHDatetime *dt,SHError *error);
 
-bool timestampToDtUnitsOnly_m(double timestamp,SHDatetime *dt,SHError *error);
+bool shTimestampToDtUnitsOnly_m(double timestamp,SHDatetime *dt,SHError *error);
 
-double dtToTimestamp_m(SHDatetime const *dt,SHError *error);
+double shDtToTimestamp_m(SHDatetime const *dt,SHError *error);
 
-bool tryDtToTimestamp_m(SHDatetime const *dt,double *ans,SHError *error);
+bool shTryDtToTimestamp_m(SHDatetime const *dt,double *ans,SHError *error);
 
-bool tryAddYearsToDt_m(SHDatetime const *dt,int64_t years,TimeAdjustOptions options,SHDatetime *ans
+bool shTryAddYearsToDt_m(SHDatetime const *dt,int64_t years,TimeAdjustOptions options,SHDatetime *ans
 ,SHError *error);
 
-bool tryAddYearsToDtInPlace_m(SHDatetime *dt,int64_t years,TimeAdjustOptions options,SHError *error);
+bool shTryAddYearsToDtInPlace_m(SHDatetime *dt,int64_t years,TimeAdjustOptions options,SHError *error);
 
-double addYearsToTimestamp_m(double timestamp,int64_t years,int timezoneOffset,TimeAdjustOptions options
+double shAddYearsToTimestamp_m(double timestamp,int64_t years,int timezoneOffset,TimeAdjustOptions options
 ,SHError *error);
 
-bool tryAddYearsToTimestamp_m(double timestamp,int64_t years,int timezoneOffset,TimeAdjustOptions options
+bool shTryAddYearsToTimestamp_m(double timestamp,int64_t years,int timezoneOffset,TimeAdjustOptions options
 ,double *ans,SHError *error);
 
-bool tryAddMonthsToDt_m(SHDatetime const *dt,int64_t months,TimeAdjustOptions options,SHDatetime *ans
+bool shTryAddMonthsToDt_m(SHDatetime const *dt,int64_t months,TimeAdjustOptions options,SHDatetime *ans
 ,SHError *error);
 
-bool tryAddMonthsToDtInPlace_m(SHDatetime *dt,int64_t months,TimeAdjustOptions options,SHError *error);
+bool shTryAddMonthsToDtInPlace_m(SHDatetime *dt,int64_t months,TimeAdjustOptions options,SHError *error);
 
-bool tryAddMonthsToTimestamp_m(double timestamp,int64_t months,int timezoneOffset,TimeAdjustOptions options
+bool shTryAddMonthsToTimestamp_m(double timestamp,int64_t months,int timezoneOffset,TimeAdjustOptions options
 ,double *ans,SHError *error);
 
-bool tryAddDaysToDt_m(SHDatetime const *dt,int64_t days,TimeAdjustOptions options,SHDatetime *ans
+bool shTryAddDaysToDt_m(SHDatetime const *dt,int64_t days,TimeAdjustOptions options,SHDatetime *ans
 ,SHError *error);
 
-bool tryAddDaysToDtInPlace_m(SHDatetime *dt,int64_t days,TimeAdjustOptions options,SHError *error);
+bool shTryAddDaysToDtInPlace_m(SHDatetime *dt,int64_t days,TimeAdjustOptions options,SHError *error);
 
-bool tryAddDaysToTimestamp_m(double timestamp,int64_t day,TimeAdjustOptions options,double *ans
+bool shTryAddDaysToTimestamp_m(double timestamp,int64_t day,TimeAdjustOptions options,double *ans
 ,SHError *error);
 
-bool tryDayStart_m(double timestamp,int timezoneOffset,double *ans,SHError *error);
+bool shTryDayStart_m(double timestamp,int timezoneOffset,double *ans,SHError *error);
 
-SHDatetime* dayStartInPlace(SHDatetime *dt);
+SHDatetime* shDayStartInPlace(SHDatetime *dt);
 
-int calcWeekdayIdx_m(SHDatetime *dt,SHError *error);
+int shCalcWeekdayIdx_m(SHDatetime *dt,SHError *error);
 
-int calcDayOfYear_m(SHDatetime *dt,SHError *error);
+int shCalcDayOfYear_m(SHDatetime *dt,SHError *error);
 
-int calcDayOfYearFromTimestamp_m(double timestamp,int timezoneOffset,SHError * error);
+int shCalcDayOfYearFromTimestamp_m(double timestamp,int timezoneOffset,SHError * error);
 
-int64_t dateDiffDays_m(SHDatetime const *A,SHDatetime const *B,SHError *error);
+int64_t shDateDiffDays_m(SHDatetime const *A,SHDatetime const *B,SHError *error);
 
-bool tryDateDiffDays_m(SHDatetime const *A,SHDatetime const *B,int64_t *ans,SHError *error);
+bool shTryDateDiffDays_m(SHDatetime const *A,SHDatetime const *B,int64_t *ans,SHError *error);
 
-double dateDiffSecs_m(SHDatetime const *A,SHDatetime const *B,SHError *error);
+double shDateDiffSecs_m(SHDatetime const *A,SHDatetime const *B,SHError *error);
 
-bool tryDiffDateSecs_m(SHDatetime const *A,SHDatetime const *B,int64_t *ans,SHError *error);
+bool shTryDiffDateSecs_m(SHDatetime const *A,SHDatetime const *B,int64_t *ans,SHError *error);
 
-bool isValidSHDateTime_m(SHDatetime const *dt);
+bool shIsValidSHDateTime_m(SHDatetime const *dt);
 
 void shDTToString(SHDatetime const *dt,char* str);
 #endif /* SHDatetimeMod_h */
