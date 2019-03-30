@@ -227,7 +227,7 @@ bool _ArePreviousDateInputsValid(SHDatetime *lastDueDate,SHDatetime *checkinDate
     return shHandleError(OUT_OF_RANGE, "Scaler needs to be greater than zero", error);
   }
   SHErrorCode cnvtErr1,cnvtErr2;
-  if(!(dtToTimestamp(checkinDate,&cnvtErr1) >= dtToTimestamp(lastDueDate,&cnvtErr2))){
+  if(!(shDtToTimestamp(checkinDate,&cnvtErr1) >= shDtToTimestamp(lastDueDate,&cnvtErr2))){
       return shHandleError(OUT_OF_RANGE,"Checkindate needs to be after lastDueDate",error);
   }
   if(cnvtErr1||cnvtErr2){

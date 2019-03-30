@@ -22,27 +22,27 @@ void setSHError(SHError * err);
 
 SHError* getSHError(void);
 
-double createDateTime_s(int64_t year,int month,int day,int hour,int minute,int second,
+double shCreateDateTime_s(int64_t year,int month,int day,int hour,int minute,int second,
   int timezoneOffset);
 
-double createDate_s(int64_t year,int month,int day,int timezoneOffset);
+double shCreateDate_s(int64_t year,int month,int day,int timezoneOffset);
 
-double createTime_s(int hour,int minute,int second);
+double shCreateTime_s(int hour,int minute,int second);
 
-double extractTime_s(SHDatetime *dt);
+double shExtractTime_s(SHDatetime *dt);
 
 void timestampToDt_s(double timestamp, int timezoneOffset,SHDatetime *dt);
 
-void timestampToDtUnitsOnly_s(double timestamp,SHDatetime *dt);
+void shTimestampToDtUnitsOnly_s(double timestamp,SHDatetime *dt);
 
-double dtToTimestamp_s(SHDatetime const *dt);
+double shDtToTimestamp_s(SHDatetime const *dt);
 
 void addYearsToDt_s(SHDatetime const *dt,int64_t years,TimeAdjustOptions options,
   SHDatetime *ans);
 
 void addYearsToDtInPlace_s(SHDatetime *dt,int64_t years,TimeAdjustOptions options);
 
-double addYearsToTimestamp_s(double timestamp,int64_t years,int timezoneOffset,
+double shAddYearsToTimestamp_s(double timestamp,int64_t years,int timezoneOffset,
   TimeAdjustOptions options);
 
 void addMonthsToDt_s(SHDatetime const *dt,int64_t months,TimeAdjustOptions options,
@@ -63,14 +63,14 @@ void addDaysToTimestamp_s(double timestamp,int64_t days,TimeAdjustOptions option
 
 double dayStart_s(double timestamp,int timezoneOffset);
 
-int calcWeekdayIdx_s(SHDatetime *dt);
+int shCalcWeekdayIdx_s(SHDatetime *dt);
 
-int calcDayOfYear_s(SHDatetime *dt);
+int shCalcDayOfYear_s(SHDatetime *dt);
 
-int calcDayOfYearFromTimestamp_s(double timestamp,int timezoneOffset);
+int shCalcDayOfYearFromTimestamp_s(double timestamp,int timezoneOffset);
 
-int64_t dateDiffDays_s(SHDatetime const *A,SHDatetime const *B);
+int64_t shDateDiffDays_s(SHDatetime const *A,SHDatetime const *B);
 
-double dateDiffSecs_s(SHDatetime const *A,SHDatetime const *B);
+double shDateDiffSecs_s(SHDatetime const *A,SHDatetime const *B);
 
 #endif /* SHDatetimeNoErr_h */

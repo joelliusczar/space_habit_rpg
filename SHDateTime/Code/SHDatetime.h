@@ -24,86 +24,86 @@
  */
 
 
-double createDateTime(int64_t year,int month,int day,int hour,int minute,int second,int timezoneOffset
+double shCreateDateTime(int64_t year,int month,int day,int hour,int minute,int second,int timezoneOffset
 ,SHErrorCode *error);
 
-bool tryCreateDateTime(int64_t year,int month,int day,int hour,int minute,int second,int timezoneOffset
+bool shTryCreateDateTime(int64_t year,int month,int day,int hour,int minute,int second,int timezoneOffset
 ,double *ans,SHErrorCode *error);
 
-double createDate(int64_t year,int month,int day,int timezoneOffset,SHErrorCode *error);
+double shCreateDate(int64_t year,int month,int day,int timezoneOffset,SHErrorCode *error);
 
-bool tryCreateDate(int64_t year,int month,int day,int timezoneOffset,double *ans,SHErrorCode *error);
+bool shTryCreateDate(int64_t year,int month,int day,int timezoneOffset,double *ans,SHErrorCode *error);
 
-double createTime(int hour,int minute,int second,SHErrorCode *error);
+double shCreateTime(int hour,int minute,int second,SHErrorCode *error);
 
-bool tryCreateTime(int hour,int minute,int second,double *ans,SHErrorCode *error);
+bool shTryCreateTime(int hour,int minute,int second,double *ans,SHErrorCode *error);
 
-double extractTime(SHDatetime *dt,SHErrorCode *error);
+double shExtractTime(SHDatetime *dt,SHErrorCode *error);
 
-bool tryExtractTime(SHDatetime *dt,double *ans,SHErrorCode *error);
+bool shTryExtractTime(SHDatetime *dt,double *ans,SHErrorCode *error);
 
-bool tryTimestampToDt(double timestamp, int timezoneOffset,SHDatetime *dt,SHErrorCode *error);
+bool shTryTimestampToDt(double timestamp, int timezoneOffset,SHDatetime *dt,SHErrorCode *error);
 
-bool timestampToDtUnitsOnly(double timestamp,SHDatetime *dt,SHErrorCode *error);
+bool shTimestampToDtUnitsOnly(double timestamp,SHDatetime *dt,SHErrorCode *error);
 
-double dtToTimestamp(SHDatetime const *dt,SHErrorCode *error);
+double shDtToTimestamp(SHDatetime const *dt,SHErrorCode *error);
 
-bool tryDtToTimestamp(SHDatetime const *dt,double *ans,SHErrorCode *error);
+bool shTryDtToTimestamp(SHDatetime const *dt,double *ans,SHErrorCode *error);
 
-bool tryAddYearsToDt(SHDatetime const *dt,int64_t years,TimeAdjustOptions options,SHDatetime *ans
+bool shTryAddYearsToDt(SHDatetime const *dt,int64_t years,TimeAdjustOptions options,SHDatetime *ans
 ,SHErrorCode *error);
 
-bool tryAddYearsToDtInPlace(SHDatetime *dt,int64_t years,TimeAdjustOptions options,SHErrorCode *error);
+bool shTryAddYearsToDtInPlace(SHDatetime *dt,int64_t years,TimeAdjustOptions options,SHErrorCode *error);
 
-double addYearsToTimestamp(double timestamp,int64_t years,int timezoneOffset,TimeAdjustOptions options
+double shAddYearsToTimestamp(double timestamp,int64_t years,int timezoneOffset,TimeAdjustOptions options
 ,SHErrorCode *error);
 
-bool tryAddYearsToTimestamp(double timestamp,int64_t years,int timezoneOffset,TimeAdjustOptions options
+bool shTryAddYearsToTimestamp(double timestamp,int64_t years,int timezoneOffset,TimeAdjustOptions options
 ,double *ans,SHErrorCode *error);
 
-bool tryAddMonthsToDt(SHDatetime const *dt,int64_t months,TimeAdjustOptions options,SHDatetime *ans
+bool shTryAddMonthsToDt(SHDatetime const *dt,int64_t months,TimeAdjustOptions options,SHDatetime *ans
 ,SHErrorCode *error);
 
-bool tryAddMonthsToDtInPlace(SHDatetime *dt,int64_t months,TimeAdjustOptions options,SHErrorCode *error);
+bool shTryAddMonthsToDtInPlace(SHDatetime *dt,int64_t months,TimeAdjustOptions options,SHErrorCode *error);
 
-bool tryAddMonthsToTimestamp(double timestamp,int64_t months,int timezoneOffset,TimeAdjustOptions options
+bool shTryAddMonthsToTimestamp(double timestamp,int64_t months,int timezoneOffset,TimeAdjustOptions options
 ,double *ans,SHErrorCode *error);
 
-bool tryAddDaysToDt(SHDatetime const *dt,int64_t days,TimeAdjustOptions options,SHDatetime *ans
+bool shTryAddDaysToDt(SHDatetime const *dt,int64_t days,TimeAdjustOptions options,SHDatetime *ans
 ,SHErrorCode *error);
 
-bool tryAddDaysToDtInPlace(SHDatetime *dt,int64_t days,TimeAdjustOptions options,SHErrorCode *error);
+bool shTryAddDaysToDtInPlace(SHDatetime *dt,int64_t days,TimeAdjustOptions options,SHErrorCode *error);
 
-bool tryAddDaysToTimestamp(double timestamp,int64_t day,TimeAdjustOptions options,double *ans
+bool shTryAddDaysToTimestamp(double timestamp,int64_t day,TimeAdjustOptions options,double *ans
 ,SHErrorCode *error);
 
-bool tryDayStart(double timestamp,int timezoneOffset,double *ans,SHErrorCode *error);
+bool shTryDayStart(double timestamp,int timezoneOffset,double *ans,SHErrorCode *error);
 
-int calcWeekdayIdx(SHDatetime *dt,SHErrorCode *error);
+int shCalcWeekdayIdx(SHDatetime *dt,SHErrorCode *error);
 
-int calcDayOfYear(SHDatetime *dt,SHErrorCode *error);
+int shCalcDayOfYear(SHDatetime *dt,SHErrorCode *error);
 
-int calcDayOfYearFromTimestamp(double timestamp,int timezoneOffset,SHErrorCode * error);
+int shCalcDayOfYearFromTimestamp(double timestamp,int timezoneOffset,SHErrorCode * error);
 
-int64_t dateDiffDays(SHDatetime const *A,SHDatetime const *B,SHErrorCode *error);
+int64_t shDateDiffDays(SHDatetime const *A,SHDatetime const *B,SHErrorCode *error);
 
-bool tryDateDiffDays(SHDatetime const *A,SHDatetime const *B,int64_t *ans,SHErrorCode *error);
+bool shTryDateDiffDays(SHDatetime const *A,SHDatetime const *B,int64_t *ans,SHErrorCode *error);
 
-double dateDiffSecs(SHDatetime const *A,SHDatetime const *B,SHErrorCode *error);
+double shDateDiffSecs(SHDatetime const *A,SHDatetime const *B,SHErrorCode *error);
 
-bool tryDiffDateSecs(SHDatetime const *A,SHDatetime const *B,int64_t *ans,SHErrorCode *error);
+bool shTryDiffDateSecs(SHDatetime const *A,SHDatetime const *B,int64_t *ans,SHErrorCode *error);
 
-int isValidSHDateTime(SHDatetime const *dt);
+int shIsValidSHDateTime(SHDatetime const *dt);
 
-bool initDt(SHDatetime *dt);
+bool shInitDt(SHDatetime *dt);
 
-bool initTimeshift(SHTimeshift *shift);
+bool shInitTimeshift(SHTimeshift *shift);
 
 #endif /* datetime_h */
 
 
 /*
- createDateTime:
+ shCreateDateTime:
  Converts time units to unix epoch time
  year: ex. 1988
  month: between 1 and 12
@@ -118,7 +118,7 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- tryCreateDateTime:
+ shTryCreateDateTime:
  Converts time units to unix epoch time
  year: ex. 1988
  month: between 1 and 12
@@ -134,7 +134,7 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- createDate:
+ shCreateDate:
  Converts time units to unix epoch time at start of day
  year: ex. 1988
  month: between 1 and 12
@@ -146,7 +146,7 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- tryCreateDate:
+ shTryCreateDate:
  Converts time units to unix epoch time at start of day
  year: ex. 1988
  month: between 1 and 12
@@ -161,7 +161,7 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- createTime:
+ shCreateTime:
  Converts time units to unix epoch time jan 1,1970. This is always less than a day
  hour: between 0 and 23
  minute: between 0 and 59
@@ -172,7 +172,7 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- tryCreateTime:
+ shTryCreateTime:
  Converts time units to unix epoch time jan 1,1970. This is always less than a day
  hour: between 0 and 23
  minute: between 0 and 59
@@ -182,7 +182,7 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- extractTime:
+ shExtractTime:
  gets the time in seconds from the hour,minute, and seconds on the SHDatetime
  dt:SHDateTime to get hour,minute,and seconds from
  error:pointer to variable to store an error number, right now it's just
@@ -193,7 +193,7 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- tryExtractTime:
+ shTryExtractTime:
  gets the time in seconds from the hour,minute, and seconds on the SHDatetime
  dt:SHDateTime to get hour,minute,and seconds from
  ans: pointer to variable to store result
@@ -215,7 +215,7 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- timestampToDtUnitsOnly:
+ shTimestampToDtUnitsOnly:
  this is like timestampToDateObj but it retains any existing values on SHDateTime obj
  timestamp: a unix epoch timestamp
  dt: the SHDateTime to store the results in
@@ -225,8 +225,8 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- dtToTimestamp:
- this is a wrapper around createDateTime. It takes the components on the SHDateTime
+ shDtToTimestamp:
+ this is a wrapper around shCreateDateTime. It takes the components on the SHDateTime
  and converts them to an epoch timestamp
  dt: the SHDateTime that we're pulling the time units from
  error: pointer to variable to store an error number, right now it's just
@@ -235,8 +235,8 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- tryDtToTimestamp:
- this is a wrapper around createDateTime. It takes the components on the SHDateTime
+ shTryDtToTimestamp:
+ this is a wrapper around shCreateDateTime. It takes the components on the SHDateTime
  and converts them to an epoch timestamp
  dt: the SHDateTime that we're pulling the time units from
  ans: pointer to variable to store result
@@ -246,7 +246,7 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- tryAddYearsToDt:
+ shTryAddYearsToDt:
  adds years to a date object while keeping track of things such as leap days
  dt: we use this as base time
  years: how ever many you want
@@ -259,8 +259,8 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- tryAddYearsToDtInPlace:
- this is the same as tryAddYearsToDt but changes are in place
+ shTryAddYearsToDtInPlace:
+ this is the same as shTryAddYearsToDt but changes are in place
  dt: we use this as base time, and we update it
  years: how ever many you want
  options: use this to determine if non leap years on feb 29 should go to feb 28,
@@ -271,7 +271,7 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- addYearsToTimestamp:
+ shAddYearsToTimestamp:
  adds years to epoch timestamp
  timestamp: a unix epoch timestamp
  years: nothing to say here
@@ -284,7 +284,7 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- tryAddYearsToTimestamp:
+ shTryAddYearsToTimestamp:
  adds years to epoch timestamp
  timestamp: a unix epoch timestamp
  years: nothing to say here
@@ -298,7 +298,7 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- tryAddMonthsToDt:
+ shTryAddMonthsToDt:
  adds months to a date object while keeping track of things such as year adjustments
  dt: we use this as base time
  months: how ever many you want
@@ -311,8 +311,8 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- tryAddMonthsToDtInPlace:
- this is the same as tryAddMonthsToDt but changes are in place
+ shTryAddMonthsToDtInPlace:
+ this is the same as shTryAddMonthsToDt but changes are in place
  dt: we use this as base time, and we update it
  years: how ever many you want
  options: use this to determine if non leap years on feb 29 should go to feb 28,
@@ -323,7 +323,7 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- tryAddMonthsToTimestamp:
+ shTryAddMonthsToTimestamp:
  adds months to epoch timestamp
  timestamp: a unix epoch timestamp
  years: nothing to say here
@@ -337,7 +337,7 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- tryAddDaysToDt:
+ shTryAddDaysToDt:
  adds days to a date object while keeping track of things such as year adjustments
  dt: we use this as base time
  days: how ever many you want
@@ -351,8 +351,8 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- tryAddDaysToDtInPlace:
- this is the same as tryAddDaysToDt but changes are in place
+ shTryAddDaysToDtInPlace:
+ this is the same as shTryAddDaysToDt but changes are in place
  dt: we use this as base time, and we update it
  days: how ever many you want
  options: use this to determine if non leap years on feb 29 should go to feb 28,
@@ -363,7 +363,7 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- tryAddDaysToTimestamp:
+ shTryAddDaysToTimestamp:
  adds days to epoch timestamp
  timestamp: a unix epoch timestamp
  day: nothing to say here
@@ -377,7 +377,7 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- tryDayStart:
+ shTryDayStart:
  takes a timestamp and returns a new one with same date but at the beginning.
  timestamp: a unix epoch timestamp
  timezoneOffset: whatever, this should probably be a real timezone
@@ -388,7 +388,7 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- calcWeekdayIdx:
+ shCalcWeekdayIdx:
  takes a SHDateTime and infers what the day of the week is. By default, Sunday is 0,
  Saturday is 6
  dt: extract the weekday from this
@@ -398,7 +398,7 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- dateDiffDays:
+ shDateDiffDays:
  calculates the number of days between the dates represented by A, and B
  A: the date subtracted from
  B: the date that is subtracting
@@ -408,7 +408,7 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- tryDateDiffDays:
+ shTryDateDiffDays:
  calculates the number of days between the dates represented by A, and B
  A: the date subtracted from
  B: the date that is subtracting
@@ -420,7 +420,7 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- dateDiffSecs:
+ shDateDiffSecs:
  calculates the number of seconds between the dates represented by A, and B
  A: the date subtracted from
  B: the date that is subtracting
@@ -430,7 +430,7 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- tryDiffDateSecs:
+ shTryDiffDateSecs:
  calculates the number of seconds between the dates represented by A, and B
  A: the date subtracted from
  B: the date that is subtracting
@@ -442,20 +442,20 @@ bool initTimeshift(SHTimeshift *shift);
  */
 
 /*
- isValidSHDateTime:
+ shIsValidSHDateTime:
  this tests if an SHDateTime object has valid properties. ie. year is greater than 0,
  and less than whatever the max possible year is; the month is between 1 and 12; etc.
  returns: 1 or 0, true or false
  */
 
 /*
- initDt:
+ shInitDt:
  zeros out an SHDatetime object
  dt: the datetime object we're setting to factory state.
  */
 
 /*
- initTimeshift:
+ shInitTimeshift:
  zeros out a Timeshift object
  shift: the Timeshift object we're setting to factory state.
  */

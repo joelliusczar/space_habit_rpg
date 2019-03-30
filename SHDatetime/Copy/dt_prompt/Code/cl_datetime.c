@@ -182,7 +182,7 @@ static int _loadDtPart(int argc,char *argv[],int idx,SHErrorCode* error){
             double ts = 0;
             int tzOffset = 0;
             idx = _loadTimestampArgs(argc,argv,&ts,&tzOffset,++idx,error);
-            tryTimestampToDt(ts,tzOffset,dtPt,error);
+            shTryTimestampToDt(ts,tzOffset,dtPt,error);
             datesParsed++;
             timesParsed++;
             continue;
@@ -203,15 +203,15 @@ static int _loadAddArgs(int argc,char *argv[],int idx,SHErrorCode* error){
             if(*error) return setIndexErrorCode(*error,error);
             if(!strcmp(argv[idx],"d")){
                 idx++;
-                adder = &tryAddDaysToDtInPlace;
+                adder = &shTryAddDaysToDtInPlace;
             }
             else if(!strcmp(argv[idx],"m")){
                 idx++;
-                adder = &tryAddMonthsToDtInPlace;
+                adder = &shTryAddMonthsToDtInPlace;
             }
             else if(!strcmp(argv[idx],"y")){
                 idx++;
-                adder = &tryAddYearsToDtInPlace;
+                adder = &shTryAddYearsToDtInPlace;
             }
             else if(!strcmp(argv[idx],"-opt")){
                 idx = _loadTimeAddOptionArg(argc,argv,&opt,++idx,error);
@@ -233,8 +233,8 @@ static SHErrorCode _loadAllArgs(int argc,char *argv[]){
     choiceHash = calcStrHash(argv[1]) % 33;
     int idx = 2;
     SHErrorCode error = 0;
-    initDt(&dt);
-    initDt(&dtb);
+    shInitDt(&dt);
+    shInitDt(&dtb);
     idx = _loadDtPart(argc,argv,idx,&error);
     if(error) return setErrorCode(error,&error);
     idx = _loadAddArgs(argc,argv,idx,&error);
@@ -247,7 +247,7 @@ double cl_dtToTimestamp(int argc,char *argv[],SHErrorCode* error){
     *error = _loadAllArgs(argc,argv);
     if(*error) return 0;
     double ts = 0;
-    tryDtToTimestamp(&dt,&ts,error);
+    shTryDtToTimestamp(&dt,&ts,error);
     return ts;
 }
 
@@ -267,19 +267,19 @@ void dtAdd(int argc,char *argv[],SHErrorCode* error,SHDatetime *dt_l){
 long dayDiff(int argc,char *argv[],SHErrorCode* error){
     *error = _loadAllArgs(argc,argv);
     if(*error) return 0;
-    return dateDiffDays(&dt,&dtb,error);
+    return shDateDiffDays(&dt,&dtb,error);
 }
 
 double secDiff(int argc,char *argv[],SHErrorCode* error){
     *error = _loadAllArgs(argc,argv);
     if(*error) return 0;
-    return dateDiffSecs(&dt,&dtb,error);
+    return shDateDiffSecs(&dt,&dtb,error);
 }
 
 int cl_calcWeekdayIdx(int argc,char *argv[],SHErrorCode* error){
     *error = _loadAllArgs(argc,argv);
     if(*error) return 0;
-    return calcWeekdayIdx(&dt,error);
+    return shCalcWeekdayIdx(&dt,error);
 }
 
 

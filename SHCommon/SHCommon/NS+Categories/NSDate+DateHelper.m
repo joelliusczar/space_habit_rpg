@@ -23,11 +23,11 @@
     SHDatetime dt;
     int tzOffset = (int)[NSTimeZone.defaultTimeZone secondsFromGMTForDate:self];
     SHErrorCode error;
-    tryTimestampToDt(self.timeIntervalSince1970,tzOffset,&dt,&error);
-    tryAddYearsToDtInPlace(&dt,y,0,&error);
-    tryAddMonthsToDtInPlace(&dt,m,0,&error);
-    tryAddDaysToDtInPlace(&dt,d,0,&error);
-    return [NSDate dateWithTimeIntervalSince1970:dtToTimestamp(&dt,&error)];
+    shTryTimestampToDt(self.timeIntervalSince1970,tzOffset,&dt,&error);
+    shTryAddYearsToDtInPlace(&dt,y,0,&error);
+    shTryAddMonthsToDtInPlace(&dt,m,0,&error);
+    shTryAddDaysToDtInPlace(&dt,d,0,&error);
+    return [NSDate dateWithTimeIntervalSince1970:shDtToTimestamp(&dt,&error)];
 }
 
 
@@ -55,7 +55,7 @@
     
     double timestamp;
     SHErrorCode error;
-    tryCreateDateTime(year,(int)month,(int)day,(int)hour,(int)minute,(int)second
+    shTryCreateDateTime(year,(int)month,(int)day,(int)hour,(int)minute,(int)second
       ,(int)(timeZone.secondsFromGMT),&timestamp,&error);
     return [NSDate dateWithTimeIntervalSince1970:timestamp];
     
@@ -87,7 +87,7 @@
     NSInteger timestamp = self.timeIntervalSince1970;
     double dayStartTimestamp;
     SHErrorCode error;
-    tryDayStart(timestamp,(int)NSTimeZone.defaultTimeZone.secondsFromGMT,&dayStartTimestamp,&error);
+    shTryDayStart(timestamp,(int)NSTimeZone.defaultTimeZone.secondsFromGMT,&dayStartTimestamp,&error);
     return [NSDate dateWithTimeIntervalSince1970:dayStartTimestamp];
 }
 
@@ -96,12 +96,12 @@
     SHDatetime dtFrom;
     SHDatetime dtTo;
     SHErrorCode err;
-    tryTimestampToDt(fromDate.timeIntervalSince1970
+    shTryTimestampToDt(fromDate.timeIntervalSince1970
       ,(int)NSTimeZone.defaultTimeZone.secondsFromGMT,&dtFrom,&err);
-    tryTimestampToDt(toDate.timeIntervalSince1970
+    shTryTimestampToDt(toDate.timeIntervalSince1970
                        ,(int)NSTimeZone.defaultTimeZone.secondsFromGMT,&dtTo,&err);
 
-    return dateDiffDays(&dtTo,&dtFrom,&err);
+    return shDateDiffDays(&dtTo,&dtFrom,&err);
 }
 
 -(NSDate *)setHour:(NSInteger)h minute:(NSInteger)m second:(NSInteger)s{
@@ -135,8 +135,8 @@
     SHDatetime dt;
     int tzOffset = (int)[NSTimeZone.defaultTimeZone secondsFromGMTForDate:self];
     SHErrorCode error;
-    tryTimestampToDt(self.timeIntervalSince1970,tzOffset,&dt,&error);
-    return calcWeekdayIdx(&dt,&error);
+    shTryTimestampToDt(self.timeIntervalSince1970,tzOffset,&dt,&error);
+    return shCalcWeekdayIdx(&dt,&error);
 }
 
 

@@ -22,7 +22,7 @@ SHError* getSHError(void){
 	return &_shError;
 }
 
-double createDateTime_s(int64_t year,int month,int day,int hour,int minute,int second,
+double shCreateDateTime_s(int64_t year,int month,int day,int hour,int minute,int second,
   int timezoneOffset){
 	SHError* err = getSHError();
 	shPrepareSHError(err);
@@ -30,19 +30,19 @@ double createDateTime_s(int64_t year,int month,int day,int hour,int minute,int s
       ,err);
 }
 
-double createDate_s(int64_t year,int month,int day,int timezoneOffset){
+double shCreateDate_s(int64_t year,int month,int day,int timezoneOffset){
 	SHError* err = getSHError();
 	shPrepareSHError(err);
 	return shCreateDate_m(year, month, day, timezoneOffset, err);
 }
 
-double createTime_s(int hour,int minute,int second){
+double shCreateTime_s(int hour,int minute,int second){
 	SHError* err = getSHError();
 	shPrepareSHError(err);
 	return shCreateTime_m(hour, minute, second, err);
 }
 
-double extractTime_s(SHDatetime *dt){
+double shExtractTime_s(SHDatetime *dt){
 	SHError* err = getSHError();
 	shPrepareSHError(err);
 	return shExtractTime_m(dt, err);
@@ -54,13 +54,13 @@ void timestampToDt_s(double timestamp, int timezoneOffset,SHDatetime *dt){
 	shTryTimestampToDt_m(timestamp, timezoneOffset, dt, err);
 }
 
-void timestampToDtUnitsOnly_s(double timestamp,SHDatetime *dt){
+void shTimestampToDtUnitsOnly_s(double timestamp,SHDatetime *dt){
 	SHError* err = getSHError();
 	shPrepareSHError(err);
 	shTimestampToDtUnitsOnly_m(timestamp, dt, err);
 }
 
-double dtToTimestamp_s(SHDatetime const *dt){
+double shDtToTimestamp_s(SHDatetime const *dt){
 	SHError* err = getSHError();
 	shPrepareSHError(err);
 	return shDtToTimestamp_m(dt, err);
@@ -79,7 +79,7 @@ void addYearsToDtInPlace_s(SHDatetime *dt,int64_t years,TimeAdjustOptions option
 	shTryAddYearsToDtInPlace_m(dt, years, options, err);
 }
 
-double addYearsToTimestamp_s(double timestamp,int64_t years,int timezoneOffset,
+double shAddYearsToTimestamp_s(double timestamp,int64_t years,int timezoneOffset,
   TimeAdjustOptions options){
 	SHError* err = getSHError();
 	shPrepareSHError(err);
@@ -134,31 +134,31 @@ double dayStart_s(double timestamp,int timezoneOffset){
 	return ans;
 }
 
-int calcWeekdayIdx_s(SHDatetime *dt){
+int shCalcWeekdayIdx_s(SHDatetime *dt){
 	SHError* err = getSHError();
 	shPrepareSHError(err);
 	return shCalcWeekdayIdx_m(dt, err);
 }
 
-int calcDayOfYear_s(SHDatetime *dt){
+int shCalcDayOfYear_s(SHDatetime *dt){
 	SHError* err = getSHError();
 	shPrepareSHError(err);
 	return shCalcDayOfYear_m(dt, err);
 }
 
-int calcDayOfYearFromTimestamp_s(double timestamp,int timezoneOffset){
+int shCalcDayOfYearFromTimestamp_s(double timestamp,int timezoneOffset){
 	SHError* err = getSHError();
 	shPrepareSHError(err);
 	return shCalcDayOfYearFromTimestamp_m(timestamp, timezoneOffset, err);
 }
 
-int64_t dateDiffDays_s(SHDatetime const *A,SHDatetime const *B){
+int64_t shDateDiffDays_s(SHDatetime const *A,SHDatetime const *B){
 	SHError* err = getSHError();
 	shPrepareSHError(err);
 	return shDateDiffDays_m(A, B, err);
 }
 
-double dateDiffSecs_s(SHDatetime const *A,SHDatetime const *B){
+double shDateDiffSecs_s(SHDatetime const *A,SHDatetime const *B){
 	SHError* err = getSHError();
 	shPrepareSHError(err);
 	return shDateDiffSecs_m(A, B, err);

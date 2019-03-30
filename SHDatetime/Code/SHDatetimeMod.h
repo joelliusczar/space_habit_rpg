@@ -103,7 +103,7 @@ void shDTToString(SHDatetime const *dt,char* str);
 
 
 /*
- createDateTime:
+ shCreateDateTime:
  Converts time units to unix epoch time
  year: ex. 1988
  month: between 1 and 12
@@ -118,7 +118,7 @@ void shDTToString(SHDatetime const *dt,char* str);
  */
 
 /*
- tryCreateDateTime:
+ shTryCreateDateTime:
  Converts time units to unix epoch time
  year: ex. 1988
  month: between 1 and 12
@@ -134,7 +134,7 @@ void shDTToString(SHDatetime const *dt,char* str);
  */
 
 /*
- createDate:
+ shCreateDate:
  Converts time units to unix epoch time at start of day
  year: ex. 1988
  month: between 1 and 12
@@ -146,7 +146,7 @@ void shDTToString(SHDatetime const *dt,char* str);
  */
 
 /*
- tryCreateDate:
+ shTryCreateDate:
  Converts time units to unix epoch time at start of day
  year: ex. 1988
  month: between 1 and 12
@@ -161,7 +161,7 @@ void shDTToString(SHDatetime const *dt,char* str);
  */
 
 /*
- createTime:
+ shCreateTime:
  Converts time units to unix epoch time jan 1,1970. This is always less than a day
  hour: between 0 and 23
  minute: between 0 and 59
@@ -172,7 +172,7 @@ void shDTToString(SHDatetime const *dt,char* str);
  */
 
 /*
- tryCreateTime:
+ shTryCreateTime:
  Converts time units to unix epoch time jan 1,1970. This is always less than a day
  hour: between 0 and 23
  minute: between 0 and 59
@@ -182,7 +182,7 @@ void shDTToString(SHDatetime const *dt,char* str);
  */
 
 /*
- extractTime:
+ shExtractTime:
  gets the time in seconds from the hour,minute, and seconds on the SHDatetime
  dt:SHDateTime to get hour,minute,and seconds from
  error:pointer to variable to store an error number, right now it's just
@@ -193,7 +193,7 @@ void shDTToString(SHDatetime const *dt,char* str);
  */
 
 /*
- tryExtractTime:
+ shTryExtractTime:
  gets the time in seconds from the hour,minute, and seconds on the SHDatetime
  dt:SHDateTime to get hour,minute,and seconds from
  ans: pointer to variable to store result
@@ -215,7 +215,7 @@ void shDTToString(SHDatetime const *dt,char* str);
  */
 
 /*
- timestampToDtUnitsOnly:
+ shTimestampToDtUnitsOnly:
  this is like timestampToDateObj but it retains any existing values on SHDateTime obj
  timestamp: a unix epoch timestamp
  dt: the SHDateTime to store the results in
@@ -225,8 +225,8 @@ void shDTToString(SHDatetime const *dt,char* str);
  */
 
 /*
- dtToTimestamp:
- this is a wrapper around createDateTime. It takes the components on the SHDateTime
+ shDtToTimestamp:
+ this is a wrapper around shCreateDateTime. It takes the components on the SHDateTime
  and converts them to an epoch timestamp
  dt: the SHDateTime that we're pulling the time units from
  error: pointer to variable to store an error number, right now it's just
@@ -235,8 +235,8 @@ void shDTToString(SHDatetime const *dt,char* str);
  */
 
 /*
- tryDtToTimestamp:
- this is a wrapper around createDateTime. It takes the components on the SHDateTime
+ shTryDtToTimestamp:
+ this is a wrapper around shCreateDateTime. It takes the components on the SHDateTime
  and converts them to an epoch timestamp
  dt: the SHDateTime that we're pulling the time units from
  ans: pointer to variable to store result
@@ -246,7 +246,7 @@ void shDTToString(SHDatetime const *dt,char* str);
  */
 
 /*
- tryAddYearsToDt:
+ shTryAddYearsToDt:
  adds years to a date object while keeping track of things such as leap days
  dt: we use this as base time
  years: how ever many you want
@@ -259,8 +259,8 @@ void shDTToString(SHDatetime const *dt,char* str);
  */
 
 /*
- tryAddYearsToDtInPlace:
- this is the same as tryAddYearsToDt but changes are in place
+ shTryAddYearsToDtInPlace:
+ this is the same as shTryAddYearsToDt but changes are in place
  dt: we use this as base time, and we update it
  years: how ever many you want
  options: use this to determine if non leap years on feb 29 should go to feb 28,
@@ -271,7 +271,7 @@ void shDTToString(SHDatetime const *dt,char* str);
  */
 
 /*
- addYearsToTimestamp:
+ shAddYearsToTimestamp:
  adds years to epoch timestamp
  timestamp: a unix epoch timestamp
  years: nothing to say here
@@ -284,7 +284,7 @@ void shDTToString(SHDatetime const *dt,char* str);
  */
 
 /*
- tryAddYearsToTimestamp:
+ shTryAddYearsToTimestamp:
  adds years to epoch timestamp
  timestamp: a unix epoch timestamp
  years: nothing to say here
@@ -298,7 +298,7 @@ void shDTToString(SHDatetime const *dt,char* str);
  */
 
 /*
- tryAddMonthsToDt:
+ shTryAddMonthsToDt:
  adds months to a date object while keeping track of things such as year adjustments
  dt: we use this as base time
  months: how ever many you want
@@ -311,8 +311,8 @@ void shDTToString(SHDatetime const *dt,char* str);
  */
 
 /*
- tryAddMonthsToDtInPlace:
- this is the same as tryAddMonthsToDt but changes are in place
+ shTryAddMonthsToDtInPlace:
+ this is the same as shTryAddMonthsToDt but changes are in place
  dt: we use this as base time, and we update it
  years: how ever many you want
  options: use this to determine if non leap years on feb 29 should go to feb 28,
@@ -323,7 +323,7 @@ void shDTToString(SHDatetime const *dt,char* str);
  */
 
 /*
- tryAddMonthsToTimestamp:
+ shTryAddMonthsToTimestamp:
  adds months to epoch timestamp
  timestamp: a unix epoch timestamp
  years: nothing to say here
@@ -337,7 +337,7 @@ void shDTToString(SHDatetime const *dt,char* str);
  */
 
 /*
- tryAddDaysToDt:
+ shTryAddDaysToDt:
  adds days to a date object while keeping track of things such as year adjustments
  dt: we use this as base time
  days: how ever many you want
@@ -351,8 +351,8 @@ void shDTToString(SHDatetime const *dt,char* str);
  */
 
 /*
- tryAddDaysToDtInPlace:
- this is the same as tryAddDaysToDt but changes are in place
+ shTryAddDaysToDtInPlace:
+ this is the same as shTryAddDaysToDt but changes are in place
  dt: we use this as base time, and we update it
  days: how ever many you want
  options: use this to determine if non leap years on feb 29 should go to feb 28,
@@ -363,7 +363,7 @@ void shDTToString(SHDatetime const *dt,char* str);
  */
 
 /*
- tryAddDaysToTimestamp:
+ shTryAddDaysToTimestamp:
  adds days to epoch timestamp
  timestamp: a unix epoch timestamp
  day: nothing to say here
@@ -377,7 +377,7 @@ void shDTToString(SHDatetime const *dt,char* str);
  */
 
 /*
- tryDayStart:
+ shTryDayStart:
  takes a timestamp and returns a new one with same date but at the beginning.
  timestamp: a unix epoch timestamp
  timezoneOffset: whatever, this should probably be a real timezone
@@ -396,7 +396,7 @@ dayStart(SHDatetime *dt):
  */
 
 /*
- calcWeekdayIdx:
+ shCalcWeekdayIdx:
  takes a SHDateTime and infers what the day of the week is. By default, Sunday is 0,
  Saturday is 6
  dt: extract the weekday from this
@@ -406,7 +406,7 @@ dayStart(SHDatetime *dt):
  */
 
 /*
- dateDiffDays:
+ shDateDiffDays:
  calculates the number of days between the dates represented by A, and B
  A: the date subtracted from
  B: the date that is subtracting
@@ -416,7 +416,7 @@ dayStart(SHDatetime *dt):
  */
 
 /*
- tryDateDiffDays:
+ shTryDateDiffDays:
  calculates the number of days between the dates represented by A, and B
  A: the date subtracted from
  B: the date that is subtracting
@@ -428,7 +428,7 @@ dayStart(SHDatetime *dt):
  */
 
 /*
- dateDiffSecs:
+ shDateDiffSecs:
  calculates the number of seconds between the dates represented by A, and B
  A: the date subtracted from
  B: the date that is subtracting
@@ -438,7 +438,7 @@ dayStart(SHDatetime *dt):
  */
 
 /*
- tryDiffDateSecs:
+ shTryDiffDateSecs:
  calculates the number of seconds between the dates represented by A, and B
  A: the date subtracted from
  B: the date that is subtracting
@@ -450,7 +450,7 @@ dayStart(SHDatetime *dt):
  */
 
 /*
- isValidSHDateTime:
+ shIsValidSHDateTime:
  this tests if an SHDateTime object has valid properties. ie. year is greater than 0,
  and less than whatever the max possible year is; the month is between 1 and 12; etc.
  returns: 1 or 0, true or false
