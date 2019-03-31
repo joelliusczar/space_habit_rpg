@@ -13,6 +13,6 @@
 #define SHData [SingletonCluster getSharedInstance].dataController
 
 @interface SingletonCluster (Data)
-@property (nonatomic) NSString *dbFileName;
 @property (strong,nonatomic) NSObject<P_CoreData> *dataController;
+@property (copy,nonatomic) void (^constructorBlock)(SHCoreDataOptions*);
 @end

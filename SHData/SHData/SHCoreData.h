@@ -25,5 +25,6 @@ extern NSString * const DEFAULT_DB_NAME;
 @property (readonly,strong,nonatomic) NSString* storeType;
 @property (readonly,nonatomic) NSURL* storeURL;
 +(instancetype)newWithOptionsBlock:(void (^)(SHCoreDataOptions*))optionsBlock;
+-(void)forceInitialize:(BOOL)shouldForce;
 -(void)initializeCoreData;
 @end

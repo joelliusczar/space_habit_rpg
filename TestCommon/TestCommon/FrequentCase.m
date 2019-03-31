@@ -7,15 +7,17 @@
 //
 
 #import "FrequentCase.h"
+#import "SHCoreData+CleanUp.h"
 #import <SHModels/OnlyOneEntities.h>
 #import <SHModels/Zone+CoreDataClass.h>
 #import <SHData/NSManagedObjectContext+Helper.h>
+
 @import CoreData;
 
 @interface FrequentCase ()
 @property (weak,nonatomic) NSObject* weakObj;
 @property (strong,nonatomic) NSObject* strongObj;
-@property (strong,nonatomic) NSObject<P_CoreData>* dc;
+@property (strong,nonatomic) SHCoreData* dc;
 @end
 
 @implementation FrequentCase
@@ -27,19 +29,16 @@
   //the bundle for TestUI or TestCommon
   NSBundle *testBundle = [NSBundle bundleForClass:NSClassFromString(@"OnlyOneEntities")];
   SharedGlobal.bundle = testBundle;
-  if(nil == self.dc){
-    self.dc = [SHCoreData newWithOptionsBlock:^(SHCoreDataOptions *options){
-      options.storeType = NSInMemoryStoreType;
-      options.appBundle = testBundle;
-    }];
-    SharedGlobal.dataController = self.dc;
-  }
+  SharedGlobal.constructorBlock = ^(SHCoreDataOptions *options){
+    options.storeType = NSInMemoryStoreType;
+    options.appBundle = testBundle;
+  };
+  self.dc = SHData;
   NSTimeZone.defaultTimeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
 }
 
 -(void)resetDb{
-  [self.dc.mainThreadContext reset];
-  [TestHelpers resetCoreData:self.dc.mainThreadContext];
+  [self.dc resetCoreData];
   
 }
 
@@ -58,6 +57,7 @@ context:(NSManagedObjectContext*)context{
 //  SharedGlobal.dataController = nil;
 //  void *releasable = (__bridge void*)mainThreadContext;
 //  CFRelease(releasable);
+  [self resetDb];
   [super tearDown];
 }
 

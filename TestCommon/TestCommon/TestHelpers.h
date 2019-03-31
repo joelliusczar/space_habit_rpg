@@ -16,7 +16,7 @@ typedef void (*msg_send)(id,SEL);
 
 @interface TestHelpers : NSObject
 
-+(void)resetCoreData:(NSManagedObjectContext *)context;
+
 +(void*)getPrivateValue:(id<NSObject>)obj ivarName:(NSString *)ivarName;
 +(void)forceRelease:(id)obj;
 

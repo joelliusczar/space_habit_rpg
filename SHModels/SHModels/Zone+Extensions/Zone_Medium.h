@@ -46,7 +46,6 @@ withContext:(nullable NSManagedObjectContext*)context;
 -(Zone*)getZone:(BOOL)isFront;
 
 -(void)moveZoneToFront:(Zone*)zone;
--(void)moveZoneToFront:(Zone*)zone withContext:(nullable NSManagedObjectContext*)context;
 NSArray<NSString*>* getUnlockedZoneGroupKeys(NSUInteger heroLvl);
 @end
 

@@ -53,6 +53,14 @@
                BlueprintName = "SHTests"
                ReferencedContainer = "container:TestUI.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "TestDumbData">
+               </Test>
+               <Test
+                  Identifier = "TestDumbData/testDumbData">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

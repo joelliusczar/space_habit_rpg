@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSException (SHCommonExceptions)
-+(NSException *)abstractException;
-+(NSException *)oddException;
-+(NSException *)stillUsedException;
++(NSException*)abstractException;
++(NSException*)oddException;
++(NSException*)stillUsedException;
 @end

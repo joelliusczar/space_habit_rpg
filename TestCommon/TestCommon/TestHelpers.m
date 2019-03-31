@@ -10,12 +10,6 @@
 
 @implementation TestHelpers
 
-+(void)resetCoreData:(NSManagedObjectContext *)context{
-    NSPersistentStore *ps = context.persistentStoreCoordinator.persistentStores[0];
-    NSError *err;
-    [context.persistentStoreCoordinator removePersistentStore:ps error:&err];
-}
-
 
 +(void*)getPrivateValue:(id<NSObject>)obj ivarName:(NSString *)ivarName{
   Ivar ivar = class_getInstanceVariable(obj.class,[ivarName UTF8String]);

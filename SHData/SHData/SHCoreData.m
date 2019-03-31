@@ -125,8 +125,8 @@ NSString* const DEFAULT_DB_NAME = @"Model.sqlite";
   return instance;
 }
 
--(void)initializeCoreData{
-  
+-(void)forceInitialize:(BOOL)shouldForce{
+  if(self.options.coordinator && !shouldForce) return;
   NSURL* storeURL = self.storeURL;
   NSError *error = nil;
   
@@ -141,16 +141,18 @@ NSString* const DEFAULT_DB_NAME = @"Model.sqlite";
   //but it may be fucking up my unit tests
   //so we use the @autoreleasepool block to get it out of the system.
   @autoreleasepool {
-    if(nil == self.options.coordinator){
-      store =
-      [self.coordinator addPersistentStoreWithType:self.storeType configuration:nil URL:storeURL
+      store = [self.coordinator addPersistentStoreWithType:self.storeType configuration:nil URL:storeURL
         options:options error:&error];
       if(store == nil){
         handleDataError(error, [NSString stringWithFormat:@"Error initializing PSC: %@\n%@",
           error.localizedDescription,error.userInfo]);
       }
-    }
+    
   }
+}
+
+-(void)initializeCoreData{
+  [self forceInitialize:NO];
 }
 
 

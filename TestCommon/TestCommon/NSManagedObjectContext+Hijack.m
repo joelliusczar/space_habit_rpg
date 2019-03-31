@@ -12,11 +12,11 @@
 
 @implementation NSManagedObjectContext (Hijack)
 
-#define HIJACK_CONTEXT_RELEASE 1
+//#define HIJACK_CONTEXT_RELEASE 1
 
 #ifdef HIJACK_CONTEXT_RELEASE
 
-+(void)load{
++(void)initalize{
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken,^{
     SEL sel0 = NSSelectorFromString(@"_registerAsyncReferenceCallback");

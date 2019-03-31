@@ -6,7 +6,7 @@ from ctypes import c_double
 from ctypes import byref
 from ctypes import POINTER
 from datetime import datetime, timezone
-from SHDatetime_struct import Timeshift, SHDatetime, make_dt_copy
+from SHDatetime_struct import SHTimeshift, SHDatetime, make_dt_copy
 import sys
 
 lib = cdll.LoadLibrary('./libdt.so')
@@ -43,7 +43,7 @@ def testCTimeExhaustive(lowBound,upBound):
     print(lowBound)
     for i in range(lowBound,upBound,incr):
         ts=c_double(i)
-        lib.tryTimestampToDt(ts,0,byref(dt),byref(error))
+        lib.shTryTimestampToDt(ts,0,byref(dt),byref(error))
         try:
             pts = datetime.fromtimestamp(i,tz=timezone.utc)
             if not compareDTtoPyDt(dt,pts):
@@ -57,7 +57,7 @@ def testCTimeExhaustive(lowBound,upBound):
                 print("\ntimestamp to dt ended with error code {}\n".format(error.value))
                 print("timestamp: {}".format(ans.value))
                 return -1
-            lib.tryDtToTimestamp(byref(dt),byref(ans),byref(error))
+            lib.shTryDtToTimestamp(byref(dt),byref(ans),byref(error))
             if ans.value != pdt.timestamp():
                 print("\nresult does not match python timestamp {}\n".format(ans.value))
                 return -1

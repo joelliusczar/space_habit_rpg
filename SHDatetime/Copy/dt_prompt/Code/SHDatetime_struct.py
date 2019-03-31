@@ -9,7 +9,7 @@ from ctypes import c_char_p
 from ctypes import c_void_p
 from ctypes import c_uint64
 
-class Timeshift(Structure):
+class SHTimeshift(Structure):
   _fields_ = [("month",c_int),
     ("day",c_int),
     ("hour",c_int),
@@ -26,7 +26,7 @@ class SHDatetime(Structure):
     ("second",c_int),
     ("milisecond",c_int),
     ("timezoneOffset",c_int),
-    ("shifts",POINTER(Timeshift)),
+    ("shifts",POINTER(SHTimeshift)),
     ("shiftLen",c_int),
     ("currentShiftIdx",c_int),
     ("filler",c_uint64*8)]

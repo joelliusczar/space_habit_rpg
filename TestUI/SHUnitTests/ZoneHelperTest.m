@@ -286,13 +286,6 @@ uint zoneHelper_mockRandom(uint range){
 }
 
 
--(void)testConstructEmptyZone2{
-  Zone_Medium* zoneMed = [Zone_Medium newWithDataController:SHData
-    withResourceUtil:SharedGlobal.resourceUtility withInfoDict:SharedGlobal.zoneInfoDictionary];
-  Zone *z = [zoneMed constructEmptyZone];
-  XCTAssertNotNil(z);
-}
-
 
 -(void)testConstructZoneChoice{
   Zone_Medium* zoneMed = [Zone_Medium newWithDataController:SHData
@@ -469,19 +462,21 @@ void throwsEx(){
     withResourceUtil:SharedGlobal.resourceUtility withInfoDict:SharedGlobal.zoneInfoDictionary];
   __block Zone *z0 = [zoneMed constructSpecificZone:HOME_KEY withLvl:1 withMonsterCount:0];;
   NSManagedObjectContext* bgContext = [SHData newBackgroundContext];
-  [zoneMed moveZoneToFront:z0];
-  XCTAssertTrue(z0.isFront);
+  
   [bgContext performBlockAndWait:^{
     [bgContext insertObject:z0];
+    [zoneMed moveZoneToFront:z0];
+    XCTAssertTrue(z0.isFront);
     NSError *error = nil;
     [bgContext save:&error];
   }];
 
   __block Zone *z1 = [zoneMed constructEmptyZone];
   z1.zoneKey = @"GAS";
-  [zoneMed moveZoneToFront:z1];
+  
   [bgContext performBlockAndWait:^{
     [bgContext insertObject:z1];
+    [zoneMed moveZoneToFront:z1];
     NSError *error = nil;
     [bgContext save:&error];
   }];
@@ -495,9 +490,10 @@ void throwsEx(){
   
   __block Zone *z2 = [zoneMed constructEmptyZone];
   z2.zoneKey = @"NEBULA";
-  [zoneMed moveZoneToFront:z2];
+  
   [bgContext performBlockAndWait:^{
     [bgContext insertObject:z2];
+    [zoneMed moveZoneToFront:z2];
     NSError *error = nil;
     [bgContext save:&error];
   }];

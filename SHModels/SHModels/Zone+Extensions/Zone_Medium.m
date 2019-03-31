@@ -196,28 +196,28 @@ withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount{
 }
 
 
--(void)moveZoneToFront:(Zone*)zone withContext:(NSManagedObjectContext*)context{
-  if(nil == context){
-    context = self.dataController.mainThreadContext;
-  }
-  [context performBlock:^{
+-(void)moveZoneToFront:(nonnull Zone*)zone{
+  NSAssert(zone && zone.managedObjectContext,@"Zone must be registered in a context already");
+  NSManagedObjectContext *context = zone.managedObjectContext;
+  [context performBlockAndWait:^{
     NSArray<Zone*> *results = [self getAllZones:nil withContext:context];
+    
     zone.isFront = YES;
-    NSAssert(results.count<3, @"There are too many zones");
-    if(results.count==0){
+    NSAssert(results.count<4, @"There are too many zones");
+    if(results.count < 2){
         return;
     }
-    if(results.count==1){
-        ((Zone *)results[0]).isFront = NO;
+    NSPredicate *filterNewItem = [NSPredicate predicateWithBlock:^BOOL(id item, NSDictionary<NSString*,id> *bindings){
+      if(item == zone) return NO;
+      return YES;
+    }];
+    NSArray<Zone*> *filtered = [results filteredArrayUsingPredicate:filterNewItem];
+    filtered[0].isFront = NO;
+    if(results.count == 2){
         return;
     }
-    [context deleteObject:results[1]];
-    ((Zone *)results[0]).isFront = NO;
+    [context deleteObject:filtered[1]];
   }];
-}
-
--(void)moveZoneToFront:(Zone*)zone{
-  [self moveZoneToFront:zone withContext:nil];
   
 }
 

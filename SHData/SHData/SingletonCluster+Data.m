@@ -11,35 +11,38 @@
 #import "SHCommon/NSMutableDictionary+Helper.h"
 
 static NSObject* dbMutex;
+static NSObject* constructorBlockMutex;
 
 @implementation SingletonCluster (Data)
 
 +(void)initialize{
   dbMutex = [NSObject new];
+  constructorBlockMutex = [NSObject new];
 }
 
--(NSString *)dbFileName{
-    return [self.bag getWithKey:@"dbName" OrCreateFromBlock:^id(){
-        return DEFAULT_DB_NAME;
-    }];
+
+-(void (^)(SHCoreDataOptions*))constructorBlock{
+  @synchronized (constructorBlockMutex) {
+      return [self.bag getWithKey:@"constructorBlock" OrCreateFromBlock:^id(){
+        return ^(SHCoreDataOptions *options){
+          options.dbFileName = DEFAULT_DB_NAME;
+        };
+      }];
+  }
 }
 
--(void)setDbFileName:(NSString *)dbFileName{
-    self.bag[@"dbName"] = dbFileName;
-  
-    /*Reset the datacontroller
-      This will sometimes not work due to some weird bug with NSManagedObjectContext
-    */
-    self.dataController = nil;
+-(void)setConstructorBlock:(void (^)(SHCoreDataOptions *))constructorBlock{
+  @synchronized (constructorBlockMutex) {
+    self.bag[@"constructorBlock"] = constructorBlock;
+  }
 }
 
 -(NSObject<P_CoreData> *)dataController{
   @synchronized (dbMutex) {
+    
     id ans = [self.bag getWithKey:@"dc" OrCreateFromBlock:^id(id obj){
-        __weak SingletonCluster* sc = (SingletonCluster*)obj;
-        return [SHCoreData newWithOptionsBlock:^(SHCoreDataOptions *options){
-          options.dbFileName = sc.dbFileName;
-        }];
+        SingletonCluster* sc = (SingletonCluster*)obj;
+        return [SHCoreData newWithOptionsBlock:sc.constructorBlock];
     } withObj:self];
     return ans;
   }
