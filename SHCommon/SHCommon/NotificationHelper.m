@@ -8,7 +8,7 @@
 
 #import "NotificationHelper.h"
 #import <SHGlobal/Constants.h>
-#if USE_UIKIT_PUBLIC_HEADERS
+#if IS_IOS
 @import UIKit;
 #endif
 
@@ -28,7 +28,7 @@
 
 
 +(void)cleanUpSentReminders{
-#if USE_UIKIT_PUBLIC_HEADERS
+#if IS_IOS
     UNUserNotificationCenter *center = [UNUserNotificationCenter
                                         currentNotificationCenter];
     [center getDeliveredNotificationsWithCompletionHandler:^(NSArray<UNNotification *> *notifications){

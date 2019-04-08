@@ -14,7 +14,7 @@
 
 @interface ZoneChoiceCellController()
 @property (nonatomic,weak) ZoneChoiceViewController *parentZoneController;
-@property (nonatomic,weak) Zone *model;
+@property (nonatomic,weak) ZoneDTO *model;
 @property (nonatomic,weak) NSIndexPath *rowInfo;
 @property (nonatomic,strong) UISwipeGestureRecognizer *swiper;
 @end
@@ -33,7 +33,7 @@
 
 
 +(instancetype)getZoneChoiceCell:(UITableView *)tableView WithParent:(ZoneChoiceViewController *)parent
-AndModel:(Zone *)model AndRow:(NSIndexPath *)rowInfo
+AndModel:(ZoneDTO *)model AndRow:(NSIndexPath *)rowInfo
 {
     ZoneChoiceCellController *cell = [tableView
       dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
@@ -44,7 +44,7 @@ AndModel:(Zone *)model AndRow:(NSIndexPath *)rowInfo
     return cell;
 }
 
--(void)setupCell:(Zone *)model AndParent:(ZoneChoiceViewController *)parent
+-(void)setupCell:(ZoneDTO *)model AndParent:(ZoneChoiceViewController *)parent
           AndRow:(NSIndexPath *)rowInfo
 {
     self.parentZoneController = parent;

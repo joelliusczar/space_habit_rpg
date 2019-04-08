@@ -12,22 +12,21 @@
 #import "MonsterTransaction_Medium.h"
 
 @interface MonsterTransaction_Medium ()
-@property (weak,nonatomic) NSObject<P_CoreData>* dataController;
+@property (weak,nonatomic) NSManagedObjectContext *context;
 @end
 
 
 @implementation MonsterTransaction_Medium
 
-@synthesize dataController = _dataController;
 
-+(instancetype)newWithDataController:(NSObject<P_CoreData>*)dataController{
++(instancetype)newWithContext:(NSManagedObjectContext*)context{
   MonsterTransaction_Medium *instance = [[MonsterTransaction_Medium alloc] init];
-  instance.dataController = dataController;
+  instance.context = context;
   return instance;
 }
 -(void)addCreateTransaction:(Monster *)m{
   NSMutableDictionary *monsterInfo = m.mapable;
-  NSManagedObjectContext *context = [self.dataController newBackgroundContext];
+  NSManagedObjectContext *context = self.context;
   [context performBlock:^{
     @autoreleasepool {
       MonsterTransaction *mt = (MonsterTransaction*)[context newEntity:MonsterTransaction.entity];

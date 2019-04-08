@@ -11,22 +11,25 @@
 @implementation StoryItemDictionary
 
 
-+(instancetype)new{
-  StoryItemDictionary *instance = [[StoryItemDictionary alloc] init];
+@synthesize infoDict = _infoDict;
+-(InfoDictionary*)infoDict{
+  if(nil == _infoDict){
+    _infoDict = [[InfoDictionary alloc] initWithPListKey:@"StoryItems"
+      AndBundleClass:StoryItemDictionary.class AndResourceUtil:self.resourceUtil];
+  }
+  return _infoDict;
+}
+
+
++(instancetype)newWithResourceUtil:(NSObject<P_ResourceUtility>*)resourceUtil{
+  StoryItemDictionary *instance = [StoryItemDictionary new];
+  instance.resourceUtil = resourceUtil;
   return instance;
 }
 
--(instancetype)init{
-  if(self = [super init]){
-    _storyInfoDict = [[InfoDictionary alloc] initWithPListKey:@"StoryItems"
-      AndBundleClass:StoryItemDictionary.class];
-  }
-  return self;
-}
-
 -(NSString*)getStoryItem:(NSString*)key{
-  if(key&&self.storyInfoDict.treeDict[key]){
-    return self.storyInfoDict.treeDict[key];
+  if(key&&self.infoDict.treeDict[key]){
+    return self.infoDict.treeDict[key];
   }
   return @"";
 }

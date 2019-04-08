@@ -6,7 +6,7 @@
 //  Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
-#if USE_UIKIT_PUBLIC_HEADERS
+#if IS_IOS
 
 #import "UIImage+Helper.h"
 

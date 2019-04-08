@@ -12,6 +12,7 @@
 #import <SHControls/AllSHControls.h>
 #import <SHControlsSpecial/RateSetContainer.h>
 #import <SHControlsSpecial/ReminderListView.h>
+#import <SHModels/SHDueDateItem.h>
 
 
 
@@ -81,7 +82,8 @@
     }];
     
     [keep addLoaderBlock:^id(SHControlKeep *keep,ControlExtent *controlExtent){
-        ReminderListView *list = [ReminderListView newWithDueDateInfo:daily];
+      DueDateItem *dueDateItem = [DueDateItem newWithObjectID:daily.objectID andContext:daily.managedObjectContext];
+        ReminderListView *list = [ReminderListView newWithDueDateItem:dueDateItem];
         list.utilityStore = SharedGlobal;
         
         

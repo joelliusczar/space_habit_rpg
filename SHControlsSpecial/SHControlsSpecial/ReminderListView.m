@@ -7,12 +7,10 @@
 //
 
 #import "ReminderListView.h"
-#import <SHModels/SingletonCluster+Entity.h>
 #import "ReminderCellController.h"
 #import <SHControls/AddItemsFooter.h>
-#import <SHCommon/ViewHelper.h>
+#import <SHControls/UIViewController+Helper.h>
 #import <SHCommon/Interceptor.h>
-#import <SHModels/Reminder+CoreDataClass.h>
 #import <SHCommon/NSDate+DateHelper.h>
 #import <SHCommon/SHMath.h>
 #import "ReminderTimeSpinPicker.h"
@@ -22,7 +20,7 @@
 #import <SHCommon/NotificationHelper.h>
 #import <SHCommon/NSObject+Helper.h>
 #import <SHControls/SHEventInfo.h>
-@import UserNotifications;
+#import <SHModels/SHReminderDTO.h>
 
 @interface ReminderListView()
 @end
@@ -30,15 +28,9 @@
 @implementation ReminderListView
 
 
-
-
-//I think the reason why I did the class method styled constructor
-//was so that calls to 'self' would not get fucked up by subclasses
-+(instancetype)newWithDueDateInfo:(id<P_DueDateItem>)dueDateInfo{
++(instancetype)newWithDueDateItem:(id<P_DueDateItem>)dueDateItem{
     ReminderListView *instance = [[ReminderListView alloc] init];
-    instance.dueDateInfo = dueDateInfo;
-    instance.reminderSet = [dueDateInfo getReminderSet];
-    
+    instance.dueDateItem = dueDateItem;
     [instance commonSetup];
     [instance.addItemsFooter.addItemBtn setTitle:@"Add New Reminder" forState:UIControlStateNormal];
     return instance;
@@ -49,7 +41,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView
 numberOfRowsInSection:(NSInteger)section{
-    return self.reminderSet.count;
+    return self.dueDateItem.reminderCount;
 }
 
 #pragma clang diagnostic pop
@@ -59,7 +51,7 @@ numberOfRowsInSection:(NSInteger)section{
         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ReminderCellController *cell =
     [ReminderCellController getReminderCell:tableView withParent:self
-                                andReminder:self.reminderSet[indexPath.row]];
+      andReminder:[self.dueDateItem reminderAtIndex:indexPath.row]];
     cell.lblRowDesc.text = [NSString stringWithFormat:@"%ld",indexPath.row];
     return cell;
 }
@@ -72,53 +64,41 @@ numberOfRowsInSection:(NSInteger)section{
     //earlier only had the original value.
     [self hideKeyboard];
     ReminderTimeSpinPicker *timePicker =
-    [[ReminderTimeSpinPicker alloc] initWithDayRange:self.dueDateInfo.maxDaysBefore];
+    [[ReminderTimeSpinPicker alloc] initWithDayRange:self.dueDateItem.maxDaysBefore];
     [self showSHSpinPicker:timePicker];
 }
 
 
 -(void)pickerSelection_action:(SHEventInfo *)eventInfo{
+  __weak ReminderListView *weakSelf = self;
     wrapReturnVoid wrappedCall = ^void(){
         UIPickerView *picker = (UIPickerView *)eventInfo.senderStack[1];
         NSInteger hourRow = [picker selectedRowInComponent:HOUR_OF_DAY_COL];
         NSInteger minuteRow = [picker selectedRowInComponent:MINUTE_COL];
         NSInteger daysCol = picker.numberOfComponents -1;
         NSInteger daysBefore = [picker selectedRowInComponent:daysCol];
-        [self insertNewReminder:hourRow minute:minuteRow daysBefore:daysBefore];
-        [self addItemToTableAndScale:(self.backendListCount -1)];
-        [eventInfo.senderStack addObject:self];
-        [super pickerSelection_action:eventInfo];
+        [weakSelf insertNewReminder:hourRow minute:minuteRow daysBefore:daysBefore];
+        [weakSelf addItemToTableAndScale:(weakSelf.dueDateItem.reminderCount -1)];
+        [eventInfo.senderStack addObject:weakSelf];
+        [weakSelf pickerSelection_action:eventInfo];
     };
     [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
 -(void)insertNewReminder:(NSInteger)hour minute:(NSInteger)minute
-              daysBefore:(NSInteger)daysBefore{
-    Reminder *reminder = (Reminder *)[SHData
-                                      constructEmptyEntity:Reminder.entity];
+daysBefore:(NSInteger)daysBefore{
+    ReminderDTO *reminder = [ReminderDTO new];
     //we only really care about the hour and minute
-    reminder.reminderHour = [NSDate
-                             createSimpleTimeWithHour:hour
-                             minute:minute second:0];
+    reminder.reminderHour = [NSDate createSimpleTimeWithHour:hour minute:minute second:0];
     reminder.daysBeforeDue = [SHMath toIntExact:daysBefore];
-    [self.dueDateInfo addNewReminder:reminder];
-    NSString *notificationId = @"";
-    [NotificationHelper addNewNotificationIfPossible:self.dueDateInfo.taskTitle
-                                      notificationId:notificationId
-                                            userInfo:self.dueDateInfo.simpleMapable];
+    [self.dueDateItem addNewReminder:reminder];
 }
 
 
 -(void)deleteCellAt:(NSIndexPath *)indexPath{
-    //TODO: test this
-    [self.dueDateInfo removeReminder:self.reminderSet[indexPath.row]];
+    [self.dueDateItem removeReminderAtIndex:indexPath.row];
     [self removeItemFromTableAndScale:indexPath];
-}
-
-
--(NSInteger)backendListCount{
-    return self.reminderSet.count;
 }
 
 

@@ -16,7 +16,11 @@
 
 
 @interface DailyViewController : UIViewController <UITableViewDelegate, UITableViewDataSource,NSFetchedResultsControllerDelegate>
--(id)initWithParent:(CentralViewController *)parent;
+
+-(instancetype)initWithParent:(CentralViewController *)parent
+withDataController:(NSObject<P_CoreData>*)dataController
+withResourceUtil:(NSObject<P_CoreData>*)resourceUtil;
+
 -(void)setuptab;
 -(void)completeDaily:(Daily *)daily;
 -(void)undoCompletedDaily:(Daily *)daily;

@@ -8,7 +8,7 @@
 
 #import "DailyCellController.h"
 #import <SHModels/Daily+CoreDataClass.h>
-#import <SHModels/Daily+DailyHelper.h>
+#import <SHModels/Daily+Helper.h>
 #import <SHGlobal/Constants.h>
 #import <SHCommon/Interceptor.h>
 #import <SHCommon/NSDate+DateHelper.h>

@@ -15,7 +15,7 @@
 #import "FrontEndConstants.h"
 #import "UIView+Helpers.h"
 #import "UIScrollView+ScrollAdjusters.h"
-#import <SHCommon/ViewHelper.h>
+#import "UIViewController+Helper.h"
 #import "SHEventInfo.h"
 #import <SHCommon/Interceptor.h>
 #import <math.h>
@@ -153,12 +153,13 @@ numberOfRowsInSection:(NSInteger)section{
 
 -(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView
                  editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
+    __weak ItemFlexibleListView *weakSelf = self;
     void (^pressedDelete)(UITableViewRowAction *,NSIndexPath *) =
             ^(UITableViewRowAction *action,NSIndexPath *indexPath){
                 wrapReturnVoid wrappedCall = ^void(){
-                    [self deleteCellAt:indexPath];
+                    [weakSelf deleteCellAt:indexPath];
                 };
-                [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+                [weakSelf.interceptor callVoidWrapped:wrappedCall withInfo:nil];
             };
     UITableViewRowAction *openDeleteButton = [UITableViewRowAction
                                               rowActionWithStyle:UITableViewRowActionStyleNormal
@@ -188,94 +189,102 @@ numberOfRowsInSection:(NSInteger)section{
 
 
 -(void)notifyAddNewCell:(NSIndexPath *)indexPath{
-    wrapReturnVoid wrappedCall = ^void(){
-        ItemFlexibleListEventInfo *eventInfo = [[ItemFlexibleListEventInfo alloc]
-                                                initWithItemFlexibleList:self
-                                                andIndexPath:indexPath];
-        SEL delegateSel = @selector(notifyAddNewCell:);
-        if([self.delegate respondsToSelector:delegateSel]){
-            [self.delegate notifyAddNewCell:eventInfo];
-        }
-    };
-    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+  __weak ItemFlexibleListView *weakSelf = self;
+  wrapReturnVoid wrappedCall = ^void(){
+      ItemFlexibleListEventInfo *eventInfo = [[ItemFlexibleListEventInfo alloc]
+                                              initWithItemFlexibleList:weakSelf
+                                              andIndexPath:indexPath];
+      SEL delegateSel = @selector(notifyAddNewCell:);
+      if([weakSelf.delegate respondsToSelector:delegateSel]){
+          [weakSelf.delegate notifyAddNewCell:eventInfo];
+      }
+  };
+  [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
     
     
 -(void)notifyDeleteCell:(NSIndexPath *)indexPath{
-    wrapReturnVoid wrappedCall = ^void(){
-        ItemFlexibleListEventInfo *eventInfo = [[ItemFlexibleListEventInfo alloc]
-                                                initWithItemFlexibleList:self
-                                                andIndexPath:indexPath];
-        SEL delegateSel = @selector(notifyDeleteCell:);
-        if([self.delegate respondsToSelector:delegateSel]){
-            [self.delegate notifyDeleteCell:eventInfo];
-        }
-    };
-    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+  __weak ItemFlexibleListView *weakSelf = self;
+  wrapReturnVoid wrappedCall = ^void(){
+      ItemFlexibleListEventInfo *eventInfo = [[ItemFlexibleListEventInfo alloc]
+                                              initWithItemFlexibleList:weakSelf
+                                              andIndexPath:indexPath];
+      SEL delegateSel = @selector(notifyDeleteCell:);
+      if([weakSelf.delegate respondsToSelector:delegateSel]){
+          [weakSelf.delegate notifyDeleteCell:eventInfo];
+      }
+  };
+  [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
 -(void)beginUpdate{
-    wrapReturnVoid wrappedCall = ^void(){
-        SEL delegateSel = @selector(beginUpdate);
-        if([self.resizeResponder respondsToSelector:delegateSel]){
-            [self.resizeResponder beginUpdate];
-        }
-    };
-    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+  __weak ItemFlexibleListView *weakSelf = self;
+  wrapReturnVoid wrappedCall = ^void(){
+      SEL delegateSel = @selector(beginUpdate);
+      if([weakSelf.resizeResponder respondsToSelector:delegateSel]){
+          [weakSelf.resizeResponder beginUpdate];
+      }
+  };
+  [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
 -(void)endUpdate{
-    wrapReturnVoid wrappedCall = ^void(){
-        SEL delegateSel = @selector(endUpdate);
-        if([self.resizeResponder respondsToSelector:delegateSel]){
-            [self.resizeResponder endUpdate];
-        }
-    };
-    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+  __weak ItemFlexibleListView *weakSelf = self;
+  wrapReturnVoid wrappedCall = ^void(){
+      SEL delegateSel = @selector(endUpdate);
+      if([weakSelf.resizeResponder respondsToSelector:delegateSel]){
+          [weakSelf.resizeResponder endUpdate];
+      }
+  };
+  [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
     
 }
 
 -(void)respondToHeightResize:(CGFloat)change{
-    wrapReturnVoid wrappedCall = ^void(){
-        SEL delegateSel = @selector(respondToHeightResize:);
-        if([self.resizeResponder respondsToSelector:delegateSel]){
-            [self.resizeResponder respondToHeightResize:change];
-        }
-    };
-    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+  __weak ItemFlexibleListView *weakSelf = self;
+  wrapReturnVoid wrappedCall = ^void(){
+      SEL delegateSel = @selector(respondToHeightResize:);
+      if([weakSelf.resizeResponder respondsToSelector:delegateSel]){
+          [weakSelf.resizeResponder respondToHeightResize:change];
+      }
+  };
+  [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 -(void)scrollByOffset:(CGFloat)offset{
-    wrapReturnVoid wrappedCall = ^void(){
-        SEL delegateSel = @selector(scrollByOffset:);
-        if([self.resizeResponder respondsToSelector:delegateSel]){
-            [self.resizeResponder scrollByOffset:offset];
-        }
-    };
-    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+  __weak ItemFlexibleListView *weakSelf = self;
+  wrapReturnVoid wrappedCall = ^void(){
+      SEL delegateSel = @selector(scrollByOffset:);
+      if([weakSelf.resizeResponder respondsToSelector:delegateSel]){
+          [weakSelf.resizeResponder scrollByOffset:offset];
+      }
+  };
+  [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
 -(void)scrollVisibleToControl:(SHView *)control{
-    wrapReturnVoid wrappedCall = ^void(){
-        SEL delegateSel = @selector(scrollVisibleToControl:);
-        if([self.resizeResponder respondsToSelector:delegateSel]){
-            [self.resizeResponder scrollVisibleToControl:control];
-        }
-    };
-    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+  __weak ItemFlexibleListView *weakSelf = self;
+  wrapReturnVoid wrappedCall = ^void(){
+      SEL delegateSel = @selector(scrollVisibleToControl:);
+      if([weakSelf.resizeResponder respondsToSelector:delegateSel]){
+          [weakSelf.resizeResponder scrollVisibleToControl:control];
+      }
+  };
+  [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
 -(void)hideKeyboard{
-    wrapReturnVoid wrappedCall = ^void(){
-        if([self.resizeResponder respondsToSelector:@selector(hideKeyboard)]){
-            [self.resizeResponder hideKeyboard];
-        }
-    };
-    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+  __weak ItemFlexibleListView *weakSelf = self;
+  wrapReturnVoid wrappedCall = ^void(){
+      if([weakSelf.resizeResponder respondsToSelector:@selector(hideKeyboard)]){
+          [weakSelf.resizeResponder hideKeyboard];
+      }
+  };
+  [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 

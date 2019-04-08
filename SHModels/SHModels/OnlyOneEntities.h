@@ -13,8 +13,5 @@
 #import <SHData/P_CoreData.h>
 
 @interface OnlyOneEntities : NSObject
-@property (nonatomic,strong) DataInfo *theDataInfo;
-@property (nonatomic,strong) Settings *theSettings;
-@property (nonatomic,strong) Hero *theHero;
--(instancetype)initWithDataController:(NSObject<P_CoreData> *)dataController;
+
 @end

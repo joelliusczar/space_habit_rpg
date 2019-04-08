@@ -1,5 +1,5 @@
 //
-//  Daily_c.h
+//  SHDaily_c.h
 //  SHModels
 //
 //  Created by Joel Pridgen on 4/17/18.
@@ -13,7 +13,7 @@
 #include <stdbool.h>
 #include <inttypes.h>
 #include "SHDatetime.h"
-#include "ErrorHandling.h"
+#include "SHErrorHandling.h"
 #include "SHRateValueItem.h"
 
 

@@ -8,11 +8,11 @@
 
 #import "DailyEditController.h"
 #import <SHCommon/CommonUtilities.h>
-#import <SHModels/SingletonCluster+Entity.h>
+#import <SHModels/Daily_Medium.h>
 #import <SHControls/P_SHSwitch.h>
 #import "EditNavigationController.h"
 #import <SHControls/SHSwitch.h>
-#import <SHModels/Daily+DailyHelper.h>
+#import <SHModels/Daily+Helper.h>
 #import <SHCommon/Interceptor.h>
 #import <SHModels/RateTypeHelper.h>
 
@@ -24,6 +24,8 @@
 @property (assign,nonatomic) BOOL isStreakReset;
 @property (strong,nonatomic) SHControlKeep<SHView *,id> *editControls;
 @property (assign,nonatomic) BOOL isEditingExisting;
+@property (strong,nonatomic) Daily_Medium *daily_Medium;
+@property (strong,nonatomic) NSObject<P_CoreData> *dataController;
 @end
 
 NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
@@ -37,10 +39,13 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
 
 //used for new Dailies
 -(instancetype)initWithParentDailyController:
-(UIViewController *)parentDailyController{
+(UIViewController *)parentDailyController
+withDataController:(NSObject<P_CoreData>*)dataController{
     if(self = [self initWithNibName:@"DailyEditView" bundle:nil]){
         _parentDailyController = parentDailyController;
         _isEditingExisting = NO;
+        _dataController = dataController;
+        _daily_Medium = [Daily_Medium newWithSHData:dataController];
     }
     return self;
 }
@@ -48,9 +53,10 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
 //used for existing dailies
 -(instancetype)initWithParentDailyController:
 (UIViewController *)parentDailyController ToEdit:
-(Daily *)daily AtIndexPath:(NSIndexPath *)rowInfo{
+(Daily *)daily AtIndexPath:(NSIndexPath *)rowInfo
+withDataController:(NSObject<P_CoreData>*)dataController{
     
-    if(self = [self initWithParentDailyController:parentDailyController]){
+    if(self = [self initWithParentDailyController:parentDailyController withDataController:dataController]){
         _modelForEditing = daily;
         _rowInfo = rowInfo;
         _isEditingExisting = YES;
@@ -96,13 +102,12 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
     //sometimes it unexpectedly gets initialized and that messes things up.
     //So, I want exact control over when it gets initialized
     if(self.modelForEditing){
-        if(![SHData.writeContext.registeredObjects containsObject:self.modelForEditing]){
-            self.modelForEditing = [SHData.writeContext objectWithID:self.modelForEditing.objectID];
+        if(![self.dataController.mainThreadContext.registeredObjects containsObject:self.modelForEditing]){
+            self.modelForEditing = [self.dataController.mainThreadContext objectWithID:self.modelForEditing.objectID];
         }
     }
     else{
-        self.modelForEditing = [Daily constructDaily];
-        [SHData insertIntoContext:self.modelForEditing];
+        self.modelForEditing = [self.daily_Medium newDailyWithContext:self.dataController.mainThreadContext];
         [self.modelForEditing setupDefaults];
     }
 }
@@ -193,19 +198,17 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
 -(void)saveEdit{
     [self.modelForEditing preSave];
-    [SHData saveNoWaiting];
+    NSError *error = nil;
+    [self.dataController.mainThreadContext save:&error];
 }
 
 
 -(BOOL)deleteModel{
     if(self.modelForEditing){
-        Daily *toBeDeleted =
-        [SHData.writeContext
-         objectWithID:self.modelForEditing.objectID];
-        
-        [SHData softDeleteModel:toBeDeleted];
-        [SHData saveNoWaiting];
-        return YES;
+      [self.dataController.mainThreadContext deleteObject:self.modelForEditing];
+      NSError *error = nil;
+      [self.dataController.mainThreadContext save:&error];
+      return YES;
     }
     return NO;
 }

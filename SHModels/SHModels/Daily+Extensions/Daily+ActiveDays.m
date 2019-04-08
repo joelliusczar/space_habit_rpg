@@ -13,7 +13,7 @@
 #import <SHCommon/NSMutableArray+Helper.h>
 #import <SHCommon/NSDate+DateHelper.h>
 #import <SHGlobal/Constants.h>
-#import "SingletonCluster+Entity.h"
+#import <DTConstants.h>
 
 @implementation Daily (ActiveDays)
 
@@ -49,8 +49,8 @@ static BOOL yearlyBestMatch(RateValueItemDict *a,RateValueItemDict *b){
 }
 
 
-+(void)setActivenessArray:(NSArray<RateValueItemDict *> *)week activeDays:(BOOL *)activeDays{
-    for(NSUInteger i = 0;i < SHCONST.DAYS_IN_WEEK;i++){
++(void)setActivenessArray:(NSArray<RateValueItemDict *> *)week activeDays:(bool *)activeDays{
+    for(int i = 0;i < DAYS_IN_WEEK;i++){
         if(week){
             activeDays[i] = week[i][IS_DAY_ACTIVE_KEY].boolValue;
             continue;
@@ -64,7 +64,7 @@ static BOOL yearlyBestMatch(RateValueItemDict *a,RateValueItemDict *b){
   self.isTouched = YES;
   RateType rateType = isInverse?WEEKLY_RATE_INVERSE:WEEKLY_RATE;
   NSMutableArray *week = [self getActiveDaysForRateType:rateType];
-  BOOL activeDays[SHCONST.DAYS_IN_WEEK];
+  bool activeDays[DAYS_IN_WEEK];
   [Daily setActivenessArray:week activeDays:activeDays];
   activeDays[dayIdx] = !activeDays[dayIdx];
   SHRateValueItem rvi[7];
@@ -91,7 +91,7 @@ static BOOL yearlyBestMatch(RateValueItemDict *a,RateValueItemDict *b){
 -(NSMutableArray<RateValueItemDict *> * )getActiveDaysForRateType:(RateType)rateType{
   NSString *rateTypeKey = getRateTypeKey(rateType);
   NSMutableArray *daySet = self.activeDaysDict[rateTypeKey];
-  BOOL activeDays[SHCONST.DAYS_IN_WEEK];
+  bool activeDays[DAYS_IN_WEEK];
   NSMutableArray *newDaySet = nil;
   if(nil == daySet||daySet.count == 0){
     if(rateType == WEEKLY_RATE || rateType == WEEKLY_RATE_INVERSE){
@@ -165,12 +165,12 @@ static BOOL yearlyBestMatch(RateValueItemDict *a,RateValueItemDict *b){
     [activeDays removeObjectAtIndex:index];
 }
 
-
--(NSDate *)nextDueTime_DAILY:(NSDate *)checkinDate{
-    NSDate *checkinDateStart = [SharedGlobal.inUseCalendar startOfDayForDate:checkinDate];
-    NSDate *nextDueDateStart = [checkinDateStart dateAfterYears:0 months:0 days:self.rate];
-    return [nextDueDateStart timeAfterHours:SHSettings.dayStart minutes:0 seconds:0];
-}
+//I think I may move this method to Daily_Medium
+//-(NSDate *)nextDueTime_DAILY:(NSDate *)checkinDate{
+//    NSDate *checkinDateStart = [SharedGlobal.inUseCalendar startOfDayForDate:checkinDate];
+//    NSDate *nextDueDateStart = [checkinDateStart dateAfterYears:0 months:0 days:self.rate];
+//    return [nextDueDateStart timeAfterHours:SHSettings.dayStart minutes:0 seconds:0];
+//}
 
 
 -(NSDate *)nextDueTime_DAILY_INVERSE:(NSDate *)checkinDate{

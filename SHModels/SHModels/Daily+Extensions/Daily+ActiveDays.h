@@ -16,8 +16,6 @@
 -(NSInteger)addMonthlyItem:(BOOL)isInverse ordinal:(NSInteger)ordinal dayOfWeekNum:(NSInteger)weekdayNum;
 -(NSInteger)addYearlyItem:(BOOL)isInverse monthNum:(NSInteger)monthNum dayOfMonth:(NSInteger)monthDay;
 -(void)deleteRateValueItem:(RateType)rateType atIndex:(NSInteger)index;
--(NSDate *)nextDueTime_DAILY:(NSDate *)checkinDate;
--(NSDate *)nextDueTime_DAILY_INVERSE:(NSDate *)checkinDate;
-+(void)setActivenessArray:(NSArray<RateValueItemDict *> *)week activeDays:(BOOL *)activeDays;
++(void)setActivenessArray:(NSArray<RateValueItemDict *> *)week activeDays:(bool *)activeDays;
 //-(NSDate *)nextDueTime_WEEKLY:(NSDate *)checkinDate;
 @end

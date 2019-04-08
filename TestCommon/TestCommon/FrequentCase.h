@@ -8,7 +8,6 @@
 
 #import <XCTest/XCTest.h>
 #import <objc/runtime.h>
-#import <SHModels/SingletonCluster+Entity.h>
 #import "TestHelpers.h"
 #import "TestGlobals.h"
 #import "TestDummy.h"

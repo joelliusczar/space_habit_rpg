@@ -19,4 +19,15 @@
             ,[NSNumber numberWithInt:self.nowXp],@"nowXp",nil];
 }
 
+
+-(void)setupInitialState{
+  self.gold = 0;
+  self.lvl = 1;
+  self.maxHp = 50;
+  self.maxXp = 100;
+  self.nowHp = 50;
+  self.nowXp = 0;
+  self.shipName = @"";
+}
+
 @end

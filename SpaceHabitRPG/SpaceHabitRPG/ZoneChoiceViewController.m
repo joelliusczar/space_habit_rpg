@@ -11,14 +11,13 @@
 #import <SHControls/FrontEndConstants.h>
 #import <SHCommon/SingletonCluster.h>
 #import <SHCommon/CommonUtilities.h>
-#import <SHModels/Zone+Helper.h>
+#import <SHModels/Zone_Medium.h>
 #import <SHControls/UIView+Helpers.h>
 #import <SHControls/UIViewController+Helper.h>
 
 @interface ZoneChoiceViewController ()
-@property (nonatomic,strong) NSArray<Zone *> *zones;
+@property (nonatomic,strong) NSArray<ZoneDTO *> *zones;
 @property (nonatomic,weak) NSObject<P_CoreData> *dataController;
--(instancetype)initWithCentral:(CentralViewController *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices;
 
 @end
 
@@ -32,21 +31,15 @@
     return _descViewController;
 }
 
--(instancetype)initWithCentral:(CentralViewController *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices{
-  
-  if(self = [self initWithNibName:@"ZoneChoicePicker" bundle:nil]){
-      _central = central;
-      _dataController = central.dataController;
-      _zones = zoneChoices;
-  }
-  return self;
-  
-}
 
-
-+(instancetype)constructWithCentral:(CentralViewController *)central
-    AndZoneChoices:(NSArray<Zone *> *)zoneChoices{
-  return [[ZoneChoiceViewController alloc] initWithCentral:central AndZoneChoices:zoneChoices];
++(instancetype)newWithCentral:(CentralViewController *)central
+  AndZoneChoices:(NSArray<ZoneDTO *> *)zoneChoices{
+  
+  ZoneChoiceViewController *instance = [[ZoneChoiceViewController alloc]
+    initWithNibName:@"ZoneChoicePicker" bundle:nil];
+  instance.central = central;
+  instance.zones = zoneChoices;
+  return instance;
 }
 
 - (void)viewDidLoad {
@@ -79,7 +72,7 @@
 -(IBAction)skipBtn_pressed_action:(UIButton *)sender{
   [self.central setToShowStory:NO];
   [self popVCFromFront];
-  [self.central afterZonePick:nil];
+  [self.central afterZonePick:nil withContext:nil];
 }
 
 
@@ -87,9 +80,9 @@
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-  Zone *z = self.zones[indexPath.row];
+  ZoneDTO *z = self.zones[indexPath.row];
   ZoneChoiceCellController *cell = [ZoneChoiceCellController getZoneChoiceCell:tableView
-                                          WithParent:self AndModel:z AndRow:indexPath];
+    WithParent:self AndModel:z AndRow:indexPath];
   return cell;
 }
 

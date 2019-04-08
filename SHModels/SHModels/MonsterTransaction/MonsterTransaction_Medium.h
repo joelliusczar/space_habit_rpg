@@ -14,7 +14,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MonsterTransaction_Medium : NSObject
-+(instancetype)newWithDataController:(NSObject<P_CoreData>*)dataController;
++(instancetype)newWithContext:(NSManagedObjectContext*)context;
 -(void)addCreateTransaction:(Monster *)m;
 @end
 

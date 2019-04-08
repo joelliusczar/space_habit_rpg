@@ -13,10 +13,10 @@
 #import <SHControls/FrontEndConstants.h>
 #import "ZoneChoiceViewController.h"
 #import <SHModels/Hero+CoreDataClass.h>
+#import <SHModels/StoryItemDictionary.h>
 #import <SHControls/UIViewController+Helper.h>
-#import <SHModels/SingletonCluster+Entity.h>
 #import <SHModels/ZoneInfoDictionary.h>
-#import <SHModels/Zone+Helper.h>
+#import <SHModels/Zone_Medium.h>
 #import <SHCommon/CommonUtilities.h>
 #import <SHControls/SHSwitch.h>
 #import <SHControls/UIView+Helpers.h>
@@ -50,11 +50,12 @@
 }
 
 -(UITextView*)introMessageView{
-  if(!_introMessageView){
+  if(nil == _introMessageView){
     _introMessageView = [[UITextView alloc] init];
     _introMessageView.backgroundColor = [UIColor blackColor];
     _introMessageView.textColor = [UIColor whiteColor];
-    NSString* intro = [SharedGlobal.storyItemDictionary getStoryItem:@"intro"];
+    StoryItemDictionary *storyDict = [StoryItemDictionary newWithResourceUtil:self.central.resourceUtil];
+    NSString* intro = [storyDict getStoryItem:@"intro"];
     _introMessageView.text = intro;
     CGRect frame = _introMessageView.frame;
     frame.size.width = self.scrollView.frame.size.width;
@@ -73,9 +74,9 @@
 
 -(instancetype)initWithCentralViewController:(CentralViewController *)central{
     if(self = [self initWithNibName:@"IntroViewController" bundle:nil]){
-        self.central = central;
-        self.isThreadAllowed = YES;
-        self.isStoryDone = NO;
+        _central = central;
+        _isThreadAllowed = YES;
+        _isStoryDone = NO;
     }
     return self;
 }
@@ -172,8 +173,12 @@ scrollIncrement:(CGFloat)scrollIncrement{
   [self.central setToShowStory:YES];
   self.isThreadAllowed = NO;
   self.isStoryDone = YES;
-  Zone* z = constructSpecificZone2(HOME_KEY,1);
-  [self.central afterZonePick:z];
+  NSManagedObjectContext *context = [self.central.dataController newBackgroundContext];
+  NSObject<P_ResourceUtility> *resourceUtil = self.central.resourceUtil;
+  ZoneInfoDictionary *zoneInfoDict = [ZoneInfoDictionary newWithResourceUtil:resourceUtil];
+  Zone_Medium *zm = [Zone_Medium newWithContext:context withResourceUtil:resourceUtil withInfoDict:zoneInfoDict];
+  ZoneDTO *z = [zm newSpecificZone2:HOME_KEY withLvl:1];
+  [self.central afterZonePick:z withContext:context];
 }
 
 
@@ -183,8 +188,13 @@ scrollIncrement:(CGFloat)scrollIncrement{
     self.isThreadAllowed = NO;
   }
   [self.central setToShowStory:NO];
-  Zone* z = constructSpecificZone2(HOME_KEY,1);
-  [self.central afterZonePick:z];
+  NSManagedObjectContext *context = [self.central.dataController newBackgroundContext];
+  NSObject<P_ResourceUtility> *resourceUtil = self.central.resourceUtil;
+  ZoneInfoDictionary *zoneInfoDict = [ZoneInfoDictionary newWithResourceUtil:resourceUtil];
+  Zone_Medium *zm = [Zone_Medium newWithContext:context withResourceUtil:resourceUtil withInfoDict:zoneInfoDict];
+  
+  ZoneDTO *z = [zm newSpecificZone2:HOME_KEY withLvl:1];
+  [self.central afterZonePick:z withContext:context];
 }
 
 

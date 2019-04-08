@@ -26,10 +26,14 @@
 @property (weak,nonatomic) IBOutlet UITableView *controlsTbl;
 @property (strong,nonatomic) Daily *modelForEditing;
 @property (weak,nonatomic) UIViewController *parentDailyController;
--(instancetype)initWithParentDailyController:(UIViewController *)parentDailyController;
+
 -(instancetype)initWithParentDailyController:(UIViewController *)parentDailyController
-                                      ToEdit:(Daily *)daily
-                                 AtIndexPath:(NSIndexPath *)rowInfo;
+withDataController:(NSObject<P_CoreData>*)dataController;
+
+-(instancetype)initWithParentDailyController:(UIViewController *)parentDailyController
+ToEdit:(Daily *)daily
+AtIndexPath:(NSIndexPath *)rowInfo;
+
 -(void)loadExistingDailyForEditing:(Daily *)daily;
 @end
 

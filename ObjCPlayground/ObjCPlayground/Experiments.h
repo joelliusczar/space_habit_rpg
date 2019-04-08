@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <TestCommon/DumbCoreDataController.h>
 #import "Protocus.h"
 #import "UserOfProtocus.h"
 #import "PossibleInvocationCockblock.h"
@@ -21,6 +20,8 @@
 #import "FromCFunc.h"
 #import "ArcLessObj.h"
 #import "DumbDataSaver.h"
+#import "CircleMaybe.h"
+
 
 typedef WeakHolder Varholder;
 
@@ -107,7 +108,6 @@ void cMakeHouses(void);
 +(void)dateTimeStuff;
 +(void)runC_Exp;
 +(void)getWeekDayIndexes;
-+(void)shdataStuff;
 +(void)memSetErase;
 +(void)memSizeStuff;
 +(void)endianess;
@@ -118,6 +118,9 @@ void cMakeHouses(void);
 +(void)lostMems;
 +(void)ptrExp;
 +(void)forceNill;
++(void)testChildInsertSave;
++(void)testOrderednessCoreData;
++(void)dispatchQueueExp;
 @end
 
 #import "Experiments+Charlie.h"

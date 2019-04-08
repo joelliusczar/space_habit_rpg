@@ -14,24 +14,28 @@
 #import "DailyEditController.h"
 #import "DailyCellController.h"
 #import "IntroViewController.h"
-#import <SHModels/SingletonCluster+Entity.h>
 #import <SHCommon/CommonUtilities.h>
-#import <SHCommon/ViewHelper.h>
-#import <SHModels/Daily+DailyHelper.h>
+#import <SHControls/UIViewController+Helper.h>
+#import <SHModels/Daily+Helper.h>
 #import <SHCommon/NSDate+DateHelper.h>
 #import <SHCommon/Interceptor.h>
 #import <SHControls/SHButton.h>
-
+#import <SHModels/Monster_Medium.h>
+#import <SHModels/Daily_Medium.h>
 
 
 
 @interface DailyViewController ()
 
-    @property (strong,nonatomic) DailyEditController *dailyEditor;
-    @property (weak,nonatomic)  CentralViewController *parentController;
-    @property (strong,nonatomic) UITableView *dailiesTable;
-    @property (strong,nonatomic) NSFetchedResultsController *incompleteItems;
-    @property (strong,nonatomic) NSFetchedResultsController *completeItems;
+@property (strong,nonatomic) DailyEditController *dailyEditor;
+@property (weak,nonatomic) CentralViewController *parentController;
+@property (strong,nonatomic) UITableView *dailiesTable;
+@property (strong,nonatomic) NSFetchedResultsController *incompleteItems;
+@property (strong,nonatomic) NSFetchedResultsController *completeItems;
+@property (strong,nonatomic) NSObject<P_CoreData> *dataController;
+@property (strong,nonatomic) NSObject<P_ResourceUtility> *resourceUtil;
+@property (strong,nonatomic) Monster_Medium *monsterMedium;
+@property (strong,nonatomic) Daily_Medium *dailyMedium;
 
 @end
 
@@ -42,46 +46,62 @@ static NSString *const EntityName = @"Daily";
 @synthesize dailyEditor = _dailyEditor;
 -(DailyEditController *)dailyEditor{
     if(_dailyEditor == nil){
-        _dailyEditor = [[DailyEditController alloc] initWithParentDailyController:self];
+        _dailyEditor = [[DailyEditController alloc] initWithParentDailyController:self
+          withDataController:self.dataController];
     }
     return _dailyEditor;
 }
 
--(id)initWithParent:(CentralViewController *)parent
+
+-(Daily_Medium*)dailyMedium{
+  if(nil == _dailyMedium){
+    _dailyMedium = [Daily_Medium newWithSHData:self.dataController];
+  }
+  return _dailyMedium;
+}
+
+
+-(Monster_Medium*)monsterMedium{
+  if(_monsterMedium){
+    MonsterInfoDictionary *monsterDict = [MonsterInfoDictionary newWithResourceUtil:self.resourceUtil];
+    _monsterMedium = [Monster_Medium newWithDataController:self.dataController withInfoDict:monsterDict];
+  }
+  return _monsterMedium;
+}
+
+-(instancetype)initWithParent:(CentralViewController *)parent
+withDataController:(NSObject<P_CoreData>*)dataController
+withResourceUtil:(NSObject<P_ResourceUtility>*)resourceUtil
 {
-    if(self = [self initWithNibName:@"DailyViewController" bundle:nil]){
-        _parentController = parent;
-        [self setuptab];
-        
-    }
-    return self;
+  if(self = [self initWithNibName:@"DailyViewController" bundle:nil]){
+    _parentController = parent;
+    _dataController = dataController;
+    _resourceUtil = resourceUtil;
+    [self setuptab];
+    
+  }
+  return self;
 }
 
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.dailiesTable = [[UITableView alloc]init];
+  [super viewDidLoad];
+  
+  self.dailiesTable = [[UITableView alloc]init];
 
-    [self.view addSubview:self.dailiesTable];
-    
-    CGFloat width = [UIScreen mainScreen].bounds.size.width;
-    CGFloat height = [UIScreen mainScreen].bounds.size.height;
-    CGFloat minY = self.view.frame.origin.y;
-    CGFloat viewHeight = self.view.frame.size.height - (height *.10);
-    self.dailiesTable.frame = CGRectMake(0, minY + (height * .10),
-                                                       width,
-                                                       viewHeight);
-    self.dailiesTable.delegate = self;
-    self.dailiesTable.dataSource = self;
-    self.incompleteItems.delegate = self;
-    self.completeItems.delegate = self;
-    
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:SHData.readContext
-           selector:@selector(mergeChangesFromContextDidSaveNotification:)
-               name:NSManagedObjectContextDidSaveNotification
-             object:SHData.writeContext];
+  [self.view addSubview:self.dailiesTable];
+  
+  CGFloat width = [UIScreen mainScreen].bounds.size.width;
+  CGFloat height = [UIScreen mainScreen].bounds.size.height;
+  CGFloat minY = self.view.frame.origin.y;
+  CGFloat viewHeight = self.view.frame.size.height - (height *.10);
+  self.dailiesTable.frame = CGRectMake(0, minY + (height * .10),
+                                                     width,
+                                                     viewHeight);
+  self.dailiesTable.delegate = self;
+  self.dailiesTable.dataSource = self;
+  self.incompleteItems.delegate = self;
+  self.completeItems.delegate = self;
     
 }
 
@@ -116,8 +136,10 @@ static NSString *const EntityName = @"Daily";
 -(void)setupData{
     NSDate *todayStart = [[NSDate date] dayStart];
     todayStart = [todayStart timeAfterHours:SHSettings.dayStart minutes:0 seconds:0];
-    self.incompleteItems = [Daily getUnfinishedDailiesController:todayStart];
-    self.completeItems = [Daily getFinishedDailiesController:todayStart];
+    self.incompleteItems = [self.dailyMedium getUnfinishedDailiesController:todayStart
+      withContext:self.dataController.mainThreadContext];
+    self.completeItems = [self.dailyMedium getFinishedDailiesController:todayStart
+      withContext:self.dataController.mainThreadContext];
     
     [self fetchUpdates];
     
@@ -172,9 +194,9 @@ static NSString *const EntityName = @"Daily";
 }
 
 
-UIViewController * getEditScreen(UIViewController *dailyController){
-    DailyEditController *dailyEditor = [[DailyEditController alloc]
-                                            initWithParentDailyController:dailyController];
+-(UIViewController*)getEditScreen{
+    DailyEditController *dailyEditor = [[DailyEditController alloc] initWithParentDailyController:self
+      withDataController:self.dataController];
     EditNavigationController *editController = [[EditNavigationController alloc]
                                                 initWithTitle:@"Add Daily"
                                                 andEditor:dailyEditor];
@@ -183,24 +205,24 @@ UIViewController * getEditScreen(UIViewController *dailyController){
 
 
 - (IBAction)addDailyBtn_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
-    arrangeAndPushVCToFrontOfParent(getEditScreen(self),self.parentController);
+  [self.parentController arrangeAndPushChildVCToFront:[self getEditScreen]];
 }
 
 
 -(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
+    __weak DailyViewController *weakSelf = self;
     void (^pressedEdit)(UITableViewRowAction *,NSIndexPath *) = ^(UITableViewRowAction *action,NSIndexPath *path){
         wrapReturnVoid wrappedCall = ^void(){
-            NSFetchedResultsController *fetchController = path.section == INCOMPLETE?self.incompleteItems:self.completeItems;
+            NSFetchedResultsController *fetchController = path.section == INCOMPLETE?weakSelf.incompleteItems:weakSelf.completeItems;
             DailyEditController *dailyEditor = [[DailyEditController alloc]
-                                                initWithParentDailyController:self
+                                                initWithParentDailyController:weakSelf
                                                 ToEdit:fetchController.fetchedObjects[indexPath.row]
                                                 AtIndexPath:path];
             EditNavigationController *editController = [[EditNavigationController alloc]
                                                         initWithTitle:@"Add Daily"
                                                         andEditor:dailyEditor];
-            arrangeAndPushVCToFrontOfParent(editController,self.parentController);
+            [weakSelf.parentController arrangeAndPushChildVCToFront:editController];
         };
         [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@pressedEdit",self.description]];
     };

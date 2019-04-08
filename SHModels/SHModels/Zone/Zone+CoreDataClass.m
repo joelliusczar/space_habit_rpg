@@ -10,48 +10,46 @@
 #import "ZoneInfoDictionary.h"
 #import <SHCommon/SingletonCluster.h>
 #import <SHCommon/NSMutableDictionary+Helper.h>
+#import <SHCommon/CommonUtilities.h>
 
 @interface Zone()
-@property (nonatomic,weak) ZoneInfoDictionary *zoneInfoDict;
 @end
 
 @implementation Zone
 
-@synthesize zoneInfoDict = _zoneInfoDict;
--(ZoneInfoDictionary *)zoneInfoDict{
-    if(!_zoneInfoDict){
-        _zoneInfoDict = [SharedGlobal.bag getWithKey:@"zoneDict"
-        OrCreateFromBlock:^id(){
-            return [ZoneInfoDictionary new];
-        }];
-    }
-    return _zoneInfoDict;
-}
-
--(NSString *)fullName{
-    NSString* name = [self.zoneInfoDict getZoneName:self.zoneKey];
-    return self.suffix.length?[NSString stringWithFormat:@"%@ %@",name,self.suffix]:name;
-}
-
--(NSString *)synopsis{
-    return [self.zoneInfoDict getZoneDescription:self.zoneKey];
-}
-
--(NSString *)headline{
-    return @"";
-}
 
 -(NSMutableDictionary *)mapable{
     return [NSMutableDictionary dictionaryWithObjectsAndKeys:
-            self.fullName,@"fullName"
-            ,self.zoneKey,@"zoneKey"
-            ,self.suffix,@"suffix"
-            ,[NSNumber numberWithInt:self.lvl],@"lvl"
+//            self.fullName,@"fullName"
+//            ,self.zoneKey,@"zoneKey"
+//            ,self.suffix,@"suffix"
+            [NSNumber numberWithInt:self.lvl],@"lvl"
             ,[NSNumber numberWithInt:self.maxMonsters],@"maxMonsters"
             ,[NSNumber numberWithInt:self.monstersKilled],@"monstersKilled"
             ,[NSNumber numberWithLong:self.uniqueId],@"uniqueId"
             ,[NSNumber numberWithBool:self.isFront],@"isFront", nil];
 }
 
+
+-(void)copyInto:(NSObject*)object{
+  copyProp(self, object, @"objectID");
+  copyBetween(self, object);
+}
+
+
+-(void)copyFrom:(NSObject *)object{
+  copyBetween(object, self);
+}
+
+
+static void copyBetween(NSObject* from,NSObject* to){
+  copyProp(from, to, @"isFront");
+  copyProp(from, to, @"lvl");
+  copyProp(from, to, @"maxMonsters");
+  copyProp(from, to, @"monstersKilled");
+  copyProp(from, to, @"suffix");
+  copyProp(from, to, @"uniqueId");
+  copyProp(from, to, @"zoneKey");
+}
 
 @end

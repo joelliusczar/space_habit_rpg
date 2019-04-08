@@ -10,6 +10,8 @@
 #import "Daily+CoreDataClass.h"
 #import <SHCommon/SingletonCluster.h>
 #import <SHCommon/NSDate+DateHelper.h>
+#import <SHCommon/NSObject+Helper.h>
+#import <SHCommon/CommonUtilities.h>
 #import <SHGlobal/Constants.h>
 
 @implementation Reminder
@@ -35,18 +37,27 @@
     //besides, I don't really care
     [mappedData removeObjectForKey:@"remind_daily"];
     [mappedData setValue:[self.reminderHour extractTimeInFormat:ZERO_BASED_24_HOUR]
-                  forKey:@"reminderHour"];
+      forKey:@"reminderHour"];
     
     return mappedData;
 }
 
--(void)copyInto:(NSObject *)object{
-    [object setValue:[NSNumber numberWithInt:self.daysBeforeDue]
-              forKey:@"daysBeforeDue"];
-    [object setValue:self.reminderHour forKey:@"reminderHour"];
-    [object setValue:self.lastUpdateTime forKey:@"lastUpdateTime"];
-    [object setValue:self.notificationID forKey:@"notificationID"];
+-(void)copyInto:(NSObject*)object{
+  copyProp(self, object, @"objectID");
+  copyBetween(self, object);
+}
 
+
+-(void)copyFrom:(NSObject *)object{
+  copyBetween(object, self);
+}
+
+
+static void copyBetween(NSObject* from,NSObject* to){
+  copyProp(from, to, @"daysBeforeDue");
+  copyProp(from, to, @"reminderHour");
+  copyProp(from, to, @"lastUpdateTime");
+  copyProp(from, to, @"notificationID");
 }
 
 @end

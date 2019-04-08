@@ -9,7 +9,7 @@
 #pragma clang diagnostic ignored "-Wunused-parameter"
 
 #import "StoryDumpView.h"
-#import <SHCommon/ViewHelper.h>
+#import <SHControls/UIViewController+Helper.h>
 
 @interface StoryDumpView ()
 @property (nonatomic,strong) UITapGestureRecognizer *tapper;
@@ -68,7 +68,7 @@
     if(self.responseBlock){
       self.responseBlock(self);
     }
-    popVCFromFront(self);
+    [self popVCFromFront];
 }
 
 

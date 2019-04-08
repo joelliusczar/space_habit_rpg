@@ -11,20 +11,21 @@
 #import <SHData/P_CoreData.h>
 #import "MonsterInfoDictionary.h"
 #import "Monster+CoreDataClass.h"
+#import "SHMonsterDTO.h"
 
 @import CoreData;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Monster_Medium : NSObject
-+(instancetype)newWithDataController:(NSObject<P_CoreData>*)dataController
-withInfoDict:(MonsterInfoDictionary*)monsterInfo;
--(Monster*)newRandomMonster:(NSString*)zoneKey zoneLvl:(uint32_t)zoneLvl;
++(instancetype)newWithContext:(NSManagedObjectContext*)context
+  withInfoDict:(MonsterInfoDictionary*)monsterInfo;
+
+-(MonsterDTO*)newRandomMonster:(NSString*)zoneKey zoneLvl:(uint32_t)zoneLvl;
 -(NSString*)randomMonsterKey:(NSString*)zoneKey;
--(Monster*)newEmptyMonster;
+-(MonsterDTO*)newEmptyMonster;
 -(ProbWeight*)buildProbilityWeight:(NSMutableArray<NSString*>*)keys;
 -(Monster*)getCurrentMonster;
--(Monster*)getCurrentMonsterWithContext:(nullable NSManagedObjectContext*)context;
 @end
 
 NS_ASSUME_NONNULL_END

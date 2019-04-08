@@ -7,82 +7,42 @@
 //
 
 #import "Monster+CoreDataClass.h"
-#import "SingletonCluster+Entity.h"
-#import "MonsterInfoDictionary.h"
+#import <SHCommon/CommonUtilities.h>
 
 @interface Monster()
-@property (nonatomic,weak) MonsterInfoDictionary *monInfoDict;
 @end
 
-float MAX_HP_MODIFIER = .1;
 @implementation Monster
 
-@synthesize monInfoDict = _monInfoDict;
--(MonsterInfoDictionary *)monInfoDict{
-    if(!_monInfoDict){
-        _monInfoDict = SharedGlobal.monsterInfoDictionary;
-    }
-    return _monInfoDict;
-}
-
--(NSString *)fullName{
-    return [self.monInfoDict getName:self.monsterKey];
-}
-
--(NSString *)synopsis{
-    return [self.monInfoDict getDescription:self.monsterKey];
-}
-
--(NSString *)headline{
-    NSString *grammaticalAgreement = [self.monInfoDict getGrammaticalAgreement:self.monsterKey];
-    if([grammaticalAgreement isEqualToString:@"SC"]){
-        return [NSString stringWithFormat:@"Your ship encountered a \n%@!",self.fullName];
-    }
-    if([grammaticalAgreement isEqualToString:@"SV"]){
-        return [NSString stringWithFormat:@"Your ship encountered an \n%@!",self.fullName];
-    }
-    if([grammaticalAgreement isEqualToString:@"PL"]){
-        return [NSString stringWithFormat:@"Your ship encountered some \n%@!",self.fullName];
-    }
-    @throw [NSException exceptionWithName:@"Invalid gramatical agreement" reason:[NSString stringWithFormat:@"The culprit was %@",self.fullName]userInfo:nil];
-}
-
--(int32_t)attack{
-    return [self.monInfoDict getBaseAttack:self.monsterKey] + self.lvl;
-}
-
-#warning TODO: figure out a better way to handle this
--(int32_t)defense{
-    return [self.monInfoDict getBaseDefense:self.monsterKey];
-}
-
--(int32_t)xp{
-    return [self.monInfoDict getBaseXP:self.monsterKey];
-}
-
--(int32_t)maxHp{
-    int baseHp = [self.monInfoDict getBaseHP:self.monsterKey];
-    return baseHp + (self.lvl*baseHp*MAX_HP_MODIFIER);
-}
-
--(float)treasureDropRate{
-    return [self.monInfoDict getTreasureDropRate:self.monsterKey];
-}
-
--(int32_t)encounterWeight{
-    return [self.monInfoDict getEncounterWeight:self.monsterKey];
-}
 
 -(NSMutableDictionary *)mapable{
     return [NSMutableDictionary dictionaryWithObjectsAndKeys:
             self.monsterKey,@"monsterKey"
             ,[NSNumber numberWithInt:self.lvl],@"lvl"
-            ,[NSNumber numberWithInt:self.nowHp],@"nowHp"
-            ,[NSNumber numberWithInt:self.attack],@"attack"
-            ,[NSNumber numberWithInt:self.defense],@"defense"
-            ,[NSNumber numberWithInt:self.maxHp],@"maxHp"
+//            ,[NSNumber numberWithInt:self.nowHp],@"nowHp"
+//            ,[NSNumber numberWithInt:self.attack],@"attack"
+//            ,[NSNumber numberWithInt:self.defense],@"defense"
+//            ,[NSNumber numberWithInt:self.maxHp],@"maxHp"
             , nil];
 }
 
+
+-(void)copyInto:(NSObject*)object{
+  copyProp(self, object, @"objectID");
+  copyBetween(self, object);
+}
+
+
+-(void)copyFrom:(NSObject *)object{
+  copyBetween(object, self);
+  self.lastUpdateTime = [NSDate date];
+}
+
+
+static void copyBetween(NSObject* from,NSObject* to){
+  copyProp(from, to, @"lvl");
+  copyProp(from, to, @"monsterKey");
+  copyProp(from, to, @"nowHp");
+}
 
 @end

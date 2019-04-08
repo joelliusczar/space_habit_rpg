@@ -11,24 +11,24 @@
 #import "Monster_Medium.h"
 
 @interface Monster_Medium ()
-@property (strong,nonatomic) NSObject<P_CoreData>* dataController;
+@property (strong,nonatomic) NSManagedObjectContext *context;
 @property (strong,nonatomic) MonsterInfoDictionary* monsterInfo;
 @end
 
 @implementation Monster_Medium
 
 
-+(instancetype)newWithDataController:(NSObject<P_CoreData>*)dataController
++(instancetype)newWithContext:(NSManagedObjectContext*)context
 withInfoDict:(MonsterInfoDictionary*)monsterInfo{
   Monster_Medium *instance = [Monster_Medium new];
   instance.monsterInfo = monsterInfo;
-  instance.dataController = dataController;
+  instance.context = context;
   return instance;
 }
 
 
--(Monster*)newRandomMonster:(NSString*)zoneKey zoneLvl:(uint32_t)zoneLvl{
-    Monster *m = [self newEmptyMonster];
+-(MonsterDTO*)newRandomMonster:(NSString*)zoneKey zoneLvl:(uint32_t)zoneLvl{
+    MonsterDTO *m = [self newEmptyMonster];
     m.monsterKey = [self randomMonsterKey:zoneKey];
     m.lvl = calculateLvl(zoneLvl,MONSTER_LVL_RANGE);
     m.nowHp = m.maxHp;
@@ -36,8 +36,8 @@ withInfoDict:(MonsterInfoDictionary*)monsterInfo{
 }
 
 
--(Monster*)newEmptyMonster{
-  return (Monster*)[NSManagedObjectContext newEntityUnattached:Monster.entity];
+-(MonsterDTO*)newEmptyMonster{
+  return [MonsterDTO newWithMonsterDict:self.monsterInfo];
 }
 
 
@@ -60,11 +60,9 @@ withInfoDict:(MonsterInfoDictionary*)monsterInfo{
 }
 
 
--(Monster*)getCurrentMonsterWithContext:(NSManagedObjectContext*)context{
-  if(nil == context){
-    context = self.dataController.mainThreadContext;
-  }
+-(Monster*)getCurrentMonster{
   __block Monster* m = nil;
+  NSManagedObjectContext *context = self.context;
   [context performBlockAndWait:^{
     NSFetchRequest<Monster *> *request = [Monster fetchRequest];
     NSSortDescriptor *sortByMonsterKey = [[NSSortDescriptor alloc]initWithKey:@"monsterKey" ascending:NO];
@@ -74,11 +72,6 @@ withInfoDict:(MonsterInfoDictionary*)monsterInfo{
     m = (Monster*)results[0];
   }];
   return m;
-}
-
-
--(Monster*)getCurrentMonster{
-  return [self getCurrentMonsterWithContext:nil];
 }
 
 @end

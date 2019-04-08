@@ -32,7 +32,9 @@
 #import "Ocean.h"
 #import "PureCBaby.h"
 #import "House+Hacked.h"
-#import <SHData/CoreDataStackController.h>
+#import <SHData/SHCoreData.h>
+#import <SHModels/Daily+CoreDataClass.h>
+#import <SHModels/Reminder+CoreDataClass.h>
 #import <SHModels/Zone+CoreDataClass.h>
 #import <SHModels/Zone_Medium.h>
 #import <SHModels/ZoneInfoDictionary.h>
@@ -40,6 +42,7 @@
 #import <SHCommon/CommonUtilities.h>
 #import <TestCommon/TestHelpers.h>
 #import <malloc/malloc.h>
+#import <SHData/NSManagedObjectContext+Helper.h>
 
 
 
@@ -749,124 +752,6 @@ NSString *convertCharToBin(unsigned char input){
 }
 
 
--(Varholder*)_shdataStuff{
-  NSBundle *testBundle = [NSBundle bundleForClass:NSClassFromString(@"OnlyOneEntities")];
-  Varholder* wh = [Varholder new];
-  SHCoreData* dc = nil;
-  dc = [SHCoreData newWithBundle:testBundle storeType:NSInMemoryStoreType];
-  
-  Zone_Medium* zoneMed = [Zone_Medium newWithDataController:dc
-    withResourceUtil:[[ResourceUtility alloc] init] withInfoDict:[ZoneInfoDictionary new]];
-  
-  Zone *z = nil;
-
-  z = [zoneMed constructEmptyZone];
-  
-  z.isFront = YES;
-  z.zoneKey = @"NEBULA";
-  [dc insertIntoContext:z];
-  dispatch_semaphore_t sema1 = [dc saveNoWaiting];
-  BOOL isDone = waitForSema(sema1, 3);
-  Zone *z3 = [zoneMed getZone:YES];
-  SHContext* __weak context = nil;
-  SHContext* __weak context2 = nil;
-  
-  NSPersistentStoreCoordinator* __weak store = nil;
-  context = (SHContext*)[TestHelpers getPrivateValue:dc ivarName:@"_writeContext"];
-  context2 = (SHContext*)[TestHelpers getPrivateValue:dc ivarName:@"_readContext"];
-  store = context.persistentStoreCoordinator;
-  NSError* error = nil;
-  [store destroyPersistentStoreAtURL:dc.storeURL withType:NSInMemoryStoreType options:nil error:&error];
-  [context2 reset];
-  id refQue =[TestHelpers getPrivateValue:context2 ivarName:@"_referenceQueue"];
-  //void* rlObv = [TestHelpers getPrivateValue:refQue ivarName:@"_rlObserver"];
-  [TestHelpers setPrivateVar:refQue ivarName:@"_context" newVal:nil];
-  refQue = nil;
-  (void)isDone;
-  (void)z3;
-  //(void)rlObv;
-  House* negTst = [House new];
-  wh.item1 = context;
-  wh.item2 = context2;
-  wh.item3 = negTst;
-  wh.item4 = dc;
-  wh.item5 = z3;
-  wh.item6 = z;
-  NSLog(@"bad context: %@",context2);
-  //void* bad = (__bridge void*)context2;
-  //CFRelease(bad);
-  //objc_msgSend();
-  //[TestHelpers forceRelease:context2];
-  return wh;
-}
-
-
--(Varholder*)_stripedDownSavedStuff{
-  NSBundle *testBundle = [NSBundle bundleForClass:NSClassFromString(@"OnlyOneEntities")];
-  Varholder* wh = [Varholder new];
-  SHCoreData* dc = nil;
-  dc = [SHCoreData newWithBundle:testBundle storeType:NSInMemoryStoreType];
-  
-  Zone_Medium* zoneMed = [Zone_Medium newWithDataController:dc
-    withResourceUtil:[[ResourceUtility alloc] init] withInfoDict:[ZoneInfoDictionary new]];
-  
-  Zone *z = nil;
-
-  z = [zoneMed constructEmptyZone];
-  
-  z.isFront = YES;
-  z.zoneKey = @"NEBULA";
-  [dc insertIntoContext:z];
-  dispatch_semaphore_t sema1 = [dc saveNoWaiting];
-  BOOL isDone = waitForSema(sema1, 3);
-  Zone *z3 = [zoneMed getZone:YES];
-  //@autoreleasepool {
-//    SHContext* __weak context = nil;
-//    SHContext* __weak context2 = nil;
-//
-//    NSPersistentStoreCoordinator* __weak store = nil;
-//    context = (SHContext*)[TestHelpers getPrivateValue:dc ivarName:@"_writeContext"];
-//    context2 = (SHContext*)[TestHelpers getPrivateValue:dc ivarName:@"_readContext"];
-//    store = context.persistentStoreCoordinator;
-//    NSError* error = nil;
-//    [store destroyPersistentStoreAtURL:dc.storeURL withType:NSInMemoryStoreType options:nil error:&error];
-//    [context2 reset];
-//    id refQue =[TestHelpers getPrivateValue:context2 ivarName:@"_referenceQueue"];
-//    void* rlObv = [TestHelpers getPrivateValue:refQue ivarName:@"_rlObserver"];
-//    [TestHelpers setPrivateVar:refQue ivarName:@"_context" newVal:nil];
-  //}
-
-  (void)isDone;
-  (void)z3;
-  return wh;
-}
-
-+(Varholder*)new_shDataStuffAutoRel{
-  Varholder* wh = nil;
-  @autoreleasepool {
-    Experiments* exp = [Experiments new];
-  
-    wh = [exp _shdataStuff];
-  }
-  return wh;
-}
-
-+(void)shdataStuff{
-  Varholder* wh = nil;
-  for(int i = 0;i < 5;i++){
-    @autoreleasepool {
-      wh = [self new_shDataStuffAutoRel];
-      NSLog(@"%@",wh.item1);
-      NSLog(@"%@",wh.item2);
-      NSLog(@"%@",wh.item3);
-      NSLog(@"%@",wh.item4);
-      NSLog(@"%@",wh.item5);
-      NSLog(@"%@",wh.item6);
-    }
-  }
-}
-
-
 +(void)memSizeStuff{
   RefO* r = [RefO new];
   r.sm = (int16_t)0xffff;
@@ -987,7 +872,7 @@ NSString *convertCharToBin(unsigned char input){
 +(void)dumbDataPrv{
   DumbDataSaver __weak *wdds = nil;
   NSManagedObjectContext* __weak wcontext = nil;
-  NSManagedObjectContext* __weak wpcontext = nil;
+  //NSManagedObjectContext* __weak wpcontext = nil;
   @autoreleasepool {
     
     DumbDataSaver *dds = [DumbDataSaver new];
@@ -1061,6 +946,7 @@ NSString *convertCharToBin(unsigned char input){
   uintptr_t indir = (uintptr_t)(*(void **)addr2);
   char * value = *(char **)addr2;
   void* ptr = (void*)addr;
+  (void)ptr;(void)value;(void)indir;
   NSLog(@"0x%016lx",addr);
   addr++;
 }
@@ -1077,4 +963,106 @@ NSString *convertCharToBin(unsigned char input){
   [TestHelpers setPrivateVar:r ivarName:@"_obj" newVal:nil];
 }
 
+
++(void)testChildInsertSave{
+  SHCoreData *dc = [SHCoreData newWithOptionsBlock:^(SHCoreDataOptions *options){
+    options.storeType = NSInMemoryStoreType;
+    options.appBundle = [NSBundle bundleForClass:NSClassFromString(@"OnlyOneEntities")];
+  }];
+  NSManagedObjectContext *context = [dc newBackgroundContext];
+  [context performBlockAndWait:^{
+    Daily *d = (Daily*)[NSManagedObjectContext newEntityUnattached:Daily.entity];
+    Reminder *r = (Reminder*)[NSManagedObjectContext newEntityUnattached:Reminder.entity];
+    r.daysBeforeDue = 70;
+    d.customUserOrder = 700;
+    //[d addDaily_remindObject:r];
+    [context insertObject:d];
+    NSError *err = nil;
+    [context save:&err];
+    NSLog(@"Save");
+  }];
+  
+  NSManagedObjectContext *context2 = [dc newBackgroundContext];
+  [context2 performBlockAndWait:^{
+    NSFetchRequest *request = Daily.fetchRequest;
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"customUserOrder" ascending:YES] ];
+    NSError *error = nil;
+    NSArray *results = [context2 executeFetchRequest:request error:&error];
+    Daily *d = (Daily*)results[0];
+    NSLog(@"Count is %lu",d.daily_remind.count);
+    
+  }];
+}
+
+
++(void)testOrderednessCoreData{
+  SHCoreData *dc = [SHCoreData newWithOptionsBlock:^(SHCoreDataOptions *options){
+    options.storeType = NSSQLiteStoreType;
+    options.appBundle = [NSBundle bundleForClass:NSClassFromString(@"OnlyOneEntities")];
+  }];
+  NSManagedObjectContext *context = [dc newBackgroundContext];
+  [context performBlockAndWait:^{
+    Daily *d = (Daily*)[context newEntity:Daily.entity];
+    Reminder *r = (Reminder*)[context newEntity:Reminder.entity];
+    r.daysBeforeDue = 70;
+    d.customUserOrder = 700;
+    [d addDaily_remindObject:r];
+    Reminder *r2 = (Reminder*)[context newEntity:Reminder.entity];
+    r.daysBeforeDue = 71;
+    [d addDaily_remindObject:r2];
+    Reminder *r3 = (Reminder*)[context newEntity:Reminder.entity];
+    r.daysBeforeDue = 72;
+    [d addDaily_remindObject:r3];
+    Reminder *r4 = (Reminder*)[context newEntity:Reminder.entity];
+    r.daysBeforeDue = 73;
+    [d addDaily_remindObject:r4];
+    NSError *err = nil;
+    [context save:&err];
+    NSLog(@"Save");
+  }];
+
+  NSManagedObjectContext *context2 = [dc newBackgroundContext];
+  [context2 performBlockAndWait:^{
+    NSFetchRequest *request = Daily.fetchRequest;
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"customUserOrder" ascending:YES] ];
+    NSError *error = nil;
+    NSArray *results = [context2 executeFetchRequest:request error:&error];
+    Daily *d = (Daily*)results[0];
+    NSOrderedSet *set = d.daily_remind;
+    Reminder *r = set[0];
+    (void)r;
+//    [set enumerateObjectsUsingBlock:^(id obj,NSUInteger idx,BOOL *stop){
+//      NSLog(@"Loop");
+//    }];
+    NSLog(@"Count is %lu",d.daily_remind.count);
+    
+    
+  }];
+}
+
+
++(void)dispatchQueueExp{
+  CircleMaybe *cm = [[CircleMaybe alloc] init];
+  __weak CircleMaybe *weakCircle = cm;
+  [cm dropSelfInQ];
+  cm = nil;
+  NSLog(@"of main");
+  [NSThread sleepForTimeInterval:6];
+  NSLog(@"Should be done");
+  NSLog(@"Circle? %@",weakCircle);
+  
+  CircleMaybe *cm2 = [[CircleMaybe alloc] init];
+  weakCircle = cm2;
+  cm2.foo = [NSObject new];
+  NSLog(@"The two guy");
+  cm2 = nil;
+  NSLog(@"Circle? %@",weakCircle);
+  
+  CircleMaybe *cm3 = [[CircleMaybe alloc] init];
+  weakCircle = cm3;
+  [cm3 addBlock];
+  cm3 = nil;
+  NSLog(@"Strike three!");
+  NSLog(@"Circle? %@",weakCircle);
+}
 @end

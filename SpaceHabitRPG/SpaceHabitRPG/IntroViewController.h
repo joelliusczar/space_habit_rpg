@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <SHModels/Settings+CoreDataClass.h>
+#import <SHModels/Zone_Medium.h>
+#import <SHModels/SHZoneDTO.h>
 #import "CentralViewController.h"
 
 
+
 @interface IntroViewController : UIViewController
--(id)initWithCentralViewController:(CentralViewController *)central;
+-(instancetype)initWithCentralViewController:(CentralViewController *)central;
 @end
 

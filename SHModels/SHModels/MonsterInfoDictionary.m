@@ -16,27 +16,33 @@
 
 @implementation MonsterInfoDictionary
 
-@synthesize monsterInfoDict = _monsterInfoDict;
--(InfoDictionary*)monsterInfoDict{
-  if(nil == _monsterInfoDict){
-    _monsterInfoDict = [[InfoDictionary alloc] initWithPListKey:@"MonsterInfo"
-      AndBundleClass:MonsterInfoDictionary.class];
+@synthesize infoDict = _infoDict;
+-(InfoDictionary*)infoDict{
+  if(nil == _infoDict){
+    _infoDict = [[InfoDictionary alloc] initWithPListKey:@"MonsterInfo"
+      AndBundleClass:MonsterInfoDictionary.class AndResourceUtil:self.resourceUtil];
   }
-  return _monsterInfoDict;
+  return _infoDict;
 }
 
 
++(instancetype)newWithResourceUtil:(NSObject<P_ResourceUtility>*)resourceUtil{
+  MonsterInfoDictionary *instance = [MonsterInfoDictionary new];
+  instance.resourceUtil = resourceUtil;
+  return instance;
+}
+
 -(NSArray<NSString *> *)getMonsterKeyList:(NSString *)zoneKey{
-    return [self.monsterInfoDict getGroupKeyList:zoneKey];
+    return [self.infoDict getGroupKeyList:zoneKey];
 }
 
 
 -(NSDictionary *)getMonsterInfo:(NSString *)monsterKey ForZone:(NSString *)zoneKey{
-    return [self.monsterInfoDict getInfo:monsterKey forGroup:zoneKey];
+    return [self.infoDict getInfo:monsterKey forGroup:zoneKey];
 }
 
 -(NSDictionary *)getMonsterInfo:(NSString *)monsterKey{
-    return [self.monsterInfoDict getInfo:monsterKey];
+    return [self.infoDict getInfo:monsterKey];
 }
 
 -(NSString *)getName:(NSString *)monsterKey{

@@ -7,11 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <SHCommon/P_ResourceUtility.h>
 #import "InfoDictionary.h"
 
 @interface ZoneInfoDictionary : NSObject
 @property (nonatomic,assign) BOOL isTesting;
-@property (readonly,nonatomic,strong) InfoDictionary *zoneInfoDict;
+@property (readonly,nonatomic,strong) InfoDictionary *infoDict;
+@property (strong,nonatomic) NSObject<P_ResourceUtility> *resourceUtil;
++(instancetype)newWithResourceUtil:(NSObject<P_ResourceUtility>*)resourceUtil;
 -(NSArray<NSString*> *)getGroupKeyList:(NSString *)key;
 -(NSDictionary *)getZoneInfo:(NSString *)zoneKey;
 -(NSString *)getZoneName:(NSString *)zoneKey;

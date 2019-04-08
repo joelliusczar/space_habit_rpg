@@ -1,5 +1,5 @@
 //
-//  Daily_c.c
+//  SHDaily_c.c
 //  SHModels
 //
 //  Created by Joel Pridgen on 4/17/18.

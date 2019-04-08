@@ -28,9 +28,11 @@ void printWorkingDir(){
     (void)launchOptions;
     SharedGlobal.bundle = [NSBundle bundleForClass:OnlyOneEntities.class];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.centralController = [[CentralViewController alloc]
-                           initWithNibName:@"CentralViewController"
-                           bundle:nil];
+    NSObject<P_CoreData> *dataController = SHData;
+    self.centralController = [CentralViewController newWithDataController:dataController
+      andNibName:@"CentralViewController"
+      andResourceUtil:SharedGlobal.resourceUtility
+      andBundle:nil];
     self.window.rootViewController = self.centralController;
     [self.window makeKeyAndVisible];
     // Override point for customization after application launch.

@@ -10,9 +10,9 @@
 
 #import "SHSpinPicker.h"
 #import <SHCommon/Interceptor.h>
-#import <SHCommon/ViewHelper.h>
 #import <SHCommon/NSException+SHCommonExceptions.h>
 #import <SHCommon/SingletonCluster.h>
+#import "UIViewController+Helper.h"
 #import "SHEventInfo.h"
 
 @interface SHSpinPicker ()
@@ -49,7 +49,7 @@
 -(void)background_tap_action:(UITapGestureRecognizer *)sender{
     wrapReturnVoid wrappedCall = ^void(){
         if(sender.view==self.view){
-            popVCFromFront(self);
+            [self popVCFromFront];
         }
     };
     [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
@@ -78,7 +78,7 @@ numberOfRowsInComponent:(NSInteger)component{
     wrapReturnVoid wrappedCall = ^void(){
         SHEventInfo *e = [[SHEventInfo alloc] init:event withSenders:sender,self.picker,self,nil];
         [self.delegate pickerSelection_action:e];
-        popVCFromFront(self);
+        [self popVCFromFront];
     };
     [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }

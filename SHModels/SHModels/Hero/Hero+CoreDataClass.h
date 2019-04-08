@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Hero : NSManagedObject
 @property (readonly,nonatomic) NSMutableDictionary *mapable;
+-(void)setupInitialState;
 @end
 
 NS_ASSUME_NONNULL_END

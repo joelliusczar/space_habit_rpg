@@ -8,7 +8,13 @@
 //
 
 #import "DataInfo+CoreDataClass.h"
+#import <SHGlobal/Constants.h>
 
 @implementation DataInfo
+
+-(void)setupInitialState{
+    self.nextZoneId = 0;
+    self.gameState = GAME_STATE_UNINITIALIZED;
+}
 
 @end

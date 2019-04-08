@@ -7,7 +7,7 @@
 //
 
 #import "ZoneDescriptionViewController.h"
-#import <SHCommon/ViewHelper.h>
+#import <SHControls/UIViewController+Helper.h>
 #import <SHCommon/SingletonCluster.h>
 #import <SHGlobal/Constants.h>
 #import <SHControls/SHButton.h>
@@ -39,7 +39,7 @@
     return self;
 }
 
--(void)setDisplayItems:(Zone *)model{
+-(void)setDisplayItems:(ZoneDTO *)model{
     self.storyItem = model;
 }
 
@@ -61,11 +61,11 @@
 #pragma clang diagnostic ignored "-Wunused-parameter"
 
 -(void)backSwipe_rightSwipe_action:(UISwipeGestureRecognizer *)sender{
-    popVCFromFront(self);
+    [self popVCFromFront];
 }
-- (IBAction)doneBtn_pressed_action:(SHButton *)sender forEvent:(UIEvent *)event  {
-    popVCFromFront(self.prevScreen);
-    [self.central afterZonePick:(Zone *)self.storyItem];
+- (IBAction)doneBtn_pressed_action:(SHButton *)sender forEvent:(UIEvent *)event{
+    [self.prevScreen popVCFromFront];
+    [self.central afterZonePick:(ZoneDTO *)self.storyItem withContext:nil];
 }
 
 

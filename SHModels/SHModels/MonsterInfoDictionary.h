@@ -11,7 +11,9 @@
 
 @interface MonsterInfoDictionary : NSObject
 @property (nonatomic,assign) BOOL isTesting;
-@property (readonly,nonatomic,strong) InfoDictionary *monsterInfoDict;
+@property (readonly,nonatomic,strong) InfoDictionary *infoDict;
+@property (strong,nonatomic) NSObject<P_ResourceUtility> *resourceUtil;
++(instancetype)newWithResourceUtil:(NSObject<P_ResourceUtility>*)resourceUtil;
 -(NSArray<NSString*> *)getMonsterKeyList:(NSString *)zoneKey;
 -(NSDictionary *)getMonsterInfo:(NSString *)monsterKey;
 -(NSDictionary *)getMonsterInfo:(NSString *)monsterKey ForZone:(NSString *)zoneKey;

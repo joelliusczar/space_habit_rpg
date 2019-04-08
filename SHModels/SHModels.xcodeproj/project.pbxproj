@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27075D5B22570C0A00AD13AA /* SHDueDateItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 27075D5922570C0A00AD13AA /* SHDueDateItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27075D5C22570C0A00AD13AA /* SHDueDateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 27075D5A22570C0A00AD13AA /* SHDueDateItem.m */; };
+		27075D5E225782D200AD13AA /* P_ReminderSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 27075D5D225782D200AD13AA /* P_ReminderSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27075D61225786A400AD13AA /* SHReminderDTO.h in Headers */ = {isa = PBXBuildFile; fileRef = 27075D5F225786A400AD13AA /* SHReminderDTO.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27075D62225786A400AD13AA /* SHReminderDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 27075D60225786A400AD13AA /* SHReminderDTO.m */; };
+		27075D652259308800AD13AA /* SHHeroDTO.h in Headers */ = {isa = PBXBuildFile; fileRef = 27075D632259308800AD13AA /* SHHeroDTO.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27075D662259308800AD13AA /* SHHeroDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 27075D642259308800AD13AA /* SHHeroDTO.m */; };
+		27075D692259313B00AD13AA /* SHZoneDTO.h in Headers */ = {isa = PBXBuildFile; fileRef = 27075D672259313B00AD13AA /* SHZoneDTO.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27075D6A2259313B00AD13AA /* SHZoneDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 27075D682259313B00AD13AA /* SHZoneDTO.m */; };
+		27075D6D225963A700AD13AA /* SHMonsterDTO.h in Headers */ = {isa = PBXBuildFile; fileRef = 27075D6B225963A700AD13AA /* SHMonsterDTO.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27075D6E225963A700AD13AA /* SHMonsterDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 27075D6C225963A700AD13AA /* SHMonsterDTO.m */; };
+		27075D71225A695300AD13AA /* SHSettingsDTO.h in Headers */ = {isa = PBXBuildFile; fileRef = 27075D6F225A695300AD13AA /* SHSettingsDTO.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27075D72225A695300AD13AA /* SHSettingsDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 27075D70225A695300AD13AA /* SHSettingsDTO.m */; };
 		27300A002249BAD2006E419C /* Monster_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 273009FE2249BAD2006E419C /* Monster_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27300A012249BAD2006E419C /* Monster_Medium.m in Sources */ = {isa = PBXBuildFile; fileRef = 273009FF2249BAD2006E419C /* Monster_Medium.m */; };
 		27300A04224AE713006E419C /* Daily_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 27300A02224AE713006E419C /* Daily_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -106,8 +119,6 @@
 		2747C3CF2043BACB00FB5669 /* MonsterInfoDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3CB2043BACA00FB5669 /* MonsterInfoDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C3D02043BACB00FB5669 /* ZoneInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3CC2043BACA00FB5669 /* ZoneInfoDictionary.m */; };
 		2747C3D12043BACB00FB5669 /* ZoneInfoDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3CD2043BACB00FB5669 /* ZoneInfoDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2747C45720462B1C00FB5669 /* SingletonCluster+Entity.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C45520462B1C00FB5669 /* SingletonCluster+Entity.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2747C45820462B1C00FB5669 /* SingletonCluster+Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C45620462B1C00FB5669 /* SingletonCluster+Entity.m */; };
 		2747C45B20462D4800FB5669 /* OnlyOneEntities.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C45920462D4800FB5669 /* OnlyOneEntities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C45C20462D4800FB5669 /* OnlyOneEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C45A20462D4800FB5669 /* OnlyOneEntities.m */; };
 		2747C4652046320E00FB5669 /* ModelConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C4632046320E00FB5669 /* ModelConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -129,6 +140,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		27075D5922570C0A00AD13AA /* SHDueDateItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDueDateItem.h; sourceTree = "<group>"; };
+		27075D5A22570C0A00AD13AA /* SHDueDateItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDueDateItem.m; sourceTree = "<group>"; };
+		27075D5D225782D200AD13AA /* P_ReminderSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = P_ReminderSet.h; sourceTree = "<group>"; };
+		27075D5F225786A400AD13AA /* SHReminderDTO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHReminderDTO.h; sourceTree = "<group>"; };
+		27075D60225786A400AD13AA /* SHReminderDTO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHReminderDTO.m; sourceTree = "<group>"; };
+		27075D632259308800AD13AA /* SHHeroDTO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHHeroDTO.h; sourceTree = "<group>"; };
+		27075D642259308800AD13AA /* SHHeroDTO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHHeroDTO.m; sourceTree = "<group>"; };
+		27075D672259313B00AD13AA /* SHZoneDTO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHZoneDTO.h; sourceTree = "<group>"; };
+		27075D682259313B00AD13AA /* SHZoneDTO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHZoneDTO.m; sourceTree = "<group>"; };
+		27075D6B225963A700AD13AA /* SHMonsterDTO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHMonsterDTO.h; sourceTree = "<group>"; };
+		27075D6C225963A700AD13AA /* SHMonsterDTO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHMonsterDTO.m; sourceTree = "<group>"; };
+		27075D6F225A695300AD13AA /* SHSettingsDTO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSettingsDTO.h; sourceTree = "<group>"; };
+		27075D70225A695300AD13AA /* SHSettingsDTO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHSettingsDTO.m; sourceTree = "<group>"; };
 		273009FE2249BAD2006E419C /* Monster_Medium.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Monster_Medium.h; sourceTree = "<group>"; };
 		273009FF2249BAD2006E419C /* Monster_Medium.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Monster_Medium.m; sourceTree = "<group>"; };
 		27300A02224AE713006E419C /* Daily_Medium.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Daily_Medium.h; sourceTree = "<group>"; };
@@ -244,8 +268,6 @@
 		2747C3CB2043BACA00FB5669 /* MonsterInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterInfoDictionary.h; sourceTree = "<group>"; };
 		2747C3CC2043BACA00FB5669 /* ZoneInfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneInfoDictionary.m; sourceTree = "<group>"; };
 		2747C3CD2043BACB00FB5669 /* ZoneInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneInfoDictionary.h; sourceTree = "<group>"; };
-		2747C45520462B1C00FB5669 /* SingletonCluster+Entity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SingletonCluster+Entity.h"; sourceTree = "<group>"; };
-		2747C45620462B1C00FB5669 /* SingletonCluster+Entity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SingletonCluster+Entity.m"; sourceTree = "<group>"; };
 		2747C45920462D4800FB5669 /* OnlyOneEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyOneEntities.h; sourceTree = "<group>"; };
 		2747C45A20462D4800FB5669 /* OnlyOneEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlyOneEntities.m; sourceTree = "<group>"; };
 		2747C4632046320E00FB5669 /* ModelConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelConstants.h; sourceTree = "<group>"; };
@@ -283,6 +305,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27075D5822570BC500AD13AA /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				27075D5922570C0A00AD13AA /* SHDueDateItem.h */,
+				27075D5A22570C0A00AD13AA /* SHDueDateItem.m */,
+				27075D5F225786A400AD13AA /* SHReminderDTO.h */,
+				27075D60225786A400AD13AA /* SHReminderDTO.m */,
+				27075D632259308800AD13AA /* SHHeroDTO.h */,
+				27075D642259308800AD13AA /* SHHeroDTO.m */,
+				27075D672259313B00AD13AA /* SHZoneDTO.h */,
+				27075D682259313B00AD13AA /* SHZoneDTO.m */,
+				27075D6B225963A700AD13AA /* SHMonsterDTO.h */,
+				27075D6C225963A700AD13AA /* SHMonsterDTO.m */,
+				27075D6F225A695300AD13AA /* SHSettingsDTO.h */,
+				27075D70225A695300AD13AA /* SHSettingsDTO.m */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
 		2747C2E02043ADE000FB5669 = {
 			isa = PBXGroup;
 			children = (
@@ -304,6 +345,7 @@
 		2747C2EC2043ADE000FB5669 /* SHModels */ = {
 			isa = PBXGroup;
 			children = (
+				27075D5822570BC500AD13AA /* DTOs */,
 				2747C4D32048DA8300FB5669 /* Monster+Extensions */,
 				2747C45D2046304B00FB5669 /* Zone+Extensions */,
 				2747C3AB2043B53100FB5669 /* Daily+Extensions */,
@@ -331,6 +373,7 @@
 				2747C3BC2043B67200FB5669 /* RateTypeHelper.h */,
 				2747C3BB2043B67200FB5669 /* RateTypeHelper.m */,
 				2747C3A92043B51300FB5669 /* P_DueDateItem.h */,
+				27075D5D225782D200AD13AA /* P_ReminderSet.h */,
 				2747C3C72043B89100FB5669 /* P_Transaction.h */,
 				2747C3C52043B83C00FB5669 /* P_StoryItem.h */,
 				2747C3CB2043BACA00FB5669 /* MonsterInfoDictionary.h */,
@@ -338,8 +381,6 @@
 				2747C3CD2043BACB00FB5669 /* ZoneInfoDictionary.h */,
 				2747C3CC2043BACA00FB5669 /* ZoneInfoDictionary.m */,
 				2747C2EE2043ADE000FB5669 /* Info.plist */,
-				2747C45520462B1C00FB5669 /* SingletonCluster+Entity.h */,
-				2747C45620462B1C00FB5669 /* SingletonCluster+Entity.m */,
 				2747C4632046320E00FB5669 /* ModelConstants.h */,
 				2747C4642046320E00FB5669 /* ModelConstants.m */,
 				2747C4CF2048D90700FB5669 /* MonsterInfo.plist */,
@@ -620,6 +661,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27075D692259313B00AD13AA /* SHZoneDTO.h in Headers */,
+				27075D6D225963A700AD13AA /* SHMonsterDTO.h in Headers */,
+				27075D71225A695300AD13AA /* SHSettingsDTO.h in Headers */,
 				2747C45B20462D4800FB5669 /* OnlyOneEntities.h in Headers */,
 				2747C36B2043AF7D00FB5669 /* Reminder+CoreDataProperties.h in Headers */,
 				2747C3692043AF7D00FB5669 /* MonsterTransaction+CoreDataClass.h in Headers */,
@@ -651,7 +695,6 @@
 				2747C35E2043AF7D00FB5669 /* Monster+CoreDataProperties.h in Headers */,
 				2747C35C2043AF7D00FB5669 /* Suffix+CoreDataClass.h in Headers */,
 				2747C3752043AF7D00FB5669 /* Hero+CoreDataProperties.h in Headers */,
-				2747C45720462B1C00FB5669 /* SingletonCluster+Entity.h in Headers */,
 				2747C3562043AF7D00FB5669 /* GoodTransaction+CoreDataClass.h in Headers */,
 				2747C3882043AF7D00FB5669 /* Suffix+CoreDataProperties.h in Headers */,
 				2747C36D2043AF7D00FB5669 /* DailySubTask+CoreDataClass.h in Headers */,
@@ -673,8 +716,12 @@
 				274295EA21FAA19300EE0132 /* ZoneTransaction_Medium.h in Headers */,
 				2736A6CA2214D7FC006CB907 /* Zone_Medium.h in Headers */,
 				27300A09224AED76006E419C /* Daily+Helper.h in Headers */,
+				27075D61225786A400AD13AA /* SHReminderDTO.h in Headers */,
 				27300A002249BAD2006E419C /* Monster_Medium.h in Headers */,
+				27075D5E225782D200AD13AA /* P_ReminderSet.h in Headers */,
 				27300A04224AE713006E419C /* Daily_Medium.h in Headers */,
+				27075D5B22570C0A00AD13AA /* SHDueDateItem.h in Headers */,
+				27075D652259308800AD13AA /* SHHeroDTO.h in Headers */,
 				27815533217D721C005C5279 /* InfoDictionary.h in Headers */,
 				2747C38C2043AF7D00FB5669 /* Good+CoreDataProperties.h in Headers */,
 			);
@@ -779,10 +826,14 @@
 				2747C3CE2043BACB00FB5669 /* MonsterInfoDictionary.m in Sources */,
 				2747C3582043AF7D00FB5669 /* Monster+CoreDataProperties.m in Sources */,
 				2747C36E2043AF7D00FB5669 /* Habit+CoreDataClass.m in Sources */,
+				27075D662259308800AD13AA /* SHHeroDTO.m in Sources */,
 				2747C3912043AF7D00FB5669 /* Monster+CoreDataClass.m in Sources */,
 				2747C3662043AF7D00FB5669 /* HabitTransaction+CoreDataClass.m in Sources */,
 				2747C3552043AF7D00FB5669 /* ZoneTransaction+CoreDataClass.m in Sources */,
+				27075D72225A695300AD13AA /* SHSettingsDTO.m in Sources */,
 				2747C35F2043AF7D00FB5669 /* Suffix+CoreDataClass.m in Sources */,
+				27075D6A2259313B00AD13AA /* SHZoneDTO.m in Sources */,
+				27075D62225786A400AD13AA /* SHReminderDTO.m in Sources */,
 				2747C3512043AF7C00FB5669 /* DataInfo+CoreDataClass.m in Sources */,
 				2747C3BD2043B67200FB5669 /* RateTypeHelper.m in Sources */,
 				2747C3902043AF7D00FB5669 /* Todo+CoreDataClass.m in Sources */,
@@ -791,6 +842,7 @@
 				2747C38A2043AF7D00FB5669 /* Suffix+CoreDataProperties.m in Sources */,
 				2747C37D2043AF7D00FB5669 /* Good+CoreDataProperties.m in Sources */,
 				27300A012249BAD2006E419C /* Monster_Medium.m in Sources */,
+				27075D6E225963A700AD13AA /* SHMonsterDTO.m in Sources */,
 				27815534217D721C005C5279 /* InfoDictionary.m in Sources */,
 				2747C45C20462D4800FB5669 /* OnlyOneEntities.m in Sources */,
 				2747C3052043AE3E00FB5669 /* Model.xcdatamodeld in Sources */,
@@ -816,7 +868,7 @@
 				2747C3932043AF7D00FB5669 /* TodoTransaction+CoreDataProperties.m in Sources */,
 				2736A6CB2214D7FC006CB907 /* Zone_Medium.m in Sources */,
 				2747C36C2043AF7D00FB5669 /* Habit+CoreDataProperties.m in Sources */,
-				2747C45820462B1C00FB5669 /* SingletonCluster+Entity.m in Sources */,
+				27075D5C22570C0A00AD13AA /* SHDueDateItem.m in Sources */,
 				2747C37B2043AF7D00FB5669 /* DailyTransaction+CoreDataProperties.m in Sources */,
 				2747C3952043AF7D00FB5669 /* ZoneTransaction+CoreDataProperties.m in Sources */,
 				2747C38D2043AF7D00FB5669 /* Settings+CoreDataClass.m in Sources */,
@@ -880,7 +932,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				SDKROOT = iphoneos;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -932,7 +983,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

@@ -8,30 +8,36 @@
 
 #import "ZoneInfoDictionary.h"
 #import <SHCommon/SingletonCluster.h>
-#import <SHCommon/P_ResourceUtility.h>
+
 
 @interface ZoneInfoDictionary()
 @end
 
 @implementation ZoneInfoDictionary
 
-@synthesize zoneInfoDict = _zoneInfoDict;
--(InfoDictionary*)zoneInfoDict{
-  if(nil == _zoneInfoDict){
-    _zoneInfoDict = [[InfoDictionary alloc] initWithPListKey:@"ZoneInfo"
-      AndBundleClass:ZoneInfoDictionary.class];
+@synthesize infoDict = _infoDict;
+-(InfoDictionary*)infoDict{
+  if(nil == _infoDict){
+    _infoDict = [[InfoDictionary alloc] initWithPListKey:@"ZoneInfo"
+      AndBundleClass:ZoneInfoDictionary.class AndResourceUtil:self.resourceUtil];
   }
-  return _zoneInfoDict;
+  return _infoDict;
 }
 
 
++(instancetype)newWithResourceUtil:(NSObject<P_ResourceUtility>*)resourceUtil{
+  ZoneInfoDictionary *instance = [ZoneInfoDictionary new];
+  instance.resourceUtil = resourceUtil;
+  return instance;
+}
+
 -(NSArray<NSString*>*)getGroupKeyList:(NSString *)key{
-    return [self.zoneInfoDict getGroupKeyList:key];
+    return [self.infoDict getGroupKeyList:key];
 }
 
 
 -(NSDictionary *)getZoneInfo:(NSString *)zoneKey{
-    return [self.zoneInfoDict getInfo:zoneKey];
+    return [self.infoDict getInfo:zoneKey];
 }
 
 -(NSString *)getZoneName:(NSString *)zoneKey{

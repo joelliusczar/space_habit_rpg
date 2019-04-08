@@ -13,7 +13,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DataInfo : NSManagedObject
-
+-(void)setupInitialState;
 @end
 
 NS_ASSUME_NONNULL_END

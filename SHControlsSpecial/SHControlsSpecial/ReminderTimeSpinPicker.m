@@ -11,7 +11,7 @@
 #import <SHCommon/NSLocale+Helper.h>
 #import <SHGlobal/Constants.h>
 #import <SHControls/FrontEndConstants.h>
-#import <SHCommon/ViewHelper.h>
+#import <SHControls/UIViewController+Helper.h>
 #import <SHCommon/Interceptor.h>
 
 

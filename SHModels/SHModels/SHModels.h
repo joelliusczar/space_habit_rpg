@@ -6,7 +6,7 @@
 //  Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
-#if USE_UIKIT_PUBLIC_HEADERS
+#if IS_IOS
 
 #import <UIKit/UIKit.h>
 
@@ -19,7 +19,6 @@ FOUNDATION_EXPORT const unsigned char SHModelsVersionString[];
 #endif
 
 #import "ModelConstants.h"
-#import "SingletonCluster+Entity.h"
 #import "GoodTransaction+CoreDataClass.h"
 #import "GoodTransaction+CoreDataProperties.h"
 #import "Settings+CoreDataProperties.h"
@@ -73,6 +72,12 @@ FOUNDATION_EXPORT const unsigned char SHModelsVersionString[];
 #import "Zone_Medium.h"
 #import "Monster_Medium.h"
 #import "Daily_Medium.h"
+#import "SHZoneDTO.h"
+#import "SHHeroDTO.h"
+#import "SHMonsterDTO.h"
+#import "SHDueDateItem.h"
+#import "SHReminderDTO.h"
+#import "SHSettingsDTO.h"
 
 // In this header, you should import all the public headers of your framework using statements like #import <SHModels/PublicHeader.h>
 

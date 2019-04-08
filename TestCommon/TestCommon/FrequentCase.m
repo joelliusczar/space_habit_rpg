@@ -33,7 +33,7 @@
     options.storeType = NSInMemoryStoreType;
     options.appBundle = testBundle;
   };
-  self.dc = SHData;
+  self.dc = (SHCoreData*)SHData;
   NSTimeZone.defaultTimeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
 }
 

@@ -16,18 +16,18 @@
 NSString* const HOME_KEY = @"HOME";
 
 @interface Zone_Medium ()
-@property (strong,nonatomic) NSObject<P_CoreData>* dataController;
+@property (strong,nonatomic) NSManagedObjectContext *context;
 @property (strong,nonatomic) NSObject<P_ResourceUtility>* resourceUtil;
 @property (strong,nonatomic) ZoneInfoDictionary* zoneInfo;
 @end
 
 @implementation Zone_Medium
 
-+(instancetype)newWithDataController:(NSObject<P_CoreData>*)dataController
++(instancetype)newWithContext:(NSManagedObjectContext*)context
 withResourceUtil:(NSObject<P_ResourceUtility>*)resourceUtil
 withInfoDict:(ZoneInfoDictionary*)zoneInfo{
   Zone_Medium *instance = [[Zone_Medium alloc] init];
-  instance.dataController = dataController;
+  instance.context = context;
   instance.resourceUtil = resourceUtil;
   instance.zoneInfo = zoneInfo;
   return instance;
@@ -66,13 +66,13 @@ withInfoDict:(ZoneInfoDictionary*)zoneInfo{
 }
 
 
--(Suffix*)getSuffixEntity:(NSString*)zoneKey withContext:(NSManagedObjectContext*)context{
+-(Suffix*)getSuffixEntity:(NSString*)zoneKey{
   NSFetchRequest<Suffix*>* request = [Suffix fetchRequest];
   NSSortDescriptor* sortByZoneKey = [[NSSortDescriptor alloc] initWithKey:@"zoneKey" ascending:NO];
   NSPredicate* filter = [NSPredicate predicateWithFormat:@"zoneKey = %@",zoneKey];
   request.predicate = filter;
   request.sortDescriptors = @[sortByZoneKey];
-  NSArray<NSManagedObject*>* results = [context getItemsWithRequest:request];
+  NSArray<NSManagedObject*>* results = [self.context getItemsWithRequest:request];
 
   NSCAssert(results.count<2, @"There are too many entities");
   Suffix* s = nil;
@@ -80,14 +80,14 @@ withInfoDict:(ZoneInfoDictionary*)zoneInfo{
       s = (Suffix*)results[0];
   }
   else{
-      s = (Suffix*)[context newEntity:Suffix.entity];
+      s = (Suffix*)[self.context newEntity:Suffix.entity];
       s.zoneKey = zoneKey;
   }
   return s;
 }
 
 
--(Zone*)constructEmptyZone{
+-(Zone*)newEmptyZone{
   //if we change here update afterZonePick
   return (Zone*)[NSManagedObjectContext newEntityUnattached:Zone.entity];
 }
@@ -107,9 +107,9 @@ withInfoDict:(ZoneInfoDictionary*)zoneInfo{
   */
   __weak Zone_Medium *weakSelf = self;
   __block int currentVisitCount = 0;
-  NSManagedObjectContext *context = [self.dataController newBackgroundContext];
+  NSManagedObjectContext *context = self.context;
   [context performBlockAndWait:^{
-    Suffix *s = [weakSelf getSuffixEntity:zoneKey withContext:context];
+    Suffix *s = [weakSelf getSuffixEntity:zoneKey];
     currentVisitCount = s.visitCount++;
     NSError *error = nil;
     [context save:&error];
@@ -119,12 +119,12 @@ withInfoDict:(ZoneInfoDictionary*)zoneInfo{
 }
 
 
--(Zone*)constructSpecificZone:(NSString*) zoneKey
+-(ZoneDTO*)newSpecificZone:(NSString*) zoneKey
 withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount{
   
   NSAssert(zoneKey,@"Key can't be null");
   NSAssert(lvl > 0, @"Lvl must be greater than 0");
-  Zone *z = [self constructEmptyZone];
+  ZoneDTO *z = [ZoneDTO new];
   z.zoneKey = zoneKey;
   z.suffix = [self getSymbolSuffix:[self getVisitCountForZone:zoneKey]];
   z.maxMonsters = monsterCount;
@@ -134,52 +134,45 @@ withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount{
 }
 
 
--(Zone*)constructSpecificZone2:(NSString*) zoneKey withLvl:(int32_t) lvl{
+-(ZoneDTO*)newSpecificZone2:(NSString*) zoneKey withLvl:(int32_t) lvl{
   int32_t monsterCount = randomUInt(MAX_MONSTER_RAND_UP_BOUND) + MAX_MONSTER_LOW_BOUND;
-  return [self constructSpecificZone:zoneKey withLvl:lvl withMonsterCount: monsterCount];
+  return [self newSpecificZone:zoneKey withLvl:lvl withMonsterCount: monsterCount];
 }
 
 
--(Zone*)constructRandomZoneChoiceGivenHero:(Hero*)hero ifShouldMatchLvl:(BOOL)shouldMatchLvl{
+-(ZoneDTO*)newRandomZoneChoiceGivenHero:(HeroDTO*)hero ifShouldMatchLvl:(BOOL)shouldMatchLvl{
   NSString *zoneKey = [self getRandomZoneDefinitionKey:hero.lvl];
   int32_t zoneLvl = shouldMatchLvl?hero.lvl:calculateLvl(hero.lvl,ZONE_LVL_RANGE);
-  Zone *z = [self constructSpecificZone2:zoneKey withLvl:zoneLvl];
+  ZoneDTO *z = [self newSpecificZone2:zoneKey withLvl:zoneLvl];
   return z;
 }
 
 
--(NSMutableArray<Zone*>*)constructMultipleZoneChoicesGivenHero:(Hero*)hero ifShouldMatchLvl:(BOOL)matchLvl{
+-(NSMutableArray<ZoneDTO*>*)newMultipleZoneChoicesGivenHero:(HeroDTO*)hero ifShouldMatchLvl:(BOOL)matchLvl{
   //Zone create uses nil context so that should be okay
   
   uint zoneCount = randomUInt(MAX_ZONE_CHOICE_RAND_UP_BOUND)  + MIN_ZONE_CHOICE_COUNT;
-  NSMutableArray<Zone *> *choices = [NSMutableArray arrayWithCapacity:zoneCount];
-  choices[0] = [self constructRandomZoneChoiceGivenHero:hero ifShouldMatchLvl:matchLvl];
+  NSMutableArray<ZoneDTO *> *choices = [NSMutableArray arrayWithCapacity:zoneCount];
+  choices[0] = [self newRandomZoneChoiceGivenHero:hero ifShouldMatchLvl:matchLvl];
   for(uint i = 1;i<zoneCount;i++){
-      choices[i] = [self constructRandomZoneChoiceGivenHero:hero ifShouldMatchLvl:NO];
+      choices[i] = [self newRandomZoneChoiceGivenHero:hero ifShouldMatchLvl:NO];
   }
   
   return choices;
 }
 
 
--(NSArray<NSManagedObject*>*)getAllZones:(NSPredicate*) filter withContext:(nullable NSManagedObjectContext *)context{
-  if(nil == context){
-    context = self.dataController.mainThreadContext;
-  }
-  __block NSArray<NSManagedObject *> *results = nil;
-  [context performBlockAndWait:^{
+-(NSArray<Zone*>*)getAllZones:(NSPredicate*) filter{
+  __block NSArray<Zone *> *results = nil;
+  [self.context performBlockAndWait:^{
     NSFetchRequest<Zone *> *request = [Zone fetchRequest];
     NSSortDescriptor *sortByIsFront = [[NSSortDescriptor alloc] initWithKey:@"isFront" ascending:NO];
     request.predicate = filter;
     request.sortDescriptors = @[sortByIsFront];
-    results = [context getItemsWithRequest:request];
+    results = [self.context getItemsWithRequest:request];
   }];
 
   return results;
-}
-
--(NSArray<NSManagedObject*>*)getAllZones:(NSPredicate*) filter{
-  return [self getAllZones:filter withContext:nil];
 }
 
 
@@ -200,7 +193,7 @@ withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount{
   NSAssert(zone && zone.managedObjectContext,@"Zone must be registered in a context already");
   NSManagedObjectContext *context = zone.managedObjectContext;
   [context performBlockAndWait:^{
-    NSArray<Zone*> *results = [self getAllZones:nil withContext:context];
+    NSArray<Zone*> *results = [self getAllZones:nil];
     
     zone.isFront = YES;
     NSAssert(results.count<4, @"There are too many zones");
@@ -208,6 +201,7 @@ withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount{
         return;
     }
     NSPredicate *filterNewItem = [NSPredicate predicateWithBlock:^BOOL(id item, NSDictionary<NSString*,id> *bindings){
+      (void)bindings;
       if(item == zone) return NO;
       return YES;
     }];

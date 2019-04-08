@@ -1,5 +1,5 @@
 //
-//  ErrorHandling.c
+//  SHErrorHandling.c
 //  SH_CTools
 //
 //  Created by Joel Pridgen on 4/21/18.

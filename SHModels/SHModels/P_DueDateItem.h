@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Reminder+CoreDataClass.h"
+#import "SHReminderDTO.h"
 
 @import CoreData;
 
@@ -16,7 +17,8 @@
 @property (readonly,nonatomic) NSInteger maxDaysBefore;
 @property (readonly,nonatomic) NSString *taskTitle;
 @property (readonly,nonatomic) NSMutableDictionary *simpleMapable;
--(NSOrderedSet<Reminder *> *)getReminderSet;
--(void)addNewReminder:(Reminder *)reminder;
--(void)removeReminder:(Reminder *)reminder;
+@property (readonly,nonatomic) NSUInteger reminderCount;
+-(ReminderDTO*)reminderAtIndex:(NSUInteger)index;
+-(void)addNewReminder:(ReminderDTO*)reminder;
+-(void)removeReminderAtIndex:(NSUInteger)index;
 @end

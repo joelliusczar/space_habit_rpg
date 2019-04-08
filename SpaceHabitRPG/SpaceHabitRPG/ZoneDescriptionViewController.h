@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <SHModels/Zone+CoreDataClass.h>
+#import <SHModels/SHZoneDTO.h>
 #import "ZoneChoiceViewController.h"
 #import "StoryDumpView.h"
 
@@ -15,5 +16,5 @@
 
 @interface ZoneDescriptionViewController : StoryDumpView
 -(instancetype)init:(ZoneChoiceViewController *)prevScreen;
--(void)setDisplayItems:(Zone *)model;
+-(void)setDisplayItems:(ZoneDTO *)model;
 @end

@@ -17,7 +17,7 @@
 	<key>EnabledFullIndexStoreVisibility</key>
 	<false/>
 	<key>IssueFilterStyle</key>
-	<string>ShowAll</string>
+	<string>ShowActiveSchemeOnly</string>
 	<key>LiveSourceIssuesEnabled</key>
 	<true/>
 </dict>

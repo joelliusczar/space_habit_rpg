@@ -16,6 +16,20 @@
 }
 
 
+-(NSManagedObject*)getExistingOrNewEntityWithObjectID:(nullable NSManagedObjectID*)objectID{
+  NSError *error = nil;
+  NSManagedObject *entity = [self existingObjectWithID:objectID error:&error];
+  if(nil == entity){
+    entity = [self newEntity:objectID.entity];
+    SEL setupSelector = NSSelectorFromString(@"setupInitialState:");
+    if([entity respondsToSelector:setupSelector]){
+      IMP imp = [entity methodForSelector:setupSelector];
+      ((void (*)(id,SEL))imp)(entity,setupSelector);
+    }
+  }
+  return entity;
+}
+
 -(NSArray<NSManagedObject *> *)getItemsWithRequest:(NSFetchRequest *) fetchRequest{
   NSArray<NSManagedObject*> *results = nil;
   NSError *error = nil;

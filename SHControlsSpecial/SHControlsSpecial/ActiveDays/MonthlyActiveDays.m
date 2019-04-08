@@ -12,7 +12,7 @@
 #import <SHControls/ListItemCell.h>
 #import <SHCommon/SingletonCluster.h>
 #import "MonthPartPicker.h"
-#import <SHCommon/ViewHelper.h>
+#import <SHControls/UIViewController+Helper.h>
 #import <SHCommon/Interceptor.h>
 #import <SHCommon/NSNumber+Helper.h>
 #import <SHControls/SHEventInfo.h>

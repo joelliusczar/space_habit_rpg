@@ -6,8 +6,8 @@
 //  Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
-#ifndef ErrorHandling_h
-#define ErrorHandling_h
+#ifndef SHErrorHandling_h
+#define SHErrorHandling_h
 
 typedef void (*shDebugCallback)(const char* const msg);
 extern shDebugCallback shDbgCallback;
@@ -58,4 +58,4 @@ void * shHandleErrorRetNull(SHErrorCode code,const char* const msg,SHError* errO
 void shPrepareSHError(SHError* errObj);
 void shDisposeSHError(SHError* errObj);
 void shSetDebugCallback(shDebugCallback callback);
-#endif /* ErrorHandling_h */
+#endif /* SHErrorHandling_h */

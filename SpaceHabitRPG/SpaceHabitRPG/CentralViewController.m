@@ -14,14 +14,13 @@
 #import <SHModels/MonsterTransaction+CoreDataClass.h>
 #import <SHModels/Settings+CoreDataClass.h>
 #import <SHModels/Hero+CoreDataClass.h>
-#import <SHModels/Zone+Helper.h>
-#import <SHModels/Monster+Helper.h>
+#import <SHModels/Zone_Medium.h>
+#import <SHModels/Monster_Medium.h>
 #import <SHModels/ZoneTransaction_Medium.h>
 #import <SHModels/MonsterTransaction_Medium.h>
 #import <SHControls/UIViewController+Helper.h>
 #import <SHControls/UIView+Helpers.h>
 
-#import "SingletonCluster+App.h"
 #import "CentralViewController.h"
 #import "DailyViewController.h"
 #import "HabitController.h"
@@ -57,31 +56,13 @@
 @property (weak,nonatomic) IBOutlet UILabel *lvlLbl;
 @property (weak,nonatomic) IBOutlet UILabel *goldLbl;
 @property (weak,nonatomic) IntroViewController *introVC;
+@property (strong,nonatomic) dispatch_queue_t settingsAccessorQueue;
+
 @end
 
 @implementation CentralViewController
     
-    
-@synthesize nowMonster = _nowMonster;
-@synthesize nowZone = _nowZone;
 
-@synthesize dataController = _dataController;
--(NSObject<P_CoreData> *)dataController{
-    if(_dataController == nil){
-        _dataController = SharedGlobal.dataController;
-    }
-    return _dataController;
-}
-
-
--(Hero *)userHero{
-    return SharedGlobal.userData.theHero;
-}
-
-
--(Settings *)userSettings{
-    return SHSettings;
-}
 
 @synthesize tabsController = _tabsController;
 -(UITabBarController *)tabsController{
@@ -91,6 +72,46 @@
     return _tabsController;
 }
 
+-(dispatch_queue_t)settingsAccessorQueue{
+  if(nil == _settingsAccessorQueue){
+    _settingsAccessorQueue = dispatch_queue_create("com.SpaceHabit.Settings",DISPATCH_QUEUE_SERIAL);
+  }
+  return _settingsAccessorQueue;
+}
+
+-(void (^)(void))contextSettingsBlock:(NSManagedObjectContext*)context{
+  return ^{
+    
+  }
+}
+
+
+-(SHSettingsDTO*)settingsDTO{
+  __block SHSettingsDTO* value = nil;
+  dispatch_sync(self.settingsAccessorQueue,^{
+    value = [self privateSettingsDTO];
+  });
+  return value;
+}
+
+-(void)setSettingsDTO:(SHSettingsDTO *)settingsDTO{
+  dispatch_async(self.settingsAccessorQueue,^{
+    [self setPrivateSettingsDTO:settingsDTO];
+  });
+}
+
++(instancetype)newWithDataController:(NSObject<P_CoreData>*)dataController
+andNibName:(NSString*)nib
+andResourceUtil:(NSObject<P_ResourceUtility>*)util
+andBundle:(NSBundle*)bundle{
+  CentralViewController* instance = [[CentralViewController alloc] initWithNibName:nib bundle:bundle];
+  instance.dataController = dataController;
+  instance.resourceUtil = util;
+  instance.weakSelf = instance;
+  NSManagedObjectContext *context = [dataController newBackgroundContext];
+  [];
+  return instance;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -110,7 +131,9 @@
 }
 
 -(void)setupTabs {
-    DailyViewController* dc = [[DailyViewController alloc]initWithParent:self];
+    DailyViewController* dc = [[DailyViewController alloc] initWithParent:self
+      withDataController:self.dataController
+      withResourceUtil:self.resourceUtil];
     
     HabitController* hc = [[HabitController alloc]
                            initWithNibName:@"HabitController"
@@ -146,8 +169,7 @@
   if it actually exists. I don't want to actively keep it alive, which
   is what a strong ref would do.
   */
-  IntroViewController *introVC = [[IntroViewController alloc]
-    initWithCentralViewController:self];
+  IntroViewController *introVC = [[IntroViewController alloc] initWithCentralViewController:self];
   [self arrangeAndPushChildVCToFront:introVC];
   self.introVC = introVC;
 }
@@ -155,7 +177,7 @@
 
 -(void)setupNormalZoneAndMonster{
   
-  Zone * z = [self getCurrentZone];
+  ZoneDTO * z = [self getCurrentZone];
   if(nil == z){
     //we're not ready yet
     return;
@@ -165,25 +187,45 @@
     to its own method but I'd still have to do this zone
     stuff above and it ends up becoming the same method
   */
-  Monster *m = getCurrentMonster();
-  if(m==nil||m.nowHp<1){
-    z.monstersKilled=
-    (m!=nil&&m.nowHp<1)?(z.monstersKilled+1):z.monstersKilled;
-  
-    if(z.monstersKilled>=z.maxMonsters){
-      NSMutableArray<Zone *> *zoneChoices =
-      constructMultipleZoneChoices(self.userHero,NO);
+  NSManagedObjectContext *context = [self.dataController newBackgroundContext];
+  MonsterInfoDictionary *monInfoDict = [MonsterInfoDictionary newWithResourceUtil:self.resourceUtil];
+  ZoneInfoDictionary *zoneInfoDict = [ZoneInfoDictionary newWithResourceUtil:self.resourceUtil];
+  Monster_Medium *mm = [Monster_Medium newWithContext:context withInfoDict:monInfoDict];
+  Zone_Medium *zm = [Zone_Medium newWithContext:context withResourceUtil:self.resourceUtil withInfoDict:zoneInfoDict];
+  HeroDTO *heroDTO = self.heroDTO;
+  [context performBlock:^{
+    CentralViewController *blockSelf = _weakSelf;
+    if(nil == blockSelf) return;
+    Monster *m = [mm getCurrentMonster];
+    if(m==nil||m.nowHp<1){
+      z.monstersKilled = (m && m.nowHp<1)?(z.monstersKilled+1):z.monstersKilled;
     
-      [zoneChoices addObject:z];
-      [self showZoneChoiceView:zoneChoices];
-      //setups observers after user has picked zones
-      return;
+      if(z.monstersKilled>=z.maxMonsters){
+        NSMutableArray<ZoneDTO *> *zoneChoices = [zm
+          newMultipleZoneChoicesGivenHero:heroDTO ifShouldMatchLvl:NO]
+      
+        [zoneChoices addObject:z];
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+          [blockSelf showZoneChoiceView:zoneChoices];
+        }];
+      }
+      else { //if we're just using the same zone
+        if(m){
+          [context deleteObject:m];
+        }
+        MonsterDTO *mDTO = [mm newRandomMonster:z.zoneKey zoneLvl:z.lvl];
+        Monster *monsterNew = [context newEntity:Monster.entity];
+        [monsterNew copyFrom:mDTO];
+        NSError *error = nil;
+        [context save:&error];
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+          blockSelf.monsterDTO = mDTO;
+          [blockSelf showMonsterStory];
+        }];
+        
+      }
     }
-    m = constructRandomMonster(z.zoneKey,z.lvl);
-    [SHData saveNoWaiting];
-    [self showMonsterStory];
-  }
-  self.nowMonster = m;
+  }];
 }
 
 
@@ -209,20 +251,15 @@
     self.userSettings.storyModeisOn = shouldShowStory;
 }
 
--(void)showZoneChoiceView:(NSArray<Zone *> *)zoneChoices{
-    ZoneChoiceViewController *zoneChoiceView =
-    [ZoneChoiceViewController constructWithCentral:self
-      AndZoneChoices:zoneChoices];
+-(void)showZoneChoiceView:(NSArray<ZoneDTO *> *)zoneChoices{
+    ZoneChoiceViewController *zoneChoiceView = [ZoneChoiceViewController
+      newWithCentral:self AndZoneChoices:zoneChoices];
     
     [self.view addSubview:zoneChoiceView.view];
     [self addChildViewController:zoneChoiceView];
     [zoneChoiceView didMoveToParentViewController:self];
 }
 
--(void)showZoneChoiceView{
-    NSArray<Zone *> *zoneChoices = constructMultipleZoneChoices(self.userHero,YES);
-    [self showZoneChoiceView:zoneChoices];
-}
 
 -(void)updateHeroHPUI:(int)part whole:(int)whole{
     self.heroDescLbl.text = [NSString stringWithFormat:@"HP:%d/%d",part,whole];
@@ -291,32 +328,53 @@ context:(void *)context{
 #pragma clang diagnostic pop
 
 
--(void)afterZonePick:(Zone *)zoneChoice{
-  if(zoneChoice==nil){
-    zoneChoice = constructRandomZoneChoice(self.userHero,NO);
+-(void)afterZonePick:(ZoneDTO*)zoneChoice withContext:(NSManagedObjectContext*)context{
+  if(nil == context){
+    context = [self.dataController newBackgroundContext];
   }
-  [zoneChoice moveZoneToFront];
+  NSObject<P_ResourceUtility> *resourceUtil = self.resourceUtil;
+  ZoneInfoDictionary *zoneDict = [ZoneInfoDictionary newWithResourceUtil:resourceUtil];
+  Zone_Medium *zm = [Zone_Medium newWithContext:context withResourceUtil:resourceUtil withInfoDict:zoneDict];
+  [context performBlock:^{
+    CentralViewController *blockSelf = _weakSelf;
+    if(nil == blockSelf) return;
+    if(zoneChoice==nil){
+      HeroDTO *heroCopy = [blockSelf.heroDTO copy];
+      zoneChoice = [zm newRandomZoneChoice:heroCopy,NO];
+    }
+    Zone *zoneCD = (Zone*)[context newEntity:Zone.entity];
+    [zoneCD moveZoneToFront];
+    zoneChoice.objectID = zoneCD.objectID;
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+      blockSelf.zoneDTO = zoneChoice;
+    }];
+    
+    ZoneTransaction_Medium *zt = [ZoneTransaction_Medium
+      newWithDataController:context];
   
-  //?? is this insert line necessary?
-  /*Yes, because for it's entity setup, we insert into a nil context
-    and it does no harm even it did already exist. check out test, testDoubleInsert
-  */
-  [self.dataController insertIntoContext:zoneChoice];
-  self.nowZone = zoneChoice;
-
-  ZoneTransaction_Medium *zt = [ZoneTransaction_Medium
-    newWithDataController:self.dataController];
-  
-  [zt addCreateTransaction:self.nowZone];
-  [self showZoneStory];
+    [zt addCreateTransaction:zoneCD];
+    
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+      [blockSelf showZoneStoryWithContext:context];
+    }];
+  }];
 }
 
 
--(void)afterIntro{
+-(void)afterIntroWithContext:(NSManagedObjectContext*)context{
   [self prepareScreen];
-  SharedGlobal.userData.theDataInfo.gameState = GAME_STATE_INITIALIZED;
-  
-  self.userSettings.createDate = [NSDate date];
+  NSManagedObjectID *dataInfoID = self.theDataInfoID;
+  NSManagedObjectID *settingsID = self.theSettingsID;
+  [context performBlock:^{
+    DataInfo *dataInfo = (DataInfo*)[context getExistingOrNewEntityWithObjectID:dataInfoID];
+    if(dataInfo.gameState == GAME_STATE_UNINITIALIZED){
+      DataInfo.gameState = GAME_STATE_INITIALIZED;
+      
+      Settings *settings = (Settings*)[context getExistingOrNewEntityWithObjectID:settingsID];
+      NSError *error = nil;
+      [context save:&error];
+    }
+  }];
 }
 
 
@@ -333,71 +391,111 @@ context:(void *)context{
 }
 
 
--(Zone *)getCurrentZone{
-  if(self.nowZone){
-    return self.nowZone;
+-(ZoneDTO *)getCurrentZone{
+  if(self.zoneDTO){
+    return self.zoneDTO;
   }
   BOOL isFront = YES;
-  Zone *z = getZone(isFront);
-  if(z==nil){
-      NSMutableArray<Zone *> *zoneChoices = constructMultipleZoneChoices(self.userHero,NO);
-    
-      [self showZoneChoiceView:zoneChoices];
-      return nil;
-  }
-  self.nowZone = z;
-  return z;
+  NSManagedObjectContext *context = [self.dataController newBackgroundContext];
+  ZoneInfoDictionary *zoneInfoDict = [ZoneInfoDictionary newWithResourceUtil:self.resourceUtil];
+  Zone_Medium *zm = [Zone_Medium newWithContext:context
+    withResourceUtil:self.resourceUtil withInfoDict:zoneInfoDict];
+  __block ZoneDTO *result = nil;
+  [context performBlockAndWait:^{
+    @autoreleasepool {
+      Zone *z = [zm getZone:isFront];
+      if(z==nil){
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+          NSMutableArray<ZoneDTO*> *zoneChoices = [zm
+          newMultipleZoneChoicesGivenHero:_weakSelf.heroDTO ifShouldMatchLvl:NO];
+      
+          [_weakSelf showZoneChoiceView:zoneChoices];
+        }];
+      }
+      else{
+        result = [ZoneDTO newWithZoneDict:zoneInfoDict];
+        [z copyInto:result];
+      }
+    }
+  }];
+  return result;
 }
 
 
--(void)showStoryItem:(NSObject<P_StoryItem>*)storyItem withResponse:(void (^)(StoryDumpView * nullable))response{
-  if(self.userSettings.storyModeisOn){
-      StoryDumpView *sdv =
-      [[StoryDumpView alloc] initWithStoryItem:storyItem];
-      sdv.responseBlock = response;
-      sdv.backgroundColor = UIColor.whiteColor;
-      [self arrangeAndPushChildVCToFront:sdv];
+-(void)showStoryItem:(NSObject<P_StoryItem>*)storyItem
+  withResponse:(void (^)(StoryDumpView * nullable))response{
+  NSManagedObjectContext *context = [self.dataController  newBackgroundContext];
+  NSManagedObjectID *settingsID = self.theSettingsID;
+  [context performBlock:^{
+    CentralViewController *blockSelf = _weakSelf;
+    Settings *settings = (Settings*)[context objectWithID:settingsID];
+    if(settings.storyModeisOn){
+      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        StoryDumpView *sdv = [[StoryDumpView alloc] initWithStoryItem:storyItem];
+        sdv.responseBlock = response;
+        sdv.backgroundColor = UIColor.whiteColor;
+        [blockSelf arrangeAndPushChildVCToFront:sdv];
+      }];
     }
     else{
-      response(nil);
+      @autoreleasepool {
+        response(nil);
+      }
+      
     }
-}
-
-
--(void)showMonsterStory{
-  CentralViewController * __weak weakSelf = self;
-  [self showStoryItem:self.nowMonster withResponse:^(StoryDumpView * sdv){
-    (void)sdv;
-    if(nil == weakSelf){
-      return;
-    }
-    if(nil != weakSelf.introVC){
-      [weakSelf.introVC popVCFromFront];
-    }
-    if(SharedGlobal.gameState == GAME_STATE_UNINITIALIZED){
-      [weakSelf afterIntro];
-    }
-    [weakSelf.dataController saveNoWaiting];
   }];
 }
 
 
--(void)showZoneStory{
-  CentralViewController * __weak weakSelf = self;
-  [self showStoryItem:self.nowZone withResponse:^(StoryDumpView * sdv){
+-(void)showMonsterStoryWithContext:(NSManagedObjectContext*)context{
+  [self showStoryItem:self.monsterDTO withResponse:^(StoryDumpView * sdv){
     (void)sdv;
-    if(nil == weakSelf){
+    CentralViewController *blockSelf = _weakSelf;
+    if(nil == blockSelf){
       return;
     }
-    weakSelf.nowMonster = constructRandomMonster(weakSelf.nowZone.zoneKey,weakSelf.nowZone.lvl);
-    
-    MonsterTransaction_Medium *mt = [MonsterTransaction_Medium
-      newWithDataController:weakSelf.dataController];
-    
-    [mt addCreateTransaction:weakSelf.nowMonster];
-    [weakSelf showMonsterStory];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+      if(nil != blockSelf.introVC){
+        [blockSelf.introVC popVCFromFront];
+      }
+      [blockSelf afterIntroWithContext:context];
+    }];
   }];
 }
 
+
+-(void)showZoneStoryWithContext:(NSManagedObjectContext*)context{
+  [self showStoryItem:self.zoneDTO withResponse:^(StoryDumpView * sdv){
+    (void)sdv;
+    CentralViewController *blockSelf = _weakSelf;
+    if(nil == blockSelf){
+      return;
+    }
+    
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+      MonsterInfoDictionary *monInfoDict = [MonsterInfoDictionary newWithResourceUtil:blockSelf.resourceUtil];
+      Monster_Medium *mm = [Monster_Medium newWithContext:context withInfoDict:monInfoDict];
+      ZoneDTO *zoneDTO = blockSelf.zoneDTO;
+      blockSelf.monsterDTO = [mm newRandomMonster:zoneDTO.zoneKey zoneLvl:zoneDTO.lvl];
+      [blockSelf saveNewMonster:blockSelf.monsterDTO inContext:context];
+    }];
+    
+  }];
+}
+
+
+-(void)saveNewMonster:(MonsterDTO *)monsterDTO inContext:(NSManagedObjectContext*)context{
+  [context performBlock:^{
+    CentralViewController *blockSelf = _weakSelf;
+    if(nil == blockSelf) return;
+    MonsterTransaction_Medium *mt = [MonsterTransaction_Medium newWithContext:context];
+    Monster *monsterCD = (Monster*)[context newEntity:Monster.entity];
+    [monsterCD copyFrom:monsterDTO];
+    [mt addCreateTransaction:monsterCD];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+      [blockSelf showMonsterStoryWithContext:context];
+    }];
+  }];
+}
 
 @end

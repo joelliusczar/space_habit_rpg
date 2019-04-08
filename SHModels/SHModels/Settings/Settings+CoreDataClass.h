@@ -13,6 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Settings : NSManagedObject
 //@property (nonatomic) BOOL storyModeisOn_H;
+-(void)setupInitialState;
+-(void)copyInto:(NSObject *)object;
+-(void)copyFrom:(NSObject *)object;
 @end
 
 NS_ASSUME_NONNULL_END

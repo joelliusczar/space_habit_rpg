@@ -21,10 +21,19 @@ typedef void (*voidCaller)(id,SEL);
     @catch(NSException *ex){}
 }
 
+
+-(BOOL)isDictionaryType{
+  //if enough classes are added here, it may be better to set up a set somewhere
+  if([self isKindOfClass:NSDictionary.class]){
+    return YES;
+  }
+  return NO;
+}
+
 //the reason I have this here rather than for UIView is because
 //of the possibility that I need to use it a custom viewController class
 //which would not inherit from UIView
-#if USE_UIKIT_PUBLIC_HEADERS
+#if IS_IOS
 -(UIView *)loadXib:(NSString *)nibName{
     NSBundle *bundle = [NSBundle bundleForClass:self.class];
     return [bundle loadNibNamed:nibName owner:self options:nil][0];

@@ -170,6 +170,7 @@
 		27249BA021CF0D59006A884B /* FrontEndConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FrontEndConstants.m; path = SHControls/FrontEndConstants.m; sourceTree = "<group>"; };
 		27249BA121CF0D59006A884B /* FrontEndConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrontEndConstants.h; path = SHControls/FrontEndConstants.h; sourceTree = "<group>"; };
 		2747C526204A573200FB5669 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = SHControls/Media.xcassets; sourceTree = "<group>"; };
+		279848D0225063F500039A29 /* SHControls.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHControls.base.xcconfig; sourceTree = "<group>"; };
 		27B15A9820524A4F0045B226 /* SHCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHCommon.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHCommon.framework"; sourceTree = "<group>"; };
 		27B15A9A20524A5C0045B226 /* SHGlobal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHGlobal.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHGlobal.framework"; sourceTree = "<group>"; };
 		27D0D6E221D02A2D00886721 /* UIViewController+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Helper.h"; sourceTree = "<group>"; };
@@ -192,6 +193,7 @@
 		271187D0203FF88E0085A549 = {
 			isa = PBXGroup;
 			children = (
+				279848CF225063AC00039A29 /* Configs */,
 				27D0D6E121D02A2D00886721 /* Categories */,
 				27249BA121CF0D59006A884B /* FrontEndConstants.h */,
 				27249BA021CF0D59006A884B /* FrontEndConstants.m */,
@@ -335,6 +337,14 @@
 			);
 			name = Abstract;
 			path = SHControls/Abstract;
+			sourceTree = "<group>";
+		};
+		279848CF225063AC00039A29 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				279848D0225063F500039A29 /* SHControls.base.xcconfig */,
+			);
+			path = Configs;
 			sourceTree = "<group>";
 		};
 		27D0D6E121D02A2D00886721 /* Categories */ = {
@@ -529,6 +539,7 @@
 /* Begin XCBuildConfiguration section */
 		271187E0203FF88E0085A549 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 279848D0225063F500039A29 /* SHControls.base.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -580,11 +591,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
+				NEW_SETTING = "";
+				"NEW_SETTING[sdk=iphoneos*]" = "";
+				"NEW_SETTING[sdk=iphonesimulator*]" = x;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = (
-					"-Wall",
-					"-Wextra",
-				);
 				SDKROOT = iphoneos;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -593,6 +603,7 @@
 		};
 		271187E1203FF88E0085A549 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 279848D0225063F500039A29 /* SHControls.base.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -638,10 +649,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_CFLAGS = (
-					"-Wall",
-					"-Wextra",
-				);
+				NEW_SETTING = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -659,12 +667,9 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "$BUILD_DIR/**";
-				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$BUILD_DIR/**";
 				INFOPLIST_FILE = SHControls/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.SHControls;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -682,12 +687,9 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "$BUILD_DIR/**";
-				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$BUILD_DIR/**";
 				INFOPLIST_FILE = SHControls/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.SHControls;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

@@ -10,7 +10,7 @@
 #import "NSLocale+Helper.h"
 #import <objc/runtime.h>
 #import <SHDatetime.h>
-#import <ErrorHandling.h>
+#import <SHErrorHandling.h>
 #import "NSException+SHCommonExceptions.h"
 #import "SingletonCluster.h"
 

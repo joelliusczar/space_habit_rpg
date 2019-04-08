@@ -8,7 +8,8 @@
 
 #import <SHControls/ListItemCell.h>
 #import <SHModels/Reminder+CoreDataClass.h>
+#import <SHModels/SHReminderDTO.h>
 
 @interface ReminderCellController : ListItemCell
-+(instancetype)getReminderCell:(UITableView *)tableView withParent:(id)parent andReminder:(Reminder *)reminderModel;
++(instancetype)getReminderCell:(UITableView *)tableView withParent:(id)parent andReminder:(ReminderDTO*)reminderModel;
 @end

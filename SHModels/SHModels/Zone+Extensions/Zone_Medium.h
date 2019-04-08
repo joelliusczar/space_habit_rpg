@@ -9,7 +9,8 @@
 #import <SHData/P_CoreData.h>
 #import "Zone+CoreDataClass.h"
 #import <SHCommon/P_ResourceUtility.h>
-#import "Hero+CoreDataClass.h"
+#import "SHHeroDTO.h"
+#import "SHZoneDTO.h"
 #import "ZoneInfoDictionary.h"
 #import <Foundation/Foundation.h>
 
@@ -19,32 +20,28 @@ extern NSString* const HOME_KEY;
 
 @interface Zone_Medium : NSObject
 
-+(instancetype)newWithDataController:(NSObject<P_CoreData>*)dataController
-withResourceUtil:(NSObject<P_ResourceUtility>*)resourceUtil
-withInfoDict:(ZoneInfoDictionary*)zoneInfo;
--(Zone*)constructEmptyZone;
++(instancetype)newWithContext:(NSManagedObjectContext*)context
+  withResourceUtil:(NSObject<P_ResourceUtility>*)resourceUtil
+  withInfoDict:(ZoneInfoDictionary*)zoneInfo;
+
+-(Zone*)newEmptyZone;
 -(NSArray<NSString*>*)getSymbolsList;
 -(NSString*)getRandomZoneDefinitionKey:(NSUInteger)heroLvl;
 -(NSString*)getSymbolSuffix:(NSUInteger)visitCount;
 
--(Zone*)constructRandomZoneChoiceGivenHero:(Hero*)hero
-ifShouldMatchLvl:(BOOL)shouldMatchLvl;
+-(ZoneDTO*)newRandomZoneChoiceGivenHero:(HeroDTO*)hero
+  ifShouldMatchLvl:(BOOL)shouldMatchLvl;
 
--(Zone*)constructSpecificZone2:(NSString*) zoneKey withLvl:(int32_t) lvl;
+-(ZoneDTO*)newSpecificZone2:(NSString*) zoneKey withLvl:(int32_t) lvl;
 
--(Zone*)constructSpecificZone:(NSString*)zoneKey
-withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount;
+-(ZoneDTO*)newSpecificZone:(NSString*)zoneKey
+  withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount;
 
--(NSMutableArray<Zone*>*)constructMultipleZoneChoicesGivenHero:(Hero*)hero
-ifShouldMatchLvl:(BOOL)matchLvl;
+-(NSMutableArray<ZoneDTO*>*)newMultipleZoneChoicesGivenHero:(HeroDTO*)hero
+  ifShouldMatchLvl:(BOOL)matchLvl;
 
 -(NSArray<Zone*>*)getAllZones:(nullable NSPredicate*)filter;
-
--(NSArray<Zone*>*)getAllZones:(nullable NSPredicate*)filter
-withContext:(nullable NSManagedObjectContext*)context;
-
 -(Zone*)getZone:(BOOL)isFront;
-
 -(void)moveZoneToFront:(Zone*)zone;
 NSArray<NSString*>* getUnlockedZoneGroupKeys(NSUInteger heroLvl);
 @end

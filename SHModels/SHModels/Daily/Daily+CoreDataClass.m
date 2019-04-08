@@ -10,11 +10,11 @@
 #import <SHCommon/SingletonCluster.h>
 #import <SHCommon/NSDate+DateHelper.h>
 #import <SHCommon/NSMutableDictionary+Helper.h>
+#import <SHData/NSManagedObjectContext+Helper.h>
 #import "Reminder+CoreDataClass.h"
 #import <SHGlobal/Constants.h>
 #import "RateTypeHelper.h"
-#import "SingletonCluster+Entity.h"
-#import <Daily_C.h>
+#import <SHDaily_C.h>
 
 @interface Daily()
 @end
@@ -38,6 +38,10 @@
     return isInverseRateType(self.rateType);
 }
 
+
+-(NSUInteger)reminderCount{
+  return self.daily_remind.count;
+}
 
 -(NSMutableArray<RateValueItemDict *> *)inUseActiveDays{
     return [self getActiveDaysForRateType:self.rateType];
@@ -111,42 +115,47 @@ int checkImportanceRange(int importance){
     return streak;
 }
 
-
--(NSDate *)nextDueTime{
-    NSDate *checkinDate = self.lastActivationTime?
-                            self.lastActivationTime:
-                            self.lastUpdateTime;
-    switch(self.rateType){
-            
-        case YEARLY_RATE:
-        case YEARLY_RATE_INVERSE:
-        case MONTHLY_RATE:
-        case MONTHLY_RATE_INVERSE:
-        case WEEKLY_RATE:
-        {
-            
-        }
-        case WEEKLY_RATE_INVERSE:
-        {
-            
-        }
-        case DAILY_RATE:
-        {
-            return [self nextDueTime_DAILY:checkinDate];
-        }
-        case DAILY_RATE_INVERSE:
-        {
-            return [self nextDueTime_DAILY_INVERSE:checkinDate];
-        }
-    }
-    return nil;
-}
+#warning This may need to move elsewhere
+//
+//-(NSDate *)nextDueTime{
+//    NSDate *checkinDate = self.lastActivationTime?
+//                            self.lastActivationTime:
+//                            self.lastUpdateTime;
+//    switch(self.rateType){
+//
+//        case YEARLY_RATE:
+//        case YEARLY_RATE_INVERSE:
+//        case MONTHLY_RATE:
+//        case MONTHLY_RATE_INVERSE:
+//        case WEEKLY_RATE:
+//        {
+//
+//        }
+//        case WEEKLY_RATE_INVERSE:
+//        {
+//
+//        }
+//        case DAILY_RATE:
+//        {
+//            return [self nextDueTime_DAILY:checkinDate];
+//        }
+//        case DAILY_RATE_INVERSE:
+//        {
+//            return [self nextDueTime_DAILY_INVERSE:checkinDate];
+//        }
+//    }
+//    return nil;
+//}
 
 #warning TODO: this day start may need to change
 -(int)daysUntilDue{
-    NSDate *roundedDownToday = [[NSDate date]
-                                    setHour:SHSettings.dayStart minute:0 second:0];
-    return (int)[NSDate daysBetween:roundedDownToday to:self.nextDueTime];
+  //the hour was originally some sort of settings thing
+  //that was adding complications and, since this is just a display
+  //value, even we did switch our day start, I think it would
+  //confuse to have, for example if our day start was 2PM, next Sunday be 8 days
+  //from now at 1, but 7 days from now at 1:30
+  NSDate *roundedDownToday = [[NSDate date] setHour:0 minute:0 second:0];
+  return (int)[NSDate daysBetween:roundedDownToday to:self.nextDueTime];
 }
 
 
@@ -160,19 +169,38 @@ int checkImportanceRange(int importance){
 }
 
 
--(NSOrderedSet<Reminder *> *)getReminderSet{
-    return self.daily_remind;
+-(ReminderDTO*)ReminderAtIndex:(NSUInteger)index{
+  ReminderDTO *dto = [ReminderDTO new];
+  Reminder *r = self.daily_remind[index];
+  dto.daysBeforeDue = r.daysBeforeDue;
+  dto.reminderHour = r.reminderHour;
+  dto.objectID = r.objectID;
+  
+  return dto;
 }
 
 
--(void)addNewReminder:(Reminder *)reminder{
-    [self addDaily_remindObject:reminder];
+-(void)addNewReminder:(ReminderDTO*)reminder{
+  NSManagedObjectContext *context = self.managedObjectContext;
+  NSAssert(context,@"Can not associate a reminder to a Daily that is not in context");
+  Reminder *reminderCD = (Reminder*)[context newEntity:Reminder.entity];
+  [reminderCD copyFrom:reminder];
+  [self addDaily_remindObject:reminderCD];
+}
+
+- (ReminderDTO *)reminderAtIndex:(NSUInteger)index {
+  ReminderDTO *dto = [ReminderDTO new];
+  Reminder *reminder = self.daily_remind[index];
+  [reminder copyInto:dto];
+  return dto;
 }
 
 
--(void)removeReminder:(Reminder *)reminder{
-    [self removeDaily_remindObject:reminder];
+-(void)removeReminderAtIndex:(NSUInteger)index {
+  Reminder *reminder = self.daily_remind[index];
+  [self removeDaily_remindObject:reminder];
 }
+
 
 //so that we don't have to map all of the relationships
 -(NSMutableDictionary *)simpleMapable{

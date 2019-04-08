@@ -8,7 +8,7 @@
 
 #import "EditNavigationController.h"
 #import "EditingSaver.h"
-#import <SHCommon/ViewHelper.h>
+#import <SHControls/UIViewController+Helper.h>
 #import <SHCommon/Interceptor.h>
 #import <SHControls/UIScrollView+ScrollAdjusters.h>
 #import <SHGlobal/Constants.h>
@@ -16,6 +16,7 @@
 #import <SHControls/ItemFlexibleListView.h>
 #import <SHControls/SHButton.h>
 #import <SHControls/FrontEndConstants.h>
+#import <SHControls/UIViewController+Helper.h>
 @import CoreGraphics;
 
 
@@ -109,22 +110,23 @@ void setupNotificationCenterStuff(EditNavigationController *nav){
 
 
 -(void)confirmDelete{
+  __weak EditNavigationController *weakSelf = self;
     UIAlertController *deleteAlert = [UIAlertController
-                                      alertControllerWithTitle:@"Delete?"
-                                      message:@"Are you sure you want to delete this?"
-                                      preferredStyle:UIAlertControllerStyleAlert];
+                                        alertControllerWithTitle:@"Delete?"
+                                        message:@"Are you sure you want to delete this?"
+                                        preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *noAction = [UIAlertAction
-                               actionWithTitle:@"No"
-                               style:UIAlertActionStyleDefault
-                               handler:^(UIAlertAction *action){}];
+                                 actionWithTitle:@"No"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction *action){}];
     UIAlertAction *yesAction = [UIAlertAction
                                 actionWithTitle:@"Yes"
                                 style:UIAlertActionStyleDefault
                                 handler:^(UIAlertAction *action)
                                 {
                                     wrapReturnVoid wrappedCall = ^void(){
-                                        [self.editingScreen deleteModel];
-                                        popVCFromFront(self);
+                                        [weakSelf.editingScreen deleteModel];
+                                        [weakSelf popVCFromFront];
                                     };
                                     [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
                                 }];
@@ -137,7 +139,7 @@ void setupNotificationCenterStuff(EditNavigationController *nav){
 -(IBAction)saveBtn_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
     if(self.editingScreen.nameStr.length){
         [self.editingScreen saveEdit];
-        popVCFromFront(self);
+        [self popVCFromFront];
         return;
     }
     [self alertMissingInfo];
@@ -161,14 +163,14 @@ void setupNotificationCenterStuff(EditNavigationController *nav){
 
 
 -(void)background_tap_action:(UITapGestureRecognizer *)sender {
-    if(self.isKeyboardOpen){
-        [self hideKeyboard];
-        return;
-    }
-    if(sender.view == self.background){
-        [self.editingScreen unsaved_closing_action];
-        popVCFromFront(self);
-    }
+  if(self.isKeyboardOpen){
+    [self hideKeyboard];
+    return;
+  }
+  if(sender.view == self.background){
+    [self.editingScreen unsaved_closing_action];
+    [self popVCFromFront];
+  }
 }
 
 
@@ -222,7 +224,7 @@ void setupNotificationCenterStuff(EditNavigationController *nav){
 
 
 -(void)pushViewControllerToNearestParent:(UIViewController *)child{
-    arrangeAndPushVCToFrontOfParent(child,self);
+  [self arrangeAndPushChildVCToFront:child];
 }
 
 

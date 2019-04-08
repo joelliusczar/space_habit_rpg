@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27075D75225AC4DD00AD13AA /* CircleMaybe.m in Sources */ = {isa = PBXBuildFile; fileRef = 27075D74225AC4DD00AD13AA /* CircleMaybe.m */; };
 		271691F52089672A0059A58E /* C_Exp.c in Sources */ = {isa = PBXBuildFile; fileRef = 271691F42089672A0059A58E /* C_Exp.c */; };
 		2726A84F22225209003993B3 /* libSHDatetime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2726A84E22225209003993B3 /* libSHDatetime.a */; };
 		2726A8522222523D003993B3 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2726A8512222523D003993B3 /* SHCommon.framework */; };
@@ -66,6 +67,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		27075D73225AC4DD00AD13AA /* CircleMaybe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircleMaybe.h; sourceTree = "<group>"; };
+		27075D74225AC4DD00AD13AA /* CircleMaybe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleMaybe.m; sourceTree = "<group>"; };
 		271691F32089672A0059A58E /* C_Exp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = C_Exp.h; sourceTree = "<group>"; };
 		271691F42089672A0059A58E /* C_Exp.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = C_Exp.c; sourceTree = "<group>"; };
 		2726A84E22225209003993B3 /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -268,6 +271,8 @@
 				27B7193922342FE600540542 /* ArcLessObj.m */,
 				27B7194C223860F700540542 /* DumbDataSaver.h */,
 				27B7194D223860F700540542 /* DumbDataSaver.m */,
+				27075D73225AC4DD00AD13AA /* CircleMaybe.h */,
+				27075D74225AC4DD00AD13AA /* CircleMaybe.m */,
 			);
 			path = ObjCPlayground;
 			sourceTree = "<group>";
@@ -371,6 +376,7 @@
 				2747C42D2044C51F00FB5669 /* ParentMan.m in Sources */,
 				2747C42C2044C51F00FB5669 /* UserOfProtocus.m in Sources */,
 				2747C4322044C51F00FB5669 /* Indexable.m in Sources */,
+				27075D75225AC4DD00AD13AA /* CircleMaybe.m in Sources */,
 				2747C4402044C51F00FB5669 /* Experiments+Charlie.m in Sources */,
 				2747C4352044C51F00FB5669 /* House+Ass.m in Sources */,
 				2747C4332044C51F00FB5669 /* Retainer.m in Sources */,

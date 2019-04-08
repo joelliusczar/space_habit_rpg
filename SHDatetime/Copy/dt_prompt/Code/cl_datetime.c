@@ -5,7 +5,7 @@
 #include "SHDatetime.h"
 #include "SHArray.h"
 #include "SHGenAlgos.h"
-#include "ErrorHandling.h"
+#include "SHErrorHandling.h"
 #include <inttypes.h>
 
 DEF_RESIZE_ARR(Timeshift)

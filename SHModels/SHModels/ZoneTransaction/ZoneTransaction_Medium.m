@@ -14,24 +14,23 @@
 
 
 @interface ZoneTransaction_Medium ()
-@property (weak,nonatomic) NSObject<P_CoreData>* dataController;
+@property (strong,nonatomic) NSManagedObjectContext* context;
 
 @end
 
 @implementation ZoneTransaction_Medium
 
-@synthesize dataController = _dataController;
 
-+(instancetype)newWithDataController:(NSObject<P_CoreData> *)dataController{
++(instancetype)newWithContext:(NSManagedObjectContext*)context{
   ZoneTransaction_Medium *instance = [[ZoneTransaction_Medium alloc] init];
-  instance.dataController = dataController;
+  instance.context = context;
   return instance;
 }
 
 -(void)addCreateTransaction:(Zone *)z{
   NSMutableDictionary *zoneInfo = z.mapable;
 
-  NSManagedObjectContext* context = [self.dataController newBackgroundContext];
+  NSManagedObjectContext* context = self.context;
   [context performBlock:^{
     ZoneTransaction *zt =(ZoneTransaction *)[context newEntity:ZoneTransaction.entity];
     zt.timestamp = [NSDate date];

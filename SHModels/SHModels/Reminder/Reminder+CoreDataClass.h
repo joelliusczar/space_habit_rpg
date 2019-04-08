@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "SHReminderDTO.h"
 
 
 @class Daily;
@@ -18,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly,weak,nonatomic) NSString *synopsis;
 @property (readonly,nonatomic) NSMutableDictionary *mapable;
 -(void)copyInto:(NSObject *)object;
+-(void)copyFrom:(NSObject *)object;
 @end
 
 NS_ASSUME_NONNULL_END

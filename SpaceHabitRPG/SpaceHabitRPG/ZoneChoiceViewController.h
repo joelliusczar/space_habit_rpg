@@ -11,6 +11,7 @@
 #import "ZoneDescriptionViewController.h"
 #import "CentralViewController.h"
 #import <SHControls/SHSwitch.h>
+#import <SHModels/SHZoneDTO.h>
 
 @class ZoneDescriptionViewController;
 
@@ -19,5 +20,5 @@
 @property (nonatomic,weak) IBOutlet SHButton *skipButton;
 @property (nonatomic,weak) CentralViewController *central;
 @property (nonatomic,strong) ZoneDescriptionViewController *descViewController;
-+(instancetype)constructWithCentral:(CentralViewController *)central AndZoneChoices:(NSArray<Zone *> *)zoneChoices;
++(instancetype)newWithCentral:(CentralViewController *)central AndZoneChoices:(NSArray<ZoneDTO *> *)zoneChoices;
 @end

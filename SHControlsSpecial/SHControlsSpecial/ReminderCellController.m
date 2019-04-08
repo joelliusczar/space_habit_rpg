@@ -8,13 +8,13 @@
 
 #import "ReminderCellController.h"
 @interface ReminderCellController()
-@property (weak,nonatomic) Reminder *model;
+@property (weak,nonatomic) ReminderDTO *model; //warning replace type
 @end
 
 @implementation ReminderCellController
 
 
-+(instancetype)getReminderCell:(UITableView *)tableView withParent:(id)parent andReminder:(Reminder *)reminderModel{
++(instancetype)getReminderCell:(UITableView *)tableView withParent:(id)parent andReminder:(ReminderDTO*)reminderModel{
     (void)parent;
     ReminderCellController *cell = [tableView
                                     dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
