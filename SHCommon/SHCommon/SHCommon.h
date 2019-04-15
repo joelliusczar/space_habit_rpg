@@ -43,6 +43,7 @@ FOUNDATION_EXPORT const unsigned char SHCommonVersionString[];
 #import "ProbWeight.h"
 #import "UIColor+Helper.h"
 #import "UIImage+Helper.h"
+#import "SHObject.h"
 
 
 

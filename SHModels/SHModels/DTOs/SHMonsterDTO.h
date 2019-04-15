@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "P_StoryItem.h"
 #import "MonsterInfoDictionary.h"
+#import <SHCommon/SHObject.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MonsterDTO : NSObject<P_StoryItem>
+@interface MonsterDTO : SHObject<P_StoryItem,NSCopying>
 +(instancetype)newWithMonsterDict:(MonsterInfoDictionary*)monInfoDict;
 @property (strong,nonatomic) MonsterInfoDictionary *monInfoDict;
 @property (nonatomic,readonly) int32_t attack;

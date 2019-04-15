@@ -9,7 +9,6 @@
 #import <XCTest/XCTest.h>
 #import <SHCommon/ProbWeight.h>
 #import <SHGlobal/constants.h>
-#import <SHModels/SingletonCluster+Entity.h>
 #import <SHCommon/CommonUtilities.h>
 @import TestCommon;
 

@@ -40,9 +40,12 @@
 #import <SHModels/ZoneInfoDictionary.h>
 #import <SHCommon/ResourceUtility.h>
 #import <SHCommon/CommonUtilities.h>
+#import <SHCommon/NSObject+Helper.h>
 #import <TestCommon/TestHelpers.h>
 #import <malloc/malloc.h>
 #import <SHData/NSManagedObjectContext+Helper.h>
+
+
 
 
 
@@ -1065,4 +1068,89 @@ NSString *convertCharToBin(unsigned char input){
   NSLog(@"Strike three!");
   NSLog(@"Circle? %@",weakCircle);
 }
+
++(void)atomicExp{
+  for(int i = 1; i <= 25;i++){
+    CircleMaybe *cm = [[CircleMaybe alloc] init];
+    //[cm nonatomicEx];
+    [cm threado];
+    NSLog(@"Loop: %d",i);
+  }
+  NSLog(@"All over");
+  
+}
+
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Warc-unsafe-retained-assign"
++(void)privateInst{
+  CircleMaybe *q1 = [CircleMaybe new];
+  CircleMaybe *q2 = [CircleMaybe new];
+  
+  [q1 setHouse];
+  [q1 checkHouse];
+  [q2 checkHouse];
+  NSLog(@"Weak shit!");
+  q2.mediocre = [House new];
+  NSLog(@"Mediocre: %@",q2.mediocre);
+  
+  [q1 trackStat];
+  [q2 trackStat];
+}
+#pragma GCC diagnostic pop
+
+
++(void)ivarList{
+  uint32_t outCount = 0;
+  Ivar *iv = class_copyIvarList(SimpleDTO.class,&outCount);
+  for(uint32_t i = 0; i < outCount; i++){
+    const char *varname = ivar_getName(iv[i]);
+    NSLog(@"%s",varname);
+  }
+}
+
++(void)reflectionCopy{
+  SimpleDTO *sdto = [SimpleDTO new];
+  sdto.boopStr = @"sploot";
+  sdto.dootNum = 17;
+  sdto.wrapNum = @77;
+  SimpleDTO *sdto2 = [sdto dtoCopy];
+  sdto2.boopStr = @"wort";
+  //SimpleDTO *copy = object_copy(SimpleDTO.class,sizeof(SimpleDTO))
+}
+
+
++(void)subStrC{
+  const char* str = "atoyota";
+  NSString *nsStr = [NSString stringWithUTF8String:&str[1]];
+  NSLog(@"%@",nsStr);
+}
+
+
++(void)KVOStuff{
+  SimpleDTO *sdto = [SimpleDTO new];
+
+  //responds = [sdto respondsToSelector:NSSelectorFromString(@"watched")];
+  //[sdto sayRealSlimShady];
+  Watcher *w = [Watcher new];
+  //[sdto addObserver:w forKeyPath:@"watched" options:NSKeyValueObservingOptionNew context:nil];
+  [sdto addObserver:w forKeyPath:@"instaWatched" options:NSKeyValueObservingOptionNew context:nil];
+  [sdto setValue:@65 forKey:@"watched"];
+  //sdto.watched = @34;
+  sdto->instaWatched = @63;
+  NSLog(@"%@",sdto.watched);
+  [sdto setValue:@91 forKey:@"_watched"];
+  NSLog(@"%@",sdto.watched);
+  NSObject *obj = [NSObject new];
+  //obj.everywhere = 6;
+  
+}
+
+
++(void)queuePossibleDeadlock{
+  CircleMaybe *cm = [[CircleMaybe alloc] init2];
+  NSLog(@"Now we get the num: %lu",cm.bar);
+}
+
+
 @end

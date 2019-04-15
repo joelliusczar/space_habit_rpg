@@ -7,6 +7,8 @@
 //
 
 #import "NSObject+Helper.h"
+#import "CommonUtilities.h"
+#import <objc/runtime.h>
 
 
 typedef void (*voidCaller)(id,SEL);
@@ -28,6 +30,34 @@ typedef void (*voidCaller)(id,SEL);
     return YES;
   }
   return NO;
+}
+
+
+-(id)dtoCopy{
+  id newObject = [[self.class alloc] init];
+  uint32_t outCount = 0;
+  Ivar *varArray = class_copyIvarList(self.class, &outCount);
+  for(uint32_t i = 0; i < outCount; i++){
+    id varVal = object_getIvar(self,varArray[i]);
+    object_setIvar(newObject,varArray[i],varVal);
+  }
+  free(varArray);
+  return newObject;
+}
+
+
+-(void)dtoCopyFrom:(NSObject*)fromObject{
+  uint32_t outCount = 0;
+  Ivar *varArray = class_copyIvarList(self.class, &outCount);
+  for(uint32_t i = 0; i < outCount; i++){
+    const char *ivarName = ivar_getName(varArray[i]);
+    NSString *nsIvarName = [NSString stringWithUTF8String:ivarName];
+    NSString *propName = [nsIvarName substringFromIndex:1];
+    id fromVal = [fromObject valueForKey:propName];
+    [self setValue:fromVal forKey:nsIvarName];
+    free((void*)ivarName);
+  }
+  free(varArray);
 }
 
 //the reason I have this here rather than for UIView is because

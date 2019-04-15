@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		27004253205251B3001FA0B5 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27004252205251B3001FA0B5 /* SHModels.framework */; };
-		27009B43224FEB0C0005F827 /* SHCoreData+CleanUp.h in Headers */ = {isa = PBXBuildFile; fileRef = 27009B41224FEB0C0005F827 /* SHCoreData+CleanUp.h */; };
+		27009B43224FEB0C0005F827 /* SHCoreData+CleanUp.h in Headers */ = {isa = PBXBuildFile; fileRef = 27009B41224FEB0C0005F827 /* SHCoreData+CleanUp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27009B44224FEB0C0005F827 /* SHCoreData+CleanUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 27009B42224FEB0C0005F827 /* SHCoreData+CleanUp.m */; };
 		273009F822446228006E419C /* NSManagedObjectContext+Hijack.h in Headers */ = {isa = PBXBuildFile; fileRef = 273009F622446228006E419C /* NSManagedObjectContext+Hijack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		273009F922446228006E419C /* NSManagedObjectContext+Hijack.m in Sources */ = {isa = PBXBuildFile; fileRef = 273009F722446228006E419C /* NSManagedObjectContext+Hijack.m */; };
@@ -124,8 +124,8 @@
 				27B7AF25223094D000FAA229 /* TestDummy.h in Headers */,
 				274EFB77204F9AEA00CB3C4C /* TestCommon.h in Headers */,
 				274EFB86204F9B7700CB3C4C /* TestHelpers.h in Headers */,
-				273009F822446228006E419C /* NSManagedObjectContext+Hijack.h in Headers */,
 				27009B43224FEB0C0005F827 /* SHCoreData+CleanUp.h in Headers */,
+				273009F822446228006E419C /* NSManagedObjectContext+Hijack.h in Headers */,
 				274EFB85204F9B7700CB3C4C /* TestGlobals.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

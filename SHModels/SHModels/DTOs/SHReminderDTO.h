@@ -7,12 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <SHCommon/SHObject.h>
 
 @import CoreData;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ReminderDTO : NSObject
+@interface ReminderDTO : SHObject<NSCopying>
+@property (readonly,weak,nonatomic) NSString *synopsis;
+@property (readonly,nonatomic) NSMutableDictionary *mapable;
 @property (assign,nonatomic) int32_t daysBeforeDue;
 @property (copy,nullable,nonatomic) NSDate *reminderHour;
 @property (copy,nonatomic) NSManagedObjectID *objectID;

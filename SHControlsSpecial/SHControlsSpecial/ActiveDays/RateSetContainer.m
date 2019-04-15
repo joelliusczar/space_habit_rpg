@@ -33,14 +33,6 @@ NSString* const defaultInvertBtnText = @"Triggers only on...";
 NSString* const invertedInvertBtnText = @"Triggers all days except...";
 
 
--(id<P_UtilityStore>)utilityStore{
-    if(nil==_utilityStore){
-        _utilityStore = SharedGlobal;
-    }
-    return _utilityStore;
-}
-
-
 -(WeeklyActiveDays *)weeklyActiveDays{
     return self.rateControls.controlLookup[WEEKLY_KEY];
 }
@@ -89,11 +81,10 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 }
 
 -(void)commonTableSetup:(ItemFlexibleListView *)tbl{
-    tbl.utilityStore = self.utilityStore;
-    tbl.holderView = self.activeDaysControlContainer;
-    tbl.resizeResponder = self;
-    tbl.delegate = self.tblDelegate;
-    [tbl changeBackgroundColorTo:self.backgroundColor];
+  tbl.holderView = self.activeDaysControlContainer;
+  tbl.resizeResponder = self;
+  tbl.delegate = self.tblDelegate;
+  [tbl changeBackgroundColorTo:self.backgroundColor];
 }
 
 #pragma clang diagnostic push

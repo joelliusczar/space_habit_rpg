@@ -35,34 +35,10 @@ BOOL waitForSema(dispatch_semaphore_t sema,NSInteger timeoutSecs){
   return result == 0;
 }
 
-
-SEL getSetterSelectorForPropertyName(NSString *propName){
-  NSString *firstChar = [[propName substringToIndex:1] uppercaseString];
-  NSString *restOfName = [propName substringFromIndex:1];
-  NSString *selName = [NSString stringWithFormat:@"set%@%@",firstChar,restOfName];
-  return NSSelectorFromString(selName);
+void copyInstanceVar(NSObject* from,NSObject* to,NSString *varName){
+  id fromVal = [from valueForKey:varName];
+  [to setValue:fromVal forKey:varName];
 }
 
 
-void copyProp(NSObject *from,NSObject *to,NSString *prop){
-  if([from respondsToSelector:getSetterSelectorForPropertyName(prop)] || [from isDictionaryType]){
-    if([to respondsToSelector:getSetterSelectorForPropertyName(prop)] || [to isDictionaryType]){
-      id newValue = [from valueForKey:prop];
-      [from setValue:newValue forKey:prop];
-    }
-  }
-}
-
-
-void copyInstanceProps(NSObject *from,NSObject *to){
-  uint32_t outCount = 0;
-  objc_property_t *props = class_copyPropertyList(to.class, &outCount);
-  for(uint32_t i = 0; i < outCount;i++){
-    const char *propName = property_getName(props[i]);
-    NSString *nsPropName = [NSString stringWithUTF8String:propName];
-    copyProp(from,to,nsPropName);
-    free((void*)propName);
-  }
-  free(props);
-}
 

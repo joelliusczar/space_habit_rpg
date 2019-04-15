@@ -12,16 +12,17 @@
 #import <SHModels/Todo+CoreDataClass.h>
 #import <SHModels/Good+CoreDataClass.h>
 #import <SHModels/Hero+CoreDataClass.h>
+#import <SHModels/SHHeroDTO.h>
 #import <SHModels/Settings+CoreDataClass.h>
 #import <SHModels/Zone+CoreDataClass.h>
 #import <SHModels/Monster+CoreDataClass.h>
 #import <SHModels/Zone+CoreDataClass.h>
 #import <SHModels/DataInfo+CoreDataClass.h>
 #import <SHModels/ZoneTransaction+CoreDataClass.h>
+#import <SHModels/SHMonster_Medium.h>
 #import <SHGlobal/Constants.h>
 #import <SHData/SHCoreData.h>
 #import <SHData/NSManagedObjectContext+Helper.h>
-#import <SHModels/SingletonCluster+Entity.h>
 #import <SHModels/Zone_Medium.h>
 @import TestCommon;
 
@@ -33,7 +34,6 @@
 
 - (void)setUp {
   [super setUp];
-  XCTAssertEqual(SharedGlobal.EnviromentNum,ENV_UTEST);
   // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
@@ -43,7 +43,7 @@
 }
 
 -(void)testHeroProperties{
-  NSObject<P_CoreData> *dc = SharedGlobal.dataController;
+  NSObject<P_CoreData> *dc = self.dc;
   NSManagedObjectContext *context = dc.mainThreadContext;
   Hero *h = (Hero *)[context newEntity:Hero.entity];
   h.gold = 3.14;
@@ -61,9 +61,11 @@
 }
 
 -(void)testMonsterProperties{
-  NSObject<P_CoreData> *dc = SharedGlobal.dataController;
-  NSManagedObjectContext *context = dc.mainThreadContext;
-  Monster *m = (Monster *)[context newEntity:Monster.entity];
+  NSManagedObjectContext *context = [self.dc newBackgroundContext];
+  Monster_Medium *mm = [Monster_Medium
+    newWithContext:context
+    withInfoDict:self.monsterInfoDict];
+  MonsterDTO *m = [mm newEmptyMonster];
   m.lvl = 13;
   m.monsterKey = @"DUST_FAIRY";
   m.nowHp = 123;
@@ -80,9 +82,7 @@
 }
 
 -(void)testZoneProperties{
-  NSObject<P_CoreData> *dc = SharedGlobal.dataController;
-  NSManagedObjectContext *context = dc.mainThreadContext;
-  Zone *z = (Zone *)[context newEntity:Zone.entity];
+  ZoneDTO *z = [ZoneDTO newWithZoneDict:self.zoneInfoDict];
   z.lvl = 5;
   z.zoneKey = @"SAFE_SPACE";
   z.isFront = YES;
@@ -101,7 +101,7 @@
 }
 
 -(void)testRemoveEntitRefBeforeSaving{
-  NSObject<P_CoreData> *dc = SharedGlobal.dataController;
+  NSObject<P_CoreData> *dc = self.dc;
   NSManagedObjectContext *bgContext = [dc newBackgroundContext];
   [bgContext performBlockAndWait:^{
     ZoneTransaction *zt = (ZoneTransaction *)[bgContext newEntity:ZoneTransaction.entity];
@@ -120,18 +120,23 @@
 }
 
 -(void)testDoubleInsert{
-  Zone_Medium* zoneMed = [Zone_Medium newWithDataController:SHData
-    withResourceUtil:SharedGlobal.resourceUtility withInfoDict:SharedGlobal.zoneInfoDictionary];
-  NSManagedObjectContext* bgContext = [SHData newBackgroundContext];
+  NSManagedObjectContext* bgContext = [self.dc newBackgroundContext];
+  Zone_Medium* zoneMed = [Zone_Medium newWithContext:bgContext
+    withResourceUtil:self.resourceUtil
+    withInfoDict:self.zoneInfoDict];
+  
   [bgContext performBlockAndWait:^{
-    Zone *z = [zoneMed constructSpecificZone2:@"SAFE_SPACE" withLvl:16];
+    ZoneDTO *zDto = [zoneMed newSpecificZone2:@"SAFE_SPACE" withLvl:16];
+    Zone *z = (Zone*)[NSManagedObjectContext
+      newEntityUnattached:Zone.entity];
+    [z dtoCopyFrom:zDto];
     [bgContext insertObject:z];
     [bgContext insertObject:z];
     NSError* error = nil;
     [bgContext save:&error];
   }];
   //I think this next part is useless
-  NSManagedObjectContext* bgContext2 = [SHData newBackgroundContext];
+  NSManagedObjectContext* bgContext2 = [self.dc newBackgroundContext];
   NSFetchRequest<Zone *> *request = [Zone fetchRequest];
   [bgContext2 performBlockAndWait:^{
     NSArray<NSManagedObject*>* results = [self fetchAnything:request context:bgContext2];
@@ -148,13 +153,16 @@
   //regardless of what is in stored
   [bgContext performBlockAndWait:^{
     
-    Zone *z3 = [zoneMed constructSpecificZone2:@"SAFE_SPACE" withLvl:16];
+    ZoneDTO *z3Dto = [zoneMed newSpecificZone2:@"SAFE_SPACE" withLvl:16];
+    Zone* z3 = (Zone*)[NSManagedObjectContext
+      newEntityUnattached:Zone.entity];
+    [z3 dtoCopyFrom:z3Dto];
     [bgContext insertObject:z3];
     NSError *error = nil;
     [bgContext save:&error];
   }];
   
-  NSManagedObjectContext* bgContext3 = [SHData newBackgroundContext];
+  NSManagedObjectContext* bgContext3 = [self.dc newBackgroundContext];
   [bgContext3 performBlockAndWait:^{
     
     NSArray<NSManagedObject*>* results3 = [self fetchAnything:request context:bgContext3];

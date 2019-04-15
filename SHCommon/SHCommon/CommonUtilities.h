@@ -30,8 +30,6 @@ extern uint (*randomUInt)(uint);
 void reverse_UINT(NSUInteger * array,NSUInteger len);
 CGFloat getParentChildHeightOffset(CGRect parentFrame,CGRect childFrame);
 BOOL waitForSema(dispatch_semaphore_t sema,NSInteger timeoutSecs);
-SEL getSetterSelectorForPropertyName(NSString *propName);
-void copyProp(NSObject* from,NSObject* to,NSString *prop);
-void copyInstanceProps(NSObject *from,NSObject *to);
+void copyInstanceVar(NSObject* from,NSObject* to,NSString *varName);
 #endif
 

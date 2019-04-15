@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import <SHCommon/NotificationHelper.h>
 #import <SHModels/OnlyOneEntities.h>
-#import "SingletonCluster+App.h"
+#import <SHData/SingletonCluster+Data.h>
 
 
 @interface AppDelegate ()

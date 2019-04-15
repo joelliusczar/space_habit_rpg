@@ -7,6 +7,7 @@
 //
 
 #import "SHMonsterDTO.h"
+#import <SHCommon/NSObject+Helper.h>
 
 static float MAX_HP_MODIFIER = .1;
 @implementation MonsterDTO
@@ -67,5 +68,10 @@ static float MAX_HP_MODIFIER = .1;
     return [self.monInfoDict getEncounterWeight:self.monsterKey];
 }
 
+
+-(id)copyWithZone:(NSZone *)zone{
+  (void)zone;
+  return [self dtoCopy];
+}
 
 @end

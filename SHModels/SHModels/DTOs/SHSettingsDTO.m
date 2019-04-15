@@ -7,7 +7,15 @@
 //
 
 #import "SHSettingsDTO.h"
+#import <SHCommon/NSObject+Helper.h>
 
 @implementation SHSettingsDTO
+
+
+-(id)copyWithZone:(NSZone *)zone{
+  (void)zone;
+  return [self dtoCopy];
+}
+
 
 @end

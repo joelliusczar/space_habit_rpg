@@ -12,8 +12,8 @@
 @import SHModels;
 
 #import <SHGlobal/FlexibleConstants.h>
-#import <Daily_C.h>
-#import <RateValueItem.h>
+#import <SHDaily_C.h>
+#import <SHRateValueItem.h>
 @import TestCommon;
 
 @interface DailyHelperTest : FrequentCase
@@ -27,7 +27,7 @@ NSMutableArray<Daily *> *testDailies = nil;
 -(void)setUp {
   [super setUp];
   testDailies = [NSMutableArray array];
-  NSManagedObjectContext* bgContext = [SHData newBackgroundContext];
+  NSManagedObjectContext* bgContext = [self.dc newBackgroundContext];
   
     [bgContext performBlockAndWait:^{
       int a0=0,a1=0,a2=0,a3=0,a4=0,a5=0;
@@ -84,7 +84,7 @@ NSMutableArray<Daily *> *testDailies = nil;
 }
 
 -(void)testGetAnything{
-  NSManagedObjectContext *context = SHData.mainThreadContext;
+  NSManagedObjectContext *context = self.dc.mainThreadContext;
   NSFetchRequest<Daily*> *request = Daily.fetchRequest;
   request.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"urgency" ascending:NO]];
   NSFetchedResultsController* resultsController = [context getItemFetcher:request];
@@ -97,8 +97,8 @@ NSMutableArray<Daily *> *testDailies = nil;
 }
 
 -(void)testRetrieveUnfinishedDailies{
-    Daily_Medium *dm = [Daily_Medium newWithSHData:SHData];
-    NSManagedObjectContext *bgContext = [SHData newBackgroundContext];
+    Daily_Medium *dm = [Daily_Medium newWithSHData:self.dc];
+    NSManagedObjectContext *bgContext = [self.dc newBackgroundContext];
     NSDate *testDate = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:6 minute:0 second:0];
     NSFetchedResultsController *results = [dm getUnfinishedDailiesController:testDate withContext:bgContext];
     NSFetchedResultsController *results2 = [dm getFinishedDailiesController:testDate withContext:bgContext];
@@ -140,9 +140,9 @@ NSMutableArray<Daily *> *testDailies = nil;
       //saving is unecessary to be included in fetch results
     }];
   
-    NSManagedObjectContext *bgContext2 = [SHData newBackgroundContext];
+    NSManagedObjectContext *bgContext2 = [self.dc newBackgroundContext];
 // keeping this here to help mark what the test was originally about
-//   [SHData beginUsingTemporaryContext];
+//   [self.dc beginUsingTemporaryContext];
   
     [bgContext2 performBlockAndWait:^{
       Daily *d2 = (Daily*)[NSManagedObjectContext newEntityUnattached:Daily.entity];
@@ -152,7 +152,7 @@ NSMutableArray<Daily *> *testDailies = nil;
       [bgContext2 save:&error];
     }];
   
-//    [SHData endUsingTemporaryContext];
+//    [self.dc endUsingTemporaryContext];
     
     if(![results performFetch:&error]){
         NSLog(@"Error fetching data: %@", error.localizedFailureReason);
@@ -186,7 +186,6 @@ NSMutableArray<Daily *> *testDailies = nil;
       timeZone: [NSTimeZone timeZoneForSecondsFromGMT:-18000]];
     //if the rate is one, it should always result in being 0 days until Daily is due
     d.rate = 1;
-    SHSettings.dayStart = 0;
     testTodayReplacement = [NSDate createDateTimeWithYear:1988 month:4 day:28 hour:9 minute:24 second:11
       timeZone: [NSTimeZone timeZoneForSecondsFromGMT: -18000]];
     XCTAssertEqual(d.daysUntilDue,0);
@@ -200,8 +199,8 @@ NSMutableArray<Daily *> *testDailies = nil;
 -(void)testBuildWeek{
   BOOL testSet[] = {1,0,0,0,0,0,0};//sunday
   
-  RateValueItem results[7];
-  memset(results,0,sizeof(RateValueItem) * 7);
+  SHRateValueItem results[7];
+  memset(results,0,sizeof(SHRateValueItem) * 7);
   
   shBuildWeek(testSet,1,results);
   //sunday
@@ -239,7 +238,7 @@ NSMutableArray<Daily *> *testDailies = nil;
   XCTAssertEqual(results[6].forrange,1);
   XCTAssertEqual(results[6].backrange,6);
   
-  memset(results,0,sizeof(RateValueItem) * 7);
+  memset(results,0,sizeof(SHRateValueItem) * 7);
   shBuildWeek(testSet,4,results);
   //sunday
   XCTAssertEqual(results[0].isDayActive,YES);
@@ -280,7 +279,7 @@ NSMutableArray<Daily *> *testDailies = nil;
   testSet[1] = YES; //monday
   testSet[3] = YES; //wednesday
   
-  memset(results,0,sizeof(RateValueItem) * 7);
+  memset(results,0,sizeof(SHRateValueItem) * 7);
   shBuildWeek(testSet,1,results);
   
   //sunday
@@ -318,7 +317,7 @@ NSMutableArray<Daily *> *testDailies = nil;
   XCTAssertEqual(results[6].forrange,2);
   XCTAssertEqual(results[6].backrange,3);
   
-  memset(results,0,sizeof(RateValueItem) * 7);
+  memset(results,0,sizeof(SHRateValueItem) * 7);
   shBuildWeek(testSet,7,results);
   
   //sunday
@@ -359,7 +358,7 @@ NSMutableArray<Daily *> *testDailies = nil;
   for(NSUInteger i = 0;i<SHCONST.DAYS_IN_WEEK;i++){
       testSet[i] = YES;
   }
-  memset(results,0,sizeof(RateValueItem) * 7);
+  memset(results,0,sizeof(SHRateValueItem) * 7);
   shBuildWeek(testSet,1,results);
   //sunday
   XCTAssertEqual(results[0].isDayActive,YES);
@@ -396,7 +395,7 @@ NSMutableArray<Daily *> *testDailies = nil;
   XCTAssertEqual(results[6].forrange,1);
   XCTAssertEqual(results[6].backrange,1);
   
-  memset(results,0,sizeof(RateValueItem) * 7);
+  memset(results,0,sizeof(SHRateValueItem) * 7);
   shBuildWeek(testSet,3,results);
   //sunday
   XCTAssertEqual(results[0].isDayActive,YES);
@@ -434,7 +433,7 @@ NSMutableArray<Daily *> *testDailies = nil;
   XCTAssertEqual(results[6].backrange,1);
   
   testSet[4] = NO;
-  memset(results,0,sizeof(RateValueItem) * 7);
+  memset(results,0,sizeof(SHRateValueItem) * 7);
   shBuildWeek(testSet,3,results);
   //sunday
   XCTAssertEqual(results[0].isDayActive,YES);
@@ -477,7 +476,7 @@ NSMutableArray<Daily *> *testDailies = nil;
 #warning TODO: there's some test I want to do to test against going out of range past 'Base'
 -(void)testPreviousDate{
     int64_t btw;
-    RateValueItem week[7];
+    SHRateValueItem week[7];
     BOOL testSet[] = {0,1,0,1,0,0,0};//monday, wednesday
     int weekScaler = 3;
     shBuildWeek(testSet, weekScaler, week);
@@ -833,7 +832,7 @@ NSMutableArray<Daily *> *testDailies = nil;
 }
 
 -(void)testDueDates2{
-  RateValueItem week[7];
+  SHRateValueItem week[7];
   BOOL testSet[] = {0,1,0,0,0,0,0};
   int weekScaler = 1;
   shBuildWeek(testSet, weekScaler, week);
@@ -866,7 +865,7 @@ NSMutableArray<Daily *> *testDailies = nil;
 
 -(void)testNextDueDateWeekly{
     int64_t btw;
-    RateValueItem week[7];
+    SHRateValueItem week[7];
     BOOL testSet0[] = {0,1,0,1,0,0,0};
     int weekScaler = 3;
     shBuildWeek(testSet0, weekScaler, week);

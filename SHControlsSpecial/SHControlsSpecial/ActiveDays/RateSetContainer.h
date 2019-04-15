@@ -27,7 +27,6 @@ SHView
 @property (weak,nonatomic) id<P_ItemFlexibleListDelegate> _Nullable tblDelegate;
 @property (weak,nonatomic) id<P_ResizeResponder> _Nullable resizeResponder;
 @property (weak,nonatomic) id<P_WeeklyActiveDaysDelegate> _Nullable weeklyDaysDelegate;
-@property (strong,nonatomic) _Nullable id<P_UtilityStore> utilityStore;
 @property (strong,nonatomic) Daily * _Nonnull daily;
 @property (strong,nonatomic) SHControlKeep * _Nullable rateControls;
 +(instancetype _Nonnull )newWithDaily:(Daily * _Nonnull)daily;

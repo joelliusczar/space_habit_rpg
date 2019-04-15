@@ -10,6 +10,7 @@
 #import <SHCommon/SingletonCluster.h>
 #import <SHCommon/NSDate+DateHelper.h>
 #import <SHCommon/NSMutableDictionary+Helper.h>
+#import <SHCommon/NSObject+Helper.h>
 #import <SHData/NSManagedObjectContext+Helper.h>
 #import "Reminder+CoreDataClass.h"
 #import <SHGlobal/Constants.h>
@@ -191,7 +192,7 @@ int checkImportanceRange(int importance){
 - (ReminderDTO *)reminderAtIndex:(NSUInteger)index {
   ReminderDTO *dto = [ReminderDTO new];
   Reminder *reminder = self.daily_remind[index];
-  [reminder copyInto:dto];
+  [dto dtoCopyFrom:reminder];
   return dto;
 }
 

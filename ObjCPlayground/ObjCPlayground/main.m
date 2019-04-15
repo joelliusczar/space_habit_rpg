@@ -20,10 +20,10 @@ int main(int argc, const char * argv[]) {
   (void)argv;
   @autoreleasepool {
     NSUserDefaults *defs = NSUserDefaults.standardUserDefaults;
-    [defs setInteger:3 forKey:@"com.apple.CoreData.SQLDebug"];
+    [defs setInteger:0 forKey:@"com.apple.CoreData.SQLDebug"];
     //NSInteger val =  [defs integerForKey:@"-com.apple.CoreData.SQLDebug"];
-      [Experiments dispatchQueueExp];
-      //[NoArcExp overRelease];
+      [Experiments queuePossibleDeadlock];
+      //[NoArcExp underRelease];
   }
   
   return 0;

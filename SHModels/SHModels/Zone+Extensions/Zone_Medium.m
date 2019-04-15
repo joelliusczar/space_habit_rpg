@@ -163,7 +163,7 @@ withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount{
 
 
 -(NSArray<Zone*>*)getAllZones:(NSPredicate*) filter{
-  __block NSArray<Zone *> *results = nil;
+  __block NSArray *results = nil;
   [self.context performBlockAndWait:^{
     NSFetchRequest<Zone *> *request = [Zone fetchRequest];
     NSSortDescriptor *sortByIsFront = [[NSSortDescriptor alloc] initWithKey:@"isFront" ascending:NO];

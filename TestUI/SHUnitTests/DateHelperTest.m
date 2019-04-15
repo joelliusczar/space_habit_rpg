@@ -7,8 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <SHCommon/NSDate+DateHelper.h>
-#import <SHModels/SingletonCluster+Entity.h>
+#import <SHCommon/NSDate+DateHelper.h>b
 #import "NSDate+testReplace.h"
 #import <SHCommon/NSLocale+Helper.h>
 #import "SHDatetime.h"
@@ -27,7 +26,6 @@
 - (void)setUp {
     [super setUp];
     NSTimeZone.defaultTimeZone = [NSTimeZone timeZoneForSecondsFromGMT:-18000];
-    SharedGlobal.inUseCalendar = nil; //reset this guy
 }
 
 

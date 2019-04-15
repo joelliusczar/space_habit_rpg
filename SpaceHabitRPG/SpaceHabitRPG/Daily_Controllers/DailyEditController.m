@@ -39,24 +39,20 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
 
 //used for new Dailies
 -(instancetype)initWithParentDailyController:
-(UIViewController *)parentDailyController
-withDataController:(NSObject<P_CoreData>*)dataController{
+(DailyViewController *)parentDailyController{
     if(self = [self initWithNibName:@"DailyEditView" bundle:nil]){
         _parentDailyController = parentDailyController;
         _isEditingExisting = NO;
-        _dataController = dataController;
-        _daily_Medium = [Daily_Medium newWithSHData:dataController];
     }
     return self;
 }
 
 //used for existing dailies
 -(instancetype)initWithParentDailyController:
-(UIViewController *)parentDailyController ToEdit:
-(Daily *)daily AtIndexPath:(NSIndexPath *)rowInfo
-withDataController:(NSObject<P_CoreData>*)dataController{
+(DailyViewController *)parentDailyController ToEdit:
+(Daily *)daily AtIndexPath:(NSIndexPath *)rowInfo{
     
-    if(self = [self initWithParentDailyController:parentDailyController withDataController:dataController]){
+    if(self = [self initWithParentDailyController:parentDailyController]){
         _modelForEditing = daily;
         _rowInfo = rowInfo;
         _isEditingExisting = YES;

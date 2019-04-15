@@ -7,6 +7,7 @@
 //
 
 #import "SHZoneDTO.h"
+#import <SHCommon/NSObject+Helper.h>
 
 @implementation ZoneDTO
 
@@ -31,5 +32,10 @@
     return @"";
 }
 
+
+-(id)copyWithZone:(NSZone *)zone{
+  (void)zone;
+  return [self dtoCopy];
+}
 
 @end

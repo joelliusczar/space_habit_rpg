@@ -17,23 +17,32 @@
 @interface FrequentCase ()
 @property (weak,nonatomic) NSObject* weakObj;
 @property (strong,nonatomic) NSObject* strongObj;
-@property (strong,nonatomic) SHCoreData* dc;
+@property (strong,nonatomic) NSBundle *testBundle;
 @end
 
 @implementation FrequentCase
 
+
+SHCoreData* getDataControllerSingleton(){
+  static SHCoreData *dc = nil;
+  static dispatch_once_t onceToken = 0;
+  dispatch_once(&onceToken,^{
+    dc = [SHCoreData newWithOptionsBlock:^(SHCoreDataOptions *options){
+      options.storeType = NSInMemoryStoreType;
+      options.appBundle = [NSBundle bundleForClass:NSClassFromString(@"OnlyOneEntities")];
+    }];
+  });
+  return dc;
+}
+
 -(void)setUp{
   [super setUp];
-  ASSERT_IS_TEST();
+  self.resourceUtil = [[ResourceUtility alloc] init];
+  self.zoneInfoDict = [ZoneInfoDictionary newWithResourceUtil:self.resourceUtil];
+  self.monsterInfoDict = [MonsterInfoDictionary newWithResourceUtil:self.resourceUtil];
   //I think we want to ensure that it uses the bundle from SHModels rather
   //the bundle for TestUI or TestCommon
-  NSBundle *testBundle = [NSBundle bundleForClass:NSClassFromString(@"OnlyOneEntities")];
-  SharedGlobal.bundle = testBundle;
-  SharedGlobal.constructorBlock = ^(SHCoreDataOptions *options){
-    options.storeType = NSInMemoryStoreType;
-    options.appBundle = testBundle;
-  };
-  self.dc = (SHCoreData*)SHData;
+  self.dc = getDataControllerSingleton();
   NSTimeZone.defaultTimeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
 }
 

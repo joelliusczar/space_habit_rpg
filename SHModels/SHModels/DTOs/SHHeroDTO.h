@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <SHCommon/SHObject.h>
 @import CoreData;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HeroDTO : NSObject<NSCopying>
-+(instancetype)newWithObjectID:(NSManagedObjectID*)objectID withContext:(NSManagedObjectContext*)context;
+@interface HeroDTO : SHObject<NSCopying>
 @property (nonatomic) double gold;
 @property (nonatomic) int32_t lvl;
 @property (nonatomic) int32_t maxHp;

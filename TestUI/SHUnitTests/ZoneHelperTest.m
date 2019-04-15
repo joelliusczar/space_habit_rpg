@@ -7,9 +7,12 @@
 //
 
 #import <SHData/NSManagedObjectContext+Helper.h>
+#import <SHCommon/CommonUtilities.h>
 #import <SHModels/ModelConstants.h>
 #import <SHModels/Zone+CoreDataClass.h>
 #import <SHModels/Zone_Medium.h>
+#import <SHModels/SHHeroDTO.h>
+#import <SHModels/SHZoneDTO.h>
 
 @import TestCommon;
 
@@ -31,7 +34,6 @@ uint zoneHelper_mockRandom(uint range){
     
 - (void)setUp {
     [super setUp];
-    ASSERT_IS_TEST();
     randomUInt = &zoneHelper_mockRandom;
 }
 
@@ -144,18 +146,18 @@ uint zoneHelper_mockRandom(uint range){
 }
 
 -(void)testZoneDictionaryOrder{
-    NSArray<NSString *> *zl = [SharedGlobal.zoneInfoDictionary getGroupKeyList:LVL_1_ZONES];
+    NSArray<NSString *> *zl = [self.zoneInfoDict getGroupKeyList:LVL_1_ZONES];
     XCTAssertTrue([zl[0] isEqualToString:@"NEBULA"]);
     XCTAssertTrue([zl[1] isEqualToString:@"EMPTY_SPACE"]);
     XCTAssertTrue([zl[2] isEqualToString:@"SAFE_SPACE"]);
     XCTAssertTrue([zl[3] isEqualToString:@"GAS"]);
     
-    zl = [SharedGlobal.zoneInfoDictionary getGroupKeyList:LVL_10_ZONES];
+    zl = [self.zoneInfoDict getGroupKeyList:LVL_10_ZONES];
     XCTAssertTrue([zl[0] isEqualToString:@"DEFENSE"]);
     XCTAssertTrue([zl[1] isEqualToString:@"CAVE"]);
     XCTAssertTrue([zl[2] isEqualToString:@"GARBAGE_BALL"]);
     
-    zl = [SharedGlobal.zoneInfoDictionary getGroupKeyList:LVL_30_ZONES];
+    zl = [self.zoneInfoDict getGroupKeyList:LVL_30_ZONES];
     XCTAssertTrue([zl[0] isEqualToString:@"WORLD_END"]);
     XCTAssertTrue([zl[1] isEqualToString:@"INFINITE"]);
     XCTAssertTrue([zl[2] isEqualToString:@"BEGINNING"]);
@@ -164,8 +166,10 @@ uint zoneHelper_mockRandom(uint range){
 -(void)testGetRandomZoneDefinitionKey{
   int i = 0;
   rIdx_zh = 0;
-  Zone_Medium* zoneMed = [Zone_Medium newWithDataController:SHData
-    withResourceUtil:SharedGlobal.resourceUtility withInfoDict:SharedGlobal.zoneInfoDictionary];
+  NSManagedObjectContext *context = [self.dc newBackgroundContext];
+  Zone_Medium* zoneMed = [Zone_Medium newWithContext:context
+    withResourceUtil:self.resourceUtil
+    withInfoDict:self.zoneInfoDict];
   SET_LOW_BOUND();
   SET_LOW_BOUND();
   NSString *s = [zoneMed getRandomZoneDefinitionKey:10];
@@ -208,8 +212,10 @@ uint zoneHelper_mockRandom(uint range){
 }
 
 -(void)testGetSymbolSuffix{
-  Zone_Medium* zoneMed = [Zone_Medium newWithDataController:SHData
-    withResourceUtil:SharedGlobal.resourceUtility withInfoDict:SharedGlobal.zoneInfoDictionary];
+  NSManagedObjectContext *context = [self.dc newBackgroundContext];
+  Zone_Medium* zoneMed = [Zone_Medium newWithContext:context
+    withResourceUtil:self.resourceUtil
+    withInfoDict:self.zoneInfoDict];
   NSString *s = [zoneMed getSymbolSuffix:0];
   XCTAssertTrue([s isEqualToString:@""]);
   s = [zoneMed getSymbolSuffix:1];
@@ -269,8 +275,10 @@ uint zoneHelper_mockRandom(uint range){
 }
 
 -(void)testGetSymbolsList{
-  Zone_Medium* zoneMed = [Zone_Medium newWithDataController:SHData
-    withResourceUtil:SharedGlobal.resourceUtility withInfoDict:SharedGlobal.zoneInfoDictionary];
+ NSManagedObjectContext *context = [self.dc newBackgroundContext];
+  Zone_Medium* zoneMed = [Zone_Medium newWithContext:context
+    withResourceUtil:self.resourceUtil
+    withInfoDict:self.zoneInfoDict];
   NSArray<NSString *> *a = [zoneMed getSymbolsList];
   XCTAssertEqual(a.count, 100);
   XCTAssertTrue([a[0] isEqualToString:@"Alpha"]);
@@ -279,26 +287,29 @@ uint zoneHelper_mockRandom(uint range){
 }
 
 -(void)testConstructEmptyZone{
-  Zone_Medium* zoneMed = [Zone_Medium newWithDataController:SHData
-    withResourceUtil:SharedGlobal.resourceUtility withInfoDict:SharedGlobal.zoneInfoDictionary];
-  Zone *z = [zoneMed constructEmptyZone];
+  NSManagedObjectContext *context = self.dc.mainThreadContext;
+  Zone_Medium* zoneMed = [Zone_Medium newWithContext:context
+    withResourceUtil:self.resourceUtil
+    withInfoDict:self.zoneInfoDict];
+  Zone *z = [zoneMed newEmptyZone];
   XCTAssertNotNil(z);
 }
 
 
 
 -(void)testConstructZoneChoice{
-  Zone_Medium* zoneMed = [Zone_Medium newWithDataController:SHData
-    withResourceUtil:SharedGlobal.resourceUtility withInfoDict:SharedGlobal.zoneInfoDictionary];
-  NSManagedObjectContext* context = SHData.mainThreadContext;
+  NSManagedObjectContext *context = [self.dc newBackgroundContext];
+  Zone_Medium* zoneMed = [Zone_Medium newWithContext:context
+    withResourceUtil:self.resourceUtil
+    withInfoDict:self.zoneInfoDict];
   int i = 0;
   rIdx_zh = 0;
-  Hero *h = (Hero *)[context newEntity:Hero.entity];
+  HeroDTO *h = [HeroDTO new];
   h.lvl = 14;
   SET_LOW_BOUND();
   SET_LOW_BOUND();
   SET_LOW_BOUND();
-  Zone *z = [zoneMed constructRandomZoneChoiceGivenHero:h ifShouldMatchLvl:YES];
+  ZoneDTO *z = [zoneMed newRandomZoneChoiceGivenHero:h ifShouldMatchLvl:YES];
   XCTAssertTrue([z.zoneKey isEqualToString:@"NEBULA"]);
   XCTAssertEqual(z.lvl, 14);
   XCTAssertTrue([z.suffix isEqualToString:@""]);
@@ -311,7 +322,7 @@ uint zoneHelper_mockRandom(uint range){
   SET_LOW_BOUND();
   SET_LOW_BOUND();
   SET_UP_BOUND();
-  z = [zoneMed constructRandomZoneChoiceGivenHero:h ifShouldMatchLvl:YES];
+  z = [zoneMed newRandomZoneChoiceGivenHero:h ifShouldMatchLvl:YES];
   XCTAssertTrue([z.zoneKey isEqualToString:@"NEBULA"]);
   XCTAssertEqual(z.lvl, 14);
   XCTAssertTrue([z.suffix isEqualToString:@"Alpha"]);
@@ -325,7 +336,7 @@ uint zoneHelper_mockRandom(uint range){
   SET_LOW_BOUND(); //zone
   SET_LOW_BOUND(); //zone lvl
   SET_UP_BOUND(); //maxMonsters
-  z = [zoneMed constructRandomZoneChoiceGivenHero:h ifShouldMatchLvl:NO];
+  z = [zoneMed newRandomZoneChoiceGivenHero:h ifShouldMatchLvl:NO];
   XCTAssertTrue([z.zoneKey isEqualToString:@"NEBULA"]);
   XCTAssertEqual(z.lvl, 4);
   XCTAssertTrue([z.suffix isEqualToString:@"Beta"]);
@@ -339,7 +350,7 @@ uint zoneHelper_mockRandom(uint range){
   SET_LOW_BOUND();//zone
   SET_UP_BOUND(); //maxMonsters
   SET_UP_BOUND(); //zone lvl
-  z = [zoneMed constructRandomZoneChoiceGivenHero:h ifShouldMatchLvl:NO];
+  z = [zoneMed newRandomZoneChoiceGivenHero:h ifShouldMatchLvl:NO];
   XCTAssertTrue([z.zoneKey isEqualToString:@"NEBULA"]);
   XCTAssertEqual(z.lvl, 24);
   XCTAssertTrue([z.suffix isEqualToString:@"Cain"]);
@@ -350,7 +361,7 @@ uint zoneHelper_mockRandom(uint range){
 }
 
 //-(void)testConstructMultipleZoneChoices{
-//    Hero *h = (Hero *)[SHData constructEmptyEntity:Hero.entity];
+//    Hero *h = (Hero *)[self.dc constructEmptyEntity:Hero.entity];
 //    h.lvl = 52;
 //
 //    int i = 0;
@@ -413,9 +424,11 @@ uint zoneHelper_mockRandom(uint range){
 //}
 
 -(void)testConstructSpecificZone{
-  Zone_Medium* zoneMed = [Zone_Medium newWithDataController:SHData
-    withResourceUtil:SharedGlobal.resourceUtility withInfoDict:SharedGlobal.zoneInfoDictionary];
-  Zone *z = [zoneMed constructSpecificZone:HOME_KEY withLvl:1 withMonsterCount:0];
+  NSManagedObjectContext *context = [self.dc newBackgroundContext];
+  Zone_Medium* zoneMed = [Zone_Medium newWithContext:context
+    withResourceUtil:self.resourceUtil
+    withInfoDict:self.zoneInfoDict];
+  ZoneDTO *z = [zoneMed newSpecificZone:HOME_KEY withLvl:1 withMonsterCount:0];
   XCTAssertNotNil(z);
 }
 
@@ -424,13 +437,15 @@ void throwsEx(){
 }
 
 -(void)testGetZone{
-  Zone_Medium* zoneMed = [Zone_Medium newWithDataController:SHData
-    withResourceUtil:SharedGlobal.resourceUtility withInfoDict:SharedGlobal.zoneInfoDictionary];
-  __block Zone *z = [zoneMed constructEmptyZone];
-  NSManagedObjectContext* bgContext = [SHData newBackgroundContext];
+  NSManagedObjectContext *context = [self.dc newBackgroundContext];
+  Zone_Medium* zoneMed = [Zone_Medium newWithContext:context
+    withResourceUtil:self.resourceUtil
+    withInfoDict:self.zoneInfoDict];
+  __block Zone *z = [zoneMed newEmptyZone];
+  NSManagedObjectContext* bgContext = [self.dc newBackgroundContext];
   z.isFront = YES;
   z.zoneKey = @"NEBULA";
-  __block Zone *z2 = [zoneMed constructEmptyZone];
+  __block Zone *z2 = [zoneMed newEmptyZone];
   z2.isFront = NO;
   z2.zoneKey = @"GAS";
   [bgContext performBlockAndWait:^{
@@ -445,7 +460,7 @@ void throwsEx(){
   Zone *z4 = [zoneMed getZone:NO];
   XCTAssertTrue(!z4.isFront);
   XCTAssertTrue([z4.zoneKey isEqualToString:@"GAS"]);
-  __block Zone *z5 = [zoneMed constructEmptyZone];
+  __block Zone *z5 = [zoneMed newEmptyZone];
   z5.isFront = YES;
   z5.zoneKey = @"TEMPLE";
   [bgContext performBlockAndWait:^{
@@ -458,20 +473,22 @@ void throwsEx(){
 
 
 -(void)testMoveToFront{
-  Zone_Medium* zoneMed = [Zone_Medium newWithDataController:SHData
-    withResourceUtil:SharedGlobal.resourceUtility withInfoDict:SharedGlobal.zoneInfoDictionary];
-  __block Zone *z0 = [zoneMed constructSpecificZone:HOME_KEY withLvl:1 withMonsterCount:0];;
-  NSManagedObjectContext* bgContext = [SHData newBackgroundContext];
+  NSManagedObjectContext *context = [self.dc newBackgroundContext];
+  Zone_Medium* zoneMed = [Zone_Medium newWithContext:context
+    withResourceUtil:self.resourceUtil
+    withInfoDict:self.zoneInfoDict];
+  __block ZoneDTO *z0 = [zoneMed newSpecificZone:HOME_KEY withLvl:1 withMonsterCount:0];;
+  NSManagedObjectContext* bgContext = [self.dc newBackgroundContext];
   
   [bgContext performBlockAndWait:^{
-    [bgContext insertObject:z0];
-    [zoneMed moveZoneToFront:z0];
-    XCTAssertTrue(z0.isFront);
+    Zone *zCd = (Zone*)[bgContext newEntity:Zone.entity];
+    [zoneMed moveZoneToFront:zCd];
+    XCTAssertTrue(zCd.isFront);
     NSError *error = nil;
     [bgContext save:&error];
   }];
 
-  __block Zone *z1 = [zoneMed constructEmptyZone];
+  __block Zone *z1 = [zoneMed newEmptyZone];
   z1.zoneKey = @"GAS";
   
   [bgContext performBlockAndWait:^{
@@ -488,7 +505,7 @@ void throwsEx(){
   XCTAssertFalse(((Zone *)zones[1]).isFront);
   XCTAssertTrue([((Zone *)zones[1]).zoneKey isEqualToString:@"HOME"]);
   
-  __block Zone *z2 = [zoneMed constructEmptyZone];
+  __block Zone *z2 = [zoneMed newEmptyZone];
   z2.zoneKey = @"NEBULA";
   
   [bgContext performBlockAndWait:^{
@@ -498,7 +515,7 @@ void throwsEx(){
     [bgContext save:&error];
   }];
   [bgContext performBlockAndWait:^{
-    NSArray<NSManagedObject *> *zones = [zoneMed getAllZones:nil withContext:bgContext];
+    NSArray<NSManagedObject *> *zones = [zoneMed getAllZones:nil];
     XCTAssertEqual(zones.count, 2);
     XCTAssertTrue(((Zone *)zones[0]).isFront);
     XCTAssertTrue([((Zone *)zones[0]).zoneKey isEqualToString:@"NEBULA"]);
@@ -515,7 +532,7 @@ void throwsEx(){
     NSError *error = nil;
     [bgContext save:&error];
     
-    zones = [zoneMed getAllZones:nil withContext:bgContext];
+    zones = [zoneMed getAllZones:nil];
     XCTAssertEqual(zones.count, 2);
     XCTAssertTrue(((Zone *)zones[0]).isFront);
     XCTAssertTrue([((Zone *)zones[0]).zoneKey isEqualToString:@"GAS"]);

@@ -14,4 +14,5 @@
 -(ValType)getWithKey:(KeyType)key OrCreateFromBlock:(id (^)(id))creator withObj:(id)obj;
 +(NSString *)dictToString:(NSDictionary *)dict;
 +(NSMutableDictionary *)jsonStringToDict:(NSString *)jsonStr;
++(NSMutableDictionary*)objectToDictionary:(NSObject*)object;
 @end

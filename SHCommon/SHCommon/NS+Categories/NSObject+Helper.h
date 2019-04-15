@@ -17,6 +17,8 @@
   context:(void *)context;
 
 -(BOOL)isDictionaryType;
+-(id)dtoCopy;
+-(void)dtoCopyFrom:(NSObject*)fromObject;
 
 #if IS_IOS
 -(UIView *)loadXib:(NSString *)nibName;

@@ -18,9 +18,11 @@
 #import "RefO.h"
 #import "PtrHolder.h"
 #import "FromCFunc.h"
-#import "ArcLessObj.h"
+#import "No_Arc/ArcLessObj.h"
 #import "DumbDataSaver.h"
 #import "CircleMaybe.h"
+#import "SimpleDTO.h"
+#import "Watcher.h"
 
 
 typedef WeakHolder Varholder;
@@ -121,6 +123,13 @@ void cMakeHouses(void);
 +(void)testChildInsertSave;
 +(void)testOrderednessCoreData;
 +(void)dispatchQueueExp;
++(void)atomicExp;
++(void)privateInst;
++(void)ivarList;
++(void)reflectionCopy;
++(void)subStrC;
++(void)KVOStuff;
++(void)queuePossibleDeadlock;
 @end
 
 #import "Experiments+Charlie.h"

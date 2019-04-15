@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "P_StoryItem.h"
 #import "ZoneInfoDictionary.h"
+#import <SHCommon/SHObject.h>
 
 @import CoreData;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ZoneDTO : NSObject<P_StoryItem>
+@interface ZoneDTO : SHObject<P_StoryItem,NSCopying>
 +(instancetype)newWithZoneDict:(ZoneInfoDictionary*)zoneInfoDict;
 @property (copy,nonatomic) NSManagedObjectID *objectID;
 @property (nonatomic) BOOL isFront;

@@ -24,7 +24,8 @@
 -(NSArray<NSMutableDictionary *> *)mappedReminders{
     NSMutableArray<NSMutableDictionary *> *reminders = [NSMutableArray array];
     for(Reminder *reminder in self.daily_remind){
-        [reminders addObject:reminder.mapable];
+      
+        //TODO: [reminders addObject:reminder.mapable];
     }
     return reminders;
 }

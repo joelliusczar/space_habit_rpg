@@ -15,8 +15,30 @@
 @property (copy,nonatomic) void (^myBlock)(void);
 @end
 
-@implementation CircleMaybe
+static NSInteger stato;
 
+@implementation CircleMaybe{
+  House *h;
+  House *h2;
+}
+
+@synthesize mediocre = _mediocre;
+-(House*)mediocre{
+  return _mediocre;
+}
+
+-(void)setMediocre:(House *)mediocre{
+  _mediocre = mediocre;
+}
+//-(House*)mediocre{
+//  //return h2;
+//  return _mediocre;
+//}
+//
+//-(void)setMediocre:(House *)mediocre{
+//  //h2 = mediocre;
+//  _mediocre = mediocre;
+//}
 
 -(NSObject*)foo{
   __block id result = nil;
@@ -52,6 +74,24 @@
   if(self = [super init]){
     _q = dispatch_queue_create("My_que", DISPATCH_QUEUE_SERIAL);
     _boot = 17;
+    _corruptyo = @[[House new],[House new],[House new],[House new]];
+  }
+  return self;
+}
+
+
+-(instancetype)init2{
+  if(self = [super init]){
+    _q = dispatch_queue_create("My_que", DISPATCH_QUEUE_SERIAL);
+    dispatch_queue_t cq = dispatch_queue_create("conc",DISPATCH_QUEUE_CONCURRENT);
+    dispatch_sync(_q,^{
+      NSLog(@"In concurrent");
+      
+      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        self.bar = 83;
+        //[NSThread sleepForTimeInterval:5];
+      }];
+    });
   }
   return self;
 }
@@ -71,15 +111,94 @@
   });
 }
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Warc-retain-cycles"
 -(void)addBlock{
   self.myBlock = ^{
     [self makeNoise];
   };
 }
+#pragma  GCC diagnostic pop
 
+
+-(void)nonatomicEx{;
+  dispatch_queue_t cq = dispatch_queue_create("conc",DISPATCH_QUEUE_CONCURRENT);
+  dispatch_queue_t cq2 = dispatch_queue_create("conc2",DISPATCH_QUEUE_CONCURRENT);
+  //for(int i = 1; i <= 1000; i++){
+    dispatch_async(cq, ^{
+      @autoreleasepool {
+        House *result = self.corruptyo[0];
+        [result returnsNothing];
+        NSLog(@"ANything? --- %@",result);
+      }
+    });
+    dispatch_async(cq2,^{
+      @autoreleasepool {
+        NSLog(@"2: ");
+        self.corruptyo = nil;
+        
+        NSLog(@"that motherfucker! ---- ");
+      }
+    });
+
+  //}
+
+}
+
+-(void)actionPlace1{
+  House *result = self.corruptyo[0];
+  NSLog(@"ANything? --- %@",result);
+}
+
+
+-(void)actionPlace2{
+  NSLog(@"2: ");
+  self.corruptyo = nil;
+
+  NSLog(@"that motherfucker! ---- ");
+}
+
+
+-(void)threado{
+  NSThread *t1 = [[NSThread alloc] initWithBlock:^{
+    @autoreleasepool {
+      House *result = self.corruptyo[0];
+      [result returnsNothing];
+      NSLog(@"ANything? --- %@",result);
+    }
+  }];
+  
+  NSThread *t2 = [[NSThread alloc] initWithBlock:^{
+    @autoreleasepool {
+      NSLog(@"2: ");
+      self.corruptyo = nil;
+    }
+
+    NSLog(@"that motherfucker! ---- ");
+  }];
+  [t1 start];
+  [t2 start];
+}
+
+
+-(void)setHouse{
+  h = [House new];
+  NSLog(@"%@",h);
+}
+
+
+-(void)checkHouse{
+  NSLog(@"And den: %@",h);
+}
 
 -(void)dealloc{
   NSLog(@"Deallocating this cunt!");
+}
+
+
+-(void)trackStat{
+  stato += 5;
+  NSLog(@"%lu",stato);
 }
 
 @end

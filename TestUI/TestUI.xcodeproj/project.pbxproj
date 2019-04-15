@@ -147,9 +147,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				276E6D9B222A54B300CB36CB /* libSH_C.a in Frameworks */,
 				276E6D9D222A54B300CB36CB /* libSH_CTools.a in Frameworks */,
 				276E6D9F222A54B300CB36CB /* libSHDatetime.a in Frameworks */,
+				276E6D9B222A54B300CB36CB /* libSH_C.a in Frameworks */,
 				276E6DA1222A54B300CB36CB /* SHCommon.framework in Frameworks */,
 				276E6DA3222A54B300CB36CB /* SHData.framework in Frameworks */,
 				276E6DA5222A54B300CB36CB /* SHGlobal.framework in Frameworks */,

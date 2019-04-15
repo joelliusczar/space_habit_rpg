@@ -30,7 +30,7 @@ uint mockRandom(uint bound){
 @implementation CommonUtilitiesTest
 
 NSDate* getReferenceDate(){
-    NSCalendar *cal = SharedGlobal.inUseCalendar;
+    NSCalendar *cal = NSCalendar.currentCalendar;
     NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
     dateComponents.year = 2016;
     dateComponents.month = 1;
@@ -45,7 +45,6 @@ NSDate* getReferenceDate(){
     
 - (void)setUp {
     [super setUp];
-    XCTAssertEqual(SharedGlobal.EnviromentNum,ENV_UTEST);
     ogRandFn = randomUInt;
     randomUInt = &mockRandom;
 }

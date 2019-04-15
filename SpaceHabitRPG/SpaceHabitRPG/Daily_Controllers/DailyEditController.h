@@ -12,6 +12,7 @@
 #import <SHData/P_CoreData.h>
 #import <SHGlobal/Constants.h>
 #import <SHModels/Daily+CoreDataClass.h>
+#import <SHModels/SHDailyDTO.h>
 #import <SHControls/P_DailyEditCompound.h>
 #import <SHControls/AllSHControls.h>
 
@@ -25,12 +26,11 @@
 @property (weak,nonatomic) IBOutlet SHButton *showXtraOptsBtn;
 @property (weak,nonatomic) IBOutlet UITableView *controlsTbl;
 @property (strong,nonatomic) Daily *modelForEditing;
-@property (weak,nonatomic) UIViewController *parentDailyController;
+@property (weak,nonatomic) DailyViewController *parentDailyController;
 
--(instancetype)initWithParentDailyController:(UIViewController *)parentDailyController
-withDataController:(NSObject<P_CoreData>*)dataController;
+-(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController;
 
--(instancetype)initWithParentDailyController:(UIViewController *)parentDailyController
+-(instancetype)initWithParentDailyController:(DailyViewController *)parentDailyController
 ToEdit:(Daily *)daily
 AtIndexPath:(NSIndexPath *)rowInfo;
 

@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <SHCommon/SHObject.h>
 @import CoreData;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHSettingsDTO : NSObject
+@interface SHSettingsDTO : SHObject<NSCopying>
 @property (copy,nonatomic) NSManagedObjectID *objectID;
+@property (nonatomic) int32_t gameState;
 @property (nonatomic) BOOL allowReport;
 @property (nullable, nonatomic, copy) NSDate *createDate;
 @property (nonatomic) int32_t dayStart;

@@ -7,20 +7,15 @@
 //
 
 #import "SHHeroDTO.h"
-#import <SHCommon/CommonUtilities.h>
+#import <SHCommon/NSObject+Helper.h>
+
 
 @implementation HeroDTO
 
 
-+(instancetype)newWithObjectID:(NSManagedObjectID*)objectID withContext:(NSManagedObjectContext*)context{
-  HeroDTO *instance = [HeroDTO new];
-  return instance;
-}
-
 -(id)copyWithZone:(NSZone *)zone{
   (void)zone;
-  HeroDTO *hero = [HeroDTO new];
-  copyInstanceProps(self,hero);
-  return hero;
+  return [self dtoCopy];
 }
+
 @end

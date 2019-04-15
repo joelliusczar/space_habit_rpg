@@ -16,10 +16,8 @@
 
 
 @interface DailyViewController : UIViewController <UITableViewDelegate, UITableViewDataSource,NSFetchedResultsControllerDelegate>
-
--(instancetype)initWithParent:(CentralViewController *)parent
-withDataController:(NSObject<P_CoreData>*)dataController
-withResourceUtil:(NSObject<P_CoreData>*)resourceUtil;
+@property (weak,nonatomic) CentralViewController *central;
+-(instancetype)initWithCentral:(CentralViewController *)central;
 
 -(void)setuptab;
 -(void)completeDaily:(Daily *)daily;

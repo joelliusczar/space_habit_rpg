@@ -32,6 +32,11 @@
   andResourceUtil:(NSObject<P_ResourceUtility>*)util
   andBundle:(NSBundle*)bundle;
 
+-(instancetype)initWithDataController:(NSObject<P_CoreData>*)dataController
+  andNibName:(NSString*)nib
+  andResourceUtil:(NSObject<P_ResourceUtility>*)util
+  andBundle:(NSBundle*)bundle;
+
 -(void)setToShowStory:(BOOL)shouldShowStory;
 -(void)afterZonePick:(ZoneDTO*)zoneChoice withContext:(NSManagedObjectContext*)context;
 -(void)afterIntroWithContext:(NSManagedObjectContext*)context;

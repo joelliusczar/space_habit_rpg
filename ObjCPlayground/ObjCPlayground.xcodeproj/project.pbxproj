@@ -52,6 +52,11 @@
 		27B719372232C67000540542 /* FromCFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B719362232C67000540542 /* FromCFunc.m */; };
 		27B7193A22342FE600540542 /* ArcLessObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B7193922342FE600540542 /* ArcLessObj.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		27B7194E223860F700540542 /* DumbDataSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B7194D223860F700540542 /* DumbDataSaver.m */; };
+		27CA862422600CFE00AE8FDB /* QNoArc.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA862322600CFE00AE8FDB /* QNoArc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		27CA862722613EF000AE8FDB /* SimpleDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA862622613EF000AE8FDB /* SimpleDTO.m */; };
+		27CA862A2261722600AE8FDB /* Watcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86292261722600AE8FDB /* Watcher.m */; };
+		27CA86302261896E00AE8FDB /* NSObject+TestKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA862F2261896E00AE8FDB /* NSObject+TestKVO.m */; };
+		27CA8633226193F000AE8FDB /* SimpleDTO+Replace.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA8632226193F000AE8FDB /* SimpleDTO+Replace.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -157,6 +162,16 @@
 		27B7193922342FE600540542 /* ArcLessObj.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArcLessObj.m; sourceTree = "<group>"; };
 		27B7194C223860F700540542 /* DumbDataSaver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DumbDataSaver.h; sourceTree = "<group>"; };
 		27B7194D223860F700540542 /* DumbDataSaver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DumbDataSaver.m; sourceTree = "<group>"; };
+		27CA862222600CFE00AE8FDB /* QNoArc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QNoArc.h; sourceTree = "<group>"; };
+		27CA862322600CFE00AE8FDB /* QNoArc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QNoArc.m; sourceTree = "<group>"; };
+		27CA862522613EF000AE8FDB /* SimpleDTO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleDTO.h; sourceTree = "<group>"; };
+		27CA862622613EF000AE8FDB /* SimpleDTO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleDTO.m; sourceTree = "<group>"; };
+		27CA86282261722600AE8FDB /* Watcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Watcher.h; sourceTree = "<group>"; };
+		27CA86292261722600AE8FDB /* Watcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Watcher.m; sourceTree = "<group>"; };
+		27CA862E2261896E00AE8FDB /* NSObject+TestKVO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+TestKVO.h"; sourceTree = "<group>"; };
+		27CA862F2261896E00AE8FDB /* NSObject+TestKVO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TestKVO.m"; sourceTree = "<group>"; };
+		27CA8631226193F000AE8FDB /* SimpleDTO+Replace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimpleDTO+Replace.h"; sourceTree = "<group>"; };
+		27CA8632226193F000AE8FDB /* SimpleDTO+Replace.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SimpleDTO+Replace.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,12 +211,11 @@
 		2747C3F02044C43D00FB5669 /* ObjCPlayground */ = {
 			isa = PBXGroup;
 			children = (
+				27CA862122600CCE00AE8FDB /* No_Arc */,
 				2747C4452044C65B00FB5669 /* 3Gen */,
 				2747C4192044C51B00FB5669 /* main.m */,
 				2747C4102044C51900FB5669 /* Experiments.h */,
 				2747C42B2044C51E00FB5669 /* Experiments.m */,
-				2761E3022055A9B8001F6282 /* NoArcExp.h */,
-				2761E3032055A9B8001F6282 /* NoArcExp.m */,
 				2747C4272044C51E00FB5669 /* ChildMan.h */,
 				2747C4122044C51A00FB5669 /* ChildMan.m */,
 				2747C3FE2044C51600FB5669 /* CockblockShield.h */,
@@ -267,12 +281,18 @@
 				279BE808222C9CF10023E34D /* PtrHolder.m */,
 				27B719352232C67000540542 /* FromCFunc.h */,
 				27B719362232C67000540542 /* FromCFunc.m */,
-				27B7193822342FE600540542 /* ArcLessObj.h */,
-				27B7193922342FE600540542 /* ArcLessObj.m */,
 				27B7194C223860F700540542 /* DumbDataSaver.h */,
 				27B7194D223860F700540542 /* DumbDataSaver.m */,
 				27075D73225AC4DD00AD13AA /* CircleMaybe.h */,
 				27075D74225AC4DD00AD13AA /* CircleMaybe.m */,
+				27CA862522613EF000AE8FDB /* SimpleDTO.h */,
+				27CA862622613EF000AE8FDB /* SimpleDTO.m */,
+				27CA8631226193F000AE8FDB /* SimpleDTO+Replace.h */,
+				27CA8632226193F000AE8FDB /* SimpleDTO+Replace.m */,
+				27CA86282261722600AE8FDB /* Watcher.h */,
+				27CA86292261722600AE8FDB /* Watcher.m */,
+				27CA862E2261896E00AE8FDB /* NSObject+TestKVO.h */,
+				27CA862F2261896E00AE8FDB /* NSObject+TestKVO.m */,
 			);
 			path = ObjCPlayground;
 			sourceTree = "<group>";
@@ -309,6 +329,19 @@
 				278FFDA4222B2FAB00DAF985 /* ObjCPlayground.base.xcconfig */,
 			);
 			path = Configs;
+			sourceTree = "<group>";
+		};
+		27CA862122600CCE00AE8FDB /* No_Arc */ = {
+			isa = PBXGroup;
+			children = (
+				2761E3022055A9B8001F6282 /* NoArcExp.h */,
+				2761E3032055A9B8001F6282 /* NoArcExp.m */,
+				27CA862222600CFE00AE8FDB /* QNoArc.h */,
+				27CA862322600CFE00AE8FDB /* QNoArc.m */,
+				27B7193822342FE600540542 /* ArcLessObj.h */,
+				27B7193922342FE600540542 /* ArcLessObj.m */,
+			);
+			path = No_Arc;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -369,6 +402,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2747C44E2044C80500FB5669 /* Ocean.m in Sources */,
+				27CA8633226193F000AE8FDB /* SimpleDTO+Replace.m in Sources */,
 				2747C43A2044C51F00FB5669 /* CockblockShield.m in Sources */,
 				27B719372232C67000540542 /* FromCFunc.m in Sources */,
 				2747C43C2044C51F00FB5669 /* House+Things.m in Sources */,
@@ -389,8 +423,10 @@
 				2726A8582222529A003993B3 /* WeakHolder.m in Sources */,
 				2761E3042055A9B8001F6282 /* NoArcExp.m in Sources */,
 				27B7194E223860F700540542 /* DumbDataSaver.m in Sources */,
+				27CA86302261896E00AE8FDB /* NSObject+TestKVO.m in Sources */,
 				2726A85722225299003993B3 /* RefO.m in Sources */,
 				2747C4392044C51F00FB5669 /* XPSideKick.m in Sources */,
+				27CA862422600CFE00AE8FDB /* QNoArc.m in Sources */,
 				2747C50A204A3A7400FB5669 /* ExtraAction.m in Sources */,
 				2747C4312044C51F00FB5669 /* Holder.m in Sources */,
 				279BE809222C9CF10023E34D /* PtrHolder.m in Sources */,
@@ -404,8 +440,10 @@
 				2747C4342044C51F00FB5669 /* House.m in Sources */,
 				2747C42F2044C51F00FB5669 /* ExpNonNull.m in Sources */,
 				27B7193A22342FE600540542 /* ArcLessObj.m in Sources */,
+				27CA862722613EF000AE8FDB /* SimpleDTO.m in Sources */,
 				2747C43D2044C51F00FB5669 /* PersonThingUser.m in Sources */,
 				2747C44B2044C73E00FB5669 /* Lake.m in Sources */,
+				27CA862A2261722600AE8FDB /* Watcher.m in Sources */,
 				2747C43E2044C51F00FB5669 /* WeakLeash.m in Sources */,
 				2747C4422044C51F00FB5669 /* Experiments+Bravo.m in Sources */,
 			);
@@ -464,7 +502,6 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -516,7 +553,6 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;

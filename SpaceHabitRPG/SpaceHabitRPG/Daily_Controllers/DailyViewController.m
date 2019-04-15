@@ -20,7 +20,7 @@
 #import <SHCommon/NSDate+DateHelper.h>
 #import <SHCommon/Interceptor.h>
 #import <SHControls/SHButton.h>
-#import <SHModels/Monster_Medium.h>
+#import <SHModels/SHMonster_Medium.h>
 #import <SHModels/Daily_Medium.h>
 
 
@@ -28,7 +28,6 @@
 @interface DailyViewController ()
 
 @property (strong,nonatomic) DailyEditController *dailyEditor;
-@property (weak,nonatomic) CentralViewController *parentController;
 @property (strong,nonatomic) UITableView *dailiesTable;
 @property (strong,nonatomic) NSFetchedResultsController *incompleteItems;
 @property (strong,nonatomic) NSFetchedResultsController *completeItems;
@@ -45,38 +44,17 @@ static NSString *const EntityName = @"Daily";
 
 @synthesize dailyEditor = _dailyEditor;
 -(DailyEditController *)dailyEditor{
-    if(_dailyEditor == nil){
-        _dailyEditor = [[DailyEditController alloc] initWithParentDailyController:self
-          withDataController:self.dataController];
-    }
-    return _dailyEditor;
-}
-
-
--(Daily_Medium*)dailyMedium{
-  if(nil == _dailyMedium){
-    _dailyMedium = [Daily_Medium newWithSHData:self.dataController];
+  if(_dailyEditor == nil){
+    _dailyEditor = [[DailyEditController alloc]
+    initWithParentDailyController:self];
   }
-  return _dailyMedium;
+  return _dailyEditor;
 }
 
 
--(Monster_Medium*)monsterMedium{
-  if(_monsterMedium){
-    MonsterInfoDictionary *monsterDict = [MonsterInfoDictionary newWithResourceUtil:self.resourceUtil];
-    _monsterMedium = [Monster_Medium newWithDataController:self.dataController withInfoDict:monsterDict];
-  }
-  return _monsterMedium;
-}
-
--(instancetype)initWithParent:(CentralViewController *)parent
-withDataController:(NSObject<P_CoreData>*)dataController
-withResourceUtil:(NSObject<P_ResourceUtility>*)resourceUtil
-{
+-(instancetype)initWithCentral:(CentralViewController *)central{
   if(self = [self initWithNibName:@"DailyViewController" bundle:nil]){
-    _parentController = parent;
-    _dataController = dataController;
-    _resourceUtil = resourceUtil;
+    self->_central = central;
     [self setuptab];
     
   }
@@ -95,9 +73,10 @@ withResourceUtil:(NSObject<P_ResourceUtility>*)resourceUtil
   CGFloat height = [UIScreen mainScreen].bounds.size.height;
   CGFloat minY = self.view.frame.origin.y;
   CGFloat viewHeight = self.view.frame.size.height - (height *.10);
-  self.dailiesTable.frame = CGRectMake(0, minY + (height * .10),
-                                                     width,
-                                                     viewHeight);
+  self.dailiesTable.frame = CGRectMake(0,
+   minY + (height * .10),
+   width,
+   viewHeight);
   self.dailiesTable.delegate = self;
   self.dailiesTable.dataSource = self;
   self.incompleteItems.delegate = self;
@@ -134,15 +113,16 @@ withResourceUtil:(NSObject<P_ResourceUtility>*)resourceUtil
 
 
 -(void)setupData{
-    NSDate *todayStart = [[NSDate date] dayStart];
-    todayStart = [todayStart timeAfterHours:SHSettings.dayStart minutes:0 seconds:0];
-    self.incompleteItems = [self.dailyMedium getUnfinishedDailiesController:todayStart
-      withContext:self.dataController.mainThreadContext];
-    self.completeItems = [self.dailyMedium getFinishedDailiesController:todayStart
-      withContext:self.dataController.mainThreadContext];
-    
-    [self fetchUpdates];
-    
+  SHSettingsDTO *settings = self.central.settingsDTO;
+  NSDate *todayStart = [[NSDate date] dayStart];
+  todayStart = [todayStart timeAfterHours:settings.dayStart minutes:0 seconds:0];
+  self.incompleteItems = [self.dailyMedium getUnfinishedDailiesController:todayStart
+    withContext:self.dataController.mainThreadContext];
+  self.completeItems = [self.dailyMedium getFinishedDailiesController:todayStart
+    withContext:self.dataController.mainThreadContext];
+  
+  [self fetchUpdates];
+  
 }
 
 
@@ -195,8 +175,8 @@ withResourceUtil:(NSObject<P_ResourceUtility>*)resourceUtil
 
 
 -(UIViewController*)getEditScreen{
-    DailyEditController *dailyEditor = [[DailyEditController alloc] initWithParentDailyController:self
-      withDataController:self.dataController];
+    DailyEditController *dailyEditor = [[DailyEditController alloc]
+      initWithParentDailyController:self];
     EditNavigationController *editController = [[EditNavigationController alloc]
                                                 initWithTitle:@"Add Daily"
                                                 andEditor:dailyEditor];
@@ -205,7 +185,7 @@ withResourceUtil:(NSObject<P_ResourceUtility>*)resourceUtil
 
 
 - (IBAction)addDailyBtn_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
-  [self.parentController arrangeAndPushChildVCToFront:[self getEditScreen]];
+  [self.central arrangeAndPushChildVCToFront:[self getEditScreen]];
 }
 
 
@@ -222,7 +202,7 @@ withResourceUtil:(NSObject<P_ResourceUtility>*)resourceUtil
             EditNavigationController *editController = [[EditNavigationController alloc]
                                                         initWithTitle:@"Add Daily"
                                                         andEditor:dailyEditor];
-            [weakSelf.parentController arrangeAndPushChildVCToFront:editController];
+            [weakSelf.central arrangeAndPushChildVCToFront:editController];
         };
         [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@pressedEdit",self.description]];
     };
