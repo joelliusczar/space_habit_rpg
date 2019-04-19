@@ -29,7 +29,7 @@ void printWorkingDir(){
     SharedGlobal.bundle = [NSBundle bundleForClass:SHStoryItemDictionary.class];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     NSObject<P_CoreData> *dataController = SHData;
-    self.centralController = [CentralViewController newWithDataController:dataController
+    self.centralController = [SHCentralViewController newWithDataController:dataController
       andNibName:@"CentralViewController"
       andResourceUtil:SharedGlobal.resourceUtility
       andBundle:nil];

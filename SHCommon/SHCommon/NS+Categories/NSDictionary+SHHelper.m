@@ -15,7 +15,7 @@
 
 
 static NSMutableDictionary* _mapEntriesToDict(NSDictionary *dict,
-  dictEntrytransformer transformer,
+  shDictEntrytransformer transformer,
   NSMutableSet* cycleTracker)
   {
   NSMutableDictionary *result = [NSMutableDictionary dictionaryWithCapacity:dict.count];
@@ -31,12 +31,12 @@ static NSMutableDictionary* _mapEntriesToDict(NSDictionary *dict,
 
 
 -(NSMutableDictionary*)mapEntiresToDicts{
-  return _mapEntriesToDict(self, defaultTransformer,nil);
+  return _mapEntriesToDict(self, shDefaultTransformer,nil);
 }
 
 
 -(NSMutableDictionary*)mapEntiresToDictsWithTransformer:
-  (dictEntrytransformer)transformer
+  (shDictEntrytransformer)transformer
   withSet:(NSMutableSet*)cycleTracker{
   return _mapEntriesToDict(self, transformer,cycleTracker);
 }
@@ -63,7 +63,7 @@ static NSMutableDictionary* _mapEntriesToDict(NSDictionary *dict,
 
 
 static NSMutableDictionary* objectToDict(NSObject *object,
-  dictEntrytransformer transformer,
+  shDictEntrytransformer transformer,
   NSMutableSet* cycleTracker){
   
   if(nil == cycleTracker){
@@ -101,7 +101,7 @@ static NSMutableDictionary* objectToDict(NSObject *object,
 
 +(NSMutableDictionary*)objectToDictionary:
   (NSObject*)object
-  withTransformer:(dictEntrytransformer)transformBlock
+  withTransformer:(shDictEntrytransformer)transformBlock
   withSet:(NSMutableSet*)cycleTracker
 {
   return objectToDict(object, transformBlock,cycleTracker);
@@ -109,7 +109,7 @@ static NSMutableDictionary* objectToDict(NSObject *object,
 
 
 +(NSMutableDictionary*)objectToDictionary:(NSObject*)object{
-  return objectToDict(object, defaultTransformer,nil);
+  return objectToDict(object, shDefaultTransformer,nil);
 }
 
 

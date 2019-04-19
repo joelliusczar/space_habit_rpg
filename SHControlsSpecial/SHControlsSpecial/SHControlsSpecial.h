@@ -14,16 +14,16 @@ FOUNDATION_EXPORT double SHControlsSpecialVersionNumber;
 //! Project version string for SHControlsSpecial.
 FOUNDATION_EXPORT const unsigned char SHControlsSpecialVersionString[];
 
-#import "P_ReminderTimeSpinPickerDelegate.h"
-#import "ReminderTimeSpinPicker.h"
-#import "ReminderListView.h"
-#import "ReminderCellController.h"
-#import "YearPartPicker.h"
-#import "MonthPartPicker.h"
-#import "RateSetContainer.h"
-#import "WeeklyActiveDays.h"
-#import "MonthlyActiveDays.h"
-#import "YearlyActiveDays.h"
+#import "SHReminderTimeSpinPickerDelegateProtocol.h"
+#import "SHReminderTimeSpinPicker.h"
+#import "SHReminderListView.h"
+#import "SHReminderCellController.h"
+#import "SHYearPartPicker.h"
+#import "SHMonthPartPicker.h"
+#import "SHRateSetContainer.h"
+#import "SHWeeklyActiveDays.h"
+#import "SHMonthlyActiveDays.h"
+#import "SHYearlyActiveDays.h"
 
 // In this header, you should import all the public headers of your framework using statements like #import <SHControlsSpecial/PublicHeader.h>
 

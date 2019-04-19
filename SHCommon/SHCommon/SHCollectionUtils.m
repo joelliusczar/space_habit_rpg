@@ -11,7 +11,7 @@
 #import "NSArray+SHHelper.h"
 
 
-const dictEntrytransformer defaultTransformer = ^id(id object,
+const shDictEntrytransformer shDefaultTransformer = ^id(id object,
   NSMutableSet *cycleTracker)
 {
   if([object isMemberOfClass:NSDate.class]){
@@ -21,16 +21,16 @@ const dictEntrytransformer defaultTransformer = ^id(id object,
   if([object respondsToSelector:@selector(enumerateObjectsUsingBlock:)]){
     NSArray *array = (NSArray*)object;
     return [array arrayWithItemsAsDictsWithTransformer:
-      defaultTransformer
+      shDefaultTransformer
       withSet:cycleTracker];
   }
   return [NSDictionary objectToDictionary:object
-    withTransformer:defaultTransformer
+    withTransformer:shDefaultTransformer
     withSet:cycleTracker];
 };
 
 NSMutableArray *shArrayWithItemsAsDicts(NSArray *array,
-  dictEntrytransformer transformer,
+  shDictEntrytransformer transformer,
   NSMutableSet *cycleTracker)
 {
   NSMutableArray *result = [NSMutableArray arrayWithCapacity:array.count];

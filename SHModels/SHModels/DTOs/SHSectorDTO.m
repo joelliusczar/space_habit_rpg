@@ -1,5 +1,5 @@
 //
-//  SHZoneDTO.m
+//  SHSectorDTO.m
 //  SHModels
 //
 //  Created by Joel Pridgen on 4/6/19.

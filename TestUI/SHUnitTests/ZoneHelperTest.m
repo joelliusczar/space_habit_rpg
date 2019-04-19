@@ -45,119 +45,119 @@ uint zoneHelper_mockRandom(uint range){
   
     NSArray<NSString *> *t = getUnlockedSectorGroupKeys(0);
     XCTAssertEqual(t.count, 1);
-    XCTAssertTrue([t[0] isEqualToString:LVL_0_ZONES]);
+    XCTAssertTrue([t[0] isEqualToString:SH_LVL_0_SECTORS]);
     t = getUnlockedSectorGroupKeys(1);
     XCTAssertEqual(t.count, 1);
-    XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
+    XCTAssertTrue([t[0] isEqualToString:SH_LVL_1_SECTORS]);
     
     t = getUnlockedSectorGroupKeys(4);
     XCTAssertEqual(t.count, 1);
-    XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
+    XCTAssertTrue([t[0] isEqualToString:SH_LVL_1_SECTORS]);
     
     t = getUnlockedSectorGroupKeys(5);
     XCTAssertEqual(t.count, 2);
-    XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
-    XCTAssertTrue([t[1] isEqualToString:LVL_5_ZONES]);
+    XCTAssertTrue([t[0] isEqualToString:SH_LVL_1_SECTORS]);
+    XCTAssertTrue([t[1] isEqualToString:SH_LVL_5_SECTORS]);
     
     t = getUnlockedSectorGroupKeys(9);
     XCTAssertEqual(t.count, 2);
-    XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
-    XCTAssertTrue([t[1] isEqualToString:LVL_5_ZONES]);
+    XCTAssertTrue([t[0] isEqualToString:SH_LVL_1_SECTORS]);
+    XCTAssertTrue([t[1] isEqualToString:SH_LVL_5_SECTORS]);
     
     t = getUnlockedSectorGroupKeys(10);
     XCTAssertEqual(t.count, 3);
-    XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
-    XCTAssertTrue([t[1] isEqualToString:LVL_5_ZONES]);
-    XCTAssertTrue([t[2] isEqualToString:LVL_10_ZONES]);
+    XCTAssertTrue([t[0] isEqualToString:SH_LVL_1_SECTORS]);
+    XCTAssertTrue([t[1] isEqualToString:SH_LVL_5_SECTORS]);
+    XCTAssertTrue([t[2] isEqualToString:SH_LVL_10_SECTORS]);
     
     t = getUnlockedSectorGroupKeys(14);
     XCTAssertEqual(t.count, 3);
-    XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
-    XCTAssertTrue([t[1] isEqualToString:LVL_5_ZONES]);
-    XCTAssertTrue([t[2] isEqualToString:LVL_10_ZONES]);
+    XCTAssertTrue([t[0] isEqualToString:SH_LVL_1_SECTORS]);
+    XCTAssertTrue([t[1] isEqualToString:SH_LVL_5_SECTORS]);
+    XCTAssertTrue([t[2] isEqualToString:SH_LVL_10_SECTORS]);
     
     t = getUnlockedSectorGroupKeys(15);
     XCTAssertEqual(t.count, 4);
-    XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
-    XCTAssertTrue([t[1] isEqualToString:LVL_5_ZONES]);
-    XCTAssertTrue([t[2] isEqualToString:LVL_10_ZONES]);
-    XCTAssertTrue([t[3] isEqualToString:LVL_15_ZONES]);
+    XCTAssertTrue([t[0] isEqualToString:SH_LVL_1_SECTORS]);
+    XCTAssertTrue([t[1] isEqualToString:SH_LVL_5_SECTORS]);
+    XCTAssertTrue([t[2] isEqualToString:SH_LVL_10_SECTORS]);
+    XCTAssertTrue([t[3] isEqualToString:SH_LVL_15_SECTORS]);
     
     t = getUnlockedSectorGroupKeys(19);
     XCTAssertEqual(t.count, 4);
-    XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
-    XCTAssertTrue([t[1] isEqualToString:LVL_5_ZONES]);
-    XCTAssertTrue([t[2] isEqualToString:LVL_10_ZONES]);
-    XCTAssertTrue([t[3] isEqualToString:LVL_15_ZONES]);
+    XCTAssertTrue([t[0] isEqualToString:SH_LVL_1_SECTORS]);
+    XCTAssertTrue([t[1] isEqualToString:SH_LVL_5_SECTORS]);
+    XCTAssertTrue([t[2] isEqualToString:SH_LVL_10_SECTORS]);
+    XCTAssertTrue([t[3] isEqualToString:SH_LVL_15_SECTORS]);
     
     t = getUnlockedSectorGroupKeys(20);
     XCTAssertEqual(t.count, 5);
-    XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
-    XCTAssertTrue([t[1] isEqualToString:LVL_5_ZONES]);
-    XCTAssertTrue([t[2] isEqualToString:LVL_10_ZONES]);
-    XCTAssertTrue([t[3] isEqualToString:LVL_15_ZONES]);
-    XCTAssertTrue([t[4] isEqualToString:LVL_20_ZONES]);
+    XCTAssertTrue([t[0] isEqualToString:SH_LVL_1_SECTORS]);
+    XCTAssertTrue([t[1] isEqualToString:SH_LVL_5_SECTORS]);
+    XCTAssertTrue([t[2] isEqualToString:SH_LVL_10_SECTORS]);
+    XCTAssertTrue([t[3] isEqualToString:SH_LVL_15_SECTORS]);
+    XCTAssertTrue([t[4] isEqualToString:SH_LVL_20_SECTORS]);
 
     t = getUnlockedSectorGroupKeys(24);
     XCTAssertEqual(t.count, 5);
-    XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
-    XCTAssertTrue([t[1] isEqualToString:LVL_5_ZONES]);
-    XCTAssertTrue([t[2] isEqualToString:LVL_10_ZONES]);
-    XCTAssertTrue([t[3] isEqualToString:LVL_15_ZONES]);
-    XCTAssertTrue([t[4] isEqualToString:LVL_20_ZONES]);
+    XCTAssertTrue([t[0] isEqualToString:SH_LVL_1_SECTORS]);
+    XCTAssertTrue([t[1] isEqualToString:SH_LVL_5_SECTORS]);
+    XCTAssertTrue([t[2] isEqualToString:SH_LVL_10_SECTORS]);
+    XCTAssertTrue([t[3] isEqualToString:SH_LVL_15_SECTORS]);
+    XCTAssertTrue([t[4] isEqualToString:SH_LVL_20_SECTORS]);
     
     t = getUnlockedSectorGroupKeys(25);
     XCTAssertEqual(t.count, 6);
-    XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
-    XCTAssertTrue([t[1] isEqualToString:LVL_5_ZONES]);
-    XCTAssertTrue([t[2] isEqualToString:LVL_10_ZONES]);
-    XCTAssertTrue([t[3] isEqualToString:LVL_15_ZONES]);
-    XCTAssertTrue([t[4] isEqualToString:LVL_20_ZONES]);
-    XCTAssertTrue([t[5] isEqualToString:LVL_25_ZONES]);
+    XCTAssertTrue([t[0] isEqualToString:SH_LVL_1_SECTORS]);
+    XCTAssertTrue([t[1] isEqualToString:SH_LVL_5_SECTORS]);
+    XCTAssertTrue([t[2] isEqualToString:SH_LVL_10_SECTORS]);
+    XCTAssertTrue([t[3] isEqualToString:SH_LVL_15_SECTORS]);
+    XCTAssertTrue([t[4] isEqualToString:SH_LVL_20_SECTORS]);
+    XCTAssertTrue([t[5] isEqualToString:SH_LVL_25_SECTORS]);
     
     t = getUnlockedSectorGroupKeys(29);
     XCTAssertEqual(t.count, 6);
-    XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
-    XCTAssertTrue([t[1] isEqualToString:LVL_5_ZONES]);
-    XCTAssertTrue([t[2] isEqualToString:LVL_10_ZONES]);
-    XCTAssertTrue([t[3] isEqualToString:LVL_15_ZONES]);
-    XCTAssertTrue([t[4] isEqualToString:LVL_20_ZONES]);
-    XCTAssertTrue([t[5] isEqualToString:LVL_25_ZONES]);
+    XCTAssertTrue([t[0] isEqualToString:SH_LVL_1_SECTORS]);
+    XCTAssertTrue([t[1] isEqualToString:SH_LVL_5_SECTORS]);
+    XCTAssertTrue([t[2] isEqualToString:SH_LVL_10_SECTORS]);
+    XCTAssertTrue([t[3] isEqualToString:SH_LVL_15_SECTORS]);
+    XCTAssertTrue([t[4] isEqualToString:SH_LVL_20_SECTORS]);
+    XCTAssertTrue([t[5] isEqualToString:SH_LVL_25_SECTORS]);
     
     t = getUnlockedSectorGroupKeys(30);
     XCTAssertEqual(t.count, 7);
-    XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
-    XCTAssertTrue([t[1] isEqualToString:LVL_5_ZONES]);
-    XCTAssertTrue([t[2] isEqualToString:LVL_10_ZONES]);
-    XCTAssertTrue([t[3] isEqualToString:LVL_15_ZONES]);
-    XCTAssertTrue([t[4] isEqualToString:LVL_20_ZONES]);
-    XCTAssertTrue([t[5] isEqualToString:LVL_25_ZONES]);
-    XCTAssertTrue([t[6] isEqualToString:LVL_30_ZONES]);
+    XCTAssertTrue([t[0] isEqualToString:SH_LVL_1_SECTORS]);
+    XCTAssertTrue([t[1] isEqualToString:SH_LVL_5_SECTORS]);
+    XCTAssertTrue([t[2] isEqualToString:SH_LVL_10_SECTORS]);
+    XCTAssertTrue([t[3] isEqualToString:SH_LVL_15_SECTORS]);
+    XCTAssertTrue([t[4] isEqualToString:SH_LVL_20_SECTORS]);
+    XCTAssertTrue([t[5] isEqualToString:SH_LVL_25_SECTORS]);
+    XCTAssertTrue([t[6] isEqualToString:SH_LVL_30_SECTORS]);
     
     t = getUnlockedSectorGroupKeys(1000);
     XCTAssertEqual(t.count, 7);
-    XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
-    XCTAssertTrue([t[1] isEqualToString:LVL_5_ZONES]);
-    XCTAssertTrue([t[2] isEqualToString:LVL_10_ZONES]);
-    XCTAssertTrue([t[3] isEqualToString:LVL_15_ZONES]);
-    XCTAssertTrue([t[4] isEqualToString:LVL_20_ZONES]);
-    XCTAssertTrue([t[5] isEqualToString:LVL_25_ZONES]);
-    XCTAssertTrue([t[6] isEqualToString:LVL_30_ZONES]);
+    XCTAssertTrue([t[0] isEqualToString:SH_LVL_1_SECTORS]);
+    XCTAssertTrue([t[1] isEqualToString:SH_LVL_5_SECTORS]);
+    XCTAssertTrue([t[2] isEqualToString:SH_LVL_10_SECTORS]);
+    XCTAssertTrue([t[3] isEqualToString:SH_LVL_15_SECTORS]);
+    XCTAssertTrue([t[4] isEqualToString:SH_LVL_20_SECTORS]);
+    XCTAssertTrue([t[5] isEqualToString:SH_LVL_25_SECTORS]);
+    XCTAssertTrue([t[6] isEqualToString:SH_LVL_30_SECTORS]);
 }
 
 -(void)testZoneDictionaryOrder{
-    NSArray<NSString *> *zl = [self.zoneInfoDict getGroupKeyList:LVL_1_ZONES];
+    NSArray<NSString *> *zl = [self.zoneInfoDict getGroupKeyList:SH_LVL_1_SECTORS];
     XCTAssertTrue([zl[0] isEqualToString:@"NEBULA"]);
     XCTAssertTrue([zl[1] isEqualToString:@"EMPTY_SPACE"]);
     XCTAssertTrue([zl[2] isEqualToString:@"SAFE_SPACE"]);
     XCTAssertTrue([zl[3] isEqualToString:@"GAS"]);
     
-    zl = [self.zoneInfoDict getGroupKeyList:LVL_10_ZONES];
+    zl = [self.zoneInfoDict getGroupKeyList:SH_LVL_10_SECTORS];
     XCTAssertTrue([zl[0] isEqualToString:@"DEFENSE"]);
     XCTAssertTrue([zl[1] isEqualToString:@"CAVE"]);
     XCTAssertTrue([zl[2] isEqualToString:@"GARBAGE_BALL"]);
     
-    zl = [self.zoneInfoDict getGroupKeyList:LVL_30_ZONES];
+    zl = [self.zoneInfoDict getGroupKeyList:SH_LVL_30_SECTORS];
     XCTAssertTrue([zl[0] isEqualToString:@"WORLD_END"]);
     XCTAssertTrue([zl[1] isEqualToString:@"INFINITE"]);
     XCTAssertTrue([zl[2] isEqualToString:@"BEGINNING"]);
@@ -172,42 +172,42 @@ uint zoneHelper_mockRandom(uint range){
     withInfoDict:self.zoneInfoDict];
   SET_LOW_BOUND();
   SET_LOW_BOUND();
-  NSString *s = [zoneMed getRandomZoneDefinitionKey:10];
+  NSString *s = [zoneMed getRandomSectorDefinitionKey:10];
   XCTAssertTrue([s isEqualToString:@"NEBULA"]);
   
   i = 0;
   rIdx_zh = 0;
   SET_LOW_BOUND();
   SET_UP_BOUND();
-  s = [zoneMed getRandomZoneDefinitionKey:10];
+  s = [zoneMed getRandomSectorDefinitionKey:10];
   XCTAssertTrue([s isEqualToString:@"GAS"]);
   
   i = 0;
   rIdx_zh = 0;
   SET_UP_BOUND();
   SET_UP_BOUND();
-  s = [zoneMed getRandomZoneDefinitionKey:10];
+  s = [zoneMed getRandomSectorDefinitionKey:10];
   XCTAssertTrue([s isEqualToString:@"GARBAGE_BALL"]);
   
   i = 0;
   rIdx_zh = 0;
   SET_UP_BOUND();
   SET_LOW_BOUND();
-  s = [zoneMed getRandomZoneDefinitionKey:10];
+  s = [zoneMed getRandomSectorDefinitionKey:10];
   XCTAssertTrue([s isEqualToString:@"DEFENSE"]);
   
   i = 0;
   rIdx_zh = 0;
   SET_UP_BOUND();
   SET_LOW_BOUND();
-  s = [zoneMed getRandomZoneDefinitionKey:30];
+  s = [zoneMed getRandomSectorDefinitionKey:30];
   XCTAssertTrue([s isEqualToString:@"WORLD_END"]);
   
   i = 0;
   rIdx_zh = 0;
   SET_UP_BOUND();
   SET_UP_BOUND();
-  s = [zoneMed getRandomZoneDefinitionKey:30];
+  s = [zoneMed getRandomSectorDefinitionKey:30];
   XCTAssertTrue([s isEqualToString:@"BEGINNING"]);
 }
 
@@ -304,12 +304,12 @@ uint zoneHelper_mockRandom(uint range){
     withInfoDict:self.zoneInfoDict];
   int i = 0;
   rIdx_zh = 0;
-  HeroDTO *h = [HeroDTO new];
+  SHHeroDTO *h = [SHHeroDTO new];
   h.lvl = 14;
   SET_LOW_BOUND();
   SET_LOW_BOUND();
   SET_LOW_BOUND();
-  ZoneDTO *z = [zoneMed newRandomZoneChoiceGivenHero:h ifShouldMatchLvl:YES];
+  SHSectorDTO *z = [zoneMed newRandomSectorChoiceGivenHero:h ifShouldMatchLvl:YES];
   XCTAssertTrue([z.sectorKey isEqualToString:@"NEBULA"]);
   XCTAssertEqual(z.lvl, 14);
   XCTAssertTrue([z.suffix isEqualToString:@""]);
@@ -322,7 +322,7 @@ uint zoneHelper_mockRandom(uint range){
   SET_LOW_BOUND();
   SET_LOW_BOUND();
   SET_UP_BOUND();
-  z = [zoneMed newRandomZoneChoiceGivenHero:h ifShouldMatchLvl:YES];
+  z = [zoneMed newRandomSectorChoiceGivenHero:h ifShouldMatchLvl:YES];
   XCTAssertTrue([z.sectorKey isEqualToString:@"NEBULA"]);
   XCTAssertEqual(z.lvl, 14);
   XCTAssertTrue([z.suffix isEqualToString:@"Alpha"]);
@@ -336,7 +336,7 @@ uint zoneHelper_mockRandom(uint range){
   SET_LOW_BOUND(); //zone
   SET_LOW_BOUND(); //zone lvl
   SET_UP_BOUND(); //maxMonsters
-  z = [zoneMed newRandomZoneChoiceGivenHero:h ifShouldMatchLvl:NO];
+  z = [zoneMed newRandomSectorChoiceGivenHero:h ifShouldMatchLvl:NO];
   XCTAssertTrue([z.sectorKey isEqualToString:@"NEBULA"]);
   XCTAssertEqual(z.lvl, 4);
   XCTAssertTrue([z.suffix isEqualToString:@"Beta"]);
@@ -350,7 +350,7 @@ uint zoneHelper_mockRandom(uint range){
   SET_LOW_BOUND();//zone
   SET_UP_BOUND(); //maxMonsters
   SET_UP_BOUND(); //zone lvl
-  z = [zoneMed newRandomZoneChoiceGivenHero:h ifShouldMatchLvl:NO];
+  z = [zoneMed newRandomSectorChoiceGivenHero:h ifShouldMatchLvl:NO];
   XCTAssertTrue([z.sectorKey isEqualToString:@"NEBULA"]);
   XCTAssertEqual(z.lvl, 24);
   XCTAssertTrue([z.suffix isEqualToString:@"Cain"]);
@@ -360,6 +360,8 @@ uint zoneHelper_mockRandom(uint range){
     
 }
 
+
+#warning put back
 //-(void)testConstructMultipleZoneChoices{
 //    Hero *h = (Hero *)[self.dc constructEmptyEntity:Hero.entity];
 //    h.lvl = 52;
@@ -428,7 +430,7 @@ uint zoneHelper_mockRandom(uint range){
   SHSector_Medium* zoneMed = [SHSector_Medium newWithContext:context
     withResourceUtil:self.resourceUtil
     withInfoDict:self.zoneInfoDict];
-  ZoneDTO *z = [zoneMed newSpecificZone:HOME_KEY withLvl:1 withMonsterCount:0];
+  SHSectorDTO *z = [zoneMed newSpecificSector:HOME_KEY withLvl:1 withMonsterCount:0];
   XCTAssertNotNil(z);
 }
 
@@ -477,7 +479,7 @@ void throwsEx(){
   SHSector_Medium* zoneMed = [SHSector_Medium newWithContext:context
     withResourceUtil:self.resourceUtil
     withInfoDict:self.zoneInfoDict];
-  __block ZoneDTO *z0 = [zoneMed newSpecificZone:HOME_KEY withLvl:1 withMonsterCount:0];;
+  __block SHSectorDTO *z0 = [zoneMed newSpecificSector:HOME_KEY withLvl:1 withMonsterCount:0];;
   NSManagedObjectContext* bgContext = [self.dc newBackgroundContext];
   
   [bgContext performBlockAndWait:^{

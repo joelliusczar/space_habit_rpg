@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSMutableArray*)arrayWithItemsAsDicts;
 
 -(NSMutableArray*)arrayWithItemsAsDictsWithTransformer:
-  (dictEntrytransformer)transformer
+  (shDictEntrytransformer)transformer
   withSet:(NSMutableSet*)cycleTracker;
 
 @end

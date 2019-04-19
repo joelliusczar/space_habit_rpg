@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import <SHCommon/SHProbWeight.h>
-#import <SHGlobal/constants.h>
+#import <SHGlobal/SHConstants.h>
 #import <SHCommon/SHCommonUtils.h>
 @import TestCommon;
 
@@ -35,7 +35,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW1{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:1];
@@ -70,7 +70,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW2{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:1];
@@ -105,7 +105,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW3{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:1];
@@ -140,7 +140,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW4{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:1];
@@ -175,7 +175,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW5{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:1];
@@ -210,7 +210,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW6{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:1];
@@ -245,7 +245,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW7{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:1];
@@ -280,7 +280,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW8{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:1];
@@ -315,7 +315,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW9{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:1];
@@ -350,7 +350,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW10{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:2];
@@ -385,7 +385,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW11{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:2];
@@ -420,7 +420,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW12{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:2];
@@ -455,7 +455,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW13{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:2];
@@ -490,7 +490,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW14{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:2];
@@ -525,7 +525,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW15{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:2];
@@ -560,7 +560,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW16{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:2];
@@ -595,7 +595,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW17{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:2];
@@ -630,7 +630,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW18{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:3];
@@ -665,7 +665,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW19{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:3];
@@ -700,7 +700,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW20{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:3];
@@ -735,7 +735,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW21{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:3];
@@ -770,7 +770,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW22{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:3];
@@ -805,7 +805,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW23{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:3];
@@ -840,7 +840,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW24{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:3];
@@ -875,7 +875,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW25{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:4];
@@ -910,7 +910,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW26{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:4];
@@ -945,7 +945,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW27{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:4];
@@ -980,7 +980,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW28{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:4];
@@ -1015,7 +1015,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW29{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:4];
@@ -1050,7 +1050,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW30{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:4];
@@ -1085,7 +1085,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW31{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:5];
@@ -1120,7 +1120,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW32{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:5];
@@ -1155,7 +1155,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW33{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:5];
@@ -1190,7 +1190,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW34{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:5];
@@ -1225,7 +1225,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW35{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:5];
@@ -1260,7 +1260,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW36{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:6];
@@ -1295,7 +1295,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW37{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:6];
@@ -1330,7 +1330,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW38{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:6];
@@ -1365,7 +1365,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW39{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:6];
@@ -1400,7 +1400,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW40{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:7];
@@ -1435,7 +1435,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW41{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:7];
@@ -1470,7 +1470,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW42{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:7];
@@ -1505,7 +1505,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW43{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:8];
@@ -1540,7 +1540,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW44{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:8];
@@ -1575,7 +1575,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW45{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:1];
         [pw add:@"C" With:9];
@@ -1610,7 +1610,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW46{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:1];
@@ -1645,7 +1645,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW47{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:1];
@@ -1680,7 +1680,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW48{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:1];
@@ -1715,7 +1715,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW49{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:1];
@@ -1750,7 +1750,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW50{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:1];
@@ -1785,7 +1785,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW51{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:1];
@@ -1820,7 +1820,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW52{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:1];
@@ -1855,7 +1855,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW53{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:1];
@@ -1890,7 +1890,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW54{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:2];
@@ -1925,7 +1925,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW55{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:2];
@@ -1960,7 +1960,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW56{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:2];
@@ -1995,7 +1995,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW57{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:2];
@@ -2030,7 +2030,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW58{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:2];
@@ -2065,7 +2065,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW59{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:2];
@@ -2100,7 +2100,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW60{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:2];
@@ -2135,7 +2135,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW61{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:3];
@@ -2170,7 +2170,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW62{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:3];
@@ -2205,7 +2205,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW63{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:3];
@@ -2240,7 +2240,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW64{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:3];
@@ -2275,7 +2275,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW65{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:3];
@@ -2310,7 +2310,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW66{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:3];
@@ -2345,7 +2345,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW67{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:4];
@@ -2380,7 +2380,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW68{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:4];
@@ -2415,7 +2415,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW69{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:4];
@@ -2450,7 +2450,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW70{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:4];
@@ -2485,7 +2485,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW71{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:4];
@@ -2520,7 +2520,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW72{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:5];
@@ -2555,7 +2555,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW73{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:5];
@@ -2590,7 +2590,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW74{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:5];
@@ -2625,7 +2625,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW75{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:5];
@@ -2660,7 +2660,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW76{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:6];
@@ -2695,7 +2695,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW77{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:6];
@@ -2730,7 +2730,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW78{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:6];
@@ -2765,7 +2765,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW79{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:7];
@@ -2800,7 +2800,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW80{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:7];
@@ -2835,7 +2835,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW81{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:2];
         [pw add:@"C" With:8];
@@ -2870,7 +2870,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW82{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:1];
@@ -2905,7 +2905,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW83{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:1];
@@ -2940,7 +2940,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW84{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:1];
@@ -2975,7 +2975,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW85{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:1];
@@ -3010,7 +3010,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW86{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:1];
@@ -3045,7 +3045,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW87{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:1];
@@ -3080,7 +3080,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW88{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:1];
@@ -3115,7 +3115,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW89{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:2];
@@ -3150,7 +3150,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW90{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:2];
@@ -3185,7 +3185,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW91{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:2];
@@ -3220,7 +3220,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW92{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:2];
@@ -3255,7 +3255,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW93{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:2];
@@ -3290,7 +3290,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW94{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:2];
@@ -3325,7 +3325,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW95{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:3];
@@ -3360,7 +3360,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW96{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:3];
@@ -3395,7 +3395,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW97{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:3];
@@ -3430,7 +3430,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW98{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:3];
@@ -3465,7 +3465,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW99{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:3];
@@ -3500,7 +3500,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW100{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:4];
@@ -3535,7 +3535,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW101{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:4];
@@ -3570,7 +3570,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW102{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:4];
@@ -3605,7 +3605,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW103{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:4];
@@ -3640,7 +3640,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW104{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:5];
@@ -3675,7 +3675,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW105{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:5];
@@ -3710,7 +3710,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW106{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:5];
@@ -3745,7 +3745,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW107{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:6];
@@ -3780,7 +3780,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW108{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:6];
@@ -3815,7 +3815,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW109{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:3];
         [pw add:@"C" With:7];
@@ -3850,7 +3850,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW110{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:4];
         [pw add:@"C" With:1];
@@ -3885,7 +3885,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW111{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:4];
         [pw add:@"C" With:1];
@@ -3920,7 +3920,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW112{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:4];
         [pw add:@"C" With:1];
@@ -3955,7 +3955,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW113{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:4];
         [pw add:@"C" With:1];
@@ -3990,7 +3990,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW114{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:4];
         [pw add:@"C" With:1];
@@ -4025,7 +4025,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW115{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:4];
         [pw add:@"C" With:1];
@@ -4060,7 +4060,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW116{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:4];
         [pw add:@"C" With:2];
@@ -4095,7 +4095,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW117{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:4];
         [pw add:@"C" With:2];
@@ -4130,7 +4130,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW118{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:4];
         [pw add:@"C" With:2];
@@ -4165,7 +4165,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW119{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:4];
         [pw add:@"C" With:2];
@@ -4200,7 +4200,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW120{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:4];
         [pw add:@"C" With:2];
@@ -4235,7 +4235,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW121{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:4];
         [pw add:@"C" With:3];
@@ -4270,7 +4270,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW122{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:4];
         [pw add:@"C" With:3];
@@ -4305,7 +4305,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW123{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:4];
         [pw add:@"C" With:3];
@@ -4340,7 +4340,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW124{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:4];
         [pw add:@"C" With:3];
@@ -4375,7 +4375,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW125{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:4];
         [pw add:@"C" With:4];
@@ -4410,7 +4410,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW126{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:4];
         [pw add:@"C" With:4];
@@ -4445,7 +4445,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW127{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:4];
         [pw add:@"C" With:4];
@@ -4480,7 +4480,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW128{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:4];
         [pw add:@"C" With:5];
@@ -4515,7 +4515,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW129{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:4];
         [pw add:@"C" With:5];
@@ -4550,7 +4550,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW130{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:4];
         [pw add:@"C" With:6];
@@ -4585,7 +4585,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW131{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:5];
         [pw add:@"C" With:1];
@@ -4620,7 +4620,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW132{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:5];
         [pw add:@"C" With:1];
@@ -4655,7 +4655,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW133{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:5];
         [pw add:@"C" With:1];
@@ -4690,7 +4690,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW134{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:5];
         [pw add:@"C" With:1];
@@ -4725,7 +4725,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW135{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:5];
         [pw add:@"C" With:1];
@@ -4760,7 +4760,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW136{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:5];
         [pw add:@"C" With:2];
@@ -4795,7 +4795,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW137{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:5];
         [pw add:@"C" With:2];
@@ -4830,7 +4830,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW138{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:5];
         [pw add:@"C" With:2];
@@ -4865,7 +4865,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW139{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:5];
         [pw add:@"C" With:2];
@@ -4900,7 +4900,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW140{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:5];
         [pw add:@"C" With:3];
@@ -4935,7 +4935,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW141{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:5];
         [pw add:@"C" With:3];
@@ -4970,7 +4970,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW142{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:5];
         [pw add:@"C" With:3];
@@ -5005,7 +5005,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW143{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:5];
         [pw add:@"C" With:4];
@@ -5040,7 +5040,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW144{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:5];
         [pw add:@"C" With:4];
@@ -5075,7 +5075,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW145{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:5];
         [pw add:@"C" With:5];
@@ -5110,7 +5110,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW146{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:6];
         [pw add:@"C" With:1];
@@ -5145,7 +5145,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW147{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:6];
         [pw add:@"C" With:1];
@@ -5180,7 +5180,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW148{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:6];
         [pw add:@"C" With:1];
@@ -5215,7 +5215,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW149{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:6];
         [pw add:@"C" With:1];
@@ -5250,7 +5250,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW150{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:6];
         [pw add:@"C" With:2];
@@ -5285,7 +5285,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW151{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:6];
         [pw add:@"C" With:2];
@@ -5320,7 +5320,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW152{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:6];
         [pw add:@"C" With:2];
@@ -5355,7 +5355,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW153{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:6];
         [pw add:@"C" With:3];
@@ -5390,7 +5390,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW154{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:6];
         [pw add:@"C" With:3];
@@ -5425,7 +5425,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW155{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:6];
         [pw add:@"C" With:4];
@@ -5460,7 +5460,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW156{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:7];
         [pw add:@"C" With:1];
@@ -5495,7 +5495,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW157{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:7];
         [pw add:@"C" With:1];
@@ -5530,7 +5530,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW158{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:7];
         [pw add:@"C" With:1];
@@ -5565,7 +5565,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW159{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:7];
         [pw add:@"C" With:2];
@@ -5600,7 +5600,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW160{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:7];
         [pw add:@"C" With:2];
@@ -5635,7 +5635,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW161{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:7];
         [pw add:@"C" With:3];
@@ -5670,7 +5670,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW162{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:8];
         [pw add:@"C" With:1];
@@ -5705,7 +5705,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW163{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:8];
         [pw add:@"C" With:1];
@@ -5740,7 +5740,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW164{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:8];
         [pw add:@"C" With:2];
@@ -5775,7 +5775,7 @@ uint probWeight4_mockRandom(uint range){
     }
     
     -(void)testPW165{
-        ProbWeight *pw = [[ProbWeight alloc] init];
+        SHProbWeight *pw = [[SHProbWeight alloc] init];
         NSString *s = @"";
         [pw add:@"D" With:9];
         [pw add:@"C" With:1];

@@ -19,13 +19,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(NSMutableDictionary*)objectToDictionary:
   (NSObject*)object
-  withTransformer:(dictEntrytransformer)transformBlock
+  withTransformer:(shDictEntrytransformer)transformBlock
   withSet:(NSMutableSet*)cycleTracker;
 
 -(NSMutableDictionary*)mapEntiresToDicts;
 
 -(NSMutableDictionary*)mapEntiresToDictsWithTransformer:
-  (dictEntrytransformer)transformer
+  (shDictEntrytransformer)transformer
   withSet:(NSMutableSet*)cycleTracker;
 
 @end

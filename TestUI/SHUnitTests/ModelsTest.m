@@ -18,7 +18,7 @@
 #import <SHModels/SHMonster+CoreDataClass.h>
 #import <SHModels/SHSectorTransaction+CoreDataClass.h>
 #import <SHModels/SHMonster_Medium.h>
-#import <SHGlobal/Constants.h>
+#import <SHGlobal/SHConstants.h>
 #import <SHData/SHCoreData.h>
 #import <SHData/NSManagedObjectContext+Helper.h>
 #import <SHModels/SHSector_Medium.h>
@@ -63,7 +63,7 @@
   Monster_Medium *mm = [Monster_Medium
     newWithContext:context
     withInfoDict:self.monsterInfoDict];
-  MonsterDTO *m = [mm newEmptyMonster];
+  SHMonsterDTO *m = [mm newEmptyMonster];
   m.lvl = 13;
   m.monsterKey = @"DUST_FAIRY";
   m.nowHp = 123;
@@ -80,7 +80,7 @@
 }
 
 -(void)testZoneProperties{
-  ZoneDTO *z = [ZoneDTO newWithZoneDict:self.zoneInfoDict];
+  SHSectorDTO *z = [SHSectorDTO newWithZoneDict:self.zoneInfoDict];
   z.lvl = 5;
   z.sectorKey = @"SAFE_SPACE";
   z.isFront = YES;
@@ -124,7 +124,7 @@
     withInfoDict:self.zoneInfoDict];
   
   [bgContext performBlockAndWait:^{
-    ZoneDTO *zDto = [zoneMed newSpecificZone2:@"SAFE_SPACE" withLvl:16];
+    SHSectorDTO *zDto = [zoneMed newSpecificSector2:@"SAFE_SPACE" withLvl:16];
     SHSector *z = (SHSector*)[NSManagedObjectContext
       newEntityUnattached:SHSector.entity];
     [z dtoCopyFrom:zDto];
@@ -151,7 +151,7 @@
   //regardless of what is in stored
   [bgContext performBlockAndWait:^{
     
-    ZoneDTO *z3Dto = [zoneMed newSpecificZone2:@"SAFE_SPACE" withLvl:16];
+    SHSectorDTO *z3Dto = [zoneMed newSpecificSector2:@"SAFE_SPACE" withLvl:16];
     SHSector* z3 = (SHSector*)[NSManagedObjectContext
       newEntityUnattached:SHSector.entity];
     [z3 dtoCopyFrom:z3Dto];

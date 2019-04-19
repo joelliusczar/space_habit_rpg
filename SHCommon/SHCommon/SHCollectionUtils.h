@@ -13,12 +13,12 @@
 
 #import <Foundation/Foundation.h>
 
-typedef id (^dictEntrytransformer)(id,NSMutableSet*);
+typedef id (^shDictEntrytransformer)(id,NSMutableSet*);
 
-extern const dictEntrytransformer defaultTransformer;
+extern const shDictEntrytransformer shDefaultTransformer;
 
 NSMutableArray *shArrayWithItemsAsDicts(NSArray *array,
-  dictEntrytransformer transformer,
+  shDictEntrytransformer transformer,
   NSMutableSet *cycleTracker);
 
 #endif

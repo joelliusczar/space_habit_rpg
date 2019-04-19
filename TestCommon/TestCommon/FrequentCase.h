@@ -20,8 +20,8 @@
 
 
 @interface FrequentCase : XCTestCase
-@property (strong,nonatomic) ZoneInfoDictionary *zoneInfoDict;
-@property (strong,nonatomic) MonsterInfoDictionary *monsterInfoDict;
+@property (strong,nonatomic) SHSectorInfoDictionary *zoneInfoDict;
+@property (strong,nonatomic) SHMonsterInfoDictionary *monsterInfoDict;
 @property (strong,nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
 @property (strong,nonatomic) SHCoreData* dc;
 -(void)resetDb;

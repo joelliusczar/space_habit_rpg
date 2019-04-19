@@ -11,7 +11,7 @@
 #import "NSDate+testReplace.h"
 @import SHModels;
 
-#import <SHGlobal/FlexibleConstants.h>
+#import <SHGlobal/SHFlexibleConstants.h>
 #import <SHDaily_C.h>
 #import <SHRateValueItem.h>
 #import <SHModels/SHDaily_Medium.h>
@@ -98,7 +98,7 @@ NSMutableArray<SHDaily *> *testDailies = nil;
 }
 
 -(void)testRetrieveUnfinishedDailies{
-    Daily_Medium *dm = [Daily_Medium newWithSHData:self.dc];
+    SHDaily_Medium *dm = [SHDaily_Medium newWithSHData:self.dc];
     NSManagedObjectContext *bgContext = [self.dc newBackgroundContext];
     NSDate *testDate = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:6 minute:0 second:0];
     NSFetchedResultsController *results = [dm getUnfinishedDailiesController:testDate withContext:bgContext];

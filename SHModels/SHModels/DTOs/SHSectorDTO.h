@@ -1,5 +1,5 @@
 //
-//  SHZoneDTO.h
+//  SHSectorDTO.h
 //  SHModels
 //
 //  Created by Joel Pridgen on 4/6/19.

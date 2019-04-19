@@ -1,12 +1,12 @@
 //
-//  YearlyActiveDays.m
+//  SHYearlyActiveDays.m
 //  HabitRPG2
 //
 //  Created by Joel Pridgen on 8/16/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import "YearlyActiveDays.h"
+#import "SHYearlyActiveDays.h"
 #import <SHCommon/SHCommonUtils.h>
 #import <SHControls/SHListItemCell.h>
 #import "YearPartPicker.h"
@@ -15,13 +15,13 @@
 #import <SHModels/SHModelConstants.h>
 #import <SHGlobal/SHConstants.h>
 
-@interface YearlyActiveDays ()
+@interface SHYearlyActiveDays ()
 @end
 
-@implementation YearlyActiveDays
+@implementation SHYearlyActiveDays
 
 +(instancetype)newWithDaily:(SHDaily *)daily{
-    YearlyActiveDays *instance = [[YearlyActiveDays alloc] init];
+    SHYearlyActiveDays *instance = [[SHYearlyActiveDays alloc] init];
     instance.daily = daily;
     [instance commonSetup];
     [instance.addItemsFooter.addItemBtn setTitle:@"Add day of the year" forState:UIControlStateNormal];

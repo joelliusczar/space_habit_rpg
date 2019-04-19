@@ -12,12 +12,12 @@
 @implementation NSSet (SHHelper)
 
 -(NSMutableArray*)arrayWithItemsAsDicts{
-  return shArrayWithItemsAsDicts((NSArray*)self,defaultTransformer,nil);
+  return shArrayWithItemsAsDicts((NSArray*)self,shDefaultTransformer,nil);
 }
 
 
 -(NSMutableArray*)arrayWithItemsAsDictsWithTransformer:
-  (dictEntrytransformer)transformer
+  (shDictEntrytransformer)transformer
   withSet:(NSMutableSet*)cycleTracker
 {
   return shArrayWithItemsAsDicts((NSArray*)self,transformer,cycleTracker);

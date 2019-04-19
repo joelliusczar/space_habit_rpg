@@ -41,7 +41,7 @@ uint monsterHelper_mockRandom(uint range){
   Monster_Medium *mm = [Monster_Medium
     newWithContext:context
     withInfoDict:self.monsterInfoDict];
-  MonsterDTO *m = [mm newEmptyMonster];
+  SHMonsterDTO *m = [mm newEmptyMonster];
   XCTAssertNotNil(m);
 }
     
@@ -85,7 +85,7 @@ uint monsterHelper_mockRandom(uint range){
     Monster_Medium *mm = [Monster_Medium
       newWithContext:context
       withInfoDict:self.monsterInfoDict];
-    MonsterDTO *m = [mm newRandomMonster:@"NEBULA" zoneLvl:32];
+    SHMonsterDTO *m = [mm newRandomMonster:@"NEBULA" zoneLvl:32];
     XCTAssertTrue([m.fullName isEqualToString:@"Dust Fairy"]);
     XCTAssertEqual(m.lvl,22);
     XCTAssertEqual(m.maxHp,400);
