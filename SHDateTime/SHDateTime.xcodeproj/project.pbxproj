@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2716922920916D0F0059A58E /* libSH_CTools.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2716922A20916D0F0059A58E /* libSH_CTools.a */; };
+		2716922920916D0F0059A58E /* libSH_CTools.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2716922A20916D0F0059A58E /* libSH_CTools.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		27BB291D215B4712003225BB /* SHDatetimeNoErr.h in Headers */ = {isa = PBXBuildFile; fileRef = 27BB291B215B4712003225BB /* SHDatetimeNoErr.h */; };
 		27BB291E215B4712003225BB /* SHDatetimeNoErr.c in Sources */ = {isa = PBXBuildFile; fileRef = 27BB291C215B4712003225BB /* SHDatetimeNoErr.c */; };
 		27D318512086C9040047F5F1 /* SHTimeZone.c in Sources */ = {isa = PBXBuildFile; fileRef = 27D318462086C9040047F5F1 /* SHTimeZone.c */; };
@@ -270,7 +270,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = $SRCROOT/../Build_Scripts/SHDatetime.sh;
+			shellScript = "$SRCROOT/../Build_Scripts/SHDatetime.sh\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 

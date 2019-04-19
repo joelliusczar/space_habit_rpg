@@ -7,23 +7,21 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <SHModels/Daily+CoreDataClass.h>
-#import <SHModels/Habit+CoreDataClass.h>
-#import <SHModels/Todo+CoreDataClass.h>
-#import <SHModels/Good+CoreDataClass.h>
-#import <SHModels/Hero+CoreDataClass.h>
+#import <SHModels/SHDaily+CoreDataClass.h>
+#import <SHModels/SHCounter+CoreDataClass.h>
+#import <SHModels/SHTodo+CoreDataClass.h>
+#import <SHModels/SHItem+CoreDataClass.h>
+#import <SHModels/SHHero+CoreDataClass.h>
 #import <SHModels/SHHeroDTO.h>
-#import <SHModels/Settings+CoreDataClass.h>
-#import <SHModels/Zone+CoreDataClass.h>
-#import <SHModels/Monster+CoreDataClass.h>
-#import <SHModels/Zone+CoreDataClass.h>
-#import <SHModels/DataInfo+CoreDataClass.h>
-#import <SHModels/ZoneTransaction+CoreDataClass.h>
+#import <SHModels/SHSettings+CoreDataClass.h>
+#import <SHModels/SHSector+CoreDataClass.h>
+#import <SHModels/SHMonster+CoreDataClass.h>
+#import <SHModels/SHSectorTransaction+CoreDataClass.h>
 #import <SHModels/SHMonster_Medium.h>
 #import <SHGlobal/Constants.h>
 #import <SHData/SHCoreData.h>
 #import <SHData/NSManagedObjectContext+Helper.h>
-#import <SHModels/Zone_Medium.h>
+#import <SHModels/SHSector_Medium.h>
 @import TestCommon;
 
 @interface ModelsTest : FrequentCase
@@ -45,7 +43,7 @@
 -(void)testHeroProperties{
   NSObject<P_CoreData> *dc = self.dc;
   NSManagedObjectContext *context = dc.mainThreadContext;
-  Hero *h = (Hero *)[context newEntity:Hero.entity];
+  SHHero *h = (SHHero *)[context newEntity:SHHero.entity];
   h.gold = 3.14;
   h.lvl = 15;
   h.maxHp = 56;
@@ -84,7 +82,7 @@
 -(void)testZoneProperties{
   ZoneDTO *z = [ZoneDTO newWithZoneDict:self.zoneInfoDict];
   z.lvl = 5;
-  z.zoneKey = @"SAFE_SPACE";
+  z.sectorKey = @"SAFE_SPACE";
   z.isFront = YES;
   z.maxMonsters = 17;
   z.monstersKilled = 8;
@@ -104,31 +102,31 @@
   NSObject<P_CoreData> *dc = self.dc;
   NSManagedObjectContext *bgContext = [dc newBackgroundContext];
   [bgContext performBlockAndWait:^{
-    ZoneTransaction *zt = (ZoneTransaction *)[bgContext newEntity:ZoneTransaction.entity];
+    SHSectorTransaction *zt = (SHSectorTransaction *)[bgContext newEntity:SHSectorTransaction.entity];
     zt.misc = @"Just random shit!";
     zt = nil;
     NSError* error = nil;
     [bgContext save:&error];
   }];
   
-  NSFetchRequest<ZoneTransaction*>* request = [ZoneTransaction fetchRequest];
+  NSFetchRequest<SHSectorTransaction*>* request = [SHSectorTransaction fetchRequest];
   
   NSArray<NSManagedObject*>* results = [self fetchAnything:request context:dc.mainThreadContext];
   NSAssert(results.count == 1,@"result was not one");
-  NSString *misc = ((ZoneTransaction*)results[0]).misc;
+  NSString *misc = ((SHSectorTransaction*)results[0]).misc;
   NSAssert([misc isEqualToString:@"Just random shit!"],@"Strings not equal");
 }
 
 -(void)testDoubleInsert{
   NSManagedObjectContext* bgContext = [self.dc newBackgroundContext];
-  Zone_Medium* zoneMed = [Zone_Medium newWithContext:bgContext
+  SHSector_Medium* zoneMed = [SHSector_Medium newWithContext:bgContext
     withResourceUtil:self.resourceUtil
     withInfoDict:self.zoneInfoDict];
   
   [bgContext performBlockAndWait:^{
     ZoneDTO *zDto = [zoneMed newSpecificZone2:@"SAFE_SPACE" withLvl:16];
-    Zone *z = (Zone*)[NSManagedObjectContext
-      newEntityUnattached:Zone.entity];
+    SHSector *z = (SHSector*)[NSManagedObjectContext
+      newEntityUnattached:SHSector.entity];
     [z dtoCopyFrom:zDto];
     [bgContext insertObject:z];
     [bgContext insertObject:z];
@@ -137,11 +135,11 @@
   }];
   //I think this next part is useless
   NSManagedObjectContext* bgContext2 = [self.dc newBackgroundContext];
-  NSFetchRequest<Zone *> *request = [Zone fetchRequest];
+  NSFetchRequest<SHSector *> *request = [SHSector fetchRequest];
   [bgContext2 performBlockAndWait:^{
     NSArray<NSManagedObject*>* results = [self fetchAnything:request context:bgContext2];
     NSAssert(results.count == 1,@"result was not one");
-    Zone *z_ret = (Zone *)results[0];
+    SHSector *z_ret = (SHSector *)results[0];
     [bgContext2 insertObject:z_ret];
     NSError *error = nil;
     [bgContext2 save:&error];
@@ -154,8 +152,8 @@
   [bgContext performBlockAndWait:^{
     
     ZoneDTO *z3Dto = [zoneMed newSpecificZone2:@"SAFE_SPACE" withLvl:16];
-    Zone* z3 = (Zone*)[NSManagedObjectContext
-      newEntityUnattached:Zone.entity];
+    SHSector* z3 = (SHSector*)[NSManagedObjectContext
+      newEntityUnattached:SHSector.entity];
     [z3 dtoCopyFrom:z3Dto];
     [bgContext insertObject:z3];
     NSError *error = nil;

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <SHGlobal/Constants.h>
+#import <SHGlobal/SHConstants.h>
 
 @interface NSDate (DateHelper)
 -(NSDate *)dateAfterYears:(NSInteger)y months:(NSInteger)m days:(NSInteger)d;
@@ -28,7 +28,7 @@
                         day:(NSInteger)day;
 +(NSString *)timeOfDayInSystemPreferredFormat:(NSInteger)hour
                               andMinute:(NSInteger)minute;
--(NSString *)extractTimeInFormat:(hourFormatType)format;
+-(NSString *)extractTimeInFormat:(SHHourFormatType)format;
 -(NSInteger)getWeekdayIndex;
 -(NSDateComponents *)getDateComponents;
 @end

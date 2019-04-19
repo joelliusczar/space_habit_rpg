@@ -2,7 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>LVL_0_ZONES</key>
+	<key>LVL_0_SECTORS</key>
 	<dict>
 		<key>HOME</key>
 		<dict>
@@ -12,7 +12,7 @@
 			<string>Home Port</string>
 		</dict>
 	</dict>
-	<key>LVL_30_ZONES</key>
+	<key>LVL_30_SECTORS</key>
 	<dict>
 		<key>WORLD_END</key>
 		<dict>
@@ -36,7 +36,7 @@
 			<string>Infinite Improbability Zone</string>
 		</dict>
 	</dict>
-	<key>LVL_25_ZONES</key>
+	<key>LVL_25_SECTORS</key>
 	<dict>
 		<key>WEB</key>
 		<dict>
@@ -60,7 +60,7 @@
 			<string>Event Horizon</string>
 		</dict>
 	</dict>
-	<key>LVL_20_ZONES</key>
+	<key>LVL_20_SECTORS</key>
 	<dict>
 		<key>MALESTERIUM</key>
 		<dict>
@@ -91,7 +91,7 @@
 			<string>Space Ocean</string>
 		</dict>
 	</dict>
-	<key>LVL_15_ZONES</key>
+	<key>LVL_15_SECTORS</key>
 	<dict>
 		<key>TEMPLE</key>
 		<dict>
@@ -108,7 +108,7 @@
 			<string>Infestation Space</string>
 		</dict>
 	</dict>
-	<key>LVL_10_ZONES</key>
+	<key>LVL_10_SECTORS</key>
 	<dict>
 		<key>GARBAGE_BALL</key>
 		<dict>
@@ -132,7 +132,7 @@
 			<string></string>
 		</dict>
 	</dict>
-	<key>LVL_5_ZONES</key>
+	<key>LVL_5_SECTORS</key>
 	<dict>
 		<key>ASTEROID_FIELD</key>
 		<dict>
@@ -163,7 +163,7 @@
 			<string>Backwater Planet Orbit</string>
 		</dict>
 	</dict>
-	<key>LVL_1_ZONES</key>
+	<key>LVL_1_SECTORS</key>
 	<dict>
 		<key>GAS</key>
 		<dict>

@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "EditingSaver.h"
-#import <SHControls/P_ResizeResponder.h>
+#import <SHControls/SHResizeResponderProtocol.h>
 #import <SHCommon/SHControlKeep.h>
 
 
-@interface EditNavigationController : UIViewController<P_ResizeResponder>
+@interface EditNavigationController : UIViewController<SHResizeResponderProtocol>
 @property (strong,nonatomic) NSString *viewTitle;
 @property (strong,nonatomic) UIViewController<EditingSaver>* editingScreen;
 @property (weak,nonatomic) SHControlKeep *editControls;

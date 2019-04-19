@@ -6,10 +6,10 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <SHControls/ListItemCell.h>
-#import <SHModels/Reminder+CoreDataClass.h>
+#import <SHControls/SHListItemCell.h>
+#import <SHModels/SHReminder+CoreDataClass.h>
 #import <SHModels/SHReminderDTO.h>
 
-@interface ReminderCellController : ListItemCell
-+(instancetype)getReminderCell:(UITableView *)tableView withParent:(id)parent andReminder:(ReminderDTO*)reminderModel;
+@interface ReminderCellController : SHListItemCell
++(instancetype)getReminderCell:(UITableView *)tableView withParent:(id)parent andReminder:(SHReminderDTO*)reminderModel;
 @end

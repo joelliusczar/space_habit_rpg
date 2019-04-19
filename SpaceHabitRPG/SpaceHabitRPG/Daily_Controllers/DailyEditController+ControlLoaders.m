@@ -19,13 +19,13 @@
 @implementation DailyEditController (ControlLoaders)
 
 
--(SHControlKeep *)buildControlKeep:(Daily *)daily{
+-(SHControlKeep *)buildControlKeep:(SHDaily *)daily{
   NSAssert(daily,@"Daily should not be null");
   SHControlKeep *keep = [[SHControlKeep alloc] init];
 
   
-  [keep addLoaderBlock:^id(SHControlKeep *keep,ControlExtent *controlExtent){
-    NoteView *note = [[NoteView alloc] init];
+  [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
+    SHNoteView *note = [[SHNoteView alloc] init];
     note.noteBox.text = daily.note.length>0?daily.note:@"";
     [keep forResponderKey:@"_" doSetupAction:^(id responder){
         note.delegate = responder;
@@ -33,7 +33,7 @@
     return note;
   }];
   
-  [keep addLoaderBlock:^id(SHControlKeep *keep,ControlExtent *controlExtent){
+  [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
     RateSetContainer *rateContainer = [RateSetContainer newWithDaily:daily];
   
     [keep forResponderKey:@"_" doSetupAction:^(id responder){
@@ -51,8 +51,8 @@
     return rateContainer;
   }];
   
-  [keep addLoaderBlock:^id(SHControlKeep *keep,ControlExtent *controlExtent){
-    ImportanceSliderView *difficultySld = [[ImportanceSliderView alloc] init];
+  [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
+    SHImportanceSliderView *difficultySld = [[SHImportanceSliderView alloc] init];
     difficultySld.controlName = @"difficulty";
     [difficultySld updateImportanceSlider:daily.difficulty];
     [keep forResponderKey:@"_" doSetupAction:^(id responder){
@@ -61,8 +61,8 @@
     return difficultySld;
   } withKey:@"difficultySld"];
   
-  [keep addLoaderBlock:^id(SHControlKeep *keep,ControlExtent *controlExtent){
-    ImportanceSliderView *urgencySld = [[ImportanceSliderView alloc] init];
+  [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
+    SHImportanceSliderView *urgencySld = [[SHImportanceSliderView alloc] init];
     urgencySld.controlName = @"urgency";
     [urgencySld updateImportanceSlider:daily.urgency];
     [keep forResponderKey:@"_" doSetupAction:^(id responder){
@@ -71,16 +71,16 @@
     return urgencySld;
   } withKey:@"urgencySld"];
   
-  [keep addLoaderBlock:^id(SHControlKeep *keep,ControlExtent *controlExtent){
-    StreakResetterView *resetter = [[StreakResetterView alloc] init];
+  [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
+    SHStreakResetterView *resetter = [[SHStreakResetterView alloc] init];
     resetter.streakCountLbl.hidden = NO;
     resetter.streakResetBtn.hidden = NO;
     resetter.streakCountLbl.text = [NSString stringWithFormat:@"Streak %d",daily.streakLength];
     return resetter;
   }];
   
-  [keep addLoaderBlock:^id(SHControlKeep *keep,ControlExtent *controlExtent){
-    DueDateItem *dueDateItem = [DueDateItem newWithObjectID:daily.objectID andContext:daily.managedObjectContext];
+  [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
+    SHDueDateItem *dueDateItem = [SHDueDateItem newWithObjectID:daily.objectID andContext:daily.managedObjectContext];
       ReminderListView *list = [ReminderListView newWithDueDateItem:dueDateItem];
     
       [keep forResponderKey:@"_" doSetupAction:^(id responder){

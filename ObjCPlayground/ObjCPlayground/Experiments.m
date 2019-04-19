@@ -36,10 +36,10 @@
 #import <SHModels/Daily+CoreDataClass.h>
 #import <SHModels/Reminder+CoreDataClass.h>
 #import <SHModels/Zone+CoreDataClass.h>
-#import <SHModels/Zone_Medium.h>
-#import <SHModels/ZoneInfoDictionary.h>
-#import <SHCommon/ResourceUtility.h>
-#import <SHCommon/CommonUtilities.h>
+#import <SHModels/SHSector_Medium.h>
+#import <SHModels/SHSectorInfoDictionary.h>
+#import <SHCommon/SHResourceUtility.h>
+#import <SHCommon/SHCommonUtils.h>
 #import <SHCommon/NSObject+Helper.h>
 #import <TestCommon/TestHelpers.h>
 #import <malloc/malloc.h>

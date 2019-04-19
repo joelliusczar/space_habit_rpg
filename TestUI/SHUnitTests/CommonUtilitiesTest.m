@@ -7,11 +7,11 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <SHCommon/SingletonCluster.h>
-#import <SHGlobal/Constants.h>
-#import <SHCommon/NSMutableDictionary+Helper.h>
-#import <SHModels/ModelTools.h>
-#import <SHCommon/CommonUtilities.h>
+#import <SHCommon/SHSingletonCluster.h>
+#import <SHGlobal/SHConstants.h>
+#import <SHCommon/NSDictionary+SHHelper.h>
+#import <SHModels/SHModelTools.h>
+#import <SHCommon/SHCommonUtils.h>
 
 
 @interface CommonUtilitiesTest : XCTestCase
@@ -45,8 +45,8 @@ NSDate* getReferenceDate(){
     
 - (void)setUp {
     [super setUp];
-    ogRandFn = randomUInt;
-    randomUInt = &mockRandom;
+    ogRandFn = shRandomUInt;
+    shRandomUInt = &mockRandom;
 }
 
 -(void)testGetReferenceDate{
@@ -59,73 +59,73 @@ NSDate* getReferenceDate(){
     
     uint lvl = 0;
     shouldUseLowerBound = YES;
-    int result = calculateLvl(lvl,offset);
+    int result = shCalculateLvl(lvl,offset);
     XCTAssertEqual(result, 1);
     shouldUseLowerBound = !shouldUseLowerBound;
-    result = calculateLvl(lvl,offset);
+    result = shCalculateLvl(lvl,offset);
     XCTAssertEqual(result, 11);
     lvl = 1;
     shouldUseLowerBound = !shouldUseLowerBound;
-    result = calculateLvl(lvl,offset);
+    result = shCalculateLvl(lvl,offset);
     XCTAssertEqual(result, 1);
     shouldUseLowerBound = !shouldUseLowerBound;
-    result = calculateLvl(lvl,offset);
+    result = shCalculateLvl(lvl,offset);
     XCTAssertEqual(result, 11);
     lvl = 2;
     shouldUseLowerBound = !shouldUseLowerBound;
-    result = calculateLvl(lvl,offset);
+    result = shCalculateLvl(lvl,offset);
     XCTAssertEqual(result, 1);
     shouldUseLowerBound = !shouldUseLowerBound;
-    result = calculateLvl(lvl,offset);
+    result = shCalculateLvl(lvl,offset);
     XCTAssertEqual(result, 12);
     lvl = 5;
     shouldUseLowerBound = !shouldUseLowerBound;
-    result = calculateLvl(lvl,offset);
+    result = shCalculateLvl(lvl,offset);
     XCTAssertEqual(result, 1);
     shouldUseLowerBound = !shouldUseLowerBound;
-    result = calculateLvl(lvl,offset);
+    result = shCalculateLvl(lvl,offset);
     XCTAssertEqual(result, 15);
     lvl = 9;
     shouldUseLowerBound = !shouldUseLowerBound;
-    result = calculateLvl(lvl,offset);
+    result = shCalculateLvl(lvl,offset);
     XCTAssertEqual(result, 1);
     shouldUseLowerBound = !shouldUseLowerBound;
-    result = calculateLvl(lvl,offset);
+    result = shCalculateLvl(lvl,offset);
     XCTAssertEqual(result, 19);
     lvl = 10;
     shouldUseLowerBound = !shouldUseLowerBound;
-    result = calculateLvl(lvl,offset);
+    result = shCalculateLvl(lvl,offset);
     XCTAssertEqual(result, 1);
     shouldUseLowerBound = !shouldUseLowerBound;
-    result = calculateLvl(lvl,offset);
+    result = shCalculateLvl(lvl,offset);
     XCTAssertEqual(result, 20);
     lvl = 11;
     shouldUseLowerBound = !shouldUseLowerBound;
-    result = calculateLvl(lvl,offset);
+    result = shCalculateLvl(lvl,offset);
     XCTAssertEqual(result, 1);
     shouldUseLowerBound = !shouldUseLowerBound;
-    result = calculateLvl(lvl,offset);
+    result = shCalculateLvl(lvl,offset);
     XCTAssertEqual(result, 21);
     lvl = 12;
     shouldUseLowerBound = !shouldUseLowerBound;
-    result = calculateLvl(lvl,offset);
+    result = shCalculateLvl(lvl,offset);
     XCTAssertEqual(result, 2);
     shouldUseLowerBound = !shouldUseLowerBound;
-    result = calculateLvl(lvl,offset);
+    result = shCalculateLvl(lvl,offset);
     XCTAssertEqual(result, 22);
     lvl = 15;
     shouldUseLowerBound = !shouldUseLowerBound;
-    result = calculateLvl(lvl,offset);
+    result = shCalculateLvl(lvl,offset);
     XCTAssertEqual(result, 5);
     shouldUseLowerBound = !shouldUseLowerBound;
-    result = calculateLvl(lvl,offset);
+    result = shCalculateLvl(lvl,offset);
     XCTAssertEqual(result, 25);
     lvl = 55;
     shouldUseLowerBound = !shouldUseLowerBound;
-    result = calculateLvl(lvl,offset);
+    result = shCalculateLvl(lvl,offset);
     XCTAssertEqual(result, 45);
     shouldUseLowerBound = !shouldUseLowerBound;
-    result = calculateLvl(lvl,offset);
+    result = shCalculateLvl(lvl,offset);
     XCTAssertEqual(result, 65);
     
 }
@@ -135,13 +135,13 @@ NSDate* getReferenceDate(){
     testDict[@"SAT"] = @1;
     testDict[@"MON"] = @1;
     
-    NSString *testJson = [NSMutableDictionary dictToString:testDict];
+    NSString *testJson = [testDict dictToString];
     NSMutableDictionary *testDict2 = [NSMutableDictionary jsonStringToDict:testJson];
     XCTAssertEqual(((NSNumber *)testDict2[@"SAT"]).integerValue,1);
     [testDict2 removeObjectForKey:@"MON"];
     testDict2[@"THR"] = @1;
     
-    NSString *testJson2 = [NSMutableDictionary dictToString:testDict2];
+    NSString *testJson2 = [testDict2 dictToString];
     NSMutableDictionary *testDict3 = [NSMutableDictionary jsonStringToDict:testJson2];
     XCTAssertEqual(((NSNumber *)testDict3[@"THR"]).integerValue,1);
     XCTAssertNil(testDict3[@"MON"]);

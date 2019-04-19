@@ -1,5 +1,5 @@
 //
-//  ReminderDTO.m
+//  SHReminderDTO.m
 //  SHModels
 //
 //  Created by Joel Pridgen on 4/5/19.
@@ -8,10 +8,10 @@
 
 #import "SHReminderDTO.h"
 #import <SHCommon/NSObject+Helper.h>
-#import <SHCommon/NSMutableDictionary+Helper.h>
+#import <SHCommon/NSDictionary+SHHelper.h>
 #import <SHCommon/NSDate+DateHelper.h>
 
-@implementation ReminderDTO
+@implementation SHReminderDTO
 
 
 -(NSString *)synopsis{
@@ -31,7 +31,7 @@
 -(NSMutableDictionary *)mapable{
     NSMutableDictionary *mappedData = [NSMutableDictionary objectToDictionary:self];
 
-    [mappedData setValue:[self.reminderHour extractTimeInFormat:ZERO_BASED_24_HOUR]
+    [mappedData setValue:[self.reminderHour extractTimeInFormat:SH_ZERO_BASED_24_HOUR]
       forKey:@"reminderHour"];
   
     return mappedData;

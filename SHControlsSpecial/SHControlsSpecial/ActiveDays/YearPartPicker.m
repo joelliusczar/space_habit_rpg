@@ -39,7 +39,7 @@ int const DAYS_COL = 1;
 -(NSInteger)pickerView:(UIPickerView *)pickerView
 numberOfRowsInComponent:(NSInteger)component{
     if(component == MONTH_COL){
-        return self.utilityStore.inUseCalendar.monthSymbols.count;
+        return NSCalendar.currentCalendar.monthSymbols.count;
     }
     //if no day setup is needed
     if(self.numberOfDaysInSelectedMonth)
@@ -57,7 +57,7 @@ numberOfRowsInComponent:(NSInteger)component{
             titleForRow:(NSInteger)row
            forComponent:(NSInteger)component{
     if(component == MONTH_COL){
-        return self.utilityStore.inUseCalendar.monthSymbols[row];
+        return NSCalendar.currentCalendar.monthSymbols[row];
     }
     return [NSString stringWithFormat:@"%ld",row + 1];
 }
@@ -77,7 +77,7 @@ numberOfRowsInComponent:(NSInteger)component{
     NSAssert(month1Base>0&&month1Base<13,@"month should between 1 and 12");
     int arbitraryYear = 1972;
     NSDate *sampleDate = [NSDate createSimpleDateWithYear:arbitraryYear month:month1Base day:1];
-    NSRange range = [self.utilityStore.inUseCalendar
+    NSRange range = [NSCalendar.currentCalendar
                      rangeOfUnit:NSCalendarUnitDay
                      inUnit:NSCalendarUnitMonth
                      forDate:sampleDate];

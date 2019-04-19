@@ -13,7 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ReminderDTO : SHObject<NSCopying>
+@interface SHReminderDTO : SHObject<NSCopying>
 @property (readonly,weak,nonatomic) NSString *synopsis;
 @property (readonly,nonatomic) NSMutableDictionary *mapable;
 @property (assign,nonatomic) int32_t daysBeforeDue;

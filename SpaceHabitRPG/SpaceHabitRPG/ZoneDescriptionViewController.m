@@ -8,8 +8,8 @@
 
 #import "ZoneDescriptionViewController.h"
 #import <SHControls/UIViewController+Helper.h>
-#import <SHCommon/SingletonCluster.h>
-#import <SHGlobal/Constants.h>
+#import <SHCommon/SHSingletonCluster.h>
+#import <SHGlobal/SHConstants.h>
 #import <SHControls/SHButton.h>
 
 @interface ZoneDescriptionViewController ()
@@ -39,7 +39,7 @@
     return self;
 }
 
--(void)setDisplayItems:(ZoneDTO *)model{
+-(void)setDisplayItems:(SHSectorDTO *)model{
     self.storyItem = model;
 }
 
@@ -65,7 +65,7 @@
 }
 - (IBAction)doneBtn_pressed_action:(SHButton *)sender forEvent:(UIEvent *)event{
     [self.prevScreen popVCFromFront];
-    [self.central afterZonePick:(ZoneDTO *)self.storyItem withContext:nil];
+    [self.central afterZonePick:(SHSectorDTO *)self.storyItem withContext:nil];
 }
 
 

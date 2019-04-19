@@ -8,7 +8,7 @@
 
 #import "RateTypeSelector.h"
 #import "UIViewController+Helper.h"
-#import <SHCommon/Interceptor.h>
+#import <SHCommon/SHInterceptor.h>
 #import "UIView+Helpers.h"
 #import "SHEventInfo.h"
 
@@ -18,8 +18,8 @@
 
 @implementation RateTypeSelector
 
--(instancetype)initWithRateType:(RateType)rateType
-                    andDelegate:(id<P_RateTypeSelectorDelegate>)delegate{
+-(instancetype)initWithRateType:(SHRateType)rateType
+                    andDelegate:(id<RateTypeSelectorDelegateProtocol>)delegate{
     if(self = [super initWithNibName:NSStringFromClass(self.class)
                               bundle:[NSBundle bundleForClass:self.class]]){
         _rateType = rateType;
@@ -63,16 +63,16 @@
 }
 
 
--(void)setCheckmark:(RateType)rateType{
-    self.everyXCheckLbl.hidden = rateType!=DAILY_RATE;
-    self.weeklyCheckLbl.hidden = rateType!=WEEKLY_RATE;
-    self.monthlyCheckLbl.hidden = rateType!=MONTHLY_RATE;
-    self.yearlyCheckLbl.hidden = rateType!=YEARLY_RATE;
+-(void)setCheckmark:(SHRateType)rateType{
+    self.everyXCheckLbl.hidden = rateType!=SH_DAILY_RATE;
+    self.weeklyCheckLbl.hidden = rateType!=SH_WEEKLY_RATE;
+    self.monthlyCheckLbl.hidden = rateType!=SH_MONTHLY_RATE;
+    self.yearlyCheckLbl.hidden = rateType!=SH_YEARLY_RATE;
 }
 
 
 -(void)background_tap_action:(UITapGestureRecognizer *)sender{
-    wrapReturnVoid wrappedCall = ^void(){
+    shWrapReturnVoid wrappedCall = ^void(){
         if(sender.view == self.backgroundView){
             [self popVCFromFront];
         }
@@ -82,19 +82,19 @@
 
 
 -(IBAction)rateType_click_action:(UIView *)sender forEvent:(UIEvent *)event{
-    RateType rateType = self.rateType;
+    SHRateType rateType = self.rateType;
     if(self.delegate){
         if(sender == self.yearlyBtn){
-            rateType = YEARLY_RATE;
+            rateType = SH_YEARLY_RATE;
         }
         else if(sender == self.monthlyBtn){
-            rateType = MONTHLY_RATE;
+            rateType = SH_MONTHLY_RATE;
         }
         else if(sender == self.weeklyBtn){
-            rateType = WEEKLY_RATE;
+            rateType = SH_WEEKLY_RATE;
         }
         else{
-            rateType = DAILY_RATE;
+            rateType = SH_DAILY_RATE;
         }
         SHEventInfo *e = eventInfoCopy;
         [self.delegate updateRateType: rateType with:e];

@@ -1,15 +1,15 @@
 //
-//  VarWrapper.m
+//  SHVarWrapper.m
 //  HabitRPG2
 //
 //  Created by Joel Pridgen on 11/12/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import "VarWrapper.h"
-#import <SHGlobal/CommonTypeDefs.h>
+#import "SHVarWrapper.h"
+#import <SHGlobal/SHCommonTypeDefs.h>
 
-@implementation VarWrapper
+@implementation SHVarWrapper
 
 
 -(instancetype)init:(id)item, ...{
@@ -24,7 +24,7 @@
             NSString *propName = [NSString stringWithFormat:baseString,count];
             SEL selector = NSSelectorFromString(propName);
             if([self respondsToSelector:selector]){
-                setter impl = (setter)[self methodForSelector:selector];
+                shSetter impl = (shSetter)[self methodForSelector:selector];
                 impl(self,selector,arg);
             }
             else{
@@ -52,7 +52,7 @@
 }
 
 -(BOOL)isEqual:(id)object{
-    VarWrapper *obj = (VarWrapper *)object;
+    SHVarWrapper *obj = (SHVarWrapper *)object;
     return [self.item isEqual:obj.item];
 }
 

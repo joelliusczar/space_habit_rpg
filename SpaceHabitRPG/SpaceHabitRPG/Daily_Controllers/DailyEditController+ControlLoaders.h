@@ -10,7 +10,7 @@
 #import <SHCommon/SHControlKeep.h>
 
 @interface DailyEditController (ControlLoaders)
--(SHControlKeep *)buildControlKeep:(Daily *)daily;
+-(SHControlKeep *)buildControlKeep:(SHDaily *)daily;
 -(void)setResponders:(SHControlKeep *)keep;
 @end
 

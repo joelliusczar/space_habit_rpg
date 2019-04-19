@@ -7,9 +7,9 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <SHCommon/ProbWeight.h>
+#import <SHCommon/SHProbWeight.h>
 #import <SHGlobal/Constants.h>
-#import <SHCommon/CommonUtilities.h>
+#import <SHCommon/SHCommonUtils.h>
 @import TestCommon;
 
 @interface ProbilityWeightTest : XCTestCase
@@ -31,7 +31,7 @@ uint probWeight_mockRandom(uint range){
         [super setUp];
         ASSERT_IS_TEST();
         rIdx_pw = 0;
-        randomUInt = &probWeight_mockRandom;
+        shRandomUInt = &probWeight_mockRandom;
     }
     
     -(void)testZeroItems{

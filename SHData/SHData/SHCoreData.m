@@ -7,7 +7,7 @@
 //
 
 #import "SHCoreData.h"
-#import <SHCommon/SingletonCluster.h>
+#import <SHCommon/SHSingletonCluster.h>
 
 @import CoreData;
 

@@ -7,29 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2747C3D72043C00D00FB5669 /* CommonTypeDefs.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3D62043C00D00FB5669 /* CommonTypeDefs.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27730BA92041E4B0003BEB6C /* FlexibleConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27730BA62041E4B0003BEB6C /* FlexibleConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27730BAA2041E4B0003BEB6C /* FlexibleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 27730BA72041E4B0003BEB6C /* FlexibleConstants.m */; };
-		27C7923B22279F2200A92487 /* Dummy.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C7923922279F2200A92487 /* Dummy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C7923C22279F2200A92487 /* Dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C7923A22279F2200A92487 /* Dummy.m */; };
+		2747C3D72043C00D00FB5669 /* SHCommonTypeDefs.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3D62043C00D00FB5669 /* SHCommonTypeDefs.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27730BA92041E4B0003BEB6C /* SHFlexibleConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27730BA62041E4B0003BEB6C /* SHFlexibleConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27730BAA2041E4B0003BEB6C /* SHFlexibleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 27730BA72041E4B0003BEB6C /* SHFlexibleConstants.m */; };
+		27C7923B22279F2200A92487 /* SHDummy.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C7923922279F2200A92487 /* SHDummy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27C7923C22279F2200A92487 /* SHDummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C7923A22279F2200A92487 /* SHDummy.m */; };
 		27ED28AC204003E200CD5536 /* SHGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = 27ED28AA204003E200CD5536 /* SHGlobal.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27ED28B42040043D00CD5536 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ED28B22040043D00CD5536 /* Constants.m */; };
-		27ED28B52040043D00CD5536 /* Constants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27ED28B32040043D00CD5536 /* Constants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27ED28B42040043D00CD5536 /* SHConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ED28B22040043D00CD5536 /* SHConstants.m */; };
+		27ED28B52040043D00CD5536 /* SHConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27ED28B32040043D00CD5536 /* SHConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2747C3D62043C00D00FB5669 /* CommonTypeDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTypeDefs.h; sourceTree = "<group>"; };
-		27730BA62041E4B0003BEB6C /* FlexibleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexibleConstants.h; sourceTree = "<group>"; };
-		27730BA72041E4B0003BEB6C /* FlexibleConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexibleConstants.m; sourceTree = "<group>"; };
+		2747C3D62043C00D00FB5669 /* SHCommonTypeDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCommonTypeDefs.h; sourceTree = "<group>"; };
+		27730BA62041E4B0003BEB6C /* SHFlexibleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHFlexibleConstants.h; sourceTree = "<group>"; };
+		27730BA72041E4B0003BEB6C /* SHFlexibleConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHFlexibleConstants.m; sourceTree = "<group>"; };
 		278FFDA8222B32D300DAF985 /* SHGlobal.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHGlobal.debug.xcconfig; sourceTree = "<group>"; };
 		27B0B1F32223A8B30028AF59 /* SHGlobal.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHGlobal.base.xcconfig; sourceTree = "<group>"; };
-		27C7923922279F2200A92487 /* Dummy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dummy.h; sourceTree = "<group>"; };
-		27C7923A22279F2200A92487 /* Dummy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dummy.m; sourceTree = "<group>"; };
+		27C7923922279F2200A92487 /* SHDummy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDummy.h; sourceTree = "<group>"; };
+		27C7923A22279F2200A92487 /* SHDummy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDummy.m; sourceTree = "<group>"; };
 		27ED28A7204003E200CD5536 /* SHGlobal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHGlobal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27ED28AA204003E200CD5536 /* SHGlobal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHGlobal.h; sourceTree = "<group>"; };
 		27ED28AB204003E200CD5536 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		27ED28B22040043D00CD5536 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
-		27ED28B32040043D00CD5536 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		27ED28B22040043D00CD5536 /* SHConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHConstants.m; sourceTree = "<group>"; };
+		27ED28B32040043D00CD5536 /* SHConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,15 +72,15 @@
 		27ED28A9204003E200CD5536 /* SHGlobal */ = {
 			isa = PBXGroup;
 			children = (
-				2747C3D62043C00D00FB5669 /* CommonTypeDefs.h */,
-				27730BA62041E4B0003BEB6C /* FlexibleConstants.h */,
-				27730BA72041E4B0003BEB6C /* FlexibleConstants.m */,
-				27ED28B32040043D00CD5536 /* Constants.h */,
-				27ED28B22040043D00CD5536 /* Constants.m */,
+				2747C3D62043C00D00FB5669 /* SHCommonTypeDefs.h */,
+				27730BA62041E4B0003BEB6C /* SHFlexibleConstants.h */,
+				27730BA72041E4B0003BEB6C /* SHFlexibleConstants.m */,
+				27ED28B32040043D00CD5536 /* SHConstants.h */,
+				27ED28B22040043D00CD5536 /* SHConstants.m */,
 				27ED28AA204003E200CD5536 /* SHGlobal.h */,
 				27ED28AB204003E200CD5536 /* Info.plist */,
-				27C7923922279F2200A92487 /* Dummy.h */,
-				27C7923A22279F2200A92487 /* Dummy.m */,
+				27C7923922279F2200A92487 /* SHDummy.h */,
+				27C7923A22279F2200A92487 /* SHDummy.m */,
 			);
 			path = SHGlobal;
 			sourceTree = "<group>";
@@ -92,11 +92,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27ED28B52040043D00CD5536 /* Constants.h in Headers */,
-				27730BA92041E4B0003BEB6C /* FlexibleConstants.h in Headers */,
+				27ED28B52040043D00CD5536 /* SHConstants.h in Headers */,
+				27730BA92041E4B0003BEB6C /* SHFlexibleConstants.h in Headers */,
 				27ED28AC204003E200CD5536 /* SHGlobal.h in Headers */,
-				27C7923B22279F2200A92487 /* Dummy.h in Headers */,
-				2747C3D72043C00D00FB5669 /* CommonTypeDefs.h in Headers */,
+				27C7923B22279F2200A92487 /* SHDummy.h in Headers */,
+				2747C3D72043C00D00FB5669 /* SHCommonTypeDefs.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,9 +185,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27C7923C22279F2200A92487 /* Dummy.m in Sources */,
-				27730BAA2041E4B0003BEB6C /* FlexibleConstants.m in Sources */,
-				27ED28B42040043D00CD5536 /* Constants.m in Sources */,
+				27C7923C22279F2200A92487 /* SHDummy.m in Sources */,
+				27730BAA2041E4B0003BEB6C /* SHFlexibleConstants.m in Sources */,
+				27ED28B42040043D00CD5536 /* SHConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

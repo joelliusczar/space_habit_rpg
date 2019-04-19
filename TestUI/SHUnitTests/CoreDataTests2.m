@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import <SHData/SHData.h>
-#import <SHModels/Zone+CoreDataClass.h>
+#import <SHModels/SHSector+CoreDataClass.h>
 #import <TestCommon/TestHelpers.h>
 @import CoreData;
 
@@ -28,7 +28,7 @@
 
 
 -(void)skip_testBrokenEntities{
-  NSEntityDescription* e = Zone.entity;
+  NSEntityDescription* e = SHSector.entity;
   XCTAssertNil(e);
   NSBundle *testBundle = [NSBundle bundleForClass:NSClassFromString(@"OnlyOneEntities")];
   SHCoreData* __weak weakDC = nil;
@@ -37,7 +37,7 @@
     dc = [SHCoreData newWithOptionsBlock:^(SHCoreDataOptions *options){
       options.storeType = NSInMemoryStoreType;
     }];
-    NSEntityDescription* e2 = Zone.entity;
+    NSEntityDescription* e2 = SHSector.entity;
     XCTAssertNotNil(e2);
     //  NSPersistentStoreCoordinator* __weak coord = (NSPersistentStoreCoordinator *)[TestHelpers getPrivateValue:dc
     //    ivarName:@"_coordinator"];
@@ -46,7 +46,7 @@
     dc = [SHCoreData newWithOptionsBlock:^(SHCoreDataOptions *options){
       options.storeType = NSInMemoryStoreType;
     }];
-    e2 = Zone.entity;
+    e2 = SHSector.entity;
     XCTAssertNil(e2);
     NSLog(@"Doot doot doot");
   }
@@ -57,7 +57,7 @@
   dc = [SHCoreData newWithOptionsBlock:^(SHCoreDataOptions *options){
       options.storeType = NSInMemoryStoreType;
   }];
-  e = Zone.entity;
+  e = SHSector.entity;
   XCTAssertNotNil(e);
 //  coord = (NSPersistentStoreCoordinator *)[TestHelpers getPrivateValue:dc
 //    ivarName:@"_coordinator"];

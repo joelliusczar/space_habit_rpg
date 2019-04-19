@@ -8,81 +8,81 @@
 
 /* Begin PBXBuildFile section */
 		271187DF203FF88E0085A549 /* SHControls.h in Headers */ = {isa = PBXBuildFile; fileRef = 271187DD203FF88E0085A549 /* SHControls.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2711880D203FF9DF0085A549 /* SubtasksTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271187E7203FF9DB0085A549 /* SubtasksTableView.xib */; };
-		2711880E203FF9DF0085A549 /* NoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 271187E8203FF9DB0085A549 /* NoteView.m */; };
+		2711880D203FF9DF0085A549 /* SHSubtasksTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271187E7203FF9DB0085A549 /* SHSubtasksTableView.xib */; };
+		2711880E203FF9DF0085A549 /* SHNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 271187E8203FF9DB0085A549 /* SHNoteView.m */; };
 		2711880F203FF9DF0085A549 /* AddItemsFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271187E9203FF9DB0085A549 /* AddItemsFooter.xib */; };
 		27118810203FF9DF0085A549 /* RewardsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271187EA203FF9DB0085A549 /* RewardsView.xib */; };
-		27118811203FF9DF0085A549 /* StreakResetterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 271187EB203FF9DB0085A549 /* StreakResetterView.m */; };
-		27118812203FF9DF0085A549 /* SubtasksTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 271187EC203FF9DB0085A549 /* SubtasksTableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27118814203FF9DF0085A549 /* ListItemCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 271187EE203FF9DC0085A549 /* ListItemCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27118811203FF9DF0085A549 /* SHStreakResetterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 271187EB203FF9DB0085A549 /* SHStreakResetterView.m */; };
+		27118812203FF9DF0085A549 /* SHSubtasksTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 271187EC203FF9DB0085A549 /* SHSubtasksTableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27118814203FF9DF0085A549 /* SHListItemCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 271187EE203FF9DC0085A549 /* SHListItemCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27118815203FF9DF0085A549 /* AllSHControls.h in Headers */ = {isa = PBXBuildFile; fileRef = 271187EF203FF9DC0085A549 /* AllSHControls.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27118816203FF9DF0085A549 /* RewardsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 271187F0203FF9DC0085A549 /* RewardsView.m */; };
-		27118818203FF9DF0085A549 /* StreakResetterView.h in Headers */ = {isa = PBXBuildFile; fileRef = 271187F2203FF9DC0085A549 /* StreakResetterView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27118819203FF9DF0085A549 /* SubtasksTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 271187F3203FF9DC0085A549 /* SubtasksTableView.m */; };
-		2711881A203FF9DF0085A549 /* RateSetterView.h in Headers */ = {isa = PBXBuildFile; fileRef = 271187F4203FF9DC0085A549 /* RateSetterView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2711881B203FF9DF0085A549 /* ListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 271187F5203FF9DC0085A549 /* ListItemCell.m */; };
-		2711881C203FF9DF0085A549 /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 271187F6203FF9DC0085A549 /* TaskCell.m */; };
-		2711881D203FF9DF0085A549 /* StreakResetterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271187F7203FF9DC0085A549 /* StreakResetterView.xib */; };
-		2711881F203FF9DF0085A549 /* AddItemsFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = 271187F9203FF9DD0085A549 /* AddItemsFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27118816203FF9DF0085A549 /* SHRewardsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 271187F0203FF9DC0085A549 /* SHRewardsView.m */; };
+		27118818203FF9DF0085A549 /* SHStreakResetterView.h in Headers */ = {isa = PBXBuildFile; fileRef = 271187F2203FF9DC0085A549 /* SHStreakResetterView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27118819203FF9DF0085A549 /* SHSubtasksTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 271187F3203FF9DC0085A549 /* SHSubtasksTableView.m */; };
+		2711881A203FF9DF0085A549 /* SHRateSetterView.h in Headers */ = {isa = PBXBuildFile; fileRef = 271187F4203FF9DC0085A549 /* SHRateSetterView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2711881B203FF9DF0085A549 /* SHListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 271187F5203FF9DC0085A549 /* SHListItemCell.m */; };
+		2711881C203FF9DF0085A549 /* SHTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 271187F6203FF9DC0085A549 /* SHTaskCell.m */; };
+		2711881D203FF9DF0085A549 /* SHStreakResetterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271187F7203FF9DC0085A549 /* SHStreakResetterView.xib */; };
+		2711881F203FF9DF0085A549 /* SHAddItemsFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = 271187F9203FF9DD0085A549 /* SHAddItemsFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27118820203FF9DF0085A549 /* ImportanceSliderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271187FA203FF9DD0085A549 /* ImportanceSliderView.xib */; };
-		27118821203FF9DF0085A549 /* ListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271187FB203FF9DD0085A549 /* ListItemCell.xib */; };
+		27118821203FF9DF0085A549 /* SHListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271187FB203FF9DD0085A549 /* SHListItemCell.xib */; };
 		27118822203FF9DF0085A549 /* RateTypeSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 271187FC203FF9DD0085A549 /* RateTypeSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27118823203FF9DF0085A549 /* RateTypeSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 271187FD203FF9DD0085A549 /* RateTypeSelector.m */; };
-		27118824203FF9DF0085A549 /* RateSetterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 271187FE203FF9DD0085A549 /* RateSetterView.m */; };
+		27118824203FF9DF0085A549 /* SHRateSetterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 271187FE203FF9DD0085A549 /* SHRateSetterView.m */; };
 		27118825203FF9DF0085A549 /* NoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271187FF203FF9DD0085A549 /* NoteView.xib */; };
-		27118826203FF9DF0085A549 /* AddItemsFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27118800203FF9DD0085A549 /* AddItemsFooter.m */; };
-		27118827203FF9DF0085A549 /* ImportanceSliderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 27118801203FF9DE0085A549 /* ImportanceSliderView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27118828203FF9DF0085A549 /* NoteView.h in Headers */ = {isa = PBXBuildFile; fileRef = 27118802203FF9DE0085A549 /* NoteView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27118829203FF9DF0085A549 /* RateSetterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27118803203FF9DE0085A549 /* RateSetterView.xib */; };
+		27118826203FF9DF0085A549 /* SHAddItemsFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27118800203FF9DD0085A549 /* SHAddItemsFooter.m */; };
+		27118827203FF9DF0085A549 /* SHImportanceSliderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 27118801203FF9DE0085A549 /* SHImportanceSliderView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27118828203FF9DF0085A549 /* SHNoteView.h in Headers */ = {isa = PBXBuildFile; fileRef = 27118802203FF9DE0085A549 /* SHNoteView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27118829203FF9DF0085A549 /* SHRateSetterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27118803203FF9DE0085A549 /* SHRateSetterView.xib */; };
 		2711882B203FF9DF0085A549 /* RateTypeSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27118805203FF9DE0085A549 /* RateTypeSelector.xib */; };
-		2711882D203FF9DF0085A549 /* RewardsView.h in Headers */ = {isa = PBXBuildFile; fileRef = 27118807203FF9DE0085A549 /* RewardsView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2711882E203FF9DF0085A549 /* TaskCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 27118808203FF9DF0085A549 /* TaskCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27118830203FF9DF0085A549 /* ImportanceSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2711880A203FF9DF0085A549 /* ImportanceSliderView.m */; };
+		2711882D203FF9DF0085A549 /* SHRewardsView.h in Headers */ = {isa = PBXBuildFile; fileRef = 27118807203FF9DE0085A549 /* SHRewardsView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2711882E203FF9DF0085A549 /* SHTaskCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 27118808203FF9DF0085A549 /* SHTaskCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27118830203FF9DF0085A549 /* SHImportanceSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2711880A203FF9DF0085A549 /* SHImportanceSliderView.m */; };
 		271188502040001B0085A549 /* SHSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2711884E2040001A0085A549 /* SHSwitch.m */; };
 		271188512040001B0085A549 /* SHSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = 2711884F2040001A0085A549 /* SHSwitch.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D610620421A9A005C9F7E /* P_StreakResetterDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60C520421A99005C9F7E /* P_StreakResetterDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D610720421A9A005C9F7E /* P_SubtasksTableViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60C620421A99005C9F7E /* P_SubtasksTableViewDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D610820421A9A005C9F7E /* P_AddItemsFooterDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60C720421A99005C9F7E /* P_AddItemsFooterDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D610920421A9A005C9F7E /* P_CommonDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60C820421A99005C9F7E /* P_CommonDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D610A20421A9A005C9F7E /* P_RateSetterDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60C920421A99005C9F7E /* P_RateSetterDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D610B20421A9A005C9F7E /* P_RewardsDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60CA20421A99005C9F7E /* P_RewardsDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D610D20421A9A005C9F7E /* P_NotesViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60CC20421A99005C9F7E /* P_NotesViewDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D610E20421A9A005C9F7E /* P_SHSpinPickerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60CD20421A99005C9F7E /* P_SHSpinPickerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D610F20421A9A005C9F7E /* P_ImportanceSlidersDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60CE20421A99005C9F7E /* P_ImportanceSlidersDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D611120421A9A005C9F7E /* P_RateTypeSelectorDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60D020421A99005C9F7E /* P_RateTypeSelectorDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D611220421A9A005C9F7E /* P_MonthComponentSpinPickerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60D120421A99005C9F7E /* P_MonthComponentSpinPickerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D611320421A9A005C9F7E /* P_DailyEditCompound.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60D220421A99005C9F7E /* P_DailyEditCompound.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D611420421A9A005C9F7E /* P_ItemFlexibleListDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60D320421A99005C9F7E /* P_ItemFlexibleListDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D611520421A9A005C9F7E /* P_SHSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60D420421A99005C9F7E /* P_SHSwitch.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D611620421A9A005C9F7E /* ItemFlexibleListEventInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60D620421A99005C9F7E /* ItemFlexibleListEventInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		271D610620421A9A005C9F7E /* SHStreakResetterDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60C520421A99005C9F7E /* SHStreakResetterDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		271D610720421A9A005C9F7E /* SHSubtasksTableViewDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60C620421A99005C9F7E /* SHSubtasksTableViewDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		271D610820421A9A005C9F7E /* SHAddItemsFooterDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60C720421A99005C9F7E /* SHAddItemsFooterDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		271D610920421A9A005C9F7E /* SHCommonDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60C820421A99005C9F7E /* SHCommonDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		271D610A20421A9A005C9F7E /* SHRateSetterDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60C920421A99005C9F7E /* SHRateSetterDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		271D610B20421A9A005C9F7E /* SHRewardsDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60CA20421A99005C9F7E /* SHRewardsDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		271D610D20421A9A005C9F7E /* SHNotesViewDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60CC20421A99005C9F7E /* SHNotesViewDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		271D610E20421A9A005C9F7E /* SHSpinPickerDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60CD20421A99005C9F7E /* SHSpinPickerDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		271D610F20421A9A005C9F7E /* SHImportanceSlidersDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60CE20421A99005C9F7E /* SHImportanceSlidersDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		271D611120421A9A005C9F7E /* SHRateTypeSelectorDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60D020421A99005C9F7E /* SHRateTypeSelectorDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		271D611220421A9A005C9F7E /* SHMonthComponentSpinPickerDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60D120421A99005C9F7E /* SHMonthComponentSpinPickerDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		271D611320421A9A005C9F7E /* SHDailyEditCompoundProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60D220421A99005C9F7E /* SHDailyEditCompoundProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		271D611420421A9A005C9F7E /* SHItemFlexibleListDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60D320421A99005C9F7E /* SHItemFlexibleListDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		271D611520421A9A005C9F7E /* SHSwitchProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60D420421A99005C9F7E /* SHSwitchProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		271D611620421A9A005C9F7E /* SHItemFlexibleListEventInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60D620421A99005C9F7E /* SHItemFlexibleListEventInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271D611720421A9A005C9F7E /* SHEventInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D60D720421A99005C9F7E /* SHEventInfo.m */; };
-		271D611920421A9A005C9F7E /* ItemFlexibleListEventInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D60D920421A99005C9F7E /* ItemFlexibleListEventInfo.m */; };
+		271D611920421A9A005C9F7E /* SHItemFlexibleListEventInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D60D920421A99005C9F7E /* SHItemFlexibleListEventInfo.m */; };
 		271D611B20421A9A005C9F7E /* SHEventInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60DB20421A99005C9F7E /* SHEventInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271D611C20421A9A005C9F7E /* SHButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D60DD20421A9A005C9F7E /* SHButton.m */; };
 		271D611D20421A9A005C9F7E /* SHTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D60DE20421A9A005C9F7E /* SHTextField.m */; };
 		271D611E20421A9A005C9F7E /* SHTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60DF20421A9A005C9F7E /* SHTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271D611F20421A9A005C9F7E /* SHButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60E020421A9A005C9F7E /* SHButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D613420421A9A005C9F7E /* P_NumberControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60F820421A9A005C9F7E /* P_NumberControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D613520421A9A005C9F7E /* ItemFlexibleListView.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60F920421A9A005C9F7E /* ItemFlexibleListView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		271D613420421A9A005C9F7E /* SHNumberControlProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60F820421A9A005C9F7E /* SHNumberControlProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		271D613520421A9A005C9F7E /* SHItemFlexibleListView.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60F920421A9A005C9F7E /* SHItemFlexibleListView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271D613620421A9A005C9F7E /* SHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D60FA20421A9A005C9F7E /* SHViewController.m */; };
 		271D613720421A9A005C9F7E /* SHControlController.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60FB20421A9A005C9F7E /* SHControlController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271D613820421A9A005C9F7E /* SHSpinPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271D60FC20421A9A005C9F7E /* SHSpinPicker.xib */; };
 		271D613920421A9A005C9F7E /* SHSpinPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D60FD20421A9A005C9F7E /* SHSpinPicker.m */; };
 		271D613A20421A9A005C9F7E /* SHView.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D60FE20421A9A005C9F7E /* SHView.m */; };
-		271D613B20421A9A005C9F7E /* ItemFlexibleListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D60FF20421A9A005C9F7E /* ItemFlexibleListView.m */; };
+		271D613B20421A9A005C9F7E /* SHItemFlexibleListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D60FF20421A9A005C9F7E /* SHItemFlexibleListView.m */; };
 		271D613C20421A9A005C9F7E /* SHViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D610020421A9A005C9F7E /* SHViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271D613D20421A9A005C9F7E /* SHSpinPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D610120421A9A005C9F7E /* SHSpinPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271D613E20421A9A005C9F7E /* SHView.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D610220421A9A005C9F7E /* SHView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D613F20421A9A005C9F7E /* ItemFlexibleListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271D610320421A9A005C9F7E /* ItemFlexibleListView.xib */; };
+		271D613F20421A9A005C9F7E /* SHItemFlexibleListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271D610320421A9A005C9F7E /* SHItemFlexibleListView.xib */; };
 		271D614020421A9A005C9F7E /* SHControlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D610420421A9A005C9F7E /* SHControlController.m */; };
-		271D614120421A9A005C9F7E /* P_SHView.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D610520421A9A005C9F7E /* P_SHView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D614520421F1A005C9F7E /* P_ResizeResponder.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D614420421F1A005C9F7E /* P_ResizeResponder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		271D614120421A9A005C9F7E /* SHViewProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D610520421A9A005C9F7E /* SHViewProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		271D614520421F1A005C9F7E /* SHResizeResponderProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D614420421F1A005C9F7E /* SHResizeResponderProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27249B9A21C5809E006A884B /* UIView+Helpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 27249B9821C5809E006A884B /* UIView+Helpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27249B9B21C5809E006A884B /* UIView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 27249B9921C5809E006A884B /* UIView+Helpers.m */; };
 		27249B9E21C58240006A884B /* UIScrollView+ScrollAdjusters.h in Headers */ = {isa = PBXBuildFile; fileRef = 27249B9C21C58240006A884B /* UIScrollView+ScrollAdjusters.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27249B9F21C58240006A884B /* UIScrollView+ScrollAdjusters.m in Sources */ = {isa = PBXBuildFile; fileRef = 27249B9D21C58240006A884B /* UIScrollView+ScrollAdjusters.m */; };
-		27249BA221CF0D59006A884B /* FrontEndConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 27249BA021CF0D59006A884B /* FrontEndConstants.m */; };
-		27249BA321CF0D59006A884B /* FrontEndConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27249BA121CF0D59006A884B /* FrontEndConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27249BA221CF0D59006A884B /* SHFrontEndConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 27249BA021CF0D59006A884B /* SHFrontEndConstants.m */; };
+		27249BA321CF0D59006A884B /* SHFrontEndConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27249BA121CF0D59006A884B /* SHFrontEndConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C527204A573200FB5669 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2747C526204A573200FB5669 /* Media.xcassets */; };
 		27B15A9920524A4F0045B226 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A9820524A4F0045B226 /* SHCommon.framework */; };
 		27B15A9B20524A5C0045B226 /* SHGlobal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A9A20524A5C0045B226 /* SHGlobal.framework */; };
@@ -94,81 +94,81 @@
 		271187DA203FF88E0085A549 /* SHControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		271187DD203FF88E0085A549 /* SHControls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHControls.h; sourceTree = "<group>"; };
 		271187DE203FF88E0085A549 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		271187E7203FF9DB0085A549 /* SubtasksTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SubtasksTableView.xib; path = SHControls/SubtasksTableView.xib; sourceTree = "<group>"; };
-		271187E8203FF9DB0085A549 /* NoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteView.m; path = SHControls/NoteView.m; sourceTree = "<group>"; };
+		271187E7203FF9DB0085A549 /* SHSubtasksTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SHSubtasksTableView.xib; path = SHControls/SHSubtasksTableView.xib; sourceTree = "<group>"; };
+		271187E8203FF9DB0085A549 /* SHNoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHNoteView.m; path = SHControls/SHNoteView.m; sourceTree = "<group>"; };
 		271187E9203FF9DB0085A549 /* AddItemsFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddItemsFooter.xib; path = SHControls/AddItemsFooter.xib; sourceTree = "<group>"; };
 		271187EA203FF9DB0085A549 /* RewardsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RewardsView.xib; path = SHControls/RewardsView.xib; sourceTree = "<group>"; };
-		271187EB203FF9DB0085A549 /* StreakResetterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StreakResetterView.m; path = SHControls/StreakResetterView.m; sourceTree = "<group>"; };
-		271187EC203FF9DB0085A549 /* SubtasksTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubtasksTableView.h; path = SHControls/SubtasksTableView.h; sourceTree = "<group>"; };
-		271187EE203FF9DC0085A549 /* ListItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListItemCell.h; path = SHControls/ListItemCell.h; sourceTree = "<group>"; };
+		271187EB203FF9DB0085A549 /* SHStreakResetterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHStreakResetterView.m; path = SHControls/SHStreakResetterView.m; sourceTree = "<group>"; };
+		271187EC203FF9DB0085A549 /* SHSubtasksTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHSubtasksTableView.h; path = SHControls/SHSubtasksTableView.h; sourceTree = "<group>"; };
+		271187EE203FF9DC0085A549 /* SHListItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHListItemCell.h; path = SHControls/SHListItemCell.h; sourceTree = "<group>"; };
 		271187EF203FF9DC0085A549 /* AllSHControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllSHControls.h; path = SHControls/AllSHControls.h; sourceTree = "<group>"; };
-		271187F0203FF9DC0085A549 /* RewardsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RewardsView.m; path = SHControls/RewardsView.m; sourceTree = "<group>"; };
-		271187F2203FF9DC0085A549 /* StreakResetterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StreakResetterView.h; path = SHControls/StreakResetterView.h; sourceTree = "<group>"; };
-		271187F3203FF9DC0085A549 /* SubtasksTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubtasksTableView.m; path = SHControls/SubtasksTableView.m; sourceTree = "<group>"; };
-		271187F4203FF9DC0085A549 /* RateSetterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RateSetterView.h; path = SHControls/RateSetterView.h; sourceTree = "<group>"; };
-		271187F5203FF9DC0085A549 /* ListItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListItemCell.m; path = SHControls/ListItemCell.m; sourceTree = "<group>"; };
-		271187F6203FF9DC0085A549 /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskCell.m; path = SHControls/TaskCell.m; sourceTree = "<group>"; };
-		271187F7203FF9DC0085A549 /* StreakResetterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StreakResetterView.xib; path = SHControls/StreakResetterView.xib; sourceTree = "<group>"; };
-		271187F9203FF9DD0085A549 /* AddItemsFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddItemsFooter.h; path = SHControls/AddItemsFooter.h; sourceTree = "<group>"; };
+		271187F0203FF9DC0085A549 /* SHRewardsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHRewardsView.m; path = SHControls/SHRewardsView.m; sourceTree = "<group>"; };
+		271187F2203FF9DC0085A549 /* SHStreakResetterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHStreakResetterView.h; path = SHControls/SHStreakResetterView.h; sourceTree = "<group>"; };
+		271187F3203FF9DC0085A549 /* SHSubtasksTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHSubtasksTableView.m; path = SHControls/SHSubtasksTableView.m; sourceTree = "<group>"; };
+		271187F4203FF9DC0085A549 /* SHRateSetterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHRateSetterView.h; path = SHControls/SHRateSetterView.h; sourceTree = "<group>"; };
+		271187F5203FF9DC0085A549 /* SHListItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHListItemCell.m; path = SHControls/SHListItemCell.m; sourceTree = "<group>"; };
+		271187F6203FF9DC0085A549 /* SHTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHTaskCell.m; path = SHControls/SHTaskCell.m; sourceTree = "<group>"; };
+		271187F7203FF9DC0085A549 /* SHStreakResetterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SHStreakResetterView.xib; path = SHControls/SHStreakResetterView.xib; sourceTree = "<group>"; };
+		271187F9203FF9DD0085A549 /* SHAddItemsFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHAddItemsFooter.h; path = SHControls/SHAddItemsFooter.h; sourceTree = "<group>"; };
 		271187FA203FF9DD0085A549 /* ImportanceSliderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImportanceSliderView.xib; path = SHControls/ImportanceSliderView.xib; sourceTree = "<group>"; };
-		271187FB203FF9DD0085A549 /* ListItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ListItemCell.xib; path = SHControls/ListItemCell.xib; sourceTree = "<group>"; };
+		271187FB203FF9DD0085A549 /* SHListItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SHListItemCell.xib; path = SHControls/SHListItemCell.xib; sourceTree = "<group>"; };
 		271187FC203FF9DD0085A549 /* RateTypeSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RateTypeSelector.h; path = SHControls/RateTypeSelector.h; sourceTree = "<group>"; };
 		271187FD203FF9DD0085A549 /* RateTypeSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RateTypeSelector.m; path = SHControls/RateTypeSelector.m; sourceTree = "<group>"; };
-		271187FE203FF9DD0085A549 /* RateSetterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RateSetterView.m; path = SHControls/RateSetterView.m; sourceTree = "<group>"; };
+		271187FE203FF9DD0085A549 /* SHRateSetterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHRateSetterView.m; path = SHControls/SHRateSetterView.m; sourceTree = "<group>"; };
 		271187FF203FF9DD0085A549 /* NoteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteView.xib; path = SHControls/NoteView.xib; sourceTree = "<group>"; };
-		27118800203FF9DD0085A549 /* AddItemsFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddItemsFooter.m; path = SHControls/AddItemsFooter.m; sourceTree = "<group>"; };
-		27118801203FF9DE0085A549 /* ImportanceSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImportanceSliderView.h; path = SHControls/ImportanceSliderView.h; sourceTree = "<group>"; };
-		27118802203FF9DE0085A549 /* NoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteView.h; path = SHControls/NoteView.h; sourceTree = "<group>"; };
-		27118803203FF9DE0085A549 /* RateSetterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RateSetterView.xib; path = SHControls/RateSetterView.xib; sourceTree = "<group>"; };
+		27118800203FF9DD0085A549 /* SHAddItemsFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHAddItemsFooter.m; path = SHControls/SHAddItemsFooter.m; sourceTree = "<group>"; };
+		27118801203FF9DE0085A549 /* SHImportanceSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHImportanceSliderView.h; path = SHControls/SHImportanceSliderView.h; sourceTree = "<group>"; };
+		27118802203FF9DE0085A549 /* SHNoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHNoteView.h; path = SHControls/SHNoteView.h; sourceTree = "<group>"; };
+		27118803203FF9DE0085A549 /* SHRateSetterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SHRateSetterView.xib; path = SHControls/SHRateSetterView.xib; sourceTree = "<group>"; };
 		27118805203FF9DE0085A549 /* RateTypeSelector.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RateTypeSelector.xib; path = SHControls/RateTypeSelector.xib; sourceTree = "<group>"; };
-		27118807203FF9DE0085A549 /* RewardsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RewardsView.h; path = SHControls/RewardsView.h; sourceTree = "<group>"; };
-		27118808203FF9DF0085A549 /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskCell.h; path = SHControls/TaskCell.h; sourceTree = "<group>"; };
-		2711880A203FF9DF0085A549 /* ImportanceSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImportanceSliderView.m; path = SHControls/ImportanceSliderView.m; sourceTree = "<group>"; };
+		27118807203FF9DE0085A549 /* SHRewardsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHRewardsView.h; path = SHControls/SHRewardsView.h; sourceTree = "<group>"; };
+		27118808203FF9DF0085A549 /* SHTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHTaskCell.h; path = SHControls/SHTaskCell.h; sourceTree = "<group>"; };
+		2711880A203FF9DF0085A549 /* SHImportanceSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHImportanceSliderView.m; path = SHControls/SHImportanceSliderView.m; sourceTree = "<group>"; };
 		2711884E2040001A0085A549 /* SHSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHSwitch.m; path = SHControls/SHSwitch.m; sourceTree = "<group>"; };
 		2711884F2040001A0085A549 /* SHSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHSwitch.h; path = SHControls/SHSwitch.h; sourceTree = "<group>"; };
-		271D60C520421A99005C9F7E /* P_StreakResetterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_StreakResetterDelegate.h; sourceTree = "<group>"; };
-		271D60C620421A99005C9F7E /* P_SubtasksTableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_SubtasksTableViewDelegate.h; sourceTree = "<group>"; };
-		271D60C720421A99005C9F7E /* P_AddItemsFooterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_AddItemsFooterDelegate.h; sourceTree = "<group>"; };
-		271D60C820421A99005C9F7E /* P_CommonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_CommonDelegate.h; sourceTree = "<group>"; };
-		271D60C920421A99005C9F7E /* P_RateSetterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_RateSetterDelegate.h; sourceTree = "<group>"; };
-		271D60CA20421A99005C9F7E /* P_RewardsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_RewardsDelegate.h; sourceTree = "<group>"; };
-		271D60CC20421A99005C9F7E /* P_NotesViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_NotesViewDelegate.h; sourceTree = "<group>"; };
-		271D60CD20421A99005C9F7E /* P_SHSpinPickerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_SHSpinPickerDelegate.h; sourceTree = "<group>"; };
-		271D60CE20421A99005C9F7E /* P_ImportanceSlidersDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ImportanceSlidersDelegate.h; sourceTree = "<group>"; };
-		271D60D020421A99005C9F7E /* P_RateTypeSelectorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_RateTypeSelectorDelegate.h; sourceTree = "<group>"; };
-		271D60D120421A99005C9F7E /* P_MonthComponentSpinPickerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_MonthComponentSpinPickerDelegate.h; sourceTree = "<group>"; };
-		271D60D220421A99005C9F7E /* P_DailyEditCompound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_DailyEditCompound.h; sourceTree = "<group>"; };
-		271D60D320421A99005C9F7E /* P_ItemFlexibleListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ItemFlexibleListDelegate.h; sourceTree = "<group>"; };
-		271D60D420421A99005C9F7E /* P_SHSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_SHSwitch.h; sourceTree = "<group>"; };
-		271D60D620421A99005C9F7E /* ItemFlexibleListEventInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemFlexibleListEventInfo.h; sourceTree = "<group>"; };
+		271D60C520421A99005C9F7E /* SHStreakResetterDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHStreakResetterDelegateProtocol.h; sourceTree = "<group>"; };
+		271D60C620421A99005C9F7E /* SHSubtasksTableViewDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSubtasksTableViewDelegateProtocol.h; sourceTree = "<group>"; };
+		271D60C720421A99005C9F7E /* SHAddItemsFooterDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHAddItemsFooterDelegateProtocol.h; sourceTree = "<group>"; };
+		271D60C820421A99005C9F7E /* SHCommonDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCommonDelegateProtocol.h; sourceTree = "<group>"; };
+		271D60C920421A99005C9F7E /* SHRateSetterDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHRateSetterDelegateProtocol.h; sourceTree = "<group>"; };
+		271D60CA20421A99005C9F7E /* SHRewardsDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHRewardsDelegateProtocol.h; sourceTree = "<group>"; };
+		271D60CC20421A99005C9F7E /* SHNotesViewDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHNotesViewDelegateProtocol.h; sourceTree = "<group>"; };
+		271D60CD20421A99005C9F7E /* SHSpinPickerDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSpinPickerDelegateProtocol.h; sourceTree = "<group>"; };
+		271D60CE20421A99005C9F7E /* SHImportanceSlidersDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHImportanceSlidersDelegateProtocol.h; sourceTree = "<group>"; };
+		271D60D020421A99005C9F7E /* SHRateTypeSelectorDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHRateTypeSelectorDelegateProtocol.h; sourceTree = "<group>"; };
+		271D60D120421A99005C9F7E /* SHMonthComponentSpinPickerDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMonthComponentSpinPickerDelegateProtocol.h; sourceTree = "<group>"; };
+		271D60D220421A99005C9F7E /* SHDailyEditCompoundProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDailyEditCompoundProtocol.h; sourceTree = "<group>"; };
+		271D60D320421A99005C9F7E /* SHItemFlexibleListDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHItemFlexibleListDelegateProtocol.h; sourceTree = "<group>"; };
+		271D60D420421A99005C9F7E /* SHSwitchProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSwitchProtocol.h; sourceTree = "<group>"; };
+		271D60D620421A99005C9F7E /* SHItemFlexibleListEventInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHItemFlexibleListEventInfo.h; sourceTree = "<group>"; };
 		271D60D720421A99005C9F7E /* SHEventInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEventInfo.m; sourceTree = "<group>"; };
-		271D60D920421A99005C9F7E /* ItemFlexibleListEventInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemFlexibleListEventInfo.m; sourceTree = "<group>"; };
+		271D60D920421A99005C9F7E /* SHItemFlexibleListEventInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHItemFlexibleListEventInfo.m; sourceTree = "<group>"; };
 		271D60DB20421A99005C9F7E /* SHEventInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHEventInfo.h; sourceTree = "<group>"; };
 		271D60DD20421A9A005C9F7E /* SHButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHButton.m; sourceTree = "<group>"; };
 		271D60DE20421A9A005C9F7E /* SHTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHTextField.m; sourceTree = "<group>"; };
 		271D60DF20421A9A005C9F7E /* SHTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHTextField.h; sourceTree = "<group>"; };
 		271D60E020421A9A005C9F7E /* SHButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHButton.h; sourceTree = "<group>"; };
-		271D60F820421A9A005C9F7E /* P_NumberControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_NumberControl.h; sourceTree = "<group>"; };
-		271D60F920421A9A005C9F7E /* ItemFlexibleListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemFlexibleListView.h; sourceTree = "<group>"; };
+		271D60F820421A9A005C9F7E /* SHNumberControlProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHNumberControlProtocol.h; sourceTree = "<group>"; };
+		271D60F920421A9A005C9F7E /* SHItemFlexibleListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHItemFlexibleListView.h; sourceTree = "<group>"; };
 		271D60FA20421A9A005C9F7E /* SHViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHViewController.m; sourceTree = "<group>"; };
 		271D60FB20421A9A005C9F7E /* SHControlController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHControlController.h; sourceTree = "<group>"; };
 		271D60FC20421A9A005C9F7E /* SHSpinPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSpinPicker.xib; sourceTree = "<group>"; };
 		271D60FD20421A9A005C9F7E /* SHSpinPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSpinPicker.m; sourceTree = "<group>"; };
 		271D60FE20421A9A005C9F7E /* SHView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHView.m; sourceTree = "<group>"; };
-		271D60FF20421A9A005C9F7E /* ItemFlexibleListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemFlexibleListView.m; sourceTree = "<group>"; };
+		271D60FF20421A9A005C9F7E /* SHItemFlexibleListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHItemFlexibleListView.m; sourceTree = "<group>"; };
 		271D610020421A9A005C9F7E /* SHViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHViewController.h; sourceTree = "<group>"; };
 		271D610120421A9A005C9F7E /* SHSpinPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSpinPicker.h; sourceTree = "<group>"; };
 		271D610220421A9A005C9F7E /* SHView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHView.h; sourceTree = "<group>"; };
-		271D610320421A9A005C9F7E /* ItemFlexibleListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemFlexibleListView.xib; sourceTree = "<group>"; };
+		271D610320421A9A005C9F7E /* SHItemFlexibleListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHItemFlexibleListView.xib; sourceTree = "<group>"; };
 		271D610420421A9A005C9F7E /* SHControlController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHControlController.m; sourceTree = "<group>"; };
-		271D610520421A9A005C9F7E /* P_SHView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_SHView.h; sourceTree = "<group>"; };
-		271D614420421F1A005C9F7E /* P_ResizeResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_ResizeResponder.h; sourceTree = "<group>"; };
+		271D610520421A9A005C9F7E /* SHViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHViewProtocol.h; sourceTree = "<group>"; };
+		271D614420421F1A005C9F7E /* SHResizeResponderProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHResizeResponderProtocol.h; sourceTree = "<group>"; };
 		27249B9821C5809E006A884B /* UIView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Helpers.h"; path = "SHControls/UIView+Helpers.h"; sourceTree = "<group>"; };
 		27249B9921C5809E006A884B /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Helpers.m"; path = "SHControls/UIView+Helpers.m"; sourceTree = "<group>"; };
 		27249B9C21C58240006A884B /* UIScrollView+ScrollAdjusters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+ScrollAdjusters.h"; path = "SHControls/UIScrollView+ScrollAdjusters.h"; sourceTree = "<group>"; };
 		27249B9D21C58240006A884B /* UIScrollView+ScrollAdjusters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+ScrollAdjusters.m"; path = "SHControls/UIScrollView+ScrollAdjusters.m"; sourceTree = "<group>"; };
-		27249BA021CF0D59006A884B /* FrontEndConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FrontEndConstants.m; path = SHControls/FrontEndConstants.m; sourceTree = "<group>"; };
-		27249BA121CF0D59006A884B /* FrontEndConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrontEndConstants.h; path = SHControls/FrontEndConstants.h; sourceTree = "<group>"; };
+		27249BA021CF0D59006A884B /* SHFrontEndConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHFrontEndConstants.m; path = SHControls/SHFrontEndConstants.m; sourceTree = "<group>"; };
+		27249BA121CF0D59006A884B /* SHFrontEndConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHFrontEndConstants.h; path = SHControls/SHFrontEndConstants.h; sourceTree = "<group>"; };
 		2747C526204A573200FB5669 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = SHControls/Media.xcassets; sourceTree = "<group>"; };
 		279848D0225063F500039A29 /* SHControls.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHControls.base.xcconfig; sourceTree = "<group>"; };
 		27B15A9820524A4F0045B226 /* SHCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHCommon.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHCommon.framework"; sourceTree = "<group>"; };
@@ -195,8 +195,8 @@
 			children = (
 				279848CF225063AC00039A29 /* Configs */,
 				27D0D6E121D02A2D00886721 /* Categories */,
-				27249BA121CF0D59006A884B /* FrontEndConstants.h */,
-				27249BA021CF0D59006A884B /* FrontEndConstants.m */,
+				27249BA121CF0D59006A884B /* SHFrontEndConstants.h */,
+				27249BA021CF0D59006A884B /* SHFrontEndConstants.m */,
 				27249B9C21C58240006A884B /* UIScrollView+ScrollAdjusters.h */,
 				27249B9D21C58240006A884B /* UIScrollView+ScrollAdjusters.m */,
 				27249B9821C5809E006A884B /* UIView+Helpers.h */,
@@ -206,38 +206,38 @@
 				271D60C420421A99005C9F7E /* ControlDelegates */,
 				271D60D520421A99005C9F7E /* EventArgs */,
 				271D60DC20421A9A005C9F7E /* NormalControls */,
-				271187F9203FF9DD0085A549 /* AddItemsFooter.h */,
-				27118800203FF9DD0085A549 /* AddItemsFooter.m */,
+				271187F9203FF9DD0085A549 /* SHAddItemsFooter.h */,
+				27118800203FF9DD0085A549 /* SHAddItemsFooter.m */,
 				271187E9203FF9DB0085A549 /* AddItemsFooter.xib */,
 				2711884F2040001A0085A549 /* SHSwitch.h */,
 				2711884E2040001A0085A549 /* SHSwitch.m */,
 				271187EF203FF9DC0085A549 /* AllSHControls.h */,
-				27118801203FF9DE0085A549 /* ImportanceSliderView.h */,
-				2711880A203FF9DF0085A549 /* ImportanceSliderView.m */,
+				27118801203FF9DE0085A549 /* SHImportanceSliderView.h */,
+				2711880A203FF9DF0085A549 /* SHImportanceSliderView.m */,
 				271187FA203FF9DD0085A549 /* ImportanceSliderView.xib */,
-				271187EE203FF9DC0085A549 /* ListItemCell.h */,
-				271187F5203FF9DC0085A549 /* ListItemCell.m */,
-				271187FB203FF9DD0085A549 /* ListItemCell.xib */,
-				27118802203FF9DE0085A549 /* NoteView.h */,
-				271187E8203FF9DB0085A549 /* NoteView.m */,
+				271187EE203FF9DC0085A549 /* SHListItemCell.h */,
+				271187F5203FF9DC0085A549 /* SHListItemCell.m */,
+				271187FB203FF9DD0085A549 /* SHListItemCell.xib */,
+				27118802203FF9DE0085A549 /* SHNoteView.h */,
+				271187E8203FF9DB0085A549 /* SHNoteView.m */,
 				271187FF203FF9DD0085A549 /* NoteView.xib */,
-				271187F4203FF9DC0085A549 /* RateSetterView.h */,
-				271187FE203FF9DD0085A549 /* RateSetterView.m */,
-				27118803203FF9DE0085A549 /* RateSetterView.xib */,
+				271187F4203FF9DC0085A549 /* SHRateSetterView.h */,
+				271187FE203FF9DD0085A549 /* SHRateSetterView.m */,
+				27118803203FF9DE0085A549 /* SHRateSetterView.xib */,
 				271187FC203FF9DD0085A549 /* RateTypeSelector.h */,
 				271187FD203FF9DD0085A549 /* RateTypeSelector.m */,
 				27118805203FF9DE0085A549 /* RateTypeSelector.xib */,
-				27118807203FF9DE0085A549 /* RewardsView.h */,
-				271187F0203FF9DC0085A549 /* RewardsView.m */,
+				27118807203FF9DE0085A549 /* SHRewardsView.h */,
+				271187F0203FF9DC0085A549 /* SHRewardsView.m */,
 				271187EA203FF9DB0085A549 /* RewardsView.xib */,
-				271187F2203FF9DC0085A549 /* StreakResetterView.h */,
-				271187EB203FF9DB0085A549 /* StreakResetterView.m */,
-				271187F7203FF9DC0085A549 /* StreakResetterView.xib */,
-				271187EC203FF9DB0085A549 /* SubtasksTableView.h */,
-				271187F3203FF9DC0085A549 /* SubtasksTableView.m */,
-				271187E7203FF9DB0085A549 /* SubtasksTableView.xib */,
-				27118808203FF9DF0085A549 /* TaskCell.h */,
-				271187F6203FF9DC0085A549 /* TaskCell.m */,
+				271187F2203FF9DC0085A549 /* SHStreakResetterView.h */,
+				271187EB203FF9DB0085A549 /* SHStreakResetterView.m */,
+				271187F7203FF9DC0085A549 /* SHStreakResetterView.xib */,
+				271187EC203FF9DB0085A549 /* SHSubtasksTableView.h */,
+				271187F3203FF9DC0085A549 /* SHSubtasksTableView.m */,
+				271187E7203FF9DB0085A549 /* SHSubtasksTableView.xib */,
+				27118808203FF9DF0085A549 /* SHTaskCell.h */,
+				271187F6203FF9DC0085A549 /* SHTaskCell.m */,
 				271187DC203FF88E0085A549 /* SHControls */,
 				271187DB203FF88E0085A549 /* Products */,
 				2711884B203FFE5B0085A549 /* Frameworks */,
@@ -273,21 +273,21 @@
 		271D60C420421A99005C9F7E /* ControlDelegates */ = {
 			isa = PBXGroup;
 			children = (
-				271D614420421F1A005C9F7E /* P_ResizeResponder.h */,
-				271D60C520421A99005C9F7E /* P_StreakResetterDelegate.h */,
-				271D60C620421A99005C9F7E /* P_SubtasksTableViewDelegate.h */,
-				271D60C720421A99005C9F7E /* P_AddItemsFooterDelegate.h */,
-				271D60C820421A99005C9F7E /* P_CommonDelegate.h */,
-				271D60C920421A99005C9F7E /* P_RateSetterDelegate.h */,
-				271D60CA20421A99005C9F7E /* P_RewardsDelegate.h */,
-				271D60CC20421A99005C9F7E /* P_NotesViewDelegate.h */,
-				271D60CD20421A99005C9F7E /* P_SHSpinPickerDelegate.h */,
-				271D60CE20421A99005C9F7E /* P_ImportanceSlidersDelegate.h */,
-				271D60D020421A99005C9F7E /* P_RateTypeSelectorDelegate.h */,
-				271D60D120421A99005C9F7E /* P_MonthComponentSpinPickerDelegate.h */,
-				271D60D220421A99005C9F7E /* P_DailyEditCompound.h */,
-				271D60D320421A99005C9F7E /* P_ItemFlexibleListDelegate.h */,
-				271D60D420421A99005C9F7E /* P_SHSwitch.h */,
+				271D614420421F1A005C9F7E /* SHResizeResponderProtocol.h */,
+				271D60C520421A99005C9F7E /* SHStreakResetterDelegateProtocol.h */,
+				271D60C620421A99005C9F7E /* SHSubtasksTableViewDelegateProtocol.h */,
+				271D60C720421A99005C9F7E /* SHAddItemsFooterDelegateProtocol.h */,
+				271D60C820421A99005C9F7E /* SHCommonDelegateProtocol.h */,
+				271D60C920421A99005C9F7E /* SHRateSetterDelegateProtocol.h */,
+				271D60CA20421A99005C9F7E /* SHRewardsDelegateProtocol.h */,
+				271D60CC20421A99005C9F7E /* SHNotesViewDelegateProtocol.h */,
+				271D60CD20421A99005C9F7E /* SHSpinPickerDelegateProtocol.h */,
+				271D60CE20421A99005C9F7E /* SHImportanceSlidersDelegateProtocol.h */,
+				271D60D020421A99005C9F7E /* SHRateTypeSelectorDelegateProtocol.h */,
+				271D60D120421A99005C9F7E /* SHMonthComponentSpinPickerDelegateProtocol.h */,
+				271D60D220421A99005C9F7E /* SHDailyEditCompoundProtocol.h */,
+				271D60D320421A99005C9F7E /* SHItemFlexibleListDelegateProtocol.h */,
+				271D60D420421A99005C9F7E /* SHSwitchProtocol.h */,
 			);
 			name = ControlDelegates;
 			path = SHControls/ControlDelegates;
@@ -296,8 +296,8 @@
 		271D60D520421A99005C9F7E /* EventArgs */ = {
 			isa = PBXGroup;
 			children = (
-				271D60D920421A99005C9F7E /* ItemFlexibleListEventInfo.m */,
-				271D60D620421A99005C9F7E /* ItemFlexibleListEventInfo.h */,
+				271D60D620421A99005C9F7E /* SHItemFlexibleListEventInfo.h */,
+				271D60D920421A99005C9F7E /* SHItemFlexibleListEventInfo.m */,
 				271D60D720421A99005C9F7E /* SHEventInfo.m */,
 				271D60DB20421A99005C9F7E /* SHEventInfo.h */,
 			);
@@ -320,10 +320,10 @@
 		271D60F720421A9A005C9F7E /* Abstract */ = {
 			isa = PBXGroup;
 			children = (
-				271D60F820421A9A005C9F7E /* P_NumberControl.h */,
-				271D60F920421A9A005C9F7E /* ItemFlexibleListView.h */,
-				271D60FF20421A9A005C9F7E /* ItemFlexibleListView.m */,
-				271D610320421A9A005C9F7E /* ItemFlexibleListView.xib */,
+				271D60F820421A9A005C9F7E /* SHNumberControlProtocol.h */,
+				271D60F920421A9A005C9F7E /* SHItemFlexibleListView.h */,
+				271D60FF20421A9A005C9F7E /* SHItemFlexibleListView.m */,
+				271D610320421A9A005C9F7E /* SHItemFlexibleListView.xib */,
 				271D60FA20421A9A005C9F7E /* SHViewController.m */,
 				271D60FB20421A9A005C9F7E /* SHControlController.h */,
 				271D60FC20421A9A005C9F7E /* SHSpinPicker.xib */,
@@ -333,7 +333,7 @@
 				271D610120421A9A005C9F7E /* SHSpinPicker.h */,
 				271D610220421A9A005C9F7E /* SHView.h */,
 				271D610420421A9A005C9F7E /* SHControlController.m */,
-				271D610520421A9A005C9F7E /* P_SHView.h */,
+				271D610520421A9A005C9F7E /* SHViewProtocol.h */,
 			);
 			name = Abstract;
 			path = SHControls/Abstract;
@@ -365,48 +365,48 @@
 			buildActionMask = 2147483647;
 			files = (
 				27249B9E21C58240006A884B /* UIScrollView+ScrollAdjusters.h in Headers */,
-				271D610F20421A9A005C9F7E /* P_ImportanceSlidersDelegate.h in Headers */,
-				271D610620421A9A005C9F7E /* P_StreakResetterDelegate.h in Headers */,
-				271D614520421F1A005C9F7E /* P_ResizeResponder.h in Headers */,
+				271D610F20421A9A005C9F7E /* SHImportanceSlidersDelegateProtocol.h in Headers */,
+				271D610620421A9A005C9F7E /* SHStreakResetterDelegateProtocol.h in Headers */,
+				271D614520421F1A005C9F7E /* SHResizeResponderProtocol.h in Headers */,
 				27D0D6E421D02A2D00886721 /* UIViewController+Helper.h in Headers */,
-				27118827203FF9DF0085A549 /* ImportanceSliderView.h in Headers */,
-				271D610720421A9A005C9F7E /* P_SubtasksTableViewDelegate.h in Headers */,
+				27118827203FF9DF0085A549 /* SHImportanceSliderView.h in Headers */,
+				271D610720421A9A005C9F7E /* SHSubtasksTableViewDelegateProtocol.h in Headers */,
 				271D613E20421A9A005C9F7E /* SHView.h in Headers */,
-				271D610A20421A9A005C9F7E /* P_RateSetterDelegate.h in Headers */,
-				271D613420421A9A005C9F7E /* P_NumberControl.h in Headers */,
-				271D610D20421A9A005C9F7E /* P_NotesViewDelegate.h in Headers */,
-				271D613520421A9A005C9F7E /* ItemFlexibleListView.h in Headers */,
-				271D610E20421A9A005C9F7E /* P_SHSpinPickerDelegate.h in Headers */,
-				2711882D203FF9DF0085A549 /* RewardsView.h in Headers */,
-				271D611120421A9A005C9F7E /* P_RateTypeSelectorDelegate.h in Headers */,
-				271D610820421A9A005C9F7E /* P_AddItemsFooterDelegate.h in Headers */,
-				271D610B20421A9A005C9F7E /* P_RewardsDelegate.h in Headers */,
+				271D610A20421A9A005C9F7E /* SHRateSetterDelegateProtocol.h in Headers */,
+				271D613420421A9A005C9F7E /* SHNumberControlProtocol.h in Headers */,
+				271D610D20421A9A005C9F7E /* SHNotesViewDelegateProtocol.h in Headers */,
+				271D613520421A9A005C9F7E /* SHItemFlexibleListView.h in Headers */,
+				271D610E20421A9A005C9F7E /* SHSpinPickerDelegateProtocol.h in Headers */,
+				2711882D203FF9DF0085A549 /* SHRewardsView.h in Headers */,
+				271D611120421A9A005C9F7E /* SHRateTypeSelectorDelegateProtocol.h in Headers */,
+				271D610820421A9A005C9F7E /* SHAddItemsFooterDelegateProtocol.h in Headers */,
+				271D610B20421A9A005C9F7E /* SHRewardsDelegateProtocol.h in Headers */,
 				271D613720421A9A005C9F7E /* SHControlController.h in Headers */,
 				271D611B20421A9A005C9F7E /* SHEventInfo.h in Headers */,
-				27118812203FF9DF0085A549 /* SubtasksTableView.h in Headers */,
+				27118812203FF9DF0085A549 /* SHSubtasksTableView.h in Headers */,
 				271D611E20421A9A005C9F7E /* SHTextField.h in Headers */,
 				271D613C20421A9A005C9F7E /* SHViewController.h in Headers */,
-				27118818203FF9DF0085A549 /* StreakResetterView.h in Headers */,
-				271D611420421A9A005C9F7E /* P_ItemFlexibleListDelegate.h in Headers */,
+				27118818203FF9DF0085A549 /* SHStreakResetterView.h in Headers */,
+				271D611420421A9A005C9F7E /* SHItemFlexibleListDelegateProtocol.h in Headers */,
 				27118815203FF9DF0085A549 /* AllSHControls.h in Headers */,
-				27118814203FF9DF0085A549 /* ListItemCell.h in Headers */,
-				27118828203FF9DF0085A549 /* NoteView.h in Headers */,
-				271D614120421A9A005C9F7E /* P_SHView.h in Headers */,
-				2711881F203FF9DF0085A549 /* AddItemsFooter.h in Headers */,
-				271D611320421A9A005C9F7E /* P_DailyEditCompound.h in Headers */,
+				27118814203FF9DF0085A549 /* SHListItemCell.h in Headers */,
+				27118828203FF9DF0085A549 /* SHNoteView.h in Headers */,
+				271D614120421A9A005C9F7E /* SHViewProtocol.h in Headers */,
+				2711881F203FF9DF0085A549 /* SHAddItemsFooter.h in Headers */,
+				271D611320421A9A005C9F7E /* SHDailyEditCompoundProtocol.h in Headers */,
 				271188512040001B0085A549 /* SHSwitch.h in Headers */,
-				2711881A203FF9DF0085A549 /* RateSetterView.h in Headers */,
+				2711881A203FF9DF0085A549 /* SHRateSetterView.h in Headers */,
 				271187DF203FF88E0085A549 /* SHControls.h in Headers */,
 				271D613D20421A9A005C9F7E /* SHSpinPicker.h in Headers */,
 				27118822203FF9DF0085A549 /* RateTypeSelector.h in Headers */,
-				271D611620421A9A005C9F7E /* ItemFlexibleListEventInfo.h in Headers */,
-				271D611220421A9A005C9F7E /* P_MonthComponentSpinPickerDelegate.h in Headers */,
-				2711882E203FF9DF0085A549 /* TaskCell.h in Headers */,
+				271D611620421A9A005C9F7E /* SHItemFlexibleListEventInfo.h in Headers */,
+				271D611220421A9A005C9F7E /* SHMonthComponentSpinPickerDelegateProtocol.h in Headers */,
+				2711882E203FF9DF0085A549 /* SHTaskCell.h in Headers */,
 				271D611F20421A9A005C9F7E /* SHButton.h in Headers */,
-				271D611520421A9A005C9F7E /* P_SHSwitch.h in Headers */,
+				271D611520421A9A005C9F7E /* SHSwitchProtocol.h in Headers */,
 				27249B9A21C5809E006A884B /* UIView+Helpers.h in Headers */,
-				27249BA321CF0D59006A884B /* FrontEndConstants.h in Headers */,
-				271D610920421A9A005C9F7E /* P_CommonDelegate.h in Headers */,
+				27249BA321CF0D59006A884B /* SHFrontEndConstants.h in Headers */,
+				271D610920421A9A005C9F7E /* SHCommonDelegateProtocol.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,16 +469,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2711880D203FF9DF0085A549 /* SubtasksTableView.xib in Resources */,
+				2711880D203FF9DF0085A549 /* SHSubtasksTableView.xib in Resources */,
 				27118825203FF9DF0085A549 /* NoteView.xib in Resources */,
 				2711882B203FF9DF0085A549 /* RateTypeSelector.xib in Resources */,
 				271D613820421A9A005C9F7E /* SHSpinPicker.xib in Resources */,
 				2711880F203FF9DF0085A549 /* AddItemsFooter.xib in Resources */,
 				27118820203FF9DF0085A549 /* ImportanceSliderView.xib in Resources */,
-				27118821203FF9DF0085A549 /* ListItemCell.xib in Resources */,
-				27118829203FF9DF0085A549 /* RateSetterView.xib in Resources */,
-				271D613F20421A9A005C9F7E /* ItemFlexibleListView.xib in Resources */,
-				2711881D203FF9DF0085A549 /* StreakResetterView.xib in Resources */,
+				27118821203FF9DF0085A549 /* SHListItemCell.xib in Resources */,
+				27118829203FF9DF0085A549 /* SHRateSetterView.xib in Resources */,
+				271D613F20421A9A005C9F7E /* SHItemFlexibleListView.xib in Resources */,
+				2711881D203FF9DF0085A549 /* SHStreakResetterView.xib in Resources */,
 				2747C527204A573200FB5669 /* Media.xcassets in Resources */,
 				27118810203FF9DF0085A549 /* RewardsView.xib in Resources */,
 			);
@@ -508,28 +508,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				271D611C20421A9A005C9F7E /* SHButton.m in Sources */,
-				2711881C203FF9DF0085A549 /* TaskCell.m in Sources */,
+				2711881C203FF9DF0085A549 /* SHTaskCell.m in Sources */,
 				271D614020421A9A005C9F7E /* SHControlController.m in Sources */,
-				271D613B20421A9A005C9F7E /* ItemFlexibleListView.m in Sources */,
+				271D613B20421A9A005C9F7E /* SHItemFlexibleListView.m in Sources */,
 				271D611720421A9A005C9F7E /* SHEventInfo.m in Sources */,
-				27118824203FF9DF0085A549 /* RateSetterView.m in Sources */,
+				27118824203FF9DF0085A549 /* SHRateSetterView.m in Sources */,
 				271D613620421A9A005C9F7E /* SHViewController.m in Sources */,
 				27118823203FF9DF0085A549 /* RateTypeSelector.m in Sources */,
-				2711881B203FF9DF0085A549 /* ListItemCell.m in Sources */,
+				2711881B203FF9DF0085A549 /* SHListItemCell.m in Sources */,
 				271D613920421A9A005C9F7E /* SHSpinPicker.m in Sources */,
-				27118811203FF9DF0085A549 /* StreakResetterView.m in Sources */,
+				27118811203FF9DF0085A549 /* SHStreakResetterView.m in Sources */,
 				271188502040001B0085A549 /* SHSwitch.m in Sources */,
 				27249B9B21C5809E006A884B /* UIView+Helpers.m in Sources */,
-				271D611920421A9A005C9F7E /* ItemFlexibleListEventInfo.m in Sources */,
-				27118819203FF9DF0085A549 /* SubtasksTableView.m in Sources */,
-				2711880E203FF9DF0085A549 /* NoteView.m in Sources */,
-				27249BA221CF0D59006A884B /* FrontEndConstants.m in Sources */,
+				271D611920421A9A005C9F7E /* SHItemFlexibleListEventInfo.m in Sources */,
+				27118819203FF9DF0085A549 /* SHSubtasksTableView.m in Sources */,
+				2711880E203FF9DF0085A549 /* SHNoteView.m in Sources */,
+				27249BA221CF0D59006A884B /* SHFrontEndConstants.m in Sources */,
 				271D613A20421A9A005C9F7E /* SHView.m in Sources */,
 				271D611D20421A9A005C9F7E /* SHTextField.m in Sources */,
-				27118826203FF9DF0085A549 /* AddItemsFooter.m in Sources */,
+				27118826203FF9DF0085A549 /* SHAddItemsFooter.m in Sources */,
 				27D0D6E521D02A2D00886721 /* UIViewController+Helper.m in Sources */,
-				27118816203FF9DF0085A549 /* RewardsView.m in Sources */,
-				27118830203FF9DF0085A549 /* ImportanceSliderView.m in Sources */,
+				27118816203FF9DF0085A549 /* SHRewardsView.m in Sources */,
+				27118830203FF9DF0085A549 /* SHImportanceSliderView.m in Sources */,
 				27249B9F21C58240006A884B /* UIScrollView+ScrollAdjusters.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

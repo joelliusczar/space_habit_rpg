@@ -9,13 +9,13 @@
 #import "EditNavigationController.h"
 #import "EditingSaver.h"
 #import <SHControls/UIViewController+Helper.h>
-#import <SHCommon/Interceptor.h>
+#import <SHCommon/SHInterceptor.h>
 #import <SHControls/UIScrollView+ScrollAdjusters.h>
-#import <SHGlobal/Constants.h>
+#import <SHGlobal/SHConstants.h>
 #import <SHControlsSpecial/RateSetContainer.h>
-#import <SHControls/ItemFlexibleListView.h>
+#import <SHControls/SHItemFlexibleListView.h>
 #import <SHControls/SHButton.h>
-#import <SHControls/FrontEndConstants.h>
+#import <SHControls/SHFrontEndConstants.h>
 #import <SHControls/UIViewController+Helper.h>
 @import CoreGraphics;
 
@@ -124,11 +124,11 @@ void setupNotificationCenterStuff(EditNavigationController *nav){
                                 style:UIAlertActionStyleDefault
                                 handler:^(UIAlertAction *action)
                                 {
-                                    wrapReturnVoid wrappedCall = ^void(){
+                                    shWrapReturnVoid wrappedCall = ^void(){
                                         [weakSelf.editingScreen deleteModel];
                                         [weakSelf popVCFromFront];
                                     };
-                                    [Interceptor callVoidWrapped:wrappedCall withInfo:nil];
+                                    [SHInterceptor callVoidWrapped:wrappedCall withInfo:nil];
                                 }];
     [deleteAlert addAction:noAction];
     [deleteAlert addAction:yesAction];
@@ -204,7 +204,7 @@ void setupNotificationCenterStuff(EditNavigationController *nav){
 -(void)scrollByOffset:(CGFloat)offset{
     //scroll past the title control part but no farther for
     //the scrollContainer which houses our editing controls
-    if(self.scrollContainer.contentOffset.y < EDIT_SCREEN_TOP_CONTROL_HEIGHT){
+    if(self.scrollContainer.contentOffset.y < SH_EDIT_SCREEN_TOP_CONTROL_HEIGHT){
         [self.scrollContainer scrollByOffset:offset];
     }
     

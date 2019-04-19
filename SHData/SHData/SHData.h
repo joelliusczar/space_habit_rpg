@@ -18,7 +18,7 @@ FOUNDATION_EXPORT const unsigned char SHDataVersionString[];
 #endif
 
 // In this header, you should import all the public headers of your framework using statements like #import <SHData/PublicHeader.h>
-#import "P_CoreData.h"
+#import "SHCoreDataProtocol.h"
 #import "SHCoreData.h"
 #import "SingletonCluster+Data.h"
 #import "NSManagedObjectContext+Helper.h"

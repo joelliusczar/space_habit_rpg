@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SHModels/P_StoryItem.h>
+#import <SHModels/SHStoryItemProtocol.h>
 #import <SHControls/SHButton.h>
 
 @interface StoryDumpView : UIViewController
 @property (weak,nonatomic) IBOutlet UITextView *synopsisView;
 @property (weak,nonatomic) IBOutlet SHButton *doneBtn;
 @property (weak,nonatomic) IBOutlet UILabel *headlineLbl;
-@property (strong,nonatomic) NSObject<P_StoryItem> *storyItem;
+@property (strong,nonatomic) NSObject<SHStoryItemProtocol> *storyItem;
 @property (nonatomic) UIColor* backgroundColor;
 @property (copy,nonatomic) void (^responseBlock)(StoryDumpView *);
--(instancetype)initWithStoryItem:(NSObject<P_StoryItem> *)storyItem;
+-(instancetype)initWithStoryItem:(NSObject<SHStoryItemProtocol> *)storyItem;
 @end

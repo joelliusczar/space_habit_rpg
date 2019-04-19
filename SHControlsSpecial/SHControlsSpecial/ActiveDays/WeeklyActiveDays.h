@@ -9,8 +9,8 @@
 @import UIKit;
 @import SHControls;
 #import "P_WeeklyActiveDaysDelegate.h"
-#import <SHGlobal/Constants.h>
-#import <SHModels/ModelConstants.h>
+#import <SHGlobal/SHConstants.h>
+#import <SHModels/SHModelConstants.h>
 
 IB_DESIGNABLE
 @interface WeeklyActiveDays : SHView
@@ -23,5 +23,5 @@ IB_DESIGNABLE
 @property (weak,nonatomic) IBOutlet SHSwitch *fridaySwitch;
 @property (weak,nonatomic) IBOutlet SHSwitch *saturdaySwitch;
 @property (weak,nonatomic) id<P_WeeklyActiveDaysDelegate> delegate;
--(void)setActiveDaysOfWeek:(NSArray<RateValueItemDict *> *)activeDays;
+-(void)setActiveDaysOfWeek:(NSArray<SHRateValueItemDict *> *)activeDays;
 @end

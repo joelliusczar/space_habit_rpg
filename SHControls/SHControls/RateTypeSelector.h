@@ -6,10 +6,10 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import "P_RateTypeSelectorDelegate.h"
+#import "SHRateTypeSelectorDelegateProtocol.h"
 #import "SHViewController.h"
 #import "SHButton.h"
-#import <SHGlobal/Constants.h>
+#import <SHGlobal/SHConstants.h>
 @import UIKit;
 
 @interface RateTypeSelector : SHViewController
@@ -22,8 +22,8 @@
 @property (weak,nonatomic) IBOutlet UILabel *yearlyCheckLbl;
 @property (weak,nonatomic) IBOutlet SHButton *yearlyBtn;
 @property (weak,nonatomic) IBOutlet UIImageView *backgroundView;
-@property (assign,nonatomic) RateType rateType;
--(instancetype)initWithRateType:(RateType)rateType
-                    andDelegate:(id<P_RateTypeSelectorDelegate>)delegate;
-@property (weak,nonatomic) id<P_RateTypeSelectorDelegate> delegate;
+@property (assign,nonatomic) SHRateType rateType;
+-(instancetype)initWithRateType:(SHRateType)rateType
+                    andDelegate:(id<RateTypeSelectorDelegateProtocol>)delegate;
+@property (weak,nonatomic) id<RateTypeSelectorDelegateProtocol> delegate;
 @end

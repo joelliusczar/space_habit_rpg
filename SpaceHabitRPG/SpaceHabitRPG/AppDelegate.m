@@ -7,9 +7,9 @@
 //
 
 #import "AppDelegate.h"
-#import <SHCommon/NotificationHelper.h>
-#import <SHModels/OnlyOneEntities.h>
+#import <SHCommon/SHNotificationHelper.h>
 #import <SHData/SingletonCluster+Data.h>
+#import <SHModels/SHStoryItemDictionary.h>
 
 
 @interface AppDelegate ()
@@ -26,7 +26,7 @@ void printWorkingDir(){
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     (void)application;
     (void)launchOptions;
-    SharedGlobal.bundle = [NSBundle bundleForClass:OnlyOneEntities.class];
+    SharedGlobal.bundle = [NSBundle bundleForClass:SHStoryItemDictionary.class];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     NSObject<P_CoreData> *dataController = SHData;
     self.centralController = [CentralViewController newWithDataController:dataController
@@ -58,7 +58,7 @@ void printWorkingDir(){
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     (void)application;
-    [NotificationHelper cleanUpSentReminders];
+    [SHNotificationHelper cleanUpSentReminders];
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 

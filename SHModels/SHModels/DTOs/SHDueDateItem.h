@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "P_DueDateItem.h"
+#import "SHDueDateItemProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DueDateItem : NSObject<P_DueDateItem>
+@interface SHDueDateItem : NSObject<SHDueDateItemProtocol>
 +(instancetype)newWithObjectID:(NSManagedObjectID*)objectId andContext:(NSManagedObjectContext*)context;
 @end
 

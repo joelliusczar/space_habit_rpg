@@ -1,5 +1,5 @@
 //
-//  Monster_Medium.m
+//  SHMonster_Medium.m
 //  SHModels
 //
 //  Created by Joel Pridgen on 3/25/19.
@@ -7,19 +7,19 @@
 //
 
 #import <SHData/NSManagedObjectContext+Helper.h>
-#import "ModelTools.h"
+#import "SHModelTools.h"
 #import "SHMonster_Medium.h"
 
 @interface Monster_Medium ()
 @property (strong,nonatomic) NSManagedObjectContext *context;
-@property (strong,nonatomic) MonsterInfoDictionary* monsterInfo;
+@property (strong,nonatomic) SHMonsterInfoDictionary* monsterInfo;
 @end
 
 @implementation Monster_Medium
 
 
 +(instancetype)newWithContext:(NSManagedObjectContext*)context
-withInfoDict:(MonsterInfoDictionary*)monsterInfo{
+withInfoDict:(SHMonsterInfoDictionary*)monsterInfo{
   Monster_Medium *instance = [Monster_Medium new];
   instance.monsterInfo = monsterInfo;
   instance.context = context;
@@ -27,49 +27,49 @@ withInfoDict:(MonsterInfoDictionary*)monsterInfo{
 }
 
 
--(MonsterDTO*)newRandomMonster:(NSString*)zoneKey zoneLvl:(uint32_t)zoneLvl{
-    MonsterDTO *m = [self newEmptyMonster];
-    m.monsterKey = [self randomMonsterKey:zoneKey];
-    m.lvl = calculateLvl(zoneLvl,MONSTER_LVL_RANGE);
+-(SHMonsterDTO*)newRandomMonster:(NSString*)sectorKey zoneLvl:(uint32_t)zoneLvl{
+    SHMonsterDTO *m = [self newEmptyMonster];
+    m.monsterKey = [self randomMonsterKey:sectorKey];
+    m.lvl = shCalculateLvl(zoneLvl,SH_MONSTER_LVL_RANGE);
     m.nowHp = m.maxHp;
     return m;
 }
 
 
--(MonsterDTO*)newEmptyMonster{
-  return [MonsterDTO newWithMonsterDict:self.monsterInfo];
+-(SHMonsterDTO*)newEmptyMonster{
+  return [SHMonsterDTO newWithMonsterDict:self.monsterInfo];
 }
 
 
--(NSString*)randomMonsterKey:(NSString*)zoneKey{
-    MonsterInfoDictionary *monInfoDict = self.monsterInfo;
-    NSMutableArray<NSString *> *monsterKeys = [NSMutableArray arrayWithArray:[monInfoDict getMonsterKeyList:zoneKey]];
+-(NSString*)randomMonsterKey:(NSString*)sectorKey{
+    SHMonsterInfoDictionary *monInfoDict = self.monsterInfo;
+    NSMutableArray<NSString *> *monsterKeys = [NSMutableArray arrayWithArray:[monInfoDict getMonsterKeyList:sectorKey]];
     [monsterKeys addObjectsFromArray:[monInfoDict getMonsterKeyList:@"ALL"]];
-    ProbWeight *pbw = [self buildProbilityWeight:monsterKeys];
+    SHProbWeight *pbw = [self buildProbilityWeight:monsterKeys];
     return [pbw weightedRandomKey];
 }
 
--(ProbWeight*)buildProbilityWeight:(NSMutableArray<NSString*>*)keys{
-    MonsterInfoDictionary *monInfoDict = self.monsterInfo;
-    ProbWeight *pbw = [[ProbWeight alloc] init];
-    for(NSString* zoneKey in keys){
-        int32_t encounterWeight = [monInfoDict getEncounterWeight:zoneKey];
-        [pbw add:zoneKey With:encounterWeight];
+-(SHProbWeight*)buildProbilityWeight:(NSMutableArray<NSString*>*)keys{
+    SHMonsterInfoDictionary *monInfoDict = self.monsterInfo;
+    SHProbWeight *pbw = [[SHProbWeight alloc] init];
+    for(NSString* sectorKey in keys){
+        int32_t encounterWeight = [monInfoDict getEncounterWeight:sectorKey];
+        [pbw add:sectorKey With:encounterWeight];
     }
     return pbw;
 }
 
 
--(Monster*)getCurrentMonster{
-  __block Monster* m = nil;
+-(SHMonster*)getCurrentMonster{
+  __block SHMonster* m = nil;
   NSManagedObjectContext *context = self.context;
   [context performBlockAndWait:^{
-    NSFetchRequest<Monster *> *request = [Monster fetchRequest];
+    NSFetchRequest<SHMonster *> *request = [SHMonster fetchRequest];
     NSSortDescriptor *sortByMonsterKey = [[NSSortDescriptor alloc]initWithKey:@"monsterKey" ascending:NO];
     request.sortDescriptors = @[sortByMonsterKey];
     NSArray<NSManagedObject *> *results = [context getItemsWithRequest:request];
     NSCAssert(results.count<2,@"There are too many monsters");
-    m = (Monster*)results[0];
+    m = (SHMonster*)results[0];
   }];
   return m;
 }

@@ -7,7 +7,7 @@
 //
 
 #import "NSLocale+Helper.h"
-#import <SHGlobal/Constants.h>
+#import <SHGlobal/SHConstants.h>
 
 @implementation NSLocale (Helper)
 
@@ -30,16 +30,16 @@
     
     for(NSUInteger i=0;i<len;i++){
         if(searchable[i]=='H'){
-            hourFormatMask |= ZERO_BASED_24_HOUR;
+            hourFormatMask |= SH_ZERO_BASED_24_HOUR;
         }
         if(searchable[i]=='h'){
-            hourFormatMask |= ONE_BASED_12_HOUR;
+            hourFormatMask |= SH_ONE_BASED_12_HOUR;
         }
         if(searchable[i]=='K'){
-            hourFormatMask |= ZERO_BASED_12_HOUR;
+            hourFormatMask |= SH_ZERO_BASED_12_HOUR;
         }
         if(searchable[i]=='k'){
-            hourFormatMask |= ONE_BASED_24_HOUR;
+            hourFormatMask |= SH_ONE_BASED_24_HOUR;
         }
     }
     return hourFormatMask;
@@ -47,7 +47,7 @@
 
 
 +(BOOL)isMask24Hours:(NSInteger)mask{
-    return (mask&ZERO_BASED_24_HOUR)|(mask&ONE_BASED_24_HOUR);
+    return (mask&SH_ZERO_BASED_24_HOUR)|(mask&SH_ONE_BASED_24_HOUR);
 }
 
 
@@ -63,7 +63,7 @@
         //if for some reason both the zero based flag and one based flag
         //are present in the format string, I will default to zero base
         //just because...
-        if(hourMask&ZERO_BASED_24_HOUR){
+        if(hourMask&SH_ZERO_BASED_24_HOUR){
             return hour;
         }
         return hour+1;
@@ -71,11 +71,11 @@
     else{
         //this will default to one based if there's a conflict
         //because that's what I use
-        if((hourMask&ONE_BASED_12_HOUR)&&(hour==0||hour==12)){
+        if((hourMask&SH_ONE_BASED_12_HOUR)&&(hour==0||hour==12)){
             return 12;
             
         }
-        return hour>=DAY_HALF?(hour%DAY_HALF):hour;
+        return hour>=SH_DAY_HALF?(hour%SH_DAY_HALF):hour;
     }
 }
 

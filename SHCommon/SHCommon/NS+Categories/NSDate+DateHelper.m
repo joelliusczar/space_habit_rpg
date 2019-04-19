@@ -12,7 +12,7 @@
 #import <SHDatetime.h>
 #import <SHErrorHandling.h>
 #import "NSException+SHCommonExceptions.h"
-#import "SingletonCluster.h"
+#import "SHSingletonCluster.h"
 
 
 @implementation NSDate (DateHelper)
@@ -121,7 +121,7 @@
     return dateString;
 }
 
--(NSString *)extractTimeInFormat:(hourFormatType)format{
+-(NSString *)extractTimeInFormat:(SHHourFormatType)format{
     
     NSDateComponents *components = [SharedGlobal.inUseCalendar
                                     components:NSCalendarUnitHour|NSCalendarUnitMinute

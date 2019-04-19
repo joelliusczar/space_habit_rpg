@@ -40,7 +40,7 @@
 }
 
 
--(instancetype)initWithStoryItem:(NSObject<P_StoryItem> *)storyItem{
+-(instancetype)initWithStoryItem:(NSObject<SHStoryItemProtocol> *)storyItem{
   if(self = [self initWithNibName:@"StoryDumpView" bundle:nil]){
     _storyItem = storyItem;
   }

@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SHCommon/P_Interceptor.h>
-#import "P_SHView.h"
+#import <SHCommon/SHInterceptorProtocol.h>
+#import "SHViewProtocol.h"
 
 @interface SHTextField : UITextField
-@property (strong,nonatomic) id<P_Interceptor> interceptor;
+@property (strong,nonatomic) id<SHInterceptorProtocol> interceptor;
 @end

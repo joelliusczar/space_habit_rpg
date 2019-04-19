@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SHModels/Settings+CoreDataClass.h>
-#import <SHModels/Zone_Medium.h>
-#import <SHModels/SHZoneDTO.h>
+#import <SHModels/SHSettings+CoreDataClass.h>
+#import <SHModels/SHSector_Medium.h>
+#import <SHModels/SHSectorDTO.h>
 #import "CentralViewController.h"
 
 

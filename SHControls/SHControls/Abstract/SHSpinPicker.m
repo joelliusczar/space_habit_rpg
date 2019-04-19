@@ -9,9 +9,9 @@
 #pragma clang diagnostic ignored "-Wunused-parameter"
 
 #import "SHSpinPicker.h"
-#import <SHCommon/Interceptor.h>
+#import <SHCommon/SHInterceptor.h>
 #import <SHCommon/NSException+SHCommonExceptions.h>
-#import <SHCommon/SingletonCluster.h>
+#import <SHCommon/SHSingletonCluster.h>
 #import "UIViewController+Helper.h"
 #import "SHEventInfo.h"
 
@@ -20,14 +20,6 @@
 @end
 
 @implementation SHSpinPicker
-
-
--(id<P_UtilityStore>)utilityStore{
-    if(nil==_utilityStore){
-        _utilityStore = SharedGlobal;
-    }
-    return _utilityStore;
-}
 
 
 -(instancetype)init{
@@ -47,7 +39,7 @@
 
 
 -(void)background_tap_action:(UITapGestureRecognizer *)sender{
-    wrapReturnVoid wrappedCall = ^void(){
+    shWrapReturnVoid wrappedCall = ^void(){
         if(sender.view==self.view){
             [self popVCFromFront];
         }
@@ -75,7 +67,7 @@ numberOfRowsInComponent:(NSInteger)component{
 -(IBAction)pickerSelectBtn_press_action:(SHButton *)sender
             forEvent:(UIEvent *)event
 {
-    wrapReturnVoid wrappedCall = ^void(){
+    shWrapReturnVoid wrappedCall = ^void(){
         SHEventInfo *e = [[SHEventInfo alloc] init:event withSenders:sender,self.picker,self,nil];
         [self.delegate pickerSelection_action:e];
         [self popVCFromFront];

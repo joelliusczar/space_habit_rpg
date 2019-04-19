@@ -9,19 +9,18 @@
 #define dummy 0 && defined(IS_DEV) && IS_DEV
 
 #import "DailyViewController.h"
-#import <SHGlobal/Constants.h>
+#import <SHGlobal/SHConstants.h>
 #import "EditNavigationController.h"
 #import "DailyEditController.h"
 #import "DailyCellController.h"
 #import "IntroViewController.h"
-#import <SHCommon/CommonUtilities.h>
+#import <SHCommon/SHCommonUtils.h>
 #import <SHControls/UIViewController+Helper.h>
-#import <SHModels/Daily+Helper.h>
 #import <SHCommon/NSDate+DateHelper.h>
-#import <SHCommon/Interceptor.h>
+#import <SHCommon/SHInterceptor.h>
 #import <SHControls/SHButton.h>
 #import <SHModels/SHMonster_Medium.h>
-#import <SHModels/Daily_Medium.h>
+#import <SHModels/SHDaily_Medium.h>
 
 
 
@@ -32,9 +31,9 @@
 @property (strong,nonatomic) NSFetchedResultsController *incompleteItems;
 @property (strong,nonatomic) NSFetchedResultsController *completeItems;
 @property (strong,nonatomic) NSObject<P_CoreData> *dataController;
-@property (strong,nonatomic) NSObject<P_ResourceUtility> *resourceUtil;
+@property (strong,nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
 @property (strong,nonatomic) Monster_Medium *monsterMedium;
-@property (strong,nonatomic) Daily_Medium *dailyMedium;
+@property (strong,nonatomic) SHDaily_Medium *dailyMedium;
 
 @end
 
@@ -98,16 +97,16 @@ static NSString *const EntityName = @"Daily";
 }
 
 
--(void)completeDaily:(Daily *)daily{
-        daily.rollbackActivationTime = daily.lastActivationTime;
-        daily.lastActivationTime = [[NSDate date] dayStart];
+-(void)completeDaily:(SHDaily *)daily{
+        daily.rollbackActivationDateTime = daily.lastActivationDateTime;
+        daily.lastActivationDateTime = [[NSDate date] dayStart];
         //TODO: calculate damage done to monster
         //TODO: save
 }
 
 
--(void)undoCompletedDaily:(Daily *)daily{
-    daily.lastActivationTime = daily.rollbackActivationTime;
+-(void)undoCompletedDaily:(SHDaily *)daily{
+    daily.lastActivationDateTime = daily.rollbackActivationDateTime;
     //TODO: more stuff
 }
 
@@ -146,7 +145,7 @@ static NSString *const EntityName = @"Daily";
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if(section == INCOMPLETE){
+    if(section == SH_INCOMPLETE){
         return self.incompleteItems.fetchedObjects.count;
     }
     else{
@@ -155,7 +154,7 @@ static NSString *const EntityName = @"Daily";
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-  if(section == INCOMPLETE){
+  if(section == SH_INCOMPLETE){
     return @"Unfinished";
   }
   else{
@@ -193,8 +192,8 @@ static NSString *const EntityName = @"Daily";
     
     __weak DailyViewController *weakSelf = self;
     void (^pressedEdit)(UITableViewRowAction *,NSIndexPath *) = ^(UITableViewRowAction *action,NSIndexPath *path){
-        wrapReturnVoid wrappedCall = ^void(){
-            NSFetchedResultsController *fetchController = path.section == INCOMPLETE?weakSelf.incompleteItems:weakSelf.completeItems;
+        shWrapReturnVoid wrappedCall = ^void(){
+            NSFetchedResultsController *fetchController = path.section == SH_INCOMPLETE?weakSelf.incompleteItems:weakSelf.completeItems;
             DailyEditController *dailyEditor = [[DailyEditController alloc]
                                                 initWithParentDailyController:weakSelf
                                                 ToEdit:fetchController.fetchedObjects[indexPath.row]
@@ -204,7 +203,7 @@ static NSString *const EntityName = @"Daily";
                                                         andEditor:dailyEditor];
             [weakSelf.central arrangeAndPushChildVCToFront:editController];
         };
-        [Interceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@pressedEdit",self.description]];
+        [SHInterceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@pressedEdit",self.description]];
     };
     
     UITableViewRowAction *openEditBox = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Edit" handler:pressedEdit];
@@ -219,8 +218,8 @@ static NSString *const EntityName = @"Daily";
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     DailyCellController *cell = [DailyCellController getDailyCell:tableView WithParent:self];
-    Daily *d = nil;
-    if(indexPath.section == INCOMPLETE){
+    SHDaily *d = nil;
+    if(indexPath.section == SH_INCOMPLETE){
         d = self.incompleteItems.fetchedObjects[indexPath.row];
     }
     else{
@@ -245,7 +244,7 @@ This will be called the user creates a new daily, checks it off, or deletes one
     NSAssert(controller==self.incompleteItems||controller==self.completeItems,
              @"controller is pointing to an invalid objects");
     (void)anObject;
-    NSInteger sectionNum = controller==self.incompleteItems?INCOMPLETE:COMPLETE;
+    NSInteger sectionNum = controller==self.incompleteItems?SH_INCOMPLETE:SH_COMPLETE;
     NSIndexPath *customExistingPath = [NSIndexPath indexPathForRow:indexPath.row inSection:sectionNum];
     NSIndexPath *customNewPath = [NSIndexPath indexPathForRow:newIndexPath.row inSection:sectionNum];
     

@@ -9,10 +9,10 @@
 #ifndef AllSHControls_h
 #define AllSHControls_h
 #import "SHView.h"
-#import "NoteView.h"
-#import "RateSetterView.h"
-#import "ImportanceSliderView.h"
-#import "StreakResetterView.h"
+#import "SHNoteView.h"
+#import "SHRateSetterView.h"
+#import "SHImportanceSliderView.h"
+#import "SHStreakResetterView.h"
 #import "SHTextField.h"
 #import "SHButton.h"
 

@@ -7,7 +7,7 @@
 //
 
 #import "WeeklyActiveDays.h"
-#import <SHCommon/CommonUtilities.h>
+#import <SHCommon/SHCommonUtils.h>
 #import <SHCommon/NSObject+Helper.h>
 #import <SHControls/SHEventInfo.h>
 
@@ -35,9 +35,9 @@
 }
 
 
--(void)setActiveDaysOfWeek:(NSArray<RateValueItemDict *> *)activeDays{
+-(void)setActiveDaysOfWeek:(NSArray<SHRateValueItemDict *> *)activeDays{
     for(SHSwitch *flip in self.activeDaySwitches){
-        flip.isOn = activeDays[flip.tag][IS_DAY_ACTIVE_KEY].boolValue;
+        flip.isOn = activeDays[flip.tag][SH_IS_DAY_ACTIVE_KEY].boolValue;
     }
 }
 

@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SHCommon/P_Interceptor.h>
+#import <SHCommon/SHInterceptorProtocol.h>
 
 @interface SHViewController : UIViewController
-@property (strong,nonatomic) id<P_Interceptor> interceptor;
+@property (strong,nonatomic) id<SHInterceptorProtocol> interceptor;
 @end

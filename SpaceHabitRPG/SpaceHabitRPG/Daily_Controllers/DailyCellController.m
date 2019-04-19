@@ -7,18 +7,17 @@
 //
 
 #import "DailyCellController.h"
-#import <SHModels/Daily+CoreDataClass.h>
-#import <SHModels/Daily+Helper.h>
-#import <SHGlobal/Constants.h>
-#import <SHCommon/Interceptor.h>
+#import <SHModels/SHDaily+CoreDataClass.h>
+#import <SHGlobal/SHConstants.h>
+#import <SHCommon/SHInterceptor.h>
 #import <SHCommon/NSDate+DateHelper.h>
-#import <SHCommon/SingletonCluster.h>
+#import <SHCommon/SHSingletonCluster.h>
 @import CoreGraphics;
 
 
 
 @interface DailyCellController()
-@property (nonatomic,weak) Daily *model;
+@property (nonatomic,weak) SHDaily *model;
 @property (nonatomic,weak) DailyViewController *parentDailyController;
 @property (assign,nonatomic) NSInteger rowIndex;
 @property (assign,nonatomic) NSInteger sectionIndex;
@@ -41,7 +40,7 @@
     [super awakeFromNib];
 }
 
--(void)setupCell:(Daily *)model AndRow:(NSIndexPath *)rowInfo{
+-(void)setupCell:(SHDaily *)model AndRow:(NSIndexPath *)rowInfo{
     self.model = model;
     [self refreshCell:rowInfo];
     
@@ -63,13 +62,14 @@
     //for due in x days
     if(self.model.rate > 1){
         self.daysLeftLbl.hidden = NO;
-        self.daysLeftLbl.text = self.model.daysUntilDue==0?@"Today":[NSString stringWithFormat:@"Due in %d days",self.model.daysUntilDue];
+        #warning put this back 
+        //self.daysLeftLbl.text = self.model.daysUntilDue==0?@"Today":[NSString stringWithFormat:@"Due in %d days",self.model.daysUntilDue];
     }
     else{
         self.daysLeftLbl.hidden = YES;
     }
     //for check image
-    if(self.sectionIndex == INCOMPLETE){
+    if(self.sectionIndex == SH_INCOMPLETE){
         [self.completeBtn setImage:[UIImage imageNamed:@"unchecked_task"] forState:UIControlStateNormal];
     }
     else{
@@ -86,12 +86,12 @@
 -(IBAction)completeBtn_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
         (void)sender;
         (void)event;
-//        if(self.model.sectionNum == INCOMPLETE){
-//            self.model.sectionNum  = COMPLETE;
+//        if(self.model.sectionNum == SH_INCOMPLETE){
+//            self.model.sectionNum  = SH_COMPLETE;
 //            [self.parentDailyController completeDaily:self.model];
 //        }
 //        else{
-//            self.model.sectionNum  = INCOMPLETE;
+//            self.model.sectionNum  = SH_INCOMPLETE;
 //            [self.parentDailyController undoCompletedDaily:self.model];
 //        }
 }

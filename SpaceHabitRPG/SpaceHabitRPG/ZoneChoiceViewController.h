@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SHModels/Zone+CoreDataClass.h>
+#import <SHModels/SHSector+CoreDataClass.h>
 #import "ZoneDescriptionViewController.h"
 #import "CentralViewController.h"
 #import <SHControls/SHSwitch.h>
-#import <SHModels/SHZoneDTO.h>
+#import <SHModels/SHSectorDTO.h>
 
 @class ZoneDescriptionViewController;
 
@@ -20,5 +20,5 @@
 @property (nonatomic,weak) IBOutlet SHButton *skipButton;
 @property (nonatomic,weak) CentralViewController *central;
 @property (nonatomic,strong) ZoneDescriptionViewController *descViewController;
-+(instancetype)newWithCentral:(CentralViewController *)central AndZoneChoices:(NSArray<ZoneDTO *> *)zoneChoices;
++(instancetype)newWithCentral:(CentralViewController *)central AndZoneChoices:(NSArray<SHSectorDTO *> *)zoneChoices;
 @end

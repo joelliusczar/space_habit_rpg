@@ -1,5 +1,5 @@
 //
-//  SingletonCluster+Data.m
+//  SHSingletonCluster+Data.m
 //  SHData
 //
 //  Created by Joel Pridgen on 2/27/18.
@@ -13,7 +13,7 @@
 static NSObject* dbMutex;
 static NSObject* constructorBlockMutex;
 
-@implementation SingletonCluster (Data)
+@implementation SHSingletonCluster (Data)
 
 +(void)initialize{
   dbMutex = [NSObject new];
@@ -41,7 +41,7 @@ static NSObject* constructorBlockMutex;
   @synchronized (dbMutex) {
     
     id ans = [self.bag getWithKey:@"dc" OrCreateFromBlock:^id(id obj){
-        SingletonCluster* sc = (SingletonCluster*)obj;
+        SHSingletonCluster* sc = (SHSingletonCluster*)obj;
         return [SHCoreData newWithOptionsBlock:sc.constructorBlock];
     } withObj:self];
     return ans;

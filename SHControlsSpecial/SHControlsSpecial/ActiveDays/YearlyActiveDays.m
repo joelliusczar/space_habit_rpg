@@ -7,18 +7,20 @@
 //
 
 #import "YearlyActiveDays.h"
-#import <SHCommon/CommonUtilities.h>
-#import <SHControls/ListItemCell.h>
+#import <SHCommon/SHCommonUtils.h>
+#import <SHControls/SHListItemCell.h>
 #import "YearPartPicker.h"
-#import <SHCommon/Interceptor.h>
+#import <SHCommon/SHInterceptor.h>
 #import <SHControls/SHEventInfo.h>
+#import <SHModels/SHModelConstants.h>
+#import <SHGlobal/SHConstants.h>
 
 @interface YearlyActiveDays ()
 @end
 
 @implementation YearlyActiveDays
 
-+(instancetype)newWithDaily:(Daily *)daily{
++(instancetype)newWithDaily:(SHDaily *)daily{
     YearlyActiveDays *instance = [[YearlyActiveDays alloc] init];
     instance.daily = daily;
     [instance commonSetup];
@@ -30,23 +32,25 @@
 #pragma clang diagnostic ignored "-Wunused-parameter"
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.daily.inUseActiveDays.count;
+    //return self.daily.inUseActiveDays.count;
+    return 0;
+    #warning "unimplemented";
 }
 
 #pragma clang diagnostic pop
 
 -(UITableViewCell *)tableView:(UITableView *)tableView
         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    ListItemCell *cell = [ListItemCell getListItemCell:tableView];
-    RateValueItemDict *yearItemDict = self.daily.inUseActiveDays[indexPath.row];
-    NSString *month = self.utilityStore.inUseCalendar.monthSymbols[yearItemDict[MONTH_KEY].integerValue];
-    cell.lblRowDesc.text = [NSString stringWithFormat:@"%@ %@",month,yearItemDict[DAY_OF_MONTH_KEY]];
+    SHListItemCell *cell = [SHListItemCell getListItemCell:tableView];
+    SHRateValueItemDict *yearItemDict = nil;//self.daily.inUseActiveDays[indexPath.row];
+    NSString *month = NSCalendar.currentCalendar.monthSymbols[yearItemDict[SH_MONTH_KEY].integerValue];
+    cell.lblRowDesc.text = [NSString stringWithFormat:@"%@ %@",month,yearItemDict[SH_DAY_OF_MONTH_KEY]];
     return cell;
 }
 
 
 -(void)addItemBtn_press_action:(SHEventInfo *)eventInfo{
-    wrapReturnVoid wrappedCall = ^(){
+    shWrapReturnVoid wrappedCall = ^(){
         [self hideKeyboard];
         YearPartPicker *dayOfYearPicker = [[YearPartPicker alloc] init];
         [self showSHSpinPicker:dayOfYearPicker];
@@ -58,7 +62,7 @@
 
 
 -(void)pickerSelection_action:(SHEventInfo *)eventInfo{
-    wrapReturnVoid wrappedCall = ^(){
+    shWrapReturnVoid wrappedCall = ^(){
         UIPickerView *picker = (UIPickerView *)eventInfo.senderStack[1];
         [self addCellWithMonth:[picker selectedRowInComponent:0]
                         dayOfMonth:[picker selectedRowInComponent:1]];
@@ -70,22 +74,24 @@
 
 
 -(void)addCellWithMonth:(NSInteger)month dayOfMonth:(NSInteger)dayOfMonth{
-    NSInteger row = [self.daily addYearlyItem:self.daily.isInverseRateType
-                                     monthNum:month
-                                   dayOfMonth:dayOfMonth+1];
-    if(row >= 0){
-        [self addItemToTableAndScale:row];
-    }
+//    NSInteger row = [self.daily addYearlyItem:self.daily.isInverseRateType
+//                                     monthNum:month
+//                                   dayOfMonth:dayOfMonth+1];
+//    if(row >= 0){
+//        [self addItemToTableAndScale:row];
+//    }
+#warning "unimplemented"
 }
 
 
 -(void)deleteCellAt:(NSIndexPath *)indexPath{
-    [self.daily deleteRateValueItem:self.daily.rateType atIndex:indexPath.row];
+    //[self.daily deleteRateValueItem:self.daily.rateType atIndex:indexPath.row];
     [self removeItemFromTableAndScale:indexPath];
 }
 
 -(NSInteger)backendListCount{
-    return self.daily.inUseActiveDays.count;
+    //return self.daily.inUseActiveDays.count;
+    return 0;
 }
 
 

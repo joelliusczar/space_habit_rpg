@@ -18,8 +18,8 @@ FOUNDATION_EXPORT const unsigned char SHGlobalVersionString[];
 #endif
 
 // In this header, you should import all the public headers of your framework using statements like #import <SHGlobal/PublicHeader.h>
-#import "Constants.h"
-#import "FlexibleConstants.h"
-#import "CommonTypeDefs.h"
-#import "Dummy.h"
+#import "SHConstants.h"
+#import "SHFlexibleConstants.h"
+#import "SHCommonTypeDefs.h"
+#import "SHDummy.h"
 

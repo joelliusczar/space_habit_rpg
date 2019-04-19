@@ -7,8 +7,8 @@
 //
 
 #import "MonthPartPicker.h"
-#import <SHGlobal/Constants.h>
-#import <SHCommon/SingletonCluster.h>
+#import <SHGlobal/SHConstants.h>
+#import <SHCommon/SHSingletonCluster.h>
 #import <SHControls/UIViewController+Helper.h>
 
 @interface MonthPartPicker ()
@@ -42,9 +42,9 @@ const NSInteger DAY_COLUMN = 1;
 -(NSInteger)pickerView:(UIPickerView *)pickerView
 numberOfRowsInComponent:(NSInteger)component{
     if(component == 0){
-        return POTENTIAL_WEEKS_IN_MONTH_NUM;
+        return SH_POTENTIAL_WEEKS_IN_MONTH_NUM;
     }
-    return self.utilityStore.inUseCalendar.shortWeekdaySymbols.count;
+    return NSCalendar.currentCalendar.shortWeekdaySymbols.count;
 }
 
 
@@ -54,12 +54,12 @@ numberOfRowsInComponent:(NSInteger)component{
     
     if(component==ORDINAL_WEEK_COLUMN){
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-        formatter.locale = self.utilityStore.inUseLocale;
+        formatter.locale = NSLocale.currentLocale;
         formatter.numberStyle = NSNumberFormatterOrdinalStyle;
         return [formatter
                 stringFromNumber:[NSNumber numberWithInteger:row+1]];
     }
-    return self.utilityStore.inUseCalendar.weekdaySymbols[row];
+    return NSCalendar.currentCalendar.weekdaySymbols[row];
 }
 
 

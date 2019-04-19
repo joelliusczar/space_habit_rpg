@@ -7,17 +7,17 @@
 //
 
 #import "IntroViewController.h"
-#import <SHData/P_CoreData.h>
-#import <SHModels/Settings+CoreDataClass.h>
+#import <SHData/SHCoreDataProtocol.h>
+#import <SHModels/SHSettings+CoreDataClass.h>
 #import "StoryConstants.h"
-#import <SHControls/FrontEndConstants.h>
+#import <SHControls/SHFrontEndConstants.h>
 #import "ZoneChoiceViewController.h"
-#import <SHModels/Hero+CoreDataClass.h>
-#import <SHModels/StoryItemDictionary.h>
+#import <SHModels/SHHero+CoreDataClass.h>
+#import <SHModels/SHStoryItemDictionary.h>
 #import <SHControls/UIViewController+Helper.h>
-#import <SHModels/ZoneInfoDictionary.h>
-#import <SHModels/Zone_Medium.h>
-#import <SHCommon/CommonUtilities.h>
+#import <SHModels/SHSectorInfoDictionary.h>
+#import <SHModels/SHSector_Medium.h>
+#import <SHCommon/SHCommonUtils.h>
 #import <SHControls/SHSwitch.h>
 #import <SHControls/UIView+Helpers.h>
 #import "SHControls/UIScrollView+ScrollAdjusters.h"
@@ -54,7 +54,7 @@
     _introMessageView = [[UITextView alloc] init];
     _introMessageView.backgroundColor = [UIColor blackColor];
     _introMessageView.textColor = [UIColor whiteColor];
-    StoryItemDictionary *storyDict = [StoryItemDictionary newWithResourceUtil:self.central.resourceUtil];
+    SHStoryItemDictionary *storyDict = [SHStoryItemDictionary newWithResourceUtil:self.central.resourceUtil];
     NSString* intro = [storyDict getStoryItem:@"intro"];
     _introMessageView.text = intro;
     CGRect frame = _introMessageView.frame;
@@ -64,7 +64,7 @@
     _introMessageView.adjustsFontForContentSizeCategory = YES;
     [_introMessageView sizeToFit];
     CGRect msgFrame = _introMessageView.frame;
-    CGFloat diff = getParentChildHeightOffset(self.scrollView.frame,msgFrame);
+    CGFloat diff = shGetParentChildHeightOffset(self.scrollView.frame,msgFrame);
     [_introMessageView translateViewVertically:CGRectGetHeight(msgFrame) + diff];
     _introMessageView.editable = NO;
     _introMessageView.selectable = NO;
@@ -110,9 +110,9 @@
       IntroViewController* selfRef = weakSelf;
       if(nil == selfRef) return;
       selfRef.isThreadCurrentlyRunning = YES;
-      [selfRef autoTypeoutTitle:headlineText characterDelay:CHARACTER_DELAY];
-      [selfRef scrollThroughMessage:SCROLL_DELAY scrollLength:scrollLength
-        scrollIncrement:SCROLL_INCREMENT];
+      [selfRef autoTypeoutTitle:headlineText characterDelay:SH_CHARACTER_DELAY];
+      [selfRef scrollThroughMessage:SH_SCROLL_DELAY scrollLength:scrollLength
+        scrollIncrement:SH_SCROLL_INCREMENT];
       selfRef.isThreadCurrentlyRunning = NO;
     }
   });
@@ -121,7 +121,7 @@
 
 -(void)placeIntroMessageView{
   CGRect msgFrame = self.introMessageView.frame;
-  CGFloat diff = getParentChildHeightOffset(self.scrollView.frame, msgFrame);
+  CGFloat diff = shGetParentChildHeightOffset(self.scrollView.frame, msgFrame);
   self.contentHeight.constant += (CGRectGetHeight(self.introMessageView.frame) + diff);
   [self.scrollContent addSubview:self.introMessageView];
   [self.introMessageView addGestureRecognizer:self.tapper];
@@ -174,10 +174,10 @@ scrollIncrement:(CGFloat)scrollIncrement{
   self.isThreadAllowed = NO;
   self.isStoryDone = YES;
   NSManagedObjectContext *context = [self.central.dataController newBackgroundContext];
-  NSObject<P_ResourceUtility> *resourceUtil = self.central.resourceUtil;
-  ZoneInfoDictionary *zoneInfoDict = [ZoneInfoDictionary newWithResourceUtil:resourceUtil];
-  Zone_Medium *zm = [Zone_Medium newWithContext:context withResourceUtil:resourceUtil withInfoDict:zoneInfoDict];
-  ZoneDTO *z = [zm newSpecificZone2:HOME_KEY withLvl:1];
+  NSObject<SHResourceUtilityProtocol> *resourceUtil = self.central.resourceUtil;
+  SHSectorInfoDictionary *zoneInfoDict = [SHSectorInfoDictionary newWithResourceUtil:resourceUtil];
+  SHSector_Medium *zm = [SHSector_Medium newWithContext:context withResourceUtil:resourceUtil withInfoDict:zoneInfoDict];
+  SHSectorDTO *z = [zm newSpecificSector2:HOME_KEY withLvl:1];
   [self.central afterZonePick:z withContext:context];
 }
 
@@ -189,11 +189,11 @@ scrollIncrement:(CGFloat)scrollIncrement{
   }
   [self.central setToShowStory:NO];
   NSManagedObjectContext *context = [self.central.dataController newBackgroundContext];
-  NSObject<P_ResourceUtility> *resourceUtil = self.central.resourceUtil;
-  ZoneInfoDictionary *zoneInfoDict = [ZoneInfoDictionary newWithResourceUtil:resourceUtil];
-  Zone_Medium *zm = [Zone_Medium newWithContext:context withResourceUtil:resourceUtil withInfoDict:zoneInfoDict];
+  NSObject<SHResourceUtilityProtocol> *resourceUtil = self.central.resourceUtil;
+  SHSectorInfoDictionary *zoneInfoDict = [SHSectorInfoDictionary newWithResourceUtil:resourceUtil];
+  SHSector_Medium *zm = [SHSector_Medium newWithContext:context withResourceUtil:resourceUtil withInfoDict:zoneInfoDict];
   
-  ZoneDTO *z = [zm newSpecificZone2:HOME_KEY withLvl:1];
+  SHSectorDTO *z = [zm newSpecificSector2:HOME_KEY withLvl:1];
   [self.central afterZonePick:z withContext:context];
 }
 

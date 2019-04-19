@@ -8,16 +8,16 @@
 
 #import "ReminderListView.h"
 #import "ReminderCellController.h"
-#import <SHControls/AddItemsFooter.h>
+#import <SHControls/SHAddItemsFooter.h>
 #import <SHControls/UIViewController+Helper.h>
-#import <SHCommon/Interceptor.h>
+#import <SHCommon/SHInterceptor.h>
 #import <SHCommon/NSDate+DateHelper.h>
 #import <SHCommon/SHMath.h>
 #import "ReminderTimeSpinPicker.h"
 #import <SHControls/UIView+Helpers.h>
 #import <SHControls/UIScrollView+ScrollAdjusters.h>
-#import <SHControls/FrontEndConstants.h>
-#import <SHCommon/NotificationHelper.h>
+#import <SHControls/SHFrontEndConstants.h>
+#import <SHCommon/SHNotificationHelper.h>
 #import <SHCommon/NSObject+Helper.h>
 #import <SHControls/SHEventInfo.h>
 #import <SHModels/SHReminderDTO.h>
@@ -28,7 +28,7 @@
 @implementation ReminderListView
 
 
-+(instancetype)newWithDueDateItem:(id<P_DueDateItem>)dueDateItem{
++(instancetype)newWithDueDateItem:(id<SHDueDateItemProtocol>)dueDateItem{
     ReminderListView *instance = [[ReminderListView alloc] init];
     instance.dueDateItem = dueDateItem;
     [instance commonSetup];
@@ -71,10 +71,10 @@ numberOfRowsInSection:(NSInteger)section{
 
 -(void)pickerSelection_action:(SHEventInfo *)eventInfo{
   __weak ReminderListView *weakSelf = self;
-    wrapReturnVoid wrappedCall = ^void(){
+    shWrapReturnVoid wrappedCall = ^void(){
         UIPickerView *picker = (UIPickerView *)eventInfo.senderStack[1];
-        NSInteger hourRow = [picker selectedRowInComponent:HOUR_OF_DAY_COL];
-        NSInteger minuteRow = [picker selectedRowInComponent:MINUTE_COL];
+        NSInteger hourRow = [picker selectedRowInComponent:SH_HOUR_OF_DAY_COL];
+        NSInteger minuteRow = [picker selectedRowInComponent:SH_MINUTE_COL];
         NSInteger daysCol = picker.numberOfComponents -1;
         NSInteger daysBefore = [picker selectedRowInComponent:daysCol];
         [weakSelf insertNewReminder:hourRow minute:minuteRow daysBefore:daysBefore];
@@ -88,7 +88,7 @@ numberOfRowsInSection:(NSInteger)section{
 
 -(void)insertNewReminder:(NSInteger)hour minute:(NSInteger)minute
 daysBefore:(NSInteger)daysBefore{
-    ReminderDTO *reminder = [ReminderDTO new];
+    SHReminderDTO *reminder = [SHReminderDTO new];
     //we only really care about the hour and minute
     reminder.reminderHour = [NSDate createSimpleTimeWithHour:hour minute:minute second:0];
     reminder.daysBeforeDue = [SHMath toIntExact:daysBefore];

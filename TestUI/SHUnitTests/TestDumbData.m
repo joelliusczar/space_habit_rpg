@@ -8,8 +8,8 @@
 
 #import "DumbDataSaver.h"
 #import <objc/runtime.h>
-#import <SHModels/Hero+CoreDataClass.h>
-#import <SHCommon/CommonUtilities.h>
+#import <SHModels/SHHero+CoreDataClass.h>
+#import <SHCommon/SHCommonUtils.h>
 #import <TestCommon/TestHelpers.h>
 #import <TestCommon/NSManagedObjectContext+Hijack.h>
 #import <XCTest/XCTest.h>
@@ -80,7 +80,7 @@ unsigned int _reservedFlags : 2;
     dds.writeContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     dds.writeContext.persistentStoreCoordinator = dds.coordinator;
     dds.writeContext.name = @"writer";
-    Hero *h = (Hero*)[[NSManagedObject alloc] initWithEntity:Hero.entity insertIntoManagedObjectContext:nil];
+    SHHero *h = (SHHero*)[[NSManagedObject alloc] initWithEntity:SHHero.entity insertIntoManagedObjectContext:nil];
     h.lvl = 57;
     h.gold = 112;
     [dds.writeContext performBlockAndWait:^{
@@ -100,9 +100,9 @@ unsigned int _reservedFlags : 2;
       }
     }];
     
-    BOOL isDone = waitForSema(sema, 1);
+    BOOL isDone = shWaitForSema(sema, 1);
     (void)isDone;
-    NSFetchRequest<Hero *> *request = [Hero fetchRequest];
+    NSFetchRequest<SHHero *> *request = [SHHero fetchRequest];
     NSSortDescriptor *sortByIsFront = [[NSSortDescriptor alloc] initWithKey:@"isFront" ascending:NO];
     
     NSManagedObjectContext* readContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];

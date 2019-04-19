@@ -9,8 +9,8 @@
 
 
 #import <UIKit/UIKit.h>
-#import <SHData/P_CoreData.h>
-#import <SHModels/Daily+CoreDataClass.h>
+#import <SHData/SHCoreDataProtocol.h>
+#import <SHModels/SHDaily+CoreDataClass.h>
 #import "CentralViewController.h"
 
 
@@ -20,7 +20,7 @@
 -(instancetype)initWithCentral:(CentralViewController *)central;
 
 -(void)setuptab;
--(void)completeDaily:(Daily *)daily;
--(void)undoCompletedDaily:(Daily *)daily;
+-(void)completeDaily:(SHDaily *)daily;
+-(void)undoCompletedDaily:(SHDaily *)daily;
 -(void)fetchUpdates;
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <SHGlobal/Constants.h>
+#import <SHGlobal/SHConstants.h>
 
 
 @interface NSMutableArray<ItemType> (Helper)

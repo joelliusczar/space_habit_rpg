@@ -10,7 +10,7 @@
 #import <Foundation/Foundation.h>
 #import "UIView+Helpers.h"
 #import <SHCommon/NSException+SHCommonExceptions.h>
-#import <SHCommon/P_ColorInversionHint.h>
+#import <SHCommon/SHColorInversionHintProtocol.h>
 #import <SHCommon/UIColor+Helper.h>
 
 

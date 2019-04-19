@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <SHControls/P_CommonDelegate.h>
+#import <SHControls/SHCommonDelegateProtocol.h>
 #import <SHControls/SHEventInfo.h>
 
-@protocol P_WeeklyActiveDaysDelegate <NSObject,P_CommonDelegate>
+@protocol P_WeeklyActiveDaysDelegate <NSObject,SHCommonDelegateProtocol>
 -(void)activeDaySwitch_press_action:(SHEventInfo *)eventInfo;
 @end

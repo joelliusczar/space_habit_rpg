@@ -7,17 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SHModels/Daily+CoreDataClass.h>
-#import <SHControls/TaskCell.h>
+#import <SHModels/SHDaily+CoreDataClass.h>
+#import <SHControls/SHTaskCell.h>
 #import "DailyViewController.h"
 #import <SHControls/SHButton.h>
 
-@interface DailyCellController : TaskCell
+@interface DailyCellController : SHTaskCell
 @property (weak,nonatomic) IBOutlet UILabel *daysLeftLbl;
 @property (weak,nonatomic) IBOutlet UILabel *nameLbl;
 @property (weak,nonatomic) IBOutlet UILabel *streakLbl;
 @property (weak,nonatomic) IBOutlet SHButton *completeBtn;
 +(instancetype)getDailyCell:(UITableView *)tableView WithParent:(DailyViewController *)parent;
--(void)setupCell:(Daily *)model AndRow:(NSIndexPath *)rowInfo;
+-(void)setupCell:(SHDaily *)model AndRow:(NSIndexPath *)rowInfo;
 -(void)refreshCell:(NSIndexPath *)rowInfo;
 @end

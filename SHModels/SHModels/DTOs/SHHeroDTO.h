@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HeroDTO : SHObject<NSCopying>
+@interface SHHeroDTO : SHObject<NSCopying>
 @property (nonatomic) double gold;
 @property (nonatomic) int32_t lvl;
 @property (nonatomic) int32_t maxHp;

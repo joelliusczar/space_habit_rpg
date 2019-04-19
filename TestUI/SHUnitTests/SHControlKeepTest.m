@@ -17,12 +17,12 @@
 
 @interface SHControlKeepTest : XCTestCase
 @property (strong,nonatomic) SHControlKeep *keep;
-@property (copy,nonatomic) LazyLoadBlock blockA;
-@property (copy,nonatomic) LazyLoadBlock nilBlock;
-@property (copy,nonatomic) LazyLoadBlock blockB;
-@property (copy,nonatomic) LazyLoadBlock invalidBlock;
-@property (copy,nonatomic) LazyLoadBlock blockA2;
-@property (copy,nonatomic) LazyLoadBlock blockKey;
+@property (copy,nonatomic) SHLazyLoadBlock blockA;
+@property (copy,nonatomic) SHLazyLoadBlock nilBlock;
+@property (copy,nonatomic) SHLazyLoadBlock blockB;
+@property (copy,nonatomic) SHLazyLoadBlock invalidBlock;
+@property (copy,nonatomic) SHLazyLoadBlock blockA2;
+@property (copy,nonatomic) SHLazyLoadBlock blockKey;
 @property (weak,nonatomic) TestKeepSubject_A *designatedWeak;
 @property (strong,nonatomic) TestKeepObject *obj;
 @end
@@ -32,7 +32,7 @@
 - (void)setUp {
     [super setUp];
     self.keep = [[SHControlKeep alloc] init];
-    self.blockA = ^id(SHControlKeep *meep,ControlExtent *ext){
+    self.blockA = ^id(SHControlKeep *meep,SHControlExtent *ext){
       (void)ext;
       TestKeepSubject_A *subA = [[TestKeepSubject_A alloc] init];
       subA.changer = 0;
@@ -47,7 +47,7 @@
       }];
       return subA;
     };
-    self.blockA2 = ^id(SHControlKeep *meep,ControlExtent *ext){
+    self.blockA2 = ^id(SHControlKeep *meep,SHControlExtent *ext){
       (void)ext;
       TestKeepSubject_A *subA = [[TestKeepSubject_A alloc] init];
       subA.changer = 2;
@@ -62,12 +62,12 @@
       }];
       return subA;
     };
-    self.nilBlock = ^id(SHControlKeep *meep,ControlExtent *ext){
+    self.nilBlock = ^id(SHControlKeep *meep,SHControlExtent *ext){
       (void)meep;
       (void)ext;
       return nil;
     };
-    self.blockB = ^id(SHControlKeep *meep,ControlExtent *ext){
+    self.blockB = ^id(SHControlKeep *meep,SHControlExtent *ext){
       (void)meep;
       (void)ext;
       TestKeepSubject_B *subB = [[TestKeepSubject_B alloc] init];
@@ -79,7 +79,7 @@
       }];
       return subB;
     };
-    self.blockKey = ^id(SHControlKeep *meep,ControlExtent *ext){
+    self.blockKey = ^id(SHControlKeep *meep,SHControlExtent *ext){
       (void)meep;
       (void)ext;
       TestKeepSubject_A *subA = [[TestKeepSubject_A alloc] init];
@@ -105,8 +105,8 @@ NSHashTable* getSet(SHControlKeep *keep,NSString *key){
 }
 
 
-LazyLoadBlock getNumberedBlock(int num){
-    return ^id(SHControlKeep *meep,ControlExtent *ext){
+SHLazyLoadBlock getNumberedBlock(int num){
+    return ^id(SHControlKeep *meep,SHControlExtent *ext){
       (void)ext;
       TestKeepSubject_A *subA = [[TestKeepSubject_A alloc] init];
       subA.changer = num;
@@ -243,7 +243,7 @@ LazyLoadBlock getNumberedBlock(int num){
     }
     self.keep.responderLookup[@"setDelegateA:"] = nil;
     for(int i = 0;i < limit;i++){
-        self.keep.controlList[i] = [[VarWrapper<LazyLoadBlock> alloc] init:self.nilBlock,nil];
+        self.keep.controlList[i] = [[SHVarWrapper<SHLazyLoadBlock> alloc] init:self.nilBlock,nil];
 
     }
     NSHashTable *set = getSet(self.keep,@":setDelegateA:");

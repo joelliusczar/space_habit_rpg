@@ -13,136 +13,127 @@
 		27075D62225786A400AD13AA /* SHReminderDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 27075D60225786A400AD13AA /* SHReminderDTO.m */; };
 		27075D652259308800AD13AA /* SHHeroDTO.h in Headers */ = {isa = PBXBuildFile; fileRef = 27075D632259308800AD13AA /* SHHeroDTO.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27075D662259308800AD13AA /* SHHeroDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 27075D642259308800AD13AA /* SHHeroDTO.m */; };
-		27075D692259313B00AD13AA /* SHZoneDTO.h in Headers */ = {isa = PBXBuildFile; fileRef = 27075D672259313B00AD13AA /* SHZoneDTO.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27075D6A2259313B00AD13AA /* SHZoneDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 27075D682259313B00AD13AA /* SHZoneDTO.m */; };
+		27075D692259313B00AD13AA /* SHSectorDTO.h in Headers */ = {isa = PBXBuildFile; fileRef = 27075D672259313B00AD13AA /* SHSectorDTO.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27075D6A2259313B00AD13AA /* SHSectorDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 27075D682259313B00AD13AA /* SHSectorDTO.m */; };
 		27075D6D225963A700AD13AA /* SHMonsterDTO.h in Headers */ = {isa = PBXBuildFile; fileRef = 27075D6B225963A700AD13AA /* SHMonsterDTO.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27075D6E225963A700AD13AA /* SHMonsterDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 27075D6C225963A700AD13AA /* SHMonsterDTO.m */; };
 		27075D71225A695300AD13AA /* SHSettingsDTO.h in Headers */ = {isa = PBXBuildFile; fileRef = 27075D6F225A695300AD13AA /* SHSettingsDTO.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27075D72225A695300AD13AA /* SHSettingsDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 27075D70225A695300AD13AA /* SHSettingsDTO.m */; };
 		27300A002249BAD2006E419C /* SHMonster_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 273009FE2249BAD2006E419C /* SHMonster_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27300A012249BAD2006E419C /* SHMonster_Medium.m in Sources */ = {isa = PBXBuildFile; fileRef = 273009FF2249BAD2006E419C /* SHMonster_Medium.m */; };
-		27300A04224AE713006E419C /* Daily_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 27300A02224AE713006E419C /* Daily_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27300A05224AE713006E419C /* Daily_Medium.m in Sources */ = {isa = PBXBuildFile; fileRef = 27300A03224AE713006E419C /* Daily_Medium.m */; };
-		27300A08224AED76006E419C /* Daily+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27300A06224AED76006E419C /* Daily+Helper.m */; };
-		27300A09224AED76006E419C /* Daily+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27300A07224AED76006E419C /* Daily+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2736A6CA2214D7FC006CB907 /* Zone_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 2736A6C82214D7FC006CB907 /* Zone_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2736A6CB2214D7FC006CB907 /* Zone_Medium.m in Sources */ = {isa = PBXBuildFile; fileRef = 2736A6C92214D7FC006CB907 /* Zone_Medium.m */; };
-		274295EA21FAA19300EE0132 /* SHZoneTransaction_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 274295E821FAA19300EE0132 /* SHZoneTransaction_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		274295EB21FAA19300EE0132 /* SHZoneTransaction_Medium.m in Sources */ = {isa = PBXBuildFile; fileRef = 274295E921FAA19300EE0132 /* SHZoneTransaction_Medium.m */; };
+		27300A04224AE713006E419C /* SHDaily_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 27300A02224AE713006E419C /* SHDaily_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27300A05224AE713006E419C /* SHDaily_Medium.m in Sources */ = {isa = PBXBuildFile; fileRef = 27300A03224AE713006E419C /* SHDaily_Medium.m */; };
+		2736A6CA2214D7FC006CB907 /* SHSector_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 2736A6C82214D7FC006CB907 /* SHSector_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2736A6CB2214D7FC006CB907 /* SHSector_Medium.m in Sources */ = {isa = PBXBuildFile; fileRef = 2736A6C92214D7FC006CB907 /* SHSector_Medium.m */; };
+		274295EA21FAA19300EE0132 /* SHSectorTransaction_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 274295E821FAA19300EE0132 /* SHSectorTransaction_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		274295EB21FAA19300EE0132 /* SHSectorTransaction_Medium.m in Sources */ = {isa = PBXBuildFile; fileRef = 274295E921FAA19300EE0132 /* SHSectorTransaction_Medium.m */; };
 		2747C2EF2043ADE000FB5669 /* SHModels.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C2ED2043ADE000FB5669 /* SHModels.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2747C3052043AE3E00FB5669 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2747C2F52043AE3D00FB5669 /* Model.xcdatamodeld */; };
-		2747C34F2043AF7C00FB5669 /* Daily+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3072043AF7400FB5669 /* Daily+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C3742043AF7D00FB5669 /* Daily+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C32C2043AF7900FB5669 /* Daily+CoreDataProperties.m */; };
 		2747C3872043AF7D00FB5669 /* Daily+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C33F2043AF7B00FB5669 /* Daily+CoreDataClass.m */; };
-		2747C3892043AF7D00FB5669 /* Daily+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3412043AF7B00FB5669 /* Daily+CoreDataClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2747C3AA2043B51300FB5669 /* P_DueDateItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3A92043B51300FB5669 /* P_DueDateItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2747C3B32043B53100FB5669 /* Daily+Mapable.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3AD2043B53100FB5669 /* Daily+Mapable.m */; };
-		2747C3B42043B53100FB5669 /* Daily+ActiveDays.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3AE2043B53100FB5669 /* Daily+ActiveDays.m */; };
-		2747C3B52043B53100FB5669 /* Daily+ActiveDays.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3AF2043B53100FB5669 /* Daily+ActiveDays.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2747C3B62043B53100FB5669 /* Daily+Mapable.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3B02043B53100FB5669 /* Daily+Mapable.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2747C3BD2043B67200FB5669 /* RateTypeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3BB2043B67200FB5669 /* RateTypeHelper.m */; };
-		2747C3BE2043B67200FB5669 /* RateTypeHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3BC2043B67200FB5669 /* RateTypeHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2747C3C62043B83C00FB5669 /* P_StoryItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3C52043B83C00FB5669 /* P_StoryItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2747C3C82043B89100FB5669 /* P_Transaction.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3C72043B89100FB5669 /* P_Transaction.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2747C3CE2043BACB00FB5669 /* MonsterInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3CA2043BACA00FB5669 /* MonsterInfoDictionary.m */; };
-		2747C3CF2043BACB00FB5669 /* MonsterInfoDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3CB2043BACA00FB5669 /* MonsterInfoDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2747C3D02043BACB00FB5669 /* ZoneInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3CC2043BACA00FB5669 /* ZoneInfoDictionary.m */; };
-		2747C3D12043BACB00FB5669 /* ZoneInfoDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3CD2043BACB00FB5669 /* ZoneInfoDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2747C45B20462D4800FB5669 /* OnlyOneEntities.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C45920462D4800FB5669 /* OnlyOneEntities.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2747C45C20462D4800FB5669 /* OnlyOneEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C45A20462D4800FB5669 /* OnlyOneEntities.m */; };
-		2747C4652046320E00FB5669 /* ModelConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C4632046320E00FB5669 /* ModelConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2747C4662046320E00FB5669 /* ModelConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4642046320E00FB5669 /* ModelConstants.m */; };
+		2747C3AA2043B51300FB5669 /* SHDueDateItemProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3A92043B51300FB5669 /* SHDueDateItemProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2747C3BD2043B67200FB5669 /* SHRateTypeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3BB2043B67200FB5669 /* SHRateTypeHelper.m */; };
+		2747C3BE2043B67200FB5669 /* SHRateTypeHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3BC2043B67200FB5669 /* SHRateTypeHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2747C3C62043B83C00FB5669 /* SHStoryItemProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3C52043B83C00FB5669 /* SHStoryItemProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2747C3C82043B89100FB5669 /* SHTransactionProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3C72043B89100FB5669 /* SHTransactionProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2747C3CE2043BACB00FB5669 /* SHMonsterInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3CA2043BACA00FB5669 /* SHMonsterInfoDictionary.m */; };
+		2747C3CF2043BACB00FB5669 /* SHMonsterInfoDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3CB2043BACA00FB5669 /* SHMonsterInfoDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2747C3D02043BACB00FB5669 /* SHSectorInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3CC2043BACA00FB5669 /* SHSectorInfoDictionary.m */; };
+		2747C3D12043BACB00FB5669 /* SHSectorInfoDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3CD2043BACB00FB5669 /* SHSectorInfoDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2747C4652046320E00FB5669 /* SHModelConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C4632046320E00FB5669 /* SHModelConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2747C4662046320E00FB5669 /* SHModelConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4642046320E00FB5669 /* SHModelConstants.m */; };
 		2747C4CE2048D8FE00FB5669 /* ZoneInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2747C4CD2048D8FE00FB5669 /* ZoneInfo.plist */; };
 		2747C4D02048D90700FB5669 /* MonsterInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2747C4CF2048D90700FB5669 /* MonsterInfo.plist */; };
 		2747C513204A471D00FB5669 /* SuffixList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2747C512204A471D00FB5669 /* SuffixList.plist */; };
-		274EFB66204E462E00CB3C4C /* ModelTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB64204E462E00CB3C4C /* ModelTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		274EFB67204E462E00CB3C4C /* ModelTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB65204E462E00CB3C4C /* ModelTools.m */; };
+		274EFB66204E462E00CB3C4C /* SHModelTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB64204E462E00CB3C4C /* SHModelTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		274EFB67204E462E00CB3C4C /* SHModelTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB65204E462E00CB3C4C /* SHModelTools.m */; };
 		2781552E217D706F005C5279 /* StoryItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2781552D217D706F005C5279 /* StoryItems.plist */; };
-		27815533217D721C005C5279 /* InfoDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 27815531217D721C005C5279 /* InfoDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27815534217D721C005C5279 /* InfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 27815532217D721C005C5279 /* InfoDictionary.m */; };
-		2781553721805C88005C5279 /* StoryItemDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781553521805C88005C5279 /* StoryItemDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2781553821805C88005C5279 /* StoryItemDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781553621805C88005C5279 /* StoryItemDictionary.m */; };
+		27815533217D721C005C5279 /* SHInfoDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 27815531217D721C005C5279 /* SHInfoDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27815534217D721C005C5279 /* SHInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 27815532217D721C005C5279 /* SHInfoDictionary.m */; };
+		2781553721805C88005C5279 /* SHStoryItemDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781553521805C88005C5279 /* SHStoryItemDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2781553821805C88005C5279 /* SHStoryItemDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781553621805C88005C5279 /* SHStoryItemDictionary.m */; };
+		27A430F52269756600773056 /* SHMonsterTransaction_Medium.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A430F32269756500773056 /* SHMonsterTransaction_Medium.m */; };
+		27A430F62269756600773056 /* SHMonsterTransaction_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 27A430F42269756600773056 /* SHMonsterTransaction_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27B15A9F20524B4F0045B226 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A9E20524B4F0045B226 /* SHCommon.framework */; };
 		27B15AA120524B5D0045B226 /* SHData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AA020524B5D0045B226 /* SHData.framework */; };
 		27B15AA320524B6B0045B226 /* SHGlobal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AA220524B6B0045B226 /* SHGlobal.framework */; };
 		27CA863A22627D3D00AE8FDB /* SHDailyDTO.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA863822627D3D00AE8FDB /* SHDailyDTO.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA863B22627D3D00AE8FDB /* SHDailyDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA863922627D3D00AE8FDB /* SHDailyDTO.m */; };
-		27CA868D2264207A00AE8FDB /* SHDailySubTask+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86412264207A00AE8FDB /* SHDailySubTask+CoreDataClass.h */; };
+		27CA868D2264207A00AE8FDB /* SHDailySubTask+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86412264207A00AE8FDB /* SHDailySubTask+CoreDataClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA868E2264207A00AE8FDB /* SHItemTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86422264207A00AE8FDB /* SHItemTransaction+CoreDataProperties.m */; };
 		27CA868F2264207A00AE8FDB /* SHDaily+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86432264207A00AE8FDB /* SHDaily+CoreDataClass.m */; };
 		27CA86902264207A00AE8FDB /* SHDailyTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86442264207A00AE8FDB /* SHDailyTransaction+CoreDataProperties.m */; };
-		27CA86912264207A00AE8FDB /* SHHero+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86452264207A00AE8FDB /* SHHero+CoreDataClass.h */; };
+		27CA86912264207A00AE8FDB /* SHHero+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86452264207A00AE8FDB /* SHHero+CoreDataClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA86922264207A00AE8FDB /* SHTodoTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86462264207A00AE8FDB /* SHTodoTransaction+CoreDataClass.m */; };
-		27CA86932264207A00AE8FDB /* SHSectorTransaction+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86472264207A00AE8FDB /* SHSectorTransaction+CoreDataClass.h */; };
-		27CA86942264207A00AE8FDB /* SHSectorTransaction+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86482264207A00AE8FDB /* SHSectorTransaction+CoreDataProperties.h */; };
+		27CA86932264207A00AE8FDB /* SHSectorTransaction+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86472264207A00AE8FDB /* SHSectorTransaction+CoreDataClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27CA86942264207A00AE8FDB /* SHSectorTransaction+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86482264207A00AE8FDB /* SHSectorTransaction+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA86952264207A00AE8FDB /* SHReminder+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86492264207A00AE8FDB /* SHReminder+CoreDataProperties.m */; };
 		27CA86962264207A00AE8FDB /* SHReminder+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA864A2264207A00AE8FDB /* SHReminder+CoreDataClass.m */; };
-		27CA86972264207A00AE8FDB /* SHDailySubTask+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA864B2264207A00AE8FDB /* SHDailySubTask+CoreDataProperties.h */; };
-		27CA86982264207A00AE8FDB /* SHCategory+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA864C2264207A00AE8FDB /* SHCategory+CoreDataProperties.h */; };
+		27CA86972264207A00AE8FDB /* SHDailySubTask+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA864B2264207A00AE8FDB /* SHDailySubTask+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27CA86982264207A00AE8FDB /* SHCategory+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA864C2264207A00AE8FDB /* SHCategory+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA86992264207A00AE8FDB /* SHCounterTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA864D2264207A00AE8FDB /* SHCounterTransaction+CoreDataProperties.m */; };
 		27CA869A2264207A00AE8FDB /* SHSuffix+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA864E2264207A00AE8FDB /* SHSuffix+CoreDataClass.m */; };
 		27CA869B2264207A00AE8FDB /* SHCategory+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA864F2264207A00AE8FDB /* SHCategory+CoreDataClass.m */; };
-		27CA869C2264207A00AE8FDB /* SHMonsterTransaction+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86502264207A00AE8FDB /* SHMonsterTransaction+CoreDataClass.h */; };
+		27CA869C2264207A00AE8FDB /* SHMonsterTransaction+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86502264207A00AE8FDB /* SHMonsterTransaction+CoreDataClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA869D2264207A00AE8FDB /* SHSettings+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86512264207A00AE8FDB /* SHSettings+CoreDataClass.m */; };
-		27CA869E2264207A00AE8FDB /* SHMonster+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86522264207A00AE8FDB /* SHMonster+CoreDataProperties.h */; };
-		27CA869F2264207A00AE8FDB /* SHSector+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86532264207A00AE8FDB /* SHSector+CoreDataClass.h */; };
-		27CA86A02264207A00AE8FDB /* SHSector+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86542264207A00AE8FDB /* SHSector+CoreDataProperties.h */; };
+		27CA869E2264207A00AE8FDB /* SHMonster+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86522264207A00AE8FDB /* SHMonster+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27CA869F2264207A00AE8FDB /* SHSector+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86532264207A00AE8FDB /* SHSector+CoreDataClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27CA86A02264207A00AE8FDB /* SHSector+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86542264207A00AE8FDB /* SHSector+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA86A12264207A00AE8FDB /* SHTodo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86552264207A00AE8FDB /* SHTodo+CoreDataProperties.m */; };
-		27CA86A22264207A00AE8FDB /* SHTeapot+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86562264207A00AE8FDB /* SHTeapot+CoreDataClass.h */; };
-		27CA86A32264207A00AE8FDB /* SHTodoTransaction+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86572264207A00AE8FDB /* SHTodoTransaction+CoreDataProperties.h */; };
+		27CA86A22264207A00AE8FDB /* SHTeapot+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86562264207A00AE8FDB /* SHTeapot+CoreDataClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27CA86A32264207A00AE8FDB /* SHTodoTransaction+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86572264207A00AE8FDB /* SHTodoTransaction+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA86A42264207A00AE8FDB /* SHCounter+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86582264207A00AE8FDB /* SHCounter+CoreDataClass.m */; };
 		27CA86A52264207A00AE8FDB /* SHSettings+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86592264207A00AE8FDB /* SHSettings+CoreDataProperties.m */; };
-		27CA86A62264207A00AE8FDB /* SHSuffix+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA865A2264207A00AE8FDB /* SHSuffix+CoreDataProperties.h */; };
+		27CA86A62264207A00AE8FDB /* SHSuffix+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA865A2264207A00AE8FDB /* SHSuffix+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA86A72264207A00AE8FDB /* SHHero+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA865B2264207A00AE8FDB /* SHHero+CoreDataProperties.m */; };
-		27CA86A82264207A00AE8FDB /* SHCounter+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA865C2264207A00AE8FDB /* SHCounter+CoreDataProperties.h */; };
-		27CA86A92264207A00AE8FDB /* SHTodo+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA865D2264207A00AE8FDB /* SHTodo+CoreDataClass.h */; };
+		27CA86A82264207A00AE8FDB /* SHCounter+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA865C2264207A00AE8FDB /* SHCounter+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27CA86A92264207A00AE8FDB /* SHTodo+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA865D2264207A00AE8FDB /* SHTodo+CoreDataClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA86AA2264207A00AE8FDB /* SHCounterTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA865E2264207A00AE8FDB /* SHCounterTransaction+CoreDataClass.m */; };
-		27CA86AB2264207A00AE8FDB /* SHItem+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA865F2264207A00AE8FDB /* SHItem+CoreDataClass.h */; };
+		27CA86AB2264207A00AE8FDB /* SHItem+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA865F2264207A00AE8FDB /* SHItem+CoreDataClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA86AC2264207A00AE8FDB /* SHDailyTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86602264207A00AE8FDB /* SHDailyTransaction+CoreDataClass.m */; };
-		27CA86AD2264207A00AE8FDB /* SHMonster+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86612264207A00AE8FDB /* SHMonster+CoreDataClass.h */; };
-		27CA86AE2264207A00AE8FDB /* SHMonsterTransaction+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86622264207A00AE8FDB /* SHMonsterTransaction+CoreDataProperties.h */; };
-		27CA86AF2264207A00AE8FDB /* SHTeapot+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86632264207A00AE8FDB /* SHTeapot+CoreDataProperties.h */; };
-		27CA86B02264207A00AE8FDB /* SHDaily+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86642264207A00AE8FDB /* SHDaily+CoreDataProperties.h */; };
-		27CA86B12264207A00AE8FDB /* SHItem+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86652264207A00AE8FDB /* SHItem+CoreDataProperties.h */; };
+		27CA86AD2264207A00AE8FDB /* SHMonster+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86612264207A00AE8FDB /* SHMonster+CoreDataClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27CA86AE2264207A00AE8FDB /* SHMonsterTransaction+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86622264207A00AE8FDB /* SHMonsterTransaction+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27CA86AF2264207A00AE8FDB /* SHTeapot+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86632264207A00AE8FDB /* SHTeapot+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27CA86B02264207A00AE8FDB /* SHDaily+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86642264207A00AE8FDB /* SHDaily+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27CA86B12264207A00AE8FDB /* SHItem+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86652264207A00AE8FDB /* SHItem+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA86B22264207A00AE8FDB /* SHItemTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86662264207A00AE8FDB /* SHItemTransaction+CoreDataClass.m */; };
-		27CA86B32264207A00AE8FDB /* SHTodoTransaction+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86672264207A00AE8FDB /* SHTodoTransaction+CoreDataClass.h */; };
+		27CA86B32264207A00AE8FDB /* SHTodoTransaction+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86672264207A00AE8FDB /* SHTodoTransaction+CoreDataClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA86B42264207A00AE8FDB /* SHHero+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86682264207A00AE8FDB /* SHHero+CoreDataClass.m */; };
-		27CA86B52264207A00AE8FDB /* SHDailyTransaction+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86692264207A00AE8FDB /* SHDailyTransaction+CoreDataProperties.h */; };
-		27CA86B62264207A00AE8FDB /* SHDaily+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA866A2264207A00AE8FDB /* SHDaily+CoreDataClass.h */; };
-		27CA86B72264207A00AE8FDB /* SHItemTransaction+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA866B2264207A00AE8FDB /* SHItemTransaction+CoreDataProperties.h */; };
+		27CA86B52264207A00AE8FDB /* SHDailyTransaction+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86692264207A00AE8FDB /* SHDailyTransaction+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27CA86B62264207A00AE8FDB /* SHDaily+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA866A2264207A00AE8FDB /* SHDaily+CoreDataClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27CA86B72264207A00AE8FDB /* SHItemTransaction+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA866B2264207A00AE8FDB /* SHItemTransaction+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA86B82264207A00AE8FDB /* SHDailySubTask+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA866C2264207A00AE8FDB /* SHDailySubTask+CoreDataClass.m */; };
 		27CA86B92264207A00AE8FDB /* SHMonsterTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA866D2264207A00AE8FDB /* SHMonsterTransaction+CoreDataClass.m */; };
-		27CA86BA2264207A00AE8FDB /* SHSuffix+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA866E2264207A00AE8FDB /* SHSuffix+CoreDataClass.h */; };
-		27CA86BB2264207A00AE8FDB /* SHCategory+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA866F2264207A00AE8FDB /* SHCategory+CoreDataClass.h */; };
+		27CA86BA2264207A00AE8FDB /* SHSuffix+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA866E2264207A00AE8FDB /* SHSuffix+CoreDataClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27CA86BB2264207A00AE8FDB /* SHCategory+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA866F2264207A00AE8FDB /* SHCategory+CoreDataClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA86BC2264207A00AE8FDB /* SHCategory+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86702264207A00AE8FDB /* SHCategory+CoreDataProperties.m */; };
-		27CA86BD2264207A00AE8FDB /* SHCounterTransaction+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86712264207A00AE8FDB /* SHCounterTransaction+CoreDataProperties.h */; };
+		27CA86BD2264207A00AE8FDB /* SHCounterTransaction+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86712264207A00AE8FDB /* SHCounterTransaction+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA86BE2264207A00AE8FDB /* SHDailySubTask+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86722264207A00AE8FDB /* SHDailySubTask+CoreDataProperties.m */; };
-		27CA86BF2264207A00AE8FDB /* SHReminder+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86732264207A00AE8FDB /* SHReminder+CoreDataClass.h */; };
+		27CA86BF2264207A00AE8FDB /* SHReminder+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86732264207A00AE8FDB /* SHReminder+CoreDataClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA86C02264207A00AE8FDB /* SHSectorTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86742264207A00AE8FDB /* SHSectorTransaction+CoreDataProperties.m */; };
-		27CA86C12264207A00AE8FDB /* SHReminder+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86752264207A00AE8FDB /* SHReminder+CoreDataProperties.h */; };
+		27CA86C12264207A00AE8FDB /* SHReminder+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86752264207A00AE8FDB /* SHReminder+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA86C22264207A00AE8FDB /* SHSectorTransaction+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86762264207A00AE8FDB /* SHSectorTransaction+CoreDataClass.m */; };
-		27CA86C32264207A00AE8FDB /* SHSettings+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86772264207A00AE8FDB /* SHSettings+CoreDataProperties.h */; };
+		27CA86C32264207A00AE8FDB /* SHSettings+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86772264207A00AE8FDB /* SHSettings+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA86C42264207A00AE8FDB /* SHSuffix+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86782264207A00AE8FDB /* SHSuffix+CoreDataProperties.m */; };
-		27CA86C52264207A00AE8FDB /* SHCounter+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86792264207A00AE8FDB /* SHCounter+CoreDataClass.h */; };
+		27CA86C52264207A00AE8FDB /* SHCounter+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86792264207A00AE8FDB /* SHCounter+CoreDataClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA86C62264207A00AE8FDB /* SHTodoTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA867A2264207A00AE8FDB /* SHTodoTransaction+CoreDataProperties.m */; };
 		27CA86C72264207A00AE8FDB /* SHTeapot+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA867B2264207A00AE8FDB /* SHTeapot+CoreDataClass.m */; };
-		27CA86C82264207A00AE8FDB /* SHTodo+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA867C2264207A00AE8FDB /* SHTodo+CoreDataProperties.h */; };
+		27CA86C82264207A00AE8FDB /* SHTodo+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA867C2264207A00AE8FDB /* SHTodo+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA86C92264207A00AE8FDB /* SHSector+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA867D2264207A00AE8FDB /* SHSector+CoreDataProperties.m */; };
 		27CA86CA2264207A00AE8FDB /* SHSector+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA867E2264207A00AE8FDB /* SHSector+CoreDataClass.m */; };
 		27CA86CB2264207A00AE8FDB /* SHMonster+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA867F2264207A00AE8FDB /* SHMonster+CoreDataProperties.m */; };
-		27CA86CC2264207A00AE8FDB /* SHSettings+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86802264207A00AE8FDB /* SHSettings+CoreDataClass.h */; };
-		27CA86CD2264207A00AE8FDB /* SHItemTransaction+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86812264207A00AE8FDB /* SHItemTransaction+CoreDataClass.h */; };
+		27CA86CC2264207A00AE8FDB /* SHSettings+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86802264207A00AE8FDB /* SHSettings+CoreDataClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27CA86CD2264207A00AE8FDB /* SHItemTransaction+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86812264207A00AE8FDB /* SHItemTransaction+CoreDataClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA86CE2264207A00AE8FDB /* SHItem+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86822264207A00AE8FDB /* SHItem+CoreDataProperties.m */; };
 		27CA86CF2264207A00AE8FDB /* SHDaily+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86832264207A00AE8FDB /* SHDaily+CoreDataProperties.m */; };
 		27CA86D02264207A00AE8FDB /* SHTeapot+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86842264207A00AE8FDB /* SHTeapot+CoreDataProperties.m */; };
 		27CA86D12264207A00AE8FDB /* SHMonsterTransaction+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86852264207A00AE8FDB /* SHMonsterTransaction+CoreDataProperties.m */; };
 		27CA86D22264207A00AE8FDB /* SHMonster+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86862264207A00AE8FDB /* SHMonster+CoreDataClass.m */; };
-		27CA86D32264207A00AE8FDB /* SHDailyTransaction+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86872264207A00AE8FDB /* SHDailyTransaction+CoreDataClass.h */; };
+		27CA86D32264207A00AE8FDB /* SHDailyTransaction+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86872264207A00AE8FDB /* SHDailyTransaction+CoreDataClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA86D42264207A00AE8FDB /* SHTodo+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86882264207A00AE8FDB /* SHTodo+CoreDataClass.m */; };
-		27CA86D52264207A00AE8FDB /* SHCounterTransaction+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86892264207A00AE8FDB /* SHCounterTransaction+CoreDataClass.h */; };
+		27CA86D52264207A00AE8FDB /* SHCounterTransaction+CoreDataClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86892264207A00AE8FDB /* SHCounterTransaction+CoreDataClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA86D62264207A00AE8FDB /* SHItem+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA868A2264207A00AE8FDB /* SHItem+CoreDataClass.m */; };
 		27CA86D72264207A00AE8FDB /* SHCounter+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA868B2264207A00AE8FDB /* SHCounter+CoreDataProperties.m */; };
-		27CA86D82264207A00AE8FDB /* SHHero+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA868C2264207A00AE8FDB /* SHHero+CoreDataProperties.h */; };
+		27CA86D82264207A00AE8FDB /* SHHero+CoreDataProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA868C2264207A00AE8FDB /* SHHero+CoreDataProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27EE2ABE213C955E005A8E1F /* libSH_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EE2ABD213C955E005A8E1F /* libSH_C.a */; };
 /* End PBXBuildFile section */
 
@@ -153,22 +144,20 @@
 		27075D60225786A400AD13AA /* SHReminderDTO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHReminderDTO.m; sourceTree = "<group>"; };
 		27075D632259308800AD13AA /* SHHeroDTO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHHeroDTO.h; sourceTree = "<group>"; };
 		27075D642259308800AD13AA /* SHHeroDTO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHHeroDTO.m; sourceTree = "<group>"; };
-		27075D672259313B00AD13AA /* SHZoneDTO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHZoneDTO.h; sourceTree = "<group>"; };
-		27075D682259313B00AD13AA /* SHZoneDTO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHZoneDTO.m; sourceTree = "<group>"; };
+		27075D672259313B00AD13AA /* SHSectorDTO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSectorDTO.h; sourceTree = "<group>"; };
+		27075D682259313B00AD13AA /* SHSectorDTO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHSectorDTO.m; sourceTree = "<group>"; };
 		27075D6B225963A700AD13AA /* SHMonsterDTO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHMonsterDTO.h; sourceTree = "<group>"; };
 		27075D6C225963A700AD13AA /* SHMonsterDTO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHMonsterDTO.m; sourceTree = "<group>"; };
 		27075D6F225A695300AD13AA /* SHSettingsDTO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSettingsDTO.h; sourceTree = "<group>"; };
 		27075D70225A695300AD13AA /* SHSettingsDTO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHSettingsDTO.m; sourceTree = "<group>"; };
 		273009FE2249BAD2006E419C /* SHMonster_Medium.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHMonster_Medium.h; sourceTree = "<group>"; };
 		273009FF2249BAD2006E419C /* SHMonster_Medium.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHMonster_Medium.m; sourceTree = "<group>"; };
-		27300A02224AE713006E419C /* Daily_Medium.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Daily_Medium.h; sourceTree = "<group>"; };
-		27300A03224AE713006E419C /* Daily_Medium.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Daily_Medium.m; sourceTree = "<group>"; };
-		27300A06224AED76006E419C /* Daily+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Daily+Helper.m"; sourceTree = "<group>"; };
-		27300A07224AED76006E419C /* Daily+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Daily+Helper.h"; sourceTree = "<group>"; };
-		2736A6C82214D7FC006CB907 /* Zone_Medium.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Zone_Medium.h; sourceTree = "<group>"; };
-		2736A6C92214D7FC006CB907 /* Zone_Medium.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Zone_Medium.m; sourceTree = "<group>"; };
-		274295E821FAA19300EE0132 /* SHZoneTransaction_Medium.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHZoneTransaction_Medium.h; sourceTree = "<group>"; };
-		274295E921FAA19300EE0132 /* SHZoneTransaction_Medium.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHZoneTransaction_Medium.m; sourceTree = "<group>"; };
+		27300A02224AE713006E419C /* SHDaily_Medium.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDaily_Medium.h; sourceTree = "<group>"; };
+		27300A03224AE713006E419C /* SHDaily_Medium.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDaily_Medium.m; sourceTree = "<group>"; };
+		2736A6C82214D7FC006CB907 /* SHSector_Medium.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSector_Medium.h; sourceTree = "<group>"; };
+		2736A6C92214D7FC006CB907 /* SHSector_Medium.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHSector_Medium.m; sourceTree = "<group>"; };
+		274295E821FAA19300EE0132 /* SHSectorTransaction_Medium.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSectorTransaction_Medium.h; sourceTree = "<group>"; };
+		274295E921FAA19300EE0132 /* SHSectorTransaction_Medium.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHSectorTransaction_Medium.m; sourceTree = "<group>"; };
 		2747C2EA2043ADE000FB5669 /* SHModels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHModels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2747C2ED2043ADE000FB5669 /* SHModels.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHModels.h; sourceTree = "<group>"; };
 		2747C2EE2043ADE000FB5669 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -191,34 +180,30 @@
 		2747C32C2043AF7900FB5669 /* Daily+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Daily+CoreDataProperties.m"; sourceTree = "<group>"; };
 		2747C33F2043AF7B00FB5669 /* Daily+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Daily+CoreDataClass.m"; sourceTree = "<group>"; };
 		2747C3412043AF7B00FB5669 /* Daily+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Daily+CoreDataClass.h"; sourceTree = "<group>"; };
-		2747C3A92043B51300FB5669 /* P_DueDateItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_DueDateItem.h; sourceTree = "<group>"; };
-		2747C3AD2043B53100FB5669 /* Daily+Mapable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Daily+Mapable.m"; sourceTree = "<group>"; };
-		2747C3AE2043B53100FB5669 /* Daily+ActiveDays.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Daily+ActiveDays.m"; sourceTree = "<group>"; };
-		2747C3AF2043B53100FB5669 /* Daily+ActiveDays.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Daily+ActiveDays.h"; sourceTree = "<group>"; };
-		2747C3B02043B53100FB5669 /* Daily+Mapable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Daily+Mapable.h"; sourceTree = "<group>"; };
-		2747C3BB2043B67200FB5669 /* RateTypeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateTypeHelper.m; sourceTree = "<group>"; };
-		2747C3BC2043B67200FB5669 /* RateTypeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateTypeHelper.h; sourceTree = "<group>"; };
-		2747C3C52043B83C00FB5669 /* P_StoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_StoryItem.h; sourceTree = "<group>"; };
-		2747C3C72043B89100FB5669 /* P_Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P_Transaction.h; sourceTree = "<group>"; };
-		2747C3CA2043BACA00FB5669 /* MonsterInfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterInfoDictionary.m; sourceTree = "<group>"; };
-		2747C3CB2043BACA00FB5669 /* MonsterInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterInfoDictionary.h; sourceTree = "<group>"; };
-		2747C3CC2043BACA00FB5669 /* ZoneInfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneInfoDictionary.m; sourceTree = "<group>"; };
-		2747C3CD2043BACB00FB5669 /* ZoneInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneInfoDictionary.h; sourceTree = "<group>"; };
-		2747C45920462D4800FB5669 /* OnlyOneEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyOneEntities.h; sourceTree = "<group>"; };
-		2747C45A20462D4800FB5669 /* OnlyOneEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlyOneEntities.m; sourceTree = "<group>"; };
-		2747C4632046320E00FB5669 /* ModelConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelConstants.h; sourceTree = "<group>"; };
-		2747C4642046320E00FB5669 /* ModelConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelConstants.m; sourceTree = "<group>"; };
+		2747C3A92043B51300FB5669 /* SHDueDateItemProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDueDateItemProtocol.h; sourceTree = "<group>"; };
+		2747C3BB2043B67200FB5669 /* SHRateTypeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHRateTypeHelper.m; sourceTree = "<group>"; };
+		2747C3BC2043B67200FB5669 /* SHRateTypeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHRateTypeHelper.h; sourceTree = "<group>"; };
+		2747C3C52043B83C00FB5669 /* SHStoryItemProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHStoryItemProtocol.h; sourceTree = "<group>"; };
+		2747C3C72043B89100FB5669 /* SHTransactionProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHTransactionProtocol.h; sourceTree = "<group>"; };
+		2747C3CA2043BACA00FB5669 /* SHMonsterInfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMonsterInfoDictionary.m; sourceTree = "<group>"; };
+		2747C3CB2043BACA00FB5669 /* SHMonsterInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMonsterInfoDictionary.h; sourceTree = "<group>"; };
+		2747C3CC2043BACA00FB5669 /* SHSectorInfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSectorInfoDictionary.m; sourceTree = "<group>"; };
+		2747C3CD2043BACB00FB5669 /* SHSectorInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSectorInfoDictionary.h; sourceTree = "<group>"; };
+		2747C4632046320E00FB5669 /* SHModelConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHModelConstants.h; sourceTree = "<group>"; };
+		2747C4642046320E00FB5669 /* SHModelConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHModelConstants.m; sourceTree = "<group>"; };
 		2747C4CD2048D8FE00FB5669 /* ZoneInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ZoneInfo.plist; sourceTree = "<group>"; };
 		2747C4CF2048D90700FB5669 /* MonsterInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MonsterInfo.plist; sourceTree = "<group>"; };
 		2747C512204A471D00FB5669 /* SuffixList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SuffixList.plist; sourceTree = "<group>"; };
-		274EFB64204E462E00CB3C4C /* ModelTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelTools.h; sourceTree = "<group>"; };
-		274EFB65204E462E00CB3C4C /* ModelTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelTools.m; sourceTree = "<group>"; };
+		274EFB64204E462E00CB3C4C /* SHModelTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHModelTools.h; sourceTree = "<group>"; };
+		274EFB65204E462E00CB3C4C /* SHModelTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHModelTools.m; sourceTree = "<group>"; };
 		2781552D217D706F005C5279 /* StoryItems.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = StoryItems.plist; sourceTree = "<group>"; };
-		27815531217D721C005C5279 /* InfoDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InfoDictionary.h; sourceTree = "<group>"; };
-		27815532217D721C005C5279 /* InfoDictionary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InfoDictionary.m; sourceTree = "<group>"; };
-		2781553521805C88005C5279 /* StoryItemDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoryItemDictionary.h; sourceTree = "<group>"; };
-		2781553621805C88005C5279 /* StoryItemDictionary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoryItemDictionary.m; sourceTree = "<group>"; };
+		27815531217D721C005C5279 /* SHInfoDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHInfoDictionary.h; sourceTree = "<group>"; };
+		27815532217D721C005C5279 /* SHInfoDictionary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHInfoDictionary.m; sourceTree = "<group>"; };
+		2781553521805C88005C5279 /* SHStoryItemDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHStoryItemDictionary.h; sourceTree = "<group>"; };
+		2781553621805C88005C5279 /* SHStoryItemDictionary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHStoryItemDictionary.m; sourceTree = "<group>"; };
 		278FFDA5222B30FA00DAF985 /* SHModels.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHModels.debug.xcconfig; sourceTree = "<group>"; };
+		27A430F32269756500773056 /* SHMonsterTransaction_Medium.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMonsterTransaction_Medium.m; sourceTree = "<group>"; };
+		27A430F42269756600773056 /* SHMonsterTransaction_Medium.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMonsterTransaction_Medium.h; sourceTree = "<group>"; };
 		27B0B1F42223A8E20028AF59 /* SHModels.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHModels.base.xcconfig; sourceTree = "<group>"; };
 		27B15A9E20524B4F0045B226 /* SHCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHCommon.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHCommon.framework"; sourceTree = "<group>"; };
 		27B15AA020524B5D0045B226 /* SHData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHData.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHData.framework"; sourceTree = "<group>"; };
@@ -329,8 +314,8 @@
 				27075D60225786A400AD13AA /* SHReminderDTO.m */,
 				27075D632259308800AD13AA /* SHHeroDTO.h */,
 				27075D642259308800AD13AA /* SHHeroDTO.m */,
-				27075D672259313B00AD13AA /* SHZoneDTO.h */,
-				27075D682259313B00AD13AA /* SHZoneDTO.m */,
+				27075D672259313B00AD13AA /* SHSectorDTO.h */,
+				27075D682259313B00AD13AA /* SHSectorDTO.m */,
 				27075D6B225963A700AD13AA /* SHMonsterDTO.h */,
 				27075D6C225963A700AD13AA /* SHMonsterDTO.m */,
 				27075D6F225A695300AD13AA /* SHSettingsDTO.h */,
@@ -370,31 +355,29 @@
 				2747C3A72043B0A900FB5669 /* ZoneTransaction */,
 				2747C2F52043AE3D00FB5669 /* Model.xcdatamodeld */,
 				27CA86402264207A00AE8FDB /* Models */,
-				2747C45920462D4800FB5669 /* OnlyOneEntities.h */,
-				2747C45A20462D4800FB5669 /* OnlyOneEntities.m */,
-				2747C3BC2043B67200FB5669 /* RateTypeHelper.h */,
-				2747C3BB2043B67200FB5669 /* RateTypeHelper.m */,
-				2747C3A92043B51300FB5669 /* P_DueDateItem.h */,
-				2747C3C72043B89100FB5669 /* P_Transaction.h */,
-				2747C3C52043B83C00FB5669 /* P_StoryItem.h */,
-				2747C3CB2043BACA00FB5669 /* MonsterInfoDictionary.h */,
-				2747C3CA2043BACA00FB5669 /* MonsterInfoDictionary.m */,
-				2747C3CD2043BACB00FB5669 /* ZoneInfoDictionary.h */,
-				2747C3CC2043BACA00FB5669 /* ZoneInfoDictionary.m */,
+				2747C3BC2043B67200FB5669 /* SHRateTypeHelper.h */,
+				2747C3BB2043B67200FB5669 /* SHRateTypeHelper.m */,
+				2747C3A92043B51300FB5669 /* SHDueDateItemProtocol.h */,
+				2747C3C72043B89100FB5669 /* SHTransactionProtocol.h */,
+				2747C3C52043B83C00FB5669 /* SHStoryItemProtocol.h */,
+				2747C3CB2043BACA00FB5669 /* SHMonsterInfoDictionary.h */,
+				2747C3CA2043BACA00FB5669 /* SHMonsterInfoDictionary.m */,
+				2747C3CD2043BACB00FB5669 /* SHSectorInfoDictionary.h */,
+				2747C3CC2043BACA00FB5669 /* SHSectorInfoDictionary.m */,
 				2747C2EE2043ADE000FB5669 /* Info.plist */,
-				2747C4632046320E00FB5669 /* ModelConstants.h */,
-				2747C4642046320E00FB5669 /* ModelConstants.m */,
+				2747C4632046320E00FB5669 /* SHModelConstants.h */,
+				2747C4642046320E00FB5669 /* SHModelConstants.m */,
 				2747C4CF2048D90700FB5669 /* MonsterInfo.plist */,
 				2747C4CD2048D8FE00FB5669 /* ZoneInfo.plist */,
 				2747C512204A471D00FB5669 /* SuffixList.plist */,
-				274EFB64204E462E00CB3C4C /* ModelTools.h */,
-				274EFB65204E462E00CB3C4C /* ModelTools.m */,
+				274EFB64204E462E00CB3C4C /* SHModelTools.h */,
+				274EFB65204E462E00CB3C4C /* SHModelTools.m */,
 				2747C2ED2043ADE000FB5669 /* SHModels.h */,
 				2781552D217D706F005C5279 /* StoryItems.plist */,
-				27815531217D721C005C5279 /* InfoDictionary.h */,
-				27815532217D721C005C5279 /* InfoDictionary.m */,
-				2781553521805C88005C5279 /* StoryItemDictionary.h */,
-				2781553621805C88005C5279 /* StoryItemDictionary.m */,
+				27815531217D721C005C5279 /* SHInfoDictionary.h */,
+				27815532217D721C005C5279 /* SHInfoDictionary.m */,
+				2781553521805C88005C5279 /* SHStoryItemDictionary.h */,
+				2781553621805C88005C5279 /* SHStoryItemDictionary.m */,
 			);
 			path = SHModels;
 			sourceTree = "<group>";
@@ -413,8 +396,8 @@
 		2747C3A72043B0A900FB5669 /* ZoneTransaction */ = {
 			isa = PBXGroup;
 			children = (
-				274295E821FAA19300EE0132 /* SHZoneTransaction_Medium.h */,
-				274295E921FAA19300EE0132 /* SHZoneTransaction_Medium.m */,
+				274295E821FAA19300EE0132 /* SHSectorTransaction_Medium.h */,
+				274295E921FAA19300EE0132 /* SHSectorTransaction_Medium.m */,
 			);
 			path = ZoneTransaction;
 			sourceTree = "<group>";
@@ -422,14 +405,8 @@
 		2747C3AB2043B53100FB5669 /* Daily+Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				27300A07224AED76006E419C /* Daily+Helper.h */,
-				27300A06224AED76006E419C /* Daily+Helper.m */,
-				2747C3AD2043B53100FB5669 /* Daily+Mapable.m */,
-				2747C3AE2043B53100FB5669 /* Daily+ActiveDays.m */,
-				2747C3AF2043B53100FB5669 /* Daily+ActiveDays.h */,
-				2747C3B02043B53100FB5669 /* Daily+Mapable.h */,
-				27300A02224AE713006E419C /* Daily_Medium.h */,
-				27300A03224AE713006E419C /* Daily_Medium.m */,
+				27300A02224AE713006E419C /* SHDaily_Medium.h */,
+				27300A03224AE713006E419C /* SHDaily_Medium.m */,
 			);
 			path = "Daily+Extensions";
 			sourceTree = "<group>";
@@ -448,8 +425,8 @@
 		2747C45D2046304B00FB5669 /* Zone+Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				2736A6C82214D7FC006CB907 /* Zone_Medium.h */,
-				2736A6C92214D7FC006CB907 /* Zone_Medium.m */,
+				2736A6C82214D7FC006CB907 /* SHSector_Medium.h */,
+				2736A6C92214D7FC006CB907 /* SHSector_Medium.m */,
 			);
 			path = "Zone+Extensions";
 			sourceTree = "<group>";
@@ -473,85 +450,239 @@
 			path = Configs;
 			sourceTree = "<group>";
 		};
-		27CA86402264207A00AE8FDB /* Models */ = {
+		27A430C82268DC0500773056 /* SHDailySubTask */ = {
 			isa = PBXGroup;
 			children = (
 				27CA86412264207A00AE8FDB /* SHDailySubTask+CoreDataClass.h */,
-				27CA86422264207A00AE8FDB /* SHItemTransaction+CoreDataProperties.m */,
+				27CA866C2264207A00AE8FDB /* SHDailySubTask+CoreDataClass.m */,
+				27CA864B2264207A00AE8FDB /* SHDailySubTask+CoreDataProperties.h */,
+				27CA86722264207A00AE8FDB /* SHDailySubTask+CoreDataProperties.m */,
+			);
+			path = SHDailySubTask;
+			sourceTree = "<group>";
+		};
+		27A430C92268DC1700773056 /* SHDaily */ = {
+			isa = PBXGroup;
+			children = (
+				27CA866A2264207A00AE8FDB /* SHDaily+CoreDataClass.h */,
 				27CA86432264207A00AE8FDB /* SHDaily+CoreDataClass.m */,
+				27CA86642264207A00AE8FDB /* SHDaily+CoreDataProperties.h */,
+				27CA86832264207A00AE8FDB /* SHDaily+CoreDataProperties.m */,
+			);
+			path = SHDaily;
+			sourceTree = "<group>";
+		};
+		27A430CA2268DC3100773056 /* SHItemTransaction */ = {
+			isa = PBXGroup;
+			children = (
+				27CA86812264207A00AE8FDB /* SHItemTransaction+CoreDataClass.h */,
+				27CA86662264207A00AE8FDB /* SHItemTransaction+CoreDataClass.m */,
+				27CA866B2264207A00AE8FDB /* SHItemTransaction+CoreDataProperties.h */,
+				27CA86422264207A00AE8FDB /* SHItemTransaction+CoreDataProperties.m */,
+			);
+			path = SHItemTransaction;
+			sourceTree = "<group>";
+		};
+		27A430CB2268DC5700773056 /* SHDailyTransaction */ = {
+			isa = PBXGroup;
+			children = (
+				27CA86872264207A00AE8FDB /* SHDailyTransaction+CoreDataClass.h */,
+				27CA86602264207A00AE8FDB /* SHDailyTransaction+CoreDataClass.m */,
+				27CA86692264207A00AE8FDB /* SHDailyTransaction+CoreDataProperties.h */,
 				27CA86442264207A00AE8FDB /* SHDailyTransaction+CoreDataProperties.m */,
+			);
+			path = SHDailyTransaction;
+			sourceTree = "<group>";
+		};
+		27A430CC2268DC8700773056 /* SHHero */ = {
+			isa = PBXGroup;
+			children = (
 				27CA86452264207A00AE8FDB /* SHHero+CoreDataClass.h */,
+				27CA86682264207A00AE8FDB /* SHHero+CoreDataClass.m */,
+				27CA868C2264207A00AE8FDB /* SHHero+CoreDataProperties.h */,
+				27CA865B2264207A00AE8FDB /* SHHero+CoreDataProperties.m */,
+			);
+			path = SHHero;
+			sourceTree = "<group>";
+		};
+		27A430CD2268DC9900773056 /* SHTodoTransaction */ = {
+			isa = PBXGroup;
+			children = (
+				27CA86672264207A00AE8FDB /* SHTodoTransaction+CoreDataClass.h */,
+				27CA867A2264207A00AE8FDB /* SHTodoTransaction+CoreDataProperties.m */,
+				27CA86572264207A00AE8FDB /* SHTodoTransaction+CoreDataProperties.h */,
 				27CA86462264207A00AE8FDB /* SHTodoTransaction+CoreDataClass.m */,
+			);
+			path = SHTodoTransaction;
+			sourceTree = "<group>";
+		};
+		27A430CE2268DCAB00773056 /* SHSectorTransaction */ = {
+			isa = PBXGroup;
+			children = (
+				27CA86762264207A00AE8FDB /* SHSectorTransaction+CoreDataClass.m */,
+				27CA86742264207A00AE8FDB /* SHSectorTransaction+CoreDataProperties.m */,
 				27CA86472264207A00AE8FDB /* SHSectorTransaction+CoreDataClass.h */,
 				27CA86482264207A00AE8FDB /* SHSectorTransaction+CoreDataProperties.h */,
-				27CA86492264207A00AE8FDB /* SHReminder+CoreDataProperties.m */,
-				27CA864A2264207A00AE8FDB /* SHReminder+CoreDataClass.m */,
-				27CA864B2264207A00AE8FDB /* SHDailySubTask+CoreDataProperties.h */,
-				27CA864C2264207A00AE8FDB /* SHCategory+CoreDataProperties.h */,
-				27CA864D2264207A00AE8FDB /* SHCounterTransaction+CoreDataProperties.m */,
-				27CA864E2264207A00AE8FDB /* SHSuffix+CoreDataClass.m */,
-				27CA864F2264207A00AE8FDB /* SHCategory+CoreDataClass.m */,
-				27CA86502264207A00AE8FDB /* SHMonsterTransaction+CoreDataClass.h */,
-				27CA86512264207A00AE8FDB /* SHSettings+CoreDataClass.m */,
-				27CA86522264207A00AE8FDB /* SHMonster+CoreDataProperties.h */,
-				27CA86532264207A00AE8FDB /* SHSector+CoreDataClass.h */,
-				27CA86542264207A00AE8FDB /* SHSector+CoreDataProperties.h */,
-				27CA86552264207A00AE8FDB /* SHTodo+CoreDataProperties.m */,
-				27CA86562264207A00AE8FDB /* SHTeapot+CoreDataClass.h */,
-				27CA86572264207A00AE8FDB /* SHTodoTransaction+CoreDataProperties.h */,
-				27CA86582264207A00AE8FDB /* SHCounter+CoreDataClass.m */,
-				27CA86592264207A00AE8FDB /* SHSettings+CoreDataProperties.m */,
-				27CA865A2264207A00AE8FDB /* SHSuffix+CoreDataProperties.h */,
-				27CA865B2264207A00AE8FDB /* SHHero+CoreDataProperties.m */,
-				27CA865C2264207A00AE8FDB /* SHCounter+CoreDataProperties.h */,
-				27CA865D2264207A00AE8FDB /* SHTodo+CoreDataClass.h */,
-				27CA865E2264207A00AE8FDB /* SHCounterTransaction+CoreDataClass.m */,
-				27CA865F2264207A00AE8FDB /* SHItem+CoreDataClass.h */,
-				27CA86602264207A00AE8FDB /* SHDailyTransaction+CoreDataClass.m */,
-				27CA86612264207A00AE8FDB /* SHMonster+CoreDataClass.h */,
-				27CA86622264207A00AE8FDB /* SHMonsterTransaction+CoreDataProperties.h */,
-				27CA86632264207A00AE8FDB /* SHTeapot+CoreDataProperties.h */,
-				27CA86642264207A00AE8FDB /* SHDaily+CoreDataProperties.h */,
-				27CA86652264207A00AE8FDB /* SHItem+CoreDataProperties.h */,
-				27CA86662264207A00AE8FDB /* SHItemTransaction+CoreDataClass.m */,
-				27CA86672264207A00AE8FDB /* SHTodoTransaction+CoreDataClass.h */,
-				27CA86682264207A00AE8FDB /* SHHero+CoreDataClass.m */,
-				27CA86692264207A00AE8FDB /* SHDailyTransaction+CoreDataProperties.h */,
-				27CA866A2264207A00AE8FDB /* SHDaily+CoreDataClass.h */,
-				27CA866B2264207A00AE8FDB /* SHItemTransaction+CoreDataProperties.h */,
-				27CA866C2264207A00AE8FDB /* SHDailySubTask+CoreDataClass.m */,
-				27CA866D2264207A00AE8FDB /* SHMonsterTransaction+CoreDataClass.m */,
-				27CA866E2264207A00AE8FDB /* SHSuffix+CoreDataClass.h */,
-				27CA866F2264207A00AE8FDB /* SHCategory+CoreDataClass.h */,
-				27CA86702264207A00AE8FDB /* SHCategory+CoreDataProperties.m */,
-				27CA86712264207A00AE8FDB /* SHCounterTransaction+CoreDataProperties.h */,
-				27CA86722264207A00AE8FDB /* SHDailySubTask+CoreDataProperties.m */,
+			);
+			path = SHSectorTransaction;
+			sourceTree = "<group>";
+		};
+		27A430CF2268DCDB00773056 /* SHReminder */ = {
+			isa = PBXGroup;
+			children = (
 				27CA86732264207A00AE8FDB /* SHReminder+CoreDataClass.h */,
-				27CA86742264207A00AE8FDB /* SHSectorTransaction+CoreDataProperties.m */,
+				27CA864A2264207A00AE8FDB /* SHReminder+CoreDataClass.m */,
 				27CA86752264207A00AE8FDB /* SHReminder+CoreDataProperties.h */,
-				27CA86762264207A00AE8FDB /* SHSectorTransaction+CoreDataClass.m */,
-				27CA86772264207A00AE8FDB /* SHSettings+CoreDataProperties.h */,
-				27CA86782264207A00AE8FDB /* SHSuffix+CoreDataProperties.m */,
+				27CA86492264207A00AE8FDB /* SHReminder+CoreDataProperties.m */,
+			);
+			path = SHReminder;
+			sourceTree = "<group>";
+		};
+		27A430D02268DCFB00773056 /* SHCategory */ = {
+			isa = PBXGroup;
+			children = (
+				27CA866F2264207A00AE8FDB /* SHCategory+CoreDataClass.h */,
+				27CA864F2264207A00AE8FDB /* SHCategory+CoreDataClass.m */,
+				27CA864C2264207A00AE8FDB /* SHCategory+CoreDataProperties.h */,
+				27CA86702264207A00AE8FDB /* SHCategory+CoreDataProperties.m */,
+			);
+			path = SHCategory;
+			sourceTree = "<group>";
+		};
+		27A430D12268DD0A00773056 /* SHCounter */ = {
+			isa = PBXGroup;
+			children = (
 				27CA86792264207A00AE8FDB /* SHCounter+CoreDataClass.h */,
-				27CA867A2264207A00AE8FDB /* SHTodoTransaction+CoreDataProperties.m */,
-				27CA867B2264207A00AE8FDB /* SHTeapot+CoreDataClass.m */,
-				27CA867C2264207A00AE8FDB /* SHTodo+CoreDataProperties.h */,
+				27CA868B2264207A00AE8FDB /* SHCounter+CoreDataProperties.m */,
+				27CA86582264207A00AE8FDB /* SHCounter+CoreDataClass.m */,
+				27CA865C2264207A00AE8FDB /* SHCounter+CoreDataProperties.h */,
+			);
+			path = SHCounter;
+			sourceTree = "<group>";
+		};
+		27A430D22268DD1D00773056 /* SHSuffix */ = {
+			isa = PBXGroup;
+			children = (
+				27CA866E2264207A00AE8FDB /* SHSuffix+CoreDataClass.h */,
+				27CA86782264207A00AE8FDB /* SHSuffix+CoreDataProperties.m */,
+				27CA865A2264207A00AE8FDB /* SHSuffix+CoreDataProperties.h */,
+				27CA864E2264207A00AE8FDB /* SHSuffix+CoreDataClass.m */,
+			);
+			path = SHSuffix;
+			sourceTree = "<group>";
+		};
+		27A430D32268DD3800773056 /* SHMonsterTransaction */ = {
+			isa = PBXGroup;
+			children = (
+				27A430F42269756600773056 /* SHMonsterTransaction_Medium.h */,
+				27A430F32269756500773056 /* SHMonsterTransaction_Medium.m */,
+				27CA86502264207A00AE8FDB /* SHMonsterTransaction+CoreDataClass.h */,
+				27CA866D2264207A00AE8FDB /* SHMonsterTransaction+CoreDataClass.m */,
+				27CA86622264207A00AE8FDB /* SHMonsterTransaction+CoreDataProperties.h */,
+				27CA86852264207A00AE8FDB /* SHMonsterTransaction+CoreDataProperties.m */,
+			);
+			path = SHMonsterTransaction;
+			sourceTree = "<group>";
+		};
+		27A430D42268DD5500773056 /* SHSettings */ = {
+			isa = PBXGroup;
+			children = (
+				27CA86802264207A00AE8FDB /* SHSettings+CoreDataClass.h */,
+				27CA86512264207A00AE8FDB /* SHSettings+CoreDataClass.m */,
+				27CA86772264207A00AE8FDB /* SHSettings+CoreDataProperties.h */,
+				27CA86592264207A00AE8FDB /* SHSettings+CoreDataProperties.m */,
+			);
+			path = SHSettings;
+			sourceTree = "<group>";
+		};
+		27A430D52268DD6900773056 /* SHMonster */ = {
+			isa = PBXGroup;
+			children = (
+				27CA86612264207A00AE8FDB /* SHMonster+CoreDataClass.h */,
+				27CA86862264207A00AE8FDB /* SHMonster+CoreDataClass.m */,
+				27CA867F2264207A00AE8FDB /* SHMonster+CoreDataProperties.m */,
+				27CA86522264207A00AE8FDB /* SHMonster+CoreDataProperties.h */,
+			);
+			path = SHMonster;
+			sourceTree = "<group>";
+		};
+		27A430D62268DD8300773056 /* SHSector */ = {
+			isa = PBXGroup;
+			children = (
 				27CA867D2264207A00AE8FDB /* SHSector+CoreDataProperties.m */,
 				27CA867E2264207A00AE8FDB /* SHSector+CoreDataClass.m */,
-				27CA867F2264207A00AE8FDB /* SHMonster+CoreDataProperties.m */,
-				27CA86802264207A00AE8FDB /* SHSettings+CoreDataClass.h */,
-				27CA86812264207A00AE8FDB /* SHItemTransaction+CoreDataClass.h */,
-				27CA86822264207A00AE8FDB /* SHItem+CoreDataProperties.m */,
-				27CA86832264207A00AE8FDB /* SHDaily+CoreDataProperties.m */,
-				27CA86842264207A00AE8FDB /* SHTeapot+CoreDataProperties.m */,
-				27CA86852264207A00AE8FDB /* SHMonsterTransaction+CoreDataProperties.m */,
-				27CA86862264207A00AE8FDB /* SHMonster+CoreDataClass.m */,
-				27CA86872264207A00AE8FDB /* SHDailyTransaction+CoreDataClass.h */,
+				27CA86532264207A00AE8FDB /* SHSector+CoreDataClass.h */,
+				27CA86542264207A00AE8FDB /* SHSector+CoreDataProperties.h */,
+			);
+			path = SHSector;
+			sourceTree = "<group>";
+		};
+		27A430D72268DD9600773056 /* SHTodo */ = {
+			isa = PBXGroup;
+			children = (
 				27CA86882264207A00AE8FDB /* SHTodo+CoreDataClass.m */,
+				27CA867C2264207A00AE8FDB /* SHTodo+CoreDataProperties.h */,
+				27CA865D2264207A00AE8FDB /* SHTodo+CoreDataClass.h */,
+				27CA86552264207A00AE8FDB /* SHTodo+CoreDataProperties.m */,
+			);
+			path = SHTodo;
+			sourceTree = "<group>";
+		};
+		27A430D82268DDAB00773056 /* SHTeapot */ = {
+			isa = PBXGroup;
+			children = (
+				27CA86562264207A00AE8FDB /* SHTeapot+CoreDataClass.h */,
+				27CA867B2264207A00AE8FDB /* SHTeapot+CoreDataClass.m */,
+				27CA86632264207A00AE8FDB /* SHTeapot+CoreDataProperties.h */,
+				27CA86842264207A00AE8FDB /* SHTeapot+CoreDataProperties.m */,
+			);
+			path = SHTeapot;
+			sourceTree = "<group>";
+		};
+		27A430D92268DE0D00773056 /* SHCounterTransaction */ = {
+			isa = PBXGroup;
+			children = (
+				27CA864D2264207A00AE8FDB /* SHCounterTransaction+CoreDataProperties.m */,
 				27CA86892264207A00AE8FDB /* SHCounterTransaction+CoreDataClass.h */,
+				27CA865E2264207A00AE8FDB /* SHCounterTransaction+CoreDataClass.m */,
+				27CA86712264207A00AE8FDB /* SHCounterTransaction+CoreDataProperties.h */,
+			);
+			path = SHCounterTransaction;
+			sourceTree = "<group>";
+		};
+		27A430DA2268DE3A00773056 /* SHItem */ = {
+			isa = PBXGroup;
+			children = (
+				27CA865F2264207A00AE8FDB /* SHItem+CoreDataClass.h */,
 				27CA868A2264207A00AE8FDB /* SHItem+CoreDataClass.m */,
-				27CA868B2264207A00AE8FDB /* SHCounter+CoreDataProperties.m */,
-				27CA868C2264207A00AE8FDB /* SHHero+CoreDataProperties.h */,
+				27CA86652264207A00AE8FDB /* SHItem+CoreDataProperties.h */,
+				27CA86822264207A00AE8FDB /* SHItem+CoreDataProperties.m */,
+			);
+			path = SHItem;
+			sourceTree = "<group>";
+		};
+		27CA86402264207A00AE8FDB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				27A430D02268DCFB00773056 /* SHCategory */,
+				27A430D12268DD0A00773056 /* SHCounter */,
+				27A430D92268DE0D00773056 /* SHCounterTransaction */,
+				27A430C92268DC1700773056 /* SHDaily */,
+				27A430C82268DC0500773056 /* SHDailySubTask */,
+				27A430CB2268DC5700773056 /* SHDailyTransaction */,
+				27A430CC2268DC8700773056 /* SHHero */,
+				27A430DA2268DE3A00773056 /* SHItem */,
+				27A430CA2268DC3100773056 /* SHItemTransaction */,
+				27A430D52268DD6900773056 /* SHMonster */,
+				27A430D32268DD3800773056 /* SHMonsterTransaction */,
+				27A430CF2268DCDB00773056 /* SHReminder */,
+				27A430D62268DD8300773056 /* SHSector */,
+				27A430CE2268DCAB00773056 /* SHSectorTransaction */,
+				27A430D42268DD5500773056 /* SHSettings */,
+				27A430D22268DD1D00773056 /* SHSuffix */,
+				27A430D82268DDAB00773056 /* SHTeapot */,
+				27A430D72268DD9600773056 /* SHTodo */,
+				27A430CD2268DC9900773056 /* SHTodoTransaction */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -563,50 +694,40 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27075D692259313B00AD13AA /* SHSectorDTO.h in Headers */,
+				27075D6D225963A700AD13AA /* SHMonsterDTO.h in Headers */,
+				27CA863A22627D3D00AE8FDB /* SHDailyDTO.h in Headers */,
+				27075D71225A695300AD13AA /* SHSettingsDTO.h in Headers */,
+				2747C3BE2043B67200FB5669 /* SHRateTypeHelper.h in Headers */,
+				2747C3CF2043BACB00FB5669 /* SHMonsterInfoDictionary.h in Headers */,
 				27CA86A02264207A00AE8FDB /* SHSector+CoreDataProperties.h in Headers */,
 				27CA86932264207A00AE8FDB /* SHSectorTransaction+CoreDataClass.h in Headers */,
-				27075D692259313B00AD13AA /* SHZoneDTO.h in Headers */,
 				27CA86912264207A00AE8FDB /* SHHero+CoreDataClass.h in Headers */,
-				27075D6D225963A700AD13AA /* SHMonsterDTO.h in Headers */,
 				27CA86BA2264207A00AE8FDB /* SHSuffix+CoreDataClass.h in Headers */,
-				27CA863A22627D3D00AE8FDB /* SHDailyDTO.h in Headers */,
 				27CA86B52264207A00AE8FDB /* SHDailyTransaction+CoreDataProperties.h in Headers */,
 				27CA86AD2264207A00AE8FDB /* SHMonster+CoreDataClass.h in Headers */,
-				27075D71225A695300AD13AA /* SHSettingsDTO.h in Headers */,
-				2747C45B20462D4800FB5669 /* OnlyOneEntities.h in Headers */,
 				27CA86972264207A00AE8FDB /* SHDailySubTask+CoreDataProperties.h in Headers */,
-				2747C3B62043B53100FB5669 /* Daily+Mapable.h in Headers */,
 				27CA86AF2264207A00AE8FDB /* SHTeapot+CoreDataProperties.h in Headers */,
-				2747C3BE2043B67200FB5669 /* RateTypeHelper.h in Headers */,
 				27CA86942264207A00AE8FDB /* SHSectorTransaction+CoreDataProperties.h in Headers */,
-				2747C3892043AF7D00FB5669 /* Daily+CoreDataClass.h in Headers */,
 				27CA86BD2264207A00AE8FDB /* SHCounterTransaction+CoreDataProperties.h in Headers */,
 				27CA86D82264207A00AE8FDB /* SHHero+CoreDataProperties.h in Headers */,
 				27CA86B02264207A00AE8FDB /* SHDaily+CoreDataProperties.h in Headers */,
 				27CA86CD2264207A00AE8FDB /* SHItemTransaction+CoreDataClass.h in Headers */,
-				2747C3CF2043BACB00FB5669 /* MonsterInfoDictionary.h in Headers */,
 				27CA86A62264207A00AE8FDB /* SHSuffix+CoreDataProperties.h in Headers */,
 				27CA86C52264207A00AE8FDB /* SHCounter+CoreDataClass.h in Headers */,
 				27CA86A82264207A00AE8FDB /* SHCounter+CoreDataProperties.h in Headers */,
 				27CA86AB2264207A00AE8FDB /* SHItem+CoreDataClass.h in Headers */,
-				2747C3C82043B89100FB5669 /* P_Transaction.h in Headers */,
-				2747C4652046320E00FB5669 /* ModelConstants.h in Headers */,
 				27CA86AE2264207A00AE8FDB /* SHMonsterTransaction+CoreDataProperties.h in Headers */,
 				27CA86B62264207A00AE8FDB /* SHDaily+CoreDataClass.h in Headers */,
 				27CA86C12264207A00AE8FDB /* SHReminder+CoreDataProperties.h in Headers */,
 				27CA86A92264207A00AE8FDB /* SHTodo+CoreDataClass.h in Headers */,
 				27CA86D32264207A00AE8FDB /* SHDailyTransaction+CoreDataClass.h in Headers */,
-				2747C34F2043AF7C00FB5669 /* Daily+CoreDataProperties.h in Headers */,
 				27CA86D52264207A00AE8FDB /* SHCounterTransaction+CoreDataClass.h in Headers */,
-				2747C3C62043B83C00FB5669 /* P_StoryItem.h in Headers */,
-				2747C3D12043BACB00FB5669 /* ZoneInfoDictionary.h in Headers */,
 				27CA868D2264207A00AE8FDB /* SHDailySubTask+CoreDataClass.h in Headers */,
 				27CA86BF2264207A00AE8FDB /* SHReminder+CoreDataClass.h in Headers */,
 				27CA869E2264207A00AE8FDB /* SHMonster+CoreDataProperties.h in Headers */,
 				27CA86C82264207A00AE8FDB /* SHTodo+CoreDataProperties.h in Headers */,
-				2747C3AA2043B51300FB5669 /* P_DueDateItem.h in Headers */,
 				27CA86CC2264207A00AE8FDB /* SHSettings+CoreDataClass.h in Headers */,
-				2747C2EF2043ADE000FB5669 /* SHModels.h in Headers */,
 				27CA86B12264207A00AE8FDB /* SHItem+CoreDataProperties.h in Headers */,
 				27CA86B32264207A00AE8FDB /* SHTodoTransaction+CoreDataClass.h in Headers */,
 				27CA86A32264207A00AE8FDB /* SHTodoTransaction+CoreDataProperties.h in Headers */,
@@ -614,21 +735,26 @@
 				27CA86C32264207A00AE8FDB /* SHSettings+CoreDataProperties.h in Headers */,
 				27CA869C2264207A00AE8FDB /* SHMonsterTransaction+CoreDataClass.h in Headers */,
 				27CA86B72264207A00AE8FDB /* SHItemTransaction+CoreDataProperties.h in Headers */,
-				2747C3B52043B53100FB5669 /* Daily+ActiveDays.h in Headers */,
-				2781553721805C88005C5279 /* StoryItemDictionary.h in Headers */,
 				27CA86982264207A00AE8FDB /* SHCategory+CoreDataProperties.h in Headers */,
-				274EFB66204E462E00CB3C4C /* ModelTools.h in Headers */,
-				274295EA21FAA19300EE0132 /* SHZoneTransaction_Medium.h in Headers */,
-				2736A6CA2214D7FC006CB907 /* Zone_Medium.h in Headers */,
-				27300A09224AED76006E419C /* Daily+Helper.h in Headers */,
+				27CA869F2264207A00AE8FDB /* SHSector+CoreDataClass.h in Headers */,
+				27CA86BB2264207A00AE8FDB /* SHCategory+CoreDataClass.h in Headers */,
+				2747C3C82043B89100FB5669 /* SHTransactionProtocol.h in Headers */,
+				2747C4652046320E00FB5669 /* SHModelConstants.h in Headers */,
+				2747C3C62043B83C00FB5669 /* SHStoryItemProtocol.h in Headers */,
+				2747C3D12043BACB00FB5669 /* SHSectorInfoDictionary.h in Headers */,
+				2747C3AA2043B51300FB5669 /* SHDueDateItemProtocol.h in Headers */,
+				2747C2EF2043ADE000FB5669 /* SHModels.h in Headers */,
+				2781553721805C88005C5279 /* SHStoryItemDictionary.h in Headers */,
+				274EFB66204E462E00CB3C4C /* SHModelTools.h in Headers */,
+				274295EA21FAA19300EE0132 /* SHSectorTransaction_Medium.h in Headers */,
+				2736A6CA2214D7FC006CB907 /* SHSector_Medium.h in Headers */,
 				27075D61225786A400AD13AA /* SHReminderDTO.h in Headers */,
 				27300A002249BAD2006E419C /* SHMonster_Medium.h in Headers */,
-				27300A04224AE713006E419C /* Daily_Medium.h in Headers */,
+				27300A04224AE713006E419C /* SHDaily_Medium.h in Headers */,
 				27075D5B22570C0A00AD13AA /* SHDueDateItem.h in Headers */,
+				27A430F62269756600773056 /* SHMonsterTransaction_Medium.h in Headers */,
 				27075D652259308800AD13AA /* SHHeroDTO.h in Headers */,
-				27CA869F2264207A00AE8FDB /* SHSector+CoreDataClass.h in Headers */,
-				27815533217D721C005C5279 /* InfoDictionary.h in Headers */,
-				27CA86BB2264207A00AE8FDB /* SHCategory+CoreDataClass.h in Headers */,
+				27815533217D721C005C5279 /* SHInfoDictionary.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -722,7 +848,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2747C3B42043B53100FB5669 /* Daily+ActiveDays.m in Sources */,
 				27CA86D22264207A00AE8FDB /* SHMonster+CoreDataClass.m in Sources */,
 				27CA86D12264207A00AE8FDB /* SHMonsterTransaction+CoreDataProperties.m in Sources */,
 				27CA86D62264207A00AE8FDB /* SHItem+CoreDataClass.m in Sources */,
@@ -731,42 +856,39 @@
 				27CA86B22264207A00AE8FDB /* SHItemTransaction+CoreDataClass.m in Sources */,
 				27CA86A52264207A00AE8FDB /* SHSettings+CoreDataProperties.m in Sources */,
 				27CA86922264207A00AE8FDB /* SHTodoTransaction+CoreDataClass.m in Sources */,
-				274295EB21FAA19300EE0132 /* SHZoneTransaction_Medium.m in Sources */,
-				2747C3CE2043BACB00FB5669 /* MonsterInfoDictionary.m in Sources */,
+				274295EB21FAA19300EE0132 /* SHSectorTransaction_Medium.m in Sources */,
+				2747C3CE2043BACB00FB5669 /* SHMonsterInfoDictionary.m in Sources */,
 				27CA86CF2264207A00AE8FDB /* SHDaily+CoreDataProperties.m in Sources */,
 				27CA86AA2264207A00AE8FDB /* SHCounterTransaction+CoreDataClass.m in Sources */,
 				27CA86BE2264207A00AE8FDB /* SHDailySubTask+CoreDataProperties.m in Sources */,
 				27CA86C22264207A00AE8FDB /* SHSectorTransaction+CoreDataClass.m in Sources */,
+				27A430F52269756600773056 /* SHMonsterTransaction_Medium.m in Sources */,
 				27075D662259308800AD13AA /* SHHeroDTO.m in Sources */,
 				27CA869D2264207A00AE8FDB /* SHSettings+CoreDataClass.m in Sources */,
 				27CA86D72264207A00AE8FDB /* SHCounter+CoreDataProperties.m in Sources */,
 				27075D72225A695300AD13AA /* SHSettingsDTO.m in Sources */,
 				27CA86BC2264207A00AE8FDB /* SHCategory+CoreDataProperties.m in Sources */,
 				27CA86C72264207A00AE8FDB /* SHTeapot+CoreDataClass.m in Sources */,
-				27075D6A2259313B00AD13AA /* SHZoneDTO.m in Sources */,
+				27075D6A2259313B00AD13AA /* SHSectorDTO.m in Sources */,
 				27075D62225786A400AD13AA /* SHReminderDTO.m in Sources */,
-				2747C3BD2043B67200FB5669 /* RateTypeHelper.m in Sources */,
+				2747C3BD2043B67200FB5669 /* SHRateTypeHelper.m in Sources */,
 				27CA86B92264207A00AE8FDB /* SHMonsterTransaction+CoreDataClass.m in Sources */,
 				27CA863B22627D3D00AE8FDB /* SHDailyDTO.m in Sources */,
 				27CA86D02264207A00AE8FDB /* SHTeapot+CoreDataProperties.m in Sources */,
 				27300A012249BAD2006E419C /* SHMonster_Medium.m in Sources */,
 				27075D6E225963A700AD13AA /* SHMonsterDTO.m in Sources */,
-				27815534217D721C005C5279 /* InfoDictionary.m in Sources */,
-				2747C45C20462D4800FB5669 /* OnlyOneEntities.m in Sources */,
-				2747C3052043AE3E00FB5669 /* Model.xcdatamodeld in Sources */,
+				27815534217D721C005C5279 /* SHInfoDictionary.m in Sources */,
 				27CA86992264207A00AE8FDB /* SHCounterTransaction+CoreDataProperties.m in Sources */,
 				2747C3872043AF7D00FB5669 /* Daily+CoreDataClass.m in Sources */,
 				27CA868E2264207A00AE8FDB /* SHItemTransaction+CoreDataProperties.m in Sources */,
 				27CA86902264207A00AE8FDB /* SHDailyTransaction+CoreDataProperties.m in Sources */,
-				2781553821805C88005C5279 /* StoryItemDictionary.m in Sources */,
+				2781553821805C88005C5279 /* SHStoryItemDictionary.m in Sources */,
 				27CA86A72264207A00AE8FDB /* SHHero+CoreDataProperties.m in Sources */,
 				27CA86C92264207A00AE8FDB /* SHSector+CoreDataProperties.m in Sources */,
 				27CA86C02264207A00AE8FDB /* SHSectorTransaction+CoreDataProperties.m in Sources */,
-				2747C3B32043B53100FB5669 /* Daily+Mapable.m in Sources */,
 				27CA86CA2264207A00AE8FDB /* SHSector+CoreDataClass.m in Sources */,
 				27CA86952264207A00AE8FDB /* SHReminder+CoreDataProperties.m in Sources */,
-				27300A08224AED76006E419C /* Daily+Helper.m in Sources */,
-				274EFB67204E462E00CB3C4C /* ModelTools.m in Sources */,
+				274EFB67204E462E00CB3C4C /* SHModelTools.m in Sources */,
 				27CA86A42264207A00AE8FDB /* SHCounter+CoreDataClass.m in Sources */,
 				27CA86D42264207A00AE8FDB /* SHTodo+CoreDataClass.m in Sources */,
 				27CA86A12264207A00AE8FDB /* SHTodo+CoreDataProperties.m in Sources */,
@@ -774,17 +896,17 @@
 				2747C3742043AF7D00FB5669 /* Daily+CoreDataProperties.m in Sources */,
 				27CA86962264207A00AE8FDB /* SHReminder+CoreDataClass.m in Sources */,
 				27CA86B82264207A00AE8FDB /* SHDailySubTask+CoreDataClass.m in Sources */,
-				2736A6CB2214D7FC006CB907 /* Zone_Medium.m in Sources */,
+				2736A6CB2214D7FC006CB907 /* SHSector_Medium.m in Sources */,
 				27CA869A2264207A00AE8FDB /* SHSuffix+CoreDataClass.m in Sources */,
 				27CA869B2264207A00AE8FDB /* SHCategory+CoreDataClass.m in Sources */,
 				27CA86CE2264207A00AE8FDB /* SHItem+CoreDataProperties.m in Sources */,
 				27CA86C42264207A00AE8FDB /* SHSuffix+CoreDataProperties.m in Sources */,
 				27075D5C22570C0A00AD13AA /* SHDueDateItem.m in Sources */,
 				27CA86CB2264207A00AE8FDB /* SHMonster+CoreDataProperties.m in Sources */,
-				2747C3D02043BACB00FB5669 /* ZoneInfoDictionary.m in Sources */,
-				2747C4662046320E00FB5669 /* ModelConstants.m in Sources */,
+				2747C3D02043BACB00FB5669 /* SHSectorInfoDictionary.m in Sources */,
+				2747C4662046320E00FB5669 /* SHModelConstants.m in Sources */,
 				27CA86AC2264207A00AE8FDB /* SHDailyTransaction+CoreDataClass.m in Sources */,
-				27300A05224AE713006E419C /* Daily_Medium.m in Sources */,
+				27300A05224AE713006E419C /* SHDaily_Medium.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -994,7 +1116,7 @@
 				2747C3032043AE3D00FB5669 /* Model.xcdatamodel */,
 				2747C3042043AE3D00FB5669 /* Model 19.xcdatamodel */,
 			);
-			currentVersion = 2747C3002043AE3D00FB5669 /* Model 32.xcdatamodel */;
+			currentVersion = 27CA863C2262EA1200AE8FDB /* Model 33.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

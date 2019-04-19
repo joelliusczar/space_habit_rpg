@@ -7,7 +7,7 @@
 //
 
 #import "SHViewController.h"
-#import <SHCommon/Interceptor.h>
+#import <SHCommon/SHInterceptor.h>
 
 @interface SHViewController ()
 
@@ -15,9 +15,9 @@
 
 @implementation SHViewController
 
--(id<P_Interceptor>)interceptor{
+-(id<SHInterceptorProtocol>)interceptor{
     if(nil==_interceptor){
-        _interceptor = [[Interceptor alloc] init];
+        _interceptor = [[SHInterceptor alloc] init];
     }
     return _interceptor;
 }

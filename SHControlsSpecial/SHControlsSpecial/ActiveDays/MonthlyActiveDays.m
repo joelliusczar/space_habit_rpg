@@ -7,15 +7,16 @@
 //
 
 #import "MonthlyActiveDays.h"
-#import <SHCommon/CommonUtilities.h>
-#import <SHGlobal/Constants.h>
-#import <SHControls/ListItemCell.h>
-#import <SHCommon/SingletonCluster.h>
+#import <SHCommon/SHCommonUtils.h>
+#import <SHGlobal/SHConstants.h>
+#import <SHControls/SHListItemCell.h>
+#import <SHCommon/SHSingletonCluster.h>
 #import "MonthPartPicker.h"
 #import <SHControls/UIViewController+Helper.h>
-#import <SHCommon/Interceptor.h>
+#import <SHCommon/SHInterceptor.h>
 #import <SHCommon/NSNumber+Helper.h>
 #import <SHControls/SHEventInfo.h>
+#import <SHModels/SHModelConstants.h>
 
 @interface MonthlyActiveDays ()
 @end
@@ -23,7 +24,7 @@
 @implementation MonthlyActiveDays
 
 
-+(instancetype)newWithDaily:(Daily *)daily{
++(instancetype)newWithDaily:(SHDaily *)daily{
     NSAssert(daily,@"daily was nil");
     MonthlyActiveDays *instance = [[MonthlyActiveDays alloc] init];
     instance.daily = daily;
@@ -36,27 +37,29 @@
 #pragma clang diagnostic ignored "-Wunused-parameter"
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.daily.inUseActiveDays.count;
+    //return self.daily.inUseActiveDays.count;
+    return 0;
+    #warning "unimplemeted";
 }
 
 #pragma clang diagnostic pop
 
 -(UITableViewCell *)tableView:(UITableView *)tableView
         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    ListItemCell *cell = [ListItemCell getListItemCell:tableView];
-    RateValueItemDict *monthItemDict = self.daily.inUseActiveDays[indexPath.row];
+    SHListItemCell *cell = [SHListItemCell getListItemCell:tableView];
+    SHRateValueItemDict *monthItemDict = nil;//self.daily.inUseActiveDays[indexPath.row];
     NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
-    numFormatter.locale = self.utilityStore.inUseLocale;
+    numFormatter.locale = NSLocale.currentLocale;
     numFormatter.numberStyle = NSNumberFormatterOrdinalStyle;
-    NSString *ordinal = [numFormatter stringFromNumber:[monthItemDict[ORDINAL_WEEK_KEY] plusInteger:1]];
-    NSString *dayOfWeek = self.utilityStore.inUseCalendar.weekdaySymbols[monthItemDict[DAY_OF_WEEK_KEY].integerValue];
+    NSString *ordinal = [numFormatter stringFromNumber:[monthItemDict[SH_ORDINAL_WEEK_KEY] plusInteger:1]];
+    NSString *dayOfWeek = NSCalendar.currentCalendar.weekdaySymbols[monthItemDict[SH_DAY_OF_WEEK_KEY].integerValue];
     cell.lblRowDesc.text = [NSString stringWithFormat:@"%@ %@",ordinal,dayOfWeek];
     return cell;
 }
 
 
 -(void)addItemBtn_press_action:(SHEventInfo *)eventInfo{
-    wrapReturnVoid wrappedCall = ^(){
+    shWrapReturnVoid wrappedCall = ^(){
         [self hideKeyboard];
         MonthPartPicker *dayOfMonthPicker = [[MonthPartPicker alloc] init];
         [self showSHSpinPicker:dayOfMonthPicker];
@@ -68,7 +71,7 @@
 
 
 -(void)pickerSelection_action:(SHEventInfo *)eventInfo{
-    wrapReturnVoid wrappedCall = ^(){
+    shWrapReturnVoid wrappedCall = ^(){
         UIPickerView *picker = (UIPickerView *)eventInfo.senderStack[1];
         [self addCellWithWeekOrdinal:[picker selectedRowInComponent:0]
                                         dayOfWeek:[picker selectedRowInComponent:1]];
@@ -80,23 +83,25 @@
 
 
 -(void)addCellWithWeekOrdinal:(NSInteger)weekOrdinal dayOfWeek:(NSInteger)dayOfWeek{
-    NSInteger row = [self.daily addMonthlyItem:self.daily.isInverseRateType
-                                       ordinal:weekOrdinal
-                                  dayOfWeekNum:dayOfWeek];
-    if(row >= 0){
-        [self addItemToTableAndScale:row];
-    }
+  #warning unimplemented
+//    NSInteger row = [self.daily addMonthlyItem:self.daily.isInverseRateType
+//                                       ordinal:weekOrdinal
+//                                  dayOfWeekNum:dayOfWeek];
+//    if(row >= 0){
+//        [self addItemToTableAndScale:row];
+//    }
 }
 
 
 -(void)deleteCellAt:(NSIndexPath *)indexPath{
-    [self.daily deleteRateValueItem:self.daily.rateType atIndex:indexPath.row];
+    //[self.daily deleteRateValueItem:self.daily.rateType atIndex:indexPath.row];
     [self removeItemFromTableAndScale:indexPath];
 }
 
 
 -(NSInteger)backendListCount{
-    return self.daily.inUseActiveDays.count;
+    //return self.daily.inUseActiveDays.count;
+    return 0;
 }
 
 

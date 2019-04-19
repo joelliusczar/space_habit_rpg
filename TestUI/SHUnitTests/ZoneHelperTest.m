@@ -7,12 +7,12 @@
 //
 
 #import <SHData/NSManagedObjectContext+Helper.h>
-#import <SHCommon/CommonUtilities.h>
-#import <SHModels/ModelConstants.h>
-#import <SHModels/Zone+CoreDataClass.h>
-#import <SHModels/Zone_Medium.h>
+#import <SHCommon/SHCommonUtils.h>
+#import <SHModels/SHModelConstants.h>
+#import <SHModels/SHSector+CoreDataClass.h>
+#import <SHModels/SHSector_Medium.h>
 #import <SHModels/SHHeroDTO.h>
-#import <SHModels/SHZoneDTO.h>
+#import <SHModels/SHSectorDTO.h>
 
 @import TestCommon;
 
@@ -34,63 +34,63 @@ uint zoneHelper_mockRandom(uint range){
     
 - (void)setUp {
     [super setUp];
-    randomUInt = &zoneHelper_mockRandom;
+    shRandomUInt = &zoneHelper_mockRandom;
 }
 
 - (void)tearDown {
     [super tearDown];
 }
 
--(void)testgetUnlockedZoneGroupKeys{
+-(void)testgetUnlockedSectorGroupKeys{
   
-    NSArray<NSString *> *t = getUnlockedZoneGroupKeys(0);
+    NSArray<NSString *> *t = getUnlockedSectorGroupKeys(0);
     XCTAssertEqual(t.count, 1);
     XCTAssertTrue([t[0] isEqualToString:LVL_0_ZONES]);
-    t = getUnlockedZoneGroupKeys(1);
+    t = getUnlockedSectorGroupKeys(1);
     XCTAssertEqual(t.count, 1);
     XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
     
-    t = getUnlockedZoneGroupKeys(4);
+    t = getUnlockedSectorGroupKeys(4);
     XCTAssertEqual(t.count, 1);
     XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
     
-    t = getUnlockedZoneGroupKeys(5);
+    t = getUnlockedSectorGroupKeys(5);
     XCTAssertEqual(t.count, 2);
     XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
     XCTAssertTrue([t[1] isEqualToString:LVL_5_ZONES]);
     
-    t = getUnlockedZoneGroupKeys(9);
+    t = getUnlockedSectorGroupKeys(9);
     XCTAssertEqual(t.count, 2);
     XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
     XCTAssertTrue([t[1] isEqualToString:LVL_5_ZONES]);
     
-    t = getUnlockedZoneGroupKeys(10);
+    t = getUnlockedSectorGroupKeys(10);
     XCTAssertEqual(t.count, 3);
     XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
     XCTAssertTrue([t[1] isEqualToString:LVL_5_ZONES]);
     XCTAssertTrue([t[2] isEqualToString:LVL_10_ZONES]);
     
-    t = getUnlockedZoneGroupKeys(14);
+    t = getUnlockedSectorGroupKeys(14);
     XCTAssertEqual(t.count, 3);
     XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
     XCTAssertTrue([t[1] isEqualToString:LVL_5_ZONES]);
     XCTAssertTrue([t[2] isEqualToString:LVL_10_ZONES]);
     
-    t = getUnlockedZoneGroupKeys(15);
+    t = getUnlockedSectorGroupKeys(15);
     XCTAssertEqual(t.count, 4);
     XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
     XCTAssertTrue([t[1] isEqualToString:LVL_5_ZONES]);
     XCTAssertTrue([t[2] isEqualToString:LVL_10_ZONES]);
     XCTAssertTrue([t[3] isEqualToString:LVL_15_ZONES]);
     
-    t = getUnlockedZoneGroupKeys(19);
+    t = getUnlockedSectorGroupKeys(19);
     XCTAssertEqual(t.count, 4);
     XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
     XCTAssertTrue([t[1] isEqualToString:LVL_5_ZONES]);
     XCTAssertTrue([t[2] isEqualToString:LVL_10_ZONES]);
     XCTAssertTrue([t[3] isEqualToString:LVL_15_ZONES]);
     
-    t = getUnlockedZoneGroupKeys(20);
+    t = getUnlockedSectorGroupKeys(20);
     XCTAssertEqual(t.count, 5);
     XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
     XCTAssertTrue([t[1] isEqualToString:LVL_5_ZONES]);
@@ -98,7 +98,7 @@ uint zoneHelper_mockRandom(uint range){
     XCTAssertTrue([t[3] isEqualToString:LVL_15_ZONES]);
     XCTAssertTrue([t[4] isEqualToString:LVL_20_ZONES]);
 
-    t = getUnlockedZoneGroupKeys(24);
+    t = getUnlockedSectorGroupKeys(24);
     XCTAssertEqual(t.count, 5);
     XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
     XCTAssertTrue([t[1] isEqualToString:LVL_5_ZONES]);
@@ -106,7 +106,7 @@ uint zoneHelper_mockRandom(uint range){
     XCTAssertTrue([t[3] isEqualToString:LVL_15_ZONES]);
     XCTAssertTrue([t[4] isEqualToString:LVL_20_ZONES]);
     
-    t = getUnlockedZoneGroupKeys(25);
+    t = getUnlockedSectorGroupKeys(25);
     XCTAssertEqual(t.count, 6);
     XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
     XCTAssertTrue([t[1] isEqualToString:LVL_5_ZONES]);
@@ -115,7 +115,7 @@ uint zoneHelper_mockRandom(uint range){
     XCTAssertTrue([t[4] isEqualToString:LVL_20_ZONES]);
     XCTAssertTrue([t[5] isEqualToString:LVL_25_ZONES]);
     
-    t = getUnlockedZoneGroupKeys(29);
+    t = getUnlockedSectorGroupKeys(29);
     XCTAssertEqual(t.count, 6);
     XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
     XCTAssertTrue([t[1] isEqualToString:LVL_5_ZONES]);
@@ -124,7 +124,7 @@ uint zoneHelper_mockRandom(uint range){
     XCTAssertTrue([t[4] isEqualToString:LVL_20_ZONES]);
     XCTAssertTrue([t[5] isEqualToString:LVL_25_ZONES]);
     
-    t = getUnlockedZoneGroupKeys(30);
+    t = getUnlockedSectorGroupKeys(30);
     XCTAssertEqual(t.count, 7);
     XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
     XCTAssertTrue([t[1] isEqualToString:LVL_5_ZONES]);
@@ -134,7 +134,7 @@ uint zoneHelper_mockRandom(uint range){
     XCTAssertTrue([t[5] isEqualToString:LVL_25_ZONES]);
     XCTAssertTrue([t[6] isEqualToString:LVL_30_ZONES]);
     
-    t = getUnlockedZoneGroupKeys(1000);
+    t = getUnlockedSectorGroupKeys(1000);
     XCTAssertEqual(t.count, 7);
     XCTAssertTrue([t[0] isEqualToString:LVL_1_ZONES]);
     XCTAssertTrue([t[1] isEqualToString:LVL_5_ZONES]);
@@ -167,7 +167,7 @@ uint zoneHelper_mockRandom(uint range){
   int i = 0;
   rIdx_zh = 0;
   NSManagedObjectContext *context = [self.dc newBackgroundContext];
-  Zone_Medium* zoneMed = [Zone_Medium newWithContext:context
+  SHSector_Medium* zoneMed = [SHSector_Medium newWithContext:context
     withResourceUtil:self.resourceUtil
     withInfoDict:self.zoneInfoDict];
   SET_LOW_BOUND();
@@ -213,7 +213,7 @@ uint zoneHelper_mockRandom(uint range){
 
 -(void)testGetSymbolSuffix{
   NSManagedObjectContext *context = [self.dc newBackgroundContext];
-  Zone_Medium* zoneMed = [Zone_Medium newWithContext:context
+  SHSector_Medium* zoneMed = [SHSector_Medium newWithContext:context
     withResourceUtil:self.resourceUtil
     withInfoDict:self.zoneInfoDict];
   NSString *s = [zoneMed getSymbolSuffix:0];
@@ -276,7 +276,7 @@ uint zoneHelper_mockRandom(uint range){
 
 -(void)testGetSymbolsList{
  NSManagedObjectContext *context = [self.dc newBackgroundContext];
-  Zone_Medium* zoneMed = [Zone_Medium newWithContext:context
+  SHSector_Medium* zoneMed = [SHSector_Medium newWithContext:context
     withResourceUtil:self.resourceUtil
     withInfoDict:self.zoneInfoDict];
   NSArray<NSString *> *a = [zoneMed getSymbolsList];
@@ -288,10 +288,10 @@ uint zoneHelper_mockRandom(uint range){
 
 -(void)testConstructEmptyZone{
   NSManagedObjectContext *context = self.dc.mainThreadContext;
-  Zone_Medium* zoneMed = [Zone_Medium newWithContext:context
+  SHSector_Medium* zoneMed = [SHSector_Medium newWithContext:context
     withResourceUtil:self.resourceUtil
     withInfoDict:self.zoneInfoDict];
-  Zone *z = [zoneMed newEmptyZone];
+  SHSector *z = [zoneMed newEmptySector];
   XCTAssertNotNil(z);
 }
 
@@ -299,7 +299,7 @@ uint zoneHelper_mockRandom(uint range){
 
 -(void)testConstructZoneChoice{
   NSManagedObjectContext *context = [self.dc newBackgroundContext];
-  Zone_Medium* zoneMed = [Zone_Medium newWithContext:context
+  SHSector_Medium* zoneMed = [SHSector_Medium newWithContext:context
     withResourceUtil:self.resourceUtil
     withInfoDict:self.zoneInfoDict];
   int i = 0;
@@ -310,7 +310,7 @@ uint zoneHelper_mockRandom(uint range){
   SET_LOW_BOUND();
   SET_LOW_BOUND();
   ZoneDTO *z = [zoneMed newRandomZoneChoiceGivenHero:h ifShouldMatchLvl:YES];
-  XCTAssertTrue([z.zoneKey isEqualToString:@"NEBULA"]);
+  XCTAssertTrue([z.sectorKey isEqualToString:@"NEBULA"]);
   XCTAssertEqual(z.lvl, 14);
   XCTAssertTrue([z.suffix isEqualToString:@""]);
   XCTAssertEqual(z.maxMonsters,5);
@@ -323,7 +323,7 @@ uint zoneHelper_mockRandom(uint range){
   SET_LOW_BOUND();
   SET_UP_BOUND();
   z = [zoneMed newRandomZoneChoiceGivenHero:h ifShouldMatchLvl:YES];
-  XCTAssertTrue([z.zoneKey isEqualToString:@"NEBULA"]);
+  XCTAssertTrue([z.sectorKey isEqualToString:@"NEBULA"]);
   XCTAssertEqual(z.lvl, 14);
   XCTAssertTrue([z.suffix isEqualToString:@"Alpha"]);
   XCTAssertEqual(z.maxMonsters,15);
@@ -337,7 +337,7 @@ uint zoneHelper_mockRandom(uint range){
   SET_LOW_BOUND(); //zone lvl
   SET_UP_BOUND(); //maxMonsters
   z = [zoneMed newRandomZoneChoiceGivenHero:h ifShouldMatchLvl:NO];
-  XCTAssertTrue([z.zoneKey isEqualToString:@"NEBULA"]);
+  XCTAssertTrue([z.sectorKey isEqualToString:@"NEBULA"]);
   XCTAssertEqual(z.lvl, 4);
   XCTAssertTrue([z.suffix isEqualToString:@"Beta"]);
   XCTAssertEqual(z.maxMonsters,15);
@@ -351,7 +351,7 @@ uint zoneHelper_mockRandom(uint range){
   SET_UP_BOUND(); //maxMonsters
   SET_UP_BOUND(); //zone lvl
   z = [zoneMed newRandomZoneChoiceGivenHero:h ifShouldMatchLvl:NO];
-  XCTAssertTrue([z.zoneKey isEqualToString:@"NEBULA"]);
+  XCTAssertTrue([z.sectorKey isEqualToString:@"NEBULA"]);
   XCTAssertEqual(z.lvl, 24);
   XCTAssertTrue([z.suffix isEqualToString:@"Cain"]);
   XCTAssertEqual(z.maxMonsters,15);
@@ -425,7 +425,7 @@ uint zoneHelper_mockRandom(uint range){
 
 -(void)testConstructSpecificZone{
   NSManagedObjectContext *context = [self.dc newBackgroundContext];
-  Zone_Medium* zoneMed = [Zone_Medium newWithContext:context
+  SHSector_Medium* zoneMed = [SHSector_Medium newWithContext:context
     withResourceUtil:self.resourceUtil
     withInfoDict:self.zoneInfoDict];
   ZoneDTO *z = [zoneMed newSpecificZone:HOME_KEY withLvl:1 withMonsterCount:0];
@@ -436,108 +436,108 @@ void throwsEx(){
   @throw [NSException exceptionWithName:@"x" reason:@"x" userInfo:nil];
 }
 
--(void)testGetZone{
+-(void)testgetSector{
   NSManagedObjectContext *context = [self.dc newBackgroundContext];
-  Zone_Medium* zoneMed = [Zone_Medium newWithContext:context
+  SHSector_Medium* zoneMed = [SHSector_Medium newWithContext:context
     withResourceUtil:self.resourceUtil
     withInfoDict:self.zoneInfoDict];
-  __block Zone *z = [zoneMed newEmptyZone];
+  __block SHSector *z = [zoneMed newEmptySector];
   NSManagedObjectContext* bgContext = [self.dc newBackgroundContext];
   z.isFront = YES;
-  z.zoneKey = @"NEBULA";
-  __block Zone *z2 = [zoneMed newEmptyZone];
+  z.sectorKey = @"NEBULA";
+  __block SHSector *z2 = [zoneMed newEmptySector];
   z2.isFront = NO;
-  z2.zoneKey = @"GAS";
+  z2.sectorKey = @"GAS";
   [bgContext performBlockAndWait:^{
     [bgContext insertObject:z];
     [bgContext insertObject:z2];
     NSError *error = nil;
     [bgContext save:&error];
   }];
-  Zone *z3 = [zoneMed getZone:YES];
+  SHSector *z3 = [zoneMed getSector:YES];
   XCTAssertTrue(z3.isFront);
-  XCTAssertTrue([z3.zoneKey isEqualToString:@"NEBULA"]);
-  Zone *z4 = [zoneMed getZone:NO];
+  XCTAssertTrue([z3.sectorKey isEqualToString:@"NEBULA"]);
+  SHSector *z4 = [zoneMed getSector:NO];
   XCTAssertTrue(!z4.isFront);
-  XCTAssertTrue([z4.zoneKey isEqualToString:@"GAS"]);
-  __block Zone *z5 = [zoneMed newEmptyZone];
+  XCTAssertTrue([z4.sectorKey isEqualToString:@"GAS"]);
+  __block SHSector *z5 = [zoneMed newEmptySector];
   z5.isFront = YES;
-  z5.zoneKey = @"TEMPLE";
+  z5.sectorKey = @"TEMPLE";
   [bgContext performBlockAndWait:^{
     [bgContext insertObject:z5];
     NSError *error = nil;
     [bgContext save:&error];
   }];
-  XCTAssertThrows([zoneMed getZone:YES]);
+  XCTAssertThrows([zoneMed getSector:YES]);
 }
 
 
 -(void)testMoveToFront{
   NSManagedObjectContext *context = [self.dc newBackgroundContext];
-  Zone_Medium* zoneMed = [Zone_Medium newWithContext:context
+  SHSector_Medium* zoneMed = [SHSector_Medium newWithContext:context
     withResourceUtil:self.resourceUtil
     withInfoDict:self.zoneInfoDict];
   __block ZoneDTO *z0 = [zoneMed newSpecificZone:HOME_KEY withLvl:1 withMonsterCount:0];;
   NSManagedObjectContext* bgContext = [self.dc newBackgroundContext];
   
   [bgContext performBlockAndWait:^{
-    Zone *zCd = (Zone*)[bgContext newEntity:Zone.entity];
-    [zoneMed moveZoneToFront:zCd];
+    SHSector *zCd = (SHSector*)[bgContext newEntity:SHSector.entity];
+    [zoneMed moveSectorToFront:zCd];
     XCTAssertTrue(zCd.isFront);
     NSError *error = nil;
     [bgContext save:&error];
   }];
 
-  __block Zone *z1 = [zoneMed newEmptyZone];
-  z1.zoneKey = @"GAS";
+  __block SHSector *z1 = [zoneMed newEmptySector];
+  z1.sectorKey = @"GAS";
   
   [bgContext performBlockAndWait:^{
     [bgContext insertObject:z1];
-    [zoneMed moveZoneToFront:z1];
+    [zoneMed moveSectorToFront:z1];
     NSError *error = nil;
     [bgContext save:&error];
   }];
   
-  NSArray<NSManagedObject *> *zones = [zoneMed getAllZones:nil];
+  NSArray<NSManagedObject *> *zones = [zoneMed getAllSectors:nil];
   XCTAssertEqual(zones.count, 2);
-  XCTAssertTrue(((Zone *)zones[0]).isFront);
-  XCTAssertTrue([((Zone *)zones[0]).zoneKey isEqualToString:@"GAS"]);
-  XCTAssertFalse(((Zone *)zones[1]).isFront);
-  XCTAssertTrue([((Zone *)zones[1]).zoneKey isEqualToString:@"HOME"]);
+  XCTAssertTrue(((SHSector *)zones[0]).isFront);
+  XCTAssertTrue([((SHSector *)zones[0]).sectorKey isEqualToString:@"GAS"]);
+  XCTAssertFalse(((SHSector *)zones[1]).isFront);
+  XCTAssertTrue([((SHSector *)zones[1]).sectorKey isEqualToString:@"HOME"]);
   
-  __block Zone *z2 = [zoneMed newEmptyZone];
-  z2.zoneKey = @"NEBULA";
+  __block SHSector *z2 = [zoneMed newEmptySector];
+  z2.sectorKey = @"NEBULA";
   
   [bgContext performBlockAndWait:^{
     [bgContext insertObject:z2];
-    [zoneMed moveZoneToFront:z2];
+    [zoneMed moveSectorToFront:z2];
     NSError *error = nil;
     [bgContext save:&error];
   }];
   [bgContext performBlockAndWait:^{
-    NSArray<NSManagedObject *> *zones = [zoneMed getAllZones:nil];
+    NSArray<NSManagedObject *> *zones = [zoneMed getAllSectors:nil];
     XCTAssertEqual(zones.count, 2);
-    XCTAssertTrue(((Zone *)zones[0]).isFront);
-    XCTAssertTrue([((Zone *)zones[0]).zoneKey isEqualToString:@"NEBULA"]);
-    XCTAssertFalse(((Zone *)zones[1]).isFront);
-    XCTAssertTrue([((Zone *)zones[1]).zoneKey isEqualToString:@"GAS"]);
+    XCTAssertTrue(((SHSector *)zones[0]).isFront);
+    XCTAssertTrue([((SHSector *)zones[0]).sectorKey isEqualToString:@"NEBULA"]);
+    XCTAssertFalse(((SHSector *)zones[1]).isFront);
+    XCTAssertTrue([((SHSector *)zones[1]).sectorKey isEqualToString:@"GAS"]);
     
     //these are insync from the database?
     XCTAssertFalse(z1.isFront);
     XCTAssertTrue(z2.isFront);
     
-    Zone *z1_1 = (Zone *)zones[1];
-    [zoneMed moveZoneToFront:z1_1];
+    SHSector *z1_1 = (SHSector *)zones[1];
+    [zoneMed moveSectorToFront:z1_1];
     [bgContext insertObject:z1_1]; //#warning
     NSError *error = nil;
     [bgContext save:&error];
     
-    zones = [zoneMed getAllZones:nil];
+    zones = [zoneMed getAllSectors:nil];
     XCTAssertEqual(zones.count, 2);
-    XCTAssertTrue(((Zone *)zones[0]).isFront);
-    XCTAssertTrue([((Zone *)zones[0]).zoneKey isEqualToString:@"GAS"]);
-    XCTAssertFalse(((Zone *)zones[1]).isFront);
-    XCTAssertTrue([((Zone *)zones[1]).zoneKey isEqualToString:@"NEBULA"]);
+    XCTAssertTrue(((SHSector *)zones[0]).isFront);
+    XCTAssertTrue([((SHSector *)zones[0]).sectorKey isEqualToString:@"GAS"]);
+    XCTAssertFalse(((SHSector *)zones[1]).isFront);
+    XCTAssertTrue([((SHSector *)zones[1]).sectorKey isEqualToString:@"NEBULA"]);
   }];
   
 }

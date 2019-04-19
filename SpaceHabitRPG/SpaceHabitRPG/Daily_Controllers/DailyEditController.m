@@ -7,24 +7,23 @@
 //
 
 #import "DailyEditController.h"
-#import <SHCommon/CommonUtilities.h>
-#import <SHModels/Daily_Medium.h>
-#import <SHControls/P_SHSwitch.h>
+#import <SHCommon/SHCommonUtils.h>
+#import <SHModels/SHDaily_Medium.h>
+#import <SHControls/SHSwitchProtocol.h>
 #import "EditNavigationController.h"
 #import <SHControls/SHSwitch.h>
-#import <SHModels/Daily+Helper.h>
-#import <SHCommon/Interceptor.h>
-#import <SHModels/RateTypeHelper.h>
+#import <SHCommon/SHInterceptor.h>
+#import <SHModels/SHRateTypeHelper.h>
 
 
 @interface DailyEditController ()
 @property (strong,nonatomic) NSIndexPath *rowInfo;
-@property (assign,nonatomic) dailyStatus section;
+@property (assign,nonatomic) shDailyStatus section;
 @property (assign,nonatomic) BOOL areXtraOptsOpen;
 @property (assign,nonatomic) BOOL isStreakReset;
 @property (strong,nonatomic) SHControlKeep<SHView *,id> *editControls;
 @property (assign,nonatomic) BOOL isEditingExisting;
-@property (strong,nonatomic) Daily_Medium *daily_Medium;
+@property (strong,nonatomic) SHDaily_Medium *daily_Medium;
 @property (strong,nonatomic) NSObject<P_CoreData> *dataController;
 @end
 
@@ -50,7 +49,7 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
 //used for existing dailies
 -(instancetype)initWithParentDailyController:
 (DailyViewController *)parentDailyController ToEdit:
-(Daily *)daily AtIndexPath:(NSIndexPath *)rowInfo{
+(SHDaily *)daily AtIndexPath:(NSIndexPath *)rowInfo{
     
     if(self = [self initWithParentDailyController:parentDailyController]){
         _modelForEditing = daily;
@@ -68,7 +67,8 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
     [self setupModelForEditing];
     [self setupEditControls];
     [self loadExistingDailyForEditing:self.modelForEditing];
-    self.modelForEditing.lastUpdateTime = [NSDate date];
+    #warning put this back
+    //self.modelForEditing.lastUpdateTime = [NSDate date];
     
     //it is important that this table delegate stuff happens after we check
     //for the existence of the model, otherwise table events will trigger
@@ -104,7 +104,8 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
     }
     else{
         self.modelForEditing = [self.daily_Medium newDailyWithContext:self.dataController.mainThreadContext];
-        [self.modelForEditing setupDefaults];
+        #warning put this back
+        //[self.modelForEditing setupDefaults];
     }
 }
 
@@ -137,7 +138,8 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
 
 
 - (IBAction)nameBox_editingChange_action:(SHTextField *)sender forEvent:(UIEvent *)event {
-    [self.modelForEditing name_w:sender.text];
+    #warning put this back
+    //[self.modelForEditing name_w:sender.text];
     self.nameStr = sender.text;
 }
 
@@ -157,7 +159,7 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
 
 
 -(void)pickerSelection_action:(UIPickerView *)picker
-           onItemFlexibleList:(ItemFlexibleListView *)itemFlexibleList
+           onItemFlexibleList:(SHItemFlexibleListView *)itemFlexibleList
                      forEvent:(UIEvent *)event{
     [self.editorContainer enableSave];
 }
@@ -187,15 +189,17 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
 
 -(void)streakResetBtn_press_action:(SHEventInfo *)eventInfo {
-    [self.modelForEditing streak_w:0];
+    #warning put this back
+    //[self.modelForEditing streak_w:0];
 }
 
 #pragma clang diagnostic pop
 
 -(void)saveEdit{
-    [self.modelForEditing preSave];
-    NSError *error = nil;
-    [self.dataController.mainThreadContext save:&error];
+  #warning put this back
+  //[self.modelForEditing preSave];
+  NSError *error = nil;
+  [self.dataController.mainThreadContext save:&error];
 }
 
 
@@ -210,7 +214,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 }
 
 
--(void)loadExistingDailyForEditing:(Daily *)daily{
+-(void)loadExistingDailyForEditing:(SHDaily *)daily{
     self.nameBox.text = daily.dailyName.length>0?daily.dailyName:@"";
     self.nameStr = self.nameBox.text;
 }
@@ -218,37 +222,41 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
 -(void)textDidChange:(SHEventInfo *)eventInfo{
     UITextView *textView = (UITextView *)eventInfo.senderStack[0];
-    [self.modelForEditing noteText_w:textView.text];
+    #warning put this back
+    //[self.modelForEditing noteText_w:textView.text];
     self.nameStr = textView.text;
 }
     
     
 -(void)rateStep_valueChanged_action:(SHEventInfo *)eventInfo {
     UIStepper *sender = (UIStepper *)eventInfo.senderStack[0];
-    sender.value = [self.modelForEditing rate_w:(int)sender.value];
+    #warning put this back
+    //sender.value = [self.modelForEditing rate_w:(int)sender.value];
 }
     
     
 -(void)activeDaySwitch_press_action:(SHEventInfo *)eventInfo{
-    (void)eventInfo;
-    SHSwitch *sender = (SHSwitch *)eventInfo.senderStack[0];
-    [self.modelForEditing
-            flipDayOfWeek_w:sender.tag
-            for:isInverseRateType(self.modelForEditing.rateType)];
+  (void)eventInfo;
+  SHSwitch *sender = (SHSwitch *)eventInfo.senderStack[0];
+  #warning put this back
+//  [self.modelForEditing
+//    flipDayOfWeek_w:sender.tag
+//    for:isInverseRateType(self.modelForEditing.rateType)];
 }
     
     
 -(void)sld_valueChanged_action:(SHEventInfo *)eventInfo{
     UISlider *sender = (UISlider *)eventInfo.senderStack[0];
-    ImportanceSliderView *sliderView = (ImportanceSliderView *)eventInfo.senderStack[1];
+    SHImportanceSliderView *sliderView = (SHImportanceSliderView *)eventInfo.senderStack[1];
     int sliderValue = (int)sender.value;
     [sliderView updateImportanceSlider:sliderValue];
-    if(sliderView == self.editControls.controlLookup[@"urgencySld"]){
-        [self.modelForEditing urgency_w:sliderValue];
-    }
-    else{
-        [self.modelForEditing difficulty_w:sliderValue];
-    }
+    #warning put this back
+//    if(sliderView == self.editControls.controlLookup[@"urgencySld"]){
+//        [self.modelForEditing urgency_w:sliderValue];
+//    }
+//    else{
+//        [self.modelForEditing difficulty_w:sliderValue];
+//    }
 }
 
 

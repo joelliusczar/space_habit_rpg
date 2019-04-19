@@ -10,11 +10,11 @@
 #import <SHControls/RateTypeSelector.h>
 #import <SHControls/UIViewController+Helper.h>
 #import <SHControls/UIView+Helpers.h>
-#import <SHControls/FrontEndConstants.h>
-#import <SHCommon/SingletonCluster.h>
-#import <SHCommon/Interceptor.h>
-#import <SHModels/RateTypeHelper.h>
-#import <SHControls/ItemFlexibleListView.h>
+#import <SHControls/SHFrontEndConstants.h>
+#import <SHCommon/SHSingletonCluster.h>
+#import <SHCommon/SHInterceptor.h>
+#import <SHModels/SHRateTypeHelper.h>
+#import <SHControls/SHItemFlexibleListView.h>
 
 NSString * const YEARLY_KEY = @"yearly";
 NSString * const MONTHLY_KEY = @"monthly";
@@ -67,7 +67,7 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
     self.rateControls.responderLookup[TBL_KEY] =  tblDelegate;
 }
 
-+(instancetype)newWithDaily:(Daily * _Nonnull)daily{
++(instancetype)newWithDaily:(SHDaily * _Nonnull)daily{
     NSAssert(daily,@"daily was nil");
     
     RateSetContainer *instance = [[RateSetContainer alloc] init];
@@ -80,7 +80,7 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
     return instance;
 }
 
--(void)commonTableSetup:(ItemFlexibleListView *)tbl{
+-(void)commonTableSetup:(SHItemFlexibleListView *)tbl{
   tbl.holderView = self.activeDaysControlContainer;
   tbl.resizeResponder = self;
   tbl.delegate = self.tblDelegate;
@@ -99,13 +99,13 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 }
 
 
--(void)updateRateType:(RateType)rateType with:(SHEventInfo *)eventInfo{
+-(void)updateRateType:(SHRateType)rateType with:(SHEventInfo *)eventInfo{
     [self updateRateType:rateType];
 }
 
 
 -(IBAction)invertRateTypeBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event{
-    [self updateRateType:invertRateType(self.daily.rateType)];
+    [self updateRateType:shInvertRateType(self.daily.rateType)];
 }
 
 
@@ -117,7 +117,7 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 }
 
 
--(SHControlKeep *)buildControlKeep:(Daily *)daily{
+-(SHControlKeep *)buildControlKeep:(SHDaily *)daily{
     NSAssert(daily,@"Daily should not be nil");
     SHControlKeep *keep = [[SHControlKeep alloc] init];
   
@@ -127,7 +127,7 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
     NSString* errMessage = @"RateSetContainer got itself into an inconsistent state";
     
     
-    keep.controlLookup[MONTHLY_KEY] = vw(^id(SHControlKeep *keep,ControlExtent *controlExtent){
+    keep.controlLookup[MONTHLY_KEY] = vw(^id(SHControlKeep *keep,SHControlExtent *controlExtent){
         NSAssert(weakSelf,errMessage);
         MonthlyActiveDays *monthly = [MonthlyActiveDays newWithDaily:daily];
         [weakSelf commonTableSetup:monthly];
@@ -140,7 +140,7 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
         return monthly;
     });
     
-    keep.controlLookup[YEARLY_KEY] =  vw(^id(SHControlKeep *keep,ControlExtent *controlExtent){
+    keep.controlLookup[YEARLY_KEY] =  vw(^id(SHControlKeep *keep,SHControlExtent *controlExtent){
         NSAssert(weakSelf,errMessage);
         YearlyActiveDays *yearly = [YearlyActiveDays newWithDaily:daily];
         [weakSelf commonTableSetup: yearly];
@@ -152,7 +152,7 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
         }];
         return yearly;
     });
-    keep.controlLookup[WEEKLY_KEY] = vw(^id(SHControlKeep *keep,ControlExtent *controlExtent){
+    keep.controlLookup[WEEKLY_KEY] = vw(^id(SHControlKeep *keep,SHControlExtent *controlExtent){
         NSAssert(weakSelf,errMessage);
         WeeklyActiveDays *weekly = [[WeeklyActiveDays alloc] init];
         [weekly changeBackgroundColorTo:weakSelf.backgroundColor];
@@ -171,23 +171,25 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 
 
 
--(void)updateRateType:(RateType)rateType{
-    [self resetRate];
-    BOOL areSame = areSameBaseRateTypes(rateType,self.daily.rateType);
-    //it is important that this happen before setRateTypeActiveDaysControl:
-    //else it will use the old rateType which will have fucky results
-    [self.daily rateType_w:rateType];
-    [self updateRateTypeControls:rateType shouldChange:!areSame];
+-(void)updateRateType:(SHRateType)rateType{
+  [self resetRate];
+  BOOL areSame = shAreSameBaseRateTypes(rateType,self.daily.rateType);
+  //it is important that this happen before setRateTypeActiveDaysControl:
+  //else it will use the old rateType which will have fucky results
+  #warning Put this back
+  //[self.daily rateType_w:rateType];
+  [self updateRateTypeControls:rateType shouldChange:!areSame];
 }
 
 
 -(void)resetRate{
-    [self.daily rate_w:1];
-    self.rateSetter.rateStep.value = 1;//prevent old stepper value from overwriting
+  #warning put this back
+  //[self.daily rate_w:1];
+  self.rateSetter.rateStep.value = 1;//prevent old stepper value from overwriting
 }
 
 
--(void)updateRateTypeControls:(RateType)rateType shouldChange:(BOOL)shouldChange{
+-(void)updateRateTypeControls:(SHRateType)rateType shouldChange:(BOOL)shouldChange{
     
     if(shouldChange){
         [self setRateTypeActiveDaysControl:rateType];
@@ -201,56 +203,59 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 
 
 -(void)updateRateTypeButtonText{
-    NSString *formatText = getFormatString(self.daily.rateType,self.daily.rate);
+    NSString *formatText = shGetFormatString(self.daily.rateType,self.daily.rate);
     NSString *updatedText = [NSString stringWithFormat:formatText,self.daily.rate ];
     [self.openRateTypeBtn setTitle:updatedText forState:UIControlStateNormal];
 }
 
 
 -(void)updateInvertRateTypeButtonText{
-    NSString *buttonText = !self.daily.isInverseRateType?defaultInvertBtnText:invertedInvertBtnText;
-    [self.invertRateTypeBtn setTitle:buttonText forState:UIControlStateNormal];
+  #warning put this back
+  //NSString *buttonText = !self.daily.isInverseRateType?defaultInvertBtnText:invertedInvertBtnText;
+  //[self.invertRateTypeBtn setTitle:buttonText forState:UIControlStateNormal];
 }
 
 
 -(void)refreshActiveDaysControl{
-    if([self.currentActiveDaysControl isKindOfClass:ItemFlexibleListView.class]){
-        ItemFlexibleListView *activeDaysList = (ItemFlexibleListView *)self.currentActiveDaysControl;
-        [activeDaysList resetHeight];
-        [activeDaysList setupInitialHeight];
-        [activeDaysList refreshTable];
-        [self fitControlHeightToSubControlHeight:activeDaysList];
-        [self.resizeResponder refreshView];
-        
-    }
-    else if([self.currentActiveDaysControl isKindOfClass:WeeklyActiveDays.class]){
-        [self.weeklyActiveDays setActiveDaysOfWeek:
-                                [self.daily getActiveDaysForRateType:self.daily.rateType]];
-    }
+  if([self.currentActiveDaysControl isKindOfClass:SHItemFlexibleListView.class]){
+    SHItemFlexibleListView *activeDaysList = (SHItemFlexibleListView *)self.currentActiveDaysControl;
+    [activeDaysList resetHeight];
+    [activeDaysList setupInitialHeight];
+    [activeDaysList refreshTable];
+    [self fitControlHeightToSubControlHeight:activeDaysList];
+    [self.resizeResponder refreshView];
+    
+  }
+  else if([self.currentActiveDaysControl isKindOfClass:WeeklyActiveDays.class]){
+    #warning put this back
+//    [self.weeklyActiveDays setActiveDaysOfWeek:
+//      [self.daily getActiveDaysForRateType:self.daily.rateType]];
+  }
 }
 
 /*
  rate type should be set on daily already
 */
--(void)setRateTypeActiveDaysControl:(RateType)rateType{
-    rateType = extractBaseRateType(rateType);
+-(void)setRateTypeActiveDaysControl:(SHRateType)rateType{
+    rateType = shExtractBaseRateType(rateType);
     [self updateRateTypeButtonText];
-    if(rateType == WEEKLY_RATE){
+    if(rateType == SH_WEEKLY_RATE){
         [self switchActiveDaysControlFor:self.weeklyActiveDays];
-        [self.weeklyActiveDays setActiveDaysOfWeek:[self.daily getActiveDaysForRateType:self.daily.rateType]];
+        #warning put this back
+        //[self.weeklyActiveDays setActiveDaysOfWeek:[self.daily getActiveDaysForRateType:self.daily.rateType]];
     }
-    else if(rateType == MONTHLY_RATE){
+    else if(rateType == SH_MONTHLY_RATE){
         [self switchActiveDaysControlFor:self.monthlyActiveDays];
-        [self.resizeResponder scrollByOffset:SUB_TABLE_CELL_HEIGHT];
+        [self.resizeResponder scrollByOffset:SH_SUB_TABLE_CELL_HEIGHT];
         [self.resizeResponder scrollVisibleToControl:self];
     }
-    else if(rateType == YEARLY_RATE){
+    else if(rateType == SH_YEARLY_RATE){
         [self switchActiveDaysControlFor:self.yearlyActiveDays];
-        [self.resizeResponder scrollByOffset:SUB_TABLE_CELL_HEIGHT];
+        [self.resizeResponder scrollByOffset:SH_SUB_TABLE_CELL_HEIGHT];
         [self.resizeResponder scrollVisibleToControl:self];
         
     }
-    else if(rateType == DAILY_RATE){
+    else if(rateType == SH_DAILY_RATE){
         [self switchActiveDaysControlFor:[[SHView alloc] initEmpty]];
         self.currentActiveDaysControl = nil;
     }

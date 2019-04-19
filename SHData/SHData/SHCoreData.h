@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "P_CoreData.h"
+#import "SHCoreDataProtocol.h"
 
 extern NSString * const DEFAULT_DB_NAME;
 

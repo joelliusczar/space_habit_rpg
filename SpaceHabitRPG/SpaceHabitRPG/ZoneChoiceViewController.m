@@ -8,15 +8,15 @@
 
 #import "ZoneChoiceViewController.h"
 #import "ZoneChoiceCellController.h"
-#import <SHControls/FrontEndConstants.h>
-#import <SHCommon/SingletonCluster.h>
-#import <SHCommon/CommonUtilities.h>
-#import <SHModels/Zone_Medium.h>
+#import <SHControls/SHFrontEndConstants.h>
+#import <SHCommon/SHSingletonCluster.h>
+#import <SHCommon/SHCommonUtils.h>
+#import <SHModels/SHSector_Medium.h>
 #import <SHControls/UIView+Helpers.h>
 #import <SHControls/UIViewController+Helper.h>
 
 @interface ZoneChoiceViewController ()
-@property (nonatomic,strong) NSArray<ZoneDTO *> *zones;
+@property (nonatomic,strong) NSArray<SHSectorDTO *> *zones;
 @property (nonatomic,weak) NSObject<P_CoreData> *dataController;
 
 @end
@@ -33,7 +33,7 @@
 
 
 +(instancetype)newWithCentral:(CentralViewController *)central
-  AndZoneChoices:(NSArray<ZoneDTO *> *)zoneChoices{
+  AndZoneChoices:(NSArray<SHSectorDTO *> *)zoneChoices{
   
   ZoneChoiceViewController *instance = [[ZoneChoiceViewController alloc]
     initWithNibName:@"ZoneChoicePicker" bundle:nil];
@@ -47,7 +47,7 @@
     [super viewDidLoad];
     self.zoneChoiceTable.tableFooterView = nil;
     self.zoneChoiceTable.dataSource = self;
-    self.zoneChoiceTable.rowHeight = ZONE_CHOICE_ROW_HEIGHT;
+    self.zoneChoiceTable.rowHeight = SH_SECTOR_CHOICE_ROW_HEIGHT;
     [self.view checkForAndApplyVisualChanges];
 }
 
@@ -80,7 +80,7 @@
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-  ZoneDTO *z = self.zones[indexPath.row];
+  SHSectorDTO *z = self.zones[indexPath.row];
   ZoneChoiceCellController *cell = [ZoneChoiceCellController getZoneChoiceCell:tableView
     WithParent:self AndModel:z AndRow:indexPath];
   return cell;

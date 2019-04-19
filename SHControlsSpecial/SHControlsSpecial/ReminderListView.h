@@ -7,19 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SHModels/P_DueDateItem.h>
-#import <SHControls/P_AddItemsFooterDelegate.h>
-#import <SHControls/P_SHSpinPickerDelegate.h>
-#import <SHControls/AddItemsFooter.h>
-#import <SHControls/ItemFlexibleListView.h>
+#import <SHModels/SHDueDateItemProtocol.h>
+#import <SHControls/SHAddItemsFooterDelegateProtocol.h>
+#import <SHControls/SHSpinPickerDelegateProtocol.h>
+#import <SHControls/SHAddItemsFooter.h>
+#import <SHControls/SHItemFlexibleListView.h>
 
 @import CoreData;
 
-@interface ReminderListView :ItemFlexibleListView
+@interface ReminderListView :SHItemFlexibleListView
 <UITableViewDataSource
-,P_AddItemsFooterDelegate
-,P_SHSpinPickerDelegate>
+,SHAddItemsFooterDelegateProtocol
+,SHSpinPickerDelegateProtocol>
 
-@property (strong,nonatomic) id<P_DueDateItem> dueDateItem;
-+(instancetype)newWithDueDateItem:(id<P_DueDateItem>)dueDateItem;
+@property (strong,nonatomic) id<SHDueDateItemProtocol> dueDateItem;
++(instancetype)newWithDueDateItem:(id<SHDueDateItemProtocol>)dueDateItem;
 @end

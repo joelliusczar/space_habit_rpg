@@ -1,5 +1,5 @@
 //
-//  SingletonCluster+Data.h
+//  SHSingletonCluster+Data.h
 //  SHData
 //
 //  Created by Joel Pridgen on 2/27/18.
@@ -9,10 +9,10 @@
 #import <SHCommon/SHCommon.h>
 #import "SHCoreData.h"
 
-#define SAVE_DATA_ASYNC() [[SingletonCluster getSharedInstance].dataController saveNoWaiting]
-#define SHData [SingletonCluster getSharedInstance].dataController
+#define SAVE_DATA_ASYNC() [[SHSingletonCluster getSharedInstance].dataController saveNoWaiting]
+#define SHData [SHSingletonCluster getSharedInstance].dataController
 
-@interface SingletonCluster (Data)
+@interface SHSingletonCluster (Data)
 @property (strong,nonatomic) NSObject<P_CoreData> *dataController;
 @property (copy,nonatomic) void (^constructorBlock)(SHCoreDataOptions*);
 @end

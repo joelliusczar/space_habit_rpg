@@ -1,5 +1,5 @@
 //
-//  MonsterDTO.m
+//  SHMonsterDTO.m
 //  SHModels
 //
 //  Created by Joel Pridgen on 4/6/19.
@@ -10,11 +10,11 @@
 #import <SHCommon/NSObject+Helper.h>
 
 static float MAX_HP_MODIFIER = .1;
-@implementation MonsterDTO
+@implementation SHMonsterDTO
 
 
-+(instancetype)newWithMonsterDict:(MonsterInfoDictionary*)monInfoDict{
-  MonsterDTO *instance = [MonsterDTO new];
++(instancetype)newWithMonsterDict:(SHMonsterInfoDictionary*)monInfoDict{
+  SHMonsterDTO *instance = [SHMonsterDTO new];
   instance.monInfoDict = monInfoDict;
   return instance;
 }
@@ -73,5 +73,17 @@ static float MAX_HP_MODIFIER = .1;
   (void)zone;
   return [self dtoCopy];
 }
+
+-(NSMutableDictionary *)mapable{
+    return [NSMutableDictionary dictionaryWithObjectsAndKeys:
+            self.monsterKey,@"monsterKey"
+            ,[NSNumber numberWithInt:self.lvl],@"lvl"
+//            ,[NSNumber numberWithInt:self.nowHp],@"nowHp"
+//            ,[NSNumber numberWithInt:self.attack],@"attack"
+//            ,[NSNumber numberWithInt:self.defense],@"defense"
+//            ,[NSNumber numberWithInt:self.maxHp],@"maxHp"
+            , nil];
+}
+
 
 @end

@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "EditNavigationController.h"
 #import <SHData/SHCoreData.h>
-#import <SHModels/Daily+CoreDataClass.h>
-#import <SHModels/Zone+CoreDataClass.h>
-#import <SHModels/Monster+CoreDataClass.h>
-#import <SHModels/SHZoneDTO.h>
+#import <SHModels/SHDaily+CoreDataClass.h>
+#import <SHModels/SHSector+CoreDataClass.h>
+#import <SHModels/SHMonster+CoreDataClass.h>
+#import <SHModels/SHSectorDTO.h>
 #import <SHModels/SHHeroDTO.h>
 #import <SHModels/SHMonsterDTO.h>
 #import <SHModels/SHSettingsDTO.h>
@@ -20,24 +20,24 @@
 @interface CentralViewController : UIViewController;
 @property (weak,nonatomic) IBOutlet UIView *tabsContainer;
 @property (strong,nonatomic) id<P_CoreData> dataController;
-@property (strong,nonatomic) ZoneDTO *zoneDTO;
+@property (strong,nonatomic) SHSectorDTO *zoneDTO;
 @property (copy,nonatomic) NSManagedObjectID *theDataInfoID;
 @property (copy,nonatomic) SHSettingsDTO *settingsDTO;
-@property (copy,nonatomic) HeroDTO *heroDTO;
-@property (copy,nonatomic) MonsterDTO *monsterDTO;
-@property (strong,nonatomic) NSObject<P_ResourceUtility> *resourceUtil;
+@property (copy,nonatomic) SHHeroDTO *heroDTO;
+@property (copy,nonatomic) SHMonsterDTO *monsterDTO;
+@property (strong,nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
 
 +(instancetype)newWithDataController:(NSObject<P_CoreData>*)dataController
   andNibName:(NSString*)nib
-  andResourceUtil:(NSObject<P_ResourceUtility>*)util
+  andResourceUtil:(NSObject<SHResourceUtilityProtocol>*)util
   andBundle:(NSBundle*)bundle;
 
 -(instancetype)initWithDataController:(NSObject<P_CoreData>*)dataController
   andNibName:(NSString*)nib
-  andResourceUtil:(NSObject<P_ResourceUtility>*)util
+  andResourceUtil:(NSObject<SHResourceUtilityProtocol>*)util
   andBundle:(NSBundle*)bundle;
 
 -(void)setToShowStory:(BOOL)shouldShowStory;
--(void)afterZonePick:(ZoneDTO*)zoneChoice withContext:(NSManagedObjectContext*)context;
+-(void)afterZonePick:(SHSectorDTO*)zoneChoice withContext:(NSManagedObjectContext*)context;
 -(void)afterIntroWithContext:(NSManagedObjectContext*)context;
 @end

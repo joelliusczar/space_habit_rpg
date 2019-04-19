@@ -9,10 +9,10 @@
 #import <XCTest/XCTest.h>
 #import <objc/runtime.h>
 #import <SHData/SHCoreData.h>
-#import <SHModels/ZoneInfoDictionary.h>
-#import <SHModels/MonsterInfoDictionary.h>
-#import <SHCommon/P_ResourceUtility.h>
-#import <SHCommon/ResourceUtility.h>
+#import <SHModels/SHSectorInfoDictionary.h>
+#import <SHModels/SHMonsterInfoDictionary.h>
+#import <SHCommon/SHResourceUtilityProtocol.h>
+#import <SHCommon/SHResourceUtility.h>
 #import "TestHelpers.h"
 #import "TestGlobals.h"
 #import "TestDummy.h"
@@ -22,7 +22,7 @@
 @interface FrequentCase : XCTestCase
 @property (strong,nonatomic) ZoneInfoDictionary *zoneInfoDict;
 @property (strong,nonatomic) MonsterInfoDictionary *monsterInfoDict;
-@property (strong,nonatomic) NSObject<P_ResourceUtility> *resourceUtil;
+@property (strong,nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
 @property (strong,nonatomic) SHCoreData* dc;
 -(void)resetDb;
 

@@ -10,7 +10,7 @@
 #import <SHCommon/NSObject+Helper.h>
 
 
-@implementation HeroDTO
+@implementation SHHeroDTO
 
 
 -(id)copyWithZone:(NSZone *)zone{

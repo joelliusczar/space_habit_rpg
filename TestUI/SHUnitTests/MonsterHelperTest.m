@@ -28,7 +28,7 @@ uint monsterHelper_mockRandom(uint range){
     - (void)setUp {
         [super setUp];
         rIdx_mh = 0;
-        randomUInt = &monsterHelper_mockRandom;
+        shRandomUInt = &monsterHelper_mockRandom;
     }
 
     - (void)tearDown {

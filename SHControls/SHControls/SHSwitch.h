@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "P_SHSwitch.h"
+#import "SHSwitchProtocol.h"
 #import "SHButton.h"
-#import <SHCommon/P_ColorInversionHint.h>
+#import <SHCommon/SHColorInversionHintProtocol.h>
 
 IB_DESIGNABLE
-@interface SHSwitch : SHButton<P_SHSwitch,P_ColorInversionHint>
+@interface SHSwitch : SHButton<SHSwitchProtocol,SHColorInversionHintProtocol>
 @property (assign,nonatomic) IBInspectable BOOL isOn;
 @property (strong,nonatomic) IBInspectable UIImage *onImage;
 @property (strong,nonatomic) IBInspectable UIImage *offImage;

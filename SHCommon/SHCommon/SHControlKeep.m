@@ -10,22 +10,22 @@
 #import "NSMutableDictionary+Helper.h"
 
 
-typedef ControlExtent* (^w_LazyLoadBlock)(SHControlKeep *);
+typedef SHControlExtent* (^w_LazyLoadBlock)(SHControlKeep *);
 
 @interface SHControlKeep()
 @property (strong,nonatomic) NSMutableArray<w_LazyLoadBlock> *lazyLoaders;
-@property (strong,nonatomic) NSMutableArray<ControlExtent *> *controlBackend;
+@property (strong,nonatomic) NSMutableArray<SHControlExtent *> *controlBackend;
 @property (strong,nonatomic) NSMutableDictionary<id,NSNumber *> *indexLookup;
 @property (strong,nonatomic) NSMutableDictionary<id<NSCopying>,AssociatedResponderAndSet *> *associations;
-@property (strong,nonatomic) NSMutableArray<PairWrapper<KeyToken *,id<NSCopying>> *> *tokenQueue;
+@property (strong,nonatomic) NSMutableArray<SHPairWrapper<SHKeyToken *,id<NSCopying>> *> *tokenQueue;
 -(AssociatedResponderAndSet *)getOrCreateAssociationForKey:(id<NSCopying>)key;
--(void)cleanupSetupBlocks:(ControlExtent *)controlExtent;
+-(void)cleanupSetupBlocks:(SHControlExtent *)controlExtent;
 @end
 
-@implementation ControlExtent
+@implementation SHControlExtent
 
 -(instancetype)copyExtent{
-    ControlExtent *copy = [[ControlExtent alloc] init];
+    SHControlExtent *copy = [[SHControlExtent alloc] init];
     copy.idx = self.idx;
     copy.key = self.key;
     copy.control = self.control;
@@ -38,11 +38,11 @@ typedef ControlExtent* (^w_LazyLoadBlock)(SHControlKeep *);
 
 
 
-w_LazyLoadBlock wrapLoaderBlock(LazyLoadBlock loaderBlock,NSUInteger idx,id<NSCopying,NSObject> key){
-    return ^ControlExtent *(SHControlKeep *keep){
-        ControlExtent *controlExtent = [[ControlExtent alloc] init];
+w_LazyLoadBlock wrapLoaderBlock(SHLazyLoadBlock loaderBlock,NSUInteger idx,id<NSCopying,NSObject> key){
+    return ^SHControlExtent *(SHControlKeep *keep){
+        SHControlExtent *controlExtent = [[SHControlExtent alloc] init];
         controlExtent.idx = idx;
-        ControlExtent *copy = [controlExtent copyExtent];
+        SHControlExtent *copy = [controlExtent copyExtent];
         controlExtent.control = loaderBlock(keep,copy);
         NSCAssert(controlExtent != controlExtent.control,@"You should not try to return control extent.");
         NSCAssert(controlExtent.control != keep,@"You should not try to return keep");
@@ -57,7 +57,7 @@ w_LazyLoadBlock wrapLoaderBlock(LazyLoadBlock loaderBlock,NSUInteger idx,id<NSCo
 }
 
 
-@implementation ControlDictionary
+@implementation SHControlDictionary
 
 -(instancetype)init:(SHControlKeep *)owner{
     if(self = [self init]){
@@ -76,10 +76,10 @@ w_LazyLoadBlock wrapLoaderBlock(LazyLoadBlock loaderBlock,NSUInteger idx,id<NSCo
 }
 
 
--(void)setObject:(VarWrapper<LazyLoadBlock> *)obj forKeyedSubscript:(id<NSCopying>)key{
+-(void)setObject:(SHVarWrapper<SHLazyLoadBlock> *)obj forKeyedSubscript:(id<NSCopying>)key{
     if(nil != self.owner.indexLookup[key]){
         NSUInteger idx = self.owner.indexLookup[key].unsignedIntegerValue;
-        self.owner.controlList[idx] = [[VarWrapper<LazyLoadBlock> alloc] init:obj,nil];
+        self.owner.controlList[idx] = [[SHVarWrapper<SHLazyLoadBlock> alloc] init:obj,nil];
     }
     else{
         [self.owner addLoaderBlock:obj.item withKey:key];
@@ -101,7 +101,7 @@ w_LazyLoadBlock wrapLoaderBlock(LazyLoadBlock loaderBlock,NSUInteger idx,id<NSCo
 
 
 
-@implementation ControlList
+@implementation SHControlList
 
 
 -(instancetype)init:(SHControlKeep *)owner{
@@ -119,7 +119,7 @@ w_LazyLoadBlock wrapLoaderBlock(LazyLoadBlock loaderBlock,NSUInteger idx,id<NSCo
 
 //returns the control
 -(id)objectAtIndexedSubscript:(NSUInteger)idx{
-    ControlExtent *controlExtent = self.owner.controlBackend[idx];
+    SHControlExtent *controlExtent = self.owner.controlBackend[idx];
     if(controlExtent.control != nil){
         return controlExtent.control;
     }
@@ -129,24 +129,24 @@ w_LazyLoadBlock wrapLoaderBlock(LazyLoadBlock loaderBlock,NSUInteger idx,id<NSCo
 }
 
 
--(void)setObject:(VarWrapper<LazyLoadBlock> *)loaderBlock atIndexedSubscript:(NSUInteger)idx{
+-(void)setObject:(SHVarWrapper<SHLazyLoadBlock> *)loaderBlock atIndexedSubscript:(NSUInteger)idx{
     id key = nil;
-    key = [loaderBlock isKindOfClass:PairWrapper.class]?((PairWrapper *)loaderBlock).item2:nil;
+    key = [loaderBlock isKindOfClass:SHPairWrapper.class]?((SHPairWrapper *)loaderBlock).item2:nil;
     self.owner.lazyLoaders[idx] = wrapLoaderBlock(loaderBlock.item,idx,key);
-    ControlExtent *controlExtent = self.owner.controlBackend[idx];
+    SHControlExtent *controlExtent = self.owner.controlBackend[idx];
     if(controlExtent.key){
         [self.owner.indexLookup removeObjectForKey:controlExtent.key];
     }
     if(key){
         self.owner.indexLookup[key] = [NSNumber numberWithUnsignedInteger:idx];
     }
-    self.owner.controlBackend[idx] = [[ControlExtent alloc] init];
+    self.owner.controlBackend[idx] = [[SHControlExtent alloc] init];
 }
 
 
--(void)setObject:(LazyLoadBlock)loaderBlock atIndexedSubscript:(NSUInteger)idx andKey:(id<NSCopying>)key{
-    PairWrapper<LazyLoadBlock,id> *wrapper = [[PairWrapper<LazyLoadBlock,id> alloc] init:loaderBlock,key,nil];
-    self[idx] = (VarWrapper<LazyLoadBlock> *)wrapper;
+-(void)setObject:(SHLazyLoadBlock)loaderBlock atIndexedSubscript:(NSUInteger)idx andKey:(id<NSCopying>)key{
+    SHPairWrapper<SHLazyLoadBlock,id> *wrapper = [[SHPairWrapper<SHLazyLoadBlock,id> alloc] init:loaderBlock,key,nil];
+    self[idx] = (SHVarWrapper<SHLazyLoadBlock> *)wrapper;
 }
 
 
@@ -162,7 +162,7 @@ w_LazyLoadBlock wrapLoaderBlock(LazyLoadBlock loaderBlock,NSUInteger idx,id<NSCo
 @end
 
 
-@implementation ResponderDictionary
+@implementation SHResponderDictionary
 
 
 -(instancetype)init:(SHControlKeep *)owner{
@@ -184,7 +184,7 @@ w_LazyLoadBlock wrapLoaderBlock(LazyLoadBlock loaderBlock,NSUInteger idx,id<NSCo
 -(void)setObject:(id)obj forKeyedSubscript:(id<NSCopying>)key{
     AssociatedResponderAndSet *association = [self.owner getOrCreateAssociationForKey:key];
     association.responder = obj;
-    for(setupResponder block in association.setupActions.allValues){
+    for(SHSetupResponder block in association.setupActions.allValues){
         block(association.responder);
     }
 }
@@ -216,7 +216,7 @@ w_LazyLoadBlock wrapLoaderBlock(LazyLoadBlock loaderBlock,NSUInteger idx,id<NSCo
 }
 
 
--(NSMutableArray<ControlExtent *> *)controlBackend{
+-(NSMutableArray<SHControlExtent *> *)controlBackend{
     if(nil == _controlBackend)
     {
         _controlBackend = [NSMutableArray array];
@@ -233,25 +233,25 @@ w_LazyLoadBlock wrapLoaderBlock(LazyLoadBlock loaderBlock,NSUInteger idx,id<NSCo
 }
 
 
--(ControlDictionary *)controlLookup{
+-(SHControlDictionary *)controlLookup{
     if(nil == _controlLookup){
-        _controlLookup = [[ControlDictionary alloc] init:self];
+        _controlLookup = [[SHControlDictionary alloc] init:self];
     }
     return _controlLookup;
 }
 
 
--(ControlList *)controlList{
+-(SHControlList *)controlList{
     if(nil == _controlList){
-        _controlList = [[ControlList alloc] init:self];
+        _controlList = [[SHControlList alloc] init:self];
     }
     return _controlList;
 }
 
 
--(ResponderDictionary *)responderLookup{
+-(SHResponderDictionary *)responderLookup{
     if(nil == _responderLookup){
-        _responderLookup = [[ResponderDictionary alloc] init:self];
+        _responderLookup = [[SHResponderDictionary alloc] init:self];
     }
     return _responderLookup;
 }
@@ -290,7 +290,7 @@ w_LazyLoadBlock wrapLoaderBlock(LazyLoadBlock loaderBlock,NSUInteger idx,id<NSCo
 }
 
 
--(void)addToTokenQueue:(PairWrapper<KeyToken *,id<NSCopying>> *)tokenAndKey{
+-(void)addToTokenQueue:(SHPairWrapper<SHKeyToken *,id<NSCopying>> *)tokenAndKey{
     if(nil == self.tokenQueue){
         self.tokenQueue = [NSMutableArray array];
     }
@@ -305,9 +305,9 @@ actions if it exists
  setupAction: this is block that recieves a responder to respond to events emitted by
  your control
  */
--(KeyToken *)forResponderKey:(id<NSCopying>)key doSetupAction:(setupResponder)setupAction{
+-(SHKeyToken *)forResponderKey:(id<NSCopying>)key doSetupAction:(SHSetupResponder)setupAction{
     AssociatedResponderAndSet *association = [self getOrCreateAssociationForKey:key];
-    KeyToken *token = [[KeyToken alloc] init];
+    SHKeyToken *token = [[SHKeyToken alloc] init];
     association.setupActions[token] = setupAction; //add to list of responses
     if(association.responder){
         setupAction(association.responder);
@@ -319,24 +319,24 @@ actions if it exists
 /**
  *Add loader block that will return control
  **/
--(void)addLoaderBlock:(LazyLoadBlock)loaderBlock{
+-(void)addLoaderBlock:(SHLazyLoadBlock)loaderBlock{
     [self addLoaderBlock:loaderBlock withKey:nil];
 }
 
 /*
  *same as addLoaderBlock but we're also associating this code block/control with a key
  */
--(void)addLoaderBlock:(LazyLoadBlock)loaderBlock withKey:(id<NSCopying,NSObject>)key{
+-(void)addLoaderBlock:(SHLazyLoadBlock)loaderBlock withKey:(id<NSCopying,NSObject>)key{
     if(key){
         self.indexLookup[key] = [NSNumber numberWithUnsignedInteger:self.lazyLoaders.count];
     }
     [self.lazyLoaders addObject:wrapLoaderBlock(loaderBlock,self.lazyLoaders.count,key)];
-    [self.controlBackend addObject:[[ControlExtent alloc] init]];
+    [self.controlBackend addObject:[[SHControlExtent alloc] init]];
 }
 
 
--(void)cleanupSetupBlocks:(ControlExtent *)controlExtent{
-    for(PairWrapper<KeyToken *,id<NSCopying>> *pair in controlExtent.blockTrackers){
+-(void)cleanupSetupBlocks:(SHControlExtent *)controlExtent{
+    for(SHPairWrapper<SHKeyToken *,id<NSCopying>> *pair in controlExtent.blockTrackers){
         AssociatedResponderAndSet *association = self.associations[pair.item2];
         [association.setupActions removeObjectForKey:pair.item];
     }

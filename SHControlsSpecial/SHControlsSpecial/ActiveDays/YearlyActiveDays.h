@@ -6,11 +6,11 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <SHControls/ItemFlexibleListView.h>
-#import <SHModels/Daily+CoreDataClass.h>
+#import <SHControls/SHItemFlexibleListView.h>
+#import <SHModels/SHDaily+CoreDataClass.h>
 
 
-@interface YearlyActiveDays : ItemFlexibleListView
-@property (weak,nonatomic) Daily *daily;
-+(instancetype)newWithDaily:(Daily *)daily;
+@interface YearlyActiveDays : SHItemFlexibleListView
+@property (weak,nonatomic) SHDaily *daily;
++(instancetype)newWithDaily:(SHDaily *)daily;
 @end

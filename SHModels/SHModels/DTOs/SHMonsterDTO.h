@@ -7,15 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "P_StoryItem.h"
-#import "MonsterInfoDictionary.h"
+#import "SHStoryItemProtocol.h"
+#import "SHMonsterInfoDictionary.h"
 #import <SHCommon/SHObject.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MonsterDTO : SHObject<P_StoryItem,NSCopying>
-+(instancetype)newWithMonsterDict:(MonsterInfoDictionary*)monInfoDict;
-@property (strong,nonatomic) MonsterInfoDictionary *monInfoDict;
+@interface SHMonsterDTO : SHObject<SHStoryItemProtocol,NSCopying>
++(instancetype)newWithMonsterDict:(SHMonsterInfoDictionary*)monInfoDict;
+@property (strong,nonatomic) SHMonsterInfoDictionary *monInfoDict;
 @property (nonatomic,readonly) int32_t attack;
 @property (nonatomic,readonly) int32_t defense;
 @property (nonatomic,readonly) int32_t xp;
@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) int32_t lvl;
 @property (nullable, nonatomic, copy) NSString *monsterKey;
 @property (nonatomic) int32_t nowHp;
+@property (readonly,nonatomic) NSMutableDictionary *mapable;
 @end
 
 NS_ASSUME_NONNULL_END
