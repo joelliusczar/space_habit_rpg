@@ -11,10 +11,10 @@
 #import <SHCommon/NSObject+Helper.h>
 #import <SHData/SHCoreDataProtocol.h>
 #import <SHData/NSManagedObjectContext+Helper.h>
-#import <SHModels/SHSectorTransaction+CoreDataClass.h>
-#import <SHModels/SHMonsterTransaction+CoreDataClass.h>
-#import <SHModels/SHSettings+CoreDataClass.h>
-#import <SHModels/SHHero+CoreDataClass.h>
+#import <SHModels/SHSectorTransaction.h>
+#import <SHModels/SHMonsterTransaction.h>
+#import <SHModels/SHSettings.h>
+#import <SHModels/SHHero.h>
 #import <SHModels/SHSector_Medium.h>
 #import <SHModels/SHMonster_Medium.h>
 #import <SHModels/SHSectorTransaction_Medium.h>
@@ -36,7 +36,7 @@
 #define KVO_GOLD @"userHero.gold"
 #define KVO_LVL @"userHero.lvl"
 #define KVO_MON_NAME @"nowMonster.fullName"
-#define KVO_ZONE_NAME @"nowZone.fullName"
+#define KVO_ZONE_NAME @"nowSector.fullName"
 
 #define observeKey(key) [self addObserver:self forKeyPath:KVO_HERO_HP\
   options:NSKeyValueObservingOptionNew context:nil]
@@ -178,23 +178,23 @@
 }
 
 
--(void)setupNormalZoneAndMonster{
+-(void)setupNormalSectorAndMonster{
   
-  SHSectorDTO * z = [self getCurrentZone];
+  SHSectorDTO * z = [self getCurrentSector];
   if(nil == z){
     //we're not ready yet
     return;
   }
   /*
     Part of me thinks this monster stuff should be abstracted
-    to its own method but I'd still have to do this zone
+    to its own method but I'd still have to do this sector
     stuff above and it ends up becoming the same method
   */
   NSManagedObjectContext *context = [self.dataController newBackgroundContext];
   SHMonsterInfoDictionary *monInfoDict = [SHMonsterInfoDictionary newWithResourceUtil:self.resourceUtil];
-  SHSectorInfoDictionary *zoneInfoDict = [SHSectorInfoDictionary newWithResourceUtil:self.resourceUtil];
+  SHSectorInfoDictionary *sectorInfoDict = [SHSectorInfoDictionary newWithResourceUtil:self.resourceUtil];
   Monster_Medium *mm = [Monster_Medium newWithContext:context withInfoDict:monInfoDict];
-  SHSector_Medium *zm = [SHSector_Medium newWithContext:context withResourceUtil:self.resourceUtil withInfoDict:zoneInfoDict];
+  SHSector_Medium *zm = [SHSector_Medium newWithContext:context withResourceUtil:self.resourceUtil withInfoDict:sectorInfoDict];
   SHHeroDTO *heroDTO = self.heroDTO;
   [context performBlock:^{
     SHMonster *m = [mm getCurrentMonster];
@@ -202,19 +202,19 @@
       z.monstersKilled = (m && m.nowHp<1)?(z.monstersKilled+1):z.monstersKilled;
     
       if(z.monstersKilled>=z.maxMonsters){
-        NSMutableArray<SHSectorDTO *> *zoneChoices = [zm
+        NSMutableArray<SHSectorDTO *> *sectorChoices = [zm
           newMultipleSectorChoicesGivenHero:heroDTO ifShouldMatchLvl:NO];
       
-        [zoneChoices addObject:z];
+        [sectorChoices addObject:z];
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-          [self showZoneChoiceView:zoneChoices];
+          [self showSectorChoiceView:sectorChoices];
         }];
       }
-      else { //if we're just using the same zone
+      else { //if we're just using the same sector
         if(m){
           [context deleteObject:m];
         }
-        SHMonsterDTO *mDTO = [mm newRandomMonster:z.sectorKey zoneLvl:z.lvl];
+        SHMonsterDTO *mDTO = [mm newRandomMonster:z.sectorKey sectorLvl:z.lvl];
         SHMonster *monsterNew = (SHMonster*)[context newEntity:SHMonster.entity];
         [monsterNew copyFrom:mDTO];
         NSError *error = nil;
@@ -241,7 +241,7 @@
         [self showIntroView];        
     }
     else{
-      [self setupNormalZoneAndMonster];
+      [self setupNormalSectorAndMonster];
     }
 }
 
@@ -249,13 +249,13 @@
     self.settingsDTO.storyModeisOn = shouldShowStory;
 }
 
--(void)showZoneChoiceView:(NSArray<SHSectorDTO *> *)zoneChoices{
-    SHSectorChoiceViewController *zoneChoiceView = [SHSectorChoiceViewController
-      newWithCentral:self AndZoneChoices:zoneChoices];
+-(void)showSectorChoiceView:(NSArray<SHSectorDTO *> *)sectorChoices{
+    SHSectorChoiceViewController *sectorChoiceView = [SHSectorChoiceViewController
+      newWithCentral:self AndSectorChoices:sectorChoices];
     
-    [self.view addSubview:zoneChoiceView.view];
-    [self addChildViewController:zoneChoiceView];
-    [zoneChoiceView didMoveToParentViewController:self];
+    [self.view addSubview:sectorChoiceView.view];
+    [self addChildViewController:sectorChoiceView];
+    [sectorChoiceView didMoveToParentViewController:self];
 }
 
 
@@ -326,34 +326,34 @@ context:(void *)context{
 #pragma clang diagnostic pop
 
 
--(void)afterZonePick:(SHSectorDTO*)zoneChoice withContext:(NSManagedObjectContext*)context{
+-(void)afterSectorPick:(SHSectorDTO*)sectorChoice withContext:(NSManagedObjectContext*)context{
   if(nil == context){
     context = [self.dataController newBackgroundContext];
   }
   NSObject<SHResourceUtilityProtocol> *resourceUtil = self.resourceUtil;
-  SHSectorInfoDictionary *zoneDict = [SHSectorInfoDictionary newWithResourceUtil:resourceUtil];
-  SHSector_Medium *zm = [SHSector_Medium newWithContext:context withResourceUtil:resourceUtil withInfoDict:zoneDict];
-  __block SHSectorDTO *zoneChoiceBlock = zoneChoice;
+  SHSectorInfoDictionary *sectorDict = [SHSectorInfoDictionary newWithResourceUtil:resourceUtil];
+  SHSector_Medium *zm = [SHSector_Medium newWithContext:context withResourceUtil:resourceUtil withInfoDict:sectorDict];
+  __block SHSectorDTO *sectorChoiceBlock = sectorChoice;
   [context performBlock:^{
-    if(zoneChoice==nil){
+    if(sectorChoice==nil){
       SHHeroDTO *heroCopy = [self.heroDTO copy];
-      zoneChoiceBlock = [zm newRandomSectorChoiceGivenHero:heroCopy
+      sectorChoiceBlock = [zm newRandomSectorChoiceGivenHero:heroCopy
         ifShouldMatchLvl:NO];
     }
-    SHSector *zoneCD = (SHSector*)[context newEntity:SHSector.entity];
-    [zm moveSectorToFront:zoneCD];
-    zoneChoice.objectID = zoneCD.objectID;
+    SHSector *sectorCD = (SHSector*)[context newEntity:SHSector.entity];
+    [zm moveSectorToFront:sectorCD];
+    sectorChoice.objectID = sectorCD.objectID;
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-      self.zoneDTO = zoneChoice;
+      self.sectorDTO = sectorChoice;
     }];
     
     SHSectorTransaction_Medium *zt = [SHSectorTransaction_Medium
       newWithContext:context];
   
-    [zt addCreateTransaction:zoneCD];
+    [zt addCreateTransaction:sectorCD];
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-      [self showZoneStoryWithContext:context];
+      [self showSectorStoryWithContext:context];
     }];
   }];
 }
@@ -390,29 +390,29 @@ context:(void *)context{
 }
 
 
--(SHSectorDTO *)getCurrentZone{
-  if(self.zoneDTO){
-    return self.zoneDTO;
+-(SHSectorDTO *)getCurrentSector{
+  if(self.sectorDTO){
+    return self.sectorDTO;
   }
   BOOL isFront = YES;
   NSManagedObjectContext *context = [self.dataController newBackgroundContext];
-  SHSectorInfoDictionary *zoneInfoDict = [SHSectorInfoDictionary newWithResourceUtil:self.resourceUtil];
+  SHSectorInfoDictionary *sectorInfoDict = [SHSectorInfoDictionary newWithResourceUtil:self.resourceUtil];
   SHSector_Medium *zm = [SHSector_Medium newWithContext:context
-    withResourceUtil:self.resourceUtil withInfoDict:zoneInfoDict];
+    withResourceUtil:self.resourceUtil withInfoDict:sectorInfoDict];
   __block SHSectorDTO *result = nil;
   [context performBlockAndWait:^{
     @autoreleasepool {
       SHSector *z = [zm getSector:isFront];
       if(z==nil){
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-          NSMutableArray<SHSectorDTO*> *zoneChoices = [zm
+          NSMutableArray<SHSectorDTO*> *sectorChoices = [zm
           newMultipleSectorChoicesGivenHero:self.heroDTO ifShouldMatchLvl:NO];
       
-          [self showZoneChoiceView:zoneChoices];
+          [self showSectorChoiceView:sectorChoices];
         }];
       }
       else{
-        result = [SHSectorDTO newWithZoneDict:zoneInfoDict];
+        result = [SHSectorDTO newWithSectorDict:sectorInfoDict];
         [result dtoCopyFrom:z];
       }
     }
@@ -457,15 +457,15 @@ context:(void *)context{
 }
 
 
--(void)showZoneStoryWithContext:(NSManagedObjectContext*)context{
-  [self showStoryItem:self.zoneDTO withResponse:^(SHStoryDumpView * sdv){
+-(void)showSectorStoryWithContext:(NSManagedObjectContext*)context{
+  [self showStoryItem:self.sectorDTO withResponse:^(SHStoryDumpView * sdv){
     (void)sdv;
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
       SHMonsterInfoDictionary *monInfoDict = [SHMonsterInfoDictionary newWithResourceUtil:self.resourceUtil];
       Monster_Medium *mm = [Monster_Medium newWithContext:context withInfoDict:monInfoDict];
-      SHSectorDTO *zoneDTO = self.zoneDTO;
-      self.monsterDTO = [mm newRandomMonster:zoneDTO.sectorKey zoneLvl:zoneDTO.lvl];
+      SHSectorDTO *sectorDTO = self.sectorDTO;
+      self.monsterDTO = [mm newRandomMonster:sectorDTO.sectorKey sectorLvl:sectorDTO.lvl];
       [self saveNewMonster:self.monsterDTO inContext:context];
     }];
     

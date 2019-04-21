@@ -15,7 +15,7 @@
 #import <SHDaily_C.h>
 #import <SHRateValueItem.h>
 #import <SHModels/SHDaily_Medium.h>
-@import TestCommon;
+@import SHTestCommon;
 
 @interface DailyHelperTest : FrequentCase
 

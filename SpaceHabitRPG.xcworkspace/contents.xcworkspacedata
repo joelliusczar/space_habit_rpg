@@ -58,10 +58,10 @@
          location = "group:ObjCPlayground.sh">
       </FileRef>
       <FileRef
-         location = "group:SH_C.sh">
+         location = "group:/Users/joelpridgen/Documents/spacehabitrpg/Build_Scripts/SHCore_C.sh">
       </FileRef>
       <FileRef
-         location = "group:SH_CTools.sh">
+         location = "group:/Users/joelpridgen/Documents/spacehabitrpg/Build_Scripts/SHUtils_C.sh">
       </FileRef>
       <FileRef
          location = "group:SHCommon.sh">
@@ -88,29 +88,26 @@
          location = "group:SHMaster.sh">
       </FileRef>
       <FileRef
-         location = "group:SHModels.sh">
-      </FileRef>
-      <FileRef
          location = "group:SpaceHabitRPG.sh">
       </FileRef>
       <FileRef
-         location = "group:TestCommon.sh">
+         location = "group:/Users/joelpridgen/Documents/spacehabitrpg/Build_Scripts/SHTestCommon.sh">
       </FileRef>
       <FileRef
          location = "group:TestUI.sh">
       </FileRef>
    </Group>
    <FileRef
-      location = "group:SH_CTools/SH_CTools.xcodeproj">
+      location = "group:/Users/joelpridgen/Documents/spacehabitrpg/SH_CTools/SHUtils_C.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SH_C/SH_C.xcodeproj">
+      location = "group:/Users/joelpridgen/Documents/spacehabitrpg/SH_C/SHCore_C.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:SHDatetime/SHDatetime.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:TestCommon/TestCommon.xcodeproj">
+      location = "group:SHTestCommon/SHTestCommon.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:TestUI/TestUI.xcodeproj">

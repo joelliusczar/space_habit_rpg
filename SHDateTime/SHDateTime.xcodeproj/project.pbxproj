@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2716922920916D0F0059A58E /* libSH_CTools.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2716922A20916D0F0059A58E /* libSH_CTools.a */; settings = {ATTRIBUTES = (Required, ); }; };
-		27BB291D215B4712003225BB /* SHDatetimeNoErr.h in Headers */ = {isa = PBXBuildFile; fileRef = 27BB291B215B4712003225BB /* SHDatetimeNoErr.h */; };
+		27397340226C0695001590C6 /* libSHUtils_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2739733F226C0695001590C6 /* libSHUtils_C.a */; };
+		27BB291D215B4712003225BB /* SHDatetimeNoErr.h in Headers */ = {isa = PBXBuildFile; fileRef = 27BB291B215B4712003225BB /* SHDatetimeNoErr.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27BB291E215B4712003225BB /* SHDatetimeNoErr.c in Sources */ = {isa = PBXBuildFile; fileRef = 27BB291C215B4712003225BB /* SHDatetimeNoErr.c */; };
 		27D318512086C9040047F5F1 /* SHTimeZone.c in Sources */ = {isa = PBXBuildFile; fileRef = 27D318462086C9040047F5F1 /* SHTimeZone.c */; };
 		27D318532086C9040047F5F1 /* DTConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D318482086C9040047F5F1 /* DTConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -25,11 +25,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2716922A20916D0F0059A58E /* libSH_CTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_CTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2737D580216DA8BB00E0111F /* simple_start.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = simple_start.sh; sourceTree = "<group>"; };
 		2737D581216DA8BB00E0111F /* dt_server_run.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = dt_server_run.sh; sourceTree = "<group>"; };
 		2737D582216DA8BB00E0111F /* dt_server_cleanup.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = dt_server_cleanup.sh; sourceTree = "<group>"; };
 		2737D583216DA8BB00E0111F /* dt_server.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = dt_server.sh; sourceTree = "<group>"; };
+		2739733F226C0695001590C6 /* libSHUtils_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHUtils_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		278FFDA0222B2E4C00DAF985 /* SHDatetime.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHDatetime.debug.xcconfig; sourceTree = "<group>"; };
 		27B0B1EE2223A4300028AF59 /* SHDatetime.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHDatetime.base.xcconfig; sourceTree = "<group>"; };
 		27BB29002151D4B1003225BB /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2716922920916D0F0059A58E /* libSH_CTools.a in Frameworks */,
+				27397340226C0695001590C6 /* libSHUtils_C.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,7 +73,7 @@
 		271691E6208861E50059A58E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2716922A20916D0F0059A58E /* libSH_CTools.a */,
+				2739733F226C0695001590C6 /* libSHUtils_C.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -197,10 +197,10 @@
 				27D318572086C9040047F5F1 /* SHTimeZone.h in Headers */,
 				27D318532086C9040047F5F1 /* DTConstants.h in Headers */,
 				27D3185A2086C9040047F5F1 /* SHDatetime.h in Headers */,
-				27BB291D215B4712003225BB /* SHDatetimeNoErr.h in Headers */,
 				27EE2AB32131D059005A8E1F /* SHDatetimePtrExt.h in Headers */,
 				27D80A1A2086E9B400FB4CE2 /* libSHDatetime.h in Headers */,
 				27EE2AB721321218005A8E1F /* SHDatetimeMod.h in Headers */,
+				27BB291D215B4712003225BB /* SHDatetimeNoErr.h in Headers */,
 				27D318552086C9040047F5F1 /* SHDatetime_struct.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,9 +212,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27D318412086C8CA0047F5F1 /* Build configuration list for PBXNativeTarget "SHDatetime" */;
 			buildPhases = (
-				27D318392086C8CA0047F5F1 /* Sources */,
 				27D3183A2086C8CA0047F5F1 /* Frameworks */,
 				27D3183B2086C8CA0047F5F1 /* Headers */,
+				27D318392086C8CA0047F5F1 /* Sources */,
 				27DF9C41209425B300F98023 /* ShellScript */,
 			);
 			buildRules = (
@@ -271,7 +271,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "$SRCROOT/../Build_Scripts/SHDatetime.sh\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 

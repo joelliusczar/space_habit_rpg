@@ -27,7 +27,7 @@
                 </textView>
                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="58o-Lg-7mY" customClass="SHButton">
                     <rect key="frame" x="221" y="422" width="119" height="30"/>
-                    <state key="normal" title="Pick this Zone"/>
+                    <state key="normal" title="Pick this Sector"/>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="0.74637203760000004" blue="0.33999639850000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -12,20 +12,33 @@
 @implementation SHSectorDTO
 
 
-+(instancetype)newWithZoneDict:(SHSectorInfoDictionary*)zoneInfoDict{
++(instancetype)newWithSectorDict:(SHSectorInfoDictionary*)sectorInfoDict{
   SHSectorDTO *instance = [SHSectorDTO new];
-  instance.zoneInfoDict = zoneInfoDict;
+  instance.sectorInfoDict = sectorInfoDict;
   return instance;
 }
 
 
+-(NSMutableDictionary *)mapable{
+    return [NSMutableDictionary dictionaryWithObjectsAndKeys:
+            self.fullName,@"fullName"
+            ,self.sectorKey,@"sectorKey"
+            ,self.suffix,@"suffix"
+            ,[NSNumber numberWithInt:self.lvl],@"lvl"
+            ,[NSNumber numberWithInt:self.maxMonsters],@"maxMonsters"
+            ,[NSNumber numberWithInt:self.monstersKilled],@"monstersKilled"
+            ,[NSNumber numberWithLong:self.uniqueId],@"uniqueId"
+            ,[NSNumber numberWithBool:self.isFront],@"isFront", nil];
+}
+
+
 -(NSString *)fullName{
-    NSString* name = [self.zoneInfoDict getSectorName:self.sectorKey];
+    NSString* name = [self.sectorInfoDict getSectorName:self.sectorKey];
     return self.suffix.length?[NSString stringWithFormat:@"%@ %@",name,self.suffix]:name;
 }
 
 -(NSString *)synopsis{
-    return [self.zoneInfoDict getSectorDescription:self.sectorKey];
+    return [self.sectorInfoDict getSectorDescription:self.sectorKey];
 }
 
 -(NSString *)headline{

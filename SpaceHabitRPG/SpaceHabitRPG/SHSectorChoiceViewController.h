@@ -1,5 +1,5 @@
 //
-//  ZoneChoice.h
+//  SectorChoice.h
 //  HabitRPG2
 //
 //  Created by Joel Pridgen on 10/16/16.
@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SHModels/SHSector+CoreDataClass.h>
+#import <SHModels/SHSector.h>
 #import "SHSectorDescriptionViewController.h"
 #import "SHCentralViewController.h"
 #import <SHControls/SHSwitch.h>
@@ -16,9 +16,9 @@
 @class SHSectorDescriptionViewController;
 
 @interface SHSectorChoiceViewController : UIViewController <UITableViewDataSource>
-@property (nonatomic,weak) IBOutlet UITableView *zoneChoiceTable;
+@property (nonatomic,weak) IBOutlet UITableView *sectorChoiceTable;
 @property (nonatomic,weak) IBOutlet SHButton *skipButton;
 @property (nonatomic,weak) SHCentralViewController *central;
 @property (nonatomic,strong) SHSectorDescriptionViewController *descViewController;
-+(instancetype)newWithCentral:(SHCentralViewController *)central AndZoneChoices:(NSArray<SHSectorDTO *> *)zoneChoices;
++(instancetype)newWithCentral:(SHCentralViewController *)central AndSectorChoices:(NSArray<SHSectorDTO *> *)sectorChoices;
 @end

@@ -10,7 +10,7 @@
 #import <SHCommon/NSDictionary+SHHelper.h>
 #import <SHData/NSManagedObjectContext+Helper.h>
 #import "SHMonsterTransaction_Medium.h"
-#import "SHMonsterTransaction+CoreDataClass.h"
+#import "SHMonsterTransaction.h"
 
 @interface SHMonsterTransaction_Medium ()
 @property (weak,nonatomic) NSManagedObjectContext *context;

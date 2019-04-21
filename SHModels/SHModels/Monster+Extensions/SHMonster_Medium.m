@@ -27,10 +27,10 @@ withInfoDict:(SHMonsterInfoDictionary*)monsterInfo{
 }
 
 
--(SHMonsterDTO*)newRandomMonster:(NSString*)sectorKey zoneLvl:(uint32_t)zoneLvl{
+-(SHMonsterDTO*)newRandomMonster:(NSString*)sectorKey sectorLvl:(uint32_t)sectorLvl{
     SHMonsterDTO *m = [self newEmptyMonster];
     m.monsterKey = [self randomMonsterKey:sectorKey];
-    m.lvl = shCalculateLvl(zoneLvl,SH_MONSTER_LVL_RANGE);
+    m.lvl = shCalculateLvl(sectorLvl,SH_MONSTER_LVL_RANGE);
     m.nowHp = m.maxHp;
     return m;
 }

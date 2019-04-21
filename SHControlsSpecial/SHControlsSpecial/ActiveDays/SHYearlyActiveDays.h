@@ -7,7 +7,7 @@
 //
 
 #import <SHControls/SHItemFlexibleListView.h>
-#import <SHModels/SHDaily+CoreDataClass.h>
+#import <SHModels/SHDaily.h>
 
 
 @interface SHYearlyActiveDays : SHItemFlexibleListView

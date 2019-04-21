@@ -1,5 +1,5 @@
 //
-//  ZoneDescriptionViewController.m
+//  SectorDescriptionViewController.m
 //  HabitRPG2
 //
 //  Created by Joel Pridgen on 1/20/17.
@@ -45,7 +45,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.doneBtn setTitle:@"Pick this Zone" forState:UIControlStateNormal];
+    [self.doneBtn setTitle:@"Pick this Sector" forState:UIControlStateNormal];
     [self.doneBtn sizeToFit];
     [self.view addGestureRecognizer:self.backSwipe];
     self.headlineLbl.text = @"";
@@ -65,7 +65,7 @@
 }
 - (IBAction)doneBtn_pressed_action:(SHButton *)sender forEvent:(UIEvent *)event{
     [self.prevScreen popVCFromFront];
-    [self.central afterZonePick:(SHSectorDTO *)self.storyItem withContext:nil];
+    [self.central afterSectorPick:(SHSectorDTO *)self.storyItem withContext:nil];
 }
 
 

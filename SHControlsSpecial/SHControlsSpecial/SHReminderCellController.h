@@ -7,7 +7,7 @@
 //
 
 #import <SHControls/SHListItemCell.h>
-#import <SHModels/SHReminder+CoreDataClass.h>
+#import <SHModels/SHReminder.h>
 #import <SHModels/SHReminderDTO.h>
 
 @interface SHReminderCellController : SHListItemCell

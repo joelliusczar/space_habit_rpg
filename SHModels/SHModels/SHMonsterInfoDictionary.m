@@ -37,7 +37,7 @@
 }
 
 
--(NSDictionary *)getMonsterInfo:(NSString *)monsterKey ForZone:(NSString *)sectorKey{
+-(NSDictionary *)getMonsterInfo:(NSString *)monsterKey ForSector:(NSString *)sectorKey{
     return [self.infoDict getInfo:monsterKey forGroup:sectorKey];
 }
 

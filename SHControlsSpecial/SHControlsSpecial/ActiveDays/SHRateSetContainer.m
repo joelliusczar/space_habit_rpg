@@ -62,7 +62,7 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 }
 
 
--(void)setTblDelegate:(id<P_ItemFlexibleListDelegate>)tblDelegate{
+-(void)setTblDelegate:(id<SHItemFlexibleListDelegateProtocol>)tblDelegate{
     _tblDelegate = tblDelegate;
     self.rateControls.responderLookup[TBL_KEY] =  tblDelegate;
 }

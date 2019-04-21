@@ -9,6 +9,13 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-FRAMEWORK_SEARCH_PATHS = $PLATFORM_DIR/Developer/Library/Frameworks/ $(BUILT_PRODUCTS_DIR)/**
+SHCOMMON_DIR = $(BUILT_PRODUCTS_DIR)/SHCommon.framework
+SHGLOBAL_DIR = $(BUILT_PRODUCTS_DIR)/SHGlobal.framework
+SHDATA_DIR = $(BUILT_PRODUCTS_DIR)/SHData.framework
+SHMODELS_DIR = $(BUILT_PRODUCTS_DIR)/SHModels.framework
+SHTESTCOMMON_DIR = $(BUILT_PRODUCTS_DIR)/SHTestCommon.framework
+LIB_DIR = $PLATFORM_DIR/Developer/Library/Frameworks/
 
-HEADER_SEARCH_PATHS = $(BUILT_PRODUCTS_DIR)/**
+FRAMEWORK_SEARCH_PATHS = $(SHCOMMON_DIR) $(SHGLOBAL_DIR) $(SHDATA_DIR) $(SHMODELS_DIR) $(SHTESTCOMMON_DIR) $(LIB_DIR)
+
+HEADER_SEARCH_PATHS = $(BUILT_PRODUCTS_DIR)/** $(BUILT_PRODUCTS_DIR)/usr/local/include

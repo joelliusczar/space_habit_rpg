@@ -7,7 +7,7 @@
 //
 
 #import "SHDueDateItem.h"
-#import "SHDaily+CoreDataClass.h"
+#import "SHDaily.h"
 
 
 @interface SHDueDateItem ()

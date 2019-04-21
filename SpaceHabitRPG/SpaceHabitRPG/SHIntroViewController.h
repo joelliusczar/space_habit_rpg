@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SHModels/SHSettings+CoreDataClass.h>
+#import <SHModels/SHSettings.h>
 #import <SHModels/SHSector_Medium.h>
 #import <SHModels/SHSectorDTO.h>
 #import "SHCentralViewController.h"

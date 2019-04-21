@@ -16,7 +16,7 @@
 +(instancetype)newWithResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil;
 -(NSArray<NSString*> *)getMonsterKeyList:(NSString *)sectorKey;
 -(NSDictionary *)getMonsterInfo:(NSString *)monsterKey;
--(NSDictionary *)getMonsterInfo:(NSString *)monsterKey ForZone:(NSString *)sectorKey;
+-(NSDictionary *)getMonsterInfo:(NSString *)monsterKey ForSector:(NSString *)sectorKey;
 -(NSString *)getName:(NSString *)monsterKey;
 -(NSString *)getDescription:(NSString *)monsterKey;
 -(int32_t)getBaseAttack:(NSString *)monsterKey;

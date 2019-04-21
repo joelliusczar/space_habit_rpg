@@ -10,7 +10,7 @@
 #import <SHCommon/SHProbWeight.h>
 #import <SHData/SHCoreDataProtocol.h>
 #import "SHMonsterInfoDictionary.h"
-#import "SHMonster+CoreDataClass.h"
+#import "SHMonster.h"
 #import "SHMonsterDTO.h"
 
 @import CoreData;
@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 +(instancetype)newWithContext:(NSManagedObjectContext*)context
   withInfoDict:(SHMonsterInfoDictionary*)monsterInfo;
 
--(SHMonsterDTO*)newRandomMonster:(NSString*)sectorKey zoneLvl:(uint32_t)zoneLvl;
+-(SHMonsterDTO*)newRandomMonster:(NSString*)sectorKey sectorLvl:(uint32_t)sectorLvl;
 -(NSString*)randomMonsterKey:(NSString*)sectorKey;
 -(SHMonsterDTO*)newEmptyMonster;
 -(SHProbWeight*)buildProbilityWeight:(NSMutableArray<NSString*>*)keys;

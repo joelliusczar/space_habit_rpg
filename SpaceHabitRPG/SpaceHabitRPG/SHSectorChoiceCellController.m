@@ -13,7 +13,7 @@
 #import <SHControls/UIView+Helpers.h>
 
 @interface SHSectorChoiceCellController()
-@property (nonatomic,weak) SHSectorChoiceViewController *parentZoneController;
+@property (nonatomic,weak) SHSectorChoiceViewController *parentSectorController;
 @property (nonatomic,weak) SHSectorDTO *model;
 @property (nonatomic,weak) NSIndexPath *rowInfo;
 @property (nonatomic,strong) UISwipeGestureRecognizer *swiper;
@@ -32,7 +32,7 @@
 
 
 
-+(instancetype)getZoneChoiceCell:(UITableView *)tableView WithParent:(SHSectorChoiceViewController *)parent
++(instancetype)getSectorChoiceCell:(UITableView *)tableView WithParent:(SHSectorChoiceViewController *)parent
 AndModel:(SHSectorDTO *)model AndRow:(NSIndexPath *)rowInfo
 {
     SHSectorChoiceCellController *cell = [tableView
@@ -47,7 +47,7 @@ AndModel:(SHSectorDTO *)model AndRow:(NSIndexPath *)rowInfo
 -(void)setupCell:(SHSectorDTO *)model AndParent:(SHSectorChoiceViewController *)parent
           AndRow:(NSIndexPath *)rowInfo
 {
-    self.parentZoneController = parent;
+    self.parentSectorController = parent;
     self.model = model;
     self.nameLbl.text = self.model.fullName;
     self.lvlLbl.text = [NSString stringWithFormat:@"Lvl: %d",self.model.lvl];
@@ -62,9 +62,9 @@ AndModel:(SHSectorDTO *)model AndRow:(NSIndexPath *)rowInfo
 
 -(void)handleSwipe:(UISwipeGestureRecognizer *)swipe{
     if(swipe.direction == UISwipeGestureRecognizerDirectionLeft){
-        SHSectorDescriptionViewController *descView = self.parentZoneController.descViewController;
+        SHSectorDescriptionViewController *descView = self.parentSectorController.descViewController;
         [descView setDisplayItems:self.model];
-        [self.parentZoneController arrangeAndPushChildVCToFront:descView];
+        [self.parentSectorController arrangeAndPushChildVCToFront:descView];
     }
     else{
         NSLog(@"%@",@"wrong");

@@ -7,8 +7,8 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <SHModels/SHSector+CoreDataClass.h>
-@import TestCommon;
+#import <SHModels/SHSector.h>
+@import SHTestCommon;
 
 @interface CoreDataTests : FrequentCase
 

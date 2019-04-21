@@ -6,7 +6,7 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-@protocol P_ItemFlexibleListDelegate;
+@protocol SHItemFlexibleListDelegateProtocol;
 
 #import "SHView.h"
 #import "SHAddItemsFooter.h"
@@ -28,7 +28,7 @@
 
 
 /*
- inherit from P_ItemFlexibleListDelegate and assign to delegate to 
+ inherit from SHItemFlexibleListDelegateProtocol and assign to delegate to
  be notified when cells are added or deleted or any of its buttons pressed
 */
 @property (weak,nonatomic) id<SHItemFlexibleListDelegateProtocol> delegate;

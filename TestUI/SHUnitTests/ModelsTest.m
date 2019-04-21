@@ -7,22 +7,22 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <SHModels/SHDaily+CoreDataClass.h>
-#import <SHModels/SHCounter+CoreDataClass.h>
-#import <SHModels/SHTodo+CoreDataClass.h>
-#import <SHModels/SHItem+CoreDataClass.h>
-#import <SHModels/SHHero+CoreDataClass.h>
+#import <SHModels/SHDaily.h>
+#import <SHModels/SHCounter.h>
+#import <SHModels/SHTodo.h>
+#import <SHModels/SHItem.h>
+#import <SHModels/SHHero.h>
 #import <SHModels/SHHeroDTO.h>
-#import <SHModels/SHSettings+CoreDataClass.h>
-#import <SHModels/SHSector+CoreDataClass.h>
-#import <SHModels/SHMonster+CoreDataClass.h>
-#import <SHModels/SHSectorTransaction+CoreDataClass.h>
+#import <SHModels/SHSettings.h>
+#import <SHModels/SHSector.h>
+#import <SHModels/SHMonster.h>
+#import <SHModels/SHSectorTransaction.h>
 #import <SHModels/SHMonster_Medium.h>
 #import <SHGlobal/SHConstants.h>
 #import <SHData/SHCoreData.h>
 #import <SHData/NSManagedObjectContext+Helper.h>
 #import <SHModels/SHSector_Medium.h>
-@import TestCommon;
+@import SHTestCommon;
 
 @interface ModelsTest : FrequentCase
 
@@ -79,8 +79,8 @@
   XCTAssertTrue([[m.synopsis substringToIndex:37] isEqualToString:@"Dust Fairies are fiercely territorial"]);
 }
 
--(void)testZoneProperties{
-  SHSectorDTO *z = [SHSectorDTO newWithZoneDict:self.zoneInfoDict];
+-(void)testSectorProperties{
+  SHSectorDTO *z = [SHSectorDTO newWithSectorDict:self.sectorInfoDict];
   z.lvl = 5;
   z.sectorKey = @"SAFE_SPACE";
   z.isFront = YES;
@@ -119,12 +119,12 @@
 
 -(void)testDoubleInsert{
   NSManagedObjectContext* bgContext = [self.dc newBackgroundContext];
-  SHSector_Medium* zoneMed = [SHSector_Medium newWithContext:bgContext
+  SHSector_Medium* sectorMed = [SHSector_Medium newWithContext:bgContext
     withResourceUtil:self.resourceUtil
-    withInfoDict:self.zoneInfoDict];
+    withInfoDict:self.sectorInfoDict];
   
   [bgContext performBlockAndWait:^{
-    SHSectorDTO *zDto = [zoneMed newSpecificSector2:@"SAFE_SPACE" withLvl:16];
+    SHSectorDTO *zDto = [sectorMed newSpecificSector2:@"SAFE_SPACE" withLvl:16];
     SHSector *z = (SHSector*)[NSManagedObjectContext
       newEntityUnattached:SHSector.entity];
     [z dtoCopyFrom:zDto];
@@ -151,7 +151,7 @@
   //regardless of what is in stored
   [bgContext performBlockAndWait:^{
     
-    SHSectorDTO *z3Dto = [zoneMed newSpecificSector2:@"SAFE_SPACE" withLvl:16];
+    SHSectorDTO *z3Dto = [sectorMed newSpecificSector2:@"SAFE_SPACE" withLvl:16];
     SHSector* z3 = (SHSector*)[NSManagedObjectContext
       newEntityUnattached:SHSector.entity];
     [z3 dtoCopyFrom:z3Dto];

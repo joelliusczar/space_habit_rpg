@@ -7,7 +7,7 @@
 //
 
 #import <SHModels/SHMonster_Medium.h>
-@import TestCommon;
+@import SHTestCommon;
 
 @interface MonsterHelperTest : FrequentCase
 
@@ -85,7 +85,7 @@ uint monsterHelper_mockRandom(uint range){
     Monster_Medium *mm = [Monster_Medium
       newWithContext:context
       withInfoDict:self.monsterInfoDict];
-    SHMonsterDTO *m = [mm newRandomMonster:@"NEBULA" zoneLvl:32];
+    SHMonsterDTO *m = [mm newRandomMonster:@"NEBULA" sectorLvl:32];
     XCTAssertTrue([m.fullName isEqualToString:@"Dust Fairy"]);
     XCTAssertEqual(m.lvl,22);
     XCTAssertEqual(m.maxHp,400);
@@ -93,7 +93,7 @@ uint monsterHelper_mockRandom(uint range){
   
     SET_LOW_BOUND();
     SET_UP_BOUND();
-    m = [mm newRandomMonster:@"NEBULA" zoneLvl:32];
+    m = [mm newRandomMonster:@"NEBULA" sectorLvl:32];
     XCTAssertTrue([m.fullName isEqualToString:@"Dust Fairy"]);
     XCTAssertEqual(m.lvl,42);
     XCTAssertEqual(m.maxHp,650);
@@ -101,7 +101,7 @@ uint monsterHelper_mockRandom(uint range){
   
     SET_UP_BOUND();
     SET_LOW_BOUND();
-    m = [mm newRandomMonster:@"NEBULA" zoneLvl:32];
+    m = [mm newRandomMonster:@"NEBULA" sectorLvl:32];
     XCTAssertTrue([m.fullName isEqualToString:@"Petty Space Pirates"]);
     XCTAssertEqual(m.lvl,22);
     XCTAssertEqual(m.maxHp,160);
@@ -109,7 +109,7 @@ uint monsterHelper_mockRandom(uint range){
   
     SET_UP_BOUND();
     SET_UP_BOUND();
-    m = [mm newRandomMonster:@"NEBULA" zoneLvl:32];
+    m = [mm newRandomMonster:@"NEBULA" sectorLvl:32];
     XCTAssertTrue([m.fullName isEqualToString:@"Petty Space Pirates"]);
     XCTAssertEqual(m.lvl,42);
     XCTAssertEqual(m.maxHp,260);

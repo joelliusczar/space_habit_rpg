@@ -11,13 +11,6 @@
 		2747C536204A5DB000FB5669 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C535204A5DB000FB5669 /* AppDelegate.m */; };
 		2747C539204A5DB000FB5669 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C538204A5DB000FB5669 /* ViewController.m */; };
 		2747C544204A5DB000FB5669 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C543204A5DB000FB5669 /* main.m */; };
-		276E6D9B222A54B300CB36CB /* libSH_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 276E6D9A222A54B300CB36CB /* libSH_C.a */; };
-		276E6D9D222A54B300CB36CB /* libSH_CTools.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 276E6D9C222A54B300CB36CB /* libSH_CTools.a */; };
-		276E6D9F222A54B300CB36CB /* libSHDatetime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 276E6D9E222A54B300CB36CB /* libSHDatetime.a */; };
-		276E6DA1222A54B300CB36CB /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 276E6DA0222A54B300CB36CB /* SHCommon.framework */; };
-		276E6DA3222A54B300CB36CB /* SHData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 276E6DA2222A54B300CB36CB /* SHData.framework */; };
-		276E6DA5222A54B300CB36CB /* SHGlobal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 276E6DA4222A54B300CB36CB /* SHGlobal.framework */; };
-		276E6DA7222A54B300CB36CB /* TestCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 276E6DA6222A54B300CB36CB /* TestCommon.framework */; };
 		276E6DA9222A54E300CB36CB /* TestKeepObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C57E204A62EB00FB5669 /* TestKeepObject.m */; };
 		276E6DAA222A54E300CB36CB /* TestKeepObjectAlt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C582204A62EB00FB5669 /* TestKeepObjectAlt.m */; };
 		276E6DAB222A54E400CB36CB /* TestKeepSubject_A.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C58B204A62ED00FB5669 /* TestKeepSubject_A.m */; };
@@ -39,11 +32,18 @@
 		276E6DBB222A54E400CB36CB /* ZoneHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C587204A62EC00FB5669 /* ZoneHelperTest.m */; };
 		276E6DBC222A54E400CB36CB /* CoreDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DDF2321FE9EDA00F77AEF /* CoreDataTests.m */; };
 		276E6DBD222A54E400CB36CB /* CoreDataTests2.m in Sources */ = {isa = PBXBuildFile; fileRef = 273BF4D322093A5000B0D11E /* CoreDataTests2.m */; };
+		2792B567226C25B200A3A86C /* SHTestCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2792B566226C25B200A3A86C /* SHTestCommon.framework */; };
 		27B719412235F1B900540542 /* DumbDataSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B719402235F1B900540542 /* DumbDataSaver.m */; };
-		27B719432235F24700540542 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B719422235F24700540542 /* SHModels.framework */; };
 		27B719452235F27700540542 /* TestDumbData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B719442235F27700540542 /* TestDumbData.m */; };
 		27C791F52226DD9000A92487 /* EmptyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C791F42226DD9000A92487 /* EmptyTest.m */; };
 		27C792442228A46600A92487 /* SHTestObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C792432228A46600A92487 /* SHTestObserver.m */; };
+		27E4A58F226C1BC000756B6B /* libSHCore_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E4A58E226C1BC000756B6B /* libSHCore_C.a */; };
+		27E4A591226C1BC000756B6B /* libSHDatetime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E4A590226C1BC000756B6B /* libSHDatetime.a */; };
+		27E4A593226C1BC000756B6B /* libSHUtils_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E4A592226C1BC000756B6B /* libSHUtils_C.a */; };
+		27E4A595226C1BC000756B6B /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E4A594226C1BC000756B6B /* SHCommon.framework */; };
+		27E4A597226C1BC000756B6B /* SHData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E4A596226C1BC000756B6B /* SHData.framework */; };
+		27E4A599226C1BC000756B6B /* SHGlobal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E4A598226C1BC000756B6B /* SHGlobal.framework */; };
+		27E4A59B226C1BC000756B6B /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E4A59A226C1BC000756B6B /* SHModels.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,35 +94,12 @@
 		2747C593204A62EE00FB5669 /* CommonUtilitiesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtilitiesTest.m; sourceTree = "<group>"; };
 		2747C595204A62EE00FB5669 /* ProbilityWeightTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProbilityWeightTest.m; sourceTree = "<group>"; };
 		275DDF2321FE9EDA00F77AEF /* CoreDataTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataTests.m; sourceTree = "<group>"; };
-		276E6D84222A428600CB36CB /* libSH_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		276E6D86222A428600CB36CB /* libSH_CTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_CTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		276E6D88222A428600CB36CB /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		276E6D8A222A428600CB36CB /* SHCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		276E6D8C222A428600CB36CB /* SHData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		276E6D8E222A428600CB36CB /* SHModels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHModels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		276E6D90222A428600CB36CB /* TestCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TestCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		276E6D9A222A54B300CB36CB /* libSH_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		276E6D9C222A54B300CB36CB /* libSH_CTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_CTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		276E6D9E222A54B300CB36CB /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		276E6DA0222A54B300CB36CB /* SHCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		276E6DA2222A54B300CB36CB /* SHData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		276E6DA4222A54B300CB36CB /* SHGlobal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHGlobal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		276E6DA6222A54B300CB36CB /* TestCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TestCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2792B566226C25B200A3A86C /* SHTestCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHTestCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27B0B1EC22239AAD0028AF59 /* SHTests.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHTests.base.xcconfig; sourceTree = "<group>"; };
 		27B7193F2235F1B900540542 /* DumbDataSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DumbDataSaver.h; sourceTree = "<group>"; };
 		27B719402235F1B900540542 /* DumbDataSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DumbDataSaver.m; sourceTree = "<group>"; };
-		27B719422235F24700540542 /* SHModels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHModels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27B719442235F27700540542 /* TestDumbData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestDumbData.m; sourceTree = "<group>"; };
-		27B719462235F59500540542 /* SHCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C791F42226DD9000A92487 /* EmptyTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmptyTest.m; sourceTree = "<group>"; };
-		27C7922922277D3600A92487 /* libSH_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		27C7922B22277D3600A92487 /* libSH_CTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_CTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		27C7922D22277D3600A92487 /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		27C7922F22277D3600A92487 /* SHCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		27C7923122277D3600A92487 /* SHData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		27C7923322277D3600A92487 /* SHModels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHModels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		27C7923522279BD300A92487 /* TestCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TestCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		27C7923722279EF100A92487 /* SHGlobal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHGlobal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C7923E2227A0C200A92487 /* SHTests.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHTests.debug.xcconfig; sourceTree = "<group>"; };
 		27C7923F2227B36000A92487 /* SHTests.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHTests.release.xcconfig; sourceTree = "<group>"; };
 		27C792402228363600A92487 /* TestUI.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TestUI.base.xcconfig; sourceTree = "<group>"; };
@@ -132,6 +109,14 @@
 		27CBFF182224F2EA00604C66 /* SHTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27CBFF4C2224F56A00604C66 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27D0D6E621D0820200886721 /* TestsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestsTest.m; sourceTree = "<group>"; };
+		27E4A58E226C1BC000756B6B /* libSHCore_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHCore_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		27E4A590226C1BC000756B6B /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		27E4A592226C1BC000756B6B /* libSHUtils_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHUtils_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		27E4A594226C1BC000756B6B /* SHCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27E4A596226C1BC000756B6B /* SHData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27E4A598226C1BC000756B6B /* SHGlobal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHGlobal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27E4A59A226C1BC000756B6B /* SHModels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHModels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27E4A59C226C1BC000756B6B /* TestCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TestCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +124,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27B719432235F24700540542 /* SHModels.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,13 +131,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				276E6D9D222A54B300CB36CB /* libSH_CTools.a in Frameworks */,
-				276E6D9F222A54B300CB36CB /* libSHDatetime.a in Frameworks */,
-				276E6D9B222A54B300CB36CB /* libSH_C.a in Frameworks */,
-				276E6DA1222A54B300CB36CB /* SHCommon.framework in Frameworks */,
-				276E6DA3222A54B300CB36CB /* SHData.framework in Frameworks */,
-				276E6DA5222A54B300CB36CB /* SHGlobal.framework in Frameworks */,
-				276E6DA7222A54B300CB36CB /* TestCommon.framework in Frameworks */,
+				27E4A593226C1BC000756B6B /* libSHUtils_C.a in Frameworks */,
+				27E4A591226C1BC000756B6B /* libSHDatetime.a in Frameworks */,
+				27E4A58F226C1BC000756B6B /* libSHCore_C.a in Frameworks */,
+				27E4A595226C1BC000756B6B /* SHCommon.framework in Frameworks */,
+				27E4A597226C1BC000756B6B /* SHData.framework in Frameworks */,
+				27E4A599226C1BC000756B6B /* SHGlobal.framework in Frameworks */,
+				27E4A59B226C1BC000756B6B /* SHModels.framework in Frameworks */,
+				2792B567226C25B200A3A86C /* SHTestCommon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,30 +187,15 @@
 		2747C564204A621800FB5669 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				27B719462235F59500540542 /* SHCommon.framework */,
-				27B719422235F24700540542 /* SHModels.framework */,
-				276E6D9A222A54B300CB36CB /* libSH_C.a */,
-				276E6D9C222A54B300CB36CB /* libSH_CTools.a */,
-				276E6D9E222A54B300CB36CB /* libSHDatetime.a */,
-				276E6DA0222A54B300CB36CB /* SHCommon.framework */,
-				276E6DA2222A54B300CB36CB /* SHData.framework */,
-				276E6DA4222A54B300CB36CB /* SHGlobal.framework */,
-				276E6DA6222A54B300CB36CB /* TestCommon.framework */,
-				276E6D84222A428600CB36CB /* libSH_C.a */,
-				276E6D86222A428600CB36CB /* libSH_CTools.a */,
-				276E6D88222A428600CB36CB /* libSHDatetime.a */,
-				276E6D8A222A428600CB36CB /* SHCommon.framework */,
-				276E6D8C222A428600CB36CB /* SHData.framework */,
-				276E6D8E222A428600CB36CB /* SHModels.framework */,
-				276E6D90222A428600CB36CB /* TestCommon.framework */,
-				27C7923722279EF100A92487 /* SHGlobal.framework */,
-				27C7923522279BD300A92487 /* TestCommon.framework */,
-				27C7922922277D3600A92487 /* libSH_C.a */,
-				27C7922B22277D3600A92487 /* libSH_CTools.a */,
-				27C7922D22277D3600A92487 /* libSHDatetime.a */,
-				27C7922F22277D3600A92487 /* SHCommon.framework */,
-				27C7923122277D3600A92487 /* SHData.framework */,
-				27C7923322277D3600A92487 /* SHModels.framework */,
+				2792B566226C25B200A3A86C /* SHTestCommon.framework */,
+				27E4A58E226C1BC000756B6B /* libSHCore_C.a */,
+				27E4A590226C1BC000756B6B /* libSHDatetime.a */,
+				27E4A592226C1BC000756B6B /* libSHUtils_C.a */,
+				27E4A594226C1BC000756B6B /* SHCommon.framework */,
+				27E4A596226C1BC000756B6B /* SHData.framework */,
+				27E4A598226C1BC000756B6B /* SHGlobal.framework */,
+				27E4A59A226C1BC000756B6B /* SHModels.framework */,
+				27E4A59C226C1BC000756B6B /* TestCommon.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

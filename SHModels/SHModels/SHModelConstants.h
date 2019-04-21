@@ -10,7 +10,7 @@
 
 typedef NSDictionary<NSString *,NSNumber *> SHRateValueItemDict;
 
-//zone groups
+//sector groups
 extern NSString* const SH_LVL_0_SECTORS;
 extern NSString* const SH_LVL_1_SECTORS;
 extern NSString* const SH_LVL_5_SECTORS;

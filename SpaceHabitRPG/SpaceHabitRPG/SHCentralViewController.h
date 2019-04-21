@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "SHEditNavigationController.h"
 #import <SHData/SHCoreData.h>
-#import <SHModels/SHDaily+CoreDataClass.h>
-#import <SHModels/SHSector+CoreDataClass.h>
-#import <SHModels/SHMonster+CoreDataClass.h>
+#import <SHModels/SHDaily.h>
+#import <SHModels/SHSector.h>
+#import <SHModels/SHMonster.h>
 #import <SHModels/SHSectorDTO.h>
 #import <SHModels/SHHeroDTO.h>
 #import <SHModels/SHMonsterDTO.h>
@@ -20,7 +20,7 @@
 @interface SHCentralViewController : UIViewController;
 @property (weak,nonatomic) IBOutlet UIView *tabsContainer;
 @property (strong,nonatomic) id<P_CoreData> dataController;
-@property (strong,nonatomic) SHSectorDTO *zoneDTO;
+@property (strong,nonatomic) SHSectorDTO *sectorDTO;
 @property (copy,nonatomic) NSManagedObjectID *theDataInfoID;
 @property (copy,nonatomic) SHSettingsDTO *settingsDTO;
 @property (copy,nonatomic) SHHeroDTO *heroDTO;
@@ -38,6 +38,6 @@
   andBundle:(NSBundle*)bundle;
 
 -(void)setToShowStory:(BOOL)shouldShowStory;
--(void)afterZonePick:(SHSectorDTO*)zoneChoice withContext:(NSManagedObjectContext*)context;
+-(void)afterSectorPick:(SHSectorDTO*)sectorChoice withContext:(NSManagedObjectContext*)context;
 -(void)afterIntroWithContext:(NSManagedObjectContext*)context;
 @end

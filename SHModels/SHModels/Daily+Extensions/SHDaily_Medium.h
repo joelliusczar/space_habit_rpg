@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SHDaily+CoreDataClass.h"
+#import "SHDaily.h"
 #import <SHData/SHCoreDataProtocol.h>
 
 @import CoreData;

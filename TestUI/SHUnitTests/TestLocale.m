@@ -9,7 +9,7 @@
 #import <SHCommon/NSDate+DateHelper.h>
 #import "NSDate+testReplace.h"
 #import <SHCommon/NSLocale+Helper.h>
-@import TestCommon;
+@import SHTestCommon;
 
 @interface TestLocale : FrequentCase
 

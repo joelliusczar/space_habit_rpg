@@ -18,7 +18,7 @@
 @synthesize infoDict = _infoDict;
 -(SHInfoDictionary*)infoDict{
   if(nil == _infoDict){
-    _infoDict = [[SHInfoDictionary alloc] initWithPListKey:@"ZoneInfo"
+    _infoDict = [[SHInfoDictionary alloc] initWithPListKey:@"SectorInfo"
       AndBundleClass:SHSectorInfoDictionary.class AndResourceUtil:self.resourceUtil];
   }
   return _infoDict;

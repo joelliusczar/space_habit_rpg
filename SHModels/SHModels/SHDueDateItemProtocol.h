@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SHReminder+CoreDataClass.h"
+#import "SHReminder.h"
 #import "SHReminderDTO.h"
 
 @import CoreData;

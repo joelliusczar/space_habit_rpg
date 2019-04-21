@@ -16,7 +16,7 @@
 #import <SHControls/UIViewController+Helper.h>
 
 @interface SHSectorChoiceViewController ()
-@property (nonatomic,strong) NSArray<SHSectorDTO *> *zones;
+@property (nonatomic,strong) NSArray<SHSectorDTO *> *sectors;
 @property (nonatomic,weak) NSObject<P_CoreData> *dataController;
 
 @end
@@ -33,21 +33,21 @@
 
 
 +(instancetype)newWithCentral:(SHCentralViewController *)central
-  AndZoneChoices:(NSArray<SHSectorDTO *> *)zoneChoices{
+  AndSectorChoices:(NSArray<SHSectorDTO *> *)sectorChoices{
   
   SHSectorChoiceViewController *instance = [[SHSectorChoiceViewController alloc]
-    initWithNibName:@"ZoneChoicePicker" bundle:nil];
+    initWithNibName:@"SectorChoicePicker" bundle:nil];
   instance.central = central;
-  instance.zones = zoneChoices;
+  instance.sectors = sectorChoices;
   return instance;
 }
 
 - (void)viewDidLoad {
-    NSAssert(self.zones, @"SHSectorChoiceViewController is in an invalid state. Zones hasn't been constructed");
+    NSAssert(self.sectors, @"SHSectorChoiceViewController is in an invalid state. Sectors hasn't been constructed");
     [super viewDidLoad];
-    self.zoneChoiceTable.tableFooterView = nil;
-    self.zoneChoiceTable.dataSource = self;
-    self.zoneChoiceTable.rowHeight = SH_SECTOR_CHOICE_ROW_HEIGHT;
+    self.sectorChoiceTable.tableFooterView = nil;
+    self.sectorChoiceTable.dataSource = self;
+    self.sectorChoiceTable.rowHeight = SH_SECTOR_CHOICE_ROW_HEIGHT;
     [self.view checkForAndApplyVisualChanges];
 }
 
@@ -62,8 +62,8 @@
 #pragma clang diagnostic ignored "-Wunused-parameter"
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-  if(self.zones){
-      return self.zones.count;
+  if(self.sectors){
+      return self.sectors.count;
   }
   return 0;
 }
@@ -72,7 +72,7 @@
 -(IBAction)skipBtn_pressed_action:(UIButton *)sender{
   [self.central setToShowStory:NO];
   [self popVCFromFront];
-  [self.central afterZonePick:nil withContext:nil];
+  [self.central afterSectorPick:nil withContext:nil];
 }
 
 
@@ -80,8 +80,8 @@
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-  SHSectorDTO *z = self.zones[indexPath.row];
-  SHSectorChoiceCellController *cell = [SHSectorChoiceCellController getZoneChoiceCell:tableView
+  SHSectorDTO *z = self.sectors[indexPath.row];
+  SHSectorChoiceCellController *cell = [SHSectorChoiceCellController getSectorChoiceCell:tableView
     WithParent:self AndModel:z AndRow:indexPath];
   return cell;
 }

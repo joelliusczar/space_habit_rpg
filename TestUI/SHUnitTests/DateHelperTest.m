@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <SHCommon/NSDate+DateHelper.h>b
+#import <SHCommon/NSDate+DateHelper.h>
 #import "NSDate+testReplace.h"
 #import <SHCommon/NSLocale+Helper.h>
 #import "SHDatetime.h"
@@ -15,7 +15,7 @@
 
 
 
-@import TestCommon;
+@import SHTestCommon;
 
 @interface DateHelperTest : FrequentCase
 

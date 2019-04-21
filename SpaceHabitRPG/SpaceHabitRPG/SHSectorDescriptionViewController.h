@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SHModels/SHSector+CoreDataClass.h>
+#import <SHModels/SHSector.h>
 #import <SHModels/SHSectorDTO.h>
 #import "SHSectorChoiceViewController.h"
 #import "SHStoryDumpView.h"

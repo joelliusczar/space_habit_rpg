@@ -16,7 +16,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHSectorDTO : SHObject<SHStoryItemProtocol,NSCopying>
-+(instancetype)newWithZoneDict:(SHSectorInfoDictionary*)zoneInfoDict;
++(instancetype)newWithSectorDict:(SHSectorInfoDictionary*)sectorInfoDict;
+@property (readonly,nonatomic) NSMutableDictionary *mapable;
 @property (copy,nonatomic) NSManagedObjectID *objectID;
 @property (nonatomic) BOOL isFront;
 @property (nonatomic) int32_t lvl;
@@ -25,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *suffix;
 @property (nonatomic) int64_t uniqueId;
 @property (nullable, nonatomic, copy) NSString *sectorKey;
-@property (nonatomic,strong) SHSectorInfoDictionary *zoneInfoDict;
+@property (nonatomic,strong) SHSectorInfoDictionary *sectorInfoDict;
 @end
 
 NS_ASSUME_NONNULL_END

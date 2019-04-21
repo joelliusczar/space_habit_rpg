@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		27118841203FFA810085A549 /* SHCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 2711883F203FFA810085A549 /* SHCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27169223208EB0FD0059A58E /* libSHDatetime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27169224208EB0FD0059A58E /* libSHDatetime.a */; };
-		27169225208EB1180059A58E /* libSH_CTools.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27169226208EB1180059A58E /* libSH_CTools.a */; };
+		27397346226C0905001590C6 /* libSHDatetime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27397345226C0905001590C6 /* libSHDatetime.a */; };
 		2747C3C12043B6C000FB5669 /* NSMutableArray+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3BF2043B6C000FB5669 /* NSMutableArray+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C3C22043B6C000FB5669 /* NSMutableArray+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3C02043B6C000FB5669 /* NSMutableArray+Helper.m */; };
 		2747C3D42043BE6A00FB5669 /* NSMutableDictionary+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3D22043BE6900FB5669 /* NSMutableDictionary+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -74,10 +73,7 @@
 		2711883C203FFA810085A549 /* SHCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2711883F203FFA810085A549 /* SHCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHCommon.h; sourceTree = "<group>"; };
 		27118840203FFA810085A549 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2716921E208EA8EC0059A58E /* libSH_CTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_CTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		27169221208EAA860059A58E /* libSH_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		27169224208EB0FD0059A58E /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		27169226208EB1180059A58E /* libSH_CTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSH_CTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		27397345226C0905001590C6 /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2747C3BF2043B6C000FB5669 /* NSMutableArray+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Helper.h"; sourceTree = "<group>"; };
 		2747C3C02043B6C000FB5669 /* NSMutableArray+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Helper.m"; sourceTree = "<group>"; };
 		2747C3D22043BE6900FB5669 /* NSMutableDictionary+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Helper.h"; sourceTree = "<group>"; };
@@ -130,7 +126,6 @@
 		27B15A9620524A170045B226 /* SHGlobal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHGlobal.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHGlobal.framework"; sourceTree = "<group>"; };
 		27CA8634226262E200AE8FDB /* SHObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHObject.h; sourceTree = "<group>"; };
 		27CA8635226262E200AE8FDB /* SHObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHObject.m; sourceTree = "<group>"; };
-		27D80A142086E75D00FB4CE2 /* libSHDatetime.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSHDatetime.a; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/libSHDatetime.a"; sourceTree = "<group>"; };
 		27DD1D1C2043A2210030D954 /* NSException+SHCommonExceptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSException+SHCommonExceptions.h"; sourceTree = "<group>"; };
 		27DD1D1D2043A2210030D954 /* NSLocale+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLocale+Helper.m"; sourceTree = "<group>"; };
 		27DD1D1E2043A2210030D954 /* NSDate+DateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DateHelper.h"; sourceTree = "<group>"; };
@@ -146,8 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27169225208EB1180059A58E /* libSH_CTools.a in Frameworks */,
-				27169223208EB0FD0059A58E /* libSHDatetime.a in Frameworks */,
+				27397346226C0905001590C6 /* libSHDatetime.a in Frameworks */,
 				27B15A9720524A170045B226 /* SHGlobal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -223,11 +217,7 @@
 		27730B9F2041E337003BEB6C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				27169226208EB1180059A58E /* libSH_CTools.a */,
-				27169224208EB0FD0059A58E /* libSHDatetime.a */,
-				27169221208EAA860059A58E /* libSH_C.a */,
-				2716921E208EA8EC0059A58E /* libSH_CTools.a */,
-				27D80A142086E75D00FB4CE2 /* libSHDatetime.a */,
+				27397345226C0905001590C6 /* libSHDatetime.a */,
 				27B15A9620524A170045B226 /* SHGlobal.framework */,
 			);
 			name = Frameworks;

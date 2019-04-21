@@ -11,7 +11,7 @@
 #import "SHEditingSaverProtocol.h"
 #import <SHData/SHCoreDataProtocol.h>
 #import <SHGlobal/SHConstants.h>
-#import <SHModels/SHDaily+CoreDataClass.h>
+#import <SHModels/SHDaily.h>
 #import <SHModels/SHDailyDTO.h>
 #import <SHControls/SHDailyEditCompoundProtocol.h>
 #import <SHControls/AllSHControls.h>

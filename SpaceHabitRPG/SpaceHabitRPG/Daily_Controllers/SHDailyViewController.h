@@ -10,7 +10,7 @@
 
 #import <UIKit/UIKit.h>
 #import <SHData/SHCoreDataProtocol.h>
-#import <SHModels/SHDaily+CoreDataClass.h>
+#import <SHModels/SHDaily.h>
 #import "SHCentralViewController.h"
 
 

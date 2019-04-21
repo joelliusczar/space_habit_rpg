@@ -5,7 +5,7 @@
 //  Created by Joel Pridgen on 8/2/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
-#import <SHModels/SHDaily+CoreDataClass.h>
+#import <SHModels/SHDaily.h>
 #import <SHCommon/SHControlKeep.h>
 #import "SHMonthlyActiveDays.h"
 #import "SHWeeklyActiveDays.h"
@@ -24,7 +24,7 @@ SHView
 @property (readonly,strong,nonatomic) SHWeeklyActiveDays * _Nullable weeklyActiveDays;
 @property (readonly,strong,nonatomic) SHYearlyActiveDays * _Nullable yearlyActiveDays;
 @property (weak,nonatomic) id<SHRateSetterDelegateProtocol> _Nullable delegate;
-@property (weak,nonatomic) id<P_ItemFlexibleListDelegate> _Nullable tblDelegate;
+@property (weak,nonatomic) id<SHItemFlexibleListDelegateProtocol> _Nullable tblDelegate;
 @property (weak,nonatomic) id<SHResizeResponderProtocol> _Nullable resizeResponder;
 @property (weak,nonatomic) id<SHWeeklyActiveDaysDelegateProtocol> _Nullable weeklyDaysDelegate;
 @property (strong,nonatomic) SHDaily * _Nonnull daily;

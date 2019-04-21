@@ -19,6 +19,8 @@ CONFIGURATION_BUILD_DIR = $(SRCROOT)/../../spacehabitrpg_output/build/$(PLATFORM
 //// The final product executables and other build products go here
 BUILT_PRODUCTS_DIR = $(SRCROOT)/../../spacehabitrpg_output/build/$(PLATFORM_NAME)/$CONFIGURATION
 
+//DERIVED_FILE_DIR = $(SRCROOT)/../../spacehabitrpg_output/derived/$(PLATFORM_NAME)/$CONFIGURATION
+
 ALWAYS_SEARCH_USER_PATHS = NO
 
 //:configuration = Debug

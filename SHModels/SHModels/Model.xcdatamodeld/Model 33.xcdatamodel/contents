@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
-    <entity name="SHCategory" representedClassName="SHCategory" syncable="YES" codeGenerationType="class">
+    <entity name="SHCategory" representedClassName="SHCategory" syncable="YES" codeGenerationType="category">
         <attribute name="colorNum" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="cat_counter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SHCounter" inverseName="cat_counter" inverseEntity="SHCounter" syncable="YES"/>
+        <relationship name="cat_daily" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SHDaily" inverseName="daily_cat" inverseEntity="SHDaily" syncable="YES"/>
+        <relationship name="cat_teapot" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SHTeapot" inverseName="teapot_cat" inverseEntity="SHTeapot" syncable="YES"/>
+        <relationship name="cat_todo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SHTodo" inverseName="todo_cat" inverseEntity="SHTodo" syncable="YES"/>
     </entity>
-    <entity name="SHCounter" representedClassName="SHCounter" syncable="YES" codeGenerationType="class">
+    <entity name="SHCounter" representedClassName="SHCounter" syncable="YES" codeGenerationType="category">
         <attribute name="difficulty" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="freeViolations" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="frequencyCounts" optional="YES" attributeType="String" syncable="YES"/>
@@ -16,14 +20,14 @@
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="urgency" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="userOrder" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="cat_counter" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="SHCategory" syncable="YES"/>
-        <relationship name="trigger_daily" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="SHDaily" inverseName="trigger_daily" inverseEntity="SHDaily" syncable="YES"/>
+        <relationship name="cat_counter" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SHCategory" inverseName="cat_counter" inverseEntity="SHCategory" syncable="YES"/>
+        <relationship name="trigger_daily" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SHDaily" inverseName="trigger_daily" inverseEntity="SHDaily" syncable="YES"/>
     </entity>
-    <entity name="SHCounterTransaction" representedClassName="SHCounterTransaction" syncable="YES" codeGenerationType="class">
+    <entity name="SHCounterTransaction" representedClassName="SHCounterTransaction" syncable="YES" codeGenerationType="category">
         <attribute name="misc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
-    <entity name="SHDaily" representedClassName="SHDaily" syncable="YES" codeGenerationType="class">
+    <entity name="SHDaily" representedClassName="SHDaily" syncable="YES" codeGenerationType="category">
         <attribute name="activeDays" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="activeFromDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="activeToDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -41,13 +45,13 @@
         <attribute name="rollbackActivationDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="streakLength" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="urgency" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="daily_cat" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="SHCategory" syncable="YES"/>
-        <relationship name="daily_itemReward" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="SHItem" syncable="YES"/>
+        <relationship name="daily_cat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SHCategory" inverseName="cat_daily" inverseEntity="SHCategory" syncable="YES"/>
+        <relationship name="daily_itemReward" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SHItem" inverseName="item_daily" inverseEntity="SHItem" syncable="YES"/>
         <relationship name="daily_remind" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="SHReminder" inverseName="remind_daily" inverseEntity="SHReminder" syncable="YES"/>
         <relationship name="daily_subtask" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="SHDailySubTask" inverseName="subtask_daily" inverseEntity="SHDailySubTask" syncable="YES"/>
-        <relationship name="trigger_daily" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="SHCounter" inverseName="trigger_daily" inverseEntity="SHCounter" syncable="YES"/>
+        <relationship name="trigger_daily" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SHCounter" inverseName="trigger_daily" inverseEntity="SHCounter" syncable="YES"/>
     </entity>
-    <entity name="SHDailySubTask" representedClassName="SHDailySubTask" syncable="YES" codeGenerationType="class">
+    <entity name="SHDailySubTask" representedClassName="SHDailySubTask" syncable="YES" codeGenerationType="category">
         <attribute name="activeDaysHash" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="dailySubTaskName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="difficulty" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -57,11 +61,11 @@
         <attribute name="urgency" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="subtask_daily" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SHDaily" inverseName="daily_subtask" inverseEntity="SHDaily" syncable="YES"/>
     </entity>
-    <entity name="SHDailyTransaction" representedClassName="SHDailyTransaction" syncable="YES" codeGenerationType="class">
+    <entity name="SHDailyTransaction" representedClassName="SHDailyTransaction" syncable="YES" codeGenerationType="category">
         <attribute name="misc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
-    <entity name="SHHero" representedClassName="SHHero" syncable="YES" codeGenerationType="class">
+    <entity name="SHHero" representedClassName="SHHero" syncable="YES" codeGenerationType="category">
         <attribute name="gold" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lastUpdateDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="lvl" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -72,28 +76,30 @@
         <attribute name="shipName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="teaLeaves" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
-    <entity name="SHItem" representedClassName="SHItem" syncable="YES" codeGenerationType="class">
+    <entity name="SHItem" representedClassName="SHItem" syncable="YES" codeGenerationType="category">
         <attribute name="cost" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="itemName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastUpdateDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="useType" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="item_daily" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SHDaily" inverseName="daily_itemReward" inverseEntity="SHDaily" syncable="YES"/>
+        <relationship name="item_todo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SHTodo" inverseName="todo_itemReward" inverseEntity="SHTodo" syncable="YES"/>
     </entity>
-    <entity name="SHItemTransaction" representedClassName="SHItemTransaction" syncable="YES" codeGenerationType="class">
+    <entity name="SHItemTransaction" representedClassName="SHItemTransaction" syncable="YES" codeGenerationType="category">
         <attribute name="misc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
-    <entity name="SHMonster" representedClassName="SHMonster" syncable="YES" codeGenerationType="class">
+    <entity name="SHMonster" representedClassName="SHMonster" syncable="YES" codeGenerationType="category">
         <attribute name="lastUpdateDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="lvl" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="monsterKey" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nowHp" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
-    <entity name="SHMonsterTransaction" representedClassName="SHMonsterTransaction" syncable="YES" codeGenerationType="class">
+    <entity name="SHMonsterTransaction" representedClassName="SHMonsterTransaction" syncable="YES" codeGenerationType="category">
         <attribute name="misc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
-    <entity name="SHReminder" representedClassName="SHReminder" syncable="YES" codeGenerationType="class">
+    <entity name="SHReminder" representedClassName="SHReminder" syncable="YES" codeGenerationType="category">
         <attribute name="daysBeforeDue" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lastUpdateDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="notificationID" optional="YES" attributeType="String" syncable="YES"/>
@@ -103,7 +109,7 @@
             <fetchIndexElement property="daysBeforeDue" type="Binary" order="ascending"/>
         </fetchIndex>
     </entity>
-    <entity name="SHSector" representedClassName="SHSector" syncable="YES" codeGenerationType="class">
+    <entity name="SHSector" representedClassName="SHSector" syncable="YES" codeGenerationType="category">
         <attribute name="isFront" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lastUpdateDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="lvl" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -113,11 +119,11 @@
         <attribute name="suffix" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uniqueId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
-    <entity name="SHSectorTransaction" representedClassName="SHSectorTransaction" syncable="YES" codeGenerationType="class">
+    <entity name="SHSectorTransaction" representedClassName="SHSectorTransaction" syncable="YES" codeGenerationType="category">
         <attribute name="misc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
-    <entity name="SHSettings" representedClassName="SHSettings" syncable="YES" codeGenerationType="class">
+    <entity name="SHSettings" representedClassName="SHSettings" syncable="YES" codeGenerationType="category">
         <attribute name="allowReport" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="createDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dayStart" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -135,18 +141,18 @@
         <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zoneLvlPenalty" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
-    <entity name="SHSuffix" representedClassName="SHSuffix" syncable="YES" codeGenerationType="class">
+    <entity name="SHSuffix" representedClassName="SHSuffix" syncable="YES" codeGenerationType="category">
         <attribute name="sectorKey" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="visitCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
-    <entity name="SHTeapot" representedClassName="SHTeapot" syncable="YES" codeGenerationType="class">
+    <entity name="SHTeapot" representedClassName="SHTeapot" syncable="YES" codeGenerationType="category">
         <attribute name="timerLength" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="timestampEnd" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="timestampStart" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="cat_teapot" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="SHCategory" syncable="YES"/>
+        <relationship name="teapot_cat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SHCategory" inverseName="cat_teapot" inverseEntity="SHCategory" syncable="YES"/>
     </entity>
-    <entity name="SHTodo" representedClassName="SHTodo" syncable="YES" codeGenerationType="class">
+    <entity name="SHTodo" representedClassName="SHTodo" syncable="YES" codeGenerationType="category">
         <attribute name="difficulty" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="dueDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="effectiveDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -155,32 +161,32 @@
         <attribute name="todoName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="urgency" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="userOrder" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="cat_todo" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="SHCategory" syncable="YES"/>
-        <relationship name="todo_itemReward" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="SHItem" syncable="YES"/>
+        <relationship name="todo_cat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SHCategory" inverseName="cat_todo" inverseEntity="SHCategory" syncable="YES"/>
+        <relationship name="todo_itemReward" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SHItem" inverseName="item_todo" inverseEntity="SHItem" syncable="YES"/>
     </entity>
-    <entity name="SHTodoTransaction" representedClassName="SHTodoTransaction" syncable="YES" codeGenerationType="class">
+    <entity name="SHTodoTransaction" representedClassName="SHTodoTransaction" syncable="YES" codeGenerationType="category">
         <attribute name="misc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <elements>
+        <element name="SHCategory" positionX="-171" positionY="-135" width="128" height="135"/>
+        <element name="SHCounter" positionX="108" positionY="18" width="128" height="240"/>
+        <element name="SHCounterTransaction" positionX="-171" positionY="-135" width="128" height="75"/>
         <element name="SHDaily" positionX="-254" positionY="-84" width="128" height="375"/>
         <element name="SHDailySubTask" positionX="-180" positionY="-144" width="128" height="165"/>
         <element name="SHDailyTransaction" positionX="-180" positionY="-144" width="128" height="75"/>
-        <element name="SHItem" positionX="-290" positionY="174" width="128" height="120"/>
-        <element name="SHItemTransaction" positionX="-180" positionY="-144" width="128" height="75"/>
-        <element name="SHCounter" positionX="108" positionY="18" width="128" height="240"/>
-        <element name="SHCounterTransaction" positionX="-171" positionY="-135" width="128" height="75"/>
         <element name="SHHero" positionX="-90" positionY="-58" width="128" height="180"/>
+        <element name="SHItem" positionX="-290" positionY="174" width="128" height="150"/>
+        <element name="SHItemTransaction" positionX="-180" positionY="-144" width="128" height="75"/>
         <element name="SHMonster" positionX="-234" positionY="344" width="128" height="105"/>
         <element name="SHMonsterTransaction" positionX="-144" positionY="-108" width="128" height="75"/>
         <element name="SHReminder" positionX="-180" positionY="-144" width="128" height="120"/>
-        <element name="SHSettings" positionX="-387" positionY="-297" width="128" height="285"/>
-        <element name="SHSuffix" positionX="-180" positionY="-144" width="128" height="75"/>
-        <element name="SHTodo" positionX="52" positionY="243" width="128" height="195"/>
-        <element name="SHTodoTransaction" positionX="-162" positionY="-126" width="128" height="75"/>
         <element name="SHSector" positionX="-128" positionY="129" width="128" height="165"/>
         <element name="SHSectorTransaction" positionX="-153" positionY="-117" width="128" height="75"/>
+        <element name="SHSettings" positionX="-387" positionY="-297" width="128" height="285"/>
+        <element name="SHSuffix" positionX="-180" positionY="-144" width="128" height="75"/>
         <element name="SHTeapot" positionX="-180" positionY="-144" width="128" height="120"/>
-        <element name="SHCategory" positionX="-171" positionY="-135" width="128" height="75"/>
+        <element name="SHTodo" positionX="52" positionY="243" width="128" height="195"/>
+        <element name="SHTodoTransaction" positionX="-162" positionY="-126" width="128" height="75"/>
     </elements>
 </model>

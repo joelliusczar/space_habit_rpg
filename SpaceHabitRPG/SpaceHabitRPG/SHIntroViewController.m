@@ -8,11 +8,11 @@
 
 #import "SHIntroViewController.h"
 #import <SHData/SHCoreDataProtocol.h>
-#import <SHModels/SHSettings+CoreDataClass.h>
+#import <SHModels/SHSettings.h>
 #import "SHStoryConstants.h"
 #import <SHControls/SHFrontEndConstants.h>
 #import "SHSectorChoiceViewController.h"
-#import <SHModels/SHHero+CoreDataClass.h>
+#import <SHModels/SHHero.h>
 #import <SHModels/SHStoryItemDictionary.h>
 #import <SHControls/UIViewController+Helper.h>
 #import <SHModels/SHSectorInfoDictionary.h>
@@ -175,10 +175,10 @@ scrollIncrement:(CGFloat)scrollIncrement{
   self.isStoryDone = YES;
   NSManagedObjectContext *context = [self.central.dataController newBackgroundContext];
   NSObject<SHResourceUtilityProtocol> *resourceUtil = self.central.resourceUtil;
-  SHSectorInfoDictionary *zoneInfoDict = [SHSectorInfoDictionary newWithResourceUtil:resourceUtil];
-  SHSector_Medium *zm = [SHSector_Medium newWithContext:context withResourceUtil:resourceUtil withInfoDict:zoneInfoDict];
+  SHSectorInfoDictionary *sectorInfoDict = [SHSectorInfoDictionary newWithResourceUtil:resourceUtil];
+  SHSector_Medium *zm = [SHSector_Medium newWithContext:context withResourceUtil:resourceUtil withInfoDict:sectorInfoDict];
   SHSectorDTO *z = [zm newSpecificSector2:HOME_KEY withLvl:1];
-  [self.central afterZonePick:z withContext:context];
+  [self.central afterSectorPick:z withContext:context];
 }
 
 
@@ -190,11 +190,11 @@ scrollIncrement:(CGFloat)scrollIncrement{
   [self.central setToShowStory:NO];
   NSManagedObjectContext *context = [self.central.dataController newBackgroundContext];
   NSObject<SHResourceUtilityProtocol> *resourceUtil = self.central.resourceUtil;
-  SHSectorInfoDictionary *zoneInfoDict = [SHSectorInfoDictionary newWithResourceUtil:resourceUtil];
-  SHSector_Medium *zm = [SHSector_Medium newWithContext:context withResourceUtil:resourceUtil withInfoDict:zoneInfoDict];
+  SHSectorInfoDictionary *sectorInfoDict = [SHSectorInfoDictionary newWithResourceUtil:resourceUtil];
+  SHSector_Medium *zm = [SHSector_Medium newWithContext:context withResourceUtil:resourceUtil withInfoDict:sectorInfoDict];
   
   SHSectorDTO *z = [zm newSpecificSector2:HOME_KEY withLvl:1];
-  [self.central afterZonePick:z withContext:context];
+  [self.central afterSectorPick:z withContext:context];
 }
 
 

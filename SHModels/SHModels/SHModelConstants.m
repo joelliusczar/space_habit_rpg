@@ -8,7 +8,7 @@
 
 #import "SHModelConstants.h"
 
-//zone groups
+//sector groups
 NSString* const SH_LVL_0_SECTORS = @"LVL_0_SECTORS";
 NSString* const SH_LVL_1_SECTORS = @"LVL_1_SECTORS";
 NSString* const SH_LVL_5_SECTORS = @"LVL_5_SECTORS";

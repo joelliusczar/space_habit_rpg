@@ -7,7 +7,7 @@
 //
 
 #import <SHControls/SHTaskCell.h>
-#import <SHModels/SHSector+CoreDataClass.h>
+#import <SHModels/SHSector.h>
 #import <SHModels/SHSectorDTO.h>
 #import "SHSectorChoiceViewController.h"
 
@@ -18,7 +18,7 @@
 @property (nonatomic,weak) IBOutlet UILabel *nameLbl;
 @property (nonatomic,weak) IBOutlet UILabel *lvlLbl;
 
-+(instancetype)getZoneChoiceCell:(UITableView *)tableView WithParent:(SHSectorChoiceViewController *)parent
++(instancetype)getSectorChoiceCell:(UITableView *)tableView WithParent:(SHSectorChoiceViewController *)parent
   AndModel:(SHSectorDTO *)model
   AndRow:(NSIndexPath *)rowInfo;
 

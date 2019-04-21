@@ -889,7 +889,7 @@ NSString *convertCharToBin(unsigned char input){
     context.persistentStoreCoordinator = dds.coordinator;
     context.name = @"main queue";
     
-    NSFetchRequest *request = [Zone fetchRequest];
+    NSFetchRequest *request = [SHSector fetchRequest];
     NSSortDescriptor *sortByIsFront = [[NSSortDescriptor alloc] initWithKey:@"isFront" ascending:NO];
     request.sortDescriptors = @[sortByIsFront];
     

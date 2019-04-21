@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SHModels/SHDaily+CoreDataClass.h>
+#import <SHModels/SHDaily.h>
 #import <SHControls/SHTaskCell.h>
 #import "SHDailyViewController.h"
 #import <SHControls/SHButton.h>

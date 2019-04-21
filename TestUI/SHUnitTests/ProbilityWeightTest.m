@@ -10,7 +10,7 @@
 #import <SHCommon/SHProbWeight.h>
 #import <SHGlobal/SHConstants.h>
 #import <SHCommon/SHCommonUtils.h>
-@import TestCommon;
+@import SHTestCommon;
 
 @interface ProbilityWeightTest : XCTestCase
 

@@ -8,8 +8,8 @@
 
 #import <XCTest/XCTest.h>
 #import <SHData/SHData.h>
-#import <SHModels/SHSector+CoreDataClass.h>
-#import <TestCommon/TestHelpers.h>
+#import <SHModels/SHSector.h>
+#import <SHTestCommon/TestHelpers.h>
 @import CoreData;
 
 @interface CoreDataTests2 : XCTestCase
