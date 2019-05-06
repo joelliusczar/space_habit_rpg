@@ -11,8 +11,20 @@
 @implementation NSManagedObjectContext (Helper)
 
 
+static void _setupIfRequired(NSManagedObject *entity){
+  SEL setupSelector = NSSelectorFromString(@"setupInitialState");
+  if([entity respondsToSelector:setupSelector]){
+    IMP imp = [entity methodForSelector:setupSelector];
+    ((void (*)(id,SEL))imp)(entity,setupSelector);
+  }
+}
+
 -(NSManagedObject*)newEntity:(NSEntityDescription*)entityType{
-  return [[NSManagedObject alloc] initWithEntity:entityType insertIntoManagedObjectContext:self];
+  NSManagedObject *entity = [[NSManagedObject alloc]
+    initWithEntity:entityType
+    insertIntoManagedObjectContext:self];
+  _setupIfRequired(entity);
+  return entity;
 }
 
 
@@ -21,11 +33,6 @@
   NSManagedObject *entity = [self existingObjectWithID:objectID error:&error];
   if(nil == entity){
     entity = [self newEntity:objectID.entity];
-    SEL setupSelector = NSSelectorFromString(@"setupInitialState:");
-    if([entity respondsToSelector:setupSelector]){
-      IMP imp = [entity methodForSelector:setupSelector];
-      ((void (*)(id,SEL))imp)(entity,setupSelector);
-    }
   }
   return entity;
 }
@@ -51,5 +58,6 @@
   return [[NSManagedObject alloc] initWithEntity:entityType
       insertIntoManagedObjectContext:nil];
 }
+
 
 @end

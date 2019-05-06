@@ -16,6 +16,7 @@
 #import <SHModels/SHRateTypeHelper.h>
 #import <SHControls/SHItemFlexibleListView.h>
 
+
 NSString * const YEARLY_KEY = @"yearly";
 NSString * const MONTHLY_KEY = @"monthly";
 NSString * const WEEKLY_KEY = @"weekly";
@@ -67,7 +68,7 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
     self.rateControls.responderLookup[TBL_KEY] =  tblDelegate;
 }
 
-+(instancetype)newWithDaily:(SHDaily * _Nonnull)daily{
++(instancetype)newWithDaily:(SHDailyDTO *)daily{
     NSAssert(daily,@"daily was nil");
     
     SHRateSetContainer *instance = [[SHRateSetContainer alloc] init];
@@ -117,7 +118,7 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 }
 
 
--(SHControlKeep *)buildControlKeep:(SHDaily *)daily{
+-(SHControlKeep *)buildControlKeep:(SHDailyDTO *)daily{
     NSAssert(daily,@"Daily should not be nil");
     SHControlKeep *keep = [[SHControlKeep alloc] init];
   
@@ -176,15 +177,13 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
   BOOL areSame = shAreSameBaseRateTypes(rateType,self.daily.rateType);
   //it is important that this happen before setRateTypeActiveDaysControl:
   //else it will use the old rateType which will have fucky results
-  #warning Put this back
-  //[self.daily rateType_w:rateType];
+  self.daily.rateType = rateType;
   [self updateRateTypeControls:rateType shouldChange:!areSame];
 }
 
 
 -(void)resetRate{
-  #warning put this back
-  //[self.daily rate_w:1];
+  self.daily.rate = 1;
   self.rateSetter.rateStep.value = 1;//prevent old stepper value from overwriting
 }
 
@@ -210,9 +209,8 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 
 
 -(void)updateInvertRateTypeButtonText{
-  #warning put this back
-  //NSString *buttonText = !self.daily.isInverseRateType?defaultInvertBtnText:invertedInvertBtnText;
-  //[self.invertRateTypeBtn setTitle:buttonText forState:UIControlStateNormal];
+  NSString *buttonText = !shIsInverseRateType(self.daily.rateType)?defaultInvertBtnText:invertedInvertBtnText;
+  [self.invertRateTypeBtn setTitle:buttonText forState:UIControlStateNormal];
 }
 
 

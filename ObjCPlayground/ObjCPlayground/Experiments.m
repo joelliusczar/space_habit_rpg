@@ -33,15 +33,15 @@
 #import "PureCBaby.h"
 #import "House+Hacked.h"
 #import <SHData/SHCoreData.h>
-#import <SHModels/Daily+CoreDataClass.h>
-#import <SHModels/Reminder+CoreDataClass.h>
-#import <SHModels/Zone+CoreDataClass.h>
+#import <SHModels/SHReminder.h>
+#import <SHModels/SHSector.h>
+#import <SHModels/SHDaily.h>
 #import <SHModels/SHSector_Medium.h>
 #import <SHModels/SHSectorInfoDictionary.h>
 #import <SHCommon/SHResourceUtility.h>
 #import <SHCommon/SHCommonUtils.h>
 #import <SHCommon/NSObject+Helper.h>
-#import <TestCommon/TestHelpers.h>
+#import <SHTestCommon/TestHelpers.h>
 #import <malloc/malloc.h>
 #import <SHData/NSManagedObjectContext+Helper.h>
 
@@ -974,8 +974,8 @@ NSString *convertCharToBin(unsigned char input){
   }];
   NSManagedObjectContext *context = [dc newBackgroundContext];
   [context performBlockAndWait:^{
-    Daily *d = (Daily*)[NSManagedObjectContext newEntityUnattached:Daily.entity];
-    Reminder *r = (Reminder*)[NSManagedObjectContext newEntityUnattached:Reminder.entity];
+    SHDaily *d = (SHDaily*)[NSManagedObjectContext newEntityUnattached:SHDaily.entity];
+    SHReminder *r = (SHReminder*)[NSManagedObjectContext newEntityUnattached:SHReminder.entity];
     r.daysBeforeDue = 70;
     d.customUserOrder = 700;
     //[d addDaily_remindObject:r];
@@ -987,11 +987,11 @@ NSString *convertCharToBin(unsigned char input){
   
   NSManagedObjectContext *context2 = [dc newBackgroundContext];
   [context2 performBlockAndWait:^{
-    NSFetchRequest *request = Daily.fetchRequest;
+    NSFetchRequest *request = SHDaily.fetchRequest;
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"customUserOrder" ascending:YES] ];
     NSError *error = nil;
     NSArray *results = [context2 executeFetchRequest:request error:&error];
-    Daily *d = (Daily*)results[0];
+    SHDaily *d = (SHDaily*)results[0];
     NSLog(@"Count is %lu",d.daily_remind.count);
     
   }];
@@ -1005,18 +1005,18 @@ NSString *convertCharToBin(unsigned char input){
   }];
   NSManagedObjectContext *context = [dc newBackgroundContext];
   [context performBlockAndWait:^{
-    Daily *d = (Daily*)[context newEntity:Daily.entity];
-    Reminder *r = (Reminder*)[context newEntity:Reminder.entity];
+    SHDaily *d = (SHDaily*)[context newEntity:SHDaily.entity];
+    SHReminder *r = (SHReminder*)[context newEntity:SHReminder.entity];
     r.daysBeforeDue = 70;
     d.customUserOrder = 700;
     [d addDaily_remindObject:r];
-    Reminder *r2 = (Reminder*)[context newEntity:Reminder.entity];
+    SHReminder *r2 = (SHReminder*)[context newEntity:SHReminder.entity];
     r.daysBeforeDue = 71;
     [d addDaily_remindObject:r2];
-    Reminder *r3 = (Reminder*)[context newEntity:Reminder.entity];
+    SHReminder *r3 = (SHReminder*)[context newEntity:SHReminder.entity];
     r.daysBeforeDue = 72;
     [d addDaily_remindObject:r3];
-    Reminder *r4 = (Reminder*)[context newEntity:Reminder.entity];
+    SHReminder *r4 = (SHReminder*)[context newEntity:SHReminder.entity];
     r.daysBeforeDue = 73;
     [d addDaily_remindObject:r4];
     NSError *err = nil;
@@ -1026,13 +1026,13 @@ NSString *convertCharToBin(unsigned char input){
 
   NSManagedObjectContext *context2 = [dc newBackgroundContext];
   [context2 performBlockAndWait:^{
-    NSFetchRequest *request = Daily.fetchRequest;
+    NSFetchRequest *request = SHDaily.fetchRequest;
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"customUserOrder" ascending:YES] ];
     NSError *error = nil;
     NSArray *results = [context2 executeFetchRequest:request error:&error];
-    Daily *d = (Daily*)results[0];
+    SHDaily *d = (SHDaily*)results[0];
     NSOrderedSet *set = d.daily_remind;
-    Reminder *r = set[0];
+    SHReminder *r = set[0];
     (void)r;
 //    [set enumerateObjectsUsingBlock:^(id obj,NSUInteger idx,BOOL *stop){
 //      NSLog(@"Loop");
@@ -1150,6 +1150,11 @@ NSString *convertCharToBin(unsigned char input){
 +(void)queuePossibleDeadlock{
   CircleMaybe *cm = [[CircleMaybe alloc] init2];
   NSLog(@"Now we get the num: %lu",cm.bar);
+}
+
++(void)tryingTheKVOverride{
+  KVObject *o = [KVObject new];
+  o.rock = 92;
 }
 
 

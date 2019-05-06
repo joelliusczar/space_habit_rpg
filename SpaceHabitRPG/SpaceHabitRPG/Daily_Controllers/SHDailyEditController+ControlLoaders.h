@@ -8,9 +8,10 @@
 
 #import "SHDailyEditController.h"
 #import <SHCommon/SHControlKeep.h>
+#import <SHModels/SHDailyDTO.h>
 
 @interface SHDailyEditController (ControlLoaders)
--(SHControlKeep *)buildControlKeep:(SHDaily *)daily;
+-(SHControlKeep *)buildControlKeep:(SHDailyDTO *)daily;
 -(void)setResponders:(SHControlKeep *)keep;
 @end
 

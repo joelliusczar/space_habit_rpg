@@ -47,6 +47,9 @@
          <FileRef
             location = "group:build_all_and_test.sh">
          </FileRef>
+         <FileRef
+            location = "group:erase_phone.sh">
+         </FileRef>
       </Group>
       <FileRef
          location = "group:DTCopy.sh">
@@ -56,12 +59,6 @@
       </FileRef>
       <FileRef
          location = "group:ObjCPlayground.sh">
-      </FileRef>
-      <FileRef
-         location = "group:/Users/joelpridgen/Documents/spacehabitrpg/Build_Scripts/SHCore_C.sh">
-      </FileRef>
-      <FileRef
-         location = "group:/Users/joelpridgen/Documents/spacehabitrpg/Build_Scripts/SHUtils_C.sh">
       </FileRef>
       <FileRef
          location = "group:SHCommon.sh">
@@ -77,9 +74,6 @@
       </FileRef>
       <FileRef
          location = "group:SHDatetime.sh">
-      </FileRef>
-      <FileRef
-         location = "group:SHGlobal_C.sh">
       </FileRef>
       <FileRef
          location = "group:SHGlobal.sh">
@@ -98,10 +92,10 @@
       </FileRef>
    </Group>
    <FileRef
-      location = "group:/Users/joelpridgen/Documents/spacehabitrpg/SH_CTools/SHUtils_C.xcodeproj">
+      location = "group:SHUtils_C/SHUtils_C.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:/Users/joelpridgen/Documents/spacehabitrpg/SH_C/SHCore_C.xcodeproj">
+      location = "group:SHCore_C/SHCore_C.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:SHDatetime/SHDatetime.xcodeproj">

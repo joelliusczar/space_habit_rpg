@@ -72,7 +72,7 @@
 -(IBAction)skipBtn_pressed_action:(UIButton *)sender{
   [self.central setToShowStory:NO];
   [self popVCFromFront];
-  [self.central afterSectorPick:nil withContext:nil];
+  [self.central afterSectorPick:nil];
 }
 
 

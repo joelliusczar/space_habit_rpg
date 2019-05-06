@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 //if you want to get rid of a child view controller, call this
 -(void)popVCFromFront;
 
+-(void)showErrorView:(NSString*)name withError:(NSError*)error;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -27,44 +27,6 @@
 }
 
 
--(void)skip_testBrokenEntities{
-  NSEntityDescription* e = SHSector.entity;
-  XCTAssertNil(e);
-  NSBundle *testBundle = [NSBundle bundleForClass:NSClassFromString(@"OnlyOneEntities")];
-  SHCoreData* __weak weakDC = nil;
-  SHCoreData *dc = nil;
-  @autoreleasepool {
-    dc = [SHCoreData newWithOptionsBlock:^(SHCoreDataOptions *options){
-      options.storeType = NSInMemoryStoreType;
-    }];
-    NSEntityDescription* e2 = SHSector.entity;
-    XCTAssertNotNil(e2);
-    //  NSPersistentStoreCoordinator* __weak coord = (NSPersistentStoreCoordinator *)[TestHelpers getPrivateValue:dc
-    //    ivarName:@"_coordinator"];
-    //  NSManagedObjectModel* __weak mom = coord.managedObjectModel;
-    weakDC = dc;
-    dc = [SHCoreData newWithOptionsBlock:^(SHCoreDataOptions *options){
-      options.storeType = NSInMemoryStoreType;
-    }];
-    e2 = SHSector.entity;
-    XCTAssertNil(e2);
-    NSLog(@"Doot doot doot");
-  }
-  
-  
-  NSLog(@"Doot doot doot");
-  
-  dc = [SHCoreData newWithOptionsBlock:^(SHCoreDataOptions *options){
-      options.storeType = NSInMemoryStoreType;
-  }];
-  e = SHSector.entity;
-  XCTAssertNotNil(e);
-//  coord = (NSPersistentStoreCoordinator *)[TestHelpers getPrivateValue:dc
-//    ivarName:@"_coordinator"];
-//  mom = coord.managedObjectModel;
-  
-}
-
 NSObject* newObj(){
     NSObject*  obj = [[NSObject alloc] init];
     return obj;

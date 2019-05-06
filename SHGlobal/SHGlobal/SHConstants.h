@@ -91,6 +91,7 @@ extern NSString* const SH_ALL_DAYS_JSON;
 
 extern NSString* const SH_TRANSACTION_TYPE_KEY;
 extern NSString* const SH_TRANSACTION_TYPE_CREATE;
+extern NSString* const SH_TRANSACTION_TYPE_BATCH_DELETE;
 extern NSString* const SH_REPORT_USER_ID_KEY;
 
 extern int const SH_MINUTES_IN_HOUR;

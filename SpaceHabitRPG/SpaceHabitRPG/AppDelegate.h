@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SHData/SHCoreData.h>
+#import <SHCommon/SHResourceUtility.h>
 #import "SHCentralViewController.h"
+
 
 @class SHCentralViewController;
 

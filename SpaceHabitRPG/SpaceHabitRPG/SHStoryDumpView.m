@@ -22,7 +22,7 @@
 
 -(UITapGestureRecognizer *)tapper{
   if(!_tapper){
-    _tapper = [[UITapGestureRecognizer alloc] initWithTarget:self.synopsisView
+    _tapper = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                       action:@selector(handleTap:)];
     
   }
@@ -73,7 +73,7 @@
 
 
 -(void)handleTap:(UITapGestureRecognizer *)recognizer{
-  
+  NSLog(@"Tap tap");
 }
 
 

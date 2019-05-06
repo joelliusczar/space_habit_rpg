@@ -19,7 +19,7 @@
 @implementation SHDailyEditController (ControlLoaders)
 
 
--(SHControlKeep *)buildControlKeep:(SHDaily *)daily{
+-(SHControlKeep *)buildControlKeep:(SHDailyDTO *)daily{
   NSAssert(daily,@"Daily should not be null");
   SHControlKeep *keep = [[SHControlKeep alloc] init];
 
@@ -79,8 +79,9 @@
     return resetter;
   }];
   
+  NSManagedObjectContext *context = [self.parentDailyController.central.dataController newBackgroundContext];
   [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
-    SHDueDateItem *dueDateItem = [SHDueDateItem newWithObjectID:daily.objectID andContext:daily.managedObjectContext];
+    SHDueDateItem *dueDateItem = [SHDueDateItem newWithObjectID:daily.objectID andContext:context];
       SHReminderListView *list = [SHReminderListView newWithDueDateItem:dueDateItem];
     
       [keep forResponderKey:@"_" doSetupAction:^(id responder){

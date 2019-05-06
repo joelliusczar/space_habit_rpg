@@ -35,9 +35,9 @@
 }
 
 
--(void)setActiveDaysOfWeek:(NSArray<SHRateValueItemDict *> *)activeDays{
+-(void)setActiveDaysOfWeek:(SHRateValueItem *)activeDays{
     for(SHSwitch *flip in self.activeDaySwitches){
-        flip.isOn = activeDays[flip.tag][SH_IS_DAY_ACTIVE_KEY].boolValue;
+        flip.isOn = activeDays[flip.tag].isDayActive;
     }
 }
 

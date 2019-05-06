@@ -18,6 +18,11 @@
   return instance;
 }
 
+-(void)setValue:(id)value forKey:(NSString *)key{
+  if([key isEqualToString:@"_sectorInfoDict"] && nil == value) return;
+  [super setValue:value forKey:key];
+}
+
 
 -(NSMutableDictionary *)mapable{
     return [NSMutableDictionary dictionaryWithObjectsAndKeys:

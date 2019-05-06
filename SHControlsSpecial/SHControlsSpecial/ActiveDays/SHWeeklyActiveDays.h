@@ -11,6 +11,8 @@
 #import "SHWeeklyActiveDaysDelegateProtocol.h"
 #import <SHGlobal/SHConstants.h>
 #import <SHModels/SHModelConstants.h>
+#import <SHCore_C/SHRateValueItem.h>
+
 
 IB_DESIGNABLE
 @interface SHWeeklyActiveDays : SHView
@@ -23,5 +25,5 @@ IB_DESIGNABLE
 @property (weak,nonatomic) IBOutlet SHSwitch *fridaySwitch;
 @property (weak,nonatomic) IBOutlet SHSwitch *saturdaySwitch;
 @property (weak,nonatomic) id<SHWeeklyActiveDaysDelegateProtocol> delegate;
--(void)setActiveDaysOfWeek:(NSArray<SHRateValueItemDict *> *)activeDays;
+-(void)setActiveDaysOfWeek:(SHRateValueItem *)activeDays;
 @end

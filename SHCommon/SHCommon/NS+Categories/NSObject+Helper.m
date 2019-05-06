@@ -38,8 +38,10 @@ typedef void (*voidCaller)(id,SEL);
   uint32_t outCount = 0;
   Ivar *varArray = class_copyIvarList(self.class, &outCount);
   for(uint32_t i = 0; i < outCount; i++){
-    id varVal = object_getIvar(self,varArray[i]);
-    object_setIvar(newObject,varArray[i],varVal);
+    const char *varName = ivar_getName(varArray[i]);
+    NSString *nsVarName = [NSString stringWithUTF8String:varName];
+    id varVal = [self valueForKey:nsVarName];
+    [newObject setValue:varVal forKey:nsVarName];
   }
   free(varArray);
   return newObject;
@@ -55,7 +57,6 @@ typedef void (*voidCaller)(id,SEL);
     NSString *propName = [nsIvarName substringFromIndex:1];
     id fromVal = [fromObject valueForKey:propName];
     [self setValue:fromVal forKey:nsIvarName];
-    free((void*)ivarName);
   }
   free(varArray);
 }

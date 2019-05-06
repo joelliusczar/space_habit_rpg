@@ -13,6 +13,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHHeroDTO : SHObject<NSCopying>
+@property (strong,nonatomic) NSManagedObjectID *objectID;
 @property (nonatomic) double gold;
 @property (nonatomic) int32_t lvl;
 @property (nonatomic) int32_t maxHp;

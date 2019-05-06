@@ -21,4 +21,6 @@ SHRateType shSetRateTypeInversion(SHRateType rateType,BOOL isInverse);
 BOOL shAreMonthlyRateValueItemsEqual(SHRateValueItemDict *a,SHRateValueItemDict *b);
 BOOL shAreYearlyRateValueItemsEqual(SHRateValueItemDict *a,SHRateValueItemDict *b);
 NSString * shGetFormatString(SHRateType rateType, NSInteger rate);
+NSString * shGetRateUnitName(SHRateType rateType,BOOL isPlural);
 #endif /* RateTypeHelper_h */
+

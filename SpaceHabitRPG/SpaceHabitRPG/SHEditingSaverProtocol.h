@@ -19,7 +19,7 @@
 @property (weak,nonatomic) UITableView *controlsTbl;
 @property (strong,nonatomic) NSString *nameStr;
 -(void)saveEdit;
--(BOOL)deleteModel;
+-(void)deleteModel;
 @optional
 -(void)unsaved_closing_action;
 @end

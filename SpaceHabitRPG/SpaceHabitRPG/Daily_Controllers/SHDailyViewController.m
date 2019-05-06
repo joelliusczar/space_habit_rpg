@@ -52,7 +52,7 @@ static NSString *const EntityName = @"Daily";
 
 
 -(instancetype)initWithCentral:(SHCentralViewController *)central{
-  if(self = [self initWithNibName:@"DailyViewController" bundle:nil]){
+  if(self = [self initWithNibName:@"SHDailyViewController" bundle:nil]){
     self->_central = central;
     [self setuptab];
     
@@ -112,7 +112,7 @@ static NSString *const EntityName = @"Daily";
 
 
 -(void)setupData{
-  SHSettingsDTO *settings = self.central.settingsDTO;
+  SHConfigDTO *settings = self.central.configDTO;
   NSDate *todayStart = [[NSDate date] dayStart];
   todayStart = [todayStart timeAfterHours:settings.dayStart minutes:0 seconds:0];
   self.incompleteItems = [self.dailyMedium getUnfinishedDailiesController:todayStart

@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSString *boopStr;
 @property NSInteger dootNum;
 @property NSNumber *wrapNum;
-@property NSNumber *watched;
+@property (nonatomic) NSNumber *watched;
 -(void)sayRealSlimShady;
 @end
 

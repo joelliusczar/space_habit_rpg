@@ -23,6 +23,7 @@
 #import "CircleMaybe.h"
 #import "SimpleDTO.h"
 #import "Watcher.h"
+#import "KVObject.h"
 
 
 typedef WeakHolder Varholder;
@@ -130,6 +131,7 @@ void cMakeHouses(void);
 +(void)subStrC;
 +(void)KVOStuff;
 +(void)queuePossibleDeadlock;
++(void)tryingTheKVOverride;
 @end
 
 #import "Experiments+Charlie.h"

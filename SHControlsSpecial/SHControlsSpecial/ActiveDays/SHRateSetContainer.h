@@ -5,11 +5,13 @@
 //  Created by Joel Pridgen on 8/2/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
-#import <SHModels/SHDaily.h>
 #import <SHCommon/SHControlKeep.h>
 #import "SHMonthlyActiveDays.h"
 #import "SHWeeklyActiveDays.h"
 #import "SHYearlyActiveDays.h"
+#import <SHModels/SHDailyDTO.h>
+
+NS_ASSUME_NONNULL_BEGIN
 
 @interface SHRateSetContainer :
 SHView
@@ -27,9 +29,9 @@ SHView
 @property (weak,nonatomic) id<SHItemFlexibleListDelegateProtocol> _Nullable tblDelegate;
 @property (weak,nonatomic) id<SHResizeResponderProtocol> _Nullable resizeResponder;
 @property (weak,nonatomic) id<SHWeeklyActiveDaysDelegateProtocol> _Nullable weeklyDaysDelegate;
-@property (strong,nonatomic) SHDaily * _Nonnull daily;
+@property (strong,nonatomic) SHDailyDTO *daily;
 @property (strong,nonatomic) SHControlKeep * _Nullable rateControls;
-+(instancetype _Nonnull )newWithDaily:(SHDaily * _Nonnull)daily;
++(instancetype)newWithDaily:(SHDailyDTO *)daily;
 @end
 
-
+NS_ASSUME_NONNULL_END

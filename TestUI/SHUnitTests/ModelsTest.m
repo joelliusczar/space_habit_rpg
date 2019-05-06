@@ -13,7 +13,7 @@
 #import <SHModels/SHItem.h>
 #import <SHModels/SHHero.h>
 #import <SHModels/SHHeroDTO.h>
-#import <SHModels/SHSettings.h>
+#import <SHModels/SHConfig.h>
 #import <SHModels/SHSector.h>
 #import <SHModels/SHMonster.h>
 #import <SHModels/SHSectorTransaction.h>

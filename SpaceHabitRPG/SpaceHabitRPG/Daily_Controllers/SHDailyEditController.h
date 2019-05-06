@@ -25,16 +25,16 @@
 @property (weak,nonatomic) IBOutlet SHTextField *nameBox;
 @property (weak,nonatomic) IBOutlet SHButton *showXtraOptsBtn;
 @property (weak,nonatomic) IBOutlet UITableView *controlsTbl;
-@property (strong,nonatomic) SHDaily *modelForEditing;
+@property (strong,nonatomic) SHDailyDTO *modelForEditing;
 @property (weak,nonatomic) SHDailyViewController *parentDailyController;
 
 -(instancetype)initWithParentDailyController:(SHDailyViewController *)parentDailyController;
 
 -(instancetype)initWithParentDailyController:(SHDailyViewController *)parentDailyController
-ToEdit:(SHDaily *)daily
+ToEdit:(SHDailyDTO *)daily
 AtIndexPath:(NSIndexPath *)rowInfo;
 
--(void)loadExistingDailyForEditing:(SHDaily *)daily;
+-(void)loadExistingDailyForEditing:(SHDailyDTO *)daily;
 @end
 
 #import "SHDailyEditController+ControlLoaders.h"

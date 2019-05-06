@@ -1,0 +1,5 @@
+
+module SHCore_C [system] {
+  umbrella header "SHCore_C.h"
+  export *
+}

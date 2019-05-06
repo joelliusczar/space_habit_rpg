@@ -33,6 +33,7 @@
 		2747C50020490D0A00FB5669 /* SHTimeSpinPickerEventInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4FE20490D0900FB5669 /* SHTimeSpinPickerEventInfo.m */; };
 		2747C50120490D0A00FB5669 /* SHTimeSpinPickerEventInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C4FF20490D0A00FB5669 /* SHTimeSpinPickerEventInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C520204A4C4300FB5669 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2747C51F204A4C4300FB5669 /* Media.xcassets */; };
+		2769C0A3227F69A800217480 /* libSHCore_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2769C0A2227F69A800217480 /* libSHCore_C.a */; };
 		27B15AA520524BED0045B226 /* SHControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AA420524BED0045B226 /* SHControls.framework */; };
 		27B15AA720524BFE0045B226 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AA620524BFE0045B226 /* SHModels.framework */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,7 @@
 		2747C4FE20490D0900FB5669 /* SHTimeSpinPickerEventInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHTimeSpinPickerEventInfo.m; sourceTree = "<group>"; };
 		2747C4FF20490D0A00FB5669 /* SHTimeSpinPickerEventInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHTimeSpinPickerEventInfo.h; sourceTree = "<group>"; };
 		2747C51F204A4C4300FB5669 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		2769C0A2227F69A800217480 /* libSHCore_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHCore_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		279848D22250FDB500039A29 /* SHControlsSpecial.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHControlsSpecial.base.xcconfig; sourceTree = "<group>"; };
 		27B15AA420524BED0045B226 /* SHControls.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHControls.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHControls.framework"; sourceTree = "<group>"; };
 		27B15AA620524BFE0045B226 /* SHModels.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHModels.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHModels.framework"; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2769C0A3227F69A800217480 /* libSHCore_C.a in Frameworks */,
 				27B15AA720524BFE0045B226 /* SHModels.framework in Frameworks */,
 				27B15AA520524BED0045B226 /* SHControls.framework in Frameworks */,
 			);
@@ -126,6 +129,7 @@
 		271D615F2043346E005C9F7E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2769C0A2227F69A800217480 /* libSHCore_C.a */,
 				27B15AA620524BFE0045B226 /* SHModels.framework */,
 				27B15AA420524BED0045B226 /* SHControls.framework */,
 			);

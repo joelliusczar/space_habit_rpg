@@ -11,32 +11,30 @@
 #import <SHCommon/NSObject+Helper.h>
 #import <SHData/SHCoreDataProtocol.h>
 #import <SHData/NSManagedObjectContext+Helper.h>
-#import <SHModels/SHSectorTransaction.h>
-#import <SHModels/SHMonsterTransaction.h>
-#import <SHModels/SHSettings.h>
+#import <SHModels/SHConfig.h>
 #import <SHModels/SHHero.h>
 #import <SHModels/SHSector_Medium.h>
 #import <SHModels/SHMonster_Medium.h>
-#import <SHModels/SHSectorTransaction_Medium.h>
-#import <SHModels/SHMonsterTransaction_Medium.h>
+#import <SHModels/SHTransaction_Medium.h>
 #import <SHControls/UIViewController+Helper.h>
 #import <SHControls/UIView+Helpers.h>
-
+#import <SHCommon/NSException+SHCommonExceptions.h>
 #import "SHCentralViewController.h"
 #import "SHDailyViewController.h"
 #import "SHMenuViewController.h"
 #import "SHIntroViewController.h"
 #import "SHSectorChoiceViewController.h"
 #import "SHStoryDumpView.h"
+#import <SHControls/UIViewController+Helper.h>
 
 
-#define KVO_HERO_HP @"userHero.nowHp"
-#define KVO_HERO_XP @"userHero.nowXp"
-#define KVO_MONSTER_HP @"nowMonster.nowHp"
-#define KVO_GOLD @"userHero.gold"
-#define KVO_LVL @"userHero.lvl"
-#define KVO_MON_NAME @"nowMonster.fullName"
-#define KVO_ZONE_NAME @"nowSector.fullName"
+#define KVO_HERO_HP @"heroDTO.nowHp"
+#define KVO_HERO_XP @"heroDTO.nowXp"
+#define KVO_MONSTER_HP @"monsterDTO.nowHp"
+#define KVO_GOLD @"heroDTO.gold"
+#define KVO_LVL @"heroDTO.lvl"
+#define KVO_MON_NAME @"monsterDTO.fullName"
+#define KVO_ZONE_NAME @"sectorDTO.fullName"
 
 #define observeKey(key) [self addObserver:self forKeyPath:KVO_HERO_HP\
   options:NSKeyValueObservingOptionNew context:nil]
@@ -55,7 +53,15 @@
 @property (weak,nonatomic) IBOutlet UILabel *lvlLbl;
 @property (weak,nonatomic) IBOutlet UILabel *goldLbl;
 @property (weak,nonatomic) SHIntroViewController *introVC;
-@property (strong,nonatomic) dispatch_queue_t settingsAccessorQueue;
+@property (strong,nonatomic) dispatch_queue_t configAccessorQueue;
+/*
+  #sectorMonsterQueue
+  I'm doing some initial clean up in certain start up situations.
+  I don't want the clean up accidently deleting any newly added
+  sectors or monsters, so all saving and retrieving actions should
+  be done through this queue.
+*/
+@property (strong,nonatomic) dispatch_queue_t sectorMonsterQueue;
 
 @end
 
@@ -71,25 +77,19 @@
     return _tabsController;
 }
 
--(dispatch_queue_t)settingsAccessorQueue{
-  if(nil == _settingsAccessorQueue){
-    _settingsAccessorQueue = dispatch_queue_create("com.SpaceHabit.Settings",DISPATCH_QUEUE_SERIAL);
-  }
-  return _settingsAccessorQueue;
-}
 
-@synthesize settingsDTO = _settingsDTO;
--(SHSettingsDTO*)settingsDTO{
-  __block SHSettingsDTO *settings = nil;
-  dispatch_sync(self.settingsAccessorQueue,^{
-    settings = self->_settingsDTO;
+@synthesize configDTO = _configDTO;
+-(SHConfigDTO*)configDTO{
+  __block SHConfigDTO *config = nil;
+  dispatch_sync(self.configAccessorQueue,^{
+    config = self->_configDTO;
   });
-  return settings;
+  return config;
 }
 
--(void)setSettingsDTO:(SHSettingsDTO *)settingsDTO{
-  dispatch_async(self.settingsAccessorQueue,^{
-    self->_settingsDTO = settingsDTO;
+-(void)setConfigDTO:(SHConfigDTO *)configDTO{
+  dispatch_async(self.configAccessorQueue,^{
+    self->_configDTO = configDTO;
   });
 }
 
@@ -102,20 +102,37 @@
   if(self = [super initWithNibName:nib bundle:bundle]){
     _dataController = dataController;
     _resourceUtil = util;
-    _settingsAccessorQueue = dispatch_queue_create("com.SpaceHabit.Settings",DISPATCH_QUEUE_SERIAL);
+    _configAccessorQueue = dispatch_queue_create("com.SpaceHabit.Config",DISPATCH_QUEUE_SERIAL);
+    _sectorMonsterQueue = dispatch_queue_create("com.SpaceHabit.Sector_Monster",DISPATCH_QUEUE_SERIAL);
     
-    dispatch_async(_settingsAccessorQueue,^{
+    dispatch_async(_configAccessorQueue,^{
       NSManagedObjectContext *context = [dataController newBackgroundContext];
       [context performBlockAndWait:^{
-        NSFetchRequest *fetchRequest = SHSettings.fetchRequest;
-        NSSortDescriptor *sortBy = [NSSortDescriptor sortDescriptorWithKey:@"createDate" ascending:YES];
+        NSFetchRequest *fetchRequest = SHConfig.fetchRequest;
+        NSSortDescriptor *sortBy = [NSSortDescriptor sortDescriptorWithKey:@"createDateTime" ascending:YES];
         fetchRequest.sortDescriptors = @[sortBy];
         NSError *error = nil;
         NSArray *results = [context executeFetchRequest:fetchRequest error:&error];
-        SHSettings *settings = (SHSettings*)results[0];
-        SHSettingsDTO *dto = [SHSettingsDTO new];
-        [dto dtoCopyFrom:settings];
-        self->_settingsDTO = dto;
+        if(error){
+          @throw [NSException dbException:error];
+        }
+        SHConfig *config = nil;
+        if(results.count > 0){
+          config = (SHConfig*)results[0];
+        }
+        else{
+          config = (SHConfig*)[context newEntity:SHConfig.entity];
+          [context performBlock:^{
+            NSError *error = nil;
+            if(![context save:&error]){
+              @throw [NSException dbException:error];
+            }
+          }];
+        }
+        
+        SHConfigDTO *dto = [SHConfigDTO new];
+        [dto dtoCopyFrom:config];
+        _configDTO = dto;
       }];
     });
 
@@ -141,8 +158,8 @@
     [super viewDidLoad];
     [self.view checkForAndApplyVisualChanges];
     //most likely any changes you want to add to load should go in
-    //determineIfFirstTimeAndSetupSettings
-    [self determineIfFirstTimeAndSetupSettings]; 
+    //determineIfFirstTimeAndSetupConfig
+    [self determineIfFirstTimeAndSetupConfig];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -164,7 +181,7 @@
   self.tabsController.view.frame = self.tabsContainer.bounds;
 }
 
-
+// logic picks back up in afterIntroStarted
 -(void)showIntroView{
   /*Since self.introVC is a weak ref, we must create this local var
   to hold the value until the strong ref gets attached.
@@ -225,6 +242,17 @@
         }];
       }
     }
+    else {
+      SHMonsterDTO *mDTO = [SHMonsterDTO newWithMonsterDict:monInfoDict];
+      [mDTO dtoCopyFrom:m];
+      
+      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        self.monsterDTO = mDTO;
+        [self setupHero:^{
+          [self prepareScreen];
+        }];
+      }];
+    }
   }];
 }
 
@@ -236,17 +264,61 @@
 }
 
 
--(void)determineIfFirstTimeAndSetupSettings{
-    if(self.settingsDTO.gameState == SH_GAME_STATE_UNINITIALIZED){
-        [self showIntroView];        
-    }
-    else{
-      [self setupNormalSectorAndMonster];
-    }
+-(void)cleanUpPreviousAttempts{
+  
+  NSManagedObjectContext *context = self.dataController.newBackgroundContext;
+  [context performBlock:^{
+    //see note by sectorMonsterQueue #sectorMonsterQueue
+    dispatch_sync(self.sectorMonsterQueue,^{
+      //don't add any other entities than sector and monster
+      NSFetchRequest *sectorsRequest = SHSector.fetchRequest;
+      NSFetchRequest *monstersRequest = SHMonster.fetchRequest;
+      NSBatchDeleteRequest *deleteSectors = [[NSBatchDeleteRequest alloc] initWithFetchRequest:sectorsRequest];
+      deleteSectors.resultType = NSBatchDeleteResultTypeCount;
+      NSBatchDeleteRequest *deleteMonsters = [[NSBatchDeleteRequest alloc] initWithFetchRequest:monstersRequest];
+      deleteMonsters.resultType = NSBatchDeleteResultTypeCount;
+      [context performBlockAndWait:^{
+        @autoreleasepool {
+          NSError *errorSectors = nil;
+          NSBatchDeleteResult *sectorResults = [context executeRequest:deleteSectors error:&errorSectors];
+          NSError *errorMonsters = nil;
+          NSBatchDeleteResult *monsterResults = [context executeRequest:deleteMonsters error:&errorMonsters];
+          [context performBlock:^{
+            NSInteger sectorCounts = ((NSNumber*)sectorResults.result).integerValue;
+            if(sectorCounts > 0){
+              SHTransaction_Medium *sm = [[SHTransaction_Medium alloc] initWithContext:context
+                andEntityType:SHSector.entity.name];
+              [sm addBatchDeleteTransaction:[NSString stringWithFormat:
+                @"Batch deleted %ldl sectors",sectorCounts]];
+            }
+            NSInteger monsterCounts = ((NSNumber*)monsterResults.result).integerValue;
+            if(monsterCounts > 0){
+              SHTransaction_Medium *mm = [[SHTransaction_Medium alloc] initWithContext:context
+                andEntityType:SHMonster.entity.name];
+              [mm addBatchDeleteTransaction:[NSString stringWithFormat:
+                @"Batch deleted %ldl monsters",monsterCounts]];
+            }
+          }];
+        }
+      }];
+      
+    });
+  }];
+}
+
+
+-(void)determineIfFirstTimeAndSetupConfig{
+  if(self.configDTO.gameState == SH_GAME_STATE_UNINITIALIZED){
+    [self cleanUpPreviousAttempts];
+    [self showIntroView];
+  }
+  else{
+    [self setupNormalSectorAndMonster];
+  }
 }
 
 -(void)setToShowStory:(BOOL)shouldShowStory{
-    self.settingsDTO.storyModeisOn = shouldShowStory;
+    self.configDTO.storyModeisOn = shouldShowStory;
 }
 
 -(void)showSectorChoiceView:(NSArray<SHSectorDTO *> *)sectorChoices{
@@ -325,32 +397,111 @@ context:(void *)context{
 
 #pragma clang diagnostic pop
 
+/*
+  This is where the logic picks back up after the intro view
+*/
+-(void)afterIntroStarted{
+  /*
+      This whole process is hard to follow.
+      It's because there's a few steps are dependent upon user input.
+      So, the choices were:
+      A. Have a convoluted state machine that goes down different
+        branches depending on if certain conditions were met yet.
+      B. (What I'm currently doing) Basically, callback hell. This way
+        I can connect the next actions to the end of the previous
+        segment.
+      I suppose I could have also writen my modals work like showDialog
+        in winforms. But I'm not doing that.
+   
+  */
+  
+  [self setupHero:^{
+    NSObject<SHResourceUtilityProtocol> *resourceUtil = self.resourceUtil;
+    SHSectorInfoDictionary *sectorInfoDict = [SHSectorInfoDictionary newWithResourceUtil:resourceUtil];
+    SHSector_Medium *sm = [SHSector_Medium newWithContext:nil
+      withResourceUtil:resourceUtil
+      withInfoDict:sectorInfoDict];
+    SHSectorDTO *s = [sm newSpecificSector2:HOME_KEY withLvl:1];
+    [self afterSectorPick:s];
+  }];
+}
 
--(void)afterSectorPick:(SHSectorDTO*)sectorChoice withContext:(NSManagedObjectContext*)context{
-  if(nil == context){
-    context = [self.dataController newBackgroundContext];
-  }
+-(void)setupHero:(void (^)(void))completionBlock{
+  NSManagedObjectContext *context = [self.dataController newBackgroundContext];
+  //what the hell, we're doing it async everywhere else in this
+  //file, why not here too.
+  [context performBlock:^{
+    NSFetchRequest *heroRequest = SHHero.fetchRequest;
+    NSSortDescriptor *sortBy = [NSSortDescriptor
+      sortDescriptorWithKey:@"lvl"
+      ascending:YES];
+    heroRequest.sortDescriptors = @[sortBy];
+    NSError *error = nil;
+    NSArray *results = [context executeFetchRequest:heroRequest error:&error];
+    if(error){
+      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self showErrorView:@"Retriving hero failed"
+          withError:error];
+      }];
+      return;
+    }
+    SHHeroDTO *heroDTO = [SHHeroDTO new];
+    SHHero *heroCD = nil;
+    if(results.count > 0){
+      heroCD = (SHHero*)results[0];
+    }
+    else{
+      heroCD = (SHHero*)[context newEntity:SHHero.entity];
+      NSError *saveError = nil;
+      [context save:&saveError];
+      if(saveError){
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+          [self showErrorView:@"Saving hero failed"
+            withError:error];
+        }];
+        return;
+      }
+    }
+    
+    [heroDTO dtoCopyFrom:heroCD];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+      self.heroDTO = heroDTO;
+      completionBlock();
+    }];
+  }];
+}
+
+
+-(void)afterSectorPick:(SHSectorDTO*)sectorChoice{
+
+  NSManagedObjectContext *context = [self.dataController newBackgroundContext];
+  
   NSObject<SHResourceUtilityProtocol> *resourceUtil = self.resourceUtil;
   SHSectorInfoDictionary *sectorDict = [SHSectorInfoDictionary newWithResourceUtil:resourceUtil];
   SHSector_Medium *zm = [SHSector_Medium newWithContext:context withResourceUtil:resourceUtil withInfoDict:sectorDict];
-  __block SHSectorDTO *sectorChoiceBlock = sectorChoice;
+  __block SHSectorDTO *sectorChoiceBlockVar = sectorChoice;
   [context performBlock:^{
-    if(sectorChoice==nil){
+    if(sectorChoiceBlockVar==nil){
+      //my theory is that I am copying heroDTO b/c it belongs to the main thread
       SHHeroDTO *heroCopy = [self.heroDTO copy];
-      sectorChoiceBlock = [zm newRandomSectorChoiceGivenHero:heroCopy
+      sectorChoiceBlockVar = [zm newRandomSectorChoiceGivenHero:heroCopy
         ifShouldMatchLvl:NO];
     }
     SHSector *sectorCD = (SHSector*)[context newEntity:SHSector.entity];
-    [zm moveSectorToFront:sectorCD];
-    sectorChoice.objectID = sectorCD.objectID;
+    [sectorCD copyFrom:sectorChoiceBlockVar];
+    //see note by sectorMonsterQueue #sectorMonsterQueue
+    dispatch_sync(self.sectorMonsterQueue, ^{
+      [zm moveSectorToFront:sectorCD];
+    });
+    sectorChoiceBlockVar.objectID = sectorCD.objectID;
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-      self.sectorDTO = sectorChoice;
+      self.sectorDTO = sectorChoiceBlockVar;
     }];
     
-    SHSectorTransaction_Medium *zt = [SHSectorTransaction_Medium
-      newWithContext:context];
+    SHTransaction_Medium *zt = [[SHTransaction_Medium alloc]
+      initWithContext:context andEntityType:SHSector.entity.name];
   
-    [zt addCreateTransaction:sectorCD];
+    [zt addCreateTransaction:sectorChoiceBlockVar.mapable];
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
       [self showSectorStoryWithContext:context];
@@ -358,19 +509,21 @@ context:(void *)context{
   }];
 }
 
-
--(void)afterIntroWithContext:(NSManagedObjectContext*)context{
+-(void)afterIntroCompleted:(NSManagedObjectContext*)context{
   [self prepareScreen];
   [context performBlock:^{
-    if(self.settingsDTO.gameState == SH_GAME_STATE_UNINITIALIZED){
-      SHSettings *settings = [context objectWithID:self.settingsDTO.objectID];
-      //settings.gameState = GAME_STATE_INITIALIZED;
-      SHSettingsDTO *dto = [SHSettingsDTO new];
-      [dto dtoCopyFrom:settings];
+    if(self.configDTO.gameState == SH_GAME_STATE_UNINITIALIZED){
+      SHConfig *config = [context objectWithID:self.configDTO.objectID];
+      config.gameState = SH_GAME_STATE_INITIALIZED;
+      SHConfigDTO *dto = [SHConfigDTO new];
+      [dto dtoCopyFrom:config];
       NSError *error = nil;
       [context save:&error];
       if(nil == error){
-        self.settingsDTO = dto;
+        self.configDTO = dto;
+      }
+      else{
+        @throw [NSException dbException:error];
       }
     }
   }];
@@ -425,8 +578,8 @@ context:(void *)context{
   withResponse:(void (^)(SHStoryDumpView * nullable))response{
   NSManagedObjectContext *context = [self.dataController  newBackgroundContext];
   [context performBlock:^{
-    SHSettingsDTO *settings = self.settingsDTO;
-    if(settings.storyModeisOn){
+    SHConfigDTO *config = self.configDTO;
+    if(config.storyModeisOn){
       [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         SHStoryDumpView *sdv = [[SHStoryDumpView alloc] initWithStoryItem:storyItem];
         sdv.responseBlock = response;
@@ -451,7 +604,7 @@ context:(void *)context{
       if(nil != self.introVC){
         [self.introVC popVCFromFront];
       }
-      [self afterIntroWithContext:context];
+      [self afterIntroCompleted:context];
     }];
   }];
 }
@@ -466,23 +619,34 @@ context:(void *)context{
       Monster_Medium *mm = [Monster_Medium newWithContext:context withInfoDict:monInfoDict];
       SHSectorDTO *sectorDTO = self.sectorDTO;
       self.monsterDTO = [mm newRandomMonster:sectorDTO.sectorKey sectorLvl:sectorDTO.lvl];
-      [self saveNewMonster:self.monsterDTO inContext:context];
+      [self saveAndShowNewMonster:self.monsterDTO inContext:context];
+      
     }];
-    
   }];
 }
 
 
--(void)saveNewMonster:(SHMonsterDTO *)monsterDTO inContext:(NSManagedObjectContext*)context{
+-(void)saveAndShowNewMonster:(SHMonsterDTO *)monsterDTO inContext:(NSManagedObjectContext*)context{
   [context performBlock:^{
-    SHMonsterTransaction_Medium *mt = [SHMonsterTransaction_Medium newWithContext:context];
+    SHTransaction_Medium *mt = [[SHTransaction_Medium alloc] initWithContext:context
+      andEntityType:SHMonster.entity.name];
     SHMonster *monsterCD = (SHMonster*)[context newEntity:SHMonster.entity];
     [monsterCD copyFrom:monsterDTO];
-    [mt addCreateTransaction:monsterDTO];
+    //see note by sectorMonsterQueue #sectorMonsterQueue
+    dispatch_sync(self.sectorMonsterQueue, ^{
+      [context performBlockAndWait:^{
+        @autoreleasepool {
+          NSError *error = nil;
+          [context save:&error];
+        }
+      }];
+    });
+    [mt addCreateTransaction:monsterDTO.mapable];
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
       [self showMonsterStoryWithContext:context];
     }];
   }];
 }
+
 
 @end

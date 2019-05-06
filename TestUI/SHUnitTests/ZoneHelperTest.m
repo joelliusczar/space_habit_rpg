@@ -361,69 +361,74 @@ uint sectorHelper_mockRandom(uint range){
 }
 
 
-#warning put back
-//-(void)testConstructMultipleSectorChoices{
-//    Hero *h = (Hero *)[self.dc constructEmptyEntity:Hero.entity];
-//    h.lvl = 52;
-//
-//    int i = 0;
-//    rIdx_zh = 0;
-//    /*
-//    If I break these tests again, try adjusting the order of my SET_LOW_BOUND,
-//    SET_UP_BOUND calls below. Yes, this is a fragile test.
-//    */
-//    SET_LOW_BOUND();//choice count
-//    SET_LOW_BOUND();//sectorGroup
-//    SET_LOW_BOUND();//sector
-//    SET_UP_BOUND(); //maxMonsters
-//
-//    SET_LOW_BOUND();//sectorGroup
-//    SET_LOW_BOUND();//sector
-//    SET_LOW_BOUND(); //sector lvl
-//    SET_UP_BOUND(); //maxMonsters
-//
-//    SET_LOW_BOUND();//sectorGroup
-//    SET_LOW_BOUND();//sector
-//    SET_UP_BOUND(); //maxMonsters
-//    SET_UP_BOUND(); //sector lvl
-//
-//    NSArray<Sector *> *zl = constructMultipleSectorChoices(h,YES);
-//    XCTAssertEqual(zl.count, 3);
-//    XCTAssertEqual(zl[0].lvl, 52);
-//    XCTAssertEqual(zl[1].lvl, 42);
-//    XCTAssertEqual(zl[2].lvl, 62);
-//
-//    i = 0;
-//    rIdx_zh = 0;
-//    SET_UP_BOUND();//choice count
-//    SET_LOW_BOUND();//sectorGroup
-//    SET_LOW_BOUND();//sector
-//    SET_UP_BOUND(); //maxMonsters
-//    SET_LOW_BOUND(); //sector lvl
-//
-//    SET_LOW_BOUND();//sectorGroup
-//    SET_LOW_BOUND();//sector
-//    SET_UP_BOUND(); //maxMonsters
-//    SET_LOW_BOUND(); //sector lvl
-//
-//    SET_LOW_BOUND();//sectorGroup
-//    SET_LOW_BOUND();//sector
-//    SET_UP_BOUND(); //maxMonsters
-//    SET_UP_BOUND(); //sector lvl
-//
-//    SET_LOW_BOUND();//sectorGroup
-//    SET_LOW_BOUND();//sector
-//    SET_UP_BOUND(); //maxMonsters
-//    SET_LOW_BOUND(); //sector lvl
-//
-//    SET_LOW_BOUND();//sectorGroup
-//    SET_LOW_BOUND();//sector
-//    SET_UP_BOUND(); //maxMonsters
-//    SET_LOW_BOUND(); //sector lvl
-//
-//    zl = constructMultipleSectorChoices(h,NO);
-//    XCTAssertEqual(zl.count, 5);
-//}
+-(void)testConstructMultipleSectorChoices{
+  
+  NSManagedObjectContext *context = [self.dc newBackgroundContext];
+  SHSector_Medium* sectorMed = [SHSector_Medium newWithContext:context
+    withResourceUtil:self.resourceUtil
+    withInfoDict:self.sectorInfoDict];
+  
+  SHHeroDTO *h = [SHHeroDTO new];
+  h.lvl = 52;
+
+  int i = 0;
+  rIdx_zh = 0;
+  /*
+  If I break these tests again, try adjusting the order of my SET_LOW_BOUND,
+  SET_UP_BOUND calls below. Yes, this is a fragile test.
+  */
+  SET_LOW_BOUND();//choice count
+  SET_LOW_BOUND();//sectorGroup
+  SET_LOW_BOUND();//sector
+  SET_UP_BOUND(); //maxMonsters
+
+  SET_LOW_BOUND();//sectorGroup
+  SET_LOW_BOUND();//sector
+  SET_LOW_BOUND(); //sector lvl
+  SET_UP_BOUND(); //maxMonsters
+
+  SET_LOW_BOUND();//sectorGroup
+  SET_LOW_BOUND();//sector
+  SET_UP_BOUND(); //maxMonsters
+  SET_UP_BOUND(); //sector lvl
+
+  NSArray<SHSectorDTO *> *zl = [sectorMed newMultipleSectorChoicesGivenHero:h ifShouldMatchLvl:YES];
+  XCTAssertEqual(zl.count, 3);
+  XCTAssertEqual(zl[0].lvl, 52);
+  XCTAssertEqual(zl[1].lvl, 42);
+  XCTAssertEqual(zl[2].lvl, 62);
+
+  i = 0;
+  rIdx_zh = 0;
+  SET_UP_BOUND();//choice count
+  SET_LOW_BOUND();//sectorGroup
+  SET_LOW_BOUND();//sector
+  SET_UP_BOUND(); //maxMonsters
+  SET_LOW_BOUND(); //sector lvl
+
+  SET_LOW_BOUND();//sectorGroup
+  SET_LOW_BOUND();//sector
+  SET_UP_BOUND(); //maxMonsters
+  SET_LOW_BOUND(); //sector lvl
+
+  SET_LOW_BOUND();//sectorGroup
+  SET_LOW_BOUND();//sector
+  SET_UP_BOUND(); //maxMonsters
+  SET_UP_BOUND(); //sector lvl
+
+  SET_LOW_BOUND();//sectorGroup
+  SET_LOW_BOUND();//sector
+  SET_UP_BOUND(); //maxMonsters
+  SET_LOW_BOUND(); //sector lvl
+
+  SET_LOW_BOUND();//sectorGroup
+  SET_LOW_BOUND();//sector
+  SET_UP_BOUND(); //maxMonsters
+  SET_LOW_BOUND(); //sector lvl
+
+  zl = [sectorMed newMultipleSectorChoicesGivenHero:h ifShouldMatchLvl:NO];
+  XCTAssertEqual(zl.count, 5);
+}
 
 -(void)testConstructSpecificSector{
   NSManagedObjectContext *context = [self.dc newBackgroundContext];

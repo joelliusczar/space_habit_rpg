@@ -8,6 +8,8 @@
 
 #import "SHMonsterDTO.h"
 #import <SHCommon/NSObject+Helper.h>
+#import <SHCommon/SHCollectionUtils.h>
+#import <SHCommon/NSDictionary+SHHelper.h>
 
 static float MAX_HP_MODIFIER = .1;
 @implementation SHMonsterDTO
@@ -21,7 +23,8 @@ static float MAX_HP_MODIFIER = .1;
 
 
 -(NSString *)fullName{
-    return [self.monInfoDict getName:self.monsterKey];
+    NSString *name = [self.monInfoDict getName:self.monsterKey];
+    return name;
 }
 
 -(NSString *)synopsis{
@@ -75,15 +78,17 @@ static float MAX_HP_MODIFIER = .1;
 }
 
 -(NSMutableDictionary *)mapable{
-    return [NSMutableDictionary dictionaryWithObjectsAndKeys:
-            self.monsterKey,@"monsterKey"
-            ,[NSNumber numberWithInt:self.lvl],@"lvl"
-//            ,[NSNumber numberWithInt:self.nowHp],@"nowHp"
-//            ,[NSNumber numberWithInt:self.attack],@"attack"
-//            ,[NSNumber numberWithInt:self.defense],@"defense"
-//            ,[NSNumber numberWithInt:self.maxHp],@"maxHp"
-            , nil];
+    return [NSDictionary objectToDictionary:self
+      withTransformer:shDefaultTransformer
+      withSet:nil];
 }
 
+
+-(void)setValue:(id)value forKey:(NSString *)key{
+  //_monInfoDict was getting nil'ed out
+  // when copying from the monster core data object
+  if([key isEqualToString:@"_monInfoDict"] && nil == value) return;
+  [super setValue:value forKey:key];
+}
 
 @end

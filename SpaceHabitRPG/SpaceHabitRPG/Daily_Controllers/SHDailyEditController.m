@@ -14,6 +14,8 @@
 #import <SHControls/SHSwitch.h>
 #import <SHCommon/SHInterceptor.h>
 #import <SHModels/SHRateTypeHelper.h>
+#import <SHControls/UIViewController+Helper.h>
+#import <SHData/NSManagedObjectContext+Helper.h>
 
 
 @interface SHDailyEditController ()
@@ -39,7 +41,7 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
 //used for new Dailies
 -(instancetype)initWithParentDailyController:
 (SHDailyViewController *)parentDailyController{
-    if(self = [self initWithNibName:@"DailyEditView" bundle:nil]){
+    if(self = [self initWithNibName:@"SHDailyEditView" bundle:nil]){
         _parentDailyController = parentDailyController;
         _isEditingExisting = NO;
     }
@@ -49,7 +51,7 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
 //used for existing dailies
 -(instancetype)initWithParentDailyController:
 (SHDailyViewController *)parentDailyController ToEdit:
-(SHDaily *)daily AtIndexPath:(NSIndexPath *)rowInfo{
+(SHDailyDTO *)daily AtIndexPath:(NSIndexPath *)rowInfo{
     
     if(self = [self initWithParentDailyController:parentDailyController]){
         _modelForEditing = daily;
@@ -138,8 +140,7 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
 
 
 - (IBAction)nameBox_editingChange_action:(SHTextField *)sender forEvent:(UIEvent *)event {
-    #warning put this back
-    //[self.modelForEditing name_w:sender.text];
+    self.modelForEditing.dailyName = sender.text;
     self.nameStr = sender.text;
 }
 
@@ -189,49 +190,65 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
 
 -(void)streakResetBtn_press_action:(SHEventInfo *)eventInfo {
-    #warning put this back
-    //[self.modelForEditing streak_w:0];
+    self.modelForEditing.streakLength = 0;
 }
 
 #pragma clang diagnostic pop
 
 -(void)saveEdit{
-  #warning put this back
-  //[self.modelForEditing preSave];
-  NSError *error = nil;
-  [self.dataController.mainThreadContext save:&error];
-}
-
-
--(BOOL)deleteModel{
-    if(self.modelForEditing){
-      [self.dataController.mainThreadContext deleteObject:self.modelForEditing];
-      NSError *error = nil;
-      [self.dataController.mainThreadContext save:&error];
-      return YES;
+  NSManagedObjectContext *context = [self.dataController newBackgroundContext];
+  NSString *updatedActiveDays = [self.modelForEditing.activeDaysDict dictToString];
+  self.modelForEditing.activeDays = updatedActiveDays;
+  SHDaily *model = [self.modelForEditing copy];
+  [context performBlock:^{
+    SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:self.modelForEditing.objectID];
+    [daily dtoCopyFrom:model];
+    NSError *error = nil;
+    [context save:&error];
+    if(error){
+      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self showErrorView:@"Save faile" withError:error];
+      }];
     }
-    return NO;
+  }];
 }
 
 
--(void)loadExistingDailyForEditing:(SHDaily *)daily{
+-(void)deleteModel{
+    if(self.modelForEditing.objectID){
+      NSManagedObjectContext *context = [self.dataController newBackgroundContext];
+      NSManagedObjectID *objectID = self.modelForEditing.objectID;
+      [context performBlock:^{
+        NSError *error = nil;
+        NSBatchDeleteRequest *deleteRequest = [[NSBatchDeleteRequest alloc] initWithObjectIDs:@[objectID]];
+        [context executeRequest:deleteRequest error:&error];
+        if(error){
+          [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self showErrorView:@"Delete faile" withError:error];
+          }];
+        }
+      }];
+    }
+}
+
+
+-(void)loadExistingDailyForEditing:(SHDailyDTO *)daily{
     self.nameBox.text = daily.dailyName.length>0?daily.dailyName:@"";
     self.nameStr = self.nameBox.text;
 }
 
 
 -(void)textDidChange:(SHEventInfo *)eventInfo{
-    UITextView *textView = (UITextView *)eventInfo.senderStack[0];
-    #warning put this back
-    //[self.modelForEditing noteText_w:textView.text];
+    UITextView *textView = (UITextView *)eventInfo.senderStack[0];\
+    self.modelForEditing.note = textView.text;
     self.nameStr = textView.text;
 }
     
     
 -(void)rateStep_valueChanged_action:(SHEventInfo *)eventInfo {
     UIStepper *sender = (UIStepper *)eventInfo.senderStack[0];
-    #warning put this back
-    //sender.value = [self.modelForEditing rate_w:(int)sender.value];
+    self.modelForEditing.rate = sender.value;
+    sender.value = self.modelForEditing.rate;
 }
     
     
@@ -250,19 +267,12 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     SHImportanceSliderView *sliderView = (SHImportanceSliderView *)eventInfo.senderStack[1];
     int sliderValue = (int)sender.value;
     [sliderView updateImportanceSlider:sliderValue];
-    #warning put this back
-//    if(sliderView == self.editControls.controlLookup[@"urgencySld"]){
-//        [self.modelForEditing urgency_w:sliderValue];
-//    }
-//    else{
-//        [self.modelForEditing difficulty_w:sliderValue];
-//    }
-}
-
-
--(void)unsaved_closing_action{
-    NSManagedObjectContext *context = self.modelForEditing.managedObjectContext;
-    [context refreshObject:self.modelForEditing mergeChanges:NO];
+    if(sliderView == self.editControls.controlLookup[@"urgencySld"]){
+      self.modelForEditing.urgency = sliderValue;
+    }
+    else{
+      self.modelForEditing.difficulty = sliderValue;
+    }
 }
 
 

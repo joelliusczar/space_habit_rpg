@@ -12,4 +12,5 @@
 +(NSException*)abstractException;
 +(NSException*)oddException;
 +(NSException*)stillUsedException;
++(NSException*)dbException:(NSError *)error;
 @end

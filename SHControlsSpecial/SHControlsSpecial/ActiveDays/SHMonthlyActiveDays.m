@@ -24,7 +24,7 @@
 @implementation SHMonthlyActiveDays
 
 
-+(instancetype)newWithDaily:(SHDaily *)daily{
++(instancetype)newWithDaily:(SHDailyDTO *)daily{
     NSAssert(daily,@"daily was nil");
     SHMonthlyActiveDays *instance = [[SHMonthlyActiveDays alloc] init];
     instance.daily = daily;

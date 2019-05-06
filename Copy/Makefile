@@ -1,4 +1,4 @@
-SH_TOOLS_PATH = ./SH_CTools/
+SH_TOOLS_PATH = ./SHUtils_C/
 SHDATETIME_PATH = ./SHDatetime/
 SH_C_PATH = ./SH_C/
 include SHBase.mk
@@ -52,7 +52,7 @@ $(DT_SHARED_FULL): $(SHDATETIME_OBJECTS) $(SH_TOOLS_FULL)
 	cd $(SHDATETIME_PATH) && $(MAKE)
 
 $(SH_TOOLS_FULL): $(SH_TOOLS_OBJECTS)
-	@echo 'build SH_CTools'
+	@echo 'build SHUtils_C'
 	cd $(SH_TOOLS_PATH) && $(MAKE)
 
 $(SH_TOP_FULL): $(SH_C_OBJECTS) $(DT_SHARED_FULL) $(SH_TOOLS_FULL)

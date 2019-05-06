@@ -12,26 +12,38 @@
 
 
 +(NSException*)abstractException{
-    return [NSException
-            exceptionWithName:@"abstract method exception"
-            reason:@"This method needs to be implemented in a subclass"
-            userInfo:nil];
+  return [NSException
+    exceptionWithName:@"abstract method exception"
+    reason:@"This method needs to be implemented in a subclass"
+    userInfo:nil];
 }
 
 
 +(NSException*)oddException{
-    return [NSException
-            exceptionWithName:@"odd event exception"
-            reason:@"Something really weird was about to happen"
-            userInfo:nil];
+  return [NSException
+    exceptionWithName:@"odd event exception"
+    reason:@"Something really weird was about to happen"
+    userInfo:nil];
 }
 
 
 +(NSException*)stillUsedException{
-    return [NSException
-            exceptionWithName:@"Still used exception"
-            reason:@"yep, this is still used"
-            userInfo:nil];
+  return [NSException
+    exceptionWithName:@"Still used exception"
+    reason:@"yep, this is still used"
+    userInfo:nil];
+}
+
+
++(NSException*)dbException:(NSError*)error{
+  return [NSException
+    exceptionWithName:@"CoreData"
+    reason:[NSString
+      stringWithFormat:@"Error Code: %lu\nDomain:%@\n%@",
+      error.code,
+      error.domain,
+      error.localizedDescription]
+    userInfo:error.userInfo];
 }
 
 @end

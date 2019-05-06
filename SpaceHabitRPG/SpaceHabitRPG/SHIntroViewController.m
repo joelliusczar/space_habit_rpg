@@ -8,7 +8,7 @@
 
 #import "SHIntroViewController.h"
 #import <SHData/SHCoreDataProtocol.h>
-#import <SHModels/SHSettings.h>
+#import <SHModels/SHConfig.h>
 #import "SHStoryConstants.h"
 #import <SHControls/SHFrontEndConstants.h>
 #import "SHSectorChoiceViewController.h"
@@ -173,12 +173,7 @@ scrollIncrement:(CGFloat)scrollIncrement{
   [self.central setToShowStory:YES];
   self.isThreadAllowed = NO;
   self.isStoryDone = YES;
-  NSManagedObjectContext *context = [self.central.dataController newBackgroundContext];
-  NSObject<SHResourceUtilityProtocol> *resourceUtil = self.central.resourceUtil;
-  SHSectorInfoDictionary *sectorInfoDict = [SHSectorInfoDictionary newWithResourceUtil:resourceUtil];
-  SHSector_Medium *zm = [SHSector_Medium newWithContext:context withResourceUtil:resourceUtil withInfoDict:sectorInfoDict];
-  SHSectorDTO *z = [zm newSpecificSector2:HOME_KEY withLvl:1];
-  [self.central afterSectorPick:z withContext:context];
+  [self.central afterIntroStarted];
 }
 
 
@@ -188,13 +183,7 @@ scrollIncrement:(CGFloat)scrollIncrement{
     self.isThreadAllowed = NO;
   }
   [self.central setToShowStory:NO];
-  NSManagedObjectContext *context = [self.central.dataController newBackgroundContext];
-  NSObject<SHResourceUtilityProtocol> *resourceUtil = self.central.resourceUtil;
-  SHSectorInfoDictionary *sectorInfoDict = [SHSectorInfoDictionary newWithResourceUtil:resourceUtil];
-  SHSector_Medium *zm = [SHSector_Medium newWithContext:context withResourceUtil:resourceUtil withInfoDict:sectorInfoDict];
-  
-  SHSectorDTO *z = [zm newSpecificSector2:HOME_KEY withLvl:1];
-  [self.central afterSectorPick:z withContext:context];
+  [self.central afterIntroStarted];
 }
 
 

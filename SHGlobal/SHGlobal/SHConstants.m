@@ -46,6 +46,7 @@ NSString* const SH_ALL_DAYS_JSON = @"{\"daysOfWeek\":[],\"daysOfMonth\":[],\"day
 
 NSString* const SH_TRANSACTION_TYPE_KEY = @"TransactionType";
 NSString* const SH_TRANSACTION_TYPE_CREATE = @"ADDED";
+NSString* const SH_TRANSACTION_TYPE_BATCH_DELETE = @"BATCH_DELETE";
 NSString* const SH_REPORT_USER_ID_KEY = @"reportUserId";
 
 int const SH_MINUTES_IN_HOUR = 60;

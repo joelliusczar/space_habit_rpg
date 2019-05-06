@@ -65,7 +65,7 @@
 }
 - (IBAction)doneBtn_pressed_action:(SHButton *)sender forEvent:(UIEvent *)event{
     [self.prevScreen popVCFromFront];
-    [self.central afterSectorPick:(SHSectorDTO *)self.storyItem withContext:nil];
+    [self.central afterSectorPick:(SHSectorDTO *)self.storyItem];
 }
 
 

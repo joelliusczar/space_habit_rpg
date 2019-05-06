@@ -1,4 +1,4 @@
-SH_TOOLS_PATH = ../SH_CTools/
+SH_TOOLS_PATH = ../SHUtils_C/
 include ../SHBase.mk
 include $(SH_TOOLS_PATH)vars.mk
 include vars.mk

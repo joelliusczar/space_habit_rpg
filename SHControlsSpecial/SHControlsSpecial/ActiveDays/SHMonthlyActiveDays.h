@@ -7,10 +7,10 @@
 // 
 
 #import <SHControls/SHItemFlexibleListView.h>
-#import <SHModels/SHDaily.h>
+#import <SHModels/SHDailyDTO.h>
  
 
 @interface SHMonthlyActiveDays : SHItemFlexibleListView
-@property (weak,nonatomic) SHDaily *daily;
-+(instancetype)newWithDaily:(SHDaily *)daily;
+@property (weak,nonatomic) SHDailyDTO *daily;
++(instancetype)newWithDaily:(SHDailyDTO *)daily;
 @end

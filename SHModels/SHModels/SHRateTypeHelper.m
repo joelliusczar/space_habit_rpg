@@ -69,6 +69,22 @@ BOOL shAreYearlyRateValueItemsEqual(SHRateValueItemDict *a,SHRateValueItemDict *
 }
 
 
+NSString * shGetRateUnitName(SHRateType rateType,BOOL isPlural){
+  SHRateType baseType = shExtractBaseRateType(rateType);
+  switch (baseType) {
+    case SH_DAILY_RATE:
+      return isPlural ? @"days" : @"day";
+      break;
+    case SH_WEEKLY_RATE:
+      return isPlural ? @"weeks" : @"week";
+    case SH_YEARLY_RATE:
+      return isPlural ? @"years" : @"year";
+    default:
+      return @"gibberish";
+  }
+}
+
+
 NSString * shGetFormatString(SHRateType rateType, NSInteger rate){
     switch(rateType){
         case SH_DAILY_RATE:

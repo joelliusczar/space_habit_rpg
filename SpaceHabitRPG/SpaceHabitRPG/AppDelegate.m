@@ -8,12 +8,12 @@
 
 #import "AppDelegate.h"
 #import <SHCommon/SHNotificationHelper.h>
-#import <SHData/SingletonCluster+Data.h>
-#import <SHModels/SHStoryItemDictionary.h>
+#import <SHModels/SHBundleKey.h>
 
 
 @interface AppDelegate ()
-
+@property (strong,nonatomic) SHCoreData *dataController;
+@property (strong,nonatomic) SHResourceUtility *resourceUtil;
 @end
 
 @implementation AppDelegate
@@ -26,13 +26,19 @@ void printWorkingDir(){
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     (void)application;
     (void)launchOptions;
-    SharedGlobal.bundle = [NSBundle bundleForClass:SHStoryItemDictionary.class];
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    NSObject<P_CoreData> *dataController = SHData;
-    self.centralController = [SHCentralViewController newWithDataController:dataController
-      andNibName:@"CentralViewController"
-      andResourceUtil:SharedGlobal.resourceUtility
+  
+    NSBundle *modelsBundle = [NSBundle bundleForClass:SHBundleKey.class];
+    self.dataController = [SHCoreData newWithOptionsBlock:^(SHCoreDataOptions *options){
+      options.appBundle = modelsBundle;
+    }];
+    self.resourceUtil = [SHResourceUtility new];
+    self.centralController = [SHCentralViewController
+      newWithDataController:self.dataController
+      andNibName:@"SHCentralViewController"
+      andResourceUtil:self.resourceUtil
       andBundle:nil];
+  
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = self.centralController;
     [self.window makeKeyAndVisible];
     // Override point for customization after application launch.

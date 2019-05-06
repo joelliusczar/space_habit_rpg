@@ -25,4 +25,10 @@
   [self removeFromParentViewController];
 }
 
+
+-(void)showErrorView:(NSString*)name withError:(NSError*)error{
+  (void)name;
+  (void)error;
+}
+
 @end

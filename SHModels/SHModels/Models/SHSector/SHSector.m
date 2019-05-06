@@ -17,6 +17,18 @@
 }
 
 
+-(id)valueForUndefinedKey:(NSString *)key{
+  (void)key;
+  return nil;
+}
+
+
+-(void)setValue:(id)value forUndefinedKey:(NSString *)key{
+  (void)value;
+  (void)key;
+}
+
+
 static void copyBetween(NSObject* from,NSObject* to){
   shCopyInstanceVar(from, to, @"isFront");
   shCopyInstanceVar(from, to, @"lvl");

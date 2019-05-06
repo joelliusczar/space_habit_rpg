@@ -34,6 +34,7 @@ GCC_PREPROCESSOR_DEFINITIONS[sdk=iphoneos*] = $(inherited) IS_IOS=1
 
 GCC_PREPROCESSOR_DEFINITIONS[sdk=iphonesimulator*] = $(inherited) IS_IOS=1
 
+C_PUBLIC_HEADERS = /usr/local/include
 
 
 

@@ -33,6 +33,7 @@
 		2747C518204A491E00FB5669 /* SHDailyEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C517204A491E00FB5669 /* SHDailyEditController.m */; };
 		2747C51A204A494A00FB5669 /* SHDailyEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2747C519204A494A00FB5669 /* SHDailyEditView.xib */; };
 		2747C51D204A499000FB5669 /* SHDailyEditController+ControlLoaders.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C51C204A499000FB5669 /* SHDailyEditController+ControlLoaders.m */; };
+		2787044F227A823B009C9DD6 /* libSHCore_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2787044E227A823B009C9DD6 /* libSHCore_C.a */; };
 		27B15AA920524CB60045B226 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AA820524CB60045B226 /* SHCommon.framework */; };
 		27B15AAB20524CDC0045B226 /* SHControlsSpecial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AAA20524CDC0045B226 /* SHControlsSpecial.framework */; };
 		27B15AAD20524CFE0045B226 /* SHControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AAC20524CFE0045B226 /* SHControls.framework */; };
@@ -85,6 +86,7 @@
 		2747C51B204A498F00FB5669 /* SHDailyEditController+ControlLoaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SHDailyEditController+ControlLoaders.h"; sourceTree = "<group>"; };
 		2747C51C204A499000FB5669 /* SHDailyEditController+ControlLoaders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SHDailyEditController+ControlLoaders.m"; sourceTree = "<group>"; };
 		276951A420437DF5002D1C9A /* SpaceHabitRPG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceHabitRPG.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2787044E227A823B009C9DD6 /* libSHCore_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHCore_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		279848D42250FEB700039A29 /* SpaceHabitRPG.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SpaceHabitRPG.base.xcconfig; sourceTree = "<group>"; };
 		27B15AA820524CB60045B226 /* SHCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHCommon.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHCommon.framework"; sourceTree = "<group>"; };
 		27B15AAA20524CDC0045B226 /* SHControlsSpecial.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHControlsSpecial.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHControlsSpecial.framework"; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2787044F227A823B009C9DD6 /* libSHCore_C.a in Frameworks */,
 				27B15AA920524CB60045B226 /* SHCommon.framework in Frameworks */,
 				27B15AAF20524D6E0045B226 /* SHModels.framework in Frameworks */,
 				27B15AAD20524CFE0045B226 /* SHControls.framework in Frameworks */,
@@ -112,6 +115,7 @@
 		2747C4A12048D55600FB5669 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2787044E227A823B009C9DD6 /* libSHCore_C.a */,
 				27B15AAE20524D6E0045B226 /* SHModels.framework */,
 				27B15AAC20524CFE0045B226 /* SHControls.framework */,
 				27B15AAA20524CDC0045B226 /* SHControlsSpecial.framework */,

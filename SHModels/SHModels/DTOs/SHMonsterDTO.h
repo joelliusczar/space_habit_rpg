@@ -10,12 +10,14 @@
 #import "SHStoryItemProtocol.h"
 #import "SHMonsterInfoDictionary.h"
 #import <SHCommon/SHObject.h>
+@import CoreData;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHMonsterDTO : SHObject<SHStoryItemProtocol,NSCopying>
 +(instancetype)newWithMonsterDict:(SHMonsterInfoDictionary*)monInfoDict;
 @property (strong,nonatomic) SHMonsterInfoDictionary *monInfoDict;
+@property (strong,nonatomic) NSManagedObjectID *objectID;
 @property (nonatomic,readonly) int32_t attack;
 @property (nonatomic,readonly) int32_t defense;
 @property (nonatomic,readonly) int32_t xp;
