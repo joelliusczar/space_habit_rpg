@@ -8,6 +8,8 @@
 
 #import <SHCommon/SHCommon.h>
 #import "SHModelError.h"
+#import "SHListRateItemCollection.h"
+#import "SHRangeRateItem.h"
 @import CoreData;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -17,6 +19,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) BOOL isTouched;
 
 @property (strong,nonatomic) NSManagedObjectID *objectID;
+@property (readonly,nonatomic) SHListRateItemCollection *monthlyActiveDays;
+@property (readonly,nonatomic) SHListRateItemCollection *monthlyActiveDaysInv;
+@property (readonly,nonatomic) SHListRateItemCollection *yearlyActiveDays;
+@property (readonly,nonatomic) SHListRateItemCollection *yearlyActiveDaysInv;
+@property (readonly,nonatomic) NSArray<SHRangeRateItem*> *weeklyActiveDays;
+@property (readonly,nonatomic) NSArray<SHRangeRateItem*> *weeklyActiveDaysInv;
+@property (readonly,nonatomic) NSUInteger daysUntilDue;
 @property (strong,nonatomic) NSMutableDictionary *activeDaysDict;
 @property (nullable, nonatomic, copy) NSString *activeDays;
 @property (nullable, nonatomic, copy) NSDate *activeFromDate;
@@ -35,6 +44,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSDate *rollbackActivationDateTime;
 @property (nonatomic) int32_t streakLength;
 @property (nonatomic) int32_t urgency;
+
+@property (nonatomic) NSUInteger dayStart;
+
+-(void)setupDefaults;
+-(void)flipDayOfWeek:(NSUInteger)dayIdx;
 
 @end
 

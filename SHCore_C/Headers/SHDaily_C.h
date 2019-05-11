@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <inttypes.h>
-#include "SHDatetime.h"
+#include "SHDatetimeFuncs.h"
 #include "SHErrorHandling.h"
 #include "SHRateValueItem.h"
 

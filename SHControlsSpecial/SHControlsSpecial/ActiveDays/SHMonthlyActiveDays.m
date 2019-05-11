@@ -24,84 +24,70 @@
 @implementation SHMonthlyActiveDays
 
 
-+(instancetype)newWithDaily:(SHDailyDTO *)daily{
-    NSAssert(daily,@"daily was nil");
-    SHMonthlyActiveDays *instance = [[SHMonthlyActiveDays alloc] init];
-    instance.daily = daily;
-    [instance commonSetup];
-    [instance.addItemsFooter.addItemBtn setTitle:@"Add day of the month" forState:UIControlStateNormal];
-    return instance;
++(instancetype)newWithListRateItemCollection:(SHListRateItemCollection *)activeDays
+  inverseActiveDays:(SHListRateItemCollection*)inverseActiveDays
+{
+  SHMonthlyActiveDays *instance = [[SHMonthlyActiveDays alloc] init];
+  instance.activeDays = activeDays;
+  instance.inverseActiveDays = inverseActiveDays;
+  [instance commonSetup];
+  [instance.addItemsFooter.addItemBtn setTitle:@"Add day of the month" forState:UIControlStateNormal];
+  return instance;
 }
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunused-parameter"
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    //return self.daily.inUseActiveDays.count;
-    return 0;
-    #warning "unimplemeted";
+  (void)tableView; (void)section;
+  return self.activeDays.count;
 }
 
-#pragma clang diagnostic pop
 
 -(UITableViewCell *)tableView:(UITableView *)tableView
-        cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    SHListItemCell *cell = [SHListItemCell getListItemCell:tableView];
-    SHRateValueItemDict *monthItemDict = nil;//self.daily.inUseActiveDays[indexPath.row];
-    NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
-    numFormatter.locale = NSLocale.currentLocale;
-    numFormatter.numberStyle = NSNumberFormatterOrdinalStyle;
-    NSString *ordinal = [numFormatter stringFromNumber:[monthItemDict[SH_ORDINAL_WEEK_KEY] plusInteger:1]];
-    NSString *dayOfWeek = NSCalendar.currentCalendar.weekdaySymbols[monthItemDict[SH_DAY_OF_WEEK_KEY].integerValue];
-    cell.lblRowDesc.text = [NSString stringWithFormat:@"%@ %@",ordinal,dayOfWeek];
-    return cell;
+  cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  SHListItemCell *cell = [SHListItemCell getListItemCell:tableView];
+  SHListRateItem *rateItem = self.activeDays[indexPath.row];
+  NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
+  numFormatter.locale = NSLocale.currentLocale;
+  numFormatter.numberStyle = NSNumberFormatterOrdinalStyle;
+  NSString *ordinal = [numFormatter stringFromNumber:@(rateItem.majorOrdinal)];
+  NSString *dayOfWeek = NSCalendar.currentCalendar.weekdaySymbols[rateItem.minorOrdinal];
+  cell.lblRowDesc.text = [NSString stringWithFormat:@"%@ %@",ordinal,dayOfWeek];
+  return cell;
 }
 
 
 -(void)addItemBtn_press_action:(SHEventInfo *)eventInfo{
-    shWrapReturnVoid wrappedCall = ^(){
-        [self hideKeyboard];
-        SHMonthPartPicker *dayOfMonthPicker = [[SHMonthPartPicker alloc] init];
-        [self showSHSpinPicker:dayOfMonthPicker];
-        [eventInfo.senderStack addObject:self];
-        [super addItemBtn_press_action:eventInfo];
-    };
-    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+  [self hideKeyboard];
+  SHMonthPartPicker *dayOfMonthPicker = [[SHMonthPartPicker alloc] init];
+  [self showSHSpinPicker:dayOfMonthPicker];
+  [eventInfo.senderStack addObject:self];
+  [super addItemBtn_press_action:eventInfo];
 }
 
 
 -(void)pickerSelection_action:(SHEventInfo *)eventInfo{
-    shWrapReturnVoid wrappedCall = ^(){
-        UIPickerView *picker = (UIPickerView *)eventInfo.senderStack[1];
-        [self addCellWithWeekOrdinal:[picker selectedRowInComponent:0]
-                                        dayOfWeek:[picker selectedRowInComponent:1]];
-        [eventInfo.senderStack addObject:self];
-        [super pickerSelection_action:eventInfo];
-    };
-    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+  UIPickerView *picker = (UIPickerView *)eventInfo.senderStack[1];
+  [self addCellWithWeekOrdinal:[picker selectedRowInComponent:0]
+    dayOfWeek:[picker selectedRowInComponent:1]];
+  [eventInfo.senderStack addObject:self];
+  [super pickerSelection_action:eventInfo];
 }
 
 
 -(void)addCellWithWeekOrdinal:(NSInteger)weekOrdinal dayOfWeek:(NSInteger)dayOfWeek{
-  #warning unimplemented
-//    NSInteger row = [self.daily addMonthlyItem:self.daily.isInverseRateType
-//                                       ordinal:weekOrdinal
-//                                  dayOfWeekNum:dayOfWeek];
-//    if(row >= 0){
-//        [self addItemToTableAndScale:row];
-//    }
+  SHListRateItem *rateItem = [[SHListRateItem alloc] initWithMajorOrdinal:weekOrdinal
+    minorOrdinal:dayOfWeek];
+  NSInteger row = [self.activeDays addRateItem:rateItem];
+  if(row >= 0){
+    [self addItemToTableAndScale:row];
+  }
 }
 
 
 -(void)deleteCellAt:(NSIndexPath *)indexPath{
-    //[self.daily deleteRateValueItem:self.daily.rateType atIndex:indexPath.row];
-    [self removeItemFromTableAndScale:indexPath];
-}
-
-
--(NSInteger)backendListCount{
-    //return self.daily.inUseActiveDays.count;
-    return 0;
+  [self.activeDays removeRateItemAtIndex:indexPath.row];
+  [self removeItemFromTableAndScale:indexPath];
 }
 
 

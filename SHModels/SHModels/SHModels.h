@@ -65,6 +65,9 @@ FOUNDATION_EXPORT const unsigned char SHModelsVersionString[];
 #import "SHBundleKey.h"
 #import "Model+CoreDataModel.h"
 #import "SHModelError.h"
+#import "SHListRateItem.h"
+#import "SHListRateItemCollection.h"
+#import "SHRangeRateItem.h"
 
 // In this header, you should import all the public headers of your framework using statements like #import <SHModels/PublicHeader.h>
 

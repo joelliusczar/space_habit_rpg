@@ -46,7 +46,7 @@
         rateContainer.tblDelegate = responder;
     }];
     [keep forResponderKey:@"_" doSetupAction:^(id responder){
-        rateContainer.weeklyDaysDelegate = responder;
+        rateContainer.touchCallback = responder;
     }];
     return rateContainer;
   }];

@@ -30,12 +30,14 @@
 }
 
 - (IBAction)activeDaySwitch_press_action:(SHSwitch *)sender forEvent:(UIEvent *)event {
-    SHEventInfo *e = eventInfoCopy;
-    [self.delegate activeDaySwitch_press_action:e];
+    (void)sender; (void)event;
+    if(self.touchCallback){
+      self.touchCallback();
+    }
 }
 
 
--(void)setActiveDaysOfWeek:(SHRateValueItem *)activeDays{
+-(void)setActiveDaysOfWeek:(NSArray<SHRangeRateItem*>*)activeDays{
     for(SHSwitch *flip in self.activeDaySwitches){
         flip.isOn = activeDays[flip.tag].isDayActive;
     }

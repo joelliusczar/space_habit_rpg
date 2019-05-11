@@ -23,4 +23,35 @@
   return shArrayWithItemsAsDicts(self, transformer,cycleTracker);
 }
 
+
+-(NSUInteger)findPlaceFor:(id)object whereFirstFits:(BOOL (^)(id,id))bestFitBlock{
+    if(self.count == 0){
+        return 0;
+    }
+    for(NSUInteger i = 0;i<self.count;i++){
+        if(bestFitBlock(self[i],object)){
+            return i;
+        }
+    }
+    return self.count;
+}
+
+
+-(NSUInteger)findPlaceFor:(id)object whereFirstFitsFP:(BOOL (*)(id,id))bestFitFP{
+  return [self findPlaceFor:object whereFirstFits:^BOOL(id a,id b){
+    return bestFitFP(a,b);
+  }];
+}
+
+
+-(NSMutableArray*)mapItemsTo:(id (^)(id,NSUInteger))mapper{
+  NSMutableArray *result = [NSMutableArray arrayWithCapacity:self.count];
+  NSUInteger idx = 0;
+  for (id obj in self) {
+    [result addObject:mapper(obj,idx)];
+    idx++;
+  }
+  return result;
+}
+
 @end

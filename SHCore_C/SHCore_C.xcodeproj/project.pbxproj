@@ -10,7 +10,7 @@
 		271691CC20885F890059A58E /* SHDaily_C.h in Headers */ = {isa = PBXBuildFile; fileRef = 271691CA20885F890059A58E /* SHDaily_C.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271691CD20885F890059A58E /* SHDaily_C.c in Sources */ = {isa = PBXBuildFile; fileRef = 271691CB20885F890059A58E /* SHDaily_C.c */; };
 		2769C09D227DD70800217480 /* SHCore_C.h in Headers */ = {isa = PBXBuildFile; fileRef = 27870450227BC188009C9DD6 /* SHCore_C.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2769C0A8227FB83E00217480 /* module.modulemap in CopyFiles */ = {isa = PBXBuildFile; fileRef = 27870452227BCA35009C9DD6 /* module.modulemap */; };
+		2769C0C82285E71800217480 /* module.modulemap in CopyFiles */ = {isa = PBXBuildFile; fileRef = 27870452227BCA35009C9DD6 /* module.modulemap */; };
 		277970CD21FD764C00D3F86D /* SHRateValueItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 277970CC21FD75E900D3F86D /* SHRateValueItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27BCF912227BE97800540F4F /* libSHDatetime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27BCF911227BE97800540F4F /* libSHDatetime.a */; };
 /* End PBXBuildFile section */
@@ -22,7 +22,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				2769C0A8227FB83E00217480 /* module.modulemap in CopyFiles */,
+				2769C0C82285E71800217480 /* module.modulemap in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,10 +169,10 @@
 			buildPhases = (
 				2769C0A9227FB89700217480 /* ShellScript */,
 				271691BE20885EF70059A58E /* Sources */,
+				27870456227BCFCD009C9DD6 /* CopyFiles */,
 				271691BF20885EF70059A58E /* Frameworks */,
 				271691C020885EF70059A58E /* Headers */,
 				27DF9C422094EB5100F98023 /* ShellScript */,
-				27870456227BCFCD009C9DD6 /* CopyFiles */,
 			);
 			buildRules = (
 			);

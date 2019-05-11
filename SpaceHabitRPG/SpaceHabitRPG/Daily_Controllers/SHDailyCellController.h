@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SHModels/SHDaily.h>
+#import <SHModels/SHDailyDTO.h>
 #import <SHControls/SHTaskCell.h>
 #import "SHDailyViewController.h"
 #import <SHControls/SHButton.h>
@@ -18,6 +18,6 @@
 @property (weak,nonatomic) IBOutlet UILabel *streakLbl;
 @property (weak,nonatomic) IBOutlet SHButton *completeBtn;
 +(instancetype)getDailyCell:(UITableView *)tableView WithParent:(SHDailyViewController *)parent;
--(void)setupCell:(SHDaily *)model AndRow:(NSIndexPath *)rowInfo;
+-(void)setupCell:(SHDailyDTO *)model AndRow:(NSIndexPath *)rowInfo;
 -(void)refreshCell:(NSIndexPath *)rowInfo;
 @end

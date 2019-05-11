@@ -17,7 +17,7 @@
 
 
 @interface SHDailyCellController()
-@property (nonatomic,weak) SHDaily *model;
+@property (nonatomic,weak) SHDailyDTO *model;
 @property (nonatomic,weak) SHDailyViewController *parentDailyController;
 @property (assign,nonatomic) NSInteger rowIndex;
 @property (assign,nonatomic) NSInteger sectionIndex;
@@ -27,23 +27,22 @@
 @implementation SHDailyCellController
 
 +(instancetype)getDailyCell:(UITableView *)tableView WithParent:(SHDailyViewController *)parent{
-    SHDailyCellController *cell = [tableView
-                                 dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
-    if(nil==cell){
-        cell = [[SHDailyCellController alloc] init];
-    }
-    cell.parentDailyController = parent;
-    return cell;
+  SHDailyCellController *cell = [tableView
+    dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
+  if(nil==cell){
+    cell = [[SHDailyCellController alloc] init];
+  }
+  cell.parentDailyController = parent;
+  return cell;
 }
 
 - (void)awakeFromNib {
-    [super awakeFromNib];
+  [super awakeFromNib];
 }
 
--(void)setupCell:(SHDaily *)model AndRow:(NSIndexPath *)rowInfo{
+-(void)setupCell:(SHDailyDTO *)model AndRow:(NSIndexPath *)rowInfo{
     self.model = model;
     [self refreshCell:rowInfo];
-    
 }
 
 -(void)refreshCell:(NSIndexPath *)rowInfo{
@@ -62,8 +61,8 @@
     //for due in x days
     if(self.model.rate > 1){
         self.daysLeftLbl.hidden = NO;
-        #warning put this back 
-        //self.daysLeftLbl.text = self.model.daysUntilDue==0?@"Today":[NSString stringWithFormat:@"Due in %d days",self.model.daysUntilDue];
+        self.daysLeftLbl.text = self.model.daysUntilDue==0?@"Today":
+          [NSString stringWithFormat:@"Due in %lul days",self.model.daysUntilDue];
     }
     else{
         self.daysLeftLbl.hidden = YES;

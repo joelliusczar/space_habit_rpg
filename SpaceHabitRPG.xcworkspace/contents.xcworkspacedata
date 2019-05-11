@@ -73,9 +73,6 @@
          location = "group:SHData.sh">
       </FileRef>
       <FileRef
-         location = "group:SHDatetime.sh">
-      </FileRef>
-      <FileRef
          location = "group:SHGlobal.sh">
       </FileRef>
       <FileRef

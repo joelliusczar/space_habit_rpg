@@ -9,7 +9,7 @@
 #import "NSDate+DateHelper.h"
 #import "NSLocale+Helper.h"
 #import <objc/runtime.h>
-#import <SHDatetime.h>
+#import <SHDatetimeFuncs.h>
 #import <SHErrorHandling.h>
 #import "NSException+SHCommonExceptions.h"
 #import "SHSingletonCluster.h"

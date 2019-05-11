@@ -8,10 +8,9 @@
 
 @import UIKit;
 @import SHControls;
-#import "SHWeeklyActiveDaysDelegateProtocol.h"
 #import <SHGlobal/SHConstants.h>
 #import <SHModels/SHModelConstants.h>
-#import <SHCore_C/SHRateValueItem.h>
+#import <SHModels/SHRangeRateItem.h>
 
 
 IB_DESIGNABLE
@@ -24,6 +23,6 @@ IB_DESIGNABLE
 @property (weak,nonatomic) IBOutlet SHSwitch *thursdaySwitch;
 @property (weak,nonatomic) IBOutlet SHSwitch *fridaySwitch;
 @property (weak,nonatomic) IBOutlet SHSwitch *saturdaySwitch;
-@property (weak,nonatomic) id<SHWeeklyActiveDaysDelegateProtocol> delegate;
--(void)setActiveDaysOfWeek:(SHRateValueItem *)activeDays;
+@property (copy,nonatomic) void (^touchCallback)(void);
+-(void)setActiveDaysOfWeek:(NSArray<SHRangeRateItem*> *)activeDays;
 @end

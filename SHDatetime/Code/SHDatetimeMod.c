@@ -522,9 +522,9 @@ bool  shTimestampToDtUnitsOnly_m(double timestamp,SHDatetime *dt,SHError *error)
   SHTimeshift *shifts = dt->shifts;
   int shiftLen = dt->shiftLen;
   int shiftIdx = dt->currentShiftIdx;
-  if(! shTryTimestampToDt_m(timestamp,dt->timezoneOffset,dt,error)){
-      return shHandleError(error ? error->code:GEN_ERROR,
-                "There was an error converting timestamp to datetime obj",error);
+  if(!shTryTimestampToDt_m(timestamp,dt->timezoneOffset,dt,error)){
+    return shHandleError(error ? error->code:GEN_ERROR,
+      "There was an error converting timestamp to datetime obj",error);
   }
   dt->shifts = shifts;
   dt->shiftLen = shiftLen;

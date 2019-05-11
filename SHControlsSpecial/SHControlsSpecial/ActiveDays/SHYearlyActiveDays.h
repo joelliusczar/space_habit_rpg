@@ -7,10 +7,12 @@
 //
 
 #import <SHControls/SHItemFlexibleListView.h>
-#import <SHModels/SHDaily.h>
+#import <SHModels/SHListRateItemCollection.h>
 
 
 @interface SHYearlyActiveDays : SHItemFlexibleListView
-@property (weak,nonatomic) SHDaily *daily;
-+(instancetype)newWithDaily:(SHDaily *)daily;
+@property (strong,nonatomic) SHListRateItemCollection *activeDays;
+@property (strong,nonatomic) SHListRateItemCollection *inverseActiveDays;
++(instancetype)newWithListRateItemCollection:(SHListRateItemCollection *)activeDays
+  inverseActiveDays:(SHListRateItemCollection*)inverseActiveDays;
 @end

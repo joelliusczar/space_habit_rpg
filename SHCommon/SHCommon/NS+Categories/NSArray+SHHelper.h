@@ -11,13 +11,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSArray (SHHelper)
+@interface NSArray<ItemType> (SHHelper)
 -(NSMutableArray*)arrayWithItemsAsDicts;
 
 -(NSMutableArray*)arrayWithItemsAsDictsWithTransformer:
   (shDictEntrytransformer)transformer
   withSet:(NSMutableSet*)cycleTracker;
+  
+-(NSUInteger)findPlaceFor:(ItemType)object whereFirstFits:(BOOL (^)(ItemType,ItemType))bestFitBlock;
+-(NSUInteger)findPlaceFor:(ItemType)object whereFirstFitsFP:(BOOL (*)(ItemType,ItemType))bestFitFP;
 
+-(NSMutableArray*)mapItemsTo:(id (^)(id,NSUInteger))mapper;
 @end
 
 NS_ASSUME_NONNULL_END

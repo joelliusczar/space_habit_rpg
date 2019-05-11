@@ -22,13 +22,13 @@ SHView
 @property (weak,nonatomic) IBOutlet UIView  * _Nullable activeDaysControlContainer;
 @property (weak,nonatomic) IBOutlet SHRateSetterView * _Nullable rateSetter;
 @property (weak,nonatomic) IBOutlet SHButton * _Nullable invertRateTypeBtn;
-@property (readonly,strong,nonatomic) SHMonthlyActiveDays * _Nullable monthlyActiveDays;
-@property (readonly,strong,nonatomic) SHWeeklyActiveDays * _Nullable weeklyActiveDays;
-@property (readonly,strong,nonatomic) SHYearlyActiveDays * _Nullable yearlyActiveDays;
+@property (readonly,strong,nonatomic) SHMonthlyActiveDays * monthlyActiveDays;
+@property (readonly,strong,nonatomic) SHWeeklyActiveDays * weeklyActiveDays;
+@property (readonly,strong,nonatomic) SHYearlyActiveDays * yearlyActiveDays;
 @property (weak,nonatomic) id<SHRateSetterDelegateProtocol> _Nullable delegate;
 @property (weak,nonatomic) id<SHItemFlexibleListDelegateProtocol> _Nullable tblDelegate;
 @property (weak,nonatomic) id<SHResizeResponderProtocol> _Nullable resizeResponder;
-@property (weak,nonatomic) id<SHWeeklyActiveDaysDelegateProtocol> _Nullable weeklyDaysDelegate;
+@property (copy,nonatomic) void (^touchCallback)(void);
 @property (strong,nonatomic) SHDailyDTO *daily;
 @property (strong,nonatomic) SHControlKeep * _Nullable rateControls;
 +(instancetype)newWithDaily:(SHDailyDTO *)daily;

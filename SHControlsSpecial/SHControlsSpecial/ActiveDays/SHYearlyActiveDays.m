@@ -13,6 +13,7 @@
 #import <SHCommon/SHInterceptor.h>
 #import <SHControls/SHEventInfo.h>
 #import <SHModels/SHModelConstants.h>
+#import <SHModels/SHListRateItem.h>
 #import <SHGlobal/SHConstants.h>
 
 @interface SHYearlyActiveDays ()
@@ -20,81 +21,68 @@
 
 @implementation SHYearlyActiveDays
 
-+(instancetype)newWithDaily:(SHDaily *)daily{
++(instancetype)newWithListRateItemCollection:(SHListRateItemCollection *)activeDays
+  inverseActiveDays:(SHListRateItemCollection*)inverseActiveDays
+{
     SHYearlyActiveDays *instance = [[SHYearlyActiveDays alloc] init];
-    instance.daily = daily;
+    instance.activeDays = activeDays;
+    instance.inverseActiveDays = inverseActiveDays;
     [instance commonSetup];
     [instance.addItemsFooter.addItemBtn setTitle:@"Add day of the year" forState:UIControlStateNormal];
     return instance;
 }
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunused-parameter"
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    //return self.daily.inUseActiveDays.count;
-    return 0;
-    #warning "unimplemented";
+  (void)tableView; (void)section;
+  return self.activeDays.count;;
 }
 
-#pragma clang diagnostic pop
 
 -(UITableViewCell *)tableView:(UITableView *)tableView
   cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-#warning put back
   SHListItemCell *cell = [SHListItemCell getListItemCell:tableView];
-  SHRateValueItemDict *yearItemDict = nil;//self.daily.inUseActiveDays[indexPath.row];
-  NSString *month = NSCalendar.currentCalendar.monthSymbols[yearItemDict[SH_MONTH_KEY].integerValue];
-  cell.lblRowDesc.text = [NSString stringWithFormat:@"%@ %@",month,yearItemDict[SH_DAY_OF_MONTH_KEY]];
+  SHListRateItem *rateItem = self.activeDays[indexPath.row];
+  NSString *month = NSCalendar.currentCalendar.monthSymbols[rateItem.majorOrdinal];
+  cell.lblRowDesc.text = [NSString stringWithFormat:@"%@ %ld",month,rateItem.minorOrdinal + 1];
   return cell;
 }
 
 
 -(void)addItemBtn_press_action:(SHEventInfo *)eventInfo{
-    shWrapReturnVoid wrappedCall = ^(){
-        [self hideKeyboard];
-        SHYearPartPicker *dayOfYearPicker = [[SHYearPartPicker alloc] init];
-        [self showSHSpinPicker:dayOfYearPicker];
-        [eventInfo.senderStack addObject:self];
-        [super addItemBtn_press_action:eventInfo];
-    };
-    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+  [self hideKeyboard];
+  SHYearPartPicker *dayOfYearPicker = [[SHYearPartPicker alloc] init];
+  [self showSHSpinPicker:dayOfYearPicker];
+  [eventInfo.senderStack addObject:self];
+  [super addItemBtn_press_action:eventInfo];
 }
 
 
 -(void)pickerSelection_action:(SHEventInfo *)eventInfo{
-    shWrapReturnVoid wrappedCall = ^(){
-        UIPickerView *picker = (UIPickerView *)eventInfo.senderStack[1];
-        [self addCellWithMonth:[picker selectedRowInComponent:0]
-                        dayOfMonth:[picker selectedRowInComponent:1]];
-        [eventInfo.senderStack addObject:self];
-        [super pickerSelection_action:eventInfo];
-    };
-    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+  UIPickerView *picker = (UIPickerView *)eventInfo.senderStack[1];
+  [self addCellWithMonth:[picker selectedRowInComponent:0]
+    dayOfMonth:[picker selectedRowInComponent:1]];
+  [eventInfo.senderStack addObject:self];
+  [super pickerSelection_action:eventInfo];
 }
 
 
 -(void)addCellWithMonth:(NSInteger)month dayOfMonth:(NSInteger)dayOfMonth{
-//    NSInteger row = [self.daily addYearlyItem:self.daily.isInverseRateType
-//                                     monthNum:month
-//                                   dayOfMonth:dayOfMonth+1];
-//    if(row >= 0){
-//        [self addItemToTableAndScale:row];
-//    }
-#warning "unimplemented"
+  SHListRateItem *rateItem = [[SHListRateItem alloc] initWithMajorOrdinal:month
+    minorOrdinal:dayOfMonth + 1];
+  NSInteger row = [self.activeDays addRateItem:rateItem];
+  if(row >= 0){
+      [self addItemToTableAndScale:row];
+  }
 }
 
 
 -(void)deleteCellAt:(NSIndexPath *)indexPath{
-    //[self.daily deleteRateValueItem:self.daily.rateType atIndex:indexPath.row];
+    [self.activeDays removeRateItemAtIndex:indexPath.row];
     [self removeItemFromTableAndScale:indexPath];
 }
 
--(NSInteger)backendListCount{
-    //return self.daily.inUseActiveDays.count;
-    return 0;
-}
 
 
 @end

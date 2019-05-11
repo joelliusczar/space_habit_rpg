@@ -69,8 +69,6 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
     [self setupModelForEditing];
     [self setupEditControls];
     [self loadExistingDailyForEditing:self.modelForEditing];
-    #warning put this back
-    //self.modelForEditing.lastUpdateTime = [NSDate date];
     
     //it is important that this table delegate stuff happens after we check
     //for the existence of the model, otherwise table events will trigger
@@ -99,15 +97,9 @@ NSString* const IS_TOUCHED = @"modelForEditing.isTouched";
     //I don't want modelForEditing lazy loaded because it makes the logic confusing.
     //sometimes it unexpectedly gets initialized and that messes things up.
     //So, I want exact control over when it gets initialized
-    if(self.modelForEditing){
-        if(![self.dataController.mainThreadContext.registeredObjects containsObject:self.modelForEditing]){
-            self.modelForEditing = [self.dataController.mainThreadContext objectWithID:self.modelForEditing.objectID];
-        }
-    }
-    else{
-        self.modelForEditing = [self.daily_Medium newDailyWithContext:self.dataController.mainThreadContext];
-        #warning put this back
-        //[self.modelForEditing setupDefaults];
+    if(nil == self.modelForEditing){
+      self.modelForEditing = [[SHDailyDTO alloc] init];
+      [self.modelForEditing setupDefaults];
     }
 }
 
@@ -255,10 +247,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 -(void)activeDaySwitch_press_action:(SHEventInfo *)eventInfo{
   (void)eventInfo;
   SHSwitch *sender = (SHSwitch *)eventInfo.senderStack[0];
-  #warning put this back
-//  [self.modelForEditing
-//    flipDayOfWeek_w:sender.tag
-//    for:isInverseRateType(self.modelForEditing.rateType)];
+  [self.modelForEditing flipDayOfWeek:sender.tag];
 }
     
     

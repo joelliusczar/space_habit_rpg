@@ -132,7 +132,7 @@
         
         SHConfigDTO *dto = [SHConfigDTO new];
         [dto dtoCopyFrom:config];
-        _configDTO = dto;
+        self->_configDTO = dto;
       }];
     });
 

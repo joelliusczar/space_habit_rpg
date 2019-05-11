@@ -26,7 +26,6 @@
 		2747C46E2047C95400FB5669 /* SHReminderCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C46A2047C95400FB5669 /* SHReminderCellController.m */; };
 		2747C46F2047C95400FB5669 /* SHReminderListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C46B2047C95400FB5669 /* SHReminderListView.m */; };
 		2747C4702047C95400FB5669 /* SHReminderCellController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C46C2047C95400FB5669 /* SHReminderCellController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2747C4722047CAB500FB5669 /* SHWeeklyActiveDaysDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C4712047CAB500FB5669 /* SHWeeklyActiveDaysDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C47D2048C9A200FB5669 /* SHReminderTimeSpinPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C47B2048C9A200FB5669 /* SHReminderTimeSpinPicker.m */; };
 		2747C47E2048C9A200FB5669 /* SHReminderTimeSpinPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C47C2048C9A200FB5669 /* SHReminderTimeSpinPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C4FD20490C7700FB5669 /* SHReminderTimeSpinPickerDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C4FC20490C7700FB5669 /* SHReminderTimeSpinPickerDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -177,7 +176,6 @@
 				271D617C20434499005C9F7E /* SHMonthPartPicker.h in Headers */,
 				271D617720434499005C9F7E /* SHYearlyActiveDays.h in Headers */,
 				271D617E20434499005C9F7E /* SHWeeklyActiveDays.h in Headers */,
-				2747C4722047CAB500FB5669 /* SHWeeklyActiveDaysDelegateProtocol.h in Headers */,
 				2747C47E2048C9A200FB5669 /* SHReminderTimeSpinPicker.h in Headers */,
 				2747C46D2047C95400FB5669 /* SHReminderListView.h in Headers */,
 				2747C4702047C95400FB5669 /* SHReminderCellController.h in Headers */,
@@ -267,7 +265,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = $SRCROOT/../Build_Scripts/SHControlsSpecial.sh;
+			shellScript = "$SRCROOT/../Build_Scripts/SHControlsSpecial.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -10,6 +10,11 @@
 #import <SHGlobal/SHConstants.h>
 #import "SHRateTypeHelper.h"
 #import <SHCommon/NSMutableDictionary+Helper.h>
+#import <SHCore_C/SHDaily_C.h>
+#import <SHDatetime/SHDatetime_struct.h>
+#import <SHDatetime/SHDatetimeMod.h>
+#import <SHCommon/NSDate+DateHelper.h>
+
 
 @implementation SHDailyDTO
 
@@ -18,6 +23,104 @@
   (void)zone;
   return [self dtoCopy];
 }
+
+
+-(SHListRateItemCollection*)buildActiveDays:(SHRateType)rateType majorKey:(NSString*)majorKey
+  minorKey:(NSString*)minorKey
+{
+    NSMutableArray *raw = (NSMutableArray*)self.activeDaysDict[shGetRateTypeKey(rateType)];
+    NSMutableArray* mapped = [raw mapItemsTo:^id (id item,NSUInteger idx){
+      (void)idx;
+      NSDictionary<NSString*,NSNumber*> *dict = (NSDictionary*)item;
+      NSInteger major = dict[majorKey].integerValue;
+      NSInteger minor = dict[minorKey].integerValue;
+      SHListRateItem *rateItem = [[SHListRateItem alloc]
+        initWithMajorOrdinal:major
+        minorOrdinal:minor];
+      
+      return rateItem;
+    }];
+    __weak SHDailyDTO *weakSelf = self;
+    return [[SHListRateItemCollection  alloc] initWithActiveDays:mapped
+      andTouchCallback:^(){
+        weakSelf.isTouched = YES;
+      }];
+}
+
+@synthesize monthlyActiveDays = _monthlyActiveDays;
+-(SHListRateItemCollection*)monthlyActiveDays{
+  if(nil == _monthlyActiveDays){
+    _monthlyActiveDays = [self buildActiveDays:SH_MONTHLY_RATE majorKey:SH_ORDINAL_WEEK_KEY
+      minorKey:SH_DAY_OF_WEEK_KEY];
+  }
+  return _monthlyActiveDays;
+}
+
+
+@synthesize monthlyActiveDaysInv = _monthlyActiveDaysInv;
+-(SHListRateItemCollection*)monthlyActiveDaysInv{
+  if(nil == _monthlyActiveDaysInv){
+    _monthlyActiveDaysInv = [self buildActiveDays:SH_MONTHLY_RATE_INVERSE
+      majorKey:SH_ORDINAL_WEEK_KEY minorKey:SH_DAY_OF_WEEK_KEY];
+  }
+  return _monthlyActiveDaysInv;
+}
+
+@synthesize yearlyActiveDays = _yearlyActiveDays;
+-(SHListRateItemCollection*)yearlyActiveDays{
+  if(nil == _yearlyActiveDays){
+    _yearlyActiveDays = [self buildActiveDays:SH_YEARLY_RATE
+      majorKey:SH_MONTH_KEY minorKey:SH_DAY_OF_MONTH_KEY];
+  }
+  return _yearlyActiveDays;
+}
+
+@synthesize yearlyActiveDaysInv = _yearlyActiveDaysInv;
+-(SHListRateItemCollection*)yearlyActiveDaysInv{
+  if(nil == _yearlyActiveDaysInv){
+    _yearlyActiveDaysInv = [self buildActiveDays:SH_YEARLY_RATE_INVERSE
+      majorKey:SH_MONTH_KEY minorKey:SH_DAY_OF_MONTH_KEY];
+  }
+  return _yearlyActiveDaysInv;
+}
+
+
+
+-(NSArray<SHRangeRateItem*>*)buildWeeklyActiveDays:(BOOL)isInverse{
+  SHRateType rateType = isInverse? SH_WEEKLY_RATE_INVERSE : SH_WEEKLY_RATE;
+  NSMutableArray *raw = (NSMutableArray*)self.activeDaysDict[shGetRateTypeKey(rateType)];
+  if(raw.count == 0){
+    
+  }
+  NSArray<SHRangeRateItem*> *mapped = [raw mapItemsTo:^id (id item,NSUInteger idx){
+    (void)idx;
+    NSDictionary<NSString*,NSNumber*> *dict = (NSDictionary*)item;
+    SHRangeRateItem *rateItem = [[SHRangeRateItem alloc] init];
+    rateItem.isDayActive = dict[SH_IS_DAY_ACTIVE_KEY].boolValue;
+    rateItem.forrange = dict[SH_FORRANGE_KEY].integerValue;
+    rateItem.backrange = dict[SH_BACKRANGE_KEY].integerValue;
+    return rateItem;
+  }];
+  return mapped;
+}
+
+
+@synthesize weeklyActiveDays = _weeklyActiveDays;
+-(NSArray<SHRangeRateItem*>*)weeklyActiveDays{
+  if(nil == _weeklyActiveDays){
+    _weeklyActiveDays = [self buildWeeklyActiveDays:NO];
+  }
+  return _weeklyActiveDays;
+}
+
+@synthesize weeklyActiveDaysInv = _weeklyActiveDaysInv;
+-(NSArray<SHRangeRateItem*>*)weeklyActiveDaysInv{
+  if(nil == _weeklyActiveDaysInv){
+    _weeklyActiveDaysInv = [self buildWeeklyActiveDays:YES];
+  }
+  return _weeklyActiveDaysInv;
+}
+
 
 -(NSMutableDictionary *)activeDaysDict{
     if(nil==_activeDaysDict){
@@ -156,6 +259,128 @@ int checkImportanceRange(int importance){
 -(void)setStreakLength:(int32_t)streakLength{
   self.isTouched = YES;
   _streakLength = streakLength;
+}
+
+
+//This method is not really necessary but using it will help my flow in
+//viewDidLoad so that I didn't have a weird flag in there denoting that the
+//model already existed. Besides, this makes things sorta more explicit
+-(void)setupDefaults{
+    _activeDays = SH_ALL_DAYS_JSON;
+    _rateType = SH_WEEKLY_RATE;
+    _dailyName = @"";
+    _difficulty = 3;
+    _urgency = 3;
+    _note = @"";
+    _rate = 1;
+    _streakLength = 0;
+    _activeFromDate = nil;
+    _activeToDate = nil;
+    _cycleStartTime = 0;
+}
+
+
+static void setActivenessArray(NSArray<SHRangeRateItem*> *week,BOOL *activenessArray){
+  for(NSUInteger i = 0;i < 7;i++){ //magic number
+        if(week){ //default to all days active
+            activenessArray[i] = week[i].isDayActive;
+            continue;
+        }
+        activenessArray[i] = YES;
+    }
+}
+
+
+static NSMutableArray<SHRangeRateItem*>* convertCRateItemToObjC(SHRateValueItem *rvi){
+  NSMutableArray *converted = [NSMutableArray array];
+  for(int i = 0; i < 7; i++){ //magic number
+    SHRangeRateItem *rateItem = [[SHRangeRateItem alloc] init];
+    [rateItem copyFromCStruct:&rvi[i]];
+    [converted addObject:rateItem];
+  }
+  return converted;
+}
+
+
+static void convertObjCRateItemToC(NSArray<SHRangeRateItem*>* rateItems, SHRateValueItem *rvi){
+  for(int i = 0; i < 7; i++){ //magic number
+    [rateItems[i] copyIntoCStruct:&rvi[i]];
+  }
+}
+
+
+-(void)flipDayOfWeek:(NSUInteger)dayIdx{
+  self.isTouched = YES;
+  BOOL isInverse = shIsInverseRateType(self.rateType);
+  NSArray<SHRangeRateItem*> *weekInfo = isInverse ? self.weeklyActiveDaysInv : self.weeklyActiveDays;
+  BOOL activeDays[7]; //magic numbers
+  setActivenessArray(weekInfo,activeDays);
+  activeDays[dayIdx] = !activeDays[dayIdx];
+  SHRateValueItem rvi[7];
+  memset(rvi,0,sizeof(SHRateValueItem) * 7);
+  shBuildWeek(activeDays,self.rate,rvi);
+  NSMutableArray<SHRangeRateItem*>* updWeek = convertCRateItemToObjC(rvi);
+  if(isInverse){
+    _weeklyActiveDaysInv = updWeek;
+  }
+  else{
+    _weeklyActiveDays = updWeek;
+  }
+}
+
+
+-(NSDate *)nextDueTime{
+  switch(self.rateType){
+    case SH_YEARLY_RATE:
+    case SH_YEARLY_RATE_INVERSE:
+    case SH_MONTHLY_RATE:
+    case SH_MONTHLY_RATE_INVERSE:
+    case SH_WEEKLY_RATE:
+      return [self nextDueDate_WEEKLY];
+    case SH_WEEKLY_RATE_INVERSE:
+    case SH_DAILY_RATE:
+    case SH_DAILY_RATE_INVERSE:
+      return nil;
+  }
+  return nil;
+}
+
+
+-(NSDate *)nextDueTime_DAILY:(NSDate *)checkinDate{
+    NSDate *checkinDateStart = [NSCalendar.currentCalendar startOfDayForDate:checkinDate];
+    NSDate *nextDueDateStart = [checkinDateStart dateAfterYears:0 months:0 days:self.rate];
+    return [nextDueDateStart timeAfterHours:self.dayStart minutes:0 seconds:0];
+}
+
+
+-(NSDate*)nextDueDate_WEEKLY{
+  NSDate *lastCheckinDate = self.lastActivationDateTime?
+    self.lastActivationDateTime:
+    self.lastUpdateDateTime;
+  SHDatetime *lastCheckinDt = calloc(1, sizeof(SHDatetime));
+  SHDatetime *checkinDt = calloc(1, sizeof(SHDatetime));
+  SHDatetime ans;
+  memset(&ans,0,sizeof(SHDatetime));
+  SHError *error = calloc(1, sizeof(SHError));
+  shTryTimestampToDt_m(lastCheckinDate.timeIntervalSince1970,0,lastCheckinDt,error);
+  shTryTimestampToDt_m(NSDate.date.timeIntervalSince1970,0,checkinDt,error);
+  SHRateValueItem *rvi = calloc(7, sizeof(SHRateValueItem));
+  convertObjCRateItemToC(self.weeklyActiveDays,rvi);
+  shNextDueDate_WEEKLY(lastCheckinDt,checkinDt,rvi,self.rate,&ans,error);
+  double dueDateTimestamp = shDtToTimestamp_m(&ans, error);
+  NSDate *nextDueDate = [NSDate dateWithTimeIntervalSince1970:dueDateTimestamp];
+  free(lastCheckinDt);
+  free(checkinDt);
+  free(error);
+  free(rvi);
+  return nextDueDate;
+}
+
+
+
+-(NSUInteger)daysUntilDue{
+  NSDate *roundedDownToday = [[NSDate date] setHour:self.dayStart minute:0 second:0];
+  return (int)[NSDate daysBetween:roundedDownToday to:self.nextDueTime];
 }
 
 @end

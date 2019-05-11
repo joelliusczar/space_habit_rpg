@@ -218,7 +218,7 @@ static NSString *const EntityName = @"Daily";
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     SHDailyCellController *cell = [SHDailyCellController getDailyCell:tableView WithParent:self];
-    SHDaily *d = nil;
+    SHDailyDTO *d = nil;
     if(indexPath.section == SH_INCOMPLETE){
         d = self.incompleteItems.fetchedObjects[indexPath.row];
     }

@@ -1,13 +1,14 @@
 //
-//  SHMonthRateItemCollection.m
+//  SHRateListItem.m
 //  SHModels
 //
 //  Created by Joel Pridgen on 5/5/19.
 //  Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import "SHMonthRateItemCollection.h"
+#import "SHRateListItem.h"
 
-@implementation SHMonthRateItemCollection
+@implementation SHRateListItem
+
 
 @end

@@ -29,7 +29,7 @@
 		27118822203FF9DF0085A549 /* RateTypeSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 271187FC203FF9DD0085A549 /* RateTypeSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27118823203FF9DF0085A549 /* RateTypeSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 271187FD203FF9DD0085A549 /* RateTypeSelector.m */; };
 		27118824203FF9DF0085A549 /* SHRateSetterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 271187FE203FF9DD0085A549 /* SHRateSetterView.m */; };
-		27118825203FF9DF0085A549 /* NoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271187FF203FF9DD0085A549 /* NoteView.xib */; };
+		27118825203FF9DF0085A549 /* SHNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271187FF203FF9DD0085A549 /* SHNoteView.xib */; };
 		27118826203FF9DF0085A549 /* SHAddItemsFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27118800203FF9DD0085A549 /* SHAddItemsFooter.m */; };
 		27118827203FF9DF0085A549 /* SHImportanceSliderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 27118801203FF9DE0085A549 /* SHImportanceSliderView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27118828203FF9DF0085A549 /* SHNoteView.h in Headers */ = {isa = PBXBuildFile; fileRef = 27118802203FF9DE0085A549 /* SHNoteView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -115,7 +115,7 @@
 		271187FC203FF9DD0085A549 /* RateTypeSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RateTypeSelector.h; path = SHControls/RateTypeSelector.h; sourceTree = "<group>"; };
 		271187FD203FF9DD0085A549 /* RateTypeSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RateTypeSelector.m; path = SHControls/RateTypeSelector.m; sourceTree = "<group>"; };
 		271187FE203FF9DD0085A549 /* SHRateSetterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHRateSetterView.m; path = SHControls/SHRateSetterView.m; sourceTree = "<group>"; };
-		271187FF203FF9DD0085A549 /* NoteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteView.xib; path = SHControls/NoteView.xib; sourceTree = "<group>"; };
+		271187FF203FF9DD0085A549 /* SHNoteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SHNoteView.xib; path = SHControls/SHNoteView.xib; sourceTree = "<group>"; };
 		27118800203FF9DD0085A549 /* SHAddItemsFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHAddItemsFooter.m; path = SHControls/SHAddItemsFooter.m; sourceTree = "<group>"; };
 		27118801203FF9DE0085A549 /* SHImportanceSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHImportanceSliderView.h; path = SHControls/SHImportanceSliderView.h; sourceTree = "<group>"; };
 		27118802203FF9DE0085A549 /* SHNoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHNoteView.h; path = SHControls/SHNoteView.h; sourceTree = "<group>"; };
@@ -220,7 +220,7 @@
 				271187FB203FF9DD0085A549 /* SHListItemCell.xib */,
 				27118802203FF9DE0085A549 /* SHNoteView.h */,
 				271187E8203FF9DB0085A549 /* SHNoteView.m */,
-				271187FF203FF9DD0085A549 /* NoteView.xib */,
+				271187FF203FF9DD0085A549 /* SHNoteView.xib */,
 				271187F4203FF9DC0085A549 /* SHRateSetterView.h */,
 				271187FE203FF9DD0085A549 /* SHRateSetterView.m */,
 				27118803203FF9DE0085A549 /* SHRateSetterView.xib */,
@@ -470,7 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2711880D203FF9DF0085A549 /* SHSubtasksTableView.xib in Resources */,
-				27118825203FF9DF0085A549 /* NoteView.xib in Resources */,
+				27118825203FF9DF0085A549 /* SHNoteView.xib in Resources */,
 				2711882B203FF9DF0085A549 /* RateTypeSelector.xib in Resources */,
 				271D613820421A9A005C9F7E /* SHSpinPicker.xib in Resources */,
 				2711880F203FF9DF0085A549 /* AddItemsFooter.xib in Resources */,
