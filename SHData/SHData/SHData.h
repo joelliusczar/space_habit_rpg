@@ -22,4 +22,5 @@ FOUNDATION_EXPORT const unsigned char SHDataVersionString[];
 #import "SHCoreData.h"
 #import "SingletonCluster+Data.h"
 #import "NSManagedObjectContext+Helper.h"
+#import "SHObjectIDWrapper.h"
 

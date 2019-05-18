@@ -54,4 +54,15 @@
   return result;
 }
 
+
+-(NSMutableArray*)mapItemsTo_f:(id  _Nonnull (*)(id _Nonnull, NSUInteger))mapper{
+  NSMutableArray *result = [NSMutableArray arrayWithCapacity:self.count];
+  NSUInteger idx = 0;
+  for (id obj in self) {
+    [result addObject:mapper(obj,idx)];
+    idx++;
+  }
+  return result;
+}
+
 @end

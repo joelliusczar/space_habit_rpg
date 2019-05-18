@@ -9,9 +9,9 @@
 #ifndef SHUtils_C_h
 #define SHUtils_C_h
 
-#import SHArray.h
-#import SHErrorHandling.h
-#import SHGenAlgos.h
-#import SHConstants.h
+#import "SHArray.h"
+#import "SHErrorHandling.h"
+#import "SHGenAlgos.h"
+#import "SHConstants.h"
 
 #endif /* SHUtils_C_h */

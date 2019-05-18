@@ -28,12 +28,20 @@ static void _setupIfRequired(NSManagedObject *entity){
 }
 
 
--(NSManagedObject*)getExistingOrNewEntityWithObjectID:(nullable NSManagedObjectID*)objectID{
-  NSError *error = nil;
-  NSManagedObject *entity = [self existingObjectWithID:objectID error:&error];
-  if(nil == entity){
-    entity = [self newEntity:objectID.entity];
-  }
+-(NSManagedObject*)getExistingOrNewEntityWithObjectID:(SHObjectIDWrapper*)wrappedID{
+  __block NSError *error = nil;
+  __block NSManagedObject *entity = nil;
+  //want this on a synchronized block so that we don't accidently
+  //create more entities than we meant to due to race conditions
+  [self performBlockAndWait:^{
+    if(nil == wrappedID.objectID){
+      entity = [self newEntity:wrappedID.entityType];
+      wrappedID.objectID = entity.objectID;
+    }
+    else{
+      entity = [self existingObjectWithID:wrappedID.objectID error:&error];
+    }
+  }];
   return entity;
 }
 

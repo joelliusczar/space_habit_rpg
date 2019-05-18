@@ -9,6 +9,8 @@
 #ifndef SHRateValueItem_h
 #define SHRateValueItem_h
 
+#define shFreeSHRateValueItem(rvi) free(rvi)
+
 #include <inttypes.h>
 #include <stdbool.h>
 

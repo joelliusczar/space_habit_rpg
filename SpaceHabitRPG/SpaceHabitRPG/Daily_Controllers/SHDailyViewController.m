@@ -34,6 +34,7 @@
 @property (strong,nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
 @property (strong,nonatomic) Monster_Medium *monsterMedium;
 @property (strong,nonatomic) SHDaily_Medium *dailyMedium;
+@property (strong,nonatomic) NSManagedObjectContext *dailyContext;
 
 @end
 
@@ -44,10 +45,17 @@ static NSString *const EntityName = @"Daily";
 @synthesize dailyEditor = _dailyEditor;
 -(SHDailyEditController *)dailyEditor{
   if(_dailyEditor == nil){
-    _dailyEditor = [[SHDailyEditController alloc]
-    initWithParentDailyController:self];
+    _dailyEditor = [[SHDailyEditController alloc] init];
   }
   return _dailyEditor;
+}
+
+
+-(NSManagedObjectContext*)dailyContext{
+  if(nil == _dailyContext){
+    _dailyContext = [self.central.dataController newBackgroundContext];
+  }
+  return _dailyContext;
 }
 
 
@@ -115,10 +123,9 @@ static NSString *const EntityName = @"Daily";
   SHConfigDTO *settings = self.central.configDTO;
   NSDate *todayStart = [[NSDate date] dayStart];
   todayStart = [todayStart timeAfterHours:settings.dayStart minutes:0 seconds:0];
-  self.incompleteItems = [self.dailyMedium getUnfinishedDailiesController:todayStart
-    withContext:self.dataController.mainThreadContext];
-  self.completeItems = [self.dailyMedium getFinishedDailiesController:todayStart
-    withContext:self.dataController.mainThreadContext];
+  SHDaily_Medium *dailyMedium = [SHDaily_Medium newWithContext:self.dailyContext];
+  self.incompleteItems = [dailyMedium getUnfinishedDailiesController:todayStart];
+  self.completeItems = [dailyMedium getFinishedDailiesController:todayStart];
   
   [self fetchUpdates];
   
@@ -126,31 +133,35 @@ static NSString *const EntityName = @"Daily";
 
 
 -(void)fetchUpdates{
-    NSError *error;
-    if(![self.incompleteItems performFetch:&error]){
-        NSLog(@"Error fetching incompleted items: %@", error.localizedFailureReason);
-        return;
-    }
-    if(![self.completeItems performFetch:&error]){
-        NSLog(@"Error fetching completed items: %@", error.localizedFailureReason);
-    }
+  __block NSError *error = nil;
+  [self.dailyContext performBlock:^{
+    [self.incompleteItems performFetch:&error];
+    [self.completeItems performFetch:&error];
+  }];
 }
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunused-parameter"
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+  (void)tableView;
     return 2;
 }
 
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-parameter"
+
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+  __block NSInteger rowCount = 0;
+  [self.dailyContext performBlockAndWait:^{
     if(section == SH_INCOMPLETE){
-        return self.incompleteItems.fetchedObjects.count;
+      rowCount = self.incompleteItems.fetchedObjects.count;
     }
     else{
-        return self.completeItems.fetchedObjects.count;
+        rowCount = self.completeItems.fetchedObjects.count;
     }
+  }];
+  return rowCount;
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
@@ -173,42 +184,43 @@ static NSString *const EntityName = @"Daily";
 }
 
 
--(UIViewController*)getEditScreen{
-    SHDailyEditController *dailyEditor = [[SHDailyEditController alloc]
-      initWithParentDailyController:self];
-    SHEditNavigationController *editController = [[SHEditNavigationController alloc]
-                                                initWithTitle:@"Add Daily"
-                                                andEditor:dailyEditor];
-    return editController;
-}
-
-
 - (IBAction)addDailyBtn_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
-  [self.central arrangeAndPushChildVCToFront:[self getEditScreen]];
+  self.dailyEditor.objectIDWrapper = nil;
+  self.dailyEditor.context = self.dailyContext;
+  self.central.editController.editingScreen = self.dailyEditor;
+  self.central.editController.title = @"Daily";
+  [self.central arrangeAndPushChildVCToFront:self.central.editController];
 }
 
 
 -(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    __weak SHDailyViewController *weakSelf = self;
-    void (^pressedEdit)(UITableViewRowAction *,NSIndexPath *) = ^(UITableViewRowAction *action,NSIndexPath *path){
-        shWrapReturnVoid wrappedCall = ^void(){
-            NSFetchedResultsController *fetchController = path.section == SH_INCOMPLETE?weakSelf.incompleteItems:weakSelf.completeItems;
-            SHDailyEditController *dailyEditor = [[SHDailyEditController alloc]
-                                                initWithParentDailyController:weakSelf
-                                                ToEdit:fetchController.fetchedObjects[indexPath.row]
-                                                AtIndexPath:path];
-            SHEditNavigationController *editController = [[SHEditNavigationController alloc]
-                                                        initWithTitle:@"Add Daily"
-                                                        andEditor:dailyEditor];
-            [weakSelf.central arrangeAndPushChildVCToFront:editController];
-        };
-        [SHInterceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@pressedEdit",self.description]];
-    };
-    
-    UITableViewRowAction *openEditBox = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Edit" handler:pressedEdit];
-    
-    return @[openEditBox];
+
+  UITableViewRowAction *openEditBox = [UITableViewRowAction
+    rowActionWithStyle:UITableViewRowActionStyleNormal
+    title:@"Edit"
+    handler:^(UITableViewRowAction *action,NSIndexPath *path){
+      shWrapReturnVoid wrappedCall = ^void(){
+        NSFetchedResultsController *fetchController = path.section == SH_INCOMPLETE?self.incompleteItems:
+          self.completeItems;
+        NSManagedObjectContext *fetchContext = fetchController.managedObjectContext;
+        [fetchContext performBlockAndWait:^{
+          NSManagedObject *rowObject = fetchController.fetchedObjects[indexPath.row];
+          SHObjectIDWrapper *objectIDWrapper = [[SHObjectIDWrapper alloc] init];
+          objectIDWrapper.objectID = rowObject.objectID;
+          objectIDWrapper.entityType = SHDaily.entity;
+          [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            self.dailyEditor.objectIDWrapper = objectIDWrapper;
+            self.dailyEditor.context = fetchContext;
+            self.central.editController.editingScreen = self.dailyEditor;
+            self.central.editController.title = @"Daily";
+            [self.central arrangeAndPushChildVCToFront:self.central.editController];
+          }];
+        }];
+      };
+    [SHInterceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@pressedEdit",self.description]];
+  }];
+  
+  return @[openEditBox];
 }
 
 #pragma clang diagnostic pop

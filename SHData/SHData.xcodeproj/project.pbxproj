@@ -14,6 +14,8 @@
 		2747C3DD2043C95100FB5669 /* SHCoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3DA2043C95100FB5669 /* SHCoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C4512046235500FB5669 /* SingletonCluster+Data.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C44F2046235500FB5669 /* SingletonCluster+Data.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C4522046235500FB5669 /* SingletonCluster+Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4502046235500FB5669 /* SingletonCluster+Data.m */; };
+		2769C113228CD72300217480 /* SHObjectIDWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769C111228CD72300217480 /* SHObjectIDWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2769C114228CD72300217480 /* SHObjectIDWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769C112228CD72300217480 /* SHObjectIDWrapper.m */; };
 		27730B992041E0DE003BEB6C /* SHData.h in Headers */ = {isa = PBXBuildFile; fileRef = 27730B972041E0DE003BEB6C /* SHData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27B15A9D20524ACC0045B226 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A9C20524ACC0045B226 /* SHCommon.framework */; };
 /* End PBXBuildFile section */
@@ -26,6 +28,8 @@
 		2747C3DA2043C95100FB5669 /* SHCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCoreData.h; sourceTree = "<group>"; };
 		2747C44F2046235500FB5669 /* SingletonCluster+Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SingletonCluster+Data.h"; sourceTree = "<group>"; };
 		2747C4502046235500FB5669 /* SingletonCluster+Data.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SingletonCluster+Data.m"; sourceTree = "<group>"; };
+		2769C111228CD72300217480 /* SHObjectIDWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHObjectIDWrapper.h; sourceTree = "<group>"; };
+		2769C112228CD72300217480 /* SHObjectIDWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHObjectIDWrapper.m; sourceTree = "<group>"; };
 		27730B942041E0DE003BEB6C /* SHData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27730B972041E0DE003BEB6C /* SHData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHData.h; sourceTree = "<group>"; };
 		27730B982041E0DE003BEB6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -93,6 +97,8 @@
 				2747C44F2046235500FB5669 /* SingletonCluster+Data.h */,
 				2747C4502046235500FB5669 /* SingletonCluster+Data.m */,
 				27730B972041E0DE003BEB6C /* SHData.h */,
+				2769C111228CD72300217480 /* SHObjectIDWrapper.h */,
+				2769C112228CD72300217480 /* SHObjectIDWrapper.m */,
 			);
 			path = SHData;
 			sourceTree = "<group>";
@@ -107,6 +113,7 @@
 				2747C3DC2043C95100FB5669 /* SHCoreDataProtocol.h in Headers */,
 				27730B992041E0DE003BEB6C /* SHData.h in Headers */,
 				2747C3DD2043C95100FB5669 /* SHCoreData.h in Headers */,
+				2769C113228CD72300217480 /* SHObjectIDWrapper.h in Headers */,
 				273009FC2249AE46006E419C /* NSManagedObjectContext+Helper.h in Headers */,
 				2747C4512046235500FB5669 /* SingletonCluster+Data.h in Headers */,
 			);
@@ -199,6 +206,7 @@
 			files = (
 				2747C4522046235500FB5669 /* SingletonCluster+Data.m in Sources */,
 				2747C3DB2043C95100FB5669 /* SHCoreData.m in Sources */,
+				2769C114228CD72300217480 /* SHObjectIDWrapper.m in Sources */,
 				273009FD2249AE46006E419C /* NSManagedObjectContext+Helper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

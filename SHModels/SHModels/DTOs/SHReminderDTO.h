@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign,nonatomic) int32_t daysBeforeDue;
 @property (copy,nullable,nonatomic) NSDate *reminderHour;
 @property (copy,nonatomic) NSManagedObjectID *objectID;
+@property (copy,nonatomic) void (^touchCallback)(void);
 @end
 
 NS_ASSUME_NONNULL_END

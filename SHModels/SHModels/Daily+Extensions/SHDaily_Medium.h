@@ -15,15 +15,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHDaily_Medium : NSObject
-+(instancetype)newWithSHData:(NSObject<P_CoreData> *)dataController;
--(SHDaily *)newDaily;
--(SHDaily *)newDailyWithContext:(nullable NSManagedObjectContext*)context;
-
--(NSFetchedResultsController *)getUnfinishedDailiesController:(NSDate *)todayStart
-withContext:(NSManagedObjectContext*)context;
-
--(NSFetchedResultsController *)getFinishedDailiesController:(NSDate *)todayStart
-withContext:(NSManagedObjectContext*)context;
+@property (strong,nonatomic) NSManagedObjectContext *context;
++(instancetype)newWithContext:(NSManagedObjectContext *)context;
+-(NSFetchedResultsController *)getUnfinishedDailiesController:(NSDate *)todayStart;
+-(NSFetchedResultsController *)getFinishedDailiesController:(NSDate *)todayStart;
 
 @end
 

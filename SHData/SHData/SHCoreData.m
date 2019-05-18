@@ -28,12 +28,17 @@
   return _dbFileName;
 }
 
-
+@synthesize appBundle = _appBundle;
 -(NSBundle*)appBundle{
   if(nil == _appBundle){
     _appBundle = [NSBundle mainBundle];
   }
   return _appBundle;
+}
+
+-(void)setAppBundle:(NSBundle *)appBundle{
+  NSAssert(appBundle,@"appBundle cannot be null");
+  _appBundle = appBundle;
 }
 
 @end

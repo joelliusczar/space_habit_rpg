@@ -15,12 +15,9 @@
 @implementation SHListRateItemCollection
 
 
--(instancetype)initWithActiveDays:(NSMutableArray<SHListRateItem*>*)activeDays
-  andTouchCallback:(void (^)(void))touchCallback
-{
+-(instancetype)initWithActiveDays:(NSMutableArray<SHListRateItem*>*)activeDays{
   if(self == [super init]){
     _activeDays = activeDays;
-    _touchCallback = touchCallback;
   }
   return self;
 }
@@ -51,7 +48,9 @@
 
 
 -(void)removeRateItemAtIndex:(NSUInteger)index{
-  self.touchCallback();
+  if(self.touchCallback){
+    self.touchCallback();
+  }
   [self.activeDays removeObjectAtIndex:index];
 }
 
@@ -60,6 +59,16 @@
   SHListRateItem *rateItem = self.activeDays[idx];
   rateItem.touchCallback = self.touchCallback;
   return rateItem;
+}
+
+-(NSMutableArray*)mapItemsTo_f:(id  _Nonnull (*)(SHListRateItem *, NSUInteger))mapper{
+  NSMutableArray *result = [NSMutableArray arrayWithCapacity:self.activeDays.count];
+  NSUInteger idx = 0;
+  for (id obj in self.activeDays) {
+    [result addObject:mapper(obj,idx)];
+    idx++;
+  }
+  return result;
 }
 
 @end

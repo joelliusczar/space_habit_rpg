@@ -9,19 +9,13 @@
 /* Begin PBXBuildFile section */
 		2769C094227C6DC800217480 /* libSHUtils_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2769C093227C6DC800217480 /* libSHUtils_C.a */; };
 		2769C10A2286382C00217480 /* module.modulemap in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2769C104228636DF00217480 /* module.modulemap */; };
-		27BB291D215B4712003225BB /* SHDatetimeNoErr.h in Headers */ = {isa = PBXBuildFile; fileRef = 27BB291B215B4712003225BB /* SHDatetimeNoErr.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27BB291E215B4712003225BB /* SHDatetimeNoErr.c in Sources */ = {isa = PBXBuildFile; fileRef = 27BB291C215B4712003225BB /* SHDatetimeNoErr.c */; };
 		27D318512086C9040047F5F1 /* SHTimeZone.c in Sources */ = {isa = PBXBuildFile; fileRef = 27D318462086C9040047F5F1 /* SHTimeZone.c */; };
-		27D318532086C9040047F5F1 /* DTConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D318482086C9040047F5F1 /* DTConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27D318542086C9040047F5F1 /* SHDatetimeFuncs.c in Sources */ = {isa = PBXBuildFile; fileRef = 27D318492086C9040047F5F1 /* SHDatetimeFuncs.c */; };
+		27D318532086C9040047F5F1 /* SHDTConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D318482086C9040047F5F1 /* SHDTConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27D318552086C9040047F5F1 /* SHDatetime_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D3184A2086C9040047F5F1 /* SHDatetime_struct.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27D318572086C9040047F5F1 /* SHTimeZone.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D3184C2086C9040047F5F1 /* SHTimeZone.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27D318592086C9040047F5F1 /* DTConstants.c in Sources */ = {isa = PBXBuildFile; fileRef = 27D3184E2086C9040047F5F1 /* DTConstants.c */; };
-		27D3185A2086C9040047F5F1 /* SHDatetimeFuncs.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D3184F2086C9040047F5F1 /* SHDatetimeFuncs.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27EE2AB32131D059005A8E1F /* SHDatetimePtrExt.h in Headers */ = {isa = PBXBuildFile; fileRef = 27EE2AB12131D059005A8E1F /* SHDatetimePtrExt.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27EE2AB42131D059005A8E1F /* SHDatetimePtrExt.c in Sources */ = {isa = PBXBuildFile; fileRef = 27EE2AB22131D059005A8E1F /* SHDatetimePtrExt.c */; };
-		27EE2AB721321218005A8E1F /* SHDatetimeMod.h in Headers */ = {isa = PBXBuildFile; fileRef = 27EE2AB521321218005A8E1F /* SHDatetimeMod.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27EE2AB821321218005A8E1F /* SHDatetimeMod.c in Sources */ = {isa = PBXBuildFile; fileRef = 27EE2AB621321218005A8E1F /* SHDatetimeMod.c */; };
+		27D318592086C9040047F5F1 /* SHDTConstants.c in Sources */ = {isa = PBXBuildFile; fileRef = 27D3184E2086C9040047F5F1 /* SHDTConstants.c */; };
+		27EE2AB721321218005A8E1F /* SHDatetimeFuncs.h in Headers */ = {isa = PBXBuildFile; fileRef = 27EE2AB521321218005A8E1F /* SHDatetimeFuncs.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27EE2AB821321218005A8E1F /* SHDatetimeFuncs.c in Sources */ = {isa = PBXBuildFile; fileRef = 27EE2AB621321218005A8E1F /* SHDatetimeFuncs.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,20 +52,14 @@
 		27BB29112158450A003225BB /* cl_datetime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cl_datetime.h; sourceTree = "<group>"; };
 		27BB29122158450A003225BB /* cl_datetime.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cl_datetime.c; sourceTree = "<group>"; };
 		27BB2918215B0D5F003225BB /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		27BB291B215B4712003225BB /* SHDatetimeNoErr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDatetimeNoErr.h; sourceTree = "<group>"; };
-		27BB291C215B4712003225BB /* SHDatetimeNoErr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHDatetimeNoErr.c; sourceTree = "<group>"; };
 		27D3183D2086C8CA0047F5F1 /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		27D318462086C9040047F5F1 /* SHTimeZone.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SHTimeZone.c; sourceTree = "<group>"; };
-		27D318482086C9040047F5F1 /* DTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTConstants.h; sourceTree = "<group>"; };
-		27D318492086C9040047F5F1 /* SHDatetimeFuncs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SHDatetimeFuncs.c; sourceTree = "<group>"; };
+		27D318482086C9040047F5F1 /* SHDTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDTConstants.h; sourceTree = "<group>"; };
 		27D3184A2086C9040047F5F1 /* SHDatetime_struct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDatetime_struct.h; sourceTree = "<group>"; };
 		27D3184C2086C9040047F5F1 /* SHTimeZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHTimeZone.h; sourceTree = "<group>"; };
-		27D3184E2086C9040047F5F1 /* DTConstants.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = DTConstants.c; sourceTree = "<group>"; };
-		27D3184F2086C9040047F5F1 /* SHDatetimeFuncs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDatetimeFuncs.h; sourceTree = "<group>"; };
-		27EE2AB12131D059005A8E1F /* SHDatetimePtrExt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDatetimePtrExt.h; sourceTree = "<group>"; };
-		27EE2AB22131D059005A8E1F /* SHDatetimePtrExt.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHDatetimePtrExt.c; sourceTree = "<group>"; };
-		27EE2AB521321218005A8E1F /* SHDatetimeMod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDatetimeMod.h; sourceTree = "<group>"; };
-		27EE2AB621321218005A8E1F /* SHDatetimeMod.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHDatetimeMod.c; sourceTree = "<group>"; };
+		27D3184E2086C9040047F5F1 /* SHDTConstants.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SHDTConstants.c; sourceTree = "<group>"; };
+		27EE2AB521321218005A8E1F /* SHDatetimeFuncs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDatetimeFuncs.h; sourceTree = "<group>"; };
+		27EE2AB621321218005A8E1F /* SHDatetimeFuncs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHDatetimeFuncs.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,13 +114,10 @@
 		27870455227BCA99009C9DD6 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				27D318482086C9040047F5F1 /* DTConstants.h */,
-				27D3184F2086C9040047F5F1 /* SHDatetimeFuncs.h */,
+				27D318482086C9040047F5F1 /* SHDTConstants.h */,
 				27D3184A2086C9040047F5F1 /* SHDatetime_struct.h */,
 				27D3184C2086C9040047F5F1 /* SHTimeZone.h */,
-				27EE2AB12131D059005A8E1F /* SHDatetimePtrExt.h */,
-				27EE2AB521321218005A8E1F /* SHDatetimeMod.h */,
-				27BB291B215B4712003225BB /* SHDatetimeNoErr.h */,
+				27EE2AB521321218005A8E1F /* SHDatetimeFuncs.h */,
 				2769C1032286364C00217480 /* SHDatetime.h */,
 				2769C104228636DF00217480 /* module.modulemap */,
 			);
@@ -212,12 +197,9 @@
 		27D318442086C9040047F5F1 /* Code */ = {
 			isa = PBXGroup;
 			children = (
-				27D3184E2086C9040047F5F1 /* DTConstants.c */,
-				27D318492086C9040047F5F1 /* SHDatetimeFuncs.c */,
+				27D3184E2086C9040047F5F1 /* SHDTConstants.c */,
 				27D318462086C9040047F5F1 /* SHTimeZone.c */,
-				27EE2AB22131D059005A8E1F /* SHDatetimePtrExt.c */,
-				27EE2AB621321218005A8E1F /* SHDatetimeMod.c */,
-				27BB291C215B4712003225BB /* SHDatetimeNoErr.c */,
+				27EE2AB621321218005A8E1F /* SHDatetimeFuncs.c */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -230,11 +212,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				27D318572086C9040047F5F1 /* SHTimeZone.h in Headers */,
-				27D318532086C9040047F5F1 /* DTConstants.h in Headers */,
-				27D3185A2086C9040047F5F1 /* SHDatetimeFuncs.h in Headers */,
-				27EE2AB32131D059005A8E1F /* SHDatetimePtrExt.h in Headers */,
-				27EE2AB721321218005A8E1F /* SHDatetimeMod.h in Headers */,
-				27BB291D215B4712003225BB /* SHDatetimeNoErr.h in Headers */,
+				27D318532086C9040047F5F1 /* SHDTConstants.h in Headers */,
+				27EE2AB721321218005A8E1F /* SHDatetimeFuncs.h in Headers */,
 				27D318552086C9040047F5F1 /* SHDatetime_struct.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,11 +313,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27D318592086C9040047F5F1 /* DTConstants.c in Sources */,
-				27D318542086C9040047F5F1 /* SHDatetimeFuncs.c in Sources */,
-				27BB291E215B4712003225BB /* SHDatetimeNoErr.c in Sources */,
-				27EE2AB42131D059005A8E1F /* SHDatetimePtrExt.c in Sources */,
-				27EE2AB821321218005A8E1F /* SHDatetimeMod.c in Sources */,
+				27D318592086C9040047F5F1 /* SHDTConstants.c in Sources */,
+				27EE2AB821321218005A8E1F /* SHDatetimeFuncs.c in Sources */,
 				27D318512086C9040047F5F1 /* SHTimeZone.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

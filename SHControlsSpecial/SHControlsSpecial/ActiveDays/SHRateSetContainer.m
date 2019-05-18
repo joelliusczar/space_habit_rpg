@@ -15,6 +15,9 @@
 #import <SHCommon/SHInterceptor.h>
 #import <SHModels/SHRateTypeHelper.h>
 #import <SHControls/SHItemFlexibleListView.h>
+#import <SHModels/SHDaily.h>
+#import <SHCommon/NSDictionary+SHHelper.h>
+#import <SHData/NSManagedObjectContext+Helper.h>
 
 
 NSString * const YEARLY_KEY = @"yearly";
@@ -51,7 +54,7 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 
 -(SHControlKeep *)rateControls{
     if(nil == _rateControls){
-        _rateControls = [self buildControlKeep:self.daily];
+        _rateControls = [self buildControlKeep];
     }
     return _rateControls;
 }
@@ -68,14 +71,21 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
   self.rateControls.responderLookup[TBL_KEY] =  tblDelegate;
 }
 
-+(instancetype)newWithDaily:(SHDailyDTO *)daily{
-  NSAssert(daily,@"daily was nil");
++(instancetype)newWithContext:(NSManagedObjectContext *)context
+  andObjectID:(SHObjectIDWrapper*)objectIDWrapper
+{
   
   SHRateSetContainer *instance = [[SHRateSetContainer alloc] init];
-  instance.daily = daily;
+  instance.context = context;
+  instance.objectIDWrapper = objectIDWrapper;;
   instance.defaultSize = instance.frame.size;
   instance.rateControls.responderLookup[RESIZEABLE_KEY] = instance;
-  [instance updateRateTypeControls:daily.rateType shouldChange:YES];
+  __block SHRateType rateType = SH_DAILY_RATE;
+  [context performBlockAndWait:^{
+    SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:objectIDWrapper];
+    rateType = daily.rateType;
+  }];
+  [instance updateRateTypeControls:rateType shouldChange:YES];
   [instance updateRateTypeButtonText];
   [instance updateInvertRateTypeButtonText];
   return instance;
@@ -93,9 +103,13 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
   ForEvent:(UIEvent *)event
 {
   (void)sender;(void)event;
+  __block SHRateType rateType = SH_DAILY_RATE;
+  [self.context performBlockAndWait:^{
+    SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
+    rateType = daily.rateType;
+  }];
   RateTypeSelector *typeSelector = [[RateTypeSelector alloc]
-    initWithRateType:self.daily.rateType
-    andDelegate:self];
+    initWithRateType:rateType andDelegate:self];
   [self.resizeResponder pushViewControllerToNearestParent:typeSelector];
 }
 
@@ -108,7 +122,12 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 
 -(IBAction)invertRateTypeBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event{
   (void)sender;(void)event;
-  [self updateRateType:shInvertRateType(self.daily.rateType)];
+  __block SHRateType rateType = SH_DAILY_RATE;
+  [self.context performBlock:^{
+    SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
+    rateType = daily.rateType;
+  }];
+  [self updateRateType:shInvertRateType(rateType)];
 }
 
 
@@ -121,22 +140,26 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 }
 
 
--(SHControlKeep *)buildControlKeep:(SHDailyDTO *)daily{
-  NSAssert(daily,@"Daily should not be nil");
+-(SHControlKeep *)buildControlKeep{
   SHControlKeep *keep = [[SHControlKeep alloc] init];
 
   //I want to avoid circular references
   //self->keep->keep now has a strong pointer to self
   SHRateSetContainer* __weak weakSelf = self;
   NSString* errMessage = @"RateSetContainer got itself into an inconsistent state";
+  [self.context performBlockAndWait:^{
+    SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
+    NSMutableDictionary *activeDaysDict = [NSMutableDictionary jsonStringToDict:daily.activeDays];
+    self.activeDays = [[SHDailyActiveDays alloc] initWithActiveDaysDict:activeDaysDict];
+  }];
+  shGetListRateCollection getMonthRateItems = self.activeDays.monthlyActiveDaysLazy;
+  shGetListRateCollection getMonthRateItemsInv = self.activeDays.monthlyActiveDaysInvLazy;
   
-  SHListRateItemCollection * monthRateItems = daily.monthlyActiveDays;
-  SHListRateItemCollection * monthRateItemsInv = daily.monthlyActiveDaysInv;
   keep.controlLookup[MONTHLY_KEY] = vw(^id(SHControlKeep *keep,SHControlExtent *controlExtent){
     (void)controlExtent;
     NSAssert(weakSelf,errMessage);
-    SHMonthlyActiveDays *monthly = [SHMonthlyActiveDays newWithListRateItemCollection:monthRateItems
-      inverseActiveDays:monthRateItemsInv];
+    SHMonthlyActiveDays *monthly = [SHMonthlyActiveDays newWithListRateItemCollection:getMonthRateItems()
+      inverseActiveDays:getMonthRateItemsInv()];
     [weakSelf commonTableSetup:monthly];
     [keep forResponderKey:RESIZEABLE_KEY doSetupAction:^(id responder){
         monthly.resizeResponder = responder;
@@ -146,14 +169,14 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
     }];
     return monthly;
   });
-
-  SHListRateItemCollection * yearRateItems = daily.yearlyActiveDays;
-  SHListRateItemCollection * yearRateItemsInv = daily.yearlyActiveDaysInv;
+  
+  shGetListRateCollection getYearRateItems = self.activeDays.yearlyActiveDaysLazy;
+  shGetListRateCollection getYearRateItemsInv = self.activeDays.yearlyActiveDaysInvLazy;
   keep.controlLookup[YEARLY_KEY] =  vw(^id(SHControlKeep *keep,SHControlExtent *controlExtent){
     (void)controlExtent;
     NSAssert(weakSelf,errMessage);
-    SHYearlyActiveDays *yearly = [SHYearlyActiveDays newWithListRateItemCollection:yearRateItems
-      inverseActiveDays:yearRateItemsInv];
+    SHYearlyActiveDays *yearly = [SHYearlyActiveDays newWithListRateItemCollection:getYearRateItems()
+      inverseActiveDays:getYearRateItemsInv()];
     [weakSelf commonTableSetup: yearly];
     [keep forResponderKey:RESIZEABLE_KEY doSetupAction:^(id responder){
         yearly.resizeResponder = responder;
@@ -181,16 +204,25 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 
 -(void)updateRateType:(SHRateType)rateType{
   [self resetRate];
-  BOOL areSame = shAreSameBaseRateTypes(rateType,self.daily.rateType);
-  //it is important that this happen before setRateTypeActiveDaysControl:
-  //else it will use the old rateType which will have fucky results
-  self.daily.rateType = rateType;
-  [self updateRateTypeControls:rateType shouldChange:!areSame];
+  [self.context performBlock:^{
+    SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
+    BOOL areSame = shAreSameBaseRateTypes(rateType,daily.rateType);
+    //it is important that this happen before setRateTypeActiveDaysControl:
+    //else it will use the old rateType which will have fucky results
+    daily.rateType = rateType;
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+      [self updateRateTypeControls:rateType shouldChange:!areSame];
+    }];
+  }];
+  
 }
 
 
 -(void)resetRate{
-  self.daily.rate = 1;
+  [self.context performBlock:^{
+    SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
+    daily.rate = 1;
+  }];
   self.rateSetter.rateStep.value = 1;//prevent old stepper value from overwriting
 }
 
@@ -209,15 +241,25 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 
 
 -(void)updateRateTypeButtonText{
-  NSString *formatText = shGetFormatString(self.daily.rateType,self.daily.rate);
-  NSString *updatedText = [NSString stringWithFormat:formatText,self.daily.rate ];
-  [self.openRateTypeBtn setTitle:updatedText forState:UIControlStateNormal];
+  [self.context performBlock:^{
+    SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
+    NSString *formatText = shGetFormatString(daily.rateType,daily.rate);
+    NSString *updatedText = [NSString stringWithFormat:formatText,daily.rate];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+      [self.openRateTypeBtn setTitle:updatedText forState:UIControlStateNormal];
+    }];
+  }];
 }
 
 
 -(void)updateInvertRateTypeButtonText{
-  NSString *buttonText = !shIsInverseRateType(self.daily.rateType)?defaultInvertBtnText:invertedInvertBtnText;
-  [self.invertRateTypeBtn setTitle:buttonText forState:UIControlStateNormal];
+  [self.context performBlock:^{
+    SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
+    NSString *buttonText = !shIsInverseRateType(daily.rateType)?defaultInvertBtnText:invertedInvertBtnText;
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+      [self.invertRateTypeBtn setTitle:buttonText forState:UIControlStateNormal];
+    }];
+  }];
 }
 
 
@@ -232,9 +274,16 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
     
   }
   else if([self.currentActiveDaysControl isKindOfClass:SHWeeklyActiveDays.class]){
-    BOOL isInverse = shIsInverseRateType(self.daily.rateType);
-    NSArray<SHRangeRateItem*> *weekInfo = isInverse ? self.daily.weeklyActiveDays: self.daily.weeklyActiveDays;
-    [self.weeklyActiveDays setActiveDaysOfWeek:weekInfo];
+    [self.context performBlock:^{
+      SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
+      BOOL isInverse = shIsInverseRateType(daily.rateType);
+      
+      NSArray<SHRangeRateItem*> *weekInfo = isInverse ? self.activeDays.weeklyActiveDays:
+        self.activeDays.weeklyActiveDays;
+      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self.weeklyActiveDays setActiveDaysOfWeek:weekInfo];
+      }];
+    }];
   }
 }
 
@@ -246,9 +295,16 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
   [self updateRateTypeButtonText];
   if(rateType == SH_WEEKLY_RATE){
     [self switchActiveDaysControlFor:self.weeklyActiveDays];
-    BOOL isInverse = shIsInverseRateType(self.daily.rateType);
-    NSArray<SHRangeRateItem*> *weekInfo = isInverse ? self.daily.weeklyActiveDays: self.daily.weeklyActiveDays;
-    [self.weeklyActiveDays setActiveDaysOfWeek:weekInfo];
+    [self.context performBlock:^{
+      SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
+      BOOL isInverse = shIsInverseRateType(daily.rateType);
+      
+      NSArray<SHRangeRateItem*> *weekInfo = isInverse ? self.activeDays.weeklyActiveDays:
+        self.activeDays.weeklyActiveDays;
+      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self.weeklyActiveDays setActiveDaysOfWeek:weekInfo];
+      }];
+    }];
   }
   else if(rateType == SH_MONTHLY_RATE){
     [self switchActiveDaysControlFor:self.monthlyActiveDays];

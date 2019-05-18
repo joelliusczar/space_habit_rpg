@@ -36,14 +36,9 @@
 
 @implementation SHEditNavigationController
 
--(instancetype)initWithTitle:(NSString *)viewTitle
-                   andEditor:(UIViewController<SHEditingSaverProtocol>*)editView{
-    
-    if(self = [self initWithNibName:@"SHEditNavigationController" bundle:nil]){
-        _viewTitle = viewTitle;
-        _editingScreen = editView;
-    }
-    return self;
+-(instancetype)init{
+  if(self = [self initWithNibName:@"SHEditNavigationController" bundle:nil]){}
+  return self;
 }
 
 void setupBackgroundTapActions(SHEditNavigationController *nav){

@@ -15,7 +15,10 @@
 #import <SHModels/SHDailyDTO.h>
 #import <SHControls/SHDailyEditCompoundProtocol.h>
 #import <SHControls/AllSHControls.h>
+#import <SHData/SHObjectIDWrapper.h>
 
+
+NS_ASSUME_NONNULL_BEGIN
 
 @interface SHDailyEditController : UIViewController
 <SHEditingSaverProtocol
@@ -25,16 +28,11 @@
 @property (weak,nonatomic) IBOutlet SHTextField *nameBox;
 @property (weak,nonatomic) IBOutlet SHButton *showXtraOptsBtn;
 @property (weak,nonatomic) IBOutlet UITableView *controlsTbl;
-@property (strong,nonatomic) SHDailyDTO *modelForEditing;
-@property (weak,nonatomic) SHDailyViewController *parentDailyController;
-
--(instancetype)initWithParentDailyController:(SHDailyViewController *)parentDailyController;
-
--(instancetype)initWithParentDailyController:(SHDailyViewController *)parentDailyController
-ToEdit:(SHDailyDTO *)daily
-AtIndexPath:(NSIndexPath *)rowInfo;
-
--(void)loadExistingDailyForEditing:(SHDailyDTO *)daily;
+@property (strong,nonatomic,nullable) SHObjectIDWrapper *objectIDWrapper;
+@property (strong,nonatomic) NSManagedObjectContext *context;
+-(void)modelTouched;
 @end
+
+NS_ASSUME_NONNULL_END
 
 #import "SHDailyEditController+ControlLoaders.h"

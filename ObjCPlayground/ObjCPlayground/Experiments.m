@@ -1001,7 +1001,7 @@ NSString *convertCharToBin(unsigned char input){
 +(void)testOrderednessCoreData{
   SHCoreData *dc = [SHCoreData newWithOptionsBlock:^(SHCoreDataOptions *options){
     options.storeType = NSSQLiteStoreType;
-    options.appBundle = [NSBundle bundleForClass:NSClassFromString(@"OnlyOneEntities")];
+    options.appBundle = [NSBundle bundleForClass:NSClassFromString(@"SHBundleKey")];
   }];
   NSManagedObjectContext *context = [dc newBackgroundContext];
   [context performBlockAndWait:^{
@@ -1155,6 +1155,56 @@ NSString *convertCharToBin(unsigned char input){
 +(void)tryingTheKVOverride{
   KVObject *o = [KVObject new];
   o.rock = 92;
+}
+
+
++(void)testEntityAccessNoSave{
+  SHCoreData *dc = [SHCoreData newWithOptionsBlock:^(SHCoreDataOptions *options){
+    options.storeType = NSInMemoryStoreType;
+    options.appBundle = [NSBundle bundleForClass:NSClassFromString(@"SHBundleKey")];
+  }];
+  
+  NSManagedObjectContext *context = [dc newBackgroundContext];
+  
+  [context performBlockAndWait:^{
+    SHDaily *d =  (SHDaily*)[context newEntity:SHDaily.entity];
+    d.dailyName = @"hola";
+  }];
+  __block NSManagedObjectID *objectID = nil;
+  [context performBlockAndWait:^{
+    NSFetchRequest *request =  SHDaily.fetchRequest;
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"dailyName" ascending:YES]];
+    NSArray *results = [context executeFetchRequest:request error:nil];
+    SHDaily *d = (SHDaily*)results[0];
+    objectID = d.objectID;
+    NSLog(@"%@",d.dailyName);
+  }];
+  
+  [context performBlockAndWait:^{
+    SHDaily *d = [context existingObjectWithID:objectID error:nil];
+    NSLog(@"%@",d.dailyName);
+  }];
+  
+  NSManagedObjectContext *context2 = [dc newBackgroundContext];
+  [context2 performBlockAndWait:^{
+    SHDaily *d = [context2 existingObjectWithID:objectID error:nil];
+    NSLog(@"%@",d.dailyName);
+  }];
+}
+
+
++(void)cfArrayStuff{
+//  NSMutableArray *arr = [NSMutableArray array];
+//  CFMutableArrayRef cfarr = (__bridge CFMutableArrayRef)arr;
+//  stupidStruct ss;
+//  ss.firstItem = 5;
+//  ss.secondItem = 19;
+//  ss.thirdItem = 21;
+//  CFArrayAppendValue(cfarr, &ss);
+  //[arr addObject:(__bridge id)&ss];
+  //stupidStruct *ss2 = (__bridge stupidStruct *)(arr[0]);
+  //NSLog(@"%d",ss2->thirdItem);
+  
 }
 
 

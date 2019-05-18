@@ -60,6 +60,9 @@ NSString* const SH_DAY_OF_WEEK_KEY = @"DAY_OF_WEEK";
 NSString* const SH_MONTH_KEY = @"MONTH";
 NSString* const SH_DAY_OF_MONTH_KEY = @"DAY_OF_MONTH";
 
+NSString* const SH_MAJOR_ORDINAL = @"MAJOR_ORDINAL";
+NSString* const SH_MINOR_ORDINAL = @"MINOR_ORDINAL";
+
 NSString* const SH_BACKRANGE_KEY = @"BACKRANGE";
 NSString* const SH_FORRANGE_KEY = @"FORRANGE";
 NSString* const SH_IS_DAY_ACTIVE_KEY = @"IS_DAY_ACTIVE";

@@ -7,7 +7,7 @@
 //
 
 #include "SHDaily_C.h"
-#include "DTConstants.h"
+#include "SHDTConstants.h"
 #include "SHArray.h"
 #include "SHErrorHandling.h"
 #include <stdlib.h>
@@ -18,128 +18,129 @@ SH_DEF_FIND_IDX_REV(bool,int,,)
 SH_DEF_FIND_IDX(bool,int,,)
 
 bool _ArePreviousDateInputsValid(SHDatetime *lastDueDate,SHDatetime *checkinDate
-,SHRateValueItem *rvi,int64_t scaler,SHDatetime *ans,SHError *error);
+  ,SHRateValueItem *rvi,int64_t scaler,SHDatetime *ans,SHError *error);
 
-
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunused-parameter"
 
 static bool _isDayActive(bool isActive,int64_t idx,int blank){
-    return isActive;
+  (void)idx;(void)blank;
+  return isActive;
 }
 
-#pragma GCC diagnostic pop
 
 static void _setDayCounts(int64_t *daysCounts,bool *activeDays,int64_t counter
-  ,bool isReverse){
-    for(int dayIdx = 0;dayIdx < WEEKLEN;dayIdx++){
-        int useIdx = isReverse?WEEKLEN -dayIdx -1:dayIdx;
-        counter++;
-        daysCounts[useIdx] = counter;
-        if(activeDays[useIdx]){
-            counter = 0;
-        }
+  ,bool isReverse)
+{
+  for(int dayIdx = 0;dayIdx < SH_WEEKLEN;dayIdx++){
+    int useIdx = isReverse?SH_WEEKLEN -dayIdx -1:dayIdx;
+    counter++;
+    daysCounts[useIdx] = counter;
+    if(activeDays[useIdx]){
+      counter = 0;
     }
+  }
 }
 
 
 void shFillWeek(int64_t *daysAheadCounts,int64_t *daysBeforeCounts,bool *activeDays
-  ,SHRateValueItem *rvi){
-    if(!(daysAheadCounts&&daysBeforeCounts&&activeDays&&rvi)) return;
-    for(int dayIdx = 0;dayIdx < WEEKLEN;dayIdx++){
-        rvi[dayIdx].forrange = daysAheadCounts[dayIdx];
-        rvi[dayIdx].backrange = daysBeforeCounts[dayIdx];
-        rvi[dayIdx].isDayActive = activeDays[dayIdx];
-    }
+  ,SHRateValueItem *rvi)
+{
+  if(!(daysAheadCounts&&daysBeforeCounts&&activeDays&&rvi)) return;
+  for(int dayIdx = 0;dayIdx < SH_WEEKLEN;dayIdx++){
+    rvi[dayIdx].forrange = daysAheadCounts[dayIdx];
+    rvi[dayIdx].backrange = daysBeforeCounts[dayIdx];
+    rvi[dayIdx].isDayActive = activeDays[dayIdx];
+  }
 }
 
 
 static int64_t _distanceFromActiveWeek(int64_t weekNum,int64_t weekScaler){
-    return weekNum % (weekScaler * DAYS_IN_WEEK);
+  return weekNum % (weekScaler * SH_DAYS_IN_WEEK);
 }
 
 
 void shBuildWeek(bool *activeDays,int64_t scaler,SHRateValueItem *rvi){
-    if(!(activeDays&&rvi)) return;
-    int64_t lastIdx = shFindIdxRev(bool,int)(activeDays,WEEKLEN,&_isDayActive,0);
-    if(lastIdx == NOT_FOUND){
-        shBuildEmptyWeek(rvi);
-        return;
-    }
-    int64_t daysBefore = (WEEKLEN - lastIdx) + (scaler -1)*WEEKLEN -1;
-    int64_t daysBeforeCounts[WEEKLEN];
-    _setDayCounts(daysBeforeCounts,activeDays,daysBefore,false);
-    int64_t firstIdx = shFindIdx(bool,int)(activeDays,WEEKLEN,&_isDayActive,0);
-    int64_t daysAhead = firstIdx + (scaler -1)*WEEKLEN;
-    int64_t daysAheadCounts[WEEKLEN];
-    _setDayCounts(daysAheadCounts,activeDays,daysAhead,true);
-    
-    return shFillWeek(daysAheadCounts,daysBeforeCounts,activeDays,rvi);
+  if(!(activeDays&&rvi)) return;
+  int64_t lastIdx = shFindIdxRev(bool,int)(activeDays,SH_WEEKLEN,&_isDayActive,0);
+  if(lastIdx == NOT_FOUND){
+    shBuildEmptyWeek(rvi);
+    return;
+  }
+  int64_t daysBefore = (SH_WEEKLEN - lastIdx) + (scaler -1)*SH_WEEKLEN -1;
+  int64_t daysBeforeCounts[SH_WEEKLEN];
+  _setDayCounts(daysBeforeCounts,activeDays,daysBefore,false);
+  int64_t firstIdx = shFindIdx(bool,int)(activeDays,SH_WEEKLEN,&_isDayActive,0);
+  int64_t daysAhead = firstIdx + (scaler -1)*SH_WEEKLEN;
+  int64_t daysAheadCounts[SH_WEEKLEN];
+  _setDayCounts(daysAheadCounts,activeDays,daysAhead,true);
+  
+  return shFillWeek(daysAheadCounts,daysBeforeCounts,activeDays,rvi);
 }
 
 
 void shBuildEmptyWeek(SHRateValueItem *rvi){
-    for(int i = 0;i < WEEKLEN;i++){
-        rvi[i].forrange = 0;
-        rvi[i].backrange = 0;
-        rvi[i].isDayActive = false;
-    }
+  for(int i = 0;i < SH_WEEKLEN;i++){
+    rvi[i].forrange = 0;
+    rvi[i].backrange = 0;
+    rvi[i].isDayActive = false;
+  }
 }
 
 static int _findPrevDayIdxInWeek(bool isActiveWeek,int checkinDayIdx
-  ,SHRateValueItem *week){
-    int prevDayIdx = DAYS_IN_WEEK;
-    for(int i = 0; i < DAYS_IN_WEEK; i++){
-        int reverseDayIdx = isActiveWeek ?
-          (DAYS_IN_WEEK + checkinDayIdx - i -1) % DAYS_IN_WEEK :
-          DAYS_IN_WEEK - i - 1;
-        if(week[reverseDayIdx].isDayActive){
-            prevDayIdx = reverseDayIdx;
-            break;
-        }
+  ,SHRateValueItem *week)
+{
+  int prevDayIdx = SH_DAYS_IN_WEEK;
+  for(int i = 0; i < SH_DAYS_IN_WEEK; i++){
+    int reverseDayIdx = isActiveWeek ?
+      (SH_DAYS_IN_WEEK + checkinDayIdx - i -1) % SH_DAYS_IN_WEEK :
+      SH_DAYS_IN_WEEK - i - 1;
+    if(week[reverseDayIdx].isDayActive){
+      prevDayIdx = reverseDayIdx;
+      break;
     }
-    return prevDayIdx < DAYS_IN_WEEK ? prevDayIdx : NOT_FOUND;
+  }
+  return prevDayIdx < SH_DAYS_IN_WEEK ? prevDayIdx : NOT_FOUND;
 }
 
 static int _findNextDayIdx(int checkinDayIdx,SHRateValueItem* week){
-    for(int i = 0; i < DAYS_IN_WEEK; i++){
-        int dayIdx = (DAYS_IN_WEEK + checkinDayIdx + i) % DAYS_IN_WEEK;
-        if(week[dayIdx].isDayActive){
-            return dayIdx;
-        }
+  for(int i = 0; i < SH_DAYS_IN_WEEK; i++){
+    int dayIdx = (SH_DAYS_IN_WEEK + checkinDayIdx + i) % SH_DAYS_IN_WEEK;
+    if(week[dayIdx].isDayActive){
+      return dayIdx;
     }
-    return NOT_FOUND;
+  }
+  return NOT_FOUND;
 }
 
 static int _offsetForSameWeek(bool isActiveWeek, int inputDayIdx,int prevDayIdx){
-    /*
-     if checkin day is in active week but before all active days
-     push it back a week so that it get's the last active day of
-     the previous active weeks
-     */
-    return prevDayIdx > inputDayIdx || (prevDayIdx == inputDayIdx && isActiveWeek)
-      ? DAYS_IN_WEEK : 0;
+  /*
+   if checkin day is in active week but before all active days
+   push it back a week so that it get's the last active day of
+   the previous active weeks
+   */
+  return prevDayIdx > inputDayIdx || (prevDayIdx == inputDayIdx && isActiveWeek)
+    ? SH_DAYS_IN_WEEK : 0;
 }
 
 
 bool shPreviousDueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate
-,SHRateValueItem *rvi,int64_t scaler,SHDatetime *ans,SHError *error){
+  ,SHRateValueItem *rvi,int64_t scaler,SHDatetime *ans,SHError *error)
+{
   shLog("previousDueDate_WEEKLY");
   if(!_ArePreviousDateInputsValid(lastDueDate,checkinDate,rvi,scaler,ans,error)){
     return false;
   }
-  int lastDayIdx = shCalcWeekdayIdx_m(lastDueDate,error);
+  int lastDayIdx = shCalcWeekdayIdx(lastDueDate,error);
   SHDatetime firstDayOfFirstWeek;
-  shTryAddDaysToDt_m(lastDueDate,-lastDayIdx,0,&firstDayOfFirstWeek,error);
-  int64_t daySpan = shDateDiffDays_m(checkinDate,&firstDayOfFirstWeek,error);
-  int checkinDayIdx = shCalcWeekdayIdx_m(checkinDate,error);
+  shTryAddDaysToDt(lastDueDate,-lastDayIdx,0,&firstDayOfFirstWeek,error);
+  int64_t daySpan = shDateDiffDays(checkinDate,&firstDayOfFirstWeek,error);
+  int checkinDayIdx = shCalcWeekdayIdx(checkinDate,error);
   int64_t firstSunToPrevSunSpan = daySpan - checkinDayIdx;
   bool isActiveWeek = _distanceFromActiveWeek(firstSunToPrevSunSpan, scaler) == 0;
   int prevDayIdx = _findPrevDayIdxInWeek(isActiveWeek, checkinDayIdx, rvi);
   firstSunToPrevSunSpan -= (_offsetForSameWeek(isActiveWeek,checkinDayIdx,prevDayIdx));
   int64_t sunOfPrevActionWeek = firstSunToPrevSunSpan - _distanceFromActiveWeek(firstSunToPrevSunSpan, scaler);
-  shTryAddDaysToDt_m(&firstDayOfFirstWeek,sunOfPrevActionWeek + prevDayIdx,0,ans,error);
-  if((shDtToTimestamp_m(ans,error) > shDtToTimestamp_m(checkinDate,error))){
+  shTryAddDaysToDt(&firstDayOfFirstWeek,sunOfPrevActionWeek + prevDayIdx,0,ans,error);
+  if((shDtToTimestamp(ans,error) > shDtToTimestamp(checkinDate,error))){
       return shHandleError(OUT_OF_RANGE
                ,"The calculated answer for previous due date is after the checkindate",error);
   }
@@ -149,26 +150,27 @@ bool shPreviousDueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate
 
 
 SHDatetime* shBothWeeklyDueDatesFromLastDueDate(SHDatetime* lastDueDate,SHDatetime* checkinDate
-,SHRateValueItem* week,int64_t scaler,SHError *error){
+  ,SHRateValueItem* week,int64_t scaler,SHError *error)
+{
   shLog("bothWeeklyDueDatesFromLastDueDate");
   SHDatetime previousDate;
   shPreviousDueDate_WEEKLY(lastDueDate, checkinDate, week, scaler, &previousDate, error);
   if(error && error->code != NO_ERROR){
     return shHandleErrorRetNull(error->code,"Error getting previous date",error);
   }
-  int prevDayIdx = shCalcWeekdayIdx_m(&previousDate, error);
+  int prevDayIdx = shCalcWeekdayIdx(&previousDate, error);
   SHDatetime firstDayOfPrevWeek;
-  shTryAddDaysToDt_m(&previousDate, -1*prevDayIdx, 0, &firstDayOfPrevWeek, error);
-  int64_t daySpan = shDateDiffDays_m(checkinDate,&firstDayOfPrevWeek, error);
-  int checkinDayIdx = shCalcWeekdayIdx_m(checkinDate, error);
+  shTryAddDaysToDt(&previousDate, -1*prevDayIdx, 0, &firstDayOfPrevWeek, error);
+  int64_t daySpan = shDateDiffDays(checkinDate,&firstDayOfPrevWeek, error);
+  int checkinDayIdx = shCalcWeekdayIdx(checkinDate, error);
   int64_t prevSunToThisSunSpan = daySpan - checkinDayIdx;
-  int64_t weekCount = (_distanceFromActiveWeek(prevSunToThisSunSpan, scaler)/DAYS_IN_WEEK);
-  int64_t nextActiveWeek = prevSunToThisSunSpan + (((scaler - weekCount) % scaler) * DAYS_IN_WEEK);
+  int64_t weekCount = (_distanceFromActiveWeek(prevSunToThisSunSpan, scaler)/SH_DAYS_IN_WEEK);
+  int64_t nextActiveWeek = prevSunToThisSunSpan + (((scaler - weekCount) % scaler) * SH_DAYS_IN_WEEK);
   int weekStartIdx = weekCount == 0 ? checkinDayIdx : 0;
   int nextDayIdx = _findNextDayIdx(weekStartIdx, week);
-  int64_t sameWeekOffset = nextDayIdx < checkinDayIdx && weekCount == 0 ? scaler * DAYS_IN_WEEK : 0;
+  int64_t sameWeekOffset = nextDayIdx < checkinDayIdx && weekCount == 0 ? scaler * SH_DAYS_IN_WEEK : 0;
   SHDatetime result;
-  shTryAddDaysToDt_m(&firstDayOfPrevWeek, nextActiveWeek + nextDayIdx + sameWeekOffset,0,&result, error);
+  shTryAddDaysToDt(&firstDayOfPrevWeek, nextActiveWeek + nextDayIdx + sameWeekOffset,0,&result, error);
   SHDatetime* resultPair = malloc(sizeof(SHDatetime)*2);
   resultPair[0] = previousDate;
   resultPair[1] = result;
@@ -192,7 +194,7 @@ bool shNextDueDate_WEEKLY(SHDatetime* lastDueDate,SHDatetime* checkinDate
     return shHandleError(error->code, "Error calculating next due date", error);
   }
   shLog("leaving nextDueDate_WEEKLY\n");
-  if(shDtToTimestamp_m(ans,error) < shDtToTimestamp_m(checkinDate,error)){
+  if(shDtToTimestamp(ans,error) < shDtToTimestamp(checkinDate,error)){
     char ansStr[50];
     char checkinStr[50];
     shDTToString(ans,ansStr);
@@ -226,14 +228,15 @@ bool _ArePreviousDateInputsValid(SHDatetime *lastDueDate,SHDatetime *checkinDate
   if(scaler < 1){
     return shHandleError(OUT_OF_RANGE, "Scaler needs to be greater than zero", error);
   }
-  SHErrorCode cnvtErr1,cnvtErr2;
-  if(!(shDtToTimestamp(checkinDate,&cnvtErr1) >= shDtToTimestamp(lastDueDate,&cnvtErr2))){
+  SHError *cnvtErr = calloc(2, sizeof(SHError));
+  if(!(shDtToTimestamp(checkinDate,&cnvtErr[0]) >= shDtToTimestamp(lastDueDate,&cnvtErr[1]))){
       return shHandleError(OUT_OF_RANGE,"Checkindate needs to be after lastDueDate",error);
   }
-  if(cnvtErr1||cnvtErr2){
-   return shHandleError(cnvtErr1||cnvtErr2,"There was a conversion error with the datetimes", error);
+  if(cnvtErr[0].code||cnvtErr[0].code){
+   return shHandleError(cnvtErr[0].code||cnvtErr[0].code,
+    "There was a conversion error with the datetimes", error);
   }
-  int64_t lastDayIdx = shCalcWeekdayIdx_m(lastDueDate,error);
+  int64_t lastDayIdx = shCalcWeekdayIdx(lastDueDate,error);
   if(!rvi[lastDayIdx].isDayActive){
     return shHandleError(INVALID_STATE, "Previous due date is on an non active day.", error);
   }

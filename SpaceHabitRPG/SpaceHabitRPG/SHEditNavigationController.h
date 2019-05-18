@@ -17,8 +17,6 @@
 @property (strong,nonatomic) UIViewController<SHEditingSaverProtocol>* editingScreen;
 @property (weak,nonatomic) SHControlKeep *editControls;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollContainer;
--(instancetype)initWithTitle:(NSString *)viewTitle
-                   andEditor:(UIViewController<SHEditingSaverProtocol>*)editView;
 -(void)enableSave;
 -(void)enableDelete;
 -(void)resizeScrollView:(BOOL)isXtraOptsHidden;

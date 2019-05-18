@@ -18,8 +18,8 @@ BOOL shIsInverseRateType(SHRateType rateType);
 BOOL shAreSameBaseRateTypes(SHRateType a,SHRateType b);
 NSString* shGetRateTypeKey(SHRateType rateType);
 SHRateType shSetRateTypeInversion(SHRateType rateType,BOOL isInverse);
-BOOL shAreMonthlyRateValueItemsEqual(SHRateValueItemDict *a,SHRateValueItemDict *b);
-BOOL shAreYearlyRateValueItemsEqual(SHRateValueItemDict *a,SHRateValueItemDict *b);
+BOOL shAreMonthlyRateValueItemsEqual(SHRateItemDict *a,SHRateItemDict *b);
+BOOL shAreYearlyRateValueItemsEqual(SHRateItemDict *a,SHRateItemDict *b);
 NSString * shGetFormatString(SHRateType rateType, NSInteger rate);
 NSString * shGetRateUnitName(SHRateType rateType,BOOL isPlural);
 #endif /* RateTypeHelper_h */

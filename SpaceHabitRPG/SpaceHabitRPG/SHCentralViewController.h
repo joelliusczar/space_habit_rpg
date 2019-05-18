@@ -25,6 +25,7 @@
 @property (strong,nonatomic) SHHeroDTO *heroDTO;
 @property (strong,nonatomic) SHMonsterDTO *monsterDTO;
 @property (strong,nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
+@property (strong,nonatomic) SHEditNavigationController *editController;
 
 +(instancetype)newWithDataController:(NSObject<P_CoreData>*)dataController
   andNibName:(NSString*)nib

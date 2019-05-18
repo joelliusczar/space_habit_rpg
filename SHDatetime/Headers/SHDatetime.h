@@ -9,11 +9,10 @@
 #ifndef SHDatetime_h
 #define SHDatetime_h
 
-#import "DTConstants.h"
+#import "SHDTConstants.h"
 #import "SHDatetime_struct.h"
 #import "SHTimeZone.h"
 #import "SHDatetimeFuncs.h"
-#import "SHDatetimeMod.h"
 
 
 #endif /* SHDatetime_h */

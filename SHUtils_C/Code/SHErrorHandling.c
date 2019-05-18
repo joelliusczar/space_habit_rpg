@@ -60,20 +60,13 @@ void shPrepareSHError(SHError* errObj){
   shLog("leaving prepareSHError");
 }
 
-#pragma GCC diagnostic push
-#if defined(__clang__)
-#pragma GCC diagnostic ignored "-Wincompatible-pointer-types-discards-qualifiers"
-#elif defined(__GNUC__)
-#pragma GCC diagnostic ignored "-Wdiscarded-qualifiers"
-#endif
-void shDisposeSHError(SHError *errObj){
-	if(!errObj) return;
-	free(errObj->msg);
-	free(errObj->callbackInfo);
-	free(errObj);
-}
 
-#pragma GCC diagnostic pop
+void shDisposeSHError(SHError *errObj){
+  if(!errObj) return;
+  free((void*)errObj->msg);
+  free(errObj->callbackInfo);
+  free(errObj);
+}
 
 
 void shSetDebugCallback(shDebugCallback callback){

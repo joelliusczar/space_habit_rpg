@@ -13,39 +13,50 @@
 #import <SHControlsSpecial/SHRateSetContainer.h>
 #import <SHControlsSpecial/SHReminderListView.h>
 #import <SHModels/SHDueDateItem.h>
+#import <SHData/NSManagedObjectContext+Helper.h>
 
 
 
 @implementation SHDailyEditController (ControlLoaders)
 
 
--(SHControlKeep *)buildControlKeep:(SHDailyDTO *)daily{
-  NSAssert(daily,@"Daily should not be null");
+-(SHControlKeep *)buildControlKeep{
   SHControlKeep *keep = [[SHControlKeep alloc] init];
-
   
+  NSManagedObjectContext *context = self.context;
+  SHObjectIDWrapper *objectIDWrapper = self.objectIDWrapper;
   [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
     SHNoteView *note = [[SHNoteView alloc] init];
-    note.noteBox.text = daily.note.length>0?daily.note:@"";
-    [keep forResponderKey:@"_" doSetupAction:^(id responder){
+    [context performBlock:^{
+      SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:objectIDWrapper];
+      NSString *noteText = daily.note.length>0?daily.note:@"";
+      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        note.noteBox.text = noteText;
+      }];
+    }];
+    
+    [keep forResponderKey:@"self" doSetupAction:^(id responder){
         note.delegate = responder;
     }];
     return note;
   }];
   
   [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
-    SHRateSetContainer *rateContainer = [SHRateSetContainer newWithDaily:daily];
-  
-    [keep forResponderKey:@"_" doSetupAction:^(id responder){
+    SHRateSetContainer *rateContainer = [SHRateSetContainer newWithContext:context
+      andObjectID:objectIDWrapper];
+    [keep forResponderKey:@"touch" doSetupAction:^(id responder){
+      rateContainer.touchCallback = responder;
+    }];
+    [keep forResponderKey:@"self" doSetupAction:^(id responder){
         rateContainer.delegate = responder;
     }];
     [keep forResponderKey:@"resize" doSetupAction:^(id responder){
         rateContainer.resizeResponder = responder;
     }];
-    [keep forResponderKey:@"_" doSetupAction:^(id responder){
+    [keep forResponderKey:@"self" doSetupAction:^(id responder){
         rateContainer.tblDelegate = responder;
     }];
-    [keep forResponderKey:@"_" doSetupAction:^(id responder){
+    [keep forResponderKey:@"self" doSetupAction:^(id responder){
         rateContainer.touchCallback = responder;
     }];
     return rateContainer;
@@ -54,8 +65,14 @@
   [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
     SHImportanceSliderView *difficultySld = [[SHImportanceSliderView alloc] init];
     difficultySld.controlName = @"difficulty";
-    [difficultySld updateImportanceSlider:daily.difficulty];
-    [keep forResponderKey:@"_" doSetupAction:^(id responder){
+    [context performBlock:^{
+      SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:objectIDWrapper];
+      int32_t difficulty = daily.difficulty;
+      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [difficultySld updateImportanceSlider:difficulty];
+      }];
+    }];
+    [keep forResponderKey:@"self" doSetupAction:^(id responder){
         difficultySld.delegate = responder;
     }];
     return difficultySld;
@@ -64,8 +81,14 @@
   [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
     SHImportanceSliderView *urgencySld = [[SHImportanceSliderView alloc] init];
     urgencySld.controlName = @"urgency";
-    [urgencySld updateImportanceSlider:daily.urgency];
-    [keep forResponderKey:@"_" doSetupAction:^(id responder){
+    [context performBlock:^{
+      SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:objectIDWrapper];
+      int32_t urgency = daily.urgency;
+      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [urgencySld updateImportanceSlider:urgency];
+      }];
+    }];
+    [keep forResponderKey:@"self" doSetupAction:^(id responder){
         urgencySld.delegate = responder;
     }];
     return urgencySld;
@@ -75,22 +98,32 @@
     SHStreakResetterView *resetter = [[SHStreakResetterView alloc] init];
     resetter.streakCountLbl.hidden = NO;
     resetter.streakResetBtn.hidden = NO;
-    resetter.streakCountLbl.text = [NSString stringWithFormat:@"Streak %d",daily.streakLength];
+    [context performBlock:^{
+      SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:objectIDWrapper];
+      int32_t streakLength = daily.streakLength;
+      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        resetter.streakCountLbl.text = [NSString stringWithFormat:@"Streak %d",streakLength];
+      }];
+    }];
     return resetter;
   }];
   
-  NSManagedObjectContext *context = [self.parentDailyController.central.dataController newBackgroundContext];
   [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
-    SHDueDateItem *dueDateItem = [SHDueDateItem newWithObjectID:daily.objectID andContext:context];
-      SHReminderListView *list = [SHReminderListView newWithDueDateItem:dueDateItem];
-    
-      [keep forResponderKey:@"_" doSetupAction:^(id responder){
-          list.delegate = responder;
-      }];
-      [keep forResponderKey:@"resize" doSetupAction:^(id responder){
-          list.resizeResponder = responder;
-      }];
-      return list;
+    __block NSManagedObjectID *objectID = nil;
+    [context performBlockAndWait:^{
+      SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:objectIDWrapper];
+      objectID = daily.objectID;
+    }];
+    SHDueDateItem *dueDateItem = [SHDueDateItem newWithObjectID:objectID andContext:context];
+    SHReminderListView *list = [SHReminderListView newWithDueDateItem:dueDateItem];
+  
+    [keep forResponderKey:@"self" doSetupAction:^(id responder){
+        list.delegate = responder;
+    }];
+    [keep forResponderKey:@"resize" doSetupAction:^(id responder){
+        list.resizeResponder = responder;
+    }];
+    return list;
   }];
   
   
@@ -100,9 +133,13 @@
 
 
 -(void)setResponders:(SHControlKeep *)keep{
-    keep.responderLookup[@"_"] = self;
-    keep.responderLookup[@"resize"] = self.editorContainer;
-    keep.responderLookup[@"_"] = self;
-    keep.responderLookup[@"_"] = self;
+  __weak typeof(self) weakSelf = self;
+  keep.responderLookup[@"self"] = self;
+  keep.responderLookup[@"resize"] = self.editorContainer;
+  keep.responderLookup[@"touch"] = ^void(){
+    typeof(weakSelf) bSelf = weakSelf;
+    if(nil == bSelf) return;
+    [bSelf modelTouched];
+  };
 }
 @end

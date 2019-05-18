@@ -7,6 +7,7 @@
 //
 
 #import "SHRangeRateItem.h"
+#import <SHCommon/NSObject+Helper.h>
 
 @implementation SHRangeRateItem
 
@@ -22,6 +23,11 @@
   rvi->isDayActive = self.isDayActive;
   rvi->forrange = self.forrange;
   rvi->backrange = self.backrange;
+}
+
+-(id)copyWithZone:(NSZone *)zone{
+  (void)zone;
+  return [self dtoCopy];
 }
 
 @end

@@ -1,5 +1,5 @@
 
-module SHDatetime [system] {
+module SHDatetime {
   umbrella header "SHDatetime.h"
   export *
 }

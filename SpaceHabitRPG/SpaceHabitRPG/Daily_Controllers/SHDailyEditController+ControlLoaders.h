@@ -11,7 +11,7 @@
 #import <SHModels/SHDailyDTO.h>
 
 @interface SHDailyEditController (ControlLoaders)
--(SHControlKeep *)buildControlKeep:(SHDailyDTO *)daily;
+-(SHControlKeep *)buildControlKeep;
 -(void)setResponders:(SHControlKeep *)keep;
 @end
 

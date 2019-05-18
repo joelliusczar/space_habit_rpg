@@ -23,6 +23,8 @@
 #define newSHDatetime_datetime2(year,month,day,hour,min,sec,millisec) \
   {year,month,day,hour,min,sec,millisec,0,0,0,0,{0}}
 
+
+
 typedef struct{
   int32_t month;
   int32_t day;
@@ -54,5 +56,6 @@ typedef enum {NO_OPTION = 0,
     ERROR = 3,
     SIMPLE = 4,
 } TimeAdjustOptions;
+
 
 #endif /* SHDateTime_struct_h */

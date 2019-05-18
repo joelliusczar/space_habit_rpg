@@ -103,6 +103,9 @@ extern NSString* const SH_DAY_OF_WEEK_KEY;
 extern NSString* const SH_MONTH_KEY;
 extern NSString* const SH_DAY_OF_MONTH_KEY;
 
+extern NSString* const SH_MAJOR_ORDINAL;
+extern NSString* const SH_MINOR_ORDINAL;
+
 extern NSString * const SH_BACKRANGE_KEY;
 extern NSString * const SH_FORRANGE_KEY;
 extern NSString * const SH_IS_DAY_ACTIVE_KEY;

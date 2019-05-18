@@ -7,12 +7,14 @@
 //
 
 #import <CoreData/CoreData.h>
+#import "SHObjectIDWrapper.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSManagedObjectContext (Helper)
 -(NSManagedObject*)newEntity:(NSEntityDescription*)entityType;
--(NSManagedObject*)getExistingOrNewEntityWithObjectID:(nullable NSManagedObjectID*)objectID;
+
+-(NSManagedObject*)getExistingOrNewEntityWithObjectID:(SHObjectIDWrapper*)wrappedID;
 -(NSArray<NSManagedObject *> *)getItemsWithRequest:(NSFetchRequest *) fetchRequest;
 -(NSFetchedResultsController *)getItemFetcher:(NSFetchRequest *)fetchRequest;
 +(NSManagedObject*)newEntityUnattached:(NSEntityDescription*)entityType;

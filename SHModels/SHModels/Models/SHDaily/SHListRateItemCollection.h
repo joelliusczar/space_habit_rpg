@@ -14,11 +14,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SHListRateItemCollection : SHObject
 @property (readonly,nonatomic) NSUInteger count;
 @property (copy,nonatomic) void (^touchCallback)(void);
--(instancetype)initWithActiveDays:(NSMutableArray<SHListRateItem*>*)activeDays
-  andTouchCallback:(void (^)(void))touchCallback;
+-(instancetype)initWithActiveDays:(NSMutableArray<SHListRateItem*>*)activeDays;
 -(NSUInteger)addRateItem:(SHListRateItem*)rateItem;
 -(void)removeRateItemAtIndex:(NSUInteger)index;
 -(SHListRateItem*)objectAtIndexedSubscript:(NSUInteger)idx;
+-(NSMutableArray*)mapItemsTo_f:(id  _Nonnull (*)(SHListRateItem *, NSUInteger))mapper;
 @end
 
 NS_ASSUME_NONNULL_END

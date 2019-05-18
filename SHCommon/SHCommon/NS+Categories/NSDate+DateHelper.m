@@ -22,7 +22,8 @@
 -(NSDate *)dateAfterYears:(NSInteger)y months:(NSInteger)m days:(NSInteger)d{
     SHDatetime dt;
     int tzOffset = (int)[NSTimeZone.defaultTimeZone secondsFromGMTForDate:self];
-    SHErrorCode error;
+    SHError error;
+    memset(&error, 0, sizeof(SHError));
     shTryTimestampToDt(self.timeIntervalSince1970,tzOffset,&dt,&error);
     shTryAddYearsToDtInPlace(&dt,y,0,&error);
     shTryAddMonthsToDtInPlace(&dt,m,0,&error);
@@ -54,7 +55,8 @@
                  timeZone:(NSTimeZone *)timeZone{
     
     double timestamp;
-    SHErrorCode error;
+    SHError error;
+    memset(&error, 0, sizeof(SHError));
     shTryCreateDateTime(year,(int)month,(int)day,(int)hour,(int)minute,(int)second
       ,(int)(timeZone.secondsFromGMT),&timestamp,&error);
     return [NSDate dateWithTimeIntervalSince1970:timestamp];
@@ -86,7 +88,8 @@
 -(NSDate *)dayStart{
     NSInteger timestamp = self.timeIntervalSince1970;
     double dayStartTimestamp;
-    SHErrorCode error;
+    SHError error;
+    memset(&error, 0, sizeof(SHError));
     shTryDayStart(timestamp,(int)NSTimeZone.defaultTimeZone.secondsFromGMT,&dayStartTimestamp,&error);
     return [NSDate dateWithTimeIntervalSince1970:dayStartTimestamp];
 }
@@ -95,7 +98,8 @@
 +(NSInteger)daysBetween:(NSDate *)fromDate to:(NSDate *)toDate{
     SHDatetime dtFrom;
     SHDatetime dtTo;
-    SHErrorCode err;
+    SHError err;
+    memset(&err, 0, sizeof(SHError));
     shTryTimestampToDt(fromDate.timeIntervalSince1970
       ,(int)NSTimeZone.defaultTimeZone.secondsFromGMT,&dtFrom,&err);
     shTryTimestampToDt(toDate.timeIntervalSince1970
@@ -134,7 +138,8 @@
 -(NSInteger)getWeekdayIndex{
     SHDatetime dt;
     int tzOffset = (int)[NSTimeZone.defaultTimeZone secondsFromGMTForDate:self];
-    SHErrorCode error;
+    SHError error;
+    memset(&error, 0, sizeof(SHError));
     shTryTimestampToDt(self.timeIntervalSince1970,tzOffset,&dt,&error);
     return shCalcWeekdayIdx(&dt,&error);
 }
@@ -142,7 +147,7 @@
 
 -(NSDateComponents *)getDateComponents{
   NSCalendarUnit calendarUnits = (252 + 2097152); //magic number for year,month,day,hour,min,sec
-  NSDateComponents *components = [SharedGlobal.inUseCalendar
+  NSDateComponents *components = [NSCalendar.currentCalendar
     components:calendarUnits
     fromDate:self];
   return components;

@@ -78,6 +78,14 @@
 }
 
 
+-(SHEditNavigationController*)editController{
+  if(nil == _editController){
+    _editController = [[SHEditNavigationController alloc] init];
+  }
+  return _editController;
+}
+
+
 @synthesize configDTO = _configDTO;
 -(SHConfigDTO*)configDTO{
   __block SHConfigDTO *config = nil;

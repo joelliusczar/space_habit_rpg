@@ -12,8 +12,9 @@
 #import <SHCommon/NSMutableDictionary+Helper.h>
 #import <SHCore_C/SHDaily_C.h>
 #import <SHDatetime/SHDatetime_struct.h>
-#import <SHDatetime/SHDatetimeMod.h>
+#import <SHDatetime/SHDatetimeFuncs.h>
 #import <SHCommon/NSDate+DateHelper.h>
+#import <SHDatetime/SHDTConstants.h>
 
 
 @implementation SHDailyDTO
@@ -40,11 +41,7 @@
       
       return rateItem;
     }];
-    __weak SHDailyDTO *weakSelf = self;
-    return [[SHListRateItemCollection  alloc] initWithActiveDays:mapped
-      andTouchCallback:^(){
-        weakSelf.isTouched = YES;
-      }];
+    return [[SHListRateItemCollection  alloc] initWithActiveDays:mapped];
 }
 
 @synthesize monthlyActiveDays = _monthlyActiveDays;
@@ -90,7 +87,12 @@
   SHRateType rateType = isInverse? SH_WEEKLY_RATE_INVERSE : SH_WEEKLY_RATE;
   NSMutableArray *raw = (NSMutableArray*)self.activeDaysDict[shGetRateTypeKey(rateType)];
   if(raw.count == 0){
-    
+    SHRangeRateItem *baseRateItem = [[SHRangeRateItem alloc] init];
+    baseRateItem.isDayActive = YES;
+    baseRateItem.forrange = 0;
+    baseRateItem.backrange = 0;
+    return @[baseRateItem, [baseRateItem copy],[baseRateItem copy],
+      [baseRateItem copy],[baseRateItem copy],[baseRateItem copy],[baseRateItem copy]];
   }
   NSArray<SHRangeRateItem*> *mapped = [raw mapItemsTo:^id (id item,NSUInteger idx){
     (void)idx;
@@ -281,7 +283,7 @@ int checkImportanceRange(int importance){
 
 
 static void setActivenessArray(NSArray<SHRangeRateItem*> *week,BOOL *activenessArray){
-  for(NSUInteger i = 0;i < 7;i++){ //magic number
+  for(int i = 0;i < SH_DAYS_IN_WEEK;i++){
         if(week){ //default to all days active
             activenessArray[i] = week[i].isDayActive;
             continue;
@@ -293,7 +295,7 @@ static void setActivenessArray(NSArray<SHRangeRateItem*> *week,BOOL *activenessA
 
 static NSMutableArray<SHRangeRateItem*>* convertCRateItemToObjC(SHRateValueItem *rvi){
   NSMutableArray *converted = [NSMutableArray array];
-  for(int i = 0; i < 7; i++){ //magic number
+  for(int i = 0; i < SH_DAYS_IN_WEEK; i++){
     SHRangeRateItem *rateItem = [[SHRangeRateItem alloc] init];
     [rateItem copyFromCStruct:&rvi[i]];
     [converted addObject:rateItem];
@@ -303,7 +305,7 @@ static NSMutableArray<SHRangeRateItem*>* convertCRateItemToObjC(SHRateValueItem 
 
 
 static void convertObjCRateItemToC(NSArray<SHRangeRateItem*>* rateItems, SHRateValueItem *rvi){
-  for(int i = 0; i < 7; i++){ //magic number
+  for(int i = 0; i < SH_DAYS_IN_WEEK; i++){
     [rateItems[i] copyIntoCStruct:&rvi[i]];
   }
 }
@@ -313,11 +315,11 @@ static void convertObjCRateItemToC(NSArray<SHRangeRateItem*>* rateItems, SHRateV
   self.isTouched = YES;
   BOOL isInverse = shIsInverseRateType(self.rateType);
   NSArray<SHRangeRateItem*> *weekInfo = isInverse ? self.weeklyActiveDaysInv : self.weeklyActiveDays;
-  BOOL activeDays[7]; //magic numbers
+  BOOL activeDays[SH_DAYS_IN_WEEK];
   setActivenessArray(weekInfo,activeDays);
   activeDays[dayIdx] = !activeDays[dayIdx];
-  SHRateValueItem rvi[7];
-  memset(rvi,0,sizeof(SHRateValueItem) * 7);
+  SHRateValueItem rvi[SH_DAYS_IN_WEEK];
+  memset(rvi,0,sizeof(SHRateValueItem) * SH_DAYS_IN_WEEK);
   shBuildWeek(activeDays,self.rate,rvi);
   NSMutableArray<SHRangeRateItem*>* updWeek = convertCRateItemToObjC(rvi);
   if(isInverse){
@@ -362,17 +364,17 @@ static void convertObjCRateItemToC(NSArray<SHRangeRateItem*>* rateItems, SHRateV
   SHDatetime ans;
   memset(&ans,0,sizeof(SHDatetime));
   SHError *error = calloc(1, sizeof(SHError));
-  shTryTimestampToDt_m(lastCheckinDate.timeIntervalSince1970,0,lastCheckinDt,error);
-  shTryTimestampToDt_m(NSDate.date.timeIntervalSince1970,0,checkinDt,error);
-  SHRateValueItem *rvi = calloc(7, sizeof(SHRateValueItem));
+  shTryTimestampToDt(lastCheckinDate.timeIntervalSince1970,0,lastCheckinDt,error);
+  shTryTimestampToDt(NSDate.date.timeIntervalSince1970,0,checkinDt,error);
+  SHRateValueItem *rvi = calloc(SH_DAYS_IN_WEEK, sizeof(SHRateValueItem));
   convertObjCRateItemToC(self.weeklyActiveDays,rvi);
   shNextDueDate_WEEKLY(lastCheckinDt,checkinDt,rvi,self.rate,&ans,error);
-  double dueDateTimestamp = shDtToTimestamp_m(&ans, error);
+  double dueDateTimestamp = shDtToTimestamp(&ans, error);
   NSDate *nextDueDate = [NSDate dateWithTimeIntervalSince1970:dueDateTimestamp];
-  free(lastCheckinDt);
-  free(checkinDt);
-  free(error);
-  free(rvi);
+  shFreeSHDatetime(lastCheckinDt);
+  shFreeSHDatetime(checkinDt);
+  shDisposeSHError(error);
+  shFreeSHRateValueItem(rvi);
   return nextDueDate;
 }
 

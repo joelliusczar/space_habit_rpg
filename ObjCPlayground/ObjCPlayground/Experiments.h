@@ -132,6 +132,8 @@ void cMakeHouses(void);
 +(void)KVOStuff;
 +(void)queuePossibleDeadlock;
 +(void)tryingTheKVOverride;
++(void)testEntityAccessNoSave;
++(void)cfArrayStuff;
 @end
 
 #import "Experiments+Charlie.h"

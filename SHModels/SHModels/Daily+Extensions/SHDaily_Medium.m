@@ -16,24 +16,12 @@
 
 @implementation SHDaily_Medium
 
-+(instancetype)newWithSHData:(NSObject<P_CoreData> *)dataController{
++(instancetype)newWithContext:(NSManagedObjectContext *)context{
   SHDaily_Medium *instance = [SHDaily_Medium new];
-  instance.dataController = dataController;
+  instance.context = context;
   return instance;
 }
 
-
--(SHDaily *)newDaily{
-  return [self newDailyWithContext:nil];
-}
-
-
--(SHDaily *)newDailyWithContext:(NSManagedObjectContext*)context{
-  if(nil == context){
-    context = self.dataController.mainThreadContext;
-  }
-  return (SHDaily *)[context newEntity:SHDaily.entity];
-}
 
 -(NSArray<NSSortDescriptor *> *)buildFetchDescriptors{
   NSSortDescriptor *sortByUserOrder = [[NSSortDescriptor alloc]
@@ -48,9 +36,7 @@
 }
 
 
--(NSFetchedResultsController *)getUnfinishedDailiesController:(NSDate *)todayStart
-  withContext:(NSManagedObjectContext*)context
-{
+-(NSFetchedResultsController *)getUnfinishedDailiesController:(NSDate *)todayStart{
   NSPredicate *filter = [NSPredicate predicateWithFormat:@"isActive = 1"
    " AND (lastActivationDateTime = NULL"
    " OR lastActivationDateTime < %@)"
@@ -58,14 +44,12 @@
   NSFetchRequest<SHDaily*> *request = SHDaily.fetchRequest;
   request.predicate = filter;
   request.sortDescriptors = [self buildFetchDescriptors];
-  NSFetchedResultsController *resultsController = [context getItemFetcher:request];
+  NSFetchedResultsController *resultsController = [self.context getItemFetcher:request];
   return resultsController;
 }
 
 
--(NSFetchedResultsController *)getFinishedDailiesController:(NSDate *)todayStart
-  withContext:(NSManagedObjectContext*)context
-{
+-(NSFetchedResultsController *)getFinishedDailiesController:(NSDate *)todayStart{
   NSPredicate *filter = [NSPredicate predicateWithFormat:@"isActive = 1 AND lastActivationDateTime >= %@",todayStart];
   NSArray *descriptors = @[[[NSSortDescriptor alloc]
                             initWithKey:@"lastActivationDateTime"
@@ -73,7 +57,7 @@
   NSFetchRequest<SHDaily*> *request = SHDaily.fetchRequest;
   request.predicate = filter;
   request.sortDescriptors = descriptors;
-  NSFetchedResultsController *resultsController = [context getItemFetcher:request];
+  NSFetchedResultsController *resultsController = [self.context getItemFetcher:request];
   return resultsController;
 }
 

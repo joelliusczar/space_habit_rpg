@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NSDictionary<NSString *,NSNumber *> SHRateValueItemDict;
+typedef NSDictionary<NSString *,NSNumber *> SHRateItemDict;
 
 //sector groups
 extern NSString* const SH_LVL_0_SECTORS;

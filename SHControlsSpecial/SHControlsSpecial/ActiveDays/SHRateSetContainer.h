@@ -9,7 +9,8 @@
 #import "SHMonthlyActiveDays.h"
 #import "SHWeeklyActiveDays.h"
 #import "SHYearlyActiveDays.h"
-#import <SHModels/SHDailyDTO.h>
+#import <SHData/SHObjectIDWrapper.h>
+#import <SHModels/SHDailyActiveDays.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -29,9 +30,13 @@ SHView
 @property (weak,nonatomic) id<SHItemFlexibleListDelegateProtocol> _Nullable tblDelegate;
 @property (weak,nonatomic) id<SHResizeResponderProtocol> _Nullable resizeResponder;
 @property (copy,nonatomic) void (^touchCallback)(void);
-@property (strong,nonatomic) SHDailyDTO *daily;
+@property (strong,nonatomic) NSManagedObjectContext *context;
+@property (strong,nonatomic) SHObjectIDWrapper *objectIDWrapper;
 @property (strong,nonatomic) SHControlKeep * _Nullable rateControls;
-+(instancetype)newWithDaily:(SHDailyDTO *)daily;
+@property (strong,nonatomic) SHDailyActiveDays *activeDays;
++(instancetype)newWithContext:(NSManagedObjectContext *)context
+  andObjectID:(SHObjectIDWrapper*)objectIDWrapper;
+  
 @end
 
 NS_ASSUME_NONNULL_END

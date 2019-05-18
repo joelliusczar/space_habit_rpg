@@ -45,6 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) int32_t streakLength;
 @property (nonatomic) int32_t urgency;
 
+
 @property (nonatomic) NSUInteger dayStart;
 
 -(void)setupDefaults;

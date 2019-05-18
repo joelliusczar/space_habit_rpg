@@ -1,105 +1,109 @@
 //
-//  c_datetime.h
-//  SHCommon
+//  SHDatetimeFuncs.h
+//  SHDatetime
 //
-//  Created by Joel Pridgen on 3/10/18.
+//  Created by Joel Pridgen on 8/25/18.
 //  Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
-
-#ifndef datetime_h
-#define datetime_h
+#ifndef SHDatetimeFuncs_h
+#define SHDatetimeFuncs_h
 
 #include <stdio.h>
 #include <stdbool.h>
 #include <inttypes.h>
-#include "SHDatetimeMod.h"
+#include <SHErrorHandling.h>
+#include "SHDTConstants.h"
+#include "SHTimeZone.h"
 
 
 /*
  *****
-    "try" prefixed on a method means the result is stored in a pointer passed as an argument
-    and any errors are returned.
+ "try" prefixed on a method means the result is stored in a pointer passed as an argument
+ and any errors are returned.
  *****
  */
 
 
 double shCreateDateTime(int64_t year,int month,int day,int hour,int minute,int second,int timezoneOffset
-,SHErrorCode *error);
+  ,SHError *error);
 
 bool shTryCreateDateTime(int64_t year,int month,int day,int hour,int minute,int second,int timezoneOffset
-,double *ans,SHErrorCode *error);
+  ,double *ans,SHError *error);
 
-double shCreateDate(int64_t year,int month,int day,int timezoneOffset,SHErrorCode *error);
+double shCreateDate(int64_t year,int month,int day,int timezoneOffset,SHError *error);
 
-bool shTryCreateDate(int64_t year,int month,int day,int timezoneOffset,double *ans,SHErrorCode *error);
+bool shTryCreateDate(int64_t year,int month,int day,int timezoneOffset,double *ans,SHError *error);
 
-double shCreateTime(int hour,int minute,int second,SHErrorCode *error);
+double shCreateTime(int hour,int minute,int second,SHError *error);
 
-bool shTryCreateTime(int hour,int minute,int second,double *ans,SHErrorCode *error);
+bool shTryCreateTime(int hour,int minute,int second,double *ans,SHError *error);
 
-double shExtractTime(SHDatetime *dt,SHErrorCode *error);
+double shExtractTime(SHDatetime *dt,SHError *error);
 
-bool shTryExtractTime(SHDatetime *dt,double *ans,SHErrorCode *error);
+bool shTryExtractTime(SHDatetime *dt,double *ans,SHError *error);
 
-bool shTryTimestampToDt(double timestamp, int timezoneOffset,SHDatetime *dt,SHErrorCode *error);
+bool shTryTimestampToDt(double timestamp, int timezoneOffset,SHDatetime *dt,SHError *error);
 
-bool shTimestampToDtUnitsOnly(double timestamp,SHDatetime *dt,SHErrorCode *error);
+bool shTimestampToDtUnitsOnly(double timestamp,SHDatetime *dt,SHError *error);
 
-double shDtToTimestamp(SHDatetime const *dt,SHErrorCode *error);
+double shDtToTimestamp(SHDatetime const *dt,SHError *error);
 
-bool shTryDtToTimestamp(SHDatetime const *dt,double *ans,SHErrorCode *error);
+bool shTryDtToTimestamp(SHDatetime const *dt,double *ans,SHError *error);
 
 bool shTryAddYearsToDt(SHDatetime const *dt,int64_t years,TimeAdjustOptions options,SHDatetime *ans
-,SHErrorCode *error);
+  ,SHError *error);
 
-bool shTryAddYearsToDtInPlace(SHDatetime *dt,int64_t years,TimeAdjustOptions options,SHErrorCode *error);
+bool shTryAddYearsToDtInPlace(SHDatetime *dt,int64_t years,TimeAdjustOptions options,SHError *error);
 
 double shAddYearsToTimestamp(double timestamp,int64_t years,int timezoneOffset,TimeAdjustOptions options
-,SHErrorCode *error);
+  ,SHError *error);
 
 bool shTryAddYearsToTimestamp(double timestamp,int64_t years,int timezoneOffset,TimeAdjustOptions options
-,double *ans,SHErrorCode *error);
+  ,double *ans,SHError *error);
 
 bool shTryAddMonthsToDt(SHDatetime const *dt,int64_t months,TimeAdjustOptions options,SHDatetime *ans
-,SHErrorCode *error);
+  ,SHError *error);
 
-bool shTryAddMonthsToDtInPlace(SHDatetime *dt,int64_t months,TimeAdjustOptions options,SHErrorCode *error);
+bool shTryAddMonthsToDtInPlace(SHDatetime *dt,int64_t months,TimeAdjustOptions options,SHError *error);
 
 bool shTryAddMonthsToTimestamp(double timestamp,int64_t months,int timezoneOffset,TimeAdjustOptions options
-,double *ans,SHErrorCode *error);
+  ,double *ans,SHError *error);
 
 bool shTryAddDaysToDt(SHDatetime const *dt,int64_t days,TimeAdjustOptions options,SHDatetime *ans
-,SHErrorCode *error);
+  ,SHError *error);
 
-bool shTryAddDaysToDtInPlace(SHDatetime *dt,int64_t days,TimeAdjustOptions options,SHErrorCode *error);
+bool shTryAddDaysToDtInPlace(SHDatetime *dt,int64_t days,TimeAdjustOptions options,SHError *error);
 
 bool shTryAddDaysToTimestamp(double timestamp,int64_t day,TimeAdjustOptions options,double *ans
-,SHErrorCode *error);
+  ,SHError *error);
 
-bool shTryDayStart(double timestamp,int timezoneOffset,double *ans,SHErrorCode *error);
+bool shTryDayStart(double timestamp,int timezoneOffset,double *ans,SHError *error);
 
-int shCalcWeekdayIdx(SHDatetime *dt,SHErrorCode *error);
+SHDatetime* shDayStartInPlace(SHDatetime *dt);
 
-int shCalcDayOfYear(SHDatetime *dt,SHErrorCode *error);
+int shCalcWeekdayIdx(SHDatetime *dt,SHError *error);
 
-int shCalcDayOfYearFromTimestamp(double timestamp,int timezoneOffset,SHErrorCode * error);
+int shCalcDayOfYear(SHDatetime *dt,SHError *error);
 
-int64_t shDateDiffDays(SHDatetime const *A,SHDatetime const *B,SHErrorCode *error);
+int shCalcDayOfYearFromTimestamp(double timestamp,int timezoneOffset,SHError * error);
 
-bool shTryDateDiffDays(SHDatetime const *A,SHDatetime const *B,int64_t *ans,SHErrorCode *error);
+int64_t shDateDiffDays(SHDatetime const *A,SHDatetime const *B,SHError *error);
 
-double shDateDiffSecs(SHDatetime const *A,SHDatetime const *B,SHErrorCode *error);
+bool shTryDateDiffDays(SHDatetime const *A,SHDatetime const *B,int64_t *ans,SHError *error);
 
-bool shTryDiffDateSecs(SHDatetime const *A,SHDatetime const *B,int64_t *ans,SHErrorCode *error);
+double shDateDiffSecs(SHDatetime const *A,SHDatetime const *B,SHError *error);
 
-int shIsValidSHDateTime(SHDatetime const *dt);
+bool shTryDiffDateSecs(SHDatetime const *A,SHDatetime const *B,int64_t *ans,SHError *error);
 
-bool shInitDt(SHDatetime *dt);
+bool shIsValidSHDateTime(SHDatetime const *dt);
 
-bool shInitTimeshift(SHTimeshift *shift);
+void shDTToString(SHDatetime const *dt,char* str);
 
-#endif /* datetime_h */
+void shFreeSHDatetime(SHDatetime *dtObj);
+
+void shFreeSHTimeshift(SHTimeshift *tsObj);
+ /* SHDatetimeFuncs_h */
 
 
 /*
@@ -388,6 +392,14 @@ bool shInitTimeshift(SHTimeshift *shift);
  */
 
 /*
+dayStart(SHDatetime *dt):
+ this basically sets the hour, miniute, second to 0
+ dt: this doesn't necessarily even need to be a valid SHDatetime object,
+ no point sending it but nothing stopping you.
+ return: this returns the original datetime object you send in.
+ */
+
+/*
  shCalcWeekdayIdx:
  takes a SHDateTime and infers what the day of the week is. By default, Sunday is 0,
  Saturday is 6
@@ -448,16 +460,4 @@ bool shInitTimeshift(SHTimeshift *shift);
  returns: 1 or 0, true or false
  */
 
-/*
- shInitDt:
- zeros out an SHDatetime object
- dt: the datetime object we're setting to factory state.
- */
-
-/*
- shInitTimeshift:
- zeros out a Timeshift object
- shift: the Timeshift object we're setting to factory state.
- */
-
-
+#endif
