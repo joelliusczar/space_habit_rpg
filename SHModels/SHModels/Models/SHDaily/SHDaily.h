@@ -8,13 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "SHDueDateItemProtocol.h"
+#import "SHDailyActiveDays.h"
 
 @class SHCategory, SHCounter, SHDailySubTask, SHItem, SHReminder;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHDaily : NSManagedObject
-
+@interface SHDaily : NSManagedObject<SHDueDateItemProtocol>
+@property (strong,nonatomic) SHDailyActiveDays *activeDaysContainer;
+-(void)setupInitialState;
 @end
 
 NS_ASSUME_NONNULL_END

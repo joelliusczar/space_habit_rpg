@@ -6,13 +6,10 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#pragma clang diagnostic ignored "-Wunused-parameter"
-
 #import "SHDailyEditController+ControlLoaders.h"
 #import <SHControls/AllSHControls.h>
 #import <SHControlsSpecial/SHRateSetContainer.h>
 #import <SHControlsSpecial/SHReminderListView.h>
-#import <SHModels/SHDueDateItem.h>
 #import <SHData/NSManagedObjectContext+Helper.h>
 
 
@@ -25,7 +22,9 @@
   
   NSManagedObjectContext *context = self.context;
   SHObjectIDWrapper *objectIDWrapper = self.objectIDWrapper;
+  SHDailyActiveDays *activeDays = self.activeDays;
   [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
+    (void)controlExtent;
     SHNoteView *note = [[SHNoteView alloc] init];
     [context performBlock:^{
       SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:objectIDWrapper];
@@ -42,8 +41,10 @@
   }];
   
   [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
+    (void)controlExtent;
     SHRateSetContainer *rateContainer = [SHRateSetContainer newWithContext:context
       andObjectID:objectIDWrapper];
+    rateContainer.activeDays = activeDays;
     [keep forResponderKey:@"touch" doSetupAction:^(id responder){
       rateContainer.touchCallback = responder;
     }];
@@ -63,6 +64,7 @@
   }];
   
   [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
+    (void)controlExtent;
     SHImportanceSliderView *difficultySld = [[SHImportanceSliderView alloc] init];
     difficultySld.controlName = @"difficulty";
     [context performBlock:^{
@@ -79,6 +81,7 @@
   } withKey:@"difficultySld"];
   
   [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
+    (void)controlExtent;
     SHImportanceSliderView *urgencySld = [[SHImportanceSliderView alloc] init];
     urgencySld.controlName = @"urgency";
     [context performBlock:^{
@@ -95,6 +98,7 @@
   } withKey:@"urgencySld"];
   
   [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
+    (void)keep; (void)controlExtent;
     SHStreakResetterView *resetter = [[SHStreakResetterView alloc] init];
     resetter.streakCountLbl.hidden = NO;
     resetter.streakResetBtn.hidden = NO;
@@ -109,13 +113,9 @@
   }];
   
   [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
-    __block NSManagedObjectID *objectID = nil;
-    [context performBlockAndWait:^{
-      SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:objectIDWrapper];
-      objectID = daily.objectID;
-    }];
-    SHDueDateItem *dueDateItem = [SHDueDateItem newWithObjectID:objectID andContext:context];
-    SHReminderListView *list = [SHReminderListView newWithDueDateItem:dueDateItem];
+    (void)controlExtent;
+    SHReminderListView *list = [SHReminderListView newWithContext:context
+      withObjectIDWrapper:objectIDWrapper];
   
     [keep forResponderKey:@"self" doSetupAction:^(id responder){
         list.delegate = responder;

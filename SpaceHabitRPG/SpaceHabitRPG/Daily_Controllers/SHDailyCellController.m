@@ -12,13 +12,15 @@
 #import <SHCommon/SHInterceptor.h>
 #import <SHCommon/NSDate+DateHelper.h>
 #import <SHCommon/SHSingletonCluster.h>
+#import <SHData/NSManagedObjectContext+Helper.h>
 @import CoreGraphics;
 
 
 
 @interface SHDailyCellController()
-@property (nonatomic,weak) SHDailyDTO *model;
-@property (nonatomic,weak) SHDailyViewController *parentDailyController;
+@property (strong,nonatomic) NSManagedObjectID *objectID;
+@property (strong,nonatomic) NSManagedObjectContext *context;
+@property (weak,nonatomic) SHDailyViewController *parentDailyController;
 @property (assign,nonatomic) NSInteger rowIndex;
 @property (assign,nonatomic) NSInteger sectionIndex;
 
@@ -40,51 +42,64 @@
   [super awakeFromNib];
 }
 
--(void)setupCell:(SHDailyDTO *)model AndRow:(NSIndexPath *)rowInfo{
-    self.model = model;
-    [self refreshCell:rowInfo];
+-(void)setupCell:(NSManagedObjectID *)objectID withContext:(NSManagedObjectContext*)context
+  andRow:(NSIndexPath *)rowInfo
+{
+  self.context = context;
+  self.objectID = objectID;
+  [self refreshCell:rowInfo];
 }
 
 -(void)refreshCell:(NSIndexPath *)rowInfo{
-    self.rowIndex = rowInfo.row;
-    self.sectionIndex = rowInfo.section;
-    self.nameLbl.text = self.model.dailyName;
+  self.rowIndex = rowInfo.row;
+  self.sectionIndex = rowInfo.section;
+  [self.context performBlock:^{
+    NSError *error = nil;
+    SHDaily *daily = (SHDaily*)[self.context existingObjectWithID:self.objectID error:&error];
+    NSString *dailyName = daily.dailyName;
+    int32_t streakLength = daily.streakLength;
+    int32_t rate = daily.rate;
+    NSUInteger daysUntilDue = daily.maxDaysBefore;
     
-    //for current streak count
-    if(self.model.streakLength > 0){
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+      self.nameLbl.text = dailyName;
+        //for current streak count
+      if(streakLength > 0){
         self.streakLbl.hidden = NO;
-        self.streakLbl.text = [NSString stringWithFormat:@"Combo: %d",self.model.streakLength];
-    }
-    else{
+        self.streakLbl.text = [NSString stringWithFormat:@"Combo: %d",streakLength];
+      }
+      else{
         self.streakLbl.hidden = YES;
-    }
-    //for due in x days
-    if(self.model.rate > 1){
+      }
+      //for due in x days
+      if(rate > 1){
         self.daysLeftLbl.hidden = NO;
-        self.daysLeftLbl.text = self.model.daysUntilDue==0?@"Today":
-          [NSString stringWithFormat:@"Due in %lul days",self.model.daysUntilDue];
-    }
-    else{
+        self.daysLeftLbl.text = daysUntilDue==0?@"Today":
+          [NSString stringWithFormat:@"Due in %lul days",daysUntilDue];
+      }
+      else{
         self.daysLeftLbl.hidden = YES;
-    }
-    //for check image
-    if(self.sectionIndex == SH_INCOMPLETE){
+      }
+      
+      //for check image
+      if(self.sectionIndex == SH_INCOMPLETE){
         [self.completeBtn setImage:[UIImage imageNamed:@"unchecked_task"] forState:UIControlStateNormal];
-    }
-    else{
+      }
+      else{
         [self.completeBtn setImage:[UIImage imageNamed:@"checked_task"] forState:UIControlStateNormal];
-    }
+      }
+    }];
+  }];
+  
 }
 
 -(void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+  [super setSelected:selected animated:animated];
+  // Configure the view for the selected state
 }
 
 -(IBAction)completeBtn_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
-        (void)sender;
-        (void)event;
+  (void)sender; (void)event;
 //        if(self.model.sectionNum == SH_INCOMPLETE){
 //            self.model.sectionNum  = SH_COMPLETE;
 //            [self.parentDailyController completeDaily:self.model];

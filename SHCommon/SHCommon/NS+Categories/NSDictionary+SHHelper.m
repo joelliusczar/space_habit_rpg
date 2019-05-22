@@ -93,7 +93,6 @@ static NSMutableDictionary* objectToDict(NSObject *object,
     if(objectVal){
       [dict setObject:objectVal forKey:nsPropName];
     }
-    free((void*)propName);
   }
   free(props);
   return dict;

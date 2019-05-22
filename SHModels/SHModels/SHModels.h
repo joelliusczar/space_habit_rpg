@@ -53,7 +53,6 @@ FOUNDATION_EXPORT const unsigned char SHModelsVersionString[];
 #import "SHSectorDTO.h"
 #import "SHHeroDTO.h"
 #import "SHMonsterDTO.h"
-#import "SHDueDateItem.h"
 #import "SHReminderDTO.h"
 #import "SHConfigDTO.h"
 #import "SHDailyDTO.h"

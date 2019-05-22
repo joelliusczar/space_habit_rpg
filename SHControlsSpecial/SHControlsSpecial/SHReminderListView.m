@@ -21,6 +21,9 @@
 #import <SHCommon/NSObject+Helper.h>
 #import <SHControls/SHEventInfo.h>
 #import <SHModels/SHReminderDTO.h>
+#import <SHData/NSManagedObjectContext+Helper.h>
+#import <SHModels/SHReminder.h>
+//#import <SHModels/SHDueDateItemProtocol.h>
 
 @interface SHReminderListView()
 @end
@@ -28,78 +31,125 @@
 @implementation SHReminderListView
 
 
-+(instancetype)newWithDueDateItem:(id<SHDueDateItemProtocol>)dueDateItem{
-    SHReminderListView *instance = [[SHReminderListView alloc] init];
-    instance.dueDateItem = dueDateItem;
-    [instance commonSetup];
-    [instance.addItemsFooter.addItemBtn setTitle:@"Add New Reminder" forState:UIControlStateNormal];
-    return instance;
++(instancetype)newWithContext:(NSManagedObjectContext *)context
+  withObjectIDWrapper:(SHObjectIDWrapper*)objectIDWrapper
+{
+  SHReminderListView *instance = [[SHReminderListView alloc] init];
+  instance.context = context;
+  instance.objectIDWrapper = objectIDWrapper;
+  [instance commonSetup];
+  [instance.addItemsFooter.addItemBtn setTitle:@"Add New Reminder" forState:UIControlStateNormal];
+  return instance;
 }
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunused-parameter"
 
 -(NSInteger)tableView:(UITableView *)tableView
-numberOfRowsInSection:(NSInteger)section{
-    return self.dueDateItem.reminderCount;
+numberOfRowsInSection:(NSInteger)section
+{
+  (void)tableView; (void)section;
+  __block NSInteger count = 0;
+  [self.context performBlockAndWait:^{
+    id<SHDueDateItemProtocol> dueDateItem = (id<SHDueDateItemProtocol>)[self.context
+      getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
+    count = dueDateItem.reminderCount;
+  }];
+  return count;
 }
-
-#pragma clang diagnostic pop
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView
-        cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+  cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  __block NSManagedObjectID *reminderObjectID = nil;
+  [self.context performBlockAndWait:^{
+    id<SHDueDateItemProtocol> dueDateItem = (id<SHDueDateItemProtocol>)[self.context
+      getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
+    reminderObjectID = [dueDateItem reminderAtIndex:indexPath.row].objectID;
+  }];
     SHReminderCellController *cell =
     [SHReminderCellController getReminderCell:tableView withParent:self
-      andReminder:[self.dueDateItem reminderAtIndex:indexPath.row]];
+      andObjectID:reminderObjectID];
     cell.lblRowDesc.text = [NSString stringWithFormat:@"%ld",indexPath.row];
     return cell;
 }
 
 
 -(void)addItemBtn_press_action:(SHEventInfo *)eventInfo{
-    (void)eventInfo;
-    //the reason I was using a temp model earlier is because
-    //the model that was getting passed through here
-    //earlier only had the original value.
-    [self hideKeyboard];
-    SHReminderTimeSpinPicker *timePicker =
-    [[SHReminderTimeSpinPicker alloc] initWithDayRange:self.dueDateItem.maxDaysBefore];
-    [self showSHSpinPicker:timePicker];
+  (void)eventInfo;
+  //the reason I was using a temp model earlier is because
+  //the model that was getting passed through here
+  //earlier only had the original value.
+  [self hideKeyboard];
+  [self.context performBlock:^{
+    id<SHDueDateItemProtocol> dueDateItem = (id<SHDueDateItemProtocol>)[self.context
+      getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
+    NSInteger maxDaysBefore = dueDateItem.maxDaysBefore;
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+      SHReminderTimeSpinPicker *timePicker = [[SHReminderTimeSpinPicker alloc]
+        initWithDayRange:maxDaysBefore];
+      [self showSHSpinPicker:timePicker];
+    }];
+  }];
+
 }
 
 
 -(void)pickerSelection_action:(SHEventInfo *)eventInfo{
-  __weak SHReminderListView *weakSelf = self;
-    shWrapReturnVoid wrappedCall = ^void(){
-        UIPickerView *picker = (UIPickerView *)eventInfo.senderStack[1];
-        NSInteger hourRow = [picker selectedRowInComponent:SH_HOUR_OF_DAY_COL];
-        NSInteger minuteRow = [picker selectedRowInComponent:SH_MINUTE_COL];
-        NSInteger daysCol = picker.numberOfComponents -1;
-        NSInteger daysBefore = [picker selectedRowInComponent:daysCol];
-        [weakSelf insertNewReminder:hourRow minute:minuteRow daysBefore:daysBefore];
-        [weakSelf addItemToTableAndScale:(weakSelf.dueDateItem.reminderCount -1)];
-        [eventInfo.senderStack addObject:weakSelf];
-        [weakSelf pickerSelection_action:eventInfo];
-    };
-    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+  UIPickerView *picker = (UIPickerView *)eventInfo.senderStack[1];
+  NSInteger hourRow = [picker selectedRowInComponent:SH_HOUR_OF_DAY_COL];
+  NSInteger minuteRow = [picker selectedRowInComponent:SH_MINUTE_COL];
+  NSInteger daysCol = picker.numberOfComponents -1;
+  NSInteger daysBefore = [picker selectedRowInComponent:daysCol];
+  [self insertNewReminder:hourRow minute:minuteRow daysBefore:daysBefore];
+  [self.context performBlock:^{
+    id<SHDueDateItemProtocol> dueDateItem = (id<SHDueDateItemProtocol>)[self.context
+      getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
+    NSUInteger newIndex = dueDateItem.reminderCount - 1;
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+      [self addItemToTableAndScale:(newIndex)];
+      [eventInfo.senderStack addObject:self];
+      [self pickerSelection_action:eventInfo];
+    }];
+  }];
+  
 }
 
 
 -(void)insertNewReminder:(NSInteger)hour minute:(NSInteger)minute
-daysBefore:(NSInteger)daysBefore{
-    SHReminderDTO *reminder = [SHReminderDTO new];
+  daysBefore:(NSInteger)daysBefore
+{
+  [self.context performBlock:^{
+    id<SHDueDateItemProtocol> dueDateItem = (id<SHDueDateItemProtocol>)[self.context
+      getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
+    SHReminder *reminder = (SHReminder *)[self.context newEntity:SHReminder.entity];
     //we only really care about the hour and minute
-    reminder.reminderHour = [NSDate createSimpleTimeWithHour:hour minute:minute second:0];
+    reminder.reminderHour = [NSDate createSimpleTimeWithHour:hour minute:minute second:0].timeIntervalSince1970;
     reminder.daysBeforeDue = [SHMath toIntExact:daysBefore];
-    [self.dueDateItem addNewReminder:reminder];
+    [dueDateItem addNewReminder:reminder];
+  }];
 }
 
 
 -(void)deleteCellAt:(NSIndexPath *)indexPath{
-    [self.dueDateItem removeReminderAtIndex:indexPath.row];
-    [self removeItemFromTableAndScale:indexPath];
+  [self.context performBlock:^{
+    id<SHDueDateItemProtocol> dueDateItem = (id<SHDueDateItemProtocol>)[self.context
+      getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
+    [dueDateItem removeReminderAtIndex:indexPath.row];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+      [self removeItemFromTableAndScale:indexPath];
+    }];
+  }];
 }
 
+
+-(NSInteger)backendListCount{
+  __block NSInteger count = 0;
+  [self.context performBlockAndWait:^{
+    id<SHDueDateItemProtocol> dueDateItem = (id<SHDueDateItemProtocol>)[self.context
+      getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
+    count = dueDateItem.reminderCount;
+  }];
+  return count;
+}
 
 @end

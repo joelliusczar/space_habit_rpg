@@ -11,5 +11,6 @@
 #import <SHModels/SHReminderDTO.h>
 
 @interface SHReminderCellController : SHListItemCell
-+(instancetype)getReminderCell:(UITableView *)tableView withParent:(id)parent andReminder:(SHReminderDTO*)reminderModel;
++(instancetype)getReminderCell:(UITableView *)tableView
+  withParent:(id)parent andObjectID:(NSManagedObjectID*)objectID;
 @end

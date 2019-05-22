@@ -26,7 +26,6 @@
 @property (assign,nonatomic) BOOL isStreakReset;
 @property (strong,nonatomic) SHControlKeep<SHView *,id> *editControls;
 @property (assign,nonatomic) BOOL isEditingExisting;
-@property (strong,nonatomic) SHDailyActiveDays *activeDays;
 @end
 
 @implementation SHDailyEditController
@@ -36,21 +35,24 @@
 @synthesize nameStr = _nameStr;
 
 
--(SHDailyActiveDays*)activeDays{
-  if(nil == _activeDays){
-    [self.context performBlockAndWait:^{
-      SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
-      NSMutableDictionary *activeDaysDict = [NSMutableDictionary jsonStringToDict:daily.activeDays];
-      self->_activeDays = [[SHDailyActiveDays alloc] initWithActiveDaysDict:activeDaysDict];
-    }];
-  }
-  return _activeDays;
-}
-
 
 -(instancetype)init{
   if(self = [self initWithNibName:@"SHDailyEditView" bundle:nil]){}
   return self;
+}
+
+
+-(void)setupForContext:(NSManagedObjectContext*)context
+  andObjectIDWrapper:(SHObjectIDWrapper*)objectIDWrapper
+{
+  self.context = context;
+  self.objectIDWrapper = objectIDWrapper;
+  __block SHDailyActiveDays *activeDays = nil;
+  [context performBlockAndWait:^{
+    SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
+    activeDays = daily.activeDaysContainer;
+  }];
+  self.activeDays = activeDays;
 }
 
 
@@ -174,12 +176,14 @@
     SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
     daily.activeDays = updatedActiveDays;
     NSError *error = nil;
+    if(!context.hasChanges) return;
     [context save:&error];
-    if(error){
-      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+    
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+      if(error){
         [self showErrorView:@"Save failed" withError:error];
-      }];
-    }
+      }
+    }];
   }];
 }
 

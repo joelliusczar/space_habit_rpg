@@ -12,6 +12,7 @@
 #import <SHControls/SHSpinPickerDelegateProtocol.h>
 #import <SHControls/SHAddItemsFooter.h>
 #import <SHControls/SHItemFlexibleListView.h>
+#import <SHData/SHObjectIDWrapper.h>
 
 @import CoreData;
 
@@ -20,6 +21,10 @@
 ,SHAddItemsFooterDelegateProtocol
 ,SHSpinPickerDelegateProtocol>
 
-@property (strong,nonatomic) id<SHDueDateItemProtocol> dueDateItem;
-+(instancetype)newWithDueDateItem:(id<SHDueDateItemProtocol>)dueDateItem;
+@property (strong,nonatomic) NSManagedObjectContext *context;
+@property (strong,nonatomic) SHObjectIDWrapper *objectIDWrapper;
+
++(instancetype)newWithContext:(NSManagedObjectContext *)context
+  withObjectIDWrapper:(SHObjectIDWrapper*)objectIDWrapper;
+
 @end

@@ -27,8 +27,8 @@
 
 
 -(UIView *)loadDefaultXib{
-    NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"ItemFlexibleListView")];
-    return [bundle loadNibNamed:@"ItemFlexibleListView" owner:self options:nil][0];
+    NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"SHItemFlexibleListView")];
+    return [bundle loadNibNamed:@"SHItemFlexibleListView" owner:self options:nil][0];
 }
 
 

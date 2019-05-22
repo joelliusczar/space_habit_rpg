@@ -8,21 +8,23 @@
 
 #import "SHReminderCellController.h"
 @interface SHReminderCellController()
-@property (weak,nonatomic) SHReminderDTO *model; //warning replace type
+@property (weak,nonatomic) NSManagedObjectID *objectID;
 @end
 
 @implementation SHReminderCellController
 
 
-+(instancetype)getReminderCell:(UITableView *)tableView withParent:(id)parent andReminder:(SHReminderDTO*)reminderModel{
-    (void)parent;
-    SHReminderCellController *cell = [tableView
-                                    dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
-    if(nil==cell){
-        cell = [[SHReminderCellController alloc] init];
-    }
-    cell.model = reminderModel;
-    return cell;
++(instancetype)getReminderCell:(UITableView *)tableView
+  withParent:(id)parent andObjectID:(NSManagedObjectID*)objectID
+{
+  (void)parent;
+  SHReminderCellController *cell = [tableView
+    dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
+  if(nil==cell){
+    cell = [[SHReminderCellController alloc] init];
+  }
+  cell.objectID = objectID;
+  return cell;
 }
 
 

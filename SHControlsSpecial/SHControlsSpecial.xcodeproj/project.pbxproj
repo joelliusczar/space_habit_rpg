@@ -138,6 +138,7 @@
 		271D616220434498005C9F7E /* ActiveDays */ = {
 			isa = PBXGroup;
 			children = (
+				2733D218229608550090B7F1 /* xibs */,
 				271D617020434499005C9F7E /* SHWeeklyActiveDays.h */,
 				271D616820434498005C9F7E /* SHWeeklyActiveDays.m */,
 				271D616320434498005C9F7E /* SHMonthlyActiveDays.h */,
@@ -150,10 +151,17 @@
 				271D616C20434498005C9F7E /* SHYearPartPicker.m */,
 				271D616520434498005C9F7E /* SHRateSetContainer.h */,
 				271D616B20434498005C9F7E /* SHRateSetContainer.m */,
-				271D616620434498005C9F7E /* SHWeeklyActiveDays.xib */,
-				271D616A20434498005C9F7E /* SHRateSetContainer.xib */,
 			);
 			path = ActiveDays;
+			sourceTree = "<group>";
+		};
+		2733D218229608550090B7F1 /* xibs */ = {
+			isa = PBXGroup;
+			children = (
+				271D616A20434498005C9F7E /* SHRateSetContainer.xib */,
+				271D616620434498005C9F7E /* SHWeeklyActiveDays.xib */,
+			);
+			path = xibs;
 			sourceTree = "<group>";
 		};
 		279848D12250FD8700039A29 /* Configs */ = {

@@ -14,12 +14,12 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHReminderDTO : SHObject<NSCopying>
-@property (readonly,weak,nonatomic) NSString *synopsis;
-@property (readonly,nonatomic) NSMutableDictionary *mapable;
+//@property (readonly,weak,nonatomic) NSString *synopsis;
+//@property (readonly,nonatomic) NSMutableDictionary *mapable;
 @property (assign,nonatomic) int32_t daysBeforeDue;
 @property (copy,nullable,nonatomic) NSDate *reminderHour;
-@property (copy,nonatomic) NSManagedObjectID *objectID;
-@property (copy,nonatomic) void (^touchCallback)(void);
+//@property (copy,nonatomic) NSManagedObjectID *objectID;
+//@property (copy,nonatomic) void (^touchCallback)(void);
 @end
 
 NS_ASSUME_NONNULL_END

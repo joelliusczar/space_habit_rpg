@@ -7,6 +7,7 @@
 //
 
 #import "NSManagedObjectContext+Helper.h"
+#import <SHCommon/NSException+SHCommonExceptions.h>
 
 @implementation NSManagedObjectContext (Helper)
 
@@ -49,6 +50,9 @@ static void _setupIfRequired(NSManagedObject *entity){
   NSArray<NSManagedObject*> *results = nil;
   NSError *error = nil;
   results = [self executeFetchRequest:fetchRequest error:&error];
+  if(error){
+    @throw [NSException dbException:error];
+  }
   return results;
 }
 
@@ -65,6 +69,14 @@ static void _setupIfRequired(NSManagedObject *entity){
 +(NSManagedObject*)newEntityUnattached:(NSEntityDescription*)entityType{
   return [[NSManagedObject alloc] initWithEntity:entityType
       insertIntoManagedObjectContext:nil];
+}
+
+
+-(instancetype)createChildContext{
+  NSManagedObjectContext *context = [[NSManagedObjectContext alloc]
+    initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+  context.parentContext = self;
+  return context;
 }
 
 

@@ -9,6 +9,8 @@
 #import <CoreData/CoreData.h>
 #import "SHObjectIDWrapper.h"
 
+#define shBasicSortDescArray(key) @[[[NSSortDescriptor alloc] initWithKey:key ascending:NO]]
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSManagedObjectContext (Helper)
@@ -18,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSArray<NSManagedObject *> *)getItemsWithRequest:(NSFetchRequest *) fetchRequest;
 -(NSFetchedResultsController *)getItemFetcher:(NSFetchRequest *)fetchRequest;
 +(NSManagedObject*)newEntityUnattached:(NSEntityDescription*)entityType;
+-(instancetype)createChildContext;
 @end
 
 NS_ASSUME_NONNULL_END

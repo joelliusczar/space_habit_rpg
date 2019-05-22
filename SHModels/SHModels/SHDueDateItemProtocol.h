@@ -18,7 +18,7 @@
 @property (readonly,nonatomic) NSString *taskTitle;
 @property (readonly,nonatomic) NSMutableDictionary *simpleMapable;
 @property (readonly,nonatomic) NSUInteger reminderCount;
--(SHReminderDTO*)reminderAtIndex:(NSUInteger)index;
--(void)addNewReminder:(SHReminderDTO*)reminder;
+-(SHReminder*)reminderAtIndex:(NSUInteger)index;
+-(void)addNewReminder:(SHReminder*)reminder;
 -(void)removeReminderAtIndex:(NSUInteger)index;
 @end

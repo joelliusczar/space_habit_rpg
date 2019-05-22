@@ -21,7 +21,7 @@
 #import <SHControls/SHButton.h>
 #import <SHModels/SHMonster_Medium.h>
 #import <SHModels/SHDaily_Medium.h>
-
+#import <SHData/NSManagedObjectContext+Helper.h>
 
 
 @interface SHDailyViewController ()
@@ -61,7 +61,7 @@ static NSString *const EntityName = @"Daily";
 
 -(instancetype)initWithCentral:(SHCentralViewController *)central{
   if(self = [self initWithNibName:@"SHDailyViewController" bundle:nil]){
-    self->_central = central;
+    _central = central;
     [self setuptab];
     
   }
@@ -147,11 +147,8 @@ static NSString *const EntityName = @"Daily";
 }
 
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunused-parameter"
-
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+  (void)tableView;
   __block NSInteger rowCount = 0;
   [self.dailyContext performBlockAndWait:^{
     if(section == SH_INCOMPLETE){
@@ -165,6 +162,7 @@ static NSString *const EntityName = @"Daily";
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+  (void)tableView;
   if(section == SH_INCOMPLETE){
     return @"Unfinished";
   }
@@ -175,71 +173,74 @@ static NSString *const EntityName = @"Daily";
 
 
 -(void)controllerWillChangeContent:(NSFetchedResultsController *)controller{
+  (void)controller;
   [self.dailiesTable beginUpdates];
 }
 
 
 -(void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
+  (void)controller;
   [self.dailiesTable endUpdates];
 }
 
 
 - (IBAction)addDailyBtn_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
-  self.dailyEditor.objectIDWrapper = nil;
-  self.dailyEditor.context = self.dailyContext;
+  (void)sender; (void)event;
+  SHObjectIDWrapper *objectIDWrapper = [[SHObjectIDWrapper alloc] init];
+  objectIDWrapper.entityType = SHDaily.entity;
+  [self setupEditorWithObjectIDWrapper:objectIDWrapper];
   self.central.editController.editingScreen = self.dailyEditor;
   self.central.editController.title = @"Daily";
   [self.central arrangeAndPushChildVCToFront:self.central.editController];
 }
 
 
--(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
-
+-(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView
+  editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  (void)tableView;
   UITableViewRowAction *openEditBox = [UITableViewRowAction
     rowActionWithStyle:UITableViewRowActionStyleNormal
     title:@"Edit"
     handler:^(UITableViewRowAction *action,NSIndexPath *path){
-      shWrapReturnVoid wrappedCall = ^void(){
-        NSFetchedResultsController *fetchController = path.section == SH_INCOMPLETE?self.incompleteItems:
-          self.completeItems;
-        NSManagedObjectContext *fetchContext = fetchController.managedObjectContext;
-        [fetchContext performBlockAndWait:^{
-          NSManagedObject *rowObject = fetchController.fetchedObjects[indexPath.row];
-          SHObjectIDWrapper *objectIDWrapper = [[SHObjectIDWrapper alloc] init];
-          objectIDWrapper.objectID = rowObject.objectID;
-          objectIDWrapper.entityType = SHDaily.entity;
-          [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            self.dailyEditor.objectIDWrapper = objectIDWrapper;
-            self.dailyEditor.context = fetchContext;
-            self.central.editController.editingScreen = self.dailyEditor;
-            self.central.editController.title = @"Daily";
-            [self.central arrangeAndPushChildVCToFront:self.central.editController];
-          }];
+      (void)action;
+      NSFetchedResultsController *fetchController = path.section == SH_INCOMPLETE?
+        self.incompleteItems:
+        self.completeItems;
+      NSManagedObjectContext *fetchContext = fetchController.managedObjectContext;
+      [fetchContext performBlockAndWait:^{
+        NSManagedObject *rowObject = fetchController.fetchedObjects[indexPath.row];
+        SHObjectIDWrapper *objectIDWrapper = [[SHObjectIDWrapper alloc] init];
+        objectIDWrapper.objectID = rowObject.objectID;
+        objectIDWrapper.entityType = SHDaily.entity;
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+          [self setupEditorWithObjectIDWrapper:objectIDWrapper];
+          self.central.editController.editingScreen = self.dailyEditor;
+          self.central.editController.title = @"Daily";
+          [self.central arrangeAndPushChildVCToFront:self.central.editController];
         }];
-      };
-    [SHInterceptor callVoidWrapped:wrappedCall withInfo:[NSString stringWithFormat:@"%@pressedEdit",self.description]];
+      }];
   }];
   
   return @[openEditBox];
 }
 
-#pragma clang diagnostic pop
-
-
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    SHDailyCellController *cell = [SHDailyCellController getDailyCell:tableView WithParent:self];
-    SHDailyDTO *d = nil;
+  SHDailyCellController *cell = [SHDailyCellController getDailyCell:tableView WithParent:self];
+  __block NSManagedObjectID *objectID = nil;
+  [self.dailyContext performBlockAndWait:^{
     if(indexPath.section == SH_INCOMPLETE){
-        d = self.incompleteItems.fetchedObjects[indexPath.row];
+      objectID = ((SHDaily*)self.incompleteItems.fetchedObjects[indexPath.row]).objectID;
     }
     else{
-        d = self.completeItems.fetchedObjects[indexPath.row];
+      objectID = ((SHDaily*)self.completeItems.fetchedObjects[indexPath.row]).objectID;
     }
-    [cell setupCell:d AndRow:indexPath];
-
-    return cell;
+    
+  }];
+  [cell setupCell:objectID withContext:self.dailyContext andRow:indexPath];
+  return cell;
 }
 
 
@@ -249,37 +250,67 @@ static NSString *const EntityName = @"Daily";
 This will be called the user creates a new daily, checks it off, or deletes one
 */
 -(void)controller:(NSFetchedResultsController *)controller
-                    didChangeObject:(id)anObject
-                    atIndexPath:(NSIndexPath *)indexPath
-                    forChangeType:(NSFetchedResultsChangeType)type
-                    newIndexPath:(NSIndexPath *)newIndexPath{
-    NSAssert(controller==self.incompleteItems||controller==self.completeItems,
-             @"controller is pointing to an invalid objects");
-    (void)anObject;
-    NSInteger sectionNum = controller==self.incompleteItems?SH_INCOMPLETE:SH_COMPLETE;
-    NSIndexPath *customExistingPath = [NSIndexPath indexPathForRow:indexPath.row inSection:sectionNum];
-    NSIndexPath *customNewPath = [NSIndexPath indexPathForRow:newIndexPath.row inSection:sectionNum];
-    
-    switch (type) {
-        case NSFetchedResultsChangeInsert:
-            [self.dailiesTable insertRowsAtIndexPaths:@[customNewPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-        case NSFetchedResultsChangeUpdate:
-            [self configureCell:[self.dailiesTable cellForRowAtIndexPath:customExistingPath] atIndexPath:customExistingPath];
-            break;
-        case NSFetchedResultsChangeDelete:
-            [self.dailiesTable deleteRowsAtIndexPaths:@[customExistingPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-        default:
-            break;
-    }
+  didChangeObject:(id)anObject
+  atIndexPath:(NSIndexPath *)indexPath
+  forChangeType:(NSFetchedResultsChangeType)type
+  newIndexPath:(NSIndexPath *)newIndexPath
+{
+  NSAssert(controller==self.incompleteItems||controller==self.completeItems,
+    @"controller is pointing to an invalid objects");
+  (void)anObject;
+  NSInteger sectionNum = controller==self.incompleteItems?SH_INCOMPLETE:SH_COMPLETE;
+  NSIndexPath *customExistingPath = [NSIndexPath indexPathForRow:indexPath.row inSection:sectionNum];
+  NSIndexPath *customNewPath = [NSIndexPath indexPathForRow:newIndexPath.row inSection:sectionNum];
+  
+  switch (type) {
+    case NSFetchedResultsChangeInsert:
+      [self.dailiesTable insertRowsAtIndexPaths:@[customNewPath] withRowAnimation:UITableViewRowAnimationFade];
+      break;
+    case NSFetchedResultsChangeUpdate:
+      [self configureCell:[self.dailiesTable cellForRowAtIndexPath:customExistingPath] atIndexPath:customExistingPath];
+      break;
+    case NSFetchedResultsChangeDelete:
+      [self.dailiesTable deleteRowsAtIndexPaths:@[customExistingPath] withRowAnimation:UITableViewRowAnimationFade];
+      break;
+    default:
+      break;
+  }
 }
 
 -(void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
-    SHDailyCellController *dailyCell = (SHDailyCellController *)cell;
-    [dailyCell refreshCell:indexPath];
+  SHDailyCellController *dailyCell = (SHDailyCellController *)cell;
+  [dailyCell refreshCell:indexPath];
 }
 
+-(void)setupEditorWithObjectIDWrapper:(SHObjectIDWrapper*)objectIDWrapper{
+  NSManagedObjectContext *parentContext = self.dailyContext;
+  NSManagedObjectContext *context = [self.dailyContext createChildContext];
+  
+  __weak NSNotificationCenter *center = NSNotificationCenter.defaultCenter;
+  __weak typeof(self) weakSelf = self;
+  __block id token = [center addObserverForName:NSManagedObjectContextDidSaveNotification
+    object:context
+    queue:nil
+    usingBlock:^(NSNotification *notfification){
+      (void)notfification;
+      [parentContext performBlock:^{
+        NSError *error = nil;
+        if(parentContext.hasChanges){
+          [parentContext save:&error];
+          if(error){
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+              typeof(weakSelf) bSelf = weakSelf;
+              if(nil == bSelf) return;
+              [bSelf showErrorView:@"Save failed" withError:error];
+            }];
+          }
+        }
+      }];
+      [center removeObserver:token];
+    }];
+  
+  [self.dailyEditor setupForContext:context andObjectIDWrapper:objectIDWrapper];;
+}
 
 
 @end

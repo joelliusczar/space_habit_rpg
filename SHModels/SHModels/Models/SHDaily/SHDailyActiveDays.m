@@ -30,11 +30,28 @@
 }
 
 
+-(instancetype)initWithActiveDaysJson:(NSString*)activeDaysJson{
+  if(self = [super init]){
+    _activeDaysJson = activeDaysJson;
+  }
+  return self;
+}
+
+
 -(NSString*)activeDaysJson{
   if(nil == _activeDaysJson){
     _activeDaysJson = [_activeDaysDict dictToString];
   }
   return _activeDaysJson;
+}
+
+
+-(NSMutableDictionary*)activeDaysDict{
+  if(nil == _activeDaysDict){
+    NSString *str = _activeDaysJson ? _activeDaysJson : SH_ALL_DAYS_JSON;
+    _activeDaysDict = [NSDictionary jsonStringToDict:str];
+  }
+  return _activeDaysDict;
 }
 
 

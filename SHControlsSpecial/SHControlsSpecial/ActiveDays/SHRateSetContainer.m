@@ -147,11 +147,6 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
   //self->keep->keep now has a strong pointer to self
   SHRateSetContainer* __weak weakSelf = self;
   NSString* errMessage = @"RateSetContainer got itself into an inconsistent state";
-  [self.context performBlockAndWait:^{
-    SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
-    NSMutableDictionary *activeDaysDict = [NSMutableDictionary jsonStringToDict:daily.activeDays];
-    self.activeDays = [[SHDailyActiveDays alloc] initWithActiveDaysDict:activeDaysDict];
-  }];
   shGetListRateCollection getMonthRateItems = self.activeDays.monthlyActiveDaysLazy;
   shGetListRateCollection getMonthRateItemsInv = self.activeDays.monthlyActiveDaysInvLazy;
   

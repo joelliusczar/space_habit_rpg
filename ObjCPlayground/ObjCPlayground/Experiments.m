@@ -1194,16 +1194,19 @@ NSString *convertCharToBin(unsigned char input){
 
 
 +(void)cfArrayStuff{
-//  NSMutableArray *arr = [NSMutableArray array];
+  int32_t arraySize = 10;
+  CFMutableArrayRef array = CFArrayCreateMutable(kCFAllocatorDefault, arraySize, NULL);
+  NSMutableArray *arr = (__bridge_transfer NSMutableArray*)array;
 //  CFMutableArrayRef cfarr = (__bridge CFMutableArrayRef)arr;
-//  stupidStruct ss;
-//  ss.firstItem = 5;
-//  ss.secondItem = 19;
-//  ss.thirdItem = 21;
-//  CFArrayAppendValue(cfarr, &ss);
-  //[arr addObject:(__bridge id)&ss];
-  //stupidStruct *ss2 = (__bridge stupidStruct *)(arr[0]);
-  //NSLog(@"%d",ss2->thirdItem);
+  stupidStruct ss;
+  ss.firstItem = 5;
+  ss.secondItem = 19;
+  ss.thirdItem = 21;
+  //CFArrayAppendValue(array, &ss);
+  [arr addObject:(__bridge id)&ss];
+  //void* ssid = (__bridge void *)(arr[0]);
+  stupidStruct *ss2 = CFArrayGetValueAtIndex(array,0);//(__bridge stupidStruct *)(arr[0]);
+  NSLog(@"%d",ss2->thirdItem);
   
 }
 
