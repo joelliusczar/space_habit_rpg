@@ -11,10 +11,11 @@
 #import <SHGlobal/SHConstants.h>
 #import <SHModels/SHModelConstants.h>
 #import <SHModels/SHRangeRateItem.h>
+#import <SHControls/SHNestedControlProtocol.h>
 
 
 IB_DESIGNABLE
-@interface SHWeeklyActiveDays : SHView
+@interface SHWeeklyActiveDays : UIViewController<SHNestedControlProtocol>
 @property (strong, nonatomic) IBOutletCollection(SHSwitch) NSArray *activeDaySwitches;
 @property (weak,nonatomic) IBOutlet SHSwitch *sundaySwitch;
 @property (weak,nonatomic) IBOutlet SHSwitch *mondaySwitch;
@@ -25,4 +26,5 @@ IB_DESIGNABLE
 @property (weak,nonatomic) IBOutlet SHSwitch *saturdaySwitch;
 @property (copy,nonatomic) void (^touchCallback)(void);
 -(void)setActiveDaysOfWeek:(NSArray<SHRangeRateItem*> *)activeDays;
+-(void)setupCustomOptions;
 @end

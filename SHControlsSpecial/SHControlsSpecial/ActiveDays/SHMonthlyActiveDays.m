@@ -27,7 +27,10 @@
 +(instancetype)newWithListRateItemCollection:(SHListRateItemCollection *)activeDays
   inverseActiveDays:(SHListRateItemCollection*)inverseActiveDays
 {
-  SHMonthlyActiveDays *instance = [[SHMonthlyActiveDays alloc] init];
+  NSBundle *bundle = [NSBundle bundleForClass:SHMonthlyActiveDays.class];
+  SHMonthlyActiveDays *instance = [[SHMonthlyActiveDays alloc]
+    initWithNibName:@"SHMonthlyActiveDays"
+    bundle:bundle];
   instance.activeDays = activeDays;
   instance.inverseActiveDays = inverseActiveDays;
   [instance commonSetup];

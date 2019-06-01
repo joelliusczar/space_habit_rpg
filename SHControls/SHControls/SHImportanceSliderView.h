@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "SHImportanceSlidersDelegateProtocol.h"
-#import "SHView.h"
+#import "SHViewController.h"
 #import "SHNumberControlProtocol.h"
+#import "SHNestedControlProtocol.h"
 
 IB_DESIGNABLE
-@interface SHImportanceSliderView : SHView<SHNumberControlProtocol>
+@interface SHImportanceSliderView : SHViewController<SHNumberControlProtocol>
 @property (weak,nonatomic) IBOutlet UILabel *importanceLbl;
 @property (weak,nonatomic) IBOutlet UISlider *importanceSld;
 @property (strong,nonatomic) NSString *controlName;

@@ -48,7 +48,7 @@ FOUNDATION_EXPORT const unsigned char SHControlsVersionString[];
 #import "AllSHControls.h"
 #import "SHSubtasksTableView.h"
 #import "SHStreakResetterView.h"
-#import "RateTypeSelector.h"
+#import "SHRateTypeSelector.h"
 #import "SHRateSetterView.h"
 #import "SHSwitch.h"
 #import "SHImportanceSliderView.h"
@@ -56,6 +56,7 @@ FOUNDATION_EXPORT const unsigned char SHControlsVersionString[];
 #import "SHFrontEndConstants.h"
 #import "UIView+Helpers.h"
 #import "UIViewController+Helper.h"
+#import "SHNestedControlProtocol.h"
 
 // In this header, you should import all the public headers of your framework using statements like #import <SHControls/PublicHeader.h>
 

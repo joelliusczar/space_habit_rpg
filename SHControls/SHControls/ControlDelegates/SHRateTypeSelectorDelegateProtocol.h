@@ -10,6 +10,6 @@
 #import <SHGlobal/SHConstants.h>
 #import "SHEventInfo.h"
 
-@protocol RateTypeSelectorDelegateProtocol <NSObject>
+@protocol SHRateTypeSelectorDelegateProtocol <NSObject>
 -(void)updateRateType:(SHRateType)rateType with:(SHEventInfo *)eventInfo;
 @end

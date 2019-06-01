@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <SHCommon/SHInterceptorProtocol.h>
+#import "SHNestedControlProtocol.h"
 
-@interface SHViewController : UIViewController
+@interface SHViewController : UIViewController<SHNestedControlProtocol>
 @property (strong,nonatomic) id<SHInterceptorProtocol> interceptor;
 @end

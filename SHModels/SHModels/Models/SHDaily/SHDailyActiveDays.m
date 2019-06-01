@@ -113,7 +113,7 @@ static SHListRateItem* mapDictToMonthlyYearly(id item, NSUInteger idx){
 
 -(shGetListRateCollection)monthlyActiveDaysLazy{
   __weak typeof(self) weakSelf = self;
-  return ^SHListRateItemCollection*(){
+  return ^SHListRateItemCollection* (){
     typeof(weakSelf) bSelf = weakSelf;
     if(nil == bSelf) return nil;
     return bSelf.monthlyActiveDays;

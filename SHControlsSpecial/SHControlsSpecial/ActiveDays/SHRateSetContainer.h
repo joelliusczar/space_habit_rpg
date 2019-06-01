@@ -11,16 +11,17 @@
 #import "SHYearlyActiveDays.h"
 #import <SHData/SHObjectIDWrapper.h>
 #import <SHModels/SHDailyActiveDays.h>
+#import <SHControls/SHNestedControlProtocol.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHRateSetContainer :
-SHView
-<RateTypeSelectorDelegateProtocol
+UIViewController
+<SHRateTypeSelectorDelegateProtocol
 ,SHRateSetterDelegateProtocol
 ,SHResizeResponderProtocol>
 @property (weak,nonatomic) IBOutlet SHButton  * _Nullable openRateTypeBtn;
-@property (weak,nonatomic) IBOutlet UIView  * _Nullable activeDaysControlContainer;
+//@property (weak,nonatomic) IBOutlet UIView  * _Nullable activeDaysControlContainer;
 @property (weak,nonatomic) IBOutlet SHRateSetterView * _Nullable rateSetter;
 @property (weak,nonatomic) IBOutlet SHButton * _Nullable invertRateTypeBtn;
 @property (readonly,strong,nonatomic) SHMonthlyActiveDays * monthlyActiveDays;
@@ -34,9 +35,8 @@ SHView
 @property (strong,nonatomic) SHObjectIDWrapper *objectIDWrapper;
 @property (strong,nonatomic) SHControlKeep * _Nullable rateControls;
 @property (strong,nonatomic) SHDailyActiveDays *activeDays;
-+(instancetype)newWithContext:(NSManagedObjectContext *)context
+-(void)setupWithContext:(NSManagedObjectContext *)context
   andObjectID:(SHObjectIDWrapper*)objectIDWrapper;
-  
 @end
 
 NS_ASSUME_NONNULL_END

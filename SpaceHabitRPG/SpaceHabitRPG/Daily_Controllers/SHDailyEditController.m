@@ -18,13 +18,13 @@
 #import <SHData/NSManagedObjectContext+Helper.h>
 #import <SHModels/SHDailyActiveDays.h>
 #import <SHModels/SHDailyValidation.h>
+#import <SHControls/UIView+Helpers.h>
 
 
 @interface SHDailyEditController ()
 @property (assign,nonatomic) shDailyStatus section;
-@property (assign,nonatomic) BOOL areXtraOptsOpen;
 @property (assign,nonatomic) BOOL isStreakReset;
-@property (strong,nonatomic) SHControlKeep<SHView *,id> *editControls;
+@property (strong,nonatomic) SHControlKeep<UIViewController *,id> *editControls;
 @property (assign,nonatomic) BOOL isEditingExisting;
 @end
 
@@ -33,11 +33,13 @@
 //These need to be synthesized since they come from a protocol
 @synthesize editorContainer = _editorContainer;
 @synthesize nameStr = _nameStr;
-
+@synthesize controlsTbl = _controlsTbl;
 
 
 -(instancetype)init{
-  if(self = [self initWithNibName:@"SHDailyEditView" bundle:nil]){}
+  if(self = [super init]){
+    _controlsTbl = [[UITableView alloc] init];
+  }
   return self;
 }
 
@@ -55,6 +57,11 @@
   self.activeDays = activeDays;
 }
 
+
+-(void)loadView{
+  self.view = _controlsTbl;
+  
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -108,21 +115,6 @@
 }
 
 
-- (IBAction)showXtra_push_action:(UIButton *)sender forEvent:(UIEvent *)event {
-  (void)sender; (void)event;
-  if(self.areXtraOptsOpen){
-    self.controlsTbl.hidden = YES;
-    self.areXtraOptsOpen = NO;
-    return;
-  }
-  self.controlsTbl.hidden = NO;
-  self.areXtraOptsOpen = YES;
-  if(self.editorContainer){
-    [self.editorContainer resizeScrollView:self.controlsTbl.hidden];
-  }
-}
-
-
 -(void)pickerSelection_action:(UIPickerView *)picker
   onItemFlexibleList:(SHItemFlexibleListView *)itemFlexibleList
   forEvent:(UIEvent *)event
@@ -134,7 +126,8 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
   (void)tableView;(void)section;
-  return self.editControls.controlList.count;
+  NSInteger count = self.editControls.controlList.count;
+  return count;
 }
 
 
@@ -143,11 +136,16 @@
 {
   (void)tableView;
   UITableViewCell *cell = [[UITableViewCell alloc] init];
-  SHView *cellView = self.editControls.controlList[indexPath.row];
-  cellView.holderView = cell;
-  [cellView changeBackgroundColorTo:self.view.backgroundColor];
-  cell.backgroundColor = self.view.backgroundColor;
-  [cell.contentView addSubview:cellView];
+  UIViewController *cellViewController = self.editControls.controlList[indexPath.row];
+  cell.translatesAutoresizingMaskIntoConstraints = NO;
+  UIColor *bgColor = self.view.backgroundColor;
+  //[cellView changeBackgroundColorTo:bgColor];
+  //cell.backgroundColor = self.view.backgroundColor;
+  cell.backgroundColor = UIColor.redColor;
+  [self addChildViewController:cellViewController];
+  [cell.contentView addSubview:cellViewController.view];
+  [cell.contentView createFillUpWidthLayoutConstraints:cellViewController.view];
+  [cellViewController didMoveToParentViewController:self];
   return cell;
 }
 
@@ -156,7 +154,7 @@
   heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   (void)tableView;
-  return self.editControls.controlList[indexPath.row].mainView.frame.size.height;
+  return self.editControls.controlList[indexPath.row].view.frame.size.height;
 }
 
 

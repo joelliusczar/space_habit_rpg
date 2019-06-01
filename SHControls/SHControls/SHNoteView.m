@@ -17,12 +17,16 @@
 @implementation SHNoteView
 
 
+-(instancetype)init{
+  NSBundle *bundle = [NSBundle bundleForClass:SHNoteView.class];
+  if(self = [self initWithNibName:@"SHNoteView" bundle:bundle]){}
+  return self;
+}
+
+
 -(void)textViewDidChange:(UITextView *)textView{
-    shWrapReturnVoid wrappedCall = ^void(){
-        SHEventInfo *e = [[SHEventInfo alloc]init:nil withSenders:textView,self,nil];
-        [self.delegate textDidChange:e];
-    };
-    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+  SHEventInfo *e = [[SHEventInfo alloc]init:nil withSenders:textView,self,nil];
+  [self.delegate textDidChange:e];
 }
 
 @end

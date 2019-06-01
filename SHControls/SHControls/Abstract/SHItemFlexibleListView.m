@@ -20,6 +20,7 @@
 #import <SHCommon/SHInterceptor.h>
 #import <math.h>
 
+
 @interface SHItemFlexibleListView()
 @end
 
@@ -45,17 +46,18 @@ CGFloat calculateMaxTableHeight(CGFloat changeHeight){
 
 
 -(void)resizeItemListHeightByChange:(CGFloat)change{
-    CGFloat maxHeight = calculateMaxTableHeight(change);
-    if(change < 0 && (self.itemTbl.contentSize.height + change) > maxHeight){
-        return;
-    }
-    if(self.itemTbl.frame.size.height >= maxHeight){
-        return;
-    }
+  CGFloat maxHeight = calculateMaxTableHeight(change);
+  if(change < 0 && (self.itemTbl.contentSize.height + change) > maxHeight){
+      return;
+  }
+  if(self.itemTbl.frame.size.height >= maxHeight){
+      return;
+  }
 
-    [self.itemTbl resizeHeightByOffset:change];
-    [self resizeHeightByOffset:change];
-    [self respondToHeightResize:change];
+  [self.itemTbl resizeHeightByOffset:change];
+  #warning cleanup
+  //[self resizeHeightByOffset:change];
+  [self respondToHeightResize:change];
 }
 
 
@@ -69,55 +71,56 @@ CGFloat calculateMaxTableHeight(CGFloat changeHeight){
 
 -(void)scrollItemTblToLastRow{
     NSIndexPath *lastRow = [NSIndexPath
-                            indexPathForRow:[self backendListCount] -1
-                            inSection:0];
+      indexPathForRow:[self backendListCount] -1
+       inSection:0];
     [self.itemTbl scrollToRowAtIndexPath:lastRow
-                        atScrollPosition:UITableViewScrollPositionBottom
-                                animated:YES];
+      atScrollPosition:UITableViewScrollPositionBottom
+      animated:YES];
 }
 
 
 -(void)commonSetup{
-    [self setupInitialHeight];
-    self.itemTbl.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+  [self setupInitialHeight];
+  self.itemTbl.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 
 -(void)setupInitialHeight{
-    CGFloat tblHeight = getInitialHeight(self.backendListCount);
-    [self resizeItemListHeightByChange:tblHeight];
+#warning cleanup
+  //CGFloat tblHeight = getInitialHeight(self.backendListCount);
+  //[self resizeItemListHeightByChange:tblHeight];
 }
 
 
 -(void)showSHSpinPicker:(SHSpinPicker *)picker{
-    picker.delegate = self;
-    [self.resizeResponder pushViewControllerToNearestParent:picker];
+  picker.delegate = self;
+  [self.resizeResponder pushViewControllerToNearestParent:picker];
 }
 
 
 -(void)addItemToTableAndScale:(NSInteger)row{
-    
-    NSAssert(row >= 0,@"row was an invalid index");
-    
-    NSIndexPath *indexPath = [NSIndexPath
-                              indexPathForRow:row
-                              inSection:0];
-    [self.itemTbl insertRowsAtIndexPaths:@[indexPath]
-                        withRowAnimation:UITableViewRowAnimationFade];
-    //need the begin/end update lines because buttons will get covered by
-    //invisble stuff and not respond
-    //also, apparently they tell the table to refresh the heights
-    [self beginUpdate];
-    [self resizeItemListHeightByChange:SH_SUB_TABLE_CELL_HEIGHT];
-    [self endUpdate];
-    [self scrollRemindersListByOffset:SH_SUB_TABLE_CELL_HEIGHT];
-    [self notifyAddNewCell:indexPath];
+  
+  NSAssert(row >= 0,@"row was an invalid index");
+  
+  NSIndexPath *indexPath = [NSIndexPath
+    indexPathForRow:row
+    inSection:0];
+  [self.itemTbl insertRowsAtIndexPaths:@[indexPath]
+    withRowAnimation:UITableViewRowAnimationFade];
+  //need the begin/end update lines because buttons will get covered by
+  //invisble stuff and not respond
+  //also, apparently they tell the table to refresh the heights
+  [self beginUpdate];
+  [self resizeItemListHeightByChange:SH_SUB_TABLE_CELL_HEIGHT];
+  [self endUpdate];
+  [self scrollRemindersListByOffset:SH_SUB_TABLE_CELL_HEIGHT];
+  [self notifyAddNewCell:indexPath];
 }
 
 
 -(void)removeItemFromTableAndScale:(NSIndexPath *)indexPath{
     [self.itemTbl deleteRowsAtIndexPaths:@[indexPath]
-                        withRowAnimation:UITableViewRowAnimationFade];
+      withRowAnimation:UITableViewRowAnimationFade];
     [self beginUpdate];
     [self resizeItemListHeightByChange:-1*SH_SUB_TABLE_CELL_HEIGHT];
     [self endUpdate];
@@ -127,12 +130,13 @@ CGFloat calculateMaxTableHeight(CGFloat changeHeight){
 
 -(NSInteger)tableView:(UITableView *)tableView
 numberOfRowsInSection:(NSInteger)section{
-    @throw [NSException abstractException];
+  @throw [NSException abstractException];
 }
 
 
 -(UITableViewCell *)tableView:(UITableViewCell *)tableView
-        cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+  cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     @throw [NSException abstractException];
 }
 
@@ -143,139 +147,104 @@ numberOfRowsInSection:(NSInteger)section{
 
 
 -(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView
-                 editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
-    __weak SHItemFlexibleListView *weakSelf = self;
-    void (^pressedDelete)(UITableViewRowAction *,NSIndexPath *) =
-            ^(UITableViewRowAction *action,NSIndexPath *indexPath){
-                shWrapReturnVoid wrappedCall = ^void(){
-                    [weakSelf deleteCellAt:indexPath];
-                };
-                [weakSelf.interceptor callVoidWrapped:wrappedCall withInfo:nil];
-            };
-    UITableViewRowAction *openDeleteButton = [UITableViewRowAction
-                                              rowActionWithStyle:UITableViewRowActionStyleNormal
-                                              title:@"Delete"
-                                              handler:pressedDelete];
-    openDeleteButton.backgroundColor = UIColor.redColor;
-    return @[openDeleteButton];
+  editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  __weak SHItemFlexibleListView *weakSelf = self;
+  void (^pressedDelete)(UITableViewRowAction *,NSIndexPath *) =
+    ^(UITableViewRowAction *action,NSIndexPath *indexPath){
+        [weakSelf deleteCellAt:indexPath];
+    };
+  UITableViewRowAction *openDeleteButton = [UITableViewRowAction
+    rowActionWithStyle:UITableViewRowActionStyleNormal
+    title:@"Delete"
+    handler:pressedDelete];
+  openDeleteButton.backgroundColor = UIColor.redColor;
+  return @[openDeleteButton];
 }
 
 
 -(void)addItemBtn_press_action:(SHEventInfo *)eventInfo{
-    [eventInfo.senderStack addObject:self];
-    SEL delegateSel = @selector(addItemBtn_press_action:);
-    if([self.delegate respondsToSelector:delegateSel]){
-        [self.delegate addItemBtn_press_action:eventInfo];
-    }
+  [eventInfo.senderStack addObject:self];
+  SEL delegateSel = @selector(addItemBtn_press_action:);
+  if([self.delegate respondsToSelector:delegateSel]){
+    [self.delegate addItemBtn_press_action:eventInfo];
+  }
 }
 
 
 -(void)pickerSelection_action:(SHEventInfo *)eventInfo{
-    [eventInfo.senderStack addObject:self];
-    SEL delegateSel = @selector(pickerSelection_action:);
-    if([self.delegate respondsToSelector:delegateSel]){
-        [self.delegate pickerSelection_action:eventInfo];
-    }
+  [eventInfo.senderStack addObject:self];
+  SEL delegateSel = @selector(pickerSelection_action:);
+  if([self.delegate respondsToSelector:delegateSel]){
+    [self.delegate pickerSelection_action:eventInfo];
+  }
 }
 
 
 -(void)notifyAddNewCell:(NSIndexPath *)indexPath{
-  __weak SHItemFlexibleListView *weakSelf = self;
-  shWrapReturnVoid wrappedCall = ^void(){
-      SHItemFlexibleListEventInfo *eventInfo = [[SHItemFlexibleListEventInfo alloc]
-                                              initWithItemFlexibleList:weakSelf
-                                              andIndexPath:indexPath];
-      SEL delegateSel = @selector(notifyAddNewCell:);
-      if([weakSelf.delegate respondsToSelector:delegateSel]){
-          [weakSelf.delegate notifyAddNewCell:eventInfo];
-      }
-  };
-  [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+  SHItemFlexibleListEventInfo *eventInfo = [[SHItemFlexibleListEventInfo alloc]
+    initWithItemFlexibleList:self
+    andIndexPath:indexPath];
+  SEL delegateSel = @selector(notifyAddNewCell:);
+  if([self.delegate respondsToSelector:delegateSel]){
+      [self.delegate notifyAddNewCell:eventInfo];
+  }
 }
     
     
 -(void)notifyDeleteCell:(NSIndexPath *)indexPath{
-  __weak SHItemFlexibleListView *weakSelf = self;
-  shWrapReturnVoid wrappedCall = ^void(){
       SHItemFlexibleListEventInfo *eventInfo = [[SHItemFlexibleListEventInfo alloc]
-                                              initWithItemFlexibleList:weakSelf
-                                              andIndexPath:indexPath];
+       initWithItemFlexibleList:self
+        andIndexPath:indexPath];
       SEL delegateSel = @selector(notifyDeleteCell:);
-      if([weakSelf.delegate respondsToSelector:delegateSel]){
-          [weakSelf.delegate notifyDeleteCell:eventInfo];
+      if([self.delegate respondsToSelector:delegateSel]){
+          [self.delegate notifyDeleteCell:eventInfo];
       }
-  };
-  [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
 -(void)beginUpdate{
-  __weak SHItemFlexibleListView *weakSelf = self;
-  shWrapReturnVoid wrappedCall = ^void(){
-      SEL delegateSel = @selector(beginUpdate);
-      if([weakSelf.resizeResponder respondsToSelector:delegateSel]){
-          [weakSelf.resizeResponder beginUpdate];
-      }
-  };
-  [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+  SEL delegateSel = @selector(beginUpdate);
+  if([self.resizeResponder respondsToSelector:delegateSel]){
+    [self.resizeResponder beginUpdate];
+  }
 }
 
 
 -(void)endUpdate{
-  __weak SHItemFlexibleListView *weakSelf = self;
-  shWrapReturnVoid wrappedCall = ^void(){
-      SEL delegateSel = @selector(endUpdate);
-      if([weakSelf.resizeResponder respondsToSelector:delegateSel]){
-          [weakSelf.resizeResponder endUpdate];
-      }
-  };
-  [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
-    
+  SEL delegateSel = @selector(endUpdate);
+  if([self.resizeResponder respondsToSelector:delegateSel]){
+      [self.resizeResponder endUpdate];
+  }
 }
 
 -(void)respondToHeightResize:(CGFloat)change{
-  __weak SHItemFlexibleListView *weakSelf = self;
-  shWrapReturnVoid wrappedCall = ^void(){
-      SEL delegateSel = @selector(respondToHeightResize:);
-      if([weakSelf.resizeResponder respondsToSelector:delegateSel]){
-          [weakSelf.resizeResponder respondToHeightResize:change];
-      }
-  };
-  [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+  SEL delegateSel = @selector(respondToHeightResize:);
+  if([self.resizeResponder respondsToSelector:delegateSel]){
+      [self.resizeResponder respondToHeightResize:change];
+  }
 }
 
 -(void)scrollByOffset:(CGFloat)offset{
-  __weak SHItemFlexibleListView *weakSelf = self;
-  shWrapReturnVoid wrappedCall = ^void(){
       SEL delegateSel = @selector(scrollByOffset:);
-      if([weakSelf.resizeResponder respondsToSelector:delegateSel]){
-          [weakSelf.resizeResponder scrollByOffset:offset];
+      if([self.resizeResponder respondsToSelector:delegateSel]){
+          [self.resizeResponder scrollByOffset:offset];
       }
-  };
-  [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
--(void)scrollVisibleToControl:(SHView *)control{
-  __weak SHItemFlexibleListView *weakSelf = self;
-  shWrapReturnVoid wrappedCall = ^void(){
+-(void)scrollVisibleToControl:(UIViewController *)control{
       SEL delegateSel = @selector(scrollVisibleToControl:);
-      if([weakSelf.resizeResponder respondsToSelector:delegateSel]){
-          [weakSelf.resizeResponder scrollVisibleToControl:control];
+      if([self.resizeResponder respondsToSelector:delegateSel]){
+          [self.resizeResponder scrollVisibleToControl:control];
       }
-  };
-  [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
 -(void)hideKeyboard{
-  __weak SHItemFlexibleListView *weakSelf = self;
-  shWrapReturnVoid wrappedCall = ^void(){
-      if([weakSelf.resizeResponder respondsToSelector:@selector(hideKeyboard)]){
-          [weakSelf.resizeResponder hideKeyboard];
-      }
-  };
-  [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+  if([self.resizeResponder respondsToSelector:@selector(hideKeyboard)]){
+      [self.resizeResponder hideKeyboard];
+  }
 }
 
 

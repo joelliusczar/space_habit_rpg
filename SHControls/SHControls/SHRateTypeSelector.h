@@ -1,5 +1,5 @@
 //
-//  RateTypeSelector.h
+//  SHRateTypeSelector.h
 //  HabitRPG2
 //
 //  Created by Joel Pridgen on 8/2/17.
@@ -12,7 +12,7 @@
 #import <SHGlobal/SHConstants.h>
 @import UIKit;
 
-@interface RateTypeSelector : SHViewController
+@interface SHRateTypeSelector : UIViewController
 @property (weak,nonatomic) IBOutlet UILabel *everyXCheckLbl;
 @property (weak,nonatomic) IBOutlet SHButton *everyXBtn;
 @property (weak,nonatomic) IBOutlet UILabel *weeklyCheckLbl;
@@ -24,6 +24,6 @@
 @property (weak,nonatomic) IBOutlet UIImageView *backgroundView;
 @property (assign,nonatomic) SHRateType rateType;
 -(instancetype)initWithRateType:(SHRateType)rateType
-                    andDelegate:(id<RateTypeSelectorDelegateProtocol>)delegate;
-@property (weak,nonatomic) id<RateTypeSelectorDelegateProtocol> delegate;
+  andDelegate:(id<SHRateTypeSelectorDelegateProtocol>)delegate;
+@property (weak,nonatomic) id<SHRateTypeSelectorDelegateProtocol> delegate;
 @end

@@ -18,5 +18,7 @@
 -(void)checkForAndApplyVisualChanges;
 -(void)translateViewVertically:(CGFloat)offset;
 -(void)resetVerticalOrigin;
+-(void)createFillUpLayoutConstraints:(UIView *)view;
+-(void)createFillUpWidthLayoutConstraints:(UIView *)view;
 
 @end

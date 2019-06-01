@@ -18,8 +18,9 @@
 @implementation SHWeeklyActiveDays
 
 
+
+
 -(void)setupCustomOptions{
-    [super setupCustomOptions];
     self.sundaySwitch.tag = 0;
     self.mondaySwitch.tag = 1;
     self.tuesdaySwitch.tag = 2;
@@ -41,6 +42,11 @@
     for(SHSwitch *flip in self.activeDaySwitches){
         flip.isOn = activeDays[flip.tag].isDayActive;
     }
+}
+
+
+-(void)changeBackgroundColorTo:(UIColor *)color{
+  self.view.backgroundColor = color;
 }
 
 @end

@@ -12,13 +12,14 @@
 #import <SHCommon/SHControlKeep.h>
 
 
-@interface SHEditNavigationController : UIViewController<SHResizeResponderProtocol>
+@interface SHEditNavigationController : UIViewController//<SHResizeResponderProtocol>
 @property (strong,nonatomic) NSString *viewTitle;
 @property (strong,nonatomic) UIViewController<SHEditingSaverProtocol>* editingScreen;
 @property (weak,nonatomic) SHControlKeep *editControls;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollContainer;
+//@property (weak, nonatomic) IBOutlet UIScrollView *scrollContainer;
+@property (strong,nonatomic) IBOutlet UITextField *itemNameInput;
+@property (strong,nonatomic) IBOutlet UIView *editorContainer;
 -(void)enableSave;
 -(void)enableDelete;
--(void)resizeScrollView:(BOOL)isXtraOptsHidden;
 -(void)scrollByOffset:(CGFloat)offset;
 @end

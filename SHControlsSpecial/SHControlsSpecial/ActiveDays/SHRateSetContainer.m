@@ -7,7 +7,7 @@
 //
 
 #import "SHRateSetContainer.h"
-#import <SHControls/RateTypeSelector.h>
+#import <SHControls/SHRateTypeSelector.h>
 #import <SHControls/UIViewController+Helper.h>
 #import <SHControls/UIView+Helpers.h>
 #import <SHControls/SHFrontEndConstants.h>
@@ -19,7 +19,6 @@
 #import <SHCommon/NSDictionary+SHHelper.h>
 #import <SHData/NSManagedObjectContext+Helper.h>
 
-
 NSString * const YEARLY_KEY = @"yearly";
 NSString * const MONTHLY_KEY = @"monthly";
 NSString * const WEEKLY_KEY = @"weekly";
@@ -28,7 +27,7 @@ NSString * const RESIZEABLE_KEY = @"RESIZE";
 
 @interface SHRateSetContainer ()
 @property (assign,nonatomic) CGSize defaultSize;
-@property (weak,nonatomic) SHView *currentActiveDaysControl;
+@property (weak,nonatomic) UIViewController<SHNestedControlProtocol> *currentActiveDaysControl;
 @end
 
 @implementation SHRateSetContainer
@@ -71,31 +70,29 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
   self.rateControls.responderLookup[TBL_KEY] =  tblDelegate;
 }
 
-+(instancetype)newWithContext:(NSManagedObjectContext *)context
+-(void)setupWithContext:(NSManagedObjectContext *)context
   andObjectID:(SHObjectIDWrapper*)objectIDWrapper
 {
-  
-  SHRateSetContainer *instance = [[SHRateSetContainer alloc] init];
-  instance.context = context;
-  instance.objectIDWrapper = objectIDWrapper;;
-  instance.defaultSize = instance.frame.size;
-  instance.rateControls.responderLookup[RESIZEABLE_KEY] = instance;
+  self.context = context;
+  self.objectIDWrapper = objectIDWrapper;;
+  self.rateControls.responderLookup[RESIZEABLE_KEY] = self;
   __block SHRateType rateType = SH_DAILY_RATE;
   [context performBlockAndWait:^{
     SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:objectIDWrapper];
     rateType = daily.rateType;
   }];
-  [instance updateRateTypeControls:rateType shouldChange:YES];
-  [instance updateRateTypeButtonText];
-  [instance updateInvertRateTypeButtonText];
-  return instance;
+  [self updateRateTypeControls:rateType shouldChange:YES];
+  [self updateRateTypeButtonText];
+  [self updateInvertRateTypeButtonText];
 }
 
 -(void)commonTableSetup:(SHItemFlexibleListView *)tbl{
-  tbl.holderView = self.activeDaysControlContainer;
+  [self addChildViewController:tbl];
+  [self.view addSubview:tbl.view];
+  [tbl didMoveToParentViewController:self];
   tbl.resizeResponder = self;
   tbl.delegate = self.tblDelegate;
-  [tbl changeBackgroundColorTo:self.backgroundColor];
+  [tbl changeBackgroundColorTo:self.view.backgroundColor];
 }
 
 
@@ -108,7 +105,7 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
     SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
     rateType = daily.rateType;
   }];
-  RateTypeSelector *typeSelector = [[RateTypeSelector alloc]
+  SHRateTypeSelector *typeSelector = [[SHRateTypeSelector alloc]
     initWithRateType:rateType andDelegate:self];
   [self.resizeResponder pushViewControllerToNearestParent:typeSelector];
 }
@@ -149,13 +146,15 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
   NSString* errMessage = @"RateSetContainer got itself into an inconsistent state";
   shGetListRateCollection getMonthRateItems = self.activeDays.monthlyActiveDaysLazy;
   shGetListRateCollection getMonthRateItemsInv = self.activeDays.monthlyActiveDaysInvLazy;
-  
   keep.controlLookup[MONTHLY_KEY] = vw(^id(SHControlKeep *keep,SHControlExtent *controlExtent){
     (void)controlExtent;
     NSAssert(weakSelf,errMessage);
+    NSLog(@"Doing it this way!");
     SHMonthlyActiveDays *monthly = [SHMonthlyActiveDays newWithListRateItemCollection:getMonthRateItems()
       inverseActiveDays:getMonthRateItemsInv()];
+    NSLog(@"Inito!");
     [weakSelf commonTableSetup:monthly];
+    NSLog(@"table!");
     [keep forResponderKey:RESIZEABLE_KEY doSetupAction:^(id responder){
         monthly.resizeResponder = responder;
     }];
@@ -185,7 +184,8 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
     (void)controlExtent;
     NSAssert(weakSelf,errMessage);
     SHWeeklyActiveDays *weekly = [[SHWeeklyActiveDays alloc] init];
-    [weekly changeBackgroundColorTo:weakSelf.backgroundColor];
+    [weekly setupCustomOptions];
+    [weekly changeBackgroundColorTo:weakSelf.view.backgroundColor];
     [keep forResponderKey:WEEKLY_KEY doSetupAction:^(id responder){
       //Does this work?
       weekly.touchCallback = responder;
@@ -313,17 +313,18 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
     
   }
   else if(rateType == SH_DAILY_RATE){
-    [self switchActiveDaysControlFor:[[SHView alloc] initEmpty]];
+    [self switchActiveDaysControlFor:[[SHViewController alloc] init]];
     self.currentActiveDaysControl = nil;
   }
 }
 
 
--(void)switchActiveDaysControlFor:(SHView *)activeDaysControl{
+-(void)switchActiveDaysControlFor:(UIViewController<SHNestedControlProtocol> *)activeDaysControl{
   NSAssert(activeDaysControl,@"activeDaysControl was nil");
   [self fitControlHeightToSubControlHeight:activeDaysControl];
-  [self.activeDaysControlContainer
-      replaceSubviewsWith:activeDaysControl];
+  #warning cleanup
+//  [self.activeDaysControlContainer
+//      replaceSubviewsWith:activeDaysControl];
   self.currentActiveDaysControl = activeDaysControl;
 }
 
@@ -336,25 +337,28 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 
 
 -(void)resetHeight{
-  [self resizeFrame:self.defaultSize];
-  [self.activeDaysControlContainer resizeFrame:CGRectZero.size];
+  #warning clean up
+  //[self resizeFrame:self.defaultSize];
+  //[self.activeDaysControlContainer resizeFrame:CGRectZero.size];
 }
 
 
--(void)fitControlHeightToSubControlHeight:(SHView *)control{
+-(void)fitControlHeightToSubControlHeight:(UIViewController *)control{
   
   [self resetHeight];
-  CGFloat h = control.frame.size.height;
+  //CGFloat h = control.frame.size.height;
   [self beginUpdate];
-  [self resizeHeightByOffset:h];
-  [self.activeDaysControlContainer resizeHeightByOffset:h];
+  #warning cleanup
+  //[self resizeHeightByOffset:h];
+  //[self.activeDaysControlContainer resizeHeightByOffset:h];
   [self endUpdate];
 }
 
 
 -(void)respondToHeightResize:(CGFloat)change{
-  [self resizeHeightByOffset:change];
-  [self.activeDaysControlContainer resizeHeightByOffset:change];
+  #warning clean up
+  //[self resizeHeightByOffset:change];
+  //[self.activeDaysControlContainer resizeHeightByOffset:change];
   [self notify_respondToHeightResize:change];
 }
 
@@ -396,7 +400,8 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 }
 
 -(void)changeBackgroundColorTo:(UIColor *)color{
-  [super changeBackgroundColorTo:color];
+#warning cleanup
+  //[super changeBackgroundColorTo:color];
   [self.rateSetter changeBackgroundColorTo:color];
   [self.currentActiveDaysControl changeBackgroundColorTo:color];
 }

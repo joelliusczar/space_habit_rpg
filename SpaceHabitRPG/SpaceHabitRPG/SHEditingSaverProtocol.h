@@ -15,8 +15,7 @@
 @required
 @property (weak,nonatomic) SHEditNavigationController *editorContainer;
 @property (weak,nonatomic) UITextField *nameBox;
-@property (weak,nonatomic) UIButton *showXtraOptsBtn;
-@property (weak,nonatomic) UITableView *controlsTbl;
+@property (strong,nonatomic) UITableView *controlsTbl;
 @property (strong,nonatomic) NSString *nameStr;
 -(void)saveEdit;
 -(void)deleteModel;

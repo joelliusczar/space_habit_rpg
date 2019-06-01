@@ -16,7 +16,7 @@
 @optional
 -(void)respondToHeightResize:(CGFloat)change;
 -(void)scrollByOffset:(CGFloat)offset;
--(void)scrollVisibleToControl:(SHView *)control;
+-(void)scrollVisibleToControl:(UIViewController *)control;
 -(void)beginUpdate;
 -(void)endUpdate;
 -(void)resetHeight;

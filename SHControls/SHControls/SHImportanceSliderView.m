@@ -19,27 +19,28 @@
 
 
 -(IBAction)importanceSld_valueChanged_action:(UISlider *)sender
-                                    forEvent:(UIEvent *)event {
-    shWrapReturnVoid wrappedCall = ^void(){
-        SHEventInfo *e = eventInfoCopy;
-        [self.delegate sld_valueChanged_action:e];
-    };
-    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+  forEvent:(UIEvent *)event
+{
+  SHEventInfo *e = eventInfoCopy;
+  [self.delegate sld_valueChanged_action:e];
 }
 
 -(double)value{
-    return self.importanceSld.value;
+  return self.importanceSld.value;
 }
 
 -(void)setValue:(double)value{
-    self.importanceSld.value = value;
+  self.importanceSld.value = value;
 }
 
 
 -(void)updateImportanceSlider:(int)updVal{
-    self.importanceSld.value = updVal;
-    self.importanceLbl.text = [NSString stringWithFormat:@"%@: %d",self.controlName,updVal];
+  self.importanceSld.value = updVal;
+  self.importanceLbl.text = [NSString stringWithFormat:@"%@: %d",self.controlName,updVal];
 }
+
+
+
 
 
 @end

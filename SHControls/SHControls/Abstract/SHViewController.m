@@ -22,4 +22,9 @@
     return _interceptor;
 }
 
+
+-(void)changeBackgroundColorTo:(UIColor *)color{
+  self.view.backgroundColor = color;
+}
+
 @end

@@ -15,10 +15,10 @@
 #import "SHSpinPickerDelegateProtocol.h"
 #import "SHResizeResponderProtocol.h"
 #import "SHItemFlexibleListDelegateProtocol.h"
+#import "SHNestedControlProtocol.h"
 
 
-
-@interface SHItemFlexibleListView :SHView
+@interface SHItemFlexibleListView :SHViewController
 <UITableViewDataSource
 ,UITableViewDelegate
 ,SHAddItemsFooterDelegateProtocol

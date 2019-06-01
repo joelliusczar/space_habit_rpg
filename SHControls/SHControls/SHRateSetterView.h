@@ -11,9 +11,10 @@
 #import "SHSwitch.h"
 #import "SHView.h"
 #import <SHGlobal/SHConstants.h>
+#import "SHNestedControlProtocol.h"
 
 IB_DESIGNABLE
-@interface SHRateSetterView : SHView
+@interface SHRateSetterView : UIViewController<SHNestedControlProtocol>
 @property (weak,nonatomic) IBOutlet UIStepper *rateStep;
 @property (weak,nonatomic) IBOutlet id<SHRateSetterDelegateProtocol> delegate;
 @end

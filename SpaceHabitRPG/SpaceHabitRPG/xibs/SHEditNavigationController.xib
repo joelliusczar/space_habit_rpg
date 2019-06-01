@@ -13,8 +13,8 @@
             <connections>
                 <outlet property="background" destination="uA6-OK-2OO" id="K7S-2o-eOK"/>
                 <outlet property="deleteBtn" destination="SaF-Zy-dGk" id="m5E-hY-b5g"/>
+                <outlet property="editItemsView" destination="DVu-J2-zm4" id="wtc-98-7EQ"/>
                 <outlet property="headline" destination="eWw-lr-aM3" id="FnK-ll-bpY"/>
-                <outlet property="modalView" destination="DVu-J2-zm4" id="wtc-98-7EQ"/>
                 <outlet property="saveBtnBarItem" destination="RiP-TM-LEl" id="JNH-St-Y8t"/>
                 <outlet property="scrollContainer" destination="Tvo-tY-HIU" id="F3K-ht-x8G"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

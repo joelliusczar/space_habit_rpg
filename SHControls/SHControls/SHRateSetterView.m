@@ -16,14 +16,20 @@
 @implementation SHRateSetterView
 
 
+-(instancetype)init{
+  NSBundle *bundle = [NSBundle bundleForClass:SHRateSetterView.class];
+  if(self = [super initWithNibName:@"SHRateSetterView" bundle:bundle]){}
+  return self;
+}
+
 - (IBAction)rateStep_valueChanged_action:(UIStepper *)sender forEvent:(UIEvent *)event {
-    shWrapReturnVoid wrappedCall = ^void(){
-        SHEventInfo *e = eventInfoCopy;
-        [self.delegate rateStep_valueChanged_action:e];
-    };
-    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+  SHEventInfo *e = eventInfoCopy;
+  [self.delegate rateStep_valueChanged_action:e];
 }
 
 
+-(void)changeBackgroundColorTo:(UIColor *)color{
+  self.view.backgroundColor = color;
+}
 
 @end

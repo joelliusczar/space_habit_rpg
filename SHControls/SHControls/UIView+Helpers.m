@@ -176,4 +176,19 @@ that it would be a pain in the ass to add back if I change my mind.
 }
 
 
+-(void)createFillUpLayoutConstraints:(UIView *)view{
+  view.translatesAutoresizingMaskIntoConstraints = NO;
+  [self.topAnchor constraintEqualToAnchor: view.topAnchor].active = YES;
+  [self.bottomAnchor constraintEqualToAnchor:view.bottomAnchor].active = YES;
+  [self createFillUpWidthLayoutConstraints:view];
+}
+
+
+-(void)createFillUpWidthLayoutConstraints:(UIView *)view{
+  view.translatesAutoresizingMaskIntoConstraints = NO;
+  [self.leadingAnchor constraintEqualToAnchor:view.leadingAnchor].active = YES;
+  [self.trailingAnchor constraintEqualToAnchor:view.trailingAnchor].active = YES;
+}
+
+
 @end

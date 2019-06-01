@@ -12,7 +12,7 @@
 #import "SHButton.h"
 
 IB_DESIGNABLE
-@interface SHAddItemsFooter : SHView
+@interface SHAddItemsFooter : UIViewController
 @property (weak,nonatomic) IBOutlet SHButton *addItemBtn;
 @property (weak,nonatomic) IBOutlet id<SHAddItemsFooterDelegateProtocol> delegate;
 @end
