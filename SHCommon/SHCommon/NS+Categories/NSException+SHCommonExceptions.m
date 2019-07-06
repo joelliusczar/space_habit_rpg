@@ -46,4 +46,12 @@
     userInfo:error.userInfo];
 }
 
+
++(NSException*)inproperlySetupObject:(NSString*)message{
+    return [NSException
+    exceptionWithName:@"inproperlySetupObjectException"
+    reason:message
+    userInfo:nil];
+}
+
 @end

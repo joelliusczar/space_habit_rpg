@@ -29,7 +29,6 @@
 @property (strong,nonatomic) IBOutlet UINavigationBar *topNavBar;
 @property (assign,nonatomic) CGFloat defaultScrollHeight;
 @property (assign,nonatomic) BOOL isKeyboardOpen;
-@property (strong,nonatomic) UIGestureRecognizer *tapGestureBG; //unused
 @property (strong,nonatomic) UIGestureRecognizer *tapGestureFG;
 @end
 
@@ -40,24 +39,21 @@
   return self;
 }
 
-void setupBackgroundTapActions(SHEditNavigationController *nav){
-    nav.tapGestureBG = [[UITapGestureRecognizer alloc]
-      initWithTarget:nav
-      action:@selector(background_tap_action:)];
-    //the foreground one is tell the keyboard to go away
-    nav.tapGestureFG = [[UITapGestureRecognizer alloc]
-      initWithTarget:nav
-      action:@selector(background_tap_action:)];
-    [nav.view addGestureRecognizer:nav.tapGestureFG];
+-(void)setupBackgroundTapActions{
+
+  self.tapGestureFG = [[UITapGestureRecognizer alloc]
+    initWithTarget:self
+    action:@selector(background_tap_action:)];
+  [self.view addGestureRecognizer:self.tapGestureFG];
 }
 
-void setupNotificationCenterStuff(SHEditNavigationController *nav){
+-(void)setupNotificationCenterStuff{
   NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-  [center addObserver:nav
+  [center addObserver:self
     selector:@selector(noticeShowKeyboard:)
     name:UIKeyboardDidShowNotification
     object:nil];
-  [center addObserver:nav
+  [center addObserver:self
     selector:@selector(noticeHideKeyboard:)
     name:UIKeyboardDidHideNotification
     object:nil];
@@ -66,24 +62,28 @@ void setupNotificationCenterStuff(SHEditNavigationController *nav){
 
 -(void)viewDidLoad {
   [super viewDidLoad];
-  [self.view layoutIfNeeded];
-  self.editingScreen.editorContainer = self;
+  //[self.view layoutIfNeeded];
+  self.editingScreen.editorContainerController = self;
   self.topNavBar.topItem.title = self.viewTitle;
 
-
-  
   [self addChildViewController:self.editingScreen];
-  [self.editorContainer addSubview: self.editingScreen.view];
+  [self.editorSubviewContainer addSubview: self.editingScreen.view];
   [self.editingScreen didMoveToParentViewController:self];
-  [self.editorContainer createFillUpLayoutConstraints:self.editingScreen.view];
+  UIView *editView = self.editingScreen.view;
+  editView.translatesAutoresizingMaskIntoConstraints = NO;
+  [editView.topAnchor constraintEqualToAnchor:self.editorSubviewContainer.topAnchor].active = YES;
+  [editView.leadingAnchor constraintEqualToAnchor:self.editorSubviewContainer.leadingAnchor].active = YES;
+  [editView.widthAnchor constraintEqualToAnchor:self.editorSubviewContainer.widthAnchor].active = YES;
+  [editView.heightAnchor constraintEqualToAnchor:self.editorSubviewContainer.heightAnchor].active = YES;
+  //[self.editorContainer tieConstaintsForsubordinateView:self.editingScreen.view];
 //  [self.scrollContainer addSubview:self.editingScreen.view];
 //  self.defaultScrollHeight = self.scrollContainer.frame.size.height;
 //  self.scrollContainer.contentSize = CGSizeMake(self.scrollContainer.frame.size.width,
 //                                                self.editingScreen.view.frame.size.height);
 //  self.scrollContainer.scrollEnabled = YES;
 //  [self.scrollContainer sizeToFit];
-  setupBackgroundTapActions(self);
-  setupNotificationCenterStuff(self);
+  [self setupBackgroundTapActions];
+  [self setupNotificationCenterStuff];
 }
 
 
@@ -164,12 +164,10 @@ void setupNotificationCenterStuff(SHEditNavigationController *nav){
 -(void)background_tap_action:(UITapGestureRecognizer *)sender {
   if(self.isKeyboardOpen){
     [self hideKeyboard];
+    sender.cancelsTouchesInView = YES;
     return;
   }
-  if(sender.view == self.background){
-    [self.editingScreen unsaved_closing_action];
-    [self popVCFromFront];
-  }
+  sender.cancelsTouchesInView = NO;
 }
 
 

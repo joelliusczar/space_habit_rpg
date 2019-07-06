@@ -176,18 +176,23 @@ that it would be a pain in the ass to add back if I change my mind.
 }
 
 
--(void)createFillUpLayoutConstraints:(UIView *)view{
-  view.translatesAutoresizingMaskIntoConstraints = NO;
-  [self.topAnchor constraintEqualToAnchor: view.topAnchor].active = YES;
-  [self.bottomAnchor constraintEqualToAnchor:view.bottomAnchor].active = YES;
-  [self createFillUpWidthLayoutConstraints:view];
+-(void)tieConstaintsForsubordinateView:(UIView *)subordinateView{
+  [self tieVerticalConstraintsForsubordinateView:subordinateView];
+  [self tieHorizontalConstaintsForSubordinateView:subordinateView];
 }
 
 
--(void)createFillUpWidthLayoutConstraints:(UIView *)view{
-  view.translatesAutoresizingMaskIntoConstraints = NO;
-  [self.leadingAnchor constraintEqualToAnchor:view.leadingAnchor].active = YES;
-  [self.trailingAnchor constraintEqualToAnchor:view.trailingAnchor].active = YES;
+-(void)tieHorizontalConstaintsForSubordinateView:(UIView *)subordinateView{
+  subordinateView.translatesAutoresizingMaskIntoConstraints = NO;
+  [self.leadingAnchor constraintEqualToAnchor:subordinateView.leadingAnchor].active = YES;
+  [self.trailingAnchor constraintEqualToAnchor:subordinateView.trailingAnchor].active = YES;
+}
+
+
+-(void)tieVerticalConstraintsForsubordinateView:(UIView*)subordinateView{
+  subordinateView.translatesAutoresizingMaskIntoConstraints = NO;
+  [self.topAnchor constraintEqualToAnchor: subordinateView.topAnchor].active = YES;
+  [self.bottomAnchor constraintEqualToAnchor:subordinateView.bottomAnchor].active = YES;
 }
 
 

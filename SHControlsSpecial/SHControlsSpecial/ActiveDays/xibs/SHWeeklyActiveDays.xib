@@ -9,15 +9,15 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHWeeklyActiveDays">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHWeeklyActiveDaysViewController">
             <connections>
-                <outlet property="fridaySwitch" destination="UOg-RV-2YP" id="ngM-pT-eQ0"/>
-                <outlet property="mondaySwitch" destination="XGF-wE-JMo" id="Ybh-YT-ntH"/>
-                <outlet property="saturdaySwitch" destination="JUC-SM-SBA" id="Eqw-Eo-olQ"/>
-                <outlet property="sundaySwitch" destination="ZAQ-Kw-KsY" id="LsG-ur-yCl"/>
-                <outlet property="thursdaySwitch" destination="HaR-9W-Okl" id="HZT-px-5ZG"/>
-                <outlet property="tuesdaySwitch" destination="ri6-il-G2G" id="XvG-Bk-TxV"/>
-                <outlet property="wednesdaySwitch" destination="rOK-z9-wOz" id="1h0-Az-BIP"/>
+                <outlet property="day0Switch" destination="ZAQ-Kw-KsY" id="LsG-ur-yCl"/>
+                <outlet property="day1Switch" destination="XGF-wE-JMo" id="Ybh-YT-ntH"/>
+                <outlet property="day2Switch" destination="ri6-il-G2G" id="XvG-Bk-TxV"/>
+                <outlet property="day3Switch" destination="rOK-z9-wOz" id="1h0-Az-BIP"/>
+                <outlet property="day4Switch" destination="HaR-9W-Okl" id="HZT-px-5ZG"/>
+                <outlet property="day5Switch" destination="UOg-RV-2YP" id="ngM-pT-eQ0"/>
+                <outlet property="day6Switch" destination="JUC-SM-SBA" id="Eqw-Eo-olQ"/>
                 <outletCollection property="activeDaySwitches" destination="ZAQ-Kw-KsY" id="vJ4-cb-PXD"/>
                 <outletCollection property="activeDaySwitches" destination="XGF-wE-JMo" id="cvN-TL-7cB"/>
                 <outletCollection property="activeDaySwitches" destination="ri6-il-G2G" id="TJl-sb-bts"/>

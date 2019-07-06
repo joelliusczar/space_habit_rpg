@@ -11,7 +11,7 @@
 
 @implementation SHAddItemsFooter
 
--(IBAction)addItemBtn_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
+-(IBAction)addItemBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
   SHEventInfo *e = eventInfoCopy;
   [self.delegate addItemBtn_press_action:e];
 }

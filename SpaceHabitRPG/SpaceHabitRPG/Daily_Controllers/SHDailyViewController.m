@@ -122,7 +122,7 @@ static NSString *const EntityName = @"Daily";
 -(void)setupData{
   SHConfigDTO *settings = self.central.configDTO;
   NSDate *todayStart = [[NSDate date] dayStart];
-  todayStart = [todayStart timeAfterHours:settings.dayStart minutes:0 seconds:0];
+  todayStart = [todayStart timeAfterHours:settings.dayStartHour minutes:0 seconds:0];
   SHDaily_Medium *dailyMedium = [SHDaily_Medium newWithContext:self.dailyContext];
   self.incompleteItems = [dailyMedium getUnfinishedDailiesController:todayStart];
   self.completeItems = [dailyMedium getFinishedDailiesController:todayStart];

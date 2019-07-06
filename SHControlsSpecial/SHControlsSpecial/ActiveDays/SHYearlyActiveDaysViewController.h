@@ -1,5 +1,5 @@
 //
-//  SHYearlyActiveDays.h
+//  SHYearlyActiveDaysViewController.h
 //  HabitRPG2
 //
 //  Created by Joel Pridgen on 8/16/17.
@@ -10,7 +10,7 @@
 #import <SHModels/SHListRateItemCollection.h>
 
 
-@interface SHYearlyActiveDays : SHItemFlexibleListView
+@interface SHYearlyActiveDaysViewController : SHItemFlexibleListView
 @property (strong,nonatomic) SHListRateItemCollection *activeDays;
 @property (strong,nonatomic) SHListRateItemCollection *inverseActiveDays;
 +(instancetype)newWithListRateItemCollection:(SHListRateItemCollection *)activeDays

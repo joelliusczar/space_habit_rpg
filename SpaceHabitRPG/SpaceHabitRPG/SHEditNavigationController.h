@@ -18,7 +18,7 @@
 @property (weak,nonatomic) SHControlKeep *editControls;
 //@property (weak, nonatomic) IBOutlet UIScrollView *scrollContainer;
 @property (strong,nonatomic) IBOutlet UITextField *itemNameInput;
-@property (strong,nonatomic) IBOutlet UIView *editorContainer;
+@property (strong,nonatomic) IBOutlet UIView *editorSubviewContainer;
 -(void)enableSave;
 -(void)enableDelete;
 -(void)scrollByOffset:(CGFloat)offset;

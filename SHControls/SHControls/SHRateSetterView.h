@@ -12,9 +12,12 @@
 #import "SHView.h"
 #import <SHGlobal/SHConstants.h>
 #import "SHNestedControlProtocol.h"
+#import "SHViewController.h"
+
+typedef void(^rateStepAction)(UIStepper*,UIEvent *);
 
 IB_DESIGNABLE
-@interface SHRateSetterView : UIViewController<SHNestedControlProtocol>
+@interface SHRateSetterView : SHViewController
 @property (weak,nonatomic) IBOutlet UIStepper *rateStep;
-@property (weak,nonatomic) IBOutlet id<SHRateSetterDelegateProtocol> delegate;
+@property (copy,nonatomic) rateStepAction rateStepEvent;
 @end

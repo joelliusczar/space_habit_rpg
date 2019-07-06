@@ -10,6 +10,7 @@
 #import <objc/runtime.h>
 #import "SHCommonUtils.h"
 #import "NSObject+Helper.h"
+#import "NSException+SHCommonExceptions.h"
 
 
 
@@ -41,4 +42,40 @@ void shCopyInstanceVar(NSObject* from,NSObject* to,NSString *varName){
 }
 
 
+NSArray<NSString*>* shBuildWeekBasedOnWeekStart(NSUInteger weekStart){
+  NSArray<NSString*> *days = @[@"SUN",@"MON",@"TUE",@"WED",@"THR",@"FRI",@"SAT"];
+  if(weekStart == 0){
+    return days;
+  }
+  NSMutableArray<NSString*> *result = [NSMutableArray arrayWithCapacity:7];
+  if(weekStart > 6) return nil;
+  for(NSUInteger day = 0; day < 7; day++){
+    [result addObject:days[weekStart + day % 7]];
+  }
+  return result;
+}
 
+NSString* shWeekDayKeyToFull(NSString * dayKey){
+  if([dayKey isEqualToString:@"SUN"]){
+    return @"Sunday";
+  }
+  if([dayKey isEqualToString:@"MON"]){
+    return @"Monday";
+  }
+  if([dayKey isEqualToString:@"TUE"]){
+    return @"Tuesday";
+  }
+  if([dayKey isEqualToString:@"WED"]){
+    return @"Wednesday";
+  }
+  if([dayKey isEqualToString:@"THR"]){
+    return @"Thursday";
+  }
+  if([dayKey isEqualToString:@"FRI"]){
+    return @"Friday";
+  }
+  if([dayKey isEqualToString:@"SAT"]){
+    return @"Saturday";
+  }
+  return nil;
+}

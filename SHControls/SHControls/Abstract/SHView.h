@@ -9,14 +9,19 @@
 #import <UIKit/UIKit.h>
 #import <SHCommon/SHInterceptorProtocol.h>
 #import "SHViewProtocol.h"
+#import "SHViewEventsProtocol.h"
 
-
-@interface SHView : UIView
-@property (weak,nonatomic) UIView *mainView;
+IB_DESIGNABLE
+@interface SHView: UIView
+@property (strong,nonatomic) UIView *mainView;
 @property (weak,nonatomic) UIView *holderView;
-@property (strong,nonatomic) id<SHInterceptorProtocol> interceptor;
+@property (assign,nonatomic) IBOutlet id<SHViewEventsProtocol> delegate;
 -(instancetype)initEmpty;
 -(void)changeBackgroundColorTo:(UIColor *)color;
 -(UIView *)loadDefaultXib;
+//abstract
 -(void)setupCustomOptions;
+//abstract
+-(void)beginTap_action:(UITouch *)touch
+  withEvent:(UIEvent *)event;
 @end

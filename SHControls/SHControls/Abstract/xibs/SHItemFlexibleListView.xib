@@ -11,45 +11,47 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHItemFlexibleListView">
             <connections>
-                <outlet property="addItemsFooter" destination="4Cc-Ah-ok6" id="cA0-Z5-fsh"/>
                 <outlet property="itemTbl" destination="y4T-Lj-Mg2" id="fb4-tm-Sgp"/>
+                <outlet property="view" destination="iN0-l3-epB" id="TBi-NG-8lr"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="283" height="37"/>
+            <rect key="frame" x="0.0" y="0.0" width="285" height="99"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="y4T-Lj-Mg2">
-                    <rect key="frame" x="16" y="0.0" width="242" height="0.0"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="y4T-Lj-Mg2">
+                    <rect key="frame" x="16" y="0.0" width="242" height="62"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="FoD-Ea-MxS"/>
                         <outlet property="delegate" destination="-1" id="CM6-l8-cwM"/>
                     </connections>
                 </tableView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Cc-Ah-ok6" customClass="SHAddItemsFooter">
-                    <rect key="frame" x="16" y="0.0" width="242" height="37"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbl-hz-8w3">
+                    <rect key="frame" x="16" y="62" width="242" height="37"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="242" id="Cx6-7C-eok"/>
-                        <constraint firstAttribute="height" constant="37" id="G47-GY-zKr"/>
+                        <constraint firstAttribute="height" constant="37" id="HgX-nl-R8G"/>
+                        <constraint firstAttribute="width" constant="242" id="R8k-8d-Q6x"/>
                     </constraints>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="rxD-2Q-rch"/>
-                    </connections>
-                </view>
+                    <state key="normal" title="Add New Item" image="blue_plus"/>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="4Cc-Ah-ok6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="UzV-DE-rl0"/>
-                <constraint firstAttribute="bottom" secondItem="4Cc-Ah-ok6" secondAttribute="bottom" id="bZM-ic-Ur9"/>
-                <constraint firstAttribute="trailing" secondItem="4Cc-Ah-ok6" secondAttribute="trailing" constant="25" id="phN-hV-hYf"/>
+                <constraint firstAttribute="bottom" secondItem="zbl-hz-8w3" secondAttribute="bottom" id="JUi-uW-4bw"/>
+                <constraint firstItem="zbl-hz-8w3" firstAttribute="top" secondItem="y4T-Lj-Mg2" secondAttribute="bottom" id="SGC-fE-V4g"/>
+                <constraint firstItem="zbl-hz-8w3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="aaB-GD-9ix"/>
+                <constraint firstItem="y4T-Lj-Mg2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="cyY-qE-Lnz"/>
+                <constraint firstItem="y4T-Lj-Mg2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="e5G-aG-cUp"/>
+                <constraint firstAttribute="trailing" secondItem="y4T-Lj-Mg2" secondAttribute="trailing" constant="27" id="n8c-Xo-9g1"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="55.5" y="-150"/>
+            <point key="canvasLocation" x="56.799999999999997" y="-122.78860569715144"/>
         </view>
     </objects>
+    <resources>
+        <image name="blue_plus" width="28" height="28"/>
+    </resources>
 </document>

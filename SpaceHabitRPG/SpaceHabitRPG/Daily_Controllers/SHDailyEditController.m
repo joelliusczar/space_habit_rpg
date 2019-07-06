@@ -31,7 +31,7 @@
 @implementation SHDailyEditController
 
 //These need to be synthesized since they come from a protocol
-@synthesize editorContainer = _editorContainer;
+@synthesize editorContainerController = _editorContainerController;
 @synthesize nameStr = _nameStr;
 @synthesize controlsTbl = _controlsTbl;
 
@@ -57,7 +57,9 @@
   self.activeDays = activeDays;
 }
 
-
+/*
+  This is an override
+*/
 -(void)loadView{
   self.view = _controlsTbl;
   
@@ -81,7 +83,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     if(self.objectIDWrapper.objectID){
-        [self.editorContainer enableDelete];
+        [self.editorContainerController enableDelete];
     } 
 }
 
@@ -98,7 +100,7 @@
     
     self.editControls = [self buildControlKeep];
     [self setResponders:self.editControls];
-    self.editorContainer.editControls = self.editControls;
+    self.editorContainerController.editControls = self.editControls;
     
 }
 
@@ -120,7 +122,7 @@
   forEvent:(UIEvent *)event
 {
   (void)picker; (void)itemFlexibleList; (void)event;
-  [self.editorContainer enableSave];
+  [self.editorContainerController enableSave];
 }
 
 
@@ -137,15 +139,20 @@
   (void)tableView;
   UITableViewCell *cell = [[UITableViewCell alloc] init];
   UIViewController *cellViewController = self.editControls.controlList[indexPath.row];
-  cell.translatesAutoresizingMaskIntoConstraints = NO;
+  UIView *view = cellViewController.view;
+  view.translatesAutoresizingMaskIntoConstraints = NO;
   UIColor *bgColor = self.view.backgroundColor;
   //[cellView changeBackgroundColorTo:bgColor];
   //cell.backgroundColor = self.view.backgroundColor;
-  cell.backgroundColor = UIColor.redColor;
+  cell.contentView.backgroundColor = UIColor.redColor;
   [self addChildViewController:cellViewController];
-  [cell.contentView addSubview:cellViewController.view];
-  [cell.contentView createFillUpWidthLayoutConstraints:cellViewController.view];
+  [cell.contentView addSubview:view];
   [cellViewController didMoveToParentViewController:self];
+  
+  [view.heightAnchor constraintEqualToConstant:view.frame.size.height].active = YES;
+  [view.topAnchor constraintEqualToAnchor: cell.contentView.topAnchor].active = YES;
+  [view.leadingAnchor constraintEqualToAnchor:cell.contentView.leadingAnchor].active = YES;
+  [view.widthAnchor constraintEqualToAnchor:cell.contentView.widthAnchor].active = YES;
   return cell;
 }
 
@@ -154,7 +161,8 @@
   heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   (void)tableView;
-  return self.editControls.controlList[indexPath.row].view.frame.size.height;
+  CGFloat height = self.editControls.controlList[indexPath.row].view.frame.size.height;
+  return height;
 }
 
 
@@ -280,7 +288,7 @@
 
 
 -(void)modelTouched{
-  [self.editorContainer enableSave];
+  [self.editorContainerController enableSave];
 }
 
 

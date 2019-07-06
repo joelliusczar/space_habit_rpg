@@ -8,16 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "SHSwitchProtocol.h"
-#import "SHButton.h"
 #import <SHCommon/SHColorInversionHintProtocol.h>
+#import "SHView.h"
 
 IB_DESIGNABLE
-@interface SHSwitch : SHButton<SHSwitchProtocol,SHColorInversionHintProtocol>
+@interface SHSwitch : SHView<SHSwitchProtocol,SHColorInversionHintProtocol>
 @property (assign,nonatomic) IBInspectable BOOL isOn;
 @property (strong,nonatomic) IBInspectable UIImage *onImage;
 @property (strong,nonatomic) IBInspectable UIImage *offImage;
 @property (strong,nonatomic) UIImage *onImageColorInverted;
 @property (strong,nonatomic) UIImage *offImageColorInverted;
+@property (strong,nonatomic) IBOutlet UIImageView *currentImageHolder;
 @property (readonly,nonatomic) UIImage *currentOnImage;
 @property (readonly,nonatomic) UIImage *currentOffImage;
 -(void)refreshImage;

@@ -13,7 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHEditNavigationController">
             <connections>
                 <outlet property="deleteBtn" destination="WKd-iQ-fEC" id="1OG-9k-7mP"/>
-                <outlet property="editorContainer" destination="1At-XX-3TH" id="YdX-Dk-Dqq"/>
+                <outlet property="editorSubviewContainer" destination="1At-XX-3TH" id="YdX-Dk-Dqq"/>
                 <outlet property="itemNameInput" destination="Hqz-gI-QoT" id="GZJ-q9-ahn"/>
                 <outlet property="saveBtnBarItem" destination="FvK-Rg-1oA" id="bh8-30-yws"/>
                 <outlet property="topNavBar" destination="eBj-qJ-GwY" id="jFu-fK-ZzA"/>

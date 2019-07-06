@@ -86,6 +86,8 @@
 		2747C527204A573200FB5669 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2747C526204A573200FB5669 /* Media.xcassets */; };
 		27B15A9920524A4F0045B226 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A9820524A4F0045B226 /* SHCommon.framework */; };
 		27B15A9B20524A5C0045B226 /* SHGlobal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A9A20524A5C0045B226 /* SHGlobal.framework */; };
+		27BE7AFD22AB03D600DD87F5 /* SHItemFlexibleListViewFull.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27BE7AFC22AB03D600DD87F5 /* SHItemFlexibleListViewFull.xib */; };
+		27BE7B1322BFFAFE00DD87F5 /* SHViewEventsProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27BE7B1222BFFAFE00DD87F5 /* SHViewEventsProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27D0D6E421D02A2D00886721 /* UIViewController+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D0D6E221D02A2D00886721 /* UIViewController+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27D0D6E521D02A2D00886721 /* UIViewController+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0D6E321D02A2D00886721 /* UIViewController+Helper.m */; };
 		27ED11BD22A1E8D100E8EB32 /* SHNestedControlProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27ED11BC22A1E8D100E8EB32 /* SHNestedControlProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -174,6 +176,8 @@
 		279848D0225063F500039A29 /* SHControls.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHControls.base.xcconfig; sourceTree = "<group>"; };
 		27B15A9820524A4F0045B226 /* SHCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHCommon.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHCommon.framework"; sourceTree = "<group>"; };
 		27B15A9A20524A5C0045B226 /* SHGlobal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHGlobal.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHGlobal.framework"; sourceTree = "<group>"; };
+		27BE7AFC22AB03D600DD87F5 /* SHItemFlexibleListViewFull.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHItemFlexibleListViewFull.xib; sourceTree = "<group>"; };
+		27BE7B1222BFFAFE00DD87F5 /* SHViewEventsProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHViewEventsProtocol.h; sourceTree = "<group>"; };
 		27D0D6E221D02A2D00886721 /* UIViewController+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Helper.h"; sourceTree = "<group>"; };
 		27D0D6E321D02A2D00886721 /* UIViewController+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Helper.m"; sourceTree = "<group>"; };
 		27ED11BC22A1E8D100E8EB32 /* SHNestedControlProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHNestedControlProtocol.h; sourceTree = "<group>"; };
@@ -282,6 +286,7 @@
 				271D60D220421A99005C9F7E /* SHDailyEditCompoundProtocol.h */,
 				271D60D320421A99005C9F7E /* SHItemFlexibleListDelegateProtocol.h */,
 				271D60D420421A99005C9F7E /* SHSwitchProtocol.h */,
+				27BE7B1222BFFAFE00DD87F5 /* SHViewEventsProtocol.h */,
 			);
 			name = ControlDelegates;
 			path = SHControls/ControlDelegates;
@@ -322,10 +327,10 @@
 				271D60FA20421A9A005C9F7E /* SHViewController.m */,
 				271D60FB20421A9A005C9F7E /* SHControlController.h */,
 				271D60FD20421A9A005C9F7E /* SHSpinPicker.m */,
+				271D610220421A9A005C9F7E /* SHView.h */,
 				271D60FE20421A9A005C9F7E /* SHView.m */,
 				271D610020421A9A005C9F7E /* SHViewController.h */,
 				271D610120421A9A005C9F7E /* SHSpinPicker.h */,
-				271D610220421A9A005C9F7E /* SHView.h */,
 				271D610420421A9A005C9F7E /* SHControlController.m */,
 				271D610520421A9A005C9F7E /* SHViewProtocol.h */,
 				27ED11BC22A1E8D100E8EB32 /* SHNestedControlProtocol.h */,
@@ -354,6 +359,7 @@
 			isa = PBXGroup;
 			children = (
 				271D60FC20421A9A005C9F7E /* SHSpinPicker.xib */,
+				27BE7AFC22AB03D600DD87F5 /* SHItemFlexibleListViewFull.xib */,
 				271D610320421A9A005C9F7E /* SHItemFlexibleListView.xib */,
 			);
 			path = xibs;
@@ -391,6 +397,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27BE7B1322BFFAFE00DD87F5 /* SHViewEventsProtocol.h in Headers */,
 				27249B9E21C58240006A884B /* UIScrollView+ScrollAdjusters.h in Headers */,
 				271D610F20421A9A005C9F7E /* SHImportanceSlidersDelegateProtocol.h in Headers */,
 				271D610620421A9A005C9F7E /* SHStreakResetterDelegateProtocol.h in Headers */,
@@ -501,6 +508,7 @@
 				27118825203FF9DF0085A549 /* SHNoteView.xib in Resources */,
 				2711882B203FF9DF0085A549 /* SHRateTypeSelector.xib in Resources */,
 				271D613820421A9A005C9F7E /* SHSpinPicker.xib in Resources */,
+				27BE7AFD22AB03D600DD87F5 /* SHItemFlexibleListViewFull.xib in Resources */,
 				2711880F203FF9DF0085A549 /* SHAddItemsFooter.xib in Resources */,
 				27118820203FF9DF0085A549 /* SHImportanceSliderView.xib in Resources */,
 				27118821203FF9DF0085A549 /* SHListItemCell.xib in Resources */,

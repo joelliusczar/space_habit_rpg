@@ -32,7 +32,6 @@
     UNUserNotificationCenter *center = [UNUserNotificationCenter
                                         currentNotificationCenter];
     [center getDeliveredNotificationsWithCompletionHandler:^(NSArray<UNNotification *> *notifications){
-        NSLog(@"delivered: %ld",notifications.count);
         for(UNNotification *notification in notifications){
             NSString *noticeText = notification.request.content.body;
             

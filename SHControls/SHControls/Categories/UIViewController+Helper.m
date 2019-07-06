@@ -7,15 +7,21 @@
 //
 
 #import "UIViewController+Helper.h"
+#import "UIView+Helpers.h"
 
 @implementation UIViewController (Helper)
 
--(void)arrangeAndPushChildVCToFront:(UIViewController *)child{
-  NSCAssert(child,@"child was nil");
-  child.view.frame = self.view.bounds;
-  [self.view addSubview:child.view];
+
+-(void)pushChildVC:(UIViewController*)child toViewOfParent:(UIView*)view{
+  [view addSubview:child.view];
   [self addChildViewController:child];
   [child didMoveToParentViewController:self];
+  [view tieConstaintsForsubordinateView:child.view];
+}
+
+
+-(void)arrangeAndPushChildVCToFront:(UIViewController *)child{
+  [self pushChildVC:child toViewOfParent:self.view];
 }
 
 
@@ -29,6 +35,14 @@
 -(void)showErrorView:(NSString*)name withError:(NSError*)error{
   (void)name;
   (void)error;
+}
+
+
+-(void)replaceAllChildViewControllersWith:(UIViewController*)viewController{
+  for(UIViewController *vc in self.childViewControllers){
+    [vc popVCFromFront];
+  }
+  [self arrangeAndPushChildVCToFront:viewController];
 }
 
 @end

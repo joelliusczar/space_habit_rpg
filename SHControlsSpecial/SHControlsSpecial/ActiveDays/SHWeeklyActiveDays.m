@@ -1,24 +1,42 @@
 //
-//  SHWeeklyActiveDays.m
+//  SHWeeklyActiveDaysViewController.m
 //  HabitRPG2
 //
 //  Created by Joel Pridgen on 6/17/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import "SHWeeklyActiveDays.h"
+#import "SHWeeklyActiveDaysViewController.h"
 #import <SHCommon/SHCommonUtils.h>
 #import <SHCommon/NSObject+Helper.h>
 #import <SHControls/SHEventInfo.h>
+#import <SHControls/UIView+Helpers.h>
 
-@interface SHWeeklyActiveDays ()
+@interface SHWeeklyActiveDaysViewController ()
 
 @end
 
-@implementation SHWeeklyActiveDays
+@implementation SHWeeklyActiveDaysViewController
+
+-(void)viewDidLoad{
+  [super viewDidLoad];
+  self.view = [[UIView alloc] init];
+  self.view.backgroundColor = UIColor.magentaColor;
+  UIView *testView = [[UIView alloc] init];
+  testView.backgroundColor = UIColor.orangeColor;
+  //self.sundaySwitch = [self buildDayOptionView];
+  [self.view addSubview:testView];
+  [self.view tieHorizontalConstaintsForSubordinateView:testView];
+  [testView.heightAnchor constraintEqualToConstant:50].active = YES;
+  //[self.view.topAnchor co];
+  [self.view.topAnchor constraintEqualToAnchor:testView.topAnchor constant:-50].active = YES;
+}
 
 
-
+-(SHWeekDayOption*)buildDayOptionView{
+  SHWeekDayOption *dayOption = [[SHWeekDayOption alloc] initEmpty];
+  return dayOption;
+}
 
 -(void)setupCustomOptions{
     self.sundaySwitch.tag = 0;
@@ -32,6 +50,7 @@
 
 - (IBAction)activeDaySwitch_press_action:(SHSwitch *)sender forEvent:(UIEvent *)event {
     (void)sender; (void)event;
+    NSLog(@"On view");
     if(self.touchCallback){
       self.touchCallback();
     }

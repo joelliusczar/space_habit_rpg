@@ -81,7 +81,7 @@ static void convertObjCRateItemToC(NSArray<SHRangeRateItem*>* rateItems, SHRateV
     NSArray *results = [self.managedObjectContext getItemsWithRequest:request];
     NSAssert(results.count == 1,@"There should be exactly one config object");
     SHConfig *config = (SHConfig*)results[0];
-    dayStart = config.dayStart;
+    dayStart = config.dayStartHour;
   }];
   NSDate *roundedDownToday = [[NSDate date] setHour:dayStart minute:0 second:0];
   return (int)[NSDate daysBetween:roundedDownToday to:self.nextDueTime];

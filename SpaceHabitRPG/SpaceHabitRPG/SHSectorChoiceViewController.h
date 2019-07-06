@@ -12,6 +12,7 @@
 #import "SHCentralViewController.h"
 #import <SHControls/SHSwitch.h>
 #import <SHModels/SHSectorDTO.h>
+#import <SHControls/SHButton.h>
 
 @class SHSectorDescriptionViewController;
 

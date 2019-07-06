@@ -18,7 +18,6 @@
 
 @interface SHReminderListView :SHItemFlexibleListView
 <UITableViewDataSource
-,SHAddItemsFooterDelegateProtocol
 ,SHSpinPickerDelegateProtocol>
 
 @property (strong,nonatomic) NSManagedObjectContext *context;

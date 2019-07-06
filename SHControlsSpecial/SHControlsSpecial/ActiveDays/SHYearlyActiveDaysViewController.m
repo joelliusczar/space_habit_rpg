@@ -1,12 +1,12 @@
 //
-//  SHYearlyActiveDays.m
+//  SHYearlyActiveDaysViewController.m
 //  HabitRPG2
 //
 //  Created by Joel Pridgen on 8/16/17.
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import "SHYearlyActiveDays.h"
+#import "SHYearlyActiveDaysViewController.h"
 #import <SHCommon/SHCommonUtils.h>
 #import <SHControls/SHListItemCell.h>
 #import "SHYearPartPicker.h"
@@ -16,15 +16,15 @@
 #import <SHModels/SHListRateItem.h>
 #import <SHGlobal/SHConstants.h>
 
-@interface SHYearlyActiveDays ()
+@interface SHYearlyActiveDaysViewController ()
 @end
 
-@implementation SHYearlyActiveDays
+@implementation SHYearlyActiveDaysViewController
 
 +(instancetype)newWithListRateItemCollection:(SHListRateItemCollection *)activeDays
   inverseActiveDays:(SHListRateItemCollection*)inverseActiveDays
 {
-    SHYearlyActiveDays *instance = [[SHYearlyActiveDays alloc] init];
+    SHYearlyActiveDaysViewController *instance = [[SHYearlyActiveDaysViewController alloc] init];
     instance.activeDays = activeDays;
     instance.inverseActiveDays = inverseActiveDays;
     [instance commonSetup];
@@ -55,7 +55,6 @@
   SHYearPartPicker *dayOfYearPicker = [[SHYearPartPicker alloc] init];
   [self showSHSpinPicker:dayOfYearPicker];
   [eventInfo.senderStack addObject:self];
-  [super addItemBtn_press_action:eventInfo];
 }
 
 

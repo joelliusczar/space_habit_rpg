@@ -36,17 +36,17 @@ NSString* const defaultInvertBtnText = @"Triggers only on...";
 NSString* const invertedInvertBtnText = @"Triggers all days except...";
 
 
--(SHWeeklyActiveDays *)weeklyActiveDays{
+-(SHWeeklyActiveDaysViewController *)weeklyActiveDays{
     return self.rateControls.controlLookup[WEEKLY_KEY];
 }
 
 
--(SHMonthlyActiveDays *)monthlyActiveDays{
+-(SHMonthlyActiveDaysViewController *)monthlyActiveDays{
     return self.rateControls.controlLookup[MONTHLY_KEY];
 }
 
 
--(SHYearlyActiveDays *)yearlyActiveDays{
+-(SHYearlyActiveDaysViewController *)yearlyActiveDays{
     return self.rateControls.controlLookup[YEARLY_KEY];
 }
 
@@ -82,8 +82,13 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
     rateType = daily.rateType;
   }];
   [self updateRateTypeControls:rateType shouldChange:YES];
-  [self updateRateTypeButtonText];
-  [self updateInvertRateTypeButtonText];
+}
+
+-(void)viewDidLoad{
+  [super viewDidLoad];
+  self.rateSetter = [[SHRateSetterView alloc] init];
+  [self pushChildVC:self.rateSetter toViewOfParent:self.rateSetterContainer];
+  
 }
 
 -(void)commonTableSetup:(SHItemFlexibleListView *)tbl{
@@ -140,59 +145,62 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 -(SHControlKeep *)buildControlKeep{
   SHControlKeep *keep = [[SHControlKeep alloc] init];
 
+  #warning cleanup
   //I want to avoid circular references
   //self->keep->keep now has a strong pointer to self
-  SHRateSetContainer* __weak weakSelf = self;
+  __weak SHRateSetContainer* weakSelf = self;
   NSString* errMessage = @"RateSetContainer got itself into an inconsistent state";
-  shGetListRateCollection getMonthRateItems = self.activeDays.monthlyActiveDaysLazy;
-  shGetListRateCollection getMonthRateItemsInv = self.activeDays.monthlyActiveDaysInvLazy;
-  keep.controlLookup[MONTHLY_KEY] = vw(^id(SHControlKeep *keep,SHControlExtent *controlExtent){
-    (void)controlExtent;
-    NSAssert(weakSelf,errMessage);
-    NSLog(@"Doing it this way!");
-    SHMonthlyActiveDays *monthly = [SHMonthlyActiveDays newWithListRateItemCollection:getMonthRateItems()
-      inverseActiveDays:getMonthRateItemsInv()];
-    NSLog(@"Inito!");
-    [weakSelf commonTableSetup:monthly];
-    NSLog(@"table!");
-    [keep forResponderKey:RESIZEABLE_KEY doSetupAction:^(id responder){
-        monthly.resizeResponder = responder;
-    }];
-    [keep forResponderKey:TBL_KEY doSetupAction:^(id responder){
-        monthly.delegate = responder;
-    }];
-    return monthly;
-  });
-  
-  shGetListRateCollection getYearRateItems = self.activeDays.yearlyActiveDaysLazy;
-  shGetListRateCollection getYearRateItemsInv = self.activeDays.yearlyActiveDaysInvLazy;
-  keep.controlLookup[YEARLY_KEY] =  vw(^id(SHControlKeep *keep,SHControlExtent *controlExtent){
-    (void)controlExtent;
-    NSAssert(weakSelf,errMessage);
-    SHYearlyActiveDays *yearly = [SHYearlyActiveDays newWithListRateItemCollection:getYearRateItems()
-      inverseActiveDays:getYearRateItemsInv()];
-    [weakSelf commonTableSetup: yearly];
-    [keep forResponderKey:RESIZEABLE_KEY doSetupAction:^(id responder){
-        yearly.resizeResponder = responder;
-    }];
-    [keep forResponderKey:TBL_KEY doSetupAction:^(id responder){
-        yearly.delegate = responder;
-    }];
-    return yearly;
-  });
+//  shGetListRateCollection getMonthRateItems = self.activeDays.monthlyActiveDaysLazy;
+//  shGetListRateCollection getMonthRateItemsInv = self.activeDays.monthlyActiveDaysInvLazy;
+//  keep.controlLookup[MONTHLY_KEY] = vw(^id(SHControlKeep *keep,SHControlExtent *controlExtent){
+//    (void)controlExtent;
+//    NSAssert(weakSelf,errMessage);
+//    NSLog(@"Doing it this way!");
+//    SHMonthlyActiveDaysViewController *monthly = [SHMonthlyActiveDaysViewController newWithListRateItemCollection:getMonthRateItems()
+//      inverseActiveDays:getMonthRateItemsInv()];
+//    NSLog(@"Inito!");
+//    [weakSelf commonTableSetup:monthly];
+//    NSLog(@"table!");
+//    [keep forResponderKey:RESIZEABLE_KEY doSetupAction:^(id responder){
+//        monthly.resizeResponder = responder;
+//    }];
+//    [keep forResponderKey:TBL_KEY doSetupAction:^(id responder){
+//        monthly.delegate = responder;
+//    }];
+//    return monthly;
+//  });
+//
+//  shGetListRateCollection getYearRateItems = self.activeDays.yearlyActiveDaysLazy;
+//  shGetListRateCollection getYearRateItemsInv = self.activeDays.yearlyActiveDaysInvLazy;
+//  keep.controlLookup[YEARLY_KEY] =  vw(^id(SHControlKeep *keep,SHControlExtent *controlExtent){
+//    (void)controlExtent;
+//    NSAssert(weakSelf,errMessage);
+//    SHYearlyActiveDaysViewController *yearly = [SHYearlyActiveDaysViewController newWithListRateItemCollection:getYearRateItems()
+//      inverseActiveDays:getYearRateItemsInv()];
+//    [weakSelf commonTableSetup: yearly];
+//    [keep forResponderKey:RESIZEABLE_KEY doSetupAction:^(id responder){
+//        yearly.resizeResponder = responder;
+//    }];
+//    [keep forResponderKey:TBL_KEY doSetupAction:^(id responder){
+//        yearly.delegate = responder;
+//    }];
+//    return yearly;
+//  });
   keep.controlLookup[WEEKLY_KEY] = vw(^id(SHControlKeep *keep,SHControlExtent *controlExtent){
     (void)controlExtent;
-    NSAssert(weakSelf,errMessage);
-    SHWeeklyActiveDays *weekly = [[SHWeeklyActiveDays alloc] init];
+    typeof(weakSelf) bSelf = weakSelf;
+    NSAssert(bSelf,errMessage);
+    SHWeeklyActiveDaysViewController *weekly = [[SHWeeklyActiveDaysViewController alloc] init];
     [weekly setupCustomOptions];
-    [weekly changeBackgroundColorTo:weakSelf.view.backgroundColor];
+    #warning put this back?
+    //[weekly changeBackgroundColorTo:weakSelf.view.backgroundColor];
     [keep forResponderKey:WEEKLY_KEY doSetupAction:^(id responder){
       //Does this work?
       weekly.touchCallback = responder;
     }];
     return weekly;
   });
-    
+  
     return keep;
 }
 
@@ -261,14 +269,15 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 -(void)refreshActiveDaysControl{
   if([self.currentActiveDaysControl isKindOfClass:SHItemFlexibleListView.class]){
     SHItemFlexibleListView *activeDaysList = (SHItemFlexibleListView *)self.currentActiveDaysControl;
-    [activeDaysList resetHeight];
-    [activeDaysList setupInitialHeight];
-    [activeDaysList refreshTable];
-    [self fitControlHeightToSubControlHeight:activeDaysList];
-    [self.resizeResponder refreshView];
+    #warning cleanup
+//    [activeDaysList resetHeight];
+//    [activeDaysList setupInitialHeight];
+//    [activeDaysList refreshTable];
+//    [self fitControlHeightToSubControlHeight:activeDaysList];
+//    [self.resizeResponder refreshView];
     
   }
-  else if([self.currentActiveDaysControl isKindOfClass:SHWeeklyActiveDays.class]){
+  else if([self.currentActiveDaysControl isKindOfClass:SHWeeklyActiveDaysViewController.class]){
     [self.context performBlock:^{
       SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
       BOOL isInverse = shIsInverseRateType(daily.rateType);
@@ -303,8 +312,9 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
   }
   else if(rateType == SH_MONTHLY_RATE){
     [self switchActiveDaysControlFor:self.monthlyActiveDays];
-    [self.resizeResponder scrollByOffset:SH_SUB_TABLE_CELL_HEIGHT];
-    [self.resizeResponder scrollVisibleToControl:self];
+    #warning cleanup
+//    [self.resizeResponder scrollByOffset:SH_SUB_TABLE_CELL_HEIGHT];
+//    [self.resizeResponder scrollVisibleToControl:self];
   }
   else if(rateType == SH_YEARLY_RATE){
     [self switchActiveDaysControlFor:self.yearlyActiveDays];
@@ -416,6 +426,12 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
   if([self.resizeResponder respondsToSelector:@selector(refreshView)]){
     [self.resizeResponder refreshView];
   }
+}
+
+
+- (IBAction)touchdown_action:(UIButton *)sender forEvent:(UIEvent *)event {
+  (void)sender; (void)event;
+  [self.editorContainer arrangeAndPushChildVCToFront:self.currentActiveDaysControl];
 }
 
 

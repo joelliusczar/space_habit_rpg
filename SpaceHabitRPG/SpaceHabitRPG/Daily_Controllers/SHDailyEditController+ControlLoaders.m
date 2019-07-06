@@ -10,6 +10,7 @@
 #import <SHControls/AllSHControls.h>
 #import <SHControlsSpecial/SHRateSetContainer.h>
 #import <SHControlsSpecial/SHReminderListView.h>
+#import <SHControlsSpecial/SHRepeatLinkViewController.h>
 #import <SHData/NSManagedObjectContext+Helper.h>
 
 
@@ -40,32 +41,46 @@
     return note;
   }];
   
-  [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
+  __weak UIViewController *editorContainerController = self.editorContainerController;
+  
+  [keep addLoaderBlock:^id(SHControlKeep *keep, SHControlExtent *controlExtent){
     (void)controlExtent;
-    NSBundle *bundle = [NSBundle bundleForClass:SHRateSetContainer.class];
-    SHRateSetContainer *rateContainer = [[SHRateSetContainer alloc]
-      initWithNibName:@"SHRateSetContainer"
-      bundle:bundle];
-    rateContainer.activeDays = activeDays;
-    [rateContainer setupWithContext:context
+    NSBundle *bundle = [NSBundle bundleForClass:SHRepeatLinkViewController.class];
+    SHRepeatLinkViewController *repeatLink = [[SHRepeatLinkViewController alloc]
+      initWithNibName:@"SHRepeatLinkViewController" bundle:bundle];
+    repeatLink.editorContainer = editorContainerController;
+    [repeatLink setupWithContext:context
       andObjectID:objectIDWrapper];
-    [keep forResponderKey:@"touch" doSetupAction:^(id responder){
-      rateContainer.touchCallback = responder;
-    }];
-    [keep forResponderKey:@"self" doSetupAction:^(id responder){
-        rateContainer.delegate = responder;
-    }];
-    [keep forResponderKey:@"resize" doSetupAction:^(id responder){
-        rateContainer.resizeResponder = responder;
-    }];
-    [keep forResponderKey:@"self" doSetupAction:^(id responder){
-        rateContainer.tblDelegate = responder;
-    }];
-    [keep forResponderKey:@"self" doSetupAction:^(id responder){
-        rateContainer.touchCallback = responder;
-    }];
-    return rateContainer;
+    return repeatLink;
   }];
+  
+//  [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
+//    (void)controlExtent;
+//    NSBundle *bundle = [NSBundle bundleForClass:SHRateSetContainer.class];
+//    SHRateSetContainer *rateContainer = [[SHRateSetContainer alloc]
+//      initWithNibName:@"SHRateSetContainer"
+//      bundle:bundle];
+//    rateContainer.activeDays = activeDays;
+//    rateContainer.editorContainer = editorContainer;
+//    [rateContainer setupWithContext:context
+//      andObjectID:objectIDWrapper];
+//    [keep forResponderKey:@"touch" doSetupAction:^(id responder){
+//      rateContainer.touchCallback = responder;
+//    }];
+//    [keep forResponderKey:@"self" doSetupAction:^(id responder){
+//        rateContainer.delegate = responder;
+//    }];
+//    [keep forResponderKey:@"resize" doSetupAction:^(id responder){
+//        rateContainer.resizeResponder = responder;
+//    }];
+//    [keep forResponderKey:@"self" doSetupAction:^(id responder){
+//        rateContainer.tblDelegate = responder;
+//    }];
+//    [keep forResponderKey:@"self" doSetupAction:^(id responder){
+//        rateContainer.touchCallback = responder;
+//    }];
+//    return rateContainer;
+//  }];
 //
 //  [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
 //    (void)controlExtent;
@@ -139,7 +154,7 @@
 -(void)setResponders:(SHControlKeep *)keep{
   __weak typeof(self) weakSelf = self;
   keep.responderLookup[@"self"] = self;
-  keep.responderLookup[@"resize"] = self.editorContainer;
+  keep.responderLookup[@"resize"] = self.editorContainerController;
   keep.responderLookup[@"touch"] = ^void(){
     typeof(weakSelf) bSelf = weakSelf;
     if(nil == bSelf) return;

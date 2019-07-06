@@ -13,4 +13,5 @@
 +(NSException*)oddException;
 +(NSException*)stillUsedException;
 +(NSException*)dbException:(NSError *)error;
++(NSException*)inproperlySetupObject:(NSString*)message;
 @end

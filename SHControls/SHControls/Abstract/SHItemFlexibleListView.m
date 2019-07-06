@@ -27,9 +27,10 @@
 @implementation SHItemFlexibleListView
 
 
--(UIView *)loadDefaultXib{
-    NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"SHItemFlexibleListView")];
-    return [bundle loadNibNamed:@"SHItemFlexibleListView" owner:self options:nil][0];
+-(instancetype)init{
+  NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"SHItemFlexibleListView")];
+  if(self = [super initWithNibName:@"SHItemFlexibleListView" bundle:bundle]){}
+  return self;
 }
 
 

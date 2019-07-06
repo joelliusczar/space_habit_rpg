@@ -23,13 +23,10 @@
 }
 
 - (IBAction)rateStep_valueChanged_action:(UIStepper *)sender forEvent:(UIEvent *)event {
-  SHEventInfo *e = eventInfoCopy;
-  [self.delegate rateStep_valueChanged_action:e];
+  if(self.rateStepEvent){
+    self.rateStepEvent(sender,event);
+  }
 }
 
-
--(void)changeBackgroundColorTo:(UIColor *)color{
-  self.view.backgroundColor = color;
-}
 
 @end

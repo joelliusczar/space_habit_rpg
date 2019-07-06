@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHWeeklyActiveDaysViewController">
+            <connections>
+                <outlet property="day0Switch" destination="xiq-vU-xmE" id="vT6-9A-0ga"/>
+                <outlet property="day1Switch" destination="6Fp-sn-19y" id="CIw-3X-xhe"/>
+                <outlet property="day2Switch" destination="7Z2-eU-afN" id="zt2-lX-dcg"/>
+                <outlet property="day3Switch" destination="Bkm-AR-aBE" id="cKF-Vm-6F8"/>
+                <outlet property="day4Switch" destination="A7d-cN-I7B" id="7Rb-eF-SxQ"/>
+                <outlet property="day5Switch" destination="nYM-Ig-an5" id="1br-8s-6cp"/>
+                <outlet property="day6Switch" destination="9Qg-Q9-sYe" id="UkZ-CU-UXq"/>
+                <outlet property="view" destination="Ryk-Ni-fEN" id="0mS-L4-FX4"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view autoresizesSubviews="NO" contentMode="scaleToFill" id="Ryk-Ni-fEN">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiq-vU-xmE" customClass="SHDayOption">
+                    <rect key="frame" x="0.0" y="64" width="375" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="cGR-J7-cqg"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="9vm-yO-swg"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Fp-sn-19y" customClass="SHDayOption">
+                    <rect key="frame" x="0.0" y="114" width="375" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="kSC-Di-AW4"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="ANq-zN-LNi"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Z2-eU-afN" customClass="SHDayOption">
+                    <rect key="frame" x="0.0" y="164" width="375" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="XAW-52-wQm"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="4HE-ht-5Ug"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bkm-AR-aBE" customClass="SHDayOption">
+                    <rect key="frame" x="0.0" y="214" width="375" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="hi4-o1-a0Z"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="1gR-4R-nNC"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A7d-cN-I7B" customClass="SHDayOption">
+                    <rect key="frame" x="0.0" y="264" width="375" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="pKi-Ym-i0S"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="3Lh-zV-Mt1"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nYM-Ig-an5" customClass="SHDayOption">
+                    <rect key="frame" x="0.0" y="314" width="375" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Z8e-lF-BJX"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="Lga-Ow-Zgz"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Qg-Q9-sYe" customClass="SHDayOption">
+                    <rect key="frame" x="0.0" y="364" width="375" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="WtG-e1-0ug"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="lqF-ki-NmN"/>
+                    </connections>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="6Fp-sn-19y" secondAttribute="trailing" id="07y-Qy-uJY"/>
+                <constraint firstAttribute="trailing" secondItem="A7d-cN-I7B" secondAttribute="trailing" id="0KP-bP-dml"/>
+                <constraint firstItem="Bkm-AR-aBE" firstAttribute="leading" secondItem="Ryk-Ni-fEN" secondAttribute="leading" id="3jg-NA-xAo"/>
+                <constraint firstItem="xiq-vU-xmE" firstAttribute="leading" secondItem="Ryk-Ni-fEN" secondAttribute="leading" id="6sh-zp-N9G"/>
+                <constraint firstItem="9Qg-Q9-sYe" firstAttribute="top" secondItem="nYM-Ig-an5" secondAttribute="bottom" id="9AH-lJ-FMx"/>
+                <constraint firstItem="xiq-vU-xmE" firstAttribute="top" secondItem="Ryk-Ni-fEN" secondAttribute="top" constant="64" id="EbU-U9-d4P"/>
+                <constraint firstItem="9Qg-Q9-sYe" firstAttribute="leading" secondItem="Ryk-Ni-fEN" secondAttribute="leading" id="HhA-rS-v7N"/>
+                <constraint firstItem="7Z2-eU-afN" firstAttribute="top" secondItem="6Fp-sn-19y" secondAttribute="bottom" id="Myk-rE-VVI"/>
+                <constraint firstItem="6Fp-sn-19y" firstAttribute="top" secondItem="xiq-vU-xmE" secondAttribute="bottom" id="Ock-bb-vbr"/>
+                <constraint firstItem="nYM-Ig-an5" firstAttribute="top" secondItem="A7d-cN-I7B" secondAttribute="bottom" id="QAP-85-h37"/>
+                <constraint firstAttribute="trailing" secondItem="9Qg-Q9-sYe" secondAttribute="trailing" id="RxQ-d9-jkm"/>
+                <constraint firstAttribute="trailing" secondItem="7Z2-eU-afN" secondAttribute="trailing" id="T1i-xR-5nT"/>
+                <constraint firstAttribute="trailing" secondItem="nYM-Ig-an5" secondAttribute="trailing" id="Ud6-RK-cgC"/>
+                <constraint firstItem="Bkm-AR-aBE" firstAttribute="top" secondItem="7Z2-eU-afN" secondAttribute="bottom" id="enj-96-Lzt"/>
+                <constraint firstAttribute="trailing" secondItem="Bkm-AR-aBE" secondAttribute="trailing" id="fhk-zq-X6p"/>
+                <constraint firstItem="A7d-cN-I7B" firstAttribute="top" secondItem="Bkm-AR-aBE" secondAttribute="bottom" id="mVM-tX-bNF"/>
+                <constraint firstAttribute="trailing" secondItem="xiq-vU-xmE" secondAttribute="trailing" id="pL9-Wr-UT7"/>
+                <constraint firstItem="6Fp-sn-19y" firstAttribute="leading" secondItem="Ryk-Ni-fEN" secondAttribute="leading" id="uDI-Xe-Naj"/>
+                <constraint firstItem="A7d-cN-I7B" firstAttribute="leading" secondItem="Ryk-Ni-fEN" secondAttribute="leading" id="x5c-e5-2Dy"/>
+                <constraint firstItem="nYM-Ig-an5" firstAttribute="leading" secondItem="Ryk-Ni-fEN" secondAttribute="leading" id="xrH-H6-TNj"/>
+                <constraint firstItem="7Z2-eU-afN" firstAttribute="leading" secondItem="Ryk-Ni-fEN" secondAttribute="leading" id="zST-0E-ruW"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-176.80000000000001" y="-482.60869565217394"/>
+        </view>
+    </objects>
+</document>

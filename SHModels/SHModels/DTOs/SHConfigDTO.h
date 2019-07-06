@@ -17,7 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) int32_t gameState;
 @property (nonatomic) BOOL allowReport;
 @property (nullable, nonatomic, copy) NSDate *createDateTime;
-@property (nonatomic) int32_t dayStart;
+@property (nonatomic) int32_t dayStartHour;
+@property (nonatomic) int32_t weekStartDay;
 @property (nonatomic) float deathGoldPenalty;
 @property (nonatomic) int32_t heroLvlPenalty;
 @property (nonatomic) BOOL invertColors;

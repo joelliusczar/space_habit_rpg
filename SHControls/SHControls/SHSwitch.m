@@ -67,10 +67,10 @@
 
 -(void)setSwitchImageForState:(BOOL)isOn{
     if(isOn){
-        [self setImage:self.currentOnImage forState:UIControlStateNormal];
+      self.currentImageHolder.image = self.currentOnImage;
     }
     else{
-        [self setImage:self.currentOffImage forState:UIControlStateNormal];
+      self.currentImageHolder.image = self.currentOffImage;
     }
 }
 
@@ -84,15 +84,14 @@
 //    [super drawRect:rect];
 //}
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunused-parameter"
-
--(BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event{
-    [self sendActionsForControlEvents:UIControlEventTouchUpInside];
-    self.isOn = !self.isOn;
-    return NO;
+-(void)beginTap_action:(UITouch *)touch
+  withEvent:(UIEvent *)event
+{
+  [super beginTap_action:touch withEvent:event];
+  NSLog(@"switch switch");
+   self.isOn = !self.isOn;
 }
 
-#pragma clang diagnostic pop
+
 
 @end

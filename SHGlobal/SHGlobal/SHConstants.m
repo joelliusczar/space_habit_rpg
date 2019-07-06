@@ -69,4 +69,3 @@ NSString* const SH_IS_DAY_ACTIVE_KEY = @"IS_DAY_ACTIVE";
 
 int const SH_DAY_LEN = 84600; //only use this for extremely simple calculations, e.g. a week or less
 
-

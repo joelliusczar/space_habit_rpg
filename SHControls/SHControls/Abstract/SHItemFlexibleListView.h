@@ -21,7 +21,6 @@
 @interface SHItemFlexibleListView :SHViewController
 <UITableViewDataSource
 ,UITableViewDelegate
-,SHAddItemsFooterDelegateProtocol
 ,SHSpinPickerDelegateProtocol>
 @property (weak,nonatomic) IBOutlet UITableView *itemTbl;
 @property (weak,nonatomic) IBOutlet SHAddItemsFooter *addItemsFooter;

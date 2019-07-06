@@ -15,7 +15,8 @@
 -(void)setupInitialState{
   self.gameState = SH_GAME_STATE_UNINITIALIZED;
   self.createDateTime = [NSDate date];
-  self.dayStart = 0;
+  self.dayStartHour = 0;
+  self.weekStartDay = 0;
   self.deathGoldPenalty = .25;
   self.heroLvlPenalty = 0;
   self.lastCheckinDateTime = [NSDate date];
