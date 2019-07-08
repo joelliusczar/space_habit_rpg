@@ -12,5 +12,5 @@
 
 IB_DESIGNABLE
 @interface SHRewardsView : SHView
-@property (weak,nonatomic) id<SHRewardsDelegateProtocol> delegate;
+@property (weak,nonatomic) id<SHRewardsDelegateProtocol> rewardsDelegate;
 @end

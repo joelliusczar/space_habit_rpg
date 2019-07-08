@@ -58,7 +58,10 @@ const NSInteger YEARLY_SELECTION = 3;
   [super viewDidLoad];
   [self switchToActiveDaysViewController:WEEKLY_SELECTION];
 }
+
+
 -(IBAction)back_touch_action:(UIButton *)sender forEvent:(UIEvent *)event{
+  (void)sender; (void)event;
   [self popVCFromFront];
 }
 

@@ -7,7 +7,7 @@
 //
 
 #include "SHErrorHandling.h"
-#include "SHConstants.h"
+#include "SHUtilConstants.h"
 #include <stdlib.h>
 
 shDebugCallback shDbgCallback;

@@ -11,7 +11,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <math.h>
-#include "SHConstants.h"
+#include "SHUtilConstants.h"
 #include "SHGenAlgos.h"
 
 static int _monthSums[12] = {0,31,59,90,120,151,181,212,243,273,304,334};

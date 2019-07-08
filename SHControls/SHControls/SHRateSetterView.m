@@ -16,12 +16,6 @@
 @implementation SHRateSetterView
 
 
--(instancetype)init{
-  NSBundle *bundle = [NSBundle bundleForClass:SHRateSetterView.class];
-  if(self = [super initWithNibName:@"SHRateSetterView" bundle:bundle]){}
-  return self;
-}
-
 - (IBAction)rateStep_valueChanged_action:(UIStepper *)sender forEvent:(UIEvent *)event {
   if(self.rateStepEvent){
     self.rateStepEvent(sender,event);

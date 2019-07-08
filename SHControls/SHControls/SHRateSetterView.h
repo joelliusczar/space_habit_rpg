@@ -17,7 +17,7 @@
 typedef void(^rateStepAction)(UIStepper*,UIEvent *);
 
 IB_DESIGNABLE
-@interface SHRateSetterView : SHViewController
+@interface SHRateSetterView : SHView
 @property (weak,nonatomic) IBOutlet UIStepper *rateStep;
 @property (copy,nonatomic) rateStepAction rateStepEvent;
 @end

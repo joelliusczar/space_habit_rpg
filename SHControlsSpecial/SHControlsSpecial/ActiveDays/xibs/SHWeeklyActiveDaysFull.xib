@@ -27,7 +27,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiq-vU-xmE" customClass="SHDayOption">
-                    <rect key="frame" x="0.0" y="64" width="375" height="50"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="cGR-J7-cqg"/>
@@ -37,7 +37,7 @@
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Fp-sn-19y" customClass="SHDayOption">
-                    <rect key="frame" x="0.0" y="114" width="375" height="50"/>
+                    <rect key="frame" x="0.0" y="50" width="375" height="50"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="kSC-Di-AW4"/>
@@ -47,7 +47,7 @@
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Z2-eU-afN" customClass="SHDayOption">
-                    <rect key="frame" x="0.0" y="164" width="375" height="50"/>
+                    <rect key="frame" x="0.0" y="100" width="375" height="50"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="XAW-52-wQm"/>
@@ -57,7 +57,7 @@
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bkm-AR-aBE" customClass="SHDayOption">
-                    <rect key="frame" x="0.0" y="214" width="375" height="50"/>
+                    <rect key="frame" x="0.0" y="150" width="375" height="50"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="hi4-o1-a0Z"/>
@@ -67,7 +67,7 @@
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A7d-cN-I7B" customClass="SHDayOption">
-                    <rect key="frame" x="0.0" y="264" width="375" height="50"/>
+                    <rect key="frame" x="0.0" y="200" width="375" height="50"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="pKi-Ym-i0S"/>
@@ -77,7 +77,7 @@
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nYM-Ig-an5" customClass="SHDayOption">
-                    <rect key="frame" x="0.0" y="314" width="375" height="50"/>
+                    <rect key="frame" x="0.0" y="250" width="375" height="50"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="Z8e-lF-BJX"/>
@@ -87,7 +87,7 @@
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Qg-Q9-sYe" customClass="SHDayOption">
-                    <rect key="frame" x="0.0" y="364" width="375" height="50"/>
+                    <rect key="frame" x="0.0" y="300" width="375" height="50"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="WtG-e1-0ug"/>
@@ -96,15 +96,24 @@
                         <outlet property="delegate" destination="-1" id="lqF-ki-NmN"/>
                     </connections>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UP9-gG-zxG" customClass="SHRateSetterView">
+                    <rect key="frame" x="0.0" y="350" width="375" height="37"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="37" id="4O3-Op-D9I"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="6Fp-sn-19y" secondAttribute="trailing" id="07y-Qy-uJY"/>
                 <constraint firstAttribute="trailing" secondItem="A7d-cN-I7B" secondAttribute="trailing" id="0KP-bP-dml"/>
+                <constraint firstItem="UP9-gG-zxG" firstAttribute="top" secondItem="9Qg-Q9-sYe" secondAttribute="bottom" id="2CT-Ht-Dcy"/>
+                <constraint firstAttribute="trailing" secondItem="UP9-gG-zxG" secondAttribute="trailing" id="33Q-eK-Oab"/>
                 <constraint firstItem="Bkm-AR-aBE" firstAttribute="leading" secondItem="Ryk-Ni-fEN" secondAttribute="leading" id="3jg-NA-xAo"/>
                 <constraint firstItem="xiq-vU-xmE" firstAttribute="leading" secondItem="Ryk-Ni-fEN" secondAttribute="leading" id="6sh-zp-N9G"/>
                 <constraint firstItem="9Qg-Q9-sYe" firstAttribute="top" secondItem="nYM-Ig-an5" secondAttribute="bottom" id="9AH-lJ-FMx"/>
-                <constraint firstItem="xiq-vU-xmE" firstAttribute="top" secondItem="Ryk-Ni-fEN" secondAttribute="top" constant="64" id="EbU-U9-d4P"/>
+                <constraint firstItem="xiq-vU-xmE" firstAttribute="top" secondItem="Ryk-Ni-fEN" secondAttribute="top" id="EbU-U9-d4P"/>
                 <constraint firstItem="9Qg-Q9-sYe" firstAttribute="leading" secondItem="Ryk-Ni-fEN" secondAttribute="leading" id="HhA-rS-v7N"/>
                 <constraint firstItem="7Z2-eU-afN" firstAttribute="top" secondItem="6Fp-sn-19y" secondAttribute="bottom" id="Myk-rE-VVI"/>
                 <constraint firstItem="6Fp-sn-19y" firstAttribute="top" secondItem="xiq-vU-xmE" secondAttribute="bottom" id="Ock-bb-vbr"/>
@@ -117,6 +126,7 @@
                 <constraint firstItem="A7d-cN-I7B" firstAttribute="top" secondItem="Bkm-AR-aBE" secondAttribute="bottom" id="mVM-tX-bNF"/>
                 <constraint firstAttribute="trailing" secondItem="xiq-vU-xmE" secondAttribute="trailing" id="pL9-Wr-UT7"/>
                 <constraint firstItem="6Fp-sn-19y" firstAttribute="leading" secondItem="Ryk-Ni-fEN" secondAttribute="leading" id="uDI-Xe-Naj"/>
+                <constraint firstItem="UP9-gG-zxG" firstAttribute="leading" secondItem="Ryk-Ni-fEN" secondAttribute="leading" id="vMS-wP-ud4"/>
                 <constraint firstItem="A7d-cN-I7B" firstAttribute="leading" secondItem="Ryk-Ni-fEN" secondAttribute="leading" id="x5c-e5-2Dy"/>
                 <constraint firstItem="nYM-Ig-an5" firstAttribute="leading" secondItem="Ryk-Ni-fEN" secondAttribute="leading" id="xrH-H6-TNj"/>
                 <constraint firstItem="7Z2-eU-afN" firstAttribute="leading" secondItem="Ryk-Ni-fEN" secondAttribute="leading" id="zST-0E-ruW"/>

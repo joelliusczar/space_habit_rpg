@@ -12,6 +12,6 @@
 #import "SHArray.h"
 #import "SHErrorHandling.h"
 #import "SHGenAlgos.h"
-#import "SHConstants.h"
+#import "SHUtilConstants.h"
 
 #endif /* SHUtils_C_h */

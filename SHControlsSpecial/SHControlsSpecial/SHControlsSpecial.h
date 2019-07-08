@@ -21,11 +21,12 @@ FOUNDATION_EXPORT const unsigned char SHControlsSpecialVersionString[];
 #import "SHYearPartPicker.h"
 #import "SHMonthPartPicker.h"
 #import "SHRateSetContainer.h"
-#import "SHWeeklyActiveDays.h"
-#import "SHMonthlyActiveDays.h"
-#import "SHYearlyActiveDays.h"
+#import "SHWeeklyActiveDaysViewController.h"
+#import "SHMonthlyActiveDaysViewController.h"
+#import "SHYearlyActiveDaysViewController.h"
 #import "SHRepeatLinkViewController.h"
 #import "SHDayOption.h"
+#import "SHRateSelectionViewController.h"
 
 // In this header, you should import all the public headers of your framework using statements like #import <SHControlsSpecial/PublicHeader.h>
 

@@ -15,7 +15,7 @@
 - (IBAction)addRewardsBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event
 {
   SHEventInfo *e = eventInfoCopy;
-  [self.delegate addRewardsBtn_press_action:e];
+  [self.rewardsDelegate addRewardsBtn_press_action:e];
 }
 
 

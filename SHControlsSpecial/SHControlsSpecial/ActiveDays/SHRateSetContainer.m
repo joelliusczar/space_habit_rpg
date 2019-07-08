@@ -87,7 +87,7 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 -(void)viewDidLoad{
   [super viewDidLoad];
   self.rateSetter = [[SHRateSetterView alloc] init];
-  [self pushChildVC:self.rateSetter toViewOfParent:self.rateSetterContainer];
+  //[self pushChildVC:self.rateSetter toViewOfParent:self.rateSetterContainer];
   
 }
 
@@ -354,7 +354,7 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 
 
 -(void)fitControlHeightToSubControlHeight:(UIViewController *)control{
-  
+  (void)control;
   [self resetHeight];
   //CGFloat h = control.frame.size.height;
   [self beginUpdate];

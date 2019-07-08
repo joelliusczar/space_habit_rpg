@@ -8,7 +8,7 @@
 
 #include "SHTimeZone.h"
 #include "SHDatetimeFuncs.h"
-#include "SHConstants.h"
+#include "SHUtilConstants.h"
 #include "SHErrorHandling.h"
 
 static bool _compareDtAndTimeShift(SHDatetime *dt,SHTimeshift *shift,bool (*compare)(int64_t,int64_t)){

@@ -12,5 +12,5 @@
 
 @interface SHSubtasksTableView : SHView<UITableViewDataSource>
 @property (weak,nonatomic) IBOutlet UITableView *subtasksList;
-@property (weak,nonatomic) id<SHSubtasksTableViewDelegateProtocol> delegate;
+@property (assign,nonatomic) id<SHSubtasksTableViewDelegateProtocol> subtasksTabledelegate;
 @end

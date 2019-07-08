@@ -15,5 +15,5 @@ IB_DESIGNABLE
 @interface SHStreakResetterView : SHView
 @property (weak,nonatomic) IBOutlet UILabel *streakCountLbl;
 @property (weak,nonatomic) IBOutlet SHButton *streakResetBtn;
-@property (weak,nonatomic) id<SHStreakResetterDelegateProtocol> delegate;
+@property (copy,nonatomic) void (^streakReset)(void);
 @end

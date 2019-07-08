@@ -55,4 +55,7 @@
   self.view.backgroundColor = color;
 }
 
+
+-(void)setupCustomOptions{}
+
 @end

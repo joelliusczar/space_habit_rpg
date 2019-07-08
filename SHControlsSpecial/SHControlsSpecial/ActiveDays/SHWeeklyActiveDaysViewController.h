@@ -14,6 +14,7 @@
 #import <SHModels/SHRangeRateItem.h>
 #import <SHControls/SHNestedControlProtocol.h>
 #import <SHControls/SHViewEventsProtocol.h>
+#import <SHControls/SHRateSetterView.h>
 
 
 IB_DESIGNABLE
