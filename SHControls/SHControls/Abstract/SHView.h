@@ -15,7 +15,7 @@ IB_DESIGNABLE
 @interface SHView: UIView
 @property (strong,nonatomic) UIView *mainView;
 @property (weak,nonatomic) UIView *holderView;
-@property (assign,nonatomic) IBOutlet id<SHViewEventsProtocol> delegate;
+@property (assign,nonatomic) IBOutlet id<SHViewEventsProtocol> eventDelegate;
 -(instancetype)initEmpty;
 -(void)changeBackgroundColorTo:(UIColor *)color;
 -(UIView *)loadDefaultXib;

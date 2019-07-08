@@ -99,8 +99,8 @@
 {
   for (UITouch *touch in touches) {
     if(touch.phase == UITouchPhaseBegan){
-      if([self.delegate respondsToSelector:@selector(onBeginTap_action:withEvent:)]){
-        [self.delegate onBeginTap_action:self withEvent:event];
+      if([self.eventDelegate respondsToSelector:@selector(onBeginTap_action:withEvent:)]){
+        [self.eventDelegate onBeginTap_action:self withEvent:event];
       }
       [self beginTap_action:touch
         withEvent:event];
