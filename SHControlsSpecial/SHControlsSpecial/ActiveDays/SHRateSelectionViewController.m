@@ -81,6 +81,7 @@ const NSInteger YEARLY_SELECTION = 3;
 }
 
 -(void)switchToActiveDaysViewController:(SHRateType)rateType{
+  NSAssert(self.activeDays,@"We need active days to not be nill");
   SHRateType baseRateType = shExtractBaseRateType(rateType);
   switch (baseRateType) {
     case SH_DAILY_RATE:

@@ -55,7 +55,7 @@ static void convertObjCRateItemToC(NSArray<SHRangeRateItem*>* rateItems, SHRateV
   return nextDueDate;
 }
 
--(NSUInteger)rate{
+-(int32_t)rate{
   switch(self.rateType){
     case SH_YEARLY_RATE:
       return self.activeDaysContainer.yearlyIntervalSize;

@@ -48,11 +48,13 @@
 -(void)onBeginTap_action:(SHView *)sender withEvent:(UIEvent*)event{
   (void)sender; (void)event;
   NSAssert(self.context,@"You forgot to call setupWithContext:andObjectID:");
+  NSAssert(self.activeDays,@"You forgot to assign activeDays");
   [self.context performBlock:^{
     SHDaily *daily = (SHDaily *)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
     SHRateType rateType = (SHRateType)daily.rateType;
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
       [self.rateSelectionViewContoller selectRateType:rateType];
+      self.rateSelectionViewContoller.activeDays = self.activeDays;
       [self.editorContainer
         arrangeAndPushChildVCToFront:self.rateSelectionViewContoller];
     }];

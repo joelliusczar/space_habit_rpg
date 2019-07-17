@@ -11,7 +11,7 @@
 #import "SHListRateItemCollection.h"
 
 typedef SHListRateItemCollection* _Nonnull (^shGetListRateCollection)(void);
-typedef NSArray<SHRangeRateItem*>*(^shGetRangeRateArray)(void);
+typedef NSArray<SHRangeRateItem*>* _Nonnull (^shGetRangeRateArray)(void);
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -43,6 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly,copy,nonatomic) shGetListRateCollection yearlyActiveDaysInvLazy;
 @property (readonly,copy,nonatomic) shGetRangeRateArray weeklyActiveDaysLazy;
 @property (readonly,copy,nonatomic) shGetRangeRateArray weeklyActiveDaysInvLazy;
+
 
 -(instancetype)initWithActiveDaysDict:(NSMutableDictionary*)activeDaysDict;
 -(instancetype)initWithActiveDaysJson:(NSString*)activeDaysJson;

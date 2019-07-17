@@ -19,6 +19,7 @@
 
 
 -(SHControlKeep *)buildControlKeep{
+  NSAssert(self.activeDays,@"Active days shouldn't be nil");
   SHControlKeep *keep = [[SHControlKeep alloc] init];
   
   NSManagedObjectContext *context = self.context;
@@ -51,6 +52,7 @@
     repeatLink.editorContainer = editorContainerController;
     [repeatLink setupWithContext:context
       andObjectID:objectIDWrapper];
+    repeatLink.activeDays = activeDays;
     return repeatLink;
   }];
   
