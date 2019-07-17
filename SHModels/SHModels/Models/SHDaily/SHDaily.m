@@ -55,6 +55,28 @@ static void convertObjCRateItemToC(NSArray<SHRangeRateItem*>* rateItems, SHRateV
   return nextDueDate;
 }
 
+-(NSUInteger)rate{
+  switch(self.rateType){
+    case SH_YEARLY_RATE:
+      return self.activeDaysContainer.yearlyIntervalSize;
+    case SH_YEARLY_RATE_INVERSE:
+      return self.activeDaysContainer.yearlyIntervalSizeInv;
+    case SH_MONTHLY_RATE:
+      return self.activeDaysContainer.monthlyIntervalSize;
+    case SH_MONTHLY_RATE_INVERSE:
+      return self.activeDaysContainer.monthlyIntervalSizeInv;
+    case SH_WEEKLY_RATE:
+      return self.activeDaysContainer.weeklyIntervalSize;
+    case SH_WEEKLY_RATE_INVERSE:
+      return self.activeDaysContainer.weeklyIntervalSizeInv;
+    case SH_DAILY_RATE:
+      return 1;
+    case SH_DAILY_RATE_INVERSE:
+      return 1;
+  }
+  return 1;
+}
+
 
 -(NSDate *)nextDueTime{
   switch(self.rateType){
@@ -120,7 +142,6 @@ static void convertObjCRateItemToC(NSArray<SHRangeRateItem*>* rateItems, SHRateV
     self.difficulty = 3;
     self.urgency = 3;
     self.note = @"";
-    self.rate = 1;
     self.streakLength = 0;
     self.activeFromDate = nil;
     self.activeToDate = nil;

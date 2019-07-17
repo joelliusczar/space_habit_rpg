@@ -56,4 +56,11 @@
   return [self dtoCopy];
 }
 
+
+-(BOOL)shouldIgnoreProperty:(NSString *)propName{
+  if([propName isEqualToString:@"sectorInfoDict"]) return YES;
+  if([propName isEqualToString:@"mapable"]) return YES;
+  return NO;
+}
+
 @end

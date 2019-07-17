@@ -1210,5 +1210,32 @@ NSString *convertCharToBin(unsigned char input){
   
 }
 
+void checkSize(id object){
+  NSLog(@"%lu",sizeof(object));
+}
+
+union u_double {
+  double dbl;
+  int64_t data;
+};
+
++(void)primitiveType{
+  int a = 5;
+  NSObject *oscar = [NSObject new];
+  typeof(a) b = 7;
+  char* c = "abb";
+  double pi = 3.14;
+  union u_double d;
+  d.dbl = 3.14;
+  int64_t b2 = d.data;
+  double c2 = d.dbl;
+  NSNumber *num = [NSNumber numberWithDouble:b2];
+  double c3 = num.doubleValue;
+  //NSLog(@"%f",pi2);
+  char* code = @encode(typeof(c));
+  checkSize(oscar);
+  NSLog(@"hi");
+}
+
 
 @end

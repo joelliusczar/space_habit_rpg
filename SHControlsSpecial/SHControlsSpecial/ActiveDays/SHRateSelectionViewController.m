@@ -87,6 +87,7 @@ const NSInteger YEARLY_SELECTION = 3;
       
     case SH_WEEKLY_RATE:
       [self.weeklyActiveDays setActiveDaysOfWeek:self.activeDays.weeklyActiveDays];
+      self.weeklyActiveDays.intervalSize = self.activeDays.weeklyIntervalSize;
       [self.rateActiveDaysViewController arrangeAndPushChildVCToFront:self.weeklyActiveDays];
       break;
     case SH_MONTHLY_RATE:
@@ -139,6 +140,19 @@ const NSInteger YEARLY_SELECTION = 3;
   if(self.isViewLoaded && self.view.window){
     [self.rateSelector setEnabled:YES forSegmentAtIndex:selectionIndex];
   }
+}
+
+
+-(void)switchActiveDay:(NSInteger)dayIdx value:(BOOL)value{
+  (void)value;
+  //for now, we're not actually using the inverse stuff.
+  //but I keep it around incase I change my mind.
+  [self.activeDays flipDayOfWeek:dayIdx forPolarity:NO];
+}
+
+
+-(void)weeklyIntervalChanged:(NSInteger)newValue{
+  self.activeDays.weeklyIntervalSize = (int32_t)newValue;
 }
 
 /*

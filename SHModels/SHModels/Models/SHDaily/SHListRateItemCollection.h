@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSUInteger)addRateItem:(SHListRateItem*)rateItem;
 -(void)removeRateItemAtIndex:(NSUInteger)index;
 -(SHListRateItem*)objectAtIndexedSubscript:(NSUInteger)idx;
--(NSMutableArray*)mapItemsTo_f:(id  _Nonnull (*)(SHListRateItem *, NSUInteger))mapper;
+-(NSMutableArray*)mapItemsTo_f:(id  _Nonnull (*_Nonnull)(SHListRateItem *, NSUInteger))mapper;
 @end
 
 NS_ASSUME_NONNULL_END

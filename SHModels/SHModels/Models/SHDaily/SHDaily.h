@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SHDaily : NSManagedObject<SHDueDateItemProtocol>
 @property (strong,nonatomic) SHDailyActiveDays *activeDaysContainer;
 -(void)setupInitialState;
+@property (readonly,nonatomic) NSUInteger rate;
 @end
 
 NS_ASSUME_NONNULL_END

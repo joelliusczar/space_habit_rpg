@@ -243,7 +243,8 @@
   [self.context performBlock:^{
     SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
     int32_t rate = shFilterRate(sender.value);
-    daily.rate = rate;
+    #warning cleanup
+    //daily.rate = rate;
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
       sender.value = rate;
       [self modelTouched];
@@ -255,13 +256,12 @@
 -(void)activeDaySwitch_press_action:(SHEventInfo *)eventInfo{
   (void)eventInfo;
   SHSwitch *sender = (SHSwitch *)eventInfo.senderStack[0];
-  
+  #warning clean up
   [self.context performBlock:^{
     SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
     BOOL isInverse = shIsInverseRateType(daily.rateType);
-    int32_t rate = daily.rate;
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-      [self.activeDays flipDayOfWeek:sender.tag forPolarity:isInverse andRate:rate];
+      [self.activeDays flipDayOfWeek:sender.tag forPolarity:isInverse];
       [self modelTouched];
     }];
   }];

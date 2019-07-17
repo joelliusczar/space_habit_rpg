@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *monsterKey;
 @property (nonatomic) int32_t nowHp;
 @property (readonly,nonatomic) NSMutableDictionary *mapable;
+-(BOOL)shouldIgnoreProperty:(NSString *)propName;
 @end
 
 NS_ASSUME_NONNULL_END

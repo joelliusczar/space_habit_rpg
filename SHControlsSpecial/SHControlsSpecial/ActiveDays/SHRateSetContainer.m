@@ -196,7 +196,7 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
     //[weekly changeBackgroundColorTo:weakSelf.view.backgroundColor];
     [keep forResponderKey:WEEKLY_KEY doSetupAction:^(id responder){
       //Does this work?
-      weekly.touchCallback = responder;
+      weekly.valueChangeDelegate = responder;
     }];
     return weekly;
   });
@@ -224,7 +224,8 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 -(void)resetRate{
   [self.context performBlock:^{
     SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
-    daily.rate = 1;
+    #warning cleanup
+    //daily.rate = 1;
   }];
   self.rateSetter.rateStep.value = 1;//prevent old stepper value from overwriting
 }

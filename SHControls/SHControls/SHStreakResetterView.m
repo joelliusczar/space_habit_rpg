@@ -15,7 +15,7 @@
 -(IBAction)streakResetBtn_press_action:(UIButton *)sender
   forEvent:(UIEvent *)event
 {
-  (void)event;
+  (void)event; (void)sender;
   if(self.streakReset){
     self.streakReset();
   }

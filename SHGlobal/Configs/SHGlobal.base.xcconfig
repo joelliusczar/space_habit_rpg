@@ -10,3 +10,5 @@
 // https://help.apple.com/xcode/#/dev745c5c974
 
 #include "../Configs/SHWorkspace.xcconfig"
+
+LD_NO_PIE = YES

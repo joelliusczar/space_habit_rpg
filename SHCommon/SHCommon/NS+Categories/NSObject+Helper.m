@@ -81,5 +81,13 @@ typedef void (*voidCaller)(id,SEL);
 }
 #endif
 
+/*
+  this is not technically being used, but I need it
+  to make respondToSelector work for implementations
+  elsewhere.
+*/
+-(BOOL)shouldIgnoreProperty:(NSString *)propName{
+  return NO;
+}
 
 @end

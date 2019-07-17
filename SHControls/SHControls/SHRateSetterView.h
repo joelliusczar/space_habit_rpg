@@ -19,5 +19,10 @@ typedef void(^rateStepAction)(UIStepper*,UIEvent *);
 IB_DESIGNABLE
 @interface SHRateSetterView : SHView
 @property (weak,nonatomic) IBOutlet UIStepper *rateStep;
+@property (weak,nonatomic) IBOutlet UILabel *intervalLabel;
 @property (copy,nonatomic) rateStepAction rateStepEvent;
+@property (strong,nonatomic) IBInspectable UIColor *controlBackground;
+@property (strong,nonatomic) IBInspectable NSString *labelPluralFormatString;
+@property (strong,nonatomic) IBInspectable NSString *labelSingularFormatString;
+@property (assign,nonatomic) IBInspectable NSInteger intervalSize;
 @end

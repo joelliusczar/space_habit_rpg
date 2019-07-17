@@ -14,6 +14,32 @@
 
 @implementation SHView
 
+@synthesize eventDelegate = _eventDelegate;
+-(id<SHViewEventsProtocol>)eventDelegate{
+  if(self->_eventDelegate){
+    return _eventDelegate;
+  }
+  if(self.mainView){
+    if([self.mainView isKindOfClass:SHView.class]){
+      SHView *shview = (SHView*)self.mainView;
+      return shview->_eventDelegate;
+    }
+  }
+  return nil;
+}
+
+-(void)setEventDelegate:(id<SHViewEventsProtocol>)eventDelegate{
+  if(self.mainView){
+    if([self.mainView isKindOfClass:SHView.class]){
+      SHView *shview = (SHView*)self.mainView;
+      shview->_eventDelegate = eventDelegate;
+    }
+  }
+  else {
+    _eventDelegate = eventDelegate;
+  }
+}
+
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
@@ -39,7 +65,9 @@
 
 -(void)viewAdditionalSetup{
   //only do this part if there is an actual xib to load
-  if(![self isMemberOfClass:SHView.class]){ //we're checking that this is a derived class
+  //we're checking that this is a derived class
+  //as opposed to the base class itself.
+  if(![self isMemberOfClass:SHView.class]){
     _mainView = [self loadDefaultXib];
     if(_mainView) {
       [self addSubview:_mainView];
@@ -99,11 +127,10 @@
 {
   for (UITouch *touch in touches) {
     if(touch.phase == UITouchPhaseBegan){
+      [self beginTap_action:touch withEvent:event];
       if([self.eventDelegate respondsToSelector:@selector(onBeginTap_action:withEvent:)]){
         [self.eventDelegate onBeginTap_action:self withEvent:event];
       }
-      [self beginTap_action:touch
-        withEvent:event];
     }
   }
 }

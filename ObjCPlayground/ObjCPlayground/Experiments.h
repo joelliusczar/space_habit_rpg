@@ -134,6 +134,7 @@ void cMakeHouses(void);
 +(void)tryingTheKVOverride;
 +(void)testEntityAccessNoSave;
 +(void)cfArrayStuff;
++(void)primitiveType;
 @end
 
 #import "Experiments+Charlie.h"

@@ -9,14 +9,24 @@
 #import "SHCollectionUtils.h"
 #import "NSDictionary+SHHelper.h"
 #import "NSArray+SHHelper.h"
+#import "SHCommonUtils.h"
 
 
 const shDictEntrytransformer shDefaultTransformer = ^id(id object,
   NSMutableSet *cycleTracker)
 {
+  if(nil == object){
+    return [NSNull null];
+  }
   if([object isMemberOfClass:NSDate.class]){
     NSDate *date = (NSDate*)object;
     return [NSNumber numberWithDouble:date.timeIntervalSince1970];
+  }
+  BOOL isNumber = [object isKindOfClass:NSNumber.class];
+  BOOL isString = [object isKindOfClass:NSString.class];
+  BOOL isNSValue = [object isKindOfClass:NSValue.class];
+  if(isNumber || isString || isNSValue) {
+    return object;
   }
   if([object respondsToSelector:@selector(enumerateObjectsUsingBlock:)]){
     NSArray *array = (NSArray*)object;

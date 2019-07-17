@@ -41,7 +41,9 @@ u_int32_t const SH_MIN_ZONE_CHOICE_COUNT = 3;
 u_int32_t const SH_MAX_ZONE_CHOICE_RAND_UP_BOUND = 3;
 NSString * const SH_NOTIFY_CAT_ID = @"SHReminder";
 NSString* const SH_ALL_DAYS_JSON = @"{\"daysOfWeek\":[],\"daysOfMonth\":[],\"daysOfYear\":[],"
-"\"daysOfWeek_INV\":[],\"daysOfMonth_INV\":[],\"daysOfYear_INV\":[]}";
+"\"daysOfWeek_INV\":[],\"daysOfMonth_INV\":[],\"daysOfYear_INV\":[], \"weeklyInterval\": 1,"
+"\"monthlyInterval\":1,\"yearlyInterval\":1, \"weeklyInterval_INV\": 1, "
+"\"monthlyInterval_INV\":1,\"yearlyInterval_INV\":1, \"dailyInterval\":1, \"dailyIntervalInv\":1}";
 
 
 NSString* const SH_TRANSACTION_TYPE_KEY = @"TransactionType";

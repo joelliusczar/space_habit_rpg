@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSUInteger)findPlaceFor:(ItemType)object whereFirstFitsFP:(BOOL (*)(ItemType,ItemType))bestFitFP;
 
 -(NSMutableArray*)mapItemsTo:(id (^)(id,NSUInteger))mapper;
--(NSMutableArray*)mapItemsTo_f:(id  _Nonnull (*)(id _Nonnull, NSUInteger))mapper;
+-(NSMutableArray*)mapItemsTo_f:(id  _Nonnull (*_Nonnull)(id _Nonnull, NSUInteger))mapper;
 @end
 
 NS_ASSUME_NONNULL_END

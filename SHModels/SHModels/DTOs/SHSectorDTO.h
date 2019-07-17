@@ -27,6 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) int64_t uniqueId;
 @property (nullable, nonatomic, copy) NSString *sectorKey;
 @property (nonatomic,strong) SHSectorInfoDictionary *sectorInfoDict;
+-(BOOL)shouldIgnoreProperty:(NSString *)propName;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -8,7 +8,10 @@
 
 #import "NSDictionary+SHHelper.h"
 #import "NSArray+SHHelper.h"
+#import "SHCommonUtils.h"
+#import "NSObject+Helper.h"
 #import <objc/runtime.h>
+
 
 
 @implementation NSDictionary (SHHelper)
@@ -17,7 +20,7 @@
 static NSMutableDictionary* _mapEntriesToDict(NSDictionary *dict,
   shDictEntrytransformer transformer,
   NSMutableSet* cycleTracker)
-  {
+{
   NSMutableDictionary *result = [NSMutableDictionary dictionaryWithCapacity:dict.count];
   [dict enumerateKeysAndObjectsUsingBlock:^(id key,id object,BOOL *shouldStop){
     (void)shouldStop;
@@ -37,7 +40,8 @@ static NSMutableDictionary* _mapEntriesToDict(NSDictionary *dict,
 
 -(NSMutableDictionary*)mapEntiresToDictsWithTransformer:
   (shDictEntrytransformer)transformer
-  withSet:(NSMutableSet*)cycleTracker{
+  withSet:(NSMutableSet*)cycleTracker
+{
   return _mapEntriesToDict(self, transformer,cycleTracker);
 }
 
@@ -86,6 +90,11 @@ static NSMutableDictionary* objectToDict(NSObject *object,
   for(uint32_t i = 0; i < outCount; i++){
     const char *propName = property_getName(props[i]);
     NSString *nsPropName = [NSString stringWithUTF8String:propName];
+    if([object respondsToSelector:@selector(shouldIgnoreProperty:)]){
+      if([object shouldIgnoreProperty: nsPropName]){
+        continue;
+      }
+    }
     id objectVal = [object valueForKey:nsPropName];
     if(transformer){
       objectVal = transformer(objectVal,cycleTracker);

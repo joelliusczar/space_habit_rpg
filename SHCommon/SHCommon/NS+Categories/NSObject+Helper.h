@@ -20,6 +20,8 @@
 -(id)dtoCopy;
 -(void)dtoCopyFrom:(NSObject*)fromObject;
 
+-(BOOL)shouldIgnoreProperty:(NSString *)propName;
+
 #if IS_IOS
 -(UIView *)loadXib:(NSString *)nibName;
 #endif

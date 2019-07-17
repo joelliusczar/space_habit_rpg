@@ -91,4 +91,10 @@ static float MAX_HP_MODIFIER = .1;
   [super setValue:value forKey:key];
 }
 
+-(BOOL)shouldIgnoreProperty:(NSString *)propName{
+  if([propName isEqualToString:@"monInfoDict"]) return YES;
+  if([propName isEqualToString:@"mapable"]) return YES;
+  return NO;
+}
+
 @end
