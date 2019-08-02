@@ -20,6 +20,7 @@
 @implementation SHWeeklyActiveDaysViewController
 
 -(void)viewDidLoad{
+  NSAssert(self.weeklyActiveDays,@"Weekly active days cannot be null");
   [super viewDidLoad];
   self.activeDaySwitches = @[
     self.day0Switch,
@@ -33,27 +34,17 @@
   
   NSArray<NSString *> *dayKeys = shBuildWeekBasedOnWeekStart(self.weekStartDay);
   
+  
+  
   for(int i = 0; i < 7; i++){
     self.activeDaySwitches[i].dayLabel.text = shWeekDayKeyToFull(dayKeys[i]);
     self.activeDaySwitches[i].eventDelegate = self;
+    int32_t dayIdx =  (i + self.weekStartDay) % 7;
+    self.activeDaySwitches[dayIdx].isOn = self.weeklyActiveDays[dayIdx].isDayActive;
   }
   
-  __weak typeof(self) weakSelf = self;
-  self.intervalSetter.rateStepEvent = ^(UIStepper *stepper,UIEvent *e){
-    typeof(weakSelf) bSelf = weakSelf;
-    [bSelf rateStepEvent:stepper event:e];
-  };
-  
-  self.intervalSetter.intervalSize = self.intervalSize;
-  
 }
 
-
--(void)rateStepEvent:(UIStepper *)stepper event:(UIEvent*)event{
-  (void)event;
-  NSInteger intervalSize = (NSInteger)stepper.value;
-  [self.valueChangeDelegate weeklyIntervalChanged:intervalSize];
-}
 
 
 -(void)onBeginTap_action:(SHView *)sender withEvent:(UIEvent*)event{
@@ -80,12 +71,6 @@
   else if(sender == self.day6Switch.mainView){
     [self.valueChangeDelegate switchActiveDay:6 value:dayOption.isOn];
   }
-}
-
--(void)setActiveDaysOfWeek:(NSArray<SHRangeRateItem*>*)activeDays{
-    for(SHSwitch *flip in self.activeDaySwitches){
-        flip.isOn = activeDays[flip.tag].isDayActive;
-    }
 }
 
 

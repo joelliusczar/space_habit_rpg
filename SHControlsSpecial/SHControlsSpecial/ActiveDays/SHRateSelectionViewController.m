@@ -56,7 +56,14 @@ const NSInteger YEARLY_SELECTION = 3;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  [self switchToActiveDaysViewController:WEEKLY_SELECTION];
+  [self switchToActiveDaysViewController:self.rateType];
+  __weak typeof(self) weakSelf = self;
+  self.intervalSetter.rateStepEvent = ^(UIStepper *stepper,UIEvent *e){
+    typeof(weakSelf) bSelf = weakSelf;
+    [bSelf rateStepEvent:stepper event:e];
+  };
+  [self.intervalSetter changeBackgroundColorTo: [UIColor whiteColor]];
+  [self.intervalSetter setSubControlColorsTo: [UIColor colorWithRed:36.0/255 green:126.0/255 blue:217.0/255 alpha:1]];
 }
 
 
@@ -80,22 +87,50 @@ const NSInteger YEARLY_SELECTION = 3;
   [self switchToActiveDaysViewController:rateType];
 }
 
+-(void)loadDailyRateView {
+  self.intervalSetter.labelSingularFormatString = @"Interval: Every day";
+  self.intervalSetter.labelPluralFormatString = @"Interval: Every %ld days";
+  self.intervalSetter.intervalSize = self.activeDays.dailyIntervalSize;
+  [self.rateActiveDaysViewController popAllChildVCs];
+}
+
+- (void)loadWeeklyRateView {
+  self.weeklyActiveDays.weeklyActiveDays = self.activeDays.weeklyActiveDays;
+  self.intervalSetter.labelSingularFormatString = @"Interval: Every week";
+  self.intervalSetter.labelPluralFormatString = @"Interval: Every %ld weeks";
+  self.intervalSetter.intervalSize = self.activeDays.weeklyIntervalSize;
+  [self.rateActiveDaysViewController arrangeAndPushChildVCToFront:self.weeklyActiveDays];
+}
+
+- (void)loadMonthlyRateView {
+  self.intervalSetter.labelSingularFormatString = @"Interval: Every month";
+  self.intervalSetter.labelPluralFormatString = @"Interval: Every %ld months";
+  self.intervalSetter.intervalSize = self.activeDays.monthlyIntervalSize;
+  [self.rateActiveDaysViewController arrangeAndPushChildVCToFront:self.monthlyActiveDays];
+}
+
+- (void)loadYearlyRateView {
+  self.intervalSetter.labelSingularFormatString = @"Interval: Every year";
+  self.intervalSetter.labelPluralFormatString = @"Interval: Every %ld years";
+  self.intervalSetter.intervalSize = self.activeDays.yearlyIntervalSize;
+  [self.rateActiveDaysViewController arrangeAndPushChildVCToFront:self.yearlyActiveDays];
+}
+
 -(void)switchToActiveDaysViewController:(SHRateType)rateType{
   NSAssert(self.activeDays,@"We need active days to not be nill");
   SHRateType baseRateType = shExtractBaseRateType(rateType);
   switch (baseRateType) {
     case SH_DAILY_RATE:
-      
+      [self loadDailyRateView];
+      break;
     case SH_WEEKLY_RATE:
-      [self.weeklyActiveDays setActiveDaysOfWeek:self.activeDays.weeklyActiveDays];
-      self.weeklyActiveDays.intervalSize = self.activeDays.weeklyIntervalSize;
-      [self.rateActiveDaysViewController arrangeAndPushChildVCToFront:self.weeklyActiveDays];
+      [self loadWeeklyRateView];
       break;
     case SH_MONTHLY_RATE:
-      [self.rateActiveDaysViewController arrangeAndPushChildVCToFront:self.monthlyActiveDays];
+      [self loadMonthlyRateView];
       break;
     case SH_YEARLY_RATE:
-      [self.rateActiveDaysViewController arrangeAndPushChildVCToFront:self.yearlyActiveDays];
+      [self loadYearlyRateView];
       break;
     default:
       @throw [NSException oddException];
@@ -152,8 +187,39 @@ const NSInteger YEARLY_SELECTION = 3;
 }
 
 
--(void)weeklyIntervalChanged:(NSInteger)newValue{
-  self.activeDays.weeklyIntervalSize = (int32_t)newValue;
+-(void)rateStepEvent:(UIStepper *)stepper event:(UIEvent*)event{
+  (void)event;
+  int32_t intervalSize = (int32_t)stepper.value;
+  switch (self.rateType) {
+    case SH_DAILY_RATE:
+      self.activeDays.dailyIntervalSize = intervalSize;
+      break;
+    case SH_WEEKLY_RATE:
+      self.activeDays.weeklyIntervalSize = intervalSize;
+      break;
+    case SH_MONTHLY_RATE:
+      self.activeDays.monthlyIntervalSize = intervalSize;
+      break;
+    case SH_YEARLY_RATE:
+      self.activeDays.yearlyIntervalSize = intervalSize;
+      break;
+    case SH_DAILY_RATE_INVERSE:
+      self.activeDays.dailyIntervalSizeInv = intervalSize;
+      break;
+    case SH_WEEKLY_RATE_INVERSE:
+      self.activeDays.weeklyIntervalSizeInv = intervalSize;
+      break;
+    case SH_MONTHLY_RATE_INVERSE:
+      self.activeDays.monthlyIntervalSizeInv = intervalSize;
+      break;
+    case SH_YEARLY_RATE_INVERSE:
+      self.activeDays.yearlyIntervalSizeInv = intervalSize;
+      break;
+  default:
+    @throw [NSException oddException];
+    break;
+}
+  
 }
 
 /*

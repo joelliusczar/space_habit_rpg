@@ -16,12 +16,18 @@
 
 @synthesize isOn = _isOn;
 -(void)setIsOn:(BOOL)isOn{
-    _isOn = isOn;
+  _isOn = isOn;
+  if(self.mainView && [self.mainView isKindOfClass:SHSwitch.class]){
+    SHSwitch *shSwitch = (SHSwitch*)self.mainView;
+    shSwitch.isOn = isOn;
+  }
+  else{
     [self setSwitchImageForState:_isOn];
+  }
 }
 
 -(BOOL)isOn{
-    return _isOn;
+  return _isOn;
 }
 
 @synthesize areColorsInverted = _areColorsInverted;

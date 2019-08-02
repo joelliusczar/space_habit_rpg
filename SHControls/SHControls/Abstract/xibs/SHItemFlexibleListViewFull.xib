@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,30 +21,33 @@
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="y4T-Lj-Mg2">
-                    <rect key="frame" x="16" y="0.0" width="332" height="630"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="630"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="FoD-Ea-MxS"/>
                         <outlet property="delegate" destination="-1" id="CM6-l8-cwM"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbl-hz-8w3">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbl-hz-8w3">
                     <rect key="frame" x="16" y="630" width="242" height="37"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="37" id="HgX-nl-R8G"/>
                         <constraint firstAttribute="width" constant="242" id="R8k-8d-Q6x"/>
                     </constraints>
-                    <state key="normal" title="Add New Item" image="blue_plus"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                    <state key="normal" title="Add New Item" image="blue_plus">
+                        <color key="titleColor" red="0.14117647059999999" green="0.4941176471" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="y4T-Lj-Mg2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="G9w-rb-B9S"/>
                 <constraint firstAttribute="bottom" secondItem="zbl-hz-8w3" secondAttribute="bottom" id="JUi-uW-4bw"/>
                 <constraint firstItem="zbl-hz-8w3" firstAttribute="top" secondItem="y4T-Lj-Mg2" secondAttribute="bottom" id="SGC-fE-V4g"/>
                 <constraint firstItem="zbl-hz-8w3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="aaB-GD-9ix"/>
-                <constraint firstItem="y4T-Lj-Mg2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="cyY-qE-Lnz"/>
                 <constraint firstItem="y4T-Lj-Mg2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="e5G-aG-cUp"/>
-                <constraint firstAttribute="trailing" secondItem="y4T-Lj-Mg2" secondAttribute="trailing" constant="27" id="n8c-Xo-9g1"/>
+                <constraint firstAttribute="trailing" secondItem="y4T-Lj-Mg2" secondAttribute="trailing" id="n8c-Xo-9g1"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <point key="canvasLocation" x="56.799999999999997" y="-122.78860569715144"/>

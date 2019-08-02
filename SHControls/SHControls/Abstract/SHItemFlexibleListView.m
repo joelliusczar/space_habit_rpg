@@ -29,7 +29,7 @@
 
 -(instancetype)init{
   NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"SHItemFlexibleListView")];
-  if(self = [super initWithNibName:@"SHItemFlexibleListView" bundle:bundle]){}
+  if(self = [super initWithNibName:@"SHItemFlexibleListViewFull" bundle:bundle]){}
   return self;
 }
 

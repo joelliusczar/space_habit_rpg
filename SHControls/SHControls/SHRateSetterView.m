@@ -22,6 +22,15 @@
 }
 
 
+-(void)setupCustomOptions{
+  [super setupCustomOptions];
+  if(self.controlBackground){
+    self.backgroundColor = self.controlBackground;
+    self.mainView.backgroundColor = self.controlBackground;
+  }
+}
+
+
 -(void)updateLabelTextWithInterval:(NSInteger)intervalValue{
   NSString *useFormatString = intervalValue == 1 ?
     self.labelSingularFormatString :
@@ -44,6 +53,20 @@
   if(self.controlBackground){
     self.backgroundColor = self.controlBackground;
     self.mainView.backgroundColor = self.controlBackground;
+  }
+}
+
+
+-(void)setSubControlColorsTo:(UIColor *)color {
+  self.rateStep.tintColor = color;
+  self.intervalLabel.textColor = color;
+  if(self.mainView) {
+    NSAssert(self.mainView.subviews.count == 2,@"Some adjustments need to be made in a control");
+    UIStepper *stepper =  (UIStepper*)[self.mainView viewWithTag:self.rateStep.tag];
+    UILabel *label = (UILabel*)[self.mainView viewWithTag:self.intervalLabel.tag];
+    stepper.tintColor = color;
+    label.textColor = color;
+    
   }
 }
 @end

@@ -25,4 +25,5 @@ IB_DESIGNABLE
 @property (strong,nonatomic) IBInspectable NSString *labelPluralFormatString;
 @property (strong,nonatomic) IBInspectable NSString *labelSingularFormatString;
 @property (assign,nonatomic) IBInspectable NSInteger intervalSize;
+-(void)setSubControlColorsTo:(UIColor *)color;
 @end

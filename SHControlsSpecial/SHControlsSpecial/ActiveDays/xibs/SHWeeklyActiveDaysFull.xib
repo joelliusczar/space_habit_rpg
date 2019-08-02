@@ -18,7 +18,6 @@
                 <outlet property="day4Switch" destination="A7d-cN-I7B" id="7Rb-eF-SxQ"/>
                 <outlet property="day5Switch" destination="nYM-Ig-an5" id="1br-8s-6cp"/>
                 <outlet property="day6Switch" destination="9Qg-Q9-sYe" id="UkZ-CU-UXq"/>
-                <outlet property="intervalSetter" destination="UP9-gG-zxG" id="lGo-Vn-zkw"/>
                 <outlet property="view" destination="Ryk-Ni-fEN" id="0mS-L4-FX4"/>
             </connections>
         </placeholder>
@@ -104,26 +103,10 @@
                         <constraint firstAttribute="height" id="324-p2-qWr"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UP9-gG-zxG" customClass="SHRateSetterView">
-                    <rect key="frame" x="0.0" y="350" width="375" height="37"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="37" id="4O3-Op-D9I"/>
-                    </constraints>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="labelPluralFormatString" value="Interval: Every %ld Weeks"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="labelSingularFormatString" value="Interval: Every Week"/>
-                        <userDefinedRuntimeAttribute type="number" keyPath="intervalSize">
-                            <integer key="value" value="1"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </view>
             </subviews>
-            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="6Fp-sn-19y" secondAttribute="trailing" id="07y-Qy-uJY"/>
                 <constraint firstAttribute="trailing" secondItem="A7d-cN-I7B" secondAttribute="trailing" id="0KP-bP-dml"/>
-                <constraint firstAttribute="trailing" secondItem="UP9-gG-zxG" secondAttribute="trailing" id="33Q-eK-Oab"/>
                 <constraint firstItem="Bkm-AR-aBE" firstAttribute="leading" secondItem="Ryk-Ni-fEN" secondAttribute="leading" id="3jg-NA-xAo"/>
                 <constraint firstItem="xiq-vU-xmE" firstAttribute="leading" secondItem="Ryk-Ni-fEN" secondAttribute="leading" id="6sh-zp-N9G"/>
                 <constraint firstItem="9Qg-Q9-sYe" firstAttribute="top" secondItem="nYM-Ig-an5" secondAttribute="bottom" id="9AH-lJ-FMx"/>
@@ -139,12 +122,10 @@
                 <constraint firstAttribute="trailing" secondItem="nYM-Ig-an5" secondAttribute="trailing" id="Ud6-RK-cgC"/>
                 <constraint firstItem="Bkm-AR-aBE" firstAttribute="top" secondItem="7Z2-eU-afN" secondAttribute="bottom" id="enj-96-Lzt"/>
                 <constraint firstAttribute="trailing" secondItem="Bkm-AR-aBE" secondAttribute="trailing" id="fhk-zq-X6p"/>
-                <constraint firstItem="UP9-gG-zxG" firstAttribute="top" secondItem="aO3-KV-K8g" secondAttribute="bottom" id="lFu-8X-ptr"/>
                 <constraint firstItem="A7d-cN-I7B" firstAttribute="top" secondItem="Bkm-AR-aBE" secondAttribute="bottom" id="mVM-tX-bNF"/>
                 <constraint firstItem="aO3-KV-K8g" firstAttribute="leading" secondItem="Ryk-Ni-fEN" secondAttribute="leading" id="mmr-IH-ySh"/>
                 <constraint firstAttribute="trailing" secondItem="xiq-vU-xmE" secondAttribute="trailing" id="pL9-Wr-UT7"/>
                 <constraint firstItem="6Fp-sn-19y" firstAttribute="leading" secondItem="Ryk-Ni-fEN" secondAttribute="leading" id="uDI-Xe-Naj"/>
-                <constraint firstItem="UP9-gG-zxG" firstAttribute="leading" secondItem="Ryk-Ni-fEN" secondAttribute="leading" id="vMS-wP-ud4"/>
                 <constraint firstItem="A7d-cN-I7B" firstAttribute="leading" secondItem="Ryk-Ni-fEN" secondAttribute="leading" id="x5c-e5-2Dy"/>
                 <constraint firstItem="nYM-Ig-an5" firstAttribute="leading" secondItem="Ryk-Ni-fEN" secondAttribute="leading" id="xrH-H6-TNj"/>
                 <constraint firstItem="7Z2-eU-afN" firstAttribute="leading" secondItem="Ryk-Ni-fEN" secondAttribute="leading" id="zST-0E-ruW"/>

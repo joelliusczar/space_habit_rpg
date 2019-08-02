@@ -16,7 +16,12 @@
   [view addSubview:child.view];
   [self addChildViewController:child];
   [child didMoveToParentViewController:self];
-  [view tieConstaintsForsubordinateView:child.view];
+  child.view.translatesAutoresizingMaskIntoConstraints = NO;
+  [child.view.topAnchor constraintEqualToAnchor:view.topAnchor].active = YES;
+  [child.view.bottomAnchor constraintEqualToAnchor:view.bottomAnchor].active = YES;
+  [child.view.leadingAnchor constraintEqualToAnchor:view.leadingAnchor].active = YES;
+  [child.view.trailingAnchor constraintEqualToAnchor:view.trailingAnchor].active = YES;
+  //[view tieConstaintsForsubordinateView:child.view];
 }
 
 
@@ -29,6 +34,13 @@
   [self willMoveToParentViewController:nil];
   [self.view removeFromSuperview];
   [self removeFromParentViewController];
+}
+
+
+-(void)popAllChildVCs{
+  for (UIViewController *child in self.childViewControllers) {
+    [child popVCFromFront];
+  }
 }
 
 

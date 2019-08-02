@@ -286,7 +286,8 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
       NSArray<SHRangeRateItem*> *weekInfo = isInverse ? self.activeDays.weeklyActiveDays:
         self.activeDays.weeklyActiveDays;
       [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        [self.weeklyActiveDays setActiveDaysOfWeek:weekInfo];
+        #warning cleanup
+        //[self.weeklyActiveDays setActiveDaysOfWeek:weekInfo];
       }];
     }];
   }
@@ -307,7 +308,8 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
       NSArray<SHRangeRateItem*> *weekInfo = isInverse ? self.activeDays.weeklyActiveDays:
         self.activeDays.weeklyActiveDays;
       [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        [self.weeklyActiveDays setActiveDaysOfWeek:weekInfo];
+        #warning cleanup
+        //[self.weeklyActiveDays setActiveDaysOfWeek:weekInfo];
       }];
     }];
   }
