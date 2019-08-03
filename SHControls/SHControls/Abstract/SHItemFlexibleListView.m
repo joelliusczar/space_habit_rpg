@@ -29,7 +29,9 @@
 
 -(instancetype)init{
   NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"SHItemFlexibleListView")];
-  if(self = [super initWithNibName:@"SHItemFlexibleListViewFull" bundle:bundle]){}
+  if(self = [super initWithNibName:@"SHItemFlexibleListViewFull" bundle:bundle]){
+    _displayCount = SH_SUB_TABLE_MAX_ROWS;
+  }
   return self;
 }
 
@@ -46,56 +48,20 @@ CGFloat calculateMaxTableHeight(CGFloat changeHeight){
 }
 
 
--(void)resizeItemListHeightByChange:(CGFloat)change{
-  CGFloat maxHeight = calculateMaxTableHeight(change);
-  if(change < 0 && (self.itemTbl.contentSize.height + change) > maxHeight){
-      return;
-  }
-  if(self.itemTbl.frame.size.height >= maxHeight){
-      return;
-  }
 
-  [self.itemTbl resizeHeightByOffset:change];
-  #warning cleanup
-  //[self resizeHeightByOffset:change];
-  [self respondToHeightResize:change];
-}
-
-
--(void)scrollRemindersListByOffset:(CGFloat)offset{
-    //auto scroll so that reminders remains centered
-    [self scrollByOffset:offset];
-    [self scrollVisibleToControl:self];
-    [self scrollItemTblToLastRow];
-}
-
-
--(void)scrollItemTblToLastRow{
-    NSIndexPath *lastRow = [NSIndexPath
-      indexPathForRow:[self backendListCount] -1
-       inSection:0];
-    [self.itemTbl scrollToRowAtIndexPath:lastRow
-      atScrollPosition:UITableViewScrollPositionBottom
-      animated:YES];
+-(void)scrollListToRow:(NSIndexPath *)path{
+  UITableViewCell *cell = [self.itemTbl cellForRowAtIndexPath:path];
+  CGFloat offset = cell.frame.size.height;
+  [self scrollByOffset:offset];
+  [self scrollVisibleToControl:self];
+  [self.itemTbl scrollToRowAtIndexPath:path
+    atScrollPosition:UITableViewScrollPositionBottom
+    animated:YES];
 }
 
 
 -(void)commonSetup{
-  [self setupInitialHeight];
   self.itemTbl.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-}
-
-
--(void)setupInitialHeight{
-#warning cleanup
-  //CGFloat tblHeight = getInitialHeight(self.backendListCount);
-  //[self resizeItemListHeightByChange:tblHeight];
-}
-
-
--(void)showSHSpinPicker:(SHSpinPicker *)picker{
-  picker.delegate = self;
-  [self.resizeResponder pushViewControllerToNearestParent:picker];
 }
 
 
@@ -111,10 +77,7 @@ CGFloat calculateMaxTableHeight(CGFloat changeHeight){
   //need the begin/end update lines because buttons will get covered by
   //invisble stuff and not respond
   //also, apparently they tell the table to refresh the heights
-  [self beginUpdate];
-  [self resizeItemListHeightByChange:SH_SUB_TABLE_CELL_HEIGHT];
-  [self endUpdate];
-  [self scrollRemindersListByOffset:SH_SUB_TABLE_CELL_HEIGHT];
+  [self scrollListToRow:indexPath];
   [self notifyAddNewCell:indexPath];
 }
 
@@ -122,9 +85,6 @@ CGFloat calculateMaxTableHeight(CGFloat changeHeight){
 -(void)removeItemFromTableAndScale:(NSIndexPath *)indexPath{
     [self.itemTbl deleteRowsAtIndexPaths:@[indexPath]
       withRowAnimation:UITableViewRowAnimationFade];
-    [self beginUpdate];
-    [self resizeItemListHeightByChange:-1*SH_SUB_TABLE_CELL_HEIGHT];
-    [self endUpdate];
     [self notifyDeleteCell:indexPath];
 }
 
@@ -164,20 +124,23 @@ numberOfRowsInSection:(NSInteger)section{
 }
 
 
--(void)addItemBtn_press_action:(SHEventInfo *)eventInfo{
-  [eventInfo.senderStack addObject:self];
+-(void)addItemBtn_press_action{
   SEL delegateSel = @selector(addItemBtn_press_action:);
-  if([self.delegate respondsToSelector:delegateSel]){
-    [self.delegate addItemBtn_press_action:eventInfo];
+  if([self.setChangedelegate respondsToSelector:delegateSel]){
+    [self.setChangedelegate addItemBtn_press_action];
   }
 }
 
 
--(void)pickerSelection_action:(SHEventInfo *)eventInfo{
-  [eventInfo.senderStack addObject:self];
+-(IBAction)addItemBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
+  [self addItemBtn_press_action];
+}
+
+
+-(void)pickerSelection_action:(SHSpinPicker *)picker{
   SEL delegateSel = @selector(pickerSelection_action:);
-  if([self.delegate respondsToSelector:delegateSel]){
-    [self.delegate pickerSelection_action:eventInfo];
+  if([self.setChangedelegate respondsToSelector:delegateSel]){
+    [self.setChangedelegate pickerSelection_action:picker];
   }
 }
 
@@ -187,8 +150,8 @@ numberOfRowsInSection:(NSInteger)section{
     initWithItemFlexibleList:self
     andIndexPath:indexPath];
   SEL delegateSel = @selector(notifyAddNewCell:);
-  if([self.delegate respondsToSelector:delegateSel]){
-      [self.delegate notifyAddNewCell:eventInfo];
+  if([self.setChangedelegate respondsToSelector:delegateSel]){
+      [self.setChangedelegate notifyAddNewCell:eventInfo];
   }
 }
     
@@ -198,8 +161,8 @@ numberOfRowsInSection:(NSInteger)section{
        initWithItemFlexibleList:self
         andIndexPath:indexPath];
       SEL delegateSel = @selector(notifyDeleteCell:);
-      if([self.delegate respondsToSelector:delegateSel]){
-          [self.delegate notifyDeleteCell:eventInfo];
+      if([self.setChangedelegate respondsToSelector:delegateSel]){
+          [self.setChangedelegate notifyDeleteCell:eventInfo];
       }
 }
 
@@ -249,18 +212,11 @@ numberOfRowsInSection:(NSInteger)section{
 }
 
 
--(void)resetHeight{
-    CGFloat h = self.itemTbl.frame.size.height;
-    [self resizeItemListHeightByChange:-h];
-    
-}
-
-
 -(void)refreshTable{
     [self.itemTbl reloadData];
 }
 
--(NSInteger)backendListCount{
+-(NSUInteger)backendListCount{
     @throw [NSException abstractException];
 }
 

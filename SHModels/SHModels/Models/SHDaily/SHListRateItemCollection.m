@@ -29,7 +29,7 @@
 
 
 -(NSUInteger)addRateItem:(SHListRateItem*)rateItem{
-  self.touchCallback();
+  if(self.touchCallback) self.touchCallback();
   NSUInteger idx = [self.activeDays findPlaceFor:rateItem
     whereFirstFits:^BOOL(SHListRateItem *a,SHListRateItem *b){
       BOOL minorCriteria = a.majorOrdinal == b.majorOrdinal && a.minorOrdinal >= b.minorOrdinal;

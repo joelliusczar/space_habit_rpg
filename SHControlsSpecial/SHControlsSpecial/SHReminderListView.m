@@ -38,7 +38,7 @@
   instance.context = context;
   instance.objectIDWrapper = objectIDWrapper;
   [instance commonSetup];
-  [instance.addItemsFooter.addItemBtn setTitle:@"Add New Reminder" forState:UIControlStateNormal];
+  //[instance.addItemsFooter.addItemBtn setTitle:@"Add New Reminder" forState:UIControlStateNormal];
   return instance;
 }
 
@@ -74,11 +74,7 @@ numberOfRowsInSection:(NSInteger)section
 }
 
 
--(void)addItemBtn_press_action:(SHEventInfo *)eventInfo{
-  (void)eventInfo;
-  //the reason I was using a temp model earlier is because
-  //the model that was getting passed through here
-  //earlier only had the original value.
+-(void)addItemBtn_press_action{
   [self hideKeyboard];
   [self.context performBlock:^{
     id<SHDueDateItemProtocol> dueDateItem = (id<SHDueDateItemProtocol>)[self.context
@@ -87,15 +83,14 @@ numberOfRowsInSection:(NSInteger)section
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
       SHReminderTimeSpinPicker *timePicker = [[SHReminderTimeSpinPicker alloc]
         initWithDayRange:maxDaysBefore];
-      [self showSHSpinPicker:timePicker];
+      timePicker.spinPickerAction = ^(SHSpinPicker *picker, BOOL *shouldCancel) {};
+      [self.parentViewController arrangeAndPushChildVCToFront:timePicker];
     }];
   }];
-
 }
 
 
--(void)pickerSelection_action:(SHEventInfo *)eventInfo{
-  UIPickerView *picker = (UIPickerView *)eventInfo.senderStack[1];
+-(void)pickerSelection_action:(UIPickerView *)picker{
   NSInteger hourRow = [picker selectedRowInComponent:SH_HOUR_OF_DAY_COL];
   NSInteger minuteRow = [picker selectedRowInComponent:SH_MINUTE_COL];
   NSInteger daysCol = picker.numberOfComponents -1;
@@ -107,8 +102,7 @@ numberOfRowsInSection:(NSInteger)section
     NSUInteger newIndex = dueDateItem.reminderCount - 1;
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
       [self addItemToTableAndScale:(newIndex)];
-      [eventInfo.senderStack addObject:self];
-      [self pickerSelection_action:eventInfo];
+      [self pickerSelection_action:picker];
     }];
   }];
   

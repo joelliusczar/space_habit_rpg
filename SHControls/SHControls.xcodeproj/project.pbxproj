@@ -47,7 +47,6 @@
 		271D610A20421A9A005C9F7E /* SHRateSetterDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60C920421A99005C9F7E /* SHRateSetterDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271D610B20421A9A005C9F7E /* SHRewardsDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60CA20421A99005C9F7E /* SHRewardsDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271D610D20421A9A005C9F7E /* SHNotesViewDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60CC20421A99005C9F7E /* SHNotesViewDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D610E20421A9A005C9F7E /* SHSpinPickerDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60CD20421A99005C9F7E /* SHSpinPickerDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271D610F20421A9A005C9F7E /* SHImportanceSlidersDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60CE20421A99005C9F7E /* SHImportanceSlidersDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271D611120421A9A005C9F7E /* SHRateTypeSelectorDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60D020421A99005C9F7E /* SHRateTypeSelectorDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271D611220421A9A005C9F7E /* SHMonthComponentSpinPickerDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60D120421A99005C9F7E /* SHMonthComponentSpinPickerDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -136,7 +135,6 @@
 		271D60C920421A99005C9F7E /* SHRateSetterDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHRateSetterDelegateProtocol.h; sourceTree = "<group>"; };
 		271D60CA20421A99005C9F7E /* SHRewardsDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHRewardsDelegateProtocol.h; sourceTree = "<group>"; };
 		271D60CC20421A99005C9F7E /* SHNotesViewDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHNotesViewDelegateProtocol.h; sourceTree = "<group>"; };
-		271D60CD20421A99005C9F7E /* SHSpinPickerDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSpinPickerDelegateProtocol.h; sourceTree = "<group>"; };
 		271D60CE20421A99005C9F7E /* SHImportanceSlidersDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHImportanceSlidersDelegateProtocol.h; sourceTree = "<group>"; };
 		271D60D020421A99005C9F7E /* SHRateTypeSelectorDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHRateTypeSelectorDelegateProtocol.h; sourceTree = "<group>"; };
 		271D60D120421A99005C9F7E /* SHMonthComponentSpinPickerDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMonthComponentSpinPickerDelegateProtocol.h; sourceTree = "<group>"; };
@@ -279,7 +277,6 @@
 				271D60C920421A99005C9F7E /* SHRateSetterDelegateProtocol.h */,
 				271D60CA20421A99005C9F7E /* SHRewardsDelegateProtocol.h */,
 				271D60CC20421A99005C9F7E /* SHNotesViewDelegateProtocol.h */,
-				271D60CD20421A99005C9F7E /* SHSpinPickerDelegateProtocol.h */,
 				271D60CE20421A99005C9F7E /* SHImportanceSlidersDelegateProtocol.h */,
 				271D60D020421A99005C9F7E /* SHRateTypeSelectorDelegateProtocol.h */,
 				271D60D120421A99005C9F7E /* SHMonthComponentSpinPickerDelegateProtocol.h */,
@@ -410,7 +407,6 @@
 				271D613420421A9A005C9F7E /* SHNumberControlProtocol.h in Headers */,
 				271D610D20421A9A005C9F7E /* SHNotesViewDelegateProtocol.h in Headers */,
 				271D613520421A9A005C9F7E /* SHItemFlexibleListView.h in Headers */,
-				271D610E20421A9A005C9F7E /* SHSpinPickerDelegateProtocol.h in Headers */,
 				2711882D203FF9DF0085A549 /* SHRewardsView.h in Headers */,
 				271D611120421A9A005C9F7E /* SHRateTypeSelectorDelegateProtocol.h in Headers */,
 				271D610820421A9A005C9F7E /* SHAddItemsFooterDelegateProtocol.h in Headers */,

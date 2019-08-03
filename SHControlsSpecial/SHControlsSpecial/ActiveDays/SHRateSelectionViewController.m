@@ -40,6 +40,7 @@ const NSInteger YEARLY_SELECTION = 3;
     _monthlyActiveDays = [SHMonthlyActiveDaysViewController
       newWithListRateItemCollection:self.activeDays.monthlyActiveDays
       inverseActiveDays:self.activeDays.monthlyActiveDaysInv];
+    _monthlyActiveDays.linkedViewController = self;
   }
   return _monthlyActiveDays;
 }
@@ -49,6 +50,7 @@ const NSInteger YEARLY_SELECTION = 3;
   if(nil == _yearlyActiveDays){
     _yearlyActiveDays = [SHYearlyActiveDaysViewController newWithListRateItemCollection:self.activeDays.yearlyActiveDays
       inverseActiveDays:self.activeDays.yearlyActiveDaysInv];
+    _yearlyActiveDays.linkedViewController = self;
   }
   return _yearlyActiveDays;
 }

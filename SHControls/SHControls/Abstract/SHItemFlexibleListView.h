@@ -12,7 +12,6 @@
 #import "SHAddItemsFooter.h"
 #import "SHAddItemsFooterDelegateProtocol.h"
 #import "SHSpinPicker.h"
-#import "SHSpinPickerDelegateProtocol.h"
 #import "SHResizeResponderProtocol.h"
 #import "SHItemFlexibleListDelegateProtocol.h"
 #import "SHNestedControlProtocol.h"
@@ -20,17 +19,17 @@
 
 @interface SHItemFlexibleListView :SHViewController
 <UITableViewDataSource
-,UITableViewDelegate
-,SHSpinPickerDelegateProtocol>
+,UITableViewDelegate>
 @property (weak,nonatomic) IBOutlet UITableView *itemTbl;
-@property (weak,nonatomic) IBOutlet SHAddItemsFooter *addItemsFooter;
-
+@property (weak,nonatomic) IBOutlet NSLayoutConstraint *tblHeightConstraint;
+@property (weak,nonatomic) UIViewController *linkedViewController;
+@property (assign, nonatomic) NSUInteger displayCount;
 
 /*
- inherit from SHItemFlexibleListDelegateProtocol and assign to delegate to
+ inherit from SHItemFlexibleListDelegateProtocol and assign to setChangedelegate to
  be notified when cells are added or deleted or any of its buttons pressed
 */
-@property (weak,nonatomic) id<SHItemFlexibleListDelegateProtocol> delegate;
+@property (weak,nonatomic) id<SHItemFlexibleListDelegateProtocol> setChangedelegate;
 
 /*
  inherit from SHResizeResponderProtocol and assign to resizeResponder to
@@ -42,7 +41,7 @@
  abstract: override to provide a way to get the count of the backing list
  for itemTbl
 */
-@property (readonly,nonatomic) NSInteger backendListCount;
+@property (readonly,nonatomic) NSUInteger backendListCount;
 
 /*
  calculates the size of control based on how many items have previously
@@ -51,26 +50,14 @@
 CGFloat getInitialHeight(NSUInteger itemCount);
 
 /*
- resizes control by the given amount and notifies any parent controls
- to also resize
-*/
--(void)resizeItemListHeightByChange:(CGFloat)change;
--(void)scrollRemindersListByOffset:(CGFloat)offset;
-
-/*
  handles some initial configuration such as the size
 */
 -(void)commonSetup;
 
-/*
- passes a SHSpinPicker to a resizeResponder and shows it
-*/
--(void)showSHSpinPicker:(SHSpinPicker *)picker;
 
+-(void)addItemBtn_press_action;
 -(void)addItemToTableAndScale:(NSInteger)row;
 -(void)removeItemFromTableAndScale:(NSIndexPath *)indexPath;
 -(void)hideKeyboard;
--(void)resetHeight;
 -(void)refreshTable;
--(void)setupInitialHeight;
 @end

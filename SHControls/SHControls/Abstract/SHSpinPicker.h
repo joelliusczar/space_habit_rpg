@@ -7,14 +7,20 @@
 //
 
 @import UIKit;
-#import "SHSpinPickerDelegateProtocol.h"
 #import "SHViewController.h"
 #import "SHButton.h"
+#import "SHSpinPicker.h"
+
+@class SHSpinPicker;
+
+typedef void (^shSpinPickerAction)(SHSpinPicker *,BOOL *);
 
 @interface SHSpinPicker : SHViewController
 <UIPickerViewDataSource,UIPickerViewDelegate>
 @property (weak,nonatomic) IBOutlet UIPickerView *picker;
-@property (weak,nonatomic) id<SHSpinPickerDelegateProtocol> delegate;
+@property (copy,nonatomic) shSpinPickerAction spinPickerAction;
 -(IBAction)pickerSelectBtn_press_action:(SHButton *)sender
-                               forEvent:(UIEvent *)event;
+  forEvent:(UIEvent *)event;
+-(void)animateInvalidSelection;
+-(NSInteger)selectedRowInComponent:(NSInteger)component;
 @end

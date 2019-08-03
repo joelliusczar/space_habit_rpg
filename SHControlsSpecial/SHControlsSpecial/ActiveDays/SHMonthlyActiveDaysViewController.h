@@ -11,8 +11,8 @@
  
 
 @interface SHMonthlyActiveDaysViewController : SHItemFlexibleListView
-@property (strong,nonatomic) SHListRateItemCollection *activeDays;
-@property (strong,nonatomic) SHListRateItemCollection *inverseActiveDays;
-+(instancetype)newWithListRateItemCollection:(SHListRateItemCollection *)activeDays
-  inverseActiveDays:(SHListRateItemCollection*)inverseActiveDays;
+@property (strong,nonatomic) SHListRateItemCollection *monthRateItems;
+@property (strong,nonatomic) SHListRateItemCollection *inverseMonthRateItems;
++(instancetype)newWithListRateItemCollection:(SHListRateItemCollection *)monthRateItems
+  inverseActiveDays:(SHListRateItemCollection*)inverseMonthRateItems;
 @end

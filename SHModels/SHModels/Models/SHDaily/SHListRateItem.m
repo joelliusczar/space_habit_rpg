@@ -22,7 +22,7 @@
 
 
 -(BOOL)isEqual:(id)object{
-  if([object isKindOfClass:SHListRateItem.class]) return false;
+  if(![object isKindOfClass:SHListRateItem.class]) return false;
   SHListRateItem *other = (SHListRateItem*)object;
   BOOL areMajorsEqual = self.majorOrdinal == other.majorOrdinal;
   BOOL areMinorsEqual = self.minorOrdinal == other.minorOrdinal;

@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Menlo.ttc">
-            <string>Menlo-Regular</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHSpinPicker">
             <connections>
+                <outlet property="buttonXConstraint" destination="n5S-n1-uJ4" id="CSQ-Fa-fx6"/>
                 <outlet property="picker" destination="cph-eG-im8" id="N3A-Qt-CKy"/>
                 <outlet property="view" destination="YwG-y3-3KR" id="9dn-on-Aia"/>
             </connections>
@@ -25,23 +21,26 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="behind_alert_view" translatesAutoresizingMaskIntoConstraints="NO" id="1A9-UA-drd">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="behind_alert_view" translatesAutoresizingMaskIntoConstraints="NO" id="1A9-UA-drd">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cph-eG-im8">
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cph-eG-im8">
                     <rect key="frame" x="0.0" y="542" width="414" height="150"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="D7J-cM-6nM"/>
+                    </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="FBG-RE-dH2"/>
                         <outlet property="delegate" destination="-1" id="cjJ-vz-Uxc"/>
                     </connections>
                 </pickerView>
-                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kds-JC-wZJ">
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kds-JC-wZJ">
                     <rect key="frame" x="0.0" y="692" width="414" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="4Dm-7X-X7Z"/>
+                    </constraints>
                     <items>
                         <barButtonItem style="plain" id="p2p-rI-2MV">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TDR-bO-tcL" customClass="SHButton">
@@ -62,6 +61,18 @@
                 </toolbar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="1A9-UA-drd" secondAttribute="bottom" id="5IG-8O-uIr"/>
+                <constraint firstItem="cph-eG-im8" firstAttribute="leading" secondItem="YwG-y3-3KR" secondAttribute="leading" id="DRJ-LA-q2P"/>
+                <constraint firstItem="1A9-UA-drd" firstAttribute="top" secondItem="YwG-y3-3KR" secondAttribute="top" id="MhC-Ar-EyD"/>
+                <constraint firstAttribute="trailing" secondItem="1A9-UA-drd" secondAttribute="trailing" id="S2x-3l-Wmf"/>
+                <constraint firstAttribute="bottom" secondItem="Kds-JC-wZJ" secondAttribute="bottom" id="SRc-Af-abK"/>
+                <constraint firstItem="Kds-JC-wZJ" firstAttribute="top" secondItem="cph-eG-im8" secondAttribute="bottom" id="eaY-xC-OI2"/>
+                <constraint firstItem="Kds-JC-wZJ" firstAttribute="width" secondItem="YwG-y3-3KR" secondAttribute="width" id="jAy-c8-7II"/>
+                <constraint firstItem="Kds-JC-wZJ" firstAttribute="centerX" secondItem="YwG-y3-3KR" secondAttribute="centerX" id="n5S-n1-uJ4"/>
+                <constraint firstItem="1A9-UA-drd" firstAttribute="leading" secondItem="YwG-y3-3KR" secondAttribute="leading" id="nnz-g7-IPq"/>
+                <constraint firstAttribute="trailing" secondItem="cph-eG-im8" secondAttribute="trailing" id="zBg-My-vE6"/>
+            </constraints>
             <point key="canvasLocation" x="2" y="-95"/>
         </view>
     </objects>

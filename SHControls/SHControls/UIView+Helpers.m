@@ -17,9 +17,15 @@
 @implementation UIView (Helpers)
 
 -(void)resizeHeightByOffset:(CGFloat)offset{
-    CGRect frame = self.frame;
-    frame.size.height += offset;
-    self.frame = frame;
+  CGRect frame = self.frame;
+  frame.size.height += offset;
+  self.frame = frame;
+}
+
+
+-(void)resizeAutoLayoutHeightByOffset:(CGFloat)offset{
+  CGFloat height = self.frame.size.height;
+  [self.heightAnchor constraintEqualToConstant:height + offset];
 }
 
 

@@ -11,7 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHItemFlexibleListView">
             <connections>
-                <outlet property="itemTbl" destination="y4T-Lj-Mg2" id="fb4-tm-Sgp"/>
+                <outlet property="itemTbl" destination="a77-vs-roi" id="qL0-AR-bq8"/>
+                <outlet property="tblHeightConstraint" destination="oeL-S1-ZCq" id="ivO-Vr-5no"/>
                 <outlet property="view" destination="iN0-l3-epB" id="TBi-NG-8lr"/>
             </connections>
         </placeholder>
@@ -20,14 +21,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="y4T-Lj-Mg2">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="630"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="FoD-Ea-MxS"/>
-                        <outlet property="delegate" destination="-1" id="CM6-l8-cwM"/>
-                    </connections>
-                </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbl-hz-8w3">
                     <rect key="frame" x="16" y="630" width="242" height="37"/>
                     <constraints>
@@ -38,18 +31,51 @@
                     <state key="normal" title="Add New Item" image="blue_plus">
                         <color key="titleColor" red="0.14117647059999999" green="0.4941176471" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                    <connections>
+                        <action selector="addItemBtn_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="8ar-r4-Hc6"/>
+                    </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tyT-3K-efS">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="630"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a77-vs-roi">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="630"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" id="oeL-S1-ZCq"/>
+                            </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="oeL-S1-ZCq"/>
+                                </mask>
+                            </variation>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="0Rm-fA-i7O"/>
+                                <outlet property="delegate" destination="-1" id="1vu-e3-0vF"/>
+                            </connections>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.14065334199999999" green="0.49756079910000001" blue="0.85463058950000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="a77-vs-roi" firstAttribute="leading" secondItem="tyT-3K-efS" secondAttribute="leading" id="RgP-we-6Dp"/>
+                        <constraint firstAttribute="trailing" secondItem="a77-vs-roi" secondAttribute="trailing" id="Vr2-aM-KMs"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="a77-vs-roi" secondAttribute="bottom" id="h1H-4c-mqV"/>
+                        <constraint firstItem="a77-vs-roi" firstAttribute="height" secondItem="tyT-3K-efS" secondAttribute="height" priority="750" id="h5a-Zo-C7Z"/>
+                        <constraint firstItem="a77-vs-roi" firstAttribute="top" secondItem="tyT-3K-efS" secondAttribute="top" id="lhr-oq-fF1"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="y4T-Lj-Mg2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="G9w-rb-B9S"/>
+                <constraint firstItem="tyT-3K-efS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="GV4-wx-xND"/>
+                <constraint firstAttribute="trailing" secondItem="tyT-3K-efS" secondAttribute="trailing" id="Gfh-Z1-Acx"/>
                 <constraint firstAttribute="bottom" secondItem="zbl-hz-8w3" secondAttribute="bottom" id="JUi-uW-4bw"/>
-                <constraint firstItem="zbl-hz-8w3" firstAttribute="top" secondItem="y4T-Lj-Mg2" secondAttribute="bottom" id="SGC-fE-V4g"/>
+                <constraint firstItem="zbl-hz-8w3" firstAttribute="top" secondItem="tyT-3K-efS" secondAttribute="bottom" id="Xyo-Tv-zF6"/>
                 <constraint firstItem="zbl-hz-8w3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="aaB-GD-9ix"/>
-                <constraint firstItem="y4T-Lj-Mg2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="e5G-aG-cUp"/>
-                <constraint firstAttribute="trailing" secondItem="y4T-Lj-Mg2" secondAttribute="trailing" id="n8c-Xo-9g1"/>
+                <constraint firstItem="tyT-3K-efS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="oDj-h4-fQk"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="56.799999999999997" y="-122.78860569715144"/>
         </view>
     </objects>

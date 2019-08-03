@@ -15,8 +15,8 @@
 
 @protocol SHItemFlexibleListDelegateProtocol <NSObject>
 @optional
--(void)pickerSelection_action:(SHEventInfo *)eventInfo;
--(void)addItemBtn_press_action:(SHEventInfo *)eventInfo;
+-(void)pickerSelection_action:(SHSpinPicker *)picker;
+-(void)addItemBtn_press_action;
 -(void)notifyAddNewCell:(SHItemFlexibleListEventInfo *)eventInfo;
 -(void)notifyDeleteCell:(SHItemFlexibleListEventInfo *)eventInfo;
 @end

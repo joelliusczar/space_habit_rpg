@@ -96,7 +96,7 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
   [self.view addSubview:tbl.view];
   [tbl didMoveToParentViewController:self];
   tbl.resizeResponder = self;
-  tbl.delegate = self.tblDelegate;
+  tbl.setChangedelegate = self.tblDelegate;
   [tbl changeBackgroundColorTo:self.view.backgroundColor];
 }
 
@@ -157,7 +157,7 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 //    NSAssert(weakSelf,errMessage);
 //    NSLog(@"Doing it this way!");
 //    SHMonthlyActiveDaysViewController *monthly = [SHMonthlyActiveDaysViewController newWithListRateItemCollection:getMonthRateItems()
-//      inverseActiveDays:getMonthRateItemsInv()];
+//      inverseYearRateItems:getMonthRateItemsInv()];
 //    NSLog(@"Inito!");
 //    [weakSelf commonTableSetup:monthly];
 //    NSLog(@"table!");
@@ -176,7 +176,7 @@ NSString* const invertedInvertBtnText = @"Triggers all days except...";
 //    (void)controlExtent;
 //    NSAssert(weakSelf,errMessage);
 //    SHYearlyActiveDaysViewController *yearly = [SHYearlyActiveDaysViewController newWithListRateItemCollection:getYearRateItems()
-//      inverseActiveDays:getYearRateItemsInv()];
+//      inverseYearRateItems:getYearRateItemsInv()];
 //    [weakSelf commonTableSetup: yearly];
 //    [keep forResponderKey:RESIZEABLE_KEY doSetupAction:^(id responder){
 //        yearly.resizeResponder = responder;

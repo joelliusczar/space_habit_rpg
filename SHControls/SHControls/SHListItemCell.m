@@ -24,8 +24,8 @@
 }
 
 -(UIView *)loadDefaultXib{
-    NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"ListItemCell")];
-    return [bundle loadNibNamed:@"ListItemCell" owner:self options:nil][0];
+    NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"SHListItemCell")];
+    return [bundle loadNibNamed:@"SHListItemCell" owner:self options:nil][0];
 }
 
 - (IBAction)addReminderBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {

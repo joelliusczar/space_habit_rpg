@@ -16,7 +16,7 @@
 #import "SHEventInfo.h"
 
 @interface SHSpinPicker ()
-
+@property (weak,nonatomic) IBOutlet NSLayoutConstraint *buttonXConstraint;
 @end
 
 @implementation SHSpinPicker
@@ -64,15 +64,42 @@ numberOfRowsInComponent:(NSInteger)component{
 }
 
 
+-(void)animateInvalidSelection{
+
+  CGFloat offset = 25;
+  UIViewPropertyAnimator *animator = [[UIViewPropertyAnimator alloc] initWithDuration:.25
+    curve:UIViewAnimationCurveEaseInOut
+    animations:^{
+      self.buttonXConstraint.constant += offset;
+      [self.view layoutIfNeeded];
+    }];
+  [animator addAnimations:^{
+    self.buttonXConstraint.constant -= offset*2;
+    [self.view layoutIfNeeded];
+  } delayFactor:.50];
+  [animator addAnimations:^{
+    self.buttonXConstraint.constant += offset;
+    [self.view layoutIfNeeded];
+  } delayFactor:.75];
+  [animator startAnimation];
+}
+
+
 -(IBAction)pickerSelectBtn_press_action:(SHButton *)sender
-            forEvent:(UIEvent *)event
+  forEvent:(UIEvent *)event
 {
-    shWrapReturnVoid wrappedCall = ^void(){
-        SHEventInfo *e = [[SHEventInfo alloc] init:event withSenders:sender,self.picker,self,nil];
-        [self.delegate pickerSelection_action:e];
-        [self popVCFromFront];
-    };
-    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+  if(self.spinPickerAction) {
+    BOOL shouldCancel = NO;
+    self.spinPickerAction(self,&shouldCancel);
+    if(shouldCancel) return;
+  }
+  [self popVCFromFront];
+
+}
+
+
+-(NSInteger)selectedRowInComponent:(NSInteger)component{
+  return [self.picker selectedRowInComponent:component];
 }
 
 @end
