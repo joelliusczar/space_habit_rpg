@@ -11,6 +11,7 @@
 #import <SHControlsSpecial/SHRateSetContainer.h>
 #import <SHControlsSpecial/SHReminderListView.h>
 #import <SHControlsSpecial/SHRepeatLinkViewController.h>
+#import <SHControlsSpecial/SHRemindersLinkViewController.h>
 #import <SHData/NSManagedObjectContext+Helper.h>
 
 
@@ -45,15 +46,26 @@
   __weak UIViewController *editorContainerController = self.editorContainerController;
   
   [keep addLoaderBlock:^id(SHControlKeep *keep, SHControlExtent *controlExtent){
-    (void)controlExtent;
+    (void)controlExtent; (void)keep;
     NSBundle *bundle = [NSBundle bundleForClass:SHRepeatLinkViewController.class];
     SHRepeatLinkViewController *repeatLink = [[SHRepeatLinkViewController alloc]
-      initWithNibName:@"SHRepeatLinkViewController" bundle:bundle];
+      initWithNibName:@"SHLinkViewController" bundle:bundle];
     repeatLink.editorContainer = editorContainerController;
     [repeatLink setupWithContext:context
       andObjectID:objectIDWrapper];
     repeatLink.activeDays = activeDays;
     return repeatLink;
+  }];
+  
+  [keep addLoaderBlock:^id(SHControlKeep *keep, SHControlExtent *controlExtent){
+    (void)controlExtent; (void)keep;
+    NSBundle *bundle = [NSBundle bundleForClass:SHRepeatLinkViewController.class];
+    SHRemindersLinkViewController *remindersLink = [[SHRemindersLinkViewController alloc]
+      initWithNibName:@"SHLinkViewController" bundle:bundle];
+    remindersLink.editorContainer = editorContainerController;
+    [remindersLink setupWithContext:context
+      andObjectID:objectIDWrapper];
+    return remindersLink;
   }];
   
 //  [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){

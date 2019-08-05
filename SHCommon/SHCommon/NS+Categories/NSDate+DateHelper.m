@@ -50,38 +50,49 @@
 
 
 +(NSDate *)createDateTimeWithYear:(NSInteger)year month:(NSInteger)month
-                      day:(NSInteger)day hour:(NSInteger)hour
-                   minute:(NSInteger)minute second:(NSInteger)second
-                 timeZone:(NSTimeZone *)timeZone{
-    
-    double timestamp;
-    SHError error;
-    memset(&error, 0, sizeof(SHError));
-    shTryCreateDateTime(year,(int)month,(int)day,(int)hour,(int)minute,(int)second
-      ,(int)(timeZone.secondsFromGMT),&timestamp,&error);
-    return [NSDate dateWithTimeIntervalSince1970:timestamp];
+  day:(NSInteger)day hour:(NSInteger)hour
+  minute:(NSInteger)minute second:(NSInteger)second
+  timeZone:(NSTimeZone *)timeZone
+{
+  double timestamp;
+  SHError error;
+  memset(&error, 0, sizeof(SHError));
+  shTryCreateDateTime(year,(int)month,(int)day,(int)hour,(int)minute,(int)second
+    ,(int)(timeZone.secondsFromGMT),&timestamp,&error);
+  return [NSDate dateWithTimeIntervalSince1970:timestamp];
     
 }
 
 
 +(NSDate *)createDateTimeWithYear:(NSInteger)year month:(NSInteger)month
-                      day:(NSInteger)day hour:(NSInteger)hour
-                   minute:(NSInteger)minute second:(NSInteger)second{
-    return [NSDate createDateTimeWithYear:year month:month day:day hour:hour minute:minute
-                    second:second timeZone:NSTimeZone.defaultTimeZone];
+  day:(NSInteger)day hour:(NSInteger)hour
+  minute:(NSInteger)minute second:(NSInteger)second
+{
+  return [NSDate createDateTimeWithYear:year month:month day:day
+    hour:hour minute:minute second:second
+    timeZone:NSTimeZone.defaultTimeZone];
 }
 
 
 +(NSDate *)createSimpleTimeWithHour:(NSInteger)hour minute:(NSInteger)minute
-                     second:(NSInteger)second{
-    return
-    [NSDate createDateTimeWithYear:1970 month:1 day:1 hour:hour minute:minute
-                    second:second];
+  second:(NSInteger)second timzone:(NSTimeZone *)timeZone
+{
+  return [NSDate createDateTimeWithYear:1970 month:1 day:1
+    hour:hour minute:minute second:second timeZone:timeZone];
+}
+
+
++(NSDate *)createSimpleTimeWithHour:(NSInteger)hour minute:(NSInteger)minute
+  second:(NSInteger)second
+{
+  NSTimeZone *timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
+  return [NSDate createSimpleTimeWithHour:hour minute:minute second:second
+    timzone:timeZone];
 }
 
 
 +(NSDate *)createSimpleDateWithYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day{
-    return [NSDate createDateTimeWithYear:year month:month day:day hour:0 minute:0 second:0];
+  return [NSDate createDateTimeWithYear:year month:month day:day hour:0 minute:0 second:0];
 }
 
 
@@ -114,16 +125,41 @@
 }
 
 +(NSString *)timeOfDayInSystemPreferredFormat:(NSInteger)hour
-                              andMinute:(NSInteger)minute{
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.locale = SharedGlobal.inUseLocale;
-    formatter.timeStyle = NSDateFormatterShortStyle;
-    NSString *dateString = [formatter stringFromDate:
-                            [NSDate createSimpleTimeWithHour:hour minute:minute
-                                              second:0]];
-    
-    return dateString;
+  andMinute:(NSInteger)minute
+{
+  NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+  formatter.locale = NSLocale.currentLocale;
+  formatter.timeStyle = NSDateFormatterShortStyle;
+  NSString *dateString = [formatter stringFromDate:
+    [NSDate createSimpleTimeWithHour:hour minute:minute
+    second:0]];
+  
+  return dateString;
 }
+
+
+-(NSString *)timeOfDayInSystemPreferredFormat{
+  return [self timeOfDayWithLocal:SharedGlobal.inUseLocale
+    andTimeZone:NSTimeZone.defaultTimeZone];
+}
+
+
+-(NSString *)timeOfDayWithLocal:(NSLocale*)locale andTimeZone:(NSTimeZone*)tz{
+  NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+  formatter.locale = locale;
+  formatter.timeZone = tz;
+  formatter.timeStyle = NSDateFormatterShortStyle;
+  NSString *dateString = [formatter stringFromDate:self];
+  
+  return dateString;
+}
+
+
+-(NSString *)staticTimeOfDay{
+  NSTimeZone *tz = [NSTimeZone timeZoneForSecondsFromGMT:0];
+  return [self timeOfDayWithLocal:SharedGlobal.inUseLocale andTimeZone:tz];
+}
+
 
 -(NSString *)extractTimeInFormat:(SHHourFormatType)format{
     

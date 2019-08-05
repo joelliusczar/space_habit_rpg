@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <SHModels/SHDueDateItemProtocol.h>
 #import <SHControls/SHAddItemsFooterDelegateProtocol.h>
-#import <SHControls/SHSpinPickerDelegateProtocol.h>
 #import <SHControls/SHAddItemsFooter.h>
 #import <SHControls/SHItemFlexibleListView.h>
 #import <SHData/SHObjectIDWrapper.h>
@@ -17,8 +16,7 @@
 @import CoreData;
 
 @interface SHReminderListView :SHItemFlexibleListView
-<UITableViewDataSource
-,SHSpinPickerDelegateProtocol>
+<UITableViewDataSource>
 
 @property (strong,nonatomic) NSManagedObjectContext *context;
 @property (strong,nonatomic) SHObjectIDWrapper *objectIDWrapper;

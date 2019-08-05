@@ -37,16 +37,7 @@
 }
 
 
--(void)setupWithContext:(NSManagedObjectContext *)context
-  andObjectID:(SHObjectIDWrapper*)objectIDWrapper
-{
-  self.context = context;
-  self.objectIDWrapper = objectIDWrapper;
-}
-
-
--(void)onBeginTap_action:(SHView *)sender withEvent:(UIEvent*)event{
-  (void)sender; (void)event;
+-(void)openNextScreen{
   NSAssert(self.context,@"You forgot to call setupWithContext:andObjectID:");
   NSAssert(self.activeDays,@"You forgot to assign activeDays");
   [self.context performBlock:^{
@@ -60,8 +51,6 @@
     }];
   }];
 }
-
-
 
 
 /*

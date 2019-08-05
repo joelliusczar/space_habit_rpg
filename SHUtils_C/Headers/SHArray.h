@@ -14,6 +14,9 @@
 #include <inttypes.h>
 #include <string.h>
 
+/*
+  T1 and T2 should both be types
+*/
 #define SH_DEF_FIND_IDX(T1,T2,P1,P2) static int64_t findIdx_##T1##_##T2( T1 P1 *arr,int64_t len,\
   bool (*test)( T1 P1,int64_t, T2 P2 ), T2 P2 extra){\
     for(int64_t idx = 0; idx < len;idx++){\
@@ -33,10 +36,4 @@
 }
 #define shFindIdxRev(T1,T2) findIdxRev_##T1##_##T2
 
-#define SH_DEF_RESIZE_ARR(T) static T * resizeArr_##T##_(T const *src,int64_t olen,int64_t nlen){ \
-  T *resized = malloc(nlen*sizeof( T )); \
-  memcpy(resized,src,olen*sizeof( T )); \
-  return resized; \
-}
-#define shResizeArr(T) resizeArr_##T##_
 

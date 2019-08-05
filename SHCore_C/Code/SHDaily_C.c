@@ -179,7 +179,8 @@ SHDatetime* shBothWeeklyDueDatesFromLastDueDate(SHDatetime* lastDueDate,SHDateti
 }
 
 bool shNextDueDate_WEEKLY(SHDatetime* lastDueDate,SHDatetime* checkinDate
-,SHRateValueItem* week,int64_t scaler,SHDatetime *ans,SHError* error){
+  ,SHRateValueItem* week,int64_t scaler,SHDatetime *ans,SHError* error)
+{
   shLog("nextDueDate_WEEKLY\n");
   if(!ans){
     return shHandleError(NULL_VALUES, "One of the inputs is null", error);
@@ -194,7 +195,10 @@ bool shNextDueDate_WEEKLY(SHDatetime* lastDueDate,SHDatetime* checkinDate
     return shHandleError(error->code, "Error calculating next due date", error);
   }
   shLog("leaving nextDueDate_WEEKLY\n");
-  if(shDtToTimestamp(ans,error) < shDtToTimestamp(checkinDate,error)){
+  SHDatetime checkinDateStart;
+  memcpy(&checkinDateStart,checkinDate,sizeof(SHDatetime));
+  shDayStartInPlace(&checkinDateStart);
+  if(shDtToTimestamp(ans,error) < shDtToTimestamp(&checkinDateStart,error)){
     char ansStr[50];
     char checkinStr[50];
     shDTToString(ans,ansStr);

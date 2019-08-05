@@ -44,7 +44,8 @@ typedef bool (*SHErrorCallback)(SHErrorCode err,const char* const msg,void* info
 typedef struct {
     SHErrorCode code;
     SHErrorCallback errorCallback;
-    const char* msg;
+    unsigned long msgLen;
+    char* msg;
     void* callbackInfo;
     bool isError;
     uintptr_t filler[8];

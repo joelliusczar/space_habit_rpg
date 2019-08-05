@@ -7,20 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SHData/SHObjectIDWrapper.h>
 #import <SHModels/SHDailyActiveDays.h>
 #import <SHControls/SHView.h>
 #import <SHControls/SHViewEventsProtocol.h>
+#import "SHLinkViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHRepeatLinkViewController : UIViewController<SHViewEventsProtocol>
+@interface SHRepeatLinkViewController : SHLinkViewController
 @property (strong,nonatomic) SHDailyActiveDays *activeDays;
-@property (weak,nonatomic) UIViewController *editorContainer;
-@property (strong,nonatomic) NSManagedObjectContext *context;
-@property (strong,nonatomic) SHObjectIDWrapper *objectIDWrapper;
--(void)setupWithContext:(NSManagedObjectContext *)context
-  andObjectID:(SHObjectIDWrapper*)objectIDWrapper;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -8,7 +8,7 @@
 
 #import "SHReminderCellController.h"
 @interface SHReminderCellController()
-@property (weak,nonatomic) NSManagedObjectID *objectID;
+@property (strong,nonatomic) NSManagedObjectID *objectID;
 @end
 
 @implementation SHReminderCellController

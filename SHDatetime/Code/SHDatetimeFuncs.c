@@ -129,8 +129,8 @@ static int64_t _calcNumLeapYearsWithCycleLen(int64_t year,int64_t cycleLen){
 
 static int64_t _calcNumLeapYearsExclusive(int64_t year) {
   int64_t ans = _calcNumLeapYearsWithCycleLen(year,4) -
-  _calcNumLeapYearsWithCycleLen(year,100) +
-  _calcNumLeapYearsWithCycleLen(year,400);
+    _calcNumLeapYearsWithCycleLen(year,100) +
+    _calcNumLeapYearsWithCycleLen(year,400);
   return ans;
 }
 

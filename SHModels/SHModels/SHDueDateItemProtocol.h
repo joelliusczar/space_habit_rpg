@@ -15,6 +15,7 @@
 @protocol SHDueDateItemProtocol <NSObject>
 @property (readonly,nonatomic) NSDate *nextDueTime;
 @property (readonly,nonatomic) NSInteger maxDaysBefore;
+@property (readonly,nonatomic) NSInteger maxDaysBeforeSpan;
 @property (readonly,nonatomic) NSString *taskTitle;
 @property (readonly,nonatomic) NSMutableDictionary *simpleMapable;
 @property (readonly,nonatomic) NSUInteger reminderCount;

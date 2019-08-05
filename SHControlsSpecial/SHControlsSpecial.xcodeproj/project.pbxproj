@@ -38,13 +38,20 @@
 		2747C50120490D0A00FB5669 /* SHTimeSpinPickerEventInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C4FF20490D0A00FB5669 /* SHTimeSpinPickerEventInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C520204A4C4300FB5669 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2747C51F204A4C4300FB5669 /* Media.xcassets */; };
 		2769C0A3227F69A800217480 /* libSHCore_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2769C0A2227F69A800217480 /* libSHCore_C.a */; };
+		2789889B22F7D33F007231E0 /* SHReminderListContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2789889822F7D33F007231E0 /* SHReminderListContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2789889C22F7D33F007231E0 /* SHReminderListContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2789889922F7D33F007231E0 /* SHReminderListContainer.m */; };
+		2789889D22F7D33F007231E0 /* SHReminderListContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2789889A22F7D33F007231E0 /* SHReminderListContainer.xib */; };
 		27B15AA520524BED0045B226 /* SHControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AA420524BED0045B226 /* SHControls.framework */; };
 		27B15AA720524BFE0045B226 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AA620524BFE0045B226 /* SHModels.framework */; };
 		27BE7AFF22AB043800DD87F5 /* SHWeeklyActiveDaysFull.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27BE7AFE22AB043800DD87F5 /* SHWeeklyActiveDaysFull.xib */; };
 		27BE7B0722BD264900DD87F5 /* SHDayOption.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27BE7B0622BD264900DD87F5 /* SHDayOption.xib */; };
 		27BE7B0F22BEC24700DD87F5 /* SHRepeatLinkViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 27BE7B0C22BEC24700DD87F5 /* SHRepeatLinkViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27BE7B1022BEC24700DD87F5 /* SHRepeatLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BE7B0D22BEC24700DD87F5 /* SHRepeatLinkViewController.m */; };
-		27BE7B1122BEC24700DD87F5 /* SHRepeatLinkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27BE7B0E22BEC24700DD87F5 /* SHRepeatLinkViewController.xib */; };
+		27BE7B1122BEC24700DD87F5 /* SHLinkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27BE7B0E22BEC24700DD87F5 /* SHLinkViewController.xib */; };
+		27BF501622F635AF005096BA /* SHLinkViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 27BF501422F635AF005096BA /* SHLinkViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27BF501722F635AF005096BA /* SHLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BF501522F635AF005096BA /* SHLinkViewController.m */; };
+		27BF501A22F63BDB005096BA /* SHRemindersLinkViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 27BF501822F63BDB005096BA /* SHRemindersLinkViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27BF501B22F63BDB005096BA /* SHRemindersLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BF501922F63BDB005096BA /* SHRemindersLinkViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +89,9 @@
 		2747C4FF20490D0A00FB5669 /* SHTimeSpinPickerEventInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHTimeSpinPickerEventInfo.h; sourceTree = "<group>"; };
 		2747C51F204A4C4300FB5669 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		2769C0A2227F69A800217480 /* libSHCore_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHCore_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2789889822F7D33F007231E0 /* SHReminderListContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHReminderListContainer.h; sourceTree = "<group>"; };
+		2789889922F7D33F007231E0 /* SHReminderListContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHReminderListContainer.m; sourceTree = "<group>"; };
+		2789889A22F7D33F007231E0 /* SHReminderListContainer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHReminderListContainer.xib; sourceTree = "<group>"; };
 		279848D22250FDB500039A29 /* SHControlsSpecial.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHControlsSpecial.base.xcconfig; sourceTree = "<group>"; };
 		27B15AA420524BED0045B226 /* SHControls.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHControls.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHControls.framework"; sourceTree = "<group>"; };
 		27B15AA620524BFE0045B226 /* SHModels.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHModels.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHModels.framework"; sourceTree = "<group>"; };
@@ -89,7 +99,11 @@
 		27BE7B0622BD264900DD87F5 /* SHDayOption.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHDayOption.xib; sourceTree = "<group>"; };
 		27BE7B0C22BEC24700DD87F5 /* SHRepeatLinkViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHRepeatLinkViewController.h; sourceTree = "<group>"; };
 		27BE7B0D22BEC24700DD87F5 /* SHRepeatLinkViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHRepeatLinkViewController.m; sourceTree = "<group>"; };
-		27BE7B0E22BEC24700DD87F5 /* SHRepeatLinkViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHRepeatLinkViewController.xib; sourceTree = "<group>"; };
+		27BE7B0E22BEC24700DD87F5 /* SHLinkViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHLinkViewController.xib; sourceTree = "<group>"; };
+		27BF501422F635AF005096BA /* SHLinkViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHLinkViewController.h; sourceTree = "<group>"; };
+		27BF501522F635AF005096BA /* SHLinkViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHLinkViewController.m; sourceTree = "<group>"; };
+		27BF501822F63BDB005096BA /* SHRemindersLinkViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHRemindersLinkViewController.h; sourceTree = "<group>"; };
+		27BF501922F63BDB005096BA /* SHRemindersLinkViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHRemindersLinkViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +155,13 @@
 				271D615720433434005C9F7E /* SHControlsSpecial.h */,
 				271D615820433434005C9F7E /* Info.plist */,
 				2747C51F204A4C4300FB5669 /* Media.xcassets */,
+				27BF501422F635AF005096BA /* SHLinkViewController.h */,
+				27BF501522F635AF005096BA /* SHLinkViewController.m */,
+				27BF501822F63BDB005096BA /* SHRemindersLinkViewController.h */,
+				27BF501922F63BDB005096BA /* SHRemindersLinkViewController.m */,
+				2789889822F7D33F007231E0 /* SHReminderListContainer.h */,
+				2789889922F7D33F007231E0 /* SHReminderListContainer.m */,
+				2789889A22F7D33F007231E0 /* SHReminderListContainer.xib */,
 			);
 			path = SHControlsSpecial;
 			sourceTree = "<group>";
@@ -184,7 +205,7 @@
 		2733D218229608550090B7F1 /* xibs */ = {
 			isa = PBXGroup;
 			children = (
-				27BE7B0E22BEC24700DD87F5 /* SHRepeatLinkViewController.xib */,
+				27BE7B0E22BEC24700DD87F5 /* SHLinkViewController.xib */,
 				27BE7AFE22AB043800DD87F5 /* SHWeeklyActiveDaysFull.xib */,
 				271D616A20434498005C9F7E /* SHRateSetContainer.xib */,
 				271D616620434498005C9F7E /* SHWeeklyActiveDays.xib */,
@@ -210,6 +231,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				27BE7B0F22BEC24700DD87F5 /* SHRepeatLinkViewController.h in Headers */,
+				2789889B22F7D33F007231E0 /* SHReminderListContainer.h in Headers */,
+				27BF501622F635AF005096BA /* SHLinkViewController.h in Headers */,
 				271D615920433434005C9F7E /* SHControlsSpecial.h in Headers */,
 				271D617120434499005C9F7E /* SHMonthlyActiveDaysViewController.h in Headers */,
 				271D617C20434499005C9F7E /* SHMonthPartPicker.h in Headers */,
@@ -222,6 +245,7 @@
 				2747C4FD20490C7700FB5669 /* SHReminderTimeSpinPickerDelegateProtocol.h in Headers */,
 				271D617320434499005C9F7E /* SHRateSetContainer.h in Headers */,
 				273C9CD922C83BFE001019BE /* SHRateSelectionViewController.h in Headers */,
+				27BF501A22F63BDB005096BA /* SHRemindersLinkViewController.h in Headers */,
 				273C9CDE22C90824001019BE /* SHDayOption.h in Headers */,
 				2747C50120490D0A00FB5669 /* SHTimeSpinPickerEventInfo.h in Headers */,
 			);
@@ -292,7 +316,8 @@
 				2747C520204A4C4300FB5669 /* Media.xcassets in Resources */,
 				271D617420434499005C9F7E /* SHWeeklyActiveDays.xib in Resources */,
 				27BE7AFF22AB043800DD87F5 /* SHWeeklyActiveDaysFull.xib in Resources */,
-				27BE7B1122BEC24700DD87F5 /* SHRepeatLinkViewController.xib in Resources */,
+				27BE7B1122BEC24700DD87F5 /* SHLinkViewController.xib in Resources */,
+				2789889D22F7D33F007231E0 /* SHReminderListContainer.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,8 +347,11 @@
 				2747C46E2047C95400FB5669 /* SHReminderCellController.m in Sources */,
 				2747C47D2048C9A200FB5669 /* SHReminderTimeSpinPicker.m in Sources */,
 				271D617520434499005C9F7E /* SHMonthPartPicker.m in Sources */,
+				27BF501722F635AF005096BA /* SHLinkViewController.m in Sources */,
 				2747C50020490D0A00FB5669 /* SHTimeSpinPickerEventInfo.m in Sources */,
 				2747C46F2047C95400FB5669 /* SHReminderListView.m in Sources */,
+				27BF501B22F63BDB005096BA /* SHRemindersLinkViewController.m in Sources */,
+				2789889C22F7D33F007231E0 /* SHReminderListContainer.m in Sources */,
 				271D617A20434499005C9F7E /* SHYearPartPicker.m in Sources */,
 				273C9CDA22C83BFE001019BE /* SHRateSelectionViewController.m in Sources */,
 				271D617D20434499005C9F7E /* SHYearlyActiveDaysViewController.m in Sources */,

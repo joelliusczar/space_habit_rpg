@@ -8,6 +8,8 @@
 
 #include "SHGenAlgos.h"
 #include <math.h>
+#include <string.h>
+#include <stdlib.h>
 
 int64_t calcStrHash(char const *str){
     int64_t hash = 7;
@@ -35,3 +37,10 @@ double blockoptimization kahanSum(const double* const nums,int64_t len){
     return sum + excess;
 }
 
+
+char * shStrCopy(const char * const str) {
+  unsigned long len = strlen(str) + 1;
+  char *copy = malloc(sizeof(char) * len);
+  strcpy(copy,str);
+  return copy;
+}

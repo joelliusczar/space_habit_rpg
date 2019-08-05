@@ -9,6 +9,8 @@
 #include "SHErrorHandling.h"
 #include "SHUtilConstants.h"
 #include <stdlib.h>
+#include <string.h>
+#include "SHGenAlgos.h"
 
 shDebugCallback shDbgCallback;
 
@@ -16,7 +18,8 @@ static void _useErrorObj(SHErrorCode code,const char* const msg,SHError* errObj)
   shLog("_useErrorObj");
   if(!errObj) return;
   errObj->code = code;
-  errObj->msg = msg;
+  errObj->msg = shStrCopy(msg);
+  errObj->msgLen = strlen(msg) + 1;
   errObj->isError = true;
   if(errObj->errorCallback){
     errObj->errorCallback(code,msg,errObj->callbackInfo,&errObj->isError);
@@ -54,7 +57,8 @@ void shPrepareSHError(SHError* errObj){
   shLog("prepareSHError");
   if(!errObj) return;
   errObj->code = NO_ERROR;
-  errObj->msg = "";
+  errObj->msg = NULL;
+  errObj->msgLen = 0;
   errObj->errorCallback = NULL;
   errObj->callbackInfo = NULL;
   shLog("leaving prepareSHError");
@@ -63,8 +67,8 @@ void shPrepareSHError(SHError* errObj){
 
 void shDisposeSHError(SHError *errObj){
   if(!errObj) return;
-  free((void*)errObj->msg);
-  free(errObj->callbackInfo);
+  if(errObj->msg) free((void*)errObj->msg);
+  if(errObj->callbackInfo) free(errObj->callbackInfo);
   free(errObj);
 }
 

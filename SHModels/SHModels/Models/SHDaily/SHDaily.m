@@ -7,10 +7,11 @@
 //
 
 #import "SHDaily.h"
-#import <SHGlobal/SHConstants.h>
-#import <SHCore_C/SHDaily_C.h>
 #import "SHRangeRateItem.h"
 #import "SHConfig.h"
+#import "SHDailyNextDueDateCalculator.h"
+#import "SHDailyMaxDaysBeforeSpanCalculator.h"
+#import <SHGlobal/SHConstants.h>
 #import <SHCommon/NSDate+DateHelper.h>
 #import <SHData/NSManagedObjectContext+Helper.h>
 
@@ -24,36 +25,6 @@
   return _activeDaysContainer;
 }
 
-
-static void convertObjCRateItemToC(NSArray<SHRangeRateItem*>* rateItems, SHRateValueItem *rvi){
-  for(int i = 0; i < SH_DAYS_IN_WEEK; i++){
-    [rateItems[i] copyIntoCStruct:&rvi[i]];
-  }
-}
-
-
--(NSDate*)nextDueDate_WEEKLY{
-  NSDate *lastCheckinDate = self.lastActivationDateTime?
-    self.lastActivationDateTime:
-    self.lastUpdateDateTime;
-  SHDatetime *lastCheckinDt = calloc(1, sizeof(SHDatetime));
-  SHDatetime *checkinDt = calloc(1, sizeof(SHDatetime));
-  SHDatetime ans;
-  memset(&ans,0,sizeof(SHDatetime));
-  SHError *error = calloc(1, sizeof(SHError));
-  shTryTimestampToDt(lastCheckinDate.timeIntervalSince1970,0,lastCheckinDt,error);
-  shTryTimestampToDt(NSDate.date.timeIntervalSince1970,0,checkinDt,error);
-  SHRateValueItem *rvi = calloc(SH_DAYS_IN_WEEK, sizeof(SHRateValueItem));
-  convertObjCRateItemToC(self.activeDaysContainer.weeklyActiveDays,rvi);
-  shNextDueDate_WEEKLY(lastCheckinDt,checkinDt,rvi,self.rate,&ans,error);
-  double dueDateTimestamp = shDtToTimestamp(&ans, error);
-  NSDate *nextDueDate = [NSDate dateWithTimeIntervalSince1970:dueDateTimestamp];
-  shFreeSHDatetime(lastCheckinDt);
-  shFreeSHDatetime(checkinDt);
-  shDisposeSHError(error);
-  shFreeSHRateValueItem(rvi);
-  return nextDueDate;
-}
 
 -(int32_t)rate{
   switch(self.rateType){
@@ -79,13 +50,18 @@ static void convertObjCRateItemToC(NSArray<SHRangeRateItem*>* rateItems, SHRateV
 
 
 -(NSDate *)nextDueTime{
+  SHDailyNextDueDateCalculator *calculator = [[SHDailyNextDueDateCalculator alloc]
+    initWithActiveDays:self.activeDaysContainer
+    lastActivationDateTime:self.lastActivationDateTime
+    lastUpdateDateTime:self.lastUpdateDateTime
+    rate:self.rate];
   switch(self.rateType){
     case SH_YEARLY_RATE:
     case SH_YEARLY_RATE_INVERSE:
     case SH_MONTHLY_RATE:
     case SH_MONTHLY_RATE_INVERSE:
     case SH_WEEKLY_RATE:
-      return [self nextDueDate_WEEKLY];
+      return [calculator nextDueDate_WEEKLY];
     case SH_WEEKLY_RATE_INVERSE:
     case SH_DAILY_RATE:
     case SH_DAILY_RATE_INVERSE:
@@ -99,7 +75,7 @@ static void convertObjCRateItemToC(NSArray<SHRangeRateItem*>* rateItems, SHRateV
   __block NSUInteger dayStart = 0;
   [self.managedObjectContext performBlockAndWait:^{
     NSFetchRequest *request = SHConfig.fetchRequest;
-    request.sortDescriptors = shBasicSortDescArray(@"dayStart");
+    request.sortDescriptors = shBasicSortDescArray(@"dayStartHour");
     NSArray *results = [self.managedObjectContext getItemsWithRequest:request];
     NSAssert(results.count == 1,@"There should be exactly one config object");
     SHConfig *config = (SHConfig*)results[0];
@@ -107,6 +83,26 @@ static void convertObjCRateItemToC(NSArray<SHRangeRateItem*>* rateItems, SHRateV
   }];
   NSDate *roundedDownToday = [[NSDate date] setHour:dayStart minute:0 second:0];
   return (int)[NSDate daysBetween:roundedDownToday to:self.nextDueTime];
+}
+
+
+-(NSInteger)maxDaysBeforeSpan{
+  SHDailyMaxDaysBeforeSpanCalculator *calculator = [[SHDailyMaxDaysBeforeSpanCalculator alloc]
+    initWithActiveDays:self.activeDaysContainer
+    rate: self.rate];
+  switch(self.rateType){
+    case SH_YEARLY_RATE:
+    case SH_YEARLY_RATE_INVERSE:
+    case SH_MONTHLY_RATE:
+    case SH_MONTHLY_RATE_INVERSE:
+    case SH_WEEKLY_RATE:
+      return [calculator maxDaysBeforeSpan_WEEKLY];
+    case SH_WEEKLY_RATE_INVERSE:
+    case SH_DAILY_RATE:
+    case SH_DAILY_RATE_INVERSE:
+      return 0;
+  }
+  return 0;
 }
 
 

@@ -27,6 +27,9 @@ FOUNDATION_EXPORT const unsigned char SHControlsSpecialVersionString[];
 #import "SHRepeatLinkViewController.h"
 #import "SHDayOption.h"
 #import "SHRateSelectionViewController.h"
+#import "SHLinkViewController.h"
+#import "SHReminderListView.h"
+#import "SHReminderListContainer.h"
 
 // In this header, you should import all the public headers of your framework using statements like #import <SHControlsSpecial/PublicHeader.h>
 
