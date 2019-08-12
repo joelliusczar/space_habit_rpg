@@ -13,7 +13,6 @@
 #import <SHGlobal/SHConstants.h>
 #import <SHModels/SHDaily.h>
 #import <SHModels/SHDailyDTO.h>
-#import <SHControls/SHDailyEditCompoundProtocol.h>
 #import <SHControls/AllSHControls.h>
 #import <SHData/SHObjectIDWrapper.h>
 
@@ -22,7 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHDailyEditController : UIViewController
 <SHEditingSaverProtocol
-,SHDailyEditCompoundProtocol
+,SHNotesViewDelegateProtocol
+,SHImportanceSlidersDelegateProtocol
 ,UITableViewDataSource
 ,UITableViewDelegate>
 @property (weak,nonatomic) IBOutlet SHTextField *nameBox;

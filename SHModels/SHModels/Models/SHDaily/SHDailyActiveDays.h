@@ -17,8 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHDailyActiveDays : NSObject
 
-@property (strong,nonatomic) NSMutableDictionary *activeDaysDict;
-@property (strong,nonatomic) NSString *activeDaysJson;
+@property (strong,nonatomic, null_resettable) NSMutableDictionary *activeDaysDict;
 @property (readonly,nonatomic) SHListRateItemCollection *monthlyActiveDays;
 @property (readonly,nonatomic) SHListRateItemCollection *monthlyActiveDaysInv;
 @property (readonly,nonatomic) SHListRateItemCollection *yearlyActiveDays;
@@ -45,8 +44,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly,copy,nonatomic) shGetRangeRateArray weeklyActiveDaysInvLazy;
 
 
--(instancetype)initWithActiveDaysDict:(NSMutableDictionary*)activeDaysDict;
 -(instancetype)initWithActiveDaysJson:(NSString*)activeDaysJson;
+-(NSString*)activeDaysAsJson;
 -(void)flipDayOfWeek:(NSUInteger)dayIdx forPolarity:(BOOL)isInverse;
 @end
 

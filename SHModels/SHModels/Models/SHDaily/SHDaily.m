@@ -106,8 +106,13 @@
 }
 
 
--(NSString*)taskTitle{
+-(NSString*)title{
   return self.dailyName;
+}
+
+
+-(void)setTitle:(NSString *)title {
+  self.dailyName = title;
 }
 
 

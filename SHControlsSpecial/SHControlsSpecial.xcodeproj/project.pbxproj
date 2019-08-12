@@ -10,13 +10,10 @@
 		271D615920433434005C9F7E /* SHControlsSpecial.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D615720433434005C9F7E /* SHControlsSpecial.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271D617120434499005C9F7E /* SHMonthlyActiveDaysViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D616320434498005C9F7E /* SHMonthlyActiveDaysViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271D617220434499005C9F7E /* SHYearPartPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D616420434498005C9F7E /* SHYearPartPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D617320434499005C9F7E /* SHRateSetContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D616520434498005C9F7E /* SHRateSetContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271D617420434499005C9F7E /* SHWeeklyActiveDays.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271D616620434498005C9F7E /* SHWeeklyActiveDays.xib */; };
 		271D617520434499005C9F7E /* SHMonthPartPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D616720434498005C9F7E /* SHMonthPartPicker.m */; };
 		271D617620434499005C9F7E /* SHWeeklyActiveDaysViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D616820434498005C9F7E /* SHWeeklyActiveDaysViewController.m */; };
 		271D617720434499005C9F7E /* SHYearlyActiveDaysViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D616920434498005C9F7E /* SHYearlyActiveDaysViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D617820434499005C9F7E /* SHRateSetContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271D616A20434498005C9F7E /* SHRateSetContainer.xib */; };
-		271D617920434499005C9F7E /* SHRateSetContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D616B20434498005C9F7E /* SHRateSetContainer.m */; };
 		271D617A20434499005C9F7E /* SHYearPartPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D616C20434498005C9F7E /* SHYearPartPicker.m */; };
 		271D617B20434499005C9F7E /* SHMonthlyActiveDaysViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D616D20434498005C9F7E /* SHMonthlyActiveDaysViewController.m */; };
 		271D617C20434499005C9F7E /* SHMonthPartPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D616E20434498005C9F7E /* SHMonthPartPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -60,13 +57,10 @@
 		271D615820433434005C9F7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		271D616320434498005C9F7E /* SHMonthlyActiveDaysViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMonthlyActiveDaysViewController.h; sourceTree = "<group>"; };
 		271D616420434498005C9F7E /* SHYearPartPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHYearPartPicker.h; sourceTree = "<group>"; };
-		271D616520434498005C9F7E /* SHRateSetContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHRateSetContainer.h; sourceTree = "<group>"; };
 		271D616620434498005C9F7E /* SHWeeklyActiveDays.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHWeeklyActiveDays.xib; sourceTree = "<group>"; };
 		271D616720434498005C9F7E /* SHMonthPartPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMonthPartPicker.m; sourceTree = "<group>"; };
 		271D616820434498005C9F7E /* SHWeeklyActiveDaysViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHWeeklyActiveDaysViewController.m; sourceTree = "<group>"; };
 		271D616920434498005C9F7E /* SHYearlyActiveDaysViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHYearlyActiveDaysViewController.h; sourceTree = "<group>"; };
-		271D616A20434498005C9F7E /* SHRateSetContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHRateSetContainer.xib; sourceTree = "<group>"; };
-		271D616B20434498005C9F7E /* SHRateSetContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHRateSetContainer.m; sourceTree = "<group>"; };
 		271D616C20434498005C9F7E /* SHYearPartPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHYearPartPicker.m; sourceTree = "<group>"; };
 		271D616D20434498005C9F7E /* SHMonthlyActiveDaysViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMonthlyActiveDaysViewController.m; sourceTree = "<group>"; };
 		271D616E20434498005C9F7E /* SHMonthPartPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMonthPartPicker.h; sourceTree = "<group>"; };
@@ -190,8 +184,6 @@
 				271D616720434498005C9F7E /* SHMonthPartPicker.m */,
 				271D616420434498005C9F7E /* SHYearPartPicker.h */,
 				271D616C20434498005C9F7E /* SHYearPartPicker.m */,
-				271D616520434498005C9F7E /* SHRateSetContainer.h */,
-				271D616B20434498005C9F7E /* SHRateSetContainer.m */,
 				27BE7B0C22BEC24700DD87F5 /* SHRepeatLinkViewController.h */,
 				27BE7B0D22BEC24700DD87F5 /* SHRepeatLinkViewController.m */,
 				273C9CD622C83BFE001019BE /* SHRateSelectionViewController.h */,
@@ -207,7 +199,6 @@
 			children = (
 				27BE7B0E22BEC24700DD87F5 /* SHLinkViewController.xib */,
 				27BE7AFE22AB043800DD87F5 /* SHWeeklyActiveDaysFull.xib */,
-				271D616A20434498005C9F7E /* SHRateSetContainer.xib */,
 				271D616620434498005C9F7E /* SHWeeklyActiveDays.xib */,
 				27BE7B0622BD264900DD87F5 /* SHDayOption.xib */,
 				273C9CD822C83BFE001019BE /* SHRateSelectionViewController.xib */,
@@ -243,7 +234,6 @@
 				2747C4702047C95400FB5669 /* SHReminderCellController.h in Headers */,
 				271D617220434499005C9F7E /* SHYearPartPicker.h in Headers */,
 				2747C4FD20490C7700FB5669 /* SHReminderTimeSpinPickerDelegateProtocol.h in Headers */,
-				271D617320434499005C9F7E /* SHRateSetContainer.h in Headers */,
 				273C9CD922C83BFE001019BE /* SHRateSelectionViewController.h in Headers */,
 				27BF501A22F63BDB005096BA /* SHRemindersLinkViewController.h in Headers */,
 				273C9CDE22C90824001019BE /* SHDayOption.h in Headers */,
@@ -310,7 +300,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				271D617820434499005C9F7E /* SHRateSetContainer.xib in Resources */,
 				273C9CDB22C83BFE001019BE /* SHRateSelectionViewController.xib in Resources */,
 				27BE7B0722BD264900DD87F5 /* SHDayOption.xib in Resources */,
 				2747C520204A4C4300FB5669 /* Media.xcassets in Resources */,
@@ -358,7 +347,6 @@
 				273C9CDF22C90824001019BE /* SHDayOption.m in Sources */,
 				271D617620434499005C9F7E /* SHWeeklyActiveDaysViewController.m in Sources */,
 				271D617B20434499005C9F7E /* SHMonthlyActiveDaysViewController.m in Sources */,
-				271D617920434499005C9F7E /* SHRateSetContainer.m in Sources */,
 				27BE7B1022BEC24700DD87F5 /* SHRepeatLinkViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

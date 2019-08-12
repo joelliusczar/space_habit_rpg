@@ -23,8 +23,7 @@
 -(UITapGestureRecognizer *)tapper{
   if(!_tapper){
     _tapper = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                      action:@selector(handleTap:)];
-    
+      action:@selector(handleTap:)];
   }
   return _tapper;
 }

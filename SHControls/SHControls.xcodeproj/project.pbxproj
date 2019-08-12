@@ -50,7 +50,6 @@
 		271D610F20421A9A005C9F7E /* SHImportanceSlidersDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60CE20421A99005C9F7E /* SHImportanceSlidersDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271D611120421A9A005C9F7E /* SHRateTypeSelectorDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60D020421A99005C9F7E /* SHRateTypeSelectorDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271D611220421A9A005C9F7E /* SHMonthComponentSpinPickerDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60D120421A99005C9F7E /* SHMonthComponentSpinPickerDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D611320421A9A005C9F7E /* SHDailyEditCompoundProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60D220421A99005C9F7E /* SHDailyEditCompoundProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271D611420421A9A005C9F7E /* SHItemFlexibleListDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60D320421A99005C9F7E /* SHItemFlexibleListDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271D611520421A9A005C9F7E /* SHSwitchProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60D420421A99005C9F7E /* SHSwitchProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271D611620421A9A005C9F7E /* SHItemFlexibleListEventInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D60D620421A99005C9F7E /* SHItemFlexibleListEventInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -138,7 +137,6 @@
 		271D60CE20421A99005C9F7E /* SHImportanceSlidersDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHImportanceSlidersDelegateProtocol.h; sourceTree = "<group>"; };
 		271D60D020421A99005C9F7E /* SHRateTypeSelectorDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHRateTypeSelectorDelegateProtocol.h; sourceTree = "<group>"; };
 		271D60D120421A99005C9F7E /* SHMonthComponentSpinPickerDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMonthComponentSpinPickerDelegateProtocol.h; sourceTree = "<group>"; };
-		271D60D220421A99005C9F7E /* SHDailyEditCompoundProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDailyEditCompoundProtocol.h; sourceTree = "<group>"; };
 		271D60D320421A99005C9F7E /* SHItemFlexibleListDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHItemFlexibleListDelegateProtocol.h; sourceTree = "<group>"; };
 		271D60D420421A99005C9F7E /* SHSwitchProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSwitchProtocol.h; sourceTree = "<group>"; };
 		271D60D620421A99005C9F7E /* SHItemFlexibleListEventInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHItemFlexibleListEventInfo.h; sourceTree = "<group>"; };
@@ -280,7 +278,6 @@
 				271D60CE20421A99005C9F7E /* SHImportanceSlidersDelegateProtocol.h */,
 				271D60D020421A99005C9F7E /* SHRateTypeSelectorDelegateProtocol.h */,
 				271D60D120421A99005C9F7E /* SHMonthComponentSpinPickerDelegateProtocol.h */,
-				271D60D220421A99005C9F7E /* SHDailyEditCompoundProtocol.h */,
 				271D60D320421A99005C9F7E /* SHItemFlexibleListDelegateProtocol.h */,
 				271D60D420421A99005C9F7E /* SHSwitchProtocol.h */,
 				27BE7B1222BFFAFE00DD87F5 /* SHViewEventsProtocol.h */,
@@ -423,7 +420,6 @@
 				27118828203FF9DF0085A549 /* SHNoteView.h in Headers */,
 				271D614120421A9A005C9F7E /* SHViewProtocol.h in Headers */,
 				2711881F203FF9DF0085A549 /* SHAddItemsFooter.h in Headers */,
-				271D611320421A9A005C9F7E /* SHDailyEditCompoundProtocol.h in Headers */,
 				271188512040001B0085A549 /* SHSwitch.h in Headers */,
 				2711881A203FF9DF0085A549 /* SHRateSetterView.h in Headers */,
 				271187DF203FF88E0085A549 /* SHControls.h in Headers */,

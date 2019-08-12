@@ -1238,4 +1238,32 @@ union u_double {
 }
 
 
++(void)postInsertion{
+  SHCoreData *dc = [SHCoreData newWithOptionsBlock:^(SHCoreDataOptions *options){
+    //options.storeType = NSInMemoryStoreType;
+    options.appBundle = [NSBundle bundleForClass:NSClassFromString(@"SHBundleKey")];
+  }];
+  
+  NSManagedObjectContext *context = [dc newBackgroundContext];
+    [context performBlockAndWait:^{
+    SHDaily *d =  (SHDaily*)[context newEntity:SHDaily.entity];
+    d.dailyName = @"hola";
+    //[context save:nil];
+  }];
+  __block NSManagedObjectID *objectID = nil;
+  [context performBlockAndWait:^{
+    NSFetchRequest *request =  SHDaily.fetchRequest;
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"dailyName" ascending:YES]];
+    NSArray *results = [context executeFetchRequest:request error:nil];
+    SHDaily *d = (SHDaily*)results[0];
+    objectID = d.objectID;
+    NSLog(@"%@",d.dailyName);
+    for (SHDaily *d_ in results) {
+      NSLog(@"%d",d_.inserted);
+    }
+  }];
+  
+}
+
+
 @end

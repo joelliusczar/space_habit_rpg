@@ -40,5 +40,13 @@
 }
 
 
+-(instancetype)initWithEntityType:(NSEntityDescription *)entityType{
+  if(self = [self init]){
+    _entityType = entityType;
+  }
+  return self;
+}
+
+
 
 @end

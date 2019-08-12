@@ -71,6 +71,7 @@ FOUNDATION_EXPORT const unsigned char SHModelsVersionString[];
 #import "SHDailyValidation.h"
 #import "SHDailyNextDueDateCalculator.h"
 #import "SHDailyMaxDaysBeforeSpanCalculator.h"
+#import "SHTitleProtocol.h"
 
 // In this header, you should import all the public headers of your framework using statements like #import <SHModels/PublicHeader.h>
 

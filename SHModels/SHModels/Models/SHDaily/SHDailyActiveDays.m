@@ -16,42 +16,46 @@
 
 
 @interface SHDailyActiveDays ()
-@property (assign,nonatomic) BOOL shouldRebuildDictAndJson;
+@property (strong,nonatomic) NSString *jsonRepresentation;
 @end
 
 @implementation SHDailyActiveDays
 
 
--(instancetype)initWithActiveDaysDict:(NSMutableDictionary*)activeDaysDict{
-  if(self = [super init]){
-    _activeDaysDict = activeDaysDict;
-  }
-  return self;
-}
-
-
 -(instancetype)initWithActiveDaysJson:(NSString*)activeDaysJson{
   if(self = [super init]){
-    _activeDaysJson = activeDaysJson;
+    _jsonRepresentation = activeDaysJson;
   }
   return self;
 }
 
 
--(NSString*)activeDaysJson{
-  if(nil == _activeDaysJson){
-    _activeDaysJson = [_activeDaysDict dictToString];
+-(NSString*)jsonRepresentation{
+  if(nil == _jsonRepresentation){
+    _jsonRepresentation = [_activeDaysDict dictToString];
   }
-  return _activeDaysJson;
+  return _jsonRepresentation;
 }
 
 
 -(NSMutableDictionary*)activeDaysDict{
   if(nil == _activeDaysDict){
-    NSString *str = _activeDaysJson ? _activeDaysJson : SH_ALL_DAYS_JSON;
+    NSString *str = _jsonRepresentation ? _jsonRepresentation : SH_ALL_DAYS_JSON;
     _activeDaysDict = [NSDictionary jsonStringToDict:str];
   }
   return _activeDaysDict;
+}
+
+-(NSString*)activeDaysAsJson{
+  
+  if(nil == _activeDaysDict) {
+    return self.jsonRepresentation;
+  }
+  NSDictionary *dict = [self buildDict];
+  NSString *json = [dict dictToString];
+  self.activeDaysDict = nil;
+  self.jsonRepresentation = json;
+  return json;
 }
 
 
@@ -217,91 +221,83 @@ static SHListRateItem* mapDictToMonthlyYearly(id item, NSUInteger idx){
 
 
 -(int32_t)weeklyIntervalSize{
-  int32_t size = ((NSNumber *)self.activeDaysDict[@"weeklyInterval"]).intValue;
+  int32_t size = ((NSNumber *)self.activeDaysDict[shGetRateTypeIntervalSizeKey(SH_WEEKLY_RATE)]).intValue;
   return size;
 }
 
 
 -(void)setWeeklyIntervalSize:(int32_t)weeklyIntervalSize{
-  self.activeDaysDict[@"weeklyInterval"] = @(weeklyIntervalSize);
+  self.activeDaysDict[shGetRateTypeIntervalSizeKey(SH_WEEKLY_RATE)] = @(weeklyIntervalSize);
 }
 
 
 -(int32_t)monthlyIntervalSize{
-  return ((NSNumber *)self.activeDaysDict[@"monthlyInterval"]).intValue;
+  return ((NSNumber *)self.activeDaysDict[shGetRateTypeIntervalSizeKey(SH_MONTHLY_RATE)]).intValue;
 }
 
 
 -(void)setMonthlyIntervalSize:(int32_t)monthlyIntervalSize{
-  self.activeDaysDict[@"monthlyInterval"] = @(monthlyIntervalSize);
+  self.activeDaysDict[shGetRateTypeIntervalSizeKey(SH_MONTHLY_RATE)] = @(monthlyIntervalSize);
 }
 
 
 -(int32_t)yearlyIntervalSize{
-  return ((NSNumber *)self.activeDaysDict[@"yearlyInterval"]).intValue;
+  return ((NSNumber *)self.activeDaysDict[shGetRateTypeIntervalSizeKey(SH_YEARLY_RATE)]).intValue;
 }
 
 
 -(void)setYearlyIntervalSize:(int32_t)yearlyIntervalSize{
-  self.activeDaysDict[@"yearlyInterval"] = @(yearlyIntervalSize);
+  self.activeDaysDict[shGetRateTypeIntervalSizeKey(SH_YEARLY_RATE)] = @(yearlyIntervalSize);
 }
 
 
 -(int32_t)weeklyIntervalSizeInv{
-  return ((NSNumber *)self.activeDaysDict[@"weeklyIntervalInv"]).intValue;
+  return ((NSNumber *)self.activeDaysDict[shGetRateTypeIntervalSizeKey(SH_WEEKLY_RATE_INVERSE)]).intValue;
 }
 
 
 -(void)setWeeklyIntervalSizeInv:(int32_t)weeklyIntervalSizeInv{
-  self.activeDaysDict[@"weeklyIntervalInv"] = @(weeklyIntervalSizeInv);
+  self.activeDaysDict[shGetRateTypeIntervalSizeKey(SH_WEEKLY_RATE_INVERSE)] = @(weeklyIntervalSizeInv);
 }
 
 
 -(int32_t)monthlyIntervalSizeInv{
-  return ((NSNumber *)self.activeDaysDict[@"monthlyIntervalInv"]).intValue;
+  return ((NSNumber *)self.activeDaysDict[shGetRateTypeIntervalSizeKey(SH_MONTHLY_RATE_INVERSE)]).intValue;
 }
 
 
 -(void)setMonthlyIntervalSizeInv:(int32_t)monthlyIntervalSizeInv{
-  self.activeDaysDict[@"monthlyIntervalInv"] = @(monthlyIntervalSizeInv);
+  self.activeDaysDict[shGetRateTypeIntervalSizeKey(SH_MONTHLY_RATE_INVERSE)] = @(monthlyIntervalSizeInv);
 }
 
 
 -(int32_t)yearlyIntervalSizeInv{
-  return ((NSNumber *)self.activeDaysDict[@"yearlyIntervalInv"]).intValue;
+  return ((NSNumber *)self.activeDaysDict[shGetRateTypeIntervalSizeKey(SH_YEARLY_RATE_INVERSE)]).intValue;
 }
 
 
 -(void)setYearlyIntervalSizeInv:(int32_t)yearlyIntervalSizeInv{
-  self.activeDaysDict[@"yearlyIntervalInv"] = @(yearlyIntervalSizeInv);
+  self.activeDaysDict[shGetRateTypeIntervalSizeKey(SH_YEARLY_RATE_INVERSE)] = @(yearlyIntervalSizeInv);
 }
 
 
 -(int32_t)dailyIntervalSize{
-  return ((NSNumber *)self.activeDaysDict[@"dailyInterval"]).intValue;
+  return ((NSNumber *)self.activeDaysDict[shGetRateTypeIntervalSizeKey(SH_DAILY_RATE)]).intValue;
 }
 
 
 -(void)setDailyIntervalSize:(int32_t)dailyIntervalSize{
-  self.activeDaysDict[@"dailyInterval"] = @(dailyIntervalSize);
+  self.activeDaysDict[shGetRateTypeIntervalSizeKey(SH_DAILY_RATE)] = @(dailyIntervalSize);
 }
 
 
 -(int32_t)dailyIntervalSizeInv{
-  return ((NSNumber *)self.activeDaysDict[@"dailyIntervalInv"]).intValue;
+  return ((NSNumber *)self.activeDaysDict[shGetRateTypeIntervalSizeKey(SH_DAILY_RATE_INVERSE)]).intValue;
 }
 
 
 -(void)setDailyIntervalSizeInv:(int32_t)dailyIntervalSizeInv{
-  self.activeDaysDict[@"dailyIntervalInv"] = @(dailyIntervalSizeInv);
-}
-
--(void)rebuildDictAndJson{
-  if(self.shouldRebuildDictAndJson){
-    self.activeDaysDict = [self buildDict];
-    self.activeDaysJson = [self.activeDaysDict dictToString];
-    self.shouldRebuildDictAndJson = NO;
-  }
+  self.activeDaysDict[shGetRateTypeIntervalSizeKey(SH_DAILY_RATE_INVERSE)] = @(dailyIntervalSizeInv);
 }
 
 
@@ -332,34 +328,38 @@ static NSDictionary* mapMonthlyYearlyToDict(SHListRateItem *item,NSUInteger idx)
   //map it to an object just to remap it back to a dictionary
   NSMutableArray<SHRateItemDict*>* weekly = _weeklyActiveDays ?
     [_weeklyActiveDays mapItemsTo_f:mapWeeklyToDict] :
-    _activeDaysDict[shGetRateTypeKey(SH_WEEKLY_RATE)];
+    self.activeDaysDict[shGetRateTypeKey(SH_WEEKLY_RATE)];
   NSMutableArray<SHRateItemDict*>* monthly = _monthlyActiveDays ?
     [_monthlyActiveDays mapItemsTo_f:mapMonthlyYearlyToDict] :
-    _activeDaysDict[shGetRateTypeKey(SH_MONTHLY_RATE)];
+    self.activeDaysDict[shGetRateTypeKey(SH_MONTHLY_RATE)];
   NSMutableArray<SHRateItemDict*>* yearly = _yearlyActiveDays ?
     [_yearlyActiveDays mapItemsTo_f:mapMonthlyYearlyToDict] :
-    _activeDaysDict[shGetRateTypeKey(SH_YEARLY_RATE)];
+    self.activeDaysDict[shGetRateTypeKey(SH_YEARLY_RATE)];
   
   NSMutableArray<SHRateItemDict*>* weeklyInv = _weeklyActiveDaysInv ?
     [_weeklyActiveDaysInv mapItemsTo_f:mapWeeklyToDict]:
-    _activeDaysDict[shGetRateTypeKey(SH_WEEKLY_RATE_INVERSE)];
+    self.activeDaysDict[shGetRateTypeKey(SH_WEEKLY_RATE_INVERSE)];
   NSMutableArray<SHRateItemDict*>* monthlyInv = _monthlyActiveDaysInv ?
     [_monthlyActiveDaysInv mapItemsTo_f:mapMonthlyYearlyToDict] :
-    _activeDaysDict[shGetRateTypeKey(SH_MONTHLY_RATE_INVERSE)];
+    self.activeDaysDict[shGetRateTypeKey(SH_MONTHLY_RATE_INVERSE)];
   NSMutableArray<SHRateItemDict*>* yearlyInv = _yearlyActiveDaysInv ?
     [_yearlyActiveDaysInv mapItemsTo_f:mapMonthlyYearlyToDict] :
-    _activeDaysDict[shGetRateTypeKey(SH_YEARLY_RATE_INVERSE)];
+    self.activeDaysDict[shGetRateTypeKey(SH_YEARLY_RATE_INVERSE)];
   
   NSMutableDictionary *dict = [NSMutableDictionary
     dictionaryWithObjects:@[
-      weekly,monthly,yearly,
-      weeklyInv,monthlyInv,yearlyInv
+      weekly,monthly,yearly, //0,1,2
+      weeklyInv,monthlyInv,yearlyInv, //3,4,5
+      @(self.dailyIntervalSize), //6
+      @(self.weeklyIntervalSize), //7
+      @(self.monthlyIntervalSize), //8
+      @(self.yearlyIntervalSize), //9
+      @(self.dailyIntervalSizeInv), //10
+      @(self.weeklyIntervalSizeInv), //11
+      @(self.monthlyIntervalSizeInv), //12
+      @(self.yearlyIntervalSizeInv), //13
     ]
-    forKeys:@[
-      shGetRateTypeKey(SH_WEEKLY_RATE),shGetRateTypeKey(SH_MONTHLY_RATE),
-      shGetRateTypeKey(SH_YEARLY_RATE),shGetRateTypeKey(SH_WEEKLY_RATE_INVERSE),
-      shGetRateTypeKey(SH_MONTHLY_RATE_INVERSE),shGetRateTypeKey(SH_YEARLY_RATE_INVERSE)
-    ]];
+    forKeys:shRateTypeEnums()];
     
     return dict;
 }

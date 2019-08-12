@@ -30,6 +30,8 @@ const NSInteger YEARLY_SELECTION = 3;
     _weeklyActiveDays = [[SHWeeklyActiveDaysViewController alloc]
       initWithNibName:@"SHWeeklyActiveDaysFull"
       bundle:bundle];
+    
+      _weeklyActiveDays.valueChangeDelegate = self;
   }
   return _weeklyActiveDays;
 }

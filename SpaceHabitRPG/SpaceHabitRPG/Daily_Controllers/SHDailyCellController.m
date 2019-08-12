@@ -100,14 +100,14 @@
 
 -(IBAction)completeBtn_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
   (void)sender; (void)event;
-//        if(self.model.sectionNum == SH_INCOMPLETE){
-//            self.model.sectionNum  = SH_COMPLETE;
-//            [self.parentDailyController completeDaily:self.model];
-//        }
-//        else{
-//            self.model.sectionNum  = SH_INCOMPLETE;
-//            [self.parentDailyController undoCompletedDaily:self.model];
-//        }
+//  if(self.model.sectionNum == SH_INCOMPLETE){
+//    self.model.sectionNum  = SH_COMPLETE;
+//    [self.parentDailyController completeDaily:self.model];
+//  }
+//  else{
+//    self.model.sectionNum  = SH_INCOMPLETE;
+//    [self.parentDailyController undoCompletedDaily:self.model];
+//  }
 }
 
 @end

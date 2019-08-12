@@ -135,6 +135,7 @@ void cMakeHouses(void);
 +(void)testEntityAccessNoSave;
 +(void)cfArrayStuff;
 +(void)primitiveType;
++(void)postInsertion;
 @end
 
 #import "Experiments+Charlie.h"

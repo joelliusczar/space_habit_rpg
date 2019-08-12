@@ -20,7 +20,6 @@ FOUNDATION_EXPORT const unsigned char SHControlsSpecialVersionString[];
 #import "SHReminderCellController.h"
 #import "SHYearPartPicker.h"
 #import "SHMonthPartPicker.h"
-#import "SHRateSetContainer.h"
 #import "SHWeeklyActiveDaysViewController.h"
 #import "SHMonthlyActiveDaysViewController.h"
 #import "SHYearlyActiveDaysViewController.h"
@@ -28,6 +27,7 @@ FOUNDATION_EXPORT const unsigned char SHControlsSpecialVersionString[];
 #import "SHDayOption.h"
 #import "SHRateSelectionViewController.h"
 #import "SHLinkViewController.h"
+#import "SHRemindersLinkViewController.h"
 #import "SHReminderListView.h"
 #import "SHReminderListContainer.h"
 

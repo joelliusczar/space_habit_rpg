@@ -67,7 +67,7 @@
   NSInteger month = [picker selectedRowInComponent:0];
   NSInteger dayOfMonth = [picker selectedRowInComponent:1];
   SHListRateItem *rateItem = [[SHListRateItem alloc] initWithMajorOrdinal:month
-    minorOrdinal:dayOfMonth + 1];
+    minorOrdinal:dayOfMonth];
   NSInteger row = [self.yearRateItems addRateItem:rateItem];
   if(row >= 0){
     [self addItemToTableAndScale:row];

@@ -28,6 +28,31 @@ BOOL shAreSameBaseRateTypes(SHRateType a,SHRateType b){
 }
 
 
+NSString* shGetRateTypeIntervalSizeKey(SHRateType rateType){
+  switch(rateType){
+    case SH_WEEKLY_RATE:
+      return @"weeklyInterval";
+    case SH_WEEKLY_RATE_INVERSE:
+      return @"weeklyIntervalInv";
+    case SH_MONTHLY_RATE:
+      return @"monthlyInterval";
+    case SH_MONTHLY_RATE_INVERSE:
+      return @"monthlyIntervalInv";
+    case SH_YEARLY_RATE:
+      return @"yearlyInterval";
+    case SH_YEARLY_RATE_INVERSE:
+      return @"yearlyIntervalInv";
+    case SH_DAILY_RATE:
+      return @"dailyInterval";
+    case SH_DAILY_RATE_INVERSE:
+      return @"dailyIntervalInv";
+    case SH_UNDETERMINED_RATE:
+        @throw [NSException exceptionWithName:@"can't go there" reason:@"I didn't know the code could go here" userInfo:nil];
+    
+  }
+}
+
+
 NSString* shGetRateTypeKey(SHRateType rateType){
   switch(rateType){
     case SH_WEEKLY_RATE:
@@ -43,8 +68,8 @@ NSString* shGetRateTypeKey(SHRateType rateType){
     case SH_YEARLY_RATE_INVERSE:
       return @"daysOfYear_INV";
     case SH_DAILY_RATE:
-    case SH_UNDETERMINED_RATE:
     case SH_DAILY_RATE_INVERSE:
+    case SH_UNDETERMINED_RATE:
         @throw [NSException exceptionWithName:@"can't go there" reason:@"I didn't know the code could go here" userInfo:nil];
     
   }
@@ -108,4 +133,23 @@ NSString * shGetFormatString(SHRateType rateType, NSInteger rate){
     case SH_UNDETERMINED_RATE:
       return @"You've reached an invalid state";
   }
+}
+
+NSArray<NSString *>* shRateTypeEnums() {
+  return @[
+      shGetRateTypeKey(SH_WEEKLY_RATE), //0
+      shGetRateTypeKey(SH_MONTHLY_RATE), //1
+      shGetRateTypeKey(SH_YEARLY_RATE), //2
+      shGetRateTypeKey(SH_WEEKLY_RATE_INVERSE), //3
+      shGetRateTypeKey(SH_MONTHLY_RATE_INVERSE), //4
+      shGetRateTypeKey(SH_YEARLY_RATE_INVERSE), //5
+      shGetRateTypeIntervalSizeKey(SH_DAILY_RATE), //6
+      shGetRateTypeIntervalSizeKey(SH_WEEKLY_RATE), //7
+      shGetRateTypeIntervalSizeKey(SH_MONTHLY_RATE), //8
+      shGetRateTypeIntervalSizeKey(SH_YEARLY_RATE), //9
+      shGetRateTypeIntervalSizeKey(SH_DAILY_RATE_INVERSE), //10
+      shGetRateTypeIntervalSizeKey(SH_WEEKLY_RATE_INVERSE), //11
+      shGetRateTypeIntervalSizeKey(SH_MONTHLY_RATE_INVERSE), //12
+      shGetRateTypeIntervalSizeKey(SH_YEARLY_RATE_INVERSE), //13
+    ];
 }

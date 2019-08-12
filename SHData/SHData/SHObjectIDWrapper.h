@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong,nonatomic) NSManagedObjectID *objectID;
 @property (strong,nonatomic) NSEntityDescription *entityType;
 @property (strong,nonatomic) dispatch_queue_t idSerialQueue;
+-(instancetype)initWithEntityType:(NSEntityDescription *)entityType;
 @end
 
 NS_ASSUME_NONNULL_END

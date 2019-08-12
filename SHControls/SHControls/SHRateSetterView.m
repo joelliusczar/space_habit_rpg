@@ -18,6 +18,7 @@
 
 -(void)setIntervalSize:(NSInteger)intervalSize{
   _intervalSize = intervalSize;
+  self.rateStep.value = intervalSize;
   [self updateLabelTextWithInterval:intervalSize];
 }
 

@@ -30,4 +30,17 @@
   return [self dtoCopy];
 }
 
+
+-(NSString*)debugDescription{
+  NSString *desc = [NSString stringWithFormat:@"isDayActive: %@ "
+    "forrange: %ld backrange: %ld",(self.isDayActive ? @"Yes" : @"No"),
+    self.forrange,self.backrange];
+  return desc;
+}
+
+
+-(NSString*)description{
+  return [self debugDescription];
+}
+
 @end

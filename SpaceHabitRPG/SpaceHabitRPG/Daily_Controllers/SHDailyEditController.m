@@ -101,29 +101,6 @@
     self.editControls = [self buildControlKeep];
     [self setResponders:self.editControls];
     self.editorContainerController.editControls = self.editControls;
-    
-}
-
-
-- (IBAction)nameBox_editingChange_action:(SHTextField *)sender forEvent:(UIEvent *)event {
-  (void)event;
-  [self.context performBlock:^{
-    SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
-    daily.dailyName = sender.text;
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-      [self modelTouched];
-    }];
-  }];
-}
-
-
--(void)pickerSelection_action:(UIPickerView *)picker
-  onItemFlexibleList:(SHItemFlexibleListView *)itemFlexibleList
-  forEvent:(UIEvent *)event
-{
-  #warning clean up
-  (void)picker; (void)itemFlexibleList; (void)event;
-  [self.editorContainerController enableSave];
 }
 
 
@@ -142,9 +119,7 @@
   UIViewController *cellViewController = self.editControls.controlList[indexPath.row];
   UIView *view = cellViewController.view;
   view.translatesAutoresizingMaskIntoConstraints = NO;
-  UIColor *bgColor = self.view.backgroundColor;
-  //[cellView changeBackgroundColorTo:bgColor];
-  //cell.backgroundColor = self.view.backgroundColor;
+
   cell.contentView.backgroundColor = UIColor.redColor;
   [self addChildViewController:cellViewController];
   [cell.contentView addSubview:view];
@@ -178,7 +153,7 @@
 
 -(void)saveEdit{
   NSManagedObjectContext *context = self.context;
-  NSString *updatedActiveDays = self.activeDays.activeDaysJson;
+  NSString *updatedActiveDays = [self.activeDays activeDaysAsJson];
   [context performBlock:^{
     SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
     daily.activeDays = updatedActiveDays;
@@ -239,36 +214,6 @@
 }
     
     
--(void)rateStep_valueChanged_action:(SHEventInfo *)eventInfo {
-  UIStepper *sender = (UIStepper *)eventInfo.senderStack[0];
-  [self.context performBlock:^{
-    SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
-    int32_t rate = shFilterRate(sender.value);
-    #warning cleanup
-    //daily.rate = rate;
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-      sender.value = rate;
-      [self modelTouched];
-    }];
-  }];
-}
-    
-    
--(void)activeDaySwitch_press_action:(SHEventInfo *)eventInfo{
-  (void)eventInfo;
-  SHSwitch *sender = (SHSwitch *)eventInfo.senderStack[0];
-  #warning clean up
-  [self.context performBlock:^{
-    SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
-    BOOL isInverse = shIsInverseRateType(daily.rateType);
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-      [self.activeDays flipDayOfWeek:sender.tag forPolarity:isInverse];
-      [self modelTouched];
-    }];
-  }];
-}
-    
-    
 -(void)sld_valueChanged_action:(SHEventInfo *)eventInfo{
   UISlider *sender = (UISlider *)eventInfo.senderStack[0];
   SHImportanceSliderView *sliderView = (SHImportanceSliderView *)eventInfo.senderStack[1];
@@ -289,7 +234,9 @@
 
 
 -(void)modelTouched{
-  [self.editorContainerController enableSave];
+  if(self.nameBox.text.length > 0) {
+    [self.editorContainerController enableSave];
+  }
 }
 
 

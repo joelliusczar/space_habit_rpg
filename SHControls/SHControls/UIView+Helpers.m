@@ -123,11 +123,9 @@ I know this is now clutter and should be deleted, it's widespread enough
 that it would be a pain in the ass to add back if I change my mind.
 */
 -(void)checkForAndApplyVisualChanges{
-#ifdef INVERT_DISABLED
+#if INVERT_DISABLED
   return;
-#endif
-#ifndef INVERT_DISABLED //doing the if and if not was easier
-// than pragma ignore warning
+#else
   [self applyVisualChangeToAllSubviews];
 #endif
 }

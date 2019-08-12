@@ -325,9 +325,11 @@
   }
 }
 
+
 -(void)setToShowStory:(BOOL)shouldShowStory{
     self.configDTO.storyModeisOn = shouldShowStory;
 }
+
 
 -(void)showSectorChoiceView:(NSArray<SHSectorDTO *> *)sectorChoices{
     SHSectorChoiceViewController *sectorChoiceView = [SHSectorChoiceViewController
@@ -345,11 +347,13 @@
     self.heroHPBar.progress = hpPercent;
 }
 
+
 -(void)updateHeroXPUI:(int)part whole:(int)whole{
     self.xpLbl.text = [NSString stringWithFormat:@"XP:%d/%d",part,whole];
     float xpPercent = ((float)part)/whole;
     self.xpBar.progress = xpPercent;
 }
+
 
 -(void)updateMonsterHPUI:(int)part whole:(int)whole{
     self.monsterDescLbl.text =
@@ -434,6 +438,7 @@ context:(void *)context{
   }];
 }
 
+
 -(void)setupHero:(void (^)(void))completionBlock{
   NSManagedObjectContext *context = [self.dataController newBackgroundContext];
   //what the hell, we're doing it async everywhere else in this
@@ -516,6 +521,7 @@ context:(void *)context{
     }];
   }];
 }
+
 
 -(void)afterIntroCompleted:(NSManagedObjectContext*)context{
   [self prepareScreen];

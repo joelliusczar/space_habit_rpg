@@ -12,11 +12,12 @@
 #import <SHCommon/SHInterceptor.h>
 #import <SHControls/UIScrollView+ScrollAdjusters.h>
 #import <SHGlobal/SHConstants.h>
-#import <SHControlsSpecial/SHRateSetContainer.h>
 #import <SHControls/SHItemFlexibleListView.h>
 #import <SHControls/SHButton.h>
 #import <SHControls/SHFrontEndConstants.h>
 #import <SHControls/UIViewController+Helper.h>
+#import <SHModels/SHTitleProtocol.h>
+#import <SHData/NSManagedObjectContext+Helper.h>
 @import CoreGraphics;
 
 
@@ -138,12 +139,26 @@
 
 -(IBAction)saveBtn_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
   (void)sender; (void)event;
-  if(self.editingScreen.nameStr.length){
+  if(self.itemNameInput.text.length){
     [self.editingScreen saveEdit];
     [self popVCFromFront];
     return;
   }
   [self alertMissingInfo];
+}
+
+
+-(IBAction)nameBox_editingChange_action:(UITextField *)sender forEvent:(UIEvent *)event {
+  (void)event;
+  NSAssert(self.context,@"You need a context, bro!");
+  NSString *text = sender.text;
+  [self.context performBlock:^{
+    id<SHTitleProtocol> model = (id<SHTitleProtocol>)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
+    model.title = text;
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+      [self enableSave];
+    }];
+  }];
 }
 
 
@@ -186,16 +201,6 @@
 }
 
 
--(void)scrollByOffset:(CGFloat)offset{
-  //scroll past the title control part but no farther for
-  //the scrollContainer which houses our editing controls
-//  if(self.scrollContainer.contentOffset.y < SH_EDIT_SCREEN_TOP_CONTROL_HEIGHT){
-//    [self.scrollContainer scrollByOffset:offset];
-//  }
-  
-}
-
-
 -(void)scrollVisibleToControl:(SHView *)control{
   NSUInteger rowNum = [self.editControls.controlList indexOfObject:control];
   NSIndexPath *indexPath = [NSIndexPath indexPathForRow:rowNum inSection:0];
@@ -203,9 +208,6 @@
     atScrollPosition:UITableViewScrollPositionBottom
     animated:YES];
 }
-
-
--(void)respondToHeightResize:(CGFloat)change{(void)change;}
 
 
 -(void)pushViewControllerToNearestParent:(UIViewController *)child{

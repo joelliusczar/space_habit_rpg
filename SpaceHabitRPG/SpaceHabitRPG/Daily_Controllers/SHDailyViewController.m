@@ -174,23 +174,32 @@ static NSString *const EntityName = @"Daily";
 
 -(void)controllerWillChangeContent:(NSFetchedResultsController *)controller{
   (void)controller;
-  [self.dailiesTable beginUpdates];
+  NSAssert(![NSThread isMainThread],@"this method should only be called from background");
+  [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+    [self.dailiesTable beginUpdates];
+  }];
 }
 
 
 -(void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
   (void)controller;
-  [self.dailiesTable endUpdates];
+  NSAssert(![NSThread isMainThread],@"this method should only be called from background");
+  [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+    [self.dailiesTable endUpdates];
+  }];
 }
 
 
 - (IBAction)addDailyBtn_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
   (void)sender; (void)event;
-  SHObjectIDWrapper *objectIDWrapper = [[SHObjectIDWrapper alloc] init];
-  objectIDWrapper.entityType = SHDaily.entity;
-  [self setupEditorWithObjectIDWrapper:objectIDWrapper];
+  SHObjectIDWrapper *objectIDWrapper = [[SHObjectIDWrapper alloc] initWithEntityType:SHDaily.entity];
+  NSManagedObjectContext *context = [self.dailyContext createChildContext];
+  [self setupEditorWithObjectIDWrapper:objectIDWrapper withContext:context];
+  
   self.central.editController.editingScreen = self.dailyEditor;
   self.central.editController.title = @"Daily";
+  self.central.editController.context = context;
+  self.central.editController.objectIDWrapper = objectIDWrapper;
   [self.central arrangeAndPushChildVCToFront:self.central.editController];
 }
 
@@ -214,9 +223,13 @@ static NSString *const EntityName = @"Daily";
         objectIDWrapper.objectID = rowObject.objectID;
         objectIDWrapper.entityType = SHDaily.entity;
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-          [self setupEditorWithObjectIDWrapper:objectIDWrapper];
+          NSManagedObjectContext *context = [self.dailyContext createChildContext];
+          [self setupEditorWithObjectIDWrapper:objectIDWrapper
+            withContext:context];
           self.central.editController.editingScreen = self.dailyEditor;
           self.central.editController.title = @"Daily";
+          self.central.editController.context = context;
+          self.central.editController.objectIDWrapper = objectIDWrapper;
           [self.central arrangeAndPushChildVCToFront:self.central.editController];
         }];
       }];
@@ -255,26 +268,28 @@ This will be called the user creates a new daily, checks it off, or deletes one
   forChangeType:(NSFetchedResultsChangeType)type
   newIndexPath:(NSIndexPath *)newIndexPath
 {
+  NSAssert(![NSThread isMainThread],@"this method should only be called from background");
   NSAssert(controller==self.incompleteItems||controller==self.completeItems,
     @"controller is pointing to an invalid objects");
   (void)anObject;
   NSInteger sectionNum = controller==self.incompleteItems?SH_INCOMPLETE:SH_COMPLETE;
   NSIndexPath *customExistingPath = [NSIndexPath indexPathForRow:indexPath.row inSection:sectionNum];
   NSIndexPath *customNewPath = [NSIndexPath indexPathForRow:newIndexPath.row inSection:sectionNum];
-  
-  switch (type) {
-    case NSFetchedResultsChangeInsert:
-      [self.dailiesTable insertRowsAtIndexPaths:@[customNewPath] withRowAnimation:UITableViewRowAnimationFade];
-      break;
-    case NSFetchedResultsChangeUpdate:
-      [self configureCell:[self.dailiesTable cellForRowAtIndexPath:customExistingPath] atIndexPath:customExistingPath];
-      break;
-    case NSFetchedResultsChangeDelete:
-      [self.dailiesTable deleteRowsAtIndexPaths:@[customExistingPath] withRowAnimation:UITableViewRowAnimationFade];
-      break;
-    default:
-      break;
-  }
+  [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+    switch (type) {
+      case NSFetchedResultsChangeInsert:
+        [self.dailiesTable insertRowsAtIndexPaths:@[customNewPath] withRowAnimation:UITableViewRowAnimationFade];
+        break;
+      case NSFetchedResultsChangeUpdate:
+        [self configureCell:[self.dailiesTable cellForRowAtIndexPath:customExistingPath] atIndexPath:customExistingPath];
+        break;
+      case NSFetchedResultsChangeDelete:
+        [self.dailiesTable deleteRowsAtIndexPaths:@[customExistingPath] withRowAnimation:UITableViewRowAnimationFade];
+        break;
+      default:
+        break;
+    }
+  }];
 }
 
 -(void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
@@ -282,10 +297,10 @@ This will be called the user creates a new daily, checks it off, or deletes one
   [dailyCell refreshCell:indexPath];
 }
 
--(void)setupEditorWithObjectIDWrapper:(SHObjectIDWrapper*)objectIDWrapper{
+-(void)setupEditorWithObjectIDWrapper:(SHObjectIDWrapper*)objectIDWrapper
+  withContext:(NSManagedObjectContext *)context
+{
   NSManagedObjectContext *parentContext = self.dailyContext;
-  NSManagedObjectContext *context = [self.dailyContext createChildContext];
-  
   __weak NSNotificationCenter *center = NSNotificationCenter.defaultCenter;
   __weak typeof(self) weakSelf = self;
   __block id token = [center addObserverForName:NSManagedObjectContextDidSaveNotification

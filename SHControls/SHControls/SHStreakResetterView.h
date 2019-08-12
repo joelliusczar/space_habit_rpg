@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SHStreakResetterDelegateProtocol.h"
-#import "SHView.h"
 #import "SHButton.h"
+#import "SHViewController.h"
 
 IB_DESIGNABLE
-@interface SHStreakResetterView : SHView
+@interface SHStreakResetterView : SHViewController
 @property (weak,nonatomic) IBOutlet UILabel *streakCountLbl;
 @property (weak,nonatomic) IBOutlet SHButton *streakResetBtn;
 @property (copy,nonatomic) void (^streakReset)(void);

@@ -26,7 +26,6 @@
 		2747C4EA2048E1EE00FB5669 /* SHSectorChoiceCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4E82048E1ED00FB5669 /* SHSectorChoiceCellController.m */; };
 		2747C4EB2048E1EE00FB5669 /* SHSectorChoiceCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2747C4E92048E1EE00FB5669 /* SHSectorChoiceCellController.xib */; };
 		2747C4EE2048E2EC00FB5669 /* SHStoryConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4ED2048E2EC00FB5669 /* SHStoryConstants.m */; };
-		2747C4F52048E5DB00FB5669 /* DailyCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2747C4F32048E5DA00FB5669 /* DailyCellController.xib */; };
 		2747C4F62048E5DB00FB5669 /* SHDailyCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4F42048E5DA00FB5669 /* SHDailyCellController.m */; };
 		2747C50320490E3400FB5669 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C50220490E3400FB5669 /* main.m */; };
 		2747C515204A47BF00FB5669 /* SHSectorChoicePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2747C514204A47BE00FB5669 /* SHSectorChoicePicker.xib */; };
@@ -39,6 +38,7 @@
 		27B15AAB20524CDC0045B226 /* SHControlsSpecial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AAA20524CDC0045B226 /* SHControlsSpecial.framework */; };
 		27B15AAD20524CFE0045B226 /* SHControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AAC20524CFE0045B226 /* SHControls.framework */; };
 		27B15AAF20524D6E0045B226 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AAE20524D6E0045B226 /* SHModels.framework */; };
+		27B2B31E2300FF1400663644 /* SHDailyCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27B2B31D2300FF1400663644 /* SHDailyCellController.xib */; };
 		27D5D4A521FCD18D00A78C35 /* SHStoryDumpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27D5D4A421FCD18D00A78C35 /* SHStoryDumpView.xib */; };
 		27E5169B21FE40B000832DFE /* SHCentralMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E5169A21FE40B000832DFE /* SHCentralMenu.xib */; };
 		27ED11B2229B431C00E8EB32 /* SHDailyEditFull.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27ED11B1229B431C00E8EB32 /* SHDailyEditFull.xib */; };
@@ -78,7 +78,6 @@
 		2747C4EC2048E2EB00FB5669 /* SHStoryConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHStoryConstants.h; sourceTree = "<group>"; };
 		2747C4ED2048E2EC00FB5669 /* SHStoryConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHStoryConstants.m; sourceTree = "<group>"; };
 		2747C4F22048E5DA00FB5669 /* SHDailyCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDailyCellController.h; sourceTree = "<group>"; };
-		2747C4F32048E5DA00FB5669 /* DailyCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyCellController.xib; sourceTree = "<group>"; };
 		2747C4F42048E5DA00FB5669 /* SHDailyCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDailyCellController.m; sourceTree = "<group>"; };
 		2747C50220490E3400FB5669 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2747C5042049112800FB5669 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -97,6 +96,7 @@
 		27B15AAA20524CDC0045B226 /* SHControlsSpecial.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHControlsSpecial.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHControlsSpecial.framework"; sourceTree = "<group>"; };
 		27B15AAC20524CFE0045B226 /* SHControls.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHControls.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHControls.framework"; sourceTree = "<group>"; };
 		27B15AAE20524D6E0045B226 /* SHModels.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHModels.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHModels.framework"; sourceTree = "<group>"; };
+		27B2B31D2300FF1400663644 /* SHDailyCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHDailyCellController.xib; sourceTree = "<group>"; };
 		27D5D4A421FCD18D00A78C35 /* SHStoryDumpView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHStoryDumpView.xib; sourceTree = "<group>"; };
 		27E5169A21FE40B000832DFE /* SHCentralMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHCentralMenu.xib; sourceTree = "<group>"; };
 		27ED11B1229B431C00E8EB32 /* SHDailyEditFull.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHDailyEditFull.xib; sourceTree = "<group>"; };
@@ -122,8 +122,8 @@
 		2733D214229402DB0090B7F1 /* xibs */ = {
 			isa = PBXGroup;
 			children = (
+				27B2B31D2300FF1400663644 /* SHDailyCellController.xib */,
 				2747C4B02048D7B000FB5669 /* SHDailyViewController.xib */,
-				2747C4F32048E5DA00FB5669 /* DailyCellController.xib */,
 				2747C519204A494A00FB5669 /* SHDailyEditView.xib */,
 				27ED11B1229B431C00E8EB32 /* SHDailyEditFull.xib */,
 			);
@@ -300,10 +300,10 @@
 				27ED11B2229B431C00E8EB32 /* SHDailyEditFull.xib in Resources */,
 				2747C4EB2048E1EE00FB5669 /* SHSectorChoiceCellController.xib in Resources */,
 				2747C4A02048D54700FB5669 /* SHCentralViewController.xib in Resources */,
-				2747C4F52048E5DB00FB5669 /* DailyCellController.xib in Resources */,
 				2747C515204A47BF00FB5669 /* SHSectorChoicePicker.xib in Resources */,
 				2747C4E12048E12C00FB5669 /* SHSectorDescriptionViewController.xib in Resources */,
 				2747C4C32048D83C00FB5669 /* SHIntroViewController.xib in Resources */,
+				27B2B31E2300FF1400663644 /* SHDailyCellController.xib in Resources */,
 				2747C4CB2048D8CF00FB5669 /* SHMenuViewController.xib in Resources */,
 				2747C4AA2048D75300FB5669 /* SHEditNavigationController.xib in Resources */,
 				2747C4B42048D7B100FB5669 /* SHDailyViewController.xib in Resources */,

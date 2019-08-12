@@ -8,7 +8,6 @@
 
 #import "SHDailyEditController+ControlLoaders.h"
 #import <SHControls/AllSHControls.h>
-#import <SHControlsSpecial/SHRateSetContainer.h>
 #import <SHControlsSpecial/SHReminderListView.h>
 #import <SHControlsSpecial/SHRepeatLinkViewController.h>
 #import <SHControlsSpecial/SHRemindersLinkViewController.h>
@@ -26,6 +25,12 @@
   NSManagedObjectContext *context = self.context;
   SHObjectIDWrapper *objectIDWrapper = self.objectIDWrapper;
   SHDailyActiveDays *activeDays = self.activeDays;
+  __block BOOL newlyInserted = NO;
+  [context performBlockAndWait:^{
+    SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:objectIDWrapper];
+    newlyInserted = daily.inserted;
+  }];
+  
   [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
     (void)controlExtent;
     SHNoteView *note = [[SHNoteView alloc] init];
@@ -68,98 +73,65 @@
     return remindersLink;
   }];
   
-//  [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
-//    (void)controlExtent;
-//    NSBundle *bundle = [NSBundle bundleForClass:SHRateSetContainer.class];
-//    SHRateSetContainer *rateContainer = [[SHRateSetContainer alloc]
-//      initWithNibName:@"SHRateSetContainer"
-//      bundle:bundle];
-//    rateContainer.activeDays = activeDays;
-//    rateContainer.editorContainer = editorContainer;
-//    [rateContainer setupWithContext:context
-//      andObjectID:objectIDWrapper];
-//    [keep forResponderKey:@"touch" doSetupAction:^(id responder){
-//      rateContainer.touchCallback = responder;
-//    }];
-//    [keep forResponderKey:@"self" doSetupAction:^(id responder){
-//        rateContainer.delegate = responder;
-//    }];
-//    [keep forResponderKey:@"resize" doSetupAction:^(id responder){
-//        rateContainer.resizeResponder = responder;
-//    }];
-//    [keep forResponderKey:@"self" doSetupAction:^(id responder){
-//        rateContainer.tblDelegate = responder;
-//    }];
-//    [keep forResponderKey:@"self" doSetupAction:^(id responder){
-//        rateContainer.touchCallback = responder;
-//    }];
-//    return rateContainer;
-//  }];
-//
-//  [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
-//    (void)controlExtent;
-//    SHImportanceSliderView *difficultySld = [[SHImportanceSliderView alloc] init];
-//    difficultySld.controlName = @"difficulty";
-//    [context performBlock:^{
-//      SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:objectIDWrapper];
-//      int32_t difficulty = daily.difficulty;
-//      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-//        [difficultySld updateImportanceSlider:difficulty];
-//      }];
-//    }];
-//    [keep forResponderKey:@"self" doSetupAction:^(id responder){
-//        difficultySld.delegate = responder;
-//    }];
-//    return difficultySld;
-//  } withKey:@"difficultySld"];
-//
-//  [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
-//    (void)controlExtent;
-//    SHImportanceSliderView *urgencySld = [[SHImportanceSliderView alloc] init];
-//    urgencySld.controlName = @"urgency";
-//    [context performBlock:^{
-//      SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:objectIDWrapper];
-//      int32_t urgency = daily.urgency;
-//      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-//        [urgencySld updateImportanceSlider:urgency];
-//      }];
-//    }];
-//    [keep forResponderKey:@"self" doSetupAction:^(id responder){
-//        urgencySld.delegate = responder;
-//    }];
-//    return urgencySld;
-//  } withKey:@"urgencySld"];
-//
-//  [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
-//    (void)keep; (void)controlExtent;
-//    SHStreakResetterView *resetter = [[SHStreakResetterView alloc] init];
-//    resetter.streakCountLbl.hidden = NO;
-//    resetter.streakResetBtn.hidden = NO;
-//    [context performBlock:^{
-//      SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:objectIDWrapper];
-//      int32_t streakLength = daily.streakLength;
-//      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-//        resetter.streakCountLbl.text = [NSString stringWithFormat:@"Streak %d",streakLength];
-//      }];
-//    }];
-//    return resetter;
-//  }];
-//
-//  [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
-//    (void)controlExtent;
-//    SHReminderListView *list = [SHReminderListView newWithContext:context
-//      withObjectIDWrapper:objectIDWrapper];
-//
-//    [keep forResponderKey:@"self" doSetupAction:^(id responder){
-//        list.delegate = responder;
-//    }];
-//    [keep forResponderKey:@"resize" doSetupAction:^(id responder){
-//        list.resizeResponder = responder;
-//    }];
-//    return list;
-//  }];
-//
+  [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
+    (void)controlExtent;
+    NSBundle *bundle = [NSBundle bundleForClass:SHImportanceSliderView.class];
+    SHImportanceSliderView *difficultySld = [[SHImportanceSliderView alloc]
+      initWithNibName:NSStringFromClass(SHImportanceSliderView.class)
+      bundle:bundle];
+    difficultySld.controlName = @"difficulty";
+    [context performBlock:^{
+      SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:objectIDWrapper];
+      int32_t difficulty = daily.difficulty;
+      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [difficultySld updateImportanceSlider:difficulty];
+      }];
+    }];
+    [keep forResponderKey:@"self" doSetupAction:^(id responder){
+        difficultySld.delegate = responder;
+    }];
+    return difficultySld;
+  } withKey:@"difficultySld"];
+
+  [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
+    (void)controlExtent;
+    NSBundle *bundle = [NSBundle bundleForClass:SHImportanceSliderView.class];
+    SHImportanceSliderView *urgencySld = [[SHImportanceSliderView alloc]
+      initWithNibName:NSStringFromClass(SHImportanceSliderView.class)
+      bundle:bundle];
+    urgencySld.controlName = @"urgency";
+    [context performBlock:^{
+      SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:objectIDWrapper];
+      int32_t urgency = daily.urgency;
+      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [urgencySld updateImportanceSlider:urgency];
+      }];
+    }];
+    [keep forResponderKey:@"self" doSetupAction:^(id responder){
+        urgencySld.delegate = responder;
+    }];
+    return urgencySld;
+  } withKey:@"urgencySld"];
   
+  if(!newlyInserted) {
+    [keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
+      (void)keep; (void)controlExtent;
+      NSBundle *bundle = [NSBundle bundleForClass:SHStreakResetterView.class];
+      SHStreakResetterView *resetter = [[SHStreakResetterView alloc]
+        initWithNibName:NSStringFromClass(SHStreakResetterView.class)
+        bundle:bundle];
+      resetter.streakCountLbl.hidden = NO;
+      resetter.streakResetBtn.hidden = NO;
+      [context performBlock:^{
+        SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:objectIDWrapper];
+        int32_t streakLength = daily.streakLength;
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+          resetter.streakCountLbl.text = [NSString stringWithFormat:@"Streak %d",streakLength];
+        }];
+      }];
+      return resetter;
+    }];
+  }
   
   return keep;
 }
