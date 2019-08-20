@@ -17,8 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSManagedObject*)newEntity:(NSEntityDescription*)entityType;
 
 -(NSManagedObject*)getExistingOrNewEntityWithObjectID:(SHObjectIDWrapper*)wrappedID;
+-(NSManagedObject*)getEntityOrNil:(SHObjectIDWrapper *)objectId withError:(NSError **)error;
 -(NSArray<NSManagedObject *> *)getItemsWithRequest:(NSFetchRequest *) fetchRequest;
 -(NSFetchedResultsController *)getItemFetcher:(NSFetchRequest *)fetchRequest;
+-(NSFetchedResultsController *)getItemFetcher:(NSFetchRequest *)fetchRequest
+  withSectionKeyPath:(NSString *)sectionKeyPath;
 +(NSManagedObject*)newEntityUnattached:(NSEntityDescription*)entityType;
 -(instancetype)createChildContext;
 @end

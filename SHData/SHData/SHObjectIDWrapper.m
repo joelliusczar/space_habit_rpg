@@ -40,13 +40,14 @@
 }
 
 
--(instancetype)initWithEntityType:(NSEntityDescription *)entityType{
+-(instancetype)initWithEntityType:(NSEntityDescription *)entityType
+  withContext:(NSManagedObjectContext *)context
+{
   if(self = [self init]){
     _entityType = entityType;
+    _context = context;
   }
   return self;
 }
-
-
 
 @end

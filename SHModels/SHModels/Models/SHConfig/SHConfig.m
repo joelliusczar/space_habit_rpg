@@ -9,6 +9,7 @@
 #import "SHConfig.h"
 #import <SHGlobal/SHConstants.h>
 #import <SHCommon/SHCommonUtils.h>
+#import <SHCommon/NSDate+DateHelper.h>
 
 
 @implementation SHConfig
@@ -28,6 +29,12 @@
   self.allowReport = NO;
   self.userId = nil;
   self.invertColors = NO;
+}
+
+
+-(NSDate*)userTodayStart{
+  NSDate *result = [NSDate.date.dayStart timeAfterHours:self.dayStartHour minutes:0 seconds:0];
+  return result;
 }
 
 

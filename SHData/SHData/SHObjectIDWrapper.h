@@ -13,9 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHObjectIDWrapper : NSObject
 @property (strong,nonatomic) NSManagedObjectID *objectID;
+@property (strong,nonatomic) NSManagedObjectContext *context;
 @property (strong,nonatomic) NSEntityDescription *entityType;
 @property (strong,nonatomic) dispatch_queue_t idSerialQueue;
--(instancetype)initWithEntityType:(NSEntityDescription *)entityType;
+-(instancetype)initWithEntityType:(NSEntityDescription *)entityType
+  withContext:(NSManagedObjectContext *)context;
 @end
 
 NS_ASSUME_NONNULL_END

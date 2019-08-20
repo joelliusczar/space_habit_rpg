@@ -24,6 +24,9 @@
 
 
 -(NSArray<NSSortDescriptor *> *)buildFetchDescriptors{
+  NSSortDescriptor *sortByLastActivation= [[NSSortDescriptor alloc]
+    initWithKey:@"lastActivationDateTime" ascending:NO];
+  
   NSSortDescriptor *sortByUserOrder = [[NSSortDescriptor alloc]
     initWithKey:@"customUserOrder" ascending:NO];
 
@@ -32,19 +35,16 @@
 
   NSSortDescriptor *sortByDifficulty = [[NSSortDescriptor alloc]
     initWithKey:@"difficulty" ascending:YES];
-  return [NSArray arrayWithObjects:sortByUserOrder,sortByUrgency,sortByDifficulty, nil];
+  return @[sortByLastActivation,sortByUserOrder,sortByUrgency,sortByDifficulty];
 }
 
 
 -(NSFetchedResultsController *)getUnfinishedDailiesController:(NSDate *)todayStart{
-  NSPredicate *filter = [NSPredicate predicateWithFormat:@"isActive = 1"
-   " AND (lastActivationDateTime = NULL"
-   " OR lastActivationDateTime < %@)"
-   ,todayStart];
+  NSPredicate *filter = [NSPredicate predicateWithFormat:@"isActive = 1"];
   NSFetchRequest<SHDaily*> *request = SHDaily.fetchRequest;
   request.predicate = filter;
   request.sortDescriptors = [self buildFetchDescriptors];
-  NSFetchedResultsController *resultsController = [self.context getItemFetcher:request];
+  NSFetchedResultsController *resultsController = [self.context getItemFetcher:request withSectionKeyPath:@"isCompleted"];
   return resultsController;
 }
 

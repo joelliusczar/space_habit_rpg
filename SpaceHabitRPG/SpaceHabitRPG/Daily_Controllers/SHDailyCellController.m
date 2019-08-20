@@ -13,12 +13,14 @@
 #import <SHCommon/NSDate+DateHelper.h>
 #import <SHCommon/SHSingletonCluster.h>
 #import <SHData/NSManagedObjectContext+Helper.h>
+#import <SHModels/NSManagedObjectContext+SHModelHelper.h>
+#import <SHModels/SHDailyActivator.h>
 @import CoreGraphics;
 
 
 
 @interface SHDailyCellController()
-@property (strong,nonatomic) NSManagedObjectID *objectID;
+@property (strong,nonatomic) SHObjectIDWrapper *objectID;
 @property (strong,nonatomic) NSManagedObjectContext *context;
 @property (weak,nonatomic) SHDailyViewController *parentDailyController;
 @property (assign,nonatomic) NSInteger rowIndex;
@@ -42,7 +44,7 @@
   [super awakeFromNib];
 }
 
--(void)setupCell:(NSManagedObjectID *)objectID withContext:(NSManagedObjectContext*)context
+-(void)setupCell:(SHObjectIDWrapper *)objectID withContext:(NSManagedObjectContext*)context
   andRow:(NSIndexPath *)rowInfo
 {
   self.context = context;
@@ -55,7 +57,7 @@
   self.sectionIndex = rowInfo.section;
   [self.context performBlock:^{
     NSError *error = nil;
-    SHDaily *daily = (SHDaily*)[self.context existingObjectWithID:self.objectID error:&error];
+    SHDaily *daily = (SHDaily*)[self.context getEntityOrNil:self.objectID withError:&error];
     NSString *dailyName = daily.dailyName;
     int32_t streakLength = daily.streakLength;
     int32_t rate = daily.rate;
@@ -100,14 +102,10 @@
 
 -(IBAction)completeBtn_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
   (void)sender; (void)event;
-//  if(self.model.sectionNum == SH_INCOMPLETE){
-//    self.model.sectionNum  = SH_COMPLETE;
-//    [self.parentDailyController completeDaily:self.model];
-//  }
-//  else{
-//    self.model.sectionNum  = SH_INCOMPLETE;
-//    [self.parentDailyController undoCompletedDaily:self.model];
-//  }
+  SHDailyActivator *activator = [[SHDailyActivator alloc] initWithContext:self.context
+    withObjectId:self.objectID];
+  [activator activate];
+  
 }
 
 @end

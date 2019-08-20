@@ -14,6 +14,7 @@
 #import <SHGlobal/SHConstants.h>
 #import <SHCommon/NSDate+DateHelper.h>
 #import <SHData/NSManagedObjectContext+Helper.h>
+#import "NSManagedObjectContext+SHModelHelper.h"
 
 @implementation SHDaily
 
@@ -152,6 +153,16 @@
 
 -(NSMutableDictionary*)simpleMapable{
   return [NSDictionary objectToDictionary:self];
+}
+
+-(BOOL)isCompleted{
+  __block NSInteger dayStartHour = 0;
+  [self.managedObjectContext performBlockAndWait:^{
+    SHConfig *config = self.managedObjectContext.sh_globalConfig;
+    dayStartHour = config.dayStartHour;
+  }];
+  NSDate *today = [NSDate.date.dayStart timeAfterHours:dayStartHour minutes:0 seconds:0];
+  return nil == self.lastActivationDateTime || self.lastActivationDateTime.timeIntervalSince1970 < today.timeIntervalSince1970;
 }
 
 @end

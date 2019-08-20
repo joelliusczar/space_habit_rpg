@@ -136,6 +136,7 @@ void cMakeHouses(void);
 +(void)cfArrayStuff;
 +(void)primitiveType;
 +(void)postInsertion;
++(void)switchSemantics;
 @end
 
 #import "Experiments+Charlie.h"

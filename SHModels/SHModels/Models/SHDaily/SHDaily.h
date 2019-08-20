@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong,nonatomic) SHDailyActiveDays *activeDaysContainer;
 -(void)setupInitialState;
 @property (readonly,nonatomic) int32_t rate;
+@property (readonly,nonatomic) BOOL isCompleted;
 @end
 
 NS_ASSUME_NONNULL_END

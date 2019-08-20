@@ -46,6 +46,12 @@ static void _setupIfRequired(NSManagedObject *entity){
   return entity;
 }
 
+
+-(NSManagedObject*)getEntityOrNil:(SHObjectIDWrapper *)objectId withError:(NSError **)error{
+  if(nil == objectId || nil == objectId.objectID) return nil;
+  return [self existingObjectWithID:objectId.objectID error:error];
+}
+
 -(NSArray<NSManagedObject *> *)getItemsWithRequest:(NSFetchRequest *) fetchRequest{
   NSArray<NSManagedObject*> *results = nil;
   NSError *error = nil;
@@ -54,6 +60,19 @@ static void _setupIfRequired(NSManagedObject *entity){
     @throw [NSException dbException:error];
   }
   return results;
+}
+
+
+-(NSFetchedResultsController *)getItemFetcher:(NSFetchRequest *)fetchRequest
+  withSectionKeyPath:(NSString *)sectionKeyPath
+{
+  [fetchRequest setFetchBatchSize:0];
+  
+  return [[NSFetchedResultsController alloc]
+          initWithFetchRequest:fetchRequest
+          managedObjectContext:self
+          sectionNameKeyPath:sectionKeyPath
+          cacheName:nil];
 }
 
 

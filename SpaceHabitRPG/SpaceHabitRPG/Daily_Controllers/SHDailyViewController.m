@@ -8,6 +8,8 @@
 
 #define dummy 0 && defined(IS_DEV) && IS_DEV
 
+
+
 #import "SHDailyViewController.h"
 #import <SHGlobal/SHConstants.h>
 #import "SHEditNavigationController.h"
@@ -22,14 +24,18 @@
 #import <SHModels/SHMonster_Medium.h>
 #import <SHModels/SHDaily_Medium.h>
 #import <SHData/NSManagedObjectContext+Helper.h>
+#import <SHModels/NSManagedObjectContext+SHModelHelper.h>
 
 
 @interface SHDailyViewController ()
 
 @property (strong,nonatomic) SHDailyEditController *dailyEditor;
 @property (strong,nonatomic) UITableView *dailiesTable;
-@property (strong,nonatomic) NSFetchedResultsController *incompleteItems;
-@property (strong,nonatomic) NSFetchedResultsController *completeItems;
+@property (strong,nonatomic) NSFetchedResultsController *incompleteItemsFetcher;
+#if useOtherFetcher
+@property (strong,nonatomic) NSFetchedResultsController *completeItemsFetcher;
+#endif
+@property (strong,nonatomic) NSFetchedResultsController *dailyItemsFetcher;
 @property (strong,nonatomic) NSObject<P_CoreData> *dataController;
 @property (strong,nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
 @property (strong,nonatomic) Monster_Medium *monsterMedium;
@@ -86,8 +92,6 @@ static NSString *const EntityName = @"Daily";
    viewHeight);
   self.dailiesTable.delegate = self;
   self.dailiesTable.dataSource = self;
-  self.incompleteItems.delegate = self;
-  self.completeItems.delegate = self;
     
 }
 
@@ -100,8 +104,8 @@ static NSString *const EntityName = @"Daily";
 
 -(void)setuptab{
     UITabBarItem *tbi = [self tabBarItem];
-    [self setupData];
     [tbi setTitle:@"Dailies"];
+    [self setupData];
 }
 
 
@@ -120,55 +124,53 @@ static NSString *const EntityName = @"Daily";
 
 
 -(void)setupData{
-  SHConfigDTO *settings = self.central.configDTO;
-  NSDate *todayStart = [[NSDate date] dayStart];
-  todayStart = [todayStart timeAfterHours:settings.dayStartHour minutes:0 seconds:0];
-  SHDaily_Medium *dailyMedium = [SHDaily_Medium newWithContext:self.dailyContext];
-  self.incompleteItems = [dailyMedium getUnfinishedDailiesController:todayStart];
-  self.completeItems = [dailyMedium getFinishedDailiesController:todayStart];
-  
-  [self fetchUpdates];
-  
+  [self.dailyContext performBlock:^{
+    SHConfig *config = [self.dailyContext sh_globalConfig];
+    NSDate *todayStart = [[NSDate date] dayStart];
+    todayStart = [todayStart timeAfterHours:config.dayStartHour minutes:0 seconds:0];
+    SHDaily_Medium *dailyMedium = [SHDaily_Medium newWithContext:self.dailyContext];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+      self.incompleteItemsFetcher = [dailyMedium getUnfinishedDailiesController:todayStart];
+      self.incompleteItemsFetcher.delegate = self;
+      [self fetchUpdates];
+    }];
+  }];
 }
 
 
 -(void)fetchUpdates{
-  __block NSError *error = nil;
   [self.dailyContext performBlock:^{
-    [self.incompleteItems performFetch:&error];
-    [self.completeItems performFetch:&error];
+    NSLog(@"fetch: %@",NSThread.currentThread);
+    NSError *error = nil;
+    [self.incompleteItemsFetcher performFetch:&error];
+    if(error) @throw [NSException dbException:error];
   }];
 }
 
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
   (void)tableView;
-    return 2;
+  return self.incompleteItemsFetcher.sections.count;
 }
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
   (void)tableView;
-  __block NSInteger rowCount = 0;
-  [self.dailyContext performBlockAndWait:^{
-    if(section == SH_INCOMPLETE){
-      rowCount = self.incompleteItems.fetchedObjects.count;
-    }
-    else{
-        rowCount = self.completeItems.fetchedObjects.count;
-    }
-  }];
+  NSInteger rowCount = self.incompleteItemsFetcher.sections[section].numberOfObjects;
   return rowCount;
 }
 
+
+-(NSString*)controller:(NSFetchedResultsController *)controller
+  sectionIndexTitleForSectionName:(NSString *)sectionName
+{
+  return sectionName;
+}
+
+
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
   (void)tableView;
-  if(section == SH_INCOMPLETE){
-    return @"Unfinished";
-  }
-  else{
-    return @"Finished";
-  }
+  return self.incompleteItemsFetcher.sections[section].indexTitle;
 }
 
 
@@ -192,8 +194,9 @@ static NSString *const EntityName = @"Daily";
 
 - (IBAction)addDailyBtn_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
   (void)sender; (void)event;
-  SHObjectIDWrapper *objectIDWrapper = [[SHObjectIDWrapper alloc] initWithEntityType:SHDaily.entity];
   NSManagedObjectContext *context = [self.dailyContext createChildContext];
+  SHObjectIDWrapper *objectIDWrapper = [[SHObjectIDWrapper alloc] initWithEntityType:SHDaily.entity
+    withContext:context];
   [self setupEditorWithObjectIDWrapper:objectIDWrapper withContext:context];
   
   self.central.editController.editingScreen = self.dailyEditor;
@@ -213,9 +216,8 @@ static NSString *const EntityName = @"Daily";
     title:@"Edit"
     handler:^(UITableViewRowAction *action,NSIndexPath *path){
       (void)action;
-      NSFetchedResultsController *fetchController = path.section == SH_INCOMPLETE?
-        self.incompleteItems:
-        self.completeItems;
+
+      NSFetchedResultsController *fetchController = self.incompleteItemsFetcher;
       NSManagedObjectContext *fetchContext = fetchController.managedObjectContext;
       [fetchContext performBlockAndWait:^{
         NSManagedObject *rowObject = fetchController.fetchedObjects[indexPath.row];
@@ -244,19 +246,14 @@ static NSString *const EntityName = @"Daily";
   SHDailyCellController *cell = [SHDailyCellController getDailyCell:tableView WithParent:self];
   __block NSManagedObjectID *objectID = nil;
   [self.dailyContext performBlockAndWait:^{
-    if(indexPath.section == SH_INCOMPLETE){
-      objectID = ((SHDaily*)self.incompleteItems.fetchedObjects[indexPath.row]).objectID;
-    }
-    else{
-      objectID = ((SHDaily*)self.completeItems.fetchedObjects[indexPath.row]).objectID;
-    }
-    
+    objectID = ((SHDaily*)self.incompleteItemsFetcher.sections[indexPath.section].objects[indexPath.row]).objectID;
   }];
-  [cell setupCell:objectID withContext:self.dailyContext andRow:indexPath];
+  SHObjectIDWrapper *wrappedID = [[SHObjectIDWrapper alloc] initWithEntityType:SHDaily.entity
+    withContext:self.dailyContext];
+  wrappedID.objectID = objectID;
+  [cell setupCell:wrappedID withContext:self.dailyContext andRow:indexPath];
   return cell;
 }
-
-
 
 
 /*
@@ -269,23 +266,45 @@ This will be called the user creates a new daily, checks it off, or deletes one
   newIndexPath:(NSIndexPath *)newIndexPath
 {
   NSAssert(![NSThread isMainThread],@"this method should only be called from background");
-  NSAssert(controller==self.incompleteItems||controller==self.completeItems,
-    @"controller is pointing to an invalid objects");
-  (void)anObject;
-  NSInteger sectionNum = controller==self.incompleteItems?SH_INCOMPLETE:SH_COMPLETE;
-  NSIndexPath *customExistingPath = [NSIndexPath indexPathForRow:indexPath.row inSection:sectionNum];
-  NSIndexPath *customNewPath = [NSIndexPath indexPathForRow:newIndexPath.row inSection:sectionNum];
   [[NSOperationQueue mainQueue] addOperationWithBlock:^{
     switch (type) {
       case NSFetchedResultsChangeInsert:
-        [self.dailiesTable insertRowsAtIndexPaths:@[customNewPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self.dailiesTable insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
         break;
       case NSFetchedResultsChangeUpdate:
-        [self configureCell:[self.dailiesTable cellForRowAtIndexPath:customExistingPath] atIndexPath:customExistingPath];
+        [self configureCell:[self.dailiesTable cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
         break;
       case NSFetchedResultsChangeDelete:
-        [self.dailiesTable deleteRowsAtIndexPaths:@[customExistingPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self.dailiesTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         break;
+      case NSFetchedResultsChangeMove:
+        [self.dailiesTable moveRowAtIndexPath:indexPath toIndexPath:newIndexPath];
+        break;
+      default:
+        break;
+    }
+  }];
+}
+
+
+-(void)controller:(NSFetchedResultsController *)controller
+  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+  atIndex:(NSUInteger)sectionIndex
+  forChangeType:(NSFetchedResultsChangeType)type
+{
+  (void)controller; (void)sectionInfo;
+  [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+    switch(type) {
+      case NSFetchedResultsChangeInsert:
+        [self.dailiesTable insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+          withRowAnimation:UITableViewRowAnimationFade];
+        break;
+      case NSFetchedResultsChangeDelete:
+        [self.dailiesTable deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+          withRowAnimation:UITableViewRowAnimationFade];
+        break;
+      case NSFetchedResultsChangeUpdate:
+      case NSFetchedResultsChangeMove:
       default:
         break;
     }

@@ -12,6 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHConfig : NSManagedObject
+@property (readonly,nonatomic) NSDate *userTodayStart;
 -(void)setupInitialState;
 -(void)copyFrom:(NSObject *)object;
 @end

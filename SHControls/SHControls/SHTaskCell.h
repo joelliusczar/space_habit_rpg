@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SHTaskCell : UITableViewCell
+@property (copy,nonatomic) void (^cellActivationAction)(void);
 -(UIView *)loadDefaultXib;
 @end

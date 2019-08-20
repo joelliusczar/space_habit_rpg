@@ -72,6 +72,10 @@
 		27B15AA120524B5D0045B226 /* SHData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AA020524B5D0045B226 /* SHData.framework */; };
 		27B15AA320524B6B0045B226 /* SHGlobal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AA220524B6B0045B226 /* SHGlobal.framework */; };
 		27B2B31C22FFA5F300663644 /* SHTitleProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B2B31B22FFA5F300663644 /* SHTitleProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27B2B3212302448400663644 /* NSManagedObjectContext+SHModelHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B2B31F2302448400663644 /* NSManagedObjectContext+SHModelHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27B2B3222302448400663644 /* NSManagedObjectContext+SHModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B2B3202302448400663644 /* NSManagedObjectContext+SHModelHelper.m */; };
+		27B2B3252303811D00663644 /* SHDailyActivator.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B2B3232303811D00663644 /* SHDailyActivator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27B2B3262303811D00663644 /* SHDailyActivator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B2B3242303811D00663644 /* SHDailyActivator.m */; };
 		27BF501E22F77139005096BA /* SHDailyNextDueDateCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = 27BF501C22F77139005096BA /* SHDailyNextDueDateCalculator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27BF501F22F77139005096BA /* SHDailyNextDueDateCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BF501D22F77139005096BA /* SHDailyNextDueDateCalculator.m */; };
 		27CA863A22627D3D00AE8FDB /* SHDailyDTO.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA863822627D3D00AE8FDB /* SHDailyDTO.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -191,6 +195,10 @@
 		27B15AA020524B5D0045B226 /* SHData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHData.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHData.framework"; sourceTree = "<group>"; };
 		27B15AA220524B6B0045B226 /* SHGlobal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHGlobal.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHGlobal.framework"; sourceTree = "<group>"; };
 		27B2B31B22FFA5F300663644 /* SHTitleProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTitleProtocol.h; sourceTree = "<group>"; };
+		27B2B31F2302448400663644 /* NSManagedObjectContext+SHModelHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+SHModelHelper.h"; sourceTree = "<group>"; };
+		27B2B3202302448400663644 /* NSManagedObjectContext+SHModelHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+SHModelHelper.m"; sourceTree = "<group>"; };
+		27B2B3232303811D00663644 /* SHDailyActivator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDailyActivator.h; sourceTree = "<group>"; };
+		27B2B3242303811D00663644 /* SHDailyActivator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDailyActivator.m; sourceTree = "<group>"; };
 		27BF501C22F77139005096BA /* SHDailyNextDueDateCalculator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDailyNextDueDateCalculator.h; sourceTree = "<group>"; };
 		27BF501D22F77139005096BA /* SHDailyNextDueDateCalculator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDailyNextDueDateCalculator.m; sourceTree = "<group>"; };
 		27CA863822627D3D00AE8FDB /* SHDailyDTO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDailyDTO.h; sourceTree = "<group>"; };
@@ -304,7 +312,6 @@
 				27075D5822570BC500AD13AA /* DTOs */,
 				2747C4D32048DA8300FB5669 /* Monster+Extensions */,
 				2747C45D2046304B00FB5669 /* Sector+Extensions */,
-				2747C3AB2043B53100FB5669 /* Daily+Extensions */,
 				27CA86402264207A00AE8FDB /* Models */,
 				275EB497226A668B00012784 /* Model.xcdatamodeld */,
 				2747C3BC2043B67200FB5669 /* SHRateTypeHelper.h */,
@@ -332,17 +339,10 @@
 				275EB493226A613100012784 /* SHBundleKey.h */,
 				275EB494226A613100012784 /* SHBundleKey.m */,
 				27B2B31B22FFA5F300663644 /* SHTitleProtocol.h */,
+				27B2B31F2302448400663644 /* NSManagedObjectContext+SHModelHelper.h */,
+				27B2B3202302448400663644 /* NSManagedObjectContext+SHModelHelper.m */,
 			);
 			path = SHModels;
-			sourceTree = "<group>";
-		};
-		2747C3AB2043B53100FB5669 /* Daily+Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				27300A02224AE713006E419C /* SHDaily_Medium.h */,
-				27300A03224AE713006E419C /* SHDaily_Medium.m */,
-			);
-			path = "Daily+Extensions";
 			sourceTree = "<group>";
 		};
 		2747C3B82043B59100FB5669 /* Frameworks */ = {
@@ -404,6 +404,8 @@
 				2769C0B9227FEB5B00217480 /* SHListRateItem.h */,
 				2769C0B2227FD7C900217480 /* SHListRateItem.m */,
 				2769C0B5227FD86900217480 /* SHListRateItemCollection.h */,
+				27300A02224AE713006E419C /* SHDaily_Medium.h */,
+				27300A03224AE713006E419C /* SHDaily_Medium.m */,
 				2769C0B6227FD86900217480 /* SHListRateItemCollection.m */,
 				2769C0FD2286106000217480 /* SHRangeRateItem.h */,
 				2769C0FE2286106000217480 /* SHRangeRateItem.m */,
@@ -415,6 +417,8 @@
 				27BF501D22F77139005096BA /* SHDailyNextDueDateCalculator.m */,
 				2789889422F77B64007231E0 /* SHDailyMaxDaysBeforeSpanCalculator.h */,
 				2789889522F77B64007231E0 /* SHDailyMaxDaysBeforeSpanCalculator.m */,
+				27B2B3232303811D00663644 /* SHDailyActivator.h */,
+				27B2B3242303811D00663644 /* SHDailyActivator.m */,
 			);
 			path = SHDaily;
 			sourceTree = "<group>";
@@ -546,11 +550,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				27075D692259313B00AD13AA /* SHSectorDTO.h in Headers */,
+				27B2B3212302448400663644 /* NSManagedObjectContext+SHModelHelper.h in Headers */,
 				27B2B31C22FFA5F300663644 /* SHTitleProtocol.h in Headers */,
 				2789889622F77B64007231E0 /* SHDailyMaxDaysBeforeSpanCalculator.h in Headers */,
 				2787044522729F77009C9DD6 /* SHModelError.h in Headers */,
 				27075D6D225963A700AD13AA /* SHMonsterDTO.h in Headers */,
 				27CA863A22627D3D00AE8FDB /* SHDailyDTO.h in Headers */,
+				27B2B3252303811D00663644 /* SHDailyActivator.h in Headers */,
 				27075D71225A695300AD13AA /* SHConfigDTO.h in Headers */,
 				2747C3BE2043B67200FB5669 /* SHRateTypeHelper.h in Headers */,
 				2747C3CF2043BACB00FB5669 /* SHMonsterInfoDictionary.h in Headers */,
@@ -709,6 +715,7 @@
 				27CA86B42264207A00AE8FDB /* SHHero.m in Sources */,
 				2747C3CE2043BACB00FB5669 /* SHMonsterInfoDictionary.m in Sources */,
 				27075D662259308800AD13AA /* SHHeroDTO.m in Sources */,
+				27B2B3222302448400663644 /* NSManagedObjectContext+SHModelHelper.m in Sources */,
 				2733D213229065830090B7F1 /* SHDailyValidation.c in Sources */,
 				27CA869D2264207A00AE8FDB /* SHConfig.m in Sources */,
 				2769C1002286106000217480 /* SHRangeRateItem.m in Sources */,
@@ -722,6 +729,7 @@
 				27CA863B22627D3D00AE8FDB /* SHDailyDTO.m in Sources */,
 				27300A012249BAD2006E419C /* SHMonster_Medium.m in Sources */,
 				27075D6E225963A700AD13AA /* SHMonsterDTO.m in Sources */,
+				27B2B3262303811D00663644 /* SHDailyActivator.m in Sources */,
 				27815534217D721C005C5279 /* SHInfoDictionary.m in Sources */,
 				2781553821805C88005C5279 /* SHStoryItemDictionary.m in Sources */,
 				27CA86CA2264207A00AE8FDB /* SHSector.m in Sources */,

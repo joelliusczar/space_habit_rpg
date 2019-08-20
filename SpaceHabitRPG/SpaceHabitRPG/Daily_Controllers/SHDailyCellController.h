@@ -11,6 +11,7 @@
 #import <SHControls/SHTaskCell.h>
 #import "SHDailyViewController.h"
 #import <SHControls/SHButton.h>
+#import <SHData/SHObjectIDWrapper.h>
 
 @interface SHDailyCellController : SHTaskCell
 @property (weak,nonatomic) IBOutlet UILabel *daysLeftLbl;
@@ -18,7 +19,7 @@
 @property (weak,nonatomic) IBOutlet UILabel *streakLbl;
 @property (weak,nonatomic) IBOutlet SHButton *completeBtn;
 +(instancetype)getDailyCell:(UITableView *)tableView WithParent:(SHDailyViewController *)parent;
--(void)setupCell:(NSManagedObjectID *)objectID withContext:(NSManagedObjectContext*)context
+-(void)setupCell:(SHObjectIDWrapper *)objectID withContext:(NSManagedObjectContext*)context
   andRow:(NSIndexPath *)rowInfo;
 -(void)refreshCell:(NSIndexPath *)rowInfo;
 @end

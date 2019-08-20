@@ -1266,4 +1266,28 @@ union u_double {
 }
 
 
++(void)switchSemantics{
+  int num = 0;
+  BOOL avoid = YES;
+  switch(num) {
+    case 0:
+      if(avoid) {
+        NSLog(@"0: avoiding");
+        break;
+      }
+      NSLog(@"0: failed to avoid");
+      break;
+    case 1:
+      {
+        if(avoid) {
+          NSLog(@"1: avoiding");
+          break;
+        }
+      }
+      NSLog(@"1: failed to avoid");
+      break;
+  }
+}
+
+
 @end

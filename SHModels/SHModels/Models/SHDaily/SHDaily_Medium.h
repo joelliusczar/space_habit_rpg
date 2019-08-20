@@ -12,6 +12,8 @@
 
 @import CoreData;
 
+#define useOtherFetcher 0
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHDaily_Medium : NSObject

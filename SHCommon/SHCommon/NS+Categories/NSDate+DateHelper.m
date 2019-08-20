@@ -33,17 +33,17 @@
 
 
 -(NSDate *)timeAfterHours:(NSInteger)h minutes:(NSInteger)m
-               seconds:(NSInteger)s{
-    
+  seconds:(NSInteger)s
+{
     NSCalendar *calendar = SharedGlobal.inUseCalendar;
     NSDate *dt = [calendar dateByAddingUnit:NSCalendarUnitHour value:h
-                             toDate:self options:0];
+      toDate:self options:0];
     
     dt = [calendar dateByAddingUnit:NSCalendarUnitMinute value:m
-                             toDate:dt options:0];
+      toDate:dt options:0];
     
     dt = [calendar dateByAddingUnit:NSCalendarUnitSecond value:s
-                             toDate:dt options:0];
+      toDate:dt options:0];
     
     return dt;
 }

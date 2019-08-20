@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18G87" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="SHCategory" representedClassName="SHCategory" syncable="YES" codeGenerationType="category">
         <attribute name="colorNum" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -51,6 +51,7 @@
         <attribute name="dailyName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="difficulty" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isActive" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isCompleted" transient="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lastActivationDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="lastDueDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="lastUpdateDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -154,7 +155,7 @@
         <element name="SHCategory" positionX="-171" positionY="-135" width="128" height="135"/>
         <element name="SHConfig" positionX="-387" positionY="-297" width="128" height="300"/>
         <element name="SHCounter" positionX="108" positionY="18" width="128" height="240"/>
-        <element name="SHDaily" positionX="-254" positionY="-84" width="128" height="360"/>
+        <element name="SHDaily" positionX="-254" positionY="-84" width="128" height="375"/>
         <element name="SHDailySubTask" positionX="-180" positionY="-144" width="128" height="165"/>
         <element name="SHHero" positionX="-90" positionY="-58" width="128" height="180"/>
         <element name="SHItem" positionX="-290" positionY="174" width="128" height="150"/>
