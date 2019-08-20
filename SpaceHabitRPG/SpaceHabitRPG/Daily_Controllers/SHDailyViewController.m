@@ -31,10 +31,6 @@
 
 @property (strong,nonatomic) SHDailyEditController *dailyEditor;
 @property (strong,nonatomic) UITableView *dailiesTable;
-@property (strong,nonatomic) NSFetchedResultsController *incompleteItemsFetcher;
-#if useOtherFetcher
-@property (strong,nonatomic) NSFetchedResultsController *completeItemsFetcher;
-#endif
 @property (strong,nonatomic) NSFetchedResultsController *dailyItemsFetcher;
 @property (strong,nonatomic) NSObject<P_CoreData> *dataController;
 @property (strong,nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
@@ -130,8 +126,8 @@ static NSString *const EntityName = @"Daily";
     todayStart = [todayStart timeAfterHours:config.dayStartHour minutes:0 seconds:0];
     SHDaily_Medium *dailyMedium = [SHDaily_Medium newWithContext:self.dailyContext];
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-      self.incompleteItemsFetcher = [dailyMedium dailiesDataFetcher];
-      self.incompleteItemsFetcher.delegate = self;
+      self.dailyItemsFetcher = [dailyMedium dailiesDataFetcher];
+      self.dailyItemsFetcher.delegate = self;
       [self fetchUpdates];
     }];
   }];
@@ -142,7 +138,7 @@ static NSString *const EntityName = @"Daily";
   [self.dailyContext performBlock:^{
     NSLog(@"fetch: %@",NSThread.currentThread);
     NSError *error = nil;
-    [self.incompleteItemsFetcher performFetch:&error];
+    [self.dailyItemsFetcher performFetch:&error];
     if(error) @throw [NSException dbException:error];
   }];
 }
@@ -150,13 +146,13 @@ static NSString *const EntityName = @"Daily";
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
   (void)tableView;
-  return self.incompleteItemsFetcher.sections.count;
+  return self.dailyItemsFetcher.sections.count;
 }
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
   (void)tableView;
-  NSInteger rowCount = self.incompleteItemsFetcher.sections[section].numberOfObjects;
+  NSInteger rowCount = self.dailyItemsFetcher.sections[section].numberOfObjects;
   return rowCount;
 }
 
@@ -170,7 +166,7 @@ static NSString *const EntityName = @"Daily";
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
   (void)tableView;
-  return self.incompleteItemsFetcher.sections[section].indexTitle;
+  return self.dailyItemsFetcher.sections[section].indexTitle;
 }
 
 
@@ -210,17 +206,17 @@ static NSString *const EntityName = @"Daily";
 -(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView
   editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  (void)tableView;
+  (void)tableView; (void)indexPath;
   UITableViewRowAction *openEditBox = [UITableViewRowAction
     rowActionWithStyle:UITableViewRowActionStyleNormal
     title:@"Edit"
     handler:^(UITableViewRowAction *action,NSIndexPath *path){
-      (void)action;
+      (void)action; (void)path;
 
-      NSFetchedResultsController *fetchController = self.incompleteItemsFetcher;
+      NSFetchedResultsController *fetchController = self.dailyItemsFetcher;
       NSManagedObjectContext *fetchContext = fetchController.managedObjectContext;
       [fetchContext performBlockAndWait:^{
-        NSManagedObject *rowObject = fetchController.fetchedObjects[indexPath.row];
+        NSManagedObject *rowObject = fetchController.fetchedObjects[path.row];
         SHObjectIDWrapper *objectIDWrapper = [[SHObjectIDWrapper alloc] init];
         objectIDWrapper.objectID = rowObject.objectID;
         objectIDWrapper.entityType = SHDaily.entity;
@@ -246,7 +242,7 @@ static NSString *const EntityName = @"Daily";
   SHDailyCellController *cell = [SHDailyCellController getDailyCell:tableView WithParent:self];
   __block NSManagedObjectID *objectID = nil;
   [self.dailyContext performBlockAndWait:^{
-    objectID = ((SHDaily*)self.incompleteItemsFetcher.sections[indexPath.section].objects[indexPath.row]).objectID;
+    objectID = ((SHDaily*)self.dailyItemsFetcher.sections[indexPath.section].objects[indexPath.row]).objectID;
   }];
   SHObjectIDWrapper *wrappedID = [[SHObjectIDWrapper alloc] initWithEntityType:SHDaily.entity
     withContext:self.dailyContext];
@@ -265,6 +261,7 @@ This will be called the user creates a new daily, checks it off, or deletes one
   forChangeType:(NSFetchedResultsChangeType)type
   newIndexPath:(NSIndexPath *)newIndexPath
 {
+  (void)controller; (void)anObject;
   NSAssert(![NSThread isMainThread],@"this method should only be called from background");
   [[NSOperationQueue mainQueue] addOperationWithBlock:^{
     switch (type) {
