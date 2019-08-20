@@ -39,25 +39,12 @@
 }
 
 
--(NSFetchedResultsController *)getUnfinishedDailiesController:(NSDate *)todayStart{
+-(NSFetchedResultsController *)dailiesDataFetcher{
   NSPredicate *filter = [NSPredicate predicateWithFormat:@"isActive = 1"];
   NSFetchRequest<SHDaily*> *request = SHDaily.fetchRequest;
   request.predicate = filter;
   request.sortDescriptors = [self buildFetchDescriptors];
   NSFetchedResultsController *resultsController = [self.context getItemFetcher:request withSectionKeyPath:@"isCompleted"];
-  return resultsController;
-}
-
-
--(NSFetchedResultsController *)getFinishedDailiesController:(NSDate *)todayStart{
-  NSPredicate *filter = [NSPredicate predicateWithFormat:@"isActive = 1 AND lastActivationDateTime >= %@",todayStart];
-  NSArray *descriptors = @[[[NSSortDescriptor alloc]
-                            initWithKey:@"lastActivationDateTime"
-                            ascending:NO]];
-  NSFetchRequest<SHDaily*> *request = SHDaily.fetchRequest;
-  request.predicate = filter;
-  request.sortDescriptors = descriptors;
-  NSFetchedResultsController *resultsController = [self.context getItemFetcher:request];
   return resultsController;
 }
 

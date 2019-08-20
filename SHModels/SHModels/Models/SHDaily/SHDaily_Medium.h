@@ -19,8 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SHDaily_Medium : NSObject
 @property (strong,nonatomic) NSManagedObjectContext *context;
 +(instancetype)newWithContext:(NSManagedObjectContext *)context;
--(NSFetchedResultsController *)getUnfinishedDailiesController:(NSDate *)todayStart;
--(NSFetchedResultsController *)getFinishedDailiesController:(NSDate *)todayStart;
+-(NSFetchedResultsController *)dailiesDataFetcher;
 
 @end
 

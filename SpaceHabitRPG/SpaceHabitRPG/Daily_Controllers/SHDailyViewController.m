@@ -130,7 +130,7 @@ static NSString *const EntityName = @"Daily";
     todayStart = [todayStart timeAfterHours:config.dayStartHour minutes:0 seconds:0];
     SHDaily_Medium *dailyMedium = [SHDaily_Medium newWithContext:self.dailyContext];
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-      self.incompleteItemsFetcher = [dailyMedium getUnfinishedDailiesController:todayStart];
+      self.incompleteItemsFetcher = [dailyMedium dailiesDataFetcher];
       self.incompleteItemsFetcher.delegate = self;
       [self fetchUpdates];
     }];
