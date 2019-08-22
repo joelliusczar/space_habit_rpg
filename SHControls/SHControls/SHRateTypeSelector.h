@@ -1,9 +1,9 @@
 //
-//  SHRateTypeSelector.h
-//  HabitRPG2
+//	SHRateTypeSelector.h
+//	HabitRPG2
 //
-//  Created by Joel Pridgen on 8/2/17.
-//  Copyright © 2017 Joel Pridgen. All rights reserved.
+//	Created by Joel Pridgen on 8/2/17.
+//	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
 #import "SHRateTypeSelectorDelegateProtocol.h"
@@ -24,6 +24,6 @@
 @property (weak,nonatomic) IBOutlet UIImageView *backgroundView;
 @property (assign,nonatomic) SHRateType rateType;
 -(instancetype)initWithRateType:(SHRateType)rateType
-  andDelegate:(id<SHRateTypeSelectorDelegateProtocol>)delegate;
+	andDelegate:(id<SHRateTypeSelectorDelegateProtocol>)delegate;
 @property (weak,nonatomic) id<SHRateTypeSelectorDelegateProtocol> delegate;
 @end

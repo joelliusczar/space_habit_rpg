@@ -13,12 +13,13 @@
 
 
 - (IBAction)streakResetBtn_press_action:(UIButton *)sender
-                               forEvent:(UIEvent *)event {
-    shWrapReturnVoid wrappedCall = ^void(){
-        SHEventInfo *e = eventInfoCopy;
-        [self.delegate streakResetBtn_press_action:e];
-    };
-    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+	forEvent:(UIEvent *)event 
+{
+	shWrapReturnVoid wrappedCall = ^void(){
+		SHEventInfo *e = eventInfoCopy;
+		[self.delegate streakResetBtn_press_action:e];
+	};
+	[self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 

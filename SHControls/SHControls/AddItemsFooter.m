@@ -12,11 +12,11 @@
 @implementation SHAddItemsFooter
 
 -(IBAction)addItemBtn_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
-    shWrapReturnVoid wrappedCall = ^void(){
-        SHEventInfo *e = eventInfoCopy;
-        [self.delegate addItemBtn_press_action:e];
-    };
-    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+	shWrapReturnVoid wrappedCall = ^void(){
+		SHEventInfo *e = eventInfoCopy;
+		[self.delegate addItemBtn_press_action:e];
+	};
+	[self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 @end

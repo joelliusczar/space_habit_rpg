@@ -16,20 +16,20 @@
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if(self.subtasksTabledelegate){
-        return [self.subtasksTabledelegate tableView:tableView numberOfRowsInSection:section];
-    }
-    return 0;
+	if(self.subtasksTabledelegate){
+		return [self.subtasksTabledelegate tableView:tableView numberOfRowsInSection:section];
+	}
+	return 0;
 }
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(!self.subtasksTabledelegate){
-        //this will crash because the delegate needs to implement tableView:cellForRowAtIndexPath:
-        @throw [NSException exceptionWithName:@"missing delegate"
-                                       reason:@"delegate needs to be instantiated" userInfo:nil];
-    }
-    return [self.subtasksTabledelegate tableView:tableView cellForRowAtIndexPath:indexPath];
+	if(!self.subtasksTabledelegate){
+		//this will crash because the delegate needs to implement tableView:cellForRowAtIndexPath:
+		@throw [NSException exceptionWithName:@"missing delegate"
+			reason:@"delegate needs to be instantiated" userInfo:nil];
+	}
+	return [self.subtasksTabledelegate tableView:tableView cellForRowAtIndexPath:indexPath];
 }
 
 

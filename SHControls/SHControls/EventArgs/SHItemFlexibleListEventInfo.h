@@ -18,5 +18,5 @@
 @property (readonly,strong,nonatomic) UITableView *tableView;
 @property (readonly,strong,nonatomic) SHItemFlexibleListView *itemFlexibleListView;
 -(instancetype)initWithItemFlexibleList:(SHItemFlexibleListView *)itemFlexibleList
-                           andIndexPath:(NSIndexPath *)indexPath;
+	andIndexPath:(NSIndexPath *)indexPath;
 @end

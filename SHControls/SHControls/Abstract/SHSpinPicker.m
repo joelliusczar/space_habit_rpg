@@ -1,9 +1,9 @@
 //
-//  SHSpinPicker.m
-//  HabitRPG2
+//	SHSpinPicker.m
+//	HabitRPG2
 //
-//  Created by Joel Pridgen on 8/2/17.
-//  Copyright © 2017 Joel Pridgen. All rights reserved.
+//	Created by Joel Pridgen on 8/2/17.
+//	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
 #pragma clang diagnostic ignored "-Wunused-parameter"
@@ -23,83 +23,83 @@
 
 
 -(instancetype)init{
-    NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"SHSpinPicker")];
-    if(self = [super initWithNibName:@"SHSpinPicker" bundle:bundle]){}
-    return self;
+	NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"SHSpinPicker")];
+	if(self = [super initWithNibName:@"SHSpinPicker" bundle:bundle]){}
+	return self;
 }
 
 
 -(void)viewDidLoad{
-    [super viewDidLoad];
-    UITapGestureRecognizer *tapGestureBG = [[UITapGestureRecognizer alloc]
-                                            initWithTarget:self
-                                            action:@selector(background_tap_action:)];
-    [self.view addGestureRecognizer:tapGestureBG];
+	[super viewDidLoad];
+	UITapGestureRecognizer *tapGestureBG = [[UITapGestureRecognizer alloc]
+											initWithTarget:self
+											action:@selector(background_tap_action:)];
+	[self.view addGestureRecognizer:tapGestureBG];
 }
 
 
 -(void)background_tap_action:(UITapGestureRecognizer *)sender{
-    shWrapReturnVoid wrappedCall = ^void(){
-        if(sender.view==self.view){
-            [self popVCFromFront];
-        }
-    };
-    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+	shWrapReturnVoid wrappedCall = ^void(){
+		if(sender.view==self.view){
+			[self popVCFromFront];
+		}
+	};
+	[self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+	[super didReceiveMemoryWarning];
+	// Dispose of any resources that can be recreated.
 }
 
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
-    @throw [NSException abstractException];
+	@throw [NSException abstractException];
 }
 
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView
 numberOfRowsInComponent:(NSInteger)component{
-    @throw [NSException abstractException];
+	@throw [NSException abstractException];
 }
 
 
 -(void)animateInvalidSelection{
 
-  CGFloat offset = 25;
-  UIViewPropertyAnimator *animator = [[UIViewPropertyAnimator alloc] initWithDuration:.25
-    curve:UIViewAnimationCurveEaseInOut
-    animations:^{
-      self.buttonXConstraint.constant += offset;
-      [self.view layoutIfNeeded];
-    }];
-  [animator addAnimations:^{
-    self.buttonXConstraint.constant -= offset*2;
-    [self.view layoutIfNeeded];
-  } delayFactor:.50];
-  [animator addAnimations:^{
-    self.buttonXConstraint.constant += offset;
-    [self.view layoutIfNeeded];
-  } delayFactor:.75];
-  [animator startAnimation];
+	CGFloat offset = 25;
+	UIViewPropertyAnimator *animator = [[UIViewPropertyAnimator alloc] initWithDuration:.25
+	curve:UIViewAnimationCurveEaseInOut
+	animations:^{
+		self.buttonXConstraint.constant += offset;
+		[self.view layoutIfNeeded];
+	}];
+	[animator addAnimations:^{
+	self.buttonXConstraint.constant -= offset*2;
+	[self.view layoutIfNeeded];
+	} delayFactor:.50];
+	[animator addAnimations:^{
+	self.buttonXConstraint.constant += offset;
+	[self.view layoutIfNeeded];
+	} delayFactor:.75];
+	[animator startAnimation];
 }
 
 
 -(IBAction)pickerSelectBtn_press_action:(SHButton *)sender
-  forEvent:(UIEvent *)event
+	forEvent:(UIEvent *)event
 {
-  if(self.spinPickerAction) {
-    BOOL shouldCancel = NO;
-    self.spinPickerAction(self,&shouldCancel);
-    if(shouldCancel) return;
-  }
-  [self popVCFromFront];
+	if(self.spinPickerAction) {
+	BOOL shouldCancel = NO;
+	self.spinPickerAction(self,&shouldCancel);
+	if(shouldCancel) return;
+	}
+	[self popVCFromFront];
 
 }
 
 
 -(NSInteger)selectedRowInComponent:(NSInteger)component{
-  return [self.picker selectedRowInComponent:component];
+	return [self.picker selectedRowInComponent:component];
 }
 
 @end

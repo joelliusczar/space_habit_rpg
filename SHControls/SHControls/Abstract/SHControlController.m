@@ -12,10 +12,10 @@
 @implementation SHControlController
 
 -(instancetype)initWithNibName:(NSString *)nibName{
-    if(self = [super init]){
-        _mainView = [self loadXib:nibName];
-    }
-    return self;
+	if(self = [super init]){
+		_mainView = [self loadXib:nibName];
+	}
+	return self;
 }
 
 

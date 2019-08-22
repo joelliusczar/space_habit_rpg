@@ -1,9 +1,9 @@
 //
-//  SHSpinPicker.h
-//  HabitRPG2
+//	SHSpinPicker.h
+//	HabitRPG2
 //
-//  Created by Joel Pridgen on 8/2/17.
-//  Copyright © 2017 Joel Pridgen. All rights reserved.
+//	Created by Joel Pridgen on 8/2/17.
+//	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
 @import UIKit;
@@ -20,7 +20,7 @@ typedef void (^shSpinPickerAction)(SHSpinPicker *,BOOL *);
 @property (weak,nonatomic) IBOutlet UIPickerView *picker;
 @property (copy,nonatomic) shSpinPickerAction spinPickerAction;
 -(IBAction)pickerSelectBtn_press_action:(SHButton *)sender
-  forEvent:(UIEvent *)event;
+	forEvent:(UIEvent *)event;
 -(void)animateInvalidSelection;
 -(NSInteger)selectedRowInComponent:(NSInteger)component;
 @end

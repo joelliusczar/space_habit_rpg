@@ -12,26 +12,26 @@
 @implementation SHTextField
 
 -(id<SHInterceptorProtocol>)interceptor{
-    if(nil==_interceptor){
-        _interceptor = [[SHInterceptor alloc] init];
-    }
-    return _interceptor;
+	if(nil==_interceptor){
+		_interceptor = [[SHInterceptor alloc] init];
+	}
+	return _interceptor;
 }
 
 
 -(void)sendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event{
-    shWrapReturnVoid wrappedCall = ^void(){
-        [super sendAction:action to:target forEvent:event];
-    };
-    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+	shWrapReturnVoid wrappedCall = ^void(){
+		[super sendAction:action to:target forEvent:event];
+	};
+	[self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 
 -(void)sendActionsForControlEvents:(UIControlEvents)controlEvents{
-    shWrapReturnVoid wrappedCall = ^void(){
-        [super sendActionsForControlEvents:controlEvents];
-    };
-    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+	shWrapReturnVoid wrappedCall = ^void(){
+		[super sendActionsForControlEvents:controlEvents];
+	};
+	[self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 @end

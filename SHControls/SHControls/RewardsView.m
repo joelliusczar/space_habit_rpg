@@ -13,11 +13,11 @@
 @implementation SHRewardsView
 
 - (IBAction)addRewardsBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
-    shWrapReturnVoid wrappedCall = ^void(){
-        SHEventInfo *e = eventInfoCopy;
-        [self.delegate addRewardsBtn_press_action:e];
-    };
-    [self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+	shWrapReturnVoid wrappedCall = ^void(){
+		SHEventInfo *e = eventInfoCopy;
+		[self.delegate addRewardsBtn_press_action:e];
+	};
+	[self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
 }
 
 

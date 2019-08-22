@@ -1,9 +1,9 @@
 //
-//  SHView.h
-//  HabitRPG2
+//	SHView.h
+//	HabitRPG2
 //
-//  Created by Joel Pridgen on 8/7/17.
-//  Copyright © 2017 Joel Pridgen. All rights reserved.
+//	Created by Joel Pridgen on 8/7/17.
+//	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -23,5 +23,5 @@ IB_DESIGNABLE
 -(void)setupCustomOptions;
 //abstract
 -(void)beginTap_action:(UITouch *)touch
-  withEvent:(UIEvent *)event;
+	withEvent:(UIEvent *)event;
 @end

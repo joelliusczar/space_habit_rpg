@@ -14,18 +14,18 @@
 @implementation SHListItemCell
 
 +(instancetype)getListItemCell:(UITableView *)tableView{
-    NSAssert(tableView,@"tableview is nil");
-    SHListItemCell *cell = [tableView
-            dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
-    if(nil==cell){
-        cell = [[SHListItemCell alloc] init];
-    }
-    return cell;
+	NSAssert(tableView,@"tableview is nil");
+	SHListItemCell *cell = [tableView
+			dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
+	if(nil==cell){
+		cell = [[SHListItemCell alloc] init];
+	}
+	return cell;
 }
 
 -(UIView *)loadDefaultXib{
-    NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"SHListItemCell")];
-    return [bundle loadNibNamed:@"SHListItemCell" owner:self options:nil][0];
+	NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"SHListItemCell")];
+	return [bundle loadNibNamed:@"SHListItemCell" owner:self options:nil][0];
 }
 
 - (IBAction)addReminderBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {

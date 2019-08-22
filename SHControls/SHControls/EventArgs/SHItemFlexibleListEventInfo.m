@@ -12,21 +12,22 @@
 
 
 -(instancetype)initWithItemFlexibleList:(SHItemFlexibleListView *)itemFlexibleList
-                           andIndexPath:(NSIndexPath *)indexPath{
-    if(self = [super init:nil withSenders:itemFlexibleList.itemTbl,itemFlexibleList,nil]){
-        _indexPath = indexPath;
-        _tableView = itemFlexibleList.itemTbl;
-        _itemFlexibleListView = itemFlexibleList;
-    }
-    return self;
+    andIndexPath:(NSIndexPath *)indexPath
+{
+	if(self = [super init:nil withSenders:itemFlexibleList.itemTbl,itemFlexibleList,nil]){
+		_indexPath = indexPath;
+		_tableView = itemFlexibleList.itemTbl;
+		_itemFlexibleListView = itemFlexibleList;
+	}
+	return self;
 }
 
 
 -(void)dealloc{
-    _indexPath = nil;
-    _tableView = nil;
-    _itemFlexibleListView = nil;
-    
+	_indexPath = nil;
+	_tableView = nil;
+	_itemFlexibleListView = nil;
+	
 }
 
 @end
