@@ -19,7 +19,6 @@
 @property (weak,nonatomic) IBOutlet UILabel *streakLbl;
 @property (weak,nonatomic) IBOutlet SHButton *completeBtn;
 +(instancetype)getDailyCell:(UITableView *)tableView WithParent:(SHDailyViewController *)parent;
--(void)setupCell:(SHObjectIDWrapper *)objectID withContext:(NSManagedObjectContext*)context
-  andRow:(NSIndexPath *)rowInfo;
--(void)refreshCell:(NSIndexPath *)rowInfo;
+-(void)setupCell:(SHObjectIDWrapper *)objectID;
+-(void)refreshCell;
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		273F55D8230E030F001F82F9 /* SHHabitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273F55D7230E030F001F82F9 /* SHHabitViewController.xib */; };
 		2747C4992048D50800FB5669 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4972048D50800FB5669 /* AppDelegate.m */; };
 		2747C49B2048D53100FB5669 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2747C49A2048D53100FB5669 /* Assets.xcassets */; };
 		2747C49F2048D54700FB5669 /* SHCentralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C49C2048D54600FB5669 /* SHCentralViewController.m */; };
@@ -14,7 +15,6 @@
 		2747C4AA2048D75300FB5669 /* SHEditNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2747C4A72048D75200FB5669 /* SHEditNavigationController.xib */; };
 		2747C4AB2048D75300FB5669 /* SHEditNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4A82048D75300FB5669 /* SHEditNavigationController.m */; };
 		2747C4B32048D7B100FB5669 /* SHDailyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4AF2048D7B000FB5669 /* SHDailyViewController.m */; };
-		2747C4B42048D7B100FB5669 /* SHDailyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2747C4B02048D7B000FB5669 /* SHDailyViewController.xib */; };
 		2747C4C32048D83C00FB5669 /* SHIntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2747C4C02048D83C00FB5669 /* SHIntroViewController.xib */; };
 		2747C4C42048D83C00FB5669 /* SHIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4C12048D83C00FB5669 /* SHIntroViewController.m */; };
 		2747C4C72048D8A300FB5669 /* SHSectorChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4C62048D8A300FB5669 /* SHSectorChoiceViewController.m */; };
@@ -46,6 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		273F55D7230E030F001F82F9 /* SHHabitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHHabitViewController.xib; sourceTree = "<group>"; };
 		2747C4972048D50800FB5669 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2747C4982048D50800FB5669 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2747C49A2048D53100FB5669 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,7 +58,6 @@
 		2747C4A92048D75300FB5669 /* SHEditNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHEditNavigationController.h; sourceTree = "<group>"; };
 		2747C4AD2048D7AF00FB5669 /* SHDailyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDailyViewController.h; sourceTree = "<group>"; };
 		2747C4AF2048D7B000FB5669 /* SHDailyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDailyViewController.m; sourceTree = "<group>"; };
-		2747C4B02048D7B000FB5669 /* SHDailyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHDailyViewController.xib; sourceTree = "<group>"; };
 		2747C4C02048D83C00FB5669 /* SHIntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHIntroViewController.xib; sourceTree = "<group>"; };
 		2747C4C12048D83C00FB5669 /* SHIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHIntroViewController.m; sourceTree = "<group>"; };
 		2747C4C22048D83C00FB5669 /* SHIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHIntroViewController.h; sourceTree = "<group>"; };
@@ -122,8 +122,8 @@
 		2733D214229402DB0090B7F1 /* xibs */ = {
 			isa = PBXGroup;
 			children = (
+				273F55D7230E030F001F82F9 /* SHHabitViewController.xib */,
 				27B2B31D2300FF1400663644 /* SHDailyCellController.xib */,
-				2747C4B02048D7B000FB5669 /* SHDailyViewController.xib */,
 				2747C519204A494A00FB5669 /* SHDailyEditView.xib */,
 				27ED11B1229B431C00E8EB32 /* SHDailyEditFull.xib */,
 			);
@@ -306,9 +306,9 @@
 				27B2B31E2300FF1400663644 /* SHDailyCellController.xib in Resources */,
 				2747C4CB2048D8CF00FB5669 /* SHMenuViewController.xib in Resources */,
 				2747C4AA2048D75300FB5669 /* SHEditNavigationController.xib in Resources */,
-				2747C4B42048D7B100FB5669 /* SHDailyViewController.xib in Resources */,
 				27D5D4A521FCD18D00A78C35 /* SHStoryDumpView.xib in Resources */,
 				27E5169B21FE40B000832DFE /* SHCentralMenu.xib in Resources */,
+				273F55D8230E030F001F82F9 /* SHHabitViewController.xib in Resources */,
 				2747C49B2048D53100FB5669 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

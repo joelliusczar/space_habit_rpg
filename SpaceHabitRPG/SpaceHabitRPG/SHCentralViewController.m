@@ -185,8 +185,12 @@
   self.tabsController.viewControllers = @[dc];
   
   [self.tabsContainer addSubview:self.tabsController.view];
+  self.tabsController.view.translatesAutoresizingMaskIntoConstraints = NO;
   [self addChildViewController:self.tabsController];
-  self.tabsController.view.frame = self.tabsContainer.bounds;
+  [self.tabsController.view.topAnchor constraintEqualToAnchor:self.tabsContainer.topAnchor].active = YES;
+  [self.tabsController.view.bottomAnchor constraintEqualToAnchor:self.tabsContainer.bottomAnchor].active = YES;
+  [self.tabsController.view.leadingAnchor constraintEqualToAnchor:self.tabsContainer.leadingAnchor].active = YES;
+  [self.tabsController.view.trailingAnchor constraintEqualToAnchor:self.tabsContainer.trailingAnchor].active = YES;
 }
 
 // logic picks back up in afterIntroStarted

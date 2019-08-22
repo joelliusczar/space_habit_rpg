@@ -36,16 +36,18 @@
     }
     SHConfig *config = self.context.sh_globalConfig;
     
-    NSDate *dayStart = [daily.lastActivationDateTime.dayStart
-      timeAfterHours:config.dayStartHour minutes:0 seconds:0];
-    NSDate *current = NSDate.date;
-    if(dayStart.timeIntervalSince1970 < current.dayStart.timeIntervalSince1970) {
+    NSTimeInterval dayStart = config.userTodayStart.timeIntervalSince1970;
+    NSTimeInterval lastActivation = daily.lastActivationDateTime.timeIntervalSince1970;
+    if(dayStart > lastActivation) {
+      NSLog(@"activate");
       daily.rollbackActivationDateTime = daily.lastActivationDateTime;
-      daily.lastActivationDateTime = current;
+      daily.lastActivationDateTime = NSDate.date;
       if(self.activationAction) self.activationAction(YES,self.objectID);
     }
     else {
+      NSLog(@"deactivate");
       daily.lastActivationDateTime = daily.rollbackActivationDateTime;
+      daily.rollbackActivationDateTime = nil;
       if(self.activationAction) self.activationAction(NO,self.objectID);
     }
     [self.context performBlock:^{

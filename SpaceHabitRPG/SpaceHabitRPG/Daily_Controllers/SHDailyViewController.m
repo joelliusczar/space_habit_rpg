@@ -62,7 +62,7 @@ static NSString *const EntityName = @"Daily";
 
 
 -(instancetype)initWithCentral:(SHCentralViewController *)central{
-  if(self = [self initWithNibName:@"SHDailyViewController" bundle:nil]){
+  if(self = [self initWithNibName:@"SHHabitViewController" bundle:nil]){
     _central = central;
     [self setuptab];
     
@@ -74,21 +74,16 @@ static NSString *const EntityName = @"Daily";
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-  self.dailiesTable = [[UITableView alloc]init];
+  self.dailiesTable = [[UITableView alloc] init];
 
   [self.view addSubview:self.dailiesTable];
-  
-  CGFloat width = [UIScreen mainScreen].bounds.size.width;
-  CGFloat height = [UIScreen mainScreen].bounds.size.height;
-  CGFloat minY = self.view.frame.origin.y;
-  CGFloat viewHeight = self.view.frame.size.height - (height *.10);
-  self.dailiesTable.frame = CGRectMake(0,
-   minY + (height * .10),
-   width,
-   viewHeight);
+  self.dailiesTable.translatesAutoresizingMaskIntoConstraints = NO;
+  [self.dailiesTable.widthAnchor constraintEqualToAnchor:self.view.widthAnchor].active = YES;
+  [self.dailiesTable.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
+  [self.dailiesTable.topAnchor  constraintEqualToAnchor:self.addDailiesBtn.bottomAnchor].active = YES;
   self.dailiesTable.delegate = self;
   self.dailiesTable.dataSource = self;
-    
+  NSLog(@"load happens");
 }
 
 
@@ -129,6 +124,7 @@ static NSString *const EntityName = @"Daily";
       self.dailyItemsFetcher = [dailyMedium dailiesDataFetcher];
       self.dailyItemsFetcher.delegate = self;
       [self fetchUpdates];
+      NSLog(@"setup happens");
     }];
   }];
 }
@@ -247,7 +243,7 @@ static NSString *const EntityName = @"Daily";
   SHObjectIDWrapper *wrappedID = [[SHObjectIDWrapper alloc] initWithEntityType:SHDaily.entity
     withContext:self.dailyContext];
   wrappedID.objectID = objectID;
-  [cell setupCell:wrappedID withContext:self.dailyContext andRow:indexPath];
+  [cell setupCell:wrappedID];
   return cell;
 }
 
@@ -269,12 +265,13 @@ This will be called the user creates a new daily, checks it off, or deletes one
         [self.dailiesTable insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
         break;
       case NSFetchedResultsChangeUpdate:
-        [self configureCell:[self.dailiesTable cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+        [self configureCellAtIndexPath:indexPath];
         break;
       case NSFetchedResultsChangeDelete:
         [self.dailiesTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         break;
       case NSFetchedResultsChangeMove:
+        [self configureCellAtIndexPath:indexPath];
         [self.dailiesTable moveRowAtIndexPath:indexPath toIndexPath:newIndexPath];
         break;
       default:
@@ -308,9 +305,10 @@ This will be called the user creates a new daily, checks it off, or deletes one
   }];
 }
 
--(void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
+-(void)configureCellAtIndexPath:(NSIndexPath *)indexPath{
+  UITableViewCell *cell = [self.dailiesTable cellForRowAtIndexPath:indexPath];
   SHDailyCellController *dailyCell = (SHDailyCellController *)cell;
-  [dailyCell refreshCell:indexPath];
+  [dailyCell refreshCell];
 }
 
 -(void)setupEditorWithObjectIDWrapper:(SHObjectIDWrapper*)objectIDWrapper

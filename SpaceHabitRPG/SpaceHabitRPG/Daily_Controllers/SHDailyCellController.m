@@ -23,8 +23,6 @@
 @property (strong,nonatomic) SHObjectIDWrapper *objectID;
 @property (strong,nonatomic) NSManagedObjectContext *context;
 @property (weak,nonatomic) SHDailyViewController *parentDailyController;
-@property (assign,nonatomic) NSInteger rowIndex;
-@property (assign,nonatomic) NSInteger sectionIndex;
 
 @end
 
@@ -44,17 +42,14 @@
   [super awakeFromNib];
 }
 
--(void)setupCell:(SHObjectIDWrapper *)objectID withContext:(NSManagedObjectContext*)context
-  andRow:(NSIndexPath *)rowInfo
-{
-  self.context = context;
+-(void)setupCell:(SHObjectIDWrapper *)objectID {
+  NSAssert(objectID.context,@"Hey, hey, we need a context here.");
+  self.context = objectID.context;
   self.objectID = objectID;
-  [self refreshCell:rowInfo];
+  [self refreshCell];
 }
 
--(void)refreshCell:(NSIndexPath *)rowInfo{
-  self.rowIndex = rowInfo.row;
-  self.sectionIndex = rowInfo.section;
+-(void)refreshCell{
   [self.context performBlock:^{
     NSError *error = nil;
     SHDaily *daily = (SHDaily*)[self.context getEntityOrNil:self.objectID withError:&error];
@@ -62,6 +57,7 @@
     int32_t streakLength = daily.streakLength;
     int32_t rate = daily.rate;
     NSUInteger daysUntilDue = daily.maxDaysBefore;
+    BOOL isCompleted = daily.isCompleted;
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
       self.nameLbl.text = dailyName;
@@ -84,11 +80,12 @@
       }
       
       //for check image
-      if(self.sectionIndex == SH_INCOMPLETE){
-        [self.completeBtn setImage:[UIImage imageNamed:@"unchecked_task"] forState:UIControlStateNormal];
+      NSLog(@"%@ : completed? %@",dailyName,isCompleted ? @"yes": @"no");
+      if(isCompleted){
+        [self.completeBtn setImage:[UIImage imageNamed:@"checked_task"] forState:UIControlStateNormal];
       }
       else{
-        [self.completeBtn setImage:[UIImage imageNamed:@"checked_task"] forState:UIControlStateNormal];
+        [self.completeBtn setImage:[UIImage imageNamed:@"unchecked_task"] forState:UIControlStateNormal];
       }
     }];
   }];

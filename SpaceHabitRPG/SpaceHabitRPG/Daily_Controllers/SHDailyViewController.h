@@ -17,6 +17,7 @@
 
 @interface SHDailyViewController : UIViewController <UITableViewDelegate, UITableViewDataSource,NSFetchedResultsControllerDelegate>
 @property (weak,nonatomic) SHCentralViewController *central;
+@property (weak,nonatomic) IBOutlet SHView *addDailiesBtn;
 -(instancetype)initWithCentral:(SHCentralViewController *)central;
 
 -(void)setuptab;
