@@ -1,9 +1,9 @@
 //
-//  SHWeeklyActiveDaysViewController.h
-//  HabitRPG2
+//	SHWeeklyActiveDaysViewController.h
+//	HabitRPG2
 //
-//  Created by Joel Pridgen on 6/17/17.
-//  Copyright © 2017 Joel Pridgen. All rights reserved.
+//	Created by Joel Pridgen on 6/17/17.
+//	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
 @import UIKit;
@@ -26,8 +26,8 @@
 
 IB_DESIGNABLE
 @interface SHWeeklyActiveDaysViewController :
-  UIViewController<SHNestedControlProtocol,
-    SHViewEventsProtocol>
+	UIViewController<SHNestedControlProtocol,
+	SHViewEventsProtocol>
 @property (strong,nonatomic) NSArray<SHDayOption*> *activeDaySwitches;
 @property (strong,nonatomic) IBOutlet SHDayOption *day0Switch;
 @property (strong,nonatomic) IBOutlet SHDayOption *day1Switch;

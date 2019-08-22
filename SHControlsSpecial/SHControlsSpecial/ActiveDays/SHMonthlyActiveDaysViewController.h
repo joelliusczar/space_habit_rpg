@@ -1,9 +1,9 @@
 //
-//  SHMonthlyActiveDaysViewController.h
-//  HabitRPG2
+//	SHMonthlyActiveDaysViewController.h
+//	HabitRPG2
 //
-//  Created by Joel Pridgen on 8/13/17.
-//  Copyright © 2017 Joel Pridgen. All rights reserved.
+//	Created by Joel Pridgen on 8/13/17.
+//	Copyright © 2017 Joel Pridgen. All rights reserved.
 // 
 
 #import <SHControls/SHItemFlexibleListView.h>
@@ -14,5 +14,5 @@
 @property (strong,nonatomic) SHListRateItemCollection *monthRateItems;
 @property (strong,nonatomic) SHListRateItemCollection *inverseMonthRateItems;
 +(instancetype)newWithListRateItemCollection:(SHListRateItemCollection *)monthRateItems
-  inverseActiveDays:(SHListRateItemCollection*)inverseMonthRateItems;
+	inverseActiveDays:(SHListRateItemCollection*)inverseMonthRateItems;
 @end

@@ -1,9 +1,9 @@
 //
-//  SHRepeatLinkViewController.h
-//  SHControlsSpecial
+//	SHRepeatLinkViewController.h
+//	SHControlsSpecial
 //
-//  Created by Joel Pridgen on 6/22/19.
-//  Copyright © 2019 Joel Gillette. All rights reserved.
+//	Created by Joel Pridgen on 6/22/19.
+//	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

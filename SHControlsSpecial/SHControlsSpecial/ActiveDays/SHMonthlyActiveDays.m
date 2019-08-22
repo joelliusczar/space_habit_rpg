@@ -1,9 +1,9 @@
 //
-//  SHMonthlyActiveDaysViewController.m
-//  HabitRPG2
+//	SHMonthlyActiveDaysViewController.m
+//	HabitRPG2
 //
-//  Created by Joel Pridgen on 8/13/17.
-//  Copyright © 2017 Joel Pridgen. All rights reserved.
+//	Created by Joel Pridgen on 8/13/17.
+//	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
 #import "SHMonthlyActiveDaysViewController.h"
@@ -25,68 +25,68 @@
 
 
 +(instancetype)newWithListRateItemCollection:(SHListRateItemCollection *)activeDays
-  inverseActiveDays:(SHListRateItemCollection*)inverseActiveDays
+	inverseActiveDays:(SHListRateItemCollection*)inverseActiveDays
 {
-  SHMonthlyActiveDaysViewController *instance = [[SHMonthlyActiveDaysViewController alloc] init];
-  instance.activeDays = activeDays;
-  instance.inverseActiveDays = inverseActiveDays;
-  [instance commonSetup];
-  [instance.addItemsFooter.addItemBtn setTitle:@"Add day of the month" forState:UIControlStateNormal];
-  return instance;
+	SHMonthlyActiveDaysViewController *instance = [[SHMonthlyActiveDaysViewController alloc] init];
+	instance.activeDays = activeDays;
+	instance.inverseActiveDays = inverseActiveDays;
+	[instance commonSetup];
+	[instance.addItemsFooter.addItemBtn setTitle:@"Add day of the month" forState:UIControlStateNormal];
+	return instance;
 }
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-  (void)tableView; (void)section;
-  return self.activeDays.count;
+	(void)tableView; (void)section;
+	return self.activeDays.count;
 }
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView
-  cellForRowAtIndexPath:(NSIndexPath *)indexPath
+	cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  SHListItemCell *cell = [SHListItemCell getListItemCell:tableView];
-  SHListRateItem *rateItem = self.activeDays[indexPath.row];
-  NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
-  numFormatter.locale = NSLocale.currentLocale;
-  numFormatter.numberStyle = NSNumberFormatterOrdinalStyle;
-  NSString *ordinal = [numFormatter stringFromNumber:@(rateItem.majorOrdinal)];
-  NSString *dayOfWeek = NSCalendar.currentCalendar.weekdaySymbols[rateItem.minorOrdinal];
-  cell.lblRowDesc.text = [NSString stringWithFormat:@"%@ %@",ordinal,dayOfWeek];
-  return cell;
+	SHListItemCell *cell = [SHListItemCell getListItemCell:tableView];
+	SHListRateItem *rateItem = self.activeDays[indexPath.row];
+	NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
+	numFormatter.locale = NSLocale.currentLocale;
+	numFormatter.numberStyle = NSNumberFormatterOrdinalStyle;
+	NSString *ordinal = [numFormatter stringFromNumber:@(rateItem.majorOrdinal)];
+	NSString *dayOfWeek = NSCalendar.currentCalendar.weekdaySymbols[rateItem.minorOrdinal];
+	cell.lblRowDesc.text = [NSString stringWithFormat:@"%@ %@",ordinal,dayOfWeek];
+	return cell;
 }
 
 
 -(void)addItemBtn_press_action:(SHEventInfo *)eventInfo{
-  [self hideKeyboard];
-  SHMonthPartPicker *dayOfMonthPicker = [[SHMonthPartPicker alloc] init];
-  [self showSHSpinPicker:dayOfMonthPicker];
-  [eventInfo.senderStack addObject:self];
+	[self hideKeyboard];
+	SHMonthPartPicker *dayOfMonthPicker = [[SHMonthPartPicker alloc] init];
+	[self showSHSpinPicker:dayOfMonthPicker];
+	[eventInfo.senderStack addObject:self];
 }
 
 
 -(void)pickerSelection_action:(SHEventInfo *)eventInfo{
-  UIPickerView *picker = (UIPickerView *)eventInfo.senderStack[1];
-  [self addCellWithWeekOrdinal:[picker selectedRowInComponent:0]
-    dayOfWeek:[picker selectedRowInComponent:1]];
-  [eventInfo.senderStack addObject:self];
-  [super pickerSelection_action:eventInfo];
+	UIPickerView *picker = (UIPickerView *)eventInfo.senderStack[1];
+	[self addCellWithWeekOrdinal:[picker selectedRowInComponent:0]
+		dayOfWeek:[picker selectedRowInComponent:1]];
+	[eventInfo.senderStack addObject:self];
+	[super pickerSelection_action:eventInfo];
 }
 
 
 -(void)addCellWithWeekOrdinal:(NSInteger)weekOrdinal dayOfWeek:(NSInteger)dayOfWeek{
-  SHListRateItem *rateItem = [[SHListRateItem alloc] initWithMajorOrdinal:weekOrdinal
-    minorOrdinal:dayOfWeek];
-  NSInteger row = [self.activeDays addRateItem:rateItem];
-  if(row >= 0){
-    [self addItemToTableAndScale:row];
-  }
+	SHListRateItem *rateItem = [[SHListRateItem alloc] initWithMajorOrdinal:weekOrdinal
+		minorOrdinal:dayOfWeek];
+	NSInteger row = [self.activeDays addRateItem:rateItem];
+	if(row >= 0){
+		[self addItemToTableAndScale:row];
+	}
 }
 
 
 -(void)deleteCellAt:(NSIndexPath *)indexPath{
-  [self.activeDays removeRateItemAtIndex:indexPath.row];
-  [self removeItemFromTableAndScale:indexPath];
+	[self.activeDays removeRateItemAtIndex:indexPath.row];
+	[self removeItemFromTableAndScale:indexPath];
 }
 
 

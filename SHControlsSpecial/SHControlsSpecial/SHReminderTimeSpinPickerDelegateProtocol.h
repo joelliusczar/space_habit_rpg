@@ -11,5 +11,5 @@
 
 @protocol SHReminderTimeSpinPickerDelegateProtocol <NSObject>
 -(void)pickerSelection_action:(UIPickerView *)sender
-                           forEvent:(SHTimeSpinPickerEventInfo *)event;
+	forEvent:(SHTimeSpinPickerEventInfo *)event;
 @end
