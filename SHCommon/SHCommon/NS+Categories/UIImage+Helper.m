@@ -13,11 +13,11 @@
 @implementation UIImage (Helper)
 
 -(UIImage *)invertImageColors{
-    CIImage *cImg = [CIImage imageWithCGImage:self.CGImage];
-    CIFilter *filter = [CIFilter filterWithName:@"CIColorInvert"];
-    [filter setValue:cImg forKey:kCIInputImageKey];
-    CIImage *result = [filter valueForKey:kCIOutputImageKey];
-    return [UIImage imageWithCIImage:result scale:self.scale orientation:self.imageOrientation];
+	CIImage *cImg = [CIImage imageWithCGImage:self.CGImage];
+	CIFilter *filter = [CIFilter filterWithName:@"CIColorInvert"];
+	[filter setValue:cImg forKey:kCIInputImageKey];
+	CIImage *result = [filter valueForKey:kCIOutputImageKey];
+	return [UIImage imageWithCIImage:result scale:self.scale orientation:self.imageOrientation];
 }
 
 @end

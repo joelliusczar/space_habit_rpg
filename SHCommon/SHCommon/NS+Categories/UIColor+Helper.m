@@ -13,9 +13,9 @@
 @implementation UIColor (Helper)
 
 -(UIColor *)invertColor{
-    CGFloat r,g,b,a;
-    [self getRed:&r green:&g blue:&b alpha:&a];
-    return [UIColor colorWithRed:1.-r green:1.-g blue:1.-b alpha:a];
+	CGFloat r,g,b,a;
+	[self getRed:&r green:&g blue:&b alpha:&a];
+	return [UIColor colorWithRed:1.-r green:1.-g blue:1.-b alpha:a];
 }
 
 @end

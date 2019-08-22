@@ -11,12 +11,12 @@
 
 @interface SHNotificationHelper : NSObject
 +(UNMutableNotificationContent *)buildDefaultNotificationContent:(NSString *)notificationText
-                                                        userInfo:(NSDictionary *)info;
+	userInfo:(NSDictionary *)info;
 +(void)cleanUpSentReminders;
 +(void)buildNotificationPermissionWrapped:(NSString *)notificationText
-                           notificationId:(NSString *)notificationId
-                                 userInfo:(NSDictionary *)info;
+	notificationId:(NSString *)notificationId
+	userInfo:(NSDictionary *)info;
 +(void)addNewNotificationIfPossible:(NSString *)notificationText
-                     notificationId:(NSString *)notificationId
-                           userInfo:(NSDictionary *)info;
+	notificationId:(NSString *)notificationId
+	userInfo:(NSDictionary *)info;
 @end

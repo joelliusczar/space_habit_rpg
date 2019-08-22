@@ -14,17 +14,17 @@
 #pragma clang diagnostic ignored "-Wunused-parameter"
 
 -(id)copyWithZone:(NSZone *)zone{
-    return self;
+	return self;
 }
 
 #pragma clang diagnostic pop
 
 -(NSUInteger)hash{
-    return (NSUInteger)self;
+	return (NSUInteger)self;
 }
 
 -(BOOL)isEqual:(id)object{
-    return self == object;
+	return self == object;
 }
 
 @end

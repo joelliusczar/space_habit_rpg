@@ -1,9 +1,9 @@
 //
-//  CollectionUtils.h
-//  SHCommon
+//	CollectionUtils.h
+//	SHCommon
 //
-//  Created by Joel Pridgen on 4/18/19.
-//  Copyright © 2019 Joel Gillette. All rights reserved.
+//	Created by Joel Pridgen on 4/18/19.
+//	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
 
@@ -18,7 +18,7 @@ typedef id (^shDictEntrytransformer)(id,NSMutableSet*);
 extern const shDictEntrytransformer shDefaultTransformer;
 
 NSMutableArray *shArrayWithItemsAsDicts(NSArray *array,
-  shDictEntrytransformer transformer,
-  NSMutableSet *cycleTracker);
+	shDictEntrytransformer transformer,
+	NSMutableSet *cycleTracker);
 
 #endif

@@ -11,8 +11,8 @@
 @implementation NSNumber (Helper)
 
 -(NSNumber *)plusInteger:(NSInteger)num{
-    NSInteger intForm = self.integerValue;
-    return [NSNumber numberWithInteger:intForm + num];
+	NSInteger intForm = self.integerValue;
+	return [NSNumber numberWithInteger:intForm + num];
 }
 
 @end

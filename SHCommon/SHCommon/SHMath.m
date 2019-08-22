@@ -11,16 +11,16 @@
 @implementation SHMath
 
 +(BOOL)isPowerOfTwo:(NSUInteger)num{
-    return num!=0&&(num&(num-1))==0;
+	return num!=0&&(num&(num-1))==0;
 }
 
 +(int)toIntExact:(long)num{
-    if(num>INT32_MAX || num<INT32_MIN){
-        @throw [NSException
-                exceptionWithName:NSRangeException
-                reason:@"num was too big or too negative" userInfo:nil];
-    }
-    return (int)num;
+	if(num>INT32_MAX || num<INT32_MIN){
+		@throw [NSException
+				exceptionWithName:NSRangeException
+				reason:@"num was too big or too negative" userInfo:nil];
+	}
+	return (int)num;
 }
 
 @end

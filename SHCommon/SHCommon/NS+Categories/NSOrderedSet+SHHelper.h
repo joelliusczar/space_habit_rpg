@@ -1,9 +1,9 @@
 //
-//  NSOrderedSet+SHHelper.h
-//  SHCommon
+//	NSOrderedSet+SHHelper.h
+//	SHCommon
 //
-//  Created by Joel Pridgen on 4/18/19.
-//  Copyright © 2019 Joel Gillette. All rights reserved.
+//	Created by Joel Pridgen on 4/18/19.
+//	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -15,8 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSMutableArray*)arrayWithItemsAsDicts;
 
 -(NSMutableArray*)arrayWithItemsAsDictsWithTransformer:
-  (shDictEntrytransformer)transformer
-  withSet:(NSMutableSet*)cycleTracker;
+	(shDictEntrytransformer)transformer
+	withSet:(NSMutableSet*)cycleTracker;
 
 @end
 

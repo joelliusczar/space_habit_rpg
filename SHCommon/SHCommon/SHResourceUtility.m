@@ -11,15 +11,15 @@
 @implementation SHResourceUtility 
 
 -(NSDictionary *)getPListDict:(NSString*)fileName withBundle:(nonnull NSBundle *)bundle{
-    NSString *filePath = [bundle pathForResource:fileName ofType:@"plist"];
-    NSAssert(filePath,@"file path for plist was null or empty");
-    return [NSDictionary dictionaryWithContentsOfFile:filePath];
+	NSString *filePath = [bundle pathForResource:fileName ofType:@"plist"];
+	NSAssert(filePath,@"file path for plist was null or empty");
+	return [NSDictionary dictionaryWithContentsOfFile:filePath];
 }
 
 -(NSArray *)getPListArray:(NSString*)fileName withBundle:(nonnull NSBundle *)bundle{
-    NSString *filePath = [bundle pathForResource:fileName ofType:@"plist"];
-    NSAssert(filePath,@"file path for plist was null or empty");
-    return [NSArray arrayWithContentsOfFile:filePath];
+	NSString *filePath = [bundle pathForResource:fileName ofType:@"plist"];
+	NSAssert(filePath,@"file path for plist was null or empty");
+	return [NSArray arrayWithContentsOfFile:filePath];
 }
 
 @end

@@ -1,9 +1,9 @@
 //
-//  SHCommonUtils.h
-//  HabitRPG2
+//	SHCommonUtils.h
+//	HabitRPG2
 //
-//  Created by Joel Pridgen on 9/21/16.
-//  Copyright © 2016 Joel Pridgen. All rights reserved.
+//	Created by Joel Pridgen on 9/21/16.
+//	Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
 #ifndef SHCommonUtils_h
@@ -31,18 +31,18 @@ public variable that I can swap out at run time
 #define SH_IS_OBJECT(x) (strchr("@#", @encode(typeof(x))[0]) != NULL)
 #define SH_IS_BOOL(x) (strchr("b#", @encode(typeof(x))[0]) != NULL)
 #define SH_IS_CHAR(x) (strchr("c#", @encode(typeof(x))[0]) != NULL) \
-  || (strchr("C#", @encode(typeof(x))[0]) != NULL)
+	|| (strchr("C#", @encode(typeof(x))[0]) != NULL)
 #define SH_IS_CSTR(x) (strchr("*#", @encode(typeof(x))[0]) != NULL)
 #define SH_IS_INT(x) (strchr("s#", @encode(typeof(x))[0]) != NULL) \
-  || (strchr("i#", @encode(typeof(x))[0]) != NULL) \
-  || (strchr("l#", @encode(typeof(x))[0]) != NULL) \
-  || (strchr("q#", @encode(typeof(x))[0]) != NULL)
+	|| (strchr("i#", @encode(typeof(x))[0]) != NULL) \
+	|| (strchr("l#", @encode(typeof(x))[0]) != NULL) \
+	|| (strchr("q#", @encode(typeof(x))[0]) != NULL)
 #define SH_IS_UNSIGNED_INT(x) (strchr("S#", @encode(typeof(x))[0]) != NULL) \
-  || (strchr("I#", @encode(typeof(x))[0]) != NULL) \
-  || (strchr("L#", @encode(typeof(x))[0]) != NULL) \
-  || (strchr("Q#", @encode(typeof(x))[0]) != NULL)
+	|| (strchr("I#", @encode(typeof(x))[0]) != NULL) \
+	|| (strchr("L#", @encode(typeof(x))[0]) != NULL) \
+	|| (strchr("Q#", @encode(typeof(x))[0]) != NULL)
 #define SH_IS_FLOAT(x) (strchr("f#", @encode(typeof(x))[0]) != NULL) \
-  || (strchr("d#", @encode(typeof(x))[0]) != NULL)
+	|| (strchr("d#", @encode(typeof(x))[0]) != NULL)
 #define SH_IS_STRUCT(x) (strchr("{#", @encode(typeof(x))[0]) != NULL)
 extern uint (*shRandomUInt)(uint);
 void shReverse_UINT(NSUInteger * array,NSUInteger len);
