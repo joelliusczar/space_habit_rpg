@@ -154,16 +154,26 @@ static NSString *const EntityName = @"Daily";
 }
 
 
--(NSString*)controller:(NSFetchedResultsController *)controller
-	sectionIndexTitleForSectionName:(NSString *)sectionName
-{
-	return sectionName;
-}
-
-
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
 	(void)tableView;
-	return self.dailyItemsFetcher.sections[section].indexTitle;
+	if(self.dailyItemsFetcher.sections.count == 2) {
+		if(section == SH_INCOMPLETE) {
+			return @"Unfinished";
+		}
+		else {
+			return @"Finished";
+		}
+	}
+	else if(self.dailyItemsFetcher.sections.count == 1) {
+		__block NSString *title = @"";
+		[self.dailyItemsFetcher.managedObjectContext performBlockAndWait:^{
+			if(self.dailyItemsFetcher.fetchedObjects.count < 1) return;
+			SHDaily *daily = (SHDaily *)self.dailyItemsFetcher.fetchedObjects[0];
+			title = daily.isCompleted ? @"Finished" : @"Unfinished";
+		}];
+		return title;
+	}
+	return @"";
 }
 
 
