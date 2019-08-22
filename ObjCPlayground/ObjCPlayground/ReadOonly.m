@@ -12,11 +12,11 @@
 
 @implementation ReadOonly
 -(void)setRudy:(NSInteger)rudy{
-    _rudy = rudy;
+	_rudy = rudy;
 }
 @end
 
 
 void setRoody(NSInteger num,ReadOonly *ro){
-    ro.rudy = num;
+	ro.rudy = num;
 }

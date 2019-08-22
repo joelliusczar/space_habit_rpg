@@ -11,31 +11,31 @@
 @implementation ParentMan
 
 -(instancetype)init{
-    if(self = [super init]){
-        _contrlNum = 7;
-    }
-    return self;
+	if(self = [super init]){
+		_contrlNum = 7;
+	}
+	return self;
 }
 
 +(instancetype)newParentMan{
-    ParentMan *pm = [[ParentMan alloc] init];
-    return pm;
+	ParentMan *pm = [[ParentMan alloc] init];
+	return pm;
 }
 
 -(instancetype)initTwo{
-    if(self = [super init]){
-        [self writeOverLocal];
-        [self writeOverPublic];
-    }
-    return self;
+	if(self = [super init]){
+		[self writeOverLocal];
+		[self writeOverPublic];
+	}
+	return self;
 }
 
 -(void)writeOverLocal{
-    NSLog(@"%@",@"L-1");
+	NSLog(@"%@",@"L-1");
 }
 
 -(void)writeOverPublic{
-    NSLog(@"%@",@"P-1");
+	NSLog(@"%@",@"P-1");
 }
 
 -(void)nothing{}

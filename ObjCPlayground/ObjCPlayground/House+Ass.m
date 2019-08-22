@@ -11,10 +11,10 @@
 
 @implementation House (Ass)
 +(NSInteger)ghostNum{
-    return ((NSNumber *)objc_getAssociatedObject(self,@selector(ghostNum))).integerValue;
+	return ((NSNumber *)objc_getAssociatedObject(self,@selector(ghostNum))).integerValue;
 }
 
 +(void)setGhostNum:(NSInteger)num{
-    objc_setAssociatedObject(self,@selector(ghostNum),[NSNumber numberWithInteger:num],OBJC_ASSOCIATION_ASSIGN);
+	objc_setAssociatedObject(self,@selector(ghostNum),[NSNumber numberWithInteger:num],OBJC_ASSOCIATION_ASSIGN);
 }
 @end

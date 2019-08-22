@@ -1,5 +1,5 @@
 //
-//  PersonThing.h
+//	PersonThing.h
 //  HabitRPG2
 //
 //  Created by Joel Pridgen on 7/9/17.

@@ -1,5 +1,5 @@
 //
-//  House+Things.h
+//	House+Things.h
 //  HabitRPG2
 //
 //  Created by Joel Pridgen on 7/10/17.

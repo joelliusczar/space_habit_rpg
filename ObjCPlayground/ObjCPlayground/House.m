@@ -11,16 +11,16 @@
 @implementation House
 
 -(void)returnsNothing{
-    NSLog(@"%@",@"nothing");
+	NSLog(@"%@",@"nothing");
 }
 
 
 -(NSInteger)getFive{
-    return 5;
+	return 5;
 }
 
 -(void)dealloc{
-    NSLog(@"%@",@"Deallocating, motherfucker!");
+	NSLog(@"%@",@"Deallocating, motherfucker!");
 }
 
 @end
@@ -29,16 +29,16 @@
 @implementation FakeHouse
 
 -(void)returnsNothing{
-    NSLog(@"%@",@"nothing");
+	NSLog(@"%@",@"nothing");
 }
 
 
 -(NSInteger)getFive{
-    return 5;
+	return 5;
 }
 
 -(void)dealloc{
-    NSLog(@"%@",@"Deallocating, motherfucker!");
+	NSLog(@"%@",@"Deallocating, motherfucker!");
 }
 
 @end

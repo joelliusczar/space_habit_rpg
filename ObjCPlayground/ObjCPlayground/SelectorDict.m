@@ -1,22 +1,22 @@
 //
-//  SelectorDict.m
-//  HabitRPG2
+//	SelectorDict.m
+//	HabitRPG2
 //
-//  Created by Joel Pridgen on 9/15/17.
-//  Copyright © 2017 Joel Pridgen. All rights reserved.
+//	Created by Joel Pridgen on 9/15/17.
+//	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
 #import "SelectorDict.h"
 
 @implementation SelectorDict
 -(id)objectForKeyedSubscript:(Class)key{
-  (void)key;
-  return self.it;
+	(void)key;
+	return self.it;
 }
 
 -(void)setObject:(id)obj forKeyedSubscript:(Class)key{
-  (void)key;
-  self.it = obj;
+	(void)key;
+	self.it = obj;
 }
 
 -(void)helloMethod{}

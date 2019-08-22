@@ -1,9 +1,9 @@
 //
-//  main.m
-//  ObjCScriptRunner
+//	main.m
+//	ObjCScriptRunner
 //
-//  Created by Joel Pridgen on 7/7/17.
-//  Copyright © 2017 Joel Pridgen. All rights reserved.
+//	Created by Joel Pridgen on 7/7/17.
+//	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -16,15 +16,15 @@
 #import "NoArcExp.h"
 
 int main(int argc, const char * argv[]) {
-  (void)argc;
-  (void)argv;
-  @autoreleasepool {
-    NSUserDefaults *defs = NSUserDefaults.standardUserDefaults;
-    [defs setInteger:0 forKey:@"com.apple.CoreData.SQLDebug"];
-    //NSInteger val =  [defs integerForKey:@"-com.apple.CoreData.SQLDebug"];
-      [Experiments switchSemantics];
-      //[NoArcExp underRelease];
-  }
-  
-  return 0;
+	(void)argc;
+	(void)argv;
+	@autoreleasepool {
+		NSUserDefaults *defs = NSUserDefaults.standardUserDefaults;
+		[defs setInteger:0 forKey:@"com.apple.CoreData.SQLDebug"];
+		//NSInteger val =	[defs integerForKey:@"-com.apple.CoreData.SQLDebug"];
+			[Experiments switchSemantics];
+			//[NoArcExp underRelease];
+	}
+	
+	return 0;
 }

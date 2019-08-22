@@ -12,7 +12,7 @@
 @implementation UserOfProtocus
 
 -(void)usedAnyway{
-    NSLog(@"%@",@"used anyway");
+	NSLog(@"%@",@"used anyway");
 }
 
 @end

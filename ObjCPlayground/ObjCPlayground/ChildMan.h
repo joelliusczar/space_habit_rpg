@@ -1,9 +1,9 @@
 //
-//  ChildMan.h
-//  HabitRPG2
+//	ChildMan.h
+//	HabitRPG2
 //
-//  Created by Joel Pridgen on 7/20/17.
-//  Copyright © 2017 Joel Pridgen. All rights reserved.
+//	Created by Joel Pridgen on 7/20/17.
+//	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
 #import "ParentMan.h"

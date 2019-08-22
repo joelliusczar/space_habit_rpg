@@ -12,28 +12,28 @@
 
 
 +(int)cNonNull:(House *)h{
-    if(h){
-        return 1;
-    }
-    return 0;
+	if(h){
+		return 1;
+	}
+	return 0;
 }
 
 
 -(int)instanceNonNulls:(House *)h{
-    if(h){
-        return 2;
-    }
-    return -1;
+	if(h){
+		return 2;
+	}
+	return -1;
 }
 
 
 +(House *)cRetNonNull{
-    return nil;
+	return nil;
 }
 
 
 -(House *)instanceRetNonNulls{
-    return nil;
+	return nil;
 }
 
 @end

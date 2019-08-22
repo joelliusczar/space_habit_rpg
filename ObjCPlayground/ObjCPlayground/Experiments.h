@@ -1,9 +1,9 @@
 //
-//  Experiments.h
-//  HabitRPG2
+//	Experiments.h
+//	HabitRPG2
 //
-//  Created by Joel Pridgen on 7/10/17.
-//  Copyright © 2017 Joel Pridgen. All rights reserved.
+//	Created by Joel Pridgen on 7/10/17.
+//	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -29,10 +29,10 @@
 typedef WeakHolder Varholder;
 
 typedef struct{
-  int firstItem;
-  int secondItem;
-  int thirdItem;
-  void *tstPtr;
+	int firstItem;
+	int secondItem;
+	int thirdItem;
+	void *tstPtr;
 } stupidStruct;
 
 typedef id (^mbTest)(void);

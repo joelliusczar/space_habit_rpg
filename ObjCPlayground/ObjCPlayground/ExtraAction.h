@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 void PrintSomeH(){
-    NSLog(@"Inside the h statement");
+	NSLog(@"Inside the h statement");
 }
 
 //PrintSomeH();

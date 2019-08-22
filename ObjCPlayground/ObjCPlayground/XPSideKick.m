@@ -13,7 +13,7 @@
 @implementation XPSideKick
 
 +(id<Protocus>)proteThatBoat{
-    return [[UserOfProtocus alloc]init];
+	return [[UserOfProtocus alloc]init];
 }
 
 @end

@@ -9,9 +9,9 @@
 #import "Playground/Playground/Coverride.h"
 
 void insideFunc(){
-    NSLog(@"inside has been replaced");
+	NSLog(@"inside has been replaced");
 }
 
 void outsideFunc(){
-    NSLog(@"Outside has been replaced");
+	NSLog(@"Outside has been replaced");
 }

@@ -11,44 +11,44 @@
 @implementation MassPrinter
 
 +(void)outputAllLocaleFormatStringsToFile{
-    
-    NSString *fileContents = [MassPrinter readFileContentsFromDateHelperTest];
-    NSArray<NSString *> *adjustedTests =
-    [MassPrinter runRegexOnFileContents:fileContents];
-    NSString *updatedContent = [adjustedTests componentsJoinedByString:@"\n"];
-    NSLog(@"%@",updatedContent);
+	
+	NSString *fileContents = [MassPrinter readFileContentsFromDateHelperTest];
+	NSArray<NSString *> *adjustedTests =
+	[MassPrinter runRegexOnFileContents:fileContents];
+	NSString *updatedContent = [adjustedTests componentsJoinedByString:@"\n"];
+	NSLog(@"%@",updatedContent);
 }
 
 
 //+(void)doActualOutputWork:(NSString *)content{
-//    NSFileManager *fileManager = [NSFileManager defaultManager];
-//    NSURL *documentsURL =
-//    [fileManager URLsForDirectory:NSDocumentDirectory
-//                        inDomains:NSUserDomainMask][0];
-//    [fileManager create];
+//	NSFileManager *fileManager = [NSFileManager defaultManager];
+//	NSURL *documentsURL =
+//	[fileManager URLsForDirectory:NSDocumentDirectory
+//						inDomains:NSUserDomainMask][0];
+//	[fileManager create];
 //}
 
 
 +(NSString *)readFileContentsFromDateHelperTest{
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    NSURL *baseUrl =
-    [fileManager URLsForDirectory:NSDocumentDirectory
-                        inDomains:NSUserDomainMask][0];
-    
-    NSURL *unitTestsUrl =
-    [baseUrl URLByAppendingPathComponent:@"spacehabitrpg/HabitRPG2Tests"
-                             isDirectory:YES];
-    
-    NSURL *dateTestPath =
-    [unitTestsUrl URLByAppendingPathComponent:@"DateHelperTest.m"];
-    
-    NSError *wrong = nil;
-    NSStringEncoding *used = nil;
-    
-    NSString *fileContents = [NSString stringWithContentsOfURL:dateTestPath
-                                                  usedEncoding:used error:&wrong];
-    return fileContents;
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	
+	NSURL *baseUrl =
+	[fileManager URLsForDirectory:NSDocumentDirectory
+						inDomains:NSUserDomainMask][0];
+	
+	NSURL *unitTestsUrl =
+	[baseUrl URLByAppendingPathComponent:@"spacehabitrpg/HabitRPG2Tests"
+							 isDirectory:YES];
+	
+	NSURL *dateTestPath =
+	[unitTestsUrl URLByAppendingPathComponent:@"DateHelperTest.m"];
+	
+	NSError *wrong = nil;
+	NSStringEncoding *used = nil;
+	
+	NSString *fileContents = [NSString stringWithContentsOfURL:dateTestPath
+												  usedEncoding:used error:&wrong];
+	return fileContents;
 }
 
 +(NSArray *)runRegexOnFileContents:(NSString *)fileContents{
@@ -66,24 +66,24 @@
   NSMutableArray<NSString *> *adjustedTests = [NSMutableArray array];
   
   [regex enumerateMatchesInString:fileContents
-                          options:NSMatchingReportCompletion
-                            range:NSMakeRange(0,fileContents.length)
-                       usingBlock:
+						  options:NSMatchingReportCompletion
+							range:NSMakeRange(0,fileContents.length)
+					   usingBlock:
    ^(NSTextCheckingResult *result,NSMatchingFlags flags,BOOL *stop){
-     (void)flags;
-     (void)stop;
-     NSString *localeId = [fileContents substringWithRange:[result rangeAtIndex:2]];
-     NSLocale *locale = [NSLocale localeWithLocaleIdentifier:localeId];
-     NSString *formatStr = [NSDateFormatter dateFormatFromTemplate:@"j"
-                                     options:0 locale:locale];
+	 (void)flags;
+	 (void)stop;
+	 NSString *localeId = [fileContents substringWithRange:[result rangeAtIndex:2]];
+	 NSLocale *locale = [NSLocale localeWithLocaleIdentifier:localeId];
+	 NSString *formatStr = [NSDateFormatter dateFormatFromTemplate:@"j"
+									 options:0 locale:locale];
    
-     NSString *composedString = [NSString stringWithFormat:@"%@//%@%@",
-                                 [fileContents substringWithRange:[result rangeAtIndex:1]]
-                                 ,formatStr
-                                 ,[fileContents substringWithRange:[result rangeAtIndex:3]]];
+	 NSString *composedString = [NSString stringWithFormat:@"%@//%@%@",
+								 [fileContents substringWithRange:[result rangeAtIndex:1]]
+								 ,formatStr
+								 ,[fileContents substringWithRange:[result rangeAtIndex:3]]];
    
-     [adjustedTests addObject: composedString];
-                       }];
+	 [adjustedTests addObject: composedString];
+					   }];
   
   return adjustedTests;
 }
