@@ -1,8 +1,8 @@
 //
-//  SHTodo+CoreDataClass.m
-//  
+//	SHTodo+CoreDataClass.m
+//	
 //
-//  Created by Joel Pridgen on 4/14/19.
+//	Created by Joel Pridgen on 4/14/19.
 //
 //
 
@@ -10,11 +10,11 @@
 
 @implementation SHTodo
 -(NSMutableDictionary *)mapable{
-    return [NSMutableDictionary dictionaryWithObjectsAndKeys:
-            self.todoName,@"todoName"
-            ,[NSNumber numberWithDouble:self.dueDate.timeIntervalSince1970],@"dueDate"
-            ,[NSNumber numberWithDouble:self.effectiveDate.timeIntervalSince1970 ],@"effectiveDate"
-            ,[NSNumber numberWithInt:self.userOrder],@"userOrder"
-            , nil];
+	return [NSMutableDictionary dictionaryWithObjectsAndKeys:
+		self.todoName,@"todoName"
+		,[NSNumber numberWithDouble:self.dueDate.timeIntervalSince1970],@"dueDate"
+		,[NSNumber numberWithDouble:self.effectiveDate.timeIntervalSince1970 ],@"effectiveDate"
+		,[NSNumber numberWithInt:self.userOrder],@"userOrder"
+		, nil];
 }
 @end

@@ -1,9 +1,9 @@
 //
-//  SHDailyMaxDaysBeforeSpanCalculator.h
-//  SHModels
+//	SHDailyMaxDaysBeforeSpanCalculator.h
+//	SHModels
 //
-//  Created by Joel Pridgen on 8/4/19.
-//  Copyright © 2019 Joel Gillette. All rights reserved.
+//	Created by Joel Pridgen on 8/4/19.
+//	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong,nonatomic) SHDailyActiveDays *activeDaysContainer;
 @property (assign,nonatomic) int32_t rate;
 -(instancetype)initWithActiveDays:(SHDailyActiveDays *)activeDaysContainer
-  rate:(int32_t)rate;
+	rate:(int32_t)rate;
 -(NSInteger)maxDaysBeforeSpan_WEEKLY;
 @end
 

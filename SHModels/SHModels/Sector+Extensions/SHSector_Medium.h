@@ -1,9 +1,9 @@
 //
-//  SHSector_Medium.h
-//  SHModels
+//	SHSector_Medium.h
+//	SHModels
 //
-//  Created by Joel Pridgen on 2/13/19.
-//  Copyright © 2019 Joel Gillette. All rights reserved.
+//	Created by Joel Pridgen on 2/13/19.
+//	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
 #import <SHData/SHCoreDataProtocol.h>
@@ -21,8 +21,8 @@ extern NSString* const HOME_KEY;
 @interface SHSector_Medium : NSObject
 
 +(instancetype)newWithContext:(nullable NSManagedObjectContext*)context
-  withResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil
-  withInfoDict:(SHSectorInfoDictionary*)sectorInfo;
+	withResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil
+	withInfoDict:(SHSectorInfoDictionary*)sectorInfo;
 
 -(SHSector*)newEmptySector;
 -(NSArray<NSString*>*)getSymbolsList;
@@ -30,15 +30,15 @@ extern NSString* const HOME_KEY;
 -(NSString*)getSymbolSuffix:(NSUInteger)visitCount;
 
 -(SHSectorDTO*)newRandomSectorChoiceGivenHero:(SHHeroDTO*)hero
-  ifShouldMatchLvl:(BOOL)shouldMatchLvl;
+	ifShouldMatchLvl:(BOOL)shouldMatchLvl;
 
 -(SHSectorDTO*)newSpecificSector2:(NSString*) sectorKey withLvl:(int32_t) lvl;
 
 -(SHSectorDTO*)newSpecificSector:(NSString*)sectorKey
-  withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount;
+	withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount;
 
 -(NSMutableArray<SHSectorDTO*>*)newMultipleSectorChoicesGivenHero:(SHHeroDTO*)hero
-  ifShouldMatchLvl:(BOOL)matchLvl;
+	ifShouldMatchLvl:(BOOL)matchLvl;
 
 -(NSArray<SHSector*>*)getAllSectors:(nullable NSPredicate*)filter;
 -(SHSector*)getSector:(BOOL)isFront;

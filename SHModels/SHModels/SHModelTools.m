@@ -10,16 +10,16 @@
 #import <SHCommon/SHCommonUtils.h>
 
 uint shCalculateLvl(uint lvl,uint range){
-    lvl = lvl?lvl:1;
-    uint32_t minLvl = 0;
-    if(lvl <= range){
-        minLvl = 1;
-        range += lvl;
-    }
-    else{
-        minLvl = lvl - range;
-        range = (2*range)+1;
-    }
-    
-    return shRandomUInt(range) +minLvl;
+	lvl = lvl?lvl:1;
+	uint32_t minLvl = 0;
+	if(lvl <= range){
+		minLvl = 1;
+		range += lvl;
+	}
+	else{
+		minLvl = lvl - range;
+		range = (2*range)+1;
+	}
+	
+	return shRandomUInt(range) +minLvl;
 }

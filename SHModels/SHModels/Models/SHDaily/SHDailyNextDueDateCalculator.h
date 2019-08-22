@@ -1,9 +1,9 @@
 //
-//  SHDailyNextDueDateCalculator.h
-//  SHModels
+//	SHDailyNextDueDateCalculator.h
+//	SHModels
 //
-//  Created by Joel Pridgen on 8/4/19.
-//  Copyright © 2019 Joel Gillette. All rights reserved.
+//	Created by Joel Pridgen on 8/4/19.
+//	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -16,9 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong,nonatomic) NSDate* lastActivationDateTime;
 @property (strong,nonatomic) NSDate* lastUpdateDateTime;
 -(instancetype)initWithActiveDays:(SHDailyActiveDays *)activeDaysContainer
-  lastActivationDateTime:(NSDate *)lastActivationDateTime
-  lastUpdateDateTime:(NSDate *)lastUpdateDateTime
-  rate:(int32_t)rate;
+	lastActivationDateTime:(NSDate *)lastActivationDateTime
+	lastUpdateDateTime:(NSDate *)lastUpdateDateTime
+	rate:(int32_t)rate;
 -(NSDate*)nextDueDate_WEEKLY;
 @property (assign,nonatomic) int32_t rate;
 @end

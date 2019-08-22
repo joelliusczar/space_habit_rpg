@@ -1,8 +1,8 @@
 //
-//  SHDailySubTask+CoreDataClass.m
-//  
+//	SHDailySubTask+CoreDataClass.m
+//	
 //
-//  Created by Joel Pridgen on 4/14/19.
+//	Created by Joel Pridgen on 4/14/19.
 //
 //
 
@@ -14,17 +14,17 @@
 
 
 -(NSMutableDictionary*)mappable{
-  return [NSDictionary objectToDictionary:self];
+	return [NSDictionary objectToDictionary:self];
 }
 
 -(void)copyFrom:(NSObject *)object{
-  shCopyInstanceVar(object,self,@"activeDaysHash");
-  shCopyInstanceVar(object,self,@"dailySubTaskName");
-  shCopyInstanceVar(object,self,@"difficulty");
-  shCopyInstanceVar(object,self,@"lastActivationDateTime");
-  shCopyInstanceVar(object,self,@"lastUpdateDateTime");
-  shCopyInstanceVar(object,self,@"rate");
-  shCopyInstanceVar(object,self,@"urgency");
-  }
+	shCopyInstanceVar(object,self,@"activeDaysHash");
+	shCopyInstanceVar(object,self,@"dailySubTaskName");
+	shCopyInstanceVar(object,self,@"difficulty");
+	shCopyInstanceVar(object,self,@"lastActivationDateTime");
+	shCopyInstanceVar(object,self,@"lastUpdateDateTime");
+	shCopyInstanceVar(object,self,@"rate");
+	shCopyInstanceVar(object,self,@"urgency");
+	}
 
 @end

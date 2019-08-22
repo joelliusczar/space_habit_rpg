@@ -1,9 +1,9 @@
 //
-//  SHHeroDTO.m
-//  SHModels
+//	SHHeroDTO.m
+//	SHModels
 //
-//  Created by Joel Pridgen on 4/6/19.
-//  Copyright © 2019 Joel Gillette. All rights reserved.
+//	Created by Joel Pridgen on 4/6/19.
+//	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
 #import "SHHeroDTO.h"
@@ -14,8 +14,8 @@
 
 
 -(id)copyWithZone:(NSZone *)zone{
-  (void)zone;
-  return [self dtoCopy];
+	(void)zone;
+	return [self dtoCopy];
 }
 
 @end

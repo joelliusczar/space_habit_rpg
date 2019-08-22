@@ -1,9 +1,9 @@
 //
-//  Monster_Medium.h
-//  SHModels
+//	Monster_Medium.h
+//	SHModels
 //
-//  Created by Joel Pridgen on 3/25/19.
-//  Copyright © 2019 Joel Gillette. All rights reserved.
+//	Created by Joel Pridgen on 3/25/19.
+//	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Monster_Medium : NSObject
 +(instancetype)newWithContext:(NSManagedObjectContext*)context
-  withInfoDict:(SHMonsterInfoDictionary*)monsterInfo;
+	withInfoDict:(SHMonsterInfoDictionary*)monsterInfo;
 
 -(SHMonsterDTO*)newRandomMonster:(NSString*)sectorKey sectorLvl:(uint32_t)sectorLvl;
 -(NSString*)randomMonsterKey:(NSString*)sectorKey;
