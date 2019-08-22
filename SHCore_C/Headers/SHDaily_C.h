@@ -1,9 +1,9 @@
 //
-//  SHDaily_c.h
-//  SHModels
+//	SHDaily_c.h
+//	SHModels
 //
-//  Created by Joel Pridgen on 4/17/18.
-//  Copyright © 2018 Joel Gillette. All rights reserved.
+//	Created by Joel Pridgen on 4/17/18.
+//	Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
 #ifndef SHDaily_C_h
@@ -23,19 +23,19 @@ void shFillWeek(int64_t *daysAheadCounts,int64_t *daysBeforeCounts,bool *activeD
 void shBuildWeek(bool *activeDays,int64_t scaler,SHRateValueItem *rvi);
 void shBuildEmptyWeek(SHRateValueItem *rvi);
 bool shPreviousDueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate,SHRateValueItem *rvi
-  ,int64_t scaler,SHDatetime *ans,SHError *error);
+	,int64_t scaler,SHDatetime *ans,SHError *error);
 
 SHDatetime* shBothWeeklyDueDatesFromLastDueDate(SHDatetime* lastDueDate,SHDatetime* checkinDate
-  ,SHRateValueItem* week,int64_t scaler,SHError *error);
+	,SHRateValueItem* week,int64_t scaler,SHError *error);
 
 bool shNextDueDate_WEEKLY(SHDatetime* lastDueDate,SHDatetime* checkinDate, SHRateValueItem* week,int64_t scaler
-  ,SHDatetime *ans,SHError* error);
+	,SHDatetime *ans,SHError* error);
 
 bool shNextDueDate_WEEKLY_INV(SHDatetime* lastDueDate,SHDatetime* checkinDate, SHRateValueItem* week,int64_t scaler
-  ,SHDatetime *ans,SHError* error);
+	,SHDatetime *ans,SHError* error);
 
 bool shIsDateADueDate(SHDatetime* previousDueDate,SHDatetime* checkinDate, SHRateValueItem* week,int64_t scaler
-  ,SHError *error);
+	,SHError *error);
 
 /*
  activeDays: an array of exactly 7 elements.

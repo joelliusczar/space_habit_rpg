@@ -1,9 +1,9 @@
 //
-//  RateValueItem.h
-//  SH_C
+//	RateValueItem.h
+//	SH_C
 //
-//  Created by Joel Pridgen on 1/27/19.
-//  Copyright © 2019 Joel Gillette. All rights reserved.
+//	Created by Joel Pridgen on 1/27/19.
+//	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
 #ifndef SHRateValueItem_h
@@ -15,10 +15,10 @@
 #include <stdbool.h>
 
 typedef struct {
-    bool isDayActive;
-    int64_t backrange;
-    int64_t forrange;
-    uintptr_t filler[4];
+	bool isDayActive;
+	int64_t backrange;
+	int64_t forrange;
+	uintptr_t filler[4];
 } SHRateValueItem;
 
 

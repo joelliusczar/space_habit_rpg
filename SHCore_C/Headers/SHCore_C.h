@@ -1,9 +1,9 @@
 //
-//  SHCore_C.h
-//  SHCore_C
+//	SHCore_C.h
+//	SHCore_C
 //
-//  Created by Joel Pridgen on 5/2/19.
-//  Copyright © 2019 Joel Gillette. All rights reserved.
+//	Created by Joel Pridgen on 5/2/19.
+//	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
 
