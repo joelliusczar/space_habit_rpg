@@ -1,9 +1,9 @@
 //
-//  DTConstants.c
-//  SHCommon
+//	DTConstants.c
+//	SHCommon
 //
-//  Created by Joel Pridgen on 4/1/18.
-//  Copyright © 2018 Joel Gillette. All rights reserved.
+//	Created by Joel Pridgen on 4/1/18.
+//	Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
 #include "SHDTConstants.h"

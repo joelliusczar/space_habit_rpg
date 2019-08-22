@@ -1,9 +1,9 @@
 //
-//  SHDatetimeFuncs.h
-//  SHDatetime
+//	SHDatetimeFuncs.h
+//	SHDatetime
 //
-//  Created by Joel Pridgen on 8/25/18.
-//  Copyright © 2018 Joel Gillette. All rights reserved.
+//	Created by Joel Pridgen on 8/25/18.
+//	Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
 #ifndef SHDatetimeFuncs_h
@@ -26,10 +26,10 @@
 
 
 double shCreateDateTime(int64_t year,int month,int day,int hour,int minute,int second,int timezoneOffset
-  ,SHError *error);
+	,SHError *error);
 
 bool shTryCreateDateTime(int64_t year,int month,int day,int hour,int minute,int second,int timezoneOffset
-  ,double *ans,SHError *error);
+	,double *ans,SHError *error);
 
 double shCreateDate(int64_t year,int month,int day,int timezoneOffset,SHError *error);
 
@@ -52,31 +52,31 @@ double shDtToTimestamp(SHDatetime const *dt,SHError *error);
 bool shTryDtToTimestamp(SHDatetime const *dt,double *ans,SHError *error);
 
 bool shTryAddYearsToDt(SHDatetime const *dt,int64_t years,TimeAdjustOptions options,SHDatetime *ans
-  ,SHError *error);
+	,SHError *error);
 
 bool shTryAddYearsToDtInPlace(SHDatetime *dt,int64_t years,TimeAdjustOptions options,SHError *error);
 
 double shAddYearsToTimestamp(double timestamp,int64_t years,int timezoneOffset,TimeAdjustOptions options
-  ,SHError *error);
+	,SHError *error);
 
 bool shTryAddYearsToTimestamp(double timestamp,int64_t years,int timezoneOffset,TimeAdjustOptions options
-  ,double *ans,SHError *error);
+	,double *ans,SHError *error);
 
 bool shTryAddMonthsToDt(SHDatetime const *dt,int64_t months,TimeAdjustOptions options,SHDatetime *ans
-  ,SHError *error);
+	,SHError *error);
 
 bool shTryAddMonthsToDtInPlace(SHDatetime *dt,int64_t months,TimeAdjustOptions options,SHError *error);
 
 bool shTryAddMonthsToTimestamp(double timestamp,int64_t months,int timezoneOffset,TimeAdjustOptions options
-  ,double *ans,SHError *error);
+	,double *ans,SHError *error);
 
 bool shTryAddDaysToDt(SHDatetime const *dt,int64_t days,TimeAdjustOptions options,SHDatetime *ans
-  ,SHError *error);
+	,SHError *error);
 
 bool shTryAddDaysToDtInPlace(SHDatetime *dt,int64_t days,TimeAdjustOptions options,SHError *error);
 
 bool shTryAddDaysToTimestamp(double timestamp,int64_t day,TimeAdjustOptions options,double *ans
-  ,SHError *error);
+	,SHError *error);
 
 bool shTryDayStart(double timestamp,int timezoneOffset,double *ans,SHError *error);
 
@@ -134,7 +134,7 @@ void shFreeSHTimeshift(SHTimeshift *tsObj);
  ans: pointer to variable to store result
  error: pointer to variable to store an error number, right now it's just
  pass(0) or fail(1)
- returns:  true for pass, false for fail
+ returns:	true for pass, false for fail
  */
 
 /*
