@@ -1,9 +1,9 @@
 //
-//  SHDummy.m
-//  SHGlobal
+//	SHDummy.m
+//	SHGlobal
 //
-//  Created by Joel Pridgen on 2/27/19.
-//  Copyright © 2019 Joel Gillette. All rights reserved.
+//	Created by Joel Pridgen on 2/27/19.
+//	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
 #import "SHDummy.h"
