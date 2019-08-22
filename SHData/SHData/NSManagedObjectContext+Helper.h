@@ -1,9 +1,9 @@
 //
-//  NSManagedObjectContext+Helper.h
-//  SHData
+//	NSManagedObjectContext+Helper.h
+//	SHData
 //
-//  Created by Joel Pridgen on 3/25/19.
-//  Copyright © 2019 Joel Gillette. All rights reserved.
+//	Created by Joel Pridgen on 3/25/19.
+//	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
 #import <CoreData/CoreData.h>
@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSArray<NSManagedObject *> *)getItemsWithRequest:(NSFetchRequest *) fetchRequest;
 -(NSFetchedResultsController *)getItemFetcher:(NSFetchRequest *)fetchRequest;
 -(NSFetchedResultsController *)getItemFetcher:(NSFetchRequest *)fetchRequest
-  withSectionKeyPath:(NSString *)sectionKeyPath;
+	withSectionKeyPath:(NSString *)sectionKeyPath;
 +(NSManagedObject*)newEntityUnattached:(NSEntityDescription*)entityType;
 -(instancetype)createChildContext;
 @end
