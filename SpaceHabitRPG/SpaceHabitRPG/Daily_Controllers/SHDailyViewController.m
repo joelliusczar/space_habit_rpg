@@ -1,9 +1,9 @@
 //
-//  SHDailyViewController.m
-//  HabitRPG2
+//	SHDailyViewController.m
+//	HabitRPG2
 //
-//  Created by Joel Pridgen on 8/26/16.
-//  Copyright © 2016 Joel Pridgen. All rights reserved.
+//	Created by Joel Pridgen on 8/26/16.
+//	Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
 #define dummy 0 && defined(IS_DEV) && IS_DEV
@@ -46,205 +46,205 @@ static NSString *const EntityName = @"Daily";
 
 @synthesize dailyEditor = _dailyEditor;
 -(SHDailyEditController *)dailyEditor{
-  if(_dailyEditor == nil){
-    _dailyEditor = [[SHDailyEditController alloc] init];
-  }
-  return _dailyEditor;
+	if(_dailyEditor == nil){
+		_dailyEditor = [[SHDailyEditController alloc] init];
+	}
+	return _dailyEditor;
 }
 
 
 -(NSManagedObjectContext*)dailyContext{
-  if(nil == _dailyContext){
-    _dailyContext = [self.central.dataController newBackgroundContext];
-  }
-  return _dailyContext;
+	if(nil == _dailyContext){
+		_dailyContext = [self.central.dataController newBackgroundContext];
+	}
+	return _dailyContext;
 }
 
 
 -(instancetype)initWithCentral:(SHCentralViewController *)central{
-  if(self = [self initWithNibName:@"SHHabitViewController" bundle:nil]){
-    _central = central;
-    [self setuptab];
-    
-  }
-  return self;
+	if(self = [self initWithNibName:@"SHHabitViewController" bundle:nil]){
+		_central = central;
+		[self setuptab];
+		
+	}
+	return self;
 }
 
 
 - (void)viewDidLoad {
-  [super viewDidLoad];
-  
-  self.dailiesTable = [[UITableView alloc] init];
+	[super viewDidLoad];
+	
+	self.dailiesTable = [[UITableView alloc] init];
 
-  [self.view addSubview:self.dailiesTable];
-  self.dailiesTable.translatesAutoresizingMaskIntoConstraints = NO;
-  [self.dailiesTable.widthAnchor constraintEqualToAnchor:self.view.widthAnchor].active = YES;
-  [self.dailiesTable.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
-  [self.dailiesTable.topAnchor  constraintEqualToAnchor:self.addDailiesBtn.bottomAnchor].active = YES;
-  self.dailiesTable.delegate = self;
-  self.dailiesTable.dataSource = self;
-  NSLog(@"load happens");
+	[self.view addSubview:self.dailiesTable];
+	self.dailiesTable.translatesAutoresizingMaskIntoConstraints = NO;
+	[self.dailiesTable.widthAnchor constraintEqualToAnchor:self.view.widthAnchor].active = YES;
+	[self.dailiesTable.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
+	[self.dailiesTable.topAnchor	constraintEqualToAnchor:self.addDailiesBtn.bottomAnchor].active = YES;
+	self.dailiesTable.delegate = self;
+	self.dailiesTable.dataSource = self;
+	NSLog(@"load happens");
 }
 
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+	[super didReceiveMemoryWarning];
+	// Dispose of any resources that can be recreated.
 }
 
 
 -(void)setuptab{
-    UITabBarItem *tbi = [self tabBarItem];
-    [tbi setTitle:@"Dailies"];
-    [self setupData];
+	UITabBarItem *tbi = [self tabBarItem];
+	[tbi setTitle:@"Dailies"];
+	[self setupData];
 }
 
 
 -(void)completeDaily:(SHDaily *)daily{
-        daily.rollbackActivationDateTime = daily.lastActivationDateTime;
-        daily.lastActivationDateTime = [[NSDate date] dayStart];
-        //TODO: calculate damage done to monster
-        //TODO: save
+	daily.rollbackActivationDateTime = daily.lastActivationDateTime;
+	daily.lastActivationDateTime = [[NSDate date] dayStart];
+	//TODO: calculate damage done to monster
+	//TODO: save
 }
 
 
 -(void)undoCompletedDaily:(SHDaily *)daily{
-    daily.lastActivationDateTime = daily.rollbackActivationDateTime;
-    //TODO: more stuff
+	daily.lastActivationDateTime = daily.rollbackActivationDateTime;
+	//TODO: more stuff
 }
 
 
 -(void)setupData{
-  [self.dailyContext performBlock:^{
-    SHConfig *config = [self.dailyContext sh_globalConfig];
-    NSDate *todayStart = [[NSDate date] dayStart];
-    todayStart = [todayStart timeAfterHours:config.dayStartHour minutes:0 seconds:0];
-    SHDaily_Medium *dailyMedium = [SHDaily_Medium newWithContext:self.dailyContext];
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-      self.dailyItemsFetcher = [dailyMedium dailiesDataFetcher];
-      self.dailyItemsFetcher.delegate = self;
-      [self fetchUpdates];
-      NSLog(@"setup happens");
-    }];
-  }];
+	[self.dailyContext performBlock:^{
+		SHConfig *config = [self.dailyContext sh_globalConfig];
+		NSDate *todayStart = [[NSDate date] dayStart];
+		todayStart = [todayStart timeAfterHours:config.dayStartHour minutes:0 seconds:0];
+		SHDaily_Medium *dailyMedium = [SHDaily_Medium newWithContext:self.dailyContext];
+		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+			self.dailyItemsFetcher = [dailyMedium dailiesDataFetcher];
+			self.dailyItemsFetcher.delegate = self;
+			[self fetchUpdates];
+			NSLog(@"setup happens");
+		}];
+	}];
 }
 
 
 -(void)fetchUpdates{
-  [self.dailyContext performBlock:^{
-    NSLog(@"fetch: %@",NSThread.currentThread);
-    NSError *error = nil;
-    [self.dailyItemsFetcher performFetch:&error];
-    if(error) @throw [NSException dbException:error];
-  }];
+	[self.dailyContext performBlock:^{
+		NSLog(@"fetch: %@",NSThread.currentThread);
+		NSError *error = nil;
+		[self.dailyItemsFetcher performFetch:&error];
+		if(error) @throw [NSException dbException:error];
+	}];
 }
 
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-  (void)tableView;
-  return self.dailyItemsFetcher.sections.count;
+	(void)tableView;
+	return self.dailyItemsFetcher.sections.count;
 }
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-  (void)tableView;
-  NSInteger rowCount = self.dailyItemsFetcher.sections[section].numberOfObjects;
-  return rowCount;
+	(void)tableView;
+	NSInteger rowCount = self.dailyItemsFetcher.sections[section].numberOfObjects;
+	return rowCount;
 }
 
 
 -(NSString*)controller:(NSFetchedResultsController *)controller
-  sectionIndexTitleForSectionName:(NSString *)sectionName
+	sectionIndexTitleForSectionName:(NSString *)sectionName
 {
-  return sectionName;
+	return sectionName;
 }
 
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-  (void)tableView;
-  return self.dailyItemsFetcher.sections[section].indexTitle;
+	(void)tableView;
+	return self.dailyItemsFetcher.sections[section].indexTitle;
 }
 
 
 -(void)controllerWillChangeContent:(NSFetchedResultsController *)controller{
-  (void)controller;
-  NSAssert(![NSThread isMainThread],@"this method should only be called from background");
-  [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-    [self.dailiesTable beginUpdates];
-  }];
+	(void)controller;
+	NSAssert(![NSThread isMainThread],@"this method should only be called from background");
+	[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+		[self.dailiesTable beginUpdates];
+	}];
 }
 
 
 -(void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
-  (void)controller;
-  NSAssert(![NSThread isMainThread],@"this method should only be called from background");
-  [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-    [self.dailiesTable endUpdates];
-  }];
+	(void)controller;
+	NSAssert(![NSThread isMainThread],@"this method should only be called from background");
+	[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+		[self.dailiesTable endUpdates];
+	}];
 }
 
 
 - (IBAction)addDailyBtn_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
-  (void)sender; (void)event;
-  NSManagedObjectContext *context = [self.dailyContext createChildContext];
-  SHObjectIDWrapper *objectIDWrapper = [[SHObjectIDWrapper alloc] initWithEntityType:SHDaily.entity
-    withContext:context];
-  [self setupEditorWithObjectIDWrapper:objectIDWrapper withContext:context];
-  
-  self.central.editController.editingScreen = self.dailyEditor;
-  self.central.editController.title = @"Daily";
-  self.central.editController.context = context;
-  self.central.editController.objectIDWrapper = objectIDWrapper;
-  [self.central arrangeAndPushChildVCToFront:self.central.editController];
+	(void)sender; (void)event;
+	NSManagedObjectContext *context = [self.dailyContext createChildContext];
+	SHObjectIDWrapper *objectIDWrapper = [[SHObjectIDWrapper alloc] initWithEntityType:SHDaily.entity
+		withContext:context];
+	[self setupEditorWithObjectIDWrapper:objectIDWrapper withContext:context];
+	
+	self.central.editController.editingScreen = self.dailyEditor;
+	self.central.editController.title = @"Daily";
+	self.central.editController.context = context;
+	self.central.editController.objectIDWrapper = objectIDWrapper;
+	[self.central arrangeAndPushChildVCToFront:self.central.editController];
 }
 
 
 -(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView
-  editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+	editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  (void)tableView; (void)indexPath;
-  UITableViewRowAction *openEditBox = [UITableViewRowAction
-    rowActionWithStyle:UITableViewRowActionStyleNormal
-    title:@"Edit"
-    handler:^(UITableViewRowAction *action,NSIndexPath *path){
-      (void)action; (void)path;
+	(void)tableView; (void)indexPath;
+	UITableViewRowAction *openEditBox = [UITableViewRowAction
+		rowActionWithStyle:UITableViewRowActionStyleNormal
+		title:@"Edit"
+		handler:^(UITableViewRowAction *action,NSIndexPath *path){
+			(void)action; (void)path;
 
-      NSFetchedResultsController *fetchController = self.dailyItemsFetcher;
-      NSManagedObjectContext *fetchContext = fetchController.managedObjectContext;
-      [fetchContext performBlockAndWait:^{
-        NSManagedObject *rowObject = fetchController.fetchedObjects[path.row];
-        SHObjectIDWrapper *objectIDWrapper = [[SHObjectIDWrapper alloc] init];
-        objectIDWrapper.objectID = rowObject.objectID;
-        objectIDWrapper.entityType = SHDaily.entity;
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-          NSManagedObjectContext *context = [self.dailyContext createChildContext];
-          [self setupEditorWithObjectIDWrapper:objectIDWrapper
-            withContext:context];
-          self.central.editController.editingScreen = self.dailyEditor;
-          self.central.editController.title = @"Daily";
-          self.central.editController.context = context;
-          self.central.editController.objectIDWrapper = objectIDWrapper;
-          [self.central arrangeAndPushChildVCToFront:self.central.editController];
-        }];
-      }];
-  }];
-  
-  return @[openEditBox];
+			NSFetchedResultsController *fetchController = self.dailyItemsFetcher;
+			NSManagedObjectContext *fetchContext = fetchController.managedObjectContext;
+			[fetchContext performBlockAndWait:^{
+				NSManagedObject *rowObject = fetchController.fetchedObjects[path.row];
+				SHObjectIDWrapper *objectIDWrapper = [[SHObjectIDWrapper alloc] init];
+				objectIDWrapper.objectID = rowObject.objectID;
+				objectIDWrapper.entityType = SHDaily.entity;
+				[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+					NSManagedObjectContext *context = [self.dailyContext createChildContext];
+					[self setupEditorWithObjectIDWrapper:objectIDWrapper
+						withContext:context];
+					self.central.editController.editingScreen = self.dailyEditor;
+					self.central.editController.title = @"Daily";
+					self.central.editController.context = context;
+					self.central.editController.objectIDWrapper = objectIDWrapper;
+					[self.central arrangeAndPushChildVCToFront:self.central.editController];
+				}];
+			}];
+	}];
+	
+	return @[openEditBox];
 }
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-  SHDailyCellController *cell = [SHDailyCellController getDailyCell:tableView WithParent:self];
-  __block NSManagedObjectID *objectID = nil;
-  [self.dailyContext performBlockAndWait:^{
-    objectID = ((SHDaily*)self.dailyItemsFetcher.sections[indexPath.section].objects[indexPath.row]).objectID;
-  }];
-  SHObjectIDWrapper *wrappedID = [[SHObjectIDWrapper alloc] initWithEntityType:SHDaily.entity
-    withContext:self.dailyContext];
-  wrappedID.objectID = objectID;
-  [cell setupCell:wrappedID];
-  return cell;
+		
+	SHDailyCellController *cell = [SHDailyCellController getDailyCell:tableView WithParent:self];
+	__block NSManagedObjectID *objectID = nil;
+	[self.dailyContext performBlockAndWait:^{
+		objectID = ((SHDaily*)self.dailyItemsFetcher.sections[indexPath.section].objects[indexPath.row]).objectID;
+	}];
+	SHObjectIDWrapper *wrappedID = [[SHObjectIDWrapper alloc] initWithEntityType:SHDaily.entity
+		withContext:self.dailyContext];
+	wrappedID.objectID = objectID;
+	[cell setupCell:wrappedID];
+	return cell;
 }
 
 
@@ -252,93 +252,93 @@ static NSString *const EntityName = @"Daily";
 This will be called the user creates a new daily, checks it off, or deletes one
 */
 -(void)controller:(NSFetchedResultsController *)controller
-  didChangeObject:(id)anObject
-  atIndexPath:(NSIndexPath *)indexPath
-  forChangeType:(NSFetchedResultsChangeType)type
-  newIndexPath:(NSIndexPath *)newIndexPath
+	didChangeObject:(id)anObject
+	atIndexPath:(NSIndexPath *)indexPath
+	forChangeType:(NSFetchedResultsChangeType)type
+	newIndexPath:(NSIndexPath *)newIndexPath
 {
-  (void)controller; (void)anObject;
-  NSAssert(![NSThread isMainThread],@"this method should only be called from background");
-  [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-    switch (type) {
-      case NSFetchedResultsChangeInsert:
-        [self.dailiesTable insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-        break;
-      case NSFetchedResultsChangeUpdate:
-        [self configureCellAtIndexPath:indexPath];
-        break;
-      case NSFetchedResultsChangeDelete:
-        [self.dailiesTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        break;
-      case NSFetchedResultsChangeMove:
-        [self configureCellAtIndexPath:indexPath];
-        [self.dailiesTable moveRowAtIndexPath:indexPath toIndexPath:newIndexPath];
-        break;
-      default:
-        break;
-    }
-  }];
+	(void)controller; (void)anObject;
+	NSAssert(![NSThread isMainThread],@"this method should only be called from background");
+	[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+		switch (type) {
+			case NSFetchedResultsChangeInsert:
+				[self.dailiesTable insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+				break;
+			case NSFetchedResultsChangeUpdate:
+				[self configureCellAtIndexPath:indexPath];
+				break;
+			case NSFetchedResultsChangeDelete:
+				[self.dailiesTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+				break;
+			case NSFetchedResultsChangeMove:
+				[self configureCellAtIndexPath:indexPath];
+				[self.dailiesTable moveRowAtIndexPath:indexPath toIndexPath:newIndexPath];
+				break;
+			default:
+				break;
+		}
+	}];
 }
 
 
 -(void)controller:(NSFetchedResultsController *)controller
-  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-  atIndex:(NSUInteger)sectionIndex
-  forChangeType:(NSFetchedResultsChangeType)type
+	didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+	atIndex:(NSUInteger)sectionIndex
+	forChangeType:(NSFetchedResultsChangeType)type
 {
-  (void)controller; (void)sectionInfo;
-  [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-    switch(type) {
-      case NSFetchedResultsChangeInsert:
-        [self.dailiesTable insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-          withRowAnimation:UITableViewRowAnimationFade];
-        break;
-      case NSFetchedResultsChangeDelete:
-        [self.dailiesTable deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-          withRowAnimation:UITableViewRowAnimationFade];
-        break;
-      case NSFetchedResultsChangeUpdate:
-      case NSFetchedResultsChangeMove:
-      default:
-        break;
-    }
-  }];
+	(void)controller; (void)sectionInfo;
+	[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+		switch(type) {
+			case NSFetchedResultsChangeInsert:
+				[self.dailiesTable insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+					withRowAnimation:UITableViewRowAnimationFade];
+				break;
+			case NSFetchedResultsChangeDelete:
+				[self.dailiesTable deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+					withRowAnimation:UITableViewRowAnimationFade];
+				break;
+			case NSFetchedResultsChangeUpdate:
+			case NSFetchedResultsChangeMove:
+			default:
+				break;
+		}
+	}];
 }
 
 -(void)configureCellAtIndexPath:(NSIndexPath *)indexPath{
-  UITableViewCell *cell = [self.dailiesTable cellForRowAtIndexPath:indexPath];
-  SHDailyCellController *dailyCell = (SHDailyCellController *)cell;
-  [dailyCell refreshCell];
+	UITableViewCell *cell = [self.dailiesTable cellForRowAtIndexPath:indexPath];
+	SHDailyCellController *dailyCell = (SHDailyCellController *)cell;
+	[dailyCell refreshCell];
 }
 
 -(void)setupEditorWithObjectIDWrapper:(SHObjectIDWrapper*)objectIDWrapper
-  withContext:(NSManagedObjectContext *)context
+	withContext:(NSManagedObjectContext *)context
 {
-  NSManagedObjectContext *parentContext = self.dailyContext;
-  __weak NSNotificationCenter *center = NSNotificationCenter.defaultCenter;
-  __weak typeof(self) weakSelf = self;
-  __block id token = [center addObserverForName:NSManagedObjectContextDidSaveNotification
-    object:context
-    queue:nil
-    usingBlock:^(NSNotification *notfification){
-      (void)notfification;
-      [parentContext performBlock:^{
-        NSError *error = nil;
-        if(parentContext.hasChanges){
-          [parentContext save:&error];
-          if(error){
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-              typeof(weakSelf) bSelf = weakSelf;
-              if(nil == bSelf) return;
-              [bSelf showErrorView:@"Save failed" withError:error];
-            }];
-          }
-        }
-      }];
-      [center removeObserver:token];
-    }];
-  
-  [self.dailyEditor setupForContext:context andObjectIDWrapper:objectIDWrapper];;
+	NSManagedObjectContext *parentContext = self.dailyContext;
+	__weak NSNotificationCenter *center = NSNotificationCenter.defaultCenter;
+	__weak typeof(self) weakSelf = self;
+	__block id token = [center addObserverForName:NSManagedObjectContextDidSaveNotification
+		object:context
+		queue:nil
+		usingBlock:^(NSNotification *notfification){
+			(void)notfification;
+			[parentContext performBlock:^{
+				NSError *error = nil;
+				if(parentContext.hasChanges){
+					[parentContext save:&error];
+					if(error){
+						[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+							typeof(weakSelf) bSelf = weakSelf;
+							if(nil == bSelf) return;
+							[bSelf showErrorView:@"Save failed" withError:error];
+						}];
+					}
+				}
+			}];
+			[center removeObserver:token];
+		}];
+	
+	[self.dailyEditor setupForContext:context andObjectIDWrapper:objectIDWrapper];;
 }
 
 

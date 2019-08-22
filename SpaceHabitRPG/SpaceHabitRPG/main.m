@@ -12,17 +12,17 @@
 
 static bool isRunningTests()
 {
-    NSDictionary* environment = [[NSProcessInfo processInfo] environment];
-    NSString* testEnabled = environment[@"IS_UNIT_TESTING"];
-    return [testEnabled isEqualToString:@"YES"];
+	NSDictionary* environment = [[NSProcessInfo processInfo] environment];
+	NSString* testEnabled = environment[@"IS_UNIT_TESTING"];
+	return [testEnabled isEqualToString:@"YES"];
 }
 
 int main(int argc, char * argv[]) {
-    @autoreleasepool {
-        if (isRunningTests()) {
-            return UIApplicationMain(argc, argv, nil, nil);
-        }else{
-            return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
-        }
-    }
+	@autoreleasepool {
+		if (isRunningTests()) {
+			return UIApplicationMain(argc, argv, nil, nil);
+		}else{
+			return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+		}
+	}
 }

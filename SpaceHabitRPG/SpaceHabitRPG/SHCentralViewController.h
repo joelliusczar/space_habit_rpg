@@ -1,9 +1,9 @@
 //
-//  SHCentralViewController.h
-//  HabitRPG2
+//	SHCentralViewController.h
+//	HabitRPG2
 //
-//  Created by Joel Pridgen on 8/26/16.
-//  Copyright © 2016 Joel Pridgen. All rights reserved.
+//	Created by Joel Pridgen on 8/26/16.
+//	Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -28,14 +28,14 @@
 @property (strong,nonatomic) SHEditNavigationController *editController;
 
 +(instancetype)newWithDataController:(NSObject<P_CoreData>*)dataController
-  andNibName:(NSString*)nib
-  andResourceUtil:(NSObject<SHResourceUtilityProtocol>*)util
-  andBundle:(NSBundle*)bundle;
+	andNibName:(NSString*)nib
+	andResourceUtil:(NSObject<SHResourceUtilityProtocol>*)util
+	andBundle:(NSBundle*)bundle;
 
 -(instancetype)initWithDataController:(NSObject<P_CoreData>*)dataController
-  andNibName:(NSString*)nib
-  andResourceUtil:(NSObject<SHResourceUtilityProtocol>*)util
-  andBundle:(NSBundle*)bundle;
+	andNibName:(NSString*)nib
+	andResourceUtil:(NSObject<SHResourceUtilityProtocol>*)util
+	andBundle:(NSBundle*)bundle;
 
 -(void)setToShowStory:(BOOL)shouldShowStory;
 -(void)afterIntroStarted;

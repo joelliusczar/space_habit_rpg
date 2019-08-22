@@ -1,9 +1,9 @@
 //
-//  SHDailyEditController.h
-//  HabitRPG2
+//	SHDailyEditController.h
+//	HabitRPG2
 //
-//  Created by Joel Pridgen on 9/15/16.
-//  Copyright © 2016 Joel Pridgen. All rights reserved.
+//	Created by Joel Pridgen on 9/15/16.
+//	Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong,nonatomic) NSManagedObjectContext *context;
 @property (strong,nonatomic) SHDailyActiveDays *activeDays;
 -(void)setupForContext:(NSManagedObjectContext*)context
-  andObjectIDWrapper:(SHObjectIDWrapper*)objectIDWrapper;
+	andObjectIDWrapper:(SHObjectIDWrapper*)objectIDWrapper;
 
 -(void)modelTouched;
 @end

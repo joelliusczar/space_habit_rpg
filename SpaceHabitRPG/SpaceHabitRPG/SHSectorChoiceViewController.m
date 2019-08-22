@@ -1,9 +1,9 @@
 //
-//  SHSectorChoiceViewController.m
-//  HabitRPG2
+//	SHSectorChoiceViewController.m
+//	HabitRPG2
 //
-//  Created by Joel Pridgen on 10/16/16.
-//  Copyright © 2016 Joel Pridgen. All rights reserved.
+//	Created by Joel Pridgen on 10/16/16.
+//	Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
 #import "SHSectorChoiceViewController.h"
@@ -25,36 +25,36 @@
 
 
 -(SHSectorDescriptionViewController *)descViewController{
-    if(!_descViewController){
-        _descViewController = [[SHSectorDescriptionViewController alloc] init:self];
-    }
-    return _descViewController;
+	if(!_descViewController){
+		_descViewController = [[SHSectorDescriptionViewController alloc] init:self];
+	}
+	return _descViewController;
 }
 
 
 +(instancetype)newWithCentral:(SHCentralViewController *)central
-  AndSectorChoices:(NSArray<SHSectorDTO *> *)sectorChoices{
-  
-  SHSectorChoiceViewController *instance = [[SHSectorChoiceViewController alloc]
-    initWithNibName:@"SectorChoicePicker" bundle:nil];
-  instance.central = central;
-  instance.sectors = sectorChoices;
-  return instance;
+	AndSectorChoices:(NSArray<SHSectorDTO *> *)sectorChoices{
+	
+	SHSectorChoiceViewController *instance = [[SHSectorChoiceViewController alloc]
+	initWithNibName:@"SectorChoicePicker" bundle:nil];
+	instance.central = central;
+	instance.sectors = sectorChoices;
+	return instance;
 }
 
 - (void)viewDidLoad {
-    NSAssert(self.sectors, @"SHSectorChoiceViewController is in an invalid state. Sectors hasn't been constructed");
-    [super viewDidLoad];
-    self.sectorChoiceTable.tableFooterView = nil;
-    self.sectorChoiceTable.dataSource = self;
-    self.sectorChoiceTable.rowHeight = SH_SECTOR_CHOICE_ROW_HEIGHT;
-    [self.view checkForAndApplyVisualChanges];
+	NSAssert(self.sectors, @"SHSectorChoiceViewController is in an invalid state. Sectors hasn't been constructed");
+	[super viewDidLoad];
+	self.sectorChoiceTable.tableFooterView = nil;
+	self.sectorChoiceTable.dataSource = self;
+	self.sectorChoiceTable.rowHeight = SH_SECTOR_CHOICE_ROW_HEIGHT;
+	[self.view checkForAndApplyVisualChanges];
 }
 
 
 -(void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+	[super didReceiveMemoryWarning];
+	// Dispose of any resources that can be recreated.
 }
 
 
@@ -62,17 +62,17 @@
 #pragma clang diagnostic ignored "-Wunused-parameter"
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-  if(self.sectors){
-      return self.sectors.count;
-  }
-  return 0;
+	if(self.sectors){
+		return self.sectors.count;
+	}
+	return 0;
 }
 
 
 -(IBAction)skipBtn_pressed_action:(UIButton *)sender{
-  [self.central setToShowStory:NO];
-  [self popVCFromFront];
-  [self.central afterSectorPick:nil];
+	[self.central setToShowStory:NO];
+	[self popVCFromFront];
+	[self.central afterSectorPick:nil];
 }
 
 
@@ -80,10 +80,10 @@
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-  SHSectorDTO *z = self.sectors[indexPath.row];
-  SHSectorChoiceCellController *cell = [SHSectorChoiceCellController getSectorChoiceCell:tableView
-    WithParent:self AndModel:z AndRow:indexPath];
-  return cell;
+	SHSectorDTO *z = self.sectors[indexPath.row];
+	SHSectorChoiceCellController *cell = [SHSectorChoiceCellController getSectorChoiceCell:tableView
+		WithParent:self AndModel:z AndRow:indexPath];
+	return cell;
 }
 
 

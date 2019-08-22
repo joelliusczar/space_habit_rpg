@@ -1,9 +1,9 @@
 //
-//  SHSectorChoiceCellController.h
-//  HabitRPG2
+//	SHSectorChoiceCellController.h
+//	HabitRPG2
 //
-//  Created by Joel Pridgen on 1/13/17.
-//  Copyright © 2017 Joel Pridgen. All rights reserved.
+//	Created by Joel Pridgen on 1/13/17.
+//	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
 #import <SHControls/SHTaskCell.h>
@@ -19,9 +19,9 @@
 @property (nonatomic,weak) IBOutlet UILabel *lvlLbl;
 
 +(instancetype)getSectorChoiceCell:(UITableView *)tableView WithParent:(SHSectorChoiceViewController *)parent
-  AndModel:(SHSectorDTO *)model
-  AndRow:(NSIndexPath *)rowInfo;
+	AndModel:(SHSectorDTO *)model
+	AndRow:(NSIndexPath *)rowInfo;
 
 -(void)setupCell:(SHSectorDTO *)model AndParent:(SHSectorChoiceViewController *)parent
-  AndRow:(NSIndexPath *)rowInfo;
+	AndRow:(NSIndexPath *)rowInfo;
 @end
