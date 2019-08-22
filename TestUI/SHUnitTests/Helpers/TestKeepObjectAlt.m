@@ -11,15 +11,15 @@
 @implementation TestKeepObjectAlt
 
 -(NSInteger)get52{
-    return 10;
+	return 10;
 }
 
 -(NSInteger)get65{
-    return 30;
+	return 30;
 }
 
 -(NSInteger)get19{
-    return 9;
+	return 9;
 }
 
 @end

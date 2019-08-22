@@ -15,17 +15,17 @@
 @implementation EmptyTest
 
 - (void)setUp {
-  while(NO);
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+	while(NO);
+	// Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+		// Put teardown code here. This method is called after the invocation of each test method in the class.
 }
 
 - (void)testExample {
-  while(NO);
-    //XCTAssertTrue(NO);
+	while(NO);
+	//XCTAssertTrue(NO);
 }
 
 

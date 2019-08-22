@@ -73,7 +73,7 @@ static NSString *const EntityName = @"Daily";
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	
+	NSLog(@"Load starts");
 	self.dailiesTable = [[UITableView alloc] init];
 
 	[self.view addSubview:self.dailiesTable];
@@ -121,6 +121,7 @@ static NSString *const EntityName = @"Daily";
 		todayStart = [todayStart timeAfterHours:config.dayStartHour minutes:0 seconds:0];
 		SHDaily_Medium *dailyMedium = [SHDaily_Medium newWithContext:self.dailyContext];
 		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+			NSLog(@"setup starts");
 			self.dailyItemsFetcher = [dailyMedium dailiesDataFetcher];
 			self.dailyItemsFetcher.delegate = self;
 			[self fetchUpdates];

@@ -1,9 +1,9 @@
 //
-//  SHCoreData+CleanUp.h
-//  TestCommon
+//	SHCoreData+CleanUp.h
+//	TestCommon
 //
-//  Created by Joel Pridgen on 3/30/19.
-//  Copyright © 2019 Joel Gillette. All rights reserved.
+//	Created by Joel Pridgen on 3/30/19.
+//	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
 #import <SHData/SHData.h>

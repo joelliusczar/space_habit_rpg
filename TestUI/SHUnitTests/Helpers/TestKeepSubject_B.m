@@ -11,11 +11,11 @@
 @implementation TestKeepSubject_B
 
 -(NSInteger)callGetA2{
-    return [self.delegateA2 get52] *2;
+	return [self.delegateA2 get52] *2;
 }
 
 -(NSInteger)callGetB2{
-    return [self.delegateB2 get65] *2;
+	return [self.delegateB2 get65] *2;
 }
 
 

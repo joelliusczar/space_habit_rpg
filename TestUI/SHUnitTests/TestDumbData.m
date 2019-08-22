@@ -64,89 +64,89 @@ unsigned int _reservedFlags : 2;
 
 
 - (void)setUp {
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+	// Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+	// Put teardown code here. This method is called after the invocation of each test method in the class.
 }
 
 -(void)dumbDataPrv{
-  __weak DumbDataSaver *wdds = nil;
-  __weak NSManagedObjectContext*  wcontext = nil;
-  @autoreleasepool {
-    DumbDataSaver *dds = [DumbDataSaver new];
-    wdds = dds;
-    dds.writeContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    dds.writeContext.persistentStoreCoordinator = dds.coordinator;
-    dds.writeContext.name = @"writer";
-    SHHero *h = (SHHero*)[[NSManagedObject alloc] initWithEntity:SHHero.entity insertIntoManagedObjectContext:nil];
-    h.lvl = 57;
-    h.gold = 112;
-    [dds.writeContext performBlockAndWait:^{
-      [dds.writeContext insertObject:h];
-    }];
-    
-    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
-  
-    [dds.writeContext performBlock:^{
-      @autoreleasepool {
-        BOOL success;
-        NSError *error = nil;
-        NSLog(@"In save");
-        if(!(success = [dds.writeContext save:&error])){
-        }
-        dispatch_semaphore_signal(sema);
-      }
-    }];
-    
-    BOOL isDone = shWaitForSema(sema, 1);
-    (void)isDone;
-    NSFetchRequest<SHHero *> *request = [SHHero fetchRequest];
-    NSSortDescriptor *sortByIsFront = [[NSSortDescriptor alloc] initWithKey:@"isFront" ascending:NO];
-    
-    NSManagedObjectContext* readContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-    wcontext = readContext;
-    readContext.persistentStoreCoordinator = dds.coordinator;
-    readContext.name = @"reader";
-    request.sortDescriptors = @[sortByIsFront];
-    __block NSArray<NSManagedObject*> *results = nil;
-    [readContext performBlockAndWait:^{
-      @autoreleasepool {
-        
-        NSError *err = nil;
-        results = [readContext executeFetchRequest:request error:&err];
-      }
-    }];
-    
-    [readContext performBlockAndWait:^{
-      @autoreleasepool {
-        
-        NSError *err = nil;
-        results = [readContext executeFetchRequest:request error:&err];
-      }
-    }];
-    NSError *error = nil;
-    [dds.coordinator destroyPersistentStoreAtURL:dds.storeURL withType:NSInMemoryStoreType options:nil error:&error];
-    
-    void* bad = (__bridge void*)readContext;
-    CFRelease(bad);
+	__weak DumbDataSaver *wdds = nil;
+	__weak NSManagedObjectContext*	wcontext = nil;
+	@autoreleasepool {
+		DumbDataSaver *dds = [DumbDataSaver new];
+		wdds = dds;
+		dds.writeContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+		dds.writeContext.persistentStoreCoordinator = dds.coordinator;
+		dds.writeContext.name = @"writer";
+		SHHero *h = (SHHero*)[[NSManagedObject alloc] initWithEntity:SHHero.entity insertIntoManagedObjectContext:nil];
+		h.lvl = 57;
+		h.gold = 112;
+		[dds.writeContext performBlockAndWait:^{
+			[dds.writeContext insertObject:h];
+		}];
+		
+		dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+	
+		[dds.writeContext performBlock:^{
+			@autoreleasepool {
+				BOOL success;
+				NSError *error = nil;
+				NSLog(@"In save");
+				if(!(success = [dds.writeContext save:&error])){
+				}
+				dispatch_semaphore_signal(sema);
+			}
+		}];
+		
+		BOOL isDone = shWaitForSema(sema, 1);
+		(void)isDone;
+		NSFetchRequest<SHHero *> *request = [SHHero fetchRequest];
+		NSSortDescriptor *sortByIsFront = [[NSSortDescriptor alloc] initWithKey:@"isFront" ascending:NO];
+		
+		NSManagedObjectContext* readContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+		wcontext = readContext;
+		readContext.persistentStoreCoordinator = dds.coordinator;
+		readContext.name = @"reader";
+		request.sortDescriptors = @[sortByIsFront];
+		__block NSArray<NSManagedObject*> *results = nil;
+		[readContext performBlockAndWait:^{
+			@autoreleasepool {
+				
+				NSError *err = nil;
+				results = [readContext executeFetchRequest:request error:&err];
+			}
+		}];
+		
+		[readContext performBlockAndWait:^{
+			@autoreleasepool {
+				
+				NSError *err = nil;
+				results = [readContext executeFetchRequest:request error:&err];
+			}
+		}];
+		NSError *error = nil;
+		[dds.coordinator destroyPersistentStoreAtURL:dds.storeURL withType:NSInMemoryStoreType options:nil error:&error];
+		
+		void* bad = (__bridge void*)readContext;
+		CFRelease(bad);
 
-    NSLog(@"%@",readContext);
-  }
-  XCTAssertNil(wcontext);
-  NSLog(@"%@",wdds);
+		NSLog(@"%@",readContext);
+	}
+	XCTAssertNil(wcontext);
+	NSLog(@"%@",wdds);
 }
 
 - (void)testDumbData {
-  
-  @autoreleasepool {
-    [self dumbDataPrv];
-  }
-  //for(int i = 0; i < 5; i++){
-  
-  //}
-  NSLog(@"End of test");
+	
+	@autoreleasepool {
+		[self dumbDataPrv];
+	}
+	//for(int i = 0; i < 5; i++){
+	
+	//}
+	NSLog(@"End of test");
 }
 
 

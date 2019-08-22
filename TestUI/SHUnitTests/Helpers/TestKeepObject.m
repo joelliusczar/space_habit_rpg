@@ -11,11 +11,11 @@
 @implementation TestKeepObject
 
 -(NSInteger)get52{
-    return 52;
+	return 52;
 }
 
 -(NSInteger)get65{
-    return 65;
+	return 65;
 }
 
 @end
