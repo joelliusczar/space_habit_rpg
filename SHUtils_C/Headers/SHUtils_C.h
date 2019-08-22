@@ -1,9 +1,9 @@
 //
-//  SHUtils_C.h
-//  SHUtils_C
+//	SHUtils_C.h
+//	SHUtils_C
 //
-//  Created by Joel Pridgen on 5/5/19.
-//  Copyright © 2019 Joel Gillette. All rights reserved.
+//	Created by Joel Pridgen on 5/5/19.
+//	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
 #ifndef SHUtils_C_h

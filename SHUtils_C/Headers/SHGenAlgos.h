@@ -1,9 +1,9 @@
 //
-//  SHGenAlgos.h
-//  SHUtils_C
+//	SHGenAlgos.h
+//	SHUtils_C
 //
-//  Created by Joel Pridgen on 4/28/18.
-//  Copyright © 2018 Joel Gillette. All rights reserved.
+//	Created by Joel Pridgen on 4/28/18.
+//	Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
 #ifndef SHGenAlgos_h

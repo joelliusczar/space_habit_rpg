@@ -1,5 +1,5 @@
 
 module SHUtils_C {
-  umbrella header "SHUtils_C.h"
-  export *
+	umbrella header "SHUtils_C.h"
+	export *
 }

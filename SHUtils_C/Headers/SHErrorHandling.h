@@ -1,9 +1,9 @@
 //
-//  ErrorHandling.h
-//  SHUtils_C
+//	ErrorHandling.h
+//	SHUtils_C
 //
-//  Created by Joel Pridgen on 4/21/18.
-//  Copyright © 2018 Joel Gillette. All rights reserved.
+//	Created by Joel Pridgen on 4/21/18.
+//	Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
 #ifndef SHErrorHandling_h
@@ -30,25 +30,25 @@ extern shDebugCallback shDbgCallback;
 #endif
 
 typedef enum {
-    NO_ERROR = 0,
-    NULL_VALUES = 1,
-    OUT_OF_RANGE = 2,
-    CORRUPT_STRUCT = 3,
-    GEN_ERROR = -1,
-    INVALID_STATE = -3
+	NO_ERROR = 0,
+	NULL_VALUES = 1,
+	OUT_OF_RANGE = 2,
+	CORRUPT_STRUCT = 3,
+	GEN_ERROR = -1,
+	INVALID_STATE = -3
 } SHErrorCode;
 
 
 typedef bool (*SHErrorCallback)(SHErrorCode err,const char* const msg,void* info,bool* isError);
 
 typedef struct {
-    SHErrorCode code;
-    SHErrorCallback errorCallback;
-    unsigned long msgLen;
-    char* msg;
-    void* callbackInfo;
-    bool isError;
-    uintptr_t filler[8];
+	SHErrorCode code;
+	SHErrorCallback errorCallback;
+	unsigned long msgLen;
+	char* msg;
+	void* callbackInfo;
+	bool isError;
+	uintptr_t filler[8];
 } SHError;
 
 bool shSetErrorCode(SHErrorCode code,SHErrorCode *error);

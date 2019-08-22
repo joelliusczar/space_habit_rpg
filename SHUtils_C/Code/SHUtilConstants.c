@@ -1,9 +1,9 @@
 //
-//  SHConstants.c
-//  SHUtils_C
+//	SHConstants.c
+//	SHUtils_C
 //
-//  Created by Joel Pridgen on 10/15/18.
-//  Copyright © 2018 Joel Gillette. All rights reserved.
+//	Created by Joel Pridgen on 10/15/18.
+//	Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
 #include "SHUtilConstants.h"
