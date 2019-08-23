@@ -210,37 +210,41 @@ static NSString *const EntityName = @"Daily";
 }
 
 
--(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView
-	editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+-(UISwipeActionsConfiguration*)tableView:(UITableView *)tableView
+	trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	(void)tableView; (void)indexPath;
-	UITableViewRowAction *openEditBox = [UITableViewRowAction
-		rowActionWithStyle:UITableViewRowActionStyleNormal
+	UIContextualAction *editAction = [UIContextualAction
+		contextualActionWithStyle:UIContextualActionStyleNormal
 		title:@"Edit"
-		handler:^(UITableViewRowAction *action,NSIndexPath *path){
-			(void)action; (void)path;
-
-			NSFetchedResultsController *fetchController = self.dailyItemsFetcher;
-			NSManagedObjectContext *fetchContext = fetchController.managedObjectContext;
-			[fetchContext performBlockAndWait:^{
-				NSManagedObject *rowObject = fetchController.fetchedObjects[path.row];
-				SHObjectIDWrapper *objectIDWrapper = [[SHObjectIDWrapper alloc] init];
-				objectIDWrapper.objectID = rowObject.objectID;
-				objectIDWrapper.entityType = SHDaily.entity;
-				[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-					NSManagedObjectContext *context = [self.dailyContext createChildContext];
-					[self setupEditorWithObjectIDWrapper:objectIDWrapper
-						withContext:context];
-					self.central.editController.editingScreen = self.dailyEditor;
-					self.central.editController.title = @"Daily";
-					self.central.editController.context = context;
-					self.central.editController.objectIDWrapper = objectIDWrapper;
-					[self.central arrangeAndPushChildVCToFront:self.central.editController];
+		handler:
+			^(UIContextualAction *action,
+			UIView *sourceView,
+			void (^completionHandler)(BOOL actionPerformed)){
+				NSFetchedResultsController *fetchController = self.dailyItemsFetcher;
+				NSManagedObjectContext *fetchContext = fetchController.managedObjectContext;
+				[fetchContext performBlockAndWait:^{
+					NSManagedObject *rowObject = fetchController.fetchedObjects[indexPath.row];
+					SHObjectIDWrapper *objectIDWrapper = [[SHObjectIDWrapper alloc] init];
+					objectIDWrapper.objectID = rowObject.objectID;
+					objectIDWrapper.entityType = SHDaily.entity;
+					[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+						NSManagedObjectContext *context = [self.dailyContext createChildContext];
+						[self setupEditorWithObjectIDWrapper:objectIDWrapper
+							withContext:context];
+						self.central.editController.editingScreen = self.dailyEditor;
+						self.central.editController.title = @"Daily";
+						self.central.editController.context = context;
+						self.central.editController.objectIDWrapper = objectIDWrapper;
+						[self.central arrangeAndPushChildVCToFront:self.central.editController];
+						completionHandler(YES);
+					}];
 				}];
-			}];
 	}];
 	
-	return @[openEditBox];
+	UISwipeActionsConfiguration *actionConfigs = [UISwipeActionsConfiguration
+		configurationWithActions:@[editAction]];
+	
+	return actionConfigs;
 }
 
 
