@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2737D10E230F6DE200B8618C /* SHBattleStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2737D10C230F6DE200B8618C /* SHBattleStatsViewController.m */; };
+		2737D10F230F6DE200B8618C /* SHBattleStatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2737D10D230F6DE200B8618C /* SHBattleStatsViewController.xib */; };
 		273F55D8230E030F001F82F9 /* SHHabitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273F55D7230E030F001F82F9 /* SHHabitViewController.xib */; };
 		2747C4992048D50800FB5669 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4972048D50800FB5669 /* AppDelegate.m */; };
 		2747C49B2048D53100FB5669 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2747C49A2048D53100FB5669 /* Assets.xcassets */; };
@@ -46,6 +48,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2737D10B230F6DE200B8618C /* SHBattleStatsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHBattleStatsViewController.h; sourceTree = "<group>"; };
+		2737D10C230F6DE200B8618C /* SHBattleStatsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHBattleStatsViewController.m; sourceTree = "<group>"; };
+		2737D10D230F6DE200B8618C /* SHBattleStatsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHBattleStatsViewController.xib; sourceTree = "<group>"; };
 		273F55D7230E030F001F82F9 /* SHHabitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHHabitViewController.xib; sourceTree = "<group>"; };
 		2747C4972048D50800FB5669 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2747C4982048D50800FB5669 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -224,6 +229,9 @@
 				2747C5042049112800FB5669 /* Info.plist */,
 				27A9C8A922C455F900834D02 /* SHApplication.h */,
 				27A9C8AA22C455F900834D02 /* SHApplication.m */,
+				2737D10B230F6DE200B8618C /* SHBattleStatsViewController.h */,
+				2737D10C230F6DE200B8618C /* SHBattleStatsViewController.m */,
+				2737D10D230F6DE200B8618C /* SHBattleStatsViewController.xib */,
 			);
 			path = SpaceHabitRPG;
 			sourceTree = "<group>";
@@ -300,6 +308,7 @@
 				27ED11B2229B431C00E8EB32 /* SHDailyEditFull.xib in Resources */,
 				2747C4EB2048E1EE00FB5669 /* SHSectorChoiceCellController.xib in Resources */,
 				2747C4A02048D54700FB5669 /* SHCentralViewController.xib in Resources */,
+				2737D10F230F6DE200B8618C /* SHBattleStatsViewController.xib in Resources */,
 				2747C515204A47BF00FB5669 /* SHSectorChoicePicker.xib in Resources */,
 				2747C4E12048E12C00FB5669 /* SHSectorDescriptionViewController.xib in Resources */,
 				2747C4C32048D83C00FB5669 /* SHIntroViewController.xib in Resources */,
@@ -346,6 +355,7 @@
 				2747C4C42048D83C00FB5669 /* SHIntroViewController.m in Sources */,
 				2747C4992048D50800FB5669 /* AppDelegate.m in Sources */,
 				2747C4B32048D7B100FB5669 /* SHDailyViewController.m in Sources */,
+				2737D10E230F6DE200B8618C /* SHBattleStatsViewController.m in Sources */,
 				27A9C8AB22C455F900834D02 /* SHApplication.m in Sources */,
 				2747C4E02048E12C00FB5669 /* SHSectorDescriptionViewController.m in Sources */,
 				2747C51D204A499000FB5669 /* SHDailyEditController+ControlLoaders.m in Sources */,
