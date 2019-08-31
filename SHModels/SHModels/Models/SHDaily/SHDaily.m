@@ -14,7 +14,7 @@
 #import <SHGlobal/SHConstants.h>
 #import <SHCommon/NSDate+DateHelper.h>
 #import <SHData/NSManagedObjectContext+Helper.h>
-#import "NSManagedObjectContext+SHModelHelper.h"
+#import "SHConfig_Medium.h"
 
 @implementation SHDaily
 
@@ -158,7 +158,8 @@
 -(BOOL)isCompleted{
 	__block NSInteger dayStartHour = 0;
 	[self.managedObjectContext performBlockAndWait:^{
-		SHConfig *config = self.managedObjectContext.sh_globalConfig;
+		SHConfig_Medium *cm = [[SHConfig_Medium alloc] initWithContext:self.managedObjectContext];
+		SHConfig *config = [cm globalConfig];
 		dayStartHour = config.dayStartHour;
 	}];
 	NSDate *today = [NSDate.date.dayStart timeAfterHours:dayStartHour minutes:0 seconds:0];

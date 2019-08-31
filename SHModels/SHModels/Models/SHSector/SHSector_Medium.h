@@ -21,8 +21,7 @@ extern NSString* const HOME_KEY;
 @interface SHSector_Medium : NSObject
 
 +(instancetype)newWithContext:(nullable NSManagedObjectContext*)context
-	withResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil
-	withInfoDict:(SHSectorInfoDictionary*)sectorInfo;
+	withResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil;
 
 -(SHSector*)newEmptySector;
 -(NSArray<NSString*>*)getSymbolsList;

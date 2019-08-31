@@ -21,10 +21,9 @@
 #import <SHCommon/NSDate+DateHelper.h>
 #import <SHCommon/SHInterceptor.h>
 #import <SHControls/SHButton.h>
-#import <SHModels/SHMonster_Medium.h>
 #import <SHModels/SHDaily_Medium.h>
 #import <SHData/NSManagedObjectContext+Helper.h>
-#import <SHModels/NSManagedObjectContext+SHModelHelper.h>
+#import <SHModels/SHConfig_Medium.h>
 
 
 @interface SHDailyViewController ()
@@ -34,7 +33,6 @@
 @property (strong,nonatomic) NSFetchedResultsController *dailyItemsFetcher;
 @property (strong,nonatomic) NSObject<P_CoreData> *dataController;
 @property (strong,nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
-@property (strong,nonatomic) Monster_Medium *monsterMedium;
 @property (strong,nonatomic) SHDaily_Medium *dailyMedium;
 @property (strong,nonatomic) NSManagedObjectContext *dailyContext;
 
@@ -116,7 +114,8 @@ static NSString *const EntityName = @"Daily";
 
 -(void)setupData{
 	[self.dailyContext performBlock:^{
-		SHConfig *config = [self.dailyContext sh_globalConfig];
+		SHConfig_Medium *cm = [[SHConfig_Medium alloc] initWithContext:self.dailyContext	];
+		SHConfig *config = [cm globalConfig];
 		NSDate *todayStart = [[NSDate date] dayStart];
 		todayStart = [todayStart timeAfterHours:config.dayStartHour minutes:0 seconds:0];
 		SHDaily_Medium *dailyMedium = [SHDaily_Medium newWithContext:self.dailyContext];
@@ -213,6 +212,7 @@ static NSString *const EntityName = @"Daily";
 -(UISwipeActionsConfiguration*)tableView:(UITableView *)tableView
 	trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	(void)tableView;
 	UIContextualAction *editAction = [UIContextualAction
 		contextualActionWithStyle:UIContextualActionStyleNormal
 		title:@"Edit"
@@ -220,6 +220,7 @@ static NSString *const EntityName = @"Daily";
 			^(UIContextualAction *action,
 			UIView *sourceView,
 			void (^completionHandler)(BOOL actionPerformed)){
+				(void)action; (void)sourceView;
 				NSFetchedResultsController *fetchController = self.dailyItemsFetcher;
 				NSManagedObjectContext *fetchContext = fetchController.managedObjectContext;
 				[fetchContext performBlockAndWait:^{

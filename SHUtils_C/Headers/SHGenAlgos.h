@@ -21,6 +21,7 @@
 
 #include <stdio.h>
 #include <inttypes.h>
+
 int64_t calcStrHash(char const *str);
 double kahanSum(const double* const nums,int64_t len);
 char * shStrCopy(const char * const str);

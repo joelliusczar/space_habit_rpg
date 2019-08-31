@@ -1,5 +1,5 @@
 //
-//	Monster_Medium.h
+//	SHMonster_Medium.h
 //	SHModels
 //
 //	Created by Joel Pridgen on 3/25/19.
@@ -11,21 +11,18 @@
 #import <SHData/SHCoreDataProtocol.h>
 #import "SHMonsterInfoDictionary.h"
 #import "SHMonster.h"
-#import "SHMonsterDTO.h"
 
 @import CoreData;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Monster_Medium : NSObject
-+(instancetype)newWithContext:(NSManagedObjectContext*)context
-	withInfoDict:(SHMonsterInfoDictionary*)monsterInfo;
+@interface SHMonster_Medium : NSObject
+-(instancetype)initWithContext:(NSManagedObjectContext*)context;
 
--(SHMonsterDTO*)newRandomMonster:(NSString*)sectorKey sectorLvl:(uint32_t)sectorLvl;
+-(SHMonster*)newRandomMonster:(NSString*)sectorKey sectorLvl:(uint32_t)sectorLvl;
 -(NSString*)randomMonsterKey:(NSString*)sectorKey;
--(SHMonsterDTO*)newEmptyMonster;
 -(SHProbWeight*)buildProbilityWeight:(NSMutableArray<NSString*>*)keys;
--(SHMonster*)getCurrentMonster;
+-(SHMonster*)currentMonster;
 @end
 
 NS_ASSUME_NONNULL_END

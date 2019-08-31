@@ -24,12 +24,10 @@ NSString* const HOME_KEY = @"HOME";
 @implementation SHSector_Medium
 
 +(instancetype)newWithContext:(NSManagedObjectContext*)context
-withResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil
-withInfoDict:(SHSectorInfoDictionary*)sectorInfo{
+withResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil{
 	SHSector_Medium *instance = [[SHSector_Medium alloc] init];
 	instance.context = context;
 	instance.resourceUtil = resourceUtil;
-	instance.sectorInfo = sectorInfo;
 	return instance;
 }
 

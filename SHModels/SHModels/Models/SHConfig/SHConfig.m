@@ -10,6 +10,8 @@
 #import <SHGlobal/SHConstants.h>
 #import <SHCommon/SHCommonUtils.h>
 #import <SHCommon/NSDate+DateHelper.h>
+#import <SHCommon/NSException+SHCommonExceptions.h>
+#import <SHData/NSManagedObjectContext+Helper.h>
 
 
 @implementation SHConfig
@@ -58,4 +60,6 @@ static void copyBetween(NSObject* from,NSObject* to){
 	shCopyInstanceVar(from,to,@"userId");
 	shCopyInstanceVar(from,to,@"sectorLvlPenalty");
 }
+
+
 @end

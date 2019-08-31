@@ -10,34 +10,29 @@
 #import "SHModelTools.h"
 #import "SHMonster_Medium.h"
 
-@interface Monster_Medium ()
+
+@interface SHMonster_Medium ()
 @property (strong,nonatomic) NSManagedObjectContext *context;
 @property (strong,nonatomic) SHMonsterInfoDictionary* monsterInfo;
 @end
 
-@implementation Monster_Medium
+@implementation SHMonster_Medium
 
-
-+(instancetype)newWithContext:(NSManagedObjectContext*)context
-withInfoDict:(SHMonsterInfoDictionary*)monsterInfo{
-	Monster_Medium *instance = [Monster_Medium new];
-	instance.monsterInfo = monsterInfo;
-	instance.context = context;
-	return instance;
+-(instancetype)initWithContext:(NSManagedObjectContext*)context{
+	if(self = [super init]) {
+		_context = context;
+	}
+	return self;
 }
 
-
--(SHMonsterDTO*)newRandomMonster:(NSString*)sectorKey sectorLvl:(uint32_t)sectorLvl{
-	SHMonsterDTO *m = [self newEmptyMonster];
-	m.monsterKey = [self randomMonsterKey:sectorKey];
-	m.lvl = shCalculateLvl(sectorLvl,SH_MONSTER_LVL_RANGE);
-	m.nowHp = m.maxHp;
-	return m;
-}
-
-
--(SHMonsterDTO*)newEmptyMonster{
-	return [SHMonsterDTO newWithMonsterDict:self.monsterInfo];
+-(SHMonster*)newRandomMonster:(NSString*)sectorKey sectorLvl:(uint32_t)sectorLvl{
+	NSAssert(self.context,@"we need that global monster context bro!");
+	SHMonster *monster = nil;
+	monster = (SHMonster*)[self.context newEntity:SHMonster.entity];
+	monster.monsterKey = [self randomMonsterKey:sectorKey];
+	monster.lvl = shCalculateLvl(sectorLvl,SH_MONSTER_LVL_RANGE);
+	monster.nowHp = monster.maxHp;
+	return monster;
 }
 
 
@@ -60,18 +55,16 @@ withInfoDict:(SHMonsterInfoDictionary*)monsterInfo{
 }
 
 
--(SHMonster*)getCurrentMonster{
-	__block SHMonster* m = nil;
-	NSManagedObjectContext *context = self.context;
-	[context performBlockAndWait:^{
+-(SHMonster*)currentMonster{
+	NSAssert(self.context,@"we need that global monster context bro!");
+	SHMonster *monster = nil;
 	NSFetchRequest<SHMonster *> *request = [SHMonster fetchRequest];
-		NSSortDescriptor *sortByMonsterKey = [[NSSortDescriptor alloc]initWithKey:@"monsterKey" ascending:NO];
-		request.sortDescriptors = @[sortByMonsterKey];
-		NSArray<NSManagedObject *> *results = [context getItemsWithRequest:request];
-		NSCAssert(results.count<2,@"There are too many monsters");
-		m = (SHMonster*)results[0];
-	}];
-	return m;
+	NSSortDescriptor *sortByMonsterKey = [[NSSortDescriptor alloc]initWithKey:@"monsterKey" ascending:NO];
+	request.sortDescriptors = @[sortByMonsterKey];
+	NSArray<NSManagedObject *> *results = [self.context getItemsWithRequest:request];
+	NSAssert(results.count<2,@"There are too many monsters");
+	monster = (SHMonster*)results[0];
+	return monster;
 }
 
 @end

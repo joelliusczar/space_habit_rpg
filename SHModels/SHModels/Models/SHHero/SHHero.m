@@ -7,6 +7,8 @@
 //
 
 #import "SHHero.h"
+#import <SHCommon/NSException+SHCommonExceptions.h>
+#import <SHData/NSManagedObjectContext+Helper.h>
 
 @implementation SHHero
 -(NSMutableDictionary *)mapable{
@@ -29,4 +31,7 @@
 	self.nowXp = 0;
 	self.shipName = @"";
 }
+
+
+
 @end

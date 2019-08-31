@@ -10,6 +10,6 @@
 #define SHConstants_h
 
 #include <stdio.h>
-extern const int NOT_FOUND;
-extern const int SKIP;
+extern const int32_t NOT_FOUND;
+extern const int32_t SKIP;
 #endif /* SHConstants_h */

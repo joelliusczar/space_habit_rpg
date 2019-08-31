@@ -38,7 +38,7 @@ uint monsterHelper_mockRandom(uint range){
 
 -(void)testConstructEmpty{
 	NSManagedObjectContext *context = [self.dc newBackgroundContext];
-	Monster_Medium *mm = [Monster_Medium
+	SHMonster_Medium *mm = [Monster_Medium
 		newWithContext:context
 		withInfoDict:self.monsterInfoDict];
 	SHMonsterDTO *m = [mm newEmptyMonster];
@@ -67,7 +67,7 @@ uint monsterHelper_mockRandom(uint range){
 	SET_LOW_BOUND();
 	SET_UP_BOUND();
 	NSManagedObjectContext *context = [self.dc newBackgroundContext];
-	Monster_Medium *mm = [Monster_Medium
+	SHMonster_Medium *mm = [Monster_Medium
 		newWithContext:context
 		withInfoDict:self.monsterInfoDict];
 	NSString *s = [mm randomMonsterKey:@"NEBULA"];
@@ -82,7 +82,7 @@ uint monsterHelper_mockRandom(uint range){
 	SET_LOW_BOUND();
 	SET_LOW_BOUND();
 	NSManagedObjectContext *context = [self.dc newBackgroundContext];
-	Monster_Medium *mm = [Monster_Medium
+	SHMonster_Medium *mm = [Monster_Medium
 		newWithContext:context
 		withInfoDict:self.monsterInfoDict];
 	SHMonsterDTO *m = [mm newRandomMonster:@"NEBULA" sectorLvl:32];

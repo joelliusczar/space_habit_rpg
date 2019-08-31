@@ -13,7 +13,6 @@
 #import <SHCommon/NSDate+DateHelper.h>
 #import <SHCommon/SHSingletonCluster.h>
 #import <SHData/NSManagedObjectContext+Helper.h>
-#import <SHModels/NSManagedObjectContext+SHModelHelper.h>
 #import <SHModels/SHDailyActivator.h>
 @import CoreGraphics;
 

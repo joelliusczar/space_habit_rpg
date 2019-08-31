@@ -13,8 +13,8 @@
 
 int64_t calcStrHash(char const *str){
 	int64_t hash = 7;
-	int idx = 0;
-	int prime = 31;
+	int32_t idx = 0;
+	int32_t prime = 31;
 	while(str[idx] != '\0'){
 		hash += hash*prime + str[idx++];
 	}
@@ -39,7 +39,7 @@ double blockoptimization kahanSum(const double* const nums,int64_t len){
 
 
 char * shStrCopy(const char * const str) {
-	unsigned long len = strlen(str) + 1;
+	uint64_t len = strlen(str) + 1;
 	char *copy = malloc(sizeof(char) * len);
 	strcpy(copy,str);
 	return copy;

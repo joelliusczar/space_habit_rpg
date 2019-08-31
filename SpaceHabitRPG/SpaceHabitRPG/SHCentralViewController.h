@@ -14,8 +14,8 @@
 #import <SHModels/SHMonster.h>
 #import <SHModels/SHSectorDTO.h>
 #import <SHModels/SHHeroDTO.h>
-#import <SHModels/SHMonsterDTO.h>
 #import <SHModels/SHConfigDTO.h>
+#import "SHBattleStatsViewController.h"
 
 @interface SHCentralViewController : UIViewController;
 @property (weak,nonatomic) IBOutlet UIView *tabsContainer;
@@ -23,9 +23,10 @@
 @property (strong,nonatomic) SHSectorDTO *sectorDTO;
 @property (strong,nonatomic) SHConfigDTO *configDTO;
 @property (strong,nonatomic) SHHeroDTO *heroDTO;
-@property (strong,nonatomic) SHMonsterDTO *monsterDTO;
+@property (strong,nonatomic) SHMonsterDictionaryEntry *monsterDTO;
 @property (strong,nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
 @property (strong,nonatomic) SHEditNavigationController *editController;
+@property (strong,nonatomic) SHBattleStatsViewController *battleStats;
 
 +(instancetype)newWithDataController:(NSObject<P_CoreData>*)dataController
 	andNibName:(NSString*)nib

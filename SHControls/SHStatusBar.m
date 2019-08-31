@@ -30,7 +30,7 @@ static void drawBarLeftPart(CGContextRef ctx,const CGRect *rect, CGFloat radius,
 
 static void drawFullBar(CGContextRef ctx, const CGRect *rect, CGFloat radius, CGFloat xOffset) {
 	CGContextBeginPath(ctx);
-	CGFloat width = CGRectGetWidth(*rect) -2*xOffset;
+	CGFloat width = CGRectGetWidth(*rect) -2 * xOffset;
 	CGFloat midY = CGRectGetMidY(*rect);
 	CGFloat maxX = CGRectGetMaxX(*rect);
 	CGFloat x0 = maxX - xOffset - radius;
@@ -113,7 +113,8 @@ static void drawStatusBar(CGContextRef ctx, const CGRect *rect,CGFloat fullnessR
 	CGColorRef emptyColor, CGColorRef fillColor)
 {
 	NSCAssert(fullnessRatio >= 0 && fullnessRatio <= 1, @"fullnessRatio needs to be a fraction between 1 and 0");
-	CGFloat radius = 10;
+	CGFloat height = CGRectGetHeight(*rect);
+	CGFloat radius = (height - 20) / 2;
 	CGFloat xOffset = 25;
 	CGFloat width = CGRectGetWidth(*rect) -2*xOffset;
 	CGFloat barWidth = width - 2*radius;

@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "SHSectorInfoDictionary.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHSector : NSManagedObject
+@property (class,strong,nonatomic) SHSectorInfoDictionary* sectorInfo;
 -(void)copyFrom:(NSObject *)object;
 @end
 

@@ -1,24 +1,25 @@
 //
-//	SHMonsterDTO.m
+//	SHMonsterDictionaryEntry.m
 //	SHModels
 //
 //	Created by Joel Pridgen on 4/6/19.
 //	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import "SHMonsterDTO.h"
+#import "SHMonsterDictionaryEntry.h"
 #import <SHCommon/NSObject+Helper.h>
 #import <SHCommon/SHCollectionUtils.h>
 #import <SHCommon/NSDictionary+SHHelper.h>
 
-static float MAX_HP_MODIFIER = .1;
-@implementation SHMonsterDTO
+@implementation SHMonsterDictionaryEntry
 
 
-+(instancetype)newWithMonsterDict:(SHMonsterInfoDictionary*)monInfoDict{
-	SHMonsterDTO *instance = [SHMonsterDTO new];
-	instance.monInfoDict = monInfoDict;
-	return instance;
+-(instancetype)initWith:(NSString*)monsterKey withMonsterDict:(SHMonsterInfoDictionary*)monInfoDict{
+	if(self = [super init]){
+		_monsterKey = monsterKey;
+		_monInfoDict = monInfoDict;
+	}
+	return self;
 }
 
 
@@ -45,8 +46,8 @@ static float MAX_HP_MODIFIER = .1;
 	@throw [NSException exceptionWithName:@"Invalid gramatical agreement" reason:[NSString stringWithFormat:@"The culprit was %@",self.fullName]userInfo:nil];
 }
 
--(int32_t)attack{
-	return [self.monInfoDict getBaseAttack:self.monsterKey] + self.lvl;
+-(int32_t)baseAttack{
+	return [self.monInfoDict getBaseAttack:self.monsterKey];
 }
 
 #warning TODO: figure out a better way to handle this
@@ -58,9 +59,8 @@ static float MAX_HP_MODIFIER = .1;
 	return [self.monInfoDict getBaseXP:self.monsterKey];
 }
 
--(int32_t)maxHp{
-	int baseHp = [self.monInfoDict getBaseHP:self.monsterKey];
-	return baseHp + (self.lvl*baseHp*MAX_HP_MODIFIER);
+-(int32_t)baseHp{
+	return [self.monInfoDict getBaseHP:self.monsterKey];
 }
 
 -(float)treasureDropRate{

@@ -60,7 +60,7 @@
 
 -(void)testMonsterProperties{
 	NSManagedObjectContext *context = [self.dc newBackgroundContext];
-	Monster_Medium *mm = [Monster_Medium
+	SHMonster_Medium *mm = [Monster_Medium
 		newWithContext:context
 		withInfoDict:self.monsterInfoDict];
 	SHMonsterDTO *m = [mm newEmptyMonster];

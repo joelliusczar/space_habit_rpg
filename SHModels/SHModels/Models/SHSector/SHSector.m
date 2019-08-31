@@ -9,7 +9,19 @@
 #import "SHSector.h"
 #import <SHCommon/SHCommonUtils.h>
 
+static SHSectorInfoDictionary *_sectorInfo;
+
 @implementation SHSector
+
+
++(SHSectorInfoDictionary*)sectorInfo{
+	return _sectorInfo;
+}
+
+
++(void)setSectorInfo:(SHSectorInfoDictionary *)sectorInfo{
+	_sectorInfo = sectorInfo;
+}
 
 
 -(void)copyFrom:(NSObject *)object{

@@ -56,6 +56,7 @@ FOUNDATION_EXPORT const unsigned char SHControlsVersionString[];
 #import "UIViewController+Helper.h"
 #import "SHNestedControlProtocol.h"
 #import "SHViewEventsProtocol.h"
+#import "SHStatusBar.h"
 
 // In this header, you should import all the public headers of your framework using statements like #import <SHControls/PublicHeader.h>
 

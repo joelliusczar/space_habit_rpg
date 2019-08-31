@@ -28,17 +28,6 @@
 #import <SHControls/UIViewController+Helper.h>
 
 
-#define KVO_HERO_HP @"heroDTO.nowHp"
-#define KVO_HERO_XP @"heroDTO.nowXp"
-#define KVO_MONSTER_HP @"monsterDTO.nowHp"
-#define KVO_GOLD @"heroDTO.gold"
-#define KVO_LVL @"heroDTO.lvl"
-#define KVO_MON_NAME @"monsterDTO.fullName"
-#define KVO_ZONE_NAME @"sectorDTO.fullName"
-
-#define observeKey(key) [self addObserver:self forKeyPath:KVO_HERO_HP\
-	options:NSKeyValueObservingOptionNew context:nil]
-
 @import CoreGraphics;
 
 @interface SHCentralViewController ()
@@ -220,13 +209,11 @@
 	stuff above and it ends up becoming the same method
 	*/
 	NSManagedObjectContext *context = [self.dataController newBackgroundContext];
-	SHMonsterInfoDictionary *monInfoDict = [SHMonsterInfoDictionary newWithResourceUtil:self.resourceUtil];
-	SHSectorInfoDictionary *sectorInfoDict = [SHSectorInfoDictionary newWithResourceUtil:self.resourceUtil];
-	Monster_Medium *mm = [Monster_Medium newWithContext:context withInfoDict:monInfoDict];
-	SHSector_Medium *zm = [SHSector_Medium newWithContext:context withResourceUtil:self.resourceUtil withInfoDict:sectorInfoDict];
+	SHMonster_Medium *mm = [[SHMonster_Medium alloc] initWithContext:context];
+	SHSector_Medium *zm = [SHSector_Medium newWithContext:context withResourceUtil:self.resourceUtil];
 	SHHeroDTO *heroDTO = self.heroDTO;
 	[context performBlock:^{
-		SHMonster *m = [mm getCurrentMonster];
+		SHMonster *m = [mm currentMonster];
 		if(m==nil||m.nowHp<1){
 			z.monstersKilled = (m && m.nowHp<1)?(z.monstersKilled+1):z.monstersKilled;
 		
@@ -243,23 +230,20 @@
 				if(m){
 					[context deleteObject:m];
 				}
-				SHMonsterDTO *mDTO = [mm newRandomMonster:z.sectorKey sectorLvl:z.lvl];
-				SHMonster *monsterNew = (SHMonster*)[context newEntity:SHMonster.entity];
-				[monsterNew copyFrom:mDTO];
+				[mm newRandomMonster:z.sectorKey sectorLvl:z.lvl];
 				NSError *error = nil;
 				[context save:&error];
 				[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-					self.monsterDTO = mDTO;
+					if(error){
+						[self showErrorView:@"Save error" withError:error];
+						return;
+					}
 					[self showMonsterStoryWithContext: context];
 				}];
 			}
 		}
 		else {
-			SHMonsterDTO *mDTO = [SHMonsterDTO newWithMonsterDict:monInfoDict];
-			[mDTO dtoCopyFrom:m];
-			
 			[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-				self.monsterDTO = mDTO;
 				[self setupHero:^{
 					[self prepareScreen];
 				}];
@@ -270,8 +254,8 @@
 
 
 -(void)prepareScreen{
-	[self initializeStatesView];
-	[self setupObservers];
+	[self.battleStats firstRun];
+	self.statsView.hidden = NO;
 	[self setupTabs];
 }
 
@@ -345,74 +329,6 @@
 }
 
 
--(void)updateHeroHPUI:(int)part whole:(int)whole{
-	self.heroDescLbl.text = [NSString stringWithFormat:@"HP:%d/%d",part,whole];
-	float hpPercent = ((float)part)/whole;
-	self.heroHPBar.progress = hpPercent;
-}
-
-
--(void)updateHeroXPUI:(int)part whole:(int)whole{
-	self.xpLbl.text = [NSString stringWithFormat:@"XP:%d/%d",part,whole];
-	float xpPercent = ((float)part)/whole;
-	self.xpBar.progress = xpPercent;
-}
-
-
--(void)updateMonsterHPUI:(int)part whole:(int)whole{
-	self.monsterDescLbl.text =
-	[NSString stringWithFormat:@"%@ Lvl:%d HP:%d/%d",
-	 self.monsterDTO.fullName,self.monsterDTO.lvl, part,whole];
-	
-	float hpPercent = ((float)part)/whole;
-	self.monsterHPBar.progress = hpPercent;
-}
-
-
--(void)setupObservers{
-
-	observeKey(KVO_HERO_HP);
-	observeKey(KVO_GOLD);
-	observeKey(KVO_HERO_XP);
-	observeKey(KVO_LVL);
-	observeKey(KVO_MONSTER_HP);
-	observeKey(KVO_MON_NAME);
-	observeKey(KVO_ZONE_NAME);
-	
-}
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunused-parameter"
-
--(void)observeValueForKeyPath:(NSString *)keyPath
-ofObject:(id)object
-change:(NSDictionary<NSKeyValueChangeKey,id> *)change
-context:(void *)context{
-	
-	if([keyPath isEqualToString:KVO_HERO_HP]){
-		[self updateHeroHPUI:self.heroDTO.nowHp whole:self.heroDTO.maxHp];
-	}
-	if([keyPath isEqualToString:KVO_GOLD]){
-		self.goldLbl.text =
-		[NSString stringWithFormat:@"$%.2f",self.heroDTO.gold];
-	}
-	if([keyPath isEqualToString:KVO_HERO_XP]){
-		[self updateHeroXPUI:self.heroDTO.nowXp whole:self.heroDTO.maxXp];
-	}
-	if([keyPath isEqualToString:KVO_LVL]){
-		self.lvlLbl.text =
-		[NSString stringWithFormat:@"Lv:%d",self.heroDTO.lvl];
-	}
-	if([keyPath isEqualToString:KVO_MONSTER_HP]){
-		[self updateMonsterHPUI:self.monsterDTO.nowHp
-							whole:self.monsterDTO.maxHp];
-	}
-	if([keyPath isEqualToString:KVO_MON_NAME]){}
-	if([keyPath isEqualToString:KVO_ZONE_NAME]){}
-}
-
-#pragma clang diagnostic pop
-
 /*
 	This is where the logic picks back up after the intro view
 */
@@ -433,10 +349,8 @@ context:(void *)context{
 	
 	[self setupHero:^{
 		NSObject<SHResourceUtilityProtocol> *resourceUtil = self.resourceUtil;
-		SHSectorInfoDictionary *sectorInfoDict = [SHSectorInfoDictionary newWithResourceUtil:resourceUtil];
 		SHSector_Medium *sm = [SHSector_Medium newWithContext:nil
-			withResourceUtil:resourceUtil
-			withInfoDict:sectorInfoDict];
+			withResourceUtil:resourceUtil];
 		SHSectorDTO *s = [sm newSpecificSector2:HOME_KEY withLvl:1];
 		[self afterSectorPick:s];
 	}];
@@ -494,8 +408,7 @@ context:(void *)context{
 	NSManagedObjectContext *context = [self.dataController newBackgroundContext];
 	
 	NSObject<SHResourceUtilityProtocol> *resourceUtil = self.resourceUtil;
-	SHSectorInfoDictionary *sectorDict = [SHSectorInfoDictionary newWithResourceUtil:resourceUtil];
-	SHSector_Medium *zm = [SHSector_Medium newWithContext:context withResourceUtil:resourceUtil withInfoDict:sectorDict];
+	SHSector_Medium *zm = [SHSector_Medium newWithContext:context withResourceUtil:resourceUtil];
 	__block SHSectorDTO *sectorChoiceBlockVar = sectorChoice;
 	[context performBlock:^{
 		if(sectorChoiceBlockVar==nil){
@@ -548,19 +461,6 @@ context:(void *)context{
 }
 
 
--(void)initializeStatesView{
-	[self updateHeroHPUI:self.heroDTO.nowHp whole:self.heroDTO.maxHp];
-	self.goldLbl.text =
-	[NSString stringWithFormat:@"$%.2f",self.heroDTO.gold];
-	
-	[self updateHeroXPUI:self.heroDTO.nowXp whole:self.heroDTO.maxXp];
-	self.lvlLbl.text = [NSString stringWithFormat:@"Lv:%d",self.heroDTO.lvl];
-	[self updateMonsterHPUI:self.monsterDTO.nowHp
-		whole:self.monsterDTO.maxHp];
-	self.statsView.hidden = NO;
-}
-
-
 -(SHSectorDTO *)getCurrentSector{
 	if(self.sectorDTO){
 		return self.sectorDTO;
@@ -569,7 +469,7 @@ context:(void *)context{
 	NSManagedObjectContext *context = [self.dataController newBackgroundContext];
 	SHSectorInfoDictionary *sectorInfoDict = [SHSectorInfoDictionary newWithResourceUtil:self.resourceUtil];
 	SHSector_Medium *zm = [SHSector_Medium newWithContext:context
-		withResourceUtil:self.resourceUtil withInfoDict:sectorInfoDict];
+		withResourceUtil:self.resourceUtil];
 	__block SHSectorDTO *result = nil;
 	[context performBlockAndWait:^{
 		@autoreleasepool {
@@ -593,8 +493,9 @@ context:(void *)context{
 
 
 -(void)showStoryItem:(NSObject<SHStoryItemProtocol>*)storyItem
-	withResponse:(void (^)(SHStoryDumpView * nullable))response{
-	NSManagedObjectContext *context = [self.dataController	newBackgroundContext];
+	withResponse:(void (^)(SHStoryDumpView * nullable))response
+{
+	NSManagedObjectContext *context = [self.dataController newBackgroundContext];
 	[context performBlock:^{
 		SHConfigDTO *config = self.configDTO;
 		if(config.storyModeisOn){
@@ -606,9 +507,11 @@ context:(void *)context{
 			}];
 		}
 		else{
-			@autoreleasepool {
-				response(nil);
-			}
+			[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+				@autoreleasepool {
+					response(nil);
+				}
+			}];
 			
 		}
 	}];
@@ -618,12 +521,10 @@ context:(void *)context{
 -(void)showMonsterStoryWithContext:(NSManagedObjectContext*)context{
 	[self showStoryItem:self.monsterDTO withResponse:^(SHStoryDumpView * sdv){
 		(void)sdv;
-		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-			if(nil != self.introVC){
-				[self.introVC popVCFromFront];
-			}
-			[self afterIntroCompleted:context];
-		}];
+		if(nil != self.introVC){
+			[self.introVC popVCFromFront];
+		}
+		[self afterIntroCompleted:context];
 	}];
 }
 
@@ -631,40 +532,26 @@ context:(void *)context{
 -(void)showSectorStoryWithContext:(NSManagedObjectContext*)context{
 	[self showStoryItem:self.sectorDTO withResponse:^(SHStoryDumpView * sdv){
 		(void)sdv;
-		
-		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-			SHMonsterInfoDictionary *monInfoDict = [SHMonsterInfoDictionary newWithResourceUtil:self.resourceUtil];
-			Monster_Medium *mm = [Monster_Medium newWithContext:context withInfoDict:monInfoDict];
-			SHSectorDTO *sectorDTO = self.sectorDTO;
-			self.monsterDTO = [mm newRandomMonster:sectorDTO.sectorKey sectorLvl:sectorDTO.lvl];
-			[self saveAndShowNewMonster:self.monsterDTO inContext:context];
-			
-		}];
-	}];
-}
-
-
--(void)saveAndShowNewMonster:(SHMonsterDTO *)monsterDTO inContext:(NSManagedObjectContext*)context{
-	[context performBlock:^{
-		SHTransaction_Medium *mt = [[SHTransaction_Medium alloc] initWithContext:context
-			andEntityType:SHMonster.entity.name];
-		SHMonster *monsterCD = (SHMonster*)[context newEntity:SHMonster.entity];
-		[monsterCD copyFrom:monsterDTO];
-		//see note by sectorMonsterQueue #sectorMonsterQueue
-		dispatch_sync(self.sectorMonsterQueue, ^{
-			[context performBlockAndWait:^{
-				@autoreleasepool {
-					NSError *error = nil;
-					[context save:&error];
+		SHSectorDTO *sectorDTO = self.sectorDTO;
+		[context performBlock:^{
+			SHTransaction_Medium *mt = [[SHTransaction_Medium alloc] initWithContext:context
+				andEntityType:SHMonster.entity.name];
+			SHMonster_Medium *mm = [[SHMonster_Medium alloc] initWithContext:context];
+			SHMonster *monsterCD = [mm newRandomMonster:sectorDTO.sectorKey sectorLvl:sectorDTO.lvl];
+			[mt addCreateTransaction:monsterCD.mapable];
+			NSError *error = nil;
+			[context save: &error];
+			[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+				if(error){
+					[self showErrorView:@"Save error" withError:error];
+					return;
 				}
+				[self showMonsterStoryWithContext:context];
 			}];
-		});
-		[mt addCreateTransaction:monsterDTO.mapable];
-		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-			[self showMonsterStoryWithContext:context];
 		}];
 	}];
 }
+
 
 
 @end

@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "SHInfoDictionary.h"
+#import "SHMonsterDictionaryEntry.h"
+
+@class SHMonsterDictionaryEntry;
 
 @interface SHMonsterInfoDictionary : NSObject
 @property (nonatomic,assign) BOOL isTesting;
@@ -17,6 +20,7 @@
 -(NSArray<NSString*> *)getMonsterKeyList:(NSString *)sectorKey;
 -(NSDictionary *)getMonsterInfo:(NSString *)monsterKey;
 -(NSDictionary *)getMonsterInfo:(NSString *)monsterKey ForSector:(NSString *)sectorKey;
+-(SHMonsterDictionaryEntry *)getMonsterEntry:(NSString*)monsterKey;
 -(NSString *)getName:(NSString *)monsterKey;
 -(NSString *)getDescription:(NSString *)monsterKey;
 -(int32_t)getBaseAttack:(NSString *)monsterKey;

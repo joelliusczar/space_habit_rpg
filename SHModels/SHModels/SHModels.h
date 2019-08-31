@@ -49,10 +49,8 @@ FOUNDATION_EXPORT const unsigned char SHModelsVersionString[];
 #import "SHModelTools.h"
 #import "SHTransaction_Medium.h"
 #import "SHSector_Medium.h"
-#import "SHMonster_Medium.h"
 #import "SHSectorDTO.h"
 #import "SHHeroDTO.h"
-#import "SHMonsterDTO.h"
 #import "SHReminderDTO.h"
 #import "SHConfigDTO.h"
 #import "SHDailyDTO.h"
@@ -72,8 +70,10 @@ FOUNDATION_EXPORT const unsigned char SHModelsVersionString[];
 #import "SHDailyNextDueDateCalculator.h"
 #import "SHDailyMaxDaysBeforeSpanCalculator.h"
 #import "SHTitleProtocol.h"
-#import "NSManagedObjectContext+SHModelHelper.h"
 #import "SHDailyActivator.h"
+#import "SHMonster_Medium.h"
+#import "SHHero_Medium.h"
+#import "SHConfig_Medium.h"
 
 // In this header, you should import all the public headers of your framework using statements like #import <SHModels/PublicHeader.h>
 

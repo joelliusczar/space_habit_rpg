@@ -81,7 +81,7 @@
 		27249B9F21C58240006A884B /* UIScrollView+ScrollAdjusters.m in Sources */ = {isa = PBXBuildFile; fileRef = 27249B9D21C58240006A884B /* UIScrollView+ScrollAdjusters.m */; };
 		27249BA221CF0D59006A884B /* SHFrontEndConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 27249BA021CF0D59006A884B /* SHFrontEndConstants.m */; };
 		27249BA321CF0D59006A884B /* SHFrontEndConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27249BA121CF0D59006A884B /* SHFrontEndConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2737D112230F6EFA00B8618C /* SHStatusBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 2737D110230F6EFA00B8618C /* SHStatusBar.h */; };
+		2737D112230F6EFA00B8618C /* SHStatusBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 2737D110230F6EFA00B8618C /* SHStatusBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2737D113230F6EFA00B8618C /* SHStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2737D111230F6EFA00B8618C /* SHStatusBar.m */; };
 		2747C527204A573200FB5669 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2747C526204A573200FB5669 /* Media.xcassets */; };
 		27B15A9920524A4F0045B226 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A9820524A4F0045B226 /* SHCommon.framework */; };

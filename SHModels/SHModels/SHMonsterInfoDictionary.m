@@ -45,6 +45,11 @@
 		return [self.infoDict getInfo:monsterKey];
 }
 
+-(SHMonsterDictionaryEntry *)getMonsterEntry:(NSString*)monsterKey{
+	SHMonsterDictionaryEntry *entry = [[SHMonsterDictionaryEntry alloc] initWith:monsterKey withMonsterDict:self];
+	return entry;
+}
+
 -(NSString *)getName:(NSString *)monsterKey{
 	NSString *monName = [self getMonsterInfo:monsterKey][@"NAME"];
 	#if SH_EXTRA_ERRORS

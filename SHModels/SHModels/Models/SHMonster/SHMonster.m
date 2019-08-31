@@ -8,9 +8,25 @@
 
 #import "SHMonster.h"
 #import <SHCommon/SHCommonUtils.h>
+#import "SHModelTools.h"
+#import <SHData/NSManagedObjectContext+Helper.h>
+#import <SHGlobal/SHConstants.h>
+#import <SHCommon/SHCollectionUtils.h>
+#import <SHCommon/NSDictionary+SHHelper.h>
+
+static float MAX_HP_MODIFIER = .1;
+static SHMonsterInfoDictionary *_monsterInfo;
 
 @implementation SHMonster
 
+
++(SHMonsterInfoDictionary *)monsterInfo{
+	return _monsterInfo;
+}
+
++(void)setMonsterInfo:(SHMonsterInfoDictionary *)monsterInfo{
+	_monsterInfo = monsterInfo;
+}
 
 -(void)copyFrom:(NSObject *)object{
 	copyBetween(object, self);
@@ -36,5 +52,29 @@ static void copyBetween(NSObject* from,NSObject* to){
 	(void)key;
 }
 
+
+-(NSMutableDictionary *)mapable{
+	return [NSDictionary objectToDictionary:self
+		withTransformer:shDefaultTransformer
+		withSet:nil];
+}
+
+
+-(BOOL)shouldIgnoreProperty:(NSString *)propName{
+	if([propName isEqualToString:@"mapable"]) return YES;
+	return NO;
+}
+
+
+-(int32_t)maxHp{
+	SHMonsterDictionaryEntry *entry = [SHMonster.monsterInfo getMonsterEntry:self.monsterKey];
+	return entry.baseHp + (self.lvl * entry.baseHp * MAX_HP_MODIFIER);
+}
+
+
+-(int32_t)attack{
+	SHMonsterDictionaryEntry *entry = [SHMonster.monsterInfo getMonsterEntry:self.monsterKey];
+	return entry.baseAttack + self.lvl;
+}
 
 @end

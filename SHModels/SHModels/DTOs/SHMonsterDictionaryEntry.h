@@ -1,5 +1,5 @@
 //
-//  SHMonsterDTO.h
+//  SHMonsterDictionaryEntry.h
 //  SHModels
 //
 //  Created by Joel Pridgen on 4/6/19.
@@ -12,19 +12,19 @@
 #import <SHCommon/SHObject.h>
 @import CoreData;
 
+@class SHMonsterInfoDictionary;
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHMonsterDTO : SHObject<SHStoryItemProtocol,NSCopying>
-+(instancetype)newWithMonsterDict:(SHMonsterInfoDictionary*)monInfoDict;
+@interface SHMonsterDictionaryEntry : SHObject<SHStoryItemProtocol,NSCopying>
+-(instancetype)initWith:(NSString*)monsterKey withMonsterDict:(SHMonsterInfoDictionary*)monInfoDict;
 @property (strong,nonatomic) SHMonsterInfoDictionary *monInfoDict;
-@property (strong,nonatomic) NSManagedObjectID *objectID;
-@property (nonatomic,readonly) int32_t attack;
+@property (nonatomic,readonly) int32_t baseAttack;
 @property (nonatomic,readonly) int32_t defense;
 @property (nonatomic,readonly) int32_t xp;
-@property (nonatomic,readonly) int32_t maxHp;
+@property (nonatomic,readonly) int32_t baseHp;
 @property (nonatomic,readonly) float treasureDropRate;
 @property (nonatomic,readonly) int32_t encounterWeight;
-@property (nonatomic) int32_t lvl;
 @property (nullable, nonatomic, copy) NSString *monsterKey;
 @property (nonatomic) int32_t nowHp;
 @property (readonly,nonatomic) NSMutableDictionary *mapable;

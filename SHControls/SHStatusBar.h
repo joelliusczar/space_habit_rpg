@@ -11,9 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHStatusBar : UIView
-@property (strong,nonatomic) UIColor *fullnessColor;
-@property (strong,nonatomic) UIColor *emptyColor;
-@property (assign,nonatomic) double percent;
+@property (strong,nonatomic) IBInspectable UIColor *fullnessColor;
+@property (strong,nonatomic) IBInspectable UIColor *emptyColor;
+@property (assign,nonatomic) IBInspectable double percent;
 @end
 
 NS_ASSUME_NONNULL_END

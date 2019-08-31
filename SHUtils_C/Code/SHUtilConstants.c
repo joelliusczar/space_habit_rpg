@@ -7,5 +7,5 @@
 //
 
 #include "SHUtilConstants.h"
-const int NOT_FOUND = -1;
-const int SKIP = -2;
+const int32_t NOT_FOUND = -1;
+const int32_t SKIP = -2;
