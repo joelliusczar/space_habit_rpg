@@ -14,7 +14,7 @@
 @property (nonatomic,assign) BOOL isTesting;
 @property (readonly,nonatomic,strong) SHInfoDictionary *infoDict;
 @property (strong,nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
-+(instancetype)newWithResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil;
+-(instancetype)initWithResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil;
 -(NSArray<NSString*> *)getGroupKeyList:(NSString *)key;
 -(NSDictionary *)getSectorInfo:(NSString *)sectorKey;
 -(NSString *)getSectorName:(NSString *)sectorKey;

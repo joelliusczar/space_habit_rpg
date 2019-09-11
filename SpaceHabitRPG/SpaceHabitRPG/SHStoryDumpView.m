@@ -10,6 +10,7 @@
 
 #import "SHStoryDumpView.h"
 #import <SHControls/UIViewController+Helper.h>
+#import <SHCommon/NSException+SHCommonExceptions.h>
 
 @interface SHStoryDumpView ()
 @property (nonatomic,strong) UITapGestureRecognizer *tapper;
@@ -39,23 +40,34 @@
 }
 
 
--(instancetype)initWithStoryItem:(NSObject<SHStoryItemProtocol> *)storyItem{
+-(instancetype)initWithStoryItemObjectID:(SHObjectIDWrapper *)storyItemObjectID{
 	if(self = [self initWithNibName:@"SHStoryDumpView" bundle:nil]){
-		_storyItem = storyItem;
+		_storyItemObjectID = storyItemObjectID;
 	}
 	return self;
 }
 
 
 - (void)viewDidLoad {
-		[super viewDidLoad];
-		NSString *synopsis = nil!=self.storyItem?self.storyItem.synopsis:@"";
-		NSString *headline = nil!=self.storyItem?self.storyItem.headline:@"";
-		self.synopsisView.text = synopsis;
-		self.headlineLbl.text = headline;
-		[self.headlineLbl sizeToFit];
-		[self doneBtn];
-		[self.view addGestureRecognizer:self.tapper];
+	[super viewDidLoad];
+	NSManagedObjectContext *context = self.storyItemObjectID.context;
+	[context performBlock:^{
+		NSError *error = nil;
+		NSManagedObject<SHStoryItemProtocol>* storyItem = [context getEntityOrNil:self.storyItemObjectID
+			withError:&error];
+		if(error) {
+			@throw [NSException dbException:error];
+		}
+		NSString *synopsis = nil != storyItem ? storyItem.synopsis:@"";
+		NSString *headline = nil != storyItem ? storyItem.headline:@"";
+		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+			self.synopsisView.text = synopsis;
+			self.headlineLbl.text = headline;
+			[self.headlineLbl sizeToFit];
+			[self.view addGestureRecognizer:self.tapper];
+		}];
+	}];
+
 }
 
 - (void)didReceiveMemoryWarning {

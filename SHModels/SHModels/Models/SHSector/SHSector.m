@@ -8,6 +8,7 @@
 
 #import "SHSector.h"
 #import <SHCommon/SHCommonUtils.h>
+#import <SHCommon/SHResourceUtility.h>
 
 static SHSectorInfoDictionary *_sectorInfo;
 
@@ -15,6 +16,10 @@ static SHSectorInfoDictionary *_sectorInfo;
 
 
 +(SHSectorInfoDictionary*)sectorInfo{
+	if(nil == _sectorInfo){
+		id<SHResourceUtilityProtocol> resourceUtil = [SHResourceUtility new];
+		_sectorInfo = [[SHSectorInfoDictionary alloc] initWithResourceUtil:resourceUtil];
+	}
 	return _sectorInfo;
 }
 
@@ -49,6 +54,22 @@ static void copyBetween(NSObject* from,NSObject* to){
 	shCopyInstanceVar(from, to, @"suffix");
 	shCopyInstanceVar(from, to, @"uniqueId");
 	shCopyInstanceVar(from, to, @"sectorKey");
+}
+
+
+-(NSString *)fullName{
+	NSString* name = [SHSector.sectorInfo getSectorName:self.sectorKey];
+	return self.suffix.length?[NSString stringWithFormat:@"%@ %@",name,self.suffix]:name;
+}
+
+
+-(NSString *)synopsis{
+	return [SHSector.sectorInfo getSectorDescription:self.sectorKey];
+}
+
+
+-(NSString *)headline{
+	return @"";
 }
 
 @end

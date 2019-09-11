@@ -44,6 +44,8 @@ public variable that I can swap out at run time
 #define SH_IS_FLOAT(x) (strchr("f#", @encode(typeof(x))[0]) != NULL) \
 	|| (strchr("d#", @encode(typeof(x))[0]) != NULL)
 #define SH_IS_STRUCT(x) (strchr("{#", @encode(typeof(x))[0]) != NULL)
+
+
 extern uint (*shRandomUInt)(uint);
 void shReverse_UINT(NSUInteger * array,NSUInteger len);
 CGFloat shGetParentChildHeightOffset(CGRect parentFrame,CGRect childFrame);

@@ -94,7 +94,6 @@
 	withEvent:(UIEvent *)event
 {
 	[super beginTap_action:touch withEvent:event];
-	NSLog(@"switch switch");
 	 self.isOn = !self.isOn;
 }
 

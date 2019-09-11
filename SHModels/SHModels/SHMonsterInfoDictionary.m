@@ -26,11 +26,13 @@
 }
 
 
-+(instancetype)newWithResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil{
-	SHMonsterInfoDictionary *instance = [SHMonsterInfoDictionary new];
-	instance.resourceUtil = resourceUtil;
-	return instance;
+-(instancetype)initWithResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil{
+	if(self = [super init]){
+		_resourceUtil = resourceUtil;
+	}
+	return self;
 }
+
 
 -(NSArray<NSString *> *)getMonsterKeyList:(NSString *)sectorKey{
 		return [self.infoDict getGroupKeyList:sectorKey];
@@ -41,9 +43,11 @@
 		return [self.infoDict getInfo:monsterKey forGroup:sectorKey];
 }
 
+
 -(NSDictionary *)getMonsterInfo:(NSString *)monsterKey{
 		return [self.infoDict getInfo:monsterKey];
 }
+
 
 -(SHMonsterDictionaryEntry *)getMonsterEntry:(NSString*)monsterKey{
 	SHMonsterDictionaryEntry *entry = [[SHMonsterDictionaryEntry alloc] initWith:monsterKey withMonsterDict:self];

@@ -12,6 +12,8 @@
 #import "SHModelTools.h"
 #import "SHModelConstants.h"
 #import "SHSector_Medium.h"
+#import "SHHero_Medium.h"
+
 
 NSString* const HOME_KEY = @"HOME";
 
@@ -117,12 +119,12 @@ withResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil{
 }
 
 
--(SHSectorDTO*)newSpecificSector:(NSString*) sectorKey
+-(SHSector*)newSpecificSector:(NSString*) sectorKey
 withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount{
 	
 	NSAssert(sectorKey,@"Key can't be null");
 	NSAssert(lvl > 0, @"Lvl must be greater than 0");
-	SHSectorDTO *z = [SHSectorDTO newWithSectorDict:self.sectorInfo];
+	SHSector *z = [self.context newEntity:SHSector.entity];
 	z.sectorKey = sectorKey;
 	z.suffix = [self getSymbolSuffix:[self getVisitCountForSector:sectorKey]];
 	z.maxMonsters = monsterCount;
@@ -132,25 +134,25 @@ withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount{
 }
 
 
--(SHSectorDTO*)newSpecificSector2:(NSString*) sectorKey withLvl:(int32_t) lvl{
+-(SHSector*)newSpecificSector2:(NSString*) sectorKey withLvl:(int32_t) lvl{
 	int32_t monsterCount = shRandomUInt(SH_MAX_MONSTER_RAND_UP_BOUND) + SH_MAX_MONSTER_LOW_BOUND;
 	return [self newSpecificSector:sectorKey withLvl:lvl withMonsterCount: monsterCount];
 }
 
 
--(SHSectorDTO*)newRandomSectorChoiceGivenHero:(SHHeroDTO*)hero ifShouldMatchLvl:(BOOL)shouldMatchLvl{
+-(SHSector*)newRandomSectorChoiceGivenHero:(SHHeroDTO*)hero ifShouldMatchLvl:(BOOL)shouldMatchLvl{
 	NSString *sectorKey = [self getRandomSectorDefinitionKey:hero.lvl];
 	int32_t sectorLvl = shouldMatchLvl?hero.lvl:shCalculateLvl(hero.lvl,SH_SECTOR_LVL_RANGE);
-	SHSectorDTO *z = [self newSpecificSector2:sectorKey withLvl:sectorLvl];
+	SHSector *z = [self newSpecificSector2:sectorKey withLvl:sectorLvl];
 	return z;
 }
 
 
--(NSMutableArray<SHSectorDTO*>*)newMultipleSectorChoicesGivenHero:(SHHeroDTO*)hero ifShouldMatchLvl:(BOOL)matchLvl{
+-(NSMutableArray<SHSector*>*)newMultipleSectorChoicesGivenHero:(SHHeroDTO*)hero ifShouldMatchLvl:(BOOL)matchLvl{
 	//Sector create uses nil context so that should be okay
 	
 	uint sectorCount = shRandomUInt(SH_MAX_ZONE_CHOICE_RAND_UP_BOUND)	+ SH_MIN_ZONE_CHOICE_COUNT;
-	NSMutableArray<SHSectorDTO *> *choices = [NSMutableArray arrayWithCapacity:sectorCount];
+	NSMutableArray<SHSector *> *choices = [NSMutableArray arrayWithCapacity:sectorCount];
 	choices[0] = [self newRandomSectorChoiceGivenHero:hero ifShouldMatchLvl:matchLvl];
 	for(uint i = 1;i<sectorCount;i++){
 		choices[i] = [self newRandomSectorChoiceGivenHero:hero ifShouldMatchLvl:NO];

@@ -9,7 +9,19 @@
 #import "SHStatusBar.h"
 #import <math.h>
 
+@interface SHStatusBar ()
+@property (strong,nonatomic) IBOutlet NSLayoutConstraint *heightConstraint;
+@end
+
+
 @implementation SHStatusBar
+
+
+-(void)setPercent:(double)percent{
+	NSAssert(percent >= 0 && percent <= 1, @"fullnessRatio needs to be a fraction between 1 and 0");
+	_percent = percent;
+	[self setNeedsDisplay];
+}
 
 static void drawBarLeftPart(CGContextRef ctx,const CGRect *rect, CGFloat radius,CGFloat xOffset,
 	CGFloat barCoverage)
@@ -110,12 +122,13 @@ static void drawBorder(CGContextRef ctx, const CGRect *rect, CGFloat radius,
 
 
 static void drawStatusBar(CGContextRef ctx, const CGRect *rect,CGFloat fullnessRatio,
-	CGColorRef emptyColor, CGColorRef fillColor)
+	CGColorRef fillColor, CGColorRef emptyColor)
 {
 	NSCAssert(fullnessRatio >= 0 && fullnessRatio <= 1, @"fullnessRatio needs to be a fraction between 1 and 0");
 	CGFloat height = CGRectGetHeight(*rect);
-	CGFloat radius = (height - 20) / 2;
-	CGFloat xOffset = 25;
+	CGFloat maxBorderWidth = 3;
+	CGFloat radius = (height - (maxBorderWidth * 2)) / 2;
+	CGFloat xOffset = 10;
 	CGFloat width = CGRectGetWidth(*rect) -2*xOffset;
 	CGFloat barWidth = width - 2*radius;
 	CGFloat leftCircleFraction = radius / width;
@@ -138,19 +151,18 @@ static void drawStatusBar(CGContextRef ctx, const CGRect *rect,CGFloat fullnessR
 		drawAlmostFullBar(ctx, rect, radius, xOffset, fullnessRatio);
 	}
 	CGContextSetStrokeColorWithColor(ctx, UIColor.blackColor.CGColor);
-	CGContextSetLineWidth(ctx, 3);
+	CGContextSetLineWidth(ctx, maxBorderWidth);
 	drawBorder(ctx, rect, radius, xOffset);
 	CGContextSetStrokeColorWithColor(ctx, UIColor.whiteColor.CGColor);
 	CGContextSetLineWidth(ctx, 1);
 	drawBorder(ctx, rect, radius, xOffset);
 }
 
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
 	CGContextRef ctx = UIGraphicsGetCurrentContext();
-    // Drawing code
-	self.backgroundColor = [[UIColor alloc] initWithRed:0 green:0 blue:0 alpha:1];
 	drawStatusBar(ctx,&rect,self.percent,self.fullnessColor.CGColor,
 		self.emptyColor.CGColor);
 }

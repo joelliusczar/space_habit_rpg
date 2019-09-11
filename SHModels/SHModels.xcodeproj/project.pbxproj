@@ -318,7 +318,6 @@
 				2787044322729F77009C9DD6 /* SHModelError.h */,
 				2787044422729F77009C9DD6 /* SHModelError.m */,
 				27075D5822570BC500AD13AA /* DTOs */,
-				2747C45D2046304B00FB5669 /* Sector+Extensions */,
 				27CA86402264207A00AE8FDB /* Models */,
 				275EB497226A668B00012784 /* Model.xcdatamodeld */,
 				2747C3BC2043B67200FB5669 /* SHRateTypeHelper.h */,
@@ -362,13 +361,6 @@
 				27B15A9E20524B4F0045B226 /* SHCommon.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		2747C45D2046304B00FB5669 /* Sector+Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Sector+Extensions";
 			sourceTree = "<group>";
 		};
 		276E6D98222A531700CB36CB /* Configs */ = {

@@ -25,11 +25,13 @@
 }
 
 
-+(instancetype)newWithResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil{
-	SHSectorInfoDictionary *instance = [SHSectorInfoDictionary new];
-	instance.resourceUtil = resourceUtil;
-	return instance;
+-(instancetype)initWithResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil{
+	if(self = [super init]){
+		_resourceUtil = resourceUtil;
+	}
+	return self;
 }
+
 
 -(NSArray<NSString*>*)getGroupKeyList:(NSString *)key{
 	return [self.infoDict getGroupKeyList:key];

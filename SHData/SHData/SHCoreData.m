@@ -161,8 +161,7 @@ NSString* const DEFAULT_DB_NAME = @"Model.sqlite";
 }
 
 
--(NSManagedObjectContext *)newContext:
-(NSManagedObjectContextConcurrencyType)concurrencyType{
+-(NSManagedObjectContext *)newContext:(NSManagedObjectContextConcurrencyType)concurrencyType {
 	
 		NSManagedObjectContext *context =
 			[[NSManagedObjectContext alloc] initWithConcurrencyType:concurrencyType];

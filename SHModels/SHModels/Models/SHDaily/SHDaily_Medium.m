@@ -25,7 +25,7 @@
 
 -(NSArray<NSSortDescriptor *> *)buildFetchDescriptors{
 	NSSortDescriptor *sortByLastActivation= [[NSSortDescriptor alloc]
-		initWithKey:@"lastActivationDateTime" ascending:NO];
+		initWithKey:@"lastActivationDateTime" ascending:YES];
 	
 	NSSortDescriptor *sortByUserOrder = [[NSSortDescriptor alloc]
 		initWithKey:@"customUserOrder" ascending:NO];

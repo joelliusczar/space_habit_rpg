@@ -77,7 +77,7 @@
         <relationship name="subtask_daily" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SHDaily" inverseName="daily_subtask" inverseEntity="SHDaily" syncable="YES"/>
     </entity>
     <entity name="SHHero" representedClassName="SHHero" syncable="YES" codeGenerationType="category">
-        <attribute name="gold" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="gold" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lastUpdateDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="lvl" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="maxHp" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>

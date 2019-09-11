@@ -40,13 +40,11 @@
 		NSTimeInterval dayStart = config.userTodayStart.timeIntervalSince1970;
 		NSTimeInterval lastActivation = daily.lastActivationDateTime.timeIntervalSince1970;
 		if(dayStart > lastActivation) {
-			NSLog(@"activate");
 			daily.rollbackActivationDateTime = daily.lastActivationDateTime;
 			daily.lastActivationDateTime = NSDate.date;
 			if(self.activationAction) self.activationAction(YES,self.objectID);
 		}
 		else {
-			NSLog(@"deactivate");
 			daily.lastActivationDateTime = daily.rollbackActivationDateTime;
 			daily.rollbackActivationDateTime = nil;
 			if(self.activationAction) self.activationAction(NO,self.objectID);

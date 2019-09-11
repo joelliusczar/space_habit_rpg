@@ -14,7 +14,7 @@
 
 @interface SHSectorChoiceCellController()
 @property (nonatomic,weak) SHSectorChoiceViewController *parentSectorController;
-@property (nonatomic,weak) SHSectorDTO *model;
+@property (nonatomic,weak) SHObjectIDWrapper *objectID;
 @property (nonatomic,weak) NSIndexPath *rowInfo;
 @property (nonatomic,strong) UISwipeGestureRecognizer *swiper;
 @end
@@ -31,29 +31,41 @@
 }
 
 
-
-+(instancetype)getSectorChoiceCell:(UITableView *)tableView WithParent:(SHSectorChoiceViewController *)parent
-AndModel:(SHSectorDTO *)model AndRow:(NSIndexPath *)rowInfo
++(instancetype)getSectorChoiceCell:(UITableView *)tableView withParent:(SHSectorChoiceViewController *)parent
+	withObjectID:(SHObjectIDWrapper *)objectID
+	withRow:(NSIndexPath *)rowInfo
 {
 	SHSectorChoiceCellController *cell = [tableView
 		dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
 	if(nil==cell){
 		cell = [[SHSectorChoiceCellController alloc] init];
 	}
-	[cell setupCell:model AndParent:parent AndRow:rowInfo];
+	[cell setupCell:objectID AndParent:parent AndRow:rowInfo];
 	return cell;
 }
 
--(void)setupCell:(SHSectorDTO *)model AndParent:(SHSectorChoiceViewController *)parent
-			AndRow:(NSIndexPath *)rowInfo
+-(void)setupCellWithObjectID:(SHObjectIDWrapper *)objectID withParent:(SHSectorChoiceViewController *)parent
+	withRow:(NSIndexPath *)rowInfo
 {
 	self.parentSectorController = parent;
-	self.model = model;
-	self.nameLbl.text = self.model.fullName;
-	self.lvlLbl.text = [NSString stringWithFormat:@"Lvl: %d",self.model.lvl];
-	self.rowInfo = rowInfo;
-	[self addGestureRecognizer:self.swiper];
-	[self.contentView checkForAndApplyVisualChanges];
+	self.objectID = objectID;
+	[objectID.context performBlock:^{
+		NSError *err = nil;
+		SHSector *sector = (SHSector *)[objectID.context getEntityOrNil:objectID withError:&err];
+		if(err){
+		
+			return;
+		}
+		NSString *sectorName = sector.fullName;
+		NSString *lvlText = [NSString stringWithFormat:@"Lvl: %d",sector.lvl];
+		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+			self.nameLbl.text = sectorName;
+			self.lvlLbl.text = lvlText;
+			self.rowInfo = rowInfo;
+			[self addGestureRecognizer:self.swiper];
+			[self.contentView checkForAndApplyVisualChanges];
+		}];
+	}];
 }
 
 -(void)awakeFromNib{

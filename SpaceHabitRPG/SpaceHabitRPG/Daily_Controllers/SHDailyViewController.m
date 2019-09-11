@@ -24,6 +24,9 @@
 #import <SHModels/SHDaily_Medium.h>
 #import <SHData/NSManagedObjectContext+Helper.h>
 #import <SHModels/SHConfig_Medium.h>
+#import <SHCommon/SHDebugDefines.h>
+
+#define shHoldUp(n) [NSThread sleepForTimeInterval:n]
 
 
 @interface SHDailyViewController ()
@@ -69,19 +72,18 @@ static NSString *const EntityName = @"Daily";
 }
 
 
-- (void)viewDidLoad {
+-(void)viewDidLoad {
 	[super viewDidLoad];
-	NSLog(@"Load starts");
 	self.dailiesTable = [[UITableView alloc] init];
 
 	[self.view addSubview:self.dailiesTable];
 	self.dailiesTable.translatesAutoresizingMaskIntoConstraints = NO;
 	[self.dailiesTable.widthAnchor constraintEqualToAnchor:self.view.widthAnchor].active = YES;
 	[self.dailiesTable.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
-	[self.dailiesTable.topAnchor	constraintEqualToAnchor:self.addDailiesBtn.bottomAnchor].active = YES;
+	[self.dailiesTable.topAnchor constraintEqualToAnchor:self.addDailiesBtn.bottomAnchor].active = YES;
 	self.dailiesTable.delegate = self;
 	self.dailiesTable.dataSource = self;
-	NSLog(@"load happens");
+	[self setupData];
 }
 
 
@@ -94,7 +96,6 @@ static NSString *const EntityName = @"Daily";
 -(void)setuptab{
 	UITabBarItem *tbi = [self tabBarItem];
 	[tbi setTitle:@"Dailies"];
-	[self setupData];
 }
 
 
@@ -113,29 +114,22 @@ static NSString *const EntityName = @"Daily";
 
 
 -(void)setupData{
-	[self.dailyContext performBlock:^{
-		SHConfig_Medium *cm = [[SHConfig_Medium alloc] initWithContext:self.dailyContext	];
-		SHConfig *config = [cm globalConfig];
-		NSDate *todayStart = [[NSDate date] dayStart];
-		todayStart = [todayStart timeAfterHours:config.dayStartHour minutes:0 seconds:0];
-		SHDaily_Medium *dailyMedium = [SHDaily_Medium newWithContext:self.dailyContext];
-		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-			NSLog(@"setup starts");
-			self.dailyItemsFetcher = [dailyMedium dailiesDataFetcher];
-			self.dailyItemsFetcher.delegate = self;
-			[self fetchUpdates];
-			NSLog(@"setup happens");
-		}];
-	}];
+	SHDaily_Medium *dailyMedium = [SHDaily_Medium newWithContext:self.dailyContext];
+	self.dailyItemsFetcher = [dailyMedium dailiesDataFetcher];
+	self.dailyItemsFetcher.delegate = self;
+	[self fetchUpdates];
 }
 
 
 -(void)fetchUpdates{
 	[self.dailyContext performBlock:^{
-		NSLog(@"fetch: %@",NSThread.currentThread);
 		NSError *error = nil;
-		[self.dailyItemsFetcher performFetch:&error];
-		if(error) @throw [NSException dbException:error];
+		if(![self.dailyItemsFetcher performFetch:&error]){
+			@throw [NSException dbException:error];
+		}
+		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+			[self.dailiesTable reloadData];
+		}];
 	}];
 }
 
@@ -209,6 +203,31 @@ static NSString *const EntityName = @"Daily";
 }
 
 
+-(void)swipeEditActionWithIndexPath:(NSIndexPath*)indexPath
+	WithCompletionHandler:(void (^)(BOOL))completionHandler
+{
+	NSFetchedResultsController *fetchController = self.dailyItemsFetcher;
+	NSManagedObjectContext *fetchContext = fetchController.managedObjectContext;
+	[fetchContext performBlockAndWait:^{
+		NSManagedObject *rowObject = fetchController.fetchedObjects[indexPath.row];
+		SHObjectIDWrapper *objectIDWrapper = [[SHObjectIDWrapper alloc] init];
+		objectIDWrapper.objectID = rowObject.objectID;
+		objectIDWrapper.entityType = SHDaily.entity;
+		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+			NSManagedObjectContext *context = [self.dailyContext createChildContext];
+			[self setupEditorWithObjectIDWrapper:objectIDWrapper
+				withContext:context];
+			self.central.editController.editingScreen = self.dailyEditor;
+			self.central.editController.title = @"Daily";
+			self.central.editController.context = context;
+			self.central.editController.objectIDWrapper = objectIDWrapper;
+			[self.central arrangeAndPushChildVCToFront:self.central.editController];
+			completionHandler(YES);
+		}];
+	}];
+}
+
+
 -(UISwipeActionsConfiguration*)tableView:(UITableView *)tableView
 	trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -221,27 +240,8 @@ static NSString *const EntityName = @"Daily";
 			UIView *sourceView,
 			void (^completionHandler)(BOOL actionPerformed)){
 				(void)action; (void)sourceView;
-				NSFetchedResultsController *fetchController = self.dailyItemsFetcher;
-				NSManagedObjectContext *fetchContext = fetchController.managedObjectContext;
-				[fetchContext performBlockAndWait:^{
-					NSManagedObject *rowObject = fetchController.fetchedObjects[indexPath.row];
-					SHObjectIDWrapper *objectIDWrapper = [[SHObjectIDWrapper alloc] init];
-					objectIDWrapper.objectID = rowObject.objectID;
-					objectIDWrapper.entityType = SHDaily.entity;
-					[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-						NSManagedObjectContext *context = [self.dailyContext createChildContext];
-						[self setupEditorWithObjectIDWrapper:objectIDWrapper
-							withContext:context];
-						self.central.editController.editingScreen = self.dailyEditor;
-						self.central.editController.title = @"Daily";
-						self.central.editController.context = context;
-						self.central.editController.objectIDWrapper = objectIDWrapper;
-						[self.central arrangeAndPushChildVCToFront:self.central.editController];
-						completionHandler(YES);
-					}];
-				}];
-	}];
-	
+					[self swipeEditActionWithIndexPath:indexPath WithCompletionHandler:completionHandler];
+		}];
 	UISwipeActionsConfiguration *actionConfigs = [UISwipeActionsConfiguration
 		configurationWithActions:@[editAction]];
 	
@@ -250,7 +250,6 @@ static NSString *const EntityName = @"Daily";
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-		
 	SHDailyCellController *cell = [SHDailyCellController getDailyCell:tableView WithParent:self];
 	__block NSManagedObjectID *objectID = nil;
 	[self.dailyContext performBlockAndWait:^{

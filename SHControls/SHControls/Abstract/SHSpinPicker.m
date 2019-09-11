@@ -74,12 +74,12 @@ numberOfRowsInComponent:(NSInteger)component{
 		[self.view layoutIfNeeded];
 	}];
 	[animator addAnimations:^{
-	self.buttonXConstraint.constant -= offset*2;
-	[self.view layoutIfNeeded];
+		self.buttonXConstraint.constant -= offset*2;
+		[self.view layoutIfNeeded];
 	} delayFactor:.50];
 	[animator addAnimations:^{
-	self.buttonXConstraint.constant += offset;
-	[self.view layoutIfNeeded];
+		self.buttonXConstraint.constant += offset;
+		[self.view layoutIfNeeded];
 	} delayFactor:.75];
 	[animator startAnimation];
 }

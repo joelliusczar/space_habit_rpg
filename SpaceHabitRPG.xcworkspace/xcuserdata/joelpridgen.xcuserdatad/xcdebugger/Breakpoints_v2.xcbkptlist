@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SHControls/SHControls/Abstract/SHView.m"
-            timestampString = "586406616.562935"
+            timestampString = "589492181.720619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "-touchesBegan:withEvent:"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SHControls/SHControls/Abstract/SHView.m"
-            timestampString = "586406616.5632811"
+            timestampString = "589492181.7207659"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "70"
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SHControls/SHControls/Abstract/SHView.m"
-            timestampString = "586406616.563437"
+            timestampString = "589492181.720884"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "-touchesBegan:withEvent:"
             landmarkType = "7">
          </BreakpointContent>
@@ -378,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SHControls/SHControls/Abstract/SHView.m"
-            timestampString = "586406616.563841"
+            timestampString = "589492181.7211339"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "-touchesBegan:withEvent:"
             landmarkType = "7">
          </BreakpointContent>
@@ -410,7 +410,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SHControls/SHControls/Abstract/SHView.m"
-            timestampString = "586406616.5639729"
+            timestampString = "589492181.721414"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
@@ -426,7 +426,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SHControls/SHControls/Abstract/SHView.m"
-            timestampString = "586406616.564031"
+            timestampString = "589492181.721529"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
@@ -442,7 +442,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SHControls/SHControls/Abstract/SHView.m"
-            timestampString = "586406616.564086"
+            timestampString = "589492181.721597"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"
@@ -458,7 +458,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SHControls/SHControls/Abstract/SHView.m"
-            timestampString = "586406616.564141"
+            timestampString = "589492181.721657"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -474,7 +474,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SHControls/SHControls/Abstract/SHView.m"
-            timestampString = "586406616.5642"
+            timestampString = "589492181.721715"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "19"
@@ -506,11 +506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SHControlsSpecial/SHControlsSpecial/ActiveDays/SHRateSelectionViewController.m"
-            timestampString = "587528981.109063"
+            timestampString = "589082477.819674"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "-switchToActiveDaysViewController:"
             landmarkType = "7">
          </BreakpointContent>
@@ -570,11 +570,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SHControlsSpecial/SHControlsSpecial/ActiveDays/SHRateSelectionViewController.m"
-            timestampString = "587528981.1104029"
+            timestampString = "589082477.819827"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "-switchToActiveDaysViewController:"
             landmarkType = "7">
          </BreakpointContent>
@@ -602,11 +602,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SHControlsSpecial/SHControlsSpecial/ActiveDays/SHRateSelectionViewController.m"
-            timestampString = "587528981.11054"
+            timestampString = "589082477.8199069"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "-rateStepEvent:event:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1018,11 +1018,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SHControlsSpecial/SHControlsSpecial/ActiveDays/SHRateSelectionViewController.m"
-            timestampString = "587528981.112053"
+            timestampString = "589082477.820387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "-switchActiveDay:value:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1082,11 +1082,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpaceHabitRPG/SpaceHabitRPG/Daily_Controllers/SHDailyViewController.m"
-            timestampString = "588213606.34161"
+            timestampString = "589527626.639014"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "342"
-            endingLineNumber = "342"
+            startingLineNumber = "347"
+            endingLineNumber = "347"
             landmarkName = "-setupEditorWithObjectIDWrapper:withContext:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1098,7 +1098,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpaceHabitRPG/SpaceHabitRPG/Daily_Controllers/SHDailyCellController.m"
-            timestampString = "588126504.751597"
+            timestampString = "589527626.640061"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "62"
@@ -1146,12 +1146,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpaceHabitRPG/SpaceHabitRPG/Daily_Controllers/SHDailyViewController.m"
-            timestampString = "588213606.3438309"
+            timestampString = "589527626.6401449"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "-didReceiveMemoryWarning"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1162,11 +1162,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpaceHabitRPG/SpaceHabitRPG/Daily_Controllers/SHDailyViewController.m"
-            timestampString = "588213606.344422"
+            timestampString = "589527626.640698"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
             landmarkName = "-controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1178,13 +1178,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpaceHabitRPG/SpaceHabitRPG/Daily_Controllers/SHDailyCellController.m"
-            timestampString = "588126504.759286"
+            timestampString = "589527626.641188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "-refreshCell"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHControls/SHStatusBar.m"
+            timestampString = "589492181.722923"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "drawStatusBar()"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

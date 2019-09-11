@@ -15,6 +15,8 @@
 
 
 @interface SHIntroViewController : UIViewController
--(instancetype)initWithCentralViewController:(SHCentralViewController *)central;
+@property (copy,nonatomic) void (^skipAction)(void);
+@property (copy,nonatomic) void (^onNextAction)(void);
+-(instancetype)initWithSkipAction:(void (^)(void))skipAction withOnNextAction:(void (^)(void))onNextAction;
 @end
 

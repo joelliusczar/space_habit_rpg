@@ -10,9 +10,9 @@
 #import "SHSector.h"
 #import <SHCommon/SHResourceUtilityProtocol.h>
 #import "SHHeroDTO.h"
-#import "SHSectorDTO.h"
 #import "SHSectorInfoDictionary.h"
 #import <Foundation/Foundation.h>
+
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,21 +28,22 @@ extern NSString* const HOME_KEY;
 -(NSString*)getRandomSectorDefinitionKey:(NSUInteger)heroLvl;
 -(NSString*)getSymbolSuffix:(NSUInteger)visitCount;
 
--(SHSectorDTO*)newRandomSectorChoiceGivenHero:(SHHeroDTO*)hero
+-(SHSector*)newRandomSectorChoiceGivenHero:(SHHeroDTO*)hero
 	ifShouldMatchLvl:(BOOL)shouldMatchLvl;
 
--(SHSectorDTO*)newSpecificSector2:(NSString*) sectorKey withLvl:(int32_t) lvl;
+-(SHSector*)newSpecificSector2:(NSString*) sectorKey withLvl:(int32_t) lvl;
 
--(SHSectorDTO*)newSpecificSector:(NSString*)sectorKey
+-(SHSector*)newSpecificSector:(NSString*)sectorKey
 	withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount;
 
--(NSMutableArray<SHSectorDTO*>*)newMultipleSectorChoicesGivenHero:(SHHeroDTO*)hero
+-(NSMutableArray<SHSector*>*)newMultipleSectorChoicesGivenHero:(SHHeroDTO*)hero
 	ifShouldMatchLvl:(BOOL)matchLvl;
 
 -(NSArray<SHSector*>*)getAllSectors:(nullable NSPredicate*)filter;
 -(SHSector*)getSector:(BOOL)isFront;
 -(void)moveSectorToFront:(SHSector*)sector;
 NSArray<NSString*>* getUnlockedSectorGroupKeys(NSUInteger heroLvl);
+-(SHSector *)getCurrentSector;
 @end
 
 NS_ASSUME_NONNULL_END

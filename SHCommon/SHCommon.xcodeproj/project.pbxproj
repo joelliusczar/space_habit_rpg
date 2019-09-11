@@ -28,6 +28,7 @@
 		2747C4962048CF4E00FB5669 /* SHControlKeepProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C4952048CF4E00FB5669 /* SHControlKeepProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C4DA2048DC1300FB5669 /* SHProbWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4D82048DC1200FB5669 /* SHProbWeight.m */; };
 		2747C4DB2048DC1300FB5669 /* SHProbWeight.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C4D92048DC1200FB5669 /* SHProbWeight.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		274A8FA42323345300F348AC /* SHDebugDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 274A8FA32323345300F348AC /* SHDebugDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		274EFB5A204E3FE000CB3C4C /* UIColor+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB58204E3FE000CB3C4C /* UIColor+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		274EFB5B204E3FE000CB3C4C /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB59204E3FE000CB3C4C /* UIColor+Helper.m */; };
 		274EFB62204E43C900CB3C4C /* UIImage+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB60204E43C900CB3C4C /* UIImage+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -93,6 +94,7 @@
 		2747C4952048CF4E00FB5669 /* SHControlKeepProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHControlKeepProtocol.h; sourceTree = "<group>"; };
 		2747C4D82048DC1200FB5669 /* SHProbWeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHProbWeight.m; sourceTree = "<group>"; };
 		2747C4D92048DC1200FB5669 /* SHProbWeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHProbWeight.h; sourceTree = "<group>"; };
+		274A8FA32323345300F348AC /* SHDebugDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDebugDefines.h; sourceTree = "<group>"; };
 		274EFB58204E3FE000CB3C4C /* UIColor+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Helper.h"; sourceTree = "<group>"; };
 		274EFB59204E3FE000CB3C4C /* UIColor+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Helper.m"; sourceTree = "<group>"; };
 		274EFB60204E43C900CB3C4C /* UIImage+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Helper.h"; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				2781FF5B204204D70035AD82 /* SHCommonUtils.m */,
 				27A430E72269256200773056 /* SHCollectionUtils.h */,
 				27A430E82269256200773056 /* SHCollectionUtils.m */,
+				274A8FA32323345300F348AC /* SHDebugDefines.h */,
 				2781FF67204204D80035AD82 /* SHInterceptor.h */,
 				2781FF5E204204D70035AD82 /* SHInterceptor.m */,
 				2781FF64204204D80035AD82 /* SHReportServiceCaller.h */,
@@ -304,6 +307,7 @@
 				274EFB62204E43C900CB3C4C /* UIImage+Helper.h in Headers */,
 				274EFB5A204E3FE000CB3C4C /* UIColor+Helper.h in Headers */,
 				2747C4DB2048DC1300FB5669 /* SHProbWeight.h in Headers */,
+				274A8FA42323345300F348AC /* SHDebugDefines.h in Headers */,
 				27CA8636226262E200AE8FDB /* SHObject.h in Headers */,
 				27118841203FFA810085A549 /* SHCommon.h in Headers */,
 			);

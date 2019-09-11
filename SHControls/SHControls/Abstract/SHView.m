@@ -87,7 +87,6 @@
 {
 	(void)touch;
 	(void)event;
-	NSLog(@"tap atp");
 }
 
 

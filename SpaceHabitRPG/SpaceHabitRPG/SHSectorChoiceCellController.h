@@ -10,18 +10,20 @@
 #import <SHModels/SHSector.h>
 #import <SHModels/SHSectorDTO.h>
 #import "SHSectorChoiceViewController.h"
+#import "SHSectorSelectionDelegate.h"
+#import <SHData/SHData.h>
 
 
 
 @interface SHSectorChoiceCellController : SHTaskCell
 
-@property (nonatomic,weak) IBOutlet UILabel *nameLbl;
-@property (nonatomic,weak) IBOutlet UILabel *lvlLbl;
+@property (weak,nonatomic) IBOutlet UILabel *nameLbl;
+@property (weak,nonatomic) IBOutlet UILabel *lvlLbl;
+@property (copy,nonatomic) void (^onSectorSelectionAction)(NSString*);
++(instancetype)getSectorChoiceCell:(UITableView *)tableView withParent:(SHSectorChoiceViewController *)parent
+	withObjectID:(SHObjectIDWrapper *)objectID
+	withRow:(NSIndexPath *)rowInfo;
 
-+(instancetype)getSectorChoiceCell:(UITableView *)tableView WithParent:(SHSectorChoiceViewController *)parent
-	AndModel:(SHSectorDTO *)model
-	AndRow:(NSIndexPath *)rowInfo;
-
--(void)setupCell:(SHSectorDTO *)model AndParent:(SHSectorChoiceViewController *)parent
-	AndRow:(NSIndexPath *)rowInfo;
+-(void)setupCellWithObjectID:(SHObjectIDWrapper *)objectID withParent:(SHSectorChoiceViewController *)parent
+	withRow:(NSIndexPath *)rowInfo;
 @end

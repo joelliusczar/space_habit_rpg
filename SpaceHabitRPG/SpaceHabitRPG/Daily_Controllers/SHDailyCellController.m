@@ -79,7 +79,6 @@
 			}
 			
 			//for check image
-			NSLog(@"%@ : completed? %@",dailyName,isCompleted ? @"yes": @"no");
 			if(isCompleted){
 				[self.completeBtn setImage:[UIImage imageNamed:@"checked_task"] forState:UIControlStateNormal];
 			}

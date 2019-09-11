@@ -14,10 +14,10 @@
 #import <SHModels/SHSector_Medium.h>
 #import <SHControls/UIView+Helpers.h>
 #import <SHControls/UIViewController+Helper.h>
+#import <SHData/SHData.h>
 
 @interface SHSectorChoiceViewController ()
-@property (nonatomic,strong) NSArray<SHSectorDTO *> *sectors;
-@property (nonatomic,weak) NSObject<P_CoreData> *dataController;
+@property (nonatomic,strong) NSArray<SHObjectIDWrapper *> *objectIDs;
 
 @end
 
@@ -32,18 +32,17 @@
 }
 
 
-+(instancetype)newWithCentral:(SHCentralViewController *)central
-	AndSectorChoices:(NSArray<SHSectorDTO *> *)sectorChoices{
-	
-	SHSectorChoiceViewController *instance = [[SHSectorChoiceViewController alloc]
-	initWithNibName:@"SectorChoicePicker" bundle:nil];
-	instance.central = central;
-	instance.sectors = sectorChoices;
-	return instance;
+-(instancetype)initWithSkipAction:(void (^)(void))skipAction withOnSelectionAction:(void (^)(void))onSelectionAction{
+	if(self = [super init]){
+		_skipAction = skipAction;
+		_onSelectionAction = onSelectionAction;
+	}
+	return self;
 }
 
+
 - (void)viewDidLoad {
-	NSAssert(self.sectors, @"SHSectorChoiceViewController is in an invalid state. Sectors hasn't been constructed");
+	NSAssert(self.objectIDs, @"SHSectorChoiceViewController is in an invalid state. Sectors hasn't been constructed");
 	[super viewDidLoad];
 	self.sectorChoiceTable.tableFooterView = nil;
 	self.sectorChoiceTable.dataSource = self;
@@ -58,31 +57,26 @@
 }
 
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunused-parameter"
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-	if(self.sectors){
-		return self.sectors.count;
+	(void)tableView; (void)section;
+	if(self.objectIDs){
+		return self.objectIDs.count;
 	}
 	return 0;
 }
 
 
 -(IBAction)skipBtn_pressed_action:(UIButton *)sender{
-	[self.central setToShowStory:NO];
+	(void)sender;
+	self.skipAction(); //[self.central setToShowStory:NO]; //[self.central afterSectorPick:nil];
 	[self popVCFromFront];
-	[self.central afterSectorPick:nil];
 }
 
 
-#pragma clang diagnostic pop
-
-
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-	SHSectorDTO *z = self.sectors[indexPath.row];
+	SHObjectIDWrapper *objectID = self.objectIDs[indexPath.row];
 	SHSectorChoiceCellController *cell = [SHSectorChoiceCellController getSectorChoiceCell:tableView
-		WithParent:self AndModel:z AndRow:indexPath];
+		withParent:self withObjectID:objectID withRow:indexPath];
 	return cell;
 }
 

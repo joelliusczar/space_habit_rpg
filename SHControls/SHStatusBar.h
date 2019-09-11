@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong,nonatomic) IBInspectable UIColor *fullnessColor;
 @property (strong,nonatomic) IBInspectable UIColor *emptyColor;
 @property (assign,nonatomic) IBInspectable double percent;
+@property (copy,nonatomic) IBInspectable NSString *name;
 @end
 
 NS_ASSUME_NONNULL_END

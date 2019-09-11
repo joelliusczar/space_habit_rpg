@@ -58,7 +58,7 @@ const NSInteger YEARLY_SELECTION = 3;
 }
 
 
-- (void)viewDidLoad {
+-(void)viewDidLoad {
 	[super viewDidLoad];
 	[self switchToActiveDaysViewController:self.rateType];
 	__weak typeof(self) weakSelf = self;
@@ -67,7 +67,8 @@ const NSInteger YEARLY_SELECTION = 3;
 		[bSelf rateStepEvent:stepper event:e];
 	};
 	[self.intervalSetter changeBackgroundColorTo: [UIColor whiteColor]];
-	[self.intervalSetter setSubControlColorsTo: [UIColor colorWithRed:36.0/255 green:126.0/255 blue:217.0/255 alpha:1]];
+	[self.intervalSetter setSubControlColorsTo:
+		[UIColor colorWithRed:36.0/255 green:126.0/255 blue:217.0/255 alpha:1]];
 }
 
 
@@ -99,7 +100,7 @@ const NSInteger YEARLY_SELECTION = 3;
 	[self.rateActiveDaysViewController popAllChildVCs];
 }
 
-- (void)loadWeeklyRateView {
+-(void)loadWeeklyRateView {
 	self.weeklyActiveDays.weeklyActiveDays = self.activeDays.weeklyActiveDays;
 	self.intervalSetter.labelSingularFormatString = @"Interval: Every week";
 	self.intervalSetter.labelPluralFormatString = @"Interval: Every %ld weeks";
@@ -107,14 +108,14 @@ const NSInteger YEARLY_SELECTION = 3;
 	[self.rateActiveDaysViewController arrangeAndPushChildVCToFront:self.weeklyActiveDays];
 }
 
-- (void)loadMonthlyRateView {
+-(void)loadMonthlyRateView {
 	self.intervalSetter.labelSingularFormatString = @"Interval: Every month";
 	self.intervalSetter.labelPluralFormatString = @"Interval: Every %ld months";
 	self.intervalSetter.intervalSize = self.activeDays.monthlyIntervalSize;
 	[self.rateActiveDaysViewController arrangeAndPushChildVCToFront:self.monthlyActiveDays];
 }
 
-- (void)loadYearlyRateView {
+-(void)loadYearlyRateView {
 	self.intervalSetter.labelSingularFormatString = @"Interval: Every year";
 	self.intervalSetter.labelPluralFormatString = @"Interval: Every %ld years";
 	self.intervalSetter.intervalSize = self.activeDays.yearlyIntervalSize;

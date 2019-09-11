@@ -54,7 +54,7 @@
 		_introMessageView = [[UITextView alloc] init];
 		_introMessageView.backgroundColor = [UIColor blackColor];
 		_introMessageView.textColor = [UIColor whiteColor];
-		SHStoryItemDictionary *storyDict = [SHStoryItemDictionary newWithResourceUtil:self.central.resourceUtil];
+		SHStoryItemDictionary *storyDict = [[SHStoryItemDictionary alloc] initWithResourceUtil:self.central.resourceUtil];
 		NSString* intro = [storyDict getStoryItem:@"intro"];
 		_introMessageView.text = intro;
 		CGRect frame = _introMessageView.frame;
@@ -72,9 +72,10 @@
 	return _introMessageView;
 }
 
--(instancetype)initWithCentralViewController:(SHCentralViewController *)central{
+-(instancetype)initWithSkipAction:(void (^)(void))skipAction withOnNextAction:(void (^)(void))onNextAction{
 	if(self = [self initWithNibName:@"SHIntroViewController" bundle:nil]){
-		_central = central;
+		_skipAction = skipAction;
+		_onNextAction = onNextAction;
 		_isThreadAllowed = YES;
 		_isStoryDone = NO;
 	}
@@ -145,7 +146,7 @@
 			SHIntroViewController* selfRef = weakSelf;
 			if(nil == selfRef) return;
 			[selfRef.headline setText:[NSString stringWithFormat:@"%@%C",selfRef.headline.text,
-										[title characterAtIndex:i]]];
+				[title characterAtIndex:i]]];
 			}
 		});
 		
@@ -170,10 +171,11 @@ scrollIncrement:(CGFloat)scrollIncrement{
 
 
 - (IBAction)nextButton_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
-	[self.central setToShowStory:YES];
+	//[self.central setToShowStory:YES];
 	self.isThreadAllowed = NO;
 	self.isStoryDone = YES;
-	[self.central afterIntroStarted];
+	//[self.central afterIntroStarted];
+	self.onNextAction();
 }
 
 
@@ -182,8 +184,9 @@ scrollIncrement:(CGFloat)scrollIncrement{
 		self.isStoryDone = YES;
 		self.isThreadAllowed = NO;
 	}
-	[self.central setToShowStory:NO];
-	[self.central afterIntroStarted];
+	self.skipAction();
+//	[self.central setToShowStory:NO];
+//	[self.central afterIntroStarted];
 }
 
 

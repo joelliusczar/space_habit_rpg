@@ -13,6 +13,7 @@
 #import <SHGlobal/SHConstants.h>
 #import <SHCommon/SHCollectionUtils.h>
 #import <SHCommon/NSDictionary+SHHelper.h>
+#import <SHCommon/SHResourceUtility.h>
 
 static float MAX_HP_MODIFIER = .1;
 static SHMonsterInfoDictionary *_monsterInfo;
@@ -21,6 +22,10 @@ static SHMonsterInfoDictionary *_monsterInfo;
 
 
 +(SHMonsterInfoDictionary *)monsterInfo{
+	if(nil == _monsterInfo){
+		id<SHResourceUtilityProtocol> resourceUtil = [SHResourceUtility new];
+		_monsterInfo = [[SHMonsterInfoDictionary alloc] initWithResourceUtil:resourceUtil];
+	}
 	return _monsterInfo;
 }
 

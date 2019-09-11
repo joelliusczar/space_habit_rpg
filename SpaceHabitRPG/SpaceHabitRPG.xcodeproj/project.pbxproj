@@ -13,7 +13,6 @@
 		2747C4992048D50800FB5669 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4972048D50800FB5669 /* AppDelegate.m */; };
 		2747C49B2048D53100FB5669 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2747C49A2048D53100FB5669 /* Assets.xcassets */; };
 		2747C49F2048D54700FB5669 /* SHCentralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C49C2048D54600FB5669 /* SHCentralViewController.m */; };
-		2747C4A02048D54700FB5669 /* SHCentralViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2747C49D2048D54600FB5669 /* SHCentralViewController.xib */; };
 		2747C4AA2048D75300FB5669 /* SHEditNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2747C4A72048D75200FB5669 /* SHEditNavigationController.xib */; };
 		2747C4AB2048D75300FB5669 /* SHEditNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4A82048D75300FB5669 /* SHEditNavigationController.m */; };
 		2747C4B32048D7B100FB5669 /* SHDailyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4AF2048D7B000FB5669 /* SHDailyViewController.m */; };
@@ -34,6 +33,9 @@
 		2747C518204A491E00FB5669 /* SHDailyEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C517204A491E00FB5669 /* SHDailyEditController.m */; };
 		2747C51A204A494A00FB5669 /* SHDailyEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2747C519204A494A00FB5669 /* SHDailyEditView.xib */; };
 		2747C51D204A499000FB5669 /* SHDailyEditController+ControlLoaders.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C51C204A499000FB5669 /* SHDailyEditController+ControlLoaders.m */; };
+		274A8FA723246AD000F348AC /* SHStoryPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A8FA623246AD000F348AC /* SHStoryPresentationController.m */; };
+		274A8FAA23246BA700F348AC /* SHStoryPresentationIntroController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A8FA923246BA700F348AC /* SHStoryPresentationIntroController.m */; };
+		274A8FAD2324732000F348AC /* SHStoryPresentationTypicalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A8FAC2324732000F348AC /* SHStoryPresentationTypicalController.m */; };
 		2787044F227A823B009C9DD6 /* libSHCore_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2787044E227A823B009C9DD6 /* libSHCore_C.a */; };
 		27A9C8AB22C455F900834D02 /* SHApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A9C8AA22C455F900834D02 /* SHApplication.m */; };
 		27B15AA920524CB60045B226 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AA820524CB60045B226 /* SHCommon.framework */; };
@@ -45,6 +47,7 @@
 		27E5169B21FE40B000832DFE /* SHCentralMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E5169A21FE40B000832DFE /* SHCentralMenu.xib */; };
 		27ED11B2229B431C00E8EB32 /* SHDailyEditFull.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27ED11B1229B431C00E8EB32 /* SHDailyEditFull.xib */; };
 		27ED11B4229B442B00E8EB32 /* SHEditScreenFull.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27ED11B3229B442B00E8EB32 /* SHEditScreenFull.xib */; };
+		27FF0249231AC01E00108320 /* SHCentralViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27FF0248231AC01E00108320 /* SHCentralViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,7 +59,6 @@
 		2747C4982048D50800FB5669 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2747C49A2048D53100FB5669 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2747C49C2048D54600FB5669 /* SHCentralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCentralViewController.m; sourceTree = "<group>"; };
-		2747C49D2048D54600FB5669 /* SHCentralViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHCentralViewController.xib; sourceTree = "<group>"; };
 		2747C49E2048D54600FB5669 /* SHCentralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCentralViewController.h; sourceTree = "<group>"; };
 		2747C4A72048D75200FB5669 /* SHEditNavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHEditNavigationController.xib; sourceTree = "<group>"; };
 		2747C4A82048D75300FB5669 /* SHEditNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEditNavigationController.m; sourceTree = "<group>"; };
@@ -92,6 +94,12 @@
 		2747C519204A494A00FB5669 /* SHDailyEditView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHDailyEditView.xib; sourceTree = "<group>"; };
 		2747C51B204A498F00FB5669 /* SHDailyEditController+ControlLoaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SHDailyEditController+ControlLoaders.h"; sourceTree = "<group>"; };
 		2747C51C204A499000FB5669 /* SHDailyEditController+ControlLoaders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SHDailyEditController+ControlLoaders.m"; sourceTree = "<group>"; };
+		274A8FA523246AD000F348AC /* SHStoryPresentationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHStoryPresentationController.h; sourceTree = "<group>"; };
+		274A8FA623246AD000F348AC /* SHStoryPresentationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHStoryPresentationController.m; sourceTree = "<group>"; };
+		274A8FA823246BA700F348AC /* SHStoryPresentationIntroController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHStoryPresentationIntroController.h; sourceTree = "<group>"; };
+		274A8FA923246BA700F348AC /* SHStoryPresentationIntroController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHStoryPresentationIntroController.m; sourceTree = "<group>"; };
+		274A8FAB2324732000F348AC /* SHStoryPresentationTypicalController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHStoryPresentationTypicalController.h; sourceTree = "<group>"; };
+		274A8FAC2324732000F348AC /* SHStoryPresentationTypicalController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHStoryPresentationTypicalController.m; sourceTree = "<group>"; };
 		276951A420437DF5002D1C9A /* SpaceHabitRPG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceHabitRPG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2787044E227A823B009C9DD6 /* libSHCore_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHCore_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		279848D42250FEB700039A29 /* SpaceHabitRPG.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SpaceHabitRPG.base.xcconfig; sourceTree = "<group>"; };
@@ -106,6 +114,7 @@
 		27E5169A21FE40B000832DFE /* SHCentralMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHCentralMenu.xib; sourceTree = "<group>"; };
 		27ED11B1229B431C00E8EB32 /* SHDailyEditFull.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHDailyEditFull.xib; sourceTree = "<group>"; };
 		27ED11B3229B442B00E8EB32 /* SHEditScreenFull.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHEditScreenFull.xib; sourceTree = "<group>"; };
+		27FF0248231AC01E00108320 /* SHCentralViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHCentralViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +147,6 @@
 		2733D215229403010090B7F1 /* xibs */ = {
 			isa = PBXGroup;
 			children = (
-				2747C49D2048D54600FB5669 /* SHCentralViewController.xib */,
 				2747C4A72048D75200FB5669 /* SHEditNavigationController.xib */,
 				2747C4C02048D83C00FB5669 /* SHIntroViewController.xib */,
 				2747C514204A47BE00FB5669 /* SHSectorChoicePicker.xib */,
@@ -148,6 +156,7 @@
 				2747C4E92048E1EE00FB5669 /* SHSectorChoiceCellController.xib */,
 				27E5169A21FE40B000832DFE /* SHCentralMenu.xib */,
 				27ED11B3229B442B00E8EB32 /* SHEditScreenFull.xib */,
+				27FF0248231AC01E00108320 /* SHCentralViewController.xib */,
 			);
 			path = xibs;
 			sourceTree = "<group>";
@@ -232,6 +241,12 @@
 				2737D10B230F6DE200B8618C /* SHBattleStatsViewController.h */,
 				2737D10C230F6DE200B8618C /* SHBattleStatsViewController.m */,
 				2737D10D230F6DE200B8618C /* SHBattleStatsViewController.xib */,
+				274A8FA523246AD000F348AC /* SHStoryPresentationController.h */,
+				274A8FA623246AD000F348AC /* SHStoryPresentationController.m */,
+				274A8FA823246BA700F348AC /* SHStoryPresentationIntroController.h */,
+				274A8FA923246BA700F348AC /* SHStoryPresentationIntroController.m */,
+				274A8FAB2324732000F348AC /* SHStoryPresentationTypicalController.h */,
+				274A8FAC2324732000F348AC /* SHStoryPresentationTypicalController.m */,
 			);
 			path = SpaceHabitRPG;
 			sourceTree = "<group>";
@@ -307,7 +322,6 @@
 				27ED11B4229B442B00E8EB32 /* SHEditScreenFull.xib in Resources */,
 				27ED11B2229B431C00E8EB32 /* SHDailyEditFull.xib in Resources */,
 				2747C4EB2048E1EE00FB5669 /* SHSectorChoiceCellController.xib in Resources */,
-				2747C4A02048D54700FB5669 /* SHCentralViewController.xib in Resources */,
 				2737D10F230F6DE200B8618C /* SHBattleStatsViewController.xib in Resources */,
 				2747C515204A47BF00FB5669 /* SHSectorChoicePicker.xib in Resources */,
 				2747C4E12048E12C00FB5669 /* SHSectorDescriptionViewController.xib in Resources */,
@@ -319,6 +333,7 @@
 				27E5169B21FE40B000832DFE /* SHCentralMenu.xib in Resources */,
 				273F55D8230E030F001F82F9 /* SHHabitViewController.xib in Resources */,
 				2747C49B2048D53100FB5669 /* Assets.xcassets in Resources */,
+				27FF0249231AC01E00108320 /* SHCentralViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,15 +368,18 @@
 				2747C518204A491E00FB5669 /* SHDailyEditController.m in Sources */,
 				2747C4F62048E5DB00FB5669 /* SHDailyCellController.m in Sources */,
 				2747C4C42048D83C00FB5669 /* SHIntroViewController.m in Sources */,
+				274A8FAD2324732000F348AC /* SHStoryPresentationTypicalController.m in Sources */,
 				2747C4992048D50800FB5669 /* AppDelegate.m in Sources */,
 				2747C4B32048D7B100FB5669 /* SHDailyViewController.m in Sources */,
 				2737D10E230F6DE200B8618C /* SHBattleStatsViewController.m in Sources */,
 				27A9C8AB22C455F900834D02 /* SHApplication.m in Sources */,
 				2747C4E02048E12C00FB5669 /* SHSectorDescriptionViewController.m in Sources */,
+				274A8FAA23246BA700F348AC /* SHStoryPresentationIntroController.m in Sources */,
 				2747C51D204A499000FB5669 /* SHDailyEditController+ControlLoaders.m in Sources */,
 				2747C4AB2048D75300FB5669 /* SHEditNavigationController.m in Sources */,
 				2747C4EA2048E1EE00FB5669 /* SHSectorChoiceCellController.m in Sources */,
 				2747C50320490E3400FB5669 /* main.m in Sources */,
+				274A8FA723246AD000F348AC /* SHStoryPresentationController.m in Sources */,
 				2747C4CC2048D8CF00FB5669 /* SHMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

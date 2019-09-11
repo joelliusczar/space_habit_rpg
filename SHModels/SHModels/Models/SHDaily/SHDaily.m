@@ -163,7 +163,7 @@
 		dayStartHour = config.dayStartHour;
 	}];
 	NSDate *today = [NSDate.date.dayStart timeAfterHours:dayStartHour minutes:0 seconds:0];
-	return nil == self.lastActivationDateTime || self.lastActivationDateTime.timeIntervalSince1970 < today.timeIntervalSince1970;
+	return nil == self.lastActivationDateTime || self.lastActivationDateTime.timeIntervalSince1970 >= today.timeIntervalSince1970;
 }
 
 @end

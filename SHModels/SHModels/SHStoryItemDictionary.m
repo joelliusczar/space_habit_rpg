@@ -21,11 +21,13 @@
 }
 
 
-+(instancetype)newWithResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil{
-	SHStoryItemDictionary *instance = [SHStoryItemDictionary new];
-	instance.resourceUtil = resourceUtil;
-	return instance;
+-(instancetype)initWithResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil{
+	if(self = [super init]){
+		_resourceUtil = resourceUtil;
+	}
+	return self;
 }
+
 
 -(NSString*)getStoryItem:(NSString*)key{
 	if(key&&self.infoDict.treeDict[key]){

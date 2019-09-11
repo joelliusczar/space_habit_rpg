@@ -20,10 +20,9 @@
 @interface SHCentralViewController : UIViewController;
 @property (weak,nonatomic) IBOutlet UIView *tabsContainer;
 @property (strong,nonatomic) id<P_CoreData> dataController;
-@property (strong,nonatomic) SHSectorDTO *sectorDTO;
 @property (strong,nonatomic) SHConfigDTO *configDTO;
 @property (strong,nonatomic) SHHeroDTO *heroDTO;
-@property (strong,nonatomic) SHMonsterDictionaryEntry *monsterDTO;
+@property (strong,nonatomic) SHMonsterDictionaryEntry *monsterEntry;
 @property (strong,nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
 @property (strong,nonatomic) SHEditNavigationController *editController;
 @property (strong,nonatomic) SHBattleStatsViewController *battleStats;

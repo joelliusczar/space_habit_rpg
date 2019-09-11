@@ -36,14 +36,15 @@
 
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+	[super viewDidLoad];
+	// Do any additional setup after loading the view from its nib.
 }
+
 
 -(void)firstRun{
 	NSAssert(self.context,@"You better have that context wired up!");
-	SHMonster_Medium *mm = [[SHMonster_Medium alloc] init];
 	[self.context performBlock:^{
+		SHMonster_Medium *mm = [[SHMonster_Medium alloc] initWithContext:self.context];
 		SHHero_Medium *hm = [[SHHero_Medium alloc] initWithContext:self.context];
 		SHHero * hero = [hm hero];
 		int32_t currentHP = hero.nowHp;
@@ -54,13 +55,16 @@
 		SHMonster *monster = [mm currentMonster];
 		int32_t currentMonsterHP = monster.nowHp;
 		int32_t maxMonsterHP = monster.maxHp;
-		double gold = hero.gold;
+		int32_t monsterLvl = monster.lvl;
+		NSString *monsterKey = monster.monsterKey;
+		int32_t gold = hero.gold;
 		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
 			[self updateHeroHP:currentHP whole:maxHp];
-			self.goldLbl.text = [NSString stringWithFormat:@"$%.2f",gold];
+			self.goldLbl.text = [NSString stringWithFormat:@"$%d",gold];
 			[self updateHeroXP:currentXp whole:maxXp];
 			self.lvlLbl.text = [NSString stringWithFormat:@"Lv:%d",level];
-			[self updateMonsterHP:currentMonsterHP whole:maxMonsterHP];
+			[self updateMonsterHP:currentMonsterHP withWhole:maxMonsterHP
+				withLvl:monsterLvl withMonsterKey:monsterKey];
 		}];
 	}];
 }
@@ -81,22 +85,15 @@
 
 
 #warning rewrite this
--(void)updateMonsterHP:(int)part whole:(int)whole{
+-(void)updateMonsterHP:(int32_t)part withWhole:(int32_t)whole withLvl:(int32_t)lvl
+	withMonsterKey:(NSString *)monsterKey
+{
 	NSAssert(SHMonster.monsterInfo,@"We need that monster info set");
-	NSAssert(self.context,@"We need that self context set");
-	[self.context performBlock:^{
-		SHMonster_Medium *mm = [[SHMonster_Medium alloc] initWithContext:self.context];
-		SHMonster *monster = [mm currentMonster];
-		SHMonsterDictionaryEntry *entry = [SHMonster.monsterInfo getMonsterEntry:monster.monsterKey];
-		int32_t lvl = monster.lvl;
-		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-			self.monsterDescLbl.text = [NSString stringWithFormat:@"%@ Lvl:%d HP:%d/%d",
-				entry.fullName, lvl, part, whole];
-				CGFloat hpPercent = ((CGFloat)part) / whole;
-				self.monsterHPBar.percent = hpPercent;
-		}];
-	}];
-	
+	SHMonsterDictionaryEntry *entry = [SHMonster.monsterInfo getMonsterEntry:monsterKey];
+	self.monsterDescLbl.text = [NSString stringWithFormat:@"%@ Lvl:%d HP:%d/%d",
+		entry.fullName, lvl, part, whole];
+	CGFloat hpPercent = ((CGFloat)part) / whole;
+	self.monsterHPBar.percent = hpPercent;
 }
 
 /*

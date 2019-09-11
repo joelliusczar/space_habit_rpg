@@ -11,10 +11,12 @@
 #import <SHModels/SHSectorDTO.h>
 #import "SHSectorChoiceViewController.h"
 #import "SHStoryDumpView.h"
+#import <SHData/SHData.h>
 
 @class SHSectorChoiceViewController;
 
 @interface SHSectorDescriptionViewController : SHStoryDumpView
 -(instancetype)init:(SHSectorChoiceViewController *)prevScreen;
 -(void)setDisplayItems:(SHSectorDTO *)model;
+@property (copy,nonatomic) void (^onSectorSelectionAction)(NSString*);
 @end

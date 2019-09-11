@@ -12,6 +12,6 @@
 @interface SHStoryItemDictionary : NSObject
 @property (readonly,nonatomic,strong) SHInfoDictionary* infoDict;
 @property (strong,nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
-+(instancetype)newWithResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil;
+-(instancetype)initWithResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil;
 -(NSString*)getStoryItem:(NSString*)key;
 @end
