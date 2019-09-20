@@ -17,10 +17,9 @@
 	context:(void *)context;
 
 -(BOOL)isDictionaryType;
--(id)dtoCopy;
--(void)dtoCopyFrom:(NSObject*)fromObject;
+-(id)narrowCopy;
+-(void)narrowCopyFrom:(NSObject*)fromObject;
 
--(BOOL)shouldIgnoreProperty:(NSString *)propName;
 
 #if IS_IOS
 -(UIView *)loadXib:(NSString *)nibName;

@@ -22,7 +22,7 @@
 
 -(id)copyWithZone:(NSZone *)zone{
 	(void)zone;
-	return [self dtoCopy];
+	return [self narrowCopy];
 }
 
 
@@ -282,7 +282,7 @@ int checkImportanceRange(int importance){
 }
 
 
-static void setActivenessArray(NSArray<SHRangeRateItem*> *week,BOOL *activenessArray){
+static void setActivenessArray(NSArray<SHRangeRateItem*> *week,bool *activenessArray){
 	for(int i = 0;i < SH_DAYS_IN_WEEK;i++){
 				if(week){ //default to all days active
 						activenessArray[i] = week[i].isDayActive;
@@ -315,7 +315,7 @@ static void convertObjCRateItemToC(NSArray<SHRangeRateItem*>* rateItems, SHRateV
 	self.isTouched = YES;
 	BOOL isInverse = shIsInverseRateType(self.rateType);
 	NSArray<SHRangeRateItem*> *weekInfo = isInverse ? self.weeklyActiveDaysInv : self.weeklyActiveDays;
-	BOOL activeDays[SH_DAYS_IN_WEEK];
+	bool activeDays[SH_DAYS_IN_WEEK];
 	setActivenessArray(weekInfo,activeDays);
 	activeDays[dayIdx] = !activeDays[dayIdx];
 	SHRateValueItem rvi[SH_DAYS_IN_WEEK];

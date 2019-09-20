@@ -23,6 +23,8 @@
 		27300A05224AE713006E419C /* SHDaily_Medium.m in Sources */ = {isa = PBXBuildFile; fileRef = 27300A03224AE713006E419C /* SHDaily_Medium.m */; };
 		2733D212229065830090B7F1 /* SHDailyValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2733D210229065830090B7F1 /* SHDailyValidation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2733D213229065830090B7F1 /* SHDailyValidation.c in Sources */ = {isa = PBXBuildFile; fileRef = 2733D211229065830090B7F1 /* SHDailyValidation.c */; };
+		2738CB1B2330823D00A41CC3 /* SHStoryItemObjectID.h in Headers */ = {isa = PBXBuildFile; fileRef = 2738CB192330823D00A41CC3 /* SHStoryItemObjectID.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2738CB1C2330823D00A41CC3 /* SHStoryItemObjectID.m in Sources */ = {isa = PBXBuildFile; fileRef = 2738CB1A2330823D00A41CC3 /* SHStoryItemObjectID.m */; };
 		27397348226C09AD001590C6 /* libSHCore_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27397347226C09AD001590C6 /* libSHCore_C.a */; };
 		2740A877226CE91B00ACD777 /* SHModels.postbuild.sh in Resources */ = {isa = PBXBuildFile; fileRef = 2740A876226CE91B00ACD777 /* SHModels.postbuild.sh */; };
 		2740A88D226EB49800ACD777 /* SHTransaction_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 2740A88B226EB49800ACD777 /* SHTransaction_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -141,6 +143,8 @@
 		27300A03224AE713006E419C /* SHDaily_Medium.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDaily_Medium.m; sourceTree = "<group>"; };
 		2733D210229065830090B7F1 /* SHDailyValidation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDailyValidation.h; sourceTree = "<group>"; };
 		2733D211229065830090B7F1 /* SHDailyValidation.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHDailyValidation.c; sourceTree = "<group>"; };
+		2738CB192330823D00A41CC3 /* SHStoryItemObjectID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHStoryItemObjectID.h; sourceTree = "<group>"; };
+		2738CB1A2330823D00A41CC3 /* SHStoryItemObjectID.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHStoryItemObjectID.m; sourceTree = "<group>"; };
 		27397347226C09AD001590C6 /* libSHCore_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHCore_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2740A873226CE3CB00ACD777 /* SHModels.prebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = SHModels.prebuild.sh; sourceTree = "<group>"; };
 		2740A876226CE91B00ACD777 /* SHModels.postbuild.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = SHModels.postbuild.sh; sourceTree = "<group>"; };
@@ -347,6 +351,8 @@
 				27B2B31B22FFA5F300663644 /* SHTitleProtocol.h */,
 				27FF0240231A345900108320 /* SHBase_Medium.h */,
 				27FF0241231A345900108320 /* SHBase_Medium.m */,
+				2738CB192330823D00A41CC3 /* SHStoryItemObjectID.h */,
+				2738CB1A2330823D00A41CC3 /* SHStoryItemObjectID.m */,
 			);
 			path = SHModels;
 			sourceTree = "<group>";
@@ -588,6 +594,7 @@
 				2719D50C2319C61700765F54 /* SHMonster_Medium.h in Headers */,
 				27FF023E231A2F1C00108320 /* SHHero_Medium.h in Headers */,
 				27FF023A231A23BB00108320 /* SHSector_Medium.h in Headers */,
+				2738CB1B2330823D00A41CC3 /* SHStoryItemObjectID.h in Headers */,
 				27FF0242231A345900108320 /* SHBase_Medium.h in Headers */,
 				27FF0246231A360200108320 /* SHConfig_Medium.h in Headers */,
 				2733D212229065830090B7F1 /* SHDailyValidation.h in Headers */,
@@ -743,6 +750,7 @@
 				2769C0B4227FD7C900217480 /* SHListRateItem.m in Sources */,
 				2769C118228E305500217480 /* SHDailyActiveDays.m in Sources */,
 				2789889722F77B64007231E0 /* SHDailyMaxDaysBeforeSpanCalculator.m in Sources */,
+				2738CB1C2330823D00A41CC3 /* SHStoryItemObjectID.m in Sources */,
 				27CA869B2264207A00AE8FDB /* SHCategory.m in Sources */,
 				2747C3D02043BACB00FB5669 /* SHSectorInfoDictionary.m in Sources */,
 				2740A895226FE38D00ACD777 /* SHTransaction.m in Sources */,

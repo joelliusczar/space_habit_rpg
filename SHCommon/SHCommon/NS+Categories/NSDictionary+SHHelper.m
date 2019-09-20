@@ -12,7 +12,7 @@
 #import "NSObject+Helper.h"
 #import <objc/runtime.h>
 
-
+typedef BOOL(*takesStringReturnsBool)(id,SEL,NSString*);
 
 @implementation NSDictionary (SHHelper)
 
@@ -90,8 +90,12 @@ static NSMutableDictionary* objectToDict(NSObject *object,
 	for(uint32_t i = 0; i < outCount; i++){
 		const char *propName = property_getName(props[i]);
 		NSString *nsPropName = [NSString stringWithUTF8String:propName];
-		if([object respondsToSelector:@selector(shouldIgnoreProperty:)]){
-			if([object shouldIgnoreProperty: nsPropName]){
+		SEL shouldIgnorePropertySel = NSSelectorFromString(@"shouldIgnoreProperty:");
+		if([object respondsToSelector:shouldIgnorePropertySel]){
+			Method shouldIgnorePropertyMethod = class_getInstanceMethod(object.class, shouldIgnorePropertySel);
+			takesStringReturnsBool shouldIgnorePropertyImp =
+				(takesStringReturnsBool)method_getImplementation(shouldIgnorePropertyMethod);
+			if(shouldIgnorePropertyImp(object,shouldIgnorePropertySel,nsPropName)) {
 				continue;
 			}
 		}

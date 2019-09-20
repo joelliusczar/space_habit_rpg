@@ -16,7 +16,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHMonsterDictionaryEntry : SHObject<SHStoryItemProtocol,NSCopying>
+@interface SHMonsterDictionaryEntry : SHObject<NSCopying>
 -(instancetype)initWith:(NSString*)monsterKey withMonsterDict:(SHMonsterInfoDictionary*)monInfoDict;
 @property (strong,nonatomic) SHMonsterInfoDictionary *monInfoDict;
 @property (nonatomic,readonly) int32_t baseAttack;

@@ -14,8 +14,8 @@
 
 @interface SHSectorChoiceCellController()
 @property (nonatomic,weak) SHSectorChoiceViewController *parentSectorController;
-@property (nonatomic,weak) SHObjectIDWrapper *objectID;
-@property (nonatomic,weak) NSIndexPath *rowInfo;
+@property (nonatomic,strong) SHStoryItemObjectID *objectID;
+@property (nonatomic,strong) NSIndexPath *rowInfo;
 @property (nonatomic,strong) UISwipeGestureRecognizer *swiper;
 @end
 
@@ -32,7 +32,7 @@
 
 
 +(instancetype)getSectorChoiceCell:(UITableView *)tableView withParent:(SHSectorChoiceViewController *)parent
-	withObjectID:(SHObjectIDWrapper *)objectID
+	withObjectID:(SHStoryItemObjectID *)objectID
 	withRow:(NSIndexPath *)rowInfo
 {
 	SHSectorChoiceCellController *cell = [tableView
@@ -40,11 +40,12 @@
 	if(nil==cell){
 		cell = [[SHSectorChoiceCellController alloc] init];
 	}
-	[cell setupCell:objectID AndParent:parent AndRow:rowInfo];
+	[cell setupCellWithObjectID:objectID withParent:parent withRow:rowInfo];
 	return cell;
 }
 
--(void)setupCellWithObjectID:(SHObjectIDWrapper *)objectID withParent:(SHSectorChoiceViewController *)parent
+
+-(void)setupCellWithObjectID:(SHStoryItemObjectID *)objectID withParent:(SHSectorChoiceViewController *)parent
 	withRow:(NSIndexPath *)rowInfo
 {
 	self.parentSectorController = parent;
@@ -53,7 +54,6 @@
 		NSError *err = nil;
 		SHSector *sector = (SHSector *)[objectID.context getEntityOrNil:objectID withError:&err];
 		if(err){
-		
 			return;
 		}
 		NSString *sectorName = sector.fullName;
@@ -75,7 +75,7 @@
 -(void)handleSwipe:(UISwipeGestureRecognizer *)swipe{
 	if(swipe.direction == UISwipeGestureRecognizerDirectionLeft){
 		SHSectorDescriptionViewController *descView = self.parentSectorController.descViewController;
-		[descView setDisplayItems:self.model];
+		descView.storyItemObjectID = self.objectID;
 		[self.parentSectorController arrangeAndPushChildVCToFront:descView];
 	}
 	else{

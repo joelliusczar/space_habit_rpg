@@ -17,7 +17,7 @@
 #import <SHData/SHData.h>
 
 @interface SHSectorChoiceViewController ()
-@property (nonatomic,strong) NSArray<SHObjectIDWrapper *> *objectIDs;
+@property (nonatomic,strong) NSArray<SHStoryItemObjectID *> *objectIDs;
 
 @end
 
@@ -26,16 +26,19 @@
 
 -(SHSectorDescriptionViewController *)descViewController{
 	if(!_descViewController){
-		_descViewController = [[SHSectorDescriptionViewController alloc] init:self];
+		_descViewController = [[SHSectorDescriptionViewController alloc] initWithSectorChoiceViewController:self
+			withOnSelectionAction:self.onSelectionAction];
 	}
 	return _descViewController;
 }
 
 
--(instancetype)initWithSkipAction:(void (^)(void))skipAction withOnSelectionAction:(void (^)(void))onSelectionAction{
+-(instancetype)initWithSectorIDs:(NSArray<SHStoryItemObjectID*>*)objectIDs
+	withOnSelectionAction:(void (^)(SHStoryItemObjectID*))onSelectionAction
+{
 	if(self = [super init]){
-		_skipAction = skipAction;
 		_onSelectionAction = onSelectionAction;
+		_objectIDs = objectIDs;
 	}
 	return self;
 }
@@ -66,15 +69,8 @@
 }
 
 
--(IBAction)skipBtn_pressed_action:(UIButton *)sender{
-	(void)sender;
-	self.skipAction(); //[self.central setToShowStory:NO]; //[self.central afterSectorPick:nil];
-	[self popVCFromFront];
-}
-
-
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-	SHObjectIDWrapper *objectID = self.objectIDs[indexPath.row];
+	SHStoryItemObjectID *objectID = self.objectIDs[indexPath.row];
 	SHSectorChoiceCellController *cell = [SHSectorChoiceCellController getSectorChoiceCell:tableView
 		withParent:self withObjectID:objectID withRow:indexPath];
 	return cell;

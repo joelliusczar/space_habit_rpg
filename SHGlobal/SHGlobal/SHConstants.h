@@ -54,12 +54,17 @@ typedef NS_ENUM(NSInteger,SHHourFormatType){
 	SH_ONE_BASED_24_HOUR = 1<<3,
 };
 
-typedef NS_ENUM(NSInteger,SHGameState) {
+typedef NS_ENUM(int32_t,SHGameState) {
 		SH_GAME_STATE_UNINITIALIZED = 0,
 		SH_GAME_STATE_INITIALIZED = 1
 };
 
 
+typedef NS_ENUM(int32_t,SHStoryMode){
+	SH_STORY_MODE_FULL = 1,
+	SH_STORY_MODE_NO_MONSTERS = 2,
+	SH_STORY_MODE_NO_BATTLE = 4
+};
 
 
 extern NSString* const SH_DAILY_ENTITY_NAME;

@@ -10,10 +10,11 @@
 #import <CoreData/CoreData.h>
 #import "SHSectorInfoDictionary.h"
 #import "SHStoryItemProtocol.h"
+#import <SHCommon/SHMappableProtocol.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHSector : NSManagedObject<SHStoryItemProtocol>
+@interface SHSector : NSManagedObject<SHStoryItemProtocol,SHMappableProtocol>
 @property (class,strong,nonatomic) SHSectorInfoDictionary* sectorInfo;
 -(void)copyFrom:(NSObject *)object;
 

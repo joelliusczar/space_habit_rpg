@@ -15,7 +15,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHSectorDTO : SHObject<SHStoryItemProtocol,NSCopying>
+@interface SHSectorDTO : SHObject<NSCopying>
 +(instancetype)newWithSectorDict:(SHSectorInfoDictionary*)sectorInfoDict;
 @property (readonly,nonatomic) NSMutableDictionary *mapable;
 @property (copy,nonatomic) NSManagedObjectID *objectID;

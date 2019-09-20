@@ -10,8 +10,8 @@
 #import <SHModels/SHSector.h>
 #import <SHModels/SHSectorDTO.h>
 #import "SHSectorChoiceViewController.h"
-#import "SHSectorSelectionDelegate.h"
 #import <SHData/SHData.h>
+#import <SHModels/SHStoryItemObjectID.h>
 
 
 
@@ -21,9 +21,9 @@
 @property (weak,nonatomic) IBOutlet UILabel *lvlLbl;
 @property (copy,nonatomic) void (^onSectorSelectionAction)(NSString*);
 +(instancetype)getSectorChoiceCell:(UITableView *)tableView withParent:(SHSectorChoiceViewController *)parent
-	withObjectID:(SHObjectIDWrapper *)objectID
+	withObjectID:(SHStoryItemObjectID *)objectID
 	withRow:(NSIndexPath *)rowInfo;
 
--(void)setupCellWithObjectID:(SHObjectIDWrapper *)objectID withParent:(SHSectorChoiceViewController *)parent
+-(void)setupCellWithObjectID:(SHStoryItemObjectID *)objectID withParent:(SHSectorChoiceViewController *)parent
 	withRow:(NSIndexPath *)rowInfo;
 @end

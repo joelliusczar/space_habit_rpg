@@ -14,8 +14,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHStoryPresentationController : NSObject
 @property (strong,nonatomic) NSManagedObjectContext *context;
+@property (strong,nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
+@property (strong,nonatomic) dispatch_queue_t sectorMonsterQueue;
+@property (weak,nonatomic) UIViewController *central;
+@property (copy,nonatomic) void (^onComplete)(void);
 -(void)loadOrSetupHero:(void (^)(void))nextBlock;
 -(void)afterSectorPick:(SHSector*)sectorChoice;
+-(void)showMonsterStory:(SHMonster*)monster;
 @end
 
 NS_ASSUME_NONNULL_END

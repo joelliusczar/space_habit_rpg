@@ -14,7 +14,7 @@
 
 -(id)copyWithZone:(NSZone *)zone{
 	(void)zone;
-	return [self dtoCopy];
+	return [self narrowCopy];
 }
 
 

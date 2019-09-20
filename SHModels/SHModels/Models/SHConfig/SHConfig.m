@@ -26,7 +26,7 @@
 	self.permaDeath = NO;
 	self.isPasscodeProtected = NO;
 	self.reminderHour = 17; //5 o'clock?
-	self.storyModeisOn = YES;
+	self.storyMode = SH_STORY_MODE_FULL;
 	self.sectorLvlPenalty = 1; //0 - no penalty? 1: restart lvl?
 	self.allowReport = NO;
 	self.userId = nil;

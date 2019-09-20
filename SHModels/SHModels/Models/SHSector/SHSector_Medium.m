@@ -124,7 +124,7 @@ withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount{
 	
 	NSAssert(sectorKey,@"Key can't be null");
 	NSAssert(lvl > 0, @"Lvl must be greater than 0");
-	SHSector *z = [self.context newEntity:SHSector.entity];
+	SHSector *z = (SHSector*)[self.context newEntity:SHSector.entity];
 	z.sectorKey = sectorKey;
 	z.suffix = [self getSymbolSuffix:[self getVisitCountForSector:sectorKey]];
 	z.maxMonsters = monsterCount;
@@ -140,7 +140,7 @@ withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount{
 }
 
 
--(SHSector*)newRandomSectorChoiceGivenHero:(SHHeroDTO*)hero ifShouldMatchLvl:(BOOL)shouldMatchLvl{
+-(SHSector*)newRandomSectorChoiceGivenHero:(SHHero*)hero ifShouldMatchLvl:(BOOL)shouldMatchLvl{
 	NSString *sectorKey = [self getRandomSectorDefinitionKey:hero.lvl];
 	int32_t sectorLvl = shouldMatchLvl?hero.lvl:shCalculateLvl(hero.lvl,SH_SECTOR_LVL_RANGE);
 	SHSector *z = [self newSpecificSector2:sectorKey withLvl:sectorLvl];
@@ -148,7 +148,7 @@ withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount{
 }
 
 
--(NSMutableArray<SHSector*>*)newMultipleSectorChoicesGivenHero:(SHHeroDTO*)hero ifShouldMatchLvl:(BOOL)matchLvl{
+-(NSArray<SHSector*>*)newMultipleSectorChoicesGivenHero:(SHHero*)hero ifShouldMatchLvl:(BOOL)matchLvl{
 	//Sector create uses nil context so that should be okay
 	
 	uint sectorCount = shRandomUInt(SH_MAX_ZONE_CHOICE_RAND_UP_BOUND)	+ SH_MIN_ZONE_CHOICE_COUNT;
@@ -185,7 +185,7 @@ withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount{
 		@throw [NSException exceptionWithName:@"CorruptionException"
 			reason:@"There are too many sectors" userInfo:nil];
 	}
-	return results.count>0?(SHSector *)results[0]:nil;
+	return results.count > 0 ? (SHSector *)results[0] : nil;
 }
 
 

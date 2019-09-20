@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SHStoryPresentationIntroController : NSObject
 @property (strong,nonatomic) NSManagedObjectContext *context;
 @property (weak,nonatomic) UIViewController *central;
+@property (strong,nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
 @property (strong,nonatomic) SHStoryPresentationController *storyCommon;
 /*
 	#sectorMonsterQueue
@@ -25,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 */
 @property (strong,nonatomic) dispatch_queue_t sectorMonsterQueue;
 @property (copy,nonatomic) void (^onIntroComplete)(void);
+-(void)startIntro;
 @end
 
 NS_ASSUME_NONNULL_END

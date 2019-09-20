@@ -56,15 +56,15 @@
 		int32_t currentMonsterHP = monster.nowHp;
 		int32_t maxMonsterHP = monster.maxHp;
 		int32_t monsterLvl = monster.lvl;
-		NSString *monsterKey = monster.monsterKey;
 		int32_t gold = hero.gold;
+		NSString *monsterName = monster.fullName;
 		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
 			[self updateHeroHP:currentHP whole:maxHp];
 			self.goldLbl.text = [NSString stringWithFormat:@"$%d",gold];
 			[self updateHeroXP:currentXp whole:maxXp];
 			self.lvlLbl.text = [NSString stringWithFormat:@"Lv:%d",level];
 			[self updateMonsterHP:currentMonsterHP withWhole:maxMonsterHP
-				withLvl:monsterLvl withMonsterKey:monsterKey];
+				withLvl:monsterLvl withMonsterKey:monsterName];
 		}];
 	}];
 }
@@ -86,12 +86,10 @@
 
 #warning rewrite this
 -(void)updateMonsterHP:(int32_t)part withWhole:(int32_t)whole withLvl:(int32_t)lvl
-	withMonsterKey:(NSString *)monsterKey
+	withMonsterName:(NSString *)monsterName
 {
-	NSAssert(SHMonster.monsterInfo,@"We need that monster info set");
-	SHMonsterDictionaryEntry *entry = [SHMonster.monsterInfo getMonsterEntry:monsterKey];
 	self.monsterDescLbl.text = [NSString stringWithFormat:@"%@ Lvl:%d HP:%d/%d",
-		entry.fullName, lvl, part, whole];
+		monsterName, lvl, part, whole];
 	CGFloat hpPercent = ((CGFloat)part) / whole;
 	self.monsterHPBar.percent = hpPercent;
 }

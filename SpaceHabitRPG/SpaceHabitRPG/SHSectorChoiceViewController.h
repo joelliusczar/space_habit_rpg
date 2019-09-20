@@ -13,14 +13,14 @@
 #import <SHControls/SHSwitch.h>
 #import <SHModels/SHSectorDTO.h>
 #import <SHControls/SHButton.h>
+#import <SHModels/SHStoryItemObjectID.h>
 
 @class SHSectorDescriptionViewController;
 
 @interface SHSectorChoiceViewController : UIViewController <UITableViewDataSource>
 @property (weak,nonatomic) IBOutlet UITableView *sectorChoiceTable;
-@property (weak,atomic) IBOutlet SHButton *skipButton;
 @property (strong,nonatomic) SHSectorDescriptionViewController *descViewController;
-@property (copy,nonatomic) void (^skipAction)(void);
-@property (copy,nonatomic) void (^onSelectionAction)(void);
--(instancetype)initWithSkipAction:(void (^)(void))skipAction withOnSelectionAction:(void (^)(void))onSelectionAction;
+@property (copy,nonatomic) void (^onSelectionAction)(SHStoryItemObjectID*);
+-(instancetype)initWithSectorIDs:(NSArray<SHStoryItemObjectID*>*)objectIDs
+	withOnSelectionAction:(void (^)(SHStoryItemObjectID*))onSelectionAction;
 @end

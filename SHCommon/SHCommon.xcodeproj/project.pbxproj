@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		27118841203FFA810085A549 /* SHCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 2711883F203FFA810085A549 /* SHCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2738CB1E23354AAB00A41CC3 /* SHMappableProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 2738CB1D23354AAB00A41CC3 /* SHMappableProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27397346226C0905001590C6 /* libSHDatetime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27397345226C0905001590C6 /* libSHDatetime.a */; };
 		2747C3C12043B6C000FB5669 /* NSMutableArray+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3BF2043B6C000FB5669 /* NSMutableArray+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2747C3C22043B6C000FB5669 /* NSMutableArray+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3C02043B6C000FB5669 /* NSMutableArray+Helper.m */; };
@@ -74,6 +75,7 @@
 		2711883C203FFA810085A549 /* SHCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2711883F203FFA810085A549 /* SHCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHCommon.h; sourceTree = "<group>"; };
 		27118840203FFA810085A549 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2738CB1D23354AAB00A41CC3 /* SHMappableProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHMappableProtocol.h; sourceTree = "<group>"; };
 		27397345226C0905001590C6 /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2747C3BF2043B6C000FB5669 /* NSMutableArray+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Helper.h"; sourceTree = "<group>"; };
 		2747C3C02043B6C000FB5669 /* NSMutableArray+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Helper.m"; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				2781FF812042053A0035AD82 /* SHInterceptorProtocol.h */,
 				2781FF822042053A0035AD82 /* SHReportServiceCallerProtocol.h */,
 				2781FF832042053A0035AD82 /* SHColorInversionHintProtocol.h */,
+				2738CB1D23354AAB00A41CC3 /* SHMappableProtocol.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				274EFB5A204E3FE000CB3C4C /* UIColor+Helper.h in Headers */,
 				2747C4DB2048DC1300FB5669 /* SHProbWeight.h in Headers */,
 				274A8FA42323345300F348AC /* SHDebugDefines.h in Headers */,
+				2738CB1E23354AAB00A41CC3 /* SHMappableProtocol.h in Headers */,
 				27CA8636226262E200AE8FDB /* SHObject.h in Headers */,
 				27118841203FFA810085A549 /* SHCommon.h in Headers */,
 			);

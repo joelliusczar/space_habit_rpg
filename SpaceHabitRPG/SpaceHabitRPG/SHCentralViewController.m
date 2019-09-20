@@ -26,6 +26,8 @@
 #import "SHSectorChoiceViewController.h"
 #import "SHStoryDumpView.h"
 #import <SHControls/UIViewController+Helper.h>
+#import "SHStoryPresentationIntroController.h"
+#import "SHStoryPresentationTypicalController.h"
 
 
 @import CoreGraphics;
@@ -78,7 +80,8 @@
 		_context = [dataController newBackgroundContext];
 		_resourceUtil = util;
 		_configAccessorQueue = dispatch_queue_create("com.SpaceHabit.Config",DISPATCH_QUEUE_SERIAL);
-		_sectorMonsterQueue = dispatch_queue_create("com.SpaceHabit.Sector_Monster",DISPATCH_QUEUE_SERIAL);
+		#warning move the below line somewhere else
+		//_sectorMonsterQueue = dispatch_queue_create("com.SpaceHabit.Sector_Monster",DISPATCH_QUEUE_SERIAL);
 		
 	}
 	return self;
@@ -156,11 +159,12 @@
 		SHConfig_Medium *cm = [[SHConfig_Medium alloc] initWithContext:self.context];
 		SHConfig *config = [cm globalConfig];
 		if(config.gameState == SH_GAME_STATE_UNINITIALIZED){
-			//[self cleanUpPreviousAttempts];
-			//[self showIntroView];
+			SHStoryPresentationIntroController *introController = [[SHStoryPresentationIntroController alloc] init];
+			[introController startIntro];
 		}
 		else {
-			[self setupNormalSectorAndMonster];
+			SHStoryPresentationTypicalController *present = [[SHStoryPresentationTypicalController alloc] init];
+			[present setupNormalSectorAndMonster];
 		}
 	}];
 }

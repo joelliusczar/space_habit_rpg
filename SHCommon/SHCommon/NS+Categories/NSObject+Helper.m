@@ -33,7 +33,7 @@ typedef void (*voidCaller)(id,SEL);
 }
 
 
--(id)dtoCopy{
+-(id)narrowCopy{
 	id newObject = [[self.class alloc] init];
 	uint32_t outCount = 0;
 	Ivar *varArray = class_copyIvarList(self.class, &outCount);
@@ -47,8 +47,8 @@ typedef void (*voidCaller)(id,SEL);
 	return newObject;
 }
 
-
--(void)dtoCopyFrom:(NSObject*)fromObject{
+//Looks like this only copys from properties for class itself, not super class properties
+-(void)narrowCopyFrom:(NSObject*)fromObject{
 	uint32_t outCount = 0;
 	Ivar *varArray = class_copyIvarList(self.class, &outCount);
 	for(uint32_t i = 0; i < outCount; i++){
@@ -81,13 +81,5 @@ typedef void (*voidCaller)(id,SEL);
 }
 #endif
 
-/*
-	this is not technically being used, but I need it
-	to make respondToSelector work for implementations
-	elsewhere.
-*/
--(BOOL)shouldIgnoreProperty:(NSString *)propName{
-	return NO;
-}
 
 @end

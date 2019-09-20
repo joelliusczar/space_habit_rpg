@@ -49,5 +49,6 @@ FOUNDATION_EXPORT const unsigned char SHCommonVersionString[];
 #import "NSOrderedSet+SHHelper.h"
 #import "SHCollectionUtils.h"
 #import "SHDebugDefines.h"
+#import "SHMappableProtocol.h"
 
 

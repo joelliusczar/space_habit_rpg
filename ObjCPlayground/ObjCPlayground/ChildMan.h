@@ -10,5 +10,6 @@
 
 @interface ChildMan : ParentMan
 @property (assign) NSInteger whamjar;
+@property (assign,nonatomic) NSInteger whoitZoot;
 +(instancetype)newChildMan;
 @end

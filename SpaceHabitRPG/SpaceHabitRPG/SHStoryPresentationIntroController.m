@@ -9,7 +9,7 @@
 #import "SHStoryPresentationIntroController.h"
 #import "SHIntroViewController.h"
 #import <SHModels/SHModels.h>
-
+#import <SHControls/UIViewController+Helper.h>
 
 
 @interface SHStoryPresentationIntroController ()
@@ -18,6 +18,14 @@
 @end
 
 @implementation SHStoryPresentationIntroController
+
+
+-(void)startIntro{
+	[self.context performBlock:^{
+		[self cleanUpPreviousAttempts];
+		[self showIntroView];
+	}];
+}
 
 //#story_logic: intro
 -(void)cleanUpPreviousAttempts{
@@ -70,11 +78,20 @@
 	if it actually exists. I don't want to actively keep it alive, which
 	is what a strong ref would do.
 	*/
+	__weak typeof(self) weakSelf = self;
+	self.storyCommon.onComplete = ^{
+		typeof(weakSelf) bSelf = weakSelf;
+		if(nil == bSelf) return;
+		if(nil != bSelf.introVC){
+			[bSelf.introVC popVCFromFront];
+		}
+		[bSelf afterIntroCompleted];
+	};
 	SHIntroViewController *introVC = [[SHIntroViewController alloc] initWithSkipAction:^{
 		[self.context performBlock:^{
 			SHConfig_Medium *cm = [[SHConfig_Medium alloc] initWithContext:self.context];
 			SHConfig *config = [cm globalConfig];
-			config.storyModeisOn = NO;
+			config.storyMode = SH_STORY_MODE_NO_MONSTERS;
 			NSError *error = nil;
 			[self.context save:&error];
 			if(error) {
@@ -85,7 +102,7 @@
 		[self.context performBlock:^{
 			SHConfig_Medium *cm = [[SHConfig_Medium alloc] initWithContext:self.context];
 			SHConfig *config = [cm globalConfig];
-			config.storyModeisOn = YES;
+			config.storyMode = SH_STORY_MODE_FULL;
 			NSError *error = nil;
 			[self.context save:&error];
 			if(error) {
@@ -120,28 +137,28 @@
 	
 	
 	[self.storyCommon loadOrSetupHero:^{
-		NSObject<SHResourceUtilityProtocol> *resourceUtil = self.resourceUtil;
-		SHSector_Medium *sm = [SHSector_Medium newWithContext:nil
-			withResourceUtil:resourceUtil];
-		SHSector *s = [sm newSpecificSector2:HOME_KEY withLvl:1];
-		[self.storyCommon afterSectorPick:s];
+		//perform block is good here because loadOrSetupHero runs this callback on main thread
+		[self.context performBlock:^{
+			NSObject<SHResourceUtilityProtocol> *resourceUtil = self.resourceUtil;
+			SHSector_Medium *sm = [SHSector_Medium newWithContext:self.context
+				withResourceUtil:resourceUtil];
+			SHSector *s = [sm newSpecificSector2:HOME_KEY withLvl:1];
+			[self.storyCommon afterSectorPick:s];
+		}];
 	}];
 }
 
 
 //#story_logic: intro
--(void)afterIntroCompleted:(NSManagedObjectContext*)context{
+-(void)afterIntroCompleted{
 	[self.context performBlock:^{
 		SHConfig_Medium *cm = [[SHConfig_Medium alloc] initWithContext:self.context];
 		SHConfig *config = [cm globalConfig];
-		if(config.gameState == SH_GAME_STATE_UNINITIALIZED){
+		if(config.gameState == SH_GAME_STATE_UNINITIALIZED) {
 			config.gameState = SH_GAME_STATE_INITIALIZED;
 			NSError *error = nil;
-			[context save:&error];
-			if(nil == error){
-				self.configDTO = dto;
-			}
-			else{
+			[self.context save:&error];
+			if(error){
 				@throw [NSException dbException:error];
 			}
 		}

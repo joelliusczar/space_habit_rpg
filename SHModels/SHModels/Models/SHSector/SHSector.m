@@ -9,6 +9,7 @@
 #import "SHSector.h"
 #import <SHCommon/SHCommonUtils.h>
 #import <SHCommon/SHResourceUtility.h>
+#import <SHCommon/NSDictionary+SHHelper.h>
 
 static SHSectorInfoDictionary *_sectorInfo;
 
@@ -26,6 +27,11 @@ static SHSectorInfoDictionary *_sectorInfo;
 
 +(void)setSectorInfo:(SHSectorInfoDictionary *)sectorInfo{
 	_sectorInfo = sectorInfo;
+}
+
+
+-(NSMutableDictionary*)mapable{
+	return [NSDictionary objectToDictionary:self];
 }
 
 
@@ -70,6 +76,20 @@ static void copyBetween(NSObject* from,NSObject* to){
 
 -(NSString *)headline{
 	return @"";
+}
+
+
+-(SHObjectIDWrapper *)wrappedObjectID{
+	SHObjectIDWrapper *wrappedObjectID = [[SHObjectIDWrapper alloc] initWithEntityType:self.entity
+		withContext:self.managedObjectContext];
+	wrappedObjectID.objectID = self.objectID;
+	return wrappedObjectID;
+}
+
+
+-(BOOL)shouldIgnoreProperty:(NSString *)propName{
+	//if([propName isEqualToString:@"monInfoDict"]) return YES;
+	return NO;
 }
 
 @end

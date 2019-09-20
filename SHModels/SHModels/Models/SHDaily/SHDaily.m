@@ -151,7 +151,7 @@
 }
 
 
--(NSMutableDictionary*)simpleMapable{
+-(NSMutableDictionary*)mapable{
 	return [NSDictionary objectToDictionary:self];
 }
 

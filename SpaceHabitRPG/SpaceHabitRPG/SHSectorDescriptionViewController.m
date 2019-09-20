@@ -31,17 +31,16 @@
 }
 
 
--(instancetype)init:(SHSectorChoiceViewController *)prevScreen{
-	if(self = [self initWithNibName:@"SHStoryDumpView" bundle:nil]){
+-(instancetype)initWithSectorChoiceViewController:(SHSectorChoiceViewController *)prevScreen
+	withOnSelectionAction:(void (^)(SHStoryItemObjectID*))onSectorSelectionAction;
+{
+	if(self = [self initWithDefaultNib]){ 
 		_prevScreen = prevScreen;
-		_central = prevScreen.central;
+		_onSectorSelectionAction = onSectorSelectionAction;
 	}
 	return self;
 }
 
--(void)setDisplayItems:(SHSectorDTO *)model{
-	self.storyItem = model;
-}
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -57,18 +56,20 @@
 	// Dispose of any resources that can be recreated.
 }
 
-#pragma clang diagnostic push 
-#pragma clang diagnostic ignored "-Wunused-parameter"
 
 -(void)backSwipe_rightSwipe_action:(UISwipeGestureRecognizer *)sender{
+	(void)sender;
 	[self popVCFromFront];
 }
+
+
 - (IBAction)doneBtn_pressed_action:(SHButton *)sender forEvent:(UIEvent *)event{
+	(void)sender; (void)event;
 	[self.prevScreen popVCFromFront];
-	[self.central afterSectorPick:(SHSectorDTO *)self.storyItem];
+	if(self.onSectorSelectionAction) {
+		self.onSectorSelectionAction(self.storyObjectID); //[self.central afterSectorPick:(SHSectorDTO *)self.storyItem];
+	}
 }
 
-
-#pragma clang diagnostic pop
 
 @end

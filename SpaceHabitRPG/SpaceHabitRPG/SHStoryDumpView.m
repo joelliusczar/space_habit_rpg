@@ -18,7 +18,6 @@
 
 @implementation SHStoryDumpView
 
-@synthesize storyItem = _storyItem;
 
 
 -(UITapGestureRecognizer *)tapper{
@@ -40,8 +39,14 @@
 }
 
 
--(instancetype)initWithStoryItemObjectID:(SHObjectIDWrapper *)storyItemObjectID{
-	if(self = [self initWithNibName:@"SHStoryDumpView" bundle:nil]){
+-(instancetype)initWithDefaultNib{
+	if(self = [super initWithNibName:@"SHStoryDumpView" bundle:nil]){}
+	return self;
+}
+
+
+-(instancetype)initWithStoryItemObjectID:(SHStoryItemObjectID *)storyItemObjectID{
+	if(self = [self initWithDefaultNib]){
 		_storyItemObjectID = storyItemObjectID;
 	}
 	return self;

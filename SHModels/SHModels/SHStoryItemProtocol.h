@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SHStoryItemObjectID.h"
 
 @protocol SHStoryItemProtocol <NSObject>
-@property (nonatomic,strong,readonly) NSString *fullName;
-@property (nonatomic,strong,readonly) NSString *synopsis;
-@property (nonatomic,readonly) NSString *headline;
+@property (readonly,nonatomic) NSString *fullName;
+@property (readonly,nonatomic) NSString *synopsis;
+@property (readonly,nonatomic) NSString *headline;
+@property (readonly,nonatomic) SHStoryItemObjectID *wrappedObjectID;
 @end

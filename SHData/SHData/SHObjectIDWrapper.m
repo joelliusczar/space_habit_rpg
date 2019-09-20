@@ -32,6 +32,12 @@
 }
 
 
+-(NSManagedObjectContext*)context{
+	NSAssert(_context,@"We were not expecting context to be null");
+	return _context;
+}
+
+
 -(instancetype)init{
 	if(self = [super init]){
 		_idSerialQueue = dispatch_queue_create("com.SpaceHabit.SHObjectIDWrapper",DISPATCH_QUEUE_SERIAL);
@@ -46,6 +52,18 @@
 	if(self = [self init]){
 		_entityType = entityType;
 		_context = context;
+	}
+	return self;
+}
+
+
+-(instancetype)initWithManagedObject:(NSManagedObject*)managedObject{
+	if(self = [self init]){
+		_entityType = managedObject.entity;
+		_context = managedObject.managedObjectContext;
+		dispatch_async(_idSerialQueue,^{
+			self->_objectID = managedObject.objectID;
+		});
 	}
 	return self;
 }

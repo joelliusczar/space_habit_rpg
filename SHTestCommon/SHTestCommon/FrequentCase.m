@@ -38,8 +38,8 @@ SHCoreData* getDataControllerSingleton(){
 -(void)setUp{
 	[super setUp];
 	self.resourceUtil = [[SHResourceUtility alloc] init];
-	self.sectorInfoDict = [SHSectorInfoDictionary newWithResourceUtil:self.resourceUtil];
-	self.monsterInfoDict = [SHMonsterInfoDictionary newWithResourceUtil:self.resourceUtil];
+	self.sectorInfoDict = [[SHSectorInfoDictionary alloc] initWithResourceUtil:self.resourceUtil];
+	self.monsterInfoDict = [[SHMonsterInfoDictionary alloc] initWithResourceUtil:self.resourceUtil];
 	//I think we want to ensure that it uses the bundle from SHModels rather
 	//the bundle for TestUI or TestCommon
 	self.dc = getDataControllerSingleton();

@@ -127,7 +127,7 @@
 		SHSectorDTO *zDto = [sectorMed newSpecificSector2:@"SAFE_SPACE" withLvl:16];
 		SHSector *z = (SHSector*)[NSManagedObjectContext
 			newEntityUnattached:SHSector.entity];
-		[z dtoCopyFrom:zDto];
+		[z narrowCopyFrom:zDto];
 		[bgContext insertObject:z];
 		[bgContext insertObject:z];
 		NSError* error = nil;
@@ -154,7 +154,7 @@
 		SHSectorDTO *z3Dto = [sectorMed newSpecificSector2:@"SAFE_SPACE" withLvl:16];
 		SHSector* z3 = (SHSector*)[NSManagedObjectContext
 			newEntityUnattached:SHSector.entity];
-		[z3 dtoCopyFrom:z3Dto];
+		[z3 narrowCopyFrom:z3Dto];
 		[bgContext insertObject:z3];
 		NSError *error = nil;
 		[bgContext save:&error];

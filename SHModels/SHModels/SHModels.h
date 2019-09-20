@@ -74,6 +74,7 @@ FOUNDATION_EXPORT const unsigned char SHModelsVersionString[];
 #import "SHMonster_Medium.h"
 #import "SHHero_Medium.h"
 #import "SHConfig_Medium.h"
+#import "SHStoryItemObjectID.h"
 
 // In this header, you should import all the public headers of your framework using statements like #import <SHModels/PublicHeader.h>
 

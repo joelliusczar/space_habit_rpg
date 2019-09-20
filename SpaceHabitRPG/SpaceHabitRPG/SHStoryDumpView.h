@@ -10,13 +10,15 @@
 #import <SHModels/SHStoryItemProtocol.h>
 #import <SHControls/SHButton.h>
 #import <SHData/SHData.h>
+#import <SHModels/SHStoryItemObjectID.h>
 
 @interface SHStoryDumpView : UIViewController
 @property (weak,nonatomic) IBOutlet UITextView *synopsisView;
 @property (weak,nonatomic) IBOutlet SHButton *doneBtn;
 @property (weak,nonatomic) IBOutlet UILabel *headlineLbl;
-@property (strong,nonatomic) SHObjectIDWrapper *storyItemObjectID;
+@property (strong,nonatomic) SHStoryItemObjectID *storyItemObjectID;
 @property (nonatomic) UIColor* backgroundColor;
 @property (copy,nonatomic) void (^responseBlock)(SHStoryDumpView *);
--(instancetype)initWithStoryItemObjectID:(SHObjectIDWrapper *)storyItemObjectID;
+-(instancetype)initWithStoryItemObjectID:(SHStoryItemObjectID *)storyItemObjectID;
+-(instancetype)initWithDefaultNib;
 @end

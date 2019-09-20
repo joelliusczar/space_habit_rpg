@@ -24,6 +24,7 @@
 #import "SimpleDTO.h"
 #import "Watcher.h"
 #import "KVObject.h"
+#import "ChildMan.h"
 
 
 typedef WeakHolder Varholder;
@@ -137,6 +138,7 @@ void cMakeHouses(void);
 +(void)primitiveType;
 +(void)postInsertion;
 +(void)switchSemantics;
++(void)testPropCopy;
 @end
 
 #import "Experiments+Charlie.h"

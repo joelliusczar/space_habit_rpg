@@ -1114,7 +1114,7 @@ NSString *convertCharToBin(unsigned char input){
 	sdto.boopStr = @"sploot";
 	sdto.dootNum = 17;
 	sdto.wrapNum = @77;
-	SimpleDTO *sdto2 = [sdto dtoCopy];
+	SimpleDTO *sdto2 = [sdto narrowCopy];
 	sdto2.boopStr = @"wort";
 	//SimpleDTO *copy = object_copy(SimpleDTO.class,sizeof(SimpleDTO))
 }
@@ -1287,6 +1287,16 @@ union u_double {
 		NSLog(@"1: failed to avoid");
 		break;
 	}
+}
+
+
++(void)testPropCopy{
+	ChildMan *c1 = [[ChildMan alloc] init];
+	c1.whamjar = 198;
+	c1.whoitZoot = 2046;
+	c1.contrlNum = 129;
+	ChildMan *c2 = [[ChildMan alloc] init];
+	[c2 narrowCopyFrom:c1];
 }
 
 

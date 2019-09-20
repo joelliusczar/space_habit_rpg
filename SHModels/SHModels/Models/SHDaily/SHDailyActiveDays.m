@@ -365,14 +365,14 @@ static NSDictionary* mapMonthlyYearlyToDict(SHListRateItem *item,NSUInteger idx)
 }
 
 
-static void setActivenessArray(NSArray<SHRangeRateItem*> *week,BOOL *activenessArray){
+static void setActivenessArray(NSArray<SHRangeRateItem*> *week,bool *activenessArray){
 	for(int i = 0;i < SH_DAYS_IN_WEEK;i++){
-				if(week){ //default to all days active
-						activenessArray[i] = week[i].isDayActive;
-						continue;
-				}
-				activenessArray[i] = YES;
+		if(week){ //default to all days active
+			activenessArray[i] = week[i].isDayActive;
+			continue;
 		}
+		activenessArray[i] = YES;
+	}
 }
 
 
@@ -390,7 +390,7 @@ static NSMutableArray<SHRangeRateItem*>* convertCRateItemToObjC(SHRateValueItem 
 -(void)flipDayOfWeek:(NSUInteger)dayIdx forPolarity:(BOOL)isInverse{
 	NSArray<SHRangeRateItem*> *weekInfo = isInverse ? self.weeklyActiveDaysInv : self.weeklyActiveDays;
 	int32_t rate = isInverse ? self.weeklyIntervalSizeInv : self.weeklyIntervalSize;
-	BOOL activeDays[SH_DAYS_IN_WEEK];
+	bool activeDays[SH_DAYS_IN_WEEK];
 	setActivenessArray(weekInfo,activeDays);
 	activeDays[dayIdx] = !activeDays[dayIdx];
 	SHRateValueItem rvi[SH_DAYS_IN_WEEK];

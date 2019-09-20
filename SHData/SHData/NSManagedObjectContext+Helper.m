@@ -41,6 +41,9 @@ static void _setupIfRequired(NSManagedObject *entity){
 		}
 		else{
 			entity = [self existingObjectWithID:wrappedID.objectID error:&error];
+			if(entity.entity != wrappedID.entityType) {
+				@throw [NSException oddException];
+			}
 		}
 	}];
 	return entity;
@@ -49,7 +52,11 @@ static void _setupIfRequired(NSManagedObject *entity){
 
 -(NSManagedObject*)getEntityOrNil:(SHObjectIDWrapper *)objectId withError:(NSError **)error{
 	if(nil == objectId || nil == objectId.objectID) return nil;
-	return [self existingObjectWithID:objectId.objectID error:error];
+	NSManagedObject *result = [self existingObjectWithID:objectId.objectID error:error];
+	if(result.entity != objectId.entityType) {
+		@throw [NSException oddException];
+	}
+	return result;
 }
 
 -(NSArray<NSManagedObject *> *)getItemsWithRequest:(NSFetchRequest *) fetchRequest{
