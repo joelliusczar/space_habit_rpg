@@ -14,7 +14,7 @@
 @implementation SHMonsterDictionaryEntry
 
 
--(instancetype)initWith:(NSString*)monsterKey withMonsterDict:(SHMonsterInfoDictionary*)monInfoDict{
+-(instancetype)initWith:(NSString*)monsterKey withMonsterDict:(NSDictionary*)monInfoDict{
 	if(self = [super init]){
 		_monsterKey = monsterKey;
 		_monInfoDict = monInfoDict;
@@ -24,16 +24,20 @@
 
 
 -(NSString *)fullName{
-	NSString *name = [self.monInfoDict getName:self.monsterKey];
-	return name;
+	NSString *monName = self.monInfoDict[@"NAME"];;
+	#if SH_EXTRA_ERRORS
+		NSAssert(monName,@"Monster name should not be null");
+	#else
+	if(nil == monName){
+		return @"";
+	}
+	#endif
+	return monName;
 }
 
--(NSString *)synopsis{
-	return [self.monInfoDict getDescription:self.monsterKey];
-}
 
 -(NSString *)headline{
-	NSString *grammaticalAgreement = [self.monInfoDict getGrammaticalAgreement:self.monsterKey];
+	NSString *grammaticalAgreement = self.monInfoDict[@"GRAMMATICAL_AGREEMENT"];
 	if([grammaticalAgreement isEqualToString:@"SC"]){
 		return [NSString stringWithFormat:@"Your ship encountered a \n%@!",self.fullName];
 	}
@@ -46,29 +50,89 @@
 	@throw [NSException exceptionWithName:@"Invalid gramatical agreement" reason:[NSString stringWithFormat:@"The culprit was %@",self.fullName]userInfo:nil];
 }
 
+-(NSString*)synopsis{
+	NSString *desc = self.monInfoDict[@"DESCRIPTION"];
+	#if SH_EXTRA_ERRORS
+		NSAssert(desc,@"Monster description should not be null");
+	#else
+		if(nil == desc){
+			return @"";
+		}
+	#endif
+	return desc;
+}
+
 -(int32_t)baseAttack{
-	return [self.monInfoDict getBaseAttack:self.monsterKey];
+	NSNumber *atkLvl = (NSNumber *)self.monInfoDict[@"ATTACK_LVL"];
+	#if SH_EXTRA_ERRORS
+		NSAssert(atkLvl,@"Basic attack should not be null");
+	#else
+		if(nil == atkLvl){
+			return 0;
+		}
+	#endif
+	return atkLvl.intValue;
 }
 
 #warning TODO: figure out a better way to handle this
 -(int32_t)defense{
-	return [self.monInfoDict getBaseDefense:self.monsterKey];
+	NSNumber *defLvl = (NSNumber *)self.monInfoDict[@"DEFENSE_LVL"];
+	#if SH_EXTRA_ERRORS
+		NSAssert(defLvl,@"Basic defense should not be null");
+	#else
+		if(nil == defLvl){
+			return 0;
+		}
+	#endif
+	return defLvl.intValue;
 }
 
 -(int32_t)xp{
-	return [self.monInfoDict getBaseXP:self.monsterKey];
+	NSNumber *xp = (NSNumber *)self.monInfoDict[@"BASE_XP_REWARD"];
+	#if SH_EXTRA_ERRORS
+		NSAssert(xp,@"Basic XP should not be null");
+	#else
+		if(nil == xp){
+			return 0;
+		}
+	#endif
+	return xp.intValue;
 }
 
 -(int32_t)baseHp{
-	return [self.monInfoDict getBaseHP:self.monsterKey];
+	NSNumber *hp = (NSNumber *)self.monInfoDict[@"HP"];
+	#if SH_EXTRA_ERRORS
+		NSAssert(hp,@"Basic defense should not be null");
+	#else
+		if(nil == hp){
+			return 0;
+		}
+	#endif
+	return hp.intValue;
 }
 
 -(float)treasureDropRate{
-	return [self.monInfoDict getTreasureDropRate:self.monsterKey];
+	NSNumber *dropRate = (NSNumber *)self.monInfoDict[@"TREASURE_DROP_RATE"];
+	#if SH_EXTRA_ERRORS
+		NSAssert(dropRate,@"Treasure drop rate should not be null");
+	#else
+		if(nil == dropRate){
+			return 0;
+		}
+	#endif
+	return dropRate.floatValue;
 }
 
 -(int32_t)encounterWeight{
-	return [self.monInfoDict getEncounterWeight:self.monsterKey];
+	NSNumber *encounterWeight = (NSNumber *)self.monInfoDict[@"ENCOUNTER_WEIGHT"];
+	#if SH_EXTRA_ERRORS
+		NSAssert(encounterWeight,@"Encounter rate should not be null");
+	#else
+		if(nil == encounterWeight){
+			return 0;
+		}
+	#endif
+	return encounterWeight.intValue;
 }
 
 

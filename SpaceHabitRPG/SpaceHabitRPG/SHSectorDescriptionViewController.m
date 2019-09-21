@@ -13,8 +13,7 @@
 #import <SHControls/SHButton.h>
 
 @interface SHSectorDescriptionViewController ()
-@property (weak,nonatomic) SHSectorChoiceViewController *prevScreen;
-@property (weak,nonatomic) SHCentralViewController *central;
+@property (weak,nonatomic) UIViewController *prevScreen;
 @property (readonly,strong,nonatomic) UISwipeGestureRecognizer *backSwipe;
 @end
 
@@ -31,8 +30,8 @@
 }
 
 
--(instancetype)initWithSectorChoiceViewController:(SHSectorChoiceViewController *)prevScreen
-	withOnSelectionAction:(void (^)(SHStoryItemObjectID*))onSectorSelectionAction;
+-(instancetype)initWithViewController:(UIViewController *)prevScreen
+	withOnSelectionAction:(void (^)(SHStoryItemObjectID*))onSectorSelectionAction
 {
 	if(self = [self initWithDefaultNib]){ 
 		_prevScreen = prevScreen;

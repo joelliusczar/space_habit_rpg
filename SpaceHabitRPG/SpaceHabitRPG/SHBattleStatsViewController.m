@@ -64,7 +64,7 @@
 			[self updateHeroXP:currentXp whole:maxXp];
 			self.lvlLbl.text = [NSString stringWithFormat:@"Lv:%d",level];
 			[self updateMonsterHP:currentMonsterHP withWhole:maxMonsterHP
-				withLvl:monsterLvl withMonsterKey:monsterName];
+				withLvl:monsterLvl withMonsterName:monsterName];
 		}];
 	}];
 }
@@ -84,7 +84,6 @@
 }
 
 
-#warning rewrite this
 -(void)updateMonsterHP:(int32_t)part withWhole:(int32_t)whole withLvl:(int32_t)lvl
 	withMonsterName:(NSString *)monsterName
 {

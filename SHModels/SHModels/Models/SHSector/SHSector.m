@@ -79,17 +79,11 @@ static void copyBetween(NSObject* from,NSObject* to){
 }
 
 
--(SHObjectIDWrapper *)wrappedObjectID{
-	SHObjectIDWrapper *wrappedObjectID = [[SHObjectIDWrapper alloc] initWithEntityType:self.entity
-		withContext:self.managedObjectContext];
-	wrappedObjectID.objectID = self.objectID;
+-(SHStoryItemObjectID *)wrappedObjectID{
+	SHStoryItemObjectID *wrappedObjectID = [[SHStoryItemObjectID alloc] initWithManagedObject:self];
 	return wrappedObjectID;
 }
 
 
--(BOOL)shouldIgnoreProperty:(NSString *)propName{
-	//if([propName isEqualToString:@"monInfoDict"]) return YES;
-	return NO;
-}
 
 @end

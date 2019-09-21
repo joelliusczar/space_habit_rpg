@@ -21,9 +21,6 @@
 @interface SHSectorDescriptionViewController : SHStoryDumpView
 @property (nonatomic,weak) SHStoryItemObjectID *storyObjectID;
 @property (copy,nonatomic) void (^onSectorSelectionAction)(SHStoryItemObjectID*);
--(instancetype)initWithSectorChoiceViewController:(SHSectorChoiceViewController *)prevScreen
-	withOnSelectionAction:(void (^)(SHStoryItemObjectID*))onSectorSelectionAction
-	withStoryObjectID:(SHStoryItemObjectID*)storyObjectID;
--(instancetype)initWithSectorChoiceViewController:(SHSectorChoiceViewController *)prevScreen
+-(instancetype)initWithViewController:(UIViewController *)prevScreen
 	withOnSelectionAction:(void (^)(SHStoryItemObjectID*))onSectorSelectionAction;
 @end

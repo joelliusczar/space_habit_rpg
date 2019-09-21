@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)updateHeroHP:(int)part whole:(int)whole;
 -(void)updateHeroXP:(int)part whole:(int)whole;
 -(void)updateMonsterHP:(int32_t)part withWhole:(int32_t)whole withLvl:(int32_t)lvl
-	withMonsterKey:(NSString *)monsterKey;
+	withMonsterName:(NSString *)monsterName;
 @end
 
 NS_ASSUME_NONNULL_END

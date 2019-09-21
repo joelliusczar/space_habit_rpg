@@ -21,13 +21,4 @@
 -(NSDictionary *)getMonsterInfo:(NSString *)monsterKey;
 -(NSDictionary *)getMonsterInfo:(NSString *)monsterKey ForSector:(NSString *)sectorKey;
 -(SHMonsterDictionaryEntry *)getMonsterEntry:(NSString*)monsterKey;
--(NSString *)getName:(NSString *)monsterKey;
--(NSString *)getDescription:(NSString *)monsterKey;
--(int32_t)getBaseAttack:(NSString *)monsterKey;
--(int32_t)getBaseDefense:(NSString *)monsterKey;
--(int32_t)getBaseXP:(NSString *)monsterKey;
--(int32_t)getBaseHP:(NSString *)monsterKey;
--(float)getTreasureDropRate:(NSString *)monsterKey;
--(int32_t)getEncounterWeight:(NSString *)monsterKey;
--(NSString *)getGrammaticalAgreement:(NSString *)monsterKey;
 @end

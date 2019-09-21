@@ -47,9 +47,10 @@
 -(SHProbWeight*)buildProbilityWeight:(NSMutableArray<NSString*>*)keys{
 	SHMonsterInfoDictionary *monInfoDict = self.monsterInfo;
 	SHProbWeight *pbw = [[SHProbWeight alloc] init];
-	for(NSString* sectorKey in keys){
-		int32_t encounterWeight = [monInfoDict getEncounterWeight:sectorKey];
-		[pbw add:sectorKey With:encounterWeight];
+	for(NSString* monsterKey in keys){
+		SHMonsterDictionaryEntry *entry = [monInfoDict getMonsterEntry:monsterKey];
+		int32_t encounterWeight = entry.encounterWeight;
+		[pbw add:monsterKey With:encounterWeight];
 	}
 	return pbw;
 }

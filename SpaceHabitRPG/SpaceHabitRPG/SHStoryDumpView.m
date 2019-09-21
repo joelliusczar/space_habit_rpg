@@ -58,7 +58,8 @@
 	NSManagedObjectContext *context = self.storyItemObjectID.context;
 	[context performBlock:^{
 		NSError *error = nil;
-		NSManagedObject<SHStoryItemProtocol>* storyItem = [context getEntityOrNil:self.storyItemObjectID
+		NSManagedObject<SHStoryItemProtocol>* storyItem = (NSManagedObject<SHStoryItemProtocol>*)[context
+			getEntityOrNil:self.storyItemObjectID
 			withError:&error];
 		if(error) {
 			@throw [NSException dbException:error];

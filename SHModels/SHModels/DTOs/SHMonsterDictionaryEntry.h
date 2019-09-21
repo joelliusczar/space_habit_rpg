@@ -17,14 +17,17 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHMonsterDictionaryEntry : SHObject<NSCopying>
--(instancetype)initWith:(NSString*)monsterKey withMonsterDict:(SHMonsterInfoDictionary*)monInfoDict;
-@property (strong,nonatomic) SHMonsterInfoDictionary *monInfoDict;
+-(instancetype)initWith:(NSString*)monsterKey withMonsterDict:(NSDictionary*)monInfoDict;
+@property (strong,nonatomic) NSDictionary *monInfoDict;
 @property (nonatomic,readonly) int32_t baseAttack;
 @property (nonatomic,readonly) int32_t defense;
 @property (nonatomic,readonly) int32_t xp;
 @property (nonatomic,readonly) int32_t baseHp;
 @property (nonatomic,readonly) float treasureDropRate;
 @property (nonatomic,readonly) int32_t encounterWeight;
+@property (readonly,nonatomic) NSString *synopsis;
+@property (readonly,nonatomic) NSString *fullName;
+@property (readonly,nonatomic) NSString *headline;
 @property (nullable, nonatomic, copy) NSString *monsterKey;
 @property (nonatomic) int32_t nowHp;
 @property (readonly,nonatomic) NSMutableDictionary *mapable;

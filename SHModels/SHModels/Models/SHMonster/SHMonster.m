@@ -14,11 +14,18 @@
 #import <SHCommon/SHCollectionUtils.h>
 #import <SHCommon/NSDictionary+SHHelper.h>
 #import <SHCommon/SHResourceUtility.h>
+#import "SHMonsterDictionaryEntry.h"
 
 static float MAX_HP_MODIFIER = .1;
 static SHMonsterInfoDictionary *_monsterInfo;
 
-@implementation SHMonster
+@interface SHMonster ()
+@property (readonly,nonatomic) SHMonsterDictionaryEntry *entry;
+@end
+
+@implementation SHMonster{
+	SHMonsterDictionaryEntry *_entry;
+}
 
 
 +(SHMonsterInfoDictionary *)monsterInfo{
@@ -31,6 +38,29 @@ static SHMonsterInfoDictionary *_monsterInfo;
 
 +(void)setMonsterInfo:(SHMonsterInfoDictionary *)monsterInfo{
 	_monsterInfo = monsterInfo;
+}
+
+
+-(SHMonsterDictionaryEntry*)entry{
+	if(nil == _entry){
+		_entry = [SHMonster.monsterInfo getMonsterEntry:self.monsterKey];
+	}
+	return _entry;
+}
+
+
+-(NSString*)fullName{
+	return self.entry.fullName;
+}
+
+
+-(NSString *)synopsis{
+	return self.entry.synopsis;
+}
+
+
+-(NSString *)headline{
+	return self.entry.headline;
 }
 
 -(void)copyFrom:(NSObject *)object{
@@ -80,6 +110,12 @@ static void copyBetween(NSObject* from,NSObject* to){
 -(int32_t)attack{
 	SHMonsterDictionaryEntry *entry = [SHMonster.monsterInfo getMonsterEntry:self.monsterKey];
 	return entry.baseAttack + self.lvl;
+}
+
+
+-(SHStoryItemObjectID *)wrappedObjectID{
+	SHStoryItemObjectID *wrappedObjectID = [[SHStoryItemObjectID alloc] initWithManagedObject:self];
+	return wrappedObjectID;
 }
 
 @end

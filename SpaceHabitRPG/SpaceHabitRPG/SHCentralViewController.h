@@ -36,9 +36,4 @@
 	andNibName:(NSString*)nib
 	andResourceUtil:(NSObject<SHResourceUtilityProtocol>*)util
 	andBundle:(NSBundle*)bundle;
-
--(void)setToShowStory:(BOOL)shouldShowStory;
--(void)afterIntroStarted;
--(void)afterSectorPick:(SHSectorDTO*)sectorChoice;
--(void)afterIntroCompleted:(NSManagedObjectContext*)context;
 @end

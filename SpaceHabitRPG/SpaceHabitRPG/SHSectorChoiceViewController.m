@@ -26,7 +26,7 @@
 
 -(SHSectorDescriptionViewController *)descViewController{
 	if(!_descViewController){
-		_descViewController = [[SHSectorDescriptionViewController alloc] initWithSectorChoiceViewController:self
+		_descViewController = [[SHSectorDescriptionViewController alloc] initWithViewController:self
 			withOnSelectionAction:self.onSelectionAction];
 	}
 	return _descViewController;

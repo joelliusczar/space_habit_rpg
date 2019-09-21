@@ -159,8 +159,8 @@
 		2747C3BB2043B67200FB5669 /* SHRateTypeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHRateTypeHelper.m; sourceTree = "<group>"; };
 		2747C3BC2043B67200FB5669 /* SHRateTypeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHRateTypeHelper.h; sourceTree = "<group>"; };
 		2747C3C52043B83C00FB5669 /* SHStoryItemProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHStoryItemProtocol.h; sourceTree = "<group>"; };
-		2747C3CA2043BACA00FB5669 /* SHMonsterInfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMonsterInfoDictionary.m; sourceTree = "<group>"; };
-		2747C3CB2043BACA00FB5669 /* SHMonsterInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMonsterInfoDictionary.h; sourceTree = "<group>"; };
+		2747C3CA2043BACA00FB5669 /* SHMonsterInfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHMonsterInfoDictionary.m; path = ../SHMonsterInfoDictionary.m; sourceTree = "<group>"; };
+		2747C3CB2043BACA00FB5669 /* SHMonsterInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHMonsterInfoDictionary.h; path = ../SHMonsterInfoDictionary.h; sourceTree = "<group>"; };
 		2747C3CC2043BACA00FB5669 /* SHSectorInfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSectorInfoDictionary.m; sourceTree = "<group>"; };
 		2747C3CD2043BACB00FB5669 /* SHSectorInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSectorInfoDictionary.h; sourceTree = "<group>"; };
 		2747C4632046320E00FB5669 /* SHModelConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHModelConstants.h; sourceTree = "<group>"; };
@@ -270,6 +270,8 @@
 				27075D682259313B00AD13AA /* SHSectorDTO.m */,
 				27075D6B225963A700AD13AA /* SHMonsterDictionaryEntry.h */,
 				27075D6C225963A700AD13AA /* SHMonsterDictionaryEntry.m */,
+				2747C3CB2043BACA00FB5669 /* SHMonsterInfoDictionary.h */,
+				2747C3CA2043BACA00FB5669 /* SHMonsterInfoDictionary.m */,
 				27075D6F225A695300AD13AA /* SHConfigDTO.h */,
 				27075D70225A695300AD13AA /* SHConfigDTO.m */,
 			);
@@ -328,8 +330,6 @@
 				2747C3BB2043B67200FB5669 /* SHRateTypeHelper.m */,
 				2747C3A92043B51300FB5669 /* SHDueDateItemProtocol.h */,
 				2747C3C52043B83C00FB5669 /* SHStoryItemProtocol.h */,
-				2747C3CB2043BACA00FB5669 /* SHMonsterInfoDictionary.h */,
-				2747C3CA2043BACA00FB5669 /* SHMonsterInfoDictionary.m */,
 				2747C3CD2043BACB00FB5669 /* SHSectorInfoDictionary.h */,
 				2747C3CC2043BACA00FB5669 /* SHSectorInfoDictionary.m */,
 				2747C2EE2043ADE000FB5669 /* Info.plist */,

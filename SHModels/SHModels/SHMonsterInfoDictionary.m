@@ -50,9 +50,11 @@
 
 
 -(SHMonsterDictionaryEntry *)getMonsterEntry:(NSString*)monsterKey{
-	SHMonsterDictionaryEntry *entry = [[SHMonsterDictionaryEntry alloc] initWith:monsterKey withMonsterDict:self];
+	SHMonsterDictionaryEntry *entry = [[SHMonsterDictionaryEntry alloc] initWith:monsterKey
+		withMonsterDict:[self.infoDict getInfo:monsterKey]];
 	return entry;
 }
+
 
 -(NSString *)getName:(NSString *)monsterKey{
 	NSString *monName = [self getMonsterInfo:monsterKey][@"NAME"];
@@ -79,7 +81,7 @@
 }
 
 -(int32_t)getBaseAttack:(NSString *)monsterKey{
- NSNumber *atkLvl = (NSNumber *)[self getMonsterInfo:monsterKey][@"ATTACK_LVL"];
+	NSNumber *atkLvl = (NSNumber *)[self getMonsterInfo:monsterKey][@"ATTACK_LVL"];
 	#if SH_EXTRA_ERRORS
 		NSAssert(atkLvl,@"Basic attack should not be null");
 	#else
