@@ -10,7 +10,6 @@
 #import "SHInfoDictionary.h"
 #import "SHMonsterDictionaryEntry.h"
 
-@class SHMonsterDictionaryEntry;
 
 @interface SHMonsterInfoDictionary : NSObject
 @property (nonatomic,assign) BOOL isTesting;

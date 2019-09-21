@@ -8,11 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "SHStoryItemProtocol.h"
-#import "SHMonsterInfoDictionary.h"
 #import <SHCommon/SHObject.h>
 @import CoreData;
 
-@class SHMonsterInfoDictionary;
 
 NS_ASSUME_NONNULL_BEGIN
 
