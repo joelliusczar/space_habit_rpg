@@ -20,6 +20,34 @@
 @implementation SHStoryPresentationIntroController
 
 
+-(SHStoryPresentationController*)storyCommon{
+	if(nil == _storyCommon) {
+		_storyCommon = [[SHStoryPresentationController alloc] initWithContext:self.context
+			withResourceUtil:self.resourceUtil
+			withSectorMonsterQueue:self.sectorMonsterQueue
+			withViewController:self.central
+			withOnCompleteAction:nil];
+	}
+	return _storyCommon;
+}
+
+
+-(instancetype)initWithContext:(NSManagedObjectContext*)context
+	withViewController:(UIViewController*)viewController
+	withResourceUtil:(NSObject<SHResourceUtilityProtocol>)resourceUtil
+	withOnIntroCompleteAction:(void (^)(void))onIntoComplete
+{
+	if(self = [self init]){
+		_context = context;
+		_central = viewController;
+		_resourceUtil = resourceUtil;
+		_onIntroComplete = onIntoComplete;
+		_sectorMonsterQueue = dispatch_queue_create("com.SpaceHabit.Sector_Monster",DISPATCH_QUEUE_SERIAL);
+	}
+	return self;
+}
+
+
 -(void)startIntro{
 	[self.context performBlock:^{
 		[self cleanUpPreviousAttempts];
@@ -72,12 +100,7 @@
 // logic picks back up in afterIntroStarted
 //#story_logic: intro
 -(void)showIntroView{
-	/*Since self.introVC is a weak ref, we must create this local var
-	to hold the value until the strong ref gets attached.
-	I made self.introVC a weak because I only want a reference to it
-	if it actually exists. I don't want to actively keep it alive, which
-	is what a strong ref would do.
-	*/
+
 	__weak typeof(self) weakSelf = self;
 	self.storyCommon.onComplete = ^{
 		typeof(weakSelf) bSelf = weakSelf;
@@ -97,6 +120,7 @@
 			if(error) {
 				@throw [NSException dbException:error];
 			}
+			[self afterIntroCompleted];
 		}];
 	} withOnNextAction:^{
 		[self.context performBlock:^{
@@ -164,7 +188,9 @@
 		}
 	}];
 	if(self.onIntroComplete){
-		self.onIntroComplete();
+		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+			self.onIntroComplete();
+		}];
 	}
 }
 

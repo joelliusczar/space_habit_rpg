@@ -18,6 +18,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak,nonatomic) UIViewController *central;
 @property (strong,nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
 @property (copy,nonatomic) void (^onPresentComplete)(void);
+@property (strong,nonatomic) dispatch_queue_t sectorMonsterQueue;
+-(instancetype)initWithContext:(NSManagedObjectContext*)context
+	withDataController:(id<P_CoreData>)dataController
+	withViewController:(UIViewController*)viewController
+	withResourceUtil:(NSObject<SHResourceUtilityProtocol> *)resourceUtil
+	withOnPresentComplete:(void (^)(void))onPresentComplete;
 -(void)setupNormalSectorAndMonster;
 @end
 

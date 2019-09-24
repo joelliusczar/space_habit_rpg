@@ -80,9 +80,6 @@
 		_context = [dataController newBackgroundContext];
 		_resourceUtil = util;
 		_configAccessorQueue = dispatch_queue_create("com.SpaceHabit.Config",DISPATCH_QUEUE_SERIAL);
-		#warning move the below line somewhere else
-		//_sectorMonsterQueue = dispatch_queue_create("com.SpaceHabit.Sector_Monster",DISPATCH_QUEUE_SERIAL);
-		
 	}
 	return self;
 }
@@ -159,21 +156,28 @@
 		SHConfig_Medium *cm = [[SHConfig_Medium alloc] initWithContext:self.context];
 		SHConfig *config = [cm globalConfig];
 		if(config.gameState == SH_GAME_STATE_UNINITIALIZED){
-			SHStoryPresentationIntroController *introController = [[SHStoryPresentationIntroController alloc] init];
+			SHStoryPresentationIntroController *introController = [[SHStoryPresentationIntroController alloc]
+				initWithContext:self.context
+				withViewController:self
+				withResourceUtil:self.resourceUtil
+				withOnIntroCompleteAction:^{
+					[self prepareScreen];
+				}];
 			[introController startIntro];
 		}
 		else {
-			SHStoryPresentationTypicalController *present = [[SHStoryPresentationTypicalController alloc] init];
+			SHStoryPresentationTypicalController *present = [[SHStoryPresentationTypicalController alloc]
+				initWithContext:self.context
+				withDataController:self.dataController
+				withViewController:self
+				withResourceUtil:self.resourceUtil
+				withOnPresentComplete:^{
+					[self prepareScreen];
+				}];
 			[present setupNormalSectorAndMonster];
 		}
 	}];
 }
-
-
--(void)setToShowStory:(BOOL)shouldShowStory{
-	self.configDTO.storyModeisOn = shouldShowStory;
-}
-
 
 
 @end

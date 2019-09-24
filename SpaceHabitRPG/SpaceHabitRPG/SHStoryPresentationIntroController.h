@@ -26,6 +26,10 @@ NS_ASSUME_NONNULL_BEGIN
 */
 @property (strong,nonatomic) dispatch_queue_t sectorMonsterQueue;
 @property (copy,nonatomic) void (^onIntroComplete)(void);
+-(instancetype)initWithContext:(NSManagedObjectContext*)context
+	withViewController:(UIViewController*)viewController
+	withResourceUtil:(NSObject<SHResourceUtilityProtocol>)resourceUtil
+	withOnIntroCompleteAction:(void (^)(void))onIntoComplete;
 -(void)startIntro;
 @end
 

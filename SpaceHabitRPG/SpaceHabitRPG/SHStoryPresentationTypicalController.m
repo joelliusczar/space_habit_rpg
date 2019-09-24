@@ -14,6 +14,35 @@
 @implementation SHStoryPresentationTypicalController
 
 
+-(SHStoryPresentationController*)storyCommon{
+	if(nil == _storyCommon){
+		_storyCommon = [[SHStoryPresentationController alloc] initWithContext:self.context
+			withResourceUtil:self.resourceUtil
+			withSectorMonsterQueue:self.sectorMonsterQueue
+			withViewController:self.central];
+	}
+	return _storyCommon;
+}
+
+
+-(instancetype)initWithContext:(NSManagedObjectContext*)context
+	withDataController:(id<P_CoreData>)dataController
+	withViewController:(UIViewController*)viewController
+	withResourceUtil:(NSObject<SHResourceUtilityProtocol> *)resourceUtil
+	withOnPresentComplete:(void (^)(void))onPresentComplete
+{
+	if(self = [self init]){
+		_context = context;
+		_dataController = dataController;
+		_central = viewController;
+		_resourceUtil = resourceUtil;
+		_onPresentComplete = onPresentComplete;
+		_sectorMonsterQueue = dispatch_queue_create("com.SpaceHabit.Sector_Monster",DISPATCH_QUEUE_SERIAL);
+	}
+	return self;
+}
+
+
 -(void)needsNewMonster:(SHSector*)sector{
 	SHMonster_Medium *mm = [[SHMonster_Medium alloc] initWithContext:self.context];
 	SHMonster *monster = [mm newRandomMonster:sector.sectorKey sectorLvl:sector.lvl];
@@ -69,15 +98,22 @@
 -(void)finishPresent{
 	[self.storyCommon loadOrSetupHero:^{
 		if(self.onPresentComplete){
-			self.onPresentComplete();
+			[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+				self.onPresentComplete();
+			}];
 		}
-		//[self prepareScreen];
+	}];
+}
+
+-(void)setupNormalSectorAndMonster{
+	[self.context performBlock:^{
+		[self _setupNormalSectorAndMonster];
 	}];
 }
 
 
 //#story_logic: normal
--(void)setupNormalSectorAndMonster{
+-(void)_setupNormalSectorAndMonster{
 	BOOL isFront = YES;
 	NSManagedObjectContext *context = self.context;
 	SHSector_Medium *zm = [SHSector_Medium newWithContext:context

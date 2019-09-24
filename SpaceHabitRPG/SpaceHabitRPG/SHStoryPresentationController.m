@@ -29,6 +29,21 @@
 }
 
 
+-(instancetype)initWithContext:(NSManagedObjectContext*)context
+	withResourceUtil:(NSObject<SHResourceUtilityProtocol> *)resourceUtil
+	withSectorMonsterQueue:(dispatch_queue_t)sectorMonsterQueue
+	withViewController:(UIViewController*)viewController
+{
+	if(self = [self init]){
+		_context = context;
+		_resourceUtil = resourceUtil;
+		_sectorMonsterQueue = sectorMonsterQueue;
+		_central = viewController;
+	}
+	return self;
+}
+
+
 //#story_logic: both
 -(void)loadOrSetupHero:(void (^)(void))nextBlock{
 	NSManagedObjectContext *context = self.context;
