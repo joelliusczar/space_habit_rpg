@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy,nonatomic) void (^onIntroComplete)(void);
 -(instancetype)initWithContext:(NSManagedObjectContext*)context
 	withViewController:(UIViewController*)viewController
-	withResourceUtil:(NSObject<SHResourceUtilityProtocol>)resourceUtil
+	withResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil
 	withOnIntroCompleteAction:(void (^)(void))onIntoComplete;
 -(void)startIntro;
 @end

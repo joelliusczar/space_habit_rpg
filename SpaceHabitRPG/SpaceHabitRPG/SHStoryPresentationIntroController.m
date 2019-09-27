@@ -25,8 +25,7 @@
 		_storyCommon = [[SHStoryPresentationController alloc] initWithContext:self.context
 			withResourceUtil:self.resourceUtil
 			withSectorMonsterQueue:self.sectorMonsterQueue
-			withViewController:self.central
-			withOnCompleteAction:nil];
+			withViewController:self.central];
 	}
 	return _storyCommon;
 }
@@ -34,7 +33,7 @@
 
 -(instancetype)initWithContext:(NSManagedObjectContext*)context
 	withViewController:(UIViewController*)viewController
-	withResourceUtil:(NSObject<SHResourceUtilityProtocol>)resourceUtil
+	withResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil
 	withOnIntroCompleteAction:(void (^)(void))onIntoComplete
 {
 	if(self = [self init]){

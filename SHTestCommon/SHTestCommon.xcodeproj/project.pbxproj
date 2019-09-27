@@ -28,6 +28,7 @@
 		27009B42224FEB0C0005F827 /* SHCoreData+CleanUp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SHCoreData+CleanUp.m"; sourceTree = "<group>"; };
 		273009F622446228006E419C /* NSManagedObjectContext+Hijack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+Hijack.h"; sourceTree = "<group>"; };
 		273009F722446228006E419C /* NSManagedObjectContext+Hijack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+Hijack.m"; sourceTree = "<group>"; };
+		2738CB1F233EAB8100A41CC3 /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		274EFB72204F9AEA00CB3C4C /* SHTestCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHTestCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		274EFB75204F9AEA00CB3C4C /* SHTestCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTestCommon.h; sourceTree = "<group>"; };
 		274EFB76204F9AEA00CB3C4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -96,6 +97,7 @@
 		274EFB89204F9CB300CB3C4C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2738CB1F233EAB8100A41CC3 /* libSHDatetime.a */,
 				27004252205251B3001FA0B5 /* SHModels.framework */,
 				274EFB8C204FB27200CB3C4C /* XCTest.framework */,
 			);

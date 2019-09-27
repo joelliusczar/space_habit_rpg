@@ -44,7 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly,copy,nonatomic) shGetRangeRateArray weeklyActiveDaysInvLazy;
 
 
--(instancetype)initWithActiveDaysJson:(NSString*)activeDaysJson;
+-(instancetype)initWithActiveDaysJson:(nullable NSString*)activeDaysJson;
 -(NSString*)activeDaysAsJson;
 -(void)flipDayOfWeek:(NSUInteger)dayIdx forPolarity:(BOOL)isInverse;
 @end

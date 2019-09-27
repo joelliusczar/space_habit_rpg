@@ -168,8 +168,7 @@ uint sectorHelper_mockRandom(uint range){
 	rIdx_zh = 0;
 	NSManagedObjectContext *context = [self.dc newBackgroundContext];
 	SHSector_Medium* sectorMed = [SHSector_Medium newWithContext:context
-		withResourceUtil:self.resourceUtil
-		withInfoDict:self.sectorInfoDict];
+		withResourceUtil:self.resourceUtil];
 	SET_LOW_BOUND();
 	SET_LOW_BOUND();
 	NSString *s = [sectorMed getRandomSectorDefinitionKey:10];
@@ -214,8 +213,7 @@ uint sectorHelper_mockRandom(uint range){
 -(void)testGetSymbolSuffix{
 	NSManagedObjectContext *context = [self.dc newBackgroundContext];
 	SHSector_Medium* sectorMed = [SHSector_Medium newWithContext:context
-		withResourceUtil:self.resourceUtil
-		withInfoDict:self.sectorInfoDict];
+		withResourceUtil:self.resourceUtil];
 	NSString *s = [sectorMed getSymbolSuffix:0];
 	XCTAssertTrue([s isEqualToString:@""]);
 	s = [sectorMed getSymbolSuffix:1];
@@ -277,8 +275,7 @@ uint sectorHelper_mockRandom(uint range){
 -(void)testGetSymbolsList{
  NSManagedObjectContext *context = [self.dc newBackgroundContext];
 	SHSector_Medium* sectorMed = [SHSector_Medium newWithContext:context
-		withResourceUtil:self.resourceUtil
-		withInfoDict:self.sectorInfoDict];
+		withResourceUtil:self.resourceUtil];
 	NSArray<NSString *> *a = [sectorMed getSymbolsList];
 	XCTAssertEqual(a.count, 100);
 	XCTAssertTrue([a[0] isEqualToString:@"Alpha"]);
@@ -289,8 +286,7 @@ uint sectorHelper_mockRandom(uint range){
 -(void)testConstructEmptySector{
 	NSManagedObjectContext *context = self.dc.mainThreadContext;
 	SHSector_Medium* sectorMed = [SHSector_Medium newWithContext:context
-		withResourceUtil:self.resourceUtil
-		withInfoDict:self.sectorInfoDict];
+		withResourceUtil:self.resourceUtil];
 	SHSector *z = [sectorMed newEmptySector];
 	XCTAssertNotNil(z);
 }
@@ -300,63 +296,66 @@ uint sectorHelper_mockRandom(uint range){
 -(void)testConstructSectorChoice{
 	NSManagedObjectContext *context = [self.dc newBackgroundContext];
 	SHSector_Medium* sectorMed = [SHSector_Medium newWithContext:context
-		withResourceUtil:self.resourceUtil
-		withInfoDict:self.sectorInfoDict];
-	int i = 0;
-	rIdx_zh = 0;
-	SHHeroDTO *h = [SHHeroDTO new];
-	h.lvl = 14;
-	SET_LOW_BOUND();
-	SET_LOW_BOUND();
-	SET_LOW_BOUND();
-	SHSectorDTO *z = [sectorMed newRandomSectorChoiceGivenHero:h ifShouldMatchLvl:YES];
-	XCTAssertTrue([z.sectorKey isEqualToString:@"NEBULA"]);
-	XCTAssertEqual(z.lvl, 14);
-	XCTAssertTrue([z.suffix isEqualToString:@""]);
-	XCTAssertEqual(z.maxMonsters,5);
-	XCTAssertEqual(z.monstersKilled, 0);
-	XCTAssertTrue([z.fullName isEqualToString:@"Nebula"]);
+		withResourceUtil:self.resourceUtil];
 	
-	i = 0;
 	rIdx_zh = 0;
-	SET_LOW_BOUND();
-	SET_LOW_BOUND();
-	SET_UP_BOUND();
-	z = [sectorMed newRandomSectorChoiceGivenHero:h ifShouldMatchLvl:YES];
-	XCTAssertTrue([z.sectorKey isEqualToString:@"NEBULA"]);
-	XCTAssertEqual(z.lvl, 14);
-	XCTAssertTrue([z.suffix isEqualToString:@"Alpha"]);
-	XCTAssertEqual(z.maxMonsters,15);
-	XCTAssertEqual(z.monstersKilled, 0);
-	XCTAssertTrue([z.fullName isEqualToString:@"Nebula Alpha"]);
+	[context performBlockAndWait:^{
+		int i = 0;
+		SHHero *h = (SHHero*)[context newEntity:SHHero.entity];
+		h.lvl = 14;
+		SET_LOW_BOUND();
+		SET_LOW_BOUND();
+		SET_LOW_BOUND();
+		SHSector *z = [sectorMed newRandomSectorChoiceGivenHero:h ifShouldMatchLvl:YES];
+		XCTAssertTrue([z.sectorKey isEqualToString:@"NEBULA"]);
+		XCTAssertEqual(z.lvl, 14);
+		XCTAssertTrue([z.suffix isEqualToString:@""]);
+		XCTAssertEqual(z.maxMonsters,5);
+		XCTAssertEqual(z.monstersKilled, 0);
+		XCTAssertTrue([z.fullName isEqualToString:@"Nebula"]);
 	
-	i = 0;
-	rIdx_zh = 0;
-	SET_LOW_BOUND(); //sectorGroup
-	SET_LOW_BOUND(); //sector
-	SET_LOW_BOUND(); //sector lvl
-	SET_UP_BOUND(); //maxMonsters
-	z = [sectorMed newRandomSectorChoiceGivenHero:h ifShouldMatchLvl:NO];
-	XCTAssertTrue([z.sectorKey isEqualToString:@"NEBULA"]);
-	XCTAssertEqual(z.lvl, 4);
-	XCTAssertTrue([z.suffix isEqualToString:@"Beta"]);
-	XCTAssertEqual(z.maxMonsters,15);
-	XCTAssertEqual(z.monstersKilled, 0);
-	XCTAssertTrue([z.fullName isEqualToString:@"Nebula Beta"]);
+		i = 0;
+		rIdx_zh = 0;
+		SET_LOW_BOUND();
+		SET_LOW_BOUND();
+		SET_UP_BOUND();
+		z = [sectorMed newRandomSectorChoiceGivenHero:h ifShouldMatchLvl:YES];
+		XCTAssertTrue([z.sectorKey isEqualToString:@"NEBULA"]);
+		XCTAssertEqual(z.lvl, 14);
+		XCTAssertTrue([z.suffix isEqualToString:@"Alpha"]);
+		XCTAssertEqual(z.maxMonsters,15);
+		XCTAssertEqual(z.monstersKilled, 0);
+		XCTAssertTrue([z.fullName isEqualToString:@"Nebula Alpha"]);
 	
-	i = 0;
-	rIdx_zh = 0;
-	SET_LOW_BOUND();//sectorGroup
-	SET_LOW_BOUND();//sector
-	SET_UP_BOUND(); //maxMonsters
-	SET_UP_BOUND(); //sector lvl
-	z = [sectorMed newRandomSectorChoiceGivenHero:h ifShouldMatchLvl:NO];
-	XCTAssertTrue([z.sectorKey isEqualToString:@"NEBULA"]);
-	XCTAssertEqual(z.lvl, 24);
-	XCTAssertTrue([z.suffix isEqualToString:@"Cain"]);
-	XCTAssertEqual(z.maxMonsters,15);
-	XCTAssertEqual(z.monstersKilled, 0);
-	XCTAssertTrue([z.fullName isEqualToString:@"Nebula Cain"]);
+		i = 0;
+		rIdx_zh = 0;
+		SET_LOW_BOUND(); //sectorGroup
+		SET_LOW_BOUND(); //sector
+		SET_LOW_BOUND(); //sector lvl
+		SET_UP_BOUND(); //maxMonsters
+		z = [sectorMed newRandomSectorChoiceGivenHero:h ifShouldMatchLvl:NO];
+		XCTAssertTrue([z.sectorKey isEqualToString:@"NEBULA"]);
+		XCTAssertEqual(z.lvl, 4);
+		XCTAssertTrue([z.suffix isEqualToString:@"Beta"]);
+		XCTAssertEqual(z.maxMonsters,15);
+		XCTAssertEqual(z.monstersKilled, 0);
+		XCTAssertTrue([z.fullName isEqualToString:@"Nebula Beta"]);
+	
+		i = 0;
+		rIdx_zh = 0;
+		SET_LOW_BOUND();//sectorGroup
+		SET_LOW_BOUND();//sector
+		SET_UP_BOUND(); //maxMonsters
+		SET_UP_BOUND(); //sector lvl
+
+		z = [sectorMed newRandomSectorChoiceGivenHero:h ifShouldMatchLvl:NO];
+		XCTAssertTrue([z.sectorKey isEqualToString:@"NEBULA"]);
+		XCTAssertEqual(z.lvl, 24);
+		XCTAssertTrue([z.suffix isEqualToString:@"Cain"]);
+		XCTAssertEqual(z.maxMonsters,15);
+		XCTAssertEqual(z.monstersKilled, 0);
+		XCTAssertTrue([z.fullName isEqualToString:@"Nebula Cain"]);
+	}];
 		
 }
 
@@ -365,78 +364,81 @@ uint sectorHelper_mockRandom(uint range){
 	
 	NSManagedObjectContext *context = [self.dc newBackgroundContext];
 	SHSector_Medium* sectorMed = [SHSector_Medium newWithContext:context
-		withResourceUtil:self.resourceUtil
-		withInfoDict:self.sectorInfoDict];
+		withResourceUtil:self.resourceUtil];
 	
-	SHHeroDTO *h = [SHHeroDTO new];
-	h.lvl = 52;
+	[context performBlockAndWait:^{
+		
+		SHHero *h = (SHHero*)[context newEntity:SHHero.entity];
+		h.lvl = 52;
 
-	int i = 0;
-	rIdx_zh = 0;
-	/*
-	If I break these tests again, try adjusting the order of my SET_LOW_BOUND,
-	SET_UP_BOUND calls below. Yes, this is a fragile test.
-	*/
-	SET_LOW_BOUND();//choice count
-	SET_LOW_BOUND();//sectorGroup
-	SET_LOW_BOUND();//sector
-	SET_UP_BOUND(); //maxMonsters
+		int i = 0;
+		rIdx_zh = 0;
+		/*
+		If I break these tests again, try adjusting the order of my SET_LOW_BOUND,
+		SET_UP_BOUND calls below. Yes, this is a fragile test.
+		*/
+		SET_LOW_BOUND();//choice count
+		SET_LOW_BOUND();//sectorGroup
+		SET_LOW_BOUND();//sector
+		SET_UP_BOUND(); //maxMonsters
 
-	SET_LOW_BOUND();//sectorGroup
-	SET_LOW_BOUND();//sector
-	SET_LOW_BOUND(); //sector lvl
-	SET_UP_BOUND(); //maxMonsters
+		SET_LOW_BOUND();//sectorGroup
+		SET_LOW_BOUND();//sector
+		SET_LOW_BOUND(); //sector lvl
+		SET_UP_BOUND(); //maxMonsters
 
-	SET_LOW_BOUND();//sectorGroup
-	SET_LOW_BOUND();//sector
-	SET_UP_BOUND(); //maxMonsters
-	SET_UP_BOUND(); //sector lvl
+		SET_LOW_BOUND();//sectorGroup
+		SET_LOW_BOUND();//sector
+		SET_UP_BOUND(); //maxMonsters
+		SET_UP_BOUND(); //sector lvl
 
-	NSArray<SHSectorDTO *> *zl = [sectorMed newMultipleSectorChoicesGivenHero:h ifShouldMatchLvl:YES];
-	XCTAssertEqual(zl.count, 3);
-	XCTAssertEqual(zl[0].lvl, 52);
-	XCTAssertEqual(zl[1].lvl, 42);
-	XCTAssertEqual(zl[2].lvl, 62);
+		NSArray<SHSector *> *zl = [sectorMed newMultipleSectorChoicesGivenHero:h ifShouldMatchLvl:YES];
+		XCTAssertEqual(zl.count, 3);
+		XCTAssertEqual(zl[0].lvl, 52);
+		XCTAssertEqual(zl[1].lvl, 42);
+		XCTAssertEqual(zl[2].lvl, 62);
 
-	i = 0;
-	rIdx_zh = 0;
-	SET_UP_BOUND();//choice count
-	SET_LOW_BOUND();//sectorGroup
-	SET_LOW_BOUND();//sector
-	SET_UP_BOUND(); //maxMonsters
-	SET_LOW_BOUND(); //sector lvl
+		i = 0;
+		rIdx_zh = 0;
+		SET_UP_BOUND();//choice count
+		SET_LOW_BOUND();//sectorGroup
+		SET_LOW_BOUND();//sector
+		SET_UP_BOUND(); //maxMonsters
+		SET_LOW_BOUND(); //sector lvl
 
-	SET_LOW_BOUND();//sectorGroup
-	SET_LOW_BOUND();//sector
-	SET_UP_BOUND(); //maxMonsters
-	SET_LOW_BOUND(); //sector lvl
+		SET_LOW_BOUND();//sectorGroup
+		SET_LOW_BOUND();//sector
+		SET_UP_BOUND(); //maxMonsters
+		SET_LOW_BOUND(); //sector lvl
 
-	SET_LOW_BOUND();//sectorGroup
-	SET_LOW_BOUND();//sector
-	SET_UP_BOUND(); //maxMonsters
-	SET_UP_BOUND(); //sector lvl
+		SET_LOW_BOUND();//sectorGroup
+		SET_LOW_BOUND();//sector
+		SET_UP_BOUND(); //maxMonsters
+		SET_UP_BOUND(); //sector lvl
 
-	SET_LOW_BOUND();//sectorGroup
-	SET_LOW_BOUND();//sector
-	SET_UP_BOUND(); //maxMonsters
-	SET_LOW_BOUND(); //sector lvl
+		SET_LOW_BOUND();//sectorGroup
+		SET_LOW_BOUND();//sector
+		SET_UP_BOUND(); //maxMonsters
+		SET_LOW_BOUND(); //sector lvl
 
-	SET_LOW_BOUND();//sectorGroup
-	SET_LOW_BOUND();//sector
-	SET_UP_BOUND(); //maxMonsters
-	SET_LOW_BOUND(); //sector lvl
+		SET_LOW_BOUND();//sectorGroup
+		SET_LOW_BOUND();//sector
+		SET_UP_BOUND(); //maxMonsters
+		SET_LOW_BOUND(); //sector lvl
 
-	zl = [sectorMed newMultipleSectorChoicesGivenHero:h ifShouldMatchLvl:NO];
-	XCTAssertEqual(zl.count, 5);
+		zl = [sectorMed newMultipleSectorChoicesGivenHero:h ifShouldMatchLvl:NO];
+		XCTAssertEqual(zl.count, 5);
+	}];
 }
 
 -(void)testConstructSpecificSector{
 	NSManagedObjectContext *context = [self.dc newBackgroundContext];
 	SHSector_Medium* sectorMed = [SHSector_Medium newWithContext:context
-		withResourceUtil:self.resourceUtil
-		withInfoDict:self.sectorInfoDict];
-	SHSectorDTO *z = [sectorMed newSpecificSector:HOME_KEY withLvl:1 withMonsterCount:0];
-	XCTAssertNotNil(z);
+		withResourceUtil:self.resourceUtil];
+	[context performBlockAndWait:^{
+		SHSector *z = [sectorMed newSpecificSector:HOME_KEY withLvl:1 withMonsterCount:0];
+		XCTAssertNotNil(z);
+	}];
 }
 
 void throwsEx(){
@@ -446,8 +448,7 @@ void throwsEx(){
 -(void)testgetSector{
 	NSManagedObjectContext *context = [self.dc newBackgroundContext];
 	SHSector_Medium* sectorMed = [SHSector_Medium newWithContext:context
-		withResourceUtil:self.resourceUtil
-		withInfoDict:self.sectorInfoDict];
+		withResourceUtil:self.resourceUtil];
 	__block SHSector *z = [sectorMed newEmptySector];
 	NSManagedObjectContext* bgContext = [self.dc newBackgroundContext];
 	z.isFront = YES;
@@ -482,13 +483,10 @@ void throwsEx(){
 -(void)testMoveToFront{
 		NSManagedObjectContext* bgContext = [self.dc newBackgroundContext];
 	SHSector_Medium* sectorMed = [SHSector_Medium newWithContext:bgContext
-		withResourceUtil:self.resourceUtil
-		withInfoDict:self.sectorInfoDict];
-	SHSectorDTO *z0 = [sectorMed newSpecificSector:HOME_KEY withLvl:1 withMonsterCount:0];
+		withResourceUtil:self.resourceUtil];
 	
 	[bgContext performBlockAndWait:^{
-		SHSector *zCd = (SHSector*)[bgContext newEntity:SHSector.entity];
-		[zCd copyFrom:z0];
+		SHSector *zCd = [sectorMed newSpecificSector:HOME_KEY withLvl:1 withMonsterCount:0];
 		[sectorMed moveSectorToFront:zCd];
 		XCTAssertTrue(zCd.isFront);
 		NSError *error = nil;

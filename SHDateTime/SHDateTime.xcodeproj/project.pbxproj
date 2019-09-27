@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2738CB21233EADE500A41CC3 /* SHDatetime.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769C1032286364C00217480 /* SHDatetime.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2769C094227C6DC800217480 /* libSHUtils_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2769C093227C6DC800217480 /* libSHUtils_C.a */; };
 		2769C10A2286382C00217480 /* module.modulemap in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2769C104228636DF00217480 /* module.modulemap */; };
 		27D318512086C9040047F5F1 /* SHTimeZone.c in Sources */ = {isa = PBXBuildFile; fileRef = 27D318462086C9040047F5F1 /* SHTimeZone.c */; };
@@ -214,6 +215,7 @@
 				27D318572086C9040047F5F1 /* SHTimeZone.h in Headers */,
 				27D318532086C9040047F5F1 /* SHDTConstants.h in Headers */,
 				27EE2AB721321218005A8E1F /* SHDatetimeFuncs.h in Headers */,
+				2738CB21233EADE500A41CC3 /* SHDatetime.h in Headers */,
 				27D318552086C9040047F5F1 /* SHDatetime_struct.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

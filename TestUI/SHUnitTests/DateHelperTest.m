@@ -10,7 +10,7 @@
 #import <SHCommon/NSDate+DateHelper.h>
 #import "NSDate+testReplace.h"
 #import <SHCommon/NSLocale+Helper.h>
-#import "SHDatetime.h"
+#import <SHDatetime/SHDatetime.h>
 
 
 
@@ -39,7 +39,8 @@
 	NSDate *testDate;
 	
 	double ans = 0;
-	SHErrorCode error;
+	SHError error;
+	memset(&error, 0, sizeof(SHError));
 	shTryCreateDate(0,1,1,0,&ans,&error);
 	
 	
@@ -98,7 +99,9 @@
 
 -(void)testTimestampToDateObj{
 	SHDatetime dt;
-	SHErrorCode error;
+	SHError error;
+	
+	memset(&error,0,sizeof(SHError));
 	
 	shTryTimestampToDt(-2051222400,0,&dt,&error);
 	XCTAssertEqual(dt.year,1905);
@@ -826,7 +829,8 @@
 		.hour = 2, .minute = 13, .second = 0, .milisecond = 96
 	};
 	double precision = .0001;
-	SHErrorCode error;
+	SHError error;
+	memset(&error, 0, sizeof(SHError));
 	double timestamp = shDtToTimestamp(&dt,&error);
 	
 	dt.year = 9999;
@@ -868,7 +872,9 @@
 }
 
 -(void)testDayOfYear{
-	SHErrorCode error = 0;
+	SHError error;
+	memset(&error, 0, sizeof(error));
+	
 	int result = shCalcDayOfYearFromTimestamp(10022400,0,&error);
 	XCTAssertEqual(result,117);
 	result = shCalcDayOfYearFromTimestamp(73180800,0,&error);
@@ -886,7 +892,8 @@
 -(void)testAddDayToTs{
 	double ts = 578102400;
 	double ans = 0;
-	SHErrorCode error;
+	SHError error;
+	memset(&error,0,sizeof(SHError));
 	shTryAddDaysToTimestamp(ts,0,0,&ans,&error);
 	XCTAssertEqual(ts,ans);
 	shTryAddDaysToTimestamp(ts,1,0,&ans,&error);
@@ -899,11 +906,12 @@
 
 -(void)testAddDays{
 	SHTimeshift dst[2] = {
-		{3,11,2,0,HOUR_IN_SECONDS,{0}},
+		{3,11,2,0,SH_HOUR_IN_SECONDS,{0}},
 		{11,4,2,0,0,{0}}
 	};
-	SHErrorCode error;
-	SHDatetime dt = {.year = 2018,.month = 3, .day = 9, .timezoneOffset = -5*HOUR_IN_SECONDS,
+	SHError error;
+	memset(&error,0,sizeof(SHError));
+	SHDatetime dt = {.year = 2018,.month = 3, .day = 9, .timezoneOffset = -5*SH_HOUR_IN_SECONDS,
 		.hour = 2, .minute = 13, .second = 0
 	};
 	
@@ -916,7 +924,7 @@
 	XCTAssertEqual(copy.day,11);
 	XCTAssertEqual(copy.hour,3);
 	XCTAssertEqual(copy.minute,13);
-	XCTAssertEqual(copy.timezoneOffset,HOUR_IN_SECONDS*-4);
+	XCTAssertEqual(copy.timezoneOffset,SH_HOUR_IN_SECONDS*-4);
 	dt.hour = 1;
 	copy = dt;
 	
@@ -924,7 +932,7 @@
 	XCTAssertEqual(copy.day,11);
 	XCTAssertEqual(copy.hour,1);
 	XCTAssertEqual(copy.minute,13);
-	XCTAssertEqual(copy.timezoneOffset,HOUR_IN_SECONDS*-5);
+	XCTAssertEqual(copy.timezoneOffset,SH_HOUR_IN_SECONDS*-5);
 	dt.hour = 1;
 	dt.minute = 59;
 	copy = dt;
@@ -933,7 +941,7 @@
 	XCTAssertEqual(copy.day,11);
 	XCTAssertEqual(copy.hour,1);
 	XCTAssertEqual(copy.minute,59);
-	XCTAssertEqual(copy.timezoneOffset,HOUR_IN_SECONDS*-5);
+	XCTAssertEqual(copy.timezoneOffset,SH_HOUR_IN_SECONDS*-5);
 	dt.hour = 2;
 	dt.minute = 0;
 	copy = dt;
@@ -942,7 +950,7 @@
 	XCTAssertEqual(copy.day,11);
 	XCTAssertEqual(copy.hour,3);
 	XCTAssertEqual(copy.minute,0);
-	XCTAssertEqual(copy.timezoneOffset,HOUR_IN_SECONDS*-4);
+	XCTAssertEqual(copy.timezoneOffset,SH_HOUR_IN_SECONDS*-4);
 	
 	dt.hour = 3;
 	dt.minute = 1;
@@ -952,7 +960,7 @@
 	XCTAssertEqual(copy.day,11);
 	XCTAssertEqual(copy.hour,3);
 	XCTAssertEqual(copy.minute,1);
-	XCTAssertEqual(copy.timezoneOffset,HOUR_IN_SECONDS*-4);
+	XCTAssertEqual(copy.timezoneOffset,SH_HOUR_IN_SECONDS*-4);
 	
 	copy = dt;
 	
@@ -961,9 +969,9 @@
 	XCTAssertEqual(copy.day,12);
 	XCTAssertEqual(copy.hour,3);
 	XCTAssertEqual(copy.minute,1);
-	XCTAssertEqual(copy.timezoneOffset,HOUR_IN_SECONDS*-4);
+	XCTAssertEqual(copy.timezoneOffset,SH_HOUR_IN_SECONDS*-4);
 	
-	dt.timezoneOffset = -4*HOUR_IN_SECONDS;
+	dt.timezoneOffset = -4 * SH_HOUR_IN_SECONDS;
 	dt.month = 11;
 	dt.day = 3;
 	dt.hour = 0;
@@ -975,7 +983,7 @@
 	XCTAssertEqual(copy.day,4);
 	XCTAssertEqual(copy.hour,0);
 	XCTAssertEqual(copy.minute,1);
-	XCTAssertEqual(copy.timezoneOffset,HOUR_IN_SECONDS*-4);
+	XCTAssertEqual(copy.timezoneOffset,SH_HOUR_IN_SECONDS * -4);
 	
 	dt.hour = 2;
 	copy = dt;
@@ -984,7 +992,7 @@
 	XCTAssertEqual(copy.day,4);
 	XCTAssertEqual(copy.hour,1);
 	XCTAssertEqual(copy.minute,1);
-	XCTAssertEqual(copy.timezoneOffset,HOUR_IN_SECONDS*-5);
+	XCTAssertEqual(copy.timezoneOffset,SH_HOUR_IN_SECONDS * -5);
 	
 	dt.hour = 3;
 	copy = dt;
@@ -993,7 +1001,7 @@
 	XCTAssertEqual(copy.day,4);
 	XCTAssertEqual(copy.hour,3);
 	XCTAssertEqual(copy.minute,1);
-	XCTAssertEqual(copy.timezoneOffset,HOUR_IN_SECONDS*-5);
+	XCTAssertEqual(copy.timezoneOffset,SH_HOUR_IN_SECONDS * -5);
 	
 	dt.hour = 2;
 	copy = dt;
@@ -1002,7 +1010,7 @@
 	XCTAssertEqual(copy.day,5);
 	XCTAssertEqual(copy.hour,2);
 	XCTAssertEqual(copy.minute,1);
-	XCTAssertEqual(copy.timezoneOffset,HOUR_IN_SECONDS*-5);
+	XCTAssertEqual(copy.timezoneOffset,SH_HOUR_IN_SECONDS * -5);
 }
 
 

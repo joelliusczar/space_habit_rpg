@@ -17,6 +17,7 @@
 #import "SHMonsterDictionaryEntry.h"
 
 static float MAX_HP_MODIFIER = .1;
+static float XP_MODIFIER = .1;
 static SHMonsterInfoDictionary *_monsterInfo;
 
 @interface SHMonster ()
@@ -102,14 +103,32 @@ static void copyBetween(NSObject* from,NSObject* to){
 
 
 -(int32_t)maxHp{
-	SHMonsterDictionaryEntry *entry = [SHMonster.monsterInfo getMonsterEntry:self.monsterKey];
-	return entry.baseHp + (self.lvl * entry.baseHp * MAX_HP_MODIFIER);
+	return self.entry.baseHp + (self.lvl * self.entry.baseHp * MAX_HP_MODIFIER);
 }
 
 
 -(int32_t)attack{
-	SHMonsterDictionaryEntry *entry = [SHMonster.monsterInfo getMonsterEntry:self.monsterKey];
-	return entry.baseAttack + self.lvl;
+	return self.entry.baseAttack + self.lvl;
+}
+
+
+-(int32_t)defense{
+	return self.entry.defense;
+}
+
+
+-(int32_t)xp{
+	return self.entry.baseXp + (self.lvl * self.entry.baseXp * XP_MODIFIER);
+}
+
+
+-(float)treasureDropRate{
+	return self.entry.treasureDropRate;
+}
+
+
+-(int32_t)encounterWeight{
+	return self.entry.encounterWeight;
 }
 
 

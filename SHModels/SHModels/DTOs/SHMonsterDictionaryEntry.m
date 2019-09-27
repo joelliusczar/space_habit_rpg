@@ -87,7 +87,7 @@
 	return defLvl.intValue;
 }
 
--(int32_t)xp{
+-(int32_t)baseXp{
 	NSNumber *xp = (NSNumber *)self.monInfoDict[@"BASE_XP_REWARD"];
 	#if SH_EXTRA_ERRORS
 		NSAssert(xp,@"Basic XP should not be null");

@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong,nonatomic) NSDictionary *monInfoDict;
 @property (nonatomic,readonly) int32_t baseAttack;
 @property (nonatomic,readonly) int32_t defense;
-@property (nonatomic,readonly) int32_t xp;
+@property (nonatomic,readonly) int32_t baseXp;
 @property (nonatomic,readonly) int32_t baseHp;
 @property (nonatomic,readonly) float treasureDropRate;
 @property (nonatomic,readonly) int32_t encounterWeight;

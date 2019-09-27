@@ -24,7 +24,7 @@
 
 -(instancetype)initWithActiveDaysJson:(NSString*)activeDaysJson{
 	if(self = [super init]){
-		_jsonRepresentation = activeDaysJson;
+		_jsonRepresentation = activeDaysJson ? activeDaysJson : SH_ALL_DAYS_JSON;
 	}
 	return self;
 }

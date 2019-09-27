@@ -16,7 +16,7 @@
 #import <SHModels/SHConfig.h>
 #import <SHModels/SHSector.h>
 #import <SHModels/SHMonster.h>
-#import <SHModels/SHSectorTransaction.h>
+#import <SHModels/SHTransaction.h>
 #import <SHModels/SHMonster_Medium.h>
 #import <SHGlobal/SHConstants.h>
 #import <SHData/SHCoreData.h>
@@ -60,74 +60,75 @@
 
 -(void)testMonsterProperties{
 	NSManagedObjectContext *context = [self.dc newBackgroundContext];
-	SHMonster_Medium *mm = [Monster_Medium
-		newWithContext:context
-		withInfoDict:self.monsterInfoDict];
-	SHMonsterDTO *m = [mm newEmptyMonster];
-	m.lvl = 13;
-	m.monsterKey = @"DUST_FAIRY";
-	m.nowHp = 123;
-	XCTAssertEqual(m.lvl, 13);
-	XCTAssertEqual(m.maxHp,287);
-	XCTAssertEqual(m.nowHp, 123);
-	XCTAssertEqual(m.xp, 1);
-	XCTAssertTrue([m.fullName isEqualToString:@"Dust Fairy"]);
-	XCTAssertEqual(m.defense, 0);
-	XCTAssertEqualWithAccuracy(m.treasureDropRate, .1, .011);
-	XCTAssertEqual(m.encounterWeight, 25);
-	XCTAssertEqual(m.attack, 17);
-	XCTAssertTrue([[m.synopsis substringToIndex:37] isEqualToString:@"Dust Fairies are fiercely territorial"]);
+	[context performBlockAndWait:^{
+		SHMonster *m = (SHMonster*)[context newEntity:SHMonster.entity];
+		m.lvl = 13;
+		m.monsterKey = @"DUST_FAIRY";
+		m.nowHp = 123;
+		XCTAssertEqual(m.lvl, 13);
+		XCTAssertEqual(m.maxHp,287);
+		XCTAssertEqual(m.nowHp, 123);
+		XCTAssertEqual(m.xp, 1);
+		XCTAssertTrue([m.fullName isEqualToString:@"Dust Fairy"]);
+		XCTAssertEqual(m.defense, 0);
+		XCTAssertEqualWithAccuracy(m.treasureDropRate, .1, .011);
+		XCTAssertEqual(m.encounterWeight, 25);
+		XCTAssertEqual(m.attack, 17);
+		XCTAssertTrue([[m.synopsis substringToIndex:37] isEqualToString:@"Dust Fairies are fiercely territorial"]);
+		
+	}];
 }
 
 -(void)testSectorProperties{
-	SHSectorDTO *z = [SHSectorDTO newWithSectorDict:self.sectorInfoDict];
-	z.lvl = 5;
-	z.sectorKey = @"SAFE_SPACE";
-	z.isFront = YES;
-	z.maxMonsters = 17;
-	z.monstersKilled = 8;
-	z.suffix = @"Test";
-	z.uniqueId = 13;
-	XCTAssertEqual(z.lvl, 5);
-	XCTAssertEqual(z.isFront, YES);
-	XCTAssertEqual(z.maxMonsters, 17);
-	XCTAssertEqual(z.monstersKilled, 8);
-	XCTAssertEqual(z.uniqueId, 13);
-	NSString *pStr = z.fullName;
-	XCTAssertTrue([pStr isEqualToString:@"Safe Space Test"]);
-	XCTAssertTrue([[z.synopsis substringToIndex:53] isEqualToString:@"Here in safe space, they enforce even the small rules"]);
+	NSManagedObjectContext *context = [self.dc newBackgroundContext];
+	[context performBlockAndWait:^{
+		SHSector *z = (SHSector*)[context newEntity:SHSector.entity];
+		z.lvl = 5;
+		z.sectorKey = @"SAFE_SPACE";
+		z.isFront = YES;
+		z.maxMonsters = 17;
+		z.monstersKilled = 8;
+		z.suffix = @"Test";
+		z.uniqueId = 13;
+		XCTAssertEqual(z.lvl, 5);
+		XCTAssertEqual(z.isFront, YES);
+		XCTAssertEqual(z.maxMonsters, 17);
+		XCTAssertEqual(z.monstersKilled, 8);
+		XCTAssertEqual(z.uniqueId, 13);
+		NSString *pStr = z.fullName;
+		XCTAssertTrue([pStr isEqualToString:@"Safe Space Test"]);
+		XCTAssertTrue([[z.synopsis substringToIndex:53] isEqualToString:@"Here in safe space, they enforce even the small rules"]);
+		
+	}];
 }
 
 -(void)testRemoveEntitRefBeforeSaving{
 	NSObject<P_CoreData> *dc = self.dc;
 	NSManagedObjectContext *bgContext = [dc newBackgroundContext];
 	[bgContext performBlockAndWait:^{
-		SHSectorTransaction *zt = (SHSectorTransaction *)[bgContext newEntity:SHSectorTransaction.entity];
+		SHTransaction *zt = (SHTransaction *)[bgContext newEntity:SHTransaction.entity];
 		zt.misc = @"Just random shit!";
 		zt = nil;
 		NSError* error = nil;
 		[bgContext save:&error];
 	}];
 	
-	NSFetchRequest<SHSectorTransaction*>* request = [SHSectorTransaction fetchRequest];
+	NSFetchRequest<SHTransaction*>* request = [SHTransaction fetchRequest];
 	
 	NSArray<NSManagedObject*>* results = [self fetchAnything:request context:dc.mainThreadContext];
 	NSAssert(results.count == 1,@"result was not one");
-	NSString *misc = ((SHSectorTransaction*)results[0]).misc;
+	NSString *misc = ((SHTransaction*)results[0]).misc;
 	NSAssert([misc isEqualToString:@"Just random shit!"],@"Strings not equal");
 }
 
 -(void)testDoubleInsert{
 	NSManagedObjectContext* bgContext = [self.dc newBackgroundContext];
-	SHSector_Medium* sectorMed = [SHSector_Medium newWithContext:bgContext
-		withResourceUtil:self.resourceUtil
-		withInfoDict:self.sectorInfoDict];
+	SHSector_Medium* sectorMed = [SHSector_Medium
+		newWithContext:bgContext
+		withResourceUtil:self.resourceUtil];
 	
 	[bgContext performBlockAndWait:^{
-		SHSectorDTO *zDto = [sectorMed newSpecificSector2:@"SAFE_SPACE" withLvl:16];
-		SHSector *z = (SHSector*)[NSManagedObjectContext
-			newEntityUnattached:SHSector.entity];
-		[z narrowCopyFrom:zDto];
+		SHSector *z = [sectorMed newSpecificSector2:@"SAFE_SPACE" withLvl:16];
 		[bgContext insertObject:z];
 		[bgContext insertObject:z];
 		NSError* error = nil;
@@ -150,11 +151,7 @@
 	//this last part is to verify that it's not just returning only one
 	//regardless of what is in stored
 	[bgContext performBlockAndWait:^{
-		
-		SHSectorDTO *z3Dto = [sectorMed newSpecificSector2:@"SAFE_SPACE" withLvl:16];
-		SHSector* z3 = (SHSector*)[NSManagedObjectContext
-			newEntityUnattached:SHSector.entity];
-		[z3 narrowCopyFrom:z3Dto];
+		SHSector *z3 = [sectorMed newSpecificSector2:@"SAFE_SPACE" withLvl:16];
 		[bgContext insertObject:z3];
 		NSError *error = nil;
 		[bgContext save:&error];

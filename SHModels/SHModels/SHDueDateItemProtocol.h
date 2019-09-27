@@ -14,8 +14,13 @@
 @import CoreData;
 
 @protocol SHDueDateItemProtocol <NSObject,SHMappableProtocol>
-@property (readonly,nonatomic) NSDate *nextDueTime;
-@property (readonly,nonatomic) NSInteger maxDaysBefore;
+@property (readonly,nonatomic) NSDate* nextDueDate;
+@property (readonly,nonatomic) NSInteger daysUntilDue;
+/*
+maxDaysBeforeSpan is used as a selection limit. The user is not allowed
+to set reminders to ranges greater than {maxDaysBeforeSpan} before the
+due date of an item
+*/
 @property (readonly,nonatomic) NSInteger maxDaysBeforeSpan;
 @property (readonly,nonatomic) NSUInteger reminderCount;
 -(SHReminder*)reminderAtIndex:(NSUInteger)index;

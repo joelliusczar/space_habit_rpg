@@ -50,7 +50,7 @@
 }
 
 
--(NSDate *)nextDueTime{
+-(NSDate *)nextDueDate{
 	SHDailyNextDueDateCalculator *calculator = [[SHDailyNextDueDateCalculator alloc]
 		initWithActiveDays:self.activeDaysContainer
 		lastActivationDateTime:self.lastActivationDateTime
@@ -72,18 +72,16 @@
 }
 
 
--(NSInteger)maxDaysBefore{
+-(NSInteger)daysUntilDue{
 	__block NSUInteger dayStart = 0;
 	[self.managedObjectContext performBlockAndWait:^{
-		NSFetchRequest *request = SHConfig.fetchRequest;
-		request.sortDescriptors = shBasicSortDescArray(@"dayStartHour");
-		NSArray *results = [self.managedObjectContext getItemsWithRequest:request];
-		NSAssert(results.count == 1,@"There should be exactly one config object");
-		SHConfig *config = (SHConfig*)results[0];
+		SHConfig_Medium *cm = [[SHConfig_Medium alloc]
+			initWithContext:self.managedObjectContext];
+		SHConfig *config = [cm globalConfig];
 		dayStart = config.dayStartHour;
 	}];
 	NSDate *roundedDownToday = [[NSDate date] setHour:dayStart minute:0 second:0];
-	return (int)[NSDate daysBetween:roundedDownToday to:self.nextDueTime];
+	return (int)[NSDate daysBetween:roundedDownToday to:self.nextDueDate];
 }
 
 

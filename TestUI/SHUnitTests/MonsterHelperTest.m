@@ -7,6 +7,7 @@
 //
 
 #import <SHModels/SHMonster_Medium.h>
+#import <SHModels/SHMonster.h>
 @import SHTestCommon;
 
 @interface MonsterHelperTest : FrequentCase
@@ -36,14 +37,7 @@ uint monsterHelper_mockRandom(uint range){
 	[super tearDown];
 }
 
--(void)testConstructEmpty{
-	NSManagedObjectContext *context = [self.dc newBackgroundContext];
-	SHMonster_Medium *mm = [Monster_Medium
-		newWithContext:context
-		withInfoDict:self.monsterInfoDict];
-	SHMonsterDTO *m = [mm newEmptyMonster];
-	XCTAssertNotNil(m);
-}
+
 	
 -(void)testMonsterOrder{
 	NSArray<NSString *> *ml = [self.monsterInfoDict getMonsterKeyList:@"NEBULA"];
@@ -67,9 +61,8 @@ uint monsterHelper_mockRandom(uint range){
 	SET_LOW_BOUND();
 	SET_UP_BOUND();
 	NSManagedObjectContext *context = [self.dc newBackgroundContext];
-	SHMonster_Medium *mm = [Monster_Medium
-		newWithContext:context
-		withInfoDict:self.monsterInfoDict];
+	SHMonster_Medium *mm = [[SHMonster_Medium alloc]
+		initWithContext:context];
 	NSString *s = [mm randomMonsterKey:@"NEBULA"];
 	XCTAssertTrue([s isEqualToString:@"DUST_FAIRY"]);
 	s = [mm randomMonsterKey:@"NEBULA"];
@@ -78,42 +71,46 @@ uint monsterHelper_mockRandom(uint range){
 }
 	
 -(void)testConstructRandomMonster{
-	int i =0;
-	SET_LOW_BOUND();
-	SET_LOW_BOUND();
+	
 	NSManagedObjectContext *context = [self.dc newBackgroundContext];
-	SHMonster_Medium *mm = [Monster_Medium
-		newWithContext:context
-		withInfoDict:self.monsterInfoDict];
-	SHMonsterDTO *m = [mm newRandomMonster:@"NEBULA" sectorLvl:32];
-	XCTAssertTrue([m.fullName isEqualToString:@"Dust Fairy"]);
-	XCTAssertEqual(m.lvl,22);
-	XCTAssertEqual(m.maxHp,400);
-	XCTAssertEqual(m.nowHp,400);
+	[context performBlockAndWait:^{
+		int i =0;
+		SET_LOW_BOUND();
+		SET_LOW_BOUND();
+		
+		SHMonster_Medium *mm = [[SHMonster_Medium alloc]
+		initWithContext:context];
+		SHMonster *m = [mm newRandomMonster:@"NEBULA" sectorLvl:32];
+		XCTAssertTrue([m.fullName isEqualToString:@"Dust Fairy"]);
+		XCTAssertEqual(m.lvl,22);
+		XCTAssertEqual(m.maxHp,400);
+		XCTAssertEqual(m.nowHp,400);
+		SET_LOW_BOUND();
+		SET_UP_BOUND();
+		m = [mm newRandomMonster:@"NEBULA" sectorLvl:32];
+		XCTAssertTrue([m.fullName isEqualToString:@"Dust Fairy"]);
+		XCTAssertEqual(m.lvl,42);
+		XCTAssertEqual(m.maxHp,650);
+		XCTAssertEqual(m.nowHp,650);
+		SET_UP_BOUND();
+		SET_LOW_BOUND();
+		m = [mm newRandomMonster:@"NEBULA" sectorLvl:32];
+		XCTAssertTrue([m.fullName isEqualToString:@"Petty Space Pirates"]);
+		XCTAssertEqual(m.lvl,22);
+		XCTAssertEqual(m.maxHp,160);
+		XCTAssertEqual(m.nowHp,160);
+		
+		SET_UP_BOUND();
+		SET_UP_BOUND();
+		m = [mm newRandomMonster:@"NEBULA" sectorLvl:32];
+		XCTAssertTrue([m.fullName isEqualToString:@"Petty Space Pirates"]);
+		XCTAssertEqual(m.lvl,42);
+		XCTAssertEqual(m.maxHp,260);
+		XCTAssertEqual(m.nowHp,260);
+	}];
 	
-	SET_LOW_BOUND();
-	SET_UP_BOUND();
-	m = [mm newRandomMonster:@"NEBULA" sectorLvl:32];
-	XCTAssertTrue([m.fullName isEqualToString:@"Dust Fairy"]);
-	XCTAssertEqual(m.lvl,42);
-	XCTAssertEqual(m.maxHp,650);
-	XCTAssertEqual(m.nowHp,650);
 	
-	SET_UP_BOUND();
-	SET_LOW_BOUND();
-	m = [mm newRandomMonster:@"NEBULA" sectorLvl:32];
-	XCTAssertTrue([m.fullName isEqualToString:@"Petty Space Pirates"]);
-	XCTAssertEqual(m.lvl,22);
-	XCTAssertEqual(m.maxHp,160);
-	XCTAssertEqual(m.nowHp,160);
 	
-	SET_UP_BOUND();
-	SET_UP_BOUND();
-	m = [mm newRandomMonster:@"NEBULA" sectorLvl:32];
-	XCTAssertTrue([m.fullName isEqualToString:@"Petty Space Pirates"]);
-	XCTAssertEqual(m.lvl,42);
-	XCTAssertEqual(m.maxHp,260);
-	XCTAssertEqual(m.nowHp,260);
 }
 
 
