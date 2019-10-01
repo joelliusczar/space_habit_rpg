@@ -18,24 +18,23 @@
 @import SHTestCommon;
 
 @interface DailyHelperTest : FrequentCase
-
+@property (strong,nonatomic) NSManagedObjectContext *testContext;
 @end
 
-NSMutableArray<SHDaily *> *testDailies = nil;
+
 
 @implementation DailyHelperTest
 
 -(void)setUp {
 	[super setUp];
-	testDailies = [NSMutableArray array];
-	NSManagedObjectContext* bgContext = [self.dc newBackgroundContext];
+	self.testContext = [self.dc newBackgroundContext];
 	
-	[bgContext performBlockAndWait:^{
+	[self.testContext performBlockAndWait:^{
 		int a0=0,a1=0,a2=0,a3=0,a4=0,a5=0;
+		SHDaily *testDaily = (SHDaily*)[self.testContext newEntity:SHDaily.entity];
 		for(int i = 0;i<50;i++){
-			testDailies[i] = (SHDaily*)[NSManagedObjectContext newEntityUnattached:SHDaily.entity];
-			testDailies[i].dailyName = [NSString stringWithFormat:@"daily %d",i];
-			[bgContext insertObject:testDailies[i]];
+			testDaily.dailyName = [NSString stringWithFormat:@"daily %d",i];
+			[self.testContext insertObject:testDaily];
 			NSDate *dailyDate = nil;
 			if(i%10 == 0){
 				//before
@@ -67,11 +66,11 @@ NSMutableArray<SHDaily *> *testDailies = nil;
 				dailyDate = [NSDate createDateTimeWithYear:1988 month:4 day:26 hour:8 minute:0 second:0];
 				a5++;
 			}
-			testDailies[i].lastActivationDateTime = dailyDate;
-			testDailies[i].isActive = YES;
+			testDaily.lastActivationDateTime = dailyDate;
+			testDaily.isActive = YES;
 		}
 		NSError *error = nil;
-		[bgContext save:&error];
+		[self.testContext save:&error];
 		
 		//sanity check
 		XCTAssertEqual((a0+a1+a2+a3+a4+a5), 27);
@@ -80,78 +79,98 @@ NSMutableArray<SHDaily *> *testDailies = nil;
 }
 
 -(void)tearDown {
-	testDailies = nil;
 	[super tearDown];
 }
 
 -(void)testGetAnything{
-	NSManagedObjectContext *context = self.dc.mainThreadContext;
-	NSFetchRequest<SHDaily*> *request = SHDaily.fetchRequest;
-	request.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"urgency" ascending:NO]];
-	NSFetchedResultsController* resultsController = [context getItemFetcher:request];
-	NSError *error;
-	if(![resultsController performFetch:&error]){
-		NSLog(@"Error fetching data: %@", error.localizedFailureReason);
-		XCTAssertNil(error);
-	}
-	XCTAssertEqual(resultsController.fetchedObjects.count,50);
+	NSManagedObjectContext *context = self.testContext;
+	__block NSError *error;
+	__block NSUInteger recordCount;
+	[self.testContext performBlockAndWait:^{
+		NSFetchRequest<SHDaily*> *request = SHDaily.fetchRequest;
+		request.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"urgency" ascending:NO]];
+		NSFetchedResultsController* resultsController = [context getItemFetcher:request];
+		if(![resultsController performFetch:&error]){
+			NSLog(@"Error fetching data: %@", error.localizedFailureReason);
+		}
+		recordCount = resultsController.fetchedObjects.count;
+	}];
+	XCTAssertNil(error);
+	XCTAssertEqual(recordCount,50);
 }
 
 -(void)testRetrieveUnfinishedDailies{
-	NSManagedObjectContext *bgContext = [self.dc newBackgroundContext];
-	SHDaily_Medium *dm = [SHDaily_Medium newWithContext:bgContext];
+	[NSDate swizzleThatShit];
+	SHDaily_Medium *dm = [SHDaily_Medium newWithContext:self.testContext];
 	NSDate *testDate = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:6 minute:0 second:0];
 	NSFetchedResultsController *results = [dm dailiesDataFetcher];
-	NSError *error = nil;
-	if(![results performFetch:&error]){
-		
-		NSLog(@"Error fetching data: %@", error.localizedFailureReason);
-		XCTAssertNil(error);
-	}
-	XCTAssertEqual(results.fetchedObjects.count,50);
-	XCTAssertEqual(results.sections[0].numberOfObjects,31);
-	XCTAssertEqual(results.sections[1].numberOfObjects,19);
-	
-	
-	[bgContext performBlockAndWait:^{
-		//add save new item
-		SHDaily *d = (SHDaily*)[NSManagedObjectContext newEntityUnattached:SHDaily.entity];
-		d.dailyName = @"addedDaily";
-		[bgContext insertObject:d];
-		//after insert, before fetch
-		XCTAssertEqual(results.sections[0].numberOfObjects,31);
-		XCTAssertEqual(results.sections[1].numberOfObjects,19);
-		NSError *error = nil;
+	__block NSInteger unfinishedCount;
+	__block NSInteger finishedCount;
+	__block NSError *error = nil;
+	[self.testContext performBlockAndWait:^{
+		error = nil;
 		if(![results performFetch:&error]){
 			NSLog(@"Error fetching data: %@", error.localizedFailureReason);
-			XCTAssertNil(error);
+			
+		}
+		unfinishedCount = results.sections[0].numberOfObjects;
+		finishedCount = results.sections[1].numberOfObjects;
+	}];
+	XCTAssertNil(error);
+	XCTAssertEqual(unfinishedCount,31);
+	XCTAssertEqual(finishedCount,19);
+	
+	[self.testContext performBlockAndWait:^{
+		//add save new item
+		SHDaily *d = (SHDaily*)[self.testContext newEntity:SHDaily.entity];
+		d.dailyName = @"addedDaily";
+		[self.testContext insertObject:d];
+		//after insert, before fetch
+		unfinishedCount = results.sections[0].numberOfObjects;
+		finishedCount = results.sections[1].numberOfObjects;
+	}];
+	
+	XCTAssertEqual(unfinishedCount,31);
+	XCTAssertEqual(finishedCount,19);
+	
+	[self.testContext performBlockAndWait:^{
+		error = nil;
+		if(![results performFetch:&error]){
+			NSLog(@"Error fetching data: %@", error.localizedFailureReason);
 		}
 		//after insert, after fetch, before save
-		XCTAssertEqual(results.sections[0].numberOfObjects,32);
-		XCTAssertEqual(results.sections[1].numberOfObjects,19);
+		unfinishedCount = results.sections[0].numberOfObjects;
+		finishedCount = results.sections[1].numberOfObjects;
 		//saving is unecessary to be included in fetch results
 	}];
+	XCTAssertNil(error);
+	XCTAssertEqual(unfinishedCount,32);
+	XCTAssertEqual(finishedCount,19);
 	
 	NSManagedObjectContext *bgContext2 = [self.dc newBackgroundContext];
 // keeping this here to help mark what the test was originally about
 //	 [self.dc beginUsingTemporaryContext];
 	
 	[bgContext2 performBlockAndWait:^{
-		SHDaily *d2 = (SHDaily*)[NSManagedObjectContext newEntityUnattached:SHDaily.entity];
+		SHDaily *d2 = (SHDaily*)[bgContext2 newEntity:SHDaily.entity];
 		d2.dailyName = @"addedDaily2";
 		[bgContext2 insertObject:d2];
-		NSError *error = nil;
+		error = nil;
 		[bgContext2 save:&error];
 	}];
 	
 //	[self.dc endUsingTemporaryContext];
-	
-	if(![results performFetch:&error]){
-		NSLog(@"Error fetching data: %@", error.localizedFailureReason);
-		XCTAssertNil(error);
-	}
-	XCTAssertEqual(results.sections[0].numberOfObjects,33);
-	XCTAssertEqual(results.sections[1].numberOfObjects,19);
+	[self.testContext performBlockAndWait:^{
+		error = nil;
+		if(![results performFetch:&error]){
+			NSLog(@"Error fetching data: %@", error.localizedFailureReason);
+		}
+		unfinishedCount = results.sections[0].numberOfObjects;
+		finishedCount = results.sections[1].numberOfObjects;
+	}];
+	XCTAssertNil(error);
+	XCTAssertEqual(unfinishedCount,33);
+	XCTAssertEqual(finishedCount,19);
 }
 
 #warning maybe put back

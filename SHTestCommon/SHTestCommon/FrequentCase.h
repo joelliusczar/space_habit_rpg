@@ -27,6 +27,6 @@
 -(void)resetDb;
 
 -(NSArray<NSManagedObject*> *)fetchAnything:(NSFetchRequest *)request
-context:(NSManagedObjectContext*)context;
+	context:(NSManagedObjectContext*)context;
 
 @end

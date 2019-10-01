@@ -157,7 +157,7 @@
 				271691C020885EF70059A58E /* Headers */,
 				271691BE20885EF70059A58E /* Sources */,
 				271691BF20885EF70059A58E /* Frameworks */,
-				27DF9C422094EB5100F98023 /* ShellScript */,
+				27DF9C422094EB5100F98023 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -219,13 +219,14 @@
 			shellScript = "sh Scripts/SHCore_C.prebuild.sh\n";
 			showEnvVarsInLog = 0;
 		};
-		27DF9C422094EB5100F98023 /* ShellScript */ = {
+		27DF9C422094EB5100F98023 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
