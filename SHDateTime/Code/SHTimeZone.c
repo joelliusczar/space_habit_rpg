@@ -67,12 +67,12 @@ int shFindTimeShiftIdx(SHDatetime *dt){
 static int _updateTimezoneForShifts(SHDatetime *dt,SHError *error){
 	shLog("_updateTimezoneForShifts\n");
 	if(!(dt&&error)) {
-		return shHandleError(NULL_VALUES, "Null inputs", error);
+		return shHandleError(SH_NULL_VALUES, "Null inputs", error);
 	}
 	if(dt->shifts){
 		int oldShiftIdx = dt->currentShiftIdx;
 		if(oldShiftIdx < 0 || oldShiftIdx >= dt->shiftLen){
-			return INVALID_STATE;
+			return SH_INVALID_STATE;
 		}
 		double ts;
 		SHError cnvtErr;
@@ -105,7 +105,7 @@ static int _updateTimezoneForShifts(SHDatetime *dt,SHError *error){
 					" time object.",error);
 			}
 			dt->currentShiftIdx = updShiftIdx;
-			return NO_ERROR;
+			return SH_NO_ERROR;
 		}
 		
 	}
@@ -114,6 +114,6 @@ static int _updateTimezoneForShifts(SHDatetime *dt,SHError *error){
 
 bool shUpdateTimezoneForShifts(SHDatetime *dt,SHError *error){
 	int resultCode = _updateTimezoneForShifts(dt,error);
-	return resultCode == NO_ERROR || resultCode == SKIP;
+	return resultCode == SH_NO_ERROR || resultCode == SKIP;
 }
 

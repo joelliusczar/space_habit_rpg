@@ -18,6 +18,13 @@
 
 @implementation SHMonster_Medium
 
+-(SHMonsterInfoDictionary *)monsterInfo{
+	if(nil == _monsterInfo){
+		_monsterInfo = SHMonster.monsterInfo;
+	}
+	return _monsterInfo;
+}
+
 -(instancetype)initWithContext:(NSManagedObjectContext*)context{
 	if(self = [super init]) {
 		_context = context;

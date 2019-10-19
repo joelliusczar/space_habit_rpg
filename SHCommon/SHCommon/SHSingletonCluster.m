@@ -72,14 +72,6 @@
 }
 
 
--(SHFlexibleConstants *)constants{
-	if(nil==_constants){
-		_constants = [[SHFlexibleConstants alloc] init];
-	}
-	return _constants;
-}
-
-
 -(NSMutableDictionary*)bag{
 	if(nil==_bag){
 		_bag = [NSMutableDictionary dictionary];

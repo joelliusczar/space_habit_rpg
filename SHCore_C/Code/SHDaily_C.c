@@ -122,9 +122,38 @@ static int _offsetForSameWeek(bool isActiveWeek, int inputDayIdx,int prevDayIdx)
 }
 
 
-bool shPreviousDueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate
-	,SHRateValueItem *rvi,int64_t scaler,SHDatetime *ans,SHError *error)
+static void _prepareDatetimeForCalculations(SHDatetime *dt, int32_t dayStartTime, SHError *error) {
+	memset(error, 0, sizeof(SHError));
+	int32_t timeOfDayInSeconds = (int32_t)shExtractTime(dt, error);
+	if(timeOfDayInSeconds >= dayStartTime) {
+		shDayStartInPlace(dt);
+		return;
+	}
+	shDayStartInPlace(dt);
+	dt->timezoneOffset = 0; 
+	
+	//didn't want to free dt->shifts in case it's used on another pointer, but also
+	//did not want to null it out and possibly loose a reference to it, creating a memory leak
+	dt->shiftLen = 0;
+	shTryAddDaysToDtInPlace(dt, -1, 0, &error);
+}
+
+
+bool shPreviousDueDateWithPreparedInputs_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate
+	,SHRateValueItem *rvi,int64_t scaler,int32_t dayStartHour,SHDatetime *ans,SHError *error)
 {
+	SHDatetime lastDueDatePrepared = *lastDueDate;
+	SHDatetime checkinDatePrepared = *checkinDate;
+	_prepareDatetimeForCalculations(&lastDueDatePrepared, dayStartHour, error);
+	_prepareDatetimeForCalculations(&checkinDatePrepared, dayStartHour, error);
+	return shPreviousDueDate_WEEKLY(&lastDueDatePrepared, &checkinDatePrepared,
+		rvi, scaler, dayStartHour, ans, error);
+}
+
+bool shPreviousDueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate
+	,SHRateValueItem *rvi,int64_t scaler,int32_t dayStartHour,SHDatetime *ans,SHError *error)
+{
+	(void)dayStartHour; //decided to move this up the call chain
 	shLog("previousDueDate_WEEKLY");
 	if(!_ArePreviousDateInputsValid(lastDueDate,checkinDate,rvi,scaler,ans,error)){
 		return false;
@@ -141,8 +170,8 @@ bool shPreviousDueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate
 	int64_t sunOfPrevActionWeek = firstSunToPrevSunSpan - _distanceFromActiveWeek(firstSunToPrevSunSpan, scaler);
 	shTryAddDaysToDt(&firstDayOfFirstWeek,sunOfPrevActionWeek + prevDayIdx,0,ans,error);
 	if((shDtToTimestamp(ans,error) > shDtToTimestamp(checkinDate,error))){
-			return shHandleError(OUT_OF_RANGE
-							 ,"The calculated answer for previous due date is after the checkindate",error);
+			return shHandleError(SH_OUT_OF_RANGE
+				,"The calculated answer for previous due date is after the checkindate",error);
 	}
 	shLog("leaving previousDueDate_WEEKLY");
 	return true;
@@ -150,17 +179,22 @@ bool shPreviousDueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate
 
 
 SHDatetime* shBothWeeklyDueDatesFromLastDueDate(SHDatetime* lastDueDate,SHDatetime* checkinDate
-	,SHRateValueItem* week,int64_t scaler,SHError *error)
+	,SHRateValueItem* week,int64_t scaler, int32_t dayStartHour,SHError *error)
 {
 	shLog("bothWeeklyDueDatesFromLastDueDate");
 	SHDatetime previousDate;
-	shPreviousDueDate_WEEKLY(lastDueDate, checkinDate, week, scaler, &previousDate, error);
-	if(error && error->code != NO_ERROR){
+	SHDatetime lastDueDatePrepared = *lastDueDate;
+	SHDatetime checkinDatePrepared = *checkinDate;
+	_prepareDatetimeForCalculations(&lastDueDatePrepared, dayStartHour, error);
+	_prepareDatetimeForCalculations(&checkinDatePrepared, dayStartHour, error);
+	shPreviousDueDate_WEEKLY(&lastDueDatePrepared, &checkinDatePrepared, week, scaler,
+		dayStartHour, &previousDate, error);
+	if(error && error->code != SH_NO_ERROR){
 		return shHandleErrorRetNull(error->code,"Error getting previous date",error);
 	}
 	int prevDayIdx = shCalcWeekdayIdx(&previousDate, error);
 	SHDatetime firstDayOfPrevWeek;
-	shTryAddDaysToDt(&previousDate, -1*prevDayIdx, 0, &firstDayOfPrevWeek, error);
+	shTryAddDaysToDt(&previousDate, -1 * prevDayIdx, 0, &firstDayOfPrevWeek, error);
 	int64_t daySpan = shDateDiffDays(checkinDate,&firstDayOfPrevWeek, error);
 	int checkinDayIdx = shCalcWeekdayIdx(checkinDate, error);
 	int64_t prevSunToThisSunSpan = daySpan - checkinDayIdx;
@@ -179,19 +213,20 @@ SHDatetime* shBothWeeklyDueDatesFromLastDueDate(SHDatetime* lastDueDate,SHDateti
 }
 
 bool shNextDueDate_WEEKLY(SHDatetime* lastDueDate,SHDatetime* checkinDate
-	,SHRateValueItem* week,int64_t scaler,SHDatetime *ans,SHError* error)
+	,SHRateValueItem* week,int64_t scaler, int32_t dayStartHour,SHDatetime *ans,SHError* error)
 {
 	shLog("nextDueDate_WEEKLY\n");
 	if(!ans){
-		return shHandleError(NULL_VALUES, "One of the inputs is null", error);
+		return shHandleError(SH_NULL_VALUES, "One of the inputs is null", error);
 	}
-	SHDatetime* resultPair = shBothWeeklyDueDatesFromLastDueDate(lastDueDate, checkinDate,week,scaler,error);
+	SHDatetime* resultPair = shBothWeeklyDueDatesFromLastDueDate(lastDueDate, checkinDate, week, scaler,
+		dayStartHour, error);
 	if(!resultPair){
-		return shHandleError(GEN_ERROR, "Error calculating next due date", error);
+		return shHandleError(SH_GEN_ERROR, "Error calculating next due date", error);
 	}
-	*ans = resultPair[1];
-	free(resultPair);
-	if(error && error->code != NO_ERROR){
+	memcpy(ans,&resultPair[1],sizeof(SHDatetime));
+	shFreeSHDatetime(resultPair,2);
+	if(error && error->code != SH_NO_ERROR){
 		return shHandleError(error->code, "Error calculating next due date", error);
 	}
 	shLog("leaving nextDueDate_WEEKLY\n");
@@ -205,21 +240,23 @@ bool shNextDueDate_WEEKLY(SHDatetime* lastDueDate,SHDatetime* checkinDate
 		shDTToString(checkinDate,checkinStr);
 		char frmtErrMsg[200];
 		sprintf(frmtErrMsg, "The calculated next due date was before the check in date. Answer: %s "
-													"checkinDate: %s Scaler:%"PRId64,ansStr,checkinStr,scaler);
-		return shHandleError(OUT_OF_RANGE, frmtErrMsg, error);
+			"checkinDate: %s Scaler:%"PRId64,ansStr,checkinStr,scaler);
+		return shHandleError(SH_OUT_OF_RANGE, frmtErrMsg, error);
 	}
 	return true;
 }
 
 
-bool shNextDueDate_WEEKLY_INV(SHDatetime* lastDueDate,SHDatetime* checkinDate, SHRateValueItem* week,int64_t scaler
-,SHDatetime *ans,SHError* error){
+bool shNextDueDate_WEEKLY_INV(SHDatetime* lastDueDate,SHDatetime* checkinDate, SHRateValueItem* week,
+	int64_t scaler, int32_t dayStartHour, SHDatetime *ans,SHError* error)
+{
 	(void)lastDueDate;
 	(void)checkinDate;
 	(void)week;
 	(void)scaler;
 	(void)ans;
 	(void)error;
+	(void)dayStartHour;
 	#warning TODO: fill out this function
 	return true;
 }
@@ -227,14 +264,14 @@ bool shNextDueDate_WEEKLY_INV(SHDatetime* lastDueDate,SHDatetime* checkinDate, S
 bool _ArePreviousDateInputsValid(SHDatetime *lastDueDate,SHDatetime *checkinDate
 ,SHRateValueItem *rvi,int64_t scaler,SHDatetime *ans,SHError *error){
 	if(!(ans&&lastDueDate&&checkinDate&&rvi&&ans)){
-		return shHandleError(NULL_VALUES, "One of the inputs is null", error);
+		return shHandleError(SH_NULL_VALUES, "One of the inputs is null", error);
 	}
 	if(scaler < 1){
-		return shHandleError(OUT_OF_RANGE, "Scaler needs to be greater than zero", error);
+		return shHandleError(SH_OUT_OF_RANGE, "Scaler needs to be greater than zero", error);
 	}
 	SHError *cnvtErr = calloc(2, sizeof(SHError));
 	if(!(shDtToTimestamp(checkinDate,&cnvtErr[0]) >= shDtToTimestamp(lastDueDate,&cnvtErr[1]))){
-			return shHandleError(OUT_OF_RANGE,"Checkindate needs to be after lastDueDate",error);
+			return shHandleError(SH_OUT_OF_RANGE,"Checkindate needs to be after lastDueDate",error);
 	}
 	if(cnvtErr[0].code||cnvtErr[0].code){
 	 return shHandleError(cnvtErr[0].code||cnvtErr[0].code,
@@ -242,7 +279,7 @@ bool _ArePreviousDateInputsValid(SHDatetime *lastDueDate,SHDatetime *checkinDate
 	}
 	int64_t lastDayIdx = shCalcWeekdayIdx(lastDueDate,error);
 	if(!rvi[lastDayIdx].isDayActive){
-		return shHandleError(INVALID_STATE, "Previous due date is on an non active day.", error);
+		return shHandleError(SH_INVALID_STATE, "Previous due date is on an non active day.", error);
 	}
 	return true;
 }

@@ -52,9 +52,19 @@ static void _setupIfRequired(NSManagedObject *entity){
 
 -(NSManagedObject*)getEntityOrNil:(SHObjectIDWrapper *)objectId withError:(NSError **)error{
 	if(nil == objectId || nil == objectId.objectID) return nil;
+	if(error) {
+		*error = nil;
+	}
 	NSManagedObject *result = [self existingObjectWithID:objectId.objectID error:error];
-	if(result.entity != objectId.entityType) {
-		@throw [NSException oddException];
+	if(error && *error){
+		NSLog(@"error %@",[*error localizedDescription]);
+		return nil;
+	}
+	if(nil == result && error) {
+		*error = [[NSError alloc] initWithDomain:NSPOSIXErrorDomain code:1 userInfo:@{ @"Reason": @"No results"}];
+	}
+	if(result.entity != objectId.entityType && error) {
+		*error = [[NSError alloc] initWithDomain:NSPOSIXErrorDomain code:1 userInfo:@{ @"Reason": @"Mismatched type"}];
 	}
 	return result;
 }
@@ -105,5 +115,11 @@ static void _setupIfRequired(NSManagedObject *entity){
 	return context;
 }
 
+
+-(NSInteger)batchDelete:(NSFetchRequest *)fetchRequest withError:(NSError **)error{
+	NSBatchDeleteRequest *deleteRequest = [[NSBatchDeleteRequest alloc] initWithFetchRequest:fetchRequest];
+	NSBatchDeleteResult *results = [self executeRequest:deleteRequest error:error];
+	return ((NSNumber*)results.result).integerValue;
+}
 
 @end

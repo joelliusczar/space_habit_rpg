@@ -48,6 +48,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		27A911742344120700D438FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27A911702344120700D438FC /* SHCore_C.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 271691C220885EF70059A58E;
+			remoteInfo = SHCore_C;
+		};
+		27A911762344120F00D438FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27A911702344120700D438FC /* SHCore_C.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 271691C120885EF70059A58E;
+			remoteInfo = SHCore_C;
+		};
 		27CBFF1D2224F2EA00604C66 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2747C529204A5DB000FB5669 /* Project object */;
@@ -97,6 +111,7 @@
 		2747C595204A62EE00FB5669 /* ProbilityWeightTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProbilityWeightTest.m; sourceTree = "<group>"; };
 		275DDF2321FE9EDA00F77AEF /* CoreDataTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataTests.m; sourceTree = "<group>"; };
 		2792B566226C25B200A3A86C /* SHTestCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHTestCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27A911702344120700D438FC /* SHCore_C.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHCore_C.xcodeproj; path = ../SHCore_C/SHCore_C.xcodeproj; sourceTree = "<group>"; };
 		27B0B1EC22239AAD0028AF59 /* SHTests.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHTests.base.xcconfig; sourceTree = "<group>"; };
 		27B7193F2235F1B900540542 /* DumbDataSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DumbDataSaver.h; sourceTree = "<group>"; };
 		27B719402235F1B900540542 /* DumbDataSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DumbDataSaver.m; sourceTree = "<group>"; };
@@ -150,6 +165,7 @@
 		2747C528204A5DB000FB5669 = {
 			isa = PBXGroup;
 			children = (
+				27A911702344120700D438FC /* SHCore_C.xcodeproj */,
 				27C7923D2227A07500A92487 /* Configs */,
 				27CBFF4B2224F56A00604C66 /* SHTests */,
 				2747C533204A5DB000FB5669 /* TestUI */,
@@ -249,6 +265,14 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		27A911712344120700D438FC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27A911752344120700D438FC /* libSHCore_C.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		27C7923D2227A07500A92487 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,6 +308,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				27A911772344120F00D438FC /* PBXTargetDependency */,
 			);
 			name = TestUI;
 			productName = TestUI;
@@ -339,6 +364,12 @@
 			mainGroup = 2747C528204A5DB000FB5669;
 			productRefGroup = 2747C532204A5DB000FB5669 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 27A911712344120700D438FC /* Products */;
+					ProjectRef = 27A911702344120700D438FC /* SHCore_C.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2747C530204A5DB000FB5669 /* TestUI */,
@@ -346,6 +377,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		27A911752344120700D438FC /* libSHCore_C.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSHCore_C.a;
+			remoteRef = 27A911742344120700D438FC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2747C52F204A5DB000FB5669 /* Resources */ = {
@@ -412,6 +453,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		27A911772344120F00D438FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SHCore_C;
+			targetProxy = 27A911762344120F00D438FC /* PBXContainerItemProxy */;
+		};
 		27CBFF1E2224F2EA00604C66 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2747C530204A5DB000FB5669 /* TestUI */;

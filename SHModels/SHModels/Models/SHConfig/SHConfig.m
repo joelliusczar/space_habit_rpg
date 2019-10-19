@@ -18,7 +18,7 @@
 -(void)setupInitialState{
 	self.gameState = SH_GAME_STATE_UNINITIALIZED;
 	self.createDateTime = [NSDate date];
-	self.dayStartHour = 0;
+	self.dayStartTime = 0;
 	self.weekStartDay = 0;
 	self.deathGoldPenalty = .25;
 	self.heroLvlPenalty = 0;
@@ -35,7 +35,7 @@
 
 
 -(NSDate*)userTodayStart{
-	NSDate *result = [NSDate.date.dayStart timeAfterHours:self.dayStartHour minutes:0 seconds:0];
+	NSDate *result = [NSDate.date.dayStart timeAfterSeconds:self.dayStartTime];
 	return result;
 }
 

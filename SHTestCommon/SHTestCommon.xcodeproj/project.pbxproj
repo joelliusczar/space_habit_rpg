@@ -18,6 +18,8 @@
 		274EFB84204F9B7700CB3C4C /* FrequentCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB7F204F9B7700CB3C4C /* FrequentCase.m */; };
 		274EFB85204F9B7700CB3C4C /* TestGlobals.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB80204F9B7700CB3C4C /* TestGlobals.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		274EFB86204F9B7700CB3C4C /* TestHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB81204F9B7700CB3C4C /* TestHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27804B7C235278F8004921F5 /* SHTestDateProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 27804B7A235278F8004921F5 /* SHTestDateProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27804B7D235278F8004921F5 /* SHTestDateProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 27804B7B235278F8004921F5 /* SHTestDateProvider.m */; };
 		27B7AF25223094D000FAA229 /* TestDummy.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B7AF23223094D000FAA229 /* TestDummy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27B7AF26223094D000FAA229 /* TestDummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B7AF24223094D000FAA229 /* TestDummy.m */; };
 /* End PBXBuildFile section */
@@ -38,6 +40,8 @@
 		274EFB80204F9B7700CB3C4C /* TestGlobals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestGlobals.h; sourceTree = "<group>"; };
 		274EFB81204F9B7700CB3C4C /* TestHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHelpers.h; sourceTree = "<group>"; };
 		274EFB8C204FB27200CB3C4C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		27804B7A235278F8004921F5 /* SHTestDateProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTestDateProvider.h; sourceTree = "<group>"; };
+		27804B7B235278F8004921F5 /* SHTestDateProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTestDateProvider.m; sourceTree = "<group>"; };
 		278FFDA1222B2F2700DAF985 /* SHTestCommon.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHTestCommon.debug.xcconfig; sourceTree = "<group>"; };
 		27B0B1F52223B9C70028AF59 /* SHTestCommon.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHTestCommon.base.xcconfig; sourceTree = "<group>"; };
 		27B7AF23223094D000FAA229 /* TestDummy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestDummy.h; sourceTree = "<group>"; };
@@ -90,6 +94,8 @@
 				273009F722446228006E419C /* NSManagedObjectContext+Hijack.m */,
 				27009B41224FEB0C0005F827 /* SHCoreData+CleanUp.h */,
 				27009B42224FEB0C0005F827 /* SHCoreData+CleanUp.m */,
+				27804B7A235278F8004921F5 /* SHTestDateProvider.h */,
+				27804B7B235278F8004921F5 /* SHTestDateProvider.m */,
 			);
 			path = SHTestCommon;
 			sourceTree = "<group>";
@@ -126,6 +132,7 @@
 				274EFB86204F9B7700CB3C4C /* TestHelpers.h in Headers */,
 				27009B43224FEB0C0005F827 /* SHCoreData+CleanUp.h in Headers */,
 				273009F822446228006E419C /* NSManagedObjectContext+Hijack.h in Headers */,
+				27804B7C235278F8004921F5 /* SHTestDateProvider.h in Headers */,
 				274EFB85204F9B7700CB3C4C /* TestGlobals.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				273009F922446228006E419C /* NSManagedObjectContext+Hijack.m in Sources */,
+				27804B7D235278F8004921F5 /* SHTestDateProvider.m in Sources */,
 				27009B44224FEB0C0005F827 /* SHCoreData+CleanUp.m in Sources */,
 				27B7AF26223094D000FAA229 /* TestDummy.m in Sources */,
 				274EFB82204F9B7700CB3C4C /* TestHelpers.m in Sources */,

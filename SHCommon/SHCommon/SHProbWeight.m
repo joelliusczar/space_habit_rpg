@@ -69,14 +69,14 @@ NSString *freqSumLow = @"cummFreqLow";
 		while(start<end){
 			double lowPercent = ((NSNumber *)self.weights[mid][freqSumLow]).doubleValue/self.sum;
 			double upPercent = ((NSNumber *)self.weights[mid][freqSum]).doubleValue/self.sum;
-			if(rPercent<lowPercent){
+			if(rPercent < lowPercent){
 				end = mid-1;
 			}
-			if(rPercent>=upPercent){
+			if(rPercent >= upPercent){
 				start = mid+1;
 			}
 			mid = ((end-start)/2) + start;
-			if(rPercent<=upPercent&&rPercent>=lowPercent){
+			if(rPercent <= upPercent && rPercent >= lowPercent){
 				break;
 			}
 		}

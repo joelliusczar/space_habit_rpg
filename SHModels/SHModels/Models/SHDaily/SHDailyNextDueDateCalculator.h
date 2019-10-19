@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SHDailyActiveDays.h"
+#import <SHCommon/SHDateProviderProtocol.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,12 +16,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong,nonatomic) SHDailyActiveDays *activeDaysContainer;
 @property (strong,nonatomic) NSDate* lastActivationDateTime;
 @property (strong,nonatomic) NSDate* lastUpdateDateTime;
+@property (assign,nonatomic) int32_t dayStartTime;
+@property (strong,nonatomic) NSObject<SHDateProviderProtocol>* dateProvider;
 -(instancetype)initWithActiveDays:(SHDailyActiveDays *)activeDaysContainer
 	lastActivationDateTime:(NSDate *)lastActivationDateTime
 	lastUpdateDateTime:(NSDate *)lastUpdateDateTime
-	rate:(int32_t)rate;
+	dayStartTime:(int32_t)dayStartTime;
 -(NSDate*)nextDueDate_WEEKLY;
-@property (assign,nonatomic) int32_t rate;
+
 @end
 
 NS_ASSUME_NONNULL_END

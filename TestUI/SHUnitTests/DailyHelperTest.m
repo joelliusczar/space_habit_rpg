@@ -11,7 +11,6 @@
 #import "NSDate+testReplace.h"
 @import SHModels;
 
-#import <SHGlobal/SHFlexibleConstants.h>
 #import <SHDaily_C.h>
 #import <SHRateValueItem.h>
 #import <SHModels/SHDaily_Medium.h>
@@ -25,14 +24,13 @@
 
 @implementation DailyHelperTest
 
--(void)setUp {
-	[super setUp];
-	self.testContext = [self.dc newBackgroundContext];
-	
+
+-(void)addTestDailies{
+	__block NSError *error = nil;
 	[self.testContext performBlockAndWait:^{
 		int a0=0,a1=0,a2=0,a3=0,a4=0,a5=0;
-		SHDaily *testDaily = (SHDaily*)[self.testContext newEntity:SHDaily.entity];
 		for(int i = 0;i<50;i++){
+			SHDaily *testDaily = (SHDaily*)[self.testContext newEntity:SHDaily.entity];
 			testDaily.dailyName = [NSString stringWithFormat:@"daily %d",i];
 			[self.testContext insertObject:testDaily];
 			NSDate *dailyDate = nil;
@@ -69,13 +67,20 @@
 			testDaily.lastActivationDateTime = dailyDate;
 			testDaily.isActive = YES;
 		}
-		NSError *error = nil;
+		error = nil;
 		[self.testContext save:&error];
+		
 		
 		//sanity check
 		XCTAssertEqual((a0+a1+a2+a3+a4+a5), 27);
 	}];
-	
+	XCTAssertNil(error);
+}
+
+-(void)setUp {
+	[super setUp];
+	self.testContext = [self.dc newBackgroundContext];
+	[self addTestDailies];
 }
 
 -(void)tearDown {
@@ -84,7 +89,7 @@
 
 -(void)testGetAnything{
 	NSManagedObjectContext *context = self.testContext;
-	__block NSError *error;
+	__block NSError *error = nil;
 	__block NSUInteger recordCount;
 	[self.testContext performBlockAndWait:^{
 		NSFetchRequest<SHDaily*> *request = SHDaily.fetchRequest;
@@ -94,15 +99,22 @@
 			NSLog(@"Error fetching data: %@", error.localizedFailureReason);
 		}
 		recordCount = resultsController.fetchedObjects.count;
+		SHDaily *d = resultsController.fetchedObjects[0];
 	}];
 	XCTAssertNil(error);
 	XCTAssertEqual(recordCount,50);
 }
 
 -(void)testRetrieveUnfinishedDailies{
+	[self.testContext performBlockAndWait:^{
+		SHConfig_Medium *cm = [[SHConfig_Medium alloc] initWithContext:self.testContext];
+		SHConfig *config = [cm globalConfig];
+		config.dayStartTime = 6 * SH_HOUR_IN_SECONDS;
+		[self.testContext save:nil];
+	}];
+	testTodayReplacement = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:6 minute:0 second:0];
 	[NSDate swizzleThatShit];
 	SHDaily_Medium *dm = [SHDaily_Medium newWithContext:self.testContext];
-	NSDate *testDate = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:6 minute:0 second:0];
 	NSFetchedResultsController *results = [dm dailiesDataFetcher];
 	__block NSInteger unfinishedCount;
 	__block NSInteger finishedCount;
@@ -188,19 +200,54 @@
 //}
 
 -(void)testDaysUntilDue_WEEKLY{
-	[NSDate swizzleThatShit];
-	SHDaily *d = (SHDaily*)[NSManagedObjectContext newEntityUnattached:SHDaily.entity];
-	d.activeDaysContainer.weeklyIntervalSize = 1;
-	d.lastActivationDateTime = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:13 minute:24 second:11
-		timeZone: [NSTimeZone timeZoneForSecondsFromGMT:-18000]];
-	//if the rate is one, it should always result in being 0 days until Daily is due
-	testTodayReplacement = [NSDate createDateTimeWithYear:1988 month:4 day:28 hour:9 minute:24 second:11
+	[self resetDb];
+	SHTestDateProvider *dateProvider = [[SHTestDateProvider alloc] init];
+	dateProvider.testDate = [NSDate createDateTimeWithYear:1988 month:4 day:28 hour:9 minute:24 second:11
 		timeZone: [NSTimeZone timeZoneForSecondsFromGMT: -18000]];
-	XCTAssertEqual(d.daysUntilDue,0);
-	d.activeDaysContainer.weeklyIntervalSize = 2;
-	XCTAssertEqual(d.daysUntilDue,1);
-	d.activeDaysContainer.weeklyIntervalSize = 7;
-	XCTAssertEqual(d.daysUntilDue,6);
+	__block NSInteger days1;
+	__block NSInteger days2;
+	__block NSInteger days3;
+	__block SHObjectIDWrapper *objectID = nil;
+	NSManagedObjectContext *tc = [self.dc newBackgroundContext];
+	tc.retainsRegisteredObjects = YES;
+	[tc performBlockAndWait:^{
+		SHDaily *d = (SHDaily*)[tc newEntity:SHDaily.entity];
+		d.dateProvider = dateProvider;
+		d.rateType = SH_WEEKLY_RATE;
+		//if the rate is one, it should always result in being 0 days until Daily is due
+		d.activeDaysContainer.weeklyIntervalSize = 1;
+		d.lastActivationDateTime = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:13 minute:24 second:11
+			timeZone: [NSTimeZone timeZoneForSecondsFromGMT:-18000]];
+		days1 = d.daysUntilDue;
+		d.activeDaysContainer.weeklyIntervalSize = 2;
+		days2 = d.daysUntilDue;
+		d.activeDaysContainer.weeklyIntervalSize = 7;
+		days3 = d.daysUntilDue;
+		[tc save:nil];
+		objectID = [[SHObjectIDWrapper alloc] initWithManagedObject:d];
+	}];
+	
+	XCTAssertEqual(days1,0);
+	XCTAssertEqual(days2,0);
+	XCTAssertEqual(days3,0);
+	NSDate *testDate = [NSDate createDateTimeWithYear:1988 month:5 day:1 hour:9 minute:24 second:11
+	timeZone: [NSTimeZone timeZoneForSecondsFromGMT: -18000]];
+	dateProvider.testDate = testDate;
+	__block NSManagedObjectID *o2 = nil;
+	[tc performBlockAndWait:^{
+		NSError *error;
+		SHDaily *d = (SHDaily*)[tc getEntityOrNil:objectID withError:&error];
+		d.dateProvider = dateProvider;
+		d.activeDaysContainer.weeklyIntervalSize = 1;
+		days1 = d.daysUntilDue;
+		d.activeDaysContainer.weeklyIntervalSize = 2;
+		days2 = d.daysUntilDue;
+		d.activeDaysContainer.weeklyIntervalSize = 7;
+		days3 = d.daysUntilDue;
+	}];
+	XCTAssertEqual(days1,0);
+	XCTAssertEqual(days2,7);
+	XCTAssertEqual(days3,42);
 }
 
 
@@ -363,7 +410,7 @@
 	XCTAssertEqual(results[6].forrange,44);
 	XCTAssertEqual(results[6].backrange,3);
 	
-	for(NSUInteger i = 0;i<SHCONST.DAYS_IN_WEEK;i++){
+	for(int32_t i = 0;i<SH_DAYS_IN_WEEK;i++){
 		testSet[i] = YES;
 	}
 	memset(results,0,sizeof(SHRateValueItem) * 7);
@@ -487,6 +534,7 @@
 	SHRateValueItem week[7];
 	BOOL testSet[] = {0,1,0,1,0,0,0};//monday, wednesday
 	int weekScaler = 3;
+	int32_t dayStartHour = 0;
 	shBuildWeek(testSet, weekScaler, week);
 	SHDatetime base = newSHDatetime_datetime2(2018,1,7,0,0,0,0);
 	SHDatetime lastDueDate;
@@ -497,54 +545,54 @@
 	shPrepareSHError(&err);
 	shTryAddDaysToDt(&base,1,0,&lastDueDate,&err);
 	shTryAddDaysToDt(&base,81,0,&checkinDate,&err); //march 29
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,66,0,&expectedDate,&err);
 
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,65,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,64,0,&expectedDate,&err);
 	btw = shDateDiffDays(&result,&base,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,66,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,64,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,64,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,45,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,72,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,66,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,5,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,3,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,2,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,1,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,24,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,22,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,22,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,3,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,50,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,45,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
@@ -556,48 +604,48 @@
 	
 	shTryAddDaysToDt(&base,1,0,&lastDueDate,&err);
 	shTryAddDaysToDt(&base,81,0,&checkinDate,&err); //march 29
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,80,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,65,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,64,0,&expectedDate,&err);
 	btw = shDateDiffDays(&result,&base,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,66,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,64,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,64,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,59,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,72,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,71,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,5,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,3,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,2,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,1,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,24,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,22,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,22,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,17,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
@@ -607,12 +655,12 @@
 	
 	shTryAddDaysToDt(&base,5,0,&lastDueDate,&err);
 	shTryAddDaysToDt(&base,81,0,&checkinDate,&err); //march 29
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,68,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,6,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,5,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
@@ -621,12 +669,12 @@
 	
 	shTryAddDaysToDt(&base,5,0,&lastDueDate,&err);
 	shTryAddDaysToDt(&base,81,0,&checkinDate,&err); //march 29
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,75,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,6,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,5,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
@@ -636,17 +684,17 @@
 	
 	lastDueDate = base;
 	shTryAddDaysToDt(&base,81,0,&checkinDate,&err); //march 29
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,63,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,62,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,42,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,1,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,0,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
@@ -655,22 +703,22 @@
 	
 	lastDueDate = base;
 	shTryAddDaysToDt(&base,81,0,&checkinDate,&err); //march 29
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,77,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,62,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,56,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,1,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,0,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,7,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,0,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
@@ -680,37 +728,37 @@
 	
 	shTryAddDaysToDt(&base,6,0,&lastDueDate,&err);
 	shTryAddDaysToDt(&base,81,0,&checkinDate,&err); //march 29
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,69,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,13,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,6,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,20,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,6,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,26,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,6,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,34,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,27,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,68,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,48,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,7,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,6,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
@@ -719,38 +767,38 @@
 	
 	shTryAddDaysToDt(&base,6,0,&lastDueDate,&err);
 	shTryAddDaysToDt(&base,81,0,&checkinDate,&err); //march 29
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,76,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,13,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,6,0,&expectedDate,&err);
 	btw = shDateDiffDays(&result,&base,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,20,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,13,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,26,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,20,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,34,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,27,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,68,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,62,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,7,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,6,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
@@ -760,36 +808,43 @@
 	
 	shTryAddDaysToDt(&base,6,0,&lastDueDate,&err);
 	shTryAddDaysToDt(&base,81,0,&checkinDate,&err); //march 29
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,69,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,13,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,6,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,20,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,6,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,7,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,6,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,34,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,27,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,68,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,67,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,6,0,&checkinDate,&err);
+	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
+	
+	weekScaler = 2;
+	shTryAddDaysToDt(&base,3,0,&lastDueDate,&err);
+	shTryAddDaysToDt(&base,4,0,&checkinDate,&err); //march 29
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
+	shTryAddDaysToDt(&base,3,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	weekScaler = 1;
@@ -797,34 +852,36 @@
 	
 	shTryAddDaysToDt(&base,6,0,&lastDueDate,&err);
 	shTryAddDaysToDt(&base,81,0,&checkinDate,&err); //march 29
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,80,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,13,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,12,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,20,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,19,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,7,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,6,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,34,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,33,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
 	
 	shTryAddDaysToDt(&base,68,0,&checkinDate,&err);
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,67,0,&expectedDate,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
+	
+	
 	
 	bool testSet6[] = {1,1,0,0,0,0,0};
 	weekScaler = 3;
@@ -832,10 +889,49 @@
 	
 	shTryAddDaysToDt(&base,1,0,&lastDueDate,&err);
 	shTryAddDaysToDt(&base,7,0,&checkinDate,&err); //march 29
-	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,1,0,&expectedDate,&err);
 	btw = shDateDiffDays(&result,&base,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expectedDate,&err));
+	
+	weekScaler = 2;
+	bool testSet7[] = {1,1,1,1,1,1,1};
+	shBuildWeek(testSet7,weekScaler,week);
+	lastDueDate.year = 1988;
+	lastDueDate.month = 4;
+	lastDueDate.day = 27;
+	lastDueDate.hour = 0;
+	lastDueDate.minute = 0;
+	lastDueDate.second = 0;
+	
+	checkinDate.year = 1988;
+	checkinDate.month = 4;
+	checkinDate.day = 28;
+	checkinDate.hour = 0;
+	checkinDate.minute = 0;
+	checkinDate.second = 0;
+	memset(&result,0,sizeof(SHDatetime));
+	shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
+	XCTAssertTrue(err.code == SH_NO_ERROR);
+	
+	
+	lastDueDate.year = 1988;
+	lastDueDate.month = 4;
+	lastDueDate.day = 27;
+	lastDueDate.hour = 18;
+	lastDueDate.minute = 24;
+	lastDueDate.second = 11;
+	
+	checkinDate.year = 1988;
+	checkinDate.month = 4;
+	checkinDate.day = 28;
+	checkinDate.hour = 14;
+	checkinDate.minute = 24;
+	checkinDate.second = 11;
+	memset(&result,0,sizeof(SHDatetime));
+	shPreviousDueDateWithPreparedInputs_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,
+		dayStartHour,&result,&err);
+	XCTAssertTrue(err.code == SH_NO_ERROR);
 	
 }
 
@@ -843,6 +939,7 @@
 	SHRateValueItem week[7];
 	BOOL testSet[] = {0,1,0,0,0,0,0};
 	int weekScaler = 1;
+	int32_t dayStartHour = 0;
 	shBuildWeek(testSet, weekScaler, week);
 	SHDatetime base = newSHDatetime_datetime2(1978,1,1,0,0,0,0);
 	SHDatetime lastDueDate;
@@ -854,20 +951,20 @@
 	shTryAddDaysToDt(&base,0,0,&lastDueDate,&err);
 	shTryAddDaysToDt(&base,1,0,&checkinDate,&err);
 	shTryAddDaysToDt(&base,0,0,&expected,&err);
-	bool isSuccess = shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	bool isSuccess = shPreviousDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	XCTAssertEqual(isSuccess,false);
 	BOOL testSet2[] = {1,0,0,0,0,0,0};
 	base.year = 2006;
 	shBuildWeek(testSet2, weekScaler, week);
 	shTryAddDaysToDt(&base,7,0,&checkinDate,&err);
 	shTryAddDaysToDt(&base,0,0,&lastDueDate,&err);
-	isSuccess = shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	isSuccess = shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	XCTAssertEqual(isSuccess,true);
 	
 	shBuildWeek(testSet2, 2, week);
 	shTryAddDaysToDt(&base,0,0,&checkinDate,&err);
 	shTryAddDaysToDt(&base,0,0,&lastDueDate,&err);
-	isSuccess = shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	isSuccess = shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	XCTAssertEqual(isSuccess,true);
 }
 
@@ -876,6 +973,7 @@
 	SHRateValueItem week[7];
 	BOOL testSet0[] = {0,1,0,1,0,0,0};
 	int weekScaler = 3;
+	int32_t dayStartHour = 0;
 	shBuildWeek(testSet0, weekScaler, week);
 	SHDatetime base = newDatetime_date(2018,1,7);
 	SHDatetime lastDueDate;
@@ -886,50 +984,50 @@
 	shPrepareSHError(&err);
 	shTryAddDaysToDt(&base,1,0,&lastDueDate,&err);
 	shTryAddDaysToDt(&base,81,0,&checkinDate,&err); //march 29
-	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,85,0,&expected,&err);
 	btw = shDateDiffDays(&result,&base,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expected,&err));
 	
 	shTryAddDaysToDt(&base,65,0,&checkinDate,&err);
-	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,66,0,&expected,&err);
 	btw = shDateDiffDays(&result,&base,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expected,&err));
 	
 	shTryAddDaysToDt(&base,63,0,&checkinDate,&err);
-	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,64,0,&expected,&err);
 	btw = shDateDiffDays(&result,&base,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expected,&err));
 	
 	shTryAddDaysToDt(&base,62,0,&checkinDate,&err);
-	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,64,0,&expected,&err);
 	btw = shDateDiffDays(&result,&base,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expected,&err));
 	
 	shTryAddDaysToDt(&base,50,0,&checkinDate,&err);
-	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,64,0,&expected,&err);
 	btw = shDateDiffDays(&result,&base,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expected,&err));
 	
 	shTryAddDaysToDt(&base,46,0,&checkinDate,&err);
-	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,64,0,&expected,&err);
 	btw = shDateDiffDays(&result,&base,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expected,&err));
 	
 	shTryAddDaysToDt(&base,66,0,&checkinDate,&err);
-	bool isSuccess = shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	bool isSuccess = shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	(void)isSuccess;
 	shTryAddDaysToDt(&base,66,0,&expected,&err);
 	btw = shDateDiffDays(&result,&base,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expected,&err));
 	
 	shTryAddDaysToDt(&base,64,0,&checkinDate,&err);
-	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,64,0,&expected,&err);
 	btw = shDateDiffDays(&result,&base,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expected,&err));
@@ -938,67 +1036,67 @@
 	shBuildWeek(testSet0, weekScaler, week);
 	
 	shTryAddDaysToDt(&base,62,0,&checkinDate,&err);
-	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,64,0,&expected,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expected,&err));
 	
 	shTryAddDaysToDt(&base,63,0,&checkinDate,&err);
-	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,64,0,&expected,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expected,&err));
 	
 	shTryAddDaysToDt(&base,64,0,&checkinDate,&err);
-	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,64,0,&expected,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expected,&err));
 	
 	shTryAddDaysToDt(&base,65,0,&checkinDate,&err);
-	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,66,0,&expected,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expected,&err));
 	
 	shTryAddDaysToDt(&base,66,0,&checkinDate,&err);
-	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,66,0,&expected,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expected,&err));
 	
 	shTryAddDaysToDt(&base,67,0,&checkinDate,&err);
-	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,71,0,&expected,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expected,&err));
 	
 	shTryAddDaysToDt(&base,68,0,&checkinDate,&err);
-	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,71,0,&expected,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expected,&err));
 	
 	shTryAddDaysToDt(&base,69,0,&checkinDate,&err);
-	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,71,0,&expected,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expected,&err));
 	
 	shTryAddDaysToDt(&base,70,0,&checkinDate,&err);
-	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,71,0,&expected,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expected,&err));
 	
 	shTryAddDaysToDt(&base,71,0,&checkinDate,&err);
-	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,71,0,&expected,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expected,&err));
 	
 	shTryAddDaysToDt(&base,72,0,&checkinDate,&err);
-	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,73,0,&expected,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expected,&err));
 	
 	shTryAddDaysToDt(&base,73,0,&checkinDate,&err);
-	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,73,0,&expected,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expected,&err));
 	
 	shTryAddDaysToDt(&base,74,0,&checkinDate,&err);
-	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler,&result,&err);
+	shNextDueDate_WEEKLY(&lastDueDate,&checkinDate,week,weekScaler, dayStartHour,&result,&err);
 	shTryAddDaysToDt(&base,78,0,&expected,&err);
 	XCTAssertEqual(shDtToTimestamp(&result,&err),shDtToTimestamp(&expected,&err));
 	

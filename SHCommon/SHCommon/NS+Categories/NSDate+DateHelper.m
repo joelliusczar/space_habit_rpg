@@ -119,32 +119,33 @@
 	return shDateDiffDays(&dtTo,&dtFrom,&err);
 }
 
+
 -(NSDate *)setHour:(NSInteger)h minute:(NSInteger)m second:(NSInteger)s{
 	NSDate *roundedDownDate = [SharedGlobal.inUseCalendar startOfDayForDate:self];
 	return [roundedDownDate timeAfterHours:h minutes:m seconds:s];
 }
 
+
 +(NSString *)timeOfDayInSystemPreferredFormat:(NSInteger)hour
 	andMinute:(NSInteger)minute
 {
 	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-	formatter.locale = NSLocale.currentLocale;
+	formatter.locale = SharedGlobal.inUseLocale;
 	formatter.timeStyle = NSDateFormatterShortStyle;
-	NSString *dateString = [formatter stringFromDate:
-		[NSDate createSimpleTimeWithHour:hour minute:minute
-		second:0]];
+	NSDate *date = [NSDate createSimpleTimeWithHour:hour minute:minute second:0];
+	NSString *dateString = [formatter stringFromDate: date];
 	
 	return dateString;
 }
 
 
 -(NSString *)timeOfDayInSystemPreferredFormat{
-	return [self timeOfDayWithLocal:SharedGlobal.inUseLocale
+	return [self timeOfDayWithLocale:SharedGlobal.inUseLocale
 	andTimeZone:NSTimeZone.defaultTimeZone];
 }
 
 
--(NSString *)timeOfDayWithLocal:(NSLocale*)locale andTimeZone:(NSTimeZone*)tz{
+-(NSString *)timeOfDayWithLocale:(NSLocale*)locale andTimeZone:(NSTimeZone*)tz{
 	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 	formatter.locale = locale;
 	formatter.timeZone = tz;
@@ -157,7 +158,7 @@
 
 -(NSString *)staticTimeOfDay{
 	NSTimeZone *tz = [NSTimeZone timeZoneForSecondsFromGMT:0];
-	return [self timeOfDayWithLocal:SharedGlobal.inUseLocale andTimeZone:tz];
+	return [self timeOfDayWithLocale:SharedGlobal.inUseLocale andTimeZone:tz];
 }
 
 
@@ -187,6 +188,13 @@
 		components:calendarUnits
 		fromDate:self];
 	return components;
+}
+
+
+-(NSDate *)timeAfterSeconds:(NSInteger)seconds{
+	NSTimeInterval timestamp = self.timeIntervalSince1970;
+	timestamp += seconds;
+	return [NSDate dateWithTimeIntervalSince1970:timestamp];
 }
 
 @end

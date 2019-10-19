@@ -1077,11 +1077,12 @@
 
 -(void)testCreateSimpleTime{
 	NSDate *testDate = [NSDate createSimpleTimeWithHour:2 minute:0 second:0];
-	XCTAssertEqual(testDate.timeIntervalSince1970,25200);
+	XCTAssertEqual(testDate.timeIntervalSince1970,7200);
 }
 
 
 -(void)testTimeOfDayInPreferredFormat{
+	NSTimeZone.defaultTimeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
 	NSString *result = [NSDate timeOfDayInSystemPreferredFormat:13 andMinute:15];
 	XCTAssertTrue([result isEqualToString:@"1:15 PM"]);
 	SharedGlobal.inUseLocale = [NSLocale localeWithLocaleIdentifier:@"en_GB"];

@@ -18,12 +18,17 @@
 NSString* const HOME_KEY = @"HOME";
 
 @interface SHSector_Medium ()
-@property (strong,nonatomic) NSManagedObjectContext *context;
-@property (strong,nonatomic) NSObject<SHResourceUtilityProtocol>* resourceUtil;
-@property (strong,nonatomic) SHSectorInfoDictionary* sectorInfo;
+
 @end
 
 @implementation SHSector_Medium
+
+-(SHSectorInfoDictionary*)sectorInfo{
+	if(nil == _sectorInfo){
+		_sectorInfo = SHSector.sectorInfo;
+	}
+	return _sectorInfo;
+}
 
 +(instancetype)newWithContext:(NSManagedObjectContext*)context
 withResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil{

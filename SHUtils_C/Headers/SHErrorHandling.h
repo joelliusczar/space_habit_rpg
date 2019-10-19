@@ -30,12 +30,12 @@ extern shDebugCallback shDbgCallback;
 #endif
 
 typedef enum {
-	NO_ERROR = 0,
-	NULL_VALUES = 1,
-	OUT_OF_RANGE = 2,
-	CORRUPT_STRUCT = 3,
-	GEN_ERROR = -1,
-	INVALID_STATE = -3
+	SH_NO_ERROR = 0,
+	SH_NULL_VALUES = 1,
+	SH_OUT_OF_RANGE = 2,
+	SH_CORRUPT_STRUCT = 3,
+	SH_GEN_ERROR = -1,
+	SH_INVALID_STATE = -3
 } SHErrorCode;
 
 

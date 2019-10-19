@@ -50,5 +50,7 @@ FOUNDATION_EXPORT const unsigned char SHCommonVersionString[];
 #import "SHCollectionUtils.h"
 #import "SHDebugDefines.h"
 #import "SHMappableProtocol.h"
+#import "SHDateProviderProtocol.h"
+#import "SHDefaultDateProvider.h"
 
 

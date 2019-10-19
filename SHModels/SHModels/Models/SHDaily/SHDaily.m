@@ -15,6 +15,7 @@
 #import <SHCommon/NSDate+DateHelper.h>
 #import <SHData/NSManagedObjectContext+Helper.h>
 #import "SHConfig_Medium.h"
+#import <SHCommon/SHDefaultDateProvider.h>
 
 @implementation SHDaily
 
@@ -51,11 +52,15 @@
 
 
 -(NSDate *)nextDueDate{
+
+	SHConfig_Medium *cm = [[SHConfig_Medium alloc] initWithContext:self.managedObjectContext];
+	SHConfig *config = [cm globalConfig];
 	SHDailyNextDueDateCalculator *calculator = [[SHDailyNextDueDateCalculator alloc]
 		initWithActiveDays:self.activeDaysContainer
 		lastActivationDateTime:self.lastActivationDateTime
 		lastUpdateDateTime:self.lastUpdateDateTime
-		rate:self.rate];
+		dayStartTime:config.dayStartTime];
+	calculator.dateProvider = self.dateProvider;
 	switch(self.rateType){
 		case SH_YEARLY_RATE:
 		case SH_YEARLY_RATE_INVERSE:
@@ -73,15 +78,16 @@
 
 
 -(NSInteger)daysUntilDue{
-	__block NSUInteger dayStart = 0;
-	[self.managedObjectContext performBlockAndWait:^{
-		SHConfig_Medium *cm = [[SHConfig_Medium alloc]
-			initWithContext:self.managedObjectContext];
-		SHConfig *config = [cm globalConfig];
-		dayStart = config.dayStartHour;
-	}];
-	NSDate *roundedDownToday = [[NSDate date] setHour:dayStart minute:0 second:0];
-	return (int)[NSDate daysBetween:roundedDownToday to:self.nextDueDate];
+	NSUInteger dayStart = 0;
+	SHConfig_Medium *cm = [[SHConfig_Medium alloc]
+		initWithContext:self.managedObjectContext];
+	SHConfig *config = [cm globalConfig];
+	dayStart = config.dayStartTime;
+	NSDate *today = self.dateProvider.date;
+	NSDate *roundedDownToday = [today dayStart];
+	NSDate *todayFromStartTime = [roundedDownToday timeAfterSeconds:dayStart];
+	NSDate *nextDueDate = self.nextDueDate;
+	return (NSInteger)[NSDate daysBetween:todayFromStartTime to:nextDueDate];
 }
 
 
@@ -154,14 +160,24 @@
 }
 
 -(BOOL)isCompleted{
-	__block NSInteger dayStartHour = 0;
-	[self.managedObjectContext performBlockAndWait:^{
-		SHConfig_Medium *cm = [[SHConfig_Medium alloc] initWithContext:self.managedObjectContext];
-		SHConfig *config = [cm globalConfig];
-		dayStartHour = config.dayStartHour;
-	}];
-	NSDate *today = [NSDate.date.dayStart timeAfterHours:dayStartHour minutes:0 seconds:0];
-	return nil == self.lastActivationDateTime || self.lastActivationDateTime.timeIntervalSince1970 >= today.timeIntervalSince1970;
+	NSInteger dayStartTime = 0;
+	SHConfig_Medium *cm = [[SHConfig_Medium alloc] initWithContext:self.managedObjectContext];
+	SHConfig *config = [cm globalConfig];
+	dayStartTime = config.dayStartTime;
+	NSDate *today = [self.dateProvider.date.dayStart timeAfterSeconds:dayStartTime];
+	return nil != self.lastActivationDateTime &&
+		self.lastActivationDateTime.timeIntervalSince1970 >= today.timeIntervalSince1970;
 }
+
+@synthesize dateProvider = _dateProvider;
+
+-(NSObject<SHDateProviderProtocol>*)dateProvider{
+	if(nil == _dateProvider) {
+		_dateProvider = [[SHDefaultDateProvider alloc] init];
+	}
+	return _dateProvider;
+}
+
+
 
 @end

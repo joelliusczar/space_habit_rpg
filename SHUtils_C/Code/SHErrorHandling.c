@@ -56,7 +56,7 @@ void * shHandleErrorRetNull(SHErrorCode code,const char* const msg,SHError* errO
 void shPrepareSHError(SHError* errObj){
 	shLog("prepareSHError");
 	if(!errObj) return;
-	errObj->code = NO_ERROR;
+	errObj->code = SH_NO_ERROR;
 	errObj->msg = NULL;
 	errObj->msgLen = 0;
 	errObj->errorCallback = NULL;

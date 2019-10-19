@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2747C3D72043C00D00FB5669 /* SHCommonTypeDefs.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C3D62043C00D00FB5669 /* SHCommonTypeDefs.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27730BA92041E4B0003BEB6C /* SHFlexibleConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27730BA62041E4B0003BEB6C /* SHFlexibleConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27730BAA2041E4B0003BEB6C /* SHFlexibleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 27730BA72041E4B0003BEB6C /* SHFlexibleConstants.m */; };
 		27C7923B22279F2200A92487 /* SHDummy.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C7923922279F2200A92487 /* SHDummy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C7923C22279F2200A92487 /* SHDummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C7923A22279F2200A92487 /* SHDummy.m */; };
 		27ED28AC204003E200CD5536 /* SHGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = 27ED28AA204003E200CD5536 /* SHGlobal.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -19,8 +17,6 @@
 
 /* Begin PBXFileReference section */
 		2747C3D62043C00D00FB5669 /* SHCommonTypeDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCommonTypeDefs.h; sourceTree = "<group>"; };
-		27730BA62041E4B0003BEB6C /* SHFlexibleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHFlexibleConstants.h; sourceTree = "<group>"; };
-		27730BA72041E4B0003BEB6C /* SHFlexibleConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHFlexibleConstants.m; sourceTree = "<group>"; };
 		278FFDA8222B32D300DAF985 /* SHGlobal.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHGlobal.debug.xcconfig; sourceTree = "<group>"; };
 		27B0B1F32223A8B30028AF59 /* SHGlobal.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHGlobal.base.xcconfig; sourceTree = "<group>"; };
 		27C7923922279F2200A92487 /* SHDummy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDummy.h; sourceTree = "<group>"; };
@@ -73,8 +69,6 @@
 			isa = PBXGroup;
 			children = (
 				2747C3D62043C00D00FB5669 /* SHCommonTypeDefs.h */,
-				27730BA62041E4B0003BEB6C /* SHFlexibleConstants.h */,
-				27730BA72041E4B0003BEB6C /* SHFlexibleConstants.m */,
 				27ED28B32040043D00CD5536 /* SHConstants.h */,
 				27ED28B22040043D00CD5536 /* SHConstants.m */,
 				27ED28AA204003E200CD5536 /* SHGlobal.h */,
@@ -93,7 +87,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				27ED28B52040043D00CD5536 /* SHConstants.h in Headers */,
-				27730BA92041E4B0003BEB6C /* SHFlexibleConstants.h in Headers */,
 				27ED28AC204003E200CD5536 /* SHGlobal.h in Headers */,
 				27C7923B22279F2200A92487 /* SHDummy.h in Headers */,
 				2747C3D72043C00D00FB5669 /* SHCommonTypeDefs.h in Headers */,
@@ -186,7 +179,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				27C7923C22279F2200A92487 /* SHDummy.m in Sources */,
-				27730BAA2041E4B0003BEB6C /* SHFlexibleConstants.m in Sources */,
 				27ED28B42040043D00CD5536 /* SHConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

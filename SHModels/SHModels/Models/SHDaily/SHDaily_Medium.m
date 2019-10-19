@@ -44,7 +44,8 @@
 	NSFetchRequest<SHDaily*> *request = SHDaily.fetchRequest;
 	request.predicate = filter;
 	request.sortDescriptors = [self buildFetchDescriptors];
-	NSFetchedResultsController *resultsController = [self.context getItemFetcher:request withSectionKeyPath:@"isCompleted"];
+	NSFetchedResultsController *resultsController = [self.context getItemFetcher:request
+		withSectionKeyPath:@"isCompleted"];
 	return resultsController;
 }
 

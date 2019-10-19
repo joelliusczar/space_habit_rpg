@@ -18,11 +18,8 @@ BOOL shouldUseLowerBoundChoices_mh[25];
 int rIdx_mh;
 
 uint monsterHelper_mockRandom(uint range){
-	return shouldUseLowerBoundChoices_mh[rIdx_mh++]?0:(range-1);
+	return shouldUseLowerBoundChoices_mh[rIdx_mh++] ? 0 : (range-1);
 }
-
-#define SET_UP_BOUND() shouldUseLowerBoundChoices_mh[i++] = NO
-#define SET_LOW_BOUND() shouldUseLowerBoundChoices_mh[i++] = YES
 
 @implementation MonsterHelperTest
 
@@ -58,8 +55,8 @@ uint monsterHelper_mockRandom(uint range){
 
 -(void)testRandomMonsterKey{
 	int i =0;
-	SET_LOW_BOUND();
-	SET_UP_BOUND();
+	shouldUseLowerBoundChoices_mh[i++] = YES;
+	shouldUseLowerBoundChoices_mh[i++] = NO;
 	NSManagedObjectContext *context = [self.dc newBackgroundContext];
 	SHMonster_Medium *mm = [[SHMonster_Medium alloc]
 		initWithContext:context];
@@ -85,8 +82,8 @@ uint monsterHelper_mockRandom(uint range){
 	
 	[context performBlockAndWait:^{
 		i = 0;
-		SET_LOW_BOUND();
-		SET_LOW_BOUND();
+		shouldUseLowerBoundChoices_mh[i++] = YES;
+		shouldUseLowerBoundChoices_mh[i++] = YES;
 		
 		
 		SHMonster *m = [mm newRandomMonster:@"NEBULA" sectorLvl:32];
@@ -102,8 +99,8 @@ uint monsterHelper_mockRandom(uint range){
 	XCTAssertEqual(nowHp,400);
 	
 	[context performBlockAndWait:^{
-		SET_LOW_BOUND();
-		SET_UP_BOUND();
+		shouldUseLowerBoundChoices_mh[i++] = YES;
+		shouldUseLowerBoundChoices_mh[i++] = NO;
 		SHMonster *m = [mm newRandomMonster:@"NEBULA" sectorLvl:32];
 		fullName = m.fullName;
 		lvl = m.lvl;
@@ -117,8 +114,8 @@ uint monsterHelper_mockRandom(uint range){
 	XCTAssertEqual(nowHp,650);
 	
 	[context performBlockAndWait:^{
-		SET_UP_BOUND();
-		SET_LOW_BOUND();
+		shouldUseLowerBoundChoices_mh[i++] = NO;
+		shouldUseLowerBoundChoices_mh[i++] = YES;
 		SHMonster *m = [mm newRandomMonster:@"NEBULA" sectorLvl:32];
 		fullName = m.fullName;
 		lvl = m.lvl;
@@ -132,8 +129,8 @@ uint monsterHelper_mockRandom(uint range){
 	XCTAssertEqual(nowHp,160);
 	
 	[context performBlockAndWait:^{
-		SET_UP_BOUND();
-		SET_UP_BOUND();
+		shouldUseLowerBoundChoices_mh[i++] = NO;
+		shouldUseLowerBoundChoices_mh[i++] = NO;
 		SHMonster *m = [mm newRandomMonster:@"NEBULA" sectorLvl:32];
 		fullName = m.fullName;
 		lvl = m.lvl;

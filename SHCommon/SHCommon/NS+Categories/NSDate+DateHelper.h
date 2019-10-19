@@ -35,5 +35,6 @@
 -(NSDateComponents *)getDateComponents;
 -(NSString *)timeOfDayInSystemPreferredFormat;
 -(NSString *)staticTimeOfDay;
+-(NSDate *)timeAfterSeconds:(NSInteger)seconds;
 @end
 

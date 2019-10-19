@@ -20,6 +20,10 @@ extern NSString* const HOME_KEY;
 
 @interface SHSector_Medium : NSObject
 
+@property (strong,nonatomic) NSManagedObjectContext *context;
+@property (strong,nonatomic) NSObject<SHResourceUtilityProtocol>* resourceUtil;
+@property (strong,nonatomic) SHSectorInfoDictionary* sectorInfo;   
+
 +(instancetype)newWithContext:(nullable NSManagedObjectContext*)context
 	withResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil;
 

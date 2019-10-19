@@ -34,6 +34,9 @@
 		274EFB5B204E3FE000CB3C4C /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB59204E3FE000CB3C4C /* UIColor+Helper.m */; };
 		274EFB62204E43C900CB3C4C /* UIImage+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB60204E43C900CB3C4C /* UIImage+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		274EFB63204E43C900CB3C4C /* UIImage+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB61204E43C900CB3C4C /* UIImage+Helper.m */; };
+		27804B752352776A004921F5 /* SHDateProviderProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27804B742352776A004921F5 /* SHDateProviderProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27804B78235277EC004921F5 /* SHDefaultDateProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 27804B76235277EC004921F5 /* SHDefaultDateProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27804B79235277EC004921F5 /* SHDefaultDateProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 27804B77235277EC004921F5 /* SHDefaultDateProvider.m */; };
 		2781FF6D204204D80035AD82 /* SHCommonUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781FF5A204204D70035AD82 /* SHCommonUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2781FF6E204204D80035AD82 /* SHCommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781FF5B204204D70035AD82 /* SHCommonUtils.m */; };
 		2781FF6F204204D80035AD82 /* SHSingletonCluster.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781FF5C204204D70035AD82 /* SHSingletonCluster.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -71,6 +74,23 @@
 		27DD1D2B2043A2210030D954 /* NSObject+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DD1D232043A2210030D954 /* NSObject+Helper.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		27804B8223527AE6004921F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27804B7E23527AE6004921F5 /* SHCore_C.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 271691C220885EF70059A58E;
+			remoteInfo = SHCore_C;
+		};
+		27804B8423527AF1004921F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27804B7E23527AE6004921F5 /* SHCore_C.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 271691C120885EF70059A58E;
+			remoteInfo = SHCore_C;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		2711883C203FFA810085A549 /* SHCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2711883F203FFA810085A549 /* SHCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHCommon.h; sourceTree = "<group>"; };
@@ -101,6 +121,10 @@
 		274EFB59204E3FE000CB3C4C /* UIColor+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Helper.m"; sourceTree = "<group>"; };
 		274EFB60204E43C900CB3C4C /* UIImage+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Helper.h"; sourceTree = "<group>"; };
 		274EFB61204E43C900CB3C4C /* UIImage+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Helper.m"; sourceTree = "<group>"; };
+		27804B742352776A004921F5 /* SHDateProviderProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDateProviderProtocol.h; sourceTree = "<group>"; };
+		27804B76235277EC004921F5 /* SHDefaultDateProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDefaultDateProvider.h; sourceTree = "<group>"; };
+		27804B77235277EC004921F5 /* SHDefaultDateProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDefaultDateProvider.m; sourceTree = "<group>"; };
+		27804B7E23527AE6004921F5 /* SHCore_C.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHCore_C.xcodeproj; path = ../SHCore_C/SHCore_C.xcodeproj; sourceTree = "<group>"; };
 		2781FF5A204204D70035AD82 /* SHCommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCommonUtils.h; sourceTree = "<group>"; };
 		2781FF5B204204D70035AD82 /* SHCommonUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCommonUtils.m; sourceTree = "<group>"; };
 		2781FF5C204204D70035AD82 /* SHSingletonCluster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSingletonCluster.h; sourceTree = "<group>"; };
@@ -156,6 +180,7 @@
 		27118832203FFA810085A549 = {
 			isa = PBXGroup;
 			children = (
+				27804B7E23527AE6004921F5 /* SHCore_C.xcodeproj */,
 				276E6D92222A46A500CB36CB /* Configs */,
 				2711883E203FFA810085A549 /* SHCommon */,
 				2711883D203FFA810085A549 /* Products */,
@@ -206,6 +231,8 @@
 				27118840203FFA810085A549 /* Info.plist */,
 				27CA8634226262E200AE8FDB /* SHObject.h */,
 				27CA8635226262E200AE8FDB /* SHObject.m */,
+				27804B76235277EC004921F5 /* SHDefaultDateProvider.h */,
+				27804B77235277EC004921F5 /* SHDefaultDateProvider.m */,
 			);
 			path = SHCommon;
 			sourceTree = "<group>";
@@ -228,6 +255,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		27804B7F23527AE6004921F5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27804B8323527AE6004921F5 /* libSHCore_C.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2781FF7E2042053A0035AD82 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +271,7 @@
 				2781FF822042053A0035AD82 /* SHReportServiceCallerProtocol.h */,
 				2781FF832042053A0035AD82 /* SHColorInversionHintProtocol.h */,
 				2738CB1D23354AAB00A41CC3 /* SHMappableProtocol.h */,
+				27804B742352776A004921F5 /* SHDateProviderProtocol.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -311,7 +347,9 @@
 				274EFB5A204E3FE000CB3C4C /* UIColor+Helper.h in Headers */,
 				2747C4DB2048DC1300FB5669 /* SHProbWeight.h in Headers */,
 				274A8FA42323345300F348AC /* SHDebugDefines.h in Headers */,
+				27804B78235277EC004921F5 /* SHDefaultDateProvider.h in Headers */,
 				2738CB1E23354AAB00A41CC3 /* SHMappableProtocol.h in Headers */,
+				27804B752352776A004921F5 /* SHDateProviderProtocol.h in Headers */,
 				27CA8636226262E200AE8FDB /* SHObject.h in Headers */,
 				27118841203FFA810085A549 /* SHCommon.h in Headers */,
 			);
@@ -333,6 +371,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				27804B8523527AF1004921F5 /* PBXTargetDependency */,
 			);
 			name = SHCommon;
 			productName = SHCommon;
@@ -364,12 +403,28 @@
 			mainGroup = 27118832203FFA810085A549;
 			productRefGroup = 2711883D203FFA810085A549 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 27804B7F23527AE6004921F5 /* Products */;
+					ProjectRef = 27804B7E23527AE6004921F5 /* SHCore_C.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2711883B203FFA810085A549 /* SHCommon */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		27804B8323527AE6004921F5 /* libSHCore_C.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSHCore_C.a;
+			remoteRef = 27804B8223527AE6004921F5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2711883A203FFA810085A549 /* Resources */ = {
@@ -412,6 +467,7 @@
 				2781FF7B204204D80035AD82 /* SHSingletonCluster.m in Sources */,
 				27A430E62269243A00773056 /* NSArray+SHHelper.m in Sources */,
 				2781FF7C204204D80035AD82 /* SHResourceUtility.m in Sources */,
+				27804B79235277EC004921F5 /* SHDefaultDateProvider.m in Sources */,
 				2747C4862048CC9100FB5669 /* SHNotificationHelper.m in Sources */,
 				27A430F222692DAF00773056 /* NSOrderedSet+SHHelper.m in Sources */,
 				2747C48A2048CDB400FB5669 /* SHControlKeep.m in Sources */,
@@ -433,6 +489,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		27804B8523527AF1004921F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SHCore_C;
+			targetProxy = 27804B8423527AF1004921F5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		27118842203FFA810085A549 /* Debug */ = {

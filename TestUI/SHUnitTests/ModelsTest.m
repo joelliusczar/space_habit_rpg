@@ -50,13 +50,14 @@
 	h.nowHp = 32;
 	h.nowXp = 22;
 	h.shipName = @"bean";
-	XCTAssertEqualWithAccuracy(h.gold, 3.14, .011);
+	XCTAssertEqual(h.gold, 3);
 	XCTAssertEqual(h.lvl, 15);
 	XCTAssertEqual(h.maxHp, 56);
 	XCTAssertEqual(h.nowHp, 32);
 	XCTAssertEqual(h.nowXp, 22);
 	XCTAssertTrue([h.shipName isEqualToString:@"bean"]);
 }
+
 
 -(void)testMonsterProperties{
 	NSManagedObjectContext *context = [self.dc newBackgroundContext];
@@ -68,7 +69,7 @@
 		XCTAssertEqual(m.lvl, 13);
 		XCTAssertEqual(m.maxHp,287);
 		XCTAssertEqual(m.nowHp, 123);
-		XCTAssertEqual(m.xp, 1);
+		XCTAssertEqual(m.xp, 2);
 		XCTAssertTrue([m.fullName isEqualToString:@"Dust Fairy"]);
 		XCTAssertEqual(m.defense, 0);
 		XCTAssertEqualWithAccuracy(m.treasureDropRate, .1, .011);
@@ -78,6 +79,7 @@
 		
 	}];
 }
+
 
 -(void)testSectorProperties{
 	NSManagedObjectContext *context = [self.dc newBackgroundContext];

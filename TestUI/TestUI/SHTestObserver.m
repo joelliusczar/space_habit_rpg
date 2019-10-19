@@ -24,29 +24,25 @@
 
 -(void)testSuiteWillStart:(XCTestSuite *)testSuite{
 	(void)testSuite;
-	NSLog(@"Second?");
 }
 
 
 -(void)testCaseWillStart:(XCTestCase *)testCase{
-
+	(void)testCase;
 }
 
 
 -(void)testCaseDidFinish:(XCTestCase *)testCase{
 	(void)testCase;
-	NSLog(@"case done");
 }
 
 
 -(void)testSuiteDidFinish:(XCTestSuite *)testSuite{
 	(void)testSuite;
-	NSLog(@"Suite done");
 }
 
 -(void)testBundleDidFinish:(NSBundle *)testBundle{
 	(void)testBundle;
-	NSLog(@"Last?");
 }
 
 @end

@@ -26,3 +26,4 @@ FOUNDATION_EXPORT const unsigned char SHTestCommonVersionString[];
 #import "TestDummy.h"
 #import "NSManagedObjectContext+Hijack.h"
 #import "SHCoreData+CleanUp.h"
+#import "SHTestDateProvider.h"

@@ -100,9 +100,9 @@ bool shIsValidSHDateTime(SHDatetime const *dt);
 
 void shDTToString(SHDatetime const *dt,char* str);
 
-void shFreeSHDatetime(SHDatetime *dtObj);
+void shFreeSHDatetime(SHDatetime *dtObj,int32_t len);
 
-void shFreeSHTimeshift(SHTimeshift *tsObj);
+void shFreeSHTimeshift(SHTimeshift *tsObj,int32_t len);
  /* SHDatetimeFuncs_h */
 
 

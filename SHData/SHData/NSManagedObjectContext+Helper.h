@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSFetchedResultsController *)getItemFetcher:(NSFetchRequest *)fetchRequest;
 -(NSFetchedResultsController *)getItemFetcher:(NSFetchRequest *)fetchRequest
 	withSectionKeyPath:(NSString *)sectionKeyPath;
+-(NSInteger)batchDelete:(NSFetchRequest *)fetchRequest withError:(NSError **)error;
 +(NSManagedObject*)newEntityUnattached:(NSEntityDescription*)entityType;
 -(instancetype)createChildContext;
 @end

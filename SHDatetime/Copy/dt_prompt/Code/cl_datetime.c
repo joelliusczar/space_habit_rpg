@@ -61,7 +61,7 @@ static int _argsToTimeshifts(int argc,char *argv[],SHDatetime *dt,int lastIdx
 		dt->shifts[shiftIdx] = *shift;
 		dt->shiftLen++;
 	}
-	else *error = GEN_ERROR;
+	else *error = SH_GEN_ERROR;
 	return lastIdx;
 }
 
@@ -70,11 +70,11 @@ static int _loadDateArgsIntoDt(int argc,char *argv[],SHDatetime *dt,int lastIdx
 	if((argc -lastIdx) < 3) return lastIdx;
 	char *ptr;
 	dt->year = strtol(argv[lastIdx++],&ptr,10);
-	if(*ptr != '\0') return setIndexErrorCode(GEN_ERROR,error);
+	if(*ptr != '\0') return setIndexErrorCode(SH_GEN_ERROR,error);
 	dt->month = strtol(argv[lastIdx++],&ptr,10);
-	if(*ptr != '\0') return setIndexErrorCode(GEN_ERROR,error);
+	if(*ptr != '\0') return setIndexErrorCode(SH_GEN_ERROR,error);
 	dt->day = strtol(argv[lastIdx++],&ptr,10);
-	if(*ptr != '\0') return setIndexErrorCode(GEN_ERROR,error);
+	if(*ptr != '\0') return setIndexErrorCode(SH_GEN_ERROR,error);
 	if((argc -lastIdx) > 0){ 
 		int tzOffset = strtol(argv[lastIdx],&ptr,10);
 		if(*ptr != '\0') {
@@ -91,11 +91,11 @@ static int _loadTimeArgsIntoDt(int argc,char *argv[],SHDatetime *dt,int lastIdx
 	if((argc -lastIdx) < 3) return lastIdx;
 	char *ptr;
 	dt->hour = strtol(argv[lastIdx++],&ptr,10);
-	if(*ptr != '\0') return setIndexErrorCode(GEN_ERROR,error);
+	if(*ptr != '\0') return setIndexErrorCode(SH_GEN_ERROR,error);
 	dt->minute = strtol(argv[lastIdx++],&ptr,10);
-	if(*ptr != '\0') return setIndexErrorCode(GEN_ERROR,error);
+	if(*ptr != '\0') return setIndexErrorCode(SH_GEN_ERROR,error);
 	dt->second = strtol(argv[lastIdx++],&ptr,10);
-	if(*ptr != '\0') return setIndexErrorCode(GEN_ERROR,error);
+	if(*ptr != '\0') return setIndexErrorCode(SH_GEN_ERROR,error);
 	return lastIdx;
 }
 
@@ -104,7 +104,7 @@ static int _loadTimestampArgs(int argc,char *argv[],double *timestamp,int *tzOff
 	if((argc -lastIdx) < 1) return lastIdx;
 	char *ptr;
 	*timestamp = strtol(argv[lastIdx++],&ptr,10);
-	if(*ptr != '\0') return setIndexErrorCode(GEN_ERROR,error);
+	if(*ptr != '\0') return setIndexErrorCode(SH_GEN_ERROR,error);
 	*tzOffset = 0;
 	if((argc -lastIdx) > 0){ 
 		*tzOffset = strtol(argv[lastIdx],&ptr,10);
@@ -121,7 +121,7 @@ static int _loadAddUnitArgs(int argc,char *argv[],long *add,int lastIdx,SHErrorC
 	if((argc -lastIdx) < 1) return lastIdx;
 	char *ptr;
 	*add = strtol(argv[lastIdx++],&ptr,10);
-	if(*ptr != '\0') return setIndexErrorCode(GEN_ERROR,error);
+	if(*ptr != '\0') return setIndexErrorCode(SH_GEN_ERROR,error);
 	return lastIdx;
 }
 
@@ -131,7 +131,7 @@ static int _loadDateTimeArgs(int argc,char *argv[],int lastIdx
 		&& (choiceHash == ddiff || choiceHash == sdiff))
 		? &dtb : &dt;
 	lastIdx = load_fp(argc,argv,dtPt,lastIdx,error);
-	if(*error) return setIndexErrorCode(GEN_ERROR,error);
+	if(*error) return setIndexErrorCode(SH_GEN_ERROR,error);
 	(*parseCount)++;
 	return lastIdx;
 }
@@ -152,7 +152,7 @@ static int _loadTimeAddOptionArg(int argc,char *argv[],TimeAdjustOptions *opt,in
 		*opt = SIMPLE;
 	}
 	else{
-		return setIndexErrorCode(GEN_ERROR,error);
+		return setIndexErrorCode(SH_GEN_ERROR,error);
 	}
 	
 	return ++lastIdx;
@@ -287,11 +287,11 @@ SHErrorCode selectChoice(int argc,char *argv[]){
 	printf("Hello");
 	if(argc < 2){
 		printf("No input was given\n");
-		return GEN_ERROR;
+		return SH_GEN_ERROR;
 	}
 	if(!strcmp(argv[1],"-h")){
 		_printHelpMenu();
-		return NO_ERROR;
+		return SH_NO_ERROR;
 	}
 	printf("past\n");
 	choiceHash = calcStrHash(argv[1]) % 33;
@@ -300,7 +300,7 @@ SHErrorCode selectChoice(int argc,char *argv[]){
 		double ans = cl_dtToTimestamp(argc,argv,&error);
 		if(error) return error;
 		printf("%f\n",ans);
-		return NO_ERROR;
+		return SH_NO_ERROR;
 	}
 	if(choiceHash == ts_dt){
 		SHDatetime ans;
@@ -309,7 +309,7 @@ SHErrorCode selectChoice(int argc,char *argv[]){
 		printf("%"PRId64 "-%d-%d %d:%d:%d tz offset: %d\n",
 			dt.year,dt.month,dt.day,dt.hour,dt.minute,dt.second
 			,dt.timezoneOffset);
-		return NO_ERROR;
+		return SH_NO_ERROR;
 	}
 	if(choiceHash == dtadd){
 		SHDatetime ans;
@@ -318,27 +318,27 @@ SHErrorCode selectChoice(int argc,char *argv[]){
 		printf("%"PRId64 "- %d - %d %d:%d:%d tz offset: %d\n",
 			dt.year,dt.month,dt.day,dt.hour,dt.minute,dt.second
 			,dt.timezoneOffset);
-		return NO_ERROR;
+		return SH_NO_ERROR;
 	}
 	if(choiceHash == ddiff){
 		long ans = dayDiff(argc,argv,&error);
 		if(error) return error;
 		printf("%ld\n",ans);
-		return NO_ERROR;
+		return SH_NO_ERROR;
 	}
 	if(choiceHash == weekday){
 		int ans = cl_calcWeekdayIdx(argc,argv,&error);
 		if(error) return error;
 		printf("%d\n",ans);
-		return NO_ERROR;
+		return SH_NO_ERROR;
 	}
 	if(choiceHash == sdiff){
 		double ans = secDiff(argc,argv,&error);
 		if(error) return error;
 		printf("%fn",ans);
-		return NO_ERROR;
+		return SH_NO_ERROR;
 	}
-	return GEN_ERROR;
+	return SH_GEN_ERROR;
 }
 
 
@@ -348,13 +348,13 @@ static SHErrorCode _cleanup(){
 		dt.shiftLen = 0;
 		dt.currentShiftIdx = -1;
 	}
-	return NO_ERROR;
+	return SH_NO_ERROR;
 }
 
 SHErrorCode cl_datetime(int argc,char *argv[]){
 	if(argc < 2){
 		printf("No input was given\n");
-		return GEN_ERROR;
+		return SH_GEN_ERROR;
 	}
 	SHErrorCode error = selectChoice(argc,argv);
 	_cleanup();
@@ -362,5 +362,5 @@ SHErrorCode cl_datetime(int argc,char *argv[]){
 		printf("Error!\n");
 		return error;
 	}
-	return NO_ERROR;
+	return SH_NO_ERROR;
 }

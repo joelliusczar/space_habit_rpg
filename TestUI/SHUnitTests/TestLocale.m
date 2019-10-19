@@ -208,8 +208,6 @@ just delete the section that is causing the test to fail.
 	XCTAssertTrue(testLocale.isUsing24HourFormat);
 	testLocale = [NSLocale localeWithLocaleIdentifier:@"gsw_CH"];//H
 	XCTAssertTrue(testLocale.isUsing24HourFormat);
-	testLocale = [NSLocale localeWithLocaleIdentifier:@"ha_Latn_GH"];//H
-	XCTAssertTrue(testLocale.isUsing24HourFormat);
 	testLocale = [NSLocale localeWithLocaleIdentifier:@"is_IS"];//HH
 	XCTAssertTrue(testLocale.isUsing24HourFormat);
 	testLocale = [NSLocale localeWithLocaleIdentifier:@"pt_BR"];//HH
@@ -783,8 +781,6 @@ just delete the section that is causing the test to fail.
 	testLocale = [NSLocale localeWithLocaleIdentifier:@"naq_NA"];//h a
 	XCTAssertFalse(testLocale.isUsing24HourFormat);
 	testLocale = [NSLocale localeWithLocaleIdentifier:@"ga"];//HH
-	XCTAssertTrue(testLocale.isUsing24HourFormat);
-	testLocale = [NSLocale localeWithLocaleIdentifier:@"af_NA"];//HH
 	XCTAssertTrue(testLocale.isUsing24HourFormat);
 	testLocale = [NSLocale localeWithLocaleIdentifier:@"kea_CV"];//HH
 	XCTAssertTrue(testLocale.isUsing24HourFormat);
