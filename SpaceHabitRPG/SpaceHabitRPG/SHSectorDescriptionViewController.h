@@ -6,14 +6,11 @@
 //	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <SHModels/SHSector.h>
-#import <SHModels/SHSectorDTO.h>
 #import "SHSectorChoiceViewController.h"
 #import "SHStoryDumpView.h"
-#import <SHData/SHData.h>
-#import <SHModels/SHStoryItemObjectID.h>
-
+@import UIKit;
+@import SHModels;
+@import SHData;
 
 
 @class SHSectorChoiceViewController;

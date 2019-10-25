@@ -7,7 +7,7 @@
 //
 
 #import "SHRangeRateItem.h"
-#import <SHCommon/NSObject+Helper.h>
+@import SHCommon;
 
 @implementation SHRangeRateItem
 

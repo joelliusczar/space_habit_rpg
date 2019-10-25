@@ -6,9 +6,9 @@
 //	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "SHDailyActiveDays.h"
-#import <SHCommon/SHDateProviderProtocol.h>
+@import Foundation;
+@import SHCommon;
 
 NS_ASSUME_NONNULL_BEGIN
 

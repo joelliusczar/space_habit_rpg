@@ -7,21 +7,9 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <SHModels/SHDaily.h>
-#import <SHModels/SHCounter.h>
-#import <SHModels/SHTodo.h>
-#import <SHModels/SHItem.h>
-#import <SHModels/SHHero.h>
-#import <SHModels/SHHeroDTO.h>
-#import <SHModels/SHConfig.h>
-#import <SHModels/SHSector.h>
-#import <SHModels/SHMonster.h>
-#import <SHModels/SHTransaction.h>
-#import <SHModels/SHMonster_Medium.h>
-#import <SHGlobal/SHConstants.h>
-#import <SHData/SHCoreData.h>
-#import <SHData/NSManagedObjectContext+Helper.h>
-#import <SHModels/SHSector_Medium.h>
+@import SHModels;
+@import SHGlobal;
+@import SHData;
 @import SHTestCommon;
 
 @interface ModelsTest : FrequentCase

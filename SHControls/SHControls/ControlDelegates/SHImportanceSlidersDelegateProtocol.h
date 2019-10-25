@@ -6,10 +6,10 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 #import "SHCommonDelegateProtocol.h"
 #import "SHEventInfo.h"
+@import Foundation;
+@import UIKit;
 
 @class SHImportanceSliderView;
 

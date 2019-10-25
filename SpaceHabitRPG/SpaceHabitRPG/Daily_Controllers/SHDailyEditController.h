@@ -6,15 +6,13 @@
 //	Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "SHDailyViewController.h"
 #import "SHEditingSaverProtocol.h"
-#import <SHData/SHCoreDataProtocol.h>
-#import <SHGlobal/SHConstants.h>
-#import <SHModels/SHDaily.h>
-#import <SHModels/SHDailyDTO.h>
-#import <SHControls/AllSHControls.h>
-#import <SHData/SHObjectIDWrapper.h>
+@import UIKit;
+@import SHData;
+@import SHGlobal;
+@import SHModels;
+@import SHControls;
 
 
 NS_ASSUME_NONNULL_BEGIN

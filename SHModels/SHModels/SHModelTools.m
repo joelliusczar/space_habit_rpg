@@ -7,7 +7,7 @@
 //
 
 #import "SHModelTools.h"
-#import <SHCommon/SHCommonUtils.h>
+@import SHCommon;
 
 uint shCalculateLvl(uint lvl,uint range){
 	lvl = lvl?lvl:1;

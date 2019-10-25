@@ -6,7 +6,9 @@
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+
+#warning actually use this class
 
 @interface SHMenuViewController : UIViewController
 

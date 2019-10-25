@@ -7,11 +7,9 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <SHCommon/SHSingletonCluster.h>
-#import <SHGlobal/SHConstants.h>
-#import <SHCommon/NSDictionary+SHHelper.h>
-#import <SHModels/SHModelTools.h>
-#import <SHCommon/SHCommonUtils.h>
+@import SHCommon;
+@import SHGlobal;
+@import SHModels;
 
 
 @interface CommonUtilitiesTest : XCTestCase

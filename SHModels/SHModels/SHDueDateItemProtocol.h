@@ -6,11 +6,10 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "SHReminder.h"
 #import "SHReminderDTO.h"
-#import <SHCommon/SHMappableProtocol.h>
-
+@import Foundation;
+@import SHCommon;
 @import CoreData;
 
 @protocol SHDueDateItemProtocol <NSObject,SHMappableProtocol>

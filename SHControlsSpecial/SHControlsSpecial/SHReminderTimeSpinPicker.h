@@ -6,8 +6,8 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <SHControls/SHSpinPicker.h>
+@import UIKit;
+@import SHControls;
 
 
 @interface SHReminderTimeSpinPicker :SHSpinPicker

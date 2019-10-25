@@ -6,7 +6,7 @@
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface SHTaskCell : UITableViewCell
 @property (copy,nonatomic) void (^cellActivationAction)(void);

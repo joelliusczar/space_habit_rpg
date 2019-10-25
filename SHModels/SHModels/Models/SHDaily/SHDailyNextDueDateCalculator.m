@@ -8,7 +8,7 @@
 
 #import "SHDailyNextDueDateCalculator.h"
 #import <SHCore_C/SHDaily_C.h>
-#import <SHCommon/SHDefaultDateProvider.h>
+@import SHCommon;
 
 @implementation SHDailyNextDueDateCalculator
 

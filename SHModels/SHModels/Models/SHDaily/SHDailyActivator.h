@@ -6,11 +6,10 @@
 //  Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <SHData/NSManagedObjectContext+Helper.h>
-#import <SHData/SHObjectIDWrapper.h>
 #import "SHDaily.h"
 #import "SHConfig.h"
+@import Foundation;
+@import SHData;
 
 
 NS_ASSUME_NONNULL_BEGIN

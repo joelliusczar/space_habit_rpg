@@ -7,15 +7,11 @@
 //
 
 #import "SHYearlyActiveDaysViewController.h"
-#import <SHCommon/SHCommonUtils.h>
-#import <SHControls/SHListItemCell.h>
 #import "SHYearPartPicker.h"
-#import <SHCommon/SHInterceptor.h>
-#import <SHControls/SHEventInfo.h>
-#import <SHModels/SHModelConstants.h>
-#import <SHModels/SHListRateItem.h>
-#import <SHGlobal/SHConstants.h>
-#import <SHControls/UIViewController+Helper.h>
+@import SHCommon;
+@import SHControls;
+@import SHModels;
+@import SHGlobal;
 
 @interface SHYearlyActiveDaysViewController ()
 @end

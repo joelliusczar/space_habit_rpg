@@ -6,10 +6,10 @@
 //  Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import <SHCommon/SHCommon.h>
 #import "SHModelError.h"
 #import "SHListRateItemCollection.h"
 #import "SHRangeRateItem.h"
+@import SHCommon;
 @import CoreData;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -26,8 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly,nonatomic) NSArray<SHRangeRateItem*> *weeklyActiveDays;
 @property (readonly,nonatomic) NSArray<SHRangeRateItem*> *weeklyActiveDaysInv;
 @property (readonly,nonatomic) NSUInteger daysUntilDue;
-@property (strong,nonatomic) NSMutableDictionary *activeDaysDict;
-@property (nullable, nonatomic, copy) NSString *activeDays;
+@property (null_resettable, strong,nonatomic) NSMutableDictionary *activeDaysDict;
+@property (nullable, nonatomic, copy) NSString * activeDays;
 @property (nullable, nonatomic, copy) NSDate *activeFromDate;
 @property (nullable, nonatomic, copy) NSDate *activeToDate;
 @property (nonatomic) int32_t customUserOrder;

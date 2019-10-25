@@ -6,7 +6,7 @@
 //	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 typedef NS_ENUM(int,SHSeverity){
 	SH_SEVERITY_NONE,

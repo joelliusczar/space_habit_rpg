@@ -6,10 +6,9 @@
 //	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <XCTest/XCTest.h>
-#import <SHCommon/NSDate+DateHelper.h>
 #import "NSDate+testReplace.h"
-#import <SHCommon/NSLocale+Helper.h>
+#import <XCTest/XCTest.h>
+@import SHCommon;
 #import <SHDatetime/SHDatetime.h>
 
 

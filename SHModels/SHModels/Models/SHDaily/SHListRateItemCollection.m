@@ -16,7 +16,7 @@
 
 
 -(instancetype)initWithActiveDays:(NSMutableArray<SHListRateItem*>*)activeDays{
-	if(self == [super init]){
+	if(self = [super init]){
 		_activeDays = activeDays;
 	}
 	return self;

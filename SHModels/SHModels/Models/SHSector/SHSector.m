@@ -7,9 +7,7 @@
 //
 
 #import "SHSector.h"
-#import <SHCommon/SHCommonUtils.h>
-#import <SHCommon/SHResourceUtility.h>
-#import <SHCommon/NSDictionary+SHHelper.h>
+@import SHCommon;
 
 static SHSectorInfoDictionary *_sectorInfo;
 

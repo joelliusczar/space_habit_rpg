@@ -6,6 +6,6 @@
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 extern NSString* const SH_INTRO;

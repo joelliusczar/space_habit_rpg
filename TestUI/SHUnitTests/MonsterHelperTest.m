@@ -6,8 +6,7 @@
 //	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <SHModels/SHMonster_Medium.h>
-#import <SHModels/SHMonster.h>
+@import SHModels;
 @import SHTestCommon;
 
 @interface MonsterHelperTest : FrequentCase

@@ -6,14 +6,12 @@
 //	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <SHCommon/SHCommon.h>
-#import <SHData/NSManagedObjectContext+Helper.h>
 #import "NSDate+testReplace.h"
-@import SHModels;
-
 #import <SHDaily_C.h>
 #import <SHRateValueItem.h>
-#import <SHModels/SHDaily_Medium.h>
+@import SHCommon;
+@import SHData;
+@import SHModels;
 @import SHTestCommon;
 
 @interface DailyHelperTest : FrequentCase

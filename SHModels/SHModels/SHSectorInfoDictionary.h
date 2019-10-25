@@ -6,9 +6,9 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <SHCommon/SHResourceUtilityProtocol.h>
 #import "SHInfoDictionary.h"
+@import Foundation;
+@import SHCommon;
 
 @interface SHSectorInfoDictionary : NSObject
 @property (nonatomic,assign) BOOL isTesting;

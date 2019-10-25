@@ -7,7 +7,7 @@
 //
 
 #import "SHVarWrapper.h"
-#import <SHGlobal/SHCommonTypeDefs.h>
+@import SHGlobal;
 
 @implementation SHVarWrapper
 

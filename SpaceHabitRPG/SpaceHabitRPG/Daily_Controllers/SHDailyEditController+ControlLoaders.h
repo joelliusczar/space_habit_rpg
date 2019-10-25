@@ -7,8 +7,8 @@
 //
 
 #import "SHDailyEditController.h"
-#import <SHCommon/SHControlKeep.h>
-#import <SHModels/SHDailyDTO.h>
+@import SHCommon;
+@import SHModels;
 
 @interface SHDailyEditController (ControlLoaders)
 -(SHControlKeep *)buildControlKeep;

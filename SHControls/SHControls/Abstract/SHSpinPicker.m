@@ -9,9 +9,7 @@
 #pragma clang diagnostic ignored "-Wunused-parameter"
 
 #import "SHSpinPicker.h"
-#import <SHCommon/SHInterceptor.h>
-#import <SHCommon/NSException+SHCommonExceptions.h>
-#import <SHCommon/SHSingletonCluster.h>
+@import SHCommon;
 #import "UIViewController+Helper.h"
 #import "SHEventInfo.h"
 

@@ -11,20 +11,15 @@
 
 
 #import "SHDailyViewController.h"
-#import <SHGlobal/SHConstants.h>
 #import "SHEditNavigationController.h"
 #import "SHDailyEditController.h"
 #import "SHDailyCellController.h"
 #import "SHIntroViewController.h"
-#import <SHCommon/SHCommonUtils.h>
-#import <SHControls/UIViewController+Helper.h>
-#import <SHCommon/NSDate+DateHelper.h>
-#import <SHCommon/SHInterceptor.h>
-#import <SHControls/SHButton.h>
-#import <SHModels/SHDaily_Medium.h>
-#import <SHData/NSManagedObjectContext+Helper.h>
-#import <SHModels/SHConfig_Medium.h>
-#import <SHCommon/SHDebugDefines.h>
+@import SHGlobal;
+@import SHCommon;
+@import SHControls;
+@import SHModels;
+@import SHData;
 
 #define shHoldUp(n) [NSThread sleepForTimeInterval:n]
 

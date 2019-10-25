@@ -8,7 +8,7 @@
 
 #if IS_IOS
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 //! Project version number for SHModels.
 FOUNDATION_EXPORT double SHModelsVersionNumber;
@@ -76,6 +76,7 @@ FOUNDATION_EXPORT const unsigned char SHModelsVersionString[];
 #import "SHConfig_Medium.h"
 #import "SHStoryItemObjectID.h"
 
-// In this header, you should import all the public headers of your framework using statements like #import <SHModels/PublicHeader.h>
+// In this header, you should import all
+//the public headers of your framework using statements like #import <SHModels/PublicHeader.h>
 
 

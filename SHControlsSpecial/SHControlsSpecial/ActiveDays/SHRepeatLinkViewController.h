@@ -6,11 +6,10 @@
 //	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <SHModels/SHDailyActiveDays.h>
-#import <SHControls/SHView.h>
-#import <SHControls/SHViewEventsProtocol.h>
 #import "SHLinkViewController.h"
+@import UIKit;
+@import SHModels;
+@import SHControls;
 
 NS_ASSUME_NONNULL_BEGIN
 

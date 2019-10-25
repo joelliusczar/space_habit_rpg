@@ -7,7 +7,7 @@
 //
 
 #import "SHReminder.h"
-#import <SHCommon/SHCommonUtils.h>
+@import SHCommon;
 
 @implementation SHReminder
 -(void)copyFrom:(NSObject *)object{

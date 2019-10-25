@@ -6,9 +6,8 @@
 //  Copyright © 2018 Joel Pridgen. All rights reserved.
 //
 
-#import <SHCommon/NSDate+DateHelper.h>
 #import "NSDate+testReplace.h"
-#import <SHCommon/NSLocale+Helper.h>
+@import SHCommon;
 @import SHTestCommon;
 
 @interface TestLocale : FrequentCase

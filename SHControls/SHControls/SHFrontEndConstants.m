@@ -34,5 +34,5 @@ CGFloat const SH_EDIT_SCREEN_TOP_CONTROL_HEIGHT = 60;
 
 //timings
 NSTimeInterval const SH_CHARACTER_DELAY = .01;
-NSTimeInterval const SH_SCROLL_DELAY = .001;
-CGFloat const SH_SCROLL_INCREMENT = .1;
+NSTimeInterval const SH_SCROLL_DELAY = .00005; //smaller -> faster
+CGFloat const SH_SCROLL_INCREMENT = .01;

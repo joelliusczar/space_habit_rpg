@@ -7,7 +7,7 @@
 //
 
 #import "SHSwitch.h"
-#import <SHCommon/UIImage+Helper.h>
+@import SHCommon;
 @import CoreGraphics;
 
 @implementation SHSwitch

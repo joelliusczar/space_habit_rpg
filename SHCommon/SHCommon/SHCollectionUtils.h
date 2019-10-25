@@ -11,7 +11,7 @@
 #ifndef SHCollectionUtils_h
 #define SHCollectionUtils_h
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 typedef id (^shDictEntrytransformer)(id,NSMutableSet*);
 

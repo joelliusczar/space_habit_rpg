@@ -6,10 +6,8 @@
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <SHData/SHCoreData.h>
-#import <SHCommon/SHResourceUtility.h>
 #import "SHCentralViewController.h"
+@import UIKit;
 
 
 @class SHCentralViewController;

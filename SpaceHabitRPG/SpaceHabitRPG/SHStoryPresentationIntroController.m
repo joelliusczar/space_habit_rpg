@@ -8,9 +8,8 @@
 
 #import "SHStoryPresentationIntroController.h"
 #import "SHIntroViewController.h"
-#import <SHModels/SHModels.h>
-#import <SHControls/UIViewController+Helper.h>
-
+@import SHModels;
+@import SHControls;
 
 @interface SHStoryPresentationIntroController ()
 @property (weak,nonatomic) SHIntroViewController *introVC;
@@ -50,6 +49,8 @@
 -(void)startIntro{
 	[self.context performBlock:^{
 		[self cleanUpPreviousAttempts];
+		//this needs to be in the async block too even though it needs to be run on the main thread
+		//because I stil want showIntroView to run after clean up is done.
 		[self showIntroView];
 	}];
 }
@@ -109,33 +110,37 @@
 		}
 		[bSelf afterIntroCompleted];
 	};
-	SHIntroViewController *introVC = [[SHIntroViewController alloc] initWithSkipAction:^{
-		[self.context performBlock:^{
-			SHConfig_Medium *cm = [[SHConfig_Medium alloc] initWithContext:self.context];
-			SHConfig *config = [cm globalConfig];
-			config.storyMode = SH_STORY_MODE_NO_MONSTERS;
-			NSError *error = nil;
-			[self.context save:&error];
-			if(error) {
-				@throw [NSException dbException:error];
-			}
-			[self afterIntroCompleted];
-		}];
-	} withOnNextAction:^{
-		[self.context performBlock:^{
-			SHConfig_Medium *cm = [[SHConfig_Medium alloc] initWithContext:self.context];
-			SHConfig *config = [cm globalConfig];
-			config.storyMode = SH_STORY_MODE_FULL;
-			NSError *error = nil;
-			[self.context save:&error];
-			if(error) {
-				@throw [NSException dbException:error];
-			}
-			[self afterIntroStarted];
-		}];
+	[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+		SHIntroViewController *introVC = [[SHIntroViewController alloc] initWithSkipAction:^{
+			[self.context performBlock:^{
+				SHConfig_Medium *cm = [[SHConfig_Medium alloc] initWithContext:self.context];
+				SHConfig *config = [cm globalConfig];
+				config.storyMode = SH_STORY_MODE_NO_MONSTERS;
+				NSError *error = nil;
+				[self.context save:&error];
+				if(error) {
+					@throw [NSException dbException:error];
+				}
+				[self afterIntroCompleted];
+			}];
+		} withOnNextAction:^{
+			[self.context performBlock:^{
+				SHConfig_Medium *cm = [[SHConfig_Medium alloc] initWithContext:self.context];
+				SHConfig *config = [cm globalConfig];
+				config.storyMode = SH_STORY_MODE_FULL;
+				NSError *error = nil;
+				[self.context save:&error];
+				if(error) {
+					@throw [NSException dbException:error];
+				}
+				[self afterIntroStarted];
+			}];
+		}
+		withResourceUtil:self.resourceUtil];
+		[self.central arrangeAndPushChildVCToFront:introVC];
+		self.introVC = introVC;
+		
 	}];
-	[self.central arrangeAndPushChildVCToFront:introVC];
-	self.introVC = introVC;
 }
 
 

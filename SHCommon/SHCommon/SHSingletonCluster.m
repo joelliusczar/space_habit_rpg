@@ -9,8 +9,8 @@
 #import "SHSingletonCluster.h"
 #import "SHResourceUtility.h"
 #import "NSDate+DateHelper.h"
-#import <SHGlobal/SHConstants.h>
 #import "SHReportServiceCaller.h"
+@import SHGlobal;
 
 
 @implementation SHSingletonCluster

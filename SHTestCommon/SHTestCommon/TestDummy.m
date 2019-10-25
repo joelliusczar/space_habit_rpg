@@ -7,7 +7,7 @@
 //
 
 #import "TestDummy.h"
-#import <SHCommon/SHCommonUtils.h>
+@import SHCommon;
 
 @implementation TestDummy
 

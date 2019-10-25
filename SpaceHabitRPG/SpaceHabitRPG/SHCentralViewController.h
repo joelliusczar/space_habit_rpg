@@ -6,16 +6,11 @@
 //	Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "SHEditNavigationController.h"
-#import <SHData/SHCoreData.h>
-#import <SHModels/SHDaily.h>
-#import <SHModels/SHSector.h>
-#import <SHModels/SHMonster.h>
-#import <SHModels/SHSectorDTO.h>
-#import <SHModels/SHHeroDTO.h>
-#import <SHModels/SHConfigDTO.h>
 #import "SHBattleStatsViewController.h"
+@import UIKit;
+@import SHData;
+@import SHModels;
 
 @interface SHCentralViewController : UIViewController;
 @property (weak,nonatomic) IBOutlet UIView *tabsContainer;

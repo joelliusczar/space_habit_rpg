@@ -7,7 +7,7 @@
 //
 
 #import "SHTaskCell.h"
-#import <SHCommon/NSObject+Helper.h>
+@import SHCommon;
 
 @interface SHTaskCell()
 @end

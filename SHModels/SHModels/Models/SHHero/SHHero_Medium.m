@@ -7,7 +7,7 @@
 //
 
 #import "SHHero_Medium.h"
-#import <SHCommon/NSException+SHCommonExceptions.h>
+@import SHCommon;
 
 @implementation SHHero_Medium
 

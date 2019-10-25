@@ -7,7 +7,7 @@
 //
 
 #if IS_IOS
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 //! Project version number for SHGlobal.
 FOUNDATION_EXPORT double SHGlobalVersionNumber;
@@ -17,7 +17,9 @@ FOUNDATION_EXPORT const unsigned char SHGlobalVersionString[];
 
 #endif
 
-// In this header, you should import all the public headers of your framework using statements like #import <SHGlobal/PublicHeader.h>
+// In this header, you should import all
+// the public headers of your framework using statements
+// like #import <SHGlobal/PublicHeader.h>
 #import "SHConstants.h"
 #import "SHCommonTypeDefs.h"
 #import "SHDummy.h"

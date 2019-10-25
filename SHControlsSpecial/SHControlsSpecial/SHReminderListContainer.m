@@ -8,7 +8,7 @@
 
 #import "SHReminderListContainer.h"
 #import "SHReminderListView.h"
-#import <SHControls/UIViewController+Helper.h>
+@import SHControls;
 
 @interface SHReminderListContainer ()
 

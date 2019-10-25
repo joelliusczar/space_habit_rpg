@@ -6,7 +6,7 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @protocol TestKeepProtocol_C <NSObject>
 -(NSInteger)get19;

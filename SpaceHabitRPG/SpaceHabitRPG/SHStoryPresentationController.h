@@ -6,9 +6,9 @@
 //  Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <SHData/SHData.h>
-#import <SHModels/SHModels.h>
+@import Foundation;
+@import SHData;
+@import SHModels;
 
 NS_ASSUME_NONNULL_BEGIN
 

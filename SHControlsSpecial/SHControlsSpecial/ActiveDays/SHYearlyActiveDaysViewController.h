@@ -6,8 +6,8 @@
 //	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <SHControls/SHItemFlexibleListView.h>
-#import <SHModels/SHListRateItemCollection.h>
+@import SHControls;
+@import SHModels;
 
 
 @interface SHYearlyActiveDaysViewController : SHItemFlexibleListView

@@ -7,7 +7,7 @@
 //
 
 #import "SHTextField.h"
-#import <SHCommon/SHInterceptor.h>
+@import SHCommon;
 
 @implementation SHTextField
 

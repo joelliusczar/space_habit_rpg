@@ -7,7 +7,7 @@
 //
 #if IS_IOS
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface UIColor (Helper)
 -(UIColor *)invertColor;

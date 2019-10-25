@@ -6,8 +6,9 @@
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "SHEditNavigationController.h"
+@import Foundation;
+@import UIKit;
 
 @class SHEditNavigationController;
 

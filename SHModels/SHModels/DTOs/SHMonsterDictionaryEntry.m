@@ -7,9 +7,7 @@
 //
 
 #import "SHMonsterDictionaryEntry.h"
-#import <SHCommon/NSObject+Helper.h>
-#import <SHCommon/SHCollectionUtils.h>
-#import <SHCommon/NSDictionary+SHHelper.h>
+@import SHCommon;
 
 @implementation SHMonsterDictionaryEntry
 

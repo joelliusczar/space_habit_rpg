@@ -7,7 +7,7 @@
 //
 
 #import "SHConfigDTO.h"
-#import <SHCommon/NSObject+Helper.h>
+@import SHCommon;
 
 @implementation SHConfigDTO
 

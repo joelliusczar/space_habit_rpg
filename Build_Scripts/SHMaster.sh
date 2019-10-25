@@ -6,6 +6,7 @@
 #	Created by Joel Pridgen on 4/27/18.
 #	
 fp="$SRCROOT/../../perperson.sh"
+skip=1
 
 export SHFolder='SH_CP'
 
@@ -25,4 +26,6 @@ function markTodo {
 	--with-filename --line-number --only-matching "($TAGS).*\$" | perl -p -e "s/($TAGS)/ warning: \$1/"
 }
 
-markTodo
+if [ -z "$skip" ]; then
+	markTodo
+fi

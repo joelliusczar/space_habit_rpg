@@ -6,8 +6,8 @@
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "SHCoreDataProtocol.h"
+@import Foundation;
 
 extern NSString * const DEFAULT_DB_NAME;
 

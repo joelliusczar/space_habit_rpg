@@ -6,7 +6,7 @@
 //  Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 //! Project version number for SHControlsSpecial.
 FOUNDATION_EXPORT double SHControlsSpecialVersionNumber;
@@ -31,6 +31,7 @@ FOUNDATION_EXPORT const unsigned char SHControlsSpecialVersionString[];
 #import "SHReminderListView.h"
 #import "SHReminderListContainer.h"
 
-// In this header, you should import all the public headers of your framework using statements like #import <SHControlsSpecial/PublicHeader.h>
+// In this header, you should import all the public headers
+//of your framework using statements like #import <SHControlsSpecial/PublicHeader.h>
 
 

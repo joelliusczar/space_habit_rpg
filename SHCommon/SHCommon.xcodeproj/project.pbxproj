@@ -75,16 +75,44 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		27804B8223527AE6004921F5 /* PBXContainerItemProxy */ = {
+		27804BCC2363508B004921F5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 27804B7E23527AE6004921F5 /* SHCore_C.xcodeproj */;
+			containerPortal = 27804BC82363508B004921F5 /* SHDatetime.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27D3183D2086C8CA0047F5F1;
+			remoteInfo = SHDatetime;
+		};
+		27804BD223635092004921F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27804BCE23635092004921F5 /* SHGlobal.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27ED28A7204003E200CD5536;
+			remoteInfo = SHGlobal;
+		};
+		27804BD42363509C004921F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27804BCE23635092004921F5 /* SHGlobal.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 27ED28A6204003E200CD5536;
+			remoteInfo = SHGlobal;
+		};
+		27804BD6236350A0004921F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27804BC82363508B004921F5 /* SHDatetime.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 27D3183C2086C8CA0047F5F1;
+			remoteInfo = SHDatetime;
+		};
+		27804BE223635E91004921F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27804BDE23635E91004921F5 /* SHCore_C.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 271691C220885EF70059A58E;
 			remoteInfo = SHCore_C;
 		};
-		27804B8423527AF1004921F5 /* PBXContainerItemProxy */ = {
+		27804BE423635E9A004921F5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 27804B7E23527AE6004921F5 /* SHCore_C.xcodeproj */;
+			containerPortal = 27804BDE23635E91004921F5 /* SHCore_C.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 271691C120885EF70059A58E;
 			remoteInfo = SHCore_C;
@@ -124,7 +152,9 @@
 		27804B742352776A004921F5 /* SHDateProviderProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDateProviderProtocol.h; sourceTree = "<group>"; };
 		27804B76235277EC004921F5 /* SHDefaultDateProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDefaultDateProvider.h; sourceTree = "<group>"; };
 		27804B77235277EC004921F5 /* SHDefaultDateProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDefaultDateProvider.m; sourceTree = "<group>"; };
-		27804B7E23527AE6004921F5 /* SHCore_C.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHCore_C.xcodeproj; path = ../SHCore_C/SHCore_C.xcodeproj; sourceTree = "<group>"; };
+		27804BC82363508B004921F5 /* SHDatetime.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHDatetime.xcodeproj; path = ../SHDatetime/SHDatetime.xcodeproj; sourceTree = "<group>"; };
+		27804BCE23635092004921F5 /* SHGlobal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHGlobal.xcodeproj; path = ../SHGlobal/SHGlobal.xcodeproj; sourceTree = "<group>"; };
+		27804BDE23635E91004921F5 /* SHCore_C.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHCore_C.xcodeproj; path = ../SHCore_C/SHCore_C.xcodeproj; sourceTree = "<group>"; };
 		2781FF5A204204D70035AD82 /* SHCommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCommonUtils.h; sourceTree = "<group>"; };
 		2781FF5B204204D70035AD82 /* SHCommonUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCommonUtils.m; sourceTree = "<group>"; };
 		2781FF5C204204D70035AD82 /* SHSingletonCluster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSingletonCluster.h; sourceTree = "<group>"; };
@@ -180,7 +210,9 @@
 		27118832203FFA810085A549 = {
 			isa = PBXGroup;
 			children = (
-				27804B7E23527AE6004921F5 /* SHCore_C.xcodeproj */,
+				27804BDE23635E91004921F5 /* SHCore_C.xcodeproj */,
+				27804BCE23635092004921F5 /* SHGlobal.xcodeproj */,
+				27804BC82363508B004921F5 /* SHDatetime.xcodeproj */,
 				276E6D92222A46A500CB36CB /* Configs */,
 				2711883E203FFA810085A549 /* SHCommon */,
 				2711883D203FFA810085A549 /* Products */,
@@ -255,10 +287,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		27804B7F23527AE6004921F5 /* Products */ = {
+		27804BC92363508B004921F5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				27804B8323527AE6004921F5 /* libSHCore_C.a */,
+				27804BCD2363508B004921F5 /* libSHDatetime.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		27804BCF23635092004921F5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27804BD323635092004921F5 /* SHGlobal.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		27804BDF23635E91004921F5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27804BE323635E91004921F5 /* libSHCore_C.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -371,7 +419,9 @@
 			buildRules = (
 			);
 			dependencies = (
-				27804B8523527AF1004921F5 /* PBXTargetDependency */,
+				27804BE523635E9A004921F5 /* PBXTargetDependency */,
+				27804BD7236350A0004921F5 /* PBXTargetDependency */,
+				27804BD52363509C004921F5 /* PBXTargetDependency */,
 			);
 			name = SHCommon;
 			productName = SHCommon;
@@ -405,8 +455,16 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 27804B7F23527AE6004921F5 /* Products */;
-					ProjectRef = 27804B7E23527AE6004921F5 /* SHCore_C.xcodeproj */;
+					ProductGroup = 27804BDF23635E91004921F5 /* Products */;
+					ProjectRef = 27804BDE23635E91004921F5 /* SHCore_C.xcodeproj */;
+				},
+				{
+					ProductGroup = 27804BC92363508B004921F5 /* Products */;
+					ProjectRef = 27804BC82363508B004921F5 /* SHDatetime.xcodeproj */;
+				},
+				{
+					ProductGroup = 27804BCF23635092004921F5 /* Products */;
+					ProjectRef = 27804BCE23635092004921F5 /* SHGlobal.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -417,11 +475,25 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		27804B8323527AE6004921F5 /* libSHCore_C.a */ = {
+		27804BCD2363508B004921F5 /* libSHDatetime.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSHDatetime.a;
+			remoteRef = 27804BCC2363508B004921F5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		27804BD323635092004921F5 /* SHGlobal.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SHGlobal.framework;
+			remoteRef = 27804BD223635092004921F5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		27804BE323635E91004921F5 /* libSHCore_C.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libSHCore_C.a;
-			remoteRef = 27804B8223527AE6004921F5 /* PBXContainerItemProxy */;
+			remoteRef = 27804BE223635E91004921F5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -491,10 +563,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		27804B8523527AF1004921F5 /* PBXTargetDependency */ = {
+		27804BD52363509C004921F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SHGlobal;
+			targetProxy = 27804BD42363509C004921F5 /* PBXContainerItemProxy */;
+		};
+		27804BD7236350A0004921F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SHDatetime;
+			targetProxy = 27804BD6236350A0004921F5 /* PBXContainerItemProxy */;
+		};
+		27804BE523635E9A004921F5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SHCore_C;
-			targetProxy = 27804B8423527AF1004921F5 /* PBXContainerItemProxy */;
+			targetProxy = 27804BE423635E9A004921F5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

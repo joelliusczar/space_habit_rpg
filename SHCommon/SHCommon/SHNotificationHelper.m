@@ -7,7 +7,7 @@
 //
 
 #import "SHNotificationHelper.h"
-#import <SHGlobal/SHConstants.h>
+@import SHGlobal;
 #if IS_IOS
 @import UIKit;
 #endif

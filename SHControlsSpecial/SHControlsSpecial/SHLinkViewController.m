@@ -7,7 +7,7 @@
 //
 
 #import "SHLinkViewController.h"
-#import <SHCommon/NSException+SHCommonExceptions.h>
+@import SHCommon;
 
 @implementation SHLinkViewController
 

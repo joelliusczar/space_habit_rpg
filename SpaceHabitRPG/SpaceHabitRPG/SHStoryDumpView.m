@@ -9,8 +9,8 @@
 #pragma clang diagnostic ignored "-Wunused-parameter"
 
 #import "SHStoryDumpView.h"
-#import <SHControls/UIViewController+Helper.h>
-#import <SHCommon/NSException+SHCommonExceptions.h>
+@import SHControls;
+@import SHCommon;
 
 @interface SHStoryDumpView ()
 @property (nonatomic,strong) UITapGestureRecognizer *tapper;

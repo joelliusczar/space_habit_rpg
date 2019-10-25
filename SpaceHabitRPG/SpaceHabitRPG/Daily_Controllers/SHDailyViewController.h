@@ -8,10 +8,10 @@
 
 
 
-#import <UIKit/UIKit.h>
-#import <SHData/SHCoreDataProtocol.h>
-#import <SHModels/SHDaily.h>
 #import "SHCentralViewController.h"
+@import UIKit;
+@import SHData;
+@import SHModels;
 
 
 

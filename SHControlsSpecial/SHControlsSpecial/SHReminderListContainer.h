@@ -6,8 +6,8 @@
 //	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <SHData/SHObjectIDWrapper.h>
+@import UIKit;
+@import SHData;
 
 NS_ASSUME_NONNULL_BEGIN
 

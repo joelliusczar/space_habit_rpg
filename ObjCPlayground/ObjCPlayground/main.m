@@ -6,7 +6,7 @@
 //	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 #import "MassPrinter.h"
 #import "PersonThingUser.h"
 #import "Experiments.h"

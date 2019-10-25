@@ -6,9 +6,9 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "SHSubtasksTableViewDelegateProtocol.h"
 #import "SHView.h"
+@import UIKit;
 
 @interface SHSubtasksTableView : SHView<UITableViewDataSource>
 @property (weak,nonatomic) IBOutlet UITableView *subtasksList;

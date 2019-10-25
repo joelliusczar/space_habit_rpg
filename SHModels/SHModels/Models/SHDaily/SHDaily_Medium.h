@@ -6,9 +6,9 @@
 //  Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "SHDaily.h"
-#import <SHData/SHCoreDataProtocol.h>
+@import Foundation;
+@import SHData;
 
 @import CoreData;
 

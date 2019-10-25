@@ -6,11 +6,10 @@
 //	Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
-#import <SHCommon/SHCommon.h>
 #import "SHCoreData.h"
+@import SHCommon;
 
-#define SAVE_DATA_ASYNC() [[SHSingletonCluster getSharedInstance].dataController saveNoWaiting]
-#define SHData [SHSingletonCluster getSharedInstance].dataController
+#define SHDataGlobal [SHSingletonCluster getSharedInstance].dataController
 
 @interface SHSingletonCluster (Data)
 @property (strong,nonatomic) NSObject<P_CoreData> *dataController;

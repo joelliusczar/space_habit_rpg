@@ -6,13 +6,10 @@
 //	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <SHControls/SHTaskCell.h>
-#import <SHModels/SHSector.h>
-#import <SHModels/SHSectorDTO.h>
 #import "SHSectorChoiceViewController.h"
-#import <SHData/SHData.h>
-#import <SHModels/SHStoryItemObjectID.h>
-
+@import SHControls;
+@import SHModels;
+@import SHData;
 
 
 @interface SHSectorChoiceCellController : SHTaskCell

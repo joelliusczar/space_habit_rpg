@@ -6,9 +6,9 @@
 //	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import <SHData/NSManagedObjectContext+Helper.h>
 #import "SHModelTools.h"
 #import "SHMonster_Medium.h"
+@import SHData;
 
 
 @interface SHMonster_Medium ()

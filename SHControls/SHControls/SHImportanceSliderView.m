@@ -7,9 +7,8 @@
 //
 
 #import "SHImportanceSliderView.h"
-#import "SHCommonDelegateProtocol.h"
-#import <SHCommon/NSObject+Helper.h>
 #import "SHEventInfo.h"
+@import SHCommon;
 
 @interface SHImportanceSliderView ()
 

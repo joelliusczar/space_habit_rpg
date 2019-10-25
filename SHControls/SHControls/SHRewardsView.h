@@ -6,9 +6,9 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "SHRewardsDelegateProtocol.h"
 #import "SHView.h"
+@import UIKit;
 
 IB_DESIGNABLE
 @interface SHRewardsView : SHView

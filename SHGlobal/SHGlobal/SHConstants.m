@@ -11,16 +11,6 @@
 NSInteger const SH_PM_PRIME = 2;
 NSInteger const SH_AM_PRIME = 43;
 
-NSString* const SH_DAILY_ENTITY_NAME = @"Daily";
-NSString* const SH_COUNTER_ENTITY_NAME = @"Habit";
-NSString* const SH_TODO_ENTITY_NAME = @"Todo";
-NSString* const SH_ITEM_ENTITY_NAME = @"Good";
-NSString* const SH_HERO_ENTITY_NAME = @"Hero";
-NSString* const SH_SETTINGS_ENTITY_NAME = @"Settings";
-NSString* const SH_SECTOR_ENTITY_NAME = @"Sector";
-NSString* const SH_MONSTER_ENTITY_NAME = @"Monster";
-NSString* const DATA_INFO_ENTITY_NAME = @"DataInfo";
-NSString* const SH_SUFFIX_ENTITY_NAME = @"Suffix";
 
 NSString* const SH_DAILY_TRANSACTION_ENTITY_NAME = @"DailyTransaction";
 NSString* const SH_COUNTER_TRANSACTION_ENTITY_NAME = @"HabitTransaction";
@@ -69,5 +59,4 @@ NSString* const SH_BACKRANGE_KEY = @"BACKRANGE";
 NSString* const SH_FORRANGE_KEY = @"FORRANGE";
 NSString* const SH_IS_DAY_ACTIVE_KEY = @"IS_DAY_ACTIVE";
 
-int const SH_DAY_LEN = 84600; //only use this for extremely simple calculations, e.g. a week or less
 

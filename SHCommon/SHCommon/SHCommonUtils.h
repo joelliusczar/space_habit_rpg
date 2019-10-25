@@ -9,7 +9,7 @@
 #ifndef SHCommonUtils_h
 #define SHCommonUtils_h
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 @import CoreGraphics;
 
 /* 

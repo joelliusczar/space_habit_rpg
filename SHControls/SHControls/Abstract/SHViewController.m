@@ -7,7 +7,7 @@
 //
 
 #import "SHViewController.h"
-#import <SHCommon/SHInterceptor.h>
+@import SHCommon;
 
 @interface SHViewController ()
 

@@ -7,9 +7,9 @@
 //
 
 #import "SHRateSelectionViewController.h"
-#import <SHControls/UIViewController+Helper.h>
-#import <SHModels/SHRateTypeHelper.h>
-#import <SHCommon/NSException+SHCommonExceptions.h>
+@import SHControls;
+@import SHModels;
+@import SHCommon;
 
 
 const NSInteger DAILY_SELECTION = 0;

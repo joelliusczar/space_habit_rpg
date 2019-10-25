@@ -7,8 +7,9 @@
 //
 
 #import "AppDelegate.h"
-#import <SHCommon/SHNotificationHelper.h>
-#import <SHModels/SHBundleKey.h>
+@import SHCommon;
+@import SHModels;
+@import SHData;
 
 
 @interface AppDelegate ()
@@ -26,7 +27,7 @@ void printWorkingDir(){
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	(void)application;
 	(void)launchOptions;
-	
+	NSLog(@"Done launching 1");
 	NSBundle *modelsBundle = [NSBundle bundleForClass:SHBundleKey.class];
 	self.dataController = [SHCoreData newWithOptionsBlock:^(SHCoreDataOptions *options){
 		options.appBundle = modelsBundle;
@@ -41,6 +42,7 @@ void printWorkingDir(){
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	self.window.rootViewController = self.centralController;
 	[self.window makeKeyAndVisible];
+	NSLog(@"Done launching 2");
 	// Override point for customization after application launch.
 	return YES;
 }

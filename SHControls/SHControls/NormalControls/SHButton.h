@@ -6,9 +6,9 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <SHCommon/SHInterceptorProtocol.h>
 #import "SHViewProtocol.h"
+@import UIKit;
+@import SHCommon;
 
 @interface SHButton : UIButton<P_SHView>
 @property (strong,nonatomic) id<SHInterceptorProtocol> interceptor;

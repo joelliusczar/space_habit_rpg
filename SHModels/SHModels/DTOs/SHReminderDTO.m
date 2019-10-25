@@ -7,9 +7,7 @@
 //
 
 #import "SHReminderDTO.h"
-#import <SHCommon/NSObject+Helper.h>
-#import <SHCommon/NSDictionary+SHHelper.h>
-#import <SHCommon/NSDate+DateHelper.h>
+@import SHCommon;
 
 @implementation SHReminderDTO
 

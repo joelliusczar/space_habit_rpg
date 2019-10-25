@@ -7,9 +7,9 @@
 //
 
 #import "SHTransaction_Medium.h"
-#import <SHGlobal/SHConstants.h>
-#import <SHCommon/NSDictionary+SHHelper.h>
-#import <SHData/NSManagedObjectContext+Helper.h>
+@import SHGlobal;
+@import SHCommon;
+@import SHData;
 
 
 @implementation SHTransaction_Medium

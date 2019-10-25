@@ -7,7 +7,7 @@
 //
 
 #import "SHConfig_Medium.h"
-#import <SHCommon/NSException+SHCommonExceptions.h>
+@import SHCommon;
 
 @implementation SHConfig_Medium
 

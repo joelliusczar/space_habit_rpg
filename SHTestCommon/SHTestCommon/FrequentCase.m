@@ -8,10 +8,8 @@
 
 #import "FrequentCase.h"
 #import "SHCoreData+CleanUp.h"
-#import <SHModels/SHSector.h>
-#import <SHData/NSManagedObjectContext+Helper.h>
-#import <SHModels/SHBundleKey.h>
-
+@import SHModels;
+@import SHData;
 @import CoreData;
 
 @interface FrequentCase ()

@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <SHCommon/SHControlKeep.h>
+@import SHCommon;
 #import "TestKeepObject.h"
 #import "TestKeepSubject_A.h"
 #import "TestKeepSubject_B.h"

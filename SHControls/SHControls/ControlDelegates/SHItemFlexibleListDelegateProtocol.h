@@ -8,7 +8,7 @@
 
 @class SHItemFlexibleListEventInfo;
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 #import "SHEventInfo.h"
 #import "SHItemFlexibleListEventInfo.h"
 

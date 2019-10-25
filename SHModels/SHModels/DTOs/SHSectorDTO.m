@@ -7,7 +7,7 @@
 //
 
 #import "SHSectorDTO.h"
-#import <SHCommon/NSObject+Helper.h>
+@import SHCommon;
 
 @implementation SHSectorDTO
 

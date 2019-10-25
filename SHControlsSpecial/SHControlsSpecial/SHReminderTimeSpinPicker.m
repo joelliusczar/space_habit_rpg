@@ -7,12 +7,10 @@
 //
 
 #import "SHReminderTimeSpinPicker.h"
-#import <SHCommon/SHSingletonCluster.h>
-#import <SHCommon/NSLocale+Helper.h>
-#import <SHGlobal/SHConstants.h>
-#import <SHControls/SHFrontEndConstants.h>
-#import <SHControls/UIViewController+Helper.h>
-#import <SHCommon/SHInterceptor.h>
+@import SHCommon;
+@import SHGlobal;
+@import SHControls;
+
 
 
 @interface SHReminderTimeSpinPicker()

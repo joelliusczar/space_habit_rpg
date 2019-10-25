@@ -9,7 +9,7 @@
 #ifndef CommonTypeDefs_h
 #define CommonTypeDefs_h
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 typedef void (*shSetter)(id,SEL,id);
 typedef void (^shWrapReturnVoid)(void);

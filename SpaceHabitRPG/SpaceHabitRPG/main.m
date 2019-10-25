@@ -6,9 +6,9 @@
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 #import "SHApplication.h"
+@import UIKit;
 
 static bool isRunningTests()
 {

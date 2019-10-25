@@ -6,11 +6,10 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <SHModels/SHStoryItemProtocol.h>
-#import <SHControls/SHButton.h>
-#import <SHData/SHData.h>
-#import <SHModels/SHStoryItemObjectID.h>
+@import UIKit;
+@import SHControls;
+@import SHData;
+@import SHModels;
 
 @interface SHStoryDumpView : UIViewController
 @property (weak,nonatomic) IBOutlet UITextView *synopsisView;

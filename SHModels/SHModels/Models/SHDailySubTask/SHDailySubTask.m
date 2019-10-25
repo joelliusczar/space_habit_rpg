@@ -7,8 +7,7 @@
 //
 
 #import "SHDailySubTask.h"
-#import <SHCommon/SHCommonUtils.h>
-#import <SHCommon/NSDictionary+SHHelper.h>
+@import SHCommon;
 
 @implementation SHDailySubTask
 

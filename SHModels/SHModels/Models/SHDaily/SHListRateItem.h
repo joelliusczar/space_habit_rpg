@@ -6,7 +6,7 @@
 //	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import <SHCommon/SHCommon.h>
+@import SHCommon;
 
 NS_ASSUME_NONNULL_BEGIN
 

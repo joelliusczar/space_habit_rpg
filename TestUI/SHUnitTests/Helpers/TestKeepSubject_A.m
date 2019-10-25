@@ -8,7 +8,7 @@
 
 #import "TestKeepSubject_A.h"
 #import <objc/runtime.h>
-#import <SHCommon/NSException+SHCommonExceptions.h>
+@import SHCommon;
 
 @interface TestKeepSubject_A()
 @end

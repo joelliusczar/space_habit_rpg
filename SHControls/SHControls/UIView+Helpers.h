@@ -7,7 +7,7 @@
 //
 #define isTestingInvert NO
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface UIView (Helpers)
 

@@ -8,7 +8,7 @@
 
 #import "SHRateTypeSelector.h"
 #import "UIViewController+Helper.h"
-#import <SHCommon/SHInterceptor.h>
+@import SHCommon;
 #import "UIView+Helpers.h"
 #import "SHEventInfo.h"
 

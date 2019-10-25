@@ -6,8 +6,8 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <SHGlobal/SHConstants.h>
+@import Foundation;
+@import SHGlobal;
 @import CoreData;
 
 typedef NSManagedObjectContext SHContext;

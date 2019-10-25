@@ -7,18 +7,11 @@
 //
 
 #import "SHDailyEditController.h"
-#import <SHCommon/SHCommonUtils.h>
-#import <SHModels/SHDaily_Medium.h>
-#import <SHControls/SHSwitchProtocol.h>
 #import "SHEditNavigationController.h"
-#import <SHControls/SHSwitch.h>
-#import <SHCommon/SHInterceptor.h>
-#import <SHModels/SHRateTypeHelper.h>
-#import <SHControls/UIViewController+Helper.h>
-#import <SHData/NSManagedObjectContext+Helper.h>
-#import <SHModels/SHDailyActiveDays.h>
-#import <SHModels/SHDailyValidation.h>
-#import <SHControls/UIView+Helpers.h>
+@import SHCommon;
+@import SHModels;
+@import SHControls;
+@import SHData;
 
 
 @interface SHDailyEditController ()

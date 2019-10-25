@@ -9,9 +9,9 @@
 #import "SHWeeklyActiveDaysViewController.h"
 #import "SHMonthlyActiveDaysViewController.h"
 #import "SHYearlyActiveDaysViewController.h"
-#import <UIKit/UIKit.h>
-#import <SHModels/SHDailyActiveDays.h>
-#import <SHGlobal/SHConstants.h>
+@import UIKit;
+@import SHModels;
+@import SHGlobal;
 
 
 NS_ASSUME_NONNULL_BEGIN

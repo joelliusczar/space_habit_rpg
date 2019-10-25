@@ -12,3 +12,9 @@
 #include "../Configs/SHWorkspace.xcconfig"
 
 LD_NO_PIE = YES
+//:configuration = Debug
+
+//:configuration = Release
+
+//:completeSettings = some//
+

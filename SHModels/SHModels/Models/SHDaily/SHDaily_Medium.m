@@ -6,8 +6,7 @@
 //	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import <SHData/SHCoreDataProtocol.h>
-#import <SHData/NSManagedObjectContext+Helper.h>
+@import SHData;
 #import "SHDaily_Medium.h"
 
 @interface SHDaily_Medium()

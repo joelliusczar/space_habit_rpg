@@ -8,13 +8,10 @@
 
 #import "SHSectorChoiceViewController.h"
 #import "SHSectorChoiceCellController.h"
-#import <SHControls/SHFrontEndConstants.h>
-#import <SHCommon/SHSingletonCluster.h>
-#import <SHCommon/SHCommonUtils.h>
-#import <SHModels/SHSector_Medium.h>
-#import <SHControls/UIView+Helpers.h>
-#import <SHControls/UIViewController+Helper.h>
-#import <SHData/SHData.h>
+@import SHCommon;
+@import SHControls;
+@import SHData;
+@import SHModels;
 
 @interface SHSectorChoiceViewController ()
 @property (nonatomic,strong) NSArray<SHStoryItemObjectID *> *objectIDs;

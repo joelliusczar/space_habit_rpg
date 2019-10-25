@@ -6,7 +6,7 @@
 //  Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 typedef NSDictionary<NSString *,NSNumber *> SHRateItemDict;
 

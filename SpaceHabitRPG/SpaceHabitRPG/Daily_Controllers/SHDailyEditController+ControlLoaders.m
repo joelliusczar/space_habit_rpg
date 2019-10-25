@@ -7,11 +7,9 @@
 //
 
 #import "SHDailyEditController+ControlLoaders.h"
-#import <SHControls/AllSHControls.h>
-#import <SHControlsSpecial/SHReminderListView.h>
-#import <SHControlsSpecial/SHRepeatLinkViewController.h>
-#import <SHControlsSpecial/SHRemindersLinkViewController.h>
-#import <SHData/NSManagedObjectContext+Helper.h>
+@import SHControls;
+@import SHControlsSpecial;
+@import SHData;
 
 
 

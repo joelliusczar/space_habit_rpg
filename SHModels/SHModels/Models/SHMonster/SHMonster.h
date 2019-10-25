@@ -6,11 +6,11 @@
 //
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
-#import <SHCommon/SHProbWeight.h>
 #import "SHMonsterInfoDictionary.h"
 #import "SHStoryItemProtocol.h"
+@import Foundation;
+@import CoreData;
+@import SHCommon;
 
 NS_ASSUME_NONNULL_BEGIN
 

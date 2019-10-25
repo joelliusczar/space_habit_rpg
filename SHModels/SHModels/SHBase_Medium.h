@@ -6,8 +6,8 @@
 //  Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <SHData/NSManagedObjectContext+Helper.h>
+@import Foundation;
+@import SHData;
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -6,10 +6,9 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
+@import Foundation;
+@import CoreData;
 #import <objc/runtime.h>
-//#import <objc/objc-runtime.h>
 #import <objc/message.h>
 
 typedef void (*msg_send)(id,SEL);

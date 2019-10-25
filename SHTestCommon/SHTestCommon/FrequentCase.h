@@ -6,16 +6,14 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <XCTest/XCTest.h>
-#import <objc/runtime.h>
-#import <SHData/SHCoreData.h>
-#import <SHModels/SHSectorInfoDictionary.h>
-#import <SHModels/SHMonsterInfoDictionary.h>
-#import <SHCommon/SHResourceUtilityProtocol.h>
-#import <SHCommon/SHResourceUtility.h>
 #import "TestHelpers.h"
 #import "TestGlobals.h"
 #import "TestDummy.h"
+#import <XCTest/XCTest.h>
+#import <objc/runtime.h>
+@import SHData;
+@import SHModels;
+@import SHCommon;
 
 
 

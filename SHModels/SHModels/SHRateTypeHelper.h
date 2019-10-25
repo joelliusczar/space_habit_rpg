@@ -9,8 +9,8 @@
 #ifndef RateTypeHelper_h
 #define RateTypeHelper_h
 
-#import <SHGlobal/SHConstants.h>
 #import "SHModelConstants.h"
+@import SHGlobal;
 
 SHRateType shExtractBaseRateType(SHRateType rateType);
 SHRateType shInvertRateType(SHRateType rateType);

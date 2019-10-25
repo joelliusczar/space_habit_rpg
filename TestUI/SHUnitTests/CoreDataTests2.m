@@ -7,8 +7,8 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <SHData/SHData.h>
-#import <SHModels/SHSector.h>
+@import SHData;
+@import SHModels;
 #import <SHTestCommon/TestHelpers.h>
 @import CoreData;
 

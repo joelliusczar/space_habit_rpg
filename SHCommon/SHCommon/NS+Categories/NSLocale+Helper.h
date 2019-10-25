@@ -6,7 +6,7 @@
 //	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @interface NSLocale (Helper)
 @property (readonly,nonatomic) BOOL isUsing24HourFormat;

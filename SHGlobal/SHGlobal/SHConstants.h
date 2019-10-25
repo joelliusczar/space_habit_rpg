@@ -6,7 +6,7 @@
 //	Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 
 typedef NS_ENUM(NSUInteger,shDailyStatus) {
@@ -15,7 +15,7 @@ typedef NS_ENUM(NSUInteger,shDailyStatus) {
 };
 
 typedef NS_ENUM(NSInteger,shEnviromentCode) {
-	SH_ENV_DEFAULT =0,
+	SH_ENV_DEFAULT = 0,
 	SH_ENV_BETA = 1<<0,
 	SH_ENV_UTEST = 1<<1
 };
@@ -67,16 +67,6 @@ typedef NS_ENUM(int32_t,SHStoryMode){
 };
 
 
-extern NSString* const SH_DAILY_ENTITY_NAME;
-extern NSString* const SH_COUNTER_ENTITY_NAME;
-extern NSString* const SH_TODO_ENTITY_NAME;
-extern NSString* const SH_ITEM_ENTITY_NAME;
-extern NSString* const SH_HERO_ENTITY_NAME;
-extern NSString* const SH_SETTINGS_ENTITY_NAME;
-extern NSString* const SH_SECTOR_ENTITY_NAME;
-extern NSString* const SH_MONSTER_ENTITY_NAME;
-extern NSString* const SH_SUFFIX_ENTITY_NAME;
-
 extern NSString* const SH_DAILY_TRANSACTION_ENTITY_NAME;
 extern NSString* const SH_COUNTER_TRANSACTION_ENTITY_NAME;
 extern NSString* const SH_TODO_TRANSACTION_ENTITY_NAME;
@@ -116,7 +106,4 @@ extern NSString* const SH_MINOR_ORDINAL;
 extern NSString * const SH_BACKRANGE_KEY;
 extern NSString * const SH_FORRANGE_KEY;
 extern NSString * const SH_IS_DAY_ACTIVE_KEY;
-
-extern int const SH_DAY_LEN;
-
 

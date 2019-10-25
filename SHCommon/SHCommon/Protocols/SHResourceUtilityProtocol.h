@@ -6,7 +6,7 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @protocol SHResourceUtilityProtocol <NSObject>
 -(nonnull NSDictionary *)getPListDict:(nonnull NSString*)fileName withBundle:(nonnull NSBundle *)bundle;

@@ -6,11 +6,12 @@
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "SHEditingSaverProtocol.h"
-#import <SHControls/SHResizeResponderProtocol.h>
-#import <SHCommon/SHControlKeep.h>
-#import <SHData/SHObjectIDWrapper.h>
+@import UIKit;
+@import SHControls;
+@import SHCommon;
+@import SHData;
+
 
 
 @interface SHEditNavigationController : UIViewController

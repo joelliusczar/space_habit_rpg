@@ -7,7 +7,7 @@
 //
 
 #import "SHControlController.h"
-#import <SHCommon/NSObject+Helper.h>
+@import SHCommon;
 
 @implementation SHControlController
 

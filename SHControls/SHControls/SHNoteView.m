@@ -7,8 +7,8 @@
 //
 
 #import "SHNoteView.h"
-#import <SHCommon/NSObject+Helper.h>
 #import "SHEventInfo.h"
+@import SHCommon;
 
 
 @interface SHNoteView ()

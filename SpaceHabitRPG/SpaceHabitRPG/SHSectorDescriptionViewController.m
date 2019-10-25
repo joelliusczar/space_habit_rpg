@@ -7,10 +7,10 @@
 //
 
 #import "SHSectorDescriptionViewController.h"
-#import <SHControls/UIViewController+Helper.h>
-#import <SHCommon/SHSingletonCluster.h>
-#import <SHGlobal/SHConstants.h>
-#import <SHControls/SHButton.h>
+@import SHControls;
+@import SHCommon;
+@import SHGlobal;
+
 
 @interface SHSectorDescriptionViewController ()
 @property (weak,nonatomic) UIViewController *prevScreen;

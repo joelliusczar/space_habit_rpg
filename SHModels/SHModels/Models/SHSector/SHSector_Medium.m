@@ -6,13 +6,13 @@
 //	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import <SHCommon/SHCommonUtils.h>
-#import <SHData/NSManagedObjectContext+Helper.h>
 #import "SHSuffix.h"
 #import "SHModelTools.h"
 #import "SHModelConstants.h"
 #import "SHSector_Medium.h"
 #import "SHHero_Medium.h"
+@import SHCommon;
+@import SHData;
 
 
 NSString* const HOME_KEY = @"HOME";

@@ -7,7 +7,7 @@
 //
 
 #import "NSLocale+Helper.h"
-#import <SHGlobal/SHConstants.h>
+@import SHGlobal;
 
 @implementation NSLocale (Helper)
 
@@ -15,8 +15,8 @@
 
 	NSString *formatString =
 	[NSDateFormatter dateFormatFromTemplate:@"j"
-									options:0
-									 locale:self];
+		options:0
+		locale:self];
 	return [NSLocale hourMaskForGivenFormat:formatString];
 
 }

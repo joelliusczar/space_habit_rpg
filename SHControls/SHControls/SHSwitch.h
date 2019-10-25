@@ -6,10 +6,10 @@
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "SHSwitchProtocol.h"
-#import <SHCommon/SHColorInversionHintProtocol.h>
 #import "SHView.h"
+@import UIKit;
+@import SHCommon;
 
 IB_DESIGNABLE
 @interface SHSwitch : SHView<SHSwitchProtocol,SHColorInversionHintProtocol>

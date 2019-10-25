@@ -8,16 +8,11 @@
 
 #import "SHEditNavigationController.h"
 #import "SHEditingSaverProtocol.h"
-#import <SHControls/UIViewController+Helper.h>
-#import <SHCommon/SHInterceptor.h>
-#import <SHControls/UIScrollView+ScrollAdjusters.h>
-#import <SHGlobal/SHConstants.h>
-#import <SHControls/SHItemFlexibleListView.h>
-#import <SHControls/SHButton.h>
-#import <SHControls/SHFrontEndConstants.h>
-#import <SHControls/UIViewController+Helper.h>
-#import <SHModels/SHTitleProtocol.h>
-#import <SHData/NSManagedObjectContext+Helper.h>
+@import SHGlobal;
+@import SHCommon;
+@import SHData;
+@import SHControls;
+@import SHModels;
 @import CoreGraphics;
 
 

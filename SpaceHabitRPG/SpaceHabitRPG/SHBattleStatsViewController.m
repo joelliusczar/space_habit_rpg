@@ -7,11 +7,8 @@
 //
 
 #import "SHBattleStatsViewController.h"
-#import <SHControls/SHStatusBar.h>
-#import <SHModels/SHMonster.h>
-#import <SHModels/SHHero.h>
-#import <SHModels/SHMonster_Medium.h>
-#import <SHModels/SHHero_Medium.h>
+@import SHControls;
+@import SHModels;
 
 @interface SHBattleStatsViewController ()
 @property (weak,nonatomic) IBOutlet SHStatusBar *heroHPBar;

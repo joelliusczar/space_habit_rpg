@@ -7,14 +7,11 @@
 //
 
 #import "SHMonster.h"
-#import <SHCommon/SHCommonUtils.h>
 #import "SHModelTools.h"
-#import <SHData/NSManagedObjectContext+Helper.h>
-#import <SHGlobal/SHConstants.h>
-#import <SHCommon/SHCollectionUtils.h>
-#import <SHCommon/NSDictionary+SHHelper.h>
-#import <SHCommon/SHResourceUtility.h>
 #import "SHMonsterDictionaryEntry.h"
+@import SHCommon;
+@import SHData;
+@import SHGlobal;
 
 static float MAX_HP_MODIFIER = .1;
 static float XP_MODIFIER = .1;

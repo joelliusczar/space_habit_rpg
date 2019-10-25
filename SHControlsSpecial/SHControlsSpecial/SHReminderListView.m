@@ -8,23 +8,11 @@
 
 #import "SHReminderListView.h"
 #import "SHReminderCellController.h"
-#import <SHControls/SHAddItemsFooter.h>
-#import <SHControls/UIViewController+Helper.h>
-#import <SHCommon/SHInterceptor.h>
-#import <SHCommon/NSDate+DateHelper.h>
-#import <SHCommon/SHMath.h>
 #import "SHReminderTimeSpinPicker.h"
-#import <SHControls/UIView+Helpers.h>
-#import <SHControls/UIScrollView+ScrollAdjusters.h>
-#import <SHControls/SHFrontEndConstants.h>
-#import <SHCommon/SHNotificationHelper.h>
-#import <SHCommon/NSObject+Helper.h>
-#import <SHControls/SHEventInfo.h>
-#import <SHModels/SHReminderDTO.h>
-#import <SHData/NSManagedObjectContext+Helper.h>
-#import <SHModels/SHReminder.h>
-#import <SHCommon/NSLocale+Helper.h>
-#import <SHCommon/NSDate+DateHelper.h>
+@import SHControls;
+@import SHCommon;
+@import SHModels;
+@import SHData;
 
 @interface SHReminderListView()
 @end

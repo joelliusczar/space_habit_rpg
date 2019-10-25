@@ -9,15 +9,12 @@
 #pragma clang diagnostic ignored "-Wunused-parameter"
 
 #import "SHItemFlexibleListView.h"
-#import <SHCommon/NSException+SHCommonExceptions.h>
-#import <SHCommon/NSObject+Helper.h>
-#import <SHCommon/SHSingletonCluster.h>
+@import SHCommon;
 #import "SHFrontEndConstants.h"
 #import "UIView+Helpers.h"
 #import "UIScrollView+ScrollAdjusters.h"
 #import "UIViewController+Helper.h"
 #import "SHEventInfo.h"
-#import <SHCommon/SHInterceptor.h>
 #import <math.h>
 
 

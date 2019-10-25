@@ -6,12 +6,12 @@
 //
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
 #import "SHDueDateItemProtocol.h"
 #import "SHDailyActiveDays.h"
 #import "SHTitleProtocol.h"
-#import <SHCommon/SHDateProviderProtocol.h>
+@import Foundation;
+@import CoreData;
+@import SHCommon;
 
 @class SHCategory, SHCounter, SHDailySubTask, SHItem, SHReminder;
 

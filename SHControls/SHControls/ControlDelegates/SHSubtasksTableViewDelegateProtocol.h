@@ -6,8 +6,9 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "SHCommonDelegateProtocol.h"
+@import Foundation;
+@import UIKit;
 
 @protocol SHSubtasksTableViewDelegateProtocol <NSObject,SHCommonDelegateProtocol>
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;

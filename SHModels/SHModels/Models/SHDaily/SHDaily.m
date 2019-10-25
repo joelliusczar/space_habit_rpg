@@ -11,11 +11,9 @@
 #import "SHConfig.h"
 #import "SHDailyNextDueDateCalculator.h"
 #import "SHDailyMaxDaysBeforeSpanCalculator.h"
-#import <SHGlobal/SHConstants.h>
-#import <SHCommon/NSDate+DateHelper.h>
-#import <SHData/NSManagedObjectContext+Helper.h>
 #import "SHConfig_Medium.h"
-#import <SHCommon/SHDefaultDateProvider.h>
+@import SHGlobal;
+@import SHData;
 
 @implementation SHDaily
 

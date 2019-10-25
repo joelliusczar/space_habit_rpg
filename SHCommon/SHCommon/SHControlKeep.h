@@ -17,7 +17,7 @@
  you can associated the responder with that key by adding it to .responderLookup
  */
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 #import "SHVarWrapper.h"
 #import "SHControlKeepProtocol.h"
 #import "SHKeyToken.h"

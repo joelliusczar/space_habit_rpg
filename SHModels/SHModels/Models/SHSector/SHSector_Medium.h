@@ -6,12 +6,12 @@
 //	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import <SHData/SHCoreDataProtocol.h>
 #import "SHSector.h"
-#import <SHCommon/SHResourceUtilityProtocol.h>
 #import "SHHero.h"
 #import "SHSectorInfoDictionary.h"
-#import <Foundation/Foundation.h>
+@import SHData;
+@import Foundation;
+@import SHCommon;
 
 
 NS_ASSUME_NONNULL_BEGIN

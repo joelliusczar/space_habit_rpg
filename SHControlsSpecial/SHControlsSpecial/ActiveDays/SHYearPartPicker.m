@@ -7,7 +7,7 @@
 //
 
 #import "SHYearPartPicker.h"
-#import <SHCommon/NSDate+DateHelper.h>
+@import SHCommon;
 
 @interface SHYearPartPicker ()
 @property (assign,nonatomic) NSInteger numberOfDaysInSelectedMonth;

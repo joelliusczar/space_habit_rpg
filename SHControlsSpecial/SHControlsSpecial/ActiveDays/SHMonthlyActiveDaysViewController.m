@@ -7,16 +7,11 @@
 //
 
 #import "SHMonthlyActiveDaysViewController.h"
-#import <SHCommon/SHCommonUtils.h>
-#import <SHGlobal/SHConstants.h>
-#import <SHControls/SHListItemCell.h>
-#import <SHCommon/SHSingletonCluster.h>
 #import "SHMonthPartPicker.h"
-#import <SHControls/UIViewController+Helper.h>
-#import <SHCommon/SHInterceptor.h>
-#import <SHCommon/NSNumber+Helper.h>
-#import <SHControls/SHEventInfo.h>
-#import <SHModels/SHModelConstants.h>
+@import SHCommon;
+@import SHGlobal;
+@import SHControls;
+@import SHModels;
 
 @interface SHMonthlyActiveDaysViewController ()
 @end

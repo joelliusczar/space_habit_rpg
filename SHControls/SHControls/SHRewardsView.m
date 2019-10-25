@@ -7,8 +7,8 @@
 //
 
 #import "SHRewardsView.h"
-#import <SHCommon/NSObject+Helper.h>
 #import "SHEventInfo.h"
+@import SHCommon;
 
 @implementation SHRewardsView
 

@@ -7,8 +7,8 @@
 //
 
 #import "SHDailyActivator.h"
-#import <SHCommon/NSException+SHCommonExceptions.h>
 #import "SHConfig_Medium.h"
+@import SHCommon;
 
 @implementation SHDailyActivator
 

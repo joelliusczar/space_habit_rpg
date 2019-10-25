@@ -135,7 +135,7 @@ static void _prepareDatetimeForCalculations(SHDatetime *dt, int32_t dayStartTime
 	//didn't want to free dt->shifts in case it's used on another pointer, but also
 	//did not want to null it out and possibly loose a reference to it, creating a memory leak
 	dt->shiftLen = 0;
-	shTryAddDaysToDtInPlace(dt, -1, 0, &error);
+	shTryAddDaysToDtInPlace(dt, -1, 0, error);
 }
 
 

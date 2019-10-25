@@ -6,7 +6,7 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 #import "TestKeepProtocol_A.h"
 #import "TestKeepProtocol_B.h"
 #import "TestKeepProtocol_C.h"

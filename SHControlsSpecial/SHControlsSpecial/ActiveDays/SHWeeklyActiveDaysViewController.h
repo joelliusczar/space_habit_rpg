@@ -6,15 +6,12 @@
 //	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
+#import "SHDayOption.h"
 @import UIKit;
 @import SHControls;
-#import "SHDayOption.h"
-#import <SHGlobal/SHConstants.h>
-#import <SHModels/SHModelConstants.h>
-#import <SHModels/SHRangeRateItem.h>
-#import <SHControls/SHNestedControlProtocol.h>
-#import <SHControls/SHViewEventsProtocol.h>
-#import <SHControls/SHRateSetterView.h>
+@import SHGlobal;
+@import SHModels;
+@import SHControls;
 
 
 @protocol SHWeeklyActiveDayChangesProtocol <NSObject>

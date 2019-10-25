@@ -6,9 +6,9 @@
 //	Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 #import "SHTestObserver.h"
+@import UIKit;
 
 int main(int argc, char * argv[]) {
 	@autoreleasepool {

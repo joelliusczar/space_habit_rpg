@@ -7,13 +7,12 @@
 //
 
 #import "SHDailyDTO.h"
-#import <SHGlobal/SHConstants.h>
+@import SHGlobal;
+@import SHCommon;
 #import "SHRateTypeHelper.h"
-#import <SHCommon/NSMutableDictionary+Helper.h>
 #import <SHCore_C/SHDaily_C.h>
 #import <SHDatetime/SHDatetime_struct.h>
 #import <SHDatetime/SHDatetimeFuncs.h>
-#import <SHCommon/NSDate+DateHelper.h>
 #import <SHDatetime/SHDTConstants.h>
 
 

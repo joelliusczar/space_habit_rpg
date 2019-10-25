@@ -7,7 +7,7 @@
 //
 
 #import "SHSectorInfoDictionary.h"
-#import <SHCommon/SHSingletonCluster.h>
+@import SHCommon;
 
 
 @interface SHSectorInfoDictionary()

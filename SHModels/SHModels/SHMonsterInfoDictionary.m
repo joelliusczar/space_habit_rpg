@@ -7,8 +7,7 @@
 //
 
 #import "SHMonsterInfoDictionary.h"
-#import <SHCommon/SHCommonUtils.h>
-#import <SHCommon/SHSingletonCluster.h>
+@import SHCommon;
 
 
 @interface SHMonsterInfoDictionary()

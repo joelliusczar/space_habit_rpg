@@ -32,18 +32,12 @@
 #import "Ocean.h"
 #import "PureCBaby.h"
 #import "House+Hacked.h"
-#import <SHData/SHCoreData.h>
-#import <SHModels/SHReminder.h>
-#import <SHModels/SHSector.h>
-#import <SHModels/SHDaily.h>
-#import <SHModels/SHSector_Medium.h>
-#import <SHModels/SHSectorInfoDictionary.h>
-#import <SHCommon/SHResourceUtility.h>
-#import <SHCommon/SHCommonUtils.h>
-#import <SHCommon/NSObject+Helper.h>
+@import SHData;
+@import SHModels;
+@import SHCommon;
 #import <SHTestCommon/TestHelpers.h>
 #import <malloc/malloc.h>
-#import <SHData/NSManagedObjectContext+Helper.h>
+@import SHData;
 
 
 

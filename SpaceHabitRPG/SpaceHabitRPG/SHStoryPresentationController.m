@@ -7,10 +7,10 @@
 //
 
 #import "SHStoryPresentationController.h"
-#import <SHModels/SHModels.h>
-#import <SHCommon/NSException+SHCommonExceptions.h>
-#import <SHControls/UIViewController+Helper.h>
 #import "SHStoryDumpView.h"
+@import SHCommon;
+@import SHModels;
+@import SHControls;
 
 
 @interface SHStoryPresentationController ()

@@ -6,11 +6,11 @@
 //
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
 #import "SHSectorInfoDictionary.h"
 #import "SHStoryItemProtocol.h"
-#import <SHCommon/SHMappableProtocol.h>
+@import Foundation;
+@import CoreData;
+@import SHCommon;
 
 NS_ASSUME_NONNULL_BEGIN
 

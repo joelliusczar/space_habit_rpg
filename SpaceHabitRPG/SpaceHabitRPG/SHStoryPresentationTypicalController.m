@@ -8,8 +8,7 @@
 
 #import "SHStoryPresentationTypicalController.h"
 #import "SHSectorChoiceViewController.h"
-#import <SHCommon/NSArray+SHHelper.h>
-#import <SHCommon/NSObject+Helper.h>
+@import SHCommon;
 
 @implementation SHStoryPresentationTypicalController
 

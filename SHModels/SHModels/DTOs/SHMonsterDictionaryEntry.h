@@ -6,9 +6,9 @@
 //  Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 #import "SHStoryItemProtocol.h"
-#import <SHCommon/SHObject.h>
+@import SHCommon;
 @import CoreData;
 
 

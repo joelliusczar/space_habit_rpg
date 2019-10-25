@@ -6,11 +6,11 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "SHImportanceSlidersDelegateProtocol.h"
 #import "SHViewController.h"
 #import "SHNumberControlProtocol.h"
 #import "SHNestedControlProtocol.h"
+@import UIKit;
 
 IB_DESIGNABLE
 @interface SHImportanceSliderView : SHViewController<SHNumberControlProtocol>

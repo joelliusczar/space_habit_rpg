@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <SHCommon/SHMath.h>
+@import SHCommon;
 
 @interface MathTest : XCTestCase
 

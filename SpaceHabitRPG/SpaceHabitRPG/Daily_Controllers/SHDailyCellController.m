@@ -7,13 +7,10 @@
 //
 
 #import "SHDailyCellController.h"
-#import <SHModels/SHDaily.h>
-#import <SHGlobal/SHConstants.h>
-#import <SHCommon/SHInterceptor.h>
-#import <SHCommon/NSDate+DateHelper.h>
-#import <SHCommon/SHSingletonCluster.h>
-#import <SHData/NSManagedObjectContext+Helper.h>
-#import <SHModels/SHDailyActivator.h>
+@import SHModels;
+@import SHGlobal;
+@import SHCommon;
+@import SHData;
 @import CoreGraphics;
 
 
@@ -55,7 +52,7 @@
 		NSString *dailyName = daily.dailyName;
 		int32_t streakLength = daily.streakLength;
 		int32_t rate = daily.rate;
-		NSUInteger daysUntilDue = daily.maxDaysBefore;
+		NSUInteger daysUntilDue = daily.daysUntilDue;
 		BOOL isCompleted = daily.isCompleted;
 		
 		[[NSOperationQueue mainQueue] addOperationWithBlock:^{

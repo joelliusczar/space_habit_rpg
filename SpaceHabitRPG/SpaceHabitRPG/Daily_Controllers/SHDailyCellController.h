@@ -6,12 +6,11 @@
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <SHModels/SHDailyDTO.h>
-#import <SHControls/SHTaskCell.h>
 #import "SHDailyViewController.h"
-#import <SHControls/SHButton.h>
-#import <SHData/SHObjectIDWrapper.h>
+@import UIKit;
+@import SHModels;
+@import SHControls;
+@import SHData;
 
 @interface SHDailyCellController : SHTaskCell
 @property (weak,nonatomic) IBOutlet UILabel *daysLeftLbl;

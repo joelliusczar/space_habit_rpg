@@ -6,12 +6,11 @@
 //	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <SHCommon/SHProbWeight.h>
-#import <SHData/SHCoreDataProtocol.h>
 #import "SHMonsterInfoDictionary.h"
 #import "SHMonster.h"
-
+@import Foundation;
+@import SHCommon;
+@import SHData;
 @import CoreData;
 
 NS_ASSUME_NONNULL_BEGIN

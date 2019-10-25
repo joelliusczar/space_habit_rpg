@@ -6,9 +6,8 @@
 //	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <SHControls/SHListItemCell.h>
-#import <SHModels/SHReminder.h>
-#import <SHModels/SHReminderDTO.h>
+@import SHControls;
+@import SHModels;
 
 @interface SHReminderCellController : SHListItemCell
 +(instancetype)getReminderCell:(UITableView *)tableView

@@ -7,8 +7,8 @@
 //
 
 #import "SHHero.h"
-#import <SHCommon/NSException+SHCommonExceptions.h>
-#import <SHData/NSManagedObjectContext+Helper.h>
+@import SHCommon;
+@import SHData;
 
 @implementation SHHero
 -(NSMutableDictionary *)mapable{

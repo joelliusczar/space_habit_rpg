@@ -10,8 +10,7 @@
 #import "SHListRateItem.h"
 #import "SHRateTypeHelper.h"
 #import "SHModelConstants.h"
-#import <SHCommon/NSDictionary+SHHelper.h>
-#import <SHCommon/NSArray+SHHelper.h>
+@import SHCommon;
 #import <SHCore_C/SHDaily_C.h>
 
 

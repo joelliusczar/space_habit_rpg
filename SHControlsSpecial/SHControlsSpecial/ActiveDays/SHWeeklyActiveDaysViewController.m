@@ -7,10 +7,8 @@
 //
 
 #import "SHWeeklyActiveDaysViewController.h"
-#import <SHCommon/SHCommonUtils.h>
-#import <SHCommon/NSObject+Helper.h>
-#import <SHControls/SHEventInfo.h>
-#import <SHControls/UIView+Helpers.h>
+@import SHCommon;
+@import SHControls;
 
 
 @interface SHWeeklyActiveDaysViewController ()

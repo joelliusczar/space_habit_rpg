@@ -7,7 +7,7 @@
 //
 
 #import "SHInfoDictionary.h"
-#import <SHCommon/SHSingletonCluster.h>
+@import SHCommon;
 
 @implementation SHInfoDictionary
 

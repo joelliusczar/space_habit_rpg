@@ -8,8 +8,8 @@
 
 #import "DumbDataSaver.h"
 #import <objc/runtime.h>
-#import <SHModels/SHHero.h>
-#import <SHCommon/SHCommonUtils.h>
+@import SHModels;
+@import SHCommon;
 #import <SHTestCommon/TestHelpers.h>
 #import <SHTestCommon/NSManagedObjectContext+Hijack.h>
 #import <XCTest/XCTest.h>

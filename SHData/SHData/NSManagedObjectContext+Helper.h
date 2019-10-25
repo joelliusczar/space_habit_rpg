@@ -6,8 +6,8 @@
 //	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import <CoreData/CoreData.h>
 #import "SHObjectIDWrapper.h"
+@import CoreData;
 
 #define shBasicSortDescArray(key) @[[[NSSortDescriptor alloc] initWithKey:key ascending:NO]]
 
@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSManagedObject*)newEntity:(NSEntityDescription*)entityType;
 
 -(NSManagedObject*)getExistingOrNewEntityWithObjectID:(SHObjectIDWrapper*)wrappedID;
--(NSManagedObject*)getEntityOrNil:(SHObjectIDWrapper *)objectId withError:(NSError **)error;
+-(NSManagedObject * _Nullable)getEntityOrNil:(SHObjectIDWrapper *)objectId withError:(NSError **)error;
 -(NSArray<NSManagedObject *> *)getItemsWithRequest:(NSFetchRequest *) fetchRequest;
 -(NSFetchedResultsController *)getItemFetcher:(NSFetchRequest *)fetchRequest;
 -(NSFetchedResultsController *)getItemFetcher:(NSFetchRequest *)fetchRequest

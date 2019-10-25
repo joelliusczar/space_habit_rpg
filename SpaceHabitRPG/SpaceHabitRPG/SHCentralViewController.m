@@ -6,28 +6,18 @@
 //	Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
-#import <SHGlobal/SHConstants.h>
-#import <SHCommon/NSMutableDictionary+Helper.h>
-#import <SHCommon/NSObject+Helper.h>
-#import <SHData/SHCoreDataProtocol.h>
-#import <SHData/NSManagedObjectContext+Helper.h>
-#import <SHModels/SHConfig.h>
-#import <SHModels/SHConfig_Medium.h>
-#import <SHModels/SHHero.h>
-#import <SHModels/SHSector_Medium.h>
-#import <SHModels/SHMonster_Medium.h>
-#import <SHModels/SHTransaction_Medium.h>
-#import <SHControls/UIViewController+Helper.h>
-#import <SHControls/UIView+Helpers.h>
-#import <SHCommon/NSException+SHCommonExceptions.h>
 #import "SHCentralViewController.h"
 #import "SHDailyViewController.h"
 #import "SHMenuViewController.h"
 #import "SHSectorChoiceViewController.h"
 #import "SHStoryDumpView.h"
-#import <SHControls/UIViewController+Helper.h>
 #import "SHStoryPresentationIntroController.h"
 #import "SHStoryPresentationTypicalController.h"
+@import SHGlobal;
+@import SHCommon;
+@import SHData;
+@import SHModels;
+@import SHControls;
 
 
 @import CoreGraphics;

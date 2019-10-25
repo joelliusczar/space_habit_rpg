@@ -8,9 +8,9 @@
 
 #import "SHSectorChoiceCellController.h"
 #import "SHSectorDescriptionViewController.h"
-#import <SHControls/UIViewController+Helper.h>
-#import <SHCommon/SHCommonUtils.h>
-#import <SHControls/UIView+Helpers.h>
+@import SHCommon;
+@import SHControls;
+
 
 @interface SHSectorChoiceCellController()
 @property (nonatomic,weak) SHSectorChoiceViewController *parentSectorController;

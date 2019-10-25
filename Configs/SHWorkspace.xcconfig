@@ -36,6 +36,8 @@ GCC_PREPROCESSOR_DEFINITIONS[sdk=iphonesimulator*] = $(inherited) IS_IOS=1
 
 C_PUBLIC_HEADERS = /usr/local/include
 
+//compiler-default
+GCC_C_LANGUAGE_STANDARD = gnu11
 
 
 //DEBUG_INFORMATION_FORMAT = dwarf-with-dsym

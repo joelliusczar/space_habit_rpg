@@ -6,7 +6,7 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <SHControls/SHSpinPicker.h>
+@import SHControls;
 
 @interface SHMonthPartPicker : SHSpinPicker
 @end

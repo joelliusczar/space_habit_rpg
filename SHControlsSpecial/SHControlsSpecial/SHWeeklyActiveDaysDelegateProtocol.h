@@ -6,10 +6,9 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-#import <SHControls/SHCommonDelegateProtocol.h>
-#import <SHControls/SHEventInfo.h>
+@import Foundation;
+@import UIKit;
+@import SHControls;
 
 @protocol SHWeeklyActiveDaysDelegateProtocol <NSObject,SHCommonDelegateProtocol>
 -(void)activeDaySwitch_press_action:(SHEventInfo *)eventInfo;

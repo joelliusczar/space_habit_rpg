@@ -7,7 +7,7 @@
 //
 #if IS_IOS
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface UIImage (Helper)
 -(UIImage *)invertImageColors;

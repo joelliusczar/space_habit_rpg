@@ -7,11 +7,9 @@
 //
 
 #import "SHConfig.h"
-#import <SHGlobal/SHConstants.h>
-#import <SHCommon/SHCommonUtils.h>
-#import <SHCommon/NSDate+DateHelper.h>
-#import <SHCommon/NSException+SHCommonExceptions.h>
-#import <SHData/NSManagedObjectContext+Helper.h>
+@import SHGlobal;
+@import SHCommon;
+@import SHData;
 
 
 @implementation SHConfig

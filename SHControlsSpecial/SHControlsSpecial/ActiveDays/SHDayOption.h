@@ -6,7 +6,7 @@
 //  Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import <SHControls/SHControls.h>
+@import SHControls;
 
 NS_ASSUME_NONNULL_BEGIN
 

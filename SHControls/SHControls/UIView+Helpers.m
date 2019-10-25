@@ -7,11 +7,9 @@
 //
 
 
-#import <Foundation/Foundation.h>
 #import "UIView+Helpers.h"
-#import <SHCommon/NSException+SHCommonExceptions.h>
-#import <SHCommon/SHColorInversionHintProtocol.h>
-#import <SHCommon/UIColor+Helper.h>
+@import Foundation;
+@import SHCommon;
 
 
 @implementation UIView (Helpers)
@@ -25,7 +23,7 @@
 
 -(void)resizeAutoLayoutHeightByOffset:(CGFloat)offset{
 	CGFloat height = self.frame.size.height;
-	[self.heightAnchor constraintEqualToConstant:height + offset];
+	[self.heightAnchor constraintEqualToConstant:height + offset].active = YES;
 }
 
 
@@ -167,6 +165,7 @@ that it would be a pain in the ass to add back if I change my mind.
 
 
 -(void)translateViewVertically:(CGFloat)offset{
+	
 	CGRect frame = self.frame;
 	frame.origin.y += offset;
 	self.frame = frame;

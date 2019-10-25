@@ -6,14 +6,9 @@
 //	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <SHData/NSManagedObjectContext+Helper.h>
-#import <SHCommon/SHCommonUtils.h>
-#import <SHModels/SHModelConstants.h>
-#import <SHModels/SHSector.h>
-#import <SHModels/SHSector_Medium.h>
-#import <SHModels/SHHeroDTO.h>
-#import <SHModels/SHSectorDTO.h>
-
+@import SHData;
+@import SHCommon;
+@import SHModels;
 @import SHTestCommon;
 
 #define SET_UP_BOUND() shouldUseLowerBoundChoices_zh[i++] = NO

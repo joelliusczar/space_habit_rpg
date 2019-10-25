@@ -6,9 +6,9 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "SHNotesViewDelegateProtocol.h"
 #import "SHView.h"
+@import UIKit;
 
 @interface SHNoteView : UIViewController
 @property (weak,nonatomic) IBOutlet UITextView *noteBox;

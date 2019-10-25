@@ -7,9 +7,9 @@
 //
 
 #import "SHMonthPartPicker.h"
-#import <SHGlobal/SHConstants.h>
-#import <SHCommon/SHSingletonCluster.h>
-#import <SHControls/UIViewController+Helper.h>
+@import SHGlobal;
+@import SHCommon;
+@import SHControls;
 
 @interface SHMonthPartPicker ()
 

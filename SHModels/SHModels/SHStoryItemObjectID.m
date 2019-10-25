@@ -9,7 +9,7 @@
 #import "SHStoryItemObjectID.h"
 #import "SHSector.h"
 #import "SHMonster.h"
-#import <SHCommon/NSException+SHCommonExceptions.h>
+@import SHCommon;
 
 
 @implementation SHStoryItemObjectID

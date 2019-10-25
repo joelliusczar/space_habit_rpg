@@ -6,10 +6,10 @@
 //	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <SHCommon/SHInterceptorProtocol.h>
 #import "SHViewProtocol.h"
 #import "SHViewEventsProtocol.h"
+@import UIKit;
+@import SHCommon;
 
 IB_DESIGNABLE
 @interface SHView: UIView

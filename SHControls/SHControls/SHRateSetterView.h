@@ -6,13 +6,13 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "SHRateSetterDelegateProtocol.h"
 #import "SHSwitch.h"
 #import "SHView.h"
-#import <SHGlobal/SHConstants.h>
 #import "SHNestedControlProtocol.h"
 #import "SHViewController.h"
+@import UIKit;
+@import SHGlobal;
 
 typedef void(^rateStepAction)(UIStepper*,UIEvent *);
 

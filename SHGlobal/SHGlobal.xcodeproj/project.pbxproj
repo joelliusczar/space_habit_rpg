@@ -28,16 +28,6 @@
 		27ED28B32040043D00CD5536 /* SHConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFrameworksBuildPhase section */
-		27ED28A3204003E200CD5536 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
 /* Begin PBXGroup section */
 		276E6D93222A46C100CB36CB /* Configs */ = {
 			isa = PBXGroup;
@@ -101,9 +91,7 @@
 			buildConfigurationList = 27ED28AF204003E200CD5536 /* Build configuration list for PBXNativeTarget "SHGlobal" */;
 			buildPhases = (
 				27ED28A2204003E200CD5536 /* Sources */,
-				27ED28A3204003E200CD5536 /* Frameworks */,
 				27ED28A4204003E200CD5536 /* Headers */,
-				27ED28A5204003E200CD5536 /* Resources */,
 				27DF9C4B2094EC6E00F98023 /* ShellScript */,
 			);
 			buildRules = (
@@ -147,16 +135,6 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		27ED28A5204003E200CD5536 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXShellScriptBuildPhase section */
 		27DF9C4B2094EC6E00F98023 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -169,7 +147,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = $SRCROOT/../Build_Scripts/SHGlobal.sh;
+			shellScript = "$SRCROOT/../Build_Scripts/SHGlobal.sh\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -308,6 +287,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = SHGlobal/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -332,6 +312,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = SHGlobal/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

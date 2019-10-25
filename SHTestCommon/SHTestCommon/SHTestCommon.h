@@ -7,7 +7,7 @@
 //
 
 #if IS_IOS
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 //! Project version number for SHTestCommon.
 FOUNDATION_EXPORT double SHTestCommonVersionNumber;

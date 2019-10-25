@@ -6,13 +6,10 @@
 //	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <SHModels/SHDueDateItemProtocol.h>
-#import <SHControls/SHAddItemsFooterDelegateProtocol.h>
-#import <SHControls/SHAddItemsFooter.h>
-#import <SHControls/SHItemFlexibleListView.h>
-#import <SHData/SHObjectIDWrapper.h>
-
+@import UIKit;
+@import SHModels;
+@import SHControls;
+@import SHData;
 @import CoreData;
 
 @interface SHReminderListView :SHItemFlexibleListView

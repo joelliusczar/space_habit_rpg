@@ -6,7 +6,7 @@
 //  Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import <SHControlsSpecial/SHControlsSpecial.h>
+#import "SHLinkViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

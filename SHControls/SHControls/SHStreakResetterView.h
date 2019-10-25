@@ -6,9 +6,9 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "SHButton.h"
 #import "SHViewController.h"
+@import UIKit;
 
 IB_DESIGNABLE
 @interface SHStreakResetterView : SHViewController

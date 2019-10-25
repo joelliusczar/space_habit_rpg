@@ -6,8 +6,8 @@
 //  Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "ViewController.h"
+@import UIKit;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

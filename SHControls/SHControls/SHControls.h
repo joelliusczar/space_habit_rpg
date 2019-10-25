@@ -6,7 +6,7 @@
 //  Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 //! Project version number for SHControls.
 FOUNDATION_EXPORT double SHControlsVersionNumber;
@@ -58,6 +58,7 @@ FOUNDATION_EXPORT const unsigned char SHControlsVersionString[];
 #import "SHViewEventsProtocol.h"
 #import "SHStatusBar.h"
 
-// In this header, you should import all the public headers of your framework using statements like #import <SHControls/PublicHeader.h>
+// In this header, you should import all the public headers
+//of your framework using statements like #import <SHControls/PublicHeader.h>
 
 

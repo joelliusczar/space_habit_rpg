@@ -7,7 +7,7 @@
 //
 
 #import "SHButton.h"
-#import <SHCommon/SHInterceptor.h>
+@import SHCommon;
 
 @implementation SHButton
 

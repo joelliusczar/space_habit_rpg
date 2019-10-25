@@ -8,12 +8,9 @@
 
 #import "SHSectorDescriptionViewController.h"
 #import "SHCentralViewController.h"
-#import <UIKit/UIKit.h>
-#import <SHModels/SHSector.h>
-#import <SHControls/SHSwitch.h>
-#import <SHModels/SHSectorDTO.h>
-#import <SHControls/SHButton.h>
-#import <SHModels/SHStoryItemObjectID.h>
+@import UIKit;
+@import SHControls;
+@import SHModels;
 
 @class SHSectorDescriptionViewController;
 

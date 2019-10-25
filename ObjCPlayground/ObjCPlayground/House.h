@@ -6,7 +6,7 @@
 //	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @interface House : NSObject
 @property (strong,nonatomic) NSString *couch;

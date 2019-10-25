@@ -8,10 +8,10 @@
 
 #import "SHRepeatLinkViewController.h"
 #import "SHRateSelectionViewController.h"
-#import <SHControls/UIViewController+Helper.h>
-#import <SHData/NSManagedObjectContext+Helper.h>
-#import <SHModels/SHDaily.h>
-#import <SHCommon/NSException+SHCommonExceptions.h>
+@import SHControls;
+@import SHData;
+@import SHModels;
+@import SHCommon;
 
 
 @interface SHRepeatLinkViewController ()
