@@ -90,6 +90,8 @@
 		27BE7B1322BFFAFE00DD87F5 /* SHViewEventsProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27BE7B1222BFFAFE00DD87F5 /* SHViewEventsProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27D0D6E421D02A2D00886721 /* UIViewController+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D0D6E221D02A2D00886721 /* UIViewController+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27D0D6E521D02A2D00886721 /* UIViewController+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0D6E321D02A2D00886721 /* UIViewController+Helper.m */; };
+		27DE250223739BA1003D2DAE /* SHScrollAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = 27DE250023739BA1003D2DAE /* SHScrollAnimator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27DE250323739BA1003D2DAE /* SHScrollAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DE250123739BA1003D2DAE /* SHScrollAnimator.m */; };
 		27ED11BD22A1E8D100E8EB32 /* SHNestedControlProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27ED11BC22A1E8D100E8EB32 /* SHNestedControlProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -180,6 +182,8 @@
 		27BE7B1222BFFAFE00DD87F5 /* SHViewEventsProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHViewEventsProtocol.h; sourceTree = "<group>"; };
 		27D0D6E221D02A2D00886721 /* UIViewController+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Helper.h"; sourceTree = "<group>"; };
 		27D0D6E321D02A2D00886721 /* UIViewController+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Helper.m"; sourceTree = "<group>"; };
+		27DE250023739BA1003D2DAE /* SHScrollAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHScrollAnimator.h; sourceTree = "<group>"; };
+		27DE250123739BA1003D2DAE /* SHScrollAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHScrollAnimator.m; sourceTree = "<group>"; };
 		27ED11BC22A1E8D100E8EB32 /* SHNestedControlProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHNestedControlProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -199,6 +203,8 @@
 		271187D0203FF88E0085A549 = {
 			isa = PBXGroup;
 			children = (
+				27DE250023739BA1003D2DAE /* SHScrollAnimator.h */,
+				27DE250123739BA1003D2DAE /* SHScrollAnimator.m */,
 				2737D110230F6EFA00B8618C /* SHStatusBar.h */,
 				2737D111230F6EFA00B8618C /* SHStatusBar.m */,
 				279848CF225063AC00039A29 /* Configs */,
@@ -440,6 +446,7 @@
 				27249B9A21C5809E006A884B /* UIView+Helpers.h in Headers */,
 				27249BA321CF0D59006A884B /* SHFrontEndConstants.h in Headers */,
 				27ED11BD22A1E8D100E8EB32 /* SHNestedControlProtocol.h in Headers */,
+				27DE250223739BA1003D2DAE /* SHScrollAnimator.h in Headers */,
 				271D610920421A9A005C9F7E /* SHCommonDelegateProtocol.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -533,7 +540,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = $SRCROOT/../Build_Scripts/SHControls.sh;
+			shellScript = "$SRCROOT/../Build_Scripts/SHControls.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -552,6 +559,7 @@
 				27118823203FF9DF0085A549 /* SHRateTypeSelector.m in Sources */,
 				2711881B203FF9DF0085A549 /* SHListItemCell.m in Sources */,
 				271D613920421A9A005C9F7E /* SHSpinPicker.m in Sources */,
+				27DE250323739BA1003D2DAE /* SHScrollAnimator.m in Sources */,
 				27118811203FF9DF0085A549 /* SHStreakResetterView.m in Sources */,
 				271188502040001B0085A549 /* SHSwitch.m in Sources */,
 				27249B9B21C5809E006A884B /* UIView+Helpers.m in Sources */,

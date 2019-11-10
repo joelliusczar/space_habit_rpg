@@ -48,7 +48,7 @@ public variable that I can swap out at run time
 
 extern uint (*shRandomUInt)(uint);
 void shReverse_UINT(NSUInteger * array,NSUInteger len);
-CGFloat shGetParentChildHeightOffset(CGRect parentFrame,CGRect childFrame);
+CGFloat shCalcFrameHeightOffset(CGRect expectedBigger,CGRect expectedSmaller);
 BOOL shWaitForSema(dispatch_semaphore_t sema,NSInteger timeoutSecs);
 void shCopyInstanceVar(NSObject* from,NSObject* to,NSString *varName);
 NSArray<NSString*> *shBuildWeekBasedOnWeekStart(NSUInteger weekStart);

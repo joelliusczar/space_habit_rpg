@@ -14,52 +14,19 @@
 
 
 @interface SHIntroViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *headline;
-@property (weak,nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak,nonatomic) IBOutlet UIView *scrollContent;
-@property (weak,nonatomic) IBOutlet NSLayoutConstraint *contentHeight;
-@property (strong,nonatomic) NSLayoutConstraint *introPositionConstraint;
-@property (strong, nonatomic) UITextView *introMessageView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *scrollContent;
+@property (weak, nonatomic) IBOutlet UIView *emptyScrollSegment;
+@property (weak,nonatomic) IBOutlet NSLayoutConstraint *paddingHeightConstraint;
+@property (strong, nonatomic) IBOutlet UITextView *introMessageView;
 @property (weak, nonatomic) IBOutlet SHButton *skipButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
-@property (strong, nonatomic) UITapGestureRecognizer *tapper;
-@property (nonatomic,assign) BOOL isThreadAllowed;
-@property (nonatomic,assign) BOOL isStoryDone;
-@property (nonatomic,assign) BOOL isThreadCurrentlyRunning;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapper;
+@property (strong, nonatomic) SHScrollAnimator *animator;
 @end
 
 @implementation SHIntroViewController
 
-
--(UITapGestureRecognizer *)tapper{
-	if(!_tapper){
-		_tapper = [[UITapGestureRecognizer alloc] initWithTarget:self
-			action:@selector(handleTap:)];
-		_tapper.numberOfTapsRequired = 1;
-	}
-	return _tapper;
-}
-
--(UITextView*)introMessageView{
-	if(nil == _introMessageView){
-		_introMessageView = [[UITextView alloc] init];
-		_introMessageView.backgroundColor = [UIColor blackColor];
-		_introMessageView.textColor = [UIColor whiteColor];
-		SHStoryItemDictionary *storyDict = [[SHStoryItemDictionary alloc] initWithResourceUtil:self.resourceUtil];
-		NSString* intro = [storyDict getStoryItem:@"intro"];
-		_introMessageView.text = intro;
-		_introMessageView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-		_introMessageView.adjustsFontForContentSizeCategory = YES;
-		
-//		CGRect msgFrame = _introMessageView.frame;
-//		CGFloat diff = shGetParentChildHeightOffset(self.scrollView.frame,msgFrame);
-//		[_introMessageView translateViewVertically:CGRectGetHeight(msgFrame) + diff];
-		_introMessageView.editable = NO;
-		_introMessageView.selectable = NO;
-		//_introMessageView.hidden = YES;
-	}
-	return _introMessageView;
-}
 
 -(instancetype)initWithSkipAction:(void (^)(void))skipAction
 	withOnNextAction:(void (^)(void))onNextAction
@@ -69,41 +36,35 @@
 		_skipAction = skipAction;
 		_onNextAction = onNextAction;
 		_resourceUtil = resourceUtil;
-		_isThreadAllowed = YES;
-		_isStoryDone = NO;
 	}
 	return self;
 }
 
 
-- (void)initialConstrainIntroPosition {
-	NSLayoutAnchor *introTop = self.introMessageView.bottomAnchor;
-	NSLayoutAnchor *scrollBottom = self.scrollContent.topAnchor;
-	self.introPositionConstraint = [introTop constraintEqualToAnchor:scrollBottom];
-	self.introPositionConstraint.active = YES;
+-(SHScrollAnimator*)animator {
+	if(nil == _animator) {
+		CGFloat scrollTo = [self scrollToYCoord];
+		_animator = [[SHScrollAnimator alloc] initWithScrollView:self.scrollView withScrollLength:scrollTo];
+		__weak typeof(self) weakSelf = self;
+		_animator.onAnimationFinish = ^{
+			typeof(weakSelf) bSelf = weakSelf;
+			if(nil == bSelf) return;
+			[bSelf afterScroll];
+		};
+	}
+	return _animator;
 }
 
-
-- (void)animateScroll {
-	UIViewPropertyAnimator *scrollingAnimation = [[UIViewPropertyAnimator alloc]
-																								initWithDuration:5
-																								curve:UIViewAnimationCurveLinear
-																								animations:^{
-		//introPositionConstraint.constant += 50;//self.contentHeight.constant;
-		//introPositionConstraint.constant -= self.contentHeight.constant;
-		//			self.introToParentConstraint.active = NO;
-		//			[self.introMessageView.topAnchor constraintEqualToAnchor:self.scrollContent.topAnchor].active = YES;
-		//			self.introToParentConstraint.constant -= self.contentHeight.constant;
-		[self.view layoutIfNeeded];
-	}];
-	[scrollingAnimation startAnimation];
-}
 
 -(void)viewDidLoad {
 	[super viewDidLoad];
-	[self placeIntroMessageView];
 	//	[self.view checkForAndApplyVisualChanges];
-	
+	SHStoryItemDictionary *storyDict = [[SHStoryItemDictionary alloc] initWithResourceUtil:self.resourceUtil];
+	NSString* introBody = [storyDict getStoryItem:@"introbody"];
+	NSString* introPre = [storyDict getStoryItem:@"intropre"];
+	NSString* introPost = [storyDict getStoryItem:@"intropost"];
+	self.introMessageView.text = [NSString stringWithFormat:@"%@\n%@\n%@",
+		introPre,introBody,introPost];
 }
 
 
@@ -119,36 +80,13 @@
 */
 -(void)viewDidAppear:(BOOL)animated{
 	[super viewDidAppear:animated];
-	NSString *headlineText = @"Welcome to Space Habit Frontier";
-	//self.headline.text = @"";
-	
-	//self.introToParentConstraint.constant -= self.contentHeight.constant;
-	
-//	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-//		@autoreleasepool {
-//			self.isThreadCurrentlyRunning = YES;
-//			[self autoTypeoutTitle:headlineText characterDelay:SH_CHARACTER_DELAY];
-//			[self scrollThroughMessage:SH_SCROLL_DELAY scrollIncrement:SH_SCROLL_INCREMENT];
-//			self.isThreadCurrentlyRunning = NO;
-//		}
-//	});
-	[self initialConstrainIntroPosition];
-	[self animateScroll];
+	CGRect blankSegmentFrame = self.emptyScrollSegment.frame;
+	CGRect textSegementFrame = self.introMessageView.frame;
+	CGFloat paddingHeight = shCalcFrameHeightOffset(blankSegmentFrame,textSegementFrame);
+	self.paddingHeightConstraint.constant = paddingHeight;
+	[self.animator startAnimation];
 }
 
-
--(void)placeIntroMessageView{
-	self.introMessageView.translatesAutoresizingMaskIntoConstraints = NO;
-	[self.scrollContent addSubview:self.introMessageView];
-	[self.introMessageView addGestureRecognizer:self.tapper];
-	[self.introMessageView.widthAnchor constraintEqualToAnchor:self.scrollContent.widthAnchor].active = YES;
-	
-	self.contentHeight.active = NO;
-	[self.scrollContent.heightAnchor
-		constraintEqualToAnchor:self.introMessageView.heightAnchor
-		multiplier:1].active = YES;
-	[self.introMessageView.leadingAnchor constraintEqualToAnchor:self.scrollContent.leadingAnchor].active = YES;
-}
 
 -(void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning];
@@ -156,80 +94,56 @@
 }
 
 
--(void)autoTypeoutTitle:(NSString *)title characterDelay:(NSTimeInterval)delay{
-	for(NSUInteger i = 0;i < title.length && self.isThreadAllowed;i++){
-		dispatch_async(dispatch_get_main_queue(), ^{
-			@autoreleasepool { //I don't remember if this autoreleasepool was actually needed
-				//I think the pool is needed, each thread needs its own autorelease pool
-				[self.headline setText:
-					[NSString stringWithFormat:@"%@%C",self.headline.text,
-						[title characterAtIndex:i]]];
-			}
-		});
-		
-		[NSThread sleepForTimeInterval:delay];
+-(CGFloat)scrollToYCoord {
+	CGFloat textHeight = self.introMessageView.bounds.size.height;
+	CGFloat scrollBoxHeight = self.scrollView.bounds.size.height;
+	CGFloat scrollTo;
+	if(textHeight > scrollBoxHeight){
+		scrollTo = self.scrollView.contentSize.height - scrollBoxHeight;
 	}
-}
-
--(NSLayoutConstraint*)getTopToBottomConstraint{
-	return [self.introMessageView.topAnchor constraintEqualToAnchor:self.scrollContent.bottomAnchor];
-}
-
-
--(void)scrollThroughMessage:(NSTimeInterval)delay scrollIncrement:(CGFloat)scrollIncrement{
-	__block NSLayoutConstraint *topToBottomConstraint = nil;
-	__block CGFloat scrollLength = 0;
-	dispatch_sync(dispatch_get_main_queue(), ^{
-		topToBottomConstraint = [self getTopToBottomConstraint];
-		topToBottomConstraint.active = YES;
-		self.introMessageView.hidden = NO;
-		scrollLength = self.contentHeight.constant;
-	});
-	while(self.isThreadAllowed && scrollLength > 0){
-		scrollLength -= scrollIncrement;
-		dispatch_async(dispatch_get_main_queue(), ^{
-			topToBottomConstraint.constant -= scrollIncrement;
-		});
-		[NSThread sleepForTimeInterval:delay];
+	else {
+		scrollTo = self.introMessageView.frame.origin.y;
 	}
-	dispatch_async(dispatch_get_main_queue(),^{
-		[self afterScroll];
-	});
+	return scrollTo;
 }
 
 
 - (IBAction)nextButton_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
 	(void)sender; (void)event;
-	self.isThreadAllowed = NO;
-	self.isStoryDone = YES;
+	[self.animator stopAnimation];
 	self.onNextAction();
 }
 
 
 - (IBAction)skipButton_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
 	(void)sender; (void)event;
-	if(!self.isStoryDone && self.isThreadCurrentlyRunning){
-		self.isStoryDone = YES;
-		self.isThreadAllowed = NO;
-	}
+	[self.animator stopAnimation];
 	self.skipAction();
 }
 
 
--(void)handleTap:(UITapGestureRecognizer *)recognizer{
+-(IBAction)handleTap:(UITapGestureRecognizer *)recognizer{
 	(void)recognizer;
-	if(!self.isStoryDone && self.isThreadCurrentlyRunning){
-		self.isStoryDone = YES;
-		self.isThreadAllowed = NO;
-		#warning fix this to use autolayout constraints
-		[self.introMessageView resetVerticalOrigin];
-		[self afterScroll];
+	[self.animator stopAnimation];
+}
+
+
+-(BOOL)gestureRecognizer:(UIGestureRecognizer*)gestureRecognizer
+	shouldReceiveTouch:(nonnull UITouch *)touch
+{
+	(void)gestureRecognizer;
+	CGPoint location = [touch locationInView:self.view];
+	
+	if(CGRectContainsPoint(self.scrollView.frame, location)) {
+		return YES;
 	}
+	return NO;
 }
 
 
 -(void)afterScroll{
-	_introMessageView.selectable = YES;
+	self.introMessageView.selectable = YES;
+	self.scrollView.userInteractionEnabled = YES;
 }
 
 @end

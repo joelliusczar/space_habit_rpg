@@ -9,12 +9,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHIntroViewController">
             <connections>
-                <outlet property="contentHeight" destination="I4D-G1-gXm" id="Bm1-a9-3ks"/>
-                <outlet property="headline" destination="b6u-xN-MaU" id="QBV-aw-GPl"/>
+                <outlet property="emptyScrollSegment" destination="VXt-mu-84E" id="q6u-5e-rBo"/>
+                <outlet property="introMessageView" destination="m5A-sL-pLL" id="oZN-J8-rio"/>
                 <outlet property="nextButton" destination="BB3-H4-xUG" id="PDy-Kk-l6C"/>
+                <outlet property="paddingHeightConstraint" destination="uVy-30-1So" id="Nn7-E9-6h2"/>
                 <outlet property="scrollContent" destination="mUR-g1-3EJ" id="SA5-dP-jqq"/>
                 <outlet property="scrollView" destination="iKY-U6-ddy" id="9XL-Aa-ran"/>
                 <outlet property="skipButton" destination="7qb-DX-YPs" id="ES6-Sh-vTm"/>
+                <outlet property="tapper" destination="JXp-sk-OGq" id="mli-FB-dTs"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Zv4-UC-6Xg"/>
             </connections>
         </placeholder>
@@ -23,15 +25,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6u-xN-MaU">
-                    <rect key="frame" x="16" y="20" width="304" height="17.5"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="17.5" id="EN0-Z9-RhZ"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qb-DX-YPs" userLabel="SkipButton" customClass="SHButton">
                     <rect key="frame" x="124" y="421" width="34" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -41,23 +34,56 @@
                         <action selector="skipButton_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="56c-v9-d0q"/>
                     </connections>
                 </button>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iKY-U6-ddy">
-                    <rect key="frame" x="0.0" y="45" width="320" height="368"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iKY-U6-ddy">
+                    <rect key="frame" x="0.0" y="56" width="320" height="368"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUR-g1-3EJ">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="373"/>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="692"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9z-DT-kUr" userLabel="shim">
+                                    <rect key="frame" x="0.0" y="692" width="320" height="0.0"/>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" id="uVy-30-1So"/>
+                                    </constraints>
+                                </view>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m5A-sL-pLL">
+                                    <rect key="frame" x="0.0" y="368" width="320" height="324"/>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                    <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                </textView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VXt-mu-84E">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="368"/>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="368" id="dkq-5S-0DS"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="373" id="I4D-G1-gXm"/>
+                                <constraint firstAttribute="trailing" secondItem="VXt-mu-84E" secondAttribute="trailing" id="8Mq-Ks-PEk"/>
+                                <constraint firstItem="d9z-DT-kUr" firstAttribute="leading" secondItem="mUR-g1-3EJ" secondAttribute="leading" id="8rI-2Q-yDc"/>
+                                <constraint firstItem="d9z-DT-kUr" firstAttribute="top" secondItem="m5A-sL-pLL" secondAttribute="bottom" id="AbB-AC-U7W"/>
+                                <constraint firstItem="VXt-mu-84E" firstAttribute="top" secondItem="mUR-g1-3EJ" secondAttribute="top" id="Dma-eq-jTA"/>
+                                <constraint firstItem="VXt-mu-84E" firstAttribute="leading" secondItem="mUR-g1-3EJ" secondAttribute="leading" id="Grx-76-ejI"/>
+                                <constraint firstAttribute="trailing" secondItem="d9z-DT-kUr" secondAttribute="trailing" id="YIS-ks-wcP"/>
+                                <constraint firstItem="m5A-sL-pLL" firstAttribute="leading" secondItem="mUR-g1-3EJ" secondAttribute="leading" id="iLb-HZ-PxT"/>
+                                <constraint firstAttribute="trailing" secondItem="m5A-sL-pLL" secondAttribute="trailing" id="kmK-tF-mKI"/>
+                                <constraint firstItem="m5A-sL-pLL" firstAttribute="top" secondItem="VXt-mu-84E" secondAttribute="bottom" id="u2y-Tm-U0Z"/>
+                                <constraint firstAttribute="bottom" secondItem="d9z-DT-kUr" secondAttribute="bottom" id="xQA-qw-8IH"/>
                             </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" red="1" green="0.74637203760000004" blue="0.33999639850000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="mUR-g1-3EJ" firstAttribute="leading" secondItem="iKY-U6-ddy" secondAttribute="leading" id="3J5-NF-F4G"/>
+                        <constraint firstAttribute="bottom" secondItem="mUR-g1-3EJ" secondAttribute="bottom" id="4Eb-sv-lRm"/>
                         <constraint firstItem="mUR-g1-3EJ" firstAttribute="top" secondItem="iKY-U6-ddy" secondAttribute="top" id="I0M-3T-7OW"/>
-                        <constraint firstAttribute="bottom" secondItem="mUR-g1-3EJ" secondAttribute="bottom" id="WcV-WF-Afe"/>
-                        <constraint firstAttribute="height" constant="368" id="Xye-9j-blC"/>
+                        <constraint firstAttribute="height" constant="368" id="LFF-zG-HT9"/>
                         <constraint firstAttribute="trailing" secondItem="mUR-g1-3EJ" secondAttribute="trailing" id="YXx-aQ-tXX"/>
                         <constraint firstItem="mUR-g1-3EJ" firstAttribute="centerX" secondItem="iKY-U6-ddy" secondAttribute="centerX" id="peB-ru-Zkt"/>
                     </constraints>
@@ -71,17 +97,24 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <gestureRecognizers/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="b6u-xN-MaU" secondAttribute="trailing" id="1XG-75-9Y5"/>
+                <constraint firstItem="iKY-U6-ddy" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="O0c-cX-RYH"/>
                 <constraint firstItem="iKY-U6-ddy" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="TLE-Kb-2q2"/>
-                <constraint firstItem="iKY-U6-ddy" firstAttribute="top" secondItem="b6u-xN-MaU" secondAttribute="bottom" constant="7.5" id="XNI-ea-5hN"/>
                 <constraint firstAttribute="trailing" secondItem="iKY-U6-ddy" secondAttribute="trailing" id="h6V-sW-V87"/>
                 <constraint firstItem="iKY-U6-ddy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="k1F-Se-cDM"/>
-                <constraint firstItem="b6u-xN-MaU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="lIa-ft-Qtn"/>
-                <constraint firstItem="b6u-xN-MaU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="pAj-mi-o2u"/>
             </constraints>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="JXp-sk-OGq" appends="YES" id="Nh4-kz-hR5"/>
+            </connections>
             <point key="canvasLocation" x="136.875" y="107.5"/>
         </view>
+        <tapGestureRecognizer id="JXp-sk-OGq">
+            <connections>
+                <action selector="handleTap:" destination="-1" id="dXH-Oc-zTV"/>
+                <outlet property="delegate" destination="-1" id="PRt-gj-MYA"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>

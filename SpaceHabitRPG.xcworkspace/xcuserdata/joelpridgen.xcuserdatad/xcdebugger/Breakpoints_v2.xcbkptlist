@@ -1003,32 +1003,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D1E3D11E-3BD7-4130-A8E7-8BB628DB0A2E"
+            uuid = "67BAD313-655A-42B6-A8AA-64176D947796"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpaceHabitRPG/SpaceHabitRPG/SHIntroViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "-introMessageView"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "-viewDidAppear:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "ED95C4BF-6B4E-4A04-80E6-87A6F3B34A31"
+            uuid = "068F0125-4AA4-45D2-A8D1-B8935EC7259E"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SpaceHabitRPG/SpaceHabitRPG/SHIntroViewController.m"
+            filePath = "SHControls/SHScrollAnimator.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
-            landmarkName = "-scrollThroughMessage:scrollIncrement:"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "-duration"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

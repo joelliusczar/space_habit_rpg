@@ -10,7 +10,7 @@
 @import SHModels;
 
 
-@interface SHIntroViewController : UIViewController
+@interface SHIntroViewController : UIViewController 
 @property (copy,nonatomic) void (^skipAction)(void);
 @property (copy,nonatomic) void (^onNextAction)(void);
 @property (strong,nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
