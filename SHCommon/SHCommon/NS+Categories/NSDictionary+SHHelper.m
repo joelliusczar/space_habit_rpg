@@ -66,9 +66,23 @@ static NSMutableDictionary* _mapEntriesToDict(NSDictionary *dict,
 }
 
 
-static NSMutableDictionary* objectToDict(NSObject *object,
+static NSSet* propertySetForClass(Class cls) {
+	uint32_t outCount = 0;
+	objc_property_t *props = class_copyPropertyList(cls,&outCount);
+	NSMutableSet *propertySet = [NSMutableSet setWithCapacity:outCount];
+	for(uint32_t i = 0; i < outCount; i++){
+		const char *propName = property_getName(props[i]);
+		NSString *nsPropName = [NSString stringWithUTF8String:propName];
+		[propertySet addObject:nsPropName];
+	}
+	return propertySet;
+}
+
+
+static NSMutableDictionary* objectToDictWithOption(NSObject *object,
 	shDictEntrytransformer transformer,
-	NSMutableSet* cycleTracker){
+	NSMutableSet* cycleTracker,
+	BOOL includeSuperclassProperties){
 	
 	if(nil == cycleTracker){
 		cycleTracker = [NSMutableSet set];
@@ -87,18 +101,31 @@ static NSMutableDictionary* objectToDict(NSObject *object,
 	uint32_t outCount = 0;
 	objc_property_t *props = class_copyPropertyList(object.class,&outCount);
 	NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:outCount];
+	NSSet *propertySet = nil;
+	if(includeSuperclassProperties) {
+		propertySet = propertySetForClass(object.superclass);
+	}
+	
+	SEL shouldIgnorePropertySel = NSSelectorFromString(@"shouldIgnoreProperty:");
+	takesStringReturnsBool shouldIgnorePropertyImp = NULL;
+	if([object respondsToSelector:shouldIgnorePropertySel]){
+		Method shouldIgnorePropertyMethod = class_getInstanceMethod(object.class, shouldIgnorePropertySel);
+		shouldIgnorePropertyImp =
+			(takesStringReturnsBool)method_getImplementation(shouldIgnorePropertyMethod);
+	}
+	
 	for(uint32_t i = 0; i < outCount; i++){
 		const char *propName = property_getName(props[i]);
 		NSString *nsPropName = [NSString stringWithUTF8String:propName];
-		SEL shouldIgnorePropertySel = NSSelectorFromString(@"shouldIgnoreProperty:");
-		if([object respondsToSelector:shouldIgnorePropertySel]){
-			Method shouldIgnorePropertyMethod = class_getInstanceMethod(object.class, shouldIgnorePropertySel);
-			takesStringReturnsBool shouldIgnorePropertyImp =
-				(takesStringReturnsBool)method_getImplementation(shouldIgnorePropertyMethod);
-			if(shouldIgnorePropertyImp(object,shouldIgnorePropertySel,nsPropName)) {
-				continue;
-			}
+		if([propertySet containsObject:nsPropName]) {
+			continue;
 		}
+		BOOL shouldIgnoreProperty = shouldIgnorePropertyImp &&
+			shouldIgnorePropertyImp(object,shouldIgnorePropertySel,nsPropName);
+		if(shouldIgnoreProperty) {
+			continue;
+		}
+		
 		id objectVal = [object valueForKey:nsPropName];
 		if(transformer){
 			objectVal = transformer(objectVal,cycleTracker);
@@ -109,6 +136,14 @@ static NSMutableDictionary* objectToDict(NSObject *object,
 	}
 	free(props);
 	return dict;
+}
+
+
+static NSMutableDictionary* objectToDict(NSObject *object,
+	shDictEntrytransformer transformer,
+	NSMutableSet* cycleTracker)
+{
+	return objectToDictWithOption(object, transformer, cycleTracker, NO);
 }
 
 +(NSMutableDictionary*)objectToDictionary:
@@ -122,6 +157,13 @@ static NSMutableDictionary* objectToDict(NSObject *object,
 
 +(NSMutableDictionary*)objectToDictionary:(NSObject*)object{
 	return objectToDict(object, shDefaultTransformer,nil);
+}
+
+
++(NSMutableDictionary*)objectToDictionary:(NSObject *)object
+	includeSuperclassProperties:(BOOL)include
+{
+	return objectToDictWithOption(object, shDefaultTransformer, nil, include);
 }
 
 

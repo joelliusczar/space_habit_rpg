@@ -87,9 +87,7 @@ static void copyBetween(NSObject* from,NSObject* to){
 
 
 -(NSMutableDictionary *)mapable{
-	return [NSDictionary objectToDictionary:self
-		withTransformer:shDefaultTransformer
-		withSet:nil];
+	return [NSDictionary objectToDictionary:self includeSuperclassProperties:YES];
 }
 
 

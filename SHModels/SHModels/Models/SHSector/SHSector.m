@@ -29,7 +29,7 @@ static SHSectorInfoDictionary *_sectorInfo;
 
 
 -(NSMutableDictionary*)mapable{
-	return [NSDictionary objectToDictionary:self];
+	return [NSDictionary objectToDictionary:self includeSuperclassProperties:YES];
 }
 
 
@@ -82,6 +82,12 @@ static void copyBetween(NSObject* from,NSObject* to){
 	return wrappedObjectID;
 }
 
+
+-(BOOL)shouldIgnoreProperty: (NSString *)propertyName {
+	if([propertyName isEqualToString:@"wrappedObjectID"]) return YES;
+	if([propertyName isEqualToString:@"mapable"]) return YES;
+	return NO;
+}
 
 
 @end

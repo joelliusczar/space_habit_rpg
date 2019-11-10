@@ -28,6 +28,9 @@ NS_ASSUME_NONNULL_BEGIN
 	(shDictEntrytransformer)transformer
 	withSet:(nullable NSMutableSet*)cycleTracker;
 
++(NSMutableDictionary*)objectToDictionary:(NSObject *)object
+includeSuperclassProperties:(BOOL)include;
+
 @end
 
 NS_ASSUME_NONNULL_END

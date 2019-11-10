@@ -29,7 +29,7 @@
 		if(results.count == 1){
 			hero = (SHHero*)results[0];
 		}
-		else if(results == 0) {
+		else if(results.count == 0) {
 			hero = (SHHero*)[self.context newEntity:SHHero.entity];
 			NSError *saveError = nil;
 			[self.context save:&saveError];
