@@ -61,33 +61,43 @@
 	NSManagedObjectContext *context = self.context;
 	//see note by sectorMonsterQueue #sectorMonsterQueue
 	dispatch_sync(self.sectorMonsterQueue,^{
-		//don't add any other entities than sector and monster
 		NSFetchRequest *sectorsRequest = SHSector.fetchRequest;
 		NSFetchRequest *monstersRequest = SHMonster.fetchRequest;
+		NSFetchRequest *suffixRequest = SHSuffix.fetchRequest;
 		NSBatchDeleteRequest *deleteSectors = [[NSBatchDeleteRequest alloc] initWithFetchRequest:sectorsRequest];
 		deleteSectors.resultType = NSBatchDeleteResultTypeCount;
 		NSBatchDeleteRequest *deleteMonsters = [[NSBatchDeleteRequest alloc] initWithFetchRequest:monstersRequest];
 		deleteMonsters.resultType = NSBatchDeleteResultTypeCount;
+		NSBatchDeleteRequest *deleteSuffixes = [[NSBatchDeleteRequest alloc] initWithFetchRequest:suffixRequest];
 		[context performBlockAndWait:^{
 			@autoreleasepool {
 				NSError *errorSectors = nil;
 				NSBatchDeleteResult *sectorResults = [context executeRequest:deleteSectors error:&errorSectors];
 				NSError *errorMonsters = nil;
 				NSBatchDeleteResult *monsterResults = [context executeRequest:deleteMonsters error:&errorMonsters];
+				NSError *errorSuffix = nil;
+				NSBatchDeleteResult *suffixResults = [context executeRequest:deleteSuffixes error:&errorSuffix];
 				[context performBlock:^{
 					NSInteger sectorCounts = ((NSNumber*)sectorResults.result).integerValue;
-					if(sectorCounts > 0){
+					if(sectorCounts > 0) {
 						SHTransaction_Medium *sm = [[SHTransaction_Medium alloc] initWithContext:context
 							andEntityType:SHSector.entity.name];
 						[sm addBatchDeleteTransaction:[NSString stringWithFormat:
 							@"Batch deleted %ldl sectors",sectorCounts]];
 					}
 					NSInteger monsterCounts = ((NSNumber*)monsterResults.result).integerValue;
-					if(monsterCounts > 0){
+					if(monsterCounts > 0) {
 						SHTransaction_Medium *mm = [[SHTransaction_Medium alloc] initWithContext:context
 							andEntityType:SHMonster.entity.name];
 						[mm addBatchDeleteTransaction:[NSString stringWithFormat:
 							@"Batch deleted %ldl monsters",monsterCounts]];
+					}
+					NSInteger suffixCounts = ((NSNumber*)suffixResults.result).integerValue;
+					if(suffixCounts > 0) {
+						SHTransaction_Medium *mm = [[SHTransaction_Medium alloc] initWithContext:context
+							andEntityType:SHSuffix.entity.name];
+						[mm addBatchDeleteTransaction:[NSString stringWithFormat:
+							@"Batch deleted %ldl sufixes",suffixCounts]];
 					}
 				}];
 			}

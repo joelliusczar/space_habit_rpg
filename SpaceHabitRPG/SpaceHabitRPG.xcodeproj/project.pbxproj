@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		273426EF237AAC5B0019C994 /* SHLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 273426EE237AAC5B0019C994 /* SHLaunchScreen.storyboard */; };
 		2737D10E230F6DE200B8618C /* SHBattleStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2737D10C230F6DE200B8618C /* SHBattleStatsViewController.m */; };
 		2737D10F230F6DE200B8618C /* SHBattleStatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2737D10D230F6DE200B8618C /* SHBattleStatsViewController.xib */; };
 		273F55D8230E030F001F82F9 /* SHHabitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273F55D7230E030F001F82F9 /* SHHabitViewController.xib */; };
@@ -111,6 +112,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		273426EE237AAC5B0019C994 /* SHLaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SHLaunchScreen.storyboard; sourceTree = "<group>"; };
 		2737D10B230F6DE200B8618C /* SHBattleStatsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHBattleStatsViewController.h; sourceTree = "<group>"; };
 		2737D10C230F6DE200B8618C /* SHBattleStatsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHBattleStatsViewController.m; sourceTree = "<group>"; };
 		2737D10D230F6DE200B8618C /* SHBattleStatsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHBattleStatsViewController.xib; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 		2733D215229403010090B7F1 /* xibs */ = {
 			isa = PBXGroup;
 			children = (
+				273426EE237AAC5B0019C994 /* SHLaunchScreen.storyboard */,
 				2737D10D230F6DE200B8618C /* SHBattleStatsViewController.xib */,
 				2747C4A72048D75200FB5669 /* SHEditNavigationController.xib */,
 				2747C4C02048D83C00FB5669 /* SHIntroViewController.xib */,
@@ -480,6 +483,7 @@
 				2747C4EB2048E1EE00FB5669 /* SHSectorChoiceCellController.xib in Resources */,
 				2737D10F230F6DE200B8618C /* SHBattleStatsViewController.xib in Resources */,
 				2747C515204A47BF00FB5669 /* SHSectorChoicePicker.xib in Resources */,
+				273426EF237AAC5B0019C994 /* SHLaunchScreen.storyboard in Resources */,
 				2747C4E12048E12C00FB5669 /* SHSectorDescriptionViewController.xib in Resources */,
 				2747C4C32048D83C00FB5669 /* SHIntroViewController.xib in Resources */,
 				27B2B31E2300FF1400663644 /* SHDailyCellController.xib in Resources */,

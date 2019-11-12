@@ -18,25 +18,14 @@
 @import SHData;
 @import SHModels;
 @import SHControls;
-
-
 @import CoreGraphics;
 
 @interface SHCentralViewController ()
+@property (strong, nonatomic) IBOutlet UIView *tabsContainer;
 @property (strong,nonatomic) UITabBarController *tabsController;
 @property (weak,nonatomic) IBOutlet UIView *statsView;
-@property (weak,nonatomic) IBOutlet UILabel *heroDescLbl;
-@property (weak,nonatomic) IBOutlet UIProgressView *heroHPBar;
-@property (weak,nonatomic) IBOutlet UILabel *monsterDescLbl;
-@property (weak,nonatomic) IBOutlet UIProgressView *monsterHPBar;
-@property (weak,nonatomic) IBOutlet UILabel *xpLbl;
-@property (weak,nonatomic) IBOutlet UIProgressView *xpBar;
-@property (weak,nonatomic) IBOutlet UILabel *lvlLbl;
-@property (weak,nonatomic) IBOutlet UILabel *goldLbl;
 @property (strong,nonatomic) NSManagedObjectContext *context;
 @property (strong,nonatomic) dispatch_queue_t configAccessorQueue;
-
-
 @end
 
 @implementation SHCentralViewController

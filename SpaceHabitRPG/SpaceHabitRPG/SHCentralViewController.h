@@ -13,7 +13,6 @@
 @import SHModels;
 
 @interface SHCentralViewController : UIViewController;
-@property (weak,nonatomic) IBOutlet UIView *tabsContainer;
 @property (strong,nonatomic) id<P_CoreData> dataController;
 @property (strong,nonatomic) SHConfigDTO *configDTO;
 @property (strong,nonatomic) SHHeroDTO *heroDTO;

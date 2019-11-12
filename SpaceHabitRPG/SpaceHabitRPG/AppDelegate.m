@@ -24,7 +24,9 @@ void printWorkingDir(){
 	NSLog(@"%@",url);
 }
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication *)application
+	didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
 	(void)application;
 	(void)launchOptions;
 	NSLog(@"Done launching 1");

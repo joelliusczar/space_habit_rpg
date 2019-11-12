@@ -26,8 +26,8 @@
 	<string>To remind you of dailies</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>To remind you of tasks</string>
-	<key>UILaunchImageFile~iphone</key>
-	<string>title_Screen</string>
+	<key>UILaunchStoryboardName</key>
+	<string>SHLaunchScreen.storyboard</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
