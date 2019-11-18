@@ -8,13 +8,15 @@
 
 @import Foundation;
 @import CoreData;
+@import SHCommon;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHSuffix : NSManagedObject
-
+@interface SHSuffix : NSObject
+-(instancetype)initWithResourceUtil:(id<SHResourceUtilityProtocol>)resourceUtil;
+-(NSInteger)getAndIncrementCountForSector:(NSString*)sectorName;
+-(void)saveToFile;
 @end
 
 NS_ASSUME_NONNULL_END
 
-#import "SHSuffix+CoreDataProperties.h"

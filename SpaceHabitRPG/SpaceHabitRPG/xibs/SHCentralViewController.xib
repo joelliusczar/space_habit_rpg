@@ -20,58 +20,34 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jeE-7J-ZJo">
-                    <rect key="frame" x="0.0" y="34" width="414" height="189"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="189"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="189" id="PzN-86-FQq"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ug1-1S-I7J" userLabel="tab container">
-                    <rect key="frame" x="0.0" y="223" width="414" height="565"/>
+                    <rect key="frame" x="0.0" y="233" width="414" height="629"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hex-Ko-GSe">
-                    <rect key="frame" x="0.0" y="788" width="414" height="44"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="ySR-0h-FFl"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                    <state key="normal" title="Begin Voyage">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrA-gq-VBP">
-                    <rect key="frame" x="0.0" y="832" width="414" height="44"/>
-                    <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="mIN-Q5-Oi5"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <state key="normal" title="Skip Story">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="nrA-gq-VBP" secondAttribute="bottom" constant="20" id="AVE-09-oAv"/>
+                <constraint firstItem="ug1-1S-I7J" firstAttribute="top" secondItem="jeE-7J-ZJo" secondAttribute="bottom" id="6uL-G9-TEd"/>
                 <constraint firstAttribute="trailing" secondItem="ug1-1S-I7J" secondAttribute="trailing" id="CPJ-fN-XUP"/>
-                <constraint firstItem="jeE-7J-ZJo" firstAttribute="top" secondItem="Qgt-Ab-Zj3" secondAttribute="top" constant="34" id="G7Y-LX-WMg"/>
-                <constraint firstItem="nrA-gq-VBP" firstAttribute="top" secondItem="hex-Ko-GSe" secondAttribute="bottom" id="V3V-cf-1ez"/>
-                <constraint firstAttribute="trailing" secondItem="nrA-gq-VBP" secondAttribute="trailing" id="W9W-ne-HCc"/>
-                <constraint firstAttribute="trailing" secondItem="hex-Ko-GSe" secondAttribute="trailing" id="agN-Mp-1RN"/>
+                <constraint firstItem="jeE-7J-ZJo" firstAttribute="top" secondItem="n1r-16-8uH" secondAttribute="top" id="G7Y-LX-WMg"/>
                 <constraint firstAttribute="trailing" secondItem="jeE-7J-ZJo" secondAttribute="trailing" id="btK-CV-th2"/>
                 <constraint firstItem="ug1-1S-I7J" firstAttribute="leading" secondItem="Qgt-Ab-Zj3" secondAttribute="leading" id="cZu-7A-sFY"/>
-                <constraint firstItem="hex-Ko-GSe" firstAttribute="top" secondItem="ug1-1S-I7J" secondAttribute="bottom" id="jE8-22-1bI"/>
                 <constraint firstItem="jeE-7J-ZJo" firstAttribute="leading" secondItem="Qgt-Ab-Zj3" secondAttribute="leading" id="kxY-zZ-YpV"/>
-                <constraint firstItem="ug1-1S-I7J" firstAttribute="top" secondItem="jeE-7J-ZJo" secondAttribute="bottom" id="qb9-mp-2ig"/>
-                <constraint firstItem="nrA-gq-VBP" firstAttribute="leading" secondItem="Qgt-Ab-Zj3" secondAttribute="leading" id="t2G-xC-qFc"/>
-                <constraint firstItem="ug1-1S-I7J" firstAttribute="bottom" secondItem="Qgt-Ab-Zj3" secondAttribute="bottom" priority="900" constant="20" id="xLW-k9-Gcp"/>
-                <constraint firstItem="hex-Ko-GSe" firstAttribute="leading" secondItem="Qgt-Ab-Zj3" secondAttribute="leading" id="yGG-Kp-g8E"/>
+                <constraint firstItem="ug1-1S-I7J" firstAttribute="top" secondItem="n1r-16-8uH" secondAttribute="top" id="qb9-mp-2ig"/>
+                <constraint firstItem="ug1-1S-I7J" firstAttribute="bottom" secondItem="n1r-16-8uH" secondAttribute="bottom" id="xLW-k9-Gcp"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="n1r-16-8uH"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="qb9-mp-2ig"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="-217" y="-102"/>
         </view>
     </objects>

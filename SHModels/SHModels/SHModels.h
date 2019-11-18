@@ -19,14 +19,12 @@ FOUNDATION_EXPORT const unsigned char SHModelsVersionString[];
 #endif
 
 #import "SHModelConstants.h"
-#import "SHConfig+CoreDataProperties.h"
 #import "SHConfig.h"
 #import "SHDueDateItemProtocol.h"
 #import "SHCounter.h"
 #import "SHSector.h"
 #import "SHReminder.h"
 #import "SHReminder+CoreDataProperties.h"
-#import "SHSuffix+CoreDataProperties.h"
 #import "SHSuffix.h"
 #import "SHDaily.h"
 #import "SHDaily+CoreDataProperties.h"
@@ -73,7 +71,6 @@ FOUNDATION_EXPORT const unsigned char SHModelsVersionString[];
 #import "SHDailyActivator.h"
 #import "SHMonster_Medium.h"
 #import "SHHero_Medium.h"
-#import "SHConfig_Medium.h"
 #import "SHStoryItemObjectID.h"
 
 // In this header, you should import all

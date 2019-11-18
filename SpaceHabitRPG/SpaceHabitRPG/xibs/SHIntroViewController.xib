@@ -15,7 +15,6 @@
                 <outlet property="paddingHeightConstraint" destination="uVy-30-1So" id="Nn7-E9-6h2"/>
                 <outlet property="scrollContent" destination="mUR-g1-3EJ" id="SA5-dP-jqq"/>
                 <outlet property="scrollView" destination="iKY-U6-ddy" id="9XL-Aa-ran"/>
-                <outlet property="skipButton" destination="7qb-DX-YPs" id="ES6-Sh-vTm"/>
                 <outlet property="tapper" destination="JXp-sk-OGq" id="mli-FB-dTs"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Zv4-UC-6Xg"/>
             </connections>
@@ -25,15 +24,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qb-DX-YPs" userLabel="SkipButton" customClass="SHButton">
-                    <rect key="frame" x="124" y="421" width="34" height="29"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
-                    <state key="normal" title="Skip"/>
-                    <connections>
-                        <action selector="skipButton_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="56c-v9-d0q"/>
-                    </connections>
-                </button>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iKY-U6-ddy">
                     <rect key="frame" x="0.0" y="56" width="320" height="368"/>
                     <subviews>
@@ -88,9 +78,12 @@
                         <constraint firstItem="mUR-g1-3EJ" firstAttribute="centerX" secondItem="iKY-U6-ddy" secondAttribute="centerX" id="peB-ru-Zkt"/>
                     </constraints>
                 </scrollView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BB3-H4-xUG" customClass="SHButton">
-                    <rect key="frame" x="250" y="421" width="54" height="29"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BB3-H4-xUG" customClass="SHButton">
+                    <rect key="frame" x="250" y="444" width="54" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="54" id="90O-PD-cSt"/>
+                        <constraint firstAttribute="height" constant="29" id="wjx-up-aC1"/>
+                    </constraints>
                     <state key="normal" title="Next"/>
                     <connections>
                         <action selector="nextButton_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="Pta-ey-c9T"/>
@@ -102,6 +95,8 @@
             <constraints>
                 <constraint firstItem="iKY-U6-ddy" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="O0c-cX-RYH"/>
                 <constraint firstItem="iKY-U6-ddy" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="TLE-Kb-2q2"/>
+                <constraint firstItem="BB3-H4-xUG" firstAttribute="top" secondItem="iKY-U6-ddy" secondAttribute="bottom" constant="20" id="Tko-Dv-Zc9"/>
+                <constraint firstAttribute="trailing" secondItem="BB3-H4-xUG" secondAttribute="trailing" constant="16" id="chU-KU-Lo0"/>
                 <constraint firstAttribute="trailing" secondItem="iKY-U6-ddy" secondAttribute="trailing" id="h6V-sW-V87"/>
                 <constraint firstItem="iKY-U6-ddy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="k1F-Se-cDM"/>
             </constraints>

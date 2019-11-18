@@ -11,7 +11,6 @@
 #import "SHConfig.h"
 #import "SHDailyNextDueDateCalculator.h"
 #import "SHDailyMaxDaysBeforeSpanCalculator.h"
-#import "SHConfig_Medium.h"
 @import SHGlobal;
 @import SHData;
 
@@ -51,8 +50,7 @@
 
 -(NSDate *)nextDueDate{
 
-	SHConfig_Medium *cm = [[SHConfig_Medium alloc] initWithContext:self.managedObjectContext];
-	SHConfig *config = [cm globalConfig];
+	SHConfig *config = [[SHConfig alloc] init];
 	SHDailyNextDueDateCalculator *calculator = [[SHDailyNextDueDateCalculator alloc]
 		initWithActiveDays:self.activeDaysContainer
 		lastActivationDateTime:self.lastActivationDateTime
@@ -77,9 +75,7 @@
 
 -(NSInteger)daysUntilDue{
 	NSUInteger dayStart = 0;
-	SHConfig_Medium *cm = [[SHConfig_Medium alloc]
-		initWithContext:self.managedObjectContext];
-	SHConfig *config = [cm globalConfig];
+	SHConfig *config = [[SHConfig alloc] init];
 	dayStart = config.dayStartTime;
 	NSDate *today = self.dateProvider.date;
 	NSDate *roundedDownToday = [today dayStart];
@@ -159,8 +155,7 @@
 
 -(BOOL)isCompleted{
 	NSInteger dayStartTime = 0;
-	SHConfig_Medium *cm = [[SHConfig_Medium alloc] initWithContext:self.managedObjectContext];
-	SHConfig *config = [cm globalConfig];
+	SHConfig *config = [[SHConfig alloc] init];
 	dayStartTime = config.dayStartTime;
 	NSDate *today = [self.dateProvider.date.dayStart timeAfterSeconds:dayStartTime];
 	return nil != self.lastActivationDateTime &&

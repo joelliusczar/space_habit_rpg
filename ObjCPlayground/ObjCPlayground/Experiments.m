@@ -1294,4 +1294,16 @@ union u_double {
 }
 
 
++(void)blockLocalObjRef {
+	ChildMan *c1 = [[ChildMan alloc] init];
+	c1.myBlock = ^{
+		NSLog(@"Other stuff");
+		//[c1 printShit];
+	};
+	__weak ChildMan *c2 = c1;
+	c1 = nil;
+	NSLog(@"is it null? %@",c2);
+}
+
+
 @end

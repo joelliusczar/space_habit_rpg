@@ -24,7 +24,7 @@
 -(instancetype)initWithActiveDays:(SHDailyActiveDays *)activeDaysContainer
 	lastActivationDateTime:(NSDate *)lastActivationDateTime
 	lastUpdateDateTime:(NSDate *)lastUpdateDateTime
-	dayStartTime:(int32_t)dayStartTime
+	dayStartTime:(NSInteger)dayStartTime
 {
 	if(self = [super init]) {
 		_activeDaysContainer = activeDaysContainer;

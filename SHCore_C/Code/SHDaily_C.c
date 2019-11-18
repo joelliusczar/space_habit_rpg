@@ -122,7 +122,7 @@ static int _offsetForSameWeek(bool isActiveWeek, int inputDayIdx,int prevDayIdx)
 }
 
 
-static void _prepareDatetimeForCalculations(SHDatetime *dt, int32_t dayStartTime, SHError *error) {
+static void _prepareDatetimeForCalculations(SHDatetime *dt, int64_t dayStartTime, SHError *error) {
 	memset(error, 0, sizeof(SHError));
 	int32_t timeOfDayInSeconds = (int32_t)shExtractTime(dt, error);
 	if(timeOfDayInSeconds >= dayStartTime) {
@@ -140,7 +140,7 @@ static void _prepareDatetimeForCalculations(SHDatetime *dt, int32_t dayStartTime
 
 
 bool shPreviousDueDateWithPreparedInputs_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate
-	,SHRateValueItem *rvi,int64_t scaler,int32_t dayStartHour,SHDatetime *ans,SHError *error)
+	,SHRateValueItem *rvi, int64_t scaler, int64_t dayStartHour, SHDatetime *ans, SHError *error)
 {
 	SHDatetime lastDueDatePrepared = *lastDueDate;
 	SHDatetime checkinDatePrepared = *checkinDate;
@@ -151,7 +151,7 @@ bool shPreviousDueDateWithPreparedInputs_WEEKLY(SHDatetime *lastDueDate,SHDateti
 }
 
 bool shPreviousDueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate
-	,SHRateValueItem *rvi,int64_t scaler,int32_t dayStartHour,SHDatetime *ans,SHError *error)
+	,SHRateValueItem *rvi,int64_t scaler,int64_t dayStartHour,SHDatetime *ans,SHError *error)
 {
 	(void)dayStartHour; //decided to move this up the call chain
 	shLog("previousDueDate_WEEKLY");
@@ -179,7 +179,7 @@ bool shPreviousDueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate
 
 
 SHDatetime* shBothWeeklyDueDatesFromLastDueDate(SHDatetime* lastDueDate,SHDatetime* checkinDate
-	,SHRateValueItem* week,int64_t scaler, int32_t dayStartHour,SHError *error)
+	,SHRateValueItem* week,int64_t scaler, int64_t dayStartHour,SHError *error)
 {
 	shLog("bothWeeklyDueDatesFromLastDueDate");
 	SHDatetime previousDate;
@@ -213,7 +213,7 @@ SHDatetime* shBothWeeklyDueDatesFromLastDueDate(SHDatetime* lastDueDate,SHDateti
 }
 
 bool shNextDueDate_WEEKLY(SHDatetime* lastDueDate,SHDatetime* checkinDate
-	,SHRateValueItem* week,int64_t scaler, int32_t dayStartHour,SHDatetime *ans,SHError* error)
+	,SHRateValueItem* week, int64_t scaler, int64_t dayStartHour, SHDatetime *ans, SHError* error)
 {
 	shLog("nextDueDate_WEEKLY\n");
 	if(!ans){
@@ -248,7 +248,7 @@ bool shNextDueDate_WEEKLY(SHDatetime* lastDueDate,SHDatetime* checkinDate
 
 
 bool shNextDueDate_WEEKLY_INV(SHDatetime* lastDueDate,SHDatetime* checkinDate, SHRateValueItem* week,
-	int64_t scaler, int32_t dayStartHour, SHDatetime *ans,SHError* error)
+	int64_t scaler, int64_t dayStartHour, SHDatetime *ans, SHError* error)
 {
 	(void)lastDueDate;
 	(void)checkinDate;

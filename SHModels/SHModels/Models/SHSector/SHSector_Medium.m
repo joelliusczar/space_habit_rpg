@@ -40,8 +40,7 @@ withResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil{
 
 
 -(NSArray<NSString*>*)getSymbolsList{
-	NSBundle *bundle = [NSBundle bundleForClass:SHSector.class];
-	NSArray *symbols = [self.resourceUtil getPListArray:@"SuffixList" withBundle:bundle];
+	NSArray *symbols = [self.resourceUtil getPListArray:@"SuffixList"];
 
 	return symbols;
 }
@@ -71,27 +70,6 @@ withResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil{
 }
 
 
--(SHSuffix*)getSuffixEntity:(NSString*)sectorKey{
-	NSFetchRequest<SHSuffix*>* request = [SHSuffix fetchRequest];
-	NSSortDescriptor* sortBySectorKey = [[NSSortDescriptor alloc] initWithKey:@"sectorKey" ascending:NO];
-	NSPredicate* filter = [NSPredicate predicateWithFormat:@"sectorKey = %@",sectorKey];
-	request.predicate = filter;
-	request.sortDescriptors = @[sortBySectorKey];
-	NSArray<NSManagedObject*>* results = [self.context getItemsWithRequest:request];
-
-	NSCAssert(results.count<2, @"There are too many entities");
-	SHSuffix* s = nil;
-	if(results.count){
-		s = (SHSuffix*)results[0];
-	}
-	else{
-		s = (SHSuffix*)[self.context newEntity:SHSuffix.entity];
-		s.sectorKey = sectorKey;
-	}
-	return s;
-}
-
-
 -(SHSector*)newEmptySector{
 	//if we change here update afterSectorPick
 	return (SHSector*)[NSManagedObjectContext newEntityUnattached:SHSector.entity];
@@ -102,24 +80,10 @@ withResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil{
 	picking a sector with a suffix because I don't want
 	sector alpha to show up twice for example
 */
--(int32_t)getVisitCountForSector:(NSString*)sectorKey{
-	/*
-	The reason we're doing this whole temp context stuff is because we
-	call save for the suffix and we don't want stuff that's already in the context to save
-	this used to be in constructMultipleSectorChoicesGivenHero
-	but I counldn't remember my reason for having it there
-	to justify keeping it there.
-	*/
-	__weak SHSector_Medium *weakSelf = self;
-	__block int currentVisitCount = 0;
-	NSManagedObjectContext *context = self.context;
-	[context performBlockAndWait:^{
-		SHSuffix *s = [weakSelf getSuffixEntity:sectorKey];
-		currentVisitCount = s.visitCount++;
-		NSError *error = nil;
-		[context save:&error];
-	}];
-	
+-(NSInteger)getVisitCountForSector:(NSString*)sectorKey{
+	SHSuffix *suffixTracker = [[SHSuffix alloc] initWithResourceUtil:self.resourceUtil];
+	NSInteger currentVisitCount = [suffixTracker getAndIncrementCountForSector:sectorKey];
+	[suffixTracker saveToFile];
 	return currentVisitCount;
 }
 

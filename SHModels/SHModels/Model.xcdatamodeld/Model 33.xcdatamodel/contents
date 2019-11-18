@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="18G87" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="18G103" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="SHCategory" representedClassName="SHCategory" syncable="YES" codeGenerationType="category">
         <attribute name="colorNum" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
@@ -7,25 +7,6 @@
         <relationship name="cat_daily" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SHDaily" inverseName="daily_cat" inverseEntity="SHDaily"/>
         <relationship name="cat_teapot" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SHTeapot" inverseName="teapot_cat" inverseEntity="SHTeapot"/>
         <relationship name="cat_todo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SHTodo" inverseName="todo_cat" inverseEntity="SHTodo"/>
-    </entity>
-    <entity name="SHConfig" representedClassName="SHConfig" syncable="YES" codeGenerationType="category">
-        <attribute name="allowReport" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="createDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="dayStartTime" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="deathGoldPenalty" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="gameState" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="heroLvlPenalty" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="invertColors" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="isPasscodeProtected" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="lastCheckinDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="lastUpdateDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="migrationNumber" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="permaDeath" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <attribute name="reminderHour" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="sectorLvlPenalty" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="storyMode" optional="YES" attributeType="Integer 32" defaultValueString="YES" usesScalarValueType="YES"/>
-        <attribute name="userId" optional="YES" attributeType="String"/>
-        <attribute name="weekStartDay" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="SHCounter" representedClassName="SHCounter" syncable="YES" codeGenerationType="category">
         <attribute name="difficulty" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -122,10 +103,6 @@
         <attribute name="suffix" optional="YES" attributeType="String"/>
         <attribute name="uniqueId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
-    <entity name="SHSuffix" representedClassName="SHSuffix" syncable="YES" codeGenerationType="category">
-        <attribute name="sectorKey" optional="YES" attributeType="String"/>
-        <attribute name="visitCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-    </entity>
     <entity name="SHTeapot" representedClassName="SHTeapot" syncable="YES" codeGenerationType="category">
         <attribute name="timerLength" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="timestampEnd" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -153,7 +130,6 @@
     </entity>
     <elements>
         <element name="SHCategory" positionX="-171" positionY="-135" width="128" height="135"/>
-        <element name="SHConfig" positionX="-387" positionY="-297" width="128" height="298"/>
         <element name="SHCounter" positionX="108" positionY="18" width="128" height="240"/>
         <element name="SHDaily" positionX="-254" positionY="-84" width="128" height="375"/>
         <element name="SHDailySubTask" positionX="-180" positionY="-144" width="128" height="165"/>
@@ -162,7 +138,6 @@
         <element name="SHMonster" positionX="-234" positionY="344" width="128" height="105"/>
         <element name="SHReminder" positionX="-180" positionY="-144" width="128" height="120"/>
         <element name="SHSector" positionX="-128" positionY="129" width="128" height="165"/>
-        <element name="SHSuffix" positionX="-180" positionY="-144" width="128" height="75"/>
         <element name="SHTeapot" positionX="-180" positionY="-144" width="128" height="120"/>
         <element name="SHTodo" positionX="52" positionY="243" width="128" height="195"/>
         <element name="SHTransaction" positionX="-180" positionY="-144" width="128" height="103"/>

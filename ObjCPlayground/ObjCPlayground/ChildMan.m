@@ -34,4 +34,8 @@
 }
 
 
+-(void)printShit {
+	NSLog(@"This shit!!");
+}
+
 @end

@@ -35,8 +35,8 @@
 		2747C51A204A494A00FB5669 /* SHDailyEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2747C519204A494A00FB5669 /* SHDailyEditView.xib */; };
 		2747C51D204A499000FB5669 /* SHDailyEditController+ControlLoaders.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C51C204A499000FB5669 /* SHDailyEditController+ControlLoaders.m */; };
 		274A8FA723246AD000F348AC /* SHStoryPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A8FA623246AD000F348AC /* SHStoryPresentationController.m */; };
-		274A8FAA23246BA700F348AC /* SHStoryPresentationIntroController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A8FA923246BA700F348AC /* SHStoryPresentationIntroController.m */; };
 		274A8FAD2324732000F348AC /* SHStoryPresentationTypicalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A8FAC2324732000F348AC /* SHStoryPresentationTypicalController.m */; };
+		275D9920237F172D00522A80 /* SHIntroHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 275D991F237F172D00522A80 /* SHIntroHelper.m */; };
 		27804B8F235FEDBE004921F5 /* SHData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27804B8E235FEDBE004921F5 /* SHData.framework */; };
 		2787044F227A823B009C9DD6 /* libSHCore_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2787044E227A823B009C9DD6 /* libSHCore_C.a */; };
 		27A9C8AB22C455F900834D02 /* SHApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A9C8AA22C455F900834D02 /* SHApplication.m */; };
@@ -158,10 +158,10 @@
 		2747C51C204A499000FB5669 /* SHDailyEditController+ControlLoaders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SHDailyEditController+ControlLoaders.m"; sourceTree = "<group>"; };
 		274A8FA523246AD000F348AC /* SHStoryPresentationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHStoryPresentationController.h; sourceTree = "<group>"; };
 		274A8FA623246AD000F348AC /* SHStoryPresentationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHStoryPresentationController.m; sourceTree = "<group>"; };
-		274A8FA823246BA700F348AC /* SHStoryPresentationIntroController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHStoryPresentationIntroController.h; sourceTree = "<group>"; };
-		274A8FA923246BA700F348AC /* SHStoryPresentationIntroController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHStoryPresentationIntroController.m; sourceTree = "<group>"; };
 		274A8FAB2324732000F348AC /* SHStoryPresentationTypicalController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHStoryPresentationTypicalController.h; sourceTree = "<group>"; };
 		274A8FAC2324732000F348AC /* SHStoryPresentationTypicalController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHStoryPresentationTypicalController.m; sourceTree = "<group>"; };
+		275D991E237F172D00522A80 /* SHIntroHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHIntroHelper.h; sourceTree = "<group>"; };
+		275D991F237F172D00522A80 /* SHIntroHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHIntroHelper.m; sourceTree = "<group>"; };
 		276951A420437DF5002D1C9A /* SpaceHabitRPG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceHabitRPG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27804B8E235FEDBE004921F5 /* SHData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27804B9023633FC6004921F5 /* SHModels.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHModels.xcodeproj; path = ../SHModels/SHModels.xcodeproj; sourceTree = "<group>"; };
@@ -317,10 +317,10 @@
 				2737D10C230F6DE200B8618C /* SHBattleStatsViewController.m */,
 				274A8FA523246AD000F348AC /* SHStoryPresentationController.h */,
 				274A8FA623246AD000F348AC /* SHStoryPresentationController.m */,
-				274A8FA823246BA700F348AC /* SHStoryPresentationIntroController.h */,
-				274A8FA923246BA700F348AC /* SHStoryPresentationIntroController.m */,
 				274A8FAB2324732000F348AC /* SHStoryPresentationTypicalController.h */,
 				274A8FAC2324732000F348AC /* SHStoryPresentationTypicalController.m */,
+				275D991E237F172D00522A80 /* SHIntroHelper.h */,
+				275D991F237F172D00522A80 /* SHIntroHelper.m */,
 			);
 			path = SpaceHabitRPG;
 			sourceTree = "<group>";
@@ -534,9 +534,9 @@
 				2737D10E230F6DE200B8618C /* SHBattleStatsViewController.m in Sources */,
 				27A9C8AB22C455F900834D02 /* SHApplication.m in Sources */,
 				2747C4E02048E12C00FB5669 /* SHSectorDescriptionViewController.m in Sources */,
-				274A8FAA23246BA700F348AC /* SHStoryPresentationIntroController.m in Sources */,
 				2747C51D204A499000FB5669 /* SHDailyEditController+ControlLoaders.m in Sources */,
 				2747C4AB2048D75300FB5669 /* SHEditNavigationController.m in Sources */,
+				275D9920237F172D00522A80 /* SHIntroHelper.m in Sources */,
 				2747C4EA2048E1EE00FB5669 /* SHSectorChoiceCellController.m in Sources */,
 				2747C50320490E3400FB5669 /* main.m in Sources */,
 				274A8FA723246AD000F348AC /* SHStoryPresentationController.m in Sources */,

@@ -16,12 +16,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong,nonatomic) SHDailyActiveDays *activeDaysContainer;
 @property (strong,nonatomic) NSDate* lastActivationDateTime;
 @property (strong,nonatomic) NSDate* lastUpdateDateTime;
-@property (assign,nonatomic) int32_t dayStartTime;
+@property (assign,nonatomic) NSInteger dayStartTime;
 @property (strong,nonatomic) NSObject<SHDateProviderProtocol>* dateProvider;
 -(instancetype)initWithActiveDays:(SHDailyActiveDays *)activeDaysContainer
 	lastActivationDateTime:(NSDate *)lastActivationDateTime
 	lastUpdateDateTime:(NSDate *)lastUpdateDateTime
-	dayStartTime:(int32_t)dayStartTime;
+	dayStartTime:(NSInteger)dayStartTime;
 -(NSDate*)nextDueDate_WEEKLY;
 
 @end

@@ -7,7 +7,6 @@
 //
 
 #import "SHDailyActivator.h"
-#import "SHConfig_Medium.h"
 @import SHCommon;
 
 @implementation SHDailyActivator
@@ -34,8 +33,7 @@
 		if(err) {
 			@throw [NSException dbException:err];
 		}
-		SHConfig_Medium *cm = [[SHConfig_Medium alloc] initWithContext:self.context];
-		SHConfig *config = [cm globalConfig];
+		SHConfig *config = [[SHConfig alloc] init];
 		
 		NSTimeInterval dayStart = config.userTodayStart.timeIntervalSince1970;
 		NSTimeInterval lastActivation = daily.lastActivationDateTime.timeIntervalSince1970;

@@ -139,6 +139,7 @@ void cMakeHouses(void);
 +(void)postInsertion;
 +(void)switchSemantics;
 +(void)testPropCopy;
++(void)blockLocalObjRef;
 @end
 
 #import "Experiments+Charlie.h"

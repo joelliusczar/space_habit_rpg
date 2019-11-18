@@ -11,8 +11,8 @@
 #import "SHMenuViewController.h"
 #import "SHSectorChoiceViewController.h"
 #import "SHStoryDumpView.h"
-#import "SHStoryPresentationIntroController.h"
 #import "SHStoryPresentationTypicalController.h"
+#import "SHIntroViewController.h"
 @import SHGlobal;
 @import SHCommon;
 @import SHData;
@@ -24,6 +24,10 @@
 @property (strong, nonatomic) IBOutlet UIView *tabsContainer;
 @property (strong,nonatomic) UITabBarController *tabsController;
 @property (weak,nonatomic) IBOutlet UIView *statsView;
+@property (strong, nonatomic) IBOutlet UIButton *beginButton;
+@property (strong, nonatomic) IBOutlet UIButton *skipButton;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *listTop;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *statsTop;
 @property (strong,nonatomic) NSManagedObjectContext *context;
 @property (strong,nonatomic) dispatch_queue_t configAccessorQueue;
 @end
@@ -109,10 +113,6 @@
 }
 
 
-
-
-
-//#story_logic: both
 -(void)prepareScreen{
 	NSManagedObjectContext *context = [self.dataController newBackgroundContext];
 	self.battleStats = [[SHBattleStatsViewController alloc] initWithContext:context];
@@ -128,34 +128,40 @@
 }
 
 
+-(void)prepareScreenPostIntro {
+	self.statsView.hidden = YES;
+	self.beginButton.hidden = NO;
+	self.skipButton.hidden = NO;
+	[self setupTabs];
+}
+
 
 //#story_logic: both
 -(void)determineIfFirstTimeAndSetupConfig{
-	[self.context performBlock:^{
-		SHConfig_Medium *cm = [[SHConfig_Medium alloc] initWithContext:self.context];
-		SHConfig *config = [cm globalConfig];
-		if(config.gameState == SH_GAME_STATE_UNINITIALIZED){
-			SHStoryPresentationIntroController *introController = [[SHStoryPresentationIntroController alloc]
-				initWithContext:self.context
-				withViewController:self
-				withResourceUtil:self.resourceUtil
-				withOnIntroCompleteAction:^{
-					[self prepareScreen];
-				}];
-			[introController startIntro];
-		}
-		else {
-			SHStoryPresentationTypicalController *present = [[SHStoryPresentationTypicalController alloc]
-				initWithContext:self.context
-				withDataController:self.dataController
-				withViewController:self
-				withResourceUtil:self.resourceUtil
-				withOnPresentComplete:^{
-					[self prepareScreen];
-				}];
-			[present setupNormalSectorAndMonster];
-		}
-	}];
+	SHConfig *config = [[SHConfig alloc] init];;
+	if(config.gameState == SH_GAME_STATE_UNINITIALIZED){
+		SHIntroViewController *introVC = [[SHIntroViewController alloc]
+			initWithOnNextAction:^{
+				[self prepareScreenPostIntro];
+			}
+			withContext:self.context
+			withResourceUtil:self.resourceUtil];
+			[self arrangeAndPushChildVCToFront:introVC];
+	}
+	else if(config.gameState == SH_GAME_STATE_INTRO_FINISHED) {
+		[self prepareScreenPostIntro];
+	}
+	else {
+		SHStoryPresentationTypicalController *present = [[SHStoryPresentationTypicalController alloc]
+			initWithContext:self.context
+			withDataController:self.dataController
+			withViewController:self
+			withResourceUtil:self.resourceUtil
+			withOnPresentComplete:^{
+				[self prepareScreen];
+			}];
+		[present setupNormalSectorAndMonster];
+	}
 }
 
 

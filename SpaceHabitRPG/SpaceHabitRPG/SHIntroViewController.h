@@ -10,12 +10,12 @@
 @import SHModels;
 
 
-@interface SHIntroViewController : UIViewController 
-@property (copy,nonatomic) void (^skipAction)(void);
+@interface SHIntroViewController : UIViewController
 @property (copy,nonatomic) void (^onNextAction)(void);
+@property (strong, nonatomic) NSManagedObjectContext *context;
 @property (strong,nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
--(instancetype)initWithSkipAction:(void (^)(void))skipAction
-	withOnNextAction:(void (^)(void))onNextAction
+-(instancetype)initWithOnNextAction:(void (^)(void))onNextAction
+	withContext:(NSManagedObjectContext*)context
 	withResourceUtil:(NSObject<SHResourceUtilityProtocol> *)resourceUtil;
 @end
 

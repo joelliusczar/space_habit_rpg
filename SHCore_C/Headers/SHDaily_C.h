@@ -23,21 +23,21 @@ void shFillWeek(int64_t *daysAheadCounts,int64_t *daysBeforeCounts,bool *activeD
 void shBuildWeek(bool *activeDays,int64_t scaler,SHRateValueItem *rvi);
 void shBuildEmptyWeek(SHRateValueItem *rvi);
 bool shPreviousDueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate,SHRateValueItem *rvi
-	,int64_t scaler,int32_t dayStartHour,SHDatetime *ans,SHError *error);
+	,int64_t scaler,int64_t dayStartHour,SHDatetime *ans,SHError *error);
 	
 bool shPreviousDueDateWithPreparedInputs_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate
-,SHRateValueItem *rvi,int64_t scaler,int32_t dayStartHour,SHDatetime *ans,SHError *error);
+,SHRateValueItem *rvi,int64_t scaler, int64_t dayStartHour,SHDatetime *ans,SHError *error);
 
 SHDatetime* shBothWeeklyDueDatesFromLastDueDate(SHDatetime* lastDueDate,SHDatetime* checkinDate
-	,SHRateValueItem* week,int64_t scaler, int32_t dayStartHour,SHError *error);
+	,SHRateValueItem* week, int64_t scaler, int64_t dayStartHour,SHError *error);
 
 bool shNextDueDate_WEEKLY(SHDatetime* lastDueDate,SHDatetime* checkinDate, SHRateValueItem* week,
-	int64_t scaler, int32_t dayStartHour, SHDatetime *ans,SHError* error);
+	int64_t scaler, int64_t dayStartHour, SHDatetime *ans,SHError* error);
 
 bool shNextDueDate_WEEKLY_INV(SHDatetime* lastDueDate,SHDatetime* checkinDate, SHRateValueItem* week,
-	int64_t scaler, int32_t dayStartHour, SHDatetime *ans,SHError* error);
+	int64_t scaler, int64_t dayStartHour, SHDatetime *ans, SHError* error);
 
-bool shIsDateADueDate(SHDatetime* previousDueDate,SHDatetime* checkinDate, SHRateValueItem* week,int64_t scaler
+bool shIsDateADueDate(SHDatetime* previousDueDate, SHDatetime* checkinDate, SHRateValueItem* week, int64_t scaler
 	,SHError *error);
 
 /*

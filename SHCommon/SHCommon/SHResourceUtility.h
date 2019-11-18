@@ -10,5 +10,6 @@
 #import "SHResourceUtilityProtocol.h"
 
 @interface SHResourceUtility : NSObject<SHResourceUtilityProtocol>
-
+@property (strong, nonatomic) NSBundle *bundle;
+-(instancetype)initWithBundle:(NSBundle*)bundle;
 @end

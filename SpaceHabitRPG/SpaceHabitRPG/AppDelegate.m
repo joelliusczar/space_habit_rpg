@@ -34,7 +34,7 @@ void printWorkingDir(){
 	self.dataController = [SHCoreData newWithOptionsBlock:^(SHCoreDataOptions *options){
 		options.appBundle = modelsBundle;
 	}];
-	self.resourceUtil = [SHResourceUtility new];
+	self.resourceUtil = [[SHResourceUtility alloc] initWithBundle:modelsBundle];
 	self.centralController = [SHCentralViewController
 		newWithDataController:self.dataController
 		andNibName:@"SHCentralViewController"

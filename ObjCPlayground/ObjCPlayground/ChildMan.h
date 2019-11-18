@@ -11,5 +11,7 @@
 @interface ChildMan : ParentMan
 @property (assign) NSInteger whamjar;
 @property (assign,nonatomic) NSInteger whoitZoot;
+@property (copy, nonatomic) void (^myBlock)(void);
 +(instancetype)newChildMan;
+-(void)printShit;
 @end

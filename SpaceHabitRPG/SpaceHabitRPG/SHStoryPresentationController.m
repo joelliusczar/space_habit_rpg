@@ -14,19 +14,10 @@
 
 
 @interface SHStoryPresentationController ()
-@property (strong,nonatomic) SHConfig *config;
 @end
 
 @implementation SHStoryPresentationController
 
-
--(SHConfig*)config{
-	if(nil == _config){
-		SHConfig_Medium *cm = [[SHConfig_Medium alloc] initWithContext:self.context];
-		_config = [cm globalConfig];
-	}
-	return _config;
-}
 
 
 -(instancetype)initWithContext:(NSManagedObjectContext*)context
@@ -80,7 +71,8 @@
 -(void)showStoryItem:(id<SHStoryItemProtocol>)storyItem
 	withResponse:(void (^)(SHStoryDumpView * nullable))response
 {
-	if(self.config.storyMode == SH_STORY_MODE_FULL){
+	SHConfig *config = [[SHConfig alloc] init];
+	if(config.storyMode == SH_STORY_MODE_FULL){
 		SHStoryItemObjectID *objectID = storyItem.wrappedObjectID;
 		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
 			SHStoryDumpView *sdv = [[SHStoryDumpView alloc] initWithStoryItemObjectID:objectID];

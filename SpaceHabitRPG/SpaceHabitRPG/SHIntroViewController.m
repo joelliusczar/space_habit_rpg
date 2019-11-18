@@ -9,6 +9,7 @@
 #import "SHIntroViewController.h"
 #import "SHStoryConstants.h"
 #import "SHSectorChoiceViewController.h"
+#import "SHIntroHelper.h"
 @import SHCommon;
 @import SHControls;
 
@@ -19,22 +20,22 @@
 @property (weak, nonatomic) IBOutlet UIView *emptyScrollSegment;
 @property (weak,nonatomic) IBOutlet NSLayoutConstraint *paddingHeightConstraint;
 @property (strong, nonatomic) IBOutlet UITextView *introMessageView;
-@property (weak, nonatomic) IBOutlet SHButton *skipButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapper;
 @property (strong, nonatomic) SHScrollAnimator *animator;
+@property (strong, nonatomic) SHIntroHelper *introHelper;
 @end
 
 @implementation SHIntroViewController
 
 
--(instancetype)initWithSkipAction:(void (^)(void))skipAction
-	withOnNextAction:(void (^)(void))onNextAction
+-(instancetype)initWithOnNextAction:(void (^)(void))onNextAction
+	withContext:(NSManagedObjectContext*)context
 	withResourceUtil:(NSObject<SHResourceUtilityProtocol> *)resourceUtil
 {
 	if(self = [self initWithNibName:@"SHIntroViewController" bundle:nil]){
-		_skipAction = skipAction;
 		_onNextAction = onNextAction;
+		_context = context;
 		_resourceUtil = resourceUtil;
 	}
 	return self;
@@ -58,7 +59,10 @@
 
 -(void)viewDidLoad {
 	[super viewDidLoad];
-	//	[self.view checkForAndApplyVisualChanges];
+	[self.view checkForAndApplyVisualChanges];
+	[self.context performBlock:^{
+		[self.introHelper cleanUpPreviousAttempts];
+	}];
 	SHStoryItemDictionary *storyDict = [[SHStoryItemDictionary alloc] initWithResourceUtil:self.resourceUtil];
 	NSString* introBody = [storyDict getStoryItem:@"introbody"];
 	NSString* introPre = [storyDict getStoryItem:@"intropre"];
@@ -110,15 +114,10 @@
 
 - (IBAction)nextButton_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
 	(void)sender; (void)event;
+	[self.introHelper afterIntroCompleted];
 	[self.animator stopAnimation];
+	[self popVCFromFront];
 	self.onNextAction();
-}
-
-
-- (IBAction)skipButton_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
-	(void)sender; (void)event;
-	[self.animator stopAnimation];
-	self.skipAction();
 }
 
 
@@ -140,7 +139,8 @@
 	return NO;
 }
 
-
+//called at end of animation, so shouldn't need to
+//add it anywhere else
 -(void)afterScroll{
 	self.introMessageView.selectable = YES;
 	self.scrollView.userInteractionEnabled = YES;

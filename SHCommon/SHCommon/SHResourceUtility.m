@@ -8,18 +8,42 @@
 
 #import "SHResourceUtility.h"
 
-@implementation SHResourceUtility 
+@implementation SHResourceUtility
 
--(NSDictionary *)getPListDict:(NSString*)fileName withBundle:(nonnull NSBundle *)bundle{
-	NSString *filePath = [bundle pathForResource:fileName ofType:@"plist"];
-	NSAssert(filePath,@"file path for plist was null or empty");
-	return [NSDictionary dictionaryWithContentsOfFile:filePath];
+-(instancetype)initWithBundle:(NSBundle*)bundle {
+	if(self = [super init]) {
+		_bundle = bundle;
+	}
+	return self;
 }
 
--(NSArray *)getPListArray:(NSString*)fileName withBundle:(nonnull NSBundle *)bundle{
-	NSString *filePath = [bundle pathForResource:fileName ofType:@"plist"];
-	NSAssert(filePath,@"file path for plist was null or empty");
-	return [NSArray arrayWithContentsOfFile:filePath];
+-(NSURL*)getFileUrl:(NSString*)fileName {
+	NSAssert(self.bundle, @"bundle is null");
+	NSURL *fileUrl = [self.bundle URLForResource:fileName withExtension:@"plist"];
+	NSAssert(fileUrl,@"file path for plist was null or empty");
+	return fileUrl;
 }
+
+
+-(NSDictionary *)getPListDict:(NSString*)fileName{
+	NSURL *fileUrl = [self getFileUrl:fileName];
+	NSError *error = nil;
+	return [NSDictionary dictionaryWithContentsOfURL:fileUrl error:&error];
+}
+
+
+-(NSMutableDictionary *)getPListMutableDict:(NSString*)fileName {
+	NSString *fileUrl = [self getFileUrl:fileName];
+	NSError *error = nil;
+	return [NSMutableDictionary dictionaryWithContentsOfURL:fileUrl error:&error];
+}
+
+
+-(NSArray *)getPListArray:(NSString*)fileName{
+	NSString *fileUrl = [self getFileUrl:fileName];
+	NSError *error = nil;
+	return [NSArray arrayWithContentsOfURL:fileUrl error:&error];
+}
+
 
 @end

@@ -9,6 +9,9 @@
 @import Foundation;
 
 @protocol SHResourceUtilityProtocol <NSObject>
--(nonnull NSDictionary *)getPListDict:(nonnull NSString*)fileName withBundle:(nonnull NSBundle *)bundle;
--(nonnull NSArray *)getPListArray:(nonnull NSString*)fileName withBundle:(nonnull NSBundle *)bundle;
+-(nonnull NSURL*)getFileUrl:(nonnull NSString*)fileName;
+-(nonnull NSDictionary *)getPListDict:(nonnull NSString*)fileName;
+-(nonnull NSMutableDictionary *)getPListMutableDict:(nonnull NSString*)fileName;
+-(nonnull NSArray *)getPListArray:(nonnull NSString*)fileName;
+
 @end

@@ -110,8 +110,6 @@
 		27FF023F231A2F1C00108320 /* SHHero_Medium.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FF023D231A2F1C00108320 /* SHHero_Medium.m */; };
 		27FF0242231A345900108320 /* SHBase_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FF0240231A345900108320 /* SHBase_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27FF0243231A345900108320 /* SHBase_Medium.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FF0241231A345900108320 /* SHBase_Medium.m */; };
-		27FF0246231A360200108320 /* SHConfig_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FF0244231A360200108320 /* SHConfig_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27FF0247231A360200108320 /* SHConfig_Medium.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FF0245231A360200108320 /* SHConfig_Medium.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -272,8 +270,6 @@
 		27FF023D231A2F1C00108320 /* SHHero_Medium.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHHero_Medium.m; sourceTree = "<group>"; };
 		27FF0240231A345900108320 /* SHBase_Medium.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHBase_Medium.h; sourceTree = "<group>"; };
 		27FF0241231A345900108320 /* SHBase_Medium.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHBase_Medium.m; sourceTree = "<group>"; };
-		27FF0244231A360200108320 /* SHConfig_Medium.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHConfig_Medium.h; sourceTree = "<group>"; };
-		27FF0245231A360200108320 /* SHConfig_Medium.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHConfig_Medium.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -519,8 +515,6 @@
 			children = (
 				27CA86802264207A00AE8FDB /* SHConfig.h */,
 				27CA86512264207A00AE8FDB /* SHConfig.m */,
-				27FF0244231A360200108320 /* SHConfig_Medium.h */,
-				27FF0245231A360200108320 /* SHConfig_Medium.m */,
 			);
 			path = SHConfig;
 			sourceTree = "<group>";
@@ -647,7 +641,6 @@
 				27FF023A231A23BB00108320 /* SHSector_Medium.h in Headers */,
 				2738CB1B2330823D00A41CC3 /* SHStoryItemObjectID.h in Headers */,
 				27FF0242231A345900108320 /* SHBase_Medium.h in Headers */,
-				27FF0246231A360200108320 /* SHConfig_Medium.h in Headers */,
 				2733D212229065830090B7F1 /* SHDailyValidation.h in Headers */,
 				27815533217D721C005C5279 /* SHInfoDictionary.h in Headers */,
 			);
@@ -814,7 +807,6 @@
 				27CA863B22627D3D00AE8FDB /* SHDailyDTO.m in Sources */,
 				27075D6E225963A700AD13AA /* SHMonsterDictionaryEntry.m in Sources */,
 				27B2B3262303811D00663644 /* SHDailyActivator.m in Sources */,
-				27FF0247231A360200108320 /* SHConfig_Medium.m in Sources */,
 				27815534217D721C005C5279 /* SHInfoDictionary.m in Sources */,
 				2781553821805C88005C5279 /* SHStoryItemDictionary.m in Sources */,
 				27CA86CA2264207A00AE8FDB /* SHSector.m in Sources */,

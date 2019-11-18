@@ -15,9 +15,8 @@
 @synthesize treeDict = _treeDict;
 -(NSDictionary *)treeDict{
 	if(!_treeDict){
-		NSBundle *bundle = [NSBundle bundleForClass:self.bundleClass];
 		NSObject<SHResourceUtilityProtocol> *ru = self.resourceUtil;
-		_treeDict = [ru getPListDict:self.pListKey withBundle:bundle];
+		_treeDict = [ru getPListDict:self.pListKey];
 	}
 	return _treeDict;
 }
@@ -31,11 +30,11 @@
 }
 
 
--(instancetype)initWithPListKey:(NSString*)key AndBundleClass:(Class)bundleClass
-AndResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil{
-  if(self = [super init]){
+-(instancetype)initWithPListKey:(NSString*)key
+	withResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil
+{
+	if(self = [super init]){
 	_pListKey = key;
-	_bundleClass = bundleClass;
 	_resourceUtil = resourceUtil;
   }
   return self;
