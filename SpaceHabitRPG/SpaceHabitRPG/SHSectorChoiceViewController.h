@@ -17,7 +17,7 @@
 @interface SHSectorChoiceViewController : UIViewController <UITableViewDataSource>
 @property (weak,nonatomic) IBOutlet UITableView *sectorChoiceTable;
 @property (strong,nonatomic) SHSectorDescriptionViewController *descViewController;
-@property (copy,nonatomic) void (^onSelectionAction)(SHStoryItemObjectID*);
--(instancetype)initWithSectorIDs:(NSArray<SHStoryItemObjectID*>*)objectIDs
-	withOnSelectionAction:(void (^)(SHStoryItemObjectID*))onSelectionAction;
+@property (copy,nonatomic) void (^onSelectionAction)(SHSector*);
+-(instancetype)initWithSectors:(NSArray<SHSector*>*)sectors
+	withOnSelectionAction:(void (^)(SHSector*))onSelectionAction;
 @end

@@ -8,6 +8,8 @@
 
 #import "SHSuffix.h"
 
+static NSString* BACKEND_KEY = @"suffix_tracker";
+
 @interface SHSuffix ()
 @property (strong, nonatomic) NSMutableDictionary *backend;
 @property (strong, nonatomic) NSURL *saveUrl;
@@ -16,8 +18,8 @@
 @implementation SHSuffix
 -(instancetype)initWithResourceUtil:(id<SHResourceUtilityProtocol>)resourceUtil{
 	if(self = [super init]) {
-		_saveUrl = [resourceUtil getFileUrl:@"suffix_tracker"];
-		_backend = [resourceUtil getPListMutableDict:@"suffix_tracker"];
+		_saveUrl = [resourceUtil getURLMutableFile:BACKEND_KEY];
+		_backend = [resourceUtil getPListMutableDict:BACKEND_KEY];
 	}
 	return self;
 }

@@ -13,11 +13,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHBattleStatsViewController : UIViewController
 @property (strong,nonatomic) NSManagedObjectContext *context;
--(instancetype)initWithContext:(NSManagedObjectContext *)context;
+@property (strong, nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
+-(instancetype)initWithResourceUtil:(id<SHResourceUtilityProtocol>)resourceUtil;
 -(void)firstRun;
--(void)updateHeroHP:(int)part whole:(int)whole;
--(void)updateHeroXP:(int)part whole:(int)whole;
--(void)updateMonsterHP:(int32_t)part withWhole:(int32_t)whole withLvl:(int32_t)lvl
+-(void)updateHeroHP:(NSInteger)part whole:(NSInteger)whole;
+-(void)updateHeroXP:(NSInteger)part whole:(NSInteger)whole;
+-(void)updateMonsterHP:(NSInteger)part withWhole:(NSInteger)whole withLvl:(NSInteger)lvl
 	withMonsterName:(NSString *)monsterName;
 @end
 

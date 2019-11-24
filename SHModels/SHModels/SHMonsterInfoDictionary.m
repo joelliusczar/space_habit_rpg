@@ -19,7 +19,7 @@
 -(SHInfoDictionary*)infoDict{
 	if(nil == _infoDict){
 		_infoDict = [[SHInfoDictionary alloc] initWithPListKey:@"MonsterInfo"
-			AndBundleClass:SHMonsterInfoDictionary.class AndResourceUtil:self.resourceUtil];
+			withResourceUtil:self.resourceUtil];
 	}
 	return _infoDict;
 }

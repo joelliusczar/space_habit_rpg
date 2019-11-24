@@ -6,7 +6,7 @@
 //	Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
-#define dummy 0 && defined(IS_DEV) && IS_DEV
+#define dummyFlag 0 && defined(IS_DEV) && IS_DEV
 
 
 
@@ -326,7 +326,7 @@ This will be called the user creates a new daily, checks it off, or deletes one
 {
 	NSManagedObjectContext *parentContext = self.dailyContext;
 	__weak NSNotificationCenter *center = NSNotificationCenter.defaultCenter;
-	__weak typeof(self) weakSelf = self;
+	__weak SHDailyViewController *weakSelf = self;
 	__block id token = [center addObserverForName:NSManagedObjectContextDidSaveNotification
 		object:context
 		queue:nil
@@ -338,7 +338,7 @@ This will be called the user creates a new daily, checks it off, or deletes one
 					[parentContext save:&error];
 					if(error){
 						[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-							typeof(weakSelf) bSelf = weakSelf;
+							SHDailyViewController *bSelf = weakSelf;
 							if(nil == bSelf) return;
 							[bSelf showErrorView:@"Save failed" withError:error];
 						}];

@@ -21,16 +21,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		27804BC423635018004921F5 /* PBXContainerItemProxy */ = {
+		27B11595238793C200C55657 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 27804BC023635018004921F5 /* SHCommon.xcodeproj */;
+			containerPortal = 27B1158E238793C200C55657 /* SHCommon.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 2711883C203FFA810085A549;
 			remoteInfo = SHCommon;
 		};
-		27804BC623635023004921F5 /* PBXContainerItemProxy */ = {
+		27B11597238793CB00C55657 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 27804BC023635018004921F5 /* SHCommon.xcodeproj */;
+			containerPortal = 27B1158E238793C200C55657 /* SHCommon.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 2711883B203FFA810085A549;
 			remoteInfo = SHCommon;
@@ -50,9 +50,9 @@
 		27730B942041E0DE003BEB6C /* SHData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27730B972041E0DE003BEB6C /* SHData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHData.h; sourceTree = "<group>"; };
 		27730B982041E0DE003BEB6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		27804BC023635018004921F5 /* SHCommon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHCommon.xcodeproj; path = ../SHCommon/SHCommon.xcodeproj; sourceTree = "<group>"; };
 		278FFDA7222B326A00DAF985 /* SHData.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHData.debug.xcconfig; sourceTree = "<group>"; };
 		27B0B1F22223A87C0028AF59 /* SHData.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHData.base.xcconfig; sourceTree = "<group>"; };
+		27B1158E238793C200C55657 /* SHCommon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHCommon.xcodeproj; path = ../SHCommon/SHCommon.xcodeproj; sourceTree = "<group>"; };
 		27B15A9C20524ACC0045B226 /* SHCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHCommon.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHCommon.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,7 +88,7 @@
 		27730B8A2041E0DE003BEB6C = {
 			isa = PBXGroup;
 			children = (
-				27804BC023635018004921F5 /* SHCommon.xcodeproj */,
+				27B1158E238793C200C55657 /* SHCommon.xcodeproj */,
 				276E6D97222A523600CB36CB /* Configs */,
 				27730B962041E0DE003BEB6C /* SHData */,
 				27730B952041E0DE003BEB6C /* Products */,
@@ -122,10 +122,10 @@
 			path = SHData;
 			sourceTree = "<group>";
 		};
-		27804BC123635018004921F5 /* Products */ = {
+		27B1158F238793C200C55657 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				27804BC523635018004921F5 /* SHCommon.framework */,
+				27B11596238793C200C55657 /* SHCommon.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -162,7 +162,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				27804BC723635023004921F5 /* PBXTargetDependency */,
+				27B11598238793CB00C55657 /* PBXTargetDependency */,
 			);
 			name = SHData;
 			productName = SHData;
@@ -196,8 +196,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 27804BC123635018004921F5 /* Products */;
-					ProjectRef = 27804BC023635018004921F5 /* SHCommon.xcodeproj */;
+					ProductGroup = 27B1158F238793C200C55657 /* Products */;
+					ProjectRef = 27B1158E238793C200C55657 /* SHCommon.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -208,11 +208,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		27804BC523635018004921F5 /* SHCommon.framework */ = {
+		27B11596238793C200C55657 /* SHCommon.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = SHCommon.framework;
-			remoteRef = 27804BC423635018004921F5 /* PBXContainerItemProxy */;
+			remoteRef = 27B11595238793C200C55657 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -258,10 +258,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		27804BC723635023004921F5 /* PBXTargetDependency */ = {
+		27B11598238793CB00C55657 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SHCommon;
-			targetProxy = 27804BC623635023004921F5 /* PBXContainerItemProxy */;
+			targetProxy = 27B11597238793CB00C55657 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

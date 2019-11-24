@@ -14,7 +14,7 @@
 @import SHModels;
 
 @interface SHSectorChoiceViewController ()
-@property (nonatomic,strong) NSArray<SHStoryItemObjectID *> *objectIDs;
+@property (nonatomic,strong) NSArray<SHSector *> *sectors;
 
 @end
 
@@ -30,19 +30,19 @@
 }
 
 
--(instancetype)initWithSectorIDs:(NSArray<SHStoryItemObjectID*>*)objectIDs
-	withOnSelectionAction:(void (^)(SHStoryItemObjectID*))onSelectionAction
+-(instancetype)initWithSectors:(NSArray<SHSector*>*)sectors
+	withOnSelectionAction:(void (^)(SHSector*))onSelectionAction
 {
 	if(self = [super init]){
 		_onSelectionAction = onSelectionAction;
-		_objectIDs = objectIDs;
+		_sectors = sectors;
 	}
 	return self;
 }
 
 
 - (void)viewDidLoad {
-	NSAssert(self.objectIDs, @"SHSectorChoiceViewController is in an invalid state. Sectors hasn't been constructed");
+	NSAssert(self.sectors, @"SHSectorChoiceViewController is in an invalid state. Sectors hasn't been constructed");
 	[super viewDidLoad];
 	self.sectorChoiceTable.tableFooterView = nil;
 	self.sectorChoiceTable.dataSource = self;
@@ -59,17 +59,17 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 	(void)tableView; (void)section;
-	if(self.objectIDs){
-		return self.objectIDs.count;
+	if(self.sectors){
+		return self.sectors.count;
 	}
 	return 0;
 }
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-	SHStoryItemObjectID *objectID = self.objectIDs[indexPath.row];
+	SHSector *sector = self.sectors[indexPath.row];
 	SHSectorChoiceCellController *cell = [SHSectorChoiceCellController getSectorChoiceCell:tableView
-		withParent:self withObjectID:objectID withRow:indexPath];
+		withParent:self withSector:sector withRow:indexPath];
 	return cell;
 }
 

@@ -13,16 +13,28 @@
 @import SHData;
 @import SHGlobal;
 
-static float MAX_HP_MODIFIER = .1;
-static float XP_MODIFIER = .1;
+static const float MAX_HP_MODIFIER = .1;
+static const float XP_MODIFIER = .1;
 static SHMonsterInfoDictionary *_monsterInfo;
+static NSString* const BACKEND_KEY = @"monster_data";
 
 @interface SHMonster ()
 @property (readonly,nonatomic) SHMonsterDictionaryEntry *entry;
+@property (strong, nonatomic) NSMutableDictionary *backend;
+@property (strong, nonatomic) NSURL *saveUrl;
 @end
 
 @implementation SHMonster{
 	SHMonsterDictionaryEntry *_entry;
+}
+
+
+-(instancetype)initWithResourceUtil:(id<SHResourceUtilityProtocol>)resourceUtil{
+	if(self = [super init]) {
+		_saveUrl = [resourceUtil getURLMutableFile:BACKEND_KEY];
+		_backend = [resourceUtil getPListMutableDict:BACKEND_KEY];
+	}
+	return self;
 }
 
 
@@ -61,18 +73,6 @@ static SHMonsterInfoDictionary *_monsterInfo;
 	return self.entry.headline;
 }
 
--(void)copyFrom:(NSObject *)object{
-	copyBetween(object, self);
-	self.lastUpdateDateTime = [NSDate date];
-}
-
-
-static void copyBetween(NSObject* from,NSObject* to){
-	shCopyInstanceVar(from, to, @"lvl");
-	shCopyInstanceVar(from, to, @"monsterKey");
-	shCopyInstanceVar(from, to, @"nowHp");
-}
-
 
 -(id)valueForUndefinedKey:(NSString *)key{
 	(void)key;
@@ -86,33 +86,61 @@ static void copyBetween(NSObject* from,NSObject* to){
 }
 
 
--(NSMutableDictionary *)mapable{
-	return [NSDictionary objectToDictionary:self includeSuperclassProperties:YES];
+-(NSDictionary *)mapable{
+	return [NSDictionary dictionaryWithDictionary:self.backend];
 }
 
 
--(BOOL)shouldIgnoreProperty:(NSString *)propName{
-	if([propName isEqualToString:@"mapable"]) return YES;
-	return NO;
+-(NSString*)monsterKey {
+	NSString *monsterKey = (NSString*)self.backend[@"monsterKey"];
+	return monsterKey;
 }
 
 
--(int32_t)maxHp{
+-(void)setMonsterKey:(NSString*)monsterKey {
+	self.backend[@"monsterKey"] = monsterKey;
+}
+
+
+-(NSInteger)lvl {
+	NSNumber *tmp = (NSNumber*)self.backend[@"lvl"];
+	NSInteger lvl = tmp ? tmp.integerValue : 0;
+	return lvl;
+}
+
+
+-(void)setLvl:(NSInteger)lvl {
+	self.backend[@"lvl"] = @(lvl);
+}
+
+
+-(NSInteger)nowHp {
+	NSNumber *tmp = (NSNumber*)self.backend[@"nowHp"];
+	NSInteger nowHp = tmp ? tmp.integerValue : 0;
+	return nowHp;
+}
+
+-(void)setNowHp:(NSInteger)nowHp {
+	self.backend[@"nowHp"] = @(nowHp);
+}
+
+
+-(NSInteger)maxHp{
 	return self.entry.baseHp + (self.lvl * self.entry.baseHp * MAX_HP_MODIFIER);
 }
 
 
--(int32_t)attack{
+-(NSInteger)attack{
 	return self.entry.baseAttack + self.lvl;
 }
 
 
--(int32_t)defense{
+-(NSInteger)defense{
 	return self.entry.defense;
 }
 
 
--(int32_t)xp{
+-(NSInteger)xp{
 	return self.entry.baseXp + (self.lvl * self.entry.baseXp * XP_MODIFIER);
 }
 
@@ -122,14 +150,10 @@ static void copyBetween(NSObject* from,NSObject* to){
 }
 
 
--(int32_t)encounterWeight{
+-(NSInteger)encounterWeight{
 	return self.entry.encounterWeight;
 }
 
 
--(SHStoryItemObjectID *)wrappedObjectID{
-	SHStoryItemObjectID *wrappedObjectID = [[SHStoryItemObjectID alloc] initWithManagedObject:self];
-	return wrappedObjectID;
-}
 
 @end

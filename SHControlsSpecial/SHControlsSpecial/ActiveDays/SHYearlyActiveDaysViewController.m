@@ -50,9 +50,9 @@
 -(void)addItemBtn_press_action{
 	[self hideKeyboard];
 	SHYearPartPicker *dayOfYearPicker = [[SHYearPartPicker alloc] init];
-	__weak typeof(self) weakSelf = self;
+	__weak SHYearlyActiveDaysViewController *weakSelf = self;
 	dayOfYearPicker.spinPickerAction =	^(SHSpinPicker *picker,BOOL *shouldCancel) {
-		typeof(weakSelf) bSelf = weakSelf;
+		SHYearlyActiveDaysViewController *bSelf = weakSelf;
 		*shouldCancel = ![bSelf addCellWithPickerSelection:picker];
 	};
 	[self.linkedViewController arrangeAndPushChildVCToFront:dayOfYearPicker];

@@ -8,10 +8,15 @@
 
 @import Foundation;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol SHResourceUtilityProtocol <NSObject>
--(nonnull NSURL*)getFileUrl:(nonnull NSString*)fileName;
--(nonnull NSDictionary *)getPListDict:(nonnull NSString*)fileName;
--(nonnull NSMutableDictionary *)getPListMutableDict:(nonnull NSString*)fileName;
--(nonnull NSArray *)getPListArray:(nonnull NSString*)fileName;
+-(NSURL*)getFileUrl:(NSString*)fileName;
+-(NSURL*)getURLMutableFile:(NSString*)fileName;
+-(NSDictionary *)getPListDict:(NSString*)fileName;
+-(NSMutableDictionary*)getPListMutableDict:(NSString*)fileName;
+-(NSArray *)getPListArray:(NSString*)fileName;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -9,6 +9,7 @@
 #import "SHStoryPresentationTypicalController.h"
 #import "SHSectorChoiceViewController.h"
 @import SHCommon;
+@import SHModels;
 
 @implementation SHStoryPresentationTypicalController
 
@@ -17,7 +18,6 @@
 	if(nil == _storyCommon){
 		_storyCommon = [[SHStoryPresentationController alloc] initWithContext:self.context
 			withResourceUtil:self.resourceUtil
-			withSectorMonsterQueue:self.sectorMonsterQueue
 			withViewController:self.central];
 	}
 	return _storyCommon;
@@ -36,14 +36,13 @@
 		_central = viewController;
 		_resourceUtil = resourceUtil;
 		_onPresentComplete = onPresentComplete;
-		_sectorMonsterQueue = dispatch_queue_create("com.SpaceHabit.Sector_Monster",DISPATCH_QUEUE_SERIAL);
 	}
 	return self;
 }
 
 
 -(void)needsNewMonster:(SHSector*)sector{
-	SHMonster_Medium *mm = [[SHMonster_Medium alloc] initWithContext:self.context];
+	SHMonster_Medium *mm = [[SHMonster_Medium alloc] initWithResourceUtil:self.resourceUtil];
 	SHMonster *monster = [mm newRandomMonster:sector.sectorKey sectorLvl:sector.lvl];
 	NSError *error = nil;
 	[self.context save:&error];
@@ -55,42 +54,18 @@
 
 
 -(void)needsNewZone{
-	NSManagedObjectContext *context = [self.dataController newBackgroundContext];
-	[context performBlock:^{
-		SHSector_Medium *zm = [SHSector_Medium newWithContext:context withResourceUtil:self.resourceUtil];
-		SHHero_Medium *hm = [[SHHero_Medium alloc] initWithContext:context];
-		SHHero *hero = [hm hero];
-		NSArray<SHSector*> *sectors = [zm newMultipleSectorChoicesGivenHero:hero ifShouldMatchLvl:NO];
-		NSArray<SHStoryItemObjectID*> *objectIDs = [sectors mapItemsTo:^ id (id sector,NSUInteger idx){
-			(void)idx;
-			SHSector *sectorCast = (SHSector*)sector;
-			SHStoryItemObjectID *objectID = [[SHStoryItemObjectID alloc] initWithManagedObject:sectorCast];
-			return objectID;
+	SHSector_Medium *zm = [[SHSector_Medium alloc] initWithResourceUtil:self.resourceUtil];
+	SHHero *hero = [[SHHero alloc] initWithResourceUtil:self.resourceUtil];
+	NSArray<SHSector*> *sectors = [zm newMultipleSectorChoicesGivenHero:hero ifShouldMatchLvl:NO];
+	SHSectorChoiceViewController *sectorChoiceView = [[SHSectorChoiceViewController alloc]
+		initWithSectors:sectors
+		withOnSelectionAction:^(SHSector *sector){
+					[self needsNewMonster:sector];
 		}];
-		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-			SHSectorChoiceViewController *sectorChoiceView = [[SHSectorChoiceViewController alloc]
-				initWithSectorIDs:objectIDs
-				withOnSelectionAction:^(SHStoryItemObjectID *storyObjectID){
-					NSManagedObjectContext *context = storyObjectID.context;
-					[context performBlock:^{
-						NSError *error = nil;
-						SHSector *tmpSector = (SHSector*)[context getEntityOrNil:storyObjectID withError:&error];
-						if(error) {
-							@throw [NSException dbException:error];
-						}
-						[self.context performBlock:^{
-							SHSector *sector = (SHSector*)[context newEntity:SHSector.entity];
-							[sector narrowCopyFrom:tmpSector];
-							[self needsNewMonster:sector];
-						}];
-					}];
-				}];
-	
-			[self.central.view addSubview:sectorChoiceView.view];
-			[self.central addChildViewController:sectorChoiceView];
-			[sectorChoiceView didMoveToParentViewController:self.central];
-		}];
-	}];
+
+	[self.central.view addSubview:sectorChoiceView.view];
+	[self.central addChildViewController:sectorChoiceView];
+	[sectorChoiceView didMoveToParentViewController:self.central];
 }
 
 
@@ -113,22 +88,15 @@
 
 //#story_logic: normal
 -(void)_setupNormalSectorAndMonster{
-	BOOL isFront = YES;
-	NSManagedObjectContext *context = self.context;
-	SHSector_Medium *zm = [SHSector_Medium newWithContext:context
-		withResourceUtil:self.resourceUtil];
-	SHSector *z = [zm getSector:isFront];
+	SHSector *z = [[SHSector alloc] initWithResourceUtil:self.resourceUtil];
 	if(z) {
-		SHMonster_Medium *mm = [[SHMonster_Medium alloc] initWithContext:context];
+		SHMonster_Medium *mm = [[SHMonster_Medium alloc] initWithResourceUtil:self.resourceUtil];
 		SHMonster *m = [mm currentMonster];
 		if(m && m.nowHp > 0) {
 			[self finishPresent];
 			return;
 		}
 		z.monstersKilled = (m && m.nowHp < 1) ? (z.monstersKilled + 1) : z.monstersKilled;
-		if(m){
-			[context deleteObject:m];
-		}
 		if(z.monstersKilled >= z.maxMonsters) {
 			[self needsNewZone];
 		}

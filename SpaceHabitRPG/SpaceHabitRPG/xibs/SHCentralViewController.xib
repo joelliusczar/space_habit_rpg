@@ -10,6 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHCentralViewController">
             <connections>
+                <outlet property="listTop" destination="qb9-mp-2ig" id="w2Q-rT-oIP"/>
+                <outlet property="statsTop" destination="G7Y-LX-WMg" id="0I4-rr-Mvc"/>
                 <outlet property="statsView" destination="jeE-7J-ZJo" id="2Em-bS-2cG"/>
                 <outlet property="tabsContainer" destination="ug1-1S-I7J" id="agz-so-LTt"/>
                 <outlet property="view" destination="Qgt-Ab-Zj3" id="2PD-d2-EH2"/>

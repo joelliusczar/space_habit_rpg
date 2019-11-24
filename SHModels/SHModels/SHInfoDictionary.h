@@ -16,8 +16,7 @@
 @property (readonly,nonatomic) Class bundleClass;
 @property (strong,nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
 
--(instancetype)initWithPListKey:(NSString*)key AndBundleClass:(Class)bundleClass
-AndResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil;
+-(instancetype)initWithPListKey:(NSString*)key withResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil;
 
 -(NSDictionary*)searchTreeForKey:(NSString*)key;
 -(NSDictionary*)getInfo:(NSString*)key;

@@ -6,8 +6,8 @@
 //	Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
-#ifndef SHDateTime_struct_h
-#define SHDateTime_struct_h
+#ifndef SHDatetime_struct_h
+#define SHDatetime_struct_h
 
 #include <inttypes.h>
 
@@ -58,4 +58,4 @@ typedef enum {NO_OPTION = 0,
 } TimeAdjustOptions;
 
 
-#endif /* SHDateTime_struct_h */
+#endif /* SHDatetime_struct_h */

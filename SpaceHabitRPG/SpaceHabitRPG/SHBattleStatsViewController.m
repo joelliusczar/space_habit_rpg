@@ -24,9 +24,9 @@
 @implementation SHBattleStatsViewController
 
 
--(instancetype)initWithContext:(NSManagedObjectContext *)context{
+-(instancetype)initWithResourceUtil:(id<SHResourceUtilityProtocol>)resourceUtil{
 	if(self = [super initWithNibName:@"SHBattleStatsViewController" bundle:nil]){
-		_context = context;
+		_resourceUtil = resourceUtil;
 	}
 	return self;
 }
@@ -40,51 +40,46 @@
 
 -(void)firstRun{
 	NSAssert(self.context,@"You better have that context wired up!");
-	[self.context performBlock:^{
-		SHMonster_Medium *mm = [[SHMonster_Medium alloc] initWithContext:self.context];
-		SHHero_Medium *hm = [[SHHero_Medium alloc] initWithContext:self.context];
-		SHHero * hero = [hm hero];
-		int32_t currentHP = hero.nowHp;
-		int32_t maxHp = hero.maxHp;
-		int32_t currentXp = hero.nowXp;
-		int32_t maxXp = hero.maxXp;
-		int32_t level = hero.lvl;
-		SHMonster *monster = [mm currentMonster];
-		int32_t currentMonsterHP = monster.nowHp;
-		int32_t maxMonsterHP = monster.maxHp;
-		int32_t monsterLvl = monster.lvl;
-		int32_t gold = hero.gold;
-		NSString *monsterName = monster.fullName;
-		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-			[self updateHeroHP:currentHP whole:maxHp];
-			self.goldLbl.text = [NSString stringWithFormat:@"$%d",gold];
-			[self updateHeroXP:currentXp whole:maxXp];
-			self.lvlLbl.text = [NSString stringWithFormat:@"Lv:%d",level];
-			[self updateMonsterHP:currentMonsterHP withWhole:maxMonsterHP
-				withLvl:monsterLvl withMonsterName:monsterName];
-		}];
-	}];
+	SHMonster_Medium *mm = [[SHMonster_Medium alloc] initWithResourceUtil:self.resourceUtil];
+	SHHero * hero = [[SHHero alloc] initWithResourceUtil:self.resourceUtil];
+	NSInteger currentHP = hero.nowHp;
+	NSInteger maxHp = hero.maxHp;
+	NSInteger currentXp = hero.nowXp;
+	NSInteger maxXp = hero.maxXp;
+	NSInteger level = hero.lvl;
+	SHMonster *monster = [mm currentMonster];
+	NSInteger currentMonsterHP = monster.nowHp;
+	NSInteger maxMonsterHP = monster.maxHp;
+	NSInteger monsterLvl = monster.lvl;
+	NSInteger gold = hero.gold;
+	NSString *monsterName = monster.fullName;
+	[self updateHeroHP:currentHP whole:maxHp];
+	self.goldLbl.text = [NSString stringWithFormat:@"$%ld",gold];
+	[self updateHeroXP:currentXp whole:maxXp];
+	self.lvlLbl.text = [NSString stringWithFormat:@"Lv:%ld",level];
+	[self updateMonsterHP:currentMonsterHP withWhole:maxMonsterHP
+		withLvl:monsterLvl withMonsterName:monsterName];
 }
 
 
--(void)updateHeroHP:(int)part whole:(int)whole{
-	self.heroDescLbl.text = [NSString stringWithFormat:@"HP:%d/%d",part,whole];
+-(void)updateHeroHP:(NSInteger)part whole:(NSInteger)whole{
+	self.heroDescLbl.text = [NSString stringWithFormat:@"HP:%ld/%ld",part,whole];
 	CGFloat hpPercent = ((CGFloat)part) / whole;
 	self.heroHPBar.percent = hpPercent;
 }
 
 
--(void)updateHeroXP:(int)part whole:(int)whole{
-	self.xpLbl.text = [NSString stringWithFormat:@"XP:%d/%d",part,whole];
+-(void)updateHeroXP:(NSInteger)part whole:(NSInteger)whole{
+	self.xpLbl.text = [NSString stringWithFormat:@"XP:%ld/%ld",part,whole];
 	CGFloat xpPercent = ((CGFloat)part) / whole;
 	self.xpBar.percent = xpPercent;
 }
 
 
--(void)updateMonsterHP:(int32_t)part withWhole:(int32_t)whole withLvl:(int32_t)lvl
+-(void)updateMonsterHP:(NSInteger)part withWhole:(NSInteger)whole withLvl:(NSInteger)lvl
 	withMonsterName:(NSString *)monsterName
 {
-	self.monsterDescLbl.text = [NSString stringWithFormat:@"%@ Lvl:%d HP:%d/%d",
+	self.monsterDescLbl.text = [NSString stringWithFormat:@"%@ Lvl:%ld HP:%ld/%ld",
 		monsterName, lvl, part, whole];
 	CGFloat hpPercent = ((CGFloat)part) / whole;
 	self.monsterHPBar.percent = hpPercent;

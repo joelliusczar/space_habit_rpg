@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		270F975A238885FA00479E77 /* SHPostIntroPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 270F9759238885FA00479E77 /* SHPostIntroPresenter.m */; };
 		273426EF237AAC5B0019C994 /* SHLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 273426EE237AAC5B0019C994 /* SHLaunchScreen.storyboard */; };
 		2737D10E230F6DE200B8618C /* SHBattleStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2737D10C230F6DE200B8618C /* SHBattleStatsViewController.m */; };
 		2737D10F230F6DE200B8618C /* SHBattleStatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2737D10D230F6DE200B8618C /* SHBattleStatsViewController.xib */; };
@@ -36,7 +37,6 @@
 		2747C51D204A499000FB5669 /* SHDailyEditController+ControlLoaders.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C51C204A499000FB5669 /* SHDailyEditController+ControlLoaders.m */; };
 		274A8FA723246AD000F348AC /* SHStoryPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A8FA623246AD000F348AC /* SHStoryPresentationController.m */; };
 		274A8FAD2324732000F348AC /* SHStoryPresentationTypicalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A8FAC2324732000F348AC /* SHStoryPresentationTypicalController.m */; };
-		275D9920237F172D00522A80 /* SHIntroHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 275D991F237F172D00522A80 /* SHIntroHelper.m */; };
 		27804B8F235FEDBE004921F5 /* SHData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27804B8E235FEDBE004921F5 /* SHData.framework */; };
 		2787044F227A823B009C9DD6 /* libSHCore_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2787044E227A823B009C9DD6 /* libSHCore_C.a */; };
 		27A9C8AB22C455F900834D02 /* SHApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A9C8AA22C455F900834D02 /* SHApplication.m */; };
@@ -53,58 +53,58 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		27804B9423633FC6004921F5 /* PBXContainerItemProxy */ = {
+		271DBE5F2387953400644237 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 27804B9023633FC6004921F5 /* SHModels.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2747C2EA2043ADE000FB5669;
-			remoteInfo = SHModels;
-		};
-		27804B9A23633FD1004921F5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 27804B9623633FD1004921F5 /* SHControls.xcodeproj */;
+			containerPortal = 271DBE572387953400644237 /* SHControls.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 271187DA203FF88E0085A549;
 			remoteInfo = SHControls;
 		};
-		27804BA023633FDA004921F5 /* PBXContainerItemProxy */ = {
+		27A6D8A6238797F6003DA8C8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 27804B9C23633FDA004921F5 /* SHControlsSpecial.xcodeproj */;
+			containerPortal = 27A6D8A0238797F6003DA8C8 /* SHControlsSpecial.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 271D615420433434005C9F7E;
 			remoteInfo = SHControlsSpecial;
 		};
-		27804BA623633FE4004921F5 /* PBXContainerItemProxy */ = {
+		27A6D8A8238797FD003DA8C8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 27804BA223633FE3004921F5 /* SHCommon.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2711883C203FFA810085A549;
-			remoteInfo = SHCommon;
-		};
-		27804BA82363403E004921F5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 27804BA223633FE3004921F5 /* SHCommon.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 2711883B203FFA810085A549;
-			remoteInfo = SHCommon;
-		};
-		27804BAA23634043004921F5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 27804B9C23633FDA004921F5 /* SHControlsSpecial.xcodeproj */;
+			containerPortal = 27A6D8A0238797F6003DA8C8 /* SHControlsSpecial.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 271D615320433434005C9F7E;
 			remoteInfo = SHControlsSpecial;
 		};
-		27804BAC23634047004921F5 /* PBXContainerItemProxy */ = {
+		27F37E6A2387967E0006B705 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 27804B9623633FD1004921F5 /* SHControls.xcodeproj */;
+			containerPortal = 271DBE572387953400644237 /* SHControls.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 271187D9203FF88E0085A549;
 			remoteInfo = SHControls;
 		};
-		27804BAE2363404B004921F5 /* PBXContainerItemProxy */ = {
+		27F37E72238796AB0006B705 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 27804B9023633FC6004921F5 /* SHModels.xcodeproj */;
+			containerPortal = 27F37E6D238796AB0006B705 /* SHData.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27730B942041E0DE003BEB6C;
+			remoteInfo = SHData;
+		};
+		27F37E74238796B70006B705 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27F37E6D238796AB0006B705 /* SHData.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 27730B932041E0DE003BEB6C;
+			remoteInfo = SHData;
+		};
+		27F37E7F238796CE0006B705 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27F37E76238796CE0006B705 /* SHModels.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2747C2EA2043ADE000FB5669;
+			remoteInfo = SHModels;
+		};
+		27F37E81238796DC0006B705 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27F37E76238796CE0006B705 /* SHModels.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 2747C2E92043ADE000FB5669;
 			remoteInfo = SHModels;
@@ -112,6 +112,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		270F9758238885FA00479E77 /* SHPostIntroPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHPostIntroPresenter.h; sourceTree = "<group>"; };
+		270F9759238885FA00479E77 /* SHPostIntroPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHPostIntroPresenter.m; sourceTree = "<group>"; };
+		271DBE572387953400644237 /* SHControls.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHControls.xcodeproj; path = ../SHControls/SHControls.xcodeproj; sourceTree = "<group>"; };
 		273426EE237AAC5B0019C994 /* SHLaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SHLaunchScreen.storyboard; sourceTree = "<group>"; };
 		2737D10B230F6DE200B8618C /* SHBattleStatsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHBattleStatsViewController.h; sourceTree = "<group>"; };
 		2737D10C230F6DE200B8618C /* SHBattleStatsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHBattleStatsViewController.m; sourceTree = "<group>"; };
@@ -160,16 +163,11 @@
 		274A8FA623246AD000F348AC /* SHStoryPresentationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHStoryPresentationController.m; sourceTree = "<group>"; };
 		274A8FAB2324732000F348AC /* SHStoryPresentationTypicalController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHStoryPresentationTypicalController.h; sourceTree = "<group>"; };
 		274A8FAC2324732000F348AC /* SHStoryPresentationTypicalController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHStoryPresentationTypicalController.m; sourceTree = "<group>"; };
-		275D991E237F172D00522A80 /* SHIntroHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHIntroHelper.h; sourceTree = "<group>"; };
-		275D991F237F172D00522A80 /* SHIntroHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHIntroHelper.m; sourceTree = "<group>"; };
 		276951A420437DF5002D1C9A /* SpaceHabitRPG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceHabitRPG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27804B8E235FEDBE004921F5 /* SHData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		27804B9023633FC6004921F5 /* SHModels.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHModels.xcodeproj; path = ../SHModels/SHModels.xcodeproj; sourceTree = "<group>"; };
-		27804B9623633FD1004921F5 /* SHControls.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHControls.xcodeproj; path = ../SHControls/SHControls.xcodeproj; sourceTree = "<group>"; };
-		27804B9C23633FDA004921F5 /* SHControlsSpecial.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHControlsSpecial.xcodeproj; path = ../SHControlsSpecial/SHControlsSpecial.xcodeproj; sourceTree = "<group>"; };
-		27804BA223633FE3004921F5 /* SHCommon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHCommon.xcodeproj; path = ../SHCommon/SHCommon.xcodeproj; sourceTree = "<group>"; };
 		2787044E227A823B009C9DD6 /* libSHCore_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHCore_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		279848D42250FEB700039A29 /* SpaceHabitRPG.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SpaceHabitRPG.base.xcconfig; sourceTree = "<group>"; };
+		27A6D8A0238797F6003DA8C8 /* SHControlsSpecial.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHControlsSpecial.xcodeproj; path = ../SHControlsSpecial/SHControlsSpecial.xcodeproj; sourceTree = "<group>"; };
 		27A9C8A922C455F900834D02 /* SHApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHApplication.h; sourceTree = "<group>"; };
 		27A9C8AA22C455F900834D02 /* SHApplication.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHApplication.m; sourceTree = "<group>"; };
 		27B15AA820524CB60045B226 /* SHCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHCommon.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHCommon.framework"; sourceTree = "<group>"; };
@@ -181,6 +179,8 @@
 		27E5169A21FE40B000832DFE /* SHCentralMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHCentralMenu.xib; sourceTree = "<group>"; };
 		27ED11B1229B431C00E8EB32 /* SHDailyEditFull.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHDailyEditFull.xib; sourceTree = "<group>"; };
 		27ED11B3229B442B00E8EB32 /* SHEditScreenFull.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHEditScreenFull.xib; sourceTree = "<group>"; };
+		27F37E6D238796AB0006B705 /* SHData.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHData.xcodeproj; path = ../SHData/SHData.xcodeproj; sourceTree = "<group>"; };
+		27F37E76238796CE0006B705 /* SHModels.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHModels.xcodeproj; path = ../SHModels/SHModels.xcodeproj; sourceTree = "<group>"; };
 		27FF0248231AC01E00108320 /* SHCentralViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHCentralViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -201,6 +201,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		271DBE582387953400644237 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				271DBE602387953400644237 /* SHControls.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2733D214229402DB0090B7F1 /* xibs */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,10 +271,10 @@
 		2769519B20437DF5002D1C9A = {
 			isa = PBXGroup;
 			children = (
-				27804BA223633FE3004921F5 /* SHCommon.xcodeproj */,
-				27804B9C23633FDA004921F5 /* SHControlsSpecial.xcodeproj */,
-				27804B9623633FD1004921F5 /* SHControls.xcodeproj */,
-				27804B9023633FC6004921F5 /* SHModels.xcodeproj */,
+				27A6D8A0238797F6003DA8C8 /* SHControlsSpecial.xcodeproj */,
+				27F37E76238796CE0006B705 /* SHModels.xcodeproj */,
+				27F37E6D238796AB0006B705 /* SHData.xcodeproj */,
+				271DBE572387953400644237 /* SHControls.xcodeproj */,
 				276951A620437DF5002D1C9A /* SpaceHabitRPG */,
 				276951A520437DF5002D1C9A /* Products */,
 				2747C4A12048D55600FB5669 /* Frameworks */,
@@ -319,42 +327,10 @@
 				274A8FA623246AD000F348AC /* SHStoryPresentationController.m */,
 				274A8FAB2324732000F348AC /* SHStoryPresentationTypicalController.h */,
 				274A8FAC2324732000F348AC /* SHStoryPresentationTypicalController.m */,
-				275D991E237F172D00522A80 /* SHIntroHelper.h */,
-				275D991F237F172D00522A80 /* SHIntroHelper.m */,
+				270F9758238885FA00479E77 /* SHPostIntroPresenter.h */,
+				270F9759238885FA00479E77 /* SHPostIntroPresenter.m */,
 			);
 			path = SpaceHabitRPG;
-			sourceTree = "<group>";
-		};
-		27804B9123633FC6004921F5 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				27804B9523633FC6004921F5 /* SHModels.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		27804B9723633FD1004921F5 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				27804B9B23633FD1004921F5 /* SHControls.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		27804B9D23633FDA004921F5 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				27804BA123633FDA004921F5 /* SHControlsSpecial.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		27804BA323633FE3004921F5 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				27804BA723633FE4004921F5 /* SHCommon.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		279848D32250FE9C00039A29 /* Configs */ = {
@@ -363,6 +339,30 @@
 				279848D42250FEB700039A29 /* SpaceHabitRPG.base.xcconfig */,
 			);
 			path = Configs;
+			sourceTree = "<group>";
+		};
+		27A6D8A1238797F6003DA8C8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27A6D8A7238797F6003DA8C8 /* SHControlsSpecial.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		27F37E6E238796AB0006B705 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27F37E73238796AB0006B705 /* SHData.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		27F37E77238796CE0006B705 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27F37E80238796CE0006B705 /* SHModels.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,10 +380,10 @@
 			buildRules = (
 			);
 			dependencies = (
-				27804BAF2363404B004921F5 /* PBXTargetDependency */,
-				27804BAD23634047004921F5 /* PBXTargetDependency */,
-				27804BAB23634043004921F5 /* PBXTargetDependency */,
-				27804BA92363403E004921F5 /* PBXTargetDependency */,
+				27A6D8A9238797FD003DA8C8 /* PBXTargetDependency */,
+				27F37E82238796DC0006B705 /* PBXTargetDependency */,
+				27F37E75238796B70006B705 /* PBXTargetDependency */,
+				27F37E6B2387967E0006B705 /* PBXTargetDependency */,
 			);
 			name = SpaceHabitRPG;
 			productName = SpaceHabitRPG;
@@ -418,20 +418,20 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 27804BA323633FE3004921F5 /* Products */;
-					ProjectRef = 27804BA223633FE3004921F5 /* SHCommon.xcodeproj */;
+					ProductGroup = 271DBE582387953400644237 /* Products */;
+					ProjectRef = 271DBE572387953400644237 /* SHControls.xcodeproj */;
 				},
 				{
-					ProductGroup = 27804B9723633FD1004921F5 /* Products */;
-					ProjectRef = 27804B9623633FD1004921F5 /* SHControls.xcodeproj */;
+					ProductGroup = 27A6D8A1238797F6003DA8C8 /* Products */;
+					ProjectRef = 27A6D8A0238797F6003DA8C8 /* SHControlsSpecial.xcodeproj */;
 				},
 				{
-					ProductGroup = 27804B9D23633FDA004921F5 /* Products */;
-					ProjectRef = 27804B9C23633FDA004921F5 /* SHControlsSpecial.xcodeproj */;
+					ProductGroup = 27F37E6E238796AB0006B705 /* Products */;
+					ProjectRef = 27F37E6D238796AB0006B705 /* SHData.xcodeproj */;
 				},
 				{
-					ProductGroup = 27804B9123633FC6004921F5 /* Products */;
-					ProjectRef = 27804B9023633FC6004921F5 /* SHModels.xcodeproj */;
+					ProductGroup = 27F37E77238796CE0006B705 /* Products */;
+					ProjectRef = 27F37E76238796CE0006B705 /* SHModels.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -442,32 +442,32 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		27804B9523633FC6004921F5 /* SHModels.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SHModels.framework;
-			remoteRef = 27804B9423633FC6004921F5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		27804B9B23633FD1004921F5 /* SHControls.framework */ = {
+		271DBE602387953400644237 /* SHControls.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = SHControls.framework;
-			remoteRef = 27804B9A23633FD1004921F5 /* PBXContainerItemProxy */;
+			remoteRef = 271DBE5F2387953400644237 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		27804BA123633FDA004921F5 /* SHControlsSpecial.framework */ = {
+		27A6D8A7238797F6003DA8C8 /* SHControlsSpecial.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = SHControlsSpecial.framework;
-			remoteRef = 27804BA023633FDA004921F5 /* PBXContainerItemProxy */;
+			remoteRef = 27A6D8A6238797F6003DA8C8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		27804BA723633FE4004921F5 /* SHCommon.framework */ = {
+		27F37E73238796AB0006B705 /* SHData.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = SHCommon.framework;
-			remoteRef = 27804BA623633FE4004921F5 /* PBXContainerItemProxy */;
+			path = SHData.framework;
+			remoteRef = 27F37E72238796AB0006B705 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		27F37E80238796CE0006B705 /* SHModels.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SHModels.framework;
+			remoteRef = 27F37E7F238796CE0006B705 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -527,6 +527,7 @@
 				2747C4EE2048E2EC00FB5669 /* SHStoryConstants.m in Sources */,
 				2747C518204A491E00FB5669 /* SHDailyEditController.m in Sources */,
 				2747C4F62048E5DB00FB5669 /* SHDailyCellController.m in Sources */,
+				270F975A238885FA00479E77 /* SHPostIntroPresenter.m in Sources */,
 				2747C4C42048D83C00FB5669 /* SHIntroViewController.m in Sources */,
 				274A8FAD2324732000F348AC /* SHStoryPresentationTypicalController.m in Sources */,
 				2747C4992048D50800FB5669 /* AppDelegate.m in Sources */,
@@ -536,7 +537,6 @@
 				2747C4E02048E12C00FB5669 /* SHSectorDescriptionViewController.m in Sources */,
 				2747C51D204A499000FB5669 /* SHDailyEditController+ControlLoaders.m in Sources */,
 				2747C4AB2048D75300FB5669 /* SHEditNavigationController.m in Sources */,
-				275D9920237F172D00522A80 /* SHIntroHelper.m in Sources */,
 				2747C4EA2048E1EE00FB5669 /* SHSectorChoiceCellController.m in Sources */,
 				2747C50320490E3400FB5669 /* main.m in Sources */,
 				274A8FA723246AD000F348AC /* SHStoryPresentationController.m in Sources */,
@@ -547,25 +547,25 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		27804BA92363403E004921F5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SHCommon;
-			targetProxy = 27804BA82363403E004921F5 /* PBXContainerItemProxy */;
-		};
-		27804BAB23634043004921F5 /* PBXTargetDependency */ = {
+		27A6D8A9238797FD003DA8C8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SHControlsSpecial;
-			targetProxy = 27804BAA23634043004921F5 /* PBXContainerItemProxy */;
+			targetProxy = 27A6D8A8238797FD003DA8C8 /* PBXContainerItemProxy */;
 		};
-		27804BAD23634047004921F5 /* PBXTargetDependency */ = {
+		27F37E6B2387967E0006B705 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SHControls;
-			targetProxy = 27804BAC23634047004921F5 /* PBXContainerItemProxy */;
+			targetProxy = 27F37E6A2387967E0006B705 /* PBXContainerItemProxy */;
 		};
-		27804BAF2363404B004921F5 /* PBXTargetDependency */ = {
+		27F37E75238796B70006B705 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SHData;
+			targetProxy = 27F37E74238796B70006B705 /* PBXContainerItemProxy */;
+		};
+		27F37E82238796DC0006B705 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SHModels;
-			targetProxy = 27804BAE2363404B004921F5 /* PBXContainerItemProxy */;
+			targetProxy = 27F37E81238796DC0006B705 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

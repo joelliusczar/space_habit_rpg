@@ -14,18 +14,20 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHMonster : NSManagedObject<SHStoryItemProtocol>
+@interface SHMonster : NSObject<SHStoryItemProtocol>
 @property (class,strong,nonatomic) SHMonsterInfoDictionary *monsterInfo;
-@property (readonly,nonatomic) int32_t maxHp;
-@property (readonly,nonatomic) int32_t attack;
-@property (readonly,nonatomic) int32_t xp;
-@property (readonly,nonatomic) int32_t defense;
+@property (copy, nonatomic) NSString *monsterKey;
+@property (assign,nonatomic) NSInteger lvl;
+@property (assign,nonatomic) NSInteger nowHp;
+@property (readonly,nonatomic) NSInteger maxHp;
+@property (readonly,nonatomic) NSInteger attack;
+@property (readonly,nonatomic) NSInteger xp;
+@property (readonly,nonatomic) NSInteger defense;
 @property (readonly,nonatomic) float treasureDropRate;
-@property (readonly,nonatomic) int32_t encounterWeight;
-@property (readonly,nonatomic) NSMutableDictionary *mapable;
--(void)copyFrom:(NSObject *)object;
+@property (readonly,nonatomic) NSInteger encounterWeight;
+@property (readonly,nonatomic) NSDictionary *mapable;
+-(instancetype)initWithResourceUtil:(id<SHResourceUtilityProtocol>)resourceUtil;
 @end
 
 NS_ASSUME_NONNULL_END
 
-#import "SHMonster+CoreDataProperties.h"

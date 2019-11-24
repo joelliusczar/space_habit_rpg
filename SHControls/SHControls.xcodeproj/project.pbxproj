@@ -95,6 +95,23 @@
 		27ED11BD22A1E8D100E8EB32 /* SHNestedControlProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27ED11BC22A1E8D100E8EB32 /* SHNestedControlProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		27E3F2C023879326005821E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27E3F2B923879326005821E8 /* SHCommon.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2711883C203FFA810085A549;
+			remoteInfo = SHCommon;
+		};
+		27E3F2C223879333005821E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27E3F2B923879326005821E8 /* SHCommon.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2711883B203FFA810085A549;
+			remoteInfo = SHCommon;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		271187DA203FF88E0085A549 /* SHControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		271187DD203FF88E0085A549 /* SHControls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHControls.h; sourceTree = "<group>"; };
@@ -184,6 +201,7 @@
 		27D0D6E321D02A2D00886721 /* UIViewController+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Helper.m"; sourceTree = "<group>"; };
 		27DE250023739BA1003D2DAE /* SHScrollAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHScrollAnimator.h; sourceTree = "<group>"; };
 		27DE250123739BA1003D2DAE /* SHScrollAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHScrollAnimator.m; sourceTree = "<group>"; };
+		27E3F2B923879326005821E8 /* SHCommon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHCommon.xcodeproj; path = ../SHCommon/SHCommon.xcodeproj; sourceTree = "<group>"; };
 		27ED11BC22A1E8D100E8EB32 /* SHNestedControlProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHNestedControlProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -203,6 +221,7 @@
 		271187D0203FF88E0085A549 = {
 			isa = PBXGroup;
 			children = (
+				27E3F2B923879326005821E8 /* SHCommon.xcodeproj */,
 				27DE250023739BA1003D2DAE /* SHScrollAnimator.h */,
 				27DE250123739BA1003D2DAE /* SHScrollAnimator.m */,
 				2737D110230F6EFA00B8618C /* SHStatusBar.h */,
@@ -389,6 +408,14 @@
 			path = SHControls/Categories;
 			sourceTree = "<group>";
 		};
+		27E3F2BA23879326005821E8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27E3F2C123879326005821E8 /* SHCommon.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		27ED11BB229C49B200E8EB32 /* xibs */ = {
 			isa = PBXGroup;
 			children = (
@@ -467,6 +494,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				27E3F2C323879333005821E8 /* PBXTargetDependency */,
 			);
 			name = SHControls;
 			productName = SHControls;
@@ -498,12 +526,28 @@
 			mainGroup = 271187D0203FF88E0085A549;
 			productRefGroup = 271187DB203FF88E0085A549 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 27E3F2BA23879326005821E8 /* Products */;
+					ProjectRef = 27E3F2B923879326005821E8 /* SHCommon.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				271187D9203FF88E0085A549 /* SHControls */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		27E3F2C123879326005821E8 /* SHCommon.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SHCommon.framework;
+			remoteRef = 27E3F2C023879326005821E8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		271187D8203FF88E0085A549 /* Resources */ = {
@@ -579,6 +623,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		27E3F2C323879333005821E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SHCommon;
+			targetProxy = 27E3F2C223879333005821E8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		271187E0203FF88E0085A549 /* Debug */ = {

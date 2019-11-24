@@ -10,7 +10,6 @@
 #import "SHModelTools.h"
 #import "SHModelConstants.h"
 #import "SHSector_Medium.h"
-#import "SHHero_Medium.h"
 @import SHCommon;
 @import SHData;
 
@@ -30,12 +29,11 @@ NSString* const HOME_KEY = @"HOME";
 	return _sectorInfo;
 }
 
-+(instancetype)newWithContext:(NSManagedObjectContext*)context
-withResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil{
-	SHSector_Medium *instance = [[SHSector_Medium alloc] init];
-	instance.context = context;
-	instance.resourceUtil = resourceUtil;
-	return instance;
+-(instancetype)initWithResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil{
+	if(self = [super init]){
+		_resourceUtil = resourceUtil;
+	}
+	return self;
 }
 
 
@@ -69,12 +67,6 @@ withResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil{
 	return [[[suffixList reverseObjectEnumerator] allObjects] componentsJoinedByString:@" "];
 }
 
-
--(SHSector*)newEmptySector{
-	//if we change here update afterSectorPick
-	return (SHSector*)[NSManagedObjectContext newEntityUnattached:SHSector.entity];
-}
-
 /*
 	I am going to let this on touching a suffix rather than
 	picking a sector with a suffix because I don't want
@@ -89,29 +81,29 @@ withResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil{
 
 
 -(SHSector*)newSpecificSector:(NSString*) sectorKey
-withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount{
+withLvl:(NSInteger)lvl withMonsterCount:(NSInteger)monsterCount{
 	
 	NSAssert(sectorKey,@"Key can't be null");
 	NSAssert(lvl > 0, @"Lvl must be greater than 0");
-	SHSector *z = (SHSector*)[self.context newEntity:SHSector.entity];
-	z.sectorKey = sectorKey;
-	z.suffix = [self getSymbolSuffix:[self getVisitCountForSector:sectorKey]];
-	z.maxMonsters = monsterCount;
-	z.monstersKilled = 0;
-	z.lvl = lvl;
-	return z;
+	SHSector *sector = [[SHSector alloc] initEmptyWithResourceUtil:self.resourceUtil];;
+	sector.sectorKey = sectorKey;
+	sector.suffix = [self getSymbolSuffix:[self getVisitCountForSector:sectorKey]];
+	sector.maxMonsters = monsterCount;
+	sector.monstersKilled = 0;
+	sector.lvl = lvl;
+	return sector;
 }
 
 
--(SHSector*)newSpecificSector2:(NSString*) sectorKey withLvl:(int32_t) lvl{
-	int32_t monsterCount = shRandomUInt(SH_MAX_MONSTER_RAND_UP_BOUND) + SH_MAX_MONSTER_LOW_BOUND;
+-(SHSector*)newSpecificSector2:(NSString*) sectorKey withLvl:(NSInteger) lvl{
+	NSInteger monsterCount = shRandomUInt(SH_MAX_MONSTER_RAND_UP_BOUND) + SH_MAX_MONSTER_LOW_BOUND;
 	return [self newSpecificSector:sectorKey withLvl:lvl withMonsterCount: monsterCount];
 }
 
 
 -(SHSector*)newRandomSectorChoiceGivenHero:(SHHero*)hero ifShouldMatchLvl:(BOOL)shouldMatchLvl{
 	NSString *sectorKey = [self getRandomSectorDefinitionKey:hero.lvl];
-	int32_t sectorLvl = shouldMatchLvl?hero.lvl:shCalculateLvl(hero.lvl,SH_SECTOR_LVL_RANGE);
+	NSInteger sectorLvl = shouldMatchLvl?hero.lvl:shCalculateLvl(hero.lvl,SH_SECTOR_LVL_RANGE);
 	SHSector *z = [self newSpecificSector2:sectorKey withLvl:sectorLvl];
 	return z;
 }
@@ -128,60 +120,6 @@ withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount{
 	}
 	
 	return choices;
-}
-
-
--(NSArray<SHSector*>*)getAllSectors:(NSPredicate*) filter{
-	__block NSArray *results = nil;
-	[self.context performBlockAndWait:^{
-		NSFetchRequest<SHSector *> *request = [SHSector fetchRequest];
-		NSSortDescriptor *sortByIsFront = [[NSSortDescriptor alloc] initWithKey:@"isFront" ascending:NO];
-		request.predicate = filter;
-		request.sortDescriptors = @[sortByIsFront];
-		results = [self.context getItemsWithRequest:request];
-	}];
-
-	return results;
-}
-
-
--(SHSector*)getSector:(BOOL)isFront{
-	NSPredicate *filter = nil;
-	NSArray<SHSector*> *results = nil;
-	filter = [NSPredicate predicateWithFormat:@"isFront =%d",isFront?1:0];
-	results = [self getAllSectors:filter];
-	if(results.count > 1){
-		@throw [NSException exceptionWithName:@"CorruptionException"
-			reason:@"There are too many sectors" userInfo:nil];
-	}
-	return results.count > 0 ? (SHSector *)results[0] : nil;
-}
-
-
--(void)moveSectorToFront:(nonnull SHSector*)sector{
-	NSAssert(sector && sector.managedObjectContext,@"Sector must be registered in a context already");
-	NSManagedObjectContext *context = sector.managedObjectContext;
-	[context performBlockAndWait:^{
-		NSArray<SHSector*> *results = [self getAllSectors:nil];
-		
-		sector.isFront = YES;
-		NSAssert(results.count<4, @"There are too many sectors");
-		if(results.count < 2){
-			return;
-		}
-		NSPredicate *filterNewItem = [NSPredicate predicateWithBlock:^BOOL(id item, NSDictionary<NSString*,id> *bindings){
-			(void)bindings;
-			if(item == sector) return NO;
-			return YES;
-		}];
-		NSArray<SHSector*> *filtered = [results filteredArrayUsingPredicate:filterNewItem];
-		filtered[0].isFront = NO;
-		if(results.count == 2){
-			return;
-		}
-		[context deleteObject:filtered[1]];
-	}];
-	
 }
 
 

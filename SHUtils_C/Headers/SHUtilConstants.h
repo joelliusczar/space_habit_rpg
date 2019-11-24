@@ -6,10 +6,10 @@
 //	Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
-#ifndef SHConstants_h
-#define SHConstants_h
+#ifndef SHUtilConstants_h
+#define SHUtilConstants_h
 
 #include <stdio.h>
 extern const int32_t NOT_FOUND;
 extern const int32_t SKIP;
-#endif /* SHConstants_h */
+#endif /* SHUtilConstants_h */

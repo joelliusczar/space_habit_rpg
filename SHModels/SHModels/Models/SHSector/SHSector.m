@@ -10,6 +10,12 @@
 @import SHCommon;
 
 static SHSectorInfoDictionary *_sectorInfo;
+static NSString* const BACKEND_KEY = @"sector_data";
+
+@interface SHSector ()
+@property (strong, nonatomic) NSMutableDictionary *backend;
+@property (strong, nonatomic) NSURL *saveUrl;
+@end
 
 @implementation SHSector
 
@@ -28,13 +34,26 @@ static SHSectorInfoDictionary *_sectorInfo;
 }
 
 
--(NSMutableDictionary*)mapable{
-	return [NSDictionary objectToDictionary:self includeSuperclassProperties:YES];
+-(instancetype)initWithResourceUtil:(id<SHResourceUtilityProtocol>)resourceUtil{
+	if(self = [super init]) {
+		_saveUrl = [resourceUtil getURLMutableFile:BACKEND_KEY];
+		_backend = [resourceUtil getPListMutableDict:BACKEND_KEY];
+	}
+	return self;
 }
 
 
--(void)copyFrom:(NSObject *)object{
-	copyBetween(object, self);
+-(instancetype)initEmptyWithResourceUtil:(id<SHResourceUtilityProtocol>)resourceUtil {
+	if(self = [super init]) {
+		_saveUrl = [resourceUtil getURLMutableFile:BACKEND_KEY];
+		_backend = [NSMutableDictionary dictionary];
+	}
+	return self;
+}
+
+
+-(NSDictionary*)mapable{
+	return [NSDictionary dictionaryWithDictionary:self.backend];
 }
 
 
@@ -47,17 +66,6 @@ static SHSectorInfoDictionary *_sectorInfo;
 -(void)setValue:(id)value forUndefinedKey:(NSString *)key{
 	(void)value;
 	(void)key;
-}
-
-
-static void copyBetween(NSObject* from,NSObject* to){
-	shCopyInstanceVar(from, to, @"isFront");
-	shCopyInstanceVar(from, to, @"lvl");
-	shCopyInstanceVar(from, to, @"maxMonsters");
-	shCopyInstanceVar(from, to, @"monstersKilled");
-	shCopyInstanceVar(from, to, @"suffix");
-	shCopyInstanceVar(from, to, @"uniqueId");
-	shCopyInstanceVar(from, to, @"sectorKey");
 }
 
 
@@ -77,16 +85,61 @@ static void copyBetween(NSObject* from,NSObject* to){
 }
 
 
--(SHStoryItemObjectID *)wrappedObjectID{
-	SHStoryItemObjectID *wrappedObjectID = [[SHStoryItemObjectID alloc] initWithManagedObject:self];
-	return wrappedObjectID;
+-(NSInteger)lvl {
+	NSNumber *num = (NSNumber*)self.backend[@"lvl"];
+	NSInteger lvl = num ? num.integerValue : 0;
+	return lvl;
 }
 
 
--(BOOL)shouldIgnoreProperty: (NSString *)propertyName {
-	if([propertyName isEqualToString:@"wrappedObjectID"]) return YES;
-	if([propertyName isEqualToString:@"mapable"]) return YES;
-	return NO;
+-(void)setLvl:(NSInteger)lvl {
+	self.backend[@"lvl"] = @(lvl);
+}
+
+
+-(NSInteger)maxMonsters {
+	NSNumber *num = (NSNumber*)self.backend[@"maxMonsters"];
+	NSInteger maxMonsters = num ? num.integerValue : 0;
+	return maxMonsters;
+}
+
+
+-(void)setMaxMonsters:(NSInteger)maxMonsters {
+	self.backend[@"maxMonsters"] = @(maxMonsters);
+}
+
+
+-(NSInteger)monstersKilled {
+	NSNumber *num = (NSNumber*)self.backend[@"monstersKilled"];
+	NSInteger monstersKilled = num ? num.integerValue : 0;
+	return monstersKilled;
+}
+
+
+-(void)setMonstersKilled:(NSInteger)monstersKilled {
+	self.backend[@"monstersKilled"] = @(monstersKilled);
+}
+
+
+-(NSString*)suffix {
+	NSString *suffix = (NSString*)self.backend[@"suffix"];
+	return suffix;
+}
+
+
+-(void)setSuffix:(NSString*)suffix {
+	self.backend[@"suffix"] = suffix;
+}
+
+
+-(NSString*)sectorKey {
+	NSString *sectorKey = (NSString*)self.backend[@"sectorKey"];
+	return sectorKey;
+}
+
+
+-(void)setSectorKey:(NSString*)sectorKey {
+	self.backend[@"sectorKey"] = sectorKey;
 }
 
 

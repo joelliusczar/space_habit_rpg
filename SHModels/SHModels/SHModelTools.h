@@ -8,4 +8,4 @@
 
 @import Foundation;
 
-uint shCalculateLvl(uint lvl,uint range);
+NSUInteger shCalculateLvl(NSUInteger lvl,NSUInteger range);

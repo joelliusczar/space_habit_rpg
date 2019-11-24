@@ -15,7 +15,7 @@
 -(SHInfoDictionary*)infoDict{
 	if(nil == _infoDict){
 		_infoDict = [[SHInfoDictionary alloc] initWithPListKey:@"StoryItems"
-			AndBundleClass:SHStoryItemDictionary.class AndResourceUtil:self.resourceUtil];
+			withResourceUtil:self.resourceUtil];
 	}
 	return _infoDict;
 }

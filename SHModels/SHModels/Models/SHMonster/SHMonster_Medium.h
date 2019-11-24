@@ -16,9 +16,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHMonster_Medium : NSObject
--(instancetype)initWithContext:(NSManagedObjectContext*)context;
+@property (strong,nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
+-(instancetype)initWithResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil;
 
--(SHMonster*)newRandomMonster:(NSString*)sectorKey sectorLvl:(uint32_t)sectorLvl;
+-(SHMonster*)newRandomMonster:(NSString*)sectorKey sectorLvl:(NSInteger)sectorLvl;
 -(NSString*)randomMonsterKey:(NSString*)sectorKey;
 -(SHProbWeight*)buildProbilityWeight:(NSMutableArray<NSString*>*)keys;
 -(SHMonster*)currentMonster;

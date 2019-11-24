@@ -15,9 +15,9 @@
 @property (weak,nonatomic) IBOutlet UITextView *synopsisView;
 @property (weak,nonatomic) IBOutlet SHButton *doneBtn;
 @property (weak,nonatomic) IBOutlet UILabel *headlineLbl;
-@property (strong,nonatomic) SHStoryItemObjectID *storyItemObjectID;
+@property (strong,nonatomic) NSObject<SHStoryItemProtocol> * storyItemObject;
 @property (nonatomic) UIColor* backgroundColor;
 @property (copy,nonatomic) void (^responseBlock)(SHStoryDumpView *);
--(instancetype)initWithStoryItemObjectID:(SHStoryItemObjectID *)storyItemObjectID;
+-(instancetype)initWithStoryItemObject:(NSObject<SHStoryItemProtocol> *)storyItem;
 -(instancetype)initWithDefaultNib;
 @end

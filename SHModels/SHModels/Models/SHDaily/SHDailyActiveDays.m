@@ -115,9 +115,9 @@ static SHListRateItem* mapDictToMonthlyYearly(id item, NSUInteger idx){
 
 
 -(shGetListRateCollection)monthlyActiveDaysLazy{
-	__weak typeof(self) weakSelf = self;
+	__weak SHDailyActiveDays *weakSelf = self;
 	return ^SHListRateItemCollection* (){
-		typeof(weakSelf) bSelf = weakSelf;
+		SHDailyActiveDays *bSelf = weakSelf;
 		if(nil == bSelf) return nil;
 		return bSelf.monthlyActiveDays;
 	};
@@ -134,9 +134,9 @@ static SHListRateItem* mapDictToMonthlyYearly(id item, NSUInteger idx){
 
 
 -(shGetListRateCollection)monthlyActiveDaysInvLazy{
-	__weak typeof(self) weakSelf = self;
+	__weak SHDailyActiveDays *weakSelf = self;
 	return ^SHListRateItemCollection*(){
-		typeof(weakSelf) bSelf = weakSelf;
+		SHDailyActiveDays *bSelf = weakSelf;
 		if(nil == bSelf) return nil;
 		return bSelf.monthlyActiveDaysInv;
 	};
@@ -153,9 +153,9 @@ static SHListRateItem* mapDictToMonthlyYearly(id item, NSUInteger idx){
 
 
 -(shGetListRateCollection)yearlyActiveDaysLazy{
-	__weak typeof(self) weakSelf = self;
+	__weak SHDailyActiveDays *weakSelf = self;
 	return ^SHListRateItemCollection* (){
-		typeof(weakSelf) bSelf = weakSelf;
+		SHDailyActiveDays * bSelf = weakSelf;
 		if(nil == bSelf) return nil;
 		return bSelf.yearlyActiveDays;
 	};
@@ -172,9 +172,9 @@ static SHListRateItem* mapDictToMonthlyYearly(id item, NSUInteger idx){
 
 
 -(shGetListRateCollection)yearlyActiveDaysInvLazy{
-	__weak typeof(self) weakSelf = self;
+	__weak SHDailyActiveDays *weakSelf = self;
 	return ^SHListRateItemCollection* (){
-		typeof(weakSelf) bSelf = weakSelf;
+		SHDailyActiveDays *bSelf = weakSelf;
 		if(nil == bSelf) return nil;
 		return bSelf.yearlyActiveDaysInv;
 	};
@@ -191,9 +191,9 @@ static SHListRateItem* mapDictToMonthlyYearly(id item, NSUInteger idx){
 
 
 -(shGetRangeRateArray)weeklyActiveDaysLazy{
-	__weak typeof(self) weakSelf = self;
+	__weak SHDailyActiveDays *weakSelf = self;
 	return ^NSArray<SHRangeRateItem*>* (){
-		typeof(weakSelf) bSelf = weakSelf;
+		SHDailyActiveDays *bSelf = weakSelf;
 		if(nil == bSelf) return nil;
 		return bSelf.weeklyActiveDays;
 	};
@@ -210,9 +210,9 @@ static SHListRateItem* mapDictToMonthlyYearly(id item, NSUInteger idx){
 
 
 -(shGetRangeRateArray)weeklyActiveDaysInvLazy{
-	__weak typeof(self) weakSelf = self;
+	__weak SHDailyActiveDays *weakSelf = self;
 	return ^NSArray<SHRangeRateItem*>* (){
-		typeof(weakSelf) bSelf = weakSelf;
+		SHDailyActiveDays *bSelf = weakSelf;
 		if(nil == bSelf) return nil;
 		return bSelf.weeklyActiveDaysInv;
 	};

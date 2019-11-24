@@ -9,9 +9,9 @@
 #import "SHModelTools.h"
 @import SHCommon;
 
-uint shCalculateLvl(uint lvl,uint range){
+NSUInteger shCalculateLvl(NSUInteger lvl,NSUInteger range){
 	lvl = lvl?lvl:1;
-	uint32_t minLvl = 0;
+	NSUInteger minLvl = 0;
 	if(lvl <= range){
 		minLvl = 1;
 		range += lvl;
@@ -21,5 +21,5 @@ uint shCalculateLvl(uint lvl,uint range){
 		range = (2*range)+1;
 	}
 	
-	return shRandomUInt(range) +minLvl;
+	return (NSUInteger)shRandomUInt((uint)range) +minLvl;
 }

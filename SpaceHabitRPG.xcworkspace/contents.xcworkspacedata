@@ -22,9 +22,6 @@
          assignedFileDataType = "public.make-source">
       </FileRef>
    </Group>
-   <FileRef
-      location = "group:SHControlKeep/SHControlKeep.xcodeproj">
-   </FileRef>
    <Group
       location = "group:Build_Scripts"
       name = "Build_Scripts">

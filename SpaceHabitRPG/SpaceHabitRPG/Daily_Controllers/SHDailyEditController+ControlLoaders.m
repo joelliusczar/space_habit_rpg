@@ -136,11 +136,11 @@
 
 
 -(void)setResponders:(SHControlKeep *)keep{
-	__weak typeof(self) weakSelf = self;
+	__weak SHDailyEditController *weakSelf = self;
 	keep.responderLookup[@"self"] = self;
 	keep.responderLookup[@"resize"] = self.editorContainerController;
 	keep.responderLookup[@"touch"] = ^void(){
-		typeof(weakSelf) bSelf = weakSelf;
+		SHDailyEditController *bSelf = weakSelf;
 		if(nil == bSelf) return;
 		[bSelf modelTouched];
 	};

@@ -7,6 +7,7 @@
 //
 
 #import "SHSector.h"
+#import "SHSectorArtifact.h"
 #import "SHHero.h"
 #import "SHSectorInfoDictionary.h"
 @import SHData;
@@ -22,12 +23,10 @@ extern NSString* const HOME_KEY;
 
 @property (strong,nonatomic) NSManagedObjectContext *context;
 @property (strong,nonatomic) NSObject<SHResourceUtilityProtocol>* resourceUtil;
-@property (strong,nonatomic) SHSectorInfoDictionary* sectorInfo;   
+@property (strong,nonatomic) SHSectorInfoDictionary* sectorInfo;
 
-+(instancetype)newWithContext:(nullable NSManagedObjectContext*)context
-	withResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil;
+-(instancetype)initWithResourceUtil:(id<SHResourceUtilityProtocol>)resourceUtil;
 
--(SHSector*)newEmptySector;
 -(NSArray<NSString*>*)getSymbolsList;
 -(NSString*)getRandomSectorDefinitionKey:(NSUInteger)heroLvl;
 -(NSString*)getSymbolSuffix:(NSUInteger)visitCount;
@@ -35,17 +34,14 @@ extern NSString* const HOME_KEY;
 -(SHSector*)newRandomSectorChoiceGivenHero:(SHHero*)hero
 	ifShouldMatchLvl:(BOOL)shouldMatchLvl;
 
--(SHSector*)newSpecificSector2:(NSString*) sectorKey withLvl:(int32_t) lvl;
+-(SHSector*)newSpecificSector2:(NSString*) sectorKey withLvl:(NSInteger) lvl;
 
 -(SHSector*)newSpecificSector:(NSString*)sectorKey
-	withLvl:(int32_t)lvl withMonsterCount:(int32_t)monsterCount;
+	withLvl:(NSInteger)lvl withMonsterCount:(NSInteger)monsterCount;
 
 -(NSArray<SHSector*>*)newMultipleSectorChoicesGivenHero:(SHHero*)hero
 	ifShouldMatchLvl:(BOOL)matchLvl;
 
--(NSArray<SHSector*>*)getAllSectors:(nullable NSPredicate*)filter;
--(SHSector*)getSector:(BOOL)isFront;
--(void)moveSectorToFront:(SHSector*)sector;
 NSArray<NSString*>* getUnlockedSectorGroupKeys(NSUInteger heroLvl);
 @end
 

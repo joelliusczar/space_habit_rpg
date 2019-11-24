@@ -45,9 +45,9 @@
 }
 
 
--(instancetype)initWithStoryItemObjectID:(SHStoryItemObjectID *)storyItemObjectID{
+-(instancetype)initWithStoryItemObject:(NSObject<SHStoryItemProtocol> *)storyItemObject{
 	if(self = [self initWithDefaultNib]){
-		_storyItemObjectID = storyItemObjectID;
+		_storyItemObject = storyItemObject;
 	}
 	return self;
 }
@@ -55,25 +55,13 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	NSManagedObjectContext *context = self.storyItemObjectID.context;
-	[context performBlock:^{
-		NSError *error = nil;
-		NSManagedObject<SHStoryItemProtocol>* storyItem = (NSManagedObject<SHStoryItemProtocol>*)[context
-			getEntityOrNil:self.storyItemObjectID
-			withError:&error];
-		if(error) {
-			@throw [NSException dbException:error];
-		}
-		NSString *synopsis = nil != storyItem ? storyItem.synopsis:@"";
-		NSString *headline = nil != storyItem ? storyItem.headline:@"";
-		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-			self.synopsisView.text = synopsis;
-			self.headlineLbl.text = headline;
-			[self.headlineLbl sizeToFit];
-			[self.view addGestureRecognizer:self.tapper];
-		}];
-	}];
-
+	NSObject<SHStoryItemProtocol> *storyItem = self.storyItemObject;
+	NSString *synopsis = nil != storyItem ? storyItem.synopsis:@"";
+	NSString *headline = nil != storyItem ? storyItem.headline:@"";
+	self.synopsisView.text = synopsis;
+	self.headlineLbl.text = headline;
+	[self.headlineLbl sizeToFit];
+	[self.view addGestureRecognizer:self.tapper];
 }
 
 - (void)didReceiveMemoryWarning {

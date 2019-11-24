@@ -13,6 +13,7 @@
 #import "SHStoryDumpView.h"
 #import "SHStoryPresentationTypicalController.h"
 #import "SHIntroViewController.h"
+#import "SHPostIntroPresenter.h"
 @import SHGlobal;
 @import SHCommon;
 @import SHData;
@@ -24,16 +25,15 @@
 @property (strong, nonatomic) IBOutlet UIView *tabsContainer;
 @property (strong,nonatomic) UITabBarController *tabsController;
 @property (weak,nonatomic) IBOutlet UIView *statsView;
-@property (strong, nonatomic) IBOutlet UIButton *beginButton;
-@property (strong, nonatomic) IBOutlet UIButton *skipButton;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *listTop;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *statsTop;
 @property (strong,nonatomic) NSManagedObjectContext *context;
 @property (strong,nonatomic) dispatch_queue_t configAccessorQueue;
 @end
 
-@implementation SHCentralViewController
-
+@implementation SHCentralViewController{
+	BOOL _shouldShowPostInto;
+}
 
 
 @synthesize tabsController = _tabsController;
@@ -81,16 +81,20 @@
 	return instance;
 }
 
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	[self.view checkForAndApplyVisualChanges];
-	//most likely any changes you want to add to load should go in
-	//determineIfFirstTimeAndSetupConfig
+	//most likely any changes you want to add to load
+	//should go in determineIfFirstTimeAndSetupConfig
 	[self determineIfFirstTimeAndSetupConfig];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
 	[super viewDidAppear:animated];
+	if(_shouldShowPostInto) {
+		[self prepareScreenPostIntro];
+	}
 }
 
 -(void)didReceiveMemoryWarning {
@@ -114,8 +118,7 @@
 
 
 -(void)prepareScreen{
-	NSManagedObjectContext *context = [self.dataController newBackgroundContext];
-	self.battleStats = [[SHBattleStatsViewController alloc] initWithContext:context];
+	self.battleStats = [[SHBattleStatsViewController alloc] initWithResourceUtil:self.resourceUtil];
 	[self pushChildVC:self.battleStats toViewOfParent:self.statsView];
 	self.statsView.translatesAutoresizingMaskIntoConstraints = NO;
 	self.battleStats.view.translatesAutoresizingMaskIntoConstraints = NO;
@@ -130,9 +133,21 @@
 
 -(void)prepareScreenPostIntro {
 	self.statsView.hidden = YES;
-	self.beginButton.hidden = NO;
-	self.skipButton.hidden = NO;
+	self.statsTop.active = NO;
+	self.listTop.active = YES;
 	[self setupTabs];
+	SHPostIntroPresenter *postIntro = [[SHPostIntroPresenter alloc]
+		initWithContext:self.context
+		withViewController:self
+		withResourceUtil:self.resourceUtil
+		withOnIntroCompleteAction:^(BOOL isStory){
+			if(isStory) {
+				self.statsView.hidden = NO;
+				self.listTop.active = NO;
+				self.statsTop.active = YES;
+			}
+	}];
+	[postIntro runPostIntroSequence];
 }
 
 
@@ -140,16 +155,21 @@
 -(void)determineIfFirstTimeAndSetupConfig{
 	SHConfig *config = [[SHConfig alloc] init];;
 	if(config.gameState == SH_GAME_STATE_UNINITIALIZED){
+		__weak SHCentralViewController *weakSelf = self;
 		SHIntroViewController *introVC = [[SHIntroViewController alloc]
 			initWithOnNextAction:^{
-				[self prepareScreenPostIntro];
+				SHCentralViewController *bSelf = weakSelf;
+				if(nil == bSelf) return;
+				bSelf->_shouldShowPostInto = YES;
+				//see: viewDidAppear
 			}
 			withContext:self.context
 			withResourceUtil:self.resourceUtil];
 			[self arrangeAndPushChildVCToFront:introVC];
 	}
 	else if(config.gameState == SH_GAME_STATE_INTRO_FINISHED) {
-		[self prepareScreenPostIntro];
+		_shouldShowPostInto = YES;
+		//see: viewDidAppear
 	}
 	else {
 		SHStoryPresentationTypicalController *present = [[SHStoryPresentationTypicalController alloc]

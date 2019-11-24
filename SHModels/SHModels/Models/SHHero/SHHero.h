@@ -8,14 +8,20 @@
 
 @import Foundation;
 @import CoreData;
+@import SHCommon;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHHero : NSManagedObject
-@property (readonly,nonatomic) NSMutableDictionary *mapable;
--(void)setupInitialState;
+@interface SHHero : NSObject
+@property (readonly,nonatomic) NSDictionary *mapable;
+@property (assign, nonatomic) NSInteger gold;
+@property (assign, nonatomic) NSInteger lvl;
+@property (assign, nonatomic) NSInteger maxHp;
+@property (assign, nonatomic) NSInteger maxXp;
+@property (assign, nonatomic) NSInteger nowHp;
+@property (assign, nonatomic) NSInteger nowXp;
+-(instancetype)initWithResourceUtil:(id<SHResourceUtilityProtocol>)resourceUtil;
 @end
 
 NS_ASSUME_NONNULL_END
 
-#import "SHHero+CoreDataProperties.h"

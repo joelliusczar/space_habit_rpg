@@ -61,9 +61,9 @@ const NSInteger YEARLY_SELECTION = 3;
 -(void)viewDidLoad {
 	[super viewDidLoad];
 	[self switchToActiveDaysViewController:self.rateType];
-	__weak typeof(self) weakSelf = self;
+	__weak SHRateSelectionViewController *weakSelf = self;
 	self.intervalSetter.rateStepEvent = ^(UIStepper *stepper,UIEvent *e){
-		typeof(weakSelf) bSelf = weakSelf;
+		SHRateSelectionViewController *bSelf = weakSelf;
 		[bSelf rateStepEvent:stepper event:e];
 	};
 	[self.intervalSetter changeBackgroundColorTo: [UIColor whiteColor]];

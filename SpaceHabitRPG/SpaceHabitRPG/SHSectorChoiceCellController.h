@@ -18,9 +18,9 @@
 @property (weak,nonatomic) IBOutlet UILabel *lvlLbl;
 @property (copy,nonatomic) void (^onSectorSelectionAction)(NSString*);
 +(instancetype)getSectorChoiceCell:(UITableView *)tableView withParent:(SHSectorChoiceViewController *)parent
-	withObjectID:(SHStoryItemObjectID *)objectID
+	withSector:(SHSector *)sector
 	withRow:(NSIndexPath *)rowInfo;
 
--(void)setupCellWithObjectID:(SHStoryItemObjectID *)objectID withParent:(SHSectorChoiceViewController *)parent
+-(void)setupCellWithSector:(SHSector *)sector withParent:(SHSectorChoiceViewController *)parent
 	withRow:(NSIndexPath *)rowInfo;
 @end

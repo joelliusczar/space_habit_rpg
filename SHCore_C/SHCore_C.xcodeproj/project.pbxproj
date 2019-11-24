@@ -14,6 +14,23 @@
 		27BCF912227BE97800540F4F /* libSHDatetime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27BCF911227BE97800540F4F /* libSHDatetime.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		27BC44E9238792200047F683 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27BC44E4238792200047F683 /* SHDatetime.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27D3183D2086C8CA0047F5F1;
+			remoteInfo = SHDatetime;
+		};
+		27BC44EB2387922F0047F683 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27BC44E4238792200047F683 /* SHDatetime.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 27D3183C2086C8CA0047F5F1;
+			remoteInfo = SHDatetime;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		271691C220885EF70059A58E /* libSHCore_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSHCore_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		271691CA20885F890059A58E /* SHDaily_C.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDaily_C.h; sourceTree = "<group>"; };
@@ -35,6 +52,7 @@
 		27BB290B215749E7003225BB /* vars.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = vars.mk; sourceTree = "<group>"; };
 		27BB290C2157CBAA003225BB /* DailyTestEverything.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = DailyTestEverything.py; sourceTree = "<group>"; };
 		27BB291A215B1093003225BB /* DailyStructs.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = DailyStructs.py; sourceTree = "<group>"; };
+		27BC44E4238792200047F683 /* SHDatetime.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHDatetime.xcodeproj; path = ../SHDatetime/SHDatetime.xcodeproj; sourceTree = "<group>"; };
 		27BCF911227BE97800540F4F /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -53,6 +71,7 @@
 		271691B920885EF70059A58E = {
 			isa = PBXGroup;
 			children = (
+				27BC44E4238792200047F683 /* SHDatetime.xcodeproj */,
 				27870453227BCA3A009C9DD6 /* Headers */,
 				276E6D96222A4AA500CB36CB /* Configs */,
 				2737D586216DAFEA00E0111F /* Scripts */,
@@ -133,6 +152,14 @@
 			path = Copy;
 			sourceTree = "<group>";
 		};
+		27BC44E5238792200047F683 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27BC44EA238792200047F683 /* libSHDatetime.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -162,6 +189,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				27BC44EC2387922F0047F683 /* PBXTargetDependency */,
 			);
 			name = SHCore_C;
 			productName = SHCore_C;
@@ -193,12 +221,28 @@
 			mainGroup = 271691B920885EF70059A58E;
 			productRefGroup = 271691C320885EF70059A58E /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 27BC44E5238792200047F683 /* Products */;
+					ProjectRef = 27BC44E4238792200047F683 /* SHDatetime.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				271691C120885EF70059A58E /* SHCore_C */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		27BC44EA238792200047F683 /* libSHDatetime.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSHDatetime.a;
+			remoteRef = 27BC44E9238792200047F683 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		2769C0A9227FB89700217480 /* ShellScript */ = {
@@ -246,6 +290,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		27BC44EC2387922F0047F683 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SHDatetime;
+			targetProxy = 27BC44EB2387922F0047F683 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		271691C420885EF70059A58E /* Debug */ = {

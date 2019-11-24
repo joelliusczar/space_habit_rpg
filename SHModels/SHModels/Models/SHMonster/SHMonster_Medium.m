@@ -25,17 +25,16 @@
 	return _monsterInfo;
 }
 
--(instancetype)initWithContext:(NSManagedObjectContext*)context{
-	if(self = [super init]) {
-		_context = context;
+-(instancetype)initWithResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil{
+	if(self = [super init]){
+		_resourceUtil = resourceUtil;
 	}
 	return self;
 }
 
--(SHMonster*)newRandomMonster:(NSString*)sectorKey sectorLvl:(uint32_t)sectorLvl{
+-(SHMonster*)newRandomMonster:(NSString*)sectorKey sectorLvl:(NSInteger)sectorLvl{
 	NSAssert(self.context,@"we need that global monster context bro!");
-	SHMonster *monster = nil;
-	monster = (SHMonster*)[self.context newEntity:SHMonster.entity];
+	SHMonster *monster =[[SHMonster alloc] initWithResourceUtil:self.resourceUtil];
 	monster.monsterKey = [self randomMonsterKey:sectorKey];
 	monster.lvl = shCalculateLvl(sectorLvl,SH_MONSTER_LVL_RANGE);
 	monster.nowHp = monster.maxHp;
@@ -51,6 +50,7 @@
 	return [pbw weightedRandomKey];
 }
 
+
 -(SHProbWeight*)buildProbilityWeight:(NSMutableArray<NSString*>*)keys{
 	SHMonsterInfoDictionary *monInfoDict = self.monsterInfo;
 	SHProbWeight *pbw = [[SHProbWeight alloc] init];
@@ -64,14 +64,8 @@
 
 
 -(SHMonster*)currentMonster{
-	NSAssert(self.context,@"we need that global monster context bro!");
-	SHMonster *monster = nil;
-	NSFetchRequest<SHMonster *> *request = [SHMonster fetchRequest];
-	NSSortDescriptor *sortByMonsterKey = [[NSSortDescriptor alloc]initWithKey:@"monsterKey" ascending:NO];
-	request.sortDescriptors = @[sortByMonsterKey];
-	NSArray<NSManagedObject *> *results = [self.context getItemsWithRequest:request];
-	NSAssert(results.count<2,@"There are too many monsters");
-	monster = (SHMonster*)results[0];
+	NSAssert(self.resourceUtil,@"we need that resource util bro!");
+	SHMonster *monster = [[SHMonster alloc] initWithResourceUtil:self.resourceUtil];
 	return monster;
 }
 

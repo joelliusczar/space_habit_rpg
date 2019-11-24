@@ -31,7 +31,7 @@
 
 
 -(instancetype)initWithViewController:(UIViewController *)prevScreen
-	withOnSelectionAction:(void (^)(SHStoryItemObjectID*))onSectorSelectionAction
+	withOnSelectionAction:(void (^)(SHSector*))onSectorSelectionAction
 {
 	if(self = [self initWithDefaultNib]){ 
 		_prevScreen = prevScreen;
@@ -66,7 +66,7 @@
 	(void)sender; (void)event;
 	[self.prevScreen popVCFromFront];
 	if(self.onSectorSelectionAction) {
-		self.onSectorSelectionAction(self.storyObjectID); //[self.central afterSectorPick:(SHSectorDTO *)self.storyItem];
+		self.onSectorSelectionAction(self.sector); //[self.central afterSectorPick:(SHSectorDTO *)self.storyItem];
 	}
 }
 

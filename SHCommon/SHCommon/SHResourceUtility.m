@@ -25,6 +25,14 @@
 }
 
 
+-(NSURL*)getURLMutableFile:(NSString*)fileName {
+	NSString *homeDir = NSHomeDirectory();
+	NSString *filePath = [homeDir stringByAppendingPathComponent:fileName];
+	NSURL *fileUrl = [NSURL fileURLWithPath:filePath isDirectory:NO];
+	return fileUrl;
+}
+
+
 -(NSDictionary *)getPListDict:(NSString*)fileName{
 	NSURL *fileUrl = [self getFileUrl:fileName];
 	NSError *error = nil;
@@ -32,18 +40,19 @@
 }
 
 
--(NSMutableDictionary *)getPListMutableDict:(NSString*)fileName {
-	NSString *fileUrl = [self getFileUrl:fileName];
+-(NSMutableDictionary*)getPListMutableDict:(NSString*)fileName {
+	NSURL *fileUrl = [self getURLMutableFile:fileName];
 	NSError *error = nil;
-	return [NSMutableDictionary dictionaryWithContentsOfURL:fileUrl error:&error];
+	NSDictionary *data = [NSMutableDictionary dictionaryWithContentsOfURL:fileUrl error:&error];;
+	return [NSMutableDictionary dictionaryWithDictionary:data];
 }
 
-
 -(NSArray *)getPListArray:(NSString*)fileName{
-	NSString *fileUrl = [self getFileUrl:fileName];
+	NSURL *fileUrl = [self getFileUrl:fileName];
 	NSError *error = nil;
 	return [NSArray arrayWithContentsOfURL:fileUrl error:&error];
 }
+
 
 
 @end

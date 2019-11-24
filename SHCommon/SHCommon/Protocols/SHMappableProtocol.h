@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol SHMappableProtocol <NSObject>
-@property (readonly,nonatomic) NSMutableDictionary *mapable;
+@property (readonly,nonatomic) NSDictionary *mapable;
 @end
 
 NS_ASSUME_NONNULL_END

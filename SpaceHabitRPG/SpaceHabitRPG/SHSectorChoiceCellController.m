@@ -13,10 +13,10 @@
 
 
 @interface SHSectorChoiceCellController()
-@property (nonatomic,weak) SHSectorChoiceViewController *parentSectorController;
-@property (nonatomic,strong) SHStoryItemObjectID *objectID;
-@property (nonatomic,strong) NSIndexPath *rowInfo;
-@property (nonatomic,strong) UISwipeGestureRecognizer *swiper;
+@property (weak, nonatomic) SHSectorChoiceViewController *parentSectorController;
+@property (strong, nonatomic,) SHSector *sector;
+@property (strong, nonatomic) NSIndexPath *rowInfo;
+@property (strong, nonatomic) UISwipeGestureRecognizer *swiper;
 @end
 
 @implementation SHSectorChoiceCellController
@@ -32,7 +32,7 @@
 
 
 +(instancetype)getSectorChoiceCell:(UITableView *)tableView withParent:(SHSectorChoiceViewController *)parent
-	withObjectID:(SHStoryItemObjectID *)objectID
+	withSector:(SHSector *)sector
 	withRow:(NSIndexPath *)rowInfo
 {
 	SHSectorChoiceCellController *cell = [tableView
@@ -40,32 +40,23 @@
 	if(nil==cell){
 		cell = [[SHSectorChoiceCellController alloc] init];
 	}
-	[cell setupCellWithObjectID:objectID withParent:parent withRow:rowInfo];
+	[cell setupCellWithSector:sector withParent:parent withRow:rowInfo];
 	return cell;
 }
 
 
--(void)setupCellWithObjectID:(SHStoryItemObjectID *)objectID withParent:(SHSectorChoiceViewController *)parent
+-(void)setupCellWithSector:(SHSector *)sector withParent:(SHSectorChoiceViewController *)parent
 	withRow:(NSIndexPath *)rowInfo
 {
 	self.parentSectorController = parent;
-	self.objectID = objectID;
-	[objectID.context performBlock:^{
-		NSError *err = nil;
-		SHSector *sector = (SHSector *)[objectID.context getEntityOrNil:objectID withError:&err];
-		if(err){
-			return;
-		}
-		NSString *sectorName = sector.fullName;
-		NSString *lvlText = [NSString stringWithFormat:@"Lvl: %d",sector.lvl];
-		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-			self.nameLbl.text = sectorName;
-			self.lvlLbl.text = lvlText;
-			self.rowInfo = rowInfo;
-			[self addGestureRecognizer:self.swiper];
-			[self.contentView checkForAndApplyVisualChanges];
-		}];
-	}];
+
+	NSString *sectorName = sector.fullName;
+	NSString *lvlText = [NSString stringWithFormat:@"Lvl: %ld",sector.lvl];
+	self.nameLbl.text = sectorName;
+	self.lvlLbl.text = lvlText;
+	self.rowInfo = rowInfo;
+	[self addGestureRecognizer:self.swiper];
+	[self.contentView checkForAndApplyVisualChanges];
 }
 
 -(void)awakeFromNib{
@@ -75,7 +66,7 @@
 -(void)handleSwipe:(UISwipeGestureRecognizer *)swipe{
 	if(swipe.direction == UISwipeGestureRecognizerDirectionLeft){
 		SHSectorDescriptionViewController *descView = self.parentSectorController.descViewController;
-		descView.storyItemObjectID = self.objectID;
+		descView.sector = self.sector;
 		[self.parentSectorController arrangeAndPushChildVCToFront:descView];
 	}
 	else{

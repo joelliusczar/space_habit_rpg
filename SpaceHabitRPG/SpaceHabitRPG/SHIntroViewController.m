@@ -9,7 +9,6 @@
 #import "SHIntroViewController.h"
 #import "SHStoryConstants.h"
 #import "SHSectorChoiceViewController.h"
-#import "SHIntroHelper.h"
 @import SHCommon;
 @import SHControls;
 
@@ -23,7 +22,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapper;
 @property (strong, nonatomic) SHScrollAnimator *animator;
-@property (strong, nonatomic) SHIntroHelper *introHelper;
 @end
 
 @implementation SHIntroViewController
@@ -46,9 +44,9 @@
 	if(nil == _animator) {
 		CGFloat scrollTo = [self scrollToYCoord];
 		_animator = [[SHScrollAnimator alloc] initWithScrollView:self.scrollView withScrollLength:scrollTo];
-		__weak typeof(self) weakSelf = self;
+		__weak SHIntroViewController *weakSelf = self;
 		_animator.onAnimationFinish = ^{
-			typeof(weakSelf) bSelf = weakSelf;
+			SHIntroViewController *bSelf = weakSelf;
 			if(nil == bSelf) return;
 			[bSelf afterScroll];
 		};
@@ -60,9 +58,6 @@
 -(void)viewDidLoad {
 	[super viewDidLoad];
 	[self.view checkForAndApplyVisualChanges];
-	[self.context performBlock:^{
-		[self.introHelper cleanUpPreviousAttempts];
-	}];
 	SHStoryItemDictionary *storyDict = [[SHStoryItemDictionary alloc] initWithResourceUtil:self.resourceUtil];
 	NSString* introBody = [storyDict getStoryItem:@"introbody"];
 	NSString* introPre = [storyDict getStoryItem:@"intropre"];
@@ -114,7 +109,10 @@
 
 - (IBAction)nextButton_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
 	(void)sender; (void)event;
-	[self.introHelper afterIntroCompleted];
+	SHConfig *config = [[SHConfig alloc] init];
+	if(config.gameState == SH_GAME_STATE_UNINITIALIZED) {
+		config.gameState = SH_GAME_STATE_INTRO_FINISHED;
+	}
 	[self.animator stopAnimation];
 	[self popVCFromFront];
 	self.onNextAction();

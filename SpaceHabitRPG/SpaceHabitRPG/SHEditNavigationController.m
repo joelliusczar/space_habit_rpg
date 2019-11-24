@@ -108,7 +108,7 @@
 
 
 -(void)confirmDelete{
-	__weak typeof(self) weakSelf = self;
+	__weak SHEditNavigationController *weakSelf = self;
 	UIAlertController *deleteAlert = [UIAlertController
 		alertControllerWithTitle:@"Delete?"
 		message:@"Are you sure you want to delete this?"
@@ -121,7 +121,7 @@
 		actionWithTitle:@"Yes"
 		style:UIAlertActionStyleDefault
 		handler:^(UIAlertAction *action){
-			typeof(weakSelf) bSelf = weakSelf;
+			SHEditNavigationController *bSelf = weakSelf;
 			if(nil == bSelf) return;
 			[bSelf.editingScreen deleteModel];
 			[bSelf popVCFromFront];

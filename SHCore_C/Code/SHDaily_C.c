@@ -31,7 +31,7 @@ static void _setDayCounts(int64_t *daysCounts,bool *activeDays,int64_t counter
 	,bool isReverse)
 {
 	for(int dayIdx = 0;dayIdx < SH_WEEKLEN;dayIdx++){
-		int useIdx = isReverse?SH_WEEKLEN -dayIdx -1:dayIdx;
+		int useIdx = isReverse? SH_WEEKLEN - dayIdx -1 : dayIdx;
 		counter++;
 		daysCounts[useIdx] = counter;
 		if(activeDays[useIdx]){

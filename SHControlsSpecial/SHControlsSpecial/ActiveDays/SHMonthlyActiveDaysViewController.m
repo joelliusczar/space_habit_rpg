@@ -55,9 +55,9 @@
 	[self hideKeyboard];
 	[super addItemBtn_press_action];
 	SHMonthPartPicker *dayOfMonthPicker = [[SHMonthPartPicker alloc] init];
-	__weak typeof(self) weakSelf = self;
+	__weak SHMonthlyActiveDaysViewController *weakSelf = self;
 	dayOfMonthPicker.spinPickerAction = ^(SHSpinPicker *picker,BOOL *shouldCancel) {
-		typeof(weakSelf) bSelf = weakSelf;
+		SHMonthlyActiveDaysViewController *bSelf = weakSelf;
 		*shouldCancel = ![bSelf addCellWithPickerSelection: picker];
 	};
 	[self.linkedViewController arrangeAndPushChildVCToFront:dayOfMonthPicker];
