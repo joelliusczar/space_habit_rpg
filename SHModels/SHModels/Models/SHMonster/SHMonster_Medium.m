@@ -25,6 +25,7 @@
 	return _monsterInfo;
 }
 
+
 -(instancetype)initWithResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil{
 	if(self = [super init]){
 		_resourceUtil = resourceUtil;
@@ -32,9 +33,9 @@
 	return self;
 }
 
+
 -(SHMonster*)newRandomMonster:(NSString*)sectorKey sectorLvl:(NSInteger)sectorLvl{
-	NSAssert(self.context,@"we need that global monster context bro!");
-	SHMonster *monster =[[SHMonster alloc] initWithResourceUtil:self.resourceUtil];
+	SHMonster *monster =[[SHMonster alloc] initEmptyWithResourceUtil:self.resourceUtil];
 	monster.monsterKey = [self randomMonsterKey:sectorKey];
 	monster.lvl = shCalculateLvl(sectorLvl,SH_MONSTER_LVL_RANGE);
 	monster.nowHp = monster.maxHp;

@@ -12,9 +12,9 @@
 #import "SHAddItemsFooter.h"
 #import "SHAddItemsFooterDelegateProtocol.h"
 #import "SHSpinPicker.h"
-#import "SHResizeResponderProtocol.h"
 #import "SHItemFlexibleListDelegateProtocol.h"
 #import "SHNestedControlProtocol.h"
+#import "SHViewController.h"
 
 
 @interface SHItemFlexibleListView :SHViewController
@@ -22,7 +22,7 @@
 ,UITableViewDelegate>
 @property (weak,nonatomic) IBOutlet UITableView *itemTbl;
 @property (weak,nonatomic) IBOutlet NSLayoutConstraint *tblHeightConstraint;
-@property (weak,nonatomic) UIViewController *linkedViewController;
+@property (weak,nonatomic) SHViewController *linkedViewController;
 @property (assign, nonatomic) NSUInteger displayCount;
 
 /*
@@ -32,22 +32,10 @@
 @property (weak,nonatomic) id<SHItemFlexibleListDelegateProtocol> setChangedelegate;
 
 /*
- inherit from SHResizeResponderProtocol and assign to resizeResponder to
- be notified of its whenever some resizing action is happening
-*/
-@property (weak,nonatomic) id<SHResizeResponderProtocol> resizeResponder;
-
-/*
  abstract: override to provide a way to get the count of the backing list
  for itemTbl
 */
 @property (readonly,nonatomic) NSUInteger backendListCount;
-
-/*
- calculates the size of control based on how many items have previously
- been added to it.
-*/
-CGFloat getInitialHeight(NSUInteger itemCount);
 
 /*
  handles some initial configuration such as the size

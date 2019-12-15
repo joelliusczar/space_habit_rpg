@@ -21,15 +21,15 @@
         <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qgt-Ab-Zj3">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jeE-7J-ZJo">
-                    <rect key="frame" x="0.0" y="44" width="414" height="189"/>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jeE-7J-ZJo">
+                    <rect key="frame" x="0.0" y="-145" width="414" height="189"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="189" id="PzN-86-FQq"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ug1-1S-I7J" userLabel="tab container">
-                    <rect key="frame" x="0.0" y="233" width="414" height="629"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
             </subviews>
@@ -47,7 +47,7 @@
             <viewLayoutGuide key="safeArea" id="n1r-16-8uH"/>
             <variation key="default">
                 <mask key="constraints">
-                    <exclude reference="qb9-mp-2ig"/>
+                    <exclude reference="G7Y-LX-WMg"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="-217" y="-102"/>

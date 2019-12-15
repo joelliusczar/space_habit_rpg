@@ -29,12 +29,13 @@ void printWorkingDir(){
 {
 	(void)application;
 	(void)launchOptions;
-	NSLog(@"Done launching 1");
 	NSBundle *modelsBundle = [NSBundle bundleForClass:SHBundleKey.class];
 	self.dataController = [SHCoreData newWithOptionsBlock:^(SHCoreDataOptions *options){
 		options.appBundle = modelsBundle;
 	}];
 	self.resourceUtil = [[SHResourceUtility alloc] initWithBundle:modelsBundle];
+	SHSector.sectorInfo = [[SHSectorInfoDictionary alloc] initWithResourceUtil:self.resourceUtil];
+	SHMonster.monsterInfo = [[SHMonsterInfoDictionary alloc] initWithResourceUtil:self.resourceUtil];
 	self.centralController = [SHCentralViewController
 		newWithDataController:self.dataController
 		andNibName:@"SHCentralViewController"
@@ -44,7 +45,6 @@ void printWorkingDir(){
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	self.window.rootViewController = self.centralController;
 	[self.window makeKeyAndVisible];
-	NSLog(@"Done launching 2");
 	// Override point for customization after application launch.
 	return YES;
 }

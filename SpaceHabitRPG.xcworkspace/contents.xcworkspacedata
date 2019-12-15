@@ -101,9 +101,6 @@
       location = "group:TestUI/TestUI.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SHControlsSpecial/SHControlsSpecial.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:ObjCPlayground/ObjCPlayground.xcodeproj">
    </FileRef>
    <FileRef

@@ -12,7 +12,7 @@
 @import SHData;
 @import SHModels;
 
-@interface SHCentralViewController : UIViewController;
+@interface SHCentralViewController : SHViewController;
 @property (strong,nonatomic) id<P_CoreData> dataController;
 @property (strong,nonatomic) SHConfigDTO *configDTO;
 @property (strong,nonatomic) SHHeroDTO *heroDTO;

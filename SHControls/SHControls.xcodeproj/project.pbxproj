@@ -74,7 +74,6 @@
 		271D613F20421A9A005C9F7E /* SHItemFlexibleListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271D610320421A9A005C9F7E /* SHItemFlexibleListView.xib */; };
 		271D614020421A9A005C9F7E /* SHControlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D610420421A9A005C9F7E /* SHControlController.m */; };
 		271D614120421A9A005C9F7E /* SHViewProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D610520421A9A005C9F7E /* SHViewProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		271D614520421F1A005C9F7E /* SHResizeResponderProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 271D614420421F1A005C9F7E /* SHResizeResponderProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27249B9A21C5809E006A884B /* UIView+Helpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 27249B9821C5809E006A884B /* UIView+Helpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27249B9B21C5809E006A884B /* UIView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 27249B9921C5809E006A884B /* UIView+Helpers.m */; };
 		27249B9E21C58240006A884B /* UIScrollView+ScrollAdjusters.h in Headers */ = {isa = PBXBuildFile; fileRef = 27249B9C21C58240006A884B /* UIScrollView+ScrollAdjusters.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -182,7 +181,6 @@
 		271D610320421A9A005C9F7E /* SHItemFlexibleListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHItemFlexibleListView.xib; sourceTree = "<group>"; };
 		271D610420421A9A005C9F7E /* SHControlController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHControlController.m; sourceTree = "<group>"; };
 		271D610520421A9A005C9F7E /* SHViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHViewProtocol.h; sourceTree = "<group>"; };
-		271D614420421F1A005C9F7E /* SHResizeResponderProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHResizeResponderProtocol.h; sourceTree = "<group>"; };
 		27249B9821C5809E006A884B /* UIView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Helpers.h"; path = "SHControls/UIView+Helpers.h"; sourceTree = "<group>"; };
 		27249B9921C5809E006A884B /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Helpers.m"; path = "SHControls/UIView+Helpers.m"; sourceTree = "<group>"; };
 		27249B9C21C58240006A884B /* UIScrollView+ScrollAdjusters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+ScrollAdjusters.h"; path = "SHControls/UIScrollView+ScrollAdjusters.h"; sourceTree = "<group>"; };
@@ -298,7 +296,6 @@
 		271D60C420421A99005C9F7E /* ControlDelegates */ = {
 			isa = PBXGroup;
 			children = (
-				271D614420421F1A005C9F7E /* SHResizeResponderProtocol.h */,
 				271D60C520421A99005C9F7E /* SHStreakResetterDelegateProtocol.h */,
 				271D60C620421A99005C9F7E /* SHSubtasksTableViewDelegateProtocol.h */,
 				271D60C720421A99005C9F7E /* SHAddItemsFooterDelegateProtocol.h */,
@@ -434,7 +431,6 @@
 				27249B9E21C58240006A884B /* UIScrollView+ScrollAdjusters.h in Headers */,
 				271D610F20421A9A005C9F7E /* SHImportanceSlidersDelegateProtocol.h in Headers */,
 				271D610620421A9A005C9F7E /* SHStreakResetterDelegateProtocol.h in Headers */,
-				271D614520421F1A005C9F7E /* SHResizeResponderProtocol.h in Headers */,
 				27D0D6E421D02A2D00886721 /* UIViewController+Helper.h in Headers */,
 				27118827203FF9DF0085A549 /* SHImportanceSliderView.h in Headers */,
 				271D610720421A9A005C9F7E /* SHSubtasksTableViewDelegateProtocol.h in Headers */,

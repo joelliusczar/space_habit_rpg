@@ -9,6 +9,7 @@
 #import "SHMonster.h"
 #import "SHModelTools.h"
 #import "SHMonsterDictionaryEntry.h"
+#import "SHMonster_Medium.h"
 @import SHCommon;
 @import SHData;
 @import SHGlobal;
@@ -33,16 +34,23 @@ static NSString* const BACKEND_KEY = @"monster_data";
 	if(self = [super init]) {
 		_saveUrl = [resourceUtil getURLMutableFile:BACKEND_KEY];
 		_backend = [resourceUtil getPListMutableDict:BACKEND_KEY];
+		_resourceUtil = resourceUtil;
+	}
+	return self;
+}
+
+
+-(instancetype)initEmptyWithResourceUtil:(id<SHResourceUtilityProtocol>)resourceUtil {
+	if(self = [super init]) {
+		_saveUrl = [resourceUtil getURLMutableFile:BACKEND_KEY];
+		_backend = [NSMutableDictionary dictionary];
+		_resourceUtil = resourceUtil;
 	}
 	return self;
 }
 
 
 +(SHMonsterInfoDictionary *)monsterInfo{
-	if(nil == _monsterInfo){
-		id<SHResourceUtilityProtocol> resourceUtil = [SHResourceUtility new];
-		_monsterInfo = [[SHMonsterInfoDictionary alloc] initWithResourceUtil:resourceUtil];
-	}
 	return _monsterInfo;
 }
 
@@ -70,7 +78,8 @@ static NSString* const BACKEND_KEY = @"monster_data";
 
 
 -(NSString *)headline{
-	return self.entry.headline;
+	NSString *headline = [NSString stringWithFormat:self.entry.headline, self.lvl];
+	return headline;
 }
 
 
@@ -155,5 +164,20 @@ static NSString* const BACKEND_KEY = @"monster_data";
 }
 
 
+-(void)saveToFile {
+	NSError *error = nil;
+	[self.backend writeToURL:self.saveUrl error:&error];
+	;
+}
+
+
+-(BOOL)isValid {
+	return self.backend != nil;
+}
+
+
+-(void)reload {
+	self.backend = [self.resourceUtil getPListMutableDict:BACKEND_KEY];
+}
 
 @end

@@ -41,7 +41,9 @@ extern NSString* const HOME_KEY;
 
 -(NSArray<SHSector*>*)newMultipleSectorChoicesGivenHero:(SHHero*)hero
 	ifShouldMatchLvl:(BOOL)matchLvl;
-
+	
+-(nullable NSArray<SHSector*>*)getUndecidedSectorChoices;
+-(void)eraseSectorChoices;
 NSArray<NSString*>* getUnlockedSectorGroupKeys(NSUInteger heroLvl);
 @end
 

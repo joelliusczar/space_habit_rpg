@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign, nonatomic) NSInteger nowHp;
 @property (assign, nonatomic) NSInteger nowXp;
 -(instancetype)initWithResourceUtil:(id<SHResourceUtilityProtocol>)resourceUtil;
+-(void)saveToFile;
 @end
 
 NS_ASSUME_NONNULL_END

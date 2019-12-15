@@ -22,7 +22,7 @@
 
 
 -(NSString *)fullName{
-	NSString *monName = self.monInfoDict[@"NAME"];;
+	NSString *monName = self.monInfoDict[@"NAME"];
 	#if SH_EXTRA_ERRORS
 		NSAssert(monName,@"Monster name should not be null");
 	#else
@@ -37,15 +37,19 @@
 -(NSString *)headline{
 	NSString *grammaticalAgreement = self.monInfoDict[@"GRAMMATICAL_AGREEMENT"];
 	if([grammaticalAgreement isEqualToString:@"SC"]){
-		return [NSString stringWithFormat:@"Your ship encountered a \n%@!",self.fullName];
+		return [NSString stringWithFormat:@"Your ship encountered a \nlevel %@ %@!",@"%ld",self.fullName];
 	}
 	if([grammaticalAgreement isEqualToString:@"SV"]){
-		return [NSString stringWithFormat:@"Your ship encountered an \n%@!",self.fullName];
+		return [NSString stringWithFormat:@"Your ship encountered an \nlevel %@ %@!",@"%ld",self.fullName];
 	}
 	if([grammaticalAgreement isEqualToString:@"PL"]){
-		return [NSString stringWithFormat:@"Your ship encountered some \n%@!",self.fullName];
+		return [NSString stringWithFormat:@"Your ship encountered some \nlevel %@ %@!",@"%ld",self.fullName];
 	}
-	@throw [NSException exceptionWithName:@"Invalid gramatical agreement" reason:[NSString stringWithFormat:@"The culprit was %@",self.fullName]userInfo:nil];
+	@throw [NSException
+		exceptionWithName:@"Invalid gramatical agreement"
+		reason:[NSString
+			stringWithFormat:@"The culprit was %@",self.fullName]
+		userInfo:nil];
 }
 
 -(NSString*)synopsis{

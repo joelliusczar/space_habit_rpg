@@ -30,19 +30,16 @@
 -(void)viewDidLoad{
 	[super viewDidLoad];
 	UITapGestureRecognizer *tapGestureBG = [[UITapGestureRecognizer alloc]
-											initWithTarget:self
-											action:@selector(background_tap_action:)];
+		initWithTarget:self
+		action:@selector(background_tap_action:)];
 	[self.view addGestureRecognizer:tapGestureBG];
 }
 
 
 -(void)background_tap_action:(UITapGestureRecognizer *)sender{
-	shWrapReturnVoid wrappedCall = ^void(){
-		if(sender.view==self.view){
-			[self popVCFromFront];
-		}
-	};
-	[self.interceptor callVoidWrapped:wrappedCall withInfo:nil];
+	if(sender.view==self.view){
+		[self popVCFromFront];
+	}
 }
 
 - (void)didReceiveMemoryWarning {

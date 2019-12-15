@@ -21,10 +21,6 @@ static NSString* const BACKEND_KEY = @"sector_data";
 
 
 +(SHSectorInfoDictionary*)sectorInfo{
-	if(nil == _sectorInfo){
-		id<SHResourceUtilityProtocol> resourceUtil = [SHResourceUtility new];
-		_sectorInfo = [[SHSectorInfoDictionary alloc] initWithResourceUtil:resourceUtil];
-	}
 	return _sectorInfo;
 }
 
@@ -38,6 +34,7 @@ static NSString* const BACKEND_KEY = @"sector_data";
 	if(self = [super init]) {
 		_saveUrl = [resourceUtil getURLMutableFile:BACKEND_KEY];
 		_backend = [resourceUtil getPListMutableDict:BACKEND_KEY];
+		_resourceUtil = resourceUtil;
 	}
 	return self;
 }
@@ -47,6 +44,19 @@ static NSString* const BACKEND_KEY = @"sector_data";
 	if(self = [super init]) {
 		_saveUrl = [resourceUtil getURLMutableFile:BACKEND_KEY];
 		_backend = [NSMutableDictionary dictionary];
+		_resourceUtil = resourceUtil;
+	}
+	return self;
+}
+
+
+-(instancetype)initWithDictionary:(NSMutableDictionary *)dict
+	withResourceUtil:(id<SHResourceUtilityProtocol>)resourceUtil
+{
+	if(self = [super init]) {
+		_saveUrl = [resourceUtil getURLMutableFile:BACKEND_KEY];
+		_resourceUtil = resourceUtil;
+		_backend = dict;
 	}
 	return self;
 }
@@ -81,7 +91,7 @@ static NSString* const BACKEND_KEY = @"sector_data";
 
 
 -(NSString *)headline{
-	return @"";
+	return [NSString stringWithFormat:@"Your ship has arrived at \n%@",self.fullName];
 }
 
 
@@ -142,5 +152,20 @@ static NSString* const BACKEND_KEY = @"sector_data";
 	self.backend[@"sectorKey"] = sectorKey;
 }
 
+
+-(void)saveToFile {
+	NSError *error = nil;
+	[self.backend writeToURL:self.saveUrl error:&error];
+}
+
+
+-(BOOL)isValid {
+	return self.backend != nil;
+}
+
+
+-(void)reload {
+	self.backend = [self.resourceUtil getPListMutableDict:BACKEND_KEY];
+}
 
 @end

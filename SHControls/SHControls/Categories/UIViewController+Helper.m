@@ -50,11 +50,4 @@
 }
 
 
--(void)replaceAllChildViewControllersWith:(UIViewController*)viewController{
-	for(UIViewController *vc in self.childViewControllers){
-		[vc popVCFromFront];
-	}
-	[self arrangeAndPushChildVCToFront:viewController];
-}
-
 @end

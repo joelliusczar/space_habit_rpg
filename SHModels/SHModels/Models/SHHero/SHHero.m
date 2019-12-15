@@ -24,14 +24,17 @@ static NSString* const BACKEND_KEY = @"hero_data";
 -(instancetype)initWithResourceUtil:(id<SHResourceUtilityProtocol>)resourceUtil{
 	if(self = [super init]) {
 		_saveUrl = [resourceUtil getURLMutableFile:BACKEND_KEY];
-		NSDictionary *data = [resourceUtil getPListDict:BACKEND_KEY];
-		_backend = [NSMutableDictionary dictionaryWithDictionary:data];
+		_backend = [resourceUtil getPListMutableDict:BACKEND_KEY];
+		if(nil == _backend) {
+			_backend = [NSMutableDictionary dictionary];
+		}
 	}
 	return self;
 }
 
+
 -(NSDictionary *)mapable{
-		return [NSDictionary dictionaryWithDictionary:self.backend];
+	return [NSDictionary dictionaryWithDictionary:self.backend];
 }
 
 
@@ -106,6 +109,11 @@ static NSString* const BACKEND_KEY = @"hero_data";
 	self.backend[@"nowXp"] = @(nowXp);
 }
 
+
+-(void)saveToFile {
+	NSError *error = nil;
+	[self.backend writeToURL:self.saveUrl error:&error];
+}
 
 
 @end

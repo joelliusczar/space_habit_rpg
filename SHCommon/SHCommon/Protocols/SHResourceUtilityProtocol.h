@@ -11,12 +11,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol SHResourceUtilityProtocol <NSObject>
--(NSURL*)getFileUrl:(NSString*)fileName;
--(NSURL*)getURLMutableFile:(NSString*)fileName;
--(NSDictionary *)getPListDict:(NSString*)fileName;
--(NSMutableDictionary*)getPListMutableDict:(NSString*)fileName;
--(NSArray *)getPListArray:(NSString*)fileName;
-
+-(NSURL*)getFileUrl:(NSString*)fileKey;
+-(NSURL*)getURLMutableFile:(NSString*)fileKey;
+-(NSDictionary *)getPListDict:(NSString*)fileKey;
+-(NSMutableDictionary*)getPListMutableDict:(NSString*)fileKey;
+-(NSArray *)getPListArray:(NSString*)fileKey;
+-(NSMutableArray*)getPListMutableArray:(NSString*)fileKey;
+-(void)erase:(NSString*)fileKey;
 @end
 
 NS_ASSUME_NONNULL_END

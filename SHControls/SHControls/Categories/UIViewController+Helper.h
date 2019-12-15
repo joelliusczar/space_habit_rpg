@@ -12,16 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIViewController (Helper)
 
--(void)pushChildVC:(UIViewController*)child toViewOfParent:(UIView*)view;
-//if you want UIViewContoller and its view to be front, call this
--(void)arrangeAndPushChildVCToFront:(UIViewController *)child;
-//if you want to get rid of a child view controller, call this
--(void)popVCFromFront;
-
 -(void)popAllChildVCs;
 
 -(void)showErrorView:(NSString*)name withError:(NSError*)error;
--(void)replaceAllChildViewControllersWith:(UIViewController*)viewController;
 @end
 
 NS_ASSUME_NONNULL_END

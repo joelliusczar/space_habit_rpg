@@ -33,13 +33,6 @@
 }
 
 
-CGFloat getInitialHeight(NSUInteger itemCount){
-	return itemCount < (NSUInteger)SH_SUB_TABLE_MAX_ROWS?
-	SH_SUB_TABLE_CELL_HEIGHT*itemCount:
-	calculateMaxTableHeight(SH_SUB_TABLE_CELL_HEIGHT);
-}
-
-
 CGFloat calculateMaxTableHeight(CGFloat changeHeight){
 	return SH_SUB_TABLE_MAX_ROWS*fabs(changeHeight);
 }
@@ -47,10 +40,6 @@ CGFloat calculateMaxTableHeight(CGFloat changeHeight){
 
 
 -(void)scrollListToRow:(NSIndexPath *)path{
-	UITableViewCell *cell = [self.itemTbl cellForRowAtIndexPath:path];
-	CGFloat offset = cell.frame.size.height;
-	[self scrollByOffset:offset];
-	[self scrollVisibleToControl:self];
 	[self.itemTbl scrollToRowAtIndexPath:path
 		atScrollPosition:UITableViewScrollPositionBottom
 		animated:YES];
@@ -160,51 +149,6 @@ numberOfRowsInSection:(NSInteger)section{
 	SEL delegateSel = @selector(notifyDeleteCell:);
 	if([self.setChangedelegate respondsToSelector:delegateSel]){
 		[self.setChangedelegate notifyDeleteCell:eventInfo];
-	}
-}
-
-
--(void)beginUpdate{
-	SEL delegateSel = @selector(beginUpdate);
-	if([self.resizeResponder respondsToSelector:delegateSel]){
-		[self.resizeResponder beginUpdate];
-	}
-}
-
-
--(void)endUpdate{
-	SEL delegateSel = @selector(endUpdate);
-	if([self.resizeResponder respondsToSelector:delegateSel]){
-		[self.resizeResponder endUpdate];
-	}
-}
-
--(void)respondToHeightResize:(CGFloat)change{
-	SEL delegateSel = @selector(respondToHeightResize:);
-	if([self.resizeResponder respondsToSelector:delegateSel]){
-		[self.resizeResponder respondToHeightResize:change];
-	}
-}
-
--(void)scrollByOffset:(CGFloat)offset{
-	SEL delegateSel = @selector(scrollByOffset:);
-	if([self.resizeResponder respondsToSelector:delegateSel]){
-		[self.resizeResponder scrollByOffset:offset];
-	}
-}
-
-
--(void)scrollVisibleToControl:(UIViewController *)control{
-	SEL delegateSel = @selector(scrollVisibleToControl:);
-	if([self.resizeResponder respondsToSelector:delegateSel]){
-		[self.resizeResponder scrollVisibleToControl:control];
-	}
-}
-
-
--(void)hideKeyboard{
-	if([self.resizeResponder respondsToSelector:@selector(hideKeyboard)]){
-		[self.resizeResponder hideKeyboard];
 	}
 }
 

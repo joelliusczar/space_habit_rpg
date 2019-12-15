@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>storyModeDesc</key>
+	<string>As part of your journey, do you prefer to see the story elements such as monster encounters, battle updates, and mission selection? Or would you prefer to take a hands off approach to those elements and skip them? Whichever you choose, you can switch your choice in the settings if you change your mind.</string>
 	<key>introbody</key>
 	<string>		You are a part of the intrepid crew of a ship committed to exploring the far reaches of space and beyond. You help the ship by completing your daily to-dos and building productive habits for yourself.
 	It may not be as exciting as shooting lasers and pushing buttons on holo-screens but it&apos;s just as important because if you don&apos;t complete your to-dos, the ship falls apart and when the ship falls apart, it&apos;s vulnerable to attack and when the ship gets attacked, it gets blown up, and when the ship blows up, people die. 

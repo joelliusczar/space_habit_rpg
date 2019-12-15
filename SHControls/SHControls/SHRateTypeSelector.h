@@ -12,7 +12,7 @@
 @import SHGlobal;
 @import UIKit;
 
-@interface SHRateTypeSelector : UIViewController
+@interface SHRateTypeSelector : SHViewController
 @property (weak,nonatomic) IBOutlet UILabel *everyXCheckLbl;
 @property (weak,nonatomic) IBOutlet SHButton *everyXBtn;
 @property (weak,nonatomic) IBOutlet UILabel *weeklyCheckLbl;

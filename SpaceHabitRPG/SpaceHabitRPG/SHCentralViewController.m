@@ -9,11 +9,10 @@
 #import "SHCentralViewController.h"
 #import "SHDailyViewController.h"
 #import "SHMenuViewController.h"
-#import "SHSectorChoiceViewController.h"
 #import "SHStoryDumpView.h"
 #import "SHStoryPresentationTypicalController.h"
 #import "SHIntroViewController.h"
-#import "SHPostIntroPresenter.h"
+#import "SHStoryModeSelectViewController.h"
 @import SHGlobal;
 @import SHCommon;
 @import SHData;
@@ -118,11 +117,13 @@
 
 
 -(void)prepareScreen{
+	self.statsView.hidden = NO;
+	self.listTop.active = NO;
+	self.statsTop.active = YES;
 	self.battleStats = [[SHBattleStatsViewController alloc] initWithResourceUtil:self.resourceUtil];
 	[self pushChildVC:self.battleStats toViewOfParent:self.statsView];
 	self.statsView.translatesAutoresizingMaskIntoConstraints = NO;
 	self.battleStats.view.translatesAutoresizingMaskIntoConstraints = NO;
-	//[self.statsView.heightAnchor constraintEqualToAnchor:self.battleStats.view.heightAnchor].active = YES;
 	[self.battleStats.view.topAnchor constraintEqualToAnchor:self.statsView.topAnchor].active = YES;
 	[self.battleStats.view.leadingAnchor constraintEqualToAnchor:self.statsView.leadingAnchor].active = YES;
 	[self.battleStats.view.trailingAnchor constraintEqualToAnchor:self.statsView.trailingAnchor].active = YES;
@@ -132,55 +133,60 @@
 
 
 -(void)prepareScreenPostIntro {
-	self.statsView.hidden = YES;
-	self.statsTop.active = NO;
-	self.listTop.active = YES;
 	[self setupTabs];
-	SHPostIntroPresenter *postIntro = [[SHPostIntroPresenter alloc]
+	__weak SHCentralViewController *weakSelf = self;
+	SHStoryModeSelectViewController *storyModeSelect =
+		[[SHStoryModeSelectViewController alloc]
 		initWithContext:self.context
-		withViewController:self
 		withResourceUtil:self.resourceUtil
 		withOnIntroCompleteAction:^(BOOL isStory){
+			SHCentralViewController *bSelf = weakSelf;
+			if(nil == bSelf) return;
 			if(isStory) {
-				self.statsView.hidden = NO;
-				self.listTop.active = NO;
-				self.statsTop.active = YES;
+				[bSelf prepareScreen];
 			}
-	}];
-	[postIntro runPostIntroSequence];
+		}];
+	[self arrangeAndPushChildVCToFront:storyModeSelect];
 }
 
 
-//#story_logic: both
+- (void)showIntro {
+	__weak SHCentralViewController *weakSelf = self;
+	SHIntroViewController *introVC = [[SHIntroViewController alloc]
+		initWithOnNextAction:^{
+		SHCentralViewController *bSelf = weakSelf;
+		if(nil == bSelf) return;
+		[bSelf prepareScreenPostIntro];
+	}
+		withContext:self.context
+		withResourceUtil:self.resourceUtil];
+	[self arrangeAndPushChildVCToFront:introVC];
+}
+
+
+- (void)normalFlow {
+	SHStoryPresentationTypicalController *present = [[SHStoryPresentationTypicalController alloc]
+		 initWithContext:self.context
+		 withViewController:self
+		 withResourceUtil:self.resourceUtil
+		 withOnPresentComplete:^{
+			[self prepareScreen];
+	}];
+	[present setupNormalSectorAndMonster];
+}
+
+
 -(void)determineIfFirstTimeAndSetupConfig{
-	SHConfig *config = [[SHConfig alloc] init];;
+	SHConfig *config = [[SHConfig alloc] init];
 	if(config.gameState == SH_GAME_STATE_UNINITIALIZED){
-		__weak SHCentralViewController *weakSelf = self;
-		SHIntroViewController *introVC = [[SHIntroViewController alloc]
-			initWithOnNextAction:^{
-				SHCentralViewController *bSelf = weakSelf;
-				if(nil == bSelf) return;
-				bSelf->_shouldShowPostInto = YES;
-				//see: viewDidAppear
-			}
-			withContext:self.context
-			withResourceUtil:self.resourceUtil];
-			[self arrangeAndPushChildVCToFront:introVC];
+		[self showIntro];
 	}
 	else if(config.gameState == SH_GAME_STATE_INTRO_FINISHED) {
 		_shouldShowPostInto = YES;
 		//see: viewDidAppear
 	}
 	else {
-		SHStoryPresentationTypicalController *present = [[SHStoryPresentationTypicalController alloc]
-			initWithContext:self.context
-			withDataController:self.dataController
-			withViewController:self
-			withResourceUtil:self.resourceUtil
-			withOnPresentComplete:^{
-				[self prepareScreen];
-			}];
-		[present setupNormalSectorAndMonster];
+		[self normalFlow];
 	}
 }
 

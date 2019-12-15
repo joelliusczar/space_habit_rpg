@@ -20,6 +20,9 @@ static NSString* BACKEND_KEY = @"suffix_tracker";
 	if(self = [super init]) {
 		_saveUrl = [resourceUtil getURLMutableFile:BACKEND_KEY];
 		_backend = [resourceUtil getPListMutableDict:BACKEND_KEY];
+		if(nil == _backend) {
+			_backend = [NSMutableDictionary dictionary];
+		}
 	}
 	return self;
 }

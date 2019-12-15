@@ -103,7 +103,7 @@ withLvl:(NSInteger)lvl withMonsterCount:(NSInteger)monsterCount{
 
 -(SHSector*)newRandomSectorChoiceGivenHero:(SHHero*)hero ifShouldMatchLvl:(BOOL)shouldMatchLvl{
 	NSString *sectorKey = [self getRandomSectorDefinitionKey:hero.lvl];
-	NSInteger sectorLvl = shouldMatchLvl?hero.lvl:shCalculateLvl(hero.lvl,SH_SECTOR_LVL_RANGE);
+	NSInteger sectorLvl = shouldMatchLvl ? hero.lvl : shCalculateLvl(hero.lvl,SH_SECTOR_LVL_RANGE);
 	SHSector *z = [self newSpecificSector2:sectorKey withLvl:sectorLvl];
 	return z;
 }
@@ -118,8 +118,38 @@ withLvl:(NSInteger)lvl withMonsterCount:(NSInteger)monsterCount{
 	for(uint i = 1;i<sectorCount;i++){
 		choices[i] = [self newRandomSectorChoiceGivenHero:hero ifShouldMatchLvl:NO];
 	}
-	
+	[self saveUndecidedCoices:choices];
 	return choices;
+}
+
+
+-(void)saveUndecidedCoices:(NSArray<SHSector*>*)choices {
+	NSMutableArray<NSDictionary*> *choicesDictForm = [NSMutableArray arrayWithCapacity:choices.count];
+	for(SHSector *sector in choices) {
+		NSDictionary *dict = sector.mapable;
+		[choicesDictForm addObject:dict];
+	}
+	NSError *error = nil;
+	NSURL *choicesUrl = [self.resourceUtil getURLMutableFile:@"sector_choices"];
+	[choicesDictForm writeToURL:choicesUrl error:&error];
+}
+
+
+-(NSArray<SHSector*>*)getUndecidedSectorChoices {
+	NSArray<NSDictionary*> *prevSectors = [self.resourceUtil getPListArray:@"sector_choices"];
+	if(prevSectors == nil || prevSectors.count < 1) return nil;
+	NSMutableArray<SHSector*> *result = [NSMutableArray arrayWithCapacity:prevSectors.count];
+	for(NSDictionary *sectorDict in prevSectors) {
+		NSMutableDictionary *mutableSectorDict = [NSMutableDictionary dictionaryWithDictionary:sectorDict];
+		[result addObject:[[SHSector alloc] initWithDictionary:mutableSectorDict
+			withResourceUtil:self.resourceUtil]];
+	}
+	return result;
+}
+
+
+-(void)eraseSectorChoices {
+	[self.resourceUtil erase:@"sector_choices"];
 }
 
 

@@ -15,16 +15,35 @@
 
 @implementation SHViewController
 
--(id<SHInterceptorProtocol>)interceptor{
-	if(nil==_interceptor){
-		_interceptor = [[SHInterceptor alloc] init];
-	}
-	return _interceptor;
-}
-
 
 -(void)changeBackgroundColorTo:(UIColor *)color{
 	self.view.backgroundColor = color;
+}
+
+
+-(void)pushChildVC:(SHViewController*)child toViewOfParent:(UIView*)view{
+	[view addSubview:child.view];
+	[self addChildViewController:child];
+	[child didMoveToParentViewController:self];
+	child.view.translatesAutoresizingMaskIntoConstraints = NO;
+	[child.view.topAnchor constraintEqualToAnchor:view.topAnchor].active = YES;
+	[child.view.bottomAnchor constraintEqualToAnchor:view.bottomAnchor].active = YES;
+	[child.view.leadingAnchor constraintEqualToAnchor:view.leadingAnchor].active = YES;
+	[child.view.trailingAnchor constraintEqualToAnchor:view.trailingAnchor].active = YES;
+	child.prevViewController = self;
+}
+
+
+-(void)arrangeAndPushChildVCToFront:(SHViewController *)child{
+	[self pushChildVC:child toViewOfParent:self.view];
+}
+
+
+-(void)popVCFromFront{
+	[self willMoveToParentViewController:nil];
+	[self.view removeFromSuperview];
+	[self removeFromParentViewController];
+	self.prevViewController = nil;
 }
 
 @end

@@ -12,6 +12,10 @@
 #import "SHReportServiceCaller.h"
 @import SHGlobal;
 
+@interface SHSingletonCluster ()
+@property (strong, nonatomic) dispatch_queue_t bagQueue;
+@end
+
 
 @implementation SHSingletonCluster
 
@@ -73,10 +77,14 @@
 
 
 -(NSMutableDictionary*)bag{
-	if(nil==_bag){
-		_bag = [NSMutableDictionary dictionary];
-	}
-	return _bag;
+	__block NSMutableDictionary *bag = nil;
+	dispatch_sync(self.bagQueue, ^{
+		if(nil==_bag){
+			_bag = [NSMutableDictionary dictionary];
+		}
+		bag = _bag;
+	});
+	return bag;
 }
 
 -(NSBundle *)bundle{
@@ -105,6 +113,9 @@
 	static dispatch_once_t _onceToken;
 	dispatch_once(&_onceToken,^{
 		sharedInstance = [[SHSingletonCluster alloc] initClass];
+		sharedInstance.bagQueue = dispatch_queue_create(
+			"com.SpaceHabit.bagQueue",
+			DISPATCH_QUEUE_SERIAL);
 	});
 	return sharedInstance;
 }

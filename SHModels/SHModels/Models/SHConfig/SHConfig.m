@@ -55,13 +55,13 @@
 }
 
 
--(NSInteger)gameState {
+-(SHGameState)gameState {
 	NSInteger gameState = [self.userDefaults integerForKey:@"gameState"];
-	return gameState;
+	return (SHGameState)gameState;
 }
 
 
--(void)setGameState:(NSInteger)gameState {
+-(void)setGameState:(SHGameState)gameState {
 	[self.userDefaults setInteger:gameState forKey:@"gameState"];
 }
 
@@ -72,16 +72,25 @@
 }
 
 
--(NSInteger)storyMode {
+-(SHStoryMode)storyMode {
 	NSInteger storyMode = [self.userDefaults integerForKey:@"storyMode"];
-	return storyMode;
+	return (SHStoryMode)storyMode;
 }
 
 
--(void)setStoryMode:(NSInteger)storyMode {
+-(void)setStoryMode:(SHStoryMode)storyMode {
 	[self.userDefaults setInteger:storyMode forKey:@"storyMode"];
 }
 
 
+-(SHStoryState)storyState {
+	NSInteger storyMode = [self.userDefaults integerForKey:@"storyState"];
+	return storyMode;
+}
+
+
+-(void)setStoryState:(SHStoryState)storyMode {
+	[self.userDefaults setInteger:storyMode forKey:@"storyState"];
+}
 
 @end
