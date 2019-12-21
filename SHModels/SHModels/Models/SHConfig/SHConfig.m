@@ -9,7 +9,6 @@
 #import "SHConfig.h"
 @import SHGlobal;
 @import SHCommon;
-@import SHData;
 
 @interface SHConfig ()
 @property (strong, nonatomic) NSUserDefaults *userDefaults;

@@ -7,7 +7,6 @@
 //
 
 #import "SHCoreData.h"
-@import SHCommon;
 
 @import CoreData;
 

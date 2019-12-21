@@ -9,7 +9,7 @@
 #import "SHDailyViewController.h"
 #import "SHEditingSaverProtocol.h"
 @import UIKit;
-@import SHData;
+
 @import SHGlobal;
 @import SHModels;
 @import SHControls;
@@ -27,10 +27,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong,nonatomic) SHObjectIDWrapper *objectIDWrapper;
 @property (strong,nonatomic) NSManagedObjectContext *context;
 @property (strong,nonatomic) SHDailyActiveDays *activeDays;
--(void)setupForContext:(NSManagedObjectContext*)context
-	andObjectIDWrapper:(SHObjectIDWrapper*)objectIDWrapper;
-
--(void)modelTouched;
 @end
 
 NS_ASSUME_NONNULL_END

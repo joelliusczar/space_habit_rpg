@@ -11,4 +11,6 @@
 @interface SHTaskCell : UITableViewCell
 @property (copy,nonatomic) void (^cellActivationAction)(void);
 -(UIView *)loadDefaultXib;
++(instancetype)getTaskCell:(UITableView *)tableView;
+-(void)refreshCell;
 @end

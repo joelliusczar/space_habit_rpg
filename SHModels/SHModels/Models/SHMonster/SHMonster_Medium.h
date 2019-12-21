@@ -10,7 +10,6 @@
 #import "SHMonster.h"
 @import Foundation;
 @import SHCommon;
-@import SHData;
 @import CoreData;
 
 NS_ASSUME_NONNULL_BEGIN

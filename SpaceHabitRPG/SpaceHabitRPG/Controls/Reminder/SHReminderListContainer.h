@@ -7,7 +7,7 @@
 //
 
 @import UIKit;
-@import SHData;
+
 @import SHControls;
 
 NS_ASSUME_NONNULL_BEGIN

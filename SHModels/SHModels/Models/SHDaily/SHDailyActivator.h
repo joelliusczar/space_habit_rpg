@@ -9,7 +9,6 @@
 #import "SHDaily.h"
 #import "SHConfig.h"
 @import Foundation;
-@import SHData;
 
 
 NS_ASSUME_NONNULL_BEGIN

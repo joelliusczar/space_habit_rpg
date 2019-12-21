@@ -12,7 +12,6 @@
 #import "SHDailyNextDueDateCalculator.h"
 #import "SHDailyMaxDaysBeforeSpanCalculator.h"
 @import SHGlobal;
-@import SHData;
 
 @implementation SHDaily
 

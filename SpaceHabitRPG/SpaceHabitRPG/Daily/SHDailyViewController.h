@@ -9,19 +9,13 @@
 
 
 #import "SHCentralViewController.h"
+#import "SHHabitViewController.h"
 @import UIKit;
-@import SHData;
 @import SHModels;
 
 
 
-@interface SHDailyViewController : SHViewController <UITableViewDelegate, UITableViewDataSource,NSFetchedResultsControllerDelegate>
-@property (weak,nonatomic) SHCentralViewController *central;
-@property (weak,nonatomic) IBOutlet SHView *addDailiesBtn;
--(instancetype)initWithCentral:(SHCentralViewController *)central;
-
--(void)setuptab;
+@interface SHDailyViewController : SHHabitViewController
 -(void)completeDaily:(SHDaily *)daily;
 -(void)undoCompletedDaily:(SHDaily *)daily;
--(void)fetchUpdates;
 @end

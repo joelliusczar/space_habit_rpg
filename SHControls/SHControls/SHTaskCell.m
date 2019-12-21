@@ -30,11 +30,20 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
 	[super setSelected:selected animated:animated];
-
 	// Configure the view for the selected state
 }
 
 
++(instancetype)getTaskCell:(UITableView *)tableView{
+	SHTaskCell *cell = [tableView
+		dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
+	if(nil == cell){
+		cell = [[self.class alloc] init];
+	}
+	return cell;
+}
 
+
+-(void)refreshCell {}
 
 @end

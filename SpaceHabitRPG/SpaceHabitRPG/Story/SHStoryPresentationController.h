@@ -7,7 +7,6 @@
 //
 
 @import Foundation;
-@import SHData;
 @import SHModels;
 @import SHControls;
 

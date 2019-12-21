@@ -8,7 +8,6 @@
 
 @import Foundation;
 @import SHControls;
-@import SHData;
 
 NS_ASSUME_NONNULL_BEGIN
 

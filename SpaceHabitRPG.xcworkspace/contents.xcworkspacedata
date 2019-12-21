@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <FileRef
+      location = "group:PropertyAdder/PropertyAdder.xcodeproj">
+   </FileRef>
    <Group
       location = "container:"
       name = "Configs">
@@ -46,6 +49,9 @@
          </FileRef>
          <FileRef
             location = "group:erase_phone.sh">
+         </FileRef>
+         <FileRef
+            location = "group:print_build_settings.sh">
          </FileRef>
       </Group>
       <FileRef
@@ -111,9 +117,6 @@
    </FileRef>
    <FileRef
       location = "group:SHCommon/SHCommon.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:SHData/SHData.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:SHGlobal/SHGlobal.xcodeproj">

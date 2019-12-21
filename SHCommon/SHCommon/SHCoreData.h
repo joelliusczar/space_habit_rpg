@@ -6,7 +6,7 @@
 //  Copyright © 2016 Joel Pridgen. All rights reserved.
 //
 
-#import "SHCoreDataProtocol.h"
+#import "SHDataProviderProtocol.h"
 @import Foundation;
 
 extern NSString * const DEFAULT_DB_NAME;
@@ -18,7 +18,7 @@ extern NSString * const DEFAULT_DB_NAME;
 @property (strong,nonatomic) NSPersistentStoreCoordinator *coordinator;
 @end
 
-@interface SHCoreData : NSObject<P_CoreData>
+@interface SHCoreData : NSObject<SHDataProviderProtocol>
 @property (readonly,strong,nonatomic) NSBundle *appBundle;
 @property (readonly,strong,nonatomic) NSString* dbFileName;
 @property (readonly,strong,nonatomic) NSPersistentStoreCoordinator *coordinator;

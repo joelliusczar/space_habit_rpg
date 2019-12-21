@@ -9,7 +9,7 @@
 @import UIKit;
 @import SHModels;
 @import SHControls;
-@import SHData;
+
 @import CoreData;
 
 @interface SHReminderListView :SHItemFlexibleListView

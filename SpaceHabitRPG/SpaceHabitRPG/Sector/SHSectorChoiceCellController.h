@@ -9,7 +9,7 @@
 #import "SHSectorChoiceViewController.h"
 @import SHControls;
 @import SHModels;
-@import SHData;
+
 
 
 @interface SHSectorChoiceCellController : SHTaskCell

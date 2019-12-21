@@ -11,7 +11,7 @@
 #import "TestDummy.h"
 #import <XCTest/XCTest.h>
 #import <objc/runtime.h>
-@import SHData;
+
 @import SHModels;
 @import SHCommon;
 

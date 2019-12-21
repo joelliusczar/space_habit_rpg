@@ -15,7 +15,7 @@
 #import "SHStoryModeSelectViewController.h"
 @import SHGlobal;
 @import SHCommon;
-@import SHData;
+
 @import SHModels;
 @import SHControls;
 @import CoreGraphics;
@@ -52,7 +52,7 @@
 }
 
 
--(instancetype)initWithDataController:(NSObject<P_CoreData>*)dataController
+-(instancetype)initWithDataController:(NSObject<SHDataProviderProtocol>*)dataController
 	andNibName:(NSString*)nib
 	andResourceUtil:(NSObject<SHResourceUtilityProtocol>*)util
 	andBundle:(NSBundle*)bundle
@@ -67,7 +67,7 @@
 }
 
 
-+(instancetype)newWithDataController:(NSObject<P_CoreData>*)dataController
++(instancetype)newWithDataController:(NSObject<SHDataProviderProtocol>*)dataController
 	andNibName:(NSString*)nib
 	andResourceUtil:(NSObject<SHResourceUtilityProtocol>*)util
 	andBundle:(NSBundle*)bundle
@@ -102,7 +102,8 @@
 }
 
 -(void)setupTabs {
-	SHDailyViewController* dc = [[SHDailyViewController alloc] initWithCentral:self];
+	SHDailyViewController* dc = [[SHDailyViewController alloc] initWithCentral:self
+		withContext:[self.dataController newBackgroundContext]];
 
 	self.tabsController.viewControllers = @[dc];
 	

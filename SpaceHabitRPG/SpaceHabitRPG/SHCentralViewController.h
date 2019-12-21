@@ -9,11 +9,11 @@
 #import "SHEditNavigationController.h"
 #import "SHBattleStatsViewController.h"
 @import UIKit;
-@import SHData;
+
 @import SHModels;
 
 @interface SHCentralViewController : SHViewController;
-@property (strong,nonatomic) id<P_CoreData> dataController;
+@property (strong,nonatomic) id<SHDataProviderProtocol> dataController;
 @property (strong,nonatomic) SHConfigDTO *configDTO;
 @property (strong,nonatomic) SHHeroDTO *heroDTO;
 @property (strong,nonatomic) SHMonsterDictionaryEntry *monsterEntry;
@@ -21,12 +21,12 @@
 @property (strong,nonatomic) SHEditNavigationController *editController;
 @property (strong,nonatomic) SHBattleStatsViewController *battleStats;
 
-+(instancetype)newWithDataController:(NSObject<P_CoreData>*)dataController
++(instancetype)newWithDataController:(NSObject<SHDataProviderProtocol>*)dataController
 	andNibName:(NSString*)nib
 	andResourceUtil:(NSObject<SHResourceUtilityProtocol>*)util
 	andBundle:(NSBundle*)bundle;
 
--(instancetype)initWithDataController:(NSObject<P_CoreData>*)dataController
+-(instancetype)initWithDataController:(NSObject<SHDataProviderProtocol>*)dataController
 	andNibName:(NSString*)nib
 	andResourceUtil:(NSObject<SHResourceUtilityProtocol>*)util
 	andBundle:(NSBundle*)bundle;

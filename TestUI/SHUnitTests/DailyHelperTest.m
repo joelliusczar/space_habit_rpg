@@ -10,7 +10,7 @@
 #import <SHDaily_C.h>
 #import <SHRateValueItem.h>
 @import SHCommon;
-@import SHData;
+
 @import SHModels;
 @import SHTestCommon;
 

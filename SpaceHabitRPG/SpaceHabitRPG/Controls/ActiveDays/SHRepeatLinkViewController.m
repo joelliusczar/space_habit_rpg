@@ -9,7 +9,7 @@
 #import "SHRepeatLinkViewController.h"
 #import "SHRateSelectionViewController.h"
 @import SHControls;
-@import SHData;
+
 @import SHModels;
 @import SHCommon;
 

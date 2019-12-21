@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "SHApplication.h"
 @import UIKit;
 
 static bool isRunningTests()

@@ -8,7 +8,6 @@
 
 #import "SHModelTools.h"
 #import "SHMonster_Medium.h"
-@import SHData;
 
 
 @interface SHMonster_Medium ()

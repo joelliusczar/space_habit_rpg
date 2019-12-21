@@ -8,7 +8,6 @@
 
 #import "SHHero.h"
 @import SHCommon;
-@import SHData;
 
 
 static NSString* const BACKEND_KEY = @"hero_data";

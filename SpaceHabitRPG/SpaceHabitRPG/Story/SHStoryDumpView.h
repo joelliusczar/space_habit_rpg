@@ -8,7 +8,6 @@
 
 @import UIKit;
 @import SHControls;
-@import SHData;
 @import SHModels;
 
 @interface SHStoryDumpView : SHViewController

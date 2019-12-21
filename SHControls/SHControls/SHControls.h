@@ -34,7 +34,6 @@ FOUNDATION_EXPORT const unsigned char SHControlsVersionString[];
 #import "SHNotesViewDelegateProtocol.h"
 #import "SHImportanceSlidersDelegateProtocol.h"
 #import "SHRateTypeSelectorDelegateProtocol.h"
-#import "SHResizeResponderProtocol.h"
 #import "SHSwitchProtocol.h"
 #import "SHMonthComponentSpinPickerDelegateProtocol.h"
 #import "SHItemFlexibleListDelegateProtocol.h"

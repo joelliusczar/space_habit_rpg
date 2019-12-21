@@ -9,7 +9,7 @@
 #import <XCTest/XCTest.h>
 @import SHModels;
 @import SHGlobal;
-@import SHData;
+
 @import SHTestCommon;
 
 @interface ModelsTest : FrequentCase
@@ -29,7 +29,7 @@
 }
 
 -(void)testHeroProperties{
-	NSObject<P_CoreData> *dc = self.dc;
+	NSObject<SHDataProviderProtocol> *dc = self.dc;
 	NSManagedObjectContext *context = dc.mainThreadContext;
 	SHHero *h = (SHHero *)[context newEntity:SHHero.entity];
 	h.gold = 3.14;
@@ -93,7 +93,7 @@
 }
 
 -(void)testRemoveEntitRefBeforeSaving{
-	NSObject<P_CoreData> *dc = self.dc;
+	NSObject<SHDataProviderProtocol> *dc = self.dc;
 	NSManagedObjectContext *bgContext = [dc newBackgroundContext];
 	[bgContext performBlockAndWait:^{
 		SHTransaction *zt = (SHTransaction *)[bgContext newEntity:SHTransaction.entity];

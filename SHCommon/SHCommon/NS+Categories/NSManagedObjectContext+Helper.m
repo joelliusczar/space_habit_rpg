@@ -7,7 +7,7 @@
 //
 
 #import "NSManagedObjectContext+Helper.h"
-@import SHCommon;
+#import "NSException+SHCommonExceptions.h"
 
 @implementation NSManagedObjectContext (Helper)
 

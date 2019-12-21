@@ -9,7 +9,7 @@
 #import "FrequentCase.h"
 #import "SHCoreData+CleanUp.h"
 @import SHModels;
-@import SHData;
+
 @import CoreData;
 
 @interface FrequentCase ()

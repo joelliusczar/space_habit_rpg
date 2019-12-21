@@ -8,9 +8,8 @@
 
 #import "SHDaily.h"
 @import Foundation;
-@import SHData;
-
 @import CoreData;
+@import SHCommon;
 
 #define useOtherFetcher 0
 

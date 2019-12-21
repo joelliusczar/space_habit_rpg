@@ -6,11 +6,10 @@
 //	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-@import SHData;
 #import "SHDaily_Medium.h"
 
 @interface SHDaily_Medium()
-@property (strong,nonatomic) NSObject<P_CoreData> *dataController;
+@property (strong,nonatomic) NSObject<SHDataProviderProtocol> *dataController;
 @end
 
 @implementation SHDaily_Medium

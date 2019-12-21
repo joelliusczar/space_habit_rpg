@@ -9,7 +9,6 @@
 #import "SHTransaction_Medium.h"
 @import SHGlobal;
 @import SHCommon;
-@import SHData;
 
 
 @implementation SHTransaction_Medium

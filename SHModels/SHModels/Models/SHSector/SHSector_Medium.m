@@ -11,7 +11,6 @@
 #import "SHModelConstants.h"
 #import "SHSector_Medium.h"
 @import SHCommon;
-@import SHData;
 
 
 NSString* const HOME_KEY = @"HOME";

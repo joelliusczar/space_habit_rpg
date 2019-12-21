@@ -52,5 +52,9 @@ FOUNDATION_EXPORT const unsigned char SHCommonVersionString[];
 #import "SHMappableProtocol.h"
 #import "SHDateProviderProtocol.h"
 #import "SHDefaultDateProvider.h"
+#import "SHObjectIDWrapper.h"
+#import "NSManagedObjectContext+Helper.h"
+#import "SHDataProviderProtocol.h"
+#import "SHCoreData.h"
 
 

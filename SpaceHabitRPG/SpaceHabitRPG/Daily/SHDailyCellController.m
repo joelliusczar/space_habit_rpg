@@ -10,40 +10,21 @@
 @import SHModels;
 @import SHGlobal;
 @import SHCommon;
-@import SHData;
 @import CoreGraphics;
 
 
 
 @interface SHDailyCellController()
-@property (strong,nonatomic) SHObjectIDWrapper *objectID;
-@property (strong,nonatomic) NSManagedObjectContext *context;
-@property (weak,nonatomic) SHDailyViewController *parentDailyController;
 
 @end
 
 @implementation SHDailyCellController
 
-+(instancetype)getDailyCell:(UITableView *)tableView WithParent:(SHDailyViewController *)parent{
-	SHDailyCellController *cell = [tableView
-		dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
-	if(nil==cell){
-		cell = [[SHDailyCellController alloc] init];
-	}
-	cell.parentDailyController = parent;
-	return cell;
-}
 
 - (void)awakeFromNib {
 	[super awakeFromNib];
 }
 
--(void)setupCell:(SHObjectIDWrapper *)objectID {
-	NSAssert(objectID.context,@"Hey, hey, we need a context here.");
-	self.context = objectID.context;
-	self.objectID = objectID;
-	[self refreshCell];
-}
 
 -(void)refreshCell{
 	[self.context performBlock:^{

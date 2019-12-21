@@ -1,5 +1,5 @@
 //
-//  P_CoreData.h
+//  SHDataProviderProtocol.h
 //  HabitRPG2
 //
 //  Created by Joel Pridgen on 3/27/17.
@@ -12,7 +12,7 @@
 
 typedef NSManagedObjectContext SHContext;
 
-@protocol P_CoreData <NSObject>
+@protocol SHDataProviderProtocol <NSObject>
 @property (strong,nonatomic) SHContext *mainThreadContext;
 -(NSManagedObjectContext*)newBackgroundContext;
 @end

@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 @import SHCommon;
 @import SHModels;
-@import SHData;
+
 
 
 @interface AppDelegate ()

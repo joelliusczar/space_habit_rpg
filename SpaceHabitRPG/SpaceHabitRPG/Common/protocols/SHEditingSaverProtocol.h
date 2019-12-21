@@ -9,6 +9,7 @@
 #import "SHEditNavigationController.h"
 @import Foundation;
 @import UIKit;
+@import SHCommon;
 
 @class SHEditNavigationController;
 
@@ -20,6 +21,10 @@
 @property (strong,nonatomic) NSString *nameStr;
 -(void)saveEdit;
 -(void)deleteModel;
+-(void)setupForContext:(NSManagedObjectContext*)context
+	andObjectIDWrapper:(SHObjectIDWrapper*)objectIDWrapper;
+
+-(void)modelTouched;
 @optional
 -(void)unsaved_closing_action;
 @end

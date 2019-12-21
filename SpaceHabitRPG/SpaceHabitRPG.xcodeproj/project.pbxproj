@@ -41,11 +41,12 @@
 		270F982A23924C4900479E77 /* SHReminderCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270F982823924C4900479E77 /* SHReminderCellController.m */; };
 		270F982D23924C8400479E77 /* SHReminderTimeSpinPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 270F982B23924C8400479E77 /* SHReminderTimeSpinPicker.m */; };
 		270F983023924D0400479E77 /* SHReminderListContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 270F982F23924D0400479E77 /* SHReminderListContainer.m */; };
+		272D83A823AD7B0600D946D3 /* SHHabitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272D83A723AD7B0600D946D3 /* SHHabitViewController.m */; };
+		272D83B923AD9CBC00D946D3 /* SHHabitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 272D83B823AD9CBC00D946D3 /* SHHabitCell.m */; };
 		2747C4992048D50800FB5669 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4972048D50800FB5669 /* AppDelegate.m */; };
 		2747C49B2048D53100FB5669 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2747C49A2048D53100FB5669 /* Assets.xcassets */; };
 		2747C49F2048D54700FB5669 /* SHCentralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C49C2048D54600FB5669 /* SHCentralViewController.m */; };
 		2747C50320490E3400FB5669 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C50220490E3400FB5669 /* main.m */; };
-		27804B8F235FEDBE004921F5 /* SHData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27804B8E235FEDBE004921F5 /* SHData.framework */; };
 		2787044F227A823B009C9DD6 /* libSHCore_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2787044E227A823B009C9DD6 /* libSHCore_C.a */; };
 		27B15AA920524CB60045B226 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AA820524CB60045B226 /* SHCommon.framework */; };
 		27B15AAD20524CFE0045B226 /* SHControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AAC20524CFE0045B226 /* SHControls.framework */; };
@@ -75,20 +76,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 271187D9203FF88E0085A549;
 			remoteInfo = SHControls;
-		};
-		27F37E72238796AB0006B705 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 27F37E6D238796AB0006B705 /* SHData.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 27730B942041E0DE003BEB6C;
-			remoteInfo = SHData;
-		};
-		27F37E74238796B70006B705 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 27F37E6D238796AB0006B705 /* SHData.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 27730B932041E0DE003BEB6C;
-			remoteInfo = SHData;
 		};
 		27F37E7F238796CE0006B705 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -168,6 +155,10 @@
 		270F982E23924D0400479E77 /* SHReminderListContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHReminderListContainer.h; sourceTree = "<group>"; };
 		270F982F23924D0400479E77 /* SHReminderListContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHReminderListContainer.m; sourceTree = "<group>"; };
 		271DBE572387953400644237 /* SHControls.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHControls.xcodeproj; path = ../SHControls/SHControls.xcodeproj; sourceTree = "<group>"; };
+		272D83A623AD7B0600D946D3 /* SHHabitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SHHabitViewController.h; path = SpaceHabitRPG/Common/SHHabitViewController.h; sourceTree = SOURCE_ROOT; };
+		272D83A723AD7B0600D946D3 /* SHHabitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SHHabitViewController.m; path = SpaceHabitRPG/Common/SHHabitViewController.m; sourceTree = SOURCE_ROOT; };
+		272D83B723AD9CBC00D946D3 /* SHHabitCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHHabitCell.h; sourceTree = "<group>"; };
+		272D83B823AD9CBC00D946D3 /* SHHabitCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHHabitCell.m; sourceTree = "<group>"; };
 		2747C4972048D50800FB5669 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2747C4982048D50800FB5669 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2747C49A2048D53100FB5669 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -175,7 +166,6 @@
 		2747C49E2048D54600FB5669 /* SHCentralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCentralViewController.h; sourceTree = "<group>"; };
 		2747C50220490E3400FB5669 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		276951A420437DF5002D1C9A /* SpaceHabitRPG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceHabitRPG.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		27804B8E235FEDBE004921F5 /* SHData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2787044E227A823B009C9DD6 /* libSHCore_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHCore_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		279848D42250FEB700039A29 /* SpaceHabitRPG.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SpaceHabitRPG.base.xcconfig; sourceTree = "<group>"; };
 		27B15AA820524CB60045B226 /* SHCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHCommon.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHCommon.framework"; sourceTree = "<group>"; };
@@ -194,7 +184,6 @@
 		27BBD51A2392EB5500311711 /* SHHabitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHHabitViewController.xib; sourceTree = "<group>"; };
 		27BBD51C2392EBA600311711 /* SHStoryModeSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHStoryModeSelectViewController.xib; sourceTree = "<group>"; };
 		27BBD51E2392EBE000311711 /* SHBattleStatsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHBattleStatsViewController.xib; sourceTree = "<group>"; };
-		27F37E6D238796AB0006B705 /* SHData.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHData.xcodeproj; path = ../SHData/SHData.xcodeproj; sourceTree = "<group>"; };
 		27F37E76238796CE0006B705 /* SHModels.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHModels.xcodeproj; path = ../SHModels/SHModels.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -205,7 +194,6 @@
 			files = (
 				2787044F227A823B009C9DD6 /* libSHCore_C.a in Frameworks */,
 				27B15AA920524CB60045B226 /* SHCommon.framework in Frameworks */,
-				27804B8F235FEDBE004921F5 /* SHData.framework in Frameworks */,
 				27B15AAF20524D6E0045B226 /* SHModels.framework in Frameworks */,
 				27B15AAD20524CFE0045B226 /* SHControls.framework in Frameworks */,
 			);
@@ -226,6 +214,10 @@
 				270F97B82392362D00479E77 /* SHDailyViewController.h */,
 				270F97B72392362D00479E77 /* SHDailyViewController.m */,
 				270F97BA2392364600479E77 /* xibs */,
+				272D83A623AD7B0600D946D3 /* SHHabitViewController.h */,
+				272D83A723AD7B0600D946D3 /* SHHabitViewController.m */,
+				272D83B723AD9CBC00D946D3 /* SHHabitCell.h */,
+				272D83B823AD9CBC00D946D3 /* SHHabitCell.m */,
 			);
 			path = Daily;
 			sourceTree = "<group>";
@@ -412,7 +404,6 @@
 		2747C4A12048D55600FB5669 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				27804B8E235FEDBE004921F5 /* SHData.framework */,
 				2787044E227A823B009C9DD6 /* libSHCore_C.a */,
 				27B15AAE20524D6E0045B226 /* SHModels.framework */,
 				27B15AAC20524CFE0045B226 /* SHControls.framework */,
@@ -425,7 +416,6 @@
 			isa = PBXGroup;
 			children = (
 				27F37E76238796CE0006B705 /* SHModels.xcodeproj */,
-				27F37E6D238796AB0006B705 /* SHData.xcodeproj */,
 				271DBE572387953400644237 /* SHControls.xcodeproj */,
 				276951A620437DF5002D1C9A /* SpaceHabitRPG */,
 				276951A520437DF5002D1C9A /* Products */,
@@ -477,14 +467,6 @@
 			path = xibs;
 			sourceTree = "<group>";
 		};
-		27F37E6E238796AB0006B705 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				27F37E73238796AB0006B705 /* SHData.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		27F37E77238796CE0006B705 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -509,7 +491,6 @@
 			);
 			dependencies = (
 				27F37E82238796DC0006B705 /* PBXTargetDependency */,
-				27F37E75238796B70006B705 /* PBXTargetDependency */,
 				27F37E6B2387967E0006B705 /* PBXTargetDependency */,
 			);
 			name = SpaceHabitRPG;
@@ -549,10 +530,6 @@
 					ProjectRef = 271DBE572387953400644237 /* SHControls.xcodeproj */;
 				},
 				{
-					ProductGroup = 27F37E6E238796AB0006B705 /* Products */;
-					ProjectRef = 27F37E6D238796AB0006B705 /* SHData.xcodeproj */;
-				},
-				{
 					ProductGroup = 27F37E77238796CE0006B705 /* Products */;
 					ProjectRef = 27F37E76238796CE0006B705 /* SHModels.xcodeproj */;
 				},
@@ -570,13 +547,6 @@
 			fileType = wrapper.framework;
 			path = SHControls.framework;
 			remoteRef = 271DBE5F2387953400644237 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		27F37E73238796AB0006B705 /* SHData.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SHData.framework;
-			remoteRef = 27F37E72238796AB0006B705 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		27F37E80238796CE0006B705 /* SHModels.framework */ = {
@@ -642,6 +612,7 @@
 				270F98172392453A00479E77 /* SHRepeatLinkViewController.m in Sources */,
 				27BBD50B2392526600311711 /* SHStoryPresentationController.m in Sources */,
 				270F982623924BD200479E77 /* SHRemindersLinkViewController.m in Sources */,
+				272D83B923AD9CBC00D946D3 /* SHHabitCell.m in Sources */,
 				27BBD50E239252CC00311711 /* SHBattleStatsViewController.m in Sources */,
 				2747C49F2048D54700FB5669 /* SHCentralViewController.m in Sources */,
 				270F98122392453A00479E77 /* SHMonthPartPicker.m in Sources */,
@@ -656,6 +627,7 @@
 				270F982723924BD200479E77 /* SHReminderListView.m in Sources */,
 				2747C4992048D50800FB5669 /* AppDelegate.m in Sources */,
 				27BBD511239252D700311711 /* SHStoryModeSelectViewController.m in Sources */,
+				272D83A823AD7B0600D946D3 /* SHHabitViewController.m in Sources */,
 				27BBD5082392523900311711 /* SHStoryPresentationTypicalController.m in Sources */,
 				270F98102392453A00479E77 /* SHWeeklyActiveDaysViewController.m in Sources */,
 				270F97D423923C2B00479E77 /* SHEditNavigationController.m in Sources */,
@@ -677,11 +649,6 @@
 			isa = PBXTargetDependency;
 			name = SHControls;
 			targetProxy = 27F37E6A2387967E0006B705 /* PBXContainerItemProxy */;
-		};
-		27F37E75238796B70006B705 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SHData;
-			targetProxy = 27F37E74238796B70006B705 /* PBXContainerItemProxy */;
 		};
 		27F37E82238796DC0006B705 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

@@ -10,8 +10,6 @@
 @import UIKit;
 @import SHControls;
 @import SHCommon;
-@import SHData;
-
 
 
 @interface SHEditNavigationController : SHViewController

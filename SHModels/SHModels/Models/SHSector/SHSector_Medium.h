@@ -10,7 +10,6 @@
 #import "SHSectorArtifact.h"
 #import "SHHero.h"
 #import "SHSectorInfoDictionary.h"
-@import SHData;
 @import Foundation;
 @import SHCommon;
 

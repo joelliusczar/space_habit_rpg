@@ -10,7 +10,6 @@
 #import "SHStoryDumpView.h"
 @import UIKit;
 @import SHModels;
-@import SHData;
 
 
 @class SHSectorChoiceViewController;
