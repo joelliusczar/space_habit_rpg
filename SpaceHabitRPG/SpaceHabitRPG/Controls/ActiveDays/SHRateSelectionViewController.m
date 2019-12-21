@@ -97,8 +97,7 @@ const NSInteger YEARLY_SELECTION = 3;
 	self.intervalSetter.labelSingularFormatString = @"Interval: Every day";
 	self.intervalSetter.labelPluralFormatString = @"Interval: Every %ld days";
 	self.intervalSetter.intervalSize = self.activeDays.dailyIntervalSize;
-	#warning I don't remember what the below did but I need to figure something else out
-	//[self.rateActiveDaysViewController popAllChildVCs];
+	[self.rateActiveDaysViewController popAllChildVCs];
 }
 
 -(void)loadWeeklyRateView {
@@ -106,6 +105,7 @@ const NSInteger YEARLY_SELECTION = 3;
 	self.intervalSetter.labelSingularFormatString = @"Interval: Every week";
 	self.intervalSetter.labelPluralFormatString = @"Interval: Every %ld weeks";
 	self.intervalSetter.intervalSize = self.activeDays.weeklyIntervalSize;
+	[self.rateActiveDaysViewController popAllChildVCs];
 	[self.rateActiveDaysViewController arrangeAndPushChildVCToFront:self.weeklyActiveDays];
 }
 
@@ -113,6 +113,7 @@ const NSInteger YEARLY_SELECTION = 3;
 	self.intervalSetter.labelSingularFormatString = @"Interval: Every month";
 	self.intervalSetter.labelPluralFormatString = @"Interval: Every %ld months";
 	self.intervalSetter.intervalSize = self.activeDays.monthlyIntervalSize;
+	[self.rateActiveDaysViewController popAllChildVCs];
 	[self.rateActiveDaysViewController arrangeAndPushChildVCToFront:self.monthlyActiveDays];
 }
 
@@ -120,6 +121,7 @@ const NSInteger YEARLY_SELECTION = 3;
 	self.intervalSetter.labelSingularFormatString = @"Interval: Every year";
 	self.intervalSetter.labelPluralFormatString = @"Interval: Every %ld years";
 	self.intervalSetter.intervalSize = self.activeDays.yearlyIntervalSize;
+	[self.rateActiveDaysViewController popAllChildVCs];
 	[self.rateActiveDaysViewController arrangeAndPushChildVCToFront:self.yearlyActiveDays];
 }
 
@@ -225,18 +227,9 @@ const NSInteger YEARLY_SELECTION = 3;
 	default:
 		@throw [NSException oddException];
 		break;
-}
+	}
 	
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-		// Get the new view controller using [segue destinationViewController].
-		// Pass the selected object to the new view controller.
-}
-*/
 
 @end

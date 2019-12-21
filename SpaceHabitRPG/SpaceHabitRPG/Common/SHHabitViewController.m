@@ -12,7 +12,6 @@
 
 @interface SHHabitViewController ()
 @property (strong, nonatomic) UITableView *habitTable;
-@property (weak, nonatomic) IBOutlet SHView *addHabitBtn;
 @end
 
 @implementation SHHabitViewController
@@ -45,15 +44,9 @@
 	if(self = [self initWithNibName:@"SHHabitViewController" bundle:nil]){
 		_central = central;
 		_context = context;
-		[self setuptab];
 		
 	}
 	return self;
-}
-
-
--(void)setuptab{
-	@throw [NSException abstractException];
 }
 
 
@@ -65,7 +58,7 @@
 	self.habitTable.translatesAutoresizingMaskIntoConstraints = NO;
 	[self.habitTable.widthAnchor constraintEqualToAnchor:self.view.widthAnchor].active = YES;
 	[self.habitTable.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
-	[self.habitTable.topAnchor constraintEqualToAnchor:self.habitTable.bottomAnchor].active = YES;
+	[self.habitTable.topAnchor constraintEqualToAnchor:self.addHabitBtn.bottomAnchor].active = YES;
 	self.habitTable.delegate = self;
 	self.habitTable.dataSource = self;
 	self.addHabitBtn.eventDelegate = self;

@@ -70,10 +70,7 @@
 		_mainView = [self loadDefaultXib];
 		if(_mainView) {
 			[self addSubview:_mainView];
-			//this is neccessary because other wise the outer frame
-			//is too small and invisibly blocks user actions.
-			[self resizeFrame:_mainView.frame.size];
-			//#note: this line is not fully tested
+			#warning there used to be some resizing logic here.
 			//[_mainView createFillUpLayoutConstraints:self];
 		}
 	}
@@ -96,21 +93,6 @@
 //I'm depending on subclasses being able to override this
 -(UIView *)loadDefaultXib{
 	return [self loadXib:(NSStringFromClass(self.class))];
-}
-
-
-//deprecated. I've discovered it is much less easier to use apple's auto-layout
-//so that I don't have to always be resizing both self and mainView
--(void)resizeHeightByOffset:(CGFloat)offset{
-	[super resizeHeightByOffset:offset];
-	[self.mainView resizeHeightByOffset:offset];
-}
-
-
-//deprecated. I've discovered it is much less easier to use apple's auto-layout
--(void)resizeFrame:(CGSize)size{
-	[super resizeFrame:size];
-	[self.mainView resizeFrame:size];
 }
 
 

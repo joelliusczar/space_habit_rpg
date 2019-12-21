@@ -11,7 +11,7 @@
 #import "SHYearlyActiveDaysViewController.h"
 @import UIKit;
 @import SHModels;
-@import SHGlobal;
+
 
 
 NS_ASSUME_NONNULL_BEGIN

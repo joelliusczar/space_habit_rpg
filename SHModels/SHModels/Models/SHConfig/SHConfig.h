@@ -8,7 +8,8 @@
 
 @import Foundation;
 @import CoreData;
-@import SHGlobal;
+@import SHCommon;
+
 
 NS_ASSUME_NONNULL_BEGIN
 

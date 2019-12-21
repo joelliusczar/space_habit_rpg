@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 @import SHModels;
-@import SHGlobal;
+
 
 @import SHTestCommon;
 

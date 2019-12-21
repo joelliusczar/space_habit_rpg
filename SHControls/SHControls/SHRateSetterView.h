@@ -12,7 +12,7 @@
 #import "SHNestedControlProtocol.h"
 #import "SHViewController.h"
 @import UIKit;
-@import SHGlobal;
+
 
 typedef void(^rateStepAction)(UIStepper*,UIEvent *);
 

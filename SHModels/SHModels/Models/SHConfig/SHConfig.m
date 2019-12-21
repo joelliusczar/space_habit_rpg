@@ -7,7 +7,7 @@
 //
 
 #import "SHConfig.h"
-@import SHGlobal;
+
 @import SHCommon;
 
 @interface SHConfig ()

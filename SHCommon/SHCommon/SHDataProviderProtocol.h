@@ -7,7 +7,7 @@
 //
 
 @import Foundation;
-@import SHGlobal;
+
 @import CoreData;
 
 typedef NSManagedObjectContext SHContext;

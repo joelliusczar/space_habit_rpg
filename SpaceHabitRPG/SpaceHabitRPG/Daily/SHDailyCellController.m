@@ -8,7 +8,7 @@
 
 #import "SHDailyCellController.h"
 @import SHModels;
-@import SHGlobal;
+
 @import SHCommon;
 @import CoreGraphics;
 

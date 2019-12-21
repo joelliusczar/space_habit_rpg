@@ -24,7 +24,6 @@
 		270F97E92392442200479E77 /* SHIntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 270F97E82392442200479E77 /* SHIntroViewController.xib */; };
 		270F980A2392453A00479E77 /* SHYearlyActiveDaysViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270F97EF2392453A00479E77 /* SHYearlyActiveDaysViewController.m */; };
 		270F980B2392453A00479E77 /* SHWeeklyActiveDaysFull.xib in Resources */ = {isa = PBXBuildFile; fileRef = 270F97F12392453A00479E77 /* SHWeeklyActiveDaysFull.xib */; };
-		270F980C2392453A00479E77 /* SHWeeklyActiveDays.xib in Resources */ = {isa = PBXBuildFile; fileRef = 270F97F22392453A00479E77 /* SHWeeklyActiveDays.xib */; };
 		270F980D2392453A00479E77 /* SHDayOption.xib in Resources */ = {isa = PBXBuildFile; fileRef = 270F97F32392453A00479E77 /* SHDayOption.xib */; };
 		270F980E2392453A00479E77 /* SHLinkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 270F97F42392453A00479E77 /* SHLinkViewController.xib */; };
 		270F980F2392453A00479E77 /* SHRateSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 270F97F52392453A00479E77 /* SHRateSelectionViewController.xib */; };
@@ -43,6 +42,8 @@
 		270F983023924D0400479E77 /* SHReminderListContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 270F982F23924D0400479E77 /* SHReminderListContainer.m */; };
 		272D83A823AD7B0600D946D3 /* SHHabitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272D83A723AD7B0600D946D3 /* SHHabitViewController.m */; };
 		272D83B923AD9CBC00D946D3 /* SHHabitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 272D83B823AD9CBC00D946D3 /* SHHabitCell.m */; };
+		272D83CA23AEA74700D946D3 /* SHDailyEditFull.xib in Resources */ = {isa = PBXBuildFile; fileRef = 272D83C923AEA74700D946D3 /* SHDailyEditFull.xib */; };
+		272D83CC23AEAC2800D946D3 /* SHEditScreenFull.xib in Resources */ = {isa = PBXBuildFile; fileRef = 272D83CB23AEAC2800D946D3 /* SHEditScreenFull.xib */; };
 		2747C4992048D50800FB5669 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4972048D50800FB5669 /* AppDelegate.m */; };
 		2747C49B2048D53100FB5669 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2747C49A2048D53100FB5669 /* Assets.xcassets */; };
 		2747C49F2048D54700FB5669 /* SHCentralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C49C2048D54600FB5669 /* SHCentralViewController.m */; };
@@ -122,7 +123,6 @@
 		270F97E82392442200479E77 /* SHIntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SHIntroViewController.xib; path = SpaceHabitRPG/xibs_/SHIntroViewController.xib; sourceTree = SOURCE_ROOT; };
 		270F97EF2392453A00479E77 /* SHYearlyActiveDaysViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHYearlyActiveDaysViewController.m; path = ../SHYearlyActiveDaysViewController.m; sourceTree = "<group>"; };
 		270F97F12392453A00479E77 /* SHWeeklyActiveDaysFull.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHWeeklyActiveDaysFull.xib; sourceTree = "<group>"; };
-		270F97F22392453A00479E77 /* SHWeeklyActiveDays.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHWeeklyActiveDays.xib; sourceTree = "<group>"; };
 		270F97F32392453A00479E77 /* SHDayOption.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHDayOption.xib; sourceTree = "<group>"; };
 		270F97F42392453A00479E77 /* SHLinkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHLinkViewController.xib; sourceTree = "<group>"; };
 		270F97F52392453A00479E77 /* SHRateSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHRateSelectionViewController.xib; sourceTree = "<group>"; };
@@ -159,6 +159,8 @@
 		272D83A723AD7B0600D946D3 /* SHHabitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SHHabitViewController.m; path = SpaceHabitRPG/Common/SHHabitViewController.m; sourceTree = SOURCE_ROOT; };
 		272D83B723AD9CBC00D946D3 /* SHHabitCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHHabitCell.h; sourceTree = "<group>"; };
 		272D83B823AD9CBC00D946D3 /* SHHabitCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHHabitCell.m; sourceTree = "<group>"; };
+		272D83C923AEA74700D946D3 /* SHDailyEditFull.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHDailyEditFull.xib; sourceTree = "<group>"; };
+		272D83CB23AEAC2800D946D3 /* SHEditScreenFull.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHEditScreenFull.xib; sourceTree = "<group>"; };
 		2747C4972048D50800FB5669 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2747C4982048D50800FB5669 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2747C49A2048D53100FB5669 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 		270F97BA2392364600479E77 /* xibs */ = {
 			isa = PBXGroup;
 			children = (
+				272D83C923AEA74700D946D3 /* SHDailyEditFull.xib */,
 				27BBD51A2392EB5500311711 /* SHHabitViewController.xib */,
 			);
 			path = xibs;
@@ -337,7 +340,6 @@
 			isa = PBXGroup;
 			children = (
 				270F97F12392453A00479E77 /* SHWeeklyActiveDaysFull.xib */,
-				270F97F22392453A00479E77 /* SHWeeklyActiveDays.xib */,
 				270F97F32392453A00479E77 /* SHDayOption.xib */,
 				270F97F42392453A00479E77 /* SHLinkViewController.xib */,
 				270F97F52392453A00479E77 /* SHRateSelectionViewController.xib */,
@@ -434,13 +436,13 @@
 		276951A620437DF5002D1C9A /* SpaceHabitRPG */ = {
 			isa = PBXGroup;
 			children = (
+				279848D32250FE9C00039A29 /* Configs */,
 				27BBD5122392D86C00311711 /* xibs */,
 				270F97ED2392453A00479E77 /* Controls */,
 				270F97CE23923C2B00479E77 /* Common */,
 				270F97C723923B0500479E77 /* Story */,
 				270F97BB239238EE00479E77 /* Sector */,
 				270F97B32392356200479E77 /* Daily */,
-				279848D32250FE9C00039A29 /* Configs */,
 				2747C49A2048D53100FB5669 /* Assets.xcassets */,
 				2747C50220490E3400FB5669 /* main.m */,
 				2747C4982048D50800FB5669 /* AppDelegate.h */,
@@ -462,6 +464,7 @@
 		27BBD5122392D86C00311711 /* xibs */ = {
 			isa = PBXGroup;
 			children = (
+				272D83CB23AEAC2800D946D3 /* SHEditScreenFull.xib */,
 				27BBD5132392D86C00311711 /* SHCentralViewController.xib */,
 			);
 			path = xibs;
@@ -564,12 +567,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				27BBD51B2392EB5600311711 /* SHHabitViewController.xib in Resources */,
-				270F980C2392453A00479E77 /* SHWeeklyActiveDays.xib in Resources */,
 				270F980E2392453A00479E77 /* SHLinkViewController.xib in Resources */,
 				270F980B2392453A00479E77 /* SHWeeklyActiveDaysFull.xib in Resources */,
 				270F97D323923C2B00479E77 /* SHEditNavigationController.xib in Resources */,
 				27BBD51F2392EBE000311711 /* SHBattleStatsViewController.xib in Resources */,
 				270F980F2392453A00479E77 /* SHRateSelectionViewController.xib in Resources */,
+				272D83CC23AEAC2800D946D3 /* SHEditScreenFull.xib in Resources */,
 				270F980D2392453A00479E77 /* SHDayOption.xib in Resources */,
 				27BBD5192392E3AA00311711 /* SHSectorChoiceViewController.xib in Resources */,
 				270F97CC23923B0500479E77 /* SHStoryDumpView.xib in Resources */,
@@ -578,6 +581,7 @@
 				27BBD51D2392EBA700311711 /* SHStoryModeSelectViewController.xib in Resources */,
 				270F97D923923D8200479E77 /* SHSectorChoiceCellController.xib in Resources */,
 				270F97E92392442200479E77 /* SHIntroViewController.xib in Resources */,
+				272D83CA23AEA74700D946D3 /* SHDailyEditFull.xib in Resources */,
 				2747C49B2048D53100FB5669 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

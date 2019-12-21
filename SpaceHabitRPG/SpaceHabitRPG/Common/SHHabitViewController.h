@@ -22,15 +22,26 @@ NS_ASSUME_NONNULL_BEGIN
 	NSFetchedResultsControllerDelegate>
 @property (weak, nonatomic) SHCentralViewController *central;
 @property (strong, nonatomic) NSManagedObjectContext *context;
-@property (strong, nonatomic) SHViewController<SHEditingSaverProtocol> *habitEditor;
 @property (strong, nonatomic) NSFetchedResultsController *habitItemsFetcher;
-@property (readonly, nonatomic) NSEntityDescription *entityType;
-@property (readonly, nonatomic) NSString *entityName;
+@property (strong, nonatomic) IBOutlet UILabel *addHabitBtnLbl;
+/*addHabitBtn is a view rather than a button because I wanted it to have nested
+	elements
+*/
+@property (strong, nonatomic) IBOutlet SHView *addHabitBtn;
 -(instancetype)initWithCentral:(SHCentralViewController *)central
 	withContext:(NSManagedObjectContext*)context;
-	
+
 -(void)fetchUpdates;
+
+//abstract
+@property (strong, nonatomic) SHViewController<SHEditingSaverProtocol> *habitEditor;
+@property (readonly, nonatomic) NSEntityDescription *entityType;
+@property (readonly, nonatomic) NSString *entityName;
+-(void)setupData;
 -(SHHabitCell *)getTableCell:(UITableView*)tableView;
+//end abstract
+
+
 @end
 
 NS_ASSUME_NONNULL_END

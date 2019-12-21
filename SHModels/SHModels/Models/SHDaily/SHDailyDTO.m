@@ -7,7 +7,7 @@
 //
 
 #import "SHDailyDTO.h"
-@import SHGlobal;
+
 @import SHCommon;
 #import "SHRateTypeHelper.h"
 #import <SHCore_C/SHDaily_C.h>

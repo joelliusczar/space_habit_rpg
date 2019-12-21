@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 @import SHCommon;
-@import SHGlobal;
+
 @import SHTestCommon;
 
 @interface ProbilityWeightTestFourItems : XCTestCase

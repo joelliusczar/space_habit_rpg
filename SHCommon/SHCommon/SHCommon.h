@@ -56,5 +56,7 @@ FOUNDATION_EXPORT const unsigned char SHCommonVersionString[];
 #import "NSManagedObjectContext+Helper.h"
 #import "SHDataProviderProtocol.h"
 #import "SHCoreData.h"
+#import "SHConstants.h"
+#import "SHCommonTypeDefs.h"
 
 

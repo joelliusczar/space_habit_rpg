@@ -8,7 +8,7 @@
 
 #import "SHReminderTimeSpinPicker.h"
 @import SHCommon;
-@import SHGlobal;
+
 @import SHControls;
 
 

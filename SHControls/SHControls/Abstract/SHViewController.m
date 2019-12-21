@@ -39,11 +39,28 @@
 }
 
 
+static void _popAnyViewControllerFromFront(UIViewController *vc) {
+	[vc willMoveToParentViewController:nil];
+	[vc.view removeFromSuperview];
+	[vc removeFromParentViewController];
+}
+
+
 -(void)popVCFromFront{
-	[self willMoveToParentViewController:nil];
-	[self.view removeFromSuperview];
-	[self removeFromParentViewController];
+	_popAnyViewControllerFromFront(self);
 	self.prevViewController = nil;
+}
+
+
+-(void)popAllChildVCs {
+	for (UIViewController *vc in self.childViewControllers) {
+		if([vc isKindOfClass:SHViewController.class]) {
+			[((SHViewController*)vc) popVCFromFront];
+		}
+		else {
+			_popAnyViewControllerFromFront(vc);
+		}
+	}
 }
 
 @end

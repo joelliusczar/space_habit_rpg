@@ -7,7 +7,8 @@
 //
 
 #import "NSLocale+Helper.h"
-@import SHGlobal;
+#import "SHConstants.h"
+
 
 @implementation NSLocale (Helper)
 

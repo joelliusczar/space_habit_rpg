@@ -13,7 +13,7 @@
 #import "SHStoryPresentationTypicalController.h"
 #import "SHIntroViewController.h"
 #import "SHStoryModeSelectViewController.h"
-@import SHGlobal;
+
 @import SHCommon;
 
 @import SHModels;

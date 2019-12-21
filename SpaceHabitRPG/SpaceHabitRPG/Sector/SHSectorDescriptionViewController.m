@@ -9,7 +9,7 @@
 #import "SHSectorDescriptionViewController.h"
 @import SHControls;
 @import SHCommon;
-@import SHGlobal;
+
 
 
 @interface SHSectorDescriptionViewController ()

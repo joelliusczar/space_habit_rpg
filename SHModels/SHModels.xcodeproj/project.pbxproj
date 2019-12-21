@@ -69,7 +69,6 @@
 		2789889622F77B64007231E0 /* SHDailyMaxDaysBeforeSpanCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = 2789889422F77B64007231E0 /* SHDailyMaxDaysBeforeSpanCalculator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2789889722F77B64007231E0 /* SHDailyMaxDaysBeforeSpanCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2789889522F77B64007231E0 /* SHDailyMaxDaysBeforeSpanCalculator.m */; };
 		27B15A9F20524B4F0045B226 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A9E20524B4F0045B226 /* SHCommon.framework */; };
-		27B15AA320524B6B0045B226 /* SHGlobal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AA220524B6B0045B226 /* SHGlobal.framework */; };
 		27B2B31C22FFA5F300663644 /* SHTitleProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B2B31B22FFA5F300663644 /* SHTitleProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27B2B3252303811D00663644 /* SHDailyActivator.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B2B3232303811D00663644 /* SHDailyActivator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27B2B3262303811D00663644 /* SHDailyActivator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B2B3242303811D00663644 /* SHDailyActivator.m */; };
@@ -108,20 +107,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		270C628C2387945F00FD0D26 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 270C62882387945F00FD0D26 /* SHGlobal.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 27ED28A7204003E200CD5536;
-			remoteInfo = SHGlobal;
-		};
-		270C628E2387946800FD0D26 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 270C62882387945F00FD0D26 /* SHGlobal.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 27ED28A6204003E200CD5536;
-			remoteInfo = SHGlobal;
-		};
 		270C62972387947C00FD0D26 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 270C62902387947C00FD0D26 /* SHCommon.xcodeproj */;
@@ -175,7 +160,6 @@
 		27075D6C225963A700AD13AA /* SHMonsterDictionaryEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHMonsterDictionaryEntry.m; sourceTree = "<group>"; };
 		27075D6F225A695300AD13AA /* SHConfigDTO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHConfigDTO.h; sourceTree = "<group>"; };
 		27075D70225A695300AD13AA /* SHConfigDTO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHConfigDTO.m; sourceTree = "<group>"; };
-		270C62882387945F00FD0D26 /* SHGlobal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHGlobal.xcodeproj; path = ../SHGlobal/SHGlobal.xcodeproj; sourceTree = "<group>"; };
 		270C62902387947C00FD0D26 /* SHCommon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHCommon.xcodeproj; path = ../SHCommon/SHCommon.xcodeproj; sourceTree = "<group>"; };
 		270C62A4238794D000FD0D26 /* SHCore_C.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHCore_C.xcodeproj; path = ../SHCore_C/SHCore_C.xcodeproj; sourceTree = "<group>"; };
 		2719D5092319C61600765F54 /* SHMonster_Medium.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMonster_Medium.m; sourceTree = "<group>"; };
@@ -239,8 +223,6 @@
 		278FFDA5222B30FA00DAF985 /* SHModels.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHModels.debug.xcconfig; sourceTree = "<group>"; };
 		27B0B1F42223A8E20028AF59 /* SHModels.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHModels.base.xcconfig; sourceTree = "<group>"; };
 		27B15A9E20524B4F0045B226 /* SHCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHCommon.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHCommon.framework"; sourceTree = "<group>"; };
-		27B15AA020524B5D0045B226 /* SHData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHData.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHData.framework"; sourceTree = "<group>"; };
-		27B15AA220524B6B0045B226 /* SHGlobal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHGlobal.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHGlobal.framework"; sourceTree = "<group>"; };
 		27B2B31B22FFA5F300663644 /* SHTitleProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTitleProtocol.h; sourceTree = "<group>"; };
 		27B2B3232303811D00663644 /* SHDailyActivator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDailyActivator.h; sourceTree = "<group>"; };
 		27B2B3242303811D00663644 /* SHDailyActivator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDailyActivator.m; sourceTree = "<group>"; };
@@ -285,7 +267,6 @@
 			files = (
 				2769C1022286347A00217480 /* libSHDatetime.a in Frameworks */,
 				27397348226C09AD001590C6 /* libSHCore_C.a in Frameworks */,
-				27B15AA320524B6B0045B226 /* SHGlobal.framework in Frameworks */,
 				27B15A9F20524B4F0045B226 /* SHCommon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,14 +291,6 @@
 				27075D70225A695300AD13AA /* SHConfigDTO.m */,
 			);
 			path = DTOs;
-			sourceTree = "<group>";
-		};
-		270C62892387945F00FD0D26 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				270C628D2387945F00FD0D26 /* SHGlobal.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		270C62912387947C00FD0D26 /* Products */ = {
@@ -361,7 +334,6 @@
 			children = (
 				270C62A4238794D000FD0D26 /* SHCore_C.xcodeproj */,
 				270C62902387947C00FD0D26 /* SHCommon.xcodeproj */,
-				270C62882387945F00FD0D26 /* SHGlobal.xcodeproj */,
 				2740A88F226FDB5D00ACD777 /* Transactions */,
 				2740A872226CE37D00ACD777 /* Scripts */,
 				276E6D98222A531700CB36CB /* Configs */,
@@ -419,8 +391,6 @@
 			children = (
 				2769C1012286347A00217480 /* libSHDatetime.a */,
 				27397347226C09AD001590C6 /* libSHCore_C.a */,
-				27B15AA220524B6B0045B226 /* SHGlobal.framework */,
-				27B15AA020524B5D0045B226 /* SHData.framework */,
 				27B15A9E20524B4F0045B226 /* SHCommon.framework */,
 			);
 			name = Frameworks;
@@ -674,7 +644,6 @@
 			dependencies = (
 				270C62AC238794D400FD0D26 /* PBXTargetDependency */,
 				270C629A2387948000FD0D26 /* PBXTargetDependency */,
-				270C628F2387946800FD0D26 /* PBXTargetDependency */,
 			);
 			name = SHModels;
 			productName = SHModels;
@@ -715,10 +684,6 @@
 					ProductGroup = 270C62A5238794D000FD0D26 /* Products */;
 					ProjectRef = 270C62A4238794D000FD0D26 /* SHCore_C.xcodeproj */;
 				},
-				{
-					ProductGroup = 270C62892387945F00FD0D26 /* Products */;
-					ProjectRef = 270C62882387945F00FD0D26 /* SHGlobal.xcodeproj */;
-				},
 			);
 			projectRoot = "";
 			targets = (
@@ -728,13 +693,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		270C628D2387945F00FD0D26 /* SHGlobal.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SHGlobal.framework;
-			remoteRef = 270C628C2387945F00FD0D26 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		270C62982387947C00FD0D26 /* SHCommon.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -855,11 +813,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		270C628F2387946800FD0D26 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SHGlobal;
-			targetProxy = 270C628E2387946800FD0D26 /* PBXContainerItemProxy */;
-		};
 		270C629A2387948000FD0D26 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SHCommon;

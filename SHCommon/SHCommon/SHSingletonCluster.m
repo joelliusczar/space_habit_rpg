@@ -10,7 +10,8 @@
 #import "SHResourceUtility.h"
 #import "NSDate+DateHelper.h"
 #import "SHReportServiceCaller.h"
-@import SHGlobal;
+#import "SHConstants.h"
+
 
 @interface SHSingletonCluster ()
 @property (strong, nonatomic) dispatch_queue_t bagQueue;

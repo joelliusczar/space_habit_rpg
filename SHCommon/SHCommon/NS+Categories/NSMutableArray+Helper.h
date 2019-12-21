@@ -7,7 +7,7 @@
 //
 
 @import Foundation;
-@import SHGlobal;
+
 
 
 @interface NSMutableArray<ItemType> (Helper)

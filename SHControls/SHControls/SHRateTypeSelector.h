@@ -9,7 +9,7 @@
 #import "SHRateTypeSelectorDelegateProtocol.h"
 #import "SHViewController.h"
 #import "SHButton.h"
-@import SHGlobal;
+
 @import UIKit;
 
 @interface SHRateTypeSelector : SHViewController

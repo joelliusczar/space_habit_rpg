@@ -7,7 +7,8 @@
 //
 
 #import "SHNotificationHelper.h"
-@import SHGlobal;
+#import "SHConstants.h"
+
 #if IS_IOS
 @import UIKit;
 #endif
@@ -15,7 +16,8 @@
 @implementation SHNotificationHelper
 
 +(UNMutableNotificationContent *)buildDefaultNotificationContent:(NSString *)notificationText
-														userInfo:(NSDictionary *)info{
+	userInfo:(NSDictionary *)info
+{
 	(void)info;
 	UNMutableNotificationContent *content = [UNMutableNotificationContent new];
 	content.title = @"Reminder:";

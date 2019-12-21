@@ -7,7 +7,7 @@
 //
 
 @import Foundation;
-#import "SHGlobal/SHCommonTypeDefs.h"
+#import "SHCommonTypeDefs.h"
 
 @protocol SHInterceptorProtocol <NSObject>
 -(void)callVoidWrapped:(shWrapReturnVoid)callMe withInfo:(id)info;

@@ -11,7 +11,7 @@
 #import "SHMonsterDictionaryEntry.h"
 #import "SHMonster_Medium.h"
 @import SHCommon;
-@import SHGlobal;
+
 
 static const float MAX_HP_MODIFIER = .1;
 static const float XP_MODIFIER = .1;

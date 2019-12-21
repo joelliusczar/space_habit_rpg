@@ -17,4 +17,5 @@
 -(void)arrangeAndPushChildVCToFront:(SHViewController *)child;
 //if you want to get rid of a child view controller, call this
 -(void)popVCFromFront;
+-(void)popAllChildVCs;
 @end

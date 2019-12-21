@@ -55,23 +55,23 @@
 */
 -(void)loadView{
 	self.view = _controlsTbl;
-	
 }
 
-- (void)viewDidLoad {
-		[super viewDidLoad];
-		self.controlsTbl.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+-(void)viewDidLoad {
+	[super viewDidLoad];
+	self.controlsTbl.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
+	[self setupEditControls];
+	[self loadExistingDailyForEditing];
 	
-		[self setupEditControls];
-		[self loadExistingDailyForEditing];
-		
-		//it is important that this table delegate stuff happens after we check
-		//for the existence of the model, otherwise table events will trigger
-		//at inconvienient times, and either invalid data or null pointer exceptions
-		//will happen
-		self.controlsTbl.dataSource = self;
-		self.controlsTbl.delegate = self;
+	//it is important that this table delegate stuff happens after we check
+	//for the existence of the model, otherwise table events will trigger
+	//at inconvienient times, and either invalid data or null pointer exceptions
+	//will happen
+	self.controlsTbl.dataSource = self;
+	self.controlsTbl.delegate = self;
 }
+
 
 -(void)viewDidAppear:(BOOL)animated{
 	[super viewDidAppear:animated];

@@ -9,7 +9,7 @@
 #import "SHMonthlyActiveDaysViewController.h"
 #import "SHMonthPartPicker.h"
 @import SHCommon;
-@import SHGlobal;
+
 @import SHControls;
 @import SHModels;
 

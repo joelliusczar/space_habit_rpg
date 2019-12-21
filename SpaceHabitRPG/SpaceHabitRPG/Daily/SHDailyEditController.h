@@ -10,7 +10,7 @@
 #import "SHEditingSaverProtocol.h"
 @import UIKit;
 
-@import SHGlobal;
+
 @import SHModels;
 @import SHControls;
 

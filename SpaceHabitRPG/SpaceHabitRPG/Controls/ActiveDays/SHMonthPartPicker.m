@@ -7,7 +7,7 @@
 //
 
 #import "SHMonthPartPicker.h"
-@import SHGlobal;
+
 @import SHCommon;
 @import SHControls;
 

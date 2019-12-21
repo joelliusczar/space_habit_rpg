@@ -11,7 +11,7 @@
 @import SHCommon;
 @import SHControls;
 @import SHModels;
-@import SHGlobal;
+
 
 @interface SHYearlyActiveDaysViewController ()
 @end

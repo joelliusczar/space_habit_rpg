@@ -8,7 +8,7 @@
 
 #import "SHEditNavigationController.h"
 #import "SHEditingSaverProtocol.h"
-@import SHGlobal;
+
 @import SHCommon;
 
 @import SHControls;

@@ -119,9 +119,6 @@
       location = "group:SHCommon/SHCommon.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SHGlobal/SHGlobal.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "container:SpaceHabitRPG/SpaceHabitRPG.xcodeproj">
    </FileRef>
 </Workspace>

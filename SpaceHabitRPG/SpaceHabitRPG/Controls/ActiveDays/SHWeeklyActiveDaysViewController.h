@@ -9,7 +9,7 @@
 #import "SHDayOption.h"
 @import UIKit;
 @import SHControls;
-@import SHGlobal;
+
 @import SHModels;
 @import SHControls;
 

@@ -6,8 +6,10 @@
 //	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
+#import "SHConstants.h"
 @import Foundation;
-@import SHGlobal;
+
+
 
 @interface NSDate (DateHelper)
 -(NSDate *)dateAfterYears:(NSInteger)y months:(NSInteger)m days:(NSInteger)d;

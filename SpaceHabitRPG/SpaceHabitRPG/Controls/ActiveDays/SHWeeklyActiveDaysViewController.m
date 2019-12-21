@@ -32,8 +32,6 @@
 	
 	NSArray<NSString *> *dayKeys = shBuildWeekBasedOnWeekStart(self.weekStartDay);
 	
-	
-	
 	for(int i = 0; i < 7; i++){
 		self.activeDaySwitches[i].dayLabel.text = shWeekDayKeyToFull(dayKeys[i]);
 		self.activeDaySwitches[i].eventDelegate = self;
@@ -42,7 +40,6 @@
 	}
 	
 }
-
 
 
 -(void)onBeginTap_action:(SHView *)sender withEvent:(UIEvent*)event{

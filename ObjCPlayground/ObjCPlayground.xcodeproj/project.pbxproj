@@ -13,7 +13,6 @@
 		2726A8522222523D003993B3 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2726A8512222523D003993B3 /* SHCommon.framework */; };
 		2726A85722225299003993B3 /* RefO.m in Sources */ = {isa = PBXBuildFile; fileRef = 2726A85422225299003993B3 /* RefO.m */; };
 		2726A8582222529A003993B3 /* WeakHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2726A85622225299003993B3 /* WeakHolder.m */; };
-		2726A85C2222568A003993B3 /* SHData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2726A85B2222568A003993B3 /* SHData.framework */; };
 		2726A85E22225D7C003993B3 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2726A85D22225D7C003993B3 /* SHModels.framework */; };
 		2747C42C2044C51F00FB5669 /* UserOfProtocus.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3F82044C51600FB5669 /* UserOfProtocus.m */; };
 		2747C42D2044C51F00FB5669 /* ParentMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C3F92044C51600FB5669 /* ParentMan.m */; };
@@ -186,7 +185,6 @@
 				278704482272A72B009C9DD6 /* SHTestCommon.framework in Frameworks */,
 				2726A84F22225209003993B3 /* libSHDatetime.a in Frameworks */,
 				2726A8522222523D003993B3 /* SHCommon.framework in Frameworks */,
-				2726A85C2222568A003993B3 /* SHData.framework in Frameworks */,
 				2726A85E22225D7C003993B3 /* SHModels.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

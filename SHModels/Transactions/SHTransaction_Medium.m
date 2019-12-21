@@ -7,7 +7,7 @@
 //
 
 #import "SHTransaction_Medium.h"
-@import SHGlobal;
+
 @import SHCommon;
 
 

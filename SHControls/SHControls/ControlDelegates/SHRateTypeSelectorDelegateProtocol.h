@@ -8,7 +8,8 @@
 
 #import "SHEventInfo.h"
 @import Foundation;
-@import SHGlobal;
+@import SHCommon;
+
 
 @protocol SHRateTypeSelectorDelegateProtocol <NSObject>
 -(void)updateRateType:(SHRateType)rateType with:(SHEventInfo *)eventInfo;

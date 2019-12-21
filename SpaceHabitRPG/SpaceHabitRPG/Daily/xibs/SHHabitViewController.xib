@@ -9,7 +9,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHHabitViewController">
             <connections>
-                <outlet property="addHabitBtn" destination="lEi-vd-odt" id="2k4-bz-bic"/>
+                <outlet property="addHabitBtn" destination="lEi-vd-odt" id="PRg-yU-B81"/>
+                <outlet property="addHabitBtnLbl" destination="Ob2-og-2sh" id="lJM-mW-gHn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -29,7 +30,7 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ob2-og-2sh">
-                            <rect key="frame" x="67" y="9.5" width="42" height="21"/>
+                            <rect key="frame" x="67" y="4.5" width="61.5" height="31.5"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>

@@ -15,7 +15,7 @@
 #import "SHDailyEditController.h"
 #import "SHDailyCellController.h"
 #import "SHIntroViewController.h"
-@import SHGlobal;
+
 @import SHCommon;
 @import SHControls;
 @import SHModels;
@@ -52,7 +52,9 @@
 }
 
 
--(void)setuptab{
+-(void)viewDidLoad {
+	[super viewDidLoad];
+	self.addHabitBtnLbl.text = @"Add New Daily";
 	UITabBarItem *tbi = [self tabBarItem];
 	[tbi setTitle:@"Dailies"];
 }
