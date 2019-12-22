@@ -1,5 +1,5 @@
 //
-//	SHListRateItem.h
+//	SHMonthlyYearlyRateItem.h
 //	SHModels
 //
 //	Created by Joel Pridgen on 5/5/19.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHListRateItem : SHObject
+@interface SHMonthlyYearlyRateItem : SHObject
 @property (assign,nonatomic) NSInteger majorOrdinal;
 @property (assign,nonatomic) NSInteger minorOrdinal;
 @property (copy,nonatomic) void (^touchCallback)(void);

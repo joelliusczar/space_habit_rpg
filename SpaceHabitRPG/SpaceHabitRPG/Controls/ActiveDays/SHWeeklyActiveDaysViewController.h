@@ -35,7 +35,7 @@ IB_DESIGNABLE
 @property (strong,nonatomic) IBOutlet SHDayOption *day6Switch;
 @property (assign,nonatomic) NSInteger weekStartDay;
 @property (assign,nonatomic) IBOutlet id<SHWeeklyActiveDayChangesProtocol> valueChangeDelegate;
-@property (strong,nonatomic) NSArray<SHRangeRateItem*> *weeklyActiveDays;
+@property (strong,nonatomic) SHWeeklyRateItemList *weeklyActiveDays;
 -(void)setupCustomOptions;
 
 @end

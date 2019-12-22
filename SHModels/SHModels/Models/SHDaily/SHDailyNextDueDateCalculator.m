@@ -7,6 +7,7 @@
 //
 
 #import "SHDailyNextDueDateCalculator.h"
+#import "SHWeeklyRateItemList.h"
 #import <SHCore_C/SHDaily_C.h>
 @import SHCommon;
 
@@ -36,7 +37,7 @@
 }
 
 
-static void convertObjCRateItemToC(NSArray<SHRangeRateItem*>* rateItems, SHRateValueItem *rvi){
+static void convertObjCRateItemToC(SHWeeklyRateItemList* rateItems, SHRateValueItem *rvi){
 	for(int i = 0; i < SH_DAYS_IN_WEEK; i++){
 		[rateItems[i] copyIntoCStruct:&rvi[i]];
 	}
@@ -57,7 +58,8 @@ static void convertObjCRateItemToC(NSArray<SHRangeRateItem*>* rateItems, SHRateV
 	SHRateValueItem *rvi = calloc(SH_DAYS_IN_WEEK, sizeof(SHRateValueItem));
 	convertObjCRateItemToC(self.activeDaysContainer.weeklyActiveDays,rvi);
 	shNextDueDate_WEEKLY(lastCheckinDt,checkinDt,rvi,
-		self.activeDaysContainer.weeklyIntervalSize, self.dayStartTime, &ans, error);
+		self.activeDaysContainer.weeklyActiveDays.intervalSize,
+		self.dayStartTime, &ans, error);
 	double dueDateTimestamp = shDtToTimestamp(&ans, error);
 	NSDate *nextDueDate = [NSDate dateWithTimeIntervalSince1970:dueDateTimestamp];
 	shFreeSHDatetime(lastCheckinDt,1);

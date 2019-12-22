@@ -17,6 +17,7 @@
 @implementation SHDailyEditController (ControlLoaders)
 
 
+
 -(SHControlKeep *)buildControlKeep{
 	NSAssert(self.activeDays,@"Active days shouldn't be nil");
 	SHControlKeep *keep = [[SHControlKeep alloc] init];
@@ -146,4 +147,6 @@
 		[bSelf modelTouched];
 	};
 }
+
+
 @end

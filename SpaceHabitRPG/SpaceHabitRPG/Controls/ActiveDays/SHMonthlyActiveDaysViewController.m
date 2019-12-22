@@ -19,8 +19,8 @@
 @implementation SHMonthlyActiveDaysViewController
 
 
-+(instancetype)newWithListRateItemCollection:(SHListRateItemCollection *)activeDays
-	inverseActiveDays:(SHListRateItemCollection*)inverseActiveDays
++(instancetype)newWithListRateItemCollection:(SHMonthlyYearlyRateItemList *)activeDays
+	inverseActiveDays:(SHMonthlyYearlyRateItemList*)inverseActiveDays
 {
 	SHMonthlyActiveDaysViewController *instance = [[SHMonthlyActiveDaysViewController alloc] init];
 	instance.monthRateItems = activeDays;
@@ -40,7 +40,7 @@
 	cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	SHListItemCell *cell = [SHListItemCell getListItemCell:tableView];
-	SHListRateItem *rateItem = self.monthRateItems[indexPath.row];
+	SHMonthlyYearlyRateItem *rateItem = self.monthRateItems[indexPath.row];
 	NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
 	numFormatter.locale = NSLocale.currentLocale;
 	numFormatter.numberStyle = NSNumberFormatterOrdinalStyle;
@@ -68,7 +68,7 @@
 -(BOOL)addCellWithPickerSelection:(SHSpinPicker *)picker{
 	NSInteger weekOrdinal = [picker selectedRowInComponent: 0];
 	NSInteger dayOfWeek = [picker selectedRowInComponent: 1];
-	SHListRateItem *rateItem = [[SHListRateItem alloc] initWithMajorOrdinal:weekOrdinal
+	SHMonthlyYearlyRateItem *rateItem = [[SHMonthlyYearlyRateItem alloc] initWithMajorOrdinal:weekOrdinal
 		minorOrdinal:dayOfWeek];
 	NSInteger row = [self.monthRateItems addRateItem:rateItem];
 	if(row >= 0){

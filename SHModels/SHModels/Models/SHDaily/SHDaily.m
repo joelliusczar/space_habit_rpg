@@ -7,7 +7,7 @@
 //
 
 #import "SHDaily.h"
-#import "SHRangeRateItem.h"
+#import "SHWeeklyRateItem.h"
 #import "SHConfig.h"
 #import "SHDailyNextDueDateCalculator.h"
 #import "SHDailyMaxDaysBeforeSpanCalculator.h"
@@ -24,24 +24,24 @@
 }
 
 
--(int32_t)rate{
+-(NSInteger)rate{
 	switch(self.rateType){
 		case SH_YEARLY_RATE:
-			return self.activeDaysContainer.yearlyIntervalSize;
+			return self.activeDaysContainer.yearlyActiveDays.intervalSize;
 		case SH_YEARLY_RATE_INVERSE:
-			return self.activeDaysContainer.yearlyIntervalSizeInv;
+			return self.activeDaysContainer.yearlyActiveDaysInv.intervalSize;
 		case SH_MONTHLY_RATE:
-			return self.activeDaysContainer.monthlyIntervalSize;
+			return self.activeDaysContainer.monthlyActiveDays.intervalSize;
 		case SH_MONTHLY_RATE_INVERSE:
-			return self.activeDaysContainer.monthlyIntervalSizeInv;
+			return self.activeDaysContainer.monthlyActiveDaysInv.intervalSize;
 		case SH_WEEKLY_RATE:
-			return self.activeDaysContainer.weeklyIntervalSize;
+			return self.activeDaysContainer.weeklyActiveDays.intervalSize;
 		case SH_WEEKLY_RATE_INVERSE:
-			return self.activeDaysContainer.weeklyIntervalSizeInv;
+			return self.activeDaysContainer.weeklyActiveDaysInv.intervalSize;
 		case SH_DAILY_RATE:
-			return 1;
+			return self.activeDaysContainer.dailyRateItem.intervalSize;
 		case SH_DAILY_RATE_INVERSE:
-			return 1;
+			return self.activeDaysContainer.dailyRateItemInv.intervalSize;
 	}
 	return 1;
 }

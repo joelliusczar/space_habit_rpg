@@ -31,8 +31,8 @@
 		NSError *error = nil;
 		SHDaily *daily = (SHDaily*)[self.context getEntityOrNil:self.objectID withError:&error];
 		NSString *dailyName = daily.dailyName;
-		int32_t streakLength = daily.streakLength;
-		int32_t rate = daily.rate;
+		NSInteger streakLength = daily.streakLength;
+		NSInteger rate = daily.rate;
 		NSUInteger daysUntilDue = daily.daysUntilDue;
 		BOOL isCompleted = daily.isCompleted;
 		
@@ -41,7 +41,7 @@
 				//for current streak count
 			if(streakLength > 0){
 				self.streakLbl.hidden = NO;
-				self.streakLbl.text = [NSString stringWithFormat:@"Combo: %d",streakLength];
+				self.streakLbl.text = [NSString stringWithFormat:@"Combo: %ld",streakLength];
 			}
 			else{
 				self.streakLbl.hidden = YES;

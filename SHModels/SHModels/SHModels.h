@@ -49,7 +49,6 @@ FOUNDATION_EXPORT const unsigned char SHModelsVersionString[];
 #import "SHHeroDTO.h"
 #import "SHReminderDTO.h"
 #import "SHConfigDTO.h"
-#import "SHDailyDTO.h"
 #import "SHDaily_Medium.h"
 #import "SHCategory.h"
 #import "SHCategory+CoreDataProperties.h"
@@ -58,9 +57,9 @@ FOUNDATION_EXPORT const unsigned char SHModelsVersionString[];
 #import "SHBundleKey.h"
 #import "Model+CoreDataModel.h"
 #import "SHModelError.h"
-#import "SHListRateItem.h"
-#import "SHListRateItemCollection.h"
-#import "SHRangeRateItem.h"
+#import "SHMonthlyYearlyRateItem.h"
+#import "SHMonthlyYearlyRateItemList.h"
+#import "SHWeeklyRateItem.h"
 #import "SHDailyActiveDays.h"
 #import "SHDailyValidation.h"
 #import "SHDailyNextDueDateCalculator.h"
@@ -68,6 +67,8 @@ FOUNDATION_EXPORT const unsigned char SHModelsVersionString[];
 #import "SHTitleProtocol.h"
 #import "SHDailyActivator.h"
 #import "SHMonster_Medium.h"
+#import "SHWeeklyRateItemList.h"
+#import "SHRateItemProtocol.h"
 
 // In this header, you should import all
 //the public headers of your framework using statements like #import <SHModels/PublicHeader.h>

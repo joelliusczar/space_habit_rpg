@@ -13,9 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHDailyMaxDaysBeforeSpanCalculator : NSObject
 @property (strong,nonatomic) SHDailyActiveDays *activeDaysContainer;
-@property (assign,nonatomic) int32_t rate;
+@property (assign,nonatomic) NSInteger rate;
 -(instancetype)initWithActiveDays:(SHDailyActiveDays *)activeDaysContainer
-	rate:(int32_t)rate;
+	rate:(NSInteger)rate;
 -(NSInteger)maxDaysBeforeSpan_WEEKLY;
 @end
 

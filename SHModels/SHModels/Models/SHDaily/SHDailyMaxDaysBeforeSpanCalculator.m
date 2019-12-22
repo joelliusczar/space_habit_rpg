@@ -12,7 +12,7 @@
 
 
 -(instancetype)initWithActiveDays:(SHDailyActiveDays *)activeDaysContainer
-	rate:(int32_t)rate
+	rate:(NSInteger)rate
 {
 	if(self = [super init]) {
 		_activeDaysContainer = activeDaysContainer;

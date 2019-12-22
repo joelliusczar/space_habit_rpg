@@ -7,46 +7,34 @@
 //
 
 @import Foundation;
-#import "SHRangeRateItem.h"
-#import "SHListRateItemCollection.h"
+#import "SHWeeklyRateItem.h"
+#import "SHMonthlyYearlyRateItemList.h"
+#import "SHWeeklyRateItemList.h"
+#import "SHDailyRateItem.h"
+#import "SHRateItemProtocol.h"
 
-typedef SHListRateItemCollection* _Nonnull (^shGetListRateCollection)(void);
-typedef NSArray<SHRangeRateItem*>* _Nonnull (^shGetRangeRateArray)(void);
+typedef SHMonthlyYearlyRateItemList* _Nonnull (^shGetListRateCollection)(void);
+typedef SHWeeklyRateItemList* _Nonnull (^shGetRangeRateArray)(void);
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHDailyActiveDays : NSObject
 
 @property (strong,nonatomic, null_resettable) NSMutableDictionary *activeDaysDict;
-@property (readonly,nonatomic) SHListRateItemCollection *monthlyActiveDays;
-@property (readonly,nonatomic) SHListRateItemCollection *monthlyActiveDaysInv;
-@property (readonly,nonatomic) SHListRateItemCollection *yearlyActiveDays;
-@property (readonly,nonatomic) SHListRateItemCollection *yearlyActiveDaysInv;
-@property (readonly,nonatomic) NSArray<SHRangeRateItem*> *weeklyActiveDays;
-@property (readonly,nonatomic) NSArray<SHRangeRateItem*> *weeklyActiveDaysInv;
-
-@property (assign,nonatomic) int32_t dailyIntervalSize;
-@property (nonatomic) int32_t weeklyIntervalSize;
-@property (assign,nonatomic) int32_t monthlyIntervalSize;
-@property (assign,nonatomic) int32_t yearlyIntervalSize;
-@property (assign,nonatomic) int32_t dailyIntervalSizeInv;
-@property (assign,nonatomic) int32_t weeklyIntervalSizeInv;
-@property (assign,nonatomic) int32_t monthlyIntervalSizeInv;
-@property (assign,nonatomic) int32_t yearlyIntervalSizeInv;
+@property (readonly,nonatomic) SHMonthlyYearlyRateItemList *monthlyActiveDays;
+@property (readonly,nonatomic) SHMonthlyYearlyRateItemList *monthlyActiveDaysInv;
+@property (readonly,nonatomic) SHMonthlyYearlyRateItemList *yearlyActiveDays;
+@property (readonly,nonatomic) SHMonthlyYearlyRateItemList *yearlyActiveDaysInv;
+@property (readonly,nonatomic) SHWeeklyRateItemList *weeklyActiveDays;
+@property (readonly,nonatomic) SHWeeklyRateItemList *weeklyActiveDaysInv;
+@property (readonly,nonatomic) SHDailyRateItem *dailyRateItem;
+@property (readonly,nonatomic) SHDailyRateItem *dailyRateItemInv;
 
 @property (assign,nonatomic) NSUInteger weeklyDayStart;
 
-@property (readonly,copy,nonatomic) shGetListRateCollection monthlyActiveDaysLazy;
-@property (readonly,copy,nonatomic) shGetListRateCollection monthlyActiveDaysInvLazy;
-@property (readonly,copy,nonatomic) shGetListRateCollection yearlyActiveDaysLazy;
-@property (readonly,copy,nonatomic) shGetListRateCollection yearlyActiveDaysInvLazy;
-@property (readonly,copy,nonatomic) shGetRangeRateArray weeklyActiveDaysLazy;
-@property (readonly,copy,nonatomic) shGetRangeRateArray weeklyActiveDaysInvLazy;
-
-
 -(instancetype)initWithActiveDaysJson:(nullable NSString*)activeDaysJson;
 -(NSString*)activeDaysAsJson;
--(void)flipDayOfWeek:(NSUInteger)dayIdx forPolarity:(BOOL)isInverse;
+-(id<SHRateItemProtocol>)selectRateItemCollection:(SHRateType)rateType;
 @end
 
 NS_ASSUME_NONNULL_END

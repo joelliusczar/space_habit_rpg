@@ -1,15 +1,15 @@
 //
-//	SHRangeRateItem.m
+//	SHWeeklyRateItem.m
 //	SHModels
 //
 //	Created by Joel Pridgen on 5/10/19.
 //	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import "SHRangeRateItem.h"
+#import "SHWeeklyRateItem.h"
 @import SHCommon;
 
-@implementation SHRangeRateItem
+@implementation SHWeeklyRateItem
 
 
 -(void)copyFromCStruct:(SHRateValueItem *)rvi{
@@ -24,6 +24,7 @@
 	rvi->forrange = self.forrange;
 	rvi->backrange = self.backrange;
 }
+
 
 -(id)copyWithZone:(NSZone *)zone{
 	(void)zone;
@@ -42,5 +43,6 @@
 -(NSString*)description{
 	return [self debugDescription];
 }
+
 
 @end

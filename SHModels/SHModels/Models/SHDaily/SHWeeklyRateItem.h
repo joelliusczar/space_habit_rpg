@@ -1,5 +1,5 @@
 //
-//  SHRangeRateItem.h
+//  SHWeeklyRateItem.h
 //  SHModels
 //
 //  Created by Joel Pridgen on 5/10/19.
@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHRangeRateItem : NSObject
+@interface SHWeeklyRateItem : NSObject
 
 @property (nonatomic) BOOL isDayActive;
 @property (nonatomic) NSInteger backrange;
