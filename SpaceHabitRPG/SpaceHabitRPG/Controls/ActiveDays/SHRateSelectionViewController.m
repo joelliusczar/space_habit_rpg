@@ -19,6 +19,7 @@ const NSInteger YEARLY_SELECTION = 3;
 
 @interface SHRateSelectionViewController ()
 @property (assign, nonatomic) SHRateType rateType;
+@property (strong, nonatomic) IBOutlet UIButton *backButton;
 @end
 
 @implementation SHRateSelectionViewController
@@ -66,6 +67,12 @@ const NSInteger YEARLY_SELECTION = 3;
 		SHRateSelectionViewController *bSelf = weakSelf;
 		[bSelf rateStepEvent:stepper event:e];
 	};
+	SHIconBuilder *builder = [[SHIconBuilder alloc] initWithColor:UIColor.grayColor
+		withBackgroundColor:UIColor.blackColor
+		withSize:CGSizeMake(30, 30)
+		withThickness:4];
+	UIImage *backImg = [builder drawBackArrow];
+	[self.backButton setImage:backImg forState:UIControlStateNormal];
 }
 
 
@@ -111,15 +118,17 @@ const NSInteger YEARLY_SELECTION = 3;
 
 -(void)switchToActiveDaysViewController:(SHRateType)rateType{
 	NSAssert(self.activeDays,@"We need active days to not be nill");
-	[self.rateActiveDaysViewController popAllChildVCs];
+	
+	id<SHRateItemProtocol> rateItem = [self.activeDays selectRateItemCollection:rateType];
+	self.intervalSetter.labelSingularFormatString = rateItem.singularFormatString;
+	self.intervalSetter.labelPluralFormatString = rateItem.pluralFormatString;
+	self.intervalSetter.intervalSize = rateItem.intervalSize;
+	
 	SHViewController *selectedActiveDaysVC = [self selectActiveDaysViewController:rateType];
+	[self.rateActiveDaysViewController popAllChildVCs];
 	if(selectedActiveDaysVC) {
 		[self.rateActiveDaysViewController arrangeAndPushChildVCToFront:selectedActiveDaysVC];
 	}
-	id<SHRateItemProtocol> rateItem = [self.activeDays selectRateItemCollection:rateType];
-	self.intervalSetter.intervalSize = rateItem.intervalSize;
-	self.intervalSetter.labelSingularFormatString = rateItem.singularFormatString;
-	self.intervalSetter.labelPluralFormatString = rateItem.pluralFormatString;
 }
 
 

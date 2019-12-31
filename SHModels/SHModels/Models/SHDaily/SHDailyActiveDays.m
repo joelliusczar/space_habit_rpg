@@ -74,17 +74,21 @@
 	if(raw.count == 0){
 		rateItems = [[SHWeeklyRateItemList alloc] init];
 	}
-	rateItems = [[SHWeeklyRateItemList alloc] initWithRateItemArray:raw];
+	else {
+		rateItems = [[SHWeeklyRateItemList alloc] initWithRateItemArray:raw];
+	}
 	rateItems.intervalSize = ((NSNumber *)self.activeDaysDict[shGetRateTypeIntervalSizeKey(SH_WEEKLY_RATE)]).intValue;
 	return rateItems;
 }
 
 
 -(SHMonthlyYearlyRateItemList*)buildActiveDays:(SHRateType)rateType{
+	SHRateType baseRateType = shExtractBaseRateType(rateType);
 	NSMutableArray *raw = (NSMutableArray*)self.activeDaysDict[shGetRateTypeKey(rateType)];
-	SHMonthlyYearlyRateItemList *rateItems = [[SHMonthlyYearlyRateItemList alloc] initWithActiveDays:raw];
+	Class rateClass = baseRateType == SH_MONTHLY_RATE ?
+		SHMonthlyRateItemList.class : SHYearlyRateItemList.class;
+	SHMonthlyYearlyRateItemList *rateItems = [[rateClass alloc] initWithActiveDays:raw];
 	rateItems.intervalSize = ((NSNumber *)self.activeDaysDict[shGetRateTypeIntervalSizeKey(rateType)]).intValue;
-	rateItems.rateType = rateType;
 	return rateItems;
 }
 

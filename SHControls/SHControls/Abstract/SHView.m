@@ -70,9 +70,13 @@
 		_mainView = [self loadDefaultXib];
 		if(_mainView) {
 			[self addSubview:_mainView];
-			#warning there used to be some resizing logic here.
-			//[_mainView createFillUpLayoutConstraints:self];
+			_mainView.translatesAutoresizingMaskIntoConstraints = NO;
+			[self.leadingAnchor constraintEqualToAnchor:_mainView.leadingAnchor].active = YES;
+			[self.topAnchor constraintEqualToAnchor:_mainView.topAnchor].active = YES;
+			[self.trailingAnchor constraintEqualToAnchor:_mainView.trailingAnchor].active = YES;
+			[self.bottomAnchor constraintEqualToAnchor:_mainView.bottomAnchor].active = YES;
 		}
+		self.backgroundColor = super.backgroundColor;
 	}
 	[self setupCustomOptions];
 }
@@ -101,6 +105,16 @@
 	self.backgroundColor = color;
 }
 
+
+-(UIColor*)backgroundColor {
+	return super.backgroundColor;
+}
+
+
+-(void)setBackgroundColor:(UIColor *)backgroundColor {
+	self.mainView.backgroundColor = backgroundColor;
+	super.backgroundColor = backgroundColor;
+}
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches
 	withEvent:(UIEvent *)event

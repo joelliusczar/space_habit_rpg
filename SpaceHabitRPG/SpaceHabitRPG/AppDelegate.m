@@ -41,6 +41,11 @@ void printWorkingDir(){
 		andNibName:@"SHCentralViewController"
 		andResourceUtil:self.resourceUtil
 		andBundle:nil];
+	UIColor *darkThemeBG = [UIColor colorWithRed:39.0/256.0 green:40.0/256.0 blue:33.0/256.0 alpha:1];
+	UITableView.appearance.backgroundColor = darkThemeBG;
+	UILabel.appearance.backgroundColor = darkThemeBG;
+	UILabel.appearance.textColor = UIColor.whiteColor;
+	
 	
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	self.window.rootViewController = self.centralController;

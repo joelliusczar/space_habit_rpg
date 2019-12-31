@@ -71,6 +71,10 @@
 		27A430EE22692C2200773056 /* NSSet+SHHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A430EC22692C2200773056 /* NSSet+SHHelper.m */; };
 		27A430F122692DAF00773056 /* NSOrderedSet+SHHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27A430EF22692DAF00773056 /* NSOrderedSet+SHHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27A430F222692DAF00773056 /* NSOrderedSet+SHHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A430F022692DAF00773056 /* NSOrderedSet+SHHelper.m */; };
+		27A5B16F23B727F8007FAD95 /* SHIconDrawingFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 27A5B16D23B727F8007FAD95 /* SHIconDrawingFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27A5B17023B727F8007FAD95 /* SHIconDrawingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A5B16E23B727F8007FAD95 /* SHIconDrawingFunctions.m */; };
+		27A5B17323B72C30007FAD95 /* SHIconBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 27A5B17123B72C30007FAD95 /* SHIconBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27A5B17423B72C30007FAD95 /* SHIconBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A5B17223B72C30007FAD95 /* SHIconBuilder.m */; };
 		27CA8636226262E200AE8FDB /* SHObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA8634226262E200AE8FDB /* SHObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA8637226262E200AE8FDB /* SHObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA8635226262E200AE8FDB /* SHObject.m */; };
 		27DD1D242043A2210030D954 /* NSException+SHCommonExceptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 27DD1D1C2043A2210030D954 /* NSException+SHCommonExceptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -168,6 +172,10 @@
 		27A430EC22692C2200773056 /* NSSet+SHHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSSet+SHHelper.m"; sourceTree = "<group>"; };
 		27A430EF22692DAF00773056 /* NSOrderedSet+SHHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSOrderedSet+SHHelper.h"; sourceTree = "<group>"; };
 		27A430F022692DAF00773056 /* NSOrderedSet+SHHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSOrderedSet+SHHelper.m"; sourceTree = "<group>"; };
+		27A5B16D23B727F8007FAD95 /* SHIconDrawingFunctions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHIconDrawingFunctions.h; sourceTree = "<group>"; };
+		27A5B16E23B727F8007FAD95 /* SHIconDrawingFunctions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHIconDrawingFunctions.m; sourceTree = "<group>"; };
+		27A5B17123B72C30007FAD95 /* SHIconBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHIconBuilder.h; sourceTree = "<group>"; };
+		27A5B17223B72C30007FAD95 /* SHIconBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHIconBuilder.m; sourceTree = "<group>"; };
 		27A90C28238792CF008F22A4 /* SHDatetime.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHDatetime.xcodeproj; path = ../SHDatetime/SHDatetime.xcodeproj; sourceTree = "<group>"; };
 		27B0B1F02223A6700028AF59 /* SHCommon.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHCommon.base.xcconfig; sourceTree = "<group>"; };
 		27CA8634226262E200AE8FDB /* SHObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHObject.h; sourceTree = "<group>"; };
@@ -255,6 +263,10 @@
 				272D83AD23AD951300D946D3 /* SHObjectIDWrapper.m */,
 				272D83BB23AD9FE200D946D3 /* SHCoreData.h */,
 				272D83BA23AD9FE100D946D3 /* SHCoreData.m */,
+				27A5B16D23B727F8007FAD95 /* SHIconDrawingFunctions.h */,
+				27A5B16E23B727F8007FAD95 /* SHIconDrawingFunctions.m */,
+				27A5B17123B72C30007FAD95 /* SHIconBuilder.h */,
+				27A5B17223B72C30007FAD95 /* SHIconBuilder.m */,
 			);
 			path = SHCommon;
 			sourceTree = "<group>";
@@ -391,6 +403,8 @@
 				272D83C823AE8AE400D946D3 /* SHConstants.h in Headers */,
 				272D83B323AD962B00D946D3 /* NSManagedObjectContext+Helper.h in Headers */,
 				272D83BD23AD9FE200D946D3 /* SHCoreData.h in Headers */,
+				27A5B17323B72C30007FAD95 /* SHIconBuilder.h in Headers */,
+				27A5B16F23B727F8007FAD95 /* SHIconDrawingFunctions.h in Headers */,
 				27118841203FFA810085A549 /* SHCommon.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,6 +512,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27A5B17423B72C30007FAD95 /* SHIconBuilder.m in Sources */,
 				27DD1D252043A2210030D954 /* NSLocale+Helper.m in Sources */,
 				27A430EA2269256200773056 /* SHCollectionUtils.m in Sources */,
 				272D83AF23AD951300D946D3 /* SHObjectIDWrapper.m in Sources */,
@@ -516,6 +531,7 @@
 				2747C48A2048CDB400FB5669 /* SHControlKeep.m in Sources */,
 				27A430EE22692C2200773056 /* NSSet+SHHelper.m in Sources */,
 				2747C4762047CC1D00FB5669 /* NSNumber+Helper.m in Sources */,
+				27A5B17023B727F8007FAD95 /* SHIconDrawingFunctions.m in Sources */,
 				274EFB5B204E3FE000CB3C4C /* UIColor+Helper.m in Sources */,
 				2747C3C22043B6C000FB5669 /* NSMutableArray+Helper.m in Sources */,
 				272D83B423AD962B00D946D3 /* NSManagedObjectContext+Helper.m in Sources */,

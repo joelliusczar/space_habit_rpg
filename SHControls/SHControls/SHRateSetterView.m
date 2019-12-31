@@ -8,12 +8,53 @@
 
 #import "SHRateSetterView.h"
 #import "EventArgs/SHEventInfo.h"
+@import SHCommon;
+
 
 @interface SHRateSetterView ()
-
 @end
 
 @implementation SHRateSetterView
+
+
+@synthesize textColor = _textColor;
+-(UIColor*)textColor {
+	UIColor *color = _textColor ? _textColor : UIColor.blackColor;
+	return color;
+}
+
+
+-(void)setTextColor:(UIColor *)textColor {
+	[self _simpleSetTextColor:textColor];
+	[self redrawButtons];
+}
+
+
+@synthesize labelSingularFormatString = _labelSingularFormatString;
+-(NSString*)labelSingularFormatString {
+	return _labelSingularFormatString;
+}
+
+
+-(void)setLabelSingularFormatString:(NSString *)labelSingularFormatString {
+	_labelSingularFormatString = labelSingularFormatString;
+	if(self.intervalSize == 1) {
+		[self updateLabelTextWithInterval:self.intervalSize];
+	}
+}
+
+@synthesize labelPluralFormatString = _labelPluralFormatString;
+-(NSString*)labelPluralFormatString {
+	return _labelPluralFormatString;
+}
+
+
+-(void)setLabelPluralFormatString:(NSString *)labelPluralFormatString {
+	_labelPluralFormatString = labelPluralFormatString;
+	if(self.intervalSize != 1) {
+		[self updateLabelTextWithInterval:self.intervalSize];
+	}
+}
 
 
 -(void)setIntervalSize:(NSInteger)intervalSize{
@@ -23,12 +64,14 @@
 }
 
 
+-(void)_simpleSetTextColor: (UIColor *)color {
+	_textColor = color;
+	self.intervalLabel.textColor = color;
+}
+
+
 -(void)setupCustomOptions{
 	[super setupCustomOptions];
-	if(self.controlBackground){
-		self.backgroundColor = self.controlBackground;
-		self.mainView.backgroundColor = self.controlBackground;
-	}
 }
 
 
@@ -49,25 +92,54 @@
 	}
 }
 
--(void)prepareForInterfaceBuilder{
-	[super prepareForInterfaceBuilder];
-	if(self.controlBackground){
-		self.backgroundColor = self.controlBackground;
-		self.mainView.backgroundColor = self.controlBackground;
+
+-(void)redrawButtons {
+	CGSize imgSize = [self.rateStep incrementImageForState:UIControlStateNormal].size;
+	SHIconBuilder *builder = [[SHIconBuilder alloc]
+		initWithColor:self.textColor
+		withBackgroundColor:self.backgroundColor
+		withSize:imgSize
+		withThickness:1];
+	UIImage *incrImg = [builder drawPlus];
+	UIImage *decrImg = [builder drawMinus];
+	[self.rateStep setIncrementImage:incrImg forState:UIControlStateNormal];
+	[self.rateStep setDecrementImage:decrImg forState:UIControlStateNormal];
+}
+
+
+-(BOOL)_simpleSetBackgroundColor:(UIColor *)backgroundColor {
+	super.backgroundColor = backgroundColor;
+	if(nil == self.rateStep) return false;
+	self.intervalLabel.backgroundColor = backgroundColor;
+	self.rateStep.backgroundColor = backgroundColor;
+	return YES;
+}
+
+
+-(void)setBackgroundColor:(UIColor *)backgroundColor {
+	if(![self _simpleSetBackgroundColor:backgroundColor]) return;
+	[self redrawButtons];
+}
+
+
+-(void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+	[super traitCollectionDidChange:previousTraitCollection];
+	if (@available(iOS 12.0, *)) {
+		if(self.traitCollection.userInterfaceStyle != previousTraitCollection.userInterfaceStyle) {
+			UIColor *background = [UIColor colorNamed:@"background"
+																			 inBundle:NSBundle.mainBundle
+									compatibleWithTraitCollection:self.traitCollection];
+			UIColor *textColor = [UIColor colorNamed:@"text"
+																			inBundle:NSBundle.mainBundle
+								 compatibleWithTraitCollection:self.traitCollection];
+			[self _simpleSetBackgroundColor:background];
+			[self _simpleSetTextColor:textColor];
+			[self redrawButtons];
+		}
+	} else {
+		// Fallback on earlier versions
 	}
 }
 
 
--(void)setSubControlColorsTo:(UIColor *)color {
-	self.rateStep.tintColor = color;
-	self.intervalLabel.textColor = color;
-	if(self.mainView) {
-		NSAssert(self.mainView.subviews.count == 2,@"Some adjustments need to be made in a control");
-		UIStepper *stepper =	(UIStepper*)[self.mainView viewWithTag:self.rateStep.tag];
-		UILabel *label = (UILabel*)[self.mainView viewWithTag:self.intervalLabel.tag];
-		stepper.tintColor = color;
-		label.textColor = color;
-		
-	}
-}
 @end

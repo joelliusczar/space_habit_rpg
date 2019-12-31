@@ -866,62 +866,6 @@ NSString *convertCharToBin(unsigned char input){
 }
 
 
-+(void)dumbDataPrv{
-	DumbDataSaver __weak *wdds = nil;
-	NSManagedObjectContext* __weak wcontext = nil;
-	//NSManagedObjectContext* __weak wpcontext = nil;
-	@autoreleasepool {
-	
-	DumbDataSaver *dds = [DumbDataSaver new];
-	wdds = dds;
-//	NSManagedObjectContext* parentContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-//	parentContext.persistentStoreCoordinator = dds.coordinator;
-//	wpcontext = parentContext;
-	NSManagedObjectContext* context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-	wcontext = context;
-	//context.parentContext = parentContext;
-	context.persistentStoreCoordinator = dds.coordinator;
-	context.name = @"main queue";
-	
-	NSFetchRequest *request = [SHSector fetchRequest];
-	NSSortDescriptor *sortByIsFront = [[NSSortDescriptor alloc] initWithKey:@"isFront" ascending:NO];
-	request.sortDescriptors = @[sortByIsFront];
-	
-	Ivar ivar = class_getInstanceVariable(NSManagedObjectContext.class,"_dispatchQueue");
-	ptrdiff_t diff = ivar_getOffset(ivar);
-	unsigned char* byteStart = (unsigned char*)(__bridge void*)context;
-	dispatch_queue_t dispatchQ = (__bridge dispatch_queue_t)*(void **)(byteStart + diff);
-	
-	dispatch_async(dispatchQ,^{
-		NSLog(@"First on queue");
-	});
-	
-	[context performBlockAndWait:^{
-		NSError* err = nil;
-		NSArray* results = [context executeFetchRequest:request error:&err];
-		(void)results;
-	}];
-	id refQue = [TestHelpers getPrivateValue:context ivarName:@"_referenceQueue"];
-	[TestHelpers setPrivateVar:refQue ivarName:@"_context" newVal:nil];
-	
-	dispatch_async(dispatchQ,^{
-		NSLog(@"Hello from this other queue!");
-	});
-	
-	 NSLog(@"%@ 6",context);
-//	void* bad = (__bridge void*)context;
-//	CFRelease(bad);
-	}
-	NSLog(@"%@",wcontext);
-}
-
-+(void)dumbDataExp{
-	//for(int i = 0;i < 5;i++){
-	[self dumbDataPrv];
-	//}
-
-}
-
 +(void)lostMems{
 	
 	__weak House* wh = nil;
@@ -1199,7 +1143,7 @@ NSString *convertCharToBin(unsigned char input){
 	//CFArrayAppendValue(array, &ss);
 	[arr addObject:(__bridge id)&ss];
 	//void* ssid = (__bridge void *)(arr[0]);
-	stupidStruct *ss2 = CFArrayGetValueAtIndex(array,0);//(__bridge stupidStruct *)(arr[0]);
+	stupidStruct *ss2 = (stupidStruct *)CFArrayGetValueAtIndex(array,0);//(__bridge stupidStruct *)(arr[0]);
 	NSLog(@"%d",ss2->thirdItem);
 	
 }
@@ -1303,6 +1247,30 @@ union u_double {
 	__weak ChildMan *c2 = c1;
 	c1 = nil;
 	NSLog(@"is it null? %@",c2);
+}
+
+
++(void)printPropsOfClass:(House *)h{
+	uint32_t outCount = 0;
+	Ivar* ivars = class_copyIvarList(House.class, &outCount);
+	for(uint32_t i = 0; i < outCount;i++){
+		const char * cName = ivar_getName(*ivars);
+		NSString *name = [NSString stringWithUTF8String:cName];
+		//void *v = NULL;
+		//object_getInstanceVariable(img, cName, &v);
+		if(!*ivars) continue;
+		id v = object_getIvar(h,*ivars);
+		NSLog(@"%@ : %@",name,v);
+		ivars++;
+		 
+	}
+}
+
+
++(void)loopThruIvars {
+	House *h = [House new];
+	h.count = 7;
+	[self printPropsOfClass:h];
 }
 
 

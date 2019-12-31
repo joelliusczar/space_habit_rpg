@@ -62,6 +62,12 @@
 	self.habitTable.delegate = self;
 	self.habitTable.dataSource = self;
 	self.addHabitBtn.eventDelegate = self;
+	SHIconBuilder * iconBuilder = [[SHIconBuilder alloc] initWithColor:UIColor.whiteColor
+		withBackgroundColor:[UIColor colorWithRed:36.0/256.0 green:126.0/256.0 blue:217.0/256.0 alpha:1]
+		withSize:CGSizeMake(50, 50)
+		withThickness:5];
+	UIImage *addHabitIcon = [iconBuilder drawPlus];
+	[self.addHabitBtnIcon setImage:addHabitIcon];
 	[self setupData];
 }
 

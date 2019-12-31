@@ -118,7 +118,6 @@ void cMakeHouses(void);
 +(void)autoreleaseJump;
 +(void)passThruARP;
 +(void)clsFromCFunc;
-+(void)dumbDataExp;
 +(void)lostMems;
 +(void)ptrExp;
 +(void)forceNill;
@@ -140,6 +139,7 @@ void cMakeHouses(void);
 +(void)switchSemantics;
 +(void)testPropCopy;
 +(void)blockLocalObjRef;
++(void)loopThruIvars;
 @end
 
 #import "Experiments+Charlie.h"

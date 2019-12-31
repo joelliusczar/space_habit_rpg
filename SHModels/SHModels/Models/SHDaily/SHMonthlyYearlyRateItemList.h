@@ -16,13 +16,20 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SHMonthlyYearlyRateItemList : SHObject<SHRateItemProtocol>
 @property (readonly,nonatomic) NSUInteger count;
 @property (assign, nonatomic) NSInteger intervalSize;
-@property (assign, nonatomic) SHRateType rateType;
 @property (copy,nonatomic) void (^touchCallback)(void);
 -(instancetype)initWithActiveDays:(NSMutableArray<SHRateItemDict*>*)activeDays;
 -(NSUInteger)addRateItem:(SHMonthlyYearlyRateItem*)rateItem;
 -(void)removeRateItemAtIndex:(NSUInteger)index;
 -(SHMonthlyYearlyRateItem*)objectAtIndexedSubscript:(NSUInteger)idx;
 -(NSMutableArray<SHRateItemDict*>*)convertToSaveble;
+@end
+
+@interface SHMonthlyRateItemList : SHMonthlyYearlyRateItemList
+
+@end
+
+@interface SHYearlyRateItemList : SHMonthlyYearlyRateItemList
+
 @end
 
 NS_ASSUME_NONNULL_END

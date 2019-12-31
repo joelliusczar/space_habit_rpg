@@ -35,7 +35,7 @@
 	for(int i = 0; i < 7; i++){
 		self.activeDaySwitches[i].dayLabel.text = shWeekDayKeyToFull(dayKeys[i]);
 		self.activeDaySwitches[i].eventDelegate = self;
-		int32_t dayIdx =	(i + self.weekStartDay) % 7;
+		int32_t dayIdx = (i + self.weekStartDay) % 7;
 		self.activeDaySwitches[dayIdx].isOn = self.weeklyActiveDays[dayIdx].isDayActive;
 	}
 	

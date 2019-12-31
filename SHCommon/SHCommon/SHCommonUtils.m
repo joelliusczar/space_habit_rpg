@@ -55,6 +55,7 @@ NSArray<NSString*>* shBuildWeekBasedOnWeekStart(NSUInteger weekStart){
 	return result;
 }
 
+
 NSString* shWeekDayKeyToFull(NSString * dayKey){
 	if([dayKey isEqualToString:@"SUN"]){
 		return @"Sunday";

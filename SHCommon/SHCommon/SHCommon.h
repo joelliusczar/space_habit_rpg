@@ -58,5 +58,7 @@ FOUNDATION_EXPORT const unsigned char SHCommonVersionString[];
 #import "SHCoreData.h"
 #import "SHConstants.h"
 #import "SHCommonTypeDefs.h"
+#include "SHIconDrawingFunctions.h"
+#import "SHIconBuilder.h"
 
 

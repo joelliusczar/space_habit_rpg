@@ -15,24 +15,6 @@
 
 @implementation SHMonthlyYearlyRateItemList
 
-static void validateRateType(SHRateType rateType) {
-	SHRateType baseRateType = shExtractBaseRateType(rateType);
-	if(baseRateType != SH_MONTHLY_RATE && baseRateType != SH_YEARLY_RATE) {
-		@throw [NSException oddException];
-	}
-}
-
-@synthesize rateType = _rateType;
--(SHRateType)rateType {
-	return _rateType;
-}
-
-
--(void)setRateType:(SHRateType)rateType {
-	validateRateType(rateType);
-	_rateType = rateType;
-}
-
 
 static SHMonthlyYearlyRateItem* mapDictToMonthlyYearly(id item, NSUInteger idx){
 	(void)idx;
@@ -111,16 +93,40 @@ static NSDictionary* mapMonthlyYearlyToDict(id item,NSUInteger idx){
 
 
 -(NSString*)singularFormatString {
-	validateRateType(self.rateType);
-	SHRateType baseRateType = shExtractBaseRateType(self.rateType);
-	return baseRateType == SH_YEARLY_RATE ? @"Interval: Every year" : @"Interval: Every month";
+	@throw [NSException abstractException];
 }
 
 
 -(NSString*)pluralFormatString {
-	validateRateType(self.rateType);
-	SHRateType baseRateType = shExtractBaseRateType(self.rateType);
-	return baseRateType == SH_YEARLY_RATE ? @"Interval: Every %ld years" : @"Interval: Every %ld months";
+	@throw [NSException abstractException];
+}
+
+@end
+
+
+@implementation SHMonthlyRateItemList
+
+-(NSString*)singularFormatString {
+	return @"Interval: Every month";
+}
+
+
+-(NSString*)pluralFormatString {
+	return @"Interval: Every %ld months";
+}
+
+@end
+
+
+@implementation SHYearlyRateItemList
+
+-(NSString*)singularFormatString {
+	return @"Interval: Every year";
+}
+
+
+-(NSString*)pluralFormatString {
+	return @"Interval: Every %ld years";
 }
 
 @end

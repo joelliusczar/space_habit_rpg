@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 	elements
 */
 @property (strong, nonatomic) IBOutlet SHView *addHabitBtn;
+@property (strong, nonatomic) IBOutlet UIImageView *addHabitBtnIcon;
 -(instancetype)initWithCentral:(SHCentralViewController *)central
 	withContext:(NSManagedObjectContext*)context;
 
