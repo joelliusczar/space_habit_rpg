@@ -97,12 +97,12 @@ static NSDictionary* mapMonthlyYearlyToDict(id item,NSUInteger idx){
 
 @implementation SHMonthlyRateItemList
 
--(NSString*)singularFormatString {
++(NSString*)singularFormatString {
 	return @"Every month";
 }
 
 
--(NSString*)pluralFormatString {
++(NSString*)pluralFormatString {
 	return @"Every %ld months";
 }
 
@@ -111,12 +111,12 @@ static NSDictionary* mapMonthlyYearlyToDict(id item,NSUInteger idx){
 
 @implementation SHYearlyRateItemList
 
--(NSString*)singularFormatString {
++(NSString*)singularFormatString {
 	return @"Every year";
 }
 
 
--(NSString*)pluralFormatString {
++(NSString*)pluralFormatString {
 	return @"Every %ld years";
 }
 

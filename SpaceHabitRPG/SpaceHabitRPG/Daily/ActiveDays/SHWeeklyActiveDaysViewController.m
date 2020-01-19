@@ -30,10 +30,10 @@
 		self.day6Switch
 	];
 	
-	NSArray<NSString *> *dayKeys = shBuildWeekBasedOnWeekStart(self.weekStartDay);
+	NSArray<NSString *> *dayKeys = self.weeklyActiveDays.weekKeysBasedOnWeekStart;
 	
 	for(int i = 0; i < 7; i++){
-		self.activeDaySwitches[i].dayLabel.text = shWeekDayKeyToFull(dayKeys[i]);
+		self.activeDaySwitches[i].dayLabel.text = [SHWeeklyRateItemList weekDayKeyToFullName:dayKeys[i]];
 		self.activeDaySwitches[i].eventDelegate = self;
 		int32_t dayIdx = (i + self.weekStartDay) % 7;
 		self.activeDaySwitches[dayIdx].isOn = self.weeklyActiveDays[dayIdx].isDayActive;

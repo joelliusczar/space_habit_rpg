@@ -32,25 +32,29 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	self.primaryLabel.text = @"Interval: ";
-	self.descriptionLabel.text = @"Set reminders";
+	NSString *desc = [self getIntervalDescription:self.rateType];
+	self.descriptionLabel.text = desc;
 }
 
 
--(NSString*)getRateDescription:(SHRateType)rateType {
+-(NSString*)getIntervalDescription:(SHRateType)rateType {
 	SHRateType useRateType = shExtractBaseRateType(rateType);
+	NSString *desc = nil;
 	switch (useRateType) {
-			case SH_DAILY_RATE:
-				return nil;
-			case SH_WEEKLY_RATE:
-				return nil;
-			case SH_MONTHLY_RATE:
-				return nil;
-			case SH_YEARLY_RATE:
-				return nil;
-			default:
-				@throw [NSException oddException];
+		case SH_DAILY_RATE:
+			return nil;
+		case SH_WEEKLY_RATE:
+			desc = [NSString stringWithFormat:@"%@ for %@",
+				self.activeDays.weeklyActiveDays.getFormatStringTypeBasedOnIntervalSize,
+				self.activeDays.weeklyActiveDays.weekDescription];
+			return desc;
+		case SH_MONTHLY_RATE:
+			return nil;
+		case SH_YEARLY_RATE:
+			return nil;
+		default:
+			@throw [NSException oddException];
 	}
-	return nil;
 }
 
 

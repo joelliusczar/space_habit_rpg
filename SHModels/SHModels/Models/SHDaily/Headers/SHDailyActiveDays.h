@@ -31,8 +31,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, nonatomic) SHDailyRateItem *dailyRateItemInv;
 
 
-@property (assign, nonatomic) NSUInteger weeklyDayStart;
-
 -(instancetype)initWithActiveDaysJson:(nullable NSString*)activeDaysJson;
 -(NSString*)activeDaysAsJson;
 -(nullable SHIntervalItemFormat *)selectRateItemCollection:(SHRateType)rateType;

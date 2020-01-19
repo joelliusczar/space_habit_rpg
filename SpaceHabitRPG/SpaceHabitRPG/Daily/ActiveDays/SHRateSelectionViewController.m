@@ -119,9 +119,10 @@ const NSInteger YEARLY_SELECTION = 3;
 -(void)switchToActiveDaysViewController:(SHRateType)rateType{
 	NSAssert(self.activeDays,@"We need active days to not be nill");
 	
-	SHIntervalItemFormat  *rateItem = [self.activeDays selectRateItemCollection:rateType];
-	NSString *singularString = [NSString stringWithFormat:@"Interval: %@",rateItem.singularFormatString];
-	NSString *pluralString = [NSString stringWithFormat:@"Interval: %@",rateItem.pluralFormatString];
+	SHIntervalItemFormat *rateItem = [self.activeDays selectRateItemCollection:rateType];
+	
+	NSString *singularString = [NSString stringWithFormat:@"Interval: %@",[rateItem.class singularFormatString]];
+	NSString *pluralString = [NSString stringWithFormat:@"Interval: %@",[rateItem.class pluralFormatString]];
 	self.intervalSetter.labelSingularFormatString = singularString;
 	self.intervalSetter.labelPluralFormatString = pluralString;
 	self.intervalSetter.intervalSize = rateItem.intervalSize;

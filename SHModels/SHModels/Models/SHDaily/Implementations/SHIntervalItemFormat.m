@@ -11,14 +11,23 @@
 
 @implementation SHIntervalItemFormat
 
--(NSString*)singularFormatString {
++(NSString*)singularFormatString {
 	@throw [NSException abstractException];
 }
 
 
--(NSString*)pluralFormatString {
++(NSString*)pluralFormatString {
 	@throw [NSException abstractException];
 }
 
+-(NSString *)getFormatStringTypeBasedOnIntervalSize {
+	return [self.class getFormatStringTypeForIntervalSize:self.intervalSize];
+}
+
+
++(NSString *)getFormatStringTypeForIntervalSize:(NSInteger)intervalSize {
+	NSString *result = intervalSize == 1 ? self.singularFormatString : self.pluralFormatString;
+	return result;
+}
 
 @end

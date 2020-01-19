@@ -13,8 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHIntervalItemFormat : NSObject
 @property (assign, nonatomic) NSInteger intervalSize;
-@property (readonly, nonatomic) NSString *singularFormatString;
-@property (readonly, nonatomic) NSString *pluralFormatString;
+@property (class, readonly, nonatomic) NSString *singularFormatString;
+@property (class, readonly, nonatomic) NSString *pluralFormatString;
+@property (readonly, nonatomic) NSString *getFormatStringTypeBasedOnIntervalSize;
++(NSString *)getFormatStringTypeForIntervalSize:(NSInteger)intervalSize;
 @end
 
 NS_ASSUME_NONNULL_END

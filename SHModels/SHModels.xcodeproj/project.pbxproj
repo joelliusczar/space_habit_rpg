@@ -434,12 +434,12 @@
 				2769C0B6227FD86900217480 /* SHMonthlyYearlyRateItemList.m */,
 				27300A03224AE713006E419C /* SHDaily_Medium.m */,
 				2769C0FE2286106000217480 /* SHWeeklyRateItem.m */,
+				27CA9D1623AF060F00F67AC4 /* SHWeeklyRateItemList.m */,
 				2769C116228E305500217480 /* SHDailyActiveDays.m */,
 				2733D211229065830090B7F1 /* SHDailyValidation.c */,
 				27BF501D22F77139005096BA /* SHDailyNextDueDateCalculator.m */,
 				2789889522F77B64007231E0 /* SHDailyMaxDaysBeforeSpanCalculator.m */,
 				27B2B3242303811D00663644 /* SHDailyActivator.m */,
-				27CA9D1623AF060F00F67AC4 /* SHWeeklyRateItemList.m */,
 				27CA9D1A23AF345100F67AC4 /* SHDailyRateItem.m */,
 			);
 			path = Implementations;

@@ -107,13 +107,67 @@ static SHRateItemDict* mapWeeklyToDict(id item,NSUInteger idx){
 }
 
 
--(NSString*)singularFormatString {
-	return @"Every week";
+-(NSArray<NSString*>*)weekKeysBasedOnWeekStart{
+	NSArray<NSString*> *days = @[@"SUN",@"MON",@"TUE",@"WED",@"THR",@"FRI",@"SAT"];
+	if(self.weeklyDayStart == 0){
+		return days;
+	}
+	NSMutableArray<NSString*> *result = [NSMutableArray arrayWithCapacity:7];
+	if(self.weeklyDayStart > 6) return nil;
+	for(NSUInteger day = 0; day < 7; day++){
+		[result addObject:days[(self.weeklyDayStart + day) % 7]];
+	}
+	return result;
 }
 
 
--(NSString*)pluralFormatString {
-	return @"Every %ld weeks";
++(NSString *)weekDayKeyToFullName:(NSString*)dayKey {
+	if([dayKey isEqualToString:@"SUN"]){
+		return @"Sunday";
+	}
+	if([dayKey isEqualToString:@"MON"]){
+		return @"Monday";
+	}
+	if([dayKey isEqualToString:@"TUE"]){
+		return @"Tuesday";
+	}
+	if([dayKey isEqualToString:@"WED"]){
+		return @"Wednesday";
+	}
+	if([dayKey isEqualToString:@"THR"]){
+		return @"Thursday";
+	}
+	if([dayKey isEqualToString:@"FRI"]){
+		return @"Friday";
+	}
+	if([dayKey isEqualToString:@"SAT"]){
+		return @"Saturday";
+	}
+	return nil;
+}
+
+
+-(NSString*)weekDescription {
+	NSArray<NSString *> *dayKeys = self.weekKeysBasedOnWeekStart;
+	NSMutableArray<NSString *> *filtered = [NSMutableArray array];
+	for(NSUInteger idx = 0; idx < dayKeys.count; idx++) {
+		if(self.backend[idx].isDayActive) {
+			[filtered addObject:dayKeys[idx]];
+		}
+	}
+	if(filtered.count == 7) return @"Every Day";
+	NSString *joined = [filtered componentsJoinedByString:@","];
+	return joined;
+}
+
+
++(NSString*)singularFormatString {
+	return @"Every Week";
+}
+
+
++(NSString*)pluralFormatString {
+	return @"Every %ld Weeks";
 }
 
 @end

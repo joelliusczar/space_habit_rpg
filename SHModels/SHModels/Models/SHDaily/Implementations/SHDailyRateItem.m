@@ -10,12 +10,12 @@
 
 @implementation SHDailyRateItem
 
--(NSString*)singularFormatString {
++(NSString*)singularFormatString {
 	return @"Every day";
 }
 
 
--(NSString*)pluralFormatString {
++(NSString*)pluralFormatString {
 	return @"Every %ld days";
 }
 

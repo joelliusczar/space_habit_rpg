@@ -54,6 +54,17 @@
 }
 
 
+-(NSInteger)weeklyStartDay {
+	NSInteger weeklyStartDay = [self.userDefaults integerForKey:@"weeklyStartDay"];
+	return weeklyStartDay;
+}
+
+
+-(void)setWeeklyStartDay:(NSInteger)weeklyStartDay {
+	[self.userDefaults setInteger:weeklyStartDay forKey:@"weeklyStartDay"];
+}
+
+
 -(SHGameState)gameState {
 	NSInteger gameState = [self.userDefaults integerForKey:@"gameState"];
 	return (SHGameState)gameState;

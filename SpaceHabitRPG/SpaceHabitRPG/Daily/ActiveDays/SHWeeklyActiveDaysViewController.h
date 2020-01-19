@@ -37,7 +37,6 @@ IB_DESIGNABLE
 @property (assign,nonatomic) IBOutlet id<SHWeeklyActiveDayChangesProtocol> valueChangeDelegate;
 @property (strong,nonatomic) SHWeeklyRateItemList *weeklyActiveDays;
 -(void)setupCustomOptions;
-
 @end
 
 
