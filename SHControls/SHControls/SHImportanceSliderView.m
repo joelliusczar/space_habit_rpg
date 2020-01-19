@@ -16,11 +16,11 @@
 @implementation SHImportanceSliderView
 
 
--(IBAction)importanceSld_valueChanged_action:(SHImportanceSliderView *)sender
+-(IBAction)importanceSld_valueChanged_action:(UISlider *)sender
 	forEvent:(UIEvent *)event
 {
-	(void)event;
-	[self.delegate sld_valueChanged_action:sender];
+	(void)sender; (void)event;
+	[self.delegate sld_valueChanged_action:self];
 }
 
 -(double)value{

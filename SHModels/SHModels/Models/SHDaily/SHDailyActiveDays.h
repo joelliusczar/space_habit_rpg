@@ -20,17 +20,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHDailyActiveDays : NSObject
 
-@property (strong,nonatomic, null_resettable) NSMutableDictionary *activeDaysDict;
-@property (readonly,nonatomic) SHMonthlyYearlyRateItemList *monthlyActiveDays;
-@property (readonly,nonatomic) SHMonthlyYearlyRateItemList *monthlyActiveDaysInv;
-@property (readonly,nonatomic) SHMonthlyYearlyRateItemList *yearlyActiveDays;
-@property (readonly,nonatomic) SHMonthlyYearlyRateItemList *yearlyActiveDaysInv;
-@property (readonly,nonatomic) SHWeeklyRateItemList *weeklyActiveDays;
-@property (readonly,nonatomic) SHWeeklyRateItemList *weeklyActiveDaysInv;
-@property (readonly,nonatomic) SHDailyRateItem *dailyRateItem;
-@property (readonly,nonatomic) SHDailyRateItem *dailyRateItemInv;
+@property (strong, nonatomic, null_resettable) NSMutableDictionary *activeDaysDict;
+@property (readonly, nonatomic) SHMonthlyYearlyRateItemList *monthlyActiveDays;
+@property (readonly, nonatomic) SHMonthlyYearlyRateItemList *monthlyActiveDaysInv;
+@property (readonly, nonatomic) SHMonthlyYearlyRateItemList *yearlyActiveDays;
+@property (readonly, nonatomic) SHMonthlyYearlyRateItemList *yearlyActiveDaysInv;
+@property (readonly, nonatomic) SHWeeklyRateItemList *weeklyActiveDays;
+@property (readonly, nonatomic) SHWeeklyRateItemList *weeklyActiveDaysInv;
+@property (readonly, nonatomic) SHDailyRateItem *dailyRateItem;
+@property (readonly, nonatomic) SHDailyRateItem *dailyRateItemInv;
 
-@property (assign,nonatomic) NSUInteger weeklyDayStart;
+@property (assign, nonatomic) NSUInteger weeklyDayStart;
 
 -(instancetype)initWithActiveDaysJson:(nullable NSString*)activeDaysJson;
 -(NSString*)activeDaysAsJson;

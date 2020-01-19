@@ -315,6 +315,7 @@
 				270F982123924B5400479E77 /* Reminder */,
 				270F981B239249E300479E77 /* SHLinkViewController.h */,
 				270F981C239249E300479E77 /* SHLinkViewController.m */,
+				270F97F42392453A00479E77 /* SHLinkViewController.xib */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -334,7 +335,6 @@
 			children = (
 				270F97F12392453A00479E77 /* SHWeeklyActiveDaysFull.xib */,
 				270F97F32392453A00479E77 /* SHDayOption.xib */,
-				270F97F42392453A00479E77 /* SHLinkViewController.xib */,
 				270F97F52392453A00479E77 /* SHRateSelectionViewController.xib */,
 			);
 			path = xibs;

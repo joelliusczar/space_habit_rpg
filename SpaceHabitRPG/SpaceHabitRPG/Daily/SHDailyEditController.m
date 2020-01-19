@@ -53,7 +53,7 @@
 /*
 	This is an override
 */
--(void)loadView{
+-(void)loadView {
 	self.view = _controlsTbl;
 }
 
@@ -205,7 +205,7 @@
 	
 	
 -(void)sld_valueChanged_action:(SHImportanceSliderView *)sender{
-	int sliderValue = shCheckImportanceRange((int)sender.importanceSld.value);
+	int32_t sliderValue = shCheckImportanceRange((int32_t)sender.importanceSld.value);
 	[sender updateImportanceSlider:sliderValue];
 	BOOL isUrgency = sender == self.editControls.controlLookup[@"urgencySld"];
 	[self.context performBlock:^{
