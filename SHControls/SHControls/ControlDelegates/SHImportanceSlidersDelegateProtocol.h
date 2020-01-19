@@ -7,13 +7,12 @@
 //
 
 #import "SHCommonDelegateProtocol.h"
-#import "SHEventInfo.h"
 @import Foundation;
 @import UIKit;
 
 @class SHImportanceSliderView;
 
 @protocol SHImportanceSlidersDelegateProtocol <NSObject,SHCommonDelegateProtocol>
--(void)sld_valueChanged_action:(SHEventInfo *)eventInfo;
+-(void)sld_valueChanged_action:(SHImportanceSliderView *)sender;
 
 @end

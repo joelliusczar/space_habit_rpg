@@ -11,7 +11,7 @@
 #import "SHRateTypeHelper.h"
 #import "SHModelConstants.h"
 @import SHCommon;
-#import <SHCore_C/SHDaily_C.h>
+#import <SHSpecial_C/SHDaily_C.h>
 
 
 @interface SHDailyActiveDays ()

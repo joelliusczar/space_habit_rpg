@@ -25,7 +25,6 @@ static NSString* const BACKEND_KEY = @"monster_data";
 @end
 
 @implementation SHMonster{
-	SHMonsterDictionaryEntry *_entry;
 }
 
 
@@ -57,7 +56,7 @@ static NSString* const BACKEND_KEY = @"monster_data";
 	_monsterInfo = monsterInfo;
 }
 
-
+@synthesize entry = _entry;
 -(SHMonsterDictionaryEntry*)entry{
 	if(nil == _entry){
 		_entry = [SHMonster.monsterInfo getMonsterEntry:self.monsterKey];
@@ -112,7 +111,7 @@ static NSString* const BACKEND_KEY = @"monster_data";
 
 -(NSInteger)lvl {
 	NSNumber *tmp = (NSNumber*)self.backend[@"lvl"];
-	NSInteger lvl = tmp ? tmp.integerValue : 0;
+	NSInteger lvl = nil != tmp ? tmp.integerValue : 0;
 	return lvl;
 }
 
@@ -124,7 +123,7 @@ static NSString* const BACKEND_KEY = @"monster_data";
 
 -(NSInteger)nowHp {
 	NSNumber *tmp = (NSNumber*)self.backend[@"nowHp"];
-	NSInteger nowHp = tmp ? tmp.integerValue : 0;
+	NSInteger nowHp = nil != tmp ? tmp.integerValue : 0;
 	return nowHp;
 }
 
@@ -177,6 +176,29 @@ static NSString* const BACKEND_KEY = @"monster_data";
 
 -(void)reload {
 	self.backend = [self.resourceUtil getPListMutableDict:BACKEND_KEY];
+}
+
+
+-(NSString *)debugDescription {
+	NSString *desc = [NSString stringWithFormat:@"FullName: %@\n"
+	"Lvl: %ld\n"
+	"NowHp: %ld\n"
+	"MaxHp: %ld\n"
+	"Attack: %ld\n"
+	"Defense: %ld\n"
+	"Xp: %ld\n"
+	"Drop rate: %f\n"
+	"Encounter weight: %ld\n"
+	,self.fullName
+	,self.lvl
+	,self.nowHp
+	,self.maxHp
+	,self.attack
+	,self.defense
+	,self.xp
+	,self.treasureDropRate
+	,self.encounterWeight];
+	return desc;
 }
 
 @end

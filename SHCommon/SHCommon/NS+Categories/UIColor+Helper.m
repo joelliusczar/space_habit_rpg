@@ -6,8 +6,6 @@
 //  Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
-#if IS_IOS
-
 #import "UIColor+Helper.h"
 
 @implementation UIColor (Helper)
@@ -20,4 +18,3 @@
 
 @end
 
-#endif

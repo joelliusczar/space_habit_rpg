@@ -11,7 +11,6 @@
 #import "SHSpinPicker.h"
 @import SHCommon;
 #import "UIViewController+Helper.h"
-#import "SHEventInfo.h"
 
 @interface SHSpinPicker ()
 @property (weak,nonatomic) IBOutlet NSLayoutConstraint *buttonXConstraint;

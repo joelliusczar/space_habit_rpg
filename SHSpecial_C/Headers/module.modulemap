@@ -1,0 +1,5 @@
+
+module SHSpecial_C {
+	umbrella header "SHSpecial_C.h"
+	export *
+}

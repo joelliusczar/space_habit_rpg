@@ -7,7 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "SHThemeController.h"
 @import SHCommon;
+@import SHControls;
 @import SHModels;
 
 
@@ -24,7 +26,25 @@ void printWorkingDir(){
 	NSLog(@"%@",url);
 }
 
-- (BOOL)application:(UIApplication *)application
+- (void)applyTheming {
+	if (@available(iOS 13.0, *)) {
+		UITraitCollection *traits = UITraitCollection.currentTraitCollection;
+		if(traits.userInterfaceStyle == UIUserInterfaceStyleDark) {
+			[SHThemeController applyDarkTheme];
+		}
+		else if(traits.userInterfaceStyle == UIUserInterfaceStyleLight) {
+			[SHThemeController applyLightTheme];
+		}
+		else {
+			[SHThemeController applyDefaultTheme];
+		}
+	}
+	else {
+		[SHThemeController applyDefaultTheme];
+	}
+}
+
+-(BOOL)application:(UIApplication *)application
 	didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 	(void)application;
@@ -41,13 +61,10 @@ void printWorkingDir(){
 		andNibName:@"SHCentralViewController"
 		andResourceUtil:self.resourceUtil
 		andBundle:nil];
-	UIColor *darkThemeBG = [UIColor colorWithRed:39.0/256.0 green:40.0/256.0 blue:33.0/256.0 alpha:1];
-	UITableView.appearance.backgroundColor = darkThemeBG;
-	UILabel.appearance.backgroundColor = darkThemeBG;
-	UILabel.appearance.textColor = UIColor.whiteColor;
 	
 	
-	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	[self applyTheming];
+	self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
 	self.window.rootViewController = self.centralController;
 	[self.window makeKeyAndVisible];
 	// Override point for customization after application launch.
@@ -80,6 +97,22 @@ void printWorkingDir(){
 - (void)applicationWillTerminate:(UIApplication *)application {
 	(void)application;
 	// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+-(BOOL)application:(UIApplication *)application
+	shouldSaveApplicationState:(NSCoder *)coder
+{
+	(void)application; (void)coder;
+	return YES;
+}
+
+
+-(BOOL)application:(UIApplication *)application
+	shouldRestoreApplicationState:(NSCoder *)coder
+{
+	(void)application; (void)coder;
+	return YES;
 }
 
 

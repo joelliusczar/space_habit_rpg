@@ -10,25 +10,11 @@
 		2716922D20916ED50059A58E /* SHArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 271692082089762D0059A58E /* SHArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2716922F20916EDD0059A58E /* SHErrorHandling.c in Sources */ = {isa = PBXBuildFile; fileRef = 27169216208BB2450059A58E /* SHErrorHandling.c */; };
 		2769C097227C81B500217480 /* SHErrorHandling.h in Headers */ = {isa = PBXBuildFile; fileRef = 27169215208BB2450059A58E /* SHErrorHandling.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2769C10E22863A2E00217480 /* module.modulemap in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2769C0A0227F67FB00217480 /* module.modulemap */; };
 		2781552B21758C3F005C5279 /* SHUtilConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781552921758C3F005C5279 /* SHUtilConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2781552C21758C3F005C5279 /* SHUtilConstants.c in Sources */ = {isa = PBXBuildFile; fileRef = 2781552A21758C3F005C5279 /* SHUtilConstants.c */; };
 		27DF9C4E20956D6300F98023 /* SHGenAlgos.h in Headers */ = {isa = PBXBuildFile; fileRef = 27DF9C4C20956D6300F98023 /* SHGenAlgos.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27DF9C4F20956D6300F98023 /* SHGenAlgos.c in Sources */ = {isa = PBXBuildFile; fileRef = 27DF9C4D20956D6300F98023 /* SHGenAlgos.c */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		2769C10D22863A1400217480 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-				2769C10E22863A2E00217480 /* module.modulemap in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		271692002089758B0059A58E /* libSHUtils_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSHUtils_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,7 +151,6 @@
 				271691FE2089758B0059A58E /* Headers */,
 				271691FC2089758B0059A58E /* Sources */,
 				271691FD2089758B0059A58E /* Frameworks */,
-				2769C10D22863A1400217480 /* CopyFiles */,
 				27DF9C3E2091890100F98023 /* ShellScript */,
 			);
 			buildRules = (

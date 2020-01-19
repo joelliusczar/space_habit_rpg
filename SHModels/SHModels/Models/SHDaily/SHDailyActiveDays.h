@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(instancetype)initWithActiveDaysJson:(nullable NSString*)activeDaysJson;
 -(NSString*)activeDaysAsJson;
--(id<SHRateItemProtocol>)selectRateItemCollection:(SHRateType)rateType;
+-(nullable id<SHRateItemProtocol>)selectRateItemCollection:(SHRateType)rateType;
 @end
 
 NS_ASSUME_NONNULL_END

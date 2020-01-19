@@ -6,8 +6,6 @@
 //  Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
-#if IS_IOS
-
 #import "UIImage+Helper.h"
 
 @implementation UIImage (Helper)
@@ -22,4 +20,3 @@
 
 @end
 
-#endif

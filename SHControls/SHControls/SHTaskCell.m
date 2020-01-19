@@ -7,6 +7,7 @@
 //
 
 #import "SHTaskCell.h"
+#import "UIView+Helpers.h"
 @import SHCommon;
 
 @interface SHTaskCell()

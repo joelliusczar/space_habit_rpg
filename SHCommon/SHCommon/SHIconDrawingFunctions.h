@@ -10,9 +10,7 @@
 #define SHIconDrawingFunctions_h
 
 #include <stdio.h>
-#if IS_IOS
-#import <UIKit/UIKit.h>
-#endif
+@import UIKit;
 @import CoreGraphics;
 
 

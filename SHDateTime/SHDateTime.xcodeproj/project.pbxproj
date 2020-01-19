@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2738CB21233EADE500A41CC3 /* SHDatetime.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769C1032286364C00217480 /* SHDatetime.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2769C094227C6DC800217480 /* libSHUtils_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2769C093227C6DC800217480 /* libSHUtils_C.a */; };
-		2769C10A2286382C00217480 /* module.modulemap in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2769C104228636DF00217480 /* module.modulemap */; };
 		27D318512086C9040047F5F1 /* SHTimeZone.c in Sources */ = {isa = PBXBuildFile; fileRef = 27D318462086C9040047F5F1 /* SHTimeZone.c */; };
 		27D318532086C9040047F5F1 /* SHDTConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D318482086C9040047F5F1 /* SHDTConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27D318552086C9040047F5F1 /* SHDatetime_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D3184A2086C9040047F5F1 /* SHDatetime_struct.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -35,19 +34,6 @@
 			remoteInfo = SHUtils_C;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		2769C1092286382000217480 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-				2769C10A2286382C00217480 /* module.modulemap in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2737D580216DA8BB00E0111F /* simple_start.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = simple_start.sh; sourceTree = "<group>"; };
@@ -255,10 +241,9 @@
 			buildConfigurationList = 27D318412086C8CA0047F5F1 /* Build configuration list for PBXNativeTarget "SHDatetime" */;
 			buildPhases = (
 				2769C108228637DE00217480 /* ShellScript */,
-				27D3183A2086C8CA0047F5F1 /* Frameworks */,
 				27D3183B2086C8CA0047F5F1 /* Headers */,
 				27D318392086C8CA0047F5F1 /* Sources */,
-				2769C1092286382000217480 /* CopyFiles */,
+				27D3183A2086C8CA0047F5F1 /* Frameworks */,
 				27DF9C41209425B300F98023 /* ShellScript */,
 			);
 			buildRules = (

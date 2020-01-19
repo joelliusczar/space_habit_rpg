@@ -6,8 +6,6 @@
 //  Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#if IS_IOS
-
 #import "SHIconBuilder.h"
 #import "SHIconDrawingFunctions.h"
 
@@ -92,5 +90,3 @@ UIImage * drawShape(SHIconBuilder *builder, shDrawShapeFn fn) {
 
 @end
 
-
-#endif

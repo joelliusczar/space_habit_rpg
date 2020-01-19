@@ -81,7 +81,7 @@ static NSString* const BACKEND_KEY = @"sector_data";
 
 -(NSString *)fullName{
 	NSString* name = [SHSector.sectorInfo getSectorName:self.sectorKey];
-	return self.suffix.length?[NSString stringWithFormat:@"%@ %@",name,self.suffix]:name;
+	return self.suffix.length ? [NSString stringWithFormat:@"%@ %@",name,self.suffix] : name;
 }
 
 
@@ -97,7 +97,7 @@ static NSString* const BACKEND_KEY = @"sector_data";
 
 -(NSInteger)lvl {
 	NSNumber *num = (NSNumber*)self.backend[@"lvl"];
-	NSInteger lvl = num ? num.integerValue : 0;
+	NSInteger lvl = nil != num ? num.integerValue : 0;
 	return lvl;
 }
 
@@ -109,7 +109,7 @@ static NSString* const BACKEND_KEY = @"sector_data";
 
 -(NSInteger)maxMonsters {
 	NSNumber *num = (NSNumber*)self.backend[@"maxMonsters"];
-	NSInteger maxMonsters = num ? num.integerValue : 0;
+	NSInteger maxMonsters = nil != num ? num.integerValue : 0;
 	return maxMonsters;
 }
 
@@ -121,7 +121,7 @@ static NSString* const BACKEND_KEY = @"sector_data";
 
 -(NSInteger)monstersKilled {
 	NSNumber *num = (NSNumber*)self.backend[@"monstersKilled"];
-	NSInteger monstersKilled = num ? num.integerValue : 0;
+	NSInteger monstersKilled = nil != num ? num.integerValue : 0;
 	return monstersKilled;
 }
 

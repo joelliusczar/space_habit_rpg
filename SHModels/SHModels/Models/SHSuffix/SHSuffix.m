@@ -30,7 +30,7 @@ static NSString* BACKEND_KEY = @"suffix_tracker";
 
 -(NSInteger)getAndIncrementCountForSector:(NSString *)sectorName {
 	NSNumber *tmp = (NSNumber *)self.backend[sectorName];
-	NSInteger count = tmp ? tmp.integerValue : 0;
+	NSInteger count = nil == tmp ? tmp.integerValue : 0;
 	NSInteger incr = count++;
 	self.backend[sectorName] = @(incr);
 	return count;

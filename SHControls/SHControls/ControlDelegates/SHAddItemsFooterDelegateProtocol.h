@@ -7,8 +7,7 @@
 //
 
 @import Foundation;
-#import "SHEventInfo.h"
 
 @protocol SHAddItemsFooterDelegateProtocol <NSObject>
--(void)addItemBtn_press_action:(SHEventInfo *)eventInfo;
+-(void)addItemBtn_press_action;
 @end

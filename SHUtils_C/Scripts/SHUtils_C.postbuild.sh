@@ -14,3 +14,4 @@ cd "$SRCROOT"/../Build_Scripts
 #	copyFiles "Code/SHDatetime/SHUtils_C"
 #fi
 
+cp "$SRCROOT"/Headers/module.modulemap "$BUILT_PRODUCTS_DIR"/include/"$PRODUCT_NAME"/module.modulemap

@@ -20,3 +20,4 @@ if [ -n "$IS_JOEL" ] && [ False ]; then
 	copyFiles "Code/SHDatetime" 'Copy/dt_prompt/Copy' #copy the makefile
 fi
 
+cp "$SRCROOT"/Headers/module.modulemap "$BUILT_PRODUCTS_DIR"/include/"$PRODUCT_NAME"/module.modulemap

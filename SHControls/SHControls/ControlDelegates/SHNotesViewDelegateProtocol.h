@@ -7,12 +7,12 @@
 //
 
 #import "SHCommonDelegateProtocol.h"
-#import "SHEventInfo.h"
+#import "SHNoteView.h"
 @import Foundation;
 @import UIKit;
 
 @class SHNoteView;
 
 @protocol SHNotesViewDelegateProtocol <NSObject,SHCommonDelegateProtocol>
--(void)textDidChange:(SHEventInfo *)eventInfo;
+-(void)textDidChange:(SHNoteView *)sender;
 @end

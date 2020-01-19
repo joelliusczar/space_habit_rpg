@@ -7,9 +7,6 @@
 //
 
 @import Foundation;
-#if IS_IOS
-@import UIKit;
-#endif
 
 @interface NSObject (Helper)
 
@@ -19,10 +16,5 @@
 -(BOOL)isDictionaryType;
 -(id)narrowCopy;
 -(void)narrowCopyFrom:(NSObject*)fromObject;
-
-
-#if IS_IOS
--(UIView *)loadXib:(NSString *)nibName;
-#endif
 
 @end

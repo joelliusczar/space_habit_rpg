@@ -12,9 +12,7 @@
 @import SHCommon;
 #import "SHFrontEndConstants.h"
 #import "UIView+Helpers.h"
-#import "UIScrollView+ScrollAdjusters.h"
 #import "UIViewController+Helper.h"
-#import "SHEventInfo.h"
 #import <math.h>
 
 
@@ -132,23 +130,19 @@ numberOfRowsInSection:(NSInteger)section{
 
 
 -(void)notifyAddNewCell:(NSIndexPath *)indexPath{
-	SHItemFlexibleListEventInfo *eventInfo = [[SHItemFlexibleListEventInfo alloc]
-		initWithItemFlexibleList:self
-		andIndexPath:indexPath];
+
 	SEL delegateSel = @selector(notifyAddNewCell:);
 	if([self.setChangedelegate respondsToSelector:delegateSel]){
-			[self.setChangedelegate notifyAddNewCell:eventInfo];
+			[self.setChangedelegate notifyAddNewCell:indexPath];
 	}
 }
 	
 	
--(void)notifyDeleteCell:(NSIndexPath *)indexPath{
-	SHItemFlexibleListEventInfo *eventInfo = [[SHItemFlexibleListEventInfo alloc]
-		initWithItemFlexibleList:self
-		andIndexPath:indexPath];
+-(void)notifyDeleteCell:(NSIndexPath *)indexPath {
+
 	SEL delegateSel = @selector(notifyDeleteCell:);
 	if([self.setChangedelegate respondsToSelector:delegateSel]){
-		[self.setChangedelegate notifyDeleteCell:eventInfo];
+		[self.setChangedelegate notifyDeleteCell:indexPath];
 	}
 }
 

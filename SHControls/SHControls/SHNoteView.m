@@ -7,7 +7,6 @@
 //
 
 #import "SHNoteView.h"
-#import "SHEventInfo.h"
 @import SHCommon;
 
 
@@ -24,9 +23,9 @@
 }
 
 
--(void)textViewDidChange:(UITextView *)textView{
-	SHEventInfo *e = [[SHEventInfo alloc]init:nil withSenders:textView,self,nil];
-	[self.delegate textDidChange:e];
+-(void)textViewDidChange:(UITextView *)sender {
+	(void)sender;
+	[self.delegate textDidChange:self];
 }
 
 @end

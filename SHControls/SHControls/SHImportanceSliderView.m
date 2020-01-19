@@ -7,7 +7,6 @@
 //
 
 #import "SHImportanceSliderView.h"
-#import "SHEventInfo.h"
 @import SHCommon;
 
 @interface SHImportanceSliderView ()
@@ -17,11 +16,11 @@
 @implementation SHImportanceSliderView
 
 
--(IBAction)importanceSld_valueChanged_action:(UISlider *)sender
+-(IBAction)importanceSld_valueChanged_action:(SHImportanceSliderView *)sender
 	forEvent:(UIEvent *)event
 {
-	SHEventInfo *e = eventInfoCopy;
-	[self.delegate sld_valueChanged_action:e];
+	(void)event;
+	[self.delegate sld_valueChanged_action:sender];
 }
 
 -(double)value{

@@ -6,7 +6,6 @@
 //	Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
-#if IS_IOS
 @import UIKit;
 
 //! Project version number for SHCommon.
@@ -14,7 +13,6 @@ FOUNDATION_EXPORT double SHCommonVersionNumber;
 
 //! Project version string for SHCommon.
 FOUNDATION_EXPORT const unsigned char SHCommonVersionString[];
-#endif
 // In this header, you should import all the public headers of your framework using statements like #import <SHCommonUtilities/PublicHeader.h>
 
 #import "SHInterceptorProtocol.h"

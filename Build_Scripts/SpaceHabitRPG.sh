@@ -8,3 +8,5 @@
 
 cd ${SRCROOT}/../Build_Scripts
 . SHMaster.sh
+
+echo "$SRCROOT/newOutputFile"

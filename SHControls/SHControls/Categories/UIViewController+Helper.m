@@ -12,6 +12,15 @@
 @implementation UIViewController (Helper)
 
 
++(instancetype)newWithDefaultNib {
+	Class cls = self;
+	NSBundle *bundle = [NSBundle bundleForClass:cls];
+	
+	UIViewController *instance = [[cls alloc] initWithNibName:NSStringFromClass(cls) bundle:bundle];
+	return instance;
+}
+
+
 -(void)pushChildVC:(UIViewController*)child toViewOfParent:(UIView*)view{
 	[view addSubview:child.view];
 	[self addChildViewController:child];
@@ -21,7 +30,6 @@
 	[child.view.bottomAnchor constraintEqualToAnchor:view.bottomAnchor].active = YES;
 	[child.view.leadingAnchor constraintEqualToAnchor:view.leadingAnchor].active = YES;
 	[child.view.trailingAnchor constraintEqualToAnchor:view.trailingAnchor].active = YES;
-	//[view tieConstaintsForsubordinateView:child.view];
 }
 
 

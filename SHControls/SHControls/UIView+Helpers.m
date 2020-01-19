@@ -8,6 +8,7 @@
 
 
 #import "UIView+Helpers.h"
+#import <objc/runtime.h>
 @import Foundation;
 @import SHCommon;
 
@@ -15,58 +16,42 @@
 @implementation UIView (Helpers)
 
 
--(void)resizeAutoLayoutHeightByOffset:(CGFloat)offset{
-	CGFloat height = self.frame.size.height;
-	[self.heightAnchor constraintEqualToConstant:height + offset].active = YES;
+-(UIColor *)SH_borderColor {
+	CGColorRef cgColor = self.layer.borderColor;
+	return [UIColor colorWithCGColor:cgColor];
 }
 
 
--(void)setupBorder:(UIRectEdge)edges
-	 withThickness:(CGFloat)thickness
-			andColor:(UIColor *)color{
-	CALayer *layer = self.layer;
-	if(edges&UIRectEdgeTop){
-		CALayer *borderLayer = [[CALayer alloc] init];
-		borderLayer.backgroundColor = color.CGColor;
-		borderLayer.frame = CGRectMake(0,0,self.frame.size.width,thickness);
-		[layer addSublayer:borderLayer];
-	}
-	if(edges&UIRectEdgeLeft){
-		CALayer *borderLayer = [[CALayer alloc] init];
-		borderLayer.backgroundColor = color.CGColor;
-		borderLayer.frame = CGRectMake(0,0,thickness,self.frame.size.height);
-		[layer addSublayer:borderLayer];
-	}
-	if(edges&UIRectEdgeRight){
-		CALayer *borderLayer = [[CALayer alloc] init];
-		borderLayer.backgroundColor = color.CGColor;
-		CGFloat offsetX = self.frame.size.width - thickness;
-		borderLayer.frame = CGRectMake(offsetX,0,thickness,self.frame.size.height);
-		[layer addSublayer:borderLayer];
-	}
-	if(edges&UIRectEdgeBottom){
-		CALayer *borderLayer = [[CALayer alloc] init];
-		borderLayer.backgroundColor = color.CGColor;
-		CGFloat offsetY = self.frame.size.height -thickness;
-		borderLayer.frame = CGRectMake(0,offsetY,self.frame.size.width,thickness);
-		[layer addSublayer:borderLayer];
-	}
-	
+-(void)setSH_borderColor:(UIColor *)borderColor {
+	self.layer.borderColor = borderColor.CGColor;
 }
 
 
--(void)replaceSubviewsWith:(UIView *)view{
-	for(UIView *v in self.subviews){
-		[v removeFromSuperview];
-	}
-	if(view){
-		[self addSubview:view];
-	}
+-(CGFloat)SH_borderWidth {
+	CGFloat width = self.layer.borderWidth;
+	return width;
 }
+
+
+-(void)setSH_borderWidth:(CGFloat)borderWidth {
+	self.layer.borderWidth = borderWidth;
+}
+
+
+-(CGFloat)SH_cornerRadius {
+	CGFloat cornerRadius = self.layer.cornerRadius;
+	return cornerRadius;
+}
+
+
+-(void)setSH_cornerRadius:(CGFloat)SH_cornerRadius {
+	self.layer.cornerRadius = SH_cornerRadius;
+}
+
 
 //deprecated
 -(void)invertViewColors{
-	UIColor *c;
+	UIColor *c = nil;
 	if([self respondsToSelector:@selector(setTextColor:)]
 		&&[self respondsToSelector:@selector(textColor)]){
 		c = (UIColor *)[self valueForKey:@"textColor"];
@@ -124,8 +109,8 @@ that it would be a pain in the ass to add back if I change my mind.
 
 //deprecated
 -(void)invertColorForPropertyForStateWithGetSelector:(SEL)getterSEL AndSetSelector:(SEL)setterSEL{
-	UIColor *c;
-	UIColor *inverted;
+	UIColor *c = nil;
+	UIColor *inverted = nil;
 	typedef void (*setPropertyColorForState)(id,SEL,UIColor*,NSUInteger);
 	typedef UIColor* (*getPropertyColorForState)(id,SEL,NSUInteger);
 	getPropertyColorForState methodInvokeGet = (getPropertyColorForState)[self methodForSelector:getterSEL];
@@ -151,39 +136,19 @@ that it would be a pain in the ass to add back if I change my mind.
 }
 
 
--(void)translateViewVertically:(CGFloat)offset{
+-(UIView *)loadXib:(NSString *)nibName{
+		NSBundle *bundle = [NSBundle bundleForClass:self.class];
+		@try {
+			NSArray *nibs = [bundle loadNibNamed:nibName owner:self options:nil];
+			if(nibs.count > 0) {
+				return [bundle loadNibNamed:nibName owner:self options:nil][0];
+			}
+		return nil;
+		}
+		@catch (NSException *exception) {
+			return nil;
+		}
 	
-	CGRect frame = self.frame;
-	frame.origin.y += offset;
-	self.frame = frame;
 }
-
-
--(void)resetVerticalOrigin{
-	CGRect frame = self.frame;
-	frame.origin.y = 0;
-	self.frame = frame;
-}
-
-
--(void)tieConstaintsForsubordinateView:(UIView *)subordinateView{
-	[self tieVerticalConstraintsForsubordinateView:subordinateView];
-	[self tieHorizontalConstaintsForSubordinateView:subordinateView];
-}
-
-
--(void)tieHorizontalConstaintsForSubordinateView:(UIView *)subordinateView{
-	subordinateView.translatesAutoresizingMaskIntoConstraints = NO;
-	[self.leadingAnchor constraintEqualToAnchor:subordinateView.leadingAnchor].active = YES;
-	[self.trailingAnchor constraintEqualToAnchor:subordinateView.trailingAnchor].active = YES;
-}
-
-
--(void)tieVerticalConstraintsForsubordinateView:(UIView*)subordinateView{
-	subordinateView.translatesAutoresizingMaskIntoConstraints = NO;
-	[self.topAnchor constraintEqualToAnchor: subordinateView.topAnchor].active = YES;
-	[self.bottomAnchor constraintEqualToAnchor:subordinateView.bottomAnchor].active = YES;
-}
-
 
 @end

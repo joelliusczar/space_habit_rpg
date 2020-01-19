@@ -7,7 +7,6 @@
 //
 
 #import "SHRateSetterView.h"
-#import "EventArgs/SHEventInfo.h"
 @import SHCommon;
 
 
@@ -122,24 +121,12 @@
 }
 
 
--(void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
-	[super traitCollectionDidChange:previousTraitCollection];
-	if (@available(iOS 12.0, *)) {
-		if(self.traitCollection.userInterfaceStyle != previousTraitCollection.userInterfaceStyle) {
-			UIColor *background = [UIColor colorNamed:@"background"
-																			 inBundle:NSBundle.mainBundle
-									compatibleWithTraitCollection:self.traitCollection];
-			UIColor *textColor = [UIColor colorNamed:@"text"
-																			inBundle:NSBundle.mainBundle
-								 compatibleWithTraitCollection:self.traitCollection];
-			[self _simpleSetBackgroundColor:background];
-			[self _simpleSetTextColor:textColor];
-			[self redrawButtons];
-		}
-	} else {
-		// Fallback on earlier versions
-	}
+-(void)setColors:(UIColor *)background text:(UIColor *)textColor {
+	[self _simpleSetBackgroundColor:background];
+	[self _simpleSetTextColor:textColor];
+	[self redrawButtons];
 }
+
 
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "SHHabitViewController.h"
+#import "DumbShitViewController.h"
 @import SHCommon;
 
 
@@ -63,7 +64,7 @@
 	self.habitTable.dataSource = self;
 	self.addHabitBtn.eventDelegate = self;
 	SHIconBuilder * iconBuilder = [[SHIconBuilder alloc] initWithColor:UIColor.whiteColor
-		withBackgroundColor:[UIColor colorWithRed:36.0/256.0 green:126.0/256.0 blue:217.0/256.0 alpha:1]
+		withBackgroundColor:[UIColor colorWithRed:36.0/255.0 green:126.0/255.0 blue:217.0/255.0 alpha:1]
 		withSize:CGSizeMake(50, 50)
 		withThickness:5];
 	UIImage *addHabitIcon = [iconBuilder drawPlus];
@@ -184,6 +185,9 @@
 -(void)onBeginTap_action:(SHView *)sender withEvent:(UIEvent*)event {
 	(void)sender; (void)event;
 	[self openEditor];
+	if(self.onOpenAddHabit) {
+		self.onOpenAddHabit();
+	}
 }
 
 

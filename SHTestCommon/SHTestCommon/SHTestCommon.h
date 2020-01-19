@@ -6,7 +6,6 @@
 //  Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
-#if IS_IOS
 @import UIKit;
 
 //! Project version number for SHTestCommon.
@@ -14,8 +13,6 @@ FOUNDATION_EXPORT double SHTestCommonVersionNumber;
 
 //! Project version string for SHTestCommon.
 FOUNDATION_EXPORT const unsigned char SHTestCommonVersionString[];
-
-#endif
 
 
 // In this header, you should import all the public headers of your framework using statements like #import <TestCommon/PublicHeader.h>

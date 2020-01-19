@@ -41,9 +41,9 @@ NSString* const SH_TRANSACTION_TYPE_CREATE = @"ADDED";
 NSString* const SH_TRANSACTION_TYPE_BATCH_DELETE = @"BATCH_DELETE";
 NSString* const SH_REPORT_USER_ID_KEY = @"reportUserId";
 
-int const SH_MINUTES_IN_HOUR = 60;
-int const SH_HOURS_IN_DAY = 24;
-int const SH_DAY_HALF = 12;
+int32_t const SH_MINUTES_IN_HOUR = 60;
+int32_t const SH_HOURS_IN_DAY = 24;
+int32_t const SH_DAY_HALF = 12;
 
 
 

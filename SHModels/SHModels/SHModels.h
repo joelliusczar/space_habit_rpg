@@ -6,7 +6,6 @@
 //  Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
-#if IS_IOS
 
 @import UIKit;
 
@@ -16,7 +15,6 @@ FOUNDATION_EXPORT double SHModelsVersionNumber;
 //! Project version string for SHModels.
 FOUNDATION_EXPORT const unsigned char SHModelsVersionString[];
 
-#endif
 
 #import "SHModelConstants.h"
 #import "SHConfig.h"

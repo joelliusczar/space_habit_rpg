@@ -11,9 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIViewController (Helper)
-
++(instancetype)newWithDefaultNib;
 -(void)popAllChildVCs;
-
 -(void)showErrorView:(NSString*)name withError:(NSError*)error;
 @end
 

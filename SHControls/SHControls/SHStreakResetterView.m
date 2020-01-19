@@ -7,7 +7,6 @@
 //
 
 #import "SHStreakResetterView.h"
-#import "EventArgs/SHEventInfo.h"
 
 @implementation SHStreakResetterView
 

@@ -20,4 +20,5 @@ HEADER_SEARCH_PATHS = $(SHUTILS_C_H_DIR)
 //
 //MODULEMAP_FILE = $(SRCROOT)/Headers/module.modulemap
 
+//The location to copy the public headers to during building, relative to the built products folder.
 PUBLIC_HEADERS_FOLDER_PATH = include/$(PRODUCT_NAME)

@@ -39,7 +39,7 @@ static NSString* const BACKEND_KEY = @"hero_data";
 
 -(NSInteger)gold {
 	NSNumber *tmp = (NSNumber*)self.backend[@"gold"];
-	NSInteger gold = tmp ? tmp.integerValue : 0;
+	NSInteger gold = nil != tmp ? tmp.integerValue : 0;
 	return gold;
 }
 
@@ -51,7 +51,7 @@ static NSString* const BACKEND_KEY = @"hero_data";
 
 -(NSInteger)lvl {
 	NSNumber *tmp = (NSNumber*)self.backend[@"lvl"];
-	NSInteger lvl = tmp ? tmp.integerValue : 1;
+	NSInteger lvl = nil != tmp ? tmp.integerValue : 1;
 	return lvl;
 }
 
@@ -63,7 +63,7 @@ static NSString* const BACKEND_KEY = @"hero_data";
 
 -(NSInteger)maxHp {
 	NSNumber *tmp = (NSNumber*)self.backend[@"maxHp"];
-	NSInteger maxHp = tmp ? tmp.integerValue : 50;
+	NSInteger maxHp = nil != tmp ? tmp.integerValue : 50;
 	return maxHp;
 }
 
@@ -75,7 +75,7 @@ static NSString* const BACKEND_KEY = @"hero_data";
 
 -(NSInteger)nowHp {
 	NSNumber *tmp = (NSNumber*)self.backend[@"nowHp"];
-	NSInteger nowHp = tmp ? tmp.integerValue : 50;
+	NSInteger nowHp = nil != tmp ? tmp.integerValue : 50;
 	return nowHp;
 }
 
@@ -87,7 +87,7 @@ static NSString* const BACKEND_KEY = @"hero_data";
 
 -(NSInteger)maxXp {
 	NSNumber *tmp = (NSNumber*)self.backend[@"maxXp"];
-	NSInteger maxXp = tmp ? tmp.integerValue : 100;
+	NSInteger maxXp = nil != tmp ? tmp.integerValue : 100;
 	return maxXp;
 }
 
@@ -99,7 +99,7 @@ static NSString* const BACKEND_KEY = @"hero_data";
 
 -(NSInteger)nowXp {
 	NSNumber *tmp = (NSNumber*)self.backend[@"nowXp"];
-	NSInteger nowXp = tmp ? tmp.integerValue : 0;
+	NSInteger nowXp = nil != tmp ? tmp.integerValue : 0;
 	return nowXp;
 }
 
@@ -114,5 +114,22 @@ static NSString* const BACKEND_KEY = @"hero_data";
 	[self.backend writeToURL:self.saveUrl error:&error];
 }
 
+
+-(NSString*)debugDescription {
+		NSString *desc = [NSString stringWithFormat:@"Lvl: %ld\n"
+	"NowHp: %ld\n"
+	"MaxHp: %ld\n"
+	"gold: %ld\n"
+	"nowXp: %ld\n"
+	"maxXp: %ld\n"
+	,self.lvl
+	,self.nowHp
+	,self.maxHp
+	,self.gold
+	,self.nowXp
+	,self.maxXp];
+	
+	return desc;
+}
 
 @end

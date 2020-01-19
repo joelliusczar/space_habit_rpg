@@ -9,6 +9,6 @@
 @import Foundation;
 
 @interface SHProbWeight : NSObject
-	-(void)add:(NSString *)key With:(int)freq;
-	-(NSString *)weightedRandomKey;
+-(void)add:(NSString *)key with:(int32_t)freq;
+-(NSString *)weightedRandomKey;
 @end

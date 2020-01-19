@@ -5,9 +5,8 @@
 //  Created by Joel Pridgen on 12/28/19.
 //  Copyright © 2019 Joel Gillette. All rights reserved.
 //
-#if IS_IOS
-#import <Foundation/Foundation.h>
 
+#import <Foundation/Foundation.h>
 @import UIKit;
 
 
@@ -34,4 +33,3 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_ASSUME_NONNULL_END
 
-#endif

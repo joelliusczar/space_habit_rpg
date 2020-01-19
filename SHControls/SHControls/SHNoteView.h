@@ -11,7 +11,9 @@
 #import "SHViewController.h"
 @import UIKit;
 
-@interface SHNoteView : SHViewController
+@protocol SHNotesViewDelegateProtocol;
+
+@interface SHNoteView : SHViewController<UITextViewDelegate>
 @property (weak,nonatomic) IBOutlet UITextView *noteBox;
 @property (weak,nonatomic) id<SHNotesViewDelegateProtocol> delegate;
 @end

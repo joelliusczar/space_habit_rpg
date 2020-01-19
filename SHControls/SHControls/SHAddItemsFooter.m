@@ -7,13 +7,12 @@
 //
 
 #import "SHAddItemsFooter.h"
-#import "SHEventInfo.h"
 
 @implementation SHAddItemsFooter
 
 -(IBAction)addItemBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
-	SHEventInfo *e = eventInfoCopy;
-	[self.delegate addItemBtn_press_action:e];
+	(void)sender; (void)event;
+	[self.delegate addItemBtn_press_action];
 }
 
 @end

@@ -94,6 +94,9 @@
 	if(_shouldShowPostInto) {
 		[self prepareScreenPostIntro];
 	}
+	self.listTop.active = NO;
+	self.statsView.hidden = NO;
+	self.statsTop.active = YES;
 }
 
 -(void)didReceiveMemoryWarning {
@@ -104,7 +107,7 @@
 -(void)setupTabs {
 	SHDailyViewController* dc = [[SHDailyViewController alloc] initWithCentral:self
 		withContext:[self.dataController newBackgroundContext]];
-
+	
 	self.tabsController.viewControllers = @[dc];
 	
 	[self.tabsContainer addSubview:self.tabsController.view];
@@ -118,9 +121,6 @@
 
 
 -(void)prepareScreen{
-	self.statsView.hidden = NO;
-	self.listTop.active = NO;
-	self.statsTop.active = YES;
 	self.battleStats = [[SHBattleStatsViewController alloc] initWithResourceUtil:self.resourceUtil];
 	[self pushChildVC:self.battleStats toViewOfParent:self.statsView];
 	self.statsView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -189,6 +189,21 @@
 	else {
 		[self normalFlow];
 	}
+}
+
+-(void)encodeRestorableStateWithCoder:(NSCoder *)coder {
+	[super encodeRestorableStateWithCoder:coder];
+	[coder encodeBool:self.listTop.active forKey:@"ListTop_Active"];
+	[coder encodeBool:self.statsTop.active forKey:@"StatsTop_Active"];
+	[coder encodeBool:self.statsView.hidden forKey:@"StatsView_Hidden"];
+}
+
+
+-(void)decodeRestorableStateWithCoder:(NSCoder *)coder {
+	[super decodeRestorableStateWithCoder:coder];
+	self.listTop.active = [coder decodeBoolForKey:@"ListTop_Active"];
+	self.statsTop.active = [coder decodeBoolForKey:@"StatsTop_Active"];
+	self.statsView.hidden = [coder decodeBoolForKey:@"StatsView_Hidden"];
 }
 
 

@@ -113,7 +113,6 @@
 	UIView *view = cellViewController.view;
 	view.translatesAutoresizingMaskIntoConstraints = NO;
 
-	cell.contentView.backgroundColor = UIColor.redColor;
 	[self addChildViewController:cellViewController];
 	[cell.contentView addSubview:view];
 	[cellViewController didMoveToParentViewController:self];
@@ -135,8 +134,7 @@
 }
 
 
--(void)streakResetBtn_press_action:(SHEventInfo *)eventInfo {
-	(void)eventInfo;
+-(void)streakResetBtn_press_action {
 	[self.context performBlock:^{
 		SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
 		daily.streakLength = 0;
@@ -194,9 +192,8 @@
 }
 
 
--(void)textDidChange:(SHEventInfo *)eventInfo{
-	UITextView *textView = (UITextView *)eventInfo.senderStack[0];
-	NSString *note = textView.text;
+-(void)textDidChange:(SHNoteView *)sender{
+	NSString *note = sender.noteBox.text;
 	[self.context performBlock:^{
 		SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
 		daily.note = note;
@@ -207,12 +204,10 @@
 }
 	
 	
--(void)sld_valueChanged_action:(SHEventInfo *)eventInfo{
-	UISlider *sender = (UISlider *)eventInfo.senderStack[0];
-	SHImportanceSliderView *sliderView = (SHImportanceSliderView *)eventInfo.senderStack[1];
-	int sliderValue = shCheckImportanceRange((int)sender.value);
-	[sliderView updateImportanceSlider:sliderValue];
-	BOOL isUrgency = sliderView == self.editControls.controlLookup[@"urgencySld"];
+-(void)sld_valueChanged_action:(SHImportanceSliderView *)sender{
+	int sliderValue = shCheckImportanceRange((int)sender.importanceSld.value);
+	[sender updateImportanceSlider:sliderValue];
+	BOOL isUrgency = sender == self.editControls.controlLookup[@"urgencySld"];
 	[self.context performBlock:^{
 		SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
 		if(isUrgency){

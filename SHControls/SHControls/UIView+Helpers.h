@@ -10,14 +10,9 @@
 @import UIKit;
 
 @interface UIView (Helpers)
-
--(void)resizeAutoLayoutHeightByOffset:(CGFloat)offset;
--(void)setupBorder:(UIRectEdge)edges withThickness:(CGFloat)thickness andColor:(UIColor *)color;
--(void)replaceSubviewsWith:(UIView *)view;
+@property (nonatomic) UIColor *SH_borderColor UI_APPEARANCE_SELECTOR;
+@property (nonatomic) CGFloat SH_borderWidth UI_APPEARANCE_SELECTOR;
+@property (nonatomic) CGFloat SH_cornerRadius UI_APPEARANCE_SELECTOR;
 -(void)checkForAndApplyVisualChanges;
--(void)translateViewVertically:(CGFloat)offset;
--(void)resetVerticalOrigin;
--(void)tieConstaintsForsubordinateView:(UIView *)view;
--(void)tieHorizontalConstaintsForSubordinateView:(UIView *)view;
--(void)tieVerticalConstraintsForsubordinateView:(UIView*)view;
+-(UIView *)loadXib:(NSString *)nibName;
 @end

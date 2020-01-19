@@ -9,6 +9,7 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
+//CONFIGURATION is Release, Debug, etc
 
 // Intermediate build files go here
 PROJECT_TEMP_DIR = $(SRCROOT)/../../spacehabitrpg_output/build/$(PLATFORM_NAME)/$(PROJECT_NAME).build
@@ -19,7 +20,7 @@ CONFIGURATION_BUILD_DIR = $(SRCROOT)/../../spacehabitrpg_output/build/$(PLATFORM
 //// The final product executables and other build products go here
 BUILT_PRODUCTS_DIR = $(SRCROOT)/../../spacehabitrpg_output/build/$(PLATFORM_NAME)/$CONFIGURATION
 
-//DERIVED_FILE_DIR = $(SRCROOT)/../../spacehabitrpg_output/derived/$(PLATFORM_NAME)/$CONFIGURATION
+DERIVED_FILE_DIR = $(SRCROOT)/../../spacehabitrpg_output/derived/$(PLATFORM_NAME)/$CONFIGURATION
 
 ALWAYS_SEARCH_USER_PATHS = NO
 
@@ -30,9 +31,9 @@ CODE_SIGN_IDENTITY = iPhone Developer
 
 IPHONEOS_DEPLOYMENT_TARGET = 11.4
 
-GCC_PREPROCESSOR_DEFINITIONS[sdk=iphoneos*] = $(inherited) IS_IOS=1
+GCC_PREPROCESSOR_DEFINITIONS[sdk=iphoneos*] = $(inherited)
 
-GCC_PREPROCESSOR_DEFINITIONS[sdk=iphonesimulator*] = $(inherited) IS_IOS=1
+GCC_PREPROCESSOR_DEFINITIONS[sdk=iphonesimulator*] = $(inherited)
 
 C_PUBLIC_HEADERS = /usr/local/include
 

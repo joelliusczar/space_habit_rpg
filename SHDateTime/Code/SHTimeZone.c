@@ -14,9 +14,9 @@
 static bool _compareDtAndTimeShift(SHDatetime *dt,SHTimeshift *shift,bool (*compare)(int64_t,int64_t)){
 		SHError error;
 		int64_t dtTimestamp = shCreateDateTime(SH_BASE_YEAR,dt->month,dt->day,dt->hour,dt->minute
-													,dt->second,0,&error);
+			,dt->second,0,&error);
 		int64_t shiftTimestamp = shCreateDateTime(SH_BASE_YEAR,shift->month,shift->day,shift->hour
-														,shift->minute,0,0,&error);
+			,shift->minute,0,0,&error);
 		return compare(dtTimestamp,shiftTimestamp);
 }
 
@@ -36,12 +36,12 @@ static bool _isBeforeShiftCusp(SHDatetime *dt,SHTimeshift *next){
 	return _compareDtAndTimeShift(dt,next,&_isDtBeforeShift);
 }
 
-int shSelectTimeShiftForDt(SHDatetime *dt,SHTimeshift *shifts,int shiftCount){
+int32_t shSelectTimeShiftForDt(SHDatetime *dt,SHTimeshift *shifts, int32_t shiftCount){
 	if(!(dt&&shifts)) return NOT_FOUND;
-	int max = shiftCount;
-	for(int i = 0;i<max;i++){
+	int32_t max = shiftCount;
+	for(int32_t i = 0;i<max;i++){
 		SHTimeshift extant = shifts[i];
-		int wrappedIdx = (i+1) % max;
+		int32_t wrappedIdx = (i+1) % max;
 		SHTimeshift next = shifts[wrappedIdx];
 		if(_isBeforeShiftCusp(dt,&extant)){
 			return ((i-1)+max) % max;
@@ -56,7 +56,7 @@ int shSelectTimeShiftForDt(SHDatetime *dt,SHTimeshift *shifts,int shiftCount){
 	return NOT_FOUND;
 }
 
-int shFindTimeShiftIdx(SHDatetime *dt){
+int32_t shFindTimeShiftIdx(SHDatetime *dt){
 	if(!dt) return NOT_FOUND;
 	if(dt->shifts){
 		return shSelectTimeShiftForDt(dt,dt->shifts,dt->shiftLen);
@@ -64,13 +64,13 @@ int shFindTimeShiftIdx(SHDatetime *dt){
 	return NOT_FOUND;
 }
 
-static int _updateTimezoneForShifts(SHDatetime *dt,SHError *error){
+static int32_t _updateTimezoneForShifts(SHDatetime *dt,SHError *error){
 	shLog("_updateTimezoneForShifts\n");
 	if(!(dt&&error)) {
 		return shHandleError(SH_NULL_VALUES, "Null inputs", error);
 	}
 	if(dt->shifts){
-		int oldShiftIdx = dt->currentShiftIdx;
+		int32_t oldShiftIdx = dt->currentShiftIdx;
 		if(oldShiftIdx < 0 || oldShiftIdx >= dt->shiftLen){
 			return SH_INVALID_STATE;
 		}
@@ -81,22 +81,22 @@ static int _updateTimezoneForShifts(SHDatetime *dt,SHError *error){
 			return shHandleError(cnvtErr.code,"Error in date object to"
 				"timestamp in tz update",error);
 		}
-		int updShiftIdx = shFindTimeShiftIdx(dt);
+		int32_t updShiftIdx = shFindTimeShiftIdx(dt);
 		SHTimeshift *oldShift = &dt->shifts[oldShiftIdx];
 		SHTimeshift *updShift = &dt->shifts[updShiftIdx];
 		if(oldShift != updShift){
 			dt->timezoneOffset -= oldShift->adjustment;
 			dt->timezoneOffset += updShift->adjustment;
-			int shiftCuspTS = shCreateTime(updShift->hour,updShift->minute,0,&cnvtErr);
+			int32_t shiftCuspTS = shCreateTime(updShift->hour,updShift->minute,0,&cnvtErr);
 			if(cnvtErr.code){
 				return shHandleError(cnvtErr.code,"Error creating time",error);
 			}
-			int dtTS = shExtractTime(dt,&cnvtErr);
+			int32_t dtTS = shExtractTime(dt,&cnvtErr);
 			if(cnvtErr.code){
 				return shHandleError(cnvtErr.code,"Error extracting time",error);
 			}
-			int shiftDif = (dtTS-shiftCuspTS);
-			if(shiftDif >= SH_HOUR_IN_SECONDS||dt->day > updShift->day||dt->month > updShift->month){
+			int32_t shiftDif = (dtTS-shiftCuspTS);
+			if(shiftDif >= SH_HOUR_IN_SECONDS || dt->day > updShift->day||dt->month > updShift->month){
 				ts += oldShift->adjustment;
 				ts -= updShift->adjustment;
 			}
@@ -113,7 +113,7 @@ static int _updateTimezoneForShifts(SHDatetime *dt,SHError *error){
 }
 
 bool shUpdateTimezoneForShifts(SHDatetime *dt,SHError *error){
-	int resultCode = _updateTimezoneForShifts(dt,error);
+	int32_t resultCode = _updateTimezoneForShifts(dt,error);
 	return resultCode == SH_NO_ERROR || resultCode == SKIP;
 }
 

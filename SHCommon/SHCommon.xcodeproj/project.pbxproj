@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -40,10 +40,10 @@
 		2747C4DA2048DC1300FB5669 /* SHProbWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4D82048DC1200FB5669 /* SHProbWeight.m */; };
 		2747C4DB2048DC1300FB5669 /* SHProbWeight.h in Headers */ = {isa = PBXBuildFile; fileRef = 2747C4D92048DC1200FB5669 /* SHProbWeight.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		274A8FA42323345300F348AC /* SHDebugDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 274A8FA32323345300F348AC /* SHDebugDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		274EFB5A204E3FE000CB3C4C /* UIColor+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB58204E3FE000CB3C4C /* UIColor+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		274EFB5B204E3FE000CB3C4C /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB59204E3FE000CB3C4C /* UIColor+Helper.m */; };
-		274EFB62204E43C900CB3C4C /* UIImage+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB60204E43C900CB3C4C /* UIImage+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		274EFB63204E43C900CB3C4C /* UIImage+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB61204E43C900CB3C4C /* UIImage+Helper.m */; };
+		274EFB5A204E3FE000CB3C4C /* UIColor+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB58204E3FE000CB3C4C /* UIColor+Helper.h */; platformFilter = ios; settings = {ATTRIBUTES = (Public, ); }; };
+		274EFB5B204E3FE000CB3C4C /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB59204E3FE000CB3C4C /* UIColor+Helper.m */; platformFilter = ios; };
+		274EFB62204E43C900CB3C4C /* UIImage+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB60204E43C900CB3C4C /* UIImage+Helper.h */; platformFilter = ios; settings = {ATTRIBUTES = (Public, ); }; };
+		274EFB63204E43C900CB3C4C /* UIImage+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB61204E43C900CB3C4C /* UIImage+Helper.m */; platformFilter = ios; };
 		27804B752352776A004921F5 /* SHDateProviderProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27804B742352776A004921F5 /* SHDateProviderProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27804B78235277EC004921F5 /* SHDefaultDateProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 27804B76235277EC004921F5 /* SHDefaultDateProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27804B79235277EC004921F5 /* SHDefaultDateProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 27804B77235277EC004921F5 /* SHDefaultDateProvider.m */; };
@@ -71,10 +71,10 @@
 		27A430EE22692C2200773056 /* NSSet+SHHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A430EC22692C2200773056 /* NSSet+SHHelper.m */; };
 		27A430F122692DAF00773056 /* NSOrderedSet+SHHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27A430EF22692DAF00773056 /* NSOrderedSet+SHHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27A430F222692DAF00773056 /* NSOrderedSet+SHHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A430F022692DAF00773056 /* NSOrderedSet+SHHelper.m */; };
-		27A5B16F23B727F8007FAD95 /* SHIconDrawingFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 27A5B16D23B727F8007FAD95 /* SHIconDrawingFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27A5B17023B727F8007FAD95 /* SHIconDrawingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A5B16E23B727F8007FAD95 /* SHIconDrawingFunctions.m */; };
-		27A5B17323B72C30007FAD95 /* SHIconBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 27A5B17123B72C30007FAD95 /* SHIconBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27A5B17423B72C30007FAD95 /* SHIconBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A5B17223B72C30007FAD95 /* SHIconBuilder.m */; };
+		27A5B16F23B727F8007FAD95 /* SHIconDrawingFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 27A5B16D23B727F8007FAD95 /* SHIconDrawingFunctions.h */; platformFilter = ios; settings = {ATTRIBUTES = (Public, ); }; };
+		27A5B17023B727F8007FAD95 /* SHIconDrawingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A5B16E23B727F8007FAD95 /* SHIconDrawingFunctions.m */; platformFilter = ios; };
+		27A5B17323B72C30007FAD95 /* SHIconBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 27A5B17123B72C30007FAD95 /* SHIconBuilder.h */; platformFilter = ios; settings = {ATTRIBUTES = (Public, ); }; };
+		27A5B17423B72C30007FAD95 /* SHIconBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A5B17223B72C30007FAD95 /* SHIconBuilder.m */; platformFilter = ios; };
 		27CA8636226262E200AE8FDB /* SHObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA8634226262E200AE8FDB /* SHObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA8637226262E200AE8FDB /* SHObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA8635226262E200AE8FDB /* SHObject.m */; };
 		27DD1D242043A2210030D954 /* NSException+SHCommonExceptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 27DD1D1C2043A2210030D954 /* NSException+SHCommonExceptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -419,7 +419,6 @@
 				27118837203FFA810085A549 /* Sources */,
 				27118838203FFA810085A549 /* Frameworks */,
 				27118839203FFA810085A549 /* Headers */,
-				2711883A203FFA810085A549 /* Resources */,
 				27DF9C492094EC4A00F98023 /* ShellScript */,
 			);
 			buildRules = (
@@ -479,16 +478,6 @@
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
-
-/* Begin PBXResourcesBuildPhase section */
-		2711883A203FFA810085A549 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		27DF9C492094EC4A00F98023 /* ShellScript */ = {
@@ -683,7 +672,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "$(SRCROOT)/SHCommon/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
 					"-Wall",
@@ -709,7 +702,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "$(SRCROOT)/SHCommon/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				OTHER_CFLAGS = (
 					"-Wall",
 					"-Wextra",

@@ -135,7 +135,7 @@ withLvl:(NSInteger)lvl withMonsterCount:(NSInteger)monsterCount{
 
 
 -(NSArray<SHSector*>*)getUndecidedSectorChoices {
-	NSArray<NSDictionary*> *prevSectors = [self.resourceUtil getPListArray:@"sector_choices"];
+	NSArray<NSDictionary*> *prevSectors = [self.resourceUtil getPListMutableArray:@"sector_choices"];
 	if(prevSectors == nil || prevSectors.count < 1) return nil;
 	NSMutableArray<SHSector*> *result = [NSMutableArray arrayWithCapacity:prevSectors.count];
 	for(NSDictionary *sectorDict in prevSectors) {

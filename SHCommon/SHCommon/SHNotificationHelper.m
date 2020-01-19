@@ -9,9 +9,7 @@
 #import "SHNotificationHelper.h"
 #import "SHConstants.h"
 
-#if IS_IOS
 @import UIKit;
-#endif
 
 @implementation SHNotificationHelper
 
@@ -30,25 +28,21 @@
 
 
 +(void)cleanUpSentReminders{
-#if IS_IOS
 	UNUserNotificationCenter *center = [UNUserNotificationCenter
-										currentNotificationCenter];
+		currentNotificationCenter];
 	[center getDeliveredNotificationsWithCompletionHandler:^(NSArray<UNNotification *> *notifications){
 		for(UNNotification *notification in notifications){
 			NSString *noticeText = notification.request.content.body;
 			
 			[self addNewNotificationIfPossible:noticeText
-								notificationId:notification.request.identifier
-									  userInfo:notification.request.content.userInfo];
+				notificationId:notification.request.identifier
+				userInfo:notification.request.content.userInfo];
 		}
 		[center removeAllDeliveredNotifications];
 		dispatch_sync(dispatch_get_main_queue(),^{
 			UIApplication.sharedApplication.applicationIconBadgeNumber = 0;
 		});
 	}];
-#else
-  NSLog(@"This method is compiled to empty when not on mobile device");
-#endif
 	
 }
 
@@ -57,26 +51,27 @@
 	notificationId:(NSString *)notificationId
 	userInfo:(NSDictionary *)info
 {
-						   
 	UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
 	[center getNotificationSettingsWithCompletionHandler:
 	 ^(UNNotificationSettings *settings){
 		 if(settings.authorizationStatus == UNAuthorizationStatusNotDetermined){
 			 [self buildNotificationPermissionWrapped:notificationText
-									   notificationId:notificationId
-											 userInfo:info];
+					notificationId:notificationId
+					userInfo:info];
 		 }
 		 else if(settings.authorizationStatus == UNAuthorizationStatusAuthorized){
 			 [self buildNotificationPermissionWrapped:notificationText
-									   notificationId:notificationId
-											 userInfo:info];
+					notificationId:notificationId
+					userInfo:info];
 		 }
 	 }];
 }
 
+
 +(void)buildNotificationPermissionWrapped:(NSString *)notificationText
-						   notificationId:(NSString *)notificationId
-								 userInfo:(NSDictionary *)info{
+	notificationId:(NSString *)notificationId
+	userInfo:(NSDictionary *)info
+{
 	UNUserNotificationCenter *center = [UNUserNotificationCenter
 										currentNotificationCenter];
 	UNAuthorizationOptions options = UNAuthorizationOptionAlert
@@ -93,8 +88,9 @@
 }
 
 +(void)buildNotification:(NSString *)notificationText
-		  notificationId:(NSString *)notificationId
-				userInfo:(NSDictionary *)info{
+	notificationId:(NSString *)notificationId
+	userInfo:(NSDictionary *)info
+{
 	UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
 	UNMutableNotificationContent *content = [SHNotificationHelper
 											 buildDefaultNotificationContent:
@@ -107,11 +103,11 @@
 									  content:content
 									  trigger:trigger];
 	[center addNotificationRequest:request withCompletionHandler:
-	 ^(NSError *error){
-		 if(error){
-			 NSLog(@"%@",error);
-		 }
-	 }];
+		^(NSError *error){
+			if(error){
+				NSLog(@"%@",error);
+			}
+		}];
 }
 
 @end

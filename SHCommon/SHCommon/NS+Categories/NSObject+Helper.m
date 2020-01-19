@@ -61,25 +61,5 @@ typedef void (*voidCaller)(id,SEL);
 	free(varArray);
 }
 
-//the reason I have this here rather than for UIView is because
-//of the possibility that I need to use it a custom viewController class
-//which would not inherit from UIView
-#if IS_IOS
--(UIView *)loadXib:(NSString *)nibName{
-		NSBundle *bundle = [NSBundle bundleForClass:self.class];
-		@try {
-			NSArray *nibs = [bundle loadNibNamed:nibName owner:self options:nil];
-			if(nibs.count > 0) {
-				return [bundle loadNibNamed:nibName owner:self options:nil][0];
-			}
-		return nil;
-		}
-		@catch (NSException *exception) {
-			return nil;
-		}
-	
-}
-#endif
-
 
 @end

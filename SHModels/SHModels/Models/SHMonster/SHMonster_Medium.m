@@ -57,7 +57,7 @@
 	for(NSString* monsterKey in keys){
 		SHMonsterDictionaryEntry *entry = [monInfoDict getMonsterEntry:monsterKey];
 		int32_t encounterWeight = entry.encounterWeight;
-		[pbw add:monsterKey With:encounterWeight];
+		[pbw add:monsterKey with:encounterWeight];
 	}
 	return pbw;
 }
