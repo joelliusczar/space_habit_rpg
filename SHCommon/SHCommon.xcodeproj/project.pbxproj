@@ -108,6 +108,8 @@
 		2711883C203FFA810085A549 /* SHCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2711883F203FFA810085A549 /* SHCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHCommon.h; sourceTree = "<group>"; };
 		27118840203FFA810085A549 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2729CC7E23D3F25B00A7F5CE /* SHCommon.prebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = SHCommon.prebuild.sh; sourceTree = "<group>"; };
+		2729CC7F23D3F27400A7F5CE /* SHCommon.postbuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = SHCommon.postbuild.sh; sourceTree = "<group>"; };
 		272D83AD23AD951300D946D3 /* SHObjectIDWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHObjectIDWrapper.m; sourceTree = "<group>"; };
 		272D83AE23AD951300D946D3 /* SHObjectIDWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHObjectIDWrapper.h; sourceTree = "<group>"; };
 		272D83B123AD962B00D946D3 /* NSManagedObjectContext+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+Helper.h"; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				27A90C28238792CF008F22A4 /* SHDatetime.xcodeproj */,
+				2729CC7D23D3F1F300A7F5CE /* Scripts */,
 				276E6D92222A46A500CB36CB /* Configs */,
 				2711883E203FFA810085A549 /* SHCommon */,
 				2711883D203FFA810085A549 /* Products */,
@@ -269,6 +272,15 @@
 				27A5B17223B72C30007FAD95 /* SHIconBuilder.m */,
 			);
 			path = SHCommon;
+			sourceTree = "<group>";
+		};
+		2729CC7D23D3F1F300A7F5CE /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				2729CC7E23D3F25B00A7F5CE /* SHCommon.prebuild.sh */,
+				2729CC7F23D3F27400A7F5CE /* SHCommon.postbuild.sh */,
+			);
+			path = Scripts;
 			sourceTree = "<group>";
 		};
 		272D83BE23AE8AE400D946D3 /* Constants */ = {
@@ -491,7 +503,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "$SRCROOT/../Build_Scripts/SHCommon.sh\n";
+			shellScript = "sh Scripts/SHCommon.postbuild.sh\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

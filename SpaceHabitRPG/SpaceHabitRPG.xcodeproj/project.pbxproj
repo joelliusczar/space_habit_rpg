@@ -11,8 +11,8 @@
 		270F97BE239238EF00479E77 /* SHSectorChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270F97BC239238EE00479E77 /* SHSectorChoiceViewController.m */; };
 		270F97C423923A4300479E77 /* SHSectorDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 270F97C023923A4300479E77 /* SHSectorDescriptionViewController.xib */; };
 		270F97C523923A4300479E77 /* SHSectorDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270F97C223923A4300479E77 /* SHSectorDescriptionViewController.m */; };
-		270F97CC23923B0500479E77 /* SHStoryDumpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 270F97C923923B0500479E77 /* SHStoryDumpView.xib */; };
-		270F97CD23923B0500479E77 /* SHStoryDumpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 270F97CA23923B0500479E77 /* SHStoryDumpView.m */; };
+		270F97CC23923B0500479E77 /* SHStoryDumpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 270F97C923923B0500479E77 /* SHStoryDumpViewController.xib */; };
+		270F97CD23923B0500479E77 /* SHStoryDumpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270F97CA23923B0500479E77 /* SHStoryDumpViewController.m */; };
 		270F97D423923C2B00479E77 /* SHEditNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270F97D123923C2B00479E77 /* SHEditNavigationController.m */; };
 		270F97D723923CFC00479E77 /* SHSectorChoiceCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270F97D623923CFC00479E77 /* SHSectorChoiceCellController.m */; };
 		270F97D923923D8200479E77 /* SHSectorChoiceCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 270F97D823923D8200479E77 /* SHSectorChoiceCellController.xib */; };
@@ -39,9 +39,6 @@
 		270F982A23924C4900479E77 /* SHReminderCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270F982823924C4900479E77 /* SHReminderCellController.m */; };
 		270F982D23924C8400479E77 /* SHReminderTimeSpinPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 270F982B23924C8400479E77 /* SHReminderTimeSpinPicker.m */; };
 		270F983023924D0400479E77 /* SHReminderListContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 270F982F23924D0400479E77 /* SHReminderListContainer.m */; };
-		2729CC6F23D3885700A7F5CE /* test.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2729CC6E23D3885700A7F5CE /* test.xib */; };
-		2729CC7323D38E4C00A7F5CE /* DumbShitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2729CC7123D38E4C00A7F5CE /* DumbShitViewController.m */; };
-		2729CC7423D38E4C00A7F5CE /* DumbShitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2729CC7223D38E4C00A7F5CE /* DumbShitViewController.xib */; };
 		272D83A823AD7B0600D946D3 /* SHHabitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272D83A723AD7B0600D946D3 /* SHHabitViewController.m */; };
 		272D83B923AD9CBC00D946D3 /* SHHabitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 272D83B823AD9CBC00D946D3 /* SHHabitCell.m */; };
 		272D83CA23AEA74700D946D3 /* SHDailyEditFull.xib in Resources */ = {isa = PBXBuildFile; fileRef = 272D83C923AEA74700D946D3 /* SHDailyEditFull.xib */; };
@@ -74,6 +71,20 @@
 			remoteGlobalIDString = 271187DA203FF88E0085A549;
 			remoteInfo = SHControls;
 		};
+		2729CC7923D3E85F00A7F5CE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2729CC7523D3E85F00A7F5CE /* SHCommon.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2711883C203FFA810085A549;
+			remoteInfo = SHCommon;
+		};
+		2729CC7B23D3E86900A7F5CE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2729CC7523D3E85F00A7F5CE /* SHCommon.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2711883B203FFA810085A549;
+			remoteInfo = SHCommon;
+		};
 		27F37E6A2387967E0006B705 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 271DBE572387953400644237 /* SHControls.xcodeproj */;
@@ -105,9 +116,9 @@
 		270F97C023923A4300479E77 /* SHSectorDescriptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSectorDescriptionViewController.xib; sourceTree = "<group>"; };
 		270F97C123923A4300479E77 /* SHSectorDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSectorDescriptionViewController.h; sourceTree = "<group>"; };
 		270F97C223923A4300479E77 /* SHSectorDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSectorDescriptionViewController.m; sourceTree = "<group>"; };
-		270F97C923923B0500479E77 /* SHStoryDumpView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHStoryDumpView.xib; sourceTree = "<group>"; };
-		270F97CA23923B0500479E77 /* SHStoryDumpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHStoryDumpView.m; sourceTree = "<group>"; };
-		270F97CB23923B0500479E77 /* SHStoryDumpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHStoryDumpView.h; sourceTree = "<group>"; };
+		270F97C923923B0500479E77 /* SHStoryDumpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHStoryDumpViewController.xib; sourceTree = "<group>"; };
+		270F97CA23923B0500479E77 /* SHStoryDumpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHStoryDumpViewController.m; sourceTree = "<group>"; };
+		270F97CB23923B0500479E77 /* SHStoryDumpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHStoryDumpViewController.h; sourceTree = "<group>"; };
 		270F97D123923C2B00479E77 /* SHEditNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEditNavigationController.m; sourceTree = "<group>"; };
 		270F97D223923C2B00479E77 /* SHEditNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHEditNavigationController.h; sourceTree = "<group>"; };
 		270F97D523923CFC00479E77 /* SHSectorChoiceCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSectorChoiceCellController.h; sourceTree = "<group>"; };
@@ -157,10 +168,7 @@
 		270F982E23924D0400479E77 /* SHReminderListContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHReminderListContainer.h; sourceTree = "<group>"; };
 		270F982F23924D0400479E77 /* SHReminderListContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHReminderListContainer.m; sourceTree = "<group>"; };
 		271DBE572387953400644237 /* SHControls.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHControls.xcodeproj; path = ../SHControls/SHControls.xcodeproj; sourceTree = "<group>"; };
-		2729CC6E23D3885700A7F5CE /* test.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = test.xib; sourceTree = "<group>"; };
-		2729CC7023D38E4C00A7F5CE /* DumbShitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DumbShitViewController.h; sourceTree = "<group>"; };
-		2729CC7123D38E4C00A7F5CE /* DumbShitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DumbShitViewController.m; sourceTree = "<group>"; };
-		2729CC7223D38E4C00A7F5CE /* DumbShitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DumbShitViewController.xib; sourceTree = "<group>"; };
+		2729CC7523D3E85F00A7F5CE /* SHCommon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHCommon.xcodeproj; path = ../SHCommon/SHCommon.xcodeproj; sourceTree = "<group>"; };
 		272D83A623AD7B0600D946D3 /* SHHabitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SHHabitViewController.h; path = SpaceHabitRPG/Common/SHHabitViewController.h; sourceTree = SOURCE_ROOT; };
 		272D83A723AD7B0600D946D3 /* SHHabitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SHHabitViewController.m; path = SpaceHabitRPG/Common/SHHabitViewController.m; sourceTree = SOURCE_ROOT; };
 		272D83B723AD9CBC00D946D3 /* SHHabitCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHHabitCell.h; sourceTree = "<group>"; };
@@ -232,9 +240,6 @@
 				272D83A723AD7B0600D946D3 /* SHHabitViewController.m */,
 				272D83B723AD9CBC00D946D3 /* SHHabitCell.h */,
 				272D83B823AD9CBC00D946D3 /* SHHabitCell.m */,
-				2729CC7023D38E4C00A7F5CE /* DumbShitViewController.h */,
-				2729CC7123D38E4C00A7F5CE /* DumbShitViewController.m */,
-				2729CC7223D38E4C00A7F5CE /* DumbShitViewController.xib */,
 			);
 			path = Daily;
 			sourceTree = "<group>";
@@ -245,7 +250,6 @@
 				272D83CB23AEAC2800D946D3 /* SHEditNavigationController.xib */,
 				272D83C923AEA74700D946D3 /* SHDailyEditFull.xib */,
 				27BBD51A2392EB5500311711 /* SHHabitViewController.xib */,
-				2729CC6E23D3885700A7F5CE /* test.xib */,
 			);
 			path = xibs;
 			sourceTree = "<group>";
@@ -286,8 +290,8 @@
 				27BBD50A2392526600311711 /* SHStoryPresentationController.m */,
 				27BBD5072392523900311711 /* SHStoryPresentationTypicalController.h */,
 				27BBD5062392523900311711 /* SHStoryPresentationTypicalController.m */,
-				270F97CB23923B0500479E77 /* SHStoryDumpView.h */,
-				270F97CA23923B0500479E77 /* SHStoryDumpView.m */,
+				270F97CB23923B0500479E77 /* SHStoryDumpViewController.h */,
+				270F97CA23923B0500479E77 /* SHStoryDumpViewController.m */,
 				270F97E52392440600479E77 /* SHIntroViewController.h */,
 				270F97E62392440600479E77 /* SHIntroViewController.m */,
 			);
@@ -300,7 +304,7 @@
 				27BBD51E2392EBE000311711 /* SHBattleStatsViewController.xib */,
 				27BBD51C2392EBA600311711 /* SHStoryModeSelectViewController.xib */,
 				270F97E82392442200479E77 /* SHIntroViewController.xib */,
-				270F97C923923B0500479E77 /* SHStoryDumpView.xib */,
+				270F97C923923B0500479E77 /* SHStoryDumpViewController.xib */,
 			);
 			path = xibs;
 			sourceTree = "<group>";
@@ -362,6 +366,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2729CC7623D3E85F00A7F5CE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2729CC7A23D3E85F00A7F5CE /* SHCommon.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		272D8319239C1F3100D946D3 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
@@ -407,6 +419,7 @@
 		2769519B20437DF5002D1C9A = {
 			isa = PBXGroup;
 			children = (
+				2729CC7523D3E85F00A7F5CE /* SHCommon.xcodeproj */,
 				27F37E76238796CE0006B705 /* SHModels.xcodeproj */,
 				271DBE572387953400644237 /* SHControls.xcodeproj */,
 				276951A620437DF5002D1C9A /* SpaceHabitRPG */,
@@ -491,6 +504,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				2729CC7C23D3E86900A7F5CE /* PBXTargetDependency */,
 				27F37E82238796DC0006B705 /* PBXTargetDependency */,
 				27F37E6B2387967E0006B705 /* PBXTargetDependency */,
 			);
@@ -527,6 +541,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 2729CC7623D3E85F00A7F5CE /* Products */;
+					ProjectRef = 2729CC7523D3E85F00A7F5CE /* SHCommon.xcodeproj */;
+				},
+				{
 					ProductGroup = 271DBE582387953400644237 /* Products */;
 					ProjectRef = 271DBE572387953400644237 /* SHControls.xcodeproj */;
 				},
@@ -548,6 +566,13 @@
 			fileType = wrapper.framework;
 			path = SHControls.framework;
 			remoteRef = 271DBE5F2387953400644237 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2729CC7A23D3E85F00A7F5CE /* SHCommon.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SHCommon.framework;
+			remoteRef = 2729CC7923D3E85F00A7F5CE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		27F37E80238796CE0006B705 /* SHModels.framework */ = {
@@ -573,14 +598,12 @@
 				27E16E3523D27A9A000062F7 /* SHReminderListContainer.xib in Resources */,
 				270F980D2392453A00479E77 /* SHDayOption.xib in Resources */,
 				27BBD5192392E3AA00311711 /* SHSectorChoiceViewController.xib in Resources */,
-				270F97CC23923B0500479E77 /* SHStoryDumpView.xib in Resources */,
+				270F97CC23923B0500479E77 /* SHStoryDumpViewController.xib in Resources */,
 				27BBD5142392D86C00311711 /* SHCentralViewController.xib in Resources */,
 				270F97C423923A4300479E77 /* SHSectorDescriptionViewController.xib in Resources */,
 				27BBD51D2392EBA700311711 /* SHStoryModeSelectViewController.xib in Resources */,
 				270F97D923923D8200479E77 /* SHSectorChoiceCellController.xib in Resources */,
-				2729CC7423D38E4C00A7F5CE /* DumbShitViewController.xib in Resources */,
 				270F97E92392442200479E77 /* SHIntroViewController.xib in Resources */,
-				2729CC6F23D3885700A7F5CE /* test.xib in Resources */,
 				272D83CA23AEA74700D946D3 /* SHDailyEditFull.xib in Resources */,
 				2747C49B2048D53100FB5669 /* Assets.xcassets in Resources */,
 			);
@@ -612,7 +635,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2729CC7323D38E4C00A7F5CE /* DumbShitViewController.m in Sources */,
 				270F97C523923A4300479E77 /* SHSectorDescriptionViewController.m in Sources */,
 				270F981D239249E300479E77 /* SHLinkViewController.m in Sources */,
 				270F982D23924C8400479E77 /* SHReminderTimeSpinPicker.m in Sources */,
@@ -631,7 +653,7 @@
 				270F983023924D0400479E77 /* SHReminderListContainer.m in Sources */,
 				270F97E4239242A500479E77 /* SHDailyCellController.m in Sources */,
 				270F980A2392453A00479E77 /* SHYearlyActiveDaysViewController.m in Sources */,
-				270F97CD23923B0500479E77 /* SHStoryDumpView.m in Sources */,
+				270F97CD23923B0500479E77 /* SHStoryDumpViewController.m in Sources */,
 				270F982723924BD200479E77 /* SHReminderListView.m in Sources */,
 				2747C4992048D50800FB5669 /* AppDelegate.m in Sources */,
 				27BBD511239252D700311711 /* SHStoryModeSelectViewController.m in Sources */,
@@ -653,6 +675,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2729CC7C23D3E86900A7F5CE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SHCommon;
+			targetProxy = 2729CC7B23D3E86900A7F5CE /* PBXContainerItemProxy */;
+		};
 		27F37E6B2387967E0006B705 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SHControls;

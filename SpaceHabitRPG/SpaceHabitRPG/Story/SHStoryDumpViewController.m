@@ -1,5 +1,5 @@
 //
-//	SHStoryDumpView.m
+//	SHStoryDumpViewController.m
 //	HabitRPG2
 //
 //	Created by Joel Pridgen on 4/29/17.
@@ -8,15 +8,15 @@
 
 #pragma clang diagnostic ignored "-Wunused-parameter"
 
-#import "SHStoryDumpView.h"
+#import "SHStoryDumpViewController.h"
 @import SHControls;
 @import SHCommon;
 
-@interface SHStoryDumpView ()
+@interface SHStoryDumpViewController ()
 @property (nonatomic,strong) UITapGestureRecognizer *tapper;
 @end
 
-@implementation SHStoryDumpView
+@implementation SHStoryDumpViewController
 
 
 
@@ -40,7 +40,7 @@
 
 
 -(instancetype)initWithDefaultNib{
-	if(self = [super initWithNibName:@"SHStoryDumpView" bundle:nil]){}
+	if(self = [super initWithNibName:@"SHStoryDumpViewController" bundle:nil]){}
 	return self;
 }
 

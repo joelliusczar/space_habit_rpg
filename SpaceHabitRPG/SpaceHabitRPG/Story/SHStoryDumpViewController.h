@@ -1,5 +1,5 @@
 //
-//  SHStoryDumpView.h
+//  SHStoryDumpViewController.h
 //  HabitRPG2
 //
 //  Created by Joel Pridgen on 4/29/17.
@@ -10,13 +10,13 @@
 @import SHControls;
 @import SHModels;
 
-@interface SHStoryDumpView : SHViewController
+@interface SHStoryDumpViewController : SHViewController
 @property (weak,nonatomic) IBOutlet UITextView *synopsisView;
 @property (weak,nonatomic) IBOutlet SHButton *doneBtn;
 @property (weak,nonatomic) IBOutlet UITextView *headlineLbl;
 @property (strong,nonatomic) NSObject<SHStoryItemProtocol> * storyItemObject;
 @property (nonatomic) UIColor* backgroundColor;
-@property (copy,nonatomic) void (^responseBlock)(SHStoryDumpView *);
+@property (copy,nonatomic) void (^responseBlock)(SHStoryDumpViewController *);
 -(instancetype)initWithStoryItemObject:(NSObject<SHStoryItemProtocol> *)storyItem;
 -(instancetype)initWithDefaultNib;
 @end

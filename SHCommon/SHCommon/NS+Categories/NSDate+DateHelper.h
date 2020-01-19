@@ -21,17 +21,23 @@
 	day:(NSInteger)day hour:(NSInteger)hour
 	minute:(NSInteger)minute second:(NSInteger)second
 	timeZone:(NSTimeZone *)timeZone;
--(NSDate *)dayStart;
+	
+
 +(NSInteger)daysBetween:(NSDate *)fromDate to:(NSDate *)toDate;
 -(NSDate *)setHour:(NSInteger)h minute:(NSInteger)m second:(NSInteger)s;
 +(NSDate *)createSimpleTimeWithHour:(NSInteger)hour minute:(NSInteger)minute
 	second:(NSInteger)second timzone:(NSTimeZone *)timeZone;
+	
 +(NSDate *)createSimpleTimeWithHour:(NSInteger)hour minute:(NSInteger)minute
 	second:(NSInteger)second;
+	
 +(NSDate *)createSimpleDateWithYear:(NSInteger)year month:(NSInteger)month
 	day:(NSInteger)day;
+	
 +(NSString *)timeOfDayInSystemPreferredFormat:(NSInteger)hour
 	andMinute:(NSInteger)minute;
+	
+-(NSDate *)dayStart;
 -(NSString *)extractTimeInFormat:(SHHourFormatType)format;
 -(NSInteger)getWeekdayIndex;
 -(NSDateComponents *)getDateComponents;

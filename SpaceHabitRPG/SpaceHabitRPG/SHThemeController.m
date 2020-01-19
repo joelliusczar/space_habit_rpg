@@ -11,7 +11,7 @@
 #import "SHBattleStatsViewController.h"
 #import "SHIntroViewController.h"
 #import "SHStoryModeSelectViewController.h"
-#import "SHStoryDumpView.h"
+#import "SHStoryDumpViewController.h"
 @import UIKit;
 @import SHControls;
 @import SHCommon;
@@ -63,7 +63,7 @@ static void _SH_setTextViewBorderSpecialCase(UIColor *background) {
 			centralCls]];
 	storySelectTextViewProxy.SH_borderColor = background;
 	UITextView *storyDumpTextViewProxy = [UITextView appearanceWhenContainedInInstancesOfClasses:
-		@[SHStoryDumpView.class,
+		@[SHStoryDumpViewController.class,
 			centralCls]];
 	storyDumpTextViewProxy.SH_borderColor = background;
 }

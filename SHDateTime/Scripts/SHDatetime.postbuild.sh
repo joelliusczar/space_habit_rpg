@@ -21,3 +21,6 @@ if [ -n "$IS_JOEL" ] && [ False ]; then
 fi
 
 cp "$SRCROOT"/Headers/module.modulemap "$BUILT_PRODUCTS_DIR"/include/"$PRODUCT_NAME"/module.modulemap
+
+
+echo "Done with SHDatetime"

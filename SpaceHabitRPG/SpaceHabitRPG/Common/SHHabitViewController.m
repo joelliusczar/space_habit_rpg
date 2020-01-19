@@ -7,7 +7,6 @@
 //
 
 #import "SHHabitViewController.h"
-#import "DumbShitViewController.h"
 @import SHCommon;
 
 

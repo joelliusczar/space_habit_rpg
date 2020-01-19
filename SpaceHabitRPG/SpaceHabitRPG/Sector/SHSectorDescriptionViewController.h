@@ -7,14 +7,14 @@
 //
 
 #import "SHSectorChoiceViewController.h"
-#import "SHStoryDumpView.h"
+#import "SHStoryDumpViewController.h"
 @import UIKit;
 @import SHModels;
 
 
 @class SHSectorChoiceViewController;
 
-@interface SHSectorDescriptionViewController : SHStoryDumpView
+@interface SHSectorDescriptionViewController : SHStoryDumpViewController
 @property (nonatomic,weak) SHSector *sector;
 @property (copy,nonatomic) void (^onSectorSelectionAction)(SHSector*);
 -(instancetype)initWithOnSelectionAction:(void (^)(SHSector*))onSectorSelectionAction;

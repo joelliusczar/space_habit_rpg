@@ -7,7 +7,7 @@
 //
 
 #import "SHStoryPresentationController.h"
-#import "SHStoryDumpView.h"
+#import "SHStoryDumpViewController.h"
 @import SHCommon;
 @import SHModels;
 @import SHControls;
@@ -40,11 +40,11 @@
 
 
 -(void)showStoryItem:(NSObject<SHStoryItemProtocol>*)storyItem
-	withResponse:(void (^)(SHStoryDumpView * nullable))response
+	withResponse:(void (^)(SHStoryDumpViewController * nullable))response
 {
 	SHConfig *config = [[SHConfig alloc] init];
 	if(config.storyMode == SH_STORY_MODE_FULL){
-		SHStoryDumpView *sdv = [[SHStoryDumpView alloc] initWithStoryItemObject:storyItem];
+		SHStoryDumpViewController *sdv = [SHStoryDumpViewController newWithDefaultNib];
 		sdv.responseBlock = response; //gets called further down the line
 		[self.central arrangeAndPushChildVCToFront:sdv];
 	}
@@ -55,7 +55,7 @@
 
 
 -(void)showMonsterStory:(SHMonster*)monster{
-	[self showStoryItem:monster withResponse:^(SHStoryDumpView * sdv){
+	[self showStoryItem:monster withResponse:^(SHStoryDumpViewController * sdv){
 		(void)sdv;
 		SHConfig *config = [[SHConfig alloc] init];
 		config.storyState = SH_STORY_STATE_NORMAL;
@@ -94,7 +94,7 @@
 	[self addSectorTransaction:sector];
 	SHConfig *config = [[SHConfig alloc] init];
 	config.storyState = SH_STORY_STATE_SECTOR_WAITING;
-	[self showStoryItem:sector withResponse:^(SHStoryDumpView * sdv){
+	[self showStoryItem:sector withResponse:^(SHStoryDumpViewController * sdv){
 		(void)sdv;
 		SHMonster_Medium *mm = [[SHMonster_Medium alloc] initWithResourceUtil:self.resourceUtil];
 		SHMonster *monster = [mm newRandomMonster:sector.sectorKey sectorLvl:sector.lvl];

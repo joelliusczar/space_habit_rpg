@@ -9,7 +9,7 @@
 #import "SHCentralViewController.h"
 #import "SHDailyViewController.h"
 #import "SHMenuViewController.h"
-#import "SHStoryDumpView.h"
+#import "SHStoryDumpViewController.h"
 #import "SHStoryPresentationTypicalController.h"
 #import "SHIntroViewController.h"
 #import "SHStoryModeSelectViewController.h"
