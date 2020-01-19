@@ -20,8 +20,10 @@
 	@throw [NSException abstractException];
 }
 
--(NSString *)getFormatStringTypeBasedOnIntervalSize {
-	return [self.class getFormatStringTypeForIntervalSize:self.intervalSize];
+-(NSString *)intervalDescription {
+	NSString *formatString = [self.class getFormatStringTypeForIntervalSize:self.intervalSize];
+	NSString *desc = [NSString stringWithFormat:formatString,self.intervalSize];
+	return desc;
 }
 
 

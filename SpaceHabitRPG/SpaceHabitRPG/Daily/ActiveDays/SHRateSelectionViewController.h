@@ -23,7 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) SHMonthlyActiveDaysViewController *monthlyActiveDaysViewController;
 @property (strong, nonatomic) SHYearlyActiveDaysViewController *yearlyActiveDaysViewController;
 @property (strong, nonatomic) SHDailyActiveDays *activeDays;
-@property (strong,nonatomic) IBOutlet SHRateSetterView *intervalSetter;
+@property (strong, nonatomic) IBOutlet SHRateSetterView *intervalSetter;
+@property (copy, nonatomic) void (^onCloseIntervalSelect)(SHDailyActiveDays *activeDays);
 -(void)selectRateType:(SHRateType)rateType;
 @end
 

@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign, nonatomic) NSInteger intervalSize;
 @property (class, readonly, nonatomic) NSString *singularFormatString;
 @property (class, readonly, nonatomic) NSString *pluralFormatString;
-@property (readonly, nonatomic) NSString *getFormatStringTypeBasedOnIntervalSize;
+@property (readonly, nonatomic) NSString *intervalDescription;
 +(NSString *)getFormatStringTypeForIntervalSize:(NSInteger)intervalSize;
 @end
 

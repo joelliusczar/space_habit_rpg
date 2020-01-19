@@ -44,8 +44,8 @@
 		case SH_DAILY_RATE:
 			return nil;
 		case SH_WEEKLY_RATE:
-			desc = [NSString stringWithFormat:@"%@ for %@",
-				self.activeDays.weeklyActiveDays.getFormatStringTypeBasedOnIntervalSize,
+			desc = [NSString stringWithFormat:@"%@ for\n%@",
+				self.activeDays.weeklyActiveDays.intervalDescription,
 				self.activeDays.weeklyActiveDays.weekDescription];
 			return desc;
 		case SH_MONTHLY_RATE:
@@ -67,6 +67,14 @@
 		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
 			[self.rateSelectionViewContoller selectRateType:rateType];
 			self.rateSelectionViewContoller.activeDays = self.activeDays;
+			__weak SHRepeatLinkViewController *weakSelf = self;
+			self.rateSelectionViewContoller.onCloseIntervalSelect = ^(SHDailyActiveDays *activeDays) {
+				(void)activeDays;
+				SHRepeatLinkViewController *bSelf = weakSelf;
+				if(nil == bSelf) return;
+				NSString *desc = [bSelf getIntervalDescription:bSelf.rateType];
+				bSelf.descriptionLabel.text = desc;
+			};
 			[self.editorContainer
 				arrangeAndPushChildVCToFront:self.rateSelectionViewContoller];
 		}];
