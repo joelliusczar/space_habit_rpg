@@ -95,30 +95,30 @@
 		271187DD203FF88E0085A549 /* SHControls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHControls.h; sourceTree = "<group>"; };
 		271187DE203FF88E0085A549 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		271187E7203FF9DB0085A549 /* SHSubtasksTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSubtasksTableView.xib; sourceTree = "<group>"; };
-		271187E8203FF9DB0085A549 /* SHNoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHNoteView.m; path = SHControls/SHNoteView.m; sourceTree = "<group>"; };
+		271187E8203FF9DB0085A549 /* SHNoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHNoteView.m; sourceTree = "<group>"; };
 		271187E9203FF9DB0085A549 /* SHAddItemsFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHAddItemsFooter.xib; sourceTree = "<group>"; };
-		271187EB203FF9DB0085A549 /* SHStreakResetterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHStreakResetterView.m; path = SHControls/SHStreakResetterView.m; sourceTree = "<group>"; };
-		271187EC203FF9DB0085A549 /* SHSubtasksTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHSubtasksTableView.h; path = SHControls/SHSubtasksTableView.h; sourceTree = "<group>"; };
-		271187EE203FF9DC0085A549 /* SHListItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHListItemCell.h; path = SHControls/SHListItemCell.h; sourceTree = "<group>"; };
-		271187F2203FF9DC0085A549 /* SHStreakResetterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHStreakResetterView.h; path = SHControls/SHStreakResetterView.h; sourceTree = "<group>"; };
-		271187F3203FF9DC0085A549 /* SHSubtasksTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHSubtasksTableView.m; path = SHControls/SHSubtasksTableView.m; sourceTree = "<group>"; };
-		271187F4203FF9DC0085A549 /* SHRateSetterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHRateSetterView.h; path = SHControls/SHRateSetterView.h; sourceTree = "<group>"; };
-		271187F5203FF9DC0085A549 /* SHListItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHListItemCell.m; path = SHControls/SHListItemCell.m; sourceTree = "<group>"; };
-		271187F6203FF9DC0085A549 /* SHTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHTaskCell.m; path = SHControls/SHTaskCell.m; sourceTree = "<group>"; };
+		271187EB203FF9DB0085A549 /* SHStreakResetterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHStreakResetterView.m; sourceTree = "<group>"; };
+		271187EC203FF9DB0085A549 /* SHSubtasksTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSubtasksTableView.h; sourceTree = "<group>"; };
+		271187EE203FF9DC0085A549 /* SHListItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHListItemCell.h; sourceTree = "<group>"; };
+		271187F2203FF9DC0085A549 /* SHStreakResetterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHStreakResetterView.h; sourceTree = "<group>"; };
+		271187F3203FF9DC0085A549 /* SHSubtasksTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSubtasksTableView.m; sourceTree = "<group>"; };
+		271187F4203FF9DC0085A549 /* SHRateSetterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHRateSetterView.h; sourceTree = "<group>"; };
+		271187F5203FF9DC0085A549 /* SHListItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHListItemCell.m; sourceTree = "<group>"; };
+		271187F6203FF9DC0085A549 /* SHTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHTaskCell.m; sourceTree = "<group>"; };
 		271187F7203FF9DC0085A549 /* SHStreakResetterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHStreakResetterView.xib; sourceTree = "<group>"; };
-		271187F9203FF9DD0085A549 /* SHAddItemsFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHAddItemsFooter.h; path = SHControls/SHAddItemsFooter.h; sourceTree = "<group>"; };
+		271187F9203FF9DD0085A549 /* SHAddItemsFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHAddItemsFooter.h; sourceTree = "<group>"; };
 		271187FA203FF9DD0085A549 /* SHImportanceSliderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHImportanceSliderView.xib; sourceTree = "<group>"; };
 		271187FB203FF9DD0085A549 /* SHListItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHListItemCell.xib; sourceTree = "<group>"; };
-		271187FE203FF9DD0085A549 /* SHRateSetterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHRateSetterView.m; path = SHControls/SHRateSetterView.m; sourceTree = "<group>"; };
+		271187FE203FF9DD0085A549 /* SHRateSetterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHRateSetterView.m; sourceTree = "<group>"; };
 		271187FF203FF9DD0085A549 /* SHNoteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHNoteView.xib; sourceTree = "<group>"; };
-		27118800203FF9DD0085A549 /* SHAddItemsFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHAddItemsFooter.m; path = SHControls/SHAddItemsFooter.m; sourceTree = "<group>"; };
-		27118801203FF9DE0085A549 /* SHImportanceSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHImportanceSliderView.h; path = SHControls/SHImportanceSliderView.h; sourceTree = "<group>"; };
-		27118802203FF9DE0085A549 /* SHNoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHNoteView.h; path = SHControls/SHNoteView.h; sourceTree = "<group>"; };
+		27118800203FF9DD0085A549 /* SHAddItemsFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHAddItemsFooter.m; sourceTree = "<group>"; };
+		27118801203FF9DE0085A549 /* SHImportanceSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHImportanceSliderView.h; sourceTree = "<group>"; };
+		27118802203FF9DE0085A549 /* SHNoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHNoteView.h; sourceTree = "<group>"; };
 		27118803203FF9DE0085A549 /* SHRateSetterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHRateSetterView.xib; sourceTree = "<group>"; };
-		27118808203FF9DF0085A549 /* SHTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHTaskCell.h; path = SHControls/SHTaskCell.h; sourceTree = "<group>"; };
-		2711880A203FF9DF0085A549 /* SHImportanceSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHImportanceSliderView.m; path = SHControls/SHImportanceSliderView.m; sourceTree = "<group>"; };
-		2711884E2040001A0085A549 /* SHSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHSwitch.m; path = SHControls/SHSwitch.m; sourceTree = "<group>"; };
-		2711884F2040001A0085A549 /* SHSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHSwitch.h; path = SHControls/SHSwitch.h; sourceTree = "<group>"; };
+		27118808203FF9DF0085A549 /* SHTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHTaskCell.h; sourceTree = "<group>"; };
+		2711880A203FF9DF0085A549 /* SHImportanceSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHImportanceSliderView.m; sourceTree = "<group>"; };
+		2711884E2040001A0085A549 /* SHSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSwitch.m; sourceTree = "<group>"; };
+		2711884F2040001A0085A549 /* SHSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSwitch.h; sourceTree = "<group>"; };
 		271D60C620421A99005C9F7E /* SHSubtasksTableViewDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSubtasksTableViewDelegateProtocol.h; sourceTree = "<group>"; };
 		271D60C720421A99005C9F7E /* SHAddItemsFooterDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHAddItemsFooterDelegateProtocol.h; sourceTree = "<group>"; };
 		271D60C820421A99005C9F7E /* SHCommonDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCommonDelegateProtocol.h; sourceTree = "<group>"; };
@@ -142,10 +142,10 @@
 		271D610220421A9A005C9F7E /* SHView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHView.h; sourceTree = "<group>"; };
 		271D610320421A9A005C9F7E /* SHItemFlexibleListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHItemFlexibleListView.xib; sourceTree = "<group>"; };
 		271D610520421A9A005C9F7E /* SHViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHViewProtocol.h; sourceTree = "<group>"; };
-		27249B9821C5809E006A884B /* UIView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Helpers.h"; path = "SHControls/UIView+Helpers.h"; sourceTree = "<group>"; };
-		27249B9921C5809E006A884B /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Helpers.m"; path = "SHControls/UIView+Helpers.m"; sourceTree = "<group>"; };
-		27249BA021CF0D59006A884B /* SHFrontEndConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHFrontEndConstants.m; path = SHControls/SHFrontEndConstants.m; sourceTree = "<group>"; };
-		27249BA121CF0D59006A884B /* SHFrontEndConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHFrontEndConstants.h; path = SHControls/SHFrontEndConstants.h; sourceTree = "<group>"; };
+		27249B9821C5809E006A884B /* UIView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Helpers.h"; sourceTree = "<group>"; };
+		27249B9921C5809E006A884B /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helpers.m"; sourceTree = "<group>"; };
+		27249BA021CF0D59006A884B /* SHFrontEndConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHFrontEndConstants.m; sourceTree = "<group>"; };
+		27249BA121CF0D59006A884B /* SHFrontEndConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHFrontEndConstants.h; sourceTree = "<group>"; };
 		2737D110230F6EFA00B8618C /* SHStatusBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHStatusBar.h; sourceTree = "<group>"; };
 		2737D111230F6EFA00B8618C /* SHStatusBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHStatusBar.m; sourceTree = "<group>"; };
 		2747C526204A573200FB5669 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = SHControls/Media.xcassets; sourceTree = "<group>"; };
@@ -176,39 +176,15 @@
 		271187D0203FF88E0085A549 = {
 			isa = PBXGroup;
 			children = (
+				27698E9123D4A8FB00754183 /* Headers */,
+				27698E9223D4A93200754183 /* Implementations */,
 				279848CF225063AC00039A29 /* Configs */,
 				27E3F2B923879326005821E8 /* SHCommon.xcodeproj */,
-				27DE250023739BA1003D2DAE /* SHScrollAnimator.h */,
-				27DE250123739BA1003D2DAE /* SHScrollAnimator.m */,
-				2737D110230F6EFA00B8618C /* SHStatusBar.h */,
-				2737D111230F6EFA00B8618C /* SHStatusBar.m */,
 				27D0D6E121D02A2D00886721 /* Categories */,
-				27249BA121CF0D59006A884B /* SHFrontEndConstants.h */,
-				27249BA021CF0D59006A884B /* SHFrontEndConstants.m */,
-				27249B9821C5809E006A884B /* UIView+Helpers.h */,
-				27249B9921C5809E006A884B /* UIView+Helpers.m */,
 				2747C526204A573200FB5669 /* Media.xcassets */,
 				271D60F720421A9A005C9F7E /* Abstract */,
 				271D60C420421A99005C9F7E /* ControlDelegates */,
 				271D60DC20421A9A005C9F7E /* NormalControls */,
-				271187F9203FF9DD0085A549 /* SHAddItemsFooter.h */,
-				27118800203FF9DD0085A549 /* SHAddItemsFooter.m */,
-				2711884F2040001A0085A549 /* SHSwitch.h */,
-				2711884E2040001A0085A549 /* SHSwitch.m */,
-				27118801203FF9DE0085A549 /* SHImportanceSliderView.h */,
-				2711880A203FF9DF0085A549 /* SHImportanceSliderView.m */,
-				271187EE203FF9DC0085A549 /* SHListItemCell.h */,
-				271187F5203FF9DC0085A549 /* SHListItemCell.m */,
-				27118802203FF9DE0085A549 /* SHNoteView.h */,
-				271187E8203FF9DB0085A549 /* SHNoteView.m */,
-				271187F4203FF9DC0085A549 /* SHRateSetterView.h */,
-				271187FE203FF9DD0085A549 /* SHRateSetterView.m */,
-				271187F2203FF9DC0085A549 /* SHStreakResetterView.h */,
-				271187EB203FF9DB0085A549 /* SHStreakResetterView.m */,
-				271187EC203FF9DB0085A549 /* SHSubtasksTableView.h */,
-				271187F3203FF9DC0085A549 /* SHSubtasksTableView.m */,
-				27118808203FF9DF0085A549 /* SHTaskCell.h */,
-				271187F6203FF9DC0085A549 /* SHTaskCell.m */,
 				2733D216229604D20090B7F1 /* xibs */,
 				271187DC203FF88E0085A549 /* SHControls */,
 				271187DB203FF88E0085A549 /* Products */,
@@ -314,6 +290,44 @@
 			path = xibs;
 			sourceTree = "<group>";
 		};
+		27698E9123D4A8FB00754183 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				27DE250023739BA1003D2DAE /* SHScrollAnimator.h */,
+				2737D110230F6EFA00B8618C /* SHStatusBar.h */,
+				27249BA121CF0D59006A884B /* SHFrontEndConstants.h */,
+				271187F9203FF9DD0085A549 /* SHAddItemsFooter.h */,
+				2711884F2040001A0085A549 /* SHSwitch.h */,
+				27118801203FF9DE0085A549 /* SHImportanceSliderView.h */,
+				271187EE203FF9DC0085A549 /* SHListItemCell.h */,
+				27118802203FF9DE0085A549 /* SHNoteView.h */,
+				271187F4203FF9DC0085A549 /* SHRateSetterView.h */,
+				271187F2203FF9DC0085A549 /* SHStreakResetterView.h */,
+				271187EC203FF9DB0085A549 /* SHSubtasksTableView.h */,
+				27118808203FF9DF0085A549 /* SHTaskCell.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		27698E9223D4A93200754183 /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				27DE250123739BA1003D2DAE /* SHScrollAnimator.m */,
+				2737D111230F6EFA00B8618C /* SHStatusBar.m */,
+				27249BA021CF0D59006A884B /* SHFrontEndConstants.m */,
+				27118800203FF9DD0085A549 /* SHAddItemsFooter.m */,
+				2711884E2040001A0085A549 /* SHSwitch.m */,
+				2711880A203FF9DF0085A549 /* SHImportanceSliderView.m */,
+				271187F5203FF9DC0085A549 /* SHListItemCell.m */,
+				271187E8203FF9DB0085A549 /* SHNoteView.m */,
+				271187FE203FF9DD0085A549 /* SHRateSetterView.m */,
+				271187EB203FF9DB0085A549 /* SHStreakResetterView.m */,
+				271187F3203FF9DC0085A549 /* SHSubtasksTableView.m */,
+				271187F6203FF9DC0085A549 /* SHTaskCell.m */,
+			);
+			path = Implementations;
+			sourceTree = "<group>";
+		};
 		279848CF225063AC00039A29 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +339,8 @@
 		27D0D6E121D02A2D00886721 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				27249B9821C5809E006A884B /* UIView+Helpers.h */,
+				27249B9921C5809E006A884B /* UIView+Helpers.m */,
 				27D0D6E221D02A2D00886721 /* UIViewController+Helper.h */,
 				27D0D6E321D02A2D00886721 /* UIViewController+Helper.m */,
 			);

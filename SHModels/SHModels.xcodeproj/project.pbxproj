@@ -403,6 +403,45 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		27698E9323D4A9B200754183 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				27CA866A2264207A00AE8FDB /* SHDaily.h */,
+				2769C0B9227FEB5B00217480 /* SHMonthlyYearlyRateItem.h */,
+				2769C0B5227FD86900217480 /* SHMonthlyYearlyRateItemList.h */,
+				27300A02224AE713006E419C /* SHDaily_Medium.h */,
+				2769C0FD2286106000217480 /* SHWeeklyRateItem.h */,
+				2769C115228E305500217480 /* SHDailyActiveDays.h */,
+				2733D210229065830090B7F1 /* SHDailyValidation.h */,
+				27BF501C22F77139005096BA /* SHDailyNextDueDateCalculator.h */,
+				2789889422F77B64007231E0 /* SHDailyMaxDaysBeforeSpanCalculator.h */,
+				27B2B3232303811D00663644 /* SHDailyActivator.h */,
+				27CA9D1523AF060F00F67AC4 /* SHWeeklyRateItemList.h */,
+				27CA9D1923AF345100F67AC4 /* SHDailyRateItem.h */,
+				27CA9D1D23AF3C1800F67AC4 /* SHRateItemProtocol.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		27698E9423D4A9D900754183 /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				27CA86432264207A00AE8FDB /* SHDaily.m */,
+				2769C0B2227FD7C900217480 /* SHMonthlyYearlyRateItem.m */,
+				2769C0B6227FD86900217480 /* SHMonthlyYearlyRateItemList.m */,
+				27300A03224AE713006E419C /* SHDaily_Medium.m */,
+				2769C0FE2286106000217480 /* SHWeeklyRateItem.m */,
+				2769C116228E305500217480 /* SHDailyActiveDays.m */,
+				2733D211229065830090B7F1 /* SHDailyValidation.c */,
+				27BF501D22F77139005096BA /* SHDailyNextDueDateCalculator.m */,
+				2789889522F77B64007231E0 /* SHDailyMaxDaysBeforeSpanCalculator.m */,
+				27B2B3242303811D00663644 /* SHDailyActivator.m */,
+				27CA9D1623AF060F00F67AC4 /* SHWeeklyRateItemList.m */,
+				27CA9D1A23AF345100F67AC4 /* SHDailyRateItem.m */,
+			);
+			path = Implementations;
+			sourceTree = "<group>";
+		};
 		276E6D98222A531700CB36CB /* Configs */ = {
 			isa = PBXGroup;
 			children = (
@@ -424,31 +463,8 @@
 		27A430C92268DC1700773056 /* SHDaily */ = {
 			isa = PBXGroup;
 			children = (
-				27CA866A2264207A00AE8FDB /* SHDaily.h */,
-				27CA86432264207A00AE8FDB /* SHDaily.m */,
-				2769C0B9227FEB5B00217480 /* SHMonthlyYearlyRateItem.h */,
-				2769C0B2227FD7C900217480 /* SHMonthlyYearlyRateItem.m */,
-				2769C0B5227FD86900217480 /* SHMonthlyYearlyRateItemList.h */,
-				2769C0B6227FD86900217480 /* SHMonthlyYearlyRateItemList.m */,
-				27300A02224AE713006E419C /* SHDaily_Medium.h */,
-				27300A03224AE713006E419C /* SHDaily_Medium.m */,
-				2769C0FD2286106000217480 /* SHWeeklyRateItem.h */,
-				2769C0FE2286106000217480 /* SHWeeklyRateItem.m */,
-				2769C115228E305500217480 /* SHDailyActiveDays.h */,
-				2769C116228E305500217480 /* SHDailyActiveDays.m */,
-				2733D210229065830090B7F1 /* SHDailyValidation.h */,
-				2733D211229065830090B7F1 /* SHDailyValidation.c */,
-				27BF501C22F77139005096BA /* SHDailyNextDueDateCalculator.h */,
-				27BF501D22F77139005096BA /* SHDailyNextDueDateCalculator.m */,
-				2789889422F77B64007231E0 /* SHDailyMaxDaysBeforeSpanCalculator.h */,
-				2789889522F77B64007231E0 /* SHDailyMaxDaysBeforeSpanCalculator.m */,
-				27B2B3232303811D00663644 /* SHDailyActivator.h */,
-				27B2B3242303811D00663644 /* SHDailyActivator.m */,
-				27CA9D1523AF060F00F67AC4 /* SHWeeklyRateItemList.h */,
-				27CA9D1623AF060F00F67AC4 /* SHWeeklyRateItemList.m */,
-				27CA9D1923AF345100F67AC4 /* SHDailyRateItem.h */,
-				27CA9D1A23AF345100F67AC4 /* SHDailyRateItem.m */,
-				27CA9D1D23AF3C1800F67AC4 /* SHRateItemProtocol.h */,
+				27698E9323D4A9B200754183 /* Headers */,
+				27698E9423D4A9D900754183 /* Implementations */,
 			);
 			path = SHDaily;
 			sourceTree = "<group>";

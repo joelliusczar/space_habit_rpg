@@ -217,7 +217,6 @@
 			daily.difficulty = sliderValue;
 		}
 	}];
-	
 }
 
 
