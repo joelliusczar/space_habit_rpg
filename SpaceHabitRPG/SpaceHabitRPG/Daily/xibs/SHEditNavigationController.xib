@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="deleteBtn" destination="WKd-iQ-fEC" id="1OG-9k-7mP"/>
                 <outlet property="editorSubviewContainer" destination="1At-XX-3TH" id="YdX-Dk-Dqq"/>
+                <outlet property="headline" destination="WCI-Bj-G52" id="hUB-vN-Vd3"/>
                 <outlet property="itemNameInput" destination="Hqz-gI-QoT" id="GZJ-q9-ahn"/>
                 <outlet property="saveBtnBarItem" destination="FvK-Rg-1oA" id="bh8-30-yws"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Dfq-GA-4Ml"/>

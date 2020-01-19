@@ -55,10 +55,11 @@
 	[self.view layoutIfNeeded];
 	self.editingScreen.editorContainerController = self;
 	self.topNavBar.topItem.title = self.viewTitle;
-
+	self.headline.text = self.title;
 	[self addChildViewController:self.editingScreen];
 	[self.editorSubviewContainer addSubview: self.editingScreen.view];
 	[self.editingScreen didMoveToParentViewController:self];
+	
 	UIView *editView = self.editingScreen.view;
 	editView.translatesAutoresizingMaskIntoConstraints = NO;
 	[editView.topAnchor constraintEqualToAnchor:self.editorSubviewContainer.topAnchor].active = YES;
