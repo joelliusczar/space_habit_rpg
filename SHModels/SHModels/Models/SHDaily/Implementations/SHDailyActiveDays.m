@@ -23,7 +23,7 @@
 
 -(instancetype)initWithActiveDaysJson:(NSString*)activeDaysJson{
 	if(self = [super init]){
-		_jsonRepresentation = activeDaysJson ? activeDaysJson : SH_ALL_DAYS_JSON;
+		_jsonRepresentation = activeDaysJson;
 	}
 	return self;
 }
@@ -39,8 +39,11 @@
 
 -(NSMutableDictionary*)activeDaysDict{
 	if(nil == _activeDaysDict){
-		NSString *str = _jsonRepresentation ? _jsonRepresentation : SH_ALL_DAYS_JSON;
+		NSString *str = _jsonRepresentation.length > 0 ? _jsonRepresentation : SH_ALL_DAYS_JSON;
 		_activeDaysDict = [NSDictionary jsonStringToDict:str];
+		if(nil == _activeDaysDict) {
+			_activeDaysDict = [NSDictionary jsonStringToDict:SH_ALL_DAYS_JSON];
+		}
 	}
 	return _activeDaysDict;
 }
@@ -208,7 +211,7 @@
 }
 
 
--(id<SHRateItemProtocol>)selectRateItemCollection:(SHRateType)rateType {
+-(SHIntervalItemFormat *)selectRateItemCollection:(SHRateType)rateType {
 	switch (rateType) {
 		case SH_DAILY_RATE:
 			return self.dailyRateItem;

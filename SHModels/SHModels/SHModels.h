@@ -66,7 +66,7 @@ FOUNDATION_EXPORT const unsigned char SHModelsVersionString[];
 #import "SHDailyActivator.h"
 #import "SHMonster_Medium.h"
 #import "SHWeeklyRateItemList.h"
-#import "SHRateItemProtocol.h"
+#import "SHIntervalItemFormat.h"
 
 // In this header, you should import all
 //the public headers of your framework using statements like #import <SHModels/PublicHeader.h>

@@ -26,9 +26,13 @@
 	SHObjectIDWrapper *objectIDWrapper = self.objectIDWrapper;
 	SHDailyActiveDays *activeDays = self.activeDays;
 	__block BOOL newlyInserted = NO;
+	__block SHRateType rateType;
+	__block NSInteger interval = 1;
 	[context performBlockAndWait:^{
 		SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:objectIDWrapper];
 		newlyInserted = daily.inserted;
+		rateType = daily.rateType;
+		interval = daily.rate;
 	}];
 	
 	[keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
@@ -59,6 +63,7 @@
 		[repeatLink setupWithContext:context
 			andObjectID:objectIDWrapper];
 		repeatLink.activeDays = activeDays;
+		repeatLink.rateType = rateType;
 		return repeatLink;
 	}];
 	

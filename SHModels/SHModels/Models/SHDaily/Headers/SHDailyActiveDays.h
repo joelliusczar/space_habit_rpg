@@ -6,12 +6,12 @@
 //  Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-@import Foundation;
 #import "SHWeeklyRateItem.h"
 #import "SHMonthlyYearlyRateItemList.h"
 #import "SHWeeklyRateItemList.h"
 #import "SHDailyRateItem.h"
-#import "SHRateItemProtocol.h"
+#import "SHIntervalItemFormat.h"
+@import Foundation;
 
 typedef SHMonthlyYearlyRateItemList* _Nonnull (^shGetListRateCollection)(void);
 typedef SHWeeklyRateItemList* _Nonnull (^shGetRangeRateArray)(void);
@@ -30,11 +30,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, nonatomic) SHDailyRateItem *dailyRateItem;
 @property (readonly, nonatomic) SHDailyRateItem *dailyRateItemInv;
 
+
 @property (assign, nonatomic) NSUInteger weeklyDayStart;
 
 -(instancetype)initWithActiveDaysJson:(nullable NSString*)activeDaysJson;
 -(NSString*)activeDaysAsJson;
--(nullable id<SHRateItemProtocol>)selectRateItemCollection:(SHRateType)rateType;
+-(nullable SHIntervalItemFormat *)selectRateItemCollection:(SHRateType)rateType;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -108,12 +108,12 @@ static SHRateItemDict* mapWeeklyToDict(id item,NSUInteger idx){
 
 
 -(NSString*)singularFormatString {
-	return @"Interval: Every week";
+	return @"Every week";
 }
 
 
 -(NSString*)pluralFormatString {
-	return @"Interval: Every %ld weeks";
+	return @"Every %ld weeks";
 }
 
 @end

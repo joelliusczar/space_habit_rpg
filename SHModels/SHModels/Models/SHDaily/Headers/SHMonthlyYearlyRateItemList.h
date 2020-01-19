@@ -8,14 +8,13 @@
 
 #import "SHMonthlyYearlyRateItem.h"
 #import "SHModelConstants.h"
-#import "SHRateItemProtocol.h"
+#import "SHIntervalItemFormat.h"
 @import SHCommon;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHMonthlyYearlyRateItemList : SHObject<SHRateItemProtocol>
+@interface SHMonthlyYearlyRateItemList : SHIntervalItemFormat
 @property (readonly,nonatomic) NSUInteger count;
-@property (assign, nonatomic) NSInteger intervalSize;
 @property (copy,nonatomic) void (^touchCallback)(void);
 -(instancetype)initWithActiveDays:(NSMutableArray<SHRateItemDict*>*)activeDays;
 -(NSUInteger)addRateItem:(SHMonthlyYearlyRateItem*)rateItem;

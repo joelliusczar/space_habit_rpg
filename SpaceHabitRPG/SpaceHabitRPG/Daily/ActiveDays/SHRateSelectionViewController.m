@@ -119,9 +119,11 @@ const NSInteger YEARLY_SELECTION = 3;
 -(void)switchToActiveDaysViewController:(SHRateType)rateType{
 	NSAssert(self.activeDays,@"We need active days to not be nill");
 	
-	id<SHRateItemProtocol> rateItem = [self.activeDays selectRateItemCollection:rateType];
-	self.intervalSetter.labelSingularFormatString = rateItem.singularFormatString;
-	self.intervalSetter.labelPluralFormatString = rateItem.pluralFormatString;
+	SHIntervalItemFormat  *rateItem = [self.activeDays selectRateItemCollection:rateType];
+	NSString *singularString = [NSString stringWithFormat:@"Interval: %@",rateItem.singularFormatString];
+	NSString *pluralString = [NSString stringWithFormat:@"Interval: %@",rateItem.pluralFormatString];
+	self.intervalSetter.labelSingularFormatString = singularString;
+	self.intervalSetter.labelPluralFormatString = pluralString;
 	self.intervalSetter.intervalSize = rateItem.intervalSize;
 	
 	SHViewController *selectedActiveDaysVC = [self selectActiveDaysViewController:rateType];
@@ -183,7 +185,7 @@ const NSInteger YEARLY_SELECTION = 3;
 -(void)rateStepEvent:(UIStepper *)stepper event:(UIEvent*)event{
 	(void)event;
 	int32_t intervalSize = (int32_t)stepper.value;
-	id<SHRateItemProtocol> rateItemCollection = [self.activeDays selectRateItemCollection:self.rateType];
+	SHIntervalItemFormat *rateItemCollection = [self.activeDays selectRateItemCollection:self.rateType];
 	rateItemCollection.intervalSize = intervalSize;
 }
 

@@ -93,6 +93,7 @@
 		case SH_YEARLY_RATE_INVERSE:
 		case SH_MONTHLY_RATE:
 		case SH_MONTHLY_RATE_INVERSE:
+			return 2147483647;
 		case SH_WEEKLY_RATE:
 			return [calculator maxDaysBeforeSpan_WEEKLY];
 		case SH_WEEKLY_RATE_INVERSE:

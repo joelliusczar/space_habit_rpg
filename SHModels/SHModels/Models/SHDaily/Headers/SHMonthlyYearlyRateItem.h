@@ -8,6 +8,7 @@
 
 @import SHCommon;
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHMonthlyYearlyRateItem : SHObject

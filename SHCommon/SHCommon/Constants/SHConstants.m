@@ -8,9 +8,6 @@
 
 #import "SHConstants.h"
 
-NSInteger const SH_PM_PRIME = 2;
-NSInteger const SH_AM_PRIME = 43;
-
 
 NSString* const SH_DAILY_TRANSACTION_ENTITY_NAME = @"DailyTransaction";
 NSString* const SH_COUNTER_TRANSACTION_ENTITY_NAME = @"HabitTransaction";

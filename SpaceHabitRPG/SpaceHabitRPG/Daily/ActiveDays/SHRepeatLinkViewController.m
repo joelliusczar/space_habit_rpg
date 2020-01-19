@@ -23,17 +23,34 @@
 
 -(SHRateSelectionViewController*)rateSelectionViewContoller{
 	if(nil == _rateSelectionViewContoller){
-		NSBundle *bundle = [NSBundle bundleForClass:SHRateSelectionViewController.class];
-		_rateSelectionViewContoller = [[SHRateSelectionViewController alloc]
-			initWithNibName:NSStringFromClass(SHRateSelectionViewController.class)
-			bundle:bundle];
+		_rateSelectionViewContoller = [SHRateSelectionViewController newWithDefaultNib];
 	}
 	return _rateSelectionViewContoller;
 }
 
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	// Do any additional setup after loading the view from its nib.
+	self.primaryLabel.text = @"Interval: ";
+	self.descriptionLabel.text = @"Set reminders";
+}
+
+
+-(NSString*)getRateDescription:(SHRateType)rateType {
+	SHRateType useRateType = shExtractBaseRateType(rateType);
+	switch (useRateType) {
+			case SH_DAILY_RATE:
+				return nil;
+			case SH_WEEKLY_RATE:
+				return nil;
+			case SH_MONTHLY_RATE:
+				return nil;
+			case SH_YEARLY_RATE:
+				return nil;
+			default:
+				@throw [NSException oddException];
+	}
+	return nil;
 }
 
 

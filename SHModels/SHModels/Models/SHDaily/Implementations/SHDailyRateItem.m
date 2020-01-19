@@ -11,12 +11,12 @@
 @implementation SHDailyRateItem
 
 -(NSString*)singularFormatString {
-	return @"Interval: Every day";
+	return @"Every day";
 }
 
 
 -(NSString*)pluralFormatString {
-	return @"Interval: Every %ld days";
+	return @"Every %ld days";
 }
 
 @end

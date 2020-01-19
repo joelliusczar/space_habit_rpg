@@ -6,14 +6,13 @@
 //  Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import "SHRateItemProtocol.h"
 #import <Foundation/Foundation.h>
+#import "SHIntervalItemFormat.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHDailyRateItem : NSObject<SHRateItemProtocol>
-@property (assign, nonatomic) NSInteger intervalSize;
+@interface SHDailyRateItem : SHIntervalItemFormat
 @end
 
 NS_ASSUME_NONNULL_END

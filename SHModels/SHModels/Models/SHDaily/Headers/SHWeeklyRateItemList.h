@@ -9,12 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "SHWeeklyRateItem.h"
 #import "SHModelConstants.h"
-#import "SHRateItemProtocol.h"
+#import "SHIntervalItemFormat.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHWeeklyRateItemList : NSObject<SHRateItemProtocol>
-@property (assign, nonatomic) NSInteger intervalSize;
+@interface SHWeeklyRateItemList : SHIntervalItemFormat
 -(instancetype)initWithRateItemArray:(NSArray<SHRateItemDict*>*)rateItemArray;
 -(SHWeeklyRateItem*)objectAtIndexedSubscript:(NSUInteger)idx;
 -(void)flipDayOfWeek:(NSUInteger)dayIdx;

@@ -14,7 +14,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHRepeatLinkViewController : SHLinkViewController
-@property (strong,nonatomic) SHDailyActiveDays *activeDays;
+@property (strong, nonatomic) SHDailyActiveDays *activeDays;
+@property (assign, nonatomic) SHRateType rateType;
+@property (assign, nonatomic) NSInteger interval;
 @end
 
 NS_ASSUME_NONNULL_END
