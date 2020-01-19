@@ -45,7 +45,7 @@
 		272D83A823AD7B0600D946D3 /* SHHabitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272D83A723AD7B0600D946D3 /* SHHabitViewController.m */; };
 		272D83B923AD9CBC00D946D3 /* SHHabitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 272D83B823AD9CBC00D946D3 /* SHHabitCell.m */; };
 		272D83CA23AEA74700D946D3 /* SHDailyEditFull.xib in Resources */ = {isa = PBXBuildFile; fileRef = 272D83C923AEA74700D946D3 /* SHDailyEditFull.xib */; };
-		272D83CC23AEAC2800D946D3 /* SHEditScreenFull.xib in Resources */ = {isa = PBXBuildFile; fileRef = 272D83CB23AEAC2800D946D3 /* SHEditScreenFull.xib */; };
+		272D83CC23AEAC2800D946D3 /* SHEditNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 272D83CB23AEAC2800D946D3 /* SHEditNavigationController.xib */; };
 		2747C4992048D50800FB5669 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C4972048D50800FB5669 /* AppDelegate.m */; };
 		2747C49B2048D53100FB5669 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2747C49A2048D53100FB5669 /* Assets.xcassets */; };
 		2747C49F2048D54700FB5669 /* SHCentralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C49C2048D54600FB5669 /* SHCentralViewController.m */; };
@@ -166,7 +166,7 @@
 		272D83B723AD9CBC00D946D3 /* SHHabitCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHHabitCell.h; sourceTree = "<group>"; };
 		272D83B823AD9CBC00D946D3 /* SHHabitCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHHabitCell.m; sourceTree = "<group>"; };
 		272D83C923AEA74700D946D3 /* SHDailyEditFull.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHDailyEditFull.xib; sourceTree = "<group>"; };
-		272D83CB23AEAC2800D946D3 /* SHEditScreenFull.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHEditScreenFull.xib; sourceTree = "<group>"; };
+		272D83CB23AEAC2800D946D3 /* SHEditNavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHEditNavigationController.xib; sourceTree = "<group>"; };
 		2747C4972048D50800FB5669 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2747C4982048D50800FB5669 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2747C49A2048D53100FB5669 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -242,7 +242,7 @@
 		270F97BA2392364600479E77 /* xibs */ = {
 			isa = PBXGroup;
 			children = (
-				272D83CB23AEAC2800D946D3 /* SHEditScreenFull.xib */,
+				272D83CB23AEAC2800D946D3 /* SHEditNavigationController.xib */,
 				272D83C923AEA74700D946D3 /* SHDailyEditFull.xib */,
 				27BBD51A2392EB5500311711 /* SHHabitViewController.xib */,
 				2729CC6E23D3885700A7F5CE /* test.xib */,
@@ -569,7 +569,7 @@
 				270F980B2392453A00479E77 /* SHWeeklyActiveDaysFull.xib in Resources */,
 				27BBD51F2392EBE000311711 /* SHBattleStatsViewController.xib in Resources */,
 				270F980F2392453A00479E77 /* SHRateSelectionViewController.xib in Resources */,
-				272D83CC23AEAC2800D946D3 /* SHEditScreenFull.xib in Resources */,
+				272D83CC23AEAC2800D946D3 /* SHEditNavigationController.xib in Resources */,
 				27E16E3523D27A9A000062F7 /* SHReminderListContainer.xib in Resources */,
 				270F980D2392453A00479E77 /* SHDayOption.xib in Resources */,
 				27BBD5192392E3AA00311711 /* SHSectorChoiceViewController.xib in Resources */,

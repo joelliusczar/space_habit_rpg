@@ -29,11 +29,6 @@
 
 @implementation SHEditNavigationController
 
--(instancetype)init{
-	if(self = [self initWithNibName:@"SHEditScreenFull" bundle:nil]){}
-	return self;
-}
-
 -(void)setupBackgroundTapActions{
 
 	self.tapGestureFG = [[UITapGestureRecognizer alloc]

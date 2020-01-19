@@ -46,7 +46,7 @@
 
 -(SHEditNavigationController*)editController{
 	if(nil == _editController){
-		_editController = [[SHEditNavigationController alloc] init];
+		_editController = [SHEditNavigationController newWithDefaultNib];
 	}
 	return _editController;
 }
