@@ -170,4 +170,12 @@ static SHRateItemDict* mapWeeklyToDict(id item,NSUInteger idx){
 	return @"Every %ld Weeks";
 }
 
+
+-(NSString*)intervalLabelDescription {
+	NSString *desc = [NSString stringWithFormat:@"%@ for\n %@",
+		self.intervalDescription,
+		self.weekDescription];
+	return desc;
+}
+
 @end

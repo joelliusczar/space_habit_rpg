@@ -30,55 +30,37 @@
 
 
 - (void)viewDidLoad {
-	[super viewDidLoad];
-	self.primaryLabel.text = @"Interval: ";
-	NSString *desc = [self getIntervalDescription:self.rateType];
-	self.descriptionLabel.text = desc;
-}
-
-
--(NSString*)getIntervalDescription:(SHRateType)rateType {
-	SHRateType useRateType = shExtractBaseRateType(rateType);
-	NSString *desc = nil;
-	switch (useRateType) {
-		case SH_DAILY_RATE:
-			return nil;
-		case SH_WEEKLY_RATE:
-			desc = [NSString stringWithFormat:@"%@ for\n%@",
-				self.activeDays.weeklyActiveDays.intervalDescription,
-				self.activeDays.weeklyActiveDays.weekDescription];
-			return desc;
-		case SH_MONTHLY_RATE:
-			return nil;
-		case SH_YEARLY_RATE:
-			return nil;
-		default:
-			@throw [NSException oddException];
-	}
-}
-
-
--(void)openNextScreen{
 	NSAssert(self.context,@"You forgot to call setupWithContext:andObjectID:");
-	NSAssert(self.activeDays,@"You forgot to assign activeDays");
+	[super viewDidLoad];
 	[self.context performBlock:^{
 		SHDaily *daily = (SHDaily *)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
 		SHRateType rateType = (SHRateType)daily.rateType;
 		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-			[self.rateSelectionViewContoller selectRateType:rateType];
-			self.rateSelectionViewContoller.activeDays = self.activeDays;
-			__weak SHRepeatLinkViewController *weakSelf = self;
-			self.rateSelectionViewContoller.onCloseIntervalSelect = ^(SHDailyActiveDays *activeDays) {
-				(void)activeDays;
-				SHRepeatLinkViewController *bSelf = weakSelf;
-				if(nil == bSelf) return;
-				NSString *desc = [bSelf getIntervalDescription:bSelf.rateType];
-				bSelf.descriptionLabel.text = desc;
-			};
-			[self.editorContainer
-				arrangeAndPushChildVCToFront:self.rateSelectionViewContoller];
+			self.primaryLabel.text = @"Interval: ";
+			NSString *desc = [self.activeDays selectRateItemCollection:rateType].intervalLabelDescription;
+			self.descriptionLabel.text = desc;
+			self.rateType = rateType;
 		}];
 	}];
+	
+}
+
+
+-(void)openNextScreen{
+	NSAssert(self.activeDays,@"You forgot to assign activeDays");
+	[self.rateSelectionViewContoller selectRateType:self.rateType];
+	self.rateSelectionViewContoller.activeDays = self.activeDays;
+	__weak SHRepeatLinkViewController *weakSelf = self;
+	self.rateSelectionViewContoller.onCloseIntervalSelect = ^(SHRateType rateType, NSInteger intervalSize) {
+		SHRepeatLinkViewController *bSelf = weakSelf;
+		if(nil == bSelf) return;
+		bSelf.interval = intervalSize;
+		bSelf.rateType = rateType;
+		NSString *desc = [bSelf.activeDays selectRateItemCollection:rateType].intervalLabelDescription;
+		bSelf.descriptionLabel.text = desc;
+	};
+	[self.editorContainer
+		arrangeAndPushChildVCToFront:self.rateSelectionViewContoller];
 }
 
 

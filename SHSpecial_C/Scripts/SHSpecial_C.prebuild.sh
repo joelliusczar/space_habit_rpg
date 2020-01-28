@@ -8,4 +8,6 @@
 
 rm "$BUILT_PRODUCTS_DIR"/include/"$PRODUCT_NAME"/module.modulemap 2>/dev/null
 
+echo "Done with SHSpecial_C pre"
+
 exit 0

@@ -7,13 +7,28 @@
 //
 
 #import "SHViewController.h"
+#import "SHViewControllerAppearanceProxy.h"
 @import SHCommon;
+//SHAppearanceClassHierarchyTracker
+
+typedef NSArray<Class<UIAppearanceContainer>> SHAppearanceHierarchy;
+typedef NSMutableDictionary<SHAppearanceHierarchy*,SHViewControllerAppearanceProxy*> SHAppearanceClassHierarchyTracker;
+
+static SHAppearanceClassHierarchyTracker *_appearanceHierarchyTracker = nil;
 
 @interface SHViewController ()
-
+@property (class, nonatomic) SHAppearanceClassHierarchyTracker *appearanceClassHierarchyTracker;
 @end
 
-@implementation SHViewController
+@implementation SHViewController 
+
+
++(SHAppearanceClassHierarchyTracker *)appearanceClassHierarchyTracker {
+	if(nil == _appearanceHierarchyTracker) {
+		_appearanceHierarchyTracker = [NSMutableDictionary dictionary];
+	}
+	return _appearanceHierarchyTracker;
+}
 
 
 -(void)changeBackgroundColorTo:(UIColor *)color{
@@ -64,6 +79,28 @@ static void _popAnyViewControllerFromFront(UIViewController *vc) {
 }
 
 
++(instancetype)appearance {
+//	if(nil == _appearanceProxy) {
+//		_appearanceProxy = [[SHViewControllerAppearanceProxy alloc] init];
+//	}
+//	return _appearanceProxy;
+return nil;
+}
+
+
++(instancetype)appearanceWhenContainedInInstancesOfClasses:(NSArray<Class<UIAppearanceContainer>> *)containerTypes {
+	SHViewControllerAppearanceProxy *proxy = self.appearanceClassHierarchyTracker[containerTypes];
+	
+	return nil;
+}
+
+
++(instancetype)appearanceForTraitCollection:(UITraitCollection *)trait { return nil; }
+
+
++(instancetype)appearanceForTraitCollection:(UITraitCollection *)trait whenContainedInInstancesOfClasses:(NSArray<Class<UIAppearanceContainer>> *)containerTypes {
+return nil;
+}
 
 
 @end

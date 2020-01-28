@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina5_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,9 +20,6 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="behind_alert_view" translatesAutoresizingMaskIntoConstraints="NO" id="1A9-UA-drd">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                </imageView>
                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cph-eG-im8">
                     <rect key="frame" x="0.0" y="542" width="414" height="150"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -60,23 +56,17 @@
                     <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </toolbar>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="1A9-UA-drd" secondAttribute="bottom" id="5IG-8O-uIr"/>
-                <constraint firstItem="cph-eG-im8" firstAttribute="leading" secondItem="YwG-y3-3KR" secondAttribute="leading" id="DRJ-LA-q2P"/>
-                <constraint firstItem="1A9-UA-drd" firstAttribute="top" secondItem="YwG-y3-3KR" secondAttribute="top" id="MhC-Ar-EyD"/>
-                <constraint firstAttribute="trailing" secondItem="1A9-UA-drd" secondAttribute="trailing" id="S2x-3l-Wmf"/>
-                <constraint firstAttribute="bottom" secondItem="Kds-JC-wZJ" secondAttribute="bottom" id="SRc-Af-abK"/>
+                <constraint firstItem="cph-eG-im8" firstAttribute="leading" secondItem="Ujf-Dz-Wve" secondAttribute="leading" id="DRJ-LA-q2P"/>
+                <constraint firstItem="Ujf-Dz-Wve" firstAttribute="bottom" secondItem="Kds-JC-wZJ" secondAttribute="bottom" id="SRc-Af-abK"/>
                 <constraint firstItem="Kds-JC-wZJ" firstAttribute="top" secondItem="cph-eG-im8" secondAttribute="bottom" id="eaY-xC-OI2"/>
                 <constraint firstItem="Kds-JC-wZJ" firstAttribute="width" secondItem="YwG-y3-3KR" secondAttribute="width" id="jAy-c8-7II"/>
                 <constraint firstItem="Kds-JC-wZJ" firstAttribute="centerX" secondItem="YwG-y3-3KR" secondAttribute="centerX" id="n5S-n1-uJ4"/>
-                <constraint firstItem="1A9-UA-drd" firstAttribute="leading" secondItem="YwG-y3-3KR" secondAttribute="leading" id="nnz-g7-IPq"/>
-                <constraint firstAttribute="trailing" secondItem="cph-eG-im8" secondAttribute="trailing" id="zBg-My-vE6"/>
+                <constraint firstItem="Ujf-Dz-Wve" firstAttribute="trailing" secondItem="cph-eG-im8" secondAttribute="trailing" id="zBg-My-vE6"/>
             </constraints>
+            <viewLayoutGuide key="safeArea" id="Ujf-Dz-Wve"/>
             <point key="canvasLocation" x="2" y="-95"/>
         </view>
     </objects>
-    <resources>
-        <image name="behind_alert_view" width="320" height="460"/>
-    </resources>
 </document>

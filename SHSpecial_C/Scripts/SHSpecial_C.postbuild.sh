@@ -16,3 +16,7 @@ fi
 
 
 cp "$SRCROOT"/Headers/module.modulemap "$BUILT_PRODUCTS_DIR"/include/"$PRODUCT_NAME"/module.modulemap
+xs=$?
+
+(exit "$xs") && echo 'copy successful' || echo 'copy failed for some reason'
+echo 'done SHSpecial'

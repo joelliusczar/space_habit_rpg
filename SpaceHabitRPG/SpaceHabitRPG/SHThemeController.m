@@ -12,6 +12,7 @@
 #import "SHIntroViewController.h"
 #import "SHStoryModeSelectViewController.h"
 #import "SHStoryDumpViewController.h"
+#import "SHRateSelectionViewController.h"
 @import UIKit;
 @import SHControls;
 @import SHCommon;
@@ -72,6 +73,7 @@ static void _SH_setTextViewBorderSpecialCase(UIColor *background) {
 	UIColor *background = [UIColor colorNamed:@"background"];
 	UIColor *text = [UIColor colorNamed:@"text"];
 	UIColor *textBorder = [UIColor colorNamed:@"textBoxBorder"];
+	UIColor *transparentBackground = [UIColor colorNamed:@"transparentBackground"];
 	UILabel.appearance.textColor = text;
 	[UIView appearanceWhenContainedInInstancesOfClasses:@[SHCentralViewController.class]].backgroundColor = background;
 	UITableView.appearance.backgroundColor = background;
@@ -81,6 +83,12 @@ static void _SH_setTextViewBorderSpecialCase(UIColor *background) {
 	_SH_setSliderTheme(textBorder);
 	[UIButton.appearance setTitleColor:text forState:UIControlStateNormal];
 	_SH_setTextViewBorderSpecialCase(background);
+	
+	[UIView appearanceWhenContainedInInstancesOfClasses:
+		@[SHSpinPicker.class, SHRateSelectionViewController.class]]
+			.backgroundColor = UIColor.redColor;//transparentBackground;
+	
+	//[SHSpinPicker appearanceWhenContainedInInstancesOfClasses:@[SHCentralViewController.class]].pickerBackground = background;
 }
 
 

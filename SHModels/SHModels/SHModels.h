@@ -6,6 +6,9 @@
 //  Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
+#import <TargetConditionals.h>
+
+#if !TARGET_OS_OSX
 
 @import UIKit;
 
@@ -14,6 +17,8 @@ FOUNDATION_EXPORT double SHModelsVersionNumber;
 
 //! Project version string for SHModels.
 FOUNDATION_EXPORT const unsigned char SHModelsVersionString[];
+
+#endif
 
 
 #import "SHModelConstants.h"

@@ -10,8 +10,10 @@
 @import UIKit;
 @import SHCommon;
 
-@interface SHViewController : UIViewController<SHNestedControlProtocol>
-@property (weak,nonatomic) SHViewController *prevViewController;
+
+
+@interface SHViewController : UIViewController<UIAppearance,SHNestedControlProtocol>
+@property (weak, nonatomic) SHViewController *prevViewController;
 -(void)pushChildVC:(SHViewController*)child toViewOfParent:(UIView*)view;
 //if you want UIViewContoller and its view to be front, call this
 -(void)arrangeAndPushChildVCToFront:(SHViewController *)child;

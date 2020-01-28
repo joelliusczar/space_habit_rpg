@@ -11,14 +11,15 @@
 #import "SHButton.h"
 #import "SHSpinPicker.h"
 
+
 @class SHSpinPicker;
 
 typedef void (^shSpinPickerAction)(SHSpinPicker *,BOOL *);
 
-@interface SHSpinPicker : SHViewController
-<UIPickerViewDataSource,UIPickerViewDelegate>
-@property (weak,nonatomic) IBOutlet UIPickerView *picker;
-@property (copy,nonatomic) shSpinPickerAction spinPickerAction;
+@interface SHSpinPicker :  SHViewController<UIPickerViewDataSource,UIPickerViewDelegate>
+@property (weak, nonatomic) IBOutlet UIPickerView *picker;
+@property (copy, nonatomic) shSpinPickerAction spinPickerAction;
+@property (strong, nonatomic) UIColor *pickerBackground UI_APPEARANCE_SELECTOR;
 -(IBAction)pickerSelectBtn_press_action:(SHButton *)sender
 	forEvent:(UIEvent *)event;
 -(void)animateInvalidSelection;

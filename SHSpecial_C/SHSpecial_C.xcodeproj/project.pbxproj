@@ -182,6 +182,7 @@
 			buildPhases = (
 				2769C0A9227FB89700217480 /* Run Script Pre */,
 				271691C020885EF70059A58E /* Headers */,
+				2794AC1023D551B700D80441 /* ShellScript */,
 				271691BE20885EF70059A58E /* Sources */,
 				271691BF20885EF70059A58E /* Frameworks */,
 				27DF9C422094EB5100F98023 /* Run Script Post */,
@@ -263,6 +264,23 @@
 			shellPath = /bin/sh;
 			shellScript = "sh Scripts/SHSpecial_C.prebuild.sh\n";
 			showEnvVarsInLog = 0;
+		};
+		2794AC1023D551B700D80441 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\necho 'Midway SHSpecial_C'\n";
 		};
 		27DF9C422094EB5100F98023 /* Run Script Post */ = {
 			isa = PBXShellScriptBuildPhase;

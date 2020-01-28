@@ -19,6 +19,14 @@
 @implementation SHMonthlyActiveDaysViewController
 
 
+-(UIView*)inputView {
+	CGRect rect = self.view.frame;
+	rect.size.height /= 2;
+	UIView *view = [[UIView alloc] initWithFrame:rect];
+	return view;
+}
+
+
 +(instancetype)newWithListRateItemCollection:(SHMonthlyYearlyRateItemList *)activeDays
 	inverseActiveDays:(SHMonthlyYearlyRateItemList*)inverseActiveDays
 {

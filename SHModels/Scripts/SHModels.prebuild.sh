@@ -8,4 +8,7 @@
 
 
 rm "$BUILT_PRODUCTS_DIR"/SHModels.framework/Headers/*CoreDataProperties.h 2>/dev/null
+
+echo "Done with SHModels pre"
+
 exit 0

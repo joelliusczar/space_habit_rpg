@@ -35,7 +35,8 @@
 
 @import SHModels;
 @import SHCommon;
-#import <SHTestCommon/TestHelpers.h>
+@import SHTestCommon;
+//#import <SHTestCommon/TestHelpers.h>
 #import <malloc/malloc.h>
 
 

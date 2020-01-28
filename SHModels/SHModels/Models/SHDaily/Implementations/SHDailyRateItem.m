@@ -19,4 +19,9 @@
 	return @"Every %ld days";
 }
 
+
+-(NSString*)intervalLabelDescription {
+	return self.intervalDescription;
+}
+
 @end

@@ -12,9 +12,16 @@
 #include "../Configs/SHWorkspace.xcconfig"
 #include "../Configs/MacOSArchs.xcconfig"
 
-FRAMEWORK_SEARCH_PATHS = $PLATFORM_DIR/Developer/Library/Frameworks/ $(BUILT_PRODUCTS_DIR)/**
+SHCOMMON_DIR = $(BUILT_PRODUCTS_DIR)/SHCommon.framework
+SHMODELS_DIR = $(BUILT_PRODUCTS_DIR)/SHModels.framework
+SHTESTCOMMON_DIR = $(BUILT_PRODUCTS_DIR)/SHTestCommon.framework
 
-HEADER_SEARCH_PATHS = $(BUILT_PRODUCTS_DIR)/**
+SHDATETIME_H_DIR = $(BUILT_PRODUCTS_DIR)/include/SHDatetime
+
+
+FRAMEWORK_SEARCH_PATHS = $PLATFORM_DIR/Developer/Library/Frameworks/ $(SHCOMMON_DIR) $(SHMODELS_DIR) $(SHTESTCOMMON_DIR)
+
+HEADER_SEARCH_PATHS = $(SHDATETIME_H_DIR)
 
 LD_RUNPATH_SEARCH_PATHS = $(inherited) @executable_path/Frameworks @loader_path/Frameworks $PLATFORM_DIR/Developer/Library/Frameworks/
 

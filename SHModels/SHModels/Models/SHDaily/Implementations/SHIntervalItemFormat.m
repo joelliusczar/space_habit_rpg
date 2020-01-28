@@ -27,6 +27,11 @@
 }
 
 
+-(NSString*)intervalLabelDescription {
+	@throw [NSException abstractException];
+}
+
+
 +(NSString *)getFormatStringTypeForIntervalSize:(NSInteger)intervalSize {
 	NSString *result = intervalSize == 1 ? self.singularFormatString : self.pluralFormatString;
 	return result;

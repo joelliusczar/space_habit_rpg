@@ -24,7 +24,6 @@ const NSInteger YEARLY_SELECTION = 3;
 
 @implementation SHRateSelectionViewController
 
-
 -(SHWeeklyActiveDaysViewController*)weeklyActiveDaysViewController{
 	if(nil == _weeklyActiveDaysViewController){
 		NSBundle *bundle = [NSBundle bundleForClass:SHWeeklyActiveDaysViewController.class];
@@ -79,7 +78,8 @@ const NSInteger YEARLY_SELECTION = 3;
 -(IBAction)back_touch_action:(UIButton *)sender forEvent:(UIEvent *)event{
 	(void)sender; (void)event;
 	if(self.onCloseIntervalSelect) {
-		self.onCloseIntervalSelect(self.activeDays);
+		SHIntervalItemFormat *intervalItem = [self.activeDays selectRateItemCollection:self.rateType];
+		self.onCloseIntervalSelect(self.rateType,intervalItem.intervalSize);
 	}
 	[self popVCFromFront];
 }

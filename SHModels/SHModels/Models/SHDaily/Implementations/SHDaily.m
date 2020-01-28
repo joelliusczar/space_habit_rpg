@@ -129,10 +129,10 @@
 	[self removeObjectFromDaily_remindAtIndex:index];
 }
 
+
 - (SHReminder *)reminderAtIndex:(NSUInteger)index {
 	return self.daily_remind[index];
 }
-
 
 
 -(void)setupInitialState{

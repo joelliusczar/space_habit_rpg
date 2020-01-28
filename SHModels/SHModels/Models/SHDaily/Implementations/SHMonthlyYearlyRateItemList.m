@@ -106,6 +106,14 @@ static NSDictionary* mapMonthlyYearlyToDict(id item,NSUInteger idx){
 	return @"Every %ld months";
 }
 
+
+-(NSString*)intervalLabelDescription {
+	NSString *desc = [NSString stringWithFormat:@"%@\n  %ld times a month",
+		self.intervalDescription,
+		self.backend.count];
+	return desc;
+}
+
 @end
 
 
@@ -118,6 +126,14 @@ static NSDictionary* mapMonthlyYearlyToDict(id item,NSUInteger idx){
 
 +(NSString*)pluralFormatString {
 	return @"Every %ld years";
+}
+
+
+-(NSString*)intervalLabelDescription {
+	NSString *desc = [NSString stringWithFormat:@"%@\n  %ld times a year",
+		self.intervalDescription,
+		self.backend.count];
+	return desc;
 }
 
 @end

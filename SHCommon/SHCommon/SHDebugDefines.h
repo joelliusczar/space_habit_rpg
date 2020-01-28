@@ -1,6 +1,6 @@
 //
 //  SHDebugDefines.h
-//  SHGlobal
+//  
 //
 //  Created by Joel Pridgen on 9/6/19.
 //  Copyright © 2019 Joel Gillette. All rights reserved.

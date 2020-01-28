@@ -18,3 +18,4 @@ MACOSX_DEPLOYMENT_TARGET = 10.14
 
 CODE_SIGN_IDENTITY[sdk=macosx*] = Mac Developer
 
+

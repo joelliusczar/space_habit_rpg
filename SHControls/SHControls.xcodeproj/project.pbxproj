@@ -63,9 +63,11 @@
 		2737D112230F6EFA00B8618C /* SHStatusBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 2737D110230F6EFA00B8618C /* SHStatusBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2737D113230F6EFA00B8618C /* SHStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2737D111230F6EFA00B8618C /* SHStatusBar.m */; };
 		2747C527204A573200FB5669 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2747C526204A573200FB5669 /* Media.xcassets */; };
-		27B15A9920524A4F0045B226 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A9820524A4F0045B226 /* SHCommon.framework */; };
+		2782829223DA960F00836E77 /* SHViewControllerAppearanceProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 2782829023DA960F00836E77 /* SHViewControllerAppearanceProxy.h */; };
+		2782829323DA960F00836E77 /* SHViewControllerAppearanceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2782829123DA960F00836E77 /* SHViewControllerAppearanceProxy.m */; };
 		27BE7AFD22AB03D600DD87F5 /* SHItemFlexibleListViewFull.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27BE7AFC22AB03D600DD87F5 /* SHItemFlexibleListViewFull.xib */; };
 		27BE7B1322BFFAFE00DD87F5 /* SHViewEventsProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27BE7B1222BFFAFE00DD87F5 /* SHViewEventsProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27C4120D23DBB9970086E1F9 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C4120A23DBB97E0086E1F9 /* SHCommon.framework */; };
 		27D0D6E421D02A2D00886721 /* UIViewController+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D0D6E221D02A2D00886721 /* UIViewController+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27D0D6E521D02A2D00886721 /* UIViewController+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0D6E321D02A2D00886721 /* UIViewController+Helper.m */; };
 		27DE250223739BA1003D2DAE /* SHScrollAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = 27DE250023739BA1003D2DAE /* SHScrollAnimator.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -74,18 +76,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		27E3F2C023879326005821E8 /* PBXContainerItemProxy */ = {
+		27C4120923DBB97E0086E1F9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 27E3F2B923879326005821E8 /* SHCommon.xcodeproj */;
+			containerPortal = 27C4120523DBB97E0086E1F9 /* SHCommon.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 2711883C203FFA810085A549;
+			remoteGlobalIDString = 27C4113623DBB7CF0086E1F9;
 			remoteInfo = SHCommon;
 		};
-		27E3F2C223879333005821E8 /* PBXContainerItemProxy */ = {
+		27C4120B23DBB98D0086E1F9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 27E3F2B923879326005821E8 /* SHCommon.xcodeproj */;
+			containerPortal = 27C4120523DBB97E0086E1F9 /* SHCommon.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 2711883B203FFA810085A549;
+			remoteGlobalIDString = 27C4113523DBB7CF0086E1F9;
 			remoteInfo = SHCommon;
 		};
 /* End PBXContainerItemProxy section */
@@ -149,15 +151,17 @@
 		2737D110230F6EFA00B8618C /* SHStatusBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHStatusBar.h; sourceTree = "<group>"; };
 		2737D111230F6EFA00B8618C /* SHStatusBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHStatusBar.m; sourceTree = "<group>"; };
 		2747C526204A573200FB5669 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = SHControls/Media.xcassets; sourceTree = "<group>"; };
+		2782829023DA960F00836E77 /* SHViewControllerAppearanceProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHViewControllerAppearanceProxy.h; sourceTree = "<group>"; };
+		2782829123DA960F00836E77 /* SHViewControllerAppearanceProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHViewControllerAppearanceProxy.m; sourceTree = "<group>"; };
 		279848D0225063F500039A29 /* SHControls.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHControls.base.xcconfig; sourceTree = "<group>"; };
 		27B15A9820524A4F0045B226 /* SHCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHCommon.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHCommon.framework"; sourceTree = "<group>"; };
 		27BE7AFC22AB03D600DD87F5 /* SHItemFlexibleListViewFull.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHItemFlexibleListViewFull.xib; sourceTree = "<group>"; };
 		27BE7B1222BFFAFE00DD87F5 /* SHViewEventsProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHViewEventsProtocol.h; sourceTree = "<group>"; };
+		27C4120523DBB97E0086E1F9 /* SHCommon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHCommon.xcodeproj; path = ../SHCommon/SHCommon.xcodeproj; sourceTree = "<group>"; };
 		27D0D6E221D02A2D00886721 /* UIViewController+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Helper.h"; sourceTree = "<group>"; };
 		27D0D6E321D02A2D00886721 /* UIViewController+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Helper.m"; sourceTree = "<group>"; };
 		27DE250023739BA1003D2DAE /* SHScrollAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHScrollAnimator.h; sourceTree = "<group>"; };
 		27DE250123739BA1003D2DAE /* SHScrollAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHScrollAnimator.m; sourceTree = "<group>"; };
-		27E3F2B923879326005821E8 /* SHCommon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHCommon.xcodeproj; path = ../SHCommon/SHCommon.xcodeproj; sourceTree = "<group>"; };
 		27ED11BC22A1E8D100E8EB32 /* SHNestedControlProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHNestedControlProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,7 +170,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27B15A9920524A4F0045B226 /* SHCommon.framework in Frameworks */,
+				27C4120D23DBB9970086E1F9 /* SHCommon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,10 +180,10 @@
 		271187D0203FF88E0085A549 = {
 			isa = PBXGroup;
 			children = (
+				27C4120523DBB97E0086E1F9 /* SHCommon.xcodeproj */,
 				27698E9123D4A8FB00754183 /* Headers */,
 				27698E9223D4A93200754183 /* Implementations */,
 				279848CF225063AC00039A29 /* Configs */,
-				27E3F2B923879326005821E8 /* SHCommon.xcodeproj */,
 				27D0D6E121D02A2D00886721 /* Categories */,
 				2747C526204A573200FB5669 /* Media.xcassets */,
 				271D60F720421A9A005C9F7E /* Abstract */,
@@ -253,14 +257,16 @@
 				271D60F820421A9A005C9F7E /* SHNumberControlProtocol.h */,
 				271D60F920421A9A005C9F7E /* SHItemFlexibleListView.h */,
 				271D60FF20421A9A005C9F7E /* SHItemFlexibleListView.m */,
+				271D610020421A9A005C9F7E /* SHViewController.h */,
 				271D60FA20421A9A005C9F7E /* SHViewController.m */,
+				271D610120421A9A005C9F7E /* SHSpinPicker.h */,
 				271D60FD20421A9A005C9F7E /* SHSpinPicker.m */,
 				271D610220421A9A005C9F7E /* SHView.h */,
 				271D60FE20421A9A005C9F7E /* SHView.m */,
-				271D610020421A9A005C9F7E /* SHViewController.h */,
-				271D610120421A9A005C9F7E /* SHSpinPicker.h */,
 				271D610520421A9A005C9F7E /* SHViewProtocol.h */,
 				27ED11BC22A1E8D100E8EB32 /* SHNestedControlProtocol.h */,
+				2782829023DA960F00836E77 /* SHViewControllerAppearanceProxy.h */,
+				2782829123DA960F00836E77 /* SHViewControllerAppearanceProxy.m */,
 			);
 			name = Abstract;
 			path = SHControls/Abstract;
@@ -336,6 +342,14 @@
 			path = Configs;
 			sourceTree = "<group>";
 		};
+		27C4120623DBB97E0086E1F9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27C4120A23DBB97E0086E1F9 /* SHCommon.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		27D0D6E121D02A2D00886721 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,14 +360,6 @@
 			);
 			name = Categories;
 			path = SHControls/Categories;
-			sourceTree = "<group>";
-		};
-		27E3F2BA23879326005821E8 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				27E3F2C123879326005821E8 /* SHCommon.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		27ED11BB229C49B200E8EB32 /* xibs */ = {
@@ -388,6 +394,7 @@
 				27118814203FF9DF0085A549 /* SHListItemCell.h in Headers */,
 				27118828203FF9DF0085A549 /* SHNoteView.h in Headers */,
 				271D614120421A9A005C9F7E /* SHViewProtocol.h in Headers */,
+				2782829223DA960F00836E77 /* SHViewControllerAppearanceProxy.h in Headers */,
 				2711881F203FF9DF0085A549 /* SHAddItemsFooter.h in Headers */,
 				271188512040001B0085A549 /* SHSwitch.h in Headers */,
 				2711881A203FF9DF0085A549 /* SHRateSetterView.h in Headers */,
@@ -421,7 +428,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				27E3F2C323879333005821E8 /* PBXTargetDependency */,
+				27C4120C23DBB98D0086E1F9 /* PBXTargetDependency */,
 			);
 			name = SHControls;
 			productName = SHControls;
@@ -455,8 +462,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 27E3F2BA23879326005821E8 /* Products */;
-					ProjectRef = 27E3F2B923879326005821E8 /* SHCommon.xcodeproj */;
+					ProductGroup = 27C4120623DBB97E0086E1F9 /* Products */;
+					ProjectRef = 27C4120523DBB97E0086E1F9 /* SHCommon.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -467,11 +474,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		27E3F2C123879326005821E8 /* SHCommon.framework */ = {
+		27C4120A23DBB97E0086E1F9 /* SHCommon.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = SHCommon.framework;
-			remoteRef = 27E3F2C023879326005821E8 /* PBXContainerItemProxy */;
+			remoteRef = 27C4120923DBB97E0086E1F9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -527,6 +534,7 @@
 				271D613920421A9A005C9F7E /* SHSpinPicker.m in Sources */,
 				27DE250323739BA1003D2DAE /* SHScrollAnimator.m in Sources */,
 				27118811203FF9DF0085A549 /* SHStreakResetterView.m in Sources */,
+				2782829323DA960F00836E77 /* SHViewControllerAppearanceProxy.m in Sources */,
 				271188502040001B0085A549 /* SHSwitch.m in Sources */,
 				27249B9B21C5809E006A884B /* UIView+Helpers.m in Sources */,
 				27118819203FF9DF0085A549 /* SHSubtasksTableView.m in Sources */,
@@ -544,10 +552,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		27E3F2C323879333005821E8 /* PBXTargetDependency */ = {
+		27C4120C23DBB98D0086E1F9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SHCommon;
-			targetProxy = 27E3F2C223879333005821E8 /* PBXContainerItemProxy */;
+			targetProxy = 27C4120B23DBB98D0086E1F9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

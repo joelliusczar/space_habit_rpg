@@ -31,9 +31,11 @@ CODE_SIGN_IDENTITY = iPhone Developer
 
 IPHONEOS_DEPLOYMENT_TARGET = 11.4
 
-GCC_PREPROCESSOR_DEFINITIONS[sdk=iphoneos*] = $(inherited)
+//IS_IOS is part of GCC_PREPROCESSOR_DEFINITIONS
 
-GCC_PREPROCESSOR_DEFINITIONS[sdk=iphonesimulator*] = $(inherited)
+GCC_PREPROCESSOR_DEFINITIONS[sdk=iphoneos*] = $(inherited) IS_IOS=1
+
+GCC_PREPROCESSOR_DEFINITIONS[sdk=iphonesimulator*] = $(inherited) IS_IOS=1
 
 C_PUBLIC_HEADERS = /usr/local/include
 

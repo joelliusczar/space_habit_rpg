@@ -14,9 +14,20 @@
 
 @interface SHSpinPicker ()
 @property (weak,nonatomic) IBOutlet NSLayoutConstraint *buttonXConstraint;
+
 @end
 
 @implementation SHSpinPicker
+
+
+-(UIColor*)pickerBackground {
+	return self.picker.backgroundColor;
+}
+
+
+-(void)setPickerBackground:(UIColor *)pickerBackground {
+	self.picker.backgroundColor = pickerBackground;
+}
 
 
 -(instancetype)init{
@@ -32,6 +43,12 @@
 		initWithTarget:self
 		action:@selector(background_tap_action:)];
 	[self.view addGestureRecognizer:tapGestureBG];
+}
+
+
+-(void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	//self.picker.backgroundColor = nil == self.pickerBackground ? UIColor.whiteColor : self.pickerBackground;
 }
 
 
