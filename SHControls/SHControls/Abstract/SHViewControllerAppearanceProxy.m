@@ -9,24 +9,48 @@
 #import "SHViewControllerAppearanceProxy.h"
 
 @interface SHViewControllerAppearanceProxy ()
-
+@property (strong, nonatomic) SHViewController *reference;
+@property (strong, nonatomic) NSMutableArray<NSInvocation*> *invocations;
 @end
 
 @implementation SHViewControllerAppearanceProxy
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+-(instancetype)initWithReference:(SHViewController *)reference {
+	if(self = [super init]) {
+		_reference = reference;
+	}
+	return self;
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)forwardInvocation:(NSInvocation *)anInvocation {
+	if([super respondsToSelector:anInvocation.selector]) {
+		[super forwardInvocation:anInvocation];
+	}
+	[self.invocations addObject:anInvocation];
 }
-*/
+
+
+-(NSMethodSignature*)methodSignatureForSelector:(SEL)aSelector {
+	NSMethodSignature *signature = [self.reference methodSignatureForSelector:aSelector];
+	if(!signature) {
+		return [super methodSignatureForSelector:aSelector];
+	}
+	return signature;
+}
+
+
+-(BOOL)respondsToSelector:(SEL)aSelector {
+	BOOL referenceResponds = [self.reference respondsToSelector:aSelector];
+	BOOL superResponds = [super respondsToSelector:aSelector];
+	return referenceResponds || superResponds;
+}
+
+
+-(void)applyPropertyChangesToTarget:(SHViewController*)target {
+	for (NSInvocation *invocation in self.invocations) {
+    [invocation invokeWithTarget:target];
+	}
+}
 
 @end

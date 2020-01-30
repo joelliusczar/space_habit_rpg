@@ -9,15 +9,22 @@
 #import "SHViewController.h"
 #import "SHViewControllerAppearanceProxy.h"
 @import SHCommon;
-//SHAppearanceClassHierarchyTracker
+
 
 typedef NSArray<Class<UIAppearanceContainer>> SHAppearanceHierarchy;
-typedef NSMutableDictionary<SHAppearanceHierarchy*,SHViewControllerAppearanceProxy*> SHAppearanceClassHierarchyTracker;
+typedef NSMutableDictionary<SHAppearanceHierarchy*, SHViewControllerAppearanceProxy*> SHAppearanceClassHierarchyTracker;
+typedef NSMutableDictionary<UITraitCollection*, SHViewControllerAppearanceProxy*> SHTraitProxyDict;
+typedef NSMutableDictionary<UITraitCollection*, SHAppearanceClassHierarchyTracker*> SHTraitHierarchyDict;
 
 static SHAppearanceClassHierarchyTracker *_appearanceHierarchyTracker = nil;
+static SHTraitProxyDict *_proxyOnTraitTracker = nil;
+static SHTraitHierarchyDict *_traitHierarchyTracker = nil;
+static SHViewControllerAppearanceProxy *_singularAppearanceProxy = nil;
 
 @interface SHViewController ()
-@property (class, nonatomic) SHAppearanceClassHierarchyTracker *appearanceClassHierarchyTracker;
+@property (class, readonly, nonatomic) SHAppearanceClassHierarchyTracker *appearanceClassHierarchyTracker;
+@property (class, readonly, nonatomic) SHTraitProxyDict *proxyOnTraitTracker;
+@property (class, readonly, nonatomic) SHTraitHierarchyDict *traitHierarchyTracker;
 @end
 
 @implementation SHViewController 
@@ -28,6 +35,22 @@ static SHAppearanceClassHierarchyTracker *_appearanceHierarchyTracker = nil;
 		_appearanceHierarchyTracker = [NSMutableDictionary dictionary];
 	}
 	return _appearanceHierarchyTracker;
+}
+
+
++(SHTraitProxyDict *)proxyOnTraitTracker {
+	if(nil == _proxyOnTraitTracker) {
+		_proxyOnTraitTracker = [NSMutableDictionary dictionary];
+	}
+	return _proxyOnTraitTracker;
+}
+
+
++(SHTraitHierarchyDict *)traitHierarchyTracker {
+	if(nil == _traitHierarchyTracker) {
+		_traitHierarchyTracker = [NSMutableDictionary dictionary];
+	}
+	return _traitHierarchyTracker;
 }
 
 
@@ -80,27 +103,74 @@ static void _popAnyViewControllerFromFront(UIViewController *vc) {
 
 
 +(instancetype)appearance {
-//	if(nil == _appearanceProxy) {
-//		_appearanceProxy = [[SHViewControllerAppearanceProxy alloc] init];
-//	}
-//	return _appearanceProxy;
-return nil;
+	if(nil == _singularAppearanceProxy) {
+		SHViewController *reference = [[self.class alloc] init];
+		_singularAppearanceProxy = [[SHViewControllerAppearanceProxy alloc]
+			initWithReference:reference];
+	}
+	return _singularAppearanceProxy;
 }
 
 
 +(instancetype)appearanceWhenContainedInInstancesOfClasses:(NSArray<Class<UIAppearanceContainer>> *)containerTypes {
 	SHViewControllerAppearanceProxy *proxy = self.appearanceClassHierarchyTracker[containerTypes];
-	
-	return nil;
+	if(nil == proxy) {
+		SHViewController *reference = [[self.class alloc] init];
+		proxy = [[SHViewControllerAppearanceProxy alloc] initWithReference:reference];
+		self.appearanceClassHierarchyTracker[containerTypes] = proxy;
+	}
+	return proxy;
 }
 
 
-+(instancetype)appearanceForTraitCollection:(UITraitCollection *)trait { return nil; }
-
-
-+(instancetype)appearanceForTraitCollection:(UITraitCollection *)trait whenContainedInInstancesOfClasses:(NSArray<Class<UIAppearanceContainer>> *)containerTypes {
-return nil;
++(instancetype)appearanceForTraitCollection:(UITraitCollection *)trait {
+	SHViewControllerAppearanceProxy *proxy = self.proxyOnTraitTracker[trait];
+	if(nil == proxy) {
+		SHViewController *reference = [[self.class alloc] init];
+		proxy = [[SHViewControllerAppearanceProxy alloc] initWithReference:reference];
+		self.proxyOnTraitTracker[trait] = proxy;
+	}
+	return proxy;
 }
+
+
++(instancetype)appearanceForTraitCollection:(UITraitCollection *)trait
+	whenContainedInInstancesOfClasses:(NSArray<Class<UIAppearanceContainer>> *)containerTypes
+{
+	SHAppearanceClassHierarchyTracker *hierarchyDict = self.traitHierarchyTracker[trait];
+	if(nil == hierarchyDict) {
+		hierarchyDict = [NSMutableDictionary dictionary];
+		SHViewController *reference = [[self.class alloc] init];
+		SHViewControllerAppearanceProxy *proxy = [[SHViewControllerAppearanceProxy alloc]
+			initWithReference:reference];
+		hierarchyDict[containerTypes] = proxy;
+		self.traitHierarchyTracker[trait] = hierarchyDict;
+		return proxy;
+	}
+	SHViewControllerAppearanceProxy *proxy = hierarchyDict[containerTypes];
+	if(nil == proxy) {
+		SHViewController *reference = [[self.class alloc] init];
+		proxy = [[SHViewControllerAppearanceProxy alloc] initWithReference:reference];
+		hierarchyDict[containerTypes] = proxy;
+	}
+	return proxy;
+}
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-implementations"
+
++ (nonnull instancetype)appearanceForTraitCollection:(nonnull UITraitCollection *)trait whenContainedIn:(nullable Class<UIAppearanceContainer>)ContainerClass, ... {
+	NSArray *containerTypes = [NSMutableArray variadicToArray:ContainerClass, nil];
+	return [self appearanceForTraitCollection:trait whenContainedInInstancesOfClasses:containerTypes];
+}
+
+
++ (nonnull instancetype)appearanceWhenContainedIn:(nullable Class<UIAppearanceContainer>)ContainerClass, ... {
+	NSArray *containerTypes = [NSMutableArray variadicToArray:ContainerClass, nil];
+	return [self appearanceWhenContainedInInstancesOfClasses:containerTypes];
+}
+
+#pragma GCC diagnostic pop
 
 
 @end

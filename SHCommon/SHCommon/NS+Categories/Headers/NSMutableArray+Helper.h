@@ -13,4 +13,7 @@
 @interface NSMutableArray<ItemType> (Helper)
 -(NSUInteger)findPlaceFor:(id)object whereBestFits:(BOOL (^)(ItemType,ItemType))bestFitBlock;
 -(NSUInteger)findPlaceFor:(id)object whereBestFitsFP:(BOOL (*)(ItemType,ItemType))bestFitFP;
+-(void)SH_enqueue:(id)obj;
+-(id)SH_dequeue;
++(NSMutableArray*)variadicToArray:(id)values, ... NS_REQUIRES_NIL_TERMINATION;
 @end

@@ -46,6 +46,7 @@
 		274EFB57204D01A900CB3C4C /* PureCBaby.c in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB56204D01A900CB3C4C /* PureCBaby.c */; };
 		2761E3042055A9B8001F6282 /* NoArcExp.m in Sources */ = {isa = PBXBuildFile; fileRef = 2761E3032055A9B8001F6282 /* NoArcExp.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2761E3082055B3FA001F6282 /* House+Hacked.m in Sources */ = {isa = PBXBuildFile; fileRef = 2761E3072055B3FA001F6282 /* House+Hacked.m */; };
+		277567F723E0F07F009EDD93 /* HouseProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 277567F623E0F07F009EDD93 /* HouseProxy.m */; };
 		278704482272A72B009C9DD6 /* SHTestCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 278704472272A72B009C9DD6 /* SHTestCommon.framework */; };
 		2787044B2272A8B7009C9DD6 /* KVObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2787044A2272A8B7009C9DD6 /* KVObject.m */; };
 		279BE809222C9CF10023E34D /* PtrHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 279BE808222C9CF10023E34D /* PtrHolder.m */; };
@@ -153,6 +154,8 @@
 		2761E3032055A9B8001F6282 /* NoArcExp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoArcExp.m; sourceTree = "<group>"; };
 		2761E3062055B3FA001F6282 /* House+Hacked.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "House+Hacked.h"; sourceTree = "<group>"; };
 		2761E3072055B3FA001F6282 /* House+Hacked.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "House+Hacked.m"; sourceTree = "<group>"; };
+		277567F523E0F07F009EDD93 /* HouseProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HouseProxy.h; sourceTree = "<group>"; };
+		277567F623E0F07F009EDD93 /* HouseProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HouseProxy.m; sourceTree = "<group>"; };
 		278704472272A72B009C9DD6 /* SHTestCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHTestCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		278704492272A8B7009C9DD6 /* KVObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KVObject.h; sourceTree = "<group>"; };
 		2787044A2272A8B7009C9DD6 /* KVObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVObject.m; sourceTree = "<group>"; };
@@ -297,6 +300,8 @@
 				27CA862F2261896E00AE8FDB /* NSObject+TestKVO.m */,
 				278704492272A8B7009C9DD6 /* KVObject.h */,
 				2787044A2272A8B7009C9DD6 /* KVObject.m */,
+				277567F523E0F07F009EDD93 /* HouseProxy.h */,
+				277567F623E0F07F009EDD93 /* HouseProxy.m */,
 			);
 			path = ObjCPlayground;
 			sourceTree = "<group>";
@@ -430,6 +435,7 @@
 				2761E3042055A9B8001F6282 /* NoArcExp.m in Sources */,
 				27B7194E223860F700540542 /* DumbDataSaver.m in Sources */,
 				27CA86302261896E00AE8FDB /* NSObject+TestKVO.m in Sources */,
+				277567F723E0F07F009EDD93 /* HouseProxy.m in Sources */,
 				2726A85722225299003993B3 /* RefO.m in Sources */,
 				2747C4392044C51F00FB5669 /* XPSideKick.m in Sources */,
 				27CA862422600CFE00AE8FDB /* QNoArc.m in Sources */,

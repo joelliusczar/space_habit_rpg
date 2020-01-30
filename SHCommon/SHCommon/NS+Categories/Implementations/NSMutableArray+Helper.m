@@ -29,4 +29,34 @@
 }
 
 
+-(void)SH_enqueue:(id)obj {
+	[self addObject:obj];
+}
+
+
+-(id)SH_dequeue {
+	if(self.count < 1) return nil;
+	id head = self[0];
+	[self removeObjectAtIndex: 0];
+	return head;
+}
+
+
++(NSMutableArray*)variadicToArray:(id)values, ... {
+	NSMutableArray *array = [NSMutableArray array];
+	if(nil == values) return array;
+	
+	va_list args;
+	va_start(args, values);
+	
+	id current = nil;
+	while((current = va_arg(args, id))) {
+		[array addObject: current];
+	}
+	
+	va_end(args);
+	
+	return array;
+}
+
 @end

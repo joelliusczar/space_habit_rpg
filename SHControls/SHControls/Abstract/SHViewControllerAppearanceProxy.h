@@ -11,7 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHViewControllerAppearanceProxy : SHViewController
-
+-(instancetype)initWithReference:(SHViewController *)reference;
+-(void)applyPropertyChangesToTarget:(SHViewController*)target;
 @end
 
 NS_ASSUME_NONNULL_END
