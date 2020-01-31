@@ -16,10 +16,10 @@ typedef NSMutableDictionary<SHAppearanceHierarchy*, SHViewControllerAppearancePr
 typedef NSMutableDictionary<UITraitCollection*, SHViewControllerAppearanceProxy*> SHTraitProxyDict;
 typedef NSMutableDictionary<UITraitCollection*, SHAppearanceClassHierarchyTracker*> SHTraitHierarchyDict;
 
-static SHAppearanceClassHierarchyTracker *_appearanceHierarchyTracker = nil;
-static SHTraitProxyDict *_proxyOnTraitTracker = nil;
-static SHTraitHierarchyDict *_traitHierarchyTracker = nil;
-static SHViewControllerAppearanceProxy *_singularAppearanceProxy = nil;
+static NSMutableDictionary<Class,SHAppearanceClassHierarchyTracker*> *_classHierarchyTracker = nil;
+static NSMutableDictionary<Class,SHTraitProxyDict*> *_classProxyOnTraitTracker = nil;
+static NSMutableDictionary<Class,SHTraitHierarchyDict*> *_classTraitHierarchyTracker = nil;
+static NSMutableDictionary<Class,SHViewControllerAppearanceProxy*> *_singularAppearanceProxies = nil;
 
 @interface SHViewController ()
 @property (class, readonly, nonatomic) SHAppearanceClassHierarchyTracker *appearanceClassHierarchyTracker;
@@ -31,26 +31,35 @@ static SHViewControllerAppearanceProxy *_singularAppearanceProxy = nil;
 
 
 +(SHAppearanceClassHierarchyTracker *)appearanceClassHierarchyTracker {
-	if(nil == _appearanceHierarchyTracker) {
-		_appearanceHierarchyTracker = [NSMutableDictionary dictionary];
+	if(nil == _classHierarchyTracker) {
+		_classHierarchyTracker = [NSMutableDictionary dictionary];
 	}
-	return _appearanceHierarchyTracker;
+	SHAppearanceClassHierarchyTracker *hierarchyDict = _classHierarchyTracker[self.class];
+	if(nil == hierarchyDict) {
+		hierarchyDict = [NSMutableDictionary dictionary];
+	}
+	return hierarchyDict;
 }
 
 
 +(SHTraitProxyDict *)proxyOnTraitTracker {
-	if(nil == _proxyOnTraitTracker) {
-		_proxyOnTraitTracker = [NSMutableDictionary dictionary];
+	if(nil == _classProxyOnTraitTracker) {
+		_classProxyOnTraitTracker = [NSMutableDictionary dictionary];
 	}
-	return _proxyOnTraitTracker;
+	SHTraitProxyDict *proxyOnTraitTracker = _classProxyOnTraitTracker[self.class];
+	if(nil == proxyOnTraitTracker) {
+		proxyOnTraitTracker = [NSMutableDictionary dictionary];
+	}
+	return proxyOnTraitTracker;
 }
 
 
 +(SHTraitHierarchyDict *)traitHierarchyTracker {
-	if(nil == _traitHierarchyTracker) {
-		_traitHierarchyTracker = [NSMutableDictionary dictionary];
+	if(nil == _classTraitHierarchyTracker) {
+		_classTraitHierarchyTracker = [NSMutableDictionary dictionary];
 	}
-	return _traitHierarchyTracker;
+	SHTraitHierarchyDict *traitHierarchyTracker = _classTraitHierarchyTracker[self.class];
+	return traitHierarchyTracker;
 }
 
 
@@ -103,12 +112,16 @@ static void _popAnyViewControllerFromFront(UIViewController *vc) {
 
 
 +(instancetype)appearance {
-	if(nil == _singularAppearanceProxy) {
+	if(nil == _singularAppearanceProxies) {
+		_singularAppearanceProxies = [NSMutableDictionary dictionary];
+	}
+	SHViewControllerAppearanceProxy *appearance = _singularAppearanceProxies[self.class];
+	if(nil == appearance) {
 		SHViewController *reference = [[self.class alloc] init];
-		_singularAppearanceProxy = [[SHViewControllerAppearanceProxy alloc]
+		appearance = [[SHViewControllerAppearanceProxy alloc]
 			initWithReference:reference];
 	}
-	return _singularAppearanceProxy;
+	return appearance;
 }
 
 
