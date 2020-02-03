@@ -2,7 +2,7 @@
 //  SHEnumerator.m
 //  SHCommon
 //
-//  Created by Joel Pridgen on 1/30/20.
+//  Created by Joel Pridgen on 1/31/20.
 //  Copyright © 2020 Joel Gillette. All rights reserved.
 //
 
@@ -14,30 +14,26 @@
 
 @implementation SHEnumerator
 
-@synthesize current = _current;
-
--(id)current {
-	return _current;
-}
-
-
--(instancetype)init {
+-(instancetype)initWithBackend:(NSArray*)backend {
 	if(self = [super init]){
+		_backend = backend;
 		_idx = 0;
 	}
 	return self;
 }
 
 
--(id)moveNext {
+-(id)current {
 	if(self.idx >= self.backend.count) {
-		_current = nil;
-		return _current;
+		return nil;
 	}
-	_current = self.backend[self.idx];
-	self.idx++;
-	return _current;
+	return self.backend[self.idx];
 }
 
+
+-(id)moveNext {
+	self.idx++;
+	return self.current;
+}
 
 @end

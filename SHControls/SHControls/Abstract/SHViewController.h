@@ -12,7 +12,7 @@
 
 
 
-@interface SHViewController : UIViewController<UIAppearance,SHNestedControlProtocol>
+@interface SHViewController : UIViewController<SHNestedControlProtocol>
 @property (weak, nonatomic) SHViewController *prevViewController;
 -(void)pushChildVC:(SHViewController*)child toViewOfParent:(UIView*)view;
 //if you want UIViewContoller and its view to be front, call this
@@ -21,3 +21,5 @@
 -(void)popVCFromFront;
 -(void)popAllChildVCs;
 @end
+
+#import "SHViewController+SHAppearance.h"

@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		277567FC23E38F39009EDD93 /* SHEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 277567FA23E38F39009EDD93 /* SHEnumerator.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		277567FD23E38F39009EDD93 /* SHEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 277567FB23E38F39009EDD93 /* SHEnumerator.m */; };
+		2775680423E45AF5009EDD93 /* SHEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 2775680223E45AF5009EDD93 /* SHEnumerator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2775680523E45AF5009EDD93 /* SHEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2775680323E45AF5009EDD93 /* SHEnumerator.m */; };
 		27C411A423DBB8480086E1F9 /* SHVarWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4114B23DBB8400086E1F9 /* SHVarWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411A523DBB8480086E1F9 /* SHNotificationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4114C23DBB8400086E1F9 /* SHNotificationHelper.m */; platformFilter = ios; };
 		27C411A623DBB8480086E1F9 /* SHMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4114D23DBB8400086E1F9 /* SHMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -107,8 +107,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		277567FA23E38F39009EDD93 /* SHEnumerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHEnumerator.h; sourceTree = "<group>"; };
-		277567FB23E38F39009EDD93 /* SHEnumerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHEnumerator.m; sourceTree = "<group>"; };
+		2775680223E45AF5009EDD93 /* SHEnumerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHEnumerator.h; sourceTree = "<group>"; };
+		2775680323E45AF5009EDD93 /* SHEnumerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHEnumerator.m; sourceTree = "<group>"; };
 		27C4113623DBB7CF0086E1F9 /* SHCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C4113A23DBB7CF0086E1F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27C4114223DBB7FB0086E1F9 /* SHCommon.base.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = SHCommon.base.xcconfig; sourceTree = "<group>"; };
@@ -316,8 +316,8 @@
 				27C4114B23DBB8400086E1F9 /* SHVarWrapper.h */,
 				27C4116C23DBB8440086E1F9 /* SHVarWrapper.m */,
 				27C4113A23DBB7CF0086E1F9 /* Info.plist */,
-				277567FA23E38F39009EDD93 /* SHEnumerator.h */,
-				277567FB23E38F39009EDD93 /* SHEnumerator.m */,
+				2775680223E45AF5009EDD93 /* SHEnumerator.h */,
+				2775680323E45AF5009EDD93 /* SHEnumerator.m */,
 			);
 			path = SHCommon;
 			sourceTree = "<group>";
@@ -436,7 +436,7 @@
 				27C411AF23DBB8480086E1F9 /* SHReportServiceCallerProtocol.h in Headers */,
 				27C411DE23DBB8480086E1F9 /* NSLocale+Helper.h in Headers */,
 				27C411CB23DBB8480086E1F9 /* NSArray+SHHelper.h in Headers */,
-				277567FC23E38F39009EDD93 /* SHEnumerator.h in Headers */,
+				2775680423E45AF5009EDD93 /* SHEnumerator.h in Headers */,
 				27C411C723DBB8480086E1F9 /* SHCollectionUtils.h in Headers */,
 				27C411E523DBB8480086E1F9 /* SHDataProviderProtocol.h in Headers */,
 			);
@@ -592,7 +592,7 @@
 				27C411DA23DBB8480086E1F9 /* NSArray+SHHelper.m in Sources */,
 				27C411E223DBB8480086E1F9 /* NSObject+Helper.m in Sources */,
 				27C411D123DBB8480086E1F9 /* NSLocale+Helper.m in Sources */,
-				277567FD23E38F39009EDD93 /* SHEnumerator.m in Sources */,
+				2775680523E45AF5009EDD93 /* SHEnumerator.m in Sources */,
 				27C411F423DBB8480086E1F9 /* SHResourceUtility.m in Sources */,
 				27C411B923DBB8480086E1F9 /* SHCoreData.m in Sources */,
 				27C411A523DBB8480086E1F9 /* SHNotificationHelper.m in Sources */,
