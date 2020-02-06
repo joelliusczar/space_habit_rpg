@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SHWeeklyRateItemList : SHIntervalItemFormat
 @property (assign, nonatomic) NSUInteger weeklyDayStart;
 @property (readonly, nonatomic) NSString *weekDescription;
-@property (readonly, nonatomic) NSArray<NSString*> *weekKeysBasedOnWeekStart;
+@property (readonly, nonatomic, nullable) NSArray<NSString*> *weekKeysBasedOnWeekStart;
 -(instancetype)initWithRateItemArray:(NSArray<SHRateItemDict*>*)rateItemArray;
 -(SHWeeklyRateItem*)objectAtIndexedSubscript:(NSUInteger)idx;
 -(void)flipDayOfWeek:(NSUInteger)dayIdx;

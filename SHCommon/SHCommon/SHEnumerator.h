@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHEnumerator<elementType> : NSObject
+@interface SHEnumerator<elementType> : NSObject<NSCopying>
 @property (strong, nonatomic) NSArray<elementType> *backend;
 @property (readonly, nullable, nonatomic) elementType current;
 -(instancetype)initWithBackend:(NSArray<elementType>*)backend;

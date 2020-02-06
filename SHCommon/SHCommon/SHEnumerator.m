@@ -36,4 +36,12 @@
 	return self.current;
 }
 
+
+-(id)copyWithZone:(NSZone *)zone {
+	(void)zone;
+	SHEnumerator *copy = [[SHEnumerator alloc] initWithBackend:self.backend];
+	copy.idx = self.idx;
+	return copy;
+}
+
 @end

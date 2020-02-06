@@ -14,10 +14,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHAppearancePotentialMatches : NSObject
 @property (strong, nonatomic) SHVCAppearanceProxyContainer *proxyContainer;
-@property (strong, nonatomic) UITraitCollection *traitCollection;
+@property (weak, nonatomic) SHViewController *viewController;
 -(instancetype)initWithProxyContainer:(SHVCAppearanceProxyContainer*)proxyContainer
-	withTraitCollection:(nullable UITraitCollection*)traitCollection;
--(SHViewControllerAppearanceProxy*)scanPotentialMatchesForMatch:(NSArray<SHEnumerator*>*)potentialMatches;
+	withSHViewController:(SHViewController*)viewController;
+-(nullable SHViewControllerAppearanceProxy*)getMatchIfAvailable;
+-(void)checkForInitialAppearanceMatches;
+-(void)mergePotentialMatches:(SHAppearancePotentialMatches*)toBeMerged;
 @end
 
 NS_ASSUME_NONNULL_END

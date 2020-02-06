@@ -8,12 +8,14 @@
 
 #import "SHViewController.h"
 #import "SHViewControllerAppearanceProxy.h"
+#import "SHAppearancePotentialMatches.h"
 @import SHCommon;
 
 
 
 
 @interface SHViewController ()
+@property (strong, nonatomic) SHAppearancePotentialMatches *matches;
 @end
 
 @implementation SHViewController 
@@ -21,7 +23,6 @@
 
 -(instancetype)initWithCoder:(NSCoder *)coder {
 	if(self = [super initWithCoder:coder]){
-		//[self checkForInitialAppearanceMatches];
 	}
 	return self;
 }

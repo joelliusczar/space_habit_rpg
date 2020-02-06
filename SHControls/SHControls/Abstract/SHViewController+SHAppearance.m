@@ -8,13 +8,12 @@
 
 #import "SHViewController+SHAppearance.h"
 #import "SHViewControllerAppearanceProxy.h"
-#import "SHVCAppearanceProxyContainer.h"
+
 
 static NSMutableDictionary<Class,SHVCAppearanceProxyContainer*> *_proxyContainerByClass = nil;
 
 
 @interface SHViewController ()
-@property (class, readonly, nonatomic) SHVCAppearanceProxyContainer *proxyContainer;
 @end
 
 @implementation SHViewController (SHAppearance)

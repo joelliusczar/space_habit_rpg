@@ -16,4 +16,5 @@
 -(void)SH_enqueue:(id)obj;
 -(id)SH_dequeue;
 +(NSMutableArray*)variadicToArray:(id)values, ... NS_REQUIRES_NIL_TERMINATION;
+-(void)copyRangeFromArray:(NSArray<id<NSCopying>>*)array;
 @end

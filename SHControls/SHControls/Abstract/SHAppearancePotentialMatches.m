@@ -15,25 +15,32 @@
 
 @implementation SHAppearancePotentialMatches
 
+-(NSMutableArray<SHEnumerator*> *)potentialMatches {
+	if(nil == _potentialMatches) {
+		_potentialMatches = [NSMutableArray array];
+	}
+	return _potentialMatches;
+}
+
 
 -(instancetype)initWithProxyContainer:(SHVCAppearanceProxyContainer*)proxyContainer
-	withTraitCollection:(UITraitCollection*)traitCollection
+	withSHViewController:(SHViewController*)viewController
 {
 	if(self = [super init]) {
 		_proxyContainer = proxyContainer;
-		_traitCollection = traitCollection;
+		_viewController = viewController;
 	}
 	return self;
 }
 
 
--(SHViewControllerAppearanceProxy*)scanPotentialMatchesForMatch:(NSArray<SHEnumerator*>*)potentialMatches {
-	for(SHEnumerator<Class<UIAppearanceContainer>> *potentialMatch in potentialMatches) {
+-(SHViewControllerAppearanceProxy*)getMatchIfAvailable {
+	for(SHEnumerator<Class<UIAppearanceContainer>> *potentialMatch in self.potentialMatches) {
 		if(nil == potentialMatch.current) {
 			SHTraitProxyDict *traitProxyDict = self.proxyContainer
 				.traitHierarchyTracker[potentialMatch.backend];
 			if(traitProxyDict) {
-				SHViewControllerAppearanceProxy *proxy = traitProxyDict[self.traitCollection];
+				SHViewControllerAppearanceProxy *proxy = traitProxyDict[self.viewController.traitCollection];
 				if(proxy) {
 					return proxy;
 				}
@@ -44,22 +51,29 @@
 				return proxy;
 			}
 		}
+		[potentialMatch moveNext];
 	}
 	return nil;
 }
 
+
 -(void)checkForInitialAppearanceMatches {
-	self.potentialMatches = [NSMutableArray array];
+	NSAssert(self.viewController,@"no view controller");
 	NSArray<SHAppearanceHierarchy*> *chains = self.proxyContainer
 		.appearanceClassHierarchyTracker.allKeys;
 	for(SHAppearanceHierarchy *chain in chains) {
 		SHEnumerator<Class<UIAppearanceContainer>> *potentialMatch = [[SHEnumerator alloc]
 			initWithBackend:chain];
-		if([self isMemberOfClass:potentialMatch.current]) {
+		if([self.viewController isMemberOfClass:potentialMatch.current]) {
 			[potentialMatch moveNext];
 			[self.potentialMatches addObject:potentialMatch];
 		}
 	}
+}
+
+
+-(void)mergePotentialMatches:(SHAppearancePotentialMatches*)toBeMerged {
+	[self.potentialMatches copyRangeFromArray:toBeMerged.potentialMatches];
 }
 
 

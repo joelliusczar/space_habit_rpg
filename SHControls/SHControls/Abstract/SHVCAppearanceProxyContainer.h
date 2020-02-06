@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "SHViewControllerAppearanceProxy.h"
 
+@class SHViewControllerAppearanceProxy;
+
 typedef NSArray<Class<UIAppearanceContainer>> SHAppearanceHierarchy;
 typedef NSMutableDictionary<SHAppearanceHierarchy*, SHViewControllerAppearanceProxy*> SHHierarchyDict;
 typedef NSMutableDictionary<UITraitCollection*, SHViewControllerAppearanceProxy*> SHTraitProxyDict;

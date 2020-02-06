@@ -59,4 +59,11 @@
 	return array;
 }
 
+
+-(void)copyRangeFromArray:(NSArray<id<NSCopying>>*)array {
+	for (id<NSCopying> item in array) {
+    [self addObject:[item copyWithZone:nil]];
+	}
+}
+
 @end

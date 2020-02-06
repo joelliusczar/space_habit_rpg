@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "SHViewController.h"
+#import "SHVCAppearanceProxyContainer.h"
+
+@class SHVCAppearanceProxyContainer;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHViewController (SHAppearance) <UIAppearance>
-
+@property (class, readonly, nonatomic) SHVCAppearanceProxyContainer *proxyContainer;
 @end
 
 NS_ASSUME_NONNULL_END
