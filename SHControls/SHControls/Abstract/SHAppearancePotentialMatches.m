@@ -10,17 +10,9 @@
 @import SHCommon;
 
 @interface SHAppearancePotentialMatches ()
-@property (strong, nonatomic) NSMutableArray<SHEnumerator*> *potentialMatches;
 @end
 
 @implementation SHAppearancePotentialMatches
-
--(NSMutableArray<SHEnumerator*> *)potentialMatches {
-	if(nil == _potentialMatches) {
-		_potentialMatches = [NSMutableArray array];
-	}
-	return _potentialMatches;
-}
 
 
 -(instancetype)initWithProxyContainer:(SHVCAppearanceProxyContainer*)proxyContainer
@@ -34,47 +26,52 @@
 }
 
 
--(SHViewControllerAppearanceProxy*)getMatchIfAvailable {
-	for(SHEnumerator<Class<UIAppearanceContainer>> *potentialMatch in self.potentialMatches) {
-		if(nil == potentialMatch.current) {
-			SHTraitProxyDict *traitProxyDict = self.proxyContainer
-				.traitHierarchyTracker[potentialMatch.backend];
-			if(traitProxyDict) {
-				SHViewControllerAppearanceProxy *proxy = traitProxyDict[self.viewController.traitCollection];
+-(SHViewControllerAppearanceProxy * _Nullable)scanForMatch {
+	NSArray<SHAppearanceHierarchy*> *chains = self.proxyContainer
+	.appearanceClassHierarchyTracker.allKeys;
+	for(SHAppearanceHierarchy *chain in chains) {
+		SHViewController *currentVC = self.viewController;
+		NSEnumerator<Class<UIAppearanceContainer>> *classIter = chain.objectEnumerator;
+		Class currentClass = [classIter nextObject];
+		while(currentClass && currentVC) {
+			if([currentVC isMemberOfClass:currentClass]) {
+				currentClass = [classIter nextObject];
+			}
+			currentVC = currentVC.prevViewController;
+		}
+		if(nil == currentClass) {
+			SHTraitProxyDict *traitDict = self.proxyContainer.traitHierarchyTracker[chain];
+			if(traitDict) {
+				SHViewControllerAppearanceProxy *proxy = traitDict[self.viewController.traitCollection];
 				if(proxy) {
 					return proxy;
 				}
 			}
-			SHViewControllerAppearanceProxy *proxy =
-				self.proxyContainer.appearanceClassHierarchyTracker[potentialMatch.backend];
+			SHViewControllerAppearanceProxy *proxy = self.proxyContainer
+			.appearanceClassHierarchyTracker[chain];
 			if(proxy) {
 				return proxy;
 			}
 		}
-		[potentialMatch moveNext];
 	}
 	return nil;
 }
 
 
--(void)checkForInitialAppearanceMatches {
-	NSAssert(self.viewController,@"no view controller");
-	NSArray<SHAppearanceHierarchy*> *chains = self.proxyContainer
-		.appearanceClassHierarchyTracker.allKeys;
-	for(SHAppearanceHierarchy *chain in chains) {
-		SHEnumerator<Class<UIAppearanceContainer>> *potentialMatch = [[SHEnumerator alloc]
-			initWithBackend:chain];
-		if([self.viewController isMemberOfClass:potentialMatch.current]) {
-			[potentialMatch moveNext];
-			[self.potentialMatches addObject:potentialMatch];
-		}
+-(SHViewControllerAppearanceProxy*)getMatchIfAvailable {
+	SHViewControllerAppearanceProxy *proxy = [self scanForMatch];
+	if(proxy) {
+		return proxy;
 	}
+	SHViewControllerAppearanceProxy *proxy = self.proxyContainer
+		.appearanceProxies[self.viewController.class];
+	
+	if(proxy) {
+		return proxy;
+	}
+	return nil;
 }
 
-
--(void)mergePotentialMatches:(SHAppearancePotentialMatches*)toBeMerged {
-	[self.potentialMatches copyRangeFromArray:toBeMerged.potentialMatches];
-}
 
 
 @end

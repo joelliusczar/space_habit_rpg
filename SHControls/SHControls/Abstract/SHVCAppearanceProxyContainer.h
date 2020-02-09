@@ -15,11 +15,12 @@ typedef NSArray<Class<UIAppearanceContainer>> SHAppearanceHierarchy;
 typedef NSMutableDictionary<SHAppearanceHierarchy*, SHViewControllerAppearanceProxy*> SHHierarchyDict;
 typedef NSMutableDictionary<UITraitCollection*, SHViewControllerAppearanceProxy*> SHTraitProxyDict;
 typedef NSMutableDictionary<SHAppearanceHierarchy*, SHTraitProxyDict*> SHHierarchyTraitDict;
+typedef NSMutableDictionary<Class, SHViewControllerAppearanceProxy*> SHAppearanceDict;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHVCAppearanceProxyContainer : NSObject
-@property (readonly, nonatomic) SHViewControllerAppearanceProxy *appearanceProxy;
+@property (readonly, nonatomic) SHAppearanceDict *appearanceProxies;
 @property (readonly, nonatomic) SHHierarchyDict *appearanceClassHierarchyTracker;
 @property (readonly, nonatomic) SHTraitProxyDict *proxyOnTraitTracker;
 @property (readonly, nonatomic) SHHierarchyTraitDict *traitHierarchyTracker;

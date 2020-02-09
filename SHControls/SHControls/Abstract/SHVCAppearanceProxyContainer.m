@@ -15,14 +15,12 @@
 @implementation SHVCAppearanceProxyContainer
 
 
-@synthesize appearanceProxy = _appearanceProxy;
--(SHViewControllerAppearanceProxy*)appearanceProxy {
-	NSAssert(self.reference, @"No SHViewController was supplied as a reference");
-	if(nil == _appearanceProxy) {
-		_appearanceProxy = [[SHViewControllerAppearanceProxy alloc]
-			initWithReference:self.reference];
+@synthesize appearanceProxies = _appearanceProxies;
+-(SHAppearanceDict*)appearanceProxies {
+	if(nil == _appearanceProxies) {
+		_appearanceProxies = [NSMutableDictionary dictionary];
 	}
-	return _appearanceProxy;
+	return _appearanceProxies;
 }
 
 

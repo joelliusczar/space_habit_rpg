@@ -7,7 +7,6 @@
 //
 
 #import "SHViewController.h"
-#import "SHViewControllerAppearanceProxy.h"
 #import "SHAppearancePotentialMatches.h"
 @import SHCommon;
 
@@ -18,29 +17,25 @@
 @property (strong, nonatomic) SHAppearancePotentialMatches *matches;
 @end
 
-@implementation SHViewController 
+@implementation SHViewController
 
 
--(instancetype)initWithCoder:(NSCoder *)coder {
-	if(self = [super initWithCoder:coder]){
+-(SHAppearancePotentialMatches *)matches {
+	if(nil == _matches) {
+		_matches = [[SHAppearancePotentialMatches alloc]
+			initWithProxyContainer:self.class.proxyContainer
+			withSHViewController:self];
 	}
-	return self;
+	return _matches;
 }
 
 
--(instancetype)init {
-	if(self = [super init]){
-		//[self checkForInitialAppearanceMatches];
+-(void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	SHViewControllerAppearanceProxy* proxy = [self.matches getMatchIfAvailable];
+	if(proxy) {
+		[proxy applyPropertyChangesToTarget:self];
 	}
-	return self;
-}
-
-
--(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-	if(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-		//[self checkForInitialAppearanceMatches];
-	}
-	return self;
 }
 
 

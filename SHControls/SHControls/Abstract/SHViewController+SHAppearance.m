@@ -10,7 +10,7 @@
 #import "SHViewControllerAppearanceProxy.h"
 
 
-static NSMutableDictionary<Class,SHVCAppearanceProxyContainer*> *_proxyContainerByClass = nil;
+static SHVCAppearanceProxyContainer *_proxyContainerByClass = nil;
 
 
 @interface SHViewController ()
@@ -19,18 +19,23 @@ static NSMutableDictionary<Class,SHVCAppearanceProxyContainer*> *_proxyContainer
 @implementation SHViewController (SHAppearance)
 
 +(SHVCAppearanceProxyContainer *)proxyContainer {
-	SHVCAppearanceProxyContainer *proxyContainer = _proxyContainerByClass[self.class];
-	if(nil == proxyContainer) {
+	if(nil == _proxyContainerByClass) {
 		SHViewController *reference = [[self.class alloc] init];
-		proxyContainer = [[SHVCAppearanceProxyContainer alloc] initWithReference:reference];
-		_proxyContainerByClass[(id<NSCopying>)self.class] = proxyContainer;
+		_proxyContainerByClass = [[SHVCAppearanceProxyContainer alloc] initWithReference:reference];
 	}
-	return proxyContainer;
+	return _proxyContainerByClass;
 }
 
 
 +(instancetype)appearance {
-	return self.proxyContainer.appearanceProxy;
+	SHViewControllerAppearanceProxy *proxy =
+		self.proxyContainer.appearanceProxies[self.class];
+	if(nil == proxy) {
+		SHViewController *reference = self.proxyContainer.reference;
+		proxy = [[SHViewControllerAppearanceProxy alloc] initWithReference:reference];
+		self.proxyContainer.appearanceProxies[(id<NSCopying>)self.class] = proxy;
+	}
+	return proxy;
 }
 
 
@@ -62,12 +67,6 @@ static NSMutableDictionary<Class,SHVCAppearanceProxyContainer*> *_proxyContainer
 	SHTraitProxyDict *traitDict = self.proxyContainer.traitHierarchyTracker[containerTypes];
 	if(nil == traitDict) {
 		traitDict = [NSMutableDictionary dictionary];
-		SHViewController *reference = self.proxyContainer.reference;
-		SHViewControllerAppearanceProxy *proxy = [[SHViewControllerAppearanceProxy alloc]
-			initWithReference:reference];
-		traitDict[trait] = proxy;
-		self.proxyContainer.traitHierarchyTracker[containerTypes] = traitDict;
-		return proxy;
 	}
 	SHViewControllerAppearanceProxy *proxy = traitDict[trait];
 	if(nil == proxy) {

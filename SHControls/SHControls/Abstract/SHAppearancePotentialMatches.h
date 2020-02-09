@@ -18,8 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 -(instancetype)initWithProxyContainer:(SHVCAppearanceProxyContainer*)proxyContainer
 	withSHViewController:(SHViewController*)viewController;
 -(nullable SHViewControllerAppearanceProxy*)getMatchIfAvailable;
--(void)checkForInitialAppearanceMatches;
--(void)mergePotentialMatches:(SHAppearancePotentialMatches*)toBeMerged;
 @end
 
 NS_ASSUME_NONNULL_END
