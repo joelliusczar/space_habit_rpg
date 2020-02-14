@@ -31,26 +31,26 @@
 -(void)testHeroProperties{
 	NSObject<SHDataProviderProtocol> *dc = self.dc;
 	NSManagedObjectContext *context = dc.mainThreadContext;
-	SHHero *h = (SHHero *)[context newEntity:SHHero.entity];
+	SHHero *h = [[SHHero alloc] initWithResourceUtil:self.resourceUtil];
 	h.gold = 3.14;
 	h.lvl = 15;
 	h.maxHp = 56;
 	h.nowHp = 32;
 	h.nowXp = 22;
-	h.shipName = @"bean";
+//	h.shipName = @"bean";
 	XCTAssertEqual(h.gold, 3);
 	XCTAssertEqual(h.lvl, 15);
 	XCTAssertEqual(h.maxHp, 56);
 	XCTAssertEqual(h.nowHp, 32);
 	XCTAssertEqual(h.nowXp, 22);
-	XCTAssertTrue([h.shipName isEqualToString:@"bean"]);
+	//XCTAssertTrue([h.shipName isEqualToString:@"bean"]);
 }
 
 
 -(void)testMonsterProperties{
 	NSManagedObjectContext *context = [self.dc newBackgroundContext];
 	[context performBlockAndWait:^{
-		SHMonster *m = (SHMonster*)[context newEntity:SHMonster.entity];
+		SHMonster *m = [[SHMonster alloc] initEmptyWithResourceUtil:self.resourceUtil];
 		m.lvl = 13;
 		m.monsterKey = @"DUST_FAIRY";
 		m.nowHp = 123;
@@ -72,19 +72,15 @@
 -(void)testSectorProperties{
 	NSManagedObjectContext *context = [self.dc newBackgroundContext];
 	[context performBlockAndWait:^{
-		SHSector *z = (SHSector*)[context newEntity:SHSector.entity];
+		SHSector *z = [[SHSector alloc] initEmptyWithResourceUtil:self.resourceUtil];
 		z.lvl = 5;
 		z.sectorKey = @"SAFE_SPACE";
-		z.isFront = YES;
 		z.maxMonsters = 17;
 		z.monstersKilled = 8;
 		z.suffix = @"Test";
-		z.uniqueId = 13;
 		XCTAssertEqual(z.lvl, 5);
-		XCTAssertEqual(z.isFront, YES);
 		XCTAssertEqual(z.maxMonsters, 17);
 		XCTAssertEqual(z.monstersKilled, 8);
-		XCTAssertEqual(z.uniqueId, 13);
 		NSString *pStr = z.fullName;
 		XCTAssertTrue([pStr isEqualToString:@"Safe Space Test"]);
 		XCTAssertTrue([[z.synopsis substringToIndex:53] isEqualToString:@"Here in safe space, they enforce even the small rules"]);
@@ -113,46 +109,45 @@
 
 -(void)testDoubleInsert{
 	NSManagedObjectContext* bgContext = [self.dc newBackgroundContext];
-	SHSector_Medium* sectorMed = [SHSector_Medium
-		newWithContext:bgContext
-		withResourceUtil:self.resourceUtil];
+	SHSector_Medium* sectorMed = [[SHSector_Medium alloc] initWithResourceUtil:self.resourceUtil];
 	
-	[bgContext performBlockAndWait:^{
-		SHSector *z = [sectorMed newSpecificSector2:@"SAFE_SPACE" withLvl:16];
-		[bgContext insertObject:z];
-		[bgContext insertObject:z];
-		NSError* error = nil;
-		[bgContext save:&error];
-	}];
+	XCTAssertTrue(NO);
+	
+//	[bgContext performBlockAndWait:^{
+//		SHSector *z = [sectorMed newSpecificSector2:@"SAFE_SPACE" withLvl:16];
+//		[bgContext insertObject:z];
+//		[bgContext insertObject:z];
+//		NSError* error = nil;
+//		[bgContext save:&error];
+//	}];
 	//I think this next part is useless
-	NSManagedObjectContext* bgContext2 = [self.dc newBackgroundContext];
-	NSFetchRequest<SHSector *> *request = [SHSector fetchRequest];
-	[bgContext2 performBlockAndWait:^{
-		NSArray<NSManagedObject*>* results = [self fetchAnything:request context:bgContext2];
-		NSAssert(results.count == 1,@"result was not one");
-		SHSector *z_ret = (SHSector *)results[0];
-		[bgContext2 insertObject:z_ret];
-		NSError *error = nil;
-		[bgContext2 save:&error];
-		NSArray<NSManagedObject*>* results2 = [self fetchAnything:request context:bgContext2];
-		NSAssert(results2.count == 1,@"result was not one");
-		
-	}];
+//	NSManagedObjectContext* bgContext2 = [self.dc newBackgroundContext];
+//	[bgContext2 performBlockAndWait:^{
+//		NSArray<NSManagedObject*>* results = [self fetchAnything:request context:bgContext2];
+//		NSAssert(results.count == 1,@"result was not one");
+//		SHSector *z_ret = (SHSector *)results[0];
+//		[bgContext2 insertObject:z_ret];
+//		NSError *error = nil;
+//		[bgContext2 save:&error];
+//		NSArray<NSManagedObject*>* results2 = [self fetchAnything:request context:bgContext2];
+//		NSAssert(results2.count == 1,@"result was not one");
+//
+//	}];
 	//this last part is to verify that it's not just returning only one
 	//regardless of what is in stored
-	[bgContext performBlockAndWait:^{
-		SHSector *z3 = [sectorMed newSpecificSector2:@"SAFE_SPACE" withLvl:16];
-		[bgContext insertObject:z3];
-		NSError *error = nil;
-		[bgContext save:&error];
-	}];
-	
-	NSManagedObjectContext* bgContext3 = [self.dc newBackgroundContext];
-	[bgContext3 performBlockAndWait:^{
-		
-		NSArray<NSManagedObject*>* results3 = [self fetchAnything:request context:bgContext3];
-		NSAssert(results3.count == 2,@"result was not two");
-	}];
+//	[bgContext performBlockAndWait:^{
+//		SHSector *z3 = [sectorMed newSpecificSector2:@"SAFE_SPACE" withLvl:16];
+//		[bgContext insertObject:z3];
+//		NSError *error = nil;
+//		[bgContext save:&error];
+//	}];
+//
+//	NSManagedObjectContext* bgContext3 = [self.dc newBackgroundContext];
+//	[bgContext3 performBlockAndWait:^{
+//
+//		NSArray<NSManagedObject*>* results3 = [self fetchAnything:request context:bgContext3];
+//		NSAssert(results3.count == 2,@"result was not two");
+//	}];
 
 }
 

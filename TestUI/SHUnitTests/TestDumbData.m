@@ -80,11 +80,11 @@ unsigned int _reservedFlags : 2;
 		dds.writeContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
 		dds.writeContext.persistentStoreCoordinator = dds.coordinator;
 		dds.writeContext.name = @"writer";
-		SHHero *h = (SHHero*)[[NSManagedObject alloc] initWithEntity:SHHero.entity insertIntoManagedObjectContext:nil];
-		h.lvl = 57;
-		h.gold = 112;
+		SHDaily *d = (SHDaily*)[[NSManagedObject alloc] initWithEntity:SHDaily.entity insertIntoManagedObjectContext:nil];
+		d.difficulty = 57;
+		d.urgency = 112;
 		[dds.writeContext performBlockAndWait:^{
-			[dds.writeContext insertObject:h];
+			[dds.writeContext insertObject:d];
 		}];
 		
 		dispatch_semaphore_t sema = dispatch_semaphore_create(0);
@@ -102,7 +102,7 @@ unsigned int _reservedFlags : 2;
 		
 		BOOL isDone = shWaitForSema(sema, 1);
 		(void)isDone;
-		NSFetchRequest<SHHero *> *request = [SHHero fetchRequest];
+		NSFetchRequest<SHDaily *> *request = [SHDaily fetchRequest];
 		NSSortDescriptor *sortByIsFront = [[NSSortDescriptor alloc] initWithKey:@"isFront" ascending:NO];
 		
 		NSManagedObjectContext* readContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];

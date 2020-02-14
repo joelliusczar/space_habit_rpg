@@ -1,22 +1,22 @@
 //
-//  SHVCAppearanceProxyContainer.m
+//  SHVCProxyContainer.m
 //  SHControls
 //
 //  Created by Joel Pridgen on 1/31/20.
 //  Copyright © 2020 Joel Gillette. All rights reserved.
 //
 
-#import "SHVCAppearanceProxyContainer.h"
+#import "SHVCProxyContainer.h"
 
-@interface SHVCAppearanceProxyContainer ()
+@interface SHVCProxyContainer ()
 
 @end
 
-@implementation SHVCAppearanceProxyContainer
+@implementation SHVCProxyContainer
 
 
 @synthesize appearanceProxies = _appearanceProxies;
--(SHAppearanceDict*)appearanceProxies {
+-(SHAppearanceProxyDict*)appearanceProxies {
 	if(nil == _appearanceProxies) {
 		_appearanceProxies = [NSMutableDictionary dictionary];
 	}

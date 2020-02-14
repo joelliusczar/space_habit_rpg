@@ -162,8 +162,7 @@ uint sectorHelper_mockRandom(uint range){
 	int i = 0;
 	rIdx_zh = 0;
 	NSManagedObjectContext *context = [self.dc newBackgroundContext];
-	SHSector_Medium* sectorMed = [SHSector_Medium newWithContext:context
-		withResourceUtil:self.resourceUtil];
+	SHSector_Medium* sectorMed = [[SHSector_Medium alloc] initWithResourceUtil:self.resourceUtil];
 	SET_LOW_BOUND();
 	SET_LOW_BOUND();
 	NSString *s = [sectorMed getRandomSectorDefinitionKey:10];
@@ -207,8 +206,7 @@ uint sectorHelper_mockRandom(uint range){
 
 -(void)testGetSymbolSuffix{
 	NSManagedObjectContext *context = [self.dc newBackgroundContext];
-	SHSector_Medium* sectorMed = [SHSector_Medium newWithContext:context
-		withResourceUtil:self.resourceUtil];
+	SHSector_Medium* sectorMed = [[SHSector_Medium alloc] initWithResourceUtil:self.resourceUtil];
 	NSString *s = [sectorMed getSymbolSuffix:0];
 	XCTAssertTrue([s isEqualToString:@""]);
 	s = [sectorMed getSymbolSuffix:1];
@@ -269,8 +267,7 @@ uint sectorHelper_mockRandom(uint range){
 
 -(void)testGetSymbolsList{
  NSManagedObjectContext *context = [self.dc newBackgroundContext];
-	SHSector_Medium* sectorMed = [SHSector_Medium newWithContext:context
-		withResourceUtil:self.resourceUtil];
+	SHSector_Medium* sectorMed = [[SHSector_Medium alloc] initWithResourceUtil:self.resourceUtil];
 	NSArray<NSString *> *a = [sectorMed getSymbolsList];
 	XCTAssertEqual(a.count, 100);
 	XCTAssertTrue([a[0] isEqualToString:@"Alpha"]);
@@ -280,9 +277,8 @@ uint sectorHelper_mockRandom(uint range){
 
 -(void)testConstructEmptySector{
 	NSManagedObjectContext *context = self.dc.mainThreadContext;
-	SHSector_Medium* sectorMed = [SHSector_Medium newWithContext:context
-		withResourceUtil:self.resourceUtil];
-	SHSector *z = [sectorMed newEmptySector];
+	SHSector_Medium* sectorMed = [[SHSector_Medium alloc] initWithResourceUtil:self.resourceUtil];
+	SHSector *z = [[SHSector alloc] initEmptyWithResourceUtil:self.resourceUtil];
 	XCTAssertNotNil(z);
 }
 
@@ -290,13 +286,12 @@ uint sectorHelper_mockRandom(uint range){
 
 -(void)testConstructSectorChoice{
 	NSManagedObjectContext *context = [self.dc newBackgroundContext];
-	SHSector_Medium* sectorMed = [SHSector_Medium newWithContext:context
-		withResourceUtil:self.resourceUtil];
+	SHSector_Medium* sectorMed = [[SHSector_Medium alloc] initWithResourceUtil:self.resourceUtil];
 	
 	rIdx_zh = 0;
 	[context performBlockAndWait:^{
 		int i = 0;
-		SHHero *h = (SHHero*)[context newEntity:SHHero.entity];
+		SHHero *h = [[SHHero alloc] initWithResourceUtil:self.resourceUtil];
 		h.lvl = 14;
 		SET_LOW_BOUND();
 		SET_LOW_BOUND();
@@ -358,12 +353,11 @@ uint sectorHelper_mockRandom(uint range){
 -(void)testConstructMultipleSectorChoices{
 	
 	NSManagedObjectContext *context = [self.dc newBackgroundContext];
-	SHSector_Medium* sectorMed = [SHSector_Medium newWithContext:context
-		withResourceUtil:self.resourceUtil];
+	SHSector_Medium* sectorMed = [[SHSector_Medium alloc] initWithResourceUtil:self.resourceUtil];
 	
 	[context performBlockAndWait:^{
 		
-		SHHero *h = (SHHero*)[context newEntity:SHHero.entity];
+		SHHero *h = [[SHHero alloc] initWithResourceUtil:self.resourceUtil];
 		h.lvl = 52;
 
 		int i = 0;
@@ -428,8 +422,7 @@ uint sectorHelper_mockRandom(uint range){
 
 -(void)testConstructSpecificSector{
 	NSManagedObjectContext *context = [self.dc newBackgroundContext];
-	SHSector_Medium* sectorMed = [SHSector_Medium newWithContext:context
-		withResourceUtil:self.resourceUtil];
+	SHSector_Medium* sectorMed = [[SHSector_Medium alloc] initWithResourceUtil:self.resourceUtil];
 	[context performBlockAndWait:^{
 		SHSector *z = [sectorMed newSpecificSector:HOME_KEY withLvl:1 withMonsterCount:0];
 		XCTAssertNotNil(z);
@@ -441,113 +434,17 @@ void throwsEx(){
 }
 
 -(void)testgetSector{
-	NSManagedObjectContext *context = [self.dc newBackgroundContext];
-	SHSector_Medium* sectorMed = [SHSector_Medium newWithContext:context
-		withResourceUtil:self.resourceUtil];
-	__block SHSector *z = [sectorMed newEmptySector];
-	NSManagedObjectContext* bgContext = [self.dc newBackgroundContext];
-	z.isFront = YES;
-	z.sectorKey = @"NEBULA";
-	__block SHSector *z2 = [sectorMed newEmptySector];
-	z2.isFront = NO;
-	z2.sectorKey = @"GAS";
-	[bgContext performBlockAndWait:^{
-		[bgContext insertObject:z];
-		[bgContext insertObject:z2];
-		NSError *error = nil;
-		[bgContext save:&error];
-	}];
-	SHSector *z3 = [sectorMed getSector:YES];
-	XCTAssertTrue(z3.isFront);
-	XCTAssertTrue([z3.sectorKey isEqualToString:@"NEBULA"]);
-	SHSector *z4 = [sectorMed getSector:NO];
-	XCTAssertTrue(!z4.isFront);
-	XCTAssertTrue([z4.sectorKey isEqualToString:@"GAS"]);
-	__block SHSector *z5 = [sectorMed newEmptySector];
-	z5.isFront = YES;
-	z5.sectorKey = @"TEMPLE";
-	[bgContext performBlockAndWait:^{
-		[bgContext insertObject:z5];
-		NSError *error = nil;
-		[bgContext save:&error];
-	}];
-	XCTAssertThrows([sectorMed getSector:YES]);
+	XCTAssertTrue(NO);
+//	NSManagedObjectContext *context = [self.dc newBackgroundContext];
+//	SHSector_Medium* sectorMed = [[SHSector_Medium alloc] initWithResourceUtil:self.resourceUtil];
+//	SHSector *z = [[SHSector alloc] initEmptyWithResourceUtil:self.resourceUtil];
+//	NSManagedObjectContext* bgContext = [self.dc newBackgroundContext];
+//	z.sectorKey = @"NEBULA";
+//	SHSector *z2 = [[SHSector alloc] initEmptyWithResourceUtil:self.resourceUtil];
+//	z2.sectorKey = @"GAS";
+//	XCTAssertTrue([z3.sectorKey isEqualToString:@"NEBULA"]);
+//	XCTAssertTrue([z4.sectorKey isEqualToString:@"GAS"]);
 }
-
-
--(void)testMoveToFront{
-		NSManagedObjectContext* bgContext = [self.dc newBackgroundContext];
-	SHSector_Medium* sectorMed = [SHSector_Medium newWithContext:bgContext
-		withResourceUtil:self.resourceUtil];
-	
-	[bgContext performBlockAndWait:^{
-		SHSector *zCd = [sectorMed newSpecificSector:HOME_KEY withLvl:1 withMonsterCount:0];
-		[sectorMed moveSectorToFront:zCd];
-		XCTAssertTrue(zCd.isFront);
-		NSError *error = nil;
-		[bgContext save:&error];
-	}];
-
-	__block SHSector *z1 = nil;
-	
-	[bgContext performBlockAndWait:^{
-		z1 = [sectorMed newEmptySector];
-		z1.sectorKey = @"GAS";
-		[bgContext insertObject:z1];
-		[sectorMed moveSectorToFront:z1];
-		NSError *error = nil;
-		[bgContext save:&error];
-	}];
-	
-	[bgContext performBlockAndWait:^{
-		NSArray<NSManagedObject *> *sectors = [sectorMed getAllSectors:nil];
-		XCTAssertEqual(sectors.count, 2);
-		XCTAssertTrue(((SHSector *)sectors[0]).isFront);
-		XCTAssertTrue([((SHSector *)sectors[0]).sectorKey isEqualToString:@"GAS"]);
-		XCTAssertFalse(((SHSector *)sectors[1]).isFront);
-		XCTAssertTrue([((SHSector *)sectors[1]).sectorKey isEqualToString:@"HOME"]);
-	}];
-	
-	
-	__block SHSector *z2 = nil;
-	
-	[bgContext performBlockAndWait:^{
-		z2 = [sectorMed newEmptySector];
-		z2.sectorKey = @"NEBULA";
-		[bgContext insertObject:z2];
-		[sectorMed moveSectorToFront:z2];
-		NSError *error = nil;
-		[bgContext save:&error];
-	}];
-	[bgContext performBlockAndWait:^{
-		NSArray<NSManagedObject *> *sectors = [sectorMed getAllSectors:nil];
-		XCTAssertEqual(sectors.count, 2);
-		XCTAssertTrue(((SHSector *)sectors[0]).isFront);
-		XCTAssertTrue([((SHSector *)sectors[0]).sectorKey isEqualToString:@"NEBULA"]);
-		XCTAssertFalse(((SHSector *)sectors[1]).isFront);
-		XCTAssertTrue([((SHSector *)sectors[1]).sectorKey isEqualToString:@"GAS"]);
-		
-		//these are insync from the database?
-		XCTAssertFalse(z1.isFront);
-		XCTAssertTrue(z2.isFront);
-		
-		SHSector *z1_1 = (SHSector *)sectors[1];
-		[sectorMed moveSectorToFront:z1_1];
-		[bgContext insertObject:z1_1]; //#warning
-		NSError *error = nil;
-		[bgContext save:&error];
-		
-		sectors = [sectorMed getAllSectors:nil];
-		XCTAssertEqual(sectors.count, 2);
-		XCTAssertTrue(((SHSector *)sectors[0]).isFront);
-		XCTAssertTrue([((SHSector *)sectors[0]).sectorKey isEqualToString:@"GAS"]);
-		XCTAssertFalse(((SHSector *)sectors[1]).isFront);
-		XCTAssertTrue([((SHSector *)sectors[1]).sectorKey isEqualToString:@"NEBULA"]);
-	}];
-	
-}
-
-
 
 
 @end

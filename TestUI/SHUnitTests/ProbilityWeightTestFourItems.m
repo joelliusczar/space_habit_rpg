@@ -36,10 +36,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW1{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:9];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:9];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -71,10 +71,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW2{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:8];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:8];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -106,10 +106,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW3{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:7];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:7];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -141,10 +141,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW4{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:6];
-	[pw add:@"A" With:4];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:6];
+	[pw add:@"A" with:4];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -176,10 +176,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW5{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:5];
-	[pw add:@"A" With:5];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:5];
+	[pw add:@"A" with:5];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -211,10 +211,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW6{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:4];
-	[pw add:@"A" With:6];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:4];
+	[pw add:@"A" with:6];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -246,10 +246,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW7{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:7];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:7];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -281,10 +281,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW8{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:8];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:8];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -316,10 +316,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW9{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:9];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:9];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -351,10 +351,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW10{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:8];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:8];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -386,10 +386,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW11{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:7];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:7];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -421,10 +421,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW12{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:6];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:6];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -456,10 +456,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW13{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:5];
-	[pw add:@"A" With:4];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:5];
+	[pw add:@"A" with:4];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -491,10 +491,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW14{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:4];
-	[pw add:@"A" With:5];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:4];
+	[pw add:@"A" with:5];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -526,10 +526,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW15{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:6];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:6];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -561,10 +561,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW16{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:7];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:7];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -596,10 +596,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW17{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:8];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:8];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -631,10 +631,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW18{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:7];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:7];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -666,10 +666,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW19{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:6];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:6];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -701,10 +701,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW20{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:5];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:5];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -736,10 +736,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW21{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:4];
-	[pw add:@"A" With:4];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:4];
+	[pw add:@"A" with:4];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -771,10 +771,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW22{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:5];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:5];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -806,10 +806,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW23{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:6];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:6];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -841,10 +841,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW24{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:7];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:7];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -876,10 +876,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW25{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:4];
-	[pw add:@"B" With:6];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:4];
+	[pw add:@"B" with:6];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -911,10 +911,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW26{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:4];
-	[pw add:@"B" With:5];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:4];
+	[pw add:@"B" with:5];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -946,10 +946,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW27{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:4];
-	[pw add:@"B" With:4];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:4];
+	[pw add:@"B" with:4];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -981,10 +981,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW28{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:4];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:4];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:4];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:4];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1016,10 +1016,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW29{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:4];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:5];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:4];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:5];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1051,10 +1051,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW30{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:4];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:6];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:4];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:6];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1086,10 +1086,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW31{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:5];
-	[pw add:@"B" With:5];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:5];
+	[pw add:@"B" with:5];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1121,10 +1121,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW32{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:5];
-	[pw add:@"B" With:4];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:5];
+	[pw add:@"B" with:4];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1156,10 +1156,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW33{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:5];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:5];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1191,10 +1191,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW34{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:5];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:4];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:5];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:4];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1226,10 +1226,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW35{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:5];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:5];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:5];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:5];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1261,10 +1261,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW36{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:6];
-	[pw add:@"B" With:4];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:6];
+	[pw add:@"B" with:4];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1296,10 +1296,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW37{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:6];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:6];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1331,10 +1331,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW38{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:6];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:6];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1366,10 +1366,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW39{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:6];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:4];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:6];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:4];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1401,10 +1401,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW40{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:7];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:7];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1436,10 +1436,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW41{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:7];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:7];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1471,10 +1471,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW42{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:7];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:7];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1506,10 +1506,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW43{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:8];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:8];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1541,10 +1541,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW44{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:8];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:8];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1576,10 +1576,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW45{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:1];
-	[pw add:@"C" With:9];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:1];
+	[pw add:@"C" with:9];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1611,10 +1611,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW46{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:8];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:8];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1646,10 +1646,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW47{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:7];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:7];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1681,10 +1681,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW48{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:6];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:6];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1716,10 +1716,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW49{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:5];
-	[pw add:@"A" With:4];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:5];
+	[pw add:@"A" with:4];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1751,10 +1751,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW50{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:4];
-	[pw add:@"A" With:5];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:4];
+	[pw add:@"A" with:5];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1786,10 +1786,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW51{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:6];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:6];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1821,10 +1821,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW52{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:7];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:7];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1856,10 +1856,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW53{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:8];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:8];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1891,10 +1891,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW54{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:7];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:7];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1926,10 +1926,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW55{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:6];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:6];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1961,10 +1961,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW56{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:5];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:5];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -1996,10 +1996,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW57{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:4];
-	[pw add:@"A" With:4];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:4];
+	[pw add:@"A" with:4];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2031,10 +2031,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW58{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:5];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:5];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2066,10 +2066,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW59{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:6];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:6];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2101,10 +2101,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW60{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:7];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:7];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2136,10 +2136,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW61{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:6];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:6];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2171,10 +2171,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW62{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:5];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:5];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2206,10 +2206,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW63{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:4];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:4];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2241,10 +2241,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW64{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:4];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:4];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2276,10 +2276,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW65{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:5];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:5];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2311,10 +2311,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW66{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:6];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:6];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2346,10 +2346,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW67{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:4];
-	[pw add:@"B" With:5];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:4];
+	[pw add:@"B" with:5];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2381,10 +2381,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW68{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:4];
-	[pw add:@"B" With:4];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:4];
+	[pw add:@"B" with:4];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2416,10 +2416,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW69{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:4];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:4];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2451,10 +2451,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW70{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:4];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:4];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:4];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:4];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2486,10 +2486,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW71{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:4];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:5];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:4];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:5];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2521,10 +2521,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW72{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:5];
-	[pw add:@"B" With:4];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:5];
+	[pw add:@"B" with:4];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2556,10 +2556,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW73{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:5];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:5];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2591,10 +2591,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW74{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:5];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:5];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2626,10 +2626,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW75{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:5];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:4];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:5];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:4];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2661,10 +2661,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW76{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:6];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:6];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2696,10 +2696,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW77{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:6];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:6];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2731,10 +2731,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW78{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:6];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:6];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2766,10 +2766,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW79{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:7];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:7];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2801,10 +2801,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW80{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:7];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:7];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2836,10 +2836,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW81{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:2];
-	[pw add:@"C" With:8];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:2];
+	[pw add:@"C" with:8];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2871,10 +2871,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW82{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:7];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:7];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2906,10 +2906,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW83{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:6];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:6];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2941,10 +2941,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW84{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:5];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:5];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -2976,10 +2976,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW85{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:4];
-	[pw add:@"A" With:4];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:4];
+	[pw add:@"A" with:4];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3011,10 +3011,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW86{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:5];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:5];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3046,10 +3046,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW87{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:6];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:6];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3081,10 +3081,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW88{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:7];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:7];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3116,10 +3116,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW89{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:6];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:6];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3151,10 +3151,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW90{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:5];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:5];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3186,10 +3186,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW91{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:4];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:4];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3221,10 +3221,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW92{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:4];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:4];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3256,10 +3256,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW93{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:5];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:5];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3291,10 +3291,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW94{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:6];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:6];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3326,10 +3326,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW95{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:5];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:5];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3361,10 +3361,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW96{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:4];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:4];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3396,10 +3396,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW97{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3431,10 +3431,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW98{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:4];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:4];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3466,10 +3466,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW99{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:5];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:5];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3501,10 +3501,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW100{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:4];
-	[pw add:@"B" With:4];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:4];
+	[pw add:@"B" with:4];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3536,10 +3536,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW101{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:4];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:4];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3571,10 +3571,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW102{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:4];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:4];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3606,10 +3606,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW103{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:4];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:4];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:4];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:4];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3641,10 +3641,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW104{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:5];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:5];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3676,10 +3676,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW105{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:5];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:5];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3711,10 +3711,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW106{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:5];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:5];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3746,10 +3746,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW107{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:6];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:6];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3781,10 +3781,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW108{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:6];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:6];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3816,10 +3816,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW109{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:3];
-	[pw add:@"C" With:7];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:3];
+	[pw add:@"C" with:7];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3851,10 +3851,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW110{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:4];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:6];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:4];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:6];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3886,10 +3886,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW111{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:4];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:5];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:4];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:5];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3921,10 +3921,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW112{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:4];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:4];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:4];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:4];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3956,10 +3956,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW113{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:4];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:4];
+	[pw add:@"D" with:4];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:4];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -3991,10 +3991,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW114{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:4];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:5];
+	[pw add:@"D" with:4];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:5];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4026,10 +4026,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW115{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:4];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:6];
+	[pw add:@"D" with:4];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:6];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4061,10 +4061,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW116{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:4];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:5];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:4];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:5];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4096,10 +4096,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW117{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:4];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:4];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:4];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:4];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4131,10 +4131,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW118{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:4];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:4];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4166,10 +4166,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW119{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:4];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:4];
+	[pw add:@"D" with:4];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:4];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4201,10 +4201,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW120{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:4];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:5];
+	[pw add:@"D" with:4];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:5];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4236,10 +4236,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW121{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:4];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:4];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:4];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:4];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4271,10 +4271,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW122{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:4];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:4];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4306,10 +4306,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW123{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:4];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:4];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4341,10 +4341,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW124{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:4];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:4];
+	[pw add:@"D" with:4];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:4];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4376,10 +4376,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW125{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:4];
-	[pw add:@"C" With:4];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:4];
+	[pw add:@"C" with:4];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4411,10 +4411,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW126{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:4];
-	[pw add:@"C" With:4];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:4];
+	[pw add:@"C" with:4];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4446,10 +4446,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW127{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:4];
-	[pw add:@"C" With:4];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:4];
+	[pw add:@"C" with:4];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4481,10 +4481,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW128{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:4];
-	[pw add:@"C" With:5];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:4];
+	[pw add:@"C" with:5];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4516,10 +4516,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW129{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:4];
-	[pw add:@"C" With:5];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:4];
+	[pw add:@"C" with:5];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4551,10 +4551,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW130{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:4];
-	[pw add:@"C" With:6];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:4];
+	[pw add:@"C" with:6];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4586,10 +4586,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW131{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:5];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:5];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:5];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:5];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4621,10 +4621,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW132{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:5];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:4];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:5];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:4];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4656,10 +4656,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW133{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:5];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:5];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4691,10 +4691,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW134{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:5];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:4];
+	[pw add:@"D" with:5];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:4];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4726,10 +4726,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW135{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:5];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:5];
+	[pw add:@"D" with:5];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:5];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4761,10 +4761,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW136{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:5];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:4];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:5];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:4];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4796,10 +4796,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW137{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:5];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:5];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4831,10 +4831,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW138{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:5];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:5];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4866,10 +4866,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW139{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:5];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:4];
+	[pw add:@"D" with:5];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:4];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4901,10 +4901,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW140{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:5];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:5];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4936,10 +4936,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW141{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:5];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:5];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -4971,10 +4971,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW142{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:5];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:5];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -5006,10 +5006,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW143{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:5];
-	[pw add:@"C" With:4];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:5];
+	[pw add:@"C" with:4];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -5041,10 +5041,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW144{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:5];
-	[pw add:@"C" With:4];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:5];
+	[pw add:@"C" with:4];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -5076,10 +5076,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW145{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:5];
-	[pw add:@"C" With:5];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:5];
+	[pw add:@"C" with:5];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -5111,10 +5111,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW146{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:6];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:4];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:6];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:4];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -5146,10 +5146,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW147{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:6];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:6];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -5181,10 +5181,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW148{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:6];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:6];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -5216,10 +5216,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW149{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:6];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:4];
+	[pw add:@"D" with:6];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:4];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -5251,10 +5251,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW150{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:6];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:6];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -5286,10 +5286,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW151{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:6];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:6];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -5321,10 +5321,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW152{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:6];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:6];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -5356,10 +5356,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW153{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:6];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:6];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -5391,10 +5391,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW154{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:6];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:6];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -5426,10 +5426,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW155{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:6];
-	[pw add:@"C" With:4];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:6];
+	[pw add:@"C" with:4];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -5461,10 +5461,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW156{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:7];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:3];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:7];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:3];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -5496,10 +5496,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW157{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:7];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:7];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -5531,10 +5531,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW158{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:7];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:3];
+	[pw add:@"D" with:7];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:3];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -5566,10 +5566,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW159{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:7];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:7];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -5601,10 +5601,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW160{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:7];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:7];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -5636,10 +5636,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW161{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:7];
-	[pw add:@"C" With:3];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:7];
+	[pw add:@"C" with:3];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -5671,10 +5671,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW162{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:8];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:2];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:8];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:2];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -5706,10 +5706,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW163{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:8];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:2];
+	[pw add:@"D" with:8];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:2];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -5741,10 +5741,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW164{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:8];
-	[pw add:@"C" With:2];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:8];
+	[pw add:@"C" with:2];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0
@@ -5776,10 +5776,10 @@ uint probWeight4_mockRandom(uint range){
 -(void)testPW165{
 	SHProbWeight *pw = [[SHProbWeight alloc] init];
 	NSString *s = @"";
-	[pw add:@"D" With:9];
-	[pw add:@"C" With:1];
-	[pw add:@"B" With:1];
-	[pw add:@"A" With:1];
+	[pw add:@"D" with:9];
+	[pw add:@"C" with:1];
+	[pw add:@"B" with:1];
+	[pw add:@"A" with:1];
 	
 	s = [pw weightedRandomKey];
 	XCTAssert([s isEqualToString: @"D"]);//0

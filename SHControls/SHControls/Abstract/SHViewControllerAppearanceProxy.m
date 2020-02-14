@@ -15,6 +15,23 @@
 
 @implementation SHViewControllerAppearanceProxy
 
+
+
+-(UIColor*)viewBackgroundColor {
+	return nil;
+}
+
+
+-(void)setViewBackgroundColor:(UIColor *)viewBackgroundColor {
+	NSMethodSignature *signature = [self.reference methodSignatureForSelector:@selector(setViewBackgroundColor:)];
+	
+	NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
+	[invocation setArgument:&viewBackgroundColor atIndex:2];
+	[invocation retainArguments];
+	[self.invocations addObject:invocation];
+}
+
+
 -(instancetype)initWithReference:(SHViewController *)reference {
 	if(self = [super init]) {
 		_reference = reference;
@@ -27,6 +44,7 @@
 	if([super respondsToSelector:anInvocation.selector]) {
 		[super forwardInvocation:anInvocation];
 	}
+	[anInvocation retainArguments];
 	[self.invocations addObject:anInvocation];
 }
 
@@ -52,5 +70,6 @@
     [invocation invokeWithTarget:target];
 	}
 }
+
 
 @end

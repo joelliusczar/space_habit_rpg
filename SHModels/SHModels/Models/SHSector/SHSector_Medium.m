@@ -84,7 +84,7 @@ withLvl:(NSInteger)lvl withMonsterCount:(NSInteger)monsterCount{
 	
 	NSAssert(sectorKey,@"Key can't be null");
 	NSAssert(lvl > 0, @"Lvl must be greater than 0");
-	SHSector *sector = [[SHSector alloc] initEmptyWithResourceUtil:self.resourceUtil];;
+	SHSector *sector = [[SHSector alloc] initEmptyWithResourceUtil:self.resourceUtil];
 	sector.sectorKey = sectorKey;
 	sector.suffix = [self getSymbolSuffix:[self getVisitCountForSector:sectorKey]];
 	sector.maxMonsters = monsterCount;

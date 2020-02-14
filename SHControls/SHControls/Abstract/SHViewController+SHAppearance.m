@@ -10,7 +10,7 @@
 #import "SHViewControllerAppearanceProxy.h"
 
 
-static SHVCAppearanceProxyContainer *_proxyContainerByClass = nil;
+static SHVCProxyContainer *_proxyContainerByClass = nil;
 
 
 @interface SHViewController ()
@@ -18,10 +18,20 @@ static SHVCAppearanceProxyContainer *_proxyContainerByClass = nil;
 
 @implementation SHViewController (SHAppearance)
 
-+(SHVCAppearanceProxyContainer *)proxyContainer {
+-(UIColor*)viewBackgroundColor {
+	return self.view.backgroundColor;
+}
+
+
+-(void)setViewBackgroundColor:(UIColor *)viewBackgroundColor {
+	self.view.backgroundColor = viewBackgroundColor;
+}
+
+
++(SHVCProxyContainer *)proxyContainer {
 	if(nil == _proxyContainerByClass) {
 		SHViewController *reference = [[self.class alloc] init];
-		_proxyContainerByClass = [[SHVCAppearanceProxyContainer alloc] initWithReference:reference];
+		_proxyContainerByClass = [[SHVCProxyContainer alloc] initWithReference:reference];
 	}
 	return _proxyContainerByClass;
 }
@@ -40,11 +50,12 @@ static SHVCAppearanceProxyContainer *_proxyContainerByClass = nil;
 
 
 +(instancetype)appearanceWhenContainedInInstancesOfClasses:(NSArray<Class<UIAppearanceContainer>> *)containerTypes {
-	SHViewControllerAppearanceProxy *proxy = self.proxyContainer.appearanceClassHierarchyTracker[containerTypes];
+	NSArray<Class<UIAppearanceContainer>> *classChain = [@[self.class] arrayByAddingObjectsFromArray:containerTypes];
+	SHViewControllerAppearanceProxy *proxy = self.proxyContainer.appearanceClassHierarchyTracker[classChain];
 	if(nil == proxy) {
 		SHViewController *reference = self.proxyContainer.reference;
 		proxy = [[SHViewControllerAppearanceProxy alloc] initWithReference:reference];
-		self.proxyContainer.appearanceClassHierarchyTracker[containerTypes] = proxy;
+		self.proxyContainer.appearanceClassHierarchyTracker[classChain] = proxy;
 	}
 	return proxy;
 }
@@ -64,7 +75,8 @@ static SHVCAppearanceProxyContainer *_proxyContainerByClass = nil;
 +(instancetype)appearanceForTraitCollection:(UITraitCollection *)trait
 	whenContainedInInstancesOfClasses:(NSArray<Class<UIAppearanceContainer>> *)containerTypes
 {
-	SHTraitProxyDict *traitDict = self.proxyContainer.traitHierarchyTracker[containerTypes];
+	NSArray<Class<UIAppearanceContainer>> *classChain = [@[self.class] arrayByAddingObjectsFromArray:containerTypes];
+	SHTraitProxyDict *traitDict = self.proxyContainer.traitHierarchyTracker[classChain];
 	if(nil == traitDict) {
 		traitDict = [NSMutableDictionary dictionary];
 	}

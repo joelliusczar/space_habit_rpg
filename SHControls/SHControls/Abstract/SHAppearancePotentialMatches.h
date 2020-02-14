@@ -7,15 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SHVCAppearanceProxyContainer.h"
+#import "SHVCProxyContainer.h"
 @import UIKit;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHAppearancePotentialMatches : NSObject
-@property (strong, nonatomic) SHVCAppearanceProxyContainer *proxyContainer;
+@property (strong, nonatomic) SHVCProxyContainer *proxyContainer;
 @property (weak, nonatomic) SHViewController *viewController;
--(instancetype)initWithProxyContainer:(SHVCAppearanceProxyContainer*)proxyContainer
+-(instancetype)initWithProxyContainer:(SHVCProxyContainer*)proxyContainer
 	withSHViewController:(SHViewController*)viewController;
 -(nullable SHViewControllerAppearanceProxy*)getMatchIfAvailable;
 @end

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		275BC58A23F3A4E70064891B /* SHInheritanceTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 275BC58623F3A4E60064891B /* SHInheritanceTree.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		275BC58B23F3A4E70064891B /* SHInheritanceTreeNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 275BC58723F3A4E60064891B /* SHInheritanceTreeNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		275BC58C23F3A4E70064891B /* SHInheritanceTreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 275BC58823F3A4E70064891B /* SHInheritanceTreeNode.m */; };
+		275BC58D23F3A4E70064891B /* SHInheritanceTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 275BC58923F3A4E70064891B /* SHInheritanceTree.m */; };
 		2775680423E45AF5009EDD93 /* SHEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 2775680223E45AF5009EDD93 /* SHEnumerator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2775680523E45AF5009EDD93 /* SHEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2775680323E45AF5009EDD93 /* SHEnumerator.m */; };
 		27C411A423DBB8480086E1F9 /* SHVarWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4114B23DBB8400086E1F9 /* SHVarWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -107,6 +111,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		275BC58623F3A4E60064891B /* SHInheritanceTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHInheritanceTree.h; sourceTree = "<group>"; };
+		275BC58723F3A4E60064891B /* SHInheritanceTreeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHInheritanceTreeNode.h; sourceTree = "<group>"; };
+		275BC58823F3A4E70064891B /* SHInheritanceTreeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHInheritanceTreeNode.m; sourceTree = "<group>"; };
+		275BC58923F3A4E70064891B /* SHInheritanceTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHInheritanceTree.m; sourceTree = "<group>"; };
 		2775680223E45AF5009EDD93 /* SHEnumerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHEnumerator.h; sourceTree = "<group>"; };
 		2775680323E45AF5009EDD93 /* SHEnumerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHEnumerator.m; sourceTree = "<group>"; };
 		27C4113623DBB7CF0086E1F9 /* SHCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -318,6 +326,10 @@
 				27C4113A23DBB7CF0086E1F9 /* Info.plist */,
 				2775680223E45AF5009EDD93 /* SHEnumerator.h */,
 				2775680323E45AF5009EDD93 /* SHEnumerator.m */,
+				275BC58623F3A4E60064891B /* SHInheritanceTree.h */,
+				275BC58923F3A4E70064891B /* SHInheritanceTree.m */,
+				275BC58723F3A4E60064891B /* SHInheritanceTreeNode.h */,
+				275BC58823F3A4E70064891B /* SHInheritanceTreeNode.m */,
 			);
 			path = SHCommon;
 			sourceTree = "<group>";
@@ -438,6 +450,8 @@
 				27C411CB23DBB8480086E1F9 /* NSArray+SHHelper.h in Headers */,
 				2775680423E45AF5009EDD93 /* SHEnumerator.h in Headers */,
 				27C411C723DBB8480086E1F9 /* SHCollectionUtils.h in Headers */,
+				275BC58A23F3A4E70064891B /* SHInheritanceTree.h in Headers */,
+				275BC58B23F3A4E70064891B /* SHInheritanceTreeNode.h in Headers */,
 				27C411E523DBB8480086E1F9 /* SHDataProviderProtocol.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -579,6 +593,7 @@
 				27C411A823DBB8480086E1F9 /* SHInterceptor.m in Sources */,
 				27C411CD23DBB8480086E1F9 /* NSMutableDictionary+Helper.m in Sources */,
 				27C411D023DBB8480086E1F9 /* NSManagedObjectContext+Helper.m in Sources */,
+				275BC58C23F3A4E70064891B /* SHInheritanceTreeNode.m in Sources */,
 				27C411CA23DBB8480086E1F9 /* NSMutableArray+Helper.m in Sources */,
 				27C411C623DBB8480086E1F9 /* SHObject.m in Sources */,
 				27C411C323DBB8480086E1F9 /* SHMath.m in Sources */,
@@ -588,6 +603,7 @@
 				27C411C423DBB8480086E1F9 /* SHVarWrapper.m in Sources */,
 				27C411CF23DBB8480086E1F9 /* NSNumber+Helper.m in Sources */,
 				27C411E723DBB8480086E1F9 /* SHCollectionUtils.m in Sources */,
+				275BC58D23F3A4E70064891B /* SHInheritanceTree.m in Sources */,
 				27C411D423DBB8480086E1F9 /* UIImage+Helper.m in Sources */,
 				27C411DA23DBB8480086E1F9 /* NSArray+SHHelper.m in Sources */,
 				27C411E223DBB8480086E1F9 /* NSObject+Helper.m in Sources */,

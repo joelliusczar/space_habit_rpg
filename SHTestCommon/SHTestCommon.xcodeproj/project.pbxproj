@@ -18,6 +18,7 @@
 		274EFB84204F9B7700CB3C4C /* FrequentCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EFB7F204F9B7700CB3C4C /* FrequentCase.m */; };
 		274EFB85204F9B7700CB3C4C /* TestGlobals.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB80204F9B7700CB3C4C /* TestGlobals.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		274EFB86204F9B7700CB3C4C /* TestHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB81204F9B7700CB3C4C /* TestHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27601C2B23F74259001A9475 /* SHTestCommon.postbuild.sh in Resources */ = {isa = PBXBuildFile; fileRef = 27601C2A23F74259001A9475 /* SHTestCommon.postbuild.sh */; };
 		27804B7C235278F8004921F5 /* SHTestDateProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 27804B7A235278F8004921F5 /* SHTestDateProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27804B7D235278F8004921F5 /* SHTestDateProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 27804B7B235278F8004921F5 /* SHTestDateProvider.m */; };
 		27B7AF25223094D000FAA229 /* TestDummy.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B7AF23223094D000FAA229 /* TestDummy.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -40,6 +41,8 @@
 		274EFB80204F9B7700CB3C4C /* TestGlobals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestGlobals.h; sourceTree = "<group>"; };
 		274EFB81204F9B7700CB3C4C /* TestHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHelpers.h; sourceTree = "<group>"; };
 		274EFB8C204FB27200CB3C4C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		27601C2723F73F2C001A9475 /* SHTestCommon.prebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = SHTestCommon.prebuild.sh; sourceTree = "<group>"; };
+		27601C2A23F74259001A9475 /* SHTestCommon.postbuild.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = SHTestCommon.postbuild.sh; sourceTree = "<group>"; };
 		27804B7A235278F8004921F5 /* SHTestDateProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTestDateProvider.h; sourceTree = "<group>"; };
 		27804B7B235278F8004921F5 /* SHTestDateProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTestDateProvider.m; sourceTree = "<group>"; };
 		278FFDA1222B2F2700DAF985 /* SHTestCommon.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHTestCommon.debug.xcconfig; sourceTree = "<group>"; };
@@ -63,6 +66,7 @@
 		274EFB68204F9AEA00CB3C4C = {
 			isa = PBXGroup;
 			children = (
+				27601C2423F73E9F001A9475 /* Scripts */,
 				276E6D99222A53B300CB36CB /* Configs */,
 				274EFB74204F9AEA00CB3C4C /* SHTestCommon */,
 				274EFB73204F9AEA00CB3C4C /* Products */,
@@ -110,6 +114,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		27601C2423F73E9F001A9475 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				27601C2A23F74259001A9475 /* SHTestCommon.postbuild.sh */,
+				27601C2723F73F2C001A9475 /* SHTestCommon.prebuild.sh */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
 		276E6D99222A53B300CB36CB /* Configs */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,9 +157,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 274EFB7A204F9AEA00CB3C4C /* Build configuration list for PBXNativeTarget "SHTestCommon" */;
 			buildPhases = (
+				274EFB6F204F9AEA00CB3C4C /* Headers */,
 				274EFB6D204F9AEA00CB3C4C /* Sources */,
 				274EFB6E204F9AEA00CB3C4C /* Frameworks */,
-				274EFB6F204F9AEA00CB3C4C /* Headers */,
 				274EFB70204F9AEA00CB3C4C /* Resources */,
 				27DF9C432094EB8A00F98023 /* ShellScript */,
 			);
@@ -196,6 +209,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27601C2B23F74259001A9475 /* SHTestCommon.postbuild.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,7 +227,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "$SRCROOT/../Build_Scripts/SHTestCommon.sh\n";
+			shellScript = "sh Scripts/SHTestCommon.postbuild.sh\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 

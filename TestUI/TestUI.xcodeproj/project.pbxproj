@@ -38,16 +38,83 @@
 		27B719452235F27700540542 /* TestDumbData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B719442235F27700540542 /* TestDumbData.m */; };
 		27C791F52226DD9000A92487 /* EmptyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C791F42226DD9000A92487 /* EmptyTest.m */; };
 		27C792442228A46600A92487 /* SHTestObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C792432228A46600A92487 /* SHTestObserver.m */; };
-		27E4A58F226C1BC000756B6B /* libSHCore_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E4A58E226C1BC000756B6B /* libSHCore_C.a */; };
 		27E4A591226C1BC000756B6B /* libSHDatetime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E4A590226C1BC000756B6B /* libSHDatetime.a */; };
 		27E4A593226C1BC000756B6B /* libSHUtils_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E4A592226C1BC000756B6B /* libSHUtils_C.a */; };
 		27E4A595226C1BC000756B6B /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E4A594226C1BC000756B6B /* SHCommon.framework */; };
-		27E4A597226C1BC000756B6B /* SHData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E4A596226C1BC000756B6B /* SHData.framework */; };
-		27E4A599226C1BC000756B6B /* SHGlobal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E4A598226C1BC000756B6B /* SHGlobal.framework */; };
 		27E4A59B226C1BC000756B6B /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E4A59A226C1BC000756B6B /* SHModels.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		27601C3023F742CC001A9475 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27601C2C23F742CC001A9475 /* SHUtils_C.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 271692002089758B0059A58E;
+			remoteInfo = SHUtils_C;
+		};
+		27601C3623F742D6001A9475 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27601C3223F742D6001A9475 /* SHDatetime.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27D3183D2086C8CA0047F5F1;
+			remoteInfo = SHDatetime;
+		};
+		27601C3C23F742DE001A9475 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27601C3823F742DE001A9475 /* SHCommon.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27C4113623DBB7CF0086E1F9;
+			remoteInfo = SHCommon;
+		};
+		27601C4223F742E6001A9475 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27601C3E23F742E6001A9475 /* SHModels.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2747C2EA2043ADE000FB5669;
+			remoteInfo = SHModels;
+		};
+		27601C4823F742F1001A9475 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27601C4423F742F1001A9475 /* SHTestCommon.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 274EFB72204F9AEA00CB3C4C;
+			remoteInfo = SHTestCommon;
+		};
+		27601C4A23F74327001A9475 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27601C4423F742F1001A9475 /* SHTestCommon.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 274EFB71204F9AEA00CB3C4C;
+			remoteInfo = SHTestCommon;
+		};
+		27601C4C23F7432C001A9475 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27601C3E23F742E6001A9475 /* SHModels.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2747C2E92043ADE000FB5669;
+			remoteInfo = SHModels;
+		};
+		27601C4E23F74337001A9475 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27601C3223F742D6001A9475 /* SHDatetime.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 27D3183C2086C8CA0047F5F1;
+			remoteInfo = SHDatetime;
+		};
+		27601C5023F7433E001A9475 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27601C2C23F742CC001A9475 /* SHUtils_C.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 271691FF2089758B0059A58E;
+			remoteInfo = SHUtils_C;
+		};
+		27601C5223F74343001A9475 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27601C3823F742DE001A9475 /* SHCommon.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 27C4113523DBB7CF0086E1F9;
+			remoteInfo = SHCommon;
+		};
 		27CBFF1D2224F2EA00604C66 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2747C529204A5DB000FB5669 /* Project object */;
@@ -96,6 +163,11 @@
 		2747C593204A62EE00FB5669 /* CommonUtilitiesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtilitiesTest.m; sourceTree = "<group>"; };
 		2747C595204A62EE00FB5669 /* ProbilityWeightTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProbilityWeightTest.m; sourceTree = "<group>"; };
 		275DDF2321FE9EDA00F77AEF /* CoreDataTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataTests.m; sourceTree = "<group>"; };
+		27601C2C23F742CC001A9475 /* SHUtils_C.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHUtils_C.xcodeproj; path = ../SHUtils_C/SHUtils_C.xcodeproj; sourceTree = "<group>"; };
+		27601C3223F742D6001A9475 /* SHDatetime.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHDatetime.xcodeproj; path = ../SHDatetime/SHDatetime.xcodeproj; sourceTree = "<group>"; };
+		27601C3823F742DE001A9475 /* SHCommon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHCommon.xcodeproj; path = ../SHCommon/SHCommon.xcodeproj; sourceTree = "<group>"; };
+		27601C3E23F742E6001A9475 /* SHModels.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHModels.xcodeproj; path = ../SHModels/SHModels.xcodeproj; sourceTree = "<group>"; };
+		27601C4423F742F1001A9475 /* SHTestCommon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHTestCommon.xcodeproj; path = ../SHTestCommon/SHTestCommon.xcodeproj; sourceTree = "<group>"; };
 		2792B566226C25B200A3A86C /* SHTestCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHTestCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27B0B1EC22239AAD0028AF59 /* SHTests.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHTests.base.xcconfig; sourceTree = "<group>"; };
 		27B7193F2235F1B900540542 /* DumbDataSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DumbDataSaver.h; sourceTree = "<group>"; };
@@ -111,14 +183,10 @@
 		27CBFF182224F2EA00604C66 /* SHTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27CBFF4C2224F56A00604C66 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27D0D6E621D0820200886721 /* TestsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestsTest.m; sourceTree = "<group>"; };
-		27E4A58E226C1BC000756B6B /* libSHCore_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHCore_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E4A590226C1BC000756B6B /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E4A592226C1BC000756B6B /* libSHUtils_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHUtils_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E4A594226C1BC000756B6B /* SHCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		27E4A596226C1BC000756B6B /* SHData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		27E4A598226C1BC000756B6B /* SHGlobal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHGlobal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E4A59A226C1BC000756B6B /* SHModels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHModels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		27E4A59C226C1BC000756B6B /* TestCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TestCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,10 +203,7 @@
 			files = (
 				27E4A593226C1BC000756B6B /* libSHUtils_C.a in Frameworks */,
 				27E4A591226C1BC000756B6B /* libSHDatetime.a in Frameworks */,
-				27E4A58F226C1BC000756B6B /* libSHCore_C.a in Frameworks */,
 				27E4A595226C1BC000756B6B /* SHCommon.framework in Frameworks */,
-				27E4A597226C1BC000756B6B /* SHData.framework in Frameworks */,
-				27E4A599226C1BC000756B6B /* SHGlobal.framework in Frameworks */,
 				27E4A59B226C1BC000756B6B /* SHModels.framework in Frameworks */,
 				2792B567226C25B200A3A86C /* SHTestCommon.framework in Frameworks */,
 			);
@@ -150,6 +215,11 @@
 		2747C528204A5DB000FB5669 = {
 			isa = PBXGroup;
 			children = (
+				27601C4423F742F1001A9475 /* SHTestCommon.xcodeproj */,
+				27601C3E23F742E6001A9475 /* SHModels.xcodeproj */,
+				27601C3823F742DE001A9475 /* SHCommon.xcodeproj */,
+				27601C3223F742D6001A9475 /* SHDatetime.xcodeproj */,
+				27601C2C23F742CC001A9475 /* SHUtils_C.xcodeproj */,
 				27C7923D2227A07500A92487 /* Configs */,
 				27CBFF4B2224F56A00604C66 /* SHTests */,
 				2747C533204A5DB000FB5669 /* TestUI */,
@@ -191,14 +261,10 @@
 			isa = PBXGroup;
 			children = (
 				2792B566226C25B200A3A86C /* SHTestCommon.framework */,
-				27E4A58E226C1BC000756B6B /* libSHCore_C.a */,
 				27E4A590226C1BC000756B6B /* libSHDatetime.a */,
 				27E4A592226C1BC000756B6B /* libSHUtils_C.a */,
 				27E4A594226C1BC000756B6B /* SHCommon.framework */,
-				27E4A596226C1BC000756B6B /* SHData.framework */,
-				27E4A598226C1BC000756B6B /* SHGlobal.framework */,
 				27E4A59A226C1BC000756B6B /* SHModels.framework */,
-				27E4A59C226C1BC000756B6B /* TestCommon.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -247,6 +313,46 @@
 				2747C578204A62EA00FB5669 /* TestKeepSubject_B.m */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		27601C2D23F742CC001A9475 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27601C3123F742CC001A9475 /* libSHUtils_C.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		27601C3323F742D6001A9475 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27601C3723F742D6001A9475 /* libSHDatetime.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		27601C3923F742DE001A9475 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27601C3D23F742DE001A9475 /* SHCommon.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		27601C3F23F742E6001A9475 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27601C4323F742E6001A9475 /* SHModels.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		27601C4523F742F1001A9475 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27601C4923F742F1001A9475 /* SHTestCommon.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		27C7923D2227A07500A92487 /* Configs */ = {
@@ -301,6 +407,11 @@
 			buildRules = (
 			);
 			dependencies = (
+				27601C5323F74343001A9475 /* PBXTargetDependency */,
+				27601C5123F7433E001A9475 /* PBXTargetDependency */,
+				27601C4F23F74337001A9475 /* PBXTargetDependency */,
+				27601C4D23F7432C001A9475 /* PBXTargetDependency */,
+				27601C4B23F74327001A9475 /* PBXTargetDependency */,
 				27CBFF1E2224F2EA00604C66 /* PBXTargetDependency */,
 			);
 			name = SHTests;
@@ -339,6 +450,28 @@
 			mainGroup = 2747C528204A5DB000FB5669;
 			productRefGroup = 2747C532204A5DB000FB5669 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 27601C3923F742DE001A9475 /* Products */;
+					ProjectRef = 27601C3823F742DE001A9475 /* SHCommon.xcodeproj */;
+				},
+				{
+					ProductGroup = 27601C3323F742D6001A9475 /* Products */;
+					ProjectRef = 27601C3223F742D6001A9475 /* SHDatetime.xcodeproj */;
+				},
+				{
+					ProductGroup = 27601C3F23F742E6001A9475 /* Products */;
+					ProjectRef = 27601C3E23F742E6001A9475 /* SHModels.xcodeproj */;
+				},
+				{
+					ProductGroup = 27601C4523F742F1001A9475 /* Products */;
+					ProjectRef = 27601C4423F742F1001A9475 /* SHTestCommon.xcodeproj */;
+				},
+				{
+					ProductGroup = 27601C2D23F742CC001A9475 /* Products */;
+					ProjectRef = 27601C2C23F742CC001A9475 /* SHUtils_C.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2747C530204A5DB000FB5669 /* TestUI */,
@@ -346,6 +479,44 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		27601C3123F742CC001A9475 /* libSHUtils_C.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSHUtils_C.a;
+			remoteRef = 27601C3023F742CC001A9475 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		27601C3723F742D6001A9475 /* libSHDatetime.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSHDatetime.a;
+			remoteRef = 27601C3623F742D6001A9475 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		27601C3D23F742DE001A9475 /* SHCommon.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SHCommon.framework;
+			remoteRef = 27601C3C23F742DE001A9475 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		27601C4323F742E6001A9475 /* SHModels.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SHModels.framework;
+			remoteRef = 27601C4223F742E6001A9475 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		27601C4923F742F1001A9475 /* SHTestCommon.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SHTestCommon.framework;
+			remoteRef = 27601C4823F742F1001A9475 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2747C52F204A5DB000FB5669 /* Resources */ = {
@@ -412,6 +583,31 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		27601C4B23F74327001A9475 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SHTestCommon;
+			targetProxy = 27601C4A23F74327001A9475 /* PBXContainerItemProxy */;
+		};
+		27601C4D23F7432C001A9475 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SHModels;
+			targetProxy = 27601C4C23F7432C001A9475 /* PBXContainerItemProxy */;
+		};
+		27601C4F23F74337001A9475 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SHDatetime;
+			targetProxy = 27601C4E23F74337001A9475 /* PBXContainerItemProxy */;
+		};
+		27601C5123F7433E001A9475 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SHUtils_C;
+			targetProxy = 27601C5023F7433E001A9475 /* PBXContainerItemProxy */;
+		};
+		27601C5323F74343001A9475 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SHCommon;
+			targetProxy = 27601C5223F74343001A9475 /* PBXContainerItemProxy */;
+		};
 		27CBFF1E2224F2EA00604C66 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2747C530204A5DB000FB5669 /* TestUI */;

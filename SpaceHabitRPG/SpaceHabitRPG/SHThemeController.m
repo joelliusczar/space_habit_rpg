@@ -75,7 +75,9 @@ static void _SH_setTextViewBorderSpecialCase(UIColor *background) {
 	UIColor *textBorder = [UIColor colorNamed:@"textBoxBorder"];
 	UIColor *transparentBackground = [UIColor colorNamed:@"transparentBackground"];
 	UILabel.appearance.textColor = text;
-	[UIView appearanceWhenContainedInInstancesOfClasses:@[SHCentralViewController.class]].backgroundColor = background;
+	SHViewController.appearance.viewBackgroundColor = background;
+	[UIView appearanceWhenContainedInInstancesOfClasses:@[SHIntroViewController.class]].backgroundColor = background;
+	//[UIView appearanceWhenContainedInInstancesOfClasses:@[SHCentralViewController.class]].backgroundColor = background;
 	UITableView.appearance.backgroundColor = background;
 	UITabBar.appearance.barTintColor = background;
 	_SH_setTextViewTheme(text, textBorder);
@@ -84,9 +86,9 @@ static void _SH_setTextViewBorderSpecialCase(UIColor *background) {
 	[UIButton.appearance setTitleColor:text forState:UIControlStateNormal];
 	_SH_setTextViewBorderSpecialCase(background);
 	
-	[UIView appearanceWhenContainedInInstancesOfClasses:
-		@[SHSpinPicker.class, SHRateSelectionViewController.class]]
-			.backgroundColor = UIColor.redColor;//transparentBackground;
+//	[UIView appearanceWhenContainedInInstancesOfClasses:
+//		@[SHSpinPicker.class, SHRateSelectionViewController.class]]
+//			.backgroundColor = UIColor.redColor;//transparentBackground;
 	
 	//[SHSpinPicker appearanceWhenContainedInInstancesOfClasses:@[SHCentralViewController.class]].pickerBackground = background;
 }

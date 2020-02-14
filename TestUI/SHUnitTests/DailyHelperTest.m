@@ -7,8 +7,8 @@
 //
 
 #import "NSDate+testReplace.h"
-#import <SHDaily_C.h>
-#import <SHRateValueItem.h>
+#import <SHSpecial_C/SHDaily_C.h>
+#import <SHSpecial_C/SHRateValueItem.h>
 @import SHCommon;
 
 @import SHModels;
@@ -105,8 +105,8 @@
 
 -(void)testRetrieveUnfinishedDailies{
 	[self.testContext performBlockAndWait:^{
-		SHConfig_Medium *cm = [[SHConfig_Medium alloc] initWithContext:self.testContext];
-		SHConfig *config = [cm globalConfig];
+
+		SHConfig *config = [[SHConfig alloc] init];
 		config.dayStartTime = 6 * SH_HOUR_IN_SECONDS;
 		[self.testContext save:nil];
 	}];
@@ -213,13 +213,13 @@
 		d.dateProvider = dateProvider;
 		d.rateType = SH_WEEKLY_RATE;
 		//if the rate is one, it should always result in being 0 days until Daily is due
-		d.activeDaysContainer.weeklyIntervalSize = 1;
+		d.activeDaysContainer.weeklyActiveDays.intervalSize = 1;
 		d.lastActivationDateTime = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:13 minute:24 second:11
 			timeZone: [NSTimeZone timeZoneForSecondsFromGMT:-18000]];
 		days1 = d.daysUntilDue;
-		d.activeDaysContainer.weeklyIntervalSize = 2;
+		d.activeDaysContainer.weeklyActiveDays.intervalSize = 2;
 		days2 = d.daysUntilDue;
-		d.activeDaysContainer.weeklyIntervalSize = 7;
+		d.activeDaysContainer.weeklyActiveDays.intervalSize = 7;
 		days3 = d.daysUntilDue;
 		[tc save:nil];
 		objectID = [[SHObjectIDWrapper alloc] initWithManagedObject:d];
@@ -236,11 +236,11 @@
 		NSError *error;
 		SHDaily *d = (SHDaily*)[tc getEntityOrNil:objectID withError:&error];
 		d.dateProvider = dateProvider;
-		d.activeDaysContainer.weeklyIntervalSize = 1;
+		d.activeDaysContainer.weeklyActiveDays.intervalSize = 1;
 		days1 = d.daysUntilDue;
-		d.activeDaysContainer.weeklyIntervalSize = 2;
+		d.activeDaysContainer.weeklyActiveDays.intervalSize = 2;
 		days2 = d.daysUntilDue;
-		d.activeDaysContainer.weeklyIntervalSize = 7;
+		d.activeDaysContainer.weeklyActiveDays.intervalSize = 7;
 		days3 = d.daysUntilDue;
 	}];
 	XCTAssertEqual(days1,0);

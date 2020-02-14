@@ -85,9 +85,6 @@
          location = "group:SpaceHabitRPG.sh">
       </FileRef>
       <FileRef
-         location = "group:/Users/joelpridgen/Documents/spacehabitrpg/Build_Scripts/SHTestCommon.sh">
-      </FileRef>
-      <FileRef
          location = "group:TestUI.sh">
       </FileRef>
    </Group>

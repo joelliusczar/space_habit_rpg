@@ -15,7 +15,7 @@
 @implementation SHAppearancePotentialMatches
 
 
--(instancetype)initWithProxyContainer:(SHVCAppearanceProxyContainer*)proxyContainer
+-(instancetype)initWithProxyContainer:(SHVCProxyContainer*)proxyContainer
 	withSHViewController:(SHViewController*)viewController
 {
 	if(self = [super init]) {
@@ -34,7 +34,7 @@
 		NSEnumerator<Class<UIAppearanceContainer>> *classIter = chain.objectEnumerator;
 		Class currentClass = [classIter nextObject];
 		while(currentClass && currentVC) {
-			if([currentVC isMemberOfClass:currentClass]) {
+			if([currentVC isKindOfClass:currentClass]) {
 				currentClass = [classIter nextObject];
 			}
 			currentVC = currentVC.prevViewController;
@@ -63,7 +63,13 @@
 	if(proxy) {
 		return proxy;
 	}
-	SHViewControllerAppearanceProxy *proxy = self.proxyContainer
+	NSArray<Class<UIAppearance>> *classes = self.proxyContainer
+		.appearanceProxies.allKeys;
+	NSMutableArray<Class<UIAppearance>> *matches = [NSMutableArray array];
+	for (Class<UIAppearance> cls in classes) {
+		
+	}
+	proxy = self.proxyContainer
 		.appearanceProxies[self.viewController.class];
 	
 	if(proxy) {

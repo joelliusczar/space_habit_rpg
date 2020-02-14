@@ -17,4 +17,5 @@
 -(id)narrowCopy;
 -(void)narrowCopyFrom:(NSObject*)fromObject;
 
+
 @end

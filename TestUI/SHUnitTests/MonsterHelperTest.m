@@ -57,8 +57,7 @@ uint monsterHelper_mockRandom(uint range){
 	shouldUseLowerBoundChoices_mh[i++] = YES;
 	shouldUseLowerBoundChoices_mh[i++] = NO;
 	NSManagedObjectContext *context = [self.dc newBackgroundContext];
-	SHMonster_Medium *mm = [[SHMonster_Medium alloc]
-		initWithContext:context];
+	SHMonster_Medium *mm = [[SHMonster_Medium alloc] initWithResourceUtil:self.resourceUtil];
 	NSString *s = [mm randomMonsterKey:@"NEBULA"];
 	XCTAssertTrue([s isEqualToString:@"DUST_FAIRY"]);
 	s = [mm randomMonsterKey:@"NEBULA"];
@@ -76,8 +75,7 @@ uint monsterHelper_mockRandom(uint range){
 	__block int32_t nowHp;
 	
 	NSManagedObjectContext *context = [self.dc newBackgroundContext];
-	SHMonster_Medium *mm = [[SHMonster_Medium alloc]
-		initWithContext:context];
+	SHMonster_Medium *mm = [[SHMonster_Medium alloc] initWithResourceUtil:self.resourceUtil];
 	
 	[context performBlockAndWait:^{
 		i = 0;

@@ -11,7 +11,7 @@
 @implementation HouseProxy
 
 -(instancetype)init {
-	
+	return self;
 }
 
 @end

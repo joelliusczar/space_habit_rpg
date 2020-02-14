@@ -45,6 +45,7 @@
 
 
 -(void)pushChildVC:(SHViewController*)child toViewOfParent:(UIView*)view{
+	NSLog(@"pushing %@ to the front", NSStringFromClass(child.class));
 	[view addSubview:child.view];
 	[self addChildViewController:child];
 	[child didMoveToParentViewController:self];

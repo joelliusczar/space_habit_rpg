@@ -1275,4 +1275,19 @@ union u_double {
 }
 
 
++(void)classCompare {
+	House *h0 = [House new];
+	GenericThing *thing = [[GenericThing alloc] init];
+	ChildMan *cm = [[ChildMan alloc] init];
+	ParentMan *pm = [[ParentMan alloc] init];
+	NSLog(@"House is house? %@", h0.class == House.class ? @"yes" : @"no");
+	NSLog(@"House is thing? %@", h0.class == thing.class ? @"yes" : @"no");
+	NSLog(@"childman is parentman? %@", cm.class == pm.class ? @"yes" : @"no");
+	NSLog(@"childman is parentman? %@", cm.class == ParentMan.class ? @"yes" : @"no");
+	NSLog(@"childman super is parentman? %@", cm.superclass == ParentMan.class ? @"yes" : @"no");
+	NSLog(@"class childman super is parentman? %@", ChildMan.superclass == ParentMan.class ? @"yes" : @"no");
+	NSLog(@"class childman super super is object? %@", ChildMan.superclass.superclass == NSObject.class ? @"yes" : @"no");
+	NSLog(@"class childman super super super is nil? %@", ChildMan.superclass.superclass.superclass == nil ? @"yes" : @"no");
+}
+
 @end

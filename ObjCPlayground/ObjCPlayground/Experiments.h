@@ -140,6 +140,7 @@ void cMakeHouses(void);
 +(void)testPropCopy;
 +(void)blockLocalObjRef;
 +(void)loopThruIvars;
++(void)classCompare;
 @end
 
 #import "Experiments+Charlie.h"
