@@ -24,6 +24,7 @@ static NSString* const BACKEND_KEY = @"hero_data";
 	if(self = [super init]) {
 		_saveUrl = [resourceUtil getURLMutableFile:BACKEND_KEY];
 		_backend = [resourceUtil getPListMutableDict:BACKEND_KEY];
+		_resourceUtil = resourceUtil;
 		if(nil == _backend) {
 			_backend = [NSMutableDictionary dictionary];
 		}
@@ -110,8 +111,7 @@ static NSString* const BACKEND_KEY = @"hero_data";
 
 
 -(void)saveToFile {
-	NSError *error = nil;
-	[self.backend writeToURL:self.saveUrl error:&error];
+	[self.resourceUtil saveDict:self.backend toFile:self.saveUrl];
 }
 
 

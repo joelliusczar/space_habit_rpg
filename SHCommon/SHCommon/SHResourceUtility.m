@@ -76,4 +76,10 @@
 	}
 }
 
+
+-(void)saveDict:(NSDictionary *)dict toFile:(NSURL*)fileUrl {
+	NSError *error = nil;
+	[dict writeToURL:fileUrl error:&error];
+}
+
 @end

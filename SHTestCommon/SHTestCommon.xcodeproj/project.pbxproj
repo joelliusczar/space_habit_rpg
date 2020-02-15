@@ -19,11 +19,45 @@
 		274EFB85204F9B7700CB3C4C /* TestGlobals.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB80204F9B7700CB3C4C /* TestGlobals.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		274EFB86204F9B7700CB3C4C /* TestHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB81204F9B7700CB3C4C /* TestHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27601C2B23F74259001A9475 /* SHTestCommon.postbuild.sh in Resources */ = {isa = PBXBuildFile; fileRef = 27601C2A23F74259001A9475 /* SHTestCommon.postbuild.sh */; };
+		27601C5623F7825C001A9475 /* SHTestResourceUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 27601C5423F7825C001A9475 /* SHTestResourceUtil.h */; };
+		27601C5723F7825C001A9475 /* SHTestResourceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 27601C5523F7825C001A9475 /* SHTestResourceUtil.m */; };
+		27601C6423F782DA001A9475 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27601C6323F782D2001A9475 /* SHCommon.framework */; };
 		27804B7C235278F8004921F5 /* SHTestDateProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 27804B7A235278F8004921F5 /* SHTestDateProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27804B7D235278F8004921F5 /* SHTestDateProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 27804B7B235278F8004921F5 /* SHTestDateProvider.m */; };
 		27B7AF25223094D000FAA229 /* TestDummy.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B7AF23223094D000FAA229 /* TestDummy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27B7AF26223094D000FAA229 /* TestDummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B7AF24223094D000FAA229 /* TestDummy.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		27601C5C23F782CA001A9475 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27601C5823F782CA001A9475 /* SHModels.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2747C2EA2043ADE000FB5669;
+			remoteInfo = SHModels;
+		};
+		27601C6223F782D2001A9475 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27601C5E23F782D2001A9475 /* SHCommon.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27C4113623DBB7CF0086E1F9;
+			remoteInfo = SHCommon;
+		};
+		27601C6523F782E1001A9475 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27601C5E23F782D2001A9475 /* SHCommon.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 27C4113523DBB7CF0086E1F9;
+			remoteInfo = SHCommon;
+		};
+		27601C6723F782E6001A9475 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27601C5823F782CA001A9475 /* SHModels.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2747C2E92043ADE000FB5669;
+			remoteInfo = SHModels;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		27004252205251B3001FA0B5 /* SHModels.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHModels.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHModels.framework"; sourceTree = "<group>"; };
@@ -43,6 +77,10 @@
 		274EFB8C204FB27200CB3C4C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		27601C2723F73F2C001A9475 /* SHTestCommon.prebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = SHTestCommon.prebuild.sh; sourceTree = "<group>"; };
 		27601C2A23F74259001A9475 /* SHTestCommon.postbuild.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = SHTestCommon.postbuild.sh; sourceTree = "<group>"; };
+		27601C5423F7825C001A9475 /* SHTestResourceUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTestResourceUtil.h; sourceTree = "<group>"; };
+		27601C5523F7825C001A9475 /* SHTestResourceUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTestResourceUtil.m; sourceTree = "<group>"; };
+		27601C5823F782CA001A9475 /* SHModels.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHModels.xcodeproj; path = ../SHModels/SHModels.xcodeproj; sourceTree = "<group>"; };
+		27601C5E23F782D2001A9475 /* SHCommon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHCommon.xcodeproj; path = ../SHCommon/SHCommon.xcodeproj; sourceTree = "<group>"; };
 		27804B7A235278F8004921F5 /* SHTestDateProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTestDateProvider.h; sourceTree = "<group>"; };
 		27804B7B235278F8004921F5 /* SHTestDateProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTestDateProvider.m; sourceTree = "<group>"; };
 		278FFDA1222B2F2700DAF985 /* SHTestCommon.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHTestCommon.debug.xcconfig; sourceTree = "<group>"; };
@@ -56,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27601C6423F782DA001A9475 /* SHCommon.framework in Frameworks */,
 				27004253205251B3001FA0B5 /* SHModels.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -66,6 +105,8 @@
 		274EFB68204F9AEA00CB3C4C = {
 			isa = PBXGroup;
 			children = (
+				27601C5E23F782D2001A9475 /* SHCommon.xcodeproj */,
+				27601C5823F782CA001A9475 /* SHModels.xcodeproj */,
 				27601C2423F73E9F001A9475 /* Scripts */,
 				276E6D99222A53B300CB36CB /* Configs */,
 				274EFB74204F9AEA00CB3C4C /* SHTestCommon */,
@@ -100,6 +141,8 @@
 				27009B42224FEB0C0005F827 /* SHCoreData+CleanUp.m */,
 				27804B7A235278F8004921F5 /* SHTestDateProvider.h */,
 				27804B7B235278F8004921F5 /* SHTestDateProvider.m */,
+				27601C5423F7825C001A9475 /* SHTestResourceUtil.h */,
+				27601C5523F7825C001A9475 /* SHTestResourceUtil.m */,
 			);
 			path = SHTestCommon;
 			sourceTree = "<group>";
@@ -123,6 +166,22 @@
 			path = Scripts;
 			sourceTree = "<group>";
 		};
+		27601C5923F782CA001A9475 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27601C5D23F782CA001A9475 /* SHModels.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		27601C5F23F782D2001A9475 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27601C6323F782D2001A9475 /* SHCommon.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		276E6D99222A53B300CB36CB /* Configs */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +203,7 @@
 				274EFB77204F9AEA00CB3C4C /* SHTestCommon.h in Headers */,
 				274EFB86204F9B7700CB3C4C /* TestHelpers.h in Headers */,
 				27009B43224FEB0C0005F827 /* SHCoreData+CleanUp.h in Headers */,
+				27601C5623F7825C001A9475 /* SHTestResourceUtil.h in Headers */,
 				273009F822446228006E419C /* NSManagedObjectContext+Hijack.h in Headers */,
 				27804B7C235278F8004921F5 /* SHTestDateProvider.h in Headers */,
 				274EFB85204F9B7700CB3C4C /* TestGlobals.h in Headers */,
@@ -166,6 +226,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				27601C6823F782E6001A9475 /* PBXTargetDependency */,
+				27601C6623F782E1001A9475 /* PBXTargetDependency */,
 			);
 			name = SHTestCommon;
 			productName = SHTestCommon;
@@ -197,12 +259,39 @@
 			mainGroup = 274EFB68204F9AEA00CB3C4C;
 			productRefGroup = 274EFB73204F9AEA00CB3C4C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 27601C5F23F782D2001A9475 /* Products */;
+					ProjectRef = 27601C5E23F782D2001A9475 /* SHCommon.xcodeproj */;
+				},
+				{
+					ProductGroup = 27601C5923F782CA001A9475 /* Products */;
+					ProjectRef = 27601C5823F782CA001A9475 /* SHModels.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				274EFB71204F9AEA00CB3C4C /* SHTestCommon */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		27601C5D23F782CA001A9475 /* SHModels.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SHModels.framework;
+			remoteRef = 27601C5C23F782CA001A9475 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		27601C6323F782D2001A9475 /* SHCommon.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SHCommon.framework;
+			remoteRef = 27601C6223F782D2001A9475 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		274EFB70204F9AEA00CB3C4C /* Resources */ = {
@@ -242,11 +331,25 @@
 				27009B44224FEB0C0005F827 /* SHCoreData+CleanUp.m in Sources */,
 				27B7AF26223094D000FAA229 /* TestDummy.m in Sources */,
 				274EFB82204F9B7700CB3C4C /* TestHelpers.m in Sources */,
+				27601C5723F7825C001A9475 /* SHTestResourceUtil.m in Sources */,
 				274EFB84204F9B7700CB3C4C /* FrequentCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		27601C6623F782E1001A9475 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SHCommon;
+			targetProxy = 27601C6523F782E1001A9475 /* PBXContainerItemProxy */;
+		};
+		27601C6823F782E6001A9475 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SHModels;
+			targetProxy = 27601C6723F782E6001A9475 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		274EFB78204F9AEA00CB3C4C /* Debug */ = {

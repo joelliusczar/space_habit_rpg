@@ -163,9 +163,7 @@ static NSString* const BACKEND_KEY = @"monster_data";
 
 
 -(void)saveToFile {
-	NSError *error = nil;
-	[self.backend writeToURL:self.saveUrl error:&error];
-	;
+	[self.resourceUtil saveDict:self.backend toFile:self.saveUrl];
 }
 
 

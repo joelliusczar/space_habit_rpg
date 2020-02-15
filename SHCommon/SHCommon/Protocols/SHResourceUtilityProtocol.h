@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSArray *)getPListArray:(NSString*)fileKey;
 -(NSMutableArray*)getPListMutableArray:(NSString*)fileKey;
 -(void)erase:(NSString*)fileKey;
+-(void)saveDict:(NSDictionary *)dict toFile:(NSURL*)fileUrl;
 @end
 
 NS_ASSUME_NONNULL_END

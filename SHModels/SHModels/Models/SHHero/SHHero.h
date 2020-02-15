@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign, nonatomic) NSInteger maxXp;
 @property (assign, nonatomic) NSInteger nowHp;
 @property (assign, nonatomic) NSInteger nowXp;
+@property (strong, nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
 -(instancetype)initWithResourceUtil:(id<SHResourceUtilityProtocol>)resourceUtil;
 -(void)saveToFile;
 @end

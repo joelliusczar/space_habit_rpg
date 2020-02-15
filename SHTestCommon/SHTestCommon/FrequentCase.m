@@ -8,6 +8,7 @@
 
 #import "FrequentCase.h"
 #import "SHCoreData+CleanUp.h"
+#import "SHTestResourceUtil.h"
 @import SHModels;
 
 @import CoreData;
@@ -35,7 +36,9 @@ SHCoreData* getDataControllerSingleton(){
 
 -(void)setUp{
 	[super setUp];
-	self.resourceUtil = [[SHResourceUtility alloc] init];
+	SHResourceUtility *baseResourceUtil = [[SHResourceUtility alloc] init];
+	self.resourceUtil = [[SHTestResourceUtil alloc] initWithResourceUtil:baseResourceUtil];
+	
 	self.sectorInfoDict = [[SHSectorInfoDictionary alloc] initWithResourceUtil:self.resourceUtil];
 	self.monsterInfoDict = [[SHMonsterInfoDictionary alloc] initWithResourceUtil:self.resourceUtil];
 	//I think we want to ensure that it uses the bundle from SHModels rather

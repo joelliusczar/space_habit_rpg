@@ -97,7 +97,6 @@
 			NSLog(@"Error fetching data: %@", error.localizedFailureReason);
 		}
 		recordCount = resultsController.fetchedObjects.count;
-		SHDaily *d = resultsController.fetchedObjects[0];
 	}];
 	XCTAssertNil(error);
 	XCTAssertEqual(recordCount,50);
@@ -231,7 +230,6 @@
 	NSDate *testDate = [NSDate createDateTimeWithYear:1988 month:5 day:1 hour:9 minute:24 second:11
 	timeZone: [NSTimeZone timeZoneForSecondsFromGMT: -18000]];
 	dateProvider.testDate = testDate;
-	__block NSManagedObjectID *o2 = nil;
 	[tc performBlockAndWait:^{
 		NSError *error;
 		SHDaily *d = (SHDaily*)[tc getEntityOrNil:objectID withError:&error];

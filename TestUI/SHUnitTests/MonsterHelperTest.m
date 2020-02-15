@@ -56,7 +56,6 @@ uint monsterHelper_mockRandom(uint range){
 	int i =0;
 	shouldUseLowerBoundChoices_mh[i++] = YES;
 	shouldUseLowerBoundChoices_mh[i++] = NO;
-	NSManagedObjectContext *context = [self.dc newBackgroundContext];
 	SHMonster_Medium *mm = [[SHMonster_Medium alloc] initWithResourceUtil:self.resourceUtil];
 	NSString *s = [mm randomMonsterKey:@"NEBULA"];
 	XCTAssertTrue([s isEqualToString:@"DUST_FAIRY"]);
@@ -67,73 +66,64 @@ uint monsterHelper_mockRandom(uint range){
 	
 -(void)testConstructRandomMonster{
 	
-	__block int32_t i = 0;
+	int32_t i = 0;
 	
-	__block NSString *fullName;
-	__block int32_t lvl;
-	__block int32_t maxHp;
-	__block int32_t nowHp;
+	NSString *fullName;
+	NSInteger lvl;
+	NSInteger maxHp;
+	NSInteger nowHp;
 	
-	NSManagedObjectContext *context = [self.dc newBackgroundContext];
 	SHMonster_Medium *mm = [[SHMonster_Medium alloc] initWithResourceUtil:self.resourceUtil];
 	
-	[context performBlockAndWait:^{
-		i = 0;
-		shouldUseLowerBoundChoices_mh[i++] = YES;
-		shouldUseLowerBoundChoices_mh[i++] = YES;
-		
-		
-		SHMonster *m = [mm newRandomMonster:@"NEBULA" sectorLvl:32];
-		fullName = m.fullName;
-		lvl = m.lvl;
-		maxHp = m.maxHp;
-		nowHp = m.nowHp;
-	}];
+	i = 0;
+	shouldUseLowerBoundChoices_mh[i++] = YES;
+	shouldUseLowerBoundChoices_mh[i++] = YES;
+	
+	
+	SHMonster *m = [mm newRandomMonster:@"NEBULA" sectorLvl:32];
+	fullName = m.fullName;
+	lvl = m.lvl;
+	maxHp = m.maxHp;
+	nowHp = m.nowHp;
 	
 	XCTAssertTrue([fullName isEqualToString:@"Dust Fairy"]);
 	XCTAssertEqual(lvl,22);
 	XCTAssertEqual(maxHp,400);
 	XCTAssertEqual(nowHp,400);
 	
-	[context performBlockAndWait:^{
-		shouldUseLowerBoundChoices_mh[i++] = YES;
-		shouldUseLowerBoundChoices_mh[i++] = NO;
-		SHMonster *m = [mm newRandomMonster:@"NEBULA" sectorLvl:32];
-		fullName = m.fullName;
-		lvl = m.lvl;
-		maxHp = m.maxHp;
-		nowHp = m.nowHp;
-	}];
+	shouldUseLowerBoundChoices_mh[i++] = YES;
+	shouldUseLowerBoundChoices_mh[i++] = NO;
+	SHMonster *m2 = [mm newRandomMonster:@"NEBULA" sectorLvl:32];
+	fullName = m2.fullName;
+	lvl = m2.lvl;
+	maxHp = m2.maxHp;
+	nowHp = m2.nowHp;
 	
 	XCTAssertTrue([fullName isEqualToString:@"Dust Fairy"]);
 	XCTAssertEqual(lvl,42);
 	XCTAssertEqual(maxHp,650);
 	XCTAssertEqual(nowHp,650);
 	
-	[context performBlockAndWait:^{
-		shouldUseLowerBoundChoices_mh[i++] = NO;
-		shouldUseLowerBoundChoices_mh[i++] = YES;
-		SHMonster *m = [mm newRandomMonster:@"NEBULA" sectorLvl:32];
-		fullName = m.fullName;
-		lvl = m.lvl;
-		maxHp = m.maxHp;
-		nowHp = m.nowHp;
-	}];
+	shouldUseLowerBoundChoices_mh[i++] = NO;
+	shouldUseLowerBoundChoices_mh[i++] = YES;
+	SHMonster *m3 = [mm newRandomMonster:@"NEBULA" sectorLvl:32];
+	fullName = m3.fullName;
+	lvl = m3.lvl;
+	maxHp = m3.maxHp;
+	nowHp = m3.nowHp;
 	
 	XCTAssertTrue([fullName isEqualToString:@"Petty Space Pirates"]);
 	XCTAssertEqual(lvl,22);
 	XCTAssertEqual(maxHp,160);
 	XCTAssertEqual(nowHp,160);
 	
-	[context performBlockAndWait:^{
-		shouldUseLowerBoundChoices_mh[i++] = NO;
-		shouldUseLowerBoundChoices_mh[i++] = NO;
-		SHMonster *m = [mm newRandomMonster:@"NEBULA" sectorLvl:32];
-		fullName = m.fullName;
-		lvl = m.lvl;
-		maxHp = m.maxHp;
-		nowHp = m.nowHp;
-	}];
+	shouldUseLowerBoundChoices_mh[i++] = NO;
+	shouldUseLowerBoundChoices_mh[i++] = NO;
+	SHMonster *m4 = [mm newRandomMonster:@"NEBULA" sectorLvl:32];
+	fullName = m4.fullName;
+	lvl = m4.lvl;
+	maxHp = m4.maxHp;
+	nowHp = m4.nowHp;
 	
 	XCTAssertTrue([fullName isEqualToString:@"Petty Space Pirates"]);
 	XCTAssertEqual(lvl,42);

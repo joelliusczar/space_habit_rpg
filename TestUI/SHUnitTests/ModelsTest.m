@@ -29,8 +29,6 @@
 }
 
 -(void)testHeroProperties{
-	NSObject<SHDataProviderProtocol> *dc = self.dc;
-	NSManagedObjectContext *context = dc.mainThreadContext;
 	SHHero *h = [[SHHero alloc] initWithResourceUtil:self.resourceUtil];
 	h.gold = 3.14;
 	h.lvl = 15;
@@ -107,48 +105,5 @@
 	NSAssert([misc isEqualToString:@"Just random shit!"],@"Strings not equal");
 }
 
--(void)testDoubleInsert{
-	NSManagedObjectContext* bgContext = [self.dc newBackgroundContext];
-	SHSector_Medium* sectorMed = [[SHSector_Medium alloc] initWithResourceUtil:self.resourceUtil];
-	
-	XCTAssertTrue(NO);
-	
-//	[bgContext performBlockAndWait:^{
-//		SHSector *z = [sectorMed newSpecificSector2:@"SAFE_SPACE" withLvl:16];
-//		[bgContext insertObject:z];
-//		[bgContext insertObject:z];
-//		NSError* error = nil;
-//		[bgContext save:&error];
-//	}];
-	//I think this next part is useless
-//	NSManagedObjectContext* bgContext2 = [self.dc newBackgroundContext];
-//	[bgContext2 performBlockAndWait:^{
-//		NSArray<NSManagedObject*>* results = [self fetchAnything:request context:bgContext2];
-//		NSAssert(results.count == 1,@"result was not one");
-//		SHSector *z_ret = (SHSector *)results[0];
-//		[bgContext2 insertObject:z_ret];
-//		NSError *error = nil;
-//		[bgContext2 save:&error];
-//		NSArray<NSManagedObject*>* results2 = [self fetchAnything:request context:bgContext2];
-//		NSAssert(results2.count == 1,@"result was not one");
-//
-//	}];
-	//this last part is to verify that it's not just returning only one
-	//regardless of what is in stored
-//	[bgContext performBlockAndWait:^{
-//		SHSector *z3 = [sectorMed newSpecificSector2:@"SAFE_SPACE" withLvl:16];
-//		[bgContext insertObject:z3];
-//		NSError *error = nil;
-//		[bgContext save:&error];
-//	}];
-//
-//	NSManagedObjectContext* bgContext3 = [self.dc newBackgroundContext];
-//	[bgContext3 performBlockAndWait:^{
-//
-//		NSArray<NSManagedObject*>* results3 = [self fetchAnything:request context:bgContext3];
-//		NSAssert(results3.count == 2,@"result was not two");
-//	}];
-
-}
 
 @end

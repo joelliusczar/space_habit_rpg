@@ -56,7 +56,7 @@ NSDate* getReferenceDate(){
 	
 	uint lvl = 0;
 	shouldUseLowerBound = YES;
-	int result = shCalculateLvl(lvl,offset);
+	NSInteger result = shCalculateLvl(lvl,offset);
 	XCTAssertEqual(result, 1);
 	shouldUseLowerBound = !shouldUseLowerBound;
 	result = shCalculateLvl(lvl,offset);
