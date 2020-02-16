@@ -47,12 +47,14 @@
 
 
 - (nonnull NSMutableArray *)getPListMutableArray:(nonnull NSString *)fileKey {
-	return self.mockFileSystem[fileKey];
+	NSURL *url = [self getURLMutableFile:fileKey];
+	return self.mockFileSystem[url.absoluteString];
 }
 
 
 - (nonnull NSMutableDictionary *)getPListMutableDict:(nonnull NSString *)fileKey {
-	return self.mockFileSystem[fileKey];
+	NSURL *url = [self getURLMutableFile:fileKey];
+	return self.mockFileSystem[url.absoluteString];
 }
 
 

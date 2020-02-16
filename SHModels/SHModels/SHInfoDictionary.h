@@ -13,7 +13,6 @@
 @property (strong,nonatomic) NSDictionary *treeDict;
 @property (strong,nonatomic) NSMutableDictionary *flatDict;
 @property (readonly,strong,nonatomic) NSString *pListKey;
-@property (readonly,nonatomic) Class bundleClass;
 @property (strong,nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
 
 -(instancetype)initWithPListKey:(NSString*)key withResourceUtil:(NSObject<SHResourceUtilityProtocol>*)resourceUtil;

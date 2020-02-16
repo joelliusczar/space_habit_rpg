@@ -227,6 +227,9 @@
 	XCTAssertEqual(days1,0);
 	XCTAssertEqual(days2,0);
 	XCTAssertEqual(days3,0);
+	//remember: checkin date is not the same as activation date
+	//may 5th is not an active day unless intervalSize is 1
+	//because the last week was active
 	NSDate *testDate = [NSDate createDateTimeWithYear:1988 month:5 day:1 hour:9 minute:24 second:11
 	timeZone: [NSTimeZone timeZoneForSecondsFromGMT: -18000]];
 	dateProvider.testDate = testDate;

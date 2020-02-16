@@ -36,14 +36,19 @@ SHCoreData* getDataControllerSingleton(){
 
 -(void)setUp{
 	[super setUp];
-	SHResourceUtility *baseResourceUtil = [[SHResourceUtility alloc] init];
+	self.testBundle = [NSBundle bundleForClass:NSClassFromString(@"SHBundleKey")];
+	SHResourceUtility *baseResourceUtil = [[SHResourceUtility alloc] initWithBundle:self.testBundle];
 	self.resourceUtil = [[SHTestResourceUtil alloc] initWithResourceUtil:baseResourceUtil];
 	
 	self.sectorInfoDict = [[SHSectorInfoDictionary alloc] initWithResourceUtil:self.resourceUtil];
 	self.monsterInfoDict = [[SHMonsterInfoDictionary alloc] initWithResourceUtil:self.resourceUtil];
+	SHSector.sectorInfo = self.sectorInfoDict;
+	SHMonster.monsterInfo = self.monsterInfoDict;
 	//I think we want to ensure that it uses the bundle from SHModels rather
 	//the bundle for TestUI or TestCommon
 	self.dc = getDataControllerSingleton();
+	SHConfig *config = [[SHConfig alloc] init];
+	config.dayStartTime = 0;
 	NSTimeZone.defaultTimeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
 }
 

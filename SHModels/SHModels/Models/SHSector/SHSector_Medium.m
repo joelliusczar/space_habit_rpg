@@ -56,7 +56,7 @@ NSString* const HOME_KEY = @"HOME";
 
 -(NSString*)getSymbolSuffix:(NSUInteger)visitCount{
 	NSMutableArray<NSString *> *suffixList = [NSMutableArray array];
-	NSArray *symbols = [self getSymbolsList];
+	NSArray<NSString *> *symbols = [self getSymbolsList];
 	while(visitCount > 0){
 		NSUInteger m = (visitCount-1) % symbols.count;
 		visitCount -= m;
@@ -84,7 +84,7 @@ withLvl:(NSInteger)lvl withMonsterCount:(NSInteger)monsterCount{
 	
 	NSAssert(sectorKey,@"Key can't be null");
 	NSAssert(lvl > 0, @"Lvl must be greater than 0");
-	SHSector *sector = [[SHSector alloc] initEmptyWithResourceUtil:self.resourceUtil];
+	SHSector *sector = [[SHSector alloc] initWithResourceUtil:self.resourceUtil];
 	sector.sectorKey = sectorKey;
 	sector.suffix = [self getSymbolSuffix:[self getVisitCountForSector:sectorKey]];
 	sector.maxMonsters = monsterCount;

@@ -35,16 +35,9 @@ static NSString* const BACKEND_KEY = @"sector_data";
 		_saveUrl = [resourceUtil getURLMutableFile:BACKEND_KEY];
 		_backend = [resourceUtil getPListMutableDict:BACKEND_KEY];
 		_resourceUtil = resourceUtil;
-	}
-	return self;
-}
-
-
--(instancetype)initEmptyWithResourceUtil:(id<SHResourceUtilityProtocol>)resourceUtil {
-	if(self = [super init]) {
-		_saveUrl = [resourceUtil getURLMutableFile:BACKEND_KEY];
-		_backend = [NSMutableDictionary dictionary];
-		_resourceUtil = resourceUtil;
+		if(nil == _backend) {
+			_backend = [NSMutableDictionary dictionary];
+		}
 	}
 	return self;
 }

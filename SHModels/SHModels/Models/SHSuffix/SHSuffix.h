@@ -13,6 +13,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHSuffix : NSObject
+@property (strong, nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
 -(instancetype)initWithResourceUtil:(id<SHResourceUtilityProtocol>)resourceUtil;
 -(NSInteger)getAndIncrementCountForSector:(NSString*)sectorName;
 -(void)saveToFile;

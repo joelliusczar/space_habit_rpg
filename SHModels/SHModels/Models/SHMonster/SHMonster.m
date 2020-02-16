@@ -32,6 +32,9 @@ static NSString* const BACKEND_KEY = @"monster_data";
 	if(self = [super init]) {
 		_saveUrl = [resourceUtil getURLMutableFile:BACKEND_KEY];
 		_backend = [resourceUtil getPListMutableDict:BACKEND_KEY];
+		if(nil == _backend) {
+			_backend = [NSMutableDictionary dictionary];
+		}
 		_resourceUtil = resourceUtil;
 	}
 	return self;

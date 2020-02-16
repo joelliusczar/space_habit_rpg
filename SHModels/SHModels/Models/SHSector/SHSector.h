@@ -24,7 +24,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString* sectorKey;
 @property (readonly,nonatomic) NSDictionary *mapable;
 -(instancetype)initWithResourceUtil:(id<SHResourceUtilityProtocol>)resourceUtil;
--(instancetype)initEmptyWithResourceUtil:(id<SHResourceUtilityProtocol>)resourceUtil;
 -(instancetype)initWithDictionary:(NSMutableDictionary *)dict
 	withResourceUtil:(id<SHResourceUtilityProtocol>)resourceUtil;
 -(void)saveToFile;

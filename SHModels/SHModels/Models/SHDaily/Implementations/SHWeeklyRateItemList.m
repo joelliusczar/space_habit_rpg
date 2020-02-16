@@ -178,4 +178,9 @@ static SHRateItemDict* mapWeeklyToDict(id item,NSUInteger idx){
 	return desc;
 }
 
+
+-(NSString*)debugDescription {
+	return self.weekDescription;
+}
+
 @end

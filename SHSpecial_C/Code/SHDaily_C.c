@@ -178,8 +178,8 @@ bool shPreviousDueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate
 }
 
 
-SHDatetime* shBothWeeklyDueDatesFromLastDueDate(SHDatetime* lastDueDate,SHDatetime* checkinDate
-	,SHRateValueItem* week,int64_t scaler, int64_t dayStartHour,SHError *error)
+SHDatetime* shBothWeeklyDueDatesFromLastDueDate(SHDatetime* lastDueDate,SHDatetime* checkinDate,
+	SHRateValueItem* week,int64_t scaler, int64_t dayStartHour,SHError *error)
 {
 	shLog("bothWeeklyDueDatesFromLastDueDate");
 	SHDatetime previousDate;

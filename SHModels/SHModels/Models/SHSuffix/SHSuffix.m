@@ -20,6 +20,7 @@ static NSString* BACKEND_KEY = @"suffix_tracker";
 	if(self = [super init]) {
 		_saveUrl = [resourceUtil getURLMutableFile:BACKEND_KEY];
 		_backend = [resourceUtil getPListMutableDict:BACKEND_KEY];
+		_resourceUtil = resourceUtil;
 		if(nil == _backend) {
 			_backend = [NSMutableDictionary dictionary];
 		}
@@ -30,16 +31,15 @@ static NSString* BACKEND_KEY = @"suffix_tracker";
 
 -(NSInteger)getAndIncrementCountForSector:(NSString *)sectorName {
 	NSNumber *tmp = (NSNumber *)self.backend[sectorName];
-	NSInteger count = nil == tmp ? tmp.integerValue : 0;
-	NSInteger incr = count++;
+	NSInteger count = tmp.integerValue;
+	NSInteger incr = count + 1;
 	self.backend[sectorName] = @(incr);
 	return count;
 }
 
 
 -(void)saveToFile {
-	NSError *error = nil;
-	[self.backend writeToURL:self.saveUrl error:&error];
+	[self.resourceUtil saveDict:self.backend toFile:self.saveUrl];
 }
 
 

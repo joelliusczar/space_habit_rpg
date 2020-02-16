@@ -42,14 +42,18 @@ uint monsterHelper_mockRandom(uint range){
 	XCTAssertTrue([ml[2] isEqualToString:@"SENTIENT_CLOUD"]);
 	XCTAssertTrue([ml[3] isEqualToString:@"CLOUD_FORTRESS"]);
 	
-	ml = [self.monsterInfoDict getMonsterKeyList:@"ALL"];
-	XCTAssertTrue([ml[0] isEqualToString:@"M_SCOUT"]);
-	XCTAssertTrue([ml[1] isEqualToString:@"SMALL_ASTEROID"]);
-	XCTAssertTrue([ml[2] isEqualToString:@"SPACEMAN"]);
-	XCTAssertTrue([ml[3] isEqualToString:@"MECH"]);
-	XCTAssertTrue([ml[4] isEqualToString:@"SPACE_FAIRY"]);
-	XCTAssertTrue([ml[5] isEqualToString:@"SPACE_SLIME"]);
-	XCTAssertTrue([ml[6] isEqualToString:@"PIRATES"]);
+	ml = [[self.monsterInfoDict getMonsterKeyList:@"ALL"] sortedArrayUsingComparator:^(id A, id B){
+		NSString *AStr = (NSString*)A;
+		NSString *BStr = (NSString*)B;
+		return [AStr compare:BStr];
+	}];
+	XCTAssertTrue([ml[0] isEqualToString:@"MECH"]);
+	XCTAssertTrue([ml[1] isEqualToString:@"M_SCOUT"]);
+	XCTAssertTrue([ml[2] isEqualToString:@"PIRATES"]);
+	XCTAssertTrue([ml[3] isEqualToString:@"SMALL_ASTEROID"]);
+	XCTAssertTrue([ml[4] isEqualToString:@"SPACEMAN"]);
+	XCTAssertTrue([ml[5] isEqualToString:@"SPACE_FAIRY"]);
+	XCTAssertTrue([ml[6] isEqualToString:@"SPACE_SLIME"]);
 }
 
 -(void)testRandomMonsterKey{

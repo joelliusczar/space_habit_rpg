@@ -412,18 +412,6 @@ void throwsEx(){
 	@throw [NSException exceptionWithName:@"x" reason:@"x" userInfo:nil];
 }
 
--(void)testgetSector{
-	XCTAssertTrue(NO);
-//	NSManagedObjectContext *context = [self.dc newBackgroundContext];
-//	SHSector_Medium* sectorMed = [[SHSector_Medium alloc] initWithResourceUtil:self.resourceUtil];
-//	SHSector *z = [[SHSector alloc] initEmptyWithResourceUtil:self.resourceUtil];
-//	NSManagedObjectContext* bgContext = [self.dc newBackgroundContext];
-//	z.sectorKey = @"NEBULA";
-//	SHSector *z2 = [[SHSector alloc] initEmptyWithResourceUtil:self.resourceUtil];
-//	z2.sectorKey = @"GAS";
-//	XCTAssertTrue([z3.sectorKey isEqualToString:@"NEBULA"]);
-//	XCTAssertTrue([z4.sectorKey isEqualToString:@"GAS"]);
-}
 
 
 @end

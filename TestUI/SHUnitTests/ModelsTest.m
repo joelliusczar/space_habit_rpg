@@ -46,44 +46,36 @@
 
 
 -(void)testMonsterProperties{
-	NSManagedObjectContext *context = [self.dc newBackgroundContext];
-	[context performBlockAndWait:^{
-		SHMonster *m = [[SHMonster alloc] initEmptyWithResourceUtil:self.resourceUtil];
-		m.lvl = 13;
-		m.monsterKey = @"DUST_FAIRY";
-		m.nowHp = 123;
-		XCTAssertEqual(m.lvl, 13);
-		XCTAssertEqual(m.maxHp,287);
-		XCTAssertEqual(m.nowHp, 123);
-		XCTAssertEqual(m.xp, 2);
-		XCTAssertTrue([m.fullName isEqualToString:@"Dust Fairy"]);
-		XCTAssertEqual(m.defense, 0);
-		XCTAssertEqualWithAccuracy(m.treasureDropRate, .1, .011);
-		XCTAssertEqual(m.encounterWeight, 25);
-		XCTAssertEqual(m.attack, 17);
-		XCTAssertTrue([[m.synopsis substringToIndex:37] isEqualToString:@"Dust Fairies are fiercely territorial"]);
-		
-	}];
+	SHMonster *m = [[SHMonster alloc] initEmptyWithResourceUtil:self.resourceUtil];
+	m.lvl = 13;
+	m.monsterKey = @"DUST_FAIRY";
+	m.nowHp = 123;
+	XCTAssertEqual(m.lvl, 13);
+	XCTAssertEqual(m.maxHp,287);
+	XCTAssertEqual(m.nowHp, 123);
+	XCTAssertEqual(m.xp, 2);
+	XCTAssertTrue([m.fullName isEqualToString:@"Dust Fairy"]);
+	XCTAssertEqual(m.defense, 0);
+	XCTAssertEqualWithAccuracy(m.treasureDropRate, .1, .011);
+	XCTAssertEqual(m.encounterWeight, 25);
+	XCTAssertEqual(m.attack, 17);
+	XCTAssertTrue([[m.synopsis substringToIndex:37] isEqualToString:@"Dust Fairies are fiercely territorial"]);
 }
 
 
 -(void)testSectorProperties{
-	NSManagedObjectContext *context = [self.dc newBackgroundContext];
-	[context performBlockAndWait:^{
-		SHSector *z = [[SHSector alloc] initEmptyWithResourceUtil:self.resourceUtil];
-		z.lvl = 5;
-		z.sectorKey = @"SAFE_SPACE";
-		z.maxMonsters = 17;
-		z.monstersKilled = 8;
-		z.suffix = @"Test";
-		XCTAssertEqual(z.lvl, 5);
-		XCTAssertEqual(z.maxMonsters, 17);
-		XCTAssertEqual(z.monstersKilled, 8);
-		NSString *pStr = z.fullName;
-		XCTAssertTrue([pStr isEqualToString:@"Safe Space Test"]);
-		XCTAssertTrue([[z.synopsis substringToIndex:53] isEqualToString:@"Here in safe space, they enforce even the small rules"]);
-		
-	}];
+	SHSector *z = [[SHSector alloc] initWithResourceUtil:self.resourceUtil];
+	z.lvl = 5;
+	z.sectorKey = @"SAFE_SPACE";
+	z.maxMonsters = 17;
+	z.monstersKilled = 8;
+	z.suffix = @"Test";
+	XCTAssertEqual(z.lvl, 5);
+	XCTAssertEqual(z.maxMonsters, 17);
+	XCTAssertEqual(z.monstersKilled, 8);
+	NSString *pStr = z.fullName;
+	XCTAssertTrue([pStr isEqualToString:@"Safe Space Test"]);
+	XCTAssertTrue([[z.synopsis substringToIndex:53] isEqualToString:@"Here in safe space, they enforce even the small rules"]);
 }
 
 -(void)testRemoveEntitRefBeforeSaving{
