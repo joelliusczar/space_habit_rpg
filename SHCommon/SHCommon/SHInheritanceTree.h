@@ -10,9 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHInheritanceTree<NodeStorage> : NSObject
--(NodeStorage)findMatch:(Class)key;
--(void)addObject:(NodeStorage)object withKey:(Class)key;
+@interface SHInheritanceTree<NodeKey, NodeStorage> : NSObject
+@property (copy, nonatomic) BOOL (^isAChildOfB)(NodeKey a, NodeKey b);
+-(NodeStorage)findMatch:(id)key;
+-(void)addObject:(NodeStorage)object withKey:(id)key;
+-(instancetype)initWithCompareFunction:(BOOL (^)(NodeKey a, NodeKey b))isAChildOfB;
 @end
 
 NS_ASSUME_NONNULL_END

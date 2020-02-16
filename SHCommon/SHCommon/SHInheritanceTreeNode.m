@@ -19,7 +19,7 @@
 }
 
 
--(instancetype)initWithKey:(Class)key withStoredObject:(id)storedObject {
+-(instancetype)initWithKey:(id)key withStoredObject:(id)storedObject {
 	if(self == [super init]) {
 		_key = key;
 		_storedObject = storedObject;

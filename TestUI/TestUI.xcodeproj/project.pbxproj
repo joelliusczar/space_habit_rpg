@@ -9,6 +9,22 @@
 /* Begin PBXBuildFile section */
 		273009F522432054006E419C /* TestUI.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273009F422432054006E419C /* TestUI.xib */; };
 		2738CB292340139500A41CC3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2738CB282340139500A41CC3 /* Images.xcassets */; };
+		273B929C23F9C79700A3925D /* SHAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B929B23F9C79700A3925D /* SHAlpha.m */; };
+		273B929F23F9CD3800A3925D /* SHAlphaBravo.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B929E23F9CD3800A3925D /* SHAlphaBravo.m */; };
+		273B92A223F9CD6600A3925D /* SHAlphaCharlie.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92A123F9CD6600A3925D /* SHAlphaCharlie.m */; };
+		273B92A523F9CE0900A3925D /* SHBravo.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92A423F9CE0900A3925D /* SHBravo.m */; };
+		273B92A823F9CE2700A3925D /* SHAlphaDelta.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92A723F9CE2700A3925D /* SHAlphaDelta.m */; };
+		273B92AB23F9CEA900A3925D /* SHAlphaAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92AA23F9CEA900A3925D /* SHAlphaAlpha.m */; };
+		273B92AE23F9CEBF00A3925D /* SHAlphaBravoAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92AD23F9CEBF00A3925D /* SHAlphaBravoAlpha.m */; };
+		273B92B123F9CED200A3925D /* SHAlphaBravoBravo.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92B023F9CED200A3925D /* SHAlphaBravoBravo.m */; };
+		273B92B423F9CEE300A3925D /* SHAlphaBravoCharlie.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92B323F9CEE300A3925D /* SHAlphaBravoCharlie.m */; };
+		273B92B723F9CF2D00A3925D /* SHAlphaCharlieAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92B623F9CF2D00A3925D /* SHAlphaCharlieAlpha.m */; };
+		273B92BA23F9CF5100A3925D /* SHAlphCharlieBravo.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92B923F9CF5100A3925D /* SHAlphCharlieBravo.m */; };
+		273B92BD23F9CF8100A3925D /* SHAlphaBravoBravoAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92BC23F9CF8100A3925D /* SHAlphaBravoBravoAlpha.m */; };
+		273B92C023F9D0C700A3925D /* SHAlphaAlphaAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92BF23F9D0C700A3925D /* SHAlphaAlphaAlpha.m */; };
+		273B92C323F9D0DE00A3925D /* SHAlphaAlphaAlphaAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92C223F9D0DE00A3925D /* SHAlphaAlphaAlphaAlpha.m */; };
+		273B92C623F9D0F500A3925D /* SHAlphaAlphaAlphaBravo.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92C523F9D0F500A3925D /* SHAlphaAlphaAlphaBravo.m */; };
+		273B92CC23F9D6F300A3925D /* SHInheritanceTreeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92CB23F9D6F300A3925D /* SHInheritanceTreeTest.m */; };
 		2747C536204A5DB000FB5669 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C535204A5DB000FB5669 /* AppDelegate.m */; };
 		2747C539204A5DB000FB5669 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C538204A5DB000FB5669 /* ViewController.m */; };
 		2747C544204A5DB000FB5669 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C543204A5DB000FB5669 /* main.m */; };
@@ -127,6 +143,38 @@
 /* Begin PBXFileReference section */
 		273009F422432054006E419C /* TestUI.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestUI.xib; sourceTree = "<group>"; };
 		2738CB282340139500A41CC3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		273B929A23F9C79700A3925D /* SHAlpha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlpha.h; sourceTree = "<group>"; };
+		273B929B23F9C79700A3925D /* SHAlpha.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlpha.m; sourceTree = "<group>"; };
+		273B929D23F9CD3800A3925D /* SHAlphaBravo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlphaBravo.h; sourceTree = "<group>"; };
+		273B929E23F9CD3800A3925D /* SHAlphaBravo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlphaBravo.m; sourceTree = "<group>"; };
+		273B92A023F9CD6600A3925D /* SHAlphaCharlie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlphaCharlie.h; sourceTree = "<group>"; };
+		273B92A123F9CD6600A3925D /* SHAlphaCharlie.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlphaCharlie.m; sourceTree = "<group>"; };
+		273B92A323F9CE0900A3925D /* SHBravo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHBravo.h; sourceTree = "<group>"; };
+		273B92A423F9CE0900A3925D /* SHBravo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHBravo.m; sourceTree = "<group>"; };
+		273B92A623F9CE2700A3925D /* SHAlphaDelta.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlphaDelta.h; sourceTree = "<group>"; };
+		273B92A723F9CE2700A3925D /* SHAlphaDelta.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlphaDelta.m; sourceTree = "<group>"; };
+		273B92A923F9CEA900A3925D /* SHAlphaAlpha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlphaAlpha.h; sourceTree = "<group>"; };
+		273B92AA23F9CEA900A3925D /* SHAlphaAlpha.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlphaAlpha.m; sourceTree = "<group>"; };
+		273B92AC23F9CEBF00A3925D /* SHAlphaBravoAlpha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlphaBravoAlpha.h; sourceTree = "<group>"; };
+		273B92AD23F9CEBF00A3925D /* SHAlphaBravoAlpha.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlphaBravoAlpha.m; sourceTree = "<group>"; };
+		273B92AF23F9CED200A3925D /* SHAlphaBravoBravo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlphaBravoBravo.h; sourceTree = "<group>"; };
+		273B92B023F9CED200A3925D /* SHAlphaBravoBravo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlphaBravoBravo.m; sourceTree = "<group>"; };
+		273B92B223F9CEE300A3925D /* SHAlphaBravoCharlie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlphaBravoCharlie.h; sourceTree = "<group>"; };
+		273B92B323F9CEE300A3925D /* SHAlphaBravoCharlie.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlphaBravoCharlie.m; sourceTree = "<group>"; };
+		273B92B523F9CF2D00A3925D /* SHAlphaCharlieAlpha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlphaCharlieAlpha.h; sourceTree = "<group>"; };
+		273B92B623F9CF2D00A3925D /* SHAlphaCharlieAlpha.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlphaCharlieAlpha.m; sourceTree = "<group>"; };
+		273B92B823F9CF5100A3925D /* SHAlphCharlieBravo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlphCharlieBravo.h; sourceTree = "<group>"; };
+		273B92B923F9CF5100A3925D /* SHAlphCharlieBravo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlphCharlieBravo.m; sourceTree = "<group>"; };
+		273B92BB23F9CF8100A3925D /* SHAlphaBravoBravoAlpha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlphaBravoBravoAlpha.h; sourceTree = "<group>"; };
+		273B92BC23F9CF8100A3925D /* SHAlphaBravoBravoAlpha.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlphaBravoBravoAlpha.m; sourceTree = "<group>"; };
+		273B92BE23F9D0C700A3925D /* SHAlphaAlphaAlpha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlphaAlphaAlpha.h; sourceTree = "<group>"; };
+		273B92BF23F9D0C700A3925D /* SHAlphaAlphaAlpha.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlphaAlphaAlpha.m; sourceTree = "<group>"; };
+		273B92C123F9D0DE00A3925D /* SHAlphaAlphaAlphaAlpha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlphaAlphaAlphaAlpha.h; sourceTree = "<group>"; };
+		273B92C223F9D0DE00A3925D /* SHAlphaAlphaAlphaAlpha.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlphaAlphaAlphaAlpha.m; sourceTree = "<group>"; };
+		273B92C423F9D0F500A3925D /* SHAlphaAlphaAlphaBravo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlphaAlphaAlphaBravo.h; sourceTree = "<group>"; };
+		273B92C523F9D0F500A3925D /* SHAlphaAlphaAlphaBravo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlphaAlphaAlphaBravo.m; sourceTree = "<group>"; };
+		273B92C723F9D15900A3925D /* SHInheritanceFiles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHInheritanceFiles.h; sourceTree = "<group>"; };
+		273B92CB23F9D6F300A3925D /* SHInheritanceTreeTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHInheritanceTreeTest.m; sourceTree = "<group>"; };
 		273BF4D322093A5000B0D11E /* CoreDataTests2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataTests2.m; sourceTree = "<group>"; };
 		2747C531204A5DB000FB5669 /* TestUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2747C534204A5DB000FB5669 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -212,6 +260,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		273B929923F9C74900A3925D /* InheritanceTreeClasses */ = {
+			isa = PBXGroup;
+			children = (
+				273B929A23F9C79700A3925D /* SHAlpha.h */,
+				273B929B23F9C79700A3925D /* SHAlpha.m */,
+				273B929D23F9CD3800A3925D /* SHAlphaBravo.h */,
+				273B929E23F9CD3800A3925D /* SHAlphaBravo.m */,
+				273B92A023F9CD6600A3925D /* SHAlphaCharlie.h */,
+				273B92A123F9CD6600A3925D /* SHAlphaCharlie.m */,
+				273B92A323F9CE0900A3925D /* SHBravo.h */,
+				273B92A423F9CE0900A3925D /* SHBravo.m */,
+				273B92A623F9CE2700A3925D /* SHAlphaDelta.h */,
+				273B92A723F9CE2700A3925D /* SHAlphaDelta.m */,
+				273B92A923F9CEA900A3925D /* SHAlphaAlpha.h */,
+				273B92AA23F9CEA900A3925D /* SHAlphaAlpha.m */,
+				273B92AC23F9CEBF00A3925D /* SHAlphaBravoAlpha.h */,
+				273B92AD23F9CEBF00A3925D /* SHAlphaBravoAlpha.m */,
+				273B92AF23F9CED200A3925D /* SHAlphaBravoBravo.h */,
+				273B92B023F9CED200A3925D /* SHAlphaBravoBravo.m */,
+				273B92B223F9CEE300A3925D /* SHAlphaBravoCharlie.h */,
+				273B92B323F9CEE300A3925D /* SHAlphaBravoCharlie.m */,
+				273B92B523F9CF2D00A3925D /* SHAlphaCharlieAlpha.h */,
+				273B92B623F9CF2D00A3925D /* SHAlphaCharlieAlpha.m */,
+				273B92B823F9CF5100A3925D /* SHAlphCharlieBravo.h */,
+				273B92B923F9CF5100A3925D /* SHAlphCharlieBravo.m */,
+				273B92BB23F9CF8100A3925D /* SHAlphaBravoBravoAlpha.h */,
+				273B92BC23F9CF8100A3925D /* SHAlphaBravoBravoAlpha.m */,
+				273B92BE23F9D0C700A3925D /* SHAlphaAlphaAlpha.h */,
+				273B92BF23F9D0C700A3925D /* SHAlphaAlphaAlpha.m */,
+				273B92C123F9D0DE00A3925D /* SHAlphaAlphaAlphaAlpha.h */,
+				273B92C223F9D0DE00A3925D /* SHAlphaAlphaAlphaAlpha.m */,
+				273B92C423F9D0F500A3925D /* SHAlphaAlphaAlphaBravo.h */,
+				273B92C523F9D0F500A3925D /* SHAlphaAlphaAlphaBravo.m */,
+				273B92C723F9D15900A3925D /* SHInheritanceFiles.h */,
+			);
+			path = InheritanceTreeClasses;
+			sourceTree = "<group>";
+		};
 		2747C528204A5DB000FB5669 = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +358,7 @@
 		2747C56C204A62AE00FB5669 /* SHUnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				273B929923F9C74900A3925D /* InheritanceTreeClasses */,
 				2747C5B6204A646000FB5669 /* Helpers */,
 				2747C585204A62EC00FB5669 /* ARCTest.h */,
 				2747C57B204A62EA00FB5669 /* ARCTest.m */,
@@ -293,6 +380,7 @@
 				275DDF2321FE9EDA00F77AEF /* CoreDataTests.m */,
 				273BF4D322093A5000B0D11E /* CoreDataTests2.m */,
 				27B719442235F27700540542 /* TestDumbData.m */,
+				273B92CB23F9D6F300A3925D /* SHInheritanceTreeTest.m */,
 			);
 			path = SHUnitTests;
 			sourceTree = "<group>";
@@ -542,11 +630,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				273B92AB23F9CEA900A3925D /* SHAlphaAlpha.m in Sources */,
+				273B92BA23F9CF5100A3925D /* SHAlphCharlieBravo.m in Sources */,
+				273B92B723F9CF2D00A3925D /* SHAlphaCharlieAlpha.m in Sources */,
 				2747C539204A5DB000FB5669 /* ViewController.m in Sources */,
+				273B929F23F9CD3800A3925D /* SHAlphaBravo.m in Sources */,
+				273B92A823F9CE2700A3925D /* SHAlphaDelta.m in Sources */,
+				273B92C623F9D0F500A3925D /* SHAlphaAlphaAlphaBravo.m in Sources */,
 				2747C544204A5DB000FB5669 /* main.m in Sources */,
 				27C792442228A46600A92487 /* SHTestObserver.m in Sources */,
+				273B92C323F9D0DE00A3925D /* SHAlphaAlphaAlphaAlpha.m in Sources */,
+				273B92A223F9CD6600A3925D /* SHAlphaCharlie.m in Sources */,
+				273B929C23F9C79700A3925D /* SHAlpha.m in Sources */,
+				273B92A523F9CE0900A3925D /* SHBravo.m in Sources */,
+				273B92B423F9CEE300A3925D /* SHAlphaBravoCharlie.m in Sources */,
 				2747C536204A5DB000FB5669 /* AppDelegate.m in Sources */,
+				273B92B123F9CED200A3925D /* SHAlphaBravoBravo.m in Sources */,
 				27B719412235F1B900540542 /* DumbDataSaver.m in Sources */,
+				273B92C023F9D0C700A3925D /* SHAlphaAlphaAlpha.m in Sources */,
+				273B92BD23F9CF8100A3925D /* SHAlphaBravoBravoAlpha.m in Sources */,
+				273B92AE23F9CEBF00A3925D /* SHAlphaBravoAlpha.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,6 +680,7 @@
 				276E6DBC222A54E400CB36CB /* CoreDataTests.m in Sources */,
 				276E6DBD222A54E400CB36CB /* CoreDataTests2.m in Sources */,
 				27C791F52226DD9000A92487 /* EmptyTest.m in Sources */,
+				273B92CC23F9D6F300A3925D /* SHInheritanceTreeTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,11 +11,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHInheritanceTreeNode<NodeStorage> : NSObject
-@property (strong, nonatomic) Class key;
+@interface SHInheritanceTreeNode<NodeKey, NodeStorage> : NSObject
+@property (strong, nonatomic) NodeKey key;
 @property (strong, nonatomic) NodeStorage storedObject;
-@property (readonly, nonatomic) NSMutableArray<SHInheritanceTreeNode<NodeStorage>*> *children;
--(instancetype)initWithKey:(Class)key withStoredObject:(NodeStorage)storedObject;
+@property (readonly, nonatomic) NSMutableArray<SHInheritanceTreeNode<NodeKey,NodeStorage>*> *children;
+-(instancetype)initWithKey:(NodeKey)key withStoredObject:(NodeStorage)storedObject;
 @end
 
 NS_ASSUME_NONNULL_END
