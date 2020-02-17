@@ -63,19 +63,9 @@
 	if(proxy) {
 		return proxy;
 	}
-	NSArray<Class<UIAppearance>> *classes = self.proxyContainer
-		.appearanceProxies.allKeys;
-	NSMutableArray<Class<UIAppearance>> *matches = [NSMutableArray array];
-	for (Class<UIAppearance> cls in classes) {
-		
-	}
-	proxy = self.proxyContainer
-		.appearanceProxies[self.viewController.class];
+	proxy = [self.proxyContainer.appearanceProxies findMatch:self.viewController.class];
 	
-	if(proxy) {
-		return proxy;
-	}
-	return nil;
+	return proxy;
 }
 
 

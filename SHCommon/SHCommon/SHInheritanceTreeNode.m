@@ -27,6 +27,14 @@
 	return self;
 }
 
+
+-(NSString*)description {
+	NSString *formattedChildren = [self.children componentsJoinedByString:@",\n"];
+	NSString *desc = [NSString stringWithFormat:@"{\n\tkey: %@,\n\tvalue: %@,\n\tchildren: [\n\t%@\n\t]\n\t}",
+		self.key, self.storedObject, formattedChildren];
+	return desc;
+}
+
 @end
 
 

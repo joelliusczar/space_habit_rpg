@@ -16,9 +16,15 @@
 
 
 @synthesize appearanceProxies = _appearanceProxies;
--(SHAppearanceProxyDict*)appearanceProxies {
+-(SHAppearanceProxyTree*)appearanceProxies {
 	if(nil == _appearanceProxies) {
-		_appearanceProxies = [NSMutableDictionary dictionary];
+		_appearanceProxies = [[SHInheritanceTree<Class, SHViewControllerAppearanceProxy *> alloc]
+			initWithCompareFunction:^BOOL(Class a, Class b){
+			return [a isSubclassOfClass: b];
+		}
+		withExactMatchFunction:^BOOL(Class a, Class b){
+			return a == b;
+		}];
 	}
 	return _appearanceProxies;
 }

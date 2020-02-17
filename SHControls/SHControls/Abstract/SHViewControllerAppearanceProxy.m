@@ -15,7 +15,12 @@
 
 @implementation SHViewControllerAppearanceProxy
 
-
+-(NSMutableArray<NSInvocation*>*)invocations {
+	if(nil == _invocations) {
+		_invocations = [NSMutableArray array];
+	}
+	return _invocations;
+}
 
 -(UIColor*)viewBackgroundColor {
 	return nil;
@@ -26,6 +31,7 @@
 	NSMethodSignature *signature = [self.reference methodSignatureForSelector:@selector(setViewBackgroundColor:)];
 	
 	NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
+	[invocation setSelector:@selector(setViewBackgroundColor:)];
 	[invocation setArgument:&viewBackgroundColor atIndex:2];
 	[invocation retainArguments];
 	[self.invocations addObject:invocation];

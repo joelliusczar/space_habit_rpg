@@ -12,9 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHInheritanceTree<NodeKey, NodeStorage> : NSObject
 @property (copy, nonatomic) BOOL (^isAChildOfB)(NodeKey a, NodeKey b);
--(NodeStorage)findMatch:(id)key;
--(void)addObject:(NodeStorage)object withKey:(id)key;
--(instancetype)initWithCompareFunction:(BOOL (^)(NodeKey a, NodeKey b))isAChildOfB;
+@property (copy, nonatomic) BOOL (^isExactMatch)(NodeKey a, NodeKey b);
+-(NodeStorage)findMatch:(NodeKey)key;
+-(NodeStorage)findExactMatch:(NodeKey)key;
+-(void)addObject:(NodeStorage)object withKey:(NodeKey)key;
+-(instancetype)initWithCompareFunction:(BOOL (^)(NodeKey a, NodeKey b))isAChildOfB
+	withExactMatchFunction:(BOOL (^)(NodeKey a, NodeKey b))isExactMatch;
 @end
 
 NS_ASSUME_NONNULL_END

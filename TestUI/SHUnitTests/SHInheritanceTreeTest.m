@@ -27,8 +27,12 @@
 
 
 -(void)testTreeSingleClass {
-	SHInheritanceTree *tree = [[SHInheritanceTree<Class, NSString *> alloc] initWithCompareFunction:^BOOL(Class a, Class b){
+	SHInheritanceTree *tree = [[SHInheritanceTree<Class, NSString *> alloc]
+		initWithCompareFunction:^BOOL(Class a, Class b){
 		return [a isSubclassOfClass: b];
+	}
+	withExactMatchFunction:^BOOL(Class a, Class b){
+		return a == b;
 	}];
 	
 	[tree addObject:@"hoothoot" withKey:SHAlpha.class];
@@ -50,8 +54,12 @@
 
 
 -(void)testOneLevelTree {
-	SHInheritanceTree *tree = [[SHInheritanceTree<Class, NSString *> alloc] initWithCompareFunction:^BOOL(Class a, Class b){
+	SHInheritanceTree *tree = [[SHInheritanceTree<Class, NSString *> alloc]
+		initWithCompareFunction:^BOOL(Class a, Class b){
 		return [a isSubclassOfClass: b];
+	}
+	withExactMatchFunction:^BOOL(Class a, Class b){
+		return a == b;
 	}];
 	[tree addObject:@"hoothoot" withKey:SHAlpha.class];
 	//[tree addObject:@"derp" withKey:SHAlphaAlpha.class];
@@ -87,8 +95,12 @@
 }
 
 -(void)testMultiLevel {
-	SHInheritanceTree *tree = [[SHInheritanceTree<Class, NSString *> alloc] initWithCompareFunction:^BOOL(Class a, Class b){
+	SHInheritanceTree *tree = [[SHInheritanceTree<Class, NSString *> alloc]
+		initWithCompareFunction:^BOOL(Class a, Class b){
 		return [a isSubclassOfClass: b];
+	}
+	withExactMatchFunction:^BOOL(Class a, Class b){
+		return a == b;
 	}];
 	[tree addObject:@"hoothoot" withKey:SHAlpha.class];
 	//[tree addObject:@"derp" withKey:SHAlphaAlpha.class];

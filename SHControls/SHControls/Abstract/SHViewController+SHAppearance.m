@@ -39,11 +39,11 @@ static SHVCProxyContainer *_proxyContainerByClass = nil;
 
 +(instancetype)appearance {
 	SHViewControllerAppearanceProxy *proxy =
-		self.proxyContainer.appearanceProxies[self.class];
+		[self.proxyContainer.appearanceProxies findExactMatch:self.class];
 	if(nil == proxy) {
 		SHViewController *reference = self.proxyContainer.reference;
 		proxy = [[SHViewControllerAppearanceProxy alloc] initWithReference:reference];
-		self.proxyContainer.appearanceProxies[(id<NSCopying>)self.class] = proxy;
+		[self.proxyContainer.appearanceProxies addObject:proxy withKey:self.class];
 	}
 	return proxy;
 }

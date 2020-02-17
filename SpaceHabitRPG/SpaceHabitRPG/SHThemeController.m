@@ -85,12 +85,7 @@ static void _SH_setTextViewBorderSpecialCase(UIColor *background) {
 	_SH_setSliderTheme(textBorder);
 	[UIButton.appearance setTitleColor:text forState:UIControlStateNormal];
 	_SH_setTextViewBorderSpecialCase(background);
-	
-//	[UIView appearanceWhenContainedInInstancesOfClasses:
-//		@[SHSpinPicker.class, SHRateSelectionViewController.class]]
-//			.backgroundColor = UIColor.redColor;//transparentBackground;
-	
-	//[SHSpinPicker appearanceWhenContainedInInstancesOfClasses:@[SHCentralViewController.class]].pickerBackground = background;
+	SHSpinPicker.appearance.viewBackgroundColor = transparentBackground;
 }
 
 

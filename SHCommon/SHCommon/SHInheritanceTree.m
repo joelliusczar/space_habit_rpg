@@ -17,9 +17,12 @@
 @implementation SHInheritanceTree
 
 
--(instancetype)initWithCompareFunction:(BOOL (^)(id a, id b))isAChildOfB {
+-(instancetype)initWithCompareFunction:(BOOL (^)(id a, id b))isAChildOfB
+	withExactMatchFunction:(BOOL (^)(id a, id b))isExactMatch
+{
 	if(self = [super init]) {
 		_isAChildOfB = isAChildOfB;
+		_isExactMatch = isExactMatch;
 	}
 	return self;
 }
@@ -44,6 +47,23 @@ static id _findMatch(id key, SHInheritanceTreeNode *root, id lastBestMatch,
 	return _findMatch(key, self.root, nil, self.isAChildOfB);
 }
 
+
+static id _findExactMatch(id key, SHInheritanceTreeNode *root,
+ BOOL (^isExactMatch)(id a, id b))
+{
+	if(isExactMatch(key, root.key)) return root.storedObject;
+	for (SHInheritanceTreeNode *child in root.children) {
+		id match = _findExactMatch(key, child, isExactMatch);
+		if(match) return match;
+	}
+	return nil;
+}
+
+-(id)findExactMatch:(id)key {
+	if(nil == self.root) return nil;
+	return _findExactMatch(key, self.root, self.isExactMatch);
+}
+
 static BOOL _addObjectHelper(id object, id key, SHInheritanceTreeNode *root,
 	BOOL (^isAChildOfB)(id a, id b))
 {
@@ -65,6 +85,11 @@ static BOOL _addObjectHelper(id object, id key, SHInheritanceTreeNode *root,
 		return;
 	}
 	_addObjectHelper(object, key, self.root, self.isAChildOfB);
+}
+
+
+-(NSString*)description {
+	return self.root.description;
 }
 
 
