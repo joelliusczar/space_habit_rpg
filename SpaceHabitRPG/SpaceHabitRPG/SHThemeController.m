@@ -77,7 +77,6 @@ static void _SH_setTextViewBorderSpecialCase(UIColor *background) {
 	UILabel.appearance.textColor = text;
 	SHViewController.appearance.viewBackgroundColor = background;
 	[UIView appearanceWhenContainedInInstancesOfClasses:@[SHIntroViewController.class]].backgroundColor = background;
-	//[UIView appearanceWhenContainedInInstancesOfClasses:@[SHCentralViewController.class]].backgroundColor = background;
 	UITableView.appearance.backgroundColor = background;
 	UITabBar.appearance.barTintColor = background;
 	_SH_setTextViewTheme(text, textBorder);
@@ -86,6 +85,8 @@ static void _SH_setTextViewBorderSpecialCase(UIColor *background) {
 	[UIButton.appearance setTitleColor:text forState:UIControlStateNormal];
 	_SH_setTextViewBorderSpecialCase(background);
 	SHSpinPicker.appearance.viewBackgroundColor = transparentBackground;
+	SHRateSetterView.appearance.textColor = text;
+	SHDayOption.defaultBackgroundColor = background;
 }
 
 

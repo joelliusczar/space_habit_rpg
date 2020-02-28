@@ -29,6 +29,9 @@ NS_ASSUME_NONNULL_BEGIN
 -(UIImage *)drawMinus;
 -(UIImage *)drawForwardArrow;
 -(UIImage *)drawBackArrow;
+-(UIImage *)drawForwardArrow2;
+-(UIImage *)drawBackArrow2;
+-(UIImage *)drawBlank;
 @end
 
 NS_ASSUME_NONNULL_END

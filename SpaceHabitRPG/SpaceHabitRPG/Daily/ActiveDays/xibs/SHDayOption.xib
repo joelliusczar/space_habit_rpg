@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -51,8 +49,6 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="ZEl-Fn-cDo"/>
             <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="image" keyPath="onImage" value="day_check_sm"/>
-                <userDefinedRuntimeAttribute type="image" keyPath="offImage" value="day_uncheck"/>
                 <userDefinedRuntimeAttribute type="boolean" keyPath="isOn" value="YES"/>
             </userDefinedRuntimeAttributes>
             <connections>
@@ -61,8 +57,4 @@
             <point key="canvasLocation" x="303.19999999999999" y="-406.59670164917543"/>
         </view>
     </objects>
-    <resources>
-        <image name="day_check_sm" width="37" height="37"/>
-        <image name="day_uncheck" width="50" height="50"/>
-    </resources>
 </document>

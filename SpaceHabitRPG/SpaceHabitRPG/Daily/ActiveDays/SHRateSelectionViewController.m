@@ -24,12 +24,14 @@ const NSInteger YEARLY_SELECTION = 3;
 
 @implementation SHRateSelectionViewController
 
+-(void)setViewBackgroundColor:(UIColor *)viewBackgroundColor {
+	super.viewBackgroundColor = viewBackgroundColor;
+	self.intervalSetter.backgroundColor = viewBackgroundColor;
+}
+
 -(SHWeeklyActiveDaysViewController*)weeklyActiveDaysViewController{
-	if(nil == _weeklyActiveDaysViewController){
-		NSBundle *bundle = [NSBundle bundleForClass:SHWeeklyActiveDaysViewController.class];
-		_weeklyActiveDaysViewController = [[SHWeeklyActiveDaysViewController alloc]
-			initWithNibName:@"SHWeeklyActiveDaysFull"
-			bundle:bundle];
+	if(nil == _weeklyActiveDaysViewController) {
+		_weeklyActiveDaysViewController = [SHWeeklyActiveDaysViewController newWithDefaultNib];
 		_weeklyActiveDaysViewController.weeklyActiveDays = self.activeDays.weeklyActiveDays;
 		_weeklyActiveDaysViewController.valueChangeDelegate = self;
 	}
@@ -66,11 +68,16 @@ const NSInteger YEARLY_SELECTION = 3;
 		SHRateSelectionViewController *bSelf = weakSelf;
 		[bSelf rateStepEvent:stepper event:e];
 	};
+}
+
+
+-(void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
 	SHIconBuilder *builder = [[SHIconBuilder alloc] initWithColor:UIColor.grayColor
-		withBackgroundColor:UIColor.blackColor
+		withBackgroundColor:self.viewBackgroundColor
 		withSize:CGSizeMake(30, 30)
-		withThickness:4];
-	UIImage *backImg = [builder drawBackArrow];
+		withThickness:5];
+	UIImage *backImg = [builder drawBackArrow2];
 	[self.backButton setImage:backImg forState:UIControlStateNormal];
 }
 

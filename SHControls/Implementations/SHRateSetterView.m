@@ -24,8 +24,8 @@
 
 
 -(void)setTextColor:(UIColor *)textColor {
-	[self _simpleSetTextColor:textColor];
-	[self redrawButtons];
+	_textColor = textColor;
+	self.intervalLabel.textColor = textColor;
 }
 
 
@@ -63,17 +63,6 @@
 }
 
 
--(void)_simpleSetTextColor: (UIColor *)color {
-	_textColor = color;
-	self.intervalLabel.textColor = color;
-}
-
-
--(void)setupCustomOptions{
-	[super setupCustomOptions];
-}
-
-
 -(void)updateLabelTextWithInterval:(NSInteger)intervalValue{
 	NSString *useFormatString = intervalValue == 1 ?
 		self.labelSingularFormatString :
@@ -106,27 +95,10 @@
 }
 
 
--(BOOL)_simpleSetBackgroundColor:(UIColor *)backgroundColor {
-	super.backgroundColor = backgroundColor;
-	if(nil == self.rateStep) return false;
-	self.intervalLabel.backgroundColor = backgroundColor;
-	self.rateStep.backgroundColor = backgroundColor;
-	return YES;
-}
-
-
--(void)setBackgroundColor:(UIColor *)backgroundColor {
-	if(![self _simpleSetBackgroundColor:backgroundColor]) return;
+-(void)layoutIfNeeded {
 	[self redrawButtons];
+	[super layoutIfNeeded];
 }
-
-
--(void)setColors:(UIColor *)background text:(UIColor *)textColor {
-	[self _simpleSetBackgroundColor:background];
-	[self _simpleSetTextColor:textColor];
-	[self redrawButtons];
-}
-
 
 
 @end

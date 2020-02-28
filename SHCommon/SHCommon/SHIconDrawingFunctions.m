@@ -10,6 +10,8 @@
 #import <math.h>
 
 
+
+
 void shDrawHSegment(const CGRect *bounds, CGContextRef ctx, CGFloat thickness) {
 	CGFloat xOffset = bounds->size.width * .1;
 	CGFloat yOffset = thickness;
@@ -141,4 +143,40 @@ void shDrawArrow(const CGRect *bounds, CGContextRef ctx, CGFloat thickness) {
 	CGContextAddLines(ctx, points, 7);
 
 	CGContextFillPath(ctx);
+}
+
+
+void shDrawArrow2(const CGRect *bounds, CGContextRef ctx, CGFloat thickness) {
+
+	CGFloat w = bounds->size.width;
+	CGFloat h = bounds->size.height;
+	CGFloat angle = M_PI / 4;
+	CGFloat slope = tan(angle);
+	CGFloat outsideLine = sqrt(.01 * w * w + .36 * h * h);
+	
+	CGFloat leg = sin(angle) * thickness;
+	CGFloat insideLine = outsideLine - leg;
+
+	int32_t len = 7;
+	CGPoint points[len];
+
+	points[0] = CGPointMake(0, 0);
+	points[1] = calcNextSlopePoint(&points[0], leg, -slope);
+	points[2] = calcNextSlopePoint(&points[1], outsideLine, slope);
+	points[3] = calcNextSlopePoint(&points[2], -outsideLine, -slope);
+	points[4] = calcNextSlopePoint(&points[3], -leg, slope);
+	
+	points[5] = calcNextSlopePoint(&points[4], insideLine, -slope);
+
+	points[6] = points[0];
+
+	CGContextTranslateCTM(ctx, CGRectGetMidX(*bounds) -(points[2].x ) + points[5].x, CGRectGetMidY(*bounds) - points[2].y);
+	CGContextAddLines(ctx, points, 7);
+
+	CGContextFillPath(ctx);
+}
+
+
+void shDrawBlank(const CGRect *bounds, CGContextRef ctx, CGFloat thickness) {
+	(void)bounds; (void)ctx; (void)thickness;
 }

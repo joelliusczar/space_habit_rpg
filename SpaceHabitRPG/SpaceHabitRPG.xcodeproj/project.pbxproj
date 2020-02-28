@@ -22,7 +22,7 @@
 		270F97E72392440600479E77 /* SHIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270F97E62392440600479E77 /* SHIntroViewController.m */; };
 		270F97E92392442200479E77 /* SHIntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 270F97E82392442200479E77 /* SHIntroViewController.xib */; };
 		270F980A2392453A00479E77 /* SHYearlyActiveDaysViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270F97EF2392453A00479E77 /* SHYearlyActiveDaysViewController.m */; };
-		270F980B2392453A00479E77 /* SHWeeklyActiveDaysFull.xib in Resources */ = {isa = PBXBuildFile; fileRef = 270F97F12392453A00479E77 /* SHWeeklyActiveDaysFull.xib */; };
+		270F980B2392453A00479E77 /* SHWeeklyActiveDaysViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 270F97F12392453A00479E77 /* SHWeeklyActiveDaysViewController.xib */; };
 		270F980D2392453A00479E77 /* SHDayOption.xib in Resources */ = {isa = PBXBuildFile; fileRef = 270F97F32392453A00479E77 /* SHDayOption.xib */; };
 		270F980E2392453A00479E77 /* SHLinkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 270F97F42392453A00479E77 /* SHLinkViewController.xib */; };
 		270F980F2392453A00479E77 /* SHRateSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 270F97F52392453A00479E77 /* SHRateSelectionViewController.xib */; };
@@ -135,7 +135,7 @@
 		270F97E62392440600479E77 /* SHIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHIntroViewController.m; sourceTree = "<group>"; };
 		270F97E82392442200479E77 /* SHIntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SHIntroViewController.xib; path = SpaceHabitRPG/xibs_/SHIntroViewController.xib; sourceTree = SOURCE_ROOT; };
 		270F97EF2392453A00479E77 /* SHYearlyActiveDaysViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHYearlyActiveDaysViewController.m; path = ../SHYearlyActiveDaysViewController.m; sourceTree = "<group>"; };
-		270F97F12392453A00479E77 /* SHWeeklyActiveDaysFull.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHWeeklyActiveDaysFull.xib; sourceTree = "<group>"; };
+		270F97F12392453A00479E77 /* SHWeeklyActiveDaysViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHWeeklyActiveDaysViewController.xib; sourceTree = "<group>"; };
 		270F97F32392453A00479E77 /* SHDayOption.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHDayOption.xib; sourceTree = "<group>"; };
 		270F97F42392453A00479E77 /* SHLinkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHLinkViewController.xib; sourceTree = "<group>"; };
 		270F97F52392453A00479E77 /* SHRateSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHRateSelectionViewController.xib; sourceTree = "<group>"; };
@@ -305,7 +305,7 @@
 		270F97F02392453A00479E77 /* xibs */ = {
 			isa = PBXGroup;
 			children = (
-				270F97F12392453A00479E77 /* SHWeeklyActiveDaysFull.xib */,
+				270F97F12392453A00479E77 /* SHWeeklyActiveDaysViewController.xib */,
 				270F97F32392453A00479E77 /* SHDayOption.xib */,
 				270F97F52392453A00479E77 /* SHRateSelectionViewController.xib */,
 			);
@@ -637,7 +637,7 @@
 			files = (
 				27BBD51B2392EB5600311711 /* SHHabitViewController.xib in Resources */,
 				270F980E2392453A00479E77 /* SHLinkViewController.xib in Resources */,
-				270F980B2392453A00479E77 /* SHWeeklyActiveDaysFull.xib in Resources */,
+				270F980B2392453A00479E77 /* SHWeeklyActiveDaysViewController.xib in Resources */,
 				27BBD51F2392EBE000311711 /* SHBattleStatsViewController.xib in Resources */,
 				270F980F2392453A00479E77 /* SHRateSelectionViewController.xib in Resources */,
 				272D83CC23AEAC2800D946D3 /* SHEditNavigationController.xib in Resources */,

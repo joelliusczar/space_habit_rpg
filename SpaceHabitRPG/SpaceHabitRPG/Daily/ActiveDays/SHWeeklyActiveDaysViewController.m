@@ -42,6 +42,21 @@
 }
 
 
+-(void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	SHIconBuilder *builder = [[SHIconBuilder alloc] initWithColor:UIColor.grayColor
+		withBackgroundColor:self.viewBackgroundColor
+		withSize:CGSizeMake(50, 50)
+		withThickness:10];
+	UIImage *check = [builder drawCheck];
+	for(int i = 0; i < 7; i++){
+		NSLog(@"set img");
+		self.activeDaySwitches[i].onImage = check;
+		[self.activeDaySwitches[i] refreshImage];
+	}
+}
+
+
 -(void)onBeginTap_action:(SHView *)sender withEvent:(UIEvent*)event{
 	(void)sender; (void)event;
 	SHDayOption *dayOption = (SHDayOption *)sender;

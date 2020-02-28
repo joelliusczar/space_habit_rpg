@@ -21,5 +21,7 @@ void shDrawCheck(const CGRect *bounds, CGContextRef ctx, CGFloat thickness);
 void shDrawSlash(const CGSize *size, CGContextRef ctx, CGFloat thickness, CGPoint startPoint, CGFloat slope);
 void shDrawX(const CGRect *bounds, CGContextRef ctx, CGFloat thickness);
 void shDrawArrow(const CGRect *bounds, CGContextRef ctx, CGFloat thickness);
+void shDrawArrow2(const CGRect *bounds, CGContextRef ctx, CGFloat thickness);
+void shDrawBlank(const CGRect *bounds, CGContextRef ctx, CGFloat thickness);
 
 #endif /* SHIconDrawingFunctions_h */

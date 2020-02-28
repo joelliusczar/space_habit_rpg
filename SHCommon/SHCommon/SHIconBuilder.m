@@ -35,8 +35,6 @@ UIImage * drawShape(SHIconBuilder *builder, shDrawShapeFn fn) {
 	UIGraphicsImageRenderer *renderer = [[UIGraphicsImageRenderer alloc]
 		initWithSize:builder.size
 		format:UIGraphicsImageRendererFormat.preferredFormat];
-//	NSLog(@"%d",renderer.allowsImageOutput);
-//	NSLog(@"%@",renderer.format);
 	UIImage *img = [renderer imageWithActions:^(UIGraphicsImageRendererContext *context){
 		CGRect bounds = renderer.format.bounds;
 		CGContextRef ctx = context.CGContext;
@@ -45,7 +43,6 @@ UIImage * drawShape(SHIconBuilder *builder, shDrawShapeFn fn) {
 		CGContextSetFillColorWithColor(ctx, builder.color.CGColor);
 		fn(&bounds, ctx, builder.thickness);
 	}];
-	//NSLog(@"%@",img);
 	return [img imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 }
 
@@ -88,5 +85,20 @@ UIImage * drawShape(SHIconBuilder *builder, shDrawShapeFn fn) {
 }
 
 
+-(UIImage *)drawForwardArrow2 {
+	UIImage * img = drawShape(self, shDrawArrow2);
+	return img;
+}
+
+-(UIImage *)drawBackArrow2 {
+	UIImage * img = drawShape(self, shDrawArrow2);
+	return [img imageWithHorizontallyFlippedOrientation];
+}
+
+
+-(UIImage *)drawBlank {
+	UIImage *img = drawShape(self, shDrawBlank);
+	return img;
+}
 @end
 

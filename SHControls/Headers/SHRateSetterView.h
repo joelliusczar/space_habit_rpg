@@ -20,9 +20,10 @@ IB_DESIGNABLE
 @property (weak, nonatomic) IBOutlet UIStepper *rateStep;
 @property (weak, nonatomic) IBOutlet UILabel *intervalLabel;
 @property (copy, nonatomic) rateStepAction rateStepEvent;
-@property (strong, nonatomic) IBInspectable UIColor *textColor;
+@property (strong, nonatomic) IBInspectable UIColor *textColor UI_APPEARANCE_SELECTOR;
 @property (strong, nonatomic) IBInspectable NSString *labelPluralFormatString;
 @property (strong, nonatomic) IBInspectable NSString *labelSingularFormatString;
 @property (assign, nonatomic) IBInspectable NSInteger intervalSize;
 -(void)setColors:(UIColor *)background text:(UIColor *)textColor;
+-(void)redrawButtons;
 @end

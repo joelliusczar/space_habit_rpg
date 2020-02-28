@@ -41,8 +41,9 @@
 
 
 -(instancetype)initWithFrame:(CGRect)frame{
+	self = [self getTrueInstance];
 	if(self = [super initWithFrame:frame]){
-		[self viewAdditionalSetup];
+		[self setupCustomOptions];
 	}
 	return self;
 }
@@ -50,7 +51,8 @@
 
 -(instancetype)initWithCoder:(NSCoder *)coder{
 	if(self = [super initWithCoder:coder]){
-		[self viewAdditionalSetup];
+		self = [self getTrueInstance];
+		//[self setupCustomOptions];
 	}
 	return self;
 }
@@ -59,6 +61,23 @@
 -(instancetype)initEmpty{
 	if(self = [super initWithFrame:CGRectZero]){}
 	return self;
+}
+
+
+-(instancetype)getTrueInstance {
+//	SHView *instance = [self loadDefaultXib];
+//	if(instance) return instance;
+//	instance = self;
+//	return instance;
+return self;
+}
+
+
+-(id)awakeAfterUsingCoder:(NSCoder *)coder {
+	id instance = [self loadDefaultXib];
+	if(instance) return instance;
+	instance = self;
+	return instance;
 }
 
 
