@@ -18,10 +18,6 @@ FOUNDATION_EXPORT const unsigned char SHControlsVersionString[];
 #import "SHItemFlexibleListView.h"
 #import "SHViewController.h"
 #import "SHSpinPicker.h"
-#import "SHView.h"
-#import "SHViewProtocol.h"
-#import "SHTextField.h"
-#import "SHButton.h"
 #import "SHListItemCell.h"
 #import "SHSubtasksTableViewDelegateProtocol.h"
 #import "SHAddItemsFooterDelegateProtocol.h"
@@ -42,7 +38,6 @@ FOUNDATION_EXPORT const unsigned char SHControlsVersionString[];
 #import "UIView+Helpers.h"
 #import "UIViewController+Helper.h"
 #import "SHNestedControlProtocol.h"
-#import "SHViewEventsProtocol.h"
 #import "SHStatusBar.h"
 #import "SHScrollAnimator.h"
 

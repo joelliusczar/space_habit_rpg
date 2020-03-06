@@ -89,7 +89,7 @@
 }
 
 
--(IBAction)deleteBtn_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
+-(IBAction)deleteBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
 	(void)sender; (void)event;
 	[self confirmDelete];
 }
@@ -120,7 +120,7 @@
 	[self presentViewController:deleteAlert animated:YES completion:nil];
 }
 
--(IBAction)saveBtn_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
+-(IBAction)saveBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
 	(void)sender; (void)event;
 	if(self.itemNameInput.text.length){
 		[self.editingScreen saveEdit];
@@ -181,15 +181,6 @@
 
 -(void)beginUpdate{
 	[self.editingScreen.controlsTbl beginUpdates];
-}
-
-
--(void)scrollVisibleToControl:(SHView *)control{
-	NSUInteger rowNum = [self.editControls.controlList indexOfObject:control];
-	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:rowNum inSection:0];
-	[self.editingScreen.controlsTbl scrollToRowAtIndexPath:indexPath
-		atScrollPosition:UITableViewScrollPositionBottom
-		animated:YES];
 }
 
 

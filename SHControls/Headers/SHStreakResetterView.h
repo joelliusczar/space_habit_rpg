@@ -6,13 +6,12 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import "SHButton.h"
 #import "SHViewController.h"
 @import UIKit;
 
 IB_DESIGNABLE
 @interface SHStreakResetterView : SHViewController
 @property (weak,nonatomic) IBOutlet UILabel *streakCountLbl;
-@property (weak,nonatomic) IBOutlet SHButton *streakResetBtn;
+@property (weak,nonatomic) IBOutlet UIButton *streakResetBtn;
 @property (copy,nonatomic) void (^streakReset)(void);
 @end

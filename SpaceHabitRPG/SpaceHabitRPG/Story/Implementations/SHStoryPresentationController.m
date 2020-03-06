@@ -44,7 +44,7 @@
 {
 	SHConfig *config = [[SHConfig alloc] init];
 	if(config.storyMode == SH_STORY_MODE_FULL){
-		SHStoryDumpViewController *sdv = [SHStoryDumpViewController newWithDefaultNib];
+		SHStoryDumpViewController *sdv = [[SHStoryDumpViewController alloc] init];
 		sdv.storyItemObject = storyItem;
 		sdv.responseBlock = response; //gets called further down the line
 		[self.central arrangeAndPushChildVCToFront:sdv];

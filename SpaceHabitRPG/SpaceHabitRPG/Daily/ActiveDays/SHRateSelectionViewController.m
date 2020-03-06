@@ -26,7 +26,7 @@ const NSInteger YEARLY_SELECTION = 3;
 
 -(void)setViewBackgroundColor:(UIColor *)viewBackgroundColor {
 	super.viewBackgroundColor = viewBackgroundColor;
-	self.intervalSetter.backgroundColor = viewBackgroundColor;
+	self.intervalSetter.viewBackgroundColor = viewBackgroundColor;
 }
 
 -(SHWeeklyActiveDaysViewController*)weeklyActiveDaysViewController{
@@ -62,12 +62,14 @@ const NSInteger YEARLY_SELECTION = 3;
 
 -(void)viewDidLoad {
 	[super viewDidLoad];
+	[self pushChildVC:self.intervalSetter toViewOfParent:self.intervalContainer];
 	[self switchToActiveDaysViewController:self.rateType];
 	__weak SHRateSelectionViewController *weakSelf = self;
 	self.intervalSetter.rateStepEvent = ^(UIStepper *stepper,UIEvent *e){
 		SHRateSelectionViewController *bSelf = weakSelf;
 		[bSelf rateStepEvent:stepper event:e];
 	};
+
 }
 
 

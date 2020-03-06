@@ -106,7 +106,7 @@
 }
 
 
-- (IBAction)nextButton_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
+- (IBAction)nextButton_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
 	(void)sender; (void)event;
 	SHConfig *config = [[SHConfig alloc] init];
 	if(config.gameState == SH_GAME_STATE_UNINITIALIZED) {

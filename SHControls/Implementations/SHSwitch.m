@@ -21,13 +21,7 @@ static UIColor *_defaultBackgroundColor = nil;
 @synthesize isOn = _isOn;
 -(void)setIsOn:(BOOL)isOn{
 	_isOn = isOn;
-	if(self.mainView && [self.mainView isKindOfClass:SHSwitch.class]){
-		SHSwitch *shSwitch = (SHSwitch*)self.mainView;
-		shSwitch.isOn = isOn;
-	}
-	else{
-		[self setSwitchImageForState:_isOn];
-	}
+	[self setSwitchImageForState:_isOn];
 }
 
 -(BOOL)isOn{
@@ -87,16 +81,12 @@ static UIColor *_defaultBackgroundColor = nil;
 		return self.onImageColorInverted;
 	}
 #endif
-	NSLog(@"get image");
-	if(nil == _onImage) {
-		_onImage = self.class.defaultOnImage;
-	}
-	return _onImage;
+	return self.onImage;
 }
 
 
 +(UIImage*)defaultOffImage {
-	if(nil == _defaultOnImage) {
+	if(nil == _defaultOffImage) {
 		SHIconBuilder *builder = [[SHIconBuilder alloc] initWithColor:UIColor.grayColor
 			withBackgroundColor:self.defaultBackgroundColor
 			withSize:CGSizeMake(50, 50)
@@ -113,26 +103,41 @@ static UIColor *_defaultBackgroundColor = nil;
 		return self.offImageColorInverted;
 	}
 #endif
+	return self.offImage;
+}
+
+
+@synthesize onImage = _onImage;
+-(UIImage*)onImage {
+	if(nil == _onImage) {
+		_onImage = self.class.defaultOnImage;
+	}
+	return _onImage;
+}
+
+
+-(void)setOnImage:(UIImage *)onImage {
+	_onImageColorInverted = nil;
+	_onImage = onImage;
+	[self refreshImage];
+}
+
+
+@synthesize offImage = _offImage;
+-(UIImage*)offImage {
 	if(nil == _offImage) {
-		_offImage = self.class.defaultOffImage;
+		_offImage = self.class.defaultOffImage;;
 	}
 	return _offImage;
 }
 
 
--(void)setOnImage:(UIImage *)onImage {
-	NSLog(@"%@",onImage);
-	if(self.mainView) {
-		SHSwitch *mainView = (SHSwitch*)self.mainView;
-		mainView->_onImage = onImage;
-	}
-	_onImage = onImage;
-}
-
-
 -(void)setOffImage:(UIImage *)offImage {
+	_offImageColorInverted = nil;
 	_offImage = offImage;
+	[self refreshImage];
 }
+
 
 -(void)setSwitchImageForState:(BOOL)isOn{
 	if(isOn){
@@ -144,9 +149,9 @@ static UIColor *_defaultBackgroundColor = nil;
 	}
 }
 
+
 -(void)refreshImage{
 	[self setSwitchImageForState:self.isOn];
-	[self setNeedsLayout];
 }
 
  //Only override drawRect: if you perform custom drawing.
@@ -155,13 +160,22 @@ static UIColor *_defaultBackgroundColor = nil;
 //	[super drawRect:rect];
 //}
 
--(void)beginTap_action:(UITouch *)touch
+-(void)touchesBegan:(NSSet<UITouch *> *)touches
 	withEvent:(UIEvent *)event
 {
-	[super beginTap_action:touch withEvent:event];
+	(void)touches; (void)event;
 	 self.isOn = !self.isOn;
+	 if(self.onChange) {
+	 	self.onChange(self.isOn, self);
+	 }
 }
 
+
+//-(void)customNibViewSetup {
+//	if(![self.nibView isKindOfClass:SHSwitch.class]) return;
+//	SHSwitch *nibView = (SHSwitch *)self.nibView;
+//	nibView.currentImageHolder = self.currentImageHolder;
+//}
 
 
 @end

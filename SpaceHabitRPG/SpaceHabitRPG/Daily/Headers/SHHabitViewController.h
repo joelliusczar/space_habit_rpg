@@ -18,8 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHHabitViewController : SHViewController<UITableViewDelegate,
 	UITableViewDataSource,
-	SHViewEventsProtocol,
-	NSFetchedResultsControllerDelegate>
+	NSFetchedResultsControllerDelegate,
+	UIGestureRecognizerDelegate>
 @property (weak, nonatomic) SHCentralViewController *central;
 @property (strong, nonatomic) NSManagedObjectContext *context;
 @property (strong, nonatomic) NSFetchedResultsController *habitItemsFetcher;
@@ -27,8 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
 /*addHabitBtn is a view rather than a button because I wanted it to have nested
 	elements
 */
-@property (strong, nonatomic) IBOutlet SHView *addHabitBtn;
+@property (strong, nonatomic) IBOutlet UIView *addHabitBtn;
 @property (strong, nonatomic) IBOutlet UIImageView *addHabitBtnIcon;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *addHabitGesture;
 @property (copy, nonatomic) void (^onOpenAddHabit)(void);
 -(instancetype)initWithCentral:(SHCentralViewController *)central
 	withContext:(NSManagedObjectContext*)context;

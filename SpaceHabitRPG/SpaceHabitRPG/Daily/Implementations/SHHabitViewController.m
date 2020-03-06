@@ -61,7 +61,7 @@
 	[self.habitTable.topAnchor constraintEqualToAnchor:self.addHabitBtn.bottomAnchor].active = YES;
 	self.habitTable.delegate = self;
 	self.habitTable.dataSource = self;
-	self.addHabitBtn.eventDelegate = self;
+	[self.addHabitGesture addTarget:self action:@selector(onAddHabitTap_action:)];
 	SHIconBuilder * iconBuilder = [[SHIconBuilder alloc] initWithColor:UIColor.whiteColor
 		withBackgroundColor:[UIColor colorWithRed:36.0/255.0 green:126.0/255.0 blue:217.0/255.0 alpha:1]
 		withSize:CGSizeMake(50, 50)
@@ -181,8 +181,8 @@
 }
 
 
--(void)onBeginTap_action:(SHView *)sender withEvent:(UIEvent*)event {
-	(void)sender; (void)event;
+-(void)onAddHabitTap_action:(UIGestureRecognizer *)recognizer {
+	(void)recognizer;
 	[self openEditor];
 	if(self.onOpenAddHabit) {
 		self.onOpenAddHabit();
@@ -312,5 +312,7 @@ This will be called the user creates a new habit, checks it off, or deletes one
 	(void)tableView;
 	@throw [NSException abstractException];
 }
+
+
 
 @end

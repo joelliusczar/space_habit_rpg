@@ -295,8 +295,8 @@
 		270F97EE2392453A00479E77 /* ActiveDays */ = {
 			isa = PBXGroup;
 			children = (
-				272D831B239C1F3F00D946D3 /* Implementations */,
 				272D8319239C1F3100D946D3 /* Headers */,
+				272D831B239C1F3F00D946D3 /* Implementations */,
 				270F97F02392453A00479E77 /* xibs */,
 			);
 			path = ActiveDays;

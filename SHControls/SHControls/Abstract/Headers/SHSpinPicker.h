@@ -8,7 +8,6 @@
 
 @import UIKit;
 #import "SHViewController.h"
-#import "SHButton.h"
 #import "SHSpinPicker.h"
 
 
@@ -20,7 +19,7 @@ typedef void (^shSpinPickerAction)(SHSpinPicker *,BOOL *);
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
 @property (copy, nonatomic) shSpinPickerAction spinPickerAction;
 @property (strong, nonatomic) UIColor *pickerBackground UI_APPEARANCE_SELECTOR;
--(IBAction)pickerSelectBtn_press_action:(SHButton *)sender
+-(IBAction)pickerSelectBtn_press_action:(UIButton *)sender
 	forEvent:(UIEvent *)event;
 -(void)animateInvalidSelection;
 -(NSInteger)selectedRowInComponent:(NSInteger)component;

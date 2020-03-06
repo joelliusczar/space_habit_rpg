@@ -25,8 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, nonatomic) SHHierarchyDict *appearanceClassHierarchyTracker;
 @property (readonly, nonatomic) SHTraitProxyDict *proxyOnTraitTracker;
 @property (readonly, nonatomic) SHHierarchyTraitDict *traitHierarchyTracker;
-@property (strong, nonatomic) SHViewController *reference;
--(instancetype)initWithReference:(SHViewController *)reference;
+
 @end
 
 NS_ASSUME_NONNULL_END

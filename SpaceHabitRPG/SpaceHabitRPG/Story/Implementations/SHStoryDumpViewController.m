@@ -69,7 +69,7 @@
 		// Dispose of any resources that can be recreated.
 }
 
-- (IBAction)doneBtn_pressed_action:(SHButton *)sender forEvent:(UIEvent *)event {
+- (IBAction)doneBtn_pressed_action:(UIButton *)sender forEvent:(UIEvent *)event {
 		if(self.responseBlock){
 			self.responseBlock(self);
 		}

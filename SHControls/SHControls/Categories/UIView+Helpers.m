@@ -141,7 +141,7 @@ that it would be a pain in the ass to add back if I change my mind.
 		@try {
 			NSArray *nibs = [bundle loadNibNamed:nibName owner:self options:nil];
 			if(nibs.count > 0) {
-				return [bundle loadNibNamed:nibName owner:self options:nil][0];
+				return nibs[0];
 			}
 		return nil;
 		}

@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SHRateSelectionViewController : SHViewController<SHWeeklyActiveDayChangesProtocol>
 @property (strong, nonatomic) IBOutlet SHViewController *rateActiveDaysViewController;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *rateSelector;
+@property (weak, nonatomic) IBOutlet UIView *intervalContainer;
 @property (strong, nonatomic) SHWeeklyActiveDaysViewController *weeklyActiveDaysViewController;
 @property (strong, nonatomic) SHMonthlyActiveDaysViewController *monthlyActiveDaysViewController;
 @property (strong, nonatomic) SHYearlyActiveDaysViewController *yearlyActiveDaysViewController;

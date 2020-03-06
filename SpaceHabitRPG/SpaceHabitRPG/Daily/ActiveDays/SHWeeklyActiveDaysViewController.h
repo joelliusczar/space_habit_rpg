@@ -23,16 +23,16 @@
 
 IB_DESIGNABLE
 @interface SHWeeklyActiveDaysViewController :
-	SHViewController<SHNestedControlProtocol,
-	SHViewEventsProtocol>
-@property (strong,nonatomic) NSArray<SHDayOption*> *activeDaySwitches;
-@property (strong,nonatomic) IBOutlet SHDayOption *day0Switch;
-@property (strong,nonatomic) IBOutlet SHDayOption *day1Switch;
-@property (strong,nonatomic) IBOutlet SHDayOption *day2Switch;
-@property (strong,nonatomic) IBOutlet SHDayOption *day3Switch;
-@property (strong,nonatomic) IBOutlet SHDayOption *day4Switch;
-@property (strong,nonatomic) IBOutlet SHDayOption *day5Switch;
-@property (strong,nonatomic) IBOutlet SHDayOption *day6Switch;
+	SHViewController<SHNestedControlProtocol>
+@property (strong, nonatomic) IBOutletCollection(SHDayOption) NSArray<SHDayOption*> *activeDaySwitches;
+@property (strong, nonatomic) NSArray<UIView*> *dayOptionViews;
+@property (strong,nonatomic) IBOutlet UIView *day0Switch;
+@property (strong,nonatomic) IBOutlet UIView *day1Switch;
+@property (strong,nonatomic) IBOutlet UIView *day2Switch;
+@property (strong,nonatomic) IBOutlet UIView *day3Switch;
+@property (strong,nonatomic) IBOutlet UIView *day4Switch;
+@property (strong,nonatomic) IBOutlet UIView *day5Switch;
+@property (strong,nonatomic) IBOutlet UIView *day6Switch;
 @property (assign,nonatomic) NSInteger weekStartDay;
 @property (assign,nonatomic) IBOutlet id<SHWeeklyActiveDayChangesProtocol> valueChangeDelegate;
 @property (strong,nonatomic) SHWeeklyRateItemList *weeklyActiveDays;

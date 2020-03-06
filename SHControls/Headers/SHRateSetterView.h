@@ -6,7 +6,6 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import "SHSwitch.h"
 #import "SHView.h"
 #import "SHNestedControlProtocol.h"
 #import "SHViewController.h"
@@ -16,7 +15,7 @@
 typedef void(^rateStepAction)(UIStepper*,UIEvent *);
 
 IB_DESIGNABLE
-@interface SHRateSetterView : SHView
+@interface SHRateSetterView : SHViewController
 @property (weak, nonatomic) IBOutlet UIStepper *rateStep;
 @property (weak, nonatomic) IBOutlet UILabel *intervalLabel;
 @property (copy, nonatomic) rateStepAction rateStepEvent;
@@ -24,6 +23,5 @@ IB_DESIGNABLE
 @property (strong, nonatomic) IBInspectable NSString *labelPluralFormatString;
 @property (strong, nonatomic) IBInspectable NSString *labelSingularFormatString;
 @property (assign, nonatomic) IBInspectable NSInteger intervalSize;
--(void)setColors:(UIColor *)background text:(UIColor *)textColor;
 -(void)redrawButtons;
 @end

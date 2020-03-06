@@ -7,14 +7,25 @@
 //
 
 #import "SHRateSetterView.h"
+#import "UIView+Helpers.h"
 @import SHCommon;
 
 
 @interface SHRateSetterView ()
+
 @end
 
 @implementation SHRateSetterView
 
+
+-(void)loadView {
+	NSBundle *bundle = [NSBundle bundleForClass:self.class];
+	UINib *nib = [UINib nibWithNibName:NSStringFromClass(self.class) bundle:bundle];
+	NSArray *results = [nib instantiateWithOwner:self options:nil];
+	if(results.count > 0) {
+		self.view = results[0];
+	}
+}
 
 @synthesize textColor = _textColor;
 -(UIColor*)textColor {
@@ -72,7 +83,7 @@
 }
 
 
-- (IBAction)rateStep_valueChanged_action:(UIStepper *)sender forEvent:(UIEvent *)event {
+-(IBAction)rateStep_valueChanged_action:(UIStepper *)sender forEvent:(UIEvent *)event {
 	NSInteger intervalValue = (NSInteger)sender.value;
 	[self updateLabelTextWithInterval:intervalValue];
 	if(self.rateStepEvent){
@@ -85,7 +96,7 @@
 	CGSize imgSize = [self.rateStep incrementImageForState:UIControlStateNormal].size;
 	SHIconBuilder *builder = [[SHIconBuilder alloc]
 		initWithColor:self.textColor
-		withBackgroundColor:self.backgroundColor
+		withBackgroundColor:self.viewBackgroundColor
 		withSize:imgSize
 		withThickness:1];
 	UIImage *incrImg = [builder drawPlus];
@@ -95,9 +106,8 @@
 }
 
 
--(void)layoutIfNeeded {
-	[self redrawButtons];
-	[super layoutIfNeeded];
+-(BOOL)isAbstract {
+	return NO;
 }
 
 

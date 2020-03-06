@@ -6,8 +6,6 @@
 //	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#pragma clang diagnostic ignored "-Wunused-parameter"
-
 #import "SHSpinPicker.h"
 @import SHCommon;
 #import "UIViewController+Helper.h"
@@ -96,9 +94,10 @@ numberOfRowsInComponent:(NSInteger)component{
 }
 
 
--(IBAction)pickerSelectBtn_press_action:(SHButton *)sender
+-(IBAction)pickerSelectBtn_press_action:(UIButton *)sender
 	forEvent:(UIEvent *)event
 {
+	(void)sender; (void)event;
 	if(self.spinPickerAction) {
 	BOOL shouldCancel = NO;
 	self.spinPickerAction(self,&shouldCancel);

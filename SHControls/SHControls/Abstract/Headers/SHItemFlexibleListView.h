@@ -7,8 +7,6 @@
 //
 
 @protocol SHItemFlexibleListDelegateProtocol;
-
-#import "SHView.h"
 #import "SHSpinPicker.h"
 #import "SHItemFlexibleListDelegateProtocol.h"
 #import "SHNestedControlProtocol.h"

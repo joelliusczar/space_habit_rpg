@@ -12,7 +12,7 @@
 
 @interface SHStoryDumpViewController : SHViewController
 @property (weak,nonatomic) IBOutlet UITextView *synopsisView;
-@property (weak,nonatomic) IBOutlet SHButton *doneBtn;
+@property (weak,nonatomic) IBOutlet UIButton *doneBtn;
 @property (weak,nonatomic) IBOutlet UITextView *headlineLbl;
 @property (strong,nonatomic) NSObject<SHStoryItemProtocol> * storyItemObject;
 @property (nonatomic) UIColor* backgroundColor;

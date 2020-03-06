@@ -59,7 +59,7 @@
 }
 
 
-- (IBAction)doneBtn_pressed_action:(SHButton *)sender forEvent:(UIEvent *)event{
+- (IBAction)doneBtn_pressed_action:(UIButton *)sender forEvent:(UIEvent *)event{
 	(void)sender; (void)event;
 	[self.prevViewController popVCFromFront];
 	if(self.onSectorSelectionAction) {

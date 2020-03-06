@@ -14,6 +14,8 @@
 
 
 
+
+
 @interface AppDelegate ()
 @property (strong,nonatomic) SHCoreData *dataController;
 @property (strong,nonatomic) SHResourceUtility *resourceUtil;
@@ -66,6 +68,7 @@ void printWorkingDir(){
 	[self applyTheming];
 	self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
 	self.window.rootViewController = self.centralController;
+	
 	[self.window makeKeyAndVisible];
 	// Override point for customization after application launch.
 	return YES;

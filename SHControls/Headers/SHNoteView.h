@@ -7,7 +7,6 @@
 //
 
 #import "SHNotesViewDelegateProtocol.h"
-#import "SHView.h"
 #import "SHViewController.h"
 @import UIKit;
 

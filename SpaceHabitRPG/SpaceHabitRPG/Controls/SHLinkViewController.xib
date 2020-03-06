@@ -16,7 +16,7 @@
                 <outlet property="view" destination="7ow-3L-aNW" id="rdO-nx-PsB"/>
             </connections>
         </placeholder>
-        <view contentMode="scaleToFill" id="7ow-3L-aNW" customClass="SHView">
+        <view contentMode="scaleToFill" id="7ow-3L-aNW">
             <rect key="frame" x="0.0" y="0.0" width="284" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -64,9 +64,6 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="TQH-Fr-UEo"/>
-            <connections>
-                <outlet property="eventDelegate" destination="-1" id="5HG-gD-kx0"/>
-            </connections>
             <point key="canvasLocation" x="65.599999999999994" y="-151.12443778110946"/>
         </view>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

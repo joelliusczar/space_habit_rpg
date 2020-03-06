@@ -7,8 +7,6 @@
 //
 
 #import "SHAddItemsFooterDelegateProtocol.h"
-#import "SHView.h"
-#import "SHButton.h"
 #import "SHViewController.h"
 @import UIKit;
 

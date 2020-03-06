@@ -73,7 +73,7 @@
 	// Configure the view for the selected state
 }
 
--(IBAction)completeBtn_press_action:(SHButton *)sender forEvent:(UIEvent *)event {
+-(IBAction)completeBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
 	(void)sender; (void)event;
 	SHDailyActivator *activator = [[SHDailyActivator alloc] initWithContext:self.context
 		withObjectId:self.objectID];

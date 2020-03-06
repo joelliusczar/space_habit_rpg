@@ -30,8 +30,7 @@ static SHVCProxyContainer *_proxyContainerByClass = nil;
 
 +(SHVCProxyContainer *)proxyContainer {
 	if(nil == _proxyContainerByClass) {
-		SHViewController *reference = [[self.class alloc] init];
-		_proxyContainerByClass = [[SHVCProxyContainer alloc] initWithReference:reference];
+		_proxyContainerByClass = [[SHVCProxyContainer alloc] init];
 	}
 	return _proxyContainerByClass;
 }
@@ -39,21 +38,21 @@ static SHVCProxyContainer *_proxyContainerByClass = nil;
 
 +(instancetype)appearance {
 	SHViewControllerAppearanceProxy *proxy =
-		[self.proxyContainer.appearanceProxies findExactMatch:self.class];
+		[self.proxyContainer.appearanceProxies findExactMatch:self];
 	if(nil == proxy) {
-		SHViewController *reference = self.proxyContainer.reference;
+		SHViewController *reference = [[self alloc] init];
 		proxy = [[SHViewControllerAppearanceProxy alloc] initWithReference:reference];
-		[self.proxyContainer.appearanceProxies addObject:proxy withKey:self.class];
+		[self.proxyContainer.appearanceProxies addObject:proxy withKey:self];
 	}
 	return proxy;
 }
 
 
 +(instancetype)appearanceWhenContainedInInstancesOfClasses:(NSArray<Class<UIAppearanceContainer>> *)containerTypes {
-	NSArray<Class<UIAppearanceContainer>> *classChain = [@[self.class] arrayByAddingObjectsFromArray:containerTypes];
+	NSArray<Class<UIAppearanceContainer>> *classChain = [@[self] arrayByAddingObjectsFromArray:containerTypes];
 	SHViewControllerAppearanceProxy *proxy = self.proxyContainer.appearanceClassHierarchyTracker[classChain];
 	if(nil == proxy) {
-		SHViewController *reference = self.proxyContainer.reference;
+		SHViewController *reference = [[self alloc] init];
 		proxy = [[SHViewControllerAppearanceProxy alloc] initWithReference:reference];
 		self.proxyContainer.appearanceClassHierarchyTracker[classChain] = proxy;
 	}
@@ -64,7 +63,7 @@ static SHVCProxyContainer *_proxyContainerByClass = nil;
 +(instancetype)appearanceForTraitCollection:(UITraitCollection *)trait {
 	SHViewControllerAppearanceProxy *proxy = self.proxyContainer.proxyOnTraitTracker[trait];
 	if(nil == proxy) {
-		SHViewController *reference = self.proxyContainer.reference;
+		SHViewController *reference = [[self alloc] init];
 		proxy = [[SHViewControllerAppearanceProxy alloc] initWithReference:reference];
 		self.proxyContainer.proxyOnTraitTracker[trait] = proxy;
 	}
@@ -75,14 +74,14 @@ static SHVCProxyContainer *_proxyContainerByClass = nil;
 +(instancetype)appearanceForTraitCollection:(UITraitCollection *)trait
 	whenContainedInInstancesOfClasses:(NSArray<Class<UIAppearanceContainer>> *)containerTypes
 {
-	NSArray<Class<UIAppearanceContainer>> *classChain = [@[self.class] arrayByAddingObjectsFromArray:containerTypes];
+	NSArray<Class<UIAppearanceContainer>> *classChain = [@[self] arrayByAddingObjectsFromArray:containerTypes];
 	SHTraitProxyDict *traitDict = self.proxyContainer.traitHierarchyTracker[classChain];
 	if(nil == traitDict) {
 		traitDict = [NSMutableDictionary dictionary];
 	}
 	SHViewControllerAppearanceProxy *proxy = traitDict[trait];
 	if(nil == proxy) {
-		SHViewController *reference = self.proxyContainer.reference;
+		SHViewController *reference = [[self alloc] init];
 		proxy = [[SHViewControllerAppearanceProxy alloc] initWithReference:reference];
 		traitDict[trait] = proxy;
 	}

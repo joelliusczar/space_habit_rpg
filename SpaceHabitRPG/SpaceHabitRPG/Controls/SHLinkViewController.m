@@ -11,6 +11,13 @@
 
 @implementation SHLinkViewController
 
+-(UITapGestureRecognizer *)tapGestureRecognizer {
+	if(nil == _tapGestureRecognizer) {
+		_tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap_action:)];
+	}
+	return _tapGestureRecognizer;
+}
+
 -(void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	if(nil == self.navImageView.image) {
@@ -20,6 +27,7 @@
 			withThickness:10];
 		UIImage *arrow = [builder drawForwardArrow2];
 		self.navImageView.image = arrow;
+		[self.view addGestureRecognizer:self.tapGestureRecognizer];
 	}
 }
 
@@ -35,10 +43,17 @@
 	@throw [NSException abstractException];
 }
 
--(void)onBeginTap_action:(SHView *)sender withEvent:(UIEvent*)event{
-	(void)sender; (void)event;
+
+-(void)onTap_action:(UIGestureRecognizer *)recognizer {
+	(void)recognizer;
 	[self openNextScreen];
 }
+
+#warning sorta put back
+//-(void)onBeginTap_action:(SHView *)sender withEvent:(UIEvent*)event{
+//	(void)sender; (void)event;
+//
+//}
 
 
 @end

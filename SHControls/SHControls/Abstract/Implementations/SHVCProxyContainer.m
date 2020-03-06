@@ -57,11 +57,4 @@
 }
 
 
--(instancetype)initWithReference:(SHViewController *)reference {
-	if(self = [super init]) {
-		_reference = reference;
-	}
-	return self;
-}
-
 @end

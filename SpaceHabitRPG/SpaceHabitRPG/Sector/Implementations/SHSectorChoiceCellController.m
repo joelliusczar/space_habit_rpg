@@ -37,7 +37,7 @@
 {
 	SHSectorChoiceCellController *cell = [tableView
 		dequeueReusableCellWithIdentifier:NSStringFromClass(self.class)];
-	if(nil==cell){
+	if(nil == cell){
 		cell = [[SHSectorChoiceCellController alloc] init];
 	}
 	[cell setupCellWithSector:sector withParent:parent withRow:rowInfo];

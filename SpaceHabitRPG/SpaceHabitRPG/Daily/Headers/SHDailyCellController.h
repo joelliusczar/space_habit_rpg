@@ -16,6 +16,6 @@
 @property (weak,nonatomic) IBOutlet UILabel *daysLeftLbl;
 @property (weak,nonatomic) IBOutlet UILabel *nameLbl;
 @property (weak,nonatomic) IBOutlet UILabel *streakLbl;
-@property (weak,nonatomic) IBOutlet SHButton *completeBtn;
+@property (weak,nonatomic) IBOutlet UIButton *completeBtn;
 -(void)refreshCell;
 @end

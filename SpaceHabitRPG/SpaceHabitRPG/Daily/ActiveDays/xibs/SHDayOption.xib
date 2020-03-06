@@ -10,11 +10,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHDayOption">
             <connections>
+                <outlet property="currentImageHolder" destination="KZy-ZF-j13" id="yf5-yP-hEe"/>
                 <outlet property="dayLabel" destination="Cch-oB-7tV" id="601-bM-xSl"/>
+                <outlet property="view" destination="nfM-qR-8ec" id="jQq-R8-aKU"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="nfM-qR-8ec" customClass="SHSwitch">
+        <view contentMode="scaleToFill" id="nfM-qR-8ec">
             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -48,12 +50,6 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="ZEl-Fn-cDo"/>
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="boolean" keyPath="isOn" value="YES"/>
-            </userDefinedRuntimeAttributes>
-            <connections>
-                <outlet property="currentImageHolder" destination="KZy-ZF-j13" id="5A9-gf-Mmp"/>
-            </connections>
             <point key="canvasLocation" x="303.19999999999999" y="-406.59670164917543"/>
         </view>
     </objects>

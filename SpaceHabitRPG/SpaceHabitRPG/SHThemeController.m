@@ -86,7 +86,13 @@ static void _SH_setTextViewBorderSpecialCase(UIColor *background) {
 	_SH_setTextViewBorderSpecialCase(background);
 	SHSpinPicker.appearance.viewBackgroundColor = transparentBackground;
 	SHRateSetterView.appearance.textColor = text;
-	SHDayOption.defaultBackgroundColor = background;
+	SHIconBuilder *builder = [[SHIconBuilder alloc] initWithColor:UIColor.grayColor
+		withBackgroundColor:background
+		withSize:CGSizeMake(50, 50)
+		withThickness:10];
+	UIImage *check = [builder drawCheck];
+	SHSwitch.defaultBackgroundColor = background;
+	SHSwitch.appearance.onImage = check;
 }
 
 

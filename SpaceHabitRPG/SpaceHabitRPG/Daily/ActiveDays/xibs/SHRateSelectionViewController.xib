@@ -11,7 +11,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHRateSelectionViewController">
             <connections>
                 <outlet property="backButton" destination="ysg-D9-xLu" id="dGj-wC-20J"/>
-                <outlet property="intervalSetter" destination="m0f-TF-yta" id="Ms7-bO-Y8P"/>
+                <outlet property="intervalContainer" destination="m0f-TF-yta" id="cLf-AL-5nH"/>
+                <outlet property="intervalSetter" destination="IxY-mh-zqy" id="06T-NP-Qkb"/>
                 <outlet property="rateActiveDaysViewController" destination="iXe-62-vM6" id="uBz-fp-XNA"/>
                 <outlet property="rateSelector" destination="YN5-el-MyD" id="CLX-sh-Zyi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -58,7 +59,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m0f-TF-yta" userLabel="Interval" customClass="SHRateSetterView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m0f-TF-yta">
                     <rect key="frame" x="0.0" y="106" width="414" height="37"/>
                     <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -93,6 +94,9 @@
                 <outlet property="view" destination="TDR-UE-b4i" id="kHX-Bq-nLn"/>
             </connections>
             <point key="canvasLocation" x="-731" y="92"/>
+        </viewController>
+        <viewController id="IxY-mh-zqy" customClass="SHRateSetterView">
+            <point key="canvasLocation" x="203" y="783"/>
         </viewController>
     </objects>
 </document>

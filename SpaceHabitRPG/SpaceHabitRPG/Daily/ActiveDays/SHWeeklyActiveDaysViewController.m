@@ -20,7 +20,7 @@
 -(void)viewDidLoad{
 	NSAssert(self.weeklyActiveDays,@"Weekly active days cannot be null");
 	[super viewDidLoad];
-	self.activeDaySwitches = @[
+	self.dayOptionViews = @[
 		self.day0Switch,
 		self.day1Switch,
 		self.day2Switch,
@@ -31,10 +31,17 @@
 	];
 	
 	NSArray<NSString *> *dayKeys = self.weeklyActiveDays.weekKeysBasedOnWeekStart;
-	
-	for(int i = 0; i < 7; i++){
+
+	__weak SHWeeklyActiveDaysViewController *weakSelf = self;
+	for(int32_t i = 0; i < 7; i++){
+		[self pushChildVC:self.activeDaySwitches[i] toViewOfParent:self.dayOptionViews[i]];
 		self.activeDaySwitches[i].dayLabel.text = [SHWeeklyRateItemList weekDayKeyToFullName:dayKeys[i]];
-		self.activeDaySwitches[i].eventDelegate = self;
+
+		self.activeDaySwitches[i].onChange = ^void (BOOL newValue, SHSwitch *sender) {
+			SHWeeklyActiveDaysViewController *bSelf = weakSelf;
+			if(nil == bSelf) return;
+			[bSelf dayChange:newValue sender:sender];
+		};
 		int32_t dayIdx = (i + self.weekStartDay) % 7;
 		self.activeDaySwitches[dayIdx].isOn = self.weeklyActiveDays[dayIdx].isDayActive;
 	}
@@ -42,44 +49,28 @@
 }
 
 
--(void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
-	SHIconBuilder *builder = [[SHIconBuilder alloc] initWithColor:UIColor.grayColor
-		withBackgroundColor:self.viewBackgroundColor
-		withSize:CGSizeMake(50, 50)
-		withThickness:10];
-	UIImage *check = [builder drawCheck];
-	for(int i = 0; i < 7; i++){
-		NSLog(@"set img");
-		self.activeDaySwitches[i].onImage = check;
-		[self.activeDaySwitches[i] refreshImage];
-	}
-}
 
-
--(void)onBeginTap_action:(SHView *)sender withEvent:(UIEvent*)event{
-	(void)sender; (void)event;
-	SHDayOption *dayOption = (SHDayOption *)sender;
-	if(sender == self.day0Switch.mainView){
-		[self.valueChangeDelegate switchActiveDay:0 value:dayOption.isOn];
+-(void)dayChange:(BOOL)newValue sender:(SHSwitch*)sender {
+	if(sender == self.day0Switch){
+		[self.valueChangeDelegate switchActiveDay:0 value:newValue];
 	}
-	else if(sender == self.day1Switch.mainView){
-		[self.valueChangeDelegate switchActiveDay:1 value:dayOption.isOn];
+	else if(sender == self.day1Switch){
+		[self.valueChangeDelegate switchActiveDay:1 value:newValue];
 	}
-	else if(sender == self.day2Switch.mainView){
-		[self.valueChangeDelegate switchActiveDay:2 value:dayOption.isOn];
+	else if(sender == self.day2Switch){
+		[self.valueChangeDelegate switchActiveDay:2 value:newValue];
 	}
-	else if(sender == self.day3Switch.mainView){
-		[self.valueChangeDelegate switchActiveDay:3 value:dayOption.isOn];
+	else if(sender == self.day3Switch){
+		[self.valueChangeDelegate switchActiveDay:3 value:newValue];
 	}
-	else if(sender == self.day4Switch.mainView){
-		[self.valueChangeDelegate switchActiveDay:4 value:dayOption.isOn];
+	else if(sender == self.day4Switch){
+		[self.valueChangeDelegate switchActiveDay:4 value:newValue];
 	}
-	else if(sender == self.day5Switch.mainView){
-		[self.valueChangeDelegate switchActiveDay:5 value:dayOption.isOn];
+	else if(sender == self.day5Switch){
+		[self.valueChangeDelegate switchActiveDay:5 value:newValue];
 	}
-	else if(sender == self.day6Switch.mainView){
-		[self.valueChangeDelegate switchActiveDay:6 value:dayOption.isOn];
+	else if(sender == self.day6Switch){
+		[self.valueChangeDelegate switchActiveDay:6 value:newValue];
 	}
 }
 

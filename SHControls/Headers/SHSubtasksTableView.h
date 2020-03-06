@@ -7,10 +7,10 @@
 //
 
 #import "SHSubtasksTableViewDelegateProtocol.h"
-#import "SHView.h"
+#import "SHViewController.h"
 @import UIKit;
 
-@interface SHSubtasksTableView : SHView<UITableViewDataSource>
+@interface SHSubtasksTableView : SHViewController<UITableViewDataSource>
 @property (weak,nonatomic) IBOutlet UITableView *subtasksList;
 @property (assign,nonatomic) id<SHSubtasksTableViewDelegateProtocol> subtasksTabledelegate;
 @end

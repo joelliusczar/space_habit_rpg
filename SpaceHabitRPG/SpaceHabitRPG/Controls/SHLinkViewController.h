@@ -11,13 +11,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHLinkViewController : SHViewController<SHViewEventsProtocol>
+@interface SHLinkViewController : SHViewController
 @property (weak, nonatomic) IBOutlet UILabel *primaryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) SHViewController *editorContainer;
 @property (strong, nonatomic) NSManagedObjectContext *context;
 @property (strong, nonatomic) SHObjectIDWrapper *objectIDWrapper;
 @property (strong, nonatomic) IBOutlet UIImageView *navImageView;
+@property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
 -(void)setupWithContext:(NSManagedObjectContext *)context
 	andObjectID:(SHObjectIDWrapper*)objectIDWrapper;
 -(void)openNextScreen;
