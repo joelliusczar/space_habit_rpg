@@ -62,13 +62,16 @@
 }
 
 
--(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+	(void)pickerView;
 	@throw [NSException abstractException];
 }
 
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView
-numberOfRowsInComponent:(NSInteger)component{
+	numberOfRowsInComponent:(NSInteger)component
+{
+	(void)pickerView; (void)component;
 	@throw [NSException abstractException];
 }
 

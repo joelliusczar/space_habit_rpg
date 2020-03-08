@@ -16,7 +16,7 @@ static UIColor *_defaultBackgroundColor = nil;
 
 @implementation SHSwitch
 
-
+@synthesize tag = _tag;
 
 @synthesize isOn = _isOn;
 -(void)setIsOn:(BOOL)isOn{

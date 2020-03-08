@@ -8,7 +8,6 @@
 
 #import "SHSwitchProtocol.h"
 #import "SHViewController.h"
-#import "SHView.h"
 @import UIKit;
 @import SHCommon;
 

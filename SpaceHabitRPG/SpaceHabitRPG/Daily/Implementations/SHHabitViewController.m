@@ -7,11 +7,13 @@
 //
 
 #import "SHHabitViewController.h"
+#import "SHHabitNameViewController.h"
 @import SHCommon;
 
 
 @interface SHHabitViewController ()
 @property (strong, nonatomic) UITableView *habitTable;
+@property (strong, nonatomic) SHHabitNameViewController *nameViewController;
 @end
 
 @implementation SHHabitViewController
@@ -35,6 +37,14 @@
 
 -(NSString*)entityName {
 	@throw [NSException abstractException];
+}
+
+
+-(SHHabitNameViewController *)nameViewController {
+	if(nil == _nameViewController) {
+		_nameViewController = [[SHHabitNameViewController alloc] init];
+	}
+	return _nameViewController;
 }
 
 
@@ -141,17 +151,15 @@
 }
 
 
--(void)openEditor {
-	NSManagedObjectContext *context = [self.context createChildContext];
-	SHObjectIDWrapper *objectIDWrapper = [[SHObjectIDWrapper alloc]
-		initWithEntityType:self.entityType
-		withContext:context];
-	[self setupEditorWithObjectIDWrapper:objectIDWrapper withContext:context];
+-(void)openEditor:(SHObjectIDWrapper *)objectIDWrapper {
+	NSManagedObjectContext *context = [objectIDWrapper.context createChildContext];
+	[self setupEditorForSaving:objectIDWrapper withContext:context];
 	
-	self.central.editController.editingScreen = self.habitEditor;
-	self.central.editController.title = self.entityName;
-	self.central.editController.context = context;
-	self.central.editController.objectIDWrapper = objectIDWrapper;
+	SHEditNavigationController *editNavController = self.central.editController;
+	editNavController.editingScreen = self.habitEditor;
+	editNavController.title = self.entityName;
+	editNavController.context = context;
+	editNavController.objectIDWrapper = objectIDWrapper;
 	[self.central arrangeAndPushChildVCToFront:self.central.editController];
 }
 
@@ -163,18 +171,10 @@
 	NSManagedObjectContext *fetchContext = fetchController.managedObjectContext;
 	[fetchContext performBlockAndWait:^{
 		NSManagedObject *rowObject = fetchController.fetchedObjects[indexPath.row];
-		SHObjectIDWrapper *objectIDWrapper = [[SHObjectIDWrapper alloc] init];
-		objectIDWrapper.objectID = rowObject.objectID;
-		objectIDWrapper.entityType = self.entityType;
+		SHObjectIDWrapper *objectIDWrapper = [[SHObjectIDWrapper alloc]
+			initWithManagedObject:rowObject];
 		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-			NSManagedObjectContext *context = [self.context createChildContext];
-			[self setupEditorWithObjectIDWrapper:objectIDWrapper
-				withContext:context];
-			self.central.editController.editingScreen = self.habitEditor;
-			self.central.editController.title = self.entityName;
-			self.central.editController.context = context;
-			self.central.editController.objectIDWrapper = objectIDWrapper;
-			[self.central arrangeAndPushChildVCToFront:self.central.editController];
+			[self openEditor:objectIDWrapper];
 			completionHandler(YES);
 		}];
 	}];
@@ -183,10 +183,33 @@
 
 -(void)onAddHabitTap_action:(UIGestureRecognizer *)recognizer {
 	(void)recognizer;
-	[self openEditor];
-	if(self.onOpenAddHabit) {
-		self.onOpenAddHabit();
-	}
+	__weak SHHabitViewController *weakSelf = self;
+	self.nameViewController.onNext = ^(NSString *name){
+		SHHabitViewController *bSelf = weakSelf;
+		if(nil == bSelf) return;
+		SHHabitNameViewController *nameVC = bSelf.nameViewController;
+		[bSelf.context performBlock:^{
+			NSManagedObject<SHTitleProtocol> *habit =
+				(NSManagedObject<SHTitleProtocol>*)[bSelf.context newEntity:bSelf.entityType];
+			habit.title = name;
+			NSError *error = nil;
+			[bSelf.context save:&error];
+			SHObjectIDWrapper *objectIDWrapper = [[SHObjectIDWrapper alloc]
+				initWithManagedObject:habit];
+			[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+				if(error) {
+					[bSelf showErrorView:@"Save failed" withError:error];
+				}
+				[nameVC popVCFromFront];
+				[bSelf openEditor: objectIDWrapper];
+				if(bSelf.onOpenAddHabit) {
+					bSelf.onOpenAddHabit();
+				}
+			}];
+		}];
+	};
+	self.nameViewController.headline.text = self.entityName;
+	[self.central arrangeAndPushChildVCToFront:self.nameViewController];
 }
 
 
@@ -277,7 +300,7 @@ This will be called the user creates a new habit, checks it off, or deletes one
 }
 
 
--(void)setupEditorWithObjectIDWrapper:(SHObjectIDWrapper*)objectIDWrapper
+-(void)setupEditorForSaving:(SHObjectIDWrapper*)objectIDWrapper
 	withContext:(NSManagedObjectContext *)context
 {
 	NSManagedObjectContext *parentContext = self.context;

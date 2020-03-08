@@ -190,7 +190,7 @@ const NSInteger YEARLY_SELECTION = 3;
 
 -(void)switchActiveDay:(NSInteger)dayIdx value:(BOOL)value{
 	(void)value;
-	[self.activeDays.weeklyActiveDays flipDayOfWeek:dayIdx];
+	[self.activeDays.weeklyActiveDays setDayOfWeek:dayIdx to:value];
 }
 
 

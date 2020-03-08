@@ -74,6 +74,7 @@ static void _SH_setTextViewBorderSpecialCase(UIColor *background) {
 	UIColor *text = [UIColor colorNamed:@"text"];
 	UIColor *textBorder = [UIColor colorNamed:@"textBoxBorder"];
 	UIColor *transparentBackground = [UIColor colorNamed:@"transparentBackground"];
+	UIColor *disabledText = [UIColor colorNamed:@"disabledText"];
 	UILabel.appearance.textColor = text;
 	SHViewController.appearance.viewBackgroundColor = background;
 	[UIView appearanceWhenContainedInInstancesOfClasses:@[SHIntroViewController.class]].backgroundColor = background;
@@ -83,6 +84,7 @@ static void _SH_setTextViewBorderSpecialCase(UIColor *background) {
 	_SH_setTextFieldTheme(text, textBorder);
 	_SH_setSliderTheme(textBorder);
 	[UIButton.appearance setTitleColor:text forState:UIControlStateNormal];
+	[UIButton.appearance setTitleColor:disabledText forState:UIControlStateDisabled];
 	_SH_setTextViewBorderSpecialCase(background);
 	SHSpinPicker.appearance.viewBackgroundColor = transparentBackground;
 	SHRateSetterView.appearance.textColor = text;

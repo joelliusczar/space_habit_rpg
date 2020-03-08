@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, nonatomic, nullable) NSArray<NSString*> *weekKeysBasedOnWeekStart;
 -(instancetype)initWithRateItemArray:(NSArray<SHRateItemDict*>*)rateItemArray;
 -(SHWeeklyRateItem*)objectAtIndexedSubscript:(NSUInteger)idx;
--(void)flipDayOfWeek:(NSUInteger)dayIdx;
+-(void)setDayOfWeek:(NSUInteger)dayIdx to:(BOOL)newValue;
 -(NSMutableArray<SHRateItemDict*>*)convertToSaveble;
 +(NSString *)weekDayKeyToFullName:(NSString*)dayKey;
 @end

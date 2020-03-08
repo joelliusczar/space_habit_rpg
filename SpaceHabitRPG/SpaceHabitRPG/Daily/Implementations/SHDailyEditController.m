@@ -7,7 +7,6 @@
 //
 
 #import "SHDailyEditController.h"
-#import "SHEditNavigationController.h"
 @import SHCommon;
 @import SHModels;
 @import SHControls;
@@ -28,6 +27,10 @@
 @synthesize nameStr = _nameStr;
 @synthesize controlsTbl = _controlsTbl;
 
+
+-(UITextField *)nameBox {
+	return self.editorContainerController.itemNameInput;
+}
 
 -(instancetype)init{
 	if(self = [super init]){

@@ -16,7 +16,7 @@
 @protocol SHEditingSaverProtocol <NSObject>
 @required
 @property (weak,nonatomic) SHEditNavigationController *editorContainerController;
-@property (weak,nonatomic) UITextField *nameBox;
+@property (readonly,nonatomic) UITextField *nameBox;
 @property (strong,nonatomic) UITableView *controlsTbl;
 @property (strong,nonatomic) NSString *nameStr;
 -(void)saveEdit;

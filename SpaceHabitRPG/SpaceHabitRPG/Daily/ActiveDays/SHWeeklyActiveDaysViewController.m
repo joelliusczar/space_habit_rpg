@@ -51,26 +51,10 @@
 
 
 -(void)dayChange:(BOOL)newValue sender:(SHSwitch*)sender {
-	if(sender == self.day0Switch){
-		[self.valueChangeDelegate switchActiveDay:0 value:newValue];
-	}
-	else if(sender == self.day1Switch){
-		[self.valueChangeDelegate switchActiveDay:1 value:newValue];
-	}
-	else if(sender == self.day2Switch){
-		[self.valueChangeDelegate switchActiveDay:2 value:newValue];
-	}
-	else if(sender == self.day3Switch){
-		[self.valueChangeDelegate switchActiveDay:3 value:newValue];
-	}
-	else if(sender == self.day4Switch){
-		[self.valueChangeDelegate switchActiveDay:4 value:newValue];
-	}
-	else if(sender == self.day5Switch){
-		[self.valueChangeDelegate switchActiveDay:5 value:newValue];
-	}
-	else if(sender == self.day6Switch){
-		[self.valueChangeDelegate switchActiveDay:6 value:newValue];
+	for(int32_t i = 0; i < 7; i ++) {
+		if(sender == self.activeDaySwitches[i]) {
+			[self.valueChangeDelegate switchActiveDay:i value:newValue];
+		}
 	}
 }
 

@@ -82,12 +82,12 @@ static SHRateItemDict* mapWeeklyToDict(id item,NSUInteger idx){
 }
 
 
--(void)flipDayOfWeek:(NSUInteger)dayIdx{
+-(void)setDayOfWeek:(NSUInteger)dayIdx to:(BOOL)newValue{
 	NSArray<SHWeeklyRateItem*> *weekInfo = self.backend;
 	NSInteger rate = self.intervalSize;
 	bool activeDays[SH_DAYS_IN_WEEK];
 	setActivenessArray(weekInfo,activeDays);
-	activeDays[dayIdx] = !activeDays[dayIdx];
+	activeDays[dayIdx] = newValue;
 	SHRateValueItem rvi[SH_DAYS_IN_WEEK];
 	memset(rvi,0,sizeof(SHRateValueItem) * SH_DAYS_IN_WEEK);
 	shBuildWeek(activeDays,rate,rvi);
@@ -172,7 +172,7 @@ static SHRateItemDict* mapWeeklyToDict(id item,NSUInteger idx){
 
 
 -(NSString*)intervalLabelDescription {
-	NSString *desc = [NSString stringWithFormat:@"%@ for\n %@",
+	NSString *desc = [NSString stringWithFormat:@"%@ for\n%@",
 		self.intervalDescription,
 		self.weekDescription];
 	return desc;
