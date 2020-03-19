@@ -23,7 +23,7 @@
 
 
 -(NSInteger)maxDaysBeforeSpan_WEEKLY{
-	return self.rate * 7;
+	return self.rate * SH_WEEKLEN;
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "SHConstants.h"
+@import SHDatetime;
 @import Foundation;
 
 
@@ -38,11 +39,16 @@
 	andMinute:(NSInteger)minute;
 	
 -(NSDate *)dayStart;
+-(NSDate *)dayStartUTC;
 -(NSString *)extractTimeInFormat:(SHHourFormatType)format;
 -(NSInteger)getWeekdayIndex;
+-(NSInteger)getWeekdayIndexUTC;
 -(NSDateComponents *)getDateComponents;
 -(NSString *)timeOfDayInSystemPreferredFormat;
 -(NSString *)staticTimeOfDay;
 -(NSDate *)timeAfterSeconds:(NSInteger)seconds;
+-(NSDate *)dateInTimezone:(NSTimeZone *)tz;
+-(SHDatetime *)toSHDatetime;
+-(SHDatetime *)toSHDatetimeUTC;
 @end
 

@@ -9,13 +9,6 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-SHCOMMON_DIR = $(BUILT_PRODUCTS_DIR)/SHCommon.framework
-SHMODELS_DIR = $(BUILT_PRODUCTS_DIR)/SHModels.framework
-SHTESTCOMMON_DIR = $(BUILT_PRODUCTS_DIR)/SHTestCommon.framework
-
-SHDATETIME_H_DIR = $(BUILT_PRODUCTS_DIR)/include/SHDatetime
-SHUTILS_C_H_DIR = $(BUILT_PRODUCTS_DIR)/include/SHUtils_C
-SHSPECIAL_C_H_DIR = $(BUILT_PRODUCTS_DIR)/include/SHSpecial_C
 
 FRAMEWORK_SEARCH_PATHS = $(SHCOMMON_DIR) $(SHMODELS_DIR) $(SHTESTCOMMON_DIR) $(LIB_DIR)
 

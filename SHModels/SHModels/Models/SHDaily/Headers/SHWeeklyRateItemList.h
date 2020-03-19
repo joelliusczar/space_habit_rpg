@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(SHWeeklyRateItem*)objectAtIndexedSubscript:(NSUInteger)idx;
 -(void)setDayOfWeek:(NSUInteger)dayIdx to:(BOOL)newValue;
 -(NSMutableArray<SHRateItemDict*>*)convertToSaveble;
+-(NSUInteger)findPrevActiveDayIdx:(NSUInteger)weekdayIdx;
+-(SHRateValueItem *)convertObjCRateItemToC;
 +(NSString *)weekDayKeyToFullName:(NSString*)dayKey;
 @end
 

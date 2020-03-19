@@ -9,8 +9,6 @@
 #import "NSDate+DateHelper.h"
 #import "NSLocale+Helper.h"
 #import <objc/runtime.h>
-#import <SHDatetime/SHDatetimeFuncs.h>
-#import <SHErrorHandling.h>
 #import "NSException+SHCommonExceptions.h"
 #import "SHSingletonCluster.h"
 
@@ -106,6 +104,16 @@
 }
 
 
+-(NSDate *)dayStartUTC {
+	NSInteger timestamp = self.timeIntervalSince1970;
+	double dayStartTimestamp;
+	SHError error;
+	memset(&error, 0, sizeof(SHError));
+	shTryDayStart(timestamp, 0, &dayStartTimestamp, &error);
+	return [NSDate dateWithTimeIntervalSince1970:dayStartTimestamp];
+}
+
+
 +(NSInteger)daysBetween:(NSDate *)fromDate to:(NSDate *)toDate{
 	SHDatetime dtFrom;
 	SHDatetime dtTo;
@@ -174,11 +182,20 @@
 
 -(NSInteger)getWeekdayIndex{
 	SHDatetime dt;
-	int tzOffset = (int)[NSTimeZone.defaultTimeZone secondsFromGMTForDate:self];
+	int32_t tzOffset = (int32_t)[NSTimeZone.defaultTimeZone secondsFromGMTForDate:self];
 	SHError error;
 	memset(&error, 0, sizeof(SHError));
 	shTryTimestampToDt(self.timeIntervalSince1970,tzOffset,&dt,&error);
 	return shCalcWeekdayIdx(&dt,&error);
+}
+
+
+-(NSInteger)getWeekdayIndexUTC {
+	SHDatetime dt;
+	SHError error;
+	memset(&error, 0, sizeof(SHError));
+	shTryTimestampToDt(self.timeIntervalSince1970,0 , &dt, &error);
+	return shCalcWeekdayIdx(&dt, &error);
 }
 
 
@@ -195,6 +212,34 @@
 	NSTimeInterval timestamp = self.timeIntervalSince1970;
 	timestamp += seconds;
 	return [NSDate dateWithTimeIntervalSince1970:timestamp];
+}
+
+
+-(NSDate *)dateInTimezone:(NSTimeZone *)tz {
+	NSTimeInterval adjustedTimestamp = self.timeIntervalSince1970 + tz.secondsFromGMT;
+	return [NSDate dateWithTimeIntervalSince1970:adjustedTimestamp];
+}
+
+
+static SHDatetime* _nsDateToShDatetime(NSDate *date, int32_t tzOffset) {
+	SHDatetime *dt = calloc(ALLOC_COUNT, sizeof(SHDatetime));
+	SHError error;
+	memset(&error, 0, sizeof(SHError));
+	
+	shTryTimestampToDt(date.timeIntervalSince1970,tzOffset,dt,&error);
+	if(error.code) {
+		@throw [NSException encounterSHError:&error];
+	}
+	return dt;
+}
+
+-(SHDatetime *)toSHDatetime {
+	int32_t tzOffset = (int32_t)[NSTimeZone.defaultTimeZone secondsFromGMTForDate:self];
+	return _nsDateToShDatetime(self, tzOffset);
+}
+
+-(SHDatetime *)toSHDatetimeUTC {
+	return _nsDateToShDatetime(self, 0);
 }
 
 @end

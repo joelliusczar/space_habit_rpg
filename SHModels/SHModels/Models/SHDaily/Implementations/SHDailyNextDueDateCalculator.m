@@ -8,7 +8,7 @@
 
 #import "SHDailyNextDueDateCalculator.h"
 #import "SHWeeklyRateItemList.h"
-#import <SHSpecial_C/SHDaily_C.h>
+@import SHSpecial_C;
 @import SHCommon;
 
 @implementation SHDailyNextDueDateCalculator
@@ -29,8 +29,8 @@
 {
 	if(self = [super init]) {
 		_activeDaysContainer = activeDaysContainer;
-		_lastActivationDateTime = lastActivationDateTime;
-		_lastUpdateDateTime = lastUpdateDateTime;
+		_utcLastActivationDateTime = lastActivationDateTime;
+		_utcLastUpdateDateTime = lastUpdateDateTime;
 		_dayStartTime = dayStartTime;
 	}
 	return self;
@@ -44,29 +44,68 @@ static void convertObjCRateItemToC(SHWeeklyRateItemList* rateItems, SHRateValueI
 }
 
 
+- (NSDate * _Nonnull)calcBackupDateForInactiveDate:(NSDate *)inactiveDate {
+	if([self isDateActive:inactiveDate]) {
+	 return inactiveDate;
+	}
+	int32_t weekdayIdx = (int32_t)[inactiveDate getWeekdayIndexUTC];
+	int32_t prevDayIdx = (int32_t)[self.activeDaysContainer.weeklyActiveDays findPrevActiveDayIdx:weekdayIdx];
+	BOOL isCurrentWeekActive = weekdayIdx > prevDayIdx;
+	int32_t diff = weekdayIdx - prevDayIdx;
+	if(isCurrentWeekActive) {
+		return [inactiveDate dateAfterYears:0 months:0 days:-diff];
+	}
+	int64_t daysAgo = sh_calcDaysAgoDayWasActive(prevDayIdx,
+		self.activeDaysContainer.weeklyActiveDays.intervalSize);
+	return [inactiveDate dateAfterYears:0 months:0 days:-(daysAgo + diff)];
+}
+
+-(NSDate*)calcBackupLastCheckinDate {
+	if(self.utcActiveFromDate) {
+		return [self calcBackupDateForInactiveDate:self.utcActiveFromDate];
+	}
+	return [self calcBackupDateForInactiveDate:self.utcLastUpdateDateTime];
+}
+
+
 -(NSDate*)nextDueDate_WEEKLY{
-	NSDate *lastCheckinDate = self.lastActivationDateTime?
-		self.lastActivationDateTime:
-		self.lastUpdateDateTime;
-	SHDatetime *lastCheckinDt = calloc(1, sizeof(SHDatetime));
-	SHDatetime *checkinDt = calloc(1, sizeof(SHDatetime));
+	NSDate *lastCheckinDate = self.utcLastActivationDateTime?
+		self.utcLastActivationDateTime:
+		[self calcBackupLastCheckinDate];
+	SHDatetime *lastCheckinDt = [lastCheckinDate toSHDatetimeUTC];
+	SHDatetime *checkinDt = [self.dateProvider.date toSHDatetimeUTC];
 	SHDatetime ans;
 	memset(&ans,0,sizeof(SHDatetime));
-	SHError *error = calloc(1, sizeof(SHError));
-	shTryTimestampToDt(lastCheckinDate.timeIntervalSince1970,0,lastCheckinDt,error);
-	shTryTimestampToDt(self.dateProvider.date.timeIntervalSince1970,0,checkinDt,error);
-	SHRateValueItem *rvi = calloc(SH_DAYS_IN_WEEK, sizeof(SHRateValueItem));
-	convertObjCRateItemToC(self.activeDaysContainer.weeklyActiveDays,rvi);
-	shNextDueDate_WEEKLY(lastCheckinDt,checkinDt,rvi,
+	SHError *error = calloc(ALLOC_COUNT, sizeof(SHError));
+	
+	SHRateValueItem *rvi =  [self.activeDaysContainer.weeklyActiveDays convertObjCRateItemToC];
+	sh_nextDueDate_WEEKLY(lastCheckinDt,checkinDt,rvi,
 		self.activeDaysContainer.weeklyActiveDays.intervalSize,
 		self.dayStartTime, &ans, error);
 	double dueDateTimestamp = shDtToTimestamp(&ans, error);
 	NSDate *nextDueDate = [NSDate dateWithTimeIntervalSince1970:dueDateTimestamp];
-	shFreeSHDatetime(lastCheckinDt,1);
-	shFreeSHDatetime(checkinDt,1);
+	int32_t timeShiftCount = 1;
+	shFreeSHDatetime(lastCheckinDt, timeShiftCount);
+	shFreeSHDatetime(checkinDt, timeShiftCount);
 	shDisposeSHError(error);
 	shFreeSHRateValueItem(rvi);
 	return nextDueDate;
+}
+
+
+-(BOOL)isDateActive:(NSDate *)dateInQuestion {
+	SHDatetime *dt = [dateInQuestion toSHDatetime];
+	SHDatetime *checkinDt = [self.dateProvider.date toSHDatetimeUTC];
+	SHRateValueItem *rvi =  [self.activeDaysContainer.weeklyActiveDays convertObjCRateItemToC];
+	int64_t intervalSize = self.activeDaysContainer.weeklyActiveDays.intervalSize;
+	SHError error;
+	memset(&error, 0, sizeof(SHError));
+	bool result = sh_isDateADueDate_WEEKLY(dt, checkinDt, rvi,
+		intervalSize, self.dayStartTime, &error);
+	int32_t timeShiftCount = 1;
+	shFreeSHDatetime(dt, timeShiftCount);
+	shFreeSHRateValueItem(rvi);
+	return result;
 }
 
 

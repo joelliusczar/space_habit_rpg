@@ -90,7 +90,7 @@ static SHRateItemDict* mapWeeklyToDict(id item,NSUInteger idx){
 	activeDays[dayIdx] = newValue;
 	SHRateValueItem rvi[SH_DAYS_IN_WEEK];
 	memset(rvi,0,sizeof(SHRateValueItem) * SH_DAYS_IN_WEEK);
-	shBuildWeek(activeDays,rate,rvi);
+	sh_buildWeek(activeDays,rate,rvi);
 	NSMutableArray<SHWeeklyRateItem*>* updWeek = convertCRateItemToObjC(rvi);
 	self.backend = updWeek;
 }
@@ -182,5 +182,31 @@ static SHRateItemDict* mapWeeklyToDict(id item,NSUInteger idx){
 -(NSString*)debugDescription {
 	return self.weekDescription;
 }
+
+
+-(NSUInteger)findPrevActiveDayIdx:(NSUInteger)weekdayIdx {
+	NSAssert(weekdayIdx < SH_WEEKLEN, @"idx should fit in a week");
+	for(NSInteger idx = weekdayIdx - 1; idx >= 0; idx--) {
+		if(self.backend[idx].isDayActive) {
+			return idx;
+		}
+	}
+	for(NSInteger idx = SH_WEEKLEN - 1; idx > (NSInteger)weekdayIdx; idx--) {
+		if(self.backend[idx].isDayActive) {
+			return idx;
+		}
+	}
+	@throw [NSException oddException];
+}
+
+
+-(SHRateValueItem *)convertObjCRateItemToC {
+	SHRateValueItem *rvi = calloc(SH_DAYS_IN_WEEK, sizeof(SHRateValueItem));
+	for(int32_t i = 0; i < SH_DAYS_IN_WEEK; i++){
+		[self[i] copyIntoCStruct:&rvi[i]];
+	}
+	return rvi;
+}
+
 
 @end

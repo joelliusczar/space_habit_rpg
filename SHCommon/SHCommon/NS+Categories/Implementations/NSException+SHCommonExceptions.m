@@ -54,4 +54,21 @@
 		userInfo:nil];
 }
 
+
++(NSException*)encounterError {
+	return [NSException
+	exceptionWithName:@"Encountered a random ass error"
+	reason:@"Look at the stack trace"
+	userInfo:nil];
+}
+
+
++(NSException*)encounterSHError:(SHError*)error {
+
+	return [NSException
+	exceptionWithName:@"SHError"
+	reason:[NSString stringWithUTF8String:error->msg]
+	userInfo:nil];
+}
+
 @end

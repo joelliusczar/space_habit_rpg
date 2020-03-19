@@ -7,6 +7,8 @@
 //
 
 @import Foundation;
+@import SHUtils_C;
+//#import <SHUtils_C/SHErrorHandling.h>
 
 @interface NSException (SHCommonExceptions)
 +(NSException*)abstractException;
@@ -14,4 +16,6 @@
 +(NSException*)stillUsedException;
 +(NSException*)dbException:(NSError *)error;
 +(NSException*)inproperlySetupObject:(NSString*)message;
++(NSException*)encounterError;
++(NSException*)encounterSHError:(SHError*)error;
 @end

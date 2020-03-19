@@ -19,26 +19,25 @@
 
 
 
-void shFillWeek(int64_t *daysAheadCounts,int64_t *daysBeforeCounts,bool *activeDays,SHRateValueItem *rvi);
-void shBuildWeek(bool *activeDays,int64_t scaler,SHRateValueItem *rvi);
-void shBuildEmptyWeek(SHRateValueItem *rvi);
-bool shPreviousDueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate,SHRateValueItem *rvi
+void sh_fillWeek(int64_t *daysAheadCounts,int64_t *daysBeforeCounts,bool *activeDays,SHRateValueItem *rvi);
+void sh_buildWeek(bool *activeDays,int64_t scaler,SHRateValueItem *rvi);
+void sh_buildEmptyWeek(SHRateValueItem *rvi);
+bool sh_previousDueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate,SHRateValueItem *rvi
 	,int64_t scaler,int64_t dayStartHour,SHDatetime *ans,SHError *error);
 	
-bool shPreviousDueDateWithPreparedInputs_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate
+bool sh_previousDueDateWithPreparedInputs_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate
 ,SHRateValueItem *rvi,int64_t scaler, int64_t dayStartHour,SHDatetime *ans,SHError *error);
 
-SHDatetime* shBothWeeklyDueDatesFromLastDueDate(SHDatetime* lastDueDate,SHDatetime* checkinDate
+SHDatetime* sh_bothWeeklyDueDatesFromLastDueDate(SHDatetime* lastDueDate,SHDatetime* checkinDate
 	,SHRateValueItem* week, int64_t scaler, int64_t dayStartHour,SHError *error);
 
-bool shNextDueDate_WEEKLY(SHDatetime* lastDueDate,SHDatetime* checkinDate, SHRateValueItem* week,
+bool sh_nextDueDate_WEEKLY(SHDatetime* lastDueDate,SHDatetime* checkinDate, SHRateValueItem* week,
 	int64_t scaler, int64_t dayStartHour, SHDatetime *ans,SHError* error);
 
-bool shNextDueDate_WEEKLY_INV(SHDatetime* lastDueDate,SHDatetime* checkinDate, SHRateValueItem* week,
-	int64_t scaler, int64_t dayStartHour, SHDatetime *ans, SHError* error);
-
-bool shIsDateADueDate(SHDatetime* previousDueDate, SHDatetime* checkinDate, SHRateValueItem* week, int64_t scaler
-	,SHError *error);
+bool sh_isDateADueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate
+,SHRateValueItem *rvi,int64_t scaler, int64_t dayStartHour,SHError *error);
+	
+int64_t sh_calcDaysAgoDayWasActive(int32_t weekdayIdx, int64_t scaler);
 
 /*
  activeDays: an array of exactly 7 elements.

@@ -50,12 +50,12 @@ typedef struct {
 } SHDatetime;
 
 
-typedef enum {NO_OPTION = 0,
-	SHIFT_FWD = 1,
-	SHIFT_BKD = 2,
-	ERROR = 3,
-	SIMPLE = 4,
-} TimeAdjustOptions;
+typedef enum {SH_TIME_ADJUST_NO_OPTION = 0,
+	SH_TIME_ADJUST_SHIFT_FWD = 1,
+	SH_TIME_ADJUST_SHIFT_BKD = 2,
+	SH_TIME_ADJUST_ERROR = 3,
+	SH_TIME_ADJUST_SIMPLE = 4,
+} SHTimeAdjustOptions;
 
 
 #endif /* SHDatetime_struct_h */

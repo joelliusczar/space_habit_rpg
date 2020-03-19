@@ -10,6 +10,8 @@
 		27004253205251B3001FA0B5 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27004252205251B3001FA0B5 /* SHModels.framework */; };
 		27009B43224FEB0C0005F827 /* SHCoreData+CleanUp.h in Headers */ = {isa = PBXBuildFile; fileRef = 27009B41224FEB0C0005F827 /* SHCoreData+CleanUp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27009B44224FEB0C0005F827 /* SHCoreData+CleanUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 27009B42224FEB0C0005F827 /* SHCoreData+CleanUp.m */; };
+		2707AAA22419B736006FF10F /* SHActiveDaysProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 2707AAA02419B736006FF10F /* SHActiveDaysProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2707AAA32419B736006FF10F /* SHActiveDaysProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2707AAA12419B736006FF10F /* SHActiveDaysProvider.m */; };
 		273009F822446228006E419C /* NSManagedObjectContext+Hijack.h in Headers */ = {isa = PBXBuildFile; fileRef = 273009F622446228006E419C /* NSManagedObjectContext+Hijack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		273009F922446228006E419C /* NSManagedObjectContext+Hijack.m in Sources */ = {isa = PBXBuildFile; fileRef = 273009F722446228006E419C /* NSManagedObjectContext+Hijack.m */; };
 		274EFB77204F9AEA00CB3C4C /* SHTestCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB75204F9AEA00CB3C4C /* SHTestCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -19,7 +21,7 @@
 		274EFB85204F9B7700CB3C4C /* TestGlobals.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB80204F9B7700CB3C4C /* TestGlobals.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		274EFB86204F9B7700CB3C4C /* TestHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EFB81204F9B7700CB3C4C /* TestHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27601C2B23F74259001A9475 /* SHTestCommon.postbuild.sh in Resources */ = {isa = PBXBuildFile; fileRef = 27601C2A23F74259001A9475 /* SHTestCommon.postbuild.sh */; };
-		27601C5623F7825C001A9475 /* SHTestResourceUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 27601C5423F7825C001A9475 /* SHTestResourceUtil.h */; };
+		27601C5623F7825C001A9475 /* SHTestResourceUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 27601C5423F7825C001A9475 /* SHTestResourceUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27601C5723F7825C001A9475 /* SHTestResourceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 27601C5523F7825C001A9475 /* SHTestResourceUtil.m */; };
 		27601C6423F782DA001A9475 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27601C6323F782D2001A9475 /* SHCommon.framework */; };
 		27804B7C235278F8004921F5 /* SHTestDateProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 27804B7A235278F8004921F5 /* SHTestDateProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -63,6 +65,8 @@
 		27004252205251B3001FA0B5 /* SHModels.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHModels.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHModels.framework"; sourceTree = "<group>"; };
 		27009B41224FEB0C0005F827 /* SHCoreData+CleanUp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SHCoreData+CleanUp.h"; sourceTree = "<group>"; };
 		27009B42224FEB0C0005F827 /* SHCoreData+CleanUp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SHCoreData+CleanUp.m"; sourceTree = "<group>"; };
+		2707AAA02419B736006FF10F /* SHActiveDaysProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHActiveDaysProvider.h; sourceTree = "<group>"; };
+		2707AAA12419B736006FF10F /* SHActiveDaysProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHActiveDaysProvider.m; sourceTree = "<group>"; };
 		273009F622446228006E419C /* NSManagedObjectContext+Hijack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+Hijack.h"; sourceTree = "<group>"; };
 		273009F722446228006E419C /* NSManagedObjectContext+Hijack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+Hijack.m"; sourceTree = "<group>"; };
 		2738CB1F233EAB8100A41CC3 /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +147,8 @@
 				27804B7B235278F8004921F5 /* SHTestDateProvider.m */,
 				27601C5423F7825C001A9475 /* SHTestResourceUtil.h */,
 				27601C5523F7825C001A9475 /* SHTestResourceUtil.m */,
+				2707AAA02419B736006FF10F /* SHActiveDaysProvider.h */,
+				2707AAA12419B736006FF10F /* SHActiveDaysProvider.m */,
 			);
 			path = SHTestCommon;
 			sourceTree = "<group>";
@@ -203,9 +209,10 @@
 				274EFB77204F9AEA00CB3C4C /* SHTestCommon.h in Headers */,
 				274EFB86204F9B7700CB3C4C /* TestHelpers.h in Headers */,
 				27009B43224FEB0C0005F827 /* SHCoreData+CleanUp.h in Headers */,
-				27601C5623F7825C001A9475 /* SHTestResourceUtil.h in Headers */,
 				273009F822446228006E419C /* NSManagedObjectContext+Hijack.h in Headers */,
+				27601C5623F7825C001A9475 /* SHTestResourceUtil.h in Headers */,
 				27804B7C235278F8004921F5 /* SHTestDateProvider.h in Headers */,
+				2707AAA22419B736006FF10F /* SHActiveDaysProvider.h in Headers */,
 				274EFB85204F9B7700CB3C4C /* TestGlobals.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,6 +337,7 @@
 				27804B7D235278F8004921F5 /* SHTestDateProvider.m in Sources */,
 				27009B44224FEB0C0005F827 /* SHCoreData+CleanUp.m in Sources */,
 				27B7AF26223094D000FAA229 /* TestDummy.m in Sources */,
+				2707AAA32419B736006FF10F /* SHActiveDaysProvider.m in Sources */,
 				274EFB82204F9B7700CB3C4C /* TestHelpers.m in Sources */,
 				27601C5723F7825C001A9475 /* SHTestResourceUtil.m in Sources */,
 				274EFB84204F9B7700CB3C4C /* FrequentCase.m in Sources */,

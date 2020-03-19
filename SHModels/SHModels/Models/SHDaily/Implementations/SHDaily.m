@@ -48,14 +48,25 @@
 
 
 -(NSDate *)nextDueDate{
-
-	SHConfig *config = [[SHConfig alloc] init];
+	
+	NSInteger dayStartTime = 0;
+	if(self.cycleStartTime) {
+		dayStartTime = self.cycleStartTime.integerValue;
+	}
+	else {
+		SHConfig *config = [[SHConfig alloc] init];
+		dayStartTime = config.dayStartTime;
+	}
 	SHDailyNextDueDateCalculator *calculator = [[SHDailyNextDueDateCalculator alloc]
 		initWithActiveDays:self.activeDaysContainer
-		lastActivationDateTime:self.lastActivationDateTime
-		lastUpdateDateTime:self.lastUpdateDateTime
-		dayStartTime:config.dayStartTime];
+		lastActivationDateTime:self.utcLastActivationDateTime
+		lastUpdateDateTime:self.utcLastUpdateDateTime
+		dayStartTime:dayStartTime];
+	calculator.utcActiveFromDate = self.utcActiveFromDate;
 	calculator.dateProvider = self.dateProvider;
+	if([self.dailyName isEqualToString:@"test after dark"]) {
+		NSLog(@"remove");
+	}
 	switch(self.rateType){
 		case SH_YEARLY_RATE:
 		case SH_YEARLY_RATE_INVERSE:
@@ -79,8 +90,10 @@
 	NSDate *today = self.dateProvider.date;
 	NSDate *roundedDownToday = [today dayStart];
 	NSDate *todayFromStartTime = [roundedDownToday timeAfterSeconds:dayStart];
+	NSDate *todayUTCWithStartTime = [todayFromStartTime dateInTimezone:
+		[NSTimeZone timeZoneForSecondsFromGMT:0]];
 	NSDate *nextDueDate = self.nextDueDate;
-	return (NSInteger)[NSDate daysBetween:todayFromStartTime to:nextDueDate];
+	return (NSInteger)[NSDate daysBetween:todayUTCWithStartTime to:nextDueDate];
 }
 
 
@@ -115,6 +128,16 @@
 }
 
 
+-(NSDate*)lastTouched {
+	return self.utcLastUpdateDateTime;
+}
+
+
+-(void)setLastTouched:(NSDate *)lastTouched {
+	self.utcLastUpdateDateTime = lastTouched;
+}
+
+
 -(NSUInteger)reminderCount{
 	return self.daily_remind.count;
 }
@@ -143,8 +166,8 @@
 	self.urgency = 3;
 	self.note = @"";
 	self.streakLength = 0;
-	self.activeFromDate = nil;
-	self.activeToDate = nil;
+	self.utcActiveFromDate = nil;
+	self.utcActiveToDate = nil;
 	self.cycleStartTime = 0;
 }
 
@@ -158,8 +181,9 @@
 	SHConfig *config = [[SHConfig alloc] init];
 	dayStartTime = config.dayStartTime;
 	NSDate *today = [self.dateProvider.date.dayStart timeAfterSeconds:dayStartTime];
-	return nil != self.lastActivationDateTime &&
-		self.lastActivationDateTime.timeIntervalSince1970 >= today.timeIntervalSince1970;
+	NSDate *utcToday = [today dateInTimezone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+	return nil != self.utcLastActivationDateTime &&
+		self.utcLastActivationDateTime.timeIntervalSince1970 >= utcToday.timeIntervalSince1970;
 }
 
 @synthesize dateProvider = _dateProvider;

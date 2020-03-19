@@ -34,6 +34,7 @@
 		NSInteger streakLength = daily.streakLength;
 		NSInteger rate = daily.rate;
 		NSUInteger daysUntilDue = daily.daysUntilDue;
+		SHRateType rateType = (SHRateType)daily.rateType;
 		BOOL isCompleted = daily.isCompleted;
 		
 		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -46,21 +47,21 @@
 			else{
 				self.streakLbl.hidden = YES;
 			}
-			//for due in x days
-			if(rate > 1){
-				self.daysLeftLbl.hidden = NO;
-				self.daysLeftLbl.text = daysUntilDue==0?@"Today":
-					[NSString stringWithFormat:@"Due in %lul days",daysUntilDue];
-			}
-			else{
-				self.daysLeftLbl.hidden = YES;
-			}
 			
-			//for check image
 			if(isCompleted){
+				self.daysLeftLbl.hidden = YES;
 				[self.completeBtn setImage:[UIImage imageNamed:@"checked_task"] forState:UIControlStateNormal];
 			}
 			else{
+				if(rateType != SH_DAILY_RATE || rate > 1) {
+					self.daysLeftLbl.hidden = NO;
+					self.daysLeftLbl.text = daysUntilDue == 0 ? @"Due today":
+						daysUntilDue == 1 ? @"Due tomorrow" :
+							[NSString stringWithFormat:@"Due in %lul days", daysUntilDue];
+				}
+				else {
+					self.daysLeftLbl.hidden = YES;
+				}
 				[self.completeBtn setImage:[UIImage imageNamed:@"unchecked_task"] forState:UIControlStateNormal];
 			}
 		}];

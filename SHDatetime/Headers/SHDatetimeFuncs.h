@@ -51,31 +51,31 @@ double shDtToTimestamp(SHDatetime const *dt,SHError *error);
 
 bool shTryDtToTimestamp(SHDatetime const *dt,double *ans,SHError *error);
 
-bool shTryAddYearsToDt(SHDatetime const *dt,int64_t years,TimeAdjustOptions options,SHDatetime *ans
+bool shTryAddYearsToDt(SHDatetime const *dt,int64_t years,SHTimeAdjustOptions options,SHDatetime *ans
 	,SHError *error);
 
-bool shTryAddYearsToDtInPlace(SHDatetime *dt,int64_t years,TimeAdjustOptions options,SHError *error);
+bool shTryAddYearsToDtInPlace(SHDatetime *dt,int64_t years,SHTimeAdjustOptions options,SHError *error);
 
-double shAddYearsToTimestamp(double timestamp,int64_t years,int32_t timezoneOffset,TimeAdjustOptions options
+double shAddYearsToTimestamp(double timestamp,int64_t years,int32_t timezoneOffset,SHTimeAdjustOptions options
 	,SHError *error);
 
-bool shTryAddYearsToTimestamp(double timestamp,int64_t years,int32_t timezoneOffset,TimeAdjustOptions options
+bool shTryAddYearsToTimestamp(double timestamp,int64_t years,int32_t timezoneOffset,SHTimeAdjustOptions options
 	,double *ans,SHError *error);
 
-bool shTryAddMonthsToDt(SHDatetime const *dt,int64_t months,TimeAdjustOptions options,SHDatetime *ans
+bool shTryAddMonthsToDt(SHDatetime const *dt,int64_t months,SHTimeAdjustOptions options,SHDatetime *ans
 	,SHError *error);
 
-bool shTryAddMonthsToDtInPlace(SHDatetime *dt,int64_t months,TimeAdjustOptions options,SHError *error);
+bool shTryAddMonthsToDtInPlace(SHDatetime *dt,int64_t months,SHTimeAdjustOptions options,SHError *error);
 
-bool shTryAddMonthsToTimestamp(double timestamp,int64_t months,int32_t timezoneOffset,TimeAdjustOptions options
+bool shTryAddMonthsToTimestamp(double timestamp,int64_t months,int32_t timezoneOffset,SHTimeAdjustOptions options
 	,double *ans,SHError *error);
 
-bool shTryAddDaysToDt(SHDatetime const *dt,int64_t days,TimeAdjustOptions options,SHDatetime *ans
+bool shTryAddDaysToDt(SHDatetime const *dt,int64_t days,SHTimeAdjustOptions options,SHDatetime *ans
 	,SHError *error);
 
-bool shTryAddDaysToDtInPlace(SHDatetime *dt,int64_t days,TimeAdjustOptions options,SHError *error);
+bool shTryAddDaysToDtInPlace(SHDatetime *dt,int64_t days,SHTimeAdjustOptions options,SHError *error);
 
-bool shTryAddDaysToTimestamp(double timestamp,int64_t day,TimeAdjustOptions options,double *ans
+bool shTryAddDaysToTimestamp(double timestamp,int64_t day,SHTimeAdjustOptions options,double *ans
 	,SHError *error);
 
 bool shTryDayStart(double timestamp,int32_t timezoneOffset,double *ans,SHError *error);

@@ -87,6 +87,12 @@
       <FileRef
          location = "group:TestUI.sh">
       </FileRef>
+      <FileRef
+         location = "group:ModuleMapCopy.sh">
+      </FileRef>
+      <FileRef
+         location = "group:CleanUpModuleMap.sh">
+      </FileRef>
    </Group>
    <FileRef
       location = "group:SHTestCommon/SHTestCommon.xcodeproj">

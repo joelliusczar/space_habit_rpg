@@ -12,13 +12,6 @@
 #include "../Configs/SHWorkspace.xcconfig"
 #include "../Configs/MacOSArchs.xcconfig"
 
-SHCOMMON_DIR = $(BUILT_PRODUCTS_DIR)/SHCommon.framework
-SHMODELS_DIR = $(BUILT_PRODUCTS_DIR)/SHModels.framework
-SHTESTCOMMON_DIR = $(BUILT_PRODUCTS_DIR)/SHTestCommon.framework
-
-SHDATETIME_H_DIR = $(BUILT_PRODUCTS_DIR)/include/SHDatetime
-
-
 FRAMEWORK_SEARCH_PATHS = $PLATFORM_DIR/Developer/Library/Frameworks/ $(SHCOMMON_DIR) $(SHMODELS_DIR) $(SHTESTCOMMON_DIR)
 
 HEADER_SEARCH_PATHS = $(SHDATETIME_H_DIR)

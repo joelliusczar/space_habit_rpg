@@ -15,7 +15,7 @@ if [ -n "$IS_JOEL" ] && [ False ]; then
 fi
 
 
-cp "$SRCROOT"/Headers/module.modulemap "$BUILT_PRODUCTS_DIR"/include/"$PRODUCT_NAME"/module.modulemap
+. ModuleMapCopy.sh
 xs=$?
 
 (exit "$xs") && echo 'copy successful' || echo 'copy failed for some reason'

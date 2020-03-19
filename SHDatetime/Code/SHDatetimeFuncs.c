@@ -579,7 +579,7 @@ double shExtractTime(SHDatetime *dt,SHError *error){
 }
 
 
-bool shTryAddDaysToDtInPlace(SHDatetime *dt,int64_t days,TimeAdjustOptions options,SHError *error){
+bool shTryAddDaysToDtInPlace(SHDatetime *dt,int64_t days,SHTimeAdjustOptions options,SHError *error){
 	shLog("shTryAddDaysToDtInPlace");
 	(void)options;
 	shPrepareSHError(error);
@@ -594,7 +594,7 @@ bool shTryAddDaysToDtInPlace(SHDatetime *dt,int64_t days,TimeAdjustOptions optio
 }
 
 
-bool shTryAddDaysToDt(SHDatetime const *dt,int64_t days,TimeAdjustOptions options,SHDatetime *ans
+bool shTryAddDaysToDt(SHDatetime const *dt,int64_t days,SHTimeAdjustOptions options,SHDatetime *ans
 ,SHError *error){
 	shLog("shTryAddDaysToDt");
 	shPrepareSHError(error);
@@ -605,10 +605,8 @@ bool shTryAddDaysToDt(SHDatetime const *dt,int64_t days,TimeAdjustOptions option
 	return isSuccess;
 }
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunused-parameter"
 
-bool shTryAddDaysToTimestamp(double timestamp,int64_t days, TimeAdjustOptions options,double *ans
+bool shTryAddDaysToTimestamp(double timestamp,int64_t days, SHTimeAdjustOptions options,double *ans
 ,SHError *error){
 	shLog("shTryAddDaysToTimestamp");
 	if(!ans) return shHandleError(SH_NULL_VALUES,"Null inputs",error);
@@ -620,9 +618,8 @@ bool shTryAddDaysToTimestamp(double timestamp,int64_t days, TimeAdjustOptions op
 	return true;
 }
 
-#pragma GCC diagnostic pop
 
-bool shTryAddMonthsToDt(SHDatetime const *dt,int64_t months,TimeAdjustOptions options,SHDatetime *ans
+bool shTryAddMonthsToDt(SHDatetime const *dt,int64_t months,SHTimeAdjustOptions options,SHDatetime *ans
 ,SHError *error){
 	shPrepareSHError(error);
 	if(!(dt&&ans)) return shHandleError(SH_NULL_VALUES,"Null inputs",error);
@@ -630,11 +627,11 @@ bool shTryAddMonthsToDt(SHDatetime const *dt,int64_t months,TimeAdjustOptions op
 	return shTryAddMonthsToDtInPlace(ans,months,options,error);
 }
 
-bool shTryAddMonthsToDtInPlace(SHDatetime *dt,int64_t months,TimeAdjustOptions options,SHError *error){
+bool shTryAddMonthsToDtInPlace(SHDatetime *dt,int64_t months,SHTimeAdjustOptions options,SHError *error){
 	shPrepareSHError(error);
 	if(!dt) return shHandleError(SH_NULL_VALUES,"Null Datetime obj",error);
 	if(months == 0) return true;
-	if(options == NO_OPTION) options = SHIFT_BKD;
+	if(options == SH_TIME_ADJUST_NO_OPTION) options = SH_TIME_ADJUST_SHIFT_BKD;
 	int64_t totalMonths = months + dt->month;
 	int32_t exMonths = totalMonths % SH_YEAR_IN_MONTHS;
 	int64_t years = totalMonths / SH_YEAR_IN_MONTHS;
@@ -643,10 +640,10 @@ bool shTryAddMonthsToDtInPlace(SHDatetime *dt,int64_t months,TimeAdjustOptions o
 	int32_t monthLastDay = _monthCount[dt->month -1]
 	+ (_isLeapYear(dt->year)&&dt->month == SH_FEB?1:0);
 	if(dt->day > monthLastDay){
-		if(options == SHIFT_BKD){
+		if(options == SH_TIME_ADJUST_SHIFT_BKD){
 			dt->day = monthLastDay;
 		}
-		else if(options == SHIFT_FWD){
+		else if(options == SH_TIME_ADJUST_SHIFT_FWD){
 			dt->day = 1;
 			dt->month++;
 		}
@@ -656,7 +653,7 @@ bool shTryAddMonthsToDtInPlace(SHDatetime *dt,int64_t months,TimeAdjustOptions o
 }
 
 
-bool shTryAddMonthsToTimestamp(double timestamp,int64_t months,int32_t timezoneOffset,TimeAdjustOptions options
+bool shTryAddMonthsToTimestamp(double timestamp,int64_t months,int32_t timezoneOffset,SHTimeAdjustOptions options
 ,double *ans,SHError *error){
 	shPrepareSHError(error);
 	SHDatetime dt;
@@ -666,11 +663,11 @@ bool shTryAddMonthsToTimestamp(double timestamp,int64_t months,int32_t timezoneO
 }
 
 
-static bool _addYears_SHIFT(SHDatetime *dt,int64_t years, TimeAdjustOptions options,SHError *error) {
+static bool _addYears_SHIFT(SHDatetime *dt,int64_t years, SHTimeAdjustOptions options,SHError *error) {
 	shPrepareSHError(error);
 	int64_t yearSum = years + dt->year;
-	options = options == NO_OPTION?SHIFT_BKD:options;
-	if(options & ERROR){
+	options = options == SH_TIME_ADJUST_NO_OPTION?SH_TIME_ADJUST_SHIFT_BKD:options;
+	if(options & SH_TIME_ADJUST_ERROR){
 		if(!_isLeapYearFromBaseYear(yearSum) && _isLeapDayCusp(dt)){
 			return shHandleError(SH_GEN_ERROR, "Date addition caused Feb 29 to happen on non leap year"
 				,error);
@@ -678,10 +675,10 @@ static bool _addYears_SHIFT(SHDatetime *dt,int64_t years, TimeAdjustOptions opti
 		dt->year = yearSum;
 		return true;
 	}
-	if((options & SHIFT_BKD) || (options & SHIFT_FWD)){
+	if((options & SH_TIME_ADJUST_SHIFT_BKD) || (options & SH_TIME_ADJUST_SHIFT_FWD)){
 		if(!_isLeapYearFromBaseYear(yearSum) && _isLeapDayCusp(dt)){
-			if(options & SHIFT_BKD) dt->day = 28;
-			else if(options & SHIFT_FWD){
+			if(options & SH_TIME_ADJUST_SHIFT_BKD) dt->day = 28;
+			else if(options & SH_TIME_ADJUST_SHIFT_FWD){
 				dt->day = 1;
 				dt->month = 3;
 			}
@@ -693,7 +690,7 @@ static bool _addYears_SHIFT(SHDatetime *dt,int64_t years, TimeAdjustOptions opti
 }
 
 
-double shAddYearsToTimestamp(double timestamp,int64_t years,int32_t timezoneOffset,TimeAdjustOptions options
+double shAddYearsToTimestamp(double timestamp,int64_t years,int32_t timezoneOffset,SHTimeAdjustOptions options
 ,SHError *error){
 	shPrepareSHError(error);
 	double ans = 0;
@@ -702,7 +699,7 @@ double shAddYearsToTimestamp(double timestamp,int64_t years,int32_t timezoneOffs
 }
 
 
-bool shTryAddYearsToTimestamp(double timestamp,int64_t years,int32_t timezoneOffset,TimeAdjustOptions options
+bool shTryAddYearsToTimestamp(double timestamp,int64_t years,int32_t timezoneOffset,SHTimeAdjustOptions options
 ,double *ans,SHError *error){
 	shPrepareSHError(error);
 	SHDatetime dt;
@@ -712,7 +709,7 @@ bool shTryAddYearsToTimestamp(double timestamp,int64_t years,int32_t timezoneOff
 }
 
 
-bool shTryAddYearsToDt(SHDatetime const *dt,int64_t years,TimeAdjustOptions options,SHDatetime *ans
+bool shTryAddYearsToDt(SHDatetime const *dt,int64_t years,SHTimeAdjustOptions options,SHDatetime *ans
 ,SHError *error){
 	shPrepareSHError(error);
 	if(!(dt&&ans)) return shHandleError(SH_NULL_VALUES,"Null inputs",error);
@@ -721,14 +718,14 @@ bool shTryAddYearsToDt(SHDatetime const *dt,int64_t years,TimeAdjustOptions opti
 }
 
 
-bool shTryAddYearsToDtInPlace(SHDatetime *dt, int64_t years, TimeAdjustOptions options, SHError *error){
+bool shTryAddYearsToDtInPlace(SHDatetime *dt, int64_t years, SHTimeAdjustOptions options, SHError *error){
 	shPrepareSHError(error);
 	if(!dt) return shHandleError(SH_NULL_VALUES, "Null Datetime obj", error);
 	if(years == 0) return true;
-	if((options & (SHIFT_BKD | SHIFT_FWD)) || options == NO_OPTION){
+	if((options & (SH_TIME_ADJUST_SHIFT_BKD | SH_TIME_ADJUST_SHIFT_FWD)) || options == SH_TIME_ADJUST_NO_OPTION){
 			return _addYears_SHIFT(dt, years, options, error);
 	}
-	if(options & SIMPLE){
+	if(options & SH_TIME_ADJUST_SIMPLE){
 		double timestamp;
 		if(!shTryDtToTimestamp(dt, &timestamp, error)) return false;
 		timestamp += years * SH_SECONDS_PER_YEAR;
@@ -771,19 +768,19 @@ int32_t shCalcWeekdayIdx(SHDatetime *dt,SHError *error){
 	timestamp += dt->timezoneOffset;
 	bool isAfterEpoch = dt->year >= SH_BASE_YEAR;
 	if(isAfterEpoch){
-		int64_t totalDays = timestamp/SH_DAY_IN_SECONDS;
+		int64_t totalDays = timestamp / SH_DAY_IN_SECONDS;
 		//if within the first week
 		if(totalDays < SH_WEEK_START_DAYS_AFTER){
 				return (int)totalDays + SH_EPOCH_WEEK_CORRECTION;
 		}
-		totalDays = totalDays - SH_WEEK_START_DAYS_AFTER;
-		ans = totalDays % 7;
+		int64_t totalDaysOffset = totalDays - SH_WEEK_START_DAYS_AFTER;
+		ans = totalDaysOffset % 7;
 		return ans;
 	}
-	int64_t totalDays = (timestamp/SH_DAY_IN_SECONDS);
+	int64_t totalDays = (timestamp / SH_DAY_IN_SECONDS);
 	
-	totalDays = totalDays -3;
-	ans = (((totalDays % 7) + 7) % 7);
+	int64_t totalDaysOffset = totalDays - SH_WEEK_START_DAYS_AFTER;
+	ans = (((totalDaysOffset % 7) + 7) % 7);
 	return ans;
 }
 

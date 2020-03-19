@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2707AAA82419BAA8006FF10F /* SHDailyDueDateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2707AAA72419BAA8006FF10F /* SHDailyDueDateTests.m */; };
+		2707AAAA2419C1B9006FF10F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2707AAA92419C1B9006FF10F /* XCTest.framework */; };
 		273009F522432054006E419C /* TestUI.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273009F422432054006E419C /* TestUI.xib */; };
 		2738CB292340139500A41CC3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2738CB282340139500A41CC3 /* Images.xcassets */; };
 		273B929C23F9C79700A3925D /* SHAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B929B23F9C79700A3925D /* SHAlpha.m */; };
@@ -50,6 +52,7 @@
 		276E6DBC222A54E400CB36CB /* CoreDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DDF2321FE9EDA00F77AEF /* CoreDataTests.m */; };
 		276E6DBD222A54E400CB36CB /* CoreDataTests2.m in Sources */ = {isa = PBXBuildFile; fileRef = 273BF4D322093A5000B0D11E /* CoreDataTests2.m */; };
 		2792B567226C25B200A3A86C /* SHTestCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2792B566226C25B200A3A86C /* SHTestCommon.framework */; };
+		27AE22122419C4E0006DB5E2 /* libSHSpecial_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AE220F2419C4CC006DB5E2 /* libSHSpecial_C.a */; };
 		27B719412235F1B900540542 /* DumbDataSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B719402235F1B900540542 /* DumbDataSaver.m */; };
 		27B719452235F27700540542 /* TestDumbData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B719442235F27700540542 /* TestDumbData.m */; };
 		27C791F52226DD9000A92487 /* EmptyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C791F42226DD9000A92487 /* EmptyTest.m */; };
@@ -131,6 +134,20 @@
 			remoteGlobalIDString = 27C4113523DBB7CF0086E1F9;
 			remoteInfo = SHCommon;
 		};
+		27AE220E2419C4CC006DB5E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27AE220A2419C4CC006DB5E2 /* SHSpecial_C.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 271691C220885EF70059A58E;
+			remoteInfo = SHSpecial_C;
+		};
+		27AE22102419C4D8006DB5E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27AE220A2419C4CC006DB5E2 /* SHSpecial_C.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 271691C120885EF70059A58E;
+			remoteInfo = SHSpecial_C;
+		};
 		27CBFF1D2224F2EA00604C66 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2747C529204A5DB000FB5669 /* Project object */;
@@ -141,6 +158,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2707AAA72419BAA8006FF10F /* SHDailyDueDateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDailyDueDateTests.m; sourceTree = "<group>"; };
+		2707AAA92419C1B9006FF10F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		273009F422432054006E419C /* TestUI.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestUI.xib; sourceTree = "<group>"; };
 		2738CB282340139500A41CC3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		273B929A23F9C79700A3925D /* SHAlpha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlpha.h; sourceTree = "<group>"; };
@@ -217,6 +236,7 @@
 		27601C3E23F742E6001A9475 /* SHModels.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHModels.xcodeproj; path = ../SHModels/SHModels.xcodeproj; sourceTree = "<group>"; };
 		27601C4423F742F1001A9475 /* SHTestCommon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHTestCommon.xcodeproj; path = ../SHTestCommon/SHTestCommon.xcodeproj; sourceTree = "<group>"; };
 		2792B566226C25B200A3A86C /* SHTestCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHTestCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27AE220A2419C4CC006DB5E2 /* SHSpecial_C.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHSpecial_C.xcodeproj; path = ../SHSpecial_C/SHSpecial_C.xcodeproj; sourceTree = "<group>"; };
 		27B0B1EC22239AAD0028AF59 /* SHTests.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHTests.base.xcconfig; sourceTree = "<group>"; };
 		27B7193F2235F1B900540542 /* DumbDataSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DumbDataSaver.h; sourceTree = "<group>"; };
 		27B719402235F1B900540542 /* DumbDataSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DumbDataSaver.m; sourceTree = "<group>"; };
@@ -242,6 +262,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2707AAAA2419C1B9006FF10F /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +270,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27AE22122419C4E0006DB5E2 /* libSHSpecial_C.a in Frameworks */,
 				27E4A593226C1BC000756B6B /* libSHUtils_C.a in Frameworks */,
 				27E4A591226C1BC000756B6B /* libSHDatetime.a in Frameworks */,
 				27E4A595226C1BC000756B6B /* SHCommon.framework in Frameworks */,
@@ -301,6 +323,7 @@
 		2747C528204A5DB000FB5669 = {
 			isa = PBXGroup;
 			children = (
+				27AE220A2419C4CC006DB5E2 /* SHSpecial_C.xcodeproj */,
 				27601C4423F742F1001A9475 /* SHTestCommon.xcodeproj */,
 				27601C3E23F742E6001A9475 /* SHModels.xcodeproj */,
 				27601C3823F742DE001A9475 /* SHCommon.xcodeproj */,
@@ -346,6 +369,7 @@
 		2747C564204A621800FB5669 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2707AAA92419C1B9006FF10F /* XCTest.framework */,
 				2792B566226C25B200A3A86C /* SHTestCommon.framework */,
 				27E4A590226C1BC000756B6B /* libSHDatetime.a */,
 				27E4A592226C1BC000756B6B /* libSHUtils_C.a */,
@@ -381,6 +405,7 @@
 				273BF4D322093A5000B0D11E /* CoreDataTests2.m */,
 				27B719442235F27700540542 /* TestDumbData.m */,
 				273B92CB23F9D6F300A3925D /* SHInheritanceTreeTest.m */,
+				2707AAA72419BAA8006FF10F /* SHDailyDueDateTests.m */,
 			);
 			path = SHUnitTests;
 			sourceTree = "<group>";
@@ -443,6 +468,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		27AE220B2419C4CC006DB5E2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27AE220F2419C4CC006DB5E2 /* libSHSpecial_C.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		27C7923D2227A07500A92487 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,6 +528,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				27AE22112419C4D8006DB5E2 /* PBXTargetDependency */,
 				27601C5323F74343001A9475 /* PBXTargetDependency */,
 				27601C5123F7433E001A9475 /* PBXTargetDependency */,
 				27601C4F23F74337001A9475 /* PBXTargetDependency */,
@@ -552,6 +586,10 @@
 					ProjectRef = 27601C3E23F742E6001A9475 /* SHModels.xcodeproj */;
 				},
 				{
+					ProductGroup = 27AE220B2419C4CC006DB5E2 /* Products */;
+					ProjectRef = 27AE220A2419C4CC006DB5E2 /* SHSpecial_C.xcodeproj */;
+				},
+				{
 					ProductGroup = 27601C4523F742F1001A9475 /* Products */;
 					ProjectRef = 27601C4423F742F1001A9475 /* SHTestCommon.xcodeproj */;
 				},
@@ -602,6 +640,13 @@
 			fileType = wrapper.framework;
 			path = SHTestCommon.framework;
 			remoteRef = 27601C4823F742F1001A9475 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		27AE220F2419C4CC006DB5E2 /* libSHSpecial_C.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSHSpecial_C.a;
+			remoteRef = 27AE220E2419C4CC006DB5E2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -671,6 +716,7 @@
 				276E6DB4222A54E400CB36CB /* NSDate+testReplace.m in Sources */,
 				276E6DB5222A54E400CB36CB /* ProbilityWeightTest.m in Sources */,
 				276E6DB6222A54E400CB36CB /* ProbilityWeightTestFourItems.m in Sources */,
+				2707AAA82419BAA8006FF10F /* SHDailyDueDateTests.m in Sources */,
 				276E6DB7222A54E400CB36CB /* SHControlKeepTest.m in Sources */,
 				276E6DB8222A54E400CB36CB /* TestsTest.m in Sources */,
 				276E6DB9222A54E400CB36CB /* TestLocale.m in Sources */,
@@ -711,6 +757,11 @@
 			isa = PBXTargetDependency;
 			name = SHCommon;
 			targetProxy = 27601C5223F74343001A9475 /* PBXContainerItemProxy */;
+		};
+		27AE22112419C4D8006DB5E2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SHSpecial_C;
+			targetProxy = 27AE22102419C4D8006DB5E2 /* PBXContainerItemProxy */;
 		};
 		27CBFF1E2224F2EA00604C66 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

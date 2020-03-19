@@ -21,6 +21,11 @@
 @implementation SHDailyActiveDays
 
 
+-(instancetype)init {
+	self = [self initWithActiveDaysJson:SH_ALL_DAYS_JSON];
+	return self;
+}
+
 -(instancetype)initWithActiveDaysJson:(NSString*)activeDaysJson{
 	if(self = [super init]){
 		_jsonRepresentation = activeDaysJson;

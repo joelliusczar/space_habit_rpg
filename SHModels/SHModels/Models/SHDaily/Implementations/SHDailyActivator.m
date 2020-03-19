@@ -35,16 +35,25 @@
 		}
 		SHConfig *config = [[SHConfig alloc] init];
 		
-		NSTimeInterval dayStart = config.userTodayStart.timeIntervalSince1970;
-		NSTimeInterval lastActivation = daily.lastActivationDateTime.timeIntervalSince1970;
-		if(dayStart > lastActivation) {
-			daily.rollbackActivationDateTime = daily.lastActivationDateTime;
-			daily.lastActivationDateTime = NSDate.date;
+		NSInteger dayStartTime = 0;
+		if(daily.cycleStartTime) {
+			dayStartTime = daily.cycleStartTime.integerValue;
+		}
+		else {
+			SHConfig *config = [[SHConfig alloc] init];
+			dayStartTime = config.dayStartTime;
+		}
+		NSTimeInterval todayActivation = [NSDate.date.dayStartUTC
+			dateByAddingTimeInterval:dayStartTime].timeIntervalSince1970;
+		NSTimeInterval lastActivation = daily.utcLastActivationDateTime.timeIntervalSince1970;
+		if(todayActivation > lastActivation) {
+			daily.utcRollbackActivationDateTime = daily.utcLastActivationDateTime;
+			daily.utcLastActivationDateTime = NSDate.date;
 			if(self.activationAction) self.activationAction(YES,self.objectID);
 		}
 		else {
-			daily.lastActivationDateTime = daily.rollbackActivationDateTime;
-			daily.rollbackActivationDateTime = nil;
+			daily.utcLastActivationDateTime = daily.utcRollbackActivationDateTime;
+			daily.utcRollbackActivationDateTime = nil;
 			if(self.activationAction) self.activationAction(NO,self.objectID);
 		}
 		[self.context performBlock:^{

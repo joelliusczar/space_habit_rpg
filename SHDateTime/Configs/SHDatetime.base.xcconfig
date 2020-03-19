@@ -12,8 +12,6 @@
 #include "../Configs/SHWorkspace.xcconfig"
 
 
-SHUTILS_C_H_DIR = $(BUILT_PRODUCTS_DIR)/include/SHUtils_C
-
 HEADER_SEARCH_PATHS = $(SHUTILS_C_H_DIR)
 
 //DEFINES_MODULE = YES

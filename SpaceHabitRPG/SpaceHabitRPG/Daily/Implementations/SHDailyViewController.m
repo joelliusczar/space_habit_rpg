@@ -59,15 +59,16 @@
 
 
 -(void)completeDaily:(SHDaily *)daily{
-	daily.rollbackActivationDateTime = daily.lastActivationDateTime;
-	daily.lastActivationDateTime = [[NSDate date] dayStart];
+	daily.utcRollbackActivationDateTime = daily.utcLastActivationDateTime;
+	NSDate *utcToday = NSDate.date.dayStartUTC;
+	daily.utcLastActivationDateTime = utcToday;
 	#warning: calculate damage done to monster
 	#warning: save
 }
 
 
 -(void)undoCompletedDaily:(SHDaily *)daily{
-	daily.lastActivationDateTime = daily.rollbackActivationDateTime;
+	daily.utcLastActivationDateTime = daily.utcRollbackActivationDateTime;
 	#warning: more stuff
 }
 

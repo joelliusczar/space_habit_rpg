@@ -9,3 +9,4 @@
 #include "SHUtilConstants.h"
 const int32_t NOT_FOUND = -1;
 const int32_t SKIP = -2;
+const int32_t ALLOC_COUNT = 1;

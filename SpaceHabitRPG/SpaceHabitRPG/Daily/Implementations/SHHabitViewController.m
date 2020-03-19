@@ -183,6 +183,7 @@
 
 -(void)onAddHabitTap_action:(UIGestureRecognizer *)recognizer {
 	(void)recognizer;
+	self.nameViewController.namebox.text = @"";
 	__weak SHHabitViewController *weakSelf = self;
 	self.nameViewController.onNext = ^(NSString *name){
 		SHHabitViewController *bSelf = weakSelf;
@@ -192,6 +193,7 @@
 			NSManagedObject<SHTitleProtocol> *habit =
 				(NSManagedObject<SHTitleProtocol>*)[bSelf.context newEntity:bSelf.entityType];
 			habit.title = name;
+			habit.lastTouched = NSDate.date;
 			NSError *error = nil;
 			[bSelf.context save:&error];
 			SHObjectIDWrapper *objectIDWrapper = [[SHObjectIDWrapper alloc]

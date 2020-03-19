@@ -12,4 +12,5 @@
 #include <stdio.h>
 extern const int32_t NOT_FOUND;
 extern const int32_t SKIP;
+extern const int32_t ALLOC_COUNT;
 #endif /* SHUtilConstants_h */
