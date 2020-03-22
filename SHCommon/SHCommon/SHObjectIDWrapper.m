@@ -9,6 +9,7 @@
 #import "SHObjectIDWrapper.h"
 
 @interface SHObjectIDWrapper ()
+@property (strong,nonatomic) NSManagedObjectContext *context;
 @end
 
 
@@ -68,4 +69,9 @@
 	return self;
 }
 
+@end
+
+
+@implementation SHContextObjectIDWrapper
+@dynamic context;
 @end

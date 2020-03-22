@@ -11,7 +11,6 @@
 @import SHModels;
 
 @interface SHDailyEditController (ControlLoaders)
--(SHControlKeep *)buildControlKeep;
--(void)setResponders:(SHControlKeep *)keep;
+-(NSMutableArray<SHViewController *> *)buildControlKeep;
 @end
 

@@ -180,13 +180,13 @@
 }
 
 
--(NSInteger)getWeekdayIndex{
+-(NSUInteger)getWeekdayIndex{
 	SHDatetime dt;
-	int32_t tzOffset = (int32_t)[NSTimeZone.defaultTimeZone secondsFromGMTForDate:self];
+	int32_t tzOffset = (int32_t)[NSTimeZone.defaultTimeZone secondsFromGMT];
 	SHError error;
 	memset(&error, 0, sizeof(SHError));
-	shTryTimestampToDt(self.timeIntervalSince1970,tzOffset,&dt,&error);
-	return shCalcWeekdayIdx(&dt,&error);
+	shTryTimestampToDt(self.timeIntervalSince1970, tzOffset, &dt, &error);
+	return shCalcWeekdayIdx(&dt, &error);
 }
 
 
@@ -194,7 +194,7 @@
 	SHDatetime dt;
 	SHError error;
 	memset(&error, 0, sizeof(SHError));
-	shTryTimestampToDt(self.timeIntervalSince1970,0 , &dt, &error);
+	shTryTimestampToDt(self.timeIntervalSince1970, 0 , &dt, &error);
 	return shCalcWeekdayIdx(&dt, &error);
 }
 
@@ -234,7 +234,7 @@ static SHDatetime* _nsDateToShDatetime(NSDate *date, int32_t tzOffset) {
 }
 
 -(SHDatetime *)toSHDatetime {
-	int32_t tzOffset = (int32_t)[NSTimeZone.defaultTimeZone secondsFromGMTForDate:self];
+	int32_t tzOffset = (int32_t)[NSTimeZone.defaultTimeZone secondsFromGMT];
 	return _nsDateToShDatetime(self, tzOffset);
 }
 

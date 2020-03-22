@@ -11,6 +11,7 @@
 #import "SHConfig.h"
 #import "SHDailyNextDueDateCalculator.h"
 #import "SHDailyMaxDaysBeforeSpanCalculator.h"
+#import "SHDailyEvent.h"
 
 
 @implementation SHDaily
@@ -57,12 +58,13 @@
 		SHConfig *config = [[SHConfig alloc] init];
 		dayStartTime = config.dayStartTime;
 	}
+	SHDailyEvent *lastActivation = [[self lastActivations: 1] silentGet:0];
 	SHDailyNextDueDateCalculator *calculator = [[SHDailyNextDueDateCalculator alloc]
 		initWithActiveDays:self.activeDaysContainer
-		lastActivationDateTime:self.utcLastActivationDateTime
+		lastActivationDateTime:lastActivation.eventDatetime
 		lastUpdateDateTime:self.utcLastUpdateDateTime
 		dayStartTime:dayStartTime];
-	calculator.utcActiveFromDate = self.utcActiveFromDate;
+	calculator.activeFromDate = self.utcActiveFromDate;
 	calculator.dateProvider = self.dateProvider;
 	if([self.dailyName isEqualToString:@"test after dark"]) {
 		NSLog(@"remove");
@@ -181,9 +183,11 @@
 	SHConfig *config = [[SHConfig alloc] init];
 	dayStartTime = config.dayStartTime;
 	NSDate *today = [self.dateProvider.date.dayStart timeAfterSeconds:dayStartTime];
-	NSDate *utcToday = [today dateInTimezone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-	return nil != self.utcLastActivationDateTime &&
-		self.utcLastActivationDateTime.timeIntervalSince1970 >= utcToday.timeIntervalSince1970;
+	SHDailyEvent *lastEvent = [[self lastActivations:1] silentGet:0];
+	if(nil == lastEvent)return NO;
+	NSTimeInterval lastActivationTimestamp = lastEvent.eventDatetime.timeIntervalSince1970;
+	NSTimeInterval offsetLastActivationTimestamp = lastActivationTimestamp - lastEvent.tzOffset;
+	return offsetLastActivationTimestamp >= today.timeIntervalSince1970;
 }
 
 @synthesize dateProvider = _dateProvider;
@@ -195,6 +199,16 @@
 	return _dateProvider;
 }
 
+
+-(NSArray<SHDailyEvent *> *)lastActivations:(NSInteger)count {
+	NSFetchRequest<SHDailyEvent*> *fetchRequest = SHDailyEvent.fetchRequest;
+	fetchRequest.sortDescriptors = @[[NSSortDescriptor
+		sortDescriptorWithKey:@"utcTimestamp" ascending:NO]];
+	fetchRequest.fetchLimit = count;
+	fetchRequest.fetchBatchSize = count;
+	return (NSArray<SHDailyEvent *>*)[self.managedObjectContext
+		getItemsWithRequest:fetchRequest];
+}
 
 
 @end

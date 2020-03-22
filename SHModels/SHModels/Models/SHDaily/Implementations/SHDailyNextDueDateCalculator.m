@@ -29,18 +29,11 @@
 {
 	if(self = [super init]) {
 		_activeDaysContainer = activeDaysContainer;
-		_utcLastActivationDateTime = lastActivationDateTime;
-		_utcLastUpdateDateTime = lastUpdateDateTime;
+		_lastActivationDateTime = lastActivationDateTime;
+		_lastUpdateDateTime = lastUpdateDateTime;
 		_dayStartTime = dayStartTime;
 	}
 	return self;
-}
-
-
-static void convertObjCRateItemToC(SHWeeklyRateItemList* rateItems, SHRateValueItem *rvi){
-	for(int i = 0; i < SH_DAYS_IN_WEEK; i++){
-		[rateItems[i] copyIntoCStruct:&rvi[i]];
-	}
 }
 
 
@@ -48,32 +41,32 @@ static void convertObjCRateItemToC(SHWeeklyRateItemList* rateItems, SHRateValueI
 	if([self isDateActive:inactiveDate]) {
 	 return inactiveDate;
 	}
-	int32_t weekdayIdx = (int32_t)[inactiveDate getWeekdayIndexUTC];
-	int32_t prevDayIdx = (int32_t)[self.activeDaysContainer.weeklyActiveDays findPrevActiveDayIdx:weekdayIdx];
+	NSUInteger weekdayIdx = [inactiveDate getWeekdayIndex];
+	NSUInteger prevDayIdx = [self.activeDaysContainer.weeklyActiveDays findPrevActiveDayIdx:weekdayIdx];
 	BOOL isCurrentWeekActive = weekdayIdx > prevDayIdx;
-	int32_t diff = weekdayIdx - prevDayIdx;
+	NSInteger diff = weekdayIdx - prevDayIdx;
 	if(isCurrentWeekActive) {
 		return [inactiveDate dateAfterYears:0 months:0 days:-diff];
 	}
-	int64_t daysAgo = sh_calcDaysAgoDayWasActive(prevDayIdx,
+	int64_t daysAgo = sh_calcDaysAgoDayWasActive((int32_t)prevDayIdx,
 		self.activeDaysContainer.weeklyActiveDays.intervalSize);
 	return [inactiveDate dateAfterYears:0 months:0 days:-(daysAgo + diff)];
 }
 
 -(NSDate*)calcBackupLastCheckinDate {
-	if(self.utcActiveFromDate) {
-		return [self calcBackupDateForInactiveDate:self.utcActiveFromDate];
+	if(self.activeFromDate) {
+		return [self calcBackupDateForInactiveDate:self.activeFromDate];
 	}
-	return [self calcBackupDateForInactiveDate:self.utcLastUpdateDateTime];
+	return [self calcBackupDateForInactiveDate:self.lastUpdateDateTime];
 }
 
 
 -(NSDate*)nextDueDate_WEEKLY{
-	NSDate *lastCheckinDate = self.utcLastActivationDateTime?
-		self.utcLastActivationDateTime:
+	NSDate *lastCheckinDate = self.lastActivationDateTime?
+		self.lastActivationDateTime:
 		[self calcBackupLastCheckinDate];
-	SHDatetime *lastCheckinDt = [lastCheckinDate toSHDatetimeUTC];
-	SHDatetime *checkinDt = [self.dateProvider.date toSHDatetimeUTC];
+	SHDatetime *lastCheckinDt = [lastCheckinDate toSHDatetime];
+	SHDatetime *checkinDt = [self.dateProvider.date toSHDatetime];
 	SHDatetime ans;
 	memset(&ans,0,sizeof(SHDatetime));
 	SHError *error = calloc(ALLOC_COUNT, sizeof(SHError));
@@ -95,12 +88,12 @@ static void convertObjCRateItemToC(SHWeeklyRateItemList* rateItems, SHRateValueI
 
 -(BOOL)isDateActive:(NSDate *)dateInQuestion {
 	SHDatetime *dt = [dateInQuestion toSHDatetime];
-	SHDatetime *checkinDt = [self.dateProvider.date toSHDatetimeUTC];
+	SHDatetime *todaysDate = [self.dateProvider.date toSHDatetime];
 	SHRateValueItem *rvi =  [self.activeDaysContainer.weeklyActiveDays convertObjCRateItemToC];
 	int64_t intervalSize = self.activeDaysContainer.weeklyActiveDays.intervalSize;
 	SHError error;
 	memset(&error, 0, sizeof(SHError));
-	bool result = sh_isDateADueDate_WEEKLY(dt, checkinDt, rvi,
+	bool result = sh_isDateADueDate_WEEKLY(dt, todaysDate, rvi,
 		intervalSize, self.dayStartTime, &error);
 	int32_t timeShiftCount = 1;
 	shFreeSHDatetime(dt, timeShiftCount);

@@ -20,7 +20,7 @@
 }
 
 
--(void)setupCell:(SHObjectIDWrapper *)objectID {
+-(void)setupCell:(SHContextObjectIDWrapper *)objectID {
 	NSAssert(objectID.context,@"Hey, hey, we need a context here.");
 	self.context = objectID.context;
 	self.objectID = objectID;

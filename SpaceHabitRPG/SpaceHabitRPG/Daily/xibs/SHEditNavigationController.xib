@@ -29,13 +29,13 @@
                         <constraint firstAttribute="height" constant="44" id="KaX-tw-QEQ"/>
                     </constraints>
                     <items>
-                        <barButtonItem enabled="NO" title="Delete" id="WKd-iQ-fEC">
+                        <barButtonItem title="Delete" id="WKd-iQ-fEC">
                             <connections>
                                 <action selector="deleteBtn_press_action:forEvent:" destination="-1" id="PMK-Co-NKz"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="RHb-ef-xNA"/>
-                        <barButtonItem enabled="NO" systemItem="save" id="FvK-Rg-1oA">
+                        <barButtonItem systemItem="save" id="FvK-Rg-1oA">
                             <connections>
                                 <action selector="saveBtn_press_action:forEvent:" destination="-1" id="OVa-Ds-iY4"/>
                             </connections>

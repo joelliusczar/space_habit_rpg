@@ -15,11 +15,9 @@
 @interface SHEditNavigationController : SHViewController
 @property (strong,nonatomic) NSString *viewTitle;
 @property (strong,nonatomic) SHViewController<SHEditingSaverProtocol>* editingScreen;
-@property (weak,nonatomic) SHControlKeep *editControls;
+@property (weak,nonatomic) NSMutableArray<SHViewController *> *editControls;
 @property (strong,nonatomic) IBOutlet UITextField *itemNameInput;
 @property (strong,nonatomic) IBOutlet UIView *editorSubviewContainer;
 @property (strong,nonatomic) SHObjectIDWrapper *objectIDWrapper;
 @property (strong,nonatomic) NSManagedObjectContext *context;
--(void)enableSave;
--(void)enableDelete;
 @end

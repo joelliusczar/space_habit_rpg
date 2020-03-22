@@ -24,7 +24,6 @@ NS_ASSUME_NONNULL_BEGIN
 ,UITableViewDataSource
 ,UITableViewDelegate>
 @property (strong,nonatomic) SHObjectIDWrapper *objectIDWrapper;
-@property (strong,nonatomic) NSManagedObjectContext *context;
 @property (strong,nonatomic) SHDailyActiveDays *activeDays;
 @end
 

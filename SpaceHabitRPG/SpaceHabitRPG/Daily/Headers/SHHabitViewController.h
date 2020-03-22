@@ -37,11 +37,11 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)fetchUpdates;
 
 //abstract
-@property (strong, nonatomic) SHViewController<SHEditingSaverProtocol> *habitEditor;
 @property (readonly, nonatomic) NSEntityDescription *entityType;
 @property (readonly, nonatomic) NSString *entityName;
 -(void)setupData;
 -(SHHabitCell *)getTableCell:(UITableView*)tableView;
+-(SHViewController<SHEditingSaverProtocol> *)buildHabitEditor;
 //end abstract
 
 

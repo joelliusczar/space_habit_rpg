@@ -106,6 +106,8 @@
 		27CA9D1823AF060F00F67AC4 /* SHWeeklyRateItemList.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA9D1623AF060F00F67AC4 /* SHWeeklyRateItemList.m */; };
 		27CA9D1B23AF345100F67AC4 /* SHDailyRateItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA9D1923AF345100F67AC4 /* SHDailyRateItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA9D1C23AF345100F67AC4 /* SHDailyRateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA9D1A23AF345100F67AC4 /* SHDailyRateItem.m */; };
+		27E200202426EDB400B0232E /* SHDailyEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 27E2001E2426EDB400B0232E /* SHDailyEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27E200212426EDB400B0232E /* SHDailyEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E2001F2426EDB400B0232E /* SHDailyEvent.m */; };
 		27FF023A231A23BB00108320 /* SHSector_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FF0238231A23BB00108320 /* SHSector_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27FF023B231A23BB00108320 /* SHSector_Medium.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FF0239231A23BB00108320 /* SHSector_Medium.m */; };
 /* End PBXBuildFile section */
@@ -253,6 +255,8 @@
 		27CA9D1623AF060F00F67AC4 /* SHWeeklyRateItemList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHWeeklyRateItemList.m; sourceTree = "<group>"; };
 		27CA9D1923AF345100F67AC4 /* SHDailyRateItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDailyRateItem.h; sourceTree = "<group>"; };
 		27CA9D1A23AF345100F67AC4 /* SHDailyRateItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDailyRateItem.m; sourceTree = "<group>"; };
+		27E2001E2426EDB400B0232E /* SHDailyEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDailyEvent.h; sourceTree = "<group>"; };
+		27E2001F2426EDB400B0232E /* SHDailyEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDailyEvent.m; sourceTree = "<group>"; };
 		27FF0238231A23BB00108320 /* SHSector_Medium.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSector_Medium.h; sourceTree = "<group>"; };
 		27FF0239231A23BB00108320 /* SHSector_Medium.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSector_Medium.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -568,6 +572,7 @@
 		27CA86402264207A00AE8FDB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				27E2001A2426ED1A00B0232E /* SHDailyEvent */,
 				27A430D02268DCFB00773056 /* SHCategory */,
 				27A430D12268DD0A00773056 /* SHCounter */,
 				27A430C92268DC1700773056 /* SHDaily */,
@@ -583,6 +588,31 @@
 				27A430D72268DD9600773056 /* SHTodo */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		27E2001A2426ED1A00B0232E /* SHDailyEvent */ = {
+			isa = PBXGroup;
+			children = (
+				27E2001C2426ED8B00B0232E /* Headers */,
+				27E2001D2426ED9300B0232E /* Implementations */,
+			);
+			path = SHDailyEvent;
+			sourceTree = "<group>";
+		};
+		27E2001C2426ED8B00B0232E /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				27E2001E2426EDB400B0232E /* SHDailyEvent.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		27E2001D2426ED9300B0232E /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				27E2001F2426EDB400B0232E /* SHDailyEvent.m */,
+			);
+			path = Implementations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -638,6 +668,7 @@
 				27CA9D1B23AF345100F67AC4 /* SHDailyRateItem.h in Headers */,
 				2733D212229065830090B7F1 /* SHDailyValidation.h in Headers */,
 				27CA9D1723AF060F00F67AC4 /* SHWeeklyRateItemList.h in Headers */,
+				27E200202426EDB400B0232E /* SHDailyEvent.h in Headers */,
 				271CF5BB23D4D4AC00DB0CF4 /* SHIntervalItemFormat.h in Headers */,
 				27815533217D721C005C5279 /* SHInfoDictionary.h in Headers */,
 			);
@@ -789,6 +820,7 @@
 				2747C3CE2043BACB00FB5669 /* SHMonsterInfoDictionary.m in Sources */,
 				27075D662259308800AD13AA /* SHHeroDTO.m in Sources */,
 				2733D213229065830090B7F1 /* SHDailyValidation.c in Sources */,
+				27E200212426EDB400B0232E /* SHDailyEvent.m in Sources */,
 				27CA869D2264207A00AE8FDB /* SHConfig.m in Sources */,
 				2769C1002286106000217480 /* SHWeeklyRateItem.m in Sources */,
 				275EB496226A613200012784 /* SHBundleKey.m in Sources */,

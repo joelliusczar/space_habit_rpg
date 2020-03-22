@@ -34,7 +34,7 @@ SHDatetime* sh_bothWeeklyDueDatesFromLastDueDate(SHDatetime* lastDueDate,SHDatet
 bool sh_nextDueDate_WEEKLY(SHDatetime* lastDueDate,SHDatetime* checkinDate, SHRateValueItem* week,
 	int64_t scaler, int64_t dayStartHour, SHDatetime *ans,SHError* error);
 
-bool sh_isDateADueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate
+bool sh_isDateADueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *todaysDate
 ,SHRateValueItem *rvi,int64_t scaler, int64_t dayStartHour,SHError *error);
 	
 int64_t sh_calcDaysAgoDayWasActive(int32_t weekdayIdx, int64_t scaler);

@@ -13,13 +13,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void (^activationActionType)(BOOL,SHObjectIDWrapper *);
+typedef void (^activationActionType)(BOOL,SHContextObjectIDWrapper *);
 
 @interface SHDailyActivator : NSObject
-@property (strong,nonatomic) NSManagedObjectContext *context;
-@property (strong,nonatomic) SHObjectIDWrapper *objectID;
+@property (strong,nonatomic) SHContextObjectIDWrapper *objectID;
 @property (copy,nonatomic) activationActionType activationAction;
--(instancetype)initWithContext:(NSManagedObjectContext *)context withObjectId:(SHObjectIDWrapper *)objectID;
+@property (strong,nonatomic) NSObject<SHDateProviderProtocol> *dateProvider;
+-(instancetype)initWithObjectId:(SHContextObjectIDWrapper *)objectID;
 -(void)activate;
 @end
 

@@ -30,6 +30,7 @@ FOUNDATION_EXPORT const unsigned char SHModelsVersionString[];
 #import "SHReminder+CoreDataProperties.h"
 #import "SHSuffix.h"
 #import "SHDaily.h"
+#import "SHDailyEvent.h"
 #import "SHDaily+CoreDataProperties.h"
 #import "SHStoryItemProtocol.h"
 #import "SHTodo.h"

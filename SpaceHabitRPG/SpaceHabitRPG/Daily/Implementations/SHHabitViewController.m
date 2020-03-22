@@ -19,17 +19,6 @@
 @implementation SHHabitViewController
 
 
--(SHViewController<SHEditingSaverProtocol> *)habitEditor {
-	@throw [NSException abstractException];
-}
-
-
--(void)setHabitEditor:(SHViewController<SHEditingSaverProtocol> *)habitEditor {
-	(void)habitEditor;
-	@throw [NSException abstractException];
-}
-
-
 -(NSEntityDescription*)entityType {
 	@throw [NSException abstractException];
 }
@@ -111,7 +100,7 @@
 			.objects[indexPath.row];
 		objectID = mananagedObject.objectID;
 	}];
-	SHObjectIDWrapper *wrappedID = [[SHObjectIDWrapper alloc]
+	SHContextObjectIDWrapper *wrappedID = [[SHContextObjectIDWrapper alloc]
 		initWithEntityType:self.entityType
 		withContext:self.context];
 	wrappedID.objectID = objectID;
@@ -151,16 +140,17 @@
 }
 
 
--(void)openEditor:(SHObjectIDWrapper *)objectIDWrapper {
-	NSManagedObjectContext *context = [objectIDWrapper.context createChildContext];
-	[self setupEditorForSaving:objectIDWrapper withContext:context];
+-(void)openEditor:(SHContextObjectIDWrapper *)objectIDWrapper {
+	SHViewController<SHEditingSaverProtocol> *habitEditor = [self buildHabitEditor];
+	NSManagedObjectContext *context = [self setupEditorForSaving:habitEditor
+		objectIDWrapper:objectIDWrapper];
 	
-	SHEditNavigationController *editNavController = self.central.editController;
-	editNavController.editingScreen = self.habitEditor;
+	SHEditNavigationController *editNavController = [SHEditNavigationController newWithDefaultNib];
+	editNavController.editingScreen = habitEditor;
 	editNavController.title = self.entityName;
 	editNavController.context = context;
 	editNavController.objectIDWrapper = objectIDWrapper;
-	[self.central arrangeAndPushChildVCToFront:self.central.editController];
+	[self.central arrangeAndPushChildVCToFront:editNavController];
 }
 
 
@@ -171,7 +161,7 @@
 	NSManagedObjectContext *fetchContext = fetchController.managedObjectContext;
 	[fetchContext performBlockAndWait:^{
 		NSManagedObject *rowObject = fetchController.fetchedObjects[indexPath.row];
-		SHObjectIDWrapper *objectIDWrapper = [[SHObjectIDWrapper alloc]
+		SHContextObjectIDWrapper *objectIDWrapper = [[SHContextObjectIDWrapper alloc]
 			initWithManagedObject:rowObject];
 		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
 			[self openEditor:objectIDWrapper];
@@ -185,6 +175,7 @@
 	(void)recognizer;
 	self.nameViewController.namebox.text = @"";
 	__weak SHHabitViewController *weakSelf = self;
+	
 	self.nameViewController.onNext = ^(NSString *name){
 		SHHabitViewController *bSelf = weakSelf;
 		if(nil == bSelf) return;
@@ -196,7 +187,7 @@
 			habit.lastTouched = NSDate.date;
 			NSError *error = nil;
 			[bSelf.context save:&error];
-			SHObjectIDWrapper *objectIDWrapper = [[SHObjectIDWrapper alloc]
+			SHContextObjectIDWrapper *objectIDWrapper = [[SHContextObjectIDWrapper alloc]
 				initWithManagedObject:habit];
 			[[NSOperationQueue mainQueue] addOperationWithBlock:^{
 				if(error) {
@@ -302,10 +293,11 @@ This will be called the user creates a new habit, checks it off, or deletes one
 }
 
 
--(void)setupEditorForSaving:(SHObjectIDWrapper*)objectIDWrapper
-	withContext:(NSManagedObjectContext *)context
+-(NSManagedObjectContext *)setupEditorForSaving:(SHViewController<SHEditingSaverProtocol> *)habitEditor
+	objectIDWrapper:(SHContextObjectIDWrapper*)objectIDWrapper
 {
-	NSManagedObjectContext *parentContext = self.context;
+	NSManagedObjectContext *parentContext = objectIDWrapper.context;
+	NSManagedObjectContext *context = [parentContext createChildContext];
 	__weak NSNotificationCenter *center = NSNotificationCenter.defaultCenter;
 	__weak SHHabitViewController *weakSelf = self;
 	__block id token = [center addObserverForName:NSManagedObjectContextDidSaveNotification
@@ -329,7 +321,8 @@ This will be called the user creates a new habit, checks it off, or deletes one
 			[center removeObserver:token];
 		}];
 	
-	[self.habitEditor setupForContext:context andObjectIDWrapper:objectIDWrapper];
+	[habitEditor setupForContext:context andObjectIDWrapper:objectIDWrapper];
+	return context;
 }
 
 
@@ -338,6 +331,10 @@ This will be called the user creates a new habit, checks it off, or deletes one
 	@throw [NSException abstractException];
 }
 
+
+-(SHViewController<SHEditingSaverProtocol> *)buildHabitEditor {
+	@throw [NSException abstractException];
+}
 
 
 @end

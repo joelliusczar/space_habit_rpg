@@ -15,4 +15,8 @@
 	return self.testDate;
 }
 
+-(NSInteger)localTzOffset {
+	return 0;
+}
+
 @end

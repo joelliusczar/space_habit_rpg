@@ -15,4 +15,9 @@
 	return NSDate.date;
 }
 
+
+-(NSInteger)localTzOffset {
+	return NSTimeZone.defaultTimeZone.secondsFromGMT;
+}
+
 @end

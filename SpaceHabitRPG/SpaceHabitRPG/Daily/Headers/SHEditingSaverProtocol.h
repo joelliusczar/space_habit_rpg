@@ -16,6 +16,7 @@
 @protocol SHEditingSaverProtocol <NSObject>
 @required
 @property (weak,nonatomic) SHEditNavigationController *editorContainerController;
+@property (strong,nonatomic) NSManagedObjectContext *context;
 @property (readonly,nonatomic) UITextField *nameBox;
 @property (strong,nonatomic) UITableView *controlsTbl;
 @property (strong,nonatomic) NSString *nameStr;
@@ -24,7 +25,6 @@
 -(void)setupForContext:(NSManagedObjectContext*)context
 	andObjectIDWrapper:(SHObjectIDWrapper*)objectIDWrapper;
 
--(void)modelTouched;
 @optional
 -(void)unsaved_closing_action;
 @end

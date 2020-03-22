@@ -16,6 +16,4 @@
 
 
 @interface SHDailyViewController : SHHabitViewController
--(void)completeDaily:(SHDaily *)daily;
--(void)undoCompletedDaily:(SHDaily *)daily;
 @end

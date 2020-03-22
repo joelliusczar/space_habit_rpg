@@ -13,7 +13,8 @@
 @import CoreData;
 @import SHCommon;
 
-@class SHCategory, SHCounter, SHDailySubTask, SHItem, SHReminder;
+@class SHCategory, SHCounter, SHDailySubTask,
+	SHItem, SHReminder, SHDailyEvent;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly,nonatomic) BOOL isCompleted;
 @property (strong,nonatomic) NSObject<SHDateProviderProtocol> *dateProvider;
 -(void)setupInitialState;
+-(NSArray<SHDailyEvent *> *)lastActivations:(NSInteger)count;
 @end
 
 NS_ASSUME_NONNULL_END

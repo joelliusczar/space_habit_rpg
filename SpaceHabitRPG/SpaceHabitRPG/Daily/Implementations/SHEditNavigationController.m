@@ -138,9 +138,6 @@
 	[self.context performBlock:^{
 		id<SHTitleProtocol> model = (id<SHTitleProtocol>)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
 		model.title = text;
-		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-			[self enableSave];
-		}];
 	}];
 }
 
@@ -169,16 +166,6 @@
 }
 
 
--(void)enableSave{
-	self.saveBtnBarItem.enabled = YES;
-}
-
-
--(void)enableDelete{
-	self.deleteBtn.enabled = NO;
-}
-
-
 -(void)beginUpdate{
 	[self.editingScreen.controlsTbl beginUpdates];
 }
@@ -191,14 +178,6 @@
 
 -(void)endUpdate{
 	[self.editingScreen.controlsTbl endUpdates];
-}
-
-
--(void)refreshView{
-	NSArray<NSIndexPath *> *indexPaths = [self.editingScreen.controlsTbl indexPathsForVisibleRows];
-	[self.editingScreen.controlsTbl
-		reloadRowsAtIndexPaths:indexPaths
-		withRowAnimation:UITableViewRowAnimationFade];
 }
 
 

@@ -29,20 +29,25 @@
 }
 
 
-- (void)viewDidLoad {
-	NSAssert(self.context,@"You forgot to call setupWithContext:andObjectID:");
+-(void)viewDidLoad {
 	[super viewDidLoad];
+	[self finishSetup];
+}
+
+
+-(void)finishSetup {
+	NSAssert(self.context,@"You forgot to call setupWithContext:andObjectID:");
 	[self.context performBlock:^{
 		SHDaily *daily = (SHDaily *)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
 		SHRateType rateType = (SHRateType)daily.rateType;
 		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
 			self.primaryLabel.text = @"Interval: ";
-			NSString *desc = [self.activeDays selectRateItemCollection:rateType].intervalLabelDescription;
+			SHIntervalItemFormat *intervalItem = [self.activeDays selectRateItemCollection:rateType];
+			NSString *desc = intervalItem.intervalLabelDescription;
 			self.descriptionLabel.text = desc;
 			self.rateType = rateType;
 		}];
 	}];
-	
 }
 
 

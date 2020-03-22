@@ -16,7 +16,7 @@
 @interface SHDailyEditController ()
 @property (assign,nonatomic) shDailyStatus section;
 @property (assign,nonatomic) BOOL isStreakReset;
-@property (strong,nonatomic) SHControlKeep<SHViewController *,id> *editControls;
+@property (strong,nonatomic) NSMutableArray<SHViewController *> *editControls;
 @property (assign,nonatomic) BOOL isEditingExisting;
 @end
 
@@ -26,11 +26,13 @@
 @synthesize editorContainerController = _editorContainerController;
 @synthesize nameStr = _nameStr;
 @synthesize controlsTbl = _controlsTbl;
+@synthesize context = _context;
 
 
 -(UITextField *)nameBox {
 	return self.editorContainerController.itemNameInput;
 }
+
 
 -(instancetype)init{
 	if(self = [super init]){
@@ -60,12 +62,13 @@
 	self.view = _controlsTbl;
 }
 
+
 -(void)viewDidLoad {
 	[super viewDidLoad];
 	self.controlsTbl.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
 	[self setupEditControls];
-	[self loadExistingDailyForEditing];
+	[self afterloadFinishSetup];
 	
 	//it is important that this table delegate stuff happens after we check
 	//for the existence of the model, otherwise table events will trigger
@@ -76,33 +79,18 @@
 }
 
 
--(void)viewDidAppear:(BOOL)animated{
-	[super viewDidAppear:animated];
-	if(self.objectIDWrapper.objectID){
-		[self.editorContainerController enableDelete];
-	} 
-}
-
-
-- (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning];
-	// Dispose of any resources that can be recreated.
-}
-
-
--(void)setupEditControls{
+-(void)setupEditControls {
 	//I want the editControls stuff to happen here because when it gets
 	//lazy loaded, it gets out of hand
 	
 	self.editControls = [self buildControlKeep];
-	[self setResponders:self.editControls];
 	self.editorContainerController.editControls = self.editControls;
 }
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 	(void)tableView;(void)section;
-	NSInteger count = self.editControls.controlList.count;
+	NSInteger count = self.editControls.count;
 	return count;
 }
 
@@ -112,7 +100,7 @@
 {
 	(void)tableView;
 	UITableViewCell *cell = [[UITableViewCell alloc] init];
-	SHViewController *cellViewController = self.editControls.controlList[indexPath.row];
+	SHViewController *cellViewController = self.editControls[indexPath.row];
 	UIView *view = cellViewController.view;
 	view.translatesAutoresizingMaskIntoConstraints = NO;
 
@@ -132,7 +120,7 @@
 	heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	(void)tableView;
-	CGFloat height = self.editControls.controlList[indexPath.row].view.frame.size.height;
+	CGFloat height = self.editControls[indexPath.row].view.frame.size.height;
 	return height;
 }
 
@@ -182,13 +170,14 @@
 }
 
 
--(void)loadExistingDailyForEditing{
+-(void)afterloadFinishSetup{
 	if(self.objectIDWrapper.objectID){
 		[self.context performBlock:^{
 			SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
 			NSString *dailyName = daily.dailyName;
 			[[NSOperationQueue mainQueue] addOperationWithBlock:^{
 				self.nameBox.text = dailyName;
+				
 			}];
 		}];
 	}
@@ -200,33 +189,23 @@
 	[self.context performBlock:^{
 		SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
 		daily.note = note;
-		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-		[self modelTouched];
-		}];
 	}];
 }
-	
-	
+
+
 -(void)sld_valueChanged_action:(SHImportanceSliderView *)sender{
 	int32_t sliderValue = shCheckImportanceRange((int32_t)sender.importanceSld.value);
 	[sender updateImportanceSlider:sliderValue];
-	BOOL isUrgency = sender == self.editControls.controlLookup[@"urgencySld"];
-	[self.context performBlock:^{
-		SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
-		if(isUrgency){
-			daily.urgency = sliderValue;
-		}
-		else{
-			daily.difficulty = sliderValue;
-		}
-	}];
-}
-
-
--(void)modelTouched{
-	if(self.nameBox.text.length > 0) {
-		[self.editorContainerController enableSave];
-	}
+//	BOOL isUrgency = sender == self.editControls.controlLookup[@"urgencySld"];
+//	[self.context performBlock:^{
+//		SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
+//		if(isUrgency){
+//			daily.urgency = sliderValue;
+//		}
+//		else{
+//			daily.difficulty = sliderValue;
+//		}
+//	}];
 }
 
 

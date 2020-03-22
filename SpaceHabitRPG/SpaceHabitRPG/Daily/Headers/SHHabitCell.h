@@ -12,8 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHHabitCell : SHTaskCell
 @property (strong,nonatomic) NSManagedObjectContext *context;
-@property (strong,nonatomic) SHObjectIDWrapper *objectID;
--(void)setupCell:(SHObjectIDWrapper *)objectID;
+@property (strong,nonatomic) SHContextObjectIDWrapper *objectID;
+-(void)setupCell:(SHContextObjectIDWrapper *)objectID;
 @end
 
 NS_ASSUME_NONNULL_END

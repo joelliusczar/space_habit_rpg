@@ -18,140 +18,80 @@
 
 
 
--(SHControlKeep *)buildControlKeep{
+-(NSMutableArray<SHViewController *> *)buildControlKeep{
 	NSAssert(self.activeDays,@"Active days shouldn't be nil");
-	SHControlKeep *keep = [[SHControlKeep alloc] init];
+	NSMutableArray<SHViewController *> *keep = [NSMutableArray array];
 	
 	NSManagedObjectContext *context = self.context;
 	SHObjectIDWrapper *objectIDWrapper = self.objectIDWrapper;
 	SHDailyActiveDays *activeDays = self.activeDays;
-	__block BOOL newlyInserted = NO;
-	__block SHRateType rateType;
-	__block NSInteger interval = 1;
+	__block SHRateType rateType = SH_WEEKLY_RATE;
+	__block NSString *noteText = @"";
+	__block int32_t difficulty = 3;
+	__block int32_t urgency = 3;
+	__block BOOL newlyInserted = YES;
+	__block int32_t streakLength = 0;
 	[context performBlockAndWait:^{
 		SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:objectIDWrapper];
-		newlyInserted = daily.inserted;
 		rateType = daily.rateType;
-		interval = daily.rate;
+		noteText = daily.note.length > 0 ? daily.note : @"";
+		difficulty = daily.difficulty;
+		urgency = daily.urgency;
+		newlyInserted = daily.inserted;
+		streakLength = daily.streakLength;
 	}];
 	
-	[keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
-		(void)controlExtent;
-		SHNoteView *note = [[SHNoteView alloc] init];
-		[context performBlock:^{
-			SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:objectIDWrapper];
-			NSString *noteText = daily.note.length>0?daily.note:@"";
-			[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-				note.noteBox.text = noteText;
-			}];
-		}];
-		
-		[keep forResponderKey:@"self" doSetupAction:^(id responder){
-				note.delegate = responder;
-		}];
-		return note;
-	}];
+	SHNoteView *note = [[SHNoteView alloc] init];
+	note.noteBox.text = noteText;
+	note.delegate = self;
+	[keep addObject:note];
 	
-	__weak SHViewController *editorContainerController = self.editorContainerController;
+	NSBundle *bundle = [NSBundle bundleForClass:SHRepeatLinkViewController.class];
+	SHRepeatLinkViewController *repeatLink = [[SHRepeatLinkViewController alloc]
+		initWithNibName:@"SHLinkViewController" bundle:bundle];
+	repeatLink.editorContainer = self.editorContainerController;
+	[repeatLink setupWithContext:context
+		andObjectID:objectIDWrapper];
+	repeatLink.activeDays = activeDays;
+	repeatLink.rateType = rateType;
+	[keep addObject:repeatLink];
 	
-	[keep addLoaderBlock:^id(SHControlKeep *keep, SHControlExtent *controlExtent){
-		(void)controlExtent; (void)keep;
-		NSBundle *bundle = [NSBundle bundleForClass:SHRepeatLinkViewController.class];
-		SHRepeatLinkViewController *repeatLink = [[SHRepeatLinkViewController alloc]
-			initWithNibName:@"SHLinkViewController" bundle:bundle];
-		repeatLink.editorContainer = editorContainerController;
-		[repeatLink setupWithContext:context
-			andObjectID:objectIDWrapper];
-		repeatLink.activeDays = activeDays;
-		repeatLink.rateType = rateType;
-		return repeatLink;
-	}];
+	SHRemindersLinkViewController *remindersLink = [[SHRemindersLinkViewController alloc]
+		initWithNibName:@"SHLinkViewController" bundle:bundle];
+	remindersLink.editorContainer = self.editorContainerController;
+	[remindersLink setupWithContext:context
+		andObjectID:objectIDWrapper];
+	[keep addObject:remindersLink];
 	
-	[keep addLoaderBlock:^id(SHControlKeep *keep, SHControlExtent *controlExtent){
-		(void)controlExtent; (void)keep;
-		NSBundle *bundle = [NSBundle bundleForClass:SHRepeatLinkViewController.class];
-		SHRemindersLinkViewController *remindersLink = [[SHRemindersLinkViewController alloc]
-			initWithNibName:@"SHLinkViewController" bundle:bundle];
-		remindersLink.editorContainer = editorContainerController;
-		[remindersLink setupWithContext:context
-			andObjectID:objectIDWrapper];
-		return remindersLink;
-	}];
+	NSBundle *controlsBundle = [NSBundle bundleForClass:SHImportanceSliderView.class];
+	SHImportanceSliderView *difficultySld = [[SHImportanceSliderView alloc]
+		initWithNibName:NSStringFromClass(SHImportanceSliderView.class)
+		bundle:controlsBundle];
+	difficultySld.controlName = @"difficulty";
+	[difficultySld updateImportanceSlider:difficulty];
+	difficultySld.delegate = self;
+	[keep addObject:difficultySld];
 	
-	[keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
-		(void)controlExtent;
-		NSBundle *bundle = [NSBundle bundleForClass:SHImportanceSliderView.class];
-		SHImportanceSliderView *difficultySld = [[SHImportanceSliderView alloc]
-			initWithNibName:NSStringFromClass(SHImportanceSliderView.class)
-			bundle:bundle];
-		difficultySld.controlName = @"difficulty";
-		[context performBlock:^{
-			SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:objectIDWrapper];
-			int32_t difficulty = daily.difficulty;
-			[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-				[difficultySld updateImportanceSlider:difficulty];
-			}];
-		}];
-		[keep forResponderKey:@"self" doSetupAction:^(id responder){
-				difficultySld.delegate = responder;
-		}];
-		return difficultySld;
-	} withKey:@"difficultySld"];
-
-	[keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
-		(void)controlExtent;
-		NSBundle *bundle = [NSBundle bundleForClass:SHImportanceSliderView.class];
-		SHImportanceSliderView *urgencySld = [[SHImportanceSliderView alloc]
-			initWithNibName:NSStringFromClass(SHImportanceSliderView.class)
-			bundle:bundle];
-		urgencySld.controlName = @"urgency";
-		[context performBlock:^{
-			SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:objectIDWrapper];
-			int32_t urgency = daily.urgency;
-			[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-				[urgencySld updateImportanceSlider:urgency];
-			}];
-		}];
-		[keep forResponderKey:@"self" doSetupAction:^(id responder){
-				urgencySld.delegate = responder;
-		}];
-		return urgencySld;
-	} withKey:@"urgencySld"];
+	SHImportanceSliderView *urgencySld = [[SHImportanceSliderView alloc]
+		initWithNibName:NSStringFromClass(SHImportanceSliderView.class)
+		bundle:controlsBundle];
+	urgencySld.controlName = @"urgency";
+	[urgencySld updateImportanceSlider:urgency];
+	urgencySld.delegate = self;
+	[keep addObject:urgencySld];
 	
-	if(!newlyInserted) {
-		[keep addLoaderBlock:^id(SHControlKeep *keep,SHControlExtent *controlExtent){
-			(void)keep; (void)controlExtent;
-			NSBundle *bundle = [NSBundle bundleForClass:SHStreakResetterView.class];
-			SHStreakResetterView *resetter = [[SHStreakResetterView alloc]
-				initWithNibName:NSStringFromClass(SHStreakResetterView.class)
-				bundle:bundle];
-			resetter.streakCountLbl.hidden = NO;
-			resetter.streakResetBtn.hidden = NO;
-			[context performBlock:^{
-				SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:objectIDWrapper];
-				int32_t streakLength = daily.streakLength;
-				[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-					resetter.streakCountLbl.text = [NSString stringWithFormat:@"Streak %d",streakLength];
-				}];
-			}];
-			return resetter;
-		}];
-	}
+	SHStreakResetterView *resetter = [[SHStreakResetterView alloc]
+		initWithNibName:NSStringFromClass(SHStreakResetterView.class)
+		bundle:controlsBundle];
+	resetter.streakCountLbl.hidden = !newlyInserted;
+	resetter.streakResetBtn.hidden = !newlyInserted;
+	resetter.streakCountLbl.text = [NSString stringWithFormat:@"Streak %d",streakLength];
+	[keep addObject:resetter];
 	
 	return keep;
 }
 
 
--(void)setResponders:(SHControlKeep *)keep{
-	__weak SHDailyEditController *weakSelf = self;
-	keep.responderLookup[@"self"] = self;
-	keep.responderLookup[@"resize"] = self.editorContainerController;
-	keep.responderLookup[@"touch"] = ^void(){
-		SHDailyEditController *bSelf = weakSelf;
-		if(nil == bSelf) return;
-		[bSelf modelTouched];
-	};
-}
 
 
 @end

@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(NSMutableArray*)mapItemsTo:(id (^)(id,NSUInteger))mapper;
 -(NSMutableArray*)mapItemsTo_f:(id _Nonnull (*_Nonnull)(id _Nonnull, NSUInteger))mapper;
+-(ItemType)silentGet:(NSUInteger)index;
 @end
 
 NS_ASSUME_NONNULL_END

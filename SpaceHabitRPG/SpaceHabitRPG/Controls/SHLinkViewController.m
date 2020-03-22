@@ -49,11 +49,7 @@
 	[self openNextScreen];
 }
 
-#warning sorta put back
-//-(void)onBeginTap_action:(SHView *)sender withEvent:(UIEvent*)event{
-//	(void)sender; (void)event;
-//
-//}
 
+-(void)finishSetup {}
 
 @end

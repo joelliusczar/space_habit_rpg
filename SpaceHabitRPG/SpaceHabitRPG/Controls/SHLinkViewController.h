@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)setupWithContext:(NSManagedObjectContext *)context
 	andObjectID:(SHObjectIDWrapper*)objectIDWrapper;
 -(void)openNextScreen;
+-(void)finishSetup;
 @end
 
 NS_ASSUME_NONNULL_END

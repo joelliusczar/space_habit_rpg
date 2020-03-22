@@ -10,9 +10,9 @@
 
 #include <stdio.h>
 #include <stdbool.h>
-#include "SHUtilConstants.h"
 #include <inttypes.h>
 #include <string.h>
+#include "SHUtilConstants.h"
 
 /*
 	T1 and T2 should both be types

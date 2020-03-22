@@ -41,7 +41,7 @@
 -(NSDate *)dayStart;
 -(NSDate *)dayStartUTC;
 -(NSString *)extractTimeInFormat:(SHHourFormatType)format;
--(NSInteger)getWeekdayIndex;
+-(NSUInteger)getWeekdayIndex;
 -(NSInteger)getWeekdayIndexUTC;
 -(NSDateComponents *)getDateComponents;
 -(NSString *)timeOfDayInSystemPreferredFormat;

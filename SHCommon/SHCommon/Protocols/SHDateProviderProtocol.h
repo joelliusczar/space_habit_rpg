@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol SHDateProviderProtocol <NSObject>
 @property (readonly, nonatomic) NSDate *date;
+@property (readonly, nonatomic) NSInteger localTzOffset;
 @end
 
 NS_ASSUME_NONNULL_END

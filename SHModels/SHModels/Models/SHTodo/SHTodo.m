@@ -12,8 +12,8 @@
 -(NSMutableDictionary *)mapable{
 	return [NSMutableDictionary dictionaryWithObjectsAndKeys:
 		self.todoName,@"todoName"
-		,[NSNumber numberWithDouble:self.dueDate.timeIntervalSince1970],@"dueDate"
-		,[NSNumber numberWithDouble:self.effectiveDate.timeIntervalSince1970 ],@"effectiveDate"
+		,[NSNumber numberWithDouble:self.utcDueDate.timeIntervalSince1970],@"dueDate"
+		,[NSNumber numberWithDouble:self.utcEffectiveDate.timeIntervalSince1970 ],@"effectiveDate"
 		,[NSNumber numberWithInt:self.userOrder],@"userOrder"
 		, nil];
 }

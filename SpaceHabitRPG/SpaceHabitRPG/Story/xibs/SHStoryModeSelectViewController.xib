@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,7 +22,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q8h-jh-qs0">
-                            <rect key="frame" x="81.5" y="274" width="251" height="348"/>
+                            <rect key="frame" x="77" y="274" width="260" height="348"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xA7-0g-BHx">
                                     <rect key="frame" x="10" y="308" width="79" height="30"/>
@@ -32,14 +32,14 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cgj-We-308">
-                                    <rect key="frame" x="170" y="308" width="71" height="30"/>
+                                    <rect key="frame" x="179" y="308" width="71" height="30"/>
                                     <state key="normal" title="Skip Story"/>
                                     <connections>
                                         <action selector="skipStory_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="yAB-tp-nlA"/>
                                     </connections>
                                 </button>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d5W-ac-Jpo">
-                                    <rect key="frame" x="0.0" y="56" width="251" height="239"/>
+                                    <rect key="frame" x="0.0" y="30" width="260" height="265"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                     <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -49,14 +49,14 @@
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="251" id="5NG-SH-ILs"/>
+                                <constraint firstAttribute="width" constant="260" id="5NG-SH-ILs"/>
                                 <constraint firstAttribute="trailing" secondItem="Cgj-We-308" secondAttribute="trailing" constant="10" id="5Oz-i9-wTj"/>
                                 <constraint firstItem="xA7-0g-BHx" firstAttribute="leading" secondItem="Q8h-jh-qs0" secondAttribute="leading" constant="10" id="J4c-C1-RF3"/>
                                 <constraint firstAttribute="trailing" secondItem="d5W-ac-Jpo" secondAttribute="trailing" id="X4s-or-l9v"/>
                                 <constraint firstItem="d5W-ac-Jpo" firstAttribute="leading" secondItem="Q8h-jh-qs0" secondAttribute="leading" id="Xez-jP-psa"/>
                                 <constraint firstAttribute="bottom" secondItem="Cgj-We-308" secondAttribute="bottom" constant="10" id="duy-Ii-cx4"/>
                                 <constraint firstAttribute="height" constant="348" id="gaE-h8-j6Q"/>
-                                <constraint firstItem="d5W-ac-Jpo" firstAttribute="top" secondItem="Q8h-jh-qs0" secondAttribute="top" constant="56" id="nHy-en-ZnM"/>
+                                <constraint firstItem="d5W-ac-Jpo" firstAttribute="top" secondItem="Q8h-jh-qs0" secondAttribute="top" constant="30" id="nHy-en-ZnM"/>
                                 <constraint firstItem="xA7-0g-BHx" firstAttribute="top" secondItem="d5W-ac-Jpo" secondAttribute="bottom" constant="13" id="qTn-r6-WDb"/>
                                 <constraint firstAttribute="bottom" secondItem="xA7-0g-BHx" secondAttribute="bottom" constant="10" id="uM7-Gn-2Yi"/>
                             </constraints>

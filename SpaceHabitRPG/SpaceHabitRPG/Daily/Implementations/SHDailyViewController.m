@@ -26,20 +26,6 @@
 @implementation SHDailyViewController
 
 
-@synthesize habitEditor = _habitEditor;
--(SHViewController<SHEditingSaverProtocol>*)habitEditor {
-	if(_habitEditor == nil){
-		_habitEditor = [[SHDailyEditController alloc] init];
-	}
-	return _habitEditor;
-}
-
-
--(void)setHabitEditor:(SHViewController<SHEditingSaverProtocol> *)habitEditor {
-	_habitEditor = habitEditor;
-}
-
-
 -(NSEntityDescription*)entityType {
 	return SHDaily.entity;
 }
@@ -55,21 +41,6 @@
 	self.addHabitBtnLbl.text = @"Add New Daily";
 	UITabBarItem *tbi = [self tabBarItem];
 	[tbi setTitle:@"Dailies"];
-}
-
-
--(void)completeDaily:(SHDaily *)daily{
-	daily.utcRollbackActivationDateTime = daily.utcLastActivationDateTime;
-	NSDate *utcToday = NSDate.date.dayStartUTC;
-	daily.utcLastActivationDateTime = utcToday;
-	#warning: calculate damage done to monster
-	#warning: save
-}
-
-
--(void)undoCompletedDaily:(SHDaily *)daily{
-	daily.utcLastActivationDateTime = daily.utcRollbackActivationDateTime;
-	#warning: more stuff
 }
 
 
@@ -106,6 +77,11 @@
 
 -(SHHabitCell *)getTableCell:(UITableView*)tableView {
 	return [SHDailyCellController getTaskCell:tableView];
+}
+
+
+-(SHViewController<SHEditingSaverProtocol> *)buildHabitEditor {
+	return [[SHDailyEditController alloc] init];
 }
 
 

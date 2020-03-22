@@ -18,7 +18,6 @@
 @property (strong,nonatomic) SHHeroDTO *heroDTO;
 @property (strong,nonatomic) SHMonsterDictionaryEntry *monsterEntry;
 @property (strong,nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
-@property (strong,nonatomic) SHEditNavigationController *editController;
 @property (strong,nonatomic) SHBattleStatsViewController *battleStats;
 
 +(instancetype)newWithDataController:(NSObject<SHDataProviderProtocol>*)dataController

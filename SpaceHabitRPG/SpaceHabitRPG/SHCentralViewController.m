@@ -44,14 +44,6 @@
 }
 
 
--(SHEditNavigationController*)editController{
-	if(nil == _editController){
-		_editController = [SHEditNavigationController newWithDefaultNib];
-	}
-	return _editController;
-}
-
-
 -(instancetype)initWithDataController:(NSObject<SHDataProviderProtocol>*)dataController
 	andNibName:(NSString*)nib
 	andResourceUtil:(NSObject<SHResourceUtilityProtocol>*)util

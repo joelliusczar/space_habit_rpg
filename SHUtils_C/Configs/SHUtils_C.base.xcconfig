@@ -12,9 +12,12 @@
 #include "../Configs/SHWorkspace.xcconfig"
 
 
+PRODUCT_NAME = $(TARGET_NAME)
+
 //DEFINES_MODULE = YES
 //
 //MODULEMAP_FILE = $(SRCROOT)/Headers/module.modulemap
 
 //The location to copy the public headers to during building, relative to the built products folder.
 PUBLIC_HEADERS_FOLDER_PATH = include/$(PRODUCT_NAME)
+

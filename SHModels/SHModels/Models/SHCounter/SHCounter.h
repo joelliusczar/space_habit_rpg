@@ -9,7 +9,7 @@
 @import Foundation;
 @import CoreData;
 
-@class SHCategory, SHDaily;
+@class SHCategory, SHDaily, SHCounterEvent;
 
 NS_ASSUME_NONNULL_BEGIN
 
