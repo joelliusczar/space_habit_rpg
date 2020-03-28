@@ -23,10 +23,12 @@ extern shDebugCallback shDbgCallback;
 #ifndef shLog
 #define shLog(x) if(shDbgCallback) shDbgCallback(x);
 #endif
+
 #else
 #ifndef shLog
 #define shLog(x)
 #endif
+
 #endif
 
 typedef enum {

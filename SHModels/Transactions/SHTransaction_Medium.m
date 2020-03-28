@@ -30,7 +30,7 @@
 	[context performBlock:^{
 		SHTransaction *t =(SHTransaction *)[context newEntity: SHTransaction.entity];
 		t.entityType = self.entityType;
-		t.utcTimestamp = [NSDate date];
+		t.transactionDateTime = [NSDate date];
 		t.transType = SH_TRANSACTION_TYPE_CREATE;
 		t.misc = [info dictToString];
 		NSError *error = nil;
@@ -44,7 +44,7 @@
 	[context performBlock:^{
 		SHTransaction *t =(SHTransaction *)[context newEntity:SHTransaction.entity];
 		t.entityType = self.entityType;
-		t.utcTimestamp = [NSDate date];
+		t.transactionDateTime = [NSDate date];
 		t.transType = SH_TRANSACTION_TYPE_BATCH_DELETE;
 		t.misc = info;
 		NSError *error = nil;

@@ -12,75 +12,63 @@
                 <outlet property="doneBtn" destination="w97-KI-uOD" id="psf-0J-1Tw"/>
                 <outlet property="headlineLbl" destination="ASm-BA-8eZ" id="czx-bN-E8E"/>
                 <outlet property="synopsisView" destination="Tr5-qy-OUR" id="XA2-W7-E3e"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="view" destination="mBf-Iz-JxE" id="9IJ-cL-ueF"/>
             </connections>
         </placeholder>
-        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+        <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mBf-Iz-JxE">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mBf-Iz-JxE">
-                    <rect key="frame" x="63" y="211" width="288" height="474"/>
-                    <subviews>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" editable="NO" text="label" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ASm-BA-8eZ">
-                            <rect key="frame" x="8" y="8" width="272" height="41"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                        </textView>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tr5-qy-OUR">
-                            <rect key="frame" x="8" y="57" width="272" height="369"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            <accessibility key="accessibilityConfiguration">
-                                <accessibilityTraits key="traits" notEnabled="YES"/>
-                            </accessibility>
-                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                        </textView>
-                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w97-KI-uOD">
-                            <rect key="frame" x="241" y="434" width="39" height="32"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                            <state key="normal" title="Done">
-                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
-                            </state>
-                            <connections>
-                                <action selector="doneBtn_pressed_action:forEvent:" destination="-1" eventType="touchUpInside" id="8s1-L7-E0r"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstItem="ASm-BA-8eZ" firstAttribute="leading" secondItem="mBf-Iz-JxE" secondAttribute="leading" constant="8" id="2Ol-xs-ltb"/>
-                        <constraint firstAttribute="trailing" secondItem="w97-KI-uOD" secondAttribute="trailing" constant="8" id="4Eh-Ad-6JE"/>
-                        <constraint firstAttribute="width" constant="288" id="6LP-VO-XHM"/>
-                        <constraint firstAttribute="bottom" secondItem="w97-KI-uOD" secondAttribute="bottom" constant="8" id="8aa-k7-eJf"/>
-                        <constraint firstItem="w97-KI-uOD" firstAttribute="top" secondItem="Tr5-qy-OUR" secondAttribute="bottom" constant="8" id="EgY-Fb-FBC"/>
-                        <constraint firstAttribute="height" constant="474" id="KWJ-ld-mAm"/>
-                        <constraint firstItem="Tr5-qy-OUR" firstAttribute="top" secondItem="ASm-BA-8eZ" secondAttribute="bottom" constant="8" id="cmK-VZ-xQ3"/>
-                        <constraint firstAttribute="trailing" secondItem="Tr5-qy-OUR" secondAttribute="trailing" constant="8" id="ewZ-6X-tQb"/>
-                        <constraint firstItem="ASm-BA-8eZ" firstAttribute="top" secondItem="mBf-Iz-JxE" secondAttribute="top" constant="8" id="hSf-aR-BRo"/>
-                        <constraint firstAttribute="trailing" secondItem="ASm-BA-8eZ" secondAttribute="trailing" constant="8" id="q2A-S0-oIu"/>
-                        <constraint firstItem="Tr5-qy-OUR" firstAttribute="leading" secondItem="mBf-Iz-JxE" secondAttribute="leading" constant="8" id="vDu-zg-R3p"/>
-                    </constraints>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="9"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </view>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" editable="NO" text="label" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ASm-BA-8eZ">
+                    <rect key="frame" x="8" y="8" width="398" height="41"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tr5-qy-OUR">
+                    <rect key="frame" x="8" y="57" width="398" height="791"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <accessibilityTraits key="traits" notEnabled="YES"/>
+                    </accessibility>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w97-KI-uOD">
+                    <rect key="frame" x="367" y="856" width="39" height="32"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                    <state key="normal" title="Done">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                    </state>
+                    <connections>
+                        <action selector="doneBtn_pressed_action:forEvent:" destination="-1" eventType="touchUpInside" id="8s1-L7-E0r"/>
+                    </connections>
+                </button>
             </subviews>
-            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75125749143835618" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="mBf-Iz-JxE" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="C2u-z1-Xfc"/>
-                <constraint firstItem="mBf-Iz-JxE" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="qxQ-HQ-FE7"/>
+                <constraint firstItem="ASm-BA-8eZ" firstAttribute="leading" secondItem="mBf-Iz-JxE" secondAttribute="leading" constant="8" id="2Ol-xs-ltb"/>
+                <constraint firstAttribute="trailing" secondItem="w97-KI-uOD" secondAttribute="trailing" constant="8" id="4Eh-Ad-6JE"/>
+                <constraint firstAttribute="bottom" secondItem="w97-KI-uOD" secondAttribute="bottom" constant="8" id="8aa-k7-eJf"/>
+                <constraint firstItem="w97-KI-uOD" firstAttribute="top" secondItem="Tr5-qy-OUR" secondAttribute="bottom" constant="8" id="EgY-Fb-FBC"/>
+                <constraint firstItem="Tr5-qy-OUR" firstAttribute="top" secondItem="ASm-BA-8eZ" secondAttribute="bottom" constant="8" id="cmK-VZ-xQ3"/>
+                <constraint firstAttribute="trailing" secondItem="Tr5-qy-OUR" secondAttribute="trailing" constant="8" id="ewZ-6X-tQb"/>
+                <constraint firstItem="ASm-BA-8eZ" firstAttribute="top" secondItem="mBf-Iz-JxE" secondAttribute="top" constant="8" id="hSf-aR-BRo"/>
+                <constraint firstAttribute="trailing" secondItem="ASm-BA-8eZ" secondAttribute="trailing" constant="8" id="q2A-S0-oIu"/>
+                <constraint firstItem="Tr5-qy-OUR" firstAttribute="leading" secondItem="mBf-Iz-JxE" secondAttribute="leading" constant="8" id="vDu-zg-R3p"/>
             </constraints>
-            <point key="canvasLocation" x="137.68115942028987" y="102.71739130434783"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="9"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <point key="canvasLocation" x="720" y="750"/>
         </view>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
     </objects>
 </document>

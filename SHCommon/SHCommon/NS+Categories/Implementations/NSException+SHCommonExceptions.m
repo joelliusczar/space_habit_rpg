@@ -71,4 +71,16 @@
 	userInfo:nil];
 }
 
+
++(NSException*)encounterNSError:(NSError*)error {
+	return [NSException
+	exceptionWithName:@"NSError"
+	reason:[NSString
+		stringWithFormat:@"Error Code: %lu\nDomain:%@\n%@",
+		error.code,
+		error.domain,
+		error.localizedDescription]
+	userInfo:error.userInfo];
+}
+
 @end

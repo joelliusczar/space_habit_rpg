@@ -19,10 +19,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHDaily : NSManagedObject<SHDueDateItemProtocol, SHTitleProtocol>
-@property (strong,nonatomic) SHDailyActiveDays *activeDaysContainer;
-@property (readonly,nonatomic) NSInteger rate;
-@property (readonly,nonatomic) BOOL isCompleted;
-@property (strong,nonatomic) NSObject<SHDateProviderProtocol> *dateProvider;
+@property (strong, nonatomic) SHDailyActiveDays *activeDaysContainer;
+@property (readonly, nonatomic) NSInteger rate;
+@property (readonly, nonatomic) BOOL isCompleted;
+@property (readonly, nonatomic) BOOL isActiveToday;
+@property (strong, nonatomic) NSObject<SHDateProviderProtocol> *dateProvider;
 -(void)setupInitialState;
 -(NSArray<SHDailyEvent *> *)lastActivations:(NSInteger)count;
 @end

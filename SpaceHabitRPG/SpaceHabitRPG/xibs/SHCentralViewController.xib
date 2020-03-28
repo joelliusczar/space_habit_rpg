@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,19 +21,19 @@
         <view autoresizesSubviews="NO" contentMode="scaleToFill" restorationIdentifier="central" translatesAutoresizingMaskIntoConstraints="NO" id="Qgt-Ab-Zj3">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <subviews>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jeE-7J-ZJo" userLabel="statsView">
-                    <rect key="frame" x="0.0" y="-189" width="375" height="189"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jeE-7J-ZJo" userLabel="statsView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="189"/>
+                    <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="189" id="PzN-86-FQq"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ug1-1S-I7J" userLabel="tabContainer">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="189" width="375" height="478"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="ug1-1S-I7J" firstAttribute="top" secondItem="jeE-7J-ZJo" secondAttribute="bottom" id="6uL-G9-TEd"/>
                 <constraint firstAttribute="trailing" secondItem="ug1-1S-I7J" secondAttribute="trailing" id="CPJ-fN-XUP"/>
@@ -47,7 +47,7 @@
             <viewLayoutGuide key="safeArea" id="n1r-16-8uH"/>
             <variation key="default">
                 <mask key="constraints">
-                    <exclude reference="G7Y-LX-WMg"/>
+                    <exclude reference="qb9-mp-2ig"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="-217" y="-102"/>

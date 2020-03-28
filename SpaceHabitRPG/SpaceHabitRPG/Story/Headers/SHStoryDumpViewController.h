@@ -10,11 +10,11 @@
 @import SHControls;
 @import SHModels;
 
-@interface SHStoryDumpViewController : SHViewController
-@property (weak,nonatomic) IBOutlet UITextView *synopsisView;
-@property (weak,nonatomic) IBOutlet UIButton *doneBtn;
-@property (weak,nonatomic) IBOutlet UITextView *headlineLbl;
-@property (strong,nonatomic) NSObject<SHStoryItemProtocol> * storyItemObject;
+@interface SHStoryDumpViewController : SHViewController<SHModalContentProtocol>
+@property (weak, nonatomic) IBOutlet UITextView *synopsisView;
+@property (weak, nonatomic) IBOutlet UIButton *doneBtn;
+@property (weak, nonatomic) IBOutlet UITextView *headlineLbl;
+@property (strong, nonatomic) NSObject<SHStoryItemProtocol> * storyItemObject;
 @property (nonatomic) UIColor* backgroundColor;
 @property (copy,nonatomic) void (^responseBlock)(SHStoryDumpViewController *);
 -(instancetype)initWithStoryItemObject:(NSObject<SHStoryItemProtocol> *)storyItem;

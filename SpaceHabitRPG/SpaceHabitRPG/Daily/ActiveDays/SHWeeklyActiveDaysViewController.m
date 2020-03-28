@@ -18,7 +18,7 @@
 @implementation SHWeeklyActiveDaysViewController
 
 -(void)viewDidLoad{
-	NSAssert(self.weeklyActiveDays,@"Weekly active days cannot be null");
+	NSAssert(self.weeklyActiveDays, @"Weekly active days cannot be null");
 	[super viewDidLoad];
 	self.dayOptionViews = @[
 		self.day0Switch,

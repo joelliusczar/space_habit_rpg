@@ -81,14 +81,17 @@
 	[self determineIfFirstTimeAndSetupConfig];
 }
 
+- (void)showStatsView:(BOOL)shouldShow {
+	self.listTop.active = !shouldShow;
+	self.statsView.hidden = !shouldShow;
+	self.statsTop.active = shouldShow;
+}
+
 -(void)viewDidAppear:(BOOL)animated{
 	[super viewDidAppear:animated];
 	if(_shouldShowPostInto) {
 		[self prepareScreenPostIntro];
 	}
-	self.listTop.active = NO;
-	self.statsView.hidden = NO;
-	self.statsTop.active = YES;
 }
 
 -(void)didReceiveMemoryWarning {
@@ -163,6 +166,7 @@
 		 withViewController:self
 		 withResourceUtil:self.resourceUtil
 		 withOnPresentComplete:^{
+		 	[self showStatsView:YES];
 			[self prepareScreen];
 	}];
 	[present setupNormalSectorAndMonster];
@@ -172,31 +176,23 @@
 -(void)determineIfFirstTimeAndSetupConfig{
 	SHConfig *config = [[SHConfig alloc] init];
 	if(config.gameState == SH_GAME_STATE_UNINITIALIZED){
+		[self showStatsView:NO];
 		[self showIntro];
 	}
 	else if(config.gameState == SH_GAME_STATE_INTRO_FINISHED) {
+		[self showStatsView:NO];
 		_shouldShowPostInto = YES;
 		//see: viewDidAppear
+	}
+	else if(config.gameState == SH_GAME_STATE_INTRO_FINISHED_INITIAL_STORY) {
+		[self showStatsView:NO];
+		[self normalFlow];
 	}
 	else {
 		[self normalFlow];
 	}
 }
 
--(void)encodeRestorableStateWithCoder:(NSCoder *)coder {
-	[super encodeRestorableStateWithCoder:coder];
-	[coder encodeBool:self.listTop.active forKey:@"ListTop_Active"];
-	[coder encodeBool:self.statsTop.active forKey:@"StatsTop_Active"];
-	[coder encodeBool:self.statsView.hidden forKey:@"StatsView_Hidden"];
-}
-
-
--(void)decodeRestorableStateWithCoder:(NSCoder *)coder {
-	[super decodeRestorableStateWithCoder:coder];
-	self.listTop.active = [coder decodeBoolForKey:@"ListTop_Active"];
-	self.statsTop.active = [coder decodeBoolForKey:@"StatsTop_Active"];
-	self.statsView.hidden = [coder decodeBoolForKey:@"StatsView_Hidden"];
-}
 
 
 @end

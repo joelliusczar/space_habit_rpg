@@ -20,8 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSDate* activeFromDate;
 @property (strong,nonatomic) NSObject<SHDateProviderProtocol>* dateProvider;
 -(instancetype)initWithActiveDays:(SHDailyActiveDays *)activeDaysContainer
-	lastActivationDateTime:(nullable NSDate *)lastActivationDateTime
-	lastUpdateDateTime:(NSDate *)lastUpdateDateTime
 	dayStartTime:(NSInteger)dayStartTime;
 -(NSDate*)nextDueDate_WEEKLY;
 -(NSDate*)calcBackupLastCheckinDate;

@@ -62,6 +62,8 @@
 		2775680D23E473FA009EDD93 /* SHViewController+SHAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 2775680B23E473FA009EDD93 /* SHViewController+SHAppearance.m */; };
 		2775681023E48F81009EDD93 /* SHVCProxyContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2775680E23E48F81009EDD93 /* SHVCProxyContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2775681123E48F81009EDD93 /* SHVCProxyContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2775680F23E48F81009EDD93 /* SHVCProxyContainer.m */; };
+		277DCAAA242E9109009ABEF6 /* SHTransparentModalViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 277DCAA7242E9109009ABEF6 /* SHTransparentModalViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		277DCAAB242E9109009ABEF6 /* SHTransparentModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277DCAA8242E9109009ABEF6 /* SHTransparentModalViewController.m */; };
 		2782829223DA960F00836E77 /* SHViewControllerAppearanceProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 2782829023DA960F00836E77 /* SHViewControllerAppearanceProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2782829323DA960F00836E77 /* SHViewControllerAppearanceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2782829123DA960F00836E77 /* SHViewControllerAppearanceProxy.m */; };
 		27BE7AFD22AB03D600DD87F5 /* SHItemFlexibleListViewFull.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27BE7AFC22AB03D600DD87F5 /* SHItemFlexibleListViewFull.xib */; };
@@ -71,6 +73,8 @@
 		27DE250223739BA1003D2DAE /* SHScrollAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = 27DE250023739BA1003D2DAE /* SHScrollAnimator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27DE250323739BA1003D2DAE /* SHScrollAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DE250123739BA1003D2DAE /* SHScrollAnimator.m */; };
 		27ED11BD22A1E8D100E8EB32 /* SHNestedControlProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27ED11BC22A1E8D100E8EB32 /* SHNestedControlProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27FC9327242EA3F000408167 /* SHTransparentModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 277DCAA9242E9109009ABEF6 /* SHTransparentModalViewController.xib */; };
+		27FC932A242EF3F900408167 /* SHModalContentProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC9329242EF3F900408167 /* SHModalContentProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +152,9 @@
 		2775680B23E473FA009EDD93 /* SHViewController+SHAppearance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SHViewController+SHAppearance.m"; sourceTree = "<group>"; };
 		2775680E23E48F81009EDD93 /* SHVCProxyContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHVCProxyContainer.h; sourceTree = "<group>"; };
 		2775680F23E48F81009EDD93 /* SHVCProxyContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHVCProxyContainer.m; sourceTree = "<group>"; };
+		277DCAA7242E9109009ABEF6 /* SHTransparentModalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTransparentModalViewController.h; sourceTree = "<group>"; };
+		277DCAA8242E9109009ABEF6 /* SHTransparentModalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTransparentModalViewController.m; sourceTree = "<group>"; };
+		277DCAA9242E9109009ABEF6 /* SHTransparentModalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHTransparentModalViewController.xib; sourceTree = "<group>"; };
 		2782829023DA960F00836E77 /* SHViewControllerAppearanceProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHViewControllerAppearanceProxy.h; sourceTree = "<group>"; };
 		2782829123DA960F00836E77 /* SHViewControllerAppearanceProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHViewControllerAppearanceProxy.m; sourceTree = "<group>"; };
 		279848D0225063F500039A29 /* SHControls.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHControls.base.xcconfig; sourceTree = "<group>"; };
@@ -159,6 +166,7 @@
 		27DE250023739BA1003D2DAE /* SHScrollAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHScrollAnimator.h; sourceTree = "<group>"; };
 		27DE250123739BA1003D2DAE /* SHScrollAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHScrollAnimator.m; sourceTree = "<group>"; };
 		27ED11BC22A1E8D100E8EB32 /* SHNestedControlProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHNestedControlProtocol.h; sourceTree = "<group>"; };
+		27FC9329242EF3F900408167 /* SHModalContentProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHModalContentProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +184,7 @@
 		271187D0203FF88E0085A549 = {
 			isa = PBXGroup;
 			children = (
+				27FC9328242EF3A100408167 /* Protocols */,
 				27C4120523DBB97E0086E1F9 /* SHCommon.xcodeproj */,
 				27698E9123D4A8FB00754183 /* Headers */,
 				27698E9223D4A93200754183 /* Implementations */,
@@ -245,6 +254,7 @@
 		2733D216229604D20090B7F1 /* xibs */ = {
 			isa = PBXGroup;
 			children = (
+				277DCAA9242E9109009ABEF6 /* SHTransparentModalViewController.xib */,
 				271187FA203FF9DD0085A549 /* SHImportanceSliderView.xib */,
 				271187E9203FF9DB0085A549 /* SHAddItemsFooter.xib */,
 				271187FB203FF9DD0085A549 /* SHListItemCell.xib */,
@@ -269,6 +279,7 @@
 		27698E9123D4A8FB00754183 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				277DCAA7242E9109009ABEF6 /* SHTransparentModalViewController.h */,
 				27DE250023739BA1003D2DAE /* SHScrollAnimator.h */,
 				2737D110230F6EFA00B8618C /* SHStatusBar.h */,
 				27249BA121CF0D59006A884B /* SHFrontEndConstants.h */,
@@ -288,6 +299,7 @@
 		27698E9223D4A93200754183 /* Implementations */ = {
 			isa = PBXGroup;
 			children = (
+				277DCAA8242E9109009ABEF6 /* SHTransparentModalViewController.m */,
 				27DE250123739BA1003D2DAE /* SHScrollAnimator.m */,
 				2737D111230F6EFA00B8618C /* SHStatusBar.m */,
 				27249BA021CF0D59006A884B /* SHFrontEndConstants.m */,
@@ -362,6 +374,14 @@
 			path = SHControls/Categories;
 			sourceTree = "<group>";
 		};
+		27FC9328242EF3A100408167 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				27FC9329242EF3F900408167 /* SHModalContentProtocol.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -398,7 +418,9 @@
 				2775681023E48F81009EDD93 /* SHVCProxyContainer.h in Headers */,
 				27ED11BD22A1E8D100E8EB32 /* SHNestedControlProtocol.h in Headers */,
 				2782829223DA960F00836E77 /* SHViewControllerAppearanceProxy.h in Headers */,
+				277DCAAA242E9109009ABEF6 /* SHTransparentModalViewController.h in Headers */,
 				27DE250223739BA1003D2DAE /* SHScrollAnimator.h in Headers */,
+				27FC932A242EF3F900408167 /* SHModalContentProtocol.h in Headers */,
 				271D610920421A9A005C9F7E /* SHCommonDelegateProtocol.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,6 +501,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27FC9327242EA3F000408167 /* SHTransparentModalViewController.xib in Resources */,
 				2711880D203FF9DF0085A549 /* SHSubtasksTableView.xib in Resources */,
 				27118825203FF9DF0085A549 /* SHNoteView.xib in Resources */,
 				271D613820421A9A005C9F7E /* SHSpinPicker.xib in Resources */,
@@ -530,6 +553,7 @@
 				271188502040001B0085A549 /* SHSwitch.m in Sources */,
 				27249B9B21C5809E006A884B /* UIView+Helpers.m in Sources */,
 				27118819203FF9DF0085A549 /* SHSubtasksTableView.m in Sources */,
+				277DCAAB242E9109009ABEF6 /* SHTransparentModalViewController.m in Sources */,
 				2711880E203FF9DF0085A549 /* SHNoteView.m in Sources */,
 				27249BA221CF0D59006A884B /* SHFrontEndConstants.m in Sources */,
 				2775680D23E473FA009EDD93 /* SHViewController+SHAppearance.m in Sources */,

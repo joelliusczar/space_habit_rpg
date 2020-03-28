@@ -73,7 +73,7 @@
 		if(self.responseBlock){
 			self.responseBlock(self);
 		}
-		[self popVCFromFront];
+		[self.modalContentPresenter popVCFromFront];
 }
 
 

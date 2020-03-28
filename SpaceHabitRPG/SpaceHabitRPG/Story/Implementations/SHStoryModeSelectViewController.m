@@ -63,7 +63,7 @@
 	[s saveToFile];
 	SHConfig *config = [[SHConfig alloc] init];
 	config.storyMode = SH_STORY_MODE_FULL;
-	config.gameState = SH_GAME_STATE_INITIALIZED;
+	config.gameState = SH_GAME_STATE_INTRO_FINISHED_INITIAL_STORY;
 	
 	__weak SHStoryModeSelectViewController *weakSelf = self;
 	self.storyCommon.onComplete = ^{
@@ -73,6 +73,7 @@
 		[bSelf popVCFromFront];
 		bSelf.onIntroComplete(isStory);
 	};
+	[self.storyCommon addSectorTransaction:s];
 	[self.storyCommon showSectorStory:s];
 }
 

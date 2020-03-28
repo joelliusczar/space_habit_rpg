@@ -33,12 +33,6 @@
 }
 
 
-//#story_logic: both
--(void)loadOrSetupHero:(void (^)(void))nextBlock{
-	nextBlock();
-}
-
-
 -(void)showStoryItem:(NSObject<SHStoryItemProtocol>*)storyItem
 	withResponse:(void (^)(SHStoryDumpViewController * nullable))response
 {
@@ -47,7 +41,9 @@
 		SHStoryDumpViewController *sdv = [[SHStoryDumpViewController alloc] init];
 		sdv.storyItemObject = storyItem;
 		sdv.responseBlock = response; //gets called further down the line
-		[self.central arrangeAndPushChildVCToFront:sdv];
+		SHTransparentModalViewController *modal = [[SHTransparentModalViewController alloc]
+			initWithModalViewController:sdv];
+		[self.central arrangeAndPushChildVCToFront:modal];
 	}
 	else {
 		response(nil);
@@ -60,6 +56,9 @@
 		(void)sdv;
 		SHConfig *config = [[SHConfig alloc] init];
 		config.storyState = SH_STORY_STATE_NORMAL;
+		if(config.gameState == SH_GAME_STATE_INTRO_FINISHED_INITIAL_STORY) {
+			config.gameState = SH_GAME_STATE_INITIALIZED;
+		}
 		if(self.onComplete){
 			self.onComplete();
 		}
@@ -67,7 +66,7 @@
 }
 
 
--(void)addSectorTransaction:(SHSector * _Nonnull)sector {
+-(void)addSectorTransaction:(SHSector *)sector {
 	[self.context performBlock:^{
 		SHTransaction_Medium *st = [[SHTransaction_Medium alloc]
 			initWithContext:self.context andEntityType:@"SHSector"];
@@ -92,7 +91,6 @@
 
 
 -(void)showSectorStory:(SHSector *)sector {
-	[self addSectorTransaction:sector];
 	SHConfig *config = [[SHConfig alloc] init];
 	config.storyState = SH_STORY_STATE_SECTOR_WAITING;
 	[self showStoryItem:sector withResponse:^(SHStoryDumpViewController * sdv){
@@ -101,7 +99,6 @@
 		SHMonster *monster = [mm newRandomMonster:sector.sectorKey sectorLvl:sector.lvl];
 		[monster saveToFile];
 		[self addMonsterTransaction:monster];
-		SHConfig *config = [[SHConfig alloc] init];
 		config.storyState = SH_STORY_STATE_MONSTER_WAITING;
 		[self showMonsterStory:monster];
 	}];

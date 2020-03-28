@@ -213,7 +213,7 @@
 		d.rateType = SH_WEEKLY_RATE;
 		//if the rate is one, it should always result in being 0 days until Daily is due
 		d.activeDaysContainer.weeklyActiveDays.intervalSize = 1;
-		d.utcLastActivationDateTime = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:13 minute:24 second:11
+		d.lastActivationDateTime = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:13 minute:24 second:11
 			timeZone: [NSTimeZone timeZoneForSecondsFromGMT:-18000]];
 		days1 = d.daysUntilDue;
 		d.activeDaysContainer.weeklyActiveDays.intervalSize = 2;

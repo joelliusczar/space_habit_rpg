@@ -38,10 +38,14 @@
 	[context performBlock:^{
 		NSError *err = nil;
 		SHDaily *daily = (SHDaily *)[context existingObjectWithID:objectId error:&err];
-		
 		if(err) {
 			@throw [NSException dbException:err];
 		}
+		if(!daily.isActiveToday) return;
+		/*
+			if the task is something that the user wants to be able to complete
+			before its due date, they should use a recuring todo
+		*/
 		
 		NSInteger dayStartTime = 0;
 		if(daily.cycleStartTime) {
@@ -62,12 +66,14 @@
 			SHDailyEvent *activation = (SHDailyEvent *)[context newEntity:SHDailyEvent.entity];
 			activation.eventDatetime = self.dateProvider.date;
 			activation.tzOffset = (int32_t)self.dateProvider.localTzOffset;
-			if(self.activationAction) self.activationAction(YES,self.objectID);
+			activation.event_daily = daily;
+			daily.lastActivationDateTime = activation.eventDatetime;
+			if(self.activationAction) self.activationAction(YES, self.objectID);
 		}
 		else {
 			[context deleteObject:lastEvent];
-			daily.utcLastActivationDateTime = rollbackToEvent.eventDatetime;
-			if(self.activationAction) self.activationAction(NO,self.objectID);
+			daily.lastActivationDateTime = rollbackToEvent.eventDatetime;
+			if(self.activationAction) self.activationAction(NO, self.objectID);
 		}
 		NSError *saveErr = nil;
 		[context save:&saveErr];

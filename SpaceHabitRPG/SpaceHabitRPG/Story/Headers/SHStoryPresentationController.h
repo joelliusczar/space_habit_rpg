@@ -20,9 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 -(instancetype)initWithContext:(NSManagedObjectContext*)context
 	withResourceUtil:(NSObject<SHResourceUtilityProtocol> *)resourceUtil
 	withViewController:(SHViewController*)viewController;
--(void)loadOrSetupHero:(void (^)(void))nextBlock;
 -(void)showMonsterStory:(SHMonster*)monster;
 -(void)showSectorStory:(SHSector *)sector;
+-(void)addSectorTransaction:(SHSector *)sector;
 @end
 
 NS_ASSUME_NONNULL_END

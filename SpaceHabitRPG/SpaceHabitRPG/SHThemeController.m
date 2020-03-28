@@ -77,6 +77,7 @@ static void _SH_setTextViewBorderSpecialCase(UIColor *background) {
 	UIColor *disabledText = [UIColor colorNamed:@"disabledText"];
 	UILabel.appearance.textColor = text;
 	SHViewController.appearance.viewBackgroundColor = background;
+	SHTransparentModalViewController.appearance.viewBackgroundColor = transparentBackground;
 	[UIView appearanceWhenContainedInInstancesOfClasses:@[SHIntroViewController.class]].backgroundColor = background;
 	UITableView.appearance.backgroundColor = background;
 	UITabBar.appearance.barTintColor = background;

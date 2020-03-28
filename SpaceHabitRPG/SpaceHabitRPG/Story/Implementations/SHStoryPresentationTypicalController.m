@@ -74,11 +74,9 @@
 
 
 -(void)finishPresent{
-	[self.storyCommon loadOrSetupHero:^{
-		if(self.onPresentComplete){
-			self.onPresentComplete();
-		}
-	}];
+	if(self.onPresentComplete){
+		self.onPresentComplete();
+	}
 }
 
 

@@ -314,20 +314,20 @@ static bool _isDateADueDate_WEEKLY(SHDatetime* previousDueDate, SHDatetime* chec
 }
 
 
-bool sh_isDateADueDate_WEEKLY(SHDatetime *lastDueDate, SHDatetime *todaysDate,
+bool sh_isDateADueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate,
 	SHRateValueItem *week, int64_t scaler, int64_t dayStartHour,SHError *error)
 {
 	shLog("sh_isDateADueDate_WEEKLY\n");
 	SHDatetime previousDate;
 	SHDatetime lastDueDatePrepared = *lastDueDate;
-	SHDatetime todaysDatePrepared = *todaysDate;
+	SHDatetime checkinDatePrepared = *checkinDate;
 	_prepareDatetimeForCalculations(&lastDueDatePrepared, dayStartHour, error);
-	_prepareDatetimeForCalculations(&todaysDatePrepared, dayStartHour, error);
-	sh_previousDueDate_WEEKLY(&lastDueDatePrepared, &todaysDatePrepared, week, scaler,
+	_prepareDatetimeForCalculations(&checkinDatePrepared, dayStartHour, error);
+	sh_previousDueDate_WEEKLY(&lastDueDatePrepared, &checkinDatePrepared, week, scaler,
 		dayStartHour, &previousDate, error);
 	if(error && error->code != SH_NO_ERROR){
 		return shHandleErrorRetNull(error->code,"Error getting previous date",error);
 	}
-	return _isDateADueDate_WEEKLY(&previousDate, &todaysDatePrepared,
+	return _isDateADueDate_WEEKLY(&previousDate, &checkinDatePrepared,
 		week, scaler, dayStartHour,error);
 }

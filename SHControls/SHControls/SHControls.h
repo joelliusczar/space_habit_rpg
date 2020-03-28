@@ -40,6 +40,8 @@ FOUNDATION_EXPORT const unsigned char SHControlsVersionString[];
 #import "SHNestedControlProtocol.h"
 #import "SHStatusBar.h"
 #import "SHScrollAnimator.h"
+#import "SHTransparentModalViewController.h"
+#import "SHModalContentProtocol.h"
 
 // In this header, you should import all the public headers
 //of your framework using statements like #import <SHControls/PublicHeader.h>

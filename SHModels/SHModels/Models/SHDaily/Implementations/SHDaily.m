@@ -13,6 +13,9 @@
 #import "SHDailyMaxDaysBeforeSpanCalculator.h"
 #import "SHDailyEvent.h"
 
+@interface SHDaily ()
+@property (strong, nonatomic) SHDailyNextDueDateCalculator *calculator;
+@end
 
 @implementation SHDaily
 
@@ -24,6 +27,35 @@
 	return _activeDaysContainer;
 }
 
+
+@synthesize calculator = _calculator;
+-(SHDailyNextDueDateCalculator *)calculator {
+	if(nil == _calculator) {
+		NSInteger dayStartTime = 0;
+		if(self.cycleStartTime) {
+			dayStartTime = self.cycleStartTime.integerValue;
+		}
+		else {
+			SHConfig *config = [[SHConfig alloc] init];
+			dayStartTime = config.dayStartTime;
+		}
+		_calculator = [[SHDailyNextDueDateCalculator alloc]
+			initWithActiveDays:self.activeDaysContainer
+			dayStartTime:dayStartTime];
+		_calculator.dateProvider = self.dateProvider;
+	}
+	_calculator.activeFromDate = self.activeFromDate;
+	_calculator.lastActivationDateTime = self.lastActivationDateTime;
+	_calculator.lastUpdateDateTime = self.lastUpdateDateTime;
+	return _calculator;
+}
+
+
+-(BOOL)isActiveToday {
+	//I'm just gonna use the normal day start here.
+	//because I can imagine users getting confused by that
+	return [self.calculator isDateActive:self.dateProvider.date];
+}
 
 -(NSInteger)rate{
 	switch(self.rateType){
@@ -50,32 +82,13 @@
 
 -(NSDate *)nextDueDate{
 	
-	NSInteger dayStartTime = 0;
-	if(self.cycleStartTime) {
-		dayStartTime = self.cycleStartTime.integerValue;
-	}
-	else {
-		SHConfig *config = [[SHConfig alloc] init];
-		dayStartTime = config.dayStartTime;
-	}
-	SHDailyEvent *lastActivation = [[self lastActivations: 1] silentGet:0];
-	SHDailyNextDueDateCalculator *calculator = [[SHDailyNextDueDateCalculator alloc]
-		initWithActiveDays:self.activeDaysContainer
-		lastActivationDateTime:lastActivation.eventDatetime
-		lastUpdateDateTime:self.utcLastUpdateDateTime
-		dayStartTime:dayStartTime];
-	calculator.activeFromDate = self.utcActiveFromDate;
-	calculator.dateProvider = self.dateProvider;
-	if([self.dailyName isEqualToString:@"test after dark"]) {
-		NSLog(@"remove");
-	}
 	switch(self.rateType){
 		case SH_YEARLY_RATE:
 		case SH_YEARLY_RATE_INVERSE:
 		case SH_MONTHLY_RATE:
 		case SH_MONTHLY_RATE_INVERSE:
 		case SH_WEEKLY_RATE:
-			return [calculator nextDueDate_WEEKLY];
+			return [self.calculator nextDueDate_WEEKLY];
 		case SH_WEEKLY_RATE_INVERSE:
 		case SH_DAILY_RATE:
 		case SH_DAILY_RATE_INVERSE:
@@ -131,12 +144,12 @@
 
 
 -(NSDate*)lastTouched {
-	return self.utcLastUpdateDateTime;
+	return self.lastUpdateDateTime;
 }
 
 
 -(void)setLastTouched:(NSDate *)lastTouched {
-	self.utcLastUpdateDateTime = lastTouched;
+	self.lastUpdateDateTime = lastTouched;
 }
 
 
@@ -168,8 +181,8 @@
 	self.urgency = 3;
 	self.note = @"";
 	self.streakLength = 0;
-	self.utcActiveFromDate = nil;
-	self.utcActiveToDate = nil;
+	self.activeFromDate = nil;
+	self.activeToDate = nil;
 	self.cycleStartTime = 0;
 }
 
@@ -203,9 +216,10 @@
 -(NSArray<SHDailyEvent *> *)lastActivations:(NSInteger)count {
 	NSFetchRequest<SHDailyEvent*> *fetchRequest = SHDailyEvent.fetchRequest;
 	fetchRequest.sortDescriptors = @[[NSSortDescriptor
-		sortDescriptorWithKey:@"utcTimestamp" ascending:NO]];
+		sortDescriptorWithKey:@"eventDateTime" ascending:NO]];
 	fetchRequest.fetchLimit = count;
 	fetchRequest.fetchBatchSize = count;
+	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"event_daily == %@",self];
 	return (NSArray<SHDailyEvent *>*)[self.managedObjectContext
 		getItemsWithRequest:fetchRequest];
 }
