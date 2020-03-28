@@ -75,6 +75,7 @@
 		27ED11BD22A1E8D100E8EB32 /* SHNestedControlProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27ED11BC22A1E8D100E8EB32 /* SHNestedControlProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27FC9327242EA3F000408167 /* SHTransparentModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 277DCAA9242E9109009ABEF6 /* SHTransparentModalViewController.xib */; };
 		27FC932A242EF3F900408167 /* SHModalContentProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC9329242EF3F900408167 /* SHModalContentProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27FC932C242F985A00408167 /* SHModalPresenterProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC932B242F985A00408167 /* SHModalPresenterProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +168,7 @@
 		27DE250123739BA1003D2DAE /* SHScrollAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHScrollAnimator.m; sourceTree = "<group>"; };
 		27ED11BC22A1E8D100E8EB32 /* SHNestedControlProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHNestedControlProtocol.h; sourceTree = "<group>"; };
 		27FC9329242EF3F900408167 /* SHModalContentProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHModalContentProtocol.h; sourceTree = "<group>"; };
+		27FC932B242F985A00408167 /* SHModalPresenterProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHModalPresenterProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -378,6 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				27FC9329242EF3F900408167 /* SHModalContentProtocol.h */,
+				27FC932B242F985A00408167 /* SHModalPresenterProtocol.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				2782829223DA960F00836E77 /* SHViewControllerAppearanceProxy.h in Headers */,
 				277DCAAA242E9109009ABEF6 /* SHTransparentModalViewController.h in Headers */,
 				27DE250223739BA1003D2DAE /* SHScrollAnimator.h in Headers */,
+				27FC932C242F985A00408167 /* SHModalPresenterProtocol.h in Headers */,
 				27FC932A242EF3F900408167 /* SHModalContentProtocol.h in Headers */,
 				271D610920421A9A005C9F7E /* SHCommonDelegateProtocol.h in Headers */,
 			);

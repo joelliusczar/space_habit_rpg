@@ -14,6 +14,9 @@
 
 @implementation SHTransparentModalViewController
 
+@synthesize widthConstraint = _widthConstraint;
+@synthesize heightConstraint = _heightConstraint;
+
 -(instancetype)initWithModalViewController:(SHViewController<SHModalContentProtocol> *)modalViewController {
 	NSBundle *bundle = [NSBundle bundleForClass:self.class];
 	if(self = [super initWithNibName:NSStringFromClass(self.class) bundle:bundle]) {

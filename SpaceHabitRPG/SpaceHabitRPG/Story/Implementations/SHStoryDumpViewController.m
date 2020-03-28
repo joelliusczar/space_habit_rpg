@@ -18,7 +18,7 @@
 
 @implementation SHStoryDumpViewController
 
-
+@synthesize modalContentPresenter = _modalContentPresenter;
 
 -(UITapGestureRecognizer *)tapper{
 	if(!_tapper){
