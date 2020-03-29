@@ -30,3 +30,4 @@ FOUNDATION_EXPORT const unsigned char SHTestCommonVersionString[];
 #import "SHCoreData+CleanUp.h"
 #import "SHTestDateProvider.h"
 #import "SHActiveDaysProvider.h"
+#import "SHTestResourceUtil.h"

@@ -10,8 +10,9 @@
 
 
 typedef NS_ENUM(NSUInteger,shDailyStatus) {
-	SH_INCOMPLETE = 0,
-	SH_COMPLETE = 1
+	SH_DAILY_INCOMPLETE = 0,
+	SH_DAILY_COMPLETE = 1,
+	SH_DAILY_NOT_DUE = 2
 };
 
 typedef NS_ENUM(NSInteger,shEnviromentCode) {

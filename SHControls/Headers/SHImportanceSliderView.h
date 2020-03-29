@@ -18,5 +18,5 @@ IB_DESIGNABLE
 @property (weak,nonatomic) IBOutlet UISlider *importanceSld;
 @property (strong,nonatomic) NSString *controlName;
 @property (weak,nonatomic) id<SHImportanceSlidersDelegateProtocol> delegate;
--(void)updateImportanceSlider:(int)updVal;
+-(void)updateImportanceSlider:(int32_t)updateValue;
 @end

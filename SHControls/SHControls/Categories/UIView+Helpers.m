@@ -49,6 +49,15 @@
 }
 
 
+-(void)fitToContainerView:(UIView *)containerView {
+	self.translatesAutoresizingMaskIntoConstraints = NO;
+	[self.topAnchor constraintEqualToAnchor:containerView.topAnchor].active = YES;
+	[self.bottomAnchor constraintEqualToAnchor:containerView.bottomAnchor].active = YES;
+	[self.leadingAnchor constraintEqualToAnchor:containerView.leadingAnchor].active = YES;
+	[self.trailingAnchor constraintEqualToAnchor:containerView.trailingAnchor].active = YES;
+}
+
+
 //deprecated
 -(void)invertViewColors{
 	UIColor *c = nil;

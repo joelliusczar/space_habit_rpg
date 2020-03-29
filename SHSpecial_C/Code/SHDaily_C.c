@@ -283,51 +283,19 @@ int64_t sh_calcDaysAgoDayWasActive(int32_t weekdayIdx, int64_t scaler) {
 }
 
 
-static bool _isDateADueDate_WEEKLY(SHDatetime* previousDueDate, SHDatetime* checkinDatePrepared,
-	SHRateValueItem* week, int64_t scaler, int64_t dayStartHour ,SHError *error)
-{
-	
-	int32_t weekdayIdx = shCalcWeekdayIdx(checkinDatePrepared, error);
-	if(!week[weekdayIdx].isDayActive) return false;
-	int32_t prevDayIdx = shCalcWeekdayIdx(previousDueDate, error);
-	
-	SHDatetime firstDayOfCheckinWeek;
-	SHDatetime lastDayOfCheckinWeek;
-	shTryAddDaysToDt(checkinDatePrepared, -1 * weekdayIdx, SH_TIME_ADJUST_NO_OPTION,
-		&firstDayOfCheckinWeek, error);
-	shTryAddDaysToDt(checkinDatePrepared, SH_DAYS_IN_WEEK - weekdayIdx, SH_TIME_ADJUST_NO_OPTION,
-		&lastDayOfCheckinWeek, error);
-		
-	double checkinWeekFirstTimestamp = shDtToTimestamp(&firstDayOfCheckinWeek, error) + dayStartHour;
-	double checkinWeekLastTimestamp = shDtToTimestamp(&lastDayOfCheckinWeek, error) + dayStartHour;
-	
-	SHDatetime firstDayOfPrevWeek;
-	SHDatetime translated;
-	shTryAddDaysToDt(checkinDatePrepared, -1 * prevDayIdx, SH_TIME_ADJUST_NO_OPTION,
-		&firstDayOfPrevWeek, error);
-	shTryAddDaysToDt(&firstDayOfPrevWeek, scaler * SH_DAYS_IN_WEEK + 1, SH_TIME_ADJUST_NO_OPTION,
-		&translated, error);
-	
-	double translatedTimestamp = shDtToTimestamp(&translated, error);
-	return translatedTimestamp > checkinWeekFirstTimestamp
-		&& translatedTimestamp < checkinWeekLastTimestamp;
-}
-
-
 bool sh_isDateADueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate,
 	SHRateValueItem *week, int64_t scaler, int64_t dayStartHour,SHError *error)
 {
 	shLog("sh_isDateADueDate_WEEKLY\n");
-	SHDatetime previousDate;
-	SHDatetime lastDueDatePrepared = *lastDueDate;
+	SHDatetime *result = calloc(ALLOC_COUNT, sizeof(SHDatetime));
+	if(!sh_nextDueDate_WEEKLY(lastDueDate, checkinDate, week,
+		scaler, dayStartHour, result, error)) return false;
+	double resultTS = shDtToTimestamp(result, error);
+	if(error && error->isError) return false;
 	SHDatetime checkinDatePrepared = *checkinDate;
-	_prepareDatetimeForCalculations(&lastDueDatePrepared, dayStartHour, error);
 	_prepareDatetimeForCalculations(&checkinDatePrepared, dayStartHour, error);
-	sh_previousDueDate_WEEKLY(&lastDueDatePrepared, &checkinDatePrepared, week, scaler,
-		dayStartHour, &previousDate, error);
-	if(error && error->code != SH_NO_ERROR){
-		return shHandleErrorRetNull(error->code,"Error getting previous date",error);
-	}
-	return _isDateADueDate_WEEKLY(&previousDate, &checkinDatePrepared,
-		week, scaler, dayStartHour,error);
+	double checkinTS = shDtToTimestamp(&checkinDatePrepared, error);
+	int32_t timeShiftCount = 1;
+	shFreeSHDatetime(result, timeShiftCount);
+	return resultTS == checkinTS;
 }

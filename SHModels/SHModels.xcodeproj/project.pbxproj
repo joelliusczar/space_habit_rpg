@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -705,6 +705,7 @@
 		2747C2E12043ADE000FB5669 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = SH;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Joel Gillette";
 				TargetAttributes = {
@@ -715,7 +716,7 @@
 				};
 			};
 			buildConfigurationList = 2747C2E42043ADE000FB5669 /* Build configuration list for PBXProject "SHModels" */;
-			compatibilityVersion = "Xcode 8.0";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -1000,7 +1001,11 @@
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = SHModels/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				OTHER_CFLAGS = (
 					"-Wall",
 					"-Wextra",
@@ -1025,7 +1030,11 @@
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = SHModels/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				OTHER_CFLAGS = (
 					"-Wall",
 					"-Wextra",

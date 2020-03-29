@@ -32,9 +32,9 @@
 }
 
 
--(void)updateImportanceSlider:(int)updVal{
-	self.importanceSld.value = updVal;
-	self.importanceLbl.text = [NSString stringWithFormat:@"%@: %d",self.controlName,updVal];
+-(void)updateImportanceSlider:(int32_t)updateValue{
+	self.importanceSld.value = updateValue;
+	self.importanceLbl.text = [NSString stringWithFormat:@"%@: %d",self.controlName,updateValue];
 }
 
 

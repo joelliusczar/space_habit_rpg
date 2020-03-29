@@ -216,7 +216,7 @@
 -(NSArray<SHDailyEvent *> *)lastActivations:(NSInteger)count {
 	NSFetchRequest<SHDailyEvent*> *fetchRequest = SHDailyEvent.fetchRequest;
 	fetchRequest.sortDescriptors = @[[NSSortDescriptor
-		sortDescriptorWithKey:@"eventDateTime" ascending:NO]];
+		sortDescriptorWithKey:@"eventDatetime" ascending:NO]];
 	fetchRequest.fetchLimit = count;
 	fetchRequest.fetchBatchSize = count;
 	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"event_daily == %@",self];

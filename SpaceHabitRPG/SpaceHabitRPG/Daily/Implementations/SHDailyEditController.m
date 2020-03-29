@@ -196,16 +196,16 @@
 -(void)sld_valueChanged_action:(SHImportanceSliderView *)sender{
 	int32_t sliderValue = shCheckImportanceRange((int32_t)sender.importanceSld.value);
 	[sender updateImportanceSlider:sliderValue];
-//	BOOL isUrgency = sender == self.editControls.controlLookup[@"urgencySld"];
-//	[self.context performBlock:^{
-//		SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
-//		if(isUrgency){
-//			daily.urgency = sliderValue;
-//		}
-//		else{
-//			daily.difficulty = sliderValue;
-//		}
-//	}];
+	BOOL isUrgency = [sender.controlName isEqualToString:@"urgency"];
+	[self.context performBlock:^{
+		SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
+		if(isUrgency){
+			daily.urgency = sliderValue;
+		}
+		else{
+			daily.difficulty = sliderValue;
+		}
+	}];
 }
 
 

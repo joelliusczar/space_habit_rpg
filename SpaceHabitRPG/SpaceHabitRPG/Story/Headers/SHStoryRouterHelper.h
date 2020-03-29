@@ -1,5 +1,5 @@
 //
-//  SHStoryPresentationController.h
+//  SHStoryRouterHelper.h
 //  SpaceHabitRPG
 //
 //  Created by Joel Pridgen on 9/7/19.
@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHStoryPresentationController : NSObject
+@interface SHStoryRouterHelper : NSObject
 @property (strong,nonatomic) NSManagedObjectContext *context;
 @property (strong,nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
 @property (weak,nonatomic) SHViewController *central;

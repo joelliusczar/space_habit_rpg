@@ -25,7 +25,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Button" image="unchecked_task.png"/>
                     <connections>
-                        <action selector="completeBtn_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="DZ9-d0-Eab"/>
+                        <action selector="completeBtn_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="SAY-6p-LI6"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Streak:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SPY-ox-NgS">

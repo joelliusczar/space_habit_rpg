@@ -22,23 +22,25 @@
 
 
 -(NSArray<NSSortDescriptor *> *)buildFetchDescriptors{
-	NSSortDescriptor *sortByLastActivation= [[NSSortDescriptor alloc]
+
+	NSSortDescriptor *sortByLastActivation = [[NSSortDescriptor alloc]
 		initWithKey:@"lastActivationDateTime" ascending:YES];
-	
+		
 	NSSortDescriptor *sortByUserOrder = [[NSSortDescriptor alloc]
 		initWithKey:@"customUserOrder" ascending:NO];
-
+		
 	NSSortDescriptor *sortByUrgency = [[NSSortDescriptor alloc]
 		initWithKey:@"urgency" ascending:NO];
 
 	NSSortDescriptor *sortByDifficulty = [[NSSortDescriptor alloc]
 		initWithKey:@"difficulty" ascending:YES];
-	return @[sortByLastActivation,sortByUserOrder,sortByUrgency,sortByDifficulty];
+	return @[sortByUrgency
+	];
 }
 
 
 -(NSFetchedResultsController *)dailiesDataFetcher{
-	NSPredicate *filter = [NSPredicate predicateWithFormat:@"isActive = 1"];
+	NSPredicate *filter = [NSPredicate predicateWithFormat:@"isActive == 1"];
 	NSFetchRequest<SHDaily*> *request = SHDaily.fetchRequest;
 	request.predicate = filter;
 	request.sortDescriptors = [self buildFetchDescriptors];

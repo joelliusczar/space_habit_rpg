@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -257,7 +257,7 @@
 				};
 			};
 			buildConfigurationList = 274EFB6C204F9AEA00CB3C4C /* Build configuration list for PBXProject "SHTestCommon" */;
-			compatibilityVersion = "Xcode 8.0";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -483,7 +483,11 @@
 				FRAMEWORK_SEARCH_PATHS = $PLATFORM_DIR/Developer/Library/Frameworks/;
 				INFOPLIST_FILE = SHTestCommon/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = mh_dylib;
 				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.SHTestCommon;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -505,7 +509,11 @@
 				FRAMEWORK_SEARCH_PATHS = $PLATFORM_DIR/Developer/Library/Frameworks/;
 				INFOPLIST_FILE = SHTestCommon/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = mh_dylib;
 				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.SHTestCommon;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";

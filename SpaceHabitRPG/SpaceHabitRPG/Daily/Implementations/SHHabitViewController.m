@@ -111,7 +111,8 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
 	(void)tableView;
-	return self.habitItemsFetcher.sections.count;
+	NSInteger sectionCount = self.habitItemsFetcher.sections.count;
+	return sectionCount;
 }
 
 

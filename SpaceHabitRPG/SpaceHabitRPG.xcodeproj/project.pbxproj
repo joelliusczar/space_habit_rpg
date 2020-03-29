@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -52,10 +52,8 @@
 		27B15AAF20524D6E0045B226 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AAE20524D6E0045B226 /* SHModels.framework */; };
 		27B8C4B4241331EA008646BB /* SHHabitNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B8C4B2241331EA008646BB /* SHHabitNameViewController.m */; };
 		27B8C4B5241331EA008646BB /* SHHabitNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27B8C4B3241331EA008646BB /* SHHabitNameViewController.xib */; };
-		27BBD5082392523900311711 /* SHStoryPresentationTypicalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BBD5062392523900311711 /* SHStoryPresentationTypicalController.m */; };
-		27BBD50B2392526600311711 /* SHStoryPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BBD50A2392526600311711 /* SHStoryPresentationController.m */; };
+		27BBD50B2392526600311711 /* SHStoryRouterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BBD50A2392526600311711 /* SHStoryRouterHelper.m */; };
 		27BBD50E239252CC00311711 /* SHBattleStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BBD50D239252CC00311711 /* SHBattleStatsViewController.m */; };
-		27BBD511239252D700311711 /* SHStoryModeSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BBD510239252D700311711 /* SHStoryModeSelectViewController.m */; };
 		27BBD5142392D86C00311711 /* SHCentralViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27BBD5132392D86C00311711 /* SHCentralViewController.xib */; };
 		27BBD5192392E3AA00311711 /* SHSectorChoiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27BBD5182392E3AA00311711 /* SHSectorChoiceViewController.xib */; };
 		27BBD51B2392EB5600311711 /* SHHabitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27BBD51A2392EB5500311711 /* SHHabitViewController.xib */; };
@@ -63,6 +61,7 @@
 		27BBD51F2392EBE000311711 /* SHBattleStatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27BBD51E2392EBE000311711 /* SHBattleStatsViewController.xib */; };
 		27C4121F23DBBA7B0086E1F9 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C4121C23DBBA6F0086E1F9 /* SHCommon.framework */; };
 		27E16E3523D27A9A000062F7 /* SHReminderListContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E16E3423D27A99000062F7 /* SHReminderListContainer.xib */; };
+		27FC935D2430FFB300408167 /* SHStoryRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FC935C2430FFB300408167 /* SHStoryRouter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,14 +191,11 @@
 		27B8C4B1241331EA008646BB /* SHHabitNameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHHabitNameViewController.h; sourceTree = "<group>"; };
 		27B8C4B2241331EA008646BB /* SHHabitNameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHHabitNameViewController.m; sourceTree = "<group>"; };
 		27B8C4B3241331EA008646BB /* SHHabitNameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHHabitNameViewController.xib; sourceTree = "<group>"; };
-		27BBD5062392523900311711 /* SHStoryPresentationTypicalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHStoryPresentationTypicalController.m; sourceTree = "<group>"; };
-		27BBD5072392523900311711 /* SHStoryPresentationTypicalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHStoryPresentationTypicalController.h; sourceTree = "<group>"; };
-		27BBD5092392526600311711 /* SHStoryPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHStoryPresentationController.h; sourceTree = "<group>"; };
-		27BBD50A2392526600311711 /* SHStoryPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHStoryPresentationController.m; sourceTree = "<group>"; };
+		27BBD5072392523900311711 /* SHStoryRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHStoryRouter.h; sourceTree = "<group>"; };
+		27BBD5092392526600311711 /* SHStoryRouterHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHStoryRouterHelper.h; sourceTree = "<group>"; };
+		27BBD50A2392526600311711 /* SHStoryRouterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHStoryRouterHelper.m; sourceTree = "<group>"; };
 		27BBD50C239252CC00311711 /* SHBattleStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHBattleStatsViewController.h; sourceTree = "<group>"; };
 		27BBD50D239252CC00311711 /* SHBattleStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHBattleStatsViewController.m; sourceTree = "<group>"; };
-		27BBD50F239252D700311711 /* SHStoryModeSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHStoryModeSelectViewController.h; sourceTree = "<group>"; };
-		27BBD510239252D700311711 /* SHStoryModeSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHStoryModeSelectViewController.m; sourceTree = "<group>"; };
 		27BBD5132392D86C00311711 /* SHCentralViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHCentralViewController.xib; sourceTree = "<group>"; };
 		27BBD5182392E3AA00311711 /* SHSectorChoiceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHSectorChoiceViewController.xib; sourceTree = "<group>"; };
 		27BBD51A2392EB5500311711 /* SHHabitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHHabitViewController.xib; sourceTree = "<group>"; };
@@ -208,6 +204,7 @@
 		27C4121723DBBA6F0086E1F9 /* SHCommon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHCommon.xcodeproj; path = ../SHCommon/SHCommon.xcodeproj; sourceTree = "<group>"; };
 		27E16E3423D27A99000062F7 /* SHReminderListContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHReminderListContainer.xib; sourceTree = "<group>"; };
 		27F37E76238796CE0006B705 /* SHModels.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHModels.xcodeproj; path = ../SHModels/SHModels.xcodeproj; sourceTree = "<group>"; };
+		27FC935C2430FFB300408167 /* SHStoryRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHStoryRouter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -429,10 +426,9 @@
 		27698E8B23D4A7F700754183 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				27BBD50F239252D700311711 /* SHStoryModeSelectViewController.h */,
 				27BBD50C239252CC00311711 /* SHBattleStatsViewController.h */,
-				27BBD5092392526600311711 /* SHStoryPresentationController.h */,
-				27BBD5072392523900311711 /* SHStoryPresentationTypicalController.h */,
+				27BBD5092392526600311711 /* SHStoryRouterHelper.h */,
+				27BBD5072392523900311711 /* SHStoryRouter.h */,
 				270F97CB23923B0500479E77 /* SHStoryDumpViewController.h */,
 				270F97E52392440600479E77 /* SHIntroViewController.h */,
 			);
@@ -442,10 +438,9 @@
 		27698E8C23D4A80900754183 /* Implementations */ = {
 			isa = PBXGroup;
 			children = (
-				27BBD510239252D700311711 /* SHStoryModeSelectViewController.m */,
+				27FC935C2430FFB300408167 /* SHStoryRouter.m */,
 				27BBD50D239252CC00311711 /* SHBattleStatsViewController.m */,
-				27BBD50A2392526600311711 /* SHStoryPresentationController.m */,
-				27BBD5062392523900311711 /* SHStoryPresentationTypicalController.m */,
+				27BBD50A2392526600311711 /* SHStoryRouterHelper.m */,
 				270F97CA23923B0500479E77 /* SHStoryDumpViewController.m */,
 				270F97E62392440600479E77 /* SHIntroViewController.m */,
 			);
@@ -573,6 +568,7 @@
 		2769519C20437DF5002D1C9A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = SH;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Joel Gillette";
 				TargetAttributes = {
@@ -583,7 +579,7 @@
 				};
 			};
 			buildConfigurationList = 2769519F20437DF5002D1C9A /* Build configuration list for PBXProject "SpaceHabitRPG" */;
-			compatibilityVersion = "Xcode 8.0";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -694,7 +690,7 @@
 				270F981D239249E300479E77 /* SHLinkViewController.m in Sources */,
 				270F982D23924C8400479E77 /* SHReminderTimeSpinPicker.m in Sources */,
 				270F98172392453A00479E77 /* SHRepeatLinkViewController.m in Sources */,
-				27BBD50B2392526600311711 /* SHStoryPresentationController.m in Sources */,
+				27BBD50B2392526600311711 /* SHStoryRouterHelper.m in Sources */,
 				270F982623924BD200479E77 /* SHRemindersLinkViewController.m in Sources */,
 				274A113823BD2A2F00AAA79E /* SHThemeController.m in Sources */,
 				272D83B923AD9CBC00D946D3 /* SHHabitCell.m in Sources */,
@@ -711,10 +707,9 @@
 				270F980A2392453A00479E77 /* SHYearlyActiveDaysViewController.m in Sources */,
 				270F97CD23923B0500479E77 /* SHStoryDumpViewController.m in Sources */,
 				270F982723924BD200479E77 /* SHReminderListView.m in Sources */,
+				27FC935D2430FFB300408167 /* SHStoryRouter.m in Sources */,
 				2747C4992048D50800FB5669 /* AppDelegate.m in Sources */,
-				27BBD511239252D700311711 /* SHStoryModeSelectViewController.m in Sources */,
 				272D83A823AD7B0600D946D3 /* SHHabitViewController.m in Sources */,
-				27BBD5082392523900311711 /* SHStoryPresentationTypicalController.m in Sources */,
 				270F98102392453A00479E77 /* SHWeeklyActiveDaysViewController.m in Sources */,
 				270F97D423923C2B00479E77 /* SHEditNavigationController.m in Sources */,
 				270F97DE2392414400479E77 /* SHDailyEditController.m in Sources */,
@@ -861,7 +856,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XK3RJ8E2L2;
 				INFOPLIST_FILE = SpaceHabitRPG/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				OTHER_CFLAGS = (
 					"-Wall",
 					"-Wextra",
@@ -878,7 +876,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XK3RJ8E2L2;
 				INFOPLIST_FILE = SpaceHabitRPG/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				OTHER_CFLAGS = (
 					"-Wall",
 					"-Wextra",

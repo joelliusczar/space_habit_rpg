@@ -10,7 +10,6 @@
 #import "SHHabitViewController.h"
 #import "SHBattleStatsViewController.h"
 #import "SHIntroViewController.h"
-#import "SHStoryModeSelectViewController.h"
 #import "SHStoryDumpViewController.h"
 #import "SHRateSelectionViewController.h"
 @import UIKit;
@@ -59,10 +58,6 @@ static void _SH_setTextViewBorderSpecialCase(UIColor *background) {
 	UITextView *introTextViewProxy = [UITextView appearanceWhenContainedInInstancesOfClasses:
 		@[SHIntroViewController.class, centralCls]];
 	introTextViewProxy.SH_borderColor = background;
-	UITextView *storySelectTextViewProxy = [UITextView appearanceWhenContainedInInstancesOfClasses:
-		@[SHStoryModeSelectViewController.class,
-			centralCls]];
-	storySelectTextViewProxy.SH_borderColor = background;
 	UITextView *storyDumpTextViewProxy = [UITextView appearanceWhenContainedInInstancesOfClasses:
 		@[SHStoryDumpViewController.class,
 			centralCls]];
@@ -75,8 +70,12 @@ static void _SH_setTextViewBorderSpecialCase(UIColor *background) {
 	UIColor *textBorder = [UIColor colorNamed:@"textBoxBorder"];
 	UIColor *transparentBackground = [UIColor colorNamed:@"transparentBackground"];
 	UIColor *disabledText = [UIColor colorNamed:@"disabledText"];
+	
+	NSLog(@"Hello");
+	
 	UILabel.appearance.textColor = text;
 	SHViewController.appearance.viewBackgroundColor = background;
+
 	SHTransparentModalViewController.appearance.viewBackgroundColor = transparentBackground;
 	[UIView appearanceWhenContainedInInstancesOfClasses:@[SHIntroViewController.class]].backgroundColor = background;
 	UITableView.appearance.backgroundColor = background;

@@ -1,22 +1,22 @@
 //
-//  SHStoryPresentationController.m
+//  SHStoryRouterHelper.m
 //  SpaceHabitRPG
 //
 //  Created by Joel Pridgen on 9/7/19.
 //  Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import "SHStoryPresentationController.h"
+#import "SHStoryRouterHelper.h"
 #import "SHStoryDumpViewController.h"
 @import SHCommon;
 @import SHModels;
 @import SHControls;
 
 
-@interface SHStoryPresentationController ()
+@interface SHStoryRouterHelper ()
 @end
 
-@implementation SHStoryPresentationController
+@implementation SHStoryRouterHelper
 
 
 

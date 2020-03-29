@@ -55,7 +55,7 @@
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
 	(void)tableView;
 	if(self.habitItemsFetcher.sections.count == 2) {
-		if(section == SH_INCOMPLETE) {
+		if(section == SH_DAILY_INCOMPLETE) {
 			return @"Unfinished";
 		}
 		else {

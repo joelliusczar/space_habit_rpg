@@ -104,14 +104,6 @@ void printWorkingDir(){
 
 
 -(BOOL)application:(UIApplication *)application
-	shouldSaveApplicationState:(NSCoder *)coder
-{
-	(void)application; (void)coder;
-	return YES;
-}
-
-
--(BOOL)application:(UIApplication *)application
 	shouldRestoreApplicationState:(NSCoder *)coder
 {
 	(void)application; (void)coder;

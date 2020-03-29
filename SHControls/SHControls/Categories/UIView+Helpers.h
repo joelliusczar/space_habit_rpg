@@ -15,4 +15,5 @@
 @property (nonatomic) CGFloat SH_cornerRadius UI_APPEARANCE_SELECTOR;
 -(void)checkForAndApplyVisualChanges;
 -(UIView *)loadXib:(NSString *)nibName;
+-(void)fitToContainerView:(UIView *)containerView;
 @end

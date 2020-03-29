@@ -4,84 +4,62 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHStoryModeSelectViewController">
             <connections>
                 <outlet property="textView" destination="d5W-ac-Jpo" id="Liz-hn-UT9"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="view" destination="Q8h-jh-qs0" id="DlW-cA-Oav"/>
             </connections>
         </placeholder>
-        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q8h-jh-qs0">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="22T-sg-0CQ">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q8h-jh-qs0">
-                            <rect key="frame" x="77" y="274" width="260" height="348"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xA7-0g-BHx">
-                                    <rect key="frame" x="10" y="308" width="79" height="30"/>
-                                    <state key="normal" title="Show Story"/>
-                                    <connections>
-                                        <action selector="showStory_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="dTa-Rq-s2O"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cgj-We-308">
-                                    <rect key="frame" x="179" y="308" width="71" height="30"/>
-                                    <state key="normal" title="Skip Story"/>
-                                    <connections>
-                                        <action selector="skipStory_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="yAB-tp-nlA"/>
-                                    </connections>
-                                </button>
-                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d5W-ac-Jpo">
-                                    <rect key="frame" x="0.0" y="30" width="260" height="265"/>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                </textView>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="260" id="5NG-SH-ILs"/>
-                                <constraint firstAttribute="trailing" secondItem="Cgj-We-308" secondAttribute="trailing" constant="10" id="5Oz-i9-wTj"/>
-                                <constraint firstItem="xA7-0g-BHx" firstAttribute="leading" secondItem="Q8h-jh-qs0" secondAttribute="leading" constant="10" id="J4c-C1-RF3"/>
-                                <constraint firstAttribute="trailing" secondItem="d5W-ac-Jpo" secondAttribute="trailing" id="X4s-or-l9v"/>
-                                <constraint firstItem="d5W-ac-Jpo" firstAttribute="leading" secondItem="Q8h-jh-qs0" secondAttribute="leading" id="Xez-jP-psa"/>
-                                <constraint firstAttribute="bottom" secondItem="Cgj-We-308" secondAttribute="bottom" constant="10" id="duy-Ii-cx4"/>
-                                <constraint firstAttribute="height" constant="348" id="gaE-h8-j6Q"/>
-                                <constraint firstItem="d5W-ac-Jpo" firstAttribute="top" secondItem="Q8h-jh-qs0" secondAttribute="top" constant="30" id="nHy-en-ZnM"/>
-                                <constraint firstItem="xA7-0g-BHx" firstAttribute="top" secondItem="d5W-ac-Jpo" secondAttribute="bottom" constant="13" id="qTn-r6-WDb"/>
-                                <constraint firstAttribute="bottom" secondItem="xA7-0g-BHx" secondAttribute="bottom" constant="10" id="uM7-Gn-2Yi"/>
-                            </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="9"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </view>
-                    </subviews>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.7521136558219178" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstItem="Q8h-jh-qs0" firstAttribute="centerX" secondItem="22T-sg-0CQ" secondAttribute="centerX" id="6vz-NQ-bqE"/>
-                        <constraint firstItem="Q8h-jh-qs0" firstAttribute="centerY" secondItem="22T-sg-0CQ" secondAttribute="centerY" id="8aB-5K-8aj"/>
-                    </constraints>
-                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xA7-0g-BHx">
+                    <rect key="frame" x="10" y="856" width="79" height="30"/>
+                    <state key="normal" title="Show Story"/>
+                    <connections>
+                        <action selector="showStory_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="dTa-Rq-s2O"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cgj-We-308">
+                    <rect key="frame" x="333" y="856" width="71" height="30"/>
+                    <state key="normal" title="Skip Story"/>
+                    <connections>
+                        <action selector="skipStory_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="yAB-tp-nlA"/>
+                    </connections>
+                </button>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d5W-ac-Jpo">
+                    <rect key="frame" x="0.0" y="30" width="414" height="813"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="22T-sg-0CQ" secondAttribute="bottom" id="Alg-8Q-r25"/>
-                <constraint firstItem="22T-sg-0CQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="TAw-As-a2u"/>
-                <constraint firstItem="22T-sg-0CQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="no7-My-SJ4"/>
-                <constraint firstAttribute="trailing" secondItem="22T-sg-0CQ" secondAttribute="trailing" id="u1I-5I-i7A"/>
+                <constraint firstAttribute="trailing" secondItem="Cgj-We-308" secondAttribute="trailing" constant="10" id="5Oz-i9-wTj"/>
+                <constraint firstItem="xA7-0g-BHx" firstAttribute="leading" secondItem="Q8h-jh-qs0" secondAttribute="leading" constant="10" id="J4c-C1-RF3"/>
+                <constraint firstAttribute="trailing" secondItem="d5W-ac-Jpo" secondAttribute="trailing" id="X4s-or-l9v"/>
+                <constraint firstItem="d5W-ac-Jpo" firstAttribute="leading" secondItem="Q8h-jh-qs0" secondAttribute="leading" id="Xez-jP-psa"/>
+                <constraint firstAttribute="bottom" secondItem="Cgj-We-308" secondAttribute="bottom" constant="10" id="duy-Ii-cx4"/>
+                <constraint firstItem="d5W-ac-Jpo" firstAttribute="top" secondItem="Q8h-jh-qs0" secondAttribute="top" constant="30" id="nHy-en-ZnM"/>
+                <constraint firstItem="xA7-0g-BHx" firstAttribute="top" secondItem="d5W-ac-Jpo" secondAttribute="bottom" constant="13" id="qTn-r6-WDb"/>
+                <constraint firstAttribute="bottom" secondItem="xA7-0g-BHx" secondAttribute="bottom" constant="10" id="uM7-Gn-2Yi"/>
             </constraints>
-            <point key="canvasLocation" x="138.75" y="103.75"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="bNb-Au-h9Z"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="9"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <point key="canvasLocation" x="478" y="-542"/>
         </view>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
     </objects>
 </document>

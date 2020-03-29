@@ -8,11 +8,9 @@
 
 #import "SHCentralViewController.h"
 #import "SHDailyViewController.h"
-#import "SHMenuViewController.h"
 #import "SHStoryDumpViewController.h"
-#import "SHStoryPresentationTypicalController.h"
+#import "SHStoryRouter.h"
 #import "SHIntroViewController.h"
-#import "SHStoryModeSelectViewController.h"
 
 @import SHCommon;
 
@@ -22,12 +20,13 @@
 
 @interface SHCentralViewController ()
 @property (strong, nonatomic) IBOutlet UIView *tabsContainer;
-@property (strong,nonatomic) UITabBarController *tabsController;
-@property (weak,nonatomic) IBOutlet UIView *statsView;
+@property (strong, nonatomic) UITabBarController *tabsController;
+@property (weak, nonatomic) IBOutlet UIView *statsView;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *listTop;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *statsTop;
-@property (strong,nonatomic) NSManagedObjectContext *context;
-@property (strong,nonatomic) dispatch_queue_t configAccessorQueue;
+@property (strong, nonatomic) NSManagedObjectContext *context;
+@property (strong, nonatomic) dispatch_queue_t configAccessorQueue;
+@property (strong, nonatomic) UIView *coverView;
 @end
 
 @implementation SHCentralViewController{
@@ -37,11 +36,12 @@
 
 @synthesize tabsController = _tabsController;
 -(UITabBarController *)tabsController{
-	if(_tabsController == nil){
+	if(nil == _tabsController){
 		_tabsController = [[UITabBarController alloc] init];
 	}
 	return _tabsController;
 }
+
 
 
 -(instancetype)initWithDataController:(NSObject<SHDataProviderProtocol>*)dataController
@@ -75,7 +75,7 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	[self.view checkForAndApplyVisualChanges];
+	//[self.view checkForAndApplyVisualChanges];
 	//most likely any changes you want to add to load
 	//should go in determineIfFirstTimeAndSetupConfig
 	[self determineIfFirstTimeAndSetupConfig];
@@ -86,6 +86,24 @@
 	self.statsView.hidden = !shouldShow;
 	self.statsTop.active = shouldShow;
 }
+
+
+-(void)coverDisplay {
+	if(self.coverView) return;
+	self.coverView = [[UIView alloc] init];
+	[self.view addSubview:self.coverView];
+	UIColor *background = [UIColor colorNamed:@"background"];
+	self.coverView.backgroundColor = background;
+	[self.coverView fitToContainerView:self.view];
+}
+
+
+-(void)uncoverDisplay {
+	if(nil == self.coverView) return;
+	[self.coverView removeFromSuperview];
+	self.coverView = nil;
+}
+
 
 -(void)viewDidAppear:(BOOL)animated{
 	[super viewDidAppear:animated];
@@ -108,10 +126,7 @@
 	[self.tabsContainer addSubview:self.tabsController.view];
 	self.tabsController.view.translatesAutoresizingMaskIntoConstraints = NO;
 	[self addChildViewController:self.tabsController];
-	[self.tabsController.view.topAnchor constraintEqualToAnchor:self.tabsContainer.topAnchor].active = YES;
-	[self.tabsController.view.bottomAnchor constraintEqualToAnchor:self.tabsContainer.bottomAnchor].active = YES;
-	[self.tabsController.view.leadingAnchor constraintEqualToAnchor:self.tabsContainer.leadingAnchor].active = YES;
-	[self.tabsController.view.trailingAnchor constraintEqualToAnchor:self.tabsContainer.trailingAnchor].active = YES;
+	[self.tabsController.view fitToContainerView:self.tabsContainer];
 }
 
 
@@ -130,19 +145,16 @@
 
 -(void)prepareScreenPostIntro {
 	[self setupTabs];
-	__weak SHCentralViewController *weakSelf = self;
-	SHStoryModeSelectViewController *storyModeSelect =
-		[[SHStoryModeSelectViewController alloc]
-		initWithContext:self.context
-		withResourceUtil:self.resourceUtil
-		withOnIntroCompleteAction:^(BOOL isStory){
-			SHCentralViewController *bSelf = weakSelf;
-			if(nil == bSelf) return;
-			if(isStory) {
-				[bSelf prepareScreen];
-			}
-		}];
-	[self arrangeAndPushChildVCToFront:storyModeSelect];
+	SHStoryRouter *router = [[SHStoryRouter alloc]
+		 initWithContext:self.context
+		 withViewController:self
+		 withResourceUtil:self.resourceUtil
+		 withOnPresentComplete:^{
+		 	[self uncoverDisplay];
+			[self prepareScreen];
+	}];
+	[router showStoryForHomeSector];
+	
 }
 
 
@@ -161,31 +173,31 @@
 
 
 - (void)normalFlow {
-	SHStoryPresentationTypicalController *present = [[SHStoryPresentationTypicalController alloc]
+	SHStoryRouter *router = [[SHStoryRouter alloc]
 		 initWithContext:self.context
 		 withViewController:self
 		 withResourceUtil:self.resourceUtil
 		 withOnPresentComplete:^{
-		 	[self showStatsView:YES];
+		 	[self uncoverDisplay];
 			[self prepareScreen];
 	}];
-	[present setupNormalSectorAndMonster];
+	[router setupNormalSectorAndMonster];
 }
 
 
 -(void)determineIfFirstTimeAndSetupConfig{
 	SHConfig *config = [[SHConfig alloc] init];
 	if(config.gameState == SH_GAME_STATE_UNINITIALIZED){
-		[self showStatsView:NO];
+		[self coverDisplay];
 		[self showIntro];
 	}
 	else if(config.gameState == SH_GAME_STATE_INTRO_FINISHED) {
-		[self showStatsView:NO];
+		[self coverDisplay];
 		_shouldShowPostInto = YES;
 		//see: viewDidAppear
 	}
 	else if(config.gameState == SH_GAME_STATE_INTRO_FINISHED_INITIAL_STORY) {
-		[self showStatsView:NO];
+		[self coverDisplay];
 		[self normalFlow];
 	}
 	else {
