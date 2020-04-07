@@ -10,6 +10,7 @@
 
 @interface ParentMan : NSObject
 @property (assign) NSInteger contrlNum;
+@property (class, strong, nonatomic) NSString *name;
 +(instancetype)newParentMan;
 -(instancetype)initTwo;
 -(void)writeOverPublic;

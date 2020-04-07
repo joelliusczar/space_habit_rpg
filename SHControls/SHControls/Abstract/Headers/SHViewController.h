@@ -6,13 +6,12 @@
 //	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import "SHNestedControlProtocol.h"
 @import UIKit;
 @import SHCommon;
 
 
 
-@interface SHViewController : UIViewController<SHNestedControlProtocol>
+@interface SHViewController : UIViewController
 @property (weak, nonatomic) SHViewController *prevViewController;
 -(void)pushChildVC:(SHViewController*)child toViewOfParent:(UIView*)view;
 //if you want UIViewContoller and its view to be front, call this

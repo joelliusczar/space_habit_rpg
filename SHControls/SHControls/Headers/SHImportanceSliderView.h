@@ -9,7 +9,6 @@
 #import "SHImportanceSlidersDelegateProtocol.h"
 #import "SHViewController.h"
 #import "SHNumberControlProtocol.h"
-#import "SHNestedControlProtocol.h"
 @import UIKit;
 
 IB_DESIGNABLE

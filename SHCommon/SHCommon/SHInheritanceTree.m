@@ -8,7 +8,6 @@
 
 
 #import "SHInheritanceTree.h"
-#import "SHInheritanceTreeNode.h"
 
 @interface SHInheritanceTree ()
 @property (strong, nonatomic) SHInheritanceTreeNode *root;
@@ -28,12 +27,26 @@
 }
 
 
-static id _findMatch(id key, SHInheritanceTreeNode *root, id lastBestMatch,
+-(instancetype)initWithCompareFunction:(BOOL (^)(id a, id b))isAChildOfB
+	withExactMatchFunction:(BOOL (^)(id a, id b))isExactMatch
+	withRoot:(SHInheritanceTreeNode *)root
+{
+	if(self = [super init]) {
+		_isAChildOfB = isAChildOfB;
+		_isExactMatch = isExactMatch;
+		_root = root;
+	}
+	return self;
+}
+
+
+static SHInheritanceTreeNode*  _findMatch(id key, SHInheritanceTreeNode *root,
+	SHInheritanceTreeNode *lastBestMatch,
 	BOOL (^isAChildOfB)(id a, id b))
 {
-	id bestMatch = lastBestMatch;
+	SHInheritanceTreeNode *bestMatch = lastBestMatch;
 	if(isAChildOfB(key, root.key)) {
-		bestMatch = root.storedObject;
+		bestMatch = root;
 		for (SHInheritanceTreeNode *child in root.children) {
 			bestMatch = _findMatch(key, child, bestMatch, isAChildOfB);
 		}
@@ -44,14 +57,18 @@ static id _findMatch(id key, SHInheritanceTreeNode *root, id lastBestMatch,
 
 -(id)findMatch:(id)key {
 	if(nil == self.root) return nil;
-	return _findMatch(key, self.root, nil, self.isAChildOfB);
+	SHInheritanceTreeNode *match = _findMatch(key, self.root, nil, self.isAChildOfB);
+	if(match) {
+		return match.storedObject;
+	}
+	return nil;
 }
 
 
-static id _findExactMatch(id key, SHInheritanceTreeNode *root,
+static SHInheritanceTreeNode* _findExactMatch(id key, SHInheritanceTreeNode *root,
  BOOL (^isExactMatch)(id a, id b))
 {
-	if(isExactMatch(key, root.key)) return root.storedObject;
+	if(isExactMatch(key, root.key)) return root;
 	for (SHInheritanceTreeNode *child in root.children) {
 		id match = _findExactMatch(key, child, isExactMatch);
 		if(match) return match;
@@ -61,30 +78,42 @@ static id _findExactMatch(id key, SHInheritanceTreeNode *root,
 
 -(id)findExactMatch:(id)key {
 	if(nil == self.root) return nil;
-	return _findExactMatch(key, self.root, self.isExactMatch);
+	return _findExactMatch(key, self.root, self.isExactMatch).storedObject;
 }
 
-static BOOL _addObjectHelper(id object, id key, SHInheritanceTreeNode *root,
-	BOOL (^isAChildOfB)(id a, id b))
-{
-	if(nil == root) return NO;
-	if(isAChildOfB(key, root.key)) {
-		for (SHInheritanceTreeNode *child in root.children) {
-    	if(_addObjectHelper(object, key, child, isAChildOfB)) return YES;
-		}
-		SHInheritanceTreeNode *node = [[SHInheritanceTreeNode alloc] initWithKey:key withStoredObject:object];
-		[root.children addObject: node];
-		return YES;
-	}
-	return NO;
-}
 
--(void)addObject:(id)object withKey:(id)key {
+-(SHInheritanceTreeNode *)addObjectAndGetNearestParent:(id)object withKey:(id)key {
 	if(nil == self.root) {
 		self.root = [[SHInheritanceTreeNode alloc] initWithKey:key withStoredObject:object];
-		return;
+		return nil;
 	}
-	_addObjectHelper(object, key, self.root, self.isAChildOfB);
+	SHInheritanceTreeNode *match = _findMatch(key, self.root, nil, self.isAChildOfB);
+	if(match) {
+		SHInheritanceTreeNode *node = [[SHInheritanceTreeNode alloc] initWithKey:key withStoredObject:object];
+		[match.children addObject:node];
+	}
+	return match;
+}
+
+
+static void _runAction(void (^action)(id key, id stored), id key,
+	SHInheritanceTreeNode *root, BOOL (^isAChildOfB)(id a, id b))
+{
+	if(nil == root) return;
+	if(isAChildOfB(key, root.key)){
+		action(root.key, root.storedObject);
+		for (SHInheritanceTreeNode *child in root.children) {
+    	_runAction(action, key, child, isAChildOfB);
+		}
+	}
+	
+}
+
+
+-(void)runAction:(void (^)(id key, id stored))action
+	matchingKey:(id)key
+{
+	_runAction(action, key, self.root, self.isAChildOfB);
 }
 
 

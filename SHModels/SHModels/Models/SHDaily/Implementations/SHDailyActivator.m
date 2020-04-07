@@ -48,7 +48,7 @@
 		*/
 		
 		NSInteger dayStartTime = 0;
-		if(daily.cycleStartTime) {
+		if(nil != daily.cycleStartTime) {
 			dayStartTime = daily.cycleStartTime.integerValue;
 		}
 		else {

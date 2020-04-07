@@ -12,4 +12,5 @@
 @interface NSMutableDictionary<KeyType,ValType> (Helper)
 -(ValType)getWithKey:(KeyType)key OrCreateFromBlock:(id (^)(void))creator;
 -(ValType)getWithKey:(KeyType)key OrCreateFromBlock:(id (^)(id))creator withObj:(id)obj;
+-(void)mergeDictionary:(NSDictionary *)dictionary;
 @end

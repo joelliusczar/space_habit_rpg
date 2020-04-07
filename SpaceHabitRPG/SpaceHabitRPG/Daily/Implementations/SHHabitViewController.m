@@ -171,7 +171,7 @@
 	}];
 }
 
-
+//this is wired up to a gesture recognizer
 -(void)onAddHabitTap_action:(UIGestureRecognizer *)recognizer {
 	(void)recognizer;
 	self.nameViewController.namebox.text = @"";

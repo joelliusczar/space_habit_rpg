@@ -22,6 +22,7 @@
 @property (weak,nonatomic) IBOutlet UIBarButtonItem *deleteBtn;
 @property (weak,nonatomic) IBOutlet UIBarButtonItem *saveBtnBarItem;
 @property (strong,nonatomic) IBOutlet UINavigationBar *topNavBar;
+@property (weak, nonatomic) IBOutlet UIView *itemNameView;
 @property (assign,nonatomic) CGFloat defaultScrollHeight;
 @property (assign,nonatomic) BOOL isKeyboardOpen;
 @property (strong,nonatomic) UIGestureRecognizer *tapGestureFG;
@@ -29,8 +30,20 @@
 
 @implementation SHEditNavigationController
 
--(void)setupBackgroundTapActions{
+-(UIColor*)itemNameViewBackgroundColor {
+	return self.itemNameView.backgroundColor;
+}
 
+
+-(void)setItemNameViewBackgroundColor:(UIColor *)color {
+	self.itemNameView.backgroundColor = color;
+}
+
+-(void)setViewBackgroundColor:(UIColor *)viewBackgroundColor {
+	super.viewBackgroundColor = viewBackgroundColor;
+}
+
+-(void)setupBackgroundTapActions{
 	self.tapGestureFG = [[UITapGestureRecognizer alloc]
 		initWithTarget:self
 		action:@selector(background_tap_action:)];

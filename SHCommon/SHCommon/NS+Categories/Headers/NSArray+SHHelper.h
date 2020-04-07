@@ -21,9 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSUInteger)findPlaceFor:(ItemType)object whereFirstFits:(BOOL (^)(ItemType,ItemType))bestFitBlock;
 -(NSUInteger)findPlaceFor:(ItemType)object whereFirstFitsFP:(BOOL (*)(ItemType,ItemType))bestFitFP;
 
--(NSMutableArray*)mapItemsTo:(id (^)(id,NSUInteger))mapper;
--(NSMutableArray*)mapItemsTo_f:(id _Nonnull (*_Nonnull)(id _Nonnull, NSUInteger))mapper;
--(ItemType)silentGet:(NSUInteger)index;
+-(NSMutableArray*)mapItemsTo:(ItemType (^)(ItemType,NSUInteger))mapper;
+-(NSMutableArray*)mapItemsTo_f:(ItemType _Nonnull (*_Nonnull)(ItemType _Nonnull, NSUInteger))mapper;
+-(nullable ItemType)silentGet:(NSUInteger)index;
 @end
 
 NS_ASSUME_NONNULL_END

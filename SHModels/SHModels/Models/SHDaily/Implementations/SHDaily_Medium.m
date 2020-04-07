@@ -34,7 +34,7 @@
 
 	NSSortDescriptor *sortByDifficulty = [[NSSortDescriptor alloc]
 		initWithKey:@"difficulty" ascending:YES];
-	return @[sortByUrgency
+	return @[sortByLastActivation, sortByUserOrder, sortByUrgency, sortByDifficulty
 	];
 }
 

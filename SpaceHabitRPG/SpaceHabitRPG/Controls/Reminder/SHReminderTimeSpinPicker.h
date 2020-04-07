@@ -10,7 +10,7 @@
 @import SHControls;
 
 
-@interface SHReminderTimeSpinPicker :SHSpinPicker
+@interface SHReminderTimeSpinPicker : SHSpinPicker
 @property (assign,nonatomic) NSInteger dayRange;
 -(instancetype)initWithDayRange:(NSInteger)dayRange;
 @end

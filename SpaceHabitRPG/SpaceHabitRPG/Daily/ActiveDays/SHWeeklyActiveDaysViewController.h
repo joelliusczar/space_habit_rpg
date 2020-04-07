@@ -23,7 +23,7 @@
 
 IB_DESIGNABLE
 @interface SHWeeklyActiveDaysViewController :
-	SHViewController<SHNestedControlProtocol>
+	SHViewController
 @property (strong, nonatomic) IBOutletCollection(SHDayOption) NSArray<SHDayOption*> *activeDaySwitches;
 @property (strong, nonatomic) NSArray<UIView*> *dayOptionViews;
 @property (strong,nonatomic) IBOutlet UIView *day0Switch;

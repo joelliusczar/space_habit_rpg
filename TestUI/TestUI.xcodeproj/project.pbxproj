@@ -44,7 +44,6 @@
 		276E6DB4222A54E400CB36CB /* NSDate+testReplace.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C581204A62EB00FB5669 /* NSDate+testReplace.m */; };
 		276E6DB5222A54E400CB36CB /* ProbilityWeightTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C595204A62EE00FB5669 /* ProbilityWeightTest.m */; };
 		276E6DB6222A54E400CB36CB /* ProbilityWeightTestFourItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C576204A62EA00FB5669 /* ProbilityWeightTestFourItems.m */; };
-		276E6DB7222A54E400CB36CB /* SHControlKeepTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C589204A62EC00FB5669 /* SHControlKeepTest.m */; };
 		276E6DB8222A54E400CB36CB /* TestsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0D6E621D0820200886721 /* TestsTest.m */; };
 		276E6DB9222A54E400CB36CB /* TestLocale.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C579204A62EA00FB5669 /* TestLocale.m */; };
 		276E6DBA222A54E400CB36CB /* TestProbWeightsThreeItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C57F204A62EB00FB5669 /* TestProbWeightsThreeItems.m */; };
@@ -219,7 +218,6 @@
 		2747C586204A62EC00FB5669 /* TestKeepSubject_A.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKeepSubject_A.h; sourceTree = "<group>"; };
 		2747C587204A62EC00FB5669 /* ZoneHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneHelperTest.m; sourceTree = "<group>"; };
 		2747C588204A62EC00FB5669 /* DailyHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyHelperTest.m; sourceTree = "<group>"; };
-		2747C589204A62EC00FB5669 /* SHControlKeepTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHControlKeepTest.m; sourceTree = "<group>"; };
 		2747C58B204A62ED00FB5669 /* TestKeepSubject_A.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestKeepSubject_A.m; sourceTree = "<group>"; };
 		2747C58D204A62ED00FB5669 /* TestKeepObjectAlt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKeepObjectAlt.h; sourceTree = "<group>"; };
 		2747C58E204A62ED00FB5669 /* NSDate+testReplace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+testReplace.h"; sourceTree = "<group>"; };
@@ -382,13 +380,15 @@
 		2747C56C204A62AE00FB5669 /* SHUnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				273B929923F9C74900A3925D /* InheritanceTreeClasses */,
-				2747C5B6204A646000FB5669 /* Helpers */,
 				2747C585204A62EC00FB5669 /* ARCTest.h */,
 				2747C57B204A62EA00FB5669 /* ARCTest.m */,
 				2747C593204A62EE00FB5669 /* CommonUtilitiesTest.m */,
+				275DDF2321FE9EDA00F77AEF /* CoreDataTests.m */,
+				273BF4D322093A5000B0D11E /* CoreDataTests2.m */,
 				2747C588204A62EC00FB5669 /* DailyHelperTest.m */,
 				2747C590204A62ED00FB5669 /* DateHelperTest.m */,
+				2747C5B6204A646000FB5669 /* Helpers */,
+				273B929923F9C74900A3925D /* InheritanceTreeClasses */,
 				2747C584204A62EC00FB5669 /* MathTest.m */,
 				2747C580204A62EB00FB5669 /* ModelsTest.m */,
 				2747C583204A62EB00FB5669 /* MonsterHelperTest.m */,
@@ -396,16 +396,13 @@
 				2747C581204A62EB00FB5669 /* NSDate+testReplace.m */,
 				2747C595204A62EE00FB5669 /* ProbilityWeightTest.m */,
 				2747C576204A62EA00FB5669 /* ProbilityWeightTestFourItems.m */,
-				2747C589204A62EC00FB5669 /* SHControlKeepTest.m */,
-				27D0D6E621D0820200886721 /* TestsTest.m */,
+				2707AAA72419BAA8006FF10F /* SHDailyDueDateTests.m */,
+				273B92CB23F9D6F300A3925D /* SHInheritanceTreeTest.m */,
+				27B719442235F27700540542 /* TestDumbData.m */,
 				2747C579204A62EA00FB5669 /* TestLocale.m */,
 				2747C57F204A62EB00FB5669 /* TestProbWeightsThreeItems.m */,
+				27D0D6E621D0820200886721 /* TestsTest.m */,
 				2747C587204A62EC00FB5669 /* ZoneHelperTest.m */,
-				275DDF2321FE9EDA00F77AEF /* CoreDataTests.m */,
-				273BF4D322093A5000B0D11E /* CoreDataTests2.m */,
-				27B719442235F27700540542 /* TestDumbData.m */,
-				273B92CB23F9D6F300A3925D /* SHInheritanceTreeTest.m */,
-				2707AAA72419BAA8006FF10F /* SHDailyDueDateTests.m */,
 			);
 			path = SHUnitTests;
 			sourceTree = "<group>";
@@ -717,7 +714,6 @@
 				276E6DB5222A54E400CB36CB /* ProbilityWeightTest.m in Sources */,
 				276E6DB6222A54E400CB36CB /* ProbilityWeightTestFourItems.m in Sources */,
 				2707AAA82419BAA8006FF10F /* SHDailyDueDateTests.m in Sources */,
-				276E6DB7222A54E400CB36CB /* SHControlKeepTest.m in Sources */,
 				276E6DB8222A54E400CB36CB /* TestsTest.m in Sources */,
 				276E6DB9222A54E400CB36CB /* TestLocale.m in Sources */,
 				276E6DBA222A54E400CB36CB /* TestProbWeightsThreeItems.m in Sources */,

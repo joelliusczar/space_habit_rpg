@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <FileRef
+      location = "group:SHControls/SHControls.xcodeproj">
+   </FileRef>
    <Group
       location = "container:"
       name = "Configs">
@@ -76,9 +79,6 @@
          location = "group:ObjCPlayground.sh">
       </FileRef>
       <FileRef
-         location = "group:SHControls.sh">
-      </FileRef>
-      <FileRef
          location = "group:SHMaster.sh">
       </FileRef>
       <FileRef
@@ -105,9 +105,6 @@
    </FileRef>
    <FileRef
       location = "group:SHModels/SHModels.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:SHControls/SHControls.xcodeproj">
    </FileRef>
    <FileRef
       location = "container:SpaceHabitRPG/SpaceHabitRPG.xcodeproj">

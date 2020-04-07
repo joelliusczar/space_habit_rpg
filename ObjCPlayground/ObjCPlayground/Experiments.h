@@ -38,6 +38,8 @@ typedef struct{
 
 typedef id (^mbTest)(void);
 
+typedef NSMutableArray<NSString *> SHStrArr;
+
 @interface Experiments : NSObject
 @property (assign,nonatomic) NSInteger stupidNum;
 @property (strong,nonatomic) id<Protocus> proteboat;
@@ -142,6 +144,7 @@ void cMakeHouses(void);
 +(void)blockLocalObjRef;
 +(void)loopThruIvars;
 +(void)classCompare;
++(void)typeDefExps;
 @end
 
 #import "Experiments+Charlie.h"

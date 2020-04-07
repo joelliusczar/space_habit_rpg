@@ -8,19 +8,23 @@
 
 #import "SHViewControllerAppearanceProxy.h"
 
+typedef NSMutableDictionary<NSString *,NSInvocation*> SHInvocationDict;
+
 @interface SHViewControllerAppearanceProxy ()
 @property (strong, nonatomic) SHViewController *reference;
-@property (strong, nonatomic) NSMutableArray<NSInvocation*> *invocations;
+@property (strong, nonatomic) SHInvocationDict *invocations;
 @end
 
 @implementation SHViewControllerAppearanceProxy
 
--(NSMutableArray<NSInvocation*>*)invocations {
+
+-(NSMutableDictionary<NSString *,NSInvocation*>*)invocations {
 	if(nil == _invocations) {
-		_invocations = [NSMutableArray array];
+		_invocations = [NSMutableDictionary dictionary];
 	}
 	return _invocations;
 }
+
 
 -(UIColor*)viewBackgroundColor {
 	return nil;
@@ -34,7 +38,7 @@
 	[invocation setSelector:@selector(setViewBackgroundColor:)];
 	[invocation setArgument:&viewBackgroundColor atIndex:2];
 	[invocation retainArguments];
-	[self.invocations addObject:invocation];
+	self.invocations[@"setViewBackgroundColor"] = invocation;
 }
 
 
@@ -51,7 +55,8 @@
 		[super forwardInvocation:anInvocation];
 	}
 	[anInvocation retainArguments];
-	[self.invocations addObject:anInvocation];
+	NSString *selName = NSStringFromSelector(anInvocation.selector);
+	self.invocations[selName] = anInvocation;
 }
 
 
@@ -72,10 +77,13 @@
 
 
 -(void)applyPropertyChangesToTarget:(SHViewController*)target {
-	for (NSInvocation *invocation in self.invocations) {
+	
+	for (NSInvocation *invocation in self.invocations.allValues) {
     [invocation invokeWithTarget:target];
 	}
 }
 
 
 @end
+
+

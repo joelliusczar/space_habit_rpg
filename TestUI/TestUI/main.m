@@ -12,6 +12,8 @@
 
 int main(int argc, char * argv[]) {
 	@autoreleasepool {
+		NSUserDefaults *defs = NSUserDefaults.standardUserDefaults;
+		[defs setInteger:1 forKey:@"com.apple.CoreData.SQLDebug"];
 		return UIApplicationMain(argc, argv, NSStringFromClass(SHTestObserver.class), NSStringFromClass([AppDelegate class]));
 	}
 }

@@ -23,6 +23,7 @@
 	[self setNeedsDisplay];
 }
 
+
 static void drawBarLeftPart(CGContextRef ctx,const CGRect *rect, CGFloat radius,CGFloat xOffset,
 	CGFloat barCoverage)
 {

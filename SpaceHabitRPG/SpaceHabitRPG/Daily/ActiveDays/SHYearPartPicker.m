@@ -53,9 +53,7 @@ numberOfRowsInComponent:(NSInteger)component{
 }
 
 
--(NSString *)pickerView:(UIPickerView *)pickerView
-			titleForRow:(NSInteger)row
-		   forComponent:(NSInteger)component{
+- (NSString * _Nullable)buildTitle:(NSInteger)component row:(NSInteger)row {
 	if(component == MONTH_COL){
 		return NSCalendar.currentCalendar.monthSymbols[row];
 	}

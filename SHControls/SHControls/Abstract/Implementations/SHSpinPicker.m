@@ -28,6 +28,12 @@
 }
 
 
+-(UIColor*)cellTextColor {
+	UIColor *textColor = _cellTextColor ? _cellTextColor : UIColor.blackColor;
+	return textColor;
+}
+
+
 -(instancetype)init{
 	NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"SHSpinPicker")];
 	if(self = [super initWithNibName:@"SHSpinPicker" bundle:bundle]){}
@@ -113,6 +119,27 @@
 
 -(NSInteger)selectedRowInComponent:(NSInteger)component{
 	return [self.picker selectedRowInComponent:component];
+}
+
+-(NSString * _Nullable)buildTitle:(NSInteger)component
+	row:(NSInteger)row
+{
+	(void)component; (void)row;
+	@throw [NSException abstractException];
+}
+
+
+-(UIView *)pickerView:(UIPickerView *)pickerView
+	viewForRow:(NSInteger)row
+	forComponent:(NSInteger)component
+	reusingView:(UIView *)view
+{
+	(void)pickerView; (void)view;
+	NSString *title = [self buildTitle:component row:row];
+	UILabel *cell = [[UILabel alloc] init];
+	cell.text = title;
+	cell.textColor = self.cellTextColor;
+	return cell;
 }
 
 @end

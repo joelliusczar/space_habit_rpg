@@ -10,7 +10,7 @@
 #import "SHViewControllerAppearanceProxy.h"
 
 
-static SHVCProxyContainer *_proxyContainerByClass = nil;
+static SHVCProxyContainer *_proxyContainer = nil;
 
 
 @interface SHViewController ()
@@ -29,20 +29,23 @@ static SHVCProxyContainer *_proxyContainerByClass = nil;
 
 
 +(SHVCProxyContainer *)proxyContainer {
-	if(nil == _proxyContainerByClass) {
-		_proxyContainerByClass = [[SHVCProxyContainer alloc] init];
+	if(nil == _proxyContainer) {
+		_proxyContainer = [[SHVCProxyContainer alloc] init];
 	}
-	return _proxyContainerByClass;
+	return _proxyContainer;
 }
 
 
 +(instancetype)appearance {
+	//we want exact match because otherwise every property will
+	//always go all the way up to the top
 	SHViewControllerAppearanceProxy *proxy =
-		[self.proxyContainer.appearanceProxies findExactMatch:self];
+		[self.proxyContainer.appearanceProxyTree findExactMatch:self];
 	if(nil == proxy) {
 		SHViewController *reference = [[self alloc] init];
 		proxy = [[SHViewControllerAppearanceProxy alloc] initWithReference:reference];
-		[self.proxyContainer.appearanceProxies addObject:proxy withKey:self];
+		[self.proxyContainer.appearanceProxyTree addObjectAndGetNearestParent:proxy
+			withKey:self];
 	}
 	return proxy;
 }

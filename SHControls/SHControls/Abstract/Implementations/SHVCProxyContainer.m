@@ -15,10 +15,10 @@
 @implementation SHVCProxyContainer
 
 
-@synthesize appearanceProxies = _appearanceProxies;
--(SHAppearanceProxyTree*)appearanceProxies {
-	if(nil == _appearanceProxies) {
-		_appearanceProxies = [[SHInheritanceTree<Class, SHViewControllerAppearanceProxy *> alloc]
+@synthesize appearanceProxyTree = _appearanceProxyTree;
+-(SHAppearanceProxyTree*)appearanceProxyTree {
+	if(nil == _appearanceProxyTree) {
+		_appearanceProxyTree = [[SHInheritanceTree<Class, SHViewControllerAppearanceProxy *> alloc]
 			initWithCompareFunction:^BOOL(Class a, Class b){
 			return [a isSubclassOfClass: b];
 		}
@@ -26,7 +26,7 @@
 			return a == b;
 		}];
 	}
-	return _appearanceProxies;
+	return _appearanceProxyTree;
 }
 
 

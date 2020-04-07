@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHAppearancePotentialMatches : NSObject
 @property (strong, nonatomic) SHVCProxyContainer *proxyContainer;
-@property (weak, nonatomic) SHViewController *viewController;
+@property (weak, nonatomic) SHViewController *viewControllerOrChild;
 -(instancetype)initWithProxyContainer:(SHVCProxyContainer*)proxyContainer
 	withSHViewController:(SHViewController*)viewController;
 -(nullable SHViewControllerAppearanceProxy*)getMatchIfAvailable;

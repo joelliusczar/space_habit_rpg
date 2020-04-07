@@ -20,17 +20,21 @@
 {
 	if(self = [super init]) {
 		_proxyContainer = proxyContainer;
-		_viewController = viewController;
+		_viewControllerOrChild = viewController;
 	}
 	return self;
 }
 
+/*
+	find if current class is an instance of first link in any inheritance chains
+	for appearance,
+*/
+-(SHViewControllerAppearanceProxy * _Nullable)scanForMatchInOwnershipLineOrTraitAssociation {
 
--(SHViewControllerAppearanceProxy * _Nullable)scanForMatch {
 	NSArray<SHAppearanceHierarchy*> *chains = self.proxyContainer
-	.appearanceClassHierarchyTracker.allKeys;
+		.appearanceClassHierarchyTracker.allKeys;
 	for(SHAppearanceHierarchy *chain in chains) {
-		SHViewController *currentVC = self.viewController;
+		SHViewController *currentVC = self.viewControllerOrChild;
 		NSEnumerator<Class<UIAppearanceContainer>> *classIter = chain.objectEnumerator;
 		Class currentClass = [classIter nextObject];
 		while(currentClass && currentVC) {
@@ -42,13 +46,13 @@
 		if(nil == currentClass) {
 			SHTraitProxyDict *traitDict = self.proxyContainer.traitHierarchyTracker[chain];
 			if(traitDict) {
-				SHViewControllerAppearanceProxy *proxy = traitDict[self.viewController.traitCollection];
+				SHViewControllerAppearanceProxy *proxy = traitDict[self.viewControllerOrChild.traitCollection];
 				if(proxy) {
 					return proxy;
 				}
 			}
 			SHViewControllerAppearanceProxy *proxy = self.proxyContainer
-			.appearanceClassHierarchyTracker[chain];
+				.appearanceClassHierarchyTracker[chain];
 			if(proxy) {
 				return proxy;
 			}
@@ -59,11 +63,14 @@
 
 
 -(SHViewControllerAppearanceProxy*)getMatchIfAvailable {
-	SHViewControllerAppearanceProxy *proxy = [self scanForMatch];
+	SHViewControllerAppearanceProxy *proxy = [self scanForMatchInOwnershipLineOrTraitAssociation];
 	if(proxy) {
 		return proxy;
 	}
-	proxy = [self.proxyContainer.appearanceProxies findMatch:self.viewController.class];
+	//no appearance proxy was found from containIn or withTrait
+	//so next we check if a proxy was associated with the simple appearance
+	//or that of a parent class
+	proxy = [self.proxyContainer.appearanceProxyTree findMatch:self.viewControllerOrChild.class];
 	
 	return proxy;
 }

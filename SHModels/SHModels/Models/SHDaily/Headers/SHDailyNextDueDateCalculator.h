@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHDailyNextDueDateCalculator : NSObject
 @property (strong, nonatomic) SHDailyActiveDays *activeDaysContainer;
-@property (strong, nonatomic) NSDate* lastActivationDateTime;
+@property (strong, nonatomic, nullable) NSDate* lastActivationDateTime;
 @property (strong, nonatomic) NSDate* lastUpdateDateTime;
 @property (assign, nonatomic) NSInteger dayStartTime;
 @property (strong, nonatomic) NSDate* activeFromDate;

@@ -32,7 +32,7 @@
 -(SHDailyNextDueDateCalculator *)calculator {
 	if(nil == _calculator) {
 		NSInteger dayStartTime = 0;
-		if(self.cycleStartTime) {
+		if(nil != self.cycleStartTime) {
 			dayStartTime = self.cycleStartTime.integerValue;
 		}
 		else {

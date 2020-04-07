@@ -18,6 +18,7 @@
 @implementation SHRateSetterView
 
 
+
 -(void)loadView {
 	NSBundle *bundle = [NSBundle bundleForClass:self.class];
 	UINib *nib = [UINib nibWithNibName:NSStringFromClass(self.class) bundle:bundle];
@@ -26,6 +27,7 @@
 		self.view = results[0];
 	}
 }
+
 
 @synthesize textColor = _textColor;
 -(UIColor*)textColor {
@@ -103,11 +105,6 @@
 	UIImage *decrImg = [builder drawMinus];
 	[self.rateStep setIncrementImage:incrImg forState:UIControlStateNormal];
 	[self.rateStep setDecrementImage:decrImg forState:UIControlStateNormal];
-}
-
-
--(BOOL)isAbstract {
-	return NO;
 }
 
 

@@ -20,7 +20,7 @@
 
 
 -(instancetype)initWithKey:(id)key withStoredObject:(id)storedObject {
-	if(self == [super init]) {
+	if(self = [super init]) {
 		_key = key;
 		_storedObject = storedObject;
 	}

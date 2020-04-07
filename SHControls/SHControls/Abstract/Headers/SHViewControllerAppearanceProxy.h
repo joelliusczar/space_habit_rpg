@@ -7,6 +7,7 @@
 //
 
 #import "SHViewController.h"
+@import SHCommon;
 
 
 
@@ -18,3 +19,4 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+

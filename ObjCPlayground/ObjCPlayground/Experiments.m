@@ -1322,4 +1322,14 @@ union u_double {
 	NSLog(@"class childman super super super is nil? %@", ChildMan.superclass.superclass.superclass == nil ? @"yes" : @"no");
 }
 
+
+static void _doStuffToTypeDef(SHStrArr *arr) {
+	[arr addObject:@"Alpha"];
+}
+
++(void)typeDefExps {
+	SHStrArr *s = [NSMutableArray array];
+	_doStuffToTypeDef(s);
+}
+
 @end

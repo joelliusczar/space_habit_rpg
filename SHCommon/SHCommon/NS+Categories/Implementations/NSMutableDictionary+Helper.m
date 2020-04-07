@@ -33,4 +33,11 @@
 }
 
 
+-(void)mergeDictionary:(NSDictionary *)dictionary {
+	for (id key in dictionary.allKeys) {
+    self[key] = dictionary[key];
+	}
+}
+
+
 @end

@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSMutableArray<SHRateItemDict*>*)convertToSaveble;
 -(NSUInteger)findPrevActiveDayIdx:(NSUInteger)weekdayIdx;
 -(SHRateValueItem *)convertObjCRateItemToC;
-+(NSString *)weekDayKeyToFullName:(NSString*)dayKey;
++(nullable NSString *)weekDayKeyToFullName:(NSString*)dayKey;
 @end
 
 NS_ASSUME_NONNULL_END

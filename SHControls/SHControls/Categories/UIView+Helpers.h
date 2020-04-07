@@ -10,9 +10,9 @@
 @import UIKit;
 
 @interface UIView (Helpers)
-@property (nonatomic) UIColor *SH_borderColor UI_APPEARANCE_SELECTOR;
-@property (nonatomic) CGFloat SH_borderWidth UI_APPEARANCE_SELECTOR;
-@property (nonatomic) CGFloat SH_cornerRadius UI_APPEARANCE_SELECTOR;
+@property (assign, nonatomic) UIColor *SH_borderColor UI_APPEARANCE_SELECTOR;
+@property (assign, nonatomic) CGFloat SH_borderWidth UI_APPEARANCE_SELECTOR;
+@property (assign, nonatomic) CGFloat SH_cornerRadius UI_APPEARANCE_SELECTOR;
 -(void)checkForAndApplyVisualChanges;
 -(UIView *)loadXib:(NSString *)nibName;
 -(void)fitToContainerView:(UIView *)containerView;

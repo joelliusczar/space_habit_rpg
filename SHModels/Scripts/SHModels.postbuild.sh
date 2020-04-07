@@ -11,6 +11,7 @@ cd "$SRCROOT"/../Build_Scripts
 
 cp "$DERIVED_FILE_DIR"/CoreDataGenerated/Model/*.h "$BUILT_PRODUCTS_DIR"/SHModels.framework/Headers
 
+echo "Derived file dir: $DERIVED_FILE_DIR"
 echo "" > "$SRCROOT"/../modelsReference.txt
 
 for file in "$DERIVED_FILE_DIR"/CoreDataGenerated/Model/*.h; do

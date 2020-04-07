@@ -35,7 +35,7 @@
 		return a == b;
 	}];
 	
-	[tree addObject:@"hoothoot" withKey:SHAlpha.class];
+	[tree addObjectAndGetNearestParent:@"hoothoot" withKey:SHAlpha.class];
 	NSString *match = [tree findMatch:SHAlpha.class];
 	XCTAssertTrue([match isEqualToString:@"hoothoot"]);
 	match = [tree findMatch:SHBravo.class];
@@ -61,11 +61,11 @@
 	withExactMatchFunction:^BOOL(Class a, Class b){
 		return a == b;
 	}];
-	[tree addObject:@"hoothoot" withKey:SHAlpha.class];
+	[tree addObjectAndGetNearestParent:@"hoothoot" withKey:SHAlpha.class];
 	//[tree addObject:@"derp" withKey:SHAlphaAlpha.class];
-	[tree addObject:@"bent" withKey:SHAlphaBravo.class];
-	[tree addObject:@"kazoo" withKey:SHAlphaCharlie.class];
-	[tree addObject:@"loopzoop" withKey:SHAlphaDelta.class];
+	[tree addObjectAndGetNearestParent:@"bent" withKey:SHAlphaBravo.class];
+	[tree addObjectAndGetNearestParent:@"kazoo" withKey:SHAlphaCharlie.class];
+	[tree addObjectAndGetNearestParent:@"loopzoop" withKey:SHAlphaDelta.class];
 	NSString *match = [tree findMatch:SHAlpha.class];
 	XCTAssertTrue([match isEqualToString:@"hoothoot"]);
 	match = [tree findMatch:SHAlphaBravo.class];
@@ -102,12 +102,12 @@
 	withExactMatchFunction:^BOOL(Class a, Class b){
 		return a == b;
 	}];
-	[tree addObject:@"hoothoot" withKey:SHAlpha.class];
+	[tree addObjectAndGetNearestParent:@"hoothoot" withKey:SHAlpha.class];
 	//[tree addObject:@"derp" withKey:SHAlphaAlpha.class];
-	[tree addObject:@"bent" withKey:SHAlphaBravo.class];
-	[tree addObject:@"kazoo" withKey:SHAlphaCharlie.class];
-	[tree addObject:@"loopzoop" withKey:SHAlphaDelta.class];
-	[tree addObject:@"ranty" withKey:SHAlphaBravoBravo.class];
+	[tree addObjectAndGetNearestParent:@"bent" withKey:SHAlphaBravo.class];
+	[tree addObjectAndGetNearestParent:@"kazoo" withKey:SHAlphaCharlie.class];
+	[tree addObjectAndGetNearestParent:@"loopzoop" withKey:SHAlphaDelta.class];
+	[tree addObjectAndGetNearestParent:@"ranty" withKey:SHAlphaBravoBravo.class];
 	NSString *match = [tree findMatch:SHAlphaBravo.class];
 	XCTAssertTrue([match isEqualToString:@"bent"]);
 	match = [tree findMatch:SHAlphaBravoAlpha.class];
@@ -122,7 +122,7 @@
 	XCTAssertTrue([match isEqualToString:@"hoothoot"]);
 	match = [tree findMatch:SHAlphaAlphaAlphaBravo.class];
 	XCTAssertTrue([match isEqualToString:@"hoothoot"]);
-	[tree addObject:@"bottom" withKey:SHAlphaAlphaAlphaAlpha.class];
+	[tree addObjectAndGetNearestParent:@"bottom" withKey:SHAlphaAlphaAlphaAlpha.class];
 	match = [tree findMatch:SHAlphaAlphaAlphaAlpha.class];
 	XCTAssertTrue([match isEqualToString:@"bottom"]);
 	match = [tree findMatch:SHBravo.class];

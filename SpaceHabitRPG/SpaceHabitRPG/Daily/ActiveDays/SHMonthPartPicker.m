@@ -12,7 +12,6 @@
 @import SHControls;
 
 @interface SHMonthPartPicker ()
-
 @end
 
 const NSInteger ORDINAL_WEEK_COLUMN = 0;
@@ -50,17 +49,13 @@ const NSInteger DAY_COLUMN = 1;
 }
 
 
--(NSString *)pickerView:(UIPickerView *)pickerView
-	titleForRow:(NSInteger)row
-	forComponent:(NSInteger)component
-{
-	(void)pickerView;
+-(NSString * _Nullable)buildTitle:(NSInteger)component row:(NSInteger)row {
 	if(component == ORDINAL_WEEK_COLUMN){
 		NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
 		formatter.locale = NSLocale.currentLocale;
 		formatter.numberStyle = NSNumberFormatterOrdinalStyle;
 		NSString *formatted = [formatter
-			stringFromNumber:[NSNumber numberWithInteger:row + 1]];
+													 stringFromNumber:[NSNumber numberWithInteger:row + 1]];
 		return formatted;
 	}
 	NSString *day = NSCalendar.currentCalendar.weekdaySymbols[row];
@@ -70,6 +65,7 @@ const NSInteger DAY_COLUMN = 1;
 
 -(CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component{
 	(void)pickerView;
+	NSLog(@"width");
 	if(component == ORDINAL_WEEK_COLUMN){
 		return 150;
 	}
