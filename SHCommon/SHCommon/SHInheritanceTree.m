@@ -8,14 +8,23 @@
 
 
 #import "SHInheritanceTree.h"
+#import "NSArray+SHHelper.h"
 
 @interface SHInheritanceTree ()
-@property (strong, nonatomic) SHInheritanceTreeNode *root;
+@property (strong, nonatomic) NSMutableArray<SHInheritanceTreeNode*> *roots;
 @end
 
 @implementation SHInheritanceTree
 
 
+-(NSMutableArray<SHInheritanceTreeNode*>*)roots {
+	if(nil == _roots) {
+		_roots = [NSMutableArray array];
+	}
+	return _roots;
+}
+
+
 -(instancetype)initWithCompareFunction:(BOOL (^)(id a, id b))isAChildOfB
 	withExactMatchFunction:(BOOL (^)(id a, id b))isExactMatch
 {
@@ -26,18 +35,6 @@
 	return self;
 }
 
-
--(instancetype)initWithCompareFunction:(BOOL (^)(id a, id b))isAChildOfB
-	withExactMatchFunction:(BOOL (^)(id a, id b))isExactMatch
-	withRoot:(SHInheritanceTreeNode *)root
-{
-	if(self = [super init]) {
-		_isAChildOfB = isAChildOfB;
-		_isExactMatch = isExactMatch;
-		_root = root;
-	}
-	return self;
-}
 
 
 static SHInheritanceTreeNode*  _findMatch(id key, SHInheritanceTreeNode *root,
@@ -56,10 +53,11 @@ static SHInheritanceTreeNode*  _findMatch(id key, SHInheritanceTreeNode *root,
 
 
 -(id)findMatch:(id)key {
-	if(nil == self.root) return nil;
-	SHInheritanceTreeNode *match = _findMatch(key, self.root, nil, self.isAChildOfB);
-	if(match) {
-		return match.storedObject;
+	for (SHInheritanceTreeNode *root in self.roots) {
+		SHInheritanceTreeNode *match = _findMatch(key, root, nil, self.isAChildOfB);
+		if(match) {
+			return match.storedObject;
+		}
 	}
 	return nil;
 }
@@ -77,31 +75,60 @@ static SHInheritanceTreeNode* _findExactMatch(id key, SHInheritanceTreeNode *roo
 }
 
 -(id)findExactMatch:(id)key {
-	if(nil == self.root) return nil;
-	return _findExactMatch(key, self.root, self.isExactMatch).storedObject;
+	for (SHInheritanceTreeNode *root in self.roots) {
+    SHInheritanceTreeNode *match = _findExactMatch(key, root, self.isExactMatch);
+    if(match) {
+    	return match.storedObject;
+		}
+	}
+	return nil;
 }
+
 
 
 -(SHInheritanceTreeNode *)addObjectAndGetNearestParent:(id)object withKey:(id)key {
-	if(nil == self.root) {
-		self.root = [[SHInheritanceTreeNode alloc] initWithKey:key withStoredObject:object];
+	SHInheritanceTreeNode *parent = nil;
+	NSUInteger length = self.roots.count;
+	for(NSUInteger idx = 0; idx < length; idx++) {
+		SHInheritanceTreeNode *root = self.roots[idx];
+		SHInheritanceTreeNode *match = _findMatch(key, root, nil, self.isAChildOfB);
+		if(match) {
+			SHInheritanceTreeNode *node = [[SHInheritanceTreeNode alloc] initWithKey:key withStoredObject:object];
+			for (SHInheritanceTreeNode *child in match.children) {
+    		if(self.isAChildOfB(child.key, key)) {
+    			[node.children addObject:child];
+				}
+			}
+			match.children = [match.children SH_subtractArray:node.children];
+			[match.children addObject:node];
+			return match;
+		}
+		if(self.isAChildOfB(root.key, key)) {
+			if(nil == parent) {
+				parent = [[SHInheritanceTreeNode alloc] initWithKey:key withStoredObject:object];
+			}
+			[parent.children addObject:root];
+			[self.roots removeObjectAtIndex:idx];
+			length--;
+			idx--;
+		}
+	}
+	if(parent) {
+		[self.roots addObject:parent];
 		return nil;
 	}
-	SHInheritanceTreeNode *match = _findMatch(key, self.root, nil, self.isAChildOfB);
-	if(match) {
-		SHInheritanceTreeNode *node = [[SHInheritanceTreeNode alloc] initWithKey:key withStoredObject:object];
-		[match.children addObject:node];
-	}
-	return match;
+	SHInheritanceTreeNode *node = [[SHInheritanceTreeNode alloc] initWithKey:key withStoredObject:object];
+	[self.roots addObject:node];
+	return nil;
 }
 
 
-static void _runAction(void (^action)(id key, id stored), id key,
+static void _runAction(void (^action)(SHInheritanceTreeNode *node), id key,
 	SHInheritanceTreeNode *root, BOOL (^isAChildOfB)(id a, id b))
 {
 	if(nil == root) return;
 	if(isAChildOfB(key, root.key)){
-		action(root.key, root.storedObject);
+		action(root);
 		for (SHInheritanceTreeNode *child in root.children) {
     	_runAction(action, key, child, isAChildOfB);
 		}
@@ -110,15 +137,20 @@ static void _runAction(void (^action)(id key, id stored), id key,
 }
 
 
--(void)runAction:(void (^)(id key, id stored))action
+-(void)runAction:(SH_treeIterationAction)action
 	matchingKey:(id)key
 {
-	_runAction(action, key, self.root, self.isAChildOfB);
+	for (SHInheritanceTreeNode *root in self.roots) {
+		_runAction(action, key, root, self.isAChildOfB);
+	}
 }
 
 
 -(NSString*)description {
-	return self.root.description;
+	NSString *formattedChildren = [self.roots componentsJoinedByString:@",\n"];
+	NSString *desc = [NSString stringWithFormat:@"[\n\root: [\n\t%@\n\t]\n\t]",
+		formattedChildren];
+	return desc;
 }
 
 

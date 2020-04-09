@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSMutableArray*)mapItemsTo:(ItemType (^)(ItemType,NSUInteger))mapper;
 -(NSMutableArray*)mapItemsTo_f:(ItemType _Nonnull (*_Nonnull)(ItemType _Nonnull, NSUInteger))mapper;
 -(nullable ItemType)silentGet:(NSUInteger)index;
+-(NSMutableArray<ItemType> *)SH_subtractArray:(NSArray<ItemType> *)arr;
 @end
 
 NS_ASSUME_NONNULL_END

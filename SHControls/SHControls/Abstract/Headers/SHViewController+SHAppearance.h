@@ -7,15 +7,17 @@
 //
 
 #import "SHViewController.h"
-#import "SHVCProxyContainer.h"
+#import "SHProxyTypeJunction.h"
 @import UIKit;
+@import SHCommon;
 
-@class SHVCProxyContainer;
+@class SHProxyTypeJunction;
+typedef SHInheritanceTree<Class, SHProxyTypeJunction*> SHProxyJunctionTree;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHViewController (SHAppearance) <UIAppearance>
-@property (class, readonly, nonatomic) SHVCProxyContainer *proxyContainer;
+@property (class, readonly, nonatomic) SHProxyJunctionTree *tree;
 @property (strong, nonatomic) UIColor *viewBackgroundColor UI_APPEARANCE_SELECTOR;
 @end
 

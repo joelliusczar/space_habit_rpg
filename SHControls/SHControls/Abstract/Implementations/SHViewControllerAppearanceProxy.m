@@ -7,8 +7,9 @@
 //
 
 #import "SHViewControllerAppearanceProxy.h"
-
-typedef NSMutableDictionary<NSString *,NSInvocation*> SHInvocationDict;
+#import "SHInvocationsBucketSet.h"
+#import "SHProxyTypeJunction.h"
+#import "SHViewController+SHAppearance.h"
 
 @interface SHViewControllerAppearanceProxy ()
 @property (strong, nonatomic) SHViewController *reference;
@@ -50,6 +51,41 @@ typedef NSMutableDictionary<NSString *,NSInvocation*> SHInvocationDict;
 }
 
 
+-(instancetype)initWithReference:(SHViewController *)reference
+	withClassList:(SHAppearanceHierarchy *)classList
+	withTraitCollection:(UITraitCollection *)traitCollection
+{
+	if(self = [super init]) {
+		_reference = reference;
+		_classList = classList;
+		_traits = traitCollection;
+	}
+	return self;
+}
+
+
+-(instancetype)initWithReference:(SHViewController *)reference
+	withClassList:(SHAppearanceHierarchy *)classList
+{
+	if(self = [super init]) {
+		_reference = reference;
+		_classList = classList;
+	}
+	return self;
+}
+
+
+-(instancetype)initWithReference:(SHViewController *)reference
+	withTraitCollection:(UITraitCollection *)traitCollection
+{
+	if(self = [super init]) {
+		_reference = reference;
+		_traits = traitCollection;
+	}
+	return self;
+}
+
+
 -(void)forwardInvocation:(NSInvocation *)anInvocation {
 	if([super respondsToSelector:anInvocation.selector]) {
 		[super forwardInvocation:anInvocation];
@@ -76,9 +112,38 @@ typedef NSMutableDictionary<NSString *,NSInvocation*> SHInvocationDict;
 }
 
 
+-(SHInvocationsBucketSet*)loadInvocationsFromJunction:(SHProxyTypeJunction*)junction {
+	SHInvocationsBucketSet *invocationsBucketSet = [[SHInvocationsBucketSet alloc] init];
+	if(self.classList && self.traits) {
+		SHHierarchyDict *classListDict = junction.classListTraitDict[self.traits];
+		if(classListDict) {
+			SHViewControllerAppearanceProxy *proxy = classListDict[self.classList];
+			invocationsBucketSet.classListTrait = proxy.invocations;
+		}
+	}
+	if(self.classList) {
+		SHViewControllerAppearanceProxy *proxy = junction.classListDict[self.classList];
+		invocationsBucketSet.classList = proxy.invocations;
+	}
+	if(self.traits) {
+		SHViewControllerAppearanceProxy *proxy = junction.traitDict[self.traits];
+		invocationsBucketSet.trait = proxy.invocations;
+	}
+	invocationsBucketSet.single = junction.singleProxy.invocations;
+	return invocationsBucketSet;
+}
+
+
 -(void)applyPropertyChangesToTarget:(SHViewController*)target {
-	
-	for (NSInvocation *invocation in self.invocations.allValues) {
+	SHInvocationsBucketSet *collectedInvocations = [[SHInvocationsBucketSet alloc] init];
+	[SHViewController.tree runAction:^(SHInheritanceTreeNode<Class,SHProxyTypeJunction *> *node){
+		SHProxyTypeJunction *junction = node.storedObject;
+		SHInvocationsBucketSet *nodeInvocations = [self loadInvocationsFromJunction:junction];
+		[collectedInvocations mergeIn:nodeInvocations];
+		
+	} matchingKey:self.reference.class];
+	SHInvocationDict *invocations = [collectedInvocations selectOperationSet];
+	for (NSInvocation *invocation in invocations.allValues) {
     [invocation invokeWithTarget:target];
 	}
 }

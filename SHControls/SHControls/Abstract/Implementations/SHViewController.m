@@ -7,32 +7,24 @@
 //
 
 #import "SHViewController.h"
-#import "SHAppearancePotentialMatches.h"
+#import "SHProxyTypeJunction.h"
 @import SHCommon;
 
 
 
 
 @interface SHViewController ()
-@property (strong, nonatomic) SHAppearancePotentialMatches *matches;
 @end
 
 @implementation SHViewController
 
 
--(SHAppearancePotentialMatches *)matches {
-	if(nil == _matches) {
-		_matches = [[SHAppearancePotentialMatches alloc]
-			initWithProxyContainer:self.class.proxyContainer
-			withSHViewController:self];
-	}
-	return _matches;
-}
-
-
 -(void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-	SHViewControllerAppearanceProxy* proxy = [self.matches getMatchIfAvailable];
+	SHProxyTypeJunction *junction = [SHViewController.tree findMatch: self.class];
+	if(nil == junction) return;
+	
+	SHViewControllerAppearanceProxy* proxy = [junction getMostSpecificProxy:self with:self.traitCollection];
 	if(proxy) {
 		[proxy applyPropertyChangesToTarget:self];
 	}

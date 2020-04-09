@@ -11,14 +11,14 @@
 
 @import SHCommon;
 
-#import "SHViewControllerAppearanceProxy.h"
 @class SHViewControllerAppearanceProxy;
 
 
 typedef NSArray<Class<UIAppearanceContainer>> SHAppearanceHierarchy;
 typedef NSMutableDictionary<SHAppearanceHierarchy*, SHViewControllerAppearanceProxy*> SHHierarchyDict;
 typedef NSMutableDictionary<UITraitCollection*, SHViewControllerAppearanceProxy*> SHTraitProxyDict;
-typedef NSMutableDictionary<SHAppearanceHierarchy*, SHTraitProxyDict*> SHHierarchyTraitDict;
+typedef NSMutableDictionary<UITraitCollection*, SHHierarchyDict*> SHHierarchyTraitDict;
 typedef SHInheritanceTree<Class, SHViewControllerAppearanceProxy*> SHAppearanceProxyTree;
 
+#import "SHViewControllerAppearanceProxy.h"
 #endif /* SHAppearanceProxyTypedefs_h */

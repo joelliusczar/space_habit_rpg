@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		279D8153243D41D300876892 /* SHProxyTypeJunction.h in Headers */ = {isa = PBXBuildFile; fileRef = 279D8151243D41D300876892 /* SHProxyTypeJunction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		279D8154243D41D300876892 /* SHProxyTypeJunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 279D8152243D41D300876892 /* SHProxyTypeJunction.m */; };
+		279D8157243EB05400876892 /* SHInvocationsBucketSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 279D8155243EB05400876892 /* SHInvocationsBucketSet.h */; };
+		279D8158243EB05400876892 /* SHInvocationsBucketSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 279D8156243EB05400876892 /* SHInvocationsBucketSet.m */; };
 		27FC94052436D74600408167 /* SHControls.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC94032436D74600408167 /* SHControls.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27FC943F2436D7C400408167 /* UIView+Helpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC940C2436D7C300408167 /* UIView+Helpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27FC94402436D7C400408167 /* UIViewController+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC940D2436D7C300408167 /* UIViewController+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -16,20 +20,16 @@
 		27FC94442436D7C400408167 /* SHSpinPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27FC94132436D7C300408167 /* SHSpinPicker.xib */; };
 		27FC94452436D7C400408167 /* SHItemFlexibleListViewFull.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27FC94142436D7C300408167 /* SHItemFlexibleListViewFull.xib */; };
 		27FC94462436D7C400408167 /* SHViewControllerAppearanceProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC94162436D7C300408167 /* SHViewControllerAppearanceProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27FC94472436D7C400408167 /* SHAppearancePotentialMatches.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC94172436D7C300408167 /* SHAppearancePotentialMatches.h */; };
 		27FC94482436D7C400408167 /* SHNumberControlProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC94182436D7C300408167 /* SHNumberControlProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27FC94492436D7C400408167 /* SHViewController+SHAppearance.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC94192436D7C300408167 /* SHViewController+SHAppearance.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27FC944A2436D7C400408167 /* SHItemFlexibleListView.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC941A2436D7C300408167 /* SHItemFlexibleListView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27FC944B2436D7C400408167 /* SHVCProxyContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC941B2436D7C300408167 /* SHVCProxyContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27FC944C2436D7C400408167 /* SHViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC941C2436D7C300408167 /* SHViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27FC944D2436D7C400408167 /* SHSpinPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC941D2436D7C300408167 /* SHSpinPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27FC944E2436D7C400408167 /* SHAppearanceProxyTypedefs.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC941E2436D7C300408167 /* SHAppearanceProxyTypedefs.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27FC944F2436D7C400408167 /* SHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FC94202436D7C300408167 /* SHViewController.m */; };
 		27FC94502436D7C400408167 /* SHSpinPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FC94212436D7C300408167 /* SHSpinPicker.m */; };
 		27FC94512436D7C400408167 /* SHViewControllerAppearanceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FC94222436D7C300408167 /* SHViewControllerAppearanceProxy.m */; };
-		27FC94522436D7C400408167 /* SHAppearancePotentialMatches.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FC94232436D7C300408167 /* SHAppearancePotentialMatches.m */; };
 		27FC94532436D7C400408167 /* SHViewController+SHAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FC94242436D7C300408167 /* SHViewController+SHAppearance.m */; };
-		27FC94542436D7C400408167 /* SHVCProxyContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FC94252436D7C300408167 /* SHVCProxyContainer.m */; };
 		27FC94552436D7C400408167 /* SHItemFlexibleListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FC94262436D7C300408167 /* SHItemFlexibleListView.m */; };
 		27FC94562436D7C400408167 /* SHItemFlexibleListDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC94282436D7C300408167 /* SHItemFlexibleListDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27FC94572436D7C400408167 /* SHAddItemsFooterDelegateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC94292436D7C300408167 /* SHAddItemsFooterDelegateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -99,6 +99,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		279D8151243D41D300876892 /* SHProxyTypeJunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHProxyTypeJunction.h; sourceTree = "<group>"; };
+		279D8152243D41D300876892 /* SHProxyTypeJunction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHProxyTypeJunction.m; sourceTree = "<group>"; };
+		279D8155243EB05400876892 /* SHInvocationsBucketSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHInvocationsBucketSet.h; sourceTree = "<group>"; };
+		279D8156243EB05400876892 /* SHInvocationsBucketSet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHInvocationsBucketSet.m; sourceTree = "<group>"; };
 		27FC94002436D74600408167 /* SHControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27FC94032436D74600408167 /* SHControls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHControls.h; sourceTree = "<group>"; };
 		27FC94042436D74600408167 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -110,20 +114,16 @@
 		27FC94132436D7C300408167 /* SHSpinPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSpinPicker.xib; sourceTree = "<group>"; };
 		27FC94142436D7C300408167 /* SHItemFlexibleListViewFull.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHItemFlexibleListViewFull.xib; sourceTree = "<group>"; };
 		27FC94162436D7C300408167 /* SHViewControllerAppearanceProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHViewControllerAppearanceProxy.h; sourceTree = "<group>"; };
-		27FC94172436D7C300408167 /* SHAppearancePotentialMatches.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHAppearancePotentialMatches.h; sourceTree = "<group>"; };
 		27FC94182436D7C300408167 /* SHNumberControlProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHNumberControlProtocol.h; sourceTree = "<group>"; };
 		27FC94192436D7C300408167 /* SHViewController+SHAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SHViewController+SHAppearance.h"; sourceTree = "<group>"; };
 		27FC941A2436D7C300408167 /* SHItemFlexibleListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHItemFlexibleListView.h; sourceTree = "<group>"; };
-		27FC941B2436D7C300408167 /* SHVCProxyContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHVCProxyContainer.h; sourceTree = "<group>"; };
 		27FC941C2436D7C300408167 /* SHViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHViewController.h; sourceTree = "<group>"; };
 		27FC941D2436D7C300408167 /* SHSpinPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSpinPicker.h; sourceTree = "<group>"; };
 		27FC941E2436D7C300408167 /* SHAppearanceProxyTypedefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHAppearanceProxyTypedefs.h; sourceTree = "<group>"; };
 		27FC94202436D7C300408167 /* SHViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHViewController.m; sourceTree = "<group>"; };
 		27FC94212436D7C300408167 /* SHSpinPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSpinPicker.m; sourceTree = "<group>"; };
 		27FC94222436D7C300408167 /* SHViewControllerAppearanceProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHViewControllerAppearanceProxy.m; sourceTree = "<group>"; };
-		27FC94232436D7C300408167 /* SHAppearancePotentialMatches.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHAppearancePotentialMatches.m; sourceTree = "<group>"; };
 		27FC94242436D7C300408167 /* SHViewController+SHAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SHViewController+SHAppearance.m"; sourceTree = "<group>"; };
-		27FC94252436D7C300408167 /* SHVCProxyContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHVCProxyContainer.m; sourceTree = "<group>"; };
 		27FC94262436D7C300408167 /* SHItemFlexibleListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHItemFlexibleListView.m; sourceTree = "<group>"; };
 		27FC94282436D7C300408167 /* SHItemFlexibleListDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHItemFlexibleListDelegateProtocol.h; sourceTree = "<group>"; };
 		27FC94292436D7C300408167 /* SHAddItemsFooterDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHAddItemsFooterDelegateProtocol.h; sourceTree = "<group>"; };
@@ -258,12 +258,12 @@
 		27FC94152436D7C300408167 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				279D8155243EB05400876892 /* SHInvocationsBucketSet.h */,
+				279D8151243D41D300876892 /* SHProxyTypeJunction.h */,
 				27FC94162436D7C300408167 /* SHViewControllerAppearanceProxy.h */,
-				27FC94172436D7C300408167 /* SHAppearancePotentialMatches.h */,
 				27FC94182436D7C300408167 /* SHNumberControlProtocol.h */,
 				27FC94192436D7C300408167 /* SHViewController+SHAppearance.h */,
 				27FC941A2436D7C300408167 /* SHItemFlexibleListView.h */,
-				27FC941B2436D7C300408167 /* SHVCProxyContainer.h */,
 				27FC941C2436D7C300408167 /* SHViewController.h */,
 				27FC941D2436D7C300408167 /* SHSpinPicker.h */,
 				27FC941E2436D7C300408167 /* SHAppearanceProxyTypedefs.h */,
@@ -274,12 +274,12 @@
 		27FC941F2436D7C300408167 /* Implementations */ = {
 			isa = PBXGroup;
 			children = (
+				279D8156243EB05400876892 /* SHInvocationsBucketSet.m */,
+				279D8152243D41D300876892 /* SHProxyTypeJunction.m */,
 				27FC94202436D7C300408167 /* SHViewController.m */,
 				27FC94212436D7C300408167 /* SHSpinPicker.m */,
 				27FC94222436D7C300408167 /* SHViewControllerAppearanceProxy.m */,
-				27FC94232436D7C300408167 /* SHAppearancePotentialMatches.m */,
 				27FC94242436D7C300408167 /* SHViewController+SHAppearance.m */,
-				27FC94252436D7C300408167 /* SHVCProxyContainer.m */,
 				27FC94262436D7C300408167 /* SHItemFlexibleListView.m */,
 			);
 			path = Implementations;
@@ -402,14 +402,15 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				279D8153243D41D300876892 /* SHProxyTypeJunction.h in Headers */,
 				27FC94622436D7C400408167 /* SHTaskCell.h in Headers */,
 				27FC945C2436D7C400408167 /* SHNotesViewDelegateProtocol.h in Headers */,
 				27FC944E2436D7C400408167 /* SHAppearanceProxyTypedefs.h in Headers */,
 				27FC945B2436D7C400408167 /* SHCommonDelegateProtocol.h in Headers */,
 				27FC945F2436D7C400408167 /* SHNoteView.h in Headers */,
-				27FC944B2436D7C400408167 /* SHVCProxyContainer.h in Headers */,
 				27FC94572436D7C400408167 /* SHAddItemsFooterDelegateProtocol.h in Headers */,
 				27FC94492436D7C400408167 /* SHViewController+SHAppearance.h in Headers */,
+				279D8157243EB05400876892 /* SHInvocationsBucketSet.h in Headers */,
 				27FC943F2436D7C400408167 /* UIView+Helpers.h in Headers */,
 				27FC94562436D7C400408167 /* SHItemFlexibleListDelegateProtocol.h in Headers */,
 				27FC94692436D7C400408167 /* SHSubtasksTableView.h in Headers */,
@@ -435,7 +436,6 @@
 				27FC94632436D7C400408167 /* SHStatusBar.h in Headers */,
 				27FC94592436D7C400408167 /* SHSubtasksTableViewDelegateProtocol.h in Headers */,
 				27FC94052436D74600408167 /* SHControls.h in Headers */,
-				27FC94472436D7C400408167 /* SHAppearancePotentialMatches.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,10 +581,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				27FC94822436D7CC00408167 /* SHScrollAnimator.m in Sources */,
-				27FC94542436D7C400408167 /* SHVCProxyContainer.m in Sources */,
 				27FC947E2436D7CC00408167 /* SHSubtasksTableView.m in Sources */,
 				27FC94802436D7CC00408167 /* SHAddItemsFooter.m in Sources */,
 				27FC947F2436D7CC00408167 /* SHSwitch.m in Sources */,
+				279D8154243D41D300876892 /* SHProxyTypeJunction.m in Sources */,
 				27FC94512436D7C400408167 /* SHViewControllerAppearanceProxy.m in Sources */,
 				27FC94502436D7C400408167 /* SHSpinPicker.m in Sources */,
 				27FC94852436D7CC00408167 /* SHTaskCell.m in Sources */,
@@ -592,7 +592,6 @@
 				27FC94422436D7C400408167 /* UIViewController+Helper.m in Sources */,
 				27FC947A2436D7CC00408167 /* SHImportanceSliderView.m in Sources */,
 				27FC94552436D7C400408167 /* SHItemFlexibleListView.m in Sources */,
-				27FC94522436D7C400408167 /* SHAppearancePotentialMatches.m in Sources */,
 				27FC94812436D7CC00408167 /* SHNoteView.m in Sources */,
 				27FC94792436D7CC00408167 /* SHRateSetterView.m in Sources */,
 				27FC944F2436D7C400408167 /* SHViewController.m in Sources */,
@@ -600,6 +599,7 @@
 				27FC94832436D7CC00408167 /* SHFrontEndConstants.m in Sources */,
 				27FC94842436D7CC00408167 /* SHStatusBar.m in Sources */,
 				27FC94532436D7C400408167 /* SHViewController+SHAppearance.m in Sources */,
+				279D8158243EB05400876892 /* SHInvocationsBucketSet.m in Sources */,
 				27FC947C2436D7CC00408167 /* SHListItemCell.m in Sources */,
 				27FC94412436D7C400408167 /* UIView+Helpers.m in Sources */,
 			);

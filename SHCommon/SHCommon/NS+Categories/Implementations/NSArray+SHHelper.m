@@ -70,4 +70,16 @@
 	return nil;
 }
 
+
+-(NSMutableArray *)SH_subtractArray:(NSArray *)arr {
+	NSSet *takeAwaySet = [NSSet setWithArray:arr];
+	NSMutableArray *results = [NSMutableArray array];
+	for (id element in self) {
+  	if(![takeAwaySet containsObject:element]) {
+  		[results addObject:element];
+		}
+	}
+	return results;
+}
+
 @end
