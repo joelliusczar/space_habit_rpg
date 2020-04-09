@@ -44,7 +44,7 @@
 }
 
 
--(NSMutableArray*)mapItemsTo:(id (^)(id,NSUInteger))mapper{
+-(NSMutableArray*)mapItemsTo:(SH_mapperBlock)mapper{
 	NSMutableArray *result = [NSMutableArray arrayWithCapacity:self.count];
 	NSUInteger idx = 0;
 	for (id obj in self) {
@@ -55,7 +55,7 @@
 }
 
 
--(NSMutableArray*)mapItemsTo_f:(id	_Nonnull (*)(id _Nonnull, NSUInteger))mapper{
+-(NSMutableArray*)mapItemsTo_f:(SH_mapper_CFn)mapper{
 	NSMutableArray *result = [NSMutableArray arrayWithCapacity:self.count];
 	NSUInteger idx = 0;
 	for (id obj in self) {

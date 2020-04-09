@@ -9,7 +9,7 @@
 @import UIKit;
 @import SHCommon;
 
-
+NS_ASSUME_NONNULL_BEGIN
 
 @interface SHViewController : UIViewController
 @property (weak, nonatomic) SHViewController *prevViewController;
@@ -20,5 +20,7 @@
 -(void)popVCFromFront;
 -(void)popAllChildVCs;
 @end
+
+NS_ASSUME_NONNULL_END
 
 #import "SHViewController+SHAppearance.h"

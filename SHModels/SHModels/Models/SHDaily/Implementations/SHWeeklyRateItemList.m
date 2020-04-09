@@ -16,13 +16,12 @@
 
 @implementation SHWeeklyRateItemList
 
-static SHWeeklyRateItem* mapDictToWeekly(id item, NSUInteger idx){
+static SHWeeklyRateItem* mapDictToWeekly(SHRateItemDict *item, NSUInteger idx){
 	(void)idx;
-	NSDictionary<NSString*,NSNumber*> *dict = (NSDictionary*)item;
 	SHWeeklyRateItem *rateItem = [[SHWeeklyRateItem alloc] init];
-	rateItem.isDayActive = dict[SH_IS_DAY_ACTIVE_KEY].boolValue;
-	rateItem.forrange = dict[SH_FORRANGE_KEY].integerValue;
-	rateItem.backrange = dict[SH_BACKRANGE_KEY].integerValue;
+	rateItem.isDayActive = item[SH_IS_DAY_ACTIVE_KEY].boolValue;
+	rateItem.forrange = item[SH_FORRANGE_KEY].integerValue;
+	rateItem.backrange = item[SH_BACKRANGE_KEY].integerValue;
 	return rateItem;
 }
 
@@ -70,13 +69,12 @@ static NSMutableArray<SHWeeklyRateItem*>* convertCRateItemToObjC(SHRateValueItem
 }
 
 
-static SHRateItemDict* mapWeeklyToDict(id item,NSUInteger idx){
+static SHRateItemDict* mapWeeklyToDict(SHWeeklyRateItem *item,NSUInteger idx){
 	(void)idx;
-	SHWeeklyRateItem *rateItem = (SHWeeklyRateItem*)item;
 	SHRateItemDict *dict = @{
-		SH_IS_DAY_ACTIVE_KEY : @(rateItem.isDayActive),
-		SH_FORRANGE_KEY : @(rateItem.forrange),
-		SH_BACKRANGE_KEY : @(rateItem.backrange)
+		SH_IS_DAY_ACTIVE_KEY : @(item.isDayActive),
+		SH_FORRANGE_KEY : @(item.forrange),
+		SH_BACKRANGE_KEY : @(item.backrange)
 	};
 	return dict;
 }

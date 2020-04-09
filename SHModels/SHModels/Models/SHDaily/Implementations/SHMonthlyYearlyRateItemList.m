@@ -16,11 +16,10 @@
 @implementation SHMonthlyYearlyRateItemList
 
 
-static SHMonthlyYearlyRateItem* mapDictToMonthlyYearly(id item, NSUInteger idx){
+static SHMonthlyYearlyRateItem* mapDictToMonthlyYearly(SHRateItemDict *item, NSUInteger idx){
 	(void)idx;
-	NSDictionary<NSString*,NSNumber*> *dict = (NSDictionary*)item;
-	NSInteger major = dict[SH_MAJOR_ORDINAL].integerValue;
-	NSInteger minor = dict[SH_MINOR_ORDINAL].integerValue;
+	NSInteger major = item[SH_MAJOR_ORDINAL].integerValue;
+	NSInteger minor = item[SH_MINOR_ORDINAL].integerValue;
 	SHMonthlyYearlyRateItem *rateItem = [[SHMonthlyYearlyRateItem alloc]
 		initWithMajorOrdinal:major
 		minorOrdinal:minor];
@@ -76,12 +75,11 @@ static SHMonthlyYearlyRateItem* mapDictToMonthlyYearly(id item, NSUInteger idx){
 }
 
 
-static NSDictionary* mapMonthlyYearlyToDict(id item,NSUInteger idx){
+static NSDictionary* mapMonthlyYearlyToDict(SHMonthlyYearlyRateItem *item,NSUInteger idx){
 	(void)idx;
-	SHMonthlyYearlyRateItem *rateItem = (SHMonthlyYearlyRateItem*)item;
 	SHRateItemDict *dict = @{
-		SH_MAJOR_ORDINAL : @(rateItem.majorOrdinal),
-		SH_MINOR_ORDINAL : @(rateItem.minorOrdinal)
+		SH_MAJOR_ORDINAL : @(item.majorOrdinal),
+		SH_MINOR_ORDINAL : @(item.minorOrdinal)
 	};
 	return dict;
 }

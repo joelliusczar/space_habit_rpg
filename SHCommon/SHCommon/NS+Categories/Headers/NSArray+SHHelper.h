@@ -12,6 +12,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSArray<ItemType> (SHHelper)
+
+typedef _Nonnull ItemType (*SH_mapper_CFn)(_Nonnull ItemType, NSUInteger);
+typedef _Nonnull ItemType (^SH_mapperBlock)(_Nonnull ItemType, NSUInteger);
+
 -(NSMutableArray*)arrayWithItemsAsDicts;
 
 -(NSMutableArray*)arrayWithItemsAsDictsWithTransformer:
@@ -21,8 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSUInteger)findPlaceFor:(ItemType)object whereFirstFits:(BOOL (^)(ItemType,ItemType))bestFitBlock;
 -(NSUInteger)findPlaceFor:(ItemType)object whereFirstFitsFP:(BOOL (*)(ItemType,ItemType))bestFitFP;
 
--(NSMutableArray*)mapItemsTo:(ItemType (^)(ItemType,NSUInteger))mapper;
--(NSMutableArray*)mapItemsTo_f:(ItemType _Nonnull (*_Nonnull)(ItemType _Nonnull, NSUInteger))mapper;
+-(NSMutableArray*)mapItemsTo:(SH_mapperBlock)mapper;
+-(NSMutableArray*)mapItemsTo_f:(SH_mapper_CFn)mapper;
 -(nullable ItemType)silentGet:(NSUInteger)index;
 -(NSMutableArray<ItemType> *)SH_subtractArray:(NSArray<ItemType> *)arr;
 @end
