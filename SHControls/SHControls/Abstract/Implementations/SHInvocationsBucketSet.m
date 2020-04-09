@@ -50,7 +50,7 @@
 	if(self.classList.count > 0) {
 		return self.classList;
 	}
-	if(self.trait > 0) {
+	if(self.trait.count > 0) {
 		return self.trait;
 	}
 	return self.single;

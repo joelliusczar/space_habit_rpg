@@ -113,7 +113,7 @@ static void _SH_setAppearanceBackgrounds(UIColor *background) {
 	_SH_setTextViewBorderSpecialCase(background);
 	SHSpinPicker.appearance.viewBackgroundColor = transparentBackground;
 	SHSpinPicker.appearance.cellTextColor = text;
-	SHEditNavigationController.appearance.itemNameViewBackgroundColor = background;
+	//SHEditNavigationController.appearance.itemNameViewBackgroundColor = background;
 	//SHHabitViewController.appearance.addHabitBtnBackgroundColor = background;
 	SHIconBuilder *builder = [[SHIconBuilder alloc] initWithColor:UIColor.grayColor
 		withBackgroundColor:background
