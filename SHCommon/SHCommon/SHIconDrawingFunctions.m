@@ -180,3 +180,29 @@ void shDrawArrow2(const CGRect *bounds, CGContextRef ctx, CGFloat thickness) {
 void shDrawBlank(const CGRect *bounds, CGContextRef ctx, CGFloat thickness) {
 	(void)bounds; (void)ctx; (void)thickness;
 }
+
+
+void SH_drawPie(const CGRect *bounds, CGContextRef ctx, CGFloat percent,
+	CGColorRef background, CGColorRef pieColor)
+{
+	CGFloat w = bounds->size.width;
+	CGFloat radius = w * .5 * .9;
+	CGFloat midX = CGRectGetMidX(*bounds);
+	CGFloat midY = CGRectGetMidY(*bounds);
+	CGContextMoveToPoint(ctx, midX + radius, midY);
+	CGContextAddArc(ctx, midX, midY, radius, 0, -2 * M_PI, 1);
+	CGContextFillPath(ctx);
+	
+	CGFloat innerRadius = w * .5 * .8;
+	
+	CGContextSetFillColorWithColor(ctx, background);
+	CGContextMoveToPoint(ctx, midX, midY);
+	CGContextAddArc(ctx, midX, midY, innerRadius, 0, -2 * M_PI, 1);
+	CGContextFillPath(ctx);
+	
+	CGContextSetFillColorWithColor(ctx, pieColor);
+	CGContextMoveToPoint(ctx, midX, midY);
+	CGContextAddArc(ctx, midX, midY, innerRadius, 0, -2 * M_PI * percent, 1);
+	CGContextAddLineToPoint(ctx, midX, midY);
+	CGContextFillPath(ctx);
+}

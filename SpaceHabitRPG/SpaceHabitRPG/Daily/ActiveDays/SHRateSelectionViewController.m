@@ -75,10 +75,11 @@ const NSInteger YEARLY_SELECTION = 3;
 
 -(void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-	SHIconBuilder *builder = [[SHIconBuilder alloc] initWithColor:UIColor.grayColor
-		withBackgroundColor:self.viewBackgroundColor
-		withSize:CGSizeMake(30, 30)
-		withThickness:5];
+	SHIconBuilder *builder = [[SHIconBuilder alloc] init];
+	builder.color = UIColor.grayColor;
+	builder.backgroundColor = self.viewBackgroundColor;
+	builder.size = CGSizeMake(30, 30);
+	builder.thickness = 5;
 	UIImage *backImg = [builder drawBackArrow2];
 	[self.backButton setImage:backImg forState:UIControlStateNormal];
 }

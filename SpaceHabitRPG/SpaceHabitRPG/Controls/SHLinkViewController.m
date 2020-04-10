@@ -21,10 +21,11 @@
 -(void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	if(nil == self.navImageView.image) {
-		SHIconBuilder *builder = [[SHIconBuilder alloc] initWithColor:UIColor.grayColor
-			withBackgroundColor:self.viewBackgroundColor
-			withSize:CGSizeMake(50, 50)
-			withThickness:10];
+		SHIconBuilder *builder = [[SHIconBuilder alloc] init];
+		builder.color = UIColor.grayColor;
+		builder.backgroundColor = self.viewBackgroundColor;
+		builder.size = CGSizeMake(50, 50);
+		builder.thickness = 10;
 		UIImage *arrow = [builder drawForwardArrow2];
 		self.navImageView.image = arrow;
 		[self.view addGestureRecognizer:self.tapGestureRecognizer];

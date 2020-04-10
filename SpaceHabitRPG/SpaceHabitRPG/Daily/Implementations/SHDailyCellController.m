@@ -26,6 +26,18 @@
 }
 
 
+-(UIImage *)drawCompletionIcon:(CGFloat)percentDone {
+	SHIconBuilder * builder = [[SHIconBuilder alloc] init];
+	CGSize buttonSize = self.completeBtn.bounds.size;
+	builder.size = CGSizeMake(buttonSize.width, buttonSize.height);
+	builder.color = self.foreColor;
+	builder.backgroundColor = self.backgroundColor;
+	builder.tertiaryColor = self.completionColor;
+	UIImage *img = [builder drawPie:percentDone];
+	return img;
+}
+
+
 -(void)refreshCell{
 	[self.context performBlock:^{
 		NSError *error = nil;
@@ -50,7 +62,7 @@
 			
 			if(isCompleted){
 				self.daysLeftLbl.hidden = YES;
-				[self.completeBtn setImage:[UIImage imageNamed:@"checked_task"] forState:UIControlStateNormal];
+				[self.completeBtn setImage:[self drawCompletionIcon:1] forState:UIControlStateNormal];
 			}
 			else{
 				if(rateType != SH_DAILY_RATE || rate > 1) {
@@ -62,7 +74,7 @@
 				else {
 					self.daysLeftLbl.hidden = YES;
 				}
-				[self.completeBtn setImage:[UIImage imageNamed:@"unchecked_task"] forState:UIControlStateNormal];
+				[self.completeBtn setImage:[self drawCompletionIcon:0] forState:UIControlStateNormal];
 			}
 		}];
 	}];

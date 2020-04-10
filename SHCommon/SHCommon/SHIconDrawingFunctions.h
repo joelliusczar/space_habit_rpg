@@ -23,5 +23,7 @@ void shDrawX(const CGRect *bounds, CGContextRef ctx, CGFloat thickness);
 void shDrawArrow(const CGRect *bounds, CGContextRef ctx, CGFloat thickness);
 void shDrawArrow2(const CGRect *bounds, CGContextRef ctx, CGFloat thickness);
 void shDrawBlank(const CGRect *bounds, CGContextRef ctx, CGFloat thickness);
+void SH_drawPie(const CGRect *bounds, CGContextRef ctx, CGFloat percent,
+	CGColorRef background, CGColorRef pieColor);
 
 #endif /* SHIconDrawingFunctions_h */

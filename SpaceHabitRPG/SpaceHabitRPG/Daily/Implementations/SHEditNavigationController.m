@@ -30,17 +30,10 @@
 
 @implementation SHEditNavigationController
 
--(UIColor*)itemNameViewBackgroundColor {
-	return self.itemNameView.backgroundColor;
-}
-
-
--(void)setItemNameViewBackgroundColor:(UIColor *)color {
-	self.itemNameView.backgroundColor = color;
-}
 
 -(void)setViewBackgroundColor:(UIColor *)viewBackgroundColor {
 	super.viewBackgroundColor = viewBackgroundColor;
+	self.itemNameView.backgroundColor = viewBackgroundColor;
 }
 
 -(void)setupBackgroundTapActions{

@@ -13,9 +13,11 @@
 
 
 @interface SHDailyCellController : SHHabitCell
-@property (weak,nonatomic) IBOutlet UILabel *daysLeftLbl;
-@property (weak,nonatomic) IBOutlet UILabel *nameLbl;
-@property (weak,nonatomic) IBOutlet UILabel *streakLbl;
-@property (weak,nonatomic) IBOutlet UIButton *completeBtn;
+@property (strong, nonatomic) UIColor *foreColor UI_APPEARANCE_SELECTOR;
+@property (strong, nonatomic) UIColor *completionColor UI_APPEARANCE_SELECTOR;
+@property (weak, nonatomic) IBOutlet UILabel *daysLeftLbl;
+@property (weak, nonatomic) IBOutlet UILabel *nameLbl;
+@property (weak, nonatomic) IBOutlet UILabel *streakLbl;
+@property (weak, nonatomic) IBOutlet UIButton *completeBtn;
 -(void)refreshCell;
 @end

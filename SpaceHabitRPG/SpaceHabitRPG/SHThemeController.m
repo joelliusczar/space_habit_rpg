@@ -14,6 +14,7 @@
 #import "SHRateSelectionViewController.h"
 #import "SHHabitNameViewController.h"
 #import "SHWeeklyActiveDaysViewController.h"
+#import "SHDailyCellController.h"
 @import UIKit;
 @import SHControls;
 @import SHCommon;
@@ -88,6 +89,7 @@ static void _SH_setAppearanceBackgrounds(UIColor *background) {
 	UITextField.appearance.backgroundColor = background;
 	UIToolbar.appearance.barTintColor = background;
 	UIPickerView.appearance.backgroundColor = background;
+	SHDailyCellController.appearance.backgroundColor = background;
 	SHSwitch.defaultBackgroundColor = background;
 	_SH_setBackgroundForUIViewWhenContained(background);
 	_SH_setTextViewBorderSpecialCase(background);
@@ -99,6 +101,7 @@ static void _SH_setAppearanceBackgrounds(UIColor *background) {
 	UIColor *textBorder = [UIColor colorNamed:@"textBoxBorder"];
 	UIColor *transparentBackground = [UIColor colorNamed:@"transparentBackground"];
 	UIColor *disabledText = [UIColor colorNamed:@"disabledText"];
+	UIColor *completion = [UIColor colorNamed:@"completion"];
 	
 	_SH_setAppearanceBackgrounds(background);
 	UILabel.appearance.textColor = text;
@@ -113,12 +116,11 @@ static void _SH_setAppearanceBackgrounds(UIColor *background) {
 	_SH_setTextViewBorderSpecialCase(background);
 	SHSpinPicker.appearance.viewBackgroundColor = transparentBackground;
 	SHSpinPicker.appearance.cellTextColor = text;
-	//SHEditNavigationController.appearance.itemNameViewBackgroundColor = background;
-	//SHHabitViewController.appearance.addHabitBtnBackgroundColor = background;
-	SHIconBuilder *builder = [[SHIconBuilder alloc] initWithColor:UIColor.grayColor
-		withBackgroundColor:background
-		withSize:CGSizeMake(50, 50)
-		withThickness:10];
+	SHDailyCellController.appearance.foreColor = text;
+	SHDailyCellController.appearance.completionColor = completion;
+	SHIconBuilder *builder = [[SHIconBuilder alloc] init];
+	builder.color = UIColor.grayColor;
+	builder.backgroundColor = background;
 	UIImage *check = [builder drawCheck];
 	SHSwitch.appearance.onImage = check;
 	UIStepper.appearance.tintColor = text;

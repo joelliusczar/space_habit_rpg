@@ -96,11 +96,12 @@
 
 -(void)redrawButtons {
 	CGSize imgSize = [self.rateStep incrementImageForState:UIControlStateNormal].size;
-	SHIconBuilder *builder = [[SHIconBuilder alloc]
-		initWithColor:self.textColor
-		withBackgroundColor:self.viewBackgroundColor
-		withSize:imgSize
-		withThickness:1];
+	SHIconBuilder *builder = [[SHIconBuilder alloc] init];
+	builder.color = self.textColor;
+	builder.backgroundColor = self.viewBackgroundColor;
+	builder.size = imgSize;
+	builder.thickness = 1;
+
 	UIImage *incrImg = [builder drawPlus];
 	UIImage *decrImg = [builder drawMinus];
 	[self.rateStep setIncrementImage:incrImg forState:UIControlStateNormal];

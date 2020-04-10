@@ -61,11 +61,12 @@
 	self.habitTable.delegate = self;
 	self.habitTable.dataSource = self;
 	[self.addHabitGesture addTarget:self action:@selector(onAddHabitTap_action:)];
-	SHIconBuilder * iconBuilder = [[SHIconBuilder alloc] initWithColor:UIColor.whiteColor
-		withBackgroundColor:[UIColor colorWithRed:36.0/255.0 green:126.0/255.0 blue:217.0/255.0 alpha:1]
-		withSize:CGSizeMake(50, 50)
-		withThickness:5];
-	UIImage *addHabitIcon = [iconBuilder drawPlus];
+	SHIconBuilder *builder = [[SHIconBuilder alloc] init];
+	builder.color = UIColor.whiteColor;
+	builder.backgroundColor = [UIColor colorWithRed:36.0/255.0 green:126.0/255.0 blue:217.0/255.0 alpha:1];
+	builder.size = CGSizeMake(50, 50);
+	builder.thickness = 5;
+	UIImage *addHabitIcon = [builder drawPlus];
 	[self.addHabitBtnIcon setImage:addHabitIcon];
 	[self setupData];
 }

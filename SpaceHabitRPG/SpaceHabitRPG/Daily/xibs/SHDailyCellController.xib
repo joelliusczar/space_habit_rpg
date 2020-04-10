@@ -20,37 +20,61 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jUQ-1Y-03g">
-                    <rect key="frame" x="16" y="0.0" width="50" height="50"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button" image="unchecked_task.png"/>
+                <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jUQ-1Y-03g">
+                    <rect key="frame" x="16" y="7.5" width="35" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="94f-SR-UzB"/>
+                        <constraint firstAttribute="width" constant="35" id="Y4e-N5-rKh"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
                     <connections>
                         <action selector="completeBtn_press_action:forEvent:" destination="-1" eventType="touchUpInside" id="SAY-6p-LI6"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Streak:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SPY-ox-NgS">
-                    <rect key="frame" x="67" y="25" width="78" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Streak:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SPY-ox-NgS">
+                    <rect key="frame" x="62" y="27" width="42.5" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="u5I-mN-MoZ"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Days Left:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7b5-vy-VcM">
-                    <rect key="frame" x="165" y="25" width="92" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Days Left:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7b5-vy-VcM">
+                    <rect key="frame" x="124.5" y="27" width="53" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="W64-tY-1is"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K0L-WO-T0u">
-                    <rect key="frame" x="67" y="4" width="253" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K0L-WO-T0u">
+                    <rect key="frame" x="62" y="4" width="238" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="Bi1-BV-obo"/>
+                    </constraints>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="7b5-vy-VcM" secondAttribute="bottom" constant="2" id="0Ji-mA-u0h"/>
+                <constraint firstItem="7b5-vy-VcM" firstAttribute="top" secondItem="K0L-WO-T0u" secondAttribute="bottom" constant="2" id="5IR-4d-pWI"/>
+                <constraint firstItem="SPY-ox-NgS" firstAttribute="top" secondItem="K0L-WO-T0u" secondAttribute="bottom" constant="2" id="9HE-XW-nPa"/>
+                <constraint firstItem="7b5-vy-VcM" firstAttribute="leading" secondItem="SPY-ox-NgS" secondAttribute="trailing" constant="20" id="TFK-Wr-X4f"/>
+                <constraint firstAttribute="trailing" secondItem="K0L-WO-T0u" secondAttribute="trailing" constant="20" symbolic="YES" id="YAg-CV-1HG"/>
+                <constraint firstItem="jUQ-1Y-03g" firstAttribute="leading" secondItem="glR-9L-cLl" secondAttribute="leading" constant="16" id="cPs-wv-gVr"/>
+                <constraint firstAttribute="trailing" secondItem="7b5-vy-VcM" secondAttribute="trailing" constant="142.5" id="cRo-gy-sOT"/>
+                <constraint firstItem="K0L-WO-T0u" firstAttribute="leading" secondItem="jUQ-1Y-03g" secondAttribute="trailing" constant="11" id="fcp-ZJ-yNl"/>
+                <constraint firstAttribute="bottom" secondItem="SPY-ox-NgS" secondAttribute="bottom" constant="2" id="loO-o6-gqV"/>
+                <constraint firstItem="SPY-ox-NgS" firstAttribute="leading" secondItem="jUQ-1Y-03g" secondAttribute="trailing" constant="11" id="ogs-PK-qHB"/>
+                <constraint firstItem="7b5-vy-VcM" firstAttribute="leading" secondItem="SPY-ox-NgS" secondAttribute="trailing" constant="20" id="tIf-j9-viW"/>
+                <constraint firstItem="jUQ-1Y-03g" firstAttribute="centerY" secondItem="glR-9L-cLl" secondAttribute="centerY" id="vWq-GS-XOp"/>
+                <constraint firstItem="K0L-WO-T0u" firstAttribute="top" secondItem="glR-9L-cLl" secondAttribute="top" constant="4" id="yYK-RZ-eos"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
@@ -58,7 +82,4 @@
             <point key="canvasLocation" x="137" y="535"/>
         </view>
     </objects>
-    <resources>
-        <image name="unchecked_task.png" width="50" height="50"/>
-    </resources>
 </document>

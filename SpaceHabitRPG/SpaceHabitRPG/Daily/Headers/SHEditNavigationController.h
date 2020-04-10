@@ -20,5 +20,4 @@
 @property (strong, nonatomic) IBOutlet UIView *editorSubviewContainer;
 @property (strong, nonatomic) SHObjectIDWrapper *objectIDWrapper;
 @property (strong, nonatomic) NSManagedObjectContext *context;
-@property (strong, nonatomic) UIColor *itemNameViewBackgroundColor UI_APPEARANCE_SELECTOR;
 @end

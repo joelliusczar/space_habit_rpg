@@ -65,10 +65,11 @@ static UIColor *_defaultBackgroundColor = nil;
 
 +(UIImage*)defaultOnImage {
 	if(nil == _defaultOnImage) {
-		SHIconBuilder *builder = [[SHIconBuilder alloc] initWithColor:UIColor.grayColor
-			withBackgroundColor:self.defaultBackgroundColor
-			withSize:CGSizeMake(50, 50)
-			withThickness:10];
+		SHIconBuilder *builder = [[SHIconBuilder alloc] init];
+		builder.color = UIColor.grayColor;
+		builder.backgroundColor = self.defaultBackgroundColor;
+		builder.size = CGSizeMake(50, 50);
+		builder.thickness = 10;
 		_defaultOnImage = [builder drawBlank];
 	}
 	return _defaultOnImage;
@@ -87,10 +88,11 @@ static UIColor *_defaultBackgroundColor = nil;
 
 +(UIImage*)defaultOffImage {
 	if(nil == _defaultOffImage) {
-		SHIconBuilder *builder = [[SHIconBuilder alloc] initWithColor:UIColor.grayColor
-			withBackgroundColor:self.defaultBackgroundColor
-			withSize:CGSizeMake(50, 50)
-			withThickness:10];
+		SHIconBuilder *builder = [[SHIconBuilder alloc] init];
+		builder.color = UIColor.grayColor;
+		builder.backgroundColor = self.defaultBackgroundColor;
+		builder.size = CGSizeMake(50, 50);
+		builder.thickness = 10;
 		_defaultOffImage = [builder drawBlank];
 	}
 	return _defaultOffImage;

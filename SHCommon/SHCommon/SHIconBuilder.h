@@ -15,14 +15,16 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHIconBuilder : NSObject
+@property (class, strong, nonatomic) UIColor *defaultColor;
+@property (class, strong, nonatomic) UIColor *defaultBackgroundColor;
+@property (class, strong, nonatomic) UIColor *defaultTertiaryColor;
+@property (class, assign, nonatomic) CGSize defaultSize;
+@property (class, assign, nonatomic) CGFloat defaultThickness;
 @property (strong, nonatomic) UIColor *color;
 @property (strong, nonatomic) UIColor *backgroundColor;
+@property (strong, nonatomic) UIColor *tertiaryColor;
 @property (assign, nonatomic) CGSize size;
 @property (assign, nonatomic) CGFloat thickness;
--(instancetype)initWithColor:(UIColor *)color
-	withBackgroundColor:(UIColor*)backgroundColor
-	withSize:(CGSize)size
-	withThickness:(CGFloat)thickness;
 -(UIImage *)drawX;
 -(UIImage *)drawCheck;
 -(UIImage *)drawPlus;
@@ -32,6 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(UIImage *)drawForwardArrow2;
 -(UIImage *)drawBackArrow2;
 -(UIImage *)drawBlank;
+-(UIImage *)drawPie:(CGFloat)percent;
 @end
 
 NS_ASSUME_NONNULL_END
