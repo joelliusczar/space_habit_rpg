@@ -186,17 +186,16 @@
 
 
 -(void)determineIfFirstTimeAndSetupConfig{
-	SHConfig *config = [[SHConfig alloc] init];
-	if(config.gameState == SH_GAME_STATE_UNINITIALIZED){
+	if(SHConfig.gameState == SH_GAME_STATE_UNINITIALIZED){
 		[self coverDisplay];
 		[self showIntro];
 	}
-	else if(config.gameState == SH_GAME_STATE_INTRO_FINISHED) {
+	else if(SHConfig.gameState == SH_GAME_STATE_INTRO_FINISHED) {
 		[self coverDisplay];
 		_shouldShowPostInto = YES;
 		//see: viewDidAppear
 	}
-	else if(config.gameState == SH_GAME_STATE_INTRO_FINISHED_INITIAL_STORY) {
+	else if(SHConfig.gameState == SH_GAME_STATE_INTRO_FINISHED_INITIAL_STORY) {
 		[self coverDisplay];
 		[self normalFlow];
 	}

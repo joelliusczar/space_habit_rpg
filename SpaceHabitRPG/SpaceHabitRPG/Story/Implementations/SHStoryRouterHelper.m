@@ -36,8 +36,7 @@
 -(void)showStoryItem:(NSObject<SHStoryItemProtocol>*)storyItem
 	withResponse:(void (^)(SHStoryDumpViewController * nullable))response
 {
-	SHConfig *config = [[SHConfig alloc] init];
-	if(config.storyMode == SH_STORY_MODE_FULL){
+	if(SHConfig.storyMode == SH_STORY_MODE_FULL){
 		SHStoryDumpViewController *sdv = [[SHStoryDumpViewController alloc] init];
 		sdv.storyItemObject = storyItem;
 		sdv.responseBlock = response; //gets called further down the line
@@ -54,10 +53,9 @@
 -(void)showMonsterStory:(SHMonster*)monster{
 	[self showStoryItem:monster withResponse:^(SHStoryDumpViewController * sdv){
 		(void)sdv;
-		SHConfig *config = [[SHConfig alloc] init];
-		config.storyState = SH_STORY_STATE_NORMAL;
-		if(config.gameState == SH_GAME_STATE_INTRO_FINISHED_INITIAL_STORY) {
-			config.gameState = SH_GAME_STATE_INITIALIZED;
+		SHConfig.storyState = SH_STORY_STATE_NORMAL;
+		if(SHConfig.gameState == SH_GAME_STATE_INTRO_FINISHED_INITIAL_STORY) {
+			SHConfig.gameState = SH_GAME_STATE_INITIALIZED;
 		}
 		if(self.onComplete){
 			self.onComplete();
@@ -91,15 +89,14 @@
 
 
 -(void)showSectorStory:(SHSector *)sector {
-	SHConfig *config = [[SHConfig alloc] init];
-	config.storyState = SH_STORY_STATE_SECTOR_WAITING;
+	SHConfig.storyState = SH_STORY_STATE_SECTOR_WAITING;
 	[self showStoryItem:sector withResponse:^(SHStoryDumpViewController * sdv){
 		(void)sdv;
 		SHMonster_Medium *mm = [[SHMonster_Medium alloc] initWithResourceUtil:self.resourceUtil];
 		SHMonster *monster = [mm newRandomMonster:sector.sectorKey sectorLvl:sector.lvl];
 		[monster saveToFile];
 		[self addMonsterTransaction:monster];
-		config.storyState = SH_STORY_STATE_MONSTER_WAITING;
+		SHConfig.storyState = SH_STORY_STATE_MONSTER_WAITING;
 		[self showMonsterStory:monster];
 	}];
 }

@@ -67,8 +67,7 @@
 	SHSector_Medium *zm = [[SHSector_Medium alloc] initWithResourceUtil:self.resourceUtil];
 	SHHero *hero = [[SHHero alloc] initWithResourceUtil:self.resourceUtil];
 	NSArray<SHSector*> *sectors = [zm newMultipleSectorChoicesGivenHero:hero ifShouldMatchLvl:NO];
-	SHConfig *config = [[SHConfig alloc] init];
-	config.storyState = SH_STORY_STATE_SECTOR_CHOICE_WAITING;
+	SHConfig.storyState = SH_STORY_STATE_SECTOR_CHOICE_WAITING;
 	[self showSectorChoices:sectors];
 }
 
@@ -84,9 +83,8 @@
 	SHSector_Medium *sm = [[SHSector_Medium alloc] initWithResourceUtil:self.resourceUtil];
 	SHSector *s = [sm newSpecificSector2:HOME_KEY withLvl:1];
 	[s saveToFile];
-	SHConfig *config = [[SHConfig alloc] init];
-	config.storyMode = SH_STORY_MODE_FULL;
-	config.gameState = SH_GAME_STATE_INTRO_FINISHED_INITIAL_STORY;
+	SHConfig.storyMode = SH_STORY_MODE_FULL;
+	SHConfig.gameState = SH_GAME_STATE_INTRO_FINISHED_INITIAL_STORY;
 	[self.storyHelper addSectorTransaction:s];
 	[self.storyHelper showSectorStory:s];
 }
@@ -110,9 +108,8 @@
 
 
 -(void)setupNormalSectorAndMonster{
-	SHConfig *config = [[SHConfig alloc] init];
-	if(config.storyState != SH_STORY_STATE_NORMAL) {
-		[self continueFromInteruption: config.storyState];
+	if(SHConfig.storyState != SH_STORY_STATE_NORMAL) {
+		[self continueFromInteruption: SHConfig.storyState];
 		return;
 	}
 	SHSector *z = [[SHSector alloc] initWithResourceUtil:self.resourceUtil];

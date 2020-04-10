@@ -60,6 +60,8 @@
 		2789889722F77B64007231E0 /* SHDailyMaxDaysBeforeSpanCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2789889522F77B64007231E0 /* SHDailyMaxDaysBeforeSpanCalculator.m */; };
 		279D815B2440CD6B00876892 /* SHMonsterInfoDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 279D81592440CD6B00876892 /* SHMonsterInfoDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		279D815C2440CD6B00876892 /* SHMonsterInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 279D815A2440CD6B00876892 /* SHMonsterInfoDictionary.m */; };
+		279D815F2440CF0800876892 /* SHDailyProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = 279D815D2440CF0800876892 /* SHDailyProcessor.h */; };
+		279D81602440CF0800876892 /* SHDailyProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 279D815E2440CF0800876892 /* SHDailyProcessor.m */; };
 		27B2B31C22FFA5F300663644 /* SHTitleProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B2B31B22FFA5F300663644 /* SHTitleProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27B2B3252303811D00663644 /* SHDailyActivator.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B2B3232303811D00663644 /* SHDailyActivator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27B2B3262303811D00663644 /* SHDailyActivator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B2B3242303811D00663644 /* SHDailyActivator.m */; };
@@ -197,6 +199,8 @@
 		278FFDA5222B30FA00DAF985 /* SHModels.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHModels.debug.xcconfig; sourceTree = "<group>"; };
 		279D81592440CD6B00876892 /* SHMonsterInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMonsterInfoDictionary.h; sourceTree = "<group>"; };
 		279D815A2440CD6B00876892 /* SHMonsterInfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMonsterInfoDictionary.m; sourceTree = "<group>"; };
+		279D815D2440CF0800876892 /* SHDailyProcessor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDailyProcessor.h; sourceTree = "<group>"; };
+		279D815E2440CF0800876892 /* SHDailyProcessor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDailyProcessor.m; sourceTree = "<group>"; };
 		27B0B1F42223A8E20028AF59 /* SHModels.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHModels.base.xcconfig; sourceTree = "<group>"; };
 		27B15A9E20524B4F0045B226 /* SHCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHCommon.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHCommon.framework"; sourceTree = "<group>"; };
 		27B2B31B22FFA5F300663644 /* SHTitleProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTitleProtocol.h; sourceTree = "<group>"; };
@@ -362,6 +366,7 @@
 		27698E9323D4A9B200754183 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				279D815D2440CF0800876892 /* SHDailyProcessor.h */,
 				271CF5B923D4D4AC00DB0CF4 /* SHIntervalItemFormat.h */,
 				27CA866A2264207A00AE8FDB /* SHDaily.h */,
 				2769C0B9227FEB5B00217480 /* SHMonthlyYearlyRateItem.h */,
@@ -382,6 +387,7 @@
 		27698E9423D4A9D900754183 /* Implementations */ = {
 			isa = PBXGroup;
 			children = (
+				279D815E2440CF0800876892 /* SHDailyProcessor.m */,
 				271CF5BA23D4D4AC00DB0CF4 /* SHIntervalItemFormat.m */,
 				27CA86432264207A00AE8FDB /* SHDaily.m */,
 				2769C0B2227FD7C900217480 /* SHMonthlyYearlyRateItem.m */,
@@ -599,6 +605,7 @@
 				27B2B3252303811D00663644 /* SHDailyActivator.h in Headers */,
 				2747C3BE2043B67200FB5669 /* SHRateTypeHelper.h in Headers */,
 				27CA86912264207A00AE8FDB /* SHHero.h in Headers */,
+				279D815F2440CF0800876892 /* SHDailyProcessor.h in Headers */,
 				27CA86BA2264207A00AE8FDB /* SHSuffix.h in Headers */,
 				27CA86AD2264207A00AE8FDB /* SHMonster.h in Headers */,
 				27CA86C52264207A00AE8FDB /* SHCounter.h in Headers */,
@@ -811,6 +818,7 @@
 				2769C118228E305500217480 /* SHDailyActiveDays.m in Sources */,
 				2789889722F77B64007231E0 /* SHDailyMaxDaysBeforeSpanCalculator.m in Sources */,
 				27CA869B2264207A00AE8FDB /* SHCategory.m in Sources */,
+				279D81602440CF0800876892 /* SHDailyProcessor.m in Sources */,
 				2747C3D02043BACB00FB5669 /* SHSectorInfoDictionary.m in Sources */,
 				2740A895226FE38D00ACD777 /* SHTransaction.m in Sources */,
 				27CA9D1C23AF345100F67AC4 /* SHDailyRateItem.m in Sources */,

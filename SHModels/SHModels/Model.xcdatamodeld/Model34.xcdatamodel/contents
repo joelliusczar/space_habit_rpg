@@ -47,6 +47,7 @@
         <attribute name="lastUpdateTzOffset" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="note" optional="YES" attributeType="String"/>
         <attribute name="rateType" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="status" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="streakLength" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="urgency" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="daily_cat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SHCategory" inverseName="cat_daily" inverseEntity="SHCategory"/>
@@ -130,7 +131,7 @@
         <element name="SHCategory" positionX="-245.34375" positionY="-14.70703125" width="128" height="133"/>
         <element name="SHCounter" positionX="108" positionY="18" width="128" height="283"/>
         <element name="SHCounterEvent" positionX="-90.3203125" positionY="27.64453125" width="128" height="73"/>
-        <element name="SHDaily" positionX="-1227.05078125" positionY="-119.390625" width="128" height="403"/>
+        <element name="SHDaily" positionX="-1227.05078125" positionY="-119.390625" width="128" height="418"/>
         <element name="SHDailyEvent" positionX="33.1875" positionY="64.06640625" width="128" height="88"/>
         <element name="SHDailySubTask" positionX="-493.71484375" positionY="-52.265625" width="128" height="163"/>
         <element name="SHItem" positionX="-290" positionY="174" width="128" height="148"/>

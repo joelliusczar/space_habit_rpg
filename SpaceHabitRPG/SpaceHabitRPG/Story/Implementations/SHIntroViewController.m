@@ -108,9 +108,8 @@
 
 - (IBAction)nextButton_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
 	(void)sender; (void)event;
-	SHConfig *config = [[SHConfig alloc] init];
-	if(config.gameState == SH_GAME_STATE_UNINITIALIZED) {
-		config.gameState = SH_GAME_STATE_INTRO_FINISHED;
+	if(SHConfig.gameState == SH_GAME_STATE_UNINITIALIZED) {
+		SHConfig.gameState = SH_GAME_STATE_INTRO_FINISHED;
 	}
 	[self.animator stopAnimation];
 	[self popVCFromFront];

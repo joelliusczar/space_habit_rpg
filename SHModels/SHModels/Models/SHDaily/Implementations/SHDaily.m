@@ -36,8 +36,7 @@
 			dayStartTime = self.cycleStartTime.integerValue;
 		}
 		else {
-			SHConfig *config = [[SHConfig alloc] init];
-			dayStartTime = config.dayStartTime;
+			dayStartTime = SHConfig.dayStartTime;
 		}
 		_calculator = [[SHDailyNextDueDateCalculator alloc]
 			initWithActiveDays:self.activeDaysContainer
@@ -100,8 +99,7 @@
 
 -(NSInteger)daysUntilDue{
 	NSUInteger dayStart = 0;
-	SHConfig *config = [[SHConfig alloc] init];
-	dayStart = config.dayStartTime;
+	dayStart = SHConfig.dayStartTime;
 	NSDate *today = self.dateProvider.date;
 	NSDate *roundedDownToday = [today dayStart];
 	NSDate *todayFromStartTime = [roundedDownToday timeAfterSeconds:dayStart];
@@ -193,8 +191,7 @@
 
 -(BOOL)isCompleted{
 	NSInteger dayStartTime = 0;
-	SHConfig *config = [[SHConfig alloc] init];
-	dayStartTime = config.dayStartTime;
+	dayStartTime = SHConfig.dayStartTime;
 	NSDate *today = [self.dateProvider.date.dayStart timeAfterSeconds:dayStartTime];
 	SHDailyEvent *lastEvent = [[self lastActivations:1] silentGet:0];
 	if(nil == lastEvent)return NO;
@@ -202,6 +199,14 @@
 	NSTimeInterval offsetLastActivationTimestamp = lastActivationTimestamp - lastEvent.tzOffset;
 	return offsetLastActivationTimestamp >= today.timeIntervalSince1970;
 }
+
+
+-(SHDailyStatus)dailyStatus {
+	NSInteger dayStartTime = 0;
+	NSDate *today = [self.dateProvider.date.dayStart timeAfterSeconds:dayStartTime];
+	return SH_DAILY_STATUS_NOT_DUE;
+}
+
 
 @synthesize dateProvider = _dateProvider;
 

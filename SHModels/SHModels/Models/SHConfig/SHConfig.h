@@ -14,16 +14,18 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHConfig : NSObject
+@property (class, strong, nonatomic) NSUserDefaults *userDefaults;
 //userTodayStart is today's date with dayStartTime for the time of today
 //it's more of a convenience property
-@property (readonly, nonatomic) NSDate *userTodayStart;
+@property (class, readonly, nonatomic) NSDate *userTodayStart;
 //dayStartTime is the time of the day when a daily compared to to determine
 //if daily is expired.
-@property (assign, nonatomic) NSInteger dayStartTime;
-@property (assign, nonatomic) NSInteger weeklyStartDay;
-@property (assign, nonatomic) SHGameState gameState;
-@property (assign, nonatomic) SHStoryMode storyMode;
-@property (assign, nonatomic) SHStoryState storyState;
+@property (class, assign, nonatomic) NSInteger dayStartTime;
+@property (class, assign, nonatomic) NSInteger weeklyStartDay;
+@property (class, assign, nonatomic) SHGameState gameState;
+@property (class, assign, nonatomic) SHStoryMode storyMode;
+@property (class, assign, nonatomic) SHStoryState storyState;
+@property (class, copy, nonatomic) NSDate *lastProcessingDateTime;
 @end
 NS_ASSUME_NONNULL_END
 

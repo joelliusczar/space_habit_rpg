@@ -52,8 +52,7 @@
 			dayStartTime = daily.cycleStartTime.integerValue;
 		}
 		else {
-			SHConfig *config = [[SHConfig alloc] init];
-			dayStartTime = config.dayStartTime;
+			dayStartTime = SHConfig.dayStartTime;
 		}
 		NSTimeInterval todayActivation = [self.dateProvider.date.dayStart
 			dateByAddingTimeInterval:dayStartTime].timeIntervalSince1970;

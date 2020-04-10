@@ -10,9 +10,7 @@
 
 @import SHCommon;
 
-@interface SHConfig ()
-@property (strong, nonatomic) NSUserDefaults *userDefaults;
-@end
+static NSUserDefaults *_userDefaults = nil;
 
 @implementation SHConfig
 
@@ -22,6 +20,18 @@
 		_userDefaults = NSUserDefaults.standardUserDefaults;
 	}
 	return self;
+}
+
++(NSUserDefaults*)userDefaults {
+	if(nil == _userDefaults) {
+		_userDefaults = NSUserDefaults.standardUserDefaults;
+	}
+	return _userDefaults;
+}
+
+
++(void)setUserDefaults:(NSUserDefaults *)userDefaults {
+	_userDefaults = userDefaults;
 }
 
 //-(void)setupInitialState{
@@ -43,64 +53,75 @@
 //}
 
 
--(NSInteger)dayStartTime {
++(NSInteger)dayStartTime {
 	NSInteger dayStartTime = [self.userDefaults integerForKey:@"dayStartTime"];
 	return dayStartTime;
 }
 
 
--(void)setDayStartTime:(NSInteger)dayStartTime {
++(void)setDayStartTime:(NSInteger)dayStartTime {
 	[self.userDefaults setInteger:dayStartTime forKey:@"dayStartTime"];
 }
 
 
--(NSInteger)weeklyStartDay {
++(NSInteger)weeklyStartDay {
 	NSInteger weeklyStartDay = [self.userDefaults integerForKey:@"weeklyStartDay"];
 	return weeklyStartDay;
 }
 
 
--(void)setWeeklyStartDay:(NSInteger)weeklyStartDay {
++(void)setWeeklyStartDay:(NSInteger)weeklyStartDay {
 	[self.userDefaults setInteger:weeklyStartDay forKey:@"weeklyStartDay"];
 }
 
 
--(SHGameState)gameState {
++(SHGameState)gameState {
 	NSInteger gameState = [self.userDefaults integerForKey:@"gameState"];
 	return (SHGameState)gameState;
 }
 
 
--(void)setGameState:(SHGameState)gameState {
++(void)setGameState:(SHGameState)gameState {
 	[self.userDefaults setInteger:gameState forKey:@"gameState"];
 }
 
 
--(NSDate*)userTodayStart{
++(NSDate*)userTodayStart{
 	NSDate *result = [NSDate.date.dayStart timeAfterSeconds:self.dayStartTime];
 	return result;
 }
 
 
--(SHStoryMode)storyMode {
++(SHStoryMode)storyMode {
 	NSInteger storyMode = [self.userDefaults integerForKey:@"storyMode"];
 	return (SHStoryMode)storyMode;
 }
 
 
--(void)setStoryMode:(SHStoryMode)storyMode {
++(void)setStoryMode:(SHStoryMode)storyMode {
 	[self.userDefaults setInteger:storyMode forKey:@"storyMode"];
 }
 
 
--(SHStoryState)storyState {
++(SHStoryState)storyState {
 	NSInteger storyMode = [self.userDefaults integerForKey:@"storyState"];
 	return storyMode;
 }
 
 
--(void)setStoryState:(SHStoryState)storyMode {
++(void)setStoryState:(SHStoryState)storyMode {
 	[self.userDefaults setInteger:storyMode forKey:@"storyState"];
+}
+
+
++(NSDate *)lastProcessingDateTime {
+	NSDate *date = (NSDate *)[self.userDefaults objectForKey:@"lastProcessingDateTime"];
+	return date;
+}
+
+
++(void)setLastProcessingDateTime:(NSDate *)lastProcessingDateTime {
+	[self.userDefaults setObject:lastProcessingDateTime forKey:@"lastProcessingDateTime"];
 }
 
 @end
