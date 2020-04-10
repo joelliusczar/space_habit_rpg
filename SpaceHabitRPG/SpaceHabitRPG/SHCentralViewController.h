@@ -14,8 +14,6 @@
 
 @interface SHCentralViewController : SHViewController;
 @property (strong,nonatomic) id<SHDataProviderProtocol> dataController;
-@property (strong,nonatomic) SHConfigDTO *configDTO;
-@property (strong,nonatomic) SHHeroDTO *heroDTO;
 @property (strong,nonatomic) SHMonsterDictionaryEntry *monsterEntry;
 @property (strong,nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
 @property (strong,nonatomic) SHBattleStatsViewController *battleStats;

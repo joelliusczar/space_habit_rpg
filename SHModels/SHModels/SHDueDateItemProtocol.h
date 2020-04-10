@@ -7,7 +7,6 @@
 //
 
 #import "SHReminder.h"
-#import "SHReminderDTO.h"
 @import Foundation;
 @import SHCommon;
 @import CoreData;
