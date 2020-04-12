@@ -25,6 +25,11 @@
 	
 
 +(NSInteger)daysBetween:(NSDate *)fromDate to:(NSDate *)toDate;
++(NSInteger)SH_fullWeeksBetween:(NSDate *)fromDate to:(NSDate *)toDate;
+
++(NSInteger)SH_fullWeeksBetween:(NSDate *)fromDate to:(NSDate *)toDate
+withWeekStartOffset:(NSUInteger)weekStartOffset;
+
 -(NSDate *)setHour:(NSInteger)h minute:(NSInteger)m second:(NSInteger)s;
 +(NSDate *)createSimpleTimeWithHour:(NSInteger)hour minute:(NSInteger)minute
 	second:(NSInteger)second timzone:(NSTimeZone *)timeZone;
@@ -39,10 +44,9 @@
 	andMinute:(NSInteger)minute;
 	
 -(NSDate *)dayStart;
--(NSDate *)dayStartUTC;
 -(NSString *)extractTimeInFormat:(SHHourFormatType)format;
 -(NSUInteger)getWeekdayIndex;
--(NSInteger)getWeekdayIndexUTC;
+-(NSUInteger)SH_getWeekdayIndexOffsetForStartDayIdx:(NSInteger)dayOffset;
 -(NSDateComponents *)getDateComponents;
 -(NSString *)timeOfDayInSystemPreferredFormat;
 -(NSString *)staticTimeOfDay;
@@ -50,5 +54,8 @@
 -(NSDate *)dateInTimezone:(NSTimeZone *)tz;
 -(SHDatetime *)toSHDatetime;
 -(SHDatetime *)toSHDatetimeUTC;
+-(NSDate*)SH_calcWeekStart;
+-(NSDate*)SH_calcNextWeekStart;
+-(BOOL)SH_isSameWeekAs:(NSDate*)date;
 @end
 

@@ -207,4 +207,13 @@ static SHRateItemDict* mapWeeklyToDict(SHWeeklyRateItem *item,NSUInteger idx){
 }
 
 
+-(NSUInteger)activeDaysInRange:(NSRange)range {
+	NSUInteger count = 0;
+	for(NSInteger idx = range.location; idx < range.length; idx++) {
+		if(self[idx].isDayActive) count++;
+	}
+	return count;
+}
+
+
 @end

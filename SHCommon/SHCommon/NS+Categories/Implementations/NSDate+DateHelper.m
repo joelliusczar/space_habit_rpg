@@ -55,8 +55,8 @@
 	double timestamp;
 	SHError error;
 	memset(&error, 0, sizeof(SHError));
-	shTryCreateDateTime(year,(int)month,(int)day,(int)hour,(int)minute,(int)second
-	,(int)(timeZone.secondsFromGMT),&timestamp,&error);
+	shTryCreateDateTime(year,(int32_t)month,(int32_t)day,(int32_t)hour,(int32_t)minute,(int32_t)second
+	,(int32_t)(timeZone.secondsFromGMT),&timestamp,&error);
 	return [NSDate dateWithTimeIntervalSince1970:timestamp];
 	
 }
@@ -99,17 +99,7 @@
 	double dayStartTimestamp;
 	SHError error;
 	memset(&error, 0, sizeof(SHError));
-	shTryDayStart(timestamp,(int)NSTimeZone.defaultTimeZone.secondsFromGMT,&dayStartTimestamp,&error);
-	return [NSDate dateWithTimeIntervalSince1970:dayStartTimestamp];
-}
-
-
--(NSDate *)dayStartUTC {
-	NSInteger timestamp = self.timeIntervalSince1970;
-	double dayStartTimestamp;
-	SHError error;
-	memset(&error, 0, sizeof(SHError));
-	shTryDayStart(timestamp, 0, &dayStartTimestamp, &error);
+	shTryDayStart(timestamp,(int32_t)NSTimeZone.defaultTimeZone.secondsFromGMT, &dayStartTimestamp, &error);
 	return [NSDate dateWithTimeIntervalSince1970:dayStartTimestamp];
 }
 
@@ -120,11 +110,28 @@
 	SHError err;
 	memset(&err, 0, sizeof(SHError));
 	shTryTimestampToDt(fromDate.timeIntervalSince1970
-		,(int)NSTimeZone.defaultTimeZone.secondsFromGMT,&dtFrom,&err);
+		,(int32_t)NSTimeZone.defaultTimeZone.secondsFromGMT,&dtFrom,&err);
 	shTryTimestampToDt(toDate.timeIntervalSince1970
-						 ,(int)NSTimeZone.defaultTimeZone.secondsFromGMT,&dtTo,&err);
+		,(int32_t)NSTimeZone.defaultTimeZone.secondsFromGMT,&dtTo,&err);
 
 	return shDateDiffDays(&dtTo,&dtFrom,&err);
+}
+
+
++(NSInteger)SH_fullWeeksBetween:(NSDate *)fromDate to:(NSDate *)toDate
+	withWeekStartOffset:(NSUInteger)weekStartOffset
+{
+	NSDate *firstFullWeek = [fromDate SH_calcNextWeekStartWithDayOffset:weekStartOffset];
+	NSDate *lastFullWeek = [toDate SH_calcWeekStartWithDayOffset:weekStartOffset];
+	NSInteger daysBetween = [self daysBetween:firstFullWeek to:lastFullWeek];
+	if(daysBetween < 0) return 0;
+	return daysBetween / SH_DAYS_IN_WEEK;
+}
+
+
++(NSInteger)SH_fullWeeksBetween:(NSDate *)fromDate to:(NSDate *)toDate {
+	NSUInteger sundayOffset = 0;
+	return [self SH_fullWeeksBetween:fromDate to:toDate withWeekStartOffset:sundayOffset];
 }
 
 
@@ -173,10 +180,19 @@
 -(NSString *)extractTimeInFormat:(SHHourFormatType)format{
 	
 	NSDateComponents *components = [SharedGlobal.inUseCalendar
-									components:NSCalendarUnitHour|NSCalendarUnitMinute
-									fromDate:self];
+		components:NSCalendarUnitHour|NSCalendarUnitMinute
+		fromDate:self];
 	NSInteger convertedHour = [NSLocale hour:components.hour inGivenFormatMask:format];
 	return [NSString stringWithFormat:@"%ld:%ld",convertedHour,components.minute];
+}
+
+
+-(NSUInteger)SH_getWeekdayIndexOffsetForStartDayIdx:(NSInteger)dayOffset {
+	
+	NSUInteger resultDayIdx = ([self getWeekdayIndex] + SH_DAYS_IN_WEEK - dayOffset) % SH_DAYS_IN_WEEK;
+	return resultDayIdx;
+	
+	
 }
 
 
@@ -186,15 +202,6 @@
 	SHError error;
 	memset(&error, 0, sizeof(SHError));
 	shTryTimestampToDt(self.timeIntervalSince1970, tzOffset, &dt, &error);
-	return shCalcWeekdayIdx(&dt, &error);
-}
-
-
--(NSInteger)getWeekdayIndexUTC {
-	SHDatetime dt;
-	SHError error;
-	memset(&error, 0, sizeof(SHError));
-	shTryTimestampToDt(self.timeIntervalSince1970, 0 , &dt, &error);
 	return shCalcWeekdayIdx(&dt, &error);
 }
 
@@ -240,6 +247,43 @@ static SHDatetime* _nsDateToShDatetime(NSDate *date, int32_t tzOffset) {
 
 -(SHDatetime *)toSHDatetimeUTC {
 	return _nsDateToShDatetime(self, 0);
+}
+
+
+- (NSDate *)SH_calcWeekStartWithDayOffset:(NSUInteger)dayOffset {
+	NSUInteger weekdayIdx = [self SH_getWeekdayIndexOffsetForStartDayIdx:dayOffset];
+	NSDate *weekStart = [self dateAfterYears:0 months:0 days: -weekdayIdx].dayStart;
+	return weekStart;
+}
+
+-(NSDate*)SH_calcWeekStart {
+	NSUInteger sundayOffset = 0;
+	return [self SH_calcWeekStartWithDayOffset: sundayOffset];
+}
+
+
+- (NSDate *)SH_calcNextWeekStartWithDayOffset:(NSUInteger)dayOffset {
+	NSUInteger weekdayIdx = [self SH_getWeekdayIndexOffsetForStartDayIdx:dayOffset];
+	NSDate *nextWeekStart = [self dateAfterYears:0 months:0 days:(SH_DAYS_IN_WEEK - weekdayIdx)].dayStart;
+	return nextWeekStart;
+}
+
+-(NSDate*)SH_calcNextWeekStart {
+	NSUInteger sundayOffset = 0;
+	return [self SH_calcNextWeekStartWithDayOffset: sundayOffset];
+}
+
+
+- (BOOL)SH_isSameWeekAs:(NSDate *)date withDayOffset:(NSUInteger)dayOffset {
+	NSDate *weekStart = [self SH_calcWeekStartWithDayOffset: dayOffset];
+	NSDate *nextWeekStart = [self SH_calcNextWeekStartWithDayOffset: dayOffset];
+	return weekStart.timeIntervalSince1970 <= date.timeIntervalSince1970 &&
+	date.timeIntervalSince1970 < nextWeekStart.timeIntervalSince1970;
+}
+
+-(BOOL)SH_isSameWeekAs:(NSDate*)date {
+	NSUInteger sundayOffset = 0;
+	return [self SH_isSameWeekAs:date withDayOffset:sundayOffset];
 }
 
 @end

@@ -1272,6 +1272,7 @@ NSInteger calcDaysFromBase(NSInteger span){
 	testDate = [NSDate createSimpleDateWithYear:1776 month:7 day:4];
 	result = [testDate getWeekdayIndex];
 	XCTAssertEqual(result,4);
+	
 }
 
 
@@ -1305,6 +1306,382 @@ NSInteger calcDaysFromBase(NSInteger span){
 	NSString *am = loc.AMSymbol;
 	XCTAssertTrue([pm isEqualToString:@"PM"]);
 	XCTAssertTrue([am isEqualToString:@"AM"]);
+}
+
+
+-(void)testCalcWeekStart {
+	NSTimeZone.defaultTimeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
+	NSDate *testDate = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:15 minute:32 second:17];
+	NSDate *expectedDate = [NSDate createDateTimeWithYear:1988 month:4 day:24 hour:0 minute:0 second:0];
+	NSDate *resultDate = [testDate SH_calcWeekStart];
+	XCTAssertEqual(resultDate.timeIntervalSince1970, expectedDate.timeIntervalSince1970);
+	testDate = [NSDate createDateTimeWithYear:1988 month:4 day:24 hour:15 minute:32 second:17];
+	resultDate = [testDate SH_calcWeekStart];
+	XCTAssertEqual(resultDate.timeIntervalSince1970, expectedDate.timeIntervalSince1970);
+	
+	testDate = [NSDate createDateTimeWithYear:1988 month:4 day:24 hour:0 minute:0 second:0];
+	resultDate = [testDate SH_calcWeekStart];
+	XCTAssertEqual(resultDate.timeIntervalSince1970, expectedDate.timeIntervalSince1970);
+	
+	testDate = [NSDate createDateTimeWithYear:1988 month:4 day:25 hour:15 minute:32 second:17];
+	resultDate = [testDate SH_calcWeekStart];
+	XCTAssertEqual(resultDate.timeIntervalSince1970, expectedDate.timeIntervalSince1970);
+	
+	testDate = [NSDate createDateTimeWithYear:1988 month:4 day:26 hour:15 minute:32 second:17];
+	resultDate = [testDate SH_calcWeekStart];
+	XCTAssertEqual(resultDate.timeIntervalSince1970, expectedDate.timeIntervalSince1970);
+	
+	testDate = [NSDate createDateTimeWithYear:1988 month:4 day:28 hour:15 minute:32 second:17];
+	resultDate = [testDate SH_calcWeekStart];
+	XCTAssertEqual(resultDate.timeIntervalSince1970, expectedDate.timeIntervalSince1970);
+	
+	testDate = [NSDate createDateTimeWithYear:1988 month:4 day:29 hour:15 minute:32 second:17];
+	resultDate = [testDate SH_calcWeekStart];
+	XCTAssertEqual(resultDate.timeIntervalSince1970, expectedDate.timeIntervalSince1970);
+	
+	testDate = [NSDate createDateTimeWithYear:1988 month:4 day:29 hour:23 minute:59 second:59];
+	resultDate = [testDate SH_calcWeekStart];
+	XCTAssertEqual(resultDate.timeIntervalSince1970, expectedDate.timeIntervalSince1970);
+	
+	testDate = [NSDate createDateTimeWithYear:1988 month:4 day:30 hour:15 minute:32 second:17];
+	resultDate = [testDate SH_calcWeekStart];
+	XCTAssertEqual(resultDate.timeIntervalSince1970, expectedDate.timeIntervalSince1970);
+	
+	testDate = [NSDate createDateTimeWithYear:1988 month:5 day:1 hour:15 minute:32 second:17];
+	resultDate = [testDate SH_calcWeekStart];
+	expectedDate = [NSDate createDateTimeWithYear:1988 month:5 day:1 hour:0 minute:0 second:0];
+	XCTAssertEqual(resultDate.timeIntervalSince1970, expectedDate.timeIntervalSince1970);
+	
+	testDate = [NSDate createDateTimeWithYear:1988 month:5 day:1 hour:0 minute:0 second:0];
+	resultDate = [testDate SH_calcWeekStart];
+	XCTAssertEqual(resultDate.timeIntervalSince1970, expectedDate.timeIntervalSince1970);
+}
+
+
+-(void)testCalcNextWeekStart {
+	NSTimeZone.defaultTimeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
+	NSDate *testDate = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:15 minute:32 second:17];
+	NSDate *expectedDate = [NSDate createDateTimeWithYear:1988 month:5 day:1 hour:0 minute:0 second:0];
+	NSDate *resultDate = [testDate SH_calcNextWeekStart];
+	XCTAssertEqual(resultDate.timeIntervalSince1970, expectedDate.timeIntervalSince1970);
+	testDate = [NSDate createDateTimeWithYear:1988 month:4 day:24 hour:15 minute:32 second:17];
+	resultDate = [testDate SH_calcNextWeekStart];
+	XCTAssertEqual(resultDate.timeIntervalSince1970, expectedDate.timeIntervalSince1970);
+	
+	testDate = [NSDate createDateTimeWithYear:1988 month:4 day:24 hour:0 minute:0 second:0];
+	resultDate = [testDate SH_calcNextWeekStart];
+	XCTAssertEqual(resultDate.timeIntervalSince1970, expectedDate.timeIntervalSince1970);
+	
+	testDate = [NSDate createDateTimeWithYear:1988 month:4 day:25 hour:15 minute:32 second:17];
+	resultDate = [testDate SH_calcNextWeekStart];
+	XCTAssertEqual(resultDate.timeIntervalSince1970, expectedDate.timeIntervalSince1970);
+	
+	testDate = [NSDate createDateTimeWithYear:1988 month:4 day:26 hour:15 minute:32 second:17];
+	resultDate = [testDate SH_calcNextWeekStart];
+	XCTAssertEqual(resultDate.timeIntervalSince1970, expectedDate.timeIntervalSince1970);
+	
+	testDate = [NSDate createDateTimeWithYear:1988 month:4 day:28 hour:15 minute:32 second:17];
+	resultDate = [testDate SH_calcNextWeekStart];
+	XCTAssertEqual(resultDate.timeIntervalSince1970, expectedDate.timeIntervalSince1970);
+	
+	testDate = [NSDate createDateTimeWithYear:1988 month:4 day:29 hour:15 minute:32 second:17];
+	resultDate = [testDate SH_calcNextWeekStart];
+	XCTAssertEqual(resultDate.timeIntervalSince1970, expectedDate.timeIntervalSince1970);
+	
+	testDate = [NSDate createDateTimeWithYear:1988 month:4 day:29 hour:23 minute:59 second:59];
+	resultDate = [testDate SH_calcNextWeekStart];
+	XCTAssertEqual(resultDate.timeIntervalSince1970, expectedDate.timeIntervalSince1970);
+	
+	testDate = [NSDate createDateTimeWithYear:1988 month:4 day:30 hour:15 minute:32 second:17];
+	resultDate = [testDate SH_calcNextWeekStart];
+	XCTAssertEqual(resultDate.timeIntervalSince1970, expectedDate.timeIntervalSince1970);
+	
+	testDate = [NSDate createDateTimeWithYear:1988 month:5 day:1 hour:15 minute:32 second:17];
+	resultDate = [testDate SH_calcNextWeekStart];
+	expectedDate = [NSDate createDateTimeWithYear:1988 month:5 day:8 hour:0 minute:0 second:0];
+	XCTAssertEqual(resultDate.timeIntervalSince1970, expectedDate.timeIntervalSince1970);
+	
+	testDate = [NSDate createDateTimeWithYear:1988 month:5 day:1 hour:0 minute:0 second:0];
+	resultDate = [testDate SH_calcNextWeekStart];
+	XCTAssertEqual(resultDate.timeIntervalSince1970, expectedDate.timeIntervalSince1970);
+}
+
+
+-(void)testSameWeekAs {
+	NSTimeZone.defaultTimeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
+	NSDate *testDate1 = [NSDate createDateTimeWithYear:1988 month:4 day:24 hour:0 minute:0 second:0];
+	NSDate *testDate2 = [NSDate createDateTimeWithYear:1988 month:4 day:30 hour:23 minute:59 second:59];
+	BOOL result = [testDate1 SH_isSameWeekAs:testDate2];
+	XCTAssertTrue(result);
+	result = [testDate2 SH_isSameWeekAs:testDate1];
+	XCTAssertTrue(result);
+	
+	NSDate *testDateAfterWeek = [NSDate createDateTimeWithYear:1988 month:5 day:1 hour:0 minute:0 second:0];
+	result = [testDate2 SH_isSameWeekAs:testDateAfterWeek];
+	XCTAssertTrue(!result);
+	result = [testDateAfterWeek SH_isSameWeekAs:testDate2];
+	XCTAssertTrue(!result);
+	result = [testDate1 SH_isSameWeekAs:testDateAfterWeek];
+	XCTAssertTrue(!result);
+	result = [testDateAfterWeek SH_isSameWeekAs:testDate1];
+	XCTAssertTrue(!result);
+	
+	NSDate *testDateBeforeWeek = [NSDate createDateTimeWithYear:1988 month:4 day:23 hour:23 minute:59 second:59];
+	XCTAssertTrue(!result);
+	result = [testDateBeforeWeek SH_isSameWeekAs:testDate2];
+	XCTAssertTrue(!result);
+	result = [testDate1 SH_isSameWeekAs:testDateBeforeWeek];
+	XCTAssertTrue(!result);
+	result = [testDateBeforeWeek SH_isSameWeekAs:testDate1];
+	XCTAssertTrue(!result);
+	
+	result = [testDateBeforeWeek SH_isSameWeekAs:testDateAfterWeek];
+	XCTAssertTrue(!result);
+	result = [testDateAfterWeek SH_isSameWeekAs:testDateBeforeWeek];
+	XCTAssertTrue(!result);
+}
+
+
+-(void)testWeeksBetween {
+	NSTimeZone.defaultTimeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
+	/*
+			SU	MO	TU	WE	TH	FR	SA
+			17	18	19	20	21	22	23
+			24	25	26	27	28	29	30
+	May
+			01	02	03	04	05	06	07
+			08	09	10	11	12	13	14
+			15	16	17	18	19	20	21
+			22	23	24	25	26	27	28
+			29	30	31
+	June
+									01	02	03	04
+			05	06	07	08	09	10	11
+			12	13	14	15	16	17	18
+			19	20	21	22	23	24	25
+			26	27	28	29	30
+	*/
+	NSDate *testDate1 = [NSDate createDateTimeWithYear:1988 month:4 day:24 hour:0 minute:0 second:0];
+	NSDate *testDate2 = [NSDate createDateTimeWithYear:1988 month:4 day:30 hour:23 minute:59 second:59];
+	NSInteger result = [NSDate SH_fullWeeksBetween:testDate1 to:testDate2];
+	XCTAssertEqual(result, 0);
+	NSTimeInterval diff = testDate2.timeIntervalSince1970 - testDate1.timeIntervalSince1970;
+	NSLog(@"%f",diff);
+	
+	testDate1 = [NSDate createDateTimeWithYear:1988 month:4 day:23 hour:23 minute:59 second:59];
+	result = [NSDate SH_fullWeeksBetween:testDate1 to:testDate2];
+	XCTAssertEqual(result, 0);
+	diff = testDate2.timeIntervalSince1970 - testDate1.timeIntervalSince1970;
+	NSLog(@"%f",diff);
+	
+	testDate1 = [NSDate createDateTimeWithYear:1988 month:4 day:23 hour:0 minute:0 second:0];
+	result = [NSDate SH_fullWeeksBetween:testDate1 to:testDate2];
+	XCTAssertEqual(result, 0);
+	diff = testDate2.timeIntervalSince1970 - testDate1.timeIntervalSince1970;
+	NSLog(@"%f",diff);
+	
+	testDate1 = [NSDate createDateTimeWithYear:1988 month:4 day:19 hour:0 minute:0 second:0];
+	result = [NSDate SH_fullWeeksBetween:testDate1 to:testDate2];
+	XCTAssertEqual(result, 0);
+	diff = testDate2.timeIntervalSince1970 - testDate1.timeIntervalSince1970;
+	NSLog(@"%f",diff);
+	
+	result = [NSDate SH_fullWeeksBetween:testDate1 to:testDate2 withWeekStartOffset:1];
+	XCTAssertEqual(result, 0);
+	result = [NSDate SH_fullWeeksBetween:testDate1 to:testDate2 withWeekStartOffset:2];
+	XCTAssertEqual(result, 0);
+	result = [NSDate SH_fullWeeksBetween:testDate1 to:testDate2 withWeekStartOffset:3];
+	XCTAssertEqual(result, 1);
+	result = [NSDate SH_fullWeeksBetween:testDate1 to:testDate2 withWeekStartOffset:4];
+	XCTAssertEqual(result, 1);
+	result = [NSDate SH_fullWeeksBetween:testDate1 to:testDate2 withWeekStartOffset:5];
+	XCTAssertEqual(result, 1);
+	result = [NSDate SH_fullWeeksBetween:testDate1 to:testDate2 withWeekStartOffset:6];
+	XCTAssertEqual(result, 1);
+	
+	testDate2 = [NSDate createDateTimeWithYear:1988 month:4 day:29 hour:23 minute:59 second:58];
+	result = [NSDate SH_fullWeeksBetween:testDate1 to:testDate2 withWeekStartOffset:6];
+	XCTAssertEqual(result, 0);
+	
+	testDate2 = [NSDate createDateTimeWithYear:1988 month:4 day:30 hour:0 minute:0 second:0];
+	result = [NSDate SH_fullWeeksBetween:testDate1 to:testDate2 withWeekStartOffset:6];
+	XCTAssertEqual(result, 1);
+	
+	
+	testDate1 = [NSDate createDateTimeWithYear:1988 month:4 day:24 hour:0 minute:0 second:0];
+	testDate2 = [NSDate createDateTimeWithYear:1988 month:5 day:1 hour:0 minute:0 second:0];
+	result = [NSDate SH_fullWeeksBetween:testDate1 to:testDate2];
+	XCTAssertEqual(result, 0);
+	diff = testDate2.timeIntervalSince1970 - testDate1.timeIntervalSince1970;
+	NSLog(@"%f",diff);
+	
+	testDate1 = [NSDate createDateTimeWithYear:1988 month:4 day:23 hour:23 minute:59 second:59];
+	result = [NSDate SH_fullWeeksBetween:testDate1 to:testDate2];
+	XCTAssertEqual(result, 1);
+	diff = testDate2.timeIntervalSince1970 - testDate1.timeIntervalSince1970;
+	NSLog(@"%f",diff);
+	
+	testDate2 = [NSDate createDateTimeWithYear:1988 month:5 day:7 hour:23 minute:59 second:59];
+	result = [NSDate SH_fullWeeksBetween:testDate1 to:testDate2];
+	XCTAssertEqual(result, 1);
+	
+	testDate2 = [NSDate createDateTimeWithYear:1988 month:5 day:8 hour:0 minute:0 second:0];
+	result = [NSDate SH_fullWeeksBetween:testDate1 to:testDate2];
+	XCTAssertEqual(result, 2);
+	
+	testDate1 = [NSDate createDateTimeWithYear:1988 month:4 day:19 hour:0 minute:0 second:0];
+	result = [NSDate SH_fullWeeksBetween:testDate1 to:testDate2];
+	XCTAssertEqual(result, 2);
+	
+	testDate2 = [NSDate createDateTimeWithYear:1988 month:6 day:5 hour:0 minute:0 second:0];
+	result = [NSDate SH_fullWeeksBetween:testDate1 to:testDate2];
+	XCTAssertEqual(result, 6);
+	
+	testDate2 = [NSDate createDateTimeWithYear:1988 month:6 day:8 hour:0 minute:0 second:0];
+	result = [NSDate SH_fullWeeksBetween:testDate1 to:testDate2];
+	XCTAssertEqual(result, 6);
+	
+	testDate2 = [NSDate createDateTimeWithYear:1988 month:6 day:4 hour:23 minute:59 second:59];
+	result = [NSDate SH_fullWeeksBetween:testDate1 to:testDate2];
+	XCTAssertEqual(result, 5);
+}
+
+
+-(void)testGetDayOfWeekOffsetted {
+	NSDate *sun = [NSDate createSimpleDateWithYear:2018 month:1 day:7];
+	NSDate *mon = [NSDate createSimpleDateWithYear:2018 month:1 day:8];
+	NSDate *tue = [NSDate createSimpleDateWithYear:2018 month:1 day:9];
+	NSDate *wed = [NSDate createSimpleDateWithYear:2018 month:1 day:10];
+	NSDate *thurs = [NSDate createSimpleDateWithYear:2018 month:1 day:11];
+	NSDate *fri = [NSDate createSimpleDateWithYear:2018 month:1 day:12];
+	NSDate *sat = [NSDate createSimpleDateWithYear:2018 month:1 day:13];
+	NSUInteger offset = 0;
+	NSUInteger result = [sun SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 0);
+	result = [mon SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 1);
+	result = [tue SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 2);
+	result = [wed SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 3);
+	result = [thurs SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 4);
+	result = [fri SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 5);
+	result = [sat SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 6);
+
+	offset = 1;
+	result = [sun SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 6);
+	result = [mon SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 0);
+	result = [tue SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 1);
+	result = [wed SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 2);
+	result = [thurs SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 3);
+	result = [fri SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 4);
+	result = [sat SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 5);
+	
+	offset = 2;
+	result = [sun SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 5);
+	result = [mon SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 6);
+	result = [tue SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 0);
+	result = [wed SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 1);
+	result = [thurs SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 2);
+	result = [fri SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 3);
+	result = [sat SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 4);
+	
+	offset = 3;
+	result = [sun SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 4);
+	result = [mon SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 5);
+	result = [tue SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 6);
+	result = [wed SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 0);
+	result = [thurs SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 1);
+	result = [fri SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 2);
+	result = [sat SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 3);
+	
+	offset = 4;
+	result = [sun SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 3);
+	result = [mon SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 4);
+	result = [tue SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 5);
+	result = [wed SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 6);
+	result = [thurs SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 0);
+	result = [fri SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 1);
+	result = [sat SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 2);
+	
+	offset = 5;
+	result = [sun SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 2);
+	result = [mon SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 3);
+	result = [tue SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 4);
+	result = [wed SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 5);
+	result = [thurs SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 6);
+	result = [fri SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 0);
+	result = [sat SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 1);
+	
+	offset = 6;
+	result = [sun SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 1);
+	result = [mon SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 2);
+	result = [tue SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 3);
+	result = [wed SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 4);
+	result = [thurs SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 5);
+	result = [fri SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 6);
+	result = [sat SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 0);
+	
+	offset = 7;
+	result = [sun SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 0);
+	result = [mon SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 1);
+	result = [tue SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 2);
+	result = [wed SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 3);
+	result = [thurs SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 4);
+	result = [fri SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 5);
+	result = [sat SH_getWeekdayIndexOffsetForStartDayIdx:offset];
+	XCTAssertEqual(result, 6);
 }
 
 @end

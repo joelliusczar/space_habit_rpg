@@ -27,6 +27,14 @@
 }
 
 
++(NSException*)oddException:(NSString*)message {
+	return [NSException
+	exceptionWithName:@"odd event exception"
+	reason:message
+	userInfo:nil];
+}
+
+
 +(NSException*)stillUsedException{
 	return [NSException
 		exceptionWithName:@"Still used exception"

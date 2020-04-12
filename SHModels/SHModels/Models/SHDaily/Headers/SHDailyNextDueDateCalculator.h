@@ -23,7 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 	dayStartTime:(NSInteger)dayStartTime;
 -(NSDate*)nextDueDate_WEEKLY;
 -(NSDate*)calcBackupLastCheckinDate;
+-(NSUInteger)calcMissedDays:(SHRateType)intervalType withLastLoginDate:(NSDate*)lastLoginDate;
 -(BOOL)isDateActive:(NSDate *)dateInQuestion;
+-(NSDate *)calcBackupDateForReferenceDate:(NSDate *)referenceDate;
 @end
 
 NS_ASSUME_NONNULL_END

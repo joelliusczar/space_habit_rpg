@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (class, assign, nonatomic) SHStoryMode storyMode;
 @property (class, assign, nonatomic) SHStoryState storyState;
 @property (class, copy, nonatomic) NSDate *lastProcessingDateTime;
+@property (class, readonly, nonatomic) NSDate *lastProcessingDateDayStart;
 @end
 NS_ASSUME_NONNULL_END
 

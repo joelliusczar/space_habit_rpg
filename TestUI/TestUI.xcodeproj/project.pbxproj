@@ -154,6 +154,34 @@
 			remoteGlobalIDString = 2747C530204A5DB000FB5669;
 			remoteInfo = TestUI;
 		};
+		27D849E92442A6060081DFE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27601C3223F742D6001A9475 /* SHDatetime.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 27D3183C2086C8CA0047F5F1;
+			remoteInfo = SHDatetime;
+		};
+		27D849EB2442A60A0081DFE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27AE220A2419C4CC006DB5E2 /* SHSpecial_C.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 271691C120885EF70059A58E;
+			remoteInfo = SHSpecial_C;
+		};
+		27D849ED2442A6300081DFE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27601C2C23F742CC001A9475 /* SHUtils_C.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 271691FF2089758B0059A58E;
+			remoteInfo = SHUtils_C;
+		};
+		27D849EF2442A63A0081DFE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27601C3823F742DE001A9475 /* SHCommon.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 27C4113523DBB7CF0086E1F9;
+			remoteInfo = SHCommon;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -392,8 +420,6 @@
 				2747C584204A62EC00FB5669 /* MathTest.m */,
 				2747C580204A62EB00FB5669 /* ModelsTest.m */,
 				2747C583204A62EB00FB5669 /* MonsterHelperTest.m */,
-				2747C58E204A62ED00FB5669 /* NSDate+testReplace.h */,
-				2747C581204A62EB00FB5669 /* NSDate+testReplace.m */,
 				2747C595204A62EE00FB5669 /* ProbilityWeightTest.m */,
 				2747C576204A62EA00FB5669 /* ProbilityWeightTestFourItems.m */,
 				2707AAA72419BAA8006FF10F /* SHDailyDueDateTests.m */,
@@ -410,6 +436,8 @@
 		2747C5B6204A646000FB5669 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				2747C58E204A62ED00FB5669 /* NSDate+testReplace.h */,
+				2747C581204A62EB00FB5669 /* NSDate+testReplace.m */,
 				2747C577204A62EA00FB5669 /* TestKeepObject.h */,
 				2747C57E204A62EB00FB5669 /* TestKeepObject.m */,
 				2747C58D204A62ED00FB5669 /* TestKeepObjectAlt.h */,
@@ -508,6 +536,10 @@
 			buildRules = (
 			);
 			dependencies = (
+				27D849EE2442A6300081DFE6 /* PBXTargetDependency */,
+				27D849EA2442A6060081DFE6 /* PBXTargetDependency */,
+				27D849EC2442A60A0081DFE6 /* PBXTargetDependency */,
+				27D849F02442A63A0081DFE6 /* PBXTargetDependency */,
 			);
 			name = TestUI;
 			productName = TestUI;
@@ -763,6 +795,26 @@
 			isa = PBXTargetDependency;
 			target = 2747C530204A5DB000FB5669 /* TestUI */;
 			targetProxy = 27CBFF1D2224F2EA00604C66 /* PBXContainerItemProxy */;
+		};
+		27D849EA2442A6060081DFE6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SHDatetime;
+			targetProxy = 27D849E92442A6060081DFE6 /* PBXContainerItemProxy */;
+		};
+		27D849EC2442A60A0081DFE6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SHSpecial_C;
+			targetProxy = 27D849EB2442A60A0081DFE6 /* PBXContainerItemProxy */;
+		};
+		27D849EE2442A6300081DFE6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SHUtils_C;
+			targetProxy = 27D849ED2442A6300081DFE6 /* PBXContainerItemProxy */;
+		};
+		27D849F02442A63A0081DFE6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SHCommon;
+			targetProxy = 27D849EF2442A63A0081DFE6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

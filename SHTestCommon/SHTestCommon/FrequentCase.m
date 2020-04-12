@@ -47,8 +47,7 @@ SHCoreData* getDataControllerSingleton(){
 	//I think we want to ensure that it uses the bundle from SHModels rather
 	//the bundle for TestUI or TestCommon
 	self.dc = getDataControllerSingleton();
-	SHConfig *config = [[SHConfig alloc] init];
-	config.dayStartTime = 0;
+	SHConfig.dayStartTime = 0;
 	NSTimeZone.defaultTimeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
 }
 

@@ -13,6 +13,7 @@
 @interface NSException (SHCommonExceptions)
 +(NSException*)abstractException;
 +(NSException*)oddException;
++(NSException*)oddException:(NSString*)message;
 +(NSException*)stillUsedException;
 +(NSException*)dbException:(NSError *)error;
 +(NSException*)inproperlySetupObject:(NSString*)message;

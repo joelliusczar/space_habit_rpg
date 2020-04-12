@@ -67,7 +67,8 @@
 		[self.habitItemsFetcher.managedObjectContext performBlockAndWait:^{
 			if(self.habitItemsFetcher.fetchedObjects.count < 1) return;
 			SHDaily *daily = (SHDaily *)self.habitItemsFetcher.fetchedObjects[0];
-			title = daily.isCompleted ? @"Finished" : @"Unfinished";
+			#warning daily table title
+			//title = daily.isCompleted ? @"Finished" : @"Unfinished";
 		}];
 		return title;
 	}

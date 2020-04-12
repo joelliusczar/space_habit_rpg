@@ -594,8 +594,9 @@ bool shTryAddDaysToDtInPlace(SHDatetime *dt,int64_t days,SHTimeAdjustOptions opt
 }
 
 
-bool shTryAddDaysToDt(SHDatetime const *dt,int64_t days,SHTimeAdjustOptions options,SHDatetime *ans
-,SHError *error){
+bool shTryAddDaysToDt(SHDatetime const *dt, int64_t days, SHTimeAdjustOptions options, SHDatetime *ans,
+	SHError *error)
+{
 	shLog("shTryAddDaysToDt");
 	shPrepareSHError(error);
 	if(!(dt&&ans)) return shHandleError(SH_NULL_VALUES,"Null inputs",error);
@@ -606,8 +607,9 @@ bool shTryAddDaysToDt(SHDatetime const *dt,int64_t days,SHTimeAdjustOptions opti
 }
 
 
-bool shTryAddDaysToTimestamp(double timestamp,int64_t days, SHTimeAdjustOptions options,double *ans
-,SHError *error){
+bool shTryAddDaysToTimestamp(double timestamp, int64_t days, SHTimeAdjustOptions options, double *ans,
+	SHError *error)
+{
 	shLog("shTryAddDaysToTimestamp");
 	if(!ans) return shHandleError(SH_NULL_VALUES,"Null inputs",error);
 	(void)options;
@@ -760,7 +762,9 @@ SHDatetime* shDayStartInPlace(SHDatetime *dt){
 }
 
 
-int32_t shCalcWeekdayIdx(SHDatetime *dt,SHError *error){
+
+
+int32_t shCalcWeekdayIdx(SHDatetime *dt, SHError *error){
 	double timestamp = 0;
 	shPrepareSHError(error);
 	if(!shTryDtToTimestamp(dt,&timestamp,error)) return NOT_FOUND;
@@ -771,10 +775,10 @@ int32_t shCalcWeekdayIdx(SHDatetime *dt,SHError *error){
 		int64_t totalDays = timestamp / SH_DAY_IN_SECONDS;
 		//if within the first week
 		if(totalDays < SH_WEEK_START_DAYS_AFTER){
-				return (int)totalDays + SH_EPOCH_WEEK_CORRECTION;
+				return (int32_t)totalDays + SH_EPOCH_WEEK_CORRECTION;
 		}
 		int64_t totalDaysOffset = totalDays - SH_WEEK_START_DAYS_AFTER;
-		ans = totalDaysOffset % 7;
+		ans = totalDaysOffset % SH_DAYS_IN_WEEK;
 		return ans;
 	}
 	int64_t totalDays = (timestamp / SH_DAY_IN_SECONDS);
@@ -787,7 +791,7 @@ int32_t shCalcWeekdayIdx(SHDatetime *dt,SHError *error){
 
 int32_t shCalcDayOfYear(SHDatetime *dt,SHError *error){
 	if(!shIsValidSHDateTime(dt)){
-		return shHandleErrorRetNotFound(SH_GEN_ERROR,"Date components are out of range",error);
+		return shHandleErrorRetNotFound(SH_OUT_OF_RANGE,"Date components are out of range",error);
 	}
 	bool shouldAddLeapDay = _shouldAddLeapDay(dt->year,dt->month,dt->day);
 	int32_t days = _monthSums[dt->month -1];

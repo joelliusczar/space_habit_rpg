@@ -63,7 +63,7 @@
 				a5++;
 			}
 			testDaily.lastActivationDateTime = dailyDate;
-			testDaily.isActive = YES;
+			testDaily.isEnabled = YES;
 			SHDailyEvent *testEvent = (SHDailyEvent*)[self.testContext newEntity:SHDailyEvent.entity];
 			testEvent.eventDatetime = dailyDate;
 			testEvent.tzOffset = 0;
@@ -107,9 +107,8 @@
 }
 
 -(void)testRetrieveUnfinishedDailies{
-
-	SHConfig *config = [[SHConfig alloc] init];
-	config.dayStartTime = 6 * SH_HOUR_IN_SECONDS;
+	#warning fix this test
+	SHConfig.dayStartTime = 6 * SH_HOUR_IN_SECONDS;
 	testTodayReplacement = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:6 minute:0 second:0];
 	[NSDate swizzleThatShit];
 	SHDaily_Medium *dm = [SHDaily_Medium newWithContext:self.testContext];

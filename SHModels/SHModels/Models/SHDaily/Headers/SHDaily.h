@@ -9,6 +9,7 @@
 #import "SHDueDateItemProtocol.h"
 #import "SHDailyActiveDays.h"
 #import "SHTitleProtocol.h"
+#import "SHDailyNextDueDateCalculator.h"
 @import Foundation;
 @import CoreData;
 @import SHCommon;
@@ -27,13 +28,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SHDaily : NSManagedObject<SHDueDateItemProtocol, SHTitleProtocol>
 @property (strong, nonatomic) SHDailyActiveDays *activeDaysContainer;
 @property (readonly, nonatomic) NSInteger rate;
-@property (readonly, nonatomic) BOOL isCompleted;
 @property (readonly, nonatomic) BOOL isActiveToday;
-@property (readonly, nonatomic) SHDailyStatus dailyStatus;
 @property (strong, nonatomic) NSObject<SHDateProviderProtocol> *dateProvider;
+@property (strong, nonatomic) SHDailyNextDueDateCalculator *calculator;
 -(void)setupInitialState;
 -(NSArray<SHDailyEvent *> *)lastActivations:(NSInteger)count;
-
+-(void)updateDailyStatus;
 @end
 
 NS_ASSUME_NONNULL_END

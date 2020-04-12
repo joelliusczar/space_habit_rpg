@@ -83,6 +83,9 @@
             </BuildableReference>
             <SkippedTests>
                <Test
+                  Identifier = "DailyHelperTest/testRetrieveUnfinishedDailies">
+               </Test>
+               <Test
                   Identifier = "TestDumbData">
                </Test>
                <Test

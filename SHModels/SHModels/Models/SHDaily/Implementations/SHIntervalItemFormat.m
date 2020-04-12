@@ -32,7 +32,7 @@
 }
 
 
-+(NSString *)getFormatStringTypeForIntervalSize:(NSInteger)intervalSize {
++(NSString *)getFormatStringTypeForIntervalSize:(NSUInteger)intervalSize {
 	NSString *result = intervalSize == 1 ? self.singularFormatString : self.pluralFormatString;
 	return result;
 }

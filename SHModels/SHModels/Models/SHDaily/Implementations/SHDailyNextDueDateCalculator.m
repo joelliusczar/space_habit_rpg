@@ -8,6 +8,7 @@
 
 #import "SHDailyNextDueDateCalculator.h"
 #import "SHWeeklyRateItemList.h"
+#import "SHConfig.h"
 @import SHSpecial_C;
 @import SHCommon;
 
@@ -34,7 +35,7 @@
 
 
 
--(NSDate * _Nonnull)calcBackupDateForReferenceDate:(NSDate *)referenceDate {
+-(NSDate *)calcBackupDateForReferenceDate:(NSDate *)referenceDate {
 	NSUInteger weekdayIdx = [referenceDate getWeekdayIndex];
 	if(self.activeDaysContainer.weeklyActiveDays[weekdayIdx].isDayActive) {
 	 return referenceDate;
@@ -66,10 +67,10 @@ This also applies if the active days got changed.
 }
 
 
--(NSDate*)nextDueDate_WEEKLY{
+- (NSDate * _Nonnull)nextDueDateForLoginDate_WEEKLY:(NSDate *)loginDate {
 	NSDate *lastCheckinDate = [self calcBackupLastCheckinDate];
 	SHDatetime *lastCheckinDt = [lastCheckinDate toSHDatetime];
-	SHDatetime *checkinDt = [self.dateProvider.date toSHDatetime];
+	SHDatetime *checkinDt = [loginDate toSHDatetime];
 	SHDatetime ans;
 	memset(&ans,0,sizeof(SHDatetime));
 	SHError *error = calloc(ALLOC_COUNT, sizeof(SHError));
@@ -86,6 +87,10 @@ This also applies if the active days got changed.
 	shDisposeSHError(error);
 	shFreeSHRateValueItem(rvi);
 	return nextDueDate;
+}
+
+-(NSDate*)nextDueDate_WEEKLY{
+	return [self nextDueDateForLoginDate_WEEKLY: self.dateProvider.date];
 }
 
 
@@ -105,5 +110,49 @@ This also applies if the active days got changed.
 	return result;
 }
 
+
+-(NSUInteger)calcMissedDays_WEEKLY_withLastLoginDate:(NSDate*)lastLoginDate {
+//	NSDate *prevNextDueDate = [self nextDueDateForLoginDate_WEEKLY:SHConfig.lastProcessingDateTime];
+//	NSDate *todayStart = SHConfig.userTodayStart;
+//	NSInteger intervalSize = self.activeDaysContainer.weeklyActiveDays.intervalSize;
+//	NSUInteger prevWeekdayIdx = [prevNextDueDate getWeekdayIndex];
+//	NSUInteger checkinWeekdayIdx = [lastLoginDate getWeekdayIndex];
+//	//NSUInteger fullWeekCount = [NSDate SH_fu];
+//	if(intervalSize < 1) {
+//		@throw [NSException oddException:@"interval size should be at least 1"];
+//	}
+//	else if(intervalSize == 1) {
+//		if([prevNextDueDate SH_isSameWeekAs:todayStart]) {
+//			return [self.activeDaysContainer.weeklyActiveDays activeDaysInRange:
+//				NSMakeRange(prevWeekdayIdx, checkinWeekdayIdx - prevWeekdayIdx)];
+//		}
+//		NSUInteger week1ActiveDaysCount = [self.activeDaysContainer.weeklyActiveDays activeDaysInRange:
+//			NSMakeRange(prevWeekdayIdx, SH_DAYS_IN_WEEK - prevWeekdayIdx)];
+//		NSUInteger lastWeekActiveDaysCount = [self.activeDaysContainer.weeklyActiveDays activeDaysInRange:
+//			NSMakeRange(0, checkinWeekdayIdx)];
+//		NSUInteger fullWeekActiveDaysCount = [self.activeDaysContainer.weeklyActiveDays activeDaysInRange:
+//			NSMakeRange(0, SH_DAYS_IN_WEEK)];
+//		//self.activeDaysContainer.weeklyActiveDays.
+//	}
+	
+	return 0;
+}
+
+
+-(NSUInteger)calcMissedDays:(SHRateType)intervalType withLastLoginDate:(NSDate*)lastLoginDate {
+	switch(intervalType){
+		case SH_YEARLY_RATE:
+		case SH_YEARLY_RATE_INVERSE:
+		case SH_MONTHLY_RATE:
+		case SH_MONTHLY_RATE_INVERSE:
+		case SH_WEEKLY_RATE:
+			return [self calcMissedDays_WEEKLY_withLastLoginDate: lastLoginDate];
+		case SH_WEEKLY_RATE_INVERSE:
+		case SH_DAILY_RATE:
+		case SH_DAILY_RATE_INVERSE:
+			return 0;
+	}
+	return 0;
+}
 
 @end

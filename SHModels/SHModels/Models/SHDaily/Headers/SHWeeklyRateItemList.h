@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSUInteger)findPrevActiveDayIdx:(NSUInteger)weekdayIdx;
 -(SHRateValueItem *)convertObjCRateItemToC;
 +(nullable NSString *)weekDayKeyToFullName:(NSString*)dayKey;
+-(NSUInteger)activeDaysInRange:(NSRange)range;
 @end
 
 NS_ASSUME_NONNULL_END

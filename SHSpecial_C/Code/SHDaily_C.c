@@ -162,15 +162,15 @@ bool sh_previousDueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate,
 	}
 	int32_t lastDayIdx = shCalcWeekdayIdx(lastDueDate,error);
 	SHDatetime firstDayOfFirstWeek;
-	shTryAddDaysToDt(lastDueDate,-lastDayIdx,0,&firstDayOfFirstWeek,error);
-	int64_t daySpan = shDateDiffDays(checkinDate,&firstDayOfFirstWeek,error);
-	int32_t checkinDayIdx = shCalcWeekdayIdx(checkinDate,error);
+	shTryAddDaysToDt(lastDueDate, -lastDayIdx, SH_TIME_ADJUST_NO_OPTION, &firstDayOfFirstWeek, error);
+	int64_t daySpan = shDateDiffDays(checkinDate, &firstDayOfFirstWeek, error);
+	int32_t checkinDayIdx = shCalcWeekdayIdx(checkinDate, error);
 	int64_t firstSunToPrevSunSpan = daySpan - checkinDayIdx;
 	bool isActiveWeek = _distanceFromActiveWeek(firstSunToPrevSunSpan, scaler) == 0;
 	int32_t prevDayIdx = _findPrevDayIdxInWeek(isActiveWeek, checkinDayIdx, rvi);
-	firstSunToPrevSunSpan -= (_offsetForSameWeek(isActiveWeek,checkinDayIdx,prevDayIdx));
+	firstSunToPrevSunSpan -= (_offsetForSameWeek(isActiveWeek, checkinDayIdx, prevDayIdx));
 	int64_t sunOfPrevActionWeek = firstSunToPrevSunSpan - _distanceFromActiveWeek(firstSunToPrevSunSpan, scaler);
-	shTryAddDaysToDt(&firstDayOfFirstWeek,sunOfPrevActionWeek + prevDayIdx,0,ans,error);
+	shTryAddDaysToDt(&firstDayOfFirstWeek, sunOfPrevActionWeek + prevDayIdx, SH_TIME_ADJUST_NO_OPTION, ans, error);
 	if((shDtToTimestamp(ans,error) > shDtToTimestamp(checkinDate,error))){
 			return shHandleError(SH_OUT_OF_RANGE
 				,"The calculated answer for previous due date is after the checkindate",error);
@@ -206,7 +206,8 @@ SHDatetime* sh_bothWeeklyDueDatesFromLastDueDate(SHDatetime* lastDueDate,SHDatet
 	int32_t nextDayIdx = _findNextDayIdx(weekStartIdx, week);
 	int64_t sameWeekOffset = nextDayIdx < checkinDayIdx && weekCount == 0 ? scaler * SH_DAYS_IN_WEEK : 0;
 	SHDatetime result;
-	shTryAddDaysToDt(&firstDayOfPrevWeek, nextActiveWeek + nextDayIdx + sameWeekOffset,0,&result, error);
+	shTryAddDaysToDt(&firstDayOfPrevWeek, nextActiveWeek + nextDayIdx + sameWeekOffset, SH_TIME_ADJUST_NO_OPTION,
+		&result, error);
 	SHDatetime* resultPair = malloc(sizeof(SHDatetime)*2);
 	resultPair[0] = previousDate;
 	resultPair[1] = result;

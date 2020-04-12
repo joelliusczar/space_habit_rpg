@@ -124,4 +124,9 @@ static NSUserDefaults *_userDefaults = nil;
 	[self.userDefaults setObject:lastProcessingDateTime forKey:@"lastProcessingDateTime"];
 }
 
+
++(NSDate*)lastProcessingDateDayStart {
+	return [self.lastProcessingDateTime.dayStart timeAfterSeconds:self.dayStartTime];
+}
+
 @end

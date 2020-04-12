@@ -9,12 +9,11 @@
 #import "SHDaily.h"
 #import "SHWeeklyRateItem.h"
 #import "SHConfig.h"
-#import "SHDailyNextDueDateCalculator.h"
 #import "SHDailyMaxDaysBeforeSpanCalculator.h"
 #import "SHDailyEvent.h"
 
 @interface SHDaily ()
-@property (strong, nonatomic) SHDailyNextDueDateCalculator *calculator;
+
 @end
 
 @implementation SHDaily
@@ -189,22 +188,37 @@
 	return [NSDictionary objectToDictionary:self];
 }
 
--(BOOL)isCompleted{
-	NSInteger dayStartTime = 0;
-	dayStartTime = SHConfig.dayStartTime;
-	NSDate *today = [self.dateProvider.date.dayStart timeAfterSeconds:dayStartTime];
-	SHDailyEvent *lastEvent = [[self lastActivations:1] silentGet:0];
-	if(nil == lastEvent)return NO;
-	NSTimeInterval lastActivationTimestamp = lastEvent.eventDatetime.timeIntervalSince1970;
-	NSTimeInterval offsetLastActivationTimestamp = lastActivationTimestamp - lastEvent.tzOffset;
-	return offsetLastActivationTimestamp >= today.timeIntervalSince1970;
+
+-(NSDate*)calcBackupLastCheckinDate:(NSTimeInterval*)tzOffsetPtr {
+	if(self.lastActivationDateTime) {
+		*tzOffsetPtr = self.tzOffsetLastActivationDateTime;
+		return [self.calculator calcBackupDateForReferenceDate:self.lastActivationDateTime];
+	}
+	if(self.activeFromDate) {
+		*tzOffsetPtr = self.dateProvider.localTzOffset;
+		return [self.calculator calcBackupDateForReferenceDate:self.activeFromDate];
+	}
+	*tzOffsetPtr = self.tzOffsetLastUpdateDateTime;
+	return [self.calculator calcBackupDateForReferenceDate:self.lastUpdateDateTime];
 }
 
 
--(SHDailyStatus)dailyStatus {
-	NSInteger dayStartTime = 0;
-	NSDate *today = [self.dateProvider.date.dayStart timeAfterSeconds:dayStartTime];
-	return SH_DAILY_STATUS_NOT_DUE;
+-(SHDailyStatus)calcStatus {
+	NSTimeInterval todayTS = SHConfig.userTodayStart.timeIntervalSince1970;
+	NSTimeInterval tzOffset = 0;
+	NSTimeInterval lastCheckinTS = [self calcBackupLastCheckinDate: &tzOffset].timeIntervalSince1970;
+	NSTimeInterval offsetLastCheckinTS = lastCheckinTS - tzOffset;
+	if(offsetLastCheckinTS < todayTS) {
+		if(self.isActiveToday) {
+			return SH_DAILY_STATUS_DUE;
+		}
+		return SH_DAILY_STATUS_NOT_DUE;
+	}
+	return SH_DAILY_STATUS_COMPLETE;;
+}
+
+-(void)updateDailyStatus {
+	self.status = (int32_t)[self calcStatus];
 }
 
 

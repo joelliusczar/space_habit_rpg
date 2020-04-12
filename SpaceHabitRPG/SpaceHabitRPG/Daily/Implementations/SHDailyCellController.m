@@ -47,7 +47,6 @@
 		NSInteger rate = daily.rate;
 		NSUInteger daysUntilDue = daily.daysUntilDue;
 		SHRateType rateType = (SHRateType)daily.rateType;
-		BOOL isCompleted = daily.isCompleted;
 		
 		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
 			self.nameLbl.text = dailyName;
@@ -60,22 +59,22 @@
 				self.streakLbl.hidden = YES;
 			}
 			
-			if(isCompleted){
-				self.daysLeftLbl.hidden = YES;
-				[self.completeBtn setImage:[self drawCompletionIcon:1] forState:UIControlStateNormal];
-			}
-			else{
-				if(rateType != SH_DAILY_RATE || rate > 1) {
-					self.daysLeftLbl.hidden = NO;
-					self.daysLeftLbl.text = daysUntilDue == 0 ? @"Due today":
-						daysUntilDue == 1 ? @"Due tomorrow" :
-							[NSString stringWithFormat:@"Due in %lul days", daysUntilDue];
-				}
-				else {
-					self.daysLeftLbl.hidden = YES;
-				}
-				[self.completeBtn setImage:[self drawCompletionIcon:0] forState:UIControlStateNormal];
-			}
+//			if(isCompleted){
+//				self.daysLeftLbl.hidden = YES;
+//				[self.completeBtn setImage:[self drawCompletionIcon:1] forState:UIControlStateNormal];
+//			}
+//			else{
+//				if(rateType != SH_DAILY_RATE || rate > 1) {
+//					self.daysLeftLbl.hidden = NO;
+//					self.daysLeftLbl.text = daysUntilDue == 0 ? @"Due today":
+//						daysUntilDue == 1 ? @"Due tomorrow" :
+//							[NSString stringWithFormat:@"Due in %lul days", daysUntilDue];
+//				}
+//				else {
+//					self.daysLeftLbl.hidden = YES;
+//				}
+//				[self.completeBtn setImage:[self drawCompletionIcon:0] forState:UIControlStateNormal];
+//			}
 		}];
 	}];
 	
