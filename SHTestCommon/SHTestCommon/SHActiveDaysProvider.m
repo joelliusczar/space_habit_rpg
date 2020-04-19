@@ -39,4 +39,20 @@
 	return activeDays;
 }
 
+
+-(SHDailyActiveDays * _Nonnull)everyday {
+	SHDailyActiveDays *activeDays = [[SHDailyActiveDays alloc] init];
+	[activeDays.weeklyActiveDays setDayOfWeek:0 to:YES];
+	[activeDays.weeklyActiveDays setDayOfWeek:1 to:YES];
+	[activeDays.weeklyActiveDays setDayOfWeek:2 to:YES];
+	[activeDays.weeklyActiveDays setDayOfWeek:3 to:YES];
+	[activeDays.weeklyActiveDays setDayOfWeek:4 to:YES];
+	[activeDays.weeklyActiveDays setDayOfWeek:5 to:YES];
+	[activeDays.weeklyActiveDays setDayOfWeek:6 to:YES];
+	
+	return activeDays;
+
+}
+
+
 @end

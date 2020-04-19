@@ -1,1 +1,1 @@
-SH_TOOLS=shTools
+SH_TOOLS=SHUtils_C

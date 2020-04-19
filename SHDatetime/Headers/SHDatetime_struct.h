@@ -10,7 +10,7 @@
 #define SHDatetime_struct_h
 
 #include <inttypes.h>
-
+#include <stdbool.h>
 
 //prefer the macro over a method call, that way I'm not forcing the user
 //to allocate memory on the heap, nor forcing them to do an extra copy
@@ -46,6 +46,9 @@ typedef struct {
 	SHTimeshift *shifts;
 	int32_t shiftLen;
 	int32_t currentShiftIdx;
+	double timestamp;
+	double timeOfDay;
+	bool isTimestampValid;
 	uintptr_t filler[8];
 } SHDatetime;
 

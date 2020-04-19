@@ -14,7 +14,7 @@
 #include <inttypes.h>
 #include <stdbool.h>
 
-typedef struct {
+typedef struct SHRateValueItem {
 	bool isDayActive;
 	int64_t backrange;
 	int64_t forrange;

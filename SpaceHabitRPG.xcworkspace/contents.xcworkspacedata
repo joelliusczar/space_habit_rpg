@@ -1,45 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
-   <FileRef
-      location = "group:SHControls/SHControls.xcodeproj">
-   </FileRef>
-   <Group
-      location = "container:"
-      name = "Configs">
-      <FileRef
-         location = "group:Configs/SHWorkspace.xcconfig">
-      </FileRef>
-      <FileRef
-         location = "group:Configs/MacOSArchs.xcconfig">
-      </FileRef>
-   </Group>
-   <FileRef
-      location = "group:SHCommon/SHCommon.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:SHUtils_C/SHUtils_C.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:SHDatetime/SHDatetime.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:SHSpecial_C/SHSpecial_C.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:PropertyAdder/PropertyAdder.xcodeproj">
-   </FileRef>
-   <Group
-      location = "group:Copy"
-      name = "Copy">
-      <FileRef
-         location = "group:Makefile">
-      </FileRef>
-      <FileRef
-         location = "group:SHBase.mk"
-         assignedFileDataType = "public.make-source">
-      </FileRef>
-   </Group>
    <Group
       location = "group:Build_Scripts"
       name = "Build_Scripts">
@@ -92,6 +53,45 @@
       </FileRef>
       <FileRef
          location = "group:CleanUpModuleMap.sh">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:SHControls/SHControls.xcodeproj">
+   </FileRef>
+   <Group
+      location = "container:"
+      name = "Configs">
+      <FileRef
+         location = "group:Configs/SHWorkspace.xcconfig">
+      </FileRef>
+      <FileRef
+         location = "group:Configs/MacOSArchs.xcconfig">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:SHCommon/SHCommon.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SHUtils_C/SHUtils_C.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SHDatetime/SHDatetime.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SHSpecial_C/SHSpecial_C.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:PropertyAdder/PropertyAdder.xcodeproj">
+   </FileRef>
+   <Group
+      location = "group:Copy"
+      name = "Copy">
+      <FileRef
+         location = "group:Makefile">
+      </FileRef>
+      <FileRef
+         location = "group:SHBase.mk"
+         assignedFileDataType = "public.make-source">
       </FileRef>
    </Group>
    <FileRef

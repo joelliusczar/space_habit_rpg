@@ -54,7 +54,7 @@
 				27870454227BCA74009C9DD6 /* Headers */,
 				276E6D95222A492E00CB36CB /* Configs */,
 				27BB290421520778003225BB /* Copy */,
-				27169207208975970059A58E /* Code */,
+				27169207208975970059A58E /* Implementations */,
 				271692012089758B0059A58E /* Products */,
 				2716920E208991130059A58E /* Frameworks */,
 			);
@@ -68,14 +68,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		27169207208975970059A58E /* Code */ = {
+		27169207208975970059A58E /* Implementations */ = {
 			isa = PBXGroup;
 			children = (
 				27169216208BB2450059A58E /* SHErrorHandling.c */,
 				27DF9C4D20956D6300F98023 /* SHGenAlgos.c */,
 				2781552A21758C3F005C5279 /* SHUtilConstants.c */,
 			);
-			path = Code;
+			path = Implementations;
 			sourceTree = "<group>";
 		};
 		2716920E208991130059A58E /* Frameworks */ = {
@@ -279,7 +279,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -335,7 +334,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -360,7 +358,6 @@
 					"-Wextra",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = $BUILT_PRODUCTS_DIR/usr/local/include/;
 			};
 			name = Debug;
 		};
@@ -376,7 +373,6 @@
 					"-Wextra",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = $BUILT_PRODUCTS_DIR/usr/local/include/;
 			};
 			name = Release;
 		};

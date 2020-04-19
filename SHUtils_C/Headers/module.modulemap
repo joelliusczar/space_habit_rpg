@@ -1,5 +1,6 @@
 
-module SHUtils_C {
+framework module SHUtils_C {
 	umbrella header "SHUtils_C.h"
+	module * { export * }
 	export *
 }

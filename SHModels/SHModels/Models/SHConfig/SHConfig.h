@@ -20,8 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (class, readonly, nonatomic) NSDate *userTodayStart;
 //dayStartTime is the time of the day when a daily compared to to determine
 //if daily is expired.
-@property (class, assign, nonatomic) NSInteger dayStartTime;
-@property (class, assign, nonatomic) NSInteger weeklyStartDay;
+@property (class, assign, nonatomic) int32_t dayStartTime;
+@property (class, assign, nonatomic) int32_t weeklyStartDay;
 @property (class, assign, nonatomic) SHGameState gameState;
 @property (class, assign, nonatomic) SHStoryMode storyMode;
 @property (class, assign, nonatomic) SHStoryState storyState;

@@ -50,4 +50,5 @@ extern const int32_t SH_LEAP_COUNT_BETWEEN_1972_2000;
 extern const int32_t SH_SPAN_1970_2000;
 extern const int64_t SH_SPAN_1970_1899;
 extern const char * const SH_WEEKDAYS[SH_WEEKLEN];
+
 #endif /* SHDTConstants_h */

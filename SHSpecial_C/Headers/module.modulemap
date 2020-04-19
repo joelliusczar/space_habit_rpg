@@ -1,5 +1,6 @@
 
-module SHSpecial_C {
+framework module SHSpecial_C {
 	umbrella header "SHSpecial_C.h"
+	module * { export * }
 	export *
 }

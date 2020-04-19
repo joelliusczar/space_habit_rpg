@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) SHDailyActiveDays *activeDays;
 -(SHDailyActiveDays * _Nonnull)tuesWedThursSat;
 -(SHDailyActiveDays * _Nonnull)sunMonThursFri;
+-(SHDailyActiveDays * _Nonnull)everyday;
 @end
 
 NS_ASSUME_NONNULL_END

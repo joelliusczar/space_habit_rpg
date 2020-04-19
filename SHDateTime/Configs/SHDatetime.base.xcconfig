@@ -12,11 +12,32 @@
 #include "../Configs/SHWorkspace.xcconfig"
 
 
-HEADER_SEARCH_PATHS = $(SHUTILS_C_H_DIR)
+PRODUCT_NAME = $(TARGET_NAME)
 
-//DEFINES_MODULE = YES
+HEADER_SEARCH_PATHS = $(SHUTILS_C_H_DIR)/Headers
+
+//FRAMEWORK_SEARCH_PATHS = $(SHUTILS_C_H_DIR)
+
+DEFINES_MODULE = YES
 //
 //MODULEMAP_FILE = $(SRCROOT)/Headers/module.modulemap
 
 //The location to copy the public headers to during building, relative to the built products folder.
-PUBLIC_HEADERS_FOLDER_PATH = include/$(PRODUCT_NAME)
+CONFIGURATION_BUILD_DIR = $(inherited)/$(PRODUCT_NAME).framework
+
+//$BUILT_PRODUCTS_DIR/usr/local/include/
+BUILT_PRODUCTS_DIR = $(inherited)/$(PRODUCT_NAME).framework
+
+//The location to copy the public headers to during building, relative to the built products folder.
+PUBLIC_HEADERS_FOLDER_PATH = Headers
+
+OTHER_CFLAGS = $(inherited) -Wincomplete-umbrella
+
+
+//LD_RUNPATH_SEARCH_PATHS = $(inherited) @executable_path/Frameworks @loader_path/Frameworks
+//
+////LD_MAP_FILE_PATH = $(TARGET_TEMP_DIR)/$(PRODUCT_NAME)-LinkMap-$(CURRENT_VARIANT)-$(CURRENT_ARCH).txt
+//
+//DYLIB_INSTALL_NAME_BASE = @rpath
+//
+//LD_DYLIB_INSTALL_NAME = $(DYLIB_INSTALL_NAME_BASE:standardizepath)/$(EXECUTABLE_PATH)

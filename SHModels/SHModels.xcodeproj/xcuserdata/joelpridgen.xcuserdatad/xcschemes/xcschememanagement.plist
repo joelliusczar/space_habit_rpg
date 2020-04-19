@@ -9,10 +9,20 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>SHModelsTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>2747C54D204A5F6700FB5669</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>27D849FF2443DFBE0081DFE6</key>
 		<dict>
 			<key>primary</key>
 			<true/>

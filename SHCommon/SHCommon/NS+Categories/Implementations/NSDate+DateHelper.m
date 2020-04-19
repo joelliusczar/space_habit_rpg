@@ -22,10 +22,10 @@
 	int tzOffset = (int)[NSTimeZone.defaultTimeZone secondsFromGMTForDate:self];
 	SHError error;
 	memset(&error, 0, sizeof(SHError));
-	shTryTimestampToDt(self.timeIntervalSince1970,tzOffset,&dt,&error);
-	shTryAddYearsToDtInPlace(&dt,y,0,&error);
-	shTryAddMonthsToDtInPlace(&dt,m,0,&error);
-	shTryAddDaysToDtInPlace(&dt,d,0,&error);
+	SH_timestampToDt(self.timeIntervalSince1970,tzOffset,&dt,&error);
+	SH_addYearsToDtInPlace(&dt,y,0,&error);
+	SH_addMonthsToDt(&dt,m,0,&error);
+	SH_addDaysToDt(&dt,d,0,&error);
 	return [NSDate dateWithTimeIntervalSince1970:shDtToTimestamp(&dt,&error)];
 }
 
@@ -55,7 +55,7 @@
 	double timestamp;
 	SHError error;
 	memset(&error, 0, sizeof(SHError));
-	shTryCreateDateTime(year,(int32_t)month,(int32_t)day,(int32_t)hour,(int32_t)minute,(int32_t)second
+	SH_timestampCalc(year,(int32_t)month,(int32_t)day,(int32_t)hour,(int32_t)minute,(int32_t)second
 	,(int32_t)(timeZone.secondsFromGMT),&timestamp,&error);
 	return [NSDate dateWithTimeIntervalSince1970:timestamp];
 	
@@ -109,9 +109,9 @@
 	SHDatetime dtTo;
 	SHError err;
 	memset(&err, 0, sizeof(SHError));
-	shTryTimestampToDt(fromDate.timeIntervalSince1970
+	SH_timestampToDt(fromDate.timeIntervalSince1970
 		,(int32_t)NSTimeZone.defaultTimeZone.secondsFromGMT,&dtFrom,&err);
-	shTryTimestampToDt(toDate.timeIntervalSince1970
+	SH_timestampToDt(toDate.timeIntervalSince1970
 		,(int32_t)NSTimeZone.defaultTimeZone.secondsFromGMT,&dtTo,&err);
 
 	return shDateDiffDays(&dtTo,&dtFrom,&err);
@@ -201,8 +201,8 @@
 	int32_t tzOffset = (int32_t)[NSTimeZone.defaultTimeZone secondsFromGMT];
 	SHError error;
 	memset(&error, 0, sizeof(SHError));
-	shTryTimestampToDt(self.timeIntervalSince1970, tzOffset, &dt, &error);
-	return shCalcWeekdayIdx(&dt, &error);
+	SH_timestampToDt(self.timeIntervalSince1970, tzOffset, &dt, &error);
+	return SH_calcWeekdayIdx(&dt, &error);
 }
 
 
@@ -233,7 +233,7 @@ static SHDatetime* _nsDateToShDatetime(NSDate *date, int32_t tzOffset) {
 	SHError error;
 	memset(&error, 0, sizeof(SHError));
 	
-	shTryTimestampToDt(date.timeIntervalSince1970,tzOffset,dt,&error);
+	SH_timestampToDt(date.timeIntervalSince1970,tzOffset,dt,&error);
 	if(error.code) {
 		@throw [NSException encounterSHError:&error];
 	}
@@ -250,40 +250,126 @@ static SHDatetime* _nsDateToShDatetime(NSDate *date, int32_t tzOffset) {
 }
 
 
-- (NSDate *)SH_calcWeekStartWithDayOffset:(NSUInteger)dayOffset {
-	NSUInteger weekdayIdx = [self SH_getWeekdayIndexOffsetForStartDayIdx:dayOffset];
-	NSDate *weekStart = [self dateAfterYears:0 months:0 days: -weekdayIdx].dayStart;
+-(NSDate *)SH_calcWeekStartWithDayOffset:(NSUInteger)dayOffset {
+	SHDatetime *dt = [self toSHDatetime];
+	SHDatetime *ans = calloc(ALLOC_COUNT, sizeof(SHDatetime));
+	SHError error;
+	NSDate *weekStart = nil;
+	int32_t timeShiftCount = 1;
+	memset(&error, 0, sizeof(SHError));
+	if(!SH_tryCalcWeekStartWithDayOffset(dt, &error, (int32_t)dayOffset, ans)) {
+		goto cleanup;
+	}
+	double weekStartTimeStamp = shDtToTimestamp(ans, &error);
+	weekStart = [[NSDate alloc] initWithTimeIntervalSince1970:weekStartTimeStamp];
+	cleanup:
+		shFreeSHDatetime(dt, timeShiftCount);
+		shFreeSHDatetime(ans, timeShiftCount);
+		if(error.isError) {
+			@throw [NSException encounterSHError:&error];
+		}
 	return weekStart;
 }
 
+
 -(NSDate*)SH_calcWeekStart {
-	NSUInteger sundayOffset = 0;
-	return [self SH_calcWeekStartWithDayOffset: sundayOffset];
+	SHDatetime *dt = [self toSHDatetime];
+	SHDatetime *ans = calloc(ALLOC_COUNT, sizeof(SHDatetime));
+	SHError error;
+	NSDate *weekStart = nil;
+	int32_t timeShiftCount = 1;
+	memset(&error, 0, sizeof(SHError));
+	if(!SH_tryCalcWeekStart(dt, &error, ans)) {
+		goto cleanup;
+	}
+	double weekStartTimeStamp = shDtToTimestamp(ans, &error);
+	weekStart = [[NSDate alloc] initWithTimeIntervalSince1970:weekStartTimeStamp];
+	cleanup:
+		shFreeSHDatetime(dt, timeShiftCount);
+		shFreeSHDatetime(ans, timeShiftCount);
+		if(error.isError) {
+			@throw [NSException encounterSHError:&error];
+		}
+	return weekStart;
 }
 
 
-- (NSDate *)SH_calcNextWeekStartWithDayOffset:(NSUInteger)dayOffset {
-	NSUInteger weekdayIdx = [self SH_getWeekdayIndexOffsetForStartDayIdx:dayOffset];
-	NSDate *nextWeekStart = [self dateAfterYears:0 months:0 days:(SH_DAYS_IN_WEEK - weekdayIdx)].dayStart;
+-(NSDate *)SH_calcNextWeekStartWithDayOffset:(NSUInteger)dayOffset {
+	SHDatetime *dt = [self toSHDatetime];
+	SHDatetime *ans = calloc(ALLOC_COUNT, sizeof(SHDatetime));
+	SHError error;
+	NSDate *nextWeekStart = nil;
+	int32_t timeShiftCount = 1;
+	memset(&error, 0, sizeof(SHError));
+	if(!SH_calcNextWeekStartWithDayOffset(dt, &error, (int32_t)dayOffset, ans)) {
+		goto cleanup;
+	}
+	double nextWeekStartTimeStamp = shDtToTimestamp(ans, &error);
+	nextWeekStart = [[NSDate alloc] initWithTimeIntervalSince1970:nextWeekStartTimeStamp];
+	cleanup:
+		shFreeSHDatetime(dt, timeShiftCount);
+		shFreeSHDatetime(ans, timeShiftCount);
+		if(error.isError) {
+			@throw [NSException encounterSHError:&error];
+		}
 	return nextWeekStart;
 }
 
+
 -(NSDate*)SH_calcNextWeekStart {
-	NSUInteger sundayOffset = 0;
-	return [self SH_calcNextWeekStartWithDayOffset: sundayOffset];
+	SHDatetime *dt = [self toSHDatetime];
+	SHDatetime *ans = calloc(ALLOC_COUNT, sizeof(SHDatetime));
+	SHError error;
+	NSDate *nextWeekStart = nil;
+	int32_t timeShiftCount = 1;
+	memset(&error, 0, sizeof(SHError));
+	
+	if(!SH_calcNextWeekStart(dt, &error, ans)) {
+		goto cleanup;
+	}
+	double nextWeekStartTimeStamp = shDtToTimestamp(ans, &error);
+	nextWeekStart = [[NSDate alloc] initWithTimeIntervalSince1970:nextWeekStartTimeStamp];
+	cleanup:
+		shFreeSHDatetime(dt, timeShiftCount);
+		shFreeSHDatetime(ans, timeShiftCount);
+		if(error.isError) {
+			@throw [NSException encounterSHError:&error];
+		}
+	return nextWeekStart;
 }
 
 
-- (BOOL)SH_isSameWeekAs:(NSDate *)date withDayOffset:(NSUInteger)dayOffset {
-	NSDate *weekStart = [self SH_calcWeekStartWithDayOffset: dayOffset];
-	NSDate *nextWeekStart = [self SH_calcNextWeekStartWithDayOffset: dayOffset];
-	return weekStart.timeIntervalSince1970 <= date.timeIntervalSince1970 &&
-	date.timeIntervalSince1970 < nextWeekStart.timeIntervalSince1970;
+-(BOOL)SH_isSameWeekAs:(NSDate *)date withDayOffset:(NSUInteger)dayOffset {
+	SHDatetime *dt = [self toSHDatetime];
+	SHDatetime *otherDt = [date toSHDatetime];
+	SHError error;
+	memset(&error, 0, sizeof(SHError));
+	bool result = SH_areSameWeekWithDayOffset(dt, otherDt, (int32_t)dayOffset, &error);
+
+	int32_t timeShiftCount = 1;
+	shFreeSHDatetime(dt, timeShiftCount);
+	shFreeSHDatetime(otherDt, timeShiftCount);
+	if(error.isError) {
+		@throw [NSException encounterSHError:&error];
+	}
+	return result;
 }
+
 
 -(BOOL)SH_isSameWeekAs:(NSDate*)date {
-	NSUInteger sundayOffset = 0;
-	return [self SH_isSameWeekAs:date withDayOffset:sundayOffset];
+	SHDatetime *dt = [self toSHDatetime];
+	SHDatetime *otherDt = [date toSHDatetime];
+	SHError error;
+	memset(&error, 0, sizeof(SHError));
+	bool result = SH_areSameWeek(dt, otherDt, &error);
+
+	int32_t timeShiftCount = 1;
+	shFreeSHDatetime(dt, timeShiftCount);
+	shFreeSHDatetime(otherDt, timeShiftCount);
+	if(error.isError) {
+		@throw [NSException encounterSHError:&error];
+	}
+	return result;
 }
 
 @end

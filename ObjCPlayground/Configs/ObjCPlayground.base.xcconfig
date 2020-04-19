@@ -14,7 +14,7 @@
 
 FRAMEWORK_SEARCH_PATHS = $PLATFORM_DIR/Developer/Library/Frameworks/ $(SHCOMMON_DIR) $(SHMODELS_DIR) $(SHTESTCOMMON_DIR)
 
-HEADER_SEARCH_PATHS = $(SHDATETIME_H_DIR)
+HEADER_SEARCH_PATHS = $(SHUTILS_C_H_DIR) $(SHDATETIME_H_DIR)
 
 LD_RUNPATH_SEARCH_PATHS = $(inherited) @executable_path/Frameworks @loader_path/Frameworks $PLATFORM_DIR/Developer/Library/Frameworks/
 

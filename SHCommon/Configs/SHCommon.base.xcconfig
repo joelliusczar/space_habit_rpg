@@ -12,6 +12,6 @@
 #include "../Configs/SHWorkspace.xcconfig"
 
 
-HEADER_SEARCH_PATHS = $(SHUTILS_C_H_DIR) $(SHDATETIME_H_DIR)
+HEADER_SEARCH_PATHS = $(SHUTILS_C_H_DIR)/Headers $(SHDATETIME_H_DIR)/Headers
 
 LD_NO_PIE = YES

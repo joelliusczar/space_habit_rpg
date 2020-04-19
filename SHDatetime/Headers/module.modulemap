@@ -1,5 +1,7 @@
 
-module SHDatetime {
+framework module SHDatetime {
 	umbrella header "SHDatetime.h"
+	module * { export * }
+	
 	export *
 }

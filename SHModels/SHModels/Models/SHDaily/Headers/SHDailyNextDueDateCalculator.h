@@ -19,11 +19,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign, nonatomic) NSInteger dayStartTime;
 @property (strong, nonatomic) NSDate* activeFromDate;
 @property (strong,nonatomic) NSObject<SHDateProviderProtocol>* dateProvider;
--(instancetype)initWithActiveDays:(SHDailyActiveDays *)activeDaysContainer
-	dayStartTime:(NSInteger)dayStartTime;
--(NSDate*)nextDueDate_WEEKLY;
++(instancetype)newWithActiveDays:(SHDailyActiveDays *)activeDaysContainer
+	intervalType:(SHRateType)intervalType;
+-(NSDate*)nextDueDate;
 -(NSDate*)calcBackupLastCheckinDate;
--(NSUInteger)calcMissedDays:(SHRateType)intervalType withLastLoginDate:(NSDate*)lastLoginDate;
+-(NSUInteger)calcMissedDaysWithLastLoginDate:(NSDate*)lastLoginDate;
 -(BOOL)isDateActive:(NSDate *)dateInQuestion;
 -(NSDate *)calcBackupDateForReferenceDate:(NSDate *)referenceDate;
 @end

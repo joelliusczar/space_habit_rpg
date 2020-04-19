@@ -37,14 +37,14 @@ bool shHandleError(SHErrorCode code,const char* const msg,SHError* errObj){
 	return false;
 }
 
-int shSetIndexErrorCode(SHErrorCode code,SHErrorCode *error){
+int32_t shSetIndexErrorCode(SHErrorCode code,SHErrorCode *error){
 	*error = code;
-	return NOT_FOUND;
+	return SH_NOT_FOUND;
 }
 
-int shHandleErrorRetNotFound(SHErrorCode code,const char* const msg,SHError *errObj){
+int32_t shHandleErrorRetNotFound(SHErrorCode code,const char* const msg,SHError *errObj){
 	_useErrorObj(code, msg, errObj);
-	return NOT_FOUND;
+	return SH_NOT_FOUND;
 }
 
 void * shHandleErrorRetNull(SHErrorCode code,const char* const msg,SHError* errObj){

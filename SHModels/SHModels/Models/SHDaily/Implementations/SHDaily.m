@@ -37,10 +37,10 @@
 		else {
 			dayStartTime = SHConfig.dayStartTime;
 		}
-		_calculator = [[SHDailyNextDueDateCalculator alloc]
-			initWithActiveDays:self.activeDaysContainer
-			dayStartTime:dayStartTime];
+		_calculator = [SHDailyNextDueDateCalculator
+			newWithActiveDays:self.activeDaysContainer intervalType:self.rateType];
 		_calculator.dateProvider = self.dateProvider;
+		_calculator.dayStartTime = dayStartTime;
 	}
 	_calculator.activeFromDate = self.activeFromDate;
 	_calculator.lastActivationDateTime = self.lastActivationDateTime;
@@ -79,20 +79,7 @@
 
 
 -(NSDate *)nextDueDate{
-	
-	switch(self.rateType){
-		case SH_YEARLY_RATE:
-		case SH_YEARLY_RATE_INVERSE:
-		case SH_MONTHLY_RATE:
-		case SH_MONTHLY_RATE_INVERSE:
-		case SH_WEEKLY_RATE:
-			return [self.calculator nextDueDate_WEEKLY];
-		case SH_WEEKLY_RATE_INVERSE:
-		case SH_DAILY_RATE:
-		case SH_DAILY_RATE_INVERSE:
-			return nil;
-	}
-	return nil;
+	return [self.calculator nextDueDate];
 }
 
 

@@ -22,13 +22,13 @@
 		27C411AE23DBB8480086E1F9 /* SHDateProviderProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4115623DBB8410086E1F9 /* SHDateProviderProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411AF23DBB8480086E1F9 /* SHReportServiceCallerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4115723DBB8410086E1F9 /* SHReportServiceCallerProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411B023DBB8480086E1F9 /* SHColorInversionHintProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4115823DBB8410086E1F9 /* SHColorInversionHintProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C411B123DBB8480086E1F9 /* SHIconDrawingFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4115923DBB8410086E1F9 /* SHIconDrawingFunctions.h */; platformFilter = ios; settings = {ATTRIBUTES = (Public, ); }; };
+		27C411B123DBB8480086E1F9 /* SHIconDrawingFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4115923DBB8410086E1F9 /* SHIconDrawingFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411B223DBB8480086E1F9 /* SHReportServiceCaller.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4115A23DBB8420086E1F9 /* SHReportServiceCaller.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411B323DBB8480086E1F9 /* SHDebugDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4115B23DBB8420086E1F9 /* SHDebugDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411B423DBB8480086E1F9 /* SHDefaultDateProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4115C23DBB8420086E1F9 /* SHDefaultDateProvider.m */; };
 		27C411B523DBB8480086E1F9 /* SHCommonUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4115D23DBB8420086E1F9 /* SHCommonUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411B623DBB8480086E1F9 /* SHSingletonCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4115E23DBB8420086E1F9 /* SHSingletonCluster.m */; };
-		27C411B723DBB8480086E1F9 /* SHNotificationHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4115F23DBB8420086E1F9 /* SHNotificationHelper.h */; platformFilter = ios; settings = {ATTRIBUTES = (Public, ); }; };
+		27C411B723DBB8480086E1F9 /* SHNotificationHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4115F23DBB8420086E1F9 /* SHNotificationHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411B823DBB8480086E1F9 /* SHIconBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4116023DBB8420086E1F9 /* SHIconBuilder.m */; platformFilter = ios; };
 		27C411B923DBB8480086E1F9 /* SHCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4116123DBB8430086E1F9 /* SHCoreData.m */; };
 		27C411BA23DBB8480086E1F9 /* SHObjectIDWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4116223DBB8430086E1F9 /* SHObjectIDWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -45,7 +45,7 @@
 		27C411C923DBB8480086E1F9 /* NSException+SHCommonExceptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4117223DBB8450086E1F9 /* NSException+SHCommonExceptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411CA23DBB8480086E1F9 /* NSMutableArray+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4117323DBB8450086E1F9 /* NSMutableArray+Helper.m */; };
 		27C411CB23DBB8480086E1F9 /* NSArray+SHHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4117423DBB8450086E1F9 /* NSArray+SHHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C411CC23DBB8480086E1F9 /* UIColor+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4117523DBB8450086E1F9 /* UIColor+Helper.h */; platformFilter = ios; settings = {ATTRIBUTES = (Public, ); }; };
+		27C411CC23DBB8480086E1F9 /* UIColor+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4117523DBB8450086E1F9 /* UIColor+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411CD23DBB8480086E1F9 /* NSMutableDictionary+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4117623DBB8450086E1F9 /* NSMutableDictionary+Helper.m */; };
 		27C411CE23DBB8480086E1F9 /* NSSet+SHHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4117723DBB8450086E1F9 /* NSSet+SHHelper.m */; };
 		27C411CF23DBB8480086E1F9 /* NSNumber+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4117823DBB8450086E1F9 /* NSNumber+Helper.m */; };
@@ -69,11 +69,11 @@
 		27C411E123DBB8480086E1F9 /* NSSet+SHHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4118A23DBB8450086E1F9 /* NSSet+SHHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411E223DBB8480086E1F9 /* NSObject+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4118B23DBB8450086E1F9 /* NSObject+Helper.m */; };
 		27C411E323DBB8480086E1F9 /* NSOrderedSet+SHHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4118C23DBB8450086E1F9 /* NSOrderedSet+SHHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C411E423DBB8480086E1F9 /* UIImage+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4118D23DBB8450086E1F9 /* UIImage+Helper.h */; platformFilter = ios; settings = {ATTRIBUTES = (Public, ); }; };
+		27C411E423DBB8480086E1F9 /* UIImage+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4118D23DBB8450086E1F9 /* UIImage+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411E523DBB8480086E1F9 /* SHDataProviderProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4118E23DBB8450086E1F9 /* SHDataProviderProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411E623DBB8480086E1F9 /* SHDefaultDateProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4118F23DBB8450086E1F9 /* SHDefaultDateProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411E723DBB8480086E1F9 /* SHCollectionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4119023DBB8460086E1F9 /* SHCollectionUtils.m */; };
-		27C411E823DBB8480086E1F9 /* SHIconBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4119123DBB8460086E1F9 /* SHIconBuilder.h */; platformFilter = ios; settings = {ATTRIBUTES = (Public, ); }; };
+		27C411E823DBB8480086E1F9 /* SHIconBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4119123DBB8460086E1F9 /* SHIconBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411EA23DBB8480086E1F9 /* SHReportServiceCaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4119323DBB8460086E1F9 /* SHReportServiceCaller.m */; };
 		27C411EC23DBB8480086E1F9 /* SHCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4119523DBB8460086E1F9 /* SHCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411ED23DBB8480086E1F9 /* SHCoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4119623DBB8460086E1F9 /* SHCoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -657,14 +657,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 27C4114323DBB7FB0086E1F9 /* SHCommon.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -691,7 +686,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -719,14 +713,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 27C4114223DBB7FB0086E1F9 /* SHCommon.base.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -753,7 +742,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;

@@ -53,24 +53,24 @@ static NSUserDefaults *_userDefaults = nil;
 //}
 
 
-+(NSInteger)dayStartTime {
-	NSInteger dayStartTime = [self.userDefaults integerForKey:@"dayStartTime"];
++(int32_t)dayStartTime {
+	int32_t dayStartTime = (int32_t)[self.userDefaults integerForKey:@"dayStartTime"];
 	return dayStartTime;
 }
 
 
-+(void)setDayStartTime:(NSInteger)dayStartTime {
++(void)setDayStartTime:(int32_t)dayStartTime {
 	[self.userDefaults setInteger:dayStartTime forKey:@"dayStartTime"];
 }
 
 
-+(NSInteger)weeklyStartDay {
-	NSInteger weeklyStartDay = [self.userDefaults integerForKey:@"weeklyStartDay"];
++(int32_t)weeklyStartDay {
+	int32_t weeklyStartDay = (int32_t)[self.userDefaults integerForKey:@"weeklyStartDay"];
 	return weeklyStartDay;
 }
 
 
-+(void)setWeeklyStartDay:(NSInteger)weeklyStartDay {
++(void)setWeeklyStartDay:(int32_t)weeklyStartDay {
 	[self.userDefaults setInteger:weeklyStartDay forKey:@"weeklyStartDay"];
 }
 

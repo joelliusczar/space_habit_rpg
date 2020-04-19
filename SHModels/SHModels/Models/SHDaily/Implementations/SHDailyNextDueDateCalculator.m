@@ -9,6 +9,7 @@
 #import "SHDailyNextDueDateCalculator.h"
 #import "SHWeeklyRateItemList.h"
 #import "SHConfig.h"
+#import "SHDailyNextWeeklyDueDateCalculator.h"
 @import SHSpecial_C;
 @import SHCommon;
 
@@ -23,32 +24,19 @@
 }
 
 
--(instancetype)initWithActiveDays:(SHDailyActiveDays *)activeDaysContainer
-	dayStartTime:(NSInteger)dayStartTime
-{
-	if(self = [super init]) {
-		_activeDaysContainer = activeDaysContainer;
-		_dayStartTime = dayStartTime;
++(instancetype)newWithActiveDays:(SHDailyActiveDays *)activeDaysContainer intervalType:(SHRateType)intervalType {
+	switch (intervalType) {
+		case SH_WEEKLY_RATE:
+			return [[SHDailyNextWeeklyDueDateCalculator alloc] initWithRateItemList:activeDaysContainer.weeklyActiveDays];
+		default:
+			@throw [NSException abstractException];
 	}
-	return self;
 }
 
 
-
 -(NSDate *)calcBackupDateForReferenceDate:(NSDate *)referenceDate {
-	NSUInteger weekdayIdx = [referenceDate getWeekdayIndex];
-	if(self.activeDaysContainer.weeklyActiveDays[weekdayIdx].isDayActive) {
-	 return referenceDate;
-	}
-	NSUInteger prevDayIdx = [self.activeDaysContainer.weeklyActiveDays findPrevActiveDayIdx:weekdayIdx];
-	BOOL isCurrentWeekActive = weekdayIdx > prevDayIdx;
-	NSInteger diff = weekdayIdx - prevDayIdx;
-	if(isCurrentWeekActive) {
-		return [referenceDate dateAfterYears:0 months:0 days:-diff];
-	}
-	int64_t daysAgo = sh_calcDaysAgoDayWasActive((int32_t)prevDayIdx,
-		self.activeDaysContainer.weeklyActiveDays.intervalSize);
-	return [referenceDate dateAfterYears:0 months:0 days:-(daysAgo + diff)];
+	(void)referenceDate;
+	@throw [NSException abstractException];
 }
 
 /*If we do not have an actual last due date then we assume that whatever reference date
@@ -67,92 +55,20 @@ This also applies if the active days got changed.
 }
 
 
-- (NSDate * _Nonnull)nextDueDateForLoginDate_WEEKLY:(NSDate *)loginDate {
-	NSDate *lastCheckinDate = [self calcBackupLastCheckinDate];
-	SHDatetime *lastCheckinDt = [lastCheckinDate toSHDatetime];
-	SHDatetime *checkinDt = [loginDate toSHDatetime];
-	SHDatetime ans;
-	memset(&ans,0,sizeof(SHDatetime));
-	SHError *error = calloc(ALLOC_COUNT, sizeof(SHError));
-	
-	SHRateValueItem *rvi =  [self.activeDaysContainer.weeklyActiveDays convertObjCRateItemToC];
-	sh_nextDueDate_WEEKLY(lastCheckinDt,checkinDt,rvi,
-		self.activeDaysContainer.weeklyActiveDays.intervalSize,
-		self.dayStartTime, &ans, error);
-	double dueDateTimestamp = shDtToTimestamp(&ans, error);
-	NSDate *nextDueDate = [NSDate dateWithTimeIntervalSince1970:dueDateTimestamp];
-	int32_t timeShiftCount = 1;
-	shFreeSHDatetime(lastCheckinDt, timeShiftCount);
-	shFreeSHDatetime(checkinDt, timeShiftCount);
-	shDisposeSHError(error);
-	shFreeSHRateValueItem(rvi);
-	return nextDueDate;
-}
-
--(NSDate*)nextDueDate_WEEKLY{
-	return [self nextDueDateForLoginDate_WEEKLY: self.dateProvider.date];
+-(NSDate*)nextDueDate{
+	@throw [NSException abstractException];
 }
 
 
 -(BOOL)isDateActive:(NSDate *)dateInQuestion {
-	SHDatetime *checkinDate = [dateInQuestion toSHDatetime];
-	SHDatetime *lastDueDate = [[self calcBackupLastCheckinDate] toSHDatetime];
-	SHRateValueItem *rvi =  [self.activeDaysContainer.weeklyActiveDays convertObjCRateItemToC];
-	int64_t intervalSize = self.activeDaysContainer.weeklyActiveDays.intervalSize;
-	SHError error;
-	memset(&error, 0, sizeof(SHError));
-	bool result = sh_isDateADueDate_WEEKLY(checkinDate, lastDueDate, rvi,
-		intervalSize, self.dayStartTime, &error);
-	int32_t timeShiftCount = 1;
-	shFreeSHDatetime(checkinDate, timeShiftCount);
-	shFreeSHDatetime(lastDueDate, timeShiftCount);
-	shFreeSHRateValueItem(rvi);
-	return result;
+	(void)dateInQuestion;
+	@throw [NSException abstractException];
 }
 
 
--(NSUInteger)calcMissedDays_WEEKLY_withLastLoginDate:(NSDate*)lastLoginDate {
-//	NSDate *prevNextDueDate = [self nextDueDateForLoginDate_WEEKLY:SHConfig.lastProcessingDateTime];
-//	NSDate *todayStart = SHConfig.userTodayStart;
-//	NSInteger intervalSize = self.activeDaysContainer.weeklyActiveDays.intervalSize;
-//	NSUInteger prevWeekdayIdx = [prevNextDueDate getWeekdayIndex];
-//	NSUInteger checkinWeekdayIdx = [lastLoginDate getWeekdayIndex];
-//	//NSUInteger fullWeekCount = [NSDate SH_fu];
-//	if(intervalSize < 1) {
-//		@throw [NSException oddException:@"interval size should be at least 1"];
-//	}
-//	else if(intervalSize == 1) {
-//		if([prevNextDueDate SH_isSameWeekAs:todayStart]) {
-//			return [self.activeDaysContainer.weeklyActiveDays activeDaysInRange:
-//				NSMakeRange(prevWeekdayIdx, checkinWeekdayIdx - prevWeekdayIdx)];
-//		}
-//		NSUInteger week1ActiveDaysCount = [self.activeDaysContainer.weeklyActiveDays activeDaysInRange:
-//			NSMakeRange(prevWeekdayIdx, SH_DAYS_IN_WEEK - prevWeekdayIdx)];
-//		NSUInteger lastWeekActiveDaysCount = [self.activeDaysContainer.weeklyActiveDays activeDaysInRange:
-//			NSMakeRange(0, checkinWeekdayIdx)];
-//		NSUInteger fullWeekActiveDaysCount = [self.activeDaysContainer.weeklyActiveDays activeDaysInRange:
-//			NSMakeRange(0, SH_DAYS_IN_WEEK)];
-//		//self.activeDaysContainer.weeklyActiveDays.
-//	}
-	
-	return 0;
-}
-
-
--(NSUInteger)calcMissedDays:(SHRateType)intervalType withLastLoginDate:(NSDate*)lastLoginDate {
-	switch(intervalType){
-		case SH_YEARLY_RATE:
-		case SH_YEARLY_RATE_INVERSE:
-		case SH_MONTHLY_RATE:
-		case SH_MONTHLY_RATE_INVERSE:
-		case SH_WEEKLY_RATE:
-			return [self calcMissedDays_WEEKLY_withLastLoginDate: lastLoginDate];
-		case SH_WEEKLY_RATE_INVERSE:
-		case SH_DAILY_RATE:
-		case SH_DAILY_RATE_INVERSE:
-			return 0;
-	}
-	return 0;
+-(NSUInteger)calcMissedDaysWithLastLoginDate:(NSDate*)lastLoginDate {
+	(void)lastLoginDate;
+	@throw [NSException abstractException];
 }
 
 @end

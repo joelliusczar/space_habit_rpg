@@ -16,32 +16,37 @@
 #include "SHErrorHandling.h"
 #include "SHRateValueItem.h"
 
+struct SHDailyWeeklyDueDateInput {
+	SHDatetime *lastDueDate;
+	SHDatetime *checkinDate;
+	SHRateValueItem *rvi;
+	int64_t intervalSize;
+	int64_t dayStartHour;
+	int32_t weekStartOffset;
+};
 
+typedef struct SHDailyWeeklyDueDateInput SHDailyWeeklyDueDateInput;
 
 
 void sh_fillWeek(int64_t *daysAheadCounts,int64_t *daysBeforeCounts,bool *activeDays,SHRateValueItem *rvi);
+
 void sh_buildWeek(bool *activeDays,int64_t scaler,SHRateValueItem *rvi);
+
 void sh_buildEmptyWeek(SHRateValueItem *rvi);
-bool sh_previousDueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate,SHRateValueItem *rvi
-	,int64_t scaler,int64_t dayStartHour,SHDatetime *ans,SHError *error);
-	
-bool sh_previousDueDateWithPreparedInputs_WEEKLY(SHDatetime *lastDueDate,SHDatetime *checkinDate
-,SHRateValueItem *rvi,int64_t scaler, int64_t dayStartHour,SHDatetime *ans,SHError *error);
 
-SHDatetime* sh_bothWeeklyDueDatesFromLastDueDate(SHDatetime* lastDueDate,SHDatetime* checkinDate
-	,SHRateValueItem* week, int64_t scaler, int64_t dayStartHour,SHError *error);
+SHErrorCode SH_previousDueDate_WEEKLY(SHDailyWeeklyDueDateInput *input, SHDatetime *ans);
 
-bool sh_nextDueDate_WEEKLY(SHDatetime* lastDueDate,SHDatetime* checkinDate, SHRateValueItem* week,
-	int64_t scaler, int64_t dayStartHour, SHDatetime *ans,SHError* error);
+SHErrorCode SH_bothWeeklyDueDatesFromLastDueDate(SHDailyWeeklyDueDateInput *input, SHDatetime **ans, int32_t *ansLen);
 
-bool sh_isDateADueDate_WEEKLY(SHDatetime *lastDueDate,SHDatetime *todaysDate
-,SHRateValueItem *rvi,int64_t scaler, int64_t dayStartHour,SHError *error);
-	
+SHErrorCode SH_nextDueDate_WEEKLY(SHDailyWeeklyDueDateInput *input, SHDatetime *ans);
+
+SHErrorCode SH_isDateADueDate_WEEKLY(SHDailyWeeklyDueDateInput *input, bool *ans);
+
 int64_t sh_calcDaysAgoDayWasActive(int32_t weekdayIdx, int64_t scaler);
 
 /*
  activeDays: an array of exactly 7 elements.
- scaler: this is the frequency, ex: event happens every 3 weeks
+ intervalSize: this is the frequency, ex: event happens every 3 weeks
  rvi: this should be an array of 7 elements. Any values in this will get over written
  void buildWeek(bool *activeDays,int64_t scaler,RateValueItem *rvi)
  */

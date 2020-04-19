@@ -14,5 +14,4 @@
 #import "SHTimeZone.h"
 #import "SHDatetimeFuncs.h"
 
-
 #endif /* SHDatetime_h */

@@ -6,11 +6,11 @@
 //	Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
+#ifndef SHSpecial_C_h
+#define SHSpecial_C_h
 
-
-#import "SHDaily_C.h"
 #import "SHRateValueItem.h"
+#import "SHDaily_C.h"
 
 
-// In this header, you should import all the public headers
-//of your framework using statements like #import <SHControlsSpecial/PublicHeader.h>
+#endif

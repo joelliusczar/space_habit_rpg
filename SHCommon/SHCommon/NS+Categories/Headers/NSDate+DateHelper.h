@@ -55,7 +55,10 @@ withWeekStartOffset:(NSUInteger)weekStartOffset;
 -(SHDatetime *)toSHDatetime;
 -(SHDatetime *)toSHDatetimeUTC;
 -(NSDate*)SH_calcWeekStart;
+-(NSDate *)SH_calcWeekStartWithDayOffset:(NSUInteger)dayOffset;
 -(NSDate*)SH_calcNextWeekStart;
+-(NSDate *)SH_calcNextWeekStartWithDayOffset:(NSUInteger)dayOffset;
 -(BOOL)SH_isSameWeekAs:(NSDate*)date;
+-(BOOL)SH_isSameWeekAs:(NSDate *)date withDayOffset:(NSUInteger)dayOffset;
 @end
 

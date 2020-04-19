@@ -13,7 +13,7 @@
 #include "../Configs/SHWorkspace.xcconfig"
 
 
-HEADER_SEARCH_PATHS = $(SHDATETIME_H_DIR) $(SHUTILS_C_H_DIR)
+HEADER_SEARCH_PATHS = $(SHDATETIME_H_DIR)/Headers $(SHUTILS_C_H_DIR)/Headers
 
 //DEFINES_MODULE = YES
 
@@ -21,4 +21,10 @@ HEADER_SEARCH_PATHS = $(SHDATETIME_H_DIR) $(SHUTILS_C_H_DIR)
 
 
 //The location to copy the public headers to during building, relative to the built products folder.
-PUBLIC_HEADERS_FOLDER_PATH = include/$(PRODUCT_NAME)
+CONFIGURATION_BUILD_DIR = $(inherited)/$(PRODUCT_NAME).framework
+
+//$BUILT_PRODUCTS_DIR/usr/local/include/
+BUILT_PRODUCTS_DIR = $(inherited)/$(PRODUCT_NAME).framework
+
+//The location to copy the public headers to during building, relative to the built products folder.
+PUBLIC_HEADERS_FOLDER_PATH = Headers

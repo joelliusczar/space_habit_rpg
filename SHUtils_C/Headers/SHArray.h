@@ -23,7 +23,7 @@
 	for(int64_t idx = 0; idx < len;idx++){\
 		if(test( arr[idx],idx,extra)) return idx;\
 	}\
-	return NOT_FOUND;\
+	return SH_NOT_FOUND;\
 }
 #define shFindIdx(T1,T2) findIdx_##T1##_##T2
 
@@ -34,7 +34,7 @@
 		int64_t revIdx = len - idx -1;\
 		if(test( arr[revIdx],idx,extra)) return revIdx;\
 	}\
-	return NOT_FOUND;\
+	return SH_NOT_FOUND;\
 }
 #define shFindIdxRev(T1,T2) findIdxRev_##T1##_##T2
 

@@ -17,8 +17,7 @@
 
 
 
-int32_t shFindTimeShiftIdx(SHDatetime *dt);
-int32_t shSelectTimeShiftForDt(SHDatetime *dt,SHTimeshift *shifts,int32_t shiftCount);
-bool shUpdateTimezoneForShifts(SHDatetime *dt,SHError *error);
-int32_t shIsValidTimeShift(SHTimeshift *shift);
+int32_t SH_findTimeShiftIdx(SHDatetime *dt);
+int32_t SH_selectTimeShiftIdxForDt(SHDatetime *dt,SHTimeshift *shifts,int32_t shiftCount);
+SHErrorCode SH_UpdateTimezoneForShifts(SHDatetime *dt);
 #endif /* SHTimeZone_h */

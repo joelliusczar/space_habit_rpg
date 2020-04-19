@@ -7,26 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		270CB966244BDBCC00FE930B /* libSHDatetime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27BC44EA238792200047F683 /* libSHDatetime.a */; };
 		271691CC20885F890059A58E /* SHDaily_C.h in Headers */ = {isa = PBXBuildFile; fileRef = 271691CA20885F890059A58E /* SHDaily_C.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271691CD20885F890059A58E /* SHDaily_C.c in Sources */ = {isa = PBXBuildFile; fileRef = 271691CB20885F890059A58E /* SHDaily_C.c */; };
 		2769C09D227DD70800217480 /* SHSpecial_C.h in Headers */ = {isa = PBXBuildFile; fileRef = 27870450227BC188009C9DD6 /* SHSpecial_C.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		277970CD21FD764C00D3F86D /* SHRateValueItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 277970CC21FD75E900D3F86D /* SHRateValueItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27BCF912227BE97800540F4F /* libSHDatetime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27BCF911227BE97800540F4F /* libSHDatetime.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		270CB967244BDBD800FE930B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27BC44E4238792200047F683 /* SHDatetime.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 27D3183C2086C8CA0047F5F1;
+			remoteInfo = SHDatetime;
+		};
 		27BC44E9238792200047F683 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 27BC44E4238792200047F683 /* SHDatetime.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 27D3183D2086C8CA0047F5F1;
-			remoteInfo = SHDatetime;
-		};
-		27BC44EB2387922F0047F683 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 27BC44E4238792200047F683 /* SHDatetime.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 27D3183C2086C8CA0047F5F1;
 			remoteInfo = SHDatetime;
 		};
 /* End PBXContainerItemProxy section */
@@ -61,7 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27BCF912227BE97800540F4F /* libSHDatetime.a in Frameworks */,
+				270CB966244BDBCC00FE930B /* libSHDatetime.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,7 +76,7 @@
 				276E6D96222A4AA500CB36CB /* Configs */,
 				2737D586216DAFEA00E0111F /* Scripts */,
 				27BB29092157499D003225BB /* Copy */,
-				271691C920885F890059A58E /* Code */,
+				271691C920885F890059A58E /* Implementation */,
 				271691C320885EF70059A58E /* Products */,
 				271691CE208860100059A58E /* Frameworks */,
 			);
@@ -90,12 +90,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		271691C920885F890059A58E /* Code */ = {
+		271691C920885F890059A58E /* Implementation */ = {
 			isa = PBXGroup;
 			children = (
 				271691CB20885F890059A58E /* SHDaily_C.c */,
 			);
-			path = Code;
+			path = Implementation;
 			sourceTree = "<group>";
 		};
 		271691CE208860100059A58E /* Frameworks */ = {
@@ -167,8 +167,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				271691CC20885F890059A58E /* SHDaily_C.h in Headers */,
 				277970CD21FD764C00D3F86D /* SHRateValueItem.h in Headers */,
+				271691CC20885F890059A58E /* SHDaily_C.h in Headers */,
 				2769C09D227DD70800217480 /* SHSpecial_C.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,7 +189,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				27BC44EC2387922F0047F683 /* PBXTargetDependency */,
+				270CB968244BDBD800FE930B /* PBXTargetDependency */,
 			);
 			name = SHSpecial_C;
 			productName = SHCore_C;
@@ -293,10 +293,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		27BC44EC2387922F0047F683 /* PBXTargetDependency */ = {
+		270CB968244BDBD800FE930B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SHDatetime;
-			targetProxy = 27BC44EB2387922F0047F683 /* PBXContainerItemProxy */;
+			targetProxy = 270CB967244BDBD800FE930B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -337,7 +337,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -393,7 +392,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;

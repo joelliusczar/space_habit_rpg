@@ -31,13 +31,20 @@ extern shDebugCallback shDbgCallback;
 
 #endif
 
+#ifndef SH_notifyOfError
+#define SH_notifyOfError(err,msg)
+#endif
+
 typedef enum {
 	SH_NO_ERROR = 0,
 	SH_NULL_VALUES = 1,
 	SH_OUT_OF_RANGE = 2,
 	SH_CORRUPT_STRUCT = 3,
-	SH_GEN_ERROR = -1,
-	SH_INVALID_STATE = -3
+	SH_GEN_ERROR = 4,
+	SH_INVALID_STATE = 5,
+	SH_ILLEGAL_INPUTS = 6,
+	SH_INPUT_BAD_RESULTS = 7,
+	SH_ALLOC = 8,
 } SHErrorCode;
 
 
@@ -55,8 +62,8 @@ typedef struct {
 
 bool shSetErrorCode(SHErrorCode code,SHErrorCode *error);
 bool shHandleError(SHErrorCode code,const char* const msg,SHError* errObj);
-int shSetIndexErrorCode(SHErrorCode code,SHErrorCode* error);
-int shHandleErrorRetNotFound(SHErrorCode code,const char* const msg,SHError* errObj);
+int32_t shSetIndexErrorCode(SHErrorCode code,SHErrorCode* error);
+int32_t shHandleErrorRetNotFound(SHErrorCode code,const char* const msg,SHError* errObj);
 void * shHandleErrorRetNull(SHErrorCode code,const char* const msg,SHError* errObj);
 void shPrepareSHError(SHError* errObj);
 void shDisposeSHError(SHError* errObj);

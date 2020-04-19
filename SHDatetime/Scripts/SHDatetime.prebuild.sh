@@ -8,7 +8,10 @@
 
 cd "$SRCROOT"/../Build_Scripts
 
+ls "$SHUTILS_C_H_DIR/Headers"
+
 . CleanUpModuleMap.sh
+
 
 
 exit 0

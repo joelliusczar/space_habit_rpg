@@ -35,37 +35,6 @@
 	XCTAssertEqual(daysAgo, 14);
 }
 
--(void)testTuesWedThursSat {
-	SHDailyActiveDays *activeDays = [self.activeDaysProvider tuesWedThursSat];
-	
-	SHDailyNextDueDateCalculator *calc = [[SHDailyNextDueDateCalculator alloc]
-		initWithActiveDays:activeDays
-		dayStartTime:0];
-	calc.lastActivationDateTime = nil;
-	calc.lastUpdateDateTime = [NSDate createDateTimeWithYear:2020
-		month:3
-		day:8
-		hour:0
-		minute:0
-		second:0];
-		
-	NSDate *backupDate = [calc calcBackupLastCheckinDate];
-	NSDate *expected = [NSDate createDateTimeWithYear:2020
-		month:3
-		day:7
-		hour:0
-		minute:0
-		second:0];
-	XCTAssertEqual(backupDate.timeIntervalSince1970, expected.timeIntervalSince1970);
-	activeDays.weeklyActiveDays.intervalSize = 3;
-	backupDate = [calc calcBackupLastCheckinDate];
-	expected = [NSDate createDateTimeWithYear:2020
-	month:2
-	day:29
-	hour:0
-	minute:0
-	second:0];
-}
 
 
 @end
