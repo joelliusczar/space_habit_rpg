@@ -15,4 +15,5 @@ if [ -n "$IS_JOEL" ]; then
 	copyFiles "Code/SHDatetime/SHUtils_C"
 fi
 
-. ModuleMapCopy.sh
+. module_map_copy.sh
+#. resources_copy.sh

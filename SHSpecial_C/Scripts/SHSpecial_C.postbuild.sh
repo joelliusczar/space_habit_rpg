@@ -15,7 +15,7 @@ cd "$SRCROOT"/../Build_Scripts
 #fi
 
 
-. ModuleMapCopy.sh
+. module_map_copy.sh
 xs=$?
 
 (exit "$xs") && echo 'copy successful' || echo 'copy failed for some reason'

@@ -9,6 +9,8 @@
 #ifndef SHSpecial_C_h
 #define SHSpecial_C_h
 
+#pragma clang module import SHUtils_C
+#pragma clang module import SHDatetime
 #import "SHRateValueItem.h"
 #import "SHDaily_C.h"
 

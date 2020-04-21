@@ -8,7 +8,6 @@
 
 @import Foundation;
 @import SHUtils_C;
-//#import <SHUtils_C/SHErrorHandling.h>
 
 @interface NSException (SHCommonExceptions)
 +(NSException*)abstractException;

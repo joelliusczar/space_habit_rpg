@@ -8,3 +8,7 @@
 
 #I shouldn't have to care about SHSpecial_C here
 [ -e "$BUILT_PRODUCTS_DIR"/include/SHSpecial_C/module.modulemap ] && echo "It's there" || echo 'not there'
+
+ls "$BUILT_PRODUCTS_DIR"
+
+echo "system headers $SYSTEM_HEADER_SEARCH_PATHS"

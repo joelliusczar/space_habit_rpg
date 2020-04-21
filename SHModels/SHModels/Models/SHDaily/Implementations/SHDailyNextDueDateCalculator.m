@@ -34,7 +34,7 @@
 }
 
 
--(NSDate *)calcBackupDateForReferenceDate:(NSDate *)referenceDate {
+-(NSDate *)calcBackupDateForReferenceDate:(SHDatetime *)referenceDate {
 	(void)referenceDate;
 	@throw [NSException abstractException];
 }

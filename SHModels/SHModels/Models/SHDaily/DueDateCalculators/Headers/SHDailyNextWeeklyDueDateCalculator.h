@@ -8,6 +8,7 @@
 
 #import "SHDailyNextDueDateCalculator.h"
 #import "SHWeeklyRateItemList.h"
+@import SHDatetime;
 
 NS_ASSUME_NONNULL_BEGIN
 

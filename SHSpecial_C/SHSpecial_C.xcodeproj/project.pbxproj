@@ -32,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2712C5F7244D2C0A00157758 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		271691C220885EF70059A58E /* libSHSpecial_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSHSpecial_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		271691CA20885F890059A58E /* SHDaily_C.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDaily_C.h; sourceTree = "<group>"; };
 		271691CB20885F890059A58E /* SHDaily_C.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SHDaily_C.c; sourceTree = "<group>"; };
@@ -68,9 +69,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2712C5F6244D2C0A00157758 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2712C5F7244D2C0A00157758 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		271691B920885EF70059A58E = {
 			isa = PBXGroup;
 			children = (
+				2712C5F6244D2C0A00157758 /* Resources */,
 				27BC44E4238792200047F683 /* SHDatetime.xcodeproj */,
 				27870453227BCA3A009C9DD6 /* Headers */,
 				276E6D96222A4AA500CB36CB /* Configs */,

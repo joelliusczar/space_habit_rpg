@@ -8,6 +8,7 @@
 
 cd "$SRCROOT"/../Build_Scripts
 
-. CleanUpModuleMap.sh
+. module_map_cleanup.sh
+. headers_cleanup.sh
 
 exit 0

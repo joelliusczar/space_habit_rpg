@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <inttypes.h>
+//#pragma clang module import Darwin.C.inttypes
 
 #define SH_WEEKLEN 7
 extern const int32_t SH_DAYS_IN_WEEK;

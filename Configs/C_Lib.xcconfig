@@ -1,0 +1,44 @@
+//
+//  C_Lib.xcconfig
+//  
+//
+//  Created by Joel Pridgen on 4/19/20.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+
+EXECUTABLE_PREFIX = //lib
+
+EXECUTABLE_EXTENSION = //a
+EXECUTABLE_SUFFIX =
+
+PRODUCT_NAME = $(TARGET_NAME)
+
+//INFOPLIST_FILE = Resources/Info.plist
+
+//HEADER_SEARCH_PATHS = $(SDKROOT)/usr/include
+
+//
+//MODULEMAP_FILE = $(SRCROOT)/Headers/module.modulemap
+CONFIGURATION_BUILD_DIR = $(inherited)/$(PRODUCT_NAME).framework
+
+//$BUILT_PRODUCTS_DIR/usr/local/include/
+BUILT_PRODUCTS_DIR = $(inherited)/$(PRODUCT_NAME).framework
+
+//The location to copy the public headers to during building, relative to the built products folder.
+PUBLIC_HEADERS_FOLDER_PATH = Headers
+//include/$(PRODUCT_NAME)
+
+//---------------------
+
+//USER_HEADER_SEARCH_PATHS = $BUILT_PRODUCTS_DIR/usr/local/include/
+
+DEFINES_MODULE = YES
+
+MODULEMAP_FILE = $(SRCROOT)/Headers/module.modulemap
+//:configuration = Debug
+
+
+

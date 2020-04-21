@@ -7,6 +7,7 @@
 //
 
 #import "SHDailyMaxDaysBeforeSpanCalculator.h"
+@import SHUtils_C;
 
 @implementation SHDailyMaxDaysBeforeSpanCalculator
 
@@ -23,7 +24,7 @@
 
 
 -(NSInteger)maxDaysBeforeSpan_WEEKLY{
-	return self.rate * SH_WEEKLEN;
+	return self.rate * SH_DAYS_IN_WEEK;
 }
 
 @end

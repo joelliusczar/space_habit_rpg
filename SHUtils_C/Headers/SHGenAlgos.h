@@ -10,7 +10,7 @@
 #define SHGenAlgos_h
 
 #include <stdio.h>
-#include <inttypes.h>
+#include <stdint.h>
 
 #if defined(__clang__)
 #ifndef blockoptimization

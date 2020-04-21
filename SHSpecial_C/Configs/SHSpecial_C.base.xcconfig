@@ -17,8 +17,11 @@ HEADER_SEARCH_PATHS = $(SHDATETIME_H_DIR)/Headers $(SHUTILS_C_H_DIR)/Headers
 
 //DEFINES_MODULE = YES
 
-//MODULEMAP_FILE = $(SRCROOT)/Headers/module.modulemap
+SHUTILS_C_MODMAP_FLAG = -fmodule-map-file=$(SHUTILS_C_H_DIR)/Modules/module.modulemap
+SHDATETIME_MODMAP_FLAG = -fmodule-map-file=$(SHDATETIME_H_DIR)/Modules/module.modulemap
 
+//MODULEMAP_FILE = $(SRCROOT)/Headers/module.modulemap
+OTHER_CFLAGS = $(inherited) $(SHUTILS_C_MODMAP_FLAG) $(SHDATETIME_MODMAP_FLAG)
 
 //The location to copy the public headers to during building, relative to the built products folder.
 CONFIGURATION_BUILD_DIR = $(inherited)/$(PRODUCT_NAME).framework

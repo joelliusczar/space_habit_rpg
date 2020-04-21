@@ -18,4 +18,6 @@ MACOSX_DEPLOYMENT_TARGET = 10.14
 
 CODE_SIGN_IDENTITY[sdk=macosx*] = Mac Developer
 
+SYSTEM_HEADER_SEARCH_PATHS = $(SDKROOT)/usr/include
+
 

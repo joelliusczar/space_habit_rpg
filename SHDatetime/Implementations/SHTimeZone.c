@@ -10,6 +10,7 @@
 #include "SHDatetimeFuncs.h"
 #include "SHUtilConstants.h"
 #include <SHErrorHandling.h>
+//#pragma clang module import SHUtils_C.SHErrorHandling
 #include <assert.h>
 #include <string.h>
 

@@ -9,15 +9,16 @@
 #import "SHDailyActiveDays.h"
 @import Foundation;
 @import SHCommon;
+@import SHDatetime;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHDailyNextDueDateCalculator : NSObject
 @property (strong, nonatomic) SHDailyActiveDays *activeDaysContainer;
-@property (strong, nonatomic, nullable) NSDate* lastActivationDateTime;
-@property (strong, nonatomic) NSDate* lastUpdateDateTime;
+@property (assign, nonatomic, nullable) SHDatetime* lastActivationDateTime;
+@property (assign, nonatomic) SHDatetime* lastUpdateDateTime;
 @property (assign, nonatomic) NSInteger dayStartTime;
-@property (strong, nonatomic) NSDate* activeFromDate;
+@property (assign, nonatomic) SHDatetime* activeFromDate;
 @property (strong,nonatomic) NSObject<SHDateProviderProtocol>* dateProvider;
 +(instancetype)newWithActiveDays:(SHDailyActiveDays *)activeDaysContainer
 	intervalType:(SHRateType)intervalType;
@@ -25,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSDate*)calcBackupLastCheckinDate;
 -(NSUInteger)calcMissedDaysWithLastLoginDate:(NSDate*)lastLoginDate;
 -(BOOL)isDateActive:(NSDate *)dateInQuestion;
--(NSDate *)calcBackupDateForReferenceDate:(NSDate *)referenceDate;
+-(NSDate *)calcBackupDateForReferenceDate:(SHDatetime *)referenceDate;
 @end
 
 NS_ASSUME_NONNULL_END

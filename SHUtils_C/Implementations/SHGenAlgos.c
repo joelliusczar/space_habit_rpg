@@ -21,7 +21,7 @@ int64_t calcStrHash(char const *str){
 	return hash;
 }
 
-double blockoptimization kahanSum(const double* const nums,int64_t len){
+double blockoptimization kahanSum(const double* const nums, int64_t len){
 	double sum = nums[0];
 	double excess = 0.0;
 	for(int64_t i = 1;i < len;i++){

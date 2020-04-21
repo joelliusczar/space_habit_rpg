@@ -10,28 +10,12 @@
 // https://help.apple.com/xcode/#/dev745c5c974
 
 #include "../Configs/SHWorkspace.xcconfig"
+#include "../Configs/C_Lib.xcconfig"
+
+HEADER_SEARCH_PATHS = $(SHUTILS_C_H_DIR)/Headers $(inherited)
 
 
-PRODUCT_NAME = $(TARGET_NAME)
-
-HEADER_SEARCH_PATHS = $(SHUTILS_C_H_DIR)/Headers
-
-//FRAMEWORK_SEARCH_PATHS = $(SHUTILS_C_H_DIR)
-
-DEFINES_MODULE = YES
-//
-//MODULEMAP_FILE = $(SRCROOT)/Headers/module.modulemap
-
-//The location to copy the public headers to during building, relative to the built products folder.
-CONFIGURATION_BUILD_DIR = $(inherited)/$(PRODUCT_NAME).framework
-
-//$BUILT_PRODUCTS_DIR/usr/local/include/
-BUILT_PRODUCTS_DIR = $(inherited)/$(PRODUCT_NAME).framework
-
-//The location to copy the public headers to during building, relative to the built products folder.
-PUBLIC_HEADERS_FOLDER_PATH = Headers
-
-OTHER_CFLAGS = $(inherited) -Wincomplete-umbrella
+OTHER_CFLAGS = $(inherited) -fmodule-map-file=$(SHUTILS_C_H_DIR)/Modules/module.modulemap
 
 
 //LD_RUNPATH_SEARCH_PATHS = $(inherited) @executable_path/Frameworks @loader_path/Frameworks

@@ -8,7 +8,7 @@
 
 cd "$SRCROOT"/../Build_Scripts
 
-. CleanUpModuleMap.sh
+. module_map_cleanup.sh
 
 echo "Done with SHSpecial_C pre"
 

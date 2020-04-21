@@ -49,40 +49,34 @@
          location = "group:TestUI.sh">
       </FileRef>
       <FileRef
-         location = "group:ModuleMapCopy.sh">
+         location = "group:/Users/joelpridgen/Documents/spacehabitrpg/Build_Scripts/module_map_copy.sh">
       </FileRef>
       <FileRef
-         location = "group:CleanUpModuleMap.sh">
+         location = "group:/Users/joelpridgen/Documents/spacehabitrpg/Build_Scripts/module_map_cleanup.sh">
+      </FileRef>
+      <FileRef
+         location = "group:resources_copy.sh">
+      </FileRef>
+      <FileRef
+         location = "group:headers_cleanup.sh">
       </FileRef>
    </Group>
-   <FileRef
-      location = "group:SHControls/SHControls.xcodeproj">
-   </FileRef>
    <Group
       location = "container:"
       name = "Configs">
+      <FileRef
+         location = "group:Configs/C_Lib.xcconfig">
+      </FileRef>
       <FileRef
          location = "group:Configs/SHWorkspace.xcconfig">
       </FileRef>
       <FileRef
          location = "group:Configs/MacOSArchs.xcconfig">
       </FileRef>
+      <FileRef
+         location = "group:AllLangWarnings.xcconfig">
+      </FileRef>
    </Group>
-   <FileRef
-      location = "group:SHCommon/SHCommon.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:SHUtils_C/SHUtils_C.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:SHDatetime/SHDatetime.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:SHSpecial_C/SHSpecial_C.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:PropertyAdder/PropertyAdder.xcodeproj">
-   </FileRef>
    <Group
       location = "group:Copy"
       name = "Copy">
@@ -94,6 +88,24 @@
          assignedFileDataType = "public.make-source">
       </FileRef>
    </Group>
+   <FileRef
+      location = "group:SHControls/SHControls.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SHUtils_C/SHUtils_C.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SHDatetime/SHDatetime.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SHSpecial_C/SHSpecial_C.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SHCommon/SHCommon.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:PropertyAdder/PropertyAdder.xcodeproj">
+   </FileRef>
    <FileRef
       location = "group:SHTestCommon/SHTestCommon.xcodeproj">
    </FileRef>

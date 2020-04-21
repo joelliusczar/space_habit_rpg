@@ -10,26 +10,6 @@
 // https://help.apple.com/xcode/#/dev745c5c974
 
 #include "../Configs/SHWorkspace.xcconfig"
+#include "../Configs/C_Lib.xcconfig"
 
-
-PRODUCT_NAME = $(TARGET_NAME)
-
-//DEFINES_MODULE = YES
-//
-//MODULEMAP_FILE = $(SRCROOT)/Headers/module.modulemap
-CONFIGURATION_BUILD_DIR = $(inherited)/$(PRODUCT_NAME).framework
-
-//$BUILT_PRODUCTS_DIR/usr/local/include/
-BUILT_PRODUCTS_DIR = $(inherited)/$(PRODUCT_NAME).framework
-
-//The location to copy the public headers to during building, relative to the built products folder.
-PUBLIC_HEADERS_FOLDER_PATH = Headers
-//include/$(PRODUCT_NAME)
-
-//---------------------
-
-
-//USER_HEADER_SEARCH_PATHS = $BUILT_PRODUCTS_DIR/usr/local/include/
-
-DEFINES_MODULE = YES
 

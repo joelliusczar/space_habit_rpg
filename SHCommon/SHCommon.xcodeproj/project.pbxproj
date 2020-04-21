@@ -7,41 +7,54 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		275BC58A23F3A4E70064891B /* SHInheritanceTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 275BC58623F3A4E60064891B /* SHInheritanceTree.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		275BC58B23F3A4E70064891B /* SHInheritanceTreeNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 275BC58723F3A4E60064891B /* SHInheritanceTreeNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		275BC58C23F3A4E70064891B /* SHInheritanceTreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 275BC58823F3A4E70064891B /* SHInheritanceTreeNode.m */; };
-		275BC58D23F3A4E70064891B /* SHInheritanceTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 275BC58923F3A4E70064891B /* SHInheritanceTree.m */; };
-		278DFFB72422FB93001F498C /* libSHUtils_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 278DFFB42422FB7B001F498C /* libSHUtils_C.a */; };
-		27C411A423DBB8480086E1F9 /* SHVarWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4114B23DBB8400086E1F9 /* SHVarWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C411A523DBB8480086E1F9 /* SHNotificationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4114C23DBB8400086E1F9 /* SHNotificationHelper.m */; platformFilter = ios; };
-		27C411A623DBB8480086E1F9 /* SHMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4114D23DBB8400086E1F9 /* SHMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C411A823DBB8480086E1F9 /* SHInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4114F23DBB8410086E1F9 /* SHInterceptor.m */; };
+		2712C5FC244D529600157758 /* SHDatetime in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FF7A06244CDA1400B661FC /* SHDatetime */; };
+		2712C5FD244D529B00157758 /* SHUtils_C in Frameworks */ = {isa = PBXBuildFile; fileRef = 275DF1F9244CDAF500308632 /* SHUtils_C */; };
+		2712C64D244E622F00157758 /* SHIconDrawingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712C625244E622C00157758 /* SHIconDrawingFunctions.m */; };
+		2712C64E244E622F00157758 /* SHSingletonCluster.h in Headers */ = {isa = PBXBuildFile; fileRef = 2712C626244E622C00157758 /* SHSingletonCluster.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2712C64F244E622F00157758 /* SHCoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = 2712C627244E622C00157758 /* SHCoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2712C650244E622F00157758 /* SHInheritanceTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 2712C628244E622C00157758 /* SHInheritanceTree.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2712C651244E622F00157758 /* SHIconDrawingFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2712C629244E622C00157758 /* SHIconDrawingFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2712C653244E622F00157758 /* SHSingletonCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712C62B244E622D00157758 /* SHSingletonCluster.m */; };
+		2712C654244E622F00157758 /* SHProbWeight.h in Headers */ = {isa = PBXBuildFile; fileRef = 2712C62C244E622D00157758 /* SHProbWeight.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2712C655244E622F00157758 /* SHReportServiceCaller.h in Headers */ = {isa = PBXBuildFile; fileRef = 2712C62D244E622D00157758 /* SHReportServiceCaller.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2712C656244E622F00157758 /* SHDefaultDateProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712C62E244E622D00157758 /* SHDefaultDateProvider.m */; };
+		2712C657244E622F00157758 /* SHCommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712C62F244E622D00157758 /* SHCommonUtils.m */; };
+		2712C658244E622F00157758 /* SHKeyToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 2712C630244E622D00157758 /* SHKeyToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2712C659244E622F00157758 /* SHResourceUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712C631244E622D00157758 /* SHResourceUtility.m */; };
+		2712C65A244E622F00157758 /* SHMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712C632244E622D00157758 /* SHMath.m */; };
+		2712C65B244E622F00157758 /* SHResourceUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 2712C633244E622D00157758 /* SHResourceUtility.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2712C65C244E622F00157758 /* SHObjectIDWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 2712C634244E622D00157758 /* SHObjectIDWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2712C65D244E622F00157758 /* SHIconBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712C635244E622D00157758 /* SHIconBuilder.m */; };
+		2712C65E244E622F00157758 /* SHReportServiceCaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712C636244E622D00157758 /* SHReportServiceCaller.m */; };
+		2712C65F244E622F00157758 /* SHCollectionUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 2712C637244E622D00157758 /* SHCollectionUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2712C660244E622F00157758 /* SHVarWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 2712C638244E622D00157758 /* SHVarWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2712C661244E622F00157758 /* SHDebugDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 2712C639244E622D00157758 /* SHDebugDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2712C662244E622F00157758 /* SHObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 2712C63A244E622D00157758 /* SHObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2712C663244E622F00157758 /* SHObjectIDWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712C63B244E622E00157758 /* SHObjectIDWrapper.m */; };
+		2712C664244E622F00157758 /* SHInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712C63C244E622E00157758 /* SHInterceptor.m */; };
+		2712C665244E622F00157758 /* SHInheritanceTreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712C63D244E622E00157758 /* SHInheritanceTreeNode.m */; };
+		2712C666244E622F00157758 /* SHCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712C63E244E622E00157758 /* SHCoreData.m */; };
+		2712C667244E622F00157758 /* SHVarWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712C63F244E622E00157758 /* SHVarWrapper.m */; };
+		2712C668244E622F00157758 /* SHDefaultDateProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 2712C640244E622E00157758 /* SHDefaultDateProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2712C669244E622F00157758 /* SHInterceptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 2712C641244E622E00157758 /* SHInterceptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2712C66A244E622F00157758 /* SHNotificationHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 2712C642244E622E00157758 /* SHNotificationHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2712C66B244E622F00157758 /* SHObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712C643244E622E00157758 /* SHObject.m */; };
+		2712C66C244E622F00157758 /* SHInheritanceTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712C644244E622E00157758 /* SHInheritanceTree.m */; };
+		2712C66D244E622F00157758 /* SHMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 2712C645244E622E00157758 /* SHMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2712C66E244E622F00157758 /* SHProbWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712C646244E622E00157758 /* SHProbWeight.m */; };
+		2712C66F244E622F00157758 /* SHCollectionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712C647244E622F00157758 /* SHCollectionUtils.m */; };
+		2712C670244E622F00157758 /* SHKeyToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712C648244E622F00157758 /* SHKeyToken.m */; };
+		2712C671244E622F00157758 /* SHNotificationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712C649244E622F00157758 /* SHNotificationHelper.m */; };
+		2712C672244E622F00157758 /* SHInheritanceTreeNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 2712C64A244E622F00157758 /* SHInheritanceTreeNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2712C673244E622F00157758 /* SHIconBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 2712C64B244E622F00157758 /* SHIconBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2712C674244E622F00157758 /* SHCommonUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 2712C64C244E622F00157758 /* SHCommonUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2712C678244E641900157758 /* SHCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 2712C677244E641900157758 /* SHCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411AB23DBB8480086E1F9 /* SHMappableProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4115323DBB8410086E1F9 /* SHMappableProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411AC23DBB8480086E1F9 /* SHResourceUtilityProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4115423DBB8410086E1F9 /* SHResourceUtilityProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411AD23DBB8480086E1F9 /* SHInterceptorProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4115523DBB8410086E1F9 /* SHInterceptorProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411AE23DBB8480086E1F9 /* SHDateProviderProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4115623DBB8410086E1F9 /* SHDateProviderProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411AF23DBB8480086E1F9 /* SHReportServiceCallerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4115723DBB8410086E1F9 /* SHReportServiceCallerProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411B023DBB8480086E1F9 /* SHColorInversionHintProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4115823DBB8410086E1F9 /* SHColorInversionHintProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C411B123DBB8480086E1F9 /* SHIconDrawingFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4115923DBB8410086E1F9 /* SHIconDrawingFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C411B223DBB8480086E1F9 /* SHReportServiceCaller.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4115A23DBB8420086E1F9 /* SHReportServiceCaller.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C411B323DBB8480086E1F9 /* SHDebugDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4115B23DBB8420086E1F9 /* SHDebugDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C411B423DBB8480086E1F9 /* SHDefaultDateProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4115C23DBB8420086E1F9 /* SHDefaultDateProvider.m */; };
-		27C411B523DBB8480086E1F9 /* SHCommonUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4115D23DBB8420086E1F9 /* SHCommonUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C411B623DBB8480086E1F9 /* SHSingletonCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4115E23DBB8420086E1F9 /* SHSingletonCluster.m */; };
-		27C411B723DBB8480086E1F9 /* SHNotificationHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4115F23DBB8420086E1F9 /* SHNotificationHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C411B823DBB8480086E1F9 /* SHIconBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4116023DBB8420086E1F9 /* SHIconBuilder.m */; platformFilter = ios; };
-		27C411B923DBB8480086E1F9 /* SHCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4116123DBB8430086E1F9 /* SHCoreData.m */; };
-		27C411BA23DBB8480086E1F9 /* SHObjectIDWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4116223DBB8430086E1F9 /* SHObjectIDWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C411BC23DBB8480086E1F9 /* SHKeyToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4116423DBB8430086E1F9 /* SHKeyToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C411BD23DBB8480086E1F9 /* SHCommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4116523DBB8430086E1F9 /* SHCommonUtils.m */; };
-		27C411BE23DBB8480086E1F9 /* SHSingletonCluster.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4116623DBB8430086E1F9 /* SHSingletonCluster.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C411BF23DBB8480086E1F9 /* SHProbWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4116723DBB8430086E1F9 /* SHProbWeight.m */; };
-		27C411C323DBB8480086E1F9 /* SHMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4116B23DBB8440086E1F9 /* SHMath.m */; };
-		27C411C423DBB8480086E1F9 /* SHVarWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4116C23DBB8440086E1F9 /* SHVarWrapper.m */; };
-		27C411C523DBB8480086E1F9 /* SHIconDrawingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4116D23DBB8440086E1F9 /* SHIconDrawingFunctions.m */; platformFilter = ios; };
-		27C411C623DBB8480086E1F9 /* SHObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4116E23DBB8440086E1F9 /* SHObject.m */; };
-		27C411C723DBB8480086E1F9 /* SHCollectionUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4116F23DBB8450086E1F9 /* SHCollectionUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C411C823DBB8480086E1F9 /* SHObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4117023DBB8450086E1F9 /* SHObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411C923DBB8480086E1F9 /* NSException+SHCommonExceptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4117223DBB8450086E1F9 /* NSException+SHCommonExceptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411CA23DBB8480086E1F9 /* NSMutableArray+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4117323DBB8450086E1F9 /* NSMutableArray+Helper.m */; };
 		27C411CB23DBB8480086E1F9 /* NSArray+SHHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4117423DBB8450086E1F9 /* NSArray+SHHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -71,97 +84,97 @@
 		27C411E323DBB8480086E1F9 /* NSOrderedSet+SHHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4118C23DBB8450086E1F9 /* NSOrderedSet+SHHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411E423DBB8480086E1F9 /* UIImage+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4118D23DBB8450086E1F9 /* UIImage+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411E523DBB8480086E1F9 /* SHDataProviderProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4118E23DBB8450086E1F9 /* SHDataProviderProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C411E623DBB8480086E1F9 /* SHDefaultDateProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4118F23DBB8450086E1F9 /* SHDefaultDateProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C411E723DBB8480086E1F9 /* SHCollectionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4119023DBB8460086E1F9 /* SHCollectionUtils.m */; };
-		27C411E823DBB8480086E1F9 /* SHIconBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4119123DBB8460086E1F9 /* SHIconBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C411EA23DBB8480086E1F9 /* SHReportServiceCaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4119323DBB8460086E1F9 /* SHReportServiceCaller.m */; };
-		27C411EC23DBB8480086E1F9 /* SHCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4119523DBB8460086E1F9 /* SHCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C411ED23DBB8480086E1F9 /* SHCoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4119623DBB8460086E1F9 /* SHCoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C411EF23DBB8480086E1F9 /* SHObjectIDWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4119823DBB8470086E1F9 /* SHObjectIDWrapper.m */; };
 		27C411F123DBB8480086E1F9 /* SHConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4119B23DBB8470086E1F9 /* SHConstants.m */; };
 		27C411F223DBB8480086E1F9 /* SHCommonTypeDefs.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4119C23DBB8470086E1F9 /* SHCommonTypeDefs.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C411F323DBB8480086E1F9 /* SHConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4119D23DBB8470086E1F9 /* SHConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C411F423DBB8480086E1F9 /* SHResourceUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C4119E23DBB8470086E1F9 /* SHResourceUtility.m */; };
-		27C411F523DBB8480086E1F9 /* SHResourceUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4119F23DBB8470086E1F9 /* SHResourceUtility.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C411F623DBB8480086E1F9 /* SHKeyToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C411A023DBB8480086E1F9 /* SHKeyToken.m */; };
-		27C411F723DBB8480086E1F9 /* SHProbWeight.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C411A123DBB8480086E1F9 /* SHProbWeight.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C411F923DBB8480086E1F9 /* SHInterceptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C411A323DBB8480086E1F9 /* SHInterceptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27C4120323DBB90D0086E1F9 /* libSHDatetime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C411FF23DBB8F90086E1F9 /* libSHDatetime.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		278DFFB32422FB7B001F498C /* PBXContainerItemProxy */ = {
+		2712C5F8244D528800157758 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 278DFFAF2422FB7B001F498C /* SHUtils_C.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 271692002089758B0059A58E;
-			remoteInfo = SHUtils_C;
-		};
-		278DFFB52422FB85001F498C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 278DFFAF2422FB7B001F498C /* SHUtils_C.xcodeproj */;
+			containerPortal = 275DF1F4244CDAF500308632 /* SHUtils_C.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 271691FF2089758B0059A58E;
 			remoteInfo = SHUtils_C;
 		};
-		27C411FE23DBB8F90086E1F9 /* PBXContainerItemProxy */ = {
+		2712C5FA244D528D00157758 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 27C411FA23DBB8F90086E1F9 /* SHDatetime.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 27D3183D2086C8CA0047F5F1;
-			remoteInfo = SHDatetime;
-		};
-		27C4120023DBB9030086E1F9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 27C411FA23DBB8F90086E1F9 /* SHDatetime.xcodeproj */;
+			containerPortal = 27FF7A01244CDA1400B661FC /* SHDatetime.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 27D3183C2086C8CA0047F5F1;
+			remoteInfo = SHDatetime;
+		};
+		275DF1F8244CDAF500308632 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 275DF1F4244CDAF500308632 /* SHUtils_C.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 271692002089758B0059A58E;
+			remoteInfo = SHUtils_C;
+		};
+		27FF7A05244CDA1400B661FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27FF7A01244CDA1400B661FC /* SHDatetime.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27D3183D2086C8CA0047F5F1;
 			remoteInfo = SHDatetime;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		275BC58623F3A4E60064891B /* SHInheritanceTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHInheritanceTree.h; sourceTree = "<group>"; };
-		275BC58723F3A4E60064891B /* SHInheritanceTreeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHInheritanceTreeNode.h; sourceTree = "<group>"; };
-		275BC58823F3A4E70064891B /* SHInheritanceTreeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHInheritanceTreeNode.m; sourceTree = "<group>"; };
-		275BC58923F3A4E70064891B /* SHInheritanceTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHInheritanceTree.m; sourceTree = "<group>"; };
-		278DFFAF2422FB7B001F498C /* SHUtils_C.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHUtils_C.xcodeproj; path = ../SHUtils_C/SHUtils_C.xcodeproj; sourceTree = "<group>"; };
+		2712C625244E622C00157758 /* SHIconDrawingFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHIconDrawingFunctions.m; sourceTree = "<group>"; };
+		2712C626244E622C00157758 /* SHSingletonCluster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSingletonCluster.h; sourceTree = "<group>"; };
+		2712C627244E622C00157758 /* SHCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCoreData.h; sourceTree = "<group>"; };
+		2712C628244E622C00157758 /* SHInheritanceTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHInheritanceTree.h; sourceTree = "<group>"; };
+		2712C629244E622C00157758 /* SHIconDrawingFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHIconDrawingFunctions.h; sourceTree = "<group>"; };
+		2712C62B244E622D00157758 /* SHSingletonCluster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSingletonCluster.m; sourceTree = "<group>"; };
+		2712C62C244E622D00157758 /* SHProbWeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHProbWeight.h; sourceTree = "<group>"; };
+		2712C62D244E622D00157758 /* SHReportServiceCaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHReportServiceCaller.h; sourceTree = "<group>"; };
+		2712C62E244E622D00157758 /* SHDefaultDateProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDefaultDateProvider.m; sourceTree = "<group>"; };
+		2712C62F244E622D00157758 /* SHCommonUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCommonUtils.m; sourceTree = "<group>"; };
+		2712C630244E622D00157758 /* SHKeyToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKeyToken.h; sourceTree = "<group>"; };
+		2712C631244E622D00157758 /* SHResourceUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHResourceUtility.m; sourceTree = "<group>"; };
+		2712C632244E622D00157758 /* SHMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMath.m; sourceTree = "<group>"; };
+		2712C633244E622D00157758 /* SHResourceUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHResourceUtility.h; sourceTree = "<group>"; };
+		2712C634244E622D00157758 /* SHObjectIDWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHObjectIDWrapper.h; sourceTree = "<group>"; };
+		2712C635244E622D00157758 /* SHIconBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHIconBuilder.m; sourceTree = "<group>"; };
+		2712C636244E622D00157758 /* SHReportServiceCaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHReportServiceCaller.m; sourceTree = "<group>"; };
+		2712C637244E622D00157758 /* SHCollectionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCollectionUtils.h; sourceTree = "<group>"; };
+		2712C638244E622D00157758 /* SHVarWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHVarWrapper.h; sourceTree = "<group>"; };
+		2712C639244E622D00157758 /* SHDebugDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDebugDefines.h; sourceTree = "<group>"; };
+		2712C63A244E622D00157758 /* SHObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHObject.h; sourceTree = "<group>"; };
+		2712C63B244E622E00157758 /* SHObjectIDWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHObjectIDWrapper.m; sourceTree = "<group>"; };
+		2712C63C244E622E00157758 /* SHInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHInterceptor.m; sourceTree = "<group>"; };
+		2712C63D244E622E00157758 /* SHInheritanceTreeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHInheritanceTreeNode.m; sourceTree = "<group>"; };
+		2712C63E244E622E00157758 /* SHCoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCoreData.m; sourceTree = "<group>"; };
+		2712C63F244E622E00157758 /* SHVarWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHVarWrapper.m; sourceTree = "<group>"; };
+		2712C640244E622E00157758 /* SHDefaultDateProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDefaultDateProvider.h; sourceTree = "<group>"; };
+		2712C641244E622E00157758 /* SHInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHInterceptor.h; sourceTree = "<group>"; };
+		2712C642244E622E00157758 /* SHNotificationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHNotificationHelper.h; sourceTree = "<group>"; };
+		2712C643244E622E00157758 /* SHObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHObject.m; sourceTree = "<group>"; };
+		2712C644244E622E00157758 /* SHInheritanceTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHInheritanceTree.m; sourceTree = "<group>"; };
+		2712C645244E622E00157758 /* SHMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMath.h; sourceTree = "<group>"; };
+		2712C646244E622E00157758 /* SHProbWeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHProbWeight.m; sourceTree = "<group>"; };
+		2712C647244E622F00157758 /* SHCollectionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCollectionUtils.m; sourceTree = "<group>"; };
+		2712C648244E622F00157758 /* SHKeyToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKeyToken.m; sourceTree = "<group>"; };
+		2712C649244E622F00157758 /* SHNotificationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHNotificationHelper.m; sourceTree = "<group>"; };
+		2712C64A244E622F00157758 /* SHInheritanceTreeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHInheritanceTreeNode.h; sourceTree = "<group>"; };
+		2712C64B244E622F00157758 /* SHIconBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHIconBuilder.h; sourceTree = "<group>"; };
+		2712C64C244E622F00157758 /* SHCommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCommonUtils.h; sourceTree = "<group>"; };
+		2712C677244E641900157758 /* SHCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCommon.h; sourceTree = "<group>"; };
+		275DF1F4244CDAF500308632 /* SHUtils_C.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHUtils_C.xcodeproj; path = ../SHUtils_C/SHUtils_C.xcodeproj; sourceTree = "<group>"; };
+		27A2BE54244CDA71009DB823 /* libSHUtils_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHUtils_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C4113623DBB7CF0086E1F9 /* SHCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C4113A23DBB7CF0086E1F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27C4114223DBB7FB0086E1F9 /* SHCommon.base.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = SHCommon.base.xcconfig; sourceTree = "<group>"; };
 		27C4114323DBB7FB0086E1F9 /* SHCommon.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = SHCommon.debug.xcconfig; sourceTree = "<group>"; };
 		27C4114723DBB81E0086E1F9 /* SHCommon.prebuild.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = SHCommon.prebuild.sh; sourceTree = "<group>"; };
 		27C4114823DBB81E0086E1F9 /* SHCommon.postbuild.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = SHCommon.postbuild.sh; sourceTree = "<group>"; };
-		27C4114B23DBB8400086E1F9 /* SHVarWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHVarWrapper.h; sourceTree = "<group>"; };
-		27C4114C23DBB8400086E1F9 /* SHNotificationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHNotificationHelper.m; sourceTree = "<group>"; };
-		27C4114D23DBB8400086E1F9 /* SHMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMath.h; sourceTree = "<group>"; };
-		27C4114F23DBB8410086E1F9 /* SHInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHInterceptor.m; sourceTree = "<group>"; };
 		27C4115323DBB8410086E1F9 /* SHMappableProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMappableProtocol.h; sourceTree = "<group>"; };
 		27C4115423DBB8410086E1F9 /* SHResourceUtilityProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHResourceUtilityProtocol.h; sourceTree = "<group>"; };
 		27C4115523DBB8410086E1F9 /* SHInterceptorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHInterceptorProtocol.h; sourceTree = "<group>"; };
 		27C4115623DBB8410086E1F9 /* SHDateProviderProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDateProviderProtocol.h; sourceTree = "<group>"; };
 		27C4115723DBB8410086E1F9 /* SHReportServiceCallerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHReportServiceCallerProtocol.h; sourceTree = "<group>"; };
 		27C4115823DBB8410086E1F9 /* SHColorInversionHintProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHColorInversionHintProtocol.h; sourceTree = "<group>"; };
-		27C4115923DBB8410086E1F9 /* SHIconDrawingFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHIconDrawingFunctions.h; sourceTree = "<group>"; };
-		27C4115A23DBB8420086E1F9 /* SHReportServiceCaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHReportServiceCaller.h; sourceTree = "<group>"; };
-		27C4115B23DBB8420086E1F9 /* SHDebugDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDebugDefines.h; sourceTree = "<group>"; };
-		27C4115C23DBB8420086E1F9 /* SHDefaultDateProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDefaultDateProvider.m; sourceTree = "<group>"; };
-		27C4115D23DBB8420086E1F9 /* SHCommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCommonUtils.h; sourceTree = "<group>"; };
-		27C4115E23DBB8420086E1F9 /* SHSingletonCluster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSingletonCluster.m; sourceTree = "<group>"; };
-		27C4115F23DBB8420086E1F9 /* SHNotificationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHNotificationHelper.h; sourceTree = "<group>"; };
-		27C4116023DBB8420086E1F9 /* SHIconBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHIconBuilder.m; sourceTree = "<group>"; };
-		27C4116123DBB8430086E1F9 /* SHCoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCoreData.m; sourceTree = "<group>"; };
-		27C4116223DBB8430086E1F9 /* SHObjectIDWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHObjectIDWrapper.h; sourceTree = "<group>"; };
-		27C4116423DBB8430086E1F9 /* SHKeyToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKeyToken.h; sourceTree = "<group>"; };
-		27C4116523DBB8430086E1F9 /* SHCommonUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCommonUtils.m; sourceTree = "<group>"; };
-		27C4116623DBB8430086E1F9 /* SHSingletonCluster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSingletonCluster.h; sourceTree = "<group>"; };
-		27C4116723DBB8430086E1F9 /* SHProbWeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHProbWeight.m; sourceTree = "<group>"; };
-		27C4116B23DBB8440086E1F9 /* SHMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMath.m; sourceTree = "<group>"; };
-		27C4116C23DBB8440086E1F9 /* SHVarWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHVarWrapper.m; sourceTree = "<group>"; };
-		27C4116D23DBB8440086E1F9 /* SHIconDrawingFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHIconDrawingFunctions.m; sourceTree = "<group>"; };
-		27C4116E23DBB8440086E1F9 /* SHObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHObject.m; sourceTree = "<group>"; };
-		27C4116F23DBB8450086E1F9 /* SHCollectionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCollectionUtils.h; sourceTree = "<group>"; };
-		27C4117023DBB8450086E1F9 /* SHObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHObject.h; sourceTree = "<group>"; };
 		27C4117223DBB8450086E1F9 /* NSException+SHCommonExceptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSException+SHCommonExceptions.h"; sourceTree = "<group>"; };
 		27C4117323DBB8450086E1F9 /* NSMutableArray+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Helper.m"; sourceTree = "<group>"; };
 		27C4117423DBB8450086E1F9 /* NSArray+SHHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+SHHelper.h"; sourceTree = "<group>"; };
@@ -191,22 +204,10 @@
 		27C4118C23DBB8450086E1F9 /* NSOrderedSet+SHHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOrderedSet+SHHelper.h"; sourceTree = "<group>"; };
 		27C4118D23DBB8450086E1F9 /* UIImage+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Helper.h"; sourceTree = "<group>"; };
 		27C4118E23DBB8450086E1F9 /* SHDataProviderProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDataProviderProtocol.h; sourceTree = "<group>"; };
-		27C4118F23DBB8450086E1F9 /* SHDefaultDateProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDefaultDateProvider.h; sourceTree = "<group>"; };
-		27C4119023DBB8460086E1F9 /* SHCollectionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHCollectionUtils.m; sourceTree = "<group>"; };
-		27C4119123DBB8460086E1F9 /* SHIconBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHIconBuilder.h; sourceTree = "<group>"; };
-		27C4119323DBB8460086E1F9 /* SHReportServiceCaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHReportServiceCaller.m; sourceTree = "<group>"; };
-		27C4119523DBB8460086E1F9 /* SHCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHCommon.h; path = ../../../movingStuff/SHCommon/SHCommon/SHCommon.h; sourceTree = "<group>"; };
-		27C4119623DBB8460086E1F9 /* SHCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCoreData.h; sourceTree = "<group>"; };
-		27C4119823DBB8470086E1F9 /* SHObjectIDWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHObjectIDWrapper.m; sourceTree = "<group>"; };
 		27C4119B23DBB8470086E1F9 /* SHConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHConstants.m; sourceTree = "<group>"; };
 		27C4119C23DBB8470086E1F9 /* SHCommonTypeDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHCommonTypeDefs.h; sourceTree = "<group>"; };
 		27C4119D23DBB8470086E1F9 /* SHConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHConstants.h; sourceTree = "<group>"; };
-		27C4119E23DBB8470086E1F9 /* SHResourceUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHResourceUtility.m; sourceTree = "<group>"; };
-		27C4119F23DBB8470086E1F9 /* SHResourceUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHResourceUtility.h; sourceTree = "<group>"; };
-		27C411A023DBB8480086E1F9 /* SHKeyToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKeyToken.m; sourceTree = "<group>"; };
-		27C411A123DBB8480086E1F9 /* SHProbWeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHProbWeight.h; sourceTree = "<group>"; };
-		27C411A323DBB8480086E1F9 /* SHInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHInterceptor.h; sourceTree = "<group>"; };
-		27C411FA23DBB8F90086E1F9 /* SHDatetime.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHDatetime.xcodeproj; path = ../SHDatetime/SHDatetime.xcodeproj; sourceTree = "<group>"; };
+		27FF7A01244CDA1400B661FC /* SHDatetime.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHDatetime.xcodeproj; path = ../SHDatetime/SHDatetime.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,14 +215,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				278DFFB72422FB93001F498C /* libSHUtils_C.a in Frameworks */,
-				27C4120323DBB90D0086E1F9 /* libSHDatetime.a in Frameworks */,
+				2712C5FD244D529B00157758 /* SHUtils_C in Frameworks */,
+				2712C5FC244D529600157758 /* SHDatetime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		275DF1F5244CDAF500308632 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				275DF1F9244CDAF500308632 /* SHUtils_C */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		277567F823E27744009EDD93 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,24 +273,16 @@
 			path = Implementations;
 			sourceTree = "<group>";
 		};
-		278DFFB02422FB7B001F498C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				278DFFB42422FB7B001F498C /* libSHUtils_C.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		27C4112C23DBB7CF0086E1F9 = {
 			isa = PBXGroup;
 			children = (
+				275DF1F4244CDAF500308632 /* SHUtils_C.xcodeproj */,
+				27FF7A01244CDA1400B661FC /* SHDatetime.xcodeproj */,
+				27C4114623DBB81E0086E1F9 /* Scripts */,
 				27C4114123DBB7FB0086E1F9 /* Configs */,
 				27C4120223DBB90D0086E1F9 /* Frameworks */,
 				27C4113723DBB7CF0086E1F9 /* Products */,
-				27C4114623DBB81E0086E1F9 /* Scripts */,
 				27C4113823DBB7CF0086E1F9 /* SHCommon */,
-				27C411FA23DBB8F90086E1F9 /* SHDatetime.xcodeproj */,
-				278DFFAF2422FB7B001F498C /* SHUtils_C.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -296,50 +297,50 @@
 		27C4113823DBB7CF0086E1F9 /* SHCommon */ = {
 			isa = PBXGroup;
 			children = (
+				2712C677244E641900157758 /* SHCommon.h */,
+				2712C637244E622D00157758 /* SHCollectionUtils.h */,
+				2712C647244E622F00157758 /* SHCollectionUtils.m */,
+				2712C64C244E622F00157758 /* SHCommonUtils.h */,
+				2712C62F244E622D00157758 /* SHCommonUtils.m */,
+				2712C627244E622C00157758 /* SHCoreData.h */,
+				2712C63E244E622E00157758 /* SHCoreData.m */,
+				2712C639244E622D00157758 /* SHDebugDefines.h */,
+				2712C640244E622E00157758 /* SHDefaultDateProvider.h */,
+				2712C62E244E622D00157758 /* SHDefaultDateProvider.m */,
+				2712C64B244E622F00157758 /* SHIconBuilder.h */,
+				2712C635244E622D00157758 /* SHIconBuilder.m */,
+				2712C629244E622C00157758 /* SHIconDrawingFunctions.h */,
+				2712C625244E622C00157758 /* SHIconDrawingFunctions.m */,
+				2712C628244E622C00157758 /* SHInheritanceTree.h */,
+				2712C644244E622E00157758 /* SHInheritanceTree.m */,
+				2712C64A244E622F00157758 /* SHInheritanceTreeNode.h */,
+				2712C63D244E622E00157758 /* SHInheritanceTreeNode.m */,
+				2712C641244E622E00157758 /* SHInterceptor.h */,
+				2712C63C244E622E00157758 /* SHInterceptor.m */,
+				2712C630244E622D00157758 /* SHKeyToken.h */,
+				2712C648244E622F00157758 /* SHKeyToken.m */,
+				2712C645244E622E00157758 /* SHMath.h */,
+				2712C632244E622D00157758 /* SHMath.m */,
+				2712C642244E622E00157758 /* SHNotificationHelper.h */,
+				2712C649244E622F00157758 /* SHNotificationHelper.m */,
+				2712C63A244E622D00157758 /* SHObject.h */,
+				2712C643244E622E00157758 /* SHObject.m */,
+				2712C634244E622D00157758 /* SHObjectIDWrapper.h */,
+				2712C63B244E622E00157758 /* SHObjectIDWrapper.m */,
+				2712C62C244E622D00157758 /* SHProbWeight.h */,
+				2712C646244E622E00157758 /* SHProbWeight.m */,
+				2712C62D244E622D00157758 /* SHReportServiceCaller.h */,
+				2712C636244E622D00157758 /* SHReportServiceCaller.m */,
+				2712C633244E622D00157758 /* SHResourceUtility.h */,
+				2712C631244E622D00157758 /* SHResourceUtility.m */,
+				2712C626244E622C00157758 /* SHSingletonCluster.h */,
+				2712C62B244E622D00157758 /* SHSingletonCluster.m */,
+				2712C638244E622D00157758 /* SHVarWrapper.h */,
+				2712C63F244E622E00157758 /* SHVarWrapper.m */,
 				27C4119A23DBB8470086E1F9 /* Constants */,
 				27C4113A23DBB7CF0086E1F9 /* Info.plist */,
 				27C4117123DBB8450086E1F9 /* NS+Categories */,
 				27C4115223DBB8410086E1F9 /* Protocols */,
-				27C4116F23DBB8450086E1F9 /* SHCollectionUtils.h */,
-				27C4119023DBB8460086E1F9 /* SHCollectionUtils.m */,
-				27C4119523DBB8460086E1F9 /* SHCommon.h */,
-				27C4115D23DBB8420086E1F9 /* SHCommonUtils.h */,
-				27C4116523DBB8430086E1F9 /* SHCommonUtils.m */,
-				27C4119623DBB8460086E1F9 /* SHCoreData.h */,
-				27C4116123DBB8430086E1F9 /* SHCoreData.m */,
-				27C4115B23DBB8420086E1F9 /* SHDebugDefines.h */,
-				27C4118F23DBB8450086E1F9 /* SHDefaultDateProvider.h */,
-				27C4115C23DBB8420086E1F9 /* SHDefaultDateProvider.m */,
-				27C4119123DBB8460086E1F9 /* SHIconBuilder.h */,
-				27C4116023DBB8420086E1F9 /* SHIconBuilder.m */,
-				27C4115923DBB8410086E1F9 /* SHIconDrawingFunctions.h */,
-				27C4116D23DBB8440086E1F9 /* SHIconDrawingFunctions.m */,
-				275BC58623F3A4E60064891B /* SHInheritanceTree.h */,
-				275BC58923F3A4E70064891B /* SHInheritanceTree.m */,
-				275BC58723F3A4E60064891B /* SHInheritanceTreeNode.h */,
-				275BC58823F3A4E70064891B /* SHInheritanceTreeNode.m */,
-				27C411A323DBB8480086E1F9 /* SHInterceptor.h */,
-				27C4114F23DBB8410086E1F9 /* SHInterceptor.m */,
-				27C4116423DBB8430086E1F9 /* SHKeyToken.h */,
-				27C411A023DBB8480086E1F9 /* SHKeyToken.m */,
-				27C4114D23DBB8400086E1F9 /* SHMath.h */,
-				27C4116B23DBB8440086E1F9 /* SHMath.m */,
-				27C4115F23DBB8420086E1F9 /* SHNotificationHelper.h */,
-				27C4114C23DBB8400086E1F9 /* SHNotificationHelper.m */,
-				27C4117023DBB8450086E1F9 /* SHObject.h */,
-				27C4116E23DBB8440086E1F9 /* SHObject.m */,
-				27C4116223DBB8430086E1F9 /* SHObjectIDWrapper.h */,
-				27C4119823DBB8470086E1F9 /* SHObjectIDWrapper.m */,
-				27C411A123DBB8480086E1F9 /* SHProbWeight.h */,
-				27C4116723DBB8430086E1F9 /* SHProbWeight.m */,
-				27C4115A23DBB8420086E1F9 /* SHReportServiceCaller.h */,
-				27C4119323DBB8460086E1F9 /* SHReportServiceCaller.m */,
-				27C4119F23DBB8470086E1F9 /* SHResourceUtility.h */,
-				27C4119E23DBB8470086E1F9 /* SHResourceUtility.m */,
-				27C4116623DBB8430086E1F9 /* SHSingletonCluster.h */,
-				27C4115E23DBB8420086E1F9 /* SHSingletonCluster.m */,
-				27C4114B23DBB8400086E1F9 /* SHVarWrapper.h */,
-				27C4116C23DBB8440086E1F9 /* SHVarWrapper.m */,
 			);
 			path = SHCommon;
 			sourceTree = "<group>";
@@ -395,19 +396,20 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
-		27C411FB23DBB8F90086E1F9 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				27C411FF23DBB8F90086E1F9 /* libSHDatetime.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		27C4120223DBB90D0086E1F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				27A2BE54244CDA71009DB823 /* libSHUtils_C.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		27FF7A02244CDA1400B661FC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27FF7A06244CDA1400B661FC /* SHDatetime */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -418,48 +420,48 @@
 			buildActionMask = 2147483647;
 			files = (
 				27C411F223DBB8480086E1F9 /* SHCommonTypeDefs.h in Headers */,
-				27C411B223DBB8480086E1F9 /* SHReportServiceCaller.h in Headers */,
 				27C411E123DBB8480086E1F9 /* NSSet+SHHelper.h in Headers */,
 				27C411AC23DBB8480086E1F9 /* SHResourceUtilityProtocol.h in Headers */,
 				27C411C923DBB8480086E1F9 /* NSException+SHCommonExceptions.h in Headers */,
-				27C411B523DBB8480086E1F9 /* SHCommonUtils.h in Headers */,
 				27C411E023DBB8480086E1F9 /* NSNumber+Helper.h in Headers */,
 				27C411E323DBB8480086E1F9 /* NSOrderedSet+SHHelper.h in Headers */,
-				27C411B123DBB8480086E1F9 /* SHIconDrawingFunctions.h in Headers */,
 				27C411D823DBB8480086E1F9 /* NSMutableDictionary+Helper.h in Headers */,
-				27C411C823DBB8480086E1F9 /* SHObject.h in Headers */,
-				27C411E623DBB8480086E1F9 /* SHDefaultDateProvider.h in Headers */,
+				2712C66D244E622F00157758 /* SHMath.h in Headers */,
+				2712C65B244E622F00157758 /* SHResourceUtility.h in Headers */,
+				2712C672244E622F00157758 /* SHInheritanceTreeNode.h in Headers */,
+				2712C662244E622F00157758 /* SHObject.h in Headers */,
+				2712C65F244E622F00157758 /* SHCollectionUtils.h in Headers */,
+				2712C65C244E622F00157758 /* SHObjectIDWrapper.h in Headers */,
+				2712C655244E622F00157758 /* SHReportServiceCaller.h in Headers */,
+				2712C650244E622F00157758 /* SHInheritanceTree.h in Headers */,
+				2712C668244E622F00157758 /* SHDefaultDateProvider.h in Headers */,
+				2712C660244E622F00157758 /* SHVarWrapper.h in Headers */,
+				2712C651244E622F00157758 /* SHIconDrawingFunctions.h in Headers */,
+				2712C661244E622F00157758 /* SHDebugDefines.h in Headers */,
+				2712C64F244E622F00157758 /* SHCoreData.h in Headers */,
+				2712C64E244E622F00157758 /* SHSingletonCluster.h in Headers */,
+				2712C658244E622F00157758 /* SHKeyToken.h in Headers */,
+				2712C678244E641900157758 /* SHCommon.h in Headers */,
+				2712C66A244E622F00157758 /* SHNotificationHelper.h in Headers */,
+				2712C669244E622F00157758 /* SHInterceptor.h in Headers */,
+				2712C654244E622F00157758 /* SHProbWeight.h in Headers */,
+				2712C674244E622F00157758 /* SHCommonUtils.h in Headers */,
+				2712C673244E622F00157758 /* SHIconBuilder.h in Headers */,
 				27C411DB23DBB8480086E1F9 /* NSMutableArray+Helper.h in Headers */,
 				27C411DF23DBB8480086E1F9 /* NSManagedObjectContext+Helper.h in Headers */,
 				27C411E423DBB8480086E1F9 /* UIImage+Helper.h in Headers */,
-				27C411A623DBB8480086E1F9 /* SHMath.h in Headers */,
 				27C411AE23DBB8480086E1F9 /* SHDateProviderProtocol.h in Headers */,
-				27C411F523DBB8480086E1F9 /* SHResourceUtility.h in Headers */,
 				27C411CC23DBB8480086E1F9 /* UIColor+Helper.h in Headers */,
-				27C411EC23DBB8480086E1F9 /* SHCommon.h in Headers */,
-				27C411F923DBB8480086E1F9 /* SHInterceptor.h in Headers */,
 				27C411DC23DBB8480086E1F9 /* NSDictionary+SHHelper.h in Headers */,
 				27C411AB23DBB8480086E1F9 /* SHMappableProtocol.h in Headers */,
-				27C411BA23DBB8480086E1F9 /* SHObjectIDWrapper.h in Headers */,
-				27C411BE23DBB8480086E1F9 /* SHSingletonCluster.h in Headers */,
 				27C411F323DBB8480086E1F9 /* SHConstants.h in Headers */,
-				27C411F723DBB8480086E1F9 /* SHProbWeight.h in Headers */,
-				27C411BC23DBB8480086E1F9 /* SHKeyToken.h in Headers */,
 				27C411D323DBB8480086E1F9 /* NSDate+DateHelper.h in Headers */,
-				27C411ED23DBB8480086E1F9 /* SHCoreData.h in Headers */,
 				27C411D623DBB8480086E1F9 /* NSObject+Helper.h in Headers */,
-				27C411A423DBB8480086E1F9 /* SHVarWrapper.h in Headers */,
-				27C411B723DBB8480086E1F9 /* SHNotificationHelper.h in Headers */,
-				27C411E823DBB8480086E1F9 /* SHIconBuilder.h in Headers */,
 				27C411AD23DBB8480086E1F9 /* SHInterceptorProtocol.h in Headers */,
 				27C411B023DBB8480086E1F9 /* SHColorInversionHintProtocol.h in Headers */,
-				27C411B323DBB8480086E1F9 /* SHDebugDefines.h in Headers */,
 				27C411AF23DBB8480086E1F9 /* SHReportServiceCallerProtocol.h in Headers */,
 				27C411DE23DBB8480086E1F9 /* NSLocale+Helper.h in Headers */,
 				27C411CB23DBB8480086E1F9 /* NSArray+SHHelper.h in Headers */,
-				27C411C723DBB8480086E1F9 /* SHCollectionUtils.h in Headers */,
-				275BC58A23F3A4E70064891B /* SHInheritanceTree.h in Headers */,
-				275BC58B23F3A4E70064891B /* SHInheritanceTreeNode.h in Headers */,
 				27C411E523DBB8480086E1F9 /* SHDataProviderProtocol.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -481,8 +483,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				278DFFB62422FB85001F498C /* PBXTargetDependency */,
-				27C4120123DBB9030086E1F9 /* PBXTargetDependency */,
+				2712C5F9244D528800157758 /* PBXTargetDependency */,
+				2712C5FB244D528D00157758 /* PBXTargetDependency */,
 			);
 			name = SHCommon;
 			productName = SHCommon;
@@ -516,12 +518,12 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 27C411FB23DBB8F90086E1F9 /* Products */;
-					ProjectRef = 27C411FA23DBB8F90086E1F9 /* SHDatetime.xcodeproj */;
+					ProductGroup = 27FF7A02244CDA1400B661FC /* Products */;
+					ProjectRef = 27FF7A01244CDA1400B661FC /* SHDatetime.xcodeproj */;
 				},
 				{
-					ProductGroup = 278DFFB02422FB7B001F498C /* Products */;
-					ProjectRef = 278DFFAF2422FB7B001F498C /* SHUtils_C.xcodeproj */;
+					ProductGroup = 275DF1F5244CDAF500308632 /* Products */;
+					ProjectRef = 275DF1F4244CDAF500308632 /* SHUtils_C.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -532,18 +534,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		278DFFB42422FB7B001F498C /* libSHUtils_C.a */ = {
+		275DF1F9244CDAF500308632 /* SHUtils_C */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libSHUtils_C.a;
-			remoteRef = 278DFFB32422FB7B001F498C /* PBXContainerItemProxy */;
+			path = SHUtils_C;
+			remoteRef = 275DF1F8244CDAF500308632 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		27C411FF23DBB8F90086E1F9 /* libSHDatetime.a */ = {
+		27FF7A06244CDA1400B661FC /* SHDatetime */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libSHDatetime.a;
-			remoteRef = 27C411FE23DBB8F90086E1F9 /* PBXContainerItemProxy */;
+			path = SHDatetime;
+			remoteRef = 27FF7A05244CDA1400B661FC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -575,6 +577,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nsh Scripts/SHCommon.postbuild.sh\n";
+			showEnvVarsInLog = 0;
 		};
 		27C4122023DBC0A60086E1F9 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -600,55 +603,55 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27C411B823DBB8480086E1F9 /* SHIconBuilder.m in Sources */,
 				27C411D923DBB8480086E1F9 /* UIColor+Helper.m in Sources */,
+				2712C66E244E622F00157758 /* SHProbWeight.m in Sources */,
 				27C411D723DBB8480086E1F9 /* NSException+SHCommonExceptions.m in Sources */,
-				27C411BD23DBB8480086E1F9 /* SHCommonUtils.m in Sources */,
+				2712C66B244E622F00157758 /* SHObject.m in Sources */,
 				27C411DD23DBB8480086E1F9 /* NSDate+DateHelper.m in Sources */,
 				27C411F123DBB8480086E1F9 /* SHConstants.m in Sources */,
-				27C411B423DBB8480086E1F9 /* SHDefaultDateProvider.m in Sources */,
-				27C411BF23DBB8480086E1F9 /* SHProbWeight.m in Sources */,
-				27C411EA23DBB8480086E1F9 /* SHReportServiceCaller.m in Sources */,
-				27C411A823DBB8480086E1F9 /* SHInterceptor.m in Sources */,
+				2712C66F244E622F00157758 /* SHCollectionUtils.m in Sources */,
+				2712C66C244E622F00157758 /* SHInheritanceTree.m in Sources */,
 				27C411CD23DBB8480086E1F9 /* NSMutableDictionary+Helper.m in Sources */,
+				2712C659244E622F00157758 /* SHResourceUtility.m in Sources */,
+				2712C666244E622F00157758 /* SHCoreData.m in Sources */,
 				27C411D023DBB8480086E1F9 /* NSManagedObjectContext+Helper.m in Sources */,
-				275BC58C23F3A4E70064891B /* SHInheritanceTreeNode.m in Sources */,
 				27C411CA23DBB8480086E1F9 /* NSMutableArray+Helper.m in Sources */,
-				27C411C623DBB8480086E1F9 /* SHObject.m in Sources */,
-				27C411C323DBB8480086E1F9 /* SHMath.m in Sources */,
-				27C411F623DBB8480086E1F9 /* SHKeyToken.m in Sources */,
 				27C411D523DBB8480086E1F9 /* NSOrderedSet+SHHelper.m in Sources */,
-				27C411C523DBB8480086E1F9 /* SHIconDrawingFunctions.m in Sources */,
-				27C411C423DBB8480086E1F9 /* SHVarWrapper.m in Sources */,
+				2712C657244E622F00157758 /* SHCommonUtils.m in Sources */,
 				27C411CF23DBB8480086E1F9 /* NSNumber+Helper.m in Sources */,
-				27C411E723DBB8480086E1F9 /* SHCollectionUtils.m in Sources */,
-				275BC58D23F3A4E70064891B /* SHInheritanceTree.m in Sources */,
+				2712C664244E622F00157758 /* SHInterceptor.m in Sources */,
+				2712C65D244E622F00157758 /* SHIconBuilder.m in Sources */,
+				2712C65E244E622F00157758 /* SHReportServiceCaller.m in Sources */,
+				2712C65A244E622F00157758 /* SHMath.m in Sources */,
+				2712C656244E622F00157758 /* SHDefaultDateProvider.m in Sources */,
 				27C411D423DBB8480086E1F9 /* UIImage+Helper.m in Sources */,
 				27C411DA23DBB8480086E1F9 /* NSArray+SHHelper.m in Sources */,
 				27C411E223DBB8480086E1F9 /* NSObject+Helper.m in Sources */,
+				2712C64D244E622F00157758 /* SHIconDrawingFunctions.m in Sources */,
 				27C411D123DBB8480086E1F9 /* NSLocale+Helper.m in Sources */,
-				27C411F423DBB8480086E1F9 /* SHResourceUtility.m in Sources */,
-				27C411B923DBB8480086E1F9 /* SHCoreData.m in Sources */,
-				27C411A523DBB8480086E1F9 /* SHNotificationHelper.m in Sources */,
-				27C411B623DBB8480086E1F9 /* SHSingletonCluster.m in Sources */,
+				2712C670244E622F00157758 /* SHKeyToken.m in Sources */,
+				2712C671244E622F00157758 /* SHNotificationHelper.m in Sources */,
+				2712C667244E622F00157758 /* SHVarWrapper.m in Sources */,
+				2712C653244E622F00157758 /* SHSingletonCluster.m in Sources */,
 				27C411D223DBB8480086E1F9 /* NSDictionary+SHHelper.m in Sources */,
-				27C411EF23DBB8480086E1F9 /* SHObjectIDWrapper.m in Sources */,
+				2712C663244E622F00157758 /* SHObjectIDWrapper.m in Sources */,
 				27C411CE23DBB8480086E1F9 /* NSSet+SHHelper.m in Sources */,
+				2712C665244E622F00157758 /* SHInheritanceTreeNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		278DFFB62422FB85001F498C /* PBXTargetDependency */ = {
+		2712C5F9244D528800157758 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SHUtils_C;
-			targetProxy = 278DFFB52422FB85001F498C /* PBXContainerItemProxy */;
+			targetProxy = 2712C5F8244D528800157758 /* PBXContainerItemProxy */;
 		};
-		27C4120123DBB9030086E1F9 /* PBXTargetDependency */ = {
+		2712C5FB244D528D00157758 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SHDatetime;
-			targetProxy = 27C4120023DBB9030086E1F9 /* PBXContainerItemProxy */;
+			targetProxy = 2712C5FA244D528D00157758 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -659,7 +662,6 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -699,11 +701,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -715,7 +715,6 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -749,10 +748,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -775,6 +772,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.SHCommon;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -798,6 +796,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.SHCommon;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
