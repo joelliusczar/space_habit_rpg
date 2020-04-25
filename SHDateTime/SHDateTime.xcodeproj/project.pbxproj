@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2703AA732453349C00ACE781 /* SHUtils_C in Frameworks */ = {isa = PBXBuildFile; fileRef = 2703AA67244FBCBC00ACE781 /* SHUtils_C */; };
 		2738CB21233EADE500A41CC3 /* SHDatetime.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769C1032286364C00217480 /* SHDatetime.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27D318512086C9040047F5F1 /* SHTimeZone.c in Sources */ = {isa = PBXBuildFile; fileRef = 27D318462086C9040047F5F1 /* SHTimeZone.c */; };
 		27D318532086C9040047F5F1 /* SHDTConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D318482086C9040047F5F1 /* SHDTConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -18,16 +19,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		27FF79FD244CD9E300B661FC /* PBXContainerItemProxy */ = {
+		2703AA66244FBCBC00ACE781 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 27FF79F9244CD9E300B661FC /* SHUtils_C.xcodeproj */;
+			containerPortal = 2703AA62244FBCBB00ACE781 /* SHUtils_C.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 271692002089758B0059A58E;
 			remoteInfo = SHUtils_C;
 		};
-		27FF79FF244CD9EC00B661FC /* PBXContainerItemProxy */ = {
+		2703AA712453349400ACE781 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 27FF79F9244CD9E300B661FC /* SHUtils_C.xcodeproj */;
+			containerPortal = 2703AA62244FBCBB00ACE781 /* SHUtils_C.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 271691FF2089758B0059A58E;
 			remoteInfo = SHUtils_C;
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2703AA62244FBCBB00ACE781 /* SHUtils_C.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHUtils_C.xcodeproj; path = ../SHUtils_C/SHUtils_C.xcodeproj; sourceTree = "<group>"; };
 		270CB969244C92A500FE930B /* inttypes.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = inttypes.modulemap; sourceTree = "<group>"; };
 		2712C5F5244D2BE800157758 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2737D580216DA8BB00E0111F /* simple_start.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = simple_start.sh; sourceTree = "<group>"; };
@@ -65,7 +67,6 @@
 		27D3184E2086C9040047F5F1 /* SHDTConstants.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SHDTConstants.c; sourceTree = "<group>"; };
 		27EE2AB521321218005A8E1F /* SHDatetimeFuncs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDatetimeFuncs.h; sourceTree = "<group>"; };
 		27EE2AB621321218005A8E1F /* SHDatetimeFuncs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHDatetimeFuncs.c; sourceTree = "<group>"; };
-		27FF79F9244CD9E300B661FC /* SHUtils_C.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHUtils_C.xcodeproj; path = ../SHUtils_C/SHUtils_C.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,12 +74,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2703AA732453349C00ACE781 /* SHUtils_C in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2703AA63244FBCBB00ACE781 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2703AA67244FBCBC00ACE781 /* SHUtils_C */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2703AA70245333DE00ACE781 /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				270CB969244C92A500FE930B /* inttypes.modulemap */,
+				2769C104228636DF00217480 /* module.modulemap */,
+				27D3184A2086C9040047F5F1 /* SHDatetime_struct.h */,
+				2769C1032286364C00217480 /* SHDatetime.h */,
+				27EE2AB621321218005A8E1F /* SHDatetimeFuncs.c */,
+				27EE2AB521321218005A8E1F /* SHDatetimeFuncs.h */,
+				27D3184E2086C9040047F5F1 /* SHDTConstants.c */,
+				27D318482086C9040047F5F1 /* SHDTConstants.h */,
+				27D318462086C9040047F5F1 /* SHTimeZone.c */,
+				27D3184C2086C9040047F5F1 /* SHTimeZone.h */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
 		2712C5F4244D2BE800157758 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,20 +149,6 @@
 				278FFDA0222B2E4C00DAF985 /* SHDatetime.debug.xcconfig */,
 			);
 			path = Configs;
-			sourceTree = "<group>";
-		};
-		27870455227BCA99009C9DD6 /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				27D318482086C9040047F5F1 /* SHDTConstants.h */,
-				27D3184A2086C9040047F5F1 /* SHDatetime_struct.h */,
-				27D3184C2086C9040047F5F1 /* SHTimeZone.h */,
-				27EE2AB521321218005A8E1F /* SHDatetimeFuncs.h */,
-				2769C1032286364C00217480 /* SHDatetime.h */,
-				2769C104228636DF00217480 /* module.modulemap */,
-				270CB969244C92A500FE930B /* inttypes.modulemap */,
-			);
-			path = Headers;
 			sourceTree = "<group>";
 		};
 		27BB28FF2151D453003225BB /* Copy */ = {
@@ -189,11 +202,11 @@
 		27D318342086C8CA0047F5F1 = {
 			isa = PBXGroup;
 			children = (
+				2703AA70245333DE00ACE781 /* Code */,
+				2703AA62244FBCBB00ACE781 /* SHUtils_C.xcodeproj */,
 				2712C5F4244D2BE800157758 /* Resources */,
-				27FF79F9244CD9E300B661FC /* SHUtils_C.xcodeproj */,
 				2769C1052286375E00217480 /* Scripts */,
 				276E6D94222A473900CB36CB /* Configs */,
-				27870455227BCA99009C9DD6 /* Headers */,
 				2737D57F216DA8BB00E0111F /* dt_server */,
 				27BB28FF2151D453003225BB /* Copy */,
 				27D318442086C9040047F5F1 /* Implementations */,
@@ -213,19 +226,8 @@
 		27D318442086C9040047F5F1 /* Implementations */ = {
 			isa = PBXGroup;
 			children = (
-				27D3184E2086C9040047F5F1 /* SHDTConstants.c */,
-				27D318462086C9040047F5F1 /* SHTimeZone.c */,
-				27EE2AB621321218005A8E1F /* SHDatetimeFuncs.c */,
 			);
 			path = Implementations;
-			sourceTree = "<group>";
-		};
-		27FF79FA244CD9E300B661FC /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				27FF79FE244CD9E300B661FC /* SHUtils_C. */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +261,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				27FF7A00244CD9EC00B661FC /* PBXTargetDependency */,
+				2703AA722453349400ACE781 /* PBXTargetDependency */,
 			);
 			name = SHDatetime;
 			productName = SHDatetime;
@@ -293,8 +295,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 27FF79FA244CD9E300B661FC /* Products */;
-					ProjectRef = 27FF79F9244CD9E300B661FC /* SHUtils_C.xcodeproj */;
+					ProductGroup = 2703AA63244FBCBB00ACE781 /* Products */;
+					ProjectRef = 2703AA62244FBCBB00ACE781 /* SHUtils_C.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -305,11 +307,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		27FF79FE244CD9E300B661FC /* SHUtils_C. */ = {
+		2703AA67244FBCBC00ACE781 /* SHUtils_C */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = SHUtils_C.;
-			remoteRef = 27FF79FD244CD9E300B661FC /* PBXContainerItemProxy */;
+			path = SHUtils_C;
+			remoteRef = 2703AA66244FBCBC00ACE781 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -363,10 +365,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		27FF7A00244CD9EC00B661FC /* PBXTargetDependency */ = {
+		2703AA722453349400ACE781 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SHUtils_C;
-			targetProxy = 27FF79FF244CD9EC00B661FC /* PBXContainerItemProxy */;
+			targetProxy = 2703AA712453349400ACE781 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -421,7 +423,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -468,7 +469,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};

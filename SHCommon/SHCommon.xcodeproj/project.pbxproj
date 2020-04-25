@@ -231,48 +231,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		277567F823E27744009EDD93 /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				27C4117423DBB8450086E1F9 /* NSArray+SHHelper.h */,
-				27C4117C23DBB8450086E1F9 /* NSDate+DateHelper.h */,
-				27C4118523DBB8450086E1F9 /* NSDictionary+SHHelper.h */,
-				27C4117223DBB8450086E1F9 /* NSException+SHCommonExceptions.h */,
-				27C4118723DBB8450086E1F9 /* NSLocale+Helper.h */,
-				27C4118823DBB8450086E1F9 /* NSManagedObjectContext+Helper.h */,
-				27C4118423DBB8450086E1F9 /* NSMutableArray+Helper.h */,
-				27C4118123DBB8450086E1F9 /* NSMutableDictionary+Helper.h */,
-				27C4118923DBB8450086E1F9 /* NSNumber+Helper.h */,
-				27C4117F23DBB8450086E1F9 /* NSObject+Helper.h */,
-				27C4118C23DBB8450086E1F9 /* NSOrderedSet+SHHelper.h */,
-				27C4118A23DBB8450086E1F9 /* NSSet+SHHelper.h */,
-				27C4117523DBB8450086E1F9 /* UIColor+Helper.h */,
-				27C4118D23DBB8450086E1F9 /* UIImage+Helper.h */,
-			);
-			path = Headers;
-			sourceTree = "<group>";
-		};
-		277567F923E27751009EDD93 /* Implementations */ = {
-			isa = PBXGroup;
-			children = (
-				27C4118323DBB8450086E1F9 /* NSArray+SHHelper.m */,
-				27C4118623DBB8450086E1F9 /* NSDate+DateHelper.m */,
-				27C4117B23DBB8450086E1F9 /* NSDictionary+SHHelper.m */,
-				27C4118023DBB8450086E1F9 /* NSException+SHCommonExceptions.m */,
-				27C4117A23DBB8450086E1F9 /* NSLocale+Helper.m */,
-				27C4117923DBB8450086E1F9 /* NSManagedObjectContext+Helper.m */,
-				27C4117323DBB8450086E1F9 /* NSMutableArray+Helper.m */,
-				27C4117623DBB8450086E1F9 /* NSMutableDictionary+Helper.m */,
-				27C4117823DBB8450086E1F9 /* NSNumber+Helper.m */,
-				27C4118B23DBB8450086E1F9 /* NSObject+Helper.m */,
-				27C4117E23DBB8450086E1F9 /* NSOrderedSet+SHHelper.m */,
-				27C4117723DBB8450086E1F9 /* NSSet+SHHelper.m */,
-				27C4118223DBB8450086E1F9 /* UIColor+Helper.m */,
-				27C4117D23DBB8450086E1F9 /* UIImage+Helper.m */,
-			);
-			path = Implementations;
-			sourceTree = "<group>";
-		};
 		27C4112C23DBB7CF0086E1F9 = {
 			isa = PBXGroup;
 			children = (
@@ -380,8 +338,34 @@
 		27C4117123DBB8450086E1F9 /* NS+Categories */ = {
 			isa = PBXGroup;
 			children = (
-				277567F923E27751009EDD93 /* Implementations */,
-				277567F823E27744009EDD93 /* Headers */,
+				27C4117423DBB8450086E1F9 /* NSArray+SHHelper.h */,
+				27C4118323DBB8450086E1F9 /* NSArray+SHHelper.m */,
+				27C4117C23DBB8450086E1F9 /* NSDate+DateHelper.h */,
+				27C4118623DBB8450086E1F9 /* NSDate+DateHelper.m */,
+				27C4118523DBB8450086E1F9 /* NSDictionary+SHHelper.h */,
+				27C4117B23DBB8450086E1F9 /* NSDictionary+SHHelper.m */,
+				27C4117223DBB8450086E1F9 /* NSException+SHCommonExceptions.h */,
+				27C4118023DBB8450086E1F9 /* NSException+SHCommonExceptions.m */,
+				27C4118723DBB8450086E1F9 /* NSLocale+Helper.h */,
+				27C4117A23DBB8450086E1F9 /* NSLocale+Helper.m */,
+				27C4118823DBB8450086E1F9 /* NSManagedObjectContext+Helper.h */,
+				27C4117923DBB8450086E1F9 /* NSManagedObjectContext+Helper.m */,
+				27C4118423DBB8450086E1F9 /* NSMutableArray+Helper.h */,
+				27C4117323DBB8450086E1F9 /* NSMutableArray+Helper.m */,
+				27C4118123DBB8450086E1F9 /* NSMutableDictionary+Helper.h */,
+				27C4117623DBB8450086E1F9 /* NSMutableDictionary+Helper.m */,
+				27C4118923DBB8450086E1F9 /* NSNumber+Helper.h */,
+				27C4117823DBB8450086E1F9 /* NSNumber+Helper.m */,
+				27C4117F23DBB8450086E1F9 /* NSObject+Helper.h */,
+				27C4118B23DBB8450086E1F9 /* NSObject+Helper.m */,
+				27C4118C23DBB8450086E1F9 /* NSOrderedSet+SHHelper.h */,
+				27C4117E23DBB8450086E1F9 /* NSOrderedSet+SHHelper.m */,
+				27C4118A23DBB8450086E1F9 /* NSSet+SHHelper.h */,
+				27C4117723DBB8450086E1F9 /* NSSet+SHHelper.m */,
+				27C4117523DBB8450086E1F9 /* UIColor+Helper.h */,
+				27C4118223DBB8450086E1F9 /* UIColor+Helper.m */,
+				27C4118D23DBB8450086E1F9 /* UIImage+Helper.h */,
+				27C4117D23DBB8450086E1F9 /* UIImage+Helper.m */,
 			);
 			path = "NS+Categories";
 			sourceTree = "<group>";
@@ -688,7 +672,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -705,7 +688,6 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
@@ -752,7 +734,6 @@
 				MTL_FAST_MATH = YES;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -772,7 +753,6 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.SHCommon;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -796,7 +776,6 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.SHCommon;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

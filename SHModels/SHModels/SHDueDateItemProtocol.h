@@ -12,7 +12,7 @@
 @import CoreData;
 
 @protocol SHDueDateItemProtocol <NSObject,SHMappableProtocol>
-@property (readonly,nonatomic) NSDate* nextDueDate;
+@property (readonly,nonatomic) SHDatetime* nextDueDate;
 @property (readonly,nonatomic) NSInteger daysUntilDue;
 /*
 maxDaysBeforeSpan is used as a selection limit. The user is not allowed

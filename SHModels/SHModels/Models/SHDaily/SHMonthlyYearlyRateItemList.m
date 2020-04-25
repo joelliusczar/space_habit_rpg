@@ -16,7 +16,7 @@
 @implementation SHMonthlyYearlyRateItemList
 
 
-static SHMonthlyYearlyRateItem* mapDictToMonthlyYearly(SHRateItemDict *item, NSUInteger idx){
+static SHMonthlyYearlyRateItem* mapDictToMonthlyYearly(SHItervalItemDict *item, NSUInteger idx){
 	(void)idx;
 	NSInteger major = item[SH_MAJOR_ORDINAL].integerValue;
 	NSInteger minor = item[SH_MINOR_ORDINAL].integerValue;
@@ -28,7 +28,7 @@ static SHMonthlyYearlyRateItem* mapDictToMonthlyYearly(SHRateItemDict *item, NSU
 }
 
 
--(instancetype)initWithActiveDays:(NSMutableArray<SHRateItemDict*>*)activeDays{
+-(instancetype)initWithActiveDays:(NSMutableArray<SHItervalItemDict*>*)activeDays{
 	if(self = [super init]){
 		_backend = [activeDays mapItemsTo_f:mapDictToMonthlyYearly];;
 	}
@@ -77,7 +77,7 @@ static SHMonthlyYearlyRateItem* mapDictToMonthlyYearly(SHRateItemDict *item, NSU
 
 static NSDictionary* mapMonthlyYearlyToDict(SHMonthlyYearlyRateItem *item,NSUInteger idx){
 	(void)idx;
-	SHRateItemDict *dict = @{
+	SHItervalItemDict *dict = @{
 		SH_MAJOR_ORDINAL : @(item.majorOrdinal),
 		SH_MINOR_ORDINAL : @(item.minorOrdinal)
 	};
@@ -85,7 +85,7 @@ static NSDictionary* mapMonthlyYearlyToDict(SHMonthlyYearlyRateItem *item,NSUInt
 }
 
 
--(NSMutableArray<SHRateItemDict*>*)convertToSaveble {
+-(NSMutableArray<SHItervalItemDict*>*)convertToSaveble {
 	return [self.backend mapItemsTo_f:mapMonthlyYearlyToDict];
 }
 

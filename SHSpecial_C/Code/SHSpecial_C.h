@@ -11,8 +11,9 @@
 
 #pragma clang module import SHUtils_C
 #pragma clang module import SHDatetime
-#import "SHRateValueItem.h"
-#import "SHDaily_C.h"
+#import "SHWeekIntervalPoint.h"
+#import "SHDueDatesWeeklyFuncs.h"
+#import "SHWeekIntervalPointsFuncs.h"
 
 
 #endif

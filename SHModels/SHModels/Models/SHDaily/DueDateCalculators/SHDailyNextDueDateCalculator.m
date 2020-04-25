@@ -7,7 +7,7 @@
 //
 
 #import "SHDailyNextDueDateCalculator.h"
-#import "SHWeeklyRateItemList.h"
+#import "SHWeekIntervalItemList.h"
 #import "SHConfig.h"
 #import "SHDailyNextWeeklyDueDateCalculator.h"
 @import SHSpecial_C;
@@ -45,17 +45,18 @@ week and long interval size causes the calculated last due date to be many weeks
 This also applies if the active days got changed.
 */
 -(NSDate*)calcBackupLastCheckinDate {
-	if(self.lastActivationDateTime) {
-		return [self calcBackupDateForReferenceDate:self.lastActivationDateTime];
-	}
-	if(self.activeFromDate) {
-		return [self calcBackupDateForReferenceDate:self.activeFromDate];
-	}
-	return [self calcBackupDateForReferenceDate:self.lastUpdateDateTime];
+//	if(self.lastActivationDateTime) {
+//		return [self calcBackupDateForReferenceDate:self.lastActivationDateTime];
+//	}
+//	if(self.activeFromDate) {
+//		return [self calcBackupDateForReferenceDate:self.activeFromDate];
+//	}
+//	return [self calcBackupDateForReferenceDate:self.lastUpdateDateTime];
+	return nil;
 }
 
 
--(NSDate*)nextDueDate{
+-(SHDatetime*)nextDueDate{
 	@throw [NSException abstractException];
 }
 

@@ -7,15 +7,14 @@
 //
 
 #import "SHDailyNextDueDateCalculator.h"
-#import "SHWeeklyRateItemList.h"
+#import "SHWeekIntervalItemList.h"
 @import SHDatetime;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHDailyNextWeeklyDueDateCalculator : SHDailyNextDueDateCalculator
-@property (strong, nonatomic) SHWeeklyRateItemList *activeDays;
--(instancetype)initWithRateItemList:(SHWeeklyRateItemList *)activeDays;
--(BOOL)isWeekActiveForDate:(SHDatetime *)dateInQuestion;
+@property (strong, nonatomic) SHWeekIntervalItemList *activeDays;
+-(instancetype)initWithRateItemList:(SHWeekIntervalItemList *)activeDays;
 @end
 
 NS_ASSUME_NONNULL_END

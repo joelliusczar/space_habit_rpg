@@ -6,15 +6,14 @@
 //  Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import "SHWeeklyRateItem.h"
 #import "SHMonthlyYearlyRateItemList.h"
-#import "SHWeeklyRateItemList.h"
+#import "SHWeekIntervalItemList.h"
 #import "SHDailyRateItem.h"
 #import "SHIntervalItemFormat.h"
 @import Foundation;
 
 typedef SHMonthlyYearlyRateItemList* _Nonnull (^shGetListRateCollection)(void);
-typedef SHWeeklyRateItemList* _Nonnull (^shGetRangeRateArray)(void);
+typedef SHWeekIntervalItemList* _Nonnull (^shGetRangeRateArray)(void);
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -25,8 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, nonatomic) SHMonthlyYearlyRateItemList *monthlyActiveDaysInv;
 @property (readonly, nonatomic) SHMonthlyYearlyRateItemList *yearlyActiveDays;
 @property (readonly, nonatomic) SHMonthlyYearlyRateItemList *yearlyActiveDaysInv;
-@property (readonly, nonatomic) SHWeeklyRateItemList *weeklyActiveDays;
-@property (readonly, nonatomic) SHWeeklyRateItemList *weeklyActiveDaysInv;
+@property (readonly, nonatomic) SHWeekIntervalItemList *weeklyActiveDays;
+@property (readonly, nonatomic) SHWeekIntervalItemList *weeklyActiveDaysInv;
 @property (readonly, nonatomic) SHDailyRateItem *dailyRateItem;
 @property (readonly, nonatomic) SHDailyRateItem *dailyRateItemInv;
 

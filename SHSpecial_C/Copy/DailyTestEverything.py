@@ -57,8 +57,8 @@ def doAllScalers(startDate,checkinDate,week,weekSeed):
 	dbgFncPtr = dbgFncDef(dbg_func)
 	ans = SHDatetime()
 	for s in range(1,maxScaler):
-		rviType = RateValueItem * 7
-		rvi = rviType()
+		intervalPointsType = RateValueItem * 7
+		intervalPoints = intervalPointsType()
 		
 		formatStr = "startDate: {} -- checkindate: {} week: {} scaler: {}_______"
 		
@@ -66,10 +66,10 @@ def doAllScalers(startDate,checkinDate,week,weekSeed):
 		,weekSeed,s)
 		
 		print(filledFormatStr,end="\r",flush=True)
-		lib.buildWeek(byref(week),c_int64(s),byref(rvi))
+		lib.buildWeek(byref(week),c_int64(s),byref(intervalPoints))
 		
 		#lib.setDebugCallback(dbgFncPtr)
-		success = lib.nextDueDate_WEEKLY(byref(startDate),byref(checkinDate),byref(rvi)
+		success = lib.nextDueDate_WEEKLY(byref(startDate),byref(checkinDate),byref(intervalPoints)
 		,c_int64(s),byref(ans),byref(myErr))
 		
 		if not success:

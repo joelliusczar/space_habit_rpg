@@ -7,7 +7,6 @@
 //
 
 #import "SHDaily.h"
-#import "SHWeeklyRateItem.h"
 #import "SHConfig.h"
 #import "SHDailyMaxDaysBeforeSpanCalculator.h"
 #import "SHDailyEvent.h"
@@ -30,9 +29,9 @@
 @synthesize calculator = _calculator;
 -(SHDailyNextDueDateCalculator *)calculator {
 	if(nil == _calculator) {
-		NSInteger dayStartTime = 0;
+		int32_t dayStartTime = 0;
 		if(nil != self.cycleStartTime) {
-			dayStartTime = self.cycleStartTime.integerValue;
+			dayStartTime = self.cycleStartTime.intValue;
 		}
 		else {
 			dayStartTime = SHConfig.dayStartTime;
@@ -42,9 +41,10 @@
 		_calculator.dateProvider = self.dateProvider;
 		_calculator.dayStartTime = dayStartTime;
 	}
-	_calculator.activeFromDate = self.activeFromDate;
-	_calculator.lastActivationDateTime = self.lastActivationDateTime;
-	_calculator.lastUpdateDateTime = self.lastUpdateDateTime;
+	#warning replace with useDate
+//	_calculator.activeFromDate = self.activeFromDate;
+//	_calculator.lastActivationDateTime = self.lastActivationDateTime;
+//	_calculator.lastUpdateDateTime = self.lastUpdateDateTime;
 	return _calculator;
 }
 
@@ -52,7 +52,9 @@
 -(BOOL)isActiveToday {
 	//I'm just gonna use the normal day start here.
 	//because I can imagine users getting confused by that
-	return [self.calculator isDateActive:self.dateProvider.date];
+	#warning implement
+	return false;
+	//return [self.calculator isDateActive:self.dateProvider.date];
 }
 
 -(NSInteger)rate{
@@ -78,7 +80,7 @@
 }
 
 
--(NSDate *)nextDueDate{
+-(SHDatetime *)nextDueDate{
 	return [self.calculator nextDueDate];
 }
 
@@ -87,12 +89,14 @@
 	NSUInteger dayStart = 0;
 	dayStart = SHConfig.dayStartTime;
 	NSDate *today = self.dateProvider.date;
-	NSDate *roundedDownToday = [today dayStart];
-	NSDate *todayFromStartTime = [roundedDownToday timeAfterSeconds:dayStart];
-	NSDate *todayUTCWithStartTime = [todayFromStartTime dateInTimezone:
-		[NSTimeZone timeZoneForSecondsFromGMT:0]];
-	NSDate *nextDueDate = self.nextDueDate;
-	return (NSInteger)[NSDate daysBetween:todayUTCWithStartTime to:nextDueDate];
+	#warning fix
+	return 0;
+//	NSDate *roundedDownToday = [today dayStart];
+//	NSDate *todayFromStartTime = [roundedDownToday timeAfterSeconds:dayStart];
+//	NSDate *todayUTCWithStartTime = [todayFromStartTime dateInTimezone:
+//		[NSTimeZone timeZoneForSecondsFromGMT:0]];
+//	NSDate *nextDueDate = self.nextDueDate;
+//	return (NSInteger)[NSDate daysBetween:todayUTCWithStartTime to:nextDueDate];
 }
 
 
@@ -177,16 +181,18 @@
 
 
 -(NSDate*)calcBackupLastCheckinDate:(NSTimeInterval*)tzOffsetPtr {
-	if(self.lastActivationDateTime) {
-		*tzOffsetPtr = self.tzOffsetLastActivationDateTime;
-		return [self.calculator calcBackupDateForReferenceDate:self.lastActivationDateTime];
-	}
-	if(self.activeFromDate) {
-		*tzOffsetPtr = self.dateProvider.localTzOffset;
-		return [self.calculator calcBackupDateForReferenceDate:self.activeFromDate];
-	}
-	*tzOffsetPtr = self.tzOffsetLastUpdateDateTime;
-	return [self.calculator calcBackupDateForReferenceDate:self.lastUpdateDateTime];
+	#warning figure this shit out
+	return nil;
+//	if(self.lastActivationDateTime) {
+//		*tzOffsetPtr = self.tzOffsetLastActivationDateTime;
+//		return [self.calculator calcBackupDateForReferenceDate:self.lastActivationDateTime];
+//	}
+//	if(self.activeFromDate) {
+//		*tzOffsetPtr = self.dateProvider.localTzOffset;
+//		return [self.calculator calcBackupDateForReferenceDate:self.activeFromDate];
+//	}
+//	*tzOffsetPtr = self.tzOffsetLastUpdateDateTime;
+//	return [self.calculator calcBackupDateForReferenceDate:self.lastUpdateDateTime];
 }
 
 

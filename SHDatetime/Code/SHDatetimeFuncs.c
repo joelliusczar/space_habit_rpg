@@ -744,6 +744,31 @@ SHErrorCode SH_dateDiffDays(SHDatetime * const A,SHDatetime * const B,int64_t *a
 }
 
 
+SHErrorCode SH_dateDiffFullWeeks(SHDatetime * const A, SHDatetime * const B, int32_t dayOffset,
+	int64_t *ans)
+{
+	SHErrorCode status = SH_NO_ERROR;
+	SHDatetime firstFullWeek;
+	*ans = SH_NOT_FOUND;
+	if((status = SH_weekStart(A, dayOffset, &firstFullWeek)) != SH_NO_ERROR) {
+		goto fnExit;
+	}
+	SHDatetime lastFullWeek;
+	if((status = SH_weekStart(B, dayOffset, &lastFullWeek)) != SH_NO_ERROR) {
+		goto fnExit;
+	}
+	int64_t daysBetween = SH_NOT_FOUND;
+	SH_dateDiffDays(&firstFullWeek, &lastFullWeek, &daysBetween);
+	if(daysBetween < 0) {
+		status = SH_INPUT_BAD_RESULTS;
+		goto fnExit;
+	}
+	*ans = daysBetween / SH_DAYS_IN_WEEK;
+	fnExit:
+		return status;
+}
+
+
 static void _calcFractSecs(FractSecs *fractSecs, double timestamp){
 	double fraction = timestamp - (int64_t)timestamp;
 	fractSecs->milisecond = (int32_t)(fraction*1000);

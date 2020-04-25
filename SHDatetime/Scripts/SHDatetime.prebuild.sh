@@ -10,6 +10,7 @@ cd "$SRCROOT"/../Build_Scripts
 
 echo "system headers $SYSTEM_HEADER_SEARCH_PATHS"
 
+
 . module_map_cleanup.sh
 #rm "$BUILT_PRODUCTS_DIR"/Modules/inttypes.modulemap 2>dev/null
 

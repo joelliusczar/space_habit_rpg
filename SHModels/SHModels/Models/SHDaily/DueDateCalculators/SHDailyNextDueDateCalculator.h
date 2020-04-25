@@ -15,18 +15,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHDailyNextDueDateCalculator : NSObject
 @property (strong, nonatomic) SHDailyActiveDays *activeDaysContainer;
-@property (assign, nonatomic, nullable) SHDatetime* lastActivationDateTime;
-@property (assign, nonatomic) SHDatetime* lastUpdateDateTime;
-@property (assign, nonatomic) NSInteger dayStartTime;
-@property (assign, nonatomic) SHDatetime* activeFromDate;
+@property (assign, nonatomic, nullable) SHDatetime* useDate;
+@property (assign, nonatomic) int32_t dayStartTime;
 @property (strong,nonatomic) NSObject<SHDateProviderProtocol>* dateProvider;
 +(instancetype)newWithActiveDays:(SHDailyActiveDays *)activeDaysContainer
 	intervalType:(SHRateType)intervalType;
--(NSDate*)nextDueDate;
--(NSDate*)calcBackupLastCheckinDate;
--(NSUInteger)calcMissedDaysWithLastLoginDate:(NSDate*)lastLoginDate;
--(BOOL)isDateActive:(NSDate *)dateInQuestion;
--(NSDate *)calcBackupDateForReferenceDate:(SHDatetime *)referenceDate;
+-(SHDatetime*)nextDueDate;
 @end
 
 NS_ASSUME_NONNULL_END

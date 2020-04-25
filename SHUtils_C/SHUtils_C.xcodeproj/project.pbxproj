@@ -49,6 +49,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2703AA6F2453339E00ACE781 /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				2769C0A0227F67FB00217480 /* module.modulemap */,
+				271692082089762D0059A58E /* SHArray.h */,
+				27169216208BB2450059A58E /* SHErrorHandling.c */,
+				27169215208BB2450059A58E /* SHErrorHandling.h */,
+				27DF9C4D20956D6300F98023 /* SHGenAlgos.c */,
+				27DF9C4C20956D6300F98023 /* SHGenAlgos.h */,
+				2781552A21758C3F005C5279 /* SHUtilConstants.c */,
+				2781552921758C3F005C5279 /* SHUtilConstants.h */,
+				2769C0A1227F682D00217480 /* SHUtils_C.h */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
 		2712C5F3244D29CB00157758 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -60,11 +76,10 @@
 		271691F72089758B0059A58E = {
 			isa = PBXGroup;
 			children = (
+				2703AA6F2453339E00ACE781 /* Code */,
 				2712C5F3244D29CB00157758 /* Resources */,
 				2769C095227C6EAA00217480 /* Scripts */,
 				276E6D95222A492E00CB36CB /* Configs */,
-				27870454227BCA74009C9DD6 /* Headers */,
-				27169207208975970059A58E /* Implementations */,
 				27BB290421520778003225BB /* Copy */,
 				271692012089758B0059A58E /* Products */,
 				2716920E208991130059A58E /* Frameworks */,
@@ -77,16 +92,6 @@
 				271692002089758B0059A58E /* SHUtils_C */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		27169207208975970059A58E /* Implementations */ = {
-			isa = PBXGroup;
-			children = (
-				27169216208BB2450059A58E /* SHErrorHandling.c */,
-				27DF9C4D20956D6300F98023 /* SHGenAlgos.c */,
-				2781552A21758C3F005C5279 /* SHUtilConstants.c */,
-			);
-			path = Implementations;
 			sourceTree = "<group>";
 		};
 		2716920E208991130059A58E /* Frameworks */ = {
@@ -113,19 +118,6 @@
 				278FFD9E222B2AA000DAF985 /* SHUtils_C.debug.xcconfig */,
 			);
 			path = Configs;
-			sourceTree = "<group>";
-		};
-		27870454227BCA74009C9DD6 /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				271692082089762D0059A58E /* SHArray.h */,
-				27169215208BB2450059A58E /* SHErrorHandling.h */,
-				27DF9C4C20956D6300F98023 /* SHGenAlgos.h */,
-				2781552921758C3F005C5279 /* SHUtilConstants.h */,
-				2769C0A0227F67FB00217480 /* module.modulemap */,
-				2769C0A1227F682D00217480 /* SHUtils_C.h */,
-			);
-			path = Headers;
 			sourceTree = "<group>";
 		};
 		27BB290421520778003225BB /* Copy */ = {
@@ -261,10 +253,6 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
@@ -288,7 +276,6 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -298,10 +285,6 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
@@ -318,7 +301,6 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};

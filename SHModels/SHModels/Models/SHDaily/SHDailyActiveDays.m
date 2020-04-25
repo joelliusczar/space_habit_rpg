@@ -10,8 +10,9 @@
 #import "SHMonthlyYearlyRateItem.h"
 #import "SHRateTypeHelper.h"
 #import "SHModelConstants.h"
+#import "SHConfig.h"
 @import SHCommon;
-#import <SHSpecial_C/SHDaily_C.h>
+@import SHSpecial_C;
 
 
 @interface SHDailyActiveDays ()
@@ -75,15 +76,15 @@
 }
 
 
--(SHWeeklyRateItemList*)buildWeeklyActiveDays:(BOOL)isInverse{
+-(SHWeekIntervalItemList*)buildWeeklyActiveDays:(BOOL)isInverse{
 	SHRateType rateType = isInverse? SH_WEEKLY_RATE_INVERSE : SH_WEEKLY_RATE;
-	NSMutableArray<SHRateItemDict*> *raw = (NSMutableArray*)self.activeDaysDict[shGetRateTypeKey(rateType)];
-	SHWeeklyRateItemList *rateItems = nil;
+	NSMutableArray<SHItervalItemDict*> *raw = (NSMutableArray*)self.activeDaysDict[shGetRateTypeKey(rateType)];
+	SHWeekIntervalItemList *rateItems = nil;
 	if(raw.count == 0){
-		rateItems = [[SHWeeklyRateItemList alloc] init];
+		rateItems = [[SHWeekIntervalItemList alloc] init];
 	}
 	else {
-		rateItems = [[SHWeeklyRateItemList alloc] initWithRateItemArray:raw];
+		rateItems = [[SHWeekIntervalItemList alloc] initWithRateItemArray:raw withWeekStartOffset: SHConfig.weeklyStartDay];
 	}
 	rateItems.intervalSize = ((NSNumber *)self.activeDaysDict[shGetRateTypeIntervalSizeKey(SH_WEEKLY_RATE)]).intValue;
 	return rateItems;
@@ -138,7 +139,7 @@
 
 
 @synthesize weeklyActiveDays = _weeklyActiveDays;
--(SHWeeklyRateItemList*)weeklyActiveDays{
+-(SHWeekIntervalItemList*)weeklyActiveDays{
 	if(nil == _weeklyActiveDays){
 		_weeklyActiveDays = [self buildWeeklyActiveDays:NO];
 	}
@@ -147,7 +148,7 @@
 
 
 @synthesize weeklyActiveDaysInv = _weeklyActiveDaysInv;
--(SHWeeklyRateItemList*)weeklyActiveDaysInv{
+-(SHWeekIntervalItemList*)weeklyActiveDaysInv{
 	if(nil == _weeklyActiveDaysInv){
 		_weeklyActiveDaysInv = [self buildWeeklyActiveDays:YES];
 	}
@@ -177,23 +178,23 @@
 	//using the direct instance variables and checking for null
 	//because if I've not changed a sub section, I don't want to
 	//map it to an object just to remap it back to a dictionary
-	NSMutableArray<SHRateItemDict*>* weekly = _weeklyActiveDays ?
+	NSMutableArray<SHItervalItemDict*>* weekly = _weeklyActiveDays ?
 		[_weeklyActiveDays convertToSaveble] :
 		self.activeDaysDict[shGetRateTypeKey(SH_WEEKLY_RATE)];
-	NSMutableArray<SHRateItemDict*>* monthly = _monthlyActiveDays ?
+	NSMutableArray<SHItervalItemDict*>* monthly = _monthlyActiveDays ?
 		[_monthlyActiveDays convertToSaveble] :
 		self.activeDaysDict[shGetRateTypeKey(SH_MONTHLY_RATE)];
-	NSMutableArray<SHRateItemDict*>* yearly = _yearlyActiveDays ?
+	NSMutableArray<SHItervalItemDict*>* yearly = _yearlyActiveDays ?
 		[_yearlyActiveDays convertToSaveble] :
 		self.activeDaysDict[shGetRateTypeKey(SH_YEARLY_RATE)];
 	
-	NSMutableArray<SHRateItemDict*>* weeklyInv = _weeklyActiveDaysInv ?
+	NSMutableArray<SHItervalItemDict*>* weeklyInv = _weeklyActiveDaysInv ?
 		[_weeklyActiveDaysInv convertToSaveble]:
 		self.activeDaysDict[shGetRateTypeKey(SH_WEEKLY_RATE_INVERSE)];
-	NSMutableArray<SHRateItemDict*>* monthlyInv = _monthlyActiveDaysInv ?
+	NSMutableArray<SHItervalItemDict*>* monthlyInv = _monthlyActiveDaysInv ?
 		[_monthlyActiveDaysInv convertToSaveble] :
 		self.activeDaysDict[shGetRateTypeKey(SH_MONTHLY_RATE_INVERSE)];
-	NSMutableArray<SHRateItemDict*>* yearlyInv = _yearlyActiveDaysInv ?
+	NSMutableArray<SHItervalItemDict*>* yearlyInv = _yearlyActiveDaysInv ?
 		[_yearlyActiveDaysInv convertToSaveble] :
 		self.activeDaysDict[shGetRateTypeKey(SH_YEARLY_RATE_INVERSE)];
 	

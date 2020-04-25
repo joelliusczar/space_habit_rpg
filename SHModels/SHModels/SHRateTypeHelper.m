@@ -84,13 +84,13 @@ SHRateType shSetRateTypeInversion(SHRateType rateType,BOOL isInverse){
 }
 
 
-BOOL shAreMonthlyRateValueItemsEqual(SHRateItemDict *a,SHRateItemDict *b){
+BOOL shAreMonthlyRateValueItemsEqual(SHItervalItemDict *a,SHItervalItemDict *b){
 	return a[SH_ORDINAL_WEEK_KEY].integerValue == b[SH_ORDINAL_WEEK_KEY].integerValue &&
 			a[SH_DAY_OF_WEEK_KEY].integerValue == b[SH_DAY_OF_WEEK_KEY].integerValue;
 }
 
 
-BOOL shAreYearlyRateValueItemsEqual(SHRateItemDict *a,SHRateItemDict *b){
+BOOL shAreYearlyRateValueItemsEqual(SHItervalItemDict *a,SHItervalItemDict *b){
 	return a[SH_MONTH_KEY].integerValue == b[SH_MONTH_KEY].integerValue &&
 			a[SH_DAY_OF_MONTH_KEY].integerValue == b[SH_DAY_OF_MONTH_KEY].integerValue;
 }

@@ -33,13 +33,13 @@ def buildWeekOfActiveDays(seed):
 def nextDueDate_WEEKLY(lastDueDate,checkinDate,weekSeed,scaler):
 	errMsg = c_char_p(b"")
 	voidObj = c_void_p(None)
-	rviType = RateValueItem * 7
-	rvi = rviType()
+	intervalPointsType = RateValueItem * 7
+	intervalPoints = intervalPointsType()
 	week = buildWeekOfActiveDays(weekSeed)
 	ans = SHDatetime()
 	myErr = SHError(c_int(0),callbackType(err_callback),errMsg,voidObj,c_bool(False))
-	lib.buildWeek(byref(week),c_int64(scaler),byref(rvi))
-	success = lib.nextDueDate_WEEKLY(byref(lastDueDate),byref(checkinDate),byref(rvi)
+	lib.buildWeek(byref(week),c_int64(scaler),byref(intervalPoints))
+	success = lib.nextDueDate_WEEKLY(byref(lastDueDate),byref(checkinDate),byref(intervalPoints)
 	,c_int64(scaler),byref(ans),byref(myErr))
 	print(success)
 

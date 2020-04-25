@@ -56,4 +56,6 @@ FOUNDATION_EXPORT const unsigned char SHCommonVersionString[];
 #import "SHCommonTypeDefs.h"
 #import "SHIconDrawingFunctions.h"
 #import "SHIconBuilder.h"
+#import "SHInheritanceTreeNode.h"
+#import "SHInheritanceTree.h"
 

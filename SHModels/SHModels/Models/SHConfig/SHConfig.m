@@ -87,8 +87,10 @@ static NSUserDefaults *_userDefaults = nil;
 
 
 +(NSDate*)userTodayStart{
-	NSDate *result = [NSDate.date.dayStart timeAfterSeconds:self.dayStartTime];
-	return result;
+//	NSDate *result = [NSDate.date.dayStart timeAfterSeconds:self.dayStartTime];
+//	return result;
+#warning need to do something here
+	return nil;
 }
 
 
@@ -126,7 +128,9 @@ static NSUserDefaults *_userDefaults = nil;
 
 
 +(NSDate*)lastProcessingDateDayStart {
-	return [self.lastProcessingDateTime.dayStart timeAfterSeconds:self.dayStartTime];
+	//return [self.lastProcessingDateTime.dayStart timeAfterSeconds:self.dayStartTime];
+	#warning need to do something here
+	return nil;
 }
 
 @end

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		27004253205251B3001FA0B5 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27004252205251B3001FA0B5 /* SHModels.framework */; };
 		27009B43224FEB0C0005F827 /* SHCoreData+CleanUp.h in Headers */ = {isa = PBXBuildFile; fileRef = 27009B41224FEB0C0005F827 /* SHCoreData+CleanUp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27009B44224FEB0C0005F827 /* SHCoreData+CleanUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 27009B42224FEB0C0005F827 /* SHCoreData+CleanUp.m */; };
 		2707AAA22419B736006FF10F /* SHActiveDaysProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 2707AAA02419B736006FF10F /* SHActiveDaysProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -23,11 +22,12 @@
 		27601C2B23F74259001A9475 /* SHTestCommon.postbuild.sh in Resources */ = {isa = PBXBuildFile; fileRef = 27601C2A23F74259001A9475 /* SHTestCommon.postbuild.sh */; };
 		27601C5623F7825C001A9475 /* SHTestResourceUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 27601C5423F7825C001A9475 /* SHTestResourceUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27601C5723F7825C001A9475 /* SHTestResourceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 27601C5523F7825C001A9475 /* SHTestResourceUtil.m */; };
-		27601C6423F782DA001A9475 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27601C6323F782D2001A9475 /* SHCommon.framework */; };
 		27804B7C235278F8004921F5 /* SHTestDateProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 27804B7A235278F8004921F5 /* SHTestDateProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27804B7D235278F8004921F5 /* SHTestDateProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 27804B7B235278F8004921F5 /* SHTestDateProvider.m */; };
 		27B7AF25223094D000FAA229 /* TestDummy.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B7AF23223094D000FAA229 /* TestDummy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27B7AF26223094D000FAA229 /* TestDummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B7AF24223094D000FAA229 /* TestDummy.m */; };
+		27EBC4042453BDB400402944 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27601C6323F782D2001A9475 /* SHCommon.framework */; };
+		27EBC4092453BDE000402944 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27601C5D23F782CA001A9475 /* SHModels.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +45,21 @@
 			remoteGlobalIDString = 27C4113623DBB7CF0086E1F9;
 			remoteInfo = SHCommon;
 		};
-		27601C6523F782E1001A9475 /* PBXContainerItemProxy */ = {
+		27EBC4022453BDB000402944 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27601C5823F782CA001A9475 /* SHModels.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27D84A002443DFBE0081DFE6;
+			remoteInfo = SHModelsTests;
+		};
+		27EBC4052453BDC700402944 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 27601C5E23F782D2001A9475 /* SHCommon.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 27C4113523DBB7CF0086E1F9;
 			remoteInfo = SHCommon;
 		};
-		27601C6723F782E6001A9475 /* PBXContainerItemProxy */ = {
+		27EBC4072453BDCB00402944 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 27601C5823F782CA001A9475 /* SHModels.xcodeproj */;
 			proxyType = 1;
@@ -98,8 +105,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27601C6423F782DA001A9475 /* SHCommon.framework in Frameworks */,
-				27004253205251B3001FA0B5 /* SHModels.framework in Frameworks */,
+				27EBC4092453BDE000402944 /* SHModels.framework in Frameworks */,
+				27EBC4042453BDB400402944 /* SHCommon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				27601C5D23F782CA001A9475 /* SHModels.framework */,
+				27EBC4032453BDB000402944 /* SHModelsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -224,6 +232,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 274EFB7A204F9AEA00CB3C4C /* Build configuration list for PBXNativeTarget "SHTestCommon" */;
 			buildPhases = (
+				27EBC40A2453C49F00402944 /* Run Script pre */,
 				274EFB6F204F9AEA00CB3C4C /* Headers */,
 				274EFB6D204F9AEA00CB3C4C /* Sources */,
 				274EFB6E204F9AEA00CB3C4C /* Frameworks */,
@@ -233,8 +242,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				27601C6823F782E6001A9475 /* PBXTargetDependency */,
-				27601C6623F782E1001A9475 /* PBXTargetDependency */,
+				27EBC4082453BDCB00402944 /* PBXTargetDependency */,
+				27EBC4062453BDC700402944 /* PBXTargetDependency */,
 			);
 			name = SHTestCommon;
 			productName = SHTestCommon;
@@ -298,6 +307,13 @@
 			remoteRef = 27601C6223F782D2001A9475 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		27EBC4032453BDB000402944 /* SHModelsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SHModelsTests.xctest;
+			remoteRef = 27EBC4022453BDB000402944 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -326,6 +342,24 @@
 			shellScript = "sh Scripts/SHTestCommon.postbuild.sh\n";
 			showEnvVarsInLog = 0;
 		};
+		27EBC40A2453C49F00402944 /* Run Script pre */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script pre";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nsh Scripts/SHTestCommon.prebuild.sh\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -347,15 +381,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		27601C6623F782E1001A9475 /* PBXTargetDependency */ = {
+		27EBC4062453BDC700402944 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SHCommon;
-			targetProxy = 27601C6523F782E1001A9475 /* PBXContainerItemProxy */;
+			targetProxy = 27EBC4052453BDC700402944 /* PBXContainerItemProxy */;
 		};
-		27601C6823F782E6001A9475 /* PBXTargetDependency */ = {
+		27EBC4082453BDCB00402944 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SHModels;
-			targetProxy = 27601C6723F782E6001A9475 /* PBXContainerItemProxy */;
+			targetProxy = 27EBC4072453BDCB00402944 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -479,8 +513,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = $PLATFORM_DIR/Developer/Library/Frameworks/;
 				INFOPLIST_FILE = SHTestCommon/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -505,8 +537,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = $PLATFORM_DIR/Developer/Library/Frameworks/;
 				INFOPLIST_FILE = SHTestCommon/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (

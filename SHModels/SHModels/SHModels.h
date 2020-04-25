@@ -58,7 +58,6 @@ FOUNDATION_EXPORT const unsigned char SHModelsVersionString[];
 #import "Model+CoreDataModel.h"
 #import "SHMonthlyYearlyRateItem.h"
 #import "SHMonthlyYearlyRateItemList.h"
-#import "SHWeeklyRateItem.h"
 #import "SHDailyActiveDays.h"
 #import "SHDailyValidation.h"
 #import "SHDailyNextDueDateCalculator.h"
@@ -66,7 +65,7 @@ FOUNDATION_EXPORT const unsigned char SHModelsVersionString[];
 #import "SHTitleProtocol.h"
 #import "SHDailyActivator.h"
 #import "SHMonster_Medium.h"
-#import "SHWeeklyRateItemList.h"
+#import "SHWeekIntervalItemList.h"
 #import "SHIntervalItemFormat.h"
 
 // In this header, you should import all

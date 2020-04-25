@@ -35,6 +35,23 @@ extern shDebugCallback shDbgCallback;
 #define SH_notifyOfError(err,msg)
 #endif
 
+#define SH_USE_ERR_BRANCHES 1
+
+#ifdef SH_USE_ERR_BRANCHES
+
+#ifndef SH_branchOnErr
+#define SH_branchOnErr(fnCall, label, msg) if((status = fnCall) != SH_NO_ERROR) { \
+	printf(msg); \
+	goto label; \
+}
+#endif
+
+#else
+#ifndef SH_branchOnErr
+#define SH_branchOnErr(fnCall, label, msg)
+#endif
+#endif
+
 typedef enum {
 	SH_NO_ERROR = 0,
 	SH_NULL_VALUES = 1,

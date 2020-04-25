@@ -8,7 +8,7 @@
 
 @import Foundation;
 
-typedef NSDictionary<NSString *,NSNumber *> SHRateItemDict;
+typedef NSDictionary<NSString *,NSNumber *> SHItervalItemDict;
 
 //sector groups
 extern NSString* const SH_LVL_0_SECTORS;

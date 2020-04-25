@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "271691C120885EF70059A58E"
-               BuildableName = "libSHSpecial_C.a"
+               BuildableName = "SHSpecial_C"
                BlueprintName = "SHSpecial_C"
                ReferencedContainer = "container:SHSpecial_C.xcodeproj">
             </BuildableReference>
@@ -51,7 +51,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "271691C120885EF70059A58E"
-            BuildableName = "libSHSpecial_C.a"
+            BuildableName = "SHSpecial_C"
             BlueprintName = "SHSpecial_C"
             ReferencedContainer = "container:SHSpecial_C.xcodeproj">
          </BuildableReference>

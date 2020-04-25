@@ -33,9 +33,9 @@
 	NSArray<NSString *> *dayKeys = self.weeklyActiveDays.weekKeysBasedOnWeekStart;
 
 	__weak SHWeeklyActiveDaysViewController *weakSelf = self;
-	for(int32_t i = 0; i < 7; i++){
+	for(int32_t i = 0; i < SH_DAYS_IN_WEEK; i++){
 		[self pushChildVC:self.activeDaySwitches[i] toViewOfParent:self.dayOptionViews[i]];
-		self.activeDaySwitches[i].dayLabel.text = [SHWeeklyRateItemList weekDayKeyToFullName:dayKeys[i]];
+		self.activeDaySwitches[i].dayLabel.text = [SHWeekIntervalItemList weekDayKeyToFullName:dayKeys[i]];
 
 		self.activeDaySwitches[i].onChange = ^void (BOOL newValue, SHSwitch *sender) {
 			SHWeeklyActiveDaysViewController *bSelf = weakSelf;

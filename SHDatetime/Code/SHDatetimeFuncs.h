@@ -40,6 +40,8 @@ SHErrorCode SH_dateDiffSeconds(SHDatetime * const A, SHDatetime * const B, doubl
 
 SHErrorCode SH_dateDiffDays(SHDatetime * const A,SHDatetime * const B, int64_t *ans);
 
+SHErrorCode SH_dateDiffFullWeeks(SHDatetime * const A, SHDatetime * const B, int32_t dayOffset, int64_t *ans);
+
 void SH_DTToString(SHDatetime const *dt,char* str);
 
 void shFreeSHDatetime(SHDatetime *dtObj,int32_t timeshiftLen);

@@ -15,4 +15,11 @@ FRAMEWORK_SEARCH_PATHS = $(SHCOMMON_DIR)
 
 HEADER_SEARCH_PATHS = $(SHDATETIME_H_DIR)/Headers $(SHUTILS_C_H_DIR)/Headers $(SHSPECIAL_C_H_DIR)/Headers
 
-LD_NO_PIE = YES
+//LD_NO_PIE = YES
+
+
+SHUTILS_C_MODMAP_FLAG = -fmodule-map-file=$(SHUTILS_C_H_DIR)/Modules/module.modulemap
+SHDATETIME_MODMAP_FLAG = -fmodule-map-file=$(SHDATETIME_H_DIR)/Modules/module.modulemap
+SHSPECIAL_MODMAP_FLAG = -fmodule-map-file=$(SHSPECIAL_C_H_DIR)/Modules/module.modulemap
+
+OTHER_CFLAGS = $(inherited) $(SHUTILS_C_MODMAP_FLAG) $(SHDATETIME_MODMAP_FLAG) $(SHSPECIAL_MODMAP_FLAG)

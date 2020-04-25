@@ -11,9 +11,9 @@
 
 
 #include "../Configs/SHWorkspace.xcconfig"
+#include "../Configs/C_Lib.xcconfig"
 
-
-HEADER_SEARCH_PATHS = $(SHDATETIME_H_DIR)/Headers $(SHUTILS_C_H_DIR)/Headers
+HEADER_SEARCH_PATHS = $(SHUTILS_C_H_DIR)/Headers $(SHDATETIME_H_DIR)/Headers $(inherited)
 
 //DEFINES_MODULE = YES
 
@@ -23,11 +23,3 @@ SHDATETIME_MODMAP_FLAG = -fmodule-map-file=$(SHDATETIME_H_DIR)/Modules/module.mo
 //MODULEMAP_FILE = $(SRCROOT)/Headers/module.modulemap
 OTHER_CFLAGS = $(inherited) $(SHUTILS_C_MODMAP_FLAG) $(SHDATETIME_MODMAP_FLAG)
 
-//The location to copy the public headers to during building, relative to the built products folder.
-CONFIGURATION_BUILD_DIR = $(inherited)/$(PRODUCT_NAME).framework
-
-//$BUILT_PRODUCTS_DIR/usr/local/include/
-BUILT_PRODUCTS_DIR = $(inherited)/$(PRODUCT_NAME).framework
-
-//The location to copy the public headers to during building, relative to the built products folder.
-PUBLIC_HEADERS_FOLDER_PATH = Headers
