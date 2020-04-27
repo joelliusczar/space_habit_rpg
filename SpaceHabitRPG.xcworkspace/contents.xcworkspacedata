@@ -73,9 +73,6 @@
       <FileRef
          location = "group:Configs/MacOSArchs.xcconfig">
       </FileRef>
-      <FileRef
-         location = "group:AllLangWarnings.xcconfig">
-      </FileRef>
    </Group>
    <Group
       location = "group:Copy"

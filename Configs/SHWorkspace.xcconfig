@@ -9,8 +9,10 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-SUPPORTED_PLATFORMS = iphonesimulator iphoneos macosx
+//SUPPORTED_PLATFORMS = iphonesimulator iphoneos macosx
 //CONFIGURATION is Release, Debug, etc
+
+SDKROOT = iphoneos
 
 SH_COMMON_BUILD_ROOT = $(SRCROOT)/../../spacehabitrpg_output/build/$(PLATFORM_NAME)
 
@@ -28,12 +30,11 @@ BUILT_PRODUCTS_DIR = $(SH_COMMON_BUILD_ROOT)/$(CONFIGURATION)
 
 ALWAYS_SEARCH_USER_PATHS = NO
 
-//:configuration = Debug
-OTHER_CFLAGS = //-Wall -Wextra
+OTHER_CFLAGS = $(inherited) -Wall -Wextra
 
-CODE_SIGN_IDENTITY = iPhone Developer
+//CODE_SIGN_IDENTITY = iPhone Developer
 
-IPHONEOS_DEPLOYMENT_TARGET = 13.2
+//IPHONEOS_DEPLOYMENT_TARGET = 13.4
 
 //IS_IOS is part of GCC_PREPROCESSOR_DEFINITIONS
 
@@ -41,22 +42,24 @@ IPHONEOS_DEPLOYMENT_TARGET = 13.2
 
 //GCC_PREPROCESSOR_DEFINITIONS[sdk=iphonesimulator*] = $(inherited) IS_IOS=1
 
-//C_PUBLIC_HEADERS = /usr/local/include
+C_PUBLIC_HEADERS = /usr/local/include
 
 //compiler-default
-GCC_C_LANGUAGE_STANDARD = gnu11//c11//c99//gnu11//c89//ansi
-//
-CLANG_CXX_LANGUAGE_STANDARD = gnu++14
-//
-CLANG_CXX_LIBRARY = libc++
-//
-//
-CLANG_ENABLE_OBJC_ARC = YES
-CLANG_ENABLE_OBJC_WEAK = YES
+//GCC_C_LANGUAGE_STANDARD = gnu11//c11//c99//gnu11//c89//ansi
+////
+//CLANG_CXX_LANGUAGE_STANDARD = gnu++14
+////
+//CLANG_CXX_LIBRARY = libc++
+////
+////
+//CLANG_ENABLE_OBJC_ARC = YES
+//CLANG_ENABLE_OBJC_WEAK = YES
 
-SDKROOT = iphoneos
+//SDKROOT = iphoneos
+//SDKROOT[sdk=iphoneos*] = iphoneos
+//SDKROOT[sdk=macosx10.15] = macosx
 
-SYSTEM_HEADER_SEARCH_PATHS = $(SDKROOT)/usr/include
+SYSTEM_HEADER_SEARCH_PATHS = (inherited) $(SDKROOT)/usr/include
 
 
 //SDKROOT is I think what we need
@@ -77,9 +80,9 @@ SHSPECIAL_MODMAP_FLAG = -fmodule-map-file=$(SHSPECIAL_C_H_DIR)/Modules/module.mo
 
 
 
-CLANG_ENABLE_MODULES = YES
-
-
+//CLANG_ENABLE_MODULES = YES
+//
+//ONLY_ACTIVE_ARCH = YES
 
 //---------------------
 

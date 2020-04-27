@@ -179,6 +179,7 @@
 		27075D6C225963A700AD13AA /* SHMonsterDictionaryEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHMonsterDictionaryEntry.m; sourceTree = "<group>"; };
 		2719D5092319C61600765F54 /* SHMonster_Medium.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMonster_Medium.m; sourceTree = "<group>"; };
 		2719D50A2319C61700765F54 /* SHMonster_Medium.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMonster_Medium.h; sourceTree = "<group>"; };
+		271AA96C2454F5CA0027CA70 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		271CF5B923D4D4AC00DB0CF4 /* SHIntervalItemFormat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHIntervalItemFormat.h; sourceTree = "<group>"; };
 		271CF5BA23D4D4AC00DB0CF4 /* SHIntervalItemFormat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHIntervalItemFormat.m; sourceTree = "<group>"; };
 		272F36ED23CA3B1400275FFF /* libSHSpecial_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHSpecial_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -420,6 +421,7 @@
 		2747C3B82043B59100FB5669 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				271AA96C2454F5CA0027CA70 /* UIKit.framework */,
 				272F36ED23CA3B1400275FFF /* libSHSpecial_C.a */,
 				2769C1012286347A00217480 /* libSHDatetime.a */,
 				27B15A9E20524B4F0045B226 /* SHCommon.framework */,
@@ -1046,6 +1048,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1096,6 +1099,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";

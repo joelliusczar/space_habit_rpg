@@ -6,6 +6,7 @@
 //  Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
+#if TARGET_OS_MACCATALYST || TARGET_OS_IOS
 #import "SHIconBuilder.h"
 #import "SHIconDrawingFunctions.h"
 
@@ -134,6 +135,7 @@ typedef void (*shDrawShapeFn)(const CGRect *, CGContextRef, CGFloat);
 	return self;
 }
 
+
 UIImage * drawShape(SHIconBuilder *builder, shDrawShapeFn fn) {
 	UIGraphicsImageRenderer *renderer = [[UIGraphicsImageRenderer alloc]
 		initWithSize:builder.size
@@ -218,5 +220,7 @@ UIImage * drawShape(SHIconBuilder *builder, shDrawShapeFn fn) {
 	}];
 	return [img imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 }
+
 @end
 
+#endif

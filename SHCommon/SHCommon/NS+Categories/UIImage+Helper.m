@@ -6,6 +6,8 @@
 //  Copyright © 2018 Joel Gillette. All rights reserved.
 //
 
+#if TARGET_OS_MACCATALYST || TARGET_OS_IOS
+
 #import "UIImage+Helper.h"
 
 @implementation UIImage (Helper)
@@ -20,3 +22,4 @@
 
 @end
 
+#endif

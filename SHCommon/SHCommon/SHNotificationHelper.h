@@ -9,6 +9,7 @@
 @import Foundation;
 @import UserNotifications;
 
+
 @interface SHNotificationHelper : NSObject
 +(UNMutableNotificationContent *)buildDefaultNotificationContent:(NSString *)notificationText
 	userInfo:(NSDictionary *)info;

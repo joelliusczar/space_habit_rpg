@@ -6,14 +6,16 @@
 //	Copyright Â© 2018 Joel Gillette. All rights reserved.
 //
 
-@import UIKit;
-
+#import <TargetConditionals.h>
+#if TARGET_OS_MACCATALYST || TARGET_OS_IOS
 //! Project version number for SHCommon.
 FOUNDATION_EXPORT double SHCommonVersionNumber;
 
 //! Project version string for SHCommon.
 FOUNDATION_EXPORT const unsigned char SHCommonVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <SHCommonUtilities/PublicHeader.h>
+
+#endif
 
 #import "SHInterceptorProtocol.h"
 #import "SHInterceptor.h"
@@ -32,12 +34,9 @@ FOUNDATION_EXPORT const unsigned char SHCommonVersionString[];
 #import "NSMutableDictionary+Helper.h"
 #import "NSNumber+Helper.h"
 #import "SHMath.h"
-#import "SHNotificationHelper.h"
 #import "SHVarWrapper.h"
 #import "SHKeyToken.h"
 #import "SHProbWeight.h"
-#import "UIColor+Helper.h"
-#import "UIImage+Helper.h"
 #import "SHObject.h"
 #import "NSDictionary+SHHelper.h"
 #import "NSArray+SHHelper.h"
@@ -55,7 +54,9 @@ FOUNDATION_EXPORT const unsigned char SHCommonVersionString[];
 #import "SHConstants.h"
 #import "SHCommonTypeDefs.h"
 #import "SHIconDrawingFunctions.h"
-#import "SHIconBuilder.h"
 #import "SHInheritanceTreeNode.h"
 #import "SHInheritanceTree.h"
-
+#import "SHNotificationHelper.h"
+#import "UIColor+Helper.h"
+#import "SHIconBuilder.h"
+#import "UIImage+Helper.h"

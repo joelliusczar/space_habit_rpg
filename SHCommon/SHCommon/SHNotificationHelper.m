@@ -9,14 +9,21 @@
 #import "SHNotificationHelper.h"
 #import "SHConstants.h"
 
+
+
+#if TARGET_OS_MACCATALYST || TARGET_OS_IOS
 @import UIKit;
+#endif
 
 @implementation SHNotificationHelper
+
 
 +(UNMutableNotificationContent *)buildDefaultNotificationContent:(NSString *)notificationText
 	userInfo:(NSDictionary *)info
 {
 	(void)info;
+	NSLog(@"TARGET_OS_MACCATALYST: %d",TARGET_OS_MACCATALYST);
+	NSLog(@"TARGET_OS_IOS: %d",TARGET_OS_IOS);
 	UNMutableNotificationContent *content = [UNMutableNotificationContent new];
 	content.title = @"Reminder:";
 	content.body = notificationText;
@@ -40,7 +47,9 @@
 		}
 		[center removeAllDeliveredNotifications];
 		dispatch_sync(dispatch_get_main_queue(),^{
-			UIApplication.sharedApplication.applicationIconBadgeNumber = 0;
+//			#if TARGET_OS_MACCATALYST || TARGET_OS_IOS
+//			UIApplication.sharedApplication.applicationIconBadgeNumber = 0;
+//			#endif
 		});
 	}];
 	
@@ -53,18 +62,18 @@
 {
 	UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
 	[center getNotificationSettingsWithCompletionHandler:
-	 ^(UNNotificationSettings *settings){
-		 if(settings.authorizationStatus == UNAuthorizationStatusNotDetermined){
-			 [self buildNotificationPermissionWrapped:notificationText
+	^(UNNotificationSettings *settings){
+		if(settings.authorizationStatus == UNAuthorizationStatusNotDetermined){
+			[self buildNotificationPermissionWrapped:notificationText
 					notificationId:notificationId
 					userInfo:info];
-		 }
-		 else if(settings.authorizationStatus == UNAuthorizationStatusAuthorized){
-			 [self buildNotificationPermissionWrapped:notificationText
+		}
+		else if(settings.authorizationStatus == UNAuthorizationStatusAuthorized){
+			[self buildNotificationPermissionWrapped:notificationText
 					notificationId:notificationId
 					userInfo:info];
-		 }
-	 }];
+		}
+	}];
 }
 
 
@@ -73,16 +82,16 @@
 	userInfo:(NSDictionary *)info
 {
 	UNUserNotificationCenter *center = [UNUserNotificationCenter
-										currentNotificationCenter];
+		currentNotificationCenter];
 	UNAuthorizationOptions options = UNAuthorizationOptionAlert
 	|UNAuthorizationOptionBadge
 	|UNAuthorizationOptionSound;
 	[center requestAuthorizationWithOptions:options completionHandler:
-	 ^(BOOL granted,NSError *wrong){
-		 (void)wrong;
-		 if(granted){
-			 [self buildNotification:notificationText notificationId:notificationId
-							userInfo:info];
+	^(BOOL granted,NSError *wrong){
+		(void)wrong;
+		if(granted){
+			[self buildNotification:notificationText notificationId:notificationId
+					userInfo:info];
 		 }
 	 }];
 }
@@ -93,15 +102,15 @@
 {
 	UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
 	UNMutableNotificationContent *content = [SHNotificationHelper
-											 buildDefaultNotificationContent:
-											 notificationText userInfo:info];
+		buildDefaultNotificationContent:
+		notificationText userInfo:info];
 	UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger
-												  triggerWithTimeInterval:60
-												  repeats:NO];
+		triggerWithTimeInterval:60
+		repeats:NO];
 	UNNotificationRequest *request = [UNNotificationRequest
-									  requestWithIdentifier:notificationId
-									  content:content
-									  trigger:trigger];
+		requestWithIdentifier:notificationId
+		content:content
+		trigger:trigger];
 	[center addNotificationRequest:request withCompletionHandler:
 		^(NSError *error){
 			if(error){
@@ -111,3 +120,4 @@
 }
 
 @end
+

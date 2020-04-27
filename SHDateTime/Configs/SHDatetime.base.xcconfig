@@ -12,7 +12,7 @@
 #include "../Configs/SHWorkspace.xcconfig"
 #include "../Configs/C_Lib.xcconfig"
 
-HEADER_SEARCH_PATHS = $(SHUTILS_C_H_DIR)/Headers $(inherited)
+HEADER_SEARCH_PATHS = $(inherited) $(SHUTILS_C_H_DIR)/Headers $(inherited)
 
 
 OTHER_CFLAGS = $(inherited) -fmodule-map-file=$(SHUTILS_C_H_DIR)/Modules/module.modulemap

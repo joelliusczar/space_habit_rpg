@@ -11,6 +11,7 @@
 @implementation SHStoryItemDictionary
 
 
+
 @synthesize infoDict = _infoDict;
 -(SHInfoDictionary*)infoDict{
 	if(nil == _infoDict){

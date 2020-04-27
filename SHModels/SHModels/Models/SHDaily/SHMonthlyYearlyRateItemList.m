@@ -16,7 +16,7 @@
 @implementation SHMonthlyYearlyRateItemList
 
 
-static SHMonthlyYearlyRateItem* mapDictToMonthlyYearly(SHItervalItemDict *item, NSUInteger idx){
+static SHMonthlyYearlyRateItem* _Nonnull mapDictToMonthlyYearly(SHItervalItemDict * _Nonnull item, NSUInteger idx){
 	(void)idx;
 	NSInteger major = item[SH_MAJOR_ORDINAL].integerValue;
 	NSInteger minor = item[SH_MINOR_ORDINAL].integerValue;
@@ -30,7 +30,7 @@ static SHMonthlyYearlyRateItem* mapDictToMonthlyYearly(SHItervalItemDict *item, 
 
 -(instancetype)initWithActiveDays:(NSMutableArray<SHItervalItemDict*>*)activeDays{
 	if(self = [super init]){
-		_backend = [activeDays mapItemsTo_f:mapDictToMonthlyYearly];;
+		_backend = [activeDays mapItemsTo_f:mapDictToMonthlyYearly];
 	}
 	return self;
 }

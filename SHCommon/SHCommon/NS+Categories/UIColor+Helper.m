@@ -8,6 +8,8 @@
 
 #import "UIColor+Helper.h"
 
+#if TARGET_OS_MACCATALYST || TARGET_OS_IOS
+
 @implementation UIColor (Helper)
 
 -(UIColor *)invertColor{
@@ -18,3 +20,4 @@
 
 @end
 
+#endif

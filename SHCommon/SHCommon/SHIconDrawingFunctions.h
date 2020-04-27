@@ -9,8 +9,11 @@
 #ifndef SHIconDrawingFunctions_h
 #define SHIconDrawingFunctions_h
 
-#include <stdio.h>
+#import <stdio.h>
+#import <TargetConditionals.h>
+#if TARGET_OS_MACCATALYST || TARGET_OS_IOS
 @import UIKit;
+#endif
 @import CoreGraphics;
 
 

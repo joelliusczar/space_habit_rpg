@@ -13,8 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSArray<ItemType> (SHHelper)
 
-typedef _Nonnull ItemType (*SH_mapper_CFn)(_Nonnull ItemType, NSUInteger);
-typedef _Nonnull ItemType (^SH_mapperBlock)(_Nonnull ItemType, NSUInteger);
+typedef _Nonnull id (*SH_mapper_CFn)(_Nonnull ItemType, NSUInteger);
+typedef _Nonnull id (^SH_mapperBlock)(_Nonnull ItemType, NSUInteger);
 
 -(NSMutableArray*)arrayWithItemsAsDicts;
 
