@@ -6,6 +6,7 @@
 //	Copyright Â© 2018 Joel Gillette. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import <TargetConditionals.h>
 #if TARGET_OS_MACCATALYST || TARGET_OS_IOS
 //! Project version number for SHCommon.

@@ -10,15 +10,15 @@
 // https://help.apple.com/xcode/#/dev745c5c974
 
 #include "../Configs/SHWorkspace.xcconfig"
-#include "../Configs/MacOSArchs.xcconfig"
+//#include "../Configs/MacOSArchs.xcconfig"
 
 FRAMEWORK_SEARCH_PATHS = $PLATFORM_DIR/Developer/Library/Frameworks/ $(SHCOMMON_DIR) $(SHMODELS_DIR) $(SHTESTCOMMON_DIR)
 
-HEADER_SEARCH_PATHS = $(SHUTILS_C_H_DIR) $(SHDATETIME_H_DIR)
+HEADER_SEARCH_PATHS = $(SHUTILS_C_H_DIR)/Headers $(SHDATETIME_H_DIR)/Headers
 
 LD_RUNPATH_SEARCH_PATHS = $(inherited) @executable_path/Frameworks @loader_path/Frameworks $PLATFORM_DIR/Developer/Library/Frameworks/
 
-OTHER_CFLAGS =
+OTHER_CFLAGS = $(inherited) $(INTTYPES_MODMAP_FLAG) $(SHUTILS_C_MODMAP_FLAG) $(SHSPECIAL_MODMAP_FLAG)
 
 GCC_WARN_UNUSED_VARIABLE = NO
 

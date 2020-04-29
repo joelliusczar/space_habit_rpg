@@ -13,3 +13,4 @@
 #include "../Configs/C_Lib.xcconfig"
 
 
+OTHER_CFLAGS = $(inherited) -fmodules $(INTTYPES_MODMAP_FLAG)

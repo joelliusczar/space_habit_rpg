@@ -11,4 +11,4 @@
 
 
 #include "SHModels.base.xcconfig"
-#include "../Configs/MacOSArchs.xcconfig"
+//#include "../Configs/MacOSArchs.xcconfig"

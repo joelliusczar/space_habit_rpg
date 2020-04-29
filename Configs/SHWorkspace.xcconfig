@@ -59,7 +59,10 @@ C_PUBLIC_HEADERS = /usr/local/include
 //SDKROOT[sdk=iphoneos*] = iphoneos
 //SDKROOT[sdk=macosx10.15] = macosx
 
-SYSTEM_HEADER_SEARCH_PATHS = (inherited) $(SDKROOT)/usr/include
+
+//it seems that SYSTEM_HEADER_SEARCH_PATHS causes the mysterious error where it complains
+//of Darwin.c.stdint not being imported
+//SYSTEM_HEADER_SEARCH_PATHS = $(inherited) $(SDKROOT)/usr/include
 
 
 //SDKROOT is I think what we need
@@ -77,6 +80,8 @@ SHTESTCOMMON_DIR = $(BUILT_PRODUCTS_DIR)/SHTestCommon.framework
 SHUTILS_C_MODMAP_FLAG = -fmodule-map-file=$(SHUTILS_C_H_DIR)/Modules/module.modulemap
 SHDATETIME_MODMAP_FLAG = -fmodule-map-file=$(SHDATETIME_H_DIR)/Modules/module.modulemap
 SHSPECIAL_MODMAP_FLAG = -fmodule-map-file=$(SHSPECIAL_C_H_DIR)/Modules/module.modulemap
+SHCOMMON_MODMAP_FLAG = -fmodule-map-file=$(SHCOMMON_DIR)/Modules/module.modulemap
+INTTYPES_MODMAP_FLAG = -fmodule-map-file=$(SH_COMMON_BUILD_ROOT)/$(CONFIGURATION)/inttypes/module.modulemap
 
 
 

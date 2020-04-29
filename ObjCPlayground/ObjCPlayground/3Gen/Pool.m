@@ -16,17 +16,17 @@
 
 -(void)someClassStuff:(Pool *)ourGuy{
 	if([ourGuy isMemberOfClass:self.class]){
-		NSLog(@"Yes self: %@ is ourGuy:%@",self.className,ourGuy.className);
+		NSLog(@"Yes self: %@ is ourGuy:%@",self.class, ourGuy.class);
 	}
 	else{
-		NSLog(@"No self: %@ is not ourGuy:%@",self.className,ourGuy.className);
+		NSLog(@"No self: %@ is not ourGuy:%@",self.class, ourGuy.class);
 	}
 		
 	if([ourGuy isKindOfClass:self.class]){
-		NSLog(@" self: %@ is kind of ourGuy:%@",self.className,ourGuy.className);
+		NSLog(@" self: %@ is kind of ourGuy:%@",self.class, ourGuy.class);
 	}
 	else{
-		NSLog(@" self: %@ is not kind of ourGuy:%@",self.className,ourGuy.className);
+		NSLog(@" self: %@ is not kind of ourGuy:%@",self.class, ourGuy.class);
 	}
 }
 

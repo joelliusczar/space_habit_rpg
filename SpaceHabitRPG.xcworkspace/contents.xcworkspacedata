@@ -60,6 +60,9 @@
       <FileRef
          location = "group:headers_cleanup.sh">
       </FileRef>
+      <FileRef
+         location = "group:create_inttypes_modulemap.sh">
+      </FileRef>
    </Group>
    <Group
       location = "container:"
@@ -101,6 +104,9 @@
       location = "group:SHCommon/SHCommon.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:SHModels/SHModels.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:PropertyAdder/PropertyAdder.xcodeproj">
    </FileRef>
    <FileRef
@@ -111,9 +117,6 @@
    </FileRef>
    <FileRef
       location = "group:ObjCPlayground/ObjCPlayground.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:SHModels/SHModels.xcodeproj">
    </FileRef>
    <FileRef
       location = "container:SpaceHabitRPG/SpaceHabitRPG.xcodeproj">

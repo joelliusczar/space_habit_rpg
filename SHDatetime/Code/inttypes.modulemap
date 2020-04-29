@@ -1,6 +1,0 @@
-/*
-module inttypes_addr [system] [extern_c] {
-	header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/inttypes.h"
-	export *
-}
-*/

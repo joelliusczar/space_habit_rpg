@@ -9,7 +9,6 @@
 #ifndef SHDatetime_h
 #define SHDatetime_h
 
-#pragma clang module import SHUtils_C
 #import "SHDTConstants.h"
 #import "SHDatetime_struct.h"
 #import "SHTimeZone.h"

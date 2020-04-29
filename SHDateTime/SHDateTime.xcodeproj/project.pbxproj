@@ -37,7 +37,6 @@
 
 /* Begin PBXFileReference section */
 		2703AA62244FBCBB00ACE781 /* SHUtils_C.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHUtils_C.xcodeproj; path = ../SHUtils_C/SHUtils_C.xcodeproj; sourceTree = "<group>"; };
-		270CB969244C92A500FE930B /* inttypes.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = inttypes.modulemap; sourceTree = "<group>"; };
 		2712C5F5244D2BE800157758 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2737D580216DA8BB00E0111F /* simple_start.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = simple_start.sh; sourceTree = "<group>"; };
 		2737D581216DA8BB00E0111F /* dt_server_run.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = dt_server_run.sh; sourceTree = "<group>"; };
@@ -92,7 +91,6 @@
 		2703AA70245333DE00ACE781 /* Code */ = {
 			isa = PBXGroup;
 			children = (
-				270CB969244C92A500FE930B /* inttypes.modulemap */,
 				2769C104228636DF00217480 /* module.modulemap */,
 				27D3184A2086C9040047F5F1 /* SHDatetime_struct.h */,
 				2769C1032286364C00217480 /* SHDatetime.h */,
@@ -252,7 +250,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27D318412086C8CA0047F5F1 /* Build configuration list for PBXNativeTarget "SHDatetime" */;
 			buildPhases = (
-				2769C108228637DE00217480 /* ShellScript */,
+				2769C108228637DE00217480 /* Run Script Pre */,
 				27D3183B2086C8CA0047F5F1 /* Headers */,
 				27D318392086C8CA0047F5F1 /* Sources */,
 				27D3183A2086C8CA0047F5F1 /* Frameworks */,
@@ -317,7 +315,7 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2769C108228637DE00217480 /* ShellScript */ = {
+		2769C108228637DE00217480 /* Run Script Pre */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -326,6 +324,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Run Script Pre";
 			outputFileListPaths = (
 			);
 			outputPaths = (

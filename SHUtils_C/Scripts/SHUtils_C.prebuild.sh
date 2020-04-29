@@ -10,5 +10,7 @@ cd "$SRCROOT"/../Build_Scripts
 
 . module_map_cleanup.sh
 . headers_cleanup.sh
+rm -r "$SH_COMMON_BUILD_ROOT/$CONFIGURATION"/inttypes 2>/dev/null
 
+bash create_inttypes_modulemap.sh
 exit 0

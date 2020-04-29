@@ -17,3 +17,7 @@ fi
 
 . module_map_copy.sh
 #. resources_copy.sh
+
+mkdir -p "$SH_COMMON_BUILD_ROOT/$CONFIGURATION"/inttypes &&
+cp "$SRCROOT"/inttypes/module.modulemap "$SH_COMMON_BUILD_ROOT/$CONFIGURATION"/inttypes/module.modulemap
+echo "$BUILT_PRODUCTS_DIR/$PRODUCT_NAME"

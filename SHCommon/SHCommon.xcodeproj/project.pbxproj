@@ -87,7 +87,7 @@
 		2737444B24565DD800E36AB7 /* SHReportServiceCallerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 273743FC24565DD800E36AB7 /* SHReportServiceCallerProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2737444C24565DD800E36AB7 /* SHColorInversionHintProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 273743FD24565DD800E36AB7 /* SHColorInversionHintProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2737444E24565DD800E36AB7 /* SHIconDrawingFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 273743FF24565DD800E36AB7 /* SHIconDrawingFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2737447324565F8D00E36AB7 /* SHDatetime in Frameworks */ = {isa = PBXBuildFile; fileRef = 2737446E24565EA800E36AB7 /* SHDatetime */; };
+		27F3EC52245703A40049F684 /* SHDatetime in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F3EC39245669BA0049F684 /* SHDatetime */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,23 +98,16 @@
 			remoteGlobalIDString = 2737439224565D6E00E36AB7;
 			remoteInfo = SHCommon;
 		};
-		2737446724565E9F00E36AB7 /* PBXContainerItemProxy */ = {
+		27F3EC38245669BA0049F684 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2737446324565E9F00E36AB7 /* SHUtils_C.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 271692002089758B0059A58E;
-			remoteInfo = SHUtils_C;
-		};
-		2737446D24565EA800E36AB7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2737446924565EA800E36AB7 /* SHDatetime.xcodeproj */;
+			containerPortal = 27F3EC34245669BA0049F684 /* SHDatetime.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 27D3183D2086C8CA0047F5F1;
 			remoteInfo = SHDatetime;
 		};
-		2737447024565F8400E36AB7 /* PBXContainerItemProxy */ = {
+		27F3EC53245703AA0049F684 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2737446924565EA800E36AB7 /* SHDatetime.xcodeproj */;
+			containerPortal = 27F3EC34245669BA0049F684 /* SHDatetime.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 27D3183C2086C8CA0047F5F1;
 			remoteInfo = SHDatetime;
@@ -209,8 +202,7 @@
 		2737445B24565E6F00E36AB7 /* SHCommon.postbuild.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = SHCommon.postbuild.sh; sourceTree = "<group>"; };
 		2737445D24565E6F00E36AB7 /* SHCommon.base.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = SHCommon.base.xcconfig; sourceTree = "<group>"; };
 		2737445E24565E6F00E36AB7 /* SHCommon.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = SHCommon.debug.xcconfig; sourceTree = "<group>"; };
-		2737446324565E9F00E36AB7 /* SHUtils_C.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHUtils_C.xcodeproj; path = ../SHUtils_C/SHUtils_C.xcodeproj; sourceTree = "<group>"; };
-		2737446924565EA800E36AB7 /* SHDatetime.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHDatetime.xcodeproj; path = ../SHDatetime/SHDatetime.xcodeproj; sourceTree = "<group>"; };
+		27F3EC34245669BA0049F684 /* SHDatetime.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHDatetime.xcodeproj; path = ../SHDatetime/SHDatetime.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,7 +210,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2737447324565F8D00E36AB7 /* SHDatetime in Frameworks */,
+				27F3EC52245703A40049F684 /* SHDatetime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,8 +228,7 @@
 		2737438924565D6E00E36AB7 = {
 			isa = PBXGroup;
 			children = (
-				2737446924565EA800E36AB7 /* SHDatetime.xcodeproj */,
-				2737446324565E9F00E36AB7 /* SHUtils_C.xcodeproj */,
+				27F3EC34245669BA0049F684 /* SHDatetime.xcodeproj */,
 				2737445C24565E6F00E36AB7 /* Configs */,
 				2737445924565E6F00E36AB7 /* Scripts */,
 				273743AD24565DD800E36AB7 /* SHCommon */,
@@ -393,27 +384,19 @@
 			path = Configs;
 			sourceTree = "<group>";
 		};
-		2737446424565E9F00E36AB7 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				2737446824565E9F00E36AB7 /* SHUtils_C */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		2737446A24565EA800E36AB7 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				2737446E24565EA800E36AB7 /* SHDatetime */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		2737447224565F8D00E36AB7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		27F3EC35245669BA0049F684 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27F3EC39245669BA0049F684 /* SHDatetime */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -482,11 +465,12 @@
 				2737438F24565D6E00E36AB7 /* Sources */,
 				2737439024565D6E00E36AB7 /* Frameworks */,
 				2737439124565D6E00E36AB7 /* Resources */,
+				27F3EC4C24566D910049F684 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				2737447124565F8400E36AB7 /* PBXTargetDependency */,
+				27F3EC54245703AA0049F684 /* PBXTargetDependency */,
 			);
 			name = SHCommon;
 			productName = SHCommon;
@@ -541,12 +525,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 2737446A24565EA800E36AB7 /* Products */;
-					ProjectRef = 2737446924565EA800E36AB7 /* SHDatetime.xcodeproj */;
-				},
-				{
-					ProductGroup = 2737446424565E9F00E36AB7 /* Products */;
-					ProjectRef = 2737446324565E9F00E36AB7 /* SHUtils_C.xcodeproj */;
+					ProductGroup = 27F3EC35245669BA0049F684 /* Products */;
+					ProjectRef = 27F3EC34245669BA0049F684 /* SHDatetime.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -558,18 +538,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		2737446824565E9F00E36AB7 /* SHUtils_C */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = SHUtils_C;
-			remoteRef = 2737446724565E9F00E36AB7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2737446E24565EA800E36AB7 /* SHDatetime */ = {
+		27F3EC39245669BA0049F684 /* SHDatetime */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = SHDatetime;
-			remoteRef = 2737446D24565EA800E36AB7 /* PBXContainerItemProxy */;
+			remoteRef = 27F3EC38245669BA0049F684 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -608,7 +581,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nsh Scripts/SHCommon.prebuild.sh\n";
+			showEnvVarsInLog = 0;
+		};
+		27F3EC4C24566D910049F684 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nsh Scripts/SHCommon.postbuild.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -670,10 +661,10 @@
 			target = 2737439224565D6E00E36AB7 /* SHCommon */;
 			targetProxy = 2737439E24565D6E00E36AB7 /* PBXContainerItemProxy */;
 		};
-		2737447124565F8400E36AB7 /* PBXTargetDependency */ = {
+		27F3EC54245703AA0049F684 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SHDatetime;
-			targetProxy = 2737447024565F8400E36AB7 /* PBXContainerItemProxy */;
+			targetProxy = 27F3EC53245703AA0049F684 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
