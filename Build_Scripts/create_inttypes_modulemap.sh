@@ -8,10 +8,6 @@
 
 MODULE_LOCATION="$SH_COMMON_BUILD_ROOT/$CONFIGURATION/inttypes/module.modulemap"
 
-if [ -e "$MODULE_LOCATION" ]; then
-	echo "inttypes module map is already there"
-	exit 0;
-fi
 
 mkdir -p "$SH_COMMON_BUILD_ROOT/$CONFIGURATION/inttypes"
 cat << EOF > "$MODULE_LOCATION"

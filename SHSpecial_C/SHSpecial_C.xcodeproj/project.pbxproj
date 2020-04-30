@@ -10,10 +10,11 @@
 		2703AA60244FB11700ACE781 /* SHWeekIntervalPointsFuncs.h in Headers */ = {isa = PBXBuildFile; fileRef = 2703AA5E244FB11700ACE781 /* SHWeekIntervalPointsFuncs.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2703AA61244FB11700ACE781 /* SHWeekIntervalPointsFuncs.c in Sources */ = {isa = PBXBuildFile; fileRef = 2703AA5F244FB11700ACE781 /* SHWeekIntervalPointsFuncs.c */; };
 		270CB966244BDBCC00FE930B /* SHDatetime in Frameworks */ = {isa = PBXBuildFile; fileRef = 27BC44EA238792200047F683 /* SHDatetime */; };
+		270EEF2B245A56480078D2ED /* SHDueDateWeeklyContext_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = 270EEF29245A4C5A0078D2ED /* SHDueDateWeeklyContext_struct.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271691CC20885F890059A58E /* SHDueDatesWeeklyFuncs.h in Headers */ = {isa = PBXBuildFile; fileRef = 271691CA20885F890059A58E /* SHDueDatesWeeklyFuncs.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271691CD20885F890059A58E /* SHDueDatesWeeklyFuncs.c in Sources */ = {isa = PBXBuildFile; fileRef = 271691CB20885F890059A58E /* SHDueDatesWeeklyFuncs.c */; };
 		2769C09D227DD70800217480 /* SHSpecial_C.h in Headers */ = {isa = PBXBuildFile; fileRef = 27870450227BC188009C9DD6 /* SHSpecial_C.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		277970CD21FD764C00D3F86D /* SHWeekIntervalPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 277970CC21FD75E900D3F86D /* SHWeekIntervalPoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		277970CD21FD764C00D3F86D /* SHWeekIntervalPoint_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = 277970CC21FD75E900D3F86D /* SHWeekIntervalPoint_struct.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		2703AA5E244FB11700ACE781 /* SHWeekIntervalPointsFuncs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHWeekIntervalPointsFuncs.h; sourceTree = "<group>"; };
 		2703AA5F244FB11700ACE781 /* SHWeekIntervalPointsFuncs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHWeekIntervalPointsFuncs.c; sourceTree = "<group>"; };
 		2703AA68244FBCD200ACE781 /* SHUtils_C.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHUtils_C.xcodeproj; path = ../SHUtils_C/SHUtils_C.xcodeproj; sourceTree = "<group>"; };
+		270EEF29245A4C5A0078D2ED /* SHDueDateWeeklyContext_struct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDueDateWeeklyContext_struct.h; sourceTree = "<group>"; };
 		2712C5F7244D2C0A00157758 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		271691C220885EF70059A58E /* SHSpecial_C */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = SHSpecial_C; sourceTree = BUILT_PRODUCTS_DIR; };
 		271691CA20885F890059A58E /* SHDueDatesWeeklyFuncs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDueDatesWeeklyFuncs.h; sourceTree = "<group>"; };
@@ -56,7 +58,7 @@
 		27397343226C08C0001590C6 /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2769C0AA227FB8F100217480 /* SHSpecial_C.postbuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = SHSpecial_C.postbuild.sh; sourceTree = "<group>"; };
 		2769C0AB227FB95A00217480 /* SHSpecial_C.prebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = SHSpecial_C.prebuild.sh; sourceTree = "<group>"; };
-		277970CC21FD75E900D3F86D /* SHWeekIntervalPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHWeekIntervalPoint.h; sourceTree = "<group>"; };
+		277970CC21FD75E900D3F86D /* SHWeekIntervalPoint_struct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHWeekIntervalPoint_struct.h; sourceTree = "<group>"; };
 		27870450227BC188009C9DD6 /* SHSpecial_C.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSpecial_C.h; sourceTree = "<group>"; };
 		27870452227BCA35009C9DD6 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		278FFD9F222B2BBB00DAF985 /* SHSpecial_C.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHSpecial_C.debug.xcconfig; sourceTree = "<group>"; };
@@ -95,10 +97,11 @@
 				27870452227BCA35009C9DD6 /* module.modulemap */,
 				271691CB20885F890059A58E /* SHDueDatesWeeklyFuncs.c */,
 				271691CA20885F890059A58E /* SHDueDatesWeeklyFuncs.h */,
-				277970CC21FD75E900D3F86D /* SHWeekIntervalPoint.h */,
+				277970CC21FD75E900D3F86D /* SHWeekIntervalPoint_struct.h */,
 				27870450227BC188009C9DD6 /* SHSpecial_C.h */,
 				2703AA5F244FB11700ACE781 /* SHWeekIntervalPointsFuncs.c */,
 				2703AA5E244FB11700ACE781 /* SHWeekIntervalPointsFuncs.h */,
+				270EEF29245A4C5A0078D2ED /* SHDueDateWeeklyContext_struct.h */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -192,7 +195,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				277970CD21FD764C00D3F86D /* SHWeekIntervalPoint.h in Headers */,
+				277970CD21FD764C00D3F86D /* SHWeekIntervalPoint_struct.h in Headers */,
+				270EEF2B245A56480078D2ED /* SHDueDateWeeklyContext_struct.h in Headers */,
 				271691CC20885F890059A58E /* SHDueDatesWeeklyFuncs.h in Headers */,
 				2703AA60244FB11700ACE781 /* SHWeekIntervalPointsFuncs.h in Headers */,
 				2769C09D227DD70800217480 /* SHSpecial_C.h in Headers */,

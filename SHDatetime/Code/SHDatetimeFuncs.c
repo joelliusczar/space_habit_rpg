@@ -169,7 +169,7 @@ static int64_t _calcNumLeapYearsBaseLeap(int64_t year){
 /*
  	checks if the day is feb 29th
  */
-static bool _isLeapDayCusp(SHDatetime *dt){
+static bool _isLeapDayCusp(struct SHDatetime *dt){
 	return dt->month == 2 && dt->day == 29;
 }
 
@@ -344,7 +344,7 @@ static void _setTimeFromTimeCalcResult(int64_t timestamp, int32_t minOffset, Tim
 }
 
 
-static bool _areTimeComponentsValid(SHDatetime const *dt){
+static bool _areTimeComponentsValid(struct SHDatetime const *dt){
 	shLog("_areTimeComponentsValid");
 	bool isValid = (dt->year >= 0 && dt->year <= 9999);
 	isValid &= (dt->hour >= 0 && dt->hour < 24);
@@ -360,7 +360,7 @@ static bool _areTimeComponentsValid(SHDatetime const *dt){
 
 
 static void _filDateTimeObj(int64_t year, int32_t month, int32_t day, int32_t hour,
-	int32_t min, int32_t sec, double milisecs, SHDatetime *dt) {
+	int32_t min, int32_t sec, double milisecs, struct SHDatetime *dt) {
 	dt->year = year;
 	dt->month = month;
 	dt->day = day;
@@ -390,14 +390,14 @@ int64_t _calcSecondsPassedInYear(int64_t timestamp, int64_t years, bool isBefore
 }
 
 
-void SH_dtSetTimezoneOffset(SHDatetime *dt, int32_t timezoneOffset) {
+void SH_dtSetTimezoneOffset(struct SHDatetime *dt, int32_t timezoneOffset) {
 	assert(dt);
 	dt->timezoneOffset = timezoneOffset;
 	dt->isTimestampValid = false;
 }
 
 
-SHErrorCode SH_timestampToDt(double timestamp, int32_t timezoneOffset, SHDatetime *ans){
+SHErrorCode SH_timestampToDt(double timestamp, int32_t timezoneOffset, struct SHDatetime *ans){
 	assert(ans);
 	SHErrorCode status;
 	if((status = _isTimestampRangeInvalid(timestamp,timezoneOffset)) != SH_NO_ERROR) {
@@ -446,7 +446,7 @@ SHErrorCode SH_timestampToDt(double timestamp, int32_t timezoneOffset, SHDatetim
 }
 
 
-SHErrorCode SH_dtToTimestamp(SHDatetime * const dt,double *ans){
+SHErrorCode SH_dtToTimestamp(struct SHDatetime * const dt,double *ans){
 	shLog("SH_dtToTimestamp");
 	SHErrorCode status = SH_NO_ERROR;
 	assert(dt);
@@ -507,7 +507,7 @@ SHErrorCode SH_dtToTimestamp(SHDatetime * const dt,double *ans){
 }
 
 
-SHErrorCode SH_dtToTimeOfDay(SHDatetime *const dt, double *ans) {
+SHErrorCode SH_dtToTimeOfDay(struct SHDatetime *const dt, double *ans) {
 	shLog("SH_dtToTimeOfDay");
 	SHErrorCode status = SH_NO_ERROR;
 	assert(dt);
@@ -540,7 +540,7 @@ SHErrorCode SH_dtToTimeOfDay(SHDatetime *const dt, double *ans) {
 		return status;
 }
 
-SHErrorCode SH_addDaysToDt(SHDatetime *dt, int64_t days, SHTimeAdjustOptions options){
+SHErrorCode SH_addDaysToDt(struct SHDatetime *dt, int64_t days, SHTimeAdjustOptions options){
 	shLog("SH_addDaysToDt");
 	(void)options;
 	assert(dt);
@@ -560,7 +560,7 @@ SHErrorCode SH_addDaysToDt(SHDatetime *dt, int64_t days, SHTimeAdjustOptions opt
 }
 
 
-SHErrorCode SH_addMonthsToDt(SHDatetime *dt,int64_t months,SHTimeAdjustOptions options){
+SHErrorCode SH_addMonthsToDt(struct SHDatetime *dt,int64_t months,SHTimeAdjustOptions options){
 	assert(dt);
 	SHErrorCode status = SH_NO_ERROR;
 	if(months == 0) goto nochange;
@@ -588,7 +588,7 @@ SHErrorCode SH_addMonthsToDt(SHDatetime *dt,int64_t months,SHTimeAdjustOptions o
 }
 
 
-static SHErrorCode _addYears_SHIFT(SHDatetime *dt,int64_t years, SHTimeAdjustOptions options) {
+static SHErrorCode _addYears_SHIFT(struct SHDatetime *dt,int64_t years, SHTimeAdjustOptions options) {
 	SHErrorCode status = SH_NO_ERROR;
 	int64_t yearSum = years + dt->year;
 	options = options == SH_TIME_ADJUST_NO_OPTION ? SH_TIME_ADJUST_SHIFT_BKD : options;
@@ -621,7 +621,7 @@ static SHErrorCode _addYears_SHIFT(SHDatetime *dt,int64_t years, SHTimeAdjustOpt
 }
 
 
-SHErrorCode SH_addYearsToDt(SHDatetime *dt, int64_t years, SHTimeAdjustOptions options){
+SHErrorCode SH_addYearsToDt(struct SHDatetime *dt, int64_t years, SHTimeAdjustOptions options){
 	assert(dt);
 	SHErrorCode status = SH_NO_ERROR;
 	if(years == 0) goto success;
@@ -646,7 +646,7 @@ SHErrorCode SH_addYearsToDt(SHDatetime *dt, int64_t years, SHTimeAdjustOptions o
 }
 
 
-void SH_setToDayStart(SHDatetime *dt){
+void SH_setToDayStart(struct SHDatetime *dt){
 	shLog("shDayStartInPlace");
 	assert(dt);
 	dt->hour = 0;
@@ -658,7 +658,7 @@ void SH_setToDayStart(SHDatetime *dt){
 }
 
 
-static int32_t _calcWeekdayIdx(SHDatetime * const dt){
+static int32_t _calcWeekdayIdx(struct SHDatetime * const dt){
 	double timestamp = 0;
 	if(SH_dtToTimestamp(dt, &timestamp) != SH_NO_ERROR) {
 		SH_notifyOfError(SH_INPUT_BAD_RESULTS,"Could not determine weekday idx");
@@ -685,7 +685,7 @@ static int32_t _calcWeekdayIdx(SHDatetime * const dt){
 }
 
 
-int32_t SH_weekdayIdx(SHDatetime * const dt, int32_t dayOffset) {
+int32_t SH_weekdayIdx(struct SHDatetime * const dt, int32_t dayOffset) {
 	int32_t weekdayIdx = SH_NOT_FOUND;
 	if((weekdayIdx = _calcWeekdayIdx(dt)) == SH_NOT_FOUND) {
 		return weekdayIdx;
@@ -695,7 +695,7 @@ int32_t SH_weekdayIdx(SHDatetime * const dt, int32_t dayOffset) {
 }
 
 
-int32_t SH_calcDayOfYear(SHDatetime *dt){
+int32_t SH_calcDayOfYear(struct SHDatetime *dt){
 	if(!_areTimeComponentsValid(dt)){
 		SH_notifyOfError(SH_OUT_OF_RANGE,"Date components are out of range");
 		return SH_NOT_FOUND;
@@ -708,7 +708,7 @@ int32_t SH_calcDayOfYear(SHDatetime *dt){
 }
 
 
-SHErrorCode SH_dateDiffSeconds(SHDatetime * const A, SHDatetime * const B, double *ans){
+SHErrorCode SH_dateDiffSeconds(struct SHDatetime * const A, struct SHDatetime * const B, double *ans){
 	assert(A);
 	assert(B);
 	assert(ans);
@@ -727,7 +727,7 @@ SHErrorCode SH_dateDiffSeconds(SHDatetime * const A, SHDatetime * const B, doubl
 }
 
 
-SHErrorCode SH_dateDiffDays(SHDatetime * const A,SHDatetime * const B,int64_t *ans){
+SHErrorCode SH_dateDiffDays(struct SHDatetime * const A,struct SHDatetime * const B,int64_t *ans){
 	assert(A);
 	assert(B);
 	assert(ans);
@@ -744,16 +744,16 @@ SHErrorCode SH_dateDiffDays(SHDatetime * const A,SHDatetime * const B,int64_t *a
 }
 
 
-SHErrorCode SH_dateDiffFullWeeks(SHDatetime * const A, SHDatetime * const B, int32_t dayOffset,
+SHErrorCode SH_dateDiffFullWeeks(struct SHDatetime * const A, struct SHDatetime * const B, int32_t dayOffset,
 	int64_t *ans)
 {
 	SHErrorCode status = SH_NO_ERROR;
-	SHDatetime firstFullWeek;
+	struct SHDatetime firstFullWeek;
 	*ans = SH_NOT_FOUND;
 	if((status = SH_weekStart(A, dayOffset, &firstFullWeek)) != SH_NO_ERROR) {
 		goto fnExit;
 	}
-	SHDatetime lastFullWeek;
+	struct SHDatetime lastFullWeek;
 	if((status = SH_weekStart(B, dayOffset, &lastFullWeek)) != SH_NO_ERROR) {
 		goto fnExit;
 	}
@@ -791,7 +791,7 @@ static SHErrorCode _calcFractFromParts(double miliseconds,double* ans){
 }
 
 
-SHErrorCode SH_weekStart(SHDatetime * const dt, int32_t dayOffset, SHDatetime *ans) {
+SHErrorCode SH_weekStart(struct SHDatetime * const dt, int32_t dayOffset, struct SHDatetime *ans) {
 	int32_t weekdayIdx = SH_NOT_FOUND;
 	SHErrorCode status = SH_NO_ERROR;
 	if((weekdayIdx = SH_weekdayIdx(dt, dayOffset)) == SH_NOT_FOUND) {
@@ -808,7 +808,7 @@ SHErrorCode SH_weekStart(SHDatetime * const dt, int32_t dayOffset, SHDatetime *a
 }
 
 
-SHErrorCode SH_nextWeekStart(SHDatetime * const dt, int32_t dayOffset, SHDatetime *ans) {
+SHErrorCode SH_nextWeekStart(struct SHDatetime * const dt, int32_t dayOffset, struct SHDatetime *ans) {
 	int32_t weekdayIdx = SH_NOT_FOUND;
 	SHErrorCode status = SH_NO_ERROR;
 	if((weekdayIdx = SH_weekdayIdx(dt, dayOffset)) == SH_NOT_FOUND) {
@@ -825,10 +825,10 @@ SHErrorCode SH_nextWeekStart(SHDatetime * const dt, int32_t dayOffset, SHDatetim
 }
 
 
-SHErrorCode SH_areSameWeekWithDayOffset(SHDatetime * const A, SHDatetime * const B, int32_t dayOffset, bool *ans) {
+SHErrorCode SH_areSameWeekWithDayOffset(struct SHDatetime * const A, struct SHDatetime * const B, int32_t dayOffset, bool *ans) {
 	SHErrorCode status = SH_NO_ERROR;
-	SHDatetime weekStart;
-	SHDatetime nextWeekStart;
+	struct SHDatetime weekStart;
+	struct SHDatetime nextWeekStart;
 	if((status = SH_weekStart(A, dayOffset, &weekStart)) != SH_NO_ERROR) {
 		goto cleanup;
 	}
@@ -853,13 +853,13 @@ SHErrorCode SH_areSameWeekWithDayOffset(SHDatetime * const A, SHDatetime * const
 }
 
 
-void shFreeSHTimeshift(SHTimeshift *tsObj){
+void shFreeSHTimeshift(struct SHTimeshift *tsObj){
 	if(!tsObj) return;
 	free(tsObj);
 }
 
 
-void shFreeSHDatetime(SHDatetime *dtObj,int32_t timeshiftLen){
+void shFreeSHDatetime(struct SHDatetime *dtObj,int32_t timeshiftLen){
 	if(!dtObj) return;
 	for(int32_t i = 0; i < timeshiftLen; i++){
 		shFreeSHTimeshift(dtObj[i].shifts);
@@ -868,7 +868,7 @@ void shFreeSHDatetime(SHDatetime *dtObj,int32_t timeshiftLen){
 }
 
 
-void SH_DTToString(SHDatetime const *dt,char* str){
+void SH_DTToString(struct SHDatetime const *dt,char* str){
 	sprintf(str, "%"PRId64"-%d-%d %d:%d:%d",dt->year,dt->month,dt->day,dt->hour,dt->minute,dt->second);
 }
 

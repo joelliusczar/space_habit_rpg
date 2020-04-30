@@ -145,6 +145,7 @@ void cMakeHouses(void);
 +(void)loopThruIvars;
 +(void)classCompare;
 +(void)typeDefExps;
++(void)testReturnArray;
 @end
 
 #import "Experiments+Charlie.h"

@@ -1333,4 +1333,34 @@ static void _doStuffToTypeDef(SHStrArr *arr) {
 	_doStuffToTypeDef(s);
 }
 
+int32_t someNums[10];
+
+struct StupidStruct {
+	int32_t myFirst;
+	int32_t someNums[10];
+};
+
+struct StupidStruct ss;
+
+int32_t* justReturn() {
+	return someNums;
+}
+
+
+struct StupidStruct justStuct() {
+	return ss;
+}
+
++(void)testReturnArray {
+	NSLog(@"%p",someNums);
+	int32_t *nums = justReturn();
+	NSLog(@"%p",nums);
+	
+	NSLog(@"%p",&ss);
+	NSLog(@"%p",&ss.someNums);
+	struct StupidStruct mess = justStuct();
+	NSLog(@"%p",&mess);
+	NSLog(@"%p",&mess.someNums);
+}
+
 @end

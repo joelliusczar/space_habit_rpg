@@ -14,17 +14,17 @@
 #include <assert.h>
 #include <string.h>
 
-static bool _compareDtAndTimeShift(SHDatetime const *dt,SHTimeshift *shift,bool (*compare)(double,double)){
+static bool _compareDtAndTimeShift(struct SHDatetime const *dt,struct SHTimeshift *shift,bool (*compare)(double,double)){
 		double timestamp = 0;
 		double timezoneShiftTimestamp = 0;
-		SHDatetime copy;
-		SHDatetime timezoneShiftAsDt;
-		memcpy(&copy, dt, sizeof(SHDatetime));
+		struct SHDatetime copy;
+		struct SHDatetime timezoneShiftAsDt;
+		memcpy(&copy, dt, sizeof(struct SHDatetime));
 		SH_dtSetTimezoneOffset(&copy, 0);
 		
 		SH_dtToTimestamp(&copy, &timestamp);
 		
-		memset(&timezoneShiftAsDt, 0 , sizeof(SHDatetime));
+		memset(&timezoneShiftAsDt, 0 , sizeof(struct SHDatetime));
 		timezoneShiftAsDt.year = SH_BASE_YEAR;
 		timezoneShiftAsDt.month = shift->month;
 		timezoneShiftAsDt.day = shift->day;
@@ -45,14 +45,14 @@ static bool _isDtBeforeShift(double timestamp, double shift){
 }
 
 
-int32_t SH_selectTimeShiftIdxForDt(SHDatetime *dt,SHTimeshift *shifts, int32_t shiftCount){
+int32_t SH_selectTimeShiftIdxForDt(struct SHDatetime *dt, struct SHTimeshift *shifts, int32_t shiftCount){
 	assert(dt);
 	assert(shifts);
 	int32_t max = shiftCount;
 	for(int32_t i = 0;i<max;i++){
-		SHTimeshift *shift = &shifts[i];
+		struct SHTimeshift *shift = &shifts[i];
 		int32_t wrappedIdx = (i + 1) % max;
-		SHTimeshift *next = &shifts[wrappedIdx];
+		struct SHTimeshift *next = &shifts[wrappedIdx];
 		if(_compareDtAndTimeShift(dt, shift, &_isDtBeforeShift)){
 			return ((i - 1) + max) % max;
 		}
@@ -66,7 +66,7 @@ int32_t SH_selectTimeShiftIdxForDt(SHDatetime *dt,SHTimeshift *shifts, int32_t s
 	return SH_NOT_FOUND;
 }
 
-int32_t SH_findTimeShiftIdx(SHDatetime *dt){
+int32_t SH_findTimeShiftIdx(struct SHDatetime *dt){
 	assert(dt);
 	if(dt->shifts){
 		return SH_selectTimeShiftIdxForDt(dt,dt->shifts,dt->shiftLen);
@@ -74,7 +74,7 @@ int32_t SH_findTimeShiftIdx(SHDatetime *dt){
 	return SH_NOT_FOUND;
 }
 
-SHErrorCode SH_UpdateTimezoneForShifts(SHDatetime *dt){
+SHErrorCode SH_UpdateTimezoneForShifts(struct SHDatetime *dt){
 	shLog("SH_UpdateTimezoneForShifts");
 	SHErrorCode status = SH_NO_ERROR;
 	if(!dt->shifts) goto nochange;
@@ -89,8 +89,8 @@ SHErrorCode SH_UpdateTimezoneForShifts(SHDatetime *dt){
 		goto cleanup;
 	}
 	int32_t updShiftIdx = SH_findTimeShiftIdx(dt);
-	SHTimeshift *oldShift = &dt->shifts[oldShiftIdx];
-	SHTimeshift *updShift = &dt->shifts[updShiftIdx];
+	struct SHTimeshift *oldShift = &dt->shifts[oldShiftIdx];
+	struct SHTimeshift *updShift = &dt->shifts[updShiftIdx];
 	if(oldShift != updShift){
 		dt->timezoneOffset -= oldShift->adjustment;
 		dt->timezoneOffset += updShift->adjustment;
@@ -105,7 +105,7 @@ SHErrorCode SH_UpdateTimezoneForShifts(SHDatetime *dt){
 			timestamp += oldShift->adjustment;
 			timestamp -= updShift->adjustment;
 		}
-		SHTimeshift *shifts = dt->shifts;
+		struct SHTimeshift *shifts = dt->shifts;
 		int32_t shiftLen = dt->shiftLen;
 		if((status = SH_timestampToDt(timestamp, dt->timezoneOffset, dt)) != SH_NO_ERROR) {
 			SH_notifyOfError(status,"error while applying timeshift change");

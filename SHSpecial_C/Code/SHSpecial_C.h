@@ -9,9 +9,9 @@
 #ifndef SHSpecial_C_h
 #define SHSpecial_C_h
 
-#pragma clang module import SHUtils_C
-#pragma clang module import SHDatetime
-#import "SHWeekIntervalPoint.h"
+
+#import "SHWeekIntervalPoint_struct.h"
+#import "SHDueDateWeeklyContext_struct.h"
 #import "SHDueDatesWeeklyFuncs.h"
 #import "SHWeekIntervalPointsFuncs.h"
 

@@ -12,9 +12,9 @@
 
 #include <stdio.h>
 #include <inttypes.h>
-#include "SHWeekIntervalPoint.h"
+#include "SHWeekIntervalPoint_struct.h"
 
-int32_t SH_findPrevActiveDayIdx(SHWeekIntervalPoint const * intervalPoints, int32_t weekdayIdx);
-int32_t SH_activeDaysCountInRange(SHWeekIntervalPoint const * intervalPoints, int32_t startIdx, int32_t len);
-int32_t SH_formatStrIntervalPoint(SHWeekIntervalPoint const * intervalPoint, char *str);
+int32_t SH_findPrevActiveDayIdx(struct SHWeekIntervalPointList const * intervalPoints, int32_t weekdayIdx);
+int32_t SH_activeDaysCountInRange(struct SHWeekIntervalPointList const * intervalPoints, int32_t startIdx, int32_t len);
+int32_t SH_formatStrIntervalPoint(struct SHWeekIntervalPoint const * intervalPoint, char *str);
 #endif /* SHWeeklyIntervalItermFunctions_h */

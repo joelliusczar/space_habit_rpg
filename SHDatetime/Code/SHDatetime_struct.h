@@ -25,16 +25,16 @@
 
 
 
-typedef struct{
+struct SHTimeshift{
 	int32_t month;
 	int32_t day;
 	int32_t hour;
 	int32_t minute;
 	int32_t adjustment;
 	uintptr_t filler[8];
-}SHTimeshift;
+};
 
-typedef struct {
+struct SHDatetime {
 	int64_t year;
 	int32_t month;
 	int32_t day;
@@ -43,14 +43,14 @@ typedef struct {
 	int32_t second;
 	int32_t milisecond;
 	int32_t timezoneOffset;
-	SHTimeshift *shifts;
+	struct SHTimeshift *shifts;
 	int32_t shiftLen;
 	int32_t currentShiftIdx;
 	double timestamp;
 	double timeOfDay;
 	bool isTimestampValid;
 	uintptr_t filler[8];
-} SHDatetime;
+};
 
 
 typedef enum {SH_TIME_ADJUST_NO_OPTION = 0,

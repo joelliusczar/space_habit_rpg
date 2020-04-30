@@ -15,12 +15,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHDailyNextDueDateCalculator : NSObject
 @property (strong, nonatomic) SHDailyActiveDays *activeDaysContainer;
-@property (assign, nonatomic, nullable) SHDatetime* useDate;
+@property (assign, nonatomic, nullable) struct SHDatetime* useDate;
 @property (assign, nonatomic) int32_t dayStartTime;
 @property (strong,nonatomic) NSObject<SHDateProviderProtocol>* dateProvider;
 +(instancetype)newWithActiveDays:(SHDailyActiveDays *)activeDaysContainer
 	intervalType:(SHRateType)intervalType;
--(SHDatetime*)nextDueDate;
+-(struct SHDatetime*)nextDueDate;
 @end
 
 NS_ASSUME_NONNULL_END

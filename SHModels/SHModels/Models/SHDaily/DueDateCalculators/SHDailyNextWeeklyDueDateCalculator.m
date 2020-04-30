@@ -22,10 +22,10 @@
 }
 
 
--(SHDatetime *)nextDueDate {
-	SHDatetime *nextDueDate = malloc(sizeof(SHDatetime));
-	SHDatetime today = self.dateProvider.dateSHDt;
-	SHDailyWeeklyDueDateInput inputs;
+-(struct SHDatetime *)nextDueDate {
+	struct SHDatetime *nextDueDate = malloc(sizeof(struct SHDatetime));
+	struct SHDatetime today = self.dateProvider.dateSHDt;
+	struct SHDueDateWeeklyContext inputs;
 	inputs.useDate = &today;
 	inputs.prevUseDate = self.useDate;
 	inputs.intervalPoints = 0;

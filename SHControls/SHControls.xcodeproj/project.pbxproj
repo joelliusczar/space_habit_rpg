@@ -82,6 +82,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		270EEF1B245A350C0078D2ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27FC94A62436D88800408167 /* SHCommon.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2737439C24565D6E00E36AB7;
+			remoteInfo = SHCommonTests;
+		};
 		27FC94AA2436D88800408167 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 27FC94A62436D88800408167 /* SHCommon.xcodeproj */;
@@ -93,7 +100,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 27FC94A62436D88800408167 /* SHCommon.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 27C4113523DBB7CF0086E1F9;
+			remoteGlobalIDString = 2737439224565D6E00E36AB7;
 			remoteInfo = SHCommon;
 		};
 /* End PBXContainerItemProxy section */
@@ -384,6 +391,7 @@
 			isa = PBXGroup;
 			children = (
 				27FC94AB2436D88800408167 /* SHCommon.framework */,
+				270EEF1C245A350C0078D2ED /* SHCommonTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -502,6 +510,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		270EEF1C245A350C0078D2ED /* SHCommonTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SHCommonTests.xctest;
+			remoteRef = 270EEF1B245A350C0078D2ED /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		27FC94AB2436D88800408167 /* SHCommon.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -671,7 +686,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

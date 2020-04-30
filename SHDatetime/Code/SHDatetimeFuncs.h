@@ -16,43 +16,43 @@
 #include "SHDTConstants.h"
 #include "SHTimeZone.h"
 
-void SH_dtSetTimezoneOffset(SHDatetime *dt, int32_t timezoneOffset);
+void SH_dtSetTimezoneOffset(struct SHDatetime *dt, int32_t timezoneOffset);
 
-SHErrorCode SH_dtToTimeOfDay(SHDatetime * const dt, double *ans);
+SHErrorCode SH_dtToTimeOfDay(struct SHDatetime * const dt, double *ans);
 
-SHErrorCode SH_timestampToDt(double timestamp, int32_t timezoneOffset, SHDatetime *ans);
+SHErrorCode SH_timestampToDt(double timestamp, int32_t timezoneOffset, struct SHDatetime *ans);
 
-SHErrorCode SH_dtToTimestamp(SHDatetime *const dt,double *ans);
+SHErrorCode SH_dtToTimestamp(struct SHDatetime *const dt,double *ans);
 
-SHErrorCode SH_addYearsToDt(SHDatetime *dt, int64_t years, SHTimeAdjustOptions options);
+SHErrorCode SH_addYearsToDt(struct SHDatetime *dt, int64_t years, SHTimeAdjustOptions options);
 
-SHErrorCode SH_addMonthsToDt(SHDatetime *dt, int64_t months, SHTimeAdjustOptions options);
+SHErrorCode SH_addMonthsToDt(struct SHDatetime *dt, int64_t months, SHTimeAdjustOptions options);
 
-SHErrorCode SH_addDaysToDt(SHDatetime *dt, int64_t days, SHTimeAdjustOptions options);
+SHErrorCode SH_addDaysToDt(struct SHDatetime *dt, int64_t days, SHTimeAdjustOptions options);
 
-void SH_setToDayStart(SHDatetime *dt);
+void SH_setToDayStart(struct SHDatetime *dt);
 
-int32_t SH_weekdayIdx(SHDatetime * const dt, int32_t dayOffset);
+int32_t SH_weekdayIdx(struct SHDatetime * const dt, int32_t dayOffset);
 
-int32_t SH_calcDayOfYear(SHDatetime *dt);
+int32_t SH_calcDayOfYear(struct SHDatetime *dt);
 
-SHErrorCode SH_dateDiffSeconds(SHDatetime * const A, SHDatetime * const B, double *ans);
+SHErrorCode SH_dateDiffSeconds(struct SHDatetime * const A, struct SHDatetime * const B, double *ans);
 
-SHErrorCode SH_dateDiffDays(SHDatetime * const A,SHDatetime * const B, int64_t *ans);
+SHErrorCode SH_dateDiffDays(struct SHDatetime * const A,struct SHDatetime * const B, int64_t *ans);
 
-SHErrorCode SH_dateDiffFullWeeks(SHDatetime * const A, SHDatetime * const B, int32_t dayOffset, int64_t *ans);
+SHErrorCode SH_dateDiffFullWeeks(struct SHDatetime * const A, struct SHDatetime * const B, int32_t dayOffset, int64_t *ans);
 
-void SH_DTToString(SHDatetime const *dt,char* str);
+void SH_DTToString(struct SHDatetime const *dt,char* str);
 
-void shFreeSHDatetime(SHDatetime *dtObj,int32_t timeshiftLen);
+void shFreeSHDatetime(struct SHDatetime *dtObj,int32_t timeshiftLen);
 
-void shFreeSHTimeshift(SHTimeshift *tsObj);
+void shFreeSHTimeshift(struct SHTimeshift *tsObj);
 
-SHErrorCode SH_weekStart(SHDatetime * const dt, int32_t dayOffset, SHDatetime *ans);
+SHErrorCode SH_weekStart(struct SHDatetime * const dt, int32_t dayOffset, struct SHDatetime *ans);
 
-SHErrorCode SH_nextWeekStart(SHDatetime * const dt, int32_t dayOffset, SHDatetime *ans);
+SHErrorCode SH_nextWeekStart(struct SHDatetime * const dt, int32_t dayOffset, struct SHDatetime *ans);
 	
-SHErrorCode SH_areSameWeekWithDayOffset(SHDatetime * const A, SHDatetime * const B, int32_t dayOffset, bool *ans);
+SHErrorCode SH_areSameWeekWithDayOffset(struct SHDatetime * const A, struct SHDatetime * const B, int32_t dayOffset, bool *ans);
 
  /* SHDatetimeFuncs_h */
 

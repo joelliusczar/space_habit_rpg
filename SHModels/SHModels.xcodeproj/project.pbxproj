@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		27075D6D225963A700AD13AA /* SHMonsterDictionaryEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 27075D6B225963A700AD13AA /* SHMonsterDictionaryEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27075D6E225963A700AD13AA /* SHMonsterDictionaryEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 27075D6C225963A700AD13AA /* SHMonsterDictionaryEntry.m */; };
+		270EEF2C245A57930078D2ED /* SHSpecial_C in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FE89892457D46F00B11D18 /* SHSpecial_C */; };
 		2719D50B2319C61700765F54 /* SHMonster_Medium.m in Sources */ = {isa = PBXBuildFile; fileRef = 2719D5092319C61600765F54 /* SHMonster_Medium.m */; };
 		2719D50C2319C61700765F54 /* SHMonster_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 2719D50A2319C61700765F54 /* SHMonster_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271CF5BB23D4D4AC00DB0CF4 /* SHIntervalItemFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = 271CF5B923D4D4AC00DB0CF4 /* SHIntervalItemFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -105,6 +106,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		270EEF2D245A579C0078D2ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27FE89842457D46F00B11D18 /* SHSpecial_C.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 271691C120885EF70059A58E;
+			remoteInfo = SHSpecial_C;
+		};
 		27D84A062443DFBE0081DFE6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2747C2E12043ADE000FB5669 /* Project object */;
@@ -277,6 +285,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				270EEF2C245A57930078D2ED /* SHSpecial_C in Frameworks */,
 				27FE89992457D4A500B11D18 /* SHCommon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -719,6 +728,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				270EEF2E245A579C0078D2ED /* PBXTargetDependency */,
 				27FE899B2457D4B500B11D18 /* PBXTargetDependency */,
 			);
 			name = SHModels;
@@ -955,6 +965,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		270EEF2E245A579C0078D2ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SHSpecial_C;
+			targetProxy = 270EEF2D245A579C0078D2ED /* PBXContainerItemProxy */;
+		};
 		27D84A072443DFBE0081DFE6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2747C2E92043ADE000FB5669 /* SHModels */;
@@ -1143,7 +1158,6 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.SHModelsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

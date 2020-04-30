@@ -15,18 +15,18 @@
 
 @implementation SHWeekIntervalItemList
 {
-	SHWeekIntervalPoint _days[SH_WEEKLEN];
+	struct SHWeekIntervalPointList _week;
 }
 
 
 -(instancetype)init {
 	if(self = [super init]) {
-		SHWeekIntervalPoint baseIntervalItem;
+		struct SHWeekIntervalPoint baseIntervalItem;
 		baseIntervalItem.isDayActive = true;
 		baseIntervalItem.forrange = 0;
 		baseIntervalItem.backrange = 0;
 		for(int32_t idx = 0; idx < SH_DAYS_IN_WEEK; idx++) {
-			_days[idx] = baseIntervalItem;
+			_week.days[idx] = baseIntervalItem;
 		}
 	}
 	return self;
@@ -40,9 +40,9 @@
 		_weeklyDayStart = dayOffset;
 		for(int32_t idx = 0; idx < SH_DAYS_IN_WEEK; idx++) {
 			SHItervalItemDict *item = rateItemArray[idx];
-			_days[idx].isDayActive = item[SH_IS_DAY_ACTIVE_KEY].boolValue;
-			_days[idx].forrange = item[SH_FORRANGE_KEY].intValue;
-			_days[idx].backrange = item[SH_BACKRANGE_KEY].intValue;
+			_week.days[idx].isDayActive = item[SH_IS_DAY_ACTIVE_KEY].boolValue;
+			_week.days[idx].forrange = item[SH_FORRANGE_KEY].intValue;
+			_week.days[idx].backrange = item[SH_BACKRANGE_KEY].intValue;
 		}
 	}
 	return self;
@@ -52,8 +52,8 @@
 -(void)setDayOfWeek:(NSUInteger)dayIdx to:(bool)newValue{
 	int32_t rate = self.intervalSize;
 	int32_t backendIdx = (dayIdx + self.weeklyDayStart) % SH_DAYS_IN_WEEK;
-	_days[backendIdx].isDayActive = newValue;
-	SH_refreshWeek(_days, rate);
+	_week.days[backendIdx].isDayActive = newValue;
+	SH_refreshWeek(&_week, rate);
 }
 
 
@@ -61,18 +61,18 @@
 	NSMutableArray *results = [NSMutableArray arrayWithCapacity:SH_DAYS_IN_WEEK];
 	for(int32_t idx = 0; idx < SH_DAYS_IN_WEEK; idx++) {
 		results[idx] = @{
-			SH_IS_DAY_ACTIVE_KEY : @(_days[idx].isDayActive),
-			SH_FORRANGE_KEY : @(_days[idx].forrange),
-			SH_BACKRANGE_KEY : @(_days[idx].backrange)
+			SH_IS_DAY_ACTIVE_KEY : @(_week.days[idx].isDayActive),
+			SH_FORRANGE_KEY : @(_week.days[idx].forrange),
+			SH_BACKRANGE_KEY : @(_week.days[idx].backrange)
 		};
 	}
 	return results;
 }
 
 
--(SHWeekIntervalPoint *)objectAtIndexedSubscript:(NSUInteger)idx {
+-(struct SHWeekIntervalPoint *)objectAtIndexedSubscript:(NSUInteger)idx {
 	int32_t backendIdx = (idx + self.weeklyDayStart) % SH_DAYS_IN_WEEK;
-	SHWeekIntervalPoint *intervalItem = &_days[backendIdx];
+	struct SHWeekIntervalPoint *intervalItem = &_week.days[backendIdx];
 	return intervalItem;
 }
 
@@ -121,7 +121,7 @@
 	NSArray<NSString *> *dayKeys = self.weekKeysBasedOnWeekStart;
 	NSMutableArray<NSString *> *filtered = [NSMutableArray array];
 	for(NSUInteger idx = 0; idx < dayKeys.count; idx++) {
-		if(_days[idx].isDayActive) {
+		if(_week.days[idx].isDayActive) {
 			[filtered addObject:dayKeys[idx]];
 		}
 	}
@@ -154,8 +154,8 @@
 }
 
 
--(SHWeekIntervalPoint*)copyWeek {
-	return _days;
+-(struct SHWeekIntervalPointList)copyWeek {
+	return _week;
 }
 
 

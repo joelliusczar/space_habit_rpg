@@ -51,7 +51,7 @@
 		276E6DBC222A54E400CB36CB /* CoreDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DDF2321FE9EDA00F77AEF /* CoreDataTests.m */; };
 		276E6DBD222A54E400CB36CB /* CoreDataTests2.m in Sources */ = {isa = PBXBuildFile; fileRef = 273BF4D322093A5000B0D11E /* CoreDataTests2.m */; };
 		2792B567226C25B200A3A86C /* SHTestCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2792B566226C25B200A3A86C /* SHTestCommon.framework */; };
-		27AE22122419C4E0006DB5E2 /* libSHSpecial_C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AE220F2419C4CC006DB5E2 /* libSHSpecial_C.a */; };
+		27AE22122419C4E0006DB5E2 /* SHSpecial_C in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AE220F2419C4CC006DB5E2 /* SHSpecial_C */; };
 		27B719412235F1B900540542 /* DumbDataSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B719402235F1B900540542 /* DumbDataSaver.m */; };
 		27B719452235F27700540542 /* TestDumbData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B719442235F27700540542 /* TestDumbData.m */; };
 		27C791F52226DD9000A92487 /* EmptyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C791F42226DD9000A92487 /* EmptyTest.m */; };
@@ -63,6 +63,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		270EEF1E245A35190078D2ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27601C3823F742DE001A9475 /* SHCommon.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2737439C24565D6E00E36AB7;
+			remoteInfo = SHCommonTests;
+		};
+		270EEF21245A35190078D2ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27601C3E23F742E6001A9475 /* SHModels.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27D84A002443DFBE0081DFE6;
+			remoteInfo = SHModelsTests;
+		};
 		27601C3023F742CC001A9475 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 27601C2C23F742CC001A9475 /* SHUtils_C.xcodeproj */;
@@ -130,7 +144,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 27601C3823F742DE001A9475 /* SHCommon.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 27C4113523DBB7CF0086E1F9;
+			remoteGlobalIDString = 2737439224565D6E00E36AB7;
 			remoteInfo = SHCommon;
 		};
 		27AE220E2419C4CC006DB5E2 /* PBXContainerItemProxy */ = {
@@ -179,7 +193,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 27601C3823F742DE001A9475 /* SHCommon.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 27C4113523DBB7CF0086E1F9;
+			remoteGlobalIDString = 2737439224565D6E00E36AB7;
 			remoteInfo = SHCommon;
 		};
 /* End PBXContainerItemProxy section */
@@ -296,7 +310,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27AE22122419C4E0006DB5E2 /* libSHSpecial_C.a in Frameworks */,
+				27AE22122419C4E0006DB5E2 /* SHSpecial_C in Frameworks */,
 				27E4A593226C1BC000756B6B /* libSHUtils_C.a in Frameworks */,
 				27E4A591226C1BC000756B6B /* libSHDatetime.a in Frameworks */,
 				27E4A595226C1BC000756B6B /* SHCommon.framework in Frameworks */,
@@ -456,7 +470,7 @@
 		27601C2D23F742CC001A9475 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				27601C3123F742CC001A9475 /* libSHUtils_C.a */,
+				27601C3123F742CC001A9475 /* SHUtils_C */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -464,7 +478,7 @@
 		27601C3323F742D6001A9475 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				27601C3723F742D6001A9475 /* libSHDatetime.a */,
+				27601C3723F742D6001A9475 /* SHDatetime */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -473,6 +487,7 @@
 			isa = PBXGroup;
 			children = (
 				27601C3D23F742DE001A9475 /* SHCommon.framework */,
+				270EEF1F245A35190078D2ED /* SHCommonTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -481,6 +496,7 @@
 			isa = PBXGroup;
 			children = (
 				27601C4323F742E6001A9475 /* SHModels.framework */,
+				270EEF22245A35190078D2ED /* SHModelsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -496,7 +512,7 @@
 		27AE220B2419C4CC006DB5E2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				27AE220F2419C4CC006DB5E2 /* libSHSpecial_C.a */,
+				27AE220F2419C4CC006DB5E2 /* SHSpecial_C */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -636,17 +652,31 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		27601C3123F742CC001A9475 /* libSHUtils_C.a */ = {
+		270EEF1F245A35190078D2ED /* SHCommonTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SHCommonTests.xctest;
+			remoteRef = 270EEF1E245A35190078D2ED /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		270EEF22245A35190078D2ED /* SHModelsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SHModelsTests.xctest;
+			remoteRef = 270EEF21245A35190078D2ED /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		27601C3123F742CC001A9475 /* SHUtils_C */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libSHUtils_C.a;
+			path = SHUtils_C;
 			remoteRef = 27601C3023F742CC001A9475 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		27601C3723F742D6001A9475 /* libSHDatetime.a */ = {
+		27601C3723F742D6001A9475 /* SHDatetime */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libSHDatetime.a;
+			path = SHDatetime;
 			remoteRef = 27601C3623F742D6001A9475 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -671,10 +701,10 @@
 			remoteRef = 27601C4823F742F1001A9475 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		27AE220F2419C4CC006DB5E2 /* libSHSpecial_C.a */ = {
+		27AE220F2419C4CC006DB5E2 /* SHSpecial_C */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libSHSpecial_C.a;
+			path = SHSpecial_C;
 			remoteRef = 27AE220E2419C4CC006DB5E2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -869,7 +899,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -919,7 +948,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

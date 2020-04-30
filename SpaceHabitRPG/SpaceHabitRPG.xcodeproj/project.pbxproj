@@ -65,6 +65,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		270EEF24245A35260078D2ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27C4121723DBBA6F0086E1F9 /* SHCommon.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2737439C24565D6E00E36AB7;
+			remoteInfo = SHCommonTests;
+		};
+		270EEF27245A35260078D2ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27F37E76238796CE0006B705 /* SHModels.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27D84A002443DFBE0081DFE6;
+			remoteInfo = SHModelsTests;
+		};
 		27C4121B23DBBA6F0086E1F9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 27C4121723DBBA6F0086E1F9 /* SHCommon.xcodeproj */;
@@ -76,7 +90,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 27C4121723DBBA6F0086E1F9 /* SHCommon.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 27C4113523DBB7CF0086E1F9;
+			remoteGlobalIDString = 2737439224565D6E00E36AB7;
 			remoteInfo = SHCommon;
 		};
 		27F37E7F238796CE0006B705 /* PBXContainerItemProxy */ = {
@@ -510,6 +524,7 @@
 			isa = PBXGroup;
 			children = (
 				27C4121C23DBBA6F0086E1F9 /* SHCommon.framework */,
+				270EEF25245A35260078D2ED /* SHCommonTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -526,6 +541,7 @@
 			isa = PBXGroup;
 			children = (
 				27F37E80238796CE0006B705 /* SHModels.framework */,
+				270EEF28245A35260078D2ED /* SHModelsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -611,6 +627,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		270EEF25245A35260078D2ED /* SHCommonTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SHCommonTests.xctest;
+			remoteRef = 270EEF24245A35260078D2ED /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		270EEF28245A35260078D2ED /* SHModelsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SHModelsTests.xctest;
+			remoteRef = 270EEF27245A35260078D2ED /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		27C4121C23DBBA6F0086E1F9 /* SHCommon.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -795,7 +825,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;

@@ -21,9 +21,9 @@
 }
 
 
--(SHDatetime)dateSHDt {
+-(struct SHDatetime)dateSHDt {
 	NSTimeInterval timestamp = NSDate.date.timeIntervalSince1970;
-	SHDatetime ans;
+	struct SHDatetime ans;
 	SH_timestampToDt(timestamp, (int32_t)self.localTzOffset, &ans);
 	return ans;
 }

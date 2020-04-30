@@ -34,7 +34,7 @@
 }
 
 
--(NSDate *)calcBackupDateForReferenceDate:(SHDatetime *)referenceDate {
+-(NSDate *)calcBackupDateForReferenceDate:(struct SHDatetime *)referenceDate {
 	(void)referenceDate;
 	@throw [NSException abstractException];
 }
@@ -56,7 +56,7 @@ This also applies if the active days got changed.
 }
 
 
--(SHDatetime*)nextDueDate{
+-(struct SHDatetime*)nextDueDate{
 	@throw [NSException abstractException];
 }
 

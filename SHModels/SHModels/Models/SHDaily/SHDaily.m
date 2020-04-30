@@ -80,7 +80,7 @@
 }
 
 
--(SHDatetime *)nextDueDate{
+-(struct SHDatetime *)nextDueDate{
 	return [self.calculator nextDueDate];
 }
 
