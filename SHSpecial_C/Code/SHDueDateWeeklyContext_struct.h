@@ -14,7 +14,6 @@
 
 struct SHDueDateWeeklyContext {
 	struct SHDatetime *prevUseDate;
-	struct SHDatetime *useDate;
 	struct SHWeekIntervalPointList *intervalPoints;
 	int32_t intervalSize;
 	int32_t dayStartHour;

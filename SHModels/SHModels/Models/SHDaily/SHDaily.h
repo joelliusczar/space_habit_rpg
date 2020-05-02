@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, nonatomic) NSInteger rate;
 @property (readonly, nonatomic) BOOL isActiveToday;
 @property (strong, nonatomic) NSObject<SHDateProviderProtocol> *dateProvider;
-@property (strong, nonatomic) SHDailyNextDueDateCalculator *calculator;
+@property (readonly, strong, nonatomic) SHDailyNextDueDateCalculator *calculator;
 -(void)setupInitialState;
 -(NSArray<SHDailyEvent *> *)lastActivations:(NSInteger)count;
 -(void)updateDailyStatus;

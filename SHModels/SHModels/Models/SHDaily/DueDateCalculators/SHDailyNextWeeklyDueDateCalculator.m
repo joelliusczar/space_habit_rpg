@@ -14,6 +14,9 @@
 @implementation SHDailyNextWeeklyDueDateCalculator
 
 
+@synthesize useDate = _useDate;
+
+
 -(instancetype)initWithRateItemList:(SHWeekIntervalItemList *)activeDays {
 	if(self = [super init]){
 		_activeDays = activeDays;
@@ -22,17 +25,47 @@
 }
 
 
+/*
+	The main purpose for this is to have a central place where the useDate
+	on the calculator gets set to the proper value because
+	in some cases, e.g. when the daily is newly created or the user
+	changes the active days, then the stored database value is not quite correct
+	and will cause further calculations to be incorrect.
+	And while we're at it, we're also setting up the rest of the
+	due date context.
+*/
+static void _setupDueDateContext(SHDailyNextWeeklyDueDateCalculator *inst, struct SHDueDateWeeklyContext *context) {
+	struct SHDatetime correctedUseDate;
+	context->intervalSize = inst.activeDays.intervalSize;
+	context->dayStartHour = inst.dayStartTime;
+	context->weekStartOffset = SHConfig.weeklyStartDay;
+	SH_findBackupDateForUseDate(&inst->_useDate, context, &correctedUseDate);
+	inst.useDate = correctedUseDate;
+	context->prevUseDate = &inst->_useDate;
+	context->intervalPoints = malloc(sizeof(struct SHWeekIntervalPointList));
+	*context->intervalPoints = [inst.activeDays copyWeek];
+}
+
+
 -(struct SHDatetime *)nextDueDate {
 	struct SHDatetime *nextDueDate = malloc(sizeof(struct SHDatetime));
 	struct SHDatetime today = self.dateProvider.dateSHDt;
-	struct SHDueDateWeeklyContext inputs;
-	inputs.useDate = &today;
-	inputs.prevUseDate = self.useDate;
-	inputs.intervalPoints = 0;
-	inputs.intervalSize = self.activeDays.intervalSize;
-	inputs.dayStartHour = self.dayStartTime;
-	inputs.weekStartOffset = SHConfig.weeklyStartDay;
-	return nil;
+	struct SHDueDateWeeklyContext dueDateContext;
+	_setupDueDateContext(self, &dueDateContext);
+	SH_nextDueDate_WEEKLY(&today, &dueDateContext, nextDueDate);
+	free(dueDateContext.intervalPoints);
+	return nextDueDate;
+}
+
+
+-(BOOL)isDateActive:(struct SHDatetime *)dt {
+	bool ans = false;
+	struct SHDatetime today = self.dateProvider.dateSHDt;
+	struct SHDueDateWeeklyContext dueDateContext;
+	_setupDueDateContext(self, &dueDateContext);
+	SH_isDateADueDate_WEEKLY(&today, &dueDateContext, &ans);
+	free(dueDateContext.intervalPoints);
+	return ans;
 }
 
 

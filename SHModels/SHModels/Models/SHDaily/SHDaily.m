@@ -10,6 +10,7 @@
 #import "SHConfig.h"
 #import "SHDailyMaxDaysBeforeSpanCalculator.h"
 #import "SHDailyEvent.h"
+@import SHSpecial_C;
 
 @interface SHDaily ()
 
@@ -26,25 +27,40 @@
 }
 
 
+/*If we do not have an actual last due date then we assume that whatever reference date
+we do have is on an active week even if the reference date is beginning of the
+week and long interval size causes the calculated last due date to be many weeks before.
+This also applies if the active days got changed.
+*/
+-(NSDate*)selectUseDateProperty {
+	if(self.lastActivationDateTime) {
+		return self.lastActivationDateTime;
+	}
+	if(self.activeFromDate) {
+		return self.activeFromDate;
+	}
+	assert(self.lastUpdateDateTime);
+	return self.lastUpdateDateTime;
+}
+
+
+
 @synthesize calculator = _calculator;
 -(SHDailyNextDueDateCalculator *)calculator {
-	if(nil == _calculator) {
-		int32_t dayStartTime = 0;
-		if(nil != self.cycleStartTime) {
-			dayStartTime = self.cycleStartTime.intValue;
-		}
-		else {
-			dayStartTime = SHConfig.dayStartTime;
-		}
-		_calculator = [SHDailyNextDueDateCalculator
-			newWithActiveDays:self.activeDaysContainer intervalType:self.rateType];
-		_calculator.dateProvider = self.dateProvider;
-		_calculator.dayStartTime = dayStartTime;
+	int32_t dayStartTime = 0;
+	if(nil != self.cycleStartTime) {
+		dayStartTime = self.cycleStartTime.intValue;
 	}
-	#warning replace with useDate
-//	_calculator.activeFromDate = self.activeFromDate;
-//	_calculator.lastActivationDateTime = self.lastActivationDateTime;
-//	_calculator.lastUpdateDateTime = self.lastUpdateDateTime;
+	else {
+		dayStartTime = SHConfig.dayStartTime;
+	}
+	_calculator = [SHDailyNextDueDateCalculator
+		newWithActiveDays:self.activeDaysContainer intervalType:self.rateType];
+	_calculator.dateProvider = self.dateProvider;
+	_calculator.dayStartTime = dayStartTime;
+	struct SHDatetime *selectedDateProperty = [[self selectUseDateProperty] SH_toSHDatetime];
+	_calculator.useDate = *selectedDateProperty;
+	SH_freeSHDatetime(selectedDateProperty);
 	return _calculator;
 }
 

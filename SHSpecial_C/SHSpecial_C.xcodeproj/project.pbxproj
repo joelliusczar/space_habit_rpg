@@ -121,7 +121,7 @@
 				2703AA68244FBCD200ACE781 /* SHUtils_C.xcodeproj */,
 				27BC44E4238792200047F683 /* SHDatetime.xcodeproj */,
 				276E6D96222A4AA500CB36CB /* Configs */,
-				27BB29092157499D003225BB /* Copy */,
+				27BB29092157499D003225BB /* Other_Code */,
 				271691CE208860100059A58E /* Frameworks */,
 				271691C320885EF70059A58E /* Products */,
 				2712C5F6244D2C0A00157758 /* Resources */,
@@ -168,7 +168,7 @@
 			path = Configs;
 			sourceTree = "<group>";
 		};
-		27BB29092157499D003225BB /* Copy */ = {
+		27BB29092157499D003225BB /* Other_Code */ = {
 			isa = PBXGroup;
 			children = (
 				27BB290A215749B8003225BB /* Makefile */,
@@ -177,7 +177,7 @@
 				27BB291A215B1093003225BB /* DailyStructs.py */,
 				2737D58B216EE67B00E0111F /* DailySingleTest.py */,
 			);
-			path = Copy;
+			path = Other_Code;
 			sourceTree = "<group>";
 		};
 		27BC44E5238792200047F683 /* Products */ = {

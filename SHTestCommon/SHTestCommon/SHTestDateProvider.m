@@ -7,6 +7,7 @@
 //
 
 #import "SHTestDateProvider.h"
+@import SHDatetime;
 
 @implementation SHTestDateProvider
 
@@ -17,6 +18,15 @@
 
 -(NSInteger)localTzOffset {
 	return 0;
+}
+
+
+-(struct SHDatetime)dateSHDt {
+	struct SHDatetime dt;
+	struct SHDatetime *dtp = [self.testDate SH_toSHDatetime];
+	dt = *dtp;
+	SH_freeSHDatetime(dtp);
+	return dt;
 }
 
 

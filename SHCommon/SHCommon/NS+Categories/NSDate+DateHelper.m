@@ -33,18 +33,6 @@
 }
 
 
-#warning put this in SHDatetime
-//+(NSInteger)SH_fullWeeksBetween:(NSDate *)fromDate to:(NSDate *)toDate
-//	withWeekStartOffset:(NSUInteger)weekStartOffset
-//{
-//	NSDate *firstFullWeek = [fromDate SH_calcNextWeekStartWithDayOffset:weekStartOffset];
-//	NSDate *lastFullWeek = [toDate SH_calcWeekStartWithDayOffset:weekStartOffset];
-//	NSInteger daysBetween = [self daysBetween:firstFullWeek to:lastFullWeek];
-//	if(daysBetween < 0) return 0;
-//	return daysBetween / SH_DAYS_IN_WEEK;
-//}
-
-
 -(NSDate *)setHour:(NSInteger)h minute:(NSInteger)m second:(NSInteger)s{
 	NSDate *roundedDownDate = [SharedGlobal.inUseCalendar startOfDayForDate:self];
 	return [roundedDownDate timeAfterHours:h minutes:m seconds:s];
@@ -122,19 +110,26 @@
 }
 
 
-//static SHDatetime* _nsDateToShDatetime(NSDate *date, int32_t tzOffset) {
-//	SHDatetime *dt = calloc(ALLOC_COUNT, sizeof(SHDatetime));
-//	SHError error;
-//	memset(&error, 0, sizeof(SHError));
-//	
-//	SH_timestampToDt(date.timeIntervalSince1970,tzOffset,dt,&error);
-//	if(error.code) {
-//		@throw [NSException encounterSHError:&error];
-//	}
-//	return dt;
-//}
+static struct SHDatetime* _nsDateToShDatetime(NSDate *date, int32_t tzOffset) {
+	struct SHDatetime *dt = calloc(ALLOC_COUNT, sizeof(struct SHDatetime));
+	
+	if(SH_timestampToDt(date.timeIntervalSince1970, tzOffset, dt) != SH_NO_ERROR) {
+		SH_freeSHDatetime(dt);
+		@throw [NSException encounterError];
+	}
+
+	return dt;
+}
 
 
+-(struct SHDatetime *)SH_toSHDatetime {
+	int32_t tzOffset = (int32_t)[NSTimeZone.defaultTimeZone secondsFromGMT];
+	return _nsDateToShDatetime(self, tzOffset);
+}
+
+-(struct SHDatetime *)SH_toSHDatetimeUTC {
+	return _nsDateToShDatetime(self, 0);
+}
 
 
 

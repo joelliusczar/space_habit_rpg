@@ -13,7 +13,10 @@
 #include <inttypes.h>
 //#pragma clang module import Darwin.C.inttypes
 
+//these defines mostly exist for the sake of arrays, since const arrays need
+//to have their size defined at compile time
 #define SH_WEEKLEN 7
+#define SH_MONTHCOUNT 12
 extern const int32_t SH_DAYS_IN_WEEK;
 extern const int32_t SH_BASE_YEAR;
 extern const int32_t SH_FIRST_LEAP_YEAR;

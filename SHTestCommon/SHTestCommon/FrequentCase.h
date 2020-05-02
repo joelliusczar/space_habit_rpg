@@ -6,7 +6,6 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#if defined UNIT_TESTING
 
 #import "TestHelpers.h"
 #import "TestGlobals.h"
@@ -31,4 +30,3 @@
 
 @end
 
-#endif

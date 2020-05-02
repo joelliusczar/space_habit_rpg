@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0940"
+   LastUpgradeVersion = "1140"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -9,20 +9,6 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "27D3183C2086C8CA0047F5F1"
-               BuildableName = "SHDatetime"
-               BlueprintName = "SHDatetime"
-               ReferencedContainer = "container:SHDatetime.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
             buildForProfiling = "NO"
             buildForArchiving = "NO"
             buildForAnalyzing = "NO">
@@ -64,15 +50,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "27D3183C2086C8CA0047F5F1"
-            BuildableName = "SHDatetime"
-            BlueprintName = "SHDatetime"
-            ReferencedContainer = "container:SHDatetime.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -83,9 +60,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "27D3183C2086C8CA0047F5F1"
-            BuildableName = "SHDatetime"
-            BlueprintName = "SHDatetime"
+            BlueprintIdentifier = "270EEF40245CCD8C0078D2ED"
+            BuildableName = "SHDatetimeTests.xctest"
+            BlueprintName = "SHDatetimeTests"
             ReferencedContainer = "container:SHDatetime.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

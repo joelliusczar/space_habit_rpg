@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		270EEF88245DD1AD0078D2ED /* NSDateExtensionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 270EEF87245DD1AD0078D2ED /* NSDateExtensionTests.m */; };
 		2737439D24565D6E00E36AB7 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2737439324565D6E00E36AB7 /* SHCommon.framework */; };
 		273743A224565D6E00E36AB7 /* SHCommonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 273743A124565D6E00E36AB7 /* SHCommonTests.m */; };
 		2737440024565DD800E36AB7 /* SHVarWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 273743AE24565DD800E36AB7 /* SHVarWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -91,6 +92,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		270EEF8A245DD1AE0078D2ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27F3EC34245669BA0049F684 /* SHDatetime.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 270EEF41245CCD8C0078D2ED;
+			remoteInfo = SHDatetimeTests;
+		};
 		2737439E24565D6E00E36AB7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2737438A24565D6E00E36AB7 /* Project object */;
@@ -115,6 +123,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		270EEF87245DD1AD0078D2ED /* NSDateExtensionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSDateExtensionTests.m; sourceTree = "<group>"; };
 		2737439324565D6E00E36AB7 /* SHCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2737439C24565D6E00E36AB7 /* SHCommonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHCommonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		273743A124565D6E00E36AB7 /* SHCommonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHCommonTests.m; sourceTree = "<group>"; };
@@ -252,6 +261,7 @@
 			children = (
 				273743A124565D6E00E36AB7 /* SHCommonTests.m */,
 				273743A324565D6E00E36AB7 /* Info.plist */,
+				270EEF87245DD1AD0078D2ED /* NSDateExtensionTests.m */,
 			);
 			path = SHCommonTests;
 			sourceTree = "<group>";
@@ -395,6 +405,7 @@
 			isa = PBXGroup;
 			children = (
 				27F3EC39245669BA0049F684 /* SHDatetime */,
+				270EEF8B245DD1AE0078D2ED /* SHDatetimeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -538,6 +549,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		270EEF8B245DD1AE0078D2ED /* SHDatetimeTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SHDatetimeTests.xctest;
+			remoteRef = 270EEF8A245DD1AE0078D2ED /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		27F3EC39245669BA0049F684 /* SHDatetime */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -649,6 +667,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				270EEF88245DD1AD0078D2ED /* NSDateExtensionTests.m in Sources */,
 				273743A224565D6E00E36AB7 /* SHCommonTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

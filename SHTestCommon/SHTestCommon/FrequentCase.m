@@ -6,7 +6,6 @@
 //	Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#if defined UNIT_TESTING
 
 #import "FrequentCase.h"
 #import "SHCoreData+CleanUp.h"
@@ -82,4 +81,3 @@ context:(NSManagedObjectContext*)context{
 @end
 
 
-#endif

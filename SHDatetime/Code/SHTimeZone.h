@@ -18,6 +18,6 @@
 
 
 int32_t SH_findTimeShiftIdx(struct SHDatetime *dt);
-int32_t SH_selectTimeShiftIdxForDt(struct SHDatetime *dt, struct SHTimeshift *shifts,int32_t shiftCount);
+int32_t SH_selectTimeShiftIdxForDt(struct SHDatetime *dt, struct SHTimeshift *shifts, int32_t shiftCount);
 SHErrorCode SH_UpdateTimezoneForShifts(struct SHDatetime *dt);
 #endif /* SHTimeZone_h */

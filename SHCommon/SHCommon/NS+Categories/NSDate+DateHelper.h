@@ -7,7 +7,7 @@
 //
 
 #import "SHConstants.h"
-//@import SHDatetime;
+@import SHDatetime;
 @import Foundation;
 
 
@@ -26,5 +26,8 @@
 -(NSString *)staticTimeOfDay;
 -(NSDate *)timeAfterSeconds:(NSInteger)seconds;
 -(NSDate *)dateInTimezone:(NSTimeZone *)tz;
+-(struct SHDatetime *)SH_toSHDatetime;
+-(struct SHDatetime *)SH_toSHDatetimeUTC;
+
 @end
 

@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "SHDailyNextWeeklyDueDateCalculator.h"
 @import SHTestCommon;
+@import SHSpecial_C;
 
 @interface SHWeeklyDueDateCalculatorTests : FrequentCase
 @property (strong, nonatomic, nonnull) SHActiveDaysProvider *activeDaysProvider;
@@ -27,35 +28,52 @@
 
 
 -(void)testTuesWedThursSat {
-	SHDailyActiveDays *activeDays = [self.activeDaysProvider tuesWedThursSat];
-	
-	SHDailyNextDueDateCalculator *calc = [SHDailyNextDueDateCalculator
-		newWithActiveDays:activeDays intervalType:SH_WEEKLY_RATE];
-	calc.dayStartTime = 0;
-	calc.lastActivationDateTime = nil;
-	calc.lastUpdateDateTime = [NSDate createDateTimeWithYear:2020
-		month:3
-		day:8
-		hour:0
-		minute:0
-		second:0];
+	/*
+		FEB
+							*		*		*				*
+			SU	MO	TU	WE	TH	FR	SA
+															01
+			02	03	04	05	06	07	08
+			09	10	11	12	13	14	15
+			16	17	18	19	20	21	22
+			23	24	25	26	27	28	29
+		MAR
+			01	02	03	04	05	06	07
+			08	09	10	11	12	13	14
+			15	16	17	18	19	20	21
+			22	23	24	25	26	27	28
+			29	30	31
 		
-	NSDate *backupDate = [calc calcBackupLastCheckinDate];
-	NSDate *expected = [NSDate createDateTimeWithYear:2020
-		month:3
-		day:7
-		hour:0
-		minute:0
-		second:0];
-	XCTAssertEqual(backupDate.timeIntervalSince1970, expected.timeIntervalSince1970);
-	activeDays.weeklyActiveDays.intervalSize = 3;
-	backupDate = [calc calcBackupLastCheckinDate];
-	expected = [NSDate createDateTimeWithYear:2020
-	month:2
-	day:29
-	hour:0
-	minute:0
-	second:0];
+	*/
+	SHDailyActiveDays *activeDays = [self.activeDaysProvider tuesWedThursSat];
+	struct SHDatetime testDate = {.year = 2020, .month = 3, .day = 8};
+	struct SHDueDateWeeklyContext testContext = {0};
+	struct SHWeekIntervalPointList points = [activeDays.weeklyActiveDays copyWeek];
+	testContext.intervalPoints = &points;
+	testContext.intervalSize = activeDays.weeklyActiveDays.intervalSize;
+	struct SHDatetime backupDate;
+	SHErrorCode status = SH_findBackupDateForUseDate(&testDate,
+		&testContext, &backupDate);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	struct SHDatetime expected = {.year = 2020, .month = 3, .day = 7};
+	double backuptTimestamp = 0;
+	double expectedTimestamp = -1;
+	SH_dtToTimestamp(&backupDate, &backuptTimestamp);
+	SH_dtToTimestamp(&expected, &expectedTimestamp);
+	
+	XCTAssertEqual(backuptTimestamp, expectedTimestamp);
+	testContext.intervalSize = 3;
+	SH_dtSetMonth(&expected, 2);
+	SH_dtSetDay(&expected, 29);
+	status = SH_findBackupDateForUseDate(&testDate,
+		&testContext, &backupDate);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	SH_dtToTimestamp(&backupDate, &backuptTimestamp);
+	SH_dtToTimestamp(&expected, &expectedTimestamp);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	NSLog(@"backup: %f",backuptTimestamp);
+	NSLog(@"expected: %f",expectedTimestamp);
+	XCTAssertEqual(backuptTimestamp, expectedTimestamp);
 }
 
 
@@ -87,82 +105,87 @@
 			25	26	27	28	29	30	31		2
 	*/
 	NSTimeZone.defaultTimeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
+	
 	SHDailyActiveDays *activeDays = [self.activeDaysProvider tuesWedThursSat];
-	SHDailyNextWeeklyDueDateCalculator *calc = [[SHDailyNextWeeklyDueDateCalculator alloc]
-		initWithRateItemList: activeDays.weeklyActiveDays];
-	calc.dayStartTime = 0;
-	calc.lastActivationDateTime = nil;
-	calc.lastUpdateDateTime = [NSDate createSimpleDateWithYear:2018 month:1 day:10];
-	calc.activeDays.intervalSize = 1;
-	NSDate *testDate = [NSDate createSimpleDateWithYear:2018 month:1 day:12];
-	BOOL result = [calc isWeekActiveForDate:testDate];
+	struct SHDueDateWeeklyContext testContext = {0};
+	struct SHWeekIntervalPointList points = [activeDays.weeklyActiveDays copyWeek];
+	testContext.intervalPoints = &points;
+	testContext.intervalSize = activeDays.weeklyActiveDays.intervalSize;
+	struct SHDatetime contextDate = {.year = 2018, .month = 1, .day = 10};
+	testContext.prevUseDate = &contextDate;
+	struct SHDatetime testDate = {.year = 2018, .month = 1, .day = 12};
+	bool result;
+	SHErrorCode status = SH_isWeekActiveForDate(&testDate, &testContext, &result);
+	XCTAssertEqual(status, SH_NO_ERROR);
 	XCTAssertTrue(result);
 	
-	testDate = [NSDate createSimpleDateWithYear:2018 month:1 day:16];
-	result = [calc isWeekActiveForDate:testDate];
+	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 16};
+
+	status = SH_isWeekActiveForDate(&testDate, &testContext, &result);
+	XCTAssertEqual(status, SH_NO_ERROR);
 	XCTAssertTrue(result);
 	
-	calc.activeDays.intervalSize = 2;
+	testContext.intervalSize = 2;
 	
-	testDate = [NSDate createSimpleDateWithYear:2018 month:1 day:12];
-	result = [calc isWeekActiveForDate:testDate];
+	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 12};
+	status = SH_isWeekActiveForDate(&testDate, &testContext, &result);
 	XCTAssertTrue(result);
-	testDate = [NSDate createSimpleDateWithYear:2018 month:1 day:16];
-	result = [calc isWeekActiveForDate:testDate];
+	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 16};
+	status = SH_isWeekActiveForDate(&testDate, &testContext, &result);
 	XCTAssertTrue(!result);
-	testDate = [NSDate createSimpleDateWithYear:2018 month:1 day:25];
-	result = [calc isWeekActiveForDate:testDate];
+	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 25};
+	status = SH_isWeekActiveForDate(&testDate, &testContext, &result);
 	XCTAssertTrue(result);
-	testDate = [NSDate createSimpleDateWithYear:2018 month:1 day:28];
-	result = [calc isWeekActiveForDate:testDate];
-	XCTAssertTrue(!result);
-	
-	calc.activeDays.intervalSize = 3;
-	
-	testDate = [NSDate createSimpleDateWithYear:2018 month:1 day:12];
-	result = [calc isWeekActiveForDate:testDate];
-	XCTAssertTrue(result);
-	testDate = [NSDate createSimpleDateWithYear:2018 month:1 day:16];
-	result = [calc isWeekActiveForDate:testDate];
-	XCTAssertTrue(!result);
-	testDate = [NSDate createSimpleDateWithYear:2018 month:1 day:25];
-	result = [calc isWeekActiveForDate:testDate];
-	XCTAssertTrue(!result);
-	testDate = [NSDate createSimpleDateWithYear:2018 month:1 day:28];
-	result = [calc isWeekActiveForDate:testDate];
-	XCTAssertTrue(result);
-	testDate = [NSDate createSimpleDateWithYear:2018 month:1 day:31];
-	result = [calc isWeekActiveForDate:testDate];
-	XCTAssertTrue(result);
-	testDate = [NSDate createSimpleDateWithYear:2018 month:2 day:2];
-	result = [calc isWeekActiveForDate:testDate];
-	XCTAssertTrue(result);
-	testDate = [NSDate createSimpleDateWithYear:2018 month:2 day:8];
-	result = [calc isWeekActiveForDate:testDate];
-	XCTAssertTrue(!result);
-	testDate = [NSDate createSimpleDateWithYear:2018 month:2 day:13];
-	result = [calc isWeekActiveForDate:testDate];
-	XCTAssertTrue(!result);
-	testDate = [NSDate createSimpleDateWithYear:2018 month:2 day:21];
-	result = [calc isWeekActiveForDate:testDate];
-	XCTAssertTrue(!result);
-	testDate = [NSDate createSimpleDateWithYear:2018 month:2 day:27];
-	result = [calc isWeekActiveForDate:testDate];
+	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 28};
+	status = SH_isWeekActiveForDate(&testDate, &testContext, &result);
 	XCTAssertTrue(!result);
 	
-	calc.lastUpdateDateTime = [NSDate createSimpleDateWithYear:2018 month:1 day:8];
+	testContext.intervalSize = 3;
 	
-	testDate = [NSDate createSimpleDateWithYear:2018 month:1 day:11];
-	result = [calc isWeekActiveForDate:testDate];
+	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 12};
+	status = SH_isWeekActiveForDate(&testDate, &testContext, &result);
+	XCTAssertTrue(result);
+	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 16};
+	status = SH_isWeekActiveForDate(&testDate, &testContext, &result);
 	XCTAssertTrue(!result);
-	testDate = [NSDate createSimpleDateWithYear:2018 month:1 day:16];
-	result = [calc isWeekActiveForDate:testDate];
+	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 25};
+	status = SH_isWeekActiveForDate(&testDate, &testContext, &result);
 	XCTAssertTrue(!result);
-	testDate = [NSDate createSimpleDateWithYear:2018 month:1 day:26];
-	result = [calc isWeekActiveForDate:testDate];
+	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 28};
+	status = SH_isWeekActiveForDate(&testDate, &testContext, &result);
+	XCTAssertTrue(result);
+	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 31};
+	status = SH_isWeekActiveForDate(&testDate, &testContext, &result);
+	XCTAssertTrue(result);
+	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 2};
+	status = SH_isWeekActiveForDate(&testDate, &testContext, &result);
+	XCTAssertTrue(result);
+	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 8};
+	status = SH_isWeekActiveForDate(&testDate, &testContext, &result);
 	XCTAssertTrue(!result);
-	testDate = [NSDate createSimpleDateWithYear:2018 month:3 day:15];
-	result = [calc isWeekActiveForDate:testDate];
+	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 13};
+	status = SH_isWeekActiveForDate(&testDate, &testContext, &result);
+	XCTAssertTrue(!result);
+	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 21};
+	status = SH_isWeekActiveForDate(&testDate, &testContext, &result);
+	XCTAssertTrue(!result);
+	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 27};
+	status = SH_isWeekActiveForDate(&testDate, &testContext, &result);
+	XCTAssertTrue(!result);
+	
+	contextDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 8};
+	
+	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 11};
+	status = SH_isWeekActiveForDate(&testDate, &testContext, &result);
+	XCTAssertTrue(!result);
+	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 16};
+	status = SH_isWeekActiveForDate(&testDate, &testContext, &result);
+	XCTAssertTrue(!result);
+	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 26};
+	status = SH_isWeekActiveForDate(&testDate, &testContext, &result);
+	XCTAssertTrue(!result);
+	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 15};
+	status = SH_isWeekActiveForDate(&testDate, &testContext, &result);
 	XCTAssertTrue(result);
 	
 }

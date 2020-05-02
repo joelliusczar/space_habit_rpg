@@ -24,21 +24,28 @@ void SH_fillWeek(int32_t *daysAheadCounts, int32_t *daysBeforeCounts,
 
 void SH_refreshWeek(struct SHWeekIntervalPointList *intervalPoints, int32_t intervalSize);
 
-SHErrorCode SH_previousDueDate_WEEKLY(struct SHDueDateWeeklyContext *input, struct SHDatetime *ans);
+SHErrorCode SH_previousDueDate_WEEKLY(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *input,
+	struct SHDatetime *ans);
 
-SHErrorCode SH_bothWeeklyDueDatesFromLastDueDate(struct SHDueDateWeeklyContext *input,
+SHErrorCode SH_bothWeeklyDueDatesFromLastDueDate(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *input,
 	struct SHDatetime **ans, int32_t *ansLen);
 
-SHErrorCode SH_nextDueDate_WEEKLY(struct SHDueDateWeeklyContext *input, struct SHDatetime *ans);
+SHErrorCode SH_nextDueDate_WEEKLY(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *input,
+	struct SHDatetime *ans);
 
-SHErrorCode SH_isDateADueDate_WEEKLY(struct SHDueDateWeeklyContext *input, bool *ans);
+SHErrorCode SH_isDateADueDate_WEEKLY(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *input,
+	bool *ans);
 
 int32_t SH_calcDaysAgoDayWasActive(int32_t weekdayIdx, int32_t intervalSize);
 
-SHErrorCode SH_backupDateForReferenceDate(struct SHDueDateWeeklyContext *input, struct SHDatetime *ans);
+SHErrorCode SH_backupDateForReferenceDate(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *input,
+	struct SHDatetime *ans);
 
-SHErrorCode SH_isWeekActiveForDate(struct SHDueDateWeeklyContext *input, bool *ans);
+SHErrorCode SH_isWeekActiveForDate(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *input,
+	bool *ans);
 
+SHErrorCode SH_findBackupDateForUseDate(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *context,
+	struct SHDatetime *ans);
 /*
  activeDays: an array of exactly 7 elements.
  intervalSize: this is the frequency, ex: event happens every 3 weeks

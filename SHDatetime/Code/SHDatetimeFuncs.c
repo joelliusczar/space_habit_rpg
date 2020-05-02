@@ -9,6 +9,9 @@
 #include "SHDatetimeFuncs.h"
 #include "SHUtilConstants.h"
 #include "SHGenAlgos.h"
+#include "SHDatetime_boundsChecking.h"
+#include "SHDayCounts.h"
+#include "SHLeapYearFuncs.h"
 #include <limits.h>
 #include <stdbool.h>
 #include <stdlib.h>
@@ -16,9 +19,6 @@
 #include <assert.h>
 #include <float.h>
 
-static int32_t _monthSums[12] = {0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334};
-static int32_t _backwardMonthSums[12] = {334, 306, 275, 245, 214, 184, 153, 122, 92, 61, 31, 0};
-static int32_t _monthCount[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
 typedef struct{
 	int64_t totalMins;
@@ -58,45 +58,6 @@ static int32_t _getMonthFromDaySum(int32_t daySum, bool isLeapYear){
 	return 12;
 }
 
-
-/*
- 	this is an error checking method
- */
-static SHErrorCode _isTimestampRangeInvalid(double timestamp, int32_t timezoneOffset){
-	SHErrorCode status = SH_NO_ERROR;
-	if(timestamp < 0 && (SH_YEAR_ZERO_FIRST_SEC - timestamp) > -1 * timezoneOffset){
-		SH_notifyOfError(SH_OUT_OF_RANGE,"timestamp is earlier than earliest date");
-		status = SH_OUT_OF_RANGE;
-		goto cleanup;
-	}
-	if(timestamp > 0 && (DBL_MAX - timestamp) < timezoneOffset){
-		SH_notifyOfError(SH_OUT_OF_RANGE,"timestamp is later than max date");
-		status = SH_OUT_OF_RANGE;
-		goto cleanup;
-	}
-cleanup:
-	return status;
-}
-
-
-/*
-	this assumes that years starts at 0. So, don't send actual years to
- this. For actual years, using either _isLeapYearCorrected or
- _isLeapYearFromBaseYear (this one is based on the year 2000)
- */
-static bool _isLeapYear(int64_t years){
-	return (years % 4 == 0) && ((years % 100 != 0) || (years % 400 == 0));
-}
-
-static bool _isLeapYearWithCorrection(int64_t years, bool isBeforeEpoch){
-	int32_t correction = isBeforeEpoch ? (1969 - 2000) : 2000 - 1970;
-	return _isLeapYear(years - correction);
-}
-
-
-static bool _isLeapYearFromBaseYear(int64_t year){
-	return _isLeapYear(year - SH_BEST_LEAP_YEAR);
-}
 
 
 static int64_t _calcNumLeapYearsWithCycleLen(int64_t year,int64_t cycleLen){
@@ -157,7 +118,7 @@ static int64_t _calcNumLeapYearsBaseLeap(int64_t year){
 	 where the leap years between 1972 and 2000 don't align right.
 	 So, we just do that here.
 	 */
-	if(year < SH_FIRST_LEAP_YEAR || year > SH_BEST_LEAP_YEAR || !_isLeapYear(dif)){
+	if(year < SH_FIRST_LEAP_YEAR || year > SH_BEST_LEAP_YEAR || !SH_isOffsettedYearCountLeap(dif)){
 		ans += SH_LEAP_COUNT_BETWEEN_1972_2000;
 	}
 	else{
@@ -177,7 +138,7 @@ static bool _isLeapDayCusp(struct SHDatetime *dt){
  	checks if year is a leap year and the date is after feb 28th
  */
 static bool _shouldAddLeapDay(int64_t year, int32_t month, int32_t day){
-	return _isLeapYearFromBaseYear(year) && (month > 2 || (month == 2 && day > 28));
+	return SH_isLeapYear(year) && (month > 2 || (month == 2 && day > 28));
 }
 
 
@@ -218,6 +179,7 @@ static int32_t _calcYearsBefore20thCent(int64_t seconds,bool isLeapCent){
 	years += (leapCycles*4);
 	return years;
 }
+
 
 static int64_t _calcYearsAfter20thCent(int64_t seconds,bool isLeapCent){
 	if(seconds < 0) return -1;
@@ -275,6 +237,7 @@ static int64_t _calcYearsPastPerQuadricentennial(int64_t seconds){
 	return years;
 }
 
+
 static int64_t _calcYearsPerQuadricentennial(int64_t seconds){
 	int64_t years = 0;
 	int64_t leapExcess = 0;
@@ -298,6 +261,7 @@ static int64_t _calcYearsPerQuadricentennial(int64_t seconds){
 	years += leapCycles * 100;
 	return years;
 }
+
 
 static int64_t _calcYears(int64_t seconds){
 	int64_t years = 0;
@@ -344,21 +308,6 @@ static void _setTimeFromTimeCalcResult(int64_t timestamp, int32_t minOffset, Tim
 }
 
 
-static bool _areTimeComponentsValid(struct SHDatetime const *dt){
-	shLog("_areTimeComponentsValid");
-	bool isValid = (dt->year >= 0 && dt->year <= 9999);
-	isValid &= (dt->hour >= 0 && dt->hour < 24);
-	isValid &= (dt->minute >= 0 && dt->minute < 60);
-	isValid &= (dt->second >= 0 && dt->second < 60);
-	isValid &= (dt->month > 0 && dt->month < 13);
-	if(!isValid) return isValid;
-	bool isLeapYear = _isLeapYearFromBaseYear(dt->year);
-	isValid &= (dt->day > 0 && dt->day <= (_monthCount[dt->month-1] + (isLeapYear && dt->month == 2 ? 1: 0)));
-	shLog("leaving _areTimeComponentsValid");
-	return isValid;
-}
-
-
 static void _filDateTimeObj(int64_t year, int32_t month, int32_t day, int32_t hour,
 	int32_t min, int32_t sec, double milisecs, struct SHDatetime *dt) {
 	dt->year = year;
@@ -376,7 +325,7 @@ static void _filDateTimeObj(int64_t year, int32_t month, int32_t day, int32_t ho
 }
 
 
-int64_t _calcSecondsPassedInYear(int64_t timestamp, int64_t years, bool isBeforeEpoch){
+static int64_t _calcSecondsPassedInYear(int64_t timestamp, int64_t years, bool isBeforeEpoch){
 	if(years > 1){
 		return (timestamp % (years * SH_SECONDS_PER_YEAR));
 	}
@@ -390,17 +339,10 @@ int64_t _calcSecondsPassedInYear(int64_t timestamp, int64_t years, bool isBefore
 }
 
 
-void SH_dtSetTimezoneOffset(struct SHDatetime *dt, int32_t timezoneOffset) {
-	assert(dt);
-	dt->timezoneOffset = timezoneOffset;
-	dt->isTimestampValid = false;
-}
-
-
 SHErrorCode SH_timestampToDt(double timestamp, int32_t timezoneOffset, struct SHDatetime *ans){
 	assert(ans);
 	SHErrorCode status;
-	if((status = _isTimestampRangeInvalid(timestamp,timezoneOffset)) != SH_NO_ERROR) {
+	if((status = SH_isTimestampRangeInvalid(timestamp,timezoneOffset)) != SH_NO_ERROR) {
 		SH_notifyOfError(status,"Could not convert timestamp to datetime obj");
 		goto cleanup;
 	}
@@ -414,7 +356,7 @@ SHErrorCode SH_timestampToDt(double timestamp, int32_t timezoneOffset, struct SH
 	timestamp += timezoneOffset;
 	bool isBeforeEpoch = timestamp < 0;
 	int64_t totalYears = _calcYears(timestamp);
-	bool isLeapYear = _isLeapYearWithCorrection(totalYears, isBeforeEpoch);
+	bool isLeapYear = SH_isRawYearCountLeap(totalYears, isBeforeEpoch);
 	int64_t secondsPassedInYear = _calcSecondsPassedInYear(timestamp, totalYears, isBeforeEpoch);
 	totalYears *= (isBeforeEpoch ? SH_MIRROR_BEFORE_EPOCH : SH_EPOCH_NEUTRAL);
 	int32_t baseYear = isBeforeEpoch ? 1969 : 1970;
@@ -435,7 +377,7 @@ SHErrorCode SH_timestampToDt(double timestamp, int32_t timezoneOffset, struct SH
 	int32_t month = _getMonthFromDaySum(exDays, isLeapYear);
 	int32_t currentLeapOffset = (isLeapYear && exDays > SH_LEAP_FEB_SUM ? 1 : 0);
 	exDays -= currentLeapOffset;
-	exDays -= _monthSums[month-1];
+	exDays -= SH_monthSums[month-1];
 	int32_t exHours = result.totalHours % SH_HOURS_PER_DAY;
 	int32_t exMins = result.totalMins % SH_MIN_SEC_LEN;
 	_filDateTimeObj(totalYears+baseYear, month, exDays, exHours, exMins,
@@ -443,6 +385,43 @@ SHErrorCode SH_timestampToDt(double timestamp, int32_t timezoneOffset, struct SH
 	success:
 	cleanup:
 		return status;
+}
+
+
+static double _dtToTimestamp1970AndAfter(struct SHDatetime * const dt) {
+	double sum = 0;
+	int64_t leapYearCount = _calcNumLeapYearsBaseLeap(dt->year);
+	bool isLeapYear = SH_isLeapYear(dt->year);
+	int64_t span = dt->year - SH_BASE_YEAR;
+	int32_t dayTotal = SH_monthSums[dt->month - 1];
+	int64_t yearStart = span * SH_DAY_IN_SECONDS * 365 + SH_DAY_IN_SECONDS * leapYearCount;
+	dayTotal += (dt->day-1);
+	int32_t FEB_DAY_SUM = 59;
+	int32_t leapDayOffset = isLeapYear &&
+	(dayTotal > FEB_DAY_SUM || (dt->month == 3 && dayTotal == FEB_DAY_SUM)) ? 1 : 0;
+	sum = yearStart + dayTotal * SH_DAY_IN_SECONDS + leapDayOffset * SH_DAY_IN_SECONDS;
+	int32_t timeOfDay = (dt->hour * SH_HOUR_IN_SECONDS + dt->minute * SH_MIN_IN_SECONDS + dt->second);
+	dt->timeOfDay = (timeOfDay - dt->timezoneOffset) % SH_DAY_IN_SECONDS;
+	sum += timeOfDay;
+	return sum;
+}
+
+
+static double _dtToTimestampBefore1970(struct SHDatetime * const dt) {
+	double sum = 0;
+	int64_t leapYearCount = _calcNumLeapYearsBaseLeap(dt->year);
+	bool isLeapYear = SH_isLeapYear(dt->year);
+	int64_t span = dt->year - SH_BASE_YEAR + 1;
+	int32_t dayTotal = SH_backwardMonthSums[dt->month-1];
+	int64_t yearStart = span * SH_DAY_IN_SECONDS * SH_NORMAL_YEAR_DAYS - SH_DAY_IN_SECONDS * leapYearCount;
+	dt->day = dt->day - SH_monthCount[dt->month - 1] - (isLeapYear && dayTotal >= 306 ? 1 : 0);
+	dayTotal= dt->day - dayTotal;
+	sum = yearStart + dayTotal * SH_DAY_IN_SECONDS;
+	int32_t timeOfDay = ((dt->hour - 23) * SH_HOUR_IN_SECONDS + (dt->minute - 59) * SH_MIN_IN_SECONDS +
+		(dt->second - 60));
+	dt->timeOfDay = (timeOfDay - dt->timezoneOffset) % SH_DAY_IN_SECONDS;
+	sum += timeOfDay;
+	return sum;
 }
 
 
@@ -463,36 +442,17 @@ SHErrorCode SH_dtToTimestamp(struct SHDatetime * const dt,double *ans){
 		even though this is only a utility function, and doesn't touch the file system,
 		int overflow is possible so I'm doing a range check to protect against that
 	*/
-	if(!_areTimeComponentsValid(dt)) {
+	if(!SH_areTimeComponentsValid(dt)) {
 		SH_notifyOfError(SH_CORRUPT_STRUCT,"Date components are out of range");
 		status = SH_CORRUPT_STRUCT;
 		goto cleanup;
 	}
-	double sum;
-	int64_t leapYearCount = _calcNumLeapYearsBaseLeap(dt->year);
-	bool isLeapYear = _isLeapYearFromBaseYear(dt->year);
+	double sum = 0;
 	if(dt->year >= SH_BASE_YEAR){
-		int64_t span = dt->year - SH_BASE_YEAR;
-		int32_t dayTotal = _monthSums[dt->month - 1];
-		int64_t yearStart = span * SH_DAY_IN_SECONDS * 365 + SH_DAY_IN_SECONDS * leapYearCount;
-		dayTotal += (dt->day-1);
-		int32_t FEB_DAY_SUM = 59;
-		int32_t leapDayOffset = isLeapYear &&
-			(dayTotal > FEB_DAY_SUM || (dt->month == 3 && dayTotal == FEB_DAY_SUM)) ? 1 : 0;
-		sum = yearStart + dayTotal * SH_DAY_IN_SECONDS + leapDayOffset * SH_DAY_IN_SECONDS;
-		dt->timeOfDay = (dt->hour * SH_HOUR_IN_SECONDS + dt->minute * SH_MIN_IN_SECONDS + dt->second);
-		sum += dt->timeOfDay;
+		sum = _dtToTimestamp1970AndAfter(dt);
 	}
 	else{
-		int64_t span = dt->year - SH_BASE_YEAR + 1;
-		int32_t dayTotal = _backwardMonthSums[dt->month-1];
-		int64_t yearStart = span * SH_DAY_IN_SECONDS * SH_NORMAL_YEAR_DAYS - SH_DAY_IN_SECONDS * leapYearCount;
-		dt->day = dt->day - _monthCount[dt->month - 1] - (isLeapYear && dayTotal >= 306 ? 1 : 0);
-		dayTotal= dt->day - dayTotal;
-		sum = yearStart + dayTotal * SH_DAY_IN_SECONDS;
-		dt->timeOfDay = ((dt->hour - 23) * SH_HOUR_IN_SECONDS + (dt->minute - 59) * SH_MIN_IN_SECONDS +
-			(dt->second - 60));
-		sum += dt->timeOfDay;
+		sum = _dtToTimestampBefore1970(dt);
 	}
 	sum -= dt->timezoneOffset;
 	sum += fraction * (dt->year < 1970 ? -1 : 1);
@@ -524,21 +484,25 @@ SHErrorCode SH_dtToTimeOfDay(struct SHDatetime *const dt, double *ans) {
 		even though this is only a utility function, and doesn't touch the file system,
 		int overflow is possible so I'm doing a range check to protect against that
 	*/
-	if(!_areTimeComponentsValid(dt)) {
+	if(!SH_areTimeComponentsValid(dt)) {
 		SH_notifyOfError(SH_CORRUPT_STRUCT,"Date components are out of range");
 		status = SH_CORRUPT_STRUCT;
 		goto cleanup;
 	}
 	if(dt->year >= SH_BASE_YEAR){
-		*ans = (dt->hour * SH_HOUR_IN_SECONDS + dt->minute * SH_MIN_IN_SECONDS + dt->second);
+		int32_t timeOfDay = (dt->hour * SH_HOUR_IN_SECONDS + dt->minute * SH_MIN_IN_SECONDS + dt->second);
+		*ans = (timeOfDay - dt->timezoneOffset) % SH_DAY_IN_SECONDS;
 	}
 	else {
-		*ans = ((dt->hour - 23) * SH_HOUR_IN_SECONDS + (dt->minute - 59) * SH_MIN_IN_SECONDS + (dt->second - 60));
+		int32_t timeOfDay = ((dt->hour - 23) * SH_HOUR_IN_SECONDS + (dt->minute - 59) * SH_MIN_IN_SECONDS +
+			(dt->second - 60));
+		*ans = (timeOfDay - dt->timezoneOffset) % SH_DAY_IN_SECONDS;
 	}
 	success:
 	cleanup:
 		return status;
 }
+
 
 SHErrorCode SH_addDaysToDt(struct SHDatetime *dt, int64_t days, SHTimeAdjustOptions options){
 	shLog("SH_addDaysToDt");
@@ -550,8 +514,14 @@ SHErrorCode SH_addDaysToDt(struct SHDatetime *dt, int64_t days, SHTimeAdjustOpti
 	if((status = SH_dtToTimestamp(dt, &timestamp)) != SH_NO_ERROR) {
 		goto cleanup;
 	}
-	timestamp += (days*SH_DAY_IN_SECONDS);
+	timestamp += (days * SH_DAY_IN_SECONDS);
+	struct SHTimeshift *shifts = dt->shifts;
+	int32_t shiftLen = dt->shiftLen;
+	int32_t currentShiftIdx = dt->currentShiftIdx;
 	SH_timestampToDt(timestamp, dt->timezoneOffset, dt);
+	dt->shifts = shifts;
+	dt->shiftLen = shiftLen;
+	dt->currentShiftIdx = currentShiftIdx;
 	shLog("almost leaving SH_addDaysToDt");
 	status = SH_UpdateTimezoneForShifts(dt);
 	success:
@@ -570,8 +540,8 @@ SHErrorCode SH_addMonthsToDt(struct SHDatetime *dt,int64_t months,SHTimeAdjustOp
 	int64_t years = totalMonths / SH_YEAR_IN_MONTHS;
 	dt->month = exMonths;
 	dt->year += years;
-	int32_t monthLastDay = _monthCount[dt->month -1]
-		+ (_isLeapYear(dt->year)&&dt->month == SH_FEB ? 1 : 0);
+	int32_t monthLastDay = SH_monthCount[dt->month -1]
+		+ (SH_isOffsettedYearCountLeap(dt->year) && dt->month == SH_FEB ? 1 : 0);
 	if(dt->day > monthLastDay){
 		if(options == SH_TIME_ADJUST_SHIFT_BKD){
 			dt->day = monthLastDay;
@@ -593,7 +563,7 @@ static SHErrorCode _addYears_SHIFT(struct SHDatetime *dt,int64_t years, SHTimeAd
 	int64_t yearSum = years + dt->year;
 	options = options == SH_TIME_ADJUST_NO_OPTION ? SH_TIME_ADJUST_SHIFT_BKD : options;
 	if(options & SH_TIME_ADJUST_ERROR){
-		if(!_isLeapYearFromBaseYear(yearSum) && _isLeapDayCusp(dt)){
+		if(!SH_isLeapYear(yearSum) && _isLeapDayCusp(dt)){
 			SH_notifyOfError(SH_INPUT_BAD_RESULTS,"Date addition caused Feb 29 to happen on non leap year");
 			status = SH_INPUT_BAD_RESULTS;
 			goto cleanup;
@@ -602,7 +572,7 @@ static SHErrorCode _addYears_SHIFT(struct SHDatetime *dt,int64_t years, SHTimeAd
 		goto success;
 	}
 	if((options & SH_TIME_ADJUST_SHIFT_BKD) || (options & SH_TIME_ADJUST_SHIFT_FWD)){
-		if(!_isLeapYearFromBaseYear(yearSum) && _isLeapDayCusp(dt)){
+		if(!SH_isLeapYear(yearSum) && _isLeapDayCusp(dt)){
 			if(options & SH_TIME_ADJUST_SHIFT_BKD) dt->day = 28;
 			else if(options & SH_TIME_ADJUST_SHIFT_FWD){
 				dt->day = 1;
@@ -696,44 +666,44 @@ int32_t SH_weekdayIdx(struct SHDatetime * const dt, int32_t dayOffset) {
 
 
 int32_t SH_calcDayOfYear(struct SHDatetime *dt){
-	if(!_areTimeComponentsValid(dt)){
+	if(!SH_areTimeComponentsValid(dt)){
 		SH_notifyOfError(SH_OUT_OF_RANGE,"Date components are out of range");
 		return SH_NOT_FOUND;
 	}
 	bool shouldAddLeapDay = _shouldAddLeapDay(dt->year,dt->month,dt->day);
-	int32_t days = _monthSums[dt->month -1];
+	int32_t days = SH_monthSums[dt->month -1];
 	days += (shouldAddLeapDay && !(dt->month == 2 && dt->day == 29) ? 1 : 0);
 	days += dt->day;
 	return days;
 }
 
 
-SHErrorCode SH_dateDiffSeconds(struct SHDatetime * const A, struct SHDatetime * const B, double *ans){
-	assert(A);
-	assert(B);
+SHErrorCode SH_dateDiffSeconds(struct SHDatetime * const fromDt, struct SHDatetime * const toDt, double *ans){
+	assert(fromDt);
+	assert(toDt);
 	assert(ans);
-	double timestampA = 0;
-	double timestampB = 0;
+	double timestampFrom = 0;
+	double timestampTo = 0;
 	SHErrorCode status = SH_NO_ERROR;
-	if((status = SH_dtToTimestamp(A, &timestampA)) != SH_NO_ERROR) {
+	if((status = SH_dtToTimestamp(fromDt, &timestampFrom)) != SH_NO_ERROR) {
 		goto cleanup;
 	}
-	if((status = SH_dtToTimestamp(B, &timestampB)) != SH_NO_ERROR) {
+	if((status = SH_dtToTimestamp(toDt, &timestampTo)) != SH_NO_ERROR) {
 		goto cleanup;
 	}
-	*ans = timestampA - timestampB;
+	*ans = timestampTo - timestampFrom;
 	cleanup:
 		return status;
 }
 
 
-SHErrorCode SH_dateDiffDays(struct SHDatetime * const A,struct SHDatetime * const B,int64_t *ans){
-	assert(A);
-	assert(B);
+SHErrorCode SH_dateDiffDays(struct SHDatetime * const fromDt,struct SHDatetime * const toDt,int64_t *ans){
+	assert(fromDt);
+	assert(toDt);
 	assert(ans);
 	double secondsDiff = 0;
 	SHErrorCode status = SH_NO_ERROR;
-	if((status = SH_dateDiffSeconds(A, B, &secondsDiff)) != SH_NO_ERROR) {
+	if((status = SH_dateDiffSeconds(fromDt, toDt, &secondsDiff)) != SH_NO_ERROR) {
 		goto cleanup;
 	}
 
@@ -744,17 +714,17 @@ SHErrorCode SH_dateDiffDays(struct SHDatetime * const A,struct SHDatetime * cons
 }
 
 
-SHErrorCode SH_dateDiffFullWeeks(struct SHDatetime * const A, struct SHDatetime * const B, int32_t dayOffset,
-	int64_t *ans)
+SHErrorCode SH_dateDiffFullWeeks(struct SHDatetime * const fromDt, struct SHDatetime * const toDt,
+	int32_t dayOffset, int64_t *ans)
 {
 	SHErrorCode status = SH_NO_ERROR;
 	struct SHDatetime firstFullWeek;
 	*ans = SH_NOT_FOUND;
-	if((status = SH_weekStart(A, dayOffset, &firstFullWeek)) != SH_NO_ERROR) {
+	if((status = SH_weekStart(fromDt, dayOffset, &firstFullWeek)) != SH_NO_ERROR) {
 		goto fnExit;
 	}
 	struct SHDatetime lastFullWeek;
-	if((status = SH_weekStart(B, dayOffset, &lastFullWeek)) != SH_NO_ERROR) {
+	if((status = SH_weekStart(toDt, dayOffset, &lastFullWeek)) != SH_NO_ERROR) {
 		goto fnExit;
 	}
 	int64_t daysBetween = SH_NOT_FOUND;
@@ -798,7 +768,8 @@ SHErrorCode SH_weekStart(struct SHDatetime * const dt, int32_t dayOffset, struct
 		status = SH_INPUT_BAD_RESULTS;
 		goto cleanup;
 	}
-	if((status = SH_addDaysToDt(dt, - weekdayIdx, SH_TIME_ADJUST_NO_OPTION)) != SH_NO_ERROR) {
+	*ans = *dt;
+	if((status = SH_addDaysToDt(ans, - weekdayIdx, SH_TIME_ADJUST_NO_OPTION)) != SH_NO_ERROR) {
 		SH_notifyOfError(SH_INPUT_BAD_RESULTS,"Could not calc week start");
 		goto cleanup;
 	}
@@ -815,7 +786,8 @@ SHErrorCode SH_nextWeekStart(struct SHDatetime * const dt, int32_t dayOffset, st
 		status = SH_INPUT_BAD_RESULTS;
 		goto cleanup;
 	}
-	if((status = SH_addDaysToDt(dt, SH_DAYS_IN_WEEK - weekdayIdx, SH_TIME_ADJUST_NO_OPTION)) != SH_NO_ERROR) {
+	*ans = *dt;
+	if((status = SH_addDaysToDt(ans, SH_DAYS_IN_WEEK - weekdayIdx, SH_TIME_ADJUST_NO_OPTION)) != SH_NO_ERROR) {
 		SH_notifyOfError(SH_INPUT_BAD_RESULTS,"Could not calc next week start");
 		goto cleanup;
 	}
@@ -825,7 +797,9 @@ SHErrorCode SH_nextWeekStart(struct SHDatetime * const dt, int32_t dayOffset, st
 }
 
 
-SHErrorCode SH_areSameWeekWithDayOffset(struct SHDatetime * const A, struct SHDatetime * const B, int32_t dayOffset, bool *ans) {
+SHErrorCode SH_areSameWeek(struct SHDatetime * const A, struct SHDatetime * const B,
+	int32_t dayOffset, bool *ans)
+{
 	SHErrorCode status = SH_NO_ERROR;
 	struct SHDatetime weekStart;
 	struct SHDatetime nextWeekStart;
@@ -853,16 +827,17 @@ SHErrorCode SH_areSameWeekWithDayOffset(struct SHDatetime * const A, struct SHDa
 }
 
 
-void shFreeSHTimeshift(struct SHTimeshift *tsObj){
+void SH_freeSHTimeshift(struct SHTimeshift *tsObj){
 	if(!tsObj) return;
 	free(tsObj);
 }
 
 
-void shFreeSHDatetime(struct SHDatetime *dtObj,int32_t timeshiftLen){
+void SH_freeSHDatetime(struct SHDatetime *dtObj){
 	if(!dtObj) return;
+	int32_t timeshiftLen = dtObj->shiftLen;
 	for(int32_t i = 0; i < timeshiftLen; i++){
-		shFreeSHTimeshift(dtObj[i].shifts);
+		SH_freeSHTimeshift(dtObj[i].shifts);
 	}
 	free(dtObj);
 }

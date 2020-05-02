@@ -8,6 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		2703AA732453349C00ACE781 /* SHUtils_C in Frameworks */ = {isa = PBXBuildFile; fileRef = 2703AA67244FBCBC00ACE781 /* SHUtils_C */; };
+		270EEF44245CCD8D0078D2ED /* SHDatetimeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 270EEF43245CCD8D0078D2ED /* SHDatetimeTests.m */; };
+		270EEF46245CCD8D0078D2ED /* SHDatetime in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D3183D2086C8CA0047F5F1 /* SHDatetime */; };
+		270EEF76245D0C530078D2ED /* SHTimestampToDtTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 270EEF75245D0C530078D2ED /* SHTimestampToDtTests.m */; };
+		270EEF79245D12C10078D2ED /* SHDatetime_setters.h in Headers */ = {isa = PBXBuildFile; fileRef = 270EEF77245D12C10078D2ED /* SHDatetime_setters.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		270EEF7A245D12C10078D2ED /* SHDatetime_setters.c in Sources */ = {isa = PBXBuildFile; fileRef = 270EEF78245D12C10078D2ED /* SHDatetime_setters.c */; };
+		270EEF7D245D16340078D2ED /* SHDatetime_boundsChecking.h in Headers */ = {isa = PBXBuildFile; fileRef = 270EEF7B245D16340078D2ED /* SHDatetime_boundsChecking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		270EEF7E245D16340078D2ED /* SHDatetime_boundsChecking.c in Sources */ = {isa = PBXBuildFile; fileRef = 270EEF7C245D16340078D2ED /* SHDatetime_boundsChecking.c */; };
+		270EEF81245D17C60078D2ED /* SHDayCounts.h in Headers */ = {isa = PBXBuildFile; fileRef = 270EEF7F245D17C60078D2ED /* SHDayCounts.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		270EEF82245D17C60078D2ED /* SHDayCounts.c in Sources */ = {isa = PBXBuildFile; fileRef = 270EEF80245D17C60078D2ED /* SHDayCounts.c */; };
+		270EEF85245D19C00078D2ED /* SHLeapYearFuncs.h in Headers */ = {isa = PBXBuildFile; fileRef = 270EEF83245D19C00078D2ED /* SHLeapYearFuncs.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		270EEF86245D19C00078D2ED /* SHLeapYearFuncs.c in Sources */ = {isa = PBXBuildFile; fileRef = 270EEF84245D19C00078D2ED /* SHLeapYearFuncs.c */; };
 		2738CB21233EADE500A41CC3 /* SHDatetime.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769C1032286364C00217480 /* SHDatetime.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27D318512086C9040047F5F1 /* SHTimeZone.c in Sources */ = {isa = PBXBuildFile; fileRef = 27D318462086C9040047F5F1 /* SHTimeZone.c */; };
 		27D318532086C9040047F5F1 /* SHDTConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D318482086C9040047F5F1 /* SHDTConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -33,10 +44,30 @@
 			remoteGlobalIDString = 271691FF2089758B0059A58E;
 			remoteInfo = SHUtils_C;
 		};
+		270EEF47245CCD8D0078D2ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27D318352086C8CA0047F5F1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27D3183C2086C8CA0047F5F1;
+			remoteInfo = SHDatetime;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2703AA62244FBCBB00ACE781 /* SHUtils_C.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHUtils_C.xcodeproj; path = ../SHUtils_C/SHUtils_C.xcodeproj; sourceTree = "<group>"; };
+		270EEF41245CCD8C0078D2ED /* SHDatetimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHDatetimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		270EEF43245CCD8D0078D2ED /* SHDatetimeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDatetimeTests.m; sourceTree = "<group>"; };
+		270EEF45245CCD8D0078D2ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		270EEF4C245CD6A40078D2ED /* SHDatetime.test.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHDatetime.test.xcconfig; sourceTree = "<group>"; };
+		270EEF75245D0C530078D2ED /* SHTimestampToDtTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTimestampToDtTests.m; sourceTree = "<group>"; };
+		270EEF77245D12C10078D2ED /* SHDatetime_setters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDatetime_setters.h; sourceTree = "<group>"; };
+		270EEF78245D12C10078D2ED /* SHDatetime_setters.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHDatetime_setters.c; sourceTree = "<group>"; };
+		270EEF7B245D16340078D2ED /* SHDatetime_boundsChecking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDatetime_boundsChecking.h; sourceTree = "<group>"; };
+		270EEF7C245D16340078D2ED /* SHDatetime_boundsChecking.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHDatetime_boundsChecking.c; sourceTree = "<group>"; };
+		270EEF7F245D17C60078D2ED /* SHDayCounts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDayCounts.h; sourceTree = "<group>"; };
+		270EEF80245D17C60078D2ED /* SHDayCounts.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHDayCounts.c; sourceTree = "<group>"; };
+		270EEF83245D19C00078D2ED /* SHLeapYearFuncs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHLeapYearFuncs.h; sourceTree = "<group>"; };
+		270EEF84245D19C00078D2ED /* SHLeapYearFuncs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHLeapYearFuncs.c; sourceTree = "<group>"; };
 		2712C5F5244D2BE800157758 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2737D580216DA8BB00E0111F /* simple_start.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = simple_start.sh; sourceTree = "<group>"; };
 		2737D581216DA8BB00E0111F /* dt_server_run.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = dt_server_run.sh; sourceTree = "<group>"; };
@@ -69,6 +100,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		270EEF3E245CCD8C0078D2ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				270EEF46245CCD8D0078D2ED /* SHDatetime in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		27D3183A2086C8CA0047F5F1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -100,8 +139,26 @@
 				27D318482086C9040047F5F1 /* SHDTConstants.h */,
 				27D318462086C9040047F5F1 /* SHTimeZone.c */,
 				27D3184C2086C9040047F5F1 /* SHTimeZone.h */,
+				270EEF77245D12C10078D2ED /* SHDatetime_setters.h */,
+				270EEF78245D12C10078D2ED /* SHDatetime_setters.c */,
+				270EEF7B245D16340078D2ED /* SHDatetime_boundsChecking.h */,
+				270EEF7C245D16340078D2ED /* SHDatetime_boundsChecking.c */,
+				270EEF7F245D17C60078D2ED /* SHDayCounts.h */,
+				270EEF80245D17C60078D2ED /* SHDayCounts.c */,
+				270EEF83245D19C00078D2ED /* SHLeapYearFuncs.h */,
+				270EEF84245D19C00078D2ED /* SHLeapYearFuncs.c */,
 			);
 			path = Code;
+			sourceTree = "<group>";
+		};
+		270EEF42245CCD8D0078D2ED /* SHDatetimeTests */ = {
+			isa = PBXGroup;
+			children = (
+				270EEF43245CCD8D0078D2ED /* SHDatetimeTests.m */,
+				270EEF45245CCD8D0078D2ED /* Info.plist */,
+				270EEF75245D0C530078D2ED /* SHTimestampToDtTests.m */,
+			);
+			path = SHDatetimeTests;
 			sourceTree = "<group>";
 		};
 		2712C5F4244D2BE800157758 /* Resources */ = {
@@ -145,6 +202,7 @@
 			children = (
 				27B0B1EE2223A4300028AF59 /* SHDatetime.base.xcconfig */,
 				278FFDA0222B2E4C00DAF985 /* SHDatetime.debug.xcconfig */,
+				270EEF4C245CD6A40078D2ED /* SHDatetime.test.xcconfig */,
 			);
 			path = Configs;
 			sourceTree = "<group>";
@@ -208,6 +266,7 @@
 				2737D57F216DA8BB00E0111F /* dt_server */,
 				27BB28FF2151D453003225BB /* Copy */,
 				27D318442086C9040047F5F1 /* Implementations */,
+				270EEF42245CCD8D0078D2ED /* SHDatetimeTests */,
 				27D3183E2086C8CA0047F5F1 /* Products */,
 				271691E6208861E50059A58E /* Frameworks */,
 			);
@@ -217,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				27D3183D2086C8CA0047F5F1 /* SHDatetime */,
+				270EEF41245CCD8C0078D2ED /* SHDatetimeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -238,7 +298,11 @@
 				27D318572086C9040047F5F1 /* SHTimeZone.h in Headers */,
 				27D318532086C9040047F5F1 /* SHDTConstants.h in Headers */,
 				27EE2AB721321218005A8E1F /* SHDatetimeFuncs.h in Headers */,
+				270EEF7D245D16340078D2ED /* SHDatetime_boundsChecking.h in Headers */,
+				270EEF79245D12C10078D2ED /* SHDatetime_setters.h in Headers */,
+				270EEF81245D17C60078D2ED /* SHDayCounts.h in Headers */,
 				2738CB21233EADE500A41CC3 /* SHDatetime.h in Headers */,
+				270EEF85245D19C00078D2ED /* SHLeapYearFuncs.h in Headers */,
 				27D318552086C9040047F5F1 /* SHDatetime_struct.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -246,6 +310,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		270EEF40245CCD8C0078D2ED /* SHDatetimeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 270EEF4B245CCD8D0078D2ED /* Build configuration list for PBXNativeTarget "SHDatetimeTests" */;
+			buildPhases = (
+				270EEF72245CEFD60078D2ED /* ShellScript */,
+				270EEF3D245CCD8C0078D2ED /* Sources */,
+				270EEF3E245CCD8C0078D2ED /* Frameworks */,
+				270EEF3F245CCD8C0078D2ED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				270EEF48245CCD8D0078D2ED /* PBXTargetDependency */,
+			);
+			name = SHDatetimeTests;
+			productName = SHDatetimeTests;
+			productReference = 270EEF41245CCD8C0078D2ED /* SHDatetimeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		27D3183C2086C8CA0047F5F1 /* SHDatetime */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27D318412086C8CA0047F5F1 /* Build configuration list for PBXNativeTarget "SHDatetime" */;
@@ -275,6 +358,9 @@
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Joel Gillette";
 				TargetAttributes = {
+					270EEF40245CCD8C0078D2ED = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
 					27D3183C2086C8CA0047F5F1 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -300,6 +386,7 @@
 			projectRoot = "";
 			targets = (
 				27D3183C2086C8CA0047F5F1 /* SHDatetime */,
+				270EEF40245CCD8C0078D2ED /* SHDatetimeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -314,7 +401,34 @@
 		};
 /* End PBXReferenceProxy section */
 
+/* Begin PBXResourcesBuildPhase section */
+		270EEF3F245CCD8C0078D2ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXShellScriptBuildPhase section */
+		270EEF72245CEFD60078D2ED /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
 		2769C108228637DE00217480 /* Run Script Pre */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -351,13 +465,26 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		270EEF3D245CCD8C0078D2ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				270EEF76245D0C530078D2ED /* SHTimestampToDtTests.m in Sources */,
+				270EEF44245CCD8D0078D2ED /* SHDatetimeTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		27D318392086C8CA0047F5F1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				270EEF7E245D16340078D2ED /* SHDatetime_boundsChecking.c in Sources */,
 				27D318592086C9040047F5F1 /* SHDTConstants.c in Sources */,
 				27EE2AB821321218005A8E1F /* SHDatetimeFuncs.c in Sources */,
+				270EEF86245D19C00078D2ED /* SHLeapYearFuncs.c in Sources */,
+				270EEF7A245D12C10078D2ED /* SHDatetime_setters.c in Sources */,
 				27D318512086C9040047F5F1 /* SHTimeZone.c in Sources */,
+				270EEF82245D17C60078D2ED /* SHDayCounts.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,9 +496,66 @@
 			name = SHUtils_C;
 			targetProxy = 2703AA712453349400ACE781 /* PBXContainerItemProxy */;
 		};
+		270EEF48245CCD8D0078D2ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 27D3183C2086C8CA0047F5F1 /* SHDatetime */;
+			targetProxy = 270EEF47245CCD8D0078D2ED /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		270EEF49245CCD8D0078D2ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 270EEF4C245CD6A40078D2ED /* SHDatetime.test.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XK3RJ8E2L2;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = SHDatetimeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.SHDatetimeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		270EEF4A245CCD8D0078D2ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XK3RJ8E2L2;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = SHDatetimeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.SHDatetimeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		27D3183F2086C8CA0047F5F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 278FFDA0222B2E4C00DAF985 /* SHDatetime.debug.xcconfig */;
@@ -497,6 +681,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		270EEF4B245CCD8D0078D2ED /* Build configuration list for PBXNativeTarget "SHDatetimeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				270EEF49245CCD8D0078D2ED /* Debug */,
+				270EEF4A245CCD8D0078D2ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		27D318382086C8CA0047F5F1 /* Build configuration list for PBXProject "SHDatetime" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

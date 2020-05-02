@@ -39,35 +39,19 @@
 	@throw [NSException abstractException];
 }
 
-/*If we do not have an actual last due date then we assume that whatever reference date
-we do have is on an active week even if the reference date is beginning of the
-week and long interval size causes the calculated last due date to be many weeks before.
-This also applies if the active days got changed.
-*/
--(NSDate*)calcBackupLastCheckinDate {
-//	if(self.lastActivationDateTime) {
-//		return [self calcBackupDateForReferenceDate:self.lastActivationDateTime];
-//	}
-//	if(self.activeFromDate) {
-//		return [self calcBackupDateForReferenceDate:self.activeFromDate];
-//	}
-//	return [self calcBackupDateForReferenceDate:self.lastUpdateDateTime];
-	return nil;
-}
-
 
 -(struct SHDatetime*)nextDueDate{
 	@throw [NSException abstractException];
 }
 
 
--(BOOL)isDateActive:(NSDate *)dateInQuestion {
-	(void)dateInQuestion;
+-(BOOL)isDateActive:(struct SHDatetime *)dt {
+	(void)dt;
 	@throw [NSException abstractException];
 }
 
 
--(NSUInteger)calcMissedDaysWithLastLoginDate:(NSDate*)lastLoginDate {
+-(NSUInteger)calcMissedDaysWithLastLoginDate:(struct SHDatetime*)lastLoginDate {
 	(void)lastLoginDate;
 	@throw [NSException abstractException];
 }

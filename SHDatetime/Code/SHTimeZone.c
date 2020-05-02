@@ -14,12 +14,15 @@
 #include <assert.h>
 #include <string.h>
 
-static bool _compareDtAndTimeShift(struct SHDatetime const *dt,struct SHTimeshift *shift,bool (*compare)(double,double)){
+static bool _compareDtAndTimeShift(struct SHDatetime const *dt,struct SHTimeshift *shift,
+	bool (*compare)(double,double))
+{
 		double timestamp = 0;
 		double timezoneShiftTimestamp = 0;
 		struct SHDatetime copy;
 		struct SHDatetime timezoneShiftAsDt;
 		memcpy(&copy, dt, sizeof(struct SHDatetime));
+		SH_dtSetYear(&copy, SH_BASE_YEAR);
 		SH_dtSetTimezoneOffset(&copy, 0);
 		
 		SH_dtToTimestamp(&copy, &timestamp);

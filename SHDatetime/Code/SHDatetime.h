@@ -11,7 +11,11 @@
 
 #import "SHDTConstants.h"
 #import "SHDatetime_struct.h"
+#include "SHDayCounts.h"
+#include "SHDatetime_boundsChecking.h"
+#include "SHDatetime_setters.h"
 #import "SHTimeZone.h"
+#include "SHLeapYearFuncs.h"
 #import "SHDatetimeFuncs.h"
 
 #endif /* SHDatetime_h */
