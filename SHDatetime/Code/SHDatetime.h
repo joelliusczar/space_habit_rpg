@@ -17,5 +17,6 @@
 #import "SHTimeZone.h"
 #include "SHLeapYearFuncs.h"
 #import "SHDatetimeFuncs.h"
+#include "SHDateCompare.h"
 
 #endif /* SHDatetime_h */

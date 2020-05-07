@@ -39,54 +39,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8E3D5593-313D-4E26-A3F8-A9B2337289E9"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SHModels/SHModelsTests/SHWeeklyDueDateCalculatorTests.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
-            landmarkName = "-testIsWeekActive"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1096B0F6-282E-4E1A-951F-F68EB9B3777A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SHModels/SHModelsTests/SHWeeklyDueDateCalculatorTests.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "-testTuesWedThursSat"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B59D0609-6780-4680-9354-924A7E16FDD7"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SHSpecial_C/Code/SHDueDatesWeeklyFuncs.c"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "529"
-            endingLineNumber = "529"
-            landmarkName = "SH_findBackupDateForUseDate(useDate, context, ans)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "896811AE-7076-43DD-A6F3-B7656A919803"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -210,6 +162,68 @@
             endingLineNumber = "29"
             landmarkName = "-testTimeOfDayInPreferredFormat"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "04FEBC74-ED69-4A2A-A55D-A1C44DEB8DE9 - 6dcabba6bb990216"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[NSDateExtensionTests testTimeOfDayInPreferredFormat]"
+                  moduleName = "SHCommonTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/SHCommon/SHCommonTests/NSDateExtensionTests.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "157">
+               </Location>
+               <Location
+                  uuid = "04FEBC74-ED69-4A2A-A55D-A1C44DEB8DE9 - 6dcabba6bb990216"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[NSDateExtensionTests testTimeOfDayInPreferredFormat]"
+                  moduleName = "SHCommonTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/SHCommon/SHCommonTests/NSDateExtensionTests.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "611">
+               </Location>
+               <Location
+                  uuid = "04FEBC74-ED69-4A2A-A55D-A1C44DEB8DE9 - 6dcabba6bb990216"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[NSDateExtensionTests testTimeOfDayInPreferredFormat]"
+                  moduleName = "SHCommonTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/SHCommon/SHCommonTests/NSDateExtensionTests.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "1255">
+               </Location>
+               <Location
+                  uuid = "04FEBC74-ED69-4A2A-A55D-A1C44DEB8DE9 - 6dcabba6bb990216"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[NSDateExtensionTests testTimeOfDayInPreferredFormat]"
+                  moduleName = "SHCommonTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/SHCommon/SHCommonTests/NSDateExtensionTests.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "1348">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -222,8 +236,8 @@
             filePath = "SHDatetime/SHDatetimeTests/SHDatetimeTests.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "586"
-            endingLineNumber = "586"
+            startingLineNumber = "587"
+            endingLineNumber = "587"
             landmarkName = "-testCalcWeekStart"
             landmarkType = "7">
             <Locations>
@@ -325,15 +339,538 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "06513362-6B3F-4A7C-A449-983E98A87697"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SHDatetime/SHDatetimeTests/SHDatetimeTests.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "818"
-            endingLineNumber = "818"
+            startingLineNumber = "841"
+            endingLineNumber = "841"
             landmarkName = "-testWeeksBetween"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BDBDCB62-9ADD-4083-8D0A-04238CDA4EB8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHDatetime/SHDatetimeTests/SHDatetimeTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "834"
+            endingLineNumber = "834"
+            landmarkName = "-testWeeksBetween"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "70FC91A0-80CA-4D5B-B0CC-96CA2DF78BB5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHDatetime/SHDatetimeTests/SHDatetimeTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "860"
+            endingLineNumber = "860"
+            landmarkName = "-testWeeksBetween"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CFD49D8F-DB5A-4BB1-B5CC-CBA031709E83"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHCommon/SHCommonTests/NSDateExtensionTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "-testTimeOfDayInPreferredFormat"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1DF57240-A3B1-4596-9E00-412B8CA51A73"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHSpecial_C/SHSpecial_CTests/SHPreviousDueDateTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "-testPreviousDate"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1975DC11-923E-4F0C-B6AA-8E48DC710106"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHSpecial_C/SHSpecial_CTests/SHPreviousDueDateTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "-testPreviousDate"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "45B3805C-EA5E-43BD-B0F7-3D62D0433369"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHSpecial_C/SHSpecial_CTests/SHPreviousDueDateTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "381"
+            endingLineNumber = "381"
+            landmarkName = "-testPreviousDate"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "913CDCF8-8FD2-4440-A8B1-8AAA7B6A3697"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ObjCPlayground/ObjCPlayground/Experiments.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1375"
+            endingLineNumber = "1375"
+            landmarkName = "+ptr2ptr"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DD392027-1BCD-42EA-968E-218248A79CA4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHSpecial_C/SHSpecial_CTests/SHNextDueDateTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "-testDueDates2"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "281F65DB-DFA9-4CD5-9964-BE2AFC8C6A56"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHSpecial_C/SHSpecial_CTests/SHNextDueDateTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "-testNextDueDateWeekly"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "233F522E-D180-4992-B94D-4262D188D8CC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHSpecial_C/SHSpecial_CTests/SHNextDueDateTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "-testNextDueDateWeekly"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CB78C5AF-FD27-4889-8E9C-B56D65403512"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHSpecial_C/SHSpecial_CTests/SHNextDueDateTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "-testNextDueDateWeekly"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7856501F-3165-4CED-9FE1-DDE467C487E9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHSpecial_C/SHSpecial_CTests/OtherDueDateFuncsTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "-testSetUseDateToLastActive"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "853E1C0A-5F58-4026-A4D0-9876436654DC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHSpecial_C/SHSpecial_CTests/OtherDueDateFuncsTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
+            landmarkName = "-testIsWeekActive"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "853E1C0A-5F58-4026-A4D0-9876436654DC - bf73a855bca4bb6a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[OtherDueDateFuncsTests testIsWeekActive]"
+                  moduleName = "SHSpecial_CTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/SHSpecial_C/SHSpecial_CTests/OtherDueDateFuncsTests.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "187"
+                  endingLineNumber = "187"
+                  offsetFromSymbolStart = "25068">
+               </Location>
+               <Location
+                  uuid = "853E1C0A-5F58-4026-A4D0-9876436654DC - bf73a855bca4bb6a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[OtherDueDateFuncsTests testIsWeekActive]"
+                  moduleName = "SHSpecial_CTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/SHSpecial_C/SHSpecial_CTests/OtherDueDateFuncsTests.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "187"
+                  endingLineNumber = "187"
+                  offsetFromSymbolStart = "25108">
+               </Location>
+               <Location
+                  uuid = "853E1C0A-5F58-4026-A4D0-9876436654DC - bf73a855bca4bb6a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[OtherDueDateFuncsTests testIsWeekActive]"
+                  moduleName = "SHSpecial_CTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/SHSpecial_C/SHSpecial_CTests/OtherDueDateFuncsTests.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "187"
+                  endingLineNumber = "187"
+                  offsetFromSymbolStart = "26824">
+               </Location>
+               <Location
+                  uuid = "853E1C0A-5F58-4026-A4D0-9876436654DC - bf73a855bca4bb6a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[OtherDueDateFuncsTests testIsWeekActive]"
+                  moduleName = "SHSpecial_CTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/SHSpecial_C/SHSpecial_CTests/OtherDueDateFuncsTests.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "187"
+                  endingLineNumber = "187"
+                  offsetFromSymbolStart = "27229">
+               </Location>
+               <Location
+                  uuid = "853E1C0A-5F58-4026-A4D0-9876436654DC - bf73a855bca4bb6a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[OtherDueDateFuncsTests testIsWeekActive]"
+                  moduleName = "SHSpecial_CTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/SHSpecial_C/SHSpecial_CTests/OtherDueDateFuncsTests.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "187"
+                  endingLineNumber = "187"
+                  offsetFromSymbolStart = "27340">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E74A35EF-4BE7-4028-BB93-684B85E622F7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHSpecial_C/SHSpecial_CTests/OtherDueDateFuncsTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
+            landmarkName = "-testIsWeekActive"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DC7A246C-EF64-4CCB-89B5-3960C6AFBC26"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHSpecial_C/SHSpecial_CTests/OtherDueDateFuncsTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "287"
+            endingLineNumber = "287"
+            landmarkName = "-testIsWeekActive"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "777F6862-B8AB-4EA1-AF62-15568788AAC4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHSpecial_C/SHSpecial_CTests/SHPreviousDueDateTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "-testPreviousDate"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1C45D18F-AF05-4153-AE41-9D5745A8F6BA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHSpecial_C/SHSpecial_CTests/OtherDueDateFuncsTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "-testSetUseDateToLastActive"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "77B5672C-81C7-44AC-8A67-3368C676D4AB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHSpecial_C/SHSpecial_CTests/OtherDueDateFuncsTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "-testSetUseDateToLastActive"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "552D5809-E6B5-4697-84A9-E93AD01878E5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHSpecial_C/SHSpecial_CTests/OtherDueDateFuncsTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
+            landmarkName = "-testIsWeekActive"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "552D5809-E6B5-4697-84A9-E93AD01878E5 - bf73a855bca4bb6a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[OtherDueDateFuncsTests testIsWeekActive]"
+                  moduleName = "SHSpecial_CTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/SHSpecial_C/SHSpecial_CTests/OtherDueDateFuncsTests.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "7602">
+               </Location>
+               <Location
+                  uuid = "552D5809-E6B5-4697-84A9-E93AD01878E5 - bf73a855bca4bb6a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[OtherDueDateFuncsTests testIsWeekActive]"
+                  moduleName = "SHSpecial_CTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/SHSpecial_C/SHSpecial_CTests/OtherDueDateFuncsTests.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "9042">
+               </Location>
+               <Location
+                  uuid = "552D5809-E6B5-4697-84A9-E93AD01878E5 - bf73a855bca4bb6a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[OtherDueDateFuncsTests testIsWeekActive]"
+                  moduleName = "SHSpecial_CTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/SHSpecial_C/SHSpecial_CTests/OtherDueDateFuncsTests.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "9597">
+               </Location>
+               <Location
+                  uuid = "552D5809-E6B5-4697-84A9-E93AD01878E5 - bf73a855bca4bb6a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[OtherDueDateFuncsTests testIsWeekActive]"
+                  moduleName = "SHSpecial_CTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelpridgen/Documents/spacehabitrpg/SHSpecial_C/SHSpecial_CTests/OtherDueDateFuncsTests.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "9708">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E391CFCF-08D4-4BCC-BF3C-774C370AE698"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHSpecial_C/SHSpecial_CTests/OtherDueDateFuncsTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
+            landmarkName = "-testIsWeekActive"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "22E7328E-9D25-4653-85EA-C126D41C497E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHSpecial_C/SHSpecial_CTests/OtherDueDateFuncsTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
+            landmarkName = "-testIsWeekActive"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7272771B-82ED-4C0F-BD64-A24936E898DB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHSpecial_C/SHSpecial_CTests/OtherDueDateFuncsTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "-testSetUseDateToLastActive"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BF325526-4267-4346-98D8-889550ADA5DF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHSpecial_C/SHSpecial_CTests/OtherDueDateFuncsTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "-testSetUseDateToLastActive"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D65A5469-5C1A-47DB-B843-1284CAFBD590"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHSpecial_C/SHSpecial_CTests/OtherDueDateFuncsTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
+            landmarkName = "-testIsWeekActive"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

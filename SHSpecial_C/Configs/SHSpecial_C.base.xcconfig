@@ -22,4 +22,3 @@ SHDATETIME_MODMAP_FLAG = -fmodule-map-file=$(SHDATETIME_H_DIR)/Modules/module.mo
 
 //MODULEMAP_FILE = $(SRCROOT)/Headers/module.modulemap
 OTHER_CFLAGS = $(inherited) $(INTTYPES_MODMAP_FLAG) $(SHUTILS_C_MODMAP_FLAG) $(SHDATETIME_MODMAP_FLAG)
-

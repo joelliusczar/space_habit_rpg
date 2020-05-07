@@ -45,17 +45,17 @@ SHErrorCode SH_dateDiffFullWeeks(struct SHDatetime * const fromDt, struct SHDate
 
 void SH_DTToString(struct SHDatetime const *dt,char* str);
 
-void SH_freeSHDatetime(struct SHDatetime *dtObj);
+void SH_freeSHDatetime(struct SHDatetime *dtObj, int32_t len);
 
 void SH_freeSHTimeshift(struct SHTimeshift *tsObj);
 
-SHErrorCode SH_weekStart(struct SHDatetime * const dt, int32_t dayOffset, struct SHDatetime *ans);
+SHErrorCode SH_weekStart(struct SHDatetime *dt, int32_t dayOffset);
 
-SHErrorCode SH_nextWeekStart(struct SHDatetime * const dt, int32_t dayOffset, struct SHDatetime *ans);
+SHErrorCode SH_nextWeekStart(struct SHDatetime *dt, int32_t dayOffset);
 	
 SHErrorCode SH_areSameWeek(struct SHDatetime * const A, struct SHDatetime * const B,
 	int32_t dayOffset, bool *ans);
-
+	
  /* SHDatetimeFuncs_h */
 
 #endif

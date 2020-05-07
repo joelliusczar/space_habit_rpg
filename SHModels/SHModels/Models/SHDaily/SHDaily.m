@@ -30,13 +30,18 @@
 /*If we do not have an actual last due date then we assume that whatever reference date
 we do have is on an active week even if the reference date is beginning of the
 week and long interval size causes the calculated last due date to be many weeks before.
-This also applies if the active days got changed.
+This also applies if the active days got changed. #activeDayMath
+
+#TODO: these priority flags still need to be set in code
 */
 -(NSDate*)selectUseDateProperty {
-	if(self.lastActivationDateTime) {
+	if(self.lastActivationDateTime &&
+		!self.activeFromHasPriority &&
+		!self.lastUpdateHasPriority)
+	{
 		return self.lastActivationDateTime;
 	}
-	if(self.activeFromDate) {
+	if(self.activeFromDate && !self.lastUpdateHasPriority) {
 		return self.activeFromDate;
 	}
 	assert(self.lastUpdateDateTime);
@@ -60,7 +65,7 @@ This also applies if the active days got changed.
 	_calculator.dayStartTime = dayStartTime;
 	struct SHDatetime *selectedDateProperty = [[self selectUseDateProperty] SH_toSHDatetime];
 	_calculator.useDate = *selectedDateProperty;
-	SH_freeSHDatetime(selectedDateProperty);
+	SH_freeSHDatetime(selectedDateProperty, ALLOC_COUNT);
 	return _calculator;
 }
 

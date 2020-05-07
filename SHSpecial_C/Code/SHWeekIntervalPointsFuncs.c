@@ -23,6 +23,9 @@ int32_t SH_findPrevActiveDayIdx(struct SHWeekIntervalPointList const * intervalP
 			return idx;
 		}
 	}
+	if(intervalPoints->days[weekdayIdx].isDayActive) {
+		return weekdayIdx;
+	}
 	return SH_NOT_FOUND;
 }
 

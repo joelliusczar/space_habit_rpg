@@ -88,6 +88,26 @@
 		2737444B24565DD800E36AB7 /* SHReportServiceCallerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 273743FC24565DD800E36AB7 /* SHReportServiceCallerProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2737444C24565DD800E36AB7 /* SHColorInversionHintProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 273743FD24565DD800E36AB7 /* SHColorInversionHintProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2737444E24565DD800E36AB7 /* SHIconDrawingFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 273743FF24565DD800E36AB7 /* SHIconDrawingFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		274ADCF2245E482A00763D25 /* CommonUtilitiesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADCF1245E482A00763D25 /* CommonUtilitiesTest.m */; };
+		274ADD30245E52C500763D25 /* SHAlphaAlphaAlphaAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD0E245E52C500763D25 /* SHAlphaAlphaAlphaAlpha.m */; };
+		274ADD31245E52C500763D25 /* SHAlphaBravo.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD11245E52C500763D25 /* SHAlphaBravo.m */; };
+		274ADD32245E52C500763D25 /* SHAlphaBravoAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD13245E52C500763D25 /* SHAlphaBravoAlpha.m */; };
+		274ADD33245E52C500763D25 /* SHAlphaAlphaAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD16245E52C500763D25 /* SHAlphaAlphaAlpha.m */; };
+		274ADD34245E52C500763D25 /* SHBravo.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD1A245E52C500763D25 /* SHBravo.m */; };
+		274ADD35245E52C500763D25 /* SHAlphaBravoBravoAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD1D245E52C500763D25 /* SHAlphaBravoBravoAlpha.m */; };
+		274ADD36245E52C500763D25 /* SHAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD1F245E52C500763D25 /* SHAlpha.m */; };
+		274ADD37245E52C500763D25 /* SHAlphaBravoCharlie.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD20245E52C500763D25 /* SHAlphaBravoCharlie.m */; };
+		274ADD38245E52C500763D25 /* SHAlphaCharlie.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD22245E52C500763D25 /* SHAlphaCharlie.m */; };
+		274ADD39245E52C500763D25 /* SHAlphaDelta.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD24245E52C500763D25 /* SHAlphaDelta.m */; };
+		274ADD3A245E52C500763D25 /* SHAlphaAlphaAlphaBravo.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD26245E52C500763D25 /* SHAlphaAlphaAlphaBravo.m */; };
+		274ADD3B245E52C500763D25 /* SHAlphaCharlieAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD27245E52C500763D25 /* SHAlphaCharlieAlpha.m */; };
+		274ADD3C245E52C500763D25 /* SHAlphaAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD2A245E52C500763D25 /* SHAlphaAlpha.m */; };
+		274ADD3D245E52C500763D25 /* SHAlphCharlieBravo.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD2B245E52C500763D25 /* SHAlphCharlieBravo.m */; };
+		274ADD3E245E52C500763D25 /* SHAlphaBravoBravo.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD2C245E52C500763D25 /* SHAlphaBravoBravo.m */; };
+		274ADD3F245E52C500763D25 /* ProbilityWeightTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD2D245E52C500763D25 /* ProbilityWeightTest.m */; };
+		274ADD40245E52C500763D25 /* TestProbWeightsThreeItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD2E245E52C500763D25 /* TestProbWeightsThreeItems.m */; };
+		274ADD41245E52C500763D25 /* ProbilityWeightTestFourItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD2F245E52C500763D25 /* ProbilityWeightTestFourItems.m */; };
+		274ADD43245E545600763D25 /* SHInheritanceTreeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD42245E545600763D25 /* SHInheritanceTreeTest.m */; };
 		27F3EC52245703A40049F684 /* SHDatetime in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F3EC39245669BA0049F684 /* SHDatetime */; };
 /* End PBXBuildFile section */
 
@@ -211,6 +231,42 @@
 		2737445B24565E6F00E36AB7 /* SHCommon.postbuild.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = SHCommon.postbuild.sh; sourceTree = "<group>"; };
 		2737445D24565E6F00E36AB7 /* SHCommon.base.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = SHCommon.base.xcconfig; sourceTree = "<group>"; };
 		2737445E24565E6F00E36AB7 /* SHCommon.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = SHCommon.debug.xcconfig; sourceTree = "<group>"; };
+		274ADCF1245E482A00763D25 /* CommonUtilitiesTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonUtilitiesTest.m; sourceTree = "<group>"; };
+		274ADD0E245E52C500763D25 /* SHAlphaAlphaAlphaAlpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHAlphaAlphaAlphaAlpha.m; sourceTree = "<group>"; };
+		274ADD0F245E52C500763D25 /* SHAlpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHAlpha.h; sourceTree = "<group>"; };
+		274ADD10245E52C500763D25 /* SHAlphaBravoCharlie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHAlphaBravoCharlie.h; sourceTree = "<group>"; };
+		274ADD11245E52C500763D25 /* SHAlphaBravo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHAlphaBravo.m; sourceTree = "<group>"; };
+		274ADD12245E52C500763D25 /* SHAlphaBravoBravoAlpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHAlphaBravoBravoAlpha.h; sourceTree = "<group>"; };
+		274ADD13245E52C500763D25 /* SHAlphaBravoAlpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHAlphaBravoAlpha.m; sourceTree = "<group>"; };
+		274ADD14245E52C500763D25 /* SHAlphaCharlie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHAlphaCharlie.h; sourceTree = "<group>"; };
+		274ADD15245E52C500763D25 /* SHAlphaAlpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHAlphaAlpha.h; sourceTree = "<group>"; };
+		274ADD16245E52C500763D25 /* SHAlphaAlphaAlpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHAlphaAlphaAlpha.m; sourceTree = "<group>"; };
+		274ADD17245E52C500763D25 /* SHAlphaCharlieAlpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHAlphaCharlieAlpha.h; sourceTree = "<group>"; };
+		274ADD18245E52C500763D25 /* SHAlphaAlphaAlphaBravo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHAlphaAlphaAlphaBravo.h; sourceTree = "<group>"; };
+		274ADD19245E52C500763D25 /* SHAlphaDelta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHAlphaDelta.h; sourceTree = "<group>"; };
+		274ADD1A245E52C500763D25 /* SHBravo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHBravo.m; sourceTree = "<group>"; };
+		274ADD1B245E52C500763D25 /* SHAlphaBravoBravo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHAlphaBravoBravo.h; sourceTree = "<group>"; };
+		274ADD1C245E52C500763D25 /* SHAlphCharlieBravo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHAlphCharlieBravo.h; sourceTree = "<group>"; };
+		274ADD1D245E52C500763D25 /* SHAlphaBravoBravoAlpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHAlphaBravoBravoAlpha.m; sourceTree = "<group>"; };
+		274ADD1E245E52C500763D25 /* SHAlphaBravo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHAlphaBravo.h; sourceTree = "<group>"; };
+		274ADD1F245E52C500763D25 /* SHAlpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHAlpha.m; sourceTree = "<group>"; };
+		274ADD20245E52C500763D25 /* SHAlphaBravoCharlie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHAlphaBravoCharlie.m; sourceTree = "<group>"; };
+		274ADD21245E52C500763D25 /* SHAlphaAlphaAlphaAlpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHAlphaAlphaAlphaAlpha.h; sourceTree = "<group>"; };
+		274ADD22245E52C500763D25 /* SHAlphaCharlie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHAlphaCharlie.m; sourceTree = "<group>"; };
+		274ADD23245E52C500763D25 /* SHAlphaBravoAlpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHAlphaBravoAlpha.h; sourceTree = "<group>"; };
+		274ADD24245E52C500763D25 /* SHAlphaDelta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHAlphaDelta.m; sourceTree = "<group>"; };
+		274ADD25245E52C500763D25 /* SHBravo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHBravo.h; sourceTree = "<group>"; };
+		274ADD26245E52C500763D25 /* SHAlphaAlphaAlphaBravo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHAlphaAlphaAlphaBravo.m; sourceTree = "<group>"; };
+		274ADD27245E52C500763D25 /* SHAlphaCharlieAlpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHAlphaCharlieAlpha.m; sourceTree = "<group>"; };
+		274ADD28245E52C500763D25 /* SHInheritanceFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHInheritanceFiles.h; sourceTree = "<group>"; };
+		274ADD29245E52C500763D25 /* SHAlphaAlphaAlpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHAlphaAlphaAlpha.h; sourceTree = "<group>"; };
+		274ADD2A245E52C500763D25 /* SHAlphaAlpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHAlphaAlpha.m; sourceTree = "<group>"; };
+		274ADD2B245E52C500763D25 /* SHAlphCharlieBravo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHAlphCharlieBravo.m; sourceTree = "<group>"; };
+		274ADD2C245E52C500763D25 /* SHAlphaBravoBravo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHAlphaBravoBravo.m; sourceTree = "<group>"; };
+		274ADD2D245E52C500763D25 /* ProbilityWeightTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProbilityWeightTest.m; sourceTree = "<group>"; };
+		274ADD2E245E52C500763D25 /* TestProbWeightsThreeItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestProbWeightsThreeItems.m; sourceTree = "<group>"; };
+		274ADD2F245E52C500763D25 /* ProbilityWeightTestFourItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProbilityWeightTestFourItems.m; sourceTree = "<group>"; };
+		274ADD42245E545600763D25 /* SHInheritanceTreeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHInheritanceTreeTest.m; sourceTree = "<group>"; };
 		27F3EC34245669BA0049F684 /* SHDatetime.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHDatetime.xcodeproj; path = ../SHDatetime/SHDatetime.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -259,9 +315,15 @@
 		273743A024565D6E00E36AB7 /* SHCommonTests */ = {
 			isa = PBXGroup;
 			children = (
+				274ADD42245E545600763D25 /* SHInheritanceTreeTest.m */,
+				274ADD0D245E52C500763D25 /* InheritanceTreeClasses */,
+				274ADD2D245E52C500763D25 /* ProbilityWeightTest.m */,
+				274ADD2F245E52C500763D25 /* ProbilityWeightTestFourItems.m */,
+				274ADD2E245E52C500763D25 /* TestProbWeightsThreeItems.m */,
 				273743A124565D6E00E36AB7 /* SHCommonTests.m */,
 				273743A324565D6E00E36AB7 /* Info.plist */,
 				270EEF87245DD1AD0078D2ED /* NSDateExtensionTests.m */,
+				274ADCF1245E482A00763D25 /* CommonUtilitiesTest.m */,
 			);
 			path = SHCommonTests;
 			sourceTree = "<group>";
@@ -399,6 +461,44 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		274ADD0D245E52C500763D25 /* InheritanceTreeClasses */ = {
+			isa = PBXGroup;
+			children = (
+				274ADD0E245E52C500763D25 /* SHAlphaAlphaAlphaAlpha.m */,
+				274ADD0F245E52C500763D25 /* SHAlpha.h */,
+				274ADD10245E52C500763D25 /* SHAlphaBravoCharlie.h */,
+				274ADD11245E52C500763D25 /* SHAlphaBravo.m */,
+				274ADD12245E52C500763D25 /* SHAlphaBravoBravoAlpha.h */,
+				274ADD13245E52C500763D25 /* SHAlphaBravoAlpha.m */,
+				274ADD14245E52C500763D25 /* SHAlphaCharlie.h */,
+				274ADD15245E52C500763D25 /* SHAlphaAlpha.h */,
+				274ADD16245E52C500763D25 /* SHAlphaAlphaAlpha.m */,
+				274ADD17245E52C500763D25 /* SHAlphaCharlieAlpha.h */,
+				274ADD18245E52C500763D25 /* SHAlphaAlphaAlphaBravo.h */,
+				274ADD19245E52C500763D25 /* SHAlphaDelta.h */,
+				274ADD1A245E52C500763D25 /* SHBravo.m */,
+				274ADD1B245E52C500763D25 /* SHAlphaBravoBravo.h */,
+				274ADD1C245E52C500763D25 /* SHAlphCharlieBravo.h */,
+				274ADD1D245E52C500763D25 /* SHAlphaBravoBravoAlpha.m */,
+				274ADD1E245E52C500763D25 /* SHAlphaBravo.h */,
+				274ADD1F245E52C500763D25 /* SHAlpha.m */,
+				274ADD20245E52C500763D25 /* SHAlphaBravoCharlie.m */,
+				274ADD21245E52C500763D25 /* SHAlphaAlphaAlphaAlpha.h */,
+				274ADD22245E52C500763D25 /* SHAlphaCharlie.m */,
+				274ADD23245E52C500763D25 /* SHAlphaBravoAlpha.h */,
+				274ADD24245E52C500763D25 /* SHAlphaDelta.m */,
+				274ADD25245E52C500763D25 /* SHBravo.h */,
+				274ADD26245E52C500763D25 /* SHAlphaAlphaAlphaBravo.m */,
+				274ADD27245E52C500763D25 /* SHAlphaCharlieAlpha.m */,
+				274ADD28245E52C500763D25 /* SHInheritanceFiles.h */,
+				274ADD29245E52C500763D25 /* SHAlphaAlphaAlpha.h */,
+				274ADD2A245E52C500763D25 /* SHAlphaAlpha.m */,
+				274ADD2B245E52C500763D25 /* SHAlphCharlieBravo.m */,
+				274ADD2C245E52C500763D25 /* SHAlphaBravoBravo.m */,
+			);
+			path = InheritanceTreeClasses;
 			sourceTree = "<group>";
 		};
 		27F3EC35245669BA0049F684 /* Products */ = {
@@ -667,8 +767,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				274ADD3C245E52C500763D25 /* SHAlphaAlpha.m in Sources */,
+				274ADD38245E52C500763D25 /* SHAlphaCharlie.m in Sources */,
+				274ADD40245E52C500763D25 /* TestProbWeightsThreeItems.m in Sources */,
+				274ADD3B245E52C500763D25 /* SHAlphaCharlieAlpha.m in Sources */,
+				274ADD3E245E52C500763D25 /* SHAlphaBravoBravo.m in Sources */,
+				274ADD35245E52C500763D25 /* SHAlphaBravoBravoAlpha.m in Sources */,
+				274ADCF2245E482A00763D25 /* CommonUtilitiesTest.m in Sources */,
+				274ADD39245E52C500763D25 /* SHAlphaDelta.m in Sources */,
+				274ADD34245E52C500763D25 /* SHBravo.m in Sources */,
 				270EEF88245DD1AD0078D2ED /* NSDateExtensionTests.m in Sources */,
+				274ADD3F245E52C500763D25 /* ProbilityWeightTest.m in Sources */,
+				274ADD33245E52C500763D25 /* SHAlphaAlphaAlpha.m in Sources */,
+				274ADD31245E52C500763D25 /* SHAlphaBravo.m in Sources */,
+				274ADD37245E52C500763D25 /* SHAlphaBravoCharlie.m in Sources */,
+				274ADD3D245E52C500763D25 /* SHAlphCharlieBravo.m in Sources */,
+				274ADD30245E52C500763D25 /* SHAlphaAlphaAlphaAlpha.m in Sources */,
+				274ADD41245E52C500763D25 /* ProbilityWeightTestFourItems.m in Sources */,
 				273743A224565D6E00E36AB7 /* SHCommonTests.m in Sources */,
+				274ADD32245E52C500763D25 /* SHAlphaBravoAlpha.m in Sources */,
+				274ADD43245E545600763D25 /* SHInheritanceTreeTest.m in Sources */,
+				274ADD3A245E52C500763D25 /* SHAlphaAlphaAlphaBravo.m in Sources */,
+				274ADD36245E52C500763D25 /* SHAlpha.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

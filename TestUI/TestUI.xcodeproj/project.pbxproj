@@ -11,22 +11,6 @@
 		2707AAAA2419C1B9006FF10F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2707AAA92419C1B9006FF10F /* XCTest.framework */; };
 		273009F522432054006E419C /* TestUI.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273009F422432054006E419C /* TestUI.xib */; };
 		2738CB292340139500A41CC3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2738CB282340139500A41CC3 /* Images.xcassets */; };
-		273B929C23F9C79700A3925D /* SHAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B929B23F9C79700A3925D /* SHAlpha.m */; };
-		273B929F23F9CD3800A3925D /* SHAlphaBravo.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B929E23F9CD3800A3925D /* SHAlphaBravo.m */; };
-		273B92A223F9CD6600A3925D /* SHAlphaCharlie.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92A123F9CD6600A3925D /* SHAlphaCharlie.m */; };
-		273B92A523F9CE0900A3925D /* SHBravo.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92A423F9CE0900A3925D /* SHBravo.m */; };
-		273B92A823F9CE2700A3925D /* SHAlphaDelta.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92A723F9CE2700A3925D /* SHAlphaDelta.m */; };
-		273B92AB23F9CEA900A3925D /* SHAlphaAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92AA23F9CEA900A3925D /* SHAlphaAlpha.m */; };
-		273B92AE23F9CEBF00A3925D /* SHAlphaBravoAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92AD23F9CEBF00A3925D /* SHAlphaBravoAlpha.m */; };
-		273B92B123F9CED200A3925D /* SHAlphaBravoBravo.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92B023F9CED200A3925D /* SHAlphaBravoBravo.m */; };
-		273B92B423F9CEE300A3925D /* SHAlphaBravoCharlie.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92B323F9CEE300A3925D /* SHAlphaBravoCharlie.m */; };
-		273B92B723F9CF2D00A3925D /* SHAlphaCharlieAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92B623F9CF2D00A3925D /* SHAlphaCharlieAlpha.m */; };
-		273B92BA23F9CF5100A3925D /* SHAlphCharlieBravo.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92B923F9CF5100A3925D /* SHAlphCharlieBravo.m */; };
-		273B92BD23F9CF8100A3925D /* SHAlphaBravoBravoAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92BC23F9CF8100A3925D /* SHAlphaBravoBravoAlpha.m */; };
-		273B92C023F9D0C700A3925D /* SHAlphaAlphaAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92BF23F9D0C700A3925D /* SHAlphaAlphaAlpha.m */; };
-		273B92C323F9D0DE00A3925D /* SHAlphaAlphaAlphaAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92C223F9D0DE00A3925D /* SHAlphaAlphaAlphaAlpha.m */; };
-		273B92C623F9D0F500A3925D /* SHAlphaAlphaAlphaBravo.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92C523F9D0F500A3925D /* SHAlphaAlphaAlphaBravo.m */; };
-		273B92CC23F9D6F300A3925D /* SHInheritanceTreeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B92CB23F9D6F300A3925D /* SHInheritanceTreeTest.m */; };
 		2747C536204A5DB000FB5669 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C535204A5DB000FB5669 /* AppDelegate.m */; };
 		2747C539204A5DB000FB5669 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C538204A5DB000FB5669 /* ViewController.m */; };
 		2747C544204A5DB000FB5669 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C543204A5DB000FB5669 /* main.m */; };
@@ -34,22 +18,13 @@
 		276E6DAA222A54E300CB36CB /* TestKeepObjectAlt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C582204A62EB00FB5669 /* TestKeepObjectAlt.m */; };
 		276E6DAB222A54E400CB36CB /* TestKeepSubject_A.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C58B204A62ED00FB5669 /* TestKeepSubject_A.m */; };
 		276E6DAC222A54E400CB36CB /* TestKeepSubject_B.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C578204A62EA00FB5669 /* TestKeepSubject_B.m */; };
-		276E6DAD222A54E400CB36CB /* ARCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C57B204A62EA00FB5669 /* ARCTest.m */; };
-		276E6DAE222A54E400CB36CB /* CommonUtilitiesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C593204A62EE00FB5669 /* CommonUtilitiesTest.m */; };
 		276E6DAF222A54E400CB36CB /* DailyHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C588204A62EC00FB5669 /* DailyHelperTest.m */; };
-		276E6DB0222A54E400CB36CB /* DateHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C590204A62ED00FB5669 /* DateHelperTest.m */; };
-		276E6DB1222A54E400CB36CB /* MathTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C584204A62EC00FB5669 /* MathTest.m */; };
 		276E6DB2222A54E400CB36CB /* ModelsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C580204A62EB00FB5669 /* ModelsTest.m */; };
 		276E6DB3222A54E400CB36CB /* MonsterHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C583204A62EB00FB5669 /* MonsterHelperTest.m */; };
 		276E6DB4222A54E400CB36CB /* NSDate+testReplace.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C581204A62EB00FB5669 /* NSDate+testReplace.m */; };
-		276E6DB5222A54E400CB36CB /* ProbilityWeightTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C595204A62EE00FB5669 /* ProbilityWeightTest.m */; };
-		276E6DB6222A54E400CB36CB /* ProbilityWeightTestFourItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C576204A62EA00FB5669 /* ProbilityWeightTestFourItems.m */; };
 		276E6DB8222A54E400CB36CB /* TestsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0D6E621D0820200886721 /* TestsTest.m */; };
 		276E6DB9222A54E400CB36CB /* TestLocale.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C579204A62EA00FB5669 /* TestLocale.m */; };
-		276E6DBA222A54E400CB36CB /* TestProbWeightsThreeItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C57F204A62EB00FB5669 /* TestProbWeightsThreeItems.m */; };
 		276E6DBB222A54E400CB36CB /* ZoneHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C587204A62EC00FB5669 /* ZoneHelperTest.m */; };
-		276E6DBC222A54E400CB36CB /* CoreDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DDF2321FE9EDA00F77AEF /* CoreDataTests.m */; };
-		276E6DBD222A54E400CB36CB /* CoreDataTests2.m in Sources */ = {isa = PBXBuildFile; fileRef = 273BF4D322093A5000B0D11E /* CoreDataTests2.m */; };
 		2792B567226C25B200A3A86C /* SHTestCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2792B566226C25B200A3A86C /* SHTestCommon.framework */; };
 		27AE22122419C4E0006DB5E2 /* SHSpecial_C in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AE220F2419C4CC006DB5E2 /* SHSpecial_C */; };
 		27B719412235F1B900540542 /* DumbDataSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B719402235F1B900540542 /* DumbDataSaver.m */; };
@@ -76,6 +51,20 @@
 			proxyType = 2;
 			remoteGlobalIDString = 27D84A002443DFBE0081DFE6;
 			remoteInfo = SHModelsTests;
+		};
+		274ADCEE245E47FD00763D25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27601C3223F742D6001A9475 /* SHDatetime.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 270EEF41245CCD8C0078D2ED;
+			remoteInfo = SHDatetimeTests;
+		};
+		274ADD0B245E527100763D25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27AE220A2419C4CC006DB5E2 /* SHSpecial_C.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 274ADCF8245E496C00763D25;
+			remoteInfo = SHSpecial_CTests;
 		};
 		27601C3023F742CC001A9475 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -203,39 +192,6 @@
 		2707AAA92419C1B9006FF10F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		273009F422432054006E419C /* TestUI.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestUI.xib; sourceTree = "<group>"; };
 		2738CB282340139500A41CC3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		273B929A23F9C79700A3925D /* SHAlpha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlpha.h; sourceTree = "<group>"; };
-		273B929B23F9C79700A3925D /* SHAlpha.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlpha.m; sourceTree = "<group>"; };
-		273B929D23F9CD3800A3925D /* SHAlphaBravo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlphaBravo.h; sourceTree = "<group>"; };
-		273B929E23F9CD3800A3925D /* SHAlphaBravo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlphaBravo.m; sourceTree = "<group>"; };
-		273B92A023F9CD6600A3925D /* SHAlphaCharlie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlphaCharlie.h; sourceTree = "<group>"; };
-		273B92A123F9CD6600A3925D /* SHAlphaCharlie.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlphaCharlie.m; sourceTree = "<group>"; };
-		273B92A323F9CE0900A3925D /* SHBravo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHBravo.h; sourceTree = "<group>"; };
-		273B92A423F9CE0900A3925D /* SHBravo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHBravo.m; sourceTree = "<group>"; };
-		273B92A623F9CE2700A3925D /* SHAlphaDelta.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlphaDelta.h; sourceTree = "<group>"; };
-		273B92A723F9CE2700A3925D /* SHAlphaDelta.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlphaDelta.m; sourceTree = "<group>"; };
-		273B92A923F9CEA900A3925D /* SHAlphaAlpha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlphaAlpha.h; sourceTree = "<group>"; };
-		273B92AA23F9CEA900A3925D /* SHAlphaAlpha.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlphaAlpha.m; sourceTree = "<group>"; };
-		273B92AC23F9CEBF00A3925D /* SHAlphaBravoAlpha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlphaBravoAlpha.h; sourceTree = "<group>"; };
-		273B92AD23F9CEBF00A3925D /* SHAlphaBravoAlpha.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlphaBravoAlpha.m; sourceTree = "<group>"; };
-		273B92AF23F9CED200A3925D /* SHAlphaBravoBravo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlphaBravoBravo.h; sourceTree = "<group>"; };
-		273B92B023F9CED200A3925D /* SHAlphaBravoBravo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlphaBravoBravo.m; sourceTree = "<group>"; };
-		273B92B223F9CEE300A3925D /* SHAlphaBravoCharlie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlphaBravoCharlie.h; sourceTree = "<group>"; };
-		273B92B323F9CEE300A3925D /* SHAlphaBravoCharlie.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlphaBravoCharlie.m; sourceTree = "<group>"; };
-		273B92B523F9CF2D00A3925D /* SHAlphaCharlieAlpha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlphaCharlieAlpha.h; sourceTree = "<group>"; };
-		273B92B623F9CF2D00A3925D /* SHAlphaCharlieAlpha.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlphaCharlieAlpha.m; sourceTree = "<group>"; };
-		273B92B823F9CF5100A3925D /* SHAlphCharlieBravo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlphCharlieBravo.h; sourceTree = "<group>"; };
-		273B92B923F9CF5100A3925D /* SHAlphCharlieBravo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlphCharlieBravo.m; sourceTree = "<group>"; };
-		273B92BB23F9CF8100A3925D /* SHAlphaBravoBravoAlpha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlphaBravoBravoAlpha.h; sourceTree = "<group>"; };
-		273B92BC23F9CF8100A3925D /* SHAlphaBravoBravoAlpha.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlphaBravoBravoAlpha.m; sourceTree = "<group>"; };
-		273B92BE23F9D0C700A3925D /* SHAlphaAlphaAlpha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlphaAlphaAlpha.h; sourceTree = "<group>"; };
-		273B92BF23F9D0C700A3925D /* SHAlphaAlphaAlpha.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlphaAlphaAlpha.m; sourceTree = "<group>"; };
-		273B92C123F9D0DE00A3925D /* SHAlphaAlphaAlphaAlpha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlphaAlphaAlphaAlpha.h; sourceTree = "<group>"; };
-		273B92C223F9D0DE00A3925D /* SHAlphaAlphaAlphaAlpha.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlphaAlphaAlphaAlpha.m; sourceTree = "<group>"; };
-		273B92C423F9D0F500A3925D /* SHAlphaAlphaAlphaBravo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlphaAlphaAlphaBravo.h; sourceTree = "<group>"; };
-		273B92C523F9D0F500A3925D /* SHAlphaAlphaAlphaBravo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlphaAlphaAlphaBravo.m; sourceTree = "<group>"; };
-		273B92C723F9D15900A3925D /* SHInheritanceFiles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHInheritanceFiles.h; sourceTree = "<group>"; };
-		273B92CB23F9D6F300A3925D /* SHInheritanceTreeTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHInheritanceTreeTest.m; sourceTree = "<group>"; };
-		273BF4D322093A5000B0D11E /* CoreDataTests2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataTests2.m; sourceTree = "<group>"; };
 		2747C531204A5DB000FB5669 /* TestUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2747C534204A5DB000FB5669 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2747C535204A5DB000FB5669 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -244,19 +200,14 @@
 		2747C542204A5DB000FB5669 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2747C543204A5DB000FB5669 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2747C575204A62EA00FB5669 /* TestKeepProtocol_A.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKeepProtocol_A.h; sourceTree = "<group>"; };
-		2747C576204A62EA00FB5669 /* ProbilityWeightTestFourItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProbilityWeightTestFourItems.m; sourceTree = "<group>"; };
 		2747C577204A62EA00FB5669 /* TestKeepObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKeepObject.h; sourceTree = "<group>"; };
 		2747C578204A62EA00FB5669 /* TestKeepSubject_B.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestKeepSubject_B.m; sourceTree = "<group>"; };
 		2747C579204A62EA00FB5669 /* TestLocale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLocale.m; sourceTree = "<group>"; };
-		2747C57B204A62EA00FB5669 /* ARCTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARCTest.m; sourceTree = "<group>"; };
 		2747C57E204A62EB00FB5669 /* TestKeepObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestKeepObject.m; sourceTree = "<group>"; };
-		2747C57F204A62EB00FB5669 /* TestProbWeightsThreeItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestProbWeightsThreeItems.m; sourceTree = "<group>"; };
 		2747C580204A62EB00FB5669 /* ModelsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelsTest.m; sourceTree = "<group>"; };
 		2747C581204A62EB00FB5669 /* NSDate+testReplace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+testReplace.m"; sourceTree = "<group>"; };
 		2747C582204A62EB00FB5669 /* TestKeepObjectAlt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestKeepObjectAlt.m; sourceTree = "<group>"; };
 		2747C583204A62EB00FB5669 /* MonsterHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterHelperTest.m; sourceTree = "<group>"; };
-		2747C584204A62EC00FB5669 /* MathTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathTest.m; sourceTree = "<group>"; };
-		2747C585204A62EC00FB5669 /* ARCTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCTest.h; sourceTree = "<group>"; };
 		2747C586204A62EC00FB5669 /* TestKeepSubject_A.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKeepSubject_A.h; sourceTree = "<group>"; };
 		2747C587204A62EC00FB5669 /* ZoneHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneHelperTest.m; sourceTree = "<group>"; };
 		2747C588204A62EC00FB5669 /* DailyHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyHelperTest.m; sourceTree = "<group>"; };
@@ -264,12 +215,8 @@
 		2747C58D204A62ED00FB5669 /* TestKeepObjectAlt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKeepObjectAlt.h; sourceTree = "<group>"; };
 		2747C58E204A62ED00FB5669 /* NSDate+testReplace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+testReplace.h"; sourceTree = "<group>"; };
 		2747C58F204A62ED00FB5669 /* TestKeepProtocol_C.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKeepProtocol_C.h; sourceTree = "<group>"; };
-		2747C590204A62ED00FB5669 /* DateHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateHelperTest.m; sourceTree = "<group>"; };
 		2747C591204A62EE00FB5669 /* TestKeepProtocol_B.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKeepProtocol_B.h; sourceTree = "<group>"; };
 		2747C592204A62EE00FB5669 /* TestKeepSubject_B.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestKeepSubject_B.h; sourceTree = "<group>"; };
-		2747C593204A62EE00FB5669 /* CommonUtilitiesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtilitiesTest.m; sourceTree = "<group>"; };
-		2747C595204A62EE00FB5669 /* ProbilityWeightTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProbilityWeightTest.m; sourceTree = "<group>"; };
-		275DDF2321FE9EDA00F77AEF /* CoreDataTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataTests.m; sourceTree = "<group>"; };
 		27601C2C23F742CC001A9475 /* SHUtils_C.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHUtils_C.xcodeproj; path = ../SHUtils_C/SHUtils_C.xcodeproj; sourceTree = "<group>"; };
 		27601C3223F742D6001A9475 /* SHDatetime.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHDatetime.xcodeproj; path = ../SHDatetime/SHDatetime.xcodeproj; sourceTree = "<group>"; };
 		27601C3823F742DE001A9475 /* SHCommon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHCommon.xcodeproj; path = ../SHCommon/SHCommon.xcodeproj; sourceTree = "<group>"; };
@@ -322,44 +269,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		273B929923F9C74900A3925D /* InheritanceTreeClasses */ = {
-			isa = PBXGroup;
-			children = (
-				273B929A23F9C79700A3925D /* SHAlpha.h */,
-				273B929B23F9C79700A3925D /* SHAlpha.m */,
-				273B929D23F9CD3800A3925D /* SHAlphaBravo.h */,
-				273B929E23F9CD3800A3925D /* SHAlphaBravo.m */,
-				273B92A023F9CD6600A3925D /* SHAlphaCharlie.h */,
-				273B92A123F9CD6600A3925D /* SHAlphaCharlie.m */,
-				273B92A323F9CE0900A3925D /* SHBravo.h */,
-				273B92A423F9CE0900A3925D /* SHBravo.m */,
-				273B92A623F9CE2700A3925D /* SHAlphaDelta.h */,
-				273B92A723F9CE2700A3925D /* SHAlphaDelta.m */,
-				273B92A923F9CEA900A3925D /* SHAlphaAlpha.h */,
-				273B92AA23F9CEA900A3925D /* SHAlphaAlpha.m */,
-				273B92AC23F9CEBF00A3925D /* SHAlphaBravoAlpha.h */,
-				273B92AD23F9CEBF00A3925D /* SHAlphaBravoAlpha.m */,
-				273B92AF23F9CED200A3925D /* SHAlphaBravoBravo.h */,
-				273B92B023F9CED200A3925D /* SHAlphaBravoBravo.m */,
-				273B92B223F9CEE300A3925D /* SHAlphaBravoCharlie.h */,
-				273B92B323F9CEE300A3925D /* SHAlphaBravoCharlie.m */,
-				273B92B523F9CF2D00A3925D /* SHAlphaCharlieAlpha.h */,
-				273B92B623F9CF2D00A3925D /* SHAlphaCharlieAlpha.m */,
-				273B92B823F9CF5100A3925D /* SHAlphCharlieBravo.h */,
-				273B92B923F9CF5100A3925D /* SHAlphCharlieBravo.m */,
-				273B92BB23F9CF8100A3925D /* SHAlphaBravoBravoAlpha.h */,
-				273B92BC23F9CF8100A3925D /* SHAlphaBravoBravoAlpha.m */,
-				273B92BE23F9D0C700A3925D /* SHAlphaAlphaAlpha.h */,
-				273B92BF23F9D0C700A3925D /* SHAlphaAlphaAlpha.m */,
-				273B92C123F9D0DE00A3925D /* SHAlphaAlphaAlphaAlpha.h */,
-				273B92C223F9D0DE00A3925D /* SHAlphaAlphaAlphaAlpha.m */,
-				273B92C423F9D0F500A3925D /* SHAlphaAlphaAlphaBravo.h */,
-				273B92C523F9D0F500A3925D /* SHAlphaAlphaAlphaBravo.m */,
-				273B92C723F9D15900A3925D /* SHInheritanceFiles.h */,
-			);
-			path = InheritanceTreeClasses;
-			sourceTree = "<group>";
-		};
 		2747C528204A5DB000FB5669 = {
 			isa = PBXGroup;
 			children = (
@@ -422,25 +331,13 @@
 		2747C56C204A62AE00FB5669 /* SHUnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				2747C585204A62EC00FB5669 /* ARCTest.h */,
-				2747C57B204A62EA00FB5669 /* ARCTest.m */,
-				2747C593204A62EE00FB5669 /* CommonUtilitiesTest.m */,
-				275DDF2321FE9EDA00F77AEF /* CoreDataTests.m */,
-				273BF4D322093A5000B0D11E /* CoreDataTests2.m */,
 				2747C588204A62EC00FB5669 /* DailyHelperTest.m */,
-				2747C590204A62ED00FB5669 /* DateHelperTest.m */,
 				2747C5B6204A646000FB5669 /* Helpers */,
-				273B929923F9C74900A3925D /* InheritanceTreeClasses */,
-				2747C584204A62EC00FB5669 /* MathTest.m */,
 				2747C580204A62EB00FB5669 /* ModelsTest.m */,
 				2747C583204A62EB00FB5669 /* MonsterHelperTest.m */,
-				2747C595204A62EE00FB5669 /* ProbilityWeightTest.m */,
-				2747C576204A62EA00FB5669 /* ProbilityWeightTestFourItems.m */,
 				2707AAA72419BAA8006FF10F /* SHDailyDueDateTests.m */,
-				273B92CB23F9D6F300A3925D /* SHInheritanceTreeTest.m */,
 				27B719442235F27700540542 /* TestDumbData.m */,
 				2747C579204A62EA00FB5669 /* TestLocale.m */,
-				2747C57F204A62EB00FB5669 /* TestProbWeightsThreeItems.m */,
 				27D0D6E621D0820200886721 /* TestsTest.m */,
 				2747C587204A62EC00FB5669 /* ZoneHelperTest.m */,
 			);
@@ -479,6 +376,7 @@
 			isa = PBXGroup;
 			children = (
 				27601C3723F742D6001A9475 /* SHDatetime */,
+				274ADCEF245E47FD00763D25 /* SHDatetimeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -513,6 +411,7 @@
 			isa = PBXGroup;
 			children = (
 				27AE220F2419C4CC006DB5E2 /* SHSpecial_C */,
+				274ADD0C245E527100763D25 /* SHSpecial_CTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -666,6 +565,20 @@
 			remoteRef = 270EEF21245A35190078D2ED /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		274ADCEF245E47FD00763D25 /* SHDatetimeTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SHDatetimeTests.xctest;
+			remoteRef = 274ADCEE245E47FD00763D25 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		274ADD0C245E527100763D25 /* SHSpecial_CTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SHSpecial_CTests.xctest;
+			remoteRef = 274ADD0B245E527100763D25 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		27601C3123F742CC001A9475 /* SHUtils_C */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -734,26 +647,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				273B92AB23F9CEA900A3925D /* SHAlphaAlpha.m in Sources */,
-				273B92BA23F9CF5100A3925D /* SHAlphCharlieBravo.m in Sources */,
-				273B92B723F9CF2D00A3925D /* SHAlphaCharlieAlpha.m in Sources */,
 				2747C539204A5DB000FB5669 /* ViewController.m in Sources */,
-				273B929F23F9CD3800A3925D /* SHAlphaBravo.m in Sources */,
-				273B92A823F9CE2700A3925D /* SHAlphaDelta.m in Sources */,
-				273B92C623F9D0F500A3925D /* SHAlphaAlphaAlphaBravo.m in Sources */,
 				2747C544204A5DB000FB5669 /* main.m in Sources */,
 				27C792442228A46600A92487 /* SHTestObserver.m in Sources */,
-				273B92C323F9D0DE00A3925D /* SHAlphaAlphaAlphaAlpha.m in Sources */,
-				273B92A223F9CD6600A3925D /* SHAlphaCharlie.m in Sources */,
-				273B929C23F9C79700A3925D /* SHAlpha.m in Sources */,
-				273B92A523F9CE0900A3925D /* SHBravo.m in Sources */,
-				273B92B423F9CEE300A3925D /* SHAlphaBravoCharlie.m in Sources */,
 				2747C536204A5DB000FB5669 /* AppDelegate.m in Sources */,
-				273B92B123F9CED200A3925D /* SHAlphaBravoBravo.m in Sources */,
 				27B719412235F1B900540542 /* DumbDataSaver.m in Sources */,
-				273B92C023F9D0C700A3925D /* SHAlphaAlphaAlpha.m in Sources */,
-				273B92BD23F9CF8100A3925D /* SHAlphaBravoBravoAlpha.m in Sources */,
-				273B92AE23F9CEBF00A3925D /* SHAlphaBravoAlpha.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -765,26 +663,16 @@
 				276E6DAA222A54E300CB36CB /* TestKeepObjectAlt.m in Sources */,
 				276E6DAB222A54E400CB36CB /* TestKeepSubject_A.m in Sources */,
 				276E6DAC222A54E400CB36CB /* TestKeepSubject_B.m in Sources */,
-				276E6DAD222A54E400CB36CB /* ARCTest.m in Sources */,
-				276E6DAE222A54E400CB36CB /* CommonUtilitiesTest.m in Sources */,
 				276E6DAF222A54E400CB36CB /* DailyHelperTest.m in Sources */,
-				276E6DB0222A54E400CB36CB /* DateHelperTest.m in Sources */,
-				276E6DB1222A54E400CB36CB /* MathTest.m in Sources */,
 				276E6DB2222A54E400CB36CB /* ModelsTest.m in Sources */,
 				276E6DB3222A54E400CB36CB /* MonsterHelperTest.m in Sources */,
 				276E6DB4222A54E400CB36CB /* NSDate+testReplace.m in Sources */,
-				276E6DB5222A54E400CB36CB /* ProbilityWeightTest.m in Sources */,
-				276E6DB6222A54E400CB36CB /* ProbilityWeightTestFourItems.m in Sources */,
 				2707AAA82419BAA8006FF10F /* SHDailyDueDateTests.m in Sources */,
 				276E6DB8222A54E400CB36CB /* TestsTest.m in Sources */,
 				276E6DB9222A54E400CB36CB /* TestLocale.m in Sources */,
-				276E6DBA222A54E400CB36CB /* TestProbWeightsThreeItems.m in Sources */,
 				27B719452235F27700540542 /* TestDumbData.m in Sources */,
 				276E6DBB222A54E400CB36CB /* ZoneHelperTest.m in Sources */,
-				276E6DBC222A54E400CB36CB /* CoreDataTests.m in Sources */,
-				276E6DBD222A54E400CB36CB /* CoreDataTests2.m in Sources */,
 				27C791F52226DD9000A92487 /* EmptyTest.m in Sources */,
-				273B92CC23F9D6F300A3925D /* SHInheritanceTreeTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

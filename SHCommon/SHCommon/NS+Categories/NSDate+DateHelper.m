@@ -48,7 +48,8 @@
 	NSDateComponents *components = [[NSDateComponents alloc] init];
 	components.hour = hour;
 	components.minute = minute;
-	NSDate *date = components.date;
+	NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+	NSDate *date = [calendar dateFromComponents:components];
 	NSString *dateString = [formatter stringFromDate: date];
 	
 	return dateString;
@@ -114,7 +115,7 @@ static struct SHDatetime* _nsDateToShDatetime(NSDate *date, int32_t tzOffset) {
 	struct SHDatetime *dt = calloc(ALLOC_COUNT, sizeof(struct SHDatetime));
 	
 	if(SH_timestampToDt(date.timeIntervalSince1970, tzOffset, dt) != SH_NO_ERROR) {
-		SH_freeSHDatetime(dt);
+		SH_freeSHDatetime(dt, ALLOC_COUNT);
 		@throw [NSException encounterError];
 	}
 

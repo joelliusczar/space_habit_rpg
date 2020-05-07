@@ -25,7 +25,7 @@
 	struct SHDatetime dt;
 	struct SHDatetime *dtp = [self.testDate SH_toSHDatetime];
 	dt = *dtp;
-	SH_freeSHDatetime(dtp);
+	SH_freeSHDatetime(dtp, 1);
 	return dt;
 }
 

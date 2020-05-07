@@ -1,0 +1,18 @@
+//
+//  SHSpecial_C.test.xcconfig
+//  SHSpecial_C
+//
+//  Created by Joel Pridgen on 5/2/20.
+//  Copyright © 2020 Joel Gillette. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+#include "SHSpecial_C.debug.xcconfig"
+
+
+CONFIGURATION_BUILD_DIR = $(SHSPECIAL_C_H_DIR)
+
+BUILT_PRODUCTS_DIR = $(SHSPECIAL_C_H_DIR)
+
+OTHER_CFLAGS = $(inherited) $(INTTYPES_MODMAP_FLAG) $(SHUTILS_C_MODMAP_FLAG) $(SHDATETIME_MODMAP_FLAG) $(SHSPECIAL_MODMAP_FLAG)

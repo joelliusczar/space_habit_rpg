@@ -9,7 +9,7 @@
 #import <XCTest/XCTest.h>
 @import SHCommon;
 
-@import SHTestCommon;
+//@import SHTestCommon;
 
 @interface TestProbWeightsThreeItems: XCTestCase
 
@@ -28,7 +28,6 @@ uint probWeight3_mockRandom(uint range){
 	
 -(void)setUp {
 	[super setUp];
-	ASSERT_IS_TEST();
 	rIdx_pw3 = 0;
 	shRandomUInt = &probWeight3_mockRandom;
 }

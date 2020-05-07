@@ -32,7 +32,7 @@ extern shDebugCallback shDbgCallback;
 #endif
 
 #ifndef SH_notifyOfError
-#define SH_notifyOfError(err,msg)
+#define SH_notifyOfError(err,msg) printf("Error: %s \nat %s: %d",msg,__FILE__,__LINE__)
 #endif
 
 #define SH_USE_ERR_BRANCHES 1

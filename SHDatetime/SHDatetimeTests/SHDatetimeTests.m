@@ -581,62 +581,72 @@
 	double expectedTimestamp = -1;
 	SH_dtToTimestamp(&expectedDate, &expectedTimestamp);
 	
-	SHErrorCode status = SH_weekStart(&testDate, 0, &resultDate);
+	resultDate = testDate;
+	SHErrorCode status = SH_weekStart(&resultDate, 0);
 	XCTAssertEqual(status, SH_NO_ERROR);
 	SH_dtToTimestamp(&resultDate, &timestamp);
 	XCTAssertEqual(timestamp, expectedTimestamp);
 	testDate = (struct SHDatetime){.year = 1988, .month = 4, .day = 24,
 		.hour = 15, .minute = 32, .second = 17, .timezoneOffset = testOffset};
-	SH_weekStart(&testDate, 0, &resultDate);
+	resultDate = testDate;
+	SH_weekStart(&resultDate, 0);
 	SH_dtToTimestamp(&resultDate, &timestamp);
 	XCTAssertEqual(timestamp, expectedTimestamp);
 	
 	testDate = (struct SHDatetime){.year = 1988, .month = 4, .day = 24,
 		.hour = 0, .minute = 0, .second = 0, .timezoneOffset = testOffset};
-	SH_weekStart(&testDate, 0, &resultDate);
+	resultDate = testDate;
+	SH_weekStart(&resultDate, 0);
 	SH_dtToTimestamp(&resultDate, &timestamp);
 	XCTAssertEqual(timestamp, expectedTimestamp);
 	
 	testDate = (struct SHDatetime){.year = 1988, .month = 4, .day = 25,
 		.hour = 15, .minute = 32, .second = 17, .timezoneOffset = testOffset};
-	SH_weekStart(&testDate, 0, &resultDate);
+	resultDate = testDate;
+	SH_weekStart(&resultDate, 0);
 	SH_dtToTimestamp(&resultDate, &timestamp);
 	XCTAssertEqual(timestamp, expectedTimestamp);
 	
 	testDate = (struct SHDatetime){.year = 1988, .month = 4, .day = 26,
 		.hour = 15, .minute = 32, .second = 17, .timezoneOffset = testOffset};
-	SH_weekStart(&testDate, 0, &resultDate);
+	resultDate = testDate;
+	SH_weekStart(&resultDate, 0);
 	SH_dtToTimestamp(&resultDate, &timestamp);
 	XCTAssertEqual(timestamp, expectedTimestamp);
 	
 	testDate = (struct SHDatetime){.year = 1988, .month = 4, .day = 28,
 		.hour = 15, .minute = 32, .second = 17, .timezoneOffset = testOffset};
-	SH_weekStart(&testDate, 0, &resultDate);
+	resultDate = testDate;
+	SH_weekStart(&resultDate, 0);
 	SH_dtToTimestamp(&resultDate, &timestamp);
 	XCTAssertEqual(timestamp, expectedTimestamp);
 	
 		
 	testDate = (struct SHDatetime){.year = 1988, .month = 4, .day = 29,
 		.hour = 15, .minute = 32, .second = 17, .timezoneOffset = testOffset};
-	SH_weekStart(&testDate, 0, &resultDate);
+	resultDate = testDate;
+	SH_weekStart(&resultDate, 0);
 	SH_dtToTimestamp(&resultDate, &timestamp);
 	XCTAssertEqual(timestamp, expectedTimestamp);
 	
 	testDate = (struct SHDatetime){.year = 1988, .month = 4, .day = 29,
 		.hour = 23, .minute = 59, .second = 59, .timezoneOffset = testOffset};
-	SH_weekStart(&testDate, 0, &resultDate);
+	resultDate = testDate;
+	SH_weekStart(&resultDate, 0);
 	SH_dtToTimestamp(&resultDate, &timestamp);
 	XCTAssertEqual(timestamp, expectedTimestamp);
 
 	testDate = (struct SHDatetime){.year = 1988, .month = 4, .day = 30,
 		.hour = 15, .minute = 32, .second = 17, .timezoneOffset = testOffset};
-	SH_weekStart(&testDate, 0, &resultDate);
+	resultDate = testDate;
+	SH_weekStart(&resultDate, 0);
 	SH_dtToTimestamp(&resultDate, &timestamp);
 	XCTAssertEqual(timestamp, expectedTimestamp);
 	
 	testDate = (struct SHDatetime){.year = 1988, .month = 5, .day = 1,
 		.hour = 15, .minute = 32, .second = 17, .timezoneOffset = testOffset};
-	SH_weekStart(&testDate, 0, &resultDate);
+	resultDate = testDate;
+	SH_weekStart(&resultDate, 0);
 	SH_dtToTimestamp(&resultDate, &timestamp);
 	expectedDate = (struct SHDatetime){.year = 1988, .month = 5, .day = 1,
 		.hour = 0, .minute = 0, .second = 0, .timezoneOffset = testOffset};
@@ -645,7 +655,8 @@
 	
 	testDate = (struct SHDatetime){.year = 1988, .month = 5, .day = 1,
 		.hour = 0, .minute = 0, .second = 0, .timezoneOffset = testOffset};
-	SH_weekStart(&testDate, 0, &resultDate);
+	resultDate = testDate;
+	SH_weekStart(&resultDate, 0);
 	SH_dtToTimestamp(&resultDate, &timestamp);
 	XCTAssertEqual(timestamp, expectedTimestamp);
 }
@@ -664,62 +675,71 @@
 	double expectedTimestamp = -1;
 	SH_dtToTimestamp(&expectedDate, &expectedTimestamp);
 	
-	SH_nextWeekStart(&testDate, 0, &resultDate);
+	resultDate = testDate;
+	SH_nextWeekStart(&resultDate, 0);
 	SH_dtToTimestamp(&resultDate, &timestamp);
 	XCTAssertEqual(timestamp, expectedTimestamp);
 	
 	testDate = (struct SHDatetime){.year = 1988, .month = 4, .day = 24,
 		.hour = 15, .minute = 32, .second = 17, .timezoneOffset = testOffset};
-	SH_nextWeekStart(&testDate, 0, &resultDate);
+	resultDate = testDate;
+	SH_nextWeekStart(&resultDate, 0);
 	SH_dtToTimestamp(&resultDate, &timestamp);
 	XCTAssertEqual(timestamp, expectedTimestamp);
 	
 	
 	testDate = (struct SHDatetime){.year = 1988, .month = 4, .day = 24,
 		.hour = 0, .minute = 0, .second = 0, .timezoneOffset = testOffset};
-	SH_nextWeekStart(&testDate, 0, &resultDate);
+	resultDate = testDate;
+	SH_nextWeekStart(&resultDate, 0);
 	SH_dtToTimestamp(&resultDate, &timestamp);
 	XCTAssertEqual(timestamp, expectedTimestamp);
 	
 	
 	testDate = (struct SHDatetime){.year = 1988, .month = 4, .day = 25,
 		.hour = 15, .minute = 32, .second = 17, .timezoneOffset = testOffset};
-	SH_nextWeekStart(&testDate, 0, &resultDate);
+	resultDate = testDate;
+	SH_nextWeekStart(&resultDate, 0);
 	SH_dtToTimestamp(&resultDate, &timestamp);
 	XCTAssertEqual(timestamp, expectedTimestamp);
 	
 	
 	testDate = (struct SHDatetime){.year = 1988, .month = 4, .day = 26,
 		.hour = 15, .minute = 32, .second = 17, .timezoneOffset = testOffset};
-	SH_nextWeekStart(&testDate, 0, &resultDate);
+	resultDate = testDate;
+	SH_nextWeekStart(&resultDate, 0);
 	SH_dtToTimestamp(&resultDate, &timestamp);
 	XCTAssertEqual(timestamp, expectedTimestamp);
 	
 	
 	testDate = (struct SHDatetime){.year = 1988, .month = 4, .day = 28,
 		.hour = 15, .minute = 32, .second = 17, .timezoneOffset = testOffset};
-	SH_nextWeekStart(&testDate, 0, &resultDate);
+	resultDate = testDate;
+	SH_nextWeekStart(&resultDate, 0);
 	SH_dtToTimestamp(&resultDate, &timestamp);
 	XCTAssertEqual(timestamp, expectedTimestamp);
 	
 	
 	testDate = (struct SHDatetime){.year = 1988, .month = 4, .day = 29,
 		.hour = 15, .minute = 32, .second = 17, .timezoneOffset = testOffset};
-	SH_nextWeekStart(&testDate, 0, &resultDate);
+	resultDate = testDate;
+	SH_nextWeekStart(&resultDate, 0);
 	SH_dtToTimestamp(&resultDate, &timestamp);
 	XCTAssertEqual(timestamp, expectedTimestamp);
 	
 	
 	testDate = (struct SHDatetime){.year = 1988, .month = 4, .day = 29,
 		.hour = 23, .minute = 59, .second = 59, .timezoneOffset = testOffset};
-	SH_nextWeekStart(&testDate, 0, &resultDate);
+	resultDate = testDate;
+	SH_nextWeekStart(&resultDate, 0);
 	SH_dtToTimestamp(&resultDate, &timestamp);
 	XCTAssertEqual(timestamp, expectedTimestamp);
 	
 	
 	testDate = (struct SHDatetime){.year = 1988, .month = 4, .day = 30,
 		.hour = 15, .minute = 32, .second = 17, .timezoneOffset = testOffset};
-	SH_nextWeekStart(&testDate, 0, &resultDate);
+	resultDate = testDate;
+	SH_nextWeekStart(&resultDate, 0);
 	SH_dtToTimestamp(&resultDate, &timestamp);
 	XCTAssertEqual(timestamp, expectedTimestamp);
 	
@@ -730,14 +750,16 @@
 		
 	testDate = (struct SHDatetime){.year = 1988, .month = 5, .day = 1,
 		.hour = 15, .minute = 32, .second = 17, .timezoneOffset = testOffset};
-	SH_nextWeekStart(&testDate, 0, &resultDate);
+	resultDate = testDate;
+	SH_nextWeekStart(&resultDate, 0);
 	SH_dtToTimestamp(&resultDate, &timestamp);
 	XCTAssertEqual(timestamp, expectedTimestamp);
 	
 	
 	testDate = (struct SHDatetime){.year = 1988, .month = 5, .day = 1,
 		.hour = 0, .minute = 0, .second = 0, .timezoneOffset = testOffset};
-	SH_nextWeekStart(&testDate, 0, &resultDate);
+	resultDate = testDate;
+	SH_nextWeekStart(&resultDate, 0);
 	SH_dtToTimestamp(&resultDate, &timestamp);
 	XCTAssertEqual(timestamp, expectedTimestamp);
 	
@@ -809,7 +831,8 @@
 		.hour = 23, .minute = 59, .second = 59, .timezoneOffset = testOffset};
 	int64_t result = -1;
 	
-	SH_dateDiffFullWeeks(&testDate1, &testDate2, 0, &result);
+	SHErrorCode status = SH_dateDiffFullWeeks(&testDate1, &testDate2, 0, &result);
+	XCTAssertEqual(status, SH_NO_ERROR);
 	XCTAssertEqual(result, 0);
 
 	
@@ -895,6 +918,144 @@
 		.hour = 23, .minute = 59, .second = 59, .timezoneOffset = testOffset};
 	SH_dateDiffFullWeeks(&testDate1, &testDate2, 0, &result);
 	XCTAssertEqual(result, 5);
+}
+
+
+-(void)testGetDayOfWeekOffsetted {
+	struct SHDatetime sun = {.year = 2018, .month = 1, .day = 7};
+	struct SHDatetime mon = {.year = 2018, .month = 1, .day = 8};
+	struct SHDatetime tue = {.year = 2018, .month = 1, .day = 9};
+	struct SHDatetime wed = {.year = 2018, .month = 1, .day = 10};
+	struct SHDatetime thurs = {.year = 2018, .month = 1, .day = 11};
+	struct SHDatetime fri = {.year = 2018, .month = 1, .day = 12};
+	struct SHDatetime sat = {.year = 2018, .month = 1, .day = 13};
+	int32_t offset = 0;
+	int32_t result = SH_weekdayIdx(&sun, offset);
+	XCTAssertEqual(result, 0);
+	result = SH_weekdayIdx(&mon, offset);
+	XCTAssertEqual(result, 1);
+	result = SH_weekdayIdx(&tue, offset);
+	XCTAssertEqual(result, 2);
+	result = SH_weekdayIdx(&wed, offset);
+	XCTAssertEqual(result, 3);
+	result = SH_weekdayIdx(&thurs, offset);
+	XCTAssertEqual(result, 4);
+	result = SH_weekdayIdx(&fri, offset);
+	XCTAssertEqual(result, 5);
+	result = SH_weekdayIdx(&sat, offset);
+	XCTAssertEqual(result, 6);
+
+	offset = 1;
+	result = SH_weekdayIdx(&sun, offset);
+	XCTAssertEqual(result, 6);
+	result = SH_weekdayIdx(&mon, offset);
+	XCTAssertEqual(result, 0);
+	result = SH_weekdayIdx(&tue, offset);
+	XCTAssertEqual(result, 1);
+	result = SH_weekdayIdx(&wed, offset);
+	XCTAssertEqual(result, 2);
+	result = SH_weekdayIdx(&thurs, offset);
+	XCTAssertEqual(result, 3);
+	result = SH_weekdayIdx(&fri, offset);
+	XCTAssertEqual(result, 4);
+	result = SH_weekdayIdx(&sat, offset);
+	XCTAssertEqual(result, 5);
+	
+	offset = 2;
+	result = SH_weekdayIdx(&sun, offset);
+	XCTAssertEqual(result, 5);
+	result = SH_weekdayIdx(&mon, offset);
+	XCTAssertEqual(result, 6);
+	result = SH_weekdayIdx(&tue, offset);
+	XCTAssertEqual(result, 0);
+	result = SH_weekdayIdx(&wed, offset);
+	XCTAssertEqual(result, 1);
+	result = SH_weekdayIdx(&thurs, offset);
+	XCTAssertEqual(result, 2);
+	result = SH_weekdayIdx(&fri, offset);
+	XCTAssertEqual(result, 3);
+	result = SH_weekdayIdx(&sat, offset);
+	XCTAssertEqual(result, 4);
+	
+	offset = 3;
+	result = SH_weekdayIdx(&sun, offset);
+	XCTAssertEqual(result, 4);
+	result = SH_weekdayIdx(&mon, offset);
+	XCTAssertEqual(result, 5);
+	result = SH_weekdayIdx(&tue, offset);
+	XCTAssertEqual(result, 6);
+	result = SH_weekdayIdx(&wed, offset);
+	XCTAssertEqual(result, 0);
+	result = SH_weekdayIdx(&thurs, offset);
+	XCTAssertEqual(result, 1);
+	result = SH_weekdayIdx(&fri, offset);
+	XCTAssertEqual(result, 2);
+	result = SH_weekdayIdx(&sat, offset);
+	XCTAssertEqual(result, 3);
+	
+	offset = 4;
+	result = SH_weekdayIdx(&sun, offset);
+	XCTAssertEqual(result, 3);
+	result = SH_weekdayIdx(&mon, offset);
+	XCTAssertEqual(result, 4);
+	result = SH_weekdayIdx(&tue, offset);
+	XCTAssertEqual(result, 5);
+	result = SH_weekdayIdx(&wed, offset);
+	XCTAssertEqual(result, 6);
+	result = SH_weekdayIdx(&thurs, offset);
+	XCTAssertEqual(result, 0);
+	result = SH_weekdayIdx(&fri, offset);
+	XCTAssertEqual(result, 1);
+	result = SH_weekdayIdx(&sat, offset);
+	XCTAssertEqual(result, 2);
+	
+	offset = 5;
+	result = SH_weekdayIdx(&sun, offset);
+	XCTAssertEqual(result, 2);
+	result = SH_weekdayIdx(&mon, offset);
+	XCTAssertEqual(result, 3);
+	result = SH_weekdayIdx(&tue, offset);
+	XCTAssertEqual(result, 4);
+	result = SH_weekdayIdx(&wed, offset);
+	XCTAssertEqual(result, 5);
+	result = SH_weekdayIdx(&thurs, offset);
+	XCTAssertEqual(result, 6);
+	result = SH_weekdayIdx(&fri, offset);
+	XCTAssertEqual(result, 0);
+	result = SH_weekdayIdx(&sat, offset);
+	XCTAssertEqual(result, 1);
+	
+	offset = 6;
+	result = SH_weekdayIdx(&sun, offset);
+	XCTAssertEqual(result, 1);
+	result = SH_weekdayIdx(&mon, offset);
+	XCTAssertEqual(result, 2);
+	result = SH_weekdayIdx(&tue, offset);
+	XCTAssertEqual(result, 3);
+	result = SH_weekdayIdx(&wed, offset);
+	XCTAssertEqual(result, 4);
+	result = SH_weekdayIdx(&thurs, offset);
+	XCTAssertEqual(result, 5);
+	result = SH_weekdayIdx(&fri, offset);
+	XCTAssertEqual(result, 6);
+	result = SH_weekdayIdx(&sat, offset);
+	XCTAssertEqual(result, 0);
+	
+	offset = 7;
+	result = SH_weekdayIdx(&sun, offset);
+	XCTAssertEqual(result, 0);
+	result = SH_weekdayIdx(&mon, offset);
+	XCTAssertEqual(result, 1);
+	result = SH_weekdayIdx(&tue, offset);
+	XCTAssertEqual(result, 2);
+	result = SH_weekdayIdx(&wed, offset);
+	XCTAssertEqual(result, 3);
+	result = SH_weekdayIdx(&thurs, offset);
+	XCTAssertEqual(result, 4);
+	result = SH_weekdayIdx(&fri, offset);
+	XCTAssertEqual(result, 5);
+	result = SH_weekdayIdx(&sat, offset);
+	XCTAssertEqual(result, 6);
 }
 
 @end

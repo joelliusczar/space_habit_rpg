@@ -9,7 +9,6 @@
 #import <XCTest/XCTest.h>
 @import SHCommon;
 
-@import SHTestCommon;
 
 @interface ProbilityWeightTestFourItems : XCTestCase
 
@@ -28,7 +27,6 @@ uint probWeight4_mockRandom(uint range){
 
 -(void)setUp {
 	[super setUp];
-	ASSERT_IS_TEST();
 	rIdx_pw4 = 0;
 	shRandomUInt = &probWeight4_mockRandom;
 }

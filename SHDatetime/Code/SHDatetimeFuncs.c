@@ -720,20 +720,26 @@ SHErrorCode SH_dateDiffFullWeeks(struct SHDatetime * const fromDt, struct SHDate
 	SHErrorCode status = SH_NO_ERROR;
 	struct SHDatetime firstFullWeek;
 	*ans = SH_NOT_FOUND;
-	if((status = SH_weekStart(fromDt, dayOffset, &firstFullWeek)) != SH_NO_ERROR) {
+	bool areSameWeek = false;
+	;
+	if((status = SH_areSameWeek(fromDt, toDt, dayOffset, &areSameWeek)) != SH_NO_ERROR) {
 		goto fnExit;
 	}
-	struct SHDatetime lastFullWeek;
-	if((status = SH_weekStart(toDt, dayOffset, &lastFullWeek)) != SH_NO_ERROR) {
+	if(areSameWeek) {
+		*ans = 0;
 		goto fnExit;
 	}
-	int64_t daysBetween = SH_NOT_FOUND;
-	SH_dateDiffDays(&firstFullWeek, &lastFullWeek, &daysBetween);
-	if(daysBetween < 0) {
-		status = SH_INPUT_BAD_RESULTS;
+	firstFullWeek = *fromDt;
+	if((status = SH_nextWeekStart(&firstFullWeek, dayOffset)) != SH_NO_ERROR) {
 		goto fnExit;
 	}
-	*ans = daysBetween / SH_DAYS_IN_WEEK;
+	struct SHDatetime lastFullWeek = *toDt;
+	if((status = SH_weekStart(&lastFullWeek, dayOffset)) != SH_NO_ERROR) {
+		goto fnExit;
+	}
+	double diff = SH_NOT_FOUND;
+	SH_dateDiffSeconds(&firstFullWeek, &lastFullWeek, &diff);
+	*ans = llabs(((int64_t)diff) / (SH_DAYS_IN_WEEK * SH_DAY_IN_SECONDS));
 	fnExit:
 		return status;
 }
@@ -761,37 +767,35 @@ static SHErrorCode _calcFractFromParts(double miliseconds,double* ans){
 }
 
 
-SHErrorCode SH_weekStart(struct SHDatetime * const dt, int32_t dayOffset, struct SHDatetime *ans) {
+SHErrorCode SH_weekStart(struct SHDatetime *dt, int32_t dayOffset) {
 	int32_t weekdayIdx = SH_NOT_FOUND;
 	SHErrorCode status = SH_NO_ERROR;
 	if((weekdayIdx = SH_weekdayIdx(dt, dayOffset)) == SH_NOT_FOUND) {
 		status = SH_INPUT_BAD_RESULTS;
 		goto cleanup;
 	}
-	*ans = *dt;
-	if((status = SH_addDaysToDt(ans, - weekdayIdx, SH_TIME_ADJUST_NO_OPTION)) != SH_NO_ERROR) {
+	if((status = SH_addDaysToDt(dt, - weekdayIdx, SH_TIME_ADJUST_NO_OPTION)) != SH_NO_ERROR) {
 		SH_notifyOfError(SH_INPUT_BAD_RESULTS,"Could not calc week start");
 		goto cleanup;
 	}
-	SH_setToDayStart(ans);
+	SH_setToDayStart(dt);
 	cleanup:
 		return status;
 }
 
 
-SHErrorCode SH_nextWeekStart(struct SHDatetime * const dt, int32_t dayOffset, struct SHDatetime *ans) {
+SHErrorCode SH_nextWeekStart(struct SHDatetime *dt, int32_t dayOffset) {
 	int32_t weekdayIdx = SH_NOT_FOUND;
 	SHErrorCode status = SH_NO_ERROR;
 	if((weekdayIdx = SH_weekdayIdx(dt, dayOffset)) == SH_NOT_FOUND) {
 		status = SH_INPUT_BAD_RESULTS;
 		goto cleanup;
 	}
-	*ans = *dt;
-	if((status = SH_addDaysToDt(ans, SH_DAYS_IN_WEEK - weekdayIdx, SH_TIME_ADJUST_NO_OPTION)) != SH_NO_ERROR) {
+	if((status = SH_addDaysToDt(dt, SH_DAYS_IN_WEEK - weekdayIdx, SH_TIME_ADJUST_NO_OPTION)) != SH_NO_ERROR) {
 		SH_notifyOfError(SH_INPUT_BAD_RESULTS,"Could not calc next week start");
 		goto cleanup;
 	}
-	SH_setToDayStart(ans);
+	SH_setToDayStart(dt);
 	cleanup:
 		return status;
 }
@@ -801,12 +805,12 @@ SHErrorCode SH_areSameWeek(struct SHDatetime * const A, struct SHDatetime * cons
 	int32_t dayOffset, bool *ans)
 {
 	SHErrorCode status = SH_NO_ERROR;
-	struct SHDatetime weekStart;
-	struct SHDatetime nextWeekStart;
-	if((status = SH_weekStart(A, dayOffset, &weekStart)) != SH_NO_ERROR) {
+	struct SHDatetime weekStart = *A;
+	struct SHDatetime nextWeekStart = *A;
+	if((status = SH_weekStart(&weekStart, dayOffset)) != SH_NO_ERROR) {
 		goto cleanup;
 	}
-	if((status = SH_nextWeekStart(A, dayOffset, &nextWeekStart)) != SH_NO_ERROR) {
+	if((status = SH_nextWeekStart(&nextWeekStart, dayOffset)) != SH_NO_ERROR) {
 		goto cleanup;
 	}
 	double weekstartTimestamp = 0;
@@ -833,10 +837,9 @@ void SH_freeSHTimeshift(struct SHTimeshift *tsObj){
 }
 
 
-void SH_freeSHDatetime(struct SHDatetime *dtObj){
+void SH_freeSHDatetime(struct SHDatetime *dtObj, int32_t len){
 	if(!dtObj) return;
-	int32_t timeshiftLen = dtObj->shiftLen;
-	for(int32_t i = 0; i < timeshiftLen; i++){
+	for(int32_t i = 0; i < len; i++){
 		SH_freeSHTimeshift(dtObj[i].shifts);
 	}
 	free(dtObj);

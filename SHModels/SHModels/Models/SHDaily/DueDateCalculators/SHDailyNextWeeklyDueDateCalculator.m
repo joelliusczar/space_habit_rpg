@@ -35,12 +35,10 @@
 	due date context.
 */
 static void _setupDueDateContext(SHDailyNextWeeklyDueDateCalculator *inst, struct SHDueDateWeeklyContext *context) {
-	struct SHDatetime correctedUseDate;
 	context->intervalSize = inst.activeDays.intervalSize;
 	context->dayStartHour = inst.dayStartTime;
 	context->weekStartOffset = SHConfig.weeklyStartDay;
-	SH_findBackupDateForUseDate(&inst->_useDate, context, &correctedUseDate);
-	inst.useDate = correctedUseDate;
+	SH_setUseDateToLastActive(&inst->_useDate, context);
 	context->prevUseDate = &inst->_useDate;
 	context->intervalPoints = malloc(sizeof(struct SHWeekIntervalPointList));
 	*context->intervalPoints = [inst.activeDays copyWeek];
@@ -48,7 +46,7 @@ static void _setupDueDateContext(SHDailyNextWeeklyDueDateCalculator *inst, struc
 
 
 -(struct SHDatetime *)nextDueDate {
-	struct SHDatetime *nextDueDate = malloc(sizeof(struct SHDatetime));
+	struct SHDatetime *nextDueDate = malloc(sizeof(struct SHDatetime)); //returning pointer so need to be on heap
 	struct SHDatetime today = self.dateProvider.dateSHDt;
 	struct SHDueDateWeeklyContext dueDateContext;
 	_setupDueDateContext(self, &dueDateContext);

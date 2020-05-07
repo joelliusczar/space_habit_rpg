@@ -1,20 +1,19 @@
 //
 //  CommonUtilitiesTest.m
-//  HabitRPG2
+//  SHCommonTests
 //
-//  Created by Joel Pridgen on 4/15/17.
-//  Copyright © 2017 Joel Pridgen. All rights reserved.
+//  Created by Joel Pridgen on 5/2/20.
+//  Copyright © 2020 Joel Gillette. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 @import SHCommon;
-@import SHModels;
-
 
 @interface CommonUtilitiesTest : XCTestCase
 
 @end
 
+@implementation CommonUtilitiesTest
 
 static BOOL shouldUseLowerBound =YES;
 static uint (*ogRandFn)(uint);
@@ -24,7 +23,18 @@ uint mockRandom(uint bound){
 }
 
 
-@implementation CommonUtilitiesTest
+
+
+- (void)setUp {
+	ogRandFn = shRandomUInt;
+	shRandomUInt = &mockRandom;
+}
+
+
+- (void)tearDown {
+    // Put teardown code here. This method is called after the invocation of each test method in the class.
+}
+
 
 NSDate* getReferenceDate(){
 	NSCalendar *cal = NSCalendar.currentCalendar;
@@ -39,17 +49,12 @@ NSDate* getReferenceDate(){
 	return [cal dateFromComponents:dateComponents];
 }
 
-	
-- (void)setUp {
-	[super setUp];
-	ogRandFn = shRandomUInt;
-	shRandomUInt = &mockRandom;
-}
 
 -(void)testGetReferenceDate{
 	NSDate *d = getReferenceDate();
 	XCTAssertTrue([[d description] isEqualToString:@"2016-01-01 05:00:00 +0000"]);
 }
+
 
 -(void)testCalculateLvl{
 	uint offset = 10;
@@ -127,6 +132,7 @@ NSDate* getReferenceDate(){
 	
 }
 
+
 -(void)testJsonStuff{
 	NSMutableDictionary *testDict = [NSMutableDictionary dictionary];
 	testDict[@"SAT"] = @1;
@@ -146,21 +152,11 @@ NSDate* getReferenceDate(){
 	
 }
 
+
 -(void)testRandomUintF{
   uint bound = 25;
   uint result = ogRandFn(bound);
   XCTAssertTrue(result >= 0 && result <= 25);
-}
-
-
-- (void)tearDown {
-	// Put teardown code here. This method is called after the invocation of each test method in the class.
-	[super tearDown];
-}
-
-- (void)testExample {
-	// This is an example of a functional test case.
-	// Use XCTAssert and related functions to verify your tests produce the correct results.
 }
 
 

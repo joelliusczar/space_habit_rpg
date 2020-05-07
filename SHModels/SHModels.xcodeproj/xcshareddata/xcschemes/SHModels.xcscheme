@@ -20,6 +20,20 @@
                ReferencedContainer = "container:SHModels.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "27D849FF2443DFBE0081DFE6"
+               BuildableName = "SHModelsTests.xctest"
+               BlueprintName = "SHModelsTests"
+               ReferencedContainer = "container:SHModels.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -29,6 +43,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       disableMainThreadChecker = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "27D849FF2443DFBE0081DFE6"
+               BuildableName = "SHModelsTests.xctest"
+               BlueprintName = "SHModelsTests"
+               ReferencedContainer = "container:SHModels.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

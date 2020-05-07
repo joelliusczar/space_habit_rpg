@@ -146,6 +146,7 @@ void cMakeHouses(void);
 +(void)classCompare;
 +(void)typeDefExps;
 +(void)testReturnArray;
++(void)ptr2ptr;
 @end
 
 #import "Experiments+Charlie.h"

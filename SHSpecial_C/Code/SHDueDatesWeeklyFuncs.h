@@ -36,16 +36,10 @@ SHErrorCode SH_nextDueDate_WEEKLY(struct SHDatetime *useDate, struct SHDueDateWe
 SHErrorCode SH_isDateADueDate_WEEKLY(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *input,
 	bool *ans);
 
-int32_t SH_calcDaysAgoDayWasActive(int32_t weekdayIdx, int32_t intervalSize);
-
-SHErrorCode SH_backupDateForReferenceDate(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *input,
-	struct SHDatetime *ans);
-
 SHErrorCode SH_isWeekActiveForDate(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *input,
 	bool *ans);
 
-SHErrorCode SH_findBackupDateForUseDate(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *context,
-	struct SHDatetime *ans);
+SHErrorCode SH_setUseDateToLastActive(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *context);
 /*
  activeDays: an array of exactly 7 elements.
  intervalSize: this is the frequency, ex: event happens every 3 weeks

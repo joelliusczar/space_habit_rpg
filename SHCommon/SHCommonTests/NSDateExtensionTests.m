@@ -118,4 +118,16 @@
 }
 
 
+-(void)testGetComponents{
+	NSTimeZone.defaultTimeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
+	NSDate *testDate = [NSDate dateWithTimeIntervalSince1970:1588427687];
+	NSDateComponents *components = [testDate getDateComponents];
+	XCTAssertEqual(components.year,2020);
+	XCTAssertEqual(components.month, 5);
+	XCTAssertEqual(components.day, 2);
+	XCTAssertEqual(components.hour,13);
+	XCTAssertEqual(components.minute, 54);
+	XCTAssertEqual(components.second, 47);
+}
+
 @end

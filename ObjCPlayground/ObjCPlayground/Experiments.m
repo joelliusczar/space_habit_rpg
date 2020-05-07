@@ -1363,4 +1363,30 @@ struct StupidStruct justStuct() {
 	NSLog(@"%p",&mess.someNums);
 }
 
+
+void _pooter(int32_t **mum) {
+	
+	NSLog(@"%d",*mum[0]);
+	NSLog(@"%d",(*mum)[1]);
+}
+
+
++(void)ptr2ptr {
+	int32_t *num = calloc(1, sizeof(int32_t));
+	num[0] = 89;
+	num[1] = 25;
+	
+	NSLog(@"%d",num[0]);
+	NSLog(@"%d",num[1]);
+	
+	_pooter(&num);
+	
+	*num = 45;
+	*(num + 1) = 72;
+	
+	NSLog(@"%d",num[0]);
+	NSLog(@"%d",num[1]);
+}
+	
+
 @end

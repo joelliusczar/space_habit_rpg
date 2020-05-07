@@ -13,8 +13,14 @@
 		270EEF2B245A56480078D2ED /* SHDueDateWeeklyContext_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = 270EEF29245A4C5A0078D2ED /* SHDueDateWeeklyContext_struct.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271691CC20885F890059A58E /* SHDueDatesWeeklyFuncs.h in Headers */ = {isa = PBXBuildFile; fileRef = 271691CA20885F890059A58E /* SHDueDatesWeeklyFuncs.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271691CD20885F890059A58E /* SHDueDatesWeeklyFuncs.c in Sources */ = {isa = PBXBuildFile; fileRef = 271691CB20885F890059A58E /* SHDueDatesWeeklyFuncs.c */; };
+		274ADCFB245E496C00763D25 /* SHSpecial_CTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADCFA245E496C00763D25 /* SHSpecial_CTests.m */; };
+		274ADCFD245E496C00763D25 /* SHSpecial_C in Frameworks */ = {isa = PBXBuildFile; fileRef = 271691C220885EF70059A58E /* SHSpecial_C */; };
+		274ADD08245E498500763D25 /* SHDueDateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD07245E498500763D25 /* SHDueDateTests.m */; };
+		274ADD45245E549900763D25 /* SHPreviousDueDateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD44245E549900763D25 /* SHPreviousDueDateTests.m */; };
+		274ADD47245E71ED00763D25 /* SHNextDueDateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD46245E71ED00763D25 /* SHNextDueDateTests.m */; };
 		2769C09D227DD70800217480 /* SHSpecial_C.h in Headers */ = {isa = PBXBuildFile; fileRef = 27870450227BC188009C9DD6 /* SHSpecial_C.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		277970CD21FD764C00D3F86D /* SHWeekIntervalPoint_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = 277970CC21FD75E900D3F86D /* SHWeekIntervalPoint_struct.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27D802C2245F54970057E950 /* OtherDueDateFuncsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D802C1245F54970057E950 /* OtherDueDateFuncsTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +37,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 27D3183C2086C8CA0047F5F1;
 			remoteInfo = SHDatetime;
+		};
+		274ADCFE245E496C00763D25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 271691BA20885EF70059A58E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 271691C120885EF70059A58E;
+			remoteInfo = SHSpecial_C;
+		};
+		274ADD03245E496C00763D25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27BC44E4238792200047F683 /* SHDatetime.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 270EEF41245CCD8C0078D2ED;
+			remoteInfo = SHDatetimeTests;
 		};
 		27BC44E9238792200047F683 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -56,6 +76,13 @@
 		2737D58A216DAFEA00E0111F /* daily_server.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = daily_server.sh; sourceTree = "<group>"; };
 		2737D58B216EE67B00E0111F /* DailySingleTest.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = DailySingleTest.py; sourceTree = "<group>"; };
 		27397343226C08C0001590C6 /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		274ADCF8245E496C00763D25 /* SHSpecial_CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHSpecial_CTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		274ADCFA245E496C00763D25 /* SHSpecial_CTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHSpecial_CTests.m; sourceTree = "<group>"; };
+		274ADCFC245E496C00763D25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		274ADD07245E498500763D25 /* SHDueDateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDueDateTests.m; sourceTree = "<group>"; };
+		274ADD09245E49B100763D25 /* SHSpecial_C.test.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHSpecial_C.test.xcconfig; sourceTree = "<group>"; };
+		274ADD44245E549900763D25 /* SHPreviousDueDateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHPreviousDueDateTests.m; sourceTree = "<group>"; };
+		274ADD46245E71ED00763D25 /* SHNextDueDateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHNextDueDateTests.m; sourceTree = "<group>"; };
 		2769C0AA227FB8F100217480 /* SHSpecial_C.postbuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = SHSpecial_C.postbuild.sh; sourceTree = "<group>"; };
 		2769C0AB227FB95A00217480 /* SHSpecial_C.prebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = SHSpecial_C.prebuild.sh; sourceTree = "<group>"; };
 		277970CC21FD75E900D3F86D /* SHWeekIntervalPoint_struct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHWeekIntervalPoint_struct.h; sourceTree = "<group>"; };
@@ -69,6 +96,7 @@
 		27BB291A215B1093003225BB /* DailyStructs.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = DailyStructs.py; sourceTree = "<group>"; };
 		27BC44E4238792200047F683 /* SHDatetime.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHDatetime.xcodeproj; path = ../SHDatetime/SHDatetime.xcodeproj; sourceTree = "<group>"; };
 		27BCF911227BE97800540F4F /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		27D802C1245F54970057E950 /* OtherDueDateFuncsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherDueDateFuncsTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +105,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				270CB966244BDBCC00FE930B /* SHDatetime in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		274ADCF5245E496C00763D25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				274ADCFD245E496C00763D25 /* SHSpecial_C in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +158,7 @@
 				27BC44E4238792200047F683 /* SHDatetime.xcodeproj */,
 				276E6D96222A4AA500CB36CB /* Configs */,
 				27BB29092157499D003225BB /* Other_Code */,
+				274ADCF9245E496C00763D25 /* SHSpecial_CTests */,
 				271691CE208860100059A58E /* Frameworks */,
 				271691C320885EF70059A58E /* Products */,
 				2712C5F6244D2C0A00157758 /* Resources */,
@@ -133,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				271691C220885EF70059A58E /* SHSpecial_C */,
+				274ADCF8245E496C00763D25 /* SHSpecial_CTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -159,11 +197,25 @@
 			path = Scripts;
 			sourceTree = "<group>";
 		};
+		274ADCF9245E496C00763D25 /* SHSpecial_CTests */ = {
+			isa = PBXGroup;
+			children = (
+				274ADCFA245E496C00763D25 /* SHSpecial_CTests.m */,
+				274ADCFC245E496C00763D25 /* Info.plist */,
+				274ADD07245E498500763D25 /* SHDueDateTests.m */,
+				274ADD44245E549900763D25 /* SHPreviousDueDateTests.m */,
+				274ADD46245E71ED00763D25 /* SHNextDueDateTests.m */,
+				27D802C1245F54970057E950 /* OtherDueDateFuncsTests.m */,
+			);
+			path = SHSpecial_CTests;
+			sourceTree = "<group>";
+		};
 		276E6D96222A4AA500CB36CB /* Configs */ = {
 			isa = PBXGroup;
 			children = (
 				27B0B1ED2223A3EC0028AF59 /* SHSpecial_C.base.xcconfig */,
 				278FFD9F222B2BBB00DAF985 /* SHSpecial_C.debug.xcconfig */,
+				274ADD09245E49B100763D25 /* SHSpecial_C.test.xcconfig */,
 			);
 			path = Configs;
 			sourceTree = "<group>";
@@ -184,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				27BC44EA238792200047F683 /* SHDatetime */,
+				274ADD04245E496C00763D25 /* SHDatetimeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -226,6 +279,24 @@
 			productReference = 271691C220885EF70059A58E /* SHSpecial_C */;
 			productType = "com.apple.product-type.library.static";
 		};
+		274ADCF7245E496C00763D25 /* SHSpecial_CTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 274ADD06245E496C00763D25 /* Build configuration list for PBXNativeTarget "SHSpecial_CTests" */;
+			buildPhases = (
+				274ADCF4245E496C00763D25 /* Sources */,
+				274ADCF5245E496C00763D25 /* Frameworks */,
+				274ADCF6245E496C00763D25 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				274ADCFF245E496C00763D25 /* PBXTargetDependency */,
+			);
+			name = SHSpecial_CTests;
+			productName = SHSpecial_CTests;
+			productReference = 274ADCF8245E496C00763D25 /* SHSpecial_CTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -238,6 +309,9 @@
 					271691C120885EF70059A58E = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+					};
+					274ADCF7245E496C00763D25 = {
+						CreatedOnToolsVersion = 11.4.1;
 					};
 				};
 			};
@@ -264,6 +338,7 @@
 			projectRoot = "";
 			targets = (
 				271691C120885EF70059A58E /* SHSpecial_C */,
+				274ADCF7245E496C00763D25 /* SHSpecial_CTests */,
 			);
 		};
 /* End PBXProject section */
@@ -276,6 +351,13 @@
 			remoteRef = 2703AA6C244FBCD200ACE781 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		274ADD04245E496C00763D25 /* SHDatetimeTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SHDatetimeTests.xctest;
+			remoteRef = 274ADD03245E496C00763D25 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		27BC44EA238792200047F683 /* SHDatetime */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -284,6 +366,16 @@
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		274ADCF6245E496C00763D25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		2769C0A9227FB89700217480 /* Run Script Pre */ = {
@@ -331,6 +423,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		274ADCF4245E496C00763D25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				274ADD47245E71ED00763D25 /* SHNextDueDateTests.m in Sources */,
+				27D802C2245F54970057E950 /* OtherDueDateFuncsTests.m in Sources */,
+				274ADD45245E549900763D25 /* SHPreviousDueDateTests.m in Sources */,
+				274ADCFB245E496C00763D25 /* SHSpecial_CTests.m in Sources */,
+				274ADD08245E498500763D25 /* SHDueDateTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -338,6 +442,11 @@
 			isa = PBXTargetDependency;
 			name = SHDatetime;
 			targetProxy = 270CB967244BDBD800FE930B /* PBXContainerItemProxy */;
+		};
+		274ADCFF245E496C00763D25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 271691C120885EF70059A58E /* SHSpecial_C */;
+			targetProxy = 274ADCFE245E496C00763D25 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -462,6 +571,54 @@
 			};
 			name = Release;
 		};
+		274ADD00245E496C00763D25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 274ADD09245E49B100763D25 /* SHSpecial_C.test.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XK3RJ8E2L2;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = SHSpecial_CTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "JoelliusCzar.SHSpecial-CTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		274ADD01245E496C00763D25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XK3RJ8E2L2;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = SHSpecial_CTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "JoelliusCzar.SHSpecial-CTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -479,6 +636,15 @@
 			buildConfigurations = (
 				271691C720885EF70059A58E /* Debug */,
 				271691C820885EF70059A58E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		274ADD06245E496C00763D25 /* Build configuration list for PBXNativeTarget "SHSpecial_CTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				274ADD00245E496C00763D25 /* Debug */,
+				274ADD01245E496C00763D25 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

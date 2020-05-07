@@ -11,6 +11,7 @@
 
 #include "SHDatetime_struct.h"
 #include "SHWeekIntervalPoint_struct.h"
+#include <stdbool.h>
 
 struct SHDueDateWeeklyContext {
 	struct SHDatetime *prevUseDate;

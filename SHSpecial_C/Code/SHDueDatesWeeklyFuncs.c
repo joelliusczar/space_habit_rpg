@@ -106,7 +106,7 @@ static int32_t _offsetForSameWeek(bool isActiveWeek, int32_t inputDayIdx, int32_
 	/*
 	 if checkin day is in active week but before all active days
 	 push it back a week so that it get's the last active day of
-	 the previous active weeks
+	 the previous active weeks #activeDayMath
 	 */
 	return prevDayIdx > inputDayIdx || (prevDayIdx == inputDayIdx && isActiveWeek)
 		? SH_DAYS_IN_WEEK : 0;
@@ -145,6 +145,7 @@ static SHErrorCode _previousDueDate_WEEKLY(struct SHDatetime *useDate, struct SH
 	double lastCheckinTimestamp = 1;
 	SH_dtToTimestamp(useDate,&useDateTimestamp);
 	SH_dtToTimestamp(input->prevUseDate,&lastCheckinTimestamp);
+
 	if(lastCheckinTimestamp >= useDateTimestamp) {
 		status = SH_ILLEGAL_INPUTS;
 		SH_notifyOfError(SH_INVALID_STATE, "Checkindate needs to be after prevUseDate");
@@ -164,7 +165,7 @@ static SHErrorCode _previousDueDate_WEEKLY(struct SHDatetime *useDate, struct SH
 	struct SHDatetime firstDayOfFirstWeek = *input->prevUseDate;
 	SH_addDaysToDt(&firstDayOfFirstWeek, -lastDayIdx, SH_TIME_ADJUST_NO_OPTION);
 	int64_t daySpan = 0;
-	if((status = SH_dateDiffDays(useDate, &firstDayOfFirstWeek, &daySpan)) != SH_NO_ERROR) {
+	if((status = SH_dateDiffDays(&firstDayOfFirstWeek, useDate, &daySpan)) != SH_NO_ERROR) {
 		goto fnExit;
 	}
 	int32_t checkinDayIdx = SH_weekdayIdx(useDate, input->weekStartOffset);
@@ -194,6 +195,21 @@ static SHErrorCode _previousDueDate_WEEKLY(struct SHDatetime *useDate, struct SH
 }
 
 
+SHErrorCode SH_previousDueDate_WEEKLY(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *input,
+	struct SHDatetime *ans)
+{
+	SHErrorCode status = SH_NO_ERROR;
+	struct SHDatetime useDatePrepared = *useDate;
+	if((status = _prepareDatetimeForCalculations(input->prevUseDate, input->dayStartHour)) != SH_NO_ERROR) {
+		 return status;
+	}
+	if((status = _prepareDatetimeForCalculations(&useDatePrepared, input->dayStartHour)) != SH_NO_ERROR) {
+		return status;
+	}
+	return _previousDueDate_WEEKLY(&useDatePrepared, input, ans);
+}
+
+
 static SHErrorCode _bothWeeklyDueDatesFromLastDueDate(struct SHDatetime *useDate,
 	struct SHDueDateWeeklyContext *input, struct SHDatetime **ans, int32_t *ansLen)
 {
@@ -209,7 +225,7 @@ static SHErrorCode _bothWeeklyDueDatesFromLastDueDate(struct SHDatetime *useDate
 	struct SHDatetime firstDayOfPrevWeek = previousDate;
 	SH_addDaysToDt(&firstDayOfPrevWeek, -1 * prevDayIdx, SH_TIME_ADJUST_NO_OPTION);
 	int64_t daySpan = 0;
-	SH_dateDiffDays(useDate, &firstDayOfPrevWeek, &daySpan);
+	SH_dateDiffDays(&firstDayOfPrevWeek, useDate, &daySpan);
 	int32_t checkinDayIdx = SH_weekdayIdx(useDate, input->weekStartOffset);
 	int64_t prevSunToThisSunSpan = daySpan - checkinDayIdx;
 	int64_t weekCount = (_distanceFromActiveWeek(prevSunToThisSunSpan, input->intervalSize) / SH_DAYS_IN_WEEK);
@@ -220,15 +236,16 @@ static SHErrorCode _bothWeeklyDueDatesFromLastDueDate(struct SHDatetime *useDate
 	int64_t sameWeekOffset = nextDayIdx < checkinDayIdx && weekCount == 0 ? input->intervalSize * SH_DAYS_IN_WEEK : 0;
 	struct SHDatetime nextDueDate = firstDayOfPrevWeek;
 	SH_addDaysToDt(&nextDueDate, nextActiveWeek + nextDayIdx + sameWeekOffset, SH_TIME_ADJUST_NO_OPTION);
-
-	*ans = malloc(sizeof(struct SHDatetime) * 2);
-	if(!*ans) {
+	
+	struct SHDatetime *resultDates = malloc(sizeof(struct SHDatetime) * 2);
+	if(!resultDates) {
 		status = SH_ALLOC;
 		SH_notifyOfError(status, "Failed to allocate memory for due dates");
 		goto fnExit;
 	}
-	*ans[0] = previousDate;
-	*ans[1] = nextDueDate;
+	resultDates[0] = previousDate;
+	resultDates[1] = nextDueDate;
+	*ans = resultDates;
 	*ansLen = 2;
 	shLog("leaving bothWeeklyDueDatesFromLastDueDate");
 	fnExit:
@@ -256,8 +273,8 @@ static SHErrorCode _nextDueDate_WEEKLY(struct SHDatetime *useDate, struct SHDueD
 	shLog("leaving nextDueDate_WEEKLY\n");
 
 #ifdef SH_POST_DUE_DATE_CALC_CHECK
-	struct SHDatetime useDateStart = input->useDate;
-	SH_dayStart(&useDateStart);
+	struct SHDatetime useDateStart = *useDate;
+	SH_setToDayStart(&useDateStart);
 	double ansTimestamp = DBL_MAX;
 	double useDateTimestamp = 0;
 	SH_dtToTimestamp(ans, &ansTimestamp);
@@ -267,38 +284,21 @@ static SHErrorCode _nextDueDate_WEEKLY(struct SHDatetime *useDate, struct SHDueD
 		char ansStr[75];
 		char checkinStr[75];
 		SH_DTToString(ans,ansStr);
-		SH_DTToString(input->useDate,checkinStr);
+		SH_DTToString(useDate,checkinStr);
 		char frmtErrMsg[200];
 		sprintf(frmtErrMsg, "The calculated next due date was before the check in date. Answer: %s "
-			"useDate: %s Interval Size:%"PRId64,ansStr, checkinStr, input->intervalSize);
+			"useDate: %s Interval Size:%d",ansStr, checkinStr, input->intervalSize);
 		SH_notifyOfError(status, frmtErrMsg);
 		goto cleanup;
 	}
 #endif
 	goto cleanup; //this is easier than wrapping the cleanup label in an ignore warning block
 	cleanup:
-		SH_freeSHDatetime(resultPair + 1);
-		SH_freeSHDatetime(resultPair);
+		SH_freeSHDatetime(resultPair, ansLen);
 	fnExit:
 		return status;
 }
 
-
-SHErrorCode SH_previousDueDate_WEEKLY(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *input,
-	struct SHDatetime *ans)
-{
-	SHErrorCode status = SH_NO_ERROR;
-	struct SHDatetime prevUseDatePrepared = *input->prevUseDate;
-	struct SHDatetime useDatePrepared = *useDate;
-	if((status = _prepareDatetimeForCalculations(&prevUseDatePrepared, input->dayStartHour)) != SH_NO_ERROR) {
-		 return status;
-	}
-	if((status = _prepareDatetimeForCalculations(&useDatePrepared, input->dayStartHour)) != SH_NO_ERROR) {
-		return status;
-	}
-	*input->prevUseDate = prevUseDatePrepared;
-	return _previousDueDate_WEEKLY(&useDatePrepared, input, ans);
-}
 
 
 SHErrorCode SH_bothWeeklyDueDatesFromLastDueDate(struct SHDatetime *useDate,
@@ -335,15 +335,6 @@ SHErrorCode SH_nextDueDate_WEEKLY(struct SHDatetime *useDate, struct SHDueDateWe
 }
 
 
-int32_t SH_calcDaysAgoDayWasActive(int32_t weekdayIdx, int32_t intervalSize) {
-	if(intervalSize > 1){
-		int32_t result = ((SH_DAYS_IN_WEEK - weekdayIdx) + (intervalSize - 1) * SH_DAYS_IN_WEEK);
-		return result;
-	}
-	return SH_DAYS_IN_WEEK;
-}
-
-
 SHErrorCode SH_isDateADueDate_WEEKLY(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *input,
 	bool *ans)
 {
@@ -370,53 +361,14 @@ SHErrorCode SH_isDateADueDate_WEEKLY(struct SHDatetime *useDate, struct SHDueDat
 }
 
 
-SHErrorCode SH_backupDateForReferenceDate(struct SHDatetime *useDate,
-	struct SHDueDateWeeklyContext *input, struct SHDatetime *ans)
-{
-	SHErrorCode status = SH_NO_ERROR;
-	int32_t weekdayIdx = SH_NOT_FOUND;
-	if((weekdayIdx = SH_weekdayIdx(useDate, input->weekStartOffset)) == SH_NOT_FOUND) {
-		status = SH_INPUT_BAD_RESULTS;
-		SH_notifyOfError(status, "Could not find backup date because could not find weekday idx");
-		goto fnExit;
-	}
-	if(input->intervalPoints->days[weekdayIdx].isDayActive) {
-		ans = useDate;
-		goto fnExit;
-	}
-	int32_t prevActiveDayIdx = SH_NOT_FOUND;
-	if((prevActiveDayIdx = SH_findPrevActiveDayIdx(input->intervalPoints, weekdayIdx)) == SH_NOT_FOUND) {
-		status = SH_INPUT_BAD_RESULTS;
-		SH_notifyOfError(status, "Could not find backup date because could not find weekday idx");
-		goto fnExit;
-	}
-	bool isCurrentWeekActive = weekdayIdx > prevActiveDayIdx;
-	int32_t diff = weekdayIdx - prevActiveDayIdx;
-	struct SHDatetime store = *useDate;
-	if(isCurrentWeekActive) {
-		if((status = SH_addDaysToDt(&store, -diff, SH_TIME_ADJUST_NO_OPTION)) != SH_NO_ERROR) {
-			goto fnExit;
-		}
-		*ans = store;
-		goto fnExit;
-	}
-	int32_t daysAgo = SH_calcDaysAgoDayWasActive(prevActiveDayIdx, input->intervalSize);
-	
-	if((status = SH_addDaysToDt(&store, -(daysAgo + diff), SH_TIME_ADJUST_NO_OPTION)) != SH_NO_ERROR) {
-		goto fnExit;
-	}
-	*ans = store;
-	fnExit:
-		return status;
-}
-
-
 SHErrorCode SH_isWeekActiveForDate(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *input,
 	bool *ans) {
 	SHErrorCode status = SH_NO_ERROR;
 	*ans = false;
+	
+	
 	bool areSameWeek = false;
-	if((status = SH_areSameWeekWithDayOffset(useDate, input->prevUseDate, input->weekStartOffset, &areSameWeek))
+	if((status = SH_areSameWeek(useDate, input->prevUseDate, input->weekStartOffset, &areSameWeek))
 		!= SH_NO_ERROR)
 	{
 		goto fnExit;
@@ -425,24 +377,25 @@ SHErrorCode SH_isWeekActiveForDate(struct SHDatetime *useDate, struct SHDueDateW
 		*ans = true;
 		goto fnExit;
 	}
-	struct SHDatetime cursorDt;
-	if((status = SH_weekStart(useDate, input->weekStartOffset, &cursorDt)) != SH_NO_ERROR) {
+	struct SHDatetime cursorDt = *useDate;
+	if((status = SH_weekStart(&cursorDt, input->weekStartOffset)) != SH_NO_ERROR) {
 		goto fnExit;
 	}
-	struct SHDatetime previousDueDate;
+	//even if prevUseDate is off, we're using it as a sort of reference point
+	// that its week is always active #activeDayMath
+	struct SHDatetime	previousDueDate = *input->prevUseDate;
 	struct SHDueDateWeeklyContext inputCopy = *input; //shallow copy
-	if((status = SH_previousDueDate_WEEKLY(&cursorDt, &inputCopy, &previousDueDate)) != SH_NO_ERROR) {
-		goto fnExit;
-	}
+	SH_setUseDateToLastActive(&previousDueDate, &inputCopy);
 	inputCopy.prevUseDate = &previousDueDate;
+
 	for(int32_t idx = 0; idx < SH_DAYS_IN_WEEK; idx++) {
-		SH_addDaysToDt(&cursorDt, idx, SH_TIME_ADJUST_NO_OPTION);
 		if((status = SH_isDateADueDate_WEEKLY(&cursorDt, &inputCopy, ans)) != SH_NO_ERROR) {
 			goto fnExit;
 		}
 		if(*ans) {
 			goto fnExit;
 		}
+		SH_addDaysToDt(&cursorDt, 1, SH_TIME_ADJUST_NO_OPTION);
 	}
 	fnExit:
 		return status;
@@ -474,7 +427,7 @@ SHErrorCode SH_missedDays(struct SHDatetime *useDate, struct SHDueDateWeeklyCont
 	}
 	if(input->intervalSize == 1) {
 		bool areSameWeek = false;
-		if((status = SH_areSameWeekWithDayOffset(todayStart, input->prevUseDate, input->weekStartOffset, &areSameWeek))
+		if((status = SH_areSameWeek(todayStart, input->prevUseDate, input->weekStartOffset, &areSameWeek))
 			!= SH_NO_ERROR)
 		{
 			goto fnExit;
@@ -503,46 +456,33 @@ SHErrorCode SH_missedDays(struct SHDatetime *useDate, struct SHDueDateWeeklyCont
 		return status;
 }
 
-//
-//-(NSDate *)calcBackupDateForReferenceDate:(NSDate *)referenceDate {
-//	NSUInteger weekdayIdx = [referenceDate getWeekdayIndex];
-//	if(self.activeDaysContainer.weeklyActiveDays[weekdayIdx].isDayActive) {
-//	 return referenceDate;
-//	}
-//	NSUInteger prevDayIdx = [self.activeDaysContainer.weeklyActiveDays findPrevActiveDayIdx:weekdayIdx];
-//	BOOL isCurrentWeekActive = weekdayIdx > prevDayIdx;
-//	NSInteger diff = weekdayIdx - prevDayIdx;
-//	if(isCurrentWeekActive) {
-//		return [referenceDate dateAfterYears:0 months:0 days:-diff];
-//	}
-//	int64_t daysAgo = sh_calcDaysAgoDayWasActive((int32_t)prevDayIdx,
-//		self.activeDaysContainer.weeklyActiveDays.intervalSize);
-//	return [referenceDate dateAfterYears:0 months:0 days:-(daysAgo + diff)];
-//}
-
-
-SHErrorCode SH_findBackupDateForUseDate(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *context,
-	struct SHDatetime *ans)
-{
+/*
+This function assumes that the week that the use date falls on is active. Because it is meant to be used
+in the case when when we don't actually have a last due date #activeDayMath
+*/
+SHErrorCode SH_setUseDateToLastActive(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *context){
 	SHErrorCode status = SH_NO_ERROR;
 	int32_t weekendIdx = SH_NOT_FOUND;
 	if((weekendIdx = SH_weekdayIdx(useDate, context->weekStartOffset)) == SH_NOT_FOUND) {
 		status = SH_INPUT_BAD_RESULTS;
 		goto fnExit;
 	}
-	*ans = *useDate;
 	if(context->intervalPoints->days[weekendIdx].isDayActive) {
 		goto fnExit;
 	}
 	int32_t prevDayIdx = SH_findPrevActiveDayIdx(context->intervalPoints, weekendIdx);
-	bool isCurrentWeekActive = weekendIdx > prevDayIdx;
-	int32_t diff = weekendIdx - prevDayIdx;
-	if(isCurrentWeekActive) {
-		SH_addDaysToDt(ans, -diff, SH_TIME_ADJUST_NO_OPTION);
+	if(prevDayIdx == SH_NOT_FOUND) {
+		status = SH_INPUT_BAD_RESULTS;
+		SH_notifyOfError(status, "Could not find backup date because could not find weekday idx");
 		goto fnExit;
 	}
-	int32_t daysAgo = SH_calcDaysAgoDayWasActive(prevDayIdx, context->intervalSize);
-	SH_addDaysToDt(ans, -(daysAgo + diff), SH_TIME_ADJUST_NO_OPTION);
+	bool isCurrentWeekActive = weekendIdx > prevDayIdx;
+	int32_t diff = weekendIdx - prevDayIdx;
+	int32_t daysAgo = diff;
+	if(!isCurrentWeekActive) {
+		daysAgo += context->intervalSize * SH_DAYS_IN_WEEK;
+	}
+	SH_addDaysToDt(useDate, -daysAgo, SH_TIME_ADJUST_NO_OPTION);
 	fnExit:
 		return status;
 }

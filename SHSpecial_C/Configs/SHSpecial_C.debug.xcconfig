@@ -9,5 +9,8 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-#include "../Configs/MacOSArchs.xcconfig"
+//#include "../Configs/MacOSArchs.xcconfig"
 #include "SHSpecial_C.base.xcconfig"
+
+
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) SH_POST_DUE_DATE_CALC_CHECK=1
