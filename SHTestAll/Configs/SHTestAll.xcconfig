@@ -1,0 +1,11 @@
+//
+//  SHTestAll.xcconfig
+//  SHTestAll
+//
+//  Created by Joel Pridgen on 5/8/20.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "../Configs/SHWorkspace.xcconfig"

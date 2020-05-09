@@ -62,6 +62,46 @@
          </AdditionalOption>
       </AdditionalOptions>
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2737439B24565D6E00E36AB7"
+               BuildableName = "SHCommonTests.xctest"
+               BlueprintName = "SHCommonTests"
+               ReferencedContainer = "container:../SHCommon/SHCommon.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "270EEF40245CCD8C0078D2ED"
+               BuildableName = "SHDatetimeTests.xctest"
+               BlueprintName = "SHDatetimeTests"
+               ReferencedContainer = "container:../SHDatetime/SHDatetime.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "27D849FF2443DFBE0081DFE6"
+               BuildableName = "SHModelsTests.xctest"
+               BlueprintName = "SHModelsTests"
+               ReferencedContainer = "container:../SHModels/SHModels.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "274ADCF7245E496C00763D25"
+               BuildableName = "SHSpecial_CTests.xctest"
+               BlueprintName = "SHSpecial_CTests"
+               ReferencedContainer = "container:../SHSpecial_C/SHSpecial_C.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

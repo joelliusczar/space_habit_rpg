@@ -110,12 +110,6 @@
       location = "group:PropertyAdder/PropertyAdder.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SHTestCommon/SHTestCommon.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:TestUI/TestUI.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:ObjCPlayground/ObjCPlayground.xcodeproj">
    </FileRef>
    <FileRef

@@ -108,6 +108,8 @@
 		274ADD40245E52C500763D25 /* TestProbWeightsThreeItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD2E245E52C500763D25 /* TestProbWeightsThreeItems.m */; };
 		274ADD41245E52C500763D25 /* ProbilityWeightTestFourItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD2F245E52C500763D25 /* ProbilityWeightTestFourItems.m */; };
 		274ADD43245E545600763D25 /* SHInheritanceTreeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD42245E545600763D25 /* SHInheritanceTreeTest.m */; };
+		27D802E32464E0CE0057E950 /* SHReflectionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D802E02464E0CE0057E950 /* SHReflectionHelper.m */; };
+		27D802E42464E0CE0057E950 /* SHReflectionHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D802E22464E0CE0057E950 /* SHReflectionHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27F3EC52245703A40049F684 /* SHDatetime in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F3EC39245669BA0049F684 /* SHDatetime */; };
 /* End PBXBuildFile section */
 
@@ -267,6 +269,8 @@
 		274ADD2E245E52C500763D25 /* TestProbWeightsThreeItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestProbWeightsThreeItems.m; sourceTree = "<group>"; };
 		274ADD2F245E52C500763D25 /* ProbilityWeightTestFourItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProbilityWeightTestFourItems.m; sourceTree = "<group>"; };
 		274ADD42245E545600763D25 /* SHInheritanceTreeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHInheritanceTreeTest.m; sourceTree = "<group>"; };
+		27D802E02464E0CE0057E950 /* SHReflectionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHReflectionHelper.m; sourceTree = "<group>"; };
+		27D802E22464E0CE0057E950 /* SHReflectionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHReflectionHelper.h; sourceTree = "<group>"; };
 		27F3EC34245669BA0049F684 /* SHDatetime.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHDatetime.xcodeproj; path = ../SHDatetime/SHDatetime.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -331,6 +335,8 @@
 		273743AD24565DD800E36AB7 /* SHCommon */ = {
 			isa = PBXGroup;
 			children = (
+				27D802E22464E0CE0057E950 /* SHReflectionHelper.h */,
+				27D802E02464E0CE0057E950 /* SHReflectionHelper.m */,
 				273743DA24565DD800E36AB7 /* Constants */,
 				273743FE24565DD800E36AB7 /* Info.plist */,
 				273743B424565DD800E36AB7 /* NS+Categories */,
@@ -559,6 +565,7 @@
 				2737441D24565DD800E36AB7 /* NSNumber+Helper.h in Headers */,
 				2737444924565DD800E36AB7 /* SHDateProviderProtocol.h in Headers */,
 				2737440024565DD800E36AB7 /* SHVarWrapper.h in Headers */,
+				27D802E42464E0CE0057E950 /* SHReflectionHelper.h in Headers */,
 				2737442224565DD800E36AB7 /* SHIconBuilder.h in Headers */,
 				2737442D24565DD800E36AB7 /* SHConstants.h in Headers */,
 			);
@@ -755,6 +762,7 @@
 				2737440A24565DD800E36AB7 /* NSMutableDictionary+Helper.m in Sources */,
 				2737443924565DD800E36AB7 /* SHVarWrapper.m in Sources */,
 				2737444224565DD800E36AB7 /* SHCommonUtils.m in Sources */,
+				27D802E32464E0CE0057E950 /* SHReflectionHelper.m in Sources */,
 				2737443824565DD800E36AB7 /* SHCoreData.m in Sources */,
 				2737443E24565DD800E36AB7 /* SHInterceptor.m in Sources */,
 				2737442824565DD800E36AB7 /* SHObjectIDWrapper.m in Sources */,

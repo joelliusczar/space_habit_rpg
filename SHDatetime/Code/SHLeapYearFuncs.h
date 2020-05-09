@@ -9,6 +9,7 @@
 #ifndef SHLeapYearFuncs_h
 #define SHLeapYearFuncs_h
 
+#include "SHDatetime_struct.h"
 #include <stdio.h>
 #include <inttypes.h>
 #include <stdbool.h>
@@ -23,6 +24,8 @@ bool SH_isOffsettedYearCountLeap(int64_t years);
 bool SH_isRawYearCountLeap(int64_t years, bool isBeforeEpoch);
 
 bool SH_isLeapYear(int64_t year);
+
+bool SH_isFeb29(struct SHDatetime *dt);
 
 
 #endif /* SHLeapYearFuncs_h */

@@ -11,6 +11,8 @@
 #include "SHArray.h"
 #include "SHErrorHandling.h"
 #include "SHWeekIntervalPointsFuncs.h"
+#include "SHDatetime_addition.h"
+#include "SHDatetime_setters.h"
 #include <stdlib.h>
 #include <float.h>
 #include <assert.h>
@@ -113,7 +115,7 @@ static int32_t _offsetForSameWeek(bool isActiveWeek, int32_t inputDayIdx, int32_
 }
 
 
-static SHErrorCode _prepareDatetimeForCalculations(struct SHDatetime *dt, int64_t dayStartTime) {
+static SHErrorCode _prepareDatetimeForCalculations(struct SHDatetime *dt, int32_t dayStartTime) {
 	SHErrorCode status = SH_NO_ERROR;
 	double timeOfDay = 0;
 	if((status = SH_dtToTimeOfDay(dt, &timeOfDay)) != SH_NO_ERROR) {
@@ -121,10 +123,10 @@ static SHErrorCode _prepareDatetimeForCalculations(struct SHDatetime *dt, int64_
 	}
 	int32_t timeOfDayInSeconds = (int32_t)timeOfDay;
 	if(timeOfDayInSeconds >= dayStartTime) {
-		SH_setToDayStart(dt);
+		SH_dtSetToTimeOfDay(dt, dayStartTime);
 		goto fnExit;
 	}
-	SH_setToDayStart(dt);
+	SH_dtSetToTimeOfDay(dt, dayStartTime);
 	dt->timezoneOffset = 0;
 
 	//didn't want to free dt->shifts in case it's used on another pointer, but also
@@ -274,7 +276,7 @@ static SHErrorCode _nextDueDate_WEEKLY(struct SHDatetime *useDate, struct SHDueD
 
 #ifdef SH_POST_DUE_DATE_CALC_CHECK
 	struct SHDatetime useDateStart = *useDate;
-	SH_setToDayStart(&useDateStart);
+	SH_dtSetToTimeOfDay(&useDateStart, input->dayStartHour);
 	double ansTimestamp = DBL_MAX;
 	double useDateTimestamp = 0;
 	SH_dtToTimestamp(ans, &ansTimestamp);

@@ -34,18 +34,25 @@ This also applies if the active days got changed. #activeDayMath
 
 #TODO: these priority flags still need to be set in code
 */
--(NSDate*)selectUseDateProperty {
+-(struct SHDatetime*)selectUseDateProperty {
 	if(self.lastActivationDateTime &&
 		!self.activeFromHasPriority &&
 		!self.lastUpdateHasPriority)
 	{
-		return self.lastActivationDateTime;
+		struct SHDatetime *dt = [self.lastActivationDateTime SH_toSHDatetime];
+		SH_dtSetTimezoneOffset(dt, self.tzOffsetLastActivationDateTime);
+		return dt;
 	}
 	if(self.activeFromDate && !self.lastUpdateHasPriority) {
-		return self.activeFromDate;
+		struct SHDatetime *dt = [self.activeFromDate SH_toSHDatetime];
+		//this may need its own tz property but tzOffsetLastUpdateDateTime is good alternative
+		SH_dtSetTimezoneOffset(dt, self.tzOffsetLastUpdateDateTime);
+		return dt;
 	}
 	assert(self.lastUpdateDateTime);
-	return self.lastUpdateDateTime;
+	struct SHDatetime *dt = [self.lastUpdateDateTime SH_toSHDatetime];
+	SH_dtSetTimezoneOffset(dt, self.tzOffsetLastUpdateDateTime);
+	return dt;
 }
 
 
@@ -63,7 +70,7 @@ This also applies if the active days got changed. #activeDayMath
 		newWithActiveDays:self.activeDaysContainer intervalType:self.rateType];
 	_calculator.dateProvider = self.dateProvider;
 	_calculator.dayStartTime = dayStartTime;
-	struct SHDatetime *selectedDateProperty = [[self selectUseDateProperty] SH_toSHDatetime];
+	struct SHDatetime *selectedDateProperty = [self selectUseDateProperty];
 	_calculator.useDate = *selectedDateProperty;
 	SH_freeSHDatetime(selectedDateProperty, ALLOC_COUNT);
 	return _calculator;
@@ -201,35 +208,24 @@ This also applies if the active days got changed. #activeDayMath
 }
 
 
--(NSDate*)calcBackupLastCheckinDate:(NSTimeInterval*)tzOffsetPtr {
-	#warning figure this shit out
-	return nil;
-//	if(self.lastActivationDateTime) {
-//		*tzOffsetPtr = self.tzOffsetLastActivationDateTime;
-//		return [self.calculator calcBackupDateForReferenceDate:self.lastActivationDateTime];
-//	}
-//	if(self.activeFromDate) {
-//		*tzOffsetPtr = self.dateProvider.localTzOffset;
-//		return [self.calculator calcBackupDateForReferenceDate:self.activeFromDate];
-//	}
-//	*tzOffsetPtr = self.tzOffsetLastUpdateDateTime;
-//	return [self.calculator calcBackupDateForReferenceDate:self.lastUpdateDateTime];
-}
-
-
 -(SHDailyStatus)calcStatus {
-	NSTimeInterval todayTS = SHConfig.userTodayStart.timeIntervalSince1970;
-	NSTimeInterval tzOffset = 0;
-	NSTimeInterval lastCheckinTS = [self calcBackupLastCheckinDate: &tzOffset].timeIntervalSince1970;
-	NSTimeInterval offsetLastCheckinTS = lastCheckinTS - tzOffset;
-	if(offsetLastCheckinTS < todayTS) {
+	struct SHDatetime *today = self.dateProvider.userTodayStart;
+	struct SHDatetime *prevUseDate = [self selectUseDateProperty];
+	bool isDue;
+	SH_isDateALTDateB(prevUseDate, today, &isDue);
+	SHDailyStatus selection = SH_DAILY_STATUS_UNKNOWN;
+	if(isDue) {
 		if(self.isActiveToday) {
-			return SH_DAILY_STATUS_DUE;
+			selection = SH_DAILY_STATUS_DUE;
 		}
-		return SH_DAILY_STATUS_NOT_DUE;
+		selection = SH_DAILY_STATUS_NOT_DUE;
 	}
-	return SH_DAILY_STATUS_COMPLETE;;
+	selection = SH_DAILY_STATUS_COMPLETE;
+	SH_freeSHDatetime(today, 1);
+	SH_freeSHDatetime(prevUseDate, 1);
+	return selection;
 }
+
 
 -(void)updateDailyStatus {
 	self.status = (int32_t)[self calcStatus];

@@ -18,5 +18,6 @@
 #include "SHLeapYearFuncs.h"
 #import "SHDatetimeFuncs.h"
 #include "SHDateCompare.h"
+#include "SHDatetime_addition.h"
 
 #endif /* SHDatetime_h */

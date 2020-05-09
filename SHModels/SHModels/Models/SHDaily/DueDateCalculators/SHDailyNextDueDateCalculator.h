@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHDailyNextDueDateCalculator : NSObject
 @property (strong, nonatomic) SHDailyActiveDays *activeDaysContainer;
+/*for properties, I prefer to use non-pointers because it's
+	harder to track if the memory is no longer needed.
+*/
 @property (assign, nonatomic) struct SHDatetime useDate;
 @property (assign, nonatomic) int32_t dayStartTime;
 @property (strong,nonatomic) NSObject<SHDateProviderProtocol>* dateProvider;

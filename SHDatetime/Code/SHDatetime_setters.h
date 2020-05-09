@@ -29,4 +29,6 @@ void SH_dtSetSecond(struct SHDatetime *dt, int32_t second);
 
 void SH_dtSetMilisecond(struct SHDatetime *dt, int32_t milisecond);
 
+void SH_dtSetToTimeOfDay(struct SHDatetime *dt, int32_t timeOfDay);
+
 #endif /* SHDatetime_setters_h */

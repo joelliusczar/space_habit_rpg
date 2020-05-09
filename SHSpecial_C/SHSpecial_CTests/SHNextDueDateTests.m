@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+@import SHDatetime;
 @import SHSpecial_C;
 
 @interface SHNextDueDateTests : XCTestCase

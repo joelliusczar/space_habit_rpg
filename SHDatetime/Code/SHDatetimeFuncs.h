@@ -24,14 +24,6 @@ SHErrorCode SH_timestampToDt(double timestamp, int32_t timezoneOffset, struct SH
 
 SHErrorCode SH_dtToTimestamp(struct SHDatetime *const dt,double *ans);
 
-SHErrorCode SH_addYearsToDt(struct SHDatetime *dt, int64_t years, SHTimeAdjustOptions options);
-
-SHErrorCode SH_addMonthsToDt(struct SHDatetime *dt, int64_t months, SHTimeAdjustOptions options);
-
-SHErrorCode SH_addDaysToDt(struct SHDatetime *dt, int64_t days, SHTimeAdjustOptions options);
-
-void SH_setToDayStart(struct SHDatetime *dt);
-
 int32_t SH_weekdayIdx(struct SHDatetime * const dt, int32_t dayOffset);
 
 int32_t SH_calcDayOfYear(struct SHDatetime *dt);

@@ -35,9 +35,7 @@
 
 @import SHModels;
 @import SHCommon;
-@import SHTestCommon;
 @import SHDatetime;
-//#import <SHTestCommon/TestHelpers.h>
 #import <malloc/malloc.h>
 
 
@@ -935,7 +933,7 @@ NSString *convertCharToBin(unsigned char input){
 	wob = r.obj;
 	}
 	
-	[TestHelpers setPrivateVar:r ivarName:@"_obj" newVal:nil];
+	[SHReflectionHelper setPrivateVar:r ivarName:@"_obj" newVal:nil];
 }
 
 

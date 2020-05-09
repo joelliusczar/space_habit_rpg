@@ -23,3 +23,11 @@ bool SH_isRawYearCountLeap(int64_t years, bool isBeforeEpoch){
 bool SH_isLeapYear(int64_t year){
 	return SH_isOffsettedYearCountLeap(year - SH_BEST_LEAP_YEAR);
 }
+
+
+/*
+ 	checks if the day is feb 29th
+ */
+bool SH_isFeb29(struct SHDatetime *dt){
+	return dt->month == 2 && dt->day == 29;
+}

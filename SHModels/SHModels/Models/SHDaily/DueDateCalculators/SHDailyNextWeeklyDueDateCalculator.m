@@ -47,22 +47,24 @@ static void _setupDueDateContext(SHDailyNextWeeklyDueDateCalculator *inst, struc
 
 -(struct SHDatetime *)nextDueDate {
 	struct SHDatetime *nextDueDate = malloc(sizeof(struct SHDatetime)); //returning pointer so need to be on heap
-	struct SHDatetime today = self.dateProvider.dateSHDt;
+	struct SHDatetime *today = self.dateProvider.dateSHDt;
 	struct SHDueDateWeeklyContext dueDateContext;
 	_setupDueDateContext(self, &dueDateContext);
-	SH_nextDueDate_WEEKLY(&today, &dueDateContext, nextDueDate);
+	SH_nextDueDate_WEEKLY(today, &dueDateContext, nextDueDate);
 	free(dueDateContext.intervalPoints);
+	SH_freeSHDatetime(today, 1);
 	return nextDueDate;
 }
 
 
 -(BOOL)isDateActive:(struct SHDatetime *)dt {
 	bool ans = false;
-	struct SHDatetime today = self.dateProvider.dateSHDt;
+	struct SHDatetime *today = self.dateProvider.dateSHDt;
 	struct SHDueDateWeeklyContext dueDateContext;
 	_setupDueDateContext(self, &dueDateContext);
-	SH_isDateADueDate_WEEKLY(&today, &dueDateContext, &ans);
+	SH_isDateADueDate_WEEKLY(today, &dueDateContext, &ans);
 	free(dueDateContext.intervalPoints);
+	SH_freeSHDatetime(today, 1);
 	return ans;
 }
 

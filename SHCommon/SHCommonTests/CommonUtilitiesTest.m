@@ -15,19 +15,8 @@
 
 @implementation CommonUtilitiesTest
 
-static BOOL shouldUseLowerBound =YES;
-static uint (*ogRandFn)(uint);
-
-uint mockRandom(uint bound){
-	return shouldUseLowerBound?0:(bound-1);
-}
-
-
-
 
 - (void)setUp {
-	ogRandFn = shRandomUInt;
-	shRandomUInt = &mockRandom;
 }
 
 
@@ -56,83 +45,6 @@ NSDate* getReferenceDate(){
 }
 
 
--(void)testCalculateLvl{
-	uint offset = 10;
-	
-	uint lvl = 0;
-	shouldUseLowerBound = YES;
-	NSInteger result = shCalculateLvl(lvl,offset);
-	XCTAssertEqual(result, 1);
-	shouldUseLowerBound = !shouldUseLowerBound;
-	result = shCalculateLvl(lvl,offset);
-	XCTAssertEqual(result, 11);
-	lvl = 1;
-	shouldUseLowerBound = !shouldUseLowerBound;
-	result = shCalculateLvl(lvl,offset);
-	XCTAssertEqual(result, 1);
-	shouldUseLowerBound = !shouldUseLowerBound;
-	result = shCalculateLvl(lvl,offset);
-	XCTAssertEqual(result, 11);
-	lvl = 2;
-	shouldUseLowerBound = !shouldUseLowerBound;
-	result = shCalculateLvl(lvl,offset);
-	XCTAssertEqual(result, 1);
-	shouldUseLowerBound = !shouldUseLowerBound;
-	result = shCalculateLvl(lvl,offset);
-	XCTAssertEqual(result, 12);
-	lvl = 5;
-	shouldUseLowerBound = !shouldUseLowerBound;
-	result = shCalculateLvl(lvl,offset);
-	XCTAssertEqual(result, 1);
-	shouldUseLowerBound = !shouldUseLowerBound;
-	result = shCalculateLvl(lvl,offset);
-	XCTAssertEqual(result, 15);
-	lvl = 9;
-	shouldUseLowerBound = !shouldUseLowerBound;
-	result = shCalculateLvl(lvl,offset);
-	XCTAssertEqual(result, 1);
-	shouldUseLowerBound = !shouldUseLowerBound;
-	result = shCalculateLvl(lvl,offset);
-	XCTAssertEqual(result, 19);
-	lvl = 10;
-	shouldUseLowerBound = !shouldUseLowerBound;
-	result = shCalculateLvl(lvl,offset);
-	XCTAssertEqual(result, 1);
-	shouldUseLowerBound = !shouldUseLowerBound;
-	result = shCalculateLvl(lvl,offset);
-	XCTAssertEqual(result, 20);
-	lvl = 11;
-	shouldUseLowerBound = !shouldUseLowerBound;
-	result = shCalculateLvl(lvl,offset);
-	XCTAssertEqual(result, 1);
-	shouldUseLowerBound = !shouldUseLowerBound;
-	result = shCalculateLvl(lvl,offset);
-	XCTAssertEqual(result, 21);
-	lvl = 12;
-	shouldUseLowerBound = !shouldUseLowerBound;
-	result = shCalculateLvl(lvl,offset);
-	XCTAssertEqual(result, 2);
-	shouldUseLowerBound = !shouldUseLowerBound;
-	result = shCalculateLvl(lvl,offset);
-	XCTAssertEqual(result, 22);
-	lvl = 15;
-	shouldUseLowerBound = !shouldUseLowerBound;
-	result = shCalculateLvl(lvl,offset);
-	XCTAssertEqual(result, 5);
-	shouldUseLowerBound = !shouldUseLowerBound;
-	result = shCalculateLvl(lvl,offset);
-	XCTAssertEqual(result, 25);
-	lvl = 55;
-	shouldUseLowerBound = !shouldUseLowerBound;
-	result = shCalculateLvl(lvl,offset);
-	XCTAssertEqual(result, 45);
-	shouldUseLowerBound = !shouldUseLowerBound;
-	result = shCalculateLvl(lvl,offset);
-	XCTAssertEqual(result, 65);
-	
-}
-
-
 -(void)testJsonStuff{
 	NSMutableDictionary *testDict = [NSMutableDictionary dictionary];
 	testDict[@"SAT"] = @1;
@@ -153,11 +65,6 @@ NSDate* getReferenceDate(){
 }
 
 
--(void)testRandomUintF{
-  uint bound = 25;
-  uint result = ogRandFn(bound);
-  XCTAssertTrue(result >= 0 && result <= 25);
-}
 
 
 @end
