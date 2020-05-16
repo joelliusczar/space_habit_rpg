@@ -8,7 +8,17 @@
 
 #import "ParentMan.h"
 
+static NSString *_name = nil;
+
 @implementation ParentMan
+
++(NSString*)name {
+	return _name;
+}
+
++(void)setName:(NSString *)name {
+	_name = name;
+}
 
 -(instancetype)init{
 	if(self = [super init]){

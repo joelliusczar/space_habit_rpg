@@ -62,6 +62,7 @@ typedef enum {
 	SH_ILLEGAL_INPUTS = 6,
 	SH_INPUT_BAD_RESULTS = 7,
 	SH_ALLOC = 8,
+	SH_LOGIC_MISROUTE = 9,
 } SHErrorCode;
 
 

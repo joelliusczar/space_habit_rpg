@@ -34,7 +34,7 @@
 				[daily updateDailyStatus];
 				
 				dispatch_sync(penaltyQueue, ^{
-					penalty++;
+					penalty += [calculator missedDays];
 				});
 			}];
 		}];

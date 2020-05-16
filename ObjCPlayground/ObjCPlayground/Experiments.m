@@ -676,28 +676,28 @@ NSString *convertCharToBin(unsigned char input){
 	NSLog(@"dst offset: %f",NSTimeZone.defaultTimeZone.daylightSavingTimeOffset);
 	NSLog(@"seconds off gmt: %ld",NSTimeZone.defaultTimeZone.secondsFromGMT);
 	
-	#warning put back
-//	SHDatetime *dt = [date1 toSHDatetime];
-//	SHDatetime *dt2 = [date1 toSHDatetimeUTC];
-//
-//	[NSTimeZone setDefaultTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
-//
-//	NSLog(@"");
-//	NSLog(@"%@",date1);
-//	NSLog(@"secs since 1970 %f",date1.timeIntervalSince1970);
-//	NSLog(@"dst offset: %f",NSTimeZone.defaultTimeZone.daylightSavingTimeOffset);
-//	NSLog(@"seconds off gmt: %ld",NSTimeZone.defaultTimeZone.secondsFromGMT);
-//
-//
-//
-//	NSLog(@"");
-//	NSDate *date2 = NSDate.date;
-//	NSLog(@"%@",date2);
-//	NSLog(@"secs since 1970 %f",date1.timeIntervalSince1970);
-//	NSLog(@"dst offset: %f",NSTimeZone.defaultTimeZone.daylightSavingTimeOffset);
-//	NSLog(@"seconds off gmt: %ld",NSTimeZone.defaultTimeZone.secondsFromGMT);
-//
-//
+	struct SHDatetime *dt = [date1 SH_toSHDatetime];
+	struct SHDatetime *dt2 = [date1 SH_toSHDatetimeUTC];
+
+	[NSTimeZone setDefaultTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
+
+	NSLog(@"");
+	NSLog(@"%@",date1);
+	NSLog(@"secs since 1970 %f",date1.timeIntervalSince1970);
+	NSLog(@"dst offset: %f",NSTimeZone.defaultTimeZone.daylightSavingTimeOffset);
+	NSLog(@"seconds off gmt: %ld",NSTimeZone.defaultTimeZone.secondsFromGMT);
+
+
+
+	NSLog(@"");
+	NSDate *date2 = NSDate.date;
+	NSLog(@"%@",date2);
+	NSLog(@"secs since 1970 %f",date1.timeIntervalSince1970);
+	NSLog(@"dst offset: %f",NSTimeZone.defaultTimeZone.daylightSavingTimeOffset);
+	NSLog(@"seconds off gmt: %ld",NSTimeZone.defaultTimeZone.secondsFromGMT);
+
+	SH_freeSHDatetime(dt, 1);
+	SH_freeSHDatetime(dt2, 1);
 
 }
 

@@ -14,7 +14,8 @@ cp "$DERIVED_FILE_DIR"/CoreDataGenerated/Model/*.h "$BUILT_PRODUCTS_DIR"/SHModel
 echo "Derived file dir: $DERIVED_FILE_DIR"
 echo "" > "$SRCROOT"/../modelsReference.txt
 
-for file in "$DERIVED_FILE_DIR"/CoreDataGenerated/Model/*.h; do
+for file in "$DERIVED_FILE_DIR"/CoreDataGenerated/Model/*; do
+	echo "$file" >> "$SRCROOT"/../modelsReference.txt
 	cat "$file" >> "$SRCROOT"/../modelsReference.txt
 done;
 

@@ -45,7 +45,7 @@
 	struct SHDatetime expected = base;
 	struct SHDatetime result;
 	
-	dueDateContext.prevUseDate = &lastDueDate;
+	dueDateContext.savedPrevDate = &lastDueDate;
 
 	SH_addDaysToDt(&lastDueDate, 0, SH_TIME_ADJUST_NO_OPTION);
 	SH_addDaysToDt(&useDate, 1, SH_TIME_ADJUST_NO_OPTION);
@@ -90,7 +90,7 @@
 	dueDateContext.intervalPoints = &intervalPointList;
 	dueDateContext.intervalSize = 3;
 	dueDateContext.weekStartOffset = 0;
-	dueDateContext.prevUseDate = &lastDueDate;
+	dueDateContext.savedPrevDate = &lastDueDate;
 	
 	int32_t *weekScaler = &dueDateContext.intervalSize;
 	
@@ -323,6 +323,58 @@
 	SH_refreshWeek(dueDateContext.intervalPoints, *weekScaler);
 	
 	
+}
+
+
+-(void)testNextDueDateDiffTimezone {
+	/*
+	#calendar 2018
+	DEC
+		SU	MO	TU	WE	TH	FR	SA
+												01	02
+		03	04	05	06	07	08	09
+		10	11	12	13	14	15	16
+		17	18	19	20	21	22	23
+		24	25	26	27	28	29	30
+		31
+	JAN
+				01	02	03	04	05	06
+		07	08	09	10	11	12	13*
+		14	15	16	17	18	19	20
+		21	22	23	24	25	26	27
+		28	29	30	31
+	*/
+	
+	struct SHDueDateWeeklyContext dueDateContext;
+	struct SHWeekIntervalPointList intervalPointList;
+	memset(&intervalPointList, 0, sizeof(struct SHWeekIntervalPointList));
+	intervalPointList.days[1].isDayActive = true;
+	intervalPointList.days[3].isDayActive = true;
+	dueDateContext.dayStartHour = 0;
+	dueDateContext.intervalPoints = &intervalPointList;
+	dueDateContext.intervalSize = 3;
+	dueDateContext.weekStartOffset = 0;
+	
+	int32_t *weekScaler = &dueDateContext.intervalSize;
+	
+	SH_refreshWeek(dueDateContext.intervalPoints, *weekScaler);
+
+	struct SHDatetime lastDueDate = {.year = 2018, .month = 1, .day = 8, .timezoneOffset = -18000 };
+	struct SHDatetime useDate = {.year = 2018, .month = 1, .day = 17, .timezoneOffset = -36000 };
+	struct SHDatetime expectedDate = {.year = 2018, .month = 1, .day = 29, .timezoneOffset = -36000  };
+	struct SHDatetime result;
+	SHErrorCode status = SH_NO_ERROR;
+	
+	dueDateContext.savedPrevDate = &lastDueDate;
+	
+	double timestamp = 0;
+	double expectedTimestamp = -1;
+	
+	status = SH_nextDueDate_WEEKLY(&useDate, &dueDateContext, &result);
+	
+	SH_dtToTimestamp(&result, &timestamp);
+	SH_dtToTimestamp(&expectedDate, &expectedTimestamp);
+	XCTAssertEqual(status, SH_NO_ERROR);
 }
 
 @end

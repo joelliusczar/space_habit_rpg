@@ -13,7 +13,6 @@
 		270EEF2B245A56480078D2ED /* SHDueDateWeeklyContext_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = 270EEF29245A4C5A0078D2ED /* SHDueDateWeeklyContext_struct.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271691CC20885F890059A58E /* SHDueDatesWeeklyFuncs.h in Headers */ = {isa = PBXBuildFile; fileRef = 271691CA20885F890059A58E /* SHDueDatesWeeklyFuncs.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271691CD20885F890059A58E /* SHDueDatesWeeklyFuncs.c in Sources */ = {isa = PBXBuildFile; fileRef = 271691CB20885F890059A58E /* SHDueDatesWeeklyFuncs.c */; };
-		274ADCFB245E496C00763D25 /* SHSpecial_CTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADCFA245E496C00763D25 /* SHSpecial_CTests.m */; };
 		274ADCFD245E496C00763D25 /* SHSpecial_C in Frameworks */ = {isa = PBXBuildFile; fileRef = 271691C220885EF70059A58E /* SHSpecial_C */; };
 		274ADD08245E498500763D25 /* SHDueDateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD07245E498500763D25 /* SHDueDateTests.m */; };
 		274ADD45245E549900763D25 /* SHPreviousDueDateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD44245E549900763D25 /* SHPreviousDueDateTests.m */; };
@@ -21,6 +20,11 @@
 		2769C09D227DD70800217480 /* SHSpecial_C.h in Headers */ = {isa = PBXBuildFile; fileRef = 27870450227BC188009C9DD6 /* SHSpecial_C.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		277970CD21FD764C00D3F86D /* SHWeekIntervalPoint_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = 277970CC21FD75E900D3F86D /* SHWeekIntervalPoint_struct.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27D802C2245F54970057E950 /* OtherDueDateFuncsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D802C1245F54970057E950 /* OtherDueDateFuncsTests.m */; };
+		27F3CFD7246E353800E5B211 /* SHMissedDays.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3CFD6246E353800E5B211 /* SHMissedDays.m */; };
+		27F3CFD9246F079F00E5B211 /* SHMissedDaysInterval5.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3CFD8246F079F00E5B211 /* SHMissedDaysInterval5.m */; };
+		27F3CFDB246F3ACF00E5B211 /* SHMissedDaysInterval6.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3CFDA246F3ACF00E5B211 /* SHMissedDaysInterval6.m */; };
+		27F3CFDD246F456700E5B211 /* SHMissedDaysInterval7.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3CFDC246F456700E5B211 /* SHMissedDaysInterval7.m */; };
+		27F3CFDF246F48AC00E5B211 /* SHMissedDaysSameWeek.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3CFDE246F48AC00E5B211 /* SHMissedDaysSameWeek.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,7 +81,6 @@
 		2737D58B216EE67B00E0111F /* DailySingleTest.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = DailySingleTest.py; sourceTree = "<group>"; };
 		27397343226C08C0001590C6 /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		274ADCF8245E496C00763D25 /* SHSpecial_CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHSpecial_CTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		274ADCFA245E496C00763D25 /* SHSpecial_CTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHSpecial_CTests.m; sourceTree = "<group>"; };
 		274ADCFC245E496C00763D25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		274ADD07245E498500763D25 /* SHDueDateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDueDateTests.m; sourceTree = "<group>"; };
 		274ADD09245E49B100763D25 /* SHSpecial_C.test.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHSpecial_C.test.xcconfig; sourceTree = "<group>"; };
@@ -97,6 +100,11 @@
 		27BC44E4238792200047F683 /* SHDatetime.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHDatetime.xcodeproj; path = ../SHDatetime/SHDatetime.xcodeproj; sourceTree = "<group>"; };
 		27BCF911227BE97800540F4F /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		27D802C1245F54970057E950 /* OtherDueDateFuncsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherDueDateFuncsTests.m; sourceTree = "<group>"; };
+		27F3CFD6246E353800E5B211 /* SHMissedDays.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHMissedDays.m; sourceTree = "<group>"; };
+		27F3CFD8246F079F00E5B211 /* SHMissedDaysInterval5.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHMissedDaysInterval5.m; sourceTree = "<group>"; };
+		27F3CFDA246F3ACF00E5B211 /* SHMissedDaysInterval6.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHMissedDaysInterval6.m; sourceTree = "<group>"; };
+		27F3CFDC246F456700E5B211 /* SHMissedDaysInterval7.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHMissedDaysInterval7.m; sourceTree = "<group>"; };
+		27F3CFDE246F48AC00E5B211 /* SHMissedDaysSameWeek.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHMissedDaysSameWeek.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,7 +166,7 @@
 				27BC44E4238792200047F683 /* SHDatetime.xcodeproj */,
 				276E6D96222A4AA500CB36CB /* Configs */,
 				27BB29092157499D003225BB /* Other_Code */,
-				274ADCF9245E496C00763D25 /* SHSpecial_CTests */,
+				274ADCF9245E496C00763D25 /* Tests */,
 				271691CE208860100059A58E /* Frameworks */,
 				271691C320885EF70059A58E /* Products */,
 				2712C5F6244D2C0A00157758 /* Resources */,
@@ -197,17 +205,21 @@
 			path = Scripts;
 			sourceTree = "<group>";
 		};
-		274ADCF9245E496C00763D25 /* SHSpecial_CTests */ = {
+		274ADCF9245E496C00763D25 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				274ADCFA245E496C00763D25 /* SHSpecial_CTests.m */,
 				274ADCFC245E496C00763D25 /* Info.plist */,
 				274ADD07245E498500763D25 /* SHDueDateTests.m */,
 				274ADD44245E549900763D25 /* SHPreviousDueDateTests.m */,
 				274ADD46245E71ED00763D25 /* SHNextDueDateTests.m */,
 				27D802C1245F54970057E950 /* OtherDueDateFuncsTests.m */,
+				27F3CFD6246E353800E5B211 /* SHMissedDays.m */,
+				27F3CFD8246F079F00E5B211 /* SHMissedDaysInterval5.m */,
+				27F3CFDA246F3ACF00E5B211 /* SHMissedDaysInterval6.m */,
+				27F3CFDC246F456700E5B211 /* SHMissedDaysInterval7.m */,
+				27F3CFDE246F48AC00E5B211 /* SHMissedDaysSameWeek.m */,
 			);
-			path = SHSpecial_CTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		276E6D96222A4AA500CB36CB /* Configs */ = {
@@ -427,11 +439,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27F3CFDF246F48AC00E5B211 /* SHMissedDaysSameWeek.m in Sources */,
 				274ADD47245E71ED00763D25 /* SHNextDueDateTests.m in Sources */,
+				27F3CFD9246F079F00E5B211 /* SHMissedDaysInterval5.m in Sources */,
+				27F3CFD7246E353800E5B211 /* SHMissedDays.m in Sources */,
 				27D802C2245F54970057E950 /* OtherDueDateFuncsTests.m in Sources */,
 				274ADD45245E549900763D25 /* SHPreviousDueDateTests.m in Sources */,
-				274ADCFB245E496C00763D25 /* SHSpecial_CTests.m in Sources */,
+				27F3CFDB246F3ACF00E5B211 /* SHMissedDaysInterval6.m in Sources */,
 				274ADD08245E498500763D25 /* SHDueDateTests.m in Sources */,
+				27F3CFDD246F456700E5B211 /* SHMissedDaysInterval7.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,7 +596,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XK3RJ8E2L2;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = SHSpecial_CTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -604,7 +620,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XK3RJ8E2L2;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = SHSpecial_CTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

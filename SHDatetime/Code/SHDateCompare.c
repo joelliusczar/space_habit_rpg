@@ -42,7 +42,7 @@ SHErrorCode SH_isDateAGTDateB(struct SHDatetime * const A, struct SHDatetime * c
 }
 
 
-SHErrorCode SH_isDateAGTEqualDateB(struct SHDatetime * const A, struct SHDatetime * const B, bool *ans){
+SHErrorCode SH_isDateAGTEDateB(struct SHDatetime * const A, struct SHDatetime * const B, bool *ans){
 	double timestampA = 0;
 	double timestampB = -1;
 	SHErrorCode status = SH_NO_ERROR;
@@ -74,7 +74,7 @@ SHErrorCode SH_isDateALTDateB(struct SHDatetime * const A, struct SHDatetime * c
 }
 
 
-SHErrorCode SH_isDateALTEqualDateB(struct SHDatetime * const A, struct SHDatetime * const B, bool *ans){
+SHErrorCode SH_isDateALTEDateB(struct SHDatetime * const A, struct SHDatetime * const B, bool *ans){
 	double timestampA = 0;
 	double timestampB = -1;
 	SHErrorCode status = SH_NO_ERROR;

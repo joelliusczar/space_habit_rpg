@@ -26,6 +26,7 @@
 
 -(void)testSetUseDateToLastActive {
 	/*
+	#calendar 2020
 		FEB
 							*		*		*				*
 			SU	MO	TU	WE	TH	FR	SA
@@ -146,6 +147,7 @@
 
 -(void)testIsWeekActive {
 	/*
+		#calendar 2018
 			SU	MO	TU	WE	TH	FR	SA
 													01	02
 			03	04	05	06	07	08	09		2	3
@@ -191,7 +193,7 @@
 	
 	bool result;
 	
-	testContext.prevUseDate = &contextDate;
+	testContext.savedPrevDate = &contextDate;
 	SHErrorCode status = SH_isWeekActiveForDate(&testDate, &testContext, &result);
 	XCTAssertEqual(status, SH_NO_ERROR);
 	XCTAssertTrue(result);
@@ -289,5 +291,7 @@
 	XCTAssertEqual(status, SH_NO_ERROR);
 	
 }
+
+
 
 @end

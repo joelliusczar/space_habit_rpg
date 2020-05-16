@@ -41,13 +41,13 @@
         <attribute name="dailyName" optional="YES" attributeType="String"/>
         <attribute name="dailyXp" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="difficulty" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="intervalType" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="isEnabled" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="lastActivationDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="lastUpdateDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="lastUpdateHasPriority" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="lastUpdateTzOffset" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="note" optional="YES" attributeType="String"/>
-        <attribute name="rateType" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="status" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="streakLength" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="tzOffsetLastActivationDateTime" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -131,17 +131,17 @@
         <attribute name="transType" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="SHCategory" positionX="-245.34375" positionY="-14.70703125" width="128" height="133"/>
-        <element name="SHCounter" positionX="108" positionY="18" width="128" height="283"/>
-        <element name="SHCounterEvent" positionX="-90.3203125" positionY="27.64453125" width="128" height="73"/>
-        <element name="SHDaily" positionX="-1227.05078125" positionY="-119.390625" width="128" height="463"/>
-        <element name="SHDailyEvent" positionX="33.1875" positionY="64.06640625" width="128" height="88"/>
-        <element name="SHDailySubTask" positionX="-493.71484375" positionY="-52.265625" width="128" height="163"/>
-        <element name="SHItem" positionX="-290" positionY="174" width="128" height="148"/>
-        <element name="SHReminder" positionX="-543.9140625" positionY="-192.9453125" width="135.0625" height="118"/>
-        <element name="SHSectorArtifact" positionX="48.640625" positionY="-77.20703125" width="128" height="88"/>
-        <element name="SHTeapot" positionX="-367.21484375" positionY="-181.45703125" width="128" height="118"/>
-        <element name="SHTodo" positionX="-40.0546875" positionY="367.73046875" width="128" height="223"/>
-        <element name="SHTransaction" positionX="-415.01171875" positionY="-693.46875" width="128" height="103"/>
+        <element name="SHCategory" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="SHCounter" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="SHCounterEvent" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="SHDaily" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="SHDailyEvent" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="SHDailySubTask" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="SHItem" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="SHReminder" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="SHSectorArtifact" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="SHTeapot" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="SHTodo" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="SHTransaction" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

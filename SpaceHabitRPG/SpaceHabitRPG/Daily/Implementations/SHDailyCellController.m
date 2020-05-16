@@ -64,7 +64,7 @@
 //				[self.completeBtn setImage:[self drawCompletionIcon:1] forState:UIControlStateNormal];
 //			}
 //			else{
-//				if(rateType != SH_DAILY_RATE || rate > 1) {
+//				if(intervalType != SH_DAILY_INTERVAL || intervalSize > 1) {
 //					self.daysLeftLbl.hidden = NO;
 //					self.daysLeftLbl.text = daysUntilDue == 0 ? @"Due today":
 //						daysUntilDue == 1 ? @"Due tomorrow" :

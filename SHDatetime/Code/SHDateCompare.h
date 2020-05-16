@@ -18,10 +18,10 @@ SHErrorCode SH_areDatesEqual(struct SHDatetime * const A, struct SHDatetime * co
 
 SHErrorCode SH_isDateAGTDateB(struct SHDatetime * const A, struct SHDatetime * const B, bool *ans);
 
-SHErrorCode SH_isDateAGTEqualDateB(struct SHDatetime * const A, struct SHDatetime * const B, bool *ans);
+SHErrorCode SH_isDateAGTEDateB(struct SHDatetime * const A, struct SHDatetime * const B, bool *ans);
 
 SHErrorCode SH_isDateALTDateB(struct SHDatetime * const A, struct SHDatetime * const B, bool *ans);
 
-SHErrorCode SH_isDateALTEqualDateB(struct SHDatetime * const A, struct SHDatetime * const B, bool *ans);
+SHErrorCode SH_isDateALTEDateB(struct SHDatetime * const A, struct SHDatetime * const B, bool *ans);
 
 #endif /* SHDateCompare_h */

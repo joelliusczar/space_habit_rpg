@@ -38,35 +38,51 @@ static void _setupDueDateContext(SHDailyNextWeeklyDueDateCalculator *inst, struc
 	context->intervalSize = inst.activeDays.intervalSize;
 	context->dayStartHour = inst.dayStartTime;
 	context->weekStartOffset = SHConfig.weeklyStartDay;
-	SH_setUseDateToLastActive(&inst->_useDate, context);
-	context->prevUseDate = &inst->_useDate;
 	context->intervalPoints = malloc(sizeof(struct SHWeekIntervalPointList));
 	*context->intervalPoints = [inst.activeDays copyWeek];
+	context->savedPrevDate = &inst->_useDate; //pointer syntax because can't pass address of a property
+	SH_setUseDateToLastActive(&inst->_useDate, context);
+	context->isInverse = inst.isInverse;
 }
 
 
 -(struct SHDatetime *)nextDueDate {
-	struct SHDatetime *nextDueDate = malloc(sizeof(struct SHDatetime)); //returning pointer so need to be on heap
-	struct SHDatetime *today = self.dateProvider.dateSHDt;
+	struct SHDatetime *nextDueDate = malloc(sizeof(struct SHDatetime));
+	struct SHDatetime *todaylocal = self.dateProvider.dateSHDt;
 	struct SHDueDateWeeklyContext dueDateContext;
 	_setupDueDateContext(self, &dueDateContext);
-	SH_nextDueDate_WEEKLY(today, &dueDateContext, nextDueDate);
+	SHErrorCode status = SH_nextDueDate_WEEKLY(todaylocal, &dueDateContext, nextDueDate);
 	free(dueDateContext.intervalPoints);
-	SH_freeSHDatetime(today, 1);
+	SH_freeSHDatetime(todaylocal, 1);
+	if(status != SH_NO_ERROR) {
+		return NULL;
+	}
 	return nextDueDate;
 }
 
 
--(BOOL)isDateActive:(struct SHDatetime *)dt {
+-(BOOL)isDateActive:(struct SHDatetime *)dateInQuestion {
 	bool ans = false;
-	struct SHDatetime *today = self.dateProvider.dateSHDt;
 	struct SHDueDateWeeklyContext dueDateContext;
 	_setupDueDateContext(self, &dueDateContext);
-	SH_isDateADueDate_WEEKLY(today, &dueDateContext, &ans);
+	SH_isDateADueDate_WEEKLY(dateInQuestion, &dueDateContext, &ans);
 	free(dueDateContext.intervalPoints);
-	SH_freeSHDatetime(today, 1);
 	return ans;
 }
 
+
+-(NSInteger)missedDays {
+	struct SHDueDateWeeklyContext dueDateContext;
+	_setupDueDateContext(self, &dueDateContext);
+	struct SHDatetime *todaylocal = self.dateProvider.dateSHDt;
+	int64_t missedDays = SH_NOT_FOUND;
+	SHErrorCode status = SH_missedDays(todaylocal, &dueDateContext, &missedDays);
+	SH_freeSHDatetime(todaylocal, 1);
+	free(dueDateContext.intervalPoints);
+	if(status != SH_NO_ERROR) {
+		return SH_NOT_FOUND;
+	}
+	return missedDays;
+}
 
 @end

@@ -24,26 +24,23 @@ void SH_fillWeek(int32_t *daysAheadCounts, int32_t *daysBeforeCounts,
 
 void SH_refreshWeek(struct SHWeekIntervalPointList *intervalPoints, int32_t intervalSize);
 
-SHErrorCode SH_previousDueDate_WEEKLY(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *input,
+SHErrorCode SH_previousDueDate_WEEKLY(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *context,
 	struct SHDatetime *ans);
 
-SHErrorCode SH_bothWeeklyDueDatesFromLastDueDate(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *input,
+SHErrorCode SH_bothWeeklyDueDatesFromLastDueDate(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *context,
 	struct SHDatetime **ans, int32_t *ansLen);
 
-SHErrorCode SH_nextDueDate_WEEKLY(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *input,
+SHErrorCode SH_nextDueDate_WEEKLY(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *context,
 	struct SHDatetime *ans);
 
-SHErrorCode SH_isDateADueDate_WEEKLY(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *input,
+SHErrorCode SH_isDateADueDate_WEEKLY(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *context,
 	bool *ans);
 
-SHErrorCode SH_isWeekActiveForDate(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *input,
+SHErrorCode SH_isWeekActiveForDate(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *context,
 	bool *ans);
 
 SHErrorCode SH_setUseDateToLastActive(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *context);
-/*
- activeDays: an array of exactly 7 elements.
- intervalSize: this is the frequency, ex: event happens every 3 weeks
- intervalPoints: this should be an array of 7 elements. Any values in this will get over written
- void buildWeek(bool *activeDays,int64_t scaler,RateValueItem *intervalPoints)
- */
+
+SHErrorCode SH_missedDays(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *context, int64_t *ans);
+
 #endif /* SHDueDatesWeeklyFuncs_h */

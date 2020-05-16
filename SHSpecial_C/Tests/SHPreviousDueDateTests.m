@@ -31,6 +31,7 @@
 -(void)testPreviousDate{
 	
 	/*
+	#calendar 2018
 	DEC
 		SU	MO	TU	WE	TH	FR	SA
 												01	02
@@ -40,7 +41,6 @@
 		24	25	26	27	28	29	30
 		31
 	JAN
-		SU	MO	TU	WE	TH	FR	SA
 				01	02	03	04	05	06
 		07	08	09	10	11	12	13*
 		14	15	16	17	18	19	20
@@ -69,7 +69,7 @@
 	struct SHDatetime result;
 	SHErrorCode status = SH_NO_ERROR;
 	
-	dueDateContext.prevUseDate = &lastDueDate;
+	dueDateContext.savedPrevDate = &lastDueDate;
 	
 	double timestamp = 0;
 	double expectedTimestamp = -1;
@@ -853,4 +853,54 @@
 	
 }
 
+
+-(void)testPreviousDateDiffTimezone {
+	/*
+	#calendar 2018
+	DEC
+												01	02
+		03	04	05	06	07	08	09
+		10	11	12	13	14	15	16
+		17	18	19	20	21	22	23
+		24	25	26	27	28	29	30
+		31
+	JAN
+				01	02	03	04	05	06
+		07	08	09	10	11	12	13*
+		14	15	16	17	18	19	20
+		21	22	23	24	25	26	27
+		28	29	30	31
+	*/
+	
+	struct SHDueDateWeeklyContext dueDateContext;
+	struct SHWeekIntervalPointList intervalPointList;
+	memset(&intervalPointList, 0, sizeof(struct SHWeekIntervalPointList));
+	intervalPointList.days[1].isDayActive = true;
+	intervalPointList.days[3].isDayActive = true;
+	dueDateContext.dayStartHour = 0;
+	dueDateContext.intervalPoints = &intervalPointList;
+	dueDateContext.intervalSize = 3;
+	dueDateContext.weekStartOffset = 0;
+	
+	int32_t *weekScaler = &dueDateContext.intervalSize;
+	
+	SH_refreshWeek(dueDateContext.intervalPoints, *weekScaler);
+
+	struct SHDatetime lastDueDate = {.year = 2018, .month = 1, .day = 8, .timezoneOffset = -18000 };;
+	struct SHDatetime useDate = {.year = 2018, .month = 1, .day = 17, .timezoneOffset = -36000 };
+	struct SHDatetime expectedDate = {.year = 2018, .month = 1, .day = 10 };;
+	struct SHDatetime result;
+	SHErrorCode status = SH_NO_ERROR;
+	
+	dueDateContext.savedPrevDate = &lastDueDate;
+	
+	double timestamp = 0;
+	double expectedTimestamp = -1;
+	
+	status = SH_previousDueDate_WEEKLY(&useDate, &dueDateContext, &result);
+	
+	SH_dtToTimestamp(&result, &timestamp);
+	SH_dtToTimestamp(&expectedDate, &expectedTimestamp);
+	XCTAssertEqual(status, SH_NO_ERROR);
+}
 @end

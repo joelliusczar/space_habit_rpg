@@ -32,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(instancetype)initWithActiveDaysJson:(nullable NSString*)activeDaysJson;
 -(NSString*)activeDaysAsJson;
--(nullable SHIntervalItemFormat *)selectRateItemCollection:(SHRateType)rateType;
+-(nullable SHIntervalItemFormat *)selectRateItemCollection:(SHIntervalType)rateType;
 @end
 
 NS_ASSUME_NONNULL_END

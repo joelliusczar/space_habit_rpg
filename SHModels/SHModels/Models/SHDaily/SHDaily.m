@@ -59,6 +59,9 @@ This also applies if the active days got changed. #activeDayMath
 
 @synthesize calculator = _calculator;
 -(SHDailyNextDueDateCalculator *)calculator {
+	if(nil != _calculator) {
+		return _calculator;
+	}
 	int32_t dayStartTime = 0;
 	if(nil != self.cycleStartTime) {
 		dayStartTime = self.cycleStartTime.intValue;
@@ -67,7 +70,7 @@ This also applies if the active days got changed. #activeDayMath
 		dayStartTime = SHConfig.dayStartTime;
 	}
 	_calculator = [SHDailyNextDueDateCalculator
-		newWithActiveDays:self.activeDaysContainer intervalType:self.rateType];
+		newWithActiveDays:self.activeDaysContainer intervalType:self.intervalType];
 	_calculator.dateProvider = self.dateProvider;
 	_calculator.dayStartTime = dayStartTime;
 	struct SHDatetime *selectedDateProperty = [self selectUseDateProperty];
@@ -78,30 +81,26 @@ This also applies if the active days got changed. #activeDayMath
 
 
 -(BOOL)isActiveToday {
-	//I'm just gonna use the normal day start here.
-	//because I can imagine users getting confused by that
-	#warning implement
-	return false;
-	//return [self.calculator isDateActive:self.dateProvider.date];
+	return [self.calculator isDateActive:self.dateProvider.dateSHDt];
 }
 
--(NSInteger)rate{
-	switch(self.rateType){
-		case SH_YEARLY_RATE:
+-(NSInteger)intervalSize{
+	switch(self.intervalType){
+		case SH_YEARLY_INTERVAL:
 			return self.activeDaysContainer.yearlyActiveDays.intervalSize;
-		case SH_YEARLY_RATE_INVERSE:
+		case SH_YEARLY_INTERVAL_INVERSE:
 			return self.activeDaysContainer.yearlyActiveDaysInv.intervalSize;
-		case SH_MONTHLY_RATE:
+		case SH_MONTHLY_INTERVAL:
 			return self.activeDaysContainer.monthlyActiveDays.intervalSize;
-		case SH_MONTHLY_RATE_INVERSE:
+		case SH_MONTHLY_INTERVAL_INVERSE:
 			return self.activeDaysContainer.monthlyActiveDaysInv.intervalSize;
-		case SH_WEEKLY_RATE:
+		case SH_WEEKLY_INTERVAL:
 			return self.activeDaysContainer.weeklyActiveDays.intervalSize;
-		case SH_WEEKLY_RATE_INVERSE:
+		case SH_WEEKLY_INTERVAL_INVERSE:
 			return self.activeDaysContainer.weeklyActiveDaysInv.intervalSize;
-		case SH_DAILY_RATE:
+		case SH_DAILY_INTERVAL:
 			return self.activeDaysContainer.dailyRateItem.intervalSize;
-		case SH_DAILY_RATE_INVERSE:
+		case SH_DAILY_INTERVAL_INVERSE:
 			return self.activeDaysContainer.dailyRateItemInv.intervalSize;
 	}
 	return 1;
@@ -114,35 +113,38 @@ This also applies if the active days got changed. #activeDayMath
 
 
 -(NSInteger)daysUntilDue{
-	NSUInteger dayStart = 0;
-	dayStart = SHConfig.dayStartTime;
-	NSDate *today = self.dateProvider.date;
-	#warning fix
-	return 0;
-//	NSDate *roundedDownToday = [today dayStart];
-//	NSDate *todayFromStartTime = [roundedDownToday timeAfterSeconds:dayStart];
-//	NSDate *todayUTCWithStartTime = [todayFromStartTime dateInTimezone:
-//		[NSTimeZone timeZoneForSecondsFromGMT:0]];
-//	NSDate *nextDueDate = self.nextDueDate;
-//	return (NSInteger)[NSDate daysBetween:todayUTCWithStartTime to:nextDueDate];
+	struct SHDatetime *todayStartLocal = [self.dateProvider userTodayStart];
+	struct SHDatetime *nextDueDateLocal = [self.calculator nextDueDate];
+	if(!nextDueDateLocal) {
+		return SH_NOT_FOUND;
+	}
+	int64_t daysUntilDue = 0;
+	SHErrorCode status = SH_NO_ERROR;
+	status = SH_dateDiffDays(todayStartLocal, nextDueDateLocal, &daysUntilDue);
+	SH_freeSHDatetime(todayStartLocal, 1);
+	SH_freeSHDatetime(nextDueDateLocal, 1);
+	if(status != SH_NO_ERROR) {
+		return SH_NOT_FOUND;
+	}
+	return daysUntilDue;
 }
 
 
 -(NSInteger)maxDaysBeforeSpan{
 	SHDailyMaxDaysBeforeSpanCalculator *calculator = [[SHDailyMaxDaysBeforeSpanCalculator alloc]
 		initWithActiveDays:self.activeDaysContainer
-		rate: self.rate];
-	switch(self.rateType){
-		case SH_YEARLY_RATE:
-		case SH_YEARLY_RATE_INVERSE:
-		case SH_MONTHLY_RATE:
-		case SH_MONTHLY_RATE_INVERSE:
+		rate: self.intervalSize];
+	switch(self.intervalType){
+		case SH_YEARLY_INTERVAL:
+		case SH_YEARLY_INTERVAL_INVERSE:
+		case SH_MONTHLY_INTERVAL:
+		case SH_MONTHLY_INTERVAL_INVERSE:
 			return 2147483647;
-		case SH_WEEKLY_RATE:
+		case SH_WEEKLY_INTERVAL:
 			return [calculator maxDaysBeforeSpan_WEEKLY];
-		case SH_WEEKLY_RATE_INVERSE:
-		case SH_DAILY_RATE:
-		case SH_DAILY_RATE_INVERSE:
+		case SH_WEEKLY_INTERVAL_INVERSE:
+		case SH_DAILY_INTERVAL:
+		case SH_DAILY_INTERVAL_INVERSE:
 			return 0;
 	}
 	return 0;
@@ -191,7 +193,7 @@ This also applies if the active days got changed. #activeDayMath
 
 -(void)setupInitialState{
 	self.activeDays = SH_ALL_DAYS_JSON;
-	self.rateType = SH_WEEKLY_RATE;
+	self.intervalType = SH_WEEKLY_INTERVAL;
 	self.dailyName = @"";
 	self.difficulty = 3;
 	self.urgency = 3;
@@ -210,9 +212,9 @@ This also applies if the active days got changed. #activeDayMath
 
 -(SHDailyStatus)calcStatus {
 	struct SHDatetime *today = self.dateProvider.userTodayStart;
-	struct SHDatetime *prevUseDate = [self selectUseDateProperty];
+	struct SHDatetime *savedPrevDate = [self selectUseDateProperty];
 	bool isDue;
-	SH_isDateALTDateB(prevUseDate, today, &isDue);
+	SH_isDateALTDateB(savedPrevDate, today, &isDue);
 	SHDailyStatus selection = SH_DAILY_STATUS_UNKNOWN;
 	if(isDue) {
 		if(self.isActiveToday) {
@@ -222,7 +224,7 @@ This also applies if the active days got changed. #activeDayMath
 	}
 	selection = SH_DAILY_STATUS_COMPLETE;
 	SH_freeSHDatetime(today, 1);
-	SH_freeSHDatetime(prevUseDate, 1);
+	SH_freeSHDatetime(savedPrevDate, 1);
 	return selection;
 }
 
@@ -252,6 +254,8 @@ This also applies if the active days got changed. #activeDayMath
 	return (NSArray<SHDailyEvent *>*)[self.managedObjectContext
 		getItemsWithRequest:fetchRequest];
 }
+
+
 
 
 @end

@@ -14,11 +14,12 @@
 #include <stdbool.h>
 
 struct SHDueDateWeeklyContext {
-	struct SHDatetime *prevUseDate;
+	struct SHDatetime *savedPrevDate;
 	struct SHWeekIntervalPointList *intervalPoints;
 	int32_t intervalSize;
 	int32_t dayStartHour;
 	int32_t weekStartOffset;
+	bool isInverse;
 };
 
 

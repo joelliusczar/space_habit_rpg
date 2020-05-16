@@ -298,4 +298,81 @@
 	XCTAssertEqual(results.days[6].backrange,1);
 }
 
+-(void)testIsTodayADueDate {
+	/*
+		#calendar 2018
+			SU	MO	TU	WE	TH	FR	SA
+													01	02
+			03	04	05	06	07	08	09		2	3
+			10	11	12	13	14	15	16
+			17	18	19	20	21	22	23		2
+			24	25	26	27	28	29	30			3
+			31														2
+		JAN
+					01	02	03	04	05	06
+			07	08	09	10	11	12	13	*
+			14	15	16	17	18	19	20	1
+			21	22	23	24	25	26	27	1	2
+			28	29	30	31									3
+		FEB
+											01	02	03	1		3
+			04	05	06	07	08	09	10	1	2
+			11	12	13	14	15	16	17	1
+			18	19	20	21	22	23	24	1	2	3
+			25	26	27	28							1
+		MAR
+											01	02	03		2
+			04	05	06	07	08	09	10
+			11	12	13	14	15	16	17		2	3
+			18	19	20	21	22	23	24
+			25	26	27	28	29	30	31		2
+	*/
+	
+	struct SHDueDateWeeklyContext testContext;
+	struct SHWeekIntervalPointList intervalPointList;
+	
+	memset(&intervalPointList, 0, sizeof(struct SHWeekIntervalPointList));
+	
+	intervalPointList.days[3].isDayActive = true; //wed
+	testContext.dayStartHour = 0;
+	testContext.intervalPoints = &intervalPointList;
+	testContext.intervalSize = 3;
+	testContext.weekStartOffset = 0;
+	
+	struct SHDatetime contextDate = {.year = 2018, .month = 1, .day = 10};
+	struct SHDatetime testDate = {.year = 2018, .month = 1, .day = 31, .timezoneOffset = -18000};
+	
+	
+	bool result;
+	SHErrorCode status = SH_NO_ERROR;
+	
+	testContext.savedPrevDate = &contextDate;
+	status = SH_isDateADueDate_WEEKLY(&testDate, &testContext, &result);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertTrue(result);
+	
+	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 31, .timezoneOffset = 18000};
+	status = SH_isDateADueDate_WEEKLY(&testDate, &testContext, &result);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertTrue(result);
+	
+	testContext.dayStartHour = 21600;
+
+	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 31, .timezoneOffset = 18000};
+	status = SH_isDateADueDate_WEEKLY(&testDate, &testContext, &result);
+	XCTAssertTrue(result);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	
+	contextDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 11};
+	status = SH_isDateADueDate_WEEKLY(&testDate, &testContext, &result);
+	XCTAssertEqual(status, SH_INVALID_STATE);
+	XCTAssertTrue(!result);
+	
+	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 1, .timezoneOffset = 18000};
+	status = SH_isDateADueDate_WEEKLY(&testDate, &testContext, &result);
+	XCTAssertEqual(status, SH_INVALID_STATE);
+	XCTAssertTrue(!result);
+}
+
+
 @end

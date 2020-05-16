@@ -74,12 +74,13 @@ void SH_dtSetMilisecond(struct SHDatetime *dt, int32_t milisecond) {
 
 
 void SH_dtSetToTimeOfDay(struct SHDatetime *dt, int32_t timeOfDay){
-	shLog("shDayStartInPlace");
+	shLog("SH_dtSetToTimeOfDay");
 	assert(dt);
+	assert(timeOfDay >= 0 && timeOfDay < SH_DAY_IN_SECONDS);
 	dt->hour = (timeOfDay / SH_HOUR_IN_SECONDS);
 	dt->minute = (timeOfDay % SH_HOUR_IN_SECONDS) / SH_MIN_IN_SECONDS;
 	dt->second = ((timeOfDay % SH_HOUR_IN_SECONDS) % SH_MIN_IN_SECONDS);
 	dt->milisecond = 0;
 	dt->isTimestampValid = false;
-	shLog("leaving shDayStartInPlace");
+	shLog("leaving SH_dtSetToTimeOfDay");
 }

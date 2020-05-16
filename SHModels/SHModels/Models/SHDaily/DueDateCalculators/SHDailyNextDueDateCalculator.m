@@ -24,9 +24,9 @@
 }
 
 
-+(instancetype)newWithActiveDays:(SHDailyActiveDays *)activeDaysContainer intervalType:(SHRateType)intervalType {
++(instancetype)newWithActiveDays:(SHDailyActiveDays *)activeDaysContainer intervalType:(SHIntervalType)intervalType {
 	switch (intervalType) {
-		case SH_WEEKLY_RATE:
+		case SH_WEEKLY_INTERVAL:
 			return [[SHDailyNextWeeklyDueDateCalculator alloc] initWithRateItemList:activeDaysContainer.weeklyActiveDays];
 		default:
 			@throw [NSException abstractException];
@@ -53,6 +53,11 @@
 
 -(NSUInteger)calcMissedDaysWithLastLoginDate:(struct SHDatetime*)lastLoginDate {
 	(void)lastLoginDate;
+	@throw [NSException abstractException];
+}
+
+
+-(NSInteger)missedDays {
 	@throw [NSException abstractException];
 }
 

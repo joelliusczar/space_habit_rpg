@@ -33,9 +33,9 @@ int32_t SH_findPrevActiveDayIdx(struct SHWeekIntervalPointList const * intervalP
 int32_t SH_activeDaysCountInRange(struct SHWeekIntervalPointList const * intervalPoints, int32_t startIdx,
 	int32_t len)
 {
-	if(startIdx < 0 || startIdx > SH_DAYS_IN_WEEK || len > SH_DAYS_IN_WEEK) return SH_NOT_FOUND;
+	if(startIdx < 0 || startIdx + len > SH_DAYS_IN_WEEK) return SH_NOT_FOUND;
 	int32_t count = 0;
-	for(int32_t idx = startIdx; idx < len; idx++) {
+	for(int32_t idx = startIdx; idx < startIdx + len; idx++) {
 		if(intervalPoints->days[idx].isDayActive) count++;
 	}
 	return count;

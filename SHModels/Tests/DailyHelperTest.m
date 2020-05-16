@@ -184,25 +184,61 @@
 //	XCTAssertEqual(finishedCount,19);
 }
 
-#warning maybe put back
-//-(void)testCalculateNextDueTime{
-//	NSDate *checkinDate = [NSDate createDateTimeWithYear:1988 month:4 day:27 hour:11 minute:15 second:30 timeZone:[NSTimeZone timeZoneWithName:@"America/New_York"]];
-//	//is due next day at 12AM
-//	NSDate *nextDueTime = [Daily calculateNextDueTime:checkinDate withRate:1 andDayStart:0];
-//	XCTAssertEqual(nextDueTime.timeIntervalSince1970,578203200);
-//	//is due next day at 6AM
-//	nextDueTime = [Daily calculateNextDueTime:checkinDate withRate:1 andDayStart:6];
-//	XCTAssertEqual(nextDueTime.timeIntervalSince1970,578224800);
-//	//2 days later at 2PM
-//	nextDueTime = [Daily calculateNextDueTime:checkinDate withRate:2 andDayStart:14];
-//	XCTAssertEqual(nextDueTime.timeIntervalSince1970,578340000);
-//}
 
 -(void)testDaysUntilDue_WEEKLY{
+	/*
+	#calendar 2020
+		FEB
+			SU	MO	TU	WE	TH	FR	SA
+															01
+			02	03	04	05	06	07	08
+			09	10	11	12	13	14	15
+			16	17	18	19	20	21	22
+			23	24	25	26	27	28	29
+		MAR
+			01	02	03	04	05	06	07
+			08	09	10	11	12	13	14
+			15	16	17	18	19	20	21
+			22	23	24	25	26	27	28
+			29	30	31
+		APR
+			 	 	 				01	02	03	04
+			05	06	07	08	09	10	11
+			12	13	14	15	16	17	18
+			19	20	21	22	23	24	25
+			26	27	28	29	30
+		MAY
+													01	02
+			03	04	05	06	07	08	09 *
+			10	11	12	13	14	15	16 1
+			17	18	19	20	21	22	23 1	2
+			24	25	26	27	28	29	30 1		3
+			31
+		JUN
+					01	02	03	04	05	06 1	2
+			07	08	09	10	11	12	13 1
+			14	15	16	17	18	19	20 1	2 3
+			21	22	23	24	25	26	27 1						7
+			28	29	30
+		JUL
+									01	02	03	04 1	2
+			05	06	07	08	09	10	11 1		3
+			12	13	14	15	16	17	18 1	2
+			19	20	21	22	23	24	25 1
+			26	27	28	29	30	31		 1	2 3
+		AUG
+															01 1
+			02	03	04	05	06	07	08 1	2	3
+			09	10	11	12	13	14	15 1						7
+			16	17	18	19	20	21	22 1
+			23	24	25	26	27	28	29 1
+			30	31
+		
+	*/
 	[self resetDb];
 	SHTestDateProvider *dateProvider = [[SHTestDateProvider alloc] init];
 	dateProvider.testTzOffset = -18000;
-	dateProvider.testDate = [NSDate dateWithTimeIntervalSince1970:578222651];
+	dateProvider.testDate = [NSDate dateWithTimeIntervalSince1970:1588824000];
 	__block NSInteger days1;
 	__block NSInteger days2;
 	__block NSInteger days3;
@@ -212,10 +248,10 @@
 	[tc performBlockAndWait:^{
 		SHDaily *d = (SHDaily*)[tc newEntity:SHDaily.entity];
 		d.dateProvider = dateProvider;
-		d.rateType = SH_WEEKLY_RATE;
-		//if the rate is one, it should always result in being 0 days until Daily is due
+		d.intervalType = SH_WEEKLY_INTERVAL;
+		//if the intervalSize is one, it should always result in being 0 days until Daily is due
 		d.activeDaysContainer.weeklyActiveDays.intervalSize = 1;
-		d.lastActivationDateTime = [NSDate dateWithTimeIntervalSince1970:1588939200];
+		d.lastActivationDateTime = [NSDate dateWithTimeIntervalSince1970:1588737600];
 		days1 = d.daysUntilDue;
 		d.activeDaysContainer.weeklyActiveDays.intervalSize = 2;
 		days2 = d.daysUntilDue;
@@ -231,7 +267,7 @@
 	//remember: checkin date is not the same as activation date
 	//may 5th is not an active day unless intervalSize is 1
 	//because the last week was active
-	NSDate *testDate = [NSDate dateWithTimeIntervalSince1970:578481851];
+	NSDate *testDate = [NSDate dateWithTimeIntervalSince1970:1589083200];
 	dateProvider.testDate = testDate;
 	[tc performBlockAndWait:^{
 		NSError *error;

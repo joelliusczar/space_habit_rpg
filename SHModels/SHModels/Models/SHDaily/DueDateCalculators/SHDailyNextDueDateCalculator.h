@@ -20,11 +20,13 @@ NS_ASSUME_NONNULL_BEGIN
 */
 @property (assign, nonatomic) struct SHDatetime useDate;
 @property (assign, nonatomic) int32_t dayStartTime;
+@property (assign, nonatomic) bool isInverse;
 @property (strong,nonatomic) NSObject<SHDateProviderProtocol>* dateProvider;
 +(instancetype)newWithActiveDays:(SHDailyActiveDays *)activeDaysContainer
-	intervalType:(SHRateType)intervalType;
+	intervalType:(SHIntervalType)intervalType;
 -(struct SHDatetime*)nextDueDate;
 -(BOOL)isDateActive:(struct SHDatetime *)dt;
+-(NSInteger)missedDays;
 @end
 
 NS_ASSUME_NONNULL_END

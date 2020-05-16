@@ -12,18 +12,6 @@
 #include <inttypes.h>
 #include <stdbool.h>
 
-//prefer the macro over a method call, that way I'm not forcing the user
-//to allocate memory on the heap, nor forcing them to do an extra copy
-#define newDatetime_date(year,month,day) \
-	{year,month,day,0,0,0,0,0,0,0,0,{0}}
-
-#define newSHDatetime_datetime(year,month,day,hour,min,sec) \
-	{year,month,day,hour,min,sec,0,0,0,0,0,{0}}
-
-#define newSHDatetime_datetime2(year,month,day,hour,min,sec,millisec) \
-	{year,month,day,hour,min,sec,millisec,0,0,0,0,{0}}
-
-
 
 struct SHTimeshift{
 	int32_t month;
@@ -36,6 +24,9 @@ struct SHTimeshift{
 
 struct SHDatetime {
 	int64_t year;
+	double timestamp;
+	double timeOfDay;
+	struct SHTimeshift *shifts;
 	int32_t month;
 	int32_t day;
 	int32_t hour;
@@ -43,11 +34,8 @@ struct SHDatetime {
 	int32_t second;
 	int32_t milisecond;
 	int32_t timezoneOffset;
-	struct SHTimeshift *shifts;
 	int32_t shiftLen;
 	int32_t currentShiftIdx;
-	double timestamp;
-	double timeOfDay;
 	bool isTimestampValid;
 	uintptr_t filler[8];
 };

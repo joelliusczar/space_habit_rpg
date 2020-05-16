@@ -396,7 +396,7 @@ static double _dtToTimestamp1970AndAfter(struct SHDatetime * const dt) {
 	(dayTotal > FEB_DAY_SUM || (dt->month == 3 && dayTotal == FEB_DAY_SUM)) ? 1 : 0;
 	sum = yearStart + dayTotal * SH_DAY_IN_SECONDS + leapDayOffset * SH_DAY_IN_SECONDS;
 	int32_t timeOfDay = (dt->hour * SH_HOUR_IN_SECONDS + dt->minute * SH_MIN_IN_SECONDS + dt->second);
-	dt->timeOfDay = (timeOfDay - dt->timezoneOffset) % SH_DAY_IN_SECONDS;
+	dt->timeOfDay = timeOfDay;
 	sum += timeOfDay;
 	return sum;
 }
@@ -414,7 +414,7 @@ static double _dtToTimestampBefore1970(struct SHDatetime * const dt) {
 	sum = yearStart + dayTotal * SH_DAY_IN_SECONDS;
 	int32_t timeOfDay = ((dt->hour - 23) * SH_HOUR_IN_SECONDS + (dt->minute - 59) * SH_MIN_IN_SECONDS +
 		(dt->second - 60));
-	dt->timeOfDay = (timeOfDay - dt->timezoneOffset) % SH_DAY_IN_SECONDS;
+	dt->timeOfDay = timeOfDay;
 	sum += timeOfDay;
 	return sum;
 }
@@ -461,7 +461,9 @@ SHErrorCode SH_dtToTimestamp(struct SHDatetime * const dt,double *ans){
 		return status;
 }
 
-
+/*
+	time of day is timezone relative, so this is not some sort of standardized time of day
+*/
 SHErrorCode SH_dtToTimeOfDay(struct SHDatetime *const dt, double *ans) {
 	shLog("SH_dtToTimeOfDay");
 	SHErrorCode status = SH_NO_ERROR;
@@ -486,12 +488,12 @@ SHErrorCode SH_dtToTimeOfDay(struct SHDatetime *const dt, double *ans) {
 	}
 	if(dt->year >= SH_BASE_YEAR){
 		int32_t timeOfDay = (dt->hour * SH_HOUR_IN_SECONDS + dt->minute * SH_MIN_IN_SECONDS + dt->second);
-		*ans = (timeOfDay - dt->timezoneOffset) % SH_DAY_IN_SECONDS;
+		*ans = timeOfDay;
 	}
 	else {
 		int32_t timeOfDay = ((dt->hour - 23) * SH_HOUR_IN_SECONDS + (dt->minute - 59) * SH_MIN_IN_SECONDS +
 			(dt->second - 60));
-		*ans = (timeOfDay - dt->timezoneOffset) % SH_DAY_IN_SECONDS;
+		*ans = timeOfDay;
 	}
 	success:
 	cleanup:

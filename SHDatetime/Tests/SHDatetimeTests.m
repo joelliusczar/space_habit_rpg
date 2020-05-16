@@ -464,6 +464,18 @@
 }
 
 
+-(void)testGetDayDiffDifferentTimezones {
+	struct SHDatetime A = { .year = 2020, .month = 5, .day = 8,
+		.hour = 9, .minute = 3, .second = 0, .timezoneOffset = -18000};
+	struct SHDatetime B = { .year = 2020, .month = 5, .day = 8,
+		.hour = 9, .minute = 3, .second = 0};
+	double ans = 0;
+	SHErrorCode status = SH_dateDiffSeconds(&B, &A, &ans);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertEqual(ans,18000);
+}
+
+
 -(void)testGetDayOfWeek{
 	int32_t testOffset = -18000;
 	//time zone is GMT
@@ -809,6 +821,7 @@
 -(void)testWeeksBetween {
 	int32_t testOffset = 0;
 	/*
+		#calendar 2020
 			SU	MO	TU	WE	TH	FR	SA
 			17	18	19	20	21	22	23
 			24	25	26	27	28	29	30
@@ -918,6 +931,13 @@
 		.hour = 23, .minute = 59, .second = 59, .timezoneOffset = testOffset};
 	SH_dateDiffFullWeeks(&testDate1, &testDate2, 0, &result);
 	XCTAssertEqual(result, 5);
+	
+	testDate1 = (struct SHDatetime){.year = 2018, .month = 1, .day = 10,
+		.hour = 0, .minute = 0, .second = 0, .timezoneOffset = testOffset};
+	testDate2 = (struct SHDatetime){.year = 2018, .month = 1, .day = 29,
+		.hour = 0, .minute = 0, .second = 0, .timezoneOffset = testOffset};
+	SH_dateDiffFullWeeks(&testDate1, &testDate2, 0, &result);
+	XCTAssertEqual(result, 2);
 }
 
 

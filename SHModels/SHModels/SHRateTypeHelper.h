@@ -13,17 +13,17 @@
 #import "SHModelConstants.h"
 
 
-SHRateType shExtractBaseRateType(SHRateType rateType);
-SHRateType shInvertRateType(SHRateType rateType);
-BOOL shIsInverseRateType(SHRateType rateType);
-BOOL shAreSameBaseRateTypes(SHRateType a,SHRateType b);
-NSString* shGetRateTypeKey(SHRateType rateType);
-NSString* shGetRateTypeIntervalSizeKey(SHRateType rateType);
-SHRateType shSetRateTypeInversion(SHRateType rateType,BOOL isInverse);
+SHIntervalType shExtractBaseRateType(SHIntervalType rateType);
+SHIntervalType shInvertRateType(SHIntervalType rateType);
+BOOL shIsInverseRateType(SHIntervalType rateType);
+BOOL shAreSameBaseRateTypes(SHIntervalType a,SHIntervalType b);
+NSString* shGetRateTypeKey(SHIntervalType rateType);
+NSString* shGetRateTypeIntervalSizeKey(SHIntervalType rateType);
+SHIntervalType shSetRateTypeInversion(SHIntervalType rateType,BOOL isInverse);
 BOOL shAreMonthlyRateValueItemsEqual(SHItervalItemDict *a,SHItervalItemDict *b);
 BOOL shAreYearlyRateValueItemsEqual(SHItervalItemDict *a,SHItervalItemDict *b);
-NSString * shGetFormatString(SHRateType rateType, NSInteger rate);
-NSString * shGetRateUnitName(SHRateType rateType,BOOL isPlural);
+NSString * shGetFormatString(SHIntervalType rateType, NSInteger rate);
+NSString * shGetRateUnitName(SHIntervalType rateType,BOOL isPlural);
 NSArray<NSString *>* shRateTypeEnums(void);
 #endif /* RateTypeHelper_h */
 
