@@ -11,6 +11,7 @@
 		279D8154243D41D300876892 /* SHProxyTypeJunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 279D8152243D41D300876892 /* SHProxyTypeJunction.m */; };
 		279D8157243EB05400876892 /* SHInvocationsBucketSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 279D8155243EB05400876892 /* SHInvocationsBucketSet.h */; };
 		279D8158243EB05400876892 /* SHInvocationsBucketSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 279D8156243EB05400876892 /* SHInvocationsBucketSet.m */; };
+		27F3CFE72470A4E700E5B211 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FC94AB2436D88800408167 /* SHCommon.framework */; };
 		27FC94052436D74600408167 /* SHControls.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC94032436D74600408167 /* SHControls.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27FC943F2436D7C400408167 /* UIView+Helpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC940C2436D7C300408167 /* UIView+Helpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27FC94402436D7C400408167 /* UIViewController+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC940D2436D7C300408167 /* UIViewController+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -78,7 +79,6 @@
 		27FC94A32436D83300408167 /* SHControls.postbuild.sh in Resources */ = {isa = PBXBuildFile; fileRef = 27FC949F2436D83300408167 /* SHControls.postbuild.sh */; };
 		27FC94A42436D83300408167 /* SHControls.prebuild.sh in Resources */ = {isa = PBXBuildFile; fileRef = 27FC94A02436D83300408167 /* SHControls.prebuild.sh */; };
 		27FC94A52436D83300408167 /* SHControls.base.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 27FC94A22436D83300408167 /* SHControls.base.xcconfig */; };
-		27FC94B02436D91700408167 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FC94AB2436D88800408167 /* SHCommon.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,18 +89,18 @@
 			remoteGlobalIDString = 2737439C24565D6E00E36AB7;
 			remoteInfo = SHCommonTests;
 		};
+		27F3CFE52470A4E000E5B211 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27FC94A62436D88800408167 /* SHCommon.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2737439224565D6E00E36AB7;
+			remoteInfo = SHCommon;
+		};
 		27FC94AA2436D88800408167 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 27FC94A62436D88800408167 /* SHCommon.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 27C4113623DBB7CF0086E1F9;
-			remoteInfo = SHCommon;
-		};
-		27FC94AC2436D8A900408167 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 27FC94A62436D88800408167 /* SHCommon.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 2737439224565D6E00E36AB7;
 			remoteInfo = SHCommon;
 		};
 /* End PBXContainerItemProxy section */
@@ -187,7 +187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27FC94B02436D91700408167 /* SHCommon.framework in Frameworks */,
+				27F3CFE72470A4E700E5B211 /* SHCommon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,7 +454,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27FC94082436D74600408167 /* Build configuration list for PBXNativeTarget "SHControls" */;
 			buildPhases = (
-				27FC94AE2436D8F800408167 /* ShellScript */,
+				27FC94AE2436D8F800408167 /* Run Script Pre */,
 				27FC93FB2436D74600408167 /* Headers */,
 				27FC93FC2436D74600408167 /* Sources */,
 				27FC93FD2436D74600408167 /* Frameworks */,
@@ -464,7 +464,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				27FC94AD2436D8A900408167 /* PBXTargetDependency */,
+				27F3CFE62470A4E000E5B211 /* PBXTargetDependency */,
 			);
 			name = SHControls;
 			productName = SHControls;
@@ -552,7 +552,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		27FC94AE2436D8F800408167 /* ShellScript */ = {
+		27FC94AE2436D8F800408167 /* Run Script Pre */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -561,6 +561,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Run Script Pre";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -568,7 +569,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nsh Scripts/SHControls.prebuild.sh\n";
-			showEnvVarsInLog = 0;
 		};
 		27FC94B12436D93300408167 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -623,10 +623,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		27FC94AD2436D8A900408167 /* PBXTargetDependency */ = {
+		27F3CFE62470A4E000E5B211 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SHCommon;
-			targetProxy = 27FC94AC2436D8A900408167 /* PBXContainerItemProxy */;
+			targetProxy = 27F3CFE52470A4E000E5B211 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -683,10 +683,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				SDKROOT = iphoneos;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -738,10 +736,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -759,7 +755,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SHControls/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -783,7 +778,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SHControls/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

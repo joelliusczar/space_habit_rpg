@@ -13,7 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHDailyProcessor : NSObject
 @property (strong, nonatomic) NSManagedObjectContext *context;
--(void)processAllDailies;
+-(void)processAllDailiesWithCompletionBlock:(void (^)(void))completionBlock
+	withFailureBlock:(void (^)(void))failureBlock;
 @end
 
 NS_ASSUME_NONNULL_END

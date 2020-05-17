@@ -70,7 +70,7 @@
 }
 
 
--(struct SHWeekIntervalPoint *)objectAtIndexedSubscript:(NSUInteger)idx {
+-(struct SHWeekIntervalPoint *)intervalPointAtIndex:(NSUInteger)idx {
 	int32_t backendIdx = (idx + self.weeklyDayStart) % SH_DAYS_IN_WEEK;
 	struct SHWeekIntervalPoint *intervalItem = &_week.days[backendIdx];
 	return intervalItem;

@@ -22,7 +22,7 @@ int main(int argc, const char * argv[]) {
 		NSUserDefaults *defs = NSUserDefaults.standardUserDefaults;
 		[defs setInteger:0 forKey:@"com.apple.CoreData.SQLDebug"];
 		//NSInteger val =	[defs integerForKey:@"-com.apple.CoreData.SQLDebug"];
-			[Experiments ptr2ptr];
+			[Experiments nsValueExp];
 			//[NoArcExp underRelease];
 	}
 	

@@ -12,7 +12,7 @@
 @import SHCommon;
 
 IB_DESIGNABLE
-@interface SHSwitch : SHViewController<SHSwitchProtocol,SHColorInversionHintProtocol>
+@interface SHSwitch : SHViewController<SHSwitchProtocol, SHColorInversionHintProtocol>
 @property (assign,nonatomic) IBInspectable BOOL isOn;
 @property (strong,nonatomic) IBInspectable UIImage *onImage UI_APPEARANCE_SELECTOR;
 @property (strong,nonatomic) IBInspectable UIImage *offImage UI_APPEARANCE_SELECTOR;

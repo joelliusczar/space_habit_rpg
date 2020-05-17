@@ -85,15 +85,6 @@ static NSUserDefaults *_userDefaults = nil;
 	[self.userDefaults setInteger:gameState forKey:@"gameState"];
 }
 
-
-+(NSDate*)userTodayStart{
-//	NSDate *result = [NSDate.date.dayStart timeAfterSeconds:self.dayStartTime];
-//	return result;
-#warning need to do something here
-	return nil;
-}
-
-
 +(SHStoryMode)storyMode {
 	NSInteger storyMode = [self.userDefaults integerForKey:@"storyMode"];
 	return (SHStoryMode)storyMode;
@@ -116,21 +107,21 @@ static NSUserDefaults *_userDefaults = nil;
 }
 
 
-+(NSDate *)lastProcessingDateTime {
-	NSDate *date = (NSDate *)[self.userDefaults objectForKey:@"lastProcessingDateTime"];
-	return date;
++(struct SHDatetime *)lastProcessingDateTime {
+	NSValue *wrapper = (NSValue *)[self.userDefaults objectForKey:@"lastProcessingDateTime"];
+	struct SHDatetime *dt = malloc(sizeof(struct SHDatetime));
+	[wrapper getValue:dt size:sizeof(struct SHDatetime)];
+	dt->shifts = NULL; //no telling what this actually points to by now
+	dt->currentShiftIdx = SH_NOT_FOUND;
+	dt->shiftLen = 0;
+	return dt;
 }
 
 
-+(void)setLastProcessingDateTime:(NSDate *)lastProcessingDateTime {
-	[self.userDefaults setObject:lastProcessingDateTime forKey:@"lastProcessingDateTime"];
++(void)setLastProcessingDateTime:(struct SHDatetime *)lastProcessingDateTime {
+	NSValue *wrapper = [NSValue valueWithBytes:lastProcessingDateTime objCType:@encode(struct SHDatetime)];
+	[self.userDefaults setObject:wrapper forKey:@"lastProcessingDateTime"];
 }
 
-
-+(NSDate*)lastProcessingDateDayStart {
-	//return [self.lastProcessingDateTime.dayStart timeAfterSeconds:self.dayStartTime];
-	#warning need to do something here
-	return nil;
-}
 
 @end

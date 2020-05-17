@@ -6,8 +6,8 @@
 //  Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#if TARGET_OS_MACCATALYST || TARGET_OS_IOS
 #import "SHIconBuilder.h"
+#if TARGET_OS_MACCATALYST || TARGET_OS_IOS
 #import "SHIconDrawingFunctions.h"
 
 static UIColor *_defaultColor = nil;
@@ -18,8 +18,11 @@ static CGFloat _defaultThickness = 50;
 
 typedef void (*shDrawShapeFn)(const CGRect *, CGContextRef, CGFloat);
 
+#endif
+
 @implementation SHIconBuilder
 
+#if TARGET_OS_MACCATALYST || TARGET_OS_IOS
 
 +(UIColor*)defaultColor {
 	if(nil == _defaultColor) {
@@ -221,6 +224,8 @@ UIImage * drawShape(SHIconBuilder *builder, shDrawShapeFn fn) {
 	return [img imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 }
 
+#endif
+
 @end
 
-#endif
+

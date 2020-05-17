@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		27075D75225AC4DD00AD13AA /* CircleMaybe.m in Sources */ = {isa = PBXBuildFile; fileRef = 27075D74225AC4DD00AD13AA /* CircleMaybe.m */; };
-		270EEF0F245913B40078D2ED /* SHTestCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270EEF0E245913B40078D2ED /* SHTestCommon.framework */; };
 		271691F52089672A0059A58E /* C_Exp.c in Sources */ = {isa = PBXBuildFile; fileRef = 271691F42089672A0059A58E /* C_Exp.c */; };
 		2726A85722225299003993B3 /* RefO.m in Sources */ = {isa = PBXBuildFile; fileRef = 2726A85422225299003993B3 /* RefO.m */; };
 		2726A8582222529A003993B3 /* WeakHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2726A85622225299003993B3 /* WeakHolder.m */; };
@@ -66,6 +65,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 271691C120885EF70059A58E;
 			remoteInfo = SHSpecial_C;
+		};
+		27F3CFEA2470AF2B00E5B211 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27FE8A032459101A00B11D18 /* SHSpecial_C.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 274ADCF8245E496C00763D25;
+			remoteInfo = SHSpecial_CTests;
 		};
 		27FE89A12459029F00B11D18 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -231,7 +237,6 @@
 			files = (
 				27FE8A092459102E00B11D18 /* SHSpecial_C in Frameworks */,
 				27FE89A7245902AF00B11D18 /* SHModels.framework in Frameworks */,
-				270EEF0F245913B40078D2ED /* SHTestCommon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +422,7 @@
 			isa = PBXGroup;
 			children = (
 				27FE8A082459101A00B11D18 /* SHSpecial_C */,
+				27F3CFEB2470AF2B00E5B211 /* SHSpecial_CTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -486,6 +492,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		27F3CFEB2470AF2B00E5B211 /* SHSpecial_CTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SHSpecial_CTests.xctest;
+			remoteRef = 27F3CFEA2470AF2B00E5B211 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		27FE89A22459029F00B11D18 /* SHModels.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;

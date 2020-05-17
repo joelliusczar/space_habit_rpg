@@ -44,7 +44,6 @@
 		2737441F24565DD800E36AB7 /* NSObject+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 273743CE24565DD800E36AB7 /* NSObject+Helper.m */; };
 		2737442024565DD800E36AB7 /* NSOrderedSet+SHHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 273743CF24565DD800E36AB7 /* NSOrderedSet+SHHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2737442124565DD800E36AB7 /* UIImage+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 273743D024565DD800E36AB7 /* UIImage+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2737442224565DD800E36AB7 /* SHIconBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 273743D124565DD800E36AB7 /* SHIconBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2737442324565DD800E36AB7 /* SHProbWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 273743D224565DD800E36AB7 /* SHProbWeight.m */; };
 		2737442424565DD800E36AB7 /* SHInterceptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 273743D324565DD800E36AB7 /* SHInterceptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2737442524565DD800E36AB7 /* SHKeyToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 273743D424565DD800E36AB7 /* SHKeyToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -60,7 +59,6 @@
 		2737442F24565DD800E36AB7 /* SHSingletonCluster.h in Headers */ = {isa = PBXBuildFile; fileRef = 273743DF24565DD800E36AB7 /* SHSingletonCluster.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2737443024565DD800E36AB7 /* SHIconDrawingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 273743E024565DD800E36AB7 /* SHIconDrawingFunctions.m */; };
 		2737443124565DD800E36AB7 /* SHInheritanceTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 273743E124565DD800E36AB7 /* SHInheritanceTree.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2737443224565DD800E36AB7 /* SHIconBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 273743E224565DD800E36AB7 /* SHIconBuilder.m */; };
 		2737443324565DD800E36AB7 /* SHProbWeight.h in Headers */ = {isa = PBXBuildFile; fileRef = 273743E324565DD800E36AB7 /* SHProbWeight.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2737443424565DD800E36AB7 /* SHObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 273743E424565DD800E36AB7 /* SHObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2737443524565DD800E36AB7 /* SHDefaultDateProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 273743E524565DD800E36AB7 /* SHDefaultDateProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -110,6 +108,12 @@
 		274ADD43245E545600763D25 /* SHInheritanceTreeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD42245E545600763D25 /* SHInheritanceTreeTest.m */; };
 		27D802E32464E0CE0057E950 /* SHReflectionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D802E02464E0CE0057E950 /* SHReflectionHelper.m */; };
 		27D802E42464E0CE0057E950 /* SHReflectionHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D802E22464E0CE0057E950 /* SHReflectionHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27F3CFEE2470AFB300E5B211 /* SHIconBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F3CFEC2470AFB300E5B211 /* SHIconBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27F3CFEF2470AFB300E5B211 /* SHIconBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3CFED2470AFB300E5B211 /* SHIconBuilder.m */; };
+		27F3CFF22470C43E00E5B211 /* SHIConner.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F3CFF02470C43E00E5B211 /* SHIConner.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27F3CFF32470C43E00E5B211 /* SHIConner.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3CFF12470C43E00E5B211 /* SHIConner.m */; };
+		27F3CFF62470C65A00E5B211 /* SimpleClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F3CFF42470C65A00E5B211 /* SimpleClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27F3CFF72470C65A00E5B211 /* SimpleClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3CFF52470C65A00E5B211 /* SimpleClass.m */; };
 		27F3EC52245703A40049F684 /* SHDatetime in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F3EC39245669BA0049F684 /* SHDatetime */; };
 /* End PBXBuildFile section */
 
@@ -184,7 +188,6 @@
 		273743CE24565DD800E36AB7 /* NSObject+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Helper.m"; sourceTree = "<group>"; };
 		273743CF24565DD800E36AB7 /* NSOrderedSet+SHHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOrderedSet+SHHelper.h"; sourceTree = "<group>"; };
 		273743D024565DD800E36AB7 /* UIImage+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Helper.h"; sourceTree = "<group>"; };
-		273743D124565DD800E36AB7 /* SHIconBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHIconBuilder.h; sourceTree = "<group>"; };
 		273743D224565DD800E36AB7 /* SHProbWeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHProbWeight.m; sourceTree = "<group>"; };
 		273743D324565DD800E36AB7 /* SHInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHInterceptor.h; sourceTree = "<group>"; };
 		273743D424565DD800E36AB7 /* SHKeyToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKeyToken.h; sourceTree = "<group>"; };
@@ -200,7 +203,6 @@
 		273743DF24565DD800E36AB7 /* SHSingletonCluster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSingletonCluster.h; sourceTree = "<group>"; };
 		273743E024565DD800E36AB7 /* SHIconDrawingFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHIconDrawingFunctions.m; sourceTree = "<group>"; };
 		273743E124565DD800E36AB7 /* SHInheritanceTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHInheritanceTree.h; sourceTree = "<group>"; };
-		273743E224565DD800E36AB7 /* SHIconBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHIconBuilder.m; sourceTree = "<group>"; };
 		273743E324565DD800E36AB7 /* SHProbWeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHProbWeight.h; sourceTree = "<group>"; };
 		273743E424565DD800E36AB7 /* SHObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHObject.h; sourceTree = "<group>"; };
 		273743E524565DD800E36AB7 /* SHDefaultDateProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDefaultDateProvider.h; sourceTree = "<group>"; };
@@ -271,6 +273,12 @@
 		274ADD42245E545600763D25 /* SHInheritanceTreeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHInheritanceTreeTest.m; sourceTree = "<group>"; };
 		27D802E02464E0CE0057E950 /* SHReflectionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHReflectionHelper.m; sourceTree = "<group>"; };
 		27D802E22464E0CE0057E950 /* SHReflectionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHReflectionHelper.h; sourceTree = "<group>"; };
+		27F3CFEC2470AFB300E5B211 /* SHIconBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHIconBuilder.h; sourceTree = "<group>"; };
+		27F3CFED2470AFB300E5B211 /* SHIconBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHIconBuilder.m; sourceTree = "<group>"; };
+		27F3CFF02470C43E00E5B211 /* SHIConner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHIConner.h; sourceTree = "<group>"; };
+		27F3CFF12470C43E00E5B211 /* SHIConner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHIConner.m; sourceTree = "<group>"; };
+		27F3CFF42470C65A00E5B211 /* SimpleClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleClass.h; sourceTree = "<group>"; };
+		27F3CFF52470C65A00E5B211 /* SimpleClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleClass.m; sourceTree = "<group>"; };
 		27F3EC34245669BA0049F684 /* SHDatetime.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHDatetime.xcodeproj; path = ../SHDatetime/SHDatetime.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -335,6 +343,8 @@
 		273743AD24565DD800E36AB7 /* SHCommon */ = {
 			isa = PBXGroup;
 			children = (
+				27F3CFEC2470AFB300E5B211 /* SHIconBuilder.h */,
+				27F3CFED2470AFB300E5B211 /* SHIconBuilder.m */,
 				27D802E22464E0CE0057E950 /* SHReflectionHelper.h */,
 				27D802E02464E0CE0057E950 /* SHReflectionHelper.m */,
 				273743DA24565DD800E36AB7 /* Constants */,
@@ -351,8 +361,6 @@
 				273743F424565DD800E36AB7 /* SHDebugDefines.h */,
 				273743E524565DD800E36AB7 /* SHDefaultDateProvider.h */,
 				273743B224565DD800E36AB7 /* SHDefaultDateProvider.m */,
-				273743D124565DD800E36AB7 /* SHIconBuilder.h */,
-				273743E224565DD800E36AB7 /* SHIconBuilder.m */,
 				273743FF24565DD800E36AB7 /* SHIconDrawingFunctions.h */,
 				273743E024565DD800E36AB7 /* SHIconDrawingFunctions.m */,
 				273743E124565DD800E36AB7 /* SHInheritanceTree.h */,
@@ -381,6 +389,10 @@
 				273743EF24565DD800E36AB7 /* SHSingletonCluster.m */,
 				273743AE24565DD800E36AB7 /* SHVarWrapper.h */,
 				273743E924565DD800E36AB7 /* SHVarWrapper.m */,
+				27F3CFF02470C43E00E5B211 /* SHIConner.h */,
+				27F3CFF12470C43E00E5B211 /* SHIConner.m */,
+				27F3CFF42470C65A00E5B211 /* SimpleClass.h */,
+				27F3CFF52470C65A00E5B211 /* SimpleClass.m */,
 			);
 			path = SHCommon;
 			sourceTree = "<group>";
@@ -523,6 +535,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27F3CFF62470C65A00E5B211 /* SimpleClass.h in Headers */,
+				27F3CFF22470C43E00E5B211 /* SHIConner.h in Headers */,
 				2737442E24565DD800E36AB7 /* SHResourceUtility.h in Headers */,
 				2737441C24565DD800E36AB7 /* NSManagedObjectContext+Helper.h in Headers */,
 				2737442724565DD800E36AB7 /* SHNotificationHelper.h in Headers */,
@@ -566,7 +580,7 @@
 				2737444924565DD800E36AB7 /* SHDateProviderProtocol.h in Headers */,
 				2737440024565DD800E36AB7 /* SHVarWrapper.h in Headers */,
 				27D802E42464E0CE0057E950 /* SHReflectionHelper.h in Headers */,
-				2737442224565DD800E36AB7 /* SHIconBuilder.h in Headers */,
+				27F3CFEE2470AFB300E5B211 /* SHIconBuilder.h in Headers */,
 				2737442D24565DD800E36AB7 /* SHConstants.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -733,7 +747,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2737443224565DD800E36AB7 /* SHIconBuilder.m in Sources */,
 				2737444524565DD800E36AB7 /* SHInheritanceTree.m in Sources */,
 				2737443B24565DD800E36AB7 /* SHNotificationHelper.m in Sources */,
 				2737440E24565DD800E36AB7 /* NSLocale+Helper.m in Sources */,
@@ -753,6 +766,7 @@
 				2737442B24565DD800E36AB7 /* SHConstants.m in Sources */,
 				2737442324565DD800E36AB7 /* SHProbWeight.m in Sources */,
 				2737440C24565DD800E36AB7 /* NSNumber+Helper.m in Sources */,
+				27F3CFF32470C43E00E5B211 /* SHIConner.m in Sources */,
 				2737440424565DD800E36AB7 /* SHDefaultDateProvider.m in Sources */,
 				2737440724565DD800E36AB7 /* NSMutableArray+Helper.m in Sources */,
 				2737440524565DD800E36AB7 /* SHObject.m in Sources */,
@@ -762,12 +776,14 @@
 				2737440A24565DD800E36AB7 /* NSMutableDictionary+Helper.m in Sources */,
 				2737443924565DD800E36AB7 /* SHVarWrapper.m in Sources */,
 				2737444224565DD800E36AB7 /* SHCommonUtils.m in Sources */,
+				27F3CFEF2470AFB300E5B211 /* SHIconBuilder.m in Sources */,
 				27D802E32464E0CE0057E950 /* SHReflectionHelper.m in Sources */,
 				2737443824565DD800E36AB7 /* SHCoreData.m in Sources */,
 				2737443E24565DD800E36AB7 /* SHInterceptor.m in Sources */,
 				2737442824565DD800E36AB7 /* SHObjectIDWrapper.m in Sources */,
 				2737441F24565DD800E36AB7 /* NSObject+Helper.m in Sources */,
 				2737444024565DD800E36AB7 /* SHResourceUtility.m in Sources */,
+				27F3CFF72470C65A00E5B211 /* SimpleClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

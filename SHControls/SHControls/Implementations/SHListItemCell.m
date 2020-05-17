@@ -9,7 +9,6 @@
 #pragma clang diagnostic ignored "-Wunused-parameter"
 
 #import "SHListItemCell.h"
-@import SHCommon;
 
 @implementation SHListItemCell
 

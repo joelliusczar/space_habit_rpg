@@ -239,6 +239,7 @@
 	SHTestDateProvider *dateProvider = [[SHTestDateProvider alloc] init];
 	dateProvider.testTzOffset = -18000;
 	dateProvider.testDate = [NSDate dateWithTimeIntervalSince1970:1588824000];
+	SHDaily.dateProvider = dateProvider;
 	__block NSInteger days1;
 	__block NSInteger days2;
 	__block NSInteger days3;
@@ -247,7 +248,6 @@
 	tc.retainsRegisteredObjects = YES;
 	[tc performBlockAndWait:^{
 		SHDaily *d = (SHDaily*)[tc newEntity:SHDaily.entity];
-		d.dateProvider = dateProvider;
 		d.intervalType = SH_WEEKLY_INTERVAL;
 		//if the intervalSize is one, it should always result in being 0 days until Daily is due
 		d.activeDaysContainer.weeklyActiveDays.intervalSize = 1;
@@ -272,7 +272,6 @@
 	[tc performBlockAndWait:^{
 		NSError *error;
 		SHDaily *d = (SHDaily*)[tc getEntityOrNil:objectID withError:&error];
-		d.dateProvider = dateProvider;
 		d.activeDaysContainer.weeklyActiveDays.intervalSize = 1;
 		days1 = d.daysUntilDue;
 		d.activeDaysContainer.weeklyActiveDays.intervalSize = 2;

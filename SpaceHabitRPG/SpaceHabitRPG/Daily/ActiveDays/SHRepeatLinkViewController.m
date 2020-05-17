@@ -39,7 +39,7 @@
 	NSAssert(self.context,@"You forgot to call setupWithContext:andObjectID:");
 	[self.context performBlock:^{
 		SHDaily *daily = (SHDaily *)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
-		SHRateType rateType = (SHRateType)daily.rateType;
+		SHIntervalType rateType = (SHIntervalType)daily.intervalType;
 		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
 			self.primaryLabel.text = @"Interval: ";
 			SHIntervalItemFormat *intervalItem = [self.activeDays selectRateItemCollection:rateType];
@@ -56,7 +56,7 @@
 	[self.rateSelectionViewContoller selectRateType:self.rateType];
 	self.rateSelectionViewContoller.activeDays = self.activeDays;
 	__weak SHRepeatLinkViewController *weakSelf = self;
-	self.rateSelectionViewContoller.onCloseIntervalSelect = ^(SHRateType rateType, NSInteger intervalSize) {
+	self.rateSelectionViewContoller.onCloseIntervalSelect = ^(SHIntervalType rateType, NSInteger intervalSize) {
 		SHRepeatLinkViewController *bSelf = weakSelf;
 		if(nil == bSelf) return;
 		bSelf.interval = intervalSize;

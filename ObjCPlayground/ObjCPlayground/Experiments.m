@@ -1385,6 +1385,57 @@ void _pooter(int32_t **mum) {
 	NSLog(@"%d",num[0]);
 	NSLog(@"%d",num[1]);
 }
+
++(void)observerExp {
+	House * h = [[House alloc] init];
+	__weak House *weakHouse = h;
+	Watcher *w = [[Watcher alloc] init];
+	NSLog(@"%@",h);
+	[h addObserver:w forKeyPath:@"couch" options:NSKeyValueObservingOptionNew context:nil];
+	[h watchSelf];
+	h.couch = @"birdy!";
+	h = nil;
+	NSLog(@"%@",h);
+	w = nil;
+	NSLog(@"%@",h);
+}
+
+
++(void)observerExp2 {
+	House * h = [[House alloc] init];
+	__weak House *weakHouse = h;
+	Watcher *w = [[Watcher alloc] init];
+	NSLog(@"%@",h);
+	[h addObserver:w forKeyPath:@"couch" options:NSKeyValueObservingOptionNew context:nil];
+	w = nil;
+	@try {
+    h.couch = @"birdy!";
+	}
+	@catch (NSException *exception) {
+		NSLog(@"need to remove observer first");
+	}
+}
+
++(void)moreEncoding {
+	NSLog(@"%s",@encode(struct SHDatetime));
+	NSLog(@"%s",@encode(struct SHDatetime*));
+}
+
+
++(void)nsValueExp {
+	struct SHDatetime dt = {.year = 2018, .month = 1, .day = 13};
+	struct SHTimeshift dst[2] = {
+			{3,11,2,0,SH_HOUR_IN_SECONDS,{0}},
+			{11,4,2,0,0,{0}}
+	};
+	dt.shifts = dst;
+	dt.currentShiftIdx = 0;
+	dt.shiftLen = 2;
+	NSValue *val = [NSValue valueWithBytes:&dt objCType:@encode(struct SHDatetime)];
 	
+	struct SHDatetime copy;
+	[val getValue:&copy size:sizeof(struct SHDatetime)];
+	;
+}
 
 @end

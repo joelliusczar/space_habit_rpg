@@ -20,6 +20,9 @@
 	if([keyPath isEqualToString:@"watched"]){
 		NSLog(@"%@",@"For the watch");
 	}
+	if([keyPath isEqualToString:@"couch"]){
+		NSLog(@"For the watch, I mean couch %@",object);
+	}
 }
 
 

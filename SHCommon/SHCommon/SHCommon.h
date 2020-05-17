@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <TargetConditionals.h>
+
 #if TARGET_OS_MACCATALYST || TARGET_OS_IOS
 //! Project version number for SHCommon.
 FOUNDATION_EXPORT double SHCommonVersionNumber;
@@ -62,3 +63,7 @@ FOUNDATION_EXPORT const unsigned char SHCommonVersionString[];
 #import "SHIconBuilder.h"
 #import "UIImage+Helper.h"
 #import "SHReflectionHelper.h"
+
+
+#import "SimpleClass.h"
+#import "SHIConner.h"

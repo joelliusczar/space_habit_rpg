@@ -43,7 +43,7 @@
 			[bSelf dayChange:newValue sender:sender];
 		};
 		int32_t dayIdx = (i + self.weekStartDay) % 7;
-		self.activeDaySwitches[dayIdx].isOn = self.weeklyActiveDays[dayIdx].isDayActive;
+		self.activeDaySwitches[dayIdx].isOn = [self.weeklyActiveDays intervalPointAtIndex: dayIdx]->isDayActive;
 	}
 	
 }

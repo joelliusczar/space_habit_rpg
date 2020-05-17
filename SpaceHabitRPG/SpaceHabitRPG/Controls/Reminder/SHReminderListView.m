@@ -114,7 +114,10 @@ numberOfRowsInSection:(NSInteger)section
 		index = [dueDateItem reminderCount];
 		SHReminder *reminder = (SHReminder *)[self.context newEntity:SHReminder.entity];
 		//we only really care about the hour and minute
-		reminder.reminderHour = [NSDate createSimpleTimeWithHour:hour minute:minute second:0].timeIntervalSince1970;
+		NSDateComponents *components = [[NSDateComponents alloc] init];
+		components.hour = hour;
+		components.minute = minute;
+		reminder.reminderHour = [NSCalendar.currentCalendar dateFromComponents:components].timeIntervalSince1970;
 		reminder.daysBeforeDue = [SHMath toIntExact:daysBefore];
 		[dueDateItem addNewReminder:reminder];
 	}];

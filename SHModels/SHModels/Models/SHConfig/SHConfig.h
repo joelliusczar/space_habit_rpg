@@ -17,16 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (class, strong, nonatomic) NSUserDefaults *userDefaults;
 //userTodayStart is today's date with dayStartTime for the time of today
 //it's more of a convenience property
-@property (class, readonly, nonatomic) NSDate *userTodayStart;
-//dayStartTime is the time of the day when a daily compared to to determine
-//if daily is expired.
 @property (class, assign, nonatomic) int32_t dayStartTime;
 @property (class, assign, nonatomic) int32_t weeklyStartDay;
 @property (class, assign, nonatomic) SHGameState gameState;
 @property (class, assign, nonatomic) SHStoryMode storyMode;
 @property (class, assign, nonatomic) SHStoryState storyState;
-@property (class, copy, nonatomic) NSDate *lastProcessingDateTime;
-@property (class, readonly, nonatomic) NSDate *lastProcessingDateDayStart;
+@property (class, nonatomic) struct SHDatetime *lastProcessingDateTime;
 @end
 NS_ASSUME_NONNULL_END
 

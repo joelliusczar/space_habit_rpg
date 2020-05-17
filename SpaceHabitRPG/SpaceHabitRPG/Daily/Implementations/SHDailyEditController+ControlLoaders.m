@@ -25,7 +25,7 @@
 	NSManagedObjectContext *context = self.context;
 	SHObjectIDWrapper *objectIDWrapper = self.objectIDWrapper;
 	SHDailyActiveDays *activeDays = self.activeDays;
-	__block SHRateType rateType = SH_WEEKLY_RATE;
+	__block SHIntervalType rateType = SH_WEEKLY_INTERVAL;
 	__block NSString *noteText = @"";
 	__block int32_t difficulty = 3;
 	__block int32_t urgency = 3;
@@ -33,7 +33,7 @@
 	__block int32_t streakLength = 0;
 	[context performBlockAndWait:^{
 		SHDaily *daily = (SHDaily*)[context getExistingOrNewEntityWithObjectID:objectIDWrapper];
-		rateType = daily.rateType;
+		rateType = daily.intervalType;
 		noteText = daily.note.length > 0 ? daily.note : @"";
 		difficulty = daily.difficulty;
 		urgency = daily.urgency;

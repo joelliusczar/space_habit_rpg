@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# SHModels.sh
+# SHControls.postbuild.sh
 #
 #
 # Created by Joel Gillette on 4/26

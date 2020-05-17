@@ -26,7 +26,7 @@ we will keep all the weird shifting localized to this section mostly
 @property (readonly, nonatomic, nullable) NSArray<NSString*> *weekKeysBasedOnWeekStart;
 -(instancetype)initWithRateItemArray:(NSArray<SHItervalItemDict*>*)rateItemArray
 	withWeekStartOffset:(int32_t)dayOffset;
--(struct SHWeekIntervalPoint*)objectAtIndexedSubscript:(NSUInteger)idx;
+-(struct SHWeekIntervalPoint*)intervalPointAtIndex:(NSUInteger)idx;
 -(void)setDayOfWeek:(NSUInteger)dayIdx to:(bool)newValue;
 -(NSMutableArray<SHItervalItemDict*>*)convertToSaveble;
 -(struct SHWeekIntervalPointList)copyWeek;

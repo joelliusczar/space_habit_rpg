@@ -44,9 +44,9 @@
 		SHDaily *daily = (SHDaily*)[self.context getEntityOrNil:self.objectID withError:&error];
 		NSString *dailyName = daily.dailyName;
 		NSInteger streakLength = daily.streakLength;
-		NSInteger rate = daily.rate;
+		NSInteger rate = daily.intervalSize;
 		NSUInteger daysUntilDue = daily.daysUntilDue;
-		SHRateType rateType = (SHRateType)daily.rateType;
+		SHIntervalType rateType = (SHIntervalType)daily.intervalType;
 		
 		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
 			self.nameLbl.text = dailyName;

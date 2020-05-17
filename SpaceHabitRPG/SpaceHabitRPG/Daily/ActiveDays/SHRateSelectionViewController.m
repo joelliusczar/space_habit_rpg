@@ -18,7 +18,7 @@ const NSInteger MONTHLY_SELECTION = 2;
 const NSInteger YEARLY_SELECTION = 3;
 
 @interface SHRateSelectionViewController ()
-@property (assign, nonatomic) SHRateType rateType;
+@property (assign, nonatomic) SHIntervalType rateType;
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
 @end
 
@@ -99,28 +99,28 @@ const NSInteger YEARLY_SELECTION = 3;
 	forEvent:(UIEvent *)event
 {
 	(void)event;
-	SHRateType rateType = [self segmentIndexToRateType:sender.selectedSegmentIndex];
+	SHIntervalType rateType = [self segmentIndexToRateType:sender.selectedSegmentIndex];
 	self.rateType = rateType;
 	[self switchToActiveDaysViewController:rateType];
 }
 
 
 -(void)switchToActiveDaysViewControllerByIndex:(NSInteger)segmentIndex {
-	SHRateType rateType = [self segmentIndexToRateType:segmentIndex];
+	SHIntervalType rateType = [self segmentIndexToRateType:segmentIndex];
 	[self switchToActiveDaysViewController:rateType];
 }
 
 
--(SHViewController*)selectActiveDaysViewController:(SHRateType)rateType {
-	SHRateType useRateType = shExtractBaseRateType(rateType);
+-(SHViewController*)selectActiveDaysViewController:(SHIntervalType)rateType {
+	SHIntervalType useRateType = shExtractBaseRateType(rateType);
 	switch (useRateType) {
-		case SH_DAILY_RATE:
+		case SH_DAILY_INTERVAL:
 			return nil;
-		case SH_WEEKLY_RATE:
+		case SH_WEEKLY_INTERVAL:
 			return self.weeklyActiveDaysViewController;
-		case SH_MONTHLY_RATE:
+		case SH_MONTHLY_INTERVAL:
 			return self.monthlyActiveDaysViewController;
-		case SH_YEARLY_RATE:
+		case SH_YEARLY_INTERVAL:
 			return self.yearlyActiveDaysViewController;
 		default:
 			@throw [NSException oddException];
@@ -128,7 +128,7 @@ const NSInteger YEARLY_SELECTION = 3;
 }
 
 
--(void)switchToActiveDaysViewController:(SHRateType)rateType{
+-(void)switchToActiveDaysViewController:(SHIntervalType)rateType{
 	NSAssert(self.activeDays,@"We need active days to not be nill");
 	
 	SHIntervalItemFormat *rateItem = [self.activeDays selectRateItemCollection:rateType];
@@ -147,32 +147,32 @@ const NSInteger YEARLY_SELECTION = 3;
 }
 
 
--(SHRateType)segmentIndexToRateType:(NSInteger)segmentIndex{
+-(SHIntervalType)segmentIndexToRateType:(NSInteger)segmentIndex{
 	switch (segmentIndex) {
 		case DAILY_SELECTION:
-			return SH_DAILY_RATE;
+			return SH_DAILY_INTERVAL;
 		case WEEKLY_SELECTION:
-			return SH_WEEKLY_RATE;
+			return SH_WEEKLY_INTERVAL;
 		case MONTHLY_SELECTION:
-			return SH_MONTHLY_RATE;
+			return SH_MONTHLY_INTERVAL;
 		case YEARLY_SELECTION:
-			return SH_YEARLY_RATE;
+			return SH_YEARLY_INTERVAL;
 		default:
-			return SH_UNDETERMINED_RATE;
+			return SH_UNDETERMINED_INTERVAL;
 	}
 }
 
 
--(NSInteger)rateTypeToSegmentIndex:(SHRateType)rateType{
-	SHRateType useRateType = shExtractBaseRateType(rateType);
+-(NSInteger)rateTypeToSegmentIndex:(SHIntervalType)rateType{
+	SHIntervalType useRateType = shExtractBaseRateType(rateType);
 	switch (useRateType) {
-		case SH_DAILY_RATE:
+		case SH_DAILY_INTERVAL:
 			return DAILY_SELECTION;
-		case SH_WEEKLY_RATE:
+		case SH_WEEKLY_INTERVAL:
 			return WEEKLY_SELECTION;
-		case SH_MONTHLY_RATE:
+		case SH_MONTHLY_INTERVAL:
 			return MONTHLY_SELECTION;
-		case SH_YEARLY_RATE:
+		case SH_YEARLY_INTERVAL:
 			return YEARLY_SELECTION;
 		default:
 			@throw [NSException oddException];
@@ -180,7 +180,7 @@ const NSInteger YEARLY_SELECTION = 3;
 }
 
 
--(void)selectRateType:(SHRateType)rateType{
+-(void)selectRateType:(SHIntervalType)rateType{
 	NSInteger selectionIndex = [self rateTypeToSegmentIndex:rateType];
 	self.rateType = rateType;
 	if(self.isViewLoaded && self.view.window){

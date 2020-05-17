@@ -16,6 +16,7 @@
 @property (weak,nonatomic) House *h;
 -(void)returnsNothing;
 -(NSInteger)getFive;
+-(void)watchSelf;
 @end
 
 

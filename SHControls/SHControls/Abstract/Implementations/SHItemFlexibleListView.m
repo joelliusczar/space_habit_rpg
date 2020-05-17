@@ -91,25 +91,30 @@ numberOfRowsInSection:(NSInteger)section{
 }
 
 
--(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView
-	editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+-(UISwipeActionsConfiguration *)tableView:(UITableView *)tableView
+	leadingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	__weak SHItemFlexibleListView *weakSelf = self;
-	void (^pressedDelete)(UITableViewRowAction *,NSIndexPath *) =
-		^(UITableViewRowAction *action,NSIndexPath *indexPath){
-			[weakSelf deleteCellAt:indexPath];
-		};
-	UITableViewRowAction *openDeleteButton = [UITableViewRowAction
-		rowActionWithStyle:UITableViewRowActionStyleNormal
+	(void)tableView;
+	UIContextualAction *deleteAction = [UIContextualAction
+		contextualActionWithStyle:UIContextualActionStyleNormal
 		title:@"Delete"
-		handler:pressedDelete];
-	openDeleteButton.backgroundColor = UIColor.redColor;
-	return @[openDeleteButton];
+		handler:
+			^(UIContextualAction *action,
+			UIView *sourceView,
+			void (^completionHandler)(BOOL actionPerformed)){
+				(void)action; (void)sourceView;
+					[self deleteCellAt:indexPath];
+		}];
+	deleteAction.backgroundColor = UIColor.redColor;
+	UISwipeActionsConfiguration *actionConfigs = [UISwipeActionsConfiguration
+		configurationWithActions:@[deleteAction]];
+	
+	return actionConfigs;
 }
 
 
 -(void)addItemBtn_press_action{
-	SEL delegateSel = @selector(addItemBtn_press_action:);
+	SEL delegateSel = @selector(addItemBtn_press_action);
 	if([self.setChangedelegate respondsToSelector:delegateSel]){
 		[self.setChangedelegate addItemBtn_press_action];
 	}

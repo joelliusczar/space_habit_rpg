@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) SHDailyActiveDays *activeDaysContainer;
 @property (readonly, nonatomic) NSInteger intervalSize;
 @property (readonly, nonatomic) BOOL isActiveToday;
-@property (strong, nonatomic) NSObject<SHDateProviderProtocol> *dateProvider;
+@property (class, nonatomic) id<SHDateProviderProtocol> dateProvider;
 @property (readonly, strong, nonatomic) SHDailyNextDueDateCalculator *calculator;
 -(void)setupInitialState;
 -(NSArray<SHDailyEvent *> *)lastActivations:(NSInteger)count;

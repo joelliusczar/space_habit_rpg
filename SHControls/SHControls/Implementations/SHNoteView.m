@@ -7,7 +7,6 @@
 //
 
 #import "SHNoteView.h"
-@import SHCommon;
 
 
 @interface SHNoteView ()

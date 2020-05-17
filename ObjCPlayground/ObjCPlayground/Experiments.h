@@ -147,6 +147,10 @@ void cMakeHouses(void);
 +(void)typeDefExps;
 +(void)testReturnArray;
 +(void)ptr2ptr;
++(void)observerExp;
++(void)observerExp2;
++(void)moreEncoding;
++(void)nsValueExp;
 @end
 
 #import "Experiments+Charlie.h"

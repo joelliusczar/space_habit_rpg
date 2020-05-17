@@ -7,7 +7,6 @@
 //
 
 #import "SHImportanceSliderView.h"
-@import SHCommon;
 
 @interface SHImportanceSliderView ()
 

@@ -51,13 +51,17 @@ void printWorkingDir(){
 {
 	(void)application;
 	(void)launchOptions;
+	SHDailyProcessor *processor = [[SHDailyProcessor alloc] init];
+	
 	NSBundle *modelsBundle = [NSBundle bundleForClass:SHBundleKey.class];
 	self.dataController = [SHCoreData newWithOptionsBlock:^(SHCoreDataOptions *options){
 		options.appBundle = modelsBundle;
 	}];
+	processor.context = [self.dataController newBackgroundContext];
 	self.resourceUtil = [[SHResourceUtility alloc] initWithBundle:modelsBundle];
 	SHSector.sectorInfo = [[SHSectorInfoDictionary alloc] initWithResourceUtil:self.resourceUtil];
 	SHMonster.monsterInfo = [[SHMonsterInfoDictionary alloc] initWithResourceUtil:self.resourceUtil];
+	[processor processAllDailies];
 	self.centralController = [SHCentralViewController
 		newWithDataController:self.dataController
 		andNibName:@"SHCentralViewController"
@@ -93,7 +97,7 @@ void printWorkingDir(){
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
 	(void)application;
-	[SHNotificationHelper cleanUpSentReminders];
+	//[SHNotificationHelper cleanUpSentReminders];
 	// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 

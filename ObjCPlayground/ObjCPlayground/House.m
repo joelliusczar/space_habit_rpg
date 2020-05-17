@@ -23,6 +23,21 @@
 	NSLog(@"%@",@"Deallocating, motherfucker!");
 }
 
+-(void)watchSelf {
+	[self addObserver:self forKeyPath:@"couch" options:NSKeyValueObservingOptionNew context:nil];
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
+ change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
+	(void)object;
+	(void)change;
+	(void)context;
+	NSLog(@"%@",keyPath);
+	if([keyPath isEqualToString:@"couch"]){
+		NSLog(@"The couch is %@",self.couch);
+	}
+}
+
 @end
 
 

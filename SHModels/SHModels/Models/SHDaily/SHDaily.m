@@ -12,11 +12,37 @@
 #import "SHDailyEvent.h"
 @import SHSpecial_C;
 
+static NSSet<NSString*> *_calculatorWatchPropertySet = nil;
+static id<SHDateProviderProtocol> _dateProvider;
+
 @interface SHDaily ()
 
 @end
 
 @implementation SHDaily
+
+
++(id<SHDateProviderProtocol>)dateProvider{
+	if(nil == _dateProvider) {
+		_dateProvider = [[SHDefaultDateProvider alloc] init];
+	}
+	return _dateProvider;
+}
+
++(void)setDateProvider:(id<SHDateProviderProtocol>)dateProvider {
+	_dateProvider = dateProvider;
+}
+
+
++(void)initialize {
+	_calculatorWatchPropertySet = [NSSet setWithArray:@[
+		@"intervalType",
+		@"activeFromDateTime",
+		@"lastActivationDateTime",
+		@"lastUpdateDateTime",
+		@"cycleStartTime"]];
+}
+
 
 @synthesize activeDaysContainer = _activeDaysContainer;
 -(SHDailyActiveDays *)activeDaysContainer{
@@ -43,8 +69,8 @@ This also applies if the active days got changed. #activeDayMath
 		SH_dtSetTimezoneOffset(dt, self.tzOffsetLastActivationDateTime);
 		return dt;
 	}
-	if(self.activeFromDate && !self.lastUpdateHasPriority) {
-		struct SHDatetime *dt = [self.activeFromDate SH_toSHDatetime];
+	if(self.activeFromDateTime && !self.lastUpdateHasPriority) {
+		struct SHDatetime *dt = [self.activeFromDateTime SH_toSHDatetime];
 		//this may need its own tz property but tzOffsetLastUpdateDateTime is good alternative
 		SH_dtSetTimezoneOffset(dt, self.tzOffsetLastUpdateDateTime);
 		return dt;
@@ -71,7 +97,7 @@ This also applies if the active days got changed. #activeDayMath
 	}
 	_calculator = [SHDailyNextDueDateCalculator
 		newWithActiveDays:self.activeDaysContainer intervalType:self.intervalType];
-	_calculator.dateProvider = self.dateProvider;
+	_calculator.dateProvider = SHDaily.dateProvider;
 	_calculator.dayStartTime = dayStartTime;
 	struct SHDatetime *selectedDateProperty = [self selectUseDateProperty];
 	_calculator.useDate = *selectedDateProperty;
@@ -81,7 +107,7 @@ This also applies if the active days got changed. #activeDayMath
 
 
 -(BOOL)isActiveToday {
-	return [self.calculator isDateActive:self.dateProvider.dateSHDt];
+	return [self.calculator isDateActive:SHDaily.dateProvider.dateSHDt];
 }
 
 -(NSInteger)intervalSize{
@@ -113,7 +139,7 @@ This also applies if the active days got changed. #activeDayMath
 
 
 -(NSInteger)daysUntilDue{
-	struct SHDatetime *todayStartLocal = [self.dateProvider userTodayStart];
+	struct SHDatetime *todayStartLocal = [SHDaily.dateProvider userTodayStart];
 	struct SHDatetime *nextDueDateLocal = [self.calculator nextDueDate];
 	if(!nextDueDateLocal) {
 		return SH_NOT_FOUND;
@@ -199,8 +225,8 @@ This also applies if the active days got changed. #activeDayMath
 	self.urgency = 3;
 	self.note = @"";
 	self.streakLength = 0;
-	self.activeFromDate = nil;
-	self.activeToDate = nil;
+	self.activeFromDateTime = nil;
+	self.activeToDateTime = nil;
 	self.cycleStartTime = 0;
 }
 
@@ -211,7 +237,7 @@ This also applies if the active days got changed. #activeDayMath
 
 
 -(SHDailyStatus)calcStatus {
-	struct SHDatetime *today = self.dateProvider.userTodayStart;
+	struct SHDatetime *today = SHDaily.dateProvider.userTodayStart;
 	struct SHDatetime *savedPrevDate = [self selectUseDateProperty];
 	bool isDue;
 	SH_isDateALTDateB(savedPrevDate, today, &isDue);
@@ -234,16 +260,6 @@ This also applies if the active days got changed. #activeDayMath
 }
 
 
-@synthesize dateProvider = _dateProvider;
-
--(NSObject<SHDateProviderProtocol>*)dateProvider{
-	if(nil == _dateProvider) {
-		_dateProvider = [[SHDefaultDateProvider alloc] init];
-	}
-	return _dateProvider;
-}
-
-
 -(NSArray<SHDailyEvent *> *)lastActivations:(NSInteger)count {
 	NSFetchRequest<SHDailyEvent*> *fetchRequest = SHDailyEvent.fetchRequest;
 	fetchRequest.sortDescriptors = @[[NSSortDescriptor
@@ -256,6 +272,42 @@ This also applies if the active days got changed. #activeDayMath
 }
 
 
+-(void)addObservers {
+	for(NSString *key in _calculatorWatchPropertySet) {
+		[self addObserver:self forKeyPath:key options:NSKeyValueObservingOptionNew context:nil];
+	}
+	[SHConfig addObserver:self forKeyPath:@"dayStartTime" options:NSKeyValueObservingOptionNew context:nil];
+	[SHConfig addObserver:self forKeyPath:@"weeklyStartDay" options:NSKeyValueObservingOptionNew context:nil];
+}
+
+
+-(void)awakeFromFetch {
+	[super awakeFromFetch];
+	[self addObservers];
+}
+
+
+-(void)awakeFromInsert {
+	[super awakeFromInsert];
+	[self addObservers];
+}
+
+
+-(void)didTurnIntoFault {
+	[super didTurnIntoFault];
+	[SHConfig safeRemoveObserver:self forKeyPath:@"dayStartTime" context:nil];
+	[SHConfig safeRemoveObserver:self forKeyPath:@"weeklyStartDay" context:nil];
+}
+
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
+ change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+{
+	(void)object; (void)change; (void)context;
+	if([_calculatorWatchPropertySet containsObject:keyPath] || object == SHConfig.class) {
+		_calculator = nil;
+	}
+}
 
 
 @end
