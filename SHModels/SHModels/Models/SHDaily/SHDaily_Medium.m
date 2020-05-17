@@ -23,18 +23,21 @@
 
 -(NSArray<NSSortDescriptor *> *)buildFetchDescriptors{
 
-	NSSortDescriptor *sortByLastActivation = [[NSSortDescriptor alloc]
+	NSSortDescriptor *sortByStatus = [[NSSortDescriptor alloc]
 		initWithKey:@"lastActivationDateTime" ascending:YES];
-		
+
 	NSSortDescriptor *sortByUserOrder = [[NSSortDescriptor alloc]
 		initWithKey:@"customUserOrder" ascending:NO];
+		
+	NSSortDescriptor *sortByLastActivation = [[NSSortDescriptor alloc]
+		initWithKey:@"lastActivationDateTime" ascending:YES];
 		
 	NSSortDescriptor *sortByUrgency = [[NSSortDescriptor alloc]
 		initWithKey:@"urgency" ascending:NO];
 
 	NSSortDescriptor *sortByDifficulty = [[NSSortDescriptor alloc]
 		initWithKey:@"difficulty" ascending:YES];
-	return @[sortByLastActivation, sortByUserOrder, sortByUrgency, sortByDifficulty
+	return @[sortByStatus, sortByLastActivation, sortByUserOrder, sortByUrgency, sortByDifficulty
 	];
 }
 
@@ -45,7 +48,7 @@
 	request.predicate = filter;
 	request.sortDescriptors = [self buildFetchDescriptors];
 	NSFetchedResultsController *resultsController = [self.context getItemFetcher:request
-		withSectionKeyPath:@"isCompleted"];
+		withSectionKeyPath:@"status"];
 	return resultsController;
 }
 

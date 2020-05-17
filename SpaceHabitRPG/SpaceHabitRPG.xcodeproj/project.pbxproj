@@ -149,28 +149,28 @@
 		270F97E3239242A500479E77 /* SHDailyCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDailyCellController.h; sourceTree = "<group>"; };
 		270F97E52392440600479E77 /* SHIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHIntroViewController.h; sourceTree = "<group>"; };
 		270F97E62392440600479E77 /* SHIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHIntroViewController.m; sourceTree = "<group>"; };
-		270F97E82392442200479E77 /* SHIntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SHIntroViewController.xib; path = SpaceHabitRPG/xibs_/SHIntroViewController.xib; sourceTree = SOURCE_ROOT; };
-		270F97EF2392453A00479E77 /* SHYearlyActiveDaysViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHYearlyActiveDaysViewController.m; path = ../SHYearlyActiveDaysViewController.m; sourceTree = "<group>"; };
+		270F97E82392442200479E77 /* SHIntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SHIntroViewController.xib; path = SpaceHabitRPG/Story/SHIntroViewController.xib; sourceTree = SOURCE_ROOT; };
+		270F97EF2392453A00479E77 /* SHYearlyActiveDaysViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHYearlyActiveDaysViewController.m; sourceTree = "<group>"; };
 		270F97F12392453A00479E77 /* SHWeeklyActiveDaysViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHWeeklyActiveDaysViewController.xib; sourceTree = "<group>"; };
 		270F97F32392453A00479E77 /* SHDayOption.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHDayOption.xib; sourceTree = "<group>"; };
 		270F97F42392453A00479E77 /* SHLinkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHLinkViewController.xib; sourceTree = "<group>"; };
 		270F97F52392453A00479E77 /* SHRateSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHRateSelectionViewController.xib; sourceTree = "<group>"; };
-		270F97F62392453A00479E77 /* SHDayOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHDayOption.h; path = ../SHDayOption.h; sourceTree = "<group>"; };
-		270F97F72392453A00479E77 /* SHRepeatLinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHRepeatLinkViewController.h; path = ../SHRepeatLinkViewController.h; sourceTree = "<group>"; };
-		270F97F82392453A00479E77 /* SHWeeklyActiveDaysViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHWeeklyActiveDaysViewController.m; path = ../SHWeeklyActiveDaysViewController.m; sourceTree = "<group>"; };
-		270F97F92392453A00479E77 /* SHMonthlyActiveDaysViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHMonthlyActiveDaysViewController.h; path = ../SHMonthlyActiveDaysViewController.h; sourceTree = "<group>"; };
-		270F97FB2392453A00479E77 /* SHYearPartPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHYearPartPicker.h; path = ../SHYearPartPicker.h; sourceTree = "<group>"; };
-		270F97FC2392453A00479E77 /* SHMonthPartPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHMonthPartPicker.m; path = ../SHMonthPartPicker.m; sourceTree = "<group>"; };
-		270F97FD2392453A00479E77 /* SHRateSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHRateSelectionViewController.h; path = ../SHRateSelectionViewController.h; sourceTree = "<group>"; };
-		270F97FE2392453A00479E77 /* SHDayOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHDayOption.m; path = ../SHDayOption.m; sourceTree = "<group>"; };
-		270F98002392453A00479E77 /* SHYearlyActiveDaysViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHYearlyActiveDaysViewController.h; path = ../SHYearlyActiveDaysViewController.h; sourceTree = "<group>"; };
-		270F98022392453A00479E77 /* RateSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RateSelectionViewController.h; path = ../RateSelectionViewController.h; sourceTree = "<group>"; };
-		270F98032392453A00479E77 /* SHMonthlyActiveDaysViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHMonthlyActiveDaysViewController.m; path = ../SHMonthlyActiveDaysViewController.m; sourceTree = "<group>"; };
-		270F98042392453A00479E77 /* SHWeeklyActiveDaysViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHWeeklyActiveDaysViewController.h; path = ../SHWeeklyActiveDaysViewController.h; sourceTree = "<group>"; };
-		270F98052392453A00479E77 /* SHRepeatLinkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHRepeatLinkViewController.m; path = ../SHRepeatLinkViewController.m; sourceTree = "<group>"; };
-		270F98062392453A00479E77 /* SHRateSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHRateSelectionViewController.m; path = ../SHRateSelectionViewController.m; sourceTree = "<group>"; };
-		270F98082392453A00479E77 /* SHMonthPartPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SHMonthPartPicker.h; path = ../SHMonthPartPicker.h; sourceTree = "<group>"; };
-		270F98092392453A00479E77 /* SHYearPartPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SHYearPartPicker.m; path = ../SHYearPartPicker.m; sourceTree = "<group>"; };
+		270F97F62392453A00479E77 /* SHDayOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDayOption.h; sourceTree = "<group>"; };
+		270F97F72392453A00479E77 /* SHRepeatLinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHRepeatLinkViewController.h; sourceTree = "<group>"; };
+		270F97F82392453A00479E77 /* SHWeeklyActiveDaysViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHWeeklyActiveDaysViewController.m; sourceTree = "<group>"; };
+		270F97F92392453A00479E77 /* SHMonthlyActiveDaysViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMonthlyActiveDaysViewController.h; sourceTree = "<group>"; };
+		270F97FB2392453A00479E77 /* SHYearPartPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHYearPartPicker.h; sourceTree = "<group>"; };
+		270F97FC2392453A00479E77 /* SHMonthPartPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMonthPartPicker.m; sourceTree = "<group>"; };
+		270F97FD2392453A00479E77 /* SHRateSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHRateSelectionViewController.h; sourceTree = "<group>"; };
+		270F97FE2392453A00479E77 /* SHDayOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDayOption.m; sourceTree = "<group>"; };
+		270F98002392453A00479E77 /* SHYearlyActiveDaysViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHYearlyActiveDaysViewController.h; sourceTree = "<group>"; };
+		270F98022392453A00479E77 /* RateSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateSelectionViewController.h; sourceTree = "<group>"; };
+		270F98032392453A00479E77 /* SHMonthlyActiveDaysViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMonthlyActiveDaysViewController.m; sourceTree = "<group>"; };
+		270F98042392453A00479E77 /* SHWeeklyActiveDaysViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHWeeklyActiveDaysViewController.h; sourceTree = "<group>"; };
+		270F98052392453A00479E77 /* SHRepeatLinkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHRepeatLinkViewController.m; sourceTree = "<group>"; };
+		270F98062392453A00479E77 /* SHRateSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHRateSelectionViewController.m; sourceTree = "<group>"; };
+		270F98082392453A00479E77 /* SHMonthPartPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMonthPartPicker.h; sourceTree = "<group>"; };
+		270F98092392453A00479E77 /* SHYearPartPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHYearPartPicker.m; sourceTree = "<group>"; };
 		270F981B239249E300479E77 /* SHLinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHLinkViewController.h; sourceTree = "<group>"; };
 		270F981C239249E300479E77 /* SHLinkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHLinkViewController.m; sourceTree = "<group>"; };
 		270F982223924BD100479E77 /* SHRemindersLinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHRemindersLinkViewController.h; sourceTree = "<group>"; };
@@ -183,8 +183,8 @@
 		270F982C23924C8400479E77 /* SHReminderTimeSpinPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHReminderTimeSpinPicker.h; sourceTree = "<group>"; };
 		270F982E23924D0400479E77 /* SHReminderListContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHReminderListContainer.h; sourceTree = "<group>"; };
 		270F982F23924D0400479E77 /* SHReminderListContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHReminderListContainer.m; sourceTree = "<group>"; };
-		272D83A623AD7B0600D946D3 /* SHHabitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SHHabitViewController.h; path = SpaceHabitRPG/Daily/Headers/SHHabitViewController.h; sourceTree = SOURCE_ROOT; };
-		272D83A723AD7B0600D946D3 /* SHHabitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SHHabitViewController.m; path = SpaceHabitRPG/Daily/Implementations/SHHabitViewController.m; sourceTree = SOURCE_ROOT; };
+		272D83A623AD7B0600D946D3 /* SHHabitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SHHabitViewController.h; path = SpaceHabitRPG/Daily/SHHabitViewController.h; sourceTree = SOURCE_ROOT; };
+		272D83A723AD7B0600D946D3 /* SHHabitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SHHabitViewController.m; path = SpaceHabitRPG/Daily/SHHabitViewController.m; sourceTree = SOURCE_ROOT; };
 		272D83B723AD9CBC00D946D3 /* SHHabitCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHHabitCell.h; sourceTree = "<group>"; };
 		272D83B823AD9CBC00D946D3 /* SHHabitCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHHabitCell.m; sourceTree = "<group>"; };
 		272D83CB23AEAC2800D946D3 /* SHEditNavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHEditNavigationController.xib; sourceTree = "<group>"; };
@@ -238,64 +238,67 @@
 		270F97B32392356200479E77 /* Daily */ = {
 			isa = PBXGroup;
 			children = (
-				27698E8D23D4A86400754183 /* Headers */,
-				27698E8E23D4A86C00754183 /* Implementations */,
-				270F97EE2392453A00479E77 /* ActiveDays */,
-				270F97BA2392364600479E77 /* xibs */,
-			);
-			path = Daily;
-			sourceTree = "<group>";
-		};
-		270F97BA2392364600479E77 /* xibs */ = {
-			isa = PBXGroup;
-			children = (
+				27B8C4B1241331EA008646BB /* SHHabitNameViewController.h */,
+				272D83A623AD7B0600D946D3 /* SHHabitViewController.h */,
+				272D83B723AD9CBC00D946D3 /* SHHabitCell.h */,
+				270F97E3239242A500479E77 /* SHDailyCellController.h */,
+				270F97DF2392423900479E77 /* SHDailyEditController+ControlLoaders.h */,
+				270F97DD2392414400479E77 /* SHDailyEditController.h */,
+				270F97B82392362D00479E77 /* SHDailyViewController.h */,
+				270F97D223923C2B00479E77 /* SHEditNavigationController.h */,
+				270F97DB2392408F00479E77 /* SHEditingSaverProtocol.h */,
+				272D83A723AD7B0600D946D3 /* SHHabitViewController.m */,
+				272D83B823AD9CBC00D946D3 /* SHHabitCell.m */,
+				270F97E2239242A500479E77 /* SHDailyCellController.m */,
+				270F97E02392423900479E77 /* SHDailyEditController+ControlLoaders.m */,
+				270F97DC2392414300479E77 /* SHDailyEditController.m */,
+				270F97B72392362D00479E77 /* SHDailyViewController.m */,
+				270F97D123923C2B00479E77 /* SHEditNavigationController.m */,
+				27B8C4B2241331EA008646BB /* SHHabitNameViewController.m */,
 				2707AA9E241484FA006FF10F /* SHDailyCellController.xib */,
 				272D83CB23AEAC2800D946D3 /* SHEditNavigationController.xib */,
 				27BBD51A2392EB5500311711 /* SHHabitViewController.xib */,
 				27B8C4B3241331EA008646BB /* SHHabitNameViewController.xib */,
+				270F97EE2392453A00479E77 /* ActiveDays */,
 			);
-			path = xibs;
+			path = Daily;
 			sourceTree = "<group>";
 		};
 		270F97BB239238EE00479E77 /* Sector */ = {
 			isa = PBXGroup;
 			children = (
-				27698E8F23D4A89700754183 /* Headers */,
-				27698E9023D4A8A200754183 /* Implementations */,
-				270F97BF23923A4300479E77 /* xibs */,
-			);
-			path = Sector;
-			sourceTree = "<group>";
-		};
-		270F97BF23923A4300479E77 /* xibs */ = {
-			isa = PBXGroup;
-			children = (
+				270F97D523923CFC00479E77 /* SHSectorChoiceCellController.h */,
+				270F97C123923A4300479E77 /* SHSectorDescriptionViewController.h */,
+				270F97BD239238EE00479E77 /* SHSectorChoiceViewController.h */,
+				270F97D623923CFC00479E77 /* SHSectorChoiceCellController.m */,
+				270F97C223923A4300479E77 /* SHSectorDescriptionViewController.m */,
+				270F97BC239238EE00479E77 /* SHSectorChoiceViewController.m */,
 				270F97D823923D8200479E77 /* SHSectorChoiceCellController.xib */,
 				270F97C023923A4300479E77 /* SHSectorDescriptionViewController.xib */,
 				27BBD5182392E3AA00311711 /* SHSectorChoiceViewController.xib */,
 			);
-			path = xibs;
+			path = Sector;
 			sourceTree = "<group>";
 		};
 		270F97C723923B0500479E77 /* Story */ = {
 			isa = PBXGroup;
 			children = (
-				27698E8B23D4A7F700754183 /* Headers */,
-				27698E8C23D4A80900754183 /* Implementations */,
-				270F97C823923B0500479E77 /* xibs */,
-			);
-			path = Story;
-			sourceTree = "<group>";
-		};
-		270F97C823923B0500479E77 /* xibs */ = {
-			isa = PBXGroup;
-			children = (
+				27BBD50C239252CC00311711 /* SHBattleStatsViewController.h */,
+				27BBD5092392526600311711 /* SHStoryRouterHelper.h */,
+				27BBD5072392523900311711 /* SHStoryRouter.h */,
+				270F97CB23923B0500479E77 /* SHStoryDumpViewController.h */,
+				270F97E52392440600479E77 /* SHIntroViewController.h */,
+				27FC935C2430FFB300408167 /* SHStoryRouter.m */,
+				27BBD50D239252CC00311711 /* SHBattleStatsViewController.m */,
+				27BBD50A2392526600311711 /* SHStoryRouterHelper.m */,
+				270F97CA23923B0500479E77 /* SHStoryDumpViewController.m */,
+				270F97E62392440600479E77 /* SHIntroViewController.m */,
 				27BBD51E2392EBE000311711 /* SHBattleStatsViewController.xib */,
 				27BBD51C2392EBA600311711 /* SHStoryModeSelectViewController.xib */,
 				270F97E82392442200479E77 /* SHIntroViewController.xib */,
 				270F97C923923B0500479E77 /* SHStoryDumpViewController.xib */,
 			);
-			path = xibs;
+			path = Story;
 			sourceTree = "<group>";
 		};
 		270F97ED2392453A00479E77 /* Controls */ = {
@@ -312,29 +315,36 @@
 		270F97EE2392453A00479E77 /* ActiveDays */ = {
 			isa = PBXGroup;
 			children = (
-				272D8319239C1F3100D946D3 /* Headers */,
-				272D831B239C1F3F00D946D3 /* Implementations */,
-				270F97F02392453A00479E77 /* xibs */,
-			);
-			path = ActiveDays;
-			sourceTree = "<group>";
-		};
-		270F97F02392453A00479E77 /* xibs */ = {
-			isa = PBXGroup;
-			children = (
+				270F98042392453A00479E77 /* SHWeeklyActiveDaysViewController.h */,
+				270F97FD2392453A00479E77 /* SHRateSelectionViewController.h */,
+				270F98002392453A00479E77 /* SHYearlyActiveDaysViewController.h */,
+				270F97F92392453A00479E77 /* SHMonthlyActiveDaysViewController.h */,
+				270F97FB2392453A00479E77 /* SHYearPartPicker.h */,
+				270F97F72392453A00479E77 /* SHRepeatLinkViewController.h */,
+				270F97F62392453A00479E77 /* SHDayOption.h */,
+				270F98082392453A00479E77 /* SHMonthPartPicker.h */,
+				270F98022392453A00479E77 /* RateSelectionViewController.h */,
+				270F97F82392453A00479E77 /* SHWeeklyActiveDaysViewController.m */,
+				270F97FC2392453A00479E77 /* SHMonthPartPicker.m */,
+				270F97FE2392453A00479E77 /* SHDayOption.m */,
+				270F97EF2392453A00479E77 /* SHYearlyActiveDaysViewController.m */,
+				270F98032392453A00479E77 /* SHMonthlyActiveDaysViewController.m */,
+				270F98052392453A00479E77 /* SHRepeatLinkViewController.m */,
+				270F98062392453A00479E77 /* SHRateSelectionViewController.m */,
+				270F98092392453A00479E77 /* SHYearPartPicker.m */,
 				270F97F12392453A00479E77 /* SHWeeklyActiveDaysViewController.xib */,
 				270F97F32392453A00479E77 /* SHDayOption.xib */,
 				270F97F52392453A00479E77 /* SHRateSelectionViewController.xib */,
 			);
-			path = xibs;
+			path = ActiveDays;
 			sourceTree = "<group>";
 		};
 		270F982123924B5400479E77 /* Reminder */ = {
 			isa = PBXGroup;
 			children = (
-				27E16E3323D27A99000062F7 /* xibs */,
 				270F982E23924D0400479E77 /* SHReminderListContainer.h */,
 				270F982F23924D0400479E77 /* SHReminderListContainer.m */,
+				27E16E3423D27A99000062F7 /* SHReminderListContainer.xib */,
 				270F982C23924C8400479E77 /* SHReminderTimeSpinPicker.h */,
 				270F982B23924C8400479E77 /* SHReminderTimeSpinPicker.m */,
 				270F982923924C4900479E77 /* SHReminderCellController.h */,
@@ -345,37 +355,6 @@
 				270F982323924BD100479E77 /* SHRemindersLinkViewController.m */,
 			);
 			path = Reminder;
-			sourceTree = "<group>";
-		};
-		272D8319239C1F3100D946D3 /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				270F98042392453A00479E77 /* SHWeeklyActiveDaysViewController.h */,
-				270F97FD2392453A00479E77 /* SHRateSelectionViewController.h */,
-				270F98002392453A00479E77 /* SHYearlyActiveDaysViewController.h */,
-				270F97F92392453A00479E77 /* SHMonthlyActiveDaysViewController.h */,
-				270F97FB2392453A00479E77 /* SHYearPartPicker.h */,
-				270F97F72392453A00479E77 /* SHRepeatLinkViewController.h */,
-				270F97F62392453A00479E77 /* SHDayOption.h */,
-				270F98082392453A00479E77 /* SHMonthPartPicker.h */,
-				270F98022392453A00479E77 /* RateSelectionViewController.h */,
-			);
-			path = Headers;
-			sourceTree = "<group>";
-		};
-		272D831B239C1F3F00D946D3 /* Implementations */ = {
-			isa = PBXGroup;
-			children = (
-				270F97F82392453A00479E77 /* SHWeeklyActiveDaysViewController.m */,
-				270F97FC2392453A00479E77 /* SHMonthPartPicker.m */,
-				270F97FE2392453A00479E77 /* SHDayOption.m */,
-				270F97EF2392453A00479E77 /* SHYearlyActiveDaysViewController.m */,
-				270F98032392453A00479E77 /* SHMonthlyActiveDaysViewController.m */,
-				270F98052392453A00479E77 /* SHRepeatLinkViewController.m */,
-				270F98062392453A00479E77 /* SHRateSelectionViewController.m */,
-				270F98092392453A00479E77 /* SHYearPartPicker.m */,
-			);
-			path = Implementations;
 			sourceTree = "<group>";
 		};
 		2747C4A12048D55600FB5669 /* Frameworks */ = {
@@ -424,84 +403,9 @@
 				2747C49C2048D54600FB5669 /* SHCentralViewController.m */,
 				274A113623BD2A2F00AAA79E /* SHThemeController.h */,
 				274A113723BD2A2F00AAA79E /* SHThemeController.m */,
-				27BBD5122392D86C00311711 /* xibs */,
+				27BBD5132392D86C00311711 /* SHCentralViewController.xib */,
 			);
 			path = SpaceHabitRPG;
-			sourceTree = "<group>";
-		};
-		27698E8B23D4A7F700754183 /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				27BBD50C239252CC00311711 /* SHBattleStatsViewController.h */,
-				27BBD5092392526600311711 /* SHStoryRouterHelper.h */,
-				27BBD5072392523900311711 /* SHStoryRouter.h */,
-				270F97CB23923B0500479E77 /* SHStoryDumpViewController.h */,
-				270F97E52392440600479E77 /* SHIntroViewController.h */,
-			);
-			path = Headers;
-			sourceTree = "<group>";
-		};
-		27698E8C23D4A80900754183 /* Implementations */ = {
-			isa = PBXGroup;
-			children = (
-				27FC935C2430FFB300408167 /* SHStoryRouter.m */,
-				27BBD50D239252CC00311711 /* SHBattleStatsViewController.m */,
-				27BBD50A2392526600311711 /* SHStoryRouterHelper.m */,
-				270F97CA23923B0500479E77 /* SHStoryDumpViewController.m */,
-				270F97E62392440600479E77 /* SHIntroViewController.m */,
-			);
-			path = Implementations;
-			sourceTree = "<group>";
-		};
-		27698E8D23D4A86400754183 /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				27B8C4B1241331EA008646BB /* SHHabitNameViewController.h */,
-				272D83A623AD7B0600D946D3 /* SHHabitViewController.h */,
-				272D83B723AD9CBC00D946D3 /* SHHabitCell.h */,
-				270F97E3239242A500479E77 /* SHDailyCellController.h */,
-				270F97DF2392423900479E77 /* SHDailyEditController+ControlLoaders.h */,
-				270F97DD2392414400479E77 /* SHDailyEditController.h */,
-				270F97B82392362D00479E77 /* SHDailyViewController.h */,
-				270F97D223923C2B00479E77 /* SHEditNavigationController.h */,
-				270F97DB2392408F00479E77 /* SHEditingSaverProtocol.h */,
-			);
-			path = Headers;
-			sourceTree = "<group>";
-		};
-		27698E8E23D4A86C00754183 /* Implementations */ = {
-			isa = PBXGroup;
-			children = (
-				272D83A723AD7B0600D946D3 /* SHHabitViewController.m */,
-				272D83B823AD9CBC00D946D3 /* SHHabitCell.m */,
-				270F97E2239242A500479E77 /* SHDailyCellController.m */,
-				270F97E02392423900479E77 /* SHDailyEditController+ControlLoaders.m */,
-				270F97DC2392414300479E77 /* SHDailyEditController.m */,
-				270F97B72392362D00479E77 /* SHDailyViewController.m */,
-				270F97D123923C2B00479E77 /* SHEditNavigationController.m */,
-				27B8C4B2241331EA008646BB /* SHHabitNameViewController.m */,
-			);
-			path = Implementations;
-			sourceTree = "<group>";
-		};
-		27698E8F23D4A89700754183 /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				270F97D523923CFC00479E77 /* SHSectorChoiceCellController.h */,
-				270F97C123923A4300479E77 /* SHSectorDescriptionViewController.h */,
-				270F97BD239238EE00479E77 /* SHSectorChoiceViewController.h */,
-			);
-			path = Headers;
-			sourceTree = "<group>";
-		};
-		27698E9023D4A8A200754183 /* Implementations */ = {
-			isa = PBXGroup;
-			children = (
-				270F97D623923CFC00479E77 /* SHSectorChoiceCellController.m */,
-				270F97C223923A4300479E77 /* SHSectorDescriptionViewController.m */,
-				270F97BC239238EE00479E77 /* SHSectorChoiceViewController.m */,
-			);
-			path = Implementations;
 			sourceTree = "<group>";
 		};
 		279848D32250FE9C00039A29 /* Configs */ = {
@@ -512,14 +416,6 @@
 			path = Configs;
 			sourceTree = "<group>";
 		};
-		27BBD5122392D86C00311711 /* xibs */ = {
-			isa = PBXGroup;
-			children = (
-				27BBD5132392D86C00311711 /* SHCentralViewController.xib */,
-			);
-			path = xibs;
-			sourceTree = "<group>";
-		};
 		27C4121823DBBA6F0086E1F9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -527,14 +423,6 @@
 				270EEF25245A35260078D2ED /* SHCommonTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		27E16E3323D27A99000062F7 /* xibs */ = {
-			isa = PBXGroup;
-			children = (
-				27E16E3423D27A99000062F7 /* SHReminderListContainer.xib */,
-			);
-			path = xibs;
 			sourceTree = "<group>";
 		};
 		27F37E77238796CE0006B705 /* Products */ = {
