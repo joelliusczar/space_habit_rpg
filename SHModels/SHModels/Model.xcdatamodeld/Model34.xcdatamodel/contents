@@ -27,7 +27,8 @@
         <relationship name="trigger_daily" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SHDaily" inverseName="trigger_daily" inverseEntity="SHDaily"/>
     </entity>
     <entity name="SHCounterEvent" representedClassName="SHCounterEvent" syncable="YES" codeGenerationType="class">
-        <attribute name="utcTimestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="eventDatetime" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="tzOffset" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="event_counter" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SHCounter" inverseName="counter_event" inverseEntity="SHCounter"/>
     </entity>
     <entity name="SHDaily" representedClassName="SHDaily" syncable="YES" codeGenerationType="category">
@@ -61,7 +62,7 @@
         <relationship name="trigger_daily" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SHCounter" inverseName="trigger_daily" inverseEntity="SHCounter"/>
     </entity>
     <entity name="SHDailyEvent" representedClassName="SHDailyEvent" syncable="YES" codeGenerationType="category">
-        <attribute name="eventDatetime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="eventDatetime" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="tzOffset" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="event_daily" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SHDaily" inverseName="daily_event" inverseEntity="SHDaily"/>
         <fetchIndex name="byEventDate">
@@ -133,7 +134,7 @@
     <elements>
         <element name="SHCategory" positionX="-245.34375" positionY="-14.70703125" width="128" height="133"/>
         <element name="SHCounter" positionX="108" positionY="18" width="128" height="283"/>
-        <element name="SHCounterEvent" positionX="-90.3203125" positionY="27.64453125" width="128" height="73"/>
+        <element name="SHCounterEvent" positionX="-90.3203125" positionY="27.64453125" width="128" height="88"/>
         <element name="SHDaily" positionX="-1227.05078125" positionY="-119.390625" width="128" height="463"/>
         <element name="SHDailyEvent" positionX="33.1875" positionY="64.06640625" width="128" height="88"/>
         <element name="SHDailySubTask" positionX="-493.71484375" positionY="-52.265625" width="128" height="163"/>

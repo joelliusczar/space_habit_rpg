@@ -39,7 +39,7 @@ int const DAYS_COL = 1;
 -(NSInteger)pickerView:(UIPickerView *)pickerView
 numberOfRowsInComponent:(NSInteger)component{
 	if(component == MONTH_COL){
-		return NSCalendar.currentCalendar.monthSymbols.count;
+		return NSCalendar.SH_appCalendar.monthSymbols.count;
 	}
 	//if no day setup is needed
 	if(self.numberOfDaysInSelectedMonth)
@@ -55,7 +55,7 @@ numberOfRowsInComponent:(NSInteger)component{
 
 - (NSString * _Nullable)buildTitle:(NSInteger)component row:(NSInteger)row {
 	if(component == MONTH_COL){
-		return NSCalendar.currentCalendar.monthSymbols[row];
+		return NSCalendar.SH_appCalendar.monthSymbols[row];
 	}
 	return [NSString stringWithFormat:@"%ld",row + 1];
 }
@@ -79,8 +79,8 @@ numberOfRowsInComponent:(NSInteger)component{
 	components.month = month1Base;
 	components.day = 1;
 	
-	NSDate *sampleDate = [NSCalendar.currentCalendar dateFromComponents:components];
-	NSRange range = [NSCalendar.currentCalendar
+	NSDate *sampleDate = [NSCalendar.SH_appCalendar dateFromComponents:components];
+	NSRange range = [NSCalendar.SH_appCalendar
 		rangeOfUnit:NSCalendarUnitDay
 		inUnit:NSCalendarUnitMonth
 		forDate:sampleDate];

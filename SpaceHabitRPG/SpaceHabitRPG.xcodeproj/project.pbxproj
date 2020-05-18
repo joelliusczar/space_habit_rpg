@@ -164,7 +164,6 @@
 		270F97FD2392453A00479E77 /* SHRateSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHRateSelectionViewController.h; sourceTree = "<group>"; };
 		270F97FE2392453A00479E77 /* SHDayOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDayOption.m; sourceTree = "<group>"; };
 		270F98002392453A00479E77 /* SHYearlyActiveDaysViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHYearlyActiveDaysViewController.h; sourceTree = "<group>"; };
-		270F98022392453A00479E77 /* RateSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateSelectionViewController.h; sourceTree = "<group>"; };
 		270F98032392453A00479E77 /* SHMonthlyActiveDaysViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMonthlyActiveDaysViewController.m; sourceTree = "<group>"; };
 		270F98042392453A00479E77 /* SHWeeklyActiveDaysViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHWeeklyActiveDaysViewController.h; sourceTree = "<group>"; };
 		270F98052392453A00479E77 /* SHRepeatLinkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHRepeatLinkViewController.m; sourceTree = "<group>"; };
@@ -238,28 +237,28 @@
 		270F97B32392356200479E77 /* Daily */ = {
 			isa = PBXGroup;
 			children = (
-				27B8C4B1241331EA008646BB /* SHHabitNameViewController.h */,
-				272D83A623AD7B0600D946D3 /* SHHabitViewController.h */,
-				272D83B723AD9CBC00D946D3 /* SHHabitCell.h */,
-				270F97E3239242A500479E77 /* SHDailyCellController.h */,
-				270F97DF2392423900479E77 /* SHDailyEditController+ControlLoaders.h */,
-				270F97DD2392414400479E77 /* SHDailyEditController.h */,
-				270F97B82392362D00479E77 /* SHDailyViewController.h */,
-				270F97D223923C2B00479E77 /* SHEditNavigationController.h */,
-				270F97DB2392408F00479E77 /* SHEditingSaverProtocol.h */,
-				272D83A723AD7B0600D946D3 /* SHHabitViewController.m */,
-				272D83B823AD9CBC00D946D3 /* SHHabitCell.m */,
-				270F97E2239242A500479E77 /* SHDailyCellController.m */,
-				270F97E02392423900479E77 /* SHDailyEditController+ControlLoaders.m */,
-				270F97DC2392414300479E77 /* SHDailyEditController.m */,
-				270F97B72392362D00479E77 /* SHDailyViewController.m */,
-				270F97D123923C2B00479E77 /* SHEditNavigationController.m */,
-				27B8C4B2241331EA008646BB /* SHHabitNameViewController.m */,
-				2707AA9E241484FA006FF10F /* SHDailyCellController.xib */,
-				272D83CB23AEAC2800D946D3 /* SHEditNavigationController.xib */,
-				27BBD51A2392EB5500311711 /* SHHabitViewController.xib */,
-				27B8C4B3241331EA008646BB /* SHHabitNameViewController.xib */,
 				270F97EE2392453A00479E77 /* ActiveDays */,
+				270F97E3239242A500479E77 /* SHDailyCellController.h */,
+				270F97E2239242A500479E77 /* SHDailyCellController.m */,
+				2707AA9E241484FA006FF10F /* SHDailyCellController.xib */,
+				270F97DD2392414400479E77 /* SHDailyEditController.h */,
+				270F97DC2392414300479E77 /* SHDailyEditController.m */,
+				270F97DF2392423900479E77 /* SHDailyEditController+ControlLoaders.h */,
+				270F97E02392423900479E77 /* SHDailyEditController+ControlLoaders.m */,
+				270F97B82392362D00479E77 /* SHDailyViewController.h */,
+				270F97B72392362D00479E77 /* SHDailyViewController.m */,
+				270F97DB2392408F00479E77 /* SHEditingSaverProtocol.h */,
+				270F97D223923C2B00479E77 /* SHEditNavigationController.h */,
+				270F97D123923C2B00479E77 /* SHEditNavigationController.m */,
+				272D83CB23AEAC2800D946D3 /* SHEditNavigationController.xib */,
+				272D83B723AD9CBC00D946D3 /* SHHabitCell.h */,
+				272D83B823AD9CBC00D946D3 /* SHHabitCell.m */,
+				27B8C4B1241331EA008646BB /* SHHabitNameViewController.h */,
+				27B8C4B2241331EA008646BB /* SHHabitNameViewController.m */,
+				27B8C4B3241331EA008646BB /* SHHabitNameViewController.xib */,
+				272D83A623AD7B0600D946D3 /* SHHabitViewController.h */,
+				272D83A723AD7B0600D946D3 /* SHHabitViewController.m */,
+				27BBD51A2392EB5500311711 /* SHHabitViewController.xib */,
 			);
 			path = Daily;
 			sourceTree = "<group>";
@@ -315,26 +314,25 @@
 		270F97EE2392453A00479E77 /* ActiveDays */ = {
 			isa = PBXGroup;
 			children = (
-				270F98042392453A00479E77 /* SHWeeklyActiveDaysViewController.h */,
-				270F97FD2392453A00479E77 /* SHRateSelectionViewController.h */,
-				270F98002392453A00479E77 /* SHYearlyActiveDaysViewController.h */,
-				270F97F92392453A00479E77 /* SHMonthlyActiveDaysViewController.h */,
-				270F97FB2392453A00479E77 /* SHYearPartPicker.h */,
-				270F97F72392453A00479E77 /* SHRepeatLinkViewController.h */,
 				270F97F62392453A00479E77 /* SHDayOption.h */,
-				270F98082392453A00479E77 /* SHMonthPartPicker.h */,
-				270F98022392453A00479E77 /* RateSelectionViewController.h */,
-				270F97F82392453A00479E77 /* SHWeeklyActiveDaysViewController.m */,
-				270F97FC2392453A00479E77 /* SHMonthPartPicker.m */,
 				270F97FE2392453A00479E77 /* SHDayOption.m */,
-				270F97EF2392453A00479E77 /* SHYearlyActiveDaysViewController.m */,
-				270F98032392453A00479E77 /* SHMonthlyActiveDaysViewController.m */,
-				270F98052392453A00479E77 /* SHRepeatLinkViewController.m */,
-				270F98062392453A00479E77 /* SHRateSelectionViewController.m */,
-				270F98092392453A00479E77 /* SHYearPartPicker.m */,
-				270F97F12392453A00479E77 /* SHWeeklyActiveDaysViewController.xib */,
 				270F97F32392453A00479E77 /* SHDayOption.xib */,
+				270F97F92392453A00479E77 /* SHMonthlyActiveDaysViewController.h */,
+				270F98032392453A00479E77 /* SHMonthlyActiveDaysViewController.m */,
+				270F98082392453A00479E77 /* SHMonthPartPicker.h */,
+				270F97FC2392453A00479E77 /* SHMonthPartPicker.m */,
+				270F97FD2392453A00479E77 /* SHRateSelectionViewController.h */,
+				270F98062392453A00479E77 /* SHRateSelectionViewController.m */,
 				270F97F52392453A00479E77 /* SHRateSelectionViewController.xib */,
+				270F97F72392453A00479E77 /* SHRepeatLinkViewController.h */,
+				270F98052392453A00479E77 /* SHRepeatLinkViewController.m */,
+				270F98042392453A00479E77 /* SHWeeklyActiveDaysViewController.h */,
+				270F97F82392453A00479E77 /* SHWeeklyActiveDaysViewController.m */,
+				270F97F12392453A00479E77 /* SHWeeklyActiveDaysViewController.xib */,
+				270F98002392453A00479E77 /* SHYearlyActiveDaysViewController.h */,
+				270F97EF2392453A00479E77 /* SHYearlyActiveDaysViewController.m */,
+				270F97FB2392453A00479E77 /* SHYearPartPicker.h */,
+				270F98092392453A00479E77 /* SHYearPartPicker.m */,
 			);
 			path = ActiveDays;
 			sourceTree = "<group>";

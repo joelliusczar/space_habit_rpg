@@ -47,39 +47,39 @@
 			before its due date, they should use a recuring todo
 		*/
 		
-		NSInteger dayStartTime = 0;
-		if(nil != daily.cycleStartTime) {
-			dayStartTime = daily.cycleStartTime.integerValue;
+		struct SHDatetime *todayLocal = self.dateProvider.userTodayStart;
+		NSArray<SHDailyEvent*> *lastTwoActivations = [daily lastActivations: 2];
+		SHDailyEvent *lastEvent = [lastTwoActivations silentGet:0];
+		SHDailyEvent *rollbackToEvent = [lastTwoActivations silentGet:1];
+		struct SHDatetime *lastEventDtTz = [lastEvent.eventDatetime SH_toSHDatetime];
+		SH_dtSetTimezoneOffset(lastEventDtTz, lastEvent.tzOffset);
+		bool hasBeenActivatedToday = false;
+		SH_isDateAGTDateB(lastEventDtTz, todayLocal, &hasBeenActivatedToday);
+		BOOL isActivated = NO;
+		if(!hasBeenActivatedToday) {
+			SHDailyEvent *activation = (SHDailyEvent *)[context newEntity:SHDailyEvent.entity];
+			activation.eventDatetime = self.dateProvider.date;
+			activation.tzOffset = (int32_t)self.dateProvider.localTzOffset;
+			activation.event_daily = daily;
+			daily.lastActivationDateTime = activation.eventDatetime;
+			isActivated = YES;
 		}
 		else {
-			dayStartTime = SHConfig.dayStartTime;
+			[context deleteObject:lastEvent];
+			daily.lastActivationDateTime = rollbackToEvent.eventDatetime;
+			isActivated = NO;
 		}
-		#warning figure this shit out
-//		NSTimeInterval todayActivation = [self.dateProvider.date.dayStart
-//			dateByAddingTimeInterval:dayStartTime].timeIntervalSince1970;
-//		NSArray<SHDailyEvent*> *lastTwoActivations = [daily lastActivations: 2];
-//		SHDailyEvent *lastEvent = [lastTwoActivations silentGet:0];
-//		SHDailyEvent *rollbackToEvent = [lastTwoActivations silentGet:1];
-//		NSTimeInterval lastEventTimestamp = lastEvent.eventDatetime
-//			.timeIntervalSince1970 - lastEvent.tzOffset;
-//		if(todayActivation > lastEventTimestamp) {
-//			SHDailyEvent *activation = (SHDailyEvent *)[context newEntity:SHDailyEvent.entity];
-//			activation.eventDatetime = self.dateProvider.date;
-//			activation.tzOffset = (int32_t)self.dateProvider.localTzOffset;
-//			activation.event_daily = daily;
-//			daily.lastActivationDateTime = activation.eventDatetime;
-//			if(self.activationAction) self.activationAction(YES, self.objectID);
-//		}
-//		else {
-//			[context deleteObject:lastEvent];
-//			daily.lastActivationDateTime = rollbackToEvent.eventDatetime;
-//			if(self.activationAction) self.activationAction(NO, self.objectID);
-//		}
-//		NSError *saveErr = nil;
-//		[context save:&saveErr];
-//		if(saveErr) {
-//			@throw [NSException dbException:saveErr];
-//		}
+		SH_freeSHDatetime(todayLocal, 1);
+		SH_freeSHDatetime(lastEventDtTz, 1);
+		NSError *saveErr = nil;
+		[context save:&saveErr];
+		if(saveErr) {
+			@throw [NSException dbException:saveErr];
+		}
+		[NSOperationQueue.mainQueue addOperationWithBlock:^{
+			if(self.activationAction) self.activationAction(isActivated, self.objectID);
+		}];
+		
 	}];
 }
 

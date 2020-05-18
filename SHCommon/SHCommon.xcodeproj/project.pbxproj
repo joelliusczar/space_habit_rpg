@@ -106,14 +106,12 @@
 		274ADD40245E52C500763D25 /* TestProbWeightsThreeItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD2E245E52C500763D25 /* TestProbWeightsThreeItems.m */; };
 		274ADD41245E52C500763D25 /* ProbilityWeightTestFourItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD2F245E52C500763D25 /* ProbilityWeightTestFourItems.m */; };
 		274ADD43245E545600763D25 /* SHInheritanceTreeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD42245E545600763D25 /* SHInheritanceTreeTest.m */; };
+		275534422471C8B600D650AB /* NSCalendar+SHHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 275534402471C8B600D650AB /* NSCalendar+SHHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		275534432471C8B600D650AB /* NSCalendar+SHHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 275534412471C8B600D650AB /* NSCalendar+SHHelper.m */; };
 		27D802E32464E0CE0057E950 /* SHReflectionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D802E02464E0CE0057E950 /* SHReflectionHelper.m */; };
 		27D802E42464E0CE0057E950 /* SHReflectionHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D802E22464E0CE0057E950 /* SHReflectionHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27F3CFEE2470AFB300E5B211 /* SHIconBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F3CFEC2470AFB300E5B211 /* SHIconBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27F3CFEF2470AFB300E5B211 /* SHIconBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3CFED2470AFB300E5B211 /* SHIconBuilder.m */; };
-		27F3CFF22470C43E00E5B211 /* SHIConner.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F3CFF02470C43E00E5B211 /* SHIConner.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27F3CFF32470C43E00E5B211 /* SHIConner.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3CFF12470C43E00E5B211 /* SHIConner.m */; };
-		27F3CFF62470C65A00E5B211 /* SimpleClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F3CFF42470C65A00E5B211 /* SimpleClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27F3CFF72470C65A00E5B211 /* SimpleClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3CFF52470C65A00E5B211 /* SimpleClass.m */; };
 		27F3EC52245703A40049F684 /* SHDatetime in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F3EC39245669BA0049F684 /* SHDatetime */; };
 /* End PBXBuildFile section */
 
@@ -271,14 +269,12 @@
 		274ADD2E245E52C500763D25 /* TestProbWeightsThreeItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestProbWeightsThreeItems.m; sourceTree = "<group>"; };
 		274ADD2F245E52C500763D25 /* ProbilityWeightTestFourItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProbilityWeightTestFourItems.m; sourceTree = "<group>"; };
 		274ADD42245E545600763D25 /* SHInheritanceTreeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHInheritanceTreeTest.m; sourceTree = "<group>"; };
+		275534402471C8B600D650AB /* NSCalendar+SHHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSCalendar+SHHelper.h"; sourceTree = "<group>"; };
+		275534412471C8B600D650AB /* NSCalendar+SHHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSCalendar+SHHelper.m"; sourceTree = "<group>"; };
 		27D802E02464E0CE0057E950 /* SHReflectionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHReflectionHelper.m; sourceTree = "<group>"; };
 		27D802E22464E0CE0057E950 /* SHReflectionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHReflectionHelper.h; sourceTree = "<group>"; };
 		27F3CFEC2470AFB300E5B211 /* SHIconBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHIconBuilder.h; sourceTree = "<group>"; };
 		27F3CFED2470AFB300E5B211 /* SHIconBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHIconBuilder.m; sourceTree = "<group>"; };
-		27F3CFF02470C43E00E5B211 /* SHIConner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHIConner.h; sourceTree = "<group>"; };
-		27F3CFF12470C43E00E5B211 /* SHIConner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHIConner.m; sourceTree = "<group>"; };
-		27F3CFF42470C65A00E5B211 /* SimpleClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleClass.h; sourceTree = "<group>"; };
-		27F3CFF52470C65A00E5B211 /* SimpleClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleClass.m; sourceTree = "<group>"; };
 		27F3EC34245669BA0049F684 /* SHDatetime.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHDatetime.xcodeproj; path = ../SHDatetime/SHDatetime.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -389,10 +385,6 @@
 				273743EF24565DD800E36AB7 /* SHSingletonCluster.m */,
 				273743AE24565DD800E36AB7 /* SHVarWrapper.h */,
 				273743E924565DD800E36AB7 /* SHVarWrapper.m */,
-				27F3CFF02470C43E00E5B211 /* SHIConner.h */,
-				27F3CFF12470C43E00E5B211 /* SHIConner.m */,
-				27F3CFF42470C65A00E5B211 /* SimpleClass.h */,
-				27F3CFF52470C65A00E5B211 /* SimpleClass.m */,
 			);
 			path = SHCommon;
 			sourceTree = "<group>";
@@ -400,34 +392,36 @@
 		273743B424565DD800E36AB7 /* NS+Categories */ = {
 			isa = PBXGroup;
 			children = (
-				273743B524565DD800E36AB7 /* NSException+SHCommonExceptions.h */,
-				273743B624565DD800E36AB7 /* NSMutableArray+Helper.m */,
 				273743B724565DD800E36AB7 /* NSArray+SHHelper.h */,
-				273743B824565DD800E36AB7 /* UIColor+Helper.h */,
-				273743B924565DD800E36AB7 /* NSMutableDictionary+Helper.m */,
-				273743BA24565DD800E36AB7 /* NSSet+SHHelper.m */,
-				273743BB24565DD800E36AB7 /* NSNumber+Helper.m */,
-				273743BC24565DD800E36AB7 /* NSManagedObjectContext+Helper.m */,
-				273743BD24565DD800E36AB7 /* NSLocale+Helper.m */,
-				273743BE24565DD800E36AB7 /* NSDictionary+SHHelper.m */,
-				273743BF24565DD800E36AB7 /* NSDate+DateHelper.h */,
-				273743C024565DD800E36AB7 /* UIImage+Helper.m */,
-				273743C124565DD800E36AB7 /* NSOrderedSet+SHHelper.m */,
-				273743C224565DD800E36AB7 /* NSObject+Helper.h */,
-				273743C324565DD800E36AB7 /* NSException+SHCommonExceptions.m */,
-				273743C424565DD800E36AB7 /* NSMutableDictionary+Helper.h */,
-				273743C524565DD800E36AB7 /* UIColor+Helper.m */,
 				273743C624565DD800E36AB7 /* NSArray+SHHelper.m */,
-				273743C724565DD800E36AB7 /* NSMutableArray+Helper.h */,
-				273743C824565DD800E36AB7 /* NSDictionary+SHHelper.h */,
+				273743BF24565DD800E36AB7 /* NSDate+DateHelper.h */,
 				273743C924565DD800E36AB7 /* NSDate+DateHelper.m */,
+				273743C824565DD800E36AB7 /* NSDictionary+SHHelper.h */,
+				273743BE24565DD800E36AB7 /* NSDictionary+SHHelper.m */,
+				273743B524565DD800E36AB7 /* NSException+SHCommonExceptions.h */,
+				273743C324565DD800E36AB7 /* NSException+SHCommonExceptions.m */,
 				273743CA24565DD800E36AB7 /* NSLocale+Helper.h */,
+				273743BD24565DD800E36AB7 /* NSLocale+Helper.m */,
 				273743CB24565DD800E36AB7 /* NSManagedObjectContext+Helper.h */,
+				273743BC24565DD800E36AB7 /* NSManagedObjectContext+Helper.m */,
+				273743C724565DD800E36AB7 /* NSMutableArray+Helper.h */,
+				273743B624565DD800E36AB7 /* NSMutableArray+Helper.m */,
+				273743C424565DD800E36AB7 /* NSMutableDictionary+Helper.h */,
+				273743B924565DD800E36AB7 /* NSMutableDictionary+Helper.m */,
 				273743CC24565DD800E36AB7 /* NSNumber+Helper.h */,
-				273743CD24565DD800E36AB7 /* NSSet+SHHelper.h */,
+				273743BB24565DD800E36AB7 /* NSNumber+Helper.m */,
+				273743C224565DD800E36AB7 /* NSObject+Helper.h */,
 				273743CE24565DD800E36AB7 /* NSObject+Helper.m */,
 				273743CF24565DD800E36AB7 /* NSOrderedSet+SHHelper.h */,
+				273743C124565DD800E36AB7 /* NSOrderedSet+SHHelper.m */,
+				273743CD24565DD800E36AB7 /* NSSet+SHHelper.h */,
+				273743BA24565DD800E36AB7 /* NSSet+SHHelper.m */,
+				273743B824565DD800E36AB7 /* UIColor+Helper.h */,
+				273743C524565DD800E36AB7 /* UIColor+Helper.m */,
 				273743D024565DD800E36AB7 /* UIImage+Helper.h */,
+				273743C024565DD800E36AB7 /* UIImage+Helper.m */,
+				275534402471C8B600D650AB /* NSCalendar+SHHelper.h */,
+				275534412471C8B600D650AB /* NSCalendar+SHHelper.m */,
 			);
 			path = "NS+Categories";
 			sourceTree = "<group>";
@@ -535,8 +529,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27F3CFF62470C65A00E5B211 /* SimpleClass.h in Headers */,
-				27F3CFF22470C43E00E5B211 /* SHIConner.h in Headers */,
+				275534422471C8B600D650AB /* NSCalendar+SHHelper.h in Headers */,
 				2737442E24565DD800E36AB7 /* SHResourceUtility.h in Headers */,
 				2737441C24565DD800E36AB7 /* NSManagedObjectContext+Helper.h in Headers */,
 				2737442724565DD800E36AB7 /* SHNotificationHelper.h in Headers */,
@@ -766,7 +759,6 @@
 				2737442B24565DD800E36AB7 /* SHConstants.m in Sources */,
 				2737442324565DD800E36AB7 /* SHProbWeight.m in Sources */,
 				2737440C24565DD800E36AB7 /* NSNumber+Helper.m in Sources */,
-				27F3CFF32470C43E00E5B211 /* SHIConner.m in Sources */,
 				2737440424565DD800E36AB7 /* SHDefaultDateProvider.m in Sources */,
 				2737440724565DD800E36AB7 /* NSMutableArray+Helper.m in Sources */,
 				2737440524565DD800E36AB7 /* SHObject.m in Sources */,
@@ -778,12 +770,12 @@
 				2737444224565DD800E36AB7 /* SHCommonUtils.m in Sources */,
 				27F3CFEF2470AFB300E5B211 /* SHIconBuilder.m in Sources */,
 				27D802E32464E0CE0057E950 /* SHReflectionHelper.m in Sources */,
+				275534432471C8B600D650AB /* NSCalendar+SHHelper.m in Sources */,
 				2737443824565DD800E36AB7 /* SHCoreData.m in Sources */,
 				2737443E24565DD800E36AB7 /* SHInterceptor.m in Sources */,
 				2737442824565DD800E36AB7 /* SHObjectIDWrapper.m in Sources */,
 				2737441F24565DD800E36AB7 /* NSObject+Helper.m in Sources */,
 				2737444024565DD800E36AB7 /* SHResourceUtility.m in Sources */,
-				27F3CFF72470C65A00E5B211 /* SimpleClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

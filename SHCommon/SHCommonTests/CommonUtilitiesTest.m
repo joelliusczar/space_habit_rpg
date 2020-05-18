@@ -26,7 +26,7 @@
 
 
 NSDate* getReferenceDate(){
-	NSCalendar *cal = NSCalendar.currentCalendar;
+	NSCalendar *cal = NSCalendar.SH_appCalendar;
 	NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
 	dateComponents.year = 2016;
 	dateComponents.month = 1;

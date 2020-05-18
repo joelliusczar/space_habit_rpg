@@ -45,7 +45,7 @@ const NSInteger DAY_COLUMN = 1;
 	if(component == ORDINAL_WEEK_COLUMN){
 		return SH_POTENTIAL_WEEKS_IN_MONTH_NUM;
 	}
-	return NSCalendar.currentCalendar.shortWeekdaySymbols.count;
+	return NSCalendar.SH_appCalendar.shortWeekdaySymbols.count;
 }
 
 
@@ -58,7 +58,7 @@ const NSInteger DAY_COLUMN = 1;
 													 stringFromNumber:[NSNumber numberWithInteger:row + 1]];
 		return formatted;
 	}
-	NSString *day = NSCalendar.currentCalendar.weekdaySymbols[row];
+	NSString *day = NSCalendar.SH_appCalendar.weekdaySymbols[row];
 	return day;
 }
 

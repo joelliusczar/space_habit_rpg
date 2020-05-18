@@ -41,7 +41,7 @@
 {
 	SHListItemCell *cell = [SHListItemCell getListItemCell:tableView];
 	SHMonthlyYearlyRateItem *rateItem = self.yearRateItems[indexPath.row];
-	NSString *month = NSCalendar.currentCalendar.monthSymbols[rateItem.majorOrdinal];
+	NSString *month = NSCalendar.SH_appCalendar.monthSymbols[rateItem.majorOrdinal];
 	cell.lblRowDesc.text = [NSString stringWithFormat:@"%@ %ld",month,rateItem.minorOrdinal + 1];
 	return cell;
 }

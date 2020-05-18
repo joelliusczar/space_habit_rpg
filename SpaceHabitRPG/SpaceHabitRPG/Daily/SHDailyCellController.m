@@ -47,6 +47,7 @@
 		NSInteger rate = daily.intervalSize;
 		NSUInteger daysUntilDue = daily.daysUntilDue;
 		SHIntervalType rateType = (SHIntervalType)daily.intervalType;
+		SHDailyStatus status = (SHDailyStatus)daily.status;
 		
 		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
 			self.nameLbl.text = dailyName;
@@ -59,22 +60,25 @@
 				self.streakLbl.hidden = YES;
 			}
 			
-//			if(isCompleted){
-//				self.daysLeftLbl.hidden = YES;
-//				[self.completeBtn setImage:[self drawCompletionIcon:1] forState:UIControlStateNormal];
-//			}
-//			else{
-//				if(intervalType != SH_DAILY_INTERVAL || intervalSize > 1) {
-//					self.daysLeftLbl.hidden = NO;
-//					self.daysLeftLbl.text = daysUntilDue == 0 ? @"Due today":
-//						daysUntilDue == 1 ? @"Due tomorrow" :
-//							[NSString stringWithFormat:@"Due in %lul days", daysUntilDue];
-//				}
-//				else {
-//					self.daysLeftLbl.hidden = YES;
-//				}
-//				[self.completeBtn setImage:[self drawCompletionIcon:0] forState:UIControlStateNormal];
-//			}
+			if(status == SH_DAILY_STATUS_DUE) {
+				self.completeBtn.hidden = NO;
+				self.completeBtn.enabled = YES;
+				[self.completeBtn setImage:[self drawCompletionIcon:0] forState:UIControlStateNormal];
+			}
+			else if(status == SH_DAILY_STATUS_COMPLETE){
+				self.daysLeftLbl.hidden = YES;
+				[self.completeBtn setImage:[self drawCompletionIcon:1] forState:UIControlStateNormal];
+			}
+			else if(status == SH_DAILY_STATUS_NOT_DUE) {
+				self.completeBtn.hidden = YES;
+				self.completeBtn.enabled = NO;
+				self.daysLeftLbl.hidden = NO;
+				self.daysLeftLbl.text = daysUntilDue == 1 ? @"Due tomorrow" :
+					[NSString stringWithFormat:@"Due in %lul days", daysUntilDue];
+			}
+			else {
+				@throw [NSException oddException:@"Either status was not correctly set"];
+			}
 		}];
 	}];
 	

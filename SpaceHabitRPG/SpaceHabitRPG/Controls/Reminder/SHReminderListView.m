@@ -117,7 +117,7 @@ numberOfRowsInSection:(NSInteger)section
 		NSDateComponents *components = [[NSDateComponents alloc] init];
 		components.hour = hour;
 		components.minute = minute;
-		reminder.reminderHour = [NSCalendar.currentCalendar dateFromComponents:components].timeIntervalSince1970;
+		reminder.reminderHour = [NSCalendar.SH_appCalendar dateFromComponents:components].timeIntervalSince1970;
 		reminder.daysBeforeDue = [SHMath toIntExact:daysBefore];
 		[dueDateItem addNewReminder:reminder];
 	}];

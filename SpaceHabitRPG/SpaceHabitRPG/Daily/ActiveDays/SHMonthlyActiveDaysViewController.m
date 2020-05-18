@@ -53,7 +53,7 @@
 	numFormatter.locale = NSLocale.currentLocale;
 	numFormatter.numberStyle = NSNumberFormatterOrdinalStyle;
 	NSString *ordinal = [numFormatter stringFromNumber:@(rateItem.majorOrdinal + 1)];
-	NSString *dayOfWeek = NSCalendar.currentCalendar.weekdaySymbols[rateItem.minorOrdinal];
+	NSString *dayOfWeek = NSCalendar.SH_appCalendar.weekdaySymbols[rateItem.minorOrdinal];
 	cell.lblRowDesc.text = [NSString stringWithFormat:@"%@ %@ of the month",ordinal,dayOfWeek];
 	return cell;
 }

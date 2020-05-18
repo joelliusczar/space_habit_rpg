@@ -11,6 +11,7 @@
 #import <objc/runtime.h>
 #import "NSException+SHCommonExceptions.h"
 #import "SHSingletonCluster.h"
+#import "NSCalendar+SHHelper.h"
 
 
 @implementation NSDate (DateHelper)
@@ -91,7 +92,7 @@
 
 -(NSDateComponents *)getDateComponents{
 	NSCalendarUnit calendarUnits = (252 + 2097152); //magic number for year,month,day,hour,min,sec
-	NSDateComponents *components = [NSCalendar.currentCalendar
+	NSDateComponents *components = [NSCalendar.SH_appCalendar
 		components:calendarUnits
 		fromDate:self];
 	return components;
