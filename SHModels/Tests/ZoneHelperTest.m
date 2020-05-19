@@ -9,7 +9,6 @@
 #import "SHFrequentCase.h"
 @import SHCommon;
 @import SHModels;
-@import SHTestCommon;
 
 #define SET_UP_BOUND() shouldUseLowerBoundChoices_zh[i++] = NO
 #define SET_LOW_BOUND() shouldUseLowerBoundChoices_zh[i++] = YES

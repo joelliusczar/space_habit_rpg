@@ -13,6 +13,8 @@
 #include "../Configs/SHWorkspace.xcconfig"
 #include "../Configs/C_Lib.xcconfig"
 
+//FRAMEWORK_SEARCH_PATHS = $(SHUTILS_C_H_DIR) $(SHDATETIME_H_DIR)
+
 HEADER_SEARCH_PATHS = $(SHUTILS_C_H_DIR)/Headers $(SHDATETIME_H_DIR)/Headers $(inherited)
 
 //DEFINES_MODULE = YES

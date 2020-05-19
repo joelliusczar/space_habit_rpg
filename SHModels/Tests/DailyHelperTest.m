@@ -12,7 +12,6 @@
 @import SHCommon;
 
 @import SHModels;
-@import SHTestCommon;
 
 @interface DailyHelperTest : SHFrequentCase
 @property (strong,nonatomic) NSManagedObjectContext *testContext;

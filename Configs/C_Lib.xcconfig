@@ -42,3 +42,12 @@ MODULEMAP_FILE = $(SRCROOT)/Headers/module.modulemap
 
 
 
+
+
+//MACH_O_TYPE = staticlib
+
+
+MACH_O_TYPE = mh_dylib
+
+
+

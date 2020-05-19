@@ -8,7 +8,6 @@
 
 #import "SHFrequentCase.h"
 @import SHModels;
-@import SHTestCommon;
 
 @interface MonsterHelperTest : SHFrequentCase
 
