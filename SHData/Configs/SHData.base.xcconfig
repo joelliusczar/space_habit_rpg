@@ -1,0 +1,15 @@
+//
+//  SHData.base.xcconfig
+//  SHData
+//
+//  Created by Joel Pridgen on 5/18/20.
+//  Copyright © 2020 Joel Gillette. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "../Configs/SHWorkspace.xcconfig"
+#include "../Configs/C_Lib.xcconfig"
+
+

@@ -124,4 +124,14 @@ static NSUserDefaults *_userDefaults = nil;
 }
 
 
++(BOOL)isAppInitialized {
+	BOOL isAppInitialized = [self.userDefaults boolForKey:@"isAppInitialized"];
+	return isAppInitialized;
+}
+
+
++(void)setIsAppInitialized:(BOOL)isAppInitialized {
+	[self.userDefaults setBool:isAppInitialized forKey:@"isAppInitialized"];
+}
+
 @end

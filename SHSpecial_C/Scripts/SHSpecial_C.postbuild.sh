@@ -8,11 +8,11 @@
 
 cd "$SRCROOT"/../Build_Scripts
 . SHMaster.sh
-#if [ -n "$IS_JOEL" ] && [ False ]; then
-#	copyFiles "$SHFolder/Code/SH_C"
-#	copyFiles "$SHFolder/Code/SH_C" 'Copy'
-#	copyFiles "$SHFolder/ServerCopy" "Scripts"
-#fi
+if [ -n "$IS_JOEL" ]; then
+	copyFiles 'Code' "$SHFolder/Code/SHSpecial_C"
+	copyFiles 'Send' "$SHFolder/Code/SHSpecial_C"
+	copyFiles 'Send/Scripts' "$SHFolder/ServerCopy"
+fi
 
 
 . module_map_copy.sh

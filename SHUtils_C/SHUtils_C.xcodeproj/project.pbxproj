@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		270CB96A244CC30900FE930B /* SHUtils_C.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769C0A1227F682D00217480 /* SHUtils_C.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2716922D20916ED50059A58E /* SHArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 271692082089762D0059A58E /* SHArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2716922F20916EDD0059A58E /* SHErrorHandling.c in Sources */ = {isa = PBXBuildFile; fileRef = 27169216208BB2450059A58E /* SHErrorHandling.c */; };
+		275534C12479E39C00D650AB /* SHSerialQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 275534BF2479E39B00D650AB /* SHSerialQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		275534C22479E39C00D650AB /* SHSerialQueue.c in Sources */ = {isa = PBXBuildFile; fileRef = 275534C02479E39B00D650AB /* SHSerialQueue.c */; };
 		2769C097227C81B500217480 /* SHErrorHandling.h in Headers */ = {isa = PBXBuildFile; fileRef = 27169215208BB2450059A58E /* SHErrorHandling.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2781552B21758C3F005C5279 /* SHUtilConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781552921758C3F005C5279 /* SHUtilConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2781552C21758C3F005C5279 /* SHUtilConstants.c in Sources */ = {isa = PBXBuildFile; fileRef = 2781552A21758C3F005C5279 /* SHUtilConstants.c */; };
@@ -22,8 +23,9 @@
 		271692002089758B0059A58E /* SHUtils_C */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = SHUtils_C; sourceTree = BUILT_PRODUCTS_DIR; };
 		271692082089762D0059A58E /* SHArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHArray.h; sourceTree = "<group>"; };
 		27169215208BB2450059A58E /* SHErrorHandling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHErrorHandling.h; sourceTree = "<group>"; };
-		27169216208BB2450059A58E /* SHErrorHandling.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHErrorHandling.c; sourceTree = "<group>"; };
 		27397341226C0894001590C6 /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		275534BF2479E39B00D650AB /* SHSerialQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSerialQueue.h; sourceTree = "<group>"; };
+		275534C02479E39B00D650AB /* SHSerialQueue.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHSerialQueue.c; sourceTree = "<group>"; };
 		2769C096227C6F2F00217480 /* SHUtils_C.postbuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = SHUtils_C.postbuild.sh; sourceTree = "<group>"; };
 		2769C0A0227F67FB00217480 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		2769C0A1227F682D00217480 /* SHUtils_C.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHUtils_C.h; sourceTree = "<group>"; };
@@ -54,13 +56,14 @@
 			children = (
 				2769C0A0227F67FB00217480 /* module.modulemap */,
 				271692082089762D0059A58E /* SHArray.h */,
-				27169216208BB2450059A58E /* SHErrorHandling.c */,
 				27169215208BB2450059A58E /* SHErrorHandling.h */,
 				27DF9C4D20956D6300F98023 /* SHGenAlgos.c */,
 				27DF9C4C20956D6300F98023 /* SHGenAlgos.h */,
 				2781552A21758C3F005C5279 /* SHUtilConstants.c */,
 				2781552921758C3F005C5279 /* SHUtilConstants.h */,
 				2769C0A1227F682D00217480 /* SHUtils_C.h */,
+				275534BF2479E39B00D650AB /* SHSerialQueue.h */,
+				275534C02479E39B00D650AB /* SHSerialQueue.c */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -80,7 +83,7 @@
 				2712C5F3244D29CB00157758 /* Resources */,
 				2769C095227C6EAA00217480 /* Scripts */,
 				276E6D95222A492E00CB36CB /* Configs */,
-				27BB290421520778003225BB /* Copy */,
+				27BB290421520778003225BB /* Send */,
 				271692012089758B0059A58E /* Products */,
 				2716920E208991130059A58E /* Frameworks */,
 			);
@@ -120,13 +123,13 @@
 			path = Configs;
 			sourceTree = "<group>";
 		};
-		27BB290421520778003225BB /* Copy */ = {
+		27BB290421520778003225BB /* Send */ = {
 			isa = PBXGroup;
 			children = (
 				27BB2905215207A3003225BB /* Makefile */,
 				27BB29132159CE1E003225BB /* vars.mk */,
 			);
-			path = Copy;
+			path = Send;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +139,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				275534C12479E39C00D650AB /* SHSerialQueue.h in Headers */,
 				2716922D20916ED50059A58E /* SHArray.h in Headers */,
 				2781552B21758C3F005C5279 /* SHUtilConstants.h in Headers */,
 				2769C097227C81B500217480 /* SHErrorHandling.h in Headers */,
@@ -238,9 +242,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				275534C22479E39C00D650AB /* SHSerialQueue.c in Sources */,
 				2781552C21758C3F005C5279 /* SHUtilConstants.c in Sources */,
 				27DF9C4F20956D6300F98023 /* SHGenAlgos.c in Sources */,
-				2716922F20916EDD0059A58E /* SHErrorHandling.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

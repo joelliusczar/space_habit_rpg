@@ -32,7 +32,7 @@ extern shDebugCallback shDbgCallback;
 #endif
 
 #ifndef SH_notifyOfError
-#define SH_notifyOfError(err,msg) printf("Error: %s \nat %s: %d",msg,__FILE__,__LINE__)
+#define SH_notifyOfError(err,msg) printf("Error:\n %s \nat %s: %d\n",msg,__FILE__,__LINE__)
 #endif
 
 #define SH_USE_ERR_BRANCHES 1
@@ -63,27 +63,10 @@ typedef enum {
 	SH_INPUT_BAD_RESULTS = 7,
 	SH_ALLOC = 8,
 	SH_LOGIC_MISROUTE = 9,
+	SH_SQLITE3_ERROR = 10,
+	SH_THREAD_ERROR = 11,
+	SH_EXTERNAL_BLOCK = 12,
 } SHErrorCode;
 
 
-typedef bool (*SHErrorCallback)(SHErrorCode err,const char* const msg,void* info,bool* isError);
-
-typedef struct {
-	SHErrorCode code;
-	SHErrorCallback errorCallback;
-	unsigned long msgLen;
-	char* msg;
-	void* callbackInfo;
-	bool isError;
-	uintptr_t filler[8];
-} SHError;
-
-bool shSetErrorCode(SHErrorCode code,SHErrorCode *error);
-bool shHandleError(SHErrorCode code,const char* const msg,SHError* errObj);
-int32_t shSetIndexErrorCode(SHErrorCode code,SHErrorCode* error);
-int32_t shHandleErrorRetNotFound(SHErrorCode code,const char* const msg,SHError* errObj);
-void * shHandleErrorRetNull(SHErrorCode code,const char* const msg,SHError* errObj);
-void shPrepareSHError(SHError* errObj);
-void shDisposeSHError(SHError* errObj);
-void shSetDebugCallback(shDebugCallback callback);
 #endif /* SHErrorHandling_h */

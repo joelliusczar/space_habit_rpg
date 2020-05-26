@@ -90,9 +90,9 @@
 		27BB290D2157D8E2003225BB /* cl_dt_all.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = cl_dt_all.py; sourceTree = "<group>"; };
 		27BB290E2157D8E2003225BB /* dt_test.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = dt_test.py; sourceTree = "<group>"; };
 		27BB290F2157D93B003225BB /* SHDatetime_struct.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = SHDatetime_struct.py; sourceTree = "<group>"; };
-		27BB291021582F39003225BB /* dt_prompt.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = dt_prompt.c; sourceTree = "<group>"; };
-		27BB29112158450A003225BB /* cl_datetime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cl_datetime.h; sourceTree = "<group>"; };
-		27BB29122158450A003225BB /* cl_datetime.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cl_datetime.c; sourceTree = "<group>"; };
+		27BB291021582F39003225BB /* SHCLDtPrompt.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHCLDtPrompt.c; sourceTree = "<group>"; };
+		27BB29112158450A003225BB /* SHCLDatetime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHCLDatetime.h; sourceTree = "<group>"; };
+		27BB29122158450A003225BB /* SHCLDatetime.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHCLDatetime.c; sourceTree = "<group>"; };
 		27BB2918215B0D5F003225BB /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		27D3183D2086C8CA0047F5F1 /* SHDatetime */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = SHDatetime; sourceTree = BUILT_PRODUCTS_DIR; };
 		27D318462086C9040047F5F1 /* SHTimeZone.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SHTimeZone.c; sourceTree = "<group>"; };
@@ -222,13 +222,14 @@
 			path = Configs;
 			sourceTree = "<group>";
 		};
-		27BB28FF2151D453003225BB /* other_code */ = {
+		27BB28FF2151D453003225BB /* Send */ = {
 			isa = PBXGroup;
 			children = (
+				2737D57F216DA8BB00E0111F /* dt_server */,
 				27BB2915215B0BF8003225BB /* dt_prompt */,
 				27BB2914215B0BE3003225BB /* Makefiles */,
 			);
-			path = other_code;
+			path = Send;
 			sourceTree = "<group>";
 		};
 		27BB2914215B0BE3003225BB /* Makefiles */ = {
@@ -243,7 +244,7 @@
 		27BB2915215B0BF8003225BB /* dt_prompt */ = {
 			isa = PBXGroup;
 			children = (
-				27BB2917215B0D31003225BB /* Copy */,
+				27BB2917215B0D31003225BB /* Makefiles */,
 				27BB2916215B0D2A003225BB /* Code */,
 			);
 			path = dt_prompt;
@@ -252,9 +253,9 @@
 		27BB2916215B0D2A003225BB /* Code */ = {
 			isa = PBXGroup;
 			children = (
-				27BB29122158450A003225BB /* cl_datetime.c */,
-				27BB29112158450A003225BB /* cl_datetime.h */,
-				27BB291021582F39003225BB /* dt_prompt.c */,
+				27BB29122158450A003225BB /* SHCLDatetime.c */,
+				27BB29112158450A003225BB /* SHCLDatetime.h */,
+				27BB291021582F39003225BB /* SHCLDtPrompt.c */,
 				27BB290D2157D8E2003225BB /* cl_dt_all.py */,
 				27BB290E2157D8E2003225BB /* dt_test.py */,
 				27BB290F2157D93B003225BB /* SHDatetime_struct.py */,
@@ -262,12 +263,12 @@
 			path = Code;
 			sourceTree = "<group>";
 		};
-		27BB2917215B0D31003225BB /* Copy */ = {
+		27BB2917215B0D31003225BB /* Makefiles */ = {
 			isa = PBXGroup;
 			children = (
 				27BB2918215B0D5F003225BB /* Makefile */,
 			);
-			path = Copy;
+			path = Makefiles;
 			sourceTree = "<group>";
 		};
 		27D318342086C8CA0047F5F1 = {
@@ -278,9 +279,7 @@
 				2712C5F4244D2BE800157758 /* Resources */,
 				2769C1052286375E00217480 /* Scripts */,
 				276E6D94222A473900CB36CB /* Configs */,
-				2737D57F216DA8BB00E0111F /* dt_server */,
-				27BB28FF2151D453003225BB /* other_code */,
-				27D318442086C9040047F5F1 /* Implementations */,
+				27BB28FF2151D453003225BB /* Send */,
 				270EEF42245CCD8D0078D2ED /* Tests */,
 				27D3183E2086C8CA0047F5F1 /* Products */,
 				271691E6208861E50059A58E /* Frameworks */,
@@ -294,13 +293,6 @@
 				270EEF41245CCD8C0078D2ED /* SHDatetimeTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		27D318442086C9040047F5F1 /* Implementations */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Implementations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

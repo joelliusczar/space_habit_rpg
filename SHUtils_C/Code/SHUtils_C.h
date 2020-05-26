@@ -13,5 +13,6 @@
 #import "SHErrorHandling.h"
 #import "SHGenAlgos.h"
 #import "SHUtilConstants.h"
+#import "SHSerialQueue.h"
 
 #endif /* SHUtils_C_h */

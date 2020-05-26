@@ -39,3 +39,9 @@
 #define SH_findIdxRev(T1,T2) SH_findIdxRev_##T1##_##T2
 
 
+#define SH_DEF_RESIZE_ARR(T) static T * SH_resizeArr_##T##_(T const *src,int64_t olen,int64_t nlen){ \
+	T *resized = malloc(nlen*sizeof( T )); \
+	memcpy(resized,src,olen*sizeof( T )); \
+	return resized; \
+}
+#define SH_resizeArr(T) SH_resizeArr_##T##_

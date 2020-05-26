@@ -11,8 +11,8 @@ skip=1
 export SHFolder='SH_CP'
 
 function copyFiles {
-	section="$1"
-	fromSection=${2:-Implementations}
+	fromSection="$1"
+	section="$2"
 
 	[ ! -d ${SRCROOT}/../../${section} ] && mkdir -p ${SRCROOT}/../../${section}
 	cp -r -f ${SRCROOT}/${fromSection}/ ${SRCROOT}/../../${section}/

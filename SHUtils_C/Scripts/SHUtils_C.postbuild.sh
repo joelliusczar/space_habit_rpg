@@ -9,10 +9,8 @@
 cd "$SRCROOT"/../Build_Scripts
 . SHMaster.sh
 if [ -n "$IS_JOEL" ]; then
-	copyFiles "$SHFolder/Code/SHUtils_C" 'Headers'
-	copyFiles "$SHFolder/Code/SHUtils_C"
-	copyFiles "$SHFolder/Code/SHUtils_C" 'Copy'
-	copyFiles "Code/SHDatetime/SHUtils_C"
+	copyFiles 'Send' "$SHFolder/Code/SHUtils_C"
+	copyFiles 'Code' "$SHFolder/Code/SHUtils_C"
 fi
 
 . module_map_copy.sh

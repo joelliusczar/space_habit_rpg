@@ -5,6 +5,16 @@
       location = "group:/Users/joelpridgen/Documents/spacehabitrpg/hash_notes_reference.txt">
    </FileRef>
    <Group
+      location = "group:Send"
+      name = "Send">
+      <FileRef
+         location = "group:SHBase.mk">
+      </FileRef>
+      <FileRef
+         location = "group:Makefile">
+      </FileRef>
+   </Group>
+   <Group
       location = "group:Build_Scripts"
       name = "Build_Scripts">
       <Group
@@ -40,16 +50,10 @@
          location = "group:/Users/joelpridgen/Documents/spacehabitrpg/Build_Scripts/Build_Scripts.sh">
       </FileRef>
       <FileRef
-         location = "group:ObjCPlayground.sh">
-      </FileRef>
-      <FileRef
          location = "group:SHMaster.sh">
       </FileRef>
       <FileRef
          location = "group:SpaceHabitRPG.sh">
-      </FileRef>
-      <FileRef
-         location = "group:TestUI.sh">
       </FileRef>
       <FileRef
          location = "group:/Users/joelpridgen/Documents/spacehabitrpg/Build_Scripts/module_map_copy.sh">
@@ -78,17 +82,6 @@
       </FileRef>
       <FileRef
          location = "group:Configs/MacOSArchs.xcconfig">
-      </FileRef>
-   </Group>
-   <Group
-      location = "group:Copy"
-      name = "Copy">
-      <FileRef
-         location = "group:Makefile">
-      </FileRef>
-      <FileRef
-         location = "group:SHBase.mk"
-         assignedFileDataType = "public.make-source">
       </FileRef>
    </Group>
    <FileRef

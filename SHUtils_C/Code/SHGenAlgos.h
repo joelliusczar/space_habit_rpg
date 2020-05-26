@@ -23,7 +23,7 @@
 #endif
 
 
-int64_t calcStrHash(char const *str);
+int64_t SH_calcStrHash(char const *str);
 double kahanSum(const double* const nums,int64_t len);
 char * shStrCopy(const char * const str);
 #endif /* SHGenAlgos_h */

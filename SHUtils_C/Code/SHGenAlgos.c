@@ -11,7 +11,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-int64_t calcStrHash(char const *str){
+int64_t SH_calcStrHash(char const *str){
 	int64_t hash = 7;
 	int32_t idx = 0;
 	int32_t prime = 31;

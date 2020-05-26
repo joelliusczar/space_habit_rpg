@@ -192,7 +192,7 @@
 				2703AA68244FBCD200ACE781 /* SHUtils_C.xcodeproj */,
 				27BC44E4238792200047F683 /* SHDatetime.xcodeproj */,
 				276E6D96222A4AA500CB36CB /* Configs */,
-				27BB29092157499D003225BB /* Other_Code */,
+				27BB29092157499D003225BB /* Send */,
 				274ADCF9245E496C00763D25 /* Tests */,
 				271691CE208860100059A58E /* Frameworks */,
 				271691C320885EF70059A58E /* Products */,
@@ -224,10 +224,6 @@
 			children = (
 				2769C0AB227FB95A00217480 /* SHSpecial_C.prebuild.sh */,
 				2769C0AA227FB8F100217480 /* SHSpecial_C.postbuild.sh */,
-				2737D587216DAFEA00E0111F /* simple_start.sh */,
-				2737D588216DAFEA00E0111F /* daily_server_run.sh */,
-				2737D589216DAFEA00E0111F /* daily_server_cleanup.sh */,
-				2737D58A216DAFEA00E0111F /* daily_server.sh */,
 			);
 			path = Scripts;
 			sourceTree = "<group>";
@@ -249,6 +245,17 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		275534C7247C5D2700D650AB /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				2737D587216DAFEA00E0111F /* simple_start.sh */,
+				2737D588216DAFEA00E0111F /* daily_server_run.sh */,
+				2737D589216DAFEA00E0111F /* daily_server_cleanup.sh */,
+				2737D58A216DAFEA00E0111F /* daily_server.sh */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
 		276E6D96222A4AA500CB36CB /* Configs */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,16 +266,17 @@
 			path = Configs;
 			sourceTree = "<group>";
 		};
-		27BB29092157499D003225BB /* Other_Code */ = {
+		27BB29092157499D003225BB /* Send */ = {
 			isa = PBXGroup;
 			children = (
+				275534C7247C5D2700D650AB /* Scripts */,
 				27BB290A215749B8003225BB /* Makefile */,
 				27BB290B215749E7003225BB /* vars.mk */,
 				27BB290C2157CBAA003225BB /* DailyTestEverything.py */,
 				27BB291A215B1093003225BB /* DailyStructs.py */,
 				2737D58B216EE67B00E0111F /* DailySingleTest.py */,
 			);
-			path = Other_Code;
+			path = Send;
 			sourceTree = "<group>";
 		};
 		27BC44E5238792200047F683 /* Products */ = {

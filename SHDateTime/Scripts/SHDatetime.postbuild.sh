@@ -12,14 +12,13 @@ pwd
 
 if [ -n "$IS_JOEL" ]; then
 	echo "Copying files for SHDatetime to $SHFolder/Code"
-	copyFiles "$SHFolder/Code/SHDatetime" 'Headers'
-	copyFiles "$SHFolder/Code/SHDatetime"
-	copyFiles "$SHFolder/Code/SHDatetime" 'Copy/Makefiles'
-	copyFiles "$SHFolder/Code/SHDatetime" 'Copy/dt_prompt/Code'
-	cp -r ../Copy/ ${SRCROOT}/../../${SHFolder}/Code/
-	copyFiles "Code/SHDatetime/SHDatetime" #Copy the library code
-	copyFiles "Code/SHDatetime" 'Copy/dt_prompt/Code' #copy the test harness code
-	copyFiles "Code/SHDatetime" 'Copy/dt_prompt/Copy' #copy the makefile
+	copyFiles 'Code' "$SHFolder/Code/SHDatetime"
+	copyFiles 'Send/Makefiles/' "$SHFolder/Code/SHDatetime/"
+	copyFiles 'Send/dt_prompt/Code' "$SHFolder/Code/dt_prompt"
+	copyFiles 'Send/dt_prompt/Makefiles' "$SHFolder/Code/dt_prompt"
+	#put the copy for the global files here because SHDatetime's
+	#make is the first to be dependent on them
+	cp -r "$SRCROOT"/../Send/ ${SRCROOT}/../../${SHFolder}/Code/
 fi
 
 . module_map_copy.sh

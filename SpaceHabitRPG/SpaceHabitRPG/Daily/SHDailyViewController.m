@@ -45,33 +45,35 @@
 
 
 -(void)setupData{
-	SHDaily_Medium *dailyMedium = [SHDaily_Medium newWithContext:self.context];
-	self.habitItemsFetcher = [dailyMedium dailiesDataFetcher];
-	self.habitItemsFetcher.delegate = self;
-	[self fetchUpdates];
+#warning update without coredata
+//	SHDaily_Medium *dailyMedium = [SHDaily_Medium newWithContext:self.context];
+//	self.habitItemsFetcher = [dailyMedium dailiesDataFetcher];
+//	self.habitItemsFetcher.delegate = self;
+//	[self fetchUpdates];
 }
 
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
 	(void)tableView;
-	if(self.habitItemsFetcher.sections.count == 2) {
-		if(section == SH_DAILY_INCOMPLETE) {
-			return @"Unfinished";
-		}
-		else {
-			return @"Finished";
-		}
-	}
-	else if(self.habitItemsFetcher.sections.count == 1) {
-		__block NSString *title = @"";
-		[self.habitItemsFetcher.managedObjectContext performBlockAndWait:^{
-			if(self.habitItemsFetcher.fetchedObjects.count < 1) return;
-			SHDaily *daily = (SHDaily *)self.habitItemsFetcher.fetchedObjects[0];
-			#warning daily table title
-			//title = daily.isCompleted ? @"Finished" : @"Unfinished";
-		}];
-		return title;
-	}
+	#warning update without coredata
+//	if(self.habitItemsFetcher.sections.count == 2) {
+//		if(section == SH_DAILY_INCOMPLETE) {
+//			return @"Unfinished";
+//		}
+//		else {
+//			return @"Finished";
+//		}
+//	}
+//	else if(self.habitItemsFetcher.sections.count == 1) {
+//		__block NSString *title = @"";
+//		[self.habitItemsFetcher.managedObjectContext performBlockAndWait:^{
+//			if(self.habitItemsFetcher.fetchedObjects.count < 1) return;
+//			SHDaily *daily = (SHDaily *)self.habitItemsFetcher.fetchedObjects[0];
+//			#warning daily table title
+//			//title = daily.isCompleted ? @"Finished" : @"Unfinished";
+//		}];
+//		return title;
+//	}
 	return @"";
 }
 

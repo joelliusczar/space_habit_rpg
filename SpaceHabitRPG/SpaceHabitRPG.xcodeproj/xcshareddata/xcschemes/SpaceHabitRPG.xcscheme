@@ -59,6 +59,12 @@
             ReferencedContainer = "container:SpaceHabitRPG.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "/Users/joelpridgen/Documents/sh_db/SH_db.sqlite"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

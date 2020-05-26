@@ -78,49 +78,56 @@
 
 
 -(void)fetchUpdates{
-	[self.context performBlock:^{
-		NSError *error = nil;
-		if(![self.habitItemsFetcher performFetch:&error]){
-			@throw [NSException dbException:error];
-		}
-		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-			[self.habitTable reloadData];
-		}];
-	}];
+#warning update
+//	[self.context performBlock:^{
+//		NSError *error = nil;
+//		if(![self.habitItemsFetcher performFetch:&error]){
+//			@throw [NSException dbException:error];
+//		}
+//		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//			[self.habitTable reloadData];
+//		}];
+//	}];
 }
 
 
 -(nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView
 	cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-		SHHabitCell *cell = [self getTableCell:tableView];
-	__block NSManagedObjectID *objectID = nil;
-	[self.context performBlockAndWait:^{
-		NSManagedObject *mananagedObject = (NSManagedObject*)self.habitItemsFetcher
-			.sections[indexPath.section]
-			.objects[indexPath.row];
-		objectID = mananagedObject.objectID;
-	}];
-	SHContextObjectIDWrapper *wrappedID = [[SHContextObjectIDWrapper alloc]
-		initWithEntityType:self.entityType
-		withContext:self.context];
-	wrappedID.objectID = objectID;
-	[cell setupCell:wrappedID];
-	return cell;
+#warning update
+return nil;
+//		SHHabitCell *cell = [self getTableCell:tableView];
+//	__block NSManagedObjectID *objectID = nil;
+//	[self.context performBlockAndWait:^{
+//		NSManagedObject *mananagedObject = (NSManagedObject*)self.habitItemsFetcher
+//			.sections[indexPath.section]
+//			.objects[indexPath.row];
+//		objectID = mananagedObject.objectID;
+//	}];
+//	SHContextObjectIDWrapper *wrappedID = [[SHContextObjectIDWrapper alloc]
+//		initWithEntityType:self.entityType
+//		withContext:self.context];
+//	wrappedID.objectID = objectID;
+//	[cell setupCell:wrappedID];
+//	return cell;
 }
 
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
 	(void)tableView;
-	NSInteger sectionCount = self.habitItemsFetcher.sections.count;
-	return sectionCount;
+	#warning update
+	return 0;
+//	NSInteger sectionCount = self.habitItemsFetcher.sections.count;
+//	return sectionCount;
 }
 
 
 -(NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	(void)tableView;
-	NSInteger rowCount = self.habitItemsFetcher.sections[section].numberOfObjects;
-	return rowCount;
+	#warning update
+	return 0;
+//	NSInteger rowCount = self.habitItemsFetcher.sections[section].numberOfObjects;
+//	return rowCount;
 }
 
 
@@ -159,17 +166,18 @@
 -(void)swipeEditActionWithIndexPath:(NSIndexPath*)indexPath
 	withCompletionHandler:(void (^)(BOOL))completionHandler
 {
-	NSFetchedResultsController *fetchController = self.habitItemsFetcher;
-	NSManagedObjectContext *fetchContext = fetchController.managedObjectContext;
-	[fetchContext performBlockAndWait:^{
-		NSManagedObject *rowObject = fetchController.fetchedObjects[indexPath.row];
-		SHContextObjectIDWrapper *objectIDWrapper = [[SHContextObjectIDWrapper alloc]
-			initWithManagedObject:rowObject];
-		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-			[self openEditor:objectIDWrapper];
-			completionHandler(YES);
-		}];
-	}];
+#warning update without nsfetchresultscontroller
+//	NSFetchedResultsController *fetchController = self.habitItemsFetcher;
+//	NSManagedObjectContext *fetchContext = fetchController.managedObjectContext;
+//	[fetchContext performBlockAndWait:^{
+//		NSManagedObject *rowObject = fetchController.fetchedObjects[indexPath.row];
+//		SHContextObjectIDWrapper *objectIDWrapper = [[SHContextObjectIDWrapper alloc]
+//			initWithManagedObject:rowObject];
+//		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//			[self openEditor:objectIDWrapper];
+//			completionHandler(YES);
+//		}];
+//	}];
 }
 
 //this is wired up to a gesture recognizer

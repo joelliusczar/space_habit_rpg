@@ -1,0 +1,12 @@
+include ../SHBase.mk
+include vars.mk
+
+SH_LIB_SUFFIX?=''
+SHUTILS_C_FULL=$(call libfy,$(SHUTILS_C)$(SH_LIB_SUFFIX))
+.DEFAULT_GOAL:=$(SHUTILS_C_FULL)
+PARENT_PATH ?= .
+
+$(SHUTILS_C_FULL): $(OBJECTS)
+	$(CC) $(INC) $(CFLAGS) $(OBJECTS) -Wl,$(PATH_KEYWORD),$(PARENT_PATH)$(SHUTILS_C_FULL) -shared -o $(SHUTILS_C_FULL)
+
+
