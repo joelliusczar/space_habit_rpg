@@ -6,15 +6,15 @@
 //  Copyright © 2020 Joel Gillette. All rights reserved.
 //
 
-#import "SHDailyNextDueDateCalculator.h"
-#import "SHWeekIntervalItemList.h"
-@import SHDatetime;
-
-NS_ASSUME_NONNULL_BEGIN
-
-@interface SHDailyNextWeeklyDueDateCalculator : SHDailyNextDueDateCalculator
-@property (strong, nonatomic) SHWeekIntervalItemList *activeDays;
--(instancetype)initWithRateItemList:(SHWeekIntervalItemList *)activeDays;
-@end
-
-NS_ASSUME_NONNULL_END
+//#import "SHDailyNextDueDateCalculator.h"
+//#import "SHWeekIntervalItemList.h"
+//@import SHDatetime;
+//
+//NS_ASSUME_NONNULL_BEGIN
+//
+//@interface SHDailyNextWeeklyDueDateCalculator : SHDailyNextDueDateCalculator
+//@property (strong, nonatomic) SHWeekIntervalItemList *activeDays;
+//-(instancetype)initWithRateItemList:(SHWeekIntervalItemList *)activeDays;
+//@end
+//
+//NS_ASSUME_NONNULL_END

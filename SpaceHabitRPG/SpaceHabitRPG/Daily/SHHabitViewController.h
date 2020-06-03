@@ -10,9 +10,8 @@
 #import "SHEditingSaverProtocol.h"
 #import "SHHabitCell.h"
 @import UIKit;
-@import CoreData;
 @import SHControls;
-
+@import SHModels;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,7 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 	UITableViewDataSource,
 	UIGestureRecognizerDelegate>
 @property (weak, nonatomic) SHCentralViewController *central;
-@property (strong, nonatomic) NSManagedObjectContext *context;
 @property (strong, nonatomic) IBOutlet UILabel *addHabitBtnLbl;
 /*addHabitBtn is a view rather than a button because I wanted it to have nested
 	elements
@@ -29,19 +27,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UIImageView *addHabitBtnIcon;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *addHabitGesture;
 @property (copy, nonatomic) void (^onOpenAddHabit)(void);
--(instancetype)initWithCentral:(SHCentralViewController *)central
-	withContext:(NSManagedObjectContext*)context;
+-(instancetype)initWithCentral:(SHCentralViewController *)central;
 
 -(void)fetchUpdates;
 
 //abstract
-@property (readonly, nonatomic) NSEntityDescription *entityType;
-@property (readonly, nonatomic) NSString *entityName;
+@property (readonly, nonatomic) const char *tableName;
 -(void)setupData;
 -(SHHabitCell *)getTableCell:(UITableView*)tableView;
 -(SHViewController<SHEditingSaverProtocol> *)buildHabitEditor;
 //end abstract
-
 
 @end
 

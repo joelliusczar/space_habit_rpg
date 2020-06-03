@@ -18,6 +18,6 @@
 @property (weak, nonatomic) NSMutableArray<SHViewController *> *editControls;
 @property (strong, nonatomic) IBOutlet UITextField *itemNameInput;
 @property (strong, nonatomic) IBOutlet UIView *editorSubviewContainer;
-@property (strong, nonatomic) SHObjectIDWrapper *objectIDWrapper;
-@property (strong, nonatomic) NSManagedObjectContext *context;
+@property (assign, nonatomic) struct SHHabitBase *habit;
+@property (assign, nonatomic) void (*habitCleanup)(void *);
 @end

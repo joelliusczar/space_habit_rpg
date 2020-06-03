@@ -71,15 +71,6 @@
 }
 
 
-+(NSException*)encounterSHError:(SHError*)error {
-
-	return [NSException
-	exceptionWithName:@"SHError"
-	reason:[NSString stringWithUTF8String:error->msg]
-	userInfo:nil];
-}
-
-
 +(NSException*)encounterNSError:(NSError*)error {
 	return [NSException
 	exceptionWithName:@"NSError"

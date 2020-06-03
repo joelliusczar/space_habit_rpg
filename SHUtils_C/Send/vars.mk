@@ -1,1 +1,1 @@
-SH_UTILS_C=SHUtils_C
+SHUTILS_C=SHUtils_C

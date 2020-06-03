@@ -27,12 +27,9 @@ static bool _compareDtAndTimeShift(struct SHDatetime const *dt,struct SHTimeshif
 		
 		SH_dtToTimestamp(&copy, &timestamp);
 		
-		memset(&timezoneShiftAsDt, 0 , sizeof(struct SHDatetime));
-		timezoneShiftAsDt.year = SH_BASE_YEAR;
-		timezoneShiftAsDt.month = shift->month;
-		timezoneShiftAsDt.day = shift->day;
-		timezoneShiftAsDt.hour = shift->hour;
-		timezoneShiftAsDt.minute = shift->minute;
+		timezoneShiftAsDt = (struct SHDatetime){ .year = SH_BASE_YEAR, .month = shift->month,
+			.day = shift->day, .hour = shift->hour, .minute = shift->minute
+		};
 		
 		SH_dtToTimestamp(&timezoneShiftAsDt, &timezoneShiftTimestamp);
 

@@ -102,7 +102,7 @@
 		2737D588216DAFEA00E0111F /* daily_server_run.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = daily_server_run.sh; sourceTree = "<group>"; };
 		2737D589216DAFEA00E0111F /* daily_server_cleanup.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = daily_server_cleanup.sh; sourceTree = "<group>"; };
 		2737D58A216DAFEA00E0111F /* daily_server.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = daily_server.sh; sourceTree = "<group>"; };
-		2737D58B216EE67B00E0111F /* DailySingleTest.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = DailySingleTest.py; sourceTree = "<group>"; };
+		2737D58B216EE67B00E0111F /* due_date_single_test.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = due_date_single_test.py; sourceTree = "<group>"; };
 		27397343226C08C0001590C6 /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		274ADCF8245E496C00763D25 /* SHSpecial_CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHSpecial_CTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		274ADCFC245E496C00763D25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -119,8 +119,8 @@
 		27B0B1ED2223A3EC0028AF59 /* SHSpecial_C.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHSpecial_C.base.xcconfig; sourceTree = "<group>"; };
 		27BB290A215749B8003225BB /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		27BB290B215749E7003225BB /* vars.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = vars.mk; sourceTree = "<group>"; };
-		27BB290C2157CBAA003225BB /* DailyTestEverything.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = DailyTestEverything.py; sourceTree = "<group>"; };
-		27BB291A215B1093003225BB /* DailyStructs.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = DailyStructs.py; sourceTree = "<group>"; };
+		27BB290C2157CBAA003225BB /* due_date_test_everything.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = due_date_test_everything.py; sourceTree = "<group>"; };
+		27BB291A215B1093003225BB /* sh_due_date_structs.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = sh_due_date_structs.py; sourceTree = "<group>"; };
 		27BC44E4238792200047F683 /* SHDatetime.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHDatetime.xcodeproj; path = ../SHDatetime/SHDatetime.xcodeproj; sourceTree = "<group>"; };
 		27BCF911227BE97800540F4F /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		27D802C1245F54970057E950 /* OtherDueDateFuncsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherDueDateFuncsTests.m; sourceTree = "<group>"; };
@@ -272,9 +272,9 @@
 				275534C7247C5D2700D650AB /* Scripts */,
 				27BB290A215749B8003225BB /* Makefile */,
 				27BB290B215749E7003225BB /* vars.mk */,
-				27BB290C2157CBAA003225BB /* DailyTestEverything.py */,
-				27BB291A215B1093003225BB /* DailyStructs.py */,
-				2737D58B216EE67B00E0111F /* DailySingleTest.py */,
+				27BB290C2157CBAA003225BB /* due_date_test_everything.py */,
+				27BB291A215B1093003225BB /* sh_due_date_structs.py */,
+				2737D58B216EE67B00E0111F /* due_date_single_test.py */,
 			);
 			path = Send;
 			sourceTree = "<group>";

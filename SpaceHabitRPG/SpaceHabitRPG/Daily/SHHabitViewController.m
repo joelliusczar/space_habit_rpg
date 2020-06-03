@@ -19,12 +19,7 @@
 @implementation SHHabitViewController
 
 
--(NSEntityDescription*)entityType {
-	@throw [NSException abstractException];
-}
-
-
--(NSString*)entityName {
+-(const char*)tableName {
 	@throw [NSException abstractException];
 }
 
@@ -37,13 +32,9 @@
 }
 
 
--(instancetype)initWithCentral:(SHCentralViewController *)central
-	withContext:(NSManagedObjectContext*)context
-{
+-(instancetype)initWithCentral:(SHCentralViewController *)central {
 	if(self = [self initWithNibName:@"SHHabitViewController" bundle:nil]){
 		_central = central;
-		_context = context;
-		
 	}
 	return self;
 }
@@ -149,16 +140,13 @@ return nil;
 }
 
 
--(void)openEditor:(SHContextObjectIDWrapper *)objectIDWrapper {
+-(void)openEditor:(int64_t)pk {
 	SHViewController<SHEditingSaverProtocol> *habitEditor = [self buildHabitEditor];
-	NSManagedObjectContext *context = [self setupEditorForSaving:habitEditor
-		objectIDWrapper:objectIDWrapper];
+	[self setupEditorForSaving:habitEditor pk:pk];
 	
 	SHEditNavigationController *editNavController = [SHEditNavigationController newWithDefaultNib];
 	editNavController.editingScreen = habitEditor;
-	editNavController.title = self.entityName;
-	editNavController.context = context;
-	editNavController.objectIDWrapper = objectIDWrapper;
+	editNavController.title = [NSString stringWithUTF8String:self.tableName];
 	[self.central arrangeAndPushChildVCToFront:editNavController];
 }
 
@@ -180,6 +168,45 @@ return nil;
 //	}];
 }
 
+
+struct _insertArgs {
+	struct SHHabitBase *habit;
+	SHHabitViewController *bSelf;
+};
+
+
+static SHErrorCode _insertNewHabit(void *args, struct SHQueueStore *store) {
+	struct _insertArgs *insertArgs = (struct _insertArgs *)args;
+	struct SHQueueStoreItem *storeItem = (struct SHQueueStoreItem *)SH_getUserItemFromStore(store);
+	SHErrorCode status = SH_NO_ERROR;
+	int64_t insertedPk = SH_NOT_FOUND;
+	SHHabitViewController *bSelf = insertArgs->bSelf;
+	if((status = SH_insertHabit(storeItem->db, insertArgs->habit, bSelf.tableName, &insertedPk))
+		!= SH_NO_ERROR)
+	{
+		return status;
+	}
+	[NSOperationQueue.mainQueue addOperationWithBlock:^{
+		if(nil == bSelf) return;
+		SHHabitNameViewController *nameVC = bSelf.nameViewController;
+		[nameVC popVCFromFront];
+		[bSelf openEditor: insertedPk];
+		if(bSelf.onOpenAddHabit) {
+			bSelf.onOpenAddHabit();
+		}
+		
+	}];
+	return status;
+}
+
+
+static void _cleanUpInsert(void* args) {
+	struct _insertArgs *insertArgs = (struct _insertArgs *)args;
+	SH_freeHabitBase(insertArgs->habit);
+	free(insertArgs);
+}
+
+
 //this is wired up to a gesture recognizer
 -(void)onAddHabitTap_action:(UIGestureRecognizer *)recognizer {
 	(void)recognizer;
@@ -188,30 +215,20 @@ return nil;
 	
 	self.nameViewController.onNext = ^(NSString *name){
 		SHHabitViewController *bSelf = weakSelf;
-		if(nil == bSelf) return;
-		SHHabitNameViewController *nameVC = bSelf.nameViewController;
-		[bSelf.context performBlock:^{
-			NSManagedObject<SHTitleProtocol> *habit =
-				(NSManagedObject<SHTitleProtocol>*)[bSelf.context newEntity:bSelf.entityType];
-			habit.title = name;
-			habit.lastTouched = NSDate.date;
-			NSError *error = nil;
-			[bSelf.context save:&error];
-			SHContextObjectIDWrapper *objectIDWrapper = [[SHContextObjectIDWrapper alloc]
-				initWithManagedObject:habit];
-			[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-				if(error) {
-					[bSelf showErrorView:@"Save failed" withError:error];
-				}
-				[nameVC popVCFromFront];
-				[bSelf openEditor: objectIDWrapper];
-				if(bSelf.onOpenAddHabit) {
-					bSelf.onOpenAddHabit();
-				}
-			}];
-		}];
+		AppDelegate *appDel = (AppDelegate*)UIApplication.sharedApplication.delegate;
+		SHErrorCode status = SH_NO_ERROR;
+		struct SHHabitBase *habit = malloc(sizeof(struct SHHabitBase));
+		*habit = (struct SHHabitBase){
+			.name = [name SH_unsafeStrCopy],
+		};
+		struct _insertArgs *insertArgs = malloc(sizeof(struct _insertArgs));
+		*insertArgs = (struct _insertArgs){
+			.habit = habit,
+			.bSelf = bSelf,
+		};
+		if((status = SH_addOp(appDel.dbQueue, _insertNewHabit, insertArgs, _cleanUpInsert)) != SH_NO_ERROR) { ; }
 	};
-	self.nameViewController.headline.text = self.entityName;
+	self.nameViewController.headline.text = [NSString stringWithUTF8String:self.tableName];
 	[self.central arrangeAndPushChildVCToFront:self.nameViewController];
 }
 
@@ -303,36 +320,12 @@ This will be called the user creates a new habit, checks it off, or deletes one
 }
 
 
--(NSManagedObjectContext *)setupEditorForSaving:(SHViewController<SHEditingSaverProtocol> *)habitEditor
-	objectIDWrapper:(SHContextObjectIDWrapper*)objectIDWrapper
+-(void)setupEditorForSaving:(SHViewController<SHEditingSaverProtocol> *)habitEditor
+	pk:(int64_t)pk
 {
-	NSManagedObjectContext *parentContext = objectIDWrapper.context;
-	NSManagedObjectContext *context = [parentContext createChildContext];
-	__weak NSNotificationCenter *center = NSNotificationCenter.defaultCenter;
-	__weak SHHabitViewController *weakSelf = self;
-	__block id token = [center addObserverForName:NSManagedObjectContextDidSaveNotification
-		object:context
-		queue:nil
-		usingBlock:^(NSNotification *notfification){
-			(void)notfification;
-			[parentContext performBlock:^{
-				NSError *error = nil;
-				if(parentContext.hasChanges){
-					[parentContext save:&error];
-					if(error){
-						[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-							SHHabitViewController *bSelf = weakSelf;
-							if(nil == bSelf) return;
-							[bSelf showErrorView:@"Save failed" withError:error];
-						}];
-					}
-				}
-			}];
-			[center removeObserver:token];
-		}];
-	
-	[habitEditor setupForContext:context andObjectIDWrapper:objectIDWrapper];
-	return context;
+	AppDelegate *appDel = (AppDelegate *)UIApplication.sharedApplication.delegate;
+	[habitEditor setupWithQueue:appDel.dbQueue andPk:pk];
+	habitEditor.tableName = self.tableName;
 }
 
 

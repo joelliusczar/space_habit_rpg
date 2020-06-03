@@ -8,7 +8,9 @@
 
 #import "AppDelegate.h"
 #import "SHThemeController.h"
-@import SHCommon;
+#import "SHCentralViewController.h"
+#import "SHConfigSetup.h"
+
 @import SHControls;
 @import SHModels;
 
@@ -23,10 +25,8 @@
 
 @interface AppDelegate ()
 @property (strong, nonatomic) SHCoreData *dataController;
-@property (strong, nonatomic) SHResourceUtility *resourceUtil;
-@property (assign, nonatomic) sqlite3 *db;
-@property (assign, nonatomic) pthread_t dbSerialThread;
-@property (assign, nonatomic) struct SHSerialQueue *queue;
+@property (assign, nonatomic) struct SHSerialQueue *dbQueue;
+@property (assign, nonatomic) struct SHConfigAccessor config;
 @end
 
 @implementation AppDelegate
@@ -54,87 +54,86 @@ void printWorkingDir(){
 	}
 }
 
-
-static void* _serialQueueLoopWrapper(void *args) {
-	SHErrorCode status = SH_NO_ERROR;
-	struct SHSerialQueue *queue = (struct SHSerialQueue *)args;
-	if((status = SH_startSerialQueueLoop(queue)) != SH_NO_ERROR) { ; }
-	printf("thread ending");
-	return NULL;
-}
-
-struct SHOpenDbArgs {
-	sqlite3 **db;
-	const unsigned char * dbFilePath;
+struct _initialArgs {
+	struct SHConfigAccessor *config;
 };
 
 
-static SHErrorCode _openDb(void *args) {
-	struct SHOpenDbArgs *openDbArgs = (struct SHOpenDbArgs *)args;
-	return SH_openDb(openDbArgs->db, openDbArgs->dbFilePath);
+static void* _openDb(void *args) {
+	struct SHQueueStoreItem *item = malloc(sizeof(struct SHQueueStoreItem));
+	struct _initialArgs *initArgs = (struct _initialArgs *)args;
+	const char *dbFile = NULL;
+	NSArray<NSString*> *procArgs = NSProcessInfo.processInfo.arguments;
+	if(procArgs.count > 1) {
+		dbFile = procArgs[1].UTF8String;
+	}
+	else {
+		dbFile = SH_DB_FILE_LOCATION;
+	}
+	if((SH_openDb(&item->db, dbFile)) != SH_NO_ERROR) {
+		free(item);
+		return NULL;
+	}
+	item->config = initArgs->config;
+	item->config->setIsAppInitialized(true);
+	return item;
 }
 
 
-static SHErrorCode _setupDb(void* args) {
-	sqlite3 *db = (sqlite3 *)args;
-	return SH_setupDb(db);
+static SHErrorCode _setupDb(void* args, struct SHQueueStore *store) {
+	(void)args;
+	struct SHQueueStoreItem *item = (struct SHQueueStoreItem *)SH_getUserItemFromStore(store);
+
+	SHErrorCode status = SH_setupDb(item->db);
+	
+	
+	
+	return status;
 }
+
 
 -(BOOL)application:(UIApplication *)application
 	didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 	(void)application;
 	(void)launchOptions;
-	const unsigned char *dbFile = NULL;
-	NSArray<NSString*> *args = NSProcessInfo.processInfo.arguments;
-	if(args.count > 1) {
-		dbFile = (unsigned char *)args[1].UTF8String;
-	}
-	else {
-		dbFile = (unsigned char *)SH_DB_FILE_LOCATION;
-	}
-	self.queue = SH_initSerialQueue();
-	int32_t threadStatus = 0;
+	SH_setupConfig(&self->_config);
+	struct _initialArgs *initArgs = malloc(sizeof(struct _initialArgs));
+	*initArgs = (struct _initialArgs){
+		.config = &self->_config,
+	};
+	self.dbQueue = SH_initSerialQueue(_openDb, SH_FreeQueueStoreItemVoid, initArgs, free);
 	SHErrorCode status = SH_NO_ERROR;
-	if((threadStatus = pthread_create(&self->_dbSerialThread, NULL, _serialQueueLoopWrapper, self.queue))
+	if((status = SH_startSerialQueueLoop(self.dbQueue))
 		!= SH_NO_ERROR)
 	{
 		return NO;
 	}
-	struct SHOpenDbArgs *openDbArgs = malloc(sizeof(struct SHOpenDbArgs));
-	*openDbArgs = (struct SHOpenDbArgs){ .db = &self->_db, .dbFilePath = dbFile };
-	if((status = SH_addOpToSerialQueue(self.queue, _openDb, openDbArgs, free)) != SH_NO_ERROR) {
-		return NO;
-	}
-	if(!SHConfig.isAppInitialized) {
-		if((status = SH_addOpToSerialQueue(self.queue, _setupDb, self->_db, NULL)) != SH_NO_ERROR) {
+	
+	if(!self.config.getIsAppInitialized()) {
+		if((status = SH_addOp(self.dbQueue, _setupDb, NULL, NULL)) != SH_NO_ERROR) {
 			return NO;
 		}
 	}
 	#warning update without core data
 //	SHDailyProcessor *processor = [[SHDailyProcessor alloc] init];
 //
-//	NSBundle *modelsBundle = [NSBundle bundleForClass:SHBundleKey.class];
+	NSBundle *modelsBundle = [NSBundle bundleForClass:SHBundleKey.class];
 //	self.dataController = [SHCoreData newWithOptionsBlock:^(SHCoreDataOptions *options){
 //		options.appBundle = modelsBundle;
 //	}];
 //	processor.context = [self.dataController newBackgroundContext];
-//	self.resourceUtil = [[SHResourceUtility alloc] initWithBundle:modelsBundle];
-//	SHSector.sectorInfo = [[SHSectorInfoDictionary alloc] initWithResourceUtil:self.resourceUtil];
-//	SHMonster.monsterInfo = [[SHMonsterInfoDictionary alloc] initWithResourceUtil:self.resourceUtil];
-//	[processor processAllDailies];
-//	self.centralController = [SHCentralViewController
-//		newWithDataController:self.dataController
-//		andNibName:@"SHCentralViewController"
-//		andResourceUtil:self.resourceUtil
-//		andBundle:nil];
-//
-//
-//	[self applyTheming];
-//	self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
-//	self.window.rootViewController = self.centralController;
-//
-//	[self.window makeKeyAndVisible];
+	self.resourceUtil = [[SHResourceUtility alloc] initWithBundle:modelsBundle];
+	SHSector.sectorInfo = [[SHSectorInfoDictionary alloc] initWithResourceUtil:self.resourceUtil];
+	SHMonster.monsterInfo = [[SHMonsterInfoDictionary alloc] initWithResourceUtil:self.resourceUtil];
+	self.centralController = [[SHCentralViewController alloc] init];
+
+
+	[self applyTheming];
+	self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+	self.window.rootViewController = self.centralController;
+
+	[self.window makeKeyAndVisible];
 	// Override point for customization after application launch.
 	return YES;
 }
@@ -169,12 +168,7 @@ static SHErrorCode _setupDb(void* args) {
 
 
 -(void)dealloc {
-	SH_freeSerialQueue(self->_queue);
-	int32_t sqlStatus = 0;
-	if((sqlStatus = sqlite3_close(self->_db)) != SQLITE_OK) {
-		SH_notifyOfError(SH_SQLITE3_ERROR, "Couldn't close for some reason");
-	}
-
+	SH_freeSerialQueue(self->_dbQueue);
 }
 
 

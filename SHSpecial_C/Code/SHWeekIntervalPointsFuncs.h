@@ -17,4 +17,5 @@
 int32_t SH_findPrevActiveDayIdx(struct SHWeekIntervalPointList const * intervalPoints, int32_t weekdayIdx);
 int32_t SH_activeDaysCountInRange(struct SHWeekIntervalPointList const * intervalPoints, int32_t startIdx, int32_t len);
 int32_t SH_formatStrIntervalPoint(struct SHWeekIntervalPoint const * intervalPoint, char *str);
+void SH_loadWeekIntervalPointsFromHash(int32_t bitHash, struct SHWeekIntervalPointList * intervalPoints);
 #endif /* SHWeeklyIntervalItermFunctions_h */

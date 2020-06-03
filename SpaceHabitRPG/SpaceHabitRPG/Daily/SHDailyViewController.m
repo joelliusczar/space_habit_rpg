@@ -26,13 +26,9 @@
 @implementation SHDailyViewController
 
 
--(NSEntityDescription*)entityType {
-	return SHDaily.entity;
-}
 
-
--(NSString*)entityName {
-	return @"Daily";
+-(const char*)tableName {
+	return "Dailies";
 }
 
 

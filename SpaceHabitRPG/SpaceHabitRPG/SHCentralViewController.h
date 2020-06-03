@@ -8,23 +8,15 @@
 
 #import "SHEditNavigationController.h"
 #import "SHBattleStatsViewController.h"
+#import "AppDelegate.h"
 @import UIKit;
 
 @import SHModels;
 
 @interface SHCentralViewController : SHViewController;
-@property (strong,nonatomic) id<SHDataProviderProtocol> dataController;
-@property (strong,nonatomic) SHMonsterDictionaryEntry *monsterEntry;
-@property (strong,nonatomic) NSObject<SHResourceUtilityProtocol> *resourceUtil;
-@property (strong,nonatomic) SHBattleStatsViewController *battleStats;
+@property (strong, nonatomic) SHMonsterDictionaryEntry *monsterEntry;
+@property (strong, nonatomic) SHBattleStatsViewController *battleStats;
+@property (readonly, nonatomic) AppDelegate *appDelegate;
 
-+(instancetype)newWithDataController:(NSObject<SHDataProviderProtocol>*)dataController
-	andNibName:(NSString*)nib
-	andResourceUtil:(NSObject<SHResourceUtilityProtocol>*)util
-	andBundle:(NSBundle*)bundle;
 
--(instancetype)initWithDataController:(NSObject<SHDataProviderProtocol>*)dataController
-	andNibName:(NSString*)nib
-	andResourceUtil:(NSObject<SHResourceUtilityProtocol>*)util
-	andBundle:(NSBundle*)bundle;
 @end

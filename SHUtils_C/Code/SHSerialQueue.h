@@ -13,10 +13,13 @@
 #include <stdio.h>
 
 struct SHSerialQueue;
+struct SHQueueStore;
 SHErrorCode SH_startSerialQueueLoop(struct SHSerialQueue *queue);
-SHErrorCode SH_addOpToSerialQueue(struct SHSerialQueue *queue, SHErrorCode (*fn)(void*), void *fnArgs,
-	void (*cleanupFn)(void*));
-struct SHSerialQueue * SH_initSerialQueue(void);
+SHErrorCode SH_addOp(struct SHSerialQueue *queue,
+	SHErrorCode (*fn)(void*, struct SHQueueStore *), void *fnArgs, void (*cleanupFn)(void*));
+struct SHSerialQueue * SH_initSerialQueue(void *(*getStoreItem)(void*), void (*storeCleanup)(void*),
+	void *initArgs, void (*initArgsCleanup)(void*));
+void *SH_getUserItemFromStore(struct SHQueueStore *store);
+SHErrorCode SH_startSerialQueueLoop(struct SHSerialQueue *queue);
 void SH_freeSerialQueue(struct SHSerialQueue *queue);
-
 #endif /* SHSerialQueue_h */

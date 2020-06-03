@@ -7,8 +7,8 @@
 //
 
 #include "SHWeekIntervalPointsFuncs.h"
-#include "SHUtils_C.h"
-#include "SHDatetime.h"
+#include "SHUtilConstants.h"
+#include <assert.h>
 
 
 int32_t SH_findPrevActiveDayIdx(struct SHWeekIntervalPointList const * intervalPoints, int32_t weekdayIdx) {
@@ -46,4 +46,19 @@ int32_t SH_formatStrIntervalPoint(struct SHWeekIntervalPoint const * intervalPoi
 	return sprintf(str,"isDayActive? %s forrange: %d backrange: %d",
 		(intervalPoint->isDayActive ? "Yes": "No"),
 		intervalPoint->forrange, intervalPoint->backrange);
+}
+
+
+void SH_loadWeekIntervalPointsFromHash(int32_t bitHash, struct SHWeekIntervalPointList * intervalPoints) {
+	assert(intervalPoints);
+	int32_t mask = 1;
+	for(int32_t idx = 0; idx < SH_DAYS_IN_WEEK; idx++) {
+		mask <<= idx;
+		if(bitHash & mask) {
+			intervalPoints->days[idx].isDayActive = true;
+		}
+		else {
+			intervalPoints->days[idx].isDayActive = false;
+		}
+	}
 }

@@ -139,12 +139,7 @@
 
 -(IBAction)nameBox_editingChange_action:(UITextField *)sender forEvent:(UIEvent *)event {
 	(void)event;
-	NSAssert(self.context,@"You need a context, bro!");
-	NSString *text = sender.text;
-	[self.context performBlock:^{
-		id<SHTitleProtocol> model = (id<SHTitleProtocol>)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
-		model.title = text;
-	}];
+	self.habit->name = [sender.text SH_unsafeStrCopy];
 }
 
 
@@ -199,8 +194,9 @@
 
 
 -(void)dealloc{
-	NSLog(@"SHEditNavigationController deallocating");
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	if(self.habitCleanup) {
+		self.habitCleanup(self->_habit);
+	}
 }
 
 

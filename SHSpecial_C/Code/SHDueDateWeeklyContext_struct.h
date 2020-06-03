@@ -19,7 +19,6 @@ struct SHDueDateWeeklyContext {
 	int32_t intervalSize;
 	int32_t dayStartHour;
 	int32_t weekStartOffset;
-	bool isInverse;
 };
 
 

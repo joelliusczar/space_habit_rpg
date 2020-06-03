@@ -7,7 +7,7 @@
 //
 
 #import "SHMonthlyYearlyRateItemList.h"
-#import "SHRateTypeHelper.h"
+#import "SHIntervalTypeHelper.h"
 
 @interface SHMonthlyYearlyRateItemList ()
 @property (strong,nonatomic) NSMutableArray<SHMonthlyYearlyRateItem*> *backend;

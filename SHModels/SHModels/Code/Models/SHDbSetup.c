@@ -7,21 +7,25 @@
 //
 
 #include "SHDbSetup.h"
+#include <stdlib.h>
+#include "SHSqlite3Extensions.h"
+#include "SHDaily_dbFuncs.h"
+
 
 static SHErrorCode _buildCreateDailyTableStmt(sqlite3_stmt **stmt, sqlite3 *db) {
 	int32_t sqlStatus = SQLITE_OK;
-	char *sql = "CREATE TABLE IF NOT EXISTS SHDailies "
+	char *sql = "CREATE TABLE IF NOT EXISTS Dailies "
 		"(pk INTEGER PRIMARY KEY ASC,"
 		"name TEXT,"
 		"lastUpdated REAL NOT NULL,"
 		"activeFromDateTime REAL,"
 		"activeToDateTime REAL,"
 		"lastActivationDateTime REAL,"
-		"lastUpdateDateTime REAL,"
+		"maxStreak INTEGER,"
 		"activeFromHasPriority INTEGER,"
 		"isEnabled INTEGER,"
 		"lastUpdateHasPriority INTEGER,"
-		"activeDays TEXT,"
+		"weekIntervalHash INTEGER,"
 		"note TEXT,"
 		"dailyLvl INTEGER,"
 		"dailyXp INTEGER,"
@@ -30,10 +34,22 @@ static SHErrorCode _buildCreateDailyTableStmt(sqlite3_stmt **stmt, sqlite3 *db) 
 		"difficulty INTEGER,"
 		"urgency INTEGER,"
 		"intervalType INTEGER,"
-		"lastUpdateTzOffset INTEGER,"
+		"dayIntevalSize INTEGER,"
 		"streakLength INTEGER,"
 		"tzOffsetLastActivationDateTime INTEGER,"
-		"tzOffsetLastUpdateDateTime INTEGER"
+		"tzOffsetLastUpdateDateTime INTEGER,"
+		"weekIntervalSize INTEGER,"
+		"monthIntervalHash INTEGER,"
+		"monthIntervalSize INTEGER,"
+		"yearIntervalHash TEXT,"
+		"yearIntervalSize INTEGER"
+		"daySkipIntevalSize INTEGER,"
+		"weekSkipIntervalHash INTEGER,"
+		"weekSkipIntervalSize INTEGER,"
+		"monthSkipIntervalHash INTEGER,"
+		"monthSkipIntervalSize INTEGER,"
+		"yearSkipIntervalHash TEXT,"
+		"yearSkipIntervalSize INTEGER,"
 		")";
 	sqlStatus = sqlite3_prepare_v2(db, sql, -1, stmt, 0);
 	if(sqlStatus != SQLITE_OK) {
@@ -46,11 +62,11 @@ static SHErrorCode _buildCreateDailyTableStmt(sqlite3_stmt **stmt, sqlite3 *db) 
 }
 
 
-SHErrorCode SH_openDb(sqlite3 **db, const unsigned char * dbFilePath) {
+SHErrorCode SH_openDb(sqlite3 **db, const char * dbFilePath) {
 	int32_t sqlStatus = SQLITE_OK;
 	SHErrorCode status = SH_NO_ERROR;
 	
-	if((sqlStatus = sqlite3_open_v2((char *)dbFilePath, db,
+	if((sqlStatus = sqlite3_open_v2(dbFilePath, db,
 		SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL))
 		!= SQLITE_OK)
 		{ goto sqlErr; }
@@ -109,5 +125,10 @@ SHErrorCode SH_setupDb(sqlite3 *db) {
 
 
 SHErrorCode SH_addDbFunctions(sqlite3 *db) {
-	
+	int32_t sqlStatus = SQLITE_OK;
+	if((sqlStatus = sqlite3_create_function(db, "SH_selectSavedUseDateUTC", 7,
+		SQLITE_UTF8 | SQLITE_DETERMINISTIC, NULL, SHDB_selectSavedUseDate, NULL, NULL))
+		!= SQLITE_OK) {}
+
+	return SH_NO_ERROR;
 }

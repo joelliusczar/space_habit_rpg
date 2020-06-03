@@ -18,7 +18,6 @@
 		270F97D723923CFC00479E77 /* SHSectorChoiceCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270F97D623923CFC00479E77 /* SHSectorChoiceCellController.m */; };
 		270F97D923923D8200479E77 /* SHSectorChoiceCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 270F97D823923D8200479E77 /* SHSectorChoiceCellController.xib */; };
 		270F97DE2392414400479E77 /* SHDailyEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270F97DC2392414300479E77 /* SHDailyEditController.m */; };
-		270F97E12392423900479E77 /* SHDailyEditController+ControlLoaders.m in Sources */ = {isa = PBXBuildFile; fileRef = 270F97E02392423900479E77 /* SHDailyEditController+ControlLoaders.m */; };
 		270F97E4239242A500479E77 /* SHDailyCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270F97E2239242A500479E77 /* SHDailyCellController.m */; };
 		270F97E72392440600479E77 /* SHIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270F97E62392440600479E77 /* SHIntroViewController.m */; };
 		270F97E92392442200479E77 /* SHIntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 270F97E82392442200479E77 /* SHIntroViewController.xib */; };
@@ -48,6 +47,7 @@
 		2747C49F2048D54700FB5669 /* SHCentralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C49C2048D54600FB5669 /* SHCentralViewController.m */; };
 		2747C50320490E3400FB5669 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747C50220490E3400FB5669 /* main.m */; };
 		274A113823BD2A2F00AAA79E /* SHThemeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A113723BD2A2F00AAA79E /* SHThemeController.m */; };
+		275534E12482363C00D650AB /* SHConfigSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = 275534E02482363B00D650AB /* SHConfigSetup.m */; };
 		27B15AAF20524D6E0045B226 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15AAE20524D6E0045B226 /* SHModels.framework */; };
 		27B8C4B4241331EA008646BB /* SHHabitNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B8C4B2241331EA008646BB /* SHHabitNameViewController.m */; };
 		27B8C4B5241331EA008646BB /* SHHabitNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27B8C4B3241331EA008646BB /* SHHabitNameViewController.xib */; };
@@ -143,8 +143,6 @@
 		270F97DB2392408F00479E77 /* SHEditingSaverProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHEditingSaverProtocol.h; sourceTree = "<group>"; };
 		270F97DC2392414300479E77 /* SHDailyEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDailyEditController.m; sourceTree = "<group>"; };
 		270F97DD2392414400479E77 /* SHDailyEditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDailyEditController.h; sourceTree = "<group>"; };
-		270F97DF2392423900479E77 /* SHDailyEditController+ControlLoaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SHDailyEditController+ControlLoaders.h"; sourceTree = "<group>"; };
-		270F97E02392423900479E77 /* SHDailyEditController+ControlLoaders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SHDailyEditController+ControlLoaders.m"; sourceTree = "<group>"; };
 		270F97E2239242A500479E77 /* SHDailyCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDailyCellController.m; sourceTree = "<group>"; };
 		270F97E3239242A500479E77 /* SHDailyCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDailyCellController.h; sourceTree = "<group>"; };
 		270F97E52392440600479E77 /* SHIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHIntroViewController.h; sourceTree = "<group>"; };
@@ -195,6 +193,8 @@
 		2747C50220490E3400FB5669 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		274A113623BD2A2F00AAA79E /* SHThemeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHThemeController.h; sourceTree = "<group>"; };
 		274A113723BD2A2F00AAA79E /* SHThemeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHThemeController.m; sourceTree = "<group>"; };
+		275534E02482363B00D650AB /* SHConfigSetup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHConfigSetup.m; sourceTree = "<group>"; };
+		275534E22482365900D650AB /* SHConfigSetup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHConfigSetup.h; sourceTree = "<group>"; };
 		276951A420437DF5002D1C9A /* SpaceHabitRPG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceHabitRPG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		279848D42250FEB700039A29 /* SpaceHabitRPG.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SpaceHabitRPG.base.xcconfig; sourceTree = "<group>"; };
 		27B15AA820524CB60045B226 /* SHCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHCommon.framework; path = "../../spacehabitrpg_output/Build/Products/Debug-iphoneos/SHCommon.framework"; sourceTree = "<group>"; };
@@ -243,8 +243,6 @@
 				2707AA9E241484FA006FF10F /* SHDailyCellController.xib */,
 				270F97DD2392414400479E77 /* SHDailyEditController.h */,
 				270F97DC2392414300479E77 /* SHDailyEditController.m */,
-				270F97DF2392423900479E77 /* SHDailyEditController+ControlLoaders.h */,
-				270F97E02392423900479E77 /* SHDailyEditController+ControlLoaders.m */,
 				270F97B82392362D00479E77 /* SHDailyViewController.h */,
 				270F97B72392362D00479E77 /* SHDailyViewController.m */,
 				270F97DB2392408F00479E77 /* SHEditingSaverProtocol.h */,
@@ -368,6 +366,8 @@
 		2769519B20437DF5002D1C9A = {
 			isa = PBXGroup;
 			children = (
+				275534E22482365900D650AB /* SHConfigSetup.h */,
+				275534E02482363B00D650AB /* SHConfigSetup.m */,
 				27FC94B22436D99000408167 /* SHControls.xcodeproj */,
 				27C4121723DBBA6F0086E1F9 /* SHCommon.xcodeproj */,
 				27F37E76238796CE0006B705 /* SHModels.xcodeproj */,
@@ -614,7 +614,6 @@
 				2747C49F2048D54700FB5669 /* SHCentralViewController.m in Sources */,
 				270F98122392453A00479E77 /* SHMonthPartPicker.m in Sources */,
 				270F97D723923CFC00479E77 /* SHSectorChoiceCellController.m in Sources */,
-				270F97E12392423900479E77 /* SHDailyEditController+ControlLoaders.m in Sources */,
 				270F982A23924C4900479E77 /* SHReminderCellController.m in Sources */,
 				27B8C4B4241331EA008646BB /* SHHabitNameViewController.m in Sources */,
 				270F98162392453A00479E77 /* SHMonthlyActiveDaysViewController.m in Sources */,
@@ -631,6 +630,7 @@
 				270F97DE2392414400479E77 /* SHDailyEditController.m in Sources */,
 				2747C50320490E3400FB5669 /* main.m in Sources */,
 				270F981A2392453A00479E77 /* SHYearPartPicker.m in Sources */,
+				275534E12482363C00D650AB /* SHConfigSetup.m in Sources */,
 				270F98132392453A00479E77 /* SHDayOption.m in Sources */,
 				270F97B92392362D00479E77 /* SHDailyViewController.m in Sources */,
 				270F97E72392440600479E77 /* SHIntroViewController.m in Sources */,

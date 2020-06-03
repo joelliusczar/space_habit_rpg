@@ -54,15 +54,16 @@ numberOfRowsInSection:(NSInteger)section
 	[self.context performBlockAndWait:^{
 		id<SHDueDateItemProtocol> dueDateItem = (id<SHDueDateItemProtocol>)[self.context
 			getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
-		SHReminder *reminder = [dueDateItem reminderAtIndex:indexPath.row];
-		reminderObjectID = reminder.objectID;
-		NSString *daysBeforeText = reminder.daysBeforeDue == 0 ? @"Every day"
-			: [NSString stringWithFormat:@"%d days before",reminder.daysBeforeDue];
-		NSDate *time = [NSDate dateWithTimeIntervalSince1970:reminder.reminderHour];
-		
-		descText = [NSString stringWithFormat:@"%@ at %@",
-			daysBeforeText,
-			[time staticTimeOfDay]];
+			#warning rewrite
+//		SHReminder *reminder = [dueDateItem reminderAtIndex:indexPath.row];
+//		reminderObjectID = reminder.objectID;
+//		NSString *daysBeforeText = reminder.daysBeforeDue == 0 ? @"Every day"
+//			: [NSString stringWithFormat:@"%d days before",reminder.daysBeforeDue];
+//		NSDate *time = [NSDate dateWithTimeIntervalSince1970:reminder.reminderHour];
+//
+//		descText = [NSString stringWithFormat:@"%@ at %@",
+//			daysBeforeText,
+//			[time staticTimeOfDay]];
 	}];
 	SHReminderCellController *cell =
 	[SHReminderCellController getReminderCell:tableView withParent:self
@@ -109,17 +110,18 @@ numberOfRowsInSection:(NSInteger)section
 {
 	__block NSUInteger index = 0;
 	[self.context performBlockAndWait:^{
-		id<SHDueDateItemProtocol> dueDateItem = (id<SHDueDateItemProtocol>)[self.context
-			getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
-		index = [dueDateItem reminderCount];
-		SHReminder *reminder = (SHReminder *)[self.context newEntity:SHReminder.entity];
-		//we only really care about the hour and minute
-		NSDateComponents *components = [[NSDateComponents alloc] init];
-		components.hour = hour;
-		components.minute = minute;
-		reminder.reminderHour = [NSCalendar.SH_appCalendar dateFromComponents:components].timeIntervalSince1970;
-		reminder.daysBeforeDue = [SHMath toIntExact:daysBefore];
-		[dueDateItem addNewReminder:reminder];
+		#warning rewrite
+//		id<SHDueDateItemProtocol> dueDateItem = (id<SHDueDateItemProtocol>)[self.context
+//			getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
+//		index = [dueDateItem reminderCount];
+//		SHReminder *reminder = (SHReminder *)[self.context newEntity:SHReminder.entity];
+//		//we only really care about the hour and minute
+//		NSDateComponents *components = [[NSDateComponents alloc] init];
+//		components.hour = hour;
+//		components.minute = minute;
+//		reminder.reminderHour = [NSCalendar.SH_appCalendar dateFromComponents:components].timeIntervalSince1970;
+//		reminder.daysBeforeDue = [SHMath toIntExact:daysBefore];
+//		[dueDateItem addNewReminder:reminder];
 	}];
 	return index;
 }

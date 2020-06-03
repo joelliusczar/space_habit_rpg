@@ -6,7 +6,7 @@
 //  Copyright © 2017 Joel Pridgen. All rights reserved.
 //
 
-#import "SHReminder.h"
+
 @import Foundation;
 @import SHCommon;
 @import CoreData;
@@ -21,7 +21,7 @@ due date of an item
 */
 @property (readonly,nonatomic) NSInteger maxDaysBeforeSpan;
 @property (readonly,nonatomic) NSUInteger reminderCount;
--(SHReminder*)reminderAtIndex:(NSUInteger)index;
--(void)addNewReminder:(SHReminder*)reminder;
+//-(SHReminder*)reminderAtIndex:(NSUInteger)index;
+//-(void)addNewReminder:(SHReminder*)reminder;
 -(void)removeReminderAtIndex:(NSUInteger)index;
 @end

@@ -1,9 +1,9 @@
 import pytest
 from pytest import approx
 import copy
-from Code.cl_dt_all import SHDatetime
-from Code.cl_dt_all import SHTimeshift
-from Code.cl_dt_all import make_dt_copy
+from SHDatetime_struct import SHDatetime
+from SHDatetime_struct import SHTimeshift
+from SHDatetime_struct import make_dt_copy
 import ctypes
 from ctypes import cdll
 from ctypes import c_long
@@ -27,194 +27,197 @@ def tz_offset():
 def test_create_date(tz_offset,lib):
 	ans = c_double(0)
 	dt = SHDatetime()
-	lib.SH_dtSetYear(byref(dt), 1970)
-	lib.SH_dtSetMonth(byref(dt), 1)
-	lib.SH_dtSetDay(byref(dt), 1)
-	lib.SH_dtSetHour(byref(dt), 0)
-	lib.SH_dtSetMinute(byref(dt), 0)
-	lib.SH_dtSetSecond(byref(dt), 0)
+	lib.SH_dtSetYear(byref(dt), c_long(1970))
+	lib.SH_dtSetMonth(byref(dt), c_int(1))
+	lib.SH_dtSetDay(byref(dt), c_int(1))
+	lib.SH_dtSetHour(byref(dt), c_int(0))
+	lib.SH_dtSetMinute(byref(dt), c_int(0))
+	lib.SH_dtSetSecond(byref(dt), c_int(0))
+	lib.SH_dtSetTimezoneOffset(byref(dt), c_int(tz_offset))
 	lib.SH_dtToTimestamp(byref(dt), byref(ans))
 
 	assert ans.value == 18000
-	lib.SH_dtSetYear(byref(dt), 1970)
-	lib.SH_dtSetMonth(byref(dt), 1)
-	lib.SH_dtSetDay(byref(dt), 27)
-	lib.SH_dtSetHour(byref(dt), 13)
-	lib.SH_dtSetMinute(byref(dt), 35)
-	lib.SH_dtSetSecond(byref(dt), 12)
+	lib.SH_dtSetYear(byref(dt), c_long(1970))
+	lib.SH_dtSetMonth(byref(dt), c_int(1))
+	lib.SH_dtSetDay(byref(dt), c_int(27))
+	lib.SH_dtSetHour(byref(dt), c_int(13))
+	lib.SH_dtSetMinute(byref(dt), c_int(35))
+	lib.SH_dtSetSecond(byref(dt), c_int(12))
 	lib.SH_dtToTimestamp(byref(dt), byref(ans))
 
 	assert ans.value == 2313312
-	lib.SH_dtSetYear(byref(dt), 1988)
-	lib.SH_dtSetMonth(byref(dt), 1)
-	lib.SH_dtSetDay(byref(dt), 13)
-	lib.SH_dtSetHour(byref(dt), 14)
-	lib.SH_dtSetMinute(byref(dt), 27)
-	lib.SH_dtSetSecond(byref(dt), 15)
+	lib.SH_dtSetYear(byref(dt), c_long(1988))
+	lib.SH_dtSetMonth(byref(dt), c_int(1))
+	lib.SH_dtSetDay(byref(dt), c_int(13))
+	lib.SH_dtSetHour(byref(dt), c_int(14))
+	lib.SH_dtSetMinute(byref(dt), c_int(27))
+	lib.SH_dtSetSecond(byref(dt), c_int(15))
 	lib.SH_dtToTimestamp(byref(dt), byref(ans))
 
 	assert ans.value == 569100435
-	lib.SH_dtSetYear(byref(dt), 1997)
-	lib.SH_dtSetMonth(byref(dt), 1)
-	lib.SH_dtSetDay(byref(dt), 1)
-	lib.SH_dtSetHour(byref(dt), 0)
-	lib.SH_dtSetMinute(byref(dt), 0)
-	lib.SH_dtSetSecond(byref(dt), 0)
+	lib.SH_dtSetYear(byref(dt), c_long(1997))
+	lib.SH_dtSetMonth(byref(dt), c_int(1))
+	lib.SH_dtSetDay(byref(dt), c_int(1))
+	lib.SH_dtSetHour(byref(dt), c_int(0))
+	lib.SH_dtSetMinute(byref(dt), c_int(0))
+	lib.SH_dtSetSecond(byref(dt), c_int(0))
 	lib.SH_dtToTimestamp(byref(dt), byref(ans))
 
 	assert ans.value == 852094800
-	lib.SH_dtSetYear(byref(dt), 1988)
-	lib.SH_dtSetMonth(byref(dt), 2)
-	lib.SH_dtSetDay(byref(dt), 28)
-	lib.SH_dtSetHour(byref(dt), 0)
-	lib.SH_dtSetMinute(byref(dt), 0)
-	lib.SH_dtSetSecond(byref(dt), 0)
+	lib.SH_dtSetYear(byref(dt), c_long(1988))
+	lib.SH_dtSetMonth(byref(dt), c_int(2))
+	lib.SH_dtSetDay(byref(dt), c_int(28))
+	lib.SH_dtSetHour(byref(dt), c_int(0))
+	lib.SH_dtSetMinute(byref(dt), c_int(0))
+	lib.SH_dtSetSecond(byref(dt), c_int(0))
 	lib.SH_dtToTimestamp(byref(dt), byref(ans))
 
 	assert ans.value == 573022800
-	lib.SH_dtSetYear(byref(dt), 1988)
-	lib.SH_dtSetMonth(byref(dt), 2)
-	lib.SH_dtSetDay(byref(dt), 29)
-	lib.SH_dtSetHour(byref(dt), 0)
-	lib.SH_dtSetMinute(byref(dt), 0)
-	lib.SH_dtSetSecond(byref(dt), 0)
+	lib.SH_dtSetYear(byref(dt), c_long(1988))
+	lib.SH_dtSetMonth(byref(dt), c_int(2))
+	lib.SH_dtSetDay(byref(dt), c_int(29))
+	lib.SH_dtSetHour(byref(dt), c_int(0))
+	lib.SH_dtSetMinute(byref(dt), c_int(0))
+	lib.SH_dtSetSecond(byref(dt), c_int(0))
 	lib.SH_dtToTimestamp(byref(dt), byref(ans))
 
 	assert ans.value == 573109200
 	tz_offset = -14400
-	lib.SH_dtSetYear(byref(dt), 1988)
-	lib.SH_dtSetMonth(byref(dt), 4)
-	lib.SH_dtSetDay(byref(dt), 27)
-	lib.SH_dtSetHour(byref(dt), 13)
-	lib.SH_dtSetMinute(byref(dt), 35)
-	lib.SH_dtSetSecond(byref(dt), 12)
+	lib.SH_dtSetYear(byref(dt), c_long(1988))
+	lib.SH_dtSetMonth(byref(dt), c_int(4))
+	lib.SH_dtSetDay(byref(dt), c_int(27))
+	lib.SH_dtSetHour(byref(dt), c_int(13))
+	lib.SH_dtSetMinute(byref(dt), c_int(35))
+	lib.SH_dtSetSecond(byref(dt), c_int(12))
+	lib.SH_dtSetTimezoneOffset(byref(dt), c_int(tz_offset))
 	lib.SH_dtToTimestamp(byref(dt), byref(ans))
 
 	assert ans.value == 578165712
-	lib.SH_dtSetYear(byref(dt), 1997)
-	lib.SH_dtSetMonth(byref(dt), 4)
-	lib.SH_dtSetDay(byref(dt), 27)
-	lib.SH_dtSetHour(byref(dt), 0)
-	lib.SH_dtSetMinute(byref(dt), 0)
-	lib.SH_dtSetSecond(byref(dt), 0)
+	lib.SH_dtSetYear(byref(dt), c_long(1997))
+	lib.SH_dtSetMonth(byref(dt), c_int(4))
+	lib.SH_dtSetDay(byref(dt), c_int(27))
+	lib.SH_dtSetHour(byref(dt), c_int(0))
+	lib.SH_dtSetMinute(byref(dt), c_int(0))
+	lib.SH_dtSetSecond(byref(dt), c_int(0))
 	lib.SH_dtToTimestamp(byref(dt), byref(ans))
 
 	assert ans.value == 862113600
 	tz_offset = 0
-	lib.SH_dtSetYear(byref(dt), 1972)
-	lib.SH_dtSetMonth(byref(dt), 2)
-	lib.SH_dtSetDay(byref(dt), 29)
-	lib.SH_dtSetHour(byref(dt), 0)
-	lib.SH_dtSetMinute(byref(dt), 0)
-	lib.SH_dtSetSecond(byref(dt), 0)
+	lib.SH_dtSetYear(byref(dt), c_long(1972))
+	lib.SH_dtSetMonth(byref(dt), c_int(2))
+	lib.SH_dtSetDay(byref(dt), c_int(29))
+	lib.SH_dtSetHour(byref(dt), c_int(0))
+	lib.SH_dtSetMinute(byref(dt), c_int(0))
+	lib.SH_dtSetSecond(byref(dt), c_int(0))
+	lib.SH_dtSetTimezoneOffset(byref(dt), c_int(tz_offset))
 	lib.SH_dtToTimestamp(byref(dt), byref(ans))
 
 	assert ans.value == 68169600
-	lib.SH_dtSetYear(byref(dt), 1972)
-	lib.SH_dtSetMonth(byref(dt), 3)
-	lib.SH_dtSetDay(byref(dt), 1)
-	lib.SH_dtSetHour(byref(dt), 0)
-	lib.SH_dtSetMinute(byref(dt), 0)
-	lib.SH_dtSetSecond(byref(dt), 0)
+	lib.SH_dtSetYear(byref(dt), c_long(1972))
+	lib.SH_dtSetMonth(byref(dt), c_int(3))
+	lib.SH_dtSetDay(byref(dt), c_int(1))
+	lib.SH_dtSetHour(byref(dt), c_int(0))
+	lib.SH_dtSetMinute(byref(dt), c_int(0))
+	lib.SH_dtSetSecond(byref(dt), c_int(0))
 	lib.SH_dtToTimestamp(byref(dt), byref(ans))
 
 	assert ans.value == 68256000
-	lib.SH_dtSetYear(byref(dt), 1973)
-	lib.SH_dtSetMonth(byref(dt), 2)
-	lib.SH_dtSetDay(byref(dt), 14)
-	lib.SH_dtSetHour(byref(dt), 0)
-	lib.SH_dtSetMinute(byref(dt), 0)
-	lib.SH_dtSetSecond(byref(dt), 0)
+	lib.SH_dtSetYear(byref(dt), c_long(1973))
+	lib.SH_dtSetMonth(byref(dt), c_int(2))
+	lib.SH_dtSetDay(byref(dt), c_int(14))
+	lib.SH_dtSetHour(byref(dt), c_int(0))
+	lib.SH_dtSetMinute(byref(dt), c_int(0))
+	lib.SH_dtSetSecond(byref(dt), c_int(0))
 	lib.SH_dtToTimestamp(byref(dt), byref(ans))
 
 	assert ans.value == 98496000
-	lib.SH_dtSetYear(byref(dt), 2038)
-	lib.SH_dtSetMonth(byref(dt), 1)
-	lib.SH_dtSetDay(byref(dt), 19)
-	lib.SH_dtSetHour(byref(dt), 3)
-	lib.SH_dtSetMinute(byref(dt), 14)
-	lib.SH_dtSetSecond(byref(dt), 7)
+	lib.SH_dtSetYear(byref(dt), c_long(2038))
+	lib.SH_dtSetMonth(byref(dt), c_int(1))
+	lib.SH_dtSetDay(byref(dt), c_int(19))
+	lib.SH_dtSetHour(byref(dt), c_int(3))
+	lib.SH_dtSetMinute(byref(dt), c_int(14))
+	lib.SH_dtSetSecond(byref(dt), c_int(7))
 	lib.SH_dtToTimestamp(byref(dt), byref(ans))
 
 	assert ans.value == 2147483647
-	lib.SH_dtSetYear(byref(dt), 1969)
-	lib.SH_dtSetMonth(byref(dt), 12)
-	lib.SH_dtSetDay(byref(dt), 31)
-	lib.SH_dtSetHour(byref(dt), 23)
-	lib.SH_dtSetMinute(byref(dt), 59)
-	lib.SH_dtSetSecond(byref(dt), 59)
+	lib.SH_dtSetYear(byref(dt), c_long(1969))
+	lib.SH_dtSetMonth(byref(dt), c_int(12))
+	lib.SH_dtSetDay(byref(dt), c_int(31))
+	lib.SH_dtSetHour(byref(dt), c_int(23))
+	lib.SH_dtSetMinute(byref(dt), c_int(59))
+	lib.SH_dtSetSecond(byref(dt), c_int(59))
 	lib.SH_dtToTimestamp(byref(dt), byref(ans))
 
 	assert ans.value == -1
-	lib.SH_dtSetYear(byref(dt), 1969)
-	lib.SH_dtSetMonth(byref(dt), 12)
-	lib.SH_dtSetDay(byref(dt), 31)
-	lib.SH_dtSetHour(byref(dt), 0)
-	lib.SH_dtSetMinute(byref(dt), 0)
-	lib.SH_dtSetSecond(byref(dt), 0)
+	lib.SH_dtSetYear(byref(dt), c_long(1969))
+	lib.SH_dtSetMonth(byref(dt), c_int(12))
+	lib.SH_dtSetDay(byref(dt), c_int(31))
+	lib.SH_dtSetHour(byref(dt), c_int(0))
+	lib.SH_dtSetMinute(byref(dt), c_int(0))
+	lib.SH_dtSetSecond(byref(dt), c_int(0))
 	lib.SH_dtToTimestamp(byref(dt), byref(ans))
 
 	assert ans.value == -86400
-	lib.SH_dtSetYear(byref(dt), 1901)
-	lib.SH_dtSetMonth(byref(dt), 12)
-	lib.SH_dtSetDay(byref(dt), 13)
-	lib.SH_dtSetHour(byref(dt), 20)
-	lib.SH_dtSetMinute(byref(dt), 45)
-	lib.SH_dtSetSecond(byref(dt), 52)
+	lib.SH_dtSetYear(byref(dt), c_long(1901))
+	lib.SH_dtSetMonth(byref(dt), c_int(12))
+	lib.SH_dtSetDay(byref(dt), c_int(13))
+	lib.SH_dtSetHour(byref(dt), c_int(20))
+	lib.SH_dtSetMinute(byref(dt), c_int(45))
+	lib.SH_dtSetSecond(byref(dt), c_int(52))
 	lib.SH_dtToTimestamp(byref(dt), byref(ans))
 
 	assert ans.value == -2147483648
-	lib.SH_dtSetYear(byref(dt), 1969)
-	lib.SH_dtSetMonth(byref(dt), 3)
-	lib.SH_dtSetDay(byref(dt), 1)
-	lib.SH_dtSetHour(byref(dt), 0)
-	lib.SH_dtSetMinute(byref(dt), 0)
-	lib.SH_dtSetSecond(byref(dt), 0)
+	lib.SH_dtSetYear(byref(dt), c_long(1969))
+	lib.SH_dtSetMonth(byref(dt), c_int(3))
+	lib.SH_dtSetDay(byref(dt), c_int(1))
+	lib.SH_dtSetHour(byref(dt), c_int(0))
+	lib.SH_dtSetMinute(byref(dt), c_int(0))
+	lib.SH_dtSetSecond(byref(dt), c_int(0))
 	lib.SH_dtToTimestamp(byref(dt), byref(ans))
 
 	assert ans.value == -26438400
-	lib.SH_dtSetYear(byref(dt), 1969)
-	lib.SH_dtSetMonth(byref(dt), 2)
-	lib.SH_dtSetDay(byref(dt), 28)
-	lib.SH_dtSetHour(byref(dt), 0)
-	lib.SH_dtSetMinute(byref(dt), 0)
-	lib.SH_dtSetSecond(byref(dt), 0)
+	lib.SH_dtSetYear(byref(dt), c_long(1969))
+	lib.SH_dtSetMonth(byref(dt), c_int(2))
+	lib.SH_dtSetDay(byref(dt), c_int(28))
+	lib.SH_dtSetHour(byref(dt), c_int(0))
+	lib.SH_dtSetMinute(byref(dt), c_int(0))
+	lib.SH_dtSetSecond(byref(dt), c_int(0))
 	lib.SH_dtToTimestamp(byref(dt), byref(ans))
 
 	assert ans.value == -26524800
-	lib.SH_dtSetYear(byref(dt), 1968)
-	lib.SH_dtSetMonth(byref(dt), 3)
-	lib.SH_dtSetDay(byref(dt), 1)
-	lib.SH_dtSetHour(byref(dt), 0)
-	lib.SH_dtSetMinute(byref(dt), 0)
-	lib.SH_dtSetSecond(byref(dt), 0)
+	lib.SH_dtSetYear(byref(dt), c_long(1968))
+	lib.SH_dtSetMonth(byref(dt), c_int(3))
+	lib.SH_dtSetDay(byref(dt), c_int(1))
+	lib.SH_dtSetHour(byref(dt), c_int(0))
+	lib.SH_dtSetMinute(byref(dt), c_int(0))
+	lib.SH_dtSetSecond(byref(dt), c_int(0))
 	lib.SH_dtToTimestamp(byref(dt), byref(ans))
 
 	assert ans.value == -57974400
-	lib.SH_dtSetYear(byref(dt), 1968)
-	lib.SH_dtSetMonth(byref(dt), 2)
-	lib.SH_dtSetDay(byref(dt), 28)
-	lib.SH_dtSetHour(byref(dt), 0)
-	lib.SH_dtSetMinute(byref(dt), 0)
-	lib.SH_dtSetSecond(byref(dt), 0)
+	lib.SH_dtSetYear(byref(dt), c_long(1968))
+	lib.SH_dtSetMonth(byref(dt), c_int(2))
+	lib.SH_dtSetDay(byref(dt), c_int(28))
+	lib.SH_dtSetHour(byref(dt), c_int(0))
+	lib.SH_dtSetMinute(byref(dt), c_int(0))
+	lib.SH_dtSetSecond(byref(dt), c_int(0))
 	lib.SH_dtToTimestamp(byref(dt), byref(ans))
 
 	assert ans.value == -58147200
-	lib.SH_dtSetYear(byref(dt), 1968)
-	lib.SH_dtSetMonth(byref(dt), 2)
-	lib.SH_dtSetDay(byref(dt), 29)
-	lib.SH_dtSetHour(byref(dt), 0)
-	lib.SH_dtSetMinute(byref(dt), 0)
-	lib.SH_dtSetSecond(byref(dt), 0)
+	lib.SH_dtSetYear(byref(dt), c_long(1968))
+	lib.SH_dtSetMonth(byref(dt), c_int(2))
+	lib.SH_dtSetDay(byref(dt), c_int(29))
+	lib.SH_dtSetHour(byref(dt), c_int(0))
+	lib.SH_dtSetMinute(byref(dt), c_int(0))
+	lib.SH_dtSetSecond(byref(dt), c_int(0))
 	lib.SH_dtToTimestamp(byref(dt), byref(ans))
 
 	assert ans.value == -58060800
-	lib.SH_dtSetYear(byref(dt), 1967)
-	lib.SH_dtSetMonth(byref(dt), 4)
-	lib.SH_dtSetDay(byref(dt), 27)
-	lib.SH_dtSetHour(byref(dt), 0)
-	lib.SH_dtSetMinute(byref(dt), 0)
-	lib.SH_dtSetSecond(byref(dt), 0)
+	lib.SH_dtSetYear(byref(dt), c_long(1967))
+	lib.SH_dtSetMonth(byref(dt), c_int(4))
+	lib.SH_dtSetDay(byref(dt), c_int(27))
+	lib.SH_dtSetHour(byref(dt), c_int(0))
+	lib.SH_dtSetMinute(byref(dt), c_int(0))
+	lib.SH_dtSetSecond(byref(dt), c_int(0))
 	lib.SH_dtToTimestamp(byref(dt), byref(ans))
 
 	assert ans.value == -84672000
@@ -978,17 +981,17 @@ def test_DecimalTime(lib):
 	timestamp = c_double(0)
 	lib.SH_dtToTimestamp(byref(dt), byref(timestamp))
 	
-	lib.SH_dtSetYear(byref(dt), 9999)
-	lib.SH_dtSetMonth(byref(dt), 12)
-	lib.SH_dtSetDay(byref(dt), 31)
-	lib.SH_dtSetHour(byref(dt), 23)
-	lib.SH_dtSetMinute(byref(dt), 59)
-	lib.SH_dtSetSecond(byref(dt), 59)
+	lib.SH_dtSetYear(byref(dt), c_long(9999))
+	lib.SH_dtSetMonth(byref(dt), c_int(12))
+	lib.SH_dtSetDay(byref(dt), c_int(31))
+	lib.SH_dtSetHour(byref(dt), c_int(23))
+	lib.SH_dtSetMinute(byref(dt), c_int(59))
+	lib.SH_dtSetSecond(byref(dt), c_int(59))
 
 	lib.SH_dtToTimestamp(byref(dt), byref(timestamp))
-	assert timestamp == approx(253402300799.096,abs = precision)
+	assert timestamp.value == approx(253402300799.096,abs = precision)
 	
-	lib.SH_timestampToDt(c_double(253402300799.096),c_int(0),byref(dt))
+	lib.SH_timestampToDt(c_double(253402300799.096), c_int(0), byref(dt))
 	assert dt.year == 9999
 	assert dt.month == 12
 	assert dt.day == 31
@@ -997,42 +1000,42 @@ def test_DecimalTime(lib):
 	assert dt.second == 59
 	assert dt.milisecond == 96
 	
-	lib.SH_dtSetYear(byref(dt), 1969)
-	lib.SH_dtSetMonth(byref(dt), 1)
-	lib.SH_dtSetDay(byref(dt), 1)
-	lib.SH_dtSetHour(byref(dt), 0)
-	lib.SH_dtSetMinute(byref(dt), 0)
-	lib.SH_dtSetSecond(byref(dt), 0)
+	lib.SH_dtSetYear(byref(dt), c_long(1969))
+	lib.SH_dtSetMonth(byref(dt), c_int(1))
+	lib.SH_dtSetDay(byref(dt), c_int(1))
+	lib.SH_dtSetHour(byref(dt), c_int(0))
+	lib.SH_dtSetMinute(byref(dt), c_int(0))
+	lib.SH_dtSetSecond(byref(dt), c_int(0))
 	lib.SH_dtToTimestamp(byref(dt), byref(timestamp))
-	assert timestamp == approx(-31536000.096,abs = precision)
+	assert timestamp.value == approx(-31536000.096,abs = precision)
 	
-	lib.SH_dtSetYear(byref(dt), 1)
-	lib.SH_dtSetMonth(byref(dt), 1)
-	lib.SH_dtSetDay(byref(dt), 1)
-	lib.SH_dtSetHour(byref(dt), 0)
-	lib.SH_dtSetMinute(byref(dt), 0)
-	lib.SH_dtSetSecond(byref(dt), 0)
+	lib.SH_dtSetYear(byref(dt), c_int(1))
+	lib.SH_dtSetMonth(byref(dt), c_int(1))
+	lib.SH_dtSetDay(byref(dt), c_int(1))
+	lib.SH_dtSetHour(byref(dt), c_int(0))
+	lib.SH_dtSetMinute(byref(dt), c_int(0))
+	lib.SH_dtSetSecond(byref(dt), c_int(0))
 	lib.SH_dtToTimestamp(byref(dt), byref(timestamp))
-	assert timestamp == approx(-62135596800.096,abs = precision)
+	assert timestamp.value == approx(-62135596800.096,abs = precision)
 
 def test_dayOfYear(lib):
 	dt = SHDatetime()
-	lib.SH_timestampToDt(c_double(10022400),byref(dt))
-	result = lib.SH_calcDayOfYear(c_double(10022400))
+	lib.SH_timestampToDt(c_double(10022400), c_int(0), byref(dt))
+	result = lib.SH_calcDayOfYear(byref(dt))
 	assert result == 117
-	lib.SH_timestamp(c_double(73180800), byref(dt))
+	lib.SH_timestampToDt(c_double(73180800), c_int(0), byref(dt))
 	result = lib.SH_calcDayOfYear(byref(dt))
 	assert result == 118
-	lib.SH_timestamp(c_double(5097600), byref(dt))
+	lib.SH_timestampToDt(c_double(5097600), c_int(0), byref(dt))
 	result = lib.SH_calcDayOfYear(byref(dt))
 	assert result == 60
-	lib.SH_timestamp(c_double(68256000), byref(dt))
+	lib.SH_timestampToDt(c_double(68256000), c_int(0), byref(dt))
 	result = lib.SH_calcDayOfYear(byref(dt))
 	assert result == 61
-	lib.SH_timestamp(c_double(68169600), byref(dt))
+	lib.SH_timestampToDt(c_double(68169600), c_int(0), byref(dt))
 	result = lib.SH_calcDayOfYear(byref(dt))
 	assert result == 60
-	lib.SH_timestamp(c_double(5011200), byref(dt))
+	lib.SH_timestampToDt(c_double(5011200), c_int(0), byref(dt))
 	result = lib.SH_calcDayOfYear(byref(dt))
 	assert result == 59
 	
@@ -1040,110 +1043,110 @@ def test_dayOfYear(lib):
 def test_add_days_to_dt(lib):
 	tsArr = SHTimeshift * 2
 	dst = tsArr(
-			SHTimeshift(3,11,2,0,HOUR_IN_SECONDS),
-			SHTimeshift(11,4,2,0,0))
+			SHTimeshift(3, 11, 2, 0, HOUR_IN_SECONDS),
+			SHTimeshift(11, 4, 2, 0, 0))
 	error = c_int(0)
-	dt = SHDatetime(year = 2018,month = 3,day = 9,timezoneOffset = -5*HOUR_IN_SECONDS,
-			hour = 2, minute = 13, second = 0)
+	dt = SHDatetime(year = 2018,month = 3,day = 9,timezoneOffset = -5 * HOUR_IN_SECONDS,
+		hour = 2, minute = 13, second = 0)
 	dt.shifts = dst
 	dt.shiftLen = len(dst)
-	dt.currentShiftIdx = lib.selectTimeShiftForDt(byref(dt),dst,c_int(dt.shiftLen))
+	dt.currentShiftIdx = lib.SH_selectTimeShiftIdxForDt(byref(dt), dst, c_int(dt.shiftLen))
 	dt_copy = make_dt_copy(dt)
-	lib.SH_addDaysToDt(byref(dt_copy),c_long(2),c_int(0))
-	assert dt_copy.day	== 11
-	assert dt_copy.hour	== 3
-	assert dt_copy.minute	== 13
-	assert dt_copy.timezoneOffset	== HOUR_IN_SECONDS*-4
-	lib.SH_dtSetHour(byref(dt), 1)
-	dt_copy = make_dt_copy(dt)
-	
-	lib.SH_addDaysToDt(byref(dt_copy),c_long(2),c_int(0))
-	assert dt_copy.day	== 11
-	assert dt_copy.hour	== 1
-	assert dt_copy.minute	== 13
-	assert dt_copy.timezoneOffset	== HOUR_IN_SECONDS*-5
-	lib.SH_dtSetHour(byref(dt), 1)
-	lib.SH_dtSetMinute(byref(dt), 59)
+	lib.SH_addDaysToDt(byref(dt_copy), c_long(2), c_int(0))
+	assert dt_copy.day == 11
+	assert dt_copy.hour == 3
+	assert dt_copy.minute == 13
+	assert dt_copy.timezoneOffset == HOUR_IN_SECONDS*-4
+	lib.SH_dtSetHour(byref(dt), c_int(1))
 	dt_copy = make_dt_copy(dt)
 	
-	lib.SH_addDaysToDt(byref(dt_copy),c_long(2),c_int(0))
-	assert dt_copy.day	== 11
-	assert dt_copy.hour	== 1
-	assert dt_copy.minute	== 59
-	assert dt_copy.timezoneOffset	== HOUR_IN_SECONDS*-5
-	lib.SH_dtSetHour(byref(dt), 2)
-	lib.SH_dtSetMinute(byref(dt), 0)
+	lib.SH_addDaysToDt(byref(dt_copy), c_long(2), c_int(0))
+	assert dt_copy.day == 11
+	assert dt_copy.hour == 1
+	assert dt_copy.minute == 13
+	assert dt_copy.timezoneOffset == HOUR_IN_SECONDS*-5
+	lib.SH_dtSetHour(byref(dt), c_int(1))
+	lib.SH_dtSetMinute(byref(dt), c_int(59))
 	dt_copy = make_dt_copy(dt)
 	
-	lib.SH_addDaysToDt(byref(dt_copy),c_long(2),c_int(0))
-	assert dt_copy.day	== 11
-	assert dt_copy.hour	== 3
-	assert dt_copy.minute	== 0
-	assert dt_copy.timezoneOffset	== HOUR_IN_SECONDS*-4
-	
-	lib.SH_dtSetHour(byref(dt), 3)
-	lib.SH_dtSetMinute(byref(dt), 1)
+	lib.SH_addDaysToDt(byref(dt_copy), c_long(2), c_int(0))
+	assert dt_copy.day == 11
+	assert dt_copy.hour == 1
+	assert dt_copy.minute == 59
+	assert dt_copy.timezoneOffset == HOUR_IN_SECONDS*-5
+	lib.SH_dtSetHour(byref(dt), c_int(2))
+	lib.SH_dtSetMinute(byref(dt), c_int(0))
 	dt_copy = make_dt_copy(dt)
 	
-	lib.SH_addDaysToDt(byref(dt_copy),c_long(2),c_int(0))
-	assert dt_copy.day	== 11
-	assert dt_copy.hour	== 3
-	assert dt_copy.minute	== 1
-	assert dt_copy.timezoneOffset	== HOUR_IN_SECONDS*-4
+	lib.SH_addDaysToDt(byref(dt_copy), c_long(2), c_int(0))
+	assert dt_copy.day == 11
+	assert dt_copy.hour == 3
+	assert dt_copy.minute == 0
+	assert dt_copy.timezoneOffset == HOUR_IN_SECONDS*-4
+	
+	lib.SH_dtSetHour(byref(dt), c_int(3))
+	lib.SH_dtSetMinute(byref(dt), c_int(1))
+	dt_copy = make_dt_copy(dt)
+	
+	lib.SH_addDaysToDt(byref(dt_copy), c_long(2), c_int(0))
+	assert dt_copy.day == 11
+	assert dt_copy.hour == 3
+	assert dt_copy.minute == 1
+	assert dt_copy.timezoneOffset == HOUR_IN_SECONDS*-4
 	
 	dt_copy = make_dt_copy(dt)
 	
-	lib.SH_dtSetHour(byref(dt), 6)
-	lib.SH_addDaysToDt(byref(dt_copy),c_long(3),c_int(0))
-	assert dt_copy.day	== 12
-	assert dt_copy.hour	== 3
-	assert dt_copy.minute	== 1
-	assert dt_copy.timezoneOffset	== HOUR_IN_SECONDS*-4
+	lib.SH_dtSetHour(byref(dt), c_int(6))
+	lib.SH_addDaysToDt(byref(dt_copy), c_long(3), c_int(0))
+	assert dt_copy.day == 12
+	assert dt_copy.hour == 3
+	assert dt_copy.minute == 1
+	assert dt_copy.timezoneOffset == HOUR_IN_SECONDS*-4
 	
 	dt.timezoneOffset = -4*HOUR_IN_SECONDS
-	lib.SH_dtSetMonth(byref(dt), 11)
-	lib.SH_dtSetDay(byref(dt), 3)
-	lib.SH_dtSetHour(byref(dt), 0)
-	lib.SH_dtSetMinute(byref(dt), 1)
-	dt.currentShiftIdx = lib.selectTimeShiftForDt(byref(dt),dst,c_int(dt.shiftLen))
+	lib.SH_dtSetMonth(byref(dt), c_int(11))
+	lib.SH_dtSetDay(byref(dt), c_int(3))
+	lib.SH_dtSetHour(byref(dt), c_int(0))
+	lib.SH_dtSetMinute(byref(dt), c_int(1))
+	dt.currentShiftIdx = lib.SH_selectTimeShiftIdxForDt(byref(dt), dst, c_int(dt.shiftLen))
 	dt_copy = make_dt_copy(dt)
 	
-	lib.SH_addDaysToDt(byref(dt_copy),c_long(1),c_int(0))
-	assert dt_copy.day	== 4
-	assert dt_copy.hour	== 0
-	assert dt_copy.minute	== 1
-	assert dt_copy.timezoneOffset	== HOUR_IN_SECONDS*-4
+	lib.SH_addDaysToDt(byref(dt_copy), c_long(1), c_int(0))
+	assert dt_copy.day == 4
+	assert dt_copy.hour == 0
+	assert dt_copy.minute == 1
+	assert dt_copy.timezoneOffset == HOUR_IN_SECONDS*-4
 	
-	lib.SH_dtSetHour(byref(dt), 2)
+	lib.SH_dtSetHour(byref(dt), c_int(2))
 	dt_copy = make_dt_copy(dt)
 	
-	lib.SH_addDaysToDt(byref(dt_copy),c_long(1),c_int(0))
-	assert dt_copy.day	== 4
-	assert dt_copy.hour	== 1
-	assert dt_copy.minute	== 1
-	assert dt_copy.timezoneOffset	== HOUR_IN_SECONDS*-5
+	lib.SH_addDaysToDt(byref(dt_copy), c_long(1), c_int(0))
+	assert dt_copy.day == 4
+	assert dt_copy.hour == 1
+	assert dt_copy.minute == 1
+	assert dt_copy.timezoneOffset == HOUR_IN_SECONDS*-5
 	
-	lib.SH_dtSetHour(byref(dt), 3)
+	lib.SH_dtSetHour(byref(dt), c_int(3))
 	dt_copy = make_dt_copy(dt)
 	
-	lib.SH_addDaysToDt(byref(dt_copy),c_long(1),c_int(0))
-	assert dt_copy.day	== 4
-	assert dt_copy.hour	== 3
-	assert dt_copy.minute	== 1
-	assert dt_copy.timezoneOffset	== HOUR_IN_SECONDS*-5
+	lib.SH_addDaysToDt(byref(dt_copy), c_long(1), c_int(0))
+	assert dt_copy.day == 4
+	assert dt_copy.hour == 3
+	assert dt_copy.minute == 1
+	assert dt_copy.timezoneOffset == HOUR_IN_SECONDS*-5
 	
-	lib.SH_dtSetHour(byref(dt), 2)
+	lib.SH_dtSetHour(byref(dt), c_int(2))
 	dt_copy = make_dt_copy(dt)
 	
-	lib.SH_addDaysToDt(byref(dt_copy),c_long(2),c_int(0))
-	assert dt_copy.day	== 5
-	assert dt_copy.hour	== 2
-	assert dt_copy.minute	== 1
-	assert dt_copy.timezoneOffset	== HOUR_IN_SECONDS*-5
+	lib.SH_addDaysToDt(byref(dt_copy), c_long(2), c_int(0))
+	assert dt_copy.day == 5
+	assert dt_copy.hour == 2
+	assert dt_copy.minute == 1
+	assert dt_copy.timezoneOffset == HOUR_IN_SECONDS*-5
 
 def test_add_years_to_dt(lib):
 	tz_offset = c_int(-14400)
-	dt = SHDatetime(1988,4,27,13,35,12,0,tz_offset)
+	dt = SHDatetime(year = 1988, month = 4, day = 27, hour = 13, minute = 35, second = 12, timezoneOffset = tz_offset)
 	tmp = make_dt_copy(dt)
 	error = c_int(0)
 	ans = c_double(0)
@@ -1159,16 +1162,16 @@ def test_add_years_to_dt(lib):
 
 def test_add_month_to_dt(lib):
 	tz_offset = c_int(-18000)
-	dt = SHDatetime(1988,4,16,13,35,12,0,tz_offset)
+	dt = SHDatetime(year = 1988, month = 4, day = 16, hour = 13, minute = 35, second = 12, timezoneOffset = tz_offset)
 	tmp = make_dt_copy(dt)
 	ans = c_double(0)
 	
-	lib.SH_addMonthsToDt(byref(tmp),c_long(2),c_int(0))
+	lib.SH_addMonthsToDt(byref(tmp), c_long(2), c_int(0))
 	lib.SH_dtToTimestamp(byref(tmp), byref(ans))
 	assert ans.value == 582489312
 	
 	tmp = make_dt_copy(dt)
-	lib.SH_addMonthsToDt(byref(tmp),c_long(9),c_int(0))
+	lib.SH_addMonthsToDt(byref(tmp), c_long(9), c_int(0))
 	lib.SH_dtToTimestamp(byref(tmp), byref(ans))
 	assert ans.value == 600978912
 
@@ -1177,30 +1180,30 @@ def test_add_days_to_dt_2(lib):
 	#test simple adding
 	tz_offset = c_int(-18000)
 	ans = c_double(0)
-	dt = SHDatetime(1988,4,27,13,35,12,0,tz_offset)
+	dt = SHDatetime(year = 1988, month = 4, day = 27, hour = 13, minute = 35, second = 12, timezoneOffset = tz_offset)
 	
 	tmp = make_dt_copy(dt)
-	lib.SH_addDaysToDt(byref(tmp),c_long(2),c_int(0))
+	lib.SH_addDaysToDt(byref(tmp), c_long(2), c_int(0))
 	lib.SH_dtToTimestamp(byref(tmp), byref(ans))
 	
 	assert ans.value == 578342112
 #test rollover to next month
 
 	tmp = make_dt_copy(dt)
-	lib.SH_addDaysToDt(byref(tmp),c_long(4),c_int(0))
+	lib.SH_addDaysToDt(byref(tmp), c_long(4), c_int(0))
 	lib.SH_dtToTimestamp(byref(tmp), byref(ans))
 	assert ans.value == 578514912
 #test rollover to next year during a leap year
 
 	tmp = make_dt_copy(dt)
-	lib.SH_addDaysToDt(byref(tmp),c_long(249),c_int(0))
+	lib.SH_addDaysToDt(byref(tmp), c_long(249), c_int(0))
 	lib.SH_dtToTimestamp(byref(tmp), byref(ans))
 	assert ans.value == 599682912
 #test rollover from febuary during leap year
-	dt = SHDatetime(1988,2,28,13,35,12,0,tz_offset)
+	dt = SHDatetime(year = 1988, month = 2, day = 28, hour = 13, minute = 35, second = 12, timezoneOffset = tz_offset)
 	
 	tmp = make_dt_copy(dt)
-	lib.SH_addDaysToDt(byref(tmp),c_long(1),c_int(0))
+	lib.SH_addDaysToDt(byref(tmp), c_long(1), c_int(0))
 	lib.SH_dtToTimestamp(byref(tmp), byref(ans))
 	assert ans.value == 573158112
 	
@@ -1210,18 +1213,18 @@ def test_add_days_to_dt_2(lib):
 	assert ans.value == 573244512
 	
 #test rollover from febuary during non leap year
-	dt = SHDatetime(1989,2,28,13,35,12,0,tz_offset)
+	dt = SHDatetime(year = 1989, month = 2, day = 28, hour = 13, minute = 35, second = 12, timezoneOffset = tz_offset)
 	
 	tmp = make_dt_copy(dt)
-	lib.SH_addDaysToDt(byref(tmp),c_long(2),c_int(0))
+	lib.SH_addDaysToDt(byref(tmp), c_long(2), c_int(0))
 	lib.SH_dtToTimestamp(byref(tmp), byref(ans))
 
 	assert ans.value == 604866912
 
 
 def test_days_between(lib):
-	fromTime = SHDatetime(1988,4,27,0,0,0)
-	toTime = SHDatetime(1988,4,28,0,0,0)
+	fromTime = SHDatetime(year = 1988, month = 4, day = 27)
+	toTime = SHDatetime(year = 1988, month = 4, day = 28)
 	daysLeft = c_int(0)
 	lib.SH_dateDiffDays(byref(fromTime), byref(toTime), byref(daysLeft))
-	assert daysLeft == 1
+	assert daysLeft.value == 1

@@ -13,7 +13,7 @@
 #include <stdio.h>
 #include <sqlite3.h>
 
-SHErrorCode SH_openDb(sqlite3 **db, const unsigned char * dbFilePath);
+SHErrorCode SH_openDb(sqlite3 **db, const char * dbFilePath);
 SHErrorCode SH_createTables(sqlite3 *db);
 SHErrorCode SH_setupDb(sqlite3 *db);
 

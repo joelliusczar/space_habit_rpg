@@ -18,7 +18,7 @@
 @implementation SHWeeklyActiveDaysViewController
 
 -(void)viewDidLoad{
-	NSAssert(self.weeklyActiveDays, @"Weekly active days cannot be null");
+	//NSAssert(self.weeklyActiveDays, @"Weekly active days cannot be null");
 	[super viewDidLoad];
 	self.dayOptionViews = @[
 		self.day0Switch,
@@ -30,21 +30,21 @@
 		self.day6Switch
 	];
 	
-	NSArray<NSString *> *dayKeys = self.weeklyActiveDays.weekKeysBasedOnWeekStart;
-
-	__weak SHWeeklyActiveDaysViewController *weakSelf = self;
-	for(int32_t i = 0; i < SH_DAYS_IN_WEEK; i++){
-		[self pushChildVC:self.activeDaySwitches[i] toViewOfParent:self.dayOptionViews[i]];
-		self.activeDaySwitches[i].dayLabel.text = [SHWeekIntervalItemList weekDayKeyToFullName:dayKeys[i]];
-
-		self.activeDaySwitches[i].onChange = ^void (BOOL newValue, SHSwitch *sender) {
-			SHWeeklyActiveDaysViewController *bSelf = weakSelf;
-			if(nil == bSelf) return;
-			[bSelf dayChange:newValue sender:sender];
-		};
-		int32_t dayIdx = (i + self.weekStartDay) % 7;
-		self.activeDaySwitches[dayIdx].isOn = [self.weeklyActiveDays intervalPointAtIndex: dayIdx]->isDayActive;
-	}
+//	NSArray<NSString *> *dayKeys = self.weeklyActiveDays.weekKeysBasedOnWeekStart;
+//
+//	__weak SHWeeklyActiveDaysViewController *weakSelf = self;
+//	for(int32_t i = 0; i < SH_DAYS_IN_WEEK; i++){
+//		[self pushChildVC:self.activeDaySwitches[i] toViewOfParent:self.dayOptionViews[i]];
+//		self.activeDaySwitches[i].dayLabel.text = [SHWeekIntervalItemList weekDayKeyToFullName:dayKeys[i]];
+//
+//		self.activeDaySwitches[i].onChange = ^void (BOOL newValue, SHSwitch *sender) {
+//			SHWeeklyActiveDaysViewController *bSelf = weakSelf;
+//			if(nil == bSelf) return;
+//			[bSelf dayChange:newValue sender:sender];
+//		};
+//		int32_t dayIdx = (i + self.weekStartDay) % 7;
+//		self.activeDaySwitches[dayIdx].isOn = [self.weeklyActiveDays intervalPointAtIndex: dayIdx]->isDayActive;
+//	}
 	
 }
 

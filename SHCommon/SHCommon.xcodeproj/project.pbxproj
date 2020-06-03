@@ -108,6 +108,8 @@
 		274ADD43245E545600763D25 /* SHInheritanceTreeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 274ADD42245E545600763D25 /* SHInheritanceTreeTest.m */; };
 		275534422471C8B600D650AB /* NSCalendar+SHHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 275534402471C8B600D650AB /* NSCalendar+SHHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		275534432471C8B600D650AB /* NSCalendar+SHHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 275534412471C8B600D650AB /* NSCalendar+SHHelper.m */; };
+		275534EB2483596700D650AB /* NSString+SHHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 275534E92483596700D650AB /* NSString+SHHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		275534EC2483596700D650AB /* NSString+SHHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 275534EA2483596700D650AB /* NSString+SHHelper.m */; };
 		27D802E32464E0CE0057E950 /* SHReflectionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D802E02464E0CE0057E950 /* SHReflectionHelper.m */; };
 		27D802E42464E0CE0057E950 /* SHReflectionHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D802E22464E0CE0057E950 /* SHReflectionHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27F3CFEE2470AFB300E5B211 /* SHIconBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F3CFEC2470AFB300E5B211 /* SHIconBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -271,6 +273,8 @@
 		274ADD42245E545600763D25 /* SHInheritanceTreeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHInheritanceTreeTest.m; sourceTree = "<group>"; };
 		275534402471C8B600D650AB /* NSCalendar+SHHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSCalendar+SHHelper.h"; sourceTree = "<group>"; };
 		275534412471C8B600D650AB /* NSCalendar+SHHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSCalendar+SHHelper.m"; sourceTree = "<group>"; };
+		275534E92483596700D650AB /* NSString+SHHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+SHHelper.h"; sourceTree = "<group>"; };
+		275534EA2483596700D650AB /* NSString+SHHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+SHHelper.m"; sourceTree = "<group>"; };
 		27D802E02464E0CE0057E950 /* SHReflectionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHReflectionHelper.m; sourceTree = "<group>"; };
 		27D802E22464E0CE0057E950 /* SHReflectionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHReflectionHelper.h; sourceTree = "<group>"; };
 		27F3CFEC2470AFB300E5B211 /* SHIconBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHIconBuilder.h; sourceTree = "<group>"; };
@@ -422,6 +426,8 @@
 				273743C024565DD800E36AB7 /* UIImage+Helper.m */,
 				275534402471C8B600D650AB /* NSCalendar+SHHelper.h */,
 				275534412471C8B600D650AB /* NSCalendar+SHHelper.m */,
+				275534E92483596700D650AB /* NSString+SHHelper.h */,
+				275534EA2483596700D650AB /* NSString+SHHelper.m */,
 			);
 			path = "NS+Categories";
 			sourceTree = "<group>";
@@ -573,6 +579,7 @@
 				2737444924565DD800E36AB7 /* SHDateProviderProtocol.h in Headers */,
 				2737440024565DD800E36AB7 /* SHVarWrapper.h in Headers */,
 				27D802E42464E0CE0057E950 /* SHReflectionHelper.h in Headers */,
+				275534EB2483596700D650AB /* NSString+SHHelper.h in Headers */,
 				27F3CFEE2470AFB300E5B211 /* SHIconBuilder.h in Headers */,
 				2737442D24565DD800E36AB7 /* SHConstants.h in Headers */,
 			);
@@ -773,6 +780,7 @@
 				275534432471C8B600D650AB /* NSCalendar+SHHelper.m in Sources */,
 				2737443824565DD800E36AB7 /* SHCoreData.m in Sources */,
 				2737443E24565DD800E36AB7 /* SHInterceptor.m in Sources */,
+				275534EC2483596700D650AB /* NSString+SHHelper.m in Sources */,
 				2737442824565DD800E36AB7 /* SHObjectIDWrapper.m in Sources */,
 				2737441F24565DD800E36AB7 /* NSObject+Helper.m in Sources */,
 				2737444024565DD800E36AB7 /* SHResourceUtility.m in Sources */,

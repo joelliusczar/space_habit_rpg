@@ -25,7 +25,6 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *listTop;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *statsTop;
 @property (strong, nonatomic) NSManagedObjectContext *context;
-@property (strong, nonatomic) dispatch_queue_t configAccessorQueue;
 @property (strong, nonatomic) UIView *coverView;
 @end
 
@@ -43,33 +42,8 @@
 }
 
 
-
--(instancetype)initWithDataController:(NSObject<SHDataProviderProtocol>*)dataController
-	andNibName:(NSString*)nib
-	andResourceUtil:(NSObject<SHResourceUtilityProtocol>*)util
-	andBundle:(NSBundle*)bundle
-{
-	if(self = [super initWithNibName:nib bundle:bundle]){
-		_dataController = dataController;
-		_context = [dataController newBackgroundContext];
-		_resourceUtil = util;
-		_configAccessorQueue = dispatch_queue_create("com.SpaceHabit.Config",DISPATCH_QUEUE_SERIAL);
-	}
-	return self;
-}
-
-
-+(instancetype)newWithDataController:(NSObject<SHDataProviderProtocol>*)dataController
-	andNibName:(NSString*)nib
-	andResourceUtil:(NSObject<SHResourceUtilityProtocol>*)util
-	andBundle:(NSBundle*)bundle
-{
-	id instance = [[SHCentralViewController alloc]
-		initWithDataController:dataController
-		andNibName:nib
-		andResourceUtil:util
-		andBundle:bundle];
-	return instance;
+-(AppDelegate *)appDelegate {
+	return (AppDelegate *)UIApplication.sharedApplication.delegate;
 }
 
 
@@ -118,8 +92,7 @@
 }
 
 -(void)setupTabs {
-	SHDailyViewController* dc = [[SHDailyViewController alloc] initWithCentral:self
-		withContext:[self.dataController newBackgroundContext]];
+	SHDailyViewController* dc = [[SHDailyViewController alloc] initWithCentral:self];
 	
 	self.tabsController.viewControllers = @[dc];
 	
@@ -131,7 +104,7 @@
 
 
 -(void)prepareScreen{
-	self.battleStats = [[SHBattleStatsViewController alloc] initWithResourceUtil:self.resourceUtil];
+	self.battleStats = [[SHBattleStatsViewController alloc] initWithResourceUtil:self.appDelegate.resourceUtil];
 	[self pushChildVC:self.battleStats toViewOfParent:self.statsView];
 	self.statsView.translatesAutoresizingMaskIntoConstraints = NO;
 	self.battleStats.view.translatesAutoresizingMaskIntoConstraints = NO;
@@ -148,7 +121,7 @@
 	SHStoryRouter *router = [[SHStoryRouter alloc]
 		 initWithContext:self.context
 		 withViewController:self
-		 withResourceUtil:self.resourceUtil
+		 withResourceUtil:self.appDelegate.resourceUtil
 		 withOnPresentComplete:^{
 		 	[self uncoverDisplay];
 			[self prepareScreen];
@@ -167,7 +140,7 @@
 		[bSelf prepareScreenPostIntro];
 	}
 		withContext:self.context
-		withResourceUtil:self.resourceUtil];
+		withResourceUtil:self.appDelegate.resourceUtil];
 	[self arrangeAndPushChildVCToFront:introVC];
 }
 
@@ -176,7 +149,7 @@
 	SHStoryRouter *router = [[SHStoryRouter alloc]
 		 initWithContext:self.context
 		 withViewController:self
-		 withResourceUtil:self.resourceUtil
+		 withResourceUtil:self.appDelegate.resourceUtil
 		 withOnPresentComplete:^{
 		 	[self uncoverDisplay];
 			[self prepareScreen];

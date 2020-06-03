@@ -26,4 +26,5 @@
 int64_t SH_calcStrHash(char const *str);
 double kahanSum(const double* const nums,int64_t len);
 char * shStrCopy(const char * const str);
+int32_t SH_bitCount(int64_t num);
 #endif /* SHGenAlgos_h */

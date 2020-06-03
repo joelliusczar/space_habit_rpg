@@ -37,7 +37,7 @@
 	NSManagedObjectContext *context = self.objectID.context;
 	[context performBlock:^{
 		NSError *err = nil;
-		SHDaily *daily = (SHDaily *)[context existingObjectWithID:objectId error:&err];
+		SHDaily_x *daily = (SHDaily_x *)[context existingObjectWithID:objectId error:&err];
 		if(err) {
 			@throw [NSException dbException:err];
 		}
@@ -48,29 +48,29 @@
 		*/
 		
 		struct SHDatetime *todayLocal = self.dateProvider.userTodayStart;
-		NSArray<SHDailyEvent*> *lastTwoActivations = [daily lastActivations: 2];
-		SHDailyEvent *lastEvent = [lastTwoActivations silentGet:0];
-		SHDailyEvent *rollbackToEvent = [lastTwoActivations silentGet:1];
-		struct SHDatetime *lastEventDtTz = [lastEvent.eventDatetime SH_toSHDatetime];
-		SH_dtSetTimezoneOffset(lastEventDtTz, lastEvent.tzOffset);
+		//NSArray<SHDailyEvent*> *lastTwoActivations = [daily lastActivations: 2];
+//		SHDailyEvent *lastEvent = [lastTwoActivations silentGet:0];
+//		SHDailyEvent *rollbackToEvent = [lastTwoActivations silentGet:1];
+//		struct SHDatetime *lastEventDtTz = [lastEvent.eventDatetime SH_toSHDatetime];
+//		SH_dtSetTimezoneOffset(lastEventDtTz, lastEvent.tzOffset);
 		bool hasBeenActivatedToday = false;
-		SH_isDateAGTDateB(lastEventDtTz, todayLocal, &hasBeenActivatedToday);
+		//SH_isDateAGTDateB(lastEventDtTz, todayLocal, &hasBeenActivatedToday);
 		BOOL isActivated = NO;
 		if(!hasBeenActivatedToday) {
 			SHDailyEvent *activation = (SHDailyEvent *)[context newEntity:SHDailyEvent.entity];
 			activation.eventDatetime = self.dateProvider.date;
 			activation.tzOffset = (int32_t)self.dateProvider.localTzOffset;
-			activation.event_daily = daily;
-			daily.lastActivationDateTime = activation.eventDatetime;
+//			activation.event_daily = daily;
+//			daily.lastActivationDateTime = activation.eventDatetime;
 			isActivated = YES;
 		}
 		else {
-			[context deleteObject:lastEvent];
-			daily.lastActivationDateTime = rollbackToEvent.eventDatetime;
+			//[context deleteObject:lastEvent];
+			//daily.lastActivationDateTime = rollbackToEvent.eventDatetime;
 			isActivated = NO;
 		}
 		SH_freeSHDatetime(todayLocal, 1);
-		SH_freeSHDatetime(lastEventDtTz, 1);
+		//SH_freeSHDatetime(lastEventDtTz, 1);
 		NSError *saveErr = nil;
 		[context save:&saveErr];
 		if(saveErr) {

@@ -33,13 +33,6 @@
 }
 
 
--(void)setupWithContext:(NSManagedObjectContext *)context
-	andObjectID:(SHObjectIDWrapper*)objectIDWrapper
-{
-	self.context = context;
-	self.objectIDWrapper = objectIDWrapper;
-}
-
 -(void)openNextScreen{
 	@throw [NSException abstractException];
 }

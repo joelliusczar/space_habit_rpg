@@ -113,41 +113,41 @@
 
 	testContext.savedPrevDate = &contextDate;
 	
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 6);
 	
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 13, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 5);
 	
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 12, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 4);
 	
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 11, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 	
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 10, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 2);
 	
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 9, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 1);
 	
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 8, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 0);
 	
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 7, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 0);
 	
 	
 	contextDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 13};
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 13, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 0);
 }
 

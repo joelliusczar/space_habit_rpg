@@ -18,11 +18,11 @@
 #include "SHDatetime_setters.h"
 
 
-SHErrorCode SH_dtToTimeOfDay(struct SHDatetime * const dt, double *ans);
+SHErrorCode SH_dtToTimestamp(struct SHDatetime *const dt,double *ans);
 
 SHErrorCode SH_timestampToDt(double timestamp, int32_t timezoneOffset, struct SHDatetime *ans);
 
-SHErrorCode SH_dtToTimestamp(struct SHDatetime *const dt,double *ans);
+SHErrorCode SH_dtToTimeOfDay(struct SHDatetime * const dt, double *ans);
 
 int32_t SH_weekdayIdx(struct SHDatetime * const dt, int32_t dayOffset);
 

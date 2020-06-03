@@ -20,17 +20,18 @@ the first day, the activeness of that day won't get shifted
 we will keep all the weird shifting localized to this section mostly
 */
 
-@interface SHWeekIntervalItemList : SHIntervalItemFormat
-@property (assign, nonatomic) int32_t weeklyDayStart;
-@property (readonly, nonatomic) NSString *weekDescription;
-@property (readonly, nonatomic, nullable) NSArray<NSString*> *weekKeysBasedOnWeekStart;
--(instancetype)initWithRateItemArray:(NSArray<SHItervalItemDict*>*)rateItemArray
-	withWeekStartOffset:(int32_t)dayOffset;
--(struct SHWeekIntervalPoint*)intervalPointAtIndex:(NSUInteger)idx;
--(void)setDayOfWeek:(NSUInteger)dayIdx to:(bool)newValue;
--(NSMutableArray<SHItervalItemDict*>*)convertToSaveble;
--(struct SHWeekIntervalPointList)copyWeek;
-+(nullable NSString *)weekDayKeyToFullName:(NSString*)dayKey;
-@end
+#warning investigate adding this back
+//@interface SHWeekIntervalItemList : SHIntervalItemFormat
+//@property (assign, nonatomic) int32_t weeklyDayStart;
+//@property (readonly, nonatomic) NSString *weekDescription;
+//@property (readonly, nonatomic, nullable) NSArray<NSString*> *weekKeysBasedOnWeekStart;
+//-(instancetype)initWithRateItemArray:(NSArray<SHItervalItemDict*>*)rateItemArray
+//	withWeekStartOffset:(int32_t)dayOffset;
+//-(struct SHWeekIntervalPoint*)intervalPointAtIndex:(NSUInteger)idx;
+//-(void)setDayOfWeek:(NSUInteger)dayIdx to:(bool)newValue;
+//-(NSMutableArray<SHItervalItemDict*>*)convertToSaveble;
+//-(struct SHWeekIntervalPointList)copyWeek;
+//+(nullable NSString *)weekDayKeyToFullName:(NSString*)dayKey;
+//@end
 
 NS_ASSUME_NONNULL_END

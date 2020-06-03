@@ -18,8 +18,9 @@ IB_DESIGNABLE
 @property (weak, nonatomic) IBOutlet UILabel *intervalLabel;
 @property (copy, nonatomic) rateStepAction rateStepEvent;
 @property (strong, nonatomic) IBInspectable UIColor *textColor UI_APPEARANCE_SELECTOR;
-@property (strong, nonatomic) IBInspectable NSString *labelPluralFormatString;
-@property (strong, nonatomic) IBInspectable NSString *labelSingularFormatString;
+@property (copy, nonatomic) NSString* (^buildDescription)(int32_t, void *);
+@property (assign, nonatomic) void* descriptionArgs;
+@property (assign, nonatomic) void (*descriptionArgsCleanup)(void*);
 @property (assign, nonatomic) IBInspectable NSInteger intervalSize;
 -(void)redrawButtons;
 @end

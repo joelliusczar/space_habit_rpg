@@ -19,12 +19,12 @@
 
 -(SHReminderListContainer*)reminderListView{
 	if(nil == _reminderListView) {
-		NSAssert(self.context,@"You forgot to call setupWithContext:andObjectID:");
-		NSBundle *bundle = [NSBundle bundleForClass:SHReminderListContainer.class];
-		_reminderListView = [[SHReminderListContainer alloc]
-			initWithNibName:NSStringFromClass(SHReminderListContainer.class)
-			bundle:bundle];
-		[_reminderListView setupWithContext:self.context andObjectID:self.objectIDWrapper];
+//		NSAssert(self.context,@"You forgot to call setupWithContext:andObjectID:");
+//		NSBundle *bundle = [NSBundle bundleForClass:SHReminderListContainer.class];
+//		_reminderListView = [[SHReminderListContainer alloc]
+//			initWithNibName:NSStringFromClass(SHReminderListContainer.class)
+//			bundle:bundle];
+//		[_reminderListView setupWithContext:self.context andObjectID:self.objectIDWrapper];
 	}
 	return _reminderListView;
 }

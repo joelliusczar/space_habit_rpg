@@ -116,878 +116,878 @@
 	
 	//Wednesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 10, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(status, SH_NO_ERROR);
 	XCTAssertEqual(result, 0);
 
 	
 	//Thursday
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 11, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 0);
 
 	
 	//Friday
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 12, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 1);
 
 	
 	//Saturday
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 13, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 2);
 
 	
 	//Sunday
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 14, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Monday
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 15, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Tuesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 16, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Wednesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 17, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Thursday
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 18, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Friday
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 19, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Saturday
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 20, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Sunday
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 21, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Monday
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 22, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Tuesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 23, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Wednesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 24, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Thursday
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 25, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Friday
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 26, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Saturday
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 27, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Sunday
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 28, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Monday
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 29, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Tuesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 30, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Wednesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 1, .day = 31, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Thursday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 1, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Friday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 2, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Saturday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 3, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Sunday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 4, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Monday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 5, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Tuesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 6, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Wednesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 7, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Thursday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 8, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Friday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 9, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Saturday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 10, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Sunday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 11, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Monday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 12, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Tuesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 13, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Wednesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 14, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Thursday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 15, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Friday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 16, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Saturday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 17, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Sunday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 18, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Monday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 19, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Tuesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 20, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Wednesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 21, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Thursday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 22, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Friday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 23, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Saturday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 24, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Sunday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 25, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 3);
 
 	
 	//Monday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 26, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 4);
 
 	
 	//Tuesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 27, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 5);
 
 	
 	//Wednesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 2, .day = 28, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 6);
 
 	
 	//Thursday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 1, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 7);
 
 	
 	//Friday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 2, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 8);
 
 	
 	//Saturday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 3, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 9);
 
 	
 	//Sunday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 4, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Monday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 5, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Tuesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 6, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Wednesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 7, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Thursday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 8, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Friday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 9, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Saturday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 10, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Sunday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 11, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Monday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 12, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Tuesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 13, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Wednesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 14, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Thursday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 15, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Friday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 16, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Saturday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 17, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Sunday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 18, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Monday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 19, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Tuesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 20, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Wednesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 21, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Thursday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 22, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Friday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 23, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Saturday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 24, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Sunday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 25, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Monday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 26, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Tuesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 27, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Wednesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 28, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Thursday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 29, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Friday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 30, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Saturday
 	testDate = (struct SHDatetime){.year = 2018, .month = 3, .day = 31, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Sunday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 1, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Monday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 2, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Tuesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 3, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Wednesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 4, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Thursday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 5, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Friday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 6, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Saturday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 7, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Sunday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 8, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Monday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 9, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Tuesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 10, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Wednesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 11, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Thursday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 12, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Friday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 13, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Saturday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 14, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Sunday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 15, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 10);
 
 	
 	//Monday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 16, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 11);
 
 	
 	//Tuesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 17, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 12);
 
 	
 	//Wednesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 18, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 13);
 
 	
 	//Thursday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 19, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 14);
 
 	
 	//Friday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 20, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 15);
 
 	
 	//Saturday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 21, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 16);
 
 	
 	//Sunday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 22, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Monday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 23, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Tuesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 24, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Wednesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 25, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Thursday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 26, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Friday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 27, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Saturday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 28, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Sunday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 29, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Monday
 	testDate = (struct SHDatetime){.year = 2018, .month = 4, .day = 30, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Tuesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 1, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Wednesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 2, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Thursday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 3, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Friday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 4, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Saturday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 5, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Sunday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 6, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Monday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 7, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Tuesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 8, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Wednesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 9, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Thursday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 10, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Friday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 11, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Saturday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 12, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Sunday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 13, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Monday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 14, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Tuesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 15, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Wednesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 16, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Thursday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 17, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Friday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 18, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Saturday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 19, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Sunday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 20, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Monday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 21, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Tuesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 22, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Wednesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 23, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Thursday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 24, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Friday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 25, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Saturday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 26, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Sunday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 27, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Monday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 28, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Tuesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 29, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Wednesday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 30, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Thursday
 	testDate = (struct SHDatetime){.year = 2018, .month = 5, .day = 31, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Friday
 	testDate = (struct SHDatetime){.year = 2018, .month = 6, .day = 1, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Saturday
 	testDate = (struct SHDatetime){.year = 2018, .month = 6, .day = 2, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Sunday
 	testDate = (struct SHDatetime){.year = 2018, .month = 6, .day = 3, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 17);
 
 	
 	//Monday
 	testDate = (struct SHDatetime){.year = 2018, .month = 6, .day = 4, .timezoneOffset = -18000};
-	status = SH_missedDays(&testDate, &testContext, &result);
+	status = SH_missedDays_WEEKLY(&testDate, &testContext, &result);
 	XCTAssertEqual(result, 18);
 
 		

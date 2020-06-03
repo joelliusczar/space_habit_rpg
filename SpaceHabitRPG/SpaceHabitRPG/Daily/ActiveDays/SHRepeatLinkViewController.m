@@ -31,52 +31,31 @@
 
 -(void)viewDidLoad {
 	[super viewDidLoad];
-	[self finishSetup];
-}
+	char *activeDaysDesc = SH_selectIntervalDescription(self.activeDays);
+	self.primaryLabel.text = @"Interval: ";
+	self.descriptionLabel.text = [NSString stringWithUTF8String:activeDaysDesc];
+	free(activeDaysDesc);
 
-
--(void)finishSetup {
-	NSAssert(self.context,@"You forgot to call setupWithContext:andObjectID:");
-	[self.context performBlock:^{
-		SHDaily *daily = (SHDaily *)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
-		SHIntervalType rateType = (SHIntervalType)daily.intervalType;
-		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-			self.primaryLabel.text = @"Interval: ";
-			SHIntervalItemFormat *intervalItem = [self.activeDays selectRateItemCollection:rateType];
-			NSString *desc = intervalItem.intervalLabelDescription;
-			self.descriptionLabel.text = desc;
-			self.rateType = rateType;
-		}];
-	}];
 }
 
 
 -(void)openNextScreen{
 	NSAssert(self.activeDays,@"You forgot to assign activeDays");
-	[self.rateSelectionViewContoller selectRateType:self.rateType];
+	[self.rateSelectionViewContoller selectRateType:self.activeDays->intervalType];
 	self.rateSelectionViewContoller.activeDays = self.activeDays;
 	__weak SHRepeatLinkViewController *weakSelf = self;
-	self.rateSelectionViewContoller.onCloseIntervalSelect = ^(SHIntervalType rateType, NSInteger intervalSize) {
+	self.rateSelectionViewContoller.onCloseIntervalSelect = ^(SHIntervalType intervalType, int32_t intervalSize) {
 		SHRepeatLinkViewController *bSelf = weakSelf;
 		if(nil == bSelf) return;
-		bSelf.interval = intervalSize;
-		bSelf.rateType = rateType;
-		NSString *desc = [bSelf.activeDays selectRateItemCollection:rateType].intervalLabelDescription;
-		bSelf.descriptionLabel.text = desc;
+		bSelf.activeDays->intervalType = intervalType;
+		SH_setCurrentIntervalSize(bSelf.activeDays, intervalType, intervalSize);
+		char *activeDaysDesc = SH_selectIntervalDescription(bSelf.activeDays);
+		bSelf.descriptionLabel.text = [NSString stringWithUTF8String:activeDaysDesc];
+		free(activeDaysDesc);
 	};
 	[self.editorContainer
 		arrangeAndPushChildVCToFront:self.rateSelectionViewContoller];
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-		// Get the new view controller using [segue destinationViewController].
-		// Pass the selected object to the new view controller.
-}
-*/
 
 @end

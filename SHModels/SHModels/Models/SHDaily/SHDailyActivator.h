@@ -6,7 +6,7 @@
 //  Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import "SHDaily.h"
+#import "SHDaily_x.h"
 #import "SHConfig.h"
 @import Foundation;
 

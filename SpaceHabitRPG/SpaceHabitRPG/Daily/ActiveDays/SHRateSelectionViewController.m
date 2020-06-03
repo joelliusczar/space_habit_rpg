@@ -31,9 +31,9 @@ const NSInteger YEARLY_SELECTION = 3;
 
 -(SHWeeklyActiveDaysViewController*)weeklyActiveDaysViewController{
 	if(nil == _weeklyActiveDaysViewController) {
-		_weeklyActiveDaysViewController = [SHWeeklyActiveDaysViewController newWithDefaultNib];
-		_weeklyActiveDaysViewController.weeklyActiveDays = self.activeDays.weeklyActiveDays;
-		_weeklyActiveDaysViewController.valueChangeDelegate = self;
+//		_weeklyActiveDaysViewController = [SHWeeklyActiveDaysViewController newWithDefaultNib];
+//		_weeklyActiveDaysViewController.weeklyActiveDays = self.activeDays.weeklyActiveDays;
+//		_weeklyActiveDaysViewController.valueChangeDelegate = self;
 	}
 	return _weeklyActiveDaysViewController;
 }
@@ -41,10 +41,10 @@ const NSInteger YEARLY_SELECTION = 3;
 
 -(SHMonthlyActiveDaysViewController*)monthlyActiveDaysViewController{
 	if(nil == _monthlyActiveDaysViewController){
-		_monthlyActiveDaysViewController = [SHMonthlyActiveDaysViewController
-			newWithListRateItemCollection:self.activeDays.monthlyActiveDays
-			inverseActiveDays:self.activeDays.monthlyActiveDaysInv];
-		_monthlyActiveDaysViewController.linkedViewController = self;
+//		_monthlyActiveDaysViewController = [SHMonthlyActiveDaysViewController
+//			newWithListRateItemCollection:self.activeDays.monthlyActiveDays
+//			inverseActiveDays:self.activeDays.monthlyActiveDaysInv];
+//		_monthlyActiveDaysViewController.linkedViewController = self;
 	}
 	return _monthlyActiveDaysViewController;
 }
@@ -52,9 +52,9 @@ const NSInteger YEARLY_SELECTION = 3;
 
 -(SHYearlyActiveDaysViewController*)yearlyActiveDaysViewController{
 	if(nil == _yearlyActiveDaysViewController){
-		_yearlyActiveDaysViewController = [SHYearlyActiveDaysViewController newWithListRateItemCollection:self.activeDays.yearlyActiveDays
-			inverseActiveDays:self.activeDays.yearlyActiveDaysInv];
-		_yearlyActiveDaysViewController.linkedViewController = self;
+//		_yearlyActiveDaysViewController = [SHYearlyActiveDaysViewController newWithListRateItemCollection:self.activeDays.yearlyActiveDays
+//			inverseActiveDays:self.activeDays.yearlyActiveDaysInv];
+//		_yearlyActiveDaysViewController.linkedViewController = self;
 	}
 	return _yearlyActiveDaysViewController;
 }
@@ -69,7 +69,7 @@ const NSInteger YEARLY_SELECTION = 3;
 		SHRateSelectionViewController *bSelf = weakSelf;
 		[bSelf rateStepEvent:stepper event:e];
 	};
-
+	self.intervalSetter.descriptionArgs = self.activeDays;
 }
 
 
@@ -88,8 +88,9 @@ const NSInteger YEARLY_SELECTION = 3;
 -(IBAction)back_touch_action:(UIButton *)sender forEvent:(UIEvent *)event{
 	(void)sender; (void)event;
 	if(self.onCloseIntervalSelect) {
-		SHIntervalItemFormat *intervalItem = [self.activeDays selectRateItemCollection:self.rateType];
-		self.onCloseIntervalSelect(self.rateType,intervalItem.intervalSize);
+		SHIntervalType intervalType = self.activeDays->intervalType;
+		int32_t intervalSize = SH_getIntervalSizeForType(self.activeDays, intervalType);
+		self.onCloseIntervalSelect(intervalType, intervalSize);
 	}
 	[self popVCFromFront];
 }
@@ -112,7 +113,7 @@ const NSInteger YEARLY_SELECTION = 3;
 
 
 -(SHViewController*)selectActiveDaysViewController:(SHIntervalType)rateType {
-	SHIntervalType useRateType = shExtractBaseRateType(rateType);
+	SHIntervalType useRateType = SH_extractBaseIntervalType(rateType);
 	switch (useRateType) {
 		case SH_DAILY_INTERVAL:
 			return nil;
@@ -128,18 +129,15 @@ const NSInteger YEARLY_SELECTION = 3;
 }
 
 
--(void)switchToActiveDaysViewController:(SHIntervalType)rateType{
-	NSAssert(self.activeDays,@"We need active days to not be nill");
-	
-	SHIntervalItemFormat *rateItem = [self.activeDays selectRateItemCollection:rateType];
-	
-	NSString *singularString = [NSString stringWithFormat:@"Interval: %@",[rateItem.class singularFormatString]];
-	NSString *pluralString = [NSString stringWithFormat:@"Interval: %@",[rateItem.class pluralFormatString]];
-	self.intervalSetter.labelSingularFormatString = singularString;
-	self.intervalSetter.labelPluralFormatString = pluralString;
-	self.intervalSetter.intervalSize = rateItem.intervalSize;
-	
-	SHViewController *selectedActiveDaysVC = [self selectActiveDaysViewController:rateType];
+-(void)switchToActiveDaysViewController:(SHIntervalType)intervalType {
+
+	char *(*descriptionBuilder)(int32_t, struct SHActiveDaysValues *) = SH_selectDescriptionBuilderFunc(intervalType);
+
+	self.intervalSetter.buildDescription = ^NSString *(int32_t intervalSize, void *descriptionArgs) {
+		struct SHActiveDaysValues *activeDays = (struct SHActiveDaysValues *)descriptionArgs;
+		return [NSString stringWithUTF8String:descriptionBuilder(intervalSize, activeDays)];
+	};
+	SHViewController *selectedActiveDaysVC = [self selectActiveDaysViewController:intervalType];
 	[self.rateActiveDaysViewController popAllChildVCs];
 	if(selectedActiveDaysVC) {
 		[self.rateActiveDaysViewController arrangeAndPushChildVCToFront:selectedActiveDaysVC];
@@ -164,7 +162,7 @@ const NSInteger YEARLY_SELECTION = 3;
 
 
 -(NSInteger)rateTypeToSegmentIndex:(SHIntervalType)rateType{
-	SHIntervalType useRateType = shExtractBaseRateType(rateType);
+	SHIntervalType useRateType = SH_extractBaseIntervalType(rateType);
 	switch (useRateType) {
 		case SH_DAILY_INTERVAL:
 			return DAILY_SELECTION;
@@ -189,17 +187,16 @@ const NSInteger YEARLY_SELECTION = 3;
 }
 
 
--(void)switchActiveDay:(NSInteger)dayIdx value:(BOOL)value{
-	(void)value;
-	[self.activeDays.weeklyActiveDays setDayOfWeek:dayIdx to:value];
+-(void)switchActiveDay:(int32_t)dayIdx value:(bool)value{
+	SH_setDayValue(self.activeDays, self.activeDays->intervalType, dayIdx, value);
 }
 
 
 -(void)rateStepEvent:(UIStepper *)stepper event:(UIEvent*)event{
 	(void)event;
 	int32_t intervalSize = (int32_t)stepper.value;
-	SHIntervalItemFormat *rateItemCollection = [self.activeDays selectRateItemCollection:self.rateType];
-	rateItemCollection.intervalSize = intervalSize;
+	SHIntervalType intervalType = self.activeDays->intervalType;
+	SH_setCurrentIntervalSize(self.activeDays, intervalType, intervalSize);
 }
 
 

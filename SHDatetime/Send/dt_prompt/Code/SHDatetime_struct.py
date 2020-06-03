@@ -9,6 +9,7 @@ from ctypes import c_char_p
 from ctypes import c_void_p
 from ctypes import c_uint64
 
+
 class SHTimeshift(Structure):
 	_fields_ = [("month",c_int),
 		("day",c_int),
@@ -36,8 +37,7 @@ class SHDatetime(Structure):
 
 
 def make_dt_copy(dt):
-	copy = SHDatetime(dt.year,dt.month,dt.day,dt.hour,
-	dt.minute,dt.second)
+	copy = SHDatetime(year = dt.year, month = dt.month, day = dt.day, hour = dt.hour, minute = dt.minute, second = dt.second)
 	copy.timezoneOffset = dt.timezoneOffset
 	copy.shifts = dt.shifts
 	copy.shiftLen = dt.shiftLen

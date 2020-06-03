@@ -44,3 +44,13 @@ char * shStrCopy(const char * const str) {
 	strcpy(copy,str);
 	return copy;
 }
+
+
+int32_t SH_bitCount(int64_t num) {
+	int32_t count = 0;
+	while(num) {
+		count += num & 1;
+		num >>= 1;
+	}
+	return count;
+}

@@ -44,7 +44,7 @@
 
 -(NSFetchedResultsController *)dailiesDataFetcher{
 	NSPredicate *filter = [NSPredicate predicateWithFormat:@"isEnabled == 1"];
-	NSFetchRequest<SHDaily*> *request = SHDaily.fetchRequest;
+	NSFetchRequest<SHDaily_x*> *request = SHDaily_x.fetchRequest;
 	request.predicate = filter;
 	request.sortDescriptors = [self buildFetchDescriptors];
 	NSFetchedResultsController *resultsController = [self.context getItemFetcher:request

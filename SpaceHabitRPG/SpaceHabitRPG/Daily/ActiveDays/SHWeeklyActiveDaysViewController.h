@@ -16,7 +16,7 @@
 
 @protocol SHWeeklyActiveDayChangesProtocol <NSObject>
 
--(void)switchActiveDay:(NSInteger)dayIdx value:(BOOL)value;
+-(void)switchActiveDay:(int32_t)dayIdx value:(bool)value;
 
 @end
 
@@ -35,7 +35,7 @@ IB_DESIGNABLE
 @property (strong,nonatomic) IBOutlet UIView *day6Switch;
 @property (assign,nonatomic) NSInteger weekStartDay;
 @property (assign,nonatomic) IBOutlet id<SHWeeklyActiveDayChangesProtocol> valueChangeDelegate;
-@property (strong,nonatomic) SHWeekIntervalItemList *weeklyActiveDays;
+//@property (strong,nonatomic) SHWeekIntervalItemList *weeklyActiveDays;
 -(void)setupCustomOptions;
 @end
 

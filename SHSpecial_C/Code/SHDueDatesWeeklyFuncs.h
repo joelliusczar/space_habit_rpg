@@ -41,6 +41,6 @@ SHErrorCode SH_isWeekActiveForDate(struct SHDatetime *useDate, struct SHDueDateW
 
 SHErrorCode SH_setUseDateToLastActive(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *context);
 
-SHErrorCode SH_missedDays(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *context, int64_t *ans);
+SHErrorCode SH_missedDays_WEEKLY(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *context, int64_t *ans);
 
 #endif /* SHDueDatesWeeklyFuncs_h */

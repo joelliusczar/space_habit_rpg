@@ -42,33 +42,6 @@
 }
 
 
-@synthesize labelSingularFormatString = _labelSingularFormatString;
--(NSString*)labelSingularFormatString {
-	return _labelSingularFormatString;
-}
-
-
--(void)setLabelSingularFormatString:(NSString *)labelSingularFormatString {
-	_labelSingularFormatString = labelSingularFormatString;
-	if(self.intervalSize == 1) {
-		[self updateLabelTextWithInterval:self.intervalSize];
-	}
-}
-
-@synthesize labelPluralFormatString = _labelPluralFormatString;
--(NSString*)labelPluralFormatString {
-	return _labelPluralFormatString;
-}
-
-
--(void)setLabelPluralFormatString:(NSString *)labelPluralFormatString {
-	_labelPluralFormatString = labelPluralFormatString;
-	if(self.intervalSize != 1) {
-		[self updateLabelTextWithInterval:self.intervalSize];
-	}
-}
-
-
 -(void)setIntervalSize:(NSInteger)intervalSize{
 	_intervalSize = intervalSize;
 	self.rateStep.value = intervalSize;
@@ -77,11 +50,9 @@
 
 
 -(void)updateLabelTextWithInterval:(NSInteger)intervalValue{
-	NSString *useFormatString = intervalValue == 1 ?
-		self.labelSingularFormatString :
-		self.labelPluralFormatString;
-	if(nil == useFormatString) return;
-	self.intervalLabel.text = [NSString stringWithFormat:useFormatString,intervalValue];
+	if(self.buildDescription) {
+		self.intervalLabel.text = self.buildDescription((int32_t)intervalValue, self.descriptionArgs);
+	}
 }
 
 
@@ -106,6 +77,13 @@
 	UIImage *decrImg = [builder drawMinus];
 	[self.rateStep setIncrementImage:incrImg forState:UIControlStateNormal];
 	[self.rateStep setDecrementImage:decrImg forState:UIControlStateNormal];
+}
+
+
+-(void)dealloc {
+	if(self.descriptionArgsCleanup) {
+		self.descriptionArgsCleanup(self.descriptionArgs);
+	}
 }
 
 

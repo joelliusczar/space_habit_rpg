@@ -22,7 +22,7 @@ typedef enum {
 struct SHDbBase;
 
 struct SHDbBase {
-	unsigned char *name;
+	char *name;
 	SHDbTypeNum typeNum;
 	bool isNull;
 	SHDbBase *nextProp;

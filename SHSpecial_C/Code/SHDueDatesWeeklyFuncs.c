@@ -615,7 +615,7 @@ SHErrorCode _missedDays(struct SHDueDateWeeklyContext *context,
 }
 
 
-SHErrorCode SH_missedDays(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *context, int64_t *ans) {
+SHErrorCode SH_missedDays_WEEKLY(struct SHDatetime *useDate, struct SHDueDateWeeklyContext *context, int64_t *ans) {
 	SHErrorCode status = SH_NO_ERROR;
 	struct SHDatetime normalizedSaveDate = *context->savedPrevDate;
 	struct SHDatetime preparedUseDate = *useDate;

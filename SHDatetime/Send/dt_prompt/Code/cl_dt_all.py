@@ -57,7 +57,7 @@ def testCTimeExhaustive(lowBound,upBound):
 				print("\ntimestamp to dt ended with error code {}\n".format(error.value))
 				print("timestamp: {}".format(ans.value))
 				return -1
-			lib.SH_dtToTimeOfDay(byref(dt),byref(ans))
+			lib.SH_dtToTimestamp(byref(dt),byref(ans))
 			if ans.value != pdt.timestamp():
 				print("\nresult does not match python timestamp {}\n".format(ans.value))
 				return -1

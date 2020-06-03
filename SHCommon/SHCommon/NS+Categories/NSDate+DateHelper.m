@@ -113,10 +113,10 @@
 
 
 static struct SHDatetime* _nsDateToShDatetime(NSDate *date, int32_t tzOffset) {
-	struct SHDatetime *dt = calloc(ALLOC_COUNT, sizeof(struct SHDatetime));
+	struct SHDatetime *dt = calloc(SH_ALLOC_COUNT, sizeof(struct SHDatetime));
 	
 	if(SH_timestampToDt(date.timeIntervalSince1970, tzOffset, dt) != SH_NO_ERROR) {
-		SH_freeSHDatetime(dt, ALLOC_COUNT);
+		SH_freeSHDatetime(dt, SH_ALLOC_COUNT);
 		@throw [NSException encounterError];
 	}
 

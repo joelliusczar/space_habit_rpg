@@ -8,6 +8,7 @@
 
 @import Foundation;
 @import SHControls;
+@import SHUtils_C;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,12 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *primaryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) SHViewController *editorContainer;
-@property (strong, nonatomic) NSManagedObjectContext *context;
-@property (strong, nonatomic) SHObjectIDWrapper *objectIDWrapper;
+@property (assign, nonatomic) struct SHSerialQueue *queue;
+
 @property (strong, nonatomic) IBOutlet UIImageView *navImageView;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
--(void)setupWithContext:(NSManagedObjectContext *)context
-	andObjectID:(SHObjectIDWrapper*)objectIDWrapper;
 -(void)openNextScreen;
 -(void)finishSetup;
 @end

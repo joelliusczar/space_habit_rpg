@@ -8,6 +8,8 @@
 
 #import "SHDailyViewController.h"
 #import "SHEditingSaverProtocol.h"
+#import "SHRepeatLinkViewController.h"
+#import "SHRemindersLinkViewController.h"
 @import UIKit;
 
 
@@ -23,10 +25,14 @@ NS_ASSUME_NONNULL_BEGIN
 ,SHImportanceSlidersDelegateProtocol
 ,UITableViewDataSource
 ,UITableViewDelegate>
-@property (strong,nonatomic) SHObjectIDWrapper *objectIDWrapper;
-@property (strong,nonatomic) SHDailyActiveDays *activeDays;
+//@property (strong,nonatomic) SHDailyActiveDays *activeDays;
+@property (strong, nonatomic) SHNoteView *note;
+@property (strong, nonatomic) SHRepeatLinkViewController *repeatLink;
+@property (strong, nonatomic) SHRemindersLinkViewController *remindersLink;
+@property (strong, nonatomic) SHImportanceSliderView *difficultySld;
+@property (strong, nonatomic) SHImportanceSliderView *urgencySld;
+@property (strong, nonatomic) SHStreakResetterView *resetter;
 @end
 
 NS_ASSUME_NONNULL_END
 
-#import "SHDailyEditController+ControlLoaders.h"

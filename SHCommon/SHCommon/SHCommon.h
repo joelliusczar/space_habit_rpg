@@ -64,3 +64,4 @@ FOUNDATION_EXPORT const unsigned char SHCommonVersionString[];
 #import "UIImage+Helper.h"
 #import "SHReflectionHelper.h"
 #import "NSCalendar+SHHelper.h"
+#import "NSString+SHHelper.h"

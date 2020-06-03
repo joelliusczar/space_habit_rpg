@@ -105,23 +105,22 @@ static SHErrorCode _addYears_SHIFT(struct SHDatetime *dt,int64_t years, SHTimeAd
 SHErrorCode SH_addYearsToDt(struct SHDatetime *dt, int64_t years, SHTimeAdjustOptions options){
 	assert(dt);
 	SHErrorCode status = SH_NO_ERROR;
-	if(years == 0) goto success;
+	if(years == 0) goto fnExit;
 	if((options & (SH_TIME_ADJUST_SHIFT_BKD | SH_TIME_ADJUST_SHIFT_FWD)) || options == SH_TIME_ADJUST_NO_OPTION){
 			return _addYears_SHIFT(dt, years, options);
 	}
 	if(options & SH_TIME_ADJUST_SIMPLE){
 		double timestamp;
 		if((status = SH_dtToTimestamp(dt, &timestamp)) != SH_NO_ERROR) {
-			goto cleanup;
+			goto fnExit;
 		}
 		timestamp += years * SH_SECONDS_PER_YEAR;
 		if((status = SH_timestampToDt(timestamp, dt->timezoneOffset, dt)) != SH_NO_ERROR) {
-			goto cleanup;
+			goto fnExit;
 		}
 		
 	}
 	status = SH_ILLEGAL_INPUTS;
-	success:
-	cleanup:
+	fnExit:
 		return status;
 }
