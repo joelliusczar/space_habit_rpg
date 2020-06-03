@@ -7,6 +7,7 @@
 //
 
 #import "SHWeeklyActiveDaysViewController.h"
+#import "AppDelegate.h"
 @import SHCommon;
 @import SHControls;
 
@@ -30,21 +31,28 @@
 		self.day6Switch
 	];
 	
-//	NSArray<NSString *> *dayKeys = self.weeklyActiveDays.weekKeysBasedOnWeekStart;
-//
-//	__weak SHWeeklyActiveDaysViewController *weakSelf = self;
-//	for(int32_t i = 0; i < SH_DAYS_IN_WEEK; i++){
-//		[self pushChildVC:self.activeDaySwitches[i] toViewOfParent:self.dayOptionViews[i]];
-//		self.activeDaySwitches[i].dayLabel.text = [SHWeekIntervalItemList weekDayKeyToFullName:dayKeys[i]];
-//
-//		self.activeDaySwitches[i].onChange = ^void (BOOL newValue, SHSwitch *sender) {
-//			SHWeeklyActiveDaysViewController *bSelf = weakSelf;
-//			if(nil == bSelf) return;
-//			[bSelf dayChange:newValue sender:sender];
-//		};
-//		int32_t dayIdx = (i + self.weekStartDay) % 7;
-//		self.activeDaySwitches[dayIdx].isOn = [self.weeklyActiveDays intervalPointAtIndex: dayIdx]->isDayActive;
-//	}
+	AppDelegate *appDel = (AppDelegate *)UIApplication.sharedApplication.delegate;
+	char *weekdayNames[SH_WEEKLEN];
+	memcpy(weekdayNames, SH_WEEKDAYS_FULLNAMES, sizeof(weekdayNames));
+	int32_t weekdayOffset = 0;
+	if(appDel.config.getWeekStartOffset) {
+		weekdayOffset = appDel.config.getWeekStartOffset();
+	}
+	SH_rotateStrArray(weekdayNames, SH_WEEKLEN, weekdayOffset);
+
+	__weak SHWeeklyActiveDaysViewController *weakSelf = self;
+	for(int32_t i = 0; i < SH_DAYS_IN_WEEK; i++){
+		[self pushChildVC:self.activeDaySwitches[i] toViewOfParent:self.dayOptionViews[i]];
+		self.activeDaySwitches[i].dayLabel.text = [NSString stringWithUTF8String:weekdayNames[i]];
+
+		self.activeDaySwitches[i].onChange = ^void (BOOL newValue, SHSwitch *sender) {
+			SHWeeklyActiveDaysViewController *bSelf = weakSelf;
+			if(nil == bSelf) return;
+			[bSelf dayChange:newValue sender:sender];
+		};
+		int32_t dayIdx = (i + weekdayOffset) % SH_WEEKLEN;
+		self.activeDaySwitches[dayIdx].isOn = SH_getDayValue(self.activeDays, dayIdx, SH_WEEKLY_INTERVAL) ? YES : NO;
+	}
 	
 }
 

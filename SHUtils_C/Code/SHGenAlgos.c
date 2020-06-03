@@ -54,3 +54,28 @@ int32_t SH_bitCount(int64_t num) {
 	}
 	return count;
 }
+
+
+void SH_swapStrs(char **A, char **B) {
+	char *tmp = *A;
+	*A = *B;
+	*B = tmp;
+}
+
+
+void SH_reverseStrArr(char **arr, uint64_t start, uint64_t end) {
+	uint64_t mid = ((end - start) / 2) + start;
+	for(uint64_t idx = start; idx < mid; idx++) {
+		SH_swapStrs(arr[idx], arr[end]);
+		end--;
+	}
+}
+
+
+void SH_rotateStrArray(char **arr, uint64_t len, uint64_t offset) {
+	if(0 == offset || offset > len) return;
+	char ** copy = malloc(sizeof(char*) * len);
+	SH_reverseStrArr(arr, 0, len - 1);
+	SH_reverseStrArr(arr, 0, offset - 1);
+	SH_reverseStrArr(arr, offset, len - 1);
+}

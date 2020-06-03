@@ -101,6 +101,33 @@ void SH_setDayValue(struct SHActiveDaysValues *activeDays, int32_t idx,
 }
 
 
+bool SH_getDayValue(struct SHActiveDaysValues *activeDays, int32_t idx,
+	SHIntervalType intervalType)
+{
+	
+	switch (intervalType) {
+		case SH_DAILY_INTERVAL: return true;
+		case SH_WEEKLY_INTERVAL:
+		{
+			int32_t bitMask = 1 << idx;
+			return activeDays->weekIntervalHash & bitMask > 0;
+		}
+		case SH_MONTHLY_INTERVAL: return false;
+		case SH_YEARLY_INTERVAL: return false;
+		case SH_DAILY_INTERVAL_INVERSE: return false;
+		case SH_WEEKLY_INTERVAL_INVERSE:
+		{
+			int32_t bitMask = 1 << idx;
+			return activeDays->weekSkipIntervalHash & bitMask > 0;
+		}
+		case SH_MONTHLY_INTERVAL_INVERSE: return false;
+		case SH_YEARLY_INTERVAL_INVERSE: return false;
+		case SH_UNDETERMINED_INTERVAL: return false;
+	}
+	return false;
+}
+
+
 void SH_freeActiveDaysValues(struct SHActiveDaysValues *activeDays) {
 	free(activeDays->yearIntervalHash);
 	free(activeDays->yearSkipIntervalHash);

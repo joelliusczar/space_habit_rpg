@@ -38,5 +38,7 @@ void SH_setCurrentIntervalSize(struct SHActiveDaysValues *activeDays, SHInterval
 void SH_freeActiveDaysValues(struct SHActiveDaysValues *activeDays);
 void SH_setDayValue(struct SHActiveDaysValues *activeDays, int32_t idx,
 	SHIntervalType intervalType, bool value);
+bool SH_getDayValue(struct SHActiveDaysValues *activeDays, int32_t idx,
+	SHIntervalType intervalType);
 
 #endif /* SHActiveDaysValues_h */

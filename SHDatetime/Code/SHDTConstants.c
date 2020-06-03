@@ -41,4 +41,12 @@ const int32_t SH_LEAP_COUNT_BETWEEN_1972_2000 = 7;
 const int32_t SH_SPAN_1970_2000 = 946684800;
 const int64_t SH_SPAN_1970_1899 = -2208988800;
 const char * const SH_WEEKDAYS[SH_WEEKLEN] = {"SUN","MON","TUE","WED","THR","FRI","SAT"};
+const char * const SH_WEEKDAYS_FULLNAMES[SH_WEEKLEN] = {
+	"Sunday",
+	"Monday",
+	"Tuesday",
+	"Wednesday",
+	"Thursday",
+	"Friday",
+	"Saturday"};
 

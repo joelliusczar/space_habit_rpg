@@ -31,9 +31,9 @@ const NSInteger YEARLY_SELECTION = 3;
 
 -(SHWeeklyActiveDaysViewController*)weeklyActiveDaysViewController{
 	if(nil == _weeklyActiveDaysViewController) {
-//		_weeklyActiveDaysViewController = [SHWeeklyActiveDaysViewController newWithDefaultNib];
-//		_weeklyActiveDaysViewController.weeklyActiveDays = self.activeDays.weeklyActiveDays;
-//		_weeklyActiveDaysViewController.valueChangeDelegate = self;
+		_weeklyActiveDaysViewController = [SHWeeklyActiveDaysViewController newWithDefaultNib];
+		_weeklyActiveDaysViewController.activeDays = self.activeDays;
+		_weeklyActiveDaysViewController.valueChangeDelegate = self;
 	}
 	return _weeklyActiveDaysViewController;
 }
@@ -134,6 +134,7 @@ const NSInteger YEARLY_SELECTION = 3;
 	char *(*descriptionBuilder)(int32_t, struct SHActiveDaysValues *) = SH_selectDescriptionBuilderFunc(intervalType);
 
 	self.intervalSetter.buildDescription = ^NSString *(int32_t intervalSize, void *descriptionArgs) {
+		if(NULL == descriptionBuilder) return nil;
 		struct SHActiveDaysValues *activeDays = (struct SHActiveDaysValues *)descriptionArgs;
 		return [NSString stringWithUTF8String:descriptionBuilder(intervalSize, activeDays)];
 	};
@@ -187,8 +188,9 @@ const NSInteger YEARLY_SELECTION = 3;
 }
 
 
--(void)switchActiveDay:(int32_t)dayIdx value:(bool)value{
-	SH_setDayValue(self.activeDays, self.activeDays->intervalType, dayIdx, value);
+-(void)switchActiveDay:(int32_t)dayIdx value:(BOOL)value{
+	bool cValue = value ? true : false;
+	SH_setDayValue(self.activeDays, self.activeDays->intervalType, dayIdx, cValue);
 }
 
 

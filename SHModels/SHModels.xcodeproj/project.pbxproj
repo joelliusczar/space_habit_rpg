@@ -446,8 +446,6 @@
 				27075D5822570BC500AD13AA /* DTOs */,
 				27CA86402264207A00AE8FDB /* Models */,
 				275EB497226A668B00012784 /* Model.xcdatamodeld */,
-				2747C3BC2043B67200FB5669 /* SHIntervalTypeHelper.h */,
-				2747C3BB2043B67200FB5669 /* SHIntervalTypeHelper.m */,
 				2747C3A92043B51300FB5669 /* SHDueDateItemProtocol.h */,
 				2747C3C52043B83C00FB5669 /* SHStoryItemProtocol.h */,
 				2747C3CD2043BACB00FB5669 /* SHSectorInfoDictionary.h */,
@@ -525,6 +523,8 @@
 				275534E724831C7900D650AB /* SHHabitBase.c */,
 				275534F3248441C700D650AB /* SHActiveDaysValues.h */,
 				275534F4248441C700D650AB /* SHActiveDaysValues.c */,
+				2747C3BC2043B67200FB5669 /* SHIntervalTypeHelper.h */,
+				2747C3BB2043B67200FB5669 /* SHIntervalTypeHelper.m */,
 				275534F7248450BA00D650AB /* SHActiveDaysDescriptions.h */,
 				275534F8248450BA00D650AB /* SHActiveDaysDescriptions.c */,
 			);
