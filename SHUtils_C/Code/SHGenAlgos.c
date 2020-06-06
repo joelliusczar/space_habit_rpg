@@ -7,6 +7,7 @@
 //
 
 #include "SHGenAlgos.h"
+#include "SHUtilConstants.h"
 #include <math.h>
 #include <string.h>
 #include <stdlib.h>
@@ -38,9 +39,9 @@ double blockoptimization kahanSum(const double* const nums, int64_t len){
 }
 
 
-char * shStrCopy(const char * const str) {
-	uint64_t len = strlen(str) + 1;
-	char *copy = malloc(sizeof(char) * len);
+char * SH_constStrCopy(const char * const str) {
+	uint64_t len = strlen(str);
+	char *copy = malloc(sizeof(char) * (len + SH_NULL_CHAR_OFFSET)); //plus one for \0 char
 	strcpy(copy,str);
 	return copy;
 }
@@ -66,7 +67,7 @@ void SH_swapStrs(char **A, char **B) {
 void SH_reverseStrArr(char **arr, uint64_t start, uint64_t end) {
 	uint64_t mid = ((end - start) / 2) + start;
 	for(uint64_t idx = start; idx < mid; idx++) {
-		SH_swapStrs(arr[idx], arr[end]);
+		SH_swapStrs(&arr[idx], &arr[end]);
 		end--;
 	}
 }
@@ -74,7 +75,6 @@ void SH_reverseStrArr(char **arr, uint64_t start, uint64_t end) {
 
 void SH_rotateStrArray(char **arr, uint64_t len, uint64_t offset) {
 	if(0 == offset || offset > len) return;
-	char ** copy = malloc(sizeof(char*) * len);
 	SH_reverseStrArr(arr, 0, len - 1);
 	SH_reverseStrArr(arr, 0, offset - 1);
 	SH_reverseStrArr(arr, offset, len - 1);

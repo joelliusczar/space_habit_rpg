@@ -139,6 +139,7 @@
 
 -(IBAction)nameBox_editingChange_action:(UITextField *)sender forEvent:(UIEvent *)event {
 	(void)event;
+	if(self.habit->name) free(self.habit->name);
 	self.habit->name = [sender.text SH_unsafeStrCopy];
 }
 

@@ -19,6 +19,15 @@
 @implementation SHViewController
 
 
+-(void)commonLoadView {
+	NSBundle *bundle = [NSBundle bundleForClass:self.class];
+	UINib *nib = [UINib nibWithNibName:NSStringFromClass(self.class) bundle:bundle];
+	NSArray *results = [nib instantiateWithOwner:self options:nil];
+	if(results.count > 0) {
+		self.view = results[0];
+	}
+}
+
 -(void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	SHProxyTypeJunction *junction = [SHViewController.tree findMatch: self.class];

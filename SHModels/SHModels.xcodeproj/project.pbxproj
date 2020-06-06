@@ -71,6 +71,10 @@
 		275534F6248441C700D650AB /* SHActiveDaysValues.c in Sources */ = {isa = PBXBuildFile; fileRef = 275534F4248441C700D650AB /* SHActiveDaysValues.c */; };
 		275534F9248450BA00D650AB /* SHActiveDaysDescriptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 275534F7248450BA00D650AB /* SHActiveDaysDescriptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		275534FA248450BA00D650AB /* SHActiveDaysDescriptions.c in Sources */ = {isa = PBXBuildFile; fileRef = 275534F8248450BA00D650AB /* SHActiveDaysDescriptions.c */; };
+		27553505248B2EFD00D650AB /* SHTableNames.h in Headers */ = {isa = PBXBuildFile; fileRef = 27553503248B2EFC00D650AB /* SHTableNames.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27553506248B2EFD00D650AB /* SHTableNames.c in Sources */ = {isa = PBXBuildFile; fileRef = 27553504248B2EFC00D650AB /* SHTableNames.c */; };
+		27553509248B8DF800D650AB /* SHActiveDaysConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27553507248B8DF700D650AB /* SHActiveDaysConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2755350A248B8DF800D650AB /* SHActiveDaysConstants.c in Sources */ = {isa = PBXBuildFile; fileRef = 27553508248B8DF700D650AB /* SHActiveDaysConstants.c */; };
 		275D9925238611D800522A80 /* SHSectorArtifact.h in Headers */ = {isa = PBXBuildFile; fileRef = 275D9923238611D800522A80 /* SHSectorArtifact.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		275D9926238611D800522A80 /* SHSectorArtifact.m in Sources */ = {isa = PBXBuildFile; fileRef = 275D9924238611D800522A80 /* SHSectorArtifact.m */; };
 		275EB495226A613200012784 /* SHBundleKey.h in Headers */ = {isa = PBXBuildFile; fileRef = 275EB493226A613100012784 /* SHBundleKey.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -281,6 +285,10 @@
 		275534F4248441C700D650AB /* SHActiveDaysValues.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHActiveDaysValues.c; sourceTree = "<group>"; };
 		275534F7248450BA00D650AB /* SHActiveDaysDescriptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHActiveDaysDescriptions.h; sourceTree = "<group>"; };
 		275534F8248450BA00D650AB /* SHActiveDaysDescriptions.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHActiveDaysDescriptions.c; sourceTree = "<group>"; };
+		27553503248B2EFC00D650AB /* SHTableNames.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTableNames.h; sourceTree = "<group>"; };
+		27553504248B2EFC00D650AB /* SHTableNames.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHTableNames.c; sourceTree = "<group>"; };
+		27553507248B8DF700D650AB /* SHActiveDaysConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHActiveDaysConstants.h; sourceTree = "<group>"; };
+		27553508248B8DF700D650AB /* SHActiveDaysConstants.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHActiveDaysConstants.c; sourceTree = "<group>"; };
 		275D9923238611D800522A80 /* SHSectorArtifact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSectorArtifact.h; sourceTree = "<group>"; };
 		275D9924238611D800522A80 /* SHSectorArtifact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSectorArtifact.m; sourceTree = "<group>"; };
 		275EB493226A613100012784 /* SHBundleKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHBundleKey.h; sourceTree = "<group>"; };
@@ -510,6 +518,8 @@
 				275534CC247F5EB400D650AB /* SHDBDueDateConstants.h */,
 				275534EF2483F78800D650AB /* SHCommonDbCalls.h */,
 				275534F02483F78800D650AB /* SHCommonDbCalls.c */,
+				27553503248B2EFC00D650AB /* SHTableNames.h */,
+				27553504248B2EFC00D650AB /* SHTableNames.c */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -527,6 +537,8 @@
 				2747C3BB2043B67200FB5669 /* SHIntervalTypeHelper.m */,
 				275534F7248450BA00D650AB /* SHActiveDaysDescriptions.h */,
 				275534F8248450BA00D650AB /* SHActiveDaysDescriptions.c */,
+				27553507248B8DF700D650AB /* SHActiveDaysConstants.h */,
+				27553508248B8DF700D650AB /* SHActiveDaysConstants.c */,
 			);
 			path = Habits;
 			sourceTree = "<group>";
@@ -812,6 +824,8 @@
 				275534F5248441C700D650AB /* SHActiveDaysValues.h in Headers */,
 				275534F9248450BA00D650AB /* SHActiveDaysDescriptions.h in Headers */,
 				275534AA247614C500D650AB /* SHDaily_dbCalls.h in Headers */,
+				27553505248B2EFD00D650AB /* SHTableNames.h in Headers */,
+				27553509248B8DF800D650AB /* SHActiveDaysConstants.h in Headers */,
 				275534A9247614C500D650AB /* SHHabitBase.h in Headers */,
 				27E200202426EDB400B0232E /* SHDailyEvent.h in Headers */,
 				27D849FA2443C85E0081DFE6 /* SHDailyNextWeeklyDueDateCalculator.h in Headers */,
@@ -1064,6 +1078,7 @@
 				2719D50B2319C61700765F54 /* SHMonster_Medium.m in Sources */,
 				275534F22483F78800D650AB /* SHCommonDbCalls.c in Sources */,
 				27CA869A2264207A00AE8FDB /* SHSuffix.m in Sources */,
+				2755350A248B8DF800D650AB /* SHActiveDaysConstants.c in Sources */,
 				275534E624830E7800D650AB /* SHHabit_dbCalls.c in Sources */,
 				275534E824831C7A00D650AB /* SHHabitBase.c in Sources */,
 				2769C0B4227FD7C900217480 /* SHMonthlyYearlyRateItem.m in Sources */,
@@ -1081,6 +1096,7 @@
 				2747C4662046320E00FB5669 /* SHModelConstants.m in Sources */,
 				275534FA248450BA00D650AB /* SHActiveDaysDescriptions.c in Sources */,
 				275534CB247F4F3400D650AB /* SHDueDateCalculatorInitializer.c in Sources */,
+				27553506248B2EFD00D650AB /* SHTableNames.c in Sources */,
 				27FF023B231A23BB00108320 /* SHSector_Medium.m in Sources */,
 				27300A05224AE713006E419C /* SHDaily_Medium.m in Sources */,
 				275534F6248441C700D650AB /* SHActiveDaysValues.c in Sources */,

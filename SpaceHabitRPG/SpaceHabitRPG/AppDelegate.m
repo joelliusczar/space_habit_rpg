@@ -83,7 +83,7 @@ static void* _openDb(void *args) {
 static SHErrorCode _setupDb(void* args, struct SHQueueStore *store) {
 	(void)args;
 	struct SHQueueStoreItem *item = (struct SHQueueStoreItem *)SH_getUserItemFromStore(store);
-
+	printf("setup db?");
 	SHErrorCode status = SH_setupDb(item->db);
 	
 	
@@ -102,6 +102,7 @@ static SHErrorCode _setupDb(void* args, struct SHQueueStore *store) {
 	*initArgs = (struct _initialArgs){
 		.config = &self->_config,
 	};
+	self.dateProvider = [[SHDefaultDateProvider alloc] init];
 	self.dbQueue = SH_initSerialQueue(_openDb, SH_FreeQueueStoreItemVoid, initArgs, free);
 	SHErrorCode status = SH_NO_ERROR;
 	if((status = SH_startSerialQueueLoop(self.dbQueue))

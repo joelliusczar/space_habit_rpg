@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSString *nameStr;
 @property (assign, nonatomic) int64_t pk;
 @property (assign, nonatomic) const char * tableName;
+@property (assign, nonatomic) BOOL isAdded;
 -(void)saveEdit;
 -(void)deleteModel;
 -(void)setupWithQueue:(struct SHSerialQueue*)queue

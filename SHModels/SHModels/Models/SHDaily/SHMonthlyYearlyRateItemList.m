@@ -75,7 +75,7 @@ static SHMonthlyYearlyRateItem* _Nonnull mapDictToMonthlyYearly(SHItervalItemDic
 }
 
 
-static NSDictionary* mapMonthlyYearlyToDict(SHMonthlyYearlyRateItem *item,NSUInteger idx){
+static NSDictionary* mapMonthlyYearlyToDict(SHMonthlyYearlyRateItem *item, NSUInteger idx){
 	(void)idx;
 	SHItervalItemDict *dict = @{
 		SH_MAJOR_ORDINAL : @(item.majorOrdinal),

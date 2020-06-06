@@ -8,7 +8,11 @@
 
 #include "SHSqlite3Extensions.h"
 #include "SHDatetimeFuncs.h"
+#include <SHUtils_C/SHGenAlgos.h>
+#include <SHUtils_C/SHUtilConstants.h>
 #include <stdlib.h>
+#include <string.h>
+
 
 int32_t SH_sqlite3_bind_optional_double(sqlite3_stmt* stmt, int32_t paramNum, double *value) {
 	int32_t sqlStatus = SQLITE_OK;
@@ -26,8 +30,12 @@ int32_t SH_sqlite3_bind_optional_double(sqlite3_stmt* stmt, int32_t paramNum, do
 SHErrorCode SH_sqlite3_copy_column_text(sqlite3_stmt *stmt, int32_t col, char **value) {
 	const char *tmp = (char *)sqlite3_column_text(stmt, col);
 	int32_t len = sqlite3_column_bytes(stmt, col);
-	*value = malloc(sizeof(char) * len);
-	**value = *tmp;
+	if(NULL == tmp) {
+		*value = SH_constStrCopy("");
+		return SH_NO_ERROR;
+	}
+	*value = malloc(sizeof(char) * (len + SH_NULL_CHAR_OFFSET));
+	strcpy(*value, tmp);
 	if(NULL == *value && len > 0) {
 		return SH_ALLOC;
 	}

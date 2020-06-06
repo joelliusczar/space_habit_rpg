@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHViewController : UIViewController
 @property (weak, nonatomic) SHViewController *prevViewController;
+-(void)commonLoadView;
 -(void)pushChildVC:(SHViewController*)child toViewOfParent:(UIView*)view;
 //if you want UIViewContoller and its view to be front, call this
 -(void)arrangeAndPushChildVCToFront:(SHViewController *)child;

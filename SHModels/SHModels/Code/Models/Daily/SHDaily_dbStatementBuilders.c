@@ -9,9 +9,9 @@
 #include "SHDaily_dbStatementBuilders.h"
 
 
-SHErrorCode SH_buildStatement_insertDailyStmt(sqlite3_stmt *stmt, sqlite3 *db) {
+SHErrorCode SH_buildStatement_insertDailyStmt(sqlite3_stmt **stmt, sqlite3 *db) {
 	int32_t sqlStatus = SQLITE_OK;
-	char *sql = "INSERT INTO Dailies VALUES("
+	char *sql = "INSERT INTO Dailies ("
 	"name,"
 	"lastUpdated,"
 	"activeFromDateTime,"
@@ -50,7 +50,7 @@ SHErrorCode SH_buildStatement_insertDailyStmt(sqlite3_stmt *stmt, sqlite3 *db) {
 	"?14,?15,?16,?17,?18,?19,?20,?21,?22, ?23, ?24, ?25, ?26, "
 	"?27, ?28, ?29, ?30, ?31, ?32, ?33, ?34)";
 	
-	sqlStatus = sqlite3_prepare_v2(db, sql, -1, &stmt, 0);
+	sqlStatus = sqlite3_prepare_v2(db, sql, -1, stmt, 0);
 	if(sqlStatus != SQLITE_OK) {
 		char errMsg[60];
 		sprintf(errMsg,"sqlite3 Error: %d \nThere was an error preparing insert statement",sqlStatus);
@@ -61,10 +61,10 @@ SHErrorCode SH_buildStatement_insertDailyStmt(sqlite3_stmt *stmt, sqlite3 *db) {
 }
 
 
-SHErrorCode SH_buildStatement_updateDailyStmt(sqlite3_stmt *stmt, sqlite3 *db) {
+SHErrorCode SH_buildStatement_updateDailyStmt(sqlite3_stmt **stmt, sqlite3 *db) {
 	int32_t sqlStatus = SQLITE_OK;
 	char *sql = "UPDATE Dailies "
-	"SET name  = ?1"
+	"SET name = ?1"
 	"lastUpdated = ?2,"
 	"activeFromDateTime = ?3,"
 	"activeToDateTime = ?4,"
@@ -100,7 +100,7 @@ SHErrorCode SH_buildStatement_updateDailyStmt(sqlite3_stmt *stmt, sqlite3 *db) {
 	"yearSkipIntervalSize = ?34"
 	"WHERE pk = ?35";
 	
-	sqlStatus = sqlite3_prepare_v2(db, sql, -1, &stmt, 0);
+	sqlStatus = sqlite3_prepare_v2(db, sql, -1, stmt, 0);
 	if(sqlStatus != SQLITE_OK) {
 		char errMsg[60];
 		sprintf(errMsg,"sqlite3 Error: %d \nThere was an error preparing insert statement",sqlStatus);
@@ -111,47 +111,48 @@ SHErrorCode SH_buildStatement_updateDailyStmt(sqlite3_stmt *stmt, sqlite3 *db) {
 }
 
 
-SHErrorCode SH_buildStatement_fetchSingleDaily(sqlite3_stmt *stmt, sqlite3 *db) {
+SHErrorCode SH_buildStatement_fetchSingleDaily(sqlite3_stmt **stmt, sqlite3 *db) {
 	int32_t sqlStatus = SQLITE_OK;
 	char *sql = "SELECT "
-	"name,"
-	"lastUpdated,"
-	"activeFromDateTime,"
-	"activeToDateTime,"
-	"lastActivationDateTime,"
-	"maxStreak,"
-	"activeFromHasPriority,"
-	"isEnabled,"
-	"lastUpdateHasPriority,"
-	"weekIntervalHash,"
-	"note,"
-	"dailyLvl,"
-	"dailyXp,"
-	"customUseOrder,"
-	"dayStartTime,"
-	"difficulty,"
-	"urgency,"
-	"intervalType,"
-	"dayIntevalSize,"
-	"streakLength,"
-	"tzOffsetLastActivationDateTime,"
-	"tzOffsetLastUpdateDateTime,"
-	"weekIntervalSize,"
-	"monthIntervalHash,"
-	"monthIntervalSize,"
-	"yearIntervalHash,"
-	"yearIntervalSize"
-	"daySkipIntevalSize,"
-	"weekSkipIntervalHash,"
-	"weekSkipIntervalSize,"
-	"monthSkipIntervalHash,"
-	"monthSkipIntervalSize,"
-	"yearSkipIntervalHash,"
-	"yearSkipIntervalSize"
-	"FROM Dailies"
-	"WHERE pk = ?0";
+	"pk, "
+	"name, "
+	"lastUpdated, "
+	"activeFromDateTime, "
+	"activeToDateTime, "
+	"lastActivationDateTime, "
+	"maxStreak, "
+	"activeFromHasPriority, "
+	"isEnabled, "
+	"lastUpdateHasPriority, "
+	"weekIntervalHash, "
+	"note, "
+	"dailyLvl, "
+	"dailyXp, "
+	"customUseOrder, "
+	"dayStartTime, "
+	"difficulty, "
+	"urgency, "
+	"intervalType, "
+	"dayIntevalSize, "
+	"streakLength, "
+	"tzOffsetLastActivationDateTime, "
+	"tzOffsetLastUpdateDateTime, "
+	"weekIntervalSize, "
+	"monthIntervalHash, "
+	"monthIntervalSize, "
+	"yearIntervalHash, "
+	"yearIntervalSize, "
+	"daySkipIntevalSize, "
+	"weekSkipIntervalHash, "
+	"weekSkipIntervalSize, "
+	"monthSkipIntervalHash, "
+	"monthSkipIntervalSize, "
+	"yearSkipIntervalHash, "
+	"yearSkipIntervalSize "
+	"FROM Dailies "
+	"WHERE pk = ?1 ";
 	
-	sqlStatus = sqlite3_prepare_v2(db, sql, -1, &stmt, 0);
+	sqlStatus = sqlite3_prepare_v2(db, sql, -1, stmt, 0);
 	if(sqlStatus != SQLITE_OK) {
 		char errMsg[60];
 		sprintf(errMsg,"sqlite3 Error: %d \nThere was an error preparing select statement",sqlStatus);

@@ -14,6 +14,6 @@
 #include <stdio.h>
 #include <sqlite3.h>
 
-SHErrorCode SH_insertHabit(sqlite3 *db, struct SHHabitBase const * habit, const char* tableName, int64_t *insertedPk);
+SHErrorCode SH_insertHabit_Daily(sqlite3 *db, struct SHHabitBase const * habit, int64_t *insertedPk);
 
 #endif /* SHHabit_dbCalls_h */

@@ -11,6 +11,7 @@
 
 
 void SH_freeHabitBase(struct SHHabitBase *habit) {
-	free(habit->name);
+	if(NULL == habit) return;
+	if(habit->name) free(habit->name);
 	free(habit);
 }

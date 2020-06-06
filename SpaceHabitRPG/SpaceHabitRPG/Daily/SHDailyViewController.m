@@ -32,6 +32,11 @@
 }
 
 
+-(SHErrorCode (*)(sqlite3 *, struct SHHabitBase const *, int64_t *))insertHabit {
+	return SH_insertHabit_Daily;
+}
+
+
 -(void)viewDidLoad {
 	[super viewDidLoad];
 	self.addHabitBtnLbl.text = @"Add New Daily";

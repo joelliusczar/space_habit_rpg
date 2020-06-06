@@ -30,6 +30,7 @@
 @synthesize controlsTbl = _controlsTbl;
 @synthesize pk = _pk;
 @synthesize tableName = _tableName;
+@synthesize isAdded = _isAdded;
 
 
 -(UITextField *)nameBox {
@@ -48,13 +49,25 @@
 static SHErrorCode _fetchDaily(void *args, struct SHQueueStore *store) {
 	SHErrorCode status = SH_NO_ERROR;
 	SHDailyEditController *editController = (__bridge SHDailyEditController *)args;
+	[NSOperationQueue.mainQueue addOperationWithBlock:^{
+		[editController showLoadingDisplay:YES];
+	}];
 	struct SHQueueStoreItem *storeItem = (struct SHQueueStoreItem *)SH_getUserItemFromStore(store);
-	if((status = SH_fetchSingleDaily(storeItem->db, editController.pk, editController.daily) ) != SH_NO_ERROR) { ; }
+	if((status = SH_fetchSingleDaily(storeItem->db, editController.pk, editController.daily) ) != SH_NO_ERROR) {
+		return status;
+	}
 	struct SHDaily *daily = editController.daily;
 	[NSOperationQueue.mainQueue addOperationWithBlock:^{
+		[editController setupEditControls];
+		[editController showLoadingDisplay: NO];
+		editController.editorContainerController.itemNameInput.text = [NSString stringWithUTF8String:daily->base.name];
+		editController.repeatLink.activeDays = &(editController.daily->activeDays);
 		editController.note.noteBox.text = [NSString stringWithUTF8String:daily->note];
 		[editController.difficultySld updateImportanceSlider:daily->difficulty];
 		[editController.urgencySld updateImportanceSlider:daily->urgency];
+		editController.resetter.streakCountLbl.hidden = editController.isAdded;
+		editController.resetter.streakResetBtn.hidden = editController.isAdded;
+		editController.resetter.streakCountLbl.text = [NSString stringWithFormat:@"Streak %d",daily->streakLength];
 	}];
 	return status;
 }
@@ -70,6 +83,8 @@ static void _dailyCleanup(void *arg) {
 	SHErrorCode status = SH_NO_ERROR;
 	self.pk = pk;
 	self.queue = queue;
+	//dealloc happens in the dealloc method for SHEditNavigationController
+	//where it frees the habit property which we are assigning this daily to
 	self.daily = malloc(sizeof(struct SHDaily));
 	self.editorContainerController.habit = (struct SHHabitBase *)self.daily;
 	self.editorContainerController.habitCleanup = _dailyCleanup;
@@ -87,11 +102,7 @@ static void _dailyCleanup(void *arg) {
 -(void)viewDidLoad {
 	[super viewDidLoad];
 	self.controlsTbl.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-
-	[self setupEditControls];
-	[self afterloadFinishSetup];
 	
-	self.controlsTbl.hidden = YES;
 	//it is important that this table delegate stuff happens after we check
 	//for the existence of the model, otherwise table events will trigger
 	//at inconvienient times, and either invalid data or null pointer exceptions
@@ -100,6 +111,10 @@ static void _dailyCleanup(void *arg) {
 	self.controlsTbl.delegate = self;
 }
 
+
+-(void)showLoadingDisplay:(BOOL)isLoading {
+	self.controlsTbl.hidden = isLoading;
+}
 
 -(void)setupEditControls {
 	//I want the editControls stuff to happen here because when it gets
@@ -160,6 +175,7 @@ static SHErrorCode _updateDaily(void *args, struct SHQueueStore *store) {
 	return status;
 }
 
+
 -(void)saveEdit{
 	SHErrorCode status = SH_NO_ERROR;
 	if((status = SH_addOp(self.queue, _updateDaily, (__bridge void*)self, NULL)) != SH_NO_ERROR) {}
@@ -181,22 +197,9 @@ static SHErrorCode _deleteDaily(void *args, struct SHQueueStore *store) {
 }
 
 
--(void)afterloadFinishSetup{
-//	if(self.objectIDWrapper.objectID){
-//		[self.context performBlock:^{
-//			SHDaily *daily = (SHDaily*)[self.context getExistingOrNewEntityWithObjectID:self.objectIDWrapper];
-//			NSString *dailyName = daily.dailyName;
-//			[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-//				self.nameBox.text = dailyName;
-//
-//			}];
-//		}];
-//	}
-}
-
-
 -(void)textDidChange:(SHNoteView *)sender{
 	NSString *note = sender.noteBox.text;
+	if(self.daily->note) free(self.daily->note);
 	self.daily->note = [note SH_unsafeStrCopy];
 }
 
@@ -218,46 +221,21 @@ static SHErrorCode _deleteDaily(void *args, struct SHQueueStore *store) {
 	//NSAssert(self.activeDays,@"Active days shouldn't be nil");
 	NSMutableArray<SHViewController *> *keep = [NSMutableArray array];
 	
-//	NSManagedObjectContext *context = self.context;
-//	SHObjectIDWrapper *objectIDWrapper = self.objectIDWrapper;
-//	//SHDailyActiveDays *activeDays = self.activeDays;
-//	__block SHIntervalType rateType = SH_WEEKLY_INTERVAL;
-//	__block NSString *noteText = @"";
-//	__block int32_t difficulty = 3;
-//	__block int32_t urgency = 3;
-//	__block BOOL newlyInserted = YES;
-//	__block int32_t streakLength = 0;
-//	[context performBlockAndWait:^{
-//		SHDaily_x *daily = (SHDaily_x*)[context getExistingOrNewEntityWithObjectID:objectIDWrapper];
-//		rateType = daily.intervalType;
-//		noteText = daily.note.length > 0 ? daily.note : @"";
-//		difficulty = daily.difficulty;
-//		urgency = daily.urgency;
-//		newlyInserted = daily.inserted;
-//		streakLength = daily.streakLength;
-//	}];
-//
 	self.note = [[SHNoteView alloc] init];
 	self.note.delegate = self;
 	[keep addObject:self.note];
-//
+
 	NSBundle *appBundle = [NSBundle bundleForClass:SHRepeatLinkViewController.class];
 	self.repeatLink = [[SHRepeatLinkViewController alloc]
 		initWithNibName:@"SHLinkViewController" bundle:appBundle];
 	self.repeatLink.editorContainer = self.editorContainerController;
-//	[repeatLink setupWithContext:context
-//		andObjectID:objectIDWrapper];
-//	//repeatLink.activeDays = activeDays;
-//	repeatLink.rateType = rateType;
 	[keep addObject:self.repeatLink];
-//
+
 	self.remindersLink = [[SHRemindersLinkViewController alloc]
 		initWithNibName:@"SHLinkViewController" bundle:appBundle];
 	self.remindersLink.editorContainer = self.editorContainerController;
-//	[remindersLink setupWithContext:context
-//		andObjectID:objectIDWrapper];
 	[keep addObject:self.remindersLink];
-//
+
 	NSBundle *shControlsBundle = [NSBundle bundleForClass:SHImportanceSliderView.class];
 	self.difficultySld = [[SHImportanceSliderView alloc]
 		initWithNibName:NSStringFromClass(SHImportanceSliderView.class)
@@ -265,22 +243,19 @@ static SHErrorCode _deleteDaily(void *args, struct SHQueueStore *store) {
 	self.difficultySld.controlName = @"difficulty";
 	self.difficultySld.delegate = self;
 	[keep addObject:self.difficultySld];
-//
+
 	self.urgencySld = [[SHImportanceSliderView alloc]
 		initWithNibName:NSStringFromClass(SHImportanceSliderView.class)
 		bundle:shControlsBundle];
 	self.urgencySld.controlName = @"urgency";
 	self.urgencySld.delegate = self;
 	[keep addObject:self.urgencySld];
-//
+
 	self.resetter = [[SHStreakResetterView alloc]
 		initWithNibName:NSStringFromClass(SHStreakResetterView.class)
 		bundle:shControlsBundle];
-//	resetter.streakCountLbl.hidden = !newlyInserted;
-//	resetter.streakResetBtn.hidden = !newlyInserted;
-//	resetter.streakCountLbl.text = [NSString stringWithFormat:@"Streak %d",streakLength];
 	[keep addObject:self.resetter];
-//
+
 	return keep;
 }
 

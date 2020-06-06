@@ -7,6 +7,8 @@
 //
 
 #import "NSString+SHHelper.h"
+#import <string.h>
+@import SHUtils_C;
 
 @implementation NSString (SHHelper)
 
@@ -14,8 +16,8 @@
 -(char *)SH_unsafeStrCopy {
 	const char *tmp = self.UTF8String;
 	uint64_t len = strlen(tmp);
-	char *copy = malloc(sizeof(char)*len);
-	*copy = *tmp;
+	char *copy = malloc(sizeof(char) * (len + SH_NULL_CHAR_OFFSET));
+	strcpy(copy, tmp);
 	return copy;
 }
 

@@ -15,5 +15,6 @@
 extern const int32_t SH_NOT_FOUND;
 extern const int32_t SH_SKIP;
 extern const int32_t SH_ALLOC_COUNT;
+extern const int32_t SH_NULL_CHAR_OFFSET;
 
 #endif /* SHUtilConstants_h */

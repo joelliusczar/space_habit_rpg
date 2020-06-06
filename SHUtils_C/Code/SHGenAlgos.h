@@ -25,7 +25,7 @@
 
 int64_t SH_calcStrHash(char const *str);
 double kahanSum(const double* const nums,int64_t len);
-char * shStrCopy(const char * const str);
+char * SH_constStrCopy(const char * const str);
 int32_t SH_bitCount(int64_t num);
 void SH_swapStrs(char **A, char **B);
 void SH_reverseStrArr(char **arr, uint64_t start, uint64_t end);

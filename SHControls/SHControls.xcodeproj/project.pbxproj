@@ -217,16 +217,47 @@
 		27FC94022436D74600408167 /* SHControls */ = {
 			isa = PBXGroup;
 			children = (
-				27FC948D2436D7DE00408167 /* xibs */,
-				27FC94892436D7D600408167 /* Media.xcassets */,
-				27FC94862436D7D600408167 /* Protocols */,
-				27FC946B2436D7CC00408167 /* Implementations */,
 				27FC94102436D7C300408167 /* Abstract */,
 				27FC940B2436D7C300408167 /* Categories */,
 				27FC94272436D7C300408167 /* ControlDelegates */,
-				27FC94312436D7C300408167 /* Headers */,
-				27FC94032436D74600408167 /* SHControls.h */,
 				27FC94042436D74600408167 /* Info.plist */,
+				27FC94892436D7D600408167 /* Media.xcassets */,
+				27FC94862436D7D600408167 /* Protocols */,
+				27FC94342436D7C300408167 /* SHAddItemsFooter.h */,
+				27FC94732436D7CC00408167 /* SHAddItemsFooter.m */,
+				27FC94912436D7DE00408167 /* SHAddItemsFooter.xib */,
+				27FC94032436D74600408167 /* SHControls.h */,
+				27FC94352436D7C300408167 /* SHFrontEndConstants.h */,
+				27FC94762436D7CC00408167 /* SHFrontEndConstants.m */,
+				27FC94392436D7C300408167 /* SHImportanceSliderView.h */,
+				27FC946D2436D7CC00408167 /* SHImportanceSliderView.m */,
+				27FC94942436D7DE00408167 /* SHImportanceSliderView.xib */,
+				27FC943C2436D7C300408167 /* SHListItemCell.h */,
+				27FC946F2436D7CC00408167 /* SHListItemCell.m */,
+				27FC948E2436D7DE00408167 /* SHListItemCell.xib */,
+				27FC94332436D7C300408167 /* SHNoteView.h */,
+				27FC94742436D7CC00408167 /* SHNoteView.m */,
+				27FC94932436D7DE00408167 /* SHNoteView.xib */,
+				27FC943A2436D7C300408167 /* SHRateSetterView.h */,
+				27FC946C2436D7CC00408167 /* SHRateSetterView.m */,
+				27FC94922436D7DE00408167 /* SHRateSetterView.xib */,
+				27FC94322436D7C300408167 /* SHScrollAnimator.h */,
+				27FC94752436D7CC00408167 /* SHScrollAnimator.m */,
+				27FC94372436D7C300408167 /* SHStatusBar.h */,
+				27FC94772436D7CC00408167 /* SHStatusBar.m */,
+				27FC94382436D7C300408167 /* SHStreakResetterView.h */,
+				27FC946E2436D7CC00408167 /* SHStreakResetterView.m */,
+				27FC94902436D7DE00408167 /* SHStreakResetterView.xib */,
+				27FC943D2436D7C300408167 /* SHSubtasksTableView.h */,
+				27FC94712436D7CC00408167 /* SHSubtasksTableView.m */,
+				27FC948F2436D7DE00408167 /* SHSubtasksTableView.xib */,
+				27FC943E2436D7C400408167 /* SHSwitch.h */,
+				27FC94722436D7CC00408167 /* SHSwitch.m */,
+				27FC94362436D7C300408167 /* SHTaskCell.h */,
+				27FC94782436D7CC00408167 /* SHTaskCell.m */,
+				27FC943B2436D7C300408167 /* SHTransparentModalViewController.h */,
+				27FC94702436D7CC00408167 /* SHTransparentModalViewController.m */,
+				27FC94952436D7DE00408167 /* SHTransparentModalViewController.xib */,
 			);
 			path = SHControls;
 			sourceTree = "<group>";
@@ -245,51 +276,27 @@
 		27FC94102436D7C300408167 /* Abstract */ = {
 			isa = PBXGroup;
 			children = (
-				27FC94112436D7C300408167 /* xibs */,
-				27FC94152436D7C300408167 /* Headers */,
-				27FC941F2436D7C300408167 /* Implementations */,
+				27FC941E2436D7C300408167 /* SHAppearanceProxyTypedefs.h */,
+				279D8155243EB05400876892 /* SHInvocationsBucketSet.h */,
+				279D8156243EB05400876892 /* SHInvocationsBucketSet.m */,
+				27FC941A2436D7C300408167 /* SHItemFlexibleListView.h */,
+				27FC94262436D7C300408167 /* SHItemFlexibleListView.m */,
+				27FC94122436D7C300408167 /* SHItemFlexibleListView.xib */,
+				27FC94142436D7C300408167 /* SHItemFlexibleListViewFull.xib */,
+				27FC94182436D7C300408167 /* SHNumberControlProtocol.h */,
+				279D8151243D41D300876892 /* SHProxyTypeJunction.h */,
+				279D8152243D41D300876892 /* SHProxyTypeJunction.m */,
+				27FC941D2436D7C300408167 /* SHSpinPicker.h */,
+				27FC94212436D7C300408167 /* SHSpinPicker.m */,
+				27FC94132436D7C300408167 /* SHSpinPicker.xib */,
+				27FC941C2436D7C300408167 /* SHViewController.h */,
+				27FC94202436D7C300408167 /* SHViewController.m */,
+				27FC94192436D7C300408167 /* SHViewController+SHAppearance.h */,
+				27FC94242436D7C300408167 /* SHViewController+SHAppearance.m */,
+				27FC94162436D7C300408167 /* SHViewControllerAppearanceProxy.h */,
+				27FC94222436D7C300408167 /* SHViewControllerAppearanceProxy.m */,
 			);
 			path = Abstract;
-			sourceTree = "<group>";
-		};
-		27FC94112436D7C300408167 /* xibs */ = {
-			isa = PBXGroup;
-			children = (
-				27FC94122436D7C300408167 /* SHItemFlexibleListView.xib */,
-				27FC94132436D7C300408167 /* SHSpinPicker.xib */,
-				27FC94142436D7C300408167 /* SHItemFlexibleListViewFull.xib */,
-			);
-			path = xibs;
-			sourceTree = "<group>";
-		};
-		27FC94152436D7C300408167 /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				279D8155243EB05400876892 /* SHInvocationsBucketSet.h */,
-				279D8151243D41D300876892 /* SHProxyTypeJunction.h */,
-				27FC94162436D7C300408167 /* SHViewControllerAppearanceProxy.h */,
-				27FC94182436D7C300408167 /* SHNumberControlProtocol.h */,
-				27FC94192436D7C300408167 /* SHViewController+SHAppearance.h */,
-				27FC941A2436D7C300408167 /* SHItemFlexibleListView.h */,
-				27FC941C2436D7C300408167 /* SHViewController.h */,
-				27FC941D2436D7C300408167 /* SHSpinPicker.h */,
-				27FC941E2436D7C300408167 /* SHAppearanceProxyTypedefs.h */,
-			);
-			path = Headers;
-			sourceTree = "<group>";
-		};
-		27FC941F2436D7C300408167 /* Implementations */ = {
-			isa = PBXGroup;
-			children = (
-				279D8156243EB05400876892 /* SHInvocationsBucketSet.m */,
-				279D8152243D41D300876892 /* SHProxyTypeJunction.m */,
-				27FC94202436D7C300408167 /* SHViewController.m */,
-				27FC94212436D7C300408167 /* SHSpinPicker.m */,
-				27FC94222436D7C300408167 /* SHViewControllerAppearanceProxy.m */,
-				27FC94242436D7C300408167 /* SHViewController+SHAppearance.m */,
-				27FC94262436D7C300408167 /* SHItemFlexibleListView.m */,
-			);
-			path = Implementations;
 			sourceTree = "<group>";
 		};
 		27FC94272436D7C300408167 /* ControlDelegates */ = {
@@ -306,46 +313,6 @@
 			path = ControlDelegates;
 			sourceTree = "<group>";
 		};
-		27FC94312436D7C300408167 /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				27FC94322436D7C300408167 /* SHScrollAnimator.h */,
-				27FC94332436D7C300408167 /* SHNoteView.h */,
-				27FC94342436D7C300408167 /* SHAddItemsFooter.h */,
-				27FC94352436D7C300408167 /* SHFrontEndConstants.h */,
-				27FC94362436D7C300408167 /* SHTaskCell.h */,
-				27FC94372436D7C300408167 /* SHStatusBar.h */,
-				27FC94382436D7C300408167 /* SHStreakResetterView.h */,
-				27FC94392436D7C300408167 /* SHImportanceSliderView.h */,
-				27FC943A2436D7C300408167 /* SHRateSetterView.h */,
-				27FC943B2436D7C300408167 /* SHTransparentModalViewController.h */,
-				27FC943C2436D7C300408167 /* SHListItemCell.h */,
-				27FC943D2436D7C300408167 /* SHSubtasksTableView.h */,
-				27FC943E2436D7C400408167 /* SHSwitch.h */,
-			);
-			path = Headers;
-			sourceTree = "<group>";
-		};
-		27FC946B2436D7CC00408167 /* Implementations */ = {
-			isa = PBXGroup;
-			children = (
-				27FC946C2436D7CC00408167 /* SHRateSetterView.m */,
-				27FC946D2436D7CC00408167 /* SHImportanceSliderView.m */,
-				27FC946E2436D7CC00408167 /* SHStreakResetterView.m */,
-				27FC946F2436D7CC00408167 /* SHListItemCell.m */,
-				27FC94702436D7CC00408167 /* SHTransparentModalViewController.m */,
-				27FC94712436D7CC00408167 /* SHSubtasksTableView.m */,
-				27FC94722436D7CC00408167 /* SHSwitch.m */,
-				27FC94732436D7CC00408167 /* SHAddItemsFooter.m */,
-				27FC94742436D7CC00408167 /* SHNoteView.m */,
-				27FC94752436D7CC00408167 /* SHScrollAnimator.m */,
-				27FC94762436D7CC00408167 /* SHFrontEndConstants.m */,
-				27FC94772436D7CC00408167 /* SHStatusBar.m */,
-				27FC94782436D7CC00408167 /* SHTaskCell.m */,
-			);
-			path = Implementations;
-			sourceTree = "<group>";
-		};
 		27FC94862436D7D600408167 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,21 +320,6 @@
 				27FC94882436D7D600408167 /* SHModalPresenterProtocol.h */,
 			);
 			path = Protocols;
-			sourceTree = "<group>";
-		};
-		27FC948D2436D7DE00408167 /* xibs */ = {
-			isa = PBXGroup;
-			children = (
-				27FC948E2436D7DE00408167 /* SHListItemCell.xib */,
-				27FC948F2436D7DE00408167 /* SHSubtasksTableView.xib */,
-				27FC94902436D7DE00408167 /* SHStreakResetterView.xib */,
-				27FC94912436D7DE00408167 /* SHAddItemsFooter.xib */,
-				27FC94922436D7DE00408167 /* SHRateSetterView.xib */,
-				27FC94932436D7DE00408167 /* SHNoteView.xib */,
-				27FC94942436D7DE00408167 /* SHImportanceSliderView.xib */,
-				27FC94952436D7DE00408167 /* SHTransparentModalViewController.xib */,
-			);
-			path = xibs;
 			sourceTree = "<group>";
 		};
 		27FC949E2436D83300408167 /* Scripts */ = {

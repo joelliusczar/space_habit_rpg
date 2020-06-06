@@ -11,18 +11,20 @@
 
 
 void SH_freeDailyProps(struct SHDaily *daily) {
-	free(daily->base.name);
-	free(daily->activeFromDateTime);
-	free(daily->activeToDateTime);
-	free(daily->activeToDateTime);
-	free(daily->lastActivationDateTime);
-	free(daily->activeDays.yearIntervalHash);
-	free(daily->activeDays.yearSkipIntervalHash);
-	free(daily->note);
+	if(NULL == daily) return;
+	if(daily->base.name) free(daily->base.name);
+	if(daily->activeFromDateTime) free(daily->activeFromDateTime);
+	if(daily->activeToDateTime) free(daily->activeToDateTime);
+	if(daily->activeToDateTime) free(daily->activeToDateTime);
+	if(daily->lastActivationDateTime) free(daily->lastActivationDateTime);
+	if(daily->activeDays.yearIntervalHash) free(daily->activeDays.yearIntervalHash);
+	if(daily->activeDays.yearSkipIntervalHash) free(daily->activeDays.yearSkipIntervalHash);
+	if(daily->note) free(daily->note);
 }
 
 
 void SH_freeDaily(struct SHDaily *daily) {
+	if(NULL == daily) return;
 	SH_freeDailyProps(daily);
 	free(daily);
 }

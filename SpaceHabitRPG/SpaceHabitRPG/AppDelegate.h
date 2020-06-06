@@ -24,5 +24,6 @@
 @property (readonly, nonatomic) struct SHSerialQueue *dbQueue;
 @property (readonly, nonatomic) struct SHConfigAccessor config;
 @property (strong, nonatomic) SHResourceUtility *resourceUtil;
+@property (strong, nonatomic) NSObject<SHDateProviderProtocol> *dateProvider;
 @end
 

@@ -13,7 +13,7 @@
 #include "SHDatetime_struct.h"
 #include "SHDueDateWeeklyContext_struct.h"
 #include "SHWeekIntervalPointsFuncs.h"
-#include "SHDBDueDateConstants.h"
+#include "SHActiveDaysConstants.h"
 #include "SHDueDatesWeeklyFuncs.h"
 #include "SHUtilConstants.h"
 #include "SHDateCompare.h"

@@ -23,11 +23,13 @@ struct SHOpLinkedListNode {
 	struct SHOpLinkedListNode *next;
 };
 
+
 struct SHQueueStore {
 	void *userItem;
 	void (*queueStoreCleanup)(void *);
 	struct SHSerialQueue *queueRef;
 };
+
 
 struct SHSerialQueue {
 	struct SHOpLinkedListNode *opsBegin;
@@ -37,6 +39,7 @@ struct SHSerialQueue {
 	pthread_mutex_t lock;
 	pthread_cond_t waitable;
 	bool isRunning;
+	bool isCanceled;
 };
 
 
@@ -51,7 +54,7 @@ SHErrorCode SH_addOp(struct SHSerialQueue *queue,
 	*opNode = (struct SHOpLinkedListNode){.fn = fn, .fnArgs = fnArgs, .cleanupFn = cleanupFn, .next = NULL };
 	int32_t threadCode = 0;
 	if((threadCode = pthread_mutex_lock(&queue->lock)) != 0) { goto threadErr; }
-		if(!queue->isRunning) {
+		if(queue->isCanceled) {
 			goto canceled;
 		}
 		if(NULL == queue->opsBegin) {
@@ -121,42 +124,68 @@ SHErrorCode SH_addOpAndWait(struct SHSerialQueue *queue,
 	struct _wrappedFunctionArgs wrapped = {
 		.wrappedFn = fn,
 		.fnArgs = fnArgs,
-		.lock = PTHREAD_MUTEX_INITIALIZER,
-		.waitable = PTHREAD_COND_INITIALIZER
 	};
 	SHErrorCode status = SH_NO_ERROR;
+	if(pthread_mutex_init(&wrapped.lock, NULL)) {
+		status |= SH_THREAD_ERROR;
+		return status;
+	}
+	if(pthread_cond_init(&wrapped.waitable, NULL)) {
+		status |= SH_THREAD_ERROR;
+		goto cleanupLock;
+	}
 	status = SH_addOp(queue, _wrapForSync, &wrapped, cleanupFn);
 	if(pthread_cond_wait(&wrapped.waitable, &wrapped.lock)) {
 		status |= SH_THREAD_ERROR;
+		goto cleanupCond;
 	}
 	if(pthread_mutex_unlock(&wrapped.lock)) {
 		status |= SH_THREAD_ERROR;
 		SH_notifyOfError(SH_THREAD_ERROR, "failed to relase mutex synclock in _wrappedForSync");
+		goto cleanupCond;
 	}
 	if(pthread_mutex_destroy(&wrapped.lock)) {
 		status |= SH_THREAD_ERROR;
+		goto cleanupCond;
 	}
 	if(pthread_cond_destroy(&wrapped.waitable)) {
 		status |= SH_THREAD_ERROR;
+		goto cleanupCond;
 	}
 	return status;
+	cleanupCond:
+		pthread_cond_destroy(&wrapped.waitable);
+	cleanupLock:
+		pthread_mutex_destroy(&wrapped.lock);
+		return status;
+	
 }
 
 
-static SHErrorCode _getNextOp(struct SHSerialQueue *queue, struct SHOpLinkedListNode **next) {
-	assert(queue);
+static struct SHOpLinkedListNode * _getNextOp(struct SHSerialQueue *queue) {
+	
+	struct SHOpLinkedListNode *next = NULL;
+	next = queue->opsBegin;
+	if(NULL == next) return NULL;
+	queue->opsBegin = queue->opsBegin->next;
+	if(queue->opsBegin == queue->opsEnd) queue->opsEnd = NULL;
+	return next;
+}
+
+
+static SHErrorCode _getNextOpOrWait(struct SHSerialQueue *queue, struct SHOpLinkedListNode **next) {
 	*next = NULL;
 	int32_t threadCode = 0;
 	if((threadCode = pthread_mutex_trylock(&queue->lock)) != 0) {
 		if(threadCode != EBUSY) goto threadErr;
 	}
+	*next = _getNextOp(queue);
+	if(NULL != *next) goto fnExit;
 	if(pthread_cond_wait(&queue->waitable, &queue->lock)) {
 		goto threadErr;
 	}
-		*next = queue->opsBegin;
-		if(NULL == *next) goto fnExit;
-		queue->opsBegin = queue->opsBegin->next;
-		if(queue->opsBegin == queue->opsEnd) queue->opsEnd = NULL;
+	*next = _getNextOp(queue);
+		
 	
 	fnExit:
 		if((threadCode = pthread_mutex_unlock(&queue->lock)) != 0) { goto threadErr; }
@@ -165,6 +194,9 @@ static SHErrorCode _getNextOp(struct SHSerialQueue *queue, struct SHOpLinkedList
 		SH_notifyOfError(SH_THREAD_ERROR, "failed to recieve mutex lock");
 		return SH_THREAD_ERROR;
 }
+
+
+
 
 
 static void _freeUnusedItemsInQueue(struct SHSerialQueue *queue) {
@@ -185,6 +217,7 @@ static void _freeUnusedItemsInQueue(struct SHSerialQueue *queue) {
 	queue->opsBegin = NULL;
 	queue->opsEnd = NULL;
 	queue->isRunning = false;
+	queue->isCanceled = true;
 	if((threadCode = pthread_mutex_unlock(&queue->lock)) != 0) {
 		SH_notifyOfError(SH_THREAD_ERROR, "Failed to get lock in cleanup function");
 	}
@@ -197,9 +230,9 @@ static SHErrorCode _runSerialQueueLoop(struct SHSerialQueue *queue) {
 	struct SHOpLinkedListNode *node = NULL;
 	SHErrorCode status = SH_NO_ERROR;
 	queue->isRunning = true;
-	while(1) {
+	while(queue->isRunning) {
 		if(NULL == queue) goto fnExit;
-		if((status = _getNextOp(queue, &node)) != SH_NO_ERROR) { goto fnErrGetOp; }
+		if((status = _getNextOpOrWait(queue, &node)) != SH_NO_ERROR) { goto fnErrGetOp; }
 		if(NULL != node) {
 			if((status = node->fn(node->fnArgs, &queue->queueStore)) != SH_NO_ERROR) {
 				goto fnErr;
@@ -271,15 +304,21 @@ struct SHSerialQueue * SH_initSerialQueue(void *(*getStoreItem)(void*), void (*s
 	void *initArgs, void (*initArgsCleanup)(void*))
 {
 	struct SHSerialQueue *queue = malloc(sizeof(struct SHSerialQueue));
+	struct _initialSetupObj *setupObj = NULL;
 	*queue = (struct SHSerialQueue){
 		.opsBegin = NULL,
 		.opsEnd = NULL,
 		.queueStore = { .queueRef = queue },
-		.lock = PTHREAD_MUTEX_INITIALIZER,
 		.isRunning = false,
+		.isCanceled = false,
 	};
-	
-	struct _initialSetupObj *setupObj = malloc(sizeof(struct _initialSetupObj));
+	if(pthread_mutex_init(&queue->lock, NULL)) {
+		goto cleanupQueue;
+	}
+	if(pthread_cond_init(&queue->waitable, NULL)) {
+		goto cleanupLock;
+	}
+	setupObj = malloc(sizeof(struct _initialSetupObj));
 	*setupObj = (struct _initialSetupObj){
 		.getStoreItem = getStoreItem,
 		.storeCleanup = storeCleanup,
@@ -288,11 +327,16 @@ struct SHSerialQueue * SH_initSerialQueue(void *(*getStoreItem)(void*), void (*s
 	};
 	
 	if((SH_addOp(queue, _queueInitialAction, setupObj, _initialActionCleanup)) != SH_NO_ERROR) {
-		SH_freeSerialQueue(queue);
-		free(setupObj);
-		return NULL;
+		goto cleanupSetupObj;
 	}
 	return queue;
+	cleanupSetupObj:
+		free(setupObj);
+	cleanupLock:
+		pthread_mutex_destroy(&queue->lock);
+	cleanupQueue:
+		SH_freeSerialQueue(queue);
+		return NULL;
 }
 
 

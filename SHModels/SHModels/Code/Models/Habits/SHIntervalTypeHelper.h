@@ -10,7 +10,7 @@
 #define SHIntervalTypeHelper_h
 
 #import "SHModelConstants.h"
-#import "SHDBDueDateConstants.h"
+#include "SHActiveDaysConstants.h"
 
 
 SHIntervalType SH_extractBaseIntervalType(SHIntervalType rateType);

@@ -110,7 +110,7 @@ bool SH_getDayValue(struct SHActiveDaysValues *activeDays, int32_t idx,
 		case SH_WEEKLY_INTERVAL:
 		{
 			int32_t bitMask = 1 << idx;
-			return activeDays->weekIntervalHash & bitMask > 0;
+			return (activeDays->weekIntervalHash & bitMask) > 0;
 		}
 		case SH_MONTHLY_INTERVAL: return false;
 		case SH_YEARLY_INTERVAL: return false;
@@ -118,7 +118,7 @@ bool SH_getDayValue(struct SHActiveDaysValues *activeDays, int32_t idx,
 		case SH_WEEKLY_INTERVAL_INVERSE:
 		{
 			int32_t bitMask = 1 << idx;
-			return activeDays->weekSkipIntervalHash & bitMask > 0;
+			return (activeDays->weekSkipIntervalHash & bitMask) > 0;
 		}
 		case SH_MONTHLY_INTERVAL_INVERSE: return false;
 		case SH_YEARLY_INTERVAL_INVERSE: return false;

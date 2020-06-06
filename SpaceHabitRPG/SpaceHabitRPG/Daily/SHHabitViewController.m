@@ -140,10 +140,10 @@ return nil;
 }
 
 
--(void)openEditor:(int64_t)pk {
+-(void)openEditor:(int64_t)pk forAdded:(BOOL)isAdded{
 	SHViewController<SHEditingSaverProtocol> *habitEditor = [self buildHabitEditor];
 	[self setupEditorForSaving:habitEditor pk:pk];
-	
+	habitEditor.isAdded = isAdded;
 	SHEditNavigationController *editNavController = [SHEditNavigationController newWithDefaultNib];
 	editNavController.editingScreen = habitEditor;
 	editNavController.title = [NSString stringWithUTF8String:self.tableName];
@@ -171,7 +171,7 @@ return nil;
 
 struct _insertArgs {
 	struct SHHabitBase *habit;
-	SHHabitViewController *bSelf;
+	void *bSelf;
 };
 
 
@@ -180,8 +180,9 @@ static SHErrorCode _insertNewHabit(void *args, struct SHQueueStore *store) {
 	struct SHQueueStoreItem *storeItem = (struct SHQueueStoreItem *)SH_getUserItemFromStore(store);
 	SHErrorCode status = SH_NO_ERROR;
 	int64_t insertedPk = SH_NOT_FOUND;
-	SHHabitViewController *bSelf = insertArgs->bSelf;
-	if((status = SH_insertHabit(storeItem->db, insertArgs->habit, bSelf.tableName, &insertedPk))
+	SHHabitViewController *bSelf = (__bridge SHHabitViewController*)insertArgs->bSelf;
+	if(!bSelf.insertHabit) return SH_LOGIC_MISROUTE;
+	if((status = bSelf.insertHabit(storeItem->db, insertArgs->habit, &insertedPk))
 		!= SH_NO_ERROR)
 	{
 		return status;
@@ -190,7 +191,7 @@ static SHErrorCode _insertNewHabit(void *args, struct SHQueueStore *store) {
 		if(nil == bSelf) return;
 		SHHabitNameViewController *nameVC = bSelf.nameViewController;
 		[nameVC popVCFromFront];
-		[bSelf openEditor: insertedPk];
+		[bSelf openEditor: insertedPk forAdded:YES];
 		if(bSelf.onOpenAddHabit) {
 			bSelf.onOpenAddHabit();
 		}
@@ -220,11 +221,13 @@ static void _cleanUpInsert(void* args) {
 		struct SHHabitBase *habit = malloc(sizeof(struct SHHabitBase));
 		*habit = (struct SHHabitBase){
 			.name = [name SH_unsafeStrCopy],
+			.lastUpdated = appDel.dateProvider.date.timeIntervalSince1970,
+			.tzOffsetLastUpdateDateTime = appDel.dateProvider.localTzOffset,
 		};
 		struct _insertArgs *insertArgs = malloc(sizeof(struct _insertArgs));
 		*insertArgs = (struct _insertArgs){
 			.habit = habit,
-			.bSelf = bSelf,
+			.bSelf = (__bridge void*)bSelf,
 		};
 		if((status = SH_addOp(appDel.dbQueue, _insertNewHabit, insertArgs, _cleanUpInsert)) != SH_NO_ERROR) { ; }
 	};
