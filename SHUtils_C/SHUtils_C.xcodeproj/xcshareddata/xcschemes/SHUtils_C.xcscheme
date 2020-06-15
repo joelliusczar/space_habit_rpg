@@ -20,6 +20,20 @@
                ReferencedContainer = "container:SHUtils_C.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "27553513248D9AD300D650AB"
+               BuildableName = "SHUtils_CTests.xctest"
+               BlueprintName = "SHUtils_CTests"
+               ReferencedContainer = "container:SHUtils_C.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -28,6 +42,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "27553513248D9AD300D650AB"
+               BuildableName = "SHUtils_CTests.xctest"
+               BlueprintName = "SHUtils_CTests"
+               ReferencedContainer = "container:SHUtils_C.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

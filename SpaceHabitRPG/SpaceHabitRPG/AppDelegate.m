@@ -83,11 +83,17 @@ static void* _openDb(void *args) {
 static SHErrorCode _setupDb(void* args, struct SHQueueStore *store) {
 	(void)args;
 	struct SHQueueStoreItem *item = (struct SHQueueStoreItem *)SH_getUserItemFromStore(store);
-	printf("setup db?");
 	SHErrorCode status = SH_setupDb(item->db);
 	
+	return status;
+}
+
+
+static SHErrorCode _addFunctions(void* args, struct SHQueueStore *store) {
+	(void)args;
+	struct SHQueueStoreItem *item = (struct SHQueueStoreItem *)SH_getUserItemFromStore(store);
 	
-	
+	SHErrorCode status = SH_addDbFunctions(iterm->db);
 	return status;
 }
 
@@ -115,6 +121,9 @@ static SHErrorCode _setupDb(void* args, struct SHQueueStore *store) {
 		if((status = SH_addOp(self.dbQueue, _setupDb, NULL, NULL)) != SH_NO_ERROR) {
 			return NO;
 		}
+	}
+	if((status = SH_addOp(self.dbQueue, _addFunctions, NULL, NULL)) != SH_NO_ERROR) {
+		return NO;
 	}
 	#warning update without core data
 //	SHDailyProcessor *processor = [[SHDailyProcessor alloc] init];

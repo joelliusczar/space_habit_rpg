@@ -57,6 +57,14 @@ int32_t SH_bitCount(int64_t num) {
 }
 
 
+int32_t SH_highestBit(uint64_t num) {
+	if(num == 0) return 0;
+	for(int32_t i = 0; i < 64; i++) {
+		
+	}
+}
+
+
 void SH_swapStrs(char **A, char **B) {
 	char *tmp = *A;
 	*A = *B;

@@ -126,10 +126,36 @@ SHErrorCode SH_setupDb(sqlite3 *db) {
 
 
 SHErrorCode SH_addDbFunctions(sqlite3 *db) {
+	SHErrorCode status = SH_NO_ERROR;
 	int32_t sqlStatus = SQLITE_OK;
 	if((sqlStatus = sqlite3_create_function(db, "SH_selectSavedUseDateUTC", 7,
 		SQLITE_UTF8 | SQLITE_DETERMINISTIC, NULL, SHDB_selectSavedUseDate, NULL, NULL))
-		!= SQLITE_OK) {}
-
+		!= SQLITE_OK)
+		{ goto fnExit; }
+	if((sqlStatus = sqlite3_create_function(db, "SH_nextDueDate", 5,
+		SQLITE_UTF8 | SQLITE_DETERMINISTIC, NULL, SHDB_nextDueDate, NULL, NULL))
+		!= SQLITE_OK)
+		{ goto fnExit; }
+	if((sqlStatus = sqlite3_create_function(db, "SH_isDateActive", 5,
+		SQLITE_UTF8 | SQLITE_DETERMINISTIC, NULL, SHDB_isDateActive, NULL, NULL))
+		!= SQLITE_OK)
+		{ goto fnExit; }
+	if((sqlStatus = sqlite3_create_function(db, "SH_missedDays", 5,
+		SQLITE_UTF8 | SQLITE_DETERMINISTIC, NULL, SHDB_missedDays, NULL, NULL))
+		!= SQLITE_OK)
+		{ goto fnExit; }
+	if((sqlStatus = sqlite3_create_function(db, "SH_penalty", 7,
+		SQLITE_UTF8 | SQLITE_DETERMINISTIC, NULL, SHDB_penalty, NULL, NULL))
+		!= SQLITE_OK)
+		{ goto fnExit; }
+	if((sqlStatus = sqlite3_create_function(db, "SH_getDueStatus", 5,
+		SQLITE_UTF8 | SQLITE_DETERMINISTIC, NULL, SHDB_getDueStatus, NULL, NULL))
+		!= SQLITE_OK)
+		{ goto fnExit; }
+	
+	fnExit:
+		status |= SH_SQLITE3_ERROR;
+		SH_notifyOfError(status, "Failed to add sql function");
+		return status;
 	return SH_NO_ERROR;
 }

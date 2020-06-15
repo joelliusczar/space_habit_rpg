@@ -26,7 +26,7 @@ static const int32_t _INTERVAL_TYPE_IDX = 0;
 static const int32_t _USE_DATE_IDX = 1;
 static const int32_t _SAVED_PREV_DATE_IDX = 2;
 static const int32_t _BIT_HASH_IDX = 3;
-static const int32_t _INTERVAL_SIZE_IDX = 2;
+static const int32_t _INTERVAL_SIZE_IDX = 4;
 
 
 static SHErrorCode _setupWeeklyDueDateContext(sqlite3_context* context, sqlite3_value** values,
@@ -300,9 +300,9 @@ void SHDB_getDueStatus(sqlite3_context* context, int argc, sqlite3_value** value
 	if((status = SH_sqlite3_value_SHDatetime(values[_SAVED_PREV_DATE_IDX], &savedPrevDate, 0)) != SH_NO_ERROR) {
 		goto fnErr;
 	}
-	bool isDue = false;
-	SH_isDateALTDateB(&savedPrevDate, &useDate, &isDue);
-	if(isDue) {
+	bool isPossiblyDue = false;
+	SH_isDateALTDateB(&savedPrevDate, &useDate, &isPossiblyDue);
+	if(isPossiblyDue) {
 		if(isTodayActive) {
 			sqlite3_result_int(context, SH_IS_DUE);
 		}

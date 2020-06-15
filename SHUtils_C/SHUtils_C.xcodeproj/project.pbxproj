@@ -13,12 +13,28 @@
 		275534C22479E39C00D650AB /* SHSerialQueue.c in Sources */ = {isa = PBXBuildFile; fileRef = 275534C02479E39B00D650AB /* SHSerialQueue.c */; };
 		27553501248891A400D650AB /* SHDynamicArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 275534FF248891A400D650AB /* SHDynamicArray.h */; };
 		27553502248891A400D650AB /* SHDynamicArray.c in Sources */ = {isa = PBXBuildFile; fileRef = 27553500248891A400D650AB /* SHDynamicArray.c */; };
+		2755350E248C35BB00D650AB /* SHTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 2755350C248C35BA00D650AB /* SHTree.h */; };
+		2755350F248C35BB00D650AB /* SHTree.c in Sources */ = {isa = PBXBuildFile; fileRef = 2755350D248C35BA00D650AB /* SHTree.c */; };
+		27553517248D9AD400D650AB /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27553516248D9AD400D650AB /* Tests.m */; };
+		27553519248D9AD400D650AB /* SHUtils_C in Frameworks */ = {isa = PBXBuildFile; fileRef = 271692002089758B0059A58E /* SHUtils_C */; };
 		2769C097227C81B500217480 /* SHErrorHandling.h in Headers */ = {isa = PBXBuildFile; fileRef = 27169215208BB2450059A58E /* SHErrorHandling.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2781552B21758C3F005C5279 /* SHUtilConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781552921758C3F005C5279 /* SHUtilConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2781552C21758C3F005C5279 /* SHUtilConstants.c in Sources */ = {isa = PBXBuildFile; fileRef = 2781552A21758C3F005C5279 /* SHUtilConstants.c */; };
+		27B512C42496B14400727905 /* SHLinkedList.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B512C22496B14400727905 /* SHLinkedList.h */; };
+		27B512C52496B14400727905 /* SHLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 27B512C32496B14400727905 /* SHLinkedList.c */; };
 		27DF9C4E20956D6300F98023 /* SHGenAlgos.h in Headers */ = {isa = PBXBuildFile; fileRef = 27DF9C4C20956D6300F98023 /* SHGenAlgos.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27DF9C4F20956D6300F98023 /* SHGenAlgos.c in Sources */ = {isa = PBXBuildFile; fileRef = 27DF9C4D20956D6300F98023 /* SHGenAlgos.c */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2755351A248D9AD400D650AB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 271691F82089758B0059A58E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 271691FF2089758B0059A58E;
+			remoteInfo = SHUtils_C;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2712C5F2244D290500157758 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -30,6 +46,12 @@
 		275534C02479E39B00D650AB /* SHSerialQueue.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHSerialQueue.c; sourceTree = "<group>"; };
 		275534FF248891A400D650AB /* SHDynamicArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDynamicArray.h; sourceTree = "<group>"; };
 		27553500248891A400D650AB /* SHDynamicArray.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHDynamicArray.c; sourceTree = "<group>"; };
+		2755350C248C35BA00D650AB /* SHTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTree.h; sourceTree = "<group>"; };
+		2755350D248C35BA00D650AB /* SHTree.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHTree.c; sourceTree = "<group>"; };
+		27553514248D9AD300D650AB /* SHUtils_CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHUtils_CTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		27553516248D9AD400D650AB /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
+		27553518248D9AD400D650AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2755351F248D9B3900D650AB /* SHUtils_C.test.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHUtils_C.test.xcconfig; sourceTree = "<group>"; };
 		2769C096227C6F2F00217480 /* SHUtils_C.postbuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = SHUtils_C.postbuild.sh; sourceTree = "<group>"; };
 		2769C0A0227F67FB00217480 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		2769C0A1227F682D00217480 /* SHUtils_C.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHUtils_C.h; sourceTree = "<group>"; };
@@ -38,6 +60,8 @@
 		2781552A21758C3F005C5279 /* SHUtilConstants.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHUtilConstants.c; sourceTree = "<group>"; };
 		278FFD9E222B2AA000DAF985 /* SHUtils_C.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHUtils_C.debug.xcconfig; sourceTree = "<group>"; };
 		27B0B1EF2223A4970028AF59 /* SHUtils_C.base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHUtils_C.base.xcconfig; sourceTree = "<group>"; };
+		27B512C22496B14400727905 /* SHLinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHLinkedList.h; sourceTree = "<group>"; };
+		27B512C32496B14400727905 /* SHLinkedList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHLinkedList.c; sourceTree = "<group>"; };
 		27BB2905215207A3003225BB /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		27BB29132159CE1E003225BB /* vars.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = vars.mk; sourceTree = "<group>"; };
 		27DF9C4C20956D6300F98023 /* SHGenAlgos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHGenAlgos.h; sourceTree = "<group>"; };
@@ -49,6 +73,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27553511248D9AD300D650AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27553519248D9AD400D650AB /* SHUtils_C in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +102,10 @@
 				275534C02479E39B00D650AB /* SHSerialQueue.c */,
 				275534FF248891A400D650AB /* SHDynamicArray.h */,
 				27553500248891A400D650AB /* SHDynamicArray.c */,
+				2755350C248C35BA00D650AB /* SHTree.h */,
+				2755350D248C35BA00D650AB /* SHTree.c */,
+				27B512C22496B14400727905 /* SHLinkedList.h */,
+				27B512C32496B14400727905 /* SHLinkedList.c */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -90,6 +126,7 @@
 				2769C095227C6EAA00217480 /* Scripts */,
 				276E6D95222A492E00CB36CB /* Configs */,
 				27BB290421520778003225BB /* Send */,
+				27553515248D9AD300D650AB /* Tests */,
 				271692012089758B0059A58E /* Products */,
 				2716920E208991130059A58E /* Frameworks */,
 			);
@@ -99,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				271692002089758B0059A58E /* SHUtils_C */,
+				27553514248D9AD300D650AB /* SHUtils_CTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -109,6 +147,15 @@
 				27397341226C0894001590C6 /* libSHDatetime.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		27553515248D9AD300D650AB /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				27553516248D9AD400D650AB /* Tests.m */,
+				27553518248D9AD400D650AB /* Info.plist */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		2769C095227C6EAA00217480 /* Scripts */ = {
@@ -125,6 +172,7 @@
 			children = (
 				27B0B1EF2223A4970028AF59 /* SHUtils_C.base.xcconfig */,
 				278FFD9E222B2AA000DAF985 /* SHUtils_C.debug.xcconfig */,
+				2755351F248D9B3900D650AB /* SHUtils_C.test.xcconfig */,
 			);
 			path = Configs;
 			sourceTree = "<group>";
@@ -146,9 +194,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				275534C12479E39C00D650AB /* SHSerialQueue.h in Headers */,
+				2755350E248C35BB00D650AB /* SHTree.h in Headers */,
 				2716922D20916ED50059A58E /* SHArray.h in Headers */,
 				2781552B21758C3F005C5279 /* SHUtilConstants.h in Headers */,
 				2769C097227C81B500217480 /* SHErrorHandling.h in Headers */,
+				27B512C42496B14400727905 /* SHLinkedList.h in Headers */,
 				27553501248891A400D650AB /* SHDynamicArray.h in Headers */,
 				270CB96A244CC30900FE930B /* SHUtils_C.h in Headers */,
 				27DF9C4E20956D6300F98023 /* SHGenAlgos.h in Headers */,
@@ -177,6 +227,24 @@
 			productReference = 271692002089758B0059A58E /* SHUtils_C */;
 			productType = "com.apple.product-type.library.static";
 		};
+		27553513248D9AD300D650AB /* SHUtils_CTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2755351C248D9AD400D650AB /* Build configuration list for PBXNativeTarget "SHUtils_CTests" */;
+			buildPhases = (
+				27553510248D9AD300D650AB /* Sources */,
+				27553511248D9AD300D650AB /* Frameworks */,
+				27553512248D9AD300D650AB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2755351B248D9AD400D650AB /* PBXTargetDependency */,
+			);
+			name = SHUtils_CTests;
+			productName = Tests;
+			productReference = 27553514248D9AD300D650AB /* SHUtils_CTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -189,6 +257,9 @@
 					271691FF2089758B0059A58E = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+					};
+					27553513248D9AD300D650AB = {
+						CreatedOnToolsVersion = 11.4.1;
 					};
 				};
 			};
@@ -205,9 +276,20 @@
 			projectRoot = "";
 			targets = (
 				271691FF2089758B0059A58E /* SHUtils_C */,
+				27553513248D9AD300D650AB /* SHUtils_CTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		27553512248D9AD300D650AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		2769C10C228639F800217480 /* ShellScript */ = {
@@ -249,14 +331,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2755350F248C35BB00D650AB /* SHTree.c in Sources */,
 				27553502248891A400D650AB /* SHDynamicArray.c in Sources */,
+				27B512C52496B14400727905 /* SHLinkedList.c in Sources */,
 				275534C22479E39C00D650AB /* SHSerialQueue.c in Sources */,
 				2781552C21758C3F005C5279 /* SHUtilConstants.c in Sources */,
 				27DF9C4F20956D6300F98023 /* SHGenAlgos.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		27553510248D9AD300D650AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27553517248D9AD400D650AB /* Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2755351B248D9AD400D650AB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 271691FF2089758B0059A58E /* SHUtils_C */;
+			targetProxy = 2755351A248D9AD400D650AB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		271692022089758B0059A58E /* Debug */ = {
@@ -343,6 +443,99 @@
 			};
 			name = Release;
 		};
+		2755351D248D9AD400D650AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XK3RJ8E2L2;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2755351E248D9AD400D650AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XK3RJ8E2L2;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -360,6 +553,15 @@
 			buildConfigurations = (
 				271692052089758B0059A58E /* Debug */,
 				271692062089758B0059A58E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2755351C248D9AD400D650AB /* Build configuration list for PBXNativeTarget "SHUtils_CTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2755351D248D9AD400D650AB /* Debug */,
+				2755351E248D9AD400D650AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
