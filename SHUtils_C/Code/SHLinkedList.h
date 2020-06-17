@@ -10,6 +10,7 @@
 #define SHLinkedList_h
 
 #include <stdio.h>
+#include <inttypes.h>
 
 struct SHLinkedList;
 struct SHLLNode;
@@ -22,6 +23,9 @@ struct SHLinkedList *SH_list_init(void (*itemCleanup)(void*));
 void SH_list_pushBack(struct SHLinkedList *queue, void *item);
 void * SH_list_popFront(struct SHLinkedList *queue);
 void * SH_list_popBack(struct SHLinkedList *queue);
+void * SH_list_getBack(struct SHLinkedList *queue);
+void * SH_list_getFront(struct SHLinkedList *queue);
+uint64_t SH_list_count(struct SHLinkedList *queue);
 void SH_list_cleanup(struct SHLinkedList *queue);
 
 void SH_listIterator_init(struct SHLinkedList *queue, struct SHLinkedListIterator *iter);

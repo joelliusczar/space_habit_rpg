@@ -25,7 +25,10 @@ void SH_cleanupTree(struct SHTree *tree);
 
 struct SHTreeIterator *SH_treeIterator_init(struct SHTree *tree);
 void *SH_treeIterator_nextInorder(struct SHTreeIterator **iter);
+void *SH_treeIterator_skipInorder(struct SHTreeIterator **iter, uint64_t skip);
 void *SH_treeIterator_nextPostOrder(struct SHTreeIterator **iter);
+void *SH_treeIterator_skipPostOrder(struct SHTreeIterator **iter, uint64_t skip);
 void *SH_treeIterator_nextLineOrder(struct SHTreeIterator **iter, void *lineBreakElement);
+void *SH_treeIterator_skipLineOrder(struct SHTreeIterator **iter, void *lineBreakElement, uint64_t skip);
 
 #endif /* SHTree_h */
