@@ -66,6 +66,7 @@ typedef enum {
 	SH_SQLITE3_ERROR = 1 << 9,
 	SH_THREAD_ERROR = 1 << 10,
 	SH_EXTERNAL_BLOCK = 1 << 11,
+	SH_ILLEGAL_STATE_CHANGED = 1 << 12,
 } SHErrorCode;
 
 

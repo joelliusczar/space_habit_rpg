@@ -8,11 +8,30 @@
 
 #include "SHTree.h"
 #include "SHUtilConstants.h"
+#include "SHErrorHandling.h"
+#include "SHGenAlgos.h"
+#include "SHLinkedList.h"
 #include <stdlib.h>
 #include <stdbool.h>
 #include <math.h>
 #include <string.h>
 
+
+typedef enum {
+	_start = 0,
+	_afterInit = 1,
+	_afterYield = 2,
+} _postOrderState;
+
+struct SHTreeNode;
+
+struct SHTreeNode {
+	struct SHTreeNode *left;
+	struct SHTreeNode *right;
+	void *item;
+	uint64_t childCount;
+	int32_t height;
+};
 
 struct SHTree {
 	struct SHTreeNode *root;
@@ -23,14 +42,17 @@ struct SHTree {
 
 
 struct SHTreeIterator {
-	struct SHTreeNode **stack;
-	uint64_t stackSize;
-	uint64_t stackIdx;
+	struct SHLinkedList *stack;
 	struct SHTree *tree;
 	struct SHTreeNode *current;
-	struct SHTreeNode *result;
+	struct SHTreeNode *postOrderCurrent;
+	struct SHTreeNode *last; //for post order
 	uintptr_t version;
+	_postOrderState stateNum;
 };
+
+
+static struct SHTreeNode _lineBreakNode;
 
 
 struct SHTree *SH_tree_init(int32_t (*sortingFn)(void*, void*), void (*itemCleanup)(void*)) {
@@ -212,17 +234,6 @@ static struct SHTreeNode * _getMaxNode(struct SHTreeNode *root) {
 }
 
 
-static struct SHTreeNode *_getMinNode(struct SHTreeNode *root) {
-	if(!root) return NULL;
-	if(!root->left) return root;
-	struct SHTreeNode *node = root->left;
-	while(node) {
-		node = node->left;
-	}
-	return node;
-}
-
-
 static struct SHTreeNode *_getParent(struct SHTreeNode *root, struct SHTreeNode *child,
 	int32_t (*sortingFn)(void*, void*))
 {
@@ -240,12 +251,19 @@ static struct SHTreeNode *_getParent(struct SHTreeNode *root, struct SHTreeNode 
 	}
 }
 
-static void _nodeCleanup(struct SHTreeNode *root, void *args) {
-	struct SHTree *tree = (struct SHTree *)args;
-	if(tree->itemCleanup) {
-		tree->itemCleanup(root->item);
+static void _nodeCleanup(struct SHTreeNode *root, void (*itemCleanup)(void*)) {
+	if(!root) return;
+	if(itemCleanup) {
+		itemCleanup(root->item);
 	}
 	free(root);
+}
+
+
+static void _iteratorCleanup(struct SHTreeIterator *iter) {
+	if(!iter) return;
+	free(iter->stack);
+	free(iter);
 }
 
 
@@ -295,35 +313,7 @@ void SH_tree_deleteNthItem(struct SHTree *tree, uint64_t idx) {
 	if(SH_tree_count(tree) > beforeCount) { //if item was successfully removed
 		tree->version ^= (uintptr_t)nthNode->item;
 	}
-	_nodeCleanup(nthNode, tree);
-}
-
-
-static void _inorderTraverse(struct SHTreeNode *root, void (*nodeOp)(struct SHTreeNode *, void *), void *fnArg) {
-	if(!root) return;
-	_inorderTraverse(root->left, nodeOp, fnArg);
-	nodeOp(root, fnArg);
-	_inorderTraverse(root->right, nodeOp, fnArg);
-}
-
-
-void SH_tree_inorderTraverse(struct SHTree *tree, void (*nodeOp)(struct SHTreeNode *, void *), void *fnArg) {
-	if(!tree) return;
-	_inorderTraverse(tree->root, nodeOp, fnArg);
-}
-
-
-static void _postorderTraverse(struct SHTreeNode *root, void (*nodeOp)(struct SHTreeNode *, void *), void *fnArg) {
-	if(!root) return;
-	_postorderTraverse(root->left, nodeOp, fnArg);
-	_postorderTraverse(root->right, nodeOp, fnArg);
-	nodeOp(root, fnArg);
-}
-
-
-void SH_tree_postorderTraverse(struct SHTree *tree, void (*nodeOp)(struct SHTreeNode *, void *), void *fnArg) {
-	if(!tree) return;
-	_postorderTraverse(tree->root, nodeOp, fnArg);
+	_nodeCleanup(nthNode, tree->itemCleanup);
 }
 
 
@@ -336,8 +326,61 @@ static void _resizeIteratorStack(struct SHTreeIterator *iter) {
 }
 
 
-static struct SHTreeNode *_nextInorder(struct SHTreeIterator **iter) {
-	struct SHTreeIterator *it = *iter;
+static struct SHTreeNode *_nextPostOrder(struct SHTreeIterator *it) {
+	switch(it->stateNum) {
+		case _afterInit: goto afterInit;
+		case _afterYield: goto afterYield;
+		default:;
+	}
+	it->postOrderCurrent = it->current;
+	it->last = NULL;
+	struct SHTreeNode *result = NULL;
+	afterInit:
+	loopStart:
+	if(!it->postOrderCurrent || it->stackIdx < 1) {
+		goto fnExit;
+	}
+		if(!it->current) { goto elseBlock1; }
+			if(it->stackIdx >= it->stackSize) {
+				_resizeIteratorStack(it);
+			}
+			it->stack[it->stackIdx++] = it->current;
+			it->current = it->current->left;
+			goto loopStart;
+		
+		elseBlock1:
+			if(!it->stack[it->stackIdx]->right || it->stack[it->stackIdx]->right == it->last) {
+				goto elseBlock2;
+			}
+				it->postOrderCurrent = it->stack[it->stackIdx]->right;
+			elseBlock2:
+				result = it->stack[it->stackIdx];
+				return result;
+				afterYield:
+					it->last = it->stack[it->stackIdx];
+					it->stackIdx--;
+			goto loopStart;
+	fnExit:
+	return NULL;
+}
+
+
+void *SH_treeIterator_nextPostOrder(struct SHTreeIterator **iter) {
+	if(!iter || !(*iter)) return NULL;
+	if((*iter)->version != (*iter)->tree->version) {
+		SH_notifyOfError(SH_ILLEGAL_STATE_CHANGED, "The tree has change in the middle of traversal");
+		return NULL;
+	}
+	struct SHTreeNode *next = _nextPostOrder(*iter);
+	if(!next) {
+		_iteratorCleanup(*iter);
+		*iter = NULL;
+	}
+	return next;
+}
+
+
+static struct SHTreeNode *_nextInorder(struct SHTreeIterator *it) {
 	while(it->current && it->stackIdx > 0) {
 		if(it->current) {
 			if(it->stackIdx >= it->stackSize) {
@@ -356,20 +399,73 @@ static struct SHTreeNode *_nextInorder(struct SHTreeIterator **iter) {
 	return NULL;
 }
 
+
 void *SH_treeIterator_nextInorder(struct SHTreeIterator **iter) {
+	if(!iter || !(*iter)) return NULL;
+	if((*iter)->version != (*iter)->tree->version) {
+		SH_notifyOfError(SH_ILLEGAL_STATE_CHANGED, "The tree has change in the middle of traversal");
+		return NULL;
+	}
+	struct SHTreeNode *next = _nextInorder(*iter);
+	if(!next) {
+		_iteratorCleanup(*iter);
+		*iter = NULL;
+	}
+	return next;
+}
+
+
+static struct SHTreeNode *_nextLineOrder(struct SHTreeIterator *it, void *lineBreakElement) {
+	if(it->stackIdx >= it->stackSize) {
+		_resizeIteratorStack(it);
+	}
+	
 	
 }
 
-struct SHTreeIterator *SH_treeIterator_initInorder(struct SHTree *tree) {
+
+void *SH_treeIterator_nextLineOrder(struct SHTreeIterator **iter, void *lineBreakElement) {
+	if(!iter || !(*iter)) return NULL;
+	if((*iter)->version != (*iter)->tree->version) {
+		SH_notifyOfError(SH_ILLEGAL_STATE_CHANGED, "The tree has change in the middle of traversal");
+		return NULL;
+	}
+	struct SHTreeNode *next = _nextLineOrder(*iter);
+	if(!next) {
+		free((*iter)->stack);
+		free((*iter));
+	}
+	return next;
+}
+
+
+struct SHTreeIterator *SH_treeIterator_init(struct SHTree *tree) {
+	if(!tree) return NULL;
 	struct SHTreeIterator *iter = malloc(sizeof(struct SHTreeIterator));
 	iter->current = tree->root;
+	iter->stackSize = SH_highestBit(SH_tree_count(tree));
+	iter->stack = malloc(sizeof(void*) * (iter->stackSize + 1) * 2);
+	iter->stackIdx = 0;
+	iter->version = tree->version;
+	iter->postOrderCurrent = NULL;
+	iter->last = NULL;
+	iter->stateNum = _start;
+	return iter;
 }
 
 
 
 void SH_cleanupTree(struct SHTree *tree) {
 	if(!tree) return;
-	SH_tree_postorderTraverse(tree, _nodeCleanup, tree);
+	struct SHTreeIterator *iter = SH_treeIterator_init(tree);
+	struct SHTreeNode *node = NULL;
+	struct SHTreeNode *prev = NULL;
+	while((node = _nextPostOrder(iter))) {
+		_nodeCleanup(prev, tree->itemCleanup);
+		prev = node;
+	}
+	_nodeCleanup(prev, tree->itemCleanup);
+	_iteratorCleanup(iter);
 	free(tree);
 }
 

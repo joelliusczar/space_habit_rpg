@@ -59,9 +59,9 @@ int32_t SH_bitCount(int64_t num) {
 
 int32_t SH_highestBit(uint64_t num) {
 	if(num == 0) return 0;
-	for(int32_t i = 0; i < 64; i++) {
-		
-	}
+	int32_t count = 0;
+	while(num >>= 1) { count++; }
+	return count;
 }
 
 

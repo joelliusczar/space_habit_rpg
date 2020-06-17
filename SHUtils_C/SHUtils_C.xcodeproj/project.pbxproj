@@ -15,7 +15,7 @@
 		27553502248891A400D650AB /* SHDynamicArray.c in Sources */ = {isa = PBXBuildFile; fileRef = 27553500248891A400D650AB /* SHDynamicArray.c */; };
 		2755350E248C35BB00D650AB /* SHTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 2755350C248C35BA00D650AB /* SHTree.h */; };
 		2755350F248C35BB00D650AB /* SHTree.c in Sources */ = {isa = PBXBuildFile; fileRef = 2755350D248C35BA00D650AB /* SHTree.c */; };
-		27553517248D9AD400D650AB /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27553516248D9AD400D650AB /* Tests.m */; };
+		27553517248D9AD400D650AB /* TreeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27553516248D9AD400D650AB /* TreeTests.m */; };
 		27553519248D9AD400D650AB /* SHUtils_C in Frameworks */ = {isa = PBXBuildFile; fileRef = 271692002089758B0059A58E /* SHUtils_C */; };
 		2769C097227C81B500217480 /* SHErrorHandling.h in Headers */ = {isa = PBXBuildFile; fileRef = 27169215208BB2450059A58E /* SHErrorHandling.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2781552B21758C3F005C5279 /* SHUtilConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781552921758C3F005C5279 /* SHUtilConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -49,7 +49,7 @@
 		2755350C248C35BA00D650AB /* SHTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTree.h; sourceTree = "<group>"; };
 		2755350D248C35BA00D650AB /* SHTree.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHTree.c; sourceTree = "<group>"; };
 		27553514248D9AD300D650AB /* SHUtils_CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHUtils_CTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		27553516248D9AD400D650AB /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
+		27553516248D9AD400D650AB /* TreeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TreeTests.m; sourceTree = "<group>"; };
 		27553518248D9AD400D650AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2755351F248D9B3900D650AB /* SHUtils_C.test.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SHUtils_C.test.xcconfig; sourceTree = "<group>"; };
 		2769C096227C6F2F00217480 /* SHUtils_C.postbuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = SHUtils_C.postbuild.sh; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 		27553515248D9AD300D650AB /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				27553516248D9AD400D650AB /* Tests.m */,
+				27553516248D9AD400D650AB /* TreeTests.m */,
 				27553518248D9AD400D650AB /* Info.plist */,
 			);
 			path = Tests;
@@ -344,7 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27553517248D9AD400D650AB /* Tests.m in Sources */,
+				27553517248D9AD400D650AB /* TreeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +445,7 @@
 		};
 		2755351D248D9AD400D650AB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2755351F248D9B3900D650AB /* SHUtils_C.test.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
