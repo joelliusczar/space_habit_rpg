@@ -89,13 +89,13 @@ void * SH_list_popBack(struct SHLinkedList *queue) {
 
 void * SH_list_getBack(struct SHLinkedList *queue) {
 	if(!queue || !queue->back) return NULL;
-	return queue->back;
+	return queue->back->item;
 }
 
 
 void * SH_list_getFront(struct SHLinkedList *queue) {
 	if(!queue || !queue->front) return NULL;
-	return queue->front;
+	return queue->front->item;
 }
 
 

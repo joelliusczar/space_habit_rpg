@@ -89,12 +89,361 @@ static int32_t _numCompare(void *a, void *b) {
 	XCTAssertEqual(*result, 67);
 	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
 	XCTAssertEqual(result, NULL);
-}
-
-
--(void)testPostOrder {
+	
+	iter = SH_treeIterator_init(tree);
+	result = (int32_t *)SH_treeIterator_skipInorder(&iter, 8);
+	XCTAssertEqual(*result, 67);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(result, NULL);
+	
+	SH_tree_addItem(tree, &nums[9]);
+	XCTAssertEqual(SH_tree_count(tree), 10);
+	SH_tree_addItem(tree, &nums[10]);
+	XCTAssertEqual(SH_tree_count(tree), 11);
+	SH_tree_addItem(tree, &nums[11]);
+	XCTAssertEqual(SH_tree_count(tree), 12);
+	SH_tree_addItem(tree, &nums[12]);
+	XCTAssertEqual(SH_tree_count(tree), 13);
+	SH_tree_addItem(tree, &nums[13]);
+	XCTAssertEqual(SH_tree_count(tree), 14);
+	SH_tree_addItem(tree, &nums[14]);
+	XCTAssertEqual(SH_tree_count(tree), 15);
+	SH_tree_addItem(tree, &nums[15]);
+	XCTAssertEqual(SH_tree_count(tree), 16);
+	SH_tree_addItem(tree, &nums[16]);
+	XCTAssertEqual(SH_tree_count(tree), 17);
+	SH_tree_addItem(tree, &nums[17]);
+	XCTAssertEqual(SH_tree_count(tree), 18);
+	SH_tree_addItem(tree, &nums[18]);
+	XCTAssertEqual(SH_tree_count(tree), 19);
+	SH_tree_addItem(tree, &nums[19]);
+	XCTAssertEqual(SH_tree_count(tree), 20);
+	SH_tree_addItem(tree, &nums[20]);
+	XCTAssertEqual(SH_tree_count(tree), 21);
+	SH_tree_addItem(tree, &nums[21]);
+	XCTAssertEqual(SH_tree_count(tree), 22);
+	SH_tree_addItem(tree, &nums[22]);
+	XCTAssertEqual(SH_tree_count(tree), 23);
+	SH_tree_addItem(tree, &nums[23]);
+	XCTAssertEqual(SH_tree_count(tree), 24);
+	SH_tree_addItem(tree, &nums[24]);
+	XCTAssertEqual(SH_tree_count(tree), 25);
+	
+	
+	
+	iter = SH_treeIterator_init(tree);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(*result, 3);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(*result, 4);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(*result, 5);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(*result, 6);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(*result, 7);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(*result, 8);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(*result, 9);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(*result, 11);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(*result, 12);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(*result, 14);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(*result, 15);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(*result, 22);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(*result, 23);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(*result, 25);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(*result, 27);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(*result, 31);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(*result, 36);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(*result, 44);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(*result, 48);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(*result, 65);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(*result, 67);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(*result, 71);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(*result, 88);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(*result, 90);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(*result, 93);
+	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
+	XCTAssertEqual(result, NULL);
+	
+	SH_cleanupTree(tree);
 	
 }
 
+
+-(void)testLineAndPostOrder {
+	struct SHTree *tree = SH_tree_init(_numCompare, NULL);
+	
+	int32_t nums[25] = {
+		7, 5, 14, 6, 12, 9, 65, 67, 23, 4,
+		15, 25, 71, 31, 44, 8, 93, 3, 11, 88, 22,
+		90, 27, 48, 36
+	};
+	
+	int32_t nullBreak = -1;
+	int32_t lnBreak = -2;
+	
+	SH_tree_addItem(tree, &nums[0]);
+	SH_tree_addItem(tree, &nums[1]);
+	
+	struct SHTreeIterator *iter = SH_treeIterator_init(tree);
+	int32_t* result = (int32_t *)SH_treeIterator_nextPostOrder(&iter);
+	XCTAssertEqual(*result, 7);
+	result = (int32_t *)SH_treeIterator_nextPostOrder(&iter);
+	XCTAssertEqual(*result, 5);
+	result = (int32_t *)SH_treeIterator_nextPostOrder(&iter);
+	XCTAssertEqual(result, NULL);
+	
+	iter = SH_treeIterator_init(tree);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, 5);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, lnBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, nullBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, 7);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, lnBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, nullBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, nullBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, lnBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(result, NULL);
+	
+	SH_tree_addItem(tree, &nums[2]);
+	
+	iter = SH_treeIterator_init(tree);
+	result = (int32_t *)SH_treeIterator_nextPostOrder(&iter);
+	XCTAssertEqual(*result, 5);
+	result = (int32_t *)SH_treeIterator_nextPostOrder(&iter);
+	XCTAssertEqual(*result, 14);
+	result = (int32_t *)SH_treeIterator_nextPostOrder(&iter);
+	XCTAssertEqual(*result, 7);
+	result = (int32_t *)SH_treeIterator_nextPostOrder(&iter);
+	XCTAssertEqual(result, NULL);
+	
+	
+	iter = SH_treeIterator_init(tree);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, 7);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, lnBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, 5);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, 14);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, lnBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, nullBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, nullBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, nullBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, nullBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, lnBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(result, NULL);
+	
+	
+	SH_tree_addItem(tree, &nums[3]);
+	
+	iter = SH_treeIterator_init(tree);
+	result = (int32_t *)SH_treeIterator_nextPostOrder(&iter);
+	XCTAssertEqual(*result, 5);
+	result = (int32_t *)SH_treeIterator_nextPostOrder(&iter);
+	XCTAssertEqual(*result, 14);
+	result = (int32_t *)SH_treeIterator_nextPostOrder(&iter);
+	XCTAssertEqual(*result, 7);
+	result = (int32_t *)SH_treeIterator_nextPostOrder(&iter);
+	XCTAssertEqual(*result, 6);
+	result = (int32_t *)SH_treeIterator_nextPostOrder(&iter);
+	XCTAssertEqual(result, NULL);
+	
+	
+	iter = SH_treeIterator_init(tree);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, 6);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, lnBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, 5);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, 7);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, lnBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, nullBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, nullBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, nullBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, 14);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, lnBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, nullBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, nullBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, lnBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(result, NULL);
+}
+
+
+-(void)testLineAndPost2 {
+	struct SHTree *tree = SH_tree_init(_numCompare, NULL);
+	
+	int32_t nums[25] = {
+		7, 5, 14, 6, 12, 9, 65, 67, 23, 4,
+		15, 25, 71, 31, 44, 8, 93, 3, 11, 88, 22,
+		90, 27, 48, 36
+	};
+	
+	int32_t nullBreak = -1;
+	int32_t lnBreak = -2;
+	
+	SH_tree_addItem(tree, &nums[0]);
+	SH_tree_addItem(tree, &nums[1]);
+	SH_tree_addItem(tree, &nums[2]);
+	SH_tree_addItem(tree, &nums[3]);
+	SH_tree_addItem(tree, &nums[4]);
+	
+	struct SHTreeIterator *iter = SH_treeIterator_init(tree);
+	int32_t* result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, 12);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, lnBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, 6);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, 14);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, lnBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, 5);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, 7);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, nullBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, nullBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, lnBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, nullBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, nullBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, nullBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, nullBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, lnBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(result, NULL);
+	
+	
+	iter = SH_treeIterator_init(tree);
+	result = (int32_t *)SH_treeIterator_nextPostOrder(&iter);
+	XCTAssertEqual(*result, 5);
+	result = (int32_t *)SH_treeIterator_nextPostOrder(&iter);
+	XCTAssertEqual(*result, 7);
+	result = (int32_t *)SH_treeIterator_nextPostOrder(&iter);
+	XCTAssertEqual(*result, 6);
+	result = (int32_t *)SH_treeIterator_nextPostOrder(&iter);
+	XCTAssertEqual(*result, 14);
+	result = (int32_t *)SH_treeIterator_nextPostOrder(&iter);
+	XCTAssertEqual(*result, 12);
+	result = (int32_t *)SH_treeIterator_nextPostOrder(&iter);
+	XCTAssertEqual(result, NULL);
+}
+
+
+-(void)testLineAndPost3 {
+	struct SHTree *tree = SH_tree_init(_numCompare, NULL);
+	int32_t nums[25] = {
+		7, 5, 14, 6, 12, 9, 65, 67, 23, 4,
+		15, 25, 71, 31, 44, 8, 93, 3, 11, 88, 22,
+		90, 27, 48, 36
+	};
+	
+	int32_t nullBreak = -1;
+	int32_t lnBreak = -2;
+	
+	SH_tree_addItem(tree, &nums[0]);
+	SH_tree_addItem(tree, &nums[1]);
+	SH_tree_addItem(tree, &nums[2]);
+	SH_tree_addItem(tree, &nums[3]);
+	SH_tree_addItem(tree, &nums[4]);
+	SH_tree_addItem(tree, &nums[5]);
+	
+	struct SHTreeIterator *iter = SH_treeIterator_init(tree);
+	int32_t* result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, &nullBreak, &lnBreak);
+	XCTAssertEqual(*result, 7);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, NULL, &lnBreak);
+	XCTAssertEqual(*result, lnBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, NULL, &lnBreak);
+	XCTAssertEqual(*result, 6);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, NULL, &lnBreak);
+	XCTAssertEqual(*result, 12);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, NULL, &lnBreak);
+	XCTAssertEqual(*result, lnBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, NULL, &lnBreak);
+	XCTAssertEqual(*result, 5);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, NULL, &lnBreak);
+	XCTAssertEqual(*result, 9);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, NULL, &lnBreak);
+	XCTAssertEqual(*result, 14);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, NULL, &lnBreak);
+	XCTAssertEqual(*result, lnBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, NULL, &lnBreak);
+	XCTAssertEqual(*result, lnBreak);
+	result = (int32_t *)SH_treeIterator_nextLineOrder(&iter, NULL, &lnBreak);
+	XCTAssertEqual(result, NULL);
+	
+	iter = SH_treeIterator_init(tree);
+	result = (int32_t *)SH_treeIterator_nextPostOrder(&iter);
+	XCTAssertEqual(*result, 5);
+	result = (int32_t *)SH_treeIterator_nextPostOrder(&iter);
+	XCTAssertEqual(*result, 6);
+	result = (int32_t *)SH_treeIterator_nextPostOrder(&iter);
+	XCTAssertEqual(*result, 9);
+	result = (int32_t *)SH_treeIterator_nextPostOrder(&iter);
+	XCTAssertEqual(*result, 14);
+	result = (int32_t *)SH_treeIterator_nextPostOrder(&iter);
+	XCTAssertEqual(*result, 12);
+	result = (int32_t *)SH_treeIterator_nextPostOrder(&iter);
+	XCTAssertEqual(*result, 7);
+	result = (int32_t *)SH_treeIterator_nextPostOrder(&iter);
+	XCTAssertEqual(result, NULL);
+}
 
 @end

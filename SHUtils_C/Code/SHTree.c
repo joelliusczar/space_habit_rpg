@@ -22,6 +22,7 @@ typedef enum {
 	_afterInit = 1,
 	_afterYield = 2,
 	_afterLineBreak = 3,
+	_loopStart = 4,
 } _postOrderState;
 
 struct SHTreeNode;
@@ -55,6 +56,7 @@ struct SHTreeIterator {
 
 
 static struct SHTreeNode _lineBreakNode;
+static struct SHTreeNode _nullNode;
 
 
 struct SHTree *SH_tree_init(int32_t (*sortingFn)(void*, void*), void (*itemCleanup)(void*)) {
@@ -149,14 +151,12 @@ static struct SHTreeNode *_rebalance(struct SHTreeNode *root) {
 	if(_isRightHeavy(root)) {
 		if(_isLeftHeavy(root->right)) {
 			root->right = _rotateRight(root->right);
-			return _rotateLeft(root);
 		}
 		return _rotateLeft(root);
 	}
 	else if(_isLeftHeavy(root)) {
 		if(_isRightHeavy(root->left)) {
 			root->left = _rotateLeft(root->left);
-			return _rotateRight(root);
 		}
 		return _rotateRight(root);
 	}
@@ -344,11 +344,10 @@ static struct SHTreeNode *_nextPostOrder(struct SHTreeIterator *it) {
 	it->last = NULL;
 	it->stateNum = _afterYield;
 	afterInit:
-	loopStart:
-	while(it->postOrderCurrent && SH_list_count(it->stack) > 0) {
-		if(it->current) {
-			SH_list_pushBack(it->stack, it->current);
-			it->current = it->current->left;
+	while(it->postOrderCurrent || SH_list_count(it->stack) > 0) {
+		if(it->postOrderCurrent) {
+			SH_list_pushBack(it->stack, it->postOrderCurrent);
+			it->postOrderCurrent = it->postOrderCurrent->left;
 		}
 		else {
 			top = SH_list_getBack(it->stack);
@@ -360,6 +359,7 @@ static struct SHTreeNode *_nextPostOrder(struct SHTreeIterator *it) {
 				it->stateNum = _afterYield;
 				return result;
 				afterYield:
+					it->stateNum = _afterInit;
 					it->last =  SH_list_popBack(it->stack);
 				
 			}
@@ -444,24 +444,35 @@ void *SH_treeIterator_nextInorder(struct SHTreeIterator **iter) {
 }
 
 
-static struct SHTreeNode *_nextLineOrder(struct SHTreeIterator *it, void *lineBreakElement) {
+static struct SHTreeNode *_nextLineOrder(struct SHTreeIterator *it, void *nullElement, void *lineBreakElement) {
 	struct SHLinkedList *temp = NULL;
 	switch(it->stateNum) {
+		case _afterInit: goto afterInit;
 		case _afterYield: goto afterYield;
 		case _afterLineBreak: goto afterLineBreak;
+		case _loopStart: goto beforeInnerLoop;
 		default:;
 	}
 	SH_list_pushBack(it->stack, it->current);
+	afterInit:
 	while(SH_list_count(it->stack) > 0) {
+		beforeInnerLoop:
 		while(SH_list_count(it->stack) > 0) {
 			it->current = SH_list_popFront(it->stack);
 			it->stateNum = _afterYield;
+			if(!it->current) {
+				if(nullElement) {
+					_nullNode.item = nullElement;
+					it->stateNum = _loopStart;
+					return &_nullNode;
+				}
+				continue;
+			}
 			return it->current;
 			afterYield:
-				if(it->current) {
-					SH_list_pushBack(it->backupStack, it->current->left);
-					SH_list_pushBack(it->backupStack, it->current->right);
-				}
+				it->stateNum = _loopStart;
+				SH_list_pushBack(it->backupStack, it->current->left);
+				SH_list_pushBack(it->backupStack, it->current->right);
 		}
 		if(lineBreakElement) {
 			_lineBreakNode.item = lineBreakElement;
@@ -469,6 +480,7 @@ static struct SHTreeNode *_nextLineOrder(struct SHTreeIterator *it, void *lineBr
 			return &_lineBreakNode;
 		}
 		afterLineBreak:
+			it->stateNum = _afterInit;
 			temp = it->stack;
 			it->stack = it->backupStack;
 			it->backupStack = temp;
@@ -477,21 +489,23 @@ static struct SHTreeNode *_nextLineOrder(struct SHTreeIterator *it, void *lineBr
 }
 
 
-void *SH_treeIterator_skipLineOrder(struct SHTreeIterator **iter, void *lineBreakElement, uint64_t skip) {
+void *SH_treeIterator_skipLineOrder(struct SHTreeIterator **iter, void *nullElement, void *lineBreakElement,
+	uint64_t skip)
+{
 	if(!iter || !(*iter)) return NULL;
 	if((*iter)->version != (*iter)->tree->version) {
 		SH_notifyOfError(SH_ILLEGAL_STATE_CHANGED, "The tree has change in the middle of traversal");
 		return NULL;
 	}
 	for(uint64_t i = 0; i < skip; skip++) {
-		struct SHTreeNode *next = _nextLineOrder(*iter, lineBreakElement);
+		struct SHTreeNode *next = _nextLineOrder(*iter, nullElement, lineBreakElement);
 		if(!next) {
 			_iteratorCleanup(*iter);
 			*iter = NULL;
 			return NULL;
 		}
 	}
-	struct SHTreeNode *next = _nextLineOrder(*iter, lineBreakElement);
+	struct SHTreeNode *next = _nextLineOrder(*iter, nullElement, lineBreakElement);
 	if(!next) {
 		_iteratorCleanup(*iter);
 		*iter = NULL;
@@ -501,8 +515,8 @@ void *SH_treeIterator_skipLineOrder(struct SHTreeIterator **iter, void *lineBrea
 }
 
 
-void *SH_treeIterator_nextLineOrder(struct SHTreeIterator **iter, void *lineBreakElement) {
-	return SH_treeIterator_skipLineOrder(iter, lineBreakElement, 0);
+void *SH_treeIterator_nextLineOrder(struct SHTreeIterator **iter, void *nullElement, void *lineBreakElement) {
+	return SH_treeIterator_skipLineOrder(iter, nullElement, lineBreakElement, 0);
 }
 
 
