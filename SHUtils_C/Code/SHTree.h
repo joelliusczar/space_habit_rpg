@@ -28,6 +28,8 @@ void *SH_treeIterator_nextInorder(struct SHTreeIterator **iter);
 void *SH_treeIterator_skipInorder(struct SHTreeIterator **iter, uint64_t skip);
 void *SH_treeIterator_nextPostOrder(struct SHTreeIterator **iter);
 void *SH_treeIterator_skipPostOrder(struct SHTreeIterator **iter, uint64_t skip);
+void *SH_treeIterator_nextPreorder(struct SHTreeIterator **iter);
+void *SH_treeIterator_skipPreorder(struct SHTreeIterator **iter, uint64_t skip);
 void *SH_treeIterator_nextLineOrder(struct SHTreeIterator **iter, void *nullElement, void *lineBreakElement);
 void *SH_treeIterator_skipLineOrder(struct SHTreeIterator **iter, void *nullElement, void *lineBreakElement,
 	uint64_t skip);
