@@ -28,13 +28,14 @@ char * SH_buildWeekDescription(int32_t weekHash) {
 	const int32_t commaAndSpace = 2;
 	const int32_t extra = dayNameLen + commaAndSpace;
 	char *result = malloc(sizeof(char) * ((activeDayCount * extra) + SH_NULL_CHAR_OFFSET));
-	result = SH_constStrCopy("");
+	*result = 0;
+	char *cat = result;
 	for(int32_t idx = 0; idx < SH_DAYS_IN_WEEK && 0 < activeDayCount; idx++) {
 		if(idx & weekHash) {
-			strcat(result, SH_WEEKDAYS[idx]);
+			cat = strcat(cat, SH_WEEKDAYS[idx]);
 			activeDayCount--;
 			if(activeDayCount > 0) {
-				strcat(result, ", ");
+				cat = strcat(cat, ", ");
 			}
 		}
 	}

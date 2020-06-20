@@ -43,7 +43,7 @@ static int32_t _numCompare(void *a, void *b) {
 		SH_tree_addItem(tree, &nums[i]);
 	}
 	
-	int32_t *result =  SH_tree_findNthItem(tree, 0);
+	int32_t *result = SH_tree_findNthItem(tree, 0);
 	XCTAssertEqual(*result, 3);
 	result =  SH_tree_findNthItem(tree, 1);
 	XCTAssertEqual(*result, 4);
@@ -93,6 +93,41 @@ static int32_t _numCompare(void *a, void *b) {
 	XCTAssertEqual(*result, 90);
 	result =  SH_tree_findNthItem(tree, 24);
 	XCTAssertEqual(*result, 93);
+}
+
+
+-(void)testTreeYTFindItem {
+	struct SHTree *tree = SH_tree_init(_numCompare, NULL);
+	int32_t nums[12] = { 43, 18, 22, 9, 21, 6, 8, 20, 63, 50, 62, 51 };
+	
+	for(int32_t i = 0; i < 12; i++) {
+		SH_tree_addItem(tree, &nums[i]);
+	}
+	
+	int32_t *result = SH_tree_findNthItem(tree, 0);
+	XCTAssertEqual(*result, 6);
+	result =  SH_tree_findNthItem(tree, 1);
+	XCTAssertEqual(*result, 8);
+	result =  SH_tree_findNthItem(tree, 2);
+	XCTAssertEqual(*result, 9);
+	result =  SH_tree_findNthItem(tree, 3);
+	XCTAssertEqual(*result, 18);
+	result =  SH_tree_findNthItem(tree, 4);
+	XCTAssertEqual(*result, 20);
+	result =  SH_tree_findNthItem(tree, 5);
+	XCTAssertEqual(*result, 21);
+	result =  SH_tree_findNthItem(tree, 6);
+	XCTAssertEqual(*result, 22);
+	result =  SH_tree_findNthItem(tree, 7);
+	XCTAssertEqual(*result, 43);
+	result =  SH_tree_findNthItem(tree, 8);
+	XCTAssertEqual(*result, 50);
+	result =  SH_tree_findNthItem(tree, 9);
+	XCTAssertEqual(*result, 51);
+	result =  SH_tree_findNthItem(tree, 10);
+	XCTAssertEqual(*result, 62);
+	result =  SH_tree_findNthItem(tree, 11);
+	XCTAssertEqual(*result, 63);
 }
 
 @end

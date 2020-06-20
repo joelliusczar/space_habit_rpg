@@ -24,6 +24,11 @@
 		27B512C52496B14400727905 /* SHLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 27B512C32496B14400727905 /* SHLinkedList.c */; };
 		27B512C7249BDF8C00727905 /* SHTestTreeFromYTVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B512C6249BDF8C00727905 /* SHTestTreeFromYTVideo.m */; };
 		27B512C9249C5F6300727905 /* SHTreeFindItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B512C8249C5F6300727905 /* SHTreeFindItemTests.m */; };
+		27B512CB249C685B00727905 /* SHTestTreeDelete.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B512CA249C685B00727905 /* SHTestTreeDelete.m */; };
+		27B512CD249D471C00727905 /* SHTestTreeDeleteRoots.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B512CC249D471C00727905 /* SHTestTreeDeleteRoots.m */; };
+		27B512CF249DA56000727905 /* SHTestRandomTreeFuncs.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B512CE249DA56000727905 /* SHTestRandomTreeFuncs.m */; };
+		27B512D2249DBADB00727905 /* SHPrintTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B512D0249DBADB00727905 /* SHPrintTree.h */; };
+		27B512D3249DBADB00727905 /* SHPrintTree.c in Sources */ = {isa = PBXBuildFile; fileRef = 27B512D1249DBADB00727905 /* SHPrintTree.c */; };
 		27DF9C4E20956D6300F98023 /* SHGenAlgos.h in Headers */ = {isa = PBXBuildFile; fileRef = 27DF9C4C20956D6300F98023 /* SHGenAlgos.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27DF9C4F20956D6300F98023 /* SHGenAlgos.c in Sources */ = {isa = PBXBuildFile; fileRef = 27DF9C4D20956D6300F98023 /* SHGenAlgos.c */; };
 /* End PBXBuildFile section */
@@ -66,6 +71,11 @@
 		27B512C32496B14400727905 /* SHLinkedList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHLinkedList.c; sourceTree = "<group>"; };
 		27B512C6249BDF8C00727905 /* SHTestTreeFromYTVideo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTestTreeFromYTVideo.m; sourceTree = "<group>"; };
 		27B512C8249C5F6300727905 /* SHTreeFindItemTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTreeFindItemTests.m; sourceTree = "<group>"; };
+		27B512CA249C685B00727905 /* SHTestTreeDelete.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTestTreeDelete.m; sourceTree = "<group>"; };
+		27B512CC249D471C00727905 /* SHTestTreeDeleteRoots.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTestTreeDeleteRoots.m; sourceTree = "<group>"; };
+		27B512CE249DA56000727905 /* SHTestRandomTreeFuncs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTestRandomTreeFuncs.m; sourceTree = "<group>"; };
+		27B512D0249DBADB00727905 /* SHPrintTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHPrintTree.h; sourceTree = "<group>"; };
+		27B512D1249DBADB00727905 /* SHPrintTree.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHPrintTree.c; sourceTree = "<group>"; };
 		27BB2905215207A3003225BB /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		27BB29132159CE1E003225BB /* vars.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = vars.mk; sourceTree = "<group>"; };
 		27DF9C4C20956D6300F98023 /* SHGenAlgos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHGenAlgos.h; sourceTree = "<group>"; };
@@ -160,6 +170,11 @@
 				27553518248D9AD400D650AB /* Info.plist */,
 				27B512C6249BDF8C00727905 /* SHTestTreeFromYTVideo.m */,
 				27B512C8249C5F6300727905 /* SHTreeFindItemTests.m */,
+				27B512CA249C685B00727905 /* SHTestTreeDelete.m */,
+				27B512CC249D471C00727905 /* SHTestTreeDeleteRoots.m */,
+				27B512CE249DA56000727905 /* SHTestRandomTreeFuncs.m */,
+				27B512D0249DBADB00727905 /* SHPrintTree.h */,
+				27B512D1249DBADB00727905 /* SHPrintTree.c */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -200,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				275534C12479E39C00D650AB /* SHSerialQueue.h in Headers */,
+				27B512D2249DBADB00727905 /* SHPrintTree.h in Headers */,
 				2755350E248C35BB00D650AB /* SHTree.h in Headers */,
 				2716922D20916ED50059A58E /* SHArray.h in Headers */,
 				2781552B21758C3F005C5279 /* SHUtilConstants.h in Headers */,
@@ -339,6 +355,7 @@
 			files = (
 				2755350F248C35BB00D650AB /* SHTree.c in Sources */,
 				27553502248891A400D650AB /* SHDynamicArray.c in Sources */,
+				27B512D3249DBADB00727905 /* SHPrintTree.c in Sources */,
 				27B512C52496B14400727905 /* SHLinkedList.c in Sources */,
 				275534C22479E39C00D650AB /* SHSerialQueue.c in Sources */,
 				2781552C21758C3F005C5279 /* SHUtilConstants.c in Sources */,
@@ -353,6 +370,9 @@
 				27B512C7249BDF8C00727905 /* SHTestTreeFromYTVideo.m in Sources */,
 				27553517248D9AD400D650AB /* SHTreeIterateTests.m in Sources */,
 				27B512C9249C5F6300727905 /* SHTreeFindItemTests.m in Sources */,
+				27B512CD249D471C00727905 /* SHTestTreeDeleteRoots.m in Sources */,
+				27B512CB249C685B00727905 /* SHTestTreeDelete.m in Sources */,
+				27B512CF249DA56000727905 /* SHTestRandomTreeFuncs.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

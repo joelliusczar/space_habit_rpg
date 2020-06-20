@@ -23,6 +23,11 @@ void *SH_tree_findNthItem(struct SHTree *tree, uint64_t idx);
 void SH_tree_deleteNthItem(struct SHTree *tree, uint64_t idx);
 void SH_cleanupTree(struct SHTree *tree);
 
+void SH_tree_setLineBreakSentinel(struct SHTree *tree, void *sentinel);
+void *SH_tree_getLineBreakSentinel(struct SHTree *tree);
+void SH_tree_setNullItemSentinel(struct SHTree *tree, void *sentinel);
+void *SH_tree_getNullItemSentinel(struct SHTree *tree);
+
 struct SHTreeIterator *SH_treeIterator_init(struct SHTree *tree);
 void *SH_treeIterator_nextInorder(struct SHTreeIterator **iter);
 void *SH_treeIterator_skipInorder(struct SHTreeIterator **iter, uint64_t skip);
@@ -30,8 +35,9 @@ void *SH_treeIterator_nextPostOrder(struct SHTreeIterator **iter);
 void *SH_treeIterator_skipPostOrder(struct SHTreeIterator **iter, uint64_t skip);
 void *SH_treeIterator_nextPreorder(struct SHTreeIterator **iter);
 void *SH_treeIterator_skipPreorder(struct SHTreeIterator **iter, uint64_t skip);
-void *SH_treeIterator_nextLineOrder(struct SHTreeIterator **iter, void *nullElement, void *lineBreakElement);
-void *SH_treeIterator_skipLineOrder(struct SHTreeIterator **iter, void *nullElement, void *lineBreakElement,
-	uint64_t skip);
+void *SH_treeIterator_nextLineOrder(struct SHTreeIterator **iter);
+void *SH_treeIterator_skipLineOrder(struct SHTreeIterator **iter, uint64_t skip);
+
+char * SH_tree_printLineOrder(struct SHTree *tree, char *(*itemDescFn)(void *));
 
 #endif /* SHTree_h */

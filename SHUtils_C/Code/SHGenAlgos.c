@@ -42,7 +42,7 @@ double blockoptimization kahanSum(const double* const nums, int64_t len){
 char * SH_constStrCopy(const char * const str) {
 	uint64_t len = strlen(str);
 	char *copy = malloc(sizeof(char) * (len + SH_NULL_CHAR_OFFSET)); //plus one for \0 char
-	strcpy(copy,str);
+	strncpy(copy, str, len + SH_NULL_CHAR_OFFSET);
 	return copy;
 }
 
