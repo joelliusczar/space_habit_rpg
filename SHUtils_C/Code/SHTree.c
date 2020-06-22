@@ -266,23 +266,6 @@ static struct SHTreeNode * _getMaxNode(struct SHTreeNode *root) {
 }
 
 
-static struct SHTreeNode *_getParent(struct SHTreeNode *root, struct SHTreeNode *child,
-	int32_t (*sortingFn)(void*, void*))
-{
-	if(!root) return NULL;
-	if(root->left == child || root->right == child) return root;
-	int32_t compareResult = sortingFn(root->item, child->item);
-	if(compareResult < 0) {
-		return _getParent(root->left, child, sortingFn);
-	}
-	else if(compareResult > 0) {
-		return _getParent(root->right, child, sortingFn);
-	}
-	else {
-		return NULL;
-	}
-}
-
 
 static void _nodeCleanup(struct SHTreeNode *root, void (*itemCleanup)(void*)) {
 	if(!root) return;
@@ -295,23 +278,23 @@ static void _nodeCleanup(struct SHTreeNode *root, void (*itemCleanup)(void*)) {
 
 static void _iteratorCleanup(struct SHTreeIterator *iter) {
 	if(!iter) return;
-	SH_list_cleanup(iter->stack);
-	SH_list_cleanup(iter->backupStack);
+	SH_list_cleanup(&iter->stack);
+	SH_list_cleanup(&iter->backupStack);
 	free(iter);
 }
 
 
-static struct SHTreeNode *_deleteNode(struct SHTreeNode *root,struct SHTreeNode *deleted,
+static struct SHTreeNode *_detachNode(struct SHTreeNode *root,struct SHTreeNode *detached,
 	int32_t (*sortingFn)(void*, void*))
 {
 	if(!root) return NULL;
 	struct SHTreeNode *newRoot = root;
-	int32_t compareResult = sortingFn(root->item, deleted->item);
+	int32_t compareResult = sortingFn(root->item, detached->item);
 	if(compareResult < 0){
-		root->left = _deleteNode(root->left, deleted, sortingFn);
+		root->left = _detachNode(root->left, detached, sortingFn);
 	}
 	else if(compareResult > 0) {
-		root->right = _deleteNode(root->right, deleted, sortingFn);
+		root->right = _detachNode(root->right, detached, sortingFn);
 	}
 	else {
 		if(!root->left) {
@@ -322,7 +305,7 @@ static struct SHTreeNode *_deleteNode(struct SHTreeNode *root,struct SHTreeNode 
 		}
 		else {
 			newRoot = _getMaxNode(root->left);
-			newRoot->left = _deleteNode(root->left, newRoot, sortingFn);
+			newRoot->left = _detachNode(root->left, newRoot, sortingFn);
 			newRoot->right = root->right;
 		}
 	}
@@ -340,7 +323,7 @@ void SH_tree_deleteNthItem(struct SHTree *tree, uint64_t idx) {
 	if(!tree || !tree->root) return;
 	uint64_t beforeCount = SH_tree_count(tree);
 	struct SHTreeNode *nthNode = _findNthItem(tree->root, idx, 0);
-	tree->root = _deleteNode(tree->root, nthNode, tree->sortingFn);
+	tree->root = _detachNode(tree->root, nthNode, tree->sortingFn);
 	if(SH_tree_count(tree) > beforeCount) { //if item was successfully removed
 		tree->version ^= (uintptr_t)nthNode->item;
 	}
@@ -548,7 +531,7 @@ struct SHTreeIterator *SH_treeIterator_init(struct SHTree *tree) {
 
 
 
-void SH_cleanupTree(struct SHTree *tree) {
+void SH_tree_cleanup(struct SHTree *tree) {
 	if(!tree) return;
 	struct SHTreeIterator *iter = SH_treeIterator_init(tree);
 	struct SHTreeNode *node = NULL;
@@ -566,6 +549,11 @@ void SH_cleanupTree(struct SHTree *tree) {
 	free(tree);
 }
 
+
+void SH_tree_cleanup2(void * args) {
+	struct SHTree *tree = (struct SHTree *)args;
+	SH_tree_cleanup(tree);
+}
 
 char * SH_tree_printLineOrder(struct SHTree *tree, char *(*itemDescFn)(void *)) {
 	if(!tree || !itemDescFn) return NULL;

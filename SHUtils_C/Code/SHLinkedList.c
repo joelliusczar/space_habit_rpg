@@ -9,7 +9,6 @@
 #include "SHLinkedList.h"
 #include <stdlib.h>
 
-struct SHLLNode;
 
 struct SHLLNode {
 	void *item;
@@ -20,12 +19,12 @@ struct SHLLNode {
 struct SHLinkedList {
 	struct SHLLNode *front;
 	struct SHLLNode *back;
-	void (*itemCleanup)(void*);
+	void (*itemCleanup)(void**);
 	uint64_t count;
 };
 
 
-struct SHLinkedList *SH_list_init(void (*itemCleanup)(void*)) {
+struct SHLinkedList *SH_list_init(void (*itemCleanup)(void**)) {
 	struct SHLinkedList *list = malloc(sizeof(struct SHLinkedList));
 	list->itemCleanup = itemCleanup;
 	list->back = NULL;
@@ -35,34 +34,35 @@ struct SHLinkedList *SH_list_init(void (*itemCleanup)(void*)) {
 }
 
 
-void SH_list_pushBack(struct SHLinkedList *queue, void *item) {
-	if(!queue) return;
-	queue->count++;
-	if(!queue->front) {
-		queue->front = malloc(sizeof(struct SHLLNode));
-		*queue->front = (struct SHLLNode){0};
-		queue->back = queue->front;
-		queue->front->item = item;
+
+void SH_list_pushBack(struct SHLinkedList *list, void *item) {
+	if(!list) return;
+	list->count++;
+	if(!list->front) {
+		list->front = malloc(sizeof(struct SHLLNode));
+		*list->front = (struct SHLLNode){0};
+		list->back = list->front;
+		list->front->item = item;
 		return;
 	}
-	queue->back->next = malloc(sizeof(struct SHLLNode));
-	*queue->back->next = (struct SHLLNode){0};
-	queue->back->next->prev = queue->back;
-	queue->back = queue->back->next;
-	queue->back->item = item;
+	list->back->next = malloc(sizeof(struct SHLLNode));
+	*list->back->next = (struct SHLLNode){0};
+	list->back->next->prev = list->back;
+	list->back = list->back->next;
+	list->back->item = item;
 }
 
 
-void * SH_list_popFront(struct SHLinkedList *queue) {
-	if(!queue || !queue->front) return NULL;
-	queue->count--;
-	struct SHLLNode *front = queue->front;
-	queue->front = front->next;
-	if(queue->front) {
-		queue->front->prev = NULL;
+void * SH_list_popFront(struct SHLinkedList *list) {
+	if(!list || !list->front) return NULL;
+	list->count--;
+	struct SHLLNode *front = list->front;
+	list->front = front->next;
+	if(list->front) {
+		list->front->prev = NULL;
 	}
 	else {
-		queue->back = NULL;
+		list->back = NULL;
 	}
 	void *item = front->item;
 	free(front);
@@ -70,16 +70,16 @@ void * SH_list_popFront(struct SHLinkedList *queue) {
 }
 
 
-void * SH_list_popBack(struct SHLinkedList *queue) {
-	if(!queue || !queue->back) return NULL;
-	queue->count--;
-	struct SHLLNode *back = queue->back;
-	queue->back = back->prev;
-	if(queue->back) {
-		queue->back->next = NULL;
+void * SH_list_popBack(struct SHLinkedList *list) {
+	if(!list || !list->back) return NULL;
+	list->count--;
+	struct SHLLNode *back = list->back;
+	list->back = back->prev;
+	if(list->back) {
+		list->back->next = NULL;
 	}
 	else {
-		queue->front = NULL;
+		list->front = NULL;
 	}
 	void *item = back->item;
 	free(back);
@@ -87,26 +87,26 @@ void * SH_list_popBack(struct SHLinkedList *queue) {
 }
 
 
-void * SH_list_getBack(struct SHLinkedList *queue) {
-	if(!queue || !queue->back) return NULL;
-	return queue->back->item;
+void * SH_list_getBack(struct SHLinkedList *list) {
+	if(!list || !list->back) return NULL;
+	return list->back->item;
 }
 
 
-void * SH_list_getFront(struct SHLinkedList *queue) {
-	if(!queue || !queue->front) return NULL;
-	return queue->front->item;
+void * SH_list_getFront(struct SHLinkedList *list) {
+	if(!list || !list->front) return NULL;
+	return list->front->item;
 }
 
 
-uint64_t SH_list_count(struct SHLinkedList *queue) {
-	if(!queue) return 0;
-	return queue->count;
+uint64_t SH_list_count(struct SHLinkedList *list) {
+	if(!list) return 0;
+	return list->count;
 }
 
 
-void SH_listIterator_init(struct SHLinkedList *queue, struct SHLinkedListIterator *iter) {
-	iter->current = queue->front;
+void SH_listIterator_init(struct SHLinkedList *list, struct SHLinkedListIterator *iter) {
+	iter->current = list->front;
 }
 
 
@@ -117,16 +117,20 @@ void *SH_listIterator_next(struct SHLinkedListIterator *iter) {
 }
 
 
-void SH_list_cleanup(struct SHLinkedList *queue) {
-	if(!queue) return;
-	while(queue->front) {
-		if(queue->itemCleanup) {
-			queue->itemCleanup(queue->front->item);
+void SH_list_cleanup(struct SHLinkedList **listP2) {
+	if(!listP2) return;
+	struct SHLinkedList *list = *listP2;
+	if(!list) return;
+	while(list->front) {
+		if(list->itemCleanup) {
+			list->itemCleanup(list->front->item);
 		}
-		struct SHLLNode *trash = queue->front;
-		queue->front = queue->front->next;
+		struct SHLLNode *trash = list->front;
+		list->front = list->front->next;
 		free(trash);
+		trash = NULL;
 	}
-	free(queue);
+	free(list);
+	*listP2 = NULL;
 }
 

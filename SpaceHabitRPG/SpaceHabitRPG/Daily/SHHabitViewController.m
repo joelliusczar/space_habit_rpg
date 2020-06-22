@@ -177,7 +177,7 @@ struct _insertArgs {
 
 static SHErrorCode _insertNewHabit(void *args, struct SHQueueStore *store) {
 	struct _insertArgs *insertArgs = (struct _insertArgs *)args;
-	struct SHQueueStoreItem *storeItem = (struct SHQueueStoreItem *)SH_getUserItemFromStore(store);
+	struct SHQueueStoreItem *storeItem = (struct SHQueueStoreItem *)SH_serialQueue_getUserItem(store);
 	SHErrorCode status = SH_NO_ERROR;
 	int64_t insertedPk = SH_NOT_FOUND;
 	SHHabitViewController *bSelf = (__bridge SHHabitViewController*)insertArgs->bSelf;
@@ -229,7 +229,7 @@ static void _cleanUpInsert(void* args) {
 			.habit = habit,
 			.bSelf = (__bridge void*)bSelf,
 		};
-		if((status = SH_addOp(appDel.dbQueue, _insertNewHabit, insertArgs, _cleanUpInsert)) != SH_NO_ERROR) { ; }
+		if((status = SH_serialQueue_addOp(appDel.dbQueue, _insertNewHabit, insertArgs, _cleanUpInsert)) != SH_NO_ERROR) { ; }
 	};
 	self.nameViewController.headline.text = [NSString stringWithUTF8String:self.tableName];
 	[self.central arrangeAndPushChildVCToFront:self.nameViewController];

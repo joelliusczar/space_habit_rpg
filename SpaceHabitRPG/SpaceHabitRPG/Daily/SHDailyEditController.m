@@ -52,7 +52,7 @@ static SHErrorCode _fetchDaily(void *args, struct SHQueueStore *store) {
 	[NSOperationQueue.mainQueue addOperationWithBlock:^{
 		[editController showLoadingDisplay:YES];
 	}];
-	struct SHQueueStoreItem *storeItem = (struct SHQueueStoreItem *)SH_getUserItemFromStore(store);
+	struct SHQueueStoreItem *storeItem = (struct SHQueueStoreItem *)SH_serialQueue_getUserItem(store);
 	if((status = SH_fetchSingleDaily(storeItem->db, editController.pk, editController.daily) ) != SH_NO_ERROR) {
 		return status;
 	}
@@ -88,7 +88,7 @@ static void _dailyCleanup(void *arg) {
 	self.daily = malloc(sizeof(struct SHDaily));
 	self.editorContainerController.habit = (struct SHHabitBase *)self.daily;
 	self.editorContainerController.habitCleanup = _dailyCleanup;
-	if((status = SH_addOp(queue, _fetchDaily, (__bridge void *)(self), NULL)) != SH_NO_ERROR) { ; }
+	if((status = SH_serialQueue_addOp(queue, _fetchDaily, (__bridge void *)(self), NULL)) != SH_NO_ERROR) { ; }
 }
 
 /*
@@ -170,7 +170,7 @@ static void _dailyCleanup(void *arg) {
 static SHErrorCode _updateDaily(void *args, struct SHQueueStore *store) {
 	SHErrorCode status = SH_NO_ERROR;
 	SHDailyEditController *editController = (__bridge SHDailyEditController *)args;
-	struct SHQueueStoreItem *storeItem = (struct SHQueueStoreItem *)SH_getUserItemFromStore(store);
+	struct SHQueueStoreItem *storeItem = (struct SHQueueStoreItem *)SH_serialQueue_getUserItem(store);
 	if((status = SH_updateDaily(storeItem->db, editController.daily) ) != SH_NO_ERROR) { ; }
 	return status;
 }
@@ -178,14 +178,14 @@ static SHErrorCode _updateDaily(void *args, struct SHQueueStore *store) {
 
 -(void)saveEdit{
 	SHErrorCode status = SH_NO_ERROR;
-	if((status = SH_addOp(self.queue, _updateDaily, (__bridge void*)self, NULL)) != SH_NO_ERROR) {}
+	if((status = SH_serialQueue_addOp(self.queue, _updateDaily, (__bridge void*)self, NULL)) != SH_NO_ERROR) {}
 }
 
 
 static SHErrorCode _deleteDaily(void *args, struct SHQueueStore *store) {
 	SHErrorCode status = SH_NO_ERROR;
 	SHDailyEditController *editController = (__bridge SHDailyEditController *)args;
-	struct SHQueueStoreItem *storeItem = (struct SHQueueStoreItem *)SH_getUserItemFromStore(store);
+	struct SHQueueStoreItem *storeItem = (struct SHQueueStoreItem *)SH_serialQueue_getUserItem(store);
 	if((status = SH_deleteRecord(storeItem->db, editController.tableName, editController.pk) ) != SH_NO_ERROR) { ; }
 	return status;
 }
@@ -193,7 +193,7 @@ static SHErrorCode _deleteDaily(void *args, struct SHQueueStore *store) {
 
 -(void)deleteModel{
 	SHErrorCode status = SH_NO_ERROR;
-	if((status = SH_addOp(self.queue, _deleteDaily, (__bridge void*)self, NULL)) != SH_NO_ERROR) {}
+	if((status = SH_serialQueue_addOp(self.queue, _deleteDaily, (__bridge void*)self, NULL)) != SH_NO_ERROR) {}
 }
 
 

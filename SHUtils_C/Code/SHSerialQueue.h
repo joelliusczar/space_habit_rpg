@@ -14,12 +14,22 @@
 
 struct SHSerialQueue;
 struct SHQueueStore;
-SHErrorCode SH_startSerialQueueLoop(struct SHSerialQueue *queue);
-SHErrorCode SH_addOp(struct SHSerialQueue *queue,
-	SHErrorCode (*fn)(void*, struct SHQueueStore *), void *fnArgs, void (*cleanupFn)(void*));
-struct SHSerialQueue * SH_initSerialQueue(void *(*getStoreItem)(void*), void (*storeCleanup)(void*),
-	void *initArgs, void (*initArgsCleanup)(void*));
-void *SH_getUserItemFromStore(struct SHQueueStore *store);
-SHErrorCode SH_startSerialQueueLoop(struct SHSerialQueue *queue);
-void SH_freeSerialQueue(struct SHSerialQueue *queue);
+struct SHSerialQueue * SH_serialQueue_init(void *initArgs, void (*initArgsCleanup)(void*));
+	
+SHErrorCode SH_serialQueue_startLoop(struct SHSerialQueue *queue);
+SHErrorCode SH_serialQueue_addOp(
+	struct SHSerialQueue *queue,
+	SHErrorCode (*fn)(void*, struct SHQueueStore *),
+	void *fnArgs, void (*cleanupFn)(void*));
+	
+SHErrorCode SH_addOpAndWaitForResult(
+	struct SHSerialQueue *queue,
+	SHErrorCode (*fn)(void*, struct SHQueueStore *, void**),
+	void *fnArgs,
+	void (*cleanupFn)(void*),
+	void **result);
+
+void *SH_serialQueue_getUserItem(struct SHQueueStore *store);
+SHErrorCode SH_serialQueue_startLoop(struct SHSerialQueue *queue);
+void SH_serialQueue_cleanup(struct SHSerialQueue *queue);
 #endif /* SHSerialQueue_h */

@@ -54,14 +54,9 @@ void printWorkingDir(){
 	}
 }
 
-struct _initialArgs {
-	struct SHConfigAccessor *config;
-};
 
-
-static void* _openDb(void *args) {
+static struct SHQueueStoreItem* _setupQueueStoreItem(struct SHConfigAccessor *config) {
 	struct SHQueueStoreItem *item = malloc(sizeof(struct SHQueueStoreItem));
-	struct _initialArgs *initArgs = (struct _initialArgs *)args;
 	const char *dbFile = NULL;
 	NSArray<NSString*> *procArgs = NSProcessInfo.processInfo.arguments;
 	if(procArgs.count > 1) {
@@ -74,7 +69,7 @@ static void* _openDb(void *args) {
 		free(item);
 		return NULL;
 	}
-	item->config = initArgs->config;
+	item->config = config;
 	item->config->setIsAppInitialized(true);
 	return item;
 }
@@ -82,7 +77,7 @@ static void* _openDb(void *args) {
 
 static SHErrorCode _setupDb(void* args, struct SHQueueStore *store) {
 	(void)args;
-	struct SHQueueStoreItem *item = (struct SHQueueStoreItem *)SH_getUserItemFromStore(store);
+	struct SHQueueStoreItem *item = (struct SHQueueStoreItem *)SH_serialQueue_getUserItem(store);
 	SHErrorCode status = SH_setupDb(item->db);
 	
 	return status;
@@ -91,7 +86,7 @@ static SHErrorCode _setupDb(void* args, struct SHQueueStore *store) {
 
 static SHErrorCode _addFunctions(void* args, struct SHQueueStore *store) {
 	(void)args;
-	struct SHQueueStoreItem *item = (struct SHQueueStoreItem *)SH_getUserItemFromStore(store);
+	struct SHQueueStoreItem *item = (struct SHQueueStoreItem *)SH_serialQueue_getUserItem(store);
 	
 	SHErrorCode status = SH_addDbFunctions(iterm->db);
 	return status;
@@ -104,25 +99,21 @@ static SHErrorCode _addFunctions(void* args, struct SHQueueStore *store) {
 	(void)application;
 	(void)launchOptions;
 	SH_setupConfig(&self->_config);
-	struct _initialArgs *initArgs = malloc(sizeof(struct _initialArgs));
-	*initArgs = (struct _initialArgs){
-		.config = &self->_config,
-	};
 	self.dateProvider = [[SHDefaultDateProvider alloc] init];
-	self.dbQueue = SH_initSerialQueue(_openDb, SH_FreeQueueStoreItemVoid, initArgs, free);
+	self.dbQueue = SH_serialQueue_init(_setupQueueStoreItem(&self->_config), SH_FreeQueueStoreItemVoid);
 	SHErrorCode status = SH_NO_ERROR;
-	if((status = SH_startSerialQueueLoop(self.dbQueue))
+	if((status = SH_serialQueue_startLoop(self.dbQueue))
 		!= SH_NO_ERROR)
 	{
 		return NO;
 	}
 	
 	if(!self.config.getIsAppInitialized()) {
-		if((status = SH_addOp(self.dbQueue, _setupDb, NULL, NULL)) != SH_NO_ERROR) {
+		if((status = SH_serialQueue_addOp(self.dbQueue, _setupDb, NULL, NULL)) != SH_NO_ERROR) {
 			return NO;
 		}
 	}
-	if((status = SH_addOp(self.dbQueue, _addFunctions, NULL, NULL)) != SH_NO_ERROR) {
+	if((status = SH_serialQueue_addOp(self.dbQueue, _addFunctions, NULL, NULL)) != SH_NO_ERROR) {
 		return NO;
 	}
 	#warning update without core data
@@ -178,7 +169,7 @@ static SHErrorCode _addFunctions(void* args, struct SHQueueStore *store) {
 
 
 -(void)dealloc {
-	SH_freeSerialQueue(self->_dbQueue);
+	SH_serialQueue_cleanup(self->_dbQueue);
 }
 
 
