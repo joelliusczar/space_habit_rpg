@@ -66,14 +66,18 @@ void *SH_collectionIterator_next(struct SHCollectionIterator **iter) {
 }
 
 
-void SH_collection_cleanup(struct SHCollection *collection) {
-	if(!collection || !collection->backendCleanup) return;
-	collection->backendCleanup(collection->backend);
+void SH_collection_cleanup(struct SHCollection **collectionP2) {
+	if(!collectionP2) return;
+	struct SHCollection *collection = *collectionP2;
+	if(!collection) return;
+	if(collection->backendCleanup) {
+		collection->backendCleanup(collection->backend);
+	}
 	free(collection);
+	*collectionP2 = NULL;
 }
 
 
-void SH_collection_cleanup2(void *args) {
-	struct SHCollection *collection = (struct SHCollection *)args;
-	SH_collection_cleanup(collection);
+void SH_collection_cleanup2(void **args) {
+	SH_collection_cleanup((struct SHCollection **)args);
 }

@@ -35,6 +35,8 @@
 		27B512E7249EC11800727905 /* SHTreeCollectionWrapperFuncs.c in Sources */ = {isa = PBXBuildFile; fileRef = 27B512E5249EC11800727905 /* SHTreeCollectionWrapperFuncs.c */; };
 		27B512EA249ECDEC00727905 /* SHSerialAccessCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B512E8249ECDEC00727905 /* SHSerialAccessCollection.h */; };
 		27B512EB249ECDEC00727905 /* SHSerialAccessCollection.c in Sources */ = {isa = PBXBuildFile; fileRef = 27B512E9249ECDEC00727905 /* SHSerialAccessCollection.c */; };
+		27B512ED24A14E3100727905 /* SHTestSerialAccessCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B512EC24A14E3100727905 /* SHTestSerialAccessCollection.m */; };
+		27B512EF24A18C6800727905 /* SHSerialQueueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B512EE24A18C6800727905 /* SHSerialQueueTests.m */; };
 		27DF9C4E20956D6300F98023 /* SHGenAlgos.h in Headers */ = {isa = PBXBuildFile; fileRef = 27DF9C4C20956D6300F98023 /* SHGenAlgos.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27DF9C4F20956D6300F98023 /* SHGenAlgos.c in Sources */ = {isa = PBXBuildFile; fileRef = 27DF9C4D20956D6300F98023 /* SHGenAlgos.c */; };
 /* End PBXBuildFile section */
@@ -88,6 +90,8 @@
 		27B512E5249EC11800727905 /* SHTreeCollectionWrapperFuncs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHTreeCollectionWrapperFuncs.c; sourceTree = "<group>"; };
 		27B512E8249ECDEC00727905 /* SHSerialAccessCollection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSerialAccessCollection.h; sourceTree = "<group>"; };
 		27B512E9249ECDEC00727905 /* SHSerialAccessCollection.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHSerialAccessCollection.c; sourceTree = "<group>"; };
+		27B512EC24A14E3100727905 /* SHTestSerialAccessCollection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTestSerialAccessCollection.m; sourceTree = "<group>"; };
+		27B512EE24A18C6800727905 /* SHSerialQueueTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHSerialQueueTests.m; sourceTree = "<group>"; };
 		27BB2905215207A3003225BB /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		27BB29132159CE1E003225BB /* vars.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = vars.mk; sourceTree = "<group>"; };
 		27DF9C4C20956D6300F98023 /* SHGenAlgos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHGenAlgos.h; sourceTree = "<group>"; };
@@ -193,6 +197,8 @@
 				27B512CE249DA56000727905 /* SHTestRandomTreeFuncs.m */,
 				27B512D0249DBADB00727905 /* SHPrintTree.h */,
 				27B512D1249DBADB00727905 /* SHPrintTree.c */,
+				27B512EC24A14E3100727905 /* SHTestSerialAccessCollection.m */,
+				27B512EE24A18C6800727905 /* SHSerialQueueTests.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -393,8 +399,10 @@
 			files = (
 				27B512C7249BDF8C00727905 /* SHTestTreeFromYTVideo.m in Sources */,
 				27553517248D9AD400D650AB /* SHTreeIterateTests.m in Sources */,
+				27B512EF24A18C6800727905 /* SHSerialQueueTests.m in Sources */,
 				27B512C9249C5F6300727905 /* SHTreeFindItemTests.m in Sources */,
 				27B512CD249D471C00727905 /* SHTestTreeDeleteRoots.m in Sources */,
+				27B512ED24A14E3100727905 /* SHTestSerialAccessCollection.m in Sources */,
 				27B512CB249C685B00727905 /* SHTestTreeDelete.m in Sources */,
 				27B512CF249DA56000727905 /* SHTestRandomTreeFuncs.m in Sources */,
 			);

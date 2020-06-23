@@ -9,23 +9,23 @@
 #include "SHSerialQueue.h"
 #include "SHLinkedList.h"
 #include "SHUtilConstants.h"
+#include "SHGenAlgos.h"
 #include <pthread.h>
 #include <stdlib.h>
 #include <errno.h>
-#include <stdbool.h>
 #include <assert.h>
 
 
 struct _queuedOp {
 	SHErrorCode (*fn)(void*, struct SHQueueStore *, void **);
 	void *fnArgs;
-	void (*cleanupFn)(void*);
+	void (*cleanupFn)(void**);
 };
 
 
 struct SHQueueStore {
 	void *userItem;
-	void (*queueStoreCleanup)(void *);
+	void (*queueStoreCleanup)(void **);
 	struct SHSerialQueue *queueRef;
 };
 
@@ -39,14 +39,16 @@ struct SHSerialQueue {
 	pthread_cond_t waitable;
 	pthread_mutex_t resultLock;
 	pthread_cond_t resultWait;
-	bool isRunning;
-	bool isCanceled;
+	pthread_mutex_t isCanceledLock;
+	pthread_mutex_t isRunningLock;
+	volatile bool isRunning;
+	volatile bool isCanceled;
 };
 
 
 struct _wrappedVoidFnArgs {
 	void *fnArgs;
-	void (*cleanupFn)(void*);
+	void (*cleanupFn)(void**);
 	SHErrorCode (*wrappedFn)(void*, struct SHQueueStore *);
 };
 
@@ -58,7 +60,7 @@ static void _opCleanup(struct _queuedOp **opP2) {
 	if(!opP2) return;
 	struct _queuedOp *op = *opP2;
 	if(op->cleanupFn) {
-		op->cleanupFn(op->fnArgs);
+		op->cleanupFn(&op->fnArgs);
 	}
 	free(op);
 	*opP2 = NULL;
@@ -70,15 +72,32 @@ static void _opCleanup2(void **args) {
 }
 
 
+static SHErrorCode _isCanceled(struct SHSerialQueue *queue, bool *ans) {
+	SHErrorCode status = SH_NO_ERROR;
+	if((threadCode = pthread_mutex_lock(&queue->isCanceledLock)) != 0) { return SH_THREAD_ERROR; }
+	*ans = queue->isCanceled;
+	if((threadCode = pthread_mutex_unlock(&queue->isCanceledLock)) != 0) { return SH_THREAD_ERROR; }
+	return status;
+}
+
+
+static SHErrorCode _isRunning(struct SHSerialQueue *queue, bool *ans) {
+	SHErrorCode status = SH_NO_ERROR;
+	if((threadCode = pthread_mutex_lock(&queue->isRunningLock)) != 0) { return SH_THREAD_ERROR; }
+	*ans = queue->isRunning;
+	if((threadCode = pthread_mutex_unlock(&queue->isRunningLock)) != 0) { return SH_THREAD_ERROR; }
+	return status;
+}
+
+
 static SHErrorCode _wrapVoidCall(void *fnArgs, struct SHQueueStore *store, void **result) {
 	
 	struct _wrappedVoidFnArgs *wrapped = (struct _wrappedVoidFnArgs*)fnArgs;
 	SHErrorCode status = wrapped->wrappedFn(wrapped->fnArgs, store);
 	if(wrapped->cleanupFn) {
-		wrapped->cleanupFn(fnArgs);
+		wrapped->cleanupFn(&fnArgs);
 	}
 	*result = &_voidResultSentinel;
-	free(wrapped);
 	return status;
 }
 
@@ -87,11 +106,11 @@ SHErrorCode _addOp(
 	struct SHSerialQueue *queue,
 	SHErrorCode (*fn)(void*, struct SHQueueStore *, void**),
 	void *fnArgs,
-	void (*cleanupFn)(void*))
+	void (*cleanupFn)(void**))
 {
 	SHErrorCode status = SH_NO_ERROR;
 	struct _queuedOp *op = malloc(sizeof(struct _queuedOp));
-	*op = (struct _queuedOp){.fn = fn, .fnArgs = fnArgs, .cleanupFn = cleanupFn };
+	*op = (struct _queuedOp){ .fn = fn, .fnArgs = fnArgs, .cleanupFn = cleanupFn };
 	int32_t threadCode = 0;
 	if((threadCode = pthread_mutex_lock(&queue->lock)) != 0) { goto threadErr; }
 	if(queue->isCanceled) {
@@ -115,8 +134,11 @@ SHErrorCode _addOp(
 }
 
 
-SHErrorCode SH_serialQueue_addOp(struct SHSerialQueue *queue,
-	SHErrorCode (*fn)(void*, struct SHQueueStore *), void *fnArgs, void (*cleanupFn)(void*))
+SHErrorCode SH_serialQueue_addOp(
+	struct SHSerialQueue *queue,
+	SHErrorCode (*fn)(void*, struct SHQueueStore *),
+	void *fnArgs,
+	void (*cleanupFn)(void**))
 {
 	assert(queue);
 	assert(fn);
@@ -127,7 +149,7 @@ SHErrorCode SH_serialQueue_addOp(struct SHSerialQueue *queue,
 		.fnArgs = fnArgs,
 		.cleanupFn = cleanupFn
 	};
-	status = _addOp(queue, _wrapVoidCall, wrapped, free);
+	status = _addOp(queue, _wrapVoidCall, wrapped, SH_cleanup);
 	return status;
 }
 
@@ -210,17 +232,19 @@ SHErrorCode SH_addOpAndWaitForResult(
 	struct SHSerialQueue *queue,
 	SHErrorCode (*fn)(void*, struct SHQueueStore *, void**),
 	void *fnArgs,
-	void (*cleanupFn)(void*),
+	void (*cleanupFn)(void**),
 	void **result)
 {
 
 	SHErrorCode status = SH_NO_ERROR;
-
+	
+	printf("about to call");
 	status = _addOp(queue, fn, &fnArgs, cleanupFn);
 	void *temp = NULL;
 	if((status = _getNextResultOrWait(queue, &temp)) != SH_NO_ERROR) {
 		goto fnExit;
 	}
+	printf("get result");
 	if(result) {
 		*result = temp;
 	}
@@ -269,6 +293,7 @@ static void* _serialQueueLoopWrapper(void *args) {
 
 
 SHErrorCode SH_serialQueue_startLoop(struct SHSerialQueue *queue) {
+	if(!queue) return SH_ILLEGAL_INPUTS;
 	int32_t threadStatus = 0;
 	if((threadStatus = pthread_create(&queue->dbSerialThread, NULL, _serialQueueLoopWrapper, queue))
 		!= SH_NO_ERROR)
@@ -279,7 +304,41 @@ SHErrorCode SH_serialQueue_startLoop(struct SHSerialQueue *queue) {
 }
 
 
-struct SHSerialQueue * SH_serialQueue_init(void *initArgs, void (*initArgsCleanup)(void*)) {
+static SHErrorCode _initMutexesAndConditions(struct SHSerialQueue *queue) {
+	int32_t threadErr = 0;
+	if((threadErr = pthread_mutex_init(&queue->lock, NULL))) {
+		goto cleanupQueue;
+	}
+	if((threadErr = pthread_cond_init(&queue->waitable, NULL))) {
+		goto cleanupLock;
+	}
+	if((threadErr = pthread_mutex_init(&queue->resultLock, NULL))) {
+		goto cleanupWaitable;
+	}
+	if((threadErr = pthread_cond_init(&queue->resultWait, NULL))) {
+		goto cleanupResultLock;
+	}
+	if((threadErr = pthread_mutex_init(&queue->isRunningLock, NULL))) {
+		goto cleanupResultLock;
+	}
+	if((threadErr = pthread_mutex_init(&queue->isCanceledLock, NULL))) {
+		goto cleanupIsRunningLock;
+	}
+	cleanupIsRunningLock:
+		pthread_mutex_destroy(&queue->isRunningLock);
+	cleanupResultWait:
+		pthread_cond_destroy(&queue->resultWait);
+	cleanupResultLock:
+		pthread_mutex_destroy(&queue->resultLock);
+	cleanupWaitable:
+		pthread_cond_destroy(&queue->waitable);
+	cleanupLock:
+		pthread_mutex_destroy(&queue->lock);
+	return threadErr > 0 ? SH_NO_ERROR : SH_THREAD_ERROR;
+}
+
+
+struct SHSerialQueue * SH_serialQueue_init(void *initArgs, void (*initArgsCleanup)(void**)) {
 	struct SHSerialQueue *queue = malloc(sizeof(struct SHSerialQueue));
 	*queue = (struct SHSerialQueue){
 		.opsQueue = SH_list_init(_opCleanup2),
@@ -291,27 +350,13 @@ struct SHSerialQueue * SH_serialQueue_init(void *initArgs, void (*initArgsCleanu
 		.isRunning = false,
 		.isCanceled = false,
 	};
-	if(pthread_mutex_init(&queue->lock, NULL)) {
+	if((status = _initMutexesAndConditions(queue)) != SH_NO_ERROR) {
 		goto cleanupQueue;
 	}
-	if(pthread_cond_init(&queue->waitable, NULL)) {
-		goto cleanupLock;
-	}
-	if(pthread_mutex_init(&queue->resultLock, NULL)) {
-		goto cleanupWaitable;
-	}
-	if(pthread_cond_init(&queue->resultWait, NULL)) {
-		goto cleanupResultLock;
-	}
 	return queue;
-	cleanupResultLock:
-		pthread_mutex_destroy(&queue->resultLock);
-	cleanupWaitable:
-		pthread_cond_destroy(&queue->waitable);
-	cleanupLock:
-		pthread_mutex_destroy(&queue->lock);
+	
 	cleanupQueue:
-		SH_serialQueue_cleanup(queue);
+		SH_serialQueue_cleanup(&queue);
 		return NULL;
 }
 
@@ -321,11 +366,41 @@ void *SH_serialQueue_getUserItem(struct SHQueueStore *store) {
 }
 
 
-void SH_serialQueue_cleanup(struct SHSerialQueue *queue) {
+bool SH_serialQueue_isLoopRunning(struct SHSerialQueue *queue) {
+	if(!queue) return false;
+	return queue->isRunning && !queue->isCanceled;
+}
+
+
+SHErrorCode SH_serialQueue_endLoop(struct SHSerialQueue *queue) {
+	if(!queue) return SH_ILLEGAL_INPUTS;
+	queue->isRunning = false;
+	if((pthread_join(queue->dbSerialThread, NULL)) != 0) {
+		return SH_THREAD_ERROR;
+	}
+	return SH_NO_ERROR;
+}
+
+
+SHErrorCode SH_serialQueue_closeLoop(struct SHSerialQueue *queue) {
+	if(!queue) return SH_ILLEGAL_INPUTS;
+	if(!queue->isRunning) return SH_PRECONDITIONS_NOT_FULFILLED;
+	queue->isCanceled = true;
+	if((pthread_join(queue->dbSerialThread, NULL)) != 0) {
+		return SH_THREAD_ERROR;
+	}
+	return SH_NO_ERROR;
+}
+
+
+void SH_serialQueue_cleanup(struct SHSerialQueue **queueP2) {
+	if(!queueP2) return;
+	struct SHSerialQueue *queue = *queueP2;
 	if(!queue) return;
 	_freeUnusedItemsInQueue(queue);
 	if(queue->queueStore.queueStoreCleanup) {
-		queue->queueStore.queueStoreCleanup(queue->queueStore.userItem);
+		queue->queueStore.queueStoreCleanup(&queue->queueStore.userItem);
 	}
 	free(queue);
+	*queueP2 = NULL;
 }

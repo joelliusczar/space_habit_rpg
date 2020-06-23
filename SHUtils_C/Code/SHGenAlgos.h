@@ -31,4 +31,5 @@ int32_t SH_highestBit(uint64_t num);
 void SH_swapStrs(char **A, char **B);
 void SH_reverseStrArr(char **arr, uint64_t start, uint64_t end);
 void SH_rotateStrArray(char **arr, uint64_t len, uint64_t offset);
+void SH_cleanup(void **argsP2);
 #endif /* SHGenAlgos_h */

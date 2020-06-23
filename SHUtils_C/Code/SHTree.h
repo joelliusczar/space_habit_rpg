@@ -21,8 +21,8 @@ uint64_t SH_tree_count(struct SHTree *tree);
 void SH_tree_addItem(struct SHTree *tree, void *item);
 void *SH_tree_findNthItem(struct SHTree *tree, uint64_t idx);
 void SH_tree_deleteNthItem(struct SHTree *tree, uint64_t idx);
-void SH_tree_cleanup(struct SHTree *tree);
-void SH_tree_cleanup2(void * args);
+void SH_tree_cleanup(struct SHTree **tree);
+void SH_tree_cleanup2(void **args);
 
 void SH_tree_setLineBreakSentinel(struct SHTree *tree, void *sentinel);
 void *SH_tree_getLineBreakSentinel(struct SHTree *tree);

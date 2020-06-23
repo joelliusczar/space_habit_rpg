@@ -185,7 +185,7 @@ static int32_t _numCompare(void *a, void *b) {
 	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
 	XCTAssertEqual(result, NULL);
 	
-	SH_tree_cleanup(tree);
+	SH_tree_cleanup(&tree);
 	
 }
 

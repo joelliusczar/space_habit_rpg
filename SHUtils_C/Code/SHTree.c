@@ -531,7 +531,9 @@ struct SHTreeIterator *SH_treeIterator_init(struct SHTree *tree) {
 
 
 
-void SH_tree_cleanup(struct SHTree *tree) {
+void SH_tree_cleanup(struct SHTree **treeP2) {
+	if(!treeP2) return;
+	struct SHTree *tree = *treeP2;
 	if(!tree) return;
 	struct SHTreeIterator *iter = SH_treeIterator_init(tree);
 	struct SHTreeNode *node = NULL;
@@ -547,12 +549,12 @@ void SH_tree_cleanup(struct SHTree *tree) {
 	_nodeCleanup(prev, tree->itemCleanup);
 	_iteratorCleanup(iter);
 	free(tree);
+	*treeP2 = NULL;
 }
 
 
-void SH_tree_cleanup2(void * args) {
-	struct SHTree *tree = (struct SHTree *)args;
-	SH_tree_cleanup(tree);
+void SH_tree_cleanup2(void **args) {
+	SH_tree_cleanup((struct SHTree **)args);
 }
 
 char * SH_tree_printLineOrder(struct SHTree *tree, char *(*itemDescFn)(void *)) {

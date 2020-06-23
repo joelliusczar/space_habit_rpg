@@ -29,7 +29,7 @@ struct SHCollection {
 	void (*deleteItemAtIdx)(struct SHCollection *, uint64_t);
 	struct SHCollectionIterator *(*iteratorInit)(struct SHCollection *);
 	void *(*iteratorNext)(struct SHCollectionIterator **);
-	void (*backendCleanup)(void*);
+	void (*backendCleanup)(void**);
 };
 
 
@@ -41,7 +41,7 @@ void SH_collection_deleteItemAtIdx(struct SHCollection *collection, uint64_t idx
 struct SHCollectionIterator *SH_collectionIterator_init(struct SHCollection *collection);
 void *SH_collectionIterator_next(struct SHCollectionIterator **iter);
 
-void SH_collection_cleanup(struct SHCollection *collection);
-void SH_collection_cleanup2(void *args);
+void SH_collection_cleanup(struct SHCollection **collection);
+void SH_collection_cleanup2(void **args);
 
 #endif /* SHCollection_h */

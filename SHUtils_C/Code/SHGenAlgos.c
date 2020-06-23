@@ -87,3 +87,11 @@ void SH_rotateStrArray(char **arr, uint64_t len, uint64_t offset) {
 	SH_reverseStrArr(arr, 0, offset - 1);
 	SH_reverseStrArr(arr, offset, len - 1);
 }
+
+
+void SH_cleanup(void **argsP2) {
+	if(!argsP2) return;
+	void *args = *argsP2;
+	free(args);
+	argsP2 = NULL;
+}
