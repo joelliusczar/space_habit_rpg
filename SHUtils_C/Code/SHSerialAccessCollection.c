@@ -16,14 +16,14 @@ struct SHSerialAccessCollection {
 };
 
 
-struct SHSerialAccessCollection *SH_SACollection_init(struct SHCollection *collection) {
+struct SHSerialAccessCollection *SH_SACollection_init(struct SHIterableWrapper *iterable) {
 	struct SHSerialAccessCollection *saCollection = malloc(sizeof(struct SHSerialAccessCollection));
-	saCollection->queue = SH_serialQueue_init(collection, SH_collection_cleanup2);
+	saCollection->queue = SH_serialQueue_init(iterable, (void (*)(void**))SH_iterable_cleanup);
 	return saCollection;
 }
 
 
-SHErrorCode SH_SACollection__startLoop(struct SHSerialAccessCollection *saCollection) {
+SHErrorCode SH_SACollection_startLoop(struct SHSerialAccessCollection *saCollection) {
 	if(!saCollection) return SH_ILLEGAL_INPUTS;
 	return SH_serialQueue_startLoop(saCollection->queue);
 }
@@ -32,8 +32,8 @@ SHErrorCode SH_SACollection__startLoop(struct SHSerialAccessCollection *saCollec
 static SHErrorCode _getCount(void *fnArgs, struct SHQueueStore *store, void **resultP2) {
 	(void)fnArgs;
 	if(!resultP2 || !(*resultP2)) return SH_ILLEGAL_INPUTS;
-	struct SHCollection * collection = (struct SHCollection *)SH_serialQueue_getUserItem(store);
-	uint64_t count = SH_collection_count(collection);
+	struct SHIterableWrapper * iterable = (struct SHIterableWrapper *)SH_serialQueue_getUserItem(store);
+	uint64_t count = SH_iterable_count(iterable);
 	uint64_t *result = (uint64_t *)*resultP2;
 	*result = count;
 	return SH_NO_ERROR;
@@ -53,9 +53,9 @@ SHErrorCode SH_SACollection_count(struct SHSerialAccessCollection *saCollection,
 
 static SHErrorCode _getItemAtIdx(void *fnArgs, struct SHQueueStore *store, void **resultP2) {
 	if(!resultP2 || !fnArgs) return SH_ILLEGAL_INPUTS;
-	struct SHCollection * collection = (struct SHCollection *)SH_serialQueue_getUserItem(store);
+	struct SHIterableWrapper * iterable = (struct SHIterableWrapper *)SH_serialQueue_getUserItem(store);
 	uint64_t idx = *((uint64_t*)fnArgs);
-	*resultP2 = SH_collection_getItemAtIdx(collection, idx);
+	*resultP2 = SH_iterable_getItemAtIdx(iterable, idx);
 	
 	return SH_NO_ERROR;
 }
@@ -73,8 +73,8 @@ SHErrorCode SH_SACollection_getItemAtIdx(struct SHSerialAccessCollection *saColl
 
 static SHErrorCode _addItem(void *fnArgs, struct SHQueueStore *store) {
 	if(!fnArgs) return SH_ILLEGAL_INPUTS;
-	struct SHCollection * collection = (struct SHCollection *)SH_serialQueue_getUserItem(store);
-	SH_collection_addItem(collection, fnArgs);
+	struct SHIterableWrapper * iterable = (struct SHIterableWrapper *)SH_serialQueue_getUserItem(store);
+	SH_iterable_addItem(iterable, fnArgs);
 	
 	return SH_NO_ERROR;
 }
@@ -90,9 +90,9 @@ SHErrorCode SH_SACollection_addItem(struct SHSerialAccessCollection *saCollectio
 
 static SHErrorCode _deleteItemAtIdx(void *fnArgs, struct SHQueueStore *store) {
 	if(!fnArgs) return SH_ILLEGAL_INPUTS;
-	struct SHCollection * collection = (struct SHCollection *)SH_serialQueue_getUserItem(store);
+	struct SHIterableWrapper * iterable = (struct SHIterableWrapper *)SH_serialQueue_getUserItem(store);
 	uint64_t idx = *((uint64_t*)fnArgs);
-	SH_collection_deleteItemAtIdx(collection, idx);
+	SH_iterable_deleteItemAtIdx(iterable, idx);
 	
 	return SH_NO_ERROR;
 }
@@ -125,10 +125,10 @@ void SH_generatorObj_cleanup2(void **args) {
 static SHErrorCode _addItemsWithGenerator(void *fnArgs, struct SHQueueStore *store) {
 	struct SHGeneratorFnObj *genFnObj = (struct SHGeneratorFnObj *)fnArgs;
 	if(!genFnObj || !genFnObj->generator) return SH_ILLEGAL_INPUTS;
-	struct SHCollection * collection = (struct SHCollection *)SH_serialQueue_getUserItem(store);
+	struct SHIterableWrapper * iterable = (struct SHIterableWrapper *)SH_serialQueue_getUserItem(store);
 	void *next = NULL;
 	while((next = genFnObj->generator(genFnObj->generatorState))) {
-		SH_collection_addItem(collection, next);
+		SH_iterable_addItem(iterable, next);
 	}
 	return SH_NO_ERROR;
 }

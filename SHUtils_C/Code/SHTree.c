@@ -38,7 +38,7 @@ struct SHTreeNode {
 struct SHTree {
 	struct SHTreeNode *root;
 	int32_t (*sortingFn)(void*, void*);
-	void (*itemCleanup)(void*);
+	void (*itemCleanup)(void**);
 	void *lineBreakSentinel;
 	void *nullItemSentinel;
 	uintptr_t version;
@@ -61,7 +61,7 @@ static struct SHTreeNode _lineBreakNode;
 static struct SHTreeNode _nullNode;
 
 
-struct SHTree *SH_tree_init(int32_t (*sortingFn)(void*, void*), void (*itemCleanup)(void*)) {
+struct SHTree *SH_tree_init(int32_t (*sortingFn)(void*, void*), void (*itemCleanup)(void**)) {
 	struct SHTree *tree = malloc(sizeof(struct SHTree));
 	tree->root = NULL;
 	tree->sortingFn = sortingFn;
@@ -253,6 +253,38 @@ void *SH_tree_findNthItem(struct SHTree *tree, uint64_t idx) {
 }
 
 
+void *SH_tree_getFront(struct SHTree *tree) {
+	return SH_tree_findNthItem(tree, 0);
+}
+
+
+void *SH_tree_popFront(struct SHTree *tree) {
+	void *item = SH_tree_findNthItem(tree, 0);
+	SH_tree_deleteNthItem(tree, 0);
+	return item;
+}
+
+
+void *SH_tree_getBack(struct SHTree *tree) {
+	uint64_t backIdx = SH_tree_count(tree) - 1;
+	if(backIdx > (uint64_t)SH_NOT_FOUND) {
+		return SH_tree_findNthItem(tree, backIdx);
+	}
+	return NULL;
+}
+
+
+void *SH_tree_popBack(struct SHTree *tree) {
+	uint64_t backIdx = SH_tree_count(tree) - 1;
+	if(backIdx > (uint64_t)SH_NOT_FOUND) {
+		void *item = SH_tree_findNthItem(tree, backIdx);
+		SH_tree_deleteNthItem(tree, backIdx);
+		return item;
+	}
+	return NULL;
+}
+
+
 static struct SHTreeNode * _getMaxNode(struct SHTreeNode *root) {
 	if(!root) return NULL;
 	if(!root->right) return root;
@@ -267,7 +299,7 @@ static struct SHTreeNode * _getMaxNode(struct SHTreeNode *root) {
 
 
 
-static void _nodeCleanup(struct SHTreeNode *root, void (*itemCleanup)(void*)) {
+static void _nodeCleanup(struct SHTreeNode *root, void (*itemCleanup)(void**)) {
 	if(!root) return;
 	if(itemCleanup) {
 		itemCleanup(root->item);
@@ -327,7 +359,7 @@ void SH_tree_deleteNthItem(struct SHTree *tree, uint64_t idx) {
 	if(SH_tree_count(tree) > beforeCount) { //if item was successfully removed
 		tree->version ^= (uintptr_t)nthNode->item;
 	}
-	_nodeCleanup(nthNode, tree->itemCleanup);
+	_nodeCleanup(nthNode, (void (*)(void**))&tree->itemCleanup);
 }
 
 
@@ -347,6 +379,7 @@ static void *_next(struct SHTreeIterator **iter, uint64_t skip,
 			return NULL;
 		}
 	}
+	
 	struct SHTreeNode *next = iterPathFn(*iter);
 	if(!next) {
 		_iteratorCleanup(*iter);
@@ -552,10 +585,6 @@ void SH_tree_cleanup(struct SHTree **treeP2) {
 	*treeP2 = NULL;
 }
 
-
-void SH_tree_cleanup2(void **args) {
-	SH_tree_cleanup((struct SHTree **)args);
-}
 
 char * SH_tree_printLineOrder(struct SHTree *tree, char *(*itemDescFn)(void *)) {
 	if(!tree || !itemDescFn) return NULL;

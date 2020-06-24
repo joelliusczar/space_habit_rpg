@@ -15,15 +15,19 @@ static int32_t test2 = 0;
 
 static SHErrorCode _testFunc1(void *args, struct SHQueueStore *store) {
 	(void)args; (void)store;
+	printf("starting test alpha\n");
 	sleep(1);
 	test1 = 1;
+	printf("ending test alpha\n");
 	return SH_NO_ERROR;
 }
 
 static SHErrorCode _testFunc2(void *args, struct SHQueueStore *store) {
 	(void)args; (void)store;
+	printf("starting test bravo\n");
 	sleep(1);
 	test2 = 1;
+	printf("ending test bravo\n");
 	return SH_NO_ERROR;
 }
 

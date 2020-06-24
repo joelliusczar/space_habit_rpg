@@ -9,7 +9,7 @@
 #ifndef SHSerialAccessCollection_h
 #define SHSerialAccessCollection_h
 
-#include "SHCollection.h"
+#include "SHIterableWrapper.h"
 #include "SHErrorHandling.h"
 #include <stdio.h>
 #include <inttypes.h>
@@ -23,8 +23,8 @@ struct SHGeneratorFnObj {
 };
 
 
-struct SHSerialAccessCollection *SH_SACollection_init(struct SHCollection *collection);
-SHErrorCode SH_SACollection__startLoop(struct SHSerialAccessCollection *saCollection);
+struct SHSerialAccessCollection *SH_SACollection_init(struct SHIterableWrapper *iterable);
+SHErrorCode SH_SACollection_startLoop(struct SHSerialAccessCollection *saCollection);
 
 SHErrorCode SH_SACollection_count(struct SHSerialAccessCollection *saCollection, uint64_t *count);
 SHErrorCode SH_SACollection_getItemAtIdx(struct SHSerialAccessCollection *saCollection, uint64_t idx, void **item);

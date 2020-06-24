@@ -53,6 +53,74 @@ void SH_list_pushBack(struct SHLinkedList *list, void *item) {
 }
 
 
+struct SHLLNode *_searchFromFront(struct SHLinkedList *list, uint64_t count) {
+	struct SHLLNode *node = SH_list_getFront(list);
+	for(uint64_t i = 0; i < count; i++) {
+		node = node->next;
+	}
+	return node;
+}
+
+
+struct SHLLNode *_searchFromBack(struct SHLinkedList *list, uint64_t count) {
+	struct SHLLNode *node = SH_list_getBack(list);
+	for(uint64_t i = 0; i < count; i++) {
+		node = node->prev;
+	}
+	return node;
+}
+
+
+void *SH_list_findNthItem(struct SHLinkedList *list, uint64_t idx) {
+	uint64_t count = SH_list_count(list);
+	if(count < 1 || idx >= count) return NULL;
+	if(idx == 0) {
+		return SH_list_getFront(list);
+	}
+	else if(idx == count - 1) {
+		return SH_list_getBack(list);
+	}
+	uint64_t mid = count / 2;
+	struct SHLLNode *node = NULL;
+	if(idx <= mid) {
+		node = _searchFromFront(list, mid + 1);
+	}
+	else {
+		node = _searchFromBack(list, mid);
+	}
+	return node->item;
+}
+
+
+void SH_list_deleteNthItem(struct SHLinkedList *list, uint64_t idx) {
+	uint64_t count = SH_list_count(list);
+	if(count < 1 || idx >= count) return;
+	if(idx == 0) {
+		SH_list_popFront(list);
+	}
+	else if(idx == count - 1) {
+		SH_list_popBack(list);
+	}
+	uint64_t mid = count / 2;
+	struct SHLLNode *node = NULL;
+	if(idx <= mid) {
+		node = _searchFromFront(list, mid + 1);
+	}
+	else {
+		node = _searchFromBack(list, mid);
+	}
+	struct SHLLNode *next = node->next;
+	struct SHLLNode *prev = node->prev;
+	next->prev = prev;
+	prev->next = next;
+	if(list->itemCleanup) {
+		list->itemCleanup(&node->item);
+	}
+	free(node);
+	node = NULL;
+}
+
+
 void * SH_list_popFront(struct SHLinkedList *list) {
 	if(!list || !list->front) return NULL;
 	list->count--;
@@ -105,14 +173,23 @@ uint64_t SH_list_count(struct SHLinkedList *list) {
 }
 
 
-void SH_listIterator_init(struct SHLinkedList *list, struct SHLinkedListIterator *iter) {
+struct SHLinkedListIterator * SH_listIterator_init(struct SHLinkedList *list) {
+	struct SHLinkedListIterator *iter = malloc(sizeof(struct SHLinkedListIterator));
 	iter->current = list->front;
+	return iter;
 }
 
 
-void *SH_listIterator_next(struct SHLinkedListIterator *iter) {
-	if(!iter->current) return NULL;
+void *SH_listIterator_next(struct SHLinkedListIterator **iterP2) {
+	if(!iterP2) return NULL;
+	struct SHLinkedListIterator *iter = *iterP2;
+	if(!iter) return NULL;
 	iter->current = iter->current->next;
+	if(!iter->current) {
+		free(iter);
+		*iterP2 = NULL;
+		return NULL;
+	}
 	return iter->current->item;
 }
 

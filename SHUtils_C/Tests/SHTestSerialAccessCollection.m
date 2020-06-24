@@ -7,7 +7,7 @@
 //
 
 #include "SHSerialAccessCollection.h"
-#include "SHCollection.h"
+#include "SHIterableWrapper.h"
 #import <XCTest/XCTest.h>
 
 
@@ -34,7 +34,7 @@ static int32_t _numCompare(void *a, void *b) {
 
 -(void)testSerialCollectionOps {
 	int32_t nums[12] = { 43, 18, 22, 9, 21, 6, 8, 20, 63, 50, 62, 51 };
-	struct SHCollection *collection = SH_collection_initAsTree(_numCompare, NULL);
+	struct SHIterableWrapper *collection = SH_iterable_initAsTree(_numCompare, NULL);
 	struct SHSerialAccessCollection *serialCollection = SH_SACollection_init(collection);
 	
 	SHErrorCode status = SH_NO_ERROR;
@@ -44,12 +44,12 @@ static int32_t _numCompare(void *a, void *b) {
 	void *resultP = &result;
 	status = SH_SACollection_getItemAtIdx(serialCollection, 0, &resultP);
 	XCTAssertEqual(status, SH_PRECONDITIONS_NOT_FULFILLED);
-	SH_SACollection__startLoop(serialCollection);
+	SH_SACollection_startLoop(serialCollection);
 	sleep(1);
 	status = SH_SACollection_getItemAtIdx(serialCollection, 0, &resultP);
 	XCTAssertEqual(status, SH_NO_ERROR);
 	XCTAssertEqual(result, 43);
-	resultP = SH_collection_getItemAtIdx(collection, 0);
+	resultP = SH_iterable_getItemAtIdx(collection, 0);
 	result = *(int32_t *)resultP;
 	XCTAssertEqual(result, 43);
 }

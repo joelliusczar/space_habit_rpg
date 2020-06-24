@@ -29,14 +29,14 @@
 		27B512CF249DA56000727905 /* SHTestRandomTreeFuncs.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B512CE249DA56000727905 /* SHTestRandomTreeFuncs.m */; };
 		27B512D2249DBADB00727905 /* SHPrintTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B512D0249DBADB00727905 /* SHPrintTree.h */; };
 		27B512D3249DBADB00727905 /* SHPrintTree.c in Sources */ = {isa = PBXBuildFile; fileRef = 27B512D1249DBADB00727905 /* SHPrintTree.c */; };
-		27B512E2249EB84400727905 /* SHCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B512E0249EB84400727905 /* SHCollection.h */; };
-		27B512E3249EB84400727905 /* SHCollection.c in Sources */ = {isa = PBXBuildFile; fileRef = 27B512E1249EB84400727905 /* SHCollection.c */; };
-		27B512E6249EC11800727905 /* SHTreeCollectionWrapperFuncs.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B512E4249EC11800727905 /* SHTreeCollectionWrapperFuncs.h */; };
-		27B512E7249EC11800727905 /* SHTreeCollectionWrapperFuncs.c in Sources */ = {isa = PBXBuildFile; fileRef = 27B512E5249EC11800727905 /* SHTreeCollectionWrapperFuncs.c */; };
+		27B512E2249EB84400727905 /* SHIterableWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B512E0249EB84400727905 /* SHIterableWrapper.h */; };
+		27B512E3249EB84400727905 /* SHIterableWrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = 27B512E1249EB84400727905 /* SHIterableWrapper.c */; };
 		27B512EA249ECDEC00727905 /* SHSerialAccessCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B512E8249ECDEC00727905 /* SHSerialAccessCollection.h */; };
 		27B512EB249ECDEC00727905 /* SHSerialAccessCollection.c in Sources */ = {isa = PBXBuildFile; fileRef = 27B512E9249ECDEC00727905 /* SHSerialAccessCollection.c */; };
 		27B512ED24A14E3100727905 /* SHTestSerialAccessCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B512EC24A14E3100727905 /* SHTestSerialAccessCollection.m */; };
 		27B512EF24A18C6800727905 /* SHSerialQueueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B512EE24A18C6800727905 /* SHSerialQueueTests.m */; };
+		27B512F224A2622300727905 /* SHSyncedList.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B512F024A2622300727905 /* SHSyncedList.h */; };
+		27B512F324A2622300727905 /* SHSyncedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 27B512F124A2622300727905 /* SHSyncedList.c */; };
 		27DF9C4E20956D6300F98023 /* SHGenAlgos.h in Headers */ = {isa = PBXBuildFile; fileRef = 27DF9C4C20956D6300F98023 /* SHGenAlgos.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27DF9C4F20956D6300F98023 /* SHGenAlgos.c in Sources */ = {isa = PBXBuildFile; fileRef = 27DF9C4D20956D6300F98023 /* SHGenAlgos.c */; };
 /* End PBXBuildFile section */
@@ -84,14 +84,14 @@
 		27B512CE249DA56000727905 /* SHTestRandomTreeFuncs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTestRandomTreeFuncs.m; sourceTree = "<group>"; };
 		27B512D0249DBADB00727905 /* SHPrintTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHPrintTree.h; sourceTree = "<group>"; };
 		27B512D1249DBADB00727905 /* SHPrintTree.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHPrintTree.c; sourceTree = "<group>"; };
-		27B512E0249EB84400727905 /* SHCollection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHCollection.h; sourceTree = "<group>"; };
-		27B512E1249EB84400727905 /* SHCollection.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHCollection.c; sourceTree = "<group>"; };
-		27B512E4249EC11800727905 /* SHTreeCollectionWrapperFuncs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTreeCollectionWrapperFuncs.h; sourceTree = "<group>"; };
-		27B512E5249EC11800727905 /* SHTreeCollectionWrapperFuncs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHTreeCollectionWrapperFuncs.c; sourceTree = "<group>"; };
+		27B512E0249EB84400727905 /* SHIterableWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHIterableWrapper.h; sourceTree = "<group>"; };
+		27B512E1249EB84400727905 /* SHIterableWrapper.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHIterableWrapper.c; sourceTree = "<group>"; };
 		27B512E8249ECDEC00727905 /* SHSerialAccessCollection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSerialAccessCollection.h; sourceTree = "<group>"; };
 		27B512E9249ECDEC00727905 /* SHSerialAccessCollection.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHSerialAccessCollection.c; sourceTree = "<group>"; };
 		27B512EC24A14E3100727905 /* SHTestSerialAccessCollection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTestSerialAccessCollection.m; sourceTree = "<group>"; };
 		27B512EE24A18C6800727905 /* SHSerialQueueTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHSerialQueueTests.m; sourceTree = "<group>"; };
+		27B512F024A2622300727905 /* SHSyncedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSyncedList.h; sourceTree = "<group>"; };
+		27B512F124A2622300727905 /* SHSyncedList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHSyncedList.c; sourceTree = "<group>"; };
 		27BB2905215207A3003225BB /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		27BB29132159CE1E003225BB /* vars.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = vars.mk; sourceTree = "<group>"; };
 		27DF9C4C20956D6300F98023 /* SHGenAlgos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHGenAlgos.h; sourceTree = "<group>"; };
@@ -136,12 +136,12 @@
 				2755350D248C35BA00D650AB /* SHTree.c */,
 				27B512C22496B14400727905 /* SHLinkedList.h */,
 				27B512C32496B14400727905 /* SHLinkedList.c */,
-				27B512E0249EB84400727905 /* SHCollection.h */,
-				27B512E1249EB84400727905 /* SHCollection.c */,
-				27B512E4249EC11800727905 /* SHTreeCollectionWrapperFuncs.h */,
-				27B512E5249EC11800727905 /* SHTreeCollectionWrapperFuncs.c */,
+				27B512E0249EB84400727905 /* SHIterableWrapper.h */,
+				27B512E1249EB84400727905 /* SHIterableWrapper.c */,
 				27B512E8249ECDEC00727905 /* SHSerialAccessCollection.h */,
 				27B512E9249ECDEC00727905 /* SHSerialAccessCollection.c */,
+				27B512F024A2622300727905 /* SHSyncedList.h */,
+				27B512F124A2622300727905 /* SHSyncedList.c */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -241,12 +241,12 @@
 				275534C12479E39C00D650AB /* SHSerialQueue.h in Headers */,
 				27B512D2249DBADB00727905 /* SHPrintTree.h in Headers */,
 				27B512EA249ECDEC00727905 /* SHSerialAccessCollection.h in Headers */,
-				27B512E6249EC11800727905 /* SHTreeCollectionWrapperFuncs.h in Headers */,
-				27B512E2249EB84400727905 /* SHCollection.h in Headers */,
+				27B512E2249EB84400727905 /* SHIterableWrapper.h in Headers */,
 				2755350E248C35BB00D650AB /* SHTree.h in Headers */,
 				2716922D20916ED50059A58E /* SHArray.h in Headers */,
 				2781552B21758C3F005C5279 /* SHUtilConstants.h in Headers */,
 				2769C097227C81B500217480 /* SHErrorHandling.h in Headers */,
+				27B512F224A2622300727905 /* SHSyncedList.h in Headers */,
 				27B512C42496B14400727905 /* SHLinkedList.h in Headers */,
 				27553501248891A400D650AB /* SHDynamicArray.h in Headers */,
 				270CB96A244CC30900FE930B /* SHUtils_C.h in Headers */,
@@ -383,11 +383,11 @@
 				2755350F248C35BB00D650AB /* SHTree.c in Sources */,
 				27553502248891A400D650AB /* SHDynamicArray.c in Sources */,
 				27B512D3249DBADB00727905 /* SHPrintTree.c in Sources */,
-				27B512E7249EC11800727905 /* SHTreeCollectionWrapperFuncs.c in Sources */,
 				27B512EB249ECDEC00727905 /* SHSerialAccessCollection.c in Sources */,
 				27B512C52496B14400727905 /* SHLinkedList.c in Sources */,
-				27B512E3249EB84400727905 /* SHCollection.c in Sources */,
+				27B512E3249EB84400727905 /* SHIterableWrapper.c in Sources */,
 				275534C22479E39C00D650AB /* SHSerialQueue.c in Sources */,
+				27B512F324A2622300727905 /* SHSyncedList.c in Sources */,
 				2781552C21758C3F005C5279 /* SHUtilConstants.c in Sources */,
 				27DF9C4F20956D6300F98023 /* SHGenAlgos.c in Sources */,
 			);
