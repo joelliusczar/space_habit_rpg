@@ -2193,22 +2193,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4C6025C6-EFCA-4580-9CFF-E23AB0097EF4"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SHUtils_C/Code/SHSerialQueue.c"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
-            landmarkName = "SH_serialQueue_addOp(queue, fnArgs)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "958A9F7C-39CD-4A92-AE7C-F74B3345B685"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -2216,8 +2200,8 @@
             filePath = "SHUtils_C/Code/SHSerialQueue.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "300"
-            endingLineNumber = "300"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "SH_addOpAndWaitForResult(queue, fnArgs, result)"
             landmarkType = "9">
          </BreakpointContent>
@@ -2268,22 +2252,6 @@
             endingLineNumber = "56"
             landmarkName = "-testStartAndStop"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5F96B85A-18AB-409B-9F4B-3B046F391DD2"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SHUtils_C/Code/SHSerialQueue.c"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
-            landmarkName = "_addOp(queue, fnArgs)"
-            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
