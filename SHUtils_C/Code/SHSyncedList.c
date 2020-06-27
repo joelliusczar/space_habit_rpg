@@ -23,6 +23,12 @@ struct SHSyncedList {
 };
 
 
+struct _nullWrapper {
+	void *item;
+};
+
+static struct _nullWrapper _nullWraperObj = {0};
+
 bool SH_syncedList_isSqueezeMode(struct SHSyncedList *list) {
 	int32_t threadCode = 0;
 	bool ans = true;
@@ -76,7 +82,14 @@ SHErrorCode SH_syncedList_pushBack(struct SHSyncedList *list, void *item) {
 		goto fnExit;
 	}
 	if((threadCode = pthread_mutex_lock(&list->iterableLock)) != 0) { goto threadErr; }
-	SH_iterable_addItem(list->iterable, item);
+	if(item) {
+		SH_iterable_addItem(list->iterable, item);
+	}
+	else {
+		//SHSyncedList chokes on nulls, and will deadlock
+		//so, we're adding a placeholder instead
+		SH_iterable_addItem(list->iterable, &_nullWraperObj);
+	}
 	if((threadCode = pthread_cond_signal(&list->hasItems)) != 0) { goto threadErr; }
 	if((threadCode = pthread_mutex_unlock(&list->iterableLock)) != 0) { goto threadErr; }
 	goto fnExit;
@@ -96,11 +109,16 @@ void *SH_syncedList_popFront(struct SHSyncedList *list) {
 	if(SH_iterable_count(list->iterable) < 1) {
 		if((threadCode = pthread_cond_signal(&list->isEmpty)) != 0) {
 			SH_notifyOfError(SH_THREAD_ERROR, "thread Failure in popFont");
-			goto fnExit;
+			goto threadErrSignal;
 		}
 	}
 	if((threadCode = pthread_mutex_unlock(&list->iterableLock)) != 0) { goto fnExit; }
+	if(&_nullWraperObj == item) {
+		item = NULL;
+	}
 	return item;
+	threadErrSignal:
+		pthread_mutex_unlock(&list->iterableLock);
 	fnExit:
 		return NULL;
 }
@@ -115,7 +133,7 @@ void *SH_syncedList_waitForPopFront(struct SHSyncedList *list) {
 		if(SH_iterable_count(list->iterable) < 1) {
 			if((threadCode = pthread_cond_signal(&list->isEmpty)) != 0) {
 				SH_notifyOfError(SH_THREAD_ERROR, "thread Failure in waitForPopFront");
-				goto fnExit;
+				goto threadErrSignal;
 			}
 		}
 		if(SH_syncedList_isSqueezeMode(list)) {
@@ -124,7 +142,12 @@ void *SH_syncedList_waitForPopFront(struct SHSyncedList *list) {
 		if((threadCode = pthread_cond_wait(&list->hasItems, &list->iterableLock)) != 0) { goto fnExit; }
 	}
 	if((threadCode = pthread_mutex_unlock(&list->iterableLock)) != 0) { goto fnExit; }
+	if(&_nullWraperObj == item) {
+		item = NULL;
+	}
 	return item;
+	threadErrSignal:
+		pthread_mutex_unlock(&list->iterableLock);
 	fnExit:
 		return NULL;
 }
@@ -139,11 +162,16 @@ void *SH_syncedList_popBack(struct SHSyncedList *list) {
 	if(SH_iterable_count(list->iterable) < 1) {
 		if((threadCode = pthread_cond_signal(&list->isEmpty)) != 0) {
 			SH_notifyOfError(SH_THREAD_ERROR, "thread Failure in popBack");
-			goto fnExit;
+			goto threadErrSignal;
 		}
 	}
 	if((threadCode = pthread_mutex_unlock(&list->iterableLock)) != 0) { goto fnExit; }
+	if(&_nullWraperObj == item) {
+		item = NULL;
+	}
 	return item;
+	threadErrSignal:
+		pthread_mutex_unlock(&list->iterableLock);
 	fnExit:
 		return NULL;
 }
@@ -156,6 +184,9 @@ void *SH_syncedList_getBack(struct SHSyncedList *list) {
 	if((threadCode = pthread_mutex_lock(&list->iterableLock)) != 0) { goto fnExit; }
 	item = SH_iterable_getBack(list->iterable);
 	if((threadCode = pthread_mutex_unlock(&list->iterableLock)) != 0) { goto fnExit; }
+	if(&_nullWraperObj == item) {
+		item = NULL;
+	}
 	return item;
 	fnExit:
 		return NULL;
@@ -169,6 +200,9 @@ void *SH_syncedList_getFront(struct SHSyncedList *list) {
 	if((threadCode = pthread_mutex_lock(&list->iterableLock)) != 0) { goto fnExit; }
 	item = SH_iterable_getFront(list->iterable);
 	if((threadCode = pthread_mutex_unlock(&list->iterableLock)) != 0) { goto fnExit; }
+	if(&_nullWraperObj == item) {
+		item = NULL;
+	}
 	return item;
 	fnExit:
 		return NULL;
@@ -191,7 +225,6 @@ SHErrorCode SH_syncedList_runActionOnEmpty(struct SHSyncedList *list, SHErrorCod
 	SHErrorCode status = SH_NO_ERROR;
 	if((threadCode = pthread_mutex_lock(&list->iterableLock)) != 0) { goto threadCodeExit; }
 	while(SH_iterable_count(list->iterable) > 0) {
-		pthread_cond_wait(&list->isEmpty, &list->iterableLock);
 		if((threadCode = pthread_cond_wait(&list->isEmpty, &list->iterableLock)) != 0) {
 			goto threadCodeExit;
 		}
@@ -204,6 +237,21 @@ SHErrorCode SH_syncedList_runActionOnEmpty(struct SHSyncedList *list, SHErrorCod
 	threadCodeExit:
 		status |= SH_THREAD_ERROR;
 		SH_notifyOfError(status, "There was an error in runActionOnEmpty");
+	fnExit:
+		return status;
+}
+
+
+SHErrorCode SH_syncedList_stirHasItems(struct SHSyncedList *list) {
+	if(!list) return SH_ILLEGAL_INPUTS;
+	int32_t threadCode = 0;
+	SHErrorCode status = SH_NO_ERROR;
+	if((threadCode = pthread_mutex_lock(&list->iterableLock)) != 0) { goto threadErr; }
+	if((threadCode = pthread_cond_signal(&list->hasItems)) != 0) { goto threadErr; }
+	if((threadCode = pthread_mutex_unlock(&list->iterableLock)) != 0) { goto threadErr; }
+	goto fnExit;
+	threadErr:
+		status |= SH_THREAD_ERROR;
 	fnExit:
 		return status;
 }

@@ -247,7 +247,7 @@ static struct SHTreeNode *_findNthItem(struct SHTreeNode *root, uint64_t idx, ui
 
 void *SH_tree_findNthItem(struct SHTree *tree, uint64_t idx) {
 	if(!tree || !tree->root) return NULL;
-	if(idx > tree->root->childCount) return NULL;
+	if(idx > SH_tree_count(tree)) return NULL;
 	struct SHTreeNode *nthNode = _findNthItem(tree->root, idx, 0);
 	return nthNode ? nthNode->item : NULL;
 }
@@ -296,7 +296,6 @@ static struct SHTreeNode * _getMaxNode(struct SHTreeNode *root) {
 	}
 	return prev;
 }
-
 
 
 static void _nodeCleanup(struct SHTreeNode *root, void (*itemCleanup)(void**)) {
@@ -350,16 +349,16 @@ static struct SHTreeNode *_detachNode(struct SHTreeNode *root,struct SHTreeNode 
 }
 
 
-
 void SH_tree_deleteNthItem(struct SHTree *tree, uint64_t idx) {
 	if(!tree || !tree->root) return;
+	if(idx > SH_tree_count(tree)) return;
 	uint64_t beforeCount = SH_tree_count(tree);
 	struct SHTreeNode *nthNode = _findNthItem(tree->root, idx, 0);
 	tree->root = _detachNode(tree->root, nthNode, tree->sortingFn);
 	if(SH_tree_count(tree) > beforeCount) { //if item was successfully removed
 		tree->version ^= (uintptr_t)nthNode->item;
 	}
-	_nodeCleanup(nthNode, (void (*)(void**))&tree->itemCleanup);
+	_nodeCleanup(nthNode, (void (*)(void**))tree->itemCleanup);
 }
 
 

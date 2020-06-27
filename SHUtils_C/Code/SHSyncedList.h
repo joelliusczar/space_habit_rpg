@@ -29,6 +29,7 @@ void *SH_syncedList_getBack(struct SHSyncedList *list);
 void *SH_syncedList_getFront(struct SHSyncedList *list);
 uint64_t SH_syncedList_count(struct SHSyncedList *list);
 SHErrorCode SH_syncedList_runActionOnEmpty(struct SHSyncedList *list, SHErrorCode (*onEmpty)(void *), void* fnArgs);
+SHErrorCode SH_syncedList_stirHasItems(struct SHSyncedList *list);
 void SH_syncedList_cleanup(struct SHSyncedList **listP2);
 
 

@@ -447,4 +447,16 @@ static int32_t _numCompare(void *a, void *b) {
 	
 }
 
+
+-(void)testTreeCounts {
+	struct SHTree *tree = SH_tree_init(_numCompare, NULL);
+	int32_t nums[12] = { 43, 18, 22, 9, 21, 6, 8, 20, 63, 50, 62, 51 };
+	
+	for(int32_t i = 0; i < 12; i++) {
+		SH_tree_addItem(tree, &nums[i]);
+	}
+	uint64_t count = SH_tree_count(tree);
+	XCTAssertEqual(count, 12);
+}
+
 @end

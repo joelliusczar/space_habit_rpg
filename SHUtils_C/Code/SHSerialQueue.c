@@ -90,6 +90,7 @@ static SHErrorCode _waitForQueueToEmpty(struct SHSerialQueue *queue) {
 	{
 		goto cleanup;
 	}
+	if((status = SH_syncedList_stirHasItems(queue->opsQueue)) != SH_NO_ERROR) { goto cleanup; }
 
 	goto fnExit;
 	cleanup:
@@ -102,6 +103,7 @@ static SHErrorCode _waitForQueueToEmpty(struct SHSerialQueue *queue) {
 static SHErrorCode _wrapVoidCall(void *fnArgs, struct SHQueueStore *store, void **result) {
 	
 	struct _wrappedVoidFnArgs *wrapped = (struct _wrappedVoidFnArgs*)fnArgs;
+	printf("_wrapVoidCall %p\n",wrapped->fnArgs);
 	SHErrorCode status = wrapped->wrappedFn(wrapped->fnArgs, store);
 	if(wrapped->cleanupFn) {
 		wrapped->cleanupFn(&fnArgs);
@@ -120,7 +122,7 @@ SHErrorCode _addOp(
 	SHErrorCode status = SH_NO_ERROR;
 	struct _queuedOp *op = malloc(sizeof(struct _queuedOp));
 	*op = (struct _queuedOp){ .fn = fn, .fnArgs = fnArgs, .cleanupFn = cleanupFn };
-	
+	printf("_addOp %p \n", op->fnArgs);
 	if((status = SH_syncedList_pushBack(queue->opsQueue, op)) != SH_NO_ERROR) { goto cleanup; }
 	return SH_NO_ERROR;
 	
@@ -139,6 +141,7 @@ SHErrorCode SH_serialQueue_addOp(
 {
 	assert(queue);
 	assert(fn);
+	printf("SH_serialQueue_addOp %p\n",fnArgs);
 	SHErrorCode status = SH_NO_ERROR;
 	struct _wrappedVoidFnArgs *wrapped = malloc(sizeof(struct _wrappedVoidFnArgs));
 	*wrapped = (struct _wrappedVoidFnArgs){
@@ -169,14 +172,13 @@ SHErrorCode SH_addOpAndWaitForResult(
 
 	SHErrorCode status = SH_NO_ERROR;
 	
-	status = _addOp(queue, fn, &fnArgs, cleanupFn);
+	status = _addOp(queue, fn, fnArgs, cleanupFn);
 	void *temp = SH_syncedList_waitForPopFront(queue->resultQueue);
 	if(result) {
 		*result = temp;
 	}
 	
 	return status;
-	
 }
 
 
@@ -188,6 +190,7 @@ static SHErrorCode _runSerialQueueLoop(struct SHSerialQueue *queue) {
 		node = SH_syncedList_waitForPopFront(queue->opsQueue);
 		if(NULL != node) {
 			void *result = NULL;
+			printf("_runSerialQueueLoop: %p\n",node->fnArgs);
 			if((status = node->fn(node->fnArgs, &queue->queueStore, &result)) != SH_NO_ERROR) {
 				goto fnErr;
 			}
@@ -200,6 +203,7 @@ static SHErrorCode _runSerialQueueLoop(struct SHSerialQueue *queue) {
 	fnExit:
 		return status;
 	fnErr:
+		SH_notifyOfError(status, "There was an error in the serial queue loop");
 		_freeUnusedItemsInQueue(queue);
 		return status;
 }
@@ -209,7 +213,7 @@ static void* _serialQueueLoopWrapper(void *args) {
 	SHErrorCode status = SH_NO_ERROR;
 	struct SHSerialQueue *queue = (struct SHSerialQueue *)args;
 	if((status = _runSerialQueueLoop(queue)) != SH_NO_ERROR) { ; }
-	printf("thread ending");
+	printf("thread ending\n");
 	return NULL;
 }
 
@@ -218,6 +222,10 @@ SHErrorCode SH_serialQueue_startLoop(struct SHSerialQueue *queue) {
 	if(!queue) return SH_ILLEGAL_INPUTS;
 	int32_t threadStatus = 0;
 	SHErrorCode status = SH_NO_ERROR;
+	if(_isRunning(queue)) {
+		return SH_PRECONDITIONS_NOT_FULFILLED;
+	}
+	if((status = SH_syncedList_setIsSqueezeMode(queue->opsQueue, false))) { return status; }
 	if((status = _setIsRunning(queue, true)) != SH_NO_ERROR) { return status; }
 	if((threadStatus = pthread_create(&queue->serialThread, NULL, _serialQueueLoopWrapper, queue))
 		!= SH_NO_ERROR)
@@ -302,6 +310,8 @@ void SH_serialQueue_cleanup(struct SHSerialQueue **queueP2) {
 	if(queue->queueStore.queueStoreCleanup) {
 		queue->queueStore.queueStoreCleanup(&queue->queueStore.userItem);
 	}
+	pthread_mutex_destroy(&queue->isRunningLock);
+	//don't need to free queueStore since it is not a pointer
 	free(queue);
 	*queueP2 = NULL;
 }
