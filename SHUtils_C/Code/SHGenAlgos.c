@@ -95,3 +95,16 @@ void SH_cleanup(void **argsP2) {
 	free(args);
 	argsP2 = NULL;
 }
+
+
+char * SH_memoryToString(const unsigned char * const addresses, uint64_t len) {
+	char *result = malloc(sizeof(char) * ((len * 2) + SH_NULL_CHAR_OFFSET));
+	*result = '\0';
+	char *cat = result;
+	for(uint64_t i = 0; i < len; i++) {
+		char byte[3];
+		sprintf(byte, "%.2x",addresses[i]);
+		cat = strncat(cat, byte, 2);
+	}
+	return result;
+}

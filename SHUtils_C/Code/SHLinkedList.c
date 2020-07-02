@@ -39,17 +39,19 @@ void SH_list_pushBack(struct SHLinkedList *list, void *item) {
 	if(!list) return;
 	list->count++;
 	if(!list->front) {
-		list->front = malloc(sizeof(struct SHLLNode));
-		*list->front = (struct SHLLNode){0};
-		list->back = list->front;
-		list->front->item = item;
+		struct SHLLNode *newNode =  malloc(sizeof(struct SHLLNode));
+		*newNode = (struct SHLLNode){0};
+		list->front = newNode;
+		list->back = newNode;
+		newNode->item = item;
 		return;
 	}
-	list->back->next = malloc(sizeof(struct SHLLNode));
-	*list->back->next = (struct SHLLNode){0};
-	list->back->next->prev = list->back;
+	struct SHLLNode *newNode =  malloc(sizeof(struct SHLLNode));
+	*newNode = (struct SHLLNode){0};
+	list->back->next = newNode;
+	newNode->prev = list->back;
 	list->back = list->back->next;
-	list->back->item = item;
+	newNode->item = item;
 }
 
 

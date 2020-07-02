@@ -36,5 +36,7 @@ SHErrorCode SH_serialQueue_startLoop(struct SHSerialQueue *queue);
 bool SH_serialQueue_isLoopRunning(struct SHSerialQueue *queue);
 SHErrorCode SH_serialQueue_pauseLoop(struct SHSerialQueue *queue);
 SHErrorCode SH_serialQueue_closeLoop(struct SHSerialQueue *queue);
+SHErrorCode SH_serialQueue_waitToFinishOps(struct SHSerialQueue *queue);
+
 void SH_serialQueue_cleanup(struct SHSerialQueue **queueP2);
 #endif /* SHSerialQueue_h */

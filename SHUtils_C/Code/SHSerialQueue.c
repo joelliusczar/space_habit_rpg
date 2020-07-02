@@ -103,10 +103,9 @@ static SHErrorCode _waitForQueueToEmpty(struct SHSerialQueue *queue) {
 static SHErrorCode _wrapVoidCall(void *fnArgs, struct SHQueueStore *store, void **result) {
 	
 	struct _wrappedVoidFnArgs *wrapped = (struct _wrappedVoidFnArgs*)fnArgs;
-	printf("_wrapVoidCall %p\n",wrapped->fnArgs);
 	SHErrorCode status = wrapped->wrappedFn(wrapped->fnArgs, store);
 	if(wrapped->cleanupFn) {
-		wrapped->cleanupFn(&fnArgs);
+		wrapped->cleanupFn(&wrapped->fnArgs);
 	}
 	*result = &_voidResultSentinel;
 	return status;
@@ -122,7 +121,6 @@ SHErrorCode _addOp(
 	SHErrorCode status = SH_NO_ERROR;
 	struct _queuedOp *op = malloc(sizeof(struct _queuedOp));
 	*op = (struct _queuedOp){ .fn = fn, .fnArgs = fnArgs, .cleanupFn = cleanupFn };
-	printf("_addOp %p \n", op->fnArgs);
 	if((status = SH_syncedList_pushBack(queue->opsQueue, op)) != SH_NO_ERROR) { goto cleanup; }
 	return SH_NO_ERROR;
 	
@@ -140,8 +138,7 @@ SHErrorCode SH_serialQueue_addOp(
 	void (*cleanupFn)(void**))
 {
 	assert(queue);
-	assert(fn);
-	printf("SH_serialQueue_addOp %p\n",fnArgs);
+	assert(fn); 
 	SHErrorCode status = SH_NO_ERROR;
 	struct _wrappedVoidFnArgs *wrapped = malloc(sizeof(struct _wrappedVoidFnArgs));
 	*wrapped = (struct _wrappedVoidFnArgs){
@@ -190,7 +187,6 @@ static SHErrorCode _runSerialQueueLoop(struct SHSerialQueue *queue) {
 		node = SH_syncedList_waitForPopFront(queue->opsQueue);
 		if(NULL != node) {
 			void *result = NULL;
-			printf("_runSerialQueueLoop: %p\n",node->fnArgs);
 			if((status = node->fn(node->fnArgs, &queue->queueStore, &result)) != SH_NO_ERROR) {
 				goto fnErr;
 			}
@@ -299,6 +295,19 @@ SHErrorCode SH_serialQueue_closeLoop(struct SHSerialQueue *queue) {
 		return status | SH_THREAD_ERROR;
 	}
 	return status;
+}
+
+
+SHErrorCode SH_serialQueue_waitToFinishOps(struct SHSerialQueue *queue) {
+	if(!queue) return SH_ILLEGAL_INPUTS;
+	if(!_isRunning(queue)) return SH_PRECONDITIONS_NOT_FULFILLED;
+	SHErrorCode status = SH_NO_ERROR;
+	if((status = SH_syncedList_runActionOnEmpty(queue->opsQueue, NULL, queue)) != SH_NO_ERROR) { goto waitErr; }
+	goto fnExit;
+	waitErr:
+		SH_notifyOfError(status, "Could not wait for empty for some reason");
+	fnExit:
+		return status;
 }
 
 

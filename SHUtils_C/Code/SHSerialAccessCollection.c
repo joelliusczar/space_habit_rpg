@@ -7,6 +7,7 @@
 //
 
 #include "SHSerialAccessCollection.h"
+#include "SHGenAlgos.h"
 #include "SHSerialQueue.h"
 #include <stdlib.h>
 
@@ -95,7 +96,6 @@ static SHErrorCode _deleteItemAtIdx(void *fnArgs, struct SHQueueStore *store) {
 	if(!fnArgs) return SH_ILLEGAL_INPUTS;
 	struct SHIterableWrapper * iterable = (struct SHIterableWrapper *)SH_serialQueue_getUserItem(store);
 	uint64_t idx = *((uint64_t*)fnArgs);
-	printf("_deleteItemAtIdx: %llu\n",idx);
 	SH_iterable_deleteItemAtIdx(iterable, idx);
 	
 	return SH_NO_ERROR;
@@ -104,9 +104,9 @@ static SHErrorCode _deleteItemAtIdx(void *fnArgs, struct SHQueueStore *store) {
 
 SHErrorCode SH_SACollection_deleteItemAtIdx(struct SHSerialAccessCollection *saCollection, uint64_t idx) {
 	SHErrorCode status = SH_NO_ERROR;
-	printf("SH_SACollection_deleteItemAtIdx: %llu\n",idx);
-	printf("SH_SACollection_deleteItemAtIdx: %p\n",&idx);
-	if((status = SH_serialQueue_addOp(saCollection->queue, _deleteItemAtIdx, &idx, NULL)) != SH_NO_ERROR) {}
+	uint64_t *idxAlloc = malloc(sizeof(uint64_t));
+	*idxAlloc = idx;
+	if((status = SH_serialQueue_addOp(saCollection->queue, _deleteItemAtIdx, idxAlloc, SH_cleanup)) != SH_NO_ERROR) {}
 	
 	return SH_NO_ERROR;
 }
@@ -153,4 +153,8 @@ SHErrorCode SH_SACollection_closeLoop(struct SHSerialAccessCollection *saCollect
 }
 
 
+SHErrorCode SH_SACollection_waitToFinishOps(struct SHSerialAccessCollection *saCollection) {
+	if(!saCollection) return SH_ILLEGAL_INPUTS;
+	return SH_serialQueue_waitToFinishOps(saCollection->queue);
+}
 

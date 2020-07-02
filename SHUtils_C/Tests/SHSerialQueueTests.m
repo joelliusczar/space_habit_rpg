@@ -15,6 +15,8 @@ static int32_t test3 = 0;
 static int32_t primes[15] = { 1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43 };
 static int32_t testSum = 0;
 
+static uint64_t paramTest = 0;
+
 
 static SHErrorCode _testFunc1(void *args, struct SHQueueStore *store) {
 	(void)args; (void)store;
@@ -44,6 +46,13 @@ static SHErrorCode _testFunc3(void *args, struct SHQueueStore *store) {
 	printf("sum: %d current round: %d prime: %d\n",testSum, test3, primes[test3]);
 	printf("ending test charlie%d\n", test3);
 	test3++;
+	return SH_NO_ERROR;
+}
+
+
+static SHErrorCode _testVoidFuncWithParam(void *args, struct SHQueueStore *store) {
+	(void)args; (void)store;
+	paramTest = *((uint64_t *)args);
 	return SH_NO_ERROR;
 }
 
@@ -168,6 +177,18 @@ static SHErrorCode _testFunc3(void *args, struct SHQueueStore *store) {
 	printf("test level: now we close\n");
 	status = SH_serialQueue_closeLoop(queue);
 	XCTAssertEqual(status, SH_NO_ERROR);
+}
+
+
+-(void)testVoidFunc{
+	SHErrorCode status = SH_NO_ERROR;
+	struct SHSerialQueue *queue = SH_serialQueue_init(NULL, NULL);
+	uint64_t testVal = 5;
+	status = SH_serialQueue_addOp(queue, _testVoidFuncWithParam, &testVal, NULL);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	SH_serialQueue_startLoop(queue);
+	status = SH_serialQueue_closeLoop(queue);
+	XCTAssertEqual(paramTest, 5);
 }
 
 @end

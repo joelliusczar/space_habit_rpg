@@ -136,47 +136,63 @@ static int32_t _numCompare(void *a, void *b) {
 		}
 	}
 	XCTAssertEqual(i, 12);
+	status = SH_SACollection_waitToFinishOps(serialCollection);
+	XCTAssertEqual(status, SH_NO_ERROR);
 	count = SH_NOT_FOUND;
 	status = SH_SACollection_count(serialCollection, &count);
-	printf("test level: delete op\n");
 	status = SH_SACollection_deleteItemAtIdx(serialCollection, 5);
 	void *resultP = NULL;
-//	status = SH_SACollection_getItemAtIdx(serialCollection, 0, &resultP);
-//	XCTAssertEqual(status, SH_NO_ERROR);
-//	XCTAssertEqual(*((int32_t*)resultP), 6);
-//	status = SH_SACollection_getItemAtIdx(serialCollection, 1, &resultP);
-//	XCTAssertEqual(status, SH_NO_ERROR);
-//	XCTAssertEqual(*((int32_t*)resultP), 8);
-//	status = SH_SACollection_getItemAtIdx(serialCollection, 2, &resultP);
-//	XCTAssertEqual(status, SH_NO_ERROR);
-//	XCTAssertEqual(*((int32_t*)resultP), 9);
-//	status = SH_SACollection_getItemAtIdx(serialCollection, 3, &resultP);
-//	XCTAssertEqual(status, SH_NO_ERROR);
-//	XCTAssertEqual(*((int32_t*)resultP), 18);
-//	status = SH_SACollection_getItemAtIdx(serialCollection, 4, &resultP);
-//	XCTAssertEqual(status, SH_NO_ERROR);
-//	XCTAssertEqual(*((int32_t*)resultP), 20);
-//	status = SH_SACollection_getItemAtIdx(serialCollection, 5, &resultP);
-//	XCTAssertEqual(status, SH_NO_ERROR);
-//	XCTAssertEqual(*((int32_t*)resultP), 22);
-//	status = SH_SACollection_getItemAtIdx(serialCollection, 6, &resultP);
-//	XCTAssertEqual(status, SH_NO_ERROR);
-//	XCTAssertEqual(*((int32_t*)resultP), 43);
-//	status = SH_SACollection_getItemAtIdx(serialCollection, 7, &resultP);
-//	XCTAssertEqual(status, SH_NO_ERROR);
-//	XCTAssertEqual(*((int32_t*)resultP), 50);
-//	status = SH_SACollection_getItemAtIdx(serialCollection, 8, &resultP);
-//	XCTAssertEqual(status, SH_NO_ERROR);
-//	XCTAssertEqual(*((int32_t*)resultP), 51);
-//	status = SH_SACollection_getItemAtIdx(serialCollection, 9, &resultP);
-//	XCTAssertEqual(status, SH_NO_ERROR);
-//	XCTAssertEqual(*((int32_t*)resultP), 62);
-//	status = SH_SACollection_getItemAtIdx(serialCollection, 10, &resultP);
-//	XCTAssertEqual(status, SH_NO_ERROR);
-//	XCTAssertEqual(*((int32_t*)resultP), 63);
+	status = SH_SACollection_getItemAtIdx(serialCollection, 0, &resultP);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertEqual(*((int32_t*)resultP), 6);
+	status = SH_SACollection_getItemAtIdx(serialCollection, 1, &resultP);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertEqual(*((int32_t*)resultP), 8);
+	status = SH_SACollection_getItemAtIdx(serialCollection, 2, &resultP);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertEqual(*((int32_t*)resultP), 9);
+	status = SH_SACollection_getItemAtIdx(serialCollection, 3, &resultP);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertEqual(*((int32_t*)resultP), 18);
+	status = SH_SACollection_getItemAtIdx(serialCollection, 4, &resultP);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertEqual(*((int32_t*)resultP), 20);
+	status = SH_SACollection_getItemAtIdx(serialCollection, 5, &resultP);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertEqual(*((int32_t*)resultP), 22);
+	status = SH_SACollection_getItemAtIdx(serialCollection, 6, &resultP);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertEqual(*((int32_t*)resultP), 43);
+	status = SH_SACollection_getItemAtIdx(serialCollection, 7, &resultP);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertEqual(*((int32_t*)resultP), 50);
+	status = SH_SACollection_getItemAtIdx(serialCollection, 8, &resultP);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertEqual(*((int32_t*)resultP), 51);
+	status = SH_SACollection_getItemAtIdx(serialCollection, 9, &resultP);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertEqual(*((int32_t*)resultP), 62);
+	status = SH_SACollection_getItemAtIdx(serialCollection, 10, &resultP);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertEqual(*((int32_t*)resultP), 63);
 
 }
 
+void *_genFn(struct _generatorState *state) {
+	
+}
+
+
+struct _generatorState {
+	
+	int32_t idx;
+}
+
+
+
+-(void)testWithGenerator {
+	
+}
 
 
 @end
