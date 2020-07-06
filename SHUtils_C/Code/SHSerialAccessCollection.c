@@ -116,7 +116,7 @@ void SH_generatorObj_cleanup(struct SHGeneratorFnObj **genFnObjP2) {
 	if(!genFnObjP2) return;
 	struct SHGeneratorFnObj *genFnObj = *genFnObjP2;
 	if(genFnObj->stateCleanup) {
-		genFnObj->stateCleanup(genFnObj->generatorState);
+		genFnObj->stateCleanup(&genFnObj->generatorState);
 	}
 	free(genFnObj);
 	genFnObjP2 = NULL;
@@ -141,7 +141,10 @@ SHErrorCode SH_SACollection_addItemsWithGenerator(struct SHSerialAccessCollectio
 	SHErrorCode status = SH_NO_ERROR;
 	if((status = SH_serialQueue_addOp(saCollection->queue, _addItemsWithGenerator, generatorFnObj,
 		(void (*)(void**))SH_generatorObj_cleanup)) != SH_NO_ERROR)
-	{}
+	{
+		SH_notifyOfError(status, "An error occured while adding op to generate numbers");
+		return status;
+	}
 	
 	return SH_NO_ERROR;
 }

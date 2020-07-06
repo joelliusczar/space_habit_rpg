@@ -351,7 +351,9 @@ static SHErrorCode _nextDueDate_WEEKLY(struct SHDatetime *useDate, struct SHDueD
 #endif
 	goto cleanup; //this is easier than wrapping the cleanup label in an ignore warning block
 	cleanup:
-		SH_freeSHDatetime(resultPair, ansLen);
+		SH_freeSHTimeshift(&resultPair[0].shifts);
+		SH_freeSHTimeshift(&resultPair[1].shifts);
+		SH_freeSHDatetime(&resultPair);
 	fnExit:
 		return status;
 }
@@ -405,7 +407,7 @@ SHErrorCode SH_nextDueDate_WEEKLY(struct SHDatetime *useDate, struct SHDueDateWe
 	_normalizeDatetime(&savedPrevDatePrepared);
 	/*
 		#dueDateLogic
-		in contrast to savedPrevDate which should only be stored with hour, min, and sec all 0;
+		in contrast to savedPrevDate which should only be stored with year, month, and day (hour, min, and sec all 0);
 		useDate could literally be at any moment of the day, so we need to, not only normalize it,
 		but make sure it's calculated as the right day according to when the user wants their day to start
 		see @dueDateLogic1
@@ -443,7 +445,7 @@ SHErrorCode SH_isDateADueDate_WEEKLY(struct SHDatetime *useDate, struct SHDueDat
 	SH_dtSetTimezoneOffset(&useDatePrepared, 0);
 	SH_dtSetToTimeOfDay(&useDatePrepared, 0);
 	SH_dtSetTimezoneOffset(&useDatePrepared, nextDueDate.timezoneOffset);
-	double useDateTimestamp = -1; //any value that's different from nextDueDateTimestamp
+	double useDateTimestamp = -1; //any value that's different from nextDueDateTimestamp, i.e. not 0
 
 	SH_dtToTimestamp(&useDatePrepared, &useDateTimestamp);
 

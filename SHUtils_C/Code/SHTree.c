@@ -594,7 +594,7 @@ char * SH_tree_printLineOrder(struct SHTree *tree, char *(*itemDescFn)(void *)) 
 	if(!itemDesc) {
 		itemDesc = SH_constStrCopy("");
 	}
-	int32_t itemStrLen = strlen(itemDesc);
+	uint64_t itemStrLen = strlen(itemDesc);
 	uint64_t currentMaxLen = (itemStrLen * SH_tree_count(tree));
 	char * result = malloc(sizeof(char) * (currentMaxLen + SH_NULL_CHAR_OFFSET));
 	if(!result) return NULL;

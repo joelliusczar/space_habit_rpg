@@ -45,7 +45,7 @@
 }
 
 
--(void)setupData{
+-(void)setupData {
 #warning update without coredata
 //	SHDaily_Medium *dailyMedium = [SHDaily_Medium newWithContext:self.context];
 //	self.habitItemsFetcher = [dailyMedium dailiesDataFetcher];

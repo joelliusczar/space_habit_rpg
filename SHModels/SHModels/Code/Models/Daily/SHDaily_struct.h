@@ -12,6 +12,8 @@
 #include "SHHabitBase.h"
 #include "SHDBDueDateConstants.h"
 #include "SHActiveDaysValues.h"
+#include <SHDatetime/SHDatetime.h>
+#include "SHDBDueDateConstants.h"
 #include <stdio.h>
 #include <stdbool.h>
 
@@ -25,7 +27,6 @@ struct SHDaily {
 	bool activeFromHasPriority;
 	bool isEnabled;
 	bool lastUpdateHasPriority;
-	int32_t weekIntervalHash;
 	char * note;
 	int32_t dailyLvl;
 	int32_t dailyXp;
@@ -37,7 +38,23 @@ struct SHDaily {
 	int32_t tzOffsetLastActivationDateTime;
 };
 
-void SH_freeDaily(struct SHDaily *daily);
+
+struct SHTableDaily {
+	int64_t pk;
+	char *name;
+	int32_t maxStreak;
+	int32_t dailyLvl;
+	int32_t dailyXp;
+	int32_t customUseOrder;
+	int32_t streakLength;
+	struct SHDatetime *savedUseDate;
+	struct SHDatetime *nextDueDate;
+	SHDueDateStatus dueStatus;
+};
+
+void SH_cleanupTableDaily(struct SHTableDaily **tableDailyP2);
+void SH_cleanupTableDailyProps(struct SHTableDaily *tableDaily);
+void SH_freeDaily(struct SHDaily **dailyP2);
 void SH_freeDailyProps(struct SHDaily *daily);
 
 #endif /* SHDaily_struct_h */

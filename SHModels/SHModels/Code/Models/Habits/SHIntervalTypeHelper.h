@@ -9,9 +9,8 @@
 #ifndef SHIntervalTypeHelper_h
 #define SHIntervalTypeHelper_h
 
-#import "SHModelConstants.h"
 #include "SHActiveDaysConstants.h"
-
+#include <stdbool.h>
 
 SHIntervalType SH_extractBaseIntervalType(SHIntervalType rateType);
 SHIntervalType SH_invertRateType(SHIntervalType rateType);

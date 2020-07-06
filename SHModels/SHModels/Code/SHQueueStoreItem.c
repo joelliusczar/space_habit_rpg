@@ -10,12 +10,11 @@
 #include <stdlib.h>
 
 
-void SH_FreeQueueStoreItem(struct SHQueueStoreItem *item) {
+void SH_freeQueueStoreItem(struct SHQueueStoreItem **itemP2) {
+	if(!itemP2) return;
+	struct SHQueueStoreItem *item = *itemP2;
 	if(!item) return;
 	sqlite3_close(item->db);
 	free(item);
-}
-void SH_FreeQueueStoreItemVoid(void *arg) {
-	struct SHQueueStoreItem *item = (struct SHQueueStoreItem *)arg;
-	SH_FreeQueueStoreItem(item);
+	*itemP2 = NULL;
 }

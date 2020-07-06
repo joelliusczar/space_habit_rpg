@@ -13,6 +13,11 @@
 #import "SHErrorHandling.h"
 #import "SHGenAlgos.h"
 #import "SHUtilConstants.h"
+#import "SHLinkedList.h"
+#import "SHTree.h"
 #import "SHSerialQueue.h"
+#import "SHSerialAccessCollection.h"
+#import "SHIterableWrapper.h"
+#import "SHSyncedList.h"
 
 #endif /* SHUtils_C_h */

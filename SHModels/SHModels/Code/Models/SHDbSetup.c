@@ -26,7 +26,6 @@ static SHErrorCode _buildCreateDailyTableStmt(sqlite3_stmt **stmt, sqlite3 *db) 
 		"activeFromHasPriority INTEGER, "
 		"isEnabled INTEGER, "
 		"lastUpdateHasPriority INTEGER, "
-		"weekIntervalHash INTEGER, "
 		"note TEXT, "
 		"dailyLvl INTEGER, "
 		"dailyXp INTEGER, "
@@ -34,23 +33,10 @@ static SHErrorCode _buildCreateDailyTableStmt(sqlite3_stmt **stmt, sqlite3 *db) 
 		"dayStartTime INTEGER, "
 		"difficulty INTEGER, "
 		"urgency INTEGER, "
-		"intervalType INTEGER, "
-		"dayIntevalSize INTEGER, "
 		"streakLength INTEGER, "
 		"tzOffsetLastActivationDateTime INTEGER, "
 		"tzOffsetLastUpdateDateTime INTEGER, "
-		"weekIntervalSize INTEGER, "
-		"monthIntervalHash INTEGER, "
-		"monthIntervalSize INTEGER, "
-		"yearIntervalHash TEXT, "
-		"yearIntervalSize INTEGER, "
-		"daySkipIntevalSize INTEGER, "
-		"weekSkipIntervalHash INTEGER, "
-		"weekSkipIntervalSize INTEGER, "
-		"monthSkipIntervalHash INTEGER, "
-		"monthSkipIntervalSize INTEGER, "
-		"yearSkipIntervalHash TEXT, "
-		"yearSkipIntervalSize INTEGER "
+		"activeDaysBlob BLOB "
 		")";
 	sqlStatus = sqlite3_prepare_v2(db, sql, -1, stmt, 0);
 	if(sqlStatus != SQLITE_OK) {
@@ -125,37 +111,55 @@ SHErrorCode SH_setupDb(sqlite3 *db) {
 }
 
 
-SHErrorCode SH_addDbFunctions(sqlite3 *db) {
+SHErrorCode SH_addDbFunctions(sqlite3 *db, struct SHConfigAccessor *config) {
 	SHErrorCode status = SH_NO_ERROR;
 	int32_t sqlStatus = SQLITE_OK;
 	if((sqlStatus = sqlite3_create_function(db, "SH_selectSavedUseDateUTC", 7,
 		SQLITE_UTF8 | SQLITE_DETERMINISTIC, NULL, SHDB_selectSavedUseDate, NULL, NULL))
 		!= SQLITE_OK)
-		{ goto fnExit; }
-	if((sqlStatus = sqlite3_create_function(db, "SH_nextDueDate", 5,
-		SQLITE_UTF8 | SQLITE_DETERMINISTIC, NULL, SHDB_nextDueDate, NULL, NULL))
+	{
+		SH_notifyOfError(SH_SQLITE3_ERROR, "While adding SHDB_selectSavedUseDate");
+		goto fnExit;
+		
+	}
+	if((sqlStatus = sqlite3_create_function(db, "SH_nextDueDate", 4,
+		SQLITE_UTF8 | SQLITE_DETERMINISTIC, config, SHDB_nextDueDate, NULL, NULL))
 		!= SQLITE_OK)
-		{ goto fnExit; }
-	if((sqlStatus = sqlite3_create_function(db, "SH_isDateActive", 5,
-		SQLITE_UTF8 | SQLITE_DETERMINISTIC, NULL, SHDB_isDateActive, NULL, NULL))
+	{
+		SH_notifyOfError(SH_SQLITE3_ERROR, "While adding SHDB_nextDueDate");
+		goto fnExit;
+	}
+	if((sqlStatus = sqlite3_create_function(db, "SH_isDateActive", 4,
+		SQLITE_UTF8 | SQLITE_DETERMINISTIC, config, SHDB_isDateActive, NULL, NULL))
 		!= SQLITE_OK)
-		{ goto fnExit; }
-	if((sqlStatus = sqlite3_create_function(db, "SH_missedDays", 5,
-		SQLITE_UTF8 | SQLITE_DETERMINISTIC, NULL, SHDB_missedDays, NULL, NULL))
+	{
+		SH_notifyOfError(SH_SQLITE3_ERROR, "While adding SHDB_isDateActive");
+		goto fnExit;
+	}
+	if((sqlStatus = sqlite3_create_function(db, "SH_missedDays", 4,
+		SQLITE_UTF8 | SQLITE_DETERMINISTIC, config, SHDB_missedDays, NULL, NULL))
 		!= SQLITE_OK)
-		{ goto fnExit; }
-	if((sqlStatus = sqlite3_create_function(db, "SH_penalty", 7,
-		SQLITE_UTF8 | SQLITE_DETERMINISTIC, NULL, SHDB_penalty, NULL, NULL))
+	{
+		SH_notifyOfError(SH_SQLITE3_ERROR, "While adding SHDB_missedDays");
+		goto fnExit;
+	}
+	if((sqlStatus = sqlite3_create_function(db, "SH_penalty", 8,
+		SQLITE_UTF8 | SQLITE_DETERMINISTIC, config, SHDB_penalty, NULL, NULL))
 		!= SQLITE_OK)
-		{ goto fnExit; }
-	if((sqlStatus = sqlite3_create_function(db, "SH_getDueStatus", 5,
-		SQLITE_UTF8 | SQLITE_DETERMINISTIC, NULL, SHDB_getDueStatus, NULL, NULL))
+	{
+		SH_notifyOfError(SH_SQLITE3_ERROR, "While adding SHDB_penalty");
+		goto fnExit;
+	}
+	if((sqlStatus = sqlite3_create_function(db, "SH_getDueStatus", 4,
+		SQLITE_UTF8 | SQLITE_DETERMINISTIC, config, SHDB_getDueStatus, NULL, NULL))
 		!= SQLITE_OK)
-		{ goto fnExit; }
-	
+	{
+		SH_notifyOfError(SH_SQLITE3_ERROR, "While adding SHDB_getDueStatus");
+		goto fnExit;
+	}
+	return SH_NO_ERROR;
 	fnExit:
 		status |= SH_SQLITE3_ERROR;
 		SH_notifyOfError(status, "Failed to add sql function");
 		return status;
-	return SH_NO_ERROR;
 }

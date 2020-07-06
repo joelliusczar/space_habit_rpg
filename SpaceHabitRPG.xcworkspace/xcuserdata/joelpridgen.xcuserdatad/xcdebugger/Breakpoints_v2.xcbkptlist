@@ -964,8 +964,8 @@
             filePath = "SHModels/Tests/DailyHelperTest.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
+            startingLineNumber = "257"
+            endingLineNumber = "257"
             landmarkName = "-testDaysUntilDue_WEEKLY"
             landmarkType = "7">
          </BreakpointContent>
@@ -980,8 +980,8 @@
             filePath = "SHModels/Tests/DailyHelperTest.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
             landmarkName = "-testDaysUntilDue_WEEKLY"
             landmarkType = "7">
          </BreakpointContent>
@@ -1185,8 +1185,8 @@
             filePath = "SHModels/SHModels/Code/Models/Daily/SHDaily_dbFuncs.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
             landmarkName = "SHDB_penalty(context, argc, values)"
             landmarkType = "9">
          </BreakpointContent>
@@ -1297,8 +1297,8 @@
             filePath = "SpaceHabitRPG/SpaceHabitRPG/Daily/SHHabitViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "-openEditor:forAdded:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2316,6 +2316,54 @@
             endingLineNumber = "109"
             landmarkName = "SH_memoryToString(addresses, len)"
             landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "261ED827-C0B6-44E6-A166-DBDD575293D4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHModels/SHModels/Code/Models/Daily/SHDaily_dbFuncs.c"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
+            landmarkName = "SHDB_selectSavedUseDate(context, argc, values)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6658934F-DB88-4E43-8CEE-EFE14F3F7D84"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHModels/Tests/SHTestDbFunctions.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "SHTestDbFunctions"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A44185E6-6676-4A48-B8F8-880726CFC754"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SHModels/Tests/SHTestDbFunctions.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "SHTestDbFunctions"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

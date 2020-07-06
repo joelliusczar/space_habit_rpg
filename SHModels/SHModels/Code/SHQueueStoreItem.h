@@ -18,7 +18,6 @@ struct SHQueueStoreItem {
 	struct SHConfigAccessor *config;
 };
 
-void SH_FreeQueueStoreItem(struct SHQueueStoreItem *item);
-void SH_FreeQueueStoreItemVoid(void *arg);
+void SH_freeQueueStoreItem(struct SHQueueStoreItem **item);
 
 #endif /* SHQueueStoreItem_h */

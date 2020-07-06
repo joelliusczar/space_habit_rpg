@@ -12,43 +12,29 @@
 SHErrorCode SH_buildStatement_insertDailyStmt(sqlite3_stmt **stmt, sqlite3 *db) {
 	int32_t sqlStatus = SQLITE_OK;
 	char *sql = "INSERT INTO Dailies ("
-	"name,"
-	"lastUpdated,"
-	"activeFromDateTime,"
+	"name, "
+	"lastUpdated, "
+	"activeFromDateTime, "
 	"activeToDateTime,"
-	"lastActivationDateTime,"
+	"lastActivationDateTime, "
 	"maxStreak,"
-	"activeFromHasPriority,"
+	"activeFromHasPriority, "
 	"isEnabled,"
-	"lastUpdateHasPriority,"
-	"weekIntervalHash,"
-	"note,"
-	"dailyLvl,"
-	"dailyXp,"
-	"customUseOrder,"
-	"dayStartTime,"
-	"difficulty,"
-	"urgency,"
-	"intervalType,"
-	"dayIntevalSize,"
-	"streakLength,"
-	"tzOffsetLastActivationDateTime,"
-	"tzOffsetLastUpdateDateTime,"
-	"weekIntervalSize,"
-	"monthIntervalHash,"
-	"monthIntervalSize,"
-	"yearIntervalHash,"
-	"yearIntervalSize,"
-	"daySkipIntevalSize,"
-	"weekSkipIntervalHash,"
-	"weekSkipIntervalSize,"
-	"monthSkipIntervalHash,"
-	"monthSkipIntervalSize,"
-	"yearSkipIntervalHash,"
-	"yearSkipIntervalSize"
+	"lastUpdateHasPriority, "
+	"note, "
+	"dailyLvl, "
+	"dailyXp, "
+	"customUseOrder, "
+	"dayStartTime, "
+	"difficulty, "
+	"urgency, "
+	"intervalType, "
+	"streakLength, "
+	"tzOffsetLastActivationDateTime, "
+	"tzOffsetLastUpdateDateTime, "
+	"activeDaysBlob "
 	") VALUES(?1,?2,?3,?4,?5,?6,?7,?8,?9,?10,?11,?12,?13,"
-	"?14,?15,?16,?17,?18,?19,?20,?21,?22, ?23, ?24, ?25, ?26, "
-	"?27, ?28, ?29, ?30, ?31, ?32, ?33, ?34)";
+	"?14,?15,?16,?17,?18,?19,?20,?21) ";
 	
 	sqlStatus = sqlite3_prepare_v2(db, sql, -1, stmt, 0);
 	if(sqlStatus != SQLITE_OK) {
@@ -64,46 +50,32 @@ SHErrorCode SH_buildStatement_insertDailyStmt(sqlite3_stmt **stmt, sqlite3 *db) 
 SHErrorCode SH_buildStatement_updateDailyStmt(sqlite3_stmt **stmt, sqlite3 *db) {
 	int32_t sqlStatus = SQLITE_OK;
 	char *sql = "UPDATE Dailies "
-	"SET name = ?1"
-	"lastUpdated = ?2,"
-	"activeFromDateTime = ?3,"
-	"activeToDateTime = ?4,"
-	"lastActivationDateTime = ?5,"
-	"maxStreak = ?6,"
-	"activeFromHasPriority = ?7,"
-	"isEnabled = ?8,"
-	"lastUpdateHasPriority = ?9,"
-	"weekIntervalHash = ?10,"
-	"note = ?11,"
-	"dailyLvl = ?12,"
-	"dailyXp = ?13,"
-	"customUseOrder = ?14,"
-	"dayStartTime = ?15,"
-	"difficulty = ?16,"
-	"urgency = ?17,"
-	"intervalType = ?18,"
-	"dayIntevalSize = ?19,"
-	"streakLength = ?20,"
-	"tzOffsetLastActivationDateTime = ?21,"
-	"tzOffsetLastUpdateDateTime = ?22,"
-	"weekIntervalSize = ?23,"
-	"monthIntervalHash = ?24,"
-	"monthIntervalSize = ?25,"
-	"yearIntervalHash = ?26,"
-	"yearIntervalSize = ?27"
-	"daySkipIntevalSize = ?28,"
-	"weekSkipIntervalHash = ?29,"
-	"weekSkipIntervalSize = ?30,"
-	"monthSkipIntervalHash = ?31,"
-	"monthSkipIntervalSize = ?32,"
-	"yearSkipIntervalHash = ?33,"
-	"yearSkipIntervalSize = ?34"
-	"WHERE pk = ?35";
+	"SET name = ?1, "
+	"lastUpdated = ?2, "
+	"activeFromDateTime = ?3, "
+	"activeToDateTime = ?4, "
+	"lastActivationDateTime = ?5, "
+	"maxStreak = ?6, "
+	"activeFromHasPriority = ?7, "
+	"isEnabled = ?8, "
+	"lastUpdateHasPriority = ?9, "
+	"note = ?10, "
+	"dailyLvl = ?11, "
+	"dailyXp = ?12, "
+	"customUseOrder = ?13, "
+	"dayStartTime = ?14, "
+	"difficulty = ?15, "
+	"urgency = ?16, "
+	"streakLength = ?17, "
+	"tzOffsetLastActivationDateTime = ?18, "
+	"tzOffsetLastUpdateDateTime = ?19, "
+	"activeDaysBlob = ?20"
+	"WHERE pk = ?21";
 	
 	sqlStatus = sqlite3_prepare_v2(db, sql, -1, stmt, 0);
 	if(sqlStatus != SQLITE_OK) {
-		char errMsg[60];
-		sprintf(errMsg,"sqlite3 Error: %d \nThere was an error preparing insert statement",sqlStatus);
+		char errMsg[80];
+		sprintf(errMsg,"sqlite3 Error: %d \nThere was an error preparing update statement",sqlStatus);
 		SH_notifyOfError(SH_SQLITE3_ERROR, errMsg);
 		return SH_SQLITE3_ERROR;
 	}
@@ -124,7 +96,6 @@ SHErrorCode SH_buildStatement_fetchSingleDaily(sqlite3_stmt **stmt, sqlite3 *db)
 	"activeFromHasPriority, "
 	"isEnabled, "
 	"lastUpdateHasPriority, "
-	"weekIntervalHash, "
 	"note, "
 	"dailyLvl, "
 	"dailyXp, "
@@ -133,25 +104,54 @@ SHErrorCode SH_buildStatement_fetchSingleDaily(sqlite3_stmt **stmt, sqlite3 *db)
 	"difficulty, "
 	"urgency, "
 	"intervalType, "
-	"dayIntevalSize, "
 	"streakLength, "
 	"tzOffsetLastActivationDateTime, "
 	"tzOffsetLastUpdateDateTime, "
-	"weekIntervalSize, "
-	"monthIntervalHash, "
-	"monthIntervalSize, "
-	"yearIntervalHash, "
-	"yearIntervalSize, "
-	"daySkipIntevalSize, "
-	"weekSkipIntervalHash, "
-	"weekSkipIntervalSize, "
-	"monthSkipIntervalHash, "
-	"monthSkipIntervalSize, "
-	"yearSkipIntervalHash, "
-	"yearSkipIntervalSize "
+	"activeDaysBlob "
 	"FROM Dailies "
 	"WHERE pk = ?1 ";
 	
+	sqlStatus = sqlite3_prepare_v2(db, sql, -1, stmt, 0);
+	if(sqlStatus != SQLITE_OK) {
+		char errMsg[60];
+		sprintf(errMsg,"sqlite3 Error: %d \nThere was an error preparing select statement",sqlStatus);
+		SH_notifyOfError(SH_SQLITE3_ERROR, errMsg);
+		return SH_SQLITE3_ERROR;
+	}
+	return SH_NO_ERROR;
+}
+
+
+SHErrorCode SH_buildStatement_fetchAllTableDailies(sqlite3_stmt **stmt, sqlite3 *db) {
+	int32_t sqlStatus = SQLITE_OK;
+	char *sql = "SELECT "
+		"pk, "
+		"name, "
+		"streakLength, "
+		"maxStreak, "
+		"dailyLvl, "
+		"dailyXp, "
+		"SH_selectSavedUseDateUTC(lastActivationDateTime, "
+			"tzOffsetLastActivationDateTime, "
+			"activeFromDateTime, "
+			"tzOffsetLastUpdateDateTime,"
+			"lastUpdated, "
+			"activeFromHasPriority, "
+			"lastUpdateHasPriority) AS SavedUseDate, "
+		"SH_nextDueDate(activeDaysBlob, "
+			"strftime('%s','now'), "
+			"SavedUseDate, "
+			"?1 "
+			") AS nextDueDate, "
+		"SH_getDueStatus(activeDaysBlob, "
+			"strftime('%s','now'), "
+			"SavedUseDate, "
+			"?1"
+			") AS dueStatus"
+		"FROM Dailies "
+		"WHERE isEnabled = 1 AND strftime('%s','now', 'localtime') "
+			"BETWEEN activeFromDateTime AND activeToDateTime"
+		"ORDER BY dueStatus";
 	sqlStatus = sqlite3_prepare_v2(db, sql, -1, stmt, 0);
 	if(sqlStatus != SQLITE_OK) {
 		char errMsg[60];

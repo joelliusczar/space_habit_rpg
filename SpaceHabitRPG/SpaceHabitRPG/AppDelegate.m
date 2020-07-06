@@ -88,7 +88,7 @@ static SHErrorCode _addFunctions(void* args, struct SHQueueStore *store) {
 	(void)args;
 	struct SHQueueStoreItem *item = (struct SHQueueStoreItem *)SH_serialQueue_getUserItem(store);
 	
-	SHErrorCode status = SH_addDbFunctions(iterm->db);
+	SHErrorCode status = SH_addDbFunctions(item->db, item->config);
 	return status;
 }
 
@@ -100,7 +100,7 @@ static SHErrorCode _addFunctions(void* args, struct SHQueueStore *store) {
 	(void)launchOptions;
 	SH_setupConfig(&self->_config);
 	self.dateProvider = [[SHDefaultDateProvider alloc] init];
-	self.dbQueue = SH_serialQueue_init(_setupQueueStoreItem(&self->_config), SH_FreeQueueStoreItemVoid);
+	self.dbQueue = SH_serialQueue_init(_setupQueueStoreItem(&self->_config), (void (*)(void**))SH_freeQueueStoreItem);
 	SHErrorCode status = SH_NO_ERROR;
 	if((status = SH_serialQueue_startLoop(self.dbQueue))
 		!= SH_NO_ERROR)
@@ -169,7 +169,7 @@ static SHErrorCode _addFunctions(void* args, struct SHQueueStore *store) {
 
 
 -(void)dealloc {
-	SH_serialQueue_cleanup(self->_dbQueue);
+	SH_serialQueue_cleanup(&self->_dbQueue);
 }
 
 

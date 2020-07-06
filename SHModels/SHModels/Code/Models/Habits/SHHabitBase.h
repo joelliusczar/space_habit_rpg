@@ -19,7 +19,7 @@ struct SHHabitBase {
 };
 
 
-void SH_freeHabitBase(struct SHHabitBase *habit);
+void SH_freeHabitBase(struct SHHabitBase **habit);
 
 
 #endif /* SHHabitBase_h */

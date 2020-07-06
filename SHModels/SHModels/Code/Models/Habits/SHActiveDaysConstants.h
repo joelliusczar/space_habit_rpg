@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include <inttypes.h>
 
+#define SH_ACTIVE_DAYS_SIZE 164
+
 #define SH_INVERSE_INTERVAL_MODIFIER (1<<7)
 
 typedef enum {

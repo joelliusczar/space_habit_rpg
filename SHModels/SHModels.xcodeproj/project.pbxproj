@@ -99,6 +99,7 @@
 		27B2B31C22FFA5F300663644 /* SHTitleProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B2B31B22FFA5F300663644 /* SHTitleProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27B2B3252303811D00663644 /* SHDailyActivator.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B2B3232303811D00663644 /* SHDailyActivator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27B2B3262303811D00663644 /* SHDailyActivator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B2B3242303811D00663644 /* SHDailyActivator.m */; };
+		27B512F924AF7C2300727905 /* SHTestDbFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B512F824AF7C2300727905 /* SHTestDbFunctions.m */; };
 		27BF501E22F77139005096BA /* SHDailyNextDueDateCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = 27BF501C22F77139005096BA /* SHDailyNextDueDateCalculator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27BF501F22F77139005096BA /* SHDailyNextDueDateCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BF501D22F77139005096BA /* SHDailyNextDueDateCalculator.m */; };
 		27CA868F2264207A00AE8FDB /* SHDaily_x.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86432264207A00AE8FDB /* SHDaily_x.m */; };
@@ -151,6 +152,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 271691FF2089758B0059A58E;
 			remoteInfo = SHUtils_C;
+		};
+		27B512FF24AF7C2A00727905 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27FE89782457D45000B11D18 /* SHUtils_C.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27553514248D9AD300D650AB;
+			remoteInfo = SHUtils_CTests;
 		};
 		27D802CE2464CB8C0057E950 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -322,6 +330,7 @@
 		27B2B31B22FFA5F300663644 /* SHTitleProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTitleProtocol.h; sourceTree = "<group>"; };
 		27B2B3232303811D00663644 /* SHDailyActivator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDailyActivator.h; sourceTree = "<group>"; };
 		27B2B3242303811D00663644 /* SHDailyActivator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDailyActivator.m; sourceTree = "<group>"; };
+		27B512F824AF7C2300727905 /* SHTestDbFunctions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTestDbFunctions.m; sourceTree = "<group>"; };
 		27BF501C22F77139005096BA /* SHDailyNextDueDateCalculator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDailyNextDueDateCalculator.h; sourceTree = "<group>"; };
 		27BF501D22F77139005096BA /* SHDailyNextDueDateCalculator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDailyNextDueDateCalculator.m; sourceTree = "<group>"; };
 		27CA86432264207A00AE8FDB /* SHDaily_x.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDaily_x.m; sourceTree = "<group>"; };
@@ -703,6 +712,7 @@
 				27D802D82464CE9D0057E950 /* MonsterHelperTest.m */,
 				27D84A042443DFBE0081DFE6 /* Info.plist */,
 				27D802C92464CB8B0057E950 /* SHModelTests.m */,
+				27B512F824AF7C2300727905 /* SHTestDbFunctions.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -736,6 +746,7 @@
 			isa = PBXGroup;
 			children = (
 				27FE897D2457D45000B11D18 /* SHUtils_C */,
+				27B5130024AF7C2A00727905 /* SHUtils_CTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -936,6 +947,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		27B5130024AF7C2A00727905 /* SHUtils_CTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SHUtils_CTests.xctest;
+			remoteRef = 27B512FF24AF7C2A00727905 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		27D802CF2464CB8C0057E950 /* SHDatetimeTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
@@ -1110,6 +1128,7 @@
 			files = (
 				27D802EE2464E3B20057E950 /* SHTestResourceUtil.m in Sources */,
 				27D802E72464E32A0057E950 /* SHFrequentCase.m in Sources */,
+				27B512F924AF7C2300727905 /* SHTestDbFunctions.m in Sources */,
 				27D802EF2464E3B20057E950 /* SHCoreData+CleanUp.m in Sources */,
 				27D802F02464E3B20057E950 /* SHTestDateProvider.m in Sources */,
 				27D802DA2464CE9D0057E950 /* MonsterHelperTest.m in Sources */,

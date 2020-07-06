@@ -98,7 +98,7 @@ static NSUserDefaults *_userDefaults = nil;
 
 +(SHStoryState)storyState {
 	NSInteger storyMode = [self.userDefaults integerForKey:@"storyState"];
-	return storyMode;
+	return (SHStoryState)storyMode;
 }
 
 

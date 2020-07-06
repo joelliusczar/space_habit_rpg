@@ -14,6 +14,7 @@
 @interface SHHabitViewController ()
 @property (strong, nonatomic) UITableView *habitTable;
 @property (strong, nonatomic) SHHabitNameViewController *nameViewController;
+@property (assign, nonatomic) struct SHSerialQueue *dbQueue;
 @end
 
 @implementation SHHabitViewController
@@ -42,8 +43,9 @@
 
 -(void)viewDidLoad {
 	[super viewDidLoad];
+	AppDelegate *appDel = (AppDelegate*)UIApplication.sharedApplication.delegate;
+	self.dbQueue = appDel.dbQueue;
 	self.habitTable = [[UITableView alloc] init];
-
 	[self.view addSubview:self.habitTable];
 	self.habitTable.translatesAutoresizingMaskIntoConstraints = NO;
 	[self.habitTable.widthAnchor constraintEqualToAnchor:self.view.widthAnchor].active = YES;
@@ -201,10 +203,13 @@ static SHErrorCode _insertNewHabit(void *args, struct SHQueueStore *store) {
 }
 
 
-static void _cleanUpInsert(void* args) {
-	struct _insertArgs *insertArgs = (struct _insertArgs *)args;
-	SH_freeHabitBase(insertArgs->habit);
+static void _cleanUpInsert(struct _insertArgs** argsP2) {
+	if(!argsP2) return;
+	struct _insertArgs *insertArgs = *argsP2;
+	if(!insertArgs) return;
+	SH_freeHabitBase(&insertArgs->habit);
 	free(insertArgs);
+	*argsP2 = NULL;
 }
 
 
@@ -229,7 +234,8 @@ static void _cleanUpInsert(void* args) {
 			.habit = habit,
 			.bSelf = (__bridge void*)bSelf,
 		};
-		if((status = SH_serialQueue_addOp(appDel.dbQueue, _insertNewHabit, insertArgs, _cleanUpInsert)) != SH_NO_ERROR) { ; }
+		if((status = SH_serialQueue_addOp(self.dbQueue, _insertNewHabit, insertArgs,(void (*)(void**)) _cleanUpInsert))
+			!= SH_NO_ERROR) { ; }
 	};
 	self.nameViewController.headline.text = [NSString stringWithUTF8String:self.tableName];
 	[self.central arrangeAndPushChildVCToFront:self.nameViewController];

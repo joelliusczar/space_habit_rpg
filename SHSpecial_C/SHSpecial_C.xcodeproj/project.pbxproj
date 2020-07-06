@@ -80,6 +80,13 @@
 			remoteGlobalIDString = 271691FF2089758B0059A58E;
 			remoteInfo = SHUtils_C;
 		};
+		27B5130324B13FDE00727905 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2703AA68244FBCD200ACE781 /* SHUtils_C.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27553514248D9AD300D650AB;
+			remoteInfo = SHUtils_CTests;
+		};
 		27BC44E9238792200047F683 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 27BC44E4238792200047F683 /* SHDatetime.xcodeproj */;
@@ -158,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				2703AA6D244FBCD200ACE781 /* SHUtils_C */,
+				27B5130424B13FDE00727905 /* SHUtils_CTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -406,6 +414,13 @@
 			fileType = wrapper.cfbundle;
 			path = SHDatetimeTests.xctest;
 			remoteRef = 274ADD03245E496C00763D25 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		27B5130424B13FDE00727905 /* SHUtils_CTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SHUtils_CTests.xctest;
+			remoteRef = 27B5130324B13FDE00727905 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		27BC44EA238792200047F683 /* SHDatetime */ = {

@@ -12,6 +12,7 @@
 #include <SHUtils_C/SHUtilConstants.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 
 int32_t SH_sqlite3_bind_optional_double(sqlite3_stmt* stmt, int32_t paramNum, double *value) {
@@ -43,6 +44,18 @@ SHErrorCode SH_sqlite3_copy_column_text(sqlite3_stmt *stmt, int32_t col, char **
 }
 
 
+SHErrorCode SH_sqlite3_copy_column_blobFixed(sqlite3_stmt *stmt, int32_t col, void *value, uint64_t len) {
+	if(!value || len < 1) return SH_ILLEGAL_INPUTS;
+	const void *tmp = sqlite3_column_blob(stmt, col);
+	uint64_t useLen = fmin(len, sqlite3_column_bytes(stmt, col));
+	if(!tmp) {
+		return SH_NO_ERROR;
+	}
+	memcpy(value, tmp, useLen);
+	return SH_NO_ERROR;
+}
+
+
 SHErrorCode SH_sqlite3_column_double_ptr(sqlite3_stmt *stmt, int32_t col, double **value) {
 	if(sqlite3_column_type(stmt, col) == SQLITE_FLOAT) {
 		*value = malloc(sizeof(double));
@@ -55,6 +68,16 @@ SHErrorCode SH_sqlite3_column_double_ptr(sqlite3_stmt *stmt, int32_t col, double
 		*value = NULL;
 	}
 	return SH_NO_ERROR;
+}
+
+
+SHErrorCode SH_sqlite3_column_SHDatetime(sqlite3_stmt* stmt, int32_t col, struct SHDatetime *dt,
+	int32_t timezoneOffset)
+{
+	double timestamp = sqlite3_column_double(stmt, col);;
+	SHErrorCode status = SH_NO_ERROR;
+	status = SH_timestampToDt(timestamp, timezoneOffset, dt);
+	return status;;
 }
 
 
@@ -80,4 +103,25 @@ SHErrorCode SH_sqlite3_value_SHDatetime(sqlite3_value *cellValue, struct SHDatet
 	SHErrorCode status = SH_NO_ERROR;
 	status = SH_timestampToDt(timestamp, timezoneOffset, dt);
 	return status;;
+}
+
+
+SHErrorCode SH_sqlite3_copy_value_blobFixed(sqlite3_value *cellValue, void *value, uint64_t len) {
+	if(!value || len < 1) return SH_ILLEGAL_INPUTS;
+	const void *tmp = sqlite3_value_blob(cellValue);
+	uint64_t useLen = fmin(len, sqlite3_value_bytes(cellValue));
+	if(!tmp) {
+		return SH_NO_ERROR;
+	}
+	memcpy(value, tmp, useLen);
+	return SH_NO_ERROR;
+}
+
+
+void SH_cleanupSqlite3Statement(sqlite3_stmt **stmtP2) {
+	if(!stmtP2) return;
+	sqlite3_stmt *stmt = *stmtP2;
+	if(!stmt) return;
+	sqlite3_finalize(stmt);
+	*stmtP2 = NULL;
 }

@@ -178,20 +178,87 @@ static int32_t _numCompare(void *a, void *b) {
 
 }
 
-void *_genFn(struct _generatorState *state) {
-	
-}
 
 
 struct _generatorState {
-	
+	int32_t items[12];
+	int32_t len;
 	int32_t idx;
+};
+
+void *_genFn(struct _generatorState *state) {
+	if(state->idx < 0 || state->idx >= state->len) return NULL;
+	int32_t idx = state->idx;
+	state->idx++;
+	return &state->items[idx];
 }
 
 
-
 -(void)testWithGenerator {
+	struct _generatorState state = {
+		.len = 12,
+		.idx = 0,
+	};
+	int32_t nums[12] = { 43, 18, 22, 9, 21, 6, 8, 20, 63, 50, 62, 51 };
+	for(int32_t i = 0; i < 12; i++) {
+		state.items[i] = nums[i];
+	}
+	struct SHIterableWrapper *collection = SH_iterable_initAsTree(_numCompare, NULL);
+	struct SHSerialAccessCollection *serialCollection = SH_SACollection_init(collection);
+	struct SHGeneratorFnObj *fnObj = malloc(sizeof(struct SHGeneratorFnObj));
+	*fnObj = (struct SHGeneratorFnObj){
+		.generator = (void* (*)(void*))_genFn,
+		.generatorState = &state,
+		.stateCleanup = NULL
+	};
+	SHErrorCode status = SH_SACollection_addItemsWithGenerator(serialCollection, fnObj);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	status = SH_SACollection_startLoop(serialCollection);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	void *resultP = NULL;
+	uint64_t count = SH_NOT_FOUND;
+	status = SH_SACollection_count(serialCollection, &count);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertEqual(count, 12);
+	status = SH_SACollection_getItemAtIdx(serialCollection, 0, &resultP);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertEqual(*((int32_t*)resultP), 6);
+	status = SH_SACollection_getItemAtIdx(serialCollection, 1, &resultP);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertEqual(*((int32_t*)resultP), 8);
+	status = SH_SACollection_getItemAtIdx(serialCollection, 2, &resultP);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertEqual(*((int32_t*)resultP), 9);
+	status = SH_SACollection_getItemAtIdx(serialCollection, 3, &resultP);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertEqual(*((int32_t*)resultP), 18);
+	status = SH_SACollection_getItemAtIdx(serialCollection, 4, &resultP);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertEqual(*((int32_t*)resultP), 20);
+	status = SH_SACollection_getItemAtIdx(serialCollection, 5, &resultP);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertEqual(*((int32_t*)resultP), 21);
+	status = SH_SACollection_getItemAtIdx(serialCollection, 6, &resultP);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertEqual(*((int32_t*)resultP), 22);
+	status = SH_SACollection_getItemAtIdx(serialCollection, 7, &resultP);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertEqual(*((int32_t*)resultP), 43);
+	status = SH_SACollection_getItemAtIdx(serialCollection, 8, &resultP);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertEqual(*((int32_t*)resultP), 50);
+	status = SH_SACollection_getItemAtIdx(serialCollection, 9, &resultP);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertEqual(*((int32_t*)resultP), 51);
+	status = SH_SACollection_getItemAtIdx(serialCollection, 10, &resultP);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertEqual(*((int32_t*)resultP), 62);
+	status = SH_SACollection_getItemAtIdx(serialCollection, 11, &resultP);
+	XCTAssertEqual(status, SH_NO_ERROR);
+	XCTAssertEqual(*((int32_t*)resultP), 63);
 	
+	status = SH_SACollection_closeLoop(serialCollection);
+	XCTAssertEqual(status, SH_NO_ERROR);
 }
 
 

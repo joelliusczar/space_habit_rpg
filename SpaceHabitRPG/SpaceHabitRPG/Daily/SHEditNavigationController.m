@@ -196,7 +196,7 @@
 
 -(void)dealloc{
 	if(self.habitCleanup) {
-		self.habitCleanup(self->_habit);
+		self.habitCleanup((void**)&self->_habit);
 	}
 }
 

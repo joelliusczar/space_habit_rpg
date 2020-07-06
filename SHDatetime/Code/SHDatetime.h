@@ -19,5 +19,6 @@
 #import "SHDatetimeFuncs.h"
 #include "SHDateCompare.h"
 #include "SHDatetime_addition.h"
+#include "SHDatetimeProvider.h"
 
 #endif /* SHDatetime_h */

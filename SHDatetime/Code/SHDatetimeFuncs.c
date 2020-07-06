@@ -705,21 +705,6 @@ SHErrorCode SH_areSameWeek(struct SHDatetime * const A, struct SHDatetime * cons
 }
 
 
-void SH_freeSHTimeshift(struct SHTimeshift *tsObj){
-	if(!tsObj) return;
-	free(tsObj);
-}
-
-
-void SH_freeSHDatetime(struct SHDatetime *dtObj, int32_t len){
-	if(!dtObj) return;
-	for(int32_t i = 0; i < len; i++){
-		SH_freeSHTimeshift(dtObj[i].shifts);
-	}
-	free(dtObj);
-}
-
-
 void SH_DTToString(struct SHDatetime const *dt,char* str){
 	sprintf(str, "%"PRId64"-%d-%d %d:%d:%d",dt->year,dt->month,dt->day,dt->hour,dt->minute,dt->second);
 }

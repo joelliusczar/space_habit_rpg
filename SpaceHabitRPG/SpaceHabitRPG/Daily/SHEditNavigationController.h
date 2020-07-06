@@ -19,5 +19,5 @@
 @property (strong, nonatomic) IBOutlet UITextField *itemNameInput;
 @property (strong, nonatomic) IBOutlet UIView *editorSubviewContainer;
 @property (assign, nonatomic) struct SHHabitBase *habit;
-@property (assign, nonatomic) void (*habitCleanup)(void *);
+@property (assign, nonatomic) void (*habitCleanup)(void **);
 @end

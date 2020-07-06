@@ -13,14 +13,14 @@
 		275534C22479E39C00D650AB /* SHSerialQueue.c in Sources */ = {isa = PBXBuildFile; fileRef = 275534C02479E39B00D650AB /* SHSerialQueue.c */; };
 		27553501248891A400D650AB /* SHDynamicArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 275534FF248891A400D650AB /* SHDynamicArray.h */; };
 		27553502248891A400D650AB /* SHDynamicArray.c in Sources */ = {isa = PBXBuildFile; fileRef = 27553500248891A400D650AB /* SHDynamicArray.c */; };
-		2755350E248C35BB00D650AB /* SHTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 2755350C248C35BA00D650AB /* SHTree.h */; };
+		2755350E248C35BB00D650AB /* SHTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 2755350C248C35BA00D650AB /* SHTree.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2755350F248C35BB00D650AB /* SHTree.c in Sources */ = {isa = PBXBuildFile; fileRef = 2755350D248C35BA00D650AB /* SHTree.c */; };
 		27553517248D9AD400D650AB /* SHTreeIterateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27553516248D9AD400D650AB /* SHTreeIterateTests.m */; };
 		27553519248D9AD400D650AB /* SHUtils_C in Frameworks */ = {isa = PBXBuildFile; fileRef = 271692002089758B0059A58E /* SHUtils_C */; };
 		2769C097227C81B500217480 /* SHErrorHandling.h in Headers */ = {isa = PBXBuildFile; fileRef = 27169215208BB2450059A58E /* SHErrorHandling.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2781552B21758C3F005C5279 /* SHUtilConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781552921758C3F005C5279 /* SHUtilConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2781552C21758C3F005C5279 /* SHUtilConstants.c in Sources */ = {isa = PBXBuildFile; fileRef = 2781552A21758C3F005C5279 /* SHUtilConstants.c */; };
-		27B512C42496B14400727905 /* SHLinkedList.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B512C22496B14400727905 /* SHLinkedList.h */; };
+		27B512C42496B14400727905 /* SHLinkedList.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B512C22496B14400727905 /* SHLinkedList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27B512C52496B14400727905 /* SHLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 27B512C32496B14400727905 /* SHLinkedList.c */; };
 		27B512C7249BDF8C00727905 /* SHTestTreeFromYTVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B512C6249BDF8C00727905 /* SHTestTreeFromYTVideo.m */; };
 		27B512C9249C5F6300727905 /* SHTreeFindItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B512C8249C5F6300727905 /* SHTreeFindItemTests.m */; };
@@ -29,13 +29,13 @@
 		27B512CF249DA56000727905 /* SHTestRandomTreeFuncs.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B512CE249DA56000727905 /* SHTestRandomTreeFuncs.m */; };
 		27B512D2249DBADB00727905 /* SHPrintTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B512D0249DBADB00727905 /* SHPrintTree.h */; };
 		27B512D3249DBADB00727905 /* SHPrintTree.c in Sources */ = {isa = PBXBuildFile; fileRef = 27B512D1249DBADB00727905 /* SHPrintTree.c */; };
-		27B512E2249EB84400727905 /* SHIterableWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B512E0249EB84400727905 /* SHIterableWrapper.h */; };
+		27B512E2249EB84400727905 /* SHIterableWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B512E0249EB84400727905 /* SHIterableWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27B512E3249EB84400727905 /* SHIterableWrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = 27B512E1249EB84400727905 /* SHIterableWrapper.c */; };
-		27B512EA249ECDEC00727905 /* SHSerialAccessCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B512E8249ECDEC00727905 /* SHSerialAccessCollection.h */; };
+		27B512EA249ECDEC00727905 /* SHSerialAccessCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B512E8249ECDEC00727905 /* SHSerialAccessCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27B512EB249ECDEC00727905 /* SHSerialAccessCollection.c in Sources */ = {isa = PBXBuildFile; fileRef = 27B512E9249ECDEC00727905 /* SHSerialAccessCollection.c */; };
 		27B512ED24A14E3100727905 /* SHTestSerialAccessCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B512EC24A14E3100727905 /* SHTestSerialAccessCollection.m */; };
 		27B512EF24A18C6800727905 /* SHSerialQueueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B512EE24A18C6800727905 /* SHSerialQueueTests.m */; };
-		27B512F224A2622300727905 /* SHSyncedList.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B512F024A2622300727905 /* SHSyncedList.h */; };
+		27B512F224A2622300727905 /* SHSyncedList.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B512F024A2622300727905 /* SHSyncedList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27B512F324A2622300727905 /* SHSyncedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 27B512F124A2622300727905 /* SHSyncedList.c */; };
 		27DF9C4E20956D6300F98023 /* SHGenAlgos.h in Headers */ = {isa = PBXBuildFile; fileRef = 27DF9C4C20956D6300F98023 /* SHGenAlgos.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27DF9C4F20956D6300F98023 /* SHGenAlgos.c in Sources */ = {isa = PBXBuildFile; fileRef = 27DF9C4D20956D6300F98023 /* SHGenAlgos.c */; };
@@ -238,16 +238,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				275534C12479E39C00D650AB /* SHSerialQueue.h in Headers */,
-				27B512D2249DBADB00727905 /* SHPrintTree.h in Headers */,
 				27B512EA249ECDEC00727905 /* SHSerialAccessCollection.h in Headers */,
 				27B512E2249EB84400727905 /* SHIterableWrapper.h in Headers */,
 				2755350E248C35BB00D650AB /* SHTree.h in Headers */,
+				27B512F224A2622300727905 /* SHSyncedList.h in Headers */,
+				27B512C42496B14400727905 /* SHLinkedList.h in Headers */,
+				275534C12479E39C00D650AB /* SHSerialQueue.h in Headers */,
+				27B512D2249DBADB00727905 /* SHPrintTree.h in Headers */,
 				2716922D20916ED50059A58E /* SHArray.h in Headers */,
 				2781552B21758C3F005C5279 /* SHUtilConstants.h in Headers */,
 				2769C097227C81B500217480 /* SHErrorHandling.h in Headers */,
-				27B512F224A2622300727905 /* SHSyncedList.h in Headers */,
-				27B512C42496B14400727905 /* SHLinkedList.h in Headers */,
 				27553501248891A400D650AB /* SHDynamicArray.h in Headers */,
 				270CB96A244CC30900FE930B /* SHUtils_C.h in Headers */,
 				27DF9C4E20956D6300F98023 /* SHGenAlgos.h in Headers */,

@@ -15,7 +15,7 @@
 
 
 
-char * SH_buildWeekDescription(int32_t weekHash) {
+char * SH_buildWeekDescription(uint8_t weekHash) {
 	weekHash &= SH_FULL_WEEK_HASH; //remove any bits beyond the 7th
 	if(SH_FULL_WEEK_HASH == weekHash) {
 		return SH_constStrCopy("Every Day");
@@ -43,7 +43,7 @@ char * SH_buildWeekDescription(int32_t weekHash) {
 }
 
 
-char * SH_buildIntervalLabelDescription_week(int32_t weekHash, int32_t intervalSize) {
+char * SH_buildIntervalLabelDescription_week(uint8_t weekHash, int32_t intervalSize) {
 	char * weekDesc = SH_buildWeekDescription(weekHash);
 	uint64_t weekDescLen = strlen(weekDesc);
 	if(intervalSize == 1){

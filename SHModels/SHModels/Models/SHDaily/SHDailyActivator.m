@@ -69,7 +69,7 @@
 			//daily.lastActivationDateTime = rollbackToEvent.eventDatetime;
 			isActivated = NO;
 		}
-		SH_freeSHDatetime(todayLocal, 1);
+		SH_freeSHDatetime(&todayLocal);
 		//SH_freeSHDatetime(lastEventDtTz, 1);
 		NSError *saveErr = nil;
 		[context save:&saveErr];

@@ -23,62 +23,63 @@
 
 
 -(void)addTestDailies{
-	__block NSError *error = nil;
-	[self.testContext performBlockAndWait:^{
-		int a0=0,a1=0,a2=0,a3=0,a4=0,a5=0;
-		for(int i = 0;i<50;i++){
-			SHDaily *testDaily = (SHDaily*)[self.testContext newEntity:SHDaily.entity];
-			testDaily.dailyName = [NSString stringWithFormat:@"daily %d",i];
-			
-			
-			[self.testContext insertObject:testDaily];
-			NSDate *dailyDate = nil;
-			if(i%10 == 0){
-				//before
-				dailyDate = [NSDate dateWithTimeIntervalSince1970:578163600];
-				a0++;
-			}
-			else if(i%9 == 0){
-				//on
-				dailyDate = [NSDate dateWithTimeIntervalSince1970:578167200];
-				a1++;
-			}
-			else if(i%8 == 0){
-				//after
-				dailyDate = [NSDate dateWithTimeIntervalSince1970:578170800];
-				a2++;
-			}
-			else if(i%7 == 0){
-				//after next actual day
-				dailyDate = [NSDate dateWithTimeIntervalSince1970:578239200];
-				a3++;
-			}
-			else if(i%6 == 0){
-				//after after
-				dailyDate = [NSDate dateWithTimeIntervalSince1970:578260800];
-				a4++;
-			}
-			else if(i%5 == 0){
-				//before before
-				dailyDate = [NSDate dateWithTimeIntervalSince1970:578088000];
-				a5++;
-			}
-			testDaily.lastActivationDateTime = dailyDate;
-			testDaily.isEnabled = YES;
-			SHDailyEvent *testEvent = (SHDailyEvent*)[self.testContext newEntity:SHDailyEvent.entity];
-			testEvent.eventDatetime = dailyDate;
-			testEvent.tzOffset = 0;
-			testEvent.event_daily =  testDaily;
-
-		}
-		error = nil;
-		[self.testContext save:&error];
-		
-		
-		//sanity check
-		XCTAssertEqual((a0+a1+a2+a3+a4+a5), 27);
-	}];
-	XCTAssertNil(error);
+	XCTAssertTrue(false);
+//	__block NSError *error = nil;
+//	[self.testContext performBlockAndWait:^{
+//		int a0=0,a1=0,a2=0,a3=0,a4=0,a5=0;
+//		for(int i = 0;i<50;i++){
+//			SHDaily *testDaily = (SHDaily*)[self.testContext newEntity:SHDaily.entity];
+//			testDaily.dailyName = [NSString stringWithFormat:@"daily %d",i];
+//
+//
+//			[self.testContext insertObject:testDaily];
+//			NSDate *dailyDate = nil;
+//			if(i%10 == 0){
+//				//before
+//				dailyDate = [NSDate dateWithTimeIntervalSince1970:578163600];
+//				a0++;
+//			}
+//			else if(i%9 == 0){
+//				//on
+//				dailyDate = [NSDate dateWithTimeIntervalSince1970:578167200];
+//				a1++;
+//			}
+//			else if(i%8 == 0){
+//				//after
+//				dailyDate = [NSDate dateWithTimeIntervalSince1970:578170800];
+//				a2++;
+//			}
+//			else if(i%7 == 0){
+//				//after next actual day
+//				dailyDate = [NSDate dateWithTimeIntervalSince1970:578239200];
+//				a3++;
+//			}
+//			else if(i%6 == 0){
+//				//after after
+//				dailyDate = [NSDate dateWithTimeIntervalSince1970:578260800];
+//				a4++;
+//			}
+//			else if(i%5 == 0){
+//				//before before
+//				dailyDate = [NSDate dateWithTimeIntervalSince1970:578088000];
+//				a5++;
+//			}
+//			testDaily.lastActivationDateTime = dailyDate;
+//			testDaily.isEnabled = YES;
+//			SHDailyEvent *testEvent = (SHDailyEvent*)[self.testContext newEntity:SHDailyEvent.entity];
+//			testEvent.eventDatetime = dailyDate;
+//			testEvent.tzOffset = 0;
+//			testEvent.event_daily =  testDaily;
+//
+//		}
+//		error = nil;
+//		[self.testContext save:&error];
+//
+//
+//		//sanity check
+//		XCTAssertEqual((a0+a1+a2+a3+a4+a5), 27);
+//	}];
+//	XCTAssertNil(error);
 }
 
 -(void)setUp {
@@ -92,24 +93,26 @@
 }
 
 -(void)testGetAnything{
-	NSManagedObjectContext *context = self.testContext;
-	__block NSError *error = nil;
-	__block NSUInteger recordCount;
-	[self.testContext performBlockAndWait:^{
-		NSFetchRequest<SHDaily*> *request = SHDaily.fetchRequest;
-		request.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"urgency" ascending:NO]];
-		NSFetchedResultsController* resultsController = [context getItemFetcher:request];
-		if(![resultsController performFetch:&error]){
-			NSLog(@"Error fetching data: %@", error.localizedFailureReason);
-		}
-		recordCount = resultsController.fetchedObjects.count;
-	}];
-	XCTAssertNil(error);
-	XCTAssertEqual(recordCount,50);
+	XCTAssertTrue(false);
+//	NSManagedObjectContext *context = self.testContext;
+//	__block NSError *error = nil;
+//	__block NSUInteger recordCount;
+//	[self.testContext performBlockAndWait:^{
+//		NSFetchRequest<SHDaily*> *request = SHDaily.fetchRequest;
+//		request.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"urgency" ascending:NO]];
+//		NSFetchedResultsController* resultsController = [context getItemFetcher:request];
+//		if(![resultsController performFetch:&error]){
+//			NSLog(@"Error fetching data: %@", error.localizedFailureReason);
+//		}
+//		recordCount = resultsController.fetchedObjects.count;
+//	}];
+//	XCTAssertNil(error);
+//	XCTAssertEqual(recordCount,50);
 }
 
 -(void)testRetrieveUnfinishedDailies{
 	#warning fix this test
+	XCTAssertTrue(false);
 //	SHConfig.dayStartTime = 6 * SH_HOUR_IN_SECONDS;
 //
 //	SHDaily_Medium *dm = [SHDaily_Medium newWithContext:self.testContext];

@@ -15,21 +15,21 @@
 #include <stdbool.h>
 
 struct SHActiveDaysValues {
-	SHIntervalType intervalType;
-	int32_t dayIntevalSize;
-	int32_t weekIntervalHash;
-	int32_t weekIntervalSize;
-	int64_t monthIntervalHash;
-	int32_t monthIntervalSize;
-	char * yearIntervalHash;
-	int32_t yearIntervalSize;
-	int32_t daySkipIntevalSize;
-	int32_t weekSkipIntervalHash;
-	int32_t weekSkipIntervalSize;
-	int64_t monthSkipIntervalHash;
-	int32_t monthSkipIntervalSize;
-	char * yearSkipIntervalHash;
-	int32_t yearSkipIntervalSize;
+	uint8_t yearIntervalHash[46];
+	uint8_t yearSkipIntervalHash[46];
+	uint64_t monthIntervalHash;
+	uint64_t monthSkipIntervalHash;
+	uint32_t dayIntevalSize;
+	uint32_t daySkipIntevalSize;
+	uint32_t weekIntervalSize;
+	uint32_t weekSkipIntervalSize;
+	uint32_t monthIntervalSize;
+	uint32_t monthSkipIntervalSize;
+	uint32_t yearIntervalSize;
+	uint32_t yearSkipIntervalSize;
+	uint8_t weekSkipIntervalHash;
+	uint8_t weekIntervalHash;
+	uint8_t intervalType;
 };
 
 int32_t SH_getCurrentIntervalSize(struct SHActiveDaysValues *activeDays);

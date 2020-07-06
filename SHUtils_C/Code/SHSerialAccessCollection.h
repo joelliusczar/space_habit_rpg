@@ -19,7 +19,7 @@ struct SHSerialAccessCollection;
 struct SHGeneratorFnObj {
 	void *(*generator)(void *);
 	void *generatorState;
-	void (*stateCleanup)(void *);
+	void (*stateCleanup)(void **);
 };
 
 

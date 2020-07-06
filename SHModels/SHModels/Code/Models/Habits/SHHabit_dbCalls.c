@@ -34,7 +34,7 @@ SHErrorCode _insertHabit(sqlite3 *db, struct SHHabitBase const * habit, const ch
 	goto fnExit;
 	sqlErr:
 		sqlMsg = sqlite3_errmsg(db);
-		sprintf(errMsg,"sqlite3 Error: %d \nThere was an error inserting daily",sqlStatus);
+		sprintf(errMsg,"sqlite3 Error: %d \nThere was an error inserting into %s",sqlStatus, tableName);
 		SH_notifyOfError(SH_SQLITE3_ERROR, errMsg);
 		SH_notifyOfError(SH_SQLITE3_ERROR, sqlMsg);
 		status = SH_SQLITE3_ERROR;

@@ -49,4 +49,8 @@ typedef enum {SH_TIME_ADJUST_NO_OPTION = 0,
 } SHTimeAdjustOptions;
 
 
+void SH_freeSHDatetime(struct SHDatetime **dtObjP2);
+
+void SH_freeSHTimeshift(struct SHTimeshift **tsObjP2);
+
 #endif /* SHDatetime_struct_h */

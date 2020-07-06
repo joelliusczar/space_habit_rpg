@@ -73,12 +73,6 @@ static SHErrorCode _fetchDaily(void *args, struct SHQueueStore *store) {
 }
 
 
-static void _dailyCleanup(void *arg) {
-	struct SHDaily *daily = (struct SHDaily *)arg;
-	SH_freeDaily(daily);
-}
-
-
 -(void)setupWithQueue:(struct SHSerialQueue *)queue andPk:(int64_t)pk {
 	SHErrorCode status = SH_NO_ERROR;
 	self.pk = pk;
@@ -87,7 +81,7 @@ static void _dailyCleanup(void *arg) {
 	//where it frees the habit property which we are assigning this daily to
 	self.daily = malloc(sizeof(struct SHDaily));
 	self.editorContainerController.habit = (struct SHHabitBase *)self.daily;
-	self.editorContainerController.habitCleanup = _dailyCleanup;
+	self.editorContainerController.habitCleanup = (void (*)(void**))SH_freeDaily;
 	if((status = SH_serialQueue_addOp(queue, _fetchDaily, (__bridge void *)(self), NULL)) != SH_NO_ERROR) { ; }
 }
 
