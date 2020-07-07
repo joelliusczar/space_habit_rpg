@@ -9,6 +9,7 @@
 #ifndef SHTree_h
 #define SHTree_h
 
+#include "SHIterableWrapper.h"
 #include <stdio.h>
 #include <inttypes.h>
 
@@ -41,6 +42,8 @@ void *SH_treeIterator_nextPreorder(struct SHTreeIterator **iter);
 void *SH_treeIterator_skipPreorder(struct SHTreeIterator **iter, uint64_t skip);
 void *SH_treeIterator_nextLineOrder(struct SHTreeIterator **iter);
 void *SH_treeIterator_skipLineOrder(struct SHTreeIterator **iter, uint64_t skip);
+
+void SH_iterable_loadTreeFuncs(struct SHIterableWrapperFuncs *funcsObj);
 
 char * SH_tree_printLineOrder(struct SHTree *tree, char *(*itemDescFn)(void *));
 

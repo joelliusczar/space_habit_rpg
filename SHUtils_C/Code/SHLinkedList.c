@@ -25,6 +25,12 @@ struct SHLinkedList {
 
 
 struct SHLinkedList *SH_list_init(void (*itemCleanup)(void**)) {
+	return SH_list_init2(NULL, itemCleanup);
+}
+
+
+struct SHLinkedList *SH_list_init2(int32_t (*sortingFn)(void*, void*), void (*itemCleanup)(void**)) {
+	(void)sortingFn;
 	struct SHLinkedList *list = malloc(sizeof(struct SHLinkedList));
 	list->itemCleanup = itemCleanup;
 	list->back = NULL;
@@ -193,6 +199,21 @@ void *SH_listIterator_next(struct SHLinkedListIterator **iterP2) {
 		return NULL;
 	}
 	return iter->current->item;
+}
+
+
+void SH_iterable_loadListFuncs(struct SHIterableWrapperFuncs *funcsObj) {
+	funcsObj->count = (uint64_t (*)(void*))SH_list_count;
+	funcsObj->addItem = (void (*)(void*, void*))SH_list_pushBack;
+	funcsObj->getItemAtIdx = (void *(*)(void*, uint64_t))SH_list_findNthItem;
+	funcsObj->getFront = (void* (*)(void*))SH_list_getFront;
+	funcsObj->popFront = (void* (*)(void*))SH_list_popFront;
+	funcsObj->getBack = (void* (*)(void*))SH_list_getBack;
+	funcsObj->popBack = (void* (*)(void*))SH_list_popBack;
+	funcsObj->deleteItemAtIdx = (void (*)(void*, uint64_t))SH_list_deleteNthItem;
+	funcsObj->iteratorInit = (void* (*)(void*))SH_listIterator_init;
+	funcsObj->iteratorNext = (void* (*)(void**))SH_listIterator_next;
+	funcsObj->itemCleanup = (void (*)(void**))SH_list_cleanup;
 }
 
 

@@ -585,6 +585,21 @@ void SH_tree_cleanup(struct SHTree **treeP2) {
 }
 
 
+void SH_iterable_loadTreeFuncs(struct SHIterableWrapperFuncs *funcsObj) {
+	funcsObj->count = (uint64_t (*)(void*))SH_tree_count;
+	funcsObj->addItem = (void (*)(void*, void*))SH_tree_addItem;
+	funcsObj->getItemAtIdx = (void *(*)(void*, uint64_t))SH_tree_findNthItem;
+	funcsObj->getFront = (void* (*)(void*))SH_tree_getFront;
+	funcsObj->popFront = (void* (*)(void*))SH_tree_popFront;
+	funcsObj->getBack = (void* (*)(void*))SH_tree_getBack;
+	funcsObj->popBack = (void* (*)(void*))SH_tree_popBack;
+	funcsObj->deleteItemAtIdx = (void (*)(void*, uint64_t))SH_tree_deleteNthItem;
+	funcsObj->iteratorInit = (void* (*)(void*))SH_treeIterator_init;
+	funcsObj->iteratorNext = (void* (*)(void**))SH_treeIterator_nextInorder;
+	funcsObj->itemCleanup = (void (*)(void**))SH_tree_cleanup;
+}
+
+
 char * SH_tree_printLineOrder(struct SHTree *tree, char *(*itemDescFn)(void *)) {
 	if(!tree || !itemDescFn) return NULL;
 	struct SHTreeIterator *iter = SH_treeIterator_init(tree);

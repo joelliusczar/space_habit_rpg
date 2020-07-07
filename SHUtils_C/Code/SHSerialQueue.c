@@ -244,8 +244,17 @@ static SHErrorCode _initMutexesAndConditions(struct SHSerialQueue *queue) {
 
 struct SHSerialQueue * SH_serialQueue_init(void *initArgs, void (*initArgsCleanup)(void**)) {
 	struct SHSerialQueue *queue = malloc(sizeof(struct SHSerialQueue));
-	struct SHIterableWrapper *opsList = SH_iterable_initAsLinkedList((void (*)(void**))_opCleanup);
-	struct SHIterableWrapper *resultList = SH_iterable_initAsLinkedList(NULL);
+	struct SHIterableWrapper *opsList = SH_iterable_init(
+		(void* (*)(int32_t (*)(void*, void*), void (*)(void**)))SH_list_init2,
+		SH_iterable_loadListFuncs,
+		(void (*)(void**))SH_list_cleanup,
+		NULL,
+		(void (*)(void**))_opCleanup);
+	struct SHIterableWrapper *resultList = SH_iterable_init(
+		(void* (*)(int32_t (*)(void*, void*), void (*)(void**)))SH_list_init2,
+		SH_iterable_loadListFuncs,
+		(void (*)(void**))SH_list_cleanup,
+		NULL, NULL);
 	*queue = (struct SHSerialQueue){
 		.opsQueue = SH_syncedList_init(opsList),
 		.resultQueue = SH_syncedList_init(resultList),
