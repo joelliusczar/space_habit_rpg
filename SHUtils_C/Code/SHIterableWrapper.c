@@ -31,6 +31,10 @@ struct SHIterableWrapper *SH_iterable_init(void* (*initializer)(int32_t (*)(void
 	void (*defaultItemCleanup)(void**))
 {
 	struct SHIterableWrapper *iterable = malloc(sizeof(struct SHIterableWrapper));
+	if(!iterable) {
+		SH_notifyOfError(SH_ALLOC, "Failed to allocate memory to create iterable");
+		return NULL;
+	}
 	iterable->backend = SH_dynamicArray_init(subIterableCleanup);
 	iterable->initializer = initializer;
 	iterable->defaultSortingFn = defaultSortingFn;

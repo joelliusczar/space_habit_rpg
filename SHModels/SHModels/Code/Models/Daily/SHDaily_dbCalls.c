@@ -10,6 +10,8 @@
 #include "SHSqlite3Extensions.h"
 #include "SHDaily_dbStatementBuilders.h"
 #include <SHUtils_C/SHGenAlgos.h>
+#include <SHUtils_C/SHTree.h>
+#include <SHUtils_C/SHIterableWrapper.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -242,10 +244,35 @@ static uint64_t _tableDailiesGrouper(struct SHTableDaily *tableDaily) {
 }
 
 
-SHErrorCode SH_fetchTableDailies(sqlite3 *db, struct SHSerialAccessCollection *saCollection,
+static int32_t _tableDailySortingFn(struct SHTableDaily *tableDaily1, struct SHTableDaily *tableDaily2) {
+	if(tableDaily1->customUseOrder != tableDaily2->customUseOrder) {
+		return tableDaily2->customUseOrder - tableDaily1->customUseOrder;
+	}
+	return tableDaily2->pk - tableDaily1->pk;
+}
+
+
+static SHErrorCode _setupTableDailySerialCollection(struct SHSerialAccessCollection **saCollectionP2) {
+	SHErrorCode status = SH_NO_ERROR;
+	struct SHIterableWrapper *iterable = SH_iterable_init(
+		(void* (*)(int32_t (*)(void*, void*), void (*)(void**)))SH_tree_init,
+		SH_iterable_loadTreeFuncs,
+		(void (*)(void**))SH_tree_cleanup,
+		_tableDailySortingFn,
+		SH_cleanupTableDaily
+	);
+	*saCollectionP2 = SH_SACollection_init(iterable);
+	if(!*saCollectionP2) return SH_ALLOC;
+	SH_SACollection_setGroupingFn(*saCollectionP2, (uint64_t (*)(void*))_tableDailiesGrouper);
+	SH_SACollection_createSubIterable(*saCollectionP2, NULL, NULL);
+	SH_SACollection_createSubIterable(*saCollectionP2, NULL, NULL);
+	SH_SACollection_startLoop(*saCollectionP2);
+}
+
+SHErrorCode SH_fetchTableDailies(sqlite3 *db, struct SHSerialAccessCollection **saCollectionP2,
 	struct SHDatetimeProvider *dateProvider)
 {
-	if(!db || !saCollection) return SH_ILLEGAL_INPUTS;
+	if(!db || !saCollectionP2) return SH_ILLEGAL_INPUTS;
 	SHErrorCode status = SH_NO_ERROR;
 	int32_t sqlStatus = SQLITE_OK;
 	sqlite3_stmt *stmt = NULL;
@@ -253,14 +280,14 @@ SHErrorCode SH_fetchTableDailies(sqlite3 *db, struct SHSerialAccessCollection *s
 	if((status = SH_buildStatement_fetchAllTableDailies(&stmt, db)) != SH_NO_ERROR) { goto sqlErr; }
 	int32_t localTzOffset = dateProvider && dateProvider->getLocalTzOffset ? dateProvider->getLocalTzOffset() : 0;
 	if((sqlStatus = sqlite3_bind_int(stmt, 1, localTzOffset)) != SQLITE_OK) { goto shErr; }
+	_setupTableDailySerialCollection(saCollectionP2);
+	
 	struct SHGeneratorFnObj *fnObj = malloc(sizeof(struct SHGeneratorFnObj));
 	*fnObj = (struct SHGeneratorFnObj){
 		.generator = (void* (*)(void*))_tableDailyFetchGenFn,
 		.generatorState = stmt,
 		.stateCleanup = (void (*)(void**))SH_cleanupSqlite3Statement
 	};
-	if((status = SH_SACollection_setGroupingFn(saCollection, (uint64_t (*)(void*))_tableDailiesGrouper))
-		!= SH_NO_ERROR) { goto genErr; }
 	if((status = SH_SACollection_addItemsWithGenerator(saCollection, fnObj)) != SH_NO_ERROR) { goto genErr; }
 	goto fnExit;
 	sqlErr:

@@ -22,7 +22,7 @@ SHErrorCode SH_insertDaily( sqlite3 *db, struct SHDaily const * daily, int64_t *
 SHErrorCode SH_updateDaily(sqlite3 *db, struct SHDaily const * const daily);
 SHErrorCode SH_fetchSingleDaily(sqlite3 *db, int64_t pk, struct SHDaily *daily);
 SHErrorCode SH_bindAllDailyParams(sqlite3_stmt *stmt, struct SHDaily const * const daily);
-SHErrorCode SH_fetchTableDailies(sqlite3 *db, struct SHSerialAccessCollection *saCollection,
+SHErrorCode SH_fetchTableDailies(sqlite3 *db, struct SHSerialAccessCollection **saCollectionP2,
 	struct SHDatetimeProvider *dateProvider);
 
 #endif /* SHDaily_dbCalls_h */
