@@ -19,6 +19,7 @@ struct SHIterableWrapper {
 	int32_t (*defaultSortingFn)(void *, void *);
 	void (*subIterableCleanup)(void**);
 	void (*defaultItemCleanup)(void**);
+	uint64_t (*groupingFn)(void*);
 };
 
 
@@ -35,10 +36,27 @@ struct SHIterableWrapper *SH_iterable_init(void* (*initializer)(int32_t (*)(void
 	iterable->defaultSortingFn = defaultSortingFn;
 	iterable->defaultItemCleanup = defaultItemCleanup;
 	iterable->defaultSubIterableIdx = 0;
+	iterable->groupingFn = NULL;
 	fnSetup(&iterable->funcs);
 	void * subIterable = initializer(defaultSortingFn, defaultItemCleanup);
 	SH_dynamicArray_push(iterable->backend, subIterable);
 	return iterable;
+}
+
+
+void SH_iterable_createSubIterable(struct SHIterableWrapper *iterable, int32_t (*sortingFn)(void *, void *),
+	void (*itemCleanup)(void**))
+{
+	int32_t (*useSortingFn)(void *, void *) = sortingFn ? sortingFn : iterable->defaultSortingFn;
+	void (*useItemCleanup)(void**) = itemCleanup ? itemCleanup : iterable->defaultItemCleanup;
+	void *subIterable = iterable->initializer(useSortingFn, useItemCleanup);
+	SH_dynamicArray_push(iterable->backend, subIterable);
+}
+
+
+void SH_iterable_setGroupingFn(struct SHIterableWrapper *iterable, uint64_t (*groupingFn)(void*)) {
+	if(!iterable) return;
+	iterable->groupingFn = groupingFn;
 }
 
 
@@ -50,13 +68,20 @@ uint64_t SH_iterable_count(struct SHIterableWrapper *iterable) {
 
 void SH_iterable_addItem(struct SHIterableWrapper *iterable, void *item) {
 	if(!iterable || !iterable->funcs.addItem) return;
-	iterable->funcs.addItem(SH_dynamicArray_get(iterable->backend, iterable->defaultSubIterableIdx), item);
+	uint64_t useIdx = iterable->groupingFn ? iterable->groupingFn(item) : iterable->defaultSubIterableIdx;
+	iterable->funcs.addItem(SH_dynamicArray_get(iterable->backend, useIdx), item);
 }
 
 
 void *SH_iterable_getItemAtIdx(struct SHIterableWrapper *iterable, uint64_t idx) {
 	if(!iterable || !iterable->funcs.getItemAtIdx) return NULL;
 	return iterable->funcs.getItemAtIdx(SH_dynamicArray_get(iterable->backend, iterable->defaultSubIterableIdx), idx);
+}
+
+
+void *SH_iterable_getItemAtIdx2(struct SHIterableWrapper *iterable, uint64_t iterableIdx, uint64_t idx) {
+	if(!iterable || !iterable->funcs.getItemAtIdx) return NULL;
+	return iterable->funcs.getItemAtIdx(SH_dynamicArray_get(iterable->backend, iterableIdx), idx);
 }
 
 

@@ -42,9 +42,14 @@ struct SHIterableWrapper *SH_iterable_init(void* (*initializer)(int32_t (*)(void
 	void (*subIterableCleanup)(void**),
 	int32_t (*defaultSortingFn)(void *, void *),
 	void (*defaultItemCleanup)(void**));
+	
+void SH_iterable_createSubIterable(struct SHIterableWrapper *iterable, int32_t (*sortingFn)(void *, void *),
+	void (*itemCleanup)(void**));
+void SH_iterable_setGroupingFn(struct SHIterableWrapper *iterable, uint64_t (*groupingFn)(void*));
 uint64_t SH_iterable_count(struct SHIterableWrapper *iterable);
 void SH_iterable_addItem(struct SHIterableWrapper *iterable, void *item);
 void *SH_iterable_getItemAtIdx(struct SHIterableWrapper *iterable, uint64_t idx);
+void *SH_iterable_getItemAtIdx2(struct SHIterableWrapper *iterable, uint64_t iterableIdx, uint64_t idx);
 void *SH_iterable_getFront(struct SHIterableWrapper *iterable);
 void *SH_iterable_popFront(struct SHIterableWrapper *iterable);
 void *SH_iterable_getBack(struct SHIterableWrapper *iterable);

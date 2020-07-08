@@ -281,6 +281,11 @@ void *SH_serialQueue_getUserItem(struct SHQueueStore *store) {
 }
 
 
+void *SH_serialQueue_getUserItem2(struct SHSerialQueue *queue) {
+	if(!queue) return NULL;
+	return queue->queueStore.userItem;
+}
+
 bool SH_serialQueue_isLoopRunning(struct SHSerialQueue *queue) {
 	if(!queue) return false;
 	return _isRunning(queue) && !SH_syncedList_isSqueezeMode(queue->opsQueue);

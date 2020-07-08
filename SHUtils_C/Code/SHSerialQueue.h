@@ -32,6 +32,7 @@ SHErrorCode SH_addOpAndWaitForResult(
 	void **result);
 
 void *SH_serialQueue_getUserItem(struct SHQueueStore *store);
+void *SH_serialQueue_getUserItem2(struct SHSerialQueue *queue);
 SHErrorCode SH_serialQueue_startLoop(struct SHSerialQueue *queue);
 bool SH_serialQueue_isLoopRunning(struct SHSerialQueue *queue);
 SHErrorCode SH_serialQueue_pauseLoop(struct SHSerialQueue *queue);

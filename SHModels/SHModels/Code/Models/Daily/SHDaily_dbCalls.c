@@ -224,9 +224,23 @@ static void *_tableDailyFetchGenFn(sqlite3_stmt *stmt) {
 	sqlStatus = sqlite3_step(stmt);
 	if(sqlStatus != SQLITE_OK && sqlStatus != SQLITE_ROW) return NULL;
 	struct SHTableDaily *tableDaily = malloc(sizeof(struct SHTableDaily));
+	if(!tableDaily) goto allocFail;
 	if((status = _setTableDailyValues(stmt, tableDaily)) != SH_NO_ERROR) { return NULL;}
 	return tableDaily;
+	cleanup:
+		SH_notifyOfError(status, "Error after setting table values _tableDailyFetchGenFn");
+		SH_cleanupTableDaily(&tableDaily);
+		return NULL;
+	allocFail:
+		SH_notifyOfError(SH_ALLOC, "Failed to alloc additional memory in _tableDailyFetchGenFn");
+		return NULL;
 }
+
+
+static uint64_t _tableDailiesGrouper(struct SHTableDaily *tableDaily) {
+	return tableDaily->dueStatus;
+}
+
 
 SHErrorCode SH_fetchTableDailies(sqlite3 *db, struct SHSerialAccessCollection *saCollection,
 	struct SHDatetimeProvider *dateProvider)
@@ -245,6 +259,8 @@ SHErrorCode SH_fetchTableDailies(sqlite3 *db, struct SHSerialAccessCollection *s
 		.generatorState = stmt,
 		.stateCleanup = (void (*)(void**))SH_cleanupSqlite3Statement
 	};
+	if((status = SH_SACollection_setGroupingFn(saCollection, (uint64_t (*)(void*))_tableDailiesGrouper))
+		!= SH_NO_ERROR) { goto genErr; }
 	if((status = SH_SACollection_addItemsWithGenerator(saCollection, fnObj)) != SH_NO_ERROR) { goto genErr; }
 	goto fnExit;
 	sqlErr:

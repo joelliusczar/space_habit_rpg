@@ -155,6 +155,7 @@ struct SHDynamicArrayIterator *SH_dynamicArrayIterator_init(struct SHDynamicArra
 	return iter;
 }
 
+
 void *SH_dynamicArrayIterator_next(struct SHDynamicArrayIterator **iterP2) {
 	if(!iterP2) return NULL;
 	struct SHDynamicArrayIterator *iter = *iterP2;

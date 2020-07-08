@@ -18,6 +18,7 @@ struct SHSerialAccessCollection {
 
 
 struct SHSerialAccessCollection *SH_SACollection_init(struct SHIterableWrapper *iterable) {
+	if(!iterable) return NULL;
 	struct SHSerialAccessCollection *saCollection = malloc(sizeof(struct SHSerialAccessCollection));
 	saCollection->queue = SH_serialQueue_init(iterable, (void (*)(void**))SH_iterable_cleanup);
 	return saCollection;
@@ -27,6 +28,60 @@ struct SHSerialAccessCollection *SH_SACollection_init(struct SHIterableWrapper *
 SHErrorCode SH_SACollection_startLoop(struct SHSerialAccessCollection *saCollection) {
 	if(!saCollection) return SH_ILLEGAL_INPUTS;
 	return SH_serialQueue_startLoop(saCollection->queue);
+}
+
+
+struct _iterableFuncs {
+	int32_t (*sortingFn)(void *, void *);
+	void (*itemCleanup)(void**);
+};
+
+
+static SHErrorCode _createSubIterable(void *fnArgs, struct SHQueueStore *store) {
+	struct _iterableFuncs *iterableFuncs = (struct _iterableFuncs*)fnArgs;
+	struct SHIterableWrapper * iterable = (struct SHIterableWrapper *)SH_serialQueue_getUserItem(store);
+	SH_iterable_createSubIterable(iterable, iterableFuncs->sortingFn, iterableFuncs->itemCleanup);
+	
+	return SH_NO_ERROR;
+}
+
+
+SHErrorCode SH_SACollection_createSubIterable(struct SHSerialAccessCollection *saCollection,
+	int32_t (*sortingFn)(void *, void *),
+	void (*itemCleanup)(void**))
+{
+	struct _iterableFuncs *iterableFuncs = malloc(sizeof(struct _iterableFuncs));
+	if(!iterableFuncs) return SH_ALLOC;
+	*iterableFuncs = (struct _iterableFuncs){ .sortingFn = sortingFn, .itemCleanup = itemCleanup };
+	SHErrorCode status = SH_NO_ERROR;
+	if((status = SH_serialQueue_addOp(saCollection->queue, _createSubIterable, iterableFuncs, SH_cleanup))
+		!= SH_NO_ERROR) {}
+	return status;
+}
+
+
+struct _groupingFnObj {
+	uint64_t (*groupingFn)(void*);
+};
+
+
+static SHErrorCode _setGroupingFn(void *fnArgs, struct SHQueueStore *store) {
+	struct _groupingFnObj *groupingFnObj = (struct _groupingFnObj *)fnArgs;
+	struct SHIterableWrapper * iterable = (struct SHIterableWrapper *)SH_serialQueue_getUserItem(store);
+	SH_iterable_setGroupingFn(iterable, groupingFnObj->groupingFn);
+	return SH_NO_ERROR;
+}
+
+
+SHErrorCode SH_SACollection_setGroupingFn(struct SHSerialAccessCollection *saCollection, uint64_t (*groupingFn)(void*)) {
+	if(!saCollection) return SH_ILLEGAL_INPUTS;
+	struct _groupingFnObj *groupingFnObj = malloc(sizeof(struct _groupingFnObj));
+	groupingFnObj->groupingFn = groupingFn;
+	SHErrorCode status = SH_NO_ERROR;
+	if((status = SH_serialQueue_addOp(saCollection->queue, _setGroupingFn, groupingFnObj, SH_cleanup))
+		!= SH_NO_ERROR) {}
+	
+	return status;
 }
 
 
@@ -47,7 +102,8 @@ SHErrorCode SH_SACollection_count(struct SHSerialAccessCollection *saCollection,
 	if(!SH_serialQueue_isLoopRunning(saCollection->queue)) return SH_PRECONDITIONS_NOT_FULFILLED;
 	SHErrorCode status = SH_NO_ERROR;
 	void *temp = NULL;
-	if((status = SH_addOpAndWaitForResult(saCollection->queue, _getCount, NULL, NULL, &temp)) != SH_NO_ERROR) {}
+	if((status = SH_addOpAndWaitForResult(saCollection->queue, _getCount, NULL, NULL, &temp))
+		!= SH_NO_ERROR) {}
 	*count = *((uint64_t*)temp);
 	free(temp);
 	temp = NULL;
