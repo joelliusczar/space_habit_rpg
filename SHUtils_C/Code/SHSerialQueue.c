@@ -120,14 +120,21 @@ SHErrorCode _addOp(
 {
 	SHErrorCode status = SH_NO_ERROR;
 	struct _queuedOp *op = malloc(sizeof(struct _queuedOp));
+	if(!op) goto allocErr;
 	*op = (struct _queuedOp){ .fn = fn, .fnArgs = fnArgs, .cleanupFn = cleanupFn };
 	if((status = SH_syncedList_pushBack(queue->opsQueue, op)) != SH_NO_ERROR) { goto cleanup; }
-	return SH_NO_ERROR;
+	goto fnExit;
 	
 	cleanup:
-		SH_notifyOfError(SH_EXTERNAL_BLOCK, "Item could not be added. This list is in squeezeMode");
+		SH_notifyOfError(status, "Item could not be added. This list is in squeezeMode");
 		_opCleanup(&op);
+		goto fnExit;
+	allocErr:
+		status |= SH_ALLOC_NO_MEM;
+		SH_notifyOfError(SH_ALLOC_NO_MEM, "Failed to allocate memory in _addOp");
+	fnExit:
 		return status;
+	
 }
 
 
@@ -137,17 +144,24 @@ SHErrorCode SH_serialQueue_addOp(
 	void *fnArgs,
 	void (*cleanupFn)(void**))
 {
-	assert(queue);
-	assert(fn); 
+	if(!queue) return SH_ILLEGAL_INPUTS;
+	if(!fn) return SH_ILLEGAL_INPUTS;
+	
 	SHErrorCode status = SH_NO_ERROR;
 	struct _wrappedVoidFnArgs *wrapped = malloc(sizeof(struct _wrappedVoidFnArgs));
+	if(!wrapped) goto allocErr;
 	*wrapped = (struct _wrappedVoidFnArgs){
 		.wrappedFn = fn,
 		.fnArgs = fnArgs,
 		.cleanupFn = cleanupFn
 	};
 	status = _addOp(queue, _wrapVoidCall, wrapped, SH_cleanup);
-	return status;
+	goto fnExit;
+	allocErr:
+		status |= SH_ALLOC_NO_MEM;
+		SH_notifyOfError(status, "Failed to allocate memory in SH_serialQueue_addOp");
+	fnExit:
+		return status;
 }
 
 
@@ -244,17 +258,26 @@ static SHErrorCode _initMutexesAndConditions(struct SHSerialQueue *queue) {
 
 struct SHSerialQueue * SH_serialQueue_init(void *initArgs, void (*initArgsCleanup)(void**)) {
 	struct SHSerialQueue *queue = malloc(sizeof(struct SHSerialQueue));
-	struct SHIterableWrapper *opsList = SH_iterable_init(
+	if(!queue) return NULL;
+	struct SHIterableWrapper *opsList = NULL;
+	struct SHIterableWrapper *resultList = NULL;
+	SHErrorCode status = SH_NO_ERROR;
+	
+	opsList = SH_iterable_init(
 		(void* (*)(int32_t (*)(void*, void*), void (*)(void**)))SH_list_init2,
 		SH_iterable_loadListFuncs,
 		(void (*)(void**))SH_list_cleanup,
 		NULL,
 		(void (*)(void**))_opCleanup);
-	struct SHIterableWrapper *resultList = SH_iterable_init(
+	if(!opsList) goto cleanupQueue;
+	
+	resultList = SH_iterable_init(
 		(void* (*)(int32_t (*)(void*, void*), void (*)(void**)))SH_list_init2,
 		SH_iterable_loadListFuncs,
 		(void (*)(void**))SH_list_cleanup,
 		NULL, NULL);
+	if(!resultList) goto cleanupQueue;
+	
 	*queue = (struct SHSerialQueue){
 		.opsQueue = SH_syncedList_init(opsList),
 		.resultQueue = SH_syncedList_init(resultList),
@@ -264,13 +287,15 @@ struct SHSerialQueue * SH_serialQueue_init(void *initArgs, void (*initArgsCleanu
 		},
 		.isRunning = false,
 	};
-	SHErrorCode status = SH_NO_ERROR;
+	
 	if((status = _initMutexesAndConditions(queue)) != SH_NO_ERROR) {
 		goto cleanupQueue;
 	}
 	return queue;
 	
 	cleanupQueue:
+		SH_iterable_cleanup(&opsList);
+		SH_iterable_cleanup(&resultList);
 		SH_serialQueue_cleanup(&queue);
 		return NULL;
 }

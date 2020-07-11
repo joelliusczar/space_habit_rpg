@@ -17,6 +17,7 @@
 	const char *tmp = self.UTF8String;
 	uint64_t len = strlen(tmp);
 	char *copy = malloc(sizeof(char) * (len + SH_NULL_CHAR_OFFSET));
+	if(!copy) return NULL;
 	strcpy(copy, tmp);
 	return copy;
 }

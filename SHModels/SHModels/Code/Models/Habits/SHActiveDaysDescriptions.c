@@ -28,7 +28,8 @@ char * SH_buildWeekDescription(uint8_t weekHash) {
 	const int32_t commaAndSpace = 2;
 	const int32_t extra = dayNameLen + commaAndSpace;
 	char *result = malloc(sizeof(char) * ((activeDayCount * extra) + SH_NULL_CHAR_OFFSET));
-	*result = 0;
+	if(!result) goto cleanup;
+	*result = '\0';
 	char *cat = result;
 	for(int32_t idx = 0; idx < SH_DAYS_IN_WEEK && 0 < activeDayCount; idx++) {
 		if(idx & weekHash) {
@@ -39,27 +40,35 @@ char * SH_buildWeekDescription(uint8_t weekHash) {
 			}
 		}
 	}
-	return result;
+	cleanup:
+		return result;
 }
 
 
 char * SH_buildIntervalLabelDescription_week(uint8_t weekHash, int32_t intervalSize) {
-	char * weekDesc = SH_buildWeekDescription(weekHash);
-	uint64_t weekDescLen = strlen(weekDesc);
-	if(intervalSize == 1){
-		int32_t baseStrLen = 17; //"Every week for %s" len
-		char *result = malloc(sizeof(char) * (weekDescLen + baseStrLen + SH_NULL_CHAR_OFFSET));
-		sprintf(result, "Every week for %s", weekDesc);
-		free(weekDesc);
-		return result;
-	}
+	char *result = NULL;
+	char *weekDesc = NULL;
+	uint64_t weekDescLen = 0;
 	int32_t pluralFrmtLen = 35; // str len + len of max int
 	char pluralWeekFrmt[pluralFrmtLen];
+	weekDesc = SH_buildWeekDescription(weekHash);
+	if(!weekDesc) goto fnExit;
+	weekDescLen = strlen(weekDesc);
+	if(intervalSize == 1){
+		int32_t baseStrLen = 17; //"Every week for %s" len
+		result = malloc(sizeof(char) * (weekDescLen + baseStrLen + SH_NULL_CHAR_OFFSET));
+		if(!result) goto cleanup;
+		sprintf(result, "Every week for %s", weekDesc);
+		goto cleanup;
+	}
 	sprintf(pluralWeekFrmt,"Every %d Weeks", intervalSize);
-	char *result = malloc(sizeof(char) * (weekDescLen + pluralFrmtLen + SH_NULL_CHAR_OFFSET));
+	result = malloc(sizeof(char) * (weekDescLen + pluralFrmtLen + SH_NULL_CHAR_OFFSET));
+	if(!result) goto cleanup;
 	sprintf(result, "%s for %s", pluralWeekFrmt, weekDesc);
-	free(weekDesc);
-	return result;
+	cleanup:
+		SH_cleanup(&weekDesc);
+	fnExit:
+		return result;
 }
 
 

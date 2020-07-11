@@ -24,7 +24,7 @@
 @property (assign, nonatomic) BOOL isAdded;
 -(void)saveEdit;
 -(void)deleteModel;
--(void)setupWithQueue:(struct SHSerialQueue*)queue
+-(SHErrorCode)setupWithQueue:(struct SHSerialQueue*)queue
 	andPk:(int64_t)pk;
 
 @optional

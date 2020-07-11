@@ -223,19 +223,27 @@ static void _cleanUpInsert(struct _insertArgs** argsP2) {
 		SHHabitViewController *bSelf = weakSelf;
 		AppDelegate *appDel = (AppDelegate*)UIApplication.sharedApplication.delegate;
 		SHErrorCode status = SH_NO_ERROR;
+		
 		struct SHHabitBase *habit = malloc(sizeof(struct SHHabitBase));
 		*habit = (struct SHHabitBase){
 			.name = [name SH_unsafeStrCopy],
 			.lastUpdated = appDel.dateProvider.date.timeIntervalSince1970,
 			.tzOffsetLastUpdateDateTime = appDel.dateProvider.localTzOffset,
 		};
+		
 		struct _insertArgs *insertArgs = malloc(sizeof(struct _insertArgs));
+		
 		*insertArgs = (struct _insertArgs){
 			.habit = habit,
 			.bSelf = (__bridge void*)bSelf,
 		};
 		if((status = SH_serialQueue_addOp(self.dbQueue, _insertNewHabit, insertArgs,(void (*)(void**)) _cleanUpInsert))
-			!= SH_NO_ERROR) { ; }
+			!= SH_NO_ERROR) { goto cleanup; }
+		goto fnExit;
+		cleanup:
+			SH_freeHabitBase(&habit);
+		fnExit:
+			return; 
 	};
 	self.nameViewController.headline.text = [NSString stringWithUTF8String:self.tableName];
 	[self.central arrangeAndPushChildVCToFront:self.nameViewController];

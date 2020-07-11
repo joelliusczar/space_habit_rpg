@@ -9,6 +9,7 @@
 #ifndef SHIterableWrapper_h
 #define SHIterableWrapper_h
 
+#include "SHErrorHandling.h"
 #include "SHDynamicArray.h"
 #include <stdio.h>
 #include <inttypes.h>
@@ -27,8 +28,8 @@ struct SHIterableWrapperFuncs {
 	void *(*popFront)(void *);
 	void *(*getBack)(void *);
 	void *(*popBack)(void *);
-	void (*addItem)(void *, void *);
-	void (*deleteItemAtIdx)(void *, uint64_t);
+	SHErrorCode (*addItem)(void *, void *);
+	SHErrorCode (*deleteItemAtIdx)(void *, uint64_t);
 	void *(*iteratorInit)(void *);
 	void *(*iteratorNext)(void**);
 	void (*itemCleanup)(void**);
@@ -38,26 +39,26 @@ struct SHIterableWrapperFuncs {
 struct SHIterableWrapper;
 
 struct SHIterableWrapper *SH_iterable_init(void* (*initializer)(int32_t (*)(void*, void*), void (*)(void**)),
-	void (*fnSetup)(struct SHIterableWrapperFuncs *),
+	SHErrorCode (*fnSetup)(struct SHIterableWrapperFuncs *),
 	void (*subIterableCleanup)(void**),
 	int32_t (*defaultSortingFn)(void *, void *),
 	void (*defaultItemCleanup)(void**));
 	
-void SH_iterable_createSubIterable(struct SHIterableWrapper *iterable, int32_t (*sortingFn)(void *, void *),
+SHErrorCode SH_iterable_createSubIterable(struct SHIterableWrapper *iterable, int32_t (*sortingFn)(void *, void *),
 	void (*itemCleanup)(void**));
-void SH_iterable_setGroupingFn(struct SHIterableWrapper *iterable, uint64_t (*groupingFn)(void*));
+SHErrorCode SH_iterable_setGroupingFn(struct SHIterableWrapper *iterable, uint64_t (*groupingFn)(void*));
 uint64_t SH_iterable_count(struct SHIterableWrapper *iterable);
-void SH_iterable_addItem(struct SHIterableWrapper *iterable, void *item);
+SHErrorCode SH_iterable_addItem(struct SHIterableWrapper *iterable, void *item);
 void *SH_iterable_getItemAtIdx(struct SHIterableWrapper *iterable, uint64_t idx);
 void *SH_iterable_getItemAtIdx2(struct SHIterableWrapper *iterable, uint64_t iterableIdx, uint64_t idx);
 void *SH_iterable_getFront(struct SHIterableWrapper *iterable);
 void *SH_iterable_popFront(struct SHIterableWrapper *iterable);
 void *SH_iterable_getBack(struct SHIterableWrapper *iterable);
 void *SH_iterable_popBack(struct SHIterableWrapper *iterable);
-void SH_iterable_deleteItemAtIdx(struct SHIterableWrapper *iterable, uint64_t idx);
+SHErrorCode SH_iterable_deleteItemAtIdx(struct SHIterableWrapper *iterable, uint64_t idx);
 struct SHIterableWrapperIterator *SH_iterableIterator_init(struct SHIterableWrapper *iterable);
 void *SH_iterableIterator_next(struct SHIterableWrapperIterator **iter);
-void SH_iterable_setInternalIterable(struct SHIterableWrapper *iterable, uint64_t idx);
+SHErrorCode SH_iterable_setInternalIterable(struct SHIterableWrapper *iterable, uint64_t idx);
 
 void SH_iterable_cleanup(struct SHIterableWrapper **iterable);
 

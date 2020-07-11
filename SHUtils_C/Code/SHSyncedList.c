@@ -83,15 +83,16 @@ SHErrorCode SH_syncedList_pushBack(struct SHSyncedList *list, void *item) {
 	}
 	if((threadCode = pthread_mutex_lock(&list->iterableLock)) != 0) { goto threadErr; }
 	if(item) {
-		SH_iterable_addItem(list->iterable, item);
+		if((status = SH_iterable_addItem(list->iterable, item)) != SH_NO_ERROR) { goto cleanupLocks; }
 	}
 	else {
 		//SHSyncedList chokes on nulls, and will deadlock
 		//so, we're adding a placeholder instead
-		SH_iterable_addItem(list->iterable, &_nullWraperObj);
+		if((status = SH_iterable_addItem(list->iterable, &_nullWraperObj)) != SH_NO_ERROR) { goto cleanupLocks; }
 	}
-	if((threadCode = pthread_cond_signal(&list->hasItems)) != 0) { goto threadErr; }
-	if((threadCode = pthread_mutex_unlock(&list->iterableLock)) != 0) { goto threadErr; }
+	cleanupLocks:
+		if((threadCode = pthread_cond_signal(&list->hasItems)) != 0) { goto threadErr; }
+		if((threadCode = pthread_mutex_unlock(&list->iterableLock)) != 0) { goto threadErr; }
 	goto fnExit;
 	threadErr:
 		status |= SH_THREAD_ERROR;

@@ -57,6 +57,7 @@ void printWorkingDir(){
 
 static struct SHQueueStoreItem* _setupQueueStoreItem(struct SHConfigAccessor *config) {
 	struct SHQueueStoreItem *item = malloc(sizeof(struct SHQueueStoreItem));
+	if(!item) return NULL;
 	const char *dbFile = NULL;
 	NSArray<NSString*> *procArgs = NSProcessInfo.processInfo.arguments;
 	if(procArgs.count > 1) {
@@ -101,6 +102,7 @@ static SHErrorCode _addFunctions(void* args, struct SHQueueStore *store) {
 	SH_setupConfig(&self->_config);
 	self.dateProvider = [[SHDefaultDateProvider alloc] init];
 	self.dbQueue = SH_serialQueue_init(_setupQueueStoreItem(&self->_config), (void (*)(void**))SH_freeQueueStoreItem);
+	if(!self.dbQueue) return NO;
 	SHErrorCode status = SH_NO_ERROR;
 	if((status = SH_serialQueue_startLoop(self.dbQueue))
 		!= SH_NO_ERROR)

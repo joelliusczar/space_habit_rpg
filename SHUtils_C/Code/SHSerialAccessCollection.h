@@ -38,6 +38,7 @@ SHErrorCode SH_SACollection_addItemsWithGenerator(struct SHSerialAccessCollectio
 SHErrorCode SH_SACollection_closeLoop(struct SHSerialAccessCollection *saCollection);
 SHErrorCode SH_SACollection_waitToFinishOps(struct SHSerialAccessCollection *saCollection);
 	
+void SH_SACollection_cleanup(struct SHSerialAccessCollection **saCollectionP2);
 void SH_generatorObj_cleanup(struct SHGeneratorFnObj **genFnObjP2);
 	
 #endif /* SHSerialAccessCollection_h */

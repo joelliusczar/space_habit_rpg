@@ -73,16 +73,22 @@ static SHErrorCode _fetchDaily(void *args, struct SHQueueStore *store) {
 }
 
 
--(void)setupWithQueue:(struct SHSerialQueue *)queue andPk:(int64_t)pk {
+-(SHErrorCode)setupWithQueue:(struct SHSerialQueue *)queue andPk:(int64_t)pk {
 	SHErrorCode status = SH_NO_ERROR;
 	self.pk = pk;
 	self.queue = queue;
 	//dealloc happens in the dealloc method for SHEditNavigationController
 	//where it frees the habit property which we are assigning this daily to
 	self.daily = malloc(sizeof(struct SHDaily));
+	if(!self.daily) goto allocErr;
 	self.editorContainerController.habit = (struct SHHabitBase *)self.daily;
 	self.editorContainerController.habitCleanup = (void (*)(void**))SH_freeDaily;
 	if((status = SH_serialQueue_addOp(queue, _fetchDaily, (__bridge void *)(self), NULL)) != SH_NO_ERROR) { ; }
+	goto fnExit;
+	allocErr:
+		status |= SH_ALLOC_NO_MEM;
+	fnExit:
+		return status;
 }
 
 /*
@@ -195,6 +201,9 @@ static SHErrorCode _deleteDaily(void *args, struct SHQueueStore *store) {
 	NSString *note = sender.noteBox.text;
 	if(self.daily->note) free(self.daily->note);
 	self.daily->note = [note SH_unsafeStrCopy];
+	if(!self.daily->note) {
+		
+	}
 }
 
 

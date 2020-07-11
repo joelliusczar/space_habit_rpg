@@ -45,7 +45,8 @@ static SHErrorCode _argsToTimeshifts(int32_t argc,char *argv[], struct SHDatetim
 	if((argc -tmpIdx) >= 5){
 		int32_t shiftIdx = dt->shiftLen-1;
 		if(!dt->shifts){
-			dt->shifts = malloc(sizeof(struct SHTimeshift)*(*allocSize));
+			dt->shifts = malloc(sizeof(struct SHTimeshift) * (*allocSize));
+			if(!shift) goto allocErr;
 			dt->shiftLen = 0;
 			shiftIdx = 0;
 		}
@@ -53,16 +54,18 @@ static SHErrorCode _argsToTimeshifts(int32_t argc,char *argv[], struct SHDatetim
 			struct SHTimeshift *tmp = dt->shifts;
 			int32_t oldSize = *allocSize;
 			*allocSize <<= 1;
-			dt->shifts = SH_resizeArr(SHTimeshift)(tmp,oldSize,*allocSize);
-			free(tmp);
+			dt->shifts = SH_resizeArr(SHTimeshift)(tmp, oldSize, *allocSize);
+			SH_cleanup(&tmp);
 		}
 		struct SHTimeshift *shift = malloc(sizeof(struct SHTimeshift));
+		if(!shift) goto allocErr;
 		char *ptr;
 		shift->month = strtol(argv[tmpIdx++],&ptr,10);
 		shift->day = strtol(argv[tmpIdx++],&ptr,10);
 		shift->hour = strtol(argv[tmpIdx++],&ptr,10);
 		shift->minute = strtol(argv[tmpIdx++],&ptr,10);
 		shift->adjustment = strtol(argv[tmpIdx++],&ptr,10);
+		SH_freeSHTimeshift(&dt->shifts[shiftIdx]);
 		dt->shifts[shiftIdx] = *shift;
 		dt->shiftLen++;
 	}
@@ -71,6 +74,8 @@ static SHErrorCode _argsToTimeshifts(int32_t argc,char *argv[], struct SHDatetim
 	}
 	*lastIdx = tmpIdx;
 	return SH_NO_ERROR;
+	allocErr:
+		return SH_ALLOC_MEM;
 }
 
 static SHErrorCode _loadDateArgsIntoDt(int32_t argc, char *argv[], struct SHDatetime *dt, int32_t *lastIdx){

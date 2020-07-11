@@ -34,7 +34,7 @@
 	char *activeDaysDesc = SH_selectIntervalDescription(self.activeDays);
 	self.primaryLabel.text = @"Interval: ";
 	self.descriptionLabel.text = [NSString stringWithUTF8String:activeDaysDesc];
-	free(activeDaysDesc);
+	SH_cleanup((void**)&activeDaysDesc);
 
 }
 
@@ -51,7 +51,7 @@
 		SH_setCurrentIntervalSize(bSelf.activeDays, intervalType, intervalSize);
 		char *activeDaysDesc = SH_selectIntervalDescription(bSelf.activeDays);
 		bSelf.descriptionLabel.text = [NSString stringWithUTF8String:activeDaysDesc];
-		free(activeDaysDesc);
+		SH_cleanup((void**)&activeDaysDesc);
 	};
 	[self.editorContainer
 		arrangeAndPushChildVCToFront:self.rateSelectionViewContoller];

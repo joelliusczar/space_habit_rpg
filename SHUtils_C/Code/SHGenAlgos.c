@@ -42,6 +42,7 @@ double blockoptimization kahanSum(const double* const nums, int64_t len){
 char * SH_constStrCopy(const char * const str) {
 	uint64_t len = strlen(str);
 	char *copy = malloc(sizeof(char) * (len + SH_NULL_CHAR_OFFSET)); //plus one for \0 char
+	if(!copy) return NULL;
 	strncpy(copy, str, len + SH_NULL_CHAR_OFFSET);
 	return copy;
 }
@@ -99,6 +100,7 @@ void SH_cleanup(void **argsP2) {
 
 char * SH_memoryToString(const unsigned char * const addresses, uint64_t len) {
 	char *result = malloc(sizeof(char) * ((len * 2) + SH_NULL_CHAR_OFFSET));
+	if(!result) return NULL;
 	*result = '\0';
 	char *cat = result;
 	for(uint64_t i = 0; i < len; i++) {

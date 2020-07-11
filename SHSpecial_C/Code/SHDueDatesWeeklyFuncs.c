@@ -296,7 +296,7 @@ static SHErrorCode _bothWeeklyDueDatesFromLastDueDate(struct SHDatetime *useDate
 	
 	struct SHDatetime *resultDates = malloc(sizeof(struct SHDatetime) * 2);
 	if(!resultDates) {
-		status = SH_ALLOC;
+		status = SH_ALLOC_NO_MEM;
 		SH_notifyOfError(status, "Failed to allocate memory for due dates");
 		goto fnExit;
 	}

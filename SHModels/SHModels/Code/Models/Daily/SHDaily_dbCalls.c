@@ -179,8 +179,8 @@ static SHErrorCode _setTableDailyValues(sqlite3_stmt *stmt, struct SHTableDaily 
 	tableDaily->maxStreak = sqlite3_column_int(stmt, 3);
 	tableDaily->dailyLvl = sqlite3_column_int(stmt, 4);
 	tableDaily->dailyXp = sqlite3_column_int(stmt, 5);
-	tableDaily->savedUseDate = malloc(sizeof(struct SHDatetime));
-	tableDaily->nextDueDate = malloc(sizeof(struct SHDatetime));
+	if(!(tableDaily->savedUseDate = malloc(sizeof(struct SHDatetime)))) goto cleanup;
+	if(!(tableDaily->nextDueDate = malloc(sizeof(struct SHDatetime)))) goto cleanup;
 	if((status = SH_sqlite3_column_SHDatetime(stmt, 6, tableDaily->savedUseDate, 0)) != SH_NO_ERROR) {
 		goto cleanup;
 	}
@@ -223,18 +223,19 @@ SHErrorCode SH_fetchSingleDaily(sqlite3 *db, int64_t pk, struct SHDaily *daily) 
 static void *_tableDailyFetchGenFn(sqlite3_stmt *stmt) {
 	int32_t sqlStatus = SQLITE_OK;
 	SHErrorCode status = SH_NO_ERROR;
+	struct SHTableDaily *tableDaily = NULL;
 	sqlStatus = sqlite3_step(stmt);
-	if(sqlStatus != SQLITE_OK && sqlStatus != SQLITE_ROW) return NULL;
-	struct SHTableDaily *tableDaily = malloc(sizeof(struct SHTableDaily));
+	if(sqlStatus != SQLITE_OK && sqlStatus != SQLITE_ROW) goto errExit;
+	tableDaily = malloc(sizeof(struct SHTableDaily));
 	if(!tableDaily) goto allocFail;
-	if((status = _setTableDailyValues(stmt, tableDaily)) != SH_NO_ERROR) { return NULL;}
+	if((status = _setTableDailyValues(stmt, tableDaily)) != SH_NO_ERROR) { goto cleanup; }
 	return tableDaily;
+	allocFail:
+		SH_notifyOfError(SH_ALLOC_NO_MEM, "Failed to alloc additional memory in _tableDailyFetchGenFn");
 	cleanup:
 		SH_notifyOfError(status, "Error after setting table values _tableDailyFetchGenFn");
 		SH_cleanupTableDaily(&tableDaily);
-		return NULL;
-	allocFail:
-		SH_notifyOfError(SH_ALLOC, "Failed to alloc additional memory in _tableDailyFetchGenFn");
+	errExit:
 		return NULL;
 }
 
@@ -248,7 +249,9 @@ static int32_t _tableDailySortingFn(struct SHTableDaily *tableDaily1, struct SHT
 	if(tableDaily1->customUseOrder != tableDaily2->customUseOrder) {
 		return tableDaily2->customUseOrder - tableDaily1->customUseOrder;
 	}
-	return tableDaily2->pk - tableDaily1->pk;
+	int64_t pkDiff = tableDaily2->pk - tableDaily1->pk;
+	if(pkDiff == 0) return 0;
+	return pkDiff > 0 ? 1 : -1;
 }
 
 
@@ -258,15 +261,16 @@ static SHErrorCode _setupTableDailySerialCollection(struct SHSerialAccessCollect
 		(void* (*)(int32_t (*)(void*, void*), void (*)(void**)))SH_tree_init,
 		SH_iterable_loadTreeFuncs,
 		(void (*)(void**))SH_tree_cleanup,
-		_tableDailySortingFn,
-		SH_cleanupTableDaily
+		(int32_t (*)(void*, void*))_tableDailySortingFn,
+		(void (*)(void**))SH_cleanupTableDaily
 	);
 	*saCollectionP2 = SH_SACollection_init(iterable);
-	if(!*saCollectionP2) return SH_ALLOC;
+	if(!*saCollectionP2) return SH_ALLOC_NO_MEM;
 	SH_SACollection_setGroupingFn(*saCollectionP2, (uint64_t (*)(void*))_tableDailiesGrouper);
 	SH_SACollection_createSubIterable(*saCollectionP2, NULL, NULL);
 	SH_SACollection_createSubIterable(*saCollectionP2, NULL, NULL);
 	SH_SACollection_startLoop(*saCollectionP2);
+	return status;
 }
 
 SHErrorCode SH_fetchTableDailies(sqlite3 *db, struct SHSerialAccessCollection **saCollectionP2,
@@ -280,27 +284,34 @@ SHErrorCode SH_fetchTableDailies(sqlite3 *db, struct SHSerialAccessCollection **
 	if((status = SH_buildStatement_fetchAllTableDailies(&stmt, db)) != SH_NO_ERROR) { goto sqlErr; }
 	int32_t localTzOffset = dateProvider && dateProvider->getLocalTzOffset ? dateProvider->getLocalTzOffset() : 0;
 	if((sqlStatus = sqlite3_bind_int(stmt, 1, localTzOffset)) != SQLITE_OK) { goto shErr; }
-	_setupTableDailySerialCollection(saCollectionP2);
+	
+	if((status = _setupTableDailySerialCollection(saCollectionP2)) != SH_NO_ERROR) { goto cleanup; }
 	
 	struct SHGeneratorFnObj *fnObj = malloc(sizeof(struct SHGeneratorFnObj));
+	if(!fnObj) goto allocErr;
 	*fnObj = (struct SHGeneratorFnObj){
 		.generator = (void* (*)(void*))_tableDailyFetchGenFn,
 		.generatorState = stmt,
 		.stateCleanup = (void (*)(void**))SH_cleanupSqlite3Statement
 	};
-	if((status = SH_SACollection_addItemsWithGenerator(saCollection, fnObj)) != SH_NO_ERROR) { goto genErr; }
+	if((status = SH_SACollection_addItemsWithGenerator(*saCollectionP2, fnObj)) != SH_NO_ERROR) { goto genErr; }
 	goto fnExit;
+	allocErr:
+		status |= SH_ALLOC_NO_MEM;
+		SH_notifyOfError(status, "Failed to allocate memory in SH_fetchTableDailies");
+		goto cleanup;
 	sqlErr:
 		sprintf(errMsg,"sqlite3 Error: %d \nThere was an error fetching daily",sqlStatus);
 		SH_notifyOfError(SH_SQLITE3_ERROR, errMsg);
-		status = SH_SQLITE3_ERROR;
+		status |= SH_SQLITE3_ERROR;
 		goto fnExit;
 	shErr:
 		SH_notifyOfError(SH_SQLITE3_ERROR, "Something happened while binding");
-		sqlite3_finalize(stmt);
-		goto fnExit;
+		goto cleanup;
 	genErr:
 		SH_notifyOfError(status, "Error occured while adding op for generator");
+	cleanup:
+		sqlite3_finalize(stmt);
 	fnExit:
 		return status;
 }

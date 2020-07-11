@@ -66,7 +66,7 @@ static int32_t _numCompare(void *a, void *b) {
 			break;
 		}
 	}
-	XCTAssertEqual(i, 12);
+	XCTAssertEqual(i, 1);
 	count = SH_NOT_FOUND;
 	status = SH_SACollection_count(serialCollection, &count);
 	XCTAssertEqual(status, SH_PRECONDITIONS_NOT_FULFILLED);

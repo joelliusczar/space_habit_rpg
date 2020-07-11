@@ -61,7 +61,7 @@ typedef enum {
 	SH_INVALID_STATE = 1 << 4,
 	SH_ILLEGAL_INPUTS = 1 << 5,
 	SH_INPUT_BAD_RESULTS = 1 << 6,
-	SH_ALLOC = 1 << 7,
+	SH_ALLOC_NO_MEM = 1 << 7,
 	SH_LOGIC_MISROUTE = 1 << 8,
 	SH_SQLITE3_ERROR = 1 << 9,
 	SH_THREAD_ERROR = 1 << 10,

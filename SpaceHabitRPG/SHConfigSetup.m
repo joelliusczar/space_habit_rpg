@@ -69,6 +69,7 @@ void setStoryState(SHStoryState storyMode){
 struct SHDatetime * getLastProcessingDateTime() {
 	NSValue *wrapper = (NSValue *)[NSUserDefaults.standardUserDefaults objectForKey:@"lastProcessingDateTime"];
 	struct SHDatetime *dt = malloc(sizeof(struct SHDatetime));
+	if(!dt) return NULL;
 	[wrapper getValue:dt size:sizeof(struct SHDatetime)];
 	dt->shifts = NULL; //no telling what this actually points to by now
 	dt->currentShiftIdx = SH_NOT_FOUND;

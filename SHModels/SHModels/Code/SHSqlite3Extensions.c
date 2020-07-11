@@ -29,18 +29,23 @@ int32_t SH_sqlite3_bind_optional_double(sqlite3_stmt* stmt, int32_t paramNum, do
 
 
 SHErrorCode SH_sqlite3_copy_column_text(sqlite3_stmt *stmt, int32_t col, char **value) {
+	if(!stmt || !value) return SH_ILLEGAL_INPUTS;
+	SHErrorCode status = SH_NO_ERROR;
 	const char *tmp = (char *)sqlite3_column_text(stmt, col);
 	int32_t len = sqlite3_column_bytes(stmt, col);
-	if(NULL == tmp) {
+	if(!tmp) {
 		*value = SH_constStrCopy("");
-		return SH_NO_ERROR;
+		if(!*value) goto allocErr;
+		goto fnExit;
 	}
 	*value = malloc(sizeof(char) * (len + SH_NULL_CHAR_OFFSET));
+	if(!*value && len > 0) goto allocErr;
 	strcpy(*value, tmp);
-	if(NULL == *value && len > 0) {
-		return SH_ALLOC;
-	}
-	return SH_NO_ERROR;
+	goto fnExit;
+	allocErr:
+		status |= SH_ALLOC_NO_MEM;
+	fnExit:
+		return status;
 }
 
 
@@ -57,23 +62,28 @@ SHErrorCode SH_sqlite3_copy_column_blobFixed(sqlite3_stmt *stmt, int32_t col, vo
 
 
 SHErrorCode SH_sqlite3_column_double_ptr(sqlite3_stmt *stmt, int32_t col, double **value) {
+	if(!stmt || !value) return SH_ILLEGAL_INPUTS;
+	SHErrorCode status = SH_NO_ERROR;
 	if(sqlite3_column_type(stmt, col) == SQLITE_FLOAT) {
 		*value = malloc(sizeof(double));
-		if(NULL == *value) {
-			return SH_ALLOC;
-		}
+		if(!*value) goto allocErr;
 		**value = sqlite3_column_double(stmt, col);
 	}
 	else {
 		*value = NULL;
 	}
-	return SH_NO_ERROR;
+	goto fnExit;
+	allocErr:
+		status |= SH_ALLOC_NO_MEM;
+	fnExit:
+		return status;
 }
 
 
 SHErrorCode SH_sqlite3_column_SHDatetime(sqlite3_stmt* stmt, int32_t col, struct SHDatetime *dt,
 	int32_t timezoneOffset)
 {
+if(!stmt || !dt) return SH_ILLEGAL_INPUTS;
 	double timestamp = sqlite3_column_double(stmt, col);;
 	SHErrorCode status = SH_NO_ERROR;
 	status = SH_timestampToDt(timestamp, timezoneOffset, dt);
@@ -82,17 +92,20 @@ SHErrorCode SH_sqlite3_column_SHDatetime(sqlite3_stmt* stmt, int32_t col, struct
 
 
 SHErrorCode SH_sqlite3_value_double_ptr(sqlite3_value *cellValue, double **value) {
+	SHErrorCode status = SH_NO_ERROR;
 	if(sqlite3_value_type(cellValue) == SQLITE_FLOAT) {
 		*value = malloc(sizeof(double));
-		if(NULL == *value) {
-			return SH_ALLOC;
-		}
+		if(!*value) goto allocErr;
 		**value = sqlite3_value_double(cellValue);
 	}
 	else {
 		*value = NULL;
 	}
-	return SH_NO_ERROR;
+	goto fnExit;
+	allocErr:
+		status |= SH_ALLOC_NO_MEM;
+	fnExit:
+		return status;
 }
 
 
