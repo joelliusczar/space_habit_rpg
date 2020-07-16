@@ -11,10 +11,17 @@
 #include <stdlib.h>
 
 
+const struct SHIterableSetup listSetup = {
+	.initializer = SH_list_init2,
+	.fnSetup = SH_iterable_loadListFuncs,
+	.subIterableCleanup = SH_list_cleanup,
+};
+
 struct SHLLNode {
 	void *item;
 	struct SHLLNode *next;
 	struct SHLLNode *prev;
+	struct SHLinkedList *list;
 };
 
 struct SHLinkedList {
@@ -23,6 +30,9 @@ struct SHLinkedList {
 	void (*itemCleanup)(void**);
 	uint64_t count;
 };
+
+
+static SHLLNode *_next(struct SHLinkedListIterator **iterP2);
 
 
 struct SHLinkedList *SH_list_init(void (*itemCleanup)(void**)) {
@@ -45,14 +55,11 @@ struct SHLinkedList *SH_list_init2(int32_t (*sortingFn)(void*, void*), void (*it
 }
 
 
-
-SHErrorCode SH_list_pushBack(struct SHLinkedList *list, void *item) {
-	if(!list) return SH_ILLEGAL_INPUTS;
-	SHErrorCode status = SH_NO_ERROR;
+struct SHLLNode *_pushBack(struct SHLinkedList *list, void *item) {
 	struct SHLLNode *newNode = NULL;
 	list->count++;
 	if(!list->front) {
-		newNode =  malloc(sizeof(struct SHLLNode));
+		newNode = malloc(sizeof(struct SHLLNode));
 		if(!newNode) goto allocErr;
 		
 		*newNode = (struct SHLLNode){0};
@@ -61,7 +68,7 @@ SHErrorCode SH_list_pushBack(struct SHLinkedList *list, void *item) {
 		newNode->item = item;
 		goto fnExit;
 	}
-	newNode =  malloc(sizeof(struct SHLLNode));
+	newNode = malloc(sizeof(struct SHLLNode));
 	if(!newNode) goto allocErr;
 	
 	*newNode = (struct SHLLNode){0};
@@ -69,6 +76,19 @@ SHErrorCode SH_list_pushBack(struct SHLinkedList *list, void *item) {
 	newNode->prev = list->back;
 	list->back = list->back->next;
 	newNode->item = item;
+	fnExit:
+		newNode->list = list;
+		return newNode;
+	allocErr:
+		return NULL;
+}
+
+
+SHErrorCode SH_list_pushBack(struct SHLinkedList *list, void *item) {
+	if(!list) return SH_ILLEGAL_INPUTS;
+	SHErrorCode status = SH_NO_ERROR;
+	struct SHLLNode *newNode = NULL;
+	if(!(newNode = _pushBack(list, item))) goto allocErr;
 	fnExit:
 		return status;
 	allocErr:
@@ -115,6 +135,14 @@ void *SH_list_findNthItem(struct SHLinkedList *list, uint64_t idx) {
 }
 
 
+static void _detachNode(struct SHLLNode *node) {
+	struct SHLLNode *next = node->next;
+	struct SHLLNode *prev = node->prev;
+	next->prev = prev;
+	prev->next = next;
+}
+
+
 SHErrorCode SH_list_deleteNthItem(struct SHLinkedList *list, uint64_t idx) {
 	if(!list) return SH_ILLEGAL_INPUTS;
 	SHErrorCode status = SH_NO_ERROR;
@@ -136,15 +164,35 @@ SHErrorCode SH_list_deleteNthItem(struct SHLinkedList *list, uint64_t idx) {
 	else {
 		node = _searchFromBack(list, mid);
 	}
-	struct SHLLNode *next = node->next;
-	struct SHLLNode *prev = node->prev;
-	next->prev = prev;
-	prev->next = next;
+	_detachNode(node);
 	if(list->itemCleanup) {
 		list->itemCleanup(&node->item);
 	}
 	SH_cleanup((void**)&node);
 	return status;
+}
+
+
+SHErrorCode SH_list_removeMatchingItem(struct SHLinkedList *list, void *item, bool removeAll) {
+	if(!list) return SH_ILLEGAL_INPUTS;
+	struct SHLinkedListIterator *iter = NULL;
+	struct SHLLNode *next = NULL;
+	if(!(iter = SH_listIterator_init(list))) goto allocErr;
+	while((next = _next(&iter))) {
+		if(next->item == item) {
+			_detachNode(next);
+			SH_cleanup((void**)next);
+			if(!removeAll) {
+				goto fnExit;
+			}
+		}
+	}
+	goto fnExit;
+	allocErr:
+		return SH_ALLOC_NO_MEM;
+	fnExit:
+		SH_cleanup((void**)iter);
+		return SH_NO_ERROR;
 }
 
 
@@ -212,7 +260,7 @@ struct SHLinkedListIterator *SH_listIterator_init(struct SHLinkedList *list) {
 }
 
 
-void *SH_listIterator_next(struct SHLinkedListIterator **iterP2) {
+static struct SHLLNode *_next(struct SHLinkedListIterator **iterP2) {
 	if(!iterP2) return NULL;
 	struct SHLinkedListIterator *iter = *iterP2;
 	if(!iter) return NULL;
@@ -222,7 +270,13 @@ void *SH_listIterator_next(struct SHLinkedListIterator **iterP2) {
 		*iterP2 = NULL;
 		return NULL;
 	}
-	return iter->current->item;
+	return iter->current;
+}
+
+
+void *SH_listIterator_next(struct SHLinkedListIterator **iterP2) {
+	struct SHLLNode *node = _next(iterP2);
+	return node ? node->item : NULL;
 }
 
 
@@ -237,8 +291,22 @@ SHErrorCode SH_iterable_loadListFuncs(struct SHIterableWrapperFuncs *funcsObj) {
 	funcsObj->deleteItemAtIdx = (SHErrorCode (*)(void*, uint64_t))SH_list_deleteNthItem;
 	funcsObj->iteratorInit = (void* (*)(void*))SH_listIterator_init;
 	funcsObj->iteratorNext = (void* (*)(void**))SH_listIterator_next;
-	funcsObj->itemCleanup = (void (*)(void**))SH_list_cleanup;
+	funcsObj->cleanup = (void (*)(void**))SH_list_cleanup;
+	funcsObj->cleanupIgnoreItems = (void (*)(void**))SH_list_cleanupIgnoreItems;
 	return SH_NO_ERROR;
+}
+
+
+static void _cleanupList(struct SHLinkedList *list, void (*itemCleanup)(void**)) {
+	while(list->front) {
+		if(itemCleanup) {
+			itemCleanup(list->front->item);
+		}
+		struct SHLLNode *node = list->front;
+		list->front = list->front->next;
+		SH_cleanup((void**)node);
+	}
+	free(list);
 }
 
 
@@ -246,16 +314,50 @@ void SH_list_cleanup(struct SHLinkedList **listP2) {
 	if(!listP2) return;
 	struct SHLinkedList *list = *listP2;
 	if(!list) return;
-	while(list->front) {
-		if(list->itemCleanup) {
-			list->itemCleanup(list->front->item);
-		}
-		struct SHLLNode *trash = list->front;
-		list->front = list->front->next;
-		free(trash);
-		trash = NULL;
-	}
-	free(list);
+	_cleanupList(list, list->itemCleanup);
 	*listP2 = NULL;
 }
 
+
+void SH_list_cleanupIgnoreItems(struct SHLinkedList **listP2) {
+	if(!listP2) return;
+	struct SHLinkedList *list = *listP2;
+	if(!list) return;
+	_cleanupList(list, NULL);
+	*listP2 = NULL;
+}
+
+
+struct SHLLNode *SH_list_pushBack2(struct SHLinkedList *list, void *item) {
+	return _pushBack(list, item);
+}
+
+
+struct SHLLNode *SH_llnode_getNext(struct SHLLNode *node) {
+	if(!node) return NULL;
+	return node->next;
+}
+
+
+struct SHLLNode *SH_llnode_getPrev(struct SHLLNode *node) {
+	if(!node) return NULL;
+	return node->prev;
+}
+
+
+void *SH_llnode_getItem(struct SHLLNode *node) {
+	if(!node) return NULL;
+	return node->item;
+}
+
+
+struct SHLLNode *SH_llnode_pushBack(struct SHLLNode *node, void *item) {
+	if(!node) return NULL;
+	return _pushBack(node->list, item);
+}
+
+
+struct SHLLNode *SH_llnode_getFront(struct SHLLNode *node) {
+	if(!node) return NULL;
+	return node->list->front->item;
+}

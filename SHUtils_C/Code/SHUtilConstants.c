@@ -11,3 +11,6 @@ const int32_t SH_NOT_FOUND = -1;
 const int32_t SH_SKIP = -2;
 const int32_t SH_ALLOC_COUNT = 1;
 const int32_t SH_NULL_CHAR_OFFSET = 1;
+
+
+const struct SHNullWrapper SH_NULL_WRAPPER_OBJ = {0};

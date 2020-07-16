@@ -67,6 +67,7 @@ FOUNDATION_EXPORT const unsigned char SHModelsVersionString[];
 #import "SHCommonDbCalls.h"
 #import "SHActiveDaysValues.h"
 #import "SHActiveDaysDescriptions.h"
+#import "SHFetchTableItemsArgs.h"
 
 // In this header, you should import all
 //the public headers of your framework using statements like #import <SHModels/PublicHeader.h>

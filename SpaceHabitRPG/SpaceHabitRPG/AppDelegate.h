@@ -13,7 +13,7 @@
 @import SHUtils_C;
 @import SHCommon;
 @import SHModels;
-
+@import SHDatetime;
 
 @class SHCentralViewController;
 
@@ -24,6 +24,6 @@
 @property (readonly, nonatomic) struct SHSerialQueue *dbQueue;
 @property (readonly, nonatomic) struct SHConfigAccessor config;
 @property (strong, nonatomic) SHResourceUtility *resourceUtil;
-@property (strong, nonatomic) NSObject<SHDateProviderProtocol> *dateProvider;
+@property (readonly, nonatomic) struct SHDatetimeProvider dateProvider;
 @end
 

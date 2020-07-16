@@ -13,6 +13,7 @@
 @import UIKit;
 @import SHControls;
 @import SHModels;
+@import SHUtils_C;
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -30,6 +31,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *addHabitGesture;
 @property (copy, nonatomic) void (^onOpenAddHabit)(void);
 @property (readonly, nonatomic) SHErrorCode (*insertHabit)(sqlite3 *, struct SHHabitBase const *, int64_t *);
+@property (assign, nonatomic) struct SHSerialAccessCollection *tableBackend;
+@property (readonly, nonatomic) struct SHSerialQueue *dbQueue;
+@property (readonly, nonatomic) struct SHDatetimeProvider dateProvider;
 -(instancetype)initWithCentral:(SHCentralViewController *)central;
 
 -(void)fetchUpdates;

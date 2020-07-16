@@ -17,6 +17,12 @@
 #include <string.h>
 
 
+const struct SHIterableSetup treeSetup = {
+	.initializer = SH_tree_init,
+	.fnSetup = SH_iterable_loadTreeFuncs,
+	.subIterableCleanup = (void (*)(void**))SH_tree_cleanup,
+};
+
 typedef enum {
 	_start = 0,
 	_afterInit = 1,
@@ -63,6 +69,7 @@ static struct SHTreeNode _nullNode;
 
 
 struct SHTree *SH_tree_init(int32_t (*sortingFn)(void*, void*), void (*itemCleanup)(void**)) {
+	if(!sortingFn) return NULL;
 	struct SHTree *tree = malloc(sizeof(struct SHTree));
 	if(!tree) goto allocErr;
 	tree->root = NULL;
@@ -79,27 +86,27 @@ struct SHTree *SH_tree_init(int32_t (*sortingFn)(void*, void*), void (*itemClean
 }
 
 
-SHErrorCode SH_tree_setLineBreakSentinel(struct SHTree *tree, void *sentinel) {
+SHErrorCode SH_tree_setLineBreakSentinel(struct SHTree *tree, void * const sentinel) {
 	if(!tree) return SH_ILLEGAL_INPUTS;
 	tree->lineBreakSentinel = sentinel;
 	return SH_NO_ERROR;
 }
 
 
-void *SH_tree_getLineBreakSentinel(struct SHTree *tree) {
+void * const SH_tree_getLineBreakSentinel(struct SHTree *tree) {
 	if(!tree) return NULL;
 	return tree->lineBreakSentinel;
 }
 
 
-SHErrorCode SH_tree_setNullItemSentinel(struct SHTree *tree, void *sentinel) {
+SHErrorCode SH_tree_setNullItemSentinel(struct SHTree *tree, void * const sentinel) {
 	if(!tree) return SH_ILLEGAL_INPUTS;
 	tree->nullItemSentinel = sentinel;
 	return SH_NO_ERROR;
 }
 
 
-void *SH_tree_getNullItemSentinel(struct SHTree *tree) {
+void * const SH_tree_getNullItemSentinel(struct SHTree *tree) {
 	if(!tree) return NULL;
 	return tree->nullItemSentinel;
 }
@@ -645,15 +652,7 @@ static void _strictCleanup(struct SHTree *tree) {
 }
 
 
-
-void SH_tree_cleanup(struct SHTree **treeP2) {
-	if(!treeP2) return;
-	struct SHTree *tree = *treeP2;
-	if(!tree) return;
-	if(tree->itemCleanup) {
-		tree->itemCleanup(&tree->lineBreakSentinel);
-		tree->itemCleanup(&tree->nullItemSentinel);
-	}
+static void _cleanupTree(struct SHTree *tree, void (*itemCleanup)(void**)) {
 	struct SHTreeIterator *iter = SH_treeIterator_init(tree);
 	if(!iter) {
 		_strictCleanup(tree);
@@ -678,9 +677,27 @@ void SH_tree_cleanup(struct SHTree **treeP2) {
 		
 	}
 	
-	_nodeCleanup(&prev, tree->itemCleanup);
+	_nodeCleanup(&prev,itemCleanup);
 	_iteratorCleanup(&iter);
 	free(tree);
+	
+}
+
+
+void SH_tree_cleanup(struct SHTree **treeP2) {
+	if(!treeP2) return;
+	struct SHTree *tree = *treeP2;
+	if(!tree) return;
+	_cleanupTree(tree, tree->itemCleanup);
+	*treeP2 = NULL;
+}
+
+
+void SH_tree_cleanupIgnoreItems(struct SHTree **treeP2) {
+	if(!treeP2) return;
+	struct SHTree *tree = *treeP2;
+	if(!tree) return;
+	_cleanupTree(tree, NULL);
 	*treeP2 = NULL;
 }
 
@@ -697,7 +714,8 @@ SHErrorCode SH_iterable_loadTreeFuncs(struct SHIterableWrapperFuncs *funcsObj) {
 	funcsObj->deleteItemAtIdx = (SHErrorCode (*)(void*, uint64_t))SH_tree_deleteNthItem;
 	funcsObj->iteratorInit = (void *(*)(void*))SH_treeIterator_init;
 	funcsObj->iteratorNext = (void *(*)(void**))SH_treeIterator_nextInorder;
-	funcsObj->itemCleanup = (void (*)(void**))SH_tree_cleanup;
+	funcsObj->cleanup = (void (*)(void**))SH_tree_cleanup;
+	funcsObj->cleanupIgnoreItems = (void (*)(void**))SH_tree_cleanupIgnoreItems;
 	return SH_NO_ERROR;
 }
 

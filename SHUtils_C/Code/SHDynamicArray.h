@@ -10,6 +10,7 @@
 #define SHDynamicArray_h
 
 #include "SHErrorHandling.h"
+#include "SHDynamicArray.h"
 #include <stdio.h>
 #include <inttypes.h>
 
@@ -34,7 +35,10 @@ void* SH_dynamicArray_get(struct SHDynamicArray *array, uint64_t idx);
 SHErrorCode SH_dynamicArray_remove(struct SHDynamicArray *array, uint64_t idx);
 SHErrorCode SH_dynamicArray_insert(struct SHDynamicArray *array, uint64_t idx, void *item);
 SHErrorCode SH_dynamicArray_replace(struct SHDynamicArray *array, uint64_t idx, void *item);
-void SH_dynamicArray_free(struct SHDynamicArray **arrayP2);
+void SH_dynamicArray_cleanup(struct SHDynamicArray **arrayP2);
+void SH_dynamicArray_cleanupIgnoreItems(struct SHDynamicArray **arrayP2);
+
+SHErrorCode SH_iterable_loadArrayFuncs(struct SHIterableWrapperFuncs *funcsObj);
 
 struct SHDynamicArrayIterator *SH_dynamicArrayIterator_init(struct SHDynamicArray *array);
 void *SH_dynamicArrayIterator_next(struct SHDynamicArrayIterator **iter);

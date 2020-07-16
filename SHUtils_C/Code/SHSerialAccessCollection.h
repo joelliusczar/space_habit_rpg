@@ -25,10 +25,6 @@ struct SHGeneratorFnObj {
 
 struct SHSerialAccessCollection *SH_SACollection_init(struct SHIterableWrapper *iterable);
 SHErrorCode SH_SACollection_startLoop(struct SHSerialAccessCollection *saCollection);
-SHErrorCode SH_SACollection_createSubIterable(struct SHSerialAccessCollection *saCollection,
-	int32_t (*sortingFn)(void *, void *),
-	void (*itemCleanup)(void**));
-SHErrorCode SH_SACollection_setGroupingFn(struct SHSerialAccessCollection *saCollection, uint64_t (*groupingFn)(void*));
 SHErrorCode SH_SACollection_count(struct SHSerialAccessCollection *saCollection, uint64_t *count);
 SHErrorCode SH_SACollection_getItemAtIdx(struct SHSerialAccessCollection *saCollection, uint64_t idx, void **item);
 SHErrorCode SH_SACollection_addItem(struct SHSerialAccessCollection *saCollection, void *item);

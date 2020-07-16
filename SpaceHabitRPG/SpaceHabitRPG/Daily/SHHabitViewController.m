@@ -14,7 +14,8 @@
 @interface SHHabitViewController ()
 @property (strong, nonatomic) UITableView *habitTable;
 @property (strong, nonatomic) SHHabitNameViewController *nameViewController;
-@property (assign, nonatomic) struct SHSerialQueue *dbQueue;
+@property (assign, nonatomic) struct SHSerialQueue *dbQueue; //not owner
+@property (assign, nonatomic) struct SHDatetimeProvider dateProvider; //not owner
 @end
 
 @implementation SHHabitViewController
@@ -45,6 +46,7 @@
 	[super viewDidLoad];
 	AppDelegate *appDel = (AppDelegate*)UIApplication.sharedApplication.delegate;
 	self.dbQueue = appDel.dbQueue;
+	self.dateProvider = appDel.dateProvider;
 	self.habitTable = [[UITableView alloc] init];
 	[self.view addSubview:self.habitTable];
 	self.habitTable.translatesAutoresizingMaskIntoConstraints = NO;
@@ -223,12 +225,13 @@ static void _cleanUpInsert(struct _insertArgs** argsP2) {
 		SHHabitViewController *bSelf = weakSelf;
 		AppDelegate *appDel = (AppDelegate*)UIApplication.sharedApplication.delegate;
 		SHErrorCode status = SH_NO_ERROR;
-		
+		double lastUpdated = 0;
+		if((status = SH_dtToTimestamp(appDel.dateProvider.getDate(), &lastUpdated)) != SH_NO_ERROR) { goto fnExit; }
 		struct SHHabitBase *habit = malloc(sizeof(struct SHHabitBase));
 		*habit = (struct SHHabitBase){
 			.name = [name SH_unsafeStrCopy],
-			.lastUpdated = appDel.dateProvider.date.timeIntervalSince1970,
-			.tzOffsetLastUpdateDateTime = appDel.dateProvider.localTzOffset,
+			.lastUpdated = lastUpdated,
+			.tzOffsetLastUpdateDateTime = appDel.dateProvider.getLocalTzOffset(),
 		};
 		
 		struct _insertArgs *insertArgs = malloc(sizeof(struct _insertArgs));
@@ -356,5 +359,9 @@ This will be called the user creates a new habit, checks it off, or deletes one
 	@throw [NSException abstractException];
 }
 
+
+-(void)dealloc {
+	SH_SACollection_cleanup(&self->_tableBackend);
+}
 
 @end

@@ -17,4 +17,10 @@ extern const int32_t SH_SKIP;
 extern const int32_t SH_ALLOC_COUNT;
 extern const int32_t SH_NULL_CHAR_OFFSET;
 
+struct SHNullWrapper {
+	void *item;
+};
+
+extern const struct SHNullWrapper SH_NULL_WRAPPER_OBJ;
+
 #endif /* SHUtilConstants_h */

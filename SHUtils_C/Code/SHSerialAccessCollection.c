@@ -38,65 +38,6 @@ SHErrorCode SH_SACollection_startLoop(struct SHSerialAccessCollection *saCollect
 }
 
 
-struct _iterableFuncs {
-	int32_t (*sortingFn)(void *, void *);
-	void (*itemCleanup)(void**);
-};
-
-
-static SHErrorCode _createSubIterable(void *fnArgs, struct SHQueueStore *store) {
-	SHErrorCode status = SH_NO_ERROR;
-	struct _iterableFuncs *iterableFuncs = (struct _iterableFuncs*)fnArgs;
-	struct SHIterableWrapper * iterable = (struct SHIterableWrapper *)SH_serialQueue_getUserItem(store);
-	if((status = SH_iterable_createSubIterable(iterable, iterableFuncs->sortingFn, iterableFuncs->itemCleanup))
-		!= SH_NO_ERROR) { }
-	
-	return status;
-}
-
-
-SHErrorCode SH_SACollection_createSubIterable(struct SHSerialAccessCollection *saCollection,
-	int32_t (*sortingFn)(void *, void *),
-	void (*itemCleanup)(void**))
-{
-	struct _iterableFuncs *iterableFuncs = malloc(sizeof(struct _iterableFuncs));
-	if(!iterableFuncs) return SH_ALLOC_NO_MEM;
-	*iterableFuncs = (struct _iterableFuncs){ .sortingFn = sortingFn, .itemCleanup = itemCleanup };
-	SHErrorCode status = SH_NO_ERROR;
-	if((status = SH_serialQueue_addOp(saCollection->queue, _createSubIterable, iterableFuncs, SH_cleanup))
-		!= SH_NO_ERROR) {}
-	return status;
-}
-
-
-struct _groupingFnObj {
-	uint64_t (*groupingFn)(void*);
-};
-
-
-static SHErrorCode _setGroupingFn(void *fnArgs, struct SHQueueStore *store) {
-	struct _groupingFnObj *groupingFnObj = (struct _groupingFnObj *)fnArgs;
-	struct SHIterableWrapper * iterable = (struct SHIterableWrapper *)SH_serialQueue_getUserItem(store);
-	SH_iterable_setGroupingFn(iterable, groupingFnObj->groupingFn);
-	return SH_NO_ERROR;
-}
-
-
-SHErrorCode SH_SACollection_setGroupingFn(struct SHSerialAccessCollection *saCollection, uint64_t (*groupingFn)(void*)) {
-	if(!saCollection) return SH_ILLEGAL_INPUTS;
-	struct _groupingFnObj *groupingFnObj = NULL;
-	if(!(groupingFnObj = malloc(sizeof(struct _groupingFnObj)))) goto allocErr;
-	groupingFnObj->groupingFn = groupingFn;
-	SHErrorCode status = SH_NO_ERROR;
-	if((status = SH_serialQueue_addOp(saCollection->queue, _setGroupingFn, groupingFnObj, SH_cleanup))
-		!= SH_NO_ERROR) {}
-	
-	return status;
-	allocErr:
-		return SH_ALLOC_NO_MEM;
-}
-
-
 static SHErrorCode _getCount(void *fnArgs, struct SHQueueStore *store, void **resultP2) {
 	(void)fnArgs;
 	if(!resultP2) return SH_ILLEGAL_INPUTS;

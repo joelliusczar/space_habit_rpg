@@ -229,6 +229,7 @@ static void *_tableDailyFetchGenFn(sqlite3_stmt *stmt) {
 	tableDaily = malloc(sizeof(struct SHTableDaily));
 	if(!tableDaily) goto allocFail;
 	if((status = _setTableDailyValues(stmt, tableDaily)) != SH_NO_ERROR) { goto cleanup; }
+	
 	return tableDaily;
 	allocFail:
 		SH_notifyOfError(SH_ALLOC_NO_MEM, "Failed to alloc additional memory in _tableDailyFetchGenFn");

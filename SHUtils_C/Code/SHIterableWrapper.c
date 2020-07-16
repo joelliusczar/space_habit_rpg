@@ -14,38 +14,23 @@
 
 struct SHIterableWrapper {
 	struct SHIterableWrapperFuncs funcs;
-	struct SHDynamicArray *backend;
-	uint64_t defaultSubIterableIdx;
-	void* (*initializer)(int32_t (*)(void*, void*), void (*)(void**));
-	int32_t (*defaultSortingFn)(void *, void *);
-	void (*subIterableCleanup)(void**);
-	void (*defaultItemCleanup)(void**);
-	uint64_t (*groupingFn)(void*);
+	void *backend;
 };
 
 
 
-struct SHIterableWrapper *SH_iterable_init(void* (*initializer)(int32_t (*)(void*, void*), void (*)(void**)),
-	SHErrorCode (*fnSetup)(struct SHIterableWrapperFuncs *),
-	void (*subIterableCleanup)(void**),
-	int32_t (*defaultSortingFn)(void *, void *),
-	void (*defaultItemCleanup)(void**))
+truct SHIterableWrapper *SH_iterable_init(struct SHIterableSetup *setup, int32_t (*sortingFn)(void *, void *),
+	void (*itemCleanup)(void**))
 {
+	if(!setup) return NULL;
+	
 	struct SHIterableWrapper *iterable = malloc(sizeof(struct SHIterableWrapper));
 	if(!iterable) {
 		goto allocErr;
 	}
-	iterable->backend = SH_dynamicArray_init(subIterableCleanup);
+	iterable->backend = setup->initializer(sortingFn, itemCleanup);;
 	if(!iterable->backend) goto cleanup;
-	iterable->initializer = initializer;
-	iterable->defaultSortingFn = defaultSortingFn;
-	iterable->defaultItemCleanup = defaultItemCleanup;
-	iterable->defaultSubIterableIdx = 0;
-	iterable->groupingFn = NULL;
-	fnSetup(&iterable->funcs);
-	void * subIterable = initializer(defaultSortingFn, defaultItemCleanup);
-	if(!subIterable) goto cleanup;
-	SH_dynamicArray_push(iterable->backend, subIterable);
+	setup->fnSetup(&iterable->funcs);
 	return iterable;
 	cleanup:
 		SH_iterable_cleanup(&iterable);
@@ -55,80 +40,52 @@ struct SHIterableWrapper *SH_iterable_init(void* (*initializer)(int32_t (*)(void
 }
 
 
-SHErrorCode SH_iterable_createSubIterable(struct SHIterableWrapper *iterable, int32_t (*sortingFn)(void *, void *),
-	void (*itemCleanup)(void**))
-{
-	if(!iterable) return SH_ILLEGAL_INPUTS;
-	int32_t (*useSortingFn)(void *, void *) = sortingFn ? sortingFn : iterable->defaultSortingFn;
-	void (*useItemCleanup)(void**) = itemCleanup ? itemCleanup : iterable->defaultItemCleanup;
-	void *subIterable = iterable->initializer(useSortingFn, useItemCleanup);
-	if(!subIterable) goto allocErr;
-	return SH_dynamicArray_push(iterable->backend, subIterable);
-	allocErr:
-		SH_notifyOfError(SH_ALLOC_NO_MEM, "Failed to allocate memory to create SH_iterable_createSubIterable");
-		return NULL;
-}
-
-
-SHErrorCode SH_iterable_setGroupingFn(struct SHIterableWrapper *iterable, uint64_t (*groupingFn)(void*)) {
-	if(!iterable) return SH_ILLEGAL_INPUTS;
-	iterable->groupingFn = groupingFn;
-	return SH_NO_ERROR;
-}
-
 
 uint64_t SH_iterable_count(struct SHIterableWrapper *iterable) {
 	if(!iterable || !iterable->funcs.count) return SH_NOT_FOUND;
-	return iterable->funcs.count(SH_dynamicArray_get(iterable->backend, iterable->defaultSubIterableIdx));
+	return iterable->funcs.count(iterable->backend);
 }
 
 
 SHErrorCode SH_iterable_addItem(struct SHIterableWrapper *iterable, void *item) {
 	if(!iterable || !iterable->funcs.addItem) return SH_ILLEGAL_INPUTS;
-	uint64_t useIdx = iterable->groupingFn ? iterable->groupingFn(item) : iterable->defaultSubIterableIdx;
-	return iterable->funcs.addItem(SH_dynamicArray_get(iterable->backend, useIdx), item);
+	return iterable->funcs.addItem(iterable->backend, item);
 }
 
 
 void *SH_iterable_getItemAtIdx(struct SHIterableWrapper *iterable, uint64_t idx) {
 	if(!iterable || !iterable->funcs.getItemAtIdx) return NULL;
-	return iterable->funcs.getItemAtIdx(SH_dynamicArray_get(iterable->backend, iterable->defaultSubIterableIdx), idx);
-}
-
-
-void *SH_iterable_getItemAtIdx2(struct SHIterableWrapper *iterable, uint64_t iterableIdx, uint64_t idx) {
-	if(!iterable || !iterable->funcs.getItemAtIdx) return NULL;
-	return iterable->funcs.getItemAtIdx(SH_dynamicArray_get(iterable->backend, iterableIdx), idx);
+	return iterable->funcs.getItemAtIdx(iterable->backend, idx);
 }
 
 
 void *SH_iterable_getFront(struct SHIterableWrapper *iterable) {
 	if(!iterable || !iterable->funcs.getFront) return NULL;
-	return iterable->funcs.getFront(SH_dynamicArray_get(iterable->backend, iterable->defaultSubIterableIdx));
+	return iterable->funcs.getFront(iterable->backend);
 }
 
 
 void *SH_iterable_popFront(struct SHIterableWrapper *iterable) {
 	if(!iterable || !iterable->funcs.popFront) return NULL;
-	return iterable->funcs.popFront(SH_dynamicArray_get(iterable->backend, iterable->defaultSubIterableIdx));
+	return iterable->funcs.popFront(iterable->backend);
 }
 
 
 void *SH_iterable_getBack(struct SHIterableWrapper *iterable) {
 	if(!iterable || !iterable->funcs.getBack) return NULL;
-	return iterable->funcs.getBack(SH_dynamicArray_get(iterable->backend, iterable->defaultSubIterableIdx));
+	return iterable->funcs.getBack(iterable->backend);
 }
 
 
 void *SH_iterable_popBack(struct SHIterableWrapper *iterable) {
 	if(!iterable || !iterable->funcs.popBack) return NULL;
-	return iterable->funcs.popBack(SH_dynamicArray_get(iterable->backend, iterable->defaultSubIterableIdx));
+	return iterable->funcs.popBack(iterable->backend);
 }
 
 
 SHErrorCode SH_iterable_deleteItemAtIdx(struct SHIterableWrapper *iterable, uint64_t idx) {
 	if(!iterable || !iterable->funcs.deleteItemAtIdx) return SH_ILLEGAL_INPUTS;
-	return iterable->funcs.deleteItemAtIdx(SH_dynamicArray_get(iterable->backend, iterable->defaultSubIterableIdx), idx);
+	return iterable->funcs.deleteItemAtIdx(iterable->backend, idx);
 }
 
 
@@ -138,8 +95,7 @@ struct SHIterableWrapperIterator *SH_iterableIterator_init(struct SHIterableWrap
 	if(!(iter = malloc(sizeof(struct SHIterableWrapperIterator)))) {
 		goto allocErr;
 	}
-	iter->internalIter = iterable->funcs.iteratorInit(
-		SH_dynamicArray_get(iterable->backend, iterable->defaultSubIterableIdx));
+	iter->internalIter = iterable->funcs.iteratorInit(iterable->backend);
 	return iter;
 	allocErr:
 		
@@ -160,10 +116,11 @@ void *SH_iterableIterator_next(struct SHIterableWrapperIterator **iterP2) {
 }
 
 
-SHErrorCode SH_iterable_setInternalIterable(struct SHIterableWrapper *iterable, uint64_t idx) {
-	if(!iterable) return SH_ILLEGAL_INPUTS;
-	iterable->defaultSubIterableIdx = idx;
-	return SH_NO_ERROR;
+static void _cleanupIterable(struct SHIterableWrapper *iterable, void (*backendCleanup)(void**)) {
+	if(backendCleanup) {
+		backendCleanup(&iterable->backend);
+	}
+	free(iterable);
 }
 
 
@@ -171,8 +128,16 @@ void SH_iterable_cleanup(struct SHIterableWrapper **iterableP2) {
 	if(!iterableP2) return;
 	struct SHIterableWrapper *iterable = *iterableP2;
 	if(!iterable) return;
-	SH_dynamicArray_free(&iterable->backend);
-	free(iterable);
+	_cleanupIterable(iterable, iterable->funcs.cleanup);
+	*iterableP2 = NULL;
+}
+
+
+void SH_iterable_cleanupIgnoreItems(struct SHIterableWrapper **iterableP2) {
+	if(!iterableP2) return;
+	struct SHIterableWrapper *iterable = *iterableP2;
+	if(!iterable) return;
+	_cleanupIterable(iterable, iterable->funcs.cleanupIgnoreItems);
 	*iterableP2 = NULL;
 }
 

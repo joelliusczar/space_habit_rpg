@@ -32,7 +32,7 @@ struct SHDynamicArray *SH_dynamicArray_init3(uint64_t startSize, int32_t (*sorti
 	void (*cleanup)(void**))
 {
 	(void)sortingFn;
-	uint64_t useRoom = startSize > 0 ? startSize : 10;
+	uint64_t useRoom = startSize > 0 ? startSize : 16;
 	struct SHDynamicArray *arr = malloc(sizeof(struct SHDynamicArray));
 	if(!arr) return NULL;
 	arr->items = malloc(sizeof(void*) * useRoom);
@@ -42,7 +42,7 @@ struct SHDynamicArray *SH_dynamicArray_init3(uint64_t startSize, int32_t (*sorti
 	arr->itemCleanup = cleanup;
 	goto fnExit;
 	cleanup:
-		SH_dynamicArray_free(&arr);
+		SH_dynamicArray_cleanup(&arr);
 		return NULL;
 	fnExit:
 		return arr;
@@ -173,18 +173,50 @@ void* SH_dynamicArray_getFront(struct SHDynamicArray *array) {
 }
 
 
-void SH_dynamicArray_free(struct SHDynamicArray **arrayP2) {
-	if(!arrayP2) return;
-	struct SHDynamicArray *array = *arrayP2;
-	if(!array) return;
-	if(array->itemCleanup) {
+static void _cleanupArray(struct SHDynamicArray *array, void (*itemCleanup)(void**)) {
+	if(itemCleanup) {
 		for(uint64_t idx = 0; idx < array->length; idx++) {
-			SH_dynamicArray_popBack(array);
+			void *item = SH_dynamicArray_popBack(array);
+			itemCleanup(&item);
 		}
 	}
 	free(array->items);
 	free(array);
+}
+
+
+void SH_dynamicArray_cleanup(struct SHDynamicArray **arrayP2) {
+	if(!arrayP2) return;
+	struct SHDynamicArray *array = *arrayP2;
+	if(!array) return;
+	_cleanupArray(array, array->itemCleanup);
 	*arrayP2 = NULL;
+}
+
+
+void SH_dynamicArray_cleanupIgnoreItems(struct SHDynamicArray **arrayP2) {
+	if(!arrayP2) return;
+	struct SHDynamicArray *array = *arrayP2;
+	if(!array) return;
+	_cleanupArray(array, NULL);
+	*arrayP2 = NULL;
+}
+
+
+SHErrorCode SH_iterable_loadArrayFuncs(struct SHIterableWrapperFuncs *funcsObj) {
+	funcsObj->count = (uint64_t (*)(void*))SH_dynamicArray_count;
+	funcsObj->addItem = (SHErrorCode (*)(void*, void*))SH_dynamicArray_push;
+	funcsObj->getItemAtIdx = (void *(*)(void*, uint64_t))SH_dynamicArray_get;
+	funcsObj->getFront = (void* (*)(void*))SH_dynamicArray_getFront;
+	funcsObj->popFront = (void* (*)(void*))SH_dynamicArray_popFront;
+	funcsObj->getBack = (void* (*)(void*))SH_dynamicArray_getBack;
+	funcsObj->popBack = (void* (*)(void*))SH_dynamicArray_popBack;
+	funcsObj->deleteItemAtIdx = (SHErrorCode (*)(void*, uint64_t))SH_dynamicArray_remove;
+	funcsObj->iteratorInit = (void* (*)(void*))SH_dynamicArrayIterator_init;
+	funcsObj->iteratorNext = (void* (*)(void**))SH_dynamicArrayIterator_next;
+	funcsObj->cleanup = (void (*)(void**))SH_dynamicArray_cleanup;
+	funcsObj->cleanupIgnoreItems = (void (*)(void**))SH_dynamicArray_cleanupIgnoreItems;
+	return SH_NO_ERROR;
 }
 
 

@@ -10,6 +10,7 @@
 #import "SHThemeController.h"
 #import "SHCentralViewController.h"
 #import "SHConfigSetup.h"
+#import "SHDateProviderSetup.h"
 
 @import SHControls;
 @import SHModels;
@@ -25,8 +26,10 @@
 
 @interface AppDelegate ()
 @property (strong, nonatomic) SHCoreData *dataController;
+//the public version of these guys is read only
 @property (assign, nonatomic) struct SHSerialQueue *dbQueue;
 @property (assign, nonatomic) struct SHConfigAccessor config;
+@property (assign, nonatomic) struct SHDatetimeProvider dateProvider;
 @end
 
 @implementation AppDelegate
@@ -100,7 +103,7 @@ static SHErrorCode _addFunctions(void* args, struct SHQueueStore *store) {
 	(void)application;
 	(void)launchOptions;
 	SH_setupConfig(&self->_config);
-	self.dateProvider = [[SHDefaultDateProvider alloc] init];
+	SH_setupDateProvider(&self->_dateProvider);
 	self.dbQueue = SH_serialQueue_init(_setupQueueStoreItem(&self->_config), (void (*)(void**))SH_freeQueueStoreItem);
 	if(!self.dbQueue) return NO;
 	SHErrorCode status = SH_NO_ERROR;
