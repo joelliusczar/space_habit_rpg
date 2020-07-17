@@ -21,6 +21,8 @@ struct SHKeyItemPair {
 };
 
 
+struct SHMapKipIterator;
+
 struct SHMap *SH_map_init();
 struct SHMap *SH_map_init2(void (*itemCleanup)(void**), void (*keyCleanup)(void**));
 struct SHMap *SH_map_init3(uint64_t (*mappingFn)(void*), int32_t (*keyCompareFn)(void*, void*),
@@ -36,5 +38,11 @@ void SH_map_cleanup(struct SHMap **mapP2);
 
 uint64_t SH_defaultMappingFn(void *key);
 int32_t SH_defaultKeyCompareFn(void *key1, void *key2);
+
+struct SHMapKipIterator *SH_mapKipIterator_init(struct SHMap *map);
+struct SHKeyItemPair *SH_mapKipIterator_next(struct SHMapKipIterator **iter);
+struct SHMap *SH_mapKipIterator_getMap(struct SHMapKipIterator *iter);
+
+void SH_mapKipIterator_cleanup(struct SHMapKipIterator **iter);
 
 #endif /* SHMap_h */

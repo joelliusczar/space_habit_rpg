@@ -24,7 +24,12 @@ struct SHMap {
 	double loadFactor;
 }
 
-
+struct SHMapKipIterator {
+	struct SHMap *backend;
+	struct SHKeyItemPair *current;
+	struct SHLLNode *bookmarkNode;
+	uint64_t idx;
+};
 
 struct SHMap *SH_map_init() {
 	return SH_map_init2(SH_cleanup, SH_cleanup);
@@ -252,4 +257,63 @@ void SH_map_cleanup(struct SHMap **mapP2) {
 	SH_cleanup((void**)map->backend);
 	free(map);
 	*mapP2 = NULL;
+}
+
+
+struct SHMapKipIterator *SH_mapKipIterator_init(struct SHMap *map) {
+	if(!map) return NULL;
+	struct SHMapKipIterator *iter = malloc(sizeof(struct SHMapKipIterator));
+	if(!iter) goto allocErr;
+	
+	iter->idx = 0;
+	struct SHLinkedList *list = NULL;
+	while(!(list = map->backend[iter->idx]) && iter->idx < map->capacity) {
+		iter->idx++;
+	}
+	iter->bookmarkNode = SH_list_getFront2(list);
+	iter->current = SH_llnode_getItem(iter->bookmarkNode);
+	iter->backend = map;
+	return iter;
+	allocErr:
+		return NULL;
+}
+
+
+struct SHKeyItemPair *SH_mapKipIterator_next(struct SHMapKipIterator **iter) {
+	if(!iter) return NULL;
+	struct SHMapKipIterator *it = *iter;
+	if(!it) return NULL;
+	it->bookmarkNode = SH_llnode_getNext(it->bookmarkNode);
+	if(!it->bookmarkNode) {
+		struct SHLinkedList *list = NULL;
+		while(!(list = it->backend->backend[it->idx]) && it->idx < it->backend->capacity) {
+			it->idx++;
+		}
+		it->bookmarkNode = SH_list_getFront2(list);
+	}
+	it->current = SH_llnode_getItem(it->bookmarkNode);
+	if(!it->current) {
+		free(it);
+		*iter = NULL;
+		return NULL;
+	}
+	return it->current;
+	
+}
+
+
+struct SHMap *SH_mapKipIterator_getMap(struct SHMapKipIterator *iter) {
+	if(!iter) return NULL;
+	return iter->backend;
+}
+
+
+void SH_mapKipIterator_cleanupMap(struct SHMapKipIterator **iter) {
+	if(!iter) return NULL;
+	struct SHMapKipIterator *it = *iter;
+	if(!it) return NULL;
+	struct SHMap *map = SH_mapKipIterator_getMap(it);
+	SH_map_cleanup(&map);
+	SH_cleanup(iter);
+	
 }

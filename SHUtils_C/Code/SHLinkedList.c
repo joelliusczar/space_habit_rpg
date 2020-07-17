@@ -143,6 +143,11 @@ static void _detachNode(struct SHLLNode *node) {
 }
 
 
+static bool _isOnlyNode(struct SHLLNode *node) {
+	return !node->next && !node->prev;
+}
+
+
 SHErrorCode SH_list_deleteNthItem(struct SHLinkedList *list, uint64_t idx) {
 	if(!list) return SH_ILLEGAL_INPUTS;
 	SHErrorCode status = SH_NO_ERROR;
@@ -239,6 +244,12 @@ void *SH_list_getBack(struct SHLinkedList *list) {
 void *SH_list_getFront(struct SHLinkedList *list) {
 	if(!list || !list->front) return NULL;
 	return list->front->item;
+}
+
+
+struct SHLLNode *SH_list_getFront2(struct SHLinkedList *list) {
+	if(!list) return NULL;
+	return list->front;
 }
 
 
@@ -360,4 +371,21 @@ struct SHLLNode *SH_llnode_pushBack(struct SHLLNode *node, void *item) {
 struct SHLLNode *SH_llnode_getFront(struct SHLLNode *node) {
 	if(!node) return NULL;
 	return node->list->front->item;
+}
+
+
+struct SHLinkedList *SH_llnode_getList(struct SHLLNode *node) {
+	if(!node) return NULL;
+	return node->list;
+}
+
+
+SHErrorCode SH_llnode_removeNode(struct SHLLNode **nodeP2) {
+	if(!nodeP2) return SH_ILLEGAL_INPUTS;
+	struct SHLLNode *node = *nodeP2;
+	if(!node) return SH_ILLEGAL_INPUTS;
+	if(_isOnlyNode(node)) {
+		SH_cleanup((void**)node->list);
+	}
+	
 }

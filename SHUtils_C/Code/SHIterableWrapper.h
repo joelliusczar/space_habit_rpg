@@ -36,6 +36,10 @@ struct SHIterableWrapperFuncs {
 };
 
 
+/*
+	Sometimes I ask myself if sortingFn should be on here, but that depends
+	on the items in the container which won't be known until futher down the road
+*/
 struct SHIterableSetup {
 	void* (*initializer)(int32_t (*)(void*, void*), void (*)(void**));
 	SHErrorCode (*fnSetup)(struct SHIterableWrapperFuncs *);

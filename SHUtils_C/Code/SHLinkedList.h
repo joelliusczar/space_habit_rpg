@@ -35,6 +35,7 @@ void *SH_list_popFront(struct SHLinkedList *list);
 void *SH_list_popBack(struct SHLinkedList *list);
 void *SH_list_getBack(struct SHLinkedList *list);
 void *SH_list_getFront(struct SHLinkedList *list);
+struct SHLLNode *SH_list_getFront2(struct SHLinkedList *list);
 SHErrorCode SH_list_deleteNthItem(struct SHLinkedList *list, uint64_t idx);
 SHErrorCode SH_list_removeMatchingItem(struct SHLinkedList *list, void *item, bool removeAll);
 uint64_t SH_list_count(struct SHLinkedList *list);
@@ -51,7 +52,10 @@ struct SHLLNode *SH_list_pushBack2(struct SHLinkedList *list, void *item);
 struct SHLLNode *SH_llnode_getNext(struct SHLLNode *node);
 struct SHLLNode *SH_llnode_getPrev(struct SHLLNode *node);
 void *SH_llnode_getItem(struct SHLLNode *node);
+SHErrorCode SH_llnode_setItem(struct SHLLNode *node, void *item);
 struct SHLLNode *SH_llnode_pushBack(struct SHLLNode *node, void *item);
 struct SHLLNode *SH_llnode_getFront(struct SHLLNode *node);
+struct SHLinkedList *SH_llnode_getList(struct SHLLNode *node);
+SHErrorCode SH_llnode_detachNode(struct SHLLNode *node);
 
 #endif /* SHLinkedList_h */
