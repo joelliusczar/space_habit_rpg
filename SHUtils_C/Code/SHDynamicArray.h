@@ -10,7 +10,7 @@
 #define SHDynamicArray_h
 
 #include "SHErrorHandling.h"
-#include "SHDynamicArray.h"
+#include "SHIterableWrapper.h"
 #include <stdio.h>
 #include <inttypes.h>
 

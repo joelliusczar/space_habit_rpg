@@ -51,7 +51,7 @@ struct SHIterableSetup {
 struct SHIterableWrapper;
 
 
-struct SHIterableWrapper *SH_iterable_init(struct SHIterableSetup *setup, int32_t (*sortingFn)(void *, void *),
+struct SHIterableWrapper *SH_iterable_init(struct SHIterableSetup * const setup, int32_t (*sortingFn)(void *, void *),
 	void (*itemCleanup)(void**));
 
 SHErrorCode SH_iterable_addItem(struct SHIterableWrapper *iterable, void *item);
@@ -60,6 +60,7 @@ void *SH_iterable_getFront(struct SHIterableWrapper *iterable);
 void *SH_iterable_popFront(struct SHIterableWrapper *iterable);
 void *SH_iterable_getBack(struct SHIterableWrapper *iterable);
 void *SH_iterable_popBack(struct SHIterableWrapper *iterable);
+uint64_t SH_iterable_count(struct SHIterableWrapper *iterable);
 SHErrorCode SH_iterable_deleteItemAtIdx(struct SHIterableWrapper *iterable, uint64_t idx);
 struct SHIterableWrapperIterator *SH_iterableIterator_init(struct SHIterableWrapper *iterable);
 void *SH_iterableIterator_next(struct SHIterableWrapperIterator **iter);

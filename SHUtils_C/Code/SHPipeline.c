@@ -37,7 +37,7 @@ struct SHPipeline {
 };
 
 
-struct _groupinPipeline {
+struct _groupingPipeline {
 	struct SHPipeline base;
 	struct SHIterableSetup iterableSetup;
 	int32_t (*sortingFn)(void*, void*);
@@ -92,7 +92,7 @@ struct SHPipeline *SH_pipeline_init(void *source, void *(*genFn)(void*), void (*
 	struct SHPipeline *pipeline = malloc(sizeof(struct SHPipeline));
 	if(!pipeline) return NULL;
 	struct SHLinkedList *list = SH_list_init(NULL);
-	if(!list) goto allocErr:
+	if(!list) goto allocErr;
 	struct SHLLNode *node = SH_list_pushBack2(list, pipeline);
 	if(!node) goto allocErr;
 	*pipeline = (struct SHPipeline){
@@ -116,16 +116,15 @@ static struct SHPipeline *_wrapPipeline2(struct SHPipeline *source, void *(*appl
 	if(!pipeline) return NULL;
 	struct SHLLNode *node = SH_llnode_pushBack(source->nodeLink, pipeline);
 	if(!node) goto allocErr;
-	*pipeline = (struct SHPipeline){
-		.iterableSetup = *source->iterableSetup,
-		.source = source,
-		.nodeLink = node,
-		.genFn = (void* (*)(void*))applyFn,
-		.sourceCleanup = SH_pipeline_cleanup;
-		.stepFn = fn,
-		.stepFnArgs = fnArgs,
-		.stepFnArgsCleanup = fnArgsCleanup
-	};
+//	*pipeline = (struct SHPipeline){
+//		.source = source,
+//		.nodeLink = node,
+//		.genFn = (void* (*)(void*))applyFn,
+//		.sourceCleanup = SH_pipeline_cleanup;
+//		.stepFn = fn,
+//		.stepFnArgs = fnArgs,
+//		.stepFnArgsCleanup = fnArgsCleanup
+//	};
 	return pipeline;
 	allocErr:
 		SH_cleanup((void**)&node);
@@ -144,7 +143,10 @@ static struct SHPipeline *_wrapPipeline(struct SHPipeline *source, void *(*apply
 
 static struct _itemWrapper *_sourceApply(struct SHPipelineIterator *iter, bool *hasNext) {
 	struct _itemWrapper *wrapper = calloc(1, sizeof(struct _itemWrapper));
-	if(!wrapper) return NULL;
+	if(!wrapper) {
+		*hasNext = false;
+		return NULL;
+	}
 	wrapper->item = iter->pipeline->genFn(iter->pipeline->source, hasNext);
 	
 	return wrapper;
@@ -172,13 +174,13 @@ static struct _itemWrapper *_filterApply(struct SHPipelineIterator *iter, bool *
 	bool skip = true;
 	struct _itemWrapper *wrapper = NULL;
 	do {
-		if(!(wrapper = prev->genFn(prev, hasNext))) goto fnErr;
+		if(!(wrapper = prev->pipeline->genFn(prev, hasNext))) goto fnErr;
 		skip = !iter->pipeline->stepFn(wrapper->item, iter->pipeline->source, iter->idx++);
 		if(skip && wrapper->itemCleanup) {
 			wrapper->itemCleanup(wrapper->item);
 		}
 		SH_cleanup((void**)&wrapper);
-	} while(skip && *hasNext)
+	} while(skip && *hasNext);
 	
 	
 	return wrapper;
@@ -192,17 +194,17 @@ static struct SHIterableWrapper *_groupingApply(struct SHPipelineIterator *iter,
 		case SH_PIPELINE_NEXT: goto next;
 	}
 	struct SHPipelineIterator *prev = NULL;
-	struct _groupinPipeline *pipeline = NULL;
+	struct _groupingPipeline *pipeline = NULL;
 	struct SHMap *map = NULL;
 	struct _itemWrapper *wrapper = NULL;
 	uint64_t idx = 0;
 	SHErrorCode status = SH_NO_ERROR;
 	struct SHIterableWrapper *iterable = NULL;
 	init:
-		prev = SH_llnode_getItem(SH_llnode_getPrev(iter->nodeLink))
-		pipeline = (struct _groupinPipeline*)iter->pipeline;
+		prev = SH_llnode_getItem(SH_llnode_getPrev(iter->nodeLink));
+		pipeline = (struct _groupingPipeline*)iter->pipeline;
 		map = SH_map_init3(SH_defaultMappingFn, SH_defaultKeyCompareFn, SH_iterable_cleanup,
-			iter->pipeline->keyCleanup);
+			pipeline->keyCleanup);
 		
 		if(!map) return NULL;
 		
@@ -212,7 +214,7 @@ static struct SHIterableWrapper *_groupingApply(struct SHPipelineIterator *iter,
 			if(!(wrapper = prev->pipeline->genFn(prev, hasNext))) goto cleanup;
 			void *key = pipeline->base.stepFn(wrapper->item, pipeline->base.stepFnArgs, idx++);
 			if(!(iterable = SH_map_getItemWithKey(map, key))) {
-				iterable = SH_iterable_init(pipeline->iterableSetup, pipeline->sortingFn, pipeline->itemCleanup);
+				iterable = SH_iterable_init(&pipeline->iterableSetup, pipeline->sortingFn, pipeline->itemCleanup);
 				if(!iterable) goto cleanup;
 				if((status = SH_map_setKeyItem(map, key, iterable)) != SH_NO_ERROR) { goto cleanup; }
 			}
@@ -221,7 +223,7 @@ static struct SHIterableWrapper *_groupingApply(struct SHPipelineIterator *iter,
 		}
 		iter->storage = SH_mapKipIterator_init(map);
 		iter->state = SH_PIPELINE_NEXT;
-		iter->storageCleanup = SH_mapKipIterator_cleanupMap;
+		iter->storageCleanup = SH_mapKipIterator_cleanup;
 	next:
 		map = SH_mapKipIterator_getMap(iter->storage);
 		struct SHKeyItemPair *kip = SH_mapKipIterator_next(&iter->storage);
@@ -234,6 +236,7 @@ static struct SHIterableWrapper *_groupingApply(struct SHPipelineIterator *iter,
 		wrapper->itemCleanup = (void (*)(void**))SH_iterable_cleanup;
 		return wrapper;
 	cleanup:
+		*hasNext = false;
 		SH_map_cleanup(&map);
 		return NULL;
 }
@@ -255,7 +258,7 @@ struct SHPipeline *SH_pipeline_useFilter(struct SHPipeline *source, bool (*fn)(v
 	void *fnArgs, void (*fnArgsCleanup)(void **))
 {
 	if(!source || !fn) return NULL;
-	struct SHPipeline *pipeline = _wrapPipeline(source, _filterApply, (void *(*fn)(void*, void*, uint64_t))fn,
+	struct SHPipeline *pipeline = _wrapPipeline(source, _filterApply, (void *(*)(void*, void*, uint64_t))fn,
 		fnArgs, fnArgsCleanup);
 	if(!pipeline) return NULL;
 	return pipeline;
@@ -267,10 +270,10 @@ struct SHPipeline *SH_pipeline_useGrouping(struct SHPipeline *source, void *(*fn
 	int32_t (*sortingFn)(void*, void*), void (*keyCleanup)(void**), void (*itemCleanup)(void**))
 {
 	if(!source || !fn) return NULL;
-	struct _transformPipeline *pipeline = _wrapPipeline2(source, _transformApply, fn, fnArgs, fnArgsCleanup,
-		sizeof(struct _groupinPipeline));
+	struct _groupingPipeline *pipeline = _wrapPipeline2(source, _transformApply, fn, fnArgs, fnArgsCleanup,
+		sizeof(struct _groupingPipeline));
 	if(!pipeline) return NULL;
-	*pipeline->iterableSetup = *iterableSetup;
+	pipeline->iterableSetup = *iterableSetup;
 	pipeline->sortingFn = sortingFn;
 	pipeline->keyCleanup = keyCleanup;
 	pipeline->itemCleanup = itemCleanup;
@@ -278,32 +281,24 @@ struct SHPipeline *SH_pipeline_useGrouping(struct SHPipeline *source, void *(*fn
 }
 
 
-struct SHMap *SH_pipeline_completeAsMap(struct SHPipeline *pipeline, void* (*keyProducer)(void*),
-	void* (*itemProducer)(void*), uint64_t (*mappingFn)(void*), int32_t (*keyCompareFn)(void*, void*),
-	void *(*itemCleanup)(void**),void *(*keyCleanup)(void**))
-{
-	if(!pipeline || !keyProducer || !itemProducer) return NULL;
-	struct SHMap *map = SH_map_init3(mappingFn, keyCompareFn, itemCleanup, keyCleanup);
-	if(!map) return NULL;
-	void *next = NULL;
-	while((next = _genNext(pipeline))) {
-		void *key = keyProducer(next);
-		void *item = itemProducer(next);
-		if((status = SH_map_setKeyItem(map, key, item)) != SH_NO_ERROR) { goto cleanup; }
-	}
-	return map;
-	cleanup:
-		SH_map_cleanup(&map);
-		return NULL;
-}
-
-
-
-SHErrorCode SH_pipeline_setIterableTypeSetup(struct SHPipeline *pipeline, struct SHIterableSetup *setup) {
-	if(!pipeline || !setup) return SH_ILLEGAL_INPUTS;
-	pipeline->iterableSetup = *setup;
-	return SH_NO_ERROR;
-}
+//struct SHMap *SH_pipeline_completeAsMap(struct SHPipeline *pipeline, void* (*keyProducer)(void*),
+//	void* (*itemProducer)(void*), uint64_t (*mappingFn)(void*), int32_t (*keyCompareFn)(void*, void*),
+//	void *(*itemCleanup)(void**),void *(*keyCleanup)(void**))
+//{
+//	if(!pipeline || !keyProducer || !itemProducer) return NULL;
+//	struct SHMap *map = SH_map_init3(mappingFn, keyCompareFn, itemCleanup, keyCleanup);
+//	if(!map) return NULL;
+//	void *next = NULL;
+//	while((next = _genNext(pipeline))) {
+//		void *key = keyProducer(next);
+//		void *item = itemProducer(next);
+//		if((status = SH_map_setKeyItem(map, key, item)) != SH_NO_ERROR) { goto cleanup; }
+//	}
+//	return map;
+//	cleanup:
+//		SH_map_cleanup(&map);
+//		return NULL;
+//}
 
 
 static void _iteratorCleanup2(struct SHPipelineIterator **iterP2) {
@@ -335,9 +330,9 @@ struct SHPipelineIterator *SH_pipelineIterator_init(struct SHPipeline *pipeline)
 	struct SHPipeline *pipelineStep = NULL;
 	struct SHPipelineIterator *iterStep = NULL;
 	struct SHLLNode *node = NULL;
-	if(!listIter) goto cleanup:
+	if(!listIter) goto cleanup;
 	while(listIter) {
-		pipelineStep = (struct SHPipeline *pipeline)SH_listIterator_next(&listIter);
+		pipelineStep = (struct SHPipeline *)SH_listIterator_next(&listIter);
 		iterStep = malloc(sizeof(struct SHPipelineIterator));
 		if(!iterStep) goto cleanup;
 		node = SH_list_pushBack2(list, iterStep);
@@ -363,10 +358,14 @@ void *SH_pipelineIterator_next(struct SHPipelineIterator **iter) {
 	struct SHPipelineIterator *it = *iter;
 	if(!it) return NULL;
 	void *item = NULL;
-	if(!(item = _genNext(it->state))) {
-		
+	bool hasNext = true;
+	struct SHPipelineIterator *prev = SH_llnode_getItem(SH_llnode_getPrev(it->nodeLink));
+	struct _itemWrapper *wrapper = prev->pipeline->genFn(prev, &hasNext);
+	if(!hasNext) {
+		_iteratorCleanup(iter);
 	}
-	return item;
+	
+	return wrapper->item;
 }
 
 

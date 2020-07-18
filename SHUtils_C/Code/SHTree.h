@@ -33,9 +33,9 @@ void SH_tree_cleanup(struct SHTree **treeP2);
 void SH_tree_cleanupIgnoreItems(struct SHTree **treeP2);
 
 SHErrorCode SH_tree_setLineBreakSentinel(struct SHTree *tree, void * const sentinel);
-void * const SH_tree_getLineBreakSentinel(struct SHTree *tree);
+void *SH_tree_getLineBreakSentinel(struct SHTree *tree);
 SHErrorCode SH_tree_setNullItemSentinel(struct SHTree *tree, void * const sentinel);
-void * const SH_tree_getNullItemSentinel(struct SHTree *tree);
+void *SH_tree_getNullItemSentinel(struct SHTree *tree);
 
 struct SHTreeIterator *SH_treeIterator_init(struct SHTree *tree);
 void *SH_treeIterator_nextInorder(struct SHTreeIterator **iter);

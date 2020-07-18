@@ -20,7 +20,8 @@
 const struct SHIterableSetup treeSetup = {
 	.initializer = SH_tree_init,
 	.fnSetup = SH_iterable_loadTreeFuncs,
-	.subIterableCleanup = (void (*)(void**))SH_tree_cleanup,
+	.backendCleanup = (void (*)(void**))SH_tree_cleanup,
+	.backendCleanupIgnoreItems = (void (*)(void**))SH_tree_cleanupIgnoreItems
 };
 
 typedef enum {
@@ -93,7 +94,7 @@ SHErrorCode SH_tree_setLineBreakSentinel(struct SHTree *tree, void * const senti
 }
 
 
-void * const SH_tree_getLineBreakSentinel(struct SHTree *tree) {
+void *SH_tree_getLineBreakSentinel(struct SHTree *tree) {
 	if(!tree) return NULL;
 	return tree->lineBreakSentinel;
 }
@@ -106,7 +107,7 @@ SHErrorCode SH_tree_setNullItemSentinel(struct SHTree *tree, void * const sentin
 }
 
 
-void * const SH_tree_getNullItemSentinel(struct SHTree *tree) {
+void *SH_tree_getNullItemSentinel(struct SHTree *tree) {
 	if(!tree) return NULL;
 	return tree->nullItemSentinel;
 }

@@ -263,19 +263,10 @@ struct SHSerialQueue * SH_serialQueue_init(void *initArgs, void (*initArgsCleanu
 	struct SHIterableWrapper *resultList = NULL;
 	SHErrorCode status = SH_NO_ERROR;
 	
-	opsList = SH_iterable_init(
-		(void* (*)(int32_t (*)(void*, void*), void (*)(void**)))SH_list_init2,
-		SH_iterable_loadListFuncs,
-		(void (*)(void**))SH_list_cleanup,
-		NULL,
-		(void (*)(void**))_opCleanup);
+	opsList = SH_iterable_init(&listSetup, NULL, (void (*)(void**))_opCleanup);
 	if(!opsList) goto cleanupQueue;
 	
-	resultList = SH_iterable_init(
-		(void* (*)(int32_t (*)(void*, void*), void (*)(void**)))SH_list_init2,
-		SH_iterable_loadListFuncs,
-		(void (*)(void**))SH_list_cleanup,
-		NULL, NULL);
+	resultList = SH_iterable_init(&listSetup, NULL, NULL);
 	if(!resultList) goto cleanupQueue;
 	
 	*queue = (struct SHSerialQueue){

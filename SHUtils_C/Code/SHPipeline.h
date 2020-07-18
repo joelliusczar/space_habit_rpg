@@ -19,17 +19,21 @@ struct SHPipeline;
 
 struct SHPipelineIterator;
 
+
 struct SHPipeline *SH_pipeline_init(void *source, void *(*genFn)(void*), void (*sourceCleanup)(void**));
 
-struct SHMap *SH_pipeline_completeAsMap(struct SHPipeline *pipeline, void* (*keyProducer)(void*),
-	void* (*itemProducer)(void*), uint64_t (*mappingFn)(void*), int32_t (*keyCompareFn)(void*, void*),
-	void *(*itemCleanup)(void**),void *(*keyCleanup)(void**));
-	
-struct SHPipeline *SH_pipeline_useGroupingFn(struct SHPipeline *pipeline, void *(*groupingFn)(void*),
-	void (*groupingCleanup)(void**));
-//struct SHIterableWrapper *SH_pipeline_completeAsMatrix(struct SHPipeline *pipeline, uint64_t (*groupingFn)(void*),
-//	void *(*itemCleanup)(void**));
-SHErrorCode SH_pipeline_setIterableTypeSetup(struct SHPipeline *pipeline, struct SHIterableSetup *setup);
+struct SHPipeline *SH_pipeline_useTransform(struct SHPipeline *source, void *(*fn)(void*, void*, uint64_t),
+	void *fnArgs, void (*fnArgsCleanup)(void **), void (*transformCleanup)(void **));
 
+struct SHPipeline *SH_pipeline_useFilter(struct SHPipeline *source, bool (*fn)(void*, void*, uint64_t),
+	void *fnArgs, void (*fnArgsCleanup)(void **));
+	
+struct SHPipeline *SH_pipeline_useGrouping(struct SHPipeline *source, void *(*fn)(void*, void*, uint64_t),
+	void *fnArgs, void (*fnArgsCleanup)(void **), struct SHIterableSetup *iterableSetup,
+	int32_t (*sortingFn)(void*, void*), void (*keyCleanup)(void**), void (*itemCleanup)(void**));
+
+struct SHPipelineIterator *SH_pipelineIterator_init(struct SHPipeline *pipeline);
 void *SH_pipelineIterator_next(struct SHPipelineIterator **iter);
+
+void SH_pipeline_cleanup(struct SHPipeline **pipelineP2);
 #endif /* SHPipeline_h */

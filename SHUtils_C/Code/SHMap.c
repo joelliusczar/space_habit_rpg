@@ -22,7 +22,7 @@ struct SHMap {
 	uint64_t (*mappingFn)(void*);
 	int32_t (*keyCompareFn)(void*, void*);
 	double loadFactor;
-}
+};
 
 struct SHMapKipIterator {
 	struct SHMap *backend;
@@ -68,7 +68,7 @@ struct SHMap *SH_map_init4(uint64_t (*mappingFn)(void*), int32_t (*keyCompareFn)
 }
 
 
-SHErrorCode _replace(struct SHMap *map, void *key, void *item) {
+SHErrorCode _replace(struct SHMap *map, uint64_t idx, void *key, void *item) {
 	struct SHLinkedListIterator *iter = NULL;
 	SHErrorCode status = SH_NO_ERROR;
 	struct SHLinkedList *list = NULL;
@@ -140,8 +140,9 @@ SHErrorCode SH_map_setKeyItem(struct SHMap *map, void *key, void *item) {
 	struct SHKeyItemPair *kip = NULL;
 	uint64_t idx = map->mappingFn(key) % map->capacity;
 	struct SHLinkedList *list = NULL;
+	SHErrorCode status = SH_NO_ERROR;
 
-	if((status = _replace(map, key, item)) != SH_NO_ERROR) {
+	if((status = _replace(map, idx, key, item)) != SH_NO_ERROR) {
 		if(status & SH_CONTINUE_NON_ERR) status ^ SH_CONTINUE_NON_ERR;
 		goto fnExit;
 	}
@@ -161,9 +162,8 @@ SHErrorCode SH_map_setKeyItem(struct SHMap *map, void *key, void *item) {
 	cleanupList:
 		SH_list_cleanup(&list);
 	cleanupkip:
-		SH_cleanup(&kip);
+		SH_cleanup((void**)&kip);
 	fnExit:
-		SH_cleanup(&iter);
 		return status;
 	
 }
@@ -174,6 +174,7 @@ void *SH_map_getItemWithKey(struct SHMap *map, void *key) {
 	uint64_t idx = map->mappingFn(key) % map->capacity;
 	struct SHLinkedList *list = NULL;
 	struct SHKeyItemPair *kip = NULL;
+	struct SHLinkedListIterator *iter = NULL;
 	void *result = NULL;
 	if((list = map->backend[idx])) {
 		iter = SH_listIterator_init(list);
@@ -189,7 +190,7 @@ void *SH_map_getItemWithKey(struct SHMap *map, void *key) {
 	allocErr:
 		return NULL;
 	fnExit:
-		SH_cleanup(&iter);
+		SH_cleanup((void**)&iter);
 		return result;
 }
 

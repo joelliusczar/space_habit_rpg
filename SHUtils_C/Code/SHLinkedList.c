@@ -14,7 +14,8 @@
 const struct SHIterableSetup listSetup = {
 	.initializer = SH_list_init2,
 	.fnSetup = SH_iterable_loadListFuncs,
-	.subIterableCleanup = SH_list_cleanup,
+	.backendCleanup = SH_list_cleanup,
+	.backendCleanupIgnoreItems = SH_list_cleanupIgnoreItems
 };
 
 struct SHLLNode {
@@ -32,7 +33,7 @@ struct SHLinkedList {
 };
 
 
-static SHLLNode *_next(struct SHLinkedListIterator **iterP2);
+static struct SHLLNode *_next(struct SHLinkedListIterator **iterP2);
 
 
 struct SHLinkedList *SH_list_init(void (*itemCleanup)(void**)) {
