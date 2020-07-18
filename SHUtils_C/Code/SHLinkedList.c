@@ -12,10 +12,10 @@
 
 
 const struct SHIterableSetup listSetup = {
-	.initializer = SH_list_init2,
+	.initializer = (void* (*)(int32_t (*)(void*, void*), void (*)(void**)))SH_list_init2,
 	.fnSetup = SH_iterable_loadListFuncs,
-	.backendCleanup = SH_list_cleanup,
-	.backendCleanupIgnoreItems = SH_list_cleanupIgnoreItems
+	.backendCleanup = (void (*)(void**))SH_list_cleanup,
+	.backendCleanupIgnoreItems = (void (*)(void**))SH_list_cleanupIgnoreItems
 };
 
 struct SHLLNode {
@@ -90,8 +90,7 @@ SHErrorCode SH_list_pushBack(struct SHLinkedList *list, void *item) {
 	SHErrorCode status = SH_NO_ERROR;
 	struct SHLLNode *newNode = NULL;
 	if(!(newNode = _pushBack(list, item))) goto allocErr;
-	fnExit:
-		return status;
+	return status;
 	allocErr:
 		return SH_ALLOC_NO_MEM;
 }
@@ -276,13 +275,13 @@ static struct SHLLNode *_next(struct SHLinkedListIterator **iterP2) {
 	if(!iterP2) return NULL;
 	struct SHLinkedListIterator *iter = *iterP2;
 	if(!iter) return NULL;
+	struct SHLLNode *node = iter->current;
 	iter->current = iter->current->next;
 	if(!iter->current) {
 		free(iter);
 		*iterP2 = NULL;
-		return NULL;
 	}
-	return iter->current;
+	return node;
 }
 
 
@@ -388,5 +387,5 @@ SHErrorCode SH_llnode_removeNode(struct SHLLNode **nodeP2) {
 	if(_isOnlyNode(node)) {
 		SH_cleanup((void**)node->list);
 	}
-	
+	return SH_NO_ERROR;
 }

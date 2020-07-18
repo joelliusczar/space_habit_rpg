@@ -19,8 +19,8 @@ struct SHIterableWrapper {
 
 
 
-struct SHIterableWrapper *SH_iterable_init(struct SHIterableSetup * const setup, int32_t (*sortingFn)(void *, void *),
-	void (*itemCleanup)(void**))
+struct SHIterableWrapper *SH_iterable_init(struct SHIterableSetup const * const setup,
+	int32_t (*sortingFn)(void *, void *), void (*itemCleanup)(void**))
 {
 	if(!setup) return NULL;
 	

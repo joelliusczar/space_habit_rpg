@@ -51,8 +51,8 @@ struct SHIterableSetup {
 struct SHIterableWrapper;
 
 
-struct SHIterableWrapper *SH_iterable_init(struct SHIterableSetup * const setup, int32_t (*sortingFn)(void *, void *),
-	void (*itemCleanup)(void**));
+struct SHIterableWrapper *SH_iterable_init(struct SHIterableSetup const * const setup,
+	int32_t (*sortingFn)(void *, void *), void (*itemCleanup)(void**));
 
 SHErrorCode SH_iterable_addItem(struct SHIterableWrapper *iterable, void *item);
 void *SH_iterable_getItemAtIdx(struct SHIterableWrapper *iterable, uint64_t idx);

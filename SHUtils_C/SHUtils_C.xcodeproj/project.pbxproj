@@ -21,6 +21,7 @@
 		275A7F6724BA3E2A00B3168F /* SHPipeline.c in Sources */ = {isa = PBXBuildFile; fileRef = 275A7F6524BA3E2A00B3168F /* SHPipeline.c */; };
 		275A7F6A24BA404000B3168F /* SHMap.h in Headers */ = {isa = PBXBuildFile; fileRef = 275A7F6824BA404000B3168F /* SHMap.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		275A7F6B24BA404000B3168F /* SHMap.c in Sources */ = {isa = PBXBuildFile; fileRef = 275A7F6924BA404000B3168F /* SHMap.c */; };
+		275A7F7124C342B900B3168F /* SHTestPipeline.m in Sources */ = {isa = PBXBuildFile; fileRef = 275A7F7024C342B900B3168F /* SHTestPipeline.m */; };
 		2769C097227C81B500217480 /* SHErrorHandling.h in Headers */ = {isa = PBXBuildFile; fileRef = 27169215208BB2450059A58E /* SHErrorHandling.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2781552B21758C3F005C5279 /* SHUtilConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781552921758C3F005C5279 /* SHUtilConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2781552C21758C3F005C5279 /* SHUtilConstants.c in Sources */ = {isa = PBXBuildFile; fileRef = 2781552A21758C3F005C5279 /* SHUtilConstants.c */; };
@@ -75,6 +76,7 @@
 		275A7F6524BA3E2A00B3168F /* SHPipeline.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHPipeline.c; sourceTree = "<group>"; };
 		275A7F6824BA404000B3168F /* SHMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHMap.h; sourceTree = "<group>"; };
 		275A7F6924BA404000B3168F /* SHMap.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHMap.c; sourceTree = "<group>"; };
+		275A7F7024C342B900B3168F /* SHTestPipeline.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTestPipeline.m; sourceTree = "<group>"; };
 		2769C096227C6F2F00217480 /* SHUtils_C.postbuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = SHUtils_C.postbuild.sh; sourceTree = "<group>"; };
 		2769C0A0227F67FB00217480 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		2769C0A1227F682D00217480 /* SHUtils_C.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHUtils_C.h; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				27B512D1249DBADB00727905 /* SHPrintTree.c */,
 				27B512EC24A14E3100727905 /* SHTestSerialAccessCollection.m */,
 				27B512EE24A18C6800727905 /* SHSerialQueueTests.m */,
+				275A7F7024C342B900B3168F /* SHTestPipeline.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				27B512EF24A18C6800727905 /* SHSerialQueueTests.m in Sources */,
 				27B512C9249C5F6300727905 /* SHTreeFindItemTests.m in Sources */,
 				27B512CD249D471C00727905 /* SHTestTreeDeleteRoots.m in Sources */,
+				275A7F7124C342B900B3168F /* SHTestPipeline.m in Sources */,
 				27B512ED24A14E3100727905 /* SHTestSerialAccessCollection.m in Sources */,
 				27B512CB249C685B00727905 /* SHTestTreeDelete.m in Sources */,
 				27B512CF249DA56000727905 /* SHTestRandomTreeFuncs.m in Sources */,

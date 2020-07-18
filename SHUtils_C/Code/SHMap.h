@@ -23,7 +23,7 @@ struct SHKeyItemPair {
 
 struct SHMapKipIterator;
 
-struct SHMap *SH_map_init();
+struct SHMap *SH_map_init(void);
 struct SHMap *SH_map_init2(void (*itemCleanup)(void**), void (*keyCleanup)(void**));
 struct SHMap *SH_map_init3(uint64_t (*mappingFn)(void*), int32_t (*keyCompareFn)(void*, void*),
 	void (*itemCleanup)(void**), void (*keyCleanup)(void**));
@@ -32,6 +32,10 @@ struct SHMap *SH_map_init4(uint64_t (*mappingFn)(void*), int32_t (*keyCompareFn)
 
 SHErrorCode SH_map_setKeyItem(struct SHMap *map, void *key, void *item);
 void *SH_map_getItemWithKey(struct SHMap *map, void *key);
+
+/*
+	frees the kip node, leaves item alone
+*/
 SHErrorCode SH_map_removeItemWithKey(struct SHMap *map, void *key);
 
 void SH_map_cleanup(struct SHMap **mapP2);

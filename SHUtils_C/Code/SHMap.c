@@ -44,7 +44,7 @@ struct SHMap *SH_map_init2(void (*itemCleanup)(void**), void (*keyCleanup)(void*
 struct SHMap *SH_map_init3(uint64_t (*mappingFn)(void*), int32_t (*keyCompareFn)(void*, void*),
 	void (*itemCleanup)(void**), void (*keyCleanup)(void**))
 {
-	return SH_map_init4(mappingFn, keyCleanup, itemCleanup, keyCleanup, .75, 16);
+	return SH_map_init4(mappingFn, keyCompareFn, itemCleanup, keyCleanup, .75, 16);
 }
 
 
@@ -139,11 +139,10 @@ SHErrorCode SH_map_setKeyItem(struct SHMap *map, void *key, void *item) {
 	if(!map) return SH_ILLEGAL_INPUTS;
 	struct SHKeyItemPair *kip = NULL;
 	uint64_t idx = map->mappingFn(key) % map->capacity;
-	struct SHLinkedList *list = NULL;
 	SHErrorCode status = SH_NO_ERROR;
 
 	if((status = _replace(map, idx, key, item)) != SH_NO_ERROR) {
-		if(status & SH_CONTINUE_NON_ERR) status ^ SH_CONTINUE_NON_ERR;
+		if(status & SH_CONTINUE_NON_ERR) status ^= SH_CONTINUE_NON_ERR;
 		goto fnExit;
 	}
 	map->count++;
@@ -154,13 +153,11 @@ SHErrorCode SH_map_setKeyItem(struct SHMap *map, void *key, void *item) {
 	if(!(kip = malloc(sizeof(struct SHKeyItemPair)))) { goto allocErr; }
 	kip->key = key;
 	kip->item = item;
-	if((status = _setKip(map->backend, idx, kip)) != SH_NO_ERROR) {}
+	if((status = _setKip(map->backend, idx, kip)) != SH_NO_ERROR) { goto cleanupkip; }
 	
 	goto fnExit;
 	allocErr:
 		return SH_ALLOC_NO_MEM;
-	cleanupList:
-		SH_list_cleanup(&list);
 	cleanupkip:
 		SH_cleanup((void**)&kip);
 	fnExit:
@@ -230,7 +227,7 @@ int32_t SH_defaultKeyCompareFn(void *key1, void *key2) {
 	int64_t key1Int = (int64_t)key1;
 	int64_t key2Int = (int64_t)key2;
 	
-	int64_t ptrDiff = key2Int - key2Int;
+	int64_t ptrDiff = key1Int - key2Int;
 	if(ptrDiff == 0) return 0;
 	return ptrDiff > 0? 1 : -1;
 	
@@ -309,12 +306,12 @@ struct SHMap *SH_mapKipIterator_getMap(struct SHMapKipIterator *iter) {
 }
 
 
-void SH_mapKipIterator_cleanupMap(struct SHMapKipIterator **iter) {
-	if(!iter) return NULL;
+void SH_mapKipIterator_cleanup(struct SHMapKipIterator **iter) {
+	if(!iter) return;
 	struct SHMapKipIterator *it = *iter;
-	if(!it) return NULL;
+	if(!it) return;
 	struct SHMap *map = SH_mapKipIterator_getMap(it);
 	SH_map_cleanup(&map);
-	SH_cleanup(iter);
+	SH_cleanup((void**)iter);
 	
 }

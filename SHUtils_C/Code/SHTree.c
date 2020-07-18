@@ -18,7 +18,7 @@
 
 
 const struct SHIterableSetup treeSetup = {
-	.initializer = SH_tree_init,
+	.initializer = (void* (*)(int32_t (*)(void*, void*), void (*)(void**)))SH_tree_init,
 	.fnSetup = SH_iterable_loadTreeFuncs,
 	.backendCleanup = (void (*)(void**))SH_tree_cleanup,
 	.backendCleanupIgnoreItems = (void (*)(void**))SH_tree_cleanupIgnoreItems
