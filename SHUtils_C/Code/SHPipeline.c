@@ -25,7 +25,8 @@ typedef enum {
 
 typedef enum {
 	SH_PIPELINE_START = 0,
-	SH_PIPELINE_NEXT = 0,
+	SH_PIPELINE_NEXT = 1,
+	SH_PIPELINE_DONE = 2,
 } SHPipelineStage;
 
 struct SHPipeline {
@@ -163,12 +164,13 @@ struct SHPipeline *SH_pipeline_init(void *source, void *(*genFn)(void*, bool*), 
 
 
 static struct _itemWrapper *_sourceApply(struct SHPipelineIterator *iter, bool *hasNext) {
+	struct SHPipelineIterator *prevIter = SH_llnode_getItem(SH_llnode_getPrev(iter->nodeLink));
 	struct _itemWrapper *wrapper = calloc(1, sizeof(struct _itemWrapper));
 	if(!wrapper) {
 		*hasNext = false;
 		return NULL;
 	}
-	wrapper->item = iter->pipeline->genFn(iter->pipeline->source, hasNext);
+	wrapper->item = prevIter->pipeline->genFn(prevIter->pipeline->source, hasNext);
 	wrapper->itemCleanup = NULL;
 	return wrapper;
 }
@@ -192,30 +194,65 @@ static struct _itemWrapper *_transformApply(struct SHPipelineIterator *iter, boo
 }
 
 
-static struct _itemWrapper *_filterApply(struct SHPipelineIterator *iter, bool *hasNext) {
+static struct _itemWrapper *_filterApply2(struct SHPipelineIterator *iter, bool *hasNext) {
 	struct SHPipelineIterator *prevIter = SH_llnode_getItem(SH_llnode_getPrev(iter->nodeLink));
-	//struct SHPipeline *nextPl = SH_llnode_getItem(SH_ll)
 	bool skip = true;
 	struct _itemWrapper *wrapper = NULL;
 	do {
-		if(!(wrapper = iter->pipeline->genFn(prevIter, hasNext))) goto fnErr;
+		if(!(wrapper = prevIter->pipeline->genFn(prevIter, hasNext))) goto fnErr;
 		skip = !iter->pipeline->stepFn(wrapper->item, iter->pipeline->source, iter->idx++);
-		if(skip && wrapper->itemCleanup) {
-			wrapper->itemCleanup(wrapper->item);
+		if(skip) {
+			if(wrapper->itemCleanup){
+				wrapper->itemCleanup(wrapper->item);
+			}
+			SH_cleanup((void**)&wrapper);
 		}
-		SH_cleanup((void**)&wrapper);
+		
 	} while(skip && *hasNext);
-	
 	
 	return wrapper;
 	fnErr:
 		return NULL;
 }
 
+/*
+	we want to exhaust the list even if there are no valid elements left.
+	so we potential do a search twice.
+*/
+static struct _itemWrapper *_filterApply(struct SHPipelineIterator *iter, bool *hasNext) {
+	struct _itemWrapper *wrapper = NULL;
+	if(iter->storage) {
+		wrapper = iter->storage;
+	}
+	else {
+		wrapper = _filterApply2(iter, hasNext);
+	}
+	
+	//if we had previously exhausted list, set hasNext
+	if(iter->state == SH_PIPELINE_DONE) {
+		*hasNext = false;
+	}
+	//scan to exhaust list
+	if(*hasNext) {
+		
+		iter->storage = _filterApply2(iter, hasNext);
+		//if last item passes filter, we want to unset the hasNext flag
+		// so that iteration does not end prematurely
+		//we use iter->state to help with state in that situation.
+		if(iter->storage && !*hasNext) {
+			*hasNext = true;
+			iter->state = SH_PIPELINE_DONE;
+		}
+	}
+	return wrapper;
+	
+}
+
 
 static struct _itemWrapper *_groupingApply(struct SHPipelineIterator *iter, bool *hasNext) {
 	switch(iter->state) {
 		case SH_PIPELINE_NEXT: goto next;
+		default: break;
 	}
 	struct SHPipelineIterator *prevIter = NULL;
 	struct _groupingPipeline *pipeline = NULL;
@@ -435,8 +472,7 @@ void *SH_pipelineIterator_next(struct SHPipelineIterator **iter) {
 	if(!it) return NULL;
 	void *item = NULL;
 	bool hasNext = true;
-	struct SHPipelineIterator *prev = SH_llnode_getItem(SH_llnode_getPrev(it->nodeLink));
-	struct _itemWrapper *wrapper = it->pipeline->genFn(prev, &hasNext);
+	struct _itemWrapper *wrapper = it->pipeline->genFn(it, &hasNext);
 	if(!hasNext) {
 		_iteratorCleanup(iter);
 	}

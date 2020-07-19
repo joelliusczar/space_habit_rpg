@@ -311,7 +311,7 @@ SHErrorCode SH_iterable_loadListFuncs(struct SHIterableWrapperFuncs *funcsObj) {
 static void _cleanupList(struct SHLinkedList *list, void (*itemCleanup)(void**)) {
 	while(list->front) {
 		if(itemCleanup) {
-			itemCleanup(list->front->item);
+			itemCleanup(&list->front->item);
 		}
 		struct SHLLNode *node = list->front;
 		list->front = list->front->next;

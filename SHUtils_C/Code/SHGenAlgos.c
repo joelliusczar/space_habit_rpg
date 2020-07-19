@@ -94,7 +94,7 @@ void SH_cleanup(void **argsP2) {
 	if(!argsP2) return;
 	void *args = *argsP2;
 	free(args);
-	argsP2 = NULL;
+	*argsP2 = NULL;
 }
 
 
