@@ -13,6 +13,7 @@
 #include "SHUtilConstants.h"
 #include <stdlib.h>
 
+
 typedef enum {
 	SH_EMPTY_FN = 0,
 	SH_SOURCE_FN = 1,
@@ -78,6 +79,7 @@ struct _itemWrapper {
 
 
 static struct _itemWrapper *_sourceApply(struct SHPipelineIterator *iter, bool *hasNext);
+
 
 static void _cleanup(struct SHPipeline **pipelineP2) {
 	if(!pipelineP2) return;
@@ -203,7 +205,7 @@ static struct _itemWrapper *_filterApply2(struct SHPipelineIterator *iter, bool 
 		skip = !iter->pipeline->stepFn(wrapper->item, iter->pipeline->source, iter->idx++);
 		if(skip) {
 			if(wrapper->itemCleanup){
-				wrapper->itemCleanup(wrapper->item);
+				wrapper->itemCleanup(&wrapper->item);
 			}
 			SH_cleanup((void**)&wrapper);
 		}
@@ -309,10 +311,11 @@ static struct _itemWrapper *_skipApply(struct SHPipelineIterator *iter, bool *ha
 	while(iter->idx < iter->pipeline->limit && *hasNext) {
 		if(!(wrapper = prevIter->pipeline->genFn(prevIter, hasNext))) goto fnErr;
 		if(wrapper->itemCleanup) {
-			wrapper->itemCleanup(wrapper->item);
+			wrapper->itemCleanup(&wrapper->item);
 		}
 		iter->idx++;
 	}
+	if(!(wrapper = prevIter->pipeline->genFn(prevIter, hasNext))) goto fnErr;
 	return wrapper;
 	fnErr:
 		return NULL;
@@ -476,7 +479,7 @@ void *SH_pipelineIterator_next(struct SHPipelineIterator **iter) {
 	if(!hasNext) {
 		_iteratorCleanup(iter);
 	}
-	item = wrapper->item;
+	item = wrapper ? wrapper->item : NULL;
 	SH_cleanup((void**)&wrapper);
 	return item;
 }
