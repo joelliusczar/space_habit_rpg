@@ -14,12 +14,15 @@
 #include <stdio.h>
 #include <inttypes.h>
 
+
 struct SHDynamicArray;
 
 struct SHDynamicArrayIterator {
 	struct SHDynamicArray *array;
 	uint64_t idx;
 };
+
+extern const struct SHIterableSetup arraySetup;
 
 struct SHDynamicArray *SH_dynamicArray_init(void (*cleanup)(void**));
 struct SHDynamicArray *SH_dynamicArray_init2(int32_t (*sortingFn)(void*, void*), void (*cleanup)(void**));

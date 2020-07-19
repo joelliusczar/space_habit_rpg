@@ -19,6 +19,7 @@
 #import "SHSerialAccessCollection.h"
 #import "SHIterableWrapper.h"
 #import "SHSyncedList.h"
-#include "SHDynamicArray.h"
+#import "SHDynamicArray.h"
+#import "SHPipeline.h"
 
 #endif /* SHUtils_C_h */

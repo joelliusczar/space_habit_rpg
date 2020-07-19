@@ -362,7 +362,7 @@ struct SHPipeline *SH_pipeline_useFilter(struct SHPipeline *source, bool (*fn)(v
 
 
 struct SHPipeline *SH_pipeline_useGrouping(struct SHPipeline *source, void *(*fn)(void*, void*, uint64_t),
-	void *fnArgs, void (*fnArgsCleanup)(void **), struct SHIterableSetup *iterableSetup,
+	void *fnArgs, void (*fnArgsCleanup)(void **), struct SHIterableSetup const * const iterableSetup,
 	int32_t (*sortingFn)(void*, void*), void (*keyCleanup)(void**), void (*itemCleanup)(void**))
 {
 	if(!source || !fn) return NULL;

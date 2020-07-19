@@ -10,6 +10,15 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+
+const struct SHIterableSetup arraySetup = {
+	.initializer = (void* (*)(int32_t (*)(void*, void*), void (*)(void**)))SH_dynamicArray_init2,
+	.fnSetup = SH_iterable_loadArrayFuncs,
+	.backendCleanup = (void (*)(void**))SH_dynamicArray_cleanup,
+	.backendCleanupIgnoreItems = (void (*)(void**))SH_dynamicArray_cleanupIgnoreItems
+};
+
+
 struct SHDynamicArray {
 	void **items;
 	uint64_t length;
