@@ -9,6 +9,7 @@
 #include "SHMap.h"
 #include "SHLinkedList.h"
 #include "SHGenAlgos.h"
+#include "SHUtilConstants.h"
 #include <stdlib.h>
 #include <stdbool.h>
 
@@ -205,6 +206,7 @@ SHErrorCode SH_map_removeItemWithKey(struct SHMap *map, void *key) {
 		while((kip = SH_listIterator_next(&iter))) {
 			if(!map->keyCompareFn(kip->key, key)) {
 				if((status = SH_list_removeMatchingItem(list, kip, false)) != SH_NO_ERROR) { goto fnExit; }
+				map->count--;
 				goto fnExit;
 			}
 		}
@@ -215,6 +217,13 @@ SHErrorCode SH_map_removeItemWithKey(struct SHMap *map, void *key) {
 	fnExit:
 		SH_cleanup((void**)iter);
 		return status;
+}
+
+
+uint64_t SH_map_count(struct SHMap *map) {
+	if(!map) return SH_NOT_FOUND;
+	
+	return map->count;
 }
 
 

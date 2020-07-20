@@ -286,9 +286,12 @@ static struct _itemWrapper *_groupingApply(struct SHPipelineIterator *iter, bool
 	iter->storage = SH_mapKipIterator_init(map);
 	iter->state = SH_PIPELINE_NEXT;
 	iter->storageCleanup = (void (*)(void**))SH_mapKipIterator_cleanup;
+	if(SH_map_count(map)) {
+		*hasNext = true;
+	}
 	next:
 		map = SH_mapKipIterator_getMap(iter->storage);
-		struct SHKeyItemPair *kip = SH_mapKipIterator_next((struct SHMapKipIterator **)&iter->storage);
+			struct SHKeyItemPair *kip = SH_mapKipIterator_next((struct SHMapKipIterator **)&iter->storage);
 		if(!iter->storage) {
 			SH_map_cleanup(&map);
 			*hasNext = false;
@@ -296,7 +299,7 @@ static struct _itemWrapper *_groupingApply(struct SHPipelineIterator *iter, bool
 		wrapper = malloc(sizeof(struct _itemWrapper));
 		wrapper->item = kip->item;
 		wrapper->itemCleanup = (void (*)(void**))SH_iterable_cleanup;
-		SH_map_removeItemWithKey(map, wrapper->item);
+		SH_map_removeItemWithKey(map, kip->key);
 		return wrapper;
 	cleanup:
 		*hasNext = false;

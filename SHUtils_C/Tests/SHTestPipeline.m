@@ -898,7 +898,8 @@ static int32_t _groupingFn(struct _trObj *tr, void *obj, uint64_t idx) {
 	};
 	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_objGenFn, NULL);
 	XCTAssertNotEqual(pl, NULL);
-	struct SHPipeline *pl2 = SH_pipeline_useTransform(pl, (void* (*)(void*,void*,uint64_t))_trFn, NULL, NULL, (void (*)(void**))_cleanupTr);
+	struct SHPipeline *pl2 = SH_pipeline_useTransform(pl, (void* (*)(void*,void*,uint64_t))_trFn,
+		NULL, NULL, (void (*)(void**))_cleanupTr);
 	XCTAssertNotEqual(pl2, NULL);
 	struct SHPipeline *pl3 = SH_pipeline_useGrouping(pl2, (void* (*)(void*, void*, uint64_t))_groupingFn, NULL, NULL,
 		&arraySetup, NULL, NULL, (void (*)(void**))_cleanupTr);
@@ -908,9 +909,18 @@ static int32_t _groupingFn(struct _trObj *tr, void *obj, uint64_t idx) {
 	struct SHIterableWrapper *array = SH_pipelineIterator_next(&iter);
 	struct _trObj *ans = SH_iterable_getItemAtIdx(array, 0);
 	
-	int32_t cmp = strncmp(ans->myword, "14", 25);
+	int32_t cmp = strncmp(ans->myword, "8", 25);
 	XCTAssertEqual(cmp, 0);
 	
+	ans = SH_iterable_getItemAtIdx(array, 1);
+	
+	cmp = strncmp(ans->myword, "6", 25);
+	XCTAssertEqual(cmp, 0);
+	
+	XCTAssertEqual(SH_iterable_count(array), 2);
+	array = SH_pipelineIterator_next(&iter);
+	
+	XCTAssertEqual(SH_iterable_count(array), 16);
 //	ans = SH_pipelineIterator_next(&iter);
 //
 //	cmp = strncmp(ans->myword, "10", 25);

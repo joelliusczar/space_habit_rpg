@@ -37,6 +37,7 @@ void *SH_map_getItemWithKey(struct SHMap *map, void *key);
 	frees the kip node, leaves item alone
 */
 SHErrorCode SH_map_removeItemWithKey(struct SHMap *map, void *key);
+uint64_t SH_map_count(struct SHMap *map);
 
 void SH_map_cleanup(struct SHMap **mapP2);
 
