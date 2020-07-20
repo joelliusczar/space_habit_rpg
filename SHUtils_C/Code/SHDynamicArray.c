@@ -93,7 +93,7 @@ SHErrorCode SH_dynamicArray_push(struct SHDynamicArray *array, void *item) {
 
 void* SH_dynamicArray_get(struct SHDynamicArray *array, uint64_t idx) {
 	if(!array) return NULL;
-	if(idx > array->length) return NULL;
+	if(idx >= array->length) return NULL;
 	return array->items[idx];
 }
 
@@ -106,6 +106,7 @@ static SHErrorCode _remove(struct SHDynamicArray *array, uint64_t idx, bool allo
 	for(uint64_t shiftIdx = idx; shiftIdx < array->length -1; shiftIdx++) {
 		array->items[shiftIdx] = array->items[shiftIdx + 1];
 	}
+	array->length--;
 	return SH_NO_ERROR;
 }
 

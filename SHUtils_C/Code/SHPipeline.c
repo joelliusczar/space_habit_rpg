@@ -294,20 +294,19 @@ static struct _itemWrapper *_groupingApply(struct SHPipelineIterator *iter, bool
 		struct SHMapKipIterator *mapIter = SH_mapKipIterator_init(map);
 		struct SHKeyItemPair *kip = SH_mapKipIterator_next(&mapIter);
 		if(!mapIter) {
-			SH_map_cleanup(map);
-			*hasNext = false;
+			goto cleanup;
 		}
-		else {
-			free(mapIter);
-		}
+		free(mapIter);
 		wrapper = malloc(sizeof(struct _itemWrapper));
 		wrapper->item = kip->item;
 		wrapper->itemCleanup = (void (*)(void*))SH_iterable_cleanup;
 		SH_map_removeItemWithKey(map, kip->key);
+		if(SH_map_count(map) < 1) {
+			*hasNext = false;
+		}
 		return wrapper;
 	cleanup:
 		*hasNext = false;
-		SH_map_cleanup(map);
 		return NULL;
 }
 
