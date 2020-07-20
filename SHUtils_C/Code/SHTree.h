@@ -20,7 +20,7 @@ struct SHTreeIterator;
 
 extern const struct SHIterableSetup treeSetup;
 
-struct SHTree *SH_tree_init(int32_t (*sortingFn)(void*, void*), void (*itemCleanup)(void**));
+struct SHTree *SH_tree_init(int32_t (*sortingFn)(void*, void*), void (*itemCleanup)(void*));
 uint64_t SH_tree_count(struct SHTree *tree);
 SHErrorCode SH_tree_addItem(struct SHTree *tree, void *item);
 void *SH_tree_findNthItem(struct SHTree *tree, uint64_t idx);
@@ -29,8 +29,8 @@ void *SH_tree_popFront(struct SHTree *tree);
 void *SH_tree_getBack(struct SHTree *tree);
 void *SH_tree_popBack(struct SHTree *tree);
 SHErrorCode SH_tree_deleteNthItem(struct SHTree *tree, uint64_t idx);
-void SH_tree_cleanup(struct SHTree **treeP2);
-void SH_tree_cleanupIgnoreItems(struct SHTree **treeP2);
+void SH_tree_cleanup(struct SHTree *tree);
+void SH_tree_cleanupIgnoreItems(struct SHTree *tree);
 
 SHErrorCode SH_tree_setLineBreakSentinel(struct SHTree *tree, void * const sentinel);
 void *SH_tree_getLineBreakSentinel(struct SHTree *tree);

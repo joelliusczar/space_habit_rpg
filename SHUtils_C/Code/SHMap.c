@@ -18,8 +18,8 @@ struct SHMap {
 	struct SHLinkedList **backend;
 	uint64_t count;
 	uint64_t capacity;
-	void (*itemCleanup)(void**);
-	void (*keyCleanup)(void**);
+	void (*itemCleanup)(void*);
+	void (*keyCleanup)(void*);
 	uint64_t (*mappingFn)(void*);
 	int32_t (*keyCompareFn)(void*, void*);
 	double loadFactor;
@@ -37,20 +37,20 @@ struct SHMap *SH_map_init() {
 }
 
 
-struct SHMap *SH_map_init2(void (*itemCleanup)(void**), void (*keyCleanup)(void**)) {
+struct SHMap *SH_map_init2(void (*itemCleanup)(void*), void (*keyCleanup)(void*)) {
 	return SH_map_init3(SH_defaultMappingFn, SH_defaultKeyCompareFn, itemCleanup, keyCleanup);
 }
 
 
 struct SHMap *SH_map_init3(uint64_t (*mappingFn)(void*), int32_t (*keyCompareFn)(void*, void*),
-	void (*itemCleanup)(void**), void (*keyCleanup)(void**))
+	void (*itemCleanup)(void*), void (*keyCleanup)(void*))
 {
 	return SH_map_init4(mappingFn, keyCompareFn, itemCleanup, keyCleanup, .75, 16);
 }
 
 
 struct SHMap *SH_map_init4(uint64_t (*mappingFn)(void*), int32_t (*keyCompareFn)(void*, void*),
-	void (*itemCleanup)(void**), void (*keyCleanup)(void**), double loadFactor, uint64_t initialCapacity)
+	void (*itemCleanup)(void*), void (*keyCleanup)(void*), double loadFactor, uint64_t initialCapacity)
 {
 	if(!mappingFn || !keyCompareFn || initialCapacity < 1 || loadFactor < 0 || loadFactor > 1) return NULL;
 	struct SHLinkedList **backend = calloc(initialCapacity, sizeof(struct SHLinkedList *));
@@ -81,6 +81,7 @@ SHErrorCode _replace(struct SHMap *map, uint64_t idx, void *key, void *item) {
 			if(!map->keyCompareFn(kip->key, key)) {
 				if(map->itemCleanup) {
 					map->itemCleanup(kip->item);
+					kip->item = NULL;
 				}
 				kip->item = item;
 				status |= SH_CONTINUE_NON_ERR;
@@ -100,7 +101,7 @@ static SHErrorCode _setKip(struct SHLinkedList **backend, uint64_t idx, struct S
 	SHErrorCode status = SH_NO_ERROR;
 	struct SHLinkedList *list = NULL;
 	if(!(list = backend[idx])) {
-		if(!(list = SH_list_init(SH_cleanup))) goto allocErr;
+		if(!(list = SH_list_init(free))) goto allocErr;
 		backend[idx] = list;
 	}
 	if((status = SH_list_pushBack(list, kip)) != SH_NO_ERROR) { }
@@ -124,9 +125,10 @@ static SHErrorCode _expandMap(struct SHMap *map) {
 			uint64_t newIdx = map->mappingFn(kip->key) % newSize;
 			if((status = _setKip(backend, newIdx, kip)) != SH_NO_ERROR) { goto fnExit;}
 		}
-		SH_list_cleanup(&list);
+		SH_list_cleanup(list);
+		map->backend[idx] = NULL;
 	}
-	SH_cleanup((void**)map->backend);
+	free(map->backend);
 	map->backend = backend;
 	map->capacity = newSize;
 	allocErr:
@@ -160,7 +162,7 @@ SHErrorCode SH_map_setKeyItem(struct SHMap *map, void *key, void *item) {
 	allocErr:
 		return SH_ALLOC_NO_MEM;
 	cleanupkip:
-		SH_cleanup((void**)&kip);
+		free(kip);
 	fnExit:
 		return status;
 	
@@ -188,7 +190,7 @@ void *SH_map_getItemWithKey(struct SHMap *map, void *key) {
 	allocErr:
 		return NULL;
 	fnExit:
-		SH_cleanup((void**)&iter);
+		free(iter);
 		return result;
 }
 
@@ -207,8 +209,13 @@ SHErrorCode SH_map_removeItemWithKey(struct SHMap *map, void *key) {
 			if(!map->keyCompareFn(kip->key, key)) {
 				if((status = SH_list_removeMatchingItem(list, kip, false)) != SH_NO_ERROR) { goto fnExit; }
 				map->count--;
-				goto fnExit;
+				break;
 			}
+		}
+		if(SH_list_count(list) < 1) {
+			SH_list_cleanup(list);
+			map->backend[idx] = NULL;
+			list = NULL;
 		}
 	}
 	goto fnExit;
@@ -243,27 +250,27 @@ int32_t SH_defaultKeyCompareFn(void *key1, void *key2) {
 }
 
 
-void SH_map_cleanup(struct SHMap **mapP2) {
-	if(!mapP2) return;
-	struct SHMap *map = *mapP2;
+void SH_map_cleanup(struct SHMap *map) {
 	if(!map) return;
 	for(uint64_t idx = 0; idx < map->capacity; idx++) {
 		struct SHLinkedList *list = map->backend[idx];
 		struct SHKeyItemPair *kip = NULL;
 		while((kip = SH_list_popFront(list))) {
 			if(map->keyCleanup) {
-				map->keyCleanup(&kip->key);
+				map->keyCleanup(kip->key);
+				kip->key = NULL;
 			}
 			if(map->itemCleanup) {
-				map->itemCleanup(&kip->item);
+				map->itemCleanup(kip->item);
+				kip->item = NULL;
 			}
 			
 		}
-		SH_list_cleanup(&list);
+		SH_list_cleanup(list);
+		map->backend[idx] = NULL;
 	}
-	SH_cleanup((void**)map->backend);
+	free(map->backend);
 	free(map);
-	*mapP2 = NULL;
 }
 
 
@@ -315,12 +322,10 @@ struct SHMap *SH_mapKipIterator_getMap(struct SHMapKipIterator *iter) {
 }
 
 
-void SH_mapKipIterator_cleanup(struct SHMapKipIterator **iter) {
+void SH_mapKipIterator_cleanup(struct SHMapKipIterator *iter) {
 	if(!iter) return;
-	struct SHMapKipIterator *it = *iter;
-	if(!it) return;
-	struct SHMap *map = SH_mapKipIterator_getMap(it);
-	SH_map_cleanup(&map);
-	SH_cleanup((void**)iter);
+	struct SHMap *map = SH_mapKipIterator_getMap(iter);
+	SH_map_cleanup(map);
+	SH_cleanup((void*)iter);
 	
 }

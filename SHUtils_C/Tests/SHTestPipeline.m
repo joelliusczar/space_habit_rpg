@@ -109,8 +109,8 @@ static bool _filterOdds(int32_t num, void *fnArgs, uint64_t idx) {
 	XCTAssertEqual(ans, 36);
 	XCTAssertEqual(iter, NULL);
 	
-	SH_pipeline_cleanup(&pl);
-	XCTAssertEqual(pl, NULL);
+	SH_pipeline_cleanup(pl);
+	XCTAssertTrue(true);
 }
 
 
@@ -286,8 +286,8 @@ static bool _filterNone(int32_t num, void *fnArgs, uint64_t idx) {
 	XCTAssertEqual(ans, 36);
 	XCTAssertEqual(iter, NULL);
 	
-	SH_pipeline_cleanup(&pl);
-	XCTAssertEqual(pl, NULL);
+	SH_pipeline_cleanup(pl);
+	XCTAssertTrue(true);
 }
 
 
@@ -366,8 +366,8 @@ static int32_t _double(int32_t num, void *fnArgs, uint64_t idx) {
 	XCTAssertEqual(ans, 72);
 	XCTAssertEqual(iter, NULL);
 	
-	SH_pipeline_cleanup(&pl);
-	XCTAssertEqual(pl, NULL);
+	SH_pipeline_cleanup(pl);
+	XCTAssertTrue(true);
 }
 
 
@@ -500,13 +500,10 @@ static struct _trObj *_trFn(struct _obj *o, void *fnArgs, uint64_t idx) {
 }
 
 
-static void _cleanupTr(struct _trObj **trP2) {
-	if(!trP2) return;
-	struct _trObj *tr = *trP2;
+static void _cleanupTr(struct _trObj *tr) {
 	if(!tr) return;
 	free(tr->myword);
 	free(tr);
-	*trP2 = NULL;
 }
 
 
@@ -527,7 +524,7 @@ static void _cleanupTr(struct _trObj **trP2) {
 	};
 	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_objGenFn, NULL);
 	XCTAssertNotEqual(pl, NULL);
-	struct SHPipeline *pl2 = SH_pipeline_useTransform(pl, (void* (*)(void*,void*,uint64_t))_trFn, NULL, NULL, (void (*)(void**))_cleanupTr);
+	struct SHPipeline *pl2 = SH_pipeline_useTransform(pl, (void* (*)(void*,void*,uint64_t))_trFn, NULL, NULL, (void (*)(void*))_cleanupTr);
 	XCTAssertNotEqual(pl2, NULL);
 	
 	struct SHPipelineIterator *iter = SH_pipelineIterator_init(pl2);
@@ -536,131 +533,181 @@ static void _cleanupTr(struct _trObj **trP2) {
 	
 	int32_t cmp = strncmp(ans->myword, "14", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
-	ans = SH_pipelineIterator_next(&iter);
+	_cleanupTr(ans);
+	ans = NULL;
 	
+	ans = SH_pipelineIterator_next(&iter);
+
 	cmp = strncmp(ans->myword, "10", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
-	ans = SH_pipelineIterator_next(&iter);
+	_cleanupTr(ans);
+	ans = NULL;
 	
+	ans = SH_pipelineIterator_next(&iter);
+
 	cmp = strncmp(ans->myword, "28", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
-	ans = SH_pipelineIterator_next(&iter);
+	_cleanupTr(ans);
+	ans = NULL;
 	
+	ans = SH_pipelineIterator_next(&iter);
+
 	cmp = strncmp(ans->myword, "12", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
-	ans = SH_pipelineIterator_next(&iter);
+	_cleanupTr(ans);
+	ans = NULL;
 	
+	ans = SH_pipelineIterator_next(&iter);
+
 	cmp = strncmp(ans->myword, "24", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
-	ans = SH_pipelineIterator_next(&iter);
+	_cleanupTr(ans);
+	ans = NULL;
 	
+	ans = SH_pipelineIterator_next(&iter);
+
 	cmp = strncmp(ans->myword, "18", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
-	ans = SH_pipelineIterator_next(&iter);
+	_cleanupTr(ans);
+	ans = NULL;
 	
+	ans = SH_pipelineIterator_next(&iter);
+
 	cmp = strncmp(ans->myword, "130", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
-	ans = SH_pipelineIterator_next(&iter);
+	_cleanupTr(ans);
+	ans = NULL;
 	
+	ans = SH_pipelineIterator_next(&iter);
+
 	cmp = strncmp(ans->myword, "134", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
-	ans = SH_pipelineIterator_next(&iter);
+	_cleanupTr(ans);
+	ans = NULL;
 	
+	ans = SH_pipelineIterator_next(&iter);
+
 	cmp = strncmp(ans->myword, "46", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
-	ans = SH_pipelineIterator_next(&iter);
+	_cleanupTr(ans);
+	ans = NULL;
 	
+	ans = SH_pipelineIterator_next(&iter);
+
 	cmp = strncmp(ans->myword, "8", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
-	ans = SH_pipelineIterator_next(&iter);
+	_cleanupTr(ans);
+	ans = NULL;
 	
+	ans = SH_pipelineIterator_next(&iter);
+
 	cmp = strncmp(ans->myword, "30", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
-	ans = SH_pipelineIterator_next(&iter);
+	_cleanupTr(ans);
+	ans = NULL;
 	
+	ans = SH_pipelineIterator_next(&iter);
+
 	cmp = strncmp(ans->myword, "50", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
-	ans = SH_pipelineIterator_next(&iter);
+	_cleanupTr(ans);
+	ans = NULL;
 	
+	ans = SH_pipelineIterator_next(&iter);
+
 	cmp = strncmp(ans->myword, "142", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
-	ans = SH_pipelineIterator_next(&iter);
+	_cleanupTr(ans);
+	ans = NULL;
 	
+	ans = SH_pipelineIterator_next(&iter);
+
 	cmp = strncmp(ans->myword, "62", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
-	ans = SH_pipelineIterator_next(&iter);
+	_cleanupTr(ans);
+	ans = NULL;
 	
+	ans = SH_pipelineIterator_next(&iter);
+
 	cmp = strncmp(ans->myword, "88", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
-	ans = SH_pipelineIterator_next(&iter);
+	_cleanupTr(ans);
+	ans = NULL;
 	
+	ans = SH_pipelineIterator_next(&iter);
+
 	cmp = strncmp(ans->myword, "16", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
-	ans = SH_pipelineIterator_next(&iter);
+	_cleanupTr(ans);
+	ans = NULL;
 	
+	ans = SH_pipelineIterator_next(&iter);
+
 	cmp = strncmp(ans->myword, "186", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
-	ans = SH_pipelineIterator_next(&iter);
+	_cleanupTr(ans);
+	ans = NULL;
 	
+	ans = SH_pipelineIterator_next(&iter);
+
 	cmp = strncmp(ans->myword ,"6", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
-	ans = SH_pipelineIterator_next(&iter);
+	_cleanupTr(ans);
+	ans = NULL;
 	
+	ans = SH_pipelineIterator_next(&iter);
+
 	cmp = strncmp(ans->myword, "22", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
-	ans = SH_pipelineIterator_next(&iter);
+	_cleanupTr(ans);
+	ans = NULL;
 	
+	ans = SH_pipelineIterator_next(&iter);
+
 	cmp = strncmp(ans->myword, "176", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
-	ans = SH_pipelineIterator_next(&iter);
+	_cleanupTr(ans);
+	ans = NULL;
 	
+	ans = SH_pipelineIterator_next(&iter);
+
 	cmp = strncmp(ans->myword, "44", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
-	ans = SH_pipelineIterator_next(&iter);
+	_cleanupTr(ans);
+	ans = NULL;
 	
+	ans = SH_pipelineIterator_next(&iter);
+
 	cmp = strncmp(ans->myword, "180", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
-	ans = SH_pipelineIterator_next(&iter);
+	_cleanupTr(ans);
+	ans = NULL;
 	
+	ans = SH_pipelineIterator_next(&iter);
+
 	cmp = strncmp(ans->myword, "54", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
-	ans = SH_pipelineIterator_next(&iter);
+	_cleanupTr(ans);
+	ans = NULL;
 	
+	ans = SH_pipelineIterator_next(&iter);
+
 	cmp = strncmp(ans->myword, "96", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
-	ans = SH_pipelineIterator_next(&iter);
+	_cleanupTr(ans);
+	ans = NULL;
 	
+	ans = SH_pipelineIterator_next(&iter);
+
 	cmp = strncmp(ans->myword, "72", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
-	XCTAssertEqual(iter, NULL);
+	_cleanupTr(ans);
+	ans = NULL;
 	
-	SH_pipeline_cleanup(&pl);
-	XCTAssertEqual(pl, NULL);
+	XCTAssertEqual(iter, NULL);
+
+	SH_pipeline_cleanup(pl);
+	XCTAssertTrue(true);
 }
 
 
@@ -692,8 +739,8 @@ static void _cleanupTr(struct _trObj **trP2) {
 	XCTAssertEqual(ans, 4);
 	XCTAssertEqual(iter, NULL);
 	
-	SH_pipeline_cleanup(&pl);
-	XCTAssertEqual(pl, NULL);
+	SH_pipeline_cleanup(pl);
+	XCTAssertTrue(true);
 }
 
 
@@ -712,7 +759,7 @@ static void _cleanupTr(struct _trObj **trP2) {
 	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_objGenFn, NULL);
 	XCTAssertNotEqual(pl, NULL);
 	struct SHPipeline *pl2 = SH_pipeline_useTransform(pl, (void* (*)(void*,void*,uint64_t))_trFn, NULL, NULL,
-		(void (*)(void**))_cleanupTr);
+		(void (*)(void*))_cleanupTr);
 	XCTAssertNotEqual(pl2, NULL);
 	struct SHPipeline *pl3 = SH_pipeline_useSkip(pl2, 5);
 	struct SHPipeline *pl4 = SH_pipeline_useTake(pl3, 5);
@@ -723,31 +770,36 @@ static void _cleanupTr(struct _trObj **trP2) {
 	
 	int32_t cmp = strncmp(ans->myword, "18", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
+	_cleanupTr(ans);
+	ans = NULL;
 	ans = SH_pipelineIterator_next(&iter);
 	
 	cmp = strncmp(ans->myword, "130", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
+	_cleanupTr(ans);
+	ans = NULL;
 	ans = SH_pipelineIterator_next(&iter);
 	
 	cmp = strncmp(ans->myword, "134", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
+	_cleanupTr(ans);
+	ans = NULL;
 	ans = SH_pipelineIterator_next(&iter);
 	
 	cmp = strncmp(ans->myword, "46", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
+	_cleanupTr(ans);
+	ans = NULL;
 	ans = SH_pipelineIterator_next(&iter);
 	
 	cmp = strncmp(ans->myword, "8", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
+	_cleanupTr(ans);
+	ans = NULL;
 	XCTAssertEqual(iter, NULL);
 	
-	SH_pipeline_cleanup(&pl);
-	XCTAssertEqual(pl, NULL);
+	SH_pipeline_cleanup(pl);
+	XCTAssertTrue(true);
 }
 
 
@@ -771,7 +823,7 @@ static bool _filter3digits(struct _trObj *tr, void *fnArgs, uint64_t idx) {
 	};
 	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_objGenFn, NULL);
 	XCTAssertNotEqual(pl, NULL);
-	struct SHPipeline *pl2 = SH_pipeline_useTransform(pl, (void* (*)(void*,void*,uint64_t))_trFn, NULL, NULL, (void (*)(void**))_cleanupTr);
+	struct SHPipeline *pl2 = SH_pipeline_useTransform(pl, (void* (*)(void*,void*,uint64_t))_trFn, NULL, NULL, (void (*)(void*))_cleanupTr);
 	XCTAssertNotEqual(pl2, NULL);
 	struct SHPipeline *pl3 = SH_pipeline_useFilter(pl2, (bool (*)(void*, void*, uint64_t))_filter3digits, NULL, NULL);
 	
@@ -781,101 +833,120 @@ static bool _filter3digits(struct _trObj *tr, void *fnArgs, uint64_t idx) {
 	
 	int32_t cmp = strncmp(ans->myword, "14", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
+	_cleanupTr(ans);
+	ans = NULL;
 	
 	ans = SH_pipelineIterator_next(&iter);
 	cmp = strncmp(ans->myword, "10", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
+	_cleanupTr(ans);
+	ans = NULL;
 	
 	ans = SH_pipelineIterator_next(&iter);
 	cmp = strncmp(ans->myword, "28", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
+	_cleanupTr(ans);
+	ans = NULL;
 	
 	ans = SH_pipelineIterator_next(&iter);
 	cmp = strncmp(ans->myword, "12", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
+	_cleanupTr(ans);
+	ans = NULL;
 	
 	ans = SH_pipelineIterator_next(&iter);
 	cmp = strncmp(ans->myword, "24", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
+	_cleanupTr(ans);
+	ans = NULL;
 	
 	ans = SH_pipelineIterator_next(&iter);
 	cmp = strncmp(ans->myword, "18", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
+	_cleanupTr(ans);
+	ans = NULL;
 	
 	ans = SH_pipelineIterator_next(&iter);
 	cmp = strncmp(ans->myword, "46", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
+	_cleanupTr(ans);
+	ans = NULL;
 	
 	ans = SH_pipelineIterator_next(&iter);
 	cmp = strncmp(ans->myword, "8", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
+	_cleanupTr(ans);
+	ans = NULL;
 	
 	ans = SH_pipelineIterator_next(&iter);
 	cmp = strncmp(ans->myword, "30", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
+	_cleanupTr(ans);
+	ans = NULL;
 	
 	ans = SH_pipelineIterator_next(&iter);
 	cmp = strncmp(ans->myword, "50", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
+	_cleanupTr(ans);
+	ans = NULL;
 	
 	ans = SH_pipelineIterator_next(&iter);
 	cmp = strncmp(ans->myword, "62", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
+	_cleanupTr(ans);
+	ans = NULL;
 	
 	ans = SH_pipelineIterator_next(&iter);
 	cmp = strncmp(ans->myword, "88", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
+	_cleanupTr(ans);
+	ans = NULL;
 	
 	ans = SH_pipelineIterator_next(&iter);
 	cmp = strncmp(ans->myword, "16", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
+	_cleanupTr(ans);
+	ans = NULL;
 	
 	ans = SH_pipelineIterator_next(&iter);
 	cmp = strncmp(ans->myword ,"6", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
+	_cleanupTr(ans);
+	ans = NULL;
 	
 	ans = SH_pipelineIterator_next(&iter);
 	cmp = strncmp(ans->myword, "22", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
+	_cleanupTr(ans);
+	ans = NULL;
 	
 	ans = SH_pipelineIterator_next(&iter);
 	cmp = strncmp(ans->myword, "44", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
+	_cleanupTr(ans);
+	ans = NULL;
 	
 	ans = SH_pipelineIterator_next(&iter);
 	cmp = strncmp(ans->myword, "54", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
+	_cleanupTr(ans);
+	ans = NULL;
 	
 	ans = SH_pipelineIterator_next(&iter);
 	cmp = strncmp(ans->myword, "96", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
+	_cleanupTr(ans);
+	ans = NULL;
 	
 	ans = SH_pipelineIterator_next(&iter);
 	cmp = strncmp(ans->myword, "72", 25);
 	XCTAssertEqual(cmp, 0);
-	_cleanupTr(&ans);
+	_cleanupTr(ans);
+	ans = NULL;
 	
 	XCTAssertEqual(iter, NULL);
-	SH_pipeline_cleanup(&pl);
-	XCTAssertEqual(pl, NULL);
+	SH_pipeline_cleanup(pl);
+	XCTAssertTrue(true);
 }
 
 
@@ -899,10 +970,10 @@ static int32_t _groupingFn(struct _trObj *tr, void *obj, uint64_t idx) {
 	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_objGenFn, NULL);
 	XCTAssertNotEqual(pl, NULL);
 	struct SHPipeline *pl2 = SH_pipeline_useTransform(pl, (void* (*)(void*,void*,uint64_t))_trFn,
-		NULL, NULL, (void (*)(void**))_cleanupTr);
+		NULL, NULL, (void (*)(void*))_cleanupTr);
 	XCTAssertNotEqual(pl2, NULL);
 	struct SHPipeline *pl3 = SH_pipeline_useGrouping(pl2, (void* (*)(void*, void*, uint64_t))_groupingFn, NULL, NULL,
-		&arraySetup, NULL, NULL, (void (*)(void**))_cleanupTr);
+		&arraySetup, NULL, NULL, (void (*)(void*))_cleanupTr);
 	
 	struct SHPipelineIterator *iter = SH_pipelineIterator_init(pl3);
 	XCTAssertNotEqual(iter, NULL);
@@ -920,7 +991,27 @@ static int32_t _groupingFn(struct _trObj *tr, void *obj, uint64_t idx) {
 	XCTAssertEqual(SH_iterable_count(array), 2);
 	array = SH_pipelineIterator_next(&iter);
 	
-	XCTAssertEqual(SH_iterable_count(array), 16);
+	XCTAssertEqual(SH_iterable_count(array), 17);
+	
+	ans = SH_iterable_getItemAtIdx(array, 0);
+	cmp = strncmp(ans->myword, "14", 25);
+	XCTAssertEqual(cmp, 0);
+	
+	ans = SH_iterable_getItemAtIdx(array, 1);
+	cmp = strncmp(ans->myword, "10", 25);
+	XCTAssertEqual(cmp, 0);
+	
+	ans = SH_iterable_getItemAtIdx(array, 2);
+	cmp = strncmp(ans->myword, "28", 25);
+	XCTAssertEqual(cmp, 0);
+	
+	ans = SH_iterable_getItemAtIdx(array, 3);
+	cmp = strncmp(ans->myword, "12", 25);
+	XCTAssertEqual(cmp, 0);
+	
+	ans = SH_iterable_getItemAtIdx(array, 4);
+	cmp = strncmp(ans->myword, "24", 25);
+	XCTAssertEqual(cmp, 0);
 //	ans = SH_pipelineIterator_next(&iter);
 //
 //	cmp = strncmp(ans->myword, "10", 25);

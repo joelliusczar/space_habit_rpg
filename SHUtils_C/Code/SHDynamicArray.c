@@ -12,10 +12,10 @@
 
 
 const struct SHIterableSetup arraySetup = {
-	.initializer = (void* (*)(int32_t (*)(void*, void*), void (*)(void**)))SH_dynamicArray_init2,
+	.initializer = (void* (*)(int32_t (*)(void*, void*), void (*)(void*)))SH_dynamicArray_init2,
 	.fnSetup = SH_iterable_loadArrayFuncs,
-	.backendCleanup = (void (*)(void**))SH_dynamicArray_cleanup,
-	.backendCleanupIgnoreItems = (void (*)(void**))SH_dynamicArray_cleanupIgnoreItems
+	.backendCleanup = (void (*)(void*))SH_dynamicArray_cleanup,
+	.backendCleanupIgnoreItems = (void (*)(void*))SH_dynamicArray_cleanupIgnoreItems
 };
 
 
@@ -23,22 +23,22 @@ struct SHDynamicArray {
 	void **items;
 	uint64_t length;
 	uint64_t roomLeft;
-	void (*itemCleanup)(void**);
+	void (*itemCleanup)(void*);
 };
 
 
-struct SHDynamicArray *SH_dynamicArray_init(void (*cleanup)(void**)) {
+struct SHDynamicArray *SH_dynamicArray_init(void (*cleanup)(void*)) {
 	return SH_dynamicArray_init2(NULL, cleanup);
 }
 
 
-struct SHDynamicArray *SH_dynamicArray_init2(int32_t (*sortingFn)(void*, void*), void (*cleanup)(void**)) {
+struct SHDynamicArray *SH_dynamicArray_init2(int32_t (*sortingFn)(void*, void*), void (*cleanup)(void*)) {
 	return SH_dynamicArray_init3(10, sortingFn, cleanup);
 }
 
 
 struct SHDynamicArray *SH_dynamicArray_init3(uint64_t startSize, int32_t (*sortingFn)(void*, void*),
-	void (*cleanup)(void**))
+	void (*cleanup)(void*))
 {
 	(void)sortingFn;
 	uint64_t useRoom = startSize > 0 ? startSize : 16;
@@ -51,7 +51,7 @@ struct SHDynamicArray *SH_dynamicArray_init3(uint64_t startSize, int32_t (*sorti
 	arr->itemCleanup = cleanup;
 	goto fnExit;
 	cleanup:
-		SH_dynamicArray_cleanup(&arr);
+		SH_dynamicArray_cleanup(arr);
 		return NULL;
 	fnExit:
 		return arr;
@@ -182,11 +182,11 @@ void* SH_dynamicArray_getFront(struct SHDynamicArray *array) {
 }
 
 
-static void _cleanupArray(struct SHDynamicArray *array, void (*itemCleanup)(void**)) {
+static void _cleanupArray(struct SHDynamicArray *array, void (*itemCleanup)(void*)) {
 	if(itemCleanup) {
 		for(uint64_t idx = 0; idx < array->length; idx++) {
 			void *item = SH_dynamicArray_popBack(array);
-			itemCleanup(&item);
+			itemCleanup(item);
 		}
 	}
 	free(array->items);
@@ -194,21 +194,15 @@ static void _cleanupArray(struct SHDynamicArray *array, void (*itemCleanup)(void
 }
 
 
-void SH_dynamicArray_cleanup(struct SHDynamicArray **arrayP2) {
-	if(!arrayP2) return;
-	struct SHDynamicArray *array = *arrayP2;
+void SH_dynamicArray_cleanup(struct SHDynamicArray *array) {
 	if(!array) return;
 	_cleanupArray(array, array->itemCleanup);
-	*arrayP2 = NULL;
 }
 
 
-void SH_dynamicArray_cleanupIgnoreItems(struct SHDynamicArray **arrayP2) {
-	if(!arrayP2) return;
-	struct SHDynamicArray *array = *arrayP2;
+void SH_dynamicArray_cleanupIgnoreItems(struct SHDynamicArray *array) {
 	if(!array) return;
 	_cleanupArray(array, NULL);
-	*arrayP2 = NULL;
 }
 
 
@@ -223,8 +217,8 @@ SHErrorCode SH_iterable_loadArrayFuncs(struct SHIterableWrapperFuncs *funcsObj) 
 	funcsObj->deleteItemAtIdx = (SHErrorCode (*)(void*, uint64_t))SH_dynamicArray_remove;
 	funcsObj->iteratorInit = (void* (*)(void*))SH_dynamicArrayIterator_init;
 	funcsObj->iteratorNext = (void* (*)(void**))SH_dynamicArrayIterator_next;
-	funcsObj->cleanup = (void (*)(void**))SH_dynamicArray_cleanup;
-	funcsObj->cleanupIgnoreItems = (void (*)(void**))SH_dynamicArray_cleanupIgnoreItems;
+	funcsObj->cleanup = (void (*)(void*))SH_dynamicArray_cleanup;
+	funcsObj->cleanupIgnoreItems = (void (*)(void*))SH_dynamicArray_cleanupIgnoreItems;
 	return SH_NO_ERROR;
 }
 

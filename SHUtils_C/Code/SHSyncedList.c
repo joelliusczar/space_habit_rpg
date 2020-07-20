@@ -68,7 +68,7 @@ struct SHSyncedList *SH_syncedList_init(struct SHIterableWrapper *iterable) {
 	}
 	return list;
 	cleanup:
-		SH_syncedList_cleanup(&list);
+		SH_syncedList_cleanup(list);
 		return NULL;
 }
 
@@ -258,12 +258,10 @@ SHErrorCode SH_syncedList_stirHasItems(struct SHSyncedList *list) {
 }
 
 
-void SH_syncedList_cleanup(struct SHSyncedList **listP2) {
-	if(!listP2) return;
-	struct SHSyncedList *list = *listP2;
+void SH_syncedList_cleanup(struct SHSyncedList *list) {
 	if(!list) return;
 	pthread_mutex_lock(&list->iterableLock);
-	SH_iterable_cleanup(&list->iterable);
+	SH_iterable_cleanup(list->iterable);
 	pthread_mutex_unlock(&list->iterableLock);
 	
 	pthread_mutex_destroy(&list->iterableLock);
@@ -271,7 +269,6 @@ void SH_syncedList_cleanup(struct SHSyncedList **listP2) {
 	pthread_cond_destroy(&list->hasItems);
 	pthread_cond_destroy(&list->isEmpty);
 	free(list);
-	*listP2 = NULL;
 }
 
 

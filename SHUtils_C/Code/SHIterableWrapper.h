@@ -31,8 +31,8 @@ struct SHIterableWrapperFuncs {
 	SHErrorCode (*deleteItemAtIdx)(void *, uint64_t);
 	void *(*iteratorInit)(void *);
 	void *(*iteratorNext)(void**);
-	void (*cleanup)(void**);
-	void (*cleanupIgnoreItems)(void**);
+	void (*cleanup)(void*);
+	void (*cleanupIgnoreItems)(void*);
 };
 
 
@@ -41,10 +41,10 @@ struct SHIterableWrapperFuncs {
 	on the items in the container which won't be known until futher down the road
 */
 struct SHIterableSetup {
-	void* (*initializer)(int32_t (*)(void*, void*), void (*)(void**));
+	void* (*initializer)(int32_t (*)(void*, void*), void (*)(void*));
 	SHErrorCode (*fnSetup)(struct SHIterableWrapperFuncs *);
-	void (*backendCleanup)(void**);
-	void (*backendCleanupIgnoreItems)(void**);
+	void (*backendCleanup)(void*);
+	void (*backendCleanupIgnoreItems)(void*);
 };
 
 
@@ -52,7 +52,7 @@ struct SHIterableWrapper;
 
 
 struct SHIterableWrapper *SH_iterable_init(struct SHIterableSetup const * const setup,
-	int32_t (*sortingFn)(void *, void *), void (*itemCleanup)(void**));
+	int32_t (*sortingFn)(void *, void *), void (*itemCleanup)(void*));
 
 SHErrorCode SH_iterable_addItem(struct SHIterableWrapper *iterable, void *item);
 void *SH_iterable_getItemAtIdx(struct SHIterableWrapper *iterable, uint64_t idx);
@@ -65,7 +65,7 @@ SHErrorCode SH_iterable_deleteItemAtIdx(struct SHIterableWrapper *iterable, uint
 struct SHIterableWrapperIterator *SH_iterableIterator_init(struct SHIterableWrapper *iterable);
 void *SH_iterableIterator_next(struct SHIterableWrapperIterator **iter);
 
-void SH_iterable_cleanup(struct SHIterableWrapper **iterableP2);
-void SH_iterable_cleanupIgnoreItems(struct SHIterableWrapper **iterableP2);
+void SH_iterable_cleanup(struct SHIterableWrapper *iterable);
+void SH_iterable_cleanupIgnoreItems(struct SHIterableWrapper *iterable);
 
 #endif /* SHIterableWrapper_h */

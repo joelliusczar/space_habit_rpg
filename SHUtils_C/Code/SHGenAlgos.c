@@ -90,11 +90,8 @@ void SH_rotateStrArray(char **arr, uint64_t len, uint64_t offset) {
 }
 
 
-void SH_cleanup(void **argsP2) {
-	if(!argsP2) return;
-	void *args = *argsP2;
+void SH_cleanup(void *args) {
 	free(args);
-	*argsP2 = NULL;
 }
 
 

@@ -21,7 +21,7 @@ struct SHSerialAccessCollection *SH_SACollection_init(struct SHIterableWrapper *
 	if(!iterable) return NULL;
 	struct SHSerialAccessCollection *saCollection = NULL;
 	if(!(saCollection = malloc(sizeof(struct SHSerialAccessCollection)))) goto allocErr;
-	saCollection->queue = SH_serialQueue_init(iterable, (void (*)(void**))SH_iterable_cleanup);
+	saCollection->queue = SH_serialQueue_init(iterable, (void (*)(void*))SH_iterable_cleanup);
 	if(!saCollection->queue) goto cleanup;
 	return saCollection;
 	cleanup:
@@ -159,7 +159,7 @@ SHErrorCode SH_SACollection_addItemsWithGenerator(struct SHSerialAccessCollectio
 {
 	SHErrorCode status = SH_NO_ERROR;
 	if((status = SH_serialQueue_addOp(saCollection->queue, _addItemsWithGenerator, generatorFnObj,
-		(void (*)(void**))SH_generatorObj_cleanup)) != SH_NO_ERROR)
+		(void (*)(void*))SH_generatorObj_cleanup)) != SH_NO_ERROR)
 	{
 		SH_notifyOfError(status, "An error occured while adding op to generate numbers");
 		return status;
@@ -185,7 +185,7 @@ void SH_SACollection_cleanup(struct SHSerialAccessCollection **saCollectionP2) {
 	if(!saCollectionP2) return;
 	struct SHSerialAccessCollection *saCollection = *saCollectionP2;
 	if(!saCollection) return;
-	SH_serialQueue_cleanup(&saCollection->queue);
+	SH_serialQueue_cleanup(saCollection->queue);
 	free(saCollection);
 	*saCollectionP2 = NULL;
 }

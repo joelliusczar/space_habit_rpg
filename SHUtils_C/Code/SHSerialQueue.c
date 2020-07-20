@@ -20,13 +20,13 @@
 struct _queuedOp {
 	SHErrorCode (*fn)(void*, struct SHQueueStore *, void **);
 	void *fnArgs;
-	void (*cleanupFn)(void**);
+	void (*cleanupFn)(void*);
 };
 
 
 struct SHQueueStore {
 	void *userItem;
-	void (*queueStoreCleanup)(void **);
+	void (*queueStoreCleanup)(void *);
 	struct SHSerialQueue *queueRef;
 };
 
@@ -43,7 +43,7 @@ struct SHSerialQueue {
 
 struct _wrappedVoidFnArgs {
 	void *fnArgs;
-	void (*cleanupFn)(void**);
+	void (*cleanupFn)(void*);
 	SHErrorCode (*wrappedFn)(void*, struct SHQueueStore *);
 };
 
@@ -51,14 +51,11 @@ struct _wrappedVoidFnArgs {
 static int32_t _voidResultSentinel = 0;
 
 
-static void _opCleanup(struct _queuedOp **opP2) {
-	if(!opP2) return;
-	struct _queuedOp *op = *opP2;
+static void _opCleanup(struct _queuedOp *op) {
 	if(op->cleanupFn) {
-		op->cleanupFn(&op->fnArgs);
+		op->cleanupFn(op->fnArgs);
 	}
 	free(op);
-	*opP2 = NULL;
 }
 
 
@@ -94,7 +91,7 @@ static SHErrorCode _waitForQueueToEmpty(struct SHSerialQueue *queue) {
 
 	goto fnExit;
 	cleanup:
-		SH_serialQueue_cleanup(&queue);
+		SH_serialQueue_cleanup(queue);
 	fnExit:
 		return status;
 }
@@ -105,7 +102,7 @@ static SHErrorCode _wrapVoidCall(void *fnArgs, struct SHQueueStore *store, void 
 	struct _wrappedVoidFnArgs *wrapped = (struct _wrappedVoidFnArgs*)fnArgs;
 	SHErrorCode status = wrapped->wrappedFn(wrapped->fnArgs, store);
 	if(wrapped->cleanupFn) {
-		wrapped->cleanupFn(&wrapped->fnArgs);
+		wrapped->cleanupFn(wrapped->fnArgs);
 	}
 	*result = &_voidResultSentinel;
 	return status;
@@ -116,7 +113,7 @@ SHErrorCode _addOp(
 	struct SHSerialQueue *queue,
 	SHErrorCode (*fn)(void*, struct SHQueueStore *, void**),
 	void *fnArgs,
-	void (*cleanupFn)(void**))
+	void (*cleanupFn)(void*))
 {
 	SHErrorCode status = SH_NO_ERROR;
 	struct _queuedOp *op = malloc(sizeof(struct _queuedOp));
@@ -127,7 +124,7 @@ SHErrorCode _addOp(
 	
 	cleanup:
 		SH_notifyOfError(status, "Item could not be added. This list is in squeezeMode");
-		_opCleanup(&op);
+		_opCleanup(op);
 		goto fnExit;
 	allocErr:
 		status |= SH_ALLOC_NO_MEM;
@@ -142,7 +139,7 @@ SHErrorCode SH_serialQueue_addOp(
 	struct SHSerialQueue *queue,
 	SHErrorCode (*fn)(void*, struct SHQueueStore *),
 	void *fnArgs,
-	void (*cleanupFn)(void**))
+	void (*cleanupFn)(void*))
 {
 	if(!queue) return SH_ILLEGAL_INPUTS;
 	if(!fn) return SH_ILLEGAL_INPUTS;
@@ -167,8 +164,8 @@ SHErrorCode SH_serialQueue_addOp(
 
 static void _freeUnusedItemsInQueue(struct SHSerialQueue *queue) {
 	if(NULL == queue) return;
-	SH_syncedList_cleanup(&queue->opsQueue);
-	SH_syncedList_cleanup(&queue->resultQueue);
+	SH_syncedList_cleanup(queue->opsQueue);
+	SH_syncedList_cleanup(queue->resultQueue);
 	queue->isRunning = false;
 }
 
@@ -177,7 +174,7 @@ SHErrorCode SH_addOpAndWaitForResult(
 	struct SHSerialQueue *queue,
 	SHErrorCode (*fn)(void*, struct SHQueueStore *, void**),
 	void *fnArgs,
-	void (*cleanupFn)(void**),
+	void (*cleanupFn)(void*),
 	void **result)
 {
 
@@ -207,7 +204,7 @@ static SHErrorCode _runSerialQueueLoop(struct SHSerialQueue *queue) {
 			if(result != &_voidResultSentinel) {
 				SH_syncedList_pushBack(queue->resultQueue, result);
 			}
-			_opCleanup(&node);
+			_opCleanup(node);
 		}
 	}
 	fnExit:
@@ -256,14 +253,14 @@ static SHErrorCode _initMutexesAndConditions(struct SHSerialQueue *queue) {
 }
 
 
-struct SHSerialQueue * SH_serialQueue_init(void *initArgs, void (*initArgsCleanup)(void**)) {
+struct SHSerialQueue * SH_serialQueue_init(void *initArgs, void (*initArgsCleanup)(void*)) {
 	struct SHSerialQueue *queue = malloc(sizeof(struct SHSerialQueue));
 	if(!queue) return NULL;
 	struct SHIterableWrapper *opsList = NULL;
 	struct SHIterableWrapper *resultList = NULL;
 	SHErrorCode status = SH_NO_ERROR;
 	
-	opsList = SH_iterable_init(&listSetup, NULL, (void (*)(void**))_opCleanup);
+	opsList = SH_iterable_init(&listSetup, NULL, (void (*)(void*))_opCleanup);
 	if(!opsList) goto cleanupQueue;
 	
 	resultList = SH_iterable_init(&listSetup, NULL, NULL);
@@ -285,9 +282,9 @@ struct SHSerialQueue * SH_serialQueue_init(void *initArgs, void (*initArgsCleanu
 	return queue;
 	
 	cleanupQueue:
-		SH_iterable_cleanup(&opsList);
-		SH_iterable_cleanup(&resultList);
-		SH_serialQueue_cleanup(&queue);
+		SH_iterable_cleanup(opsList);
+		SH_iterable_cleanup(resultList);
+		SH_serialQueue_cleanup(queue);
 		return NULL;
 }
 
@@ -341,9 +338,7 @@ SHErrorCode SH_serialQueue_waitToFinishOps(struct SHSerialQueue *queue) {
 }
 
 
-void SH_serialQueue_cleanup(struct SHSerialQueue **queueP2) {
-	if(!queueP2) return;
-	struct SHSerialQueue *queue = *queueP2;
+void SH_serialQueue_cleanup(struct SHSerialQueue *queue) {
 	if(!queue) return;
 	_freeUnusedItemsInQueue(queue);
 	if(queue->queueStore.queueStoreCleanup) {
@@ -352,5 +347,4 @@ void SH_serialQueue_cleanup(struct SHSerialQueue **queueP2) {
 	pthread_mutex_destroy(&queue->isRunningLock);
 	//don't need to free queueStore since it is not a pointer
 	free(queue);
-	*queueP2 = NULL;
 }

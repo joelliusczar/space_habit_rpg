@@ -20,7 +20,7 @@ struct SHIterableWrapper {
 
 
 struct SHIterableWrapper *SH_iterable_init(struct SHIterableSetup const * const setup,
-	int32_t (*sortingFn)(void *, void *), void (*itemCleanup)(void**))
+	int32_t (*sortingFn)(void *, void *), void (*itemCleanup)(void*))
 {
 	if(!setup) return NULL;
 	
@@ -33,7 +33,7 @@ struct SHIterableWrapper *SH_iterable_init(struct SHIterableSetup const * const 
 	setup->fnSetup(&iterable->funcs);
 	return iterable;
 	cleanup:
-		SH_iterable_cleanup(&iterable);
+		SH_iterable_cleanup(iterable);
 	allocErr:
 		SH_notifyOfError(SH_ALLOC_NO_MEM, "Failed to allocate memory to create iterable");
 		return NULL;
@@ -116,29 +116,23 @@ void *SH_iterableIterator_next(struct SHIterableWrapperIterator **iterP2) {
 }
 
 
-static void _cleanupIterable(struct SHIterableWrapper *iterable, void (*backendCleanup)(void**)) {
+static void _cleanupIterable(struct SHIterableWrapper *iterable, void (*backendCleanup)(void*)) {
 	if(backendCleanup) {
-		backendCleanup(&iterable->backend);
+		backendCleanup(iterable->backend);
 	}
 	free(iterable);
 }
 
 
-void SH_iterable_cleanup(struct SHIterableWrapper **iterableP2) {
-	if(!iterableP2) return;
-	struct SHIterableWrapper *iterable = *iterableP2;
+void SH_iterable_cleanup(struct SHIterableWrapper *iterable) {
 	if(!iterable) return;
 	_cleanupIterable(iterable, iterable->funcs.cleanup);
-	*iterableP2 = NULL;
 }
 
 
-void SH_iterable_cleanupIgnoreItems(struct SHIterableWrapper **iterableP2) {
-	if(!iterableP2) return;
-	struct SHIterableWrapper *iterable = *iterableP2;
+void SH_iterable_cleanupIgnoreItems(struct SHIterableWrapper *iterable) {
 	if(!iterable) return;
 	_cleanupIterable(iterable, iterable->funcs.cleanupIgnoreItems);
-	*iterableP2 = NULL;
 }
 
 
