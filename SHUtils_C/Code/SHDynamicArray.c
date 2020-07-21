@@ -44,11 +44,13 @@ struct SHDynamicArray *SH_dynamicArray_init3(uint64_t startSize, int32_t (*sorti
 	uint64_t useRoom = startSize > 0 ? startSize : 16;
 	struct SHDynamicArray *arr = malloc(sizeof(struct SHDynamicArray));
 	if(!arr) return NULL;
+	*arr = (struct SHDynamicArray){
+		.length = 0,
+		.roomLeft = useRoom,
+		.itemCleanup = cleanup
+	};
 	arr->items = malloc(sizeof(void*) * useRoom);
 	if(!arr->items) goto cleanup;
-	arr->length = 0;
-	arr->roomLeft = useRoom;
-	arr->itemCleanup = cleanup;
 	goto fnExit;
 	cleanup:
 		SH_dynamicArray_cleanup(arr);

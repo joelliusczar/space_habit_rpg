@@ -90,6 +90,7 @@ SHErrorCode SH_list_pushBack(struct SHLinkedList *list, void *item) {
 	SHErrorCode status = SH_NO_ERROR;
 	struct SHLLNode *newNode = NULL;
 	if(!(newNode = _pushBack(list, item))) goto allocErr;
+	(void)newNode;
 	return status;
 	allocErr:
 		return SH_ALLOC_NO_MEM;
@@ -97,7 +98,7 @@ SHErrorCode SH_list_pushBack(struct SHLinkedList *list, void *item) {
 
 
 struct SHLLNode *_searchFromFront(struct SHLinkedList *list, uint64_t count) {
-	struct SHLLNode *node = SH_list_getFront(list);
+	struct SHLLNode *node = list->front;
 	for(uint64_t i = 0; i < count; i++) {
 		node = node->next;
 	}
@@ -106,7 +107,7 @@ struct SHLLNode *_searchFromFront(struct SHLinkedList *list, uint64_t count) {
 
 
 struct SHLLNode *_searchFromBack(struct SHLinkedList *list, uint64_t count) {
-	struct SHLLNode *node = SH_list_getBack(list);
+	struct SHLLNode *node = list->back;
 	for(uint64_t i = 0; i < count; i++) {
 		node = node->prev;
 	}
@@ -152,6 +153,8 @@ static void _detachNode(struct SHLinkedList *list, struct SHLLNode *node) {
 
 SHErrorCode SH_list_deleteNthItem(struct SHLinkedList *list, uint64_t idx) {
 	if(!list) return SH_ILLEGAL_INPUTS;
+	if((list->front && !list->back) || (!list->front && list->back)) return SH_INVALID_STATE;
+	if((!list->front && !list->back) && list->count > 0) return SH_INVALID_STATE;
 	SHErrorCode status = SH_NO_ERROR;
 	uint64_t count = SH_list_count(list);
 	if(count < 1 || idx >= count) return SH_OUT_OF_RANGE;
@@ -171,12 +174,14 @@ SHErrorCode SH_list_deleteNthItem(struct SHLinkedList *list, uint64_t idx) {
 	else {
 		node = _searchFromBack(list, mid);
 	}
+	if(!node) goto fnExit;
 	_detachNode(list, node);
 	if(list->itemCleanup) {
 		list->itemCleanup(node->item);
 	}
 	free(node);
-	return status;
+	fnExit:
+		return status;
 }
 
 

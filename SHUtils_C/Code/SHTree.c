@@ -15,6 +15,7 @@
 #include <stdbool.h>
 #include <math.h>
 #include <string.h>
+#include <assert.h>
 
 
 const struct SHIterableSetup treeSetup = {
@@ -255,6 +256,7 @@ SHErrorCode SH_tree_addItem(struct SHTree *tree, void *item) {
 
 static struct SHTreeNode *_findNthItem(struct SHTreeNode *root, uint64_t idx, uint64_t leftCount)
 {
+	assert(root);
 	uint64_t localLeftCount = root->left ? root->left->childCount + 1: 0;
 	uint64_t totalLeftCount = localLeftCount + leftCount;
 	if(totalLeftCount > idx) {
@@ -494,6 +496,7 @@ static struct SHTreeNode *_nextInorder(struct SHTreeIterator *it) {
 	}
 	goto fnExit;
 	iterErr:
+		SH_notifyOfError(status, "error while pushing item into tree");
 		it->stateNum = _errorState;
 	fnExit:
 		return NULL;
@@ -526,6 +529,7 @@ static struct SHTreeNode *_nextPreorder(struct SHTreeIterator *it) {
 	}
 	goto fnExit;
 	iterErr:
+		SH_notifyOfError(status, "error while pushing item into tree");
 		it->stateNum = _errorState;
 	fnExit:
 	return NULL;
@@ -586,6 +590,7 @@ static struct SHTreeNode *_nextLineOrder(struct SHTreeIterator *it) {
 	}
 	goto fnExit;
 	iterErr:
+		SH_notifyOfError(status, "error while pushing item into tree");
 		it->stateNum = _errorState;
 	fnExit:
 	return NULL;

@@ -56,7 +56,7 @@ struct SHMap *SH_map_init4(uint64_t (*mappingFn)(void*), int32_t (*keyCompareFn)
 	struct SHLinkedList **backend = calloc(initialCapacity, sizeof(struct SHLinkedList *));
 	if(!backend) return NULL;
 	struct SHMap *map = malloc(sizeof(struct SHMap));
-	if(!map) return NULL;
+	if(!map) goto cleanup;
 	map->backend = backend;
 	map->count = 0;
 	map->capacity = initialCapacity;
@@ -66,6 +66,9 @@ struct SHMap *SH_map_init4(uint64_t (*mappingFn)(void*), int32_t (*keyCompareFn)
 	map->keyCompareFn = keyCompareFn;
 	map->loadFactor = loadFactor;
 	return map;
+	cleanup:
+		free(backend);
+		return NULL;
 }
 
 
@@ -123,7 +126,7 @@ static SHErrorCode _expandMap(struct SHMap *map) {
 		struct SHKeyItemPair *kip = NULL;
 		while((kip = SH_list_popFront(list))) {
 			uint64_t newIdx = map->mappingFn(kip->key) % newSize;
-			if((status = _setKip(backend, newIdx, kip)) != SH_NO_ERROR) { goto fnExit;}
+			if((status = _setKip(backend, newIdx, kip)) != SH_NO_ERROR) { goto cleanup;}
 		}
 		SH_list_cleanup(list);
 		map->backend[idx] = NULL;
@@ -131,8 +134,11 @@ static SHErrorCode _expandMap(struct SHMap *map) {
 	free(map->backend);
 	map->backend = backend;
 	map->capacity = newSize;
+	goto fnExit;
 	allocErr:
 		return SH_ALLOC_NO_MEM;
+	cleanup:
+		free(backend);
 	fnExit:
 		return status;
 }

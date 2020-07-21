@@ -62,10 +62,15 @@ static void _opCleanup(struct _queuedOp *op) {
 static bool _isRunning(struct SHSerialQueue *queue) {
 	int32_t threadCode = 0;
 	bool ans = false;
-	if((threadCode = pthread_mutex_lock(&queue->isRunningLock)) != 0) { return false; }
+	char msg[80];
+	if((threadCode = pthread_mutex_lock(&queue->isRunningLock)) != 0) { goto fnErr; }
 	ans = queue->isRunning;
-	if((threadCode = pthread_mutex_unlock(&queue->isRunningLock)) != 0) { return false; }
+	if((threadCode = pthread_mutex_unlock(&queue->isRunningLock)) != 0) { goto fnErr; }
 	return ans;
+	fnErr:
+		sprintf(msg,"pthread error: %d\nerror while initializing mutex or condition. \n", threadCode);
+		SH_notifyOfError(SH_THREAD_ERROR, msg);
+		return false;
 }
 
 
@@ -127,6 +132,9 @@ SHErrorCode _addOp(
 		_opCleanup(op);
 		goto fnExit;
 	allocErr:
+		if(cleanupFn) {
+			cleanupFn(fnArgs);
+		}
 		status |= SH_ALLOC_NO_MEM;
 		SH_notifyOfError(SH_ALLOC_NO_MEM, "Failed to allocate memory in _addOp");
 	fnExit:
@@ -152,11 +160,12 @@ SHErrorCode SH_serialQueue_addOp(
 		.fnArgs = fnArgs,
 		.cleanupFn = cleanupFn
 	};
-	status = _addOp(queue, _wrapVoidCall, wrapped, SH_cleanup);
+	if((status = _addOp(queue, _wrapVoidCall, wrapped, free))) { goto fnExit; }
 	goto fnExit;
 	allocErr:
 		status |= SH_ALLOC_NO_MEM;
 		SH_notifyOfError(status, "Failed to allocate memory in SH_serialQueue_addOp");
+		goto fnExit;
 	fnExit:
 		return status;
 }
@@ -219,9 +228,12 @@ static SHErrorCode _runSerialQueueLoop(struct SHSerialQueue *queue) {
 static void* _serialQueueLoopWrapper(void *args) {
 	SHErrorCode status = SH_NO_ERROR;
 	struct SHSerialQueue *queue = (struct SHSerialQueue *)args;
-	if((status = _runSerialQueueLoop(queue)) != SH_NO_ERROR) { ; }
+	if((status = _runSerialQueueLoop(queue)) != SH_NO_ERROR) { goto fnErr; }
 	printf("thread ending\n");
 	return NULL;
+	fnErr:
+		SH_notifyOfError(status, "There was an error in the serial queue loop");
+		return NULL;
 }
 
 
@@ -229,6 +241,7 @@ SHErrorCode SH_serialQueue_startLoop(struct SHSerialQueue *queue) {
 	if(!queue) return SH_ILLEGAL_INPUTS;
 	int32_t threadStatus = 0;
 	SHErrorCode status = SH_NO_ERROR;
+	char msg[65];
 	if(_isRunning(queue)) {
 		return SH_PRECONDITIONS_NOT_FULFILLED;
 	}
@@ -237,9 +250,14 @@ SHErrorCode SH_serialQueue_startLoop(struct SHSerialQueue *queue) {
 	if((threadStatus = pthread_create(&queue->serialThread, NULL, _serialQueueLoopWrapper, queue))
 		!= SH_NO_ERROR)
 	{
-		return SH_THREAD_ERROR;
+		status = SH_THREAD_ERROR;
+		goto fnErr;
 	}
 	return status;
+	fnErr:
+		sprintf(msg, "pthread error: %d\n while creating thread object. \n", threadStatus);
+		SH_notifyOfError(status, msg);
+		return status;
 }
 
 
@@ -282,6 +300,7 @@ struct SHSerialQueue * SH_serialQueue_init(void *initArgs, void (*initArgsCleanu
 	return queue;
 	
 	cleanupQueue:
+		SH_notifyOfError(status, "Error while initializing mutexes and conditions");
 		SH_iterable_cleanup(opsList);
 		SH_iterable_cleanup(resultList);
 		SH_serialQueue_cleanup(queue);

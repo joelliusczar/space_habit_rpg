@@ -28,9 +28,9 @@ struct SHIterableWrapper *SH_iterable_init(struct SHIterableSetup const * const 
 	if(!iterable) {
 		goto allocErr;
 	}
-	iterable->backend = setup->initializer(sortingFn, itemCleanup);;
-	if(!iterable->backend) goto cleanup;
 	setup->fnSetup(&iterable->funcs);
+	iterable->backend = setup->initializer(sortingFn, itemCleanup);
+	if(!iterable->backend) goto cleanup;
 	return iterable;
 	cleanup:
 		SH_iterable_cleanup(iterable);
@@ -104,9 +104,10 @@ struct SHIterableWrapperIterator *SH_iterableIterator_init(struct SHIterableWrap
 
 
 void *SH_iterableIterator_next(struct SHIterableWrapperIterator **iterP2) {
-	if(!iterP2 || !*iterP2) return NULL;
+	if(!iterP2) return NULL;
 	struct SHIterableWrapperIterator *it = *iterP2;
-	if(!it->iterable || it->iterable->funcs.iteratorNext) return NULL;
+	if(!it) return NULL;
+	if(!it->iterable || !it->iterable->funcs.iteratorNext) return NULL;
 	void* result = it->iterable->funcs.iteratorNext(&it->internalIter);
 	if(!it->internalIter) {
 		free(it);

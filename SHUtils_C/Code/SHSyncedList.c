@@ -32,10 +32,15 @@ static struct _nullWrapper _nullWraperObj = {0};
 bool SH_syncedList_isSqueezeMode(struct SHSyncedList *list) {
 	int32_t threadCode = 0;
 	bool ans = true;
-	if((threadCode = pthread_mutex_lock(&list->squeezeModeLock)) != 0) { return true; }
+	char msg[75];
+	if((threadCode = pthread_mutex_lock(&list->squeezeModeLock)) != 0) { goto fnErr; }
 	ans = list->isSqueezeMode;
-	if((threadCode = pthread_mutex_unlock(&list->squeezeModeLock)) != 0) { return true; }
+	if((threadCode = pthread_mutex_unlock(&list->squeezeModeLock)) != 0) { goto fnErr; }
 	return ans;
+	fnErr:
+		sprintf(msg,"pthread error: %d\nerror while locking or unlocking mutex. \n", threadCode);
+		SH_notifyOfError(SH_THREAD_ERROR, msg);
+		return true;
 }
 
 
@@ -54,6 +59,7 @@ struct SHSyncedList *SH_syncedList_init(struct SHIterableWrapper *iterable) {
 	list->iterable = iterable;
 	list->isSqueezeMode = false;
 	int32_t threadCode = 0;
+	char msg[80];
 	if((threadCode = pthread_mutex_init(&list->iterableLock, NULL))) {
 		goto cleanup;
 	}
@@ -69,6 +75,8 @@ struct SHSyncedList *SH_syncedList_init(struct SHIterableWrapper *iterable) {
 	return list;
 	cleanup:
 		SH_syncedList_cleanup(list);
+		sprintf(msg,"pthread error: %d\nerror while initializing mutex or condition. \n", threadCode);
+		SH_notifyOfError(SH_THREAD_ERROR, msg);
 		return NULL;
 }
 
@@ -77,6 +85,7 @@ SHErrorCode SH_syncedList_pushBack(struct SHSyncedList *list, void *item) {
 	if(!list) return SH_ILLEGAL_INPUTS;
 	int32_t threadCode = 0;
 	SHErrorCode status = SH_NO_ERROR;
+	char msg[95];
 	if(SH_syncedList_isSqueezeMode(list)) {
 		status = SH_EXTERNAL_BLOCK;
 		goto fnExit;
@@ -96,6 +105,8 @@ SHErrorCode SH_syncedList_pushBack(struct SHSyncedList *list, void *item) {
 	goto fnExit;
 	threadErr:
 		status |= SH_THREAD_ERROR;
+		sprintf(msg,"pthread error: %d\nerror while locking, unlocking mutex or signaling condidtion.", threadCode);
+		SH_notifyOfError(status, msg);
 	fnExit:
 		return status;
 }
@@ -105,7 +116,8 @@ void *SH_syncedList_popFront(struct SHSyncedList *list) {
 	if(!list) return NULL;
 	int32_t threadCode = 0;
 	void *item = NULL;
-	if((threadCode = pthread_mutex_lock(&list->iterableLock)) != 0) { goto fnExit; }
+	char msg[95];
+	if((threadCode = pthread_mutex_lock(&list->iterableLock)) != 0) { goto threadErr; }
 	item = SH_iterable_popFront(list->iterable);
 	if(SH_iterable_count(list->iterable) < 1) {
 		if((threadCode = pthread_cond_signal(&list->isEmpty)) != 0) {
@@ -113,13 +125,17 @@ void *SH_syncedList_popFront(struct SHSyncedList *list) {
 			goto threadErrSignal;
 		}
 	}
-	if((threadCode = pthread_mutex_unlock(&list->iterableLock)) != 0) { goto fnExit; }
+	if((threadCode = pthread_mutex_unlock(&list->iterableLock)) != 0) { goto threadErr; }
 	if(&_nullWraperObj == item) {
 		item = NULL;
 	}
 	return item;
 	threadErrSignal:
 		pthread_mutex_unlock(&list->iterableLock);
+	threadErr:
+		sprintf(msg,"pthread error: %d\nerror while locking, unlocking mutex or signaling condidtion.", threadCode);
+		SH_notifyOfError(SH_THREAD_ERROR, msg);
+		goto fnExit;
 	fnExit:
 		return NULL;
 }
@@ -129,7 +145,8 @@ void *SH_syncedList_waitForPopFront(struct SHSyncedList *list) {
 	if(!list) return NULL;
 	int32_t threadCode = 0;
 	void *item = NULL;
-	if((threadCode = pthread_mutex_lock(&list->iterableLock)) != 0) { goto fnExit; }
+	char msg[95];
+	if((threadCode = pthread_mutex_lock(&list->iterableLock)) != 0) { goto threadErr; }
 	while(!(item = SH_iterable_popFront(list->iterable))) {
 		if(SH_iterable_count(list->iterable) < 1) {
 			if((threadCode = pthread_cond_signal(&list->isEmpty)) != 0) {
@@ -140,15 +157,19 @@ void *SH_syncedList_waitForPopFront(struct SHSyncedList *list) {
 		if(SH_syncedList_isSqueezeMode(list)) {
 			break;
 		}
-		if((threadCode = pthread_cond_wait(&list->hasItems, &list->iterableLock)) != 0) { goto fnExit; }
+		if((threadCode = pthread_cond_wait(&list->hasItems, &list->iterableLock)) != 0) { goto threadErr; }
 	}
-	if((threadCode = pthread_mutex_unlock(&list->iterableLock)) != 0) { goto fnExit; }
+	if((threadCode = pthread_mutex_unlock(&list->iterableLock)) != 0) { goto threadErr; }
 	if(&_nullWraperObj == item) {
 		item = NULL;
 	}
 	return item;
 	threadErrSignal:
 		pthread_mutex_unlock(&list->iterableLock);
+	threadErr:
+		sprintf(msg,"pthread error: %d\nerror while locking, unlocking mutex or signaling condidtion.", threadCode);
+		SH_notifyOfError(SH_THREAD_ERROR, msg);
+		goto fnExit;
 	fnExit:
 		return NULL;
 }
@@ -158,7 +179,8 @@ void *SH_syncedList_popBack(struct SHSyncedList *list) {
 	if(!list) return NULL;
 	int32_t threadCode = 0;
 	void *item = NULL;
-	if((threadCode = pthread_mutex_lock(&list->iterableLock)) != 0) { goto fnExit; }
+	char msg[95];
+	if((threadCode = pthread_mutex_lock(&list->iterableLock)) != 0) { goto threadErr; }
 	item = SH_iterable_popBack(list->iterable);
 	if(SH_iterable_count(list->iterable) < 1) {
 		if((threadCode = pthread_cond_signal(&list->isEmpty)) != 0) {
@@ -166,13 +188,17 @@ void *SH_syncedList_popBack(struct SHSyncedList *list) {
 			goto threadErrSignal;
 		}
 	}
-	if((threadCode = pthread_mutex_unlock(&list->iterableLock)) != 0) { goto fnExit; }
+	if((threadCode = pthread_mutex_unlock(&list->iterableLock)) != 0) { goto threadErr; }
 	if(&_nullWraperObj == item) {
 		item = NULL;
 	}
 	return item;
 	threadErrSignal:
 		pthread_mutex_unlock(&list->iterableLock);
+	threadErr:
+		sprintf(msg,"pthread error: %d\nerror while locking, unlocking mutex or signaling condidtion.", threadCode);
+		SH_notifyOfError(SH_THREAD_ERROR, msg);
+		goto fnExit;
 	fnExit:
 		return NULL;
 }
@@ -182,14 +208,17 @@ void *SH_syncedList_getBack(struct SHSyncedList *list) {
 	if(!list) return NULL;
 	int32_t threadCode = 0;
 	void *item = NULL;
-	if((threadCode = pthread_mutex_lock(&list->iterableLock)) != 0) { goto fnExit; }
+	char msg[80];
+	if((threadCode = pthread_mutex_lock(&list->iterableLock)) != 0) { goto threadErr; }
 	item = SH_iterable_getBack(list->iterable);
-	if((threadCode = pthread_mutex_unlock(&list->iterableLock)) != 0) { goto fnExit; }
+	if((threadCode = pthread_mutex_unlock(&list->iterableLock)) != 0) { goto threadErr; }
 	if(&_nullWraperObj == item) {
 		item = NULL;
 	}
 	return item;
-	fnExit:
+	threadErr:
+		sprintf(msg,"pthread error: %d\nerror while locking or unlocking mutex.", threadCode);
+		SH_notifyOfError(SH_THREAD_ERROR, msg);
 		return NULL;
 }
 
@@ -198,14 +227,17 @@ void *SH_syncedList_getFront(struct SHSyncedList *list) {
 	if(!list) return NULL;
 	int32_t threadCode = 0;
 	void *item = NULL;
-	if((threadCode = pthread_mutex_lock(&list->iterableLock)) != 0) { goto fnExit; }
+	char msg[80];
+	if((threadCode = pthread_mutex_lock(&list->iterableLock)) != 0) { goto threadErr; }
 	item = SH_iterable_getFront(list->iterable);
-	if((threadCode = pthread_mutex_unlock(&list->iterableLock)) != 0) { goto fnExit; }
+	if((threadCode = pthread_mutex_unlock(&list->iterableLock)) != 0) { goto threadErr; }
 	if(&_nullWraperObj == item) {
 		item = NULL;
 	}
 	return item;
-	fnExit:
+	threadErr:
+		sprintf(msg,"pthread error: %d\nerror while locking or unlocking mutex.", threadCode);
+		SH_notifyOfError(SH_THREAD_ERROR, msg);
 		return NULL;
 }
 
@@ -214,16 +246,21 @@ uint64_t SH_syncedList_count(struct SHSyncedList *list) {
 	if(!list) return NULL;
 	int32_t threadCode = 0;
 	uint64_t count = SH_NOT_FOUND;
-	if((threadCode = pthread_mutex_lock(&list->iterableLock)) != 0) { goto fnExit; }
+	char msg[80];
+	if((threadCode = pthread_mutex_lock(&list->iterableLock)) != 0) { goto threadErr; }
 	count = SH_iterable_count(list->iterable);
-	if((threadCode = pthread_mutex_unlock(&list->iterableLock)) != 0) { goto fnExit; }
-	fnExit:
+	if((threadCode = pthread_mutex_unlock(&list->iterableLock)) != 0) { goto threadErr; }
+	return count;
+	threadErr:
+		sprintf(msg,"pthread error: %d\nerror while locking or unlocking mutex.", threadCode);
+		SH_notifyOfError(SH_THREAD_ERROR, msg);
 		return count;
 }
 
 SHErrorCode SH_syncedList_runActionOnEmpty(struct SHSyncedList *list, SHErrorCode (*onEmpty)(void *), void* fnArgs) {
 	int32_t threadCode = 0;
 	SHErrorCode status = SH_NO_ERROR;
+	char msg[100];
 	if((threadCode = pthread_mutex_lock(&list->iterableLock)) != 0) { goto threadCodeExit; }
 	while(SH_iterable_count(list->iterable) > 0) {
 		if((threadCode = pthread_cond_wait(&list->isEmpty, &list->iterableLock)) != 0) {
@@ -238,6 +275,8 @@ SHErrorCode SH_syncedList_runActionOnEmpty(struct SHSyncedList *list, SHErrorCod
 	threadCodeExit:
 		status |= SH_THREAD_ERROR;
 		SH_notifyOfError(status, "There was an error in runActionOnEmpty");
+		sprintf(msg,"pthread error: %d\nerror while locking, or unlocking mutex or while waiting for signal.", threadCode);
+		SH_notifyOfError(SH_THREAD_ERROR, msg);
 	fnExit:
 		return status;
 }
@@ -247,12 +286,15 @@ SHErrorCode SH_syncedList_stirHasItems(struct SHSyncedList *list) {
 	if(!list) return SH_ILLEGAL_INPUTS;
 	int32_t threadCode = 0;
 	SHErrorCode status = SH_NO_ERROR;
+	char msg[95];
 	if((threadCode = pthread_mutex_lock(&list->iterableLock)) != 0) { goto threadErr; }
 	if((threadCode = pthread_cond_signal(&list->hasItems)) != 0) { goto threadErr; }
 	if((threadCode = pthread_mutex_unlock(&list->iterableLock)) != 0) { goto threadErr; }
 	goto fnExit;
 	threadErr:
 		status |= SH_THREAD_ERROR;
+		sprintf(msg,"pthread error: %d\nerror while locking, unlocking mutex or signaling condidtion.", threadCode);
+		SH_notifyOfError(status, msg);
 	fnExit:
 		return status;
 }

@@ -6,9 +6,9 @@
 //  Copyright © 2020 Joel Gillette. All rights reserved.
 //
 
-#import <XCTest/XCTest.h>
 #import "SHPipeline.h"
 #import "SHDynamicArray.h"
+#import <XCTest/XCTest.h>
 
 @interface SHTestPipeline : XCTestCase
 
@@ -1203,5 +1203,8 @@ static int32_t _groupingFn(struct _trObj *tr, void *obj, uint64_t idx) {
 	
 	XCTAssertEqual(iter, NULL);
 }
+
+
+
 
 @end

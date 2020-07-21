@@ -251,10 +251,6 @@ static struct _itemWrapper *_filterApply(struct SHPipelineIterator *iter, bool *
 
 
 static struct _itemWrapper *_groupingApply(struct SHPipelineIterator *iter, bool *hasNext) {
-	switch(iter->state) {
-		case SH_PIPELINE_NEXT: goto next;
-		default: break;
-	}
 	struct SHPipelineIterator *prevIter = NULL;
 	struct _groupingPipeline *pipeline = NULL;
 	struct SHMap *map = NULL;
@@ -262,6 +258,10 @@ static struct _itemWrapper *_groupingApply(struct SHPipelineIterator *iter, bool
 	uint64_t idx = 0;
 	SHErrorCode status = SH_NO_ERROR;
 	struct SHIterableWrapper *iterable = NULL;
+	switch(iter->state) {
+		case SH_PIPELINE_NEXT: goto next;
+		default: break;
+	}
 	prevIter = SH_llnode_getItem(SH_llnode_getPrev(iter->nodeLink));
 	pipeline = (struct _groupingPipeline*)iter->pipeline;
 	map = SH_map_init3(SH_defaultMappingFn, SH_defaultKeyCompareFn, (void (*)(void*))SH_iterable_cleanup,
@@ -306,6 +306,7 @@ static struct _itemWrapper *_groupingApply(struct SHPipelineIterator *iter, bool
 		}
 		return wrapper;
 	cleanup:
+		SH_notifyOfError(status, "error while adding item to collection");
 		*hasNext = false;
 		return NULL;
 }
