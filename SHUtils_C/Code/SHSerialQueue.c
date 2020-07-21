@@ -86,17 +86,14 @@ static SHErrorCode _setIsRunning(struct SHSerialQueue *queue, bool value) {
 
 static SHErrorCode _waitForQueueToEmpty(struct SHSerialQueue *queue) {
 	SHErrorCode status = SH_NO_ERROR;
-	if((status = SH_syncedList_setIsSqueezeMode(queue->opsQueue, true)) != SH_NO_ERROR) { goto cleanup; }
+	if((status = SH_syncedList_setIsSqueezeMode(queue->opsQueue, true)) != SH_NO_ERROR) { goto fnExit; }
 	if((status = SH_syncedList_runActionOnEmpty(queue->opsQueue, (SHErrorCode (*)(void*))SH_serialQueue_pauseLoop,
 		queue)) != SH_NO_ERROR)
 	{
-		goto cleanup;
+		goto fnExit;
 	}
-	if((status = SH_syncedList_stirHasItems(queue->opsQueue)) != SH_NO_ERROR) { goto cleanup; }
-
-	goto fnExit;
-	cleanup:
-		SH_serialQueue_cleanup(queue);
+	if((status = SH_syncedList_stirHasItems(queue->opsQueue)) != SH_NO_ERROR) { goto fnExit; }
+		
 	fnExit:
 		return status;
 }
@@ -274,9 +271,18 @@ static SHErrorCode _initMutexesAndConditions(struct SHSerialQueue *queue) {
 struct SHSerialQueue * SH_serialQueue_init(void *initArgs, void (*initArgsCleanup)(void*)) {
 	struct SHSerialQueue *queue = malloc(sizeof(struct SHSerialQueue));
 	if(!queue) return NULL;
+	*queue = (struct SHSerialQueue){
+		.opsQueue = NULL,
+		.resultQueue = NULL,
+		.queueStore = { .queueRef = queue,
+			.userItem = initArgs,
+			.queueStoreCleanup = initArgsCleanup
+		},
+		.isRunning = false,
+	};
+	SHErrorCode status = SH_NO_ERROR;
 	struct SHIterableWrapper *opsList = NULL;
 	struct SHIterableWrapper *resultList = NULL;
-	SHErrorCode status = SH_NO_ERROR;
 	
 	opsList = SH_iterable_init(&listSetup, NULL, (void (*)(void*))_opCleanup);
 	if(!opsList) goto cleanupQueue;
@@ -284,15 +290,8 @@ struct SHSerialQueue * SH_serialQueue_init(void *initArgs, void (*initArgsCleanu
 	resultList = SH_iterable_init(&listSetup, NULL, NULL);
 	if(!resultList) goto cleanupQueue;
 	
-	*queue = (struct SHSerialQueue){
-		.opsQueue = SH_syncedList_init(opsList),
-		.resultQueue = SH_syncedList_init(resultList),
-		.queueStore = { .queueRef = queue,
-			.userItem = initArgs,
-			.queueStoreCleanup = initArgsCleanup
-		},
-		.isRunning = false,
-	};
+	queue->opsQueue = SH_syncedList_init(opsList);
+	queue->resultQueue = SH_syncedList_init(resultList);
 	
 	if((status = _initMutexesAndConditions(queue)) != SH_NO_ERROR) {
 		goto cleanupQueue;
@@ -336,9 +335,13 @@ SHErrorCode SH_serialQueue_closeLoop(struct SHSerialQueue *queue) {
 	if(!queue) return SH_ILLEGAL_INPUTS;
 	if(!_isRunning(queue)) return SH_PRECONDITIONS_NOT_FULFILLED;
 	SHErrorCode status = SH_NO_ERROR;
-	status = _waitForQueueToEmpty(queue);
+	if((status = _waitForQueueToEmpty(queue)) != SH_NO_ERROR) { }
+	
 	if((pthread_join(queue->serialThread, NULL)) != 0) {
-		return status | SH_THREAD_ERROR;
+		status |= SH_THREAD_ERROR;
+	}
+	if(status != SH_NO_ERROR) {
+		SH_serialQueue_cleanup(queue);
 	}
 	return status;
 }

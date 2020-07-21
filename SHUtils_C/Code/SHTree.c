@@ -725,10 +725,14 @@ char *SH_tree_printLineOrder(struct SHTree *tree, char *(*itemDescFn)(void *)) {
 	uint64_t currentMaxLen = 0;
 	char *result = NULL;
 	char *cat = NULL;
+	char *tmp = NULL;
 	struct SHTreeIterator *iter = SH_treeIterator_init(tree);
 	if(!iter) goto cleanup;
 	item = SH_treeIterator_nextLineOrder(&iter);
-	if(!item) return SH_constStrCopy("");
+	if(!item) {
+		_iteratorCleanup(iter);
+		return SH_constStrCopy("");
+	}
 	itemDesc = itemDescFn(item);
 	if(!itemDesc) {
 		itemDesc = SH_constStrCopy("");
@@ -751,17 +755,22 @@ char *SH_tree_printLineOrder(struct SHTree *tree, char *(*itemDescFn)(void *)) {
 		itemStrLen = strlen(itemDesc);
 		if((currentLen + itemStrLen) >= currentMaxLen) {
 			currentMaxLen *= 2;
-			result = realloc(result, currentMaxLen);
-			if(!result) {
+			tmp = realloc(result, currentMaxLen);
+			if(!tmp) {
+				if(currentMaxLen > 0) goto reallocErr;
 				goto cleanup;
 			}
+			result = tmp;
 			cat = result + currentLen -1;
 		}
 		currentLen += itemStrLen;
 		strncat(cat, itemDesc, itemStrLen);
 	}
 	free(itemDesc);
+	_iteratorCleanup(iter);
 	return result;
+	reallocErr:
+		free(result);
 	cleanup:
 		free(itemDesc);
 		_iteratorCleanup(iter);
