@@ -12,10 +12,15 @@
 #include "SHConfigAccessor.h"
 #include <stdio.h>
 #include <sqlite3.h>
+#include <SHUtils_C/SHIterableWrapper.h>
+#include <SHDatetime/SHDatetimeProvider.h>
 
 struct SHQueueStoreItem {
 	sqlite3 *db;
 	struct SHConfigAccessor *config;
+	struct SHIterableWrapper *storage;
+	struct SHDatetimeProvider *dateProvider;
+	
 };
 
 void SH_freeQueueStoreItem(struct SHQueueStoreItem **item);

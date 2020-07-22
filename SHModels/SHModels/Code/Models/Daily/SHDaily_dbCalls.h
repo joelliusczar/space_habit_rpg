@@ -10,6 +10,7 @@
 #define SHDaily_dbCalls_h
 
 #include "SHDaily_struct.h"
+#include "SHQueueStoreItem.h"
 #include <SHUtils_C/SHErrorHandling.h>
 #include <SHUtils_C/SHSerialAccessCollection.h>
 #include <SHDatetime/SHDatetimeProvider.h>
@@ -22,7 +23,6 @@ SHErrorCode SH_insertDaily( sqlite3 *db, struct SHDaily const * daily, int64_t *
 SHErrorCode SH_updateDaily(sqlite3 *db, struct SHDaily const * const daily);
 SHErrorCode SH_fetchSingleDaily(sqlite3 *db, int64_t pk, struct SHDaily *daily);
 SHErrorCode SH_bindAllDailyParams(sqlite3_stmt *stmt, struct SHDaily const * const daily);
-SHErrorCode SH_fetchTableDailies(sqlite3 *db, struct SHSerialAccessCollection **saCollectionP2,
-	struct SHDatetimeProvider *dateProvider);
+SHErrorCode SH_fetchTableDailies(struct SHQueueStoreItem *queStoreItem);
 
 #endif /* SHDaily_dbCalls_h */

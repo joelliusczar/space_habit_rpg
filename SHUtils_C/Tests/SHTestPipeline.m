@@ -53,7 +53,7 @@ static bool _filterOdds(int32_t num, void *fnArgs, uint64_t idx) {
 		.arr = nums,
 		.size = 25
 	};
-	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_genFn, NULL);
+	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_genFn, NULL, NULL);
 	XCTAssertNotEqual(pl, NULL);
 	struct SHPipelineIterator *iter = SH_pipelineIterator_init(pl);
 	XCTAssertNotEqual(iter, NULL);
@@ -124,7 +124,7 @@ static bool _filterOdds(int32_t num, void *fnArgs, uint64_t idx) {
 		.arr = nums,
 		.size = 25
 	};
-	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_genFn, NULL);
+	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_genFn, NULL, NULL);
 	struct SHPipeline *pl2 = SH_pipeline_useFilter(pl, (bool (*)(void*, void*, uint64_t))_filterOdds, NULL, NULL);
 	XCTAssertNotEqual(pl2, NULL);
 	struct SHPipelineIterator *iter = SH_pipelineIterator_init(pl2);
@@ -165,7 +165,7 @@ static bool _filterOdds(int32_t num, void *fnArgs, uint64_t idx) {
 		.arr = nums,
 		.size = 20
 	};
-	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_genFn, NULL);
+	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_genFn, NULL, NULL);
 	struct SHPipeline *pl2 = SH_pipeline_useFilter(pl, (bool (*)(void*, void*, uint64_t))_filterOdds, NULL, NULL);
 	XCTAssertNotEqual(pl2, NULL);
 	struct SHPipelineIterator *iter = SH_pipelineIterator_init(pl2);
@@ -202,7 +202,7 @@ static bool _filterAll(int32_t num, void *fnArgs, uint64_t idx) {
 		.arr = nums,
 		.size = 25
 	};
-	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_genFn, NULL);
+	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_genFn, NULL, NULL);
 	struct SHPipeline *pl2 = SH_pipeline_useFilter(pl, (bool (*)(void*, void*, uint64_t))_filterAll, NULL, NULL);
 	XCTAssertNotEqual(pl2, NULL);
 	struct SHPipelineIterator *iter = SH_pipelineIterator_init(pl2);
@@ -228,7 +228,7 @@ static bool _filterNone(int32_t num, void *fnArgs, uint64_t idx) {
 		.arr = nums,
 		.size = 25
 	};
-	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_genFn, NULL);
+	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_genFn, NULL, NULL);
 	XCTAssertNotEqual(pl, NULL);
 	struct SHPipeline *pl2 = SH_pipeline_useFilter(pl, (bool (*)(void*, void*, uint64_t))_filterNone, NULL, NULL);
 	XCTAssertNotEqual(pl2, NULL);
@@ -307,7 +307,7 @@ static int32_t _double(int32_t num, void *fnArgs, uint64_t idx) {
 		.arr = nums,
 		.size = 25
 	};
-	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_genFn, NULL);
+	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_genFn, NULL, NULL);
 	XCTAssertNotEqual(pl, NULL);
 	struct SHPipeline *pl2 = SH_pipeline_useTransform(pl, (void* (*)(void*,void*,uint64_t))_double, NULL, NULL, NULL);
 	XCTAssertNotEqual(pl2, NULL);
@@ -381,7 +381,7 @@ static int32_t _double(int32_t num, void *fnArgs, uint64_t idx) {
 		.arr = nums,
 		.size = 25
 	};
-	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_genFn, NULL);
+	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_genFn, NULL, NULL);
 	struct SHPipeline *pl2 = SH_pipeline_useFilter(pl, (bool (*)(void*, void*, uint64_t))_filterOdds, NULL, NULL);
 	XCTAssertNotEqual(pl2, NULL);
 	struct SHPipeline *pl3 = SH_pipeline_useTransform(pl2, (void* (*)(void*,void*,uint64_t))_double, NULL, NULL, NULL);
@@ -431,7 +431,7 @@ static int32_t _triple(int32_t num, void *fnArgs, uint64_t idx) {
 		.arr = nums,
 		.size = 25
 	};
-	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_genFn, NULL);
+	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_genFn, NULL, NULL);
 	struct SHPipeline *pl2 = SH_pipeline_useTransform(pl, (void* (*)(void*,void*,uint64_t))_triple, NULL, NULL, NULL);
 	XCTAssertNotEqual(pl2, NULL);
 	struct SHPipeline *pl3 = SH_pipeline_useFilter(pl2, (bool (*)(void*, void*, uint64_t))_filterOdds, NULL, NULL);
@@ -522,7 +522,7 @@ static void _cleanupTr(struct _trObj *tr) {
 		.arr = nums,
 		.size = 25
 	};
-	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_objGenFn, NULL);
+	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_objGenFn, NULL, NULL);
 	XCTAssertNotEqual(pl, NULL);
 	struct SHPipeline *pl2 = SH_pipeline_useTransform(pl, (void* (*)(void*,void*,uint64_t))_trFn, NULL, NULL, (void (*)(void*))_cleanupTr);
 	XCTAssertNotEqual(pl2, NULL);
@@ -721,7 +721,7 @@ static void _cleanupTr(struct _trObj *tr) {
 		.arr = nums,
 		.size = 25
 	};
-	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_genFn, NULL);
+	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_genFn, NULL, NULL);
 	XCTAssertNotEqual(pl, NULL);
 	struct SHPipeline *pl2 = SH_pipeline_useSkip(pl,5);
 	struct SHPipeline *pl3 = SH_pipeline_useTake(pl2, 5);
@@ -756,7 +756,7 @@ static void _cleanupTr(struct _trObj *tr) {
 		.arr = nums,
 		.size = 25
 	};
-	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_objGenFn, NULL);
+	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_objGenFn, NULL, NULL);
 	XCTAssertNotEqual(pl, NULL);
 	struct SHPipeline *pl2 = SH_pipeline_useTransform(pl, (void* (*)(void*,void*,uint64_t))_trFn, NULL, NULL,
 		(void (*)(void*))_cleanupTr);
@@ -821,7 +821,7 @@ static bool _filter3digits(struct _trObj *tr, void *fnArgs, uint64_t idx) {
 		.arr = nums,
 		.size = 25
 	};
-	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_objGenFn, NULL);
+	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_objGenFn, NULL, NULL);
 	XCTAssertNotEqual(pl, NULL);
 	struct SHPipeline *pl2 = SH_pipeline_useTransform(pl, (void* (*)(void*,void*,uint64_t))_trFn, NULL, NULL, (void (*)(void*))_cleanupTr);
 	XCTAssertNotEqual(pl2, NULL);
@@ -967,13 +967,13 @@ static int32_t _groupingFn(struct _trObj *tr, void *obj, uint64_t idx) {
 		.arr = nums,
 		.size = 25
 	};
-	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_objGenFn, NULL);
+	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_objGenFn, NULL, NULL);
 	XCTAssertNotEqual(pl, NULL);
 	struct SHPipeline *pl2 = SH_pipeline_useTransform(pl, (void* (*)(void*,void*,uint64_t))_trFn,
 		NULL, NULL, (void (*)(void*))_cleanupTr);
 	XCTAssertNotEqual(pl2, NULL);
 	struct SHPipeline *pl3 = SH_pipeline_useGrouping(pl2, (void* (*)(void*, void*, uint64_t))_groupingFn, NULL, NULL,
-		&arraySetup, NULL, NULL, (void (*)(void*))_cleanupTr);
+		&arraySetup, NULL, NULL);
 	
 	struct SHPipelineIterator *iter = SH_pipelineIterator_init(pl3);
 	XCTAssertNotEqual(iter, NULL);
@@ -1111,13 +1111,13 @@ static int32_t _groupingFn(struct _trObj *tr, void *obj, uint64_t idx) {
 		.arr = nums,
 		.size = 25
 	};
-	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_objGenFn, NULL);
+	struct SHPipeline *pl = SH_pipeline_init(&source, (void *(*)(void*,bool*))_objGenFn, NULL, NULL);
 	XCTAssertNotEqual(pl, NULL);
 	struct SHPipeline *pl2 = SH_pipeline_useTransform(pl, (void* (*)(void*,void*,uint64_t))_trFn,
 		NULL, NULL, (void (*)(void*))_cleanupTr);
 	XCTAssertNotEqual(pl2, NULL);
 	struct SHPipeline *pl3 = SH_pipeline_useGrouping(pl2, (void* (*)(void*, void*, uint64_t))_groupingFn, NULL, NULL,
-		&arraySetup, NULL, NULL, (void (*)(void*))_cleanupTr);
+		&arraySetup, NULL, NULL);
 		
 	struct SHPipeline *pl4 = SH_pipeline_useSkip(pl3, 1);
 	struct SHPipeline *pl5 = SH_pipeline_useTake(pl4, 1);

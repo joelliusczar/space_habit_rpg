@@ -220,7 +220,7 @@ SHErrorCode SH_fetchSingleDaily(sqlite3 *db, int64_t pk, struct SHDaily *daily) 
 }
 
 
-static void *_tableDailyFetchGenFn(sqlite3_stmt *stmt) {
+static void *_tableDailyFetchGenFn(sqlite3_stmt *stmt, bool *hasNext) {
 	int32_t sqlStatus = SQLITE_OK;
 	SHErrorCode status = SH_NO_ERROR;
 	struct SHTableDaily *tableDaily = NULL;
@@ -256,37 +256,18 @@ static int32_t _tableDailySortingFn(struct SHTableDaily *tableDaily1, struct SHT
 }
 
 
-static SHErrorCode _setupTableDailySerialCollection(struct SHSerialAccessCollection **saCollectionP2) {
-	SHErrorCode status = SH_NO_ERROR;
-	struct SHIterableWrapper *iterable = SH_iterable_init(
-		(void* (*)(int32_t (*)(void*, void*), void (*)(void**)))SH_tree_init,
-		SH_iterable_loadTreeFuncs,
-		(void (*)(void**))SH_tree_cleanup,
-		(int32_t (*)(void*, void*))_tableDailySortingFn,
-		(void (*)(void**))SH_cleanupTableDaily
-	);
-	*saCollectionP2 = SH_SACollection_init(iterable);
-	if(!*saCollectionP2) return SH_ALLOC_NO_MEM;
-	SH_SACollection_setGroupingFn(*saCollectionP2, (uint64_t (*)(void*))_tableDailiesGrouper);
-	SH_SACollection_createSubIterable(*saCollectionP2, NULL, NULL);
-	SH_SACollection_createSubIterable(*saCollectionP2, NULL, NULL);
-	SH_SACollection_startLoop(*saCollectionP2);
-	return status;
-}
-
-SHErrorCode SH_fetchTableDailies(sqlite3 *db, struct SHSerialAccessCollection **saCollectionP2,
-	struct SHDatetimeProvider *dateProvider)
+SHErrorCode SH_fetchTableDailies(struct SHQueueStoreItem *queueStoreItem)
 {
-	if(!db || !saCollectionP2) return SH_ILLEGAL_INPUTS;
+	if(!queueStoreItem) return SH_ILLEGAL_INPUTS;
 	SHErrorCode status = SH_NO_ERROR;
 	int32_t sqlStatus = SQLITE_OK;
 	sqlite3_stmt *stmt = NULL;
+	struct SHDatetimeProvider *dateProvider = queueStoreItem->dateProvider;
 	char errMsg[70];
-	if((status = SH_buildStatement_fetchAllTableDailies(&stmt, db)) != SH_NO_ERROR) { goto sqlErr; }
+	if((status = SH_buildStatement_fetchAllTableDailies(&stmt, queueStoreItem->db)) != SH_NO_ERROR) { goto sqlErr; }
 	int32_t localTzOffset = dateProvider && dateProvider->getLocalTzOffset ? dateProvider->getLocalTzOffset() : 0;
 	if((sqlStatus = sqlite3_bind_int(stmt, 1, localTzOffset)) != SQLITE_OK) { goto shErr; }
 	
-	if((status = _setupTableDailySerialCollection(saCollectionP2)) != SH_NO_ERROR) { goto cleanup; }
 	
 	struct SHGeneratorFnObj *fnObj = malloc(sizeof(struct SHGeneratorFnObj));
 	if(!fnObj) goto allocErr;

@@ -20,7 +20,8 @@ struct SHPipeline;
 struct SHPipelineIterator;
 
 
-struct SHPipeline *SH_pipeline_init(void *source, void *(*genFn)(void*, bool*), void (*sourceCleanup)(void*));
+struct SHPipeline *SH_pipeline_init(void *source, void *(*genFn)(void*, bool*), void (*sourceCleanup)(void*),
+	void (*unusedItemCleanup)(void*));
 
 
 /*
@@ -28,7 +29,7 @@ struct SHPipeline *SH_pipeline_init(void *source, void *(*genFn)(void*, bool*), 
 	element, we leave it alone
 */
 struct SHPipeline *SH_pipeline_useTransform(struct SHPipeline *source, void *(*fn)(void*, void*, uint64_t),
-	void *fnArgs, void (*fnArgsCleanup)(void *), void (*transformCleanup)(void *));
+	void *fnArgs, void (*fnArgsCleanup)(void *), void (*unusedItemCleanup)(void *));
 
 struct SHPipeline *SH_pipeline_useFilter(struct SHPipeline *source, bool (*fn)(void*, void*, uint64_t),
 	void *fnArgs, void (*fnArgsCleanup)(void *));
@@ -39,13 +40,16 @@ struct SHPipeline *SH_pipeline_useFilter(struct SHPipeline *source, bool (*fn)(v
 */
 struct SHPipeline *SH_pipeline_useGrouping(struct SHPipeline *source, void *(*fn)(void*, void*, uint64_t),
 	void *fnArgs, void (*fnArgsCleanup)(void *), struct SHIterableSetup const * const iterableSetup,
-	int32_t (*sortingFn)(void*, void*), void (*keyCleanup)(void*), void (*itemCleanup)(void*));
+	int32_t (*sortingFn)(void*, void*), void (*keyCleanup)(void*));
 	
 struct SHPipeline *SH_pipeline_useSkip(struct SHPipeline *source, uint64_t skip);
 struct SHPipeline *SH_pipeline_useTake(struct SHPipeline *source, uint64_t skip);
 
 struct SHPipelineIterator *SH_pipelineIterator_init(struct SHPipeline *pipeline);
 void *SH_pipelineIterator_next(struct SHPipelineIterator **iter);
+
+struct SHIterableWrapper *SH_pipeline_completeAsIteratble(struct SHPipeline *pipeline,
+	struct SHIterableSetup const * const iterableSetup, int32_t (*sortingFn)(void*, void*));
 
 void SH_pipeline_cleanup(struct SHPipeline *pipeline);
 #endif /* SHPipeline_h */

@@ -52,7 +52,7 @@
 static SHErrorCode _fetchTableDailies(void* args, struct SHQueueStore *store) {
 	struct SHFetchTableItemsArgs *tableArgs = (struct SHFetchTableItemsArgs *)args;
 	struct SHQueueStoreItem *item = (struct SHQueueStoreItem *)SH_serialQueue_getUserItem(store);
-	SHErrorCode status = SH_fetchTableDailies(item->db, &tableArgs->saCollection, tableArgs->dateProvider);
+	SHErrorCode status = SH_fetchTableDailies(item);
 	return status;
 }
 

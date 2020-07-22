@@ -597,11 +597,12 @@ SHErrorCode _missedDays(struct SHDueDateWeeklyContext *context,
 	SHErrorCode status = SH_NO_ERROR;
 	struct SHMissedDaysInfo info;
 	if((status = _missedDays_setInfo(calculatedPrevDueDate, context, &info)) != SH_NO_ERROR) {
-		goto fnExit;
+		goto fnErr;
 	}
 	if(info.fullWeekCount < 1) {
 		status = SH_LOGIC_MISROUTE;
 		SH_notifyOfError(status, "This should have been handled earlier in the flow.");
+		goto fnErr;
 	}
 	int64_t adjustedWeekCount = info.fullWeekCount / context->intervalSize;
 	if(adjustedWeekCount == 0) {
@@ -614,6 +615,9 @@ SHErrorCode _missedDays(struct SHDueDateWeeklyContext *context,
 	}
 	fnExit:
 		return SH_NO_ERROR;
+	fnErr:
+		SH_notifyOfError(status, "Error in missed Days");
+		return status;
 }
 
 
