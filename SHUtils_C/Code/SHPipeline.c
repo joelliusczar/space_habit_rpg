@@ -495,7 +495,7 @@ void SH_pipeline_cleanup(struct SHPipeline *pipeline) {
 }
 
 
-struct SHIterableWrapper *SH_pipeline_completeAsIteratble(struct SHPipeline *pipeline,
+struct SHIterableWrapper *SH_pipeline_completeAsIterable(struct SHPipeline *pipeline,
 	struct SHIterableWrapperFuncs const * const iterableSetup, int32_t (*sortingFn)(void*, void*))
 {
 	if(!pipeline || !iterableSetup) return NULL;

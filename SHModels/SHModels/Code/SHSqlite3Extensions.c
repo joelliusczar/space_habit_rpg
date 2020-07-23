@@ -131,10 +131,3 @@ SHErrorCode SH_sqlite3_copy_value_blobFixed(sqlite3_value *cellValue, void *valu
 }
 
 
-void SH_cleanupSqlite3Statement(sqlite3_stmt **stmtP2) {
-	if(!stmtP2) return;
-	sqlite3_stmt *stmt = *stmtP2;
-	if(!stmt) return;
-	sqlite3_finalize(stmt);
-	*stmtP2 = NULL;
-}

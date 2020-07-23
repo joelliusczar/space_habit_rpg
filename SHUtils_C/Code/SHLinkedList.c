@@ -11,7 +11,7 @@
 #include <stdlib.h>
 
 
-const struct SHIterableWrapperFuncs listSetup = {
+const struct SHIterableWrapperFuncs SH_LIST_FN_DEFS = {
 	.initializer = (void* (*)(int32_t (*)(void*, void*), void (*)(void*)))SH_list_init2,
 	.backendCleanup = (void (*)(void*))SH_list_cleanup,
 	.backendCleanupIgnoreItems = (void (*)(void*))SH_list_cleanupIgnoreItems,

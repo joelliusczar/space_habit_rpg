@@ -22,7 +22,7 @@ struct SHDynamicArrayIterator {
 	uint64_t idx;
 };
 
-extern const struct SHIterableWrapperFuncs arraySetup;
+extern const struct SHIterableWrapperFuncs SH_ARRAY_FN_DEFS;
 
 struct SHDynamicArray *SH_dynamicArray_init(void (*cleanup)(void*));
 struct SHDynamicArray *SH_dynamicArray_init2(int32_t (*sortingFn)(void*, void*), void (*cleanup)(void*));

@@ -16,7 +16,6 @@
 #import "SHLinkedList.h"
 #import "SHTree.h"
 #import "SHSerialQueue.h"
-#import "SHSerialAccessCollection.h"
 #import "SHIterableWrapper.h"
 #import "SHSyncedList.h"
 #import "SHDynamicArray.h"

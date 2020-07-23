@@ -361,7 +361,7 @@ This will be called the user creates a new habit, checks it off, or deletes one
 
 
 -(void)dealloc {
-	SH_SACollection_cleanup(&self->_tableBackend);
+
 }
 
 @end

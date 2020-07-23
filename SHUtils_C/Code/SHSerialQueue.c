@@ -284,10 +284,10 @@ struct SHSerialQueue * SH_serialQueue_init(void *initArgs, void (*initArgsCleanu
 	struct SHIterableWrapper *opsList = NULL;
 	struct SHIterableWrapper *resultList = NULL;
 	
-	opsList = SH_iterable_init(&listSetup, NULL, (void (*)(void*))_opCleanup);
+	opsList = SH_iterable_init(&SH_LIST_FN_DEFS, NULL, (void (*)(void*))_opCleanup);
 	if(!opsList) goto cleanupQueue;
 	
-	resultList = SH_iterable_init(&listSetup, NULL, NULL);
+	resultList = SH_iterable_init(&SH_LIST_FN_DEFS, NULL, NULL);
 	if(!resultList) goto cleanupQueue;
 	
 	queue->opsQueue = SH_syncedList_init(opsList);

@@ -973,7 +973,7 @@ static int32_t _groupingFn(struct _trObj *tr, void *obj, uint64_t idx) {
 		NULL, NULL, (void (*)(void*))_cleanupTr);
 	XCTAssertNotEqual(pl2, NULL);
 	struct SHPipeline *pl3 = SH_pipeline_useGrouping(pl2, (void* (*)(void*, void*, uint64_t))_groupingFn, NULL, NULL,
-		&arraySetup, NULL, NULL);
+		&SH_ARRAY_FN_DEFS, NULL, NULL);
 	
 	struct SHPipelineIterator *iter = SH_pipelineIterator_init(pl3);
 	XCTAssertNotEqual(iter, NULL);
@@ -1117,7 +1117,7 @@ static int32_t _groupingFn(struct _trObj *tr, void *obj, uint64_t idx) {
 		NULL, NULL, (void (*)(void*))_cleanupTr);
 	XCTAssertNotEqual(pl2, NULL);
 	struct SHPipeline *pl3 = SH_pipeline_useGrouping(pl2, (void* (*)(void*, void*, uint64_t))_groupingFn, NULL, NULL,
-		&arraySetup, NULL, NULL);
+		&SH_ARRAY_FN_DEFS, NULL, NULL);
 		
 	struct SHPipeline *pl4 = SH_pipeline_useSkip(pl3, 1);
 	struct SHPipeline *pl5 = SH_pipeline_useTake(pl4, 1);

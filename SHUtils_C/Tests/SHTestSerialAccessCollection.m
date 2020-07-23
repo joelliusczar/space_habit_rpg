@@ -36,7 +36,7 @@
 //
 //-(void)testSerialCollectionOps {
 //	int32_t nums[12] = { 43, 18, 22, 9, 21, 6, 8, 20, 63, 50, 62, 51 };
-//	struct SHIterableWrapper *collection = SH_iterable_init(&treeSetup, _numCompare, NULL);
+//	struct SHIterableWrapper *collection = SH_iterable_init(&SH_TREE_FN_DEFS, _numCompare, NULL);
 //	struct SHSerialAccessCollection *serialCollection = SH_SACollection_init(collection);
 //
 //	SHErrorCode status = SH_NO_ERROR;
@@ -125,7 +125,7 @@
 //
 //-(void)testDeleteFromSerialAccessCollection {
 //	int32_t nums[12] = { 43, 18, 22, 9, 21, 6, 8, 20, 63, 50, 62, 51 };
-//	struct SHIterableWrapper *collection = SH_iterable_init(&treeSetup, _numCompare, NULL);
+//	struct SHIterableWrapper *collection = SH_iterable_init(&SH_TREE_FN_DEFS, _numCompare, NULL);
 //	struct SHSerialAccessCollection *serialCollection = SH_SACollection_init(collection);
 //	uint64_t count = SH_NOT_FOUND;
 //	SHErrorCode status = SH_NO_ERROR;
@@ -204,7 +204,7 @@
 //	for(int32_t i = 0; i < 12; i++) {
 //		state.items[i] = nums[i];
 //	}
-//	struct SHIterableWrapper *collection = SH_iterable_init(&treeSetup, _numCompare, NULL);
+//	struct SHIterableWrapper *collection = SH_iterable_init(&SH_TREE_FN_DEFS, _numCompare, NULL);
 //	struct SHSerialAccessCollection *serialCollection = SH_SACollection_init(collection);
 //	struct SHGeneratorFnObj *fnObj = malloc(sizeof(struct SHGeneratorFnObj));
 //	*fnObj = (struct SHGeneratorFnObj){

@@ -25,7 +25,7 @@ struct SHLinkedListIterator {
 	struct SHLLNode *current;
 };
 
-extern const struct SHIterableWrapperFuncs listSetup;
+extern const struct SHIterableWrapperFuncs SH_LIST_FN_DEFS;
 
 struct SHLinkedList *SH_list_init(void (*itemCleanup)(void*));
 struct SHLinkedList *SH_list_init2(int32_t (*sortingFn)(void*, void*), void (*itemCleanup)(void*));

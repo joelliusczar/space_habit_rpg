@@ -11,7 +11,7 @@
 #include <stdbool.h>
 
 
-const struct SHIterableWrapperFuncs arraySetup = {
+const struct SHIterableWrapperFuncs SH_ARRAY_FN_DEFS = {
 	.initializer = (void* (*)(int32_t (*)(void*, void*), void (*)(void*)))SH_dynamicArray_init2,
 	.backendCleanup = (void (*)(void*))SH_dynamicArray_cleanup,
 	.backendCleanupIgnoreItems = (void (*)(void*))SH_dynamicArray_cleanupIgnoreItems,

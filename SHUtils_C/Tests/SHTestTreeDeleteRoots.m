@@ -9,7 +9,6 @@
 #include "SHTree.h"
 #include "SHUtilConstants.h"
 #include "SHGenAlgos.h"
-#include "SHPrintTree.h"
 #import <XCTest/XCTest.h>
 
 @interface SHTestTreeDeleteRoots : XCTestCase

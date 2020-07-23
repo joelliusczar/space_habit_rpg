@@ -11,6 +11,7 @@
 #include "SHDaily_dbStatementBuilders.h"
 #include <SHUtils_C/SHGenAlgos.h>
 #include <SHUtils_C/SHTree.h>
+#include <SHUtils_C/SHDynamicArray.h>
 #include <SHUtils_C/SHIterableWrapper.h>
 #include <SHUtils_C/SHPipeline.h>
 #include <stdlib.h>
@@ -269,27 +270,22 @@ SHErrorCode SH_fetchTableDailies(struct SHQueueStoreItem *queueStoreItem)
 	sqlite3_stmt *stmt = NULL;
 	struct SHDatetimeProvider *dateProvider = queueStoreItem->dateProvider;
 	char errMsg[70];
+	struct SHPipeline *pipeline = NULL;
+	struct SHIterableWrapper *iterable = NULL;
 	if((status = SH_buildStatement_fetchAllTableDailies(&stmt, queueStoreItem->db)) != SH_NO_ERROR) { goto sqlErr; }
 	int32_t localTzOffset = dateProvider && dateProvider->getLocalTzOffset ? dateProvider->getLocalTzOffset() : 0;
 	if((sqlStatus = sqlite3_bind_int(stmt, 1, localTzOffset)) != SQLITE_OK) { goto shErr; }
 	
-	struct SHPipeline *pipeline = SH_pipeline_useGrouping(
+	pipeline = SH_pipeline_useGrouping(
 		SH_pipeline_init(stmt,
 			(void *(*)(void*, bool *))_tableDailyFetchGenFn,
 			(void (*)(void*))sqlite3_finalize, (void (*)(void*))SH_cleanupTableDaily),
 		(void *(*)(void*, void*, uint64_t))_tableDailiesGrouper, NULL, NULL,
-		&treeSetup, (int32_t (*)(void*, void*))_tableDailySortingFn, NULL);
-	
-	
-	
-//	struct SHGeneratorFnObj *fnObj = malloc(sizeof(struct SHGeneratorFnObj));
-//	if(!fnObj) goto allocErr;
-//	*fnObj = (struct SHGeneratorFnObj){
-//		.generator = (void* (*)(void*))_tableDailyFetchGenFn,
-//		.generatorState = stmt,
-//		.stateCleanup = (void (*)(void**))SH_cleanupSqlite3Statement
-//	};
-//	if((status = SH_SACollection_addItemsWithGenerator(*saCollectionP2, fnObj)) != SH_NO_ERROR) { goto genErr; }
+		&SH_TREE_FN_DEFS, (int32_t (*)(void*, void*))_tableDailySortingFn, NULL);
+	if(!pipeline) goto allocErr;
+	iterable = SH_pipeline_completeAsIterable(pipeline, &SH_ARRAY_FN_DEFS, NULL);
+	if(!iterable) goto allocErr;
+	queueStoreItem->storage = iterable;
 	goto fnExit;
 	allocErr:
 		status |= SH_ALLOC_NO_MEM;
@@ -303,9 +299,8 @@ SHErrorCode SH_fetchTableDailies(struct SHQueueStoreItem *queueStoreItem)
 	shErr:
 		SH_notifyOfError(SH_SQLITE3_ERROR, "Something happened while binding");
 		goto cleanup;
-	genErr:
-		SH_notifyOfError(status, "Error occured while adding op for generator");
 	cleanup:
+		SH_pipeline_cleanup(pipeline);
 		sqlite3_finalize(stmt);
 	fnExit:
 		return status;

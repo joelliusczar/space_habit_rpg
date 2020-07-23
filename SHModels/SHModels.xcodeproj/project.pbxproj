@@ -75,8 +75,6 @@
 		27553506248B2EFD00D650AB /* SHTableNames.c in Sources */ = {isa = PBXBuildFile; fileRef = 27553504248B2EFC00D650AB /* SHTableNames.c */; };
 		27553509248B8DF800D650AB /* SHActiveDaysConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27553507248B8DF700D650AB /* SHActiveDaysConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2755350A248B8DF800D650AB /* SHActiveDaysConstants.c in Sources */ = {isa = PBXBuildFile; fileRef = 27553508248B8DF700D650AB /* SHActiveDaysConstants.c */; };
-		275A7F5D24B993BC00B3168F /* SHFetchTableItemsArgs.h in Headers */ = {isa = PBXBuildFile; fileRef = 275A7F5B24B993BC00B3168F /* SHFetchTableItemsArgs.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		275A7F5E24B993BC00B3168F /* SHFetchTableItemsArgs.c in Sources */ = {isa = PBXBuildFile; fileRef = 275A7F5C24B993BC00B3168F /* SHFetchTableItemsArgs.c */; };
 		275D9925238611D800522A80 /* SHSectorArtifact.h in Headers */ = {isa = PBXBuildFile; fileRef = 275D9923238611D800522A80 /* SHSectorArtifact.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		275D9926238611D800522A80 /* SHSectorArtifact.m in Sources */ = {isa = PBXBuildFile; fileRef = 275D9924238611D800522A80 /* SHSectorArtifact.m */; };
 		275EB495226A613200012784 /* SHBundleKey.h in Headers */ = {isa = PBXBuildFile; fileRef = 275EB493226A613100012784 /* SHBundleKey.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -299,8 +297,6 @@
 		27553504248B2EFC00D650AB /* SHTableNames.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHTableNames.c; sourceTree = "<group>"; };
 		27553507248B8DF700D650AB /* SHActiveDaysConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHActiveDaysConstants.h; sourceTree = "<group>"; };
 		27553508248B8DF700D650AB /* SHActiveDaysConstants.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHActiveDaysConstants.c; sourceTree = "<group>"; };
-		275A7F5B24B993BC00B3168F /* SHFetchTableItemsArgs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHFetchTableItemsArgs.h; sourceTree = "<group>"; };
-		275A7F5C24B993BC00B3168F /* SHFetchTableItemsArgs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHFetchTableItemsArgs.c; sourceTree = "<group>"; };
 		275D9923238611D800522A80 /* SHSectorArtifact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSectorArtifact.h; sourceTree = "<group>"; };
 		275D9924238611D800522A80 /* SHSectorArtifact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSectorArtifact.m; sourceTree = "<group>"; };
 		275EB493226A613100012784 /* SHBundleKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHBundleKey.h; sourceTree = "<group>"; };
@@ -514,8 +510,6 @@
 				275534D52481631300D650AB /* SHHeroMonsterDbHelper.h */,
 				275534DA2481E04400D650AB /* SHQueueStoreItem.h */,
 				275534DE2481E18600D650AB /* SHQueueStoreItem.c */,
-				275A7F5B24B993BC00B3168F /* SHFetchTableItemsArgs.h */,
-				275A7F5C24B993BC00B3168F /* SHFetchTableItemsArgs.c */,
 			);
 			name = Code;
 			path = SHModels/Code;
@@ -791,7 +785,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				275A7F5D24B993BC00B3168F /* SHFetchTableItemsArgs.h in Headers */,
 				275534D924818A3900D650AB /* SHDBDueDateConstants.h in Headers */,
 				275534BD24788EDB00D650AB /* SHDbAccess.h in Headers */,
 				275534B8247774E100D650AB /* SHDbSetup.h in Headers */,
@@ -1090,7 +1083,6 @@
 				27BF501F22F77139005096BA /* SHDailyNextDueDateCalculator.m in Sources */,
 				2747C3BD2043B67200FB5669 /* SHIntervalTypeHelper.m in Sources */,
 				27075D6E225963A700AD13AA /* SHMonsterDictionaryEntry.m in Sources */,
-				275A7F5E24B993BC00B3168F /* SHFetchTableItemsArgs.c in Sources */,
 				27B2B3262303811D00663644 /* SHDailyActivator.m in Sources */,
 				275534BE24788EDB00D650AB /* SHDbAccess.c in Sources */,
 				27815534217D721C005C5279 /* SHInfoDictionary.m in Sources */,

@@ -17,7 +17,7 @@
 #include <string.h>
 
 
-const struct SHIterableWrapperFuncs treeSetup = {
+const struct SHIterableWrapperFuncs SH_TREE_FN_DEFS = {
 	.initializer = (void* (*)(int32_t (*)(void*, void*), void (*)(void*)))SH_tree_init,
 	.backendCleanup = (void (*)(void*))SH_tree_cleanup,
 	.backendCleanupIgnoreItems = (void (*)(void*))SH_tree_cleanupIgnoreItems,

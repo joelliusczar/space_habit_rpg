@@ -18,7 +18,7 @@ struct SHTree;
 
 struct SHTreeIterator;
 
-extern const struct SHIterableWrapperFuncs treeSetup;
+extern const struct SHIterableWrapperFuncs SH_TREE_FN_DEFS;
 
 struct SHTree *SH_tree_init(int32_t (*sortingFn)(void*, void*), void (*itemCleanup)(void*));
 uint64_t SH_tree_count(struct SHTree *tree);

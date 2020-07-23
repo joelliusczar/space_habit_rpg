@@ -25,5 +25,4 @@ SHErrorCode SH_sqlite3_value_SHDatetime(sqlite3_value *cellValue, struct SHDatet
 	int32_t timezoneOffset);
 SHErrorCode SH_sqlite3_copy_value_blobFixed(sqlite3_value *cellValue, void *value, uint64_t len);
 
-void SH_cleanupSqlite3Statement(sqlite3_stmt **stmtP2);
 #endif /* SHSqlite3Extensions_h */

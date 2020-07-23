@@ -12,7 +12,6 @@
 #include "SHDaily_struct.h"
 #include "SHQueueStoreItem.h"
 #include <SHUtils_C/SHErrorHandling.h>
-#include <SHUtils_C/SHSerialAccessCollection.h>
 #include <SHDatetime/SHDatetimeProvider.h>
 #include <stdio.h>
 #include <sqlite3.h>

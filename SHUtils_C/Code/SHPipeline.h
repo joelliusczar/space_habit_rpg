@@ -48,7 +48,7 @@ struct SHPipeline *SH_pipeline_useTake(struct SHPipeline *source, uint64_t skip)
 struct SHPipelineIterator *SH_pipelineIterator_init(struct SHPipeline *pipeline);
 void *SH_pipelineIterator_next(struct SHPipelineIterator **iter);
 
-struct SHIterableWrapper *SH_pipeline_completeAsIteratble(struct SHPipeline *pipeline,
+struct SHIterableWrapper *SH_pipeline_completeAsIterable(struct SHPipeline *pipeline,
 	struct SHIterableWrapperFuncs const * const iterableSetup, int32_t (*sortingFn)(void*, void*));
 
 void SH_pipeline_cleanup(struct SHPipeline *pipeline);
