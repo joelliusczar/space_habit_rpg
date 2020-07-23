@@ -39,7 +39,7 @@ struct SHPipeline *SH_pipeline_useFilter(struct SHPipeline *source, bool (*fn)(v
 	Then it is upon the function caller to managed to the memory of each returned list
 */
 struct SHPipeline *SH_pipeline_useGrouping(struct SHPipeline *source, void *(*fn)(void*, void*, uint64_t),
-	void *fnArgs, void (*fnArgsCleanup)(void *), struct SHIterableSetup const * const iterableSetup,
+	void *fnArgs, void (*fnArgsCleanup)(void *), struct SHIterableWrapperFuncs const * const iterableSetup,
 	int32_t (*sortingFn)(void*, void*), void (*keyCleanup)(void*));
 	
 struct SHPipeline *SH_pipeline_useSkip(struct SHPipeline *source, uint64_t skip);
@@ -49,7 +49,7 @@ struct SHPipelineIterator *SH_pipelineIterator_init(struct SHPipeline *pipeline)
 void *SH_pipelineIterator_next(struct SHPipelineIterator **iter);
 
 struct SHIterableWrapper *SH_pipeline_completeAsIteratble(struct SHPipeline *pipeline,
-	struct SHIterableSetup const * const iterableSetup, int32_t (*sortingFn)(void*, void*));
+	struct SHIterableWrapperFuncs const * const iterableSetup, int32_t (*sortingFn)(void*, void*));
 
 void SH_pipeline_cleanup(struct SHPipeline *pipeline);
 #endif /* SHPipeline_h */

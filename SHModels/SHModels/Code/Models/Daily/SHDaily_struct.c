@@ -21,13 +21,10 @@ void SH_freeDailyProps(struct SHDaily *daily) {
 }
 
 
-void SH_freeDaily(struct SHDaily **dailyP2) {
-	if(!dailyP2) return;
-	struct SHDaily *daily = *dailyP2;
+void SH_freeDaily(struct SHDaily *daily) {
 	if(!daily) return;
 	SH_freeDailyProps(daily);
 	free(daily);
-	*dailyP2 = NULL;
 }
 
 
@@ -37,11 +34,8 @@ void SH_cleanupTableDailyProps(struct SHTableDaily *tableDaily) {
 	SH_freeSHDatetime(&tableDaily->nextDueDate);
 }
 
-void SH_cleanupTableDaily(struct SHTableDaily **tableDailyP2) {
-	if(!tableDailyP2) return;
-	struct SHTableDaily *tableDaily = *tableDailyP2;
+void SH_cleanupTableDaily(struct SHTableDaily *tableDaily) {
 	if(!tableDaily) return;
 	SH_cleanupTableDailyProps(tableDaily);
 	free(tableDaily);
-	*tableDailyP2 = NULL;
 }

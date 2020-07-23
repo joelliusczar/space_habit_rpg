@@ -12,6 +12,7 @@
 #include <SHUtils_C/SHGenAlgos.h>
 #include <SHUtils_C/SHTree.h>
 #include <SHUtils_C/SHIterableWrapper.h>
+#include <SHUtils_C/SHPipeline.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -190,7 +191,7 @@ static SHErrorCode _setTableDailyValues(sqlite3_stmt *stmt, struct SHTableDaily 
 	tableDaily->dueStatus = sqlite3_column_int(stmt, 8);
 	goto fnExit;
 	cleanup:
-		SH_cleanupTableDaily(&tableDaily);
+		SH_cleanupTableDaily(tableDaily);
 	fnExit:
 		return status;
 }
@@ -225,7 +226,10 @@ static void *_tableDailyFetchGenFn(sqlite3_stmt *stmt, bool *hasNext) {
 	SHErrorCode status = SH_NO_ERROR;
 	struct SHTableDaily *tableDaily = NULL;
 	sqlStatus = sqlite3_step(stmt);
-	if(sqlStatus != SQLITE_OK && sqlStatus != SQLITE_ROW) goto errExit;
+	if(sqlStatus != SQLITE_OK && sqlStatus != SQLITE_ROW && sqlStatus != SQLITE_DONE) goto errExit;
+	if(sqlStatus == SQLITE_DONE) {
+		*hasNext = false;
+	}
 	tableDaily = malloc(sizeof(struct SHTableDaily));
 	if(!tableDaily) goto allocFail;
 	if((status = _setTableDailyValues(stmt, tableDaily)) != SH_NO_ERROR) { goto cleanup; }
@@ -235,13 +239,14 @@ static void *_tableDailyFetchGenFn(sqlite3_stmt *stmt, bool *hasNext) {
 		SH_notifyOfError(SH_ALLOC_NO_MEM, "Failed to alloc additional memory in _tableDailyFetchGenFn");
 	cleanup:
 		SH_notifyOfError(status, "Error after setting table values _tableDailyFetchGenFn");
-		SH_cleanupTableDaily(&tableDaily);
+		SH_cleanupTableDaily(tableDaily);
 	errExit:
 		return NULL;
 }
 
 
-static uint64_t _tableDailiesGrouper(struct SHTableDaily *tableDaily) {
+static uint32_t _tableDailiesGrouper(struct SHTableDaily *tableDaily, void *fnArgs, uint64_t idx) {
+	(void)fnArgs; (void)idx;
 	return tableDaily->dueStatus;
 }
 
@@ -268,15 +273,23 @@ SHErrorCode SH_fetchTableDailies(struct SHQueueStoreItem *queueStoreItem)
 	int32_t localTzOffset = dateProvider && dateProvider->getLocalTzOffset ? dateProvider->getLocalTzOffset() : 0;
 	if((sqlStatus = sqlite3_bind_int(stmt, 1, localTzOffset)) != SQLITE_OK) { goto shErr; }
 	
+	struct SHPipeline *pipeline = SH_pipeline_useGrouping(
+		SH_pipeline_init(stmt,
+			(void *(*)(void*, bool *))_tableDailyFetchGenFn,
+			(void (*)(void*))sqlite3_finalize, (void (*)(void*))SH_cleanupTableDaily),
+		(void *(*)(void*, void*, uint64_t))_tableDailiesGrouper, NULL, NULL,
+		&treeSetup, (int32_t (*)(void*, void*))_tableDailySortingFn, NULL);
 	
-	struct SHGeneratorFnObj *fnObj = malloc(sizeof(struct SHGeneratorFnObj));
-	if(!fnObj) goto allocErr;
-	*fnObj = (struct SHGeneratorFnObj){
-		.generator = (void* (*)(void*))_tableDailyFetchGenFn,
-		.generatorState = stmt,
-		.stateCleanup = (void (*)(void**))SH_cleanupSqlite3Statement
-	};
-	if((status = SH_SACollection_addItemsWithGenerator(*saCollectionP2, fnObj)) != SH_NO_ERROR) { goto genErr; }
+	
+	
+//	struct SHGeneratorFnObj *fnObj = malloc(sizeof(struct SHGeneratorFnObj));
+//	if(!fnObj) goto allocErr;
+//	*fnObj = (struct SHGeneratorFnObj){
+//		.generator = (void* (*)(void*))_tableDailyFetchGenFn,
+//		.generatorState = stmt,
+//		.stateCleanup = (void (*)(void**))SH_cleanupSqlite3Statement
+//	};
+//	if((status = SH_SACollection_addItemsWithGenerator(*saCollectionP2, fnObj)) != SH_NO_ERROR) { goto genErr; }
 	goto fnExit;
 	allocErr:
 		status |= SH_ALLOC_NO_MEM;

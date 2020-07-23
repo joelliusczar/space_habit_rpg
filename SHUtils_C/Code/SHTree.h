@@ -18,7 +18,7 @@ struct SHTree;
 
 struct SHTreeIterator;
 
-extern const struct SHIterableSetup treeSetup;
+extern const struct SHIterableWrapperFuncs treeSetup;
 
 struct SHTree *SH_tree_init(int32_t (*sortingFn)(void*, void*), void (*itemCleanup)(void*));
 uint64_t SH_tree_count(struct SHTree *tree);
@@ -39,16 +39,11 @@ void *SH_tree_getNullItemSentinel(struct SHTree *tree);
 
 struct SHTreeIterator *SH_treeIterator_init(struct SHTree *tree);
 void *SH_treeIterator_nextInorder(struct SHTreeIterator **iter);
-void *SH_treeIterator_skipInorder(struct SHTreeIterator **iter, uint64_t skip);
 void *SH_treeIterator_nextPostOrder(struct SHTreeIterator **iter);
-void *SH_treeIterator_skipPostOrder(struct SHTreeIterator **iter, uint64_t skip);
 void *SH_treeIterator_nextPreorder(struct SHTreeIterator **iter);
-void *SH_treeIterator_skipPreorder(struct SHTreeIterator **iter, uint64_t skip);
 void *SH_treeIterator_nextLineOrder(struct SHTreeIterator **iter);
-void *SH_treeIterator_skipLineOrder(struct SHTreeIterator **iter, uint64_t skip);
 
-SHErrorCode SH_iterable_loadTreeFuncs(struct SHIterableWrapperFuncs *funcsObj);
+void SH_treeIterator_cleanup(struct SHTreeIterator *iter);
 
-char * SH_tree_printLineOrder(struct SHTree *tree, char *(*itemDescFn)(void *));
 
 #endif /* SHTree_h */

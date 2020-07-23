@@ -45,7 +45,7 @@ struct SHPipeline {
 
 struct _groupingPipeline {
 	struct SHPipeline base;
-	struct SHIterableSetup iterableSetup;
+	struct SHIterableWrapperFuncs iterableSetup;
 	int32_t (*sortingFn)(void*, void*);
 	void (*keyCleanup)(void*);
 };
@@ -372,7 +372,7 @@ struct SHPipeline *SH_pipeline_useFilter(struct SHPipeline *source, bool (*fn)(v
 
 
 struct SHPipeline *SH_pipeline_useGrouping(struct SHPipeline *source, void *(*fn)(void*, void*, uint64_t),
-	void *fnArgs, void (*fnArgsCleanup)(void *), struct SHIterableSetup const * const iterableSetup,
+	void *fnArgs, void (*fnArgsCleanup)(void *), struct SHIterableWrapperFuncs const * const iterableSetup,
 	int32_t (*sortingFn)(void*, void*), void (*keyCleanup)(void*))
 {
 	if(!source || !fn) return NULL;
@@ -431,7 +431,6 @@ static void _iteratorCleanup2(struct SHPipelineIterator *iter) {
 	if(iter->storageCleanup) {
 		iter->storageCleanup(iter->storage);
 	}
-	
 }
 
 
@@ -497,7 +496,7 @@ void SH_pipeline_cleanup(struct SHPipeline *pipeline) {
 
 
 struct SHIterableWrapper *SH_pipeline_completeAsIteratble(struct SHPipeline *pipeline,
-	struct SHIterableSetup const * const iterableSetup, int32_t (*sortingFn)(void*, void*))
+	struct SHIterableWrapperFuncs const * const iterableSetup, int32_t (*sortingFn)(void*, void*))
 {
 	if(!pipeline || !iterableSetup) return NULL;
 	struct SHPipelineIterator *iter = SH_pipelineIterator_init(pipeline);

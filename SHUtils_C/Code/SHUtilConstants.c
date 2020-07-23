@@ -13,4 +13,8 @@ const int32_t SH_ALLOC_COUNT = 1;
 const int32_t SH_NULL_CHAR_OFFSET = 1;
 
 
+const int32_t SH_MAX_INT32_LEN = 10;
+const int32_t SH_MAX_INT64_LEN = 20;
+
+
 const struct SHNullWrapper SH_NULL_WRAPPER_OBJ = {0};

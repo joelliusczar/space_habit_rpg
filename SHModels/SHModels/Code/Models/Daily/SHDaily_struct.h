@@ -52,9 +52,9 @@ struct SHTableDaily {
 	SHDueDateStatus dueStatus;
 };
 
-void SH_cleanupTableDaily(struct SHTableDaily **tableDailyP2);
+void SH_cleanupTableDaily(struct SHTableDaily *tableDaily);
 void SH_cleanupTableDailyProps(struct SHTableDaily *tableDaily);
-void SH_freeDaily(struct SHDaily **dailyP2);
+void SH_freeDaily(struct SHDaily *daily);
 void SH_freeDailyProps(struct SHDaily *daily);
 
 #endif /* SHDaily_struct_h */

@@ -17,6 +17,9 @@ extern const int32_t SH_SKIP;
 extern const int32_t SH_ALLOC_COUNT;
 extern const int32_t SH_NULL_CHAR_OFFSET;
 
+extern const int32_t SH_MAX_INT32_LEN;
+extern const int32_t SH_MAX_INT64_LEN;
+
 struct SHNullWrapper {
 	void *item;
 };

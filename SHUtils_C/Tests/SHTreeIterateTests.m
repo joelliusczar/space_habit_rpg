@@ -90,12 +90,6 @@ static int32_t _numCompare(void *a, void *b) {
 	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
 	XCTAssertEqual(result, NULL);
 	
-	iter = SH_treeIterator_init(tree);
-	result = (int32_t *)SH_treeIterator_skipInorder(&iter, 8);
-	XCTAssertEqual(*result, 67);
-	result = (int32_t *)SH_treeIterator_nextInorder(&iter);
-	XCTAssertEqual(result, NULL);
-	
 	SH_tree_addItem(tree, &nums[9]);
 	XCTAssertEqual(SH_tree_count(tree), 10);
 	SH_tree_addItem(tree, &nums[10]);

@@ -19,7 +19,7 @@ struct SHIterableWrapper {
 
 
 
-struct SHIterableWrapper *SH_iterable_init(struct SHIterableSetup const * const setup,
+struct SHIterableWrapper *SH_iterable_init(struct SHIterableWrapperFuncs const * const setup,
 	int32_t (*sortingFn)(void *, void *), void (*itemCleanup)(void*))
 {
 	if(!setup) return NULL;
@@ -28,7 +28,7 @@ struct SHIterableWrapper *SH_iterable_init(struct SHIterableSetup const * const 
 	if(!iterable) {
 		goto allocErr;
 	}
-	setup->fnSetup(&iterable->funcs);
+	iterable->funcs = *setup;
 	iterable->backend = setup->initializer(sortingFn, itemCleanup);
 	if(!iterable->backend) goto cleanup;
 	return iterable;
@@ -117,6 +117,13 @@ void *SH_iterableIterator_next(struct SHIterableWrapperIterator **iterP2) {
 }
 
 
+void SH_iterableIterator_cleanup(struct SHIterableWrapperIterator *iter) {
+	if(!iter || !iter->iterable || !iter->iterable->funcs.iteratorCleanup) return;
+	iter->iterable->funcs.iteratorCleanup(iter->internalIter);
+	free(iter);
+}
+
+
 static void _cleanupIterable(struct SHIterableWrapper *iterable, void (*backendCleanup)(void*)) {
 	if(backendCleanup) {
 		backendCleanup(iterable->backend);
@@ -137,3 +144,51 @@ void SH_iterable_cleanupIgnoreItems(struct SHIterableWrapper *iterable) {
 }
 
 
+char *SH_iterable_makeString(struct SHIterableWrapper *iterable, uint64_t *len,
+	char *(*itemDescFn)(void*, uint64_t *len))
+{
+	if(!iterable || !itemDescFn) return NULL;
+		char *itemDesc = NULL;
+	void *item = NULL;
+	uint64_t itemStrLen = 0;
+	uint64_t currentMaxLen = (SH_MAX_INT64_LEN * SH_iterable_count(iterable));
+	char *result = NULL;
+	char *cat = NULL;
+	char *tmp = NULL;
+	struct SHIterableWrapperIterator *iter = SH_iterableIterator_init(iterable);
+	if(!iter) return NULL;
+	result = malloc(sizeof(char) * (currentMaxLen + SH_NULL_CHAR_OFFSET));
+	if(!result) goto cleanup;
+	*len = 0;
+	*result = '\0';
+	cat = result;
+	
+	do {
+		item = SH_iterableIterator_next(&iter);
+		itemDesc = itemDescFn(item, &itemStrLen);
+		if(!itemDesc) goto reallocErr;
+	
+		if((*len + itemStrLen) >= currentMaxLen) {
+			currentMaxLen *= 2;
+			tmp = realloc(result, currentMaxLen);
+			if(!tmp) {
+				if(currentMaxLen > 0) goto reallocErr;
+				goto cleanup;
+			}
+			result = tmp;
+			cat = result + (*len) -1;
+		}
+		*len += itemStrLen;
+		strncat(cat, itemDesc, itemStrLen);
+		free(itemDesc);
+	} while(iter);
+	
+	return result;
+	reallocErr:
+		free(result);
+	cleanup:
+		free(itemDesc);
+		SH_iterableIterator_cleanup(iter);
+		return NULL;
+
+}

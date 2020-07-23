@@ -11,11 +11,24 @@
 #include <stdlib.h>
 
 
-const struct SHIterableSetup listSetup = {
+const struct SHIterableWrapperFuncs listSetup = {
 	.initializer = (void* (*)(int32_t (*)(void*, void*), void (*)(void*)))SH_list_init2,
-	.fnSetup = SH_iterable_loadListFuncs,
 	.backendCleanup = (void (*)(void*))SH_list_cleanup,
-	.backendCleanupIgnoreItems = (void (*)(void*))SH_list_cleanupIgnoreItems
+	.backendCleanupIgnoreItems = (void (*)(void*))SH_list_cleanupIgnoreItems,
+	.count = (uint64_t (*)(void*))SH_list_count,
+	.addItem = (SHErrorCode (*)(void*, void*))SH_list_pushBack,
+	.getItemAtIdx = (void *(*)(void*, uint64_t))SH_list_findNthItem,
+	.getFront = (void* (*)(void*))SH_list_getFront,
+	.popFront = (void* (*)(void*))SH_list_popFront,
+	.getBack = (void* (*)(void*))SH_list_getBack,
+	.popBack = (void* (*)(void*))SH_list_popBack,
+	.deleteItemAtIdx = (SHErrorCode (*)(void*, uint64_t))SH_list_deleteNthItem,
+	.iteratorInit = (void* (*)(void*))SH_listIterator_init,
+	.iteratorNext = (void* (*)(void**))SH_listIterator_next,
+	.cleanup = (void (*)(void*))SH_list_cleanup,
+	.cleanupIgnoreItems = (void (*)(void*))SH_list_cleanupIgnoreItems,
+	.typeName = "LinkedList",
+	.iteratorCleanup = (void (*)(void*))SH_listIterator_cleanup
 };
 
 struct SHLLNode {
@@ -284,20 +297,8 @@ void *SH_listIterator_next(struct SHLinkedListIterator **iterP2) {
 }
 
 
-SHErrorCode SH_iterable_loadListFuncs(struct SHIterableWrapperFuncs *funcsObj) {
-	funcsObj->count = (uint64_t (*)(void*))SH_list_count;
-	funcsObj->addItem = (SHErrorCode (*)(void*, void*))SH_list_pushBack;
-	funcsObj->getItemAtIdx = (void *(*)(void*, uint64_t))SH_list_findNthItem;
-	funcsObj->getFront = (void* (*)(void*))SH_list_getFront;
-	funcsObj->popFront = (void* (*)(void*))SH_list_popFront;
-	funcsObj->getBack = (void* (*)(void*))SH_list_getBack;
-	funcsObj->popBack = (void* (*)(void*))SH_list_popBack;
-	funcsObj->deleteItemAtIdx = (SHErrorCode (*)(void*, uint64_t))SH_list_deleteNthItem;
-	funcsObj->iteratorInit = (void* (*)(void*))SH_listIterator_init;
-	funcsObj->iteratorNext = (void* (*)(void**))SH_listIterator_next;
-	funcsObj->cleanup = (void (*)(void*))SH_list_cleanup;
-	funcsObj->cleanupIgnoreItems = (void (*)(void*))SH_list_cleanupIgnoreItems;
-	return SH_NO_ERROR;
+void SH_listIterator_cleanup(struct SHLinkedListIterator *iter) {
+	free(iter);
 }
 
 
@@ -363,3 +364,4 @@ struct SHLinkedList *SH_llnode_getList(struct SHLLNode *node) {
 	if(!node) return NULL;
 	return node->list;
 }
+
