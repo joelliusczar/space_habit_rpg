@@ -35,7 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, nonatomic) const struct SHDatetimeProvider *dateProvider;
 -(instancetype)initWithCentral:(SHCentralViewController *)central;
 
--(void)fetchUpdates;
+-(void)fetchUpdates:(SHErrorCode (*)(struct SHModelsQueueStore *queueStoreItem))fetchFn;
+-(NSUInteger)getSectionCount;
 
 //abstract
 @property (readonly, nonatomic) const char *tableName;

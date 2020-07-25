@@ -17,5 +17,6 @@
 +(NSException*)dbException:(NSError *)error;
 +(NSException*)inproperlySetupObject:(NSString*)message;
 +(NSException*)encounterError;
++(NSException*)encounterCError:(SHErrorCode)status;
 +(NSException*)encounterNSError:(NSError*)error;
 @end

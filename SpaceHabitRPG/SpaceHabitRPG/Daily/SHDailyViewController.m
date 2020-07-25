@@ -47,44 +47,67 @@
 }
 
 
-
-static SHErrorCode _fetchTableDailies(void* args, struct SHQueueStore *store) {
-	struct SHModelsQueueStore *item = (struct SHModelsQueueStore *)SH_serialQueue_getUserItem(store);
-	SHErrorCode status = SH_fetchTableDailies(item);
-	return status;
+-(void)setupData {
+	[self fetchUpdates:SH_fetchTableDailies];
 }
 
 
--(void)setupData {
+static SHErrorCode _sectionTitles(void* args, struct SHQueueStore *store, struct SHIterableWrapper** result) {
+	*result = NULL;
+	struct SHModelsQueueStore *item = (struct SHModelsQueueStore *)SH_serialQueue_getUserItem(store);
 	SHErrorCode status = SH_NO_ERROR;
-	if((status = SH_serialQueue_addOp(self.dbQueue, _fetchTableDailies, NULL, NULL)) != SH_NO_ERROR) {}
+	if(!item || !result) return SH_INVALID_STATE;
+	SHHabitViewController *cSelf = (__bridge SHHabitViewController*)args;
+	struct SHIterableWrapper *tableStorage = SH_modelsQueueStore_selectTableData(item, cSelf.tableName);
+	*result = SH_iterable_init(&SH_ARRAY_FN_DEFS, NULL, NULL);
+	if(!(*result)) {
+		status |= SH_ALLOC_NO_MEM;
+		SH_notifyOfError(status, "failed to allocate memory");
+		goto fnExit;
+	}
+	for(uint64_t idx = 0; idx < SH_iterable_count(tableStorage); idx++) {
+		struct SHIterableWrapper *sectionData = SH_iterable_getItemAtIdx(tableStorage, idx);
+		if(SH_iterable_count(sectionData)) {
+			struct SHTableDaily *tableDaily = SH_iterable_getItemAtIdx(sectionData, 0);
+			switch(tableDaily->dueStatus) {
+				case SH_IS_NOT_DUE:
+					SH_iterable_addItem(*result, "Not due today");
+					break;
+				case SH_IS_COMPLETED:
+					SH_iterable_addItem(*result, "Completed");
+					break;
+				case SH_IS_DUE:
+					SH_iterable_addItem(*result, "Due today");
+					break;
+				default:
+					SH_iterable_addItem(*result, "Unexpected section");
+			}
+		}
+	}
 	fnExit:
-		return;
-#warning update without coredata
-//	SHDaily_Medium *dailyMedium = [SHDaily_Medium newWithContext:self.context];
-//	self.habitItemsFetcher = [dailyMedium dailiesDataFetcher];
-//	self.habitItemsFetcher.delegate = self;
-//	[self fetchUpdates];
+		return status;
 }
 
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
 	(void)tableView;
-	SHErrorCode status = SH_NO_ERROR;
-	uint64_t sectionCount = 0;
-	#warning update without coredata
 
-//	else if(self.habitItemsFetcher.sections.count == 1) {
-//		__block NSString *title = @"";
-//		[self.habitItemsFetcher.managedObjectContext performBlockAndWait:^{
-//			if(self.habitItemsFetcher.fetchedObjects.count < 1) return;
-//			SHDaily *daily = (SHDaily *)self.habitItemsFetcher.fetchedObjects[0];
-//			#warning daily table title
-//			//title = daily.isCompleted ? @"Finished" : @"Unfinished";
-//		}];
-//		return title;
-//	}
-	return @"";
+	SHErrorCode status = SH_NO_ERROR;
+	struct SHIterableWrapper *sectionTitles = NULL;
+	NSString *title = nil;
+	if((status = SH_serialQueue_addOpAndWaitForResult(self.dbQueue,
+		(SHErrorCode (*)(void*, struct SHQueueStore *, void**))_sectionTitles, (__bridge void*)self, NULL,
+		(void**)&sectionTitles))
+		!= SH_NO_ERROR)
+	{
+		SH_notifyOfError(status, "Error while getting section titles for daily controller");
+		goto fnExit;
+	}
+	title = [NSString stringWithUTF8String:SH_iterable_getItemAtIdx(sectionTitles, section)];
+	SH_iterable_cleanup(sectionTitles);
+	return title;
+	fnExit:
+		return @"";
 }
 
 

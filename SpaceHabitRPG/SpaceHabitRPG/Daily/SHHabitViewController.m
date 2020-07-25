@@ -73,17 +73,40 @@
 }
 
 
--(void)fetchUpdates{
-#warning update
-//	[self.context performBlock:^{
-//		NSError *error = nil;
-//		if(![self.habitItemsFetcher performFetch:&error]){
-//			@throw [NSException dbException:error];
-//		}
-//		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-//			[self.habitTable reloadData];
-//		}];
-//	}];
+struct _fetchDataArgs {
+	SHErrorCode (*fetchFn)(struct SHModelsQueueStore *queueStoreItem);
+	void *owner;
+};
+
+
+static void _reloadTable(SHHabitViewController *cSelf) {
+	[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+		[cSelf.habitTable reloadData];
+	}];
+}
+
+
+static SHErrorCode _callFetchAndLoadData(struct _fetchDataArgs *fetchArgs, struct SHQueueStore *store) {
+	SHErrorCode status = SH_NO_ERROR;
+	struct SHModelsQueueStore *item = (struct SHModelsQueueStore *)SH_serialQueue_getUserItem(store);
+	SHHabitViewController *cSelf = (__bridge SHHabitViewController*)fetchArgs->owner;
+	if((status = fetchArgs->fetchFn(item)) != SH_NO_ERROR) { goto fnExit; }
+	_reloadTable(cSelf);
+	fnExit:
+		return status;
+}
+
+
+-(void)fetchUpdates:(SHErrorCode (*)(struct SHModelsQueueStore *queueStoreItem))fetchFn {
+	SHErrorCode status = SH_NO_ERROR;
+	struct _fetchDataArgs *fetchArgs = NULL;
+	if(!(fetchArgs = malloc(sizeof(struct _fetchDataArgs)))) {
+		SH_notifyOfError(SH_ALLOC_NO_MEM, "could not allocate anymore memory");
+		exit(1);
+	}
+	if((status = SH_serialQueue_addOp(self.dbQueue, (SHErrorCode (*)(void*, struct SHQueueStore *store))_callFetchAndLoadData, fetchArgs, free)) != SH_NO_ERROR) {
+		@throw [NSException encounterCError:status];
+	}
 }
 
 
@@ -149,8 +172,7 @@ static SHErrorCode _sectionCount(void* args, struct SHQueueStore *store, uint64_
 }
 
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-	(void)tableView;
+-(NSUInteger)getSectionCount {
 	SHErrorCode status = SH_NO_ERROR;
 	uint64_t count = 0;
 	if((status = SH_serialQueue_addOpAndWaitForResult(self.dbQueue,
@@ -162,6 +184,12 @@ static SHErrorCode _sectionCount(void* args, struct SHQueueStore *store, uint64_
 	}
 	
 	return count;
+}
+
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+	(void)tableView;
+	return [self getSectionCount];
 }
 
 
@@ -201,6 +229,7 @@ static SHErrorCode _rowCount(struct SHTablePath *rowCountObj, struct SHQueueStor
 
 -(void)controllerWillChangeContent:(NSFetchedResultsController *)controller{
 	(void)controller;
+	#warning replace
 	NSAssert(![NSThread isMainThread],@"this method should only be called from background");
 	[[NSOperationQueue mainQueue] addOperationWithBlock:^{
 		[self.habitTable beginUpdates];
@@ -210,6 +239,7 @@ static SHErrorCode _rowCount(struct SHTablePath *rowCountObj, struct SHQueueStor
 
 -(void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
 	(void)controller;
+	#warning replace
 	NSAssert(![NSThread isMainThread],@"this method should only be called from background");
 	[[NSOperationQueue mainQueue] addOperationWithBlock:^{
 		[self.habitTable endUpdates];
@@ -356,6 +386,7 @@ This will be called the user creates a new habit, checks it off, or deletes one
 	forChangeType:(NSFetchedResultsChangeType)type
 	newIndexPath:(NSIndexPath *)newIndexPath
 {
+	#warning replace
 	(void)controller; (void)anObject;
 	NSAssert(![NSThread isMainThread],@"this method should only be called from background");
 	[[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -385,6 +416,7 @@ This will be called the user creates a new habit, checks it off, or deletes one
 	atIndex:(NSUInteger)sectionIndex
 	forChangeType:(NSFetchedResultsChangeType)type
 {
+	#warning replace
 	(void)controller; (void)sectionInfo;
 	[[NSOperationQueue mainQueue] addOperationWithBlock:^{
 		switch(type) {

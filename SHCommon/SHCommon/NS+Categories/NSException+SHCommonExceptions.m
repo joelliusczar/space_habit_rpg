@@ -63,6 +63,15 @@
 }
 
 
++(NSException*)encounterCError:(SHErrorCode)status {
+	return [NSException
+	exceptionWithName:[NSString stringWithFormat:@"Encountered error: %d from my of the c functions", status]
+	reason:@"Look at the stack trace"
+	userInfo:nil];
+}
+
+
+
 +(NSException*)encounterError {
 	return [NSException
 	exceptionWithName:@"Encountered a random ass error"
