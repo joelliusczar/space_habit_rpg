@@ -1297,9 +1297,9 @@
             filePath = "SpaceHabitRPG/SpaceHabitRPG/Daily/SHHabitViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
-            landmarkName = "-openEditor:forAdded:"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
+            landmarkName = "-controllerDidChangeContent:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

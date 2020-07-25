@@ -106,8 +106,8 @@ static void _setActiveDaysDefault(struct SHActiveDaysValues *activeDays) {
 		activeDays->monthSkipIntervalHash = 0;
 		activeDays->monthIntervalSize = 1;
 		activeDays->monthSkipIntervalSize = 1;
-		memset(activeDays->yearIntervalHash, 0xff, 46);
-		memset(activeDays->yearSkipIntervalHash, 0, 46);
+		memset(activeDays->yearIntervalHash, 0xff, SH_YEAR_HASH_BYTE_COUNT);
+		memset(activeDays->yearSkipIntervalHash, 0, SH_YEAR_HASH_BYTE_COUNT);
 		activeDays->yearIntervalSize = 1;
 		activeDays->yearSkipIntervalSize = 1;
 }
@@ -268,7 +268,7 @@ SHErrorCode SH_fetchTableDailies(struct SHModelsQueueStore *queueStoreItem)
 	SHErrorCode status = SH_NO_ERROR;
 	int32_t sqlStatus = SQLITE_OK;
 	sqlite3_stmt *stmt = NULL;
-	struct SHDatetimeProvider *dateProvider = queueStoreItem->dateProvider;
+	const struct SHDatetimeProvider *dateProvider = queueStoreItem->dateProvider;
 	char errMsg[70];
 	struct SHPipeline *pipeline = NULL;
 	struct SHIterableWrapper *iterable = NULL;

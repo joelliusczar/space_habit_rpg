@@ -537,9 +537,9 @@
 			isa = PBXGroup;
 			children = (
 				2755349E247614C400D650AB /* SHHabitBase.h */,
+				275534E724831C7900D650AB /* SHHabitBase.c */,
 				275534E324830E7800D650AB /* SHHabit_dbCalls.h */,
 				275534E424830E7800D650AB /* SHHabit_dbCalls.c */,
-				275534E724831C7900D650AB /* SHHabitBase.c */,
 				275534F3248441C700D650AB /* SHActiveDaysValues.h */,
 				275534F4248441C700D650AB /* SHActiveDaysValues.c */,
 				2747C3BC2043B67200FB5669 /* SHIntervalTypeHelper.h */,

@@ -17,6 +17,6 @@
 SHErrorCode SH_openDb(sqlite3 **db, const char * dbFilePath);
 SHErrorCode SH_createTables(sqlite3 *db);
 SHErrorCode SH_setupDb(sqlite3 *db);
-SHErrorCode SH_addDbFunctions(sqlite3 *db, struct SHConfigAccessor *config);
+SHErrorCode SH_addDbFunctions(sqlite3 *db, const struct SHConfigAccessor *config);
 
 #endif /* SHDbSetup_h */

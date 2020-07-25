@@ -20,10 +20,8 @@
 }
 
 
--(void)setupCell:(SHContextObjectIDWrapper *)objectID {
-	NSAssert(objectID.context,@"Hey, hey, we need a context here.");
-	self.context = objectID.context;
-	self.objectID = objectID;
+-(void)setupCell:(struct SHTableHabit *)tableHabit{
+	self.tableHabit = tableHabit;
 	[self refreshCell];
 }
 

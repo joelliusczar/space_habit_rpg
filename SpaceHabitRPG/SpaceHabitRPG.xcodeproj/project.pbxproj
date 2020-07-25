@@ -40,6 +40,7 @@
 		270F982D23924C8400479E77 /* SHReminderTimeSpinPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 270F982B23924C8400479E77 /* SHReminderTimeSpinPicker.m */; };
 		270F983023924D0400479E77 /* SHReminderListContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 270F982F23924D0400479E77 /* SHReminderListContainer.m */; };
 		2711F33E24CBB2E500C018E3 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F37E80238796CE0006B705 /* SHModels.framework */; };
+		2711F34624CBF1A300C018E3 /* SHTablePath.c in Sources */ = {isa = PBXBuildFile; fileRef = 2711F34524CBF1A300C018E3 /* SHTablePath.c */; };
 		272D83A823AD7B0600D946D3 /* SHHabitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272D83A723AD7B0600D946D3 /* SHHabitViewController.m */; };
 		272D83B923AD9CBC00D946D3 /* SHHabitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 272D83B823AD9CBC00D946D3 /* SHHabitCell.m */; };
 		272D83CC23AEAC2800D946D3 /* SHEditNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 272D83CB23AEAC2800D946D3 /* SHEditNavigationController.xib */; };
@@ -181,6 +182,8 @@
 		270F982C23924C8400479E77 /* SHReminderTimeSpinPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHReminderTimeSpinPicker.h; sourceTree = "<group>"; };
 		270F982E23924D0400479E77 /* SHReminderListContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHReminderListContainer.h; sourceTree = "<group>"; };
 		270F982F23924D0400479E77 /* SHReminderListContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHReminderListContainer.m; sourceTree = "<group>"; };
+		2711F34424CBF1A300C018E3 /* SHTablePath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTablePath.h; sourceTree = "<group>"; };
+		2711F34524CBF1A300C018E3 /* SHTablePath.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHTablePath.c; sourceTree = "<group>"; };
 		272D83A623AD7B0600D946D3 /* SHHabitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SHHabitViewController.h; path = SpaceHabitRPG/Daily/SHHabitViewController.h; sourceTree = SOURCE_ROOT; };
 		272D83A723AD7B0600D946D3 /* SHHabitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SHHabitViewController.m; path = SpaceHabitRPG/Daily/SHHabitViewController.m; sourceTree = SOURCE_ROOT; };
 		272D83B723AD9CBC00D946D3 /* SHHabitCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHHabitCell.h; sourceTree = "<group>"; };
@@ -369,6 +372,8 @@
 		2769519B20437DF5002D1C9A = {
 			isa = PBXGroup;
 			children = (
+				2711F34424CBF1A300C018E3 /* SHTablePath.h */,
+				2711F34524CBF1A300C018E3 /* SHTablePath.c */,
 				275A7F5924B9744300B3168F /* SHDateProviderSetup.h */,
 				275A7F5524B9742200B3168F /* SHDateProviderSetup.m */,
 				275534E22482365900D650AB /* SHConfigSetup.h */,
@@ -621,6 +626,7 @@
 				270F97D723923CFC00479E77 /* SHSectorChoiceCellController.m in Sources */,
 				270F982A23924C4900479E77 /* SHReminderCellController.m in Sources */,
 				27B8C4B4241331EA008646BB /* SHHabitNameViewController.m in Sources */,
+				2711F34624CBF1A300C018E3 /* SHTablePath.c in Sources */,
 				270F98162392453A00479E77 /* SHMonthlyActiveDaysViewController.m in Sources */,
 				270F983023924D0400479E77 /* SHReminderListContainer.m in Sources */,
 				275A7F5624B9742200B3168F /* SHDateProviderSetup.m in Sources */,

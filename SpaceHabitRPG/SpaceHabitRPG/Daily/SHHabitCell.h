@@ -6,14 +6,16 @@
 //  Copyright © 2019 Joel Gillette. All rights reserved.
 //
 
-#import <SHControls/SHControls.h>
+@import SHControls;
+@import SHUtils_C;
+@import SHModels;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHHabitCell : SHTaskCell
-@property (strong,nonatomic) NSManagedObjectContext *context;
-@property (strong,nonatomic) SHContextObjectIDWrapper *objectID;
--(void)setupCell:(SHContextObjectIDWrapper *)objectID;
+@property (assign, nonatomic) struct SHSerialQueue *dbQueue; //not owner
+@property (assign, nonatomic) struct SHTableHabit *tableHabit; //not owner
+-(void)setupCell:(struct SHTableHabit *)tableHabit;
 @end
 
 NS_ASSUME_NONNULL_END

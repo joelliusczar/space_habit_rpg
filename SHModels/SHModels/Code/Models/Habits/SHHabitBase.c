@@ -10,11 +10,8 @@
 #include <stdlib.h>
 
 
-void SH_freeHabitBase(struct SHHabitBase **habitP2) {
-	if(!habitP2) return;
-	struct SHHabitBase *habit = *habitP2;
+void SH_freeHabitBase(struct SHHabitBase *habit) {
 	if(!habit) return;
-	if(habit->name) free(habit->name);
+	free(habit->name);
 	free(habit);
-	*habitP2 = NULL;
 }

@@ -23,11 +23,8 @@ struct SHDaily {
 	double *activeFromDateTime;
 	double *activeToDateTime;
 	double *lastActivationDateTime;
-	int32_t maxStreak;
-	bool activeFromHasPriority;
-	bool isEnabled;
-	bool lastUpdateHasPriority;
 	char * note;
+	int32_t maxStreak;
 	int32_t dailyLvl;
 	int32_t dailyXp;
 	int32_t customUseOrder;
@@ -36,6 +33,10 @@ struct SHDaily {
 	int32_t urgency;
 	int32_t streakLength;
 	int32_t tzOffsetLastActivationDateTime;
+	bool activeFromHasPriority;
+	bool isEnabled;
+	bool lastUpdateHasPriority;
+	uint8_t padding[1];
 };
 
 

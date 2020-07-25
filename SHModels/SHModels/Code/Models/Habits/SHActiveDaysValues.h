@@ -14,9 +14,11 @@
 #include <inttypes.h>
 #include <stdbool.h>
 
+#define SH_YEAR_HASH_BYTE_COUNT 48
+
 struct SHActiveDaysValues {
-	uint8_t yearIntervalHash[46];
-	uint8_t yearSkipIntervalHash[46];
+	uint8_t yearIntervalHash[SH_YEAR_HASH_BYTE_COUNT];
+	uint8_t yearSkipIntervalHash[SH_YEAR_HASH_BYTE_COUNT];
 	uint64_t monthIntervalHash;
 	uint64_t monthSkipIntervalHash;
 	uint32_t dayIntevalSize;
@@ -30,6 +32,7 @@ struct SHActiveDaysValues {
 	uint8_t weekSkipIntervalHash;
 	uint8_t weekIntervalHash;
 	uint8_t intervalType;
+	uint8_t padding[5];
 };
 
 int32_t SH_getCurrentIntervalSize(struct SHActiveDaysValues *activeDays);

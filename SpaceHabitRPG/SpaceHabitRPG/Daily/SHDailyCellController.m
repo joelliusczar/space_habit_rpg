@@ -91,8 +91,8 @@
 
 -(IBAction)completeBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
 	(void)sender; (void)event;
-	SHDailyActivator *activator = [[SHDailyActivator alloc] initWithObjectId:self.objectID];
-	[activator activate];
+//	SHDailyActivator *activator = [[SHDailyActivator alloc] initWithObjectId:self.objectID];
+//	[activator activate];
 }
 
 @end

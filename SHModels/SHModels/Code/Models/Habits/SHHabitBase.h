@@ -12,14 +12,21 @@
 #include <stdio.h>
 
 struct SHHabitBase {
+	int64_t pk;
 	char *name;
 	double lastUpdated;
 	int32_t tzOffsetLastUpdateDateTime;
-	int64_t pk;
+	uint32_t padding;
 };
 
 
-void SH_freeHabitBase(struct SHHabitBase **habit);
+struct SHTableHabit {
+	int64_t pk;
+	char *name;
+};
+
+
+void SH_freeHabitBase(struct SHHabitBase *habit);
 
 
 #endif /* SHHabitBase_h */

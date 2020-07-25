@@ -111,7 +111,7 @@ SHErrorCode SH_setupDb(sqlite3 *db) {
 }
 
 
-SHErrorCode SH_addDbFunctions(sqlite3 *db, struct SHConfigAccessor *config) {
+SHErrorCode SH_addDbFunctions(sqlite3 *db, const struct SHConfigAccessor *config) {
 	SHErrorCode status = SH_NO_ERROR;
 	int32_t sqlStatus = SQLITE_OK;
 	if((sqlStatus = sqlite3_create_function(db, "SH_selectSavedUseDateUTC", 7,
@@ -123,35 +123,35 @@ SHErrorCode SH_addDbFunctions(sqlite3 *db, struct SHConfigAccessor *config) {
 		
 	}
 	if((sqlStatus = sqlite3_create_function(db, "SH_nextDueDate", 4,
-		SQLITE_UTF8 | SQLITE_DETERMINISTIC, config, SHDB_nextDueDate, NULL, NULL))
+		SQLITE_UTF8 | SQLITE_DETERMINISTIC, (void*)config, SHDB_nextDueDate, NULL, NULL))
 		!= SQLITE_OK)
 	{
 		SH_notifyOfError(SH_SQLITE3_ERROR, "While adding SHDB_nextDueDate");
 		goto fnExit;
 	}
 	if((sqlStatus = sqlite3_create_function(db, "SH_isDateActive", 4,
-		SQLITE_UTF8 | SQLITE_DETERMINISTIC, config, SHDB_isDateActive, NULL, NULL))
+		SQLITE_UTF8 | SQLITE_DETERMINISTIC, (void*)config, SHDB_isDateActive, NULL, NULL))
 		!= SQLITE_OK)
 	{
 		SH_notifyOfError(SH_SQLITE3_ERROR, "While adding SHDB_isDateActive");
 		goto fnExit;
 	}
 	if((sqlStatus = sqlite3_create_function(db, "SH_missedDays", 4,
-		SQLITE_UTF8 | SQLITE_DETERMINISTIC, config, SHDB_missedDays, NULL, NULL))
+		SQLITE_UTF8 | SQLITE_DETERMINISTIC, (void*)config, SHDB_missedDays, NULL, NULL))
 		!= SQLITE_OK)
 	{
 		SH_notifyOfError(SH_SQLITE3_ERROR, "While adding SHDB_missedDays");
 		goto fnExit;
 	}
 	if((sqlStatus = sqlite3_create_function(db, "SH_penalty", 8,
-		SQLITE_UTF8 | SQLITE_DETERMINISTIC, config, SHDB_penalty, NULL, NULL))
+		SQLITE_UTF8 | SQLITE_DETERMINISTIC, (void*)config, SHDB_penalty, NULL, NULL))
 		!= SQLITE_OK)
 	{
 		SH_notifyOfError(SH_SQLITE3_ERROR, "While adding SHDB_penalty");
 		goto fnExit;
 	}
 	if((sqlStatus = sqlite3_create_function(db, "SH_getDueStatus", 4,
-		SQLITE_UTF8 | SQLITE_DETERMINISTIC, config, SHDB_getDueStatus, NULL, NULL))
+		SQLITE_UTF8 | SQLITE_DETERMINISTIC, (void*)config, SHDB_getDueStatus, NULL, NULL))
 		!= SQLITE_OK)
 	{
 		SH_notifyOfError(SH_SQLITE3_ERROR, "While adding SHDB_getDueStatus");

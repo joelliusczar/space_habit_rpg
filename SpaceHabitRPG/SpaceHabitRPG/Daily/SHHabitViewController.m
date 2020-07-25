@@ -8,6 +8,7 @@
 
 #import "SHHabitViewController.h"
 #import "SHHabitNameViewController.h"
+#import "SHTablePath.h"
 @import SHCommon;
 
 
@@ -19,7 +20,6 @@
 @end
 
 @implementation SHHabitViewController
-
 
 
 -(const char*)tableName {
@@ -87,29 +87,57 @@
 }
 
 
+static SHErrorCode _getTableHabit(struct SHTablePath *rowCountObj, struct SHQueueStore *store,
+	struct SHTableHabit** result)
+{
+	*result = NULL;
+	struct SHModelsQueueStore *item = (struct SHModelsQueueStore *)SH_serialQueue_getUserItem(store);
+	SHErrorCode status = SH_NO_ERROR;
+	if(!item || !result) return SH_INVALID_STATE;
+	SHHabitViewController *cSelf = (__bridge SHHabitViewController*)rowCountObj->owner;
+	struct SHIterableWrapper *tableStorage = SH_modelsQueueStore_selectTableData(item, cSelf.tableName);
+	if(!tableStorage) return SH_INVALID_STATE;
+	struct SHIterableWrapper *sectionData = SH_iterable_getItemAtIdx(tableStorage, rowCountObj->sectionIdx);
+	*result = ((struct SHTableHabit*)SH_iterable_getItemAtIdx(sectionData, rowCountObj->rowIdx));
+	return status;
+}
+
+
+static SHErrorCode _getPk(struct SHTablePath *rowCountObj, struct SHQueueStore *store, int64_t* result) {
+	*result = SH_NOT_FOUND;
+	struct SHTableHabit *tableHabit = NULL;
+	SHErrorCode status = SH_NO_ERROR;
+	if((status = _getTableHabit(rowCountObj, store, &tableHabit)) != SH_NO_ERROR) { goto fnExit; }
+	*result = tableHabit->pk;
+	fnExit:
+		return status;
+}
+
+
 -(nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView
 	cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-#warning update
-return nil;
-//		SHHabitCell *cell = [self getTableCell:tableView];
-//	__block NSManagedObjectID *objectID = nil;
-//	[self.context performBlockAndWait:^{
-//		NSManagedObject *mananagedObject = (NSManagedObject*)self.habitItemsFetcher
-//			.sections[indexPath.section]
-//			.objects[indexPath.row];
-//		objectID = mananagedObject.objectID;
-//	}];
-//	SHContextObjectIDWrapper *wrappedID = [[SHContextObjectIDWrapper alloc]
-//		initWithEntityType:self.entityType
-//		withContext:self.context];
-//	wrappedID.objectID = objectID;
-//	[cell setupCell:wrappedID];
-//	return cell;
+	SHErrorCode status = SH_NO_ERROR;
+	struct SHTablePath rowCountObj = {
+		.owner = (__bridge void*)self,
+		.sectionIdx = indexPath.section,
+	};
+	
+	struct SHTableHabit *tableHabit = NULL;
+	if((status = SH_serialQueue_addOpAndWaitForResult(self.dbQueue,
+		(SHErrorCode (*)(void*, struct SHQueueStore *, void**))_getTableHabit, &rowCountObj, NULL, (void**)&tableHabit))
+		!= SH_NO_ERROR)
+	{
+		SH_notifyOfError(status, "app had an error while getting daily section count");
+	}
+	SHHabitCell *cell = [self getTableCell:tableView];
+	[cell setupCell:tableHabit];
+	return cell;
 }
 
 
 static SHErrorCode _sectionCount(void* args, struct SHQueueStore *store, uint64_t* result) {
+	*result = 0;
 	struct SHModelsQueueStore *item = (struct SHModelsQueueStore *)SH_serialQueue_getUserItem(store);
 	SHErrorCode status = SH_NO_ERROR;
 	if(!item || !result) return SH_INVALID_STATE;
@@ -137,17 +165,12 @@ static SHErrorCode _sectionCount(void* args, struct SHQueueStore *store, uint64_
 }
 
 
-struct _rowCountObj {
-	void *cSelf;
-	uint64_t sectionIdx;
-};
-
-
-static SHErrorCode _rowCount(struct _rowCountObj *rowCountObj, struct SHQueueStore *store, uint64_t* result) {
+static SHErrorCode _rowCount(struct SHTablePath *rowCountObj, struct SHQueueStore *store, uint64_t* result) {
+	*result = 0;
 	struct SHModelsQueueStore *item = (struct SHModelsQueueStore *)SH_serialQueue_getUserItem(store);
 	SHErrorCode status = SH_NO_ERROR;
 	if(!item || !result) return SH_INVALID_STATE;
-	SHHabitViewController *cSelf = (__bridge SHHabitViewController*)rowCountObj->cSelf;
+	SHHabitViewController *cSelf = (__bridge SHHabitViewController*)rowCountObj->owner;
 	struct SHIterableWrapper *tableStorage = SH_modelsQueueStore_selectTableData(item, cSelf.tableName);
 	if(!tableStorage) return SH_INVALID_STATE;
 	struct SHIterableWrapper *sectionData = SH_iterable_getItemAtIdx(tableStorage, rowCountObj->sectionIdx);
@@ -160,8 +183,8 @@ static SHErrorCode _rowCount(struct _rowCountObj *rowCountObj, struct SHQueueSto
 	(void)tableView;
 	SHErrorCode status = SH_NO_ERROR;
 	uint64_t count = 0;
-	struct _rowCountObj rowCountObj = {
-		.cSelf = (__bridge void*)self,
+	struct SHTablePath rowCountObj = {
+		.owner = (__bridge void*)self,
 		.sectionIdx = section
 	};
 	if((status = SH_serialQueue_addOpAndWaitForResult(self.dbQueue,
@@ -194,7 +217,7 @@ static SHErrorCode _rowCount(struct _rowCountObj *rowCountObj, struct SHQueueSto
 }
 
 
--(void)openEditor:(int64_t)pk forAdded:(BOOL)isAdded{
+-(void)openEditor:(int64_t)pk forAdded:(BOOL)isAdded {
 	SHViewController<SHEditingSaverProtocol> *habitEditor = [self buildHabitEditor];
 	[self setupEditorForSaving:habitEditor pk:pk];
 	habitEditor.isAdded = isAdded;
@@ -208,18 +231,20 @@ static SHErrorCode _rowCount(struct _rowCountObj *rowCountObj, struct SHQueueSto
 -(void)swipeEditActionWithIndexPath:(NSIndexPath*)indexPath
 	withCompletionHandler:(void (^)(BOOL))completionHandler
 {
-#warning update without nsfetchresultscontroller
-//	NSFetchedResultsController *fetchController = self.habitItemsFetcher;
-//	NSManagedObjectContext *fetchContext = fetchController.managedObjectContext;
-//	[fetchContext performBlockAndWait:^{
-//		NSManagedObject *rowObject = fetchController.fetchedObjects[indexPath.row];
-//		SHContextObjectIDWrapper *objectIDWrapper = [[SHContextObjectIDWrapper alloc]
-//			initWithManagedObject:rowObject];
-//		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-//			[self openEditor:objectIDWrapper];
-//			completionHandler(YES);
-//		}];
-//	}];
+	SHErrorCode status = SH_NO_ERROR;
+	struct SHTablePath rowCountObj = {
+		.owner = (__bridge void*)self,
+		.sectionIdx = indexPath.section,
+	};
+	int64_t pk = SH_NOT_FOUND;
+	if((status = SH_serialQueue_addOpAndWaitForResult(self.dbQueue,
+		(SHErrorCode (*)(void*, struct SHQueueStore *, void**))_getPk, &rowCountObj, NULL,
+		(void**)&pk))
+		!= SH_NO_ERROR)
+	{
+		SH_notifyOfError(status, "app had an error while getting daily section count");
+	}
+	[self openEditor:pk forAdded:NO];
 }
 
 
@@ -255,13 +280,10 @@ static SHErrorCode _insertNewHabit(void *args, struct SHQueueStore *store) {
 }
 
 
-static void _cleanUpInsert(struct _insertArgs** argsP2) {
-	if(!argsP2) return;
-	struct _insertArgs *insertArgs = *argsP2;
+static void _cleanUpInsert(struct _insertArgs* insertArgs) {
 	if(!insertArgs) return;
-	SH_freeHabitBase(&insertArgs->habit);
+	SH_freeHabitBase(insertArgs->habit);
 	free(insertArgs);
-	*argsP2 = NULL;
 }
 
 
@@ -294,7 +316,7 @@ static void _cleanUpInsert(struct _insertArgs** argsP2) {
 			!= SH_NO_ERROR) { goto cleanup; }
 		goto fnExit;
 		cleanup:
-			SH_freeHabitBase(&habit);
+			SH_freeHabitBase(habit);
 		fnExit:
 			return; 
 	};
