@@ -11,6 +11,6 @@
 
 #include <stdio.h>
 
-extern char const * const SH_TABLE_NAME_DAILIES;
+extern char const SH_TABLE_NAME_DAILIES[7];
 
 #endif /* SHTableNames_h */

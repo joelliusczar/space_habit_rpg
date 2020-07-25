@@ -127,7 +127,7 @@ void *SH_tree_getNullItemSentinel(struct SHTree *tree) {
 
 
 uint64_t SH_tree_count(struct SHTree *tree) {
-	if(!tree) return SH_NOT_FOUND;
+	if(!tree) return 0;
 	return tree->root ? tree->root->childCount + 1 : 0;
 }
 

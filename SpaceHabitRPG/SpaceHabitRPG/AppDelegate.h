@@ -22,8 +22,8 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UIViewController *centralController;
 @property (readonly, nonatomic) struct SHSerialQueue *dbQueue;
-@property (readonly, nonatomic) struct SHConfigAccessor config;
+@property (readonly, nonatomic) const struct SHConfigAccessor *config;
 @property (strong, nonatomic) SHResourceUtility *resourceUtil;
-@property (readonly, nonatomic) struct SHDatetimeProvider dateProvider;
+@property (readonly, nonatomic) const struct SHDatetimeProvider *dateProvider;
 @end
 

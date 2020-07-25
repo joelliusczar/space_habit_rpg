@@ -52,7 +52,7 @@ static SHErrorCode _fetchDaily(void *args, struct SHQueueStore *store) {
 	[NSOperationQueue.mainQueue addOperationWithBlock:^{
 		[editController showLoadingDisplay:YES];
 	}];
-	struct SHQueueStoreItem *storeItem = (struct SHQueueStoreItem *)SH_serialQueue_getUserItem(store);
+	struct SHModelsQueueStore *storeItem = (struct SHModelsQueueStore *)SH_serialQueue_getUserItem(store);
 	if((status = SH_fetchSingleDaily(storeItem->db, editController.pk, editController.daily) ) != SH_NO_ERROR) {
 		return status;
 	}
@@ -170,7 +170,7 @@ static SHErrorCode _fetchDaily(void *args, struct SHQueueStore *store) {
 static SHErrorCode _updateDaily(void *args, struct SHQueueStore *store) {
 	SHErrorCode status = SH_NO_ERROR;
 	SHDailyEditController *editController = (__bridge SHDailyEditController *)args;
-	struct SHQueueStoreItem *storeItem = (struct SHQueueStoreItem *)SH_serialQueue_getUserItem(store);
+	struct SHModelsQueueStore *storeItem = (struct SHModelsQueueStore *)SH_serialQueue_getUserItem(store);
 	if((status = SH_updateDaily(storeItem->db, editController.daily) ) != SH_NO_ERROR) { ; }
 	return status;
 }
@@ -185,7 +185,7 @@ static SHErrorCode _updateDaily(void *args, struct SHQueueStore *store) {
 static SHErrorCode _deleteDaily(void *args, struct SHQueueStore *store) {
 	SHErrorCode status = SH_NO_ERROR;
 	SHDailyEditController *editController = (__bridge SHDailyEditController *)args;
-	struct SHQueueStoreItem *storeItem = (struct SHQueueStoreItem *)SH_serialQueue_getUserItem(store);
+	struct SHModelsQueueStore *storeItem = (struct SHModelsQueueStore *)SH_serialQueue_getUserItem(store);
 	if((status = SH_deleteRecord(storeItem->db, editController.tableName, editController.pk) ) != SH_NO_ERROR) { ; }
 	return status;
 }

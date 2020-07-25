@@ -22,13 +22,12 @@
 
 @interface SHDailyViewController ()
 @property (strong,nonatomic) SHDaily_Medium *dailyMedium;
-@property (assign, nonatomic) struct SHDatetimeProvider dateProvider; //not owner
+@property (assign, nonatomic) const struct SHDatetimeProvider *dateProvider; //not owner
 @end
 
 @implementation SHDailyViewController
 
 @synthesize dateProvider = _dateProvider;
-@synthesize tableBackend = _tableBackend;
 
 -(const char*)tableName {
 	return "Dailies";
@@ -50,7 +49,7 @@
 
 
 static SHErrorCode _fetchTableDailies(void* args, struct SHQueueStore *store) {
-	struct SHQueueStoreItem *item = (struct SHQueueStoreItem *)SH_serialQueue_getUserItem(store);
+	struct SHModelsQueueStore *item = (struct SHModelsQueueStore *)SH_serialQueue_getUserItem(store);
 	SHErrorCode status = SH_fetchTableDailies(item);
 	return status;
 }

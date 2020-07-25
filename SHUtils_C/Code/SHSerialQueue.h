@@ -24,7 +24,7 @@ SHErrorCode SH_serialQueue_addOp(
 	void *fnArgs,
 	void (*cleanupFn)(void*));
 	
-SHErrorCode SH_addOpAndWaitForResult(
+SHErrorCode SH_serialQueue_addOpAndWaitForResult(
 	struct SHSerialQueue *queue,
 	SHErrorCode (*fn)(void*, struct SHQueueStore *, void**),
 	void *fnArgs,

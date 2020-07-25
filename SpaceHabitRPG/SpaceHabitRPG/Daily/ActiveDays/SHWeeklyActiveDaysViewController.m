@@ -35,8 +35,8 @@
 	char *weekdayNames[SH_WEEKLEN];
 	memcpy(weekdayNames, SH_WEEKDAYS_FULLNAMES, sizeof(weekdayNames));
 	int32_t weekdayOffset = 0;
-	if(appDel.config.getWeekStartOffset) {
-		weekdayOffset = appDel.config.getWeekStartOffset();
+	if(appDel.config->getWeekStartOffset) {
+		weekdayOffset = appDel.config->getWeekStartOffset();
 	}
 	SH_rotateStrArray(weekdayNames, SH_WEEKLEN, weekdayOffset);
 

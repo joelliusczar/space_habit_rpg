@@ -176,7 +176,7 @@ static void _freeUnusedItemsInQueue(struct SHSerialQueue *queue) {
 }
 
 
-SHErrorCode SH_addOpAndWaitForResult(
+SHErrorCode SH_serialQueue_addOpAndWaitForResult(
 	struct SHSerialQueue *queue,
 	SHErrorCode (*fn)(void*, struct SHQueueStore *, void**),
 	void *fnArgs,
@@ -308,6 +308,7 @@ struct SHSerialQueue * SH_serialQueue_init(void *initArgs, void (*initArgsCleanu
 
 
 void *SH_serialQueue_getUserItem(struct SHQueueStore *store) {
+	if(!store) return NULL;
 	return store->userItem;
 }
 

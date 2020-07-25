@@ -262,7 +262,7 @@ static int32_t _tableDailySortingFn(struct SHTableDaily *tableDaily1, struct SHT
 }
 
 
-SHErrorCode SH_fetchTableDailies(struct SHQueueStoreItem *queueStoreItem)
+SHErrorCode SH_fetchTableDailies(struct SHModelsQueueStore *queueStoreItem)
 {
 	if(!queueStoreItem) return SH_ILLEGAL_INPUTS;
 	SHErrorCode status = SH_NO_ERROR;
@@ -285,7 +285,7 @@ SHErrorCode SH_fetchTableDailies(struct SHQueueStoreItem *queueStoreItem)
 	if(!pipeline) goto allocErr;
 	iterable = SH_pipeline_completeAsIterable(pipeline, &SH_ARRAY_FN_DEFS, NULL);
 	if(!iterable) goto allocErr;
-	queueStoreItem->storage = iterable;
+	queueStoreItem->dailyStorage = iterable;
 	goto fnExit;
 	allocErr:
 		status |= SH_ALLOC_NO_MEM;

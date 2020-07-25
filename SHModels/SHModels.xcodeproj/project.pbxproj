@@ -59,8 +59,8 @@
 		275534D324801AA600D650AB /* SHConfigAccessor.h in Headers */ = {isa = PBXBuildFile; fileRef = 275534D124801AA600D650AB /* SHConfigAccessor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		275534D72481631300D650AB /* SHHeroMonsterDbHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 275534D52481631300D650AB /* SHHeroMonsterDbHelper.h */; };
 		275534D924818A3900D650AB /* SHDBDueDateConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 275534CC247F5EB400D650AB /* SHDBDueDateConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		275534DC2481E04400D650AB /* SHQueueStoreItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 275534DA2481E04400D650AB /* SHQueueStoreItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		275534DF2481E18600D650AB /* SHQueueStoreItem.c in Sources */ = {isa = PBXBuildFile; fileRef = 275534DE2481E18600D650AB /* SHQueueStoreItem.c */; };
+		275534DC2481E04400D650AB /* SHModelsQueueStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 275534DA2481E04400D650AB /* SHModelsQueueStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		275534DF2481E18600D650AB /* SHModelsQueueStore.c in Sources */ = {isa = PBXBuildFile; fileRef = 275534DE2481E18600D650AB /* SHModelsQueueStore.c */; };
 		275534E524830E7800D650AB /* SHHabit_dbCalls.h in Headers */ = {isa = PBXBuildFile; fileRef = 275534E324830E7800D650AB /* SHHabit_dbCalls.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		275534E624830E7800D650AB /* SHHabit_dbCalls.c in Sources */ = {isa = PBXBuildFile; fileRef = 275534E424830E7800D650AB /* SHHabit_dbCalls.c */; };
 		275534E824831C7A00D650AB /* SHHabitBase.c in Sources */ = {isa = PBXBuildFile; fileRef = 275534E724831C7900D650AB /* SHHabitBase.c */; };
@@ -281,8 +281,8 @@
 		275534CE247FE75200D650AB /* SHDaily_dbFuncs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHDaily_dbFuncs.c; sourceTree = "<group>"; };
 		275534D124801AA600D650AB /* SHConfigAccessor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHConfigAccessor.h; sourceTree = "<group>"; };
 		275534D52481631300D650AB /* SHHeroMonsterDbHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHHeroMonsterDbHelper.h; sourceTree = "<group>"; };
-		275534DA2481E04400D650AB /* SHQueueStoreItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHQueueStoreItem.h; sourceTree = "<group>"; };
-		275534DE2481E18600D650AB /* SHQueueStoreItem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SHQueueStoreItem.c; sourceTree = "<group>"; };
+		275534DA2481E04400D650AB /* SHModelsQueueStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHModelsQueueStore.h; sourceTree = "<group>"; };
+		275534DE2481E18600D650AB /* SHModelsQueueStore.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SHModelsQueueStore.c; sourceTree = "<group>"; };
 		275534E324830E7800D650AB /* SHHabit_dbCalls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHHabit_dbCalls.h; sourceTree = "<group>"; };
 		275534E424830E7800D650AB /* SHHabit_dbCalls.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHHabit_dbCalls.c; sourceTree = "<group>"; };
 		275534E724831C7900D650AB /* SHHabitBase.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHHabitBase.c; sourceTree = "<group>"; };
@@ -508,8 +508,8 @@
 				275534AF24761CC400D650AB /* SHSqlite3Extensions.c */,
 				275534D124801AA600D650AB /* SHConfigAccessor.h */,
 				275534D52481631300D650AB /* SHHeroMonsterDbHelper.h */,
-				275534DA2481E04400D650AB /* SHQueueStoreItem.h */,
-				275534DE2481E18600D650AB /* SHQueueStoreItem.c */,
+				275534DA2481E04400D650AB /* SHModelsQueueStore.h */,
+				275534DE2481E18600D650AB /* SHModelsQueueStore.c */,
 			);
 			name = Code;
 			path = SHModels/Code;
@@ -827,7 +827,7 @@
 				275D9925238611D800522A80 /* SHSectorArtifact.h in Headers */,
 				27CA9D1B23AF345100F67AC4 /* SHDailyRateItem.h in Headers */,
 				2733D212229065830090B7F1 /* SHDailyValidation.h in Headers */,
-				275534DC2481E04400D650AB /* SHQueueStoreItem.h in Headers */,
+				275534DC2481E04400D650AB /* SHModelsQueueStore.h in Headers */,
 				275534D324801AA600D650AB /* SHConfigAccessor.h in Headers */,
 				275534E524830E7800D650AB /* SHHabit_dbCalls.h in Headers */,
 				27CA9D1723AF060F00F67AC4 /* SHWeekIntervalItemList.h in Headers */,
@@ -1105,7 +1105,7 @@
 				279D81602440CF0800876892 /* SHDailyProcessor.m in Sources */,
 				2747C3D02043BACB00FB5669 /* SHSectorInfoDictionary.m in Sources */,
 				2740A895226FE38D00ACD777 /* SHTransaction.m in Sources */,
-				275534DF2481E18600D650AB /* SHQueueStoreItem.c in Sources */,
+				275534DF2481E18600D650AB /* SHModelsQueueStore.c in Sources */,
 				27CA9D1C23AF345100F67AC4 /* SHDailyRateItem.m in Sources */,
 				2740A88E226EB49800ACD777 /* SHTransaction_Medium.m in Sources */,
 				279D815C2440CD6B00876892 /* SHMonsterInfoDictionary.m in Sources */,

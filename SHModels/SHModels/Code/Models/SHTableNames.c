@@ -8,4 +8,4 @@
 
 #include "SHTableNames.h"
 
-char const * const SH_TABLE_NAME_DAILIES = "Dailies";
+char const SH_TABLE_NAME_DAILIES[7] = "Dailies";

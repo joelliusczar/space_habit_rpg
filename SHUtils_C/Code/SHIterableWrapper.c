@@ -42,7 +42,7 @@ struct SHIterableWrapper *SH_iterable_init(struct SHIterableWrapperFuncs const *
 
 
 uint64_t SH_iterable_count(struct SHIterableWrapper *iterable) {
-	if(!iterable || !iterable->funcs.count) return SH_NOT_FOUND;
+	if(!iterable || !iterable->funcs.count) return 0;
 	return iterable->funcs.count(iterable->backend);
 }
 

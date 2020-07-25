@@ -9,9 +9,9 @@
 #ifndef SHConfigAccessor_h
 #define SHConfigAccessor_h
 
+#include "SHDBDueDateConstants.h"
 #include <stdio.h>
 #include <inttypes.h>
-#include "SHDBDueDateConstants.h"
 #include <SHDatetime/SHDatetime.h>
 
 struct SHConfigAccessor {

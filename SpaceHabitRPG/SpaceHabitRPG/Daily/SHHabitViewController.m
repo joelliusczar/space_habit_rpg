@@ -15,10 +15,11 @@
 @property (strong, nonatomic) UITableView *habitTable;
 @property (strong, nonatomic) SHHabitNameViewController *nameViewController;
 @property (assign, nonatomic) struct SHSerialQueue *dbQueue; //not owner
-@property (assign, nonatomic) struct SHDatetimeProvider dateProvider; //not owner
+@property (assign, nonatomic) const struct SHDatetimeProvider *dateProvider; //not owner
 @end
 
 @implementation SHHabitViewController
+
 
 
 -(const char*)tableName {
@@ -108,21 +109,70 @@ return nil;
 }
 
 
+static SHErrorCode _sectionCount(void* args, struct SHQueueStore *store, uint64_t* result) {
+	struct SHModelsQueueStore *item = (struct SHModelsQueueStore *)SH_serialQueue_getUserItem(store);
+	SHErrorCode status = SH_NO_ERROR;
+	if(!item || !result) return SH_INVALID_STATE;
+	SHHabitViewController *cSelf = (__bridge SHHabitViewController*)args;
+	struct SHIterableWrapper *tableStorage = SH_modelsQueueStore_selectTableData(item, cSelf.tableName);
+	if(!tableStorage) return SH_INVALID_STATE;
+	*result = SH_iterable_count(tableStorage);
+	return status;
+}
+
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
 	(void)tableView;
-	#warning update
-	return 0;
-//	NSInteger sectionCount = self.habitItemsFetcher.sections.count;
-//	return sectionCount;
+	SHErrorCode status = SH_NO_ERROR;
+	uint64_t count = 0;
+	if((status = SH_serialQueue_addOpAndWaitForResult(self.dbQueue,
+		(SHErrorCode (*)(void*, struct SHQueueStore *, void**))_sectionCount, (__bridge void*)self, NULL,
+		(void**)&count))
+		!= SH_NO_ERROR)
+	{
+		SH_notifyOfError(status, "app had an error while getting daily section count");
+	}
+	
+	return count;
+}
+
+
+struct _rowCountObj {
+	void *cSelf;
+	uint64_t sectionIdx;
+};
+
+
+static SHErrorCode _rowCount(struct _rowCountObj *rowCountObj, struct SHQueueStore *store, uint64_t* result) {
+	struct SHModelsQueueStore *item = (struct SHModelsQueueStore *)SH_serialQueue_getUserItem(store);
+	SHErrorCode status = SH_NO_ERROR;
+	if(!item || !result) return SH_INVALID_STATE;
+	SHHabitViewController *cSelf = (__bridge SHHabitViewController*)rowCountObj->cSelf;
+	struct SHIterableWrapper *tableStorage = SH_modelsQueueStore_selectTableData(item, cSelf.tableName);
+	if(!tableStorage) return SH_INVALID_STATE;
+	struct SHIterableWrapper *sectionData = SH_iterable_getItemAtIdx(tableStorage, rowCountObj->sectionIdx);
+	*result = SH_iterable_count(sectionData);
+	return status;
 }
 
 
 -(NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	(void)tableView;
-	#warning update
-	return 0;
-//	NSInteger rowCount = self.habitItemsFetcher.sections[section].numberOfObjects;
-//	return rowCount;
+	SHErrorCode status = SH_NO_ERROR;
+	uint64_t count = 0;
+	struct _rowCountObj rowCountObj = {
+		.cSelf = (__bridge void*)self,
+		.sectionIdx = section
+	};
+	if((status = SH_serialQueue_addOpAndWaitForResult(self.dbQueue,
+		(SHErrorCode (*)(void*, struct SHQueueStore *, void**))_rowCount, &rowCountObj, NULL,
+		(void**)&count))
+		!= SH_NO_ERROR)
+	{
+		SH_notifyOfError(status, "app had an error while getting daily section count");
+	}
+	
+	return count;
 }
 
 
@@ -181,7 +231,7 @@ struct _insertArgs {
 
 static SHErrorCode _insertNewHabit(void *args, struct SHQueueStore *store) {
 	struct _insertArgs *insertArgs = (struct _insertArgs *)args;
-	struct SHQueueStoreItem *storeItem = (struct SHQueueStoreItem *)SH_serialQueue_getUserItem(store);
+	struct SHModelsQueueStore *storeItem = (struct SHModelsQueueStore *)SH_serialQueue_getUserItem(store);
 	SHErrorCode status = SH_NO_ERROR;
 	int64_t insertedPk = SH_NOT_FOUND;
 	SHHabitViewController *bSelf = (__bridge SHHabitViewController*)insertArgs->bSelf;
@@ -226,12 +276,12 @@ static void _cleanUpInsert(struct _insertArgs** argsP2) {
 		AppDelegate *appDel = (AppDelegate*)UIApplication.sharedApplication.delegate;
 		SHErrorCode status = SH_NO_ERROR;
 		double lastUpdated = 0;
-		if((status = SH_dtToTimestamp(appDel.dateProvider.getDate(), &lastUpdated)) != SH_NO_ERROR) { goto fnExit; }
+		if((status = SH_dtToTimestamp(appDel.dateProvider->getDate(), &lastUpdated)) != SH_NO_ERROR) { goto fnExit; }
 		struct SHHabitBase *habit = malloc(sizeof(struct SHHabitBase));
 		*habit = (struct SHHabitBase){
 			.name = [name SH_unsafeStrCopy],
 			.lastUpdated = lastUpdated,
-			.tzOffsetLastUpdateDateTime = appDel.dateProvider.getLocalTzOffset(),
+			.tzOffsetLastUpdateDateTime = appDel.dateProvider->getLocalTzOffset(),
 		};
 		
 		struct _insertArgs *insertArgs = malloc(sizeof(struct _insertArgs));
@@ -240,7 +290,7 @@ static void _cleanUpInsert(struct _insertArgs** argsP2) {
 			.habit = habit,
 			.bSelf = (__bridge void*)bSelf,
 		};
-		if((status = SH_serialQueue_addOp(self.dbQueue, _insertNewHabit, insertArgs,(void (*)(void**)) _cleanUpInsert))
+		if((status = SH_serialQueue_addOp(self.dbQueue, _insertNewHabit, insertArgs,(void (*)(void*)) _cleanUpInsert))
 			!= SH_NO_ERROR) { goto cleanup; }
 		goto fnExit;
 		cleanup:

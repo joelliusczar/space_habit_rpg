@@ -38,9 +38,9 @@ static struct SHDatetime *_getUserTodayStart() {
 	return ans;
 }
 
-void SH_setupDateProvider(struct SHDatetimeProvider *dateProvider) {
-	if(!dateProvider) return;
-	dateProvider->getLocalTzOffset = _getLocalTzOffset;
-	dateProvider->getDate = _getDate;
-	dateProvider->getUserTodayStart = _getUserTodayStart;
-}
+
+const struct SHDatetimeProvider SH_APP_DATETIME_PROVIDER_FUNCS = {
+	.getLocalTzOffset = _getLocalTzOffset,
+	.getDate = _getDate,
+	.getUserTodayStart = _getUserTodayStart
+};

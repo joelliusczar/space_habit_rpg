@@ -11,7 +11,7 @@
 
 @import SHModels;
 
-void SH_setupConfig(struct SHConfigAccessor *configAccessor);
 
+extern const struct SHConfigAccessor SH_APP_CONFIG_FUNCS;
 
 #endif /* SHConfigSetup_h */

@@ -28,8 +28,8 @@
 @property (strong, nonatomic) SHCoreData *dataController;
 //the public version of these guys is read only
 @property (assign, nonatomic) struct SHSerialQueue *dbQueue;
-@property (assign, nonatomic) struct SHConfigAccessor config;
-@property (assign, nonatomic) struct SHDatetimeProvider dateProvider;
+@property (assign, nonatomic) const struct SHConfigAccessor *config;
+@property (assign, nonatomic) const struct SHDatetimeProvider *dateProvider;
 @end
 
 @implementation AppDelegate
@@ -58,10 +58,16 @@ void printWorkingDir(){
 }
 
 
-static struct SHQueueStoreItem* _setupQueueStoreItem(struct SHConfigAccessor *config) {
-	struct SHQueueStoreItem *item = malloc(sizeof(struct SHQueueStoreItem));
+static struct SHModelsQueueStore* _setupQueueStoreItem(const struct SHConfigAccessor *config,
+	const struct SHDatetimeProvider *dateProvider)
+{
+	struct SHModelsQueueStore *item = malloc(sizeof(struct SHModelsQueueStore));
 	if(!item) return NULL;
 	const char *dbFile = NULL;
+	*item = (struct SHModelsQueueStore){
+		.config = config,
+		.dateProvider = dateProvider
+	};
 	NSArray<NSString*> *procArgs = NSProcessInfo.processInfo.arguments;
 	if(procArgs.count > 1) {
 		dbFile = procArgs[1].UTF8String;
@@ -73,7 +79,6 @@ static struct SHQueueStoreItem* _setupQueueStoreItem(struct SHConfigAccessor *co
 		free(item);
 		return NULL;
 	}
-	item->config = config;
 	item->config->setIsAppInitialized(true);
 	return item;
 }
@@ -81,7 +86,7 @@ static struct SHQueueStoreItem* _setupQueueStoreItem(struct SHConfigAccessor *co
 
 static SHErrorCode _setupDb(void* args, struct SHQueueStore *store) {
 	(void)args;
-	struct SHQueueStoreItem *item = (struct SHQueueStoreItem *)SH_serialQueue_getUserItem(store);
+	struct SHModelsQueueStore *item = (struct SHModelsQueueStore *)SH_serialQueue_getUserItem(store);
 	SHErrorCode status = SH_setupDb(item->db);
 	
 	return status;
@@ -90,7 +95,7 @@ static SHErrorCode _setupDb(void* args, struct SHQueueStore *store) {
 
 static SHErrorCode _addFunctions(void* args, struct SHQueueStore *store) {
 	(void)args;
-	struct SHQueueStoreItem *item = (struct SHQueueStoreItem *)SH_serialQueue_getUserItem(store);
+	struct SHModelsQueueStore *item = (struct SHModelsQueueStore *)SH_serialQueue_getUserItem(store);
 	
 	SHErrorCode status = SH_addDbFunctions(item->db, item->config);
 	return status;
@@ -102,9 +107,10 @@ static SHErrorCode _addFunctions(void* args, struct SHQueueStore *store) {
 {
 	(void)application;
 	(void)launchOptions;
-	SH_setupConfig(&self->_config);
-	SH_setupDateProvider(&self->_dateProvider);
-	self.dbQueue = SH_serialQueue_init(_setupQueueStoreItem(&self->_config), (void (*)(void**))SH_freeQueueStoreItem);
+	self->_config = &SH_APP_CONFIG_FUNCS;
+	self->_dateProvider = &SH_APP_DATETIME_PROVIDER_FUNCS;
+	self.dbQueue = SH_serialQueue_init(_setupQueueStoreItem(self->_config, self->_dateProvider),
+		 (void (*)(void*))SH_freeQueueStoreItem);
 	if(!self.dbQueue) return NO;
 	SHErrorCode status = SH_NO_ERROR;
 	if((status = SH_serialQueue_startLoop(self.dbQueue))
@@ -113,7 +119,7 @@ static SHErrorCode _addFunctions(void* args, struct SHQueueStore *store) {
 		return NO;
 	}
 	
-	if(!self.config.getIsAppInitialized()) {
+	if(!self.config->getIsAppInitialized()) {
 		if((status = SH_serialQueue_addOp(self.dbQueue, _setupDb, NULL, NULL)) != SH_NO_ERROR) {
 			return NO;
 		}
@@ -174,7 +180,7 @@ static SHErrorCode _addFunctions(void* args, struct SHQueueStore *store) {
 
 
 -(void)dealloc {
-	SH_serialQueue_cleanup(&self->_dbQueue);
+	SH_serialQueue_cleanup(self->_dbQueue);
 }
 
 

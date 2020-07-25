@@ -11,7 +11,8 @@
 
 @import SHDatetime;
 
-void SH_setupDateProvider(struct SHDatetimeProvider *dateProvider);
+extern const struct SHDatetimeProvider SH_APP_DATETIME_PROVIDER_FUNCS;
+
 
 
 #endif /* SHDateProviderSetup_h */

@@ -95,20 +95,19 @@ void setIsAppInitialized(bool isAppInitialized){
 }
 
 
-void SH_setupConfig(struct SHConfigAccessor *configAccessor) {
-	if(!configAccessor) return;
-	configAccessor->getDayStartHour = getDayStartHour;
-	configAccessor->setDayStartTime = setDayStartHour;
-	configAccessor->getWeekStartOffset = getWeekStartOffset;
-	configAccessor->setWeekStartOffset = setWeekStartOffset;
-	configAccessor->getGameState = getGameState;
-	configAccessor->setGameState = setGameState;
-	configAccessor->getStoryMode = getStoryMode;
-	configAccessor->setStoryMode = setStoryMode;
-	configAccessor->getStoryState = getStoryState;
-	configAccessor->setStoryState = setStoryState;
-	configAccessor->getLastProcessingDateTime = getLastProcessingDateTime;
-	configAccessor->setLastProcessingDateTime = setLastProcessingDateTime;
-	configAccessor->getIsAppInitialized = getIsAppInitialized;
-	configAccessor->setIsAppInitialized = setIsAppInitialized;
-}
+const struct SHConfigAccessor SH_APP_CONFIG_FUNCS = {
+	.getDayStartHour = getDayStartHour,
+	.setDayStartTime = setDayStartHour,
+	.getWeekStartOffset = getWeekStartOffset,
+	.setWeekStartOffset = setWeekStartOffset,
+	.getGameState = getGameState,
+	.setGameState = setGameState,
+	.getStoryMode = getStoryMode,
+	.setStoryMode = setStoryMode,
+	.getStoryState = getStoryState,
+	.setStoryState = setStoryState,
+	.getLastProcessingDateTime = getLastProcessingDateTime,
+	.setLastProcessingDateTime = setLastProcessingDateTime,
+	.getIsAppInitialized = getIsAppInitialized,
+	.setIsAppInitialized = setIsAppInitialized
+};
