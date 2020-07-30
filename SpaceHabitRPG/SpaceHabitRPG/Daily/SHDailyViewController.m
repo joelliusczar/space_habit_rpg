@@ -21,7 +21,6 @@
 
 
 @interface SHDailyViewController ()
-@property (strong,nonatomic) SHDaily_Medium *dailyMedium;
 @property (assign, nonatomic) const struct SHDatetimeProvider *dateProvider; //not owner
 @end
 

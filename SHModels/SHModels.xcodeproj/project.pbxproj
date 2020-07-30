@@ -12,7 +12,7 @@
 		270EEF2C245A57930078D2ED /* SHSpecial_C in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FE89892457D46F00B11D18 /* SHSpecial_C */; };
 		2711F34924CCFB9B00C018E3 /* SHDailyActivator.h in Headers */ = {isa = PBXBuildFile; fileRef = 2711F34724CCFB9B00C018E3 /* SHDailyActivator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2711F34A24CCFB9B00C018E3 /* SHDailyActivator.c in Sources */ = {isa = PBXBuildFile; fileRef = 2711F34824CCFB9B00C018E3 /* SHDailyActivator.c */; };
-		2711F34E24CD040D00C018E3 /* SHActivationEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 2711F34C24CD040D00C018E3 /* SHActivationEvent.h */; };
+		2711F34E24CD040D00C018E3 /* SHActivationEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 2711F34C24CD040D00C018E3 /* SHActivationEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2711F34F24CD040D00C018E3 /* SHActivationEvent.c in Sources */ = {isa = PBXBuildFile; fileRef = 2711F34D24CD040D00C018E3 /* SHActivationEvent.c */; };
 		2711F35224CD0BB600C018E3 /* SHCreateTableStatementBuilders.h in Headers */ = {isa = PBXBuildFile; fileRef = 2711F35024CD0BB600C018E3 /* SHCreateTableStatementBuilders.h */; };
 		2711F35324CD0BB600C018E3 /* SHCreateTableStatementBuilders.c in Sources */ = {isa = PBXBuildFile; fileRef = 2711F35124CD0BB600C018E3 /* SHCreateTableStatementBuilders.c */; };
@@ -22,12 +22,11 @@
 		2711F36E24D11C8000C018E3 /* SHTableChangeActions.c in Sources */ = {isa = PBXBuildFile; fileRef = 2711F36C24D11C8000C018E3 /* SHTableChangeActions.c */; };
 		2711F37124D1BBF600C018E3 /* SHTableDailiesFuncs.h in Headers */ = {isa = PBXBuildFile; fileRef = 2711F36F24D1BBF600C018E3 /* SHTableDailiesFuncs.h */; };
 		2711F37224D1BBF600C018E3 /* SHTableDailiesFuncs.c in Sources */ = {isa = PBXBuildFile; fileRef = 2711F37024D1BBF600C018E3 /* SHTableDailiesFuncs.c */; };
+		2711F37924D3557600C018E3 /* SHDatetime in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FE898F2457D47600B11D18 /* SHDatetime */; };
 		2719D50B2319C61700765F54 /* SHMonster_Medium.m in Sources */ = {isa = PBXBuildFile; fileRef = 2719D5092319C61600765F54 /* SHMonster_Medium.m */; };
 		2719D50C2319C61700765F54 /* SHMonster_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 2719D50A2319C61700765F54 /* SHMonster_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271CF5BB23D4D4AC00DB0CF4 /* SHIntervalItemFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = 271CF5B923D4D4AC00DB0CF4 /* SHIntervalItemFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271CF5BC23D4D4AC00DB0CF4 /* SHIntervalItemFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 271CF5BA23D4D4AC00DB0CF4 /* SHIntervalItemFormat.m */; };
-		27300A04224AE713006E419C /* SHDaily_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 27300A02224AE713006E419C /* SHDaily_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27300A05224AE713006E419C /* SHDaily_Medium.m in Sources */ = {isa = PBXBuildFile; fileRef = 27300A03224AE713006E419C /* SHDaily_Medium.m */; };
 		2733D212229065830090B7F1 /* SHDailyValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2733D210229065830090B7F1 /* SHDailyValidation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2733D213229065830090B7F1 /* SHDailyValidation.c in Sources */ = {isa = PBXBuildFile; fileRef = 2733D211229065830090B7F1 /* SHDailyValidation.c */; };
 		2740A877226CE91B00ACD777 /* SHModels.postbuild.sh in Resources */ = {isa = PBXBuildFile; fileRef = 2740A876226CE91B00ACD777 /* SHModels.postbuild.sh */; };
@@ -112,7 +111,6 @@
 		27B512F924AF7C2300727905 /* SHTestDbFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B512F824AF7C2300727905 /* SHTestDbFunctions.m */; };
 		27BF501E22F77139005096BA /* SHDailyNextDueDateCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = 27BF501C22F77139005096BA /* SHDailyNextDueDateCalculator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27BF501F22F77139005096BA /* SHDailyNextDueDateCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BF501D22F77139005096BA /* SHDailyNextDueDateCalculator.m */; };
-		27CA868F2264207A00AE8FDB /* SHDaily_x.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86432264207A00AE8FDB /* SHDaily_x.m */; };
 		27CA86912264207A00AE8FDB /* SHHero.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86452264207A00AE8FDB /* SHHero.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA869A2264207A00AE8FDB /* SHSuffix.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA864E2264207A00AE8FDB /* SHSuffix.m */; };
 		27CA869D2264207A00AE8FDB /* SHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86512264207A00AE8FDB /* SHConfig.m */; };
@@ -120,7 +118,6 @@
 		27CA86AB2264207A00AE8FDB /* SHItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA865F2264207A00AE8FDB /* SHItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA86AD2264207A00AE8FDB /* SHMonster.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86612264207A00AE8FDB /* SHMonster.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA86B42264207A00AE8FDB /* SHHero.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA86682264207A00AE8FDB /* SHHero.m */; };
-		27CA86B62264207A00AE8FDB /* SHDaily_x.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA866A2264207A00AE8FDB /* SHDaily_x.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA86BA2264207A00AE8FDB /* SHSuffix.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA866E2264207A00AE8FDB /* SHSuffix.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA86CA2264207A00AE8FDB /* SHSector.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA867E2264207A00AE8FDB /* SHSector.m */; };
 		27CA86CC2264207A00AE8FDB /* SHConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA86802264207A00AE8FDB /* SHConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -128,8 +125,6 @@
 		27CA86D62264207A00AE8FDB /* SHItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA868A2264207A00AE8FDB /* SHItem.m */; };
 		27CA9D1723AF060F00F67AC4 /* SHWeekIntervalItemList.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA9D1523AF060F00F67AC4 /* SHWeekIntervalItemList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27CA9D1823AF060F00F67AC4 /* SHWeekIntervalItemList.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA9D1623AF060F00F67AC4 /* SHWeekIntervalItemList.m */; };
-		27CA9D1B23AF345100F67AC4 /* SHDailyRateItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA9D1923AF345100F67AC4 /* SHDailyRateItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27CA9D1C23AF345100F67AC4 /* SHDailyRateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA9D1A23AF345100F67AC4 /* SHDailyRateItem.m */; };
 		27D802CA2464CB8B0057E950 /* SHModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D802C92464CB8B0057E950 /* SHModelTests.m */; };
 		27D802DA2464CE9D0057E950 /* MonsterHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D802D82464CE9D0057E950 /* MonsterHelperTest.m */; };
 		27D802DB2464CE9D0057E950 /* DailyHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D802D92464CE9D0057E950 /* DailyHelperTest.m */; };
@@ -141,8 +136,6 @@
 		27D849FA2443C85E0081DFE6 /* SHDailyNextWeeklyDueDateCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D849F82443C85E0081DFE6 /* SHDailyNextWeeklyDueDateCalculator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27D849FB2443C85E0081DFE6 /* SHDailyNextWeeklyDueDateCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D849F92443C85E0081DFE6 /* SHDailyNextWeeklyDueDateCalculator.m */; };
 		27D84A052443DFBE0081DFE6 /* SHModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2747C2EA2043ADE000FB5669 /* SHModels.framework */; };
-		27E200202426EDB400B0232E /* SHDailyEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 27E2001E2426EDB400B0232E /* SHDailyEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27E200212426EDB400B0232E /* SHDailyEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E2001F2426EDB400B0232E /* SHDailyEvent.m */; };
 		27FE89992457D4A500B11D18 /* SHCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FE89962457D47E00B11D18 /* SHCommon.framework */; };
 		27FF023A231A23BB00108320 /* SHSector_Medium.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FF0238231A23BB00108320 /* SHSector_Medium.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27FF023B231A23BB00108320 /* SHSector_Medium.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FF0239231A23BB00108320 /* SHSector_Medium.m */; };
@@ -256,8 +249,6 @@
 		271CF5B923D4D4AC00DB0CF4 /* SHIntervalItemFormat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHIntervalItemFormat.h; sourceTree = "<group>"; };
 		271CF5BA23D4D4AC00DB0CF4 /* SHIntervalItemFormat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHIntervalItemFormat.m; sourceTree = "<group>"; };
 		272F36ED23CA3B1400275FFF /* libSHSpecial_C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHSpecial_C.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		27300A02224AE713006E419C /* SHDaily_Medium.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDaily_Medium.h; sourceTree = "<group>"; };
-		27300A03224AE713006E419C /* SHDaily_Medium.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDaily_Medium.m; sourceTree = "<group>"; };
 		2733D210229065830090B7F1 /* SHDailyValidation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDailyValidation.h; sourceTree = "<group>"; };
 		2733D211229065830090B7F1 /* SHDailyValidation.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHDailyValidation.c; sourceTree = "<group>"; };
 		2740A873226CE3CB00ACD777 /* SHModels.prebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = SHModels.prebuild.sh; sourceTree = "<group>"; };
@@ -353,7 +344,6 @@
 		27B512F824AF7C2300727905 /* SHTestDbFunctions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTestDbFunctions.m; sourceTree = "<group>"; };
 		27BF501C22F77139005096BA /* SHDailyNextDueDateCalculator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDailyNextDueDateCalculator.h; sourceTree = "<group>"; };
 		27BF501D22F77139005096BA /* SHDailyNextDueDateCalculator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDailyNextDueDateCalculator.m; sourceTree = "<group>"; };
-		27CA86432264207A00AE8FDB /* SHDaily_x.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDaily_x.m; sourceTree = "<group>"; };
 		27CA86452264207A00AE8FDB /* SHHero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHHero.h; sourceTree = "<group>"; };
 		27CA864E2264207A00AE8FDB /* SHSuffix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSuffix.m; sourceTree = "<group>"; };
 		27CA86512264207A00AE8FDB /* SHConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHConfig.m; sourceTree = "<group>"; };
@@ -361,7 +351,6 @@
 		27CA865F2264207A00AE8FDB /* SHItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHItem.h; sourceTree = "<group>"; };
 		27CA86612264207A00AE8FDB /* SHMonster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMonster.h; sourceTree = "<group>"; };
 		27CA86682264207A00AE8FDB /* SHHero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHHero.m; sourceTree = "<group>"; };
-		27CA866A2264207A00AE8FDB /* SHDaily_x.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDaily_x.h; sourceTree = "<group>"; };
 		27CA866E2264207A00AE8FDB /* SHSuffix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSuffix.h; sourceTree = "<group>"; };
 		27CA867E2264207A00AE8FDB /* SHSector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSector.m; sourceTree = "<group>"; };
 		27CA86802264207A00AE8FDB /* SHConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHConfig.h; sourceTree = "<group>"; };
@@ -369,8 +358,6 @@
 		27CA868A2264207A00AE8FDB /* SHItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHItem.m; sourceTree = "<group>"; };
 		27CA9D1523AF060F00F67AC4 /* SHWeekIntervalItemList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHWeekIntervalItemList.h; sourceTree = "<group>"; };
 		27CA9D1623AF060F00F67AC4 /* SHWeekIntervalItemList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHWeekIntervalItemList.m; sourceTree = "<group>"; };
-		27CA9D1923AF345100F67AC4 /* SHDailyRateItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDailyRateItem.h; sourceTree = "<group>"; };
-		27CA9D1A23AF345100F67AC4 /* SHDailyRateItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDailyRateItem.m; sourceTree = "<group>"; };
 		27D802C92464CB8B0057E950 /* SHModelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHModelTests.m; sourceTree = "<group>"; };
 		27D802D82464CE9D0057E950 /* MonsterHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterHelperTest.m; sourceTree = "<group>"; };
 		27D802D92464CE9D0057E950 /* DailyHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyHelperTest.m; sourceTree = "<group>"; };
@@ -387,8 +374,6 @@
 		27D849F92443C85E0081DFE6 /* SHDailyNextWeeklyDueDateCalculator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDailyNextWeeklyDueDateCalculator.m; sourceTree = "<group>"; };
 		27D84A002443DFBE0081DFE6 /* SHModelsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHModelsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27D84A042443DFBE0081DFE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		27E2001E2426EDB400B0232E /* SHDailyEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDailyEvent.h; sourceTree = "<group>"; };
-		27E2001F2426EDB400B0232E /* SHDailyEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDailyEvent.m; sourceTree = "<group>"; };
 		27FE89782457D45000B11D18 /* SHUtils_C.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHUtils_C.xcodeproj; path = ../SHUtils_C/SHUtils_C.xcodeproj; sourceTree = "<group>"; };
 		27FE89842457D46F00B11D18 /* SHSpecial_C.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHSpecial_C.xcodeproj; path = ../SHSpecial_C/SHSpecial_C.xcodeproj; sourceTree = "<group>"; };
 		27FE898A2457D47500B11D18 /* SHDatetime.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHDatetime.xcodeproj; path = ../SHDatetime/SHDatetime.xcodeproj; sourceTree = "<group>"; };
@@ -403,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				275534C4247AFE6C00D650AB /* SHUtils_C in Frameworks */,
+				2711F37924D3557600C018E3 /* SHDatetime in Frameworks */,
 				270EEF2C245A57930078D2ED /* SHSpecial_C in Frameworks */,
 				27FE89992457D4A500B11D18 /* SHCommon.framework in Frameworks */,
 			);
@@ -622,18 +608,12 @@
 			isa = PBXGroup;
 			children = (
 				27D849F52443C8020081DFE6 /* DueDateCalculators */,
-				27300A02224AE713006E419C /* SHDaily_Medium.h */,
-				27300A03224AE713006E419C /* SHDaily_Medium.m */,
-				27CA866A2264207A00AE8FDB /* SHDaily_x.h */,
-				27CA86432264207A00AE8FDB /* SHDaily_x.m */,
 				2769C115228E305500217480 /* SHDailyActiveDays.h */,
 				2769C116228E305500217480 /* SHDailyActiveDays.m */,
 				2789889422F77B64007231E0 /* SHDailyMaxDaysBeforeSpanCalculator.h */,
 				2789889522F77B64007231E0 /* SHDailyMaxDaysBeforeSpanCalculator.m */,
 				279D815D2440CF0800876892 /* SHDailyProcessor.h */,
 				279D815E2440CF0800876892 /* SHDailyProcessor.m */,
-				27CA9D1923AF345100F67AC4 /* SHDailyRateItem.h */,
-				27CA9D1A23AF345100F67AC4 /* SHDailyRateItem.m */,
 				2733D211229065830090B7F1 /* SHDailyValidation.c */,
 				2733D210229065830090B7F1 /* SHDailyValidation.h */,
 				271CF5B923D4D4AC00DB0CF4 /* SHIntervalItemFormat.h */,
@@ -711,7 +691,6 @@
 		27CA86402264207A00AE8FDB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				27E2001A2426ED1A00B0232E /* SHDailyEvent */,
 				27A430C92268DC1700773056 /* SHDaily */,
 				27A430CC2268DC8700773056 /* SHHero */,
 				27A430DA2268DE3A00773056 /* SHItem */,
@@ -753,31 +732,6 @@
 				27B512F824AF7C2300727905 /* SHTestDbFunctions.m */,
 			);
 			path = Tests;
-			sourceTree = "<group>";
-		};
-		27E2001A2426ED1A00B0232E /* SHDailyEvent */ = {
-			isa = PBXGroup;
-			children = (
-				27E2001C2426ED8B00B0232E /* Headers */,
-				27E2001D2426ED9300B0232E /* Implementations */,
-			);
-			path = SHDailyEvent;
-			sourceTree = "<group>";
-		};
-		27E2001C2426ED8B00B0232E /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				27E2001E2426EDB400B0232E /* SHDailyEvent.h */,
-			);
-			path = Headers;
-			sourceTree = "<group>";
-		};
-		27E2001D2426ED9300B0232E /* Implementations */ = {
-			isa = PBXGroup;
-			children = (
-				27E2001F2426EDB400B0232E /* SHDailyEvent.m */,
-			);
-			path = Implementations;
 			sourceTree = "<group>";
 		};
 		27FE89792457D45000B11D18 /* Products */ = {
@@ -823,6 +777,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2711F34E24CD040D00C018E3 /* SHActivationEvent.h in Headers */,
 				2711F36D24D11C8000C018E3 /* SHTableChangeActions.h in Headers */,
 				2711F35624CD0FB400C018E3 /* SHActivation_dbCalls.h in Headers */,
 				2711F34924CCFB9B00C018E3 /* SHDailyActivator.h in Headers */,
@@ -841,7 +796,6 @@
 				27CA86BA2264207A00AE8FDB /* SHSuffix.h in Headers */,
 				27CA86AD2264207A00AE8FDB /* SHMonster.h in Headers */,
 				27CA86AB2264207A00AE8FDB /* SHItem.h in Headers */,
-				27CA86B62264207A00AE8FDB /* SHDaily_x.h in Headers */,
 				27CA86CC2264207A00AE8FDB /* SHConfig.h in Headers */,
 				275534B424776D0C00D650AB /* SHDaily_dbStatementBuilders.h in Headers */,
 				2711F37124D1BBF600C018E3 /* SHTableDailiesFuncs.h in Headers */,
@@ -855,9 +809,7 @@
 				275534CA247F4F3400D650AB /* SHDueDateCalculatorInitializer.h in Headers */,
 				2781553721805C88005C5279 /* SHStoryItemDictionary.h in Headers */,
 				274EFB66204E462E00CB3C4C /* SHModelTools.h in Headers */,
-				27300A04224AE713006E419C /* SHDaily_Medium.h in Headers */,
 				275EB495226A613200012784 /* SHBundleKey.h in Headers */,
-				2711F34E24CD040D00C018E3 /* SHActivationEvent.h in Headers */,
 				2740A894226FE38D00ACD777 /* SHTransaction.h in Headers */,
 				2740A88D226EB49800ACD777 /* SHTransaction_Medium.h in Headers */,
 				2769C0B7227FD86900217480 /* SHMonthlyYearlyRateItemList.h in Headers */,
@@ -868,7 +820,6 @@
 				2719D50C2319C61700765F54 /* SHMonster_Medium.h in Headers */,
 				27FF023A231A23BB00108320 /* SHSector_Medium.h in Headers */,
 				275D9925238611D800522A80 /* SHSectorArtifact.h in Headers */,
-				27CA9D1B23AF345100F67AC4 /* SHDailyRateItem.h in Headers */,
 				2733D212229065830090B7F1 /* SHDailyValidation.h in Headers */,
 				275534DC2481E04400D650AB /* SHModelsQueueStore.h in Headers */,
 				275534D324801AA600D650AB /* SHConfigAccessor.h in Headers */,
@@ -881,7 +832,6 @@
 				27553505248B2EFD00D650AB /* SHTableNames.h in Headers */,
 				27553509248B8DF800D650AB /* SHActiveDaysConstants.h in Headers */,
 				275534A9247614C500D650AB /* SHHabitBase.h in Headers */,
-				27E200202426EDB400B0232E /* SHDailyEvent.h in Headers */,
 				27D849FA2443C85E0081DFE6 /* SHDailyNextWeeklyDueDateCalculator.h in Headers */,
 				271CF5BB23D4D4AC00DB0CF4 /* SHIntervalItemFormat.h in Headers */,
 				275534CF247FE75200D650AB /* SHDaily_dbFuncs.h in Headers */,
@@ -1118,7 +1068,6 @@
 				27CA86D62264207A00AE8FDB /* SHItem.m in Sources */,
 				27CA86B42264207A00AE8FDB /* SHHero.m in Sources */,
 				2733D213229065830090B7F1 /* SHDailyValidation.c in Sources */,
-				27E200212426EDB400B0232E /* SHDailyEvent.m in Sources */,
 				27CA869D2264207A00AE8FDB /* SHConfig.m in Sources */,
 				275EB496226A613200012784 /* SHBundleKey.m in Sources */,
 				271CF5BC23D4D4AC00DB0CF4 /* SHIntervalItemFormat.m in Sources */,
@@ -1139,7 +1088,6 @@
 				274EFB67204E462E00CB3C4C /* SHModelTools.m in Sources */,
 				2769C0B8227FD86900217480 /* SHMonthlyYearlyRateItemList.m in Sources */,
 				2711F35324CD0BB600C018E3 /* SHCreateTableStatementBuilders.c in Sources */,
-				27CA868F2264207A00AE8FDB /* SHDaily_x.m in Sources */,
 				2719D50B2319C61700765F54 /* SHMonster_Medium.m in Sources */,
 				275534F22483F78800D650AB /* SHCommonDbCalls.c in Sources */,
 				2711F36E24D11C8000C018E3 /* SHTableChangeActions.c in Sources */,
@@ -1154,7 +1102,6 @@
 				2747C3D02043BACB00FB5669 /* SHSectorInfoDictionary.m in Sources */,
 				2740A895226FE38D00ACD777 /* SHTransaction.m in Sources */,
 				275534DF2481E18600D650AB /* SHModelsQueueStore.c in Sources */,
-				27CA9D1C23AF345100F67AC4 /* SHDailyRateItem.m in Sources */,
 				2740A88E226EB49800ACD777 /* SHTransaction_Medium.m in Sources */,
 				279D815C2440CD6B00876892 /* SHMonsterInfoDictionary.m in Sources */,
 				275534B9247774E100D650AB /* SHDbSetup.c in Sources */,
@@ -1164,7 +1111,6 @@
 				275534CB247F4F3400D650AB /* SHDueDateCalculatorInitializer.c in Sources */,
 				27553506248B2EFD00D650AB /* SHTableNames.c in Sources */,
 				27FF023B231A23BB00108320 /* SHSector_Medium.m in Sources */,
-				27300A05224AE713006E419C /* SHDaily_Medium.m in Sources */,
 				275534F6248441C700D650AB /* SHActiveDaysValues.c in Sources */,
 				27CA9D1823AF060F00F67AC4 /* SHWeekIntervalItemList.m in Sources */,
 			);

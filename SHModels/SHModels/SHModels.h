@@ -26,9 +26,6 @@ FOUNDATION_EXPORT const unsigned char SHModelsVersionString[];
 #import "SHDueDateItemProtocol.h"
 #import "SHSector.h"
 #import "SHSuffix.h"
-#import "SHDaily_x.h"
-#import "SHDailyEvent.h"
-#import "SHDaily_x+CoreDataProperties.h"
 #import "SHStoryItemProtocol.h"
 #import "SHMonsterInfoDictionary.h"
 #import "SHSectorInfoDictionary.h"
@@ -40,7 +37,6 @@ FOUNDATION_EXPORT const unsigned char SHModelsVersionString[];
 #import "SHModelTools.h"
 #import "SHTransaction_Medium.h"
 #import "SHSector_Medium.h"
-#import "SHDaily_Medium.h"
 #import "SHBundleKey.h"
 #import "Model+CoreDataModel.h"
 #import "SHMonthlyYearlyRateItem.h"
@@ -69,6 +65,8 @@ FOUNDATION_EXPORT const unsigned char SHModelsVersionString[];
 #import "SHActiveDaysDescriptions.h"
 #import "SHDailyActivator.h"
 #import "SHTableChangeActions.h"
+#import "SHActivation_dbCalls.h"
+#import "SHTableNames.h"
 
 // In this header, you should import all
 //the public headers of your framework using statements like #import <SHModels/PublicHeader.h>

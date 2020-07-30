@@ -11,15 +11,15 @@
 
 #define shFreeSHWeekIntervalPoint(intervalPoints) free(intervalPoints)
 
+#include "SHDTConstants.h"
 #include <inttypes.h>
 #include <stdbool.h>
-#include "SHDTConstants.h"
 
 struct SHWeekIntervalPoint {
-	bool isDayActive;
 	int32_t backrange;
 	int32_t forrange;
-	uintptr_t filler[4];
+	bool isDayActive;
+	uint8_t padding[7];
 };
 
 
