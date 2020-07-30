@@ -351,9 +351,9 @@ static SHErrorCode _nextDueDate_WEEKLY(struct SHDatetime *useDate, struct SHDueD
 #endif
 	goto cleanup; //this is easier than wrapping the cleanup label in an ignore warning block
 	cleanup:
-		SH_freeSHTimeshift(&resultPair[0].shifts);
-		SH_freeSHTimeshift(&resultPair[1].shifts);
-		SH_freeSHDatetime(&resultPair);
+		SH_freeSHTimeshift(resultPair[0].shifts);
+		SH_freeSHTimeshift(resultPair[1].shifts);
+		SH_freeSHDatetime(resultPair);
 	fnExit:
 		return status;
 }
@@ -628,7 +628,7 @@ SHErrorCode SH_missedDays_WEEKLY(struct SHDatetime *useDate, struct SHDueDateWee
 	_normalizeDatetime(&normalizedSaveDate);
 	_prepareDatetimeForCalculations(&preparedUseDate, context->dayStartHour);
 	bool areDatesValid = false;
-	if((status = SH_isDateAGTEDateB(&preparedUseDate, &normalizedSaveDate, &areDatesValid)) != SH_NO_ERROR) {
+	if((status = SH_isDateXAfterOrSameAsDateY(&preparedUseDate, &normalizedSaveDate, &areDatesValid)) != SH_NO_ERROR) {
 		goto fnExit;
 	}
 	if(!areDatesValid) {

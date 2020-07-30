@@ -33,6 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, nonatomic) SHErrorCode (*insertHabit)(sqlite3 *, struct SHHabitBase const *, int64_t *);
 @property (readonly, nonatomic) struct SHSerialQueue *dbQueue;
 @property (readonly, nonatomic) const struct SHDatetimeProvider *dateProvider;
+@property (readonly, nonatomic) struct SHTableChangeActions tableChangeActions;
 -(instancetype)initWithCentral:(SHCentralViewController *)central;
 
 -(void)fetchUpdates:(SHErrorCode (*)(struct SHModelsQueueStore *queueStoreItem))fetchFn;

@@ -9,82 +9,82 @@
 #include "SHDateCompare.h"
 #include "SHDatetimeFuncs.h"
 
-SHErrorCode SH_areDatesEqual(struct SHDatetime * const A, struct SHDatetime * const B, bool *ans) {
-	double timestampA = 0;
-	double timestampB = -1;
+SHErrorCode SH_areDatesEqual(struct SHDatetime * const X, struct SHDatetime * const Y, bool *ans) {
+	double timestampX = 0;
+	double timestampY = -1;
 	SHErrorCode status = SH_NO_ERROR;
-	if((status = SH_dtToTimestamp(A, &timestampA)) != SH_NO_ERROR) {
+	if((status = SH_dtToTimestamp(X, &timestampX)) != SH_NO_ERROR) {
 		goto fnExit;
 	}
-	if((status = SH_dtToTimestamp(B, &timestampB)) != SH_NO_ERROR) {
+	if((status = SH_dtToTimestamp(Y, &timestampY)) != SH_NO_ERROR) {
 		goto fnExit;
 	}
-	*ans = timestampA == timestampB;
+	*ans = timestampX == timestampY;
 	
 	fnExit:
 		return status;
 }
 
 
-SHErrorCode SH_isDateAGTDateB(struct SHDatetime * const A, struct SHDatetime * const B, bool *ans){
-	double timestampA = 0;
-	double timestampB = -1;
+SHErrorCode SH_isDateXAfterDateY(struct SHDatetime * const X, struct SHDatetime * const Y, bool *ans){
+	double timestampX = 0;
+	double timestampY = -1;
 	SHErrorCode status = SH_NO_ERROR;
-	if((status = SH_dtToTimestamp(A, &timestampA)) != SH_NO_ERROR) {
+	if((status = SH_dtToTimestamp(X, &timestampX)) != SH_NO_ERROR) {
 		goto fnExit;
 	}
-	if((status = SH_dtToTimestamp(B, &timestampB)) != SH_NO_ERROR) {
+	if((status = SH_dtToTimestamp(Y, &timestampY)) != SH_NO_ERROR) {
 		goto fnExit;
 	}
-	*ans = timestampA > timestampB;
+	*ans = timestampX > timestampY;
 	fnExit:
 		return status;
 }
 
 
-SHErrorCode SH_isDateAGTEDateB(struct SHDatetime * const A, struct SHDatetime * const B, bool *ans){
-	double timestampA = 0;
-	double timestampB = -1;
+SHErrorCode SH_isDateXAfterOrSameAsDateY(struct SHDatetime * const X, struct SHDatetime * const Y, bool *ans){
+	double timestampX = 0;
+	double timestampY = -1;
 	SHErrorCode status = SH_NO_ERROR;
-	if((status = SH_dtToTimestamp(A, &timestampA)) != SH_NO_ERROR) {
+	if((status = SH_dtToTimestamp(X, &timestampX)) != SH_NO_ERROR) {
 		goto fnExit;
 	}
-	if((status = SH_dtToTimestamp(B, &timestampB)) != SH_NO_ERROR) {
+	if((status = SH_dtToTimestamp(Y, &timestampY)) != SH_NO_ERROR) {
 		goto fnExit;
 	}
-	*ans = timestampA >= timestampB;
+	*ans = timestampX >= timestampY;
 	fnExit:
 		return status;
 }
 
 
-SHErrorCode SH_isDateALTDateB(struct SHDatetime * const A, struct SHDatetime * const B, bool *ans){
-	double timestampA = 0;
-	double timestampB = -1;
+SHErrorCode SH_isDateXBeforeDateY(struct SHDatetime * const X, struct SHDatetime * const Y, bool *ans){
+	double timestampX = 0;
+	double timestampY = -1;
 	SHErrorCode status = SH_NO_ERROR;
-	if((status = SH_dtToTimestamp(A, &timestampA)) != SH_NO_ERROR) {
+	if((status = SH_dtToTimestamp(X, &timestampX)) != SH_NO_ERROR) {
 		goto fnExit;
 	}
-	if((status = SH_dtToTimestamp(B, &timestampB)) != SH_NO_ERROR) {
+	if((status = SH_dtToTimestamp(Y, &timestampY)) != SH_NO_ERROR) {
 		goto fnExit;
 	}
-	*ans = timestampA < timestampB;
+	*ans = timestampX < timestampY;
 	fnExit:
 		return status;
 }
 
 
-SHErrorCode SH_isDateALTEDateB(struct SHDatetime * const A, struct SHDatetime * const B, bool *ans){
-	double timestampA = 0;
-	double timestampB = -1;
+SHErrorCode SH_isDateXBeforeOrSameAsDateY(struct SHDatetime * const X, struct SHDatetime * const Y, bool *ans){
+	double timestampX = 0;
+	double timestampY = -1;
 	SHErrorCode status = SH_NO_ERROR;
-	if((status = SH_dtToTimestamp(A, &timestampA)) != SH_NO_ERROR) {
+	if((status = SH_dtToTimestamp(X, &timestampX)) != SH_NO_ERROR) {
 		goto fnExit;
 	}
-	if((status = SH_dtToTimestamp(B, &timestampB)) != SH_NO_ERROR) {
+	if((status = SH_dtToTimestamp(Y, &timestampY)) != SH_NO_ERROR) {
 		goto fnExit;
 	}
-	*ans = timestampA <= timestampB;
+	*ans = timestampX <= timestampY;
 	fnExit:
 		return status;
 }

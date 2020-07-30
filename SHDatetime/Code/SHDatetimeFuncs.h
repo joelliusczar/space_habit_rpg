@@ -18,7 +18,12 @@
 #include "SHDatetime_setters.h"
 
 
-SHErrorCode SH_dtToTimestamp(struct SHDatetime *const dt,double *ans);
+/*
+	This timestamp given back is the time in the utc tz.
+	so if I send a dt that is eastern time, it will get shifted over to
+	the time in utc.
+*/
+SHErrorCode SH_dtToTimestamp(struct SHDatetime *dt,double *ans);
 
 SHErrorCode SH_timestampToDt(double timestamp, int32_t timezoneOffset, struct SHDatetime *ans);
 
@@ -30,7 +35,7 @@ int32_t SH_calcDayOfYear(struct SHDatetime *dt);
 
 SHErrorCode SH_dateDiffSeconds(struct SHDatetime * const fromDt, struct SHDatetime * const toDt, double *ans);
 
-SHErrorCode SH_dateDiffDays(struct SHDatetime * const fromDt,struct SHDatetime * const toDt, int64_t *ans);
+SHErrorCode SH_dateDiffDays(struct SHDatetime * const fromDt, struct SHDatetime * const toDt, int64_t *ans);
 
 SHErrorCode SH_dateDiffFullWeeks(struct SHDatetime * const fromDt, struct SHDatetime * const toDt,
 	int32_t dayOffset, int64_t *ans);

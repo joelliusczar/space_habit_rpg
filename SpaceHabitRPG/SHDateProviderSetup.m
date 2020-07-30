@@ -11,12 +11,6 @@
 @import Foundation;
 @import SHCommon;
 
-//struct SHDatetimeProvider {
-//	int32_t (*getLocalTzOffset)(void);
-//	struct SHDatetime *(*getDate)(void);
-//	struct SHDatetime *(*getUserTodayStart)(void);
-//};
-
 
 static int32_t _getLocalTzOffset() {
 	return (int32_t)NSTimeZone.defaultTimeZone.secondsFromGMT;

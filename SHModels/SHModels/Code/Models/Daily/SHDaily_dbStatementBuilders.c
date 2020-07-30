@@ -32,9 +32,13 @@ SHErrorCode SH_buildStatement_insertDailyStmt(sqlite3_stmt **stmt, sqlite3 *db) 
 	"streakLength, "
 	"tzOffsetLastActivationDateTime, "
 	"tzOffsetLastUpdateDateTime, "
-	"activeDaysBlob "
-	") VALUES(?1,?2,?3,?4,?5,?6,?7,?8,?9,?10,?11,?12,?13,"
-	"?14,?15,?16,?17,?18,?19,?20,?21) ";
+	"activeDaysBlob, "
+	"stepCountMax, "
+	"stepCount, "
+	"stepLastActivationDateTime, "
+	"tzOffsetStepLastActivation "
+	") VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, "
+	"?14, ?15, ?16, ?17, ?18, ?19, ?20, ?21, ?22, ?23, ?24); ";
 	
 	sqlStatus = sqlite3_prepare_v2(db, sql, -1, stmt, 0);
 	if(sqlStatus != SQLITE_OK) {
@@ -69,8 +73,12 @@ SHErrorCode SH_buildStatement_updateDailyStmt(sqlite3_stmt **stmt, sqlite3 *db) 
 	"streakLength = ?17, "
 	"tzOffsetLastActivationDateTime = ?18, "
 	"tzOffsetLastUpdateDateTime = ?19, "
-	"activeDaysBlob = ?20"
-	"WHERE pk = ?21";
+	"activeDaysBlob = ?20, "
+	"stepCountMax = ?21, "
+	"stepCount = ?22, "
+	"stepLastActivationDateTime = ?23, "
+	"tzOffsetStepLastActivation = ?24 "
+	"WHERE pk = ?25; ";
 	
 	sqlStatus = sqlite3_prepare_v2(db, sql, -1, stmt, 0);
 	if(sqlStatus != SQLITE_OK) {
@@ -109,7 +117,7 @@ SHErrorCode SH_buildStatement_fetchSingleDaily(sqlite3_stmt **stmt, sqlite3 *db)
 	"tzOffsetLastUpdateDateTime, "
 	"activeDaysBlob "
 	"FROM Dailies "
-	"WHERE pk = ?1 ";
+	"WHERE pk = ?1; ";
 	
 	sqlStatus = sqlite3_prepare_v2(db, sql, -1, stmt, 0);
 	if(sqlStatus != SQLITE_OK) {
@@ -131,7 +139,7 @@ SHErrorCode SH_buildStatement_fetchAllTableDailies(sqlite3_stmt **stmt, sqlite3 
 		"maxStreak, "
 		"dailyLvl, "
 		"dailyXp, "
-		"SH_selectSavedUseDateUTC(lastActivationDateTime, "
+		"SH_selectSavedUseDateUTC(lastActivationDateTime, " //reminder: we don't care what timezone saved date is in
 			"tzOffsetLastActivationDateTime, "
 			"activeFromDateTime, "
 			"tzOffsetLastUpdateDateTime,"
@@ -147,11 +155,15 @@ SHErrorCode SH_buildStatement_fetchAllTableDailies(sqlite3_stmt **stmt, sqlite3 
 			"strftime('%s','now'), "
 			"SavedUseDate, "
 			"?1"
-			") AS dueStatus"
+			") AS dueStatus "
+		"stepCountMax, "
+		"stepCount, "
+		"stepLastActivationDateTime, "
+		"tzOffsetStepLastActivation "
 		"FROM Dailies "
 		"WHERE isEnabled = 1 AND strftime('%s','now', 'localtime') "
 			"BETWEEN activeFromDateTime AND activeToDateTime"
-		"ORDER BY dueStatus";
+		"ORDER BY dueStatus; ";
 	sqlStatus = sqlite3_prepare_v2(db, sql, -1, stmt, 0);
 	if(sqlStatus != SQLITE_OK) {
 		char errMsg[60];

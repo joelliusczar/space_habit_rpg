@@ -240,7 +240,7 @@ This also applies if the active days got changed. #activeDayMath
 //	struct SHDatetime *today = SHDaily_x.dateProvider.userTodayStart;
 //	struct SHDatetime *savedPrevDate = [self selectUseDateProperty];
 //	bool isDue;
-//	SH_isDateALTDateB(savedPrevDate, today, &isDue);
+//	SH_isDateXBeforeDateY(savedPrevDate, today, &isDue);
 //	SHDailyStatus selection = SH_DAILY_STATUS_UNKNOWN;
 //	if(isDue) {
 //		if(self.isActiveToday) {

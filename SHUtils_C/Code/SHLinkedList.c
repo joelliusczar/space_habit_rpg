@@ -23,6 +23,7 @@ const struct SHIterableWrapperFuncs SH_LIST_FN_DEFS = {
 	.getBack = (void* (*)(void*))SH_list_getBack,
 	.popBack = (void* (*)(void*))SH_list_popBack,
 	.deleteItemAtIdx = (SHErrorCode (*)(void*, uint64_t))SH_list_deleteNthItem,
+	.removeMatchingItem = (SHErrorCode (*)(void*, void*, bool))SH_list_removeMatchingItem,
 	.iteratorInit = (void* (*)(void*))SH_listIterator_init,
 	.iteratorNext = (void* (*)(void**))SH_listIterator_next,
 	.cleanup = (void (*)(void*))SH_list_cleanup,

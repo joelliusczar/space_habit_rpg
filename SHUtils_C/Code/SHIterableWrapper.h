@@ -38,6 +38,7 @@ struct SHIterableWrapperFuncs {
 	void *(*popBack)(void *);
 	SHErrorCode (*addItem)(void *, void *);
 	SHErrorCode (*deleteItemAtIdx)(void *, uint64_t);
+	SHErrorCode (*removeMatchingItem)(void*, void*, bool);
 	void *(*iteratorInit)(void *);
 	void *(*iteratorNext)(void**);
 	void (*iteratorCleanup)(void*);
@@ -61,6 +62,7 @@ void *SH_iterable_getBack(struct SHIterableWrapper *iterable);
 void *SH_iterable_popBack(struct SHIterableWrapper *iterable);
 uint64_t SH_iterable_count(struct SHIterableWrapper *iterable);
 SHErrorCode SH_iterable_deleteItemAtIdx(struct SHIterableWrapper *iterable, uint64_t idx);
+SHErrorCode SH_iterable_removeMatchingItem(struct SHIterableWrapper *iterable, void *item, bool removeAll);
 struct SHIterableWrapperIterator *SH_iterableIterator_init(struct SHIterableWrapper *iterable);
 void *SH_iterableIterator_next(struct SHIterableWrapperIterator **iter);
 void SH_iterableIterator_cleanup(struct SHIterableWrapperIterator *iter);

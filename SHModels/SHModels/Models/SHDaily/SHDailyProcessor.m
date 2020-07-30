@@ -25,7 +25,7 @@
 //	NSDate *todayNSDate = [NSDate dateWithTimeIntervalSince1970:todayTimestamp];
 //	bool isGT = false;
 //	SHErrorCode status = SH_NO_ERROR;
-//	if((status = SH_isDateAGTDateB(todayStart, lastProcess, &isGT)) != SH_NO_ERROR) {
+//	if((status = SH_isDateXAfterDateY(todayStart, lastProcess, &isGT)) != SH_NO_ERROR) {
 //		SH_notifyOfError(status, "Process failed to check any of the dailies.");
 //		goto fnExit;
 //	}

@@ -23,6 +23,7 @@ const struct SHIterableWrapperFuncs SH_ARRAY_FN_DEFS = {
 	.getBack = (void* (*)(void*))SH_dynamicArray_getBack,
 	.popBack = (void* (*)(void*))SH_dynamicArray_popBack,
 	.deleteItemAtIdx = (SHErrorCode (*)(void*, uint64_t))SH_dynamicArray_remove,
+	.removeMatchingItem = (SHErrorCode (*)(void*, void*, bool))SH_dynamicArray_removeMatchingItem,
 	.iteratorInit = (void* (*)(void*))SH_dynamicArrayIterator_init,
 	.iteratorNext = (void* (*)(void**))SH_dynamicArrayIterator_next,
 	.cleanup = (void (*)(void*))SH_dynamicArray_cleanup,
@@ -131,6 +132,20 @@ SHErrorCode SH_dynamicArray_remove(struct SHDynamicArray *array, uint64_t idx) {
 	if(!array) return SH_ILLEGAL_INPUTS;
 	if(idx > array->length) return SH_ILLEGAL_INPUTS;
 	return _remove(array, idx, true);
+}
+
+
+SHErrorCode SH_dynamicArray_removeMatchingItem(struct SHDynamicArray *array, void *item, bool removeAll) {
+	if(!array) return SH_ILLEGAL_INPUTS;
+	SHErrorCode status = SH_NO_ERROR;
+	for(uint64_t idx = 0; idx < array->length; idx++) {
+		if(item == array->items[idx]) {
+			if((status = _remove(array, idx, false)) != SH_NO_ERROR) { goto fnExit; }
+			if(!removeAll) break;
+		}
+	}
+	fnExit:
+		return status;
 }
 
 

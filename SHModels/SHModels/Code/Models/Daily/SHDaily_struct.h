@@ -18,12 +18,13 @@
 #include <stdbool.h>
 
 struct SHDaily {
-	struct SHHabitBase base;
-	struct SHActiveDaysValues activeDays;
+	struct SHHabitBase base; //+ 32 bytes
+	struct SHActiveDaysValues activeDays; // + 18 = 50
 	double *activeFromDateTime;
 	double *activeToDateTime;
 	double *lastActivationDateTime;
-	char * note;
+	double *stepLastActivationDateTime;
+	char * note; //= 55
 	int32_t maxStreak;
 	int32_t dailyLvl;
 	int32_t dailyXp;
@@ -33,10 +34,13 @@ struct SHDaily {
 	int32_t urgency;
 	int32_t streakLength;
 	int32_t tzOffsetLastActivationDateTime;
+	int32_t tzOffsetStepLastActivation;
+	int32_t stepCountMax;
+	int32_t stepCount;
 	bool activeFromHasPriority;
 	bool isEnabled;
 	bool lastUpdateHasPriority;
-	uint8_t padding[1];
+	uint8_t padding[5];
 };
 
 
@@ -48,8 +52,11 @@ struct SHTableDaily {
 	int32_t dailyXp;
 	int32_t customUseOrder;
 	int32_t streakLength;
+	int32_t stepCountMax;
+	int32_t stepCount;
 	struct SHDatetime *savedUseDate;
 	struct SHDatetime *nextDueDate;
+	struct SHDatetime *stepLastActivationDateTime;
 	SHDueDateStatus dueStatus;
 };
 

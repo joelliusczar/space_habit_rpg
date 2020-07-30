@@ -420,11 +420,10 @@ static double _dtToTimestampBefore1970(struct SHDatetime * const dt) {
 }
 
 
-SHErrorCode SH_dtToTimestamp(struct SHDatetime * const dt,double *ans){
+SHErrorCode SH_dtToTimestamp(struct SHDatetime *dt,double *ans){
 	shLog("SH_dtToTimestamp");
 	SHErrorCode status = SH_NO_ERROR;
-	assert(dt);
-	assert(ans);
+	if(!dt || !ans) return SH_ILLEGAL_INPUTS;
 	if(dt->isTimestampValid) {
 		*ans = dt->timestamp;
 		goto success;

@@ -7,8 +7,9 @@
 //
 
 #import "SHDailyCellController.h"
+#import "AppDelegate.h"
 @import SHModels;
-
+@import SHDatetime;
 @import SHCommon;
 @import CoreGraphics;
 
@@ -39,49 +40,39 @@
 
 
 -(void)refreshCell{
-//	[self.context performBlock:^{
-//		NSError *error = nil;
-//		SHDaily *daily = (SHDaily*)[self.context getEntityOrNil:self.objectID withError:&error];
-//		NSString *dailyName = daily.dailyName;
-//		NSInteger streakLength = daily.streakLength;
-//		NSInteger rate = daily.intervalSize;
-//		NSUInteger daysUntilDue = daily.daysUntilDue;
-//		SHIntervalType rateType = (SHIntervalType)daily.intervalType;
-//		SHDailyStatus status = (SHDailyStatus)daily.status;
-//
-//		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-//			self.nameLbl.text = dailyName;
-//				//for current streak count
-//			if(streakLength > 0){
-//				self.streakLbl.hidden = NO;
-//				self.streakLbl.text = [NSString stringWithFormat:@"Combo: %ld",streakLength];
-//			}
-//			else{
-//				self.streakLbl.hidden = YES;
-//			}
-//
-//			if(status == SH_DAILY_STATUS_DUE) {
-//				self.completeBtn.hidden = NO;
-//				self.completeBtn.enabled = YES;
-//				[self.completeBtn setImage:[self drawCompletionIcon:0] forState:UIControlStateNormal];
-//			}
-//			else if(status == SH_DAILY_STATUS_COMPLETE){
-//				self.daysLeftLbl.hidden = YES;
-//				[self.completeBtn setImage:[self drawCompletionIcon:1] forState:UIControlStateNormal];
-//			}
-//			else if(status == SH_DAILY_STATUS_NOT_DUE) {
-//				self.completeBtn.hidden = YES;
-//				self.completeBtn.enabled = NO;
-//				self.daysLeftLbl.hidden = NO;
-//				self.daysLeftLbl.text = daysUntilDue == 1 ? @"Due tomorrow" :
-//					[NSString stringWithFormat:@"Due in %lul days", daysUntilDue];
-//			}
-//			else {
-//				@throw [NSException oddException:@"Either status was not correctly set"];
-//			}
-//		}];
-//	}];
+	struct SHTableDaily *tableDaily = (struct SHTableDaily *)self.tableHabit;
+	NSString *dailyName = [NSString stringWithUTF8String:tableDaily->name];
+	NSInteger streakLength = tableDaily->streakLength;
+	AppDelegate *appDel = (AppDelegate*)UIApplication.sharedApplication.delegate;
+	const struct SHDatetimeProvider *dateProvider = appDel.dateProvider;
+	int64_t daysUntilDue = LONG_MAX;
+	struct SHDatetime *todayStart = dateProvider->getUserTodayStart();
+	if((SH_dateDiffDays(todayStart, tableDaily->nextDueDate, &daysUntilDue)) != SH_NO_ERROR) {}
 	
+	self.nameLbl.text = dailyName;
+	if(streakLength > 0){
+		self.streakLbl.hidden = NO;
+		self.streakLbl.text = [NSString stringWithFormat:@"Combo: %ld",streakLength];
+	}
+	else {
+		self.streakLbl.hidden = YES;
+	}
+	
+	if(tableDaily->dueStatus == SH_IS_NOT_DUE) {
+		self.completeBtn.enabled = NO;
+		self.daysLeftLbl.hidden = NO;
+		self.daysLeftLbl.text = daysUntilDue == 1 ? @"Due tomorrow" :
+		[NSString stringWithFormat:@"Due in %llul days", daysUntilDue];
+		[self.completeBtn setImage:[self drawCompletionIcon:1] forState:UIControlStateNormal];
+	}
+	else if(tableDaily->dueStatus == SH_IS_COMPLETED) {
+		self.daysLeftLbl.hidden = YES;
+		[self.completeBtn setImage:[self drawCompletionIcon:1] forState:UIControlStateNormal];
+	}
+	else if(tableDaily->dueStatus == SH_IS_DUE) {
+		self.completeBtn.enabled = YES;
+		[self.completeBtn setImage:[self drawCompletionIcon:0] forState:UIControlStateNormal];
+	}
 }
 
 -(void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -91,6 +82,12 @@
 
 -(IBAction)completeBtn_press_action:(UIButton *)sender forEvent:(UIEvent *)event {
 	(void)sender; (void)event;
+	SHErrorCode status = SH_NO_ERROR;
+	if((status = SH_daily_activate(self.dbQueue, (struct SHTableDaily*)self.tableHabit,
+		self.tableChangeActions)) != SH_NO_ERROR)
+	{
+		//@throw [NSException ];
+	}
 //	SHDailyActivator *activator = [[SHDailyActivator alloc] initWithObjectId:self.objectID];
 //	[activator activate];
 }

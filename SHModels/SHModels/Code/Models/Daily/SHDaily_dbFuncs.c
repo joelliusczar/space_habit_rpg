@@ -298,7 +298,7 @@ void SHDB_getDueStatus(sqlite3_context* context, int argc, sqlite3_value** value
 		goto fnErr;
 	}
 	bool isPossiblyDue = false;
-	SH_isDateALTDateB(&savedPrevDate, &useDate, &isPossiblyDue);
+	SH_isDateXBeforeDateY(&savedPrevDate, &useDate, &isPossiblyDue);
 	if(isPossiblyDue) {
 		if(isTodayActive) {
 			sqlite3_result_int(context, SH_IS_DUE);

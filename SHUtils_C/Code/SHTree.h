@@ -29,6 +29,7 @@ void *SH_tree_popFront(struct SHTree *tree);
 void *SH_tree_getBack(struct SHTree *tree);
 void *SH_tree_popBack(struct SHTree *tree);
 SHErrorCode SH_tree_deleteNthItem(struct SHTree *tree, uint64_t idx);
+SHErrorCode SH_tree_removeMatchingItem(struct SHTree *tree, void *item, bool removeAll);
 void SH_tree_cleanup(struct SHTree *tree);
 void SH_tree_cleanupIgnoreItems(struct SHTree *tree);
 

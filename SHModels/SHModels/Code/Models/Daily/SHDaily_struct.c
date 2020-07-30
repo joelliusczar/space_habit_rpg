@@ -12,12 +12,12 @@
 
 void SH_freeDailyProps(struct SHDaily *daily) {
 	if(NULL == daily) return;
-	if(daily->base.name) free(daily->base.name);
-	if(daily->activeFromDateTime) free(daily->activeFromDateTime);
-	if(daily->activeToDateTime) free(daily->activeToDateTime);
-	if(daily->activeToDateTime) free(daily->activeToDateTime);
-	if(daily->lastActivationDateTime) free(daily->lastActivationDateTime);
-	if(daily->note) free(daily->note);
+	free(daily->base.name);
+	free(daily->activeFromDateTime);
+	free(daily->activeToDateTime);
+	free(daily->activeToDateTime);
+	free(daily->lastActivationDateTime);
+	free(daily->note);
 }
 
 
@@ -30,8 +30,9 @@ void SH_freeDaily(struct SHDaily *daily) {
 
 void SH_cleanupTableDailyProps(struct SHTableDaily *tableDaily) {
 	free(tableDaily->name);
-	SH_freeSHDatetime(&tableDaily->savedUseDate);
-	SH_freeSHDatetime(&tableDaily->nextDueDate);
+	SH_freeSHDatetime(tableDaily->savedUseDate);
+	SH_freeSHDatetime(tableDaily->nextDueDate);
+	SH_freeSHDatetime(tableDaily->stepLastActivationDateTime);
 }
 
 void SH_cleanupTableDaily(struct SHTableDaily *tableDaily) {

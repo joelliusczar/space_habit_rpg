@@ -14,14 +14,14 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-SHErrorCode SH_areDatesEqual(struct SHDatetime * const A, struct SHDatetime * const B, bool *ans);
+SHErrorCode SH_areDatesEqual(struct SHDatetime * const X, struct SHDatetime * const Y, bool *ans);
 
-SHErrorCode SH_isDateAGTDateB(struct SHDatetime * const A, struct SHDatetime * const B, bool *ans);
+SHErrorCode SH_isDateXAfterDateY(struct SHDatetime * const X, struct SHDatetime * const Y, bool *ans);
 
-SHErrorCode SH_isDateAGTEDateB(struct SHDatetime * const A, struct SHDatetime * const B, bool *ans);
+SHErrorCode SH_isDateXAfterOrSameAsDateY(struct SHDatetime * const X, struct SHDatetime * const Y, bool *ans);
 
-SHErrorCode SH_isDateALTDateB(struct SHDatetime * const A, struct SHDatetime * const B, bool *ans);
+SHErrorCode SH_isDateXBeforeDateY(struct SHDatetime * const X, struct SHDatetime * const Y, bool *ans);
 
-SHErrorCode SH_isDateALTEDateB(struct SHDatetime * const A, struct SHDatetime * const B, bool *ans);
+SHErrorCode SH_isDateXBeforeOrSameAsDateY(struct SHDatetime * const X, struct SHDatetime * const Y, bool *ans);
 
 #endif /* SHDateCompare_h */

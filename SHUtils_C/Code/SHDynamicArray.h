@@ -36,6 +36,7 @@ void* SH_dynamicArray_getBack(struct SHDynamicArray *array);
 void* SH_dynamicArray_getFront(struct SHDynamicArray *array);
 void* SH_dynamicArray_get(struct SHDynamicArray *array, uint64_t idx);
 SHErrorCode SH_dynamicArray_remove(struct SHDynamicArray *array, uint64_t idx);
+SHErrorCode SH_dynamicArray_removeMatchingItem(struct SHDynamicArray *array, void *item, bool removeAll);
 SHErrorCode SH_dynamicArray_insert(struct SHDynamicArray *array, uint64_t idx, void *item);
 SHErrorCode SH_dynamicArray_replace(struct SHDynamicArray *array, uint64_t idx, void *item);
 void SH_dynamicArray_cleanup(struct SHDynamicArray *array);

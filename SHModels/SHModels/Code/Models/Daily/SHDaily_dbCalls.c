@@ -8,6 +8,7 @@
 
 #include "SHDaily_dbCalls.h"
 #include "SHSqlite3Extensions.h"
+#include "SHTableDailiesFuncs.h"
 #include "SHDaily_dbStatementBuilders.h"
 #include <SHUtils_C/SHGenAlgos.h>
 #include <SHUtils_C/SHTree.h>
@@ -41,8 +42,12 @@ SHErrorCode SH_bindAllDailyParams(sqlite3_stmt *stmt, struct SHDaily const * con
 	if((sqlStatus = sqlite3_bind_int(stmt, 19, daily->base.tzOffsetLastUpdateDateTime) != SQLITE_OK)) { goto sqlErr; }
 	if((sqlStatus = sqlite3_bind_blob(stmt, 20, &daily->activeDays, sizeof(struct SHActiveDaysValues), SQLITE_TRANSIENT))
 		!= SQLITE_OK) { goto sqlErr; }
-	if((sqlStatus = sqlite3_bind_int64(stmt, 21, daily->base.pk) != SQLITE_OK)) { goto sqlErr; }
-	
+	if((sqlStatus = sqlite3_bind_int(stmt, 21, daily->stepCountMax) != SQLITE_OK)) { goto sqlErr; }
+	if((sqlStatus = sqlite3_bind_int(stmt, 22, daily->stepCount) != SQLITE_OK)) { goto sqlErr; }
+	if((sqlStatus = SH_sqlite3_bind_optional_double(stmt, 23, daily->stepLastActivationDateTime)
+		!= SQLITE_OK)) { goto sqlErr; }
+	if((sqlStatus = sqlite3_bind_int(stmt, 24, daily->tzOffsetStepLastActivation) != SQLITE_OK)) { goto sqlErr; }
+	if((sqlStatus = sqlite3_bind_int64(stmt, 25, daily->base.pk) != SQLITE_OK)) { goto sqlErr; }
 	return SH_NO_ERROR;
 	sqlErr:
 		sprintf(errMsg,"sqlite3 Error: %d \nThere was an error binding a param",sqlStatus);
@@ -116,24 +121,25 @@ static void _setActiveDaysDefault(struct SHActiveDaysValues *activeDays) {
 static SHErrorCode _setDailyValues(sqlite3_stmt *stmt, struct SHDaily *daily) {
 	
 	SHErrorCode status = SH_NO_ERROR;
+	memset(daily, 0, sizeof(struct SHDaily));
 	daily->base.pk = sqlite3_column_int(stmt, 0);
 	if((status = SH_sqlite3_copy_column_text(stmt, 1, &daily->base.name)) != SH_NO_ERROR) { return status; }
 	daily->base.lastUpdated = sqlite3_column_double(stmt, 2);
 	if((status = SH_sqlite3_column_double_ptr(stmt,3, &daily->activeFromDateTime)) != SH_NO_ERROR) {
-		goto cleanupName;
+		goto cleanup;
 	}
 	if((status = SH_sqlite3_column_double_ptr(stmt,4, &daily->activeToDateTime)) != SH_NO_ERROR) {
-		goto cleanupActiveFromDateTime;
+		goto cleanup;
 	}
 	if((status = SH_sqlite3_column_double_ptr(stmt,5, &daily->lastActivationDateTime)) != SH_NO_ERROR) {
-		goto cleanupActiveToDateTime;
+		goto cleanup;
 	}
 	daily->maxStreak = sqlite3_column_int(stmt, 6);
 	daily->activeFromHasPriority = sqlite3_column_int(stmt, 7);
 	daily->isEnabled = sqlite3_column_int(stmt, 8);
 	daily->lastUpdateHasPriority = sqlite3_column_int(stmt, 9);
 	if((status = SH_sqlite3_copy_column_text(stmt, 10, &daily->note)) != SH_NO_ERROR) {
-		goto cleanupLastActivationDateTime;
+		goto cleanup;
 	}
 	daily->dailyLvl = sqlite3_column_int(stmt, 11);
 	daily->dailyXp = sqlite3_column_int(stmt, 12);
@@ -148,7 +154,7 @@ static SHErrorCode _setDailyValues(sqlite3_stmt *stmt, struct SHDaily *daily) {
 		if((status = SH_sqlite3_copy_column_blobFixed(stmt, 20, &daily->activeDays, sizeof(struct SHActiveDaysValues)))
 			!= SH_NO_ERROR)
 		{
-			goto cleanupNote;
+			goto cleanup;
 		}
 	}
 	else {
@@ -156,16 +162,18 @@ static SHErrorCode _setDailyValues(sqlite3_stmt *stmt, struct SHDaily *daily) {
 	}
 	daily->difficulty = daily->difficulty > 0 ? daily->difficulty : 3;
 	daily->urgency = daily->urgency > 0 ? daily->urgency : 3;
+	daily->stepCountMax = sqlite3_column_int(stmt, 21);
+	daily->stepCount = sqlite3_column_int(stmt, 22);
+	if((status = SH_sqlite3_column_double_ptr(stmt, 23, &daily->stepLastActivationDateTime)) != SH_NO_ERROR) {
+		goto cleanup;
+	}
+	daily->tzOffsetStepLastActivation = sqlite3_column_int(stmt, 23);
 	return SH_NO_ERROR;
-	cleanupNote:
+	cleanup:
 		free(daily->note);
-	cleanupLastActivationDateTime:
 		free(daily->lastActivationDateTime);
-	cleanupActiveToDateTime:
 		free(daily->activeToDateTime);
-	cleanupActiveFromDateTime:
 		free(daily->activeFromDateTime);
-	cleanupName:
 		free(daily->base.name);
 		SH_notifyOfError(status, "Issue while loading fetched values into daily");
 		return status;
@@ -183,6 +191,7 @@ static SHErrorCode _setTableDailyValues(sqlite3_stmt *stmt, struct SHTableDaily 
 	tableDaily->dailyXp = sqlite3_column_int(stmt, 5);
 	if(!(tableDaily->savedUseDate = malloc(sizeof(struct SHDatetime)))) goto cleanup;
 	if(!(tableDaily->nextDueDate = malloc(sizeof(struct SHDatetime)))) goto cleanup;
+	if(!(tableDaily->stepLastActivationDateTime = malloc(sizeof(struct SHDatetime)))) goto cleanup;
 	if((status = SH_sqlite3_column_SHDatetime(stmt, 6, tableDaily->savedUseDate, 0)) != SH_NO_ERROR) {
 		goto cleanup;
 	}
@@ -190,6 +199,15 @@ static SHErrorCode _setTableDailyValues(sqlite3_stmt *stmt, struct SHTableDaily 
 		goto cleanup;
 	}
 	tableDaily->dueStatus = sqlite3_column_int(stmt, 8);
+	tableDaily->stepCountMax = sqlite3_column_int(stmt, 9);
+	tableDaily->stepCount = sqlite3_column_int(stmt, 10);
+	int32_t tzOffsetStepLastActivation = sqlite3_column_int(stmt, 12); //skip a number on purpose
+	if((status = SH_sqlite3_column_SHDatetime(stmt, 11, tableDaily->stepLastActivationDateTime,
+		tzOffsetStepLastActivation))
+		!= SH_NO_ERROR)
+	{
+		goto cleanup;
+	}
 	goto fnExit;
 	cleanup:
 		SH_cleanupTableDaily(tableDaily);
@@ -199,6 +217,7 @@ static SHErrorCode _setTableDailyValues(sqlite3_stmt *stmt, struct SHTableDaily 
 
 
 SHErrorCode SH_fetchSingleDaily(sqlite3 *db, int64_t pk, struct SHDaily *daily) {
+	if(!db || !daily) return SH_ILLEGAL_INPUTS;
 	int32_t sqlStatus = SQLITE_OK;
 	SHErrorCode status = SH_NO_ERROR;
 	sqlite3_stmt *stmt = NULL;
@@ -246,22 +265,6 @@ static void *_tableDailyFetchGenFn(sqlite3_stmt *stmt, bool *hasNext) {
 }
 
 
-static uint32_t _tableDailiesGrouper(struct SHTableDaily *tableDaily, void *fnArgs, uint64_t idx) {
-	(void)fnArgs; (void)idx;
-	return tableDaily->dueStatus;
-}
-
-
-static int32_t _tableDailySortingFn(struct SHTableDaily *tableDaily1, struct SHTableDaily *tableDaily2) {
-	if(tableDaily1->customUseOrder != tableDaily2->customUseOrder) {
-		return tableDaily2->customUseOrder - tableDaily1->customUseOrder;
-	}
-	int64_t pkDiff = tableDaily2->pk - tableDaily1->pk;
-	if(pkDiff == 0) return 0;
-	return pkDiff > 0 ? 1 : -1;
-}
-
-
 SHErrorCode SH_fetchTableDailies(struct SHModelsQueueStore *queueStoreItem)
 {
 	if(!queueStoreItem) return SH_ILLEGAL_INPUTS;
@@ -280,8 +283,8 @@ SHErrorCode SH_fetchTableDailies(struct SHModelsQueueStore *queueStoreItem)
 		SH_pipeline_init(stmt,
 			(void *(*)(void*, bool *))_tableDailyFetchGenFn,
 			(void (*)(void*))sqlite3_finalize, (void (*)(void*))SH_cleanupTableDaily),
-		(void *(*)(void*, void*, uint64_t))_tableDailiesGrouper, NULL, NULL,
-		&SH_TREE_FN_DEFS, (int32_t (*)(void*, void*))_tableDailySortingFn, NULL);
+		(void *(*)(void*, void*, uint64_t))SH_tableDailiesGrouper, NULL, NULL,
+		&SH_TREE_FN_DEFS, (int32_t (*)(void*, void*))SH_tableDailySortingFn, NULL);
 	if(!pipeline) goto allocErr;
 	iterable = SH_pipeline_completeAsIterable(pipeline, &SH_ARRAY_FN_DEFS, NULL);
 	if(!iterable) goto allocErr;

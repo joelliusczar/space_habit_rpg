@@ -14,7 +14,8 @@
 #include <sqlite3.h>
 #include <stdio.h>
 
-int32_t SH_sqlite3_bind_optional_double(sqlite3_stmt *stmt, int32_t, double *);
+int32_t SH_sqlite3_bind_optional_double(sqlite3_stmt *stmt, int32_t paramNum, double *value);
+int32_t SH_sqlite3_bind_datetime(sqlite3_stmt *stmt, int32_t paramNum, struct SHDatetime *value);
 SHErrorCode SH_sqlite3_copy_column_text(sqlite3_stmt *stmt, int32_t col, char **value);
 SHErrorCode SH_sqlite3_copy_column_blobFixed(sqlite3_stmt *stmt, int32_t col, void *value, uint64_t len);
 SHErrorCode SH_sqlite3_column_double_ptr(sqlite3_stmt *stmt, int32_t col, double **value);

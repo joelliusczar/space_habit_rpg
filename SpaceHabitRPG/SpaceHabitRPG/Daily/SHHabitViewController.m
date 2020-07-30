@@ -17,6 +17,7 @@
 @property (strong, nonatomic) SHHabitNameViewController *nameViewController;
 @property (assign, nonatomic) struct SHSerialQueue *dbQueue; //not owner
 @property (assign, nonatomic) const struct SHDatetimeProvider *dateProvider; //not owner
+@property (assign, nonatomic) struct SHTableChangeActions tableChangeActions;
 @end
 
 @implementation SHHabitViewController
@@ -24,6 +25,20 @@
 
 -(const char*)tableName {
 	@throw [NSException abstractException];
+}
+
+
+static void _beginUpdate(SHHabitViewController *habitVC) {
+	[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+		[habitVC.habitTable beginUpdates];
+	}];
+}
+
+
+static void _endUpdate(SHHabitViewController *habitVC) {
+	[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+		[habitVC.habitTable endUpdates];
+	}];
 }
 
 
@@ -41,6 +56,7 @@
 	}
 	return self;
 }
+
 
 
 -(void)viewDidLoad {
@@ -64,12 +80,23 @@
 	builder.thickness = 5;
 	UIImage *addHabitIcon = [builder drawPlus];
 	[self.addHabitBtnIcon setImage:addHabitIcon];
+	[self setupTableChangeActions];
 	[self setupData];
 }
 
 
 -(void)setupData {
 	@throw [NSException abstractException];
+}
+
+
+-(void)setupTableChangeActions {
+	self.tableChangeActions = (struct SHTableChangeActions){
+		.owner = (__bridge void*)self,
+		.beginUpdate = (void (*)(void*))_beginUpdate,
+		.endUpdate = (void (*)(void*))_endUpdate
+	};
+	
 }
 
 
@@ -104,7 +131,11 @@ static SHErrorCode _callFetchAndLoadData(struct _fetchDataArgs *fetchArgs, struc
 		SH_notifyOfError(SH_ALLOC_NO_MEM, "could not allocate anymore memory");
 		exit(1);
 	}
-	if((status = SH_serialQueue_addOp(self.dbQueue, (SHErrorCode (*)(void*, struct SHQueueStore *store))_callFetchAndLoadData, fetchArgs, free)) != SH_NO_ERROR) {
+	if((status = SH_serialQueue_addOp(self.dbQueue, (
+		SHErrorCode (*)(void*, struct SHQueueStore *store))_callFetchAndLoadData,
+		fetchArgs, free))
+		!= SH_NO_ERROR)
+	{
 		@throw [NSException encounterCError:status];
 	}
 }
@@ -154,6 +185,8 @@ static SHErrorCode _getPk(struct SHTablePath *rowCountObj, struct SHQueueStore *
 		SH_notifyOfError(status, "app had an error while getting daily section count");
 	}
 	SHHabitCell *cell = [self getTableCell:tableView];
+	cell.dbQueue = self.dbQueue;
+	cell.tableChangeActions = &self->_tableChangeActions;
 	[cell setupCell:tableHabit];
 	return cell;
 }
@@ -332,7 +365,7 @@ static void _cleanUpInsert(struct _insertArgs* insertArgs) {
 		struct SHHabitBase *habit = malloc(sizeof(struct SHHabitBase));
 		*habit = (struct SHHabitBase){
 			.name = [name SH_unsafeStrCopy],
-			.lastUpdated = lastUpdated,
+			.lastUpdated = lastUpdated, //storing the local value ...I think
 			.tzOffsetLastUpdateDateTime = appDel.dateProvider->getLocalTzOffset(),
 		};
 		

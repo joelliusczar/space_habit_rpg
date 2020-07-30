@@ -29,6 +29,7 @@ const struct SHIterableWrapperFuncs SH_TREE_FN_DEFS = {
 	.getBack = (void *(*)(void*))SH_tree_getBack,
 	.popBack = (void *(*)(void*))SH_tree_popBack,
 	.deleteItemAtIdx = (SHErrorCode (*)(void*, uint64_t))SH_tree_deleteNthItem,
+	.removeMatchingItem = (SHErrorCode (*)(void*, void*, bool))SH_tree_removeMatchingItem,
 	.iteratorInit = (void *(*)(void*))SH_treeIterator_init,
 	.iteratorNext = (void *(*)(void**))SH_treeIterator_nextInorder,
 	.cleanup = (void (*)(void*))SH_tree_cleanup,
@@ -266,6 +267,19 @@ SHErrorCode SH_tree_addItem(struct SHTree *tree, void *item) {
 }
 
 
+static struct SHTreeNode *_findNodeForItem(struct SHTreeNode *root, void *item, int32_t (*sortingFn)(void*, void*)) {
+	if(root->item == item) return root;
+	int32_t compareResult = sortingFn(root->item, item);
+	if(compareResult < 0) {
+		return _findNodeForItem(root->left, item, sortingFn);
+	}
+	else if(compareResult > 0) {
+		//right
+		return _findNodeForItem(root->right, item, sortingFn);
+	}
+	return NULL;
+}
+
 static struct SHTreeNode *_findNthItem(struct SHTreeNode *root, uint64_t idx, uint64_t leftCount)
 {
 	uint64_t localLeftCount = root->left ? root->left->childCount + 1: 0;
@@ -400,6 +414,20 @@ SHErrorCode SH_tree_deleteNthItem(struct SHTree *tree, uint64_t idx) {
 		tree->version ^= (uintptr_t)nthNode->item;
 	}
 	_nodeCleanup(nthNode, (void (*)(void*))tree->itemCleanup);
+	return SH_NO_ERROR;
+}
+
+
+SHErrorCode SH_tree_removeMatchingItem(struct SHTree *tree, void *item, bool removeAll) {
+	(void)removeAll; //there should only be unique items in here anyway
+	if(!tree || !tree->root) return SH_ILLEGAL_INPUTS;
+	uint64_t beforeCount = SH_tree_count(tree);
+	struct SHTreeNode *match = _findNodeForItem(tree->root, item, tree->sortingFn);
+	tree->root = _detachNode(tree->root, match, tree->sortingFn);
+	if(SH_tree_count(tree) > beforeCount) { //if item was successfully removed
+		tree->version ^= (uintptr_t)match->item;
+	}
+	_nodeCleanup(match, (void (*)(void*))tree->itemCleanup);
 	return SH_NO_ERROR;
 }
 

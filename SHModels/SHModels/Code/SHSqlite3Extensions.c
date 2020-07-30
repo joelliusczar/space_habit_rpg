@@ -17,12 +17,31 @@
 
 int32_t SH_sqlite3_bind_optional_double(sqlite3_stmt* stmt, int32_t paramNum, double *value) {
 	int32_t sqlStatus = SQLITE_OK;
-	if(NULL != value) {
+	if(!value) {
 		if((sqlStatus = sqlite3_bind_double(stmt, paramNum, *value)) != SQLITE_OK) { goto fnExit; }
 	}
 	else {
 		if((sqlStatus = sqlite3_bind_null(stmt, paramNum)) != SQLITE_OK) { goto fnExit; }
 	}
+	fnExit:
+		return sqlStatus;
+}
+
+
+int32_t SH_sqlite3_bind_datetime(sqlite3_stmt *stmt, int32_t paramNum, struct SHDatetime *value) {
+	int32_t sqlStatus = SQLITE_OK;
+	SHErrorCode status = SH_NO_ERROR;
+	double timestamp = 0;
+	if((status = SH_dtToTimestamp(value, &timestamp)) != SH_NO_ERROR) { goto fnErr; }
+	if(!value) {
+		if((sqlStatus = sqlite3_bind_double(stmt, paramNum, timestamp)) != SQLITE_OK) { goto fnExit; }
+	}
+	else {
+		if((sqlStatus = sqlite3_bind_null(stmt, paramNum)) != SQLITE_OK) { goto fnExit; }
+	}
+	goto fnExit;
+	fnErr:
+		sqlStatus = SQLITE_ERROR;
 	fnExit:
 		return sqlStatus;
 }

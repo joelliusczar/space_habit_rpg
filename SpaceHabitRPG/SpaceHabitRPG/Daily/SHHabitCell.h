@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SHHabitCell : SHTaskCell
 @property (assign, nonatomic) struct SHSerialQueue *dbQueue; //not owner
 @property (assign, nonatomic) struct SHTableHabit *tableHabit; //not owner
+@property (assign, nonatomic) const struct SHTableChangeActions *tableChangeActions; //not owner
 -(void)setupCell:(struct SHTableHabit *)tableHabit;
 @end
 

@@ -1297,8 +1297,8 @@
             filePath = "SpaceHabitRPG/SpaceHabitRPG/Daily/SHHabitViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
             landmarkName = "-openEditor:forAdded:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1864,8 +1864,8 @@
             filePath = "SHUtils_C/Code/SHTree.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "_rebalance(root)"
             landmarkType = "9">
          </BreakpointContent>
@@ -1928,8 +1928,8 @@
             filePath = "SHUtils_C/Code/SHTree.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "379"
-            endingLineNumber = "379"
+            startingLineNumber = "393"
+            endingLineNumber = "393"
             landmarkName = "_detachNode(root, detached)"
             landmarkType = "9">
          </BreakpointContent>
@@ -2072,8 +2072,8 @@
             filePath = "SHUtils_C/Code/SHTree.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "386"
-            endingLineNumber = "386"
+            startingLineNumber = "400"
+            endingLineNumber = "400"
             landmarkName = "_detachNode(root, detached)"
             landmarkType = "9">
          </BreakpointContent>
@@ -2360,8 +2360,8 @@
             filePath = "SHUtils_C/Code/SHDynamicArray.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "SH_dynamicArray_push(array, item)"
             landmarkType = "9">
          </BreakpointContent>
@@ -2376,8 +2376,8 @@
             filePath = "SHUtils_C/Code/SHDynamicArray.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "SH_dynamicArray_init3(startSize)"
             landmarkType = "9">
          </BreakpointContent>

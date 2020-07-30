@@ -89,6 +89,12 @@ SHErrorCode SH_iterable_deleteItemAtIdx(struct SHIterableWrapper *iterable, uint
 }
 
 
+SHErrorCode SH_iterable_removeMatchingItem(struct SHIterableWrapper *iterable, void *item, bool removeAll) {
+	if(!iterable || !iterable->funcs.removeMatchingItem) return SH_ILLEGAL_INPUTS;
+	return iterable->funcs.removeMatchingItem(iterable->backend, item, removeAll);
+}
+
+
 struct SHIterableWrapperIterator *SH_iterableIterator_init(struct SHIterableWrapper *iterable) {
 	if(!iterable || !iterable->funcs.iteratorInit) return NULL;
 	struct SHIterableWrapperIterator* iter;

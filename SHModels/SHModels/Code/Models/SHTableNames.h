@@ -12,5 +12,6 @@
 #include <stdio.h>
 
 extern char const SH_TABLE_NAME_DAILIES[7];
+extern char const SH_TABLE_NAME_DAILY_ACTIVATIONS[16];
 
 #endif /* SHTableNames_h */

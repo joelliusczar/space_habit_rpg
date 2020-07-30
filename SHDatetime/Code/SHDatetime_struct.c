@@ -10,20 +10,13 @@
 #include <stdlib.h>
 
 
-void SH_freeSHTimeshift(struct SHTimeshift **tsObjP2){
-	if(!tsObjP2) return;
-	struct SHTimeshift *tsObj = *tsObjP2;
-	if(!tsObj) return;
+void SH_freeSHTimeshift(struct SHTimeshift *tsObj){
 	free(tsObj);
-	*tsObjP2 = NULL;
 }
 
 
-void SH_freeSHDatetime(struct SHDatetime **dtObjP2){
-	if(!dtObjP2) return;
-	struct SHDatetime *dtObj = *dtObjP2;
+void SH_freeSHDatetime(struct SHDatetime *dtObj){
 	if(!dtObj) return;
-	SH_freeSHTimeshift(&dtObj->shifts);
+	SH_freeSHTimeshift(dtObj->shifts);
 	free(dtObj);
-	*dtObjP2 = NULL;
 }

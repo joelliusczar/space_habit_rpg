@@ -17,7 +17,7 @@ SHErrorCode _insertHabit(sqlite3 *db, struct SHHabitBase const * habit, const ch
 	char errMsg[60];
 	const char *sqlMsg = NULL;
 	char sql[125];
-	char *sqlFormat = "INSERT INTO %s ( "
+	char sqlFormat[] = "INSERT INTO %s ( "
 	"name, "
 	"lastUpdated, "
 	"tzOffsetLastUpdateDateTime "
@@ -35,7 +35,6 @@ SHErrorCode _insertHabit(sqlite3 *db, struct SHHabitBase const * habit, const ch
 	sqlErr:
 		sqlMsg = sqlite3_errmsg(db);
 		sprintf(errMsg,"sqlite3 Error: %d \nThere was an error inserting into %s",sqlStatus, tableName);
-		SH_notifyOfError(SH_SQLITE3_ERROR, errMsg);
 		SH_notifyOfError(SH_SQLITE3_ERROR, sqlMsg);
 		status = SH_SQLITE3_ERROR;
 	fnExit:

@@ -114,16 +114,18 @@
 
 static struct SHDatetime* _nsDateToShDatetime(NSDate *date, int32_t tzOffset) {
 	struct SHDatetime *dt = calloc(SH_ALLOC_COUNT, sizeof(struct SHDatetime));
-	
+	//date.timeIntervalSince1970 gives the timestamp in local time
+	//I'm in eastern time, so if I pass in 0 for tzOffset, the dt
+	//spit out will be like 4/5 hours ahead.
 	if(SH_timestampToDt(date.timeIntervalSince1970, tzOffset, dt) != SH_NO_ERROR) {
-		SH_freeSHDatetime(&dt);
+		SH_freeSHDatetime(dt);
 		@throw [NSException encounterError];
 	}
 
 	return dt;
 }
 
-
+//local time
 -(struct SHDatetime *)SH_toSHDatetime {
 	int32_t tzOffset = (int32_t)[NSTimeZone.defaultTimeZone secondsFromGMT];
 	return _nsDateToShDatetime(self, tzOffset);
