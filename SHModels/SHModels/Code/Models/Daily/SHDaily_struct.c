@@ -16,7 +16,6 @@ void SH_freeDailyProps(struct SHDaily *daily) {
 	free(daily->activeFromDateTime);
 	free(daily->activeToDateTime);
 	free(daily->activeToDateTime);
-	free(daily->lastActivationDateTime);
 	free(daily->note);
 }
 

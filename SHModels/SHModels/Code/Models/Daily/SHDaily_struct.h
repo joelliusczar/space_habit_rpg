@@ -22,25 +22,17 @@ struct SHDaily {
 	struct SHActiveDaysValues activeDays; // + 18 = 50
 	double *activeFromDateTime;
 	double *activeToDateTime;
-	double *lastActivationDateTime;
-	double *stepLastActivationDateTime;
 	char * note; //= 55
-	int32_t maxStreak;
-	int32_t dailyLvl;
-	int32_t dailyXp;
 	int32_t customUseOrder;
 	int32_t dayStartTime;
 	int32_t difficulty;
 	int32_t urgency;
-	int32_t streakLength;
-	int32_t tzOffsetLastActivationDateTime;
-	int32_t tzOffsetStepLastActivation;
 	int32_t stepCountMax;
-	int32_t stepCount;
+	int32_t streakLength;
 	bool activeFromHasPriority;
 	bool isEnabled;
 	bool lastUpdateHasPriority;
-	uint8_t padding[5];
+	uint8_t padding[1];
 };
 
 
@@ -57,6 +49,7 @@ struct SHTableDaily {
 	struct SHDatetime *savedUseDate;
 	struct SHDatetime *nextDueDate;
 	struct SHDatetime *stepLastActivationDateTime;
+	struct SHDatetime *fullLastActivationDateTime;
 	SHDueDateStatus dueStatus;
 };
 

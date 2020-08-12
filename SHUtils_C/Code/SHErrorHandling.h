@@ -69,6 +69,7 @@ typedef enum {
 	SH_ILLEGAL_STATE_CHANGED = 1 << 12,
 	SH_PRECONDITIONS_NOT_FULFILLED = 1 << 13,
 	SH_CONTINUE_NON_ERR = 1 << 14,
+	SH_FILE_ERROR = 1 << 15,
 } SHErrorCode;
 
 

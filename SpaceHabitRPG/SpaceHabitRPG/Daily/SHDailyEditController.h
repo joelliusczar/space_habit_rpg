@@ -31,7 +31,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) SHRemindersLinkViewController *remindersLink;
 @property (strong, nonatomic) SHImportanceSliderView *difficultySld;
 @property (strong, nonatomic) SHImportanceSliderView *urgencySld;
-@property (strong, nonatomic) SHStreakResetterView *resetter;
 @end
 
 NS_ASSUME_NONNULL_END

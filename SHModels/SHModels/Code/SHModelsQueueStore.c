@@ -21,7 +21,15 @@ struct SHIterableWrapper *SH_modelsQueueStore_selectTableData(struct SHModelsQue
 
 void SH_freeQueueStoreItem(struct SHModelsQueueStore *item) {
 	if(!item) return;
+	sqlite3_finalize(item->fetchDailyAttackValues);
+	sqlite3_finalize(item->fetchDailyForEdit);
+	sqlite3_finalize(item->addDailyActivation);
+	sqlite3_finalize(item->addDailyPartialActivation);
+	sqlite3_finalize(item->getAttackChargeSumForToday);
+	sqlite3_finalize(item->removeDailyActivation);
 	sqlite3_close(item->db);
 	SH_iterable_cleanup(item->dailyStorage);
+	free(item->heroData);
+	free(item->monsterData);
 	free(item);
 }

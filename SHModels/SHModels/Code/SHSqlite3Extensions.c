@@ -15,6 +15,29 @@
 #include <math.h>
 
 
+SHErrorCode SH_sqlite3_prepare(sqlite3 *db, const char *zSql, int nByte, sqlite3_stmt **ppStmt, const char **pzTail) {
+	if(!db || !zSql) return SH_ILLEGAL_INPUTS;
+	SHErrorCode status = SH_NO_ERROR;
+	int32_t sqlStatus = SQLITE_OK;
+	const char *sqlMsg = NULL;
+	char errMsg[80];
+	if(!*ppStmt) {
+		if((sqlStatus = sqlite3_prepare_v2(db, zSql, -1, ppStmt, 0)) != SQLITE_OK) { goto sqlErr; }
+	}
+	else {
+		if((sqlStatus = sqlite3_reset(*ppStmt)) != SQLITE_OK) { goto sqlErr; }
+		if((sqlStatus = sqlite3_clear_bindings(*ppStmt)) != SQLITE_OK) { goto sqlErr; }
+	}
+	goto fnExit;
+	sqlErr:
+		sqlMsg = sqlite3_errmsg(db);
+		sprintf(errMsg,"sqlite3 Error: %d \nThere was an error preparing Statement",sqlStatus);
+		SH_notifyOfError(SH_SQLITE3_ERROR, sqlMsg);
+		status = SH_SQLITE3_ERROR;
+	fnExit:
+		return status;
+}
+
 int32_t SH_sqlite3_bind_optional_double(sqlite3_stmt* stmt, int32_t paramNum, double *value) {
 	int32_t sqlStatus = SQLITE_OK;
 	if(!value) {

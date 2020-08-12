@@ -20,5 +20,6 @@
 #import "SHSyncedList.h"
 #import "SHDynamicArray.h"
 #import "SHPipeline.h"
+#import "SHFileOps.h"
 
 #endif /* SHUtils_C_h */

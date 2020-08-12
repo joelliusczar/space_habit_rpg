@@ -33,4 +33,5 @@ void SH_reverseStrArr(char **arr, uint64_t start, uint64_t end);
 void SH_rotateStrArray(char **arr, uint64_t len, uint64_t offset);
 void SH_cleanup(void *args);
 char *SH_memoryToString(const unsigned char * const addresses, uint64_t len);
+
 #endif /* SHGenAlgos_h */

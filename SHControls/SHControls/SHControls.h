@@ -31,7 +31,6 @@ FOUNDATION_EXPORT const unsigned char SHControlsVersionString[];
 #import "SHAddItemsFooter.h"
 #import "SHNoteView.h"
 #import "SHSubtasksTableView.h"
-#import "SHStreakResetterView.h"
 #import "SHRateSetterView.h"
 #import "SHSwitch.h"
 #import "SHImportanceSliderView.h"

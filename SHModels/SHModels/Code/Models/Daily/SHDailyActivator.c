@@ -18,6 +18,7 @@ struct _activateArgs {
 	struct SHTableDaily *tableDaily;
 };
 
+
 static SHErrorCode _activate(struct _activateArgs *activateArgs, struct SHQueueStore *store) {
 	struct SHModelsQueueStore *item = (struct SHModelsQueueStore *)SH_serialQueue_getUserItem(store);
 	SHErrorCode status = SH_NO_ERROR;
@@ -25,7 +26,9 @@ static SHErrorCode _activate(struct _activateArgs *activateArgs, struct SHQueueS
 	uint32_t fromGroupIdx = SH_tableDailiesGrouper(activateArgs->tableDaily, NULL, 0);
 	struct SHIterableWrapper *fromGroup = SH_iterable_getItemAtIdx(item->dailyStorage, fromGroupIdx);
 	
-	if((status = SH_activateDaily(item->db, activateArgs->tableDaily, item->dateProvider) ) != SH_NO_ERROR) {
+	if((status = SH_daily_addActivationRecords(item, activateArgs->tableDaily) )
+		!= SH_NO_ERROR)
+	{
 		goto fnExit;
 	}
 	

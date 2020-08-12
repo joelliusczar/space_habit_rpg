@@ -65,9 +65,6 @@ static SHErrorCode _fetchDaily(void *args, struct SHQueueStore *store) {
 		editController.note.noteBox.text = [NSString stringWithUTF8String:daily->note];
 		[editController.difficultySld updateImportanceSlider:daily->difficulty];
 		[editController.urgencySld updateImportanceSlider:daily->urgency];
-		editController.resetter.streakCountLbl.hidden = editController.isAdded;
-		editController.resetter.streakResetBtn.hidden = editController.isAdded;
-		editController.resetter.streakCountLbl.text = [NSString stringWithFormat:@"Streak %d",daily->streakLength];
 	}];
 	return status;
 }
@@ -163,7 +160,8 @@ static SHErrorCode _fetchDaily(void *args, struct SHQueueStore *store) {
 
 
 -(void)streakResetBtn_press_action {
-	self.daily->streakLength = 0;
+	#warning rewrite
+	//self.daily->streakLength = 0;
 }
 
 
@@ -253,11 +251,6 @@ static SHErrorCode _deleteDaily(void *args, struct SHQueueStore *store) {
 	self.urgencySld.controlName = @"urgency";
 	self.urgencySld.delegate = self;
 	[keep addObject:self.urgencySld];
-
-	self.resetter = [[SHStreakResetterView alloc]
-		initWithNibName:NSStringFromClass(SHStreakResetterView.class)
-		bundle:shControlsBundle];
-	[keep addObject:self.resetter];
 
 	return keep;
 }

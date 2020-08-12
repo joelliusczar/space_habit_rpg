@@ -25,29 +25,19 @@ SHErrorCode SH_bindAllDailyParams(sqlite3_stmt *stmt, struct SHDaily const * con
 	if((sqlStatus = sqlite3_bind_double(stmt, 2, daily->base.lastUpdated) != SQLITE_OK)) { goto sqlErr; }
 	if((sqlStatus = SH_sqlite3_bind_optional_double(stmt, 3, daily->activeFromDateTime) != SQLITE_OK)) { goto sqlErr; }
 	if((sqlStatus = SH_sqlite3_bind_optional_double(stmt, 4, daily->activeToDateTime) != SQLITE_OK)) { goto sqlErr; }
-	if((sqlStatus = SH_sqlite3_bind_optional_double(stmt, 5, daily->lastActivationDateTime) != SQLITE_OK)) { goto sqlErr; }
-	if((sqlStatus = sqlite3_bind_int(stmt, 6, daily->maxStreak) != SQLITE_OK)) { goto sqlErr; }
-	if((sqlStatus = sqlite3_bind_int(stmt, 7, daily->activeFromHasPriority) != SQLITE_OK)) { goto sqlErr; }
-	if((sqlStatus = sqlite3_bind_int(stmt, 8, daily->isEnabled) != SQLITE_OK)) { goto sqlErr; }
-	if((sqlStatus = sqlite3_bind_int(stmt, 9, daily->lastUpdateHasPriority) != SQLITE_OK)) { goto sqlErr; }
-	if((sqlStatus = sqlite3_bind_text(stmt, 10, (char *)daily->note, -1, SQLITE_TRANSIENT) != SQLITE_OK)) { goto sqlErr; }
-	if((sqlStatus = sqlite3_bind_int(stmt, 11, daily->dailyLvl) != SQLITE_OK)) { goto sqlErr; }
-	if((sqlStatus = sqlite3_bind_int(stmt, 12, daily->dailyXp) != SQLITE_OK)) { goto sqlErr; }
-	if((sqlStatus = sqlite3_bind_int(stmt, 13, daily->customUseOrder) != SQLITE_OK)) { goto sqlErr; }
-	if((sqlStatus = sqlite3_bind_int(stmt, 14, daily->dayStartTime) != SQLITE_OK)) { goto sqlErr; }
-	if((sqlStatus = sqlite3_bind_int(stmt, 15, daily->difficulty) != SQLITE_OK)) { goto sqlErr; }
-	if((sqlStatus = sqlite3_bind_int(stmt, 16, daily->urgency) != SQLITE_OK)) { goto sqlErr; }
-	if((sqlStatus = sqlite3_bind_int(stmt, 17, daily->streakLength) != SQLITE_OK)) { goto sqlErr; }
-	if((sqlStatus = sqlite3_bind_int(stmt, 18, daily->tzOffsetLastActivationDateTime) != SQLITE_OK)) { goto sqlErr; }
-	if((sqlStatus = sqlite3_bind_int(stmt, 19, daily->base.tzOffsetLastUpdateDateTime) != SQLITE_OK)) { goto sqlErr; }
-	if((sqlStatus = sqlite3_bind_blob(stmt, 20, &daily->activeDays, sizeof(struct SHActiveDaysValues), SQLITE_TRANSIENT))
+	if((sqlStatus = sqlite3_bind_int(stmt, 5, daily->activeFromHasPriority) != SQLITE_OK)) { goto sqlErr; }
+	if((sqlStatus = sqlite3_bind_int(stmt, 6, daily->isEnabled) != SQLITE_OK)) { goto sqlErr; }
+	if((sqlStatus = sqlite3_bind_int(stmt, 7, daily->lastUpdateHasPriority) != SQLITE_OK)) { goto sqlErr; }
+	if((sqlStatus = sqlite3_bind_text(stmt, 8, (char *)daily->note, -1, SQLITE_TRANSIENT) != SQLITE_OK)) { goto sqlErr; }
+	if((sqlStatus = sqlite3_bind_int(stmt, 9, daily->customUseOrder) != SQLITE_OK)) { goto sqlErr; }
+	if((sqlStatus = sqlite3_bind_int(stmt, 10, daily->dayStartTime) != SQLITE_OK)) { goto sqlErr; }
+	if((sqlStatus = sqlite3_bind_int(stmt, 11, daily->difficulty) != SQLITE_OK)) { goto sqlErr; }
+	if((sqlStatus = sqlite3_bind_int(stmt, 12, daily->urgency) != SQLITE_OK)) { goto sqlErr; }
+	if((sqlStatus = sqlite3_bind_int(stmt, 13, daily->base.tzOffsetLastUpdateDateTime) != SQLITE_OK)) { goto sqlErr; }
+	if((sqlStatus = sqlite3_bind_blob(stmt, 14, &daily->activeDays, sizeof(struct SHActiveDaysValues), SQLITE_TRANSIENT))
 		!= SQLITE_OK) { goto sqlErr; }
-	if((sqlStatus = sqlite3_bind_int(stmt, 21, daily->stepCountMax) != SQLITE_OK)) { goto sqlErr; }
-	if((sqlStatus = sqlite3_bind_int(stmt, 22, daily->stepCount) != SQLITE_OK)) { goto sqlErr; }
-	if((sqlStatus = SH_sqlite3_bind_optional_double(stmt, 23, daily->stepLastActivationDateTime)
-		!= SQLITE_OK)) { goto sqlErr; }
-	if((sqlStatus = sqlite3_bind_int(stmt, 24, daily->tzOffsetStepLastActivation) != SQLITE_OK)) { goto sqlErr; }
-	if((sqlStatus = sqlite3_bind_int64(stmt, 25, daily->base.pk) != SQLITE_OK)) { goto sqlErr; }
+	if((sqlStatus = sqlite3_bind_int(stmt, 15, daily->stepCountMax) != SQLITE_OK)) { goto sqlErr; }
+		
 	return SH_NO_ERROR;
 	sqlErr:
 		sprintf(errMsg,"sqlite3 Error: %d \nThere was an error binding a param",sqlStatus);
@@ -63,7 +53,7 @@ SHErrorCode SH_updateDaily(sqlite3 *db, struct SHDaily const * daily) {
 	char errMsg[60];
 	if((status = SH_buildStatement_updateDailyStmt(&stmt, db)) != SH_NO_ERROR) { goto sqlErr; }
 	if((status = SH_bindAllDailyParams(stmt, daily)) != SH_NO_ERROR) { goto sqlErr; }
-	if((sqlStatus = sqlite3_bind_int64(stmt, 21, daily->base.pk)) != SQLITE_OK) { goto sqlErr; }
+	if((sqlStatus = sqlite3_bind_int64(stmt, 16, daily->base.pk)) != SQLITE_OK) { goto sqlErr; }
 	sqlStatus = sqlite3_step(stmt);
 	if(sqlStatus != SQLITE_OK && sqlStatus != SQLITE_DONE) { goto sqlErr; }
 	
@@ -131,27 +121,19 @@ static SHErrorCode _setDailyValues(sqlite3_stmt *stmt, struct SHDaily *daily) {
 	if((status = SH_sqlite3_column_double_ptr(stmt,4, &daily->activeToDateTime)) != SH_NO_ERROR) {
 		goto cleanup;
 	}
-	if((status = SH_sqlite3_column_double_ptr(stmt,5, &daily->lastActivationDateTime)) != SH_NO_ERROR) {
+	daily->activeFromHasPriority = sqlite3_column_int(stmt, 5);
+	daily->isEnabled = sqlite3_column_int(stmt, 6);
+	daily->lastUpdateHasPriority = sqlite3_column_int(stmt, 7);
+	if((status = SH_sqlite3_copy_column_text(stmt, 8, &daily->note)) != SH_NO_ERROR) {
 		goto cleanup;
 	}
-	daily->maxStreak = sqlite3_column_int(stmt, 6);
-	daily->activeFromHasPriority = sqlite3_column_int(stmt, 7);
-	daily->isEnabled = sqlite3_column_int(stmt, 8);
-	daily->lastUpdateHasPriority = sqlite3_column_int(stmt, 9);
-	if((status = SH_sqlite3_copy_column_text(stmt, 10, &daily->note)) != SH_NO_ERROR) {
-		goto cleanup;
-	}
-	daily->dailyLvl = sqlite3_column_int(stmt, 11);
-	daily->dailyXp = sqlite3_column_int(stmt, 12);
-	daily->customUseOrder = sqlite3_column_int(stmt, 13);
-	daily->dayStartTime = sqlite3_column_int(stmt, 14);
-	daily->difficulty = sqlite3_column_int(stmt, 15);
-	daily->urgency = sqlite3_column_int(stmt, 16);
-	daily->streakLength = sqlite3_column_int(stmt, 17);
-	daily->tzOffsetLastActivationDateTime = sqlite3_column_int(stmt, 18);
-	daily->base.tzOffsetLastUpdateDateTime = sqlite3_column_int(stmt, 19);
-	if(sqlite3_column_type(stmt, 20) != SQLITE_NULL) {
-		if((status = SH_sqlite3_copy_column_blobFixed(stmt, 20, &daily->activeDays, sizeof(struct SHActiveDaysValues)))
+	daily->customUseOrder = sqlite3_column_int(stmt, 9);
+	daily->dayStartTime = sqlite3_column_int(stmt, 10);
+	daily->difficulty = sqlite3_column_int(stmt, 11);
+	daily->urgency = sqlite3_column_int(stmt, 12);
+	daily->base.tzOffsetLastUpdateDateTime = sqlite3_column_int(stmt, 13);
+	if(sqlite3_column_type(stmt, 14) != SQLITE_NULL) {
+		if((status = SH_sqlite3_copy_column_blobFixed(stmt, 14, &daily->activeDays, sizeof(struct SHActiveDaysValues)))
 			!= SH_NO_ERROR)
 		{
 			goto cleanup;
@@ -160,18 +142,12 @@ static SHErrorCode _setDailyValues(sqlite3_stmt *stmt, struct SHDaily *daily) {
 	else {
 		_setActiveDaysDefault(&daily->activeDays);
 	}
+	daily->stepCountMax = sqlite3_column_int(stmt, 15);
 	daily->difficulty = daily->difficulty > 0 ? daily->difficulty : 3;
 	daily->urgency = daily->urgency > 0 ? daily->urgency : 3;
-	daily->stepCountMax = sqlite3_column_int(stmt, 21);
-	daily->stepCount = sqlite3_column_int(stmt, 22);
-	if((status = SH_sqlite3_column_double_ptr(stmt, 23, &daily->stepLastActivationDateTime)) != SH_NO_ERROR) {
-		goto cleanup;
-	}
-	daily->tzOffsetStepLastActivation = sqlite3_column_int(stmt, 23);
 	return SH_NO_ERROR;
 	cleanup:
 		free(daily->note);
-		free(daily->lastActivationDateTime);
 		free(daily->activeToDateTime);
 		free(daily->activeFromDateTime);
 		free(daily->base.name);
@@ -184,30 +160,42 @@ static SHErrorCode _setDailyValues(sqlite3_stmt *stmt, struct SHDaily *daily) {
 static SHErrorCode _setTableDailyValues(sqlite3_stmt *stmt, struct SHTableDaily *tableDaily) {
 	SHErrorCode status = SH_NO_ERROR;
 	tableDaily->pk = sqlite3_column_int(stmt, 0);
-	if((status = SH_sqlite3_copy_column_text(stmt, 1, &tableDaily->name)) != SH_NO_ERROR) { goto cleanup; }
-	tableDaily->streakLength = sqlite3_column_int(stmt, 2);
-	tableDaily->maxStreak = sqlite3_column_int(stmt, 3);
-	tableDaily->dailyLvl = sqlite3_column_int(stmt, 4);
-	tableDaily->dailyXp = sqlite3_column_int(stmt, 5);
+	tableDaily->streakLength = sqlite3_column_int(stmt, 1);
+	tableDaily->maxStreak = sqlite3_column_int(stmt, 2);
+	tableDaily->dailyXp = sqlite3_column_int(stmt, 3);
+	
+	if(!(tableDaily->stepLastActivationDateTime = malloc(sizeof(struct SHDatetime)))) goto cleanup;
 	if(!(tableDaily->savedUseDate = malloc(sizeof(struct SHDatetime)))) goto cleanup;
 	if(!(tableDaily->nextDueDate = malloc(sizeof(struct SHDatetime)))) goto cleanup;
-	if(!(tableDaily->stepLastActivationDateTime = malloc(sizeof(struct SHDatetime)))) goto cleanup;
-	if((status = SH_sqlite3_column_SHDatetime(stmt, 6, tableDaily->savedUseDate, 0)) != SH_NO_ERROR) {
-		goto cleanup;
-	}
-	if((status = SH_sqlite3_column_SHDatetime(stmt, 7, tableDaily->nextDueDate, 0)) != SH_NO_ERROR) {
-		goto cleanup;
-	}
-	tableDaily->dueStatus = sqlite3_column_int(stmt, 8);
-	tableDaily->stepCountMax = sqlite3_column_int(stmt, 9);
-	tableDaily->stepCount = sqlite3_column_int(stmt, 10);
-	int32_t tzOffsetStepLastActivation = sqlite3_column_int(stmt, 12); //skip a number on purpose
-	if((status = SH_sqlite3_column_SHDatetime(stmt, 11, tableDaily->stepLastActivationDateTime,
+	if(!(tableDaily->fullLastActivationDateTime = malloc(sizeof(struct SHDatetime)))) goto cleanup;
+	
+	int32_t tzOffsetStepLastActivation = sqlite3_column_int(stmt, 5); //skip a number on purpose
+	if((status = SH_sqlite3_column_SHDatetime(stmt, 4, tableDaily->stepLastActivationDateTime,
 		tzOffsetStepLastActivation))
-		!= SH_NO_ERROR)
+			!= SH_NO_ERROR)
 	{
 		goto cleanup;
 	}
+	
+	int32_t tzOffsetFullLastActivation = sqlite3_column_int(stmt, 7); //skip a number on purpose
+	if((status = SH_sqlite3_column_SHDatetime(stmt, 6, tableDaily->fullLastActivationDateTime,
+		tzOffsetFullLastActivation))
+			!= SH_NO_ERROR)
+	{
+		goto cleanup;
+	}
+	tableDaily->stepCount = sqlite3_column_int(stmt, 8);
+	if((status = SH_sqlite3_column_SHDatetime(stmt, 9, tableDaily->savedUseDate, 0)) != SH_NO_ERROR) {
+		goto cleanup;
+	}
+	tableDaily->dailyLvl = sqlite3_column_int(stmt, 10);
+	if((status = SH_sqlite3_copy_column_text(stmt, 11, &tableDaily->name)) != SH_NO_ERROR) { goto cleanup; }
+	
+	if((status = SH_sqlite3_column_SHDatetime(stmt, 12, tableDaily->nextDueDate, 0)) != SH_NO_ERROR) {
+		goto cleanup;
+	}
+	tableDaily->dueStatus = sqlite3_column_int(stmt, 13);
+	tableDaily->stepCountMax = sqlite3_column_int(stmt, 14);
 	goto fnExit;
 	cleanup:
 		SH_cleanupTableDaily(tableDaily);
@@ -267,17 +255,22 @@ static void *_tableDailyFetchGenFn(sqlite3_stmt *stmt, bool *hasNext) {
 
 SHErrorCode SH_fetchTableDailies(struct SHModelsQueueStore *queueStoreItem)
 {
-	if(!queueStoreItem) return SH_ILLEGAL_INPUTS;
+	if(!queueStoreItem || !queueStoreItem->dateProvider || !queueStoreItem->dateProvider->getDate) {
+		return SH_ILLEGAL_INPUTS;
+	}
+	
 	SHErrorCode status = SH_NO_ERROR;
 	int32_t sqlStatus = SQLITE_OK;
 	sqlite3_stmt *stmt = NULL;
 	const struct SHDatetimeProvider *dateProvider = queueStoreItem->dateProvider;
+	struct SHDatetime *dt = dateProvider->getDate();
 	char errMsg[70];
 	struct SHPipeline *pipeline = NULL;
 	struct SHIterableWrapper *iterable = NULL;
 	if((status = SH_buildStatement_fetchAllTableDailies(&stmt, queueStoreItem->db)) != SH_NO_ERROR) { goto sqlErr; }
 	int32_t localTzOffset = dateProvider && dateProvider->getLocalTzOffset ? dateProvider->getLocalTzOffset() : 0;
 	if((sqlStatus = sqlite3_bind_int(stmt, 1, localTzOffset)) != SQLITE_OK) { goto shErr; }
+	if((sqlStatus = SH_sqlite3_bind_datetime(stmt, 2, dt)) != SQLITE_OK) { goto shErr; }
 	
 	pipeline = SH_pipeline_useGrouping(
 		SH_pipeline_init(stmt,
@@ -306,5 +299,6 @@ SHErrorCode SH_fetchTableDailies(struct SHModelsQueueStore *queueStoreItem)
 		SH_pipeline_cleanup(pipeline);
 		sqlite3_finalize(stmt);
 	fnExit:
+		SH_freeSHDatetime(dt);
 		return status;
 }

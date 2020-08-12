@@ -9,7 +9,6 @@
 #include "SHDaily_dbFuncs.h"
 #include "SHSqlite3Extensions.h"
 #include "SHConfigAccessor.h"
-#include "SHHeroMonsterDbHelper.h"
 #include "SHDatetime_struct.h"
 #include "SHDueDateWeeklyContext_struct.h"
 #include "SHWeekIntervalPointsFuncs.h"
@@ -68,7 +67,7 @@ static SHErrorCode _setupDueDateWeeklyContext(sqlite3_context* context, struct S
 
 
 
-void SHDB_nextDueDate(sqlite3_context* context, int argc, sqlite3_value** values) {
+void SH_db_nextDueDate(sqlite3_context* context, int argc, sqlite3_value** values) {
 	(void)argc;
 	SHErrorCode status = SH_NO_ERROR;
 	double nextDueDateTimestamp = 0;
@@ -143,7 +142,7 @@ static SHErrorCode _isDateActive(sqlite3_context* context, sqlite3_value** value
 }
 
 
-void SHDB_isDateActive(sqlite3_context* context, int argc, sqlite3_value** values) {
+void SH_db_isDateActive(sqlite3_context* context, int argc, sqlite3_value** values) {
 	(void)argc;
 	SHErrorCode status = SH_NO_ERROR;
 	bool ans = false;
@@ -190,7 +189,7 @@ static SHErrorCode _missedDays(sqlite3_context* context, sqlite3_value** values,
 }
 
 
-void SHDB_missedDays(sqlite3_context* context, int argc, sqlite3_value** values) {
+void SH_db_missedDays(sqlite3_context* context, int argc, sqlite3_value** values) {
 	(void)argc;
 	int64_t missedDays = SH_NOT_FOUND;
 	SHErrorCode status = SH_NO_ERROR;
@@ -205,7 +204,7 @@ void SHDB_missedDays(sqlite3_context* context, int argc, sqlite3_value** values)
 }
 
 
-void SHDB_penalty(sqlite3_context* context,int argc, sqlite3_value** values) {
+void SH_db_penalty(sqlite3_context* context,int argc, sqlite3_value** values) {
 	(void)argc;
 	int64_t missedDays = SH_NOT_FOUND;
 	SHErrorCode status = SH_NO_ERROR;
@@ -215,8 +214,8 @@ void SHDB_penalty(sqlite3_context* context,int argc, sqlite3_value** values) {
 	int32_t difficulty = sqlite3_value_int(values[5]);
 	double monsterAtkMod = sqlite3_value_double(values[6]);
 	double heroDefMod = sqlite3_value_double(values[7]);
-	double result = (((urgency * difficulty) + 1) * monsterAtkMod) - heroDefMod ;
-	sqlite3_result_int64(context, (int32_t)result);
+	double result = ((((urgency * difficulty) + 1) * monsterAtkMod) - heroDefMod) * missedDays ;
+	sqlite3_result_int64(context, (int64_t)result);
 	return;
 	fnErr:
 		sprintf(msg, "error while calculating penalty\nsh_error_code: %d\n", status);
@@ -270,7 +269,7 @@ SHErrorCode _selectSavedUseDate(sqlite3_context* context, sqlite3_value** values
 }
 
 
-void SHDB_selectSavedUseDate(sqlite3_context* context, int argc, sqlite3_value** values) {
+void SH_db_selectSavedUseDate(sqlite3_context* context, int argc, sqlite3_value** values) {
 	(void)argc;
 	SHErrorCode status = SH_NO_ERROR;
 	double selectedTimestamp = 0;
@@ -282,7 +281,7 @@ void SHDB_selectSavedUseDate(sqlite3_context* context, int argc, sqlite3_value**
 }
 
 
-void SHDB_getDueStatus(sqlite3_context* context, int argc, sqlite3_value** values) {
+void SH_db_getDueStatus(sqlite3_context* context, int argc, sqlite3_value** values) {
 	(void)argc;
 	bool isTodayActive = false;
 	SHErrorCode status = SH_NO_ERROR;

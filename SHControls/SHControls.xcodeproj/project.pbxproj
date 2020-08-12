@@ -45,7 +45,6 @@
 		27FC94612436D7C400408167 /* SHFrontEndConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC94352436D7C300408167 /* SHFrontEndConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27FC94622436D7C400408167 /* SHTaskCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC94362436D7C300408167 /* SHTaskCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27FC94632436D7C400408167 /* SHStatusBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC94372436D7C300408167 /* SHStatusBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27FC94642436D7C400408167 /* SHStreakResetterView.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC94382436D7C300408167 /* SHStreakResetterView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27FC94652436D7C400408167 /* SHImportanceSliderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC94392436D7C300408167 /* SHImportanceSliderView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27FC94662436D7C400408167 /* SHRateSetterView.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC943A2436D7C300408167 /* SHRateSetterView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27FC94672436D7C400408167 /* SHTransparentModalViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC943B2436D7C300408167 /* SHTransparentModalViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -54,7 +53,6 @@
 		27FC946A2436D7C400408167 /* SHSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FC943E2436D7C400408167 /* SHSwitch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27FC94792436D7CC00408167 /* SHRateSetterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FC946C2436D7CC00408167 /* SHRateSetterView.m */; };
 		27FC947A2436D7CC00408167 /* SHImportanceSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FC946D2436D7CC00408167 /* SHImportanceSliderView.m */; };
-		27FC947B2436D7CC00408167 /* SHStreakResetterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FC946E2436D7CC00408167 /* SHStreakResetterView.m */; };
 		27FC947C2436D7CC00408167 /* SHListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FC946F2436D7CC00408167 /* SHListItemCell.m */; };
 		27FC947D2436D7CC00408167 /* SHTransparentModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FC94702436D7CC00408167 /* SHTransparentModalViewController.m */; };
 		27FC947E2436D7CC00408167 /* SHSubtasksTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FC94712436D7CC00408167 /* SHSubtasksTableView.m */; };
@@ -70,7 +68,6 @@
 		27FC948C2436D7D700408167 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27FC94892436D7D600408167 /* Media.xcassets */; };
 		27FC94962436D7DE00408167 /* SHListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27FC948E2436D7DE00408167 /* SHListItemCell.xib */; };
 		27FC94972436D7DE00408167 /* SHSubtasksTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27FC948F2436D7DE00408167 /* SHSubtasksTableView.xib */; };
-		27FC94982436D7DE00408167 /* SHStreakResetterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27FC94902436D7DE00408167 /* SHStreakResetterView.xib */; };
 		27FC94992436D7DE00408167 /* SHAddItemsFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27FC94912436D7DE00408167 /* SHAddItemsFooter.xib */; };
 		27FC949A2436D7DE00408167 /* SHRateSetterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27FC94922436D7DE00408167 /* SHRateSetterView.xib */; };
 		27FC949B2436D7DE00408167 /* SHNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27FC94932436D7DE00408167 /* SHNoteView.xib */; };
@@ -145,7 +142,6 @@
 		27FC94352436D7C300408167 /* SHFrontEndConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHFrontEndConstants.h; sourceTree = "<group>"; };
 		27FC94362436D7C300408167 /* SHTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHTaskCell.h; sourceTree = "<group>"; };
 		27FC94372436D7C300408167 /* SHStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHStatusBar.h; sourceTree = "<group>"; };
-		27FC94382436D7C300408167 /* SHStreakResetterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHStreakResetterView.h; sourceTree = "<group>"; };
 		27FC94392436D7C300408167 /* SHImportanceSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHImportanceSliderView.h; sourceTree = "<group>"; };
 		27FC943A2436D7C300408167 /* SHRateSetterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHRateSetterView.h; sourceTree = "<group>"; };
 		27FC943B2436D7C300408167 /* SHTransparentModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHTransparentModalViewController.h; sourceTree = "<group>"; };
@@ -154,7 +150,6 @@
 		27FC943E2436D7C400408167 /* SHSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSwitch.h; sourceTree = "<group>"; };
 		27FC946C2436D7CC00408167 /* SHRateSetterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHRateSetterView.m; sourceTree = "<group>"; };
 		27FC946D2436D7CC00408167 /* SHImportanceSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHImportanceSliderView.m; sourceTree = "<group>"; };
-		27FC946E2436D7CC00408167 /* SHStreakResetterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHStreakResetterView.m; sourceTree = "<group>"; };
 		27FC946F2436D7CC00408167 /* SHListItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHListItemCell.m; sourceTree = "<group>"; };
 		27FC94702436D7CC00408167 /* SHTransparentModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHTransparentModalViewController.m; sourceTree = "<group>"; };
 		27FC94712436D7CC00408167 /* SHSubtasksTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSubtasksTableView.m; sourceTree = "<group>"; };
@@ -170,7 +165,6 @@
 		27FC94892436D7D600408167 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		27FC948E2436D7DE00408167 /* SHListItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHListItemCell.xib; sourceTree = "<group>"; };
 		27FC948F2436D7DE00408167 /* SHSubtasksTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSubtasksTableView.xib; sourceTree = "<group>"; };
-		27FC94902436D7DE00408167 /* SHStreakResetterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHStreakResetterView.xib; sourceTree = "<group>"; };
 		27FC94912436D7DE00408167 /* SHAddItemsFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHAddItemsFooter.xib; sourceTree = "<group>"; };
 		27FC94922436D7DE00408167 /* SHRateSetterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHRateSetterView.xib; sourceTree = "<group>"; };
 		27FC94932436D7DE00408167 /* SHNoteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHNoteView.xib; sourceTree = "<group>"; };
@@ -245,9 +239,6 @@
 				27FC94752436D7CC00408167 /* SHScrollAnimator.m */,
 				27FC94372436D7C300408167 /* SHStatusBar.h */,
 				27FC94772436D7CC00408167 /* SHStatusBar.m */,
-				27FC94382436D7C300408167 /* SHStreakResetterView.h */,
-				27FC946E2436D7CC00408167 /* SHStreakResetterView.m */,
-				27FC94902436D7DE00408167 /* SHStreakResetterView.xib */,
 				27FC943D2436D7C300408167 /* SHSubtasksTableView.h */,
 				27FC94712436D7CC00408167 /* SHSubtasksTableView.m */,
 				27FC948F2436D7DE00408167 /* SHSubtasksTableView.xib */,
@@ -375,7 +366,6 @@
 				27FC94562436D7C400408167 /* SHItemFlexibleListDelegateProtocol.h in Headers */,
 				27FC94692436D7C400408167 /* SHSubtasksTableView.h in Headers */,
 				27FC945A2436D7C400408167 /* SHSwitchProtocol.h in Headers */,
-				27FC94642436D7C400408167 /* SHStreakResetterView.h in Headers */,
 				27FC944C2436D7C400408167 /* SHViewController.h in Headers */,
 				27FC945E2436D7C400408167 /* SHScrollAnimator.h in Headers */,
 				27FC94402436D7C400408167 /* UIViewController+Helper.h in Headers */,
@@ -489,7 +479,6 @@
 				27FC94A52436D83300408167 /* SHControls.base.xcconfig in Resources */,
 				27FC94992436D7DE00408167 /* SHAddItemsFooter.xib in Resources */,
 				27FC949A2436D7DE00408167 /* SHRateSetterView.xib in Resources */,
-				27FC94982436D7DE00408167 /* SHStreakResetterView.xib in Resources */,
 				27FC94442436D7C400408167 /* SHSpinPicker.xib in Resources */,
 				27FC94A42436D83300408167 /* SHControls.prebuild.sh in Resources */,
 				27FC94432436D7C400408167 /* SHItemFlexibleListView.xib in Resources */,
@@ -555,7 +544,6 @@
 				27FC94512436D7C400408167 /* SHViewControllerAppearanceProxy.m in Sources */,
 				27FC94502436D7C400408167 /* SHSpinPicker.m in Sources */,
 				27FC94852436D7CC00408167 /* SHTaskCell.m in Sources */,
-				27FC947B2436D7CC00408167 /* SHStreakResetterView.m in Sources */,
 				27FC94422436D7C400408167 /* UIViewController+Helper.m in Sources */,
 				27FC947A2436D7CC00408167 /* SHImportanceSliderView.m in Sources */,
 				27FC94552436D7C400408167 /* SHItemFlexibleListView.m in Sources */,

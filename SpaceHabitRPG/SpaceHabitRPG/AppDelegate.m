@@ -30,6 +30,7 @@
 @property (assign, nonatomic) struct SHSerialQueue *dbQueue;
 @property (assign, nonatomic) const struct SHConfigAccessor *config;
 @property (assign, nonatomic) const struct SHDatetimeProvider *dateProvider;
+@property (assign, nonatomic) const struct SHResourceProvider *resourceProvider;
 @end
 
 @implementation AppDelegate
@@ -59,14 +60,15 @@ void printWorkingDir(){
 
 
 static struct SHModelsQueueStore* _setupQueueStoreItem(const struct SHConfigAccessor *config,
-	const struct SHDatetimeProvider *dateProvider)
+	const struct SHDatetimeProvider *dateProvider, const struct SHResourceProvider *resourceProvider)
 {
 	struct SHModelsQueueStore *item = malloc(sizeof(struct SHModelsQueueStore));
 	if(!item) return NULL;
 	const char *dbFile = NULL;
 	*item = (struct SHModelsQueueStore){
 		.config = config,
-		.dateProvider = dateProvider
+		.dateProvider = dateProvider,
+		.resourceProvider = resourceProvider
 	};
 	NSArray<NSString*> *procArgs = NSProcessInfo.processInfo.arguments;
 	if(procArgs.count > 1) {
@@ -109,7 +111,8 @@ static SHErrorCode _addFunctions(void* args, struct SHQueueStore *store) {
 	(void)launchOptions;
 	self->_config = &SH_APP_CONFIG_FUNCS;
 	self->_dateProvider = &SH_APP_DATETIME_PROVIDER_FUNCS;
-	self.dbQueue = SH_serialQueue_init(_setupQueueStoreItem(self->_config, self->_dateProvider),
+	self->_resourceProvider = &SH_RESOURCE_FN_DEFAULTS;
+	self.dbQueue = SH_serialQueue_init(_setupQueueStoreItem(self->_config, self->_dateProvider, self->_resourceProvider),
 		 (void (*)(void*))SH_freeQueueStoreItem);
 	if(!self.dbQueue) return NO;
 	SHErrorCode status = SH_NO_ERROR;
@@ -127,6 +130,7 @@ static SHErrorCode _addFunctions(void* args, struct SHQueueStore *store) {
 	if((status = SH_serialQueue_addOp(self.dbQueue, _addFunctions, NULL, NULL)) != SH_NO_ERROR) {
 		return NO;
 	}
+
 	#warning update without core data
 //	SHDailyProcessor *processor = [[SHDailyProcessor alloc] init];
 //

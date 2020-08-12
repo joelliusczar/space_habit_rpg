@@ -25,5 +25,6 @@
 @property (readonly, nonatomic) const struct SHConfigAccessor *config;
 @property (strong, nonatomic) SHResourceUtility *resourceUtil;
 @property (readonly, nonatomic) const struct SHDatetimeProvider *dateProvider;
+@property (readonly, nonatomic) const struct SHResourceProvider *resourceProvider;
 @end
 

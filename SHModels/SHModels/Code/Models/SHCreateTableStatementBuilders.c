@@ -11,32 +11,23 @@
 
 SHErrorCode SH_buildCreateDailyTableStmt(sqlite3_stmt **stmt, sqlite3 *db) {
 	int32_t sqlStatus = SQLITE_OK;
-	char *sql = "CREATE TABLE IF NOT EXISTS Dailies "
-		"(pk INTEGER PRIMARY KEY ASC, " //I would prefer this to be DESC, but that trips on a sqlite3 bug
-		"name TEXT, "
-		"lastUpdated REAL NOT NULL, "
-		"activeFromDateTime REAL, "
-		"activeToDateTime REAL, "
-		"lastActivationDateTime REAL, "
-		"maxStreak INTEGER, "
-		"activeFromHasPriority INTEGER, "
-		"isEnabled INTEGER, "
-		"lastUpdateHasPriority INTEGER, "
-		"note TEXT, "
-		"dailyLvl INTEGER, "
-		"dailyXp INTEGER, "
-		"customUseOrder INTEGER, "
-		"dayStartTime INTEGER, "
-		"difficulty INTEGER, "
-		"urgency INTEGER, "
-		"streakLength INTEGER, "
-		"tzOffsetLastActivationDateTime INTEGER, "
-		"tzOffsetLastUpdateDateTime INTEGER, "
-		"activeDaysBlob BLOB, "
-		"stepCountMax INTEGER, "
-		"stepCount INTEGER "
-		"stepLastActivationDateTime REAL, "
-		"tzOffSetstepLastActivation INTEGER, "
+	char *sql = "CREATE TABLE IF NOT EXISTS [Dailies] "
+		"([pk] INTEGER PRIMARY KEY ASC, " //I would prefer this to be DESC, but that trips on a sqlite3 bug
+		"[name] TEXT, "
+		"[lastUpdated] REAL NOT NULL, "
+		"[activeFromDateTime] REAL, "
+		"[activeToDateTime] REAL, "
+		"[activeFromHasPriority] INTEGER, "
+		"[isEnabled] INTEGER, "
+		"[lastUpdateHasPriority] INTEGER, "
+		"[note] TEXT, "
+		"[customUseOrder] INTEGER, "
+		"[dayStartTime] INTEGER, "
+		"[difficulty] INTEGER, "
+		"[urgency] INTEGER, "
+		"[tzOffsetLastUpdateDateTime] INTEGER, "
+		"[activeDaysBlob] BLOB, "
+		"[stepCountMax] INTEGER "
 		"); ";
 	sqlStatus = sqlite3_prepare_v2(db, sql, -1, stmt, 0);
 	if(sqlStatus != SQLITE_OK) {
@@ -51,13 +42,18 @@ SHErrorCode SH_buildCreateDailyTableStmt(sqlite3_stmt **stmt, sqlite3 *db) {
 
 SHErrorCode SH_buildCreateDailyActivationTableStmt(sqlite3_stmt **stmt, sqlite3 *db) {
 	int32_t sqlStatus = SQLITE_OK;
-	char *sql = "CREATE TABLE IF NOT EXISTS DailyActivations "
-		"(pk INTEGER PRIMARY KEY ASC, "
-		"stepActivationDateTime REAL NOT NULL, "
-		"tzOffsetStep INTEGER, "
-		"fullActivationDateTime REAL NOT NULL, "
-		"tzOffsetFull INTGER "
-		"FOREIGN KEY(dailyPk) REFERENCES Dailies(pk) ON DELETE CASCADE"
+	char *sql = "CREATE TABLE IF NOT EXISTS [DailyActivations] "
+		"([pk] INTEGER PRIMARY KEY ASC, "
+		"[stepActivationDateTime] REAL NOT NULL, "
+		"[tzOffsetStep] INTEGER, "
+		"[fullActivationDateTime] REAL NOT NULL, "
+		"[tzOffsetFull] INTGER, "
+		"[streakLength] INTEGER, "
+		"[stepCount] INTEGER, "
+		"[dailyXp] INTEGER, " //daily lvl will just be xp/100
+		"[attackCharge] INTEGER, "
+		"[dailyPk] INTEGER "
+		"FOREIGN KEY([dailyPk]) REFERENCES [Dailies]([pk]) ON DELETE CASCADE"
 		"); ";
 	sqlStatus = sqlite3_prepare_v2(db, sql, -1, stmt, 0);
 	if(sqlStatus != SQLITE_OK) {
