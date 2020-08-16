@@ -9,9 +9,9 @@
 #include "SHPassiveEventProcessor.h"
 #include "SHSqlite3Extensions.h"
 
-SHErrorCode _buildPenaltySumStatementstruct(SHModelsQueueStore *store, sqlite3_stmt **stmt) {
+SHErrorCode _buildPenaltySumStatementstruct(struct SHModelsQueueStore *store, sqlite3_stmt **stmt) {
 	SHErrorCode status = SH_NO_ERROR;
-	char[] sql = "BEGIN;"
+	char sql[] = "BEGIN;"
 		"WITH [activations] AS (SELECT DISTINCT "
 		"[dailyPk], "
 		"max([fullActivationDateTime]) OVER [activationWin] AS [fullActivationDateTime], "
@@ -41,8 +41,8 @@ SHErrorCode _buildPenaltySumStatementstruct(SHModelsQueueStore *store, sqlite3_s
 		"LEFT JOIN [calculated] [da] ON [da].[dailyPk] = [d].[pk]"
 		"WHERE [d].[isEnabled] = 1 AND ?2 "
 			"BETWEEN [d].[activeFromDateTime] AND [d].[activeToDateTime]; "
-		"END; "
-	if((status = SH_sqlite3_prepare(store->db, sql, -1, &stmt, 0)) != SH_NO_ERROR) { goto fnExit; }
+		"END; ";
+	if((status = SH_sqlite3_prepare(store->db, sql, -1, stmt, 0)) != SH_NO_ERROR) { goto fnExit; }
 	
 	fnExit:
 		return status;

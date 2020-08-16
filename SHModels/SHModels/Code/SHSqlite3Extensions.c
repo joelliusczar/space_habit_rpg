@@ -15,14 +15,14 @@
 #include <math.h>
 
 
-SHErrorCode SH_sqlite3_prepare(sqlite3 *db, const char *zSql, int nByte, sqlite3_stmt **ppStmt, const char **pzTail) {
-	if(!db || !zSql) return SH_ILLEGAL_INPUTS;
+SHErrorCode SH_sqlite3_prepare(sqlite3 *db, const char *zSql, int32_t nByte, sqlite3_stmt **ppStmt, const char **pzTail) {
+	if(!db || !zSql || !ppStmt) return SH_ILLEGAL_INPUTS;
 	SHErrorCode status = SH_NO_ERROR;
 	int32_t sqlStatus = SQLITE_OK;
 	const char *sqlMsg = NULL;
 	char errMsg[80];
 	if(!*ppStmt) {
-		if((sqlStatus = sqlite3_prepare_v2(db, zSql, -1, ppStmt, 0)) != SQLITE_OK) { goto sqlErr; }
+		if((sqlStatus = sqlite3_prepare_v2(db, zSql, nByte, ppStmt, pzTail)) != SQLITE_OK) { goto sqlErr; }
 	}
 	else {
 		if((sqlStatus = sqlite3_reset(*ppStmt)) != SQLITE_OK) { goto sqlErr; }
