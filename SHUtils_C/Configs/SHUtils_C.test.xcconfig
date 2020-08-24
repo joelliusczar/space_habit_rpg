@@ -9,7 +9,7 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-#include "SHUtils_C.debug.xcconfig"
+#include "SHUtils_C.base.xcconfig"
 
 CONFIGURATION_BUILD_DIR = $(SHUTILS_C_H_DIR)
 
@@ -17,3 +17,12 @@ BUILT_PRODUCTS_DIR = $(SHUTILS_C_H_DIR)
 
 OTHER_CFLAGS = $(inherited) $(INTTYPES_MODMAP_FLAG) $(SHUTILS_C_MODMAP_FLAG)
 
+INFOPLIST_FILE = Tests/Info.plist
+
+LD_RUNPATH_SEARCH_PATHS = $(inherited) @executable_path/Frameworks @loader_path/Frameworks;
+
+MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+MTL_FAST_MATH = YES;
+PRODUCT_BUNDLE_IDENTIFIER = JoelliusCzar.Tests;
+TARGETED_DEVICE_FAMILY = "1,2";
+VALIDATE_PRODUCT[config=Release] = YES;

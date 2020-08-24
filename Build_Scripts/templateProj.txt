@@ -4,54 +4,49 @@
 	classes = {
 	};
 	objectVersion = 51;
-	objects = { 
-		/* Begin PBXBuildFile section */
-		~fullObjectList~
-		/* End PBXBuildFile section */
+	objects = {
 
-		/* Begin PBXContainerItemProxy section */
-		~containerItemProxy~  = {
+/* Begin PBXBuildFile section */
+		~fullObjectList~
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		~targetProxyDef~ /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = ~rootObject~ ;
+			containerPortal = ~rootObject~ /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = ~target~;
+			remoteGlobalIDString = ~targetDef~;
 			remoteInfo = ~projName~;
 		};
-		/* End PBXContainerItemProxy section */
+/* End PBXContainerItemProxy section */
 
-		~fileRefs~
+/* Begin PBXFileReference section */
+		~fullFileDefList~
+/* End PBXFileReference section */
 
-		/* Begin PBXFrameworksBuildPhase section */
-		~frameworksEmpty~ = {
+/* Begin PBXFrameworksBuildPhase section */
+		~targetFrameworkPhaseDef~ /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		~Frameworks~ /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				~outputDefPtr~,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		/* End PBXFrameworksBuildPhase section */
+/* End PBXFrameworksBuildPhase section */
 
-		/* Begin PBXGroup section */
+/* Begin PBXGroup section */
 		~codeGroup~ /* Code */ = {
 			isa = PBXGroup;
 			children = (
-				~CodeGroupChildren~
+				~fullCodeFileList~
 			);
 			path = Code;
 			sourceTree = "<group>";
 		};
-		~resourceGroup~ /* Resources */ = {
+		~resourcesGroup~ /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				~infoPlistDef~ /* Info.plist */,
+				~infoPlist~ /* Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -60,11 +55,10 @@
 			isa = PBXGroup;
 			children = (
 				~codeGroup~ /* Code */,
-				~resourceGroup~ /* Resources */,
-				~scriptGroup~ /* Scripts */,
-				~configGroup~ /* Configs */,
-				~sendGroup~ /* Send */,
-				~productsGroup~  /* Products */,
+				~resourcesGroup~ /* Resources */,
+				~scriptsGroup~ /* Scripts */,
+				~configsGroup~ /* Configs */,
+				~productsGroup~ /* Products */,
 				~frameworksGroup~ /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -72,7 +66,7 @@
 		~productsGroup~ /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				~outputDef~,
+				~outputFile~,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -80,12 +74,12 @@
 		~frameworksGroup~ /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				~frameworksIdList~
+				~frameworksIdList~,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		~scriptGroup~ = {
+		~scriptsGroup~ /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
 				~scriptIdList~
@@ -93,26 +87,18 @@
 			path = Scripts;
 			sourceTree = "<group>";
 		};
-		~configGroup~ /* Configs */ = {
+		~configsGroup~ /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				~configIdList~
+				~baseConfig~ /* SHUtils_C.base.xcconfig */,
 			);
 			path = Configs;
 			sourceTree = "<group>";
 		};
-		~sendGroup~ /* Send */ = {
-			isa = PBXGroup;
-			children = (
-				~sendGroupIdList~
-			);
-			path = Send;
-			sourceTree = "<group>";
-		};
-		/* End PBXGroup section */
+/* End PBXGroup section */
 
-		/* Begin PBXHeadersBuildPhase section */
-		~headersBuildPhase~ = {
+/* Begin PBXHeadersBuildPhase section */
+		~headerPhaseDef~ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -120,18 +106,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		/* End PBXHeadersBuildPhase section */
+/* End PBXHeadersBuildPhase section */
 
-		/* Begin PBXNativeTarget section */
-		~target~ = {
+/* Begin PBXNativeTarget section */
+		~targetDef~ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 271692042089758B0059A58E /* Build configuration list for PBXNativeTarget */;
+			buildConfigurationList = ~targetConfigList~;
 			buildPhases = (
-				~shellScriptPhase1~ /* ShellScript */,
-				271691FE2089758B0059A58E /* Headers */,
-				~sourcesPhase~ /* Sources */,
-				271691FD2089758B0059A58E /* Frameworks */,
-				~shellScriptPhase2~ /* ShellScript */,
+				~shellScriptPhase1Def~ /* ShellScript */,
+				~headerPhaseDef~ /* Headers */,
+				~phaseSources~ /* Sources */,
+				~targetFrameworkPhaseDef~ /* Frameworks */,
+				~shellScriptPhase2Def~ /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -139,25 +125,25 @@
 			);
 			name = ~projName~;
 			productName = ~projName~;
-			productReference = ~outputDef~ ;
+			productReference = ~outputFile~ ;
 			productType = "com.apple.product-type.library.static";
 		};
-		/* End PBXNativeTarget section */
+/* End PBXNativeTarget section */
 
-		/* Begin PBXProject section */
-		~rootObject~  /* Project object */ = {
+/* Begin PBXProject section */
+		~rootObject~ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "~developerName~";
 				TargetAttributes = {
-					~target~ = {
+					~targetDef~ = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 271691FB2089758B0059A58E /* Build configuration list for PBXProject "SHUtils_C" */;
+			buildConfigurationList = ~projectConfigList~;
 			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -165,28 +151,17 @@
 				en,
 			);
 			mainGroup = ~mainGroup~;
-			productRefGroup = ~productsGroup~;
+			productRefGroup = ~productsGroup~ /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				~outputDef~,
+				~targetDef~ ,
 			);
 		};
-		/* End PBXProject section */
-	};
+/* End PBXProject section */
 
-	/* Begin PBXResourcesBuildPhase section */
-		~resourcesBuildPhase~ /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-	/* End PBXResourcesBuildPhase section */
-
-	/* Begin PBXShellScriptBuildPhase section */
-	~shellScriptPhase1~ = {
+/* Begin PBXShellScriptBuildPhase section */
+		~shellScriptPhase1Def~ /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -204,7 +179,7 @@
 			shellScript = "~shellScriptPhase1Content~";
 			showEnvVarsInLog = 0;
 		};
-		~shellScriptPhase2~ /* ShellScript */ = {
+		~shellScriptPhase2Def~ /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -218,10 +193,10 @@
 			shellScript = "~shellScriptPhase2Content~";
 			showEnvVarsInLog = 0;
 		};
-	/* End PBXShellScriptBuildPhase section */
+/* End PBXShellScriptBuildPhase section */
 
-	/* Begin PBXSourcesBuildPhase section */
-	~sourcesPhase~ = {
+/* Begin PBXSourcesBuildPhase section */
+		~phaseSources~ /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -229,80 +204,66 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-	/* End PBXSourcesBuildPhase section */
+/* End PBXSourcesBuildPhase section */
 
-	/* Begin XCBuildConfiguration section */
-	~debugConfigSection~ /* Debug */ = {
+/* Begin PBXTargetDependency section */
+		~targetDep1~ /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ~targetDef~;
+			targetProxy = ~targetProxyDef~ /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		~projectDebugConfigSection~ /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ~debugConfigDef~ ;
 			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				MTL_ENABLE_DEBUG_INFO = YES;
 			};
 			name = Debug;
 		};
-		~releaseConfigSection~ = {
+		~projectReleaseConfigSection~ /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ~baseConfigDef~;
+			baseConfigurationReference = ~baseConfig~;
 			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				MTL_ENABLE_DEBUG_INFO = NO;
 			};
 			name = Release;
 		};
-		~debugConfigSection2~ /* Debug */ = {
+		~targetDebugConfigSection~ /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ~baseConfig~;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = XK3RJ8E2L2;
-				OTHER_CFLAGS = (
-					"-Wall",
-					"-Wextra",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-	/* End XCBuildConfiguration section */
+		~targetReleaseConfigSection~ /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ~baseConfig~ ;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
 
-	rootObject = ~rootObject~ ;
+/* Begin XCConfigurationList section */
+		~projectConfigList~  = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				~projectDebugConfigSection~ /* Debug */,
+				~projectReleaseConfigSection~ /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		~targetConfigList~ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				~targetDebugConfigSection~ /* Debug */,
+				~targetReleaseConfigSection~ /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ~rootObject~ /* Project object */;
 }
