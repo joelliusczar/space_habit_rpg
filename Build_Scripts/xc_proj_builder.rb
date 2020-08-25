@@ -9,7 +9,7 @@ OBJECT_DEF = '~object~  = {isa = PBXBuildFile; fileRef = ~fileRef~ ; settings = 
 SOURCE_DEF = '~sourceRef~  = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ~sourceCodePath~; sourceTree = "<group>"; };'
 INFO_PLIST_DEF = '~infoPlist~  = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };'
 OUTPUT_DEF = '~buidOutput~  = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = SHUtils_C; sourceTree = BUILT_PRODUCTS_DIR; };'
-PRESCRIPT_DEF = '~buildScript~ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ~scriptPath~; sourceTree = "<group>"; };'
+SCRIPT_DEF = '~buildScript~ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ~scriptPath~; sourceTree = "<group>"; };'
 MODULEMAP_DEF = '~moduleMap~  = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };'
 CONFIG_DEF = '~config~  = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ~configPath~; sourceTree = "<group>"; };'
 
@@ -19,6 +19,12 @@ CONFIG_DEF = '~config~  = {isa = PBXFileReference; lastKnownFileType = text.xcco
 		@groupKeys = {}
 		@headerList = []
 		@sourceList = []
+		@productsList = []
+		@resourcesList = []
+		@frameworksList = []
+		@scriptsList = []
+		@configsList = []
+		@moduleMapList = []
 		@headerFromPaths = headerFromPaths
 		@sourceFromPaths = sourceFromPaths
 		@accountName = (/darwin/ =~ RUBY_PLATFORM) != nil ? `id -un` : 'missing_name'
@@ -34,33 +40,70 @@ CONFIG_DEF = '~config~  = {isa = PBXFileReference; lastKnownFileType = text.xcco
 		@schemesTemplateContent = File.read("#{__dir__}/schemesTemplate.txt")
 		templateContent = File.read("#{__dir__}/templateProj.txt")
 		setup_groups
-		create_info_plist(@projFiles)
-		create_configs(@projFiles)
-		create_scripts(@projFiles)
-		create_modulemap(@projFiles)
-		@headerFromPaths.each {|f| scan_files(f, @projFiles, @headerList, './Code') }
-		@sourceFromPaths.each {|f| scan_files(f, @projFiles, @sourceList, './Code') }
-		create_umbrella_header(@headerList, @projFiles)
+		create_info_plist(@projFiles, @resourcesList)
+		create_configs(@projFiles, @configsList)
+		create_scripts(@projFiles, @scriptsList)
+		create_modulemap(@projFiles, @moduleMapList)
+		copy_frameworks(@projFiles, @frameworksList)
+		@headerFromPaths.each {|f| scan_source_files(f, @projFiles, @headerList, './Code') }
+		@sourceFromPaths.each {|f| scan_source_files(f, @projFiles, @sourceList, './Code') }
+		create_umbrella_header(@projFiles, @headerList)
+		create_product_output(@projFiles, @projName, @productsList)
+		create_scripts(@projFiles, @scriptsList)
 		setup_xcode_skeleton
+
+		codeFiles = @headerList + @sourceList + @moduleMapList
+
 		
 		objectList = @projFiles.keys
-			.map {|k| transform_object_def(@projFiles[k])} * "\n\t\t"
+			.map {|k| @projFiles[k][:objectDef]} * "\n\t\t"
 		templateContent.gsub!('~fullObjectList~',objectList)
 		templateContent.gsub!('~targetProxyDef~', get_xc_uuid)
 		templateContent.gsub!('~rootObject~', get_xc_uuid)
 		templateContent.gsub!('~targetDef~', @targetDefId)
 		templateContent.gsub!('~projName~',@projName)
 		fileList = @projFiles.keys
-			.map {|k| transform_source_def(@projFiles[k])} * "\n\t\t"
+			.map {|k| @projFiles[k][:projFileDef]} * "\n\t\t"
 		templateContent.gsub!('~fullFileDefList~',fileList)
 		templateContent.gsub!('~targetFrameworkPhaseDef~', get_xc_uuid)
 		templateContent.gsub!('~codeGroup~', get_xc_uuid)
+
+		codeIdList = codeFiles.map{|f| @projFiles[f][:projFileDef] } * "\n\t\t"
+		templateContent.gsub!('~fullCodeFileList~', codeIdList)
+
 		templateContent.gsub!('~resourcesGroup~', get_xc_uuid)
+
+		resourceIdList = @resourcesList.map{|f| @projFiles[f][:projFileDef] } * "\n\t\t"
+		templateContent.gsub!('~resourceFilelist~', resourceIdList)
+
 		templateContent.gsub!('~mainGroup~', get_xc_uuid)
+
+		productsIdList = @productsList.map{|f| @projFiles[f][:projFileDef] } * "\n\t\t"
+		templateContent.gsub!('~productsIdList~', productsIdList)
+
 		templateContent.gsub!('~scriptsGroup~', get_xc_uuid)
+
+		scriptIdList = @scriptsList.map{|f| @projFiles[f][:projFileDef] } * "\n\t\t"
+		templateContent.gsub!('~scriptIdList~', scriptIdList)
+
 		templateContent.gsub!('~configsGroup~', get_xc_uuid)
+		configIdList = @configsList.map{|f| @projFiles[f][:projFileDef] } * "\n\t\t"
+		templateContent.gsub!('~configIdList~', configIdList)
+
 		templateContent.gsub!('~productsGroup~', get_xc_uuid)
 		templateContent.gsub!('~frameworksGroup~', get_xc_uuid)
+		templateContent.gsub!('~headerPhaseDef~', get_xc_uuid)
+
+		headersIdList = @headerList.map{|f| @projFiles[f][:projFileDef] } * "\n\t\t"
+		templateContent.gsub!('~objectIdHeaderList~', headersIdList)
+
+		templateContent.gsub!('~shellScriptPhase1Def~', get_xc_uuid)
+		templateContent.gsub!('~phaseSources~', get_xc_uuid)
+		templateContent.gsub!('~shellScriptPhase2Def~', get_xc_uuid)
+
+		configIdList = @configsList.map{|f| @projFiles[f][:projFileDef] } * "\n\t\t"
+		templateContent.gsub!('~projectConfigList~', configIdList)
+
 		File.write("#{@projName}.xcodeproj/project.pbxproj",templateContent)
 	end
 
@@ -142,7 +185,7 @@ CONFIG_DEF = '~config~  = {isa = PBXFileReference; lastKnownFileType = text.xcco
 		@groupKeys['Frameworks'] = get_xc_uuid
 	end
 
-	def create_info_plist(projFiles)
+	def create_info_plist(projFiles, resourcesList)
 		infoPlistPath = './Resources/info.plist'
 		infoPlistContent = <<~PLIST
 		<?xml version="1.0" encoding="UTF-8"?>
@@ -170,7 +213,8 @@ CONFIG_DEF = '~config~  = {isa = PBXFileReference; lastKnownFileType = text.xcco
 		PLIST
 
 		File.write(infoPlistPath, infoPlistContent)
-		projFiles['info.plist'] = { fileId: get_xc_uuid(), objectId: get_xc_uuid(), path: 'info.plist' }	
+
+		add_entry(projFiles, resourcesList, 'info.plist', method(:transform_info_plist_def))
 	end
 
 
@@ -248,20 +292,20 @@ CONFIG_DEF = '~config~  = {isa = PBXFileReference; lastKnownFileType = text.xcco
 		File.write("#{path}/WorkspaceSettings.xcsettings",settingsContent)
 	end
 
-	def scan_files(fileDir, projFiles, fileList, destDir)
+	def scan_source_files(fileDir, projFiles, fileList, destDir)
 		Dir.glob(fileDir) do |filepath|
 			next if filepath == '.' or filepath == '..'
-			filename = File.basename(filepath)
+			fileName = File.basename(filepath)
 			if destDir
-				dest = "#{destDir}/#{filename}"
+				dest = "#{destDir}/#{fileName}"
 				FileUtils.cp(filepath, dest)
 			end
-			projFiles[filename] = { fileId: get_xc_uuid(), objectId: get_xc_uuid(), path: filename }
-			fileList << filename
+
+			add_entry(projFiles, fileList, fileName, method(:transform_source_def))
 		end
 	end
 
-	def create_umbrella_header(headersList, projFiles)
+	def create_umbrella_header(projFiles, headersList)
 		importList = headersList.collect { |h| "#import \"#{h}\";"} * "\n"
 		umbrellaHeader = <<~UMBRELLA
 		//
@@ -276,9 +320,11 @@ CONFIG_DEF = '~config~  = {isa = PBXFileReference; lastKnownFileType = text.xcco
 		#endif /* #{@projName}_h */
 		UMBRELLA
 
-		umbrellaHeaderPath = "./Code/#{@projName}.h"
+		fileName = "#{@projName}.h"
+		umbrellaHeaderPath = "./Code/#{fileName}"
 		File.write(umbrellaHeaderPath, umbrellaHeader)
-		projFiles["#{@projName}.h"] = { fileId: get_xc_uuid(), objectId: get_xc_uuid(), path: "#{@projName}.h" }
+
+		add_entry(projFiles, headersList, fileName, method(:transform_source_def))
 	end
 
 	def create_scheme_management(path, projName, targetDef)
@@ -319,6 +365,30 @@ CONFIG_DEF = '~config~  = {isa = PBXFileReference; lastKnownFileType = text.xcco
 		File.write("#{path}/#{@projName}.xcscheme", schemesContent)
 	end
 
+	def create_product_output(projFiles, projName, productsList)
+		fileName = projName
+		system("touch ./Products/#{fileName}")
+
+		add_entry(projFiles, productsList, fileName, method(:transform_output_def))
+	end
+
+	def create_modulemap(projFiles, moduleMapList)
+		moduleMapPath = "./Code/module.modulemap"
+		moduleMapContent = <<~EOF
+		framework module #{@projName} [extern_c] {
+			umbrella header "#{@projName}.h"
+			module * { export * }
+			export *
+		}
+		EOF
+		File.write(moduleMapPath, moduleMapContent)
+
+		add_entry(projFiles, moduleMapList, "module.modulemap", 
+			method(:transform_module_map_def))
+	end
+
+	def copy_frameworks(projFiles, frameworksList)
+	end
 
 	def transform_object_def(replacements)
 		OBJECT_DEF.gsub('~fileRef~', replacements[:fileId])
@@ -328,6 +398,40 @@ CONFIG_DEF = '~config~  = {isa = PBXFileReference; lastKnownFileType = text.xcco
 	def transform_source_def(replacements)
 		SOURCE_DEF.gsub('~sourceRef~', replacements[:fileId])
 			.gsub('~sourceCodePath~', replacements[:path])
+	end
+
+	def transform_info_plist_def(replacements)
+		INFO_PLIST_DEF.gsub('~infoPlist~', replacements[:fileId])
+	end
+
+	def transform_output_def(replacements)
+		OUTPUT_DEF.gsub('~buidOutput~',replacements[:fileId])
+			.gsub('~outputName~', replacements[:path])
+	end
+
+	def transform_module_map_def(replacements)
+		MODULEMAP_DEF.gsub('~moduleMap~', replacements[:fileId])
+	end
+
+	def transform_script_def(replacements)
+		SCRIPT_DEF.gsub('~buildScript~', replacements[:fileId])
+			.gsub('~scriptPath~', replacements[:path])
+	end
+
+	def transform_config_def(replacements)
+		CONFIG_DEF.gsub('~config~', replacements[:fileId])
+			.gsub('~configPath~', replacements[:path])
+	end
+
+	def add_entry(projFiles, fileList, fileName, transformFn)
+		objectData = { fileId: get_xc_uuid,
+			objectId: get_xc_uuid,
+			path: fileName }
+
+		objectData[:projFileDef] = transformFn.call(objectData)
+		objectData[:objectDef] = transform_object_def(objectData)
+		projFiles[fileName] = objectData
+		fileList << fileName
 	end
 
 	def get_xc_uuid

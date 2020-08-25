@@ -46,7 +46,7 @@
 		~resourcesGroup~ /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				~infoPlist~ /* Info.plist */,
+				~resourceFilelist~,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -90,7 +90,7 @@
 		~configsGroup~ /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				~baseConfig~ /* SHUtils_C.base.xcconfig */,
+				~configIdList~,
 			);
 			path = Configs;
 			sourceTree = "<group>";
@@ -125,7 +125,7 @@
 			);
 			name = ~projName~;
 			productName = ~projName~;
-			productReference = ~outputFile~ ;
+			productReference = ~productsIdList~ ;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */

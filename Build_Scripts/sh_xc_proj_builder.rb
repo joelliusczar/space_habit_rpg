@@ -3,8 +3,9 @@ require_relative 'xc_proj_builder'
 
 class SHLibCXcodeProjBuilder < XcodeProjBuilder
 
-	def create_configs(projFiles)
-		baseConfigPath = "./Configs/#{@projName}.base.xcconfig"
+	def create_configs(projFiles, configsList)
+		fileName = "#{@projName}.base.xcconfig"
+		baseConfigPath = "./Configs/#{fileName}"
 		baseConfigContent = <<~CONFIG
 		//
 		//	#{@rojName}.base.xcconfig
@@ -19,16 +20,18 @@ class SHLibCXcodeProjBuilder < XcodeProjBuilder
 
 		CONFIG
 		File.write(baseConfigPath, baseConfigContent)
-		projFiles["#{@projName}.base.xcconfig"] = { fileId: get_xc_uuid(), objectId: get_xc_uuid(), path: "#{@projName}.base.xcconfig" }
+
+		add_entry(projFiles, configsList, fileName, method(:transform_config_def))
 	end
 
-	def create_scripts(projFiles)
-		create_prescript(projFiles)
-		create_postscript(projFiles)
+	def create_scripts(projFiles, scriptsList)
+		create_prescript(projFiles, scriptsList)
+		create_postscript(projFiles, scriptsList)
 	end
 
-	def create_prescript(projFiles)
-		scriptPath = "./Scripts/#{@projName}.prebuild.sh"
+	def create_prescript(projFiles, scriptsList)
+		fileName = "#{@projName}.prebuild.sh"
+		scriptPath = "./Scripts/#{fileName}"
 		scriptContent = <<~SCRIPT
 		#!/bin/sh
 
@@ -47,11 +50,13 @@ class SHLibCXcodeProjBuilder < XcodeProjBuilder
 
 		SCRIPT
 		File.write(scriptPath, scriptContent)
-		projFiles["#{@projName}.postbuild.sh"] = { fileId: get_xc_uuid(), objectId: get_xc_uuid(), path: "#{@projName}.postbuild.sh" }	
+
+		add_entry(projFiles, scriptsList, fileName, method(:transform_script_def))
 	end
 
-	def create_postscript(projFiles)
-		scriptPath = "./Scripts/#{@projName}.postbuild.sh"
+	def create_postscript(projFiles, scriptsList)
+		fileName = "#{@projName}.postbuild.sh"
+		scriptPath = "./Scripts/#{fileName}"
 		scriptContent = <<~SCRIPT
 		#!/bin/sh
 
@@ -70,20 +75,8 @@ class SHLibCXcodeProjBuilder < XcodeProjBuilder
 
 		SCRIPT
 		File.write(scriptPath, scriptContent)
-		projFiles["#{@projName}.postbuild.sh"] = { fileId: get_xc_uuid(), objectId: get_xc_uuid(), path: "#{@projName}.postbuild.sh" }	
-	end
-
-	def create_modulemap(projFiles)
-		moduleMapPath = "./Code/module.modulemap"
-		moduleMapContent = <<~EOF
-		framework module #{@projName} [extern_c] {
-			umbrella header "#{@projName}.h"
-			module * { export * }
-			export *
-		}
-		EOF
-		File.write(moduleMapPath, moduleMapContent)
-		projFiles["module.modulemap"] = { fileId: get_xc_uuid(), objectId: get_xc_uuid(), path: "module.modulemap" }
+		
+		add_entry(projFiles, scriptsList, fileName, method(:transform_script_def))
 	end
 
 end
