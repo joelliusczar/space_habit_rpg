@@ -60,7 +60,6 @@
 		271692002089758B0059A58E /* SHUtils_C */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = SHUtils_C; sourceTree = BUILT_PRODUCTS_DIR; };
 		271692082089762D0059A58E /* SHArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHArray.h; sourceTree = "<group>"; };
 		27169215208BB2450059A58E /* SHErrorHandling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHErrorHandling.h; sourceTree = "<group>"; };
-		27397341226C0894001590C6 /* libSHDatetime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSHDatetime.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		275534BF2479E39B00D650AB /* SHSerialQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSerialQueue.h; sourceTree = "<group>"; };
 		275534C02479E39B00D650AB /* SHSerialQueue.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SHSerialQueue.c; sourceTree = "<group>"; };
 		275534FF248891A400D650AB /* SHDynamicArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDynamicArray.h; sourceTree = "<group>"; };
@@ -187,7 +186,6 @@
 		2716920E208991130059A58E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				27397341226C0894001590C6 /* libSHDatetime.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

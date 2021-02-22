@@ -30,7 +30,7 @@ cd '../'
 
 ruby "$scriptDir/create_libxml2_proj.rb" \
 	'./untar/libxml2-2.7.2/include/libxml/*.h' \
-	'.untar/libxml2-2.7.2/*.c' \
+	'./untar/libxml2-2.7.2/*.c' \
 	'../../spacehabitrpg_output'
 
 # cd 'libxml2.xcodeproj'

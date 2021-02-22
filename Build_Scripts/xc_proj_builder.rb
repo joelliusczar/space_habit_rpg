@@ -68,40 +68,42 @@ CONFIG_DEF = '~config~  = {isa = PBXFileReference; lastKnownFileType = text.xcco
 		templateContent.gsub!('~targetFrameworkPhaseDef~', get_xc_uuid)
 		templateContent.gsub!('~codeGroup~', get_xc_uuid)
 
-		codeIdList = codeFiles.map{|f| @projFiles[f][:projFileDef] } * "\n\t\t"
+		codeIdList = codeFiles.map{|f| @projFiles[f][:fileId] } * "\n\t\t\t"
 		templateContent.gsub!('~fullCodeFileList~', codeIdList)
 
 		templateContent.gsub!('~resourcesGroup~', get_xc_uuid)
 
-		resourceIdList = @resourcesList.map{|f| @projFiles[f][:projFileDef] } * "\n\t\t"
+		resourceIdList = @resourcesList.map{|f| @projFiles[f][:fileId] } * "\n\t\t\t"
 		templateContent.gsub!('~resourceFilelist~', resourceIdList)
 
 		templateContent.gsub!('~mainGroup~', get_xc_uuid)
-
-		productsIdList = @productsList.map{|f| @projFiles[f][:projFileDef] } * "\n\t\t"
-		templateContent.gsub!('~productsIdList~', productsIdList)
-
 		templateContent.gsub!('~scriptsGroup~', get_xc_uuid)
-
-		scriptIdList = @scriptsList.map{|f| @projFiles[f][:projFileDef] } * "\n\t\t"
-		templateContent.gsub!('~scriptIdList~', scriptIdList)
-
 		templateContent.gsub!('~configsGroup~', get_xc_uuid)
-		configIdList = @configsList.map{|f| @projFiles[f][:projFileDef] } * "\n\t\t"
-		templateContent.gsub!('~configIdList~', configIdList)
-
 		templateContent.gsub!('~productsGroup~', get_xc_uuid)
 		templateContent.gsub!('~frameworksGroup~', get_xc_uuid)
+
+		productsIdList = @productsList.map{|f| @projFiles[f][:fileId] } * "\n\t\t\t"
+		templateContent.gsub!('~productsIdList~', productsIdList)
+
+		frameworkIdList = @frameworksList.map{|f| @projFiles[f][:fileId] } * "\n\t\t\t"
+		templateContent.gsub!('~scriptIdList~', frameworkIdList)
+
+		scriptIdList = @scriptsList.map{|f| @projFiles[f][:fileId] } * "\n\t\t\t"
+		templateContent.gsub!('~frameworksIdList~', scriptIdList)
+
+		configIdList = @configsList.map{|f| @projFiles[f][:fileId] } * "\n\t\t\t"
+		templateContent.gsub!('~configIdList~', configIdList)
+
 		templateContent.gsub!('~headerPhaseDef~', get_xc_uuid)
 
-		headersIdList = @headerList.map{|f| @projFiles[f][:projFileDef] } * "\n\t\t"
+		headersIdList = @headerList.map{|f| @projFiles[f][:objectId] } * "\n\t\t\t"
 		templateContent.gsub!('~objectIdHeaderList~', headersIdList)
 
 		templateContent.gsub!('~shellScriptPhase1Def~', get_xc_uuid)
 		templateContent.gsub!('~phaseSources~', get_xc_uuid)
 		templateContent.gsub!('~shellScriptPhase2Def~', get_xc_uuid)
 
-		configIdList = @configsList.map{|f| @projFiles[f][:projFileDef] } * "\n\t\t"
+		configIdList = @configsList.map{|f| @projFiles[f][:fileId] } * "\n\t\t\t"
 		templateContent.gsub!('~projectConfigList~', configIdList)
 
 		File.write("#{@projName}.xcodeproj/project.pbxproj",templateContent)
@@ -154,9 +156,7 @@ CONFIG_DEF = '~config~  = {isa = PBXFileReference; lastKnownFileType = text.xcco
 		projUserDataPath = "#{projPath}/xcuserdata"
 		Dir.mkdir(projUserDataPath) unless File.exists?(projUserDataPath)
 
-		puts(@accountName)
 		projAccountDatadPath = "#{projUserDataPath}/#{@accountName}.xcuserdatad"
-		puts(projAccountDatadPath)
 		Dir.mkdir(projAccountDatadPath) unless File.exists?(projAccountDatadPath)
 		
 		accountDataSchemePath = "#{projAccountDatadPath}/xcschemes"
